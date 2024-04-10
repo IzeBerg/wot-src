@@ -7,6 +7,7 @@ package net.wg.app.impl
    import net.wg.data.VO.daapi.DAAPIVehicleInfoVO;
    import net.wg.data.VO.daapi.DAAPIVehicleStatsVO;
    import net.wg.data.VO.daapi.DAAPIVehicleUserTagsVO;
+   import net.wg.data.VO.daapi.PveDAAPIVehicleInfoVO;
    import net.wg.data.constants.generated.ATLAS_CONSTANTS;
    import net.wg.data.constants.generated.LAYER_NAMES;
    import net.wg.gui.battle.comp7.VO.daapi.Comp7DAAPIVehicleInfoVO;
@@ -97,6 +98,8 @@ package net.wg.app.impl
       public static const BATTLE_REG_CMD:String = "registerBattleTest";
        
       
+      private var _markers:ManagedContainer;
+      
       private var _views:MainViewContainer;
       
       private var _windows:ManagedContainer;
@@ -142,6 +145,7 @@ package net.wg.app.impl
          registerClassAlias("net.wg.gui.battle.views.questProgress.data.metrics.QPMetricsLimiterVO",QPMetricsLimiterVO);
          registerClassAlias("net.wg.gui.components.controls.VO.BadgeVisualVO",BadgeVisualVO);
          registerClassAlias("net.wg.gui.battle.comp7.VO.daapi.Comp7DAAPIVehicleInfoVO",Comp7DAAPIVehicleInfoVO);
+         registerClassAlias("net.wg.data.VO.daapi.PveDAAPIVehicleInfoVO",PveDAAPIVehicleInfoVO);
       }
       
       override protected function onPopUpManagerInit() : void
@@ -174,12 +178,15 @@ package net.wg.app.impl
          this._toolTips = new TooltipContainer(LAYER_NAMES.TOOL_TIPS);
          this._cursorCtnr = new CursorManagedContainer(LAYER_NAMES.CURSOR);
          this._overlay = new ManagedContainer(LAYER_NAMES.OVERLAY);
+         this._markers = new ManagedContainer(LAYER_NAMES.MARKER);
          super.createContainers();
       }
       
       override protected function disposeContainers() : void
       {
          super.disposeContainers();
+         this._markers.dispose();
+         this._markers = null;
          this._views.dispose();
          this._views = null;
          this._dialogs.dispose();
@@ -204,7 +211,7 @@ package net.wg.app.impl
          if(!containers)
          {
             _loc1_ = DisplayObject(utils.IME.getContainer());
-            containers = new <DisplayObject>[this._hiddenServiceLayout,this._views,this._windows,this._fullscreenWindows,this._systemMessages,this._dialogs,this._overlay,_loc1_,this._serviceLayout,this._toolTips,this._cursorCtnr];
+            containers = new <DisplayObject>[this._hiddenServiceLayout,this._markers,this._views,this._windows,this._fullscreenWindows,this._systemMessages,this._dialogs,this._overlay,_loc1_,this._serviceLayout,this._toolTips,this._cursorCtnr];
          }
          return containers;
       }

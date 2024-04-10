@@ -1,51 +1,22 @@
-import logging, BigWorld, CGF
+import logging
+from functools import partial
+import BigWorld, CGF
 from Event import Event
 from constants import ROCKET_ACCELERATION_STATE
 from wotdecorators import noexcept
 from vehicle_systems.model_assembler import loadAppearancePrefab
 _logger = logging.getLogger(__name__)
+_DEFAULT_OUTFIT = 'default'
 
 class RocketAccelerationController(BigWorld.DynamicScriptComponent):
 
     def __init__(self):
         super(RocketAccelerationController, self).__init__()
-        self.__readyCallback = None
-        self.__prefabRoot = None
+        self.__prefabGameObject = None
         self.__onStateChanged = Event()
         self.__onTryActivate = Event()
-        self.__effectsPrefab = ''
-        self.__duration = 0
-        self.__reloadTime = 0.0
-        self.__deployTme = 0.0
-        self.__inited = False
-        self.init()
+        self.__initAppearance()
         return
-
-    @noexcept
-    def init(self):
-        if self.__inited or not self.entity or not self.entity.typeDescriptor:
-            return
-        self.__duration = self.entity.typeDescriptor.type.rocketAccelerationParams.duration
-        self.__reloadTime = self.entity.typeDescriptor.type.rocketAccelerationParams.reloadTime
-        self.__deployTme = self.entity.typeDescriptor.type.rocketAccelerationParams.deployTime
-        appearance = self.entity.appearance
-        modelsSet = appearance.outfit.modelsSet
-        outfit = 'default' if not modelsSet else modelsSet
-        self.__effectsPrefab = self.entity.typeDescriptor.type.rocketAccelerationParams.effectsPrefab[outfit]
-        loadAppearancePrefab(self.__effectsPrefab, appearance, self.__onLoaded)
-        self.__inited = True
-
-    @property
-    def prefabPath(self):
-        return self.__effectsPrefab
-
-    @property
-    def reloadTime(self):
-        return self.__reloadTime
-
-    @property
-    def deployTime(self):
-        return self.__deployTme
 
     def tryActivate(self):
         if self.stateStatus.status == ROCKET_ACCELERATION_STATE.READY:
@@ -77,6 +48,8 @@ class RocketAccelerationController(BigWorld.DynamicScriptComponent):
         return
 
     def unsubscribe(self, callback=None, tryActivateCallback=None):
+        if self.entity.isDestroyed or not self.entity.inWorld:
+            return
         if callback is not None:
             self.__onStateChanged -= callback
         if tryActivateCallback is not None:
@@ -87,14 +60,38 @@ class RocketAccelerationController(BigWorld.DynamicScriptComponent):
         self.__onStateChanged(self.stateStatus)
 
     def cleanup(self):
+        if self.entity.isDestroyed or not self.entity.inWorld:
+            return
         self.__onStateChanged.clear()
         self.__onTryActivate.clear()
-        if self.__prefabRoot is not None:
-            CGF.removeGameObject(self.__prefabRoot)
+        self.entity.onAppearanceReady -= self.__tryUpdatePrefab
+        if self.__prefabGameObject is not None:
+            CGF.removeGameObject(self.__prefabGameObject)
+            self.__prefabGameObject = None
         return
 
-    def __onLoaded(self, root):
+    def __initAppearance(self):
+        if not self.__tryUpdatePrefab():
+            self.entity.onAppearanceReady += self.__tryUpdatePrefab
+
+    def __onLoaded(self, path, root):
         if not root.isValid:
-            _logger.error('Failed to load prefab: %s', self.__effectsPrefab)
+            _logger.error('Failed to load prefab: %s', path)
             return
-        self.__prefabRoot = root
+        self.__prefabGameObject = root
+
+    def __tryUpdatePrefab(self):
+        if self.__prefabGameObject is not None:
+            return False
+        else:
+            typeDescriptor = self.entity.typeDescriptor
+            if typeDescriptor is None:
+                return False
+            appearance = self.entity.appearance
+            if appearance is None or not appearance.isConstructed or appearance.isDestroyed:
+                return False
+            modelsSet = appearance.outfit.modelsSet
+            outfit = _DEFAULT_OUTFIT if not modelsSet else modelsSet
+            prefabPath = typeDescriptor.type.rocketAccelerationParams.effectsPrefab[outfit]
+            loadAppearancePrefab(prefabPath, appearance, partial(self.__onLoaded, prefabPath))
+            return True

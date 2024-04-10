@@ -237,6 +237,10 @@
 					</large>
 				</volumeGroups>
 			</advancedCollider>
+			<linearTransitionDuration>
+				1.0
+				<!--BW_String-->
+			</linearTransitionDuration>
 			<keySensitivity>
 				0.025
 				<!--BW_String-->
@@ -332,7 +336,7 @@
 				<transitionDuration>
 					<controlModeName>deathfreecam</controlModeName>
 					<duration>
-						1.5
+						1.0
 						<!--BW_String-->
 					</duration>
 				</transitionDuration>
@@ -488,6 +492,432 @@
 			</dynamics>
 		</camera>
 	</postMortemMode>
+	<killCamMode>
+		<defaultOffset>
+			0.0 0.0
+			<!--BW_String-->
+		</defaultOffset>
+		<camera>
+			<cameraSpinParams>
+				<spinAnglesAttacker>330 192</spinAnglesAttacker>
+				<spinAnglesPlayer>0 10</spinAnglesPlayer>
+				<spinDuration>
+					4.0
+					<!--BW_String-->
+				</spinDuration>
+			</cameraSpinParams>
+			<cameraDistance>
+				30.0
+				<!--BW_String-->
+			</cameraDistance>
+			<heightAboveBase>
+				0.7
+				<!--BW_String-->
+			</heightAboveBase>
+			<focusRadius>
+				0.0
+				<!--BW_String-->
+			</focusRadius>
+			<killCamMovementDuration>
+				3.0
+				<!--BW_String-->
+			</killCamMovementDuration>
+			<advancedCollider>
+				<enable>true</enable>
+				<fovRatio>
+					2.0
+					<!--BW_String-->
+				</fovRatio>
+				<cameraCollisionScaleMult>
+					3.0
+					<!--BW_String-->
+				</cameraCollisionScaleMult>
+				<rollbackSpeed>
+					1.0
+					<!--BW_String-->
+				</rollbackSpeed>
+				<speedThreshold>
+					0.1
+					<!--BW_String-->
+				</speedThreshold>
+				<minimalVolume>
+					20.0
+					<!--BW_String-->
+				</minimalVolume>
+				<volumeGroups>
+					<tiny>
+						<lowSpeedLimit>
+							1.0
+							<!--BW_String-->
+						</lowSpeedLimit>
+						<vehicleVisibilityLimit>
+							10.0
+							<!--BW_String-->
+						</vehicleVisibilityLimit>
+						<approachSpeed>
+							1.5 10.0
+							<!--BW_String-->
+						</approachSpeed>
+						<cameraSpeedFactor>
+							0.4
+							<!--BW_String-->
+						</cameraSpeedFactor>
+						<criticalDistance>
+							5.0
+							<!--BW_String-->
+						</criticalDistance>
+						<canSkip>true</canSkip>
+					</tiny>
+					<small>
+						<minVolume>
+							300.0
+							<!--BW_String-->
+						</minVolume>
+						<lowSpeedLimit>
+							0.75
+							<!--BW_String-->
+						</lowSpeedLimit>
+						<vehicleVisibilityLimit>
+							10.0
+							<!--BW_String-->
+						</vehicleVisibilityLimit>
+						<approachSpeed>
+							1.5 10.0
+							<!--BW_String-->
+						</approachSpeed>
+						<cameraSpeedFactor>
+							0.4
+							<!--BW_String-->
+						</cameraSpeedFactor>
+						<criticalDistance>
+							5.0
+							<!--BW_String-->
+						</criticalDistance>
+						<canSkip>true</canSkip>
+					</small>
+					<medium>
+						<minVolume>
+							500.0
+							<!--BW_String-->
+						</minVolume>
+						<lowSpeedLimit>
+							0.5
+							<!--BW_String-->
+						</lowSpeedLimit>
+						<vehicleVisibilityLimit>
+							10.0
+							<!--BW_String-->
+						</vehicleVisibilityLimit>
+						<approachSpeed>
+							1.5 10.0
+							<!--BW_String-->
+						</approachSpeed>
+						<cameraSpeedFactor>
+							0.4
+							<!--BW_String-->
+						</cameraSpeedFactor>
+						<criticalDistance>
+							5.0
+							<!--BW_String-->
+						</criticalDistance>
+						<canSkip>true</canSkip>
+					</medium>
+					<large>
+						<minVolume>
+							700.0
+							<!--BW_String-->
+						</minVolume>
+						<approachSpeed>
+							1.5 10000.0
+							<!--BW_String-->
+						</approachSpeed>
+						<cameraSpeedFactor>
+							0.1
+							<!--BW_String-->
+						</cameraSpeedFactor>
+						<canSkip>false</canSkip>
+					</large>
+				</volumeGroups>
+			</advancedCollider>
+			<keySensitivity>
+				0.025
+				<!--BW_String-->
+			</keySensitivity>
+			<sensitivity>
+				0.0025
+				<!--BW_String-->
+			</sensitivity>
+			<scrollSensitivity>5</scrollSensitivity>
+			<angleRange>10 110</angleRange>
+			<distRange>10 25</distRange>
+			<pauseAngleRange>10 90</pauseAngleRange>
+			<pauseDistRange>10 25</pauseDistRange>
+			<fovMultMinDist>
+				1.0
+				<!--BW_String-->
+			</fovMultMinDist>
+			<fovMultMaxDist>
+				1.0
+				<!--BW_String-->
+			</fovMultMaxDist>
+			<transitionSettings>
+				<transitionDuration>
+					<controlModeName>deathfreecam</controlModeName>
+					<duration>
+						1.0
+						<!--BW_String-->
+					</duration>
+				</transitionDuration>
+				<transitionDuration>
+					<controlModeName>postmortem</controlModeName>
+					<duration>
+						1.0
+						<!--BW_String-->
+					</duration>
+				</transitionDuration>
+			</transitionSettings>
+			<dynamics>
+				<impulseOscillator>
+					<mass>
+						1.0
+						<!--BW_String-->
+					</mass>
+					<stiffness>
+						90.0 90.0 90.0
+						<!--BW_String-->
+					</stiffness>
+					<drag>
+						12.0 12.0 12.0
+						<!--BW_String-->
+					</drag>
+					<constraints>
+						10.0 0.0 10.0
+						<!--BW_String-->
+					</constraints>
+				</impulseOscillator>
+				<movementOscillator>
+					<mass>
+						1.2
+						<!--BW_String-->
+					</mass>
+					<stiffness>
+						25.0 25.0 25.0
+						<!--BW_String-->
+					</stiffness>
+					<drag>
+						10.0 10.0 10.0
+						<!--BW_String-->
+					</drag>
+					<constraints>
+						40.0 40.0 40.0
+						<!--BW_String-->
+					</constraints>
+				</movementOscillator>
+				<randomNoiseOscillatorSpherical>
+					<mass>
+						0.7
+						<!--BW_String-->
+					</mass>
+					<stiffness>
+						8600.0
+						<!--BW_String-->
+					</stiffness>
+					<drag>
+						33.0
+						<!--BW_String-->
+					</drag>
+					<scaleCoeff>
+						1.0 1.0 0.4
+						<!--BW_String-->
+					</scaleCoeff>
+				</randomNoiseOscillatorSpherical>
+				<impulseSensitivities>
+					<shot>
+						4.0
+						<!--BW_String-->
+					</shot>
+					<hit>
+						15.0
+						<!--BW_String-->
+					</hit>
+					<otherShot>
+						20.0
+						<!--BW_String-->
+					</otherShot>
+					<splash>
+						50.0
+						<!--BW_String-->
+					</splash>
+					<vehicleExplosion>
+						2100.0
+						<!--BW_String-->
+					</vehicleExplosion>
+				</impulseSensitivities>
+				<noiseSensitivities>
+					<shot>
+						3.0
+						<!--BW_String-->
+					</shot>
+					<hit>
+						30.0
+						<!--BW_String-->
+					</hit>
+					<otherShot>
+						15.0
+						<!--BW_String-->
+					</otherShot>
+					<splash>
+						30.0
+						<!--BW_String-->
+					</splash>
+					<collision>
+						0.5
+						<!--BW_String-->
+					</collision>
+					<vehicleExplosion>
+						2500.0
+						<!--BW_String-->
+					</vehicleExplosion>
+				</noiseSensitivities>
+				<impulseLimits/>
+				<noiseLimits/>
+				<accelerationSensitivity>
+					3.0
+					<!--BW_String-->
+				</accelerationSensitivity>
+				<frontImpulseToPitchRatio>
+					7.0
+					<!--BW_String-->
+				</frontImpulseToPitchRatio>
+				<sideImpulseToRollRatio>
+					2.0
+					<!--BW_String-->
+				</sideImpulseToRollRatio>
+				<sideImpulseToYawRatio>
+					10.0
+					<!--BW_String-->
+				</sideImpulseToYawRatio>
+				<accelerationThreshold>
+					1.5
+					<!--BW_String-->
+				</accelerationThreshold>
+				<accelerationMax>
+					15.0
+					<!--BW_String-->
+				</accelerationMax>
+				<maxShotImpulseDistance>
+					35.0
+					<!--BW_String-->
+				</maxShotImpulseDistance>
+				<maxExplosionImpulseDistance>
+					150.0
+					<!--BW_String-->
+				</maxExplosionImpulseDistance>
+				<zoomExposure>
+					0.33
+					<!--BW_String-->
+				</zoomExposure>
+			</dynamics>
+			<phase3EndAngleHE>
+				0.0
+				<!--BW_String-->
+			</phase3EndAngleHE>
+			<spotted>
+				<spottedKillerRadius>
+					15.0
+					<!--BW_String-->
+				</spottedKillerRadius>
+				<spottedPlayerRadius>
+					12.0
+					<!--BW_String-->
+				</spottedPlayerRadius>
+				<spottedPlayerHERadiusOffset>
+					10.0
+					<!--BW_String-->
+				</spottedPlayerHERadiusOffset>
+				<spottedKillerExplosionPitchOffset>
+					0.3
+					<!--BW_String-->
+				</spottedKillerExplosionPitchOffset>
+				<spottedKillerExplosionYawOffset>
+					0.0
+					<!--BW_String-->
+				</spottedKillerExplosionYawOffset>
+				<trajectoryDelay>
+					0.0
+					<!--BW_String-->
+				</trajectoryDelay>
+				<finalSpinDelay>
+					1.0
+					<!--BW_String-->
+				</finalSpinDelay>
+			</spotted>
+			<unspotted>
+				<unspottedRadius>
+					15.0
+					<!--BW_String-->
+				</unspottedRadius>
+				<unspottedPitchOffset>
+					0.3
+					<!--BW_String-->
+				</unspottedPitchOffset>
+				<unspottedHERadiusOffset>
+					30.0
+					<!--BW_String-->
+				</unspottedHERadiusOffset>
+				<unspottedInitAngle>175</unspottedInitAngle>
+				<unspottedPhase1Angle>-40</unspottedPhase1Angle>
+				<unspottedPhase2Angle>-80</unspottedPhase2Angle>
+				<unspottedPhase3Angle>-50</unspottedPhase3Angle>
+				<unspottedToPhase1SpinDuration>
+					2.0
+					<!--BW_String-->
+				</unspottedToPhase1SpinDuration>
+				<unspottedToPhase2SpinDuration>
+					2.0
+					<!--BW_String-->
+				</unspottedToPhase2SpinDuration>
+				<unspottedToPhase3SpinDuration>
+					3.0
+					<!--BW_String-->
+				</unspottedToPhase3SpinDuration>
+				<unspottedPhase1FreezeDuration>
+					2.0
+					<!--BW_String-->
+				</unspottedPhase1FreezeDuration>
+				<unspottedPhase2FreezeDuration>
+					3.0
+					<!--BW_String-->
+				</unspottedPhase2FreezeDuration>
+				<unspottedPhase3FreezeDuration>
+					2.0
+					<!--BW_String-->
+				</unspottedPhase3FreezeDuration>
+			</unspotted>
+		</camera>
+		<deathCamPostProcessEffects>
+			<contrast>
+				0.2
+				<!--BW_String-->
+			</contrast>
+			<saturation>
+				-0.5
+				<!--BW_String-->
+			</saturation>
+			<vignette>
+				0.0 0.0 0.0 0.8
+				<!--BW_String-->
+			</vignette>
+		</deathCamPostProcessEffects>
+		<skipKillCamVehiclesDistance>
+			0.0
+			<!--BW_String-->
+		</skipKillCamVehiclesDistance>
+		<skipBattleTimeLeft>
+			5.0
+			<!--BW_String-->
+		</skipBattleTimeLeft>
+	</killCamMode>
 	<arcadeMode>
 		<defaultOffset>
 			0 0.15
@@ -1964,29 +2394,53 @@
 			<keyBindToVehicle>KEY_B</keyBindToVehicle>
 		</camera>
 	</videoMode>
-	<epicVideoMode>
+	<freeVideoMode>
 		<defaultOffset>
 			0.0 0.0
 			<!--BW_String-->
 		</defaultOffset>
 		<camera>
 			<heightAboveTerrain>
-				34.0
+				40.0
 				<!--BW_String-->
 			</heightAboveTerrain>
-			<sensitivity>1</sensitivity>
-			<scrollSensitivity>1</scrollSensitivity>
-			<linearVelocity>
-				20.0
+			<heightAboveTerrainMin>
+				3.6
 				<!--BW_String-->
-			</linearVelocity>
-			<linearVelocityAcceleration>1</linearVelocityAcceleration>
+			</heightAboveTerrainMin>
+			<heightAboveTerrainMax>
+				65.0
+				<!--BW_String-->
+			</heightAboveTerrainMax>
+			<sensitivity>
+				2.8
+				<!--BW_String-->
+			</sensitivity>
+			<keySelectSpeed1>KEY_1</keySelectSpeed1>
+			<keySelectSpeed2>KEY_2</keySelectSpeed2>
+			<keySelectSpeed3>KEY_3</keySelectSpeed3>
+			<speedVertical>
+				0.75
+				<!--BW_String-->
+			</speedVertical>
+			<sensitivityLimits>14 20 30</sensitivityLimits>
+			<scrollSensitivity>
+				0.5
+				<!--BW_String-->
+			</scrollSensitivity>
+			<linearVelocity>20</linearVelocity>
+			<linearVelocityAcceleration>
+				0.6
+				<!--BW_String-->
+			</linearVelocityAcceleration>
 			<keyMoveLeft>KEY_A</keyMoveLeft>
 			<keyMoveRight>KEY_D</keyMoveRight>
 			<keyMoveForward>KEY_W</keyMoveForward>
 			<keyMoveBackward>KEY_S</keyMoveBackward>
-			<keyLinearVelocityIncrement>KEY_I</keyLinearVelocityIncrement>
-			<keyLinearVelocityDecrement>KEY_K</keyLinearVelocityDecrement>
+			<keyMoveUp>KEY_SPACE</keyMoveUp>
+			<keyMoveDown>KEY_LSHIFT</keyMoveDown>
+			<keyLinearVelocityIncrement>KEY_R</keyLinearVelocityIncrement>
+			<keyLinearVelocityDecrement>KEY_F</keyLinearVelocityDecrement>
 			<keyRevertVerticalVelocity>KEY_Z</keyRevertVerticalVelocity>
 			<angularVelocity>1</angularVelocity>
 			<angularVelocityAcceleration>9</angularVelocityAcceleration>
@@ -2005,17 +2459,48 @@
 				<!--BW_String-->
 			</zoomVelocityAcceleration>
 			<inertiaEnabled>True</inertiaEnabled>
-			<linearFriction>2</linearFriction>
-			<rotationFriction>7</rotationFriction>
+			<linearFriction>
+				4.8
+				<!--BW_String-->
+			</linearFriction>
+			<rotationFriction>
+				7.5
+				<!--BW_String-->
+			</rotationFriction>
 			<keyBindToVehicle>KEY_B</keyBindToVehicle>
 			<transitionSettings>
 				<transitionDuration>
 					<controlModeName>postmortem</controlModeName>
-					<duration>1</duration>
+					<duration>
+						1.2
+						<!--BW_String-->
+					</duration>
 				</transitionDuration>
 			</transitionSettings>
+			<maxPitch>60</maxPitch>
+			<minPitch>-30</minPitch>
+			<cameraHeightAdjustmentSpeed>5</cameraHeightAdjustmentSpeed>
+			<speedIfColliding>
+				20.0
+				<!--BW_String-->
+			</speedIfColliding>
+			<collisionBounceMultiplier>
+				1.0
+				<!--BW_String-->
+			</collisionBounceMultiplier>
+			<advancedCollision>
+				<obstacleForwardCheckDistance>
+					3.0
+					<!--BW_String-->
+				</obstacleForwardCheckDistance>
+				<cameraColliderRadius>
+					3.0
+					<!--BW_String-->
+				</cameraColliderRadius>
+			</advancedCollision>
 		</camera>
-	</epicVideoMode>
+		<disableHints>5</disableHints>
+	</freeVideoMode>
 	<vehiclesSelection>
 		<camera>
 			<pitchLimits>

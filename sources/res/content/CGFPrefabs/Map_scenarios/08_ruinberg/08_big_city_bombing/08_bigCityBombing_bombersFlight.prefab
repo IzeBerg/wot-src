@@ -809,11 +809,15 @@
 		</ComponentPool>
 		<ComponentPool>
 			<type>SequenceComponent</type>
-			<version>1</version>
+			<version>2</version>
 			<component>
 				<objectIndex>0</objectIndex>
 				<flags>35</flags>
 				<config>
+					<property>
+						<name>loop</name>
+						<value>0</value>
+					</property>
 					<property>
 						<name>autoStart</name>
 						<value>1</value>
@@ -848,10 +852,6 @@
 										<value>60</value>
 									</property>
 									<property>
-										<name>duration</name>
-										<value>60</value>
-									</property>
-									<property>
 										<name>parameters</name>
 										<collection/>
 									</property>
@@ -872,10 +872,6 @@
 										<value>60</value>
 									</property>
 									<property>
-										<name>duration</name>
-										<value>60</value>
-									</property>
-									<property>
 										<name>parameters</name>
 										<collection/>
 									</property>
@@ -883,16 +879,16 @@
 							</item>
 						</collection>
 					</property>
-					<property>
-						<name>time</name>
-						<value>0</value>
-					</property>
 				</config>
 			</component>
 			<component>
 				<objectIndex>1</objectIndex>
 				<flags>35</flags>
 				<config>
+					<property>
+						<name>loop</name>
+						<value>0</value>
+					</property>
 					<property>
 						<name>autoStart</name>
 						<value>1</value>
@@ -930,13 +926,6 @@
 										<value>13</value>
 									</property>
 									<property>
-										<name>duration</name>
-										<value>
-											9.33333
-											<!--BW_String-->
-										</value>
-									</property>
-									<property>
 										<name>parameters</name>
 										<collection/>
 									</property>
@@ -957,20 +946,12 @@
 										<value>13</value>
 									</property>
 									<property>
-										<name>duration</name>
-										<value>9</value>
-									</property>
-									<property>
 										<name>parameters</name>
 										<collection/>
 									</property>
 								</object>
 							</item>
 						</collection>
-					</property>
-					<property>
-						<name>time</name>
-						<value>0</value>
 					</property>
 				</config>
 			</component>

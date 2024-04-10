@@ -1,5 +1,4 @@
 import typing
-from bootcamp.BootCampEvents import g_bootcampEvents
 from constants import Configs
 from Event import Event, EventManager
 from gifts.gifts_common import ClientReqStrategy
@@ -35,12 +34,7 @@ class GiftSystemController(IGiftSystemController):
         self.__webStateRequester = GiftSystemWebStateRequester(self.__onWebStateReceived)
         return
 
-    def init(self):
-        super(GiftSystemController, self).init()
-        g_bootcampEvents.onBootcampFinished += self.__onBootcampFinished
-
     def fini(self):
-        g_bootcampEvents.onBootcampFinished -= self.__onBootcampFinished
         self.__historyRequester.destroy()
         self.__webStateRequester.destroy()
         self.__em.clear()
@@ -81,10 +75,6 @@ class GiftSystemController(IGiftSystemController):
         self.__webStateRequester.stop()
         self.__historyRequester.stop()
         g_clientUpdateManager.removeObjectCallbacks(self)
-
-    def __onBootcampFinished(self):
-        for eventHub in self.__eventHubs.itervalues():
-            eventHub.reset()
 
     def __onGiftSettingsChanged(self, diff):
         if Configs.GIFTS_CONFIG.value in diff:

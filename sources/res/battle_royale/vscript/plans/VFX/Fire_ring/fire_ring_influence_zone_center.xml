@@ -3,30 +3,63 @@
 	<info>
 		<name>VFX/Fire_ring/fire_ring_influence_zone_center</name>
 		<isMacro>false</isMacro>
+		<version>0</version>
 		<aspect>
 			<compatibles>CLIENT</compatibles>
 		</aspect>
 		<blocks>
 			<block>
-				<class>ContextGetSelf</class>
-				<id>ContextGetSelf_1</id>
+				<class>CreateComponent</class>
+				<id>CreateComponent_2</id>
 				<params>
 					<param>
-						CGFGameObjectContext
-						<name>Context Name</name>
+						Lifecycle Effect Spawner
+						<name>Component Type</name>
 						<type>StringT</type>
 					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>StartEffect</name>
+						<const>\particles/Environment/Battle_Royal/Fire_Ring/fire_ring_segment_influence_zone_start.seq\</const>
+					</slot>
+					<slot>
+						<name>SpawnIntoThis</name>
+						<const>\true\</const>
+					</slot>
+					<slot>
+						<name>StartLifetime</name>
+						<const>\0.133333\</const>
+					</slot>
+					<slot>
+						<name>IdleEffect</name>
+						<const>\particles/Environment/Battle_Royal/Fire_Ring/fire_ring_segment_influence_zone_cycle.seq\</const>
+					</slot>
+					<slot>
+						<name>EndEffect</name>
+						<const>\particles/Environment/Battle_Royal/Fire_Ring/fire_ring_segment_influence_zone_end.seq\</const>
+					</slot>
+					<slot>
+						<name>EndLifetime</name>
+						<const>\59.966667\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>RemoveComponent</class>
+				<id>RemoveComponent_1</id>
+				<params>
 					<param>
-						getSelf
-						<name>Member Name</name>
+						Lifecycle Effect Spawner
+						<name>Component Type</name>
 						<type>StringT</type>
 					</param>
 				</params>
 				<slots/>
 			</block>
 			<block>
-				<class>GetComponentProperties</class>
-				<id>GetComponentProperties_1</id>
+				<class>SetComponentProperties</class>
+				<id>SetComponentProperties_1</id>
 				<params>
 					<param>
 						Transform
@@ -37,43 +70,13 @@
 				<slots/>
 			</block>
 			<block>
-				<class>MatrixRotation</class>
-				<id>MatrixRotation_1</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>StartScript</class>
-				<id>StartScript_1</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>MatrixPosition</class>
-				<id>MatrixPosition_1</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>MatrixScale</class>
-				<id>MatrixScale_1</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>CreateMatrix</class>
-				<id>CreateMatrix_1</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>SplitVector</class>
-				<id>SplitVector_1</id>
+				<class>Choice</class>
+				<id>Choice_1</id>
 				<params>
 					<param>
-						Vector3T
-						<name>Value Type</name>
-						<type>TypeT</type>
+						2
+						<name>Output Count</name>
+						<type>IntT</type>
 					</param>
 				</params>
 				<slots/>
@@ -97,24 +100,18 @@
 				<slots>
 					<slot>
 						<name>a</name>
-						<const>\-3.140000\</const>
+						<const>\-3.141592\</const>
 					</slot>
 					<slot>
 						<name>b</name>
-						<const>\3.140000\</const>
+						<const>\3.141592\</const>
 					</slot>
 				</slots>
 			</block>
 			<block>
-				<class>Choice</class>
-				<id>Choice_1</id>
-				<params>
-					<param>
-						2
-						<name>Output Count</name>
-						<type>IntT</type>
-					</param>
-				</params>
+				<class>CreateMatrix</class>
+				<id>CreateMatrix_1</id>
+				<params/>
 				<slots/>
 			</block>
 			<block>
@@ -131,6 +128,71 @@
 						<const>\1\</const>
 					</slot>
 				</slots>
+			</block>
+			<block>
+				<class>StartScript</class>
+				<id>StartScript_1</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>RemoveComponent</class>
+				<id>RemoveComponent_5</id>
+				<params>
+					<param>
+						Particle
+						<name>Component Type</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>SplitVector</class>
+				<id>SplitVector_1</id>
+				<params>
+					<param>
+						Vector3T
+						<name>Value Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>Delay</class>
+				<id>Delay_1</id>
+				<params>
+					<param>
+						StringT
+						<name>Value Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>stack</name>
+						<const>\false\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>GetComponentProperties</class>
+				<id>GetComponentProperties_1</id>
+				<params>
+					<param>
+						Transform
+						<name>Component Type</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>MatrixRotation</class>
+				<id>MatrixRotation_1</id>
+				<params/>
+				<slots/>
 			</block>
 			<block>
 				<class>CreateComponent</class>
@@ -170,23 +232,6 @@
 				</slots>
 			</block>
 			<block>
-				<class>Delay</class>
-				<id>Delay_1</id>
-				<params>
-					<param>
-						StringT
-						<name>Value Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>stack</name>
-						<const>\false\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
 				<class>RandomFloat</class>
 				<id>RandomFloat_2</id>
 				<params/>
@@ -202,354 +247,36 @@
 				</slots>
 			</block>
 			<block>
-				<class>RemoveComponent</class>
-				<id>RemoveComponent_1</id>
-				<params>
-					<param>
-						Lifecycle Effect Spawner
-						<name>Component Type</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>CreateComponent</class>
-				<id>CreateComponent_2</id>
-				<params>
-					<param>
-						Lifecycle Effect Spawner
-						<name>Component Type</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>StartEffect</name>
-						<const>\particles/Environment/Battle_Royal/Fire_Ring/fire_ring_segment_influence_zone_start.seq\</const>
-					</slot>
-					<slot>
-						<name>SpawnIntoThis</name>
-						<const>\true\</const>
-					</slot>
-					<slot>
-						<name>StartLifetime</name>
-						<const>\0.133333\</const>
-					</slot>
-					<slot>
-						<name>IdleEffect</name>
-						<const>\particles/Environment/Battle_Royal/Fire_Ring/fire_ring_segment_influence_zone_cycle.seq\</const>
-					</slot>
-					<slot>
-						<name>EndEffect</name>
-						<const>\particles/Environment/Battle_Royal/Fire_Ring/fire_ring_segment_influence_zone_end.seq\</const>
-					</slot>
-					<slot>
-						<name>EndLifetime</name>
-						<const>\59.966667\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>Variable</class>
-				<id>Variable_1</id>
-				<params>
-					<param>
-						Influence_Zone_Radius
-						<name>Variable Name</name>
-						<type>StringT</type>
-					</param>
-					<param>
-						FloatT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-					<param>
-						false
-						<name>Is Global</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						false
-						<name>Is Const</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						7.000000
-						<name>Initial Value</name>
-						<type>FloatT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>default</name>
-						<const>\7.000000\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>RemoveComponent</class>
-				<id>RemoveComponent_5</id>
-				<params>
-					<param>
-						Particle
-						<name>Component Type</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>Variable</class>
-				<id>Variable_2</id>
-				<params>
-					<param>
-						Main_Radius
-						<name>Variable Name</name>
-						<type>StringT</type>
-					</param>
-					<param>
-						FloatT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-					<param>
-						false
-						<name>Is Global</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						false
-						<name>Is Const</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						30.000000
-						<name>Initial Value</name>
-						<type>FloatT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>default</name>
-						<const>\30.000000\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>Variable</class>
-				<id>Variable_3</id>
-				<params>
-					<param>
-						Num_Zones
-						<name>Variable Name</name>
-						<type>StringT</type>
-					</param>
-					<param>
-						IntT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-					<param>
-						false
-						<name>Is Global</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						false
-						<name>Is Const</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						12
-						<name>Initial Value</name>
-						<type>IntT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>default</name>
-						<const>\12\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>SetComponentProperties</class>
-				<id>SetComponentProperties_1</id>
-				<params>
-					<param>
-						Transform
-						<name>Component Type</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>GetParentOf</class>
-				<id>GetParentOf_1</id>
+				<class>MatrixPosition</class>
+				<id>MatrixPosition_1</id>
 				<params/>
 				<slots/>
 			</block>
 			<block>
-				<class>HasComponent</class>
-				<id>HasComponent_1</id>
+				<class>ContextGetSelf</class>
+				<id>ContextGetSelf_1</id>
 				<params>
 					<param>
-						Influence Zone Equipment
-						<name>Component Type</name>
+						CGFGameObjectContext
+						<name>Context Name</name>
+						<type>StringT</type>
+					</param>
+					<param>
+						getSelf
+						<name>Member Name</name>
 						<type>StringT</type>
 					</param>
 				</params>
 				<slots/>
 			</block>
 			<block>
-				<class>GetComponentProperties</class>
-				<id>GetComponentProperties_2</id>
-				<params>
-					<param>
-						Influence Zone Equipment
-						<name>Component Type</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>SetVariable</class>
-				<id>SetVariable_1</id>
-				<buddy>Variable_1</buddy>
-				<params>
-					<param>
-						FloatT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
+				<class>MatrixScale</class>
+				<id>MatrixScale_1</id>
+				<params/>
 				<slots/>
 			</block>
 		</blocks>
 		<connections>
-			<connection>
-				<from>Delay_1</from>
-				<input>in</input>
-				<to>GetComponentProperties_1</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>ContextGetSelf_1</from>
-				<input>gameObject</input>
-				<to>GetComponentProperties_1</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>GetComponentProperties_1</from>
-				<input>a</input>
-				<to>MatrixRotation_1</to>
-				<output>local</output>
-			</connection>
-			<connection>
-				<from>GetComponentProperties_1</from>
-				<input>a</input>
-				<to>MatrixPosition_1</to>
-				<output>local</output>
-			</connection>
-			<connection>
-				<from>GetComponentProperties_1</from>
-				<input>a</input>
-				<to>MatrixScale_1</to>
-				<output>local</output>
-			</connection>
-			<connection>
-				<from>MatrixPosition_1</from>
-				<input>pos</input>
-				<to>CreateMatrix_1</to>
-				<output>res</output>
-			</connection>
-			<connection>
-				<from>CreateVector_1</from>
-				<input>rotation</input>
-				<to>CreateMatrix_1</to>
-				<output>res</output>
-			</connection>
-			<connection>
-				<from>MatrixScale_1</from>
-				<input>scale</input>
-				<to>CreateMatrix_1</to>
-				<output>res</output>
-			</connection>
-			<connection>
-				<from>MatrixRotation_1</from>
-				<input>a</input>
-				<to>SplitVector_1</to>
-				<output>res</output>
-			</connection>
-			<connection>
-				<from>RandomFloat_1</from>
-				<input>x</input>
-				<to>CreateVector_1</to>
-				<output>res</output>
-			</connection>
-			<connection>
-				<from>SplitVector_1</from>
-				<input>y</input>
-				<to>CreateVector_1</to>
-				<output>y</output>
-			</connection>
-			<connection>
-				<from>SplitVector_1</from>
-				<input>z</input>
-				<to>CreateVector_1</to>
-				<output>z</output>
-			</connection>
-			<connection>
-				<from>SetComponentProperties_1</from>
-				<input>input</input>
-				<to>Choice_1</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>RandomInteger_1</from>
-				<input>index</input>
-				<to>Choice_1</to>
-				<output>res</output>
-			</connection>
-			<connection>
-				<from>Choice_1</from>
-				<input>in</input>
-				<to>CreateComponent_1</to>
-				<output>o1</output>
-			</connection>
-			<connection>
-				<from>ContextGetSelf_1</from>
-				<input>gameObject</input>
-				<to>CreateComponent_1</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>SetVariable_1</from>
-				<input>input</input>
-				<to>Delay_1</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>RandomFloat_2</from>
-				<input>time</input>
-				<to>Delay_1</to>
-				<output>res</output>
-			</connection>
-			<connection>
-				<from>GetComponentProperties_1</from>
-				<input>in</input>
-				<to>RemoveComponent_1</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>ContextGetSelf_1</from>
-				<input>gameObject</input>
-				<to>RemoveComponent_1</to>
-				<output>value</output>
-			</connection>
 			<connection>
 				<from>Choice_1</from>
 				<input>in</input>
@@ -563,15 +290,15 @@
 				<output>value</output>
 			</connection>
 			<connection>
-				<from>StartScript_1</from>
+				<from>GetComponentProperties_1</from>
 				<input>in</input>
-				<to>RemoveComponent_5</to>
+				<to>RemoveComponent_1</to>
 				<output>out</output>
 			</connection>
 			<connection>
 				<from>ContextGetSelf_1</from>
 				<input>gameObject</input>
-				<to>RemoveComponent_5</to>
+				<to>RemoveComponent_1</to>
 				<output>value</output>
 			</connection>
 			<connection>
@@ -593,40 +320,124 @@
 				<output>res</output>
 			</connection>
 			<connection>
+				<from>SetComponentProperties_1</from>
+				<input>input</input>
+				<to>Choice_1</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>RandomInteger_1</from>
+				<input>index</input>
+				<to>Choice_1</to>
+				<output>res</output>
+			</connection>
+			<connection>
+				<from>RandomFloat_1</from>
+				<input>x</input>
+				<to>CreateVector_1</to>
+				<output>res</output>
+			</connection>
+			<connection>
+				<from>SplitVector_1</from>
+				<input>y</input>
+				<to>CreateVector_1</to>
+				<output>y</output>
+			</connection>
+			<connection>
+				<from>SplitVector_1</from>
+				<input>z</input>
+				<to>CreateVector_1</to>
+				<output>z</output>
+			</connection>
+			<connection>
+				<from>MatrixPosition_1</from>
+				<input>pos</input>
+				<to>CreateMatrix_1</to>
+				<output>res</output>
+			</connection>
+			<connection>
+				<from>CreateVector_1</from>
+				<input>rotation</input>
+				<to>CreateMatrix_1</to>
+				<output>res</output>
+			</connection>
+			<connection>
+				<from>MatrixScale_1</from>
+				<input>scale</input>
+				<to>CreateMatrix_1</to>
+				<output>res</output>
+			</connection>
+			<connection>
+				<from>StartScript_1</from>
+				<input>in</input>
+				<to>RemoveComponent_5</to>
+				<output>out</output>
+			</connection>
+			<connection>
 				<from>ContextGetSelf_1</from>
 				<input>gameObject</input>
-				<to>GetParentOf_1</to>
+				<to>RemoveComponent_5</to>
 				<output>value</output>
 			</connection>
 			<connection>
-				<from>GetParentOf_1</from>
-				<input>gameObject</input>
-				<to>HasComponent_1</to>
-				<output>parent</output>
+				<from>MatrixRotation_1</from>
+				<input>a</input>
+				<to>SplitVector_1</to>
+				<output>res</output>
 			</connection>
 			<connection>
 				<from>RemoveComponent_5</from>
-				<input>in</input>
-				<to>GetComponentProperties_2</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>GetParentOf_1</from>
-				<input>gameObject</input>
-				<to>GetComponentProperties_2</to>
-				<output>parent</output>
-			</connection>
-			<connection>
-				<from>GetComponentProperties_2</from>
 				<input>input</input>
-				<to>SetVariable_1</to>
+				<to>Delay_1</to>
 				<output>out</output>
 			</connection>
 			<connection>
-				<from>GetComponentProperties_2</from>
-				<input>value</input>
-				<to>SetVariable_1</to>
-				<output>radius</output>
+				<from>RandomFloat_2</from>
+				<input>time</input>
+				<to>Delay_1</to>
+				<output>res</output>
+			</connection>
+			<connection>
+				<from>Delay_1</from>
+				<input>in</input>
+				<to>GetComponentProperties_1</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>ContextGetSelf_1</from>
+				<input>gameObject</input>
+				<to>GetComponentProperties_1</to>
+				<output>value</output>
+			</connection>
+			<connection>
+				<from>GetComponentProperties_1</from>
+				<input>a</input>
+				<to>MatrixRotation_1</to>
+				<output>local</output>
+			</connection>
+			<connection>
+				<from>Choice_1</from>
+				<input>in</input>
+				<to>CreateComponent_1</to>
+				<output>o1</output>
+			</connection>
+			<connection>
+				<from>ContextGetSelf_1</from>
+				<input>gameObject</input>
+				<to>CreateComponent_1</to>
+				<output>value</output>
+			</connection>
+			<connection>
+				<from>GetComponentProperties_1</from>
+				<input>a</input>
+				<to>MatrixPosition_1</to>
+				<output>local</output>
+			</connection>
+			<connection>
+				<from>GetComponentProperties_1</from>
+				<input>a</input>
+				<to>MatrixScale_1</to>
+				<output>local</output>
 			</connection>
 		</connections>
 		<macros/>

@@ -23,6 +23,8 @@ package net.wg.gui.battle.random.views.fragCorrelationBar
    public class FragCorrelationBar extends FragCorrelationBarMeta implements IFragCorrelationBarMeta, IBattleComponentDataController
    {
       
+      private static const ZERO_STRING:String = "0";
+      
       private static const FRAG_CORRELATION_WIN:String = "FragCorrelationWin";
       
       private static const FRAG_CORRELATION_LOSE:String = "FragCorrelationLoose";
@@ -229,6 +231,8 @@ package net.wg.gui.battle.random.views.fragCorrelationBar
       
       public function resetFrags() : void
       {
+         this.allyTeamFragsField.text = ZERO_STRING;
+         this.enemyTeamFragsField.text = ZERO_STRING;
       }
       
       public function setArenaInfo(param1:IDAAPIDataClass) : void

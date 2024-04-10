@@ -123,8 +123,14 @@ msgstr "Show what you can do!"
 msgid "banner/infoSmall/disabled"
 msgstr "Wait for Prime Time"
 
-msgid "banner/season"
+msgid "banner/season/first"
+msgstr "Azure Pegasus"
+
+msgid "banner/season/second"
 msgstr "Crimson Pegasus"
+
+msgid "banner/season/third"
+msgstr "Jade Pegasus"
 
 msgid "banner/seasonDate/seasonLasts"
 msgstr "%(season)s, until %(month)s %(day)s"
@@ -710,39 +716,6 @@ msgstr "Rating Points"
 msgid "membersWindow/memberCountDropdown/description"
 msgstr "Players in the Platoon"
 
-msgid "modifier/formattedValueType/nullishDeviation"
-msgstr "0%"
-
-msgid "modifier/formattedValueType/nullishDispersion"
-msgstr "–"
-
-msgid "modifier/name/equipmentCooldown"
-msgstr "Consumable cooldown time"
-
-msgid "modifier/name/shotDispersionRadius"
-msgstr "Bonus to dispersion at 100 m"
-
-msgid "modifier/name/vehicleHealth"
-msgstr "Vehicle durability"
-
-msgid "modifier/name/visionMinRadius"
-msgstr "Proximity spotting radius"
-
-msgid "modifier/name/visionTime"
-msgstr "Time remaining visible"
-
-msgid "modifier/valueType/deviation"
-msgstr "+/-%(deviation)s%"
-
-msgid "modifier/valueType/meters"
-msgstr "%(meters)s m"
-
-msgid "modifier/valueType/percentage"
-msgstr "%(percentage)s%"
-
-msgid "modifier/valueType/seconds"
-msgstr "%(seconds)s s"
-
 msgid "noVehicles/howTo/premium"
 msgstr "Use WoT Premium Account"
 
@@ -1252,8 +1225,14 @@ msgstr "Go to Purchase"
 msgid "rewardsScreen/description/qualificationEnded"
 msgstr "ONSLAUGHT. QUALIFICATION COMPLETED"
 
-msgid "rewardsScreen/description/season"
+msgid "rewardsScreen/description/season/first"
+msgstr "ONSLAUGHT SEASON OF THE AZURE PEGASUS"
+
+msgid "rewardsScreen/description/season/second"
 msgstr "ONSLAUGHT SEASON OF THE CRIMSON PEGASUS"
+
+msgid "rewardsScreen/description/season/third"
+msgstr "ONSLAUGHT SEASON OF THE JADE PEGASUS"
 
 msgid "rewardsScreen/notice/subTitle"
 msgstr ""
@@ -1700,6 +1679,18 @@ msgstr "Lucky Chip"
 msgid "tournament/battleResult/personal/tooltip/descr"
 msgstr "Rating Points cannot be earned or lost in a Tournament."
 
+msgid "tournamentsWidget/heading"
+msgstr "Onslaught Tournaments"
+
+msgid "tournamentsWidget/text/active"
+msgstr "Don't miss the action!"
+
+msgid "tournamentsWidget/text/registration"
+msgstr "Registration is now open!"
+
+msgid "training/battleResult/personal/tooltip/descr"
+msgstr "Rating Points cannot be earned in Onslaught Training."
+
 msgid "unit/message/modeOffline"
 msgstr "Unable to join the battle: Database error."
 
@@ -1764,44 +1755,58 @@ msgid "whatsNewButtonLabel"
 msgstr "SEASON UPDATES"
 
 msgid "whatsNewView/banner/title/large"
-msgstr "SEASON OF THE CRIMSON PEGASUS"
+msgstr "SEASON OF THE JADE PEGASUS"
 
 msgid "whatsNewView/banner/title/small"
 msgstr "ONSLAUGHT. WHAT'S NEW?"
 
 msgid "whatsNewView/button/ok"
-msgstr "Sir, Yes, Sir!"
+msgstr "Let's Rock!"
 
 msgid "whatsNewView/intro/description"
 msgstr ""
-"Rise through the ranks to get access to unique items for bonds and increased"
-" discounts."
+"This season marks your last chance to claim valuable rewards, including the "
+"exclusive Hurricane Tier X medium tank and its fearless crew, improved "
+"equipment to select from, a progressive 2D style, and more. Don't miss out —"
+" your victory awaits on the battlefield!"
 
 msgid "whatsNewView/intro/heading"
-msgstr "Onslaught Shop"
-
-msgid "whatsNewView/mapChanges/addedMaps"
-msgstr "New Maps:"
+msgstr ""
+"Seize the final moments\n"
+"of the Year of the Pegasus!"
 
 msgid "whatsNewView/mapChanges/heading"
 msgstr "Maps"
 
-msgid "whatsNewView/mapChanges/removedMaps"
-msgstr "Excluded maps:"
-
-msgid "whatsNewView/modifiers/added"
-msgstr "Added Modifiers"
-
-msgid "whatsNewView/modifiers/description"
+msgid "whatsNewView/sectionDescription/shopUpdates"
 msgstr ""
-"More mode-specific modifiers that change the parameters of the vehicle have "
-"been added."
+"A new item of improved equipment, Innovative Targeting, is available for "
+"purchase after you reach the Bronze rank"
 
-msgid "whatsNewView/modifiers/heading"
-msgstr "Onslaught Modifiers"
+msgid "whatsNewView/sectionDescription/tournaments"
+msgstr ""
+"Participate in season tournaments to achieve glory and earn valuable "
+"rewards."
 
-msgid "whatsNewView/modifiers/unchanged"
-msgstr "Unchanged Modifiers"
+msgid "whatsNewView/sectionDescription/trainingRoom"
+msgstr ""
+"Onslaught maps with corresponding game rules are now available in Training "
+"Rooms."
+
+msgid "whatsNewView/sectionHeading/shopUpdates"
+msgstr "Onslaught Shop Updates"
+
+msgid "whatsNewView/sectionHeading/tournaments"
+msgstr "Tournaments"
+
+msgid "whatsNewView/sectionHeading/trainingRoom"
+msgstr "Training Room"
+
+msgid "whatsNewView/stamp/removed"
+msgstr "EXCLUDED"
+
+msgid "whatsNewView/stamp/underDevelopment"
+msgstr "UNDER REDEVELOPMENT"
 
 msgid "whatsNewView/tag/changed"
 msgstr "Changed"
@@ -1809,14 +1814,14 @@ msgstr "Changed"
 msgid "whatsNewView/tag/new"
 msgstr "New"
 
-msgid "whatsNewView/tag/removed"
-msgstr "REMOVED"
+msgid "whatsNewView/tag/returned"
+msgstr "Returned"
+
+msgid "whatsNewView/tag/revamped"
+msgstr "Revamped"
 
 msgid "whatsNewView/tag/seasonUpdate"
 msgstr "Seasonal Update"
-
-msgid "whatsNewView/tag/underDevelopment"
-msgstr "UNDER REDEVELOPMENT"
 
 msgid "whatsNewView/vehiclesForRent/heading"
 msgstr "Rental Vehicles"
@@ -1824,8 +1829,35 @@ msgstr "Rental Vehicles"
 msgid "whatsNewView/watchVideo"
 msgstr "Watch Video"
 
-msgid "yearlyRewards/banner/willReceived"
-msgstr "Rewards will be added at the end of the Ranked Year"
+msgid "yearRewards/tooltip/selectableReward/list"
+msgstr ""
+"• Innovative Targeting\n"
+"• Improved Final Drive\n"
+"• Improved Compressor\n"
+"• Increased Shell Resistance\n"
+"• Improved Configuration\n"
+"• Experimental Optics\n"
+"• Innovative Loading System\n"
+"• Venting System\n"
+"• Wear-Resistant Gun Laying Drive"
+
+msgid "yearRewards/tooltip/selectableReward/title"
+msgstr "Improved Equipment"
+
+msgid "yearlyRewards/banner/default"
+msgstr "Rewards are delivered at the end of the third season."
+
+msgid "yearlyRewards/banner/notAccruedRewards"
+msgstr "Rewards will be delivered soon. Please stand by."
+
+msgid "yearlyRewards/banner/rewardsReceived"
+msgstr "Annual Reward received. See you next year!"
+
+msgid "yearlyRewards/banner/rewardsSelectionAvailable"
+msgstr "You have improved equipment to select from"
+
+msgid "yearlyRewards/banner/selectButtonLabel"
+msgstr "Choose Reward"
 
 msgid "yearlyRewards/description/achieved"
 msgstr ""
@@ -1834,24 +1866,6 @@ msgstr ""
 msgid "yearlyRewards/description/current"
 msgstr ""
 "You will receive 1%(seasonPointIcon)s for each rank at the end of the Season"
-
-msgid "yearlyRewards/main/fifth"
-msgstr "Champion Camouflage"
-
-msgid "yearlyRewards/main/first"
-msgstr "Iron Camouflage"
-
-msgid "yearlyRewards/main/fourth"
-msgstr "Gold Camouflage"
-
-msgid "yearlyRewards/main/second"
-msgstr "Bronze Camouflage"
-
-msgid "yearlyRewards/main/sixth"
-msgstr "Legend Camouflage"
-
-msgid "yearlyRewards/main/third"
-msgstr "Silver Camouflage"
 
 msgid "yearlyRewards/rank/achieved"
 msgstr "Rank achieved: %(rank)s"
@@ -1869,7 +1883,7 @@ msgid "yearlyRewards/rewardsState/notAvailable"
 msgstr "Reward not received"
 
 msgid "yearlyRewards/rewardsState/possible"
-msgstr "You are a contender to receive this reward"
+msgstr "Potential reward"
 
 msgid "yearlyRewards/rewardsState/tooltip/guaranteed"
 msgstr "You are guaranteed to receive this reward at the end of the year."
@@ -1892,266 +1906,6 @@ msgstr ""
 "%(vehicle)s and\n"
 "%(camouflageName)s"
 
-msgid "yearlyRewards/vehicle"
-msgstr "Hurricane"
-
-msgid "yearlyRewards/vehicleTooltip/body"
-msgstr ""
-"A unique vehicle awarded for achievements within the Year of the Pegasus."
-
-msgid "yearlyRewards/vehicleTooltip/header"
-msgstr "Hurricane"
-
-msgid "yearlyRewardsTooltip/additional/fifth_1/body"
-msgstr "A commemorative badge awarded for collecting 15 Pegasus Colors."
-
-msgid "yearlyRewardsTooltip/additional/fifth_1/header"
-msgstr "Onslaught 2023–2024: Champion"
-
-msgid "yearlyRewardsTooltip/additional/fifth_2/body"
-msgstr ""
-"You can select three pieces of improved equipment as a reward. Each item can be received only once:\n"
-" • Venting System\n"
-" • Stabilizing Equipment System\n"
-" • Innovative Loading System\n"
-" • Wear-Resistant Gun Laying Drive\n"
-" • Experimental Optics\n"
-" • Improved Configuration\n"
-" • Improved Compressor\n"
-" • Increased Shell Resistance\n"
-" • Improved Final Drive"
-
-msgid "yearlyRewardsTooltip/additional/fifth_2/header"
-msgstr "Improved Equipment"
-
-msgid "yearlyRewardsTooltip/additional/fifth_3/body"
-msgstr ""
-"A special 2D style awarded for achievements within the Year of the Pegasus."
-
-msgid "yearlyRewardsTooltip/additional/fifth_3/header"
-msgstr "Heavenly Horse Style"
-
-msgid "yearlyRewardsTooltip/additional/fifth_4/body"
-msgstr ""
-"Awarded in the Onslaught mode for collecting Pegasus Colors.\n"
-"\n"
-"3 – Iron Pegasus\n"
-"6 – Bronze Pegasus\n"
-"9 – Silver Pegasus\n"
-"12 – Gold Pegasus\n"
-"15 – Year of the Pegasus Champion\n"
-"18 – Year of the Pegasus Legend\n"
-"\n"
-"You will receive one of the medals depending on the number of Pegasus Colors you have collected."
-
-msgid "yearlyRewardsTooltip/additional/fifth_4/header"
-msgstr "Year of the Pegasus Champion Medal"
-
-msgid "yearlyRewardsTooltip/additional/first_1/body"
-msgstr ""
-"A special 2D style awarded for achievements within the Year of the Pegasus."
-
-msgid "yearlyRewardsTooltip/additional/first_1/header"
-msgstr "Heavenly Horse Style"
-
-msgid "yearlyRewardsTooltip/additional/first_2/body"
-msgstr ""
-"Awarded in the Onslaught mode for collecting Pegasus Colors.\n"
-"\n"
-"3 – Iron Pegasus\n"
-"6 – Bronze Pegasus\n"
-"9 – Silver Pegasus\n"
-"12 – Gold Pegasus\n"
-"15 – Year of the Pegasus Champion\n"
-"18 – Year of the Pegasus Legend\n"
-"\n"
-"You will receive one of the medals depending on the number of Pegasus Colors you have collected."
-
-msgid "yearlyRewardsTooltip/additional/first_2/header"
-msgstr "Iron Pegasus Medal"
-
-msgid "yearlyRewardsTooltip/additional/fourth_1/body"
-msgstr ""
-"Unique crew trained to 100% with the Brothers in Arms perk and enough XP to "
-"train two other perks."
-
-msgid "yearlyRewardsTooltip/additional/fourth_1/header"
-msgstr "Unique Crew"
-
-msgid "yearlyRewardsTooltip/additional/fourth_2/body"
-msgstr ""
-"A special 2D style awarded for achievements within the Year of the Pegasus."
-
-msgid "yearlyRewardsTooltip/additional/fourth_2/header"
-msgstr "Heavenly Horse Style"
-
-msgid "yearlyRewardsTooltip/additional/fourth_3/body"
-msgstr ""
-"Awarded in the Onslaught mode for collecting Pegasus Colors.\n"
-"\n"
-"3 – Iron Pegasus\n"
-"6 – Bronze Pegasus\n"
-"9 – Silver Pegasus\n"
-"12 – Gold Pegasus\n"
-"15 – Year of the Pegasus Champion\n"
-"18 – Year of the Pegasus Legend\n"
-"\n"
-"You will receive one of the medals depending on the number of Pegasus Colors you have collected."
-
-msgid "yearlyRewardsTooltip/additional/fourth_3/header"
-msgstr "Gold Pegasus Medal"
-
-msgid "yearlyRewardsTooltip/additional/second_1/body"
-msgstr ""
-"You can select one piece of improved equipment as a reward. Each item can be received only once:\n"
-" • Venting System\n"
-" • Stabilizing Equipment System\n"
-" • Innovative Loading System\n"
-" • Wear-Resistant Gun Laying Drive\n"
-" • Experimental Optics\n"
-" • Improved Configuration\n"
-" • Improved Compressor\n"
-" • Increased Shell Resistance\n"
-" • Improved Final Drive"
-
-msgid "yearlyRewardsTooltip/additional/second_1/header"
-msgstr "Improved Equipment"
-
-msgid "yearlyRewardsTooltip/additional/second_2/body"
-msgstr ""
-"A special 2D style awarded for achievements within the Year of the Pegasus."
-
-msgid "yearlyRewardsTooltip/additional/second_2/header"
-msgstr "Heavenly Horse Style"
-
-msgid "yearlyRewardsTooltip/additional/second_3/body"
-msgstr ""
-"Awarded in the Onslaught mode for collecting Pegasus Colors.\n"
-"\n"
-"3 – Iron Pegasus\n"
-"6 – Bronze Pegasus\n"
-"9 – Silver Pegasus\n"
-"12 – Gold Pegasus\n"
-"15 – Year of the Pegasus Champion\n"
-"18 – Year of the Pegasus Legend\n"
-"\n"
-"You will receive one of the medals depending on the number of Pegasus Colors you have collected."
-
-msgid "yearlyRewardsTooltip/additional/second_3/header"
-msgstr "Bronze Pegasus Medal"
-
-msgid "yearlyRewardsTooltip/additional/sixth_1/body"
-msgstr ""
-"A special nickname stripe awarded to the best players within the Year of the"
-" Pegasus in Onslaught."
-
-msgid "yearlyRewardsTooltip/additional/sixth_1/header"
-msgstr "Legend of the Pegasus"
-
-msgid "yearlyRewardsTooltip/additional/sixth_2/body"
-msgstr "A commemorative badge awarded for collecting 18 Pegasus Colors."
-
-msgid "yearlyRewardsTooltip/additional/sixth_2/header"
-msgstr "Onslaught 2023–2024: Legend"
-
-msgid "yearlyRewardsTooltip/additional/sixth_3/body"
-msgstr ""
-"A special 2D style awarded for achievements within the Year of the Pegasus."
-
-msgid "yearlyRewardsTooltip/additional/sixth_3/header"
-msgstr "Heavenly Horse Style"
-
-msgid "yearlyRewardsTooltip/additional/sixth_4/body"
-msgstr ""
-"Awarded in the Onslaught mode for collecting Pegasus Colors.\n"
-"\n"
-"3 – Iron Pegasus\n"
-"6 – Bronze Pegasus\n"
-"9 – Silver Pegasus\n"
-"12 – Gold Pegasus\n"
-"15 – Year of the Pegasus Champion\n"
-"18 – Year of the Pegasus Legend\n"
-"\n"
-"You will receive one of the medals depending on the number of Pegasus Colors you have collected."
-
-msgid "yearlyRewardsTooltip/additional/sixth_4/header"
-msgstr "Year of the Pegasus Legend Medal"
-
-msgid "yearlyRewardsTooltip/additional/third_1/body"
-msgstr ""
-"You can select two pieces of improved equipment as a reward. Each item can be received only once:\n"
-" • Venting System\n"
-" • Stabilizing Equipment System\n"
-" • Innovative Loading System\n"
-" • Wear-Resistant Gun Laying Drive\n"
-" • Experimental Optics\n"
-" • Improved Configuration\n"
-" • Improved Compressor\n"
-" • Increased Shell Resistance\n"
-" • Improved Final Drive"
-
-msgid "yearlyRewardsTooltip/additional/third_1/header"
-msgstr "Improved Equipment"
-
-msgid "yearlyRewardsTooltip/additional/third_2/body"
-msgstr ""
-"A special 2D style awarded for achievements within the Year of the Pegasus."
-
-msgid "yearlyRewardsTooltip/additional/third_2/header"
-msgstr "Heavenly Horse Style"
-
-msgid "yearlyRewardsTooltip/additional/third_3/body"
-msgstr ""
-"Awarded in the Onslaught mode for collecting Pegasus Colors.\n"
-"\n"
-"3 – Iron Pegasus\n"
-"6 – Bronze Pegasus\n"
-"9 – Silver Pegasus\n"
-"12 – Gold Pegasus\n"
-"15 – Year of the Pegasus Champion\n"
-"18 – Year of the Pegasus Legend\n"
-"\n"
-"You will receive one of the medals depending on the number of Pegasus Colors you have collected."
-
-msgid "yearlyRewardsTooltip/additional/third_3/header"
-msgstr "Silver Pegasus Medal"
-
-msgid "yearlyRewardsTooltip/main/fifth/body"
-msgstr "A camouflage pattern awarded for collecting 15 Pegasus Colors."
-
-msgid "yearlyRewardsTooltip/main/fifth/header"
-msgstr "Champion Camouflage"
-
-msgid "yearlyRewardsTooltip/main/first/body"
-msgstr "A camouflage pattern awarded for collecting 3 Pegasus Colors."
-
-msgid "yearlyRewardsTooltip/main/first/header"
-msgstr "Iron Camouflage"
-
-msgid "yearlyRewardsTooltip/main/fourth/body"
-msgstr "A camouflage pattern awarded for collecting 12 Pegasus Colors."
-
-msgid "yearlyRewardsTooltip/main/fourth/header"
-msgstr "Gold Camouflage"
-
-msgid "yearlyRewardsTooltip/main/second/body"
-msgstr "A camouflage pattern awarded for collecting 6 Pegasus Colors."
-
-msgid "yearlyRewardsTooltip/main/second/header"
-msgstr "Bronze Camouflage"
-
-msgid "yearlyRewardsTooltip/main/sixth/body"
-msgstr "A camouflage pattern awarded for collecting 18 Pegasus Colors."
-
-msgid "yearlyRewardsTooltip/main/sixth/header"
-msgstr "Legend Camouflage"
-
-msgid "yearlyRewardsTooltip/main/third/body"
-msgstr "A camouflage pattern awarded for collecting 9 Pegasus Colors."
-
-msgid "yearlyRewardsTooltip/main/third/header"
-msgstr "Silver Camouflage"
-
 msgid "yearlyStatistics/battles"
 msgstr "Battles (Solo/Platoon)"
 
@@ -2159,7 +1913,7 @@ msgid "yearlyStatistics/generationOfStatistics"
 msgstr "Calculating Season statistics..."
 
 msgid "yearlyStatistics/goToSeasonStatistics"
-msgstr "%(icon)s To Season Statistics"
+msgstr "%(icon)sTo Season Statistics"
 
 msgid "yearlyStatistics/rankStatus/notReceived"
 msgstr "No rank"

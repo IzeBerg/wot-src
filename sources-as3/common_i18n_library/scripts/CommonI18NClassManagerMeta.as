@@ -15,8 +15,6 @@ package
       
       public static const BATTLE_ROYALE:Class = BATTLE_ROYALE;
       
-      public static const BOOTCAMP:Class = BOOTCAMP;
-      
       public static const CHAT:Class = CHAT;
       
       public static const CLANS:Class = CLANS;
@@ -36,6 +34,8 @@ package
       public static const CREW_SKINS:Class = CREW_SKINS;
       
       public static const CYBERSPORT:Class = CYBERSPORT;
+      
+      public static const DEATH_CAM:Class = DEATH_CAM;
       
       public static const DEMOUNT_KIT:Class = DEMOUNT_KIT;
       

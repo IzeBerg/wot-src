@@ -1,4 +1,4 @@
-import BigWorld, typing, SoundGroups
+import BigWorld, typing, logging, SoundGroups
 from account_helpers import AccountSettings
 from account_helpers.AccountSettings import GUI_START_BEHAVIOR
 from account_helpers.settings_core.settings_constants import GuiSettingsBehavior
@@ -15,6 +15,7 @@ from gui.impl.lobby.comp7 import comp7_shared
 from gui.impl.lobby.comp7.tooltips.season_point_tooltip import SeasonPointTooltip
 from gui.impl.pub import ViewImpl
 from gui.impl.pub.lobby_window import LobbyNotificationWindow
+from gui.shared.formatters import calculateWinRate
 from helpers import dependency
 from skeletons.account_helpers.settings_core import ISettingsCore
 from skeletons.gui.game_control import IComp7Controller
@@ -23,20 +24,22 @@ from skeletons.gui.web import IWebController
 if typing.TYPE_CHECKING:
     from gui.shared.gui_items.dossier.stats import AccountComp7StatsBlock
 SOUND_NAME = 'comp_7_season_statistics_screen_appear'
+_logger = logging.getLogger(__name__)
 
 class SeasonStatistics(ViewImpl):
-    __slots__ = ('__summaryStatistics', '__seasonNumber')
+    __slots__ = ('__summaryStatistics', '__seasonNumber', '__saveViewing')
     __comp7Controller = dependency.descriptor(IComp7Controller)
     __itemsCache = dependency.descriptor(IItemsCache)
     __webCtrl = dependency.descriptor(IWebController)
     __settingsCore = dependency.descriptor(ISettingsCore)
 
-    def __init__(self, layoutID, seasonNumber):
+    def __init__(self, layoutID, seasonNumber, saveViewing):
         settings = ViewSettings(layoutID)
         settings.flags = ViewFlags.VIEW
         settings.model = SeasonStatisticsModel()
         super(SeasonStatistics, self).__init__(settings)
         self.__seasonNumber = seasonNumber
+        self.__saveViewing = saveViewing
         self.__summaryStatistics = [
          BattlesStat,
          DamageStat,
@@ -66,11 +69,15 @@ class SeasonStatistics(ViewImpl):
 
     def __addListeners(self):
         self.viewModel.onClose += self.__onClose
+        self.__comp7Controller.onEntitlementsUpdated += self.__updateData
 
     def __removeListeners(self):
         self.viewModel.onClose -= self.__onClose
+        self.__comp7Controller.onEntitlementsUpdated -= self.__updateData
 
     def __setComp7SeasonStasisticsShown(self):
+        if not self.__saveViewing:
+            return
         defaults = AccountSettings.getFilterDefault(GUI_START_BEHAVIOR)
         stateFlags = self.__settingsCore.serverSettings.getSection(GUI_START_BEHAVIOR, defaults)
         stateFlags[GuiSettingsBehavior.COMP7_SEASON_STATISTICS_SHOWN] = True
@@ -128,7 +135,7 @@ class SeasonStatistics(ViewImpl):
             vehicle = self.__itemsCache.items.getVehicleCopyByCD(vehicleCD)
             statistic = VehicleStatisticsModel()
             statistic.setBattles(vehicleStats.battlesCount)
-            statistic.setWinsPercent(vehicleStats.wins * 100 / vehicleStats.battlesCount)
+            statistic.setWinsPercent(calculateWinRate(vehicleStats.wins, vehicleStats.battlesCount))
             fillVehicleModel(statistic.vehicleInfo, vehicle)
             viewModels.append(statistic)
 
@@ -168,8 +175,9 @@ class BattlesStat(SummarySeasonStat):
         return self._seasonStats.getBattlesCount()
 
     def additionalStat(self):
-        battlesCount = self._seasonStats.getBattlesCount()
-        return self._seasonStats.getWinsCount() * 100 / battlesCount
+        battles = self._seasonStats.getBattlesCount()
+        wins = self._seasonStats.getWinsCount()
+        return int(calculateWinRate(wins, battles))
 
 
 class DamageStat(SummarySeasonStat):
@@ -231,5 +239,5 @@ class WinSeriesStat(SummarySeasonStat):
 class SeasonStatisticsWindow(LobbyNotificationWindow):
     __slots__ = ()
 
-    def __init__(self, seasonNumber, parent=None):
-        super(SeasonStatisticsWindow, self).__init__(wndFlags=WindowFlags.WINDOW_FULLSCREEN | WindowFlags.WINDOW, content=SeasonStatistics(layoutID=R.views.lobby.comp7.SeasonStatistics(), seasonNumber=seasonNumber), parent=parent)
+    def __init__(self, seasonNumber, saveViewing, parent=None):
+        super(SeasonStatisticsWindow, self).__init__(wndFlags=WindowFlags.WINDOW_FULLSCREEN | WindowFlags.WINDOW, content=SeasonStatistics(layoutID=R.views.lobby.comp7.SeasonStatistics(), seasonNumber=seasonNumber, saveViewing=saveViewing), parent=parent)

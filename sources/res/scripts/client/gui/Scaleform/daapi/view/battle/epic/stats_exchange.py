@@ -59,9 +59,6 @@ class EpicStatisticsDataController(EpicBattleStatisticDataControllerMeta):
         ctrl = self.sessionProvider.dynamic.respawn
         if ctrl is not None:
             ctrl.onPlayerRespawnLivesUpdated += self.__onPlayerStatsUpdated
-        specCtrl = self.sessionProvider.dynamic.spectator
-        if specCtrl is not None:
-            specCtrl.onSpectatedVehicleChanged += self.__onSpectatedVehicleChanged
         return
 
     def stopControl(self):
@@ -76,9 +73,6 @@ class EpicStatisticsDataController(EpicBattleStatisticDataControllerMeta):
             ctrl = self.sessionProvider.dynamic.respawn
             if ctrl is not None:
                 ctrl.onPlayerRespawnLivesUpdated -= self.__onPlayerStatsUpdated
-            specCtrl = self.sessionProvider.dynamic.spectator
-            if specCtrl is not None:
-                specCtrl.onSpectatedVehicleChanged -= self.__onSpectatedVehicleChanged
             super(EpicStatisticsDataController, self).stopControl()
             return
 
@@ -137,13 +131,6 @@ class EpicStatisticsDataController(EpicBattleStatisticDataControllerMeta):
                'rank': rank}
             self.as_updateEpicPlayerStatsS(playerData)
             return
-
-    def __onSpectatedVehicleChanged(self, vehicleID):
-        if vehicleID is None:
-            arenaDP = self._battleCtx.getArenaDP()
-            previousID = self._personalInfo.changeSelected(-1)
-            self.invalidatePlayerStatus(0, arenaDP.getVehicleInfo(previousID), arenaDP)
-        return
 
     def as_setFragsS(self, data):
         self.as_setEpicVehiclesStatsS(data)

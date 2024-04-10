@@ -6,9 +6,9 @@ package net.wg.infrastructure.base.meta
    {
        
       
-      function as_setInitData(param1:String, param2:Array, param3:Array) : void;
+      function as_setInitData(param1:String, param2:Array, param3:Array, param4:int) : void;
       
-      function as_setPlayerState(param1:int, param2:Boolean, param3:Boolean, param4:int, param5:String, param6:String, param7:String) : void;
+      function as_setPlayerState(param1:int, param2:int, param3:int, param4:int, param5:Boolean, param6:Boolean, param7:int, param8:String, param9:String, param10:String) : void;
       
       function as_setPlayerStatus(param1:int, param2:Boolean, param3:Boolean, param4:Boolean) : void;
       

@@ -42,6 +42,7 @@ package net.wg.gui.battle.battleRoyale.views.components.respawnMessages
       {
          super.configUI();
          App.stageSizeMgr.register(this);
+         mouseEnabled = mouseChildren = false;
       }
       
       override protected function draw() : void

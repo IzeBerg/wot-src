@@ -703,11 +703,15 @@
 		</ComponentPool>
 		<ComponentPool>
 			<type>SequenceComponent</type>
-			<version>1</version>
+			<version>2</version>
 			<component>
 				<objectIndex>0</objectIndex>
 				<flags>35</flags>
 				<config>
+					<property>
+						<name>loop</name>
+						<value>0</value>
+					</property>
 					<property>
 						<name>autoStart</name>
 						<value>1</value>
@@ -745,13 +749,6 @@
 										<value>60</value>
 									</property>
 									<property>
-										<name>duration</name>
-										<value>
-											57.9
-											<!--BW_String-->
-										</value>
-									</property>
-									<property>
 										<name>parameters</name>
 										<collection/>
 									</property>
@@ -773,13 +770,6 @@
 									<property>
 										<name>end</name>
 										<value>60</value>
-									</property>
-									<property>
-										<name>duration</name>
-										<value>
-											57.8
-											<!--BW_String-->
-										</value>
 									</property>
 									<property>
 										<name>parameters</name>
@@ -805,13 +795,6 @@
 										<value>60</value>
 									</property>
 									<property>
-										<name>duration</name>
-										<value>
-											57.7
-											<!--BW_String-->
-										</value>
-									</property>
-									<property>
 										<name>parameters</name>
 										<collection/>
 									</property>
@@ -833,13 +816,6 @@
 									<property>
 										<name>end</name>
 										<value>60</value>
-									</property>
-									<property>
-										<name>duration</name>
-										<value>
-											57.6
-											<!--BW_String-->
-										</value>
 									</property>
 									<property>
 										<name>parameters</name>
@@ -865,13 +841,6 @@
 										<value>60</value>
 									</property>
 									<property>
-										<name>duration</name>
-										<value>
-											57.5
-											<!--BW_String-->
-										</value>
-									</property>
-									<property>
 										<name>parameters</name>
 										<collection/>
 									</property>
@@ -893,13 +862,6 @@
 									<property>
 										<name>end</name>
 										<value>60</value>
-									</property>
-									<property>
-										<name>duration</name>
-										<value>
-											57.4
-											<!--BW_String-->
-										</value>
 									</property>
 									<property>
 										<name>parameters</name>
@@ -925,13 +887,6 @@
 										<value>60</value>
 									</property>
 									<property>
-										<name>duration</name>
-										<value>
-											57.3
-											<!--BW_String-->
-										</value>
-									</property>
-									<property>
 										<name>parameters</name>
 										<collection/>
 									</property>
@@ -953,13 +908,6 @@
 									<property>
 										<name>end</name>
 										<value>60</value>
-									</property>
-									<property>
-										<name>duration</name>
-										<value>
-											57.2
-											<!--BW_String-->
-										</value>
 									</property>
 									<property>
 										<name>parameters</name>
@@ -985,13 +933,6 @@
 										<value>60</value>
 									</property>
 									<property>
-										<name>duration</name>
-										<value>
-											57.1
-											<!--BW_String-->
-										</value>
-									</property>
-									<property>
 										<name>parameters</name>
 										<collection/>
 									</property>
@@ -1010,10 +951,6 @@
 									<property>
 										<name>end</name>
 										<value>60</value>
-									</property>
-									<property>
-										<name>duration</name>
-										<value>57</value>
 									</property>
 									<property>
 										<name>parameters</name>
@@ -1039,13 +976,6 @@
 										<value>60</value>
 									</property>
 									<property>
-										<name>duration</name>
-										<value>
-											56.9
-											<!--BW_String-->
-										</value>
-									</property>
-									<property>
 										<name>parameters</name>
 										<collection/>
 									</property>
@@ -1067,13 +997,6 @@
 									<property>
 										<name>end</name>
 										<value>60</value>
-									</property>
-									<property>
-										<name>duration</name>
-										<value>
-											56.8
-											<!--BW_String-->
-										</value>
 									</property>
 									<property>
 										<name>parameters</name>
@@ -1099,13 +1022,6 @@
 										<value>60</value>
 									</property>
 									<property>
-										<name>duration</name>
-										<value>
-											58.5
-											<!--BW_String-->
-										</value>
-									</property>
-									<property>
 										<name>parameters</name>
 										<collection/>
 									</property>
@@ -1127,13 +1043,6 @@
 									<property>
 										<name>end</name>
 										<value>60</value>
-									</property>
-									<property>
-										<name>duration</name>
-										<value>
-											58.4
-											<!--BW_String-->
-										</value>
 									</property>
 									<property>
 										<name>parameters</name>
@@ -1159,13 +1068,6 @@
 										<value>60</value>
 									</property>
 									<property>
-										<name>duration</name>
-										<value>
-											58.3
-											<!--BW_String-->
-										</value>
-									</property>
-									<property>
 										<name>parameters</name>
 										<collection/>
 									</property>
@@ -1187,13 +1089,6 @@
 									<property>
 										<name>end</name>
 										<value>60</value>
-									</property>
-									<property>
-										<name>duration</name>
-										<value>
-											58.2
-											<!--BW_String-->
-										</value>
 									</property>
 									<property>
 										<name>parameters</name>
@@ -1219,23 +1114,12 @@
 										<value>60</value>
 									</property>
 									<property>
-										<name>duration</name>
-										<value>
-											58.1
-											<!--BW_String-->
-										</value>
-									</property>
-									<property>
 										<name>parameters</name>
 										<collection/>
 									</property>
 								</object>
 							</item>
 						</collection>
-					</property>
-					<property>
-						<name>time</name>
-						<value>0</value>
 					</property>
 				</config>
 			</component>

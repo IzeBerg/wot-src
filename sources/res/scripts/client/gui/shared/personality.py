@@ -33,7 +33,7 @@ from skeletons.gameplay import IGameplayLogic, PlayerEventID
 from skeletons.gui.app_loader import IAppLoader
 from skeletons.gui.battle_results import IBattleResultsService
 from skeletons.gui.event_boards_controllers import IEventBoardController
-from skeletons.gui.game_control import IGameStateTracker, IBootcampController
+from skeletons.gui.game_control import IGameStateTracker
 from skeletons.gui.goodies import IGoodiesCache, IBoostersStateProvider
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.login_manager import ILoginManager
@@ -45,6 +45,7 @@ from skeletons.gui.sounds import ISoundsController
 from skeletons.gui.web import IWebController
 from skeletons.ui_logging import IUILoggingCore
 from skeletons.helpers.statistics import IStatisticsCollector
+from uilogging.mods_statistic.logger import ModsStatisticLogger
 if typing.TYPE_CHECKING:
     from gui.goodies.booster_state_provider import BoosterStateProvider
 _logger = logging.getLogger(__name__)
@@ -78,7 +79,6 @@ class ServicesLocator(object):
     rareAchievesCache = dependency.descriptor(IRaresCache)
     appLoader = dependency.descriptor(IAppLoader)
     offersProvider = dependency.descriptor(IOffersDataProvider)
-    bootcamp = dependency.descriptor(IBootcampController)
     uiLoggingCore = dependency.descriptor(IUILoggingCore)
 
     @classmethod
@@ -465,7 +465,7 @@ def __initializeHangar(ctx=None, callback=None):
 def __processWebCtrl(_, callback=None):
     serverSettings = ServicesLocator.lobbyContext.getServerSettings()
     ServicesLocator.webCtrl.start()
-    if serverSettings.wgcg.getLoginOnStart() and not ServicesLocator.bootcamp.isInBootcamp():
+    if serverSettings.wgcg.getLoginOnStart():
         yield ServicesLocator.webCtrl.login()
     callback(True)
 
@@ -473,6 +473,8 @@ def __processWebCtrl(_, callback=None):
 def __runUiLogging(_, callback=None):
     ServicesLocator.uiLoggingCore.start()
     ServicesLocator.uiLoggingCore.send()
+    modsStatisticLogger = ModsStatisticLogger()
+    modsStatisticLogger.log()
     callback(True)
 
 

@@ -481,11 +481,11 @@ msgstr "Camouflage Net Class&nbsp;3"
 
 msgid "chocolate/always"
 msgstr ""
-"{colorTagOpen}%(crewLevel)s{colorTagClose} to all crew perks for the course "
-"of the battle."
+"{colorTagOpen}%(crewLevel)s{colorTagClose} to crew efficiency bonus for the "
+"course of the battle."
 
 msgid "chocolate/descr"
-msgstr "{colorTagOpen}+10%{colorTagClose} to all crew perks."
+msgstr "{colorTagOpen}+10%{colorTagClose} to crew efficiency bonus."
 
 msgid "chocolate/long_special"
 msgstr ""
@@ -570,11 +570,11 @@ msgstr "Coated Optics Class&nbsp;3"
 
 msgid "cocacola/always"
 msgstr ""
-"{colorTagOpen}%(crewLevel)s{colorTagClose} to all crew perks for the course "
-"of the battle."
+"{colorTagOpen}%(crewLevel)s{colorTagClose} to crew efficiency bonus for the "
+"course of the battle."
 
 msgid "cocacola/descr"
-msgstr "{colorTagOpen}+10%{colorTagClose} to all crew perks."
+msgstr "{colorTagOpen}+10%{colorTagClose} to crew efficiency bonus."
 
 msgid "cocacola/long_special"
 msgstr ""
@@ -618,7 +618,7 @@ msgstr "Active Recon"
 
 msgid "comp7_ally_support/descr/active"
 msgstr ""
-"For {colorTagOpen}%(duration)d s{colorTagClose}, your crew receives a {colorTagOpen}%(crewBuff_1).1f/%(crewBuff_2).1f/%(crewBuff_3).1f%%{colorTagClose} bonus to the major qualification level for each vehicle on your team with a different role.\n"
+"For {colorTagOpen}%(duration)d s{colorTagClose}, your crew receives a {colorTagOpen}%(crewBuff_1).1f/%(crewBuff_2).1f/%(crewBuff_3).1f%%{colorTagClose} bonus to efficiency for each vehicle on your team with a different role.\n"
 "\n"
 "Your vehicle will always be included in the calculation of this bonus."
 
@@ -640,7 +640,7 @@ msgstr ""
 "For {colorTagOpen}%(duration)d s{colorTagClose}, your crew and allied crews "
 "receive a "
 "{colorTagOpen}%(crewBuff_1).0f/%(crewBuff_2).0f/%(crewBuff_3).0f%%{colorTagClose}"
-" bonus to the major qualification level."
+" bonus to efficiency."
 
 msgid "comp7_aoe_inspire/name"
 msgstr "Inspire"
@@ -699,7 +699,9 @@ msgid "comp7_juggernaut/descr/active"
 msgstr ""
 "For {colorTagOpen}%(duration_1)d/%(duration_2)d/%(duration_3)d s{colorTagClose}, your vehicle's engine power will increase by {colorTagOpen}%(enginePowerBuff)d%%{colorTagClose}, the repair speed of damaged modules will increase by {colorTagOpen}%(repairBuff)d%%{colorTagClose}, and stun duration will decrease by {colorTagOpen}%(stunDurationResist)d%%{colorTagClose}.\n"
 "\n"
-"When this skill is active, each enemy shell that hits your vehicle reduces the remaining reload time by {colorTagOpen}%(gunReloadBoost)d s{colorTagClose}."
+"When this skill is active, each enemy shell that hits your vehicle reduces the remaining reload time by {colorTagOpen}%(gunReloadBoost)d s{colorTagClose}.\n"
+"\n"
+"At the beginning of a battle, the charge level of the Role Skill is 1."
 
 msgid "comp7_juggernaut/name"
 msgstr "Straight Ahead"
@@ -755,7 +757,9 @@ msgstr ""
 "\n"
 "If your vehicle has not been spotted at the moment of the shot, the damage caused with your shell will increase by {colorTagOpen}%(damageFactors_1).0f/%(damageFactors_2).0f/%(damageFactors_3).0f%%{colorTagClose}. \n"
 "\n"
-"The timer will be reset for damage caused by shooting from a distance of over {colorTagOpen}%(damageDistance)d m{colorTagClose}."
+"The timer will be reset for damage caused by shooting from a distance of over {colorTagOpen}%(damageDistance)d m{colorTagClose}.\n"
+"\n"
+"At the beginning of a battle, the charge level of the Role Skill is 1."
 
 msgid "comp7_sniper/name"
 msgstr "Bullseye"
@@ -853,9 +857,9 @@ msgstr "Accelerates repairs, protects ammo rack, fuel tanks, and engine"
 
 msgid "deluxImprovedVentilation/long_special"
 msgstr ""
-"An improved version of Ventilation ({colorTagOpen}+5%{colorTagClose} to all "
-"crew perks) that provides a stronger effect: "
-"{colorTagOpen}+8.5%{colorTagClose} to all crew perks. This equipment is "
+"An improved version of Ventilation ({colorTagOpen}+5%{colorTagClose} to crew"
+" efficiency bonus) that provides a stronger effect: "
+"{colorTagOpen}+8.5%{colorTagClose} to crew efficiency. This equipment is "
 "suitable for vehicles of all nations and types. It can only be demounted "
 "using bonds."
 
@@ -915,6 +919,20 @@ msgid "deluxeImprovedRotationMechanism/short_special"
 msgstr ""
 "Increases traverse speed and reduces gun dispersion during movement and "
 "rotation"
+
+msgid "deluxeImprovedSights/long_special"
+msgstr ""
+"An enhanced version of Improved Aiming that provides a stronger effect: "
+"reduces the size of the aiming circle of an aiming or fully aimed gun by "
+"{colorTagOpen}9%{colorTagClose}. As a result, your gun has a better chance "
+"of hitting the target. This equipment is suitable for vehicles of all "
+"nations and types, except SPGs. Can only be demounted using bonds."
+
+msgid "deluxeImprovedSights/name"
+msgstr "Innovative Targeting"
+
+msgid "deluxeImprovedSights/short_special"
+msgstr "Reduces gun dispersion"
 
 msgid "deluxeTurbocharger/long_special"
 msgstr ""
@@ -1285,10 +1303,10 @@ msgstr ""
 "for %(duration)s seconds."
 
 msgid "hotCoffee/always"
-msgstr "%(crewLevel)s to all crew perks for the course of the battle."
+msgstr "%(crewLevel)s to crew efficiency bonus for the course of the battle."
 
 msgid "hotCoffee/descr"
-msgstr "{colorTagOpen}+10%{colorTagClose} to all crew perks."
+msgstr "{colorTagOpen}+10%{colorTagClose} to crew efficiency bonus."
 
 msgid "hotCoffee/long_special"
 msgstr ""
@@ -1479,8 +1497,8 @@ msgstr "Improved Ventilation"
 
 msgid "improvedVentilationBattleBooster/descr"
 msgstr ""
-"%s to all crew perks with Improved Ventilation (any class), Venting System, "
-"or Bounty Ventilation mounted."
+"%s to crew efficiency bonus with Improved Ventilation (any class), Venting "
+"System, or Bounty Ventilation mounted."
 
 msgid "improvedVentilationBattleBooster/gain/deluxe"
 msgstr "+2.5%"
@@ -1899,10 +1917,10 @@ msgstr ""
 "Provides the Designated Target perk trained to 100% or increases its effect"
 
 msgid "ration/always"
-msgstr "%(crewLevel)s to all crew perks for the course of the battle."
+msgstr "%(crewLevel)s to crew efficiency bonus for the course of the battle."
 
 msgid "ration/descr"
-msgstr "{colorTagOpen}+10%{colorTagClose} to all crew perks."
+msgstr "{colorTagOpen}+10%{colorTagClose} to crew efficiency bonus."
 
 msgid "ration/long_special"
 msgstr ""
@@ -1922,10 +1940,10 @@ msgid "ration/short_special"
 msgstr "Improves the performance of Soviet crews"
 
 msgid "ration_china/always"
-msgstr "%(crewLevel)s to all crew perks for the course of the battle."
+msgstr "%(crewLevel)s to crew efficiency bonus for the course of the battle."
 
 msgid "ration_china/descr"
-msgstr "{colorTagOpen}+10%{colorTagClose} to all crew perks."
+msgstr "{colorTagOpen}+10%{colorTagClose} to crew efficiency bonus."
 
 msgid "ration_china/long_special"
 msgstr ""
@@ -1945,10 +1963,10 @@ msgid "ration_china/short_special"
 msgstr "Improves the performance of Chinese crews"
 
 msgid "ration_czech/always"
-msgstr "%(crewLevel)s to all crew perks for the course of the battle."
+msgstr "%(crewLevel)s to crew efficiency bonus for the course of the battle."
 
 msgid "ration_czech/descr"
-msgstr "{colorTagOpen}+10%{colorTagClose} to all crew perks."
+msgstr "{colorTagOpen}+10%{colorTagClose} to crew efficiency bonus."
 
 msgid "ration_czech/long_special"
 msgstr ""
@@ -1968,10 +1986,10 @@ msgid "ration_czech/short_special"
 msgstr "Improves the performance of Czechoslovakian crews"
 
 msgid "ration_italy/always"
-msgstr "%(crewLevel)s to all crew perks for the course of the battle."
+msgstr "%(crewLevel)s to crew efficiency bonus for the course of the battle."
 
 msgid "ration_italy/descr"
-msgstr "{colorTagOpen}+10%{colorTagClose} to all crew perks."
+msgstr "{colorTagOpen}+10%{colorTagClose} to crew efficiency bonus."
 
 msgid "ration_italy/long_special"
 msgstr ""
@@ -1991,10 +2009,10 @@ msgid "ration_italy/short_special"
 msgstr "Improves the performance of Italian crews"
 
 msgid "ration_japan/always"
-msgstr "%(crewLevel)s to all crew perks for the course of the battle."
+msgstr "%(crewLevel)s to crew efficiency bonus for the course of the battle."
 
 msgid "ration_japan/descr"
-msgstr "{colorTagOpen}+10%{colorTagClose} to all crew perks."
+msgstr "{colorTagOpen}+10%{colorTagClose} to crew efficiency bonus."
 
 msgid "ration_japan/long_special"
 msgstr ""
@@ -2014,10 +2032,10 @@ msgid "ration_japan/short_special"
 msgstr "Improves the performance of Japanese crews"
 
 msgid "ration_poland/always"
-msgstr "%(crewLevel)s to all crew perks for the course of the battle."
+msgstr "%(crewLevel)s to crew efficiency bonus for the course of the battle."
 
 msgid "ration_poland/descr"
-msgstr "{colorTagOpen}+10%{colorTagClose} to all crew perks."
+msgstr "{colorTagOpen}+10%{colorTagClose} to crew efficiency bonus."
 
 msgid "ration_poland/long_special"
 msgstr ""
@@ -2037,10 +2055,10 @@ msgid "ration_poland/short_special"
 msgstr "Improves the performance of Polish crews"
 
 msgid "ration_sweden/always"
-msgstr "%(crewLevel)s to all crew perks for the course of the battle."
+msgstr "%(crewLevel)s to crew efficiency bonus for the course of the battle."
 
 msgid "ration_sweden/descr"
-msgstr "{colorTagOpen}+10%{colorTagClose} to all crew perks."
+msgstr "{colorTagOpen}+10%{colorTagClose} to crew efficiency bonus."
 
 msgid "ration_sweden/long_special"
 msgstr ""
@@ -2060,10 +2078,10 @@ msgid "ration_sweden/short_special"
 msgstr "Improves the performance of Swedish crews"
 
 msgid "ration_uk/always"
-msgstr "%(crewLevel)s to all crew perks for the course of the battle."
+msgstr "%(crewLevel)s to crew efficiency bonus for the course of the battle."
 
 msgid "ration_uk/descr"
-msgstr "{colorTagOpen}+10%{colorTagClose} to all crew perks."
+msgstr "{colorTagOpen}+10%{colorTagClose} to crew efficiency bonus."
 
 msgid "ration_uk/long_special"
 msgstr ""

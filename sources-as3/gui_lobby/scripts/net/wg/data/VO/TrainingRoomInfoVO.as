@@ -37,6 +37,8 @@ package net.wg.data.VO
       
       public var battleTypeIco:String = "";
       
+      public var alertText:String = "";
+      
       public var creatorFullName:String = "";
       
       public var creatorClan:String = "";

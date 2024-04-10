@@ -8,7 +8,7 @@ from gui.impl.gen import R
 from gui.shared.utils.scheduled_notifications import Notifiable, SimpleNotifier
 from helpers import dependency, time_utils
 from fun_random.gui.fun_gui_constants import SCH_CLIENT_MSG_TYPE
-from skeletons.gui.game_control import IFunRandomController, IBootcampController
+from skeletons.gui.game_control import IFunRandomController
 from skeletons.gui.impl import IGuiLoader
 from skeletons.gui.system_messages import ISystemMessages
 if typing.TYPE_CHECKING:
@@ -42,7 +42,6 @@ def _defineSubModeState(subMode, now):
 
 class FunNotifications(IFunRandomController.IFunNotifications, Notifiable):
     __gui = dependency.descriptor(IGuiLoader)
-    __bootcampCtrl = dependency.descriptor(IBootcampController)
     __systemMessages = dependency.descriptor(ISystemMessages)
 
     def __init__(self, progressions, subModesHolder):
@@ -69,8 +68,7 @@ class FunNotifications(IFunRandomController.IFunNotifications, Notifiable):
         return self.__isNotificationsAllowed
 
     def isNotificationsEnabled(self):
-        isFunRandomEnabled = self.__funRandomSettings and self.__funRandomSettings.isEnabled
-        return isFunRandomEnabled and not self.__bootcampCtrl.isInBootcamp()
+        return self.__funRandomSettings and self.__funRandomSettings.isEnabled
 
     def addToQueue(self, notification):
         self.__notificationsQueue.append(notification)

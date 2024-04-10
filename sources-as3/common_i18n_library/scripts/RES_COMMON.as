@@ -43,6 +43,8 @@ package
       
       public static const MAPS_ICONS_EPICBATTLES_SKILLS_INTRO_BG:String = "../maps/icons/epicBattles/skills/intro/bg.png";
       
+      public static const MAPS_ICONS_HANGAR_BUYVEHICLE_BG:String = "../maps/icons/hangar/buyVehicle/bg.png";
+      
       public static const MAPS_ICONS_MAPBOX_BG:String = "../maps/icons/mapbox/bg.png";
       
       public static const MAPS_ICONS_MAPBOX_SURVEY_BG:String = "../maps/icons/mapbox/survey/bg.png";

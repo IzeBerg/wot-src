@@ -10,9 +10,21 @@ package net.wg.gui.battle.views.minimap
    {
        
       
+      private var _messageCoordinateOffset:int = 0;
+      
       public function BaseMinimap()
       {
          super();
+      }
+      
+      public function get messageCoordinateOffset() : int
+      {
+         return this._messageCoordinateOffset;
+      }
+      
+      public function set messageCoordinateOffset(param1:int) : void
+      {
+         this._messageCoordinateOffset = param1;
       }
       
       public function as_clearScenarioEvent(param1:String) : void
@@ -76,7 +88,7 @@ package net.wg.gui.battle.views.minimap
       
       public function getMessageCoordinate() : Number
       {
-         return this.currentHeight - this.currentTopLeftPoint.y;
+         return this.currentHeight - this.currentTopLeftPoint.y + this._messageCoordinateOffset;
       }
       
       public function getMinimapRectBySizeIndex(param1:int) : Rectangle
@@ -85,6 +97,11 @@ package net.wg.gui.battle.views.minimap
       }
       
       public function getMinimapTotalWidthByIndex(param1:uint) : int
+      {
+         return 0;
+      }
+      
+      public function getMinmapHeightBySizeIndex(param1:int) : Number
       {
          return 0;
       }

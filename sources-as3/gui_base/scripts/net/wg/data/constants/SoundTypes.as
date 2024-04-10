@@ -45,12 +45,6 @@ package net.wg.data.constants
       
       public static const MESSANGER_BTN:String = "messengerButton";
       
-      public static const BARRACKS_TANKMAN_SOUND_TYPE:String = "barracksItemRenderer";
-      
-      public static const BARRACKS_EMPTY_SOUND_TYPE:String = "barracksItemRendererEmpty";
-      
-      public static const BARRACKS_BUY_SOUND_TYPE:String = "barracksItemRendererBuy";
-      
       public static const COLOR_SETTINGS_SOUND_TYPE:String = "colorSettingsButtonRenderer";
       
       public static const ARTEFACT_RENDERER:String = "artefactRenderer";

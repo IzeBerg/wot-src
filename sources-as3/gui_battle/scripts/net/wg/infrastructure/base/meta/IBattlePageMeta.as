@@ -8,7 +8,7 @@ package net.wg.infrastructure.base.meta
       
       function as_checkDAAPI() : void;
       
-      function as_setPostmortemTipsVisible(param1:Boolean) : void;
+      function as_onPostmortemActive(param1:Boolean) : void;
       
       function as_setComponentsVisibility(param1:Array, param2:Array) : void;
       

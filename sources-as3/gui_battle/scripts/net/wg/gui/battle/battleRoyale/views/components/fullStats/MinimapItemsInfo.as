@@ -7,9 +7,9 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats
    public class MinimapItemsInfo extends GroupEx
    {
       
-      private static const MINIMAP_ITEMS_LIST_GAP:int = 15;
+      private static const MINIMAP_ITEMS_LIST_GAP:int = -25;
       
-      private static const MINIMAP_ITEMS_LIST_GAP_SMALL:int = 12;
+      private static const MINIMAP_ITEMS_LIST_GAP_SMALL:int = -7;
        
       
       private var _minimapItemsLayout:VerticalGroupLayout = null;

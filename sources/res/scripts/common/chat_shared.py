@@ -1580,7 +1580,8 @@ SYS_MESSAGE_TYPE = Enumeration('systemMessageType', [
  'collectionsItems',
  'collectionsReward',
  'collectionEntitlementReceived',
- 'prestigeLevelChanged'])
+ 'prestigeLevelChanged',
+ 'goodiesExpired'])
 SYS_MESSAGE_IMPORTANCE = Enumeration('systemMessageImportance', [
  'normal',
  'high'])

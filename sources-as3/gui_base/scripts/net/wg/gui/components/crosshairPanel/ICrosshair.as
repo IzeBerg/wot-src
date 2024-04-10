@@ -13,6 +13,10 @@ package net.wg.gui.components.crosshairPanel
       
       function setDistance(param1:String) : void;
       
+      function setAverageDamage(param1:String) : void;
+      
+      function clearAverageDamage(param1:Boolean) : void;
+      
       function clearDistance(param1:Boolean) : void;
       
       function setDistanceVisibility(param1:Boolean) : void;
@@ -33,7 +37,7 @@ package net.wg.gui.components.crosshairPanel
       
       function setComponentsAlpha(param1:Number, param2:Number, param3:Number, param4:Number, param5:Number, param6:Number, param7:Number) : void;
       
-      function setInfo(param1:Number, param2:String, param3:String, param4:Boolean, param5:Boolean, param6:String, param7:String, param8:Number, param9:Number, param10:String, param11:Number, param12:String, param13:Boolean = false, param14:Boolean = false, param15:Boolean = false) : void;
+      function setInfo(param1:Number, param2:String, param3:String, param4:Boolean, param5:Boolean, param6:String, param7:String, param8:Number, param9:Number, param10:String, param11:Number, param12:String, param13:String, param14:Boolean = false, param15:Boolean = false, param16:Boolean = false) : void;
       
       function setReloadingState(param1:String) : void;
       

@@ -1,5 +1,4 @@
 import typing
-from bootcamp.Bootcamp import g_bootcamp
 from CurrentVehicle import g_currentVehicle
 from gui.Scaleform.genConsts.RESEARCH_COUNTER_STATES import RESEARCH_COUNTER_STATES
 from gui.veh_post_progression.helpers import needToShowCounter
@@ -148,7 +147,7 @@ class ResearchPanel(ResearchPanelMeta):
     def __getVehPostProgressionData(self, vehicle):
         isHintEnabled = False
         isAvailable = vehicle.postProgressionAvailability(unlockOnly=True).result
-        isVisible = vehicle.isPostProgressionExists and not g_bootcamp.isRunning()
+        isVisible = vehicle.isPostProgressionExists
         if vehicle.xp > 0 and isAvailable:
             purchasableStep = vehicle.postProgression.getFirstPurchasableStep(ExtendedMoney(xp=vehicle.xp))
             if purchasableStep is not None:

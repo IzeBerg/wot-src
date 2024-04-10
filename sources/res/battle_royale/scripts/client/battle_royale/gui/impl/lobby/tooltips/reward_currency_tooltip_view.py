@@ -4,13 +4,11 @@ from gui.impl.gen import R
 from gui.impl.pub import ViewImpl
 
 class RewardCurrencyTooltipView(ViewImpl):
-    __slots__ = ('__currencyType', '__hasBonus')
 
-    def __init__(self, currencyType, hasBonus=False):
+    def __init__(self, currencyType):
         settings = ViewSettings(R.views.battle_royale.lobby.tooltips.RewardCurrencyTooltipView())
         settings.model = RewardCurrencyTooltipViewModel()
         self.__currencyType = currencyType
-        self.__hasBonus = hasBonus
         super(RewardCurrencyTooltipView, self).__init__(settings)
 
     @property
@@ -20,4 +18,3 @@ class RewardCurrencyTooltipView(ViewImpl):
     def _onLoading(self, *args, **kwargs):
         super(RewardCurrencyTooltipView, self)._onLoading(args, kwargs)
         self.viewModel.setCurrencyType(self.__currencyType)
-        self.viewModel.setHasBonus(self.__hasBonus)

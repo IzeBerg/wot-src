@@ -10,7 +10,7 @@ package net.wg.gui.battle.views.perksPanel.components
    import net.wg.gui.battle.components.BattleUIComponent;
    import net.wg.gui.battle.views.perksPanel.data.PerkItemVO;
    import net.wg.gui.battle.views.perksPanel.events.PerkItemEvent;
-   import net.wg.gui.bootcamp.containers.AnimatedLoaderTextContainer;
+   import net.wg.gui.components.containers.AnimatedLoaderTextContainer;
    import net.wg.gui.utils.FrameHelper;
    import net.wg.infrastructure.managers.ITooltipMgr;
    import scaleform.clik.motion.Tween;

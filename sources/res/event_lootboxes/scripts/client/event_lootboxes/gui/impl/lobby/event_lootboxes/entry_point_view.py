@@ -2,6 +2,7 @@ from account_helpers.AccountSettings import LOOT_BOXES_VIEWED_COUNT
 from constants import PREBATTLE_TYPE, QUEUE_TYPE
 from frameworks.wulf import ViewSettings
 from frameworks.wulf.gui_constants import ViewFlags
+from event_lootboxes.gui.shared.event_dispatcher import showEventLootBoxesWelcomeScreen
 from gui.impl.gen import R
 from event_lootboxes.gui.impl.gen.view_models.views.lobby.event_lootboxes.entry_point_view_model import EntryPointViewModel
 from tooltips.entry_point_tooltip import EventLootBoxesEntryPointTooltipView
@@ -13,7 +14,7 @@ from helpers.time_utils import ONE_DAY, getServerUTCTime
 from skeletons.gui.game_control import IEventLootBoxesController
 from skeletons.gui.hangar import ICarouselEventEntry
 _ENABLED_PRE_QUEUES = (
- QUEUE_TYPE.RANDOMS, QUEUE_TYPE.WINBACK, QUEUE_TYPE.BATTLE_ROYALE)
+ QUEUE_TYPE.RANDOMS, QUEUE_TYPE.WINBACK)
 
 class EventLootBoxesEntryPointWidget(ViewImpl, ICarouselEventEntry):
     __eventLootBoxes = dependency.descriptor(IEventLootBoxesController)
@@ -27,7 +28,7 @@ class EventLootBoxesEntryPointWidget(ViewImpl, ICarouselEventEntry):
 
     @staticmethod
     def getIsActive(state):
-        return EventLootBoxesEntryPointWidget.__eventLootBoxes.isActive() and (any(state.isInPreQueue(preQueue) for preQueue in _ENABLED_PRE_QUEUES) or state.isInUnit(PREBATTLE_TYPE.SQUAD) or state.isInUnit(PREBATTLE_TYPE.BATTLE_ROYALE))
+        return EventLootBoxesEntryPointWidget.__eventLootBoxes.isActive() and (any(state.isInPreQueue(preQueue) for preQueue in _ENABLED_PRE_QUEUES) or state.isInUnit(PREBATTLE_TYPE.SQUAD))
 
     def createPopOverContent(self, event):
         return EventLootBoxesPopover()
@@ -35,6 +36,9 @@ class EventLootBoxesEntryPointWidget(ViewImpl, ICarouselEventEntry):
     def createToolTipContent(self, event, contentID):
         if contentID == R.views.event_lootboxes.lobby.event_lootboxes.tooltips.EntryPointTooltip():
             return EventLootBoxesEntryPointTooltipView()
+
+    def _initialize(self, *args, **kwargs):
+        self.__showWelcomeIfNeeded()
 
     def _onLoading(self, *args, **kwargs):
         super(EventLootBoxesEntryPointWidget, self)._onLoading(*args, **kwargs)
@@ -55,6 +59,7 @@ class EventLootBoxesEntryPointWidget(ViewImpl, ICarouselEventEntry):
         self.__eventLootBoxes.setSetting(EVENT_LOOT_BOXES_CATEGORY, LOOT_BOXES_VIEWED_COUNT, self.__eventLootBoxes.getBoxesCount())
 
     def __onLootBoxesStatusChanged(self):
+        self.__showWelcomeIfNeeded()
         self.__updateTime()
 
     def __updateBoxesCount(self, count, *_):
@@ -72,3 +77,7 @@ class EventLootBoxesEntryPointWidget(ViewImpl, ICarouselEventEntry):
     def __getEventExpireTime(self):
         _, finish = self.__eventLootBoxes.getEventActiveTime()
         return finish - getServerUTCTime()
+
+    def __showWelcomeIfNeeded(self):
+        if not self.__eventLootBoxes.isLootBoxesWasStarted():
+            showEventLootBoxesWelcomeScreen()

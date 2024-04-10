@@ -51,6 +51,12 @@ package net.wg.gui.components.dogtag
          this._dogtagFrameHelper = new FrameHelper(this);
          this.addAnimationCallback(DOGTAG_LABEL_FLAMES,this.onFlamesPlay);
          this.addAnimationCallback(DOGTAG_LABEL_ANIMATE_HIDE,this.onAnimateHideStart);
+         this.addAnimationCallback(DOGTAG_LABEL_END_FULL,this.onAnimateShowEnd);
+      }
+      
+      private function onAnimateShowEnd() : void
+      {
+         dispatchEvent(new DogTagEvent(DogTagEvent.ON_DOGTAG_COMPONENT_ANIMATE_SHOW_END));
       }
       
       private function onAnimateHideStart() : void

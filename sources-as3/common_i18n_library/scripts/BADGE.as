@@ -29,10 +29,6 @@ package
       
       public static const BADGESPAGE_ACCOUNTCOMPLETION_BUTTON_PROVIDEEMAIL:String = "#badge:badgesPage/accountCompletion/button/provideEmail";
       
-      public static const BADGESPAGE_ACCOUNTCOMPLETION_BUTTON_DEMOACCRENAME:String = "#badge:badgesPage/accountCompletion/button/demoAccRename";
-      
-      public static const BADGESPAGE_ACCOUNTCOMPLETION_REFRESHING:String = "#badge:badgesPage/accountCompletion/refreshing";
-      
       public static const BADGESPAGE_ACCOUNTCOMPLETION_BUTTON_STATUSUPDATE:String = "#badge:badgesPage/accountCompletion/button/statusUpdate";
       
       public static const BADGESPAGE_ACCOUNTCOMPLETION_BUTTON_SERVICEUNAVAILABLE:String = "#badge:badgesPage/accountCompletion/button/serviceUnavailable";
@@ -660,6 +656,40 @@ package
       public static const BADGE_144_DESCR:String = "#badge:badge_144_descr";
       
       public static const SUFFIX_BADGE_144:String = "#badge:suffix/badge_144";
+      
+      public static const BADGE_145:String = "#badge:badge_145";
+      
+      public static const BADGE_145_DESCR:String = "#badge:badge_145_descr";
+      
+      public static const BADGE_146:String = "#badge:badge_146";
+      
+      public static const BADGE_146_DESCR:String = "#badge:badge_146_descr";
+      
+      public static const BADGE_147:String = "#badge:badge_147";
+      
+      public static const BADGE_147_DESCR:String = "#badge:badge_147_descr";
+      
+      public static const SUFFIX_BADGE_147:String = "#badge:suffix/badge_147";
+      
+      public static const BADGE_148:String = "#badge:badge_148";
+      
+      public static const BADGE_148_DESCR:String = "#badge:badge_148_descr";
+      
+      public static const BADGE_149:String = "#badge:badge_149";
+      
+      public static const BADGE_149_DESCR:String = "#badge:badge_149_descr";
+      
+      public static const BADGE_150:String = "#badge:badge_150";
+      
+      public static const BADGE_150_DESCR:String = "#badge:badge_150_descr";
+      
+      public static const SUFFIX_BADGE_150:String = "#badge:suffix/badge_150";
+      
+      public static const BADGE_151:String = "#badge:badge_151";
+      
+      public static const BADGE_151_DESCR:String = "#badge:badge_151_descr";
+      
+      public static const SUFFIX_BADGE_151:String = "#badge:suffix/badge_151";
        
       
       public function BADGE()

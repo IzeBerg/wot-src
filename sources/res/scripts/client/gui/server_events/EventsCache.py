@@ -1,6 +1,6 @@
 import math, sys
 from collections import defaultdict, namedtuple
-import typing, BigWorld, motivation_quests, customization_quests, nations
+import typing, BigWorld, motivation_quests, customization_quests, nations, static_quests
 from Event import Event, EventManager
 from PlayerEvents import g_playerEvents
 from adisp import adisp_async, adisp_process
@@ -829,6 +829,12 @@ class EventsCache(IEventsCache):
             yield (
              questDescr.questID,
              self._makeQuest(questDescr.questID, questDescr.questClientData))
+
+        staticQuests = static_quests.g_staticCache.getAllQuests() or []
+        for questDescr in staticQuests:
+            yield (
+             questDescr.questID,
+             self._makeQuest(questDescr.questID, questDescr.questData))
 
     def __loadInvalidateCallback(self, duration):
         LOG_DEBUG('load quest window invalidation callback (secs)', duration)

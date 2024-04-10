@@ -71,9 +71,9 @@ package net.wg.gui.battle.mapsTraining.views
          this.battleDamageLogPanel.init(ATLAS_CONSTANTS.BATTLE_ATLAS);
       }
       
-      override public function as_setPostmortemTipsVisible(param1:Boolean) : void
+      override public function as_onPostmortemActive(param1:Boolean) : void
       {
-         super.as_setPostmortemTipsVisible(param1);
+         super.as_onPostmortemActive(param1);
          if(!param1 && !this.consumablesPanel.hasEventListener(ConsumablesPanelEvent.UPDATE_POSITION))
          {
             this.consumablesPanel.addEventListener(ConsumablesPanelEvent.UPDATE_POSITION,this.onConsumablesPanelUpdatePositionHandler);
@@ -116,6 +116,7 @@ package net.wg.gui.battle.mapsTraining.views
          this.battleMessenger.addEventListener(FocusRequestEvent.REQUEST_FOCUS,this.onBattleMessengerRequestFocusHandler);
          this.battleMessenger.addEventListener(BattleMessenger.REMOVE_FOCUS,this.onBattleMessengerRemoveFocusHandler);
          this.hintPanel.addEventListener(Event.RESIZE,this.onHintPanelResizeHandler);
+         postmortemPanelUI.isEnabledPostmortemPanel = false;
          super.configUI();
       }
       
@@ -163,7 +164,7 @@ package net.wg.gui.battle.mapsTraining.views
       
       override protected function vehicleMessageListPositionUpdate() : void
       {
-         if(postmortemTips && postmortemTips.visible)
+         if(postmortemPanelUI && postmortemPanelUI.visible)
          {
             super.vehicleMessageListPositionUpdate();
          }
@@ -232,7 +233,7 @@ package net.wg.gui.battle.mapsTraining.views
       private function onConsumablesPanelSwitchPopupHandler(param1:ConsumablesPanelEvent) : void
       {
          var _loc2_:int = 0;
-         if(!postmortemTips || !postmortemTips.visible)
+         if(!postmortemPanelUI || !postmortemPanelUI.visible)
          {
             _loc2_ = !!this.consumablesPanel.isExpand ? int(CONSUMABLES_POPUP_OFFSET) : int(0);
             vehicleMessageList.setLocation(_originalWidth - VEHICLE_MESSAGES_LIST_OFFSET.x >> 1,_originalHeight - VEHICLE_MESSAGES_LIST_OFFSET.y - _loc2_ | 0);

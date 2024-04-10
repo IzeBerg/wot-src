@@ -42,7 +42,7 @@ package net.wg.infrastructure.base.meta
       
       function as_updateComment(param1:String) : void;
       
-      function as_updateMap(param1:Number, param2:Number, param3:String, param4:String, param5:String, param6:String, param7:String) : void;
+      function as_updateMap(param1:Number, param2:Number, param3:String, param4:String, param5:String, param6:String, param7:String, param8:String, param9:Boolean) : void;
       
       function as_updateTimeout(param1:String) : void;
       
@@ -55,8 +55,6 @@ package net.wg.infrastructure.base.meta
       function as_setInfo(param1:Object) : void;
       
       function as_setArenaVoipChannels(param1:Number) : void;
-      
-      function as_disableStartButton(param1:Boolean) : void;
       
       function as_disableControls(param1:Boolean) : void;
       
@@ -81,5 +79,7 @@ package net.wg.infrastructure.base.meta
       function as_setPlayerTagsInOther(param1:Number, param2:Array) : void;
       
       function as_enabledCloseButton(param1:Boolean) : void;
+      
+      function as_setStartButtonState(param1:Boolean, param2:String) : void;
    }
 }

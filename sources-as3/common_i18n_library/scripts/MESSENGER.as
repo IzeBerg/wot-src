@@ -457,6 +457,8 @@ package
       
       public static const CLIENT_WARNING_INVALIDUSERSEARCHTOKEN_MESSAGE:String = "#messenger:client/warning/invalidUserSearchToken/message";
       
+      public static const CLIENT_WARNING_AFKWARNING_MESSAGE:String = "#messenger:client/warning/AFKWarning/message";
+      
       public static const CLIENT_ERROR_BROADCASTINCOOLDOWN:String = "#messenger:client/error/broadcastInCooldown";
       
       public static const CLIENT_ERROR_COMMANDINCOOLDOWN_LIMITED:String = "#messenger:client/error/commandInCooldown/limited";
@@ -500,6 +502,8 @@ package
       public static const CLIENT_DYNSQUAD_DISABLEVOIP:String = "#messenger:client/dynSquad/disableVOIP";
       
       public static const CLIENT_COMP7_DISABLEVOIP:String = "#messenger:client/COMP7/disableVOIP";
+      
+      public static const CLIENT_BATTLE_ROYALE_SQUAD_DISABLEVOIP:String = "#messenger:client/BATTLE_ROYALE_SQUAD/disableVOIP";
       
       public static const CLIENT_DYNSQUAD_CREATED_ALLIES:String = "#messenger:client/dynSquad/created/allies";
       
@@ -741,19 +745,7 @@ package
       
       public static const SERVICECHANNELMESSAGES_BRBATTLERESULTS_BATTLEROYALEBRCOIN:String = "#messenger:serviceChannelMessages/BRbattleResults/battleRoyaleBrCoin";
       
-      public static const SERVICECHANNELMESSAGES_BRBATTLERESULTS_BATTLEROYALESTPCOIN:String = "#messenger:serviceChannelMessages/BRbattleResults/battleRoyaleStpCoin";
-      
       public static const SERVICECHANNELMESSAGES_BRBATTLERESULTS_BRPROGRESSIONTITLE:String = "#messenger:serviceChannelMessages/BRbattleResults/BRProgressionTitle";
-      
-      public static const SERVICECHANNELMESSAGES_BOOTCAMP_FINISHED:String = "#messenger:serviceChannelMessages/bootcamp/finished";
-      
-      public static const SERVICECHANNELMESSAGES_BOOTCAMP_AWARDS:String = "#messenger:serviceChannelMessages/bootcamp/awards";
-      
-      public static const SERVICECHANNELMESSAGES_BOOTCAMP_NO_AWARDS:String = "#messenger:serviceChannelMessages/bootcamp/no_awards";
-      
-      public static const SERVICECHANNELMESSAGES_BOOTCAMP_DEVICES:String = "#messenger:serviceChannelMessages/bootcamp/devices";
-      
-      public static const SERVICECHANNELMESSAGES_BOOTCAMP_CREW:String = "#messenger:serviceChannelMessages/bootcamp/crew";
       
       public static const SERVICECHANNELMESSAGES_CURRENCYUPDATE_AUCTION:String = "#messenger:serviceChannelMessages/currencyUpdate/auction";
       
@@ -997,7 +989,11 @@ package
       
       public static const SERVICECHANNELMESSAGES_PREMIUMPLUSEXPIRED:String = "#messenger:serviceChannelMessages/premiumPlusExpired";
       
-      public static const SERVICECHANNELMESSAGES_BOOSTEREXPIRED:String = "#messenger:serviceChannelMessages/boosterExpired";
+      public static const SERVICECHANNELMESSAGES_BOOSTERENDED:String = "#messenger:serviceChannelMessages/boosterEnded";
+      
+      public static const SERVICECHANNELMESSAGES_BOOSTEREXPIRED_MESSAGE:String = "#messenger:serviceChannelMessages/boosterExpired/message";
+      
+      public static const SERVICECHANNELMESSAGES_BOOSTEREXPIRED_TITLE:String = "#messenger:serviceChannelMessages/boosterExpired/title";
       
       public static const SERVICECHANNELMESSAGES_BOOSTERADDITIONALMESSAGE:String = "#messenger:serviceChannelMessages/boosterAdditionalMessage";
       
@@ -2183,6 +2179,28 @@ package
       
       public static const SERVICECHANNELMESSAGES_WOTPLUS_DAILYATTENDANCEREWARDED_BIG_CYCLEENDED_ENDTEXT:String = "#messenger:serviceChannelMessages/wotPlus/dailyAttendanceRewarded/big/cycleEnded/endText";
       
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_SUBSCRIBERSBENEFITSONBOARDING_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/subscribersBenefitsOnboarding/title";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_SUBSCRIBERSBENEFITSONBOARDING_BODY:String = "#messenger:serviceChannelMessages/wotPlus/subscribersBenefitsOnboarding/body";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_SUBSCRIBERSBENEFITSONBOARDING_ADDITIONALBONUSES:String = "#messenger:serviceChannelMessages/wotPlus/subscribersBenefitsOnboarding/additionalBonuses";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_SUBSCRIBERSBENEFITSONBOARDING_BATTLEBONUSES:String = "#messenger:serviceChannelMessages/wotPlus/subscribersBenefitsOnboarding/battleBonuses";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_SUBSCRIBERSBENEFITSONBOARDING_BADGES:String = "#messenger:serviceChannelMessages/wotPlus/subscribersBenefitsOnboarding/badges";
+      
+      public static const SERVICECHANNELMESSAGES_BATTLEBONUSES_AVAILABLE_TITLE:String = "#messenger:serviceChannelMessages/battleBonuses/available/title";
+      
+      public static const SERVICECHANNELMESSAGES_BATTLEBONUSES_UNAVAILABLE_TITLE:String = "#messenger:serviceChannelMessages/battleBonuses/unavailable/title";
+      
+      public static const SERVICECHANNELMESSAGES_BADGE_AVAILABLE_TITLE:String = "#messenger:serviceChannelMessages/badge/available/title";
+      
+      public static const SERVICECHANNELMESSAGES_BADGE_UNAVAILABLE_TITLE:String = "#messenger:serviceChannelMessages/badge/unavailable/title";
+      
+      public static const SERVICECHANNELMESSAGES_ADDITIONALXP_AVAILABLE_TITLE:String = "#messenger:serviceChannelMessages/additionalXP/available/title";
+      
+      public static const SERVICECHANNELMESSAGES_ADDITIONALXP_UNAVAILABLE_TITLE:String = "#messenger:serviceChannelMessages/additionalXP/unavailable/title";
+      
       public static const SERVICECHANNELMESSAGES_VEHICLEPOSTPROGRESSION_DISCARDALLPAIRSMODIFICATION_BODY:String = "#messenger:serviceChannelMessages/vehiclePostProgression/discardAllPairsModification/body";
       
       public static const SERVICECHANNELMESSAGES_VEHICLEPOSTPROGRESSION_DISCARDALLPAIRSMODIFICATION_TITLE:String = "#messenger:serviceChannelMessages/vehiclePostProgression/discardAllPairsModification/title";
@@ -2241,10 +2259,6 @@ package
       
       public static const PLATFORMCURRENCYMSG_DEBITED_BRCOIN:String = "#messenger:platformCurrencyMsg/debited/brcoin";
       
-      public static const PLATFORMCURRENCYMSG_RECEIVED_STPCOIN:String = "#messenger:platformCurrencyMsg/received/stpcoin";
-      
-      public static const PLATFORMCURRENCYMSG_DEBITED_STPCOIN:String = "#messenger:platformCurrencyMsg/debited/stpcoin";
-      
       public static const PLATFORMCURRENCYMSG_RECEIVED_EQUIP_COIN:String = "#messenger:platformCurrencyMsg/received/equip_coin";
       
       public static const PLATFORMCURRENCYMSG_DEBITED_EQUIP_COIN:String = "#messenger:platformCurrencyMsg/debited/equip_coin";
@@ -2256,6 +2270,10 @@ package
       public static const PLATFORMCURRENCYMSG_RECEIVED_CLANVEHICLECOIN:String = "#messenger:platformCurrencyMsg/received/clanvehiclecoin";
       
       public static const PLATFORMCURRENCYMSG_DEBITED_CLANVEHICLECOIN:String = "#messenger:platformCurrencyMsg/debited/clanvehiclecoin";
+      
+      public static const PLATFORMCURRENCYMSG_RECEIVED_TOURCOIN:String = "#messenger:platformCurrencyMsg/received/tourcoin";
+      
+      public static const PLATFORMCURRENCYMSG_DEBITED_TOURCOIN:String = "#messenger:platformCurrencyMsg/debited/tourcoin";
       
       public static const PLATFORMCURRENCYMSG_RECEIVED_FREEXP:String = "#messenger:platformCurrencyMsg/received/freeXP";
       
@@ -2371,13 +2389,13 @@ package
       
       public static const SERVICECHANNELMESSAGES_INTEGRATEDAUCTION_LOSTRATE_TEXT:String = "#messenger:serviceChannelMessages/integratedAuction/lostRate/text";
       
-      public static const SERVICECHANNELMESSAGES_PERSONALRESERVESTITLE:String = "#messenger:serviceChannelMessages/personalReservesTitle";
+      public static const SERVICECHANNELMESSAGES_PERSONALRESERVESRELEASE_TITLE:String = "#messenger:serviceChannelMessages/personalReservesRelease/title";
       
-      public static const SERVICECHANNELMESSAGES_PERSONALRESERVESCONVERTED:String = "#messenger:serviceChannelMessages/personalReservesConverted";
+      public static const SERVICECHANNELMESSAGES_PERSONALRESERVESRELEASE_DESCRIPTION:String = "#messenger:serviceChannelMessages/personalReservesRelease/description";
       
-      public static const SERVICECHANNELMESSAGES_WOTPLUSINTRONOTIFICATION_HEADER:String = "#messenger:serviceChannelMessages/WotPlusIntroNotification/header";
+      public static const SERVICECHANNELMESSAGES_PERSONALRESERVESSOONEXPIRE_TITLE:String = "#messenger:serviceChannelMessages/personalReservesSoonExpire/title";
       
-      public static const SERVICECHANNELMESSAGES_WOTPLUSINTRONOTIFICATION_BODY:String = "#messenger:serviceChannelMessages/WotPlusIntroNotification/body";
+      public static const SERVICECHANNELMESSAGES_PERSONALRESERVESSOONEXPIRE_DESCRIPTION:String = "#messenger:serviceChannelMessages/personalReservesSoonExpire/description";
       
       public static const SERVICECHANNELMESSAGES_WINBACKSELECTABLEREWARDENTRY_HEADER:String = "#messenger:serviceChannelMessages/winbackSelectableRewardEntry/header";
       
@@ -2420,6 +2438,26 @@ package
       public static const SERVICECHANNELMESSAGES_STEAMEMAILCOMPLETION_HEADER:String = "#messenger:serviceChannelMessages/steamEmailCompletion/header";
       
       public static const SERVICECHANNELMESSAGES_STEAMEMAILCOMPLETION_BODY:String = "#messenger:serviceChannelMessages/steamEmailCompletion/body";
+      
+      public static const SERVICECHANNELMESSAGES_FAIRPLAYVIOLATION_TITLE_BANREMOVED:String = "#messenger:serviceChannelMessages/fairplayViolation/title/banRemoved";
+      
+      public static const SERVICECHANNELMESSAGES_FAIRPLAYVIOLATION_TEXT_BANREMOVED:String = "#messenger:serviceChannelMessages/fairplayViolation/text/banRemoved";
+      
+      public static const SERVICECHANNELMESSAGES_FAIRPLAYVIOLATION_BUTTON:String = "#messenger:serviceChannelMessages/fairplayViolation/button";
+      
+      public static const SERVICECHANNELMESSAGES_FAIRPLAYVIOLATION_TITLE_WARNING:String = "#messenger:serviceChannelMessages/fairplayViolation/title/warning";
+      
+      public static const SERVICECHANNELMESSAGES_FAIRPLAYVIOLATION_TEXT_WARNING:String = "#messenger:serviceChannelMessages/fairplayViolation/text/warning";
+      
+      public static const SERVICECHANNELMESSAGES_FAIRPLAYVIOLATION_TITLE_PENALTY:String = "#messenger:serviceChannelMessages/fairplayViolation/title/penalty";
+      
+      public static const SERVICECHANNELMESSAGES_FAIRPLAYVIOLATION_TEXT_PENALTY:String = "#messenger:serviceChannelMessages/fairplayViolation/text/penalty";
+      
+      public static const SERVICECHANNELMESSAGES_FAIRPLAYVIOLATION_TITLE_BAN:String = "#messenger:serviceChannelMessages/fairplayViolation/title/ban";
+      
+      public static const SERVICECHANNELMESSAGES_FAIRPLAYVIOLATION_TEXT_BAN:String = "#messenger:serviceChannelMessages/fairplayViolation/text/ban";
+      
+      public static const SERVICECHANNELMESSAGES_FAIRPLAYVIOLATION_BANDUEDATE:String = "#messenger:serviceChannelMessages/fairplayViolation/banDueDate";
       
       public static const DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_ENUM:Array = [DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_OFFLINE,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_NOTREADY,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_READY,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_INBATTLE,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_AFK];
        

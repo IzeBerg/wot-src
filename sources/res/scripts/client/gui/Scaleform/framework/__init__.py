@@ -65,54 +65,6 @@ class ContainerSettings(namedtuple('ContainerSettings', 'type clazz')):
 
 
 ContainerSettings.__new__.__defaults__ = (None, None)
-
-class ConditionalViewSettings(GroupedViewSettings):
-
-    @staticmethod
-    def __new__(cls, alias, clazzFunc, url, layer, group, event, scope, cacheable, containers, canDrag, canClose, isModal, isCentered, flags):
-        self = GroupedViewSettings.__new__(cls, alias, '', url, layer, group, event, scope, cacheable, containers, canDrag, canClose, isModal, isCentered, flags)
-        self.__clazzFunc = clazzFunc
-        self.__url = url
-        self.__layer = layer
-        self.__scope = scope
-        self.__group = group
-        return self
-
-    @property
-    def clazz(self):
-        return self.__clazzFunc()
-
-    @property
-    def url(self):
-        if callable(self.__url):
-            return self.__url()
-        return self.__url
-
-    @property
-    def layer(self):
-        if callable(self.__layer):
-            return self.__layer()
-        return self.__layer
-
-    @property
-    def scope(self):
-        if callable(self.__scope):
-            return self.__scope()
-        return self.__scope
-
-    @property
-    def group(self):
-        if callable(self.__group):
-            return self.__group()
-        return self.__group
-
-    def toImmutableSettings(self):
-        return GroupedViewSettings(*self._replace(clazz=self.clazz, url=self.url, layer=self.layer, scope=self.scope, group=self.group))
-
-
-ConditionalViewSettings.__new__.__defaults__ = (
- None, None, None, 0, None, None, False, None,
- True, True, False, True, 0)
 g_entitiesFactories = EntitiesFactories((
  DAAPIModuleFactory((WindowLayer.UNDEFINED,)),
  ViewFactory((

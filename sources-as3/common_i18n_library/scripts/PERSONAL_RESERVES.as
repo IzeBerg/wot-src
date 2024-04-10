@@ -3,65 +3,19 @@ package
    public class PERSONAL_RESERVES
    {
       
-      public static const HANGARENTRY_ONLYONCEHINT:String = "#personal_reserves:hangarEntry/onlyOnceHint";
-      
       public static const HANGARENTRY_MINUTE:String = "#personal_reserves:hangarEntry/minute";
       
       public static const HANGARENTRYTOOLTIP_TOOLTIPDISABLED:String = "#personal_reserves:hangarEntryTooltip/tooltipDisabled";
       
       public static const HANGARENTRYTOOLTIP_BONUS:String = "#personal_reserves:hangarEntryTooltip/bonus";
       
-      public static const CONVERSIONVIEW_MAINTITLE:String = "#personal_reserves:conversionView/mainTitle";
-      
-      public static const CONVERSIONVIEW_MAINDESCRIPTION:String = "#personal_reserves:conversionView/mainDescription";
-      
-      public static const CONVERSIONVIEW_BATTLEXPTITLE:String = "#personal_reserves:conversionView/battleXPTitle";
-      
-      public static const CONVERSIONVIEW_BATTLEXPSUBTITLE:String = "#personal_reserves:conversionView/battleXPSubtitle";
-      
-      public static const CONVERSIONVIEW_CREDITSTITLE:String = "#personal_reserves:conversionView/creditsTitle";
-      
-      public static const CONVERSIONVIEW_CREDITSSUBTITLE:String = "#personal_reserves:conversionView/creditsSubtitle";
-      
-      public static const CONVERSIONVIEW_CREWFREEXPTITLE:String = "#personal_reserves:conversionView/crewFreeXPTitle";
-      
-      public static const CONVERSIONVIEW_CREWANDFREEXPSUBTITLE:String = "#personal_reserves:conversionView/crewAndFreeXPSubtitle";
-      
-      public static const CONVERSIONVIEW_CREWXPSUBTITLE:String = "#personal_reserves:conversionView/crewXPSubtitle";
-      
-      public static const CONVERSIONVIEW_FREEXPSUBTITLE:String = "#personal_reserves:conversionView/freeXPSubtitle";
-      
-      public static const CONVERSIONVIEW_NOCONVERSION:String = "#personal_reserves:conversionView/noConversion";
-      
-      public static const CONVERSIONVIEW_BOOSTERDESCRIPTION:String = "#personal_reserves:conversionView/boosterDescription";
-      
       public static const INTRO_TITLE:String = "#personal_reserves:intro/title";
       
-      public static const INTRO_PAGES_TITLE1:String = "#personal_reserves:intro/pages/title1";
-      
-      public static const INTRO_PAGES_DESCRIPTION1:String = "#personal_reserves:intro/pages/description1";
-      
-      public static const INTRO_PAGES_TITLE2:String = "#personal_reserves:intro/pages/title2";
-      
-      public static const INTRO_PAGES_DESCRIPTION2:String = "#personal_reserves:intro/pages/description2";
-      
-      public static const INTRO_PAGES_TITLE3:String = "#personal_reserves:intro/pages/title3";
-      
-      public static const INTRO_PAGES_DESCRIPTION3:String = "#personal_reserves:intro/pages/description3";
-      
-      public static const INTRO_PAGES_TITLE4:String = "#personal_reserves:intro/pages/title4";
-      
-      public static const INTRO_PAGES_DESCRIPTION4:String = "#personal_reserves:intro/pages/description4";
-      
-      public static const INTRO_PAGES_TITLE5:String = "#personal_reserves:intro/pages/title5";
-      
-      public static const INTRO_PAGES_DESCRIPTION5:String = "#personal_reserves:intro/pages/description5";
+      public static const INTRO_DESCRIPTION:String = "#personal_reserves:intro/description";
       
       public static const INTRO_BUTTONS_CLOSE:String = "#personal_reserves:intro/buttons/close";
       
-      public static const INTRO_BUTTONS_CONVERSIONINFO:String = "#personal_reserves:intro/buttons/conversionInfo";
-      
-      public static const ACTIVATION_ONLYONCEHINT:String = "#personal_reserves:activation/onlyOnceHint";
+      public static const INTRO_BUTTONS_DETAILS:String = "#personal_reserves:intro/buttons/details";
       
       public static const ACTIVATION_TITLE:String = "#personal_reserves:activation/title";
       
@@ -113,6 +67,12 @@ package
       
       public static const ACTIVATION_CLANBOOSTERSDESCRIPTIONCREWANDFREE:String = "#personal_reserves:activation/clanBoostersDescriptionCrewAndFree";
       
+      public static const ACTIVATION_FOOTER:String = "#personal_reserves:activation/footer";
+      
+      public static const ACTIVATION_SUBFOOTER_MAIN:String = "#personal_reserves:activation/subFooter/main";
+      
+      public static const ACTIVATION_SUBFOOTER_DEPOT:String = "#personal_reserves:activation/subFooter/depot";
+      
       public static const ACTIVATION_UPGRADEBOOSTERTITLE:String = "#personal_reserves:activation/upgradeBoosterTitle";
       
       public static const ACTIVATION_UPGRADEBOOSTERDESCRIPTION:String = "#personal_reserves:activation/upgradeBoosterDescription";
@@ -144,12 +104,6 @@ package
       public static const NORESERVETOOLTIP_INFOTEXT:String = "#personal_reserves:noReserveTooltip/infoText";
       
       public static const FINISHEDRESERVETOOLTIP_TEXT:String = "#personal_reserves:finishedReserveTooltip/text";
-      
-      public static const BOOSTER_USEBY_TIMELEFT_DAYS:String = "#personal_reserves:booster/useby/timeLeft/days";
-      
-      public static const BOOSTER_USEBY_TIMELEFT_HOURS:String = "#personal_reserves:booster/useby/timeLeft/hours";
-      
-      public static const BOOSTER_USEBY_TIMELEFT_MINUTES:String = "#personal_reserves:booster/useby/timeLeft/minutes";
       
       public static const DEPOT_BUYBUTTON:String = "#personal_reserves:depot/buyButton";
        

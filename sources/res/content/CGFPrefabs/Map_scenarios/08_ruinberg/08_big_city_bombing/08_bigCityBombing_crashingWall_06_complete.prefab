@@ -103,11 +103,15 @@
 		</ComponentPool>
 		<ComponentPool>
 			<type>SequenceComponent</type>
-			<version>1</version>
+			<version>2</version>
 			<component>
 				<objectIndex>0</objectIndex>
 				<flags>35</flags>
 				<config>
+					<property>
+						<name>loop</name>
+						<value>0</value>
+					</property>
 					<property>
 						<name>autoStart</name>
 						<value>0</value>
@@ -142,10 +146,6 @@
 										<value>25</value>
 									</property>
 									<property>
-										<name>duration</name>
-										<value>25</value>
-									</property>
-									<property>
 										<name>parameters</name>
 										<collection>
 											<item>
@@ -164,7 +164,15 @@
 															<item>
 																<object>
 																	<property>
+																		<name>valueType</name>
+																		<value>bool</value>
+																	</property>
+																	<property>
 																		<name>value</name>
+																		<value>1</value>
+																	</property>
+																	<property>
+																		<name>type</name>
 																		<value>1</value>
 																	</property>
 																	<property>
@@ -173,6 +181,25 @@
 																			0.001
 																			<!--BW_String-->
 																		</value>
+																	</property>
+																	<property>
+																		<name>tangents</name>
+																		<object>
+																			<property>
+																				<name>left</name>
+																				<value>
+																					6.28319
+																					<!--BW_String-->
+																				</value>
+																			</property>
+																			<property>
+																				<name>right</name>
+																				<value>
+																					6.28319
+																					<!--BW_String-->
+																				</value>
+																			</property>
+																		</object>
 																	</property>
 																</object>
 															</item>
@@ -199,14 +226,7 @@
 									</property>
 									<property>
 										<name>end</name>
-										<value>60</value>
-									</property>
-									<property>
-										<name>duration</name>
-										<value>
-											37.6333
-											<!--BW_String-->
-										</value>
+										<value>50</value>
 									</property>
 									<property>
 										<name>parameters</name>
@@ -215,10 +235,6 @@
 								</object>
 							</item>
 						</collection>
-					</property>
-					<property>
-						<name>time</name>
-						<value>0</value>
 					</property>
 				</config>
 			</component>

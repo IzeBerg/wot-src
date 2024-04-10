@@ -56,7 +56,7 @@ package net.wg.gui.lobby.settings.vo.config
       
       public var minimapAlpha:SettingsControlProp = null;
       
-      public var enablePostMortemDelay:SettingsControlProp = null;
+      public var postmortemMode:SettingsControlProp = null;
       
       public var enableOpticalSnpEffect:SettingsControlProp = null;
       
@@ -178,7 +178,7 @@ package net.wg.gui.lobby.settings.vo.config
             "gameplay_epicDomination":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "gameplay_devMaps":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "minimapAlpha":createControl(ControlsFactory.TYPE_SLIDER).build(),
-            "enablePostMortemDelay":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
+            "postmortemMode":createControl(ControlsFactory.TYPE_DROPDOWN).build(),
             "enableOpticalSnpEffect":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "minimapAlphaEnabled":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "hangarCamPeriod":createControl(ControlsFactory.TYPE_DROPDOWN).build(),
@@ -274,8 +274,8 @@ package net.wg.gui.lobby.settings.vo.config
          this.gameplay_devMaps = null;
          this.minimapAlpha.dispose();
          this.minimapAlpha = null;
-         this.enablePostMortemDelay.dispose();
-         this.enablePostMortemDelay = null;
+         this.postmortemMode.dispose();
+         this.postmortemMode = null;
          this.enableOpticalSnpEffect.dispose();
          this.enableOpticalSnpEffect = null;
          this.replayEnabled.dispose();

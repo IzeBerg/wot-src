@@ -150,6 +150,13 @@ class Inventory(object):
         self.__account._doCmdIntArr(AccountCommands.CMD_LEARN_CREW_BOOK, arr, proxy)
         return
 
+    def convertJunkTankmen(self, callback, errorStr='', ext=None):
+        proxy = None
+        if callback is not None:
+            proxy = lambda requestID, resultID, errorStr, ext={}: callback(resultID, ext)
+        self.__account._doCmdInt(AccountCommands.CMD_CONVERT_JUNK_TANKMEN, 0, proxy)
+        return
+
     def equip(self, vehInvID, itemCompDescr, callback):
         if self.__ignore:
             if callback is not None:
@@ -513,12 +520,39 @@ class Inventory(object):
     def addGoodie(self, goodieID, amount, callback=None):
         self.__account._doCmdInt2(AccountCommands.CMD_ADD_GOODIE, goodieID, amount, callback)
 
+    def addExpiringGoodie(self, goodieID, amount, expirePeriod, callback=None):
+        if callback is None:
+            callback = lambda reqID, resID, errStr: _logger.debug('addExpiringGoodie result: %s, %s, %s', reqID, resID, errStr)
+        self.__account._doCmdInt3(AccountCommands.CMD_ADD_EXPIRING_GOODIE, goodieID, amount, expirePeriod, callback)
+        return
+
     def equipOptDevsSequence(self, vehInvID, devices, callback):
         if self.__ignore:
             if callback is not None:
                 callback(AccountCommands.RES_NON_PLAYER, '', {})
             return
         self.__account.shop.waitForSync(partial(self.__equipOptDevsSequenceOnShopSynced, vehInvID, devices, callback))
+        return
+
+    def destroyModernizedOptDev(self, vehInvID, deviceCompDescr, callback):
+        if self.__ignore:
+            if callback is not None:
+                callback(AccountCommands.RES_NON_PLAYER)
+            return
+        self.__account.shop.waitForSync(partial(self.__destroyModernizedOptDev, vehInvID, deviceCompDescr, callback))
+        return
+
+    def __destroyModernizedOptDev(self, vehInvID, deviceCompDescr, callback, resultID, shopRev):
+        if resultID < 0:
+            if callback is not None:
+                callback(resultID)
+            return
+        if callback is not None:
+            proxy = lambda requestID, resultID, errorStr, ext=None: callback(resultID, ext)
+        else:
+            proxy = None
+        arr = [shopRev, vehInvID, deviceCompDescr]
+        self.__account._doCmdIntArr(AccountCommands.CMD_DSTR_MODERNIZED_OPTDEV, arr, proxy)
         return
 
     def __onGetItemsResponse(self, itemTypeIdx, callback, resultID):
@@ -736,7 +770,7 @@ class Inventory(object):
                 callback(resultID)
             return
         if callback is not None:
-            proxy = lambda requestID, resultID, errorStr, ext=None: callback(resultID, ext)
+            proxy = lambda requestID, resultID, errorStr, ext=None: callback(resultID, errorStr, ext)
         else:
             proxy = None
         arr = [

@@ -302,6 +302,15 @@ class _IntegratedAuctionLostRateParser(SectionParser):
         return proxy_data.ShowAuctionLostRateMessage(messageData=messageData)
 
 
+class _ClanSupplyQuestUpdatedParser(SectionParser):
+
+    def getTagName(self):
+        return 'clansupply_quest_update'
+
+    def parse(self, section):
+        return proxy_data.ClanSupplyQuestUpdateMessage(section.readString('name'), section.readInt('progress'), section.readString('status'))
+
+
 class ProxyDataItemParser_v2(_ProxyDataItemsParser):
 
     def __init__(self):
@@ -329,4 +338,5 @@ class ProxyDataItemParser_v2(_ProxyDataItemsParser):
          _MapboxRewardReceivedParser(),
          _IntegratedAuctionRateErrorParser(),
          _IntegratedAuctionBelowCompetitiveRateParser(),
-         _IntegratedAuctionLostRateParser()))
+         _IntegratedAuctionLostRateParser(),
+         _ClanSupplyQuestUpdatedParser()))

@@ -75,15 +75,11 @@ package net.wg.data.constants.generated
       
       public static const HIT_DIRECTION:String = "hitDirection";
       
+      public static const KILL_CAM_SOUND_PLAYER:String = "killCamSoundPlayer";
+      
       public static const SIEGE_MODE_INDICATOR:String = "siegeModeIndicator";
       
       public static const ROCKET_ACCELERATOR_INDICATOR:String = "rocketAcceleratorIndicator";
-      
-      public static const BOOTCAMP_CONSUMABLES_PANEL:String = "bootcampConsumablesPanel";
-      
-      public static const BOOTCAMP_RIBBONS_PANEL:String = "bootcampRibbonsPanel";
-      
-      public static const BOOTCAMP_SECONDARY_HINT:String = "bootcampSecondaryHint";
       
       public static const PENETRATION_PANEL:String = "penetrationPanel";
       
@@ -101,7 +97,7 @@ package net.wg.data.constants.generated
       
       public static const EPIC_MISSIONS_PANEL:String = "epicMissionsPanel";
       
-      public static const EPIC_SPECTATOR_VIEW:String = "epicSpectatorView";
+      public static const SPECTATOR_VIEW:String = "spectatorView";
       
       public static const EPIC_REINFORCEMENT_PANEL:String = "epicReinforcementPanel";
       
@@ -147,9 +143,13 @@ package net.wg.data.constants.generated
       
       public static const BATTLE_NOTIFIER:String = "battleNotifier";
       
+      public static const DEATH_CAM_HUD:String = "deathCamHud";
+      
       public static const CORRODING_SHOT_INDICATOR:String = "corrodingShotIndicator";
       
       public static const PERSONAL_RESERVES_TAB:String = "personalReservesTab";
+      
+      public static const POSTMORTEM_INFO_PAGE:String = "postmortemInfoPage";
       
       public static const EVENT_POSTMORTEM_PANEL:String = "eventPostmortemPanel";
       
@@ -168,12 +168,6 @@ package net.wg.data.constants.generated
       public static const BR_SELECT_RESPAWN:String = "BRSelectRespawn";
       
       public static const BR_RESPAWN_MESSAGE_PANEL:String = "BRRespawnMessagePanel";
-      
-      public static const BR_SHAMROCK_CONTROLLER:String = "BRShamrockController";
-      
-      public static const BR_SHAMROCK_SIDEBAR:String = "ShamrockSideBar";
-      
-      public static const BR_SHAMROCK_COLLECT:String = "ShamrockCollect";
       
       public static const FRAG_PANEL:String = "fragPanel";
       
@@ -194,6 +188,16 @@ package net.wg.data.constants.generated
       public static const PIERCING_DEBUG_PANEL:String = "piercingDebugPanel";
       
       public static const MAP_INFO_TIP:String = "mapInfoTip";
+      
+      public static const PVE_PROGRESS_COUNTER:String = "pveProgressCounter";
+      
+      public static const PVE_PRIMARY_OBJECTIVE:String = "pvePrimaryObjective";
+      
+      public static const PVE_SECONDARY_OBJECTIVES:String = "pveSecondaryObjectives";
+      
+      public static const PVE_PLAYER_LIVES:String = "pvePlayerLives";
+      
+      public static const FULLSCREEN_MAP:String = "fullscreenMap";
       
       public static const COMP7_TANK_CAROUSEL:String = "comp7BattleTankCarousel";
       

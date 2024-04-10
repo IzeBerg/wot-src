@@ -9,6 +9,10 @@ package net.wg.gui.lobby.battleResults.event
       
       public static const SHOW_DETAILS_PREMIUM:String = "showDetailsPremium";
       
+      public static const SHOW_DETAILS_WOT_PLUS:String = "showDetailsWotPlus";
+      
+      public static const SHOW_MANAGEABLE_XP_SCREEN:String = "showManageableXPScreen";
+      
       public static const SHOW_PROGRESSIVE_REWARD_VIEW:String = "ShowProgressiveRewardView";
       
       public static const BATTLE_QUEUE_ENTERED:String = "BattleLoadingStarted";

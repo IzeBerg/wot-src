@@ -16,7 +16,7 @@ BATTLE_RESULTS = [
  (
   'currencies', dict, {},
   MergeDictPacker((
-   'stpcoin', dict, {},
+   'brcoin', dict, {},
    MergeDictPacker((
     'count', int, 0, None, 'sum'), (
     'original', int, 0, None, 'sum'), (
@@ -25,9 +25,6 @@ BATTLE_RESULTS = [
     'premiumPlusFactor100', int, 0, None, 'any'), (
     'premiumVipFactor100', int, 0, None, 'any'), (
     'appliedPremiumFactor100', int, 0, None, 'any'), (
-    'bonusStpCoinFactor', int, 0, None, 'any'), (
-    'coinsForPlace', int, 0, None, 'any'), (
-    'leaveCoins', int, 0, None, 'any'), (
     'subtotal', int, 0, None, 'sum')),
    'joinByEachPacker')),
   'joinByEachPacker', ENTRY_TYPE.VEHICLE_SELF)]

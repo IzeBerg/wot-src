@@ -62,14 +62,10 @@ class _PlayerEvents(object):
         self.onGuiCacheSyncCompleted = Event.Event()
         self.onPMLocksChanged = Event.Event()
         self.onDailyQuestsInfoChange = Event.Event()
-        self.onBootcampEnqueued = Event.Event()
-        self.onBootcampStartChoice = Event.Event()
-        self.onBootcampAccountMigrationComplete = Event.Event()
         self.onNotification = Event.Event()
         self.onTeamChanged = Event.Event()
         self.onDisconnected = Event.Event()
         self.onShowDevelopmentInfo = Event.Event()
-        self.onEntityCheckOutEnqueued = Event.Event()
         self.onRoundFinished = Event.Event()
         self.crosshairPanelInitialized = Event.Event()
         self.onServerReplayEntering = Event.Event()
@@ -82,6 +78,7 @@ class _PlayerEvents(object):
         self.onShowBattleHint = Event.SafeEvent()
         self.onHideBattleHint = Event.SafeEvent()
         self.onEmptyBattleHintsQueue = Event.SafeEvent()
+        self.onTracerReceived = Event.Event()
 
 
 g_playerEvents = _PlayerEvents()

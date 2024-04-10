@@ -48,6 +48,8 @@ package net.wg.gui.battle.views.consumablesPanel
       
       public var quantityField:TextField = null;
       
+      public var infinity:MovieClip = null;
+      
       public var nextIndicator:MovieClip = null;
       
       public var selectedIndicator:MovieClip = null;
@@ -98,6 +100,10 @@ package net.wg.gui.battle.views.consumablesPanel
          {
             TextFieldEx.setNoTranslate(this.quantityField,true);
          }
+         if(this.infinity)
+         {
+            this.infinity.visible = false;
+         }
       }
       
       override protected function configUI() : void
@@ -136,6 +142,7 @@ package net.wg.gui.battle.views.consumablesPanel
          this.glow.dispose();
          this.glow = null;
          this.selectedIndicator = null;
+         this.infinity = null;
          this.nextIndicator = null;
          this.quantityField = null;
          this.spgShotResultIndicator = null;
@@ -281,6 +288,15 @@ package net.wg.gui.battle.views.consumablesPanel
                   this.nextIndicator.gotoAndPlay(BATTLE_ITEM_STATES.SHOW);
                }
             }
+         }
+      }
+      
+      public function setInfinity(param1:Boolean = false) : void
+      {
+         if(this.infinity)
+         {
+            this.infinity.visible = param1;
+            this.quantityField.visible = !param1;
          }
       }
       

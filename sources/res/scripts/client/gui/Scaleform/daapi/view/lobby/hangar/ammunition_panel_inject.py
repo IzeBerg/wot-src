@@ -3,16 +3,14 @@ from shared_utils import nextTick
 from frameworks.wulf import ViewFlags
 from gui.Scaleform.daapi.view.meta.AmmunitionPanelInjectMeta import AmmunitionPanelInjectMeta
 from gui.impl.lobby.tank_setup.ammunition_panel.hangar_view import HangarAmmunitionPanelView
-from gui.impl.lobby.tank_setup.bootcamp.ammunition_panel import BootcampAmmunitionPanelView
 from gui.impl.lobby.tank_setup.frontline.ammunition_panel import FrontlineAmmunitionPanelView
 from battle_royale.gui.impl.lobby.tank_setup.ammunition_panel import BattleRoyaleAmmunitionPanelView
 from gui.prb_control.entities.listener import IGlobalListener
 from gui.shared.system_factory import collectAmmunitionPanelView
 from helpers import dependency
-from skeletons.gui.game_control import IBootcampController, IEpicBattleMetaGameController, IFunRandomController, IHangarGuiController, IBattleRoyaleController
+from skeletons.gui.game_control import IEpicBattleMetaGameController, IFunRandomController, IHangarGuiController, IBattleRoyaleController
 
 class AmmunitionPanelInject(AmmunitionPanelInjectMeta, IGlobalListener):
-    __bootcampController = dependency.descriptor(IBootcampController)
     __epicController = dependency.descriptor(IEpicBattleMetaGameController)
     __hangarComponentsCtrl = dependency.descriptor(IHangarGuiController)
     __funRandomCtrl = dependency.descriptor(IFunRandomController)
@@ -67,11 +65,9 @@ class AmmunitionPanelInject(AmmunitionPanelInjectMeta, IGlobalListener):
         self.as_clearHelpLayoutS()
 
     def __getInjectViewClass(self):
-        if self.__bootcampController.isInBootcamp():
-            return BootcampAmmunitionPanelView
+        if self.__epicController.isEpicPrbActive():
+            return FrontlineAmmunitionPanelView
         else:
-            if self.__epicController.isEpicPrbActive():
-                return FrontlineAmmunitionPanelView
             if self.__battleRoyaleController.isBattleRoyaleMode():
                 return BattleRoyaleAmmunitionPanelView
             ammunitionPanelViewCls = collectAmmunitionPanelView(self.__hangarComponentsCtrl.getAmmoInjectViewAlias())

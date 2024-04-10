@@ -7,13 +7,19 @@ package
       
       public static const ITEMS_BROCHURE_NONATIONNAME:String = "#crew_books:items/brochure/noNationName";
       
+      public static const ITEMS_BROCHURE_NONATIONUPPERCASENAME:String = "#crew_books:items/brochure/noNationUppercaseName";
+      
       public static const ITEMS_GUIDE_NAME:String = "#crew_books:items/guide/Name";
       
       public static const ITEMS_GUIDE_NONATIONNAME:String = "#crew_books:items/guide/noNationName";
       
+      public static const ITEMS_GUIDE_NONATIONUPPERCASENAME:String = "#crew_books:items/guide/noNationUppercaseName";
+      
       public static const ITEMS_CREWBOOK_NAME:String = "#crew_books:items/crewBook/Name";
       
       public static const ITEMS_CREWBOOK_NONATIONNAME:String = "#crew_books:items/crewBook/noNationName";
+      
+      public static const ITEMS_CREWBOOK_NONATIONUPPERCASENAME:String = "#crew_books:items/crewBook/noNationUppercaseName";
       
       public static const ITEMS_PERSONALBOOK_NAME:String = "#crew_books:items/personalBook/Name";
       

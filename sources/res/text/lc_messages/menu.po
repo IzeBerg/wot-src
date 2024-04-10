@@ -385,14 +385,12 @@ msgid "awardWindow/telecomAward/description/full/Twitchprime"
 msgstr ""
 "Congratulations! You've received a special supply drop included with Prime Gaming:\n"
 "%(vehicles)s\n"
-"• Crew trained to 100%%\n"
 "• An additional Garage slot"
 
 msgid "awardWindow/telecomAward/description/full/default"
 msgstr ""
 "Congratulations! You've received a special supply drop included with the Igrovoy tariff:\n"
 "%(vehicles)s\n"
-"• Crew trained to 100%%.\n"
 "• %(prem)s for the duration of the tariff.\n"
 "• An additional Garage slot."
 
@@ -403,14 +401,14 @@ msgid "awardWindow/telecomAward/description/withBrotherhood/Twitchprime"
 msgstr ""
 "Congratulations! You've received a special supply drop included with Prime Gaming:\n"
 "%(vehicles)s\n"
-"• Crew trained to 100%% (including the Brothers in Arms perk trained to 100%%).\n"
+"• Crew with the Brothers in Arms perk.\n"
 "• An additional Garage slot."
 
 msgid "awardWindow/telecomAward/description/withBrotherhood/default"
 msgstr ""
 "Congratulations! You've received a special supply drop included with the Igrovoy tariff:\n"
 "%(vehicles)s\n"
-"• Crew trained to 100%% (including the Brothers in Arms perk trained to 100%%).\n"
+"• Crew with the Brothers in Arms perk.\n"
 "• %(prem)s for the duration of the tariff.\n"
 "• An additional Garage slot."
 
@@ -500,126 +498,19 @@ msgid "badge/new"
 msgstr "REWARD RECEIVED"
 
 msgid "badgePage/tutorial/newSuffixBadge"
-msgstr "BADGE AVAILABLE"
-
-msgid "barracks/barracksRenderer/placesCount"
-msgstr "Available Bunks:"
-
-msgid "barracks/btnBuyBerth"
-msgstr "Enlarge Barracks"
-
-msgid "barracks/btnBuyBerthDecs"
-msgstr "Enlarge Barracks by adding {%d} bunks?"
-
-msgid "barracks/btnBuyTankman"
-msgstr "Recruit"
+msgstr "BANNER AVAILABLE"
 
 msgid "barracks/btnDissmiss"
 msgstr "Retire"
 
-msgid "barracks/btnNewPlace"
-msgstr "Enlarge Barracks"
-
-msgid "barracks/btnRecovery"
-msgstr "Recover"
-
-msgid "barracks/btnRecruit"
-msgstr "Recruit"
-
-msgid "barracks/btnRecruitNotRecruited"
-msgstr "Recruit"
-
 msgid "barracks/btnUnload"
 msgstr "Send to Barracks"
-
-msgid "barracks/dismissedTankmenCount"
-msgstr "Retired crew members: %(curValue)s of %(total)s"
-
-msgid "barracks/menu/locationFilter/barracks"
-msgstr "In Barracks"
-
-msgid "barracks/menu/locationFilter/barracksAndTanks"
-msgstr "In Barracks and in vehicles"
-
-msgid "barracks/menu/locationFilter/dismissed"
-msgstr "Retired"
-
-msgid "barracks/menu/locationFilter/notRecruited"
-msgstr "Recruits"
-
-msgid "barracks/menu/locationFilter/tanks"
-msgstr "In all vehicles in Garage"
-
-msgid "barracks/menu/locationFilter/textfield"
-msgstr "Location:"
-
-msgid "barracks/menu/roleFilter/all"
-msgstr "All crew members"
-
-msgid "barracks/menu/roleFilter/commander"
-msgstr "Commanders"
-
-msgid "barracks/menu/roleFilter/driver"
-msgstr "Drivers"
-
-msgid "barracks/menu/roleFilter/gunner"
-msgstr "Gunners"
-
-msgid "barracks/menu/roleFilter/loader"
-msgstr "Loaders"
-
-msgid "barracks/menu/roleFilter/radioman"
-msgstr "Radio Operators"
-
-msgid "barracks/menu/roleFilter/textfield"
-msgstr "Qualification:"
-
-msgid "barracks/menu/tankTypeFilter/textfield"
-msgstr "Specialization:"
-
-msgid "barracks/noFilteredRecoveryTankmen/message"
-msgstr "No dismissed crew members matching the selected filter"
-
-msgid "barracks/noNotRecruitedTankmen/message"
-msgstr ""
-"All available recruits received during special events will be displayed "
-"here. They can be recruited for free."
-
-msgid "barracks/noNotRecruitedTankmen/title"
-msgstr "No Available Recruits"
-
-msgid "barracks/noRecoveryTankmen/message"
-msgstr ""
-"Only crew members with enough experience to train at least one perk to 100%% (or with at least one perk trained) are included here after they are dismissed. You can recover such a crew member within a period of %(totalDays)s d:\n"
-"• for free—during the next %(freeDays)s d after dismissal\n"
-"• for %(price)s—during the next %(paidDays)s d after dismissal."
-
-msgid "barracks/noRecoveryTankmen/title"
-msgstr "No Dismissed Crew Members"
 
 msgid "barracks/notRecruitedActivateBefore"
 msgstr "Through %(date)s"
 
-msgid "barracks/notRecruitedCount"
-msgstr "Recruits: %(total)s"
-
-msgid "barracks/placesCount"
-msgstr "Available Bunks: %(free)s of %(total)s"
-
-msgid "barracks/recoveryCount"
-msgstr "%(info)s Allowed total: %(total)s"
-
-msgid "barracks/tankmenCount"
-msgstr "Crew members: %(curValue)s of %(total)s"
-
 msgid "battleAbility/title"
 msgstr "Combat Reserves"
-
-msgid "battleRoyale/contextMenu/takeRent"
-msgstr "Rent for %(days)s days"
-
-msgid "battleRoyale/contextMenu/takeTestDrive"
-msgstr "Take for a %(days)s-day test drive"
 
 msgid "blueprints/conversionView/btnCancel"
 msgstr "Cancel"
@@ -2737,7 +2628,7 @@ msgid "header/account/popover/tutorial/newBadge"
 msgstr "BADGE AVAILABLE"
 
 msgid "header/account/popover/tutorial/newSuffixBadge"
-msgstr "BADGE AVAILABLE"
+msgstr "BANNER AVAILABLE"
 
 msgid "header/account/premium/days"
 msgstr "d"
@@ -3896,7 +3787,7 @@ msgid "loading/battleTypes/28"
 msgstr "Strategist Training"
 
 msgid "loading/battleTypes/29"
-msgstr " "
+msgstr "%(modeName)s"
 
 msgid "loading/battleTypes/30"
 msgstr "Onslaught"
@@ -3906,6 +3797,9 @@ msgstr "Warm-Up"
 
 msgid "loading/battleTypes/33"
 msgstr "Onslaught"
+
+msgid "loading/battleTypes/34"
+msgstr "Onslaught Training"
 
 msgid "loading/battleTypes/4"
 msgstr "Battle Training"
@@ -4000,6 +3894,9 @@ msgstr " "
 msgid "loading/battleTypes/desc/33"
 msgstr " "
 
+msgid "loading/battleTypes/desc/34"
+msgstr " "
+
 msgid "loading/battleTypes/desc/4"
 msgstr " "
 
@@ -4017,9 +3914,6 @@ msgstr " "
 
 msgid "loading/battleTypes/desc/9"
 msgstr " "
-
-msgid "loading/battleTypes/subTitle/23"
-msgstr "Shamrock Showdown"
 
 msgid "loading/helpTip"
 msgstr "For help in battle, press F1."
@@ -5978,29 +5872,6 @@ msgstr "Discount"
 msgid "shop/table/notForSale"
 msgstr "Not for sale"
 
-msgid "skillDropForFreeWindow/actionTime/description"
-msgstr "Grace period ends in:"
-
-msgid "skillDropForFreeWindow/actionTime/title"
-msgstr "Grace Period"
-
-msgid "skillDropForFreeWindow/days"
-msgstr "%(value)s d"
-
-msgid "skillDropForFreeWindow/hours"
-msgstr "%(value)s h"
-
-msgid "skillDropForFreeWindow/minutes"
-msgstr "%(value)s min"
-
-msgid "skillDropForFreeWindow/seconds"
-msgstr "%(value)s s"
-
-msgid "skillDropForFreeWindow/timer/tooltip"
-msgstr ""
-"Resetting trained perks without losing Crew XP is free until the end of the "
-"grace period."
-
 msgid "specPrebetles/listTitle"
 msgstr "Team Rooms"
 
@@ -6763,6 +6634,9 @@ msgstr "{min} min"
 
 msgid "trade/in"
 msgstr "Available for trade-in"
+
+msgid "training/alertText/onlyTierX"
+msgstr "Tier X vehicles only"
 
 msgid "training/create/battleTime"
 msgstr "Battle duration:"

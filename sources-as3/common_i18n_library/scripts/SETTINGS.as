@@ -763,7 +763,15 @@ package
       
       public static const GAME_ENABLEMORTALPOSTEFFECT:String = "#settings:game/enableMortalPostEffect";
       
-      public static const GAME_ENABLEDELAYPOSTEFFECT:String = "#settings:game/enableDelayPostEffect";
+      public static const GAME_POSTMORTEMMODE:String = "#settings:game/postmortemMode";
+      
+      public static const GAME_POSTMORTEMMODE_ANALYSIS:String = "#settings:game/postmortemMode/analysis";
+      
+      public static const GAME_POSTMORTEMMODE_SIMPLE:String = "#settings:game/postmortemMode/simple";
+      
+      public static const GAME_POSTMORTEMMODE_ENEMY:String = "#settings:game/postmortemMode/enemy";
+      
+      public static const GAME_POSTMORTEMMODE_SELF:String = "#settings:game/postmortemMode/self";
       
       public static const GAME_SHOWVEHICLESCOUNTER:String = "#settings:game/showVehiclesCounter";
       
@@ -1192,6 +1200,8 @@ package
       public static const MOUSE_SENSITIVITY_ART:String = "#settings:mouse/sensitivity/art";
       
       public static const MOUSE_SENSITIVITY_ART2:String = "#settings:mouse/sensitivity/art2";
+      
+      public static const MOUSE_SENSITIVITY_DEATHFREECAM:String = "#settings:mouse/sensitivity/deathfreecam";
       
       public static const MOUSE_STARTDIST:String = "#settings:mouse/startDist";
       

@@ -94,8 +94,11 @@ package net.wg.gui.battle.views
       {
          if(this.isQuestProgress)
          {
-            prebattleTimer.addEventListener(PrebattleTimerEvent.ALLOW_TO_SHOW_QP,this.onPrebattleTimerAllowToShowQpHandler);
-            prebattleTimer.addEventListener(PrebattleTimerEvent.RESET_ANIM_QP,this.onPrebattleTimerNeedResetAnimQpHandler);
+            if(prebattleTimer)
+            {
+               prebattleTimer.addEventListener(PrebattleTimerEvent.ALLOW_TO_SHOW_QP,this.onPrebattleTimerAllowToShowQpHandler);
+               prebattleTimer.addEventListener(PrebattleTimerEvent.RESET_ANIM_QP,this.onPrebattleTimerNeedResetAnimQpHandler);
+            }
             registerComponent(this.questProgressTopView,BATTLE_VIEW_ALIASES.QUEST_PROGRESS_TOP_VIEW);
          }
          super.onPopulate();
@@ -111,8 +114,11 @@ package net.wg.gui.battle.views
             this._questProgressAnimatedWrapper = null;
             this.questProgressTopAnimContainer.dispose();
             this.questProgressTopAnimContainer = null;
-            prebattleTimer.removeEventListener(PrebattleTimerEvent.ALLOW_TO_SHOW_QP,this.onPrebattleTimerAllowToShowQpHandler);
-            prebattleTimer.removeEventListener(PrebattleTimerEvent.RESET_ANIM_QP,this.onPrebattleTimerNeedResetAnimQpHandler);
+            if(prebattleTimer)
+            {
+               prebattleTimer.removeEventListener(PrebattleTimerEvent.ALLOW_TO_SHOW_QP,this.onPrebattleTimerAllowToShowQpHandler);
+               prebattleTimer.removeEventListener(PrebattleTimerEvent.RESET_ANIM_QP,this.onPrebattleTimerNeedResetAnimQpHandler);
+            }
          }
          super.onDispose();
       }

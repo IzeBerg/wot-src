@@ -1,5 +1,4 @@
 from PlayerEvents import g_playerEvents
-from bootcamp.BootCampEvents import g_bootcampEvents
 from constants import IS_IGR_ENABLED, ARENA_GUI_TYPE, ARENA_GUI_TYPE_LABEL
 from helpers import dependency
 from messenger import g_settings
@@ -30,7 +29,7 @@ _MAX_TRIES_FAILED_IN_LOBBY = 2
 _MAX_TRIES_FAILED_IN_BATTLE = 1
 
 class _UserPresence(ClientHolder):
-    __slots__ = ('__scope', '__isInBootcamp')
+    __slots__ = ('__scope', )
     igrCtrl = dependency.descriptor(IIGRController)
     sessionProvider = dependency.descriptor(IBattleSessionProvider)
     connectionMgr = dependency.descriptor(IConnectionManager)
@@ -38,7 +37,6 @@ class _UserPresence(ClientHolder):
     def __init__(self):
         super(_UserPresence, self).__init__()
         self.__scope = MESSENGER_SCOPE.UNKNOWN
-        self.__isInBootcamp = False
 
     def getUserScope(self):
         return self.__scope
@@ -52,7 +50,7 @@ class _UserPresence(ClientHolder):
         client = self.client()
         if not client or not client.isConnected():
             return False
-        if self.__scope == MESSENGER_SCOPE.BATTLE or self.__isInBootcamp:
+        if self.__scope == MESSENGER_SCOPE.BATTLE:
             if initial:
                 seq = (
                  PRESENCE.AVAILABLE, PRESENCE.DND)
@@ -78,13 +76,9 @@ class _UserPresence(ClientHolder):
 
     def addListeners(self):
         g_playerEvents.onIGRTypeChanged += self.__onIGRTypeChanged
-        g_bootcampEvents.onBootcampStarted += self.__onBootcampStarted
-        g_bootcampEvents.onBootcampFinished += self.__onBootcampFinished
 
     def removeListeners(self):
         g_playerEvents.onIGRTypeChanged -= self.__onIGRTypeChanged
-        g_bootcampEvents.onBootcampStarted -= self.__onBootcampStarted
-        g_bootcampEvents.onBootcampFinished -= self.__onBootcampFinished
 
     def __createQuery(self, presence):
         query = PresenceQuery(presence)
@@ -94,8 +88,6 @@ class _UserPresence(ClientHolder):
         if presence == PRESENCE.DND:
             if self.__scope == MESSENGER_SCOPE.BATTLE:
                 query.setArenaGuiLabel(self.sessionProvider.arenaVisitor.gui.getLabel())
-            elif self.__isInBootcamp:
-                query.setArenaGuiLabel(ARENA_GUI_TYPE_LABEL.LABELS[ARENA_GUI_TYPE.BOOTCAMP])
         return query
 
     def __onIGRTypeChanged(self, igrID, _):
@@ -106,14 +98,6 @@ class _UserPresence(ClientHolder):
             query = self.__createQuery(client.getClientPresence())
             query.setIgrID(igrID)
             client.sendPresence(query)
-
-    def __onBootcampStarted(self):
-        self.__isInBootcamp = True
-        self.sendPresence()
-
-    def __onBootcampFinished(self):
-        self.__isInBootcamp = False
-        self.sendPresence()
 
 
 class VoipHandler(object):

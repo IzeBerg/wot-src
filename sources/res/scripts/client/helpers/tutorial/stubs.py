@@ -2,22 +2,6 @@ from skeletons.tutorial import ITutorialLoader, IGuiController
 
 class StubGuiController(IGuiController):
 
-    @property
-    def lastHangarMenuButtonsOverride(self):
-        return
-
-    @property
-    def lastHeaderMenuButtonsOverride(self):
-        return
-
-    @property
-    def hangarHeaderEnabled(self):
-        return False
-
-    @property
-    def lastBattleSelectorHintOverride(self):
-        return
-
     def getViewTutorialID(self, _):
         return
 
@@ -63,25 +47,7 @@ class StubGuiController(IGuiController):
     def stopComponentAnimation(self, componentID, animType):
         pass
 
-    def showBootcampHint(self, componentID):
-        pass
-
-    def hideBootcampHint(self, componentID):
-        pass
-
     def setupViewContextHints(self, viewTutorialID, hintsData, hintsArgs=None):
-        pass
-
-    def overrideHangarMenuButtons(self, buttonsList=None):
-        pass
-
-    def overrideHeaderMenuButtons(self, buttonsList=None):
-        pass
-
-    def setHangarHeaderEnabled(self, enabled):
-        pass
-
-    def overrideBattleSelectorHint(self, overrideType=None):
         pass
 
     def clear(self):
@@ -100,6 +66,10 @@ class StubTutorialLoader(ITutorialLoader):
 
     @property
     def tutorial(self):
+        return
+
+    @property
+    def hintsManager(self):
         return
 
     @property

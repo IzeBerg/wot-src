@@ -1,8 +1,12 @@
 import BigWorld, Math
 
 def computeProjectileTrajectory(beginPoint, velocity, gravity, time, epsilon):
-    checkPoints = []
     endPoint = beginPoint + velocity.scale(time) + gravity.scale(time * time * 0.5)
+    return computeProjectileTrajectoryWithEnd(beginPoint, endPoint, velocity, gravity, epsilon)
+
+
+def computeProjectileTrajectoryWithEnd(beginPoint, endPoint, velocity, gravity, epsilon):
+    checkPoints = []
     stack = [
      (
       velocity, beginPoint, endPoint)]
@@ -32,6 +36,7 @@ def computeProjectileTrajectory(beginPoint, velocity, gravity, time, epsilon):
 
 try:
     computeProjectileTrajectory = BigWorld.wg_computeProjectileTrajectory
+    computeProjectileTrajectoryWithEnd = BigWorld.wg_computeProjectileTrajectoryWithEnd
 except AttributeError:
     pass
 
