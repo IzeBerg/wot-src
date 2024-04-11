@@ -3,29 +3,9 @@ package
    public class CREW_SKINS
    {
       
-      public static const FEATURE_HEADER:String = "#crew_skins:feature/Header";
-      
       public static const FEATURE_INUSE:String = "#crew_skins:feature/inUse";
       
       public static const FEATURE_INSTORAGE:String = "#crew_skins:feature/inStorage";
-      
-      public static const FEATURE_SKINSTABHEADER:String = "#crew_skins:feature/skinsTabHeader";
-      
-      public static const FEATURE_SOUND_HEADER:String = "#crew_skins:feature/sound/header";
-      
-      public static const FEATURE_TAB_RESTRICTIONS:String = "#crew_skins:feature/tab/restrictions";
-      
-      public static const FEATURE_TAB_ALLUSED:String = "#crew_skins:feature/tab/allUsed";
-      
-      public static const FEATURE_SOUND_NOSOUND:String = "#crew_skins:feature/sound/noSound";
-      
-      public static const FEATURE_NOCONTENT_HEADER:String = "#crew_skins:feature/noContent/header";
-      
-      public static const FEATURE_NOCONTENT_DESC1:String = "#crew_skins:feature/noContent/desc1";
-      
-      public static const FEATURE_NOCONTENT_DESC2:String = "#crew_skins:feature/noContent/desc2";
-      
-      public static const FEATURE_SKINUSEDWARNING:String = "#crew_skins:feature/skinUsedWarning";
       
       public static const RYBALKO_NAME:String = "#crew_skins:Rybalko/Name";
       
@@ -386,6 +366,36 @@ package
       public static const KADETTKNABE_LASTNAME:String = "#crew_skins:kadettKnabe/LastName";
       
       public static const KADETTKNABE_DESCR:String = "#crew_skins:kadettKnabe/Descr";
+      
+      public static const COSM_FARMER_NAME:String = "#crew_skins:cosm_farmer/Name";
+      
+      public static const COSM_FARMER_LASTNAME:String = "#crew_skins:cosm_farmer/LastName";
+      
+      public static const COSM_FARMER_DESCR:String = "#crew_skins:cosm_farmer/Descr";
+      
+      public static const COSM_ADAMS_NAME:String = "#crew_skins:cosm_adams/Name";
+      
+      public static const COSM_ADAMS_LASTNAME:String = "#crew_skins:cosm_adams/LastName";
+      
+      public static const COSM_ADAMS_DESCR:String = "#crew_skins:cosm_adams/Descr";
+      
+      public static const COSM_KOSTRITSYN_NAME:String = "#crew_skins:cosm_kostritsyn/Name";
+      
+      public static const COSM_KOSTRITSYN_LASTNAME:String = "#crew_skins:cosm_kostritsyn/LastName";
+      
+      public static const COSM_KOSTRITSYN_DESCR:String = "#crew_skins:cosm_kostritsyn/Descr";
+      
+      public static const COSM_HORTON_NAME:String = "#crew_skins:cosm_horton/Name";
+      
+      public static const COSM_HORTON_LASTNAME:String = "#crew_skins:cosm_horton/LastName";
+      
+      public static const COSM_HORTON_DESCR:String = "#crew_skins:cosm_horton/Descr";
+      
+      public static const COSM_GEORGE_NAME:String = "#crew_skins:cosm_george/Name";
+      
+      public static const COSM_GEORGE_LASTNAME:String = "#crew_skins:cosm_george/LastName";
+      
+      public static const COSM_GEORGE_DESCR:String = "#crew_skins:cosm_george/Descr";
        
       
       public function CREW_SKINS()

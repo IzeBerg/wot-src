@@ -41,60 +41,60 @@ package net.wg.infrastructure.managers.utils.impl
          return Values.SPACE_STR + _loc4_ + IMG_TAG_CLOSE;
       }
       
-      override public function formatPlayerName(param1:TextField, param2:IUserProps, param3:Boolean = false, param4:Boolean = false) : Boolean
+      override public function formatPlayerName(param1:TextField, param2:IUserProps, param3:Boolean = false, param4:Boolean = false, param5:String = "..") : Boolean
       {
-         var _loc19_:int = 0;
-         var _loc5_:TextFormat = param1.getTextFormat();
-         var _loc6_:Object = _loc5_.size;
-         var _loc7_:String = _loc5_.font;
-         var _loc8_:String = _loc5_.align;
-         var _loc9_:String = param2.prefix;
-         var _loc10_:String = Values.EMPTY_STR;
+         var _loc20_:int = 0;
+         var _loc6_:TextFormat = param1.getTextFormat();
+         var _loc7_:Object = _loc6_.size;
+         var _loc8_:String = _loc6_.font;
+         var _loc9_:String = _loc6_.align;
+         var _loc10_:String = param2.prefix;
          var _loc11_:String = Values.EMPTY_STR;
          var _loc12_:String = Values.EMPTY_STR;
          var _loc13_:String = Values.EMPTY_STR;
-         var _loc14_:String = param2.suffix;
-         var _loc15_:String = Values.EMPTY_STR;
-         var _loc16_:String = param2.isAnonymized && param4 ? Values.SPACE_STR + IMG_TAG_EYE_ICON : Values.EMPTY_STR;
+         var _loc14_:String = Values.EMPTY_STR;
+         var _loc15_:String = param2.suffix;
+         var _loc16_:String = Values.EMPTY_STR;
+         var _loc17_:String = param2.isAnonymized && param4 ? Values.SPACE_STR + IMG_TAG_EYE_ICON : Values.EMPTY_STR;
          if(param2.isAnonymized && param3)
          {
-            _loc10_ = param2.fakeName;
-            _loc15_ = _loc14_ + _loc16_;
+            _loc11_ = param2.fakeName;
+            _loc16_ = _loc15_ + _loc17_;
          }
          else
          {
-            _loc10_ = param2.userName;
+            _loc11_ = param2.userName;
             if(param2.clanAbbrev)
             {
-               _loc11_ = CLAN_TAG_OPEN + param2.clanAbbrev + CLAN_TAG_CLOSE;
+               _loc12_ = CLAN_TAG_OPEN + param2.clanAbbrev + CLAN_TAG_CLOSE;
             }
             if(param2.region)
             {
-               _loc12_ = Values.SPACE_STR + param2.region;
+               _loc13_ = Values.SPACE_STR + param2.region;
             }
-            _loc13_ = formatIgrStr(param2.tags,param2.igrType,param2.igrVspace);
-            _loc15_ = _loc12_ + _loc13_ + _loc14_ + _loc16_;
+            _loc14_ = formatIgrStr(param2.tags,param2.igrType,param2.igrVspace);
+            _loc16_ = _loc13_ + _loc14_ + _loc15_ + _loc17_;
          }
-         var _loc17_:String = _loc9_ + _loc10_ + _loc11_ + _loc15_;
-         applyTextProps(param1,_loc17_,_loc5_,_loc6_,_loc7_,_loc8_);
-         var _loc18_:Boolean = false;
+         var _loc18_:String = _loc10_ + _loc11_ + _loc12_ + _loc16_;
+         applyTextProps(param1,_loc18_,_loc6_,_loc7_,_loc8_,_loc9_);
+         var _loc19_:Boolean = false;
          if(param1.width < param1.textWidth + TEXT_FIELD_BOUNDS_WIDTH)
          {
-            _loc18_ = true;
-            _loc17_ = _loc9_ + _loc10_.substr(0,MIN_NAME_LENGTH) + CUT_SYMBOLS_STR + _loc11_ + _loc15_;
-            applyTextProps(param1,_loc17_,_loc5_,_loc6_,_loc7_,_loc8_);
+            _loc19_ = true;
+            _loc18_ = _loc10_ + _loc11_.substr(0,MIN_NAME_LENGTH) + param5 + _loc12_ + _loc16_;
+            applyTextProps(param1,_loc18_,_loc6_,_loc7_,_loc8_,_loc9_);
             if(param1.width >= param1.textWidth + TEXT_FIELD_BOUNDS_WIDTH)
             {
-               _loc15_ = _loc11_ + _loc15_;
+               _loc16_ = _loc12_ + _loc16_;
             }
-            _loc19_ = _loc10_.length - 1;
+            _loc20_ = _loc11_.length - 1;
             do
             {
-               _loc17_ = _loc9_ + _loc10_.substr(0,_loc19_) + CUT_SYMBOLS_STR + _loc15_;
-               applyTextProps(param1,_loc17_,_loc5_,_loc6_,_loc7_,_loc8_);
-               _loc19_--;
+               _loc18_ = _loc10_ + _loc11_.substr(0,_loc20_) + param5 + _loc16_;
+               applyTextProps(param1,_loc18_,_loc6_,_loc7_,_loc8_,_loc9_);
+               _loc20_--;
             }
-            while(param1.width < param1.textWidth + TEXT_FIELD_BOUNDS_WIDTH && _loc19_ > 0);
+            while(param1.width < param1.textWidth + TEXT_FIELD_BOUNDS_WIDTH && _loc20_ > 0);
             
          }
          if(!isNaN(param2.rgb))
@@ -103,9 +103,9 @@ package net.wg.infrastructure.managers.utils.impl
          }
          if(param2.isTeamKiller)
          {
-            param1.setTextFormat(TEAM_KILLER_FORMAT,_loc9_.length,param1.text.length - _loc15_.length);
+            param1.setTextFormat(TEAM_KILLER_FORMAT,_loc10_.length,param1.text.length - _loc16_.length);
          }
-         return _loc18_;
+         return _loc19_;
       }
       
       override public function getFullPlayerName(param1:IUserProps, param2:Boolean = false) : String

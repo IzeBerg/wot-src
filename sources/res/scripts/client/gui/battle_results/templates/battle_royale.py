@@ -86,7 +86,9 @@ _REWARDS_VO_META = base.PropertyMeta((
   'bonuses', [], 'bonuses'),
  ('completedQuestsCount', 0, 'completedQuestsCount'),
  (
-  'completedQuests', {}, 'completedQuests')))
+  'completedQuests', {}, 'completedQuests'),
+ (
+  'brAwardTokens', {}, 'brAwardTokens')))
 _REWARDS_VO_META.bind(battle_royale.BattleRoyaleRewardsBlock)
 BR_PERSONAL_STATS_BLOCK = base.StatsBlock(_PERSONAL_VO_META, 'personal')
 BR_PERSONAL_STATS_BLOCK.addNextComponent(battle_royale.BattleRoyaleFinancialBlock(_FINANCIAL_BLOCK_VO_META, 'financialBalance'))

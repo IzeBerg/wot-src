@@ -3,8 +3,9 @@ package net.wg.infrastructure.managers
    import flash.events.IEventDispatcher;
    import net.wg.infrastructure.interfaces.ISimpleManagedContainer;
    import net.wg.infrastructure.interfaces.IView;
+   import net.wg.infrastructure.wulf.IChildViewProxy;
    
-   public interface IContainerManager extends IEventDispatcher
+   public interface IContainerManager extends IEventDispatcher, IChildViewProxy
    {
        
       

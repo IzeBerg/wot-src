@@ -1,8 +1,11 @@
 from helpers import dependency
+from skeletons.gui.game_control import IReferralProgramController
 from skeletons.gui.shared import IItemsCache
 from web.web_client_api import Field, W2CSchema, w2c, w2capi
 from web.web_client_api.common import ItemPackType, sanitizeResPath, ItemPackTypeGroup
 from web.web_client_api.loot_boxes.bonus_wrappers import RandomCrewBooksWrapper, RandomGuideWrapper, RandomNationalBlueprintWrapper, CollectionItemWrapper, BonusAggregateWrapper
+from gui_lootboxes.gui.storage_context.context import ReturnPlaces
+from gui.Scaleform.daapi.view.lobby.referral_program import referral_program_helpers
 
 class _LootBoxSchema(W2CSchema):
     id = Field(required=True, type=int)
@@ -99,3 +102,17 @@ class LootBoxesWindowWebApiMixin(object):
             showStorageView(initialLootBoxId=cmd.id)
         else:
             showSpecificBoxInStorageView(category=cmd.category, lootBoxType=cmd.lootBoxType)
+
+
+class ReferralLootBoxesWindowWebApiMixin(object):
+    __referralCtrl = dependency.descriptor(IReferralProgramController)
+
+    @w2c(_LootBoxStorageViewSchema, 'referral_lootboxes_storage_window')
+    def showReferralLootBoxesStorage(self, cmd):
+        from gui_lootboxes.gui.shared.event_dispatcher import showSpecificBoxInStorageView
+
+        def closeCallback():
+            url = referral_program_helpers.getReferralShopURL()
+            self.__referralCtrl.showWindow(url=url)
+
+        showSpecificBoxInStorageView(category=cmd.category, lootBoxType=cmd.lootBoxType, returnPlace=ReturnPlaces.TO_REFERRAL, closeCallback=closeCallback)

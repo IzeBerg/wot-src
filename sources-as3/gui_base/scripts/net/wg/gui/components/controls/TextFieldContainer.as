@@ -30,13 +30,13 @@ package net.wg.gui.components.controls
       public function TextFieldContainer()
       {
          super();
-         this.isCacheAsBitmap = true;
+         this.init();
          this._tf = this.textField.getTextFormat();
       }
       
-      protected function set isCacheAsBitmap(param1:Boolean) : void
+      protected function init() : void
       {
-         this.textField.cacheAsBitmap = param1;
+         this.isCacheAsBitmap = true;
       }
       
       public final function dispose() : void
@@ -44,6 +44,11 @@ package net.wg.gui.components.controls
          this._disposed = true;
          this._tf = null;
          this.textField = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
       
       private function updateSize() : void
@@ -66,7 +71,14 @@ package net.wg.gui.components.controls
       
       public function set textColor(param1:uint) : void
       {
+         this._tf.color = param1;
          this.textField.textColor = param1;
+      }
+      
+      public function set textAlign(param1:String) : void
+      {
+         this._tf.align = param1;
+         this.textField.setTextFormat(this._tf);
       }
       
       public function set defaultTextFormat(param1:TextFormat) : void
@@ -121,6 +133,26 @@ package net.wg.gui.components.controls
          this.updateSize();
       }
       
+      public function get textFilters() : Array
+      {
+         return this.textField.filters;
+      }
+      
+      public function set textFilters(param1:Array) : void
+      {
+         this.textField.filters = param1;
+      }
+      
+      public function get textOffsetY() : int
+      {
+         return this.textField.y;
+      }
+      
+      public function set textOffsetY(param1:int) : void
+      {
+         this.textField.y = param1;
+      }
+      
       public function set fontSize(param1:int) : void
       {
          this._tf.size = param1;
@@ -139,9 +171,9 @@ package net.wg.gui.components.controls
          this.textField.autoSize = param1;
       }
       
-      public function isDisposed() : Boolean
+      protected function set isCacheAsBitmap(param1:Boolean) : void
       {
-         return this._disposed;
+         this.textField.cacheAsBitmap = param1;
       }
    }
 }

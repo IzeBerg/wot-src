@@ -15,6 +15,10 @@
 			<cooldownSeconds>105</cooldownSeconds>
 			<reuseCount>-1</reuseCount>
 			<activeSeconds>3</activeSeconds>
+			<ctrlItems>
+				<default>_ExtinguisherItem</default>
+				<replay>_ReplayItem</replay>
+			</ctrlItems>
 		</script>
 		<tooltipSection>equipment</tooltipSection>
 	</handExtinguishers>
@@ -38,6 +42,10 @@
 			<cooldownSeconds>90</cooldownSeconds>
 			<reuseCount>-1</reuseCount>
 			<activeSeconds>3</activeSeconds>
+			<ctrlItems>
+				<default>_ExtinguisherItem</default>
+				<replay>_ReplayItem</replay>
+			</ctrlItems>
 		</script>
 		<kpi>
 			<mul>
@@ -74,6 +82,10 @@
 			<cooldownSeconds>105</cooldownSeconds>
 			<reuseCount>-1</reuseCount>
 			<activeSeconds>3</activeSeconds>
+			<ctrlItems>
+				<default>_MedKitItem</default>
+				<replay>_ReplayMedKitItem</replay>
+			</ctrlItems>
 		</script>
 		<tooltipSection>equipment</tooltipSection>
 	</smallMedkit>
@@ -105,6 +117,10 @@
 			<cooldownSeconds>90</cooldownSeconds>
 			<reuseCount>-1</reuseCount>
 			<activeSeconds>3</activeSeconds>
+			<ctrlItems>
+				<default>_MedKitItem</default>
+				<replay>_ReplayMedKitItem</replay>
+			</ctrlItems>
 		</script>
 		<kpi>
 			<mul>
@@ -140,6 +156,10 @@
 			<cooldownSeconds>105</cooldownSeconds>
 			<reuseCount>-1</reuseCount>
 			<activeSeconds>3</activeSeconds>
+			<ctrlItems>
+				<default>_RepairKitItem</default>
+				<replay>_ReplayRepairKitItem</replay>
+			</ctrlItems>
 		</script>
 		<tooltipSection>equipment</tooltipSection>
 	</smallRepairkit>
@@ -170,6 +190,10 @@
 			<cooldownSeconds>90</cooldownSeconds>
 			<activeSeconds>3</activeSeconds>
 			<reuseCount>-1</reuseCount>
+			<ctrlItems>
+				<default>_RepairKitItem</default>
+				<replay>_ReplayRepairKitItem</replay>
+			</ctrlItems>
 		</script>
 		<kpi>
 			<mul>
@@ -209,6 +233,7 @@
 				1.0
 				<!--BW_String-->
 			</turretRotationSpeedFactor>
+			<ctrlItems/>
 		</script>
 		<kpi>
 			<mul>
@@ -253,6 +278,7 @@
 				1.05
 				<!--BW_String-->
 			</turretRotationSpeedFactor>
+			<ctrlItems/>
 		</script>
 		<kpi>
 			<mul>
@@ -305,6 +331,7 @@
 				1.1
 				<!--BW_String-->
 			</turretRotationSpeedFactor>
+			<ctrlItems/>
 		</script>
 		<kpi>
 			<mul>
@@ -342,6 +369,7 @@
 		<script>
 			Stimulator
 			<crewLevelIncrease>10</crewLevelIncrease>
+			<ctrlItems/>
 		</script>
 		<kpi>
 			<mul>
@@ -372,6 +400,7 @@
 		<script>
 			Stimulator
 			<crewLevelIncrease>10</crewLevelIncrease>
+			<ctrlItems/>
 		</script>
 		<kpi>
 			<mul>
@@ -402,6 +431,7 @@
 		<script>
 			Stimulator
 			<crewLevelIncrease>10</crewLevelIncrease>
+			<ctrlItems/>
 		</script>
 		<kpi>
 			<mul>
@@ -438,6 +468,9 @@
 				1.5
 				<!--BW_String-->
 			</engineHpLossPerSecond>
+			<ctrlItems>
+				<default>_TriggerItem</default>
+			</ctrlItems>
 		</script>
 		<kpi>
 			<mul>
@@ -468,6 +501,7 @@
 		<script>
 			Stimulator
 			<crewLevelIncrease>10</crewLevelIncrease>
+			<ctrlItems/>
 		</script>
 		<kpi>
 			<mul>
@@ -511,6 +545,10 @@
 				<!--BW_String-->
 			</maxSpeedFactor>
 			<cooldownSeconds>3</cooldownSeconds>
+			<ctrlItems>
+				<default>_AfterburningItem</default>
+				<replay>_ReplayAfterburningItem</replay>
+			</ctrlItems>
 		</script>
 		<tooltipSection>equipment</tooltipSection>
 	</afterburning>
@@ -532,6 +570,7 @@
 		<script>
 			Stimulator
 			<crewLevelIncrease>10</crewLevelIncrease>
+			<ctrlItems/>
 		</script>
 		<kpi>
 			<mul>
@@ -571,6 +610,7 @@
 				1.0
 				<!--BW_String-->
 			</turretRotationSpeedFactor>
+			<ctrlItems/>
 		</script>
 		<kpi>
 			<mul>
@@ -601,6 +641,7 @@
 		<script>
 			Stimulator
 			<crewLevelIncrease>10</crewLevelIncrease>
+			<ctrlItems/>
 		</script>
 		<kpi>
 			<mul>
@@ -631,6 +672,7 @@
 		<script>
 			Stimulator
 			<crewLevelIncrease>10</crewLevelIncrease>
+			<ctrlItems/>
 		</script>
 		<kpi>
 			<mul>
@@ -661,6 +703,7 @@
 		<script>
 			Stimulator
 			<crewLevelIncrease>10</crewLevelIncrease>
+			<ctrlItems/>
 		</script>
 		<kpi>
 			<mul>
@@ -691,6 +734,7 @@
 		<script>
 			Stimulator
 			<crewLevelIncrease>10</crewLevelIncrease>
+			<ctrlItems/>
 		</script>
 		<kpi>
 			<mul>
@@ -721,6 +765,7 @@
 		<script>
 			Stimulator
 			<crewLevelIncrease>10</crewLevelIncrease>
+			<ctrlItems/>
 		</script>
 		<kpi>
 			<mul>
@@ -751,6 +796,7 @@
 		<script>
 			Stimulator
 			<crewLevelIncrease>10</crewLevelIncrease>
+			<ctrlItems/>
 		</script>
 		<kpi>
 			<mul>

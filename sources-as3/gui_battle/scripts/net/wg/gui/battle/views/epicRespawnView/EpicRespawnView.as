@@ -93,7 +93,10 @@ package net.wg.gui.battle.views.epicRespawnView
          this.deployButtonGroup = null;
          this.respawnEntriesContainer.removeEventListener(EpicRespawnEvent.RESPAWN_LOCATION_SELECT,this.onRespawnLocationSelectHandler);
          this.respawnEntriesContainer = null;
-         unregisterFlashComponentS(BATTLE_VIEW_ALIASES.EPIC_RESPAWN_AMMUNITION_PANEL);
+         if(isFlashComponentRegisteredS(BATTLE_VIEW_ALIASES.EPIC_RESPAWN_AMMUNITION_PANEL))
+         {
+            unregisterFlashComponentS(BATTLE_VIEW_ALIASES.EPIC_RESPAWN_AMMUNITION_PANEL);
+         }
          this.topBarBG = null;
          this.topBarTF = null;
          this.ammunitionPanel = null;

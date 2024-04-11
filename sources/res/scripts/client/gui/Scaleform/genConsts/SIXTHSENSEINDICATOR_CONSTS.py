@@ -1,0 +1,8 @@
+
+
+class SIXTHSENSEINDICATOR_CONSTS(object):
+    SIZE_BIG = 'big'
+    SIZE_SMALL = 'small'
+    SIZES = [SIZE_BIG, SIZE_SMALL]
+    MIN_VALUE = 0
+    MAX_VALUE = 100

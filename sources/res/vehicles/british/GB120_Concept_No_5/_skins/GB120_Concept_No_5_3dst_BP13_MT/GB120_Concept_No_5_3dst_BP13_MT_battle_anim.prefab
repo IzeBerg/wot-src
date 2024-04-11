@@ -259,7 +259,7 @@
 									<property>
 										<name>Path</name>
 										<isAsset>true</isAsset>
-										<value>vehicles/british/GB120_Concept_No_5/_skins/GB120_Concept_No_5_3dst_BP13_MT/GB120_Concept_No_5_3dst_BP13_MT_turret_PC_stm.ssm</value>
+										<value>particles/Tank/customization/GB120_Concept_No_5_3dst_BP13_MT/GB120_Concept_No_5_3dst_BP13_MT_turret_in_game_PC.seq</value>
 									</property>
 									<property>
 										<name>Properties</name>
@@ -313,7 +313,7 @@
 									<property>
 										<name>Path</name>
 										<isAsset>true</isAsset>
-										<value>vehicles/british/GB120_Concept_No_5/_skins/GB120_Concept_No_5_3dst_BP13_MT/GB120_Concept_No_5_3dst_BP13_MT_turret_NPC_stm.ssm</value>
+										<value>particles/Tank/customization/GB120_Concept_No_5_3dst_BP13_MT/GB120_Concept_No_5_3dst_BP13_MT_turret_in_game_NPC.seq</value>
 									</property>
 									<property>
 										<name>Properties</name>
@@ -367,7 +367,7 @@
 					<property>
 						<name>Path</name>
 						<isAsset>true</isAsset>
-						<value>vehicles/british/GB120_Concept_No_5/_skins/GB120_Concept_No_5_3dst_BP13_MT/GB120_Concept_No_5_3dst_BP13_MT_turret_PC_stm.ssm</value>
+						<value>particles/Tank/customization/GB120_Concept_No_5_3dst_BP13_MT/GB120_Concept_No_5_3dst_BP13_MT_turret_in_game_PC.seq</value>
 					</property>
 					<property>
 						<name>Delay</name>
@@ -403,7 +403,7 @@
 									<property>
 										<name>Path</name>
 										<isAsset>true</isAsset>
-										<value>vehicles/british/GB120_Concept_No_5/_skins/GB120_Concept_No_5_3dst_BP13_MT/GB120_Concept_No_5_3dst_BP13_MT_hull_PC_stm.ssm</value>
+										<value>particles/Tank/customization/GB120_Concept_No_5_3dst_BP13_MT/GB120_Concept_No_5_3dst_BP13_MT_hull_in_game_PC.seq</value>
 									</property>
 									<property>
 										<name>Properties</name>
@@ -457,7 +457,7 @@
 									<property>
 										<name>Path</name>
 										<isAsset>true</isAsset>
-										<value>vehicles/british/GB120_Concept_No_5/_skins/GB120_Concept_No_5_3dst_BP13_MT/GB120_Concept_No_5_3dst_BP13_MT_hull_NPC_stm.ssm</value>
+										<value>particles/Tank/customization/GB120_Concept_No_5_3dst_BP13_MT/GB120_Concept_No_5_3dst_BP13_MT_hull_in_game_NPC.seq</value>
 									</property>
 									<property>
 										<name>Properties</name>
@@ -506,12 +506,120 @@
 									</property>
 								</object>
 							</item>
+							<item>
+								<object>
+									<property>
+										<name>Path</name>
+										<isAsset>true</isAsset>
+										<value>particles/Tank/customization/GB120_Concept_No_5_3dst_BP13_MT/GB120_Concept_No_5_3dst_BP13_MT_pre_battle_PC.seq</value>
+									</property>
+									<property>
+										<name>Properties</name>
+										<object>
+											<property>
+												<name>delay</name>
+												<value>0</value>
+											</property>
+											<property>
+												<name>speed</name>
+												<value>1</value>
+											</property>
+											<property>
+												<name>loop</name>
+												<value>0</value>
+											</property>
+											<property>
+												<name>loopCount</name>
+												<value>-1</value>
+											</property>
+										</object>
+									</property>
+									<property>
+										<name>Clip</name>
+										<value>&lt;Default Clip&gt;</value>
+									</property>
+									<property>
+										<name>LayerName</name>
+										<value>Prebattle_PC</value>
+									</property>
+									<property>
+										<name>Weight</name>
+										<value>1</value>
+									</property>
+									<property>
+										<name>LOD Scale</name>
+										<value>1</value>
+									</property>
+									<property>
+										<name>Auto Start</name>
+										<value>0</value>
+									</property>
+									<property>
+										<name>Graphics preset</name>
+										<value>2</value>
+									</property>
+								</object>
+							</item>
+							<item>
+								<object>
+									<property>
+										<name>Path</name>
+										<isAsset>true</isAsset>
+										<value>particles/Tank/customization/GB120_Concept_No_5_3dst_BP13_MT/GB120_Concept_No_5_3dst_BP13_MT_pre_battle_NPC.seq</value>
+									</property>
+									<property>
+										<name>Properties</name>
+										<object>
+											<property>
+												<name>delay</name>
+												<value>0</value>
+											</property>
+											<property>
+												<name>speed</name>
+												<value>1</value>
+											</property>
+											<property>
+												<name>loop</name>
+												<value>0</value>
+											</property>
+											<property>
+												<name>loopCount</name>
+												<value>-1</value>
+											</property>
+										</object>
+									</property>
+									<property>
+										<name>Clip</name>
+										<value>&lt;Default Clip&gt;</value>
+									</property>
+									<property>
+										<name>LayerName</name>
+										<value>Prebattle_NPC</value>
+									</property>
+									<property>
+										<name>Weight</name>
+										<value>1</value>
+									</property>
+									<property>
+										<name>LOD Scale</name>
+										<value>1</value>
+									</property>
+									<property>
+										<name>Auto Start</name>
+										<value>0</value>
+									</property>
+									<property>
+										<name>Graphics preset</name>
+										<value>2</value>
+									</property>
+								</object>
+							</item>
 						</collection>
 					</property>
 					<property>
 						<name>Path</name>
 						<isAsset>true</isAsset>
-						<value>vehicles/british/GB120_Concept_No_5/_skins/GB120_Concept_No_5_3dst_BP13_MT/GB120_Concept_No_5_3dst_BP13_MT_hull_PC_stm.ssm</value>
+						<value>particles/Tank/customization/GB120_Concept_No_5_3dst_BP13_MT/GB120_Concept_No_5_3dst_BP13_MT_hull_in_game_PC.seq</value>
 					</property>
 					<property>
 						<name>Delay</name>

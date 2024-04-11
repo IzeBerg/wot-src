@@ -1,3 +1,4 @@
+import BigWorld
 from armory_yard.gui.impl.lobby.feature.tooltips.armory_yard_not_active_tooltip_view import EntryPointNotActiveTooltipView
 from frameworks.wulf import ViewFlags, ViewSettings
 from armory_yard_constants import State
@@ -17,6 +18,7 @@ class ArmoryYardWidgetEntryPointView(ViewImpl):
     __slots__ = ()
     __armoryYardCtrl = dependency.descriptor(IArmoryYardController)
     __bootcampCtrl = dependency.descriptor(IBootcampController)
+    __LOW_QUALITY_PRESETS = ('LOW', 'MIN')
 
     @staticmethod
     def getIsActive(state):
@@ -59,6 +61,8 @@ class ArmoryYardWidgetEntryPointView(ViewImpl):
         if not self.__armoryYardCtrl.isEnabled():
             self.destroy()
             return
+        presetIdx = BigWorld.detectGraphicsPresetFromSystemSettings()
+        lowPresets = [ BigWorld.getSystemPerformancePresetIdFromName(pName) for pName in self.__LOW_QUALITY_PRESETS ]
         with self.viewModel.transaction() as (model):
             startProgressionTime, finishProgressionTime = self.__armoryYardCtrl.getProgressionTimes()
             _, endSeasonDate = self.__armoryYardCtrl.getSeasonInterval()
@@ -67,6 +71,7 @@ class ArmoryYardWidgetEntryPointView(ViewImpl):
             model.setEndTime(endSeasonDate if state == State.POSTPROGRESSION else finishProgressionTime)
             model.setCurrentTime(getServerUTCTime())
             model.setIsRewardAvailable(self.__armoryYardCtrl.hasCurrentRewards())
+            model.setIsLowPreset(presetIdx in lowPresets)
             if self.__armoryYardCtrl.isActive() and self.__armoryYardCtrl.isClaimedFinalReward():
                 state = State.COMPLETED
             model.setState(state)

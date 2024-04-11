@@ -15,7 +15,7 @@ package net.wg.gui.components.carousels.events
       
       public static const SELECT_RENT_PROMOTION_SLOT:String = "selectRentPromotion";
       
-      public static const SELECT_WOT_PLUS_VEHICLE:String = "selectWotPlusVehicle";
+      public static const SELECT_TELECOM_VEHICLE:String = "selectTelecomVehicle";
        
       
       private var _itemId:int = 0;

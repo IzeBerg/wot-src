@@ -140,7 +140,8 @@ class ArmoryYardMainView(ViewImpl, IGlobalListener):
                 self.__tabs[self.__tabId].onUnload()
             self.__tabId = tabID
             self.__tabs[self.__tabId].onLoad()
-            self.viewModel.setTabId(self.__tabId)
+            if self.viewModel:
+                self.viewModel.setTabId(self.__tabId)
         return
 
     @classmethod
@@ -156,8 +157,7 @@ class ArmoryYardMainView(ViewImpl, IGlobalListener):
             self.destroyWindow()
 
     def __updateVisibilityHangarHeaderMenu(self, isVisible=False):
-        state = (isVisible or HeaderMenuVisibilityState).NOTHING if 1 else HeaderMenuVisibilityState.ALL
-        g_eventBus.handleEvent(events.LobbyHeaderMenuEvent(events.LobbyHeaderMenuEvent.TOGGLE_VISIBILITY, ctx={'state': state}), EVENT_BUS_SCOPE.LOBBY)
+        g_eventBus.handleEvent(events.LobbyHeaderMenuEvent(events.LobbyHeaderMenuEvent.TOGGLE_VISIBILITY, ctx={'state': (isVisible or HeaderMenuVisibilityState).NOTHING if 1 else HeaderMenuVisibilityState.ALL}), EVENT_BUS_SCOPE.LOBBY)
 
     def __closeView(self, *args):
         self.__armoryYardCtrl.disableVideoStreaming()

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>smokescreen2</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/custom/volumetric_effect_vtx.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/h27_smoke5.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						enableLighting
+						<Bool>true</Bool>
+					</property>
+					<property>
+						selfIllumLight
+						<Vector4>0.552941 0.607843 0.635294 0.000000</Vector4>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>0.700000 0.200000 0.700000 0.000000</Vector4>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>0.000000 0.000000 0.000000 0.020000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>-0.000169 0.516880 0.000000</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.007202 -0.544360 -2.122481</min>
+		<max>0.006864 1.578121 2.122481</max>
+	</boundingBox>
+	<geometrySize>1596</geometrySize>
+	<minUVDensity>0.110025</minUVDensity>
+</root>

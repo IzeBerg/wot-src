@@ -215,6 +215,11 @@ package net.wg.gui.battle.views.vehicleMarkers
          return BASE_HEIGHT;
       }
       
+      public function updateArrowPosition(param1:Point) : void
+      {
+         stickyMarker.setArrowPosition(param1);
+      }
+      
       public function get entityName() : String
       {
          return this._entityName;

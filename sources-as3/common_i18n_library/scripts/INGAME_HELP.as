@@ -187,6 +187,10 @@ package
       
       public static const DETAILSHELP_ROCKETACCELERATION_PAGE2:String = "#ingame_help:detailsHelp/rocketAcceleration/page2";
       
+      public static const DETAILSHELP_DUALACCURACY_MECHANICS_TITLE:String = "#ingame_help:detailsHelp/dualAccuracy/mechanics/title";
+      
+      public static const DETAILSHELP_DUALACCURACY_MECHANICS:String = "#ingame_help:detailsHelp/dualAccuracy/mechanics";
+      
       public static const DETAILSHELP_NOKEYSWARNING:String = "#ingame_help:detailsHelp/noKeysWarning";
       
       public static const DETAILSHELP_FLAMETANK_TITLE:String = "#ingame_help:detailsHelp/flameTank/title";
@@ -197,13 +201,21 @@ package
       
       public static const DETAILSHELP_FLAMETANK_PROSCONS:String = "#ingame_help:detailsHelp/flameTank/prosCons";
       
+      public static const DETAILSHELP_ASSAULTTANK_TITLE:String = "#ingame_help:detailsHelp/assaultTank/title";
+      
+      public static const DETAILSHELP_ASSAULTTANK:String = "#ingame_help:detailsHelp/assaultTank";
+      
+      public static const DETAILSHELP_ASSAULTTANK_PROSCONS_TITLE:String = "#ingame_help:detailsHelp/assaultTank/prosCons/title";
+      
+      public static const DETAILSHELP_ASSAULTTANK_PROSCONS:String = "#ingame_help:detailsHelp/assaultTank/prosCons";
+      
       public static const DETAILSHELP_BATTLEROYALE_RADAR_TITLE:String = "#ingame_help:detailsHelp/battleRoyale/radar/title";
       
       public static const DETAILSHELP_BATTLEROYALE_RADAR_DESCRIPTION:String = "#ingame_help:detailsHelp/battleRoyale/radar/description";
       
-      public static const DETAILSHELP_BATTLEROYALE_SECTORVISION_TITLE:String = "#ingame_help:detailsHelp/battleRoyale/sectorVision/title";
+      public static const DETAILSHELP_BATTLEROYALE_CONEVISIBILITY_TITLE:String = "#ingame_help:detailsHelp/battleRoyale/coneVisibility/title";
       
-      public static const DETAILSHELP_BATTLEROYALE_SECTORVISION_DESCRIPTION:String = "#ingame_help:detailsHelp/battleRoyale/sectorVision/description";
+      public static const DETAILSHELP_BATTLEROYALE_CONEVISIBILITY_DESCRIPTION:String = "#ingame_help:detailsHelp/battleRoyale/coneVisibility/description";
       
       public static const DETAILSHELP_BATTLEROYALE_ZONE_TITLE:String = "#ingame_help:detailsHelp/battleRoyale/zone/title";
       
@@ -242,6 +254,14 @@ package
       public static const DETAILSHELP_MAPBOX_ARTEFACTS_TITLE:String = "#ingame_help:detailsHelp/mapbox/artefacts/title";
       
       public static const DETAILSHELP_MAPBOX_ARTEFACTS_DESCRIPTION:String = "#ingame_help:detailsHelp/mapbox/artefacts/description";
+      
+      public static const DETAILSHELP_DEVMAPS_HEADERTITLE:String = "#ingame_help:detailsHelp/devMaps/headerTitle";
+      
+      public static const DETAILSHELP_DEVMAPS_TITLE:String = "#ingame_help:detailsHelp/devMaps/title";
+      
+      public static const DETAILSHELP_DEVMAPS_MARKERS_DESCRIPTION:String = "#ingame_help:detailsHelp/devMaps/markers/description";
+      
+      public static const DETAILSHELP_DEVMAPS_ZONE_DESCRIPTION:String = "#ingame_help:detailsHelp/devMaps/zone/description";
       
       public static const RADIALMENU_ATTENTION_TO_POSITION:String = "#ingame_help:radialMenu/attention_to_position";
       

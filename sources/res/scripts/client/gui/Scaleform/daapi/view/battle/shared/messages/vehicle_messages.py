@@ -9,7 +9,7 @@ class VehicleMessages(fading_messages.FadingMessages):
 
     def __init__(self):
         super(VehicleMessages, self).__init__('VehicleMessagesPanel', 'vehicle_messages_panel.xml')
-        self.__styleFormatter = None
+        self._styleFormatter = None
         return
 
     def __del__(self):
@@ -18,10 +18,10 @@ class VehicleMessages(fading_messages.FadingMessages):
     def _populate(self):
         super(VehicleMessages, self)._populate()
         styles = self.getStyles()
-        self.__styleFormatter = _VEHICLE_STYLE_FORMATTER % styles['entityStyle']
+        self._styleFormatter = _VEHICLE_STYLE_FORMATTER % styles['entityStyle']
 
     def _dispose(self):
-        self.__styleFormatter = None
+        self._styleFormatter = None
         super(VehicleMessages, self)._dispose()
         return
 
@@ -67,7 +67,7 @@ class VehicleMessages(fading_messages.FadingMessages):
             if extra is not None:
                 names['device'] = extra.deviceUserString
             if entityID:
-                names['entity'] = self.__formatEntity(entityID)
+                names['entity'] = self._formatEntity(entityID)
             if equipmentID:
                 equipment = vehicles.g_cache.equipments().get(equipmentID)
                 if equipment is not None:
@@ -78,10 +78,10 @@ class VehicleMessages(fading_messages.FadingMessages):
     def __onShowVehicleMessageByKey(self, key, args=None, extra=None):
         self.showMessage(key, args, extra)
 
-    def __formatEntity(self, entityID):
+    def _formatEntity(self, entityID):
         ctx = self.sessionProvider.getCtx()
         vTypeInfoVO = ctx.getArenaDP().getVehicleInfo(entityID).vehicleType
         playerName = ctx.getPlayerFullName(entityID, showVehShortName=False)
         playerInfo = '%s | %s' % (playerName, vTypeInfoVO.shortNameWithPrefix)
-        entityInfo = self.__styleFormatter.format(playerInfo)
+        entityInfo = self._styleFormatter.format(playerInfo)
         return entityInfo

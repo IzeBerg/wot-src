@@ -7,6 +7,8 @@ package
       
       public static const RANKEDBATTLEPAGE_CLOSEBTN:String = "#ranked_battles:rankedBattlePage/closeBtn";
       
+      public static const RANKEDBATTLEPAGE_ABOUTBTN:String = "#ranked_battles:rankedBattlePage/aboutBtn";
+      
       public static const RANKEDBATTLE_TITLE:String = "#ranked_battles:rankedBattle/title";
       
       public static const RANKEDBATTLEMAINVIEW_SPECIALSEASON:String = "#ranked_battles:rankedBattleMainView/specialSeason";
@@ -129,6 +131,8 @@ package
       
       public static const RANKEDBATTLEMAINVIEW_DIVISIONS_CURRENTRANK:String = "#ranked_battles:rankedBattleMainView/divisions/currentRank";
       
+      public static const RANKEDBATTLEMAINVIEW_DIVISIONS_TAKERANK:String = "#ranked_battles:rankedBattleMainView/divisions/takeRank";
+      
       public static const RANKEDBATTLEVIEW_TITLE:String = "#ranked_battles:rankedBattleView/title";
       
       public static const RANKEDBATTLEVIEW_AWARDBLOCK_POINTS_HEADER:String = "#ranked_battles:rankedBattleView/awardBlock/points/header";
@@ -250,6 +254,18 @@ package
       public static const RANKEDBATTLESCYCLESVIEW_FINAL_LASTCOMMENT:String = "#ranked_battles:rankedBattlesCyclesView/final/lastComment";
       
       public static const RANKEDBATTLESCYCLESVIEW_BTNCLOSE:String = "#ranked_battles:rankedBattlesCyclesView/btnClose";
+      
+      public static const RANKEDDIVISIONSTATUS_COMPLETED:String = "#ranked_battles:rankedDivisionStatus/completed";
+      
+      public static const RANKEDDIVISIONSTATUS_LOCKED:String = "#ranked_battles:rankedDivisionStatus/locked";
+      
+      public static const RANKEDSEASONCOMPLETED_HEADER_TEXT:String = "#ranked_battles:rankedSeasonCompleted/header/text";
+      
+      public static const RANKEDSEASONCOMPLETED_HEADER_DESCRIPTION:String = "#ranked_battles:rankedSeasonCompleted/header/description";
+      
+      public static const RANKEDSEASONCOMPLETED_TOREWARDS:String = "#ranked_battles:rankedSeasonCompleted/toRewards";
+      
+      public static const RANKEDSEASONCOMPLETED_TOFINALSTATISTIC:String = "#ranked_battles:rankedSeasonCompleted/toFinalStatistic";
       
       public static const RANKEDBATTLESWIDGET_QUALIFICATIONIDLETEXT:String = "#ranked_battles:rankedBattlesWidget/qualificationIdleText";
       
@@ -785,8 +801,6 @@ package
       
       public static const DIVISION_TOOLTIP_STATUS_LOCKED_DESC:String = "#ranked_battles:division/tooltip/status/locked/desc";
       
-      public static const DIVISION_TOOLTIP_STATUS_LOCKED_DESCQUAL:String = "#ranked_battles:division/tooltip/status/locked/descQual";
-      
       public static const DIVISION_TOOLTIP_STATUS_COMPLETED:String = "#ranked_battles:division/tooltip/status/completed";
       
       public static const DIVISION_TOOLTIP_STATUS_COMPLETEDQUAL:String = "#ranked_battles:division/tooltip/status/completedQual";
@@ -1046,6 +1060,16 @@ package
       public static const SELECTABLEREWARD_TOOLTIP_EQUIPMENTCHOICE_LIST:String = "#ranked_battles:selectableReward/tooltip/equipmentChoice/list";
       
       public static const SELECTABLEREWARD_TOOLTIP_EQUIPMENTCHOICE_LIMIT:String = "#ranked_battles:selectableReward/tooltip/equipmentChoice/limit";
+      
+      public static const DIVISION_SUBTITLE:String = "#ranked_battles:division/subtitle";
+      
+      public static const PROGRESSION_STATS_DIVISIONEFFICIENCY:String = "#ranked_battles:progression/stats/divisionEfficiency";
+      
+      public static const PROGRESSION_STATS_SEASONEFFICIENCY:String = "#ranked_battles:progression/stats/seasonEfficiency";
+      
+      public static const PROGRESSION_STATS_TOTALBATTLES:String = "#ranked_battles:progression/stats/totalBattles";
+      
+      public static const PROGRESSION_STATS_TOTALSTAGES:String = "#ranked_battles:progression/stats/totalStages";
        
       
       public function RANKED_BATTLES()

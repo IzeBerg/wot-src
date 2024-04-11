@@ -175,7 +175,9 @@ class ArmoryYardBuyBundleView(ViewImpl):
          (
           self.__armoryYardCtrl.onProgressUpdated, self.__onProgressUpdated),
          (
-          self.__wallet.onWalletStatusChanged, self.__onWalletStatusChanged))
+          self.__wallet.onWalletStatusChanged, self.__onWalletStatusChanged),
+         (
+          self.__armoryYardCtrl.onBundlesDisabled, self.__onProgressUpdated))
 
     def __setMainData(self):
         with self.viewModel.transaction() as (model):

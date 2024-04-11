@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<CellMethods/>
+	<ClientMethods/>
+	<Properties>
+		<roleInfos>
+			<Type>
+				ARRAY
+				<of>
+					FIXED_DICT
+					<Properties>
+						<id>
+							<Type>OBJECT_ID</Type>
+						</id>
+						<role>
+							<Type>INT32</Type>
+						</role>
+					</Properties>
+				</of>
+			</Type>
+			<Flags>ALL_CLIENTS</Flags>
+		</roleInfos>
+	</Properties>
+	<ofEntity>
+		<ArenaInfo/>
+	</ofEntity>
+	<DefaultKeyName>vehicleRoleArenaComponent</DefaultKeyName>
+</root>

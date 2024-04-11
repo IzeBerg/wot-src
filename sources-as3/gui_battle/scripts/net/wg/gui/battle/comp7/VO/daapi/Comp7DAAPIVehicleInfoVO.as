@@ -10,9 +10,11 @@ package net.wg.gui.battle.comp7.VO.daapi
       
       public var skillLevel:uint = 0;
       
-      public var rank:int = -1;
+      public var rank:String = "";
       
-      public var rankDivision:int = -1;
+      public var rankDivision:String = "";
+      
+      public var isQualification:Boolean = false;
       
       public var voiceChatConnected:Boolean = true;
       

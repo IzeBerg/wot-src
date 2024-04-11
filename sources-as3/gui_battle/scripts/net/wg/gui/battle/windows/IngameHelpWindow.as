@@ -1,5 +1,6 @@
 package net.wg.gui.battle.windows
 {
+   import flash.geom.ColorTransform;
    import flash.text.TextField;
    import flash.utils.Dictionary;
    import net.wg.data.constants.generated.BATTLEATLAS;
@@ -10,6 +11,8 @@ package net.wg.gui.battle.windows
    import net.wg.infrastructure.base.meta.IIngameHelpWindowMeta;
    import net.wg.infrastructure.base.meta.impl.IngameHelpWindowMeta;
    import net.wg.infrastructure.constants.WindowViewInvalidationType;
+   import net.wg.infrastructure.events.ColorSchemeEvent;
+   import net.wg.infrastructure.managers.IColorSchemeManager;
    import net.wg.utils.IAssertable;
    import net.wg.utils.ICommons;
    import scaleform.clik.events.ButtonEvent;
@@ -17,13 +20,9 @@ package net.wg.gui.battle.windows
    public class IngameHelpWindow extends IngameHelpWindowMeta implements IIngameHelpWindowMeta
    {
       
-      private static const CROSSHAIR_TIMELEFT:Number = 7.42;
+      private static const CROSSHAIRCONTROLS_TIMELEFT:Number = 7.42;
       
-      public static const DEFAULT_FRAME_LABEL:String = "default";
-      
-      public static const COLOR_BLIND_FRAME_LABEL:String = "colorBlind";
-      
-      public static const COLOR_BLIND_INVALID:String = "colorBlindInv";
+      private static const SCHEME_NAME:String = "vm_enemy";
        
       
       public var closeBtn:CloseButtonText = null;
@@ -218,7 +217,7 @@ package net.wg.gui.battle.windows
       
       private var _keysDictionary:Dictionary;
       
-      private var _isColorBlind:Boolean = false;
+      private var _colorMgr:IColorSchemeManager = null;
       
       public function IngameHelpWindow()
       {
@@ -246,44 +245,39 @@ package net.wg.gui.battle.windows
          this._keysDictionary[KEYBOARD_KEYS.SHOW_RADIAL_MENU] = this.showRadialMenuTF;
          this._keysDictionary[KEYBOARD_KEYS.HIGHLIGHT_LOCATION] = this.highlightLocationTF;
          this._keysDictionary[KEYBOARD_KEYS.HIGHLIGHT_TARGET] = this.highlightActiveTargetTF;
+         this._colorMgr = App.colorSchemeMgr;
+         this._colorMgr.addEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemasUpdatedHandler);
       }
       
       override protected function configUI() : void
       {
          super.configUI();
          this.background.imageName = BATTLEATLAS.HELP_WINDOW_BG;
-         this.bgInfo.imageName = BATTLEATLAS.HELP_WINDOW_INFO;
          this.closeBtn.label = INGAME_HELP.BATTLECONTROLS_CLOSEBTNLABEL;
          this.closeBtn.addEventListener(ButtonEvent.CLICK,this.onBtnCloseClickHandler);
          updateStage(App.appWidth,App.appHeight);
          window.addEventListener(WindowEvent.SCALE_Y_CHANGED,this.onWindowScaleYChangedHandler);
          this.setTitleTexts();
          this.setDescriptionTexts();
-         this.setKeysTexts();
-         this.setCrosshairTexts();
+         this.setCrossHairTexts();
+         this.setkeysTexts();
+         this.updateColorDependencies(this._colorMgr.getIsColorBlindS());
       }
       
       override protected function draw() : void
       {
          super.draw();
-         if(geometry && window)
+         if(geometry && window && isInvalid(WindowViewInvalidationType.POSITION_INVALID))
          {
-            if(isInvalid(WindowViewInvalidationType.POSITION_INVALID))
-            {
-               window.x = App.appWidth - window.getBackground().width >> 1;
-               window.y = App.appHeight - window.getBackground().height >> 1;
-            }
-            if(isInvalid(COLOR_BLIND_INVALID))
-            {
-               this.bgInfo.imageName = !!this._isColorBlind ? BATTLEATLAS.HELP_WINDOW_INFO_BLIND : BATTLEATLAS.HELP_WINDOW_INFO;
-               gotoAndStop(!!this._isColorBlind ? COLOR_BLIND_FRAME_LABEL : DEFAULT_FRAME_LABEL);
-               this.setCrosshairTexts();
-            }
+            window.x = App.appWidth - window.getBackground().width >> 1;
+            window.y = App.appHeight - window.getBackground().height >> 1;
          }
       }
       
       override protected function onDispose() : void
       {
+         this._colorMgr.removeEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemasUpdatedHandler);
+         this._colorMgr = null;
          this.closeBtn.removeEventListener(ButtonEvent.CLICK,this.onBtnCloseClickHandler);
          window.removeEventListener(WindowEvent.SCALE_Y_CHANGED,this.onWindowScaleYChangedHandler);
          this.closeBtn.dispose();
@@ -386,16 +380,6 @@ package net.wg.gui.battle.windows
          super.onDispose();
       }
       
-      public function as_setColorBlind(param1:Boolean) : void
-      {
-         if(this._isColorBlind == param1)
-         {
-            return;
-         }
-         this._isColorBlind = param1;
-         invalidate(COLOR_BLIND_INVALID);
-      }
-      
       public function as_setKeys(param1:Object) : void
       {
          this.setKeys(param1);
@@ -484,16 +468,16 @@ package net.wg.gui.battle.windows
          this.gunMarker.text = INGAME_HELP.CROSSHAIRCONTROLS_GUNMARKER;
       }
       
-      private function setCrosshairTexts() : void
+      private function setCrossHairTexts() : void
       {
-         this.exampleTimeLeft.text = App.utils.locale.float(CROSSHAIR_TIMELEFT);
+         this.exampleTimeLeft.text = App.utils.locale.float(CROSSHAIRCONTROLS_TIMELEFT);
          this.exampleDistance.text = INGAME_HELP.CROSSHAIRCONTROLS_EXAMPLE_DISTANCE;
          this.exampleName.text = INGAME_HELP.CROSSHAIRCONTROLS_EXAMPLE_NAME;
          this.exampleHp.text = INGAME_HELP.CROSSHAIRCONTROLS_EXAMPLE_HP;
          this.exampleHit.text = INGAME_HELP.CROSSHAIRCONTROLS_EXAMPLE_DAMAGE;
       }
       
-      private function setKeysTexts() : void
+      private function setkeysTexts() : void
       {
          this.printscreenTF.text = CONTROLS.KEYBOARD_KEY_PRINT_SCREEN;
          this.enterTF.text = CONTROLS.KEYBOARD_KEY_ENTER;
@@ -501,6 +485,21 @@ package net.wg.gui.battle.windows
          this.enter2TF.text = CONTROLS.KEYBOARD_KEY_ENTER;
          this.escapeTF.text = CONTROLS.KEYBOARD_KEY_ESCAPE;
          this.showCursorTF.text = CONTROLS.KEYBOARD_KEY_CTRL_WO_REFERRAL;
+      }
+      
+      private function updateColorDependencies(param1:Boolean) : void
+      {
+         this.bgInfo.imageName = !!param1 ? BATTLEATLAS.HELP_WINDOW_INFO_BLIND : BATTLEATLAS.HELP_WINDOW_INFO;
+         var _loc2_:uint = this._colorMgr.getRGB(SCHEME_NAME);
+         var _loc3_:ColorTransform = this._colorMgr.getTransform(SCHEME_NAME);
+         this.exampleName.textColor = _loc2_;
+         this.exampleHit.textColor = _loc2_;
+         this.exampleHit.transform.colorTransform = _loc3_;
+      }
+      
+      private function onColorSchemasUpdatedHandler(param1:ColorSchemeEvent) : void
+      {
+         this.updateColorDependencies(this._colorMgr.getIsColorBlindS());
       }
       
       private function onWindowScaleYChangedHandler(param1:WindowEvent) : void

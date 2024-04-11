@@ -307,6 +307,10 @@ def brcoin(text):
     return _formatText('creditsText', text)
 
 
+def brProgressionToken(text):
+    return _formatText('brProgressionToken', text)
+
+
 def defRes(text):
     return _formatText('defresText', text)
 

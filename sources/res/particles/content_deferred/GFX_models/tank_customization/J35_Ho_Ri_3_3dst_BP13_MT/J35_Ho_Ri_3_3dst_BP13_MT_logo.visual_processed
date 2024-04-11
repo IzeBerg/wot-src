@@ -22,14 +22,14 @@
 					<identifier>s_nd0</identifier>
 					<fx>shaders/custom/volumetric_effect_vtx.fx</fx>
 					<materialKind>0</materialKind>
-					<collisionFlags>0</collisionFlags>
+					<collisionFlags>255</collisionFlags>
 					<property>
 						destBlend
 						<Int>2</Int>
 					</property>
 					<property>
 						diffuseMap
-						<Texture>particles/content_deferred/GFX_models/GFX_textures/Glowing_meshes/J35_Ho_Ri_3_3dst_BP13_MT_logo.dds</Texture>
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Glowing_meshes/perspective_logo.dds</Texture>
 					</property>
 					<property>
 						enableLighting
@@ -37,7 +37,7 @@
 					</property>
 					<property>
 						lightMultipliers
-						<Vector4>100.000000 8.000000 2.000000 0.000000</Vector4>
+						<Vector4>50.000000 8.000000 2.000000 0.000000</Vector4>
 					</property>
 					<property>
 						selfIllumLight
@@ -46,6 +46,22 @@
 					<property>
 						TintlColor
 						<Vector4>1.000000 0.000000 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						alphaFadeAmountFresnel
+						<Vector4>0.000000 0.000000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						fadeMinDistance
+						<Float>0.500000</Float>
+					</property>
+					<property>
+						g_useTime
+						<Bool>false</Bool>
+					</property>
+					<property>
+						texAddressMode
+						<Int>3</Int>
 					</property>
 				</material>
 				<groupOrigin>0.602646 2.170337 -3.066181</groupOrigin>

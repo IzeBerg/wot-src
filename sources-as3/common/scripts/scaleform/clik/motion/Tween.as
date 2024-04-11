@@ -275,6 +275,30 @@ package scaleform.clik.motion
          if(_loc1_)
          {
             this.startMatrix = new Matrix(this.targetDO.scaleX,this.targetDO.rotation * degToRad,this.targetDO.alpha,this.targetDO.scaleY,this.targetDO.x,this.targetDO.y);
+            if(isNaN(this.startMatrix.a) || Infinity == this.startMatrix.a)
+            {
+               this.startMatrix.a = 1;
+            }
+            if(isNaN(this.startMatrix.b) || Infinity == this.startMatrix.b)
+            {
+               this.startMatrix.b = 0;
+            }
+            if(isNaN(this.startMatrix.c) || Infinity == this.startMatrix.c)
+            {
+               this.startMatrix.c = 0;
+            }
+            if(isNaN(this.startMatrix.d) || Infinity == this.startMatrix.d)
+            {
+               this.startMatrix.d = 1;
+            }
+            if(isNaN(this.startMatrix.tx) || Infinity == this.startMatrix.tx)
+            {
+               this.startMatrix.tx = 0;
+            }
+            if(isNaN(this.startMatrix.ty) || Infinity == this.startMatrix.ty)
+            {
+               this.startMatrix.ty = 0;
+            }
             this.deltaMatrix = new Matrix(!!isNaN(this.props.scaleX) ? Number(0) : Number(this.props.scaleX - this.startMatrix.a),!!isNaN(this.props.rotation) ? Number(0) : Number((this.props.rotation - this.targetDO.rotation) * degToRad),!!isNaN(this.props.alpha) ? Number(0) : Number(this.props.alpha - this.startMatrix.c),!!isNaN(this.props.scaleY) ? Number(0) : Number(this.props.scaleY - this.startMatrix.d),!!isNaN(this.props.x) ? Number(0) : Number(this.props.x - this.startMatrix.tx),!!isNaN(this.props.y) ? Number(0) : Number(this.props.y - this.startMatrix.ty));
          }
          this.props = null;

@@ -85,7 +85,7 @@ package net.wg.data.constants.generated
       
       public static const BOOTCAMP_SECONDARY_HINT:String = "bootcampSecondaryHint";
       
-      public static const BOOTCAMP_BATTLE_TOP_HINT:String = "bootcampBattleTopHint";
+      public static const ANIMATED_BATTLE_HINT:String = "animatedBattleHint";
       
       public static const GAME_MESSAGES_PANEL:String = "gameMessagesPanel";
       
@@ -147,6 +147,30 @@ package net.wg.data.constants.generated
       
       public static const PERSONAL_RESERVES_TAB:String = "personalReservesTab";
       
+      public static const EVENT_BUFF_NOTIFICATION_SYSTEM:String = "eventBuffNotificationSystem";
+      
+      public static const EVENT_FULL_MAP:String = "eventFullMap";
+      
+      public static const HISTORICAL_BATTLES_BUFF_NOTIFICATION_SYSTEM:String = "historicalBattlesBuffNotificationSystem";
+      
+      public static const HISTORICAL_BATTLES_FULL_MAP:String = "historicalBattlesFullMap";
+      
+      public static const HISTORICAL_BATTLES_TIMER:String = "historicalBattlesTimer";
+      
+      public static const HISTORICAL_BATTLES_PLAYER_LIVES:String = "historicalBattlesPlayerLives";
+      
+      public static const HISTORICAL_BATTLES_PLAYERS_PANEL:String = "historicalBattlesPlayersPanel";
+      
+      public static const HISTORICAL_BATTLES_PHASE_INDICATOR:String = "historicalBattlesPhaseIndicator";
+      
+      public static const HISTORICAL_BATTLES_DESTROY_TIMERS_PANEL:String = "historicalBattlesDestroyTimersPanel";
+      
+      public static const HISTORICAL_BATTLES_STATS_WIDGET:String = "historicalBattlesStatsWidget";
+      
+      public static const HISTORICAL_BATTLES_BASE_HINT:String = "battleBaseHint";
+      
+      public static const HISTORICAL_BATTLES_ROLE_NOTIFICATION:String = "historicalBattlesRoleNotification";
+      
       public static const EVENT_POSTMORTEM_PANEL:String = "eventPostmortemPanel";
       
       public static const BATTLE_VEHICLE_CONFIGURATOR:String = "battleVehicleConfigurator";
@@ -163,9 +187,13 @@ package net.wg.data.constants.generated
       
       public static const BR_SELECT_RESPAWN:String = "BRSelectRespawn";
       
+      public static const BR_RESPAWN_MESSAGE_PANEL:String = "BRRespawnMessagePanel";
+      
       public static const FRAG_PANEL:String = "fragPanel";
       
       public static const BR_PLAYER_STATS_IN_BATTLE:String = "brPlayerStatsInBattle";
+      
+      public static const BR_TIMERS_PANEL:String = "brTimersPanel";
       
       public static const ROLE_DESCRIPTION:String = "roleDescription";
       
@@ -173,13 +201,19 @@ package net.wg.data.constants.generated
       
       public static const EPIC_RESPAWN_AMMUNITION_PANEL:String = "epicRespawnAmmunitionPanel";
       
+      public static const BATTLE_ROYALE_WINNER_CONGRATS:String = "battleRoyaleWinnerCongrats";
+      
       public static const MAPS_TRAINING_GOALS:String = "mapsTrainingGoals";
       
       public static const PIERCING_DEBUG_PANEL:String = "piercingDebugPanel";
       
+      public static const MAP_INFO_TIP:String = "mapInfoTip";
+      
       public static const COMP7_TANK_CAROUSEL:String = "comp7BattleTankCarousel";
       
       public static const COMP7_TANK_CAROUSEL_FILTER_POPOVER:String = "comp7TankCarouselFilterPopover";
+      
+      public static const COSMIC_HUD:String = "cosmicHud";
        
       
       public function BATTLE_VIEW_ALIASES()

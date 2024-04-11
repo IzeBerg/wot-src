@@ -268,34 +268,27 @@ class EventsCache(IEventsCache):
 
         def userFilterFunc(q):
             qGroup = q.getGroupID()
-            qIsValid = None
+            qIsValid = q.isAvailable().isValid
             qID = q.getID()
-            if q.getType() == EVENT_TYPE.MOTIVE_QUEST:
-                if qIsValid is None:
-                    qIsValid = q.isAvailable().isValid
-                if not qIsValid:
-                    return False
+            if q.getType() == EVENT_TYPE.MOTIVE_QUEST and not qIsValid:
+                return False
             if q.getType() == EVENT_TYPE.TOKEN_QUEST and isMarathon(qID):
                 return False
-            else:
-                if isBattleMattersQuestID(qID) or isPremium(qGroup):
-                    if qIsValid is None:
-                        qIsValid = q.isAvailable().isValid
-                    if not qIsValid:
-                        return False
-                if not isEpicBattleEnabled and isDailyEpic(qGroup):
+            if isBattleMattersQuestID(qID) or isPremium(qGroup) and not qIsValid:
+                return False
+            if not isEpicBattleEnabled and isDailyEpic(qGroup):
+                return False
+            if isBattleRoyale(qGroup):
+                quests = self.__battleRoyaleController.getQuests()
+                if qID not in quests:
                     return False
-                if isBattleRoyale(qGroup):
-                    quests = self.__battleRoyaleController.getQuests()
-                    if qID not in quests:
-                        return False
-                if isMapsTraining(qGroup):
-                    return q.shouldBeShown()
-                if isRankedSeasonOff and (isRankedDaily(qGroup) or isRankedPlatform(qGroup)):
-                    return False
-                if isFunRandomOff and isFunRandomQuest(qID):
-                    return False
-                return filterFunc(q)
+            if isMapsTraining(qGroup):
+                return q.shouldBeShown()
+            if isRankedSeasonOff and (isRankedDaily(qGroup) or isRankedPlatform(qGroup)):
+                return False
+            if isFunRandomOff and isFunRandomQuest(qID):
+                return False
+            return filterFunc(q)
 
         return self.getActiveQuests(userFilterFunc)
 

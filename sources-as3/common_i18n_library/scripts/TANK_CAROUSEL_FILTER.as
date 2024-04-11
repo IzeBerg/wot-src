@@ -31,6 +31,8 @@ package
       
       public static const POPOVER_LABEL_ROLES_AT_SPG:String = "#tank_carousel_filter:popover/label/roles/AT-SPG";
       
+      public static const POPOVER_LABEL_ROLES_SPG:String = "#tank_carousel_filter:popover/label/roles/SPG";
+      
       public static const POPOVER_LABEL_SEARCHNAMEVEHICLE:String = "#tank_carousel_filter:popover/label/searchNameVehicle";
       
       public static const POPOVER_CHECKBOX_PREMIUM:String = "#tank_carousel_filter:popover/checkbox/premium";
@@ -131,13 +133,13 @@ package
       
       public static const TOOLTIP_INVENTORY_BODY:String = "#tank_carousel_filter:tooltip/inventory/body";
       
-      public static const TOOLTIP_FUNRANDOM_HEADER:String = "#tank_carousel_filter:tooltip/funRandom/header";
-      
-      public static const TOOLTIP_FUNRANDOM_BODY:String = "#tank_carousel_filter:tooltip/funRandom/body";
-      
       public static const TOOLTIP_COMP7_HEADER:String = "#tank_carousel_filter:tooltip/comp7/header";
       
       public static const TOOLTIP_COMP7_BODY:String = "#tank_carousel_filter:tooltip/comp7/body";
+      
+      public static const TOOLTIP_DEBUT_BOXES_HEADER:String = "#tank_carousel_filter:tooltip/debut_boxes/header";
+      
+      public static const TOOLTIP_DEBUT_BOXES_BODY:String = "#tank_carousel_filter:tooltip/debut_boxes/body";
       
       public static const INFOTIP_HEADER_TITLE:String = "#tank_carousel_filter:infotip/header/title";
       

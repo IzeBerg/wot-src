@@ -286,7 +286,7 @@ class ArcadeCamera(CameraWithSettings, CallbackDelayer, TimeDeltaMeter):
                 self.delayCallback(0.0, self.enable, preferredPos, closesDist, postmortemParams, turretYaw, gunPitch, camTransitionParams, initialVehicleMatrix)
                 return
         if initialVehicleMatrix is None:
-            initialVehicleMatrix = player.getOwnVehicleMatrix(self.vehicleMProv) if vehicle is None else vehicle.matrix
+            initialVehicleMatrix = player.getOwnVehicleMatrix(Math.Matrix(self.vehicleMProv)) if vehicle is None else vehicle.matrix
         vehicleMProv = initialVehicleMatrix
         if self.__compareCurrStateSettingsKey(GAME.COMMANDER_CAM) or arcadeState is not None:
             state = None
@@ -1028,3 +1028,10 @@ class ArcadeCameraEpic(ArcadeCamera):
         ResMgr.purge('gui/avatar_input_handler.xml')
         cameraSec = ResMgr.openSection('gui/avatar_input_handler.xml/arcadeEpicMinefieldMode/camera/')
         self._reloadConfigs(cameraSec)
+
+
+class ArcadeCameraAOE(ArcadeCamera):
+
+    @staticmethod
+    def _getConfigsKey():
+        return ArcadeCameraAOE.__name__

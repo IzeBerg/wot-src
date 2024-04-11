@@ -33,19 +33,11 @@
 					</property>
 					<property>
 						doubleSided
-						<Bool>false</Bool>
-					</property>
-					<property>
-						srcBlend
-						<Int>5</Int>
+						<Bool>true</Bool>
 					</property>
 					<property>
 						destBlend
 						<Int>2</Int>
-					</property>
-					<property>
-						texAddressMode
-						<Int>1</Int>
 					</property>
 					<property>
 						alphaFreshnelEnable
@@ -56,32 +48,21 @@
 						<Bool>true</Bool>
 					</property>
 					<property>
-						alphaAdditiveEnable
-						<Bool>false</Bool>
-					</property>
-					<property>
 						softFactor
 						<Float>0.500000</Float>
 					</property>
 					<property>
-						fadeMinDistance
-						<Float>0.010000</Float>
-					</property>
-					<property>
-						fadeMaxDistance
-						<Float>1.000000</Float>
-					</property>
-					<property>
 						selfIllumLight
 						<Vector4>1.000000 1.000000 1.000000 0.000000</Vector4>
+						<Vector3>1.000000 1.000000 1.000000</Vector3>
 					</property>
 					<property>
 						TintlColor
-						<Vector4>1.000000 1.000000 1.000000 1.000000</Vector4>
+						<Vector4>0.984314 0.549020 0.000000 1.000000</Vector4>
 					</property>
 					<property>
 						diffuseUVSpeedAlphaOffset
-						<Vector4>-0.012000 0.500000 1.000000 -0.400000</Vector4>
+						<Vector4>-0.012000 0.500000 1.000000 0.000000</Vector4>
 					</property>
 					<property>
 						distortion_UV_Speed_Amount
@@ -89,7 +70,7 @@
 					</property>
 					<property>
 						lightMultipliers
-						<Vector4>60.000000 0.000000 0.800000 0.000000</Vector4>
+						<Vector4>100.000000 0.000000 0.800000 0.000000</Vector4>
 					</property>
 					<property>
 						FreshnelColor

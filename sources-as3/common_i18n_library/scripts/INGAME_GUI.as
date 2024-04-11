@@ -353,6 +353,8 @@ package
       
       public static const STATISTICS_TAB_LINE_UP_TITLE:String = "#ingame_gui:statistics/tab/line_up/title";
       
+      public static const STATISTICS_TAB_LINE_UP_ENEMY:String = "#ingame_gui:statistics/tab/line_up/enemy";
+      
       public static const STATISTICS_TAB_QUESTS_HEADER:String = "#ingame_gui:statistics/tab/quests/header";
       
       public static const STATISTICS_TAB_QUESTS_STATUS_INPROGRESS:String = "#ingame_gui:statistics/tab/quests/status/inProgress";
@@ -1047,6 +1049,8 @@ package
       
       public static const POSTMORTEM_MESSAGES_DEATH_FROM_DEATH_ZONE_SELF_SUICIDE:String = "#ingame_gui:postmortem_messages/DEATH_FROM_DEATH_ZONE_SELF_SUICIDE";
       
+      public static const POSTMORTEM_MESSAGES_DEATH_FROM_STATIC_DEATH_ZONE_SELF_SUICIDE:String = "#ingame_gui:postmortem_messages/DEATH_FROM_STATIC_DEATH_ZONE_SELF_SUICIDE";
+      
       public static const VEHICLE_MESSAGES_DEATH_FROM_DEATH_ZONE_ENEMY_SELF:String = "#ingame_gui:vehicle_messages/DEATH_FROM_DEATH_ZONE_ENEMY_SELF";
       
       public static const POSTMORTEM_MESSAGES_DEATH_FROM_DEATH_ZONE_ENEMY_SELF:String = "#ingame_gui:postmortem_messages/DEATH_FROM_DEATH_ZONE_ENEMY_SELF";
@@ -1066,6 +1070,8 @@ package
       public static const PLAYER_MESSAGES_DEATH_FROM_DEATH_ZONE_SELF_ENEMY:String = "#ingame_gui:player_messages/DEATH_FROM_DEATH_ZONE_SELF_ENEMY";
       
       public static const PLAYER_MESSAGES_DEATH_FROM_DEATH_ZONE_ALLY_SUICIDE:String = "#ingame_gui:player_messages/DEATH_FROM_DEATH_ZONE_ALLY_SUICIDE";
+      
+      public static const PLAYER_MESSAGES_DEATH_FROM_STATIC_DEATH_ZONE_ALLY_SUICIDE:String = "#ingame_gui:player_messages/DEATH_FROM_STATIC_DEATH_ZONE_ALLY_SUICIDE";
       
       public static const PLAYER_MESSAGES_DEATH_FROM_DEATH_ZONE_ALLY_SELF:String = "#ingame_gui:player_messages/DEATH_FROM_DEATH_ZONE_ALLY_SELF";
       
@@ -1132,6 +1138,8 @@ package
       public static const POSTMORTEM_MESSAGES_DEATH_FROM_CORRODING_SHOT:String = "#ingame_gui:postmortem_messages/DEATH_FROM_CORRODING_SHOT";
       
       public static const POSTMORTEM_MESSAGES_DEATH_FROM_CLING_BRANDER:String = "#ingame_gui:postmortem_messages/DEATH_FROM_CLING_BRANDER";
+      
+      public static const POSTMORTEM_MESSAGES_DEATH_FROM_BR_BOT:String = "#ingame_gui:postmortem_messages/DEATH_FROM_BR_BOT";
       
       public static const POSTMORTEM_MESSAGES_DEATH_FROM_SHOT_ARCADE_BOMBER_BATTLE_ROYALE:String = "#ingame_gui:postmortem_messages/DEATH_FROM_SHOT_ARCADE_BOMBER_BATTLE_ROYALE";
       
@@ -1251,6 +1259,12 @@ package
       
       public static const EFFICIENCYRIBBONS_DEATHZONE:String = "#ingame_gui:efficiencyRibbons/deathZone";
       
+      public static const EFFICIENCYRIBBONS_STATICDEATHZONE:String = "#ingame_gui:efficiencyRibbons/staticDeathZone";
+      
+      public static const EFFICIENCYRIBBONS_HBDEATHZONE:String = "#ingame_gui:efficiencyRibbons/HBDeathZone";
+      
+      public static const EFFICIENCYRIBBONS_EVENTDEATHONPHASECHANGE:String = "#ingame_gui:efficiencyRibbons/eventDeathOnPhaseChange";
+      
       public static const EFFICIENCYRIBBONS_CANNONDMG:String = "#ingame_gui:efficiencyRibbons/CannonDmg";
       
       public static const EFFICIENCYRIBBONS_AIRSTRIKEDMG:String = "#ingame_gui:efficiencyRibbons/AirstrikeDmg";
@@ -1268,8 +1282,6 @@ package
       public static const DAMAGELOG_SHELLTYPE_ARMOR_PIERCING_CR:String = "#ingame_gui:damageLog/shellType/ARMOR_PIERCING_CR";
       
       public static const DAMAGELOG_SHELLTYPE_HOLLOW_CHARGE:String = "#ingame_gui:damageLog/shellType/HOLLOW_CHARGE";
-      
-      public static const DAMAGELOG_DEATH_ZONE:String = "#ingame_gui:damageLog/DEATH_ZONE";
       
       public static const DAMAGELOG_MULTIPLIER:String = "#ingame_gui:damageLog/multiplier";
       
@@ -1402,6 +1414,10 @@ package
       public static const SIEGEMODE_HINT_TURBOSHAFTENGINE:String = "#ingame_gui:siegeMode/hint/turboshaftEngine";
       
       public static const SIEGEMODE_HINT_ROCKETACCELERATION:String = "#ingame_gui:siegeMode/hint/rocketAcceleration";
+      
+      public static const CAMERA_HINT_PRESS:String = "#ingame_gui:camera/hint/press";
+      
+      public static const CAMERA_HINT_WHEELED:String = "#ingame_gui:camera/hint/wheeled";
       
       public static const EFFICIENCYRIBBONS_ENEMYSECTORCAPTURED:String = "#ingame_gui:efficiencyRibbons/enemySectorCaptured";
       
@@ -2011,9 +2027,21 @@ package
       
       public static const HINT_NOBINDINGKEY:String = "#ingame_gui:hint/noBindingKey";
       
+      public static const DESTROYTIMER_LIFTOVER:String = "#ingame_gui:destroyTimer/liftOver";
+      
       public static const DANGER_ZONE_INDICATOR:String = "#ingame_gui:danger_zone/indicator";
       
-      public static const DESTROYTIMER_LIFTOVER:String = "#ingame_gui:destroyTimer/liftOver";
+      public static const WARNING_ZONE_INDICATOR:String = "#ingame_gui:warning_zone/indicator";
+      
+      public static const STATUSNOTIFICATIONTIMERS_STATICDEATHZONE:String = "#ingame_gui:statusNotificationTimers/staticDeathZone";
+      
+      public static const DEVMAPS_HINT_PRESS:String = "#ingame_gui:devMaps/hint/press";
+      
+      public static const DEVMAPS_HINT_DESCRIPTION:String = "#ingame_gui:devMaps/hint/description";
+      
+      public static const DEVMAPS_MAPINFO_TEXT:String = "#ingame_gui:devMaps/mapInfo/text";
+      
+      public static const DEVMAPS_MAPINFO_INFO:String = "#ingame_gui:devMaps/mapInfo/info";
        
       
       public function INGAME_GUI()

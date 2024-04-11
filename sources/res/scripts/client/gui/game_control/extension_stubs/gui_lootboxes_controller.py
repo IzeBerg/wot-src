@@ -48,7 +48,7 @@ class GuiLootBoxesControllerStub(IGuiLootBoxesController):
     def getDayLimit(self):
         return 0
 
-    def openShop(self):
+    def openShop(self, lootboxID=None):
         pass
 
     def getDayInfoStatistics(self):
@@ -77,3 +77,6 @@ class GuiLootBoxesControllerStub(IGuiLootBoxesController):
 
     def getHangarOptimizer(self):
         return
+
+    def addShopWindowHandler(self, keyHandler, handler):
+        pass

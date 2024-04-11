@@ -35,7 +35,7 @@ _FORWARD_INPUT_CTRL_MODES = (
  CTRL_MODE_NAME.DEATH_FREE_CAM)
 _ARENA_GUI_TYPE_TO_MODE_TAG = {ARENA_GUI_TYPE.COMP7: 'Onslaught', 
    ARENA_GUI_TYPE.FUN_RANDOM: 'Arcade'}
-_IGNORED_SWITCHING_CTRL_MODES = (
+_IGNORED_SWITCHING_CTRL_MODES = [
  CTRL_MODE_NAME.SNIPER,
  CTRL_MODE_NAME.ARCADE,
  CTRL_MODE_NAME.ARTY,
@@ -45,7 +45,7 @@ _IGNORED_SWITCHING_CTRL_MODES = (
  CTRL_MODE_NAME.MAP_CASE,
  CTRL_MODE_NAME.MAP_CASE_ARCADE,
  CTRL_MODE_NAME.MAP_CASE_EPIC,
- CTRL_MODE_NAME.MAP_CASE_ARCADE_EPIC_MINEFIELD)
+ CTRL_MODE_NAME.MAP_CASE_ARCADE_EPIC_MINEFIELD]
 
 class CallbackDataNames(object):
     APPLY_ZOOM = 'applyZoom'
@@ -878,13 +878,15 @@ class BattleReplay(object):
 
     def loadServerSettings(self):
         if self.isPlaying:
-            if not self.isServerSideReplay:
-                try:
+            try:
+                if not self.isServerSideReplay:
                     self.__serverSettings = self.arenaInfo.get('serverSettings')
-                except Exception:
-                    LOG_WARNING('There is problem while unpacking server settings from replay')
-                    if constants.IS_DEVELOPMENT:
-                        LOG_CURRENT_EXCEPTION()
+                else:
+                    self.__serverSettings = pickle.loads(zlib.decompress(self.__serverSettings))
+            except Exception:
+                LOG_WARNING('There is problem while unpacking server settings from replay')
+                if constants.IS_DEVELOPMENT:
+                    LOG_CURRENT_EXCEPTION()
 
             self.lobbyContext.setServerSettings(self.__serverSettings)
 

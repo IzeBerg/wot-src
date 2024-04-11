@@ -43,6 +43,7 @@ class GameEvent(HasCtxEvent):
     SHOW_EXTENDED_INFO = 'game/showExtendedInfo'
     CHOICE_CONSUMABLE = 'game/choiceConsumable'
     MINIMAP_CMD = 'game/minimapCmd'
+    FULL_MAP_CMD = 'game/fullMapCmd'
     RADIAL_MENU_CMD = 'game/radialMenuCmd'
     TOGGLE_GUI = 'game/toggleGUI'
     GUI_VISIBILITY = 'game/guiVisibility'
@@ -631,6 +632,8 @@ class HangarVehicleEvent(HasCtxEvent):
     PLATOON_TANK_MARKER = 'hangarVehicle/platoonTankMarker'
     SELECT_VEHICLE_IN_HANGAR = 'hangarVehicle/selectVehicleInHangar'
     BOOTCAMP_SECOND_TANK_MARKER = 'hangarVehicle/bootcampSecondTankMarker'
+    ON_HB_TANK_LOADED = 'hangarVehicle/onHBTankLoaded'
+    ON_HB_TANK_DESTROY = 'hangarVehicle/onHBTankDestroy'
 
 
 class ManualEvent(HasCtxEvent):
@@ -678,6 +681,7 @@ class AirDropEvent(HasCtxEvent):
     AIR_DROP_LANDED = 'onAirDropLanded'
     AIR_DROP_LOOP_ENTERED = 'onAirDropLootEntered'
     AIR_DROP_LOOP_LEFT = 'onAirDropLootLeft'
+    AIR_DROP_NXT_SPAWNED = 'onAirDropNxtSpawned'
 
 
 class ProfilePageEvent(HasCtxEvent):
@@ -838,3 +842,7 @@ class HangarCrewWidgetViewEvent(HasCtxEvent):
 
 class CosmicEvent(SharedEvent):
     OPEN_COSMIC = 'openCosmic'
+
+
+class HBRoleSkillEvents(HasCtxEvent):
+    UNLOCK_PROGRESS_CHANGED = 'hbRoleSkill/unlockProgressChanged'

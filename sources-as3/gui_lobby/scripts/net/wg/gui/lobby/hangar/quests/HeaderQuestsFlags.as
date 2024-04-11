@@ -6,6 +6,7 @@ package net.wg.gui.lobby.hangar.quests
    import flash.display.Sprite;
    import flash.events.Event;
    import flash.events.MouseEvent;
+   import flash.geom.Point;
    import flash.geom.Rectangle;
    import flash.utils.Dictionary;
    import net.wg.data.Aliases;
@@ -22,6 +23,8 @@ package net.wg.gui.lobby.hangar.quests
    
    public class HeaderQuestsFlags extends UIComponentEx implements IQuestsButtonsContainer
    {
+      
+      public static var ENTRY_POINT_RESIZE:String = "entryPointResize";
       
       private static const DISABLE_TWEEN_DURATION:int = 120;
       
@@ -59,7 +62,17 @@ package net.wg.gui.lobby.hangar.quests
       
       private static const SECONDARY_MARGIN_RIGHT_SMALL:int = 14;
       
-      public static var ENTRY_POINT_RESIZE:String = "entryPointResize";
+      private static const INV_SECONDARY_ENTRY_POINT:String = "invSecondaryEntryPoint";
+      
+      private static const FLAGS_TWEEN_DELAY_TIME:int = 100;
+      
+      private static const FLAGS_TWEEN_DURATION:int = 1000;
+      
+      private static const FLAGS_TWEEN_PROPS:Object = {
+         "paused":false,
+         "ease":Quartic.easeOut,
+         "fastTransform":false
+      };
        
       
       public var questsHitArea:Sprite = null;
@@ -88,15 +101,15 @@ package net.wg.gui.lobby.hangar.quests
       
       private var _scheduler:IScheduler = null;
       
-      private var _entryPoint:IHeaderFlagsEntryPoint = null;
+      private var _entryPoint:IHeaderEntryPoint = null;
       
       private var _flagsOffsetY:Number = 0;
       
       private var _isSmall:Boolean = false;
       
-      private var _secondaryEntryPointLeft:IHeaderSecondaryEntryPoint = null;
+      private var _secondaryEntryPointLeft:IHeaderSecondaryWidget = null;
       
-      private var _secondaryEntryPointRight:IHeaderSecondaryEntryPoint = null;
+      private var _secondaryEntryPointRight:IHeaderSecondaryWidget = null;
       
       public function HeaderQuestsFlags()
       {
@@ -167,6 +180,7 @@ package net.wg.gui.lobby.hangar.quests
          this.removeEventListener(MouseEvent.ROLL_OUT,this.onThisRollOutHandler);
          this.removeEventListener(MouseEvent.ROLL_OVER,this.onThisRollOverHandler);
          this._scheduler.cancelTask(this.showCollapseAnim);
+         this._scheduler.cancelTask(this.animFlagsPosition);
          this._scheduler = null;
          super.onBeforeDispose();
       }
@@ -190,23 +204,29 @@ package net.wg.gui.lobby.hangar.quests
          super.onDispose();
       }
       
-      public function getEntryPoint() : IHeaderFlagsEntryPoint
+      public function addSecondaryEntryPoint(param1:IHeaderSecondaryWidget, param2:Boolean) : void
       {
-         return this._entryPoint;
+         this.removeSecondaryEntryPoint(param2);
+         App.utils.asserter.assertNotNull(param1,"secondary entry point" + Errors.CANT_NULL);
+         if(param1)
+         {
+            addChild(DisplayObject(param1));
+            if(param2)
+            {
+               this._secondaryEntryPointRight = param1;
+            }
+            else
+            {
+               this._secondaryEntryPointLeft = param1;
+            }
+            invalidateSize();
+         }
+         invalidate(INV_SECONDARY_ENTRY_POINT);
       }
       
       public function getHitRect() : Rectangle
       {
          return new Rectangle(this.questsHitArea.x,this.questsHitArea.y,this.questsHitArea.width,this.questsHitArea.height);
-      }
-      
-      public function set isSmall(param1:Boolean) : void
-      {
-         if(param1 != this._isSmall)
-         {
-            this._isSmall = param1;
-            invalidateSize();
-         }
       }
       
       public function getQuestBtnByType(param1:String) : IQuestInformerButton
@@ -243,6 +263,29 @@ package net.wg.gui.lobby.hangar.quests
          return null;
       }
       
+      public function getSecondaryEntryPoint(param1:Boolean) : IHeaderSecondaryWidget
+      {
+         return !!param1 ? this._secondaryEntryPointRight : this._secondaryEntryPointLeft;
+      }
+      
+      public function removeSecondaryEntryPoint(param1:Boolean) : void
+      {
+         var _loc2_:IHeaderSecondaryWidget = this.getSecondaryEntryPoint(param1);
+         if(_loc2_)
+         {
+            removeChild(DisplayObject(_loc2_));
+            invalidateSize();
+         }
+         if(param1)
+         {
+            this._secondaryEntryPointRight = null;
+         }
+         else
+         {
+            this._secondaryEntryPointLeft = null;
+         }
+      }
+      
       public function setData(param1:Vector.<HeaderQuestGroupVO>) : void
       {
          if(param1 != null && this._questsGroupsData != param1)
@@ -252,8 +295,9 @@ package net.wg.gui.lobby.hangar.quests
          }
       }
       
-      public function setEntryPoint(param1:IHeaderFlagsEntryPoint) : void
+      public function setEntryPoint(param1:IHeaderEntryPoint) : void
       {
+         this._scheduler.cancelTask(this.invSize);
          this.clearEntryPoint();
          if(param1 != null)
          {
@@ -264,47 +308,9 @@ package net.wg.gui.lobby.hangar.quests
          invalidateSize();
       }
       
-      public function getSecondaryEntryPoint(param1:Boolean) : IHeaderSecondaryEntryPoint
+      private function invSize() : void
       {
-         return !!param1 ? this._secondaryEntryPointRight : this._secondaryEntryPointLeft;
-      }
-      
-      public function addSecondaryEntryPoint(param1:IHeaderSecondaryEntryPoint, param2:Boolean) : void
-      {
-         this.removeSecondaryEntryPoint(param2);
-         App.utils.asserter.assertNotNull(param1,"secondary entry point" + Errors.CANT_NULL);
-         if(param1)
-         {
-            addChild(DisplayObject(param1));
-            if(param2)
-            {
-               this._secondaryEntryPointRight = param1;
-            }
-            else
-            {
-               this._secondaryEntryPointLeft = param1;
-            }
-            invalidateSize();
-         }
-      }
-      
-      public function removeSecondaryEntryPoint(param1:Boolean) : void
-      {
-         if(param1)
-         {
-            if(this._secondaryEntryPointRight)
-            {
-               removeChild(DisplayObject(this._secondaryEntryPointRight));
-               this._secondaryEntryPointRight = null;
-               invalidateSize();
-            }
-         }
-         else if(this._secondaryEntryPointLeft)
-         {
-            removeChild(DisplayObject(this._secondaryEntryPointLeft));
-            this._secondaryEntryPointLeft = null;
-            invalidateSize();
-         }
+         invalidateSize();
       }
       
       private function clearEntryPoint() : void
@@ -406,35 +412,51 @@ package net.wg.gui.lobby.hangar.quests
          }
       }
       
+      private function updateSecondaryEntryPointsPositions() : void
+      {
+         var _loc4_:int = 0;
+         var _loc1_:int = 0;
+         var _loc2_:int = 0;
+         var _loc3_:int = 0;
+         if(this._secondaryEntryPointRight)
+         {
+            _loc3_ = !!this._isSmall ? int(SECONDARY_OFFSET_RIGHT_X_SMALL) : int(SECONDARY_OFFSET_RIGHT_X);
+            _loc1_ = (this.entryPointWidth >> 1) + this.entryPointMarginRight + _loc3_;
+            _loc2_ = this.entryPointMarginTop;
+            this._secondaryEntryPointRight.position = new Point(_loc1_,_loc2_);
+         }
+         if(this._secondaryEntryPointLeft)
+         {
+            _loc3_ = !!this._isSmall ? int(SECONDARY_OFFSET_LEFT_X_SMALL) : int(SECONDARY_OFFSET_LEFT_X);
+            _loc4_ = this._secondaryEntryPointLeft.width + this._secondaryEntryPointLeft.marginRight;
+            _loc1_ = -((this.entryPointWidth >> 1) + _loc4_ + this.entryPointMarginLeft + _loc3_) | 0;
+            _loc2_ = this.entryPointMarginTop | 0;
+            this._secondaryEntryPointLeft.position = new Point(_loc1_,_loc2_);
+         }
+      }
+      
       private function layoutQuestContainers() : void
       {
          var _loc2_:IHeaderQuestsContainer = null;
          var _loc3_:HeaderQuestGroupVO = null;
-         var _loc7_:int = 0;
-         var _loc8_:int = 0;
          var _loc1_:int = this._questsGroupsData.length;
-         if(this._secondaryEntryPointLeft)
-         {
-            _loc7_ = !!this._isSmall ? int(SECONDARY_OFFSET_LEFT_X_SMALL) : int(SECONDARY_OFFSET_LEFT_X);
-            this._secondaryEntryPointLeft.x = -((this.entryPointWidth >> 1) + this._secondaryEntryPointLeft.width + this.entryPointMarginLeft + _loc7_ - this.secondaryEntryPointLeftOffset) | 0;
-            this._secondaryEntryPointLeft.y = this.entryPointMarginTop | 0;
-         }
-         if(this._secondaryEntryPointRight)
-         {
-            _loc8_ = !!this._isSmall ? int(SECONDARY_OFFSET_RIGHT_X_SMALL) : int(SECONDARY_OFFSET_RIGHT_X);
-            this._secondaryEntryPointRight.x = (this.entryPointWidth >> 1) + this.entryPointMarginRight + _loc8_;
-            this._secondaryEntryPointRight.y = this.entryPointMarginTop;
-         }
+         this.updateSecondaryEntryPointsPositions();
          var _loc4_:int = this.getInitialRightSideX();
          var _loc5_:int = -1;
-         var _loc6_:int = 0;
-         while(_loc6_ < _loc1_)
+         var _loc6_:int = this.entryPointMarginTop + this.flagsOffsetY;
+         if(this._isMoveContainerInProgress)
          {
-            _loc3_ = this._questsGroupsData[_loc6_];
+            clearTweens(this._containerTweens);
+            this._isMoveContainerInProgress = false;
+         }
+         var _loc7_:int = 0;
+         while(_loc7_ < _loc1_)
+         {
+            _loc3_ = this._questsGroupsData[_loc7_];
             _loc2_ = this._containersMap[_loc3_.groupID];
             if(_loc3_.isRightSide)
             {
-               _loc2_.x = _loc4_;
+               _loc2_.position = new Point(_loc4_,_loc6_);
                _loc4_ += _loc2_.cmptWidth;
             }
             else
@@ -443,11 +465,35 @@ package net.wg.gui.lobby.hangar.quests
                {
                   _loc5_ = this.getInitialLeftSideX(_loc2_.cmptWidth);
                }
-               _loc2_.x = _loc5_;
+               _loc2_.position = new Point(_loc5_,_loc6_);
                _loc5_ -= _loc2_.cmptWidth;
             }
-            _loc2_.y = this.entryPointMarginTop + this.flagsOffsetY;
-            _loc6_++;
+            _loc7_++;
+         }
+         this._scheduler.cancelTask(this.animFlagsPosition);
+         this._scheduler.scheduleTask(this.animFlagsPosition,FLAGS_TWEEN_DELAY_TIME);
+      }
+      
+      private function animFlagsPosition() : void
+      {
+         var _loc1_:IHeaderQuestsContainer = null;
+         var _loc2_:HeaderQuestGroupVO = null;
+         if(this._secondaryEntryPointRight)
+         {
+            this._secondaryEntryPointRight.animPosition(FLAGS_TWEEN_DURATION,FLAGS_TWEEN_PROPS);
+         }
+         if(this._secondaryEntryPointLeft)
+         {
+            this._secondaryEntryPointLeft.animPosition(FLAGS_TWEEN_DURATION,FLAGS_TWEEN_PROPS);
+         }
+         var _loc3_:int = this._questsGroupsData.length;
+         var _loc4_:int = 0;
+         while(_loc4_ < _loc3_)
+         {
+            _loc2_ = this._questsGroupsData[_loc4_];
+            _loc1_ = this._containersMap[_loc2_.groupID];
+            _loc1_.animPosition(FLAGS_TWEEN_DURATION,FLAGS_TWEEN_PROPS);
+            _loc4_++;
          }
       }
       
@@ -480,17 +526,19 @@ package net.wg.gui.lobby.hangar.quests
       
       private function updateHitArea() : void
       {
-         var _loc4_:IHeaderQuestsContainer = null;
+         var _loc5_:IHeaderQuestsContainer = null;
          var _loc1_:int = this.entryPointWidth + this.entryPointMarginRight + this.entryPointMarginLeft;
          var _loc2_:int = _loc1_ + 2 * QUESTS_GROUP_OFFSET;
          var _loc3_:int = Boolean(this._entryPoint) ? int(-(_loc1_ >> 1)) : int(0);
-         for each(_loc4_ in this._questsGroupsContainers)
+         var _loc4_:Point = null;
+         for each(_loc5_ in this._questsGroupsContainers)
          {
+            _loc4_ = _loc5_.position;
             if(_loc4_.x < _loc3_)
             {
                _loc3_ = _loc4_.x;
             }
-            _loc2_ += _loc4_.cmptWidth;
+            _loc2_ += _loc5_.cmptWidth;
          }
          this.questsHitArea.x = _loc3_;
          this.questsHitArea.y = this.flagsOffsetY;
@@ -658,7 +706,7 @@ package net.wg.gui.lobby.hangar.quests
          if(this._secondaryEntryPointRight)
          {
             _loc2_ = !!this._isSmall ? int(SECONDARY_MARGIN_RIGHT_SMALL) : int(SECONDARY_MARGIN_RIGHT);
-            return this._secondaryEntryPointRight.x + this._secondaryEntryPointRight.width + _loc2_ | 0;
+            return this._secondaryEntryPointRight.position.x + this._secondaryEntryPointRight.width + _loc2_ | 0;
          }
          var _loc1_:int = QUESTS_GROUP_OFFSET + RIGHT_SIDE_GROUP_X_OFFSET + this._offsetRightSideX;
          return (this.entryPointWidth >> 1) + this.entryPointMarginRight + _loc1_;
@@ -669,8 +717,8 @@ package net.wg.gui.lobby.hangar.quests
          var _loc3_:int = 0;
          if(this._secondaryEntryPointLeft)
          {
-            _loc3_ = !!this._isSmall ? int(SECONDARY_MARGIN_LEFT_SMALL) : int(SECONDARY_MARGIN_LEFT);
-            return this._secondaryEntryPointLeft.x - (param1 >> 1) - _loc3_ | 0;
+            _loc3_ = this._secondaryEntryPointLeft.marginLeft + (!!this._isSmall ? SECONDARY_MARGIN_LEFT_SMALL : SECONDARY_MARGIN_LEFT);
+            return this._secondaryEntryPointLeft.position.x - (param1 >> 1) - _loc3_ | 0;
          }
          var _loc2_:int = QUESTS_GROUP_OFFSET + (!!this._isSmall ? LEFT_SIDE_GROUP_X_OFFSET_SMALL : LEFT_SIDE_GROUP_X_OFFSET);
          return -((this.entryPointWidth >> 1) + (param1 >> 1) + this.entryPointMarginLeft + _loc2_);
@@ -679,6 +727,20 @@ package net.wg.gui.lobby.hangar.quests
       private function onMoveContainerCompleted() : void
       {
          this._isMoveContainerInProgress = false;
+      }
+      
+      public function get hasQuests() : Boolean
+      {
+         return this._questsGroupsContainers && this._questsGroupsContainers.length > 0;
+      }
+      
+      public function set isSmall(param1:Boolean) : void
+      {
+         if(param1 != this._isSmall)
+         {
+            this._isSmall = param1;
+            invalidateSize();
+         }
       }
       
       public function set offsetRightSideX(param1:Number) : void
@@ -699,15 +761,6 @@ package net.wg.gui.lobby.hangar.quests
             this._flagsOffsetY = param1;
             invalidateSize();
          }
-      }
-      
-      private function get secondaryEntryPointLeftOffset() : int
-      {
-         if(this._secondaryEntryPointLeft is ArmoryYardEntryPoint)
-         {
-            return ArmoryYardEntryPoint(this._secondaryEntryPointLeft).glowAreaOffset;
-         }
-         return 0;
       }
       
       private function get entryPointWidth() : int

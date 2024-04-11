@@ -22,5 +22,12 @@ package net.wg.gui.bootcamp.containers
       {
          this.icon.source = param1;
       }
+      
+      override protected function onDispose() : void
+      {
+         this.icon.dispose();
+         this.icon = null;
+         super.onDispose();
+      }
    }
 }

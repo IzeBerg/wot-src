@@ -1,6 +1,7 @@
 package net.wg.gui.lobby.settings
 {
    import flash.display.DisplayObject;
+   import flash.display.DisplayObjectContainer;
    import flash.display.MovieClip;
    import flash.display.Sprite;
    import flash.geom.Point;
@@ -22,6 +23,7 @@ package net.wg.gui.lobby.settings
    import net.wg.gui.components.windows.WindowEvent;
    import net.wg.gui.events.ViewStackEvent;
    import net.wg.gui.interfaces.ISettingsBase;
+   import net.wg.gui.lobby.settings.components.evnts.LimitedUIEvent;
    import net.wg.gui.lobby.settings.config.SettingsConfigHelper;
    import net.wg.gui.lobby.settings.events.AlternativeVoiceEvent;
    import net.wg.gui.lobby.settings.events.SettingViewEvent;
@@ -53,6 +55,7 @@ package net.wg.gui.lobby.settings
    import scaleform.clik.events.ButtonEvent;
    import scaleform.clik.events.IndexEvent;
    import scaleform.clik.interfaces.IDataProvider;
+   import scaleform.clik.interfaces.IUIComponent;
    import scaleform.clik.utils.Padding;
    
    public class SettingsWindow extends SettingsWindowMeta implements ISettingsWindowMeta
@@ -69,6 +72,8 @@ package net.wg.gui.lobby.settings
       private static const FIELD_DATA:String = "data";
       
       private static const FIELD_DESCR:String = "descr";
+      
+      private static const DISABLED_OVERLAY_LINKAGE:String = "DisabledTabsOverlayUI";
       
       private static const FIELD_CURRENT:String = "current";
       
@@ -95,6 +100,8 @@ package net.wg.gui.lobby.settings
       private static const BIG_TEXTURE_SIZE:int = 512;
       
       private static const GAMMA_TEXTURE_Y:int = 129;
+      
+      private static const INV_LIMITED_UI_SETTING_VISIBLE:String = "InvLimitedUISettingVisible";
        
       
       public var tabs:ButtonBarEx = null;
@@ -127,11 +134,15 @@ package net.wg.gui.lobby.settings
       
       private var _graphicsPresetToSelect:int = -1;
       
+      private var _disabledTabsOverlay:DisabledTabsOverlay = null;
+      
       private var _settingsConfigHelper:SettingsConfigHelper;
       
       private var _countersData:Vector.<SettingsNewCountersVo> = null;
       
       private var _counterManager:ICounterManager;
+      
+      private var _limitedUISettingVisible:Boolean = false;
       
       public function SettingsWindow()
       {
@@ -168,6 +179,7 @@ package net.wg.gui.lobby.settings
             this.tabs.addEventListener(IndexEvent.INDEX_CHANGE,this.onTabIndexChangeHandler);
             this.view.addEventListener(ViewStackEvent.NEED_UPDATE,this.onViewNeedUpdateHandler);
             this.view.addEventListener(ViewStackEvent.VIEW_CHANGED,this.onViewViewChangedHandler);
+            this.view.addEventListener(LimitedUIEvent.TURN_OFF,this.onLimitedUITurnOffHandler);
             if(this._tabToSelect != -1)
             {
                this.tabs.selectedIndex = this._tabToSelect;
@@ -194,6 +206,10 @@ package net.wg.gui.lobby.settings
       override protected function draw() : void
       {
          super.draw();
+         if(isInvalid(INV_LIMITED_UI_SETTING_VISIBLE))
+         {
+            this.updateLimitedUISettingVisible();
+         }
          if(geometry && window && isInvalid(WindowViewInvalidationType.POSITION_INVALID))
          {
             window.x = App.appWidth - window.getBackground().width >> 1;
@@ -224,6 +240,7 @@ package net.wg.gui.lobby.settings
          {
             this.view.removeEventListener(ViewStackEvent.NEED_UPDATE,this.onViewNeedUpdateHandler);
             this.view.removeEventListener(ViewStackEvent.VIEW_CHANGED,this.onViewViewChangedHandler);
+            this.view.removeEventListener(LimitedUIEvent.TURN_OFF,this.onLimitedUITurnOffHandler);
             this.view.dispose();
             this.view = null;
          }
@@ -259,6 +276,11 @@ package net.wg.gui.lobby.settings
          this._pythonSettingsData.dispose();
          this._pythonSettingsData = null;
          this._feedbackDataProvider = null;
+         if(this._disabledTabsOverlay != null)
+         {
+            this._disabledTabsOverlay.dispose();
+            this._disabledTabsOverlay = null;
+         }
          SettingsConfigHelper.instance.dispose();
          super.onDispose();
       }
@@ -432,6 +454,12 @@ package net.wg.gui.lobby.settings
          }
       }
       
+      public function as_showLimitedUISetting(param1:Boolean) : void
+      {
+         this._limitedUISettingVisible = param1;
+         invalidate(INV_LIMITED_UI_SETTING_VISIBLE);
+      }
+      
       public function as_updateVideoSettings(param1:Object) : void
       {
          var _loc4_:uint = 0;
@@ -500,6 +528,15 @@ package net.wg.gui.lobby.settings
          else
          {
             this._needToUpdateGraphicSettings = true;
+         }
+      }
+      
+      private function updateLimitedUISettingVisible() : void
+      {
+         var _loc1_:GameSettings = this.getGameSettings();
+         if(_loc1_)
+         {
+            _loc1_.setLimitedUISettingVisible(this._limitedUISettingVisible);
          }
       }
       
@@ -652,6 +689,10 @@ package net.wg.gui.lobby.settings
             this._invalidTabsNewCounterData[param1] = false;
             this.updateNewCounterForCurrentView(SettingsNewCountersForm(_loc3_));
          }
+         if(param1 == GameSettings.LINKAGE)
+         {
+            this.updateLimitedUISettingVisible();
+         }
       }
       
       private function initializeCommonData(param1:SettingsDataVo) : void
@@ -697,6 +738,25 @@ package net.wg.gui.lobby.settings
             {
                this.tabs.selectedIndex = _currentTab;
             }
+         }
+      }
+      
+      override protected function setDisabledTabsOverlay(param1:Vector.<int>, param2:String) : void
+      {
+         if(this._disabledTabsOverlay == null)
+         {
+            this._disabledTabsOverlay = App.utils.classFactory.getComponent(DISABLED_OVERLAY_LINKAGE,DisabledTabsOverlay);
+            addChild(this._disabledTabsOverlay);
+            this._disabledTabsOverlay.setupTabs(this.tabs,param1,param2);
+            this.updateCurrentDisabledView(this.view.currentView);
+         }
+      }
+      
+      private function updateCurrentDisabledView(param1:IUIComponent) : void
+      {
+         if(this._disabledTabsOverlay != null)
+         {
+            this._disabledTabsOverlay.updateDisabledView(param1 as DisplayObjectContainer,_currentTab);
          }
       }
       
@@ -758,11 +818,6 @@ package net.wg.gui.lobby.settings
       private function updateApplyBtnState() : void
       {
          this.applyBtn.enabled = this.hasChangesData;
-      }
-      
-      private function get hasChangesData() : Boolean
-      {
-         return this._settingsConfigHelper.changesData.length > 0;
       }
       
       private function tryGetView(param1:String) : MovieClip
@@ -1100,6 +1155,11 @@ package net.wg.gui.lobby.settings
          }
       }
       
+      private function get hasChangesData() : Boolean
+      {
+         return this._settingsConfigHelper.changesData.length > 0;
+      }
+      
       private function onOnControlNewCountersVisitedHandler(param1:SettingViewEvent) : void
       {
          var _loc2_:String = param1.viewId;
@@ -1122,6 +1182,7 @@ package net.wg.gui.lobby.settings
             _loc2_.onViewChanged();
          }
          onTabSelectedS(this._settingsConfigHelper.tabsDataProvider[_currentTab].label);
+         this.updateCurrentDisabledView(this.view.currentView);
       }
       
       private function onViewNeedUpdateHandler(param1:ViewStackEvent) : void
@@ -1335,6 +1396,12 @@ package net.wg.gui.lobby.settings
       private function onOnColorSettingOpenHandler(param1:SettingViewEvent) : void
       {
          openColorSettingsS();
+      }
+      
+      private function onLimitedUITurnOffHandler(param1:LimitedUIEvent) : void
+      {
+         var _loc2_:Object = this._settingsConfigHelper.changesData.getChanges();
+         showWarningDialogS(SETTINGS_DIALOGS.LIMITED_UI_OFF_NOTIFICATION,_loc2_,true);
       }
    }
 }

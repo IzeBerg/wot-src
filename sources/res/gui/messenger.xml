@@ -840,7 +840,7 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 &lt;font color=&apos;#929290&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/battle): %(arenaName)s &lt;/font&gt;
 &lt;font color=&apos;#929290&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/tanks): %(vehicleNames)s&lt;/font&gt;
 &lt;font color=&apos;#929290&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/experience): &lt;font color=&apos;#C8C8B5&apos;&gt;%(xp)s&lt;/font&gt;%(xpEx)s&lt;/font&gt;%(crystalStr)s%(gold)s
-&lt;font color=&apos;#929290&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/credits): &lt;font color=&apos;#C5CFCF&apos;&gt;%(credits)s&lt;/font&gt;%(creditsEx)s&lt;/font&gt;&lt;font color=&apos;#929290&apos;&gt;%(brcoin)s&lt;/font&gt;&lt;font color=&apos;#929290&apos;&gt;%(battlePassProgress)s&lt;/font&gt;%(rankedProgress)s%(rankedBonusBattles)s%(achieves)s%(lock)s%(quests)s%(piggyBank)s</message>
+&lt;font color=&apos;#929290&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/credits): &lt;font color=&apos;#C5CFCF&apos;&gt;%(credits)s&lt;/font&gt;%(creditsEx)s&lt;/font&gt;&lt;font color=&apos;#929290&apos;&gt;%(brcoin)s&lt;/font&gt;&lt;font color=&apos;#929290&apos;&gt;%(battlePassProgress)s&lt;/font&gt;&lt;font color=&apos;#929290&apos;&gt;%(brAwardTokens)s&lt;/font&gt;%(rankedProgress)s%(rankedBonusBattles)s%(achieves)s%(lock)s%(quests)s%(piggyBank)s</message>
 		</battleRoyaleVictoryResult>
 		<battleRoyaleDefeatResult>
 			<type>battleResult</type>
@@ -857,8 +857,25 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 &lt;font color=&apos;#929290&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/battle): %(arenaName)s &lt;/font&gt;
 &lt;font color=&apos;#929290&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/tanks): %(vehicleNames)s&lt;/font&gt;
 &lt;font color=&apos;#929290&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/experience): &lt;font color=&apos;#C8C8B5&apos;&gt;%(xp)s&lt;/font&gt;%(xpEx)s&lt;/font&gt;%(crystalStr)s%(gold)s
-&lt;font color=&apos;#929290&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/credits): &lt;font color=&apos;#C5CFCF&apos;&gt;%(credits)s&lt;/font&gt;%(creditsEx)s&lt;/font&gt;&lt;font color=&apos;#929290&apos;&gt;%(brcoin)s&lt;/font&gt;&lt;/font&gt;&lt;font color=&apos;#929290&apos;&gt;%(battlePassProgress)s&lt;/font&gt;%(rankedProgress)s%(rankedBonusBattles)s%(achieves)s%(lock)s%(quests)s%(piggyBank)s</message>
+&lt;font color=&apos;#929290&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/credits): &lt;font color=&apos;#C5CFCF&apos;&gt;%(credits)s&lt;/font&gt;%(creditsEx)s&lt;/font&gt;&lt;font color=&apos;#929290&apos;&gt;%(brcoin)s&lt;/font&gt;&lt;/font&gt;&lt;font color=&apos;#929290&apos;&gt;%(battlePassProgress)s&lt;/font&gt;&lt;font color=&apos;#929290&apos;&gt;%(brAwardTokens)s&lt;/font&gt;%(rankedProgress)s%(rankedBonusBattles)s%(achieves)s%(lock)s%(quests)s%(piggyBank)s</message>
 		</battleRoyaleDefeatResult>
+		<battleRoyaleDisqualifiedResult>
+			<type>battleResult</type>
+			<icon>BattleResultIcon</icon>
+			<bgIconSizeAuto>true</bgIconSizeAuto>
+			<bgIcon>br_notification_background_small</bgIcon>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#messenger:serviceChannelMessages/battleResults/button)</label>
+					<action>showBattleResults</action>
+				</button>
+			</buttonsLayout>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#messenger:serviceChannelMessages/BRbattleResults/disqualified)&lt;/font&gt;
+&lt;font color=&apos;#929290&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/battle): %(arenaName)s &lt;/font&gt;
+&lt;font color=&apos;#929290&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/tanks): %(vehicleNames)s&lt;/font&gt;
+&lt;font color=&apos;#929290&apos;&gt;_(#messenger:serviceChannelMessages/BRbattleResults/no_reward)&lt;/font&gt;</message>
+		</battleRoyaleDisqualifiedResult>
 		<currencyUpdate>
 			<type>yellow</type>
 			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(title)s&lt;/font&gt;
@@ -3469,7 +3486,7 @@ _(#lootboxes:notification/lootBoxesAutoOpen/boxes)&lt;br/&gt;%(rewards)s</messag
 					<type>submit</type>
 					<label>_(#system_messages:unload/button)</label>
 					<action>openBarracks</action>
-					<width>107</width>
+					<dynamicSizeByText>true</dynamicSizeByText>
 				</button>
 			</buttonsLayout>
 		</NotEnoughBerthErrorSysMessage>

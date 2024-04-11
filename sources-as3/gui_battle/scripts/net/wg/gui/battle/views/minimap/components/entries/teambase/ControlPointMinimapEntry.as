@@ -52,6 +52,11 @@ package net.wg.gui.battle.views.minimap.components.entries.teambase
          App.colorSchemeMgr.addEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemeMgrSchemasUpdatedHandler);
       }
       
+      public function setScale(param1:Number) : void
+      {
+         this.atlasPlaceholder.scaleX = this.atlasPlaceholder.scaleY = param1;
+      }
+      
       private function checkForColorBlindMode() : void
       {
          gotoAndStop(!!App.colorSchemeMgr.getIsColorBlindS() ? COLOR_BLIND_FRAME : NORMAL_COLOR_FRAME);

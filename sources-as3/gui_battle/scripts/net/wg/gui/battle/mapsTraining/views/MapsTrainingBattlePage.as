@@ -88,13 +88,13 @@ package net.wg.gui.battle.mapsTraining.views
       
       override public function updateStage(param1:Number, param2:Number) : void
       {
+         var _loc3_:uint = 0;
          super.updateStage(param1,param2);
          this.battleDamageLogPanel.x = BATTLE_DAMAGE_LOG_X_POSITION;
          this.battleDamageLogPanel.y = damagePanel.y + BATTLE_DAMAGE_LOG_Y_PADDING >> 0;
          this.battleDamageLogPanel.updateSize(param1,param2);
-         var _loc3_:uint = param1 >> 1;
-         this.sixthSense.x = _loc3_;
-         this.sixthSense.y = param2 >> 2;
+         _loc3_ = param1 >> 1;
+         this.sixthSense.updateStage(param1,param2);
          this.consumablesPanel.updateStage(param1,param2);
          this.damageInfoPanel.y = (param2 >> 1) / scaleY + DAMAGE_INFO_PANEL_CONSTS.HEIGHT * scaleY | 0;
          this.damageInfoPanel.x = param1 - DAMAGE_INFO_PANEL_CONSTS.WIDTH >> 1;

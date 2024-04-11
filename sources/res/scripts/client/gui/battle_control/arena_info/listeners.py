@@ -1,4 +1,6 @@
-import operator, weakref
+import operator
+from typing import TYPE_CHECKING, Optional
+import weakref
 from collections import namedtuple
 import BigWorld
 from constants import ARENA_PERIOD, FINISH_REASON
@@ -10,6 +12,9 @@ from gui.battle_control.battle_constants import WinStatus
 from gui.prb_control import prbInvitesProperty
 from messenger.m_constants import USER_ACTION_ID, USER_TAG
 from messenger.proto.events import g_messengerEvents
+if TYPE_CHECKING:
+    from gui.battle_control.arena_info.arena_dp import ArenaDataProvider
+    from gui.battle_control.arena_visitor import _ClientArenaVisitor
 
 class _PeriodAdditionalInfo(namedtuple('_PeriodAdditionalInfo', ['winStatus', 'winnerTeam', 'finishReason'])):
 

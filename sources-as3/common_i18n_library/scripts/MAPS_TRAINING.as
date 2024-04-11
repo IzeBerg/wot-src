@@ -1241,6 +1241,8 @@ package
       
       public static const RESULT_TITLE_PARTIAL:String = "#maps_training:result/title/partial";
       
+      public static const RESULT_TITLE_TIE:String = "#maps_training:result/title/Tie";
+      
       public static const RESULT_MAPNAME:String = "#maps_training:result/mapName";
       
       public static const RESULT_SCENARIO:String = "#maps_training:result/scenario";

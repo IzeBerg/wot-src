@@ -133,7 +133,9 @@ class ArmoryYardBundlesView(ViewImpl):
          (
           self.__armoryYardCtrl.onUpdated, self.__onEventUpdated),
          (
-          self.__armoryYardCtrl.onProgressUpdated, self.__onProgressUpdated))
+          self.__armoryYardCtrl.onProgressUpdated, self.__onProgressUpdated),
+         (
+          self.__armoryYardCtrl.onBundlesDisabled, self.__onEventUpdated))
 
 
 class ArmoryYardBundlesWindow(LobbyWindow):

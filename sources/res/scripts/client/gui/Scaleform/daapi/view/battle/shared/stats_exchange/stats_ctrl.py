@@ -6,7 +6,6 @@ from gui.Scaleform.daapi.view.meta.BattleStatisticDataControllerMeta import Batt
 from gui.Scaleform.locale.INGAME_GUI import INGAME_GUI
 from gui.Scaleform.locale.RES_ICONS import RES_ICONS
 from gui.battle_control.arena_info import team_overrides
-from gui.battle_control.arena_info import vos_collections
 from gui.battle_control.arena_info.interfaces import IVehiclesAndPersonalInvitationsController
 from gui.battle_control.arena_info.settings import INVALIDATE_OP
 from gui.battle_control.arena_info.settings import PERSONAL_STATUS
@@ -105,20 +104,21 @@ class BattleStatisticsDataController(BattleStatisticDataControllerMeta, IVehicle
             return arenaDP.isEnemyTeam(team)
 
     def invalidateArenaInfo(self):
-        self.__setArenaDescription()
+        self._setArenaDescription()
         arenaDP = self._battleCtx.getArenaDP()
         self.invalidateVehiclesInfo(arenaDP)
         self.invalidateVehiclesStats(arenaDP)
 
     def invalidateVehiclesInfo(self, arenaDP):
-        self.__updatePersonalPrebattleID(arenaDP)
-        self.__updateSquadRestrictions()
+        self._updatePersonalPrebattleID(arenaDP)
+        self._updateSquadRestrictions()
         exchange = self._exchangeBroker.getVehiclesInfoExchange()
+        from gui.battle_control.arena_info import vos_collections
         collection = vos_collections.VehiclesInfoCollection()
         for vInfoVO in collection.iterator(arenaDP):
             if vInfoVO.isObserver():
                 continue
-            isEnemy, overrides = self.__getTeamOverrides(vInfoVO, arenaDP)
+            isEnemy, overrides = self._getTeamOverrides(vInfoVO, arenaDP)
             with exchange.getCollectedComponent(isEnemy) as (item):
                 item.addVehicleInfo(vInfoVO, overrides)
 
@@ -129,6 +129,7 @@ class BattleStatisticsDataController(BattleStatisticDataControllerMeta, IVehicle
 
     def invalidateVehiclesStats(self, arenaDP):
         exchange = self._exchangeBroker.getVehiclesStatsExchange()
+        from gui.battle_control.arena_info import vos_collections
         collection = vos_collections.VehiclesItemsCollection()
         for vos in collection.iterator(arenaDP):
             vInfoVO, vStatsVO = vos
@@ -148,7 +149,7 @@ class BattleStatisticsDataController(BattleStatisticDataControllerMeta, IVehicle
             self.as_setFragsS(data)
 
     def addVehicleInfo(self, vo, arenaDP):
-        isEnemy, overrides = self.__getTeamOverrides(vo, arenaDP)
+        isEnemy, overrides = self._getTeamOverrides(vo, arenaDP)
         exchange = self._exchangeBroker.getVehiclesInfoExchange()
         with exchange.getCollectedComponent(isEnemy) as (item):
             item.addVehicleInfo(vo, overrides)
@@ -163,14 +164,14 @@ class BattleStatisticsDataController(BattleStatisticDataControllerMeta, IVehicle
             shared |= f
 
         if shared & INVALIDATE_OP.PREBATTLE_CHANGED > 0:
-            self.__updatePersonalPrebattleID(arenaDP)
-            self.__updateSquadRestrictions()
+            self._updatePersonalPrebattleID(arenaDP)
+            self._updateSquadRestrictions()
         exchange = self._exchangeBroker.getVehiclesInfoExchange()
         reusable = set()
         for flags, vInfoVO in updated:
             if vInfoVO.isObserver():
                 continue
-            isEnemy, overrides = self.__getTeamOverrides(vInfoVO, arenaDP)
+            isEnemy, overrides = self._getTeamOverrides(vInfoVO, arenaDP)
             if flags & INVALIDATE_OP.SORTING > 0:
                 reusable.add(isEnemy)
             with exchange.getCollectedComponent(isEnemy) as (item):
@@ -242,7 +243,7 @@ class BattleStatisticsDataController(BattleStatisticDataControllerMeta, IVehicle
         self.as_updateTriggeredChatCommandsS(updateList)
 
     def invalidatePlayerStatus(self, flags, vo, arenaDP):
-        isEnemy, overrides = self.__getTeamOverrides(vo, arenaDP)
+        isEnemy, overrides = self._getTeamOverrides(vo, arenaDP)
         exchange = self._exchangeBroker.getPlayerStatusExchange(isEnemy)
         exchange.setVehicleID(vo.vehicleID)
         exchange.setStatus(overrides.getPlayerStatus(vo))
@@ -253,6 +254,7 @@ class BattleStatisticsDataController(BattleStatisticDataControllerMeta, IVehicle
     def invalidateUsersTags(self):
         arenaDP = self._battleCtx.getArenaDP()
         exchange = self._exchangeBroker.getUsersTagsExchange()
+        from gui.battle_control.arena_info import vos_collections
         collection = vos_collections.VehiclesInfoCollection()
         for vInfoVO in collection.iterator(arenaDP):
             with exchange.getCollectedComponent(self.__isEnemyTeam(arenaDP, vInfoVO.team)) as (item):
@@ -279,7 +281,7 @@ class BattleStatisticsDataController(BattleStatisticDataControllerMeta, IVehicle
     def invalidateInvitationsStatuses(self, vos, arenaDP):
         exchange = self._exchangeBroker.getInvitationsExchange()
         for vo in vos:
-            isEnemy, overrides = self.__getTeamOverrides(vo, arenaDP)
+            isEnemy, overrides = self._getTeamOverrides(vo, arenaDP)
             with exchange.getCollectedComponent(isEnemy) as (item):
                 item.setVehicleID(vo.vehicleID)
                 item.setStatus(overrides.getInvitationDeliveryStatus(vo))
@@ -360,16 +362,16 @@ class BattleStatisticsDataController(BattleStatisticDataControllerMeta, IVehicle
         if self.__personalStatus != PERSONAL_STATUS.DEFAULT:
             self.as_setPersonalStatusS(self.__personalStatus)
 
-    def __updatePersonalPrebattleID(self, arenaDP):
+    def _updatePersonalPrebattleID(self, arenaDP):
         self._personalInfo.prebattleID = arenaDP.getVehicleInfo().prebattleID
 
-    def __updateSquadRestrictions(self):
+    def _updateSquadRestrictions(self):
         noRestrictions = self.__personalStatus & PERSONAL_STATUS.SQUAD_RESTRICTIONS == 0
         if noRestrictions and self._battleCtx.hasSquadRestrictions():
             self.__personalStatus |= PERSONAL_STATUS.SQUAD_RESTRICTIONS
             self.as_updatePersonalStatusS(PERSONAL_STATUS.SQUAD_RESTRICTIONS, PERSONAL_STATUS.DEFAULT)
 
-    def __setArenaDescription(self):
+    def _setArenaDescription(self):
         battleCtx = self._battleCtx
         questProgress = self.sessionProvider.shared.questProgress
         arenaInfoData = {'mapName': battleCtx.getArenaTypeName(), 
@@ -401,7 +403,7 @@ class BattleStatisticsDataController(BattleStatisticDataControllerMeta, IVehicle
         return {'statusLabel': statusLabel, 
            'status': status}
 
-    def __getTeamOverrides(self, vo, arenaDP):
+    def _getTeamOverrides(self, vo, arenaDP):
         team = vo.team
         if team in self.__reusable:
             isEnemy, overrides = self.__reusable[team]

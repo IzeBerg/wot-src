@@ -1,7 +1,8 @@
 from gui.Scaleform.daapi import LobbySubView
 from hangar_selectable_objects import ISelectableLogicCallback, HangarSelectableLogic
+from SelectableObjectTooltipController import SelectableObjectTooltipController
 
-class LobbySelectableView(LobbySubView, ISelectableLogicCallback):
+class LobbySelectableView(LobbySubView, ISelectableLogicCallback, SelectableObjectTooltipController):
 
     def __init__(self, ctx=None):
         super(LobbySelectableView, self).__init__(ctx)

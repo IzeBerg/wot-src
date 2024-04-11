@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/custom/volumetric_effect_vtx.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/h05_tank_smoke.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>5.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						alphaFreshnelEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						FreshnelColor
+						<Vector4>0.960784 0.960784 0.960784 1.000000</Vector4>
+					</property>
+					<property>
+						TintlColor
+						<Vector4>1.000000 1.000000 1.000000 1.200000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>0.000000 0.500000 0.025000</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.500000 0.000000 0.000000</min>
+		<max>0.500000 1.000000 0.050000</max>
+	</boundingBox>
+	<primitivesName>particles/content_deferred/GFX_models/environment/h05_mt_ob_2024/h05_tank_exhaust_smoke</primitivesName>
+	<geometrySize>1004</geometrySize>
+	<minUVDensity>0.198567</minUVDensity>
+</root>

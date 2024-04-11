@@ -149,8 +149,6 @@ package net.wg.data.constants.generated
       
       public static const GUNNER_FOCUS:String = "gunner_focus";
       
-      public static const LOADER_INTUITION:String = "loader_intuition";
-      
       public static const RADAR_COOLDOWN:String = "radar_cooldown";
       
       public static const RADAR_DISTANCE:String = "radar_distance";

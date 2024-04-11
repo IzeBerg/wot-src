@@ -42,9 +42,9 @@ package net.wg.gui.components.controls
       
       public var textField:TextField;
       
-      private var _badge:BadgeComponent = null;
-      
       protected var _toolTip:String = "";
+      
+      private var _badge:BadgeComponent = null;
       
       private var _userVO:UserVO;
       
@@ -105,6 +105,7 @@ package net.wg.gui.components.controls
          initSize();
          super.configUI();
          this._initialTFWidth = this.textField.width;
+         this.textField.addEventListener(Event.CHANGE,this.onTextFieldChangeHandler);
          addEventListener(MouseEvent.ROLL_OVER,this.onMouseRollOverHandler);
          addEventListener(MouseEvent.ROLL_OUT,this.onMouseRollOutHandler);
       }
@@ -114,6 +115,7 @@ package net.wg.gui.components.controls
          removeEventListener(MouseEvent.ROLL_OVER,this.onMouseRollOverHandler);
          removeEventListener(MouseEvent.ROLL_OUT,this.onMouseRollOutHandler);
          this.disposeBadge();
+         this.textField.removeEventListener(Event.CHANGE,this.onTextFieldChangeHandler);
          this.textField = null;
          this._toolTipMgr = null;
          this._textFormat = null;
@@ -137,6 +139,7 @@ package net.wg.gui.components.controls
          if(isInvalid(InvalidationType.SIZE))
          {
             constraints.update(_width,_height);
+            this.updateTFPosition();
             this.updateTFSize();
             invalidateData();
          }
@@ -157,6 +160,7 @@ package net.wg.gui.components.controls
             if(this.userVO)
             {
                this.updateBadge();
+               this.updateTFPosition();
                this.updateTFSize();
                this.textField.autoSize = TextFieldAutoSize.NONE;
                _loc2_ = false;
@@ -188,11 +192,6 @@ package net.wg.gui.components.controls
          }
       }
       
-      private function badgeLoaded(param1:Event) : void
-      {
-         invalidateSize();
-      }
-      
       private function updateBadge() : void
       {
          if(this._badge == null && this._userVO.badgeVisualVO != null)
@@ -219,7 +218,6 @@ package net.wg.gui.components.controls
       {
          if(this._badge != null && this._badge.visible)
          {
-            this.textField.x = this._badge.width;
             this.textField.width = this._initialTFWidth - this._badge.width;
             if(this._verticalAlign == VerticalAlign.TOP)
             {
@@ -236,8 +234,19 @@ package net.wg.gui.components.controls
          }
          else
          {
-            this.textField.x = 0;
             this.textField.width = this._initialTFWidth;
+         }
+      }
+      
+      private function updateTFPosition() : void
+      {
+         if(this._badge != null && this._badge.visible)
+         {
+            this.textField.x = this._badge.width;
+         }
+         else
+         {
+            this.textField.x = 0;
          }
       }
       
@@ -264,14 +273,29 @@ package net.wg.gui.components.controls
          return _loc2_;
       }
       
-      private function get isCurrentPlayer() : Boolean
+      private function disposeBadge() : void
       {
-         return this._userVO && this._userVO.userProps && UserTags.isCurrentPlayer(this.userVO.userProps.tags);
+         if(this._badge != null)
+         {
+            this._badge.removeEventListener(Event.CHANGE,this.badgeLoaded);
+            removeChild(this._badge);
+            this._badge.dispose();
+            this._badge = null;
+         }
       }
       
-      private function get isAnonymized() : Boolean
+      private function updateBadgeVisibility() : void
       {
-         return this._userVO && this._userVO.isAnonymized;
+         if(this._badge != null)
+         {
+            this._badge.visible = this._userVO && this._userVO.userName && this._badgeVisibility;
+         }
+      }
+      
+      override public function set width(param1:Number) : void
+      {
+         super.width = param1;
+         this._initialTFWidth = param1;
       }
       
       public function get showToolTip() : Boolean
@@ -399,9 +423,12 @@ package net.wg.gui.components.controls
       
       public function set userVO(param1:UserVO) : void
       {
-         this._userVO = param1;
-         this._isFrozen = false;
-         invalidateData();
+         if(this._userVO != param1)
+         {
+            this._userVO = param1;
+            this._isFrozen = false;
+            invalidateData();
+         }
       }
       
       public function get useFakeName() : Boolean
@@ -411,8 +438,11 @@ package net.wg.gui.components.controls
       
       public function set useFakeName(param1:Boolean) : void
       {
-         this._useFakeName = param1;
-         invalidateData();
+         if(this._useFakeName != param1)
+         {
+            this._useFakeName = param1;
+            invalidateData();
+         }
       }
       
       public function get showAnonymizerIcon() : Boolean
@@ -422,8 +452,11 @@ package net.wg.gui.components.controls
       
       public function set showAnonymizerIcon(param1:Boolean) : void
       {
-         this._showAnonymizerIcon = param1;
-         invalidateData();
+         if(this._showAnonymizerIcon != param1)
+         {
+            this._showAnonymizerIcon = param1;
+            invalidateData();
+         }
       }
       
       public function get textWidth() : Number
@@ -433,6 +466,50 @@ package net.wg.gui.components.controls
             return this._badge.width + this.textField.textWidth;
          }
          return this.textField.textWidth;
+      }
+      
+      public function set badgeVisibility(param1:Boolean) : void
+      {
+         this._badgeVisibility = param1;
+      }
+      
+      public function get text() : String
+      {
+         return this.textField.text;
+      }
+      
+      public function set text(param1:String) : void
+      {
+         this.textField.text = param1;
+      }
+      
+      public function get verticalAlign() : String
+      {
+         return this._verticalAlign;
+      }
+      
+      public function set verticalAlign(param1:String) : void
+      {
+         if(this._verticalAlign != param1)
+         {
+            this._verticalAlign = param1;
+            invalidateSize();
+         }
+      }
+      
+      public function set isFrozen(param1:Boolean) : void
+      {
+         this._isFrozen = param1;
+      }
+      
+      private function get isCurrentPlayer() : Boolean
+      {
+         return this._userVO && this._userVO.userProps && UserTags.isCurrentPlayer(this.userVO.userProps.tags);
+      }
+      
+      private function get isAnonymized() : Boolean
+      {
+         return this._userVO && this._userVO.isAnonymized;
       }
       
       protected function onMouseRollOverHandler(param1:MouseEvent) : void
@@ -459,60 +536,14 @@ package net.wg.gui.components.controls
          this._toolTipMgr.hide();
       }
       
-      public function set badgeVisibility(param1:Boolean) : void
+      private function badgeLoaded(param1:Event) : void
       {
-         this._badgeVisibility = param1;
-      }
-      
-      public function get text() : String
-      {
-         return this.textField.text;
-      }
-      
-      public function set text(param1:String) : void
-      {
-         this.textField.text = param1;
-      }
-      
-      public function get verticalAlign() : String
-      {
-         return this._verticalAlign;
-      }
-      
-      public function set verticalAlign(param1:String) : void
-      {
-         this._verticalAlign = param1;
          invalidateSize();
       }
       
-      override public function set width(param1:Number) : void
+      private function onTextFieldChangeHandler(param1:Event) : void
       {
-         super.width = param1;
-         this._initialTFWidth = param1;
-      }
-      
-      public function set isFrozen(param1:Boolean) : void
-      {
-         this._isFrozen = param1;
-      }
-      
-      private function disposeBadge() : void
-      {
-         if(this._badge != null)
-         {
-            this._badge.removeEventListener(Event.CHANGE,this.badgeLoaded);
-            removeChild(this._badge);
-            this._badge.dispose();
-            this._badge = null;
-         }
-      }
-      
-      private function updateBadgeVisibility() : void
-      {
-         if(this._badge != null)
-         {
-            this._badge.visible = this._userVO && this._userVO.userName && this._badgeVisibility;
-         }
+         this.updateTFPosition();
       }
    }
 }

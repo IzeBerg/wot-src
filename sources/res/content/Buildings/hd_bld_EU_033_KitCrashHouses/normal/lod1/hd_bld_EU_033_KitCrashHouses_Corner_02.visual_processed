@@ -8,96 +8,6 @@
 			<row2>0.000000 0.000000 1.000000</row2>
 			<row3>0.000000 0.000000 0.000000</row3>
 		</transform>
-		<node>
-			<identifier>hd_bld_EU_033_KitCrashHouses_Corner_02</identifier>
-			<transform>
-				<row0>1.000000 0.000000 0.000000</row0>
-				<row1>0.000000 1.000000 0.000000</row1>
-				<row2>0.000000 0.000000 1.000000</row2>
-				<row3>0.000000 0.000000 0.000000</row3>
-			</transform>
-			<node>
-				<identifier>lod1</identifier>
-				<transform>
-					<row0>1.000000 0.000000 0.000000</row0>
-					<row1>0.000000 1.000000 0.000000</row1>
-					<row2>0.000000 0.000000 1.000000</row2>
-					<row3>0.000000 0.000000 0.000000</row3>
-				</transform>
-				<node>
-					<identifier>s0</identifier>
-					<transform>
-						<row0>1.000000 0.000000 0.000000</row0>
-						<row1>0.000000 1.000000 0.000000</row1>
-						<row2>0.000000 0.000000 1.000000</row2>
-						<row3>0.000000 0.000000 0.000000</row3>
-					</transform>
-				</node>
-				<node>
-					<identifier>s2</identifier>
-					<transform>
-						<row0>1.000000 0.000000 0.000000</row0>
-						<row1>0.000000 1.000000 0.000000</row1>
-						<row2>0.000000 0.000000 1.000000</row2>
-						<row3>0.000000 0.000000 0.000000</row3>
-					</transform>
-				</node>
-				<node>
-					<identifier>s3</identifier>
-					<transform>
-						<row0>1.000000 0.000000 0.000000</row0>
-						<row1>0.000000 1.000000 0.000000</row1>
-						<row2>0.000000 0.000000 1.000000</row2>
-						<row3>0.000000 0.000000 0.000000</row3>
-					</transform>
-				</node>
-				<node>
-					<identifier>s4</identifier>
-					<transform>
-						<row0>1.000000 0.000000 0.000000</row0>
-						<row1>0.000000 1.000000 0.000000</row1>
-						<row2>0.000000 0.000000 1.000000</row2>
-						<row3>0.000000 0.000000 0.000000</row3>
-					</transform>
-				</node>
-				<node>
-					<identifier>s5</identifier>
-					<transform>
-						<row0>1.000000 0.000000 0.000000</row0>
-						<row1>0.000000 1.000000 0.000000</row1>
-						<row2>0.000000 0.000000 1.000000</row2>
-						<row3>0.000000 0.000000 0.000000</row3>
-					</transform>
-				</node>
-				<node>
-					<identifier>s6</identifier>
-					<transform>
-						<row0>1.000000 0.000000 0.000000</row0>
-						<row1>0.000000 1.000000 0.000000</row1>
-						<row2>0.000000 0.000000 1.000000</row2>
-						<row3>0.000000 0.000000 0.000000</row3>
-					</transform>
-				</node>
-				<node>
-					<identifier>s7</identifier>
-					<transform>
-						<row0>1.000000 0.000000 0.000000</row0>
-						<row1>0.000000 1.000000 0.000000</row1>
-						<row2>0.000000 0.000000 1.000000</row2>
-						<row3>0.000000 0.000000 0.000000</row3>
-					</transform>
-				</node>
-				<node>
-					<identifier>s8</identifier>
-					<transform>
-						<row0>1.000000 0.000000 0.000000</row0>
-						<row1>0.000000 1.000000 0.000000</row1>
-						<row2>0.000000 0.000000 1.000000</row2>
-						<row3>0.000000 0.000000 0.000000</row3>
-					</transform>
-				</node>
-			</node>
-		</node>
 	</node>
 	<renderSet>
 		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
@@ -108,6 +18,15 @@
 			<primitive>indices</primitive>
 			<primitiveGroup>
 				0
+				<material>
+					<identifier>s_wall_0</identifier>
+					<collisionFlags>144</collisionFlags>
+					<materialKind>0</materialKind>
+				</material>
+				<groupOrigin>5.422810 6.096633 -2.435566</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
 				<material>
 					<identifier>s_nd7</identifier>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
@@ -205,7 +124,7 @@
 				<groupOrigin>5.417854 6.031909 -2.525630</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
-				1
+				2
 				<material>
 					<identifier>s_nd2</identifier>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
@@ -303,7 +222,7 @@
 				<groupOrigin>5.579310 5.101169 -2.417364</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
-				2
+				3
 				<material>
 					<identifier>s_nd0</identifier>
 					<fx>shaders/std_effects/PBS_ext_dual.fx</fx>
@@ -345,7 +264,7 @@
 				<groupOrigin>5.034836 5.511788 -1.643307</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
-				3
+				4
 				<material>
 					<identifier>s_nd4</identifier>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
@@ -429,7 +348,7 @@
 				<groupOrigin>3.185570 4.030688 -2.282711</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
-				4
+				5
 				<material>
 					<identifier>s_nd8</identifier>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
@@ -527,7 +446,7 @@
 				<groupOrigin>5.114075 6.032853 0.169209</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
-				5
+				6
 				<material>
 					<identifier>s_nd6</identifier>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
@@ -625,7 +544,7 @@
 				<groupOrigin>3.315607 2.084740 -0.730272</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
-				6
+				7
 				<material>
 					<identifier>s_nd5</identifier>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
@@ -716,7 +635,7 @@
 				<groupOrigin>5.661540 6.012303 -3.041283</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
-				7
+				8
 				<material>
 					<identifier>s_nd3</identifier>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
@@ -799,15 +718,6 @@
 				</material>
 				<groupOrigin>5.231817 5.910847 0.201462</groupOrigin>
 			</primitiveGroup>
-			<primitiveGroup>
-				8
-				<material>
-					<identifier>s_wall_0</identifier>
-					<collisionFlags>144</collisionFlags>
-					<materialKind>0</materialKind>
-				</material>
-				<groupOrigin>5.422810 6.096633 -2.435566</groupOrigin>
-			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<boundingBox>
@@ -815,6 +725,6 @@
 		<max>10.929016 14.169257 1.788964</max>
 	</boundingBox>
 	<customBsp>true</customBsp>
-	<geometrySize>146106</geometrySize>
+	<geometrySize>146026</geometrySize>
 	<minUVDensity>0.000362</minUVDensity>
 </root>

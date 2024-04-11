@@ -65,6 +65,7 @@ class GuiLootBoxesController(IGuiLootBoxesController):
         self.__settings = _SettingsMgr()
         self.__isFirstStorageEnter = True
         self.__hangarOptimizer = HangarOptimizer()
+        self.__shopWindowHandler = {}
         return
 
     @property
@@ -133,9 +134,15 @@ class GuiLootBoxesController(IGuiLootBoxesController):
     def getGuaranteedBonusLimit(self, boxType):
         return self.getBoxInfo(boxType).get('limit', 0)
 
-    def openShop(self):
+    def openShop(self, lootboxID=None):
         if self.isBuyAvailable():
-            showShop(getShopURL() + self.__getConfig().getShopCategoryUrl())
+            lootBox = self.__itemsCache.items.tokens.getLootBoxByID(int(lootboxID)) if lootboxID else None
+            handler = self.__shopWindowHandler.get(lootBox.getCategory(), None) if lootBox else None
+            if handler:
+                handler()
+            else:
+                showShop(getShopURL() + self.__getConfig().getShopCategoryUrl())
+        return
 
     def getBoxInfo(self, boxType):
         if not self.__boxInfo:
@@ -172,6 +179,10 @@ class GuiLootBoxesController(IGuiLootBoxesController):
 
     def getHangarOptimizer(self):
         return self.__hangarOptimizer
+
+    def addShopWindowHandler(self, keyHandler, handler):
+        if keyHandler and handler:
+            self.__shopWindowHandler[keyHandler] = handler
 
     def __getConfig(self):
         return self.__lobbyContext.getServerSettings().getGuiLootBoxesConfig()

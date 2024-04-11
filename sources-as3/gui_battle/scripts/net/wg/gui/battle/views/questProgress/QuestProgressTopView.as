@@ -72,6 +72,10 @@ package net.wg.gui.battle.views.questProgress
       
       private var _flagWidth:int = 0;
       
+      private var _flagBottomY:int = 0;
+      
+      private var _visibleBottomY:int = 0;
+      
       private var _isViewYAnimInProgress:Boolean = false;
       
       private var _hideViewCompleteCallback:Function = null;
@@ -181,6 +185,7 @@ package net.wg.gui.battle.views.questProgress
             return;
          }
          this._flagWidth = this.flag.getFlagWidth();
+         this._flagBottomY = this.flag.y + this.flag.height;
          var _loc1_:int = Boolean(items) ? int(items.length) : int(Values.ZERO);
          this._positions.recalculate(_loc1_,this._flagWidth,this._separatorPositionAfterTaskIndex);
          this.flag.x = this._positions.flagToX;
@@ -288,6 +293,7 @@ package net.wg.gui.battle.views.questProgress
          if(!this._isViewYAnimInProgress)
          {
             this.y = this._y;
+            this._visibleBottomY = y + this.flag.y + this.flag.height;
          }
       }
       
@@ -323,6 +329,11 @@ package net.wg.gui.battle.views.questProgress
                this.lock.hide();
             }
          }
+      }
+      
+      public function getVisibleBottomY() : int
+      {
+         return this._visibleBottomY;
       }
       
       private function updateSeparatorVisibility() : void

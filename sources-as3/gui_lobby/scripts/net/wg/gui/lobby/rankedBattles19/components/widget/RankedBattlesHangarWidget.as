@@ -12,7 +12,6 @@ package net.wg.gui.lobby.rankedBattles19.components.widget
    import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.RANKEDBATTLES_ALIASES;
    import net.wg.data.constants.generated.RANKEDBATTLES_CONSTS;
-   import net.wg.gui.lobby.hangar.quests.IHeaderFlagsEntryPoint;
    import net.wg.gui.lobby.rankedBattles19.components.interfaces.IRankIcon;
    import net.wg.gui.lobby.rankedBattles19.data.RankedBattlesHangarWidgetVO;
    import net.wg.gui.lobby.rankedBattles19.events.RankWidgetEvent;
@@ -26,7 +25,7 @@ package net.wg.gui.lobby.rankedBattles19.components.widget
    import scaleform.clik.constants.InvalidationType;
    import scaleform.gfx.MouseEventEx;
    
-   public class RankedBattlesHangarWidget extends RankedBattlesHangarWidgetMeta implements IRankedBattlesHangarWidgetMeta, IHeaderFlagsEntryPoint, ISoundable
+   public class RankedBattlesHangarWidget extends RankedBattlesHangarWidgetMeta implements IRankedBattlesHangarWidgetMeta, ISoundable
    {
       
       public static const RANK_NORMAL_Y:int = 29;
@@ -986,6 +985,16 @@ package net.wg.gui.lobby.rankedBattles19.components.widget
          return this._widgetSize == RANKEDBATTLES_ALIASES.WIDGET_HUGE ? Number(_width) : Number(SIZES[this._widgetSize]);
       }
       
+      override public function get marginRight() : int
+      {
+         return MARGIN[this._widgetSize][RIGHT_MARGIN_INDEX];
+      }
+      
+      override public function get marginLeft() : int
+      {
+         return MARGIN[this._widgetSize][LEFT_MARGIN_INDEX];
+      }
+      
       public function get leftRankX() : int
       {
          return this._leftRankX;
@@ -1009,21 +1018,6 @@ package net.wg.gui.lobby.rankedBattles19.components.widget
       public function set isRightOnLeft(param1:Boolean) : void
       {
          this._isRightOnLeft = param1;
-      }
-      
-      public function get marginRight() : int
-      {
-         return MARGIN[this._widgetSize][RIGHT_MARGIN_INDEX];
-      }
-      
-      public function get marginLeft() : int
-      {
-         return MARGIN[this._widgetSize][LEFT_MARGIN_INDEX];
-      }
-      
-      public function get marginTop() : int
-      {
-         return 0;
       }
       
       private function onClickHandler(param1:MouseEvent) : void

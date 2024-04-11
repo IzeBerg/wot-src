@@ -39,19 +39,85 @@ msgid "banner/info/disabled"
 msgstr "Режим прекращения огня"
 
 msgid "banner/info/seasonActive"
-msgstr "Почувствуйте жар королевской битвы"
+msgstr "Второй шанс и награды"
 
 msgid "banner/seasonDate/seasonLasts"
 msgstr "До %(day)s %(month)s"
 
-msgid "banner/timeLeft/hours"
-msgstr "%(hour)s ч %(min)s мин"
+msgid "banner/timeLeft/day"
+msgstr "%(day)s д"
 
-msgid "banner/timeLeft/min"
-msgstr "%(min)s мин"
+msgid "banner/timeLeft/hour"
+msgstr "%(hour)s ч"
+
+msgid "banner/timeLeft/hours"
+msgstr "%(hours)s ч %(minutes)s мин"
+
+msgid "banner/timeLeft/minutes"
+msgstr "%(minutes)s мин"
+
+msgid "banner/timer/lessOneMin"
+msgstr "<1"
 
 msgid "banner/title"
 msgstr "СТАЛЬНОЙ ОХОТНИК"
+
+msgid "battle/respawnMessagePanel/respawnActivated/description"
+msgstr "Бой продолжится с новой позиции."
+
+msgid "battle/respawnMessagePanel/respawnActivated/title"
+msgstr "Вы скоро возродитесь"
+
+msgid "battle/respawnMessagePanel/respawnActivatedSquad/title"
+msgstr "Идёт Возрождение"
+
+msgid "battle/respawnMessagePanel/respawnNotAvailable/description"
+msgstr "Второго шанса не будет."
+
+msgid "battle/respawnMessagePanel/respawnNotAvailable/title"
+msgstr "Возрождение больше недоступно"
+
+msgid "battle/respawnMessagePanel/respawnNotAvailableSoon/title"
+msgstr "Возрождение скоро станет недоступно!"
+
+msgid "battle/respawnMessagePanel/respawned/description"
+msgstr "В этот раз будьте осторожнее."
+
+msgid "battle/respawnMessagePanel/respawned/title"
+msgstr "Машина готова к бою!"
+
+msgid "battle/respawnMessagePanel/returnToBattle/title"
+msgstr "Возвращение в бой"
+
+msgid "battle/respawnMessagePanel/squad/inBattle/description"
+msgstr "Идут активные боевые действия."
+
+msgid "battle/respawnMessagePanel/squad/inBattle/title"
+msgstr "Возрождение невозможно"
+
+msgid "battle/respawnMessagePanel/squad/pickUp/description"
+msgstr "Найдите заряд Возрождения, чтобы вернуть её в строй."
+
+msgid "battle/respawnMessagePanel/squad/pickUp/title"
+msgstr "Машина союзника уничтожена"
+
+msgid "battle/respawnMessagePanel/squad/respawning/title"
+msgstr "Идёт Возрождение"
+
+msgid "battle/respawnMessagePanel/squad/squadmanRespawned/description"
+msgstr "Одна машина хорошо, а две — лучше!"
+
+msgid "battle/respawnMessagePanel/squad/squadmanRespawned/title"
+msgstr "Союзник возрождён"
+
+msgid "battle/respawnMessagePanel/squad/stayInCover/description"
+msgstr "Не вступайте в бой."
+
+msgid "battle/respawnMessagePanel/squad/stayInCover/title"
+msgstr "Возрождение союзника"
+
+msgid "battle/winnerCongratulationsView/title"
+msgstr "ПОБЕДА"
 
 msgid "battleResult/battlePassWidget/chapterNotChosen"
 msgstr ""
@@ -100,8 +166,14 @@ msgstr "[ESC]"
 msgid "battleResult/inBattle/skipAnim/text"
 msgstr "Нажмите %(esc), чтобы пропустить анимацию"
 
+msgid "battleResult/noReward/title"
+msgstr "Награда не начислена"
+
 msgid "battleResult/playerVehicleStatus/alive"
 msgstr "Выжил"
+
+msgid "battleResult/playerVehicleStatus/reason/deathByBot"
+msgstr "Машина уничтожена Мародёром."
 
 msgid "battleResult/playerVehicleStatus/reason/deathByPlayer"
 msgstr "Машина уничтожена игроком"
@@ -148,6 +220,9 @@ msgstr "Нанесено урона"
 msgid "battleResult/stats/damageDealt/title"
 msgstr "Нанесено урона"
 
+msgid "battleResult/stats/disqualified"
+msgstr "DSQ"
+
 msgid "battleResult/stats/kills/body"
 msgstr "Количество уничтоженных вами машин противника."
 
@@ -187,8 +262,14 @@ msgstr "ВЗВОД УНИЧТОЖЕН"
 msgid "battleResult/title/vehicleDestroyed"
 msgstr "МАШИНА УНИЧТОЖЕНА"
 
-msgid "battleResult/title/victory"
+msgid "battleResult/title/vehicleDisqualified"
+msgstr "МАШИНА ДИСКВАЛИФИЦИРОВАНА"
+
+msgid "battleResult/title/victoryFirst"
 msgstr "ПОБЕДА"
+
+msgid "battleResult/title/victoryOther"
+msgstr "ПОЧЁТНОЕ МЕСТО"
 
 msgid "battleRoyaleCarousel/hint"
 msgstr "ВЫБЕРИТЕ МАШИНУ ДЛЯ БЕСПЛАТНОГО ТЕСТ-ДРАЙВА"
@@ -262,8 +343,13 @@ msgstr "Reginald Berly"
 msgid "commanderInfo/fullName/ussr"
 msgstr "Пётр Лопахин"
 
+msgid "commanderTooltip/specialty_skills"
+msgstr "Навыки"
+
 msgid "commanderTooltip/vehicleDescription"
-msgstr "Специального танка «%(vehicle)s» события «Стальной охотник»."
+msgstr ""
+"%(vehicle)s\n"
+"Специальная машина события «Стальной охотник»"
 
 msgid "fragPanel/squadsCount"
 msgstr "Взводов: %(squadsCount)s"
@@ -395,7 +481,7 @@ msgid "intro/slide4/title"
 msgstr "НОВАЯ КАРТА"
 
 msgid "intro/title"
-msgstr "СТАЛЬНОЙ ОХОТНИК 2022"
+msgstr "СТАЛЬНОЙ ОХОТНИК"
 
 msgid "levelUp/severalTitles"
 msgstr "ПОЛУЧЕНЫ УРОВНИ: %(firstLevel)s – %(lastLevel)s!"
@@ -446,6 +532,12 @@ msgstr "Машина полностью исправна. Восстановле
 
 msgid "player_messages/Ch00_ClingeBot_SH_DESTROYED"
 msgstr "Боевой робот уничтожен"
+
+msgid "player_messages/DEATH_BY_BOT_ENEMY_ALLY"
+msgstr "%(attacker)s уничтожил %(target)s."
+
+msgid "player_messages/DEATH_BY_BOT_ENEMY_ENEMY"
+msgstr "%(attacker)s уничтожил противника %(target)s."
 
 msgid "player_messages/G00_Bomber_SH_DESTROYED"
 msgstr "Брандер подорван"
@@ -550,6 +642,9 @@ msgstr ""
 "Стальные\n"
 "печати"
 
+msgid "proxyPanel/store"
+msgstr "МАГАЗИН"
+
 msgid "questsTooltip/lessThanDay"
 msgstr "менее 1 д"
 
@@ -590,6 +685,14 @@ msgstr ""
 
 msgid "rewardCurrencyTooltip/battlePassPoints/header"
 msgstr "Очки Боевого пропуска"
+
+msgid "rewardCurrencyTooltip/brProgressionToken/body"
+msgstr ""
+"Выдаются за выполнение задач режима «Стальной охотник» и за занятые в боях "
+"места. Необходимы для продвижения по прогрессии."
+
+msgid "rewardCurrencyTooltip/brProgressionToken/header"
+msgstr "Очки прогрессии Стального охотника"
 
 msgid "rewardCurrencyTooltip/brcoin/body"
 msgstr ""
@@ -659,10 +762,10 @@ msgid "selectRespawn/title/selectRespawn"
 msgstr "Выберите точку высадки"
 
 msgid "status/timeLeft/days"
-msgstr "%(day)s д"
+msgstr "%(day)s д "
 
 msgid "status/timeLeft/hours"
-msgstr "%(hour)s ч"
+msgstr "%(hour)s ч %(min)s мин"
 
 msgid "status/timeLeft/lessMin"
 msgstr "минуту"
@@ -716,7 +819,7 @@ msgid "statusNotificationTimers/loot/multiple"
 msgstr "Комбинированная добыча: %(count)s"
 
 msgid "statusNotificationTimers/loot/pickup"
-msgstr "Захват: %(lootType)s"
+msgstr "Подбор: %(lootType)s"
 
 msgid "statusNotificationTimers/repairPoint"
 msgstr "Ремзона"
@@ -787,6 +890,76 @@ msgstr "Запас прочности"
 msgid "techtree/turret_rotation_speed"
 msgstr "Скорость вращения"
 
+msgid "tooltip/progression/leaderboardReward/battleTypesHeader/29"
+msgstr "В одиночку"
+
+msgid "tooltip/progression/leaderboardReward/battleTypesHeader/30"
+msgstr "Во взводе"
+
+msgid "tooltip/progression/leaderboardReward/header"
+msgstr "Правила начисления очков"
+
+msgid "tooltip/progression/leaderboardReward/text/place"
+msgstr "%(place)s место"
+
+msgid "tooltip/progression/leaderboardReward/text/places"
+msgstr "%(place)s места"
+
+msgid "tooltip/widget/hangar/battleSchedule/schedule"
+msgstr "%(start)s – %(end)s"
+
+msgid "tooltip/widget/hangar/description/header"
+msgstr "Основная прогрессия пройдена!"
+
+msgid "tooltip/widget/hangar/description/text/completed"
+msgstr "Теперь вам доступны новые ежедневные боевые задачи."
+
+msgid "tooltip/widget/hangar/description/text/inProgress"
+msgstr ""
+"Выполняйте боевые задачи режима «Стальной охотник» и получайте очки "
+"прогрессии. На количество получаемых очков также влияет ваша позиция по "
+"итогам боя."
+
+msgid "tooltip/widget/hangar/header/battleLeaveTime/today"
+msgstr "сегодня"
+
+msgid "tooltip/widget/hangar/header/battleLeaveTime/tomorrow"
+msgstr "завтра"
+
+msgid "tooltip/widget/hangar/header/subTitle/text"
+msgstr "До конца события осталось %(value)s"
+
+msgid "tooltip/widget/hangar/header/title"
+msgstr "Стальной охотник"
+
+msgid "tooltip/widget/hangar/performance/description/high"
+msgstr ""
+"Производительности вашего компьютера недостаточно для данного режима. Весьма"
+" вероятны проблемы с графикой и перемещением техники, возможно также "
+"аварийное закрытие клиента игры."
+
+msgid "tooltip/widget/hangar/performance/description/low"
+msgstr ""
+"При недостаточной производительности попробуйте понизить настройки графики."
+
+msgid "tooltip/widget/hangar/performance/description/medium"
+msgstr ""
+"Режим требователен к компьютеру. Карта может долго загружаться, возможны "
+"проблемы с графикой и перемещением техники в бою. В случае недостаточной "
+"производительности попробуйте понизить настройки графики."
+
+msgid "tooltip/widget/hangar/performance/header/high"
+msgstr "Низкая производительность"
+
+msgid "tooltip/widget/hangar/performance/header/low"
+msgstr "Режим требователен к компьютеру."
+
+msgid "tooltip/widget/hangar/performance/header/medium"
+msgstr "Низкая производительность"
+
+msgid "tooltip/widget/hangar/timeTable/title"
+msgstr "Расписание боёв"
+
 msgid "tooltips/awards/achievement"
 msgstr "Медаль"
 
@@ -806,7 +979,7 @@ msgstr "Как заработать"
 
 msgid "tooltips/brCoin/spend/description"
 msgstr ""
-"Используйте заработанные печати для приобретения стилей стального охотника."
+"Используйте заработанные печати для покупки стилей Стального охотника."
 
 msgid "tooltips/brCoin/spend/title"
 msgstr "На что потратить"
@@ -834,6 +1007,44 @@ msgstr "Аренда на {days} дней"
 
 msgid "tooltips/rentIcon/testDrive/title"
 msgstr "Бесплатный тест-драйв машины на 1 день"
+
+msgid "tooltips/respawnIcon/definition"
+msgstr "Заряд Возрождения можно получить при подборе Воздушного груза."
+
+msgid "tooltips/respawnIcon/description"
+msgstr ""
+"Позволяет вернуться в бой после того, как ваша машина была уничтожена, "
+"сохранив при этом её уровень улучшений. Можно использовать ограниченное "
+"количество раз."
+
+msgid "tooltips/respawnIcon/min"
+msgstr "%(duration)s мин"
+
+msgid "tooltips/respawnIcon/platoon/description"
+msgstr ""
+"Для возрождения вашего союзника не вступайте в бой в течение "
+"%(timeToResurrect)s. Механика действует в течение первых %(duration)s "
+"сражения. Для взвода заряд Возрождения общий."
+
+msgid "tooltips/respawnIcon/platoon/subtitle"
+msgstr "При игре во взводе"
+
+msgid "tooltips/respawnIcon/sec"
+msgstr "%(duration)s с"
+
+msgid "tooltips/respawnIcon/solo/description"
+msgstr ""
+"Возрождение происходит автоматически после уничтожения вашей машины. "
+"Механика действует в течение первых %(duration)s сражения."
+
+msgid "tooltips/respawnIcon/solo/subtitle"
+msgstr "При игре в одиночку"
+
+msgid "tooltips/respawnIcon/subtitle"
+msgstr "Однократное использование"
+
+msgid "tooltips/respawnIcon/title"
+msgstr "Возрождение"
 
 msgid "tooltips/testDriveInfo/footer"
 msgstr ""

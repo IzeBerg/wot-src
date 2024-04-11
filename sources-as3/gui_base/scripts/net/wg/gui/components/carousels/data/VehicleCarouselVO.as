@@ -85,6 +85,8 @@ package net.wg.gui.components.carousels.data
       
       public var xpImgSource:String = "";
       
+      public var debutBoxesImgSource:String = "";
+      
       public var tankType:String = "";
       
       public var rentLeft:String = "";

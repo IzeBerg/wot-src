@@ -11,9 +11,15 @@ package
       
       public static const LOADARMORYYARD:String = "#waiting:loadArmoryYard";
       
+      public static const BUYBUNDLEARMORYYARD:String = "#waiting:buyBundleArmoryYard";
+      
+      public static const LOADLOOTBOXESSTORAGE:String = "#waiting:loadLootboxesStorage";
+      
       public static const LOADMODALWINDOW:String = "#waiting:loadModalWindow";
       
       public static const LOADCONTENT:String = "#waiting:loadContent";
+      
+      public static const LOADING:String = "#waiting:loading";
       
       public static const LOGIN:String = "#waiting:login";
       
@@ -61,7 +67,7 @@ package
       
       public static const EXCHANGEVEHICLESXP:String = "#waiting:exchangeVehiclesXP";
       
-      public static const RECRUTING:String = "#waiting:recruting";
+      public static const RECRUITING:String = "#waiting:recruiting";
       
       public static const EQUIPPING:String = "#waiting:equipping";
       
@@ -209,6 +215,8 @@ package
       
       public static const DOWNLOAD_RESOURCEWELL:String = "#waiting:download/resourceWell";
       
+      public static const DOWNLOAD_REFPROGRAM:String = "#waiting:download/refProgram";
+      
       public static const UPDATINGSKILLWINDOW:String = "#waiting:updatingSkillWindow";
       
       public static const PREBATTLE_CREATE:String = "#waiting:prebattle/create";
@@ -322,6 +330,12 @@ package
       public static const GETRESOURCESBACK:String = "#waiting:getResourcesBack";
       
       public static const PUTRESOURCES:String = "#waiting:putResources";
+      
+      public static const ACHIVEMENTS20:String = "#waiting:achivements20";
+      
+      public static const DOWNLOAD_ACHIEVEMENTS20:String = "#waiting:download/achievements20";
+      
+      public static const LOOTBOXOPENINIG:String = "#waiting:lootboxOpeninig";
        
       
       public function WAITING()

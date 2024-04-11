@@ -17,6 +17,8 @@ package
       
       public static const COMMANDER_SIXTHSENSE_NAME:String = "#crew_perks:commander_sixthSense/name";
       
+      public static const COMMANDER_SIXTHSENSE_SHORTDESCRIPTION:String = "#crew_perks:commander_sixthSense/shortDescription";
+      
       public static const COMMANDER_SIXTHSENSE_CURRENTLVLDESCRIPTION:String = "#crew_perks:commander_sixthSense/currentLvlDescription";
       
       public static const COMMANDER_SIXTHSENSE_ALT_DESCRIPTION:String = "#crew_perks:commander_sixthSense/alt/description";
@@ -346,6 +348,18 @@ package
       public static const FIREFIGHTING_ALT_DESCRIPTION:String = "#crew_perks:fireFighting/alt/description";
       
       public static const FIREFIGHTING_ALT_INFO:String = "#crew_perks:fireFighting/alt/info";
+      
+      public static const PERKROLE_COMMON:String = "#crew_perks:perkRole/common";
+      
+      public static const PERKROLE_COMMANDER:String = "#crew_perks:perkRole/commander";
+      
+      public static const PERKROLE_DRIVER:String = "#crew_perks:perkRole/driver";
+      
+      public static const PERKROLE_RADIOMAN:String = "#crew_perks:perkRole/radioman";
+      
+      public static const PERKROLE_GUNNER:String = "#crew_perks:perkRole/gunner";
+      
+      public static const PERKROLE_LOADER:String = "#crew_perks:perkRole/loader";
       
       public static const ALL_NAME_ENUM:Array = [COMMANDER_SIXTHSENSE_NAME,BROTHERHOOD_NAME,BROTHERHOOD_SABATON_NAME,BROTHERHOOD_OFFSPRING_NAME,BROTHERHOOD_YHA_NAME,BROTHERHOOD_WITCHES_NAME,REPAIR_NAME,CAMOUFLAGE_NAME,COMMANDER_EAGLEEYE_NAME,COMMANDER_UNIVERSALIST_NAME,COMMANDER_TUTOR_NAME,COMMANDER_EXPERT_NAME,COMMANDER_ENEMYSHOTPREDICTOR_NAME,GUNNER_SMOOTHTURRET_NAME,GUNNER_SNIPER_NAME,GUNNER_RANCOROUS_NAME,GUNNER_GUNSMITH_NAME,DRIVER_VIRTUOSO_NAME,DRIVER_SMOOTHDRIVING_NAME,DRIVER_BADROADSKING_NAME,DRIVER_TIDYPERSON_NAME,DRIVER_RAMMINGMASTER_NAME,LOADER_DESPERADO_NAME,LOADER_PEDANT_NAME,LOADER_INTUITION_NAME,RADIOMAN_FINDER_NAME,RADIOMAN_RETRANSMITTER_NAME,RADIOMAN_LASTEFFORT_NAME,RADIOMAN_INVENTOR_NAME,FIREFIGHTING_NAME];
       

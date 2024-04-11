@@ -479,6 +479,10 @@ package net.wg.gui.battle.views.damagePanel
             this.updateModuleAssets();
             this._modulesCtrl.setState(param1,param2);
             this.tankIndicator.setModuleState(param1,param2);
+            if(param2 == BATTLE_ITEM_STATES.NORMAL && VehicleModules.isTrack(param1) && this.tankIndicator.isAnyTrackCritical)
+            {
+               this._modulesCtrl.setState(param1,BATTLE_ITEM_STATES.CRITICAL);
+            }
          }
          else if(checkTankmanName(param1))
          {

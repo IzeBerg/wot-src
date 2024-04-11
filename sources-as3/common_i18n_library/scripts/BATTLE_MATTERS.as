@@ -35,6 +35,8 @@ package
       
       public static const REWARDS_SUBTITLE_FINAL:String = "#battle_matters:rewards/subTitle/final";
       
+      public static const REWARDS_PREVIOUSLYCOMPLETED:String = "#battle_matters:rewards/previouslyCompleted";
+      
       public static const REWARDS_RENT:String = "#battle_matters:rewards/rent";
       
       public static const REWARDS_TOKEN_TITLE:String = "#battle_matters:rewards/token/title";
@@ -99,8 +101,6 @@ package
       
       public static const MAINSCREEN_QUEST_UNAVAILABLEDESCRIPTION:String = "#battle_matters:mainScreen/quest/unavailableDescription";
       
-      public static const ANIMATIONS_CREW_BOOKS:String = "#battle_matters:animations/crew_books";
-      
       public static const ANIMATIONS_CREW_CLOSE:String = "#battle_matters:animations/crew_close";
       
       public static const ANIMATIONS_BLUEPRINTS:String = "#battle_matters:animations/blueprints";
@@ -116,8 +116,6 @@ package
       public static const MAINREWARDSSCREEN_PREVIEW:String = "#battle_matters:mainRewardsScreen/preview";
       
       public static const MAINREWARDSSCREEN_DONE:String = "#battle_matters:mainRewardsScreen/done";
-      
-      public static const MAINREWARDSSCREEN_BUTTONS_PRIMARY:String = "#battle_matters:mainRewardsScreen/buttons/primary";
       
       public static const MAINREWARDSSCREEN_BUTTONS_BACK:String = "#battle_matters:mainRewardsScreen/buttons/back";
       

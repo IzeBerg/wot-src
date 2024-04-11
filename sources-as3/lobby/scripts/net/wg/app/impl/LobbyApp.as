@@ -12,6 +12,7 @@ package net.wg.app.impl
    import net.wg.gui.components.containers.MainViewContainer;
    import net.wg.gui.components.containers.ManagedContainer;
    import net.wg.gui.components.containers.SimpleManagedContainer;
+   import net.wg.gui.components.containers.TooltipContainer;
    import net.wg.gui.components.containers.WaitingManagedContainer;
    import net.wg.gui.components.controls.VO.ActionPriceVO;
    import net.wg.gui.components.questProgress.data.QPProgressVO;
@@ -24,9 +25,8 @@ package net.wg.app.impl
    import net.wg.gui.lobby.components.data.SkillsVO;
    import net.wg.gui.lobby.components.maintenance.data.ModuleVO;
    import net.wg.gui.lobby.fortifications.data.base.BuildingBaseVO;
-   import net.wg.gui.lobby.hangar.crew.TankmanRoleVO;
-   import net.wg.gui.lobby.hangar.crew.TankmanVO;
-   import net.wg.gui.lobby.hangar.crew.TankmenResponseVO;
+   import net.wg.gui.lobby.vehiclePreview.infoPanel.crew.TankmanRoleVO;
+   import net.wg.gui.lobby.vehiclePreview.infoPanel.crew.TankmanVO;
    import net.wg.infrastructure.interfaces.ICursorManager;
    import net.wg.infrastructure.managers.GlobalVarsManager;
    import net.wg.infrastructure.managers.ICacheManager;
@@ -142,9 +142,8 @@ package net.wg.app.impl
          super.registerAliases();
          registerClassAlias("net.wg.gui.components.controls.VO.ActionPriceVO",ActionPriceVO);
          registerClassAlias("net.wg.gui.lobby.components.maintenance.data.ModuleVO",ModuleVO);
-         registerClassAlias("net.wg.gui.lobby.hangar.crew.TankmanVO",TankmanVO);
-         registerClassAlias("net.wg.gui.lobby.hangar.crew.TankmenResponseVO",TankmenResponseVO);
-         registerClassAlias("net.wg.gui.lobby.hangar.crew.TankmanRoleVO",TankmanRoleVO);
+         registerClassAlias("net.wg.gui.lobby.vehiclePreview.infoPanel.crew.TankmanVO",TankmanVO);
+         registerClassAlias("net.wg.gui.lobby.vehiclePreview.infoPanel.crew.TankmanRoleVO",TankmanRoleVO);
          registerClassAlias("net.wg.gui.lobby.components.data.SkillsVO",SkillsVO);
          registerClassAlias("net.wg.gui.lobby.fortifications.data.base.BuildingBaseVO",BuildingBaseVO);
          registerClassAlias("net.wg.gui.battle.views.questProgress.data.QPProgressVO",QPProgressVO);
@@ -178,8 +177,7 @@ package net.wg.app.impl
          this._fullscreenWindows = new ManagedContainer(LAYER_NAMES.FULLSCREEN_WINDOWS);
          this._systemMessages = new SimpleManagedContainer(LAYER_NAMES.SYSTEM_MESSAGES);
          this._dialogs = new ManagedContainer(LAYER_NAMES.DIALOGS);
-         this._toolTips = new SimpleManagedContainer(LAYER_NAMES.TOOL_TIPS);
-         this._toolTips.updateMouseHandling(false);
+         this._toolTips = new TooltipContainer(LAYER_NAMES.TOOL_TIPS);
          this._cursorCtnr = new CursorManagedContainer(LAYER_NAMES.CURSOR);
          this._waiting = new WaitingManagedContainer(LAYER_NAMES.WAITING);
          this._overlay = new ManagedContainer(LAYER_NAMES.OVERLAY);
@@ -190,7 +188,6 @@ package net.wg.app.impl
       override protected function initializeAtlasManager() : void
       {
          atlasMgr.registerAtlas(ATLAS_CONSTANTS.QUESTS_PROGRESS);
-         atlasMgr.registerAtlas(ATLAS_CONSTANTS.DIGITS);
       }
       
       override protected function disposeContainers() : void

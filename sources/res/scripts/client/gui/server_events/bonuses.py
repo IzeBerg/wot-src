@@ -1869,6 +1869,13 @@ class BadgesGroupBonus(SimpleBonus):
 
 
 class DossierBonus(SimpleBonus):
+    DOSSIER_BONUS = 'dossier'
+
+    @staticmethod
+    def hasBadges(bonus):
+        if not isinstance(bonus, DossierBonus):
+            return False
+        return len(bonus.getBadges()) > 0
 
     def getRecords(self):
         records = {}

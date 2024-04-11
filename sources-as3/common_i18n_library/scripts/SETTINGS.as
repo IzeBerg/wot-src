@@ -409,8 +409,6 @@ package
       
       public static const GAME_DYNAMICCAMERA:String = "#settings:game/dynamicCamera";
       
-      public static const GAME_C11NHISTORICALLYACCURATE:String = "#settings:game/c11nHistoricallyAccurate";
-      
       public static const GAME_DISPLAYPLATOONMEMBERS:String = "#settings:game/displayPlatoonMembers";
       
       public static const GAME_LOGINSERVERSELECTION:String = "#settings:game/loginServerSelection";
@@ -422,6 +420,10 @@ package
       public static const GAME_CUSTOMIZATIONDISPLAYTYPE_NOTHISTORICAL:String = "#settings:game/customizationDisplayType/notHistorical";
       
       public static const GAME_CUSTOMIZATIONDISPLAYTYPE_ALL:String = "#settings:game/customizationDisplayType/all";
+      
+      public static const LIMITEDUI_DESC:String = "#settings:limitedUI/desc";
+      
+      public static const LIMITEDUI_TURNOFFBTN:String = "#settings:limitedUI/turnOffBtn";
       
       public static const MONITOR:String = "#settings:monitor";
       
@@ -786,6 +788,8 @@ package
       public static const GAMEPLAY_ASSAULT:String = "#settings:gameplay/assault";
       
       public static const GAMEPLAY_EPIC_STANDARD:String = "#settings:gameplay/epic_standard";
+      
+      public static const GAMEPLAY_DEVMAPS:String = "#settings:gameplay/devMaps";
       
       public static const GAMEPLAY_ONLY10MODE:String = "#settings:gameplay/only10Mode";
       
@@ -1469,6 +1473,16 @@ package
       
       public static const FEEDBACK_TAB_QUESTSPROGRESS_ENABLETIERGROUPING:String = "#settings:feedback/tab/questsProgress/enableTierGrouping";
       
+      public static const FEEDBACK_TAB_SIXTHSENSE:String = "#settings:feedback/tab/sixthSense";
+      
+      public static const FEEDBACK_TAB_SIXTHSENSE_ALPHA:String = "#settings:feedback/tab/sixthSense/alpha";
+      
+      public static const FEEDBACK_TAB_SIXTHSENSE_SIZE:String = "#settings:feedback/tab/sixthSense/size";
+      
+      public static const FEEDBACK_TAB_SIXTHSENSE_SIZE_SMALL:String = "#settings:feedback/tab/sixthSense/size/small";
+      
+      public static const FEEDBACK_TAB_SIXTHSENSE_SIZE_BIG:String = "#settings:feedback/tab/sixthSense/size/big";
+      
       public static const GAMMAWIZARD_TITLE:String = "#settings:gammaWizard/title";
       
       public static const GAMMAWIZARD_HEADER:String = "#settings:gammaWizard/header";
@@ -1516,8 +1530,6 @@ package
       public static const COLORSETTINGS_VIEW_BEFORE:String = "#settings:colorSettings/view/before";
       
       public static const COLORSETTINGS_VIEW_AFTER:String = "#settings:colorSettings/view/after";
-      
-      public static const UNEQUIP_BUTTON:String = "#settings:unequip_button";
       
       public static const GAME_SHOWVEHICLEHPINPLAYERSPANEL:String = "#settings:game/showVehicleHPinPlayersPanel";
       

@@ -204,14 +204,13 @@ package net.wg.gui.dialogs
       
       override protected function setButtons(param1:Array) : void
       {
-         var _loc5_:SoundButtonEx = null;
          var _loc7_:Object = null;
          var _loc8_:String = null;
          var _loc2_:Vector.<Button> = this.getButtonsOrder();
          var _loc3_:int = param1.length;
          var _loc4_:int = _loc2_.length - _loc3_;
          assert(_loc4_ >= 0,"buttonNames too much");
-         _loc5_ = null;
+         var _loc5_:SoundButtonEx = null;
          var _loc6_:int = _loc3_ - 1;
          while(_loc6_ >= 0)
          {
@@ -294,11 +293,10 @@ package net.wg.gui.dialogs
       
       protected function layoutButtons(param1:Number) : void
       {
-         var _loc5_:Number = NaN;
          var _loc2_:Vector.<SoundButtonEx> = this.getAllButtons();
          var _loc3_:uint = _loc2_.length;
          var _loc4_:SoundButtonEx = null;
-         _loc5_ = window.width - window.contentPadding.horizontal;
+         var _loc5_:Number = window.width - window.contentPadding.horizontal;
          var _loc6_:int = _loc3_ - 1;
          while(_loc6_ >= 0)
          {

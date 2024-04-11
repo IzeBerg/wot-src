@@ -624,8 +624,8 @@ def goToHeroTankOnScene(vehTypeCompDescr, previewAlias=VIEW_ALIAS.LOBBY_HANGAR, 
     return
 
 
-def showHeroTankPreview(vehTypeCompDescr, previewAlias=VIEW_ALIAS.LOBBY_HANGAR, previousBackAlias=None, previewBackCb=None, hangarVehicleCD=None, bottomPanelTextData=None):
-    g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.HERO_VEHICLE_PREVIEW), ctx={'itemCD': vehTypeCompDescr, 
+def showHeroTankPreview(vehTypeCompDescr, viewAlias=VIEW_ALIAS.HERO_VEHICLE_PREVIEW, previewAlias=VIEW_ALIAS.LOBBY_HANGAR, previousBackAlias=None, previewBackCb=None, hangarVehicleCD=None, bottomPanelTextData=None):
+    g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(viewAlias), ctx={'itemCD': vehTypeCompDescr, 
        'previewAlias': previewAlias, 
        'previewAppearance': HeroTankPreviewAppearance(), 
        'isHeroTank': True, 
@@ -975,6 +975,14 @@ def showDedicationRewardWindow(bonuses, data, closeCallback=None):
     from gui.impl.lobby.dedication.dedication_reward_view import DedicationRewardWindow
     window = DedicationRewardWindow(bonuses, data, closeCallback)
     window.load()
+
+
+def isViewLoaded(layoutID):
+    uiLoader = dependency.instance(IGuiLoader)
+    if not uiLoader or not uiLoader.windowsManager:
+        return False
+    view = uiLoader.windowsManager.getViewByLayoutID(layoutID)
+    return view is not None
 
 
 def showStylePreview(vehCD, style, descr='', backCallback=None, backBtnDescrLabel='', *args, **kwargs):
@@ -2192,3 +2200,8 @@ def showDebutBoxesInfoPage(url, returnCallback=None, parent=None):
     layoutID = R.views.lobby.common.BrowserView()
     g_eventBus.handleEvent(events.LoadGuiImplViewEvent(loadParams=GuiImplViewLoadParams(layoutID, DebutBoxesBrowserView, ScopeTemplates.DEFAULT_SCOPE, parent if parent is not None else getParentWindow()), settings=makeSettings(url=url, isClosable=True, webHandlers=webHandlers, viewFlags=ViewFlags.LOBBY_TOP_SUB_VIEW, returnClb=returnCallback, restoreBackground=False)))
     return
+
+
+def showRankedProgressionWindow():
+    from gui.impl.lobby.ranked.ranked_progression_view import RankedProgressionWindow
+    RankedProgressionWindow().load()

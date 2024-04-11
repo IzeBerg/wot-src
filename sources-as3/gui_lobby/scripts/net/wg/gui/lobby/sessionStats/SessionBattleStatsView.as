@@ -11,15 +11,15 @@ package net.wg.gui.lobby.sessionStats
    import net.wg.gui.components.containers.VerticalGroupLayout;
    import net.wg.gui.components.controls.ScrollingListEx;
    import net.wg.gui.interfaces.ISoundButtonEx;
-   import net.wg.gui.lobby.components.IResizableContent;
    import net.wg.gui.lobby.sessionStats.data.SessionBattleStatsViewVO;
    import net.wg.gui.lobby.sessionStats.data.SessionStatsOverviewVO;
    import net.wg.gui.lobby.sessionStats.events.SessionStatsPopoverResizeEvent;
+   import net.wg.gui.lobby.sessionStats.interfaces.ISeassonResizableContent;
    import net.wg.infrastructure.base.meta.impl.SessionBattleStatsViewMeta;
    import scaleform.clik.constants.InvalidationType;
    import scaleform.clik.events.ButtonEvent;
    
-   public class SessionBattleStatsView extends SessionBattleStatsViewMeta implements IResizableContent
+   public class SessionBattleStatsView extends SessionBattleStatsViewMeta implements ISeassonResizableContent
    {
       
       public static const TILE_COLS:int = 2;
@@ -38,11 +38,11 @@ package net.wg.gui.lobby.sessionStats
       
       private static const LIST_GAP:int = 10;
       
+      private static const CONTENT_BOTTOM_PADDING:int = 20;
+      
       private static const VERTICAL_GAP_BETWEEN_BLOCKS:Number = 30;
       
       private static const VERTICAL_PADDING_FOR_TOTALS_BG:Number = 15;
-      
-      private static const EXTERNAL_SIZE_SET:String = "external_set_size";
        
       
       public var lastBattle:GroupEx = null;
@@ -89,14 +89,13 @@ package net.wg.gui.lobby.sessionStats
          this.collapseBtn.addEventListener(MouseEvent.ROLL_OUT,this.onCollapseBtnRollOutHandler);
          this.lastBattle.addEventListener(Event.RESIZE,this.onGroupResized);
          this.total.addEventListener(Event.RESIZE,this.onGroupResized);
+         dispatchEvent(new SessionStatsPopoverResizeEvent(SessionStatsPopoverResizeEvent.RESIZED));
       }
       
       override protected function draw() : void
       {
          var _loc1_:Number = NaN;
          var _loc2_:Number = NaN;
-         var _loc3_:Number = NaN;
-         var _loc4_:Number = NaN;
          super.draw();
          if(this._data != null)
          {
@@ -105,7 +104,6 @@ package net.wg.gui.lobby.sessionStats
                this.lastBattle.dataProvider = this._data.lastBattle;
                this.total.dataProvider = this._data.total;
                this.collapsedList.dataProvider = this._data.battleEfficiency;
-               this.collapsedList.validateNow();
                this.collapseBtn.label = this._data.collapseLabel;
             }
             if(isInvalid(InvalidationType.SIZE))
@@ -114,24 +112,8 @@ package net.wg.gui.lobby.sessionStats
                this.total.y = _loc1_ + VERTICAL_GAP_BETWEEN_BLOCKS + VERTICAL_PADDING_FOR_TOTALS_BG;
                this.totalBg.y = _loc1_ + VERTICAL_GAP_BETWEEN_BLOCKS;
                this.totalBg.height = this.total.height + (VERTICAL_PADDING_FOR_TOTALS_BG << 1);
-            }
-            if(isInvalid(EXTERNAL_SIZE_SET))
-            {
-               if(this.collapsedList.visible)
-               {
-                  _loc2_ = height - this.collapsedList.y;
-                  _loc3_ = this._data.battleEfficiency.length * ROW_HEIGHT;
-                  _loc4_ = _loc2_ - _loc3_ - LIST_GAP;
-                  if(_loc4_ > 0)
-                  {
-                     this.collapsedList.height = _loc3_;
-                     dispatchEvent(new SessionStatsPopoverResizeEvent(SessionStatsPopoverResizeEvent.EXTRA_SIZED,_loc4_));
-                  }
-                  else
-                  {
-                     this.collapsedList.height = _loc2_;
-                  }
-               }
+               _loc2_ = !!this.collapsedList.visible ? Number(_height - this.collapsedList.y) : Number(0);
+               this.collapsedList.height = _loc2_;
             }
          }
       }
@@ -160,39 +142,39 @@ package net.wg.gui.lobby.sessionStats
       override protected function setData(param1:SessionBattleStatsViewVO) : void
       {
          this._data = param1;
+         dispatchEvent(new SessionStatsPopoverResizeEvent(SessionStatsPopoverResizeEvent.RESIZED));
          invalidateData();
-      }
-      
-      private function onGroupResized(param1:Event) : void
-      {
-         invalidateSize();
-      }
-      
-      private function onCollapseBtnClickHandler(param1:ButtonEvent) : void
-      {
-         this.expand(this.collapseBtn.selected);
-      }
-      
-      private function expand(param1:Boolean) : void
-      {
-         this.collapsedList.visible = param1;
-         dispatchEvent(new SessionStatsPopoverResizeEvent(SessionStatsPopoverResizeEvent.EXPANDED,this.collapseBtn.selected));
-         invalidateSize();
-      }
-      
-      private function onCollapseBtnRollOverHandler(param1:MouseEvent) : void
-      {
-         this.hoverBg.visible = true;
-      }
-      
-      private function onCollapseBtnRollOutHandler(param1:MouseEvent) : void
-      {
-         this.hoverBg.visible = false;
       }
       
       public function canShowAutomatically() : Boolean
       {
          return true;
+      }
+      
+      public function contentHeight() : int
+      {
+         var _loc1_:int = this.collapseBtn.y + this.collapseBtn.height;
+         if(this.collapsedList.visible && this._data)
+         {
+            _loc1_ = this.collapsedList.y + this._data.battleEfficiency.length * ROW_HEIGHT;
+         }
+         return int(_loc1_ + CONTENT_BOTTOM_PADDING);
+      }
+      
+      public function getComponentForFocus() : InteractiveObject
+      {
+         return this;
+      }
+      
+      public function setViewSize(param1:Number, param2:Number) : void
+      {
+         if(_height == param2 && _width == param1)
+         {
+            return;
+         }
+         _width = param1;
+         _height = param2;
+         invalidateSize();
       }
       
       public function update(param1:Object) : void
@@ -206,16 +188,14 @@ package net.wg.gui.lobby.sessionStats
          this.expand(_loc2_.isExpanded);
       }
       
-      public function getComponentForFocus() : InteractiveObject
+      private function expand(param1:Boolean) : void
       {
-         return this;
-      }
-      
-      public function setViewSize(param1:Number, param2:Number) : void
-      {
-         _width = param1;
-         _height = param2;
-         invalidate(EXTERNAL_SIZE_SET);
+         if(this.collapsedList.visible == param1)
+         {
+            return;
+         }
+         this.collapsedList.visible = param1;
+         dispatchEvent(new SessionStatsPopoverResizeEvent(SessionStatsPopoverResizeEvent.EXPANDED,this.collapseBtn.selected));
       }
       
       public function get centerOffset() : int
@@ -234,6 +214,26 @@ package net.wg.gui.lobby.sessionStats
       
       public function set active(param1:Boolean) : void
       {
+      }
+      
+      private function onGroupResized(param1:Event) : void
+      {
+         invalidateSize();
+      }
+      
+      private function onCollapseBtnClickHandler(param1:ButtonEvent) : void
+      {
+         this.expand(this.collapseBtn.selected);
+      }
+      
+      private function onCollapseBtnRollOverHandler(param1:MouseEvent) : void
+      {
+         this.hoverBg.visible = true;
+      }
+      
+      private function onCollapseBtnRollOutHandler(param1:MouseEvent) : void
+      {
+         this.hoverBg.visible = false;
       }
    }
 }

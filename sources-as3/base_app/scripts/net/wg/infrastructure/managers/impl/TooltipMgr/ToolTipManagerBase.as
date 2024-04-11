@@ -42,6 +42,8 @@ package net.wg.infrastructure.managers.impl.TooltipMgr
       
       private var _hideInProgress:Boolean = false;
       
+      private var _enabled:Boolean = true;
+      
       public function ToolTipManagerBase(param1:DisplayObjectContainer)
       {
          super();
@@ -120,7 +122,7 @@ package net.wg.infrastructure.managers.impl.TooltipMgr
       
       public function hide() : void
       {
-         if(this._hideInProgress)
+         if(!this._enabled || this._hideInProgress)
          {
             return;
          }
@@ -156,6 +158,10 @@ package net.wg.infrastructure.managers.impl.TooltipMgr
       
       public function show(param1:String, param2:ITooltipProps = null) : void
       {
+         if(!this._enabled)
+         {
+            return;
+         }
          this.cancelTasks();
          this._props = this.prepareProperties(param2);
          this.rescheduleTask(this.as_show,param1,Linkages.TOOL_TIP_COMPLEX,false);
@@ -163,6 +169,10 @@ package net.wg.infrastructure.managers.impl.TooltipMgr
       
       public function showComplex(param1:String, param2:ITooltipProps = null) : void
       {
+         if(!this._enabled)
+         {
+            return;
+         }
          this.cancelTasks();
          this._props = this.prepareProperties(param2);
          this.rescheduleTask(this.createComplexTooltip,param1,this._props.type);
@@ -170,7 +180,7 @@ package net.wg.infrastructure.managers.impl.TooltipMgr
       
       public function showComplexWithParams(param1:String, param2:IToolTipParams, param3:ITooltipProps = null) : void
       {
-         if(!param2)
+         if(!this._enabled || !param2)
          {
             return;
          }
@@ -196,6 +206,10 @@ package net.wg.infrastructure.managers.impl.TooltipMgr
       
       public function showLocal(param1:String, param2:Object, param3:ITooltipProps = null) : void
       {
+         if(!this._enabled)
+         {
+            return;
+         }
          this.cancelTasks();
          this._props = this.prepareProperties(param3);
          App.utils.scheduler.scheduleTask(this.as_show,SCHEDULE_TIME,param2,param1,false);
@@ -203,6 +217,10 @@ package net.wg.infrastructure.managers.impl.TooltipMgr
       
       public function showSpecial(param1:String, param2:ITooltipProps, ... rest) : void
       {
+         if(!this._enabled)
+         {
+            return;
+         }
          this.cancelTasks();
          this._props = this.prepareProperties(param2);
          App.utils.scheduler.scheduleTask(this.createTypedTooltip,SCHEDULE_TIME,param1,rest,this._props.type);
@@ -210,6 +228,10 @@ package net.wg.infrastructure.managers.impl.TooltipMgr
       
       public function showWulfTooltip(param1:String, ... rest) : void
       {
+         if(!this._enabled)
+         {
+            return;
+         }
          this.cancelTasks();
          App.utils.scheduler.scheduleTask(this.createWulfTooltip,SCHEDULE_TIME,param1,rest);
       }
@@ -275,6 +297,16 @@ package net.wg.infrastructure.managers.impl.TooltipMgr
       {
          onCreateWulfTooltipS(param1,param2,App.stage.mouseX,App.stage.mouseY);
          this._wrapperTooltipType = param1;
+      }
+      
+      public function get enabled() : Boolean
+      {
+         return this._enabled;
+      }
+      
+      public function set enabled(param1:Boolean) : void
+      {
+         this._enabled = param1;
       }
    }
 }

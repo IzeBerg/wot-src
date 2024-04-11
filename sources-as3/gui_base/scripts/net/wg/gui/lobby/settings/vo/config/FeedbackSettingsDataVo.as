@@ -6,6 +6,7 @@ package net.wg.gui.lobby.settings.vo.config
    import net.wg.gui.lobby.settings.vo.config.feedback.DamageIndicatorDataVo;
    import net.wg.gui.lobby.settings.vo.config.feedback.DamageLogPanelDataVo;
    import net.wg.gui.lobby.settings.vo.config.feedback.QuestsProgressDataVo;
+   import net.wg.gui.lobby.settings.vo.config.feedback.SixthSenseDataVo;
    
    public class FeedbackSettingsDataVo extends SettingsDataVo
    {
@@ -21,6 +22,8 @@ package net.wg.gui.lobby.settings.vo.config
       
       public var feedbackQuestsProgress:QuestsProgressDataVo = null;
       
+      public var feedbackSixthSense:SixthSenseDataVo = null;
+      
       public function FeedbackSettingsDataVo()
       {
          super({
@@ -28,7 +31,8 @@ package net.wg.gui.lobby.settings.vo.config
             "feedbackDamageLog":new DamageLogPanelDataVo(),
             "feedbackBattleEvents":new BattleEventInfoDataVo(),
             "feedbackBattleBorderMap":new BattleBorderMapDataVo(),
-            "feedbackQuestsProgress":new QuestsProgressDataVo()
+            "feedbackQuestsProgress":new QuestsProgressDataVo(),
+            "feedbackSixthSense":new SixthSenseDataVo()
          });
       }
       
@@ -39,6 +43,7 @@ package net.wg.gui.lobby.settings.vo.config
          this.feedbackBattleEvents = null;
          this.feedbackBattleBorderMap = null;
          this.feedbackQuestsProgress = null;
+         this.feedbackSixthSense = null;
          super.onDispose();
       }
    }

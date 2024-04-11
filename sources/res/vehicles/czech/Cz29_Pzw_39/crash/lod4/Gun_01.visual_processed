@@ -18,14 +18,18 @@
 			<primitiveGroup>
 				0
 				<material>
-					<identifier>tank_proxy</identifier>
-					<property>
-						selfIllumination
-						<Float>0.000000</Float>
-					</property>
+					<identifier>tank_guns</identifier>
+					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
 					<collisionFlags>0</collisionFlags>
 					<materialKind>0</materialKind>
-					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
+					<property>
+						g_crashUVTiling
+						<Vector4>4.000000 4.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						crashTileMap
+						<Texture>vehicles/russian/Tank_detail/crash_tile.dds</Texture>
+					</property>
 					<property>
 						metallicGlossMap
 						<Texture>vehicles/czech/Cz29_Pzw_39/Pzw_39_proxy_GMM.dds</Texture>
@@ -45,10 +49,6 @@
 					<property>
 						colorIdMap
 						<Texture>vehicles/russian/common/common_ID.dds</Texture>
-					</property>
-					<property>
-						crashTileMap
-						<Texture>vehicles/russian/Tank_detail/crash_tile.dds</Texture>
 					</property>
 				</material>
 				<groupOrigin>-0.002376 -0.005483 0.787394</groupOrigin>

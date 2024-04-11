@@ -29,6 +29,9 @@ class ISquadFinder(object):
 class EmptySquadFinder(ISquadFinder):
     __slots__ = ()
 
+    def __init__(self, *args, **kwargs):
+        pass
+
     def clear(self):
         pass
 

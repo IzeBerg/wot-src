@@ -17,6 +17,8 @@ package net.wg.gui.battle.views.minimap.components.entries.epic
       
       private static const BASE_ID_MAX:int = 6;
       
+      private static const BASE_ID_FLAG:int = 8;
+      
       private static const INDEX_WARNING_TEXT:String = "[SectorBaseMinimapEntry] Base Letter id out of range!";
       
       private static const COLOR_BLIND_FRAME:int = 2;
@@ -106,7 +108,7 @@ package net.wg.gui.battle.views.minimap.components.entries.epic
       
       private function setBaseLetter(param1:int) : void
       {
-         if(param1 < 1 || param1 > BASE_ID_MAX)
+         if(param1 != BASE_ID_FLAG && (param1 < 1 || param1 > BASE_ID_MAX))
          {
             DebugUtils.LOG_WARNING(INDEX_WARNING_TEXT);
          }

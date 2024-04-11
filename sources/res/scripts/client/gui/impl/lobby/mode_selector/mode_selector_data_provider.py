@@ -85,7 +85,7 @@ class ModeSelectorDataProvider(IGlobalListener):
 
     def updateItems(self):
         items = self.__getItems()
-        self.__createItems(items)
+        self.__createOrUpdateItems(items)
         self.__removeInvisible(items)
         self._updateItems()
 
@@ -169,6 +169,18 @@ class ModeSelectorDataProvider(IGlobalListener):
                 if item is not None and item.isVisible:
                     self._items[modeName] = item
                     self.__initializeItem(item)
+
+        return
+
+    def __createOrUpdateItems(self, items):
+        for modeName in items:
+            if modeName not in self._items:
+                item = self._getModeSelectorLegacyItem(modeName, items[modeName])
+                if item is not None and item.isVisible:
+                    self._items[modeName] = item
+                    self.__initializeItem(item)
+            else:
+                self._items[modeName].update()
 
         return
 

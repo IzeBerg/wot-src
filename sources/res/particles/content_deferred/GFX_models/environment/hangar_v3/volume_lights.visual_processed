@@ -19,53 +19,59 @@
 			<primitiveGroup>
 				0
 				<material>
-					<identifier>01 - Default</identifier>
+					<identifier>s_nd0</identifier>
 					<fx>shaders/custom/volumetric_effect_vtx.fx</fx>
-					<collisionFlags>255</collisionFlags>
 					<materialKind>0</materialKind>
+					<collisionFlags>255</collisionFlags>
 					<property>
-						doubleSided
-						<Bool>true</Bool>
-					</property>
-					<property>
-						FreshnelColor
-						<Vector4>
-							1 0.896119 0.74 1
-							<!--BW_String-->
-						</Vector4>
+						alphaFadeAmountFresnel
+						<Vector4>0.000000 0.000000 1.000000 0.200000</Vector4>
 					</property>
 					<property>
 						alphaFreshnelEnable
 						<Bool>true</Bool>
 					</property>
 					<property>
-						diffuseMap
-						<Texture>particles/content_deferred/GFX_models/GFX_textures/volume_lights.dds</Texture>
-					</property>
-					<property>
 						destBlend
 						<Int>2</Int>
 					</property>
 					<property>
-						lightMultipliers
-						<Vector4>
-							1.25 0.03 0.7 0.000000
-							<!--BW_String-->
-						</Vector4>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/volume_lights_1.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
 					</property>
 					<property>
 						enableLighting
 						<Bool>true</Bool>
 					</property>
+					<property>
+						FreshnelColor
+						<Vector4>1.000000 0.896118 0.740000 1.000000</Vector4>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>2.250000 0.030000 0.700000 0.000000</Vector4>
+					</property>
+					<property>
+						fadeMaxDistance
+						<Float>3.000000</Float>
+					</property>
+					<property>
+						fadeMinDistance
+						<Float>2.000000</Float>
+					</property>
 				</material>
-				<groupOrigin>0.000000 -3.451767 0.000000</groupOrigin>
+				<groupOrigin>0.000000 -1.187797 0.000000</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<boundingBox>
-		<min>-3.721978 -6.906455 -3.721979</min>
-		<max>3.721978 0.002920 3.721979</max>
+		<min>-1.265481 -2.379949 -1.265481</min>
+		<max>1.265481 0.004355 1.265481</max>
 	</boundingBox>
-	<geometrySize>1792</geometrySize>
-	<minUVDensity>0.016525</minUVDensity>
+	<geometrySize>664</geometrySize>
+	<minUVDensity>0.017823</minUVDensity>
 </root>

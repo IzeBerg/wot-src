@@ -46,6 +46,8 @@ package net.wg.infrastructure.base.meta
       
       function as_confirmWarningDialog(param1:Boolean, param2:String) : void;
       
+      function as_showLimitedUISetting(param1:Boolean) : void;
+      
       function as_ConfirmationOfApplication(param1:Boolean) : void;
       
       function as_openTab(param1:Number) : void;
@@ -63,5 +65,7 @@ package net.wg.infrastructure.base.meta
       function as_setColorGradingTechnique(param1:String, param2:String) : void;
       
       function as_setFeedbackDataProvider(param1:Array) : void;
+      
+      function as_setDisabledTabsOverlay(param1:Array, param2:String) : void;
    }
 }

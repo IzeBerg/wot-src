@@ -136,11 +136,14 @@ class TokenInfoSubRequester(SubRequester):
         ticket = (
          styleID,)
         storageData = self._storage.get(ticket, None)
+        from historical_battles_common.hb_constants import FRONT_COUPON_TOKEN_PREFIX
         if storageData is not None:
             return storageData
         else:
             if styleID in _DEFAULT_TOKENS_STYLES:
                 return _TokenInfoData(title=backport.text(R.strings.quests.token.default.dyn(styleID)()), description=None)
+            if FRONT_COUPON_TOKEN_PREFIX in styleID:
+                return _TokenInfoData(title=backport.text(R.strings.hb_tooltips.quest.award(), bonusName=styleID.split('_')[(-1)]), description=None)
             return _TokenInfoData(title=backport.text(R.strings.quests.token.undefined()), description=None)
 
     def _handler(self, ticket, content):

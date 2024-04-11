@@ -1149,6 +1149,11 @@
 				<name>getVehicle</name>
 				<type>url</type>
 			</item>
+			<item>
+				$PARAMS(/main/shop/all)
+				<name>referralShop</name>
+				<type>url</type>
+			</item>
 		</value>
 	</setting>
 	<setting>
@@ -1364,6 +1369,11 @@
 			<item>
 				$PARAMS(/cosm2024_category/cosm2024_category)
 				<name>cosm24Shop</name>
+				<type>url</type>
+			</item>
+			<item>
+				$PARAMS(/HB24_category/HB24_category)
+				<name>HB24Category</name>
 				<type>url</type>
 			</item>
 		</value>
@@ -1676,12 +1686,12 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://webbrg.tanki.su/$LANGUAGE_CODE/promocontent/steelhunter/
+				https://webbrg.tanki.su/$LANGUAGE_CODE/promocontent/steel_hunter_2024/
 				<name>default</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg-rpt.tanki.su/$LANGUAGE_CODE/promocontent/steelhunter/
+				https://webbrg-rpt.tanki.su/$LANGUAGE_CODE/promocontent/steel_hunter_2024/
 				<name>CT</name>
 				<type>url</type>
 			</item>
@@ -1692,7 +1702,7 @@
 		<type>dict</type>
 		<value>
 			<item>
-				{webBridgeRootURL}/$LANGUAGE_CODE/promocontent/SH2022IntroVideo/
+				{webBridgeRootURL}/$LANGUAGE_CODE/promocontent/SH2023IntroVideo/
 				<name>introVideo</name>
 				<type>url</type>
 			</item>
@@ -1841,6 +1851,23 @@
 						<type>url</type>
 					</item>
 				</value>
+			</item>
+		</value>
+	</setting>
+	<setting>
+		<name>infoPageHistoricalBattles</name>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
+			<item>
+				https://webbrg.tanki.su/$LANGUAGE_CODE/promocontent/EventMay24/
+				<name>default</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg-rpt.tanki.su/$LANGUAGE_CODE/promocontent/EventMay24/
+				<name>CT</name>
+				<type>url</type>
 			</item>
 		</value>
 	</setting>

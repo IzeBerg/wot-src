@@ -67,36 +67,36 @@ package net.wg.infrastructure.managers.impl
          return _loc3_;
       }
       
-      override public function formatPlayerName(param1:TextField, param2:IUserProps, param3:Boolean = false, param4:Boolean = false) : Boolean
+      override public function formatPlayerName(param1:TextField, param2:IUserProps, param3:Boolean = false, param4:Boolean = false, param5:String = "..") : Boolean
       {
-         var _loc11_:Boolean = false;
-         var _loc12_:String = null;
-         var _loc13_:Vector.<String> = null;
-         var _loc14_:int = 0;
-         var _loc5_:String = param2.userName;
-         var _loc6_:String = Boolean(param2.clanAbbrev) ? CLAN_TAG_OPEN + param2.clanAbbrev + CLAN_TAG_CLOSE : Values.EMPTY_STR;
-         var _loc7_:String = Boolean(param2.region) ? Values.SPACE_STR + param2.region : Values.EMPTY_STR;
-         var _loc8_:String = formatIgrStr(param2.tags,param2.igrVspace);
-         var _loc9_:uint = param1.textColor;
-         var _loc10_:String = param2.isAnonymized && param4 ? Values.SPACE_STR + IMG_TAG_EYE_ICON : Values.EMPTY_STR;
-         param1.htmlText = _loc5_ + _loc6_ + _loc7_ + _loc8_ + _loc10_;
+         var _loc12_:Boolean = false;
+         var _loc13_:String = null;
+         var _loc14_:Vector.<String> = null;
+         var _loc15_:int = 0;
+         var _loc6_:String = param2.userName;
+         var _loc7_:String = Boolean(param2.clanAbbrev) ? CLAN_TAG_OPEN + param2.clanAbbrev + CLAN_TAG_CLOSE : Values.EMPTY_STR;
+         var _loc8_:String = Boolean(param2.region) ? Values.SPACE_STR + param2.region : Values.EMPTY_STR;
+         var _loc9_:String = formatIgrStr(param2.tags,param2.igrVspace);
+         var _loc10_:uint = param1.textColor;
+         var _loc11_:String = param2.isAnonymized && param4 ? Values.SPACE_STR + IMG_TAG_EYE_ICON : Values.EMPTY_STR;
+         param1.htmlText = _loc6_ + _loc7_ + _loc8_ + _loc9_ + _loc11_;
          if(param1.width < param1.textWidth + TEXT_FIELD_BOUNDS_WIDTH)
          {
-            _loc11_ = true;
-            _loc12_ = _loc7_ + _loc8_ + _loc10_;
-            _loc13_ = new <String>[Values.EMPTY_STR,_loc6_,_loc8_,_loc12_,_loc6_ + _loc12_];
-            _loc14_ = _loc13_.length - 1;
-            while(_loc14_ >= 0)
+            _loc12_ = true;
+            _loc13_ = _loc8_ + _loc9_ + _loc11_;
+            _loc14_ = new <String>[Values.EMPTY_STR,_loc7_,_loc9_,_loc13_,_loc7_ + _loc13_];
+            _loc15_ = _loc14_.length - 1;
+            while(_loc15_ >= 0)
             {
-               if(cutPlayerName(param1,_loc5_,_loc13_[_loc14_]))
+               if(cutPlayerName(param1,_loc6_,_loc14_[_loc15_]))
                {
                   break;
                }
-               _loc14_--;
+               _loc15_--;
             }
          }
-         param1.textColor = _loc9_;
-         return _loc11_;
+         param1.textColor = _loc10_;
+         return _loc12_;
       }
       
       override public function getFullPlayerName(param1:IUserProps, param2:Boolean = false) : String

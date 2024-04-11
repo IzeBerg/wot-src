@@ -1,5 +1,6 @@
 package net.wg.gui.battle.views.battleLevelPanel
 {
+   import flash.display.MovieClip;
    import flash.text.TextFieldAutoSize;
    import flash.text.TextFormat;
    import net.wg.data.constants.InvalidationType;
@@ -41,6 +42,8 @@ package net.wg.gui.battle.views.battleLevelPanel
       
       public var experienceDiffAnimation:ExperienceDiffAnimation = null;
       
+      public var bg:MovieClip = null;
+      
       private var _data:Vector.<BattleLevelPanelData> = null;
       
       private var _currentData:BattleLevelPanelData = null;
@@ -81,6 +84,12 @@ package net.wg.gui.battle.views.battleLevelPanel
          this.leftTF.fadeIn(true);
       }
       
+      override public function set y(param1:Number) : void
+      {
+         super.y = param1;
+         invalidatePosition();
+      }
+      
       override protected function configUI() : void
       {
          super.configUI();
@@ -103,6 +112,10 @@ package net.wg.gui.battle.views.battleLevelPanel
             this.progressDeltaAnimation.x = _loc2_;
             this.leftTF.x = _loc2_ - this.leftTF.width + TF_OFFSET | 0;
             this.rightTF.x = _loc2_ + _loc1_ - TF_OFFSET | 0;
+         }
+         if(isInvalid(InvalidationType.POSITION))
+         {
+            this.bg.y = -y;
          }
       }
       
@@ -134,6 +147,7 @@ package net.wg.gui.battle.views.battleLevelPanel
          this.progressDeltaAnimation = null;
          this.experienceDiffAnimation.dispose();
          this.experienceDiffAnimation = null;
+         this.bg = null;
          super.onDispose();
       }
       
@@ -201,6 +215,7 @@ package net.wg.gui.battle.views.battleLevelPanel
             }
             this.midTF.label = param1 + param2;
             this.midTF.fadeIn(true);
+            this.progressBar.visible = true;
             this.progressBar.value = param4;
          }
       }

@@ -74,7 +74,7 @@ package net.wg.gui.battle.views.siegeModePanel
       public function as_setVisible(param1:Boolean) : void
       {
          _isCompVisible = param1;
-         this.visible = param1;
+         this.visible = this.animationContainer.visible = param1;
       }
       
       public function as_switchSiegeState(param1:Number, param2:Number, param3:int, param4:String, param5:Boolean) : void

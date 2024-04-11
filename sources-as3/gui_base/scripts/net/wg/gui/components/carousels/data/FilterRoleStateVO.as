@@ -14,6 +14,8 @@ package net.wg.gui.components.carousels.data
       private static const HEAVY_TANK_FIELD:String = "heavyTank";
       
       private static const AT_SPG_FIELD:String = "AT-SPG";
+      
+      private static const SPG_FIELD:String = "SPG";
        
       
       private var _lightTank:Vector.<Boolean> = null;
@@ -23,6 +25,8 @@ package net.wg.gui.components.carousels.data
       private var _heavyTank:Vector.<Boolean> = null;
       
       private var _AT_SPG:Vector.<Boolean> = null;
+      
+      private var _SPG:Vector.<Boolean> = null;
       
       private var _vehicleTypesMap:Dictionary = null;
       
@@ -34,6 +38,7 @@ package net.wg.gui.components.carousels.data
          this._vehicleTypesMap[VehicleTypes.MEDIUM_TANK] = this._mediumTank;
          this._vehicleTypesMap[VehicleTypes.HEAVY_TANK] = this._heavyTank;
          this._vehicleTypesMap[VehicleTypes.AT_SPG] = this._AT_SPG;
+         this._vehicleTypesMap[VehicleTypes.SPG] = this._SPG;
       }
       
       override protected function onDataWrite(param1:String, param2:Object) : Boolean
@@ -75,6 +80,15 @@ package net.wg.gui.components.carousels.data
             }
             return false;
          }
+         if(param1 == SPG_FIELD)
+         {
+            this._SPG = new Vector.<Boolean>();
+            for each(_loc3_ in param2)
+            {
+               this._SPG.push(_loc3_);
+            }
+            return false;
+         }
          return super.onDataWrite(param1,param2);
       }
       
@@ -90,6 +104,8 @@ package net.wg.gui.components.carousels.data
          this._heavyTank = null;
          this._AT_SPG.splice(0,this._AT_SPG.length);
          this._AT_SPG = null;
+         this._SPG.splice(0,this._SPG.length);
+         this._SPG = null;
          super.onDispose();
       }
       

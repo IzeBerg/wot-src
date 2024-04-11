@@ -1,9 +1,11 @@
+import weakref
 from inspect import getmembers
-from enumerations import Enumeration
+from enum import Enum
+from enumerations import Enumeration, EnumItem
 from enum import IntEnum
 from misc import EDITOR_TYPE, ASPECT
 from typing import Any, List
-__all__ = ('VScriptType', 'VScriptEnum', 'VScriptStruct', 'VScriptStructField')
+__all__ = ('VScriptType', 'VScriptEntityType', 'VScriptEnum', 'VScriptStruct', 'VScriptStructField')
 
 class VScriptType(object):
 
@@ -50,6 +52,16 @@ class VScriptType(object):
     @classmethod
     def vs_iconDisconnected(cls):
         return ':vse/slots/default_disconnected'
+
+
+class VScriptEntityType(VScriptType):
+
+    def __init__(self, entity):
+        self._entity = entity if type(entity).__name__ == 'weakproxy' else weakref.proxy(entity)
+
+    @property
+    def entity(self):
+        return self._entity
 
 
 class VScriptEnum(object):

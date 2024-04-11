@@ -12,6 +12,8 @@ BATTLE_RESULTS = [
  (
   'achivedLevel', int, 1, None, 'skip', ENTRY_TYPE.VEHICLE_ALL),
  (
+  'brAwardTokens', dict, {}, None, 'joinDicts', ENTRY_TYPE.ACCOUNT_SELF),
+ (
   'currencies', dict, {},
   MergeDictPacker((
    'brcoin', dict, {},
@@ -22,6 +24,7 @@ BATTLE_RESULTS = [
     'premiumFactor100', int, 0, None, 'any'), (
     'premiumPlusFactor100', int, 0, None, 'any'), (
     'premiumVipFactor100', int, 0, None, 'any'), (
+    'fairplayFactor10', int, 0, None, 'any'), (
     'appliedPremiumFactor100', int, 0, None, 'any'), (
     'subtotal', int, 0, None, 'sum')),
    'joinByEachPacker')),

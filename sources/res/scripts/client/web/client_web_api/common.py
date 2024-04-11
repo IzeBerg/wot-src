@@ -8,6 +8,7 @@ from web.client_web_api.shop.stats import BalanceEventHandler
 from web.client_web_api.shop.telecom_rentals import TelecomTokenEventHandler
 from web.client_web_api.shop.unified_trade_in import UnifiedTradeInEventHandler
 from web.client_web_api.util.vehicle import VehicleCompareEventHandler, VehicleStateEventHandler
+from web.client_web_api.referral_program import ReferralProgramEventHandler
 _logger = logging.getLogger(__name__)
 
 class WebEventSender(object):
@@ -42,4 +43,5 @@ class WebEventSender(object):
          RankedEventHandler(self),
          BrowsersBridgeC2W(self),
          TelecomTokenEventHandler(self),
-         BattlePassEventHandler(self))
+         BattlePassEventHandler(self),
+         ReferralProgramEventHandler(self))

@@ -505,11 +505,12 @@ class _SquadPremiumBonus(namedtuple('_SquadPremiumBonus', ('isEnabled', 'ownCred
 class BattleRoyaleConfig(namedtuple('BattleRoyaleConfig', ('isEnabled', 'peripheryIDs', 'unburnableTitles',
  'eventProgression', 'primeTimes', 'seasons', 'cycleTimes',
  'maps', 'battleXP', 'coneVisibility', 'loot', 'defaultAmmo',
- 'vehiclesSlotsConfig', 'economics', 'url', 'isShowTimeLeft'))):
+ 'vehiclesSlotsConfig', 'economics', 'url', 'respawns', 'isShowTimeLeft',
+ 'progressionTokenAward'))):
     __slots__ = ()
 
     def __new__(cls, **kwargs):
-        defaults = dict(isEnabled=False, peripheryIDs={}, eventProgression={}, unburnableTitles=(), primeTimes={}, seasons={}, cycleTimes={}, maps=(), battleXP={}, coneVisibility={}, loot={}, defaultAmmo={}, vehiclesSlotsConfig={}, economics={}, url='', isShowTimeLeft=False)
+        defaults = dict(isEnabled=False, peripheryIDs={}, eventProgression={}, unburnableTitles=(), primeTimes={}, seasons={}, cycleTimes={}, maps=(), battleXP={}, coneVisibility={}, loot={}, defaultAmmo={}, vehiclesSlotsConfig={}, economics={}, url='', respawns={}, isShowTimeLeft=False, progressionTokenAward={})
         defaults.update(kwargs)
         return super(BattleRoyaleConfig, cls).__new__(cls, **defaults)
 
@@ -1376,6 +1377,50 @@ class DebutBoxesConfig(namedtuple('DebutBoxesConfig', ('isEnabled', 'startDate',
         return cls()
 
 
+class HBConfig(namedtuple('HBConfig', (
+ 'startDate', 'fronts', 'points', 'endDate', 'eventProgression', 'frontmen', 'isBattlesEnabled',
+ 'isEnabled', 'heroVehicle', 'rewardBox', 'hangarEnvironmentSettings', 'difficulty'))):
+    __slots__ = ()
+
+    def __new__(cls, **kwargs):
+        defaults = dict(startDate={}, fronts={}, points={}, endDate={}, eventProgression={}, frontmen={}, isBattlesEnabled=False, isEnabled=False, heroVehicle=False, rewardBox={}, hangarEnvironmentSettings={}, difficulty={})
+        defaults.update(kwargs)
+        return super(HBConfig, cls).__new__(cls, **defaults)
+
+    def asDict(self):
+        return self._asdict()
+
+    def replace(self, data):
+        allowedFields = self._fields
+        dataToUpdate = dict((k, v) for k, v in data.iteritems() if k in allowedFields)
+        return self._replace(**dataToUpdate)
+
+    @classmethod
+    def defaults(cls):
+        return cls()
+
+
+class HBShop(namedtuple('HBShop', ('enabled', 'shopBundles', 'groups'))):
+    __slots__ = ()
+
+    def __new__(cls, **kwargs):
+        defaults = dict(enabled=False, shopBundles={}, groups={})
+        defaults.update(kwargs)
+        return super(HBShop, cls).__new__(cls, **defaults)
+
+    def asDict(self):
+        return self._asdict()
+
+    def replace(self, data):
+        allowedFields = self._fields
+        dataToUpdate = dict((k, v) for k, v in data.iteritems() if k in allowedFields)
+        return self._replace(**dataToUpdate)
+
+    @classmethod
+    def defaults(cls):
+        return cls()
+
+
 class ServerSettings(object):
 
     def __init__(self, serverSettings):
@@ -1431,6 +1476,8 @@ class ServerSettings(object):
         self.__versusAISettings = VersusAIConfig()
         self.__debutBoxesConfig = DebutBoxesConfig()
         self.__schemaManager = getSchemaManager()
+        self.__hbConfig = HBConfig()
+        self.__hbShop = HBShop()
         self.set(serverSettings)
 
     def set(self, serverSettings):
@@ -1597,6 +1644,14 @@ class ServerSettings(object):
             self.__debutBoxesConfig = makeTupleByDict(DebutBoxesConfig, self.__serverSettings[Configs.DEBUT_BOXES_CONFIG.value])
         else:
             self.__debutBoxesConfig = DebutBoxesConfig.defaults()
+        if 'historical_battles' in self.__serverSettings:
+            self.__hbConfig = makeTupleByDict(HBConfig, self.__serverSettings['historical_battles'])
+        else:
+            self.__hbConfig = HBConfig.defaults()
+        if 'historical_battles_shop' in self.__serverSettings:
+            self.__hbShop = makeTupleByDict(HBShop, self.__serverSettings['historical_battles_shop'])
+        else:
+            self.__hbShop = HBShop.defaults()
         self.__schemaManager.set(self.__serverSettings)
         self.onServerSettingsChange(serverSettings)
 
@@ -1718,6 +1773,10 @@ class ServerSettings(object):
             self.__updateRestoreConfig(serverSettingsDiff)
         if Configs.DEBUT_BOXES_CONFIG.value in serverSettingsDiff:
             self.__updateDebutBoxesCoinfig(serverSettingsDiff)
+        if 'historical_battles' in serverSettingsDiff:
+            self.__updateHBConfig(serverSettingsDiff)
+        if 'historical_battles_shop' in serverSettingsDiff:
+            self.__updateHBShop(serverSettingsDiff)
         self.__schemaManager.update(serverSettingsDiff)
         self.onServerSettingsChange(serverSettingsDiff)
 
@@ -1809,6 +1868,14 @@ class ServerSettings(object):
     @property
     def battleRoyale(self):
         return self.__battleRoyaleSettings
+
+    @property
+    def hbConfig(self):
+        return self.__hbConfig
+
+    @property
+    def hbShop(self):
+        return self.__hbShop
 
     @property
     def mapbox(self):
@@ -2318,6 +2385,14 @@ class ServerSettings(object):
     def __updateBattleRoyale(self, targetSettings):
         data = targetSettings[Configs.BATTLE_ROYALE_CONFIG.value]
         self.__battleRoyaleSettings = self.__battleRoyaleSettings.replace(data)
+
+    def __updateHBConfig(self, serverSettingsDiff):
+        data = serverSettingsDiff['historical_battles']
+        self.__hbConfig = self.__hbConfig.replace(data)
+
+    def __updateHBShop(self, serverSettingsDiff):
+        data = serverSettingsDiff['historical_battles_shop']
+        self.__hbShop = self.__hbShop.replace(data)
 
     def __updateMapbox(self, targetSettings):
         self.__mapboxSettings = self.__mapboxSettings.replace(targetSettings[Configs.MAPBOX_CONFIG.value])

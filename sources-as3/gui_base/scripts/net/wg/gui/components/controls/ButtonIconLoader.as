@@ -53,6 +53,8 @@ package net.wg.gui.components.controls
       
       override protected function initialize() : void
       {
+         var _loc1_:Object = null;
+         var _loc2_:MovieClip = null;
          super.initialize();
          if(this.states)
          {

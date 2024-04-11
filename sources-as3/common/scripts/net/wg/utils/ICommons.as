@@ -39,9 +39,9 @@ package net.wg.utils
       
       function getUserProps(param1:String, param2:String = null, param3:String = null, param4:int = 0, param5:Array = null, param6:String = "") : IUserProps;
       
-      function formatPlayerName(param1:TextField, param2:IUserProps, param3:Boolean = false, param4:Boolean = false) : Boolean;
+      function formatPlayerName(param1:TextField, param2:IUserProps, param3:Boolean = false, param4:Boolean = false, param5:String = "..") : Boolean;
       
-      function truncateTextFieldText(param1:TextField, param2:String, param3:Boolean = true, param4:Boolean = false, param5:String = "..") : String;
+      function truncateTextFieldText(param1:TextField, param2:String, param3:Boolean = true, param4:Boolean = false, param5:String = "..", param6:uint = 4) : String;
       
       function truncateTextFieldMultiline(param1:TextField, param2:String, param3:uint, param4:String = "..") : Boolean;
       
@@ -74,5 +74,7 @@ package net.wg.utils
       function isRightButton(param1:MouseEvent) : Boolean;
       
       function addEmptyHitArea(param1:Sprite) : void;
+      
+      function formatNumberToStringWithSpaces(param1:int) : String;
    }
 }

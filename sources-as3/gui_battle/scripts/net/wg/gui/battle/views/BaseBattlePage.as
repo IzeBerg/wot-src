@@ -1,5 +1,6 @@
 package net.wg.gui.battle.views
 {
+   import flash.display.InteractiveObject;
    import flash.display.Sprite;
    import flash.events.Event;
    import flash.geom.Point;
@@ -103,6 +104,8 @@ package net.wg.gui.battle.views
       
       protected var hitTestFix:Sprite;
       
+      protected var excludedComponentAliases:Vector.<String>;
+      
       private var _messagesContainer:Sprite = null;
       
       private var _componentsStorage:Object;
@@ -110,6 +113,7 @@ package net.wg.gui.battle.views
       public function BaseBattlePage()
       {
          this.hitTestFix = new Sprite();
+         this.excludedComponentAliases = new Vector.<String>();
          this._componentsStorage = {};
          super();
          this.battleStatisticDataController = this.createStatisticsController();
@@ -131,10 +135,13 @@ package net.wg.gui.battle.views
       
       override public function updateStage(param1:Number, param2:Number) : void
       {
-         var _loc3_:int = 0;
+         var _loc4_:int = 0;
+         var _loc5_:int = 0;
+         var _loc6_:Number = NaN;
+         var _loc7_:int = 0;
          super.updateStage(param1,param2);
-         _loc3_ = param1 >> 1;
-         var _loc4_:int = param2 >> 1;
+         var _loc3_:int = param1 >> 1;
+         _loc4_ = param2 >> 1;
          _originalWidth = param1;
          _originalHeight = param2;
          setSize(param1,param2);
@@ -142,8 +149,11 @@ package net.wg.gui.battle.views
          this.updatePrebattleTimerPosition(_loc3_);
          this.damagePanel.x = 0;
          this.damagePanel.y = param2 - this.damagePanel.initedHeight;
-         this.battleTimer.x = param1 - this.battleTimer.initedWidth;
-         this.battleTimer.y = 0;
+         if(this.battleTimer)
+         {
+            this.battleTimer.x = param1 - this.battleTimer.initedWidth;
+            this.battleTimer.y = 0;
+         }
          if(this.dualGunPanel)
          {
             this.dualGunPanel.updateStage(param1,param2);
@@ -153,12 +163,15 @@ package net.wg.gui.battle.views
             this.hitTestFix.width = param1;
             this.hitTestFix.height = param2;
          }
-         this.ribbonsPanel.x = _loc3_ + this.ribbonsPanel.offsetX;
-         var _loc5_:int = this.getRibbonsCenterOffset(param2);
-         var _loc6_:Number = _loc4_ - _loc5_ - RIBBONS_MIN_BOTTOM_PADDING_Y;
-         this.ribbonsPanel.setFreeWorkingHeight(_loc6_);
-         var _loc7_:int = _loc4_ + (_loc6_ - this.ribbonsPanel.freeHeightForRenderers >> 1) + _loc5_;
-         this.ribbonsPanel.y = _loc7_;
+         if(this.ribbonsPanel)
+         {
+            this.ribbonsPanel.x = _loc3_ + this.ribbonsPanel.offsetX;
+            _loc5_ = this.getRibbonsCenterOffset(param2);
+            _loc6_ = _loc4_ - _loc5_ - RIBBONS_MIN_BOTTOM_PADDING_Y;
+            this.ribbonsPanel.setFreeWorkingHeight(_loc6_);
+            _loc7_ = _loc4_ + (_loc6_ - this.ribbonsPanel.freeHeightForRenderers >> 1) + _loc5_;
+            this.ribbonsPanel.y = _loc7_;
+         }
          if(this.perksPanel)
          {
             this.perksPanel.x = _loc3_;
@@ -177,10 +190,16 @@ package net.wg.gui.battle.views
          this.playerMessageListPositionUpdate();
          this.vehicleMessageList.updateStage();
          this.vehicleMessageListPositionUpdate();
-         this.battleLoading.updateStage(param1,param2);
+         if(this.battleLoading)
+         {
+            this.battleLoading.updateStage(param1,param2);
+         }
          this.gameMessagesPanel.x = _loc3_;
-         this.calloutPanel.x = _loc3_ - CALLOUT_CENTER_SCREEN_OFFSET_X;
-         this.calloutPanel.y = _loc4_ + CALLOUT_CENTER_SCREEN_OFFSET_Y;
+         if(this.calloutPanel)
+         {
+            this.calloutPanel.x = _loc3_ - CALLOUT_CENTER_SCREEN_OFFSET_X;
+            this.calloutPanel.y = _loc4_ + CALLOUT_CENTER_SCREEN_OFFSET_Y;
+         }
          if(this.prebattleAmmunitionPanel)
          {
             this.prebattleAmmunitionPanel.x = _originalWidth - this.prebattleAmmunitionPanel.width >> 1;
@@ -217,12 +236,21 @@ package net.wg.gui.battle.views
       
       override protected function onPopulate() : void
       {
-         this.registerComponent(this.battleLoading,BATTLE_VIEW_ALIASES.BATTLE_LOADING);
+         if(this.battleLoading)
+         {
+            this.registerComponent(this.battleLoading,BATTLE_VIEW_ALIASES.BATTLE_LOADING);
+         }
          this.registerComponent(this.minimap,BATTLE_VIEW_ALIASES.MINIMAP);
          this.registerComponent(this.prebattleTimer,BATTLE_VIEW_ALIASES.PREBATTLE_TIMER);
          this.registerComponent(this.damagePanel,BATTLE_VIEW_ALIASES.DAMAGE_PANEL);
-         this.registerComponent(this.battleTimer,BATTLE_VIEW_ALIASES.BATTLE_TIMER);
-         this.registerComponent(this.ribbonsPanel,BATTLE_VIEW_ALIASES.RIBBONS_PANEL);
+         if(this.battleTimer)
+         {
+            this.registerComponent(this.battleTimer,BATTLE_VIEW_ALIASES.BATTLE_TIMER);
+         }
+         if(this.ribbonsPanel)
+         {
+            this.registerComponent(this.ribbonsPanel,BATTLE_VIEW_ALIASES.RIBBONS_PANEL);
+         }
          if(this.perksPanel)
          {
             this.registerComponent(this.perksPanel,BATTLE_VIEW_ALIASES.PERKS_PANEL);
@@ -231,7 +259,10 @@ package net.wg.gui.battle.views
          this.registerComponent(this.vehicleErrorMessageList,BATTLE_VIEW_ALIASES.VEHICLE_ERROR_MESSAGES);
          this.registerComponent(this.playerMessageList,BATTLE_VIEW_ALIASES.PLAYER_MESSAGES);
          this.registerComponent(this.gameMessagesPanel,BATTLE_VIEW_ALIASES.GAME_MESSAGES_PANEL);
-         this.registerComponent(this.calloutPanel,BATTLE_VIEW_ALIASES.CALLOUT_PANEL);
+         if(this.calloutPanel)
+         {
+            this.registerComponent(this.calloutPanel,BATTLE_VIEW_ALIASES.CALLOUT_PANEL);
+         }
          if(this.prebattleAmmunitionPanelAvailable && this.prebattleAmmunitionPanel)
          {
             this.registerComponent(this.prebattleAmmunitionPanel,BATTLE_VIEW_ALIASES.PREBATTLE_AMMUNITION_PANEL);
@@ -240,23 +271,18 @@ package net.wg.gui.battle.views
          {
             this.registerComponent(this.dualGunPanel,BATTLE_VIEW_ALIASES.DUAL_GUN_PANEL);
          }
-         else
-         {
-            DebugUtils.LOG_WARNING("dualGunPanel component doesn\'t configured for this Battle Page");
-         }
          if(this.rocketAcceleratorPanel)
          {
             this.registerComponent(this.rocketAcceleratorPanel,BATTLE_VIEW_ALIASES.ROCKET_ACCELERATOR_INDICATOR);
-         }
-         else
-         {
-            DebugUtils.LOG_WARNING("rocketAcceleratorPanel component doesn\'t configured for this Battle Page");
          }
          this.createPostmortemTipsComponent();
          this.postmortemTips.setCompVisible(false);
          this.updatePostmortemTipsPosition();
          addChild(this.postmortemTips);
-         this.ribbonsPanel.addEventListener(Event.CHANGE,this.onRibbonsPanelChangeHandler);
+         if(this.ribbonsPanel)
+         {
+            this.ribbonsPanel.addEventListener(Event.CHANGE,this.onRibbonsPanelChangeHandler);
+         }
          this.registerComponent(this.postmortemTips,BATTLE_VIEW_ALIASES.POSTMORTEM_PANEL);
          this.onRegisterStatisticController();
          super.onPopulate();
@@ -271,7 +297,10 @@ package net.wg.gui.battle.views
             this.prebattleAmmunitionPanel.removeEventListener(PrbAmmunitionPanelEvent.STATE_CHANGED,this.onPrebattleAmmunitionPanelStateChangedHandler);
             this.prebattleAmmunitionPanel = null;
          }
-         this.ribbonsPanel.removeEventListener(Event.CHANGE,this.onRibbonsPanelChangeHandler);
+         if(this.ribbonsPanel)
+         {
+            this.ribbonsPanel.removeEventListener(Event.CHANGE,this.onRibbonsPanelChangeHandler);
+         }
          this.gameMessagesPanel.removeEventListener(GameMessagesPanelEvent.MESSAGES_STARTED_PLAYING,this.onMessagesStartedPlayingHandler);
          this.gameMessagesPanel.removeEventListener(GameMessagesPanelEvent.MESSAGES_ENDED_PLAYING,this.onMessagesEndedPlayingHandler);
          this.gameMessagesPanel.removeEventListener(GameMessagesPanelEvent.ALL_MESSAGES_ENDED_PLAYING,this.onAllMessagesEndedPlayingHandler);
@@ -324,6 +353,21 @@ package net.wg.gui.battle.views
          {
             this.showComponent(_loc3_,false);
          }
+      }
+      
+      override protected function onSetModalFocus(param1:InteractiveObject) : void
+      {
+         if(!this.isElementVisible(param1))
+         {
+            DebugUtils.LOG_DEBUG("Cannot set focus on the invisible element!");
+            setFocus(this);
+         }
+         super.onSetModalFocus(param1);
+      }
+      
+      private function isElementVisible(param1:InteractiveObject) : Boolean
+      {
+         return param1 && param1.visible && param1.parent != this && this.isElementVisible(param1.parent);
       }
       
       public function as_checkDAAPI() : void
@@ -450,7 +494,10 @@ package net.wg.gui.battle.views
          this._messagesContainer.name = "messageListsContainer";
          this._messagesContainer.mouseEnabled = this._messagesContainer.mouseChildren = false;
          addChild(this._messagesContainer);
-         swapChildren(this._messagesContainer,this.battleLoading);
+         if(this.battleLoading)
+         {
+            swapChildren(this._messagesContainer,this.battleLoading);
+         }
          this.vehicleMessageList = new VehicleMessages(this._messagesContainer);
          this.vehicleErrorMessageList = new MessageListDAAPI(this._messagesContainer);
          this.playerMessageList = new MessageListDAAPI(this._messagesContainer);
@@ -489,8 +536,19 @@ package net.wg.gui.battle.views
       
       protected function registerComponent(param1:IDAAPIModule, param2:String) : void
       {
-         this._componentsStorage[param2] = param1;
-         registerFlashComponentS(param1,param2);
+         if(this.excludedComponentAliases.indexOf(param2) >= 0)
+         {
+            return;
+         }
+         if(param1)
+         {
+            this._componentsStorage[param2] = param1;
+            registerFlashComponentS(param1,param2);
+         }
+         else
+         {
+            DebugUtils.LOG_ERROR("Component with alias = \'" + param2 + "\' doesn\'t configured for this Battle Page = " + this);
+         }
       }
       
       protected function getRibbonsCenterOffset(param1:Number) : int
@@ -541,7 +599,7 @@ package net.wg.gui.battle.views
       {
          if(this.prebattleAmmunitionPanel)
          {
-            this.prebattleAmmunitionPanel.setYPos(!!this.prebattleAmmunitionPanel.isInLoading ? int(this.battleLoading.getContentY() + this.getAmmunitionPanelYShift()) : int(_originalHeight - this.prebattleAmmunitionPanel.height + this.getLoadedPrebattleAmmoPanelYShift()));
+            this.prebattleAmmunitionPanel.setYPos(this.battleLoading && this.prebattleAmmunitionPanel.isInLoading ? int(this.battleLoading.getContentY() + this.getAmmunitionPanelYShift()) : int(_originalHeight - this.prebattleAmmunitionPanel.height + this.getLoadedPrebattleAmmoPanelYShift()));
          }
       }
       
@@ -618,7 +676,10 @@ package net.wg.gui.battle.views
       {
          if(this.prebattleAmmunitionPanel)
          {
-            this.battleLoading.hasAmmunitionPanel(this.prebattleAmmunitionPanel.isInLoading);
+            if(this.battleLoading)
+            {
+               this.battleLoading.hasAmmunitionPanel(this.prebattleAmmunitionPanel.isInLoading);
+            }
             this.updateAmmunitionPanelY();
          }
       }

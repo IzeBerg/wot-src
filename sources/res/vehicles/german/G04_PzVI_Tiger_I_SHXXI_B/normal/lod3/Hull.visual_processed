@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>nodes_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_Fire_1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.615542 0.125883 -2.348612</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Fire_2</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>-0.873675 0.125883 1.530012</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_LFront</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.852762 0.522300</row1>
+					<row2>0.000000 -0.522300 0.852762</row2>
+					<row3>-1.411115 0.134452 2.651380</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_LRear</identifier>
+				<transform>
+					<row0>-1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.727289 -0.686331</row1>
+					<row2>-0.000000 -0.686331 -0.727289</row2>
+					<row3>-1.411115 -0.211581 -2.827111</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_RFront</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.852762 0.522300</row1>
+					<row2>0.000000 -0.522300 0.852762</row2>
+					<row3>1.411115 0.134452 2.651380</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_RRear</identifier>
+				<transform>
+					<row0>-1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.727289 -0.686331</row1>
+					<row2>-0.000000 -0.686331 -0.727289</row2>
+					<row3>1.411115 -0.211581 -2.827111</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_Exhaus_1</identifier>
+				<transform>
+					<row0>-0.000000 0.133780 0.991011</row0>
+					<row1>1.000000 0.000000 -0.000000</row1>
+					<row2>-0.000000 0.991011 -0.133780</row2>
+					<row3>-0.378401 0.741473 -3.071779</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_Exhaus_2</identifier>
+				<transform>
+					<row0>-0.000000 -0.133780 -0.991011</row0>
+					<row1>-1.000000 0.000000 -0.000000</row1>
+					<row2>0.000000 0.991011 -0.133780</row2>
+					<row3>0.378444 0.741473 -3.072721</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_turretJoint</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.782373 -0.154092</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_hull_01</identifier>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/german/G04_PzVI_Tiger_I_SHXXI_B/PzVI_Tiger_I_SHXXI_B_hull_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/german/G04_PzVI_Tiger_I_SHXXI_B/PzVI_Tiger_I_SHXXI_B_hull_01_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/german/G04_PzVI_Tiger_I_SHXXI_B/PzVI_Tiger_I_SHXXI_B_hull_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/german/G04_PzVI_Tiger_I_SHXXI_B/PzVI_Tiger_I_SHXXI_B_hull_01_AO.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.030407 0.126727 -0.130463</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.869843 -0.678188 -3.359117</min>
+		<max>1.930658 0.931643 3.098190</max>
+	</boundingBox>
+	<geometrySize>110560</geometrySize>
+	<minUVDensity>0.000935</minUVDensity>
+</root>

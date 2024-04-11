@@ -119,9 +119,23 @@ package
       
       public static const RANK_PROMOTION:String = "#epic_battle:rank/promotion";
       
+      public static const RANK_CREWROLESFACTORSELF:String = "#epic_battle:rank/crewRolesFactorSelf";
+      
+      public static const RANK_CREWROLESFACTORPROMOTION:String = "#epic_battle:rank/crewRolesFactorPromotion";
+      
+      public static const RANK_CREWROLESFACTORPROMOTION1:String = "#epic_battle:rank/crewRolesFactorPromotion1";
+      
       public static const RANK_RECERVEUNLOCKED:String = "#epic_battle:rank/recerveUnlocked";
       
       public static const RANK_RESERVEUPGRADED:String = "#epic_battle:rank/reserveUpgraded";
+      
+      public static const RANK_ALLRESERVEUPGRADED:String = "#epic_battle:rank/allReserveUpgraded";
+      
+      public static const RANK_SLOTUNLOCKED:String = "#epic_battle:rank/slotUnlocked";
+      
+      public static const RANK_SLOT_2:String = "#epic_battle:rank/slot_2";
+      
+      public static const RANK_SLOT_3:String = "#epic_battle:rank/slot_3";
       
       public static const MISSION_PRIMARY_TITLE:String = "#epic_battle:mission/primary/title";
       
@@ -245,6 +259,8 @@ package
       
       public static const EPICBATTLESCAROUSEL_LOCKEDTOOLTIP_BODY:String = "#epic_battle:epicBattlesCarousel/lockedTooltip/body";
       
+      public static const EPICBATTLESCAROUSEL_WRONGMODE_BODY:String = "#epic_battle:epicBattlesCarousel/wrongMode/body";
+      
       public static const EPICBATTLESCAROUSEL_LOBBY_LEVELINFO:String = "#epic_battle:epicBattlesCarousel/lobby/levelInfo";
       
       public static const EPICBATTLESCAROUSEL_LOBBY_LEVELINFO_LEVEL:String = "#epic_battle:epicBattlesCarousel/lobby/levelInfo/level";
@@ -252,6 +268,10 @@ package
       public static const TAB_SCREEN_SHOW_MY_LANE:String = "#epic_battle:tab_screen/show_my_lane";
       
       public static const TAB_SCREEN_SHOW_ALL_LANES:String = "#epic_battle:tab_screen/show_all_lanes";
+      
+      public static const TAB_SCREEN_GENERALBONUSVALUE:String = "#epic_battle:tab_screen/generalBonusValue";
+      
+      public static const TAB_SCREEN_GENERALBONUSDESCR:String = "#epic_battle:tab_screen/generalBonusDescr";
       
       public static const IN_GAME_RANK_EXPERIENCE_TEXT:String = "#epic_battle:in_game_rank/experience_text";
       
@@ -338,6 +358,8 @@ package
       public static const ABILITYINFO_PARAMS_FL_REGENERATIONKIT_MINESDAMAGEREDUCEFACTOR:String = "#epic_battle:abilityInfo/params/fl_regenerationKit/minesDamageReduceFactor";
       
       public static const ABILITYINFO_PARAMS_FL_REGENERATIONKIT_MINESDAMAGEREDUCEFACTOR_VALUE:String = "#epic_battle:abilityInfo/params/fl_regenerationKit/minesDamageReduceFactor/value";
+      
+      public static const ABILITYINFO_PARAMS_ARCADE_MINEFIELD_EPIC_BATTLE_ACTIVATIONDELAY:String = "#epic_battle:abilityInfo/params/arcade_minefield_epic_battle/activationDelay";
       
       public static const ABILITYINFO_PARAMS_ARCADE_MINEFIELD_EPIC_BATTLE_LIFETIME:String = "#epic_battle:abilityInfo/params/arcade_minefield_epic_battle/lifetime";
       
@@ -617,6 +639,10 @@ package
       
       public static const TOOLTIPS_SLOTSETUPINFO_UPGRADE_DESC:String = "#epic_battle:tooltips/slotSetupInfo/upgrade/desc";
       
+      public static const TOOLTIPS_SLOTSETUPINFO_RESERVE_PURCHASED:String = "#epic_battle:tooltips/slotSetupInfo/reserve/purchased";
+      
+      public static const TOOLTIPS_SLOTSETUPINFO_RESERVE_LOCKED:String = "#epic_battle:tooltips/slotSetupInfo/reserve/locked";
+      
       public static const TOOLTIPS_CHOOSEREWARDS_DESC:String = "#epic_battle:tooltips/chooseRewards/desc";
       
       public static const STATUSNOTIFICATIONTIMERS_DEATHZONE:String = "#epic_battle:statusNotificationTimers/deathZone";
@@ -642,6 +668,22 @@ package
       public static const STATUSNOTIFICATIONTIMERS_STEALTHRADAR_ACTIVE:String = "#epic_battle:statusNotificationTimers/stealthRadar/active";
       
       public static const STATUSNOTIFICATIONTIMERS_STEALTHRADAR_INACTIVE:String = "#epic_battle:statusNotificationTimers/stealthRadar/inactive";
+      
+      public static const DIALOGS_TITLE_BUY_ITEM:String = "#epic_battle:dialogs/title/buy/item";
+      
+      public static const DIALOGS_TITLE_BUY_ITEMS:String = "#epic_battle:dialogs/title/buy/items";
+      
+      public static const DIALOGS_TITLE_INSTALL_ITEM:String = "#epic_battle:dialogs/title/install/item";
+      
+      public static const DIALOGS_TITLE_INSTALL_ITEMS:String = "#epic_battle:dialogs/title/install/items";
+      
+      public static const DIALOGS_QUOTEDNAME:String = "#epic_battle:dialogs/quotedName";
+      
+      public static const SKILL_CATEGORY_FIRESUPPORT:String = "#epic_battle:skill/category/firesupport";
+      
+      public static const SKILL_CATEGORY_RECONNAISSANCE:String = "#epic_battle:skill/category/reconnaissance";
+      
+      public static const SKILL_CATEGORY_TACTICS:String = "#epic_battle:skill/category/tactics";
        
       
       public function EPIC_BATTLE()

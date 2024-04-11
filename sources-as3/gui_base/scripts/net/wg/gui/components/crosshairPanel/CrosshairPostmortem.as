@@ -20,11 +20,23 @@ package net.wg.gui.components.crosshairPanel
          super();
       }
       
+      public function autoloaderBoostUpdate(param1:BoostIndicatorStateParamsVO, param2:Number, param3:Boolean = false) : void
+      {
+      }
+      
+      public function autoloaderBoostUpdateAsPercent(param1:Number, param2:Number) : void
+      {
+      }
+      
       public function autoloaderShowShot() : void
       {
       }
       
       public function autoloaderUpdate(param1:Number, param2:Number, param3:Boolean, param4:Boolean) : void
+      {
+      }
+      
+      public function blinkReloadTime(param1:int) : void
       {
       }
       
@@ -38,7 +50,12 @@ package net.wg.gui.components.crosshairPanel
          this.ammoInfo = null;
       }
       
-      public function setAmmoStock(param1:Number, param2:Number, param3:Boolean, param4:String, param5:Boolean = false) : void
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
+      }
+      
+      public function setAmmoStock(param1:Number, param2:String, param3:Boolean = false) : void
       {
       }
       
@@ -66,17 +83,29 @@ package net.wg.gui.components.crosshairPanel
       {
       }
       
+      public function setGunMarkersData(param1:Vector.<GunMarkerIndicatorVO>, param2:Boolean) : void
+      {
+      }
+      
       public function setHealth(param1:Number) : void
       {
       }
       
-      public function setInfo(param1:Number, param2:String, param3:String, param4:Boolean, param5:Boolean, param6:String, param7:String, param8:Number, param9:Number, param10:String, param11:Number, param12:Number, param13:Boolean, param14:String, param15:Boolean = false, param16:Boolean = false, param17:Boolean = false) : void
+      public function setInfo(param1:Number, param2:String, param3:String, param4:Boolean, param5:Boolean, param6:String, param7:String, param8:Number, param9:Number, param10:String, param11:Number, param12:String, param13:Boolean = false, param14:Boolean = false, param15:Boolean = false) : void
       {
          this.updatePlayerInfo(param7);
          this.updateAmmoState(param10);
       }
       
+      public function setNetSeparatorVisible(param1:Boolean) : void
+      {
+      }
+      
       public function setNetType(param1:Number) : void
+      {
+      }
+      
+      public function setQuickReloadingTime(param1:Boolean, param2:Number) : void
       {
       }
       
@@ -92,15 +121,7 @@ package net.wg.gui.components.crosshairPanel
       {
       }
       
-      public function setQuickReloadingTime(param1:Boolean, param2:Number) : void
-      {
-      }
-      
       public function setVisibleNet(param1:int) : void
-      {
-      }
-      
-      public function setNetSeparatorVisible(param1:Boolean) : void
       {
       }
       
@@ -129,15 +150,11 @@ package net.wg.gui.components.crosshairPanel
       {
       }
       
+      public function updateScaleWidget(param1:Number) : void
+      {
+      }
+      
       public function set isUseFrameAnimation(param1:Boolean) : void
-      {
-      }
-      
-      public function autoloaderBoostUpdate(param1:BoostIndicatorStateParamsVO, param2:Number, param3:Boolean = false) : void
-      {
-      }
-      
-      public function autoloaderBoostUpdateAsPercent(param1:Number, param2:Number) : void
       {
       }
       
@@ -146,24 +163,11 @@ package net.wg.gui.components.crosshairPanel
          return null;
       }
       
-      public function updateScaleWidget(param1:Number) : void
-      {
-      }
-      
       public function set scaleWidgetEnabled(param1:Boolean) : void
       {
       }
       
-      public function setGunMarkersData(param1:Vector.<GunMarkerIndicatorVO>, param2:Boolean) : void
-      {
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
-      }
-      
-      public function blinkReloadTime(param1:int) : void
+      public function updateScaleSteps(param1:int) : void
       {
       }
    }

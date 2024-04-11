@@ -880,6 +880,7 @@ class IRankedBattlesController(IGameController, ISeasonProvider):
     onUpdated = None
     onYearPointsChanges = None
     onSelectableRewardsChanged = None
+    onRankedPrbClosing = None
 
     def isAccountMastered(self):
         raise NotImplementedError
@@ -945,6 +946,15 @@ class IRankedBattlesController(IGameController, ISeasonProvider):
         pass
 
     def getBonusBattlesMultiplier(self):
+        raise NotImplementedError
+
+    def getStepsList(self):
+        raise NotImplementedError
+
+    def getStepsToEarnRank(self, rankID):
+        raise NotImplementedError
+
+    def isUnburnableRank(self, rankID):
         raise NotImplementedError
 
     def getClientRank(self):
@@ -1510,6 +1520,9 @@ class IBattleRoyaleController(IGameController, ISeasonProvider):
     def getIntroVideoURL(self):
         raise NotImplementedError
 
+    def getProgressionPointsTableData(self):
+        raise NotImplementedError
+
 
 class IBattleRoyaleTournamentController(IGameController):
     onUpdatedParticipants = None
@@ -1616,6 +1629,51 @@ class IBattleRoyaleRentVehiclesController(IGameController):
         raise NotImplementedError
 
     def clearRentUpdateCurrentVehicleCallback(self, callback):
+        raise NotImplementedError
+
+
+class IBRProgressionOnTokensController(IGameController):
+    progressionToken = ''
+    PROGRESSION_COMPLETE_TOKEN = ''
+    onProgressPointsUpdated = None
+    onSettingsChanged = None
+
+    def init(self):
+        raise NotImplementedError
+
+    def fini(self):
+        raise NotImplementedError
+
+    def setSettings(self, settings):
+        raise NotImplementedError
+
+    def saveCurPoints(self):
+        raise NotImplementedError
+
+    def getPrevPoints(self):
+        raise NotImplementedError
+
+    def getCurPoints(self):
+        raise NotImplementedError
+
+    def getCurrentStageData(self):
+        raise NotImplementedError
+
+    def getProgressionLevelsData(self):
+        raise NotImplementedError
+
+    def getProgessionPointsData(self):
+        raise NotImplementedError
+
+    def getProgressionData(self):
+        raise NotImplementedError
+
+    @property
+    def isEnabled(self):
+        raise NotImplementedError
+
+    @property
+    def isFinished(self):
         raise NotImplementedError
 
 
@@ -1986,6 +2044,9 @@ class IBattlePassController(IGameController):
         raise NotImplementedError
 
     def getFinalOfferTime(self):
+        raise NotImplementedError
+
+    def isShopOfferActive(self):
         raise NotImplementedError
 
     def getSeasonsHistory(self):
@@ -2409,7 +2470,7 @@ class IGuiLootBoxesController(IGameController):
     def getGuaranteedBonusLimit(self, boxType):
         raise NotImplementedError
 
-    def openShop(self):
+    def openShop(self, lootboxID=None):
         raise NotImplementedError
 
     def getBoxInfo(self, boxType):
@@ -2434,6 +2495,9 @@ class IGuiLootBoxesController(IGameController):
         raise NotImplementedError
 
     def getHangarOptimizer(self):
+        raise NotImplementedError
+
+    def addShopWindowHandler(self, keyHandler, handler):
         raise NotImplementedError
 
 

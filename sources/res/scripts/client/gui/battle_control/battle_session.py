@@ -1,5 +1,6 @@
 import weakref
 from collections import namedtuple
+from typing import TYPE_CHECKING
 import BigWorld, Event, BattleReplay
 from PlayerEvents import g_playerEvents
 from adisp import adisp_async
@@ -19,6 +20,9 @@ from gui.battle_control.requests import AvatarRequestsController
 from gui.battle_control.view_components import createComponentsBridge
 from items.components.c11n_constants import SeasonType
 from skeletons.gui.battle_session import IBattleSessionProvider
+from constants import ARENA_GUI_TYPE
+if TYPE_CHECKING:
+    from gui.battle_control.arena_visitor import _ClientArenaVisitor
 BattleExitResult = namedtuple('BattleExitResult', 'isDeserter playerInfo')
 
 class BattleSessionProvider(IBattleSessionProvider):
@@ -176,13 +180,20 @@ class BattleSessionProvider(IBattleSessionProvider):
         return
 
     def getExitResult(self):
-        if not self.__isReplayPlaying and not self.__arenaVisitor.gui.isTrainingBattle() and not self.__arenaVisitor.gui.isBattleRoyale() and not self.__arenaVisitor.gui.isMapsTraining():
+        if not self.__isReplayPlaying and not self.__arenaVisitor.gui.isTrainingBattle() and not self.__arenaVisitor.gui.isMapsTraining():
             vInfo = self.__arenaDP.getVehicleInfo()
             vStats = self.__arenaDP.getVehicleStats()
             if self.__arenaVisitor.hasRespawns():
                 isDeserter = not vStats.stopRespawn
             else:
                 isDeserter = avatar_getter.isVehicleAlive() and not avatar_getter.isVehicleOverturned()
+                if BigWorld.player().arenaGuiType == ARENA_GUI_TYPE.HISTORICAL_BATTLES:
+                    vehicle = BigWorld.entities.get(avatar_getter.getPlayerVehicleID())
+                    if vehicle is not None:
+                        vehLivesComp = vehicle.dynamicComponents.get('VehicleLivesComponent')
+                        if vehLivesComp is not None:
+                            lives = vehLivesComp.lives + vehLivesComp.lockedLives
+                            isDeserter = isDeserter or lives > 0
             return BattleExitResult(isDeserter, vInfo.player)
         else:
             return BattleExitResult(False, None)
@@ -372,6 +383,9 @@ class BattleSessionProvider(IBattleSessionProvider):
         else:
             ctrl.handleContexChatCommand(key)
             return
+
+    def sendPlayerBattleLogNotification(self, messageKey, messageParams):
+        self.shared.messages.showPlayerMessageByKey(messageKey, messageParams)
 
     def __pe_onBattleResultsReceived(self, isActiveVehicle, _):
         if isActiveVehicle and not BattleReplay.g_replayCtrl.isPlaying:

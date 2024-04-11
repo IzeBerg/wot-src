@@ -32,6 +32,9 @@ def parseComplexToken(tokenID):
     match = re.match(COMPLEX_TOKEN_TEMPLATE, tokenID)
     if match:
         return TokenComplex(True, match.group('styleID'), match.group('webID'))
+    from historical_battles_common.hb_constants import FRONT_COUPON_TOKEN_PREFIX
+    if FRONT_COUPON_TOKEN_PREFIX in tokenID:
+        return TokenComplex(True, tokenID, '')
     return TokenComplex(False, '', '')
 
 

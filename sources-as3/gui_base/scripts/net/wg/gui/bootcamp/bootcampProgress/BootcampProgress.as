@@ -10,6 +10,7 @@ package net.wg.gui.bootcamp.bootcampProgress
       public function BootcampProgress()
       {
          super();
+         setManageSize(true);
       }
    }
 }

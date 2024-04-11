@@ -19,10 +19,10 @@
 			<primitiveGroup>
 				0
 				<material>
-					<identifier>lambert2</identifier>
+					<identifier>s_nd0</identifier>
 					<fx>shaders/custom/vector_animation_2.fx</fx>
-					<collisionFlags>255</collisionFlags>
 					<materialKind>0</materialKind>
+					<collisionFlags>255</collisionFlags>
 					<property>
 						alphaFadeAmountSoft
 						<Vector4>1.000000 0.600000 0.200000 0.250000</Vector4>
@@ -30,6 +30,10 @@
 					<property>
 						alphaFreshnelEnable
 						<Bool>true</Bool>
+					</property>
+					<property>
+						destBlend
+						<Int>2</Int>
 					</property>
 					<property>
 						diffuseMap
@@ -59,20 +63,15 @@
 						TintlColor
 						<Vector4>1.000000 0.584314 0.239216 0.749020</Vector4>
 					</property>
-					<property>
-						destBlend
-						<Int>2</Int>
-					</property>
 				</material>
-				<groupOrigin>0.000000 0.000000 -0.984892</groupOrigin>
+				<groupOrigin>0.000000 0.000000 -0.670666</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<boundingBox>
-		<min>-1.067281 -0.924293 -1.985110</min>
-		<max>1.067281 0.924293 0.015326</max>
+		<min>-0.611685 -0.529734 -1.356659</min>
+		<max>0.611685 0.529734 0.015326</max>
 	</boundingBox>
-	<primitivesName>particles/content_deferred/GFX_models/environment/h33_comp7/headlight_ray</primitivesName>
-	<geometrySize>2700</geometrySize>
-	<minUVDensity>0.134306</minUVDensity>
+	<geometrySize>1656</geometrySize>
+	<minUVDensity>0.107576</minUVDensity>
 </root>

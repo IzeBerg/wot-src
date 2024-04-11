@@ -21,9 +21,9 @@ package net.wg.gui.lobby.profile.pages.hof
       
       private static const ORIGINAL_BACKGROUND_ASPECT_RATIO:Number = 1.92;
       
-      private static const PADDING_BOTTOM:int = 278;
+      private static const PADDING_BOTTOM:int = 178;
       
-      private static const PADDING_TOP:int = 170;
+      private static const PADDING_TOP:int = 5;
       
       private static const BETABTN_LEFT_PADDING:int = 8;
       

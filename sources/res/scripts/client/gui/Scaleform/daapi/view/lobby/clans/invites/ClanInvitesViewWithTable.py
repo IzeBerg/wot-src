@@ -24,6 +24,7 @@ class ClanInvitesViewWithTable(ClanInvitesViewWithTableMeta):
         return self._searchDP
 
     def setParentWindow(self, wnd):
+        super(ClanInvitesViewWithTable, self).setParentWindow(wnd)
         self._parentWnd = weakref.proxy(wnd)
         self._onAttachedToWindow()
 
