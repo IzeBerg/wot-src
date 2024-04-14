@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>nodes_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_Fire_1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 -0.223662 -2.478223</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Fire_2</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 -0.283091 2.433115</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_LFront</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.276993 0.960872</row1>
+					<row2>0.000000 -0.960872 0.276993</row2>
+					<row3>-1.398500 -0.182215 3.444308</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_LRear</identifier>
+				<transform>
+					<row0>-1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.498949 -0.866632</row1>
+					<row2>-0.000000 -0.866632 -0.498949</row2>
+					<row3>-1.398500 -0.038329 -3.268464</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_RFront</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.276993 0.960872</row1>
+					<row2>0.000000 -0.960872 0.276993</row2>
+					<row3>1.398500 -0.182215 3.444308</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_RRear</identifier>
+				<transform>
+					<row0>-1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.498949 -0.866632</row1>
+					<row2>-0.000000 -0.866632 -0.498949</row2>
+					<row3>1.398500 -0.038329 -3.268464</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_Exhaus_1</identifier>
+				<transform>
+					<row0>0.000000 0.000000 -1.000000</row0>
+					<row1>-1.000000 0.000000 -0.000000</row1>
+					<row2>0.000000 1.000000 0.000000</row2>
+					<row3>1.247197 0.396256 -2.366329</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_Exhaus_2</identifier>
+				<transform>
+					<row0>0.000000 0.000000 1.000000</row0>
+					<row1>1.000000 0.000000 -0.000000</row1>
+					<row2>-0.000000 1.000000 0.000000</row2>
+					<row3>-1.247198 0.396258 -2.365468</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_turretJoint</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.460449 0.753280</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_hull_01</identifier>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						alphaReference
+						<Int>64</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/italy/It18_Progetto_C45_mod_71/_skins/It18_Progetto_C45_mod_71_3DSt_WHAC_2021/Progetto_C45_mod_71_3DSt_WHAC_2021_hull_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/italy/It18_Progetto_C45_mod_71/_skins/It18_Progetto_C45_mod_71_3DSt_WHAC_2021/Progetto_C45_mod_71_3DSt_WHAC_2021_hull_01_AO.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>7.013700 7.013700 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/italy/It18_Progetto_C45_mod_71/_skins/It18_Progetto_C45_mod_71_3DSt_WHAC_2021/Progetto_C45_mod_71_3DSt_WHAC_2021_hull_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/italy/It18_Progetto_C45_mod_71/_skins/It18_Progetto_C45_mod_71_3DSt_WHAC_2021/Progetto_C45_mod_71_3DSt_WHAC_2021_hull_01_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.091486 -0.088365 -0.063471</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>tank_equipment</identifier>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						alphaReference
+						<Int>64</Int>
+					</property>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/italy/It18_Progetto_C45_mod_71/_skins/It18_Progetto_C45_mod_71_3DSt_WHAC_2021/Progetto_C45_mod_71_3DSt_WHAC_2021_equipment_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/italy/It18_Progetto_C45_mod_71/_skins/It18_Progetto_C45_mod_71_3DSt_WHAC_2021/Progetto_C45_mod_71_3DSt_WHAC_2021_equipment_AO.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>7.013700 3.506850 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/italy/It18_Progetto_C45_mod_71/_skins/It18_Progetto_C45_mod_71_3DSt_WHAC_2021/Progetto_C45_mod_71_3DSt_WHAC_2021_equipment_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/italy/It18_Progetto_C45_mod_71/_skins/It18_Progetto_C45_mod_71_3DSt_WHAC_2021/Progetto_C45_mod_71_3DSt_WHAC_2021_equipment_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.003279 -0.032036 -0.790892</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-2.019152 -0.687058 -4.016005</min>
+		<max>2.025710 0.510328 3.879180</max>
+	</boundingBox>
+	<geometrySize>1694454</geometrySize>
+	<minUVDensity>0.000582</minUVDensity>
+</root>

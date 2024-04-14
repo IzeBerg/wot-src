@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<version>3</version>
+	<GameObjects>
+		<GameObject>
+			<name>strong_desert_wind</name>
+			<UUID>8911c2fd-365c-4fab-9f68-65aa4b0ea6d2</UUID>
+			<flags>0</flags>
+		</GameObject>
+	</GameObjects>
+	<components>
+		<ComponentPool>
+			<type>Transform</type>
+			<version>1</version>
+			<component>
+				<objectIndex>0</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>0 0 0</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>-0 0 0</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>PrismArea</type>
+			<version>1</version>
+			<component>
+				<objectIndex>0</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Curvature</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Tesselation Step</name>
+						<value>100</value>
+					</property>
+					<property>
+						<name>Height</name>
+						<value>100</value>
+					</property>
+					<property>
+						<name>Points</name>
+						<collection>
+							<item>
+								<value>
+									-3.94772 9.77136
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-2.83701 98.7761
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									26.0733 118.722
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									58.8206 353.915
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									296.509 321.855
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									309.285 266.887
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									280.676 69.0615
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									164.638 -33.7162
+									<!--BW_String-->
+								</value>
+							</item>
+						</collection>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>SoundZone</type>
+			<version>1</version>
+			<component>
+				<objectIndex>0</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Zone Enter Event</name>
+						<value>amb_map_210_bf_epic_desert_wind_howling_ZoneEnter</value>
+					</property>
+					<property>
+						<name>Zone Exit Event</name>
+						<value>amb_map_210_bf_epic_desert_wind_howling_ZoneExit</value>
+					</property>
+					<property>
+						<name>Emitter Event</name>
+						<value/>
+					</property>
+					<property>
+						<name>Reverb</name>
+						<value/>
+					</property>
+					<property>
+						<name>Reverb Level</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Volume Deviation</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Color</name>
+						<value>
+							0 0 1 0.5
+							<!--BW_String-->
+						</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+	</components>
+</root>

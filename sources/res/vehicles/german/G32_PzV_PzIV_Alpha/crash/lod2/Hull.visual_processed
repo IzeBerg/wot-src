@@ -1,0 +1,686 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>nodes_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_Fire_1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.024640 -0.066841 -2.518575</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Fire_2</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>-0.580143 -0.163945 1.300532</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_turretJoint</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.785749 -0.431669</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<property>
+						alphaReference
+						<Int>64</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<identifier>tank_mat_inside</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/german/Crash_inside/crash_inside_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/german/Crash_inside/crash_inside_NM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/german/Crash_inside/crash_inside_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/german/Crash_inside/crash_inside_AO.dds</Texture>
+					</property>
+					<property>
+						g_useNormalPackDXT1
+						<Bool>true</Bool>
+					</property>
+					<property>
+						dynamicObject
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_baseColor
+						<Vector4>1.000000 1.000000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>7.000000 7.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_dirtWetParams
+						<Vector4>0.000000 0.000000 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_enableDirt
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_enabledProjectionDecalsCount
+						<Int>0</Int>
+					</property>
+					<property>
+						g_isChassis
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_projectionDecal1PosDoubleSided
+						<Vector4>0.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_projectionDecal1RotationQuaternion
+						<Vector4>0.000000 0.000000 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_projectionDecal1ScaleMaxAngleCos
+						<Vector4>1.000000 10.000000 2.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_projectionDecal1Tint
+						<Vector4>1.000000 1.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_projectionDecal2PosDoubleSided
+						<Vector4>0.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_projectionDecal2RotationQuaternion
+						<Vector4>0.000000 0.000000 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_projectionDecal2ScaleMaxAngleCos
+						<Vector4>1.000000 10.000000 2.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_projectionDecal2Tint
+						<Vector4>1.000000 1.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_repaintColor1
+						<Vector4>1.000000 1.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_repaintColor2
+						<Vector4>1.000000 1.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_repaintColor3
+						<Vector4>1.000000 1.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_repaintGloss
+						<Vector4>0.509000 0.509000 0.509000 0.000000</Vector4>
+					</property>
+					<property>
+						g_repaintMetallic
+						<Vector4>0.230000 0.230000 0.230000 0.000000</Vector4>
+					</property>
+					<property>
+						g_tankSize
+						<Vector4>0.000000 1.900000 0.500000 0.000000</Vector4>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_useOldCamoDetail
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_useRepaint
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_waterLevelWS
+						<Float>-1000.000000</Float>
+					</property>
+					<property>
+						texAddressMode
+						<Int>1</Int>
+					</property>
+				</material>
+				<groupOrigin>-0.014502 0.164695 -0.174864</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<identifier>tank_hull_01</identifier>
+					<property>
+						g_crashUVTiling
+						<Vector4>4.000000 4.000000 0.000000 0.000000</Vector4>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/german/G32_PzV_PzIV_Alpha/PzV_PzIV_Alpha_hull_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/german/G32_PzV_PzIV_Alpha/PzV_PzIV_Alpha_hull_01_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/german/G32_PzV_PzIV_Alpha/PzV_PzIV_Alpha_hull_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/german/G32_PzV_PzIV_Alpha/PzV_PzIV_Alpha_hull_01_AO.dds</Texture>
+					</property>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+					<property>
+						crashTileMap
+						<Texture>vehicles/russian/Tank_detail/crash_tile.dds</Texture>
+					</property>
+					<property>
+						alphaReference
+						<Int>64</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_useNormalPackDXT1
+						<Bool>false</Bool>
+					</property>
+					<property>
+						dynamicObject
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_baseColor
+						<Vector4>1.000000 1.000000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>7.000000 7.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_dirtWetParams
+						<Vector4>0.000000 0.000000 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_enableDirt
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_enabledProjectionDecalsCount
+						<Int>0</Int>
+					</property>
+					<property>
+						g_isChassis
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_projectionDecal1PosDoubleSided
+						<Vector4>0.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_projectionDecal1RotationQuaternion
+						<Vector4>0.000000 0.000000 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_projectionDecal1ScaleMaxAngleCos
+						<Vector4>1.000000 10.000000 2.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_projectionDecal1Tint
+						<Vector4>1.000000 1.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_projectionDecal2PosDoubleSided
+						<Vector4>0.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_projectionDecal2RotationQuaternion
+						<Vector4>0.000000 0.000000 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_projectionDecal2ScaleMaxAngleCos
+						<Vector4>1.000000 10.000000 2.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_projectionDecal2Tint
+						<Vector4>1.000000 1.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_repaintColor1
+						<Vector4>1.000000 1.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_repaintColor2
+						<Vector4>1.000000 1.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_repaintColor3
+						<Vector4>1.000000 1.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_repaintGloss
+						<Vector4>0.509000 0.509000 0.509000 0.000000</Vector4>
+					</property>
+					<property>
+						g_repaintMetallic
+						<Vector4>0.230000 0.230000 0.230000 0.000000</Vector4>
+					</property>
+					<property>
+						g_tankSize
+						<Vector4>0.000000 1.900000 0.500000 0.000000</Vector4>
+					</property>
+					<property>
+						g_useOldCamoDetail
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_useRepaint
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_waterLevelWS
+						<Float>-1000.000000</Float>
+					</property>
+					<property>
+						texAddressMode
+						<Int>1</Int>
+					</property>
+				</material>
+				<groupOrigin>0.069476 0.142089 -0.232118</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<identifier>tank_hull_01_2</identifier>
+					<property>
+						g_crashUVTiling
+						<Vector4>2.000000 1.000000 0.000000 0.000000</Vector4>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/german/G32_PzV_PzIV_Alpha/PzV_PzIV_Alpha_hull_01_2_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/german/G32_PzV_PzIV_Alpha/PzV_PzIV_Alpha_hull_01_2_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/german/G32_PzV_PzIV_Alpha/PzV_PzIV_Alpha_hull_01_2_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/german/G32_PzV_PzIV_Alpha/PzV_PzIV_Alpha_hull_01_2_AO.dds</Texture>
+					</property>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+					<property>
+						crashTileMap
+						<Texture>vehicles/russian/Tank_detail/crash_tile.dds</Texture>
+					</property>
+					<property>
+						alphaReference
+						<Int>64</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_useNormalPackDXT1
+						<Bool>false</Bool>
+					</property>
+					<property>
+						dynamicObject
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_baseColor
+						<Vector4>1.000000 1.000000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>7.000000 7.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_dirtWetParams
+						<Vector4>0.000000 0.000000 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_enableDirt
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_enabledProjectionDecalsCount
+						<Int>0</Int>
+					</property>
+					<property>
+						g_isChassis
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_projectionDecal1PosDoubleSided
+						<Vector4>0.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_projectionDecal1RotationQuaternion
+						<Vector4>0.000000 0.000000 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_projectionDecal1ScaleMaxAngleCos
+						<Vector4>1.000000 10.000000 2.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_projectionDecal1Tint
+						<Vector4>1.000000 1.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_projectionDecal2PosDoubleSided
+						<Vector4>0.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_projectionDecal2RotationQuaternion
+						<Vector4>0.000000 0.000000 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_projectionDecal2ScaleMaxAngleCos
+						<Vector4>1.000000 10.000000 2.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_projectionDecal2Tint
+						<Vector4>1.000000 1.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_repaintColor1
+						<Vector4>1.000000 1.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_repaintColor2
+						<Vector4>1.000000 1.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_repaintColor3
+						<Vector4>1.000000 1.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_repaintGloss
+						<Vector4>0.509000 0.509000 0.509000 0.000000</Vector4>
+					</property>
+					<property>
+						g_repaintMetallic
+						<Vector4>0.230000 0.230000 0.230000 0.000000</Vector4>
+					</property>
+					<property>
+						g_tankSize
+						<Vector4>0.000000 1.900000 0.500000 0.000000</Vector4>
+					</property>
+					<property>
+						g_useOldCamoDetail
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_useRepaint
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_waterLevelWS
+						<Float>-1000.000000</Float>
+					</property>
+					<property>
+						texAddressMode
+						<Int>1</Int>
+					</property>
+				</material>
+				<groupOrigin>1.516589 0.628423 -2.641043</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				3
+				<material>
+					<property>
+						alphaReference
+						<Int>64</Int>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<identifier>tank_chassis_01</identifier>
+					<property>
+						g_crashUVTiling
+						<Vector4>2.000000 2.000000 0.000000 0.000000</Vector4>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/german/G32_PzV_PzIV_Alpha/PzV_PzIV_Alpha_chassis_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/german/G32_PzV_PzIV_Alpha/PzV_PzIV_Alpha_chassis_01_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/german/G32_PzV_PzIV_Alpha/PzV_PzIV_Alpha_chassis_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/german/G32_PzV_PzIV_Alpha/PzV_PzIV_Alpha_chassis_01_AO.dds</Texture>
+					</property>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+					<property>
+						crashTileMap
+						<Texture>vehicles/russian/Tank_detail/crash_tile.dds</Texture>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_useNormalPackDXT1
+						<Bool>false</Bool>
+					</property>
+					<property>
+						dynamicObject
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_baseColor
+						<Vector4>1.000000 1.000000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>7.000000 7.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_dirtWetParams
+						<Vector4>0.000000 0.000000 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_enableDirt
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_enabledProjectionDecalsCount
+						<Int>0</Int>
+					</property>
+					<property>
+						g_isChassis
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_projectionDecal1PosDoubleSided
+						<Vector4>0.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_projectionDecal1RotationQuaternion
+						<Vector4>0.000000 0.000000 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_projectionDecal1ScaleMaxAngleCos
+						<Vector4>1.000000 10.000000 2.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_projectionDecal1Tint
+						<Vector4>1.000000 1.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_projectionDecal2PosDoubleSided
+						<Vector4>0.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_projectionDecal2RotationQuaternion
+						<Vector4>0.000000 0.000000 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_projectionDecal2ScaleMaxAngleCos
+						<Vector4>1.000000 10.000000 2.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_projectionDecal2Tint
+						<Vector4>1.000000 1.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_repaintColor1
+						<Vector4>1.000000 1.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_repaintColor2
+						<Vector4>1.000000 1.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_repaintColor3
+						<Vector4>1.000000 1.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_repaintGloss
+						<Vector4>0.509000 0.509000 0.509000 0.000000</Vector4>
+					</property>
+					<property>
+						g_repaintMetallic
+						<Vector4>0.230000 0.230000 0.230000 0.000000</Vector4>
+					</property>
+					<property>
+						g_tankSize
+						<Vector4>0.000000 1.900000 0.500000 0.000000</Vector4>
+					</property>
+					<property>
+						g_useOldCamoDetail
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_useRepaint
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_waterLevelWS
+						<Float>-1000.000000</Float>
+					</property>
+					<property>
+						texAddressMode
+						<Int>1</Int>
+					</property>
+				</material>
+				<groupOrigin>0.000000 -0.442847 0.059510</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.815079 -1.037786 -3.707780</min>
+		<max>1.954031 0.920925 3.243544</max>
+	</boundingBox>
+	<geometrySize>413648</geometrySize>
+	<minUVDensity>0.001203</minUVDensity>
+</root>

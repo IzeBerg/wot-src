@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd2</identifier>
+					<fx>shaders/std_effects/PBS_ext_repaint.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						alphaReference
+						<Int>64</Int>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_UNI_104_Container/hd_env_UNI_104_Container_AM.dds</Texture>
+					</property>
+					<property>
+						g_baseColor
+						<Vector4>0.780392 0.780392 0.780392 150.000000</Vector4>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_repaintColor
+						<Vector4>0.784314 0.627451 0.376471 150.000000</Vector4>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env_UNI_104_Container/hd_env_UNI_104_Container_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_UNI_104_Container/hd_env_UNI_104_Container_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.019587 2.590000 1.011733</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd1</identifier>
+					<fx>shaders/std_effects/PBS_ext_repaint.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						alphaReference
+						<Int>64</Int>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_UNI_104_Container/hd_env_UNI_104_Container_AM.dds</Texture>
+					</property>
+					<property>
+						g_baseColor
+						<Vector4>0.780392 0.780392 0.780392 150.000000</Vector4>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_repaintColor
+						<Vector4>0.509804 0.321569 0.266667 150.000000</Vector4>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env_UNI_104_Container/hd_env_UNI_104_Container_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_UNI_104_Container/hd_env_UNI_104_Container_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.019341 2.590000 1.002301</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext_repaint.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						alphaReference
+						<Int>64</Int>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_UNI_104_Container/hd_env_UNI_104_Container_AM.dds</Texture>
+					</property>
+					<property>
+						g_baseColor
+						<Vector4>0.780392 0.780392 0.780392 150.000000</Vector4>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_repaintColor
+						<Vector4>0.552941 0.643137 0.686275 150.000000</Vector4>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env_UNI_104_Container/hd_env_UNI_104_Container_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_UNI_104_Container/hd_env_UNI_104_Container_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.031978 2.590000 0.963060</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-3.751774 -0.000000 -8.172586</min>
+		<max>3.745517 5.180000 10.166377</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>1063620</geometrySize>
+	<minUVDensity>0.014149</minUVDensity>
+</root>

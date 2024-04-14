@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>FBXASC0481FBXASC032FBXASC045FBXASC032Default2</identifier>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/custom/volumetric_effect_vtx.fx</fx>
+					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>
+							0.000000 0.005 0.000000 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>
+							-0.01 0.01 0.08 0.05
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>
+							1 0.8 1 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						selfIllumLight
+						<Vector4>
+							1 1 1 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						enableLighting
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/env_101_vista_smoke_01/vista_smoke_01.dds</Texture>
+					</property>
+					<property>
+						distortionMap
+						<Texture>content/Environment/env_101_vista_smoke_01/vel_smoke_1.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>126.984879 65.753601 128.478424</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-39.463829 -4.344516 89.354996</min>
+		<max>293.433594 135.851715 167.601852</max>
+	</boundingBox>
+	<geometrySize>16264</geometrySize>
+	<minUVDensity>0.000009</minUVDensity>
+</root>

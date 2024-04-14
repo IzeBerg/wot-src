@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>hd_mle_SU_004_GazMM_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_module0</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.680419 0.000000</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>d_metal1</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>87</materialKind>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/MilitaryEnvironment/hd_mle_SU_004_GazMM/hd_mle_SU_004_GazMM_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/MilitaryEnvironment/hd_mle_SU_004_GazMM/hd_mle_SU_004_GazMM_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/MilitaryEnvironment/hd_mle_SU_004_GazMM/hd_mle_SU_004_GazMM_GMM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.127784 0.137797 -0.349786</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>d_metal0</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>87</materialKind>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/MilitaryEnvironment/hd_mle_SU_004_GazMM/hd_mle_SU_004_GazMM_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/MilitaryEnvironment/hd_mle_SU_004_GazMM/hd_mle_SU_004_GazMM_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/MilitaryEnvironment/hd_mle_SU_004_GazMM/hd_mle_SU_004_GazMM_GMM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.041184 0.128841 0.136329</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>n_metal1</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>73</materialKind>
+					<fx>shaders/std_effects/PBS_ext_detail.fx</fx>
+					<property>
+						g_detailInfluences
+						<Vector4>0.400000 2.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_detailRejectTiling
+						<Vector4>1.000000 7.000000 16.000000 16.000000</Vector4>
+					</property>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_detailMap
+						<Texture>content/MilitaryEnvironment/hd_mle_SU_004_GazMM/hd_mle_SU_004_GazMM_details.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/MilitaryEnvironment/hd_mle_SU_004_GazMM/hd_mle_SU_004_GazMM_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/MilitaryEnvironment/hd_mle_SU_004_GazMM/hd_mle_SU_004_GazMM_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/MilitaryEnvironment/hd_mle_SU_004_GazMM/hd_mle_SU_004_GazMM_GMM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.002149 1.943603 1.262048</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				3
+				<material>
+					<identifier>n_metal0</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>73</materialKind>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/MilitaryEnvironment/hd_mle_SU_004_GazMM/hd_mle_SU_004_GazMM_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/MilitaryEnvironment/hd_mle_SU_004_GazMM/hd_mle_SU_004_GazMM_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/MilitaryEnvironment/hd_mle_SU_004_GazMM/hd_mle_SU_004_GazMM_GMM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.000094 0.943824 -0.009683</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.057741 -0.040703 -2.679014</min>
+		<max>1.057929 2.646962 2.645853</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>439956</geometrySize>
+	<minUVDensity>0.005053</minUVDensity>
+</root>

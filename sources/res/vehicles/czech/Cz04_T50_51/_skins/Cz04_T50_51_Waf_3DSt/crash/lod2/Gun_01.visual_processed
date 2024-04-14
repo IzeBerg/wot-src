@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_guns</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/czech/Cz04_T50_51/_skins/Cz04_T50_51_Waf_3DSt/T50_51_Waf_3DSt_guns_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/czech/Cz04_T50_51/_skins/Cz04_T50_51_Waf_3DSt/T50_51_Waf_3DSt_guns_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/czech/Cz04_T50_51/_skins/Cz04_T50_51_Waf_3DSt/T50_51_Waf_3DSt_guns_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/czech/Cz04_T50_51/_skins/Cz04_T50_51_Waf_3DSt/T50_51_Waf_3DSt_guns_AO.dds</Texture>
+					</property>
+					<property>
+						crashTileMap
+						<Texture>vehicles/russian/Tank_detail/crash_tile.dds</Texture>
+					</property>
+					<property>
+						g_crashUVTiling
+						<Vector4>
+							4 4 0.000000 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+				</material>
+				<groupOrigin>-0.012814 0.019375 1.394334</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.583429 -0.452316 -1.710675</min>
+		<max>0.557802 0.491067 4.499343</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>139096</geometrySize>
+	<minUVDensity>0.006452</minUVDensity>
+</root>

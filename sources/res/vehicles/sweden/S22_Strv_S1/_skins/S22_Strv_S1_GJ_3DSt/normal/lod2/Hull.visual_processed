@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>nodes_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_Fire_1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.480115 -1.663243</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Fire_2</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>-0.578216 0.488541 -0.333750</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_LFront</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.347458 0.937696</row1>
+					<row2>0.000000 -0.937696 0.347458</row2>
+					<row3>-1.314863 0.402572 2.643740</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_LRear</identifier>
+				<transform>
+					<row0>-1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.863378 -0.504558</row1>
+					<row2>-0.000000 -0.504558 -0.863378</row2>
+					<row3>-1.314863 0.553044 -2.386988</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_RFront</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.347458 0.937696</row1>
+					<row2>0.000000 -0.937696 0.347458</row2>
+					<row3>1.314863 0.402572 2.643740</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_RRear</identifier>
+				<transform>
+					<row0>-1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.863378 -0.504558</row1>
+					<row2>-0.000000 -0.504558 -0.863378</row2>
+					<row3>1.314863 0.553044 -2.386988</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_Exhaus_1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 -1.000000 0.000003</row1>
+					<row2>0.000000 -0.000003 -1.000000</row2>
+					<row3>1.533654 1.241949 -1.753947</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_turretJoint</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 1.027901 0.360218</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_hull_01</identifier>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/sweden/S22_Strv_S1/_skins/S22_Strv_S1_GJ_3DSt/Strv_S1_GJ_3DSt_hull_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/sweden/S22_Strv_S1/_skins/S22_Strv_S1_GJ_3DSt/Strv_S1_GJ_3DSt_hull_01_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/sweden/S22_Strv_S1/_skins/S22_Strv_S1_GJ_3DSt/Strv_S1_GJ_3DSt_hull_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/sweden/S22_Strv_S1/_skins/S22_Strv_S1_GJ_3DSt/Strv_S1_GJ_3DSt_hull_01_AO.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.058638 0.693270 0.149992</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>tank_hull_02</identifier>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/sweden/S22_Strv_S1/_skins/S22_Strv_S1_GJ_3DSt/Strv_S1_GJ_3DSt_hull_01_2_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/sweden/S22_Strv_S1/_skins/S22_Strv_S1_GJ_3DSt/Strv_S1_GJ_3DSt_hull_01_2_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/sweden/S22_Strv_S1/_skins/S22_Strv_S1_GJ_3DSt/Strv_S1_GJ_3DSt_hull_01_2_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/sweden/S22_Strv_S1/_skins/S22_Strv_S1_GJ_3DSt/Strv_S1_GJ_3DSt_hull_01_2_AO.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.187077 1.648955 -0.599181</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>tank_decals</identifier>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/sweden/S22_Strv_S1/_skins/S22_Strv_S1_GJ_3DSt/Strv_S1_GJ_3DSt_decals_AM.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/sweden/S22_Strv_S1/_skins/S22_Strv_S1_GJ_3DSt/Strv_S1_GJ_3DSt_decals_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/sweden/S22_Strv_S1/_skins/S22_Strv_S1_GJ_3DSt/Strv_S1_GJ_3DSt_decals_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/sweden/S22_Strv_S1/_skins/S22_Strv_S1_GJ_3DSt/Strv_S1_GJ_3DSt_decals_ANM.dds</Texture>
+					</property>
+					<property>
+						alphaReference
+						<Int>149</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>-0.000151 1.628718 0.026353</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.809104 -0.215737 -3.128845</min>
+		<max>1.653445 2.562112 3.428828</max>
+	</boundingBox>
+	<geometrySize>290386</geometrySize>
+	<minUVDensity>0.005364</minUVDensity>
+</root>

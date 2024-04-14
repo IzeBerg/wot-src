@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_tiled_atlas_global.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>103</materialKind>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						globalTex
+						<Texture>content/Outland/hd_out_UNI_004_Quarry/hd_out_UNI_004_Quarry_09_GT.dds</Texture>
+					</property>
+					<property>
+						g_tileUVScale
+						<Vector4>
+							18 18 0.000000 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>
+							0.703575 0.747902 0.795 1
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_dirtParams
+						<Vector4>
+							0.1 56.73 1 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>
+							0.47 0.43 0.38 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_atlasIndexes
+						<Vector4>3 2 1 2</Vector4>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Environment/00_Tiles/hd_envAF_030_Rock_Desert_Dirt.dds</Texture>
+					</property>
+					<property>
+						atlasNormalGlossSpec
+						<Texture>content/Environment/00_Atlases/hd_out_UNI_004_Quarry_atlas_GBMT.atlas</Texture>
+					</property>
+					<property>
+						atlasMetallicAO
+						<Texture>content/Environment/00_Atlases/hd_out_UNI_004_Quarry_atlas_MAO.atlas</Texture>
+					</property>
+					<property>
+						atlasBlend
+						<Texture>content/Outland/00_Atlases/hd_out_UNI_004_Quarry_atlas_blend.png</Texture>
+					</property>
+					<property>
+						atlasAlbedoHeight
+						<Texture>content/Environment/00_Atlases/hd_out_UNI_004_Quarry_atlas_AM.atlas</Texture>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>
+							0.697512 0.794634 0.905 1
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>
+							0.84 0.898667 1 1
+							<!--BW_String-->
+						</Vector4>
+					</property>
+				</material>
+				<groupOrigin>1.536978 2.648319 -0.775576</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-17.754442 -0.237758 -19.192554</min>
+		<max>20.828398 5.503937 17.662771</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>9546</geometrySize>
+	<minUVDensity>0.000273</minUVDensity>
+</root>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>111</materialKind>
+					<fx>shaders/std_effects/PBS_tiled_atlas_global.fx</fx>
+					<property>
+						g_tileUVScale
+						<Vector4>18.000000 18.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						g_atlasIndexes
+						<Vector4>0.000000 1.000000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_fakeShadowsParams
+						<Vector4>0.180000 0.460000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>1.000000 0.976471 0.921569 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>1.000000 0.984314 0.925490 1.000000</Vector4>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.470000 0.430000 0.380000 0.000000</Vector4>
+					</property>
+					<property>
+						g_dirtParams
+						<Vector4>0.100000 41.299999 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_atlasSizes
+						<Vector4>2.000000 2.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						globalTex
+						<Texture>content/Outland/hd_out_SU_002_Outland_01/hd_out_SU_002_Outland_1_GT.dds</Texture>
+					</property>
+					<property>
+						atlasAlbedoHeight
+						<Texture>content/Outland/00_Atlases/hd_out_SU_002_atlas_AM.atlas</Texture>
+					</property>
+					<property>
+						atlasNormalGlossSpec
+						<Texture>content/Outland/00_Atlases/hd_out_SU_002_atlas_GBMT.atlas</Texture>
+					</property>
+					<property>
+						atlasMetallicAO
+						<Texture>content/Outland/00_Atlases/hd_out_SU_002_atlas_MAO.atlas</Texture>
+					</property>
+					<property>
+						atlasBlend
+						<Texture>content/Outland/hd_out_SU_002_Outland_01/hd_out_SU_002_Outland_1_atlas_blend.png</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Buildings/00_Tiles/Dirt_Yelow_Plaster_03_DM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.530185 0.543682 -0.313672</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-4.595515 -0.017582 -3.046723</min>
+		<max>3.535145 1.104947 2.419380</max>
+	</boundingBox>
+	<geometrySize>161778</geometrySize>
+	<minUVDensity>0.008675</minUVDensity>
+</root>

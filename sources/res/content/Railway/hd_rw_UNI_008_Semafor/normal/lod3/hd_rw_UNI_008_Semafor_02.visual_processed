@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>hd_rw_UNI_008_Semafor_02</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_module0</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>n_metal0</identifier>
+					<collisionFlags>131</collisionFlags>
+					<materialKind>73</materialKind>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<property>
+						alphaReference
+						<Int>64</Int>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Railway/hd_rw_UNI_008_Semafor/hd_rw_UNI_008_Semafor_02_BAM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Railway/hd_rw_UNI_008_Semafor/hd_rw_UNI_008_Semafor_02_BANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Railway/hd_rw_UNI_008_Semafor/hd_rw_UNI_008_Semafor_02_BGMM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.030674 4.524663 0.024387</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>d_metal0</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>87</materialKind>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>content/Railway/hd_rw_UNI_008_Semafor/hd_rw_UNI_008_Semafor_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Railway/hd_rw_UNI_008_Semafor/hd_rw_UNI_008_Semafor_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Railway/hd_rw_UNI_008_Semafor/hd_rw_UNI_008_Semafor_GMM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.638173 0.283008 -0.019141</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>s_ramp_0</identifier>
+					<collisionFlags>131</collisionFlags>
+					<materialKind>112</materialKind>
+				</material>
+				<groupOrigin>-0.382093 0.227843 0.131463</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				3
+				<material>
+					<identifier>s_wall_0</identifier>
+					<collisionFlags>131</collisionFlags>
+					<materialKind>73</materialKind>
+				</material>
+				<groupOrigin>0.224326 1.653537 0.041446</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-2.003618 -0.048942 -2.060742</min>
+		<max>1.560304 9.084944 2.109515</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>7528</geometrySize>
+	<minUVDensity>0.006870</minUVDensity>
+</root>

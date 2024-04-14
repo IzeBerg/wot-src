@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_wall_1</identifier>
+					<collisionFlags>144</collisionFlags>
+					<materialKind>0</materialKind>
+				</material>
+				<groupOrigin>-5.185624 8.918591 5.548999</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_wall_0</identifier>
+					<collisionFlags>131</collisionFlags>
+					<materialKind>0</materialKind>
+				</material>
+				<groupOrigin>0.476362 3.062775 -0.077732</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>s_nd1</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>108</materialKind>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_814_TrackCrane/hd_mle_UNI_814_TrackCrane_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_814_TrackCrane/hd_mle_UNI_814_TrackCrane_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_814_TrackCrane/hd_mle_UNI_814_TrackCrane_GMM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.483391 3.939253 -0.121444</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				3
+				<material>
+					<identifier>s_nd0</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>112</materialKind>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_814_TrackCrane/hd_mle_UNI_814_TrackCrane_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_814_TrackCrane/hd_mle_UNI_814_TrackCrane_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_814_TrackCrane/hd_mle_UNI_814_TrackCrane_GMM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-4.363135 7.923580 4.725955</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-12.901494 -0.043875 -4.070971</min>
+		<max>4.519795 16.006660 13.268291</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>404382</geometrySize>
+	<minUVDensity>0.000164</minUVDensity>
+</root>

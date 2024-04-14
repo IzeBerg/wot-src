@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd5</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>112</materialKind>
+					<fx>shaders/std_effects/PBS_ext_dual.fx</fx>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_001_Pillbox_Bunker_13/hd_mle_UNI_001_Pillbox_Bunker_13_gun_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_001_Pillbox_Bunker_13/hd_mle_UNI_001_Pillbox_Bunker_13_gun_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_001_Pillbox_Bunker_13/hd_mle_UNI_001_Pillbox_Bunker_13_gun_GMM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap2
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_001_Pillbox_Bunker_13/hd_mle_UNI_001_Pillbox_Bunker_13_gun_AM2.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.051177 5.901567 -2.661343</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd1</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>111</materialKind>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_001_Pillbox_Bunker_13/hd_mle_UNI_001_Pillbox_Bunker_13_BAM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_001_Pillbox_Bunker_13/hd_mle_UNI_001_Pillbox_Bunker_13_BANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_001_Pillbox_Bunker_13/hd_mle_UNI_001_Pillbox_Bunker_13_BGMM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-6.057544 2.924741 -4.881387</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>s_wall_0</identifier>
+					<collisionFlags>128</collisionFlags>
+					<materialKind>111</materialKind>
+				</material>
+				<groupOrigin>0.141069 6.538685 -5.404708</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-30.369648 -5.557908 -21.231516</min>
+		<max>18.304575 11.994062 13.417760</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>24934</geometrySize>
+	<minUVDensity>0.000001</minUVDensity>
+</root>

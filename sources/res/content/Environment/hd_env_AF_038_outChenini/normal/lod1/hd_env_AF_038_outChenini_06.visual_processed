@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_tiled_global.fx</fx>
+					<materialKind>111</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						albedoHeightTile0
+						<Texture>content/Buildings/00_Tiles/dds/ClayWall_Cracked03_1024_AM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile1
+						<Texture>content/Buildings/00_Tiles/dds/ClayWall_Broken01_1024_AM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile2
+						<Texture>content/Buildings/00_Tiles/dds/Bricks_Clay02_1024_AM.dds</Texture>
+					</property>
+					<property>
+						blendMask
+						<Texture>content/Environment/hd_env_AF_038_outChenini/hd_env_AF_038_outChenini_blend.dds</Texture>
+					</property>
+					<property>
+						colorTex
+						<Texture>content/Environment/hd_env_AF_038_outChenini/hd_env_AF_038_outChenini_GCM.dds</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Environment/00_Tiles/Dirt_DDay_Soil_01_Dirt.dds</Texture>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.900000 0.430000 0.380000 0.050000</Vector4>
+					</property>
+					<property>
+						g_dirtColorParams
+						<Vector4>0.080000 0.800000 0.530000 0.470000</Vector4>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_fakeShadowsAndDetailParams
+						<Vector4>0.220000 0.050000 0.000000 0.010000</Vector4>
+					</property>
+					<property>
+						g_tileUVScale
+						<Vector4>7.000000 7.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_tintParams
+						<Vector4>0.000000 0.730000 0.780000 1.000000</Vector4>
+					</property>
+					<property>
+						globalTex
+						<Texture>content/Environment/hd_env_AF_038_outChenini/hd_env_AF_038_outChenini_GNM.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile0
+						<Texture>content/Buildings/00_Tiles/dds/ClayWall_Cracked03_1024_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile1
+						<Texture>content/Buildings/00_Tiles/dds/ClayWall_Broken01_1024_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile2
+						<Texture>content/Buildings/00_Tiles/dds/Bricks_Clay02_1024_MAO.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile0
+						<Texture>content/Buildings/00_Tiles/dds/ClayWall_Cracked03_1024_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile1
+						<Texture>content/Buildings/00_Tiles/dds/ClayWall_Broken01_1024_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile2
+						<Texture>content/Buildings/00_Tiles/dds/Bricks_Clay02_1024_GBMT.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.279915 3.191211 0.810072</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-8.510188 -0.746843 -5.409527</min>
+		<max>9.070019 7.129266 7.029672</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>14062</geometrySize>
+	<minUVDensity>0.000558</minUVDensity>
+</root>

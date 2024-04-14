@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd2</identifier>
+					<fx>shaders/std_effects/PBS_ext_detail.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>111</materialKind>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Outland/hd_out_AF_001_HugeMountains/hd_out_AF_001_HugeMountain_mat3_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Outland/hd_out_AF_001_HugeMountains/hd_out_AF_001_HugeMountain_mat3_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Outland/hd_out_AF_001_HugeMountains/hd_out_AF_001_HugeMountain_GMM.dds</Texture>
+					</property>
+					<property>
+						g_detailRejectTiling
+						<Vector4>1 1 16 16</Vector4>
+					</property>
+					<property>
+						g_detailMap
+						<Texture>content/Buildings/bld_19_02_Monastery/bld_19_detalimap.dds</Texture>
+					</property>
+					<property>
+						g_detailInfluences
+						<Vector4>
+							1 0.3 1 1
+							<!--BW_String-->
+						</Vector4>
+					</property>
+				</material>
+				<groupOrigin>-3748.568359 348.585144 -725.412354</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd1</identifier>
+					<fx>shaders/std_effects/PBS_ext_detail.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>111</materialKind>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Outland/hd_out_AF_001_HugeMountains/hd_out_AF_001_HugeMountain_mat2_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Outland/hd_out_AF_001_HugeMountains/hd_out_AF_001_HugeMountain_mat2_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Outland/hd_out_AF_001_HugeMountains/hd_out_AF_001_HugeMountain_GMM.dds</Texture>
+					</property>
+					<property>
+						g_detailRejectTiling
+						<Vector4>1 1 16 16</Vector4>
+					</property>
+					<property>
+						g_detailMap
+						<Texture>content/Buildings/bld_19_02_Monastery/bld_19_detalimap.dds</Texture>
+					</property>
+					<property>
+						g_detailInfluences
+						<Vector4>
+							1 0.3 1 1
+							<!--BW_String-->
+						</Vector4>
+					</property>
+				</material>
+				<groupOrigin>-3146.145752 216.078659 -330.743988</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext_detail.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>111</materialKind>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Outland/hd_out_AF_001_HugeMountains/hd_out_AF_001_HugeMountain_mat1_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Outland/hd_out_AF_001_HugeMountains/hd_out_AF_001_HugeMountain_mat1_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Outland/hd_out_AF_001_HugeMountains/hd_out_AF_001_HugeMountain_GMM.dds</Texture>
+					</property>
+					<property>
+						g_detailRejectTiling
+						<Vector4>1 1 16 16</Vector4>
+					</property>
+					<property>
+						g_detailMap
+						<Texture>content/Buildings/bld_19_02_Monastery/bld_19_detalimap.dds</Texture>
+					</property>
+					<property>
+						g_detailInfluences
+						<Vector4>
+							1 0.3 1 1
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>false</Bool>
+					</property>
+				</material>
+				<groupOrigin>-287.807373 422.587524 -434.817505</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-5950.027344 -25.080238 -2699.703125</min>
+		<max>5374.412598 870.255310 1830.068115</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>822256</geometrySize>
+	<minUVDensity>0.000000</minUVDensity>
+</root>

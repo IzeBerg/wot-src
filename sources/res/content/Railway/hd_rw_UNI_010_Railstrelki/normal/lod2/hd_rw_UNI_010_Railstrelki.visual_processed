@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>hd_rw_UNI_010_Railstrelki</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_module0</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>n_wood0</identifier>
+					<collisionFlags>128</collisionFlags>
+					<materialKind>73</materialKind>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>content/Railway/hd_rw_UNI_010_Railstrelki/hd_rw_UNI_010_Railstrelki_BAM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Railway/hd_rw_UNI_010_Railstrelki/hd_rw_UNI_010_Railstrelki_BANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Railway/hd_rw_UNI_010_Railstrelki/hd_rw_UNI_010_Railstrelki_BGMM.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaReference
+						<Int>154</Int>
+					</property>
+				</material>
+				<groupOrigin>0.000000 1.074420 0.004493</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>d_wood0</identifier>
+					<collisionFlags>128</collisionFlags>
+					<materialKind>87</materialKind>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>content/Railway/hd_rw_UNI_010_Railstrelki/hd_rw_UNI_010_Railstrelki_BAM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Railway/hd_rw_UNI_010_Railstrelki/hd_rw_UNI_010_Railstrelki_BANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Railway/hd_rw_UNI_010_Railstrelki/hd_rw_UNI_010_Railstrelki_BGMM.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaReference
+						<Int>10</Int>
+					</property>
+				</material>
+				<groupOrigin>-0.047004 0.047006 0.004493</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.192240 -0.211688 -1.201014</min>
+		<max>1.098233 2.360529 1.210001</max>
+	</boundingBox>
+	<geometrySize>4544</geometrySize>
+	<minUVDensity>0.036074</minUVDensity>
+</root>

@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>nodes_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_Fire_1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 -0.006889 -2.522872</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Fire_2</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 -0.006889 0.153499</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_LFront</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.512476 0.858702</row1>
+					<row2>0.000000 -0.858702 0.512476</row2>
+					<row3>-1.315030 -0.043970 3.926130</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_LRear</identifier>
+				<transform>
+					<row0>-1.000000 0.000000 -0.000000</row0>
+					<row1>0.000000 0.843297 -0.537448</row1>
+					<row2>-0.000000 -0.537448 -0.843297</row2>
+					<row3>-1.315030 -0.048550 -3.103436</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_RFront</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.512476 0.858702</row1>
+					<row2>0.000000 -0.858702 0.512476</row2>
+					<row3>1.315030 -0.043970 3.926130</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_RRear</identifier>
+				<transform>
+					<row0>-1.000000 0.000000 -0.000000</row0>
+					<row1>0.000000 0.843297 -0.537448</row1>
+					<row2>-0.000000 -0.537448 -0.843297</row2>
+					<row3>1.315030 -0.048550 -3.103436</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_Exhaus_1</identifier>
+				<transform>
+					<row0>-0.114649 0.975342 -0.188585</row0>
+					<row1>0.881613 0.012405 -0.471811</row1>
+					<row2>-0.457837 -0.220352 -0.861296</row2>
+					<row3>-1.403130 0.398053 -3.099200</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_Exhaus_2</identifier>
+				<transform>
+					<row0>0.035646 0.993551 -0.107640</row0>
+					<row1>0.886201 0.018359 0.462938</row1>
+					<row2>0.461929 -0.111893 -0.879831</row2>
+					<row3>1.403130 0.398053 -3.099200</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_turretJoint</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.416462 0.786877</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_hull_01</identifier>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/british/GB24_Centurion_Mk3/_skin/GB24_Centurion_Mk3_3Dst_HW20/Centurion_Mk3_3Dst_HW20_hull_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/british/GB24_Centurion_Mk3/_skin/GB24_Centurion_Mk3_3Dst_HW20/Centurion_Mk3_3Dst_HW20_hull_01_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/british/GB24_Centurion_Mk3/_skin/GB24_Centurion_Mk3_3Dst_HW20/Centurion_Mk3_3Dst_HW20_hull_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/british/GB24_Centurion_Mk3/_skin/GB24_Centurion_Mk3_3Dst_HW20/Centurion_Mk3_3Dst_HW20_hull_01_AO.dds</Texture>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>7.013699 7.013699 0.000000 0.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>0.000275 -0.007896 0.135861</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>tank_equipment_01</identifier>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/british/GB24_Centurion_Mk3/_skin/GB24_Centurion_Mk3_3Dst_HW20/Centurion_Mk3_3Dst_HW20_equipment_01_AM.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						alphaReference
+						<Int>64</Int>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/british/GB24_Centurion_Mk3/_skin/GB24_Centurion_Mk3_3Dst_HW20/Centurion_Mk3_3Dst_HW20_equipment_01_AO.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>3.506850 3.506850 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/british/GB24_Centurion_Mk3/_skin/GB24_Centurion_Mk3_3Dst_HW20/Centurion_Mk3_3Dst_HW20_equipment_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/british/GB24_Centurion_Mk3/_skin/GB24_Centurion_Mk3_3Dst_HW20/Centurion_Mk3_3Dst_HW20_equipment_01_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.000000 0.395607 -0.040768</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.781728 -0.744647 -3.729861</min>
+		<max>1.781728 0.728856 4.001584</max>
+	</boundingBox>
+	<geometrySize>618528</geometrySize>
+	<minUVDensity>0.000959</minUVDensity>
+</root>
