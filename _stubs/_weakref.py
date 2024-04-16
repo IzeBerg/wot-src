@@ -1,0 +1,193 @@
+# Stubs Generator
+# import _weakref
+# <module '_weakref' (built-in)>
+
+
+class weakcallableproxy(object):
+	def __abs__(*args, **kwargs): pass
+	def __add__(*args, **kwargs): pass
+	def __and__(*args, **kwargs): pass
+	def __call__(*args, **kwargs): pass
+	def __cmp__(*args, **kwargs): pass
+	def __contains__(*args, **kwargs): pass
+	def __delattr__(*args, **kwargs): pass
+	def __delitem__(*args, **kwargs): pass
+	def __delslice__(*args, **kwargs): pass
+	def __div__(*args, **kwargs): pass
+	def __divmod__(*args, **kwargs): pass
+	__doc__ = None
+	def __float__(*args, **kwargs): pass
+	def __floordiv__(*args, **kwargs): pass
+	def __format__(*args, **kwargs): pass
+	def __getattribute__(*args, **kwargs): pass
+	def __getitem__(*args, **kwargs): pass
+	def __getslice__(*args, **kwargs): pass
+	def __hash__(*args, **kwargs): pass
+	def __iadd__(*args, **kwargs): pass
+	def __iand__(*args, **kwargs): pass
+	def __idiv__(*args, **kwargs): pass
+	def __ifloordiv__(*args, **kwargs): pass
+	def __ilshift__(*args, **kwargs): pass
+	def __imod__(*args, **kwargs): pass
+	def __imul__(*args, **kwargs): pass
+	def __index__(*args, **kwargs): pass
+	def __init__(*args, **kwargs): pass
+	def __int__(*args, **kwargs): pass
+	def __invert__(*args, **kwargs): pass
+	def __ior__(*args, **kwargs): pass
+	def __ipow__(*args, **kwargs): pass
+	def __irshift__(*args, **kwargs): pass
+	def __isub__(*args, **kwargs): pass
+	def __iter__(*args, **kwargs): pass
+	def __itruediv__(*args, **kwargs): pass
+	def __ixor__(*args, **kwargs): pass
+	def __len__(*args, **kwargs): pass
+	def __long__(*args, **kwargs): pass
+	def __lshift__(*args, **kwargs): pass
+	def __mod__(*args, **kwargs): pass
+	def __mul__(*args, **kwargs): pass
+	def __neg__(*args, **kwargs): pass
+	def __new__(*args, **kwargs): pass
+	def __nonzero__(*args, **kwargs): pass
+	def __or__(*args, **kwargs): pass
+	def __pos__(*args, **kwargs): pass
+	def __pow__(*args, **kwargs): pass
+	def __radd__(*args, **kwargs): pass
+	def __rand__(*args, **kwargs): pass
+	def __rdiv__(*args, **kwargs): pass
+	def __rdivmod__(*args, **kwargs): pass
+	def __reduce__(*args, **kwargs): pass
+	def __reduce_ex__(*args, **kwargs): pass
+	def __repr__(*args, **kwargs): pass
+	def __rfloordiv__(*args, **kwargs): pass
+	def __rlshift__(*args, **kwargs): pass
+	def __rmod__(*args, **kwargs): pass
+	def __rmul__(*args, **kwargs): pass
+	def __ror__(*args, **kwargs): pass
+	def __rpow__(*args, **kwargs): pass
+	def __rrshift__(*args, **kwargs): pass
+	def __rshift__(*args, **kwargs): pass
+	def __rsub__(*args, **kwargs): pass
+	def __rtruediv__(*args, **kwargs): pass
+	def __rxor__(*args, **kwargs): pass
+	def __setattr__(*args, **kwargs): pass
+	def __setitem__(*args, **kwargs): pass
+	def __setslice__(*args, **kwargs): pass
+	def __sizeof__(*args, **kwargs): pass
+	def __str__(*args, **kwargs): pass
+	def __sub__(*args, **kwargs): pass
+	def __subclasshook__(*args, **kwargs): pass
+	def __truediv__(*args, **kwargs): pass
+	def __xor__(*args, **kwargs): pass
+	def next(*args, **kwargs): pass
+
+
+class weakproxy(object):
+	def __abs__(*args, **kwargs): pass
+	def __add__(*args, **kwargs): pass
+	def __and__(*args, **kwargs): pass
+	def __cmp__(*args, **kwargs): pass
+	def __contains__(*args, **kwargs): pass
+	def __delattr__(*args, **kwargs): pass
+	def __delitem__(*args, **kwargs): pass
+	def __delslice__(*args, **kwargs): pass
+	def __div__(*args, **kwargs): pass
+	def __divmod__(*args, **kwargs): pass
+	__doc__ = None
+	def __float__(*args, **kwargs): pass
+	def __floordiv__(*args, **kwargs): pass
+	def __format__(*args, **kwargs): pass
+	def __getattribute__(*args, **kwargs): pass
+	def __getitem__(*args, **kwargs): pass
+	def __getslice__(*args, **kwargs): pass
+	def __hash__(*args, **kwargs): pass
+	def __iadd__(*args, **kwargs): pass
+	def __iand__(*args, **kwargs): pass
+	def __idiv__(*args, **kwargs): pass
+	def __ifloordiv__(*args, **kwargs): pass
+	def __ilshift__(*args, **kwargs): pass
+	def __imod__(*args, **kwargs): pass
+	def __imul__(*args, **kwargs): pass
+	def __index__(*args, **kwargs): pass
+	def __init__(*args, **kwargs): pass
+	def __int__(*args, **kwargs): pass
+	def __invert__(*args, **kwargs): pass
+	def __ior__(*args, **kwargs): pass
+	def __ipow__(*args, **kwargs): pass
+	def __irshift__(*args, **kwargs): pass
+	def __isub__(*args, **kwargs): pass
+	def __iter__(*args, **kwargs): pass
+	def __itruediv__(*args, **kwargs): pass
+	def __ixor__(*args, **kwargs): pass
+	def __len__(*args, **kwargs): pass
+	def __long__(*args, **kwargs): pass
+	def __lshift__(*args, **kwargs): pass
+	def __mod__(*args, **kwargs): pass
+	def __mul__(*args, **kwargs): pass
+	def __neg__(*args, **kwargs): pass
+	def __new__(*args, **kwargs): pass
+	def __nonzero__(*args, **kwargs): pass
+	def __or__(*args, **kwargs): pass
+	def __pos__(*args, **kwargs): pass
+	def __pow__(*args, **kwargs): pass
+	def __radd__(*args, **kwargs): pass
+	def __rand__(*args, **kwargs): pass
+	def __rdiv__(*args, **kwargs): pass
+	def __rdivmod__(*args, **kwargs): pass
+	def __reduce__(*args, **kwargs): pass
+	def __reduce_ex__(*args, **kwargs): pass
+	def __repr__(*args, **kwargs): pass
+	def __rfloordiv__(*args, **kwargs): pass
+	def __rlshift__(*args, **kwargs): pass
+	def __rmod__(*args, **kwargs): pass
+	def __rmul__(*args, **kwargs): pass
+	def __ror__(*args, **kwargs): pass
+	def __rpow__(*args, **kwargs): pass
+	def __rrshift__(*args, **kwargs): pass
+	def __rshift__(*args, **kwargs): pass
+	def __rsub__(*args, **kwargs): pass
+	def __rtruediv__(*args, **kwargs): pass
+	def __rxor__(*args, **kwargs): pass
+	def __setattr__(*args, **kwargs): pass
+	def __setitem__(*args, **kwargs): pass
+	def __setslice__(*args, **kwargs): pass
+	def __sizeof__(*args, **kwargs): pass
+	def __str__(*args, **kwargs): pass
+	def __sub__(*args, **kwargs): pass
+	def __subclasshook__(*args, **kwargs): pass
+	def __truediv__(*args, **kwargs): pass
+	def __unicode__(*args, **kwargs): pass
+	def __xor__(*args, **kwargs): pass
+	def next(*args, **kwargs): pass
+
+
+class weakref(object):
+	def __call__(*args, **kwargs): pass
+	def __delattr__(*args, **kwargs): pass
+	__doc__ = None
+	def __eq__(*args, **kwargs): pass
+	def __format__(*args, **kwargs): pass
+	def __ge__(*args, **kwargs): pass
+	def __getattribute__(*args, **kwargs): pass
+	def __gt__(*args, **kwargs): pass
+	def __hash__(*args, **kwargs): pass
+	def __init__(*args, **kwargs): pass
+	def __le__(*args, **kwargs): pass
+	def __lt__(*args, **kwargs): pass
+	def __ne__(*args, **kwargs): pass
+	def __new__(*args, **kwargs): pass
+	def __reduce__(*args, **kwargs): pass
+	def __reduce_ex__(*args, **kwargs): pass
+	def __repr__(*args, **kwargs): pass
+	def __setattr__(*args, **kwargs): pass
+	def __sizeof__(*args, **kwargs): pass
+	def __str__(*args, **kwargs): pass
+	def __subclasshook__(*args, **kwargs): pass
+
+__doc__ = 'Weak-reference support module.'
+__name__ = '_weakref'
+__package__ = None
+def _remove_dead_weakref(*args, **kwargs): pass
+def getweakrefcount(*args, **kwargs): pass
+def getweakrefs(*args, **kwargs): pass
+def proxy(*args, **kwargs): pass
