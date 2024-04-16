@@ -5227,10 +5227,12 @@ class WGPillboxFilter(WGEntityFilter):
 	def transferInput(self, *args, **kwargs): pass
 	def transferInputAsVehicle(self, *args, **kwargs): pass
 	turretMatrix = property(lambda self: None)
-	velocity = None # Exception: TypeError((): incompatible function arguments. The following argument types are supported:
-    1. () -> Vector3
-
-Invoked with: <class 'BigWorld.WGPillboxFilter'>)
+	# TypeError:
+	# (): incompatible function arguments. The following argument types are supported:
+	# 1. () -> Vector3
+	# 
+	# Invoked with: <class 'BigWorld.WGPillboxFilter'>
+	velocity = None  # error description above
 
 
 class WGPingerInstance(pybind11_object):
