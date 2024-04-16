@@ -4600,7 +4600,6 @@ class StrategicAimingSystemRemote(StrategicAimingSystem):
 	def updateTargetPos(self, *args, **kwargs): pass
 	def updateYaw(self, *args, **kwargs): pass
 
-TRIANGLE_TERRAIN = 8
 
 class Targeting(pybind11_object):
 	def __delattr__(*args, **kwargs): pass
@@ -5189,6 +5188,12 @@ class WGPillboxFilter(WGEntityFilter):
 	def transferInput(self, *args, **kwargs): pass
 	def transferInputAsVehicle(self, *args, **kwargs): pass
 	turretMatrix = property(lambda self: None)
+	TypeError:
+	(): incompatible function arguments. The following argument types are supported:
+	1. () -> Vector3
+	
+	Invoked with: <class 'BigWorld.WGPillboxFilter'>
+	velocity = None # unexpected exception info above
 
 
 class WGPingerInstance(pybind11_object):
@@ -6460,7 +6465,6 @@ cachedEntities = {}
 def callback(*args, **kwargs): pass
 def camera(*args, **kwargs): pass
 def cameraSpaceID(*args, **kwargs): pass
-cameraSpeed = CameraSpeed()
 def canToDowngradePreset(*args, **kwargs): pass
 def cancelCallback(*args, **kwargs): pass
 def changeFullScreenAspectRatio(*args, **kwargs): pass
@@ -6503,7 +6507,6 @@ def destroyBrowser(*args, **kwargs): pass
 def destroyEntity(*args, **kwargs): pass
 def destroyWebView(*args, **kwargs): pass
 def detectGraphicsPresetFromSystemSettings(*args, **kwargs): pass
-digest = u'5D9E92891EBEFE9BAB1219DEDA06BBE1'
 def disconnect(*args, **kwargs): pass
 def enableBattleStatisticCollector(*args, **kwargs): pass
 def enableBlueprintBuilding(*args, **kwargs): pass
@@ -6758,7 +6761,6 @@ def stopBenchmarkTool(*args, **kwargs): pass
 def stopLoadResourceListBGTask(*args, **kwargs): pass
 def stringToKey(*args, **kwargs): pass
 target = PyTarget()
-targeting = Targeting()
 def time(*args, **kwargs): pass
 def timeExact(*args, **kwargs): pass
 def timeOfDay(*args, **kwargs): pass

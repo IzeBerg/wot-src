@@ -218,6 +218,6 @@ class PyProxyEventOutputSlot(pybind11_object):
 __doc__ = None
 __name__ = 'VSE'
 __package__ = None
-engineInited = True
+engineInited = False
 def moveToDeferredDestroyQueue(*args, **kwargs): pass
 def passEventToVisualScript(*args, **kwargs): pass
