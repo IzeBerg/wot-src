@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd1</identifier>
+					<fx>shaders/decals/PBS_mesh_decal.fx</fx>
+					<materialKind>111</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_EU_080_Rocks/hd_env_EU_080_Rocks_03_EasterEgg_AM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Buildings/00_Decals/Decals_00_Universal_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Buildings/00_Decals/Decals_00_Universal_ANM.dds</Texture>
+					</property>
+					<property>
+						g_alphaMulNormal
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						g_alphaMulShading
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						g_type
+						<Int>1</Int>
+					</property>
+				</material>
+				<groupOrigin>6.141109 2.066208 -2.271554</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>1.797717 0.213601 -3.369798</min>
+		<max>10.484502 3.508819 -1.173310</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>3474</geometrySize>
+	<minUVDensity>0.078974</minUVDensity>
+</root>

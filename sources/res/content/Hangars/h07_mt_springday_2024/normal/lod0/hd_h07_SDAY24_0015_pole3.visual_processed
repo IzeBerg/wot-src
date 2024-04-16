@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>envIN_11_Hangar_8nov_poles_1Material</identifier>
+					<fx>shaders/std_effects/normalmap_specmap.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>108</materialKind>
+					<property>
+						specularMap
+						<Texture>content/Hangars/h07_mt_springday_2024/hd_h07_SDAY24_0015_poles_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Hangars/h07_mt_springday_2024/hd_h07_SDAY24_0015_poles_ANM.dds</Texture>
+					</property>
+					<property>
+						g_defaultPBSConversionParams
+						<Bool>false</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h07_mt_springday_2024/hd_h07_SDAY24_0015_poles_AM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.269649 0.096046 -0.129176</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.350914 -0.410680 -2.725945</min>
+		<max>0.915602 0.620844 2.363129</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>93540</geometrySize>
+	<minUVDensity>1.496109</minUVDensity>
+</root>

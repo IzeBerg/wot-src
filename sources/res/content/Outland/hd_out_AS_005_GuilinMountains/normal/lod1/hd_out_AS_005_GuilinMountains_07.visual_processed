@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>105</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/Outland/hd_out_AS_005_GuilinMountains/hd_out_AS_005_GuilinMountains_07_AM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Outland/hd_out_AS_005_GuilinMountains/hd_out_AS_005_GuilinMountains_07_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Outland/hd_out_AS_005_GuilinMountains/hd_out_AS_005_GuilinMountains_07_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.137038 6.868564 0.441612</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-11.792753 0.029802 -7.706205</min>
+		<max>11.518677 13.707326 8.589428</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>51218</geometrySize>
+	<minUVDensity>0.000307</minUVDensity>
+</root>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>nodes_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_Fire_1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.010316 -2.755681</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Fire_2</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>-0.887975 0.010316 1.435851</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_LFront</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.068278 0.997666</row1>
+					<row2>0.000000 -0.997666 0.068278</row2>
+					<row3>-1.301172 -0.184686 3.077344</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_LRear</identifier>
+				<transform>
+					<row0>-1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.573481 -0.819219</row1>
+					<row2>-0.000000 -0.819219 -0.573481</row2>
+					<row3>-1.301172 -0.015266 -3.285403</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_RFront</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.068278 0.997666</row1>
+					<row2>0.000000 -0.997666 0.068278</row2>
+					<row3>1.301180 -0.184435 3.078913</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_RRear</identifier>
+				<transform>
+					<row0>-1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.573481 -0.819219</row1>
+					<row2>-0.000000 -0.819219 -0.573481</row2>
+					<row3>1.301180 -0.015431 -3.284868</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_Exhaus_1</identifier>
+				<transform>
+					<row0>-0.000000 -1.000000 0.000000</row0>
+					<row1>-0.707107 0.000000 0.707107</row1>
+					<row2>-0.707107 0.000000 -0.707107</row2>
+					<row3>-1.207109 0.371669 -3.048147</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_Exhaus_2</identifier>
+				<transform>
+					<row0>0.000000 1.000000 0.000000</row0>
+					<row1>0.866025 -0.000000 0.500000</row1>
+					<row2>0.500000 -0.000000 -0.866025</row2>
+					<row3>1.197012 0.371669 -3.049318</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_turretJoint</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000839 0.499015 0.181641</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_proxy</identifier>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/italy/It20_Carro_Combattimento_45t/_skins/It20_Carro_Combattimento_45t_3Dst_MG/Carro_Combattimento_45t_3Dst_MG_proxy_AM.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/italy/It20_Carro_Combattimento_45t/_skins/It20_Carro_Combattimento_45t_3Dst_MG/Carro_Combattimento_45t_3Dst_MG_proxy_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/italy/It20_Carro_Combattimento_45t/_skins/It20_Carro_Combattimento_45t_3Dst_MG/Carro_Combattimento_45t_3Dst_MG_proxy_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/italy/It20_Carro_Combattimento_45t/_skins/It20_Carro_Combattimento_45t_3Dst_MG/Carro_Combattimento_45t_3Dst_MG_proxy_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.072974 0.067940 -0.477574</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.909265 -0.540020 -4.314911</min>
+		<max>1.763317 0.675911 3.359762</max>
+	</boundingBox>
+	<geometrySize>3452</geometrySize>
+	<minUVDensity>0.003052</minUVDensity>
+</root>

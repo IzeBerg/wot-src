@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>hd_rw007_Tupik</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_module0</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>d_metal0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>content/Railway/hd_rw_UNI_007_Tupik/hd_rw_UNI_007_Tupik_AM.dds</Texture>
+					</property>
+					<materialKind>87</materialKind>
+					<property>
+						metallicGlossMap
+						<Texture>content/Railway/hd_rw_UNI_007_Tupik/hd_rw_UNI_007_Tupik_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Railway/hd_rw_UNI_007_Tupik/hd_rw_UNI_007_Tupik_ANM.dds</Texture>
+					</property>
+					<collisionFlags>255</collisionFlags>
+				</material>
+				<groupOrigin>-0.142986 0.280758 -0.127519</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>n_metal0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>content/Railway/hd_rw_UNI_007_Tupik/hd_rw_UNI_007_Tupik_AM.dds</Texture>
+					</property>
+					<materialKind>73</materialKind>
+					<property>
+						metallicGlossMap
+						<Texture>content/Railway/hd_rw_UNI_007_Tupik/hd_rw_UNI_007_Tupik_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Railway/hd_rw_UNI_007_Tupik/hd_rw_UNI_007_Tupik_ANM.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+				</material>
+				<groupOrigin>-0.004098 0.984986 0.013932</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.391081 -0.018084 -1.183246</min>
+		<max>1.205144 1.966064 0.928207</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>16284</geometrySize>
+	<minUVDensity>0.038285</minUVDensity>
+</root>

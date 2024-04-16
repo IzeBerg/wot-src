@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<info>
+		<name>armory_yard/HullClicable</name>
+		<isMacro>false</isMacro>
+		<version>0</version>
+		<aspect>
+			<compatibles>HANGAR</compatibles>
+		</aspect>
+		<blocks>
+			<block>
+				<class>ContextEventReceive</class>
+				<id>ContextEventReceive_1</id>
+				<params>
+					<param>
+						CGFGameObjectContext
+						<name>Context Name</name>
+						<type>StringT</type>
+					</param>
+					<param>
+						onGameObjectClick
+						<name>Member Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>active</name>
+						<const>\true\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>ContextGetSelf</class>
+				<id>ContextGetSelf_1</id>
+				<params>
+					<param>
+						CGFGameObjectContext
+						<name>Context Name</name>
+						<type>StringT</type>
+					</param>
+					<param>
+						getSelf
+						<name>Member Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>ActivatePOI</class>
+				<id>ActivatePOI_1</id>
+				<params/>
+				<slots>
+					<slot>
+						<name>name</name>
+						<const>\TankConstructor\</const>
+					</slot>
+				</slots>
+			</block>
+		</blocks>
+		<connections>
+			<connection>
+				<from>ContextEventReceive_1</from>
+				<input>in</input>
+				<to>ActivatePOI_1</to>
+				<output>out</output>
+			</connection>
+		</connections>
+		<macros/>
+		<curves/>
+	</info>
+</root>

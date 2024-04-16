@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>111</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/Buildings/hd_cbld_SU_0014_THouse/hd_cbld_SU_0014_THouse_3Floor_Corner_Residential_BAM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Buildings/hd_cbld_SU_0014_THouse/hd_cbld_SU_0014_THouse_3Floor_Corner_Residential_BGMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Buildings/hd_cbld_SU_0014_THouse/hd_cbld_SU_0014_THouse_3Floor_Corner_Residential_BANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.508368 8.124557 0.133939</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-9.223687 -1.500000 -9.223475</min>
+		<max>10.240423 17.749113 9.491354</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>17308</geometrySize>
+	<minUVDensity>0.000348</minUVDensity>
+</root>

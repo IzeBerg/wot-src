@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>Root</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>Birds01</identifier>
+				<transform>
+					<row0>0.999850 0.006676 0.015981</row0>
+					<row1>-0.007306 0.999184 0.039724</row1>
+					<row2>-0.015703 -0.039834 0.999083</row2>
+					<row3>-0.028720 0.012884 -0.012884</row3>
+				</transform>
+				<node>
+					<identifier>wings01_L</identifier>
+					<transform>
+						<row0>1.000000 0.000000 -0.000000</row0>
+						<row1>-0.000000 1.000000 -0.000000</row1>
+						<row2>-0.000000 0.000000 1.000000</row2>
+						<row3>-0.027865 0.069000 0.000000</row3>
+					</transform>
+					<node>
+						<identifier>wings01_L_BlendBone</identifier>
+						<transform>
+							<row0>0.999850 -0.007306 -0.015703</row0>
+							<row1>0.006676 0.999184 -0.039834</row1>
+							<row2>-0.015981 -0.039724 -0.999083</row2>
+							<row3>0.056701 -0.081571 0.012934</row3>
+						</transform>
+					</node>
+				</node>
+				<node>
+					<identifier>wings01_R</identifier>
+					<transform>
+						<row0>1.000000 0.000000 -0.000000</row0>
+						<row1>-0.000000 1.000000 -0.000000</row1>
+						<row2>-0.000000 0.000000 1.000000</row2>
+						<row3>0.026010 0.069000 0.000000</row3>
+					</transform>
+					<node>
+						<identifier>wings01_R_BlendBone</identifier>
+						<transform>
+							<row0>0.999850 -0.007306 -0.015703</row0>
+							<row1>0.006676 0.999184 -0.039834</row1>
+							<row2>-0.015981 -0.039724 -0.999083</row2>
+							<row3>0.002826 -0.081571 0.012934</row3>
+						</transform>
+					</node>
+				</node>
+				<node>
+					<identifier>Birds01_BlendBone</identifier>
+					<transform>
+						<row0>0.999850 -0.007306 -0.015703</row0>
+						<row1>0.006676 0.999184 -0.039834</row1>
+						<row2>-0.015981 -0.039724 -0.999083</row2>
+						<row3>0.028835 -0.012571 0.012934</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>Birds02</identifier>
+				<transform>
+					<row0>0.999997 0.002250 0.000197</row0>
+					<row1>-0.002231 0.970016 0.243032</row1>
+					<row2>0.000356 -0.243032 0.970018</row2>
+					<row3>0.048244 -0.001756 0.001756</row3>
+				</transform>
+				<node>
+					<identifier>wings02_L</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.014724 0.033222 0.000000</row3>
+					</transform>
+					<node>
+						<identifier>wings02_L_BlendBone</identifier>
+						<transform>
+							<row0>0.999998 -0.002231 0.000356</row0>
+							<row1>0.002250 0.970016 -0.243032</row1>
+							<row2>-0.000197 -0.243032 -0.970018</row2>
+							<row3>-0.062964 -0.031838 -0.002148</row3>
+						</transform>
+					</node>
+				</node>
+				<node>
+					<identifier>wings02_R</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>-0.015214 0.033222 0.000000</row3>
+					</transform>
+					<node>
+						<identifier>wings02_R_BlendBone</identifier>
+						<transform>
+							<row0>0.999998 -0.002231 0.000356</row0>
+							<row1>0.002250 0.970016 -0.243032</row1>
+							<row2>-0.000197 -0.243032 -0.970018</row2>
+							<row3>-0.033026 -0.031838 -0.002148</row3>
+						</transform>
+					</node>
+				</node>
+				<node>
+					<identifier>Birds02_BlendBone</identifier>
+					<transform>
+						<row0>0.999998 -0.002231 0.000356</row0>
+						<row1>0.002250 0.970016 -0.243032</row1>
+						<row2>-0.000197 -0.243032 -0.970018</row2>
+						<row3>-0.048240 0.001384 -0.002148</row3>
+					</transform>
+				</node>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>Birds01_BlendBone</node>
+		<node>wings01_L_BlendBone</node>
+		<node>wings01_R_BlendBone</node>
+		<node>Birds02_BlendBone</node>
+		<node>wings02_L_BlendBone</node>
+		<node>wings02_R_BlendBone</node>
+		<geometry>
+			<vertices>SparrowsFlockShape.vertices</vertices>
+			<primitive>SparrowsFlockShape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>lambert2_skinned</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>111</materialKind>
+					<fx>shaders/std_effects/lightonly_skinned.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/env_birds/TropicalBird.dds</Texture>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaReference
+						<Int>128</Int>
+					</property>
+				</material>
+				<groupOrigin>0.010663 0.008181 -0.102942</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<constraints>
+		<parentConstraint>
+			<identifier>wings01_R_parentConstraint1</identifier>
+			<target>wings01_R</target>
+			<source>
+				<weight>1.000000</weight>
+				<identifier>wings01_R</identifier>
+				<translateOffset>0.000000 0.000000 -0.000000</translateOffset>
+				<rotateOffset>-0.000000 -0.000000 0.000000</rotateOffset>
+			</source>
+		</parentConstraint>
+		<parentConstraint>
+			<identifier>wings01_L_parentConstraint1</identifier>
+			<target>wings01_L</target>
+			<source>
+				<weight>1.000000</weight>
+				<identifier>wings01_l</identifier>
+				<translateOffset>0.000000 0.000000 -0.000000</translateOffset>
+				<rotateOffset>-0.000000 -0.000000 0.000000</rotateOffset>
+			</source>
+		</parentConstraint>
+		<parentConstraint>
+			<identifier>Birds01_parentConstraint1</identifier>
+			<target>Birds01</target>
+			<source>
+				<weight>1.000000</weight>
+				<identifier>Birds01</identifier>
+				<translateOffset>0.000000 0.000000 -0.000000</translateOffset>
+				<rotateOffset>-0.000000 -0.000000 0.000000</rotateOffset>
+			</source>
+		</parentConstraint>
+		<parentConstraint>
+			<identifier>wings02_R_parentConstraint1</identifier>
+			<target>wings02_R</target>
+			<source>
+				<weight>1.000000</weight>
+				<identifier>wings02_R</identifier>
+				<translateOffset>0.000000 0.000000 -0.000000</translateOffset>
+				<rotateOffset>-0.000000 -0.000000 0.000000</rotateOffset>
+			</source>
+		</parentConstraint>
+		<parentConstraint>
+			<identifier>wings02_L_parentConstraint1</identifier>
+			<target>wings02_L</target>
+			<source>
+				<weight>1.000000</weight>
+				<identifier>wings02_l</identifier>
+				<translateOffset>0.000000 0.000000 -0.000000</translateOffset>
+				<rotateOffset>-0.000000 -0.000000 0.000000</rotateOffset>
+			</source>
+		</parentConstraint>
+		<parentConstraint>
+			<identifier>Birds02_parentConstraint1</identifier>
+			<target>Birds02</target>
+			<source>
+				<weight>1.000000</weight>
+				<identifier>Birds02</identifier>
+				<translateOffset>0.000000 0.000000 -0.000000</translateOffset>
+				<rotateOffset>-0.000000 -0.000000 0.000000</rotateOffset>
+			</source>
+		</parentConstraint>
+	</constraints>
+	<boundingBox>
+		<min>-0.771934 -0.254848 -0.703637</min>
+		<max>0.793261 0.271210 0.909520</max>
+	</boundingBox>
+	<geometrySize>12264</geometrySize>
+	<minUVDensity>6.227970</minUVDensity>
+</root>

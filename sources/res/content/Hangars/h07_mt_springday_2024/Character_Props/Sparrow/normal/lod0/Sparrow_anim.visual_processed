@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>Root</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>Birds04</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000251 0.003296</row3>
+				</transform>
+				<node>
+					<identifier>wings04_L</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>-0.013500 0.002004 0.000000</row3>
+					</transform>
+					<node>
+						<identifier>wings04_L_BlendBone</identifier>
+						<transform>
+							<row0>1.000000 0.000000 0.000000</row0>
+							<row1>0.000000 1.000000 0.000000</row1>
+							<row2>0.000000 0.000000 -1.000000</row2>
+							<row3>0.013500 -0.002254 -0.003296</row3>
+						</transform>
+					</node>
+				</node>
+				<node>
+					<identifier>wings04_R</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.013500 0.002004 0.000000</row3>
+					</transform>
+					<node>
+						<identifier>wings04_R_BlendBone</identifier>
+						<transform>
+							<row0>1.000000 0.000000 0.000000</row0>
+							<row1>0.000000 1.000000 0.000000</row1>
+							<row2>0.000000 0.000000 -1.000000</row2>
+							<row3>-0.013500 -0.002254 -0.003296</row3>
+						</transform>
+					</node>
+				</node>
+				<node>
+					<identifier>Birds04_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 -1.000000</row2>
+						<row3>0.000000 -0.000251 -0.003296</row3>
+					</transform>
+				</node>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>Birds04_BlendBone</node>
+		<node>wings04_L_BlendBone</node>
+		<node>wings04_R_BlendBone</node>
+		<geometry>
+			<vertices>sparrow_animShape.vertices</vertices>
+			<primitive>sparrow_animShape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>lambert2_skinned_0_ncl1_1_skinned</identifier>
+					<fx>shaders/std_effects/lightonly_skinned.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/env_birds/Sparrow.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.000000 0.000000 0.000000</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<constraints/>
+	<boundingBox>
+		<min>-0.094001 -0.011598 -0.059825</min>
+		<max>0.094001 0.011598 0.059824</max>
+	</boundingBox>
+	<geometrySize>4096</geometrySize>
+	<minUVDensity>24.967697</minUVDensity>
+</root>

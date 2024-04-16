@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd3</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/Buildings/hd_cbld_SU_0014_THouse/hd_cbld_SU_0014_THouse_5Floor_Rectangular_Residential_BAM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Buildings/hd_cbld_SU_0014_THouse/hd_cbld_SU_0014_THouse_5Floor_Rectangular_Residential_BGMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Buildings/hd_cbld_SU_0014_THouse/hd_cbld_SU_0014_THouse_5Floor_Rectangular_Residential_BANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.021914 22.629078 0.053514</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>111</materialKind>
+					<property>
+						diffuseMap
+						<Texture>content/Buildings/hd_cbld_SU_0014_THouse/hd_cbld_SU_0014_THouse_5Floor_Rectangular_Residential_BAM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Buildings/hd_cbld_SU_0014_THouse/hd_cbld_SU_0014_THouse_5Floor_Rectangular_Residential_BGMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Buildings/hd_cbld_SU_0014_THouse/hd_cbld_SU_0014_THouse_5Floor_Rectangular_Residential_BANM.dds</Texture>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>-0.150148 11.373857 -0.032275</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-9.752985 -1.734879 -16.351093</min>
+		<max>9.452688 24.692944 16.286543</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>26888</geometrySize>
+	<minUVDensity>0.000258</minUVDensity>
+</root>

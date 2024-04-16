@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>nodes_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_Fire_1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.526026 -0.275095 1.229299</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Fire_2</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>-0.613530 -0.275095 1.243441</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_LFront</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.738252 0.674525</row1>
+					<row2>0.000000 -0.674525 0.738252</row2>
+					<row3>-1.218908 0.008544 2.749404</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_LRear</identifier>
+				<transform>
+					<row0>-1.000000 0.000000 -0.000000</row0>
+					<row1>0.000000 0.789557 -0.613677</row1>
+					<row2>-0.000000 -0.613677 -0.789557</row2>
+					<row3>-1.218908 0.015998 -2.573465</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_RFront</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.738252 0.674525</row1>
+					<row2>0.000000 -0.674525 0.738252</row2>
+					<row3>1.219349 0.007938 2.748581</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_RRear</identifier>
+				<transform>
+					<row0>-1.000000 0.000000 -0.000000</row0>
+					<row1>0.000000 0.789557 -0.613677</row1>
+					<row2>-0.000000 -0.613677 -0.789557</row2>
+					<row3>1.219349 0.015217 -2.572412</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_Exhaus_1</identifier>
+				<transform>
+					<row0>-0.048498 -0.006272 0.998804</row0>
+					<row1>-0.254235 0.967122 -0.006272</row1>
+					<row2>-0.965926 -0.254235 -0.048498</row2>
+					<row3>-1.376050 0.314101 -0.816673</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_Exhaus_2</identifier>
+				<transform>
+					<row0>-0.000403 -0.006272 -0.999980</row0>
+					<row1>0.254237 0.967122 -0.006168</row1>
+					<row2>0.967142 -0.254235 0.001204</row2>
+					<row3>1.383528 0.330967 -0.401172</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_turretJoint</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>-0.002000 0.428070 -0.524565</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_hull_01</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/french/F114_Projet_4_1/_skins/F114_Projet_4_1_MD22_III_3DSt/Projet_4_1_MD22_III_3DSt_hull_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/french/F114_Projet_4_1/_skins/F114_Projet_4_1_MD22_III_3DSt/Projet_4_1_MD22_III_3DSt_hull_01_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/french/F114_Projet_4_1/_skins/F114_Projet_4_1_MD22_III_3DSt/Projet_4_1_MD22_III_3DSt_hull_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/french/F114_Projet_4_1/_skins/F114_Projet_4_1_MD22_III_3DSt/Projet_4_1_MD22_III_3DSt_hull_01_AO.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.199386 -0.000371 -0.304309</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>tank_equipment</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/french/F114_Projet_4_1/_skins/F114_Projet_4_1_MD22_III_3DSt/Projet_4_1_MD22_III_3DSt_equipment_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/french/F114_Projet_4_1/_skins/F114_Projet_4_1_MD22_III_3DSt/Projet_4_1_MD22_III_3DSt_equipment_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/french/F114_Projet_4_1/_skins/F114_Projet_4_1_MD22_III_3DSt/Projet_4_1_MD22_III_3DSt_equipment_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/french/F114_Projet_4_1/_skins/F114_Projet_4_1_MD22_III_3DSt/Projet_4_1_MD22_III_3DSt_equipment_AO.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.063973 0.158396 -0.355125</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.486404 -0.568067 -3.620931</min>
+		<max>1.880004 0.604832 3.012313</max>
+	</boundingBox>
+	<geometrySize>144420</geometrySize>
+	<minUVDensity>0.001836</minUVDensity>
+</root>
