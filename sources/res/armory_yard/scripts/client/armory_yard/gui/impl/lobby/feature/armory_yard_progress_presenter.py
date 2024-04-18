@@ -380,6 +380,7 @@ class _ProgressionTabPresenter(object):
         else:
             if self.__state.isAnimation:
                 self.__onSkipAnimation()
+                return
             self.__armoryYardCtrl.isVehiclePreview = True
             showArmoryYardVehiclePreview(vehicle.intCD, backToHangar=False, showHeroTankText=False, previewBackCb=self.__armoryYardCtrl.goToArmoryYard, backBtnLabel=backport.text(R.strings.armory_yard.buyView.backButton.mainView()))
             self.__armoryYardCtrl.cameraManager.goToHangar()

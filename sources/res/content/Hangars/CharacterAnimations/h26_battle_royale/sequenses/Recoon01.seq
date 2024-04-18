@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>31.233343</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+		<track>
+			<name>animation</name>
+			<type>animation</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>31.233334</duration>
+				<resourceID>content/Hangars/CharacterAnimations/h26_battle_royale/animation/Recoon/h26_BattleRoyale_Solider01_RecoonIlde.fbx</resourceID>
+				<clipName/>
+				<speed>1.000000</speed>
+				<layer>0</layer>
+				<blendIn>constant</blendIn>
+				<blendOut>constant</blendOut>
+				<blendInTime>0.000000</blendInTime>
+				<blendOutTime>0.000000</blendOutTime>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Model Object 1</name>
+		<type>model</type>
+		<resource>content/Hangars/h26_battle_royale/Environment/normal/lod0/h26_br_056_Rifle.model</resource>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>31.233335</duration>
+				<value>Root|Character1_RightHand</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-0.440542 0.174049 -0.045509</value>
+				<inTangent>-0.040355 0.019299 0.016307</inTangent>
+				<outTangent>-0.040355 0.019299 0.016307</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotation</name>
+			<type>quaternion</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-0.396085 0.540498 0.602717 -0.433255</value>
+				<inTangent>0.000000 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Model Object 2</name>
+		<type>model</type>
+		<resource>content/Hangars/CharacterAnimations/h26_battle_royale/normal/lod0/h26_br_RecooonCloak.model</resource>
+		<track>
+			<name>animation</name>
+			<type>animation</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>31.233335</duration>
+				<resourceID>content/Hangars/CharacterAnimations/h26_battle_royale/animation/Recoon/h26_BattleRoyale_Cloak_RecoonIdle.fbx</resourceID>
+				<clipName/>
+				<speed>1.000000</speed>
+				<layer>0</layer>
+				<blendIn>constant</blendIn>
+				<blendOut>constant</blendOut>
+				<blendInTime>0.000000</blendInTime>
+				<blendOutTime>0.000000</blendOutTime>
+			</frame>
+		</track>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>31.233343</duration>
+				<value>Root|Scene Root</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

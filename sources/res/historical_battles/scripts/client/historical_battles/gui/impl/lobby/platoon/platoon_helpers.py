@@ -141,7 +141,7 @@ def _getSlotsData(unitMgrID, fullData, levelsRange=None, checkForVehicles=True, 
             slot['hasPremiumAccount'] = player and player.hasPremium
         slot.update({'isVisibleAdtMsg': False, 
            'additionalMsg': ''})
-        if player is not None:
+        if player is not None and player.isReady:
             eventEnqueueData = player.extraData.get('eventEnqueueData', {})
             roleID = eventEnqueueData.get('roleID', INVALID_FRONTMAN_ROLE_ID)
             role = FrontmanRoleIDToRole.get(roleID, FrontmanRole.NONE)

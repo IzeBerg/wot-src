@@ -53,6 +53,7 @@ class HBUISound(CONST_CONTAINER):
     MINEFIELD_APPOINTED_SOUND = 'ev_secret_event_gameplay_ability_minefield'
     TACTICAL_MINEFIELD_APPOINTED_SOUND = 'ev_secret_event_gameplay_ability_tactical_mine'
     HEAL_POINT_NPC = 'ev_secret_event_gameplay_ability_repair_npc'
+    NITRO_DEACTIVATION = 'ev_secret_event_gameplay_ability_nitro_deactivation'
 
 
 class HBMusicEvents(CONST_CONTAINER):

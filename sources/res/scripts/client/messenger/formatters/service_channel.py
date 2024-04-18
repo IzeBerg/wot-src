@@ -2958,8 +2958,8 @@ class QuestAchievesFormatter(object):
                     if lootBox:
                         itemsNames.append(makeHtmlString('html_templates:lobby/quests/bonuses', 'rawLootBox', {'name': lootBox.getUserName(), 'count': int(count)}))
                 elif tokenID.startswith(FRONT_COUPON_TOKEN_PREFIX):
-                    name = backport.text(R.strings.hb_tooltips.quest.award(), bonusName=tokenID.split('_')[(-1)])
-                    itemsNames.append(makeHtmlString('html_templates:lobby/quests/bonuses', 'HBCoupon', {'name': name, 'count': int(count)}))
+                    name = backport.text(R.strings.hb_tooltips.quest.award(), bonusName=tokenID.split('_')[(-1)], count=int(count))
+                    itemsNames.append(name)
 
         entitlementsList = [ (eID, eData.get('count', 0)) for eID, eData in data.get('entitlements', {}).iteritems() ]
         entitlementsStr = InvoiceReceivedFormatter.getEntitlementsString(entitlementsList)

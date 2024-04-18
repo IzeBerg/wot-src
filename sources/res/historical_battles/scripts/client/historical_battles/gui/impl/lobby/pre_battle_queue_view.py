@@ -19,7 +19,6 @@ class PreBattleQueueView(BaseEventView, SelectableViewImpl):
     __slots__ = ('__timerCallback', '__createTime')
     gameEventController = dependency.descriptor(IGameEventController)
     itemsCache = dependency.descriptor(IItemsCache)
-    _WAIT_TIME_LONG = 180
 
     def __init__(self, layoutID):
         settings = ViewSettings(layoutID)
@@ -123,15 +122,11 @@ class PreBattleQueueView(BaseEventView, SelectableViewImpl):
 
     def __updateTimer(self):
         self.__timerCallback = BigWorld.callback(1, self.__updateTimer)
-        if self.__createTime > self._WAIT_TIME_LONG:
-            self.viewModel.setWaitTip(R.strings.hb_lobby.preBattle.timer_wait_queue())
         self.viewModel.setTimePassed(self.getTimeString())
         self.__createTime += 1
 
     def getTimeString(self):
         timeStr = '%02d:%02d'
-        if self.__createTime > self._WAIT_TIME_LONG:
-            timeStr += '*'
         return timeStr % divmod(self.__createTime, 60)
 
     def __onExitBattleButtonClick(self):

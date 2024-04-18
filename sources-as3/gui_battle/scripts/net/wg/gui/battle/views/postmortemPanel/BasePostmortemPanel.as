@@ -27,7 +27,7 @@ package net.wg.gui.battle.views.postmortemPanel
       
       public static const VEHICLE_PANEL_OFFSET_Y:int = 120;
       
-      protected static const PLAYER_INFO_DELTA_Y:int = 250;
+      private static const PLAYER_INFO_DELTA_Y:int = 200;
       
       protected static const GAP_VEHICLE_PANEL_DEAD_REASON:int = 40;
       
@@ -200,8 +200,9 @@ package net.wg.gui.battle.views.postmortemPanel
       
       protected function updatePlayerInfoPosition() : void
       {
-         this.playerInfoTF.y = -PLAYER_INFO_DELTA_Y - (App.appHeight >> 1);
-         this.vehiclePanel.y = -(App.appHeight >> 1) + VEHICLE_PANEL_OFFSET_Y;
+         var _loc1_:int = App.appHeight >> 1;
+         this.playerInfoTF.y = -PLAYER_INFO_DELTA_Y - _loc1_;
+         this.vehiclePanel.y = -_loc1_ + VEHICLE_PANEL_OFFSET_Y;
          this.deadReasonTF.y = this.vehiclePanel.y - this.deadReasonGap - this.deadReasonTF.height;
          if(this._userName != null)
          {

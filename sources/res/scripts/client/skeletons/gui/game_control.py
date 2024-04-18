@@ -3111,6 +3111,7 @@ class IArmoryYardController(IGameController):
     bundlesProducts = None
     onTabIdChanged = None
     onCollectFinalReward = None
+    onBundlesDisabled = None
 
     @property
     def serverSettings(self):

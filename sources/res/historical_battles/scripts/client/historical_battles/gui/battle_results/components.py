@@ -155,7 +155,7 @@ class IsKilledItem(base.StatsItem):
 
     def _convert(self, result, reusable):
         info = reusable.getPersonalVehiclesInfo(result)
-        return info.killerID != 0
+        return info.deathReason != DEATH_REASON_ALIVE
 
 
 class FairplayItem(base.StatsItem):

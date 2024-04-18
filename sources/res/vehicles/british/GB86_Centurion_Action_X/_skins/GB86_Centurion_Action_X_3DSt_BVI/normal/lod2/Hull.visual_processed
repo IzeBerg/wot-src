@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>nodes_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_Fire_1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.637229 -0.034396 -2.505149</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Fire_2</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>-0.393872 -0.006884 0.244103</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_LFront</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.415629 0.909534</row1>
+					<row2>0.000000 -0.909534 0.415629</row2>
+					<row3>-1.315030 -0.026842 3.922017</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_LRear</identifier>
+				<transform>
+					<row0>-1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.722734 -0.691127</row1>
+					<row2>-0.000000 -0.691127 -0.722734</row2>
+					<row3>-1.315030 -0.048620 -3.083501</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_RFront</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.415690 0.909506</row1>
+					<row2>0.000000 -0.909506 0.415690</row2>
+					<row3>1.315030 -0.026951 3.922011</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_RRear</identifier>
+				<transform>
+					<row0>-1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.722734 -0.691127</row1>
+					<row2>-0.000000 -0.691127 -0.722734</row2>
+					<row3>1.315030 -0.048734 -3.083500</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_Exhaus_1</identifier>
+				<transform>
+					<row0>-0.874232 0.000000 0.485508</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>-0.485508 0.000000 -0.874232</row2>
+					<row3>-1.400887 0.398614 -3.101138</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_Exhaus_2</identifier>
+				<transform>
+					<row0>-0.865619 0.000000 -0.500703</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.500703 0.000000 -0.865619</row2>
+					<row3>1.400711 0.398332 -3.100848</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_turretJoint</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.542517 0.741719</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_hull_01</identifier>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>vehicles/british/GB86_Centurion_Action_X/_skins/GB86_Centurion_Action_X_3DSt_BVI/Centurion_Action_X_3DSt_BVI_hull_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/british/GB86_Centurion_Action_X/_skins/GB86_Centurion_Action_X_3DSt_BVI/Centurion_Action_X_3DSt_BVI_hull_01_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/british/GB86_Centurion_Action_X/_skins/GB86_Centurion_Action_X_3DSt_BVI/Centurion_Action_X_3DSt_BVI_hull_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/british/GB86_Centurion_Action_X/_skins/GB86_Centurion_Action_X_3DSt_BVI/Centurion_Action_X_3DSt_BVI_hull_01_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.000000 -0.007892 0.156659</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>tank_upgrade_02</identifier>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>vehicles/british/GB86_Centurion_Action_X/_skins/GB86_Centurion_Action_X_3DSt_BVI/Centurion_Action_X_3DSt_BVI_hull_01_2_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/british/GB86_Centurion_Action_X/_skins/GB86_Centurion_Action_X_3DSt_BVI/Centurion_Action_X_3DSt_BVI_hull_01_2_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/british/GB86_Centurion_Action_X/_skins/GB86_Centurion_Action_X_3DSt_BVI/Centurion_Action_X_3DSt_BVI_hull_01_2_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/british/GB86_Centurion_Action_X/_skins/GB86_Centurion_Action_X_3DSt_BVI/Centurion_Action_X_3DSt_BVI_hull_01_2_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.026634 -0.099005 0.253808</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>tank_upgrade_03</identifier>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>vehicles/british/GB86_Centurion_Action_X/_skins/GB86_Centurion_Action_X_3DSt_BVI/Centurion_Action_X_3DSt_BVI_hull_01_2_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/british/GB86_Centurion_Action_X/_skins/GB86_Centurion_Action_X_3DSt_BVI/Centurion_Action_X_3DSt_BVI_hull_01_2_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/british/GB86_Centurion_Action_X/_skins/GB86_Centurion_Action_X_3DSt_BVI/Centurion_Action_X_3DSt_BVI_hull_01_2_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/british/GB86_Centurion_Action_X/_skins/GB86_Centurion_Action_X_3DSt_BVI/Centurion_Action_X_3DSt_BVI_hull_01_2_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.095033 -0.099005 -0.059912</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				3
+				<material>
+					<identifier>tank_upgrade_04</identifier>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>vehicles/british/GB86_Centurion_Action_X/_skins/GB86_Centurion_Action_X_3DSt_BVI/Centurion_Action_X_3DSt_BVI_hull_01_2_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/british/GB86_Centurion_Action_X/_skins/GB86_Centurion_Action_X_3DSt_BVI/Centurion_Action_X_3DSt_BVI_hull_01_2_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/british/GB86_Centurion_Action_X/_skins/GB86_Centurion_Action_X_3DSt_BVI/Centurion_Action_X_3DSt_BVI_hull_01_2_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/british/GB86_Centurion_Action_X/_skins/GB86_Centurion_Action_X_3DSt_BVI/Centurion_Action_X_3DSt_BVI_hull_01_2_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.095033 -0.099005 -0.059912</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.738689 -1.000500 -4.058794</min>
+		<max>1.928755 0.802489 4.010525</max>
+	</boundingBox>
+	<geometrySize>469858</geometrySize>
+	<minUVDensity>0.001131</minUVDensity>
+</root>

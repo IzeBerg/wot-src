@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd1</identifier>
+					<fx>shaders/custom/glow_animated.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						destBlend
+						<Int>2</Int>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h01_victory_day_2024/enviroment/hd_h01_VD24_0004_Glow_Balloon_05_AM.dds</Texture>
+					</property>
+					<property>
+						g_columnLightingParamsPacked
+						<Vector4>0.500000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_distortionAmountPacked
+						<Vector4>0.000000 0.000000 0.000000 6.380000</Vector4>
+					</property>
+					<property>
+						g_distortionMapTexture
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/aurora_distortion.dds</Texture>
+					</property>
+					<property>
+						g_distortionUVScalePacked
+						<Vector4>10.000000 10.000000 10.000000 10.000000</Vector4>
+					</property>
+					<property>
+						g_distortionUVSpeedPacked
+						<Vector4>5.000000 5.000000 0.070000 0.070000</Vector4>
+					</property>
+					<property>
+						g_freshnelParamsPacked
+						<Vector4>1.000000 1.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_glowColorMasked
+						<Vector4>0.007843 0.007843 0.003922 0.003922</Vector4>
+					</property>
+					<property>
+						g_glowColorProcedural
+						<Vector4>0.298039 0.250980 0.203922 0.298039</Vector4>
+					</property>
+					<property>
+						g_glowMask1Texture
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Masks/gradient_mask.dds</Texture>
+					</property>
+					<property>
+						g_glowMask2Texture
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Masks/null.dds</Texture>
+					</property>
+					<property>
+						g_lightCenterOffsetAndMult
+						<Vector4>0.000000 0.750000 0.000000 40.000000</Vector4>
+					</property>
+					<property>
+						g_lightMultipliersPacked
+						<Vector4>15.000000 4.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_linZOffset
+						<Float>0.500000</Float>
+					</property>
+					<property>
+						g_pointLightingParamsPacked
+						<Vector4>1.000000 100.000000 20.799999 1.000000</Vector4>
+					</property>
+					<property>
+						g_shimmerAreaSize
+						<Float>50.000000</Float>
+					</property>
+					<property>
+						g_useFreshnel
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_useTimeForDistortionMask1
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_useTimeForMask2
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_uvSpeedPacked
+						<Vector4>0.000000 0.000000 0.000000 0.040000</Vector4>
+					</property>
+					<property>
+						g_uvStretchPacked
+						<Vector4>13.800000 0.000000 100.000000 19.400000</Vector4>
+					</property>
+					<property>
+						g_useDistortionForMask2
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_useTimeForDistortionMask2
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_fogAdjustBlend
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						g_masksShimmerParamsPacked
+						<Vector4>100.000000 1.000000 0.000000 0.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>0.000000 1.603514 0.000000</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>112</materialKind>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h01_victory_day_2024/enviroment/hd_h01_VD24_0004_Glow_Balloon_05_AM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Hangars/h01_victory_day_2024/enviroment/hd_h01_VD24_0004_Glow_Balloon_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Hangars/h01_victory_day_2024/enviroment/hd_h01_VD24_0004_Glow_Balloon_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.000000 1.252218 0.000001</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.267923 -0.479392 -1.267922</min>
+		<max>1.267923 3.013596 1.267923</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>27736</geometrySize>
+	<minUVDensity>0.015001</minUVDensity>
+</root>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<params/>
+	<node>
+		<name>Idle</name>
+		<type>animation</type>
+		<resource>content/Decor/hd_dec_UNI_005_Eagle/animation/hd_dec_UNI_005_Eagle_Idle01.fbx</resource>
+		<clipName/>
+		<isLoop>false</isLoop>
+		<transition>
+			<to>performance</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>1.000000</exitOffset>
+				</condition>
+			</conditions>
+		</transition>
+		<transition>
+			<to>Idle</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>1.000000</exitOffset>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>0.000000 0.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>performance</name>
+		<type>animation</type>
+		<resource>content/Decor/hd_dec_UNI_005_Eagle/animation/hd_dec_UNI_005_Eagle_Action01.fbx</resource>
+		<clipName/>
+		<isLoop>false</isLoop>
+		<transition>
+			<to>fly</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>1.000000</exitOffset>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>33.000000 -131.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>fly</name>
+		<type>animation</type>
+		<resource>content/Decor/hd_dec_UNI_005_Eagle/animation/hd_dec_UNI_005_Eagle_Fly01.fbx</resource>
+		<clipName/>
+		<isLoop>false</isLoop>
+		<transition>
+			<to>Idle</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>1.000000</exitOffset>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-236.000000 -132.000000 0.000000</uiPosition>
+	</node>
+</root>

@@ -138,7 +138,8 @@ package net.wg.gui.battle.historicalBattles.timer
       
       public function as_setTimerBackground(param1:Boolean) : void
       {
-         var _loc2_:String = !!param1 ? STATE_APPEAR : STATE_DISAPPEAR;
+         var _loc2_:String = null;
+         _loc2_ = !!param1 ? STATE_APPEAR : STATE_DISAPPEAR;
          if(this.hintBg)
          {
             this.hintBg.visible = true;

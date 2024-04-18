@@ -101,7 +101,7 @@ msgid "efficiencyRibbons/artilleryRocket"
 msgstr "Урон от залпа «Катюш»"
 
 msgid "efficiencyRibbons/bombercas"
-msgstr "Урон от удара штурмовика"
+msgstr "Урон от налёта штурмовика"
 
 msgid "efficiencyRibbons/bombers"
 msgstr "Урон от авиаудара"
@@ -139,16 +139,16 @@ msgid "finalStatistic/commonStats/win"
 msgstr "с"
 
 msgid "finish/reason/1"
-msgstr "Противник уничтожил всю нашу технику"
+msgstr "Противник уничтожил всю нашу технику."
 
 msgid "finish/reason/12"
-msgstr "Все задачи выполнены"
+msgstr "Все задачи выполнены."
 
 msgid "finish/reason/3"
-msgstr "Вы не выполнили задачу за отведённое время"
+msgstr "Вы не выполнили задачу за отведённое время."
 
 msgid "finish/reason/5"
-msgstr "Бой прекращен: технический сбой"
+msgstr "Бой прекращён: технический сбой"
 
 msgid "goals/description/ATT_goal_counter_attack"
 msgstr "Уничтожить %(left)s ед. техники противника."
@@ -160,7 +160,7 @@ msgid "goals/description/ATT_goal_final_one_boss"
 msgstr "Уничтожить командующего обороной противника."
 
 msgid "goals/description/ATT_goal_main"
-msgstr "Уничтожьте %(left)s ед. техники противника"
+msgstr "Уничтожьте %(left)s ед. техники противника."
 
 msgid "goals/lose/ATT_goal_counter_attack/team_killed"
 msgstr "Противник уничтожил всю нашу технику."
@@ -196,10 +196,10 @@ msgid "goals/progress/ATT_goal_final_one_boss"
 msgstr "Уничтожьте командующего!"
 
 msgid "goals/progress/ATT_goal_main"
-msgstr "Осталось %(left)s ед. техники противника"
+msgstr "Осталось %(left)s ед. техники противника."
 
 msgid "goals/title/ATT_goal_counter_attack"
-msgstr "Отбейте контратаку противника"
+msgstr "Отбейте контратаку"
 
 msgid "goals/title/ATT_goal_final_few_boss"
 msgstr "А вот и наша цель!"
@@ -255,7 +255,7 @@ msgid "notification/baseCaptured"
 msgstr "Высота захвачена!"
 
 msgid "notification/baseCapturedDescr"
-msgstr "Удержите ее, уничтожая технику противника"
+msgstr "Удержите её, уничтожая технику противника"
 
 msgid "notification/baseCapturedEnemy"
 msgstr "Высота потеряна!"
@@ -268,6 +268,60 @@ msgstr "Защитите артбатарею"
 
 msgid "notification/operationFailed"
 msgstr "Операция провалилась"
+
+msgid "player_messages/ARTILLERY_EQ_ALLY_ENEMY"
+msgstr "Артобстрел %(attacker)s уничтожил %(target)s."
+
+msgid "player_messages/ARTILLERY_MORTAR_ALLY_ENEMY"
+msgstr "Миномёты %(attacker)s уничтожили %(target)s."
+
+msgid "player_messages/ARTILLERY_ROCKET_ALLY_ENEMY"
+msgstr "Залп «Катюш» %(attacker)s уничтожил %(target)s."
+
+msgid "player_messages/BOMBER_EQ_ALLY_ENEMY"
+msgstr "Авиаудар %(attacker)s уничтожил %(target)s."
+
+msgid "player_messages/COMBAT_EQUIPMENT_ACTIVATED_AFTERBURNING_HB"
+msgstr "Полный газ активирован."
+
+msgid ""
+"player_messages/COMBAT_EQUIPMENT_ACTIVATED_ARCADE_ARTILLERY_HISTORICAL_BATTLES"
+msgstr "Артобстрел активирован."
+
+msgid ""
+"player_messages/COMBAT_EQUIPMENT_ACTIVATED_ARCADE_ARTILLERY_MORTAR_HISTORICAL_BATTLES"
+msgstr "Миномётный обстрел активирован."
+
+msgid ""
+"player_messages/COMBAT_EQUIPMENT_ACTIVATED_ARCADE_ARTILLERY_ROCKET_HISTORICAL_BATTLES"
+msgstr "Залп «Катюш» активирован."
+
+msgid ""
+"player_messages/COMBAT_EQUIPMENT_ACTIVATED_ARCADE_BOMBER_CAS_HISTORICAL_BATTLES"
+msgstr "Налёт штурмовика активирован."
+
+msgid ""
+"player_messages/COMBAT_EQUIPMENT_ACTIVATED_ARCADE_BOMBER_HISTORICAL_BATTLES"
+msgstr "Авиаудар активирован."
+
+msgid "player_messages/COMBAT_EQUIPMENT_ACTIVATED_HB_LARGE_MED_KIT"
+msgstr "Большая аптечка активирована."
+
+msgid "player_messages/COMBAT_EQUIPMENT_ACTIVATED_HB_LARGE_REPAIR_KIT"
+msgstr "Большой ремкомплект активирован."
+
+msgid "player_messages/COMBAT_EQUIPMENT_ACTIVATED_HEAL_POINT_HB"
+msgstr "Полевой ремонт активирован."
+
+msgid "player_messages/COMBAT_EQUIPMENT_ACTIVATED_SUPER_SHELL_FIREBALL"
+msgstr "Зажигательный снаряд активирован."
+
+msgid "player_messages/COMBAT_EQUIPMENT_ACTIVATED_SUPER_SHOT"
+msgstr "Усиленный заряд активирован."
+
+msgid ""
+"player_messages/COMBAT_EQUIPMENT_ACTIVATED_TEAM_REPAIR_KIT_HISTORICAL_BATTLES"
+msgstr "Полевой ремонт активирован."
 
 msgid "player_messages/COMBAT_EQUIPMENT_NOT_READY"
 msgstr ""
@@ -297,7 +351,7 @@ msgid ""
 msgstr "Авиаудар готов к использованию."
 
 msgid "player_messages/COMBAT_EQUIPMENT_READY_HB_LARGE_MED_KIT"
-msgstr "+Большая аптечка готов к использованию.+"
+msgstr "Большая аптечка готова к использованию."
 
 msgid "player_messages/COMBAT_EQUIPMENT_READY_HB_LARGE_REPAIR_KIT"
 msgstr "Большой ремкомплект готов к использованию."
@@ -315,46 +369,8 @@ msgid ""
 "player_messages/COMBAT_EQUIPMENT_READY_TEAM_REPAIR_KIT_HISTORICAL_BATTLES"
 msgstr "Полевой ремонт готов к использованию."
 
-msgid "player_messages/COMBAT_EQUIPMENT_USED_AFTERBURNING_HB"
-msgstr "Полный газ активирован."
-
-msgid ""
-"player_messages/COMBAT_EQUIPMENT_USED_ARCADE_ARTILLERY_HISTORICAL_BATTLES"
-msgstr "Артобстрел активирован."
-
-msgid ""
-"player_messages/COMBAT_EQUIPMENT_USED_ARCADE_ARTILLERY_MORTAR_HISTORICAL_BATTLES"
-msgstr "Миномётный обстрел активирован."
-
-msgid ""
-"player_messages/COMBAT_EQUIPMENT_USED_ARCADE_ARTILLERY_ROCKET_HISTORICAL_BATTLES"
-msgstr "Залп «Катюш» активирован."
-
-msgid ""
-"player_messages/COMBAT_EQUIPMENT_USED_ARCADE_BOMBER_CAS_HISTORICAL_BATTLES"
-msgstr "Налёт штурмовика активирован."
-
-msgid "player_messages/COMBAT_EQUIPMENT_USED_ARCADE_BOMBER_HISTORICAL_BATTLES"
-msgstr "Авиаудар активирован."
-
-msgid "player_messages/COMBAT_EQUIPMENT_USED_HB_LARGE_MED_KIT"
-msgstr "+Большая аптечка активирован.+"
-
-msgid "player_messages/COMBAT_EQUIPMENT_USED_HB_LARGE_REPAIR_KIT"
-msgstr "Большой ремкомплект активирован."
-
-msgid "player_messages/COMBAT_EQUIPMENT_USED_HEAL_POINT_HB"
-msgstr "Полевой ремонт активирован."
-
-msgid "player_messages/COMBAT_EQUIPMENT_USED_SUPER_SHELL_FIREBALL"
-msgstr "Зажигательный снаряд активирован."
-
-msgid "player_messages/COMBAT_EQUIPMENT_USED_SUPER_SHOT"
-msgstr "Усиленный заряд активирован."
-
-msgid ""
-"player_messages/COMBAT_EQUIPMENT_USED_TEAM_REPAIR_KIT_HISTORICAL_BATTLES"
-msgstr "Полевой ремонт активирован."
+msgid "player_messages/DEATH_FROM_BOMBER_CAS_ALLY_ENEMY"
+msgstr "Штурмовик %(attacker)s уничтожил %(target)s."
 
 msgid "player_messages/EVENT_DEATH_ALLY_ENEMY"
 msgstr "%(attacker)s уничтожил %(target)s."
@@ -362,40 +378,49 @@ msgstr "%(attacker)s уничтожил %(target)s."
 msgid "player_messages/EVENT_DEATH_FROM_DEATH_ZONE_ALLY_SUICIDE"
 msgstr "%(target)s уничтожен запретной зоной."
 
+msgid "player_messages/EVENT_DEATH_FROM_STATIC_DEATH_ZONE_ALLY_SUICIDE"
+msgstr "%(target)s уничтожен залпом артбатареи."
+
 msgid "player_messages/EVENT_DEATH_SELF_ENEMY"
-msgstr "%(target)s уничтожен."
+msgstr "Противник %(target)s уничтожен."
 
 msgid "playersPanel/postmortem/select"
 msgstr "Нажмите, чтобы выбрать данную машину для наблюдения за боем."
 
 msgid "postmortem_messages/DEATH_FROM_DEATH_ZONE_ARTILLERY"
-msgstr "Машина уничтожена залпом артбатареи."
+msgstr "Машина уничтожена залпом артбатареи"
 
 msgid "postmortem_messages/EVENT_DEATH_FROM_DEATH_ZONE_ALLY_SELF"
-msgstr "Машина уничтожена в запретной зоне союзником."
+msgstr "Машина уничтожена в запретной зоне союзником"
 
 msgid "postmortem_messages/EVENT_DEATH_FROM_DEATH_ZONE_ENEMY_SELF"
-msgstr "Машина уничтожена %(entity)s в запретной зоне."
+msgstr "Машина уничтожена %(entity)s в запретной зоне"
 
 msgid "postmortem_messages/EVENT_DEATH_FROM_DEATH_ZONE_SELF_SUICIDE"
-msgstr "Машина уничтожена запретной зоной."
+msgstr "Машина уничтожена запретной зоной"
+
+msgid "postmortem_messages/EVENT_DEATH_FROM_DEVICE_EXPLOSION_AT_SHOT"
+msgstr "Устройство [%(device)s] взорвано выстрелом противника"
+
+msgid "postmortem_messages/EVENT_DEATH_FROM_FIRE"
+msgstr "Машина уничтожена пожаром"
 
 msgid "postmortem_messages/EVENT_DEATH_FROM_SHOT"
 msgstr "Машина уничтожена выстрелом противника"
 
 msgid "postmortem_panel/has_locked_lives_message_descr"
 msgstr ""
-"Если ваша команда выполнит вторую или четвертую задачу,\n"
+"Если ваша команда выполнит вторую или четвёртую задачу,\n"
 "вы вернётесь в бой."
 
 msgid "postmortem_panel/has_locked_lives_message_title"
 msgstr "Не покидайте бой!"
 
 msgid "postmortem_panel/no_lives_message_descr"
-msgstr "Вы внесли свой вклад!"
+msgstr "Ваш вклад сложно переоценить."
 
 msgid "postmortem_panel/no_lives_message_title"
-msgstr "Для вас бой окончен!"
+msgstr "Для вас бой окончен"
 
 msgid "postmortem_panel/respawn_timer_title"
 msgstr "Ждите возвращения в бой"

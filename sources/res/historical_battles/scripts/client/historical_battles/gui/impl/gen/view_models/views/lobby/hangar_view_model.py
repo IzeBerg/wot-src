@@ -8,10 +8,10 @@ from historical_battles.gui.impl.gen.view_models.views.lobby.quest_progresive_mo
 from historical_battles.gui.impl.gen.view_models.views.lobby.shop_button_model import ShopButtonModel
 
 class HangarViewModel(SelectableViewModel):
-    __slots__ = ('onFrontmanChanged', 'onEscapePressed', 'onInfoClick', 'onMousePressed',
-                 'onVehicleChange')
+    __slots__ = ('onFrontmanChanged', 'onEscapePressed', 'onInfoClick', 'onCloseClick',
+                 'onMousePressed', 'onVehicleChange')
 
-    def __init__(self, properties=8, commands=7):
+    def __init__(self, properties=8, commands=8):
         super(HangarViewModel, self).__init__(properties=properties, commands=commands)
 
     @property
@@ -89,5 +89,6 @@ class HangarViewModel(SelectableViewModel):
         self.onFrontmanChanged = self._addCommand('onFrontmanChanged')
         self.onEscapePressed = self._addCommand('onEscapePressed')
         self.onInfoClick = self._addCommand('onInfoClick')
+        self.onCloseClick = self._addCommand('onCloseClick')
         self.onMousePressed = self._addCommand('onMousePressed')
         self.onVehicleChange = self._addCommand('onVehicleChange')

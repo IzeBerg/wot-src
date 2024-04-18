@@ -282,6 +282,24 @@
 			</component>
 		</ComponentPool>
 		<ComponentPool>
+			<type>EdgeDrawerComponent</type>
+			<version>1</version>
+			<component>
+				<objectIndex>1</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>triggerSource</name>
+						<link>1d0be26b-5255-4bbc-a0ae-cb26b4233892</link>
+					</property>
+					<property>
+						<name>isAnimated</name>
+						<value>1</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
 			<type>DynamicModel</type>
 			<version>1</version>
 			<component>
@@ -292,6 +310,10 @@
 						<name>Model name</name>
 						<isAsset>true</isAsset>
 						<value>vehicles/british/GB83_FV4005/_skin/GB83_FV4005_3DSt_MD_21_XXII/normal/lod0/Chassis.model</value>
+					</property>
+					<property>
+						<name>Cast Shadows</name>
+						<value>1</value>
 					</property>
 				</config>
 			</component>
@@ -368,6 +390,18 @@
 										<name>Weight</name>
 										<value>1</value>
 									</property>
+									<property>
+										<name>LOD Scale</name>
+										<value>1</value>
+									</property>
+									<property>
+										<name>Auto Start</name>
+										<value>1</value>
+									</property>
+									<property>
+										<name>Graphics preset</name>
+										<value>2</value>
+									</property>
 								</object>
 							</item>
 							<item>
@@ -410,9 +444,42 @@
 										<name>Weight</name>
 										<value>1</value>
 									</property>
+									<property>
+										<name>LOD Scale</name>
+										<value>1</value>
+									</property>
+									<property>
+										<name>Auto Start</name>
+										<value>1</value>
+									</property>
+									<property>
+										<name>Graphics preset</name>
+										<value>2</value>
+									</property>
 								</object>
 							</item>
 						</collection>
+					</property>
+					<property>
+						<name>Path</name>
+						<isAsset>true</isAsset>
+						<value>vehicles/british/GB83_FV4005/_skin/GB83_FV4005_3DSt_MD_21_XXII/normal/lod0/Chassis_lever_L.fbx</value>
+					</property>
+					<property>
+						<name>Delay</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Speed</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Loop</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Loop Count</name>
+						<value>-1</value>
 					</property>
 				</config>
 			</component>
@@ -467,6 +534,18 @@
 										<name>Weight</name>
 										<value>1</value>
 									</property>
+									<property>
+										<name>LOD Scale</name>
+										<value>1</value>
+									</property>
+									<property>
+										<name>Auto Start</name>
+										<value>1</value>
+									</property>
+									<property>
+										<name>Graphics preset</name>
+										<value>2</value>
+									</property>
 								</object>
 							</item>
 							<item>
@@ -508,6 +587,18 @@
 									<property>
 										<name>Weight</name>
 										<value>1</value>
+									</property>
+									<property>
+										<name>LOD Scale</name>
+										<value>1</value>
+									</property>
+									<property>
+										<name>Auto Start</name>
+										<value>1</value>
+									</property>
+									<property>
+										<name>Graphics preset</name>
+										<value>2</value>
 									</property>
 								</object>
 							</item>
@@ -551,6 +642,18 @@
 										<name>Weight</name>
 										<value>1</value>
 									</property>
+									<property>
+										<name>LOD Scale</name>
+										<value>1</value>
+									</property>
+									<property>
+										<name>Auto Start</name>
+										<value>1</value>
+									</property>
+									<property>
+										<name>Graphics preset</name>
+										<value>2</value>
+									</property>
 								</object>
 							</item>
 							<item>
@@ -592,6 +695,18 @@
 									<property>
 										<name>Weight</name>
 										<value>1</value>
+									</property>
+									<property>
+										<name>LOD Scale</name>
+										<value>1</value>
+									</property>
+									<property>
+										<name>Auto Start</name>
+										<value>1</value>
+									</property>
+									<property>
+										<name>Graphics preset</name>
+										<value>2</value>
 									</property>
 								</object>
 							</item>
@@ -635,9 +750,42 @@
 										<name>Weight</name>
 										<value>1</value>
 									</property>
+									<property>
+										<name>LOD Scale</name>
+										<value>1</value>
+									</property>
+									<property>
+										<name>Auto Start</name>
+										<value>1</value>
+									</property>
+									<property>
+										<name>Graphics preset</name>
+										<value>2</value>
+									</property>
 								</object>
 							</item>
 						</collection>
+					</property>
+					<property>
+						<name>Path</name>
+						<isAsset>true</isAsset>
+						<value>particles/Tank/customization/GB83_FV4005_3DSt_MD_21_XXII/Hull_R_sync.ssm</value>
+					</property>
+					<property>
+						<name>Delay</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Speed</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Loop</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Loop Count</name>
+						<value>-1</value>
 					</property>
 				</config>
 			</component>
@@ -647,7 +795,7 @@
 			<version>1</version>
 			<component>
 				<objectIndex>0</objectIndex>
-				<flags>3</flags>
+				<flags>1</flags>
 				<config>
 					<property>
 						<name>disableDefaultChassis</name>

@@ -2848,17 +2848,22 @@
 	</_122mm_UBR-471>
 	<_122mm_UBR-471_BES>
 		<id>31039</id>
-		<userString>#ussr_vehicles:_122mm_UBR-471BMM</userString>
-		<icon>ap</icon>
-		<price>1025</price>
-		<kind>ARMOR_PIERCING</kind>
+		<userString>#ussr_vehicles:_122mm_UBP-471BM</userString>
+		<icon>hc_premium</icon>
+		<price>4800</price>
+		<improved>true</improved>
+		<kind>HOLLOW_CHARGE</kind>
 		<caliber>122</caliber>
 		<isTracer>true</isTracer>
-		<effects>largeArmorPiercing</effects>
+		<effects>largeHollowCharge</effects>
 		<damage>
 			<armor>440</armor>
 			<devices>165</devices>
 		</damage>
+		<piercingPowerLossFactorByDistance>
+			0.05
+			<!--BW_String-->
+		</piercingPowerLossFactorByDistance>
 	</_122mm_UBR-471_BES>
 	<_122mm_BR-471D_KRP>
 		<id>31011</id>
@@ -2906,9 +2911,8 @@
 	<_122mm_UBR-471P_BES>
 		<id>31040</id>
 		<userString>#ussr_vehicles:_122mm_UBR-471PBMM</userString>
-		<icon>ap_cr_premium</icon>
-		<price>4800</price>
-		<improved>true</improved>
+		<icon>ap_cr</icon>
+		<price>1180</price>
 		<kind>ARMOR_PIERCING_CR</kind>
 		<caliber>122</caliber>
 		<isTracer>true</isTracer>
@@ -4757,7 +4761,7 @@
 		<isTracer>true</isTracer>
 		<effects>largeArmorPiercing</effects>
 		<damage>
-			<armor>700</armor>
+			<armor>750</armor>
 			<devices>203</devices>
 		</damage>
 	</_152mm_53-G-530_zv>
@@ -4772,7 +4776,7 @@
 		<isTracer>true</isTracer>
 		<effects>largeHollowCharge</effects>
 		<damage>
-			<armor>700</armor>
+			<armor>750</armor>
 			<devices>203</devices>
 		</damage>
 		<piercingPowerLossFactorByDistance>
@@ -4795,7 +4799,7 @@
 		<isTracer>true</isTracer>
 		<effects>largeHighExplosive</effects>
 		<damage>
-			<armor>1000</armor>
+			<armor>1050</armor>
 			<devices>203</devices>
 		</damage>
 		<armorSpalls>
@@ -4805,7 +4809,7 @@
 			</impactRadius>
 			<coneAngle>90</coneAngle>
 			<damage>
-				<armor>500</armor>
+				<armor>525</armor>
 				<devices>100</devices>
 			</damage>
 		</armorSpalls>

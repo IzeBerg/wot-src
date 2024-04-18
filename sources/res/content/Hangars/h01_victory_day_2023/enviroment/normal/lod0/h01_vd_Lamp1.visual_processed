@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd1</identifier>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_glass.fx</fx>
+					<property>
+						alphaReference
+						<Int>255</Int>
+					</property>
+					<property>
+						g_filterColor
+						<Vector4>0.695326 0.742562 0.955000 1.000000</Vector4>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Hangars/h01_victory_day_2023/enviroment/h01_vd_Lamp_ANM.dds</Texture>
+					</property>
+					<property>
+						dirtAlbedoMap
+						<Texture>content/Hangars/h01_victory_day_2023/enviroment/h01_vd_Lamp_AM.dds</Texture>
+					</property>
+					<property>
+						glassMap
+						<Texture>content/Hangars/h01_victory_day_2023/enviroment/h01_vd_Lamp_GMM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.000000 8.165417 0.000000</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd0</identifier>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<property>
+						alphaReference
+						<Int>64</Int>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_tintColor
+						<Vector4>0.197500 0.250000 0.242886 1.000000</Vector4>
+					</property>
+					<property>
+						g_useTintColor
+						<Bool>true</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h01_victory_day_2023/enviroment/h01_vd_Lamp_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Hangars/h01_victory_day_2023/enviroment/h01_vd_Lamp_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Hangars/h01_victory_day_2023/enviroment/h01_vd_Lamp_GMM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.000000 4.344452 0.000000</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.997297 0.002341 -0.997297</min>
+		<max>0.997297 8.686563 0.997297</max>
+	</boundingBox>
+	<geometrySize>85192</geometrySize>
+	<minUVDensity>0.023878</minUVDensity>
+</root>

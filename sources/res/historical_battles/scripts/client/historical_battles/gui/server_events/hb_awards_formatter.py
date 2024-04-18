@@ -24,7 +24,8 @@ def getHBQuestsAwardFormattersMap():
     tokenBonusFormatter = HBQuestsTokenBonusFormatter()
     mapping = getDefaultFormattersMap()
     mapping.update({'tokens': tokenBonusFormatter, 
-       'battleToken': tokenBonusFormatter})
+       'battleToken': tokenBonusFormatter, 
+       'HBCoupon': tokenBonusFormatter})
     return mapping
 
 

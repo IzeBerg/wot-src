@@ -1,0 +1,986 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>Root</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>Hips</identifier>
+				<transform>
+					<row0>0.000000 0.992208 0.124589</row0>
+					<row1>-1.000000 0.000000 0.000000</row1>
+					<row2>-0.000000 -0.124589 0.992208</row2>
+					<row3>0.000000 0.599260 0.009503</row3>
+				</transform>
+				<node>
+					<identifier>LeftUpLeg</identifier>
+					<transform>
+						<row0>-0.997807 -0.034618 0.056414</row0>
+						<row1>0.034428 -0.999398 -0.004322</row1>
+						<row2>0.056530 -0.002370 0.998398</row2>
+						<row3>-0.034637 -0.057098 0.012047</row3>
+					</transform>
+					<node>
+						<identifier>LeftLeg</identifier>
+						<transform>
+							<row0>0.999426 0.033888 0.000000</row0>
+							<row1>-0.033888 0.999424 -0.002007</row1>
+							<row2>-0.000068 0.002006 0.999998</row2>
+							<row3>0.257584 0.000002 -0.000000</row3>
+						</transform>
+						<node>
+							<identifier>LeftFoot</identifier>
+							<transform>
+								<row0>0.623731 -0.026382 -0.781194</row0>
+								<row1>0.067380 0.997525 0.020110</row1>
+								<row2>0.778729 -0.065180 0.623965</row2>
+								<row3>0.227717 -0.000056 0.026975</row3>
+							</transform>
+							<node>
+								<identifier>LeftToeBase</identifier>
+								<transform>
+									<row0>0.791656 -0.033734 -0.610035</row0>
+									<row1>0.027765 0.999429 -0.019235</row1>
+									<row2>0.610335 -0.001710 0.792141</row2>
+									<row3>0.118161 0.000000 0.000001</row3>
+								</transform>
+								<node>
+									<identifier>LeftToeBase_BlendBone</identifier>
+									<transform>
+										<row0>-0.017984 0.999838 -0.000910</row0>
+										<row1>0.050753 0.000003 -0.998711</row1>
+										<row2>0.998549 0.018007 0.050745</row2>
+										<row3>-0.085157 -0.084741 0.006481</row3>
+									</transform>
+								</node>
+							</node>
+							<node>
+								<identifier>LeftFoot_BlendBone</identifier>
+								<transform>
+									<row0>0.012968 0.999876 -0.008983</row0>
+									<row1>-0.569369 -0.000001 -0.822082</row1>
+									<row2>0.821980 -0.015775 -0.569299</row2>
+									<row3>0.052349 -0.081831 0.058714</row3>
+								</transform>
+							</node>
+						</node>
+						<node>
+							<identifier>LeftLeg_BlendBone</identifier>
+							<transform>
+								<row0>0.068465 0.997644 0.004372</row0>
+								<row1>-0.995313 0.068604 -0.068162</row1>
+								<row2>0.068302 -0.000315 -0.997665</row2>
+								<row3>0.300577 -0.086892 0.021070</row3>
+							</transform>
+						</node>
+					</node>
+					<node>
+						<identifier>LeftUpLeg_BlendBone</identifier>
+						<transform>
+							<row0>0.034618 0.999398 0.002370</row0>
+							<row1>-0.997061 0.034699 -0.068300</row1>
+							<row2>0.068341 -0.000002 -0.997662</row2>
+							<row3>0.560931 -0.076612 0.021244</row3>
+						</transform>
+					</node>
+				</node>
+				<node>
+					<identifier>RightUpLeg</identifier>
+					<transform>
+						<row0>-0.997735 0.034632 0.057669</row0>
+						<row1>-0.034440 -0.999397 0.004321</row1>
+						<row2>0.057783 0.002325 0.998326</row2>
+						<row3>-0.034746 0.057098 0.011179</row3>
+					</transform>
+					<node>
+						<identifier>RightLeg</identifier>
+						<transform>
+							<row0>0.992131 -0.033623 0.120605</row0>
+							<row1>0.033594 0.999433 0.002270</row1>
+							<row2>-0.120613 0.001800 0.992698</row2>
+							<row3>0.257562 0.000002 -0.000002</row3>
+						</transform>
+						<node>
+							<identifier>RightFoot</identifier>
+							<transform>
+								<row0>0.514255 0.025538 -0.857257</row0>
+								<row1>-0.069056 0.997544 -0.011708</row1>
+								<row2>0.854853 0.065220 0.514755</row2>
+								<row3>0.229359 -0.000001 -0.000001</row3>
+							</transform>
+							<node>
+								<identifier>RightToeBase</identifier>
+								<transform>
+									<row0>0.798958 0.033095 -0.600476</row0>
+									<row1>-0.027451 0.999451 0.018560</row1>
+									<row2>0.600760 0.001654 0.799427</row2>
+									<row3>0.120130 -0.000000 0.000000</row3>
+								</transform>
+								<node>
+									<identifier>RightToeBase_BlendBone</identifier>
+									<transform>
+										<row0>0.017722 0.999843 0.000878</row0>
+										<row1>0.050018 -0.000010 -0.998748</row1>
+										<row2>0.998591 -0.017744 0.050010</row2>
+										<row3>-0.087135 0.084754 0.006444</row3>
+									</transform>
+								</node>
+							</node>
+							<node>
+								<identifier>RightFoot_BlendBone</identifier>
+								<transform>
+									<row0>-0.012760 0.999882 0.008618</row0>
+									<row1>-0.560046 -0.000007 -0.828461</row1>
+									<row2>0.828363 0.015397 -0.559980</row2>
+									<row3>0.052057 0.081834 0.059047</row3>
+								</transform>
+							</node>
+						</node>
+						<node>
+							<identifier>RightLeg_BlendBone</identifier>
+							<transform>
+								<row0>-0.068243 0.997662 0.003668</row0>
+								<row1>-0.996219 -0.068342 0.053649</row1>
+								<row2>-0.053774 -0.000007 -0.998553</row2>
+								<row3>0.300955 0.086813 -0.015191</row3>
+							</transform>
+						</node>
+					</node>
+					<node>
+						<identifier>RightUpLeg_BlendBone</identifier>
+						<transform>
+							<row0>-0.034632 0.999397 -0.002325</row0>
+							<row1>-0.997146 -0.034710 -0.067047</row1>
+							<row2>0.067087 0.000003 -0.997747</row2>
+							<row3>0.560898 0.076619 0.021412</row3>
+						</transform>
+					</node>
+				</node>
+				<node>
+					<identifier>Spine</identifier>
+					<transform>
+						<row0>1.000000 -0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>-0.000000 0.000000 1.000000</row2>
+						<row3>0.064983 0.000000 0.000000</row3>
+					</transform>
+					<node>
+						<identifier>Spine1</identifier>
+						<transform>
+							<row0>1.000000 0.000000 0.000000</row0>
+							<row1>-0.000000 1.000000 0.000004</row1>
+							<row2>0.000000 -0.000004 1.000000</row2>
+							<row3>0.075814 -0.000000 0.000000</row3>
+						</transform>
+						<node>
+							<identifier>Spine2</identifier>
+							<transform>
+								<row0>1.000000 0.000000 0.000004</row0>
+								<row1>-0.000000 1.000000 0.000004</row1>
+								<row2>-0.000004 -0.000004 1.000000</row2>
+								<row3>0.086645 -0.000000 0.000000</row3>
+							</transform>
+							<node>
+								<identifier>LeftShoulder</identifier>
+								<transform>
+									<row0>-0.104258 -0.994455 0.013753</row0>
+									<row1>0.986707 -0.105159 -0.123902</row1>
+									<row2>0.124661 0.000652 0.992199</row2>
+									<row3>0.093183 -0.039733 0.000565</row3>
+								</transform>
+								<node>
+									<identifier>LeftArm</identifier>
+									<transform>
+										<row0>0.681380 -0.731279 0.030870</row0>
+										<row1>0.731637 0.681694 -0.000471</row1>
+										<row2>-0.020699 0.022907 0.999523</row2>
+										<row3>0.078596 -0.000001 0.000001</row3>
+									</transform>
+									<node>
+										<identifier>LeftForeArm</identifier>
+										<transform>
+											<row0>0.938211 0.044688 -0.343168</row0>
+											<row1>-0.047038 0.998892 0.001475</row1>
+											<row2>0.342854 0.014758 0.939273</row2>
+											<row3>0.155748 0.000001 -0.000001</row3>
+										</transform>
+										<node>
+											<identifier>LeftHand</identifier>
+											<transform>
+												<row0>0.988936 -0.090627 -0.117443</row0>
+												<row1>0.094904 0.994993 0.031340</row1>
+												<row2>0.114014 -0.042139 0.992585</row2>
+												<row3>0.187035 0.000000 -0.000001</row3>
+											</transform>
+											<node>
+												<identifier>LeftHandIndex1</identifier>
+												<transform>
+													<row0>0.983751 -0.128029 -0.125870</row0>
+													<row1>0.162338 0.933743 0.319014</row1>
+													<row2>0.076687 -0.334264 0.939354</row2>
+													<row3>0.074933 0.012908 0.000063</row3>
+												</transform>
+												<node>
+													<identifier>LeftHandIndex2</identifier>
+													<transform>
+														<row0>0.998007 0.058558 0.023525</row0>
+														<row1>-0.057644 0.997620 -0.037837</row1>
+														<row2>-0.025685 0.036405 0.999007</row2>
+														<row3>0.023799 -0.000000 0.000000</row3>
+													</transform>
+													<node>
+														<identifier>LeftHandIndex3</identifier>
+														<transform>
+															<row0>0.999484 -0.002058 0.032056</row0>
+															<row1>0.002235 0.999983 -0.005460</row1>
+															<row2>-0.032044 0.005529 0.999471</row2>
+															<row3>0.017379 -0.000174 0.000048</row3>
+														</transform>
+														<node>
+															<identifier>LeftHandIndex4</identifier>
+															<transform>
+																<row0>0.987533 -0.156966 0.011803</row0>
+																<row1>0.155589 0.961998 -0.224392</row1>
+																<row2>0.023867 0.223431 0.974427</row2>
+																<row3>0.019505 0.000000 0.000000</row3>
+															</transform>
+															<node>
+																<identifier>LeftHandIndex4_BlendBone</identifier>
+																<transform>
+																	<row0>0.265146 0.940609 0.212020</row0>
+																	<row1>-0.832421 0.334272 -0.441970</row1>
+																	<row2>0.486593 0.059303 -0.871614</row2>
+																	<row3>0.322119 -0.561852 0.216873</row3>
+																</transform>
+															</node>
+														</node>
+														<node>
+															<identifier>LeftHandIndex3_BlendBone</identifier>
+															<transform>
+																<row0>0.413249 0.910617 -0.001338</row0>
+																<row1>-0.780583 0.353481 -0.515501</row1>
+																<row2>0.468951 -0.214075 -0.856888</row2>
+																<row3>0.255366 -0.542606 0.341204</row3>
+															</transform>
+														</node>
+													</node>
+													<node>
+														<identifier>LeftHandIndex2_BlendBone</identifier>
+														<transform>
+															<row0>0.415113 0.909743 0.006938</row0>
+															<row1>-0.762872 0.352231 -0.542181</row1>
+															<row2>0.495689 -0.219774 -0.840233</row2>
+															<row3>0.260468 -0.541409 0.352221</row3>
+														</transform>
+													</node>
+												</node>
+												<node>
+													<identifier>LeftHandIndex1_BlendBone</identifier>
+													<transform>
+														<row0>0.361667 0.932139 -0.017725</row0>
+														<row1>-0.767730 0.286982 -0.572916</row1>
+														<row2>0.528951 -0.220813 -0.819423</row2>
+														<row3>0.305910 -0.512045 0.378484</row3>
+													</transform>
+												</node>
+											</node>
+											<node>
+												<identifier>LeftHandThumb1</identifier>
+												<transform>
+													<row0>0.678716 0.013565 -0.734275</row0>
+													<row1>-0.586126 0.612426 -0.530463</row1>
+													<row2>0.442493 0.790412 0.423614</row2>
+													<row3>0.025025 -0.000684 -0.017965</row3>
+												</transform>
+												<node>
+													<identifier>LeftHandThumb2</identifier>
+													<transform>
+														<row0>0.960537 -0.274631 0.044125</row0>
+														<row1>0.275813 0.960930 -0.023275</row1>
+														<row2>-0.036009 0.034527 0.998755</row2>
+														<row3>0.029275 0.000000 -0.000000</row3>
+													</transform>
+													<node>
+														<identifier>LeftHandThumb3</identifier>
+														<transform>
+															<row0>0.984319 -0.154193 -0.085678</row0>
+															<row1>0.157177 0.987138 0.029209</row1>
+															<row2>0.080072 -0.042218 0.995895</row2>
+															<row3>0.019651 -0.000000 -0.000000</row3>
+														</transform>
+														<node>
+															<identifier>LeftHandThumb4</identifier>
+															<transform>
+																<row0>1.000000 0.000000 -0.000000</row0>
+																<row1>-0.000000 1.000000 0.000000</row1>
+																<row2>0.000000 0.000000 1.000000</row2>
+																<row3>0.022663 -0.000000 -0.000000</row3>
+															</transform>
+															<node>
+																<identifier>LeftHandThumb4_BlendBone</identifier>
+																<transform>
+																	<row0>0.090266 0.168592 0.981544</row0>
+																	<row1>-0.629671 0.773242 -0.074907</row1>
+																	<row2>0.771600 0.611288 -0.175956</row2>
+																	<row3>0.277663 -0.581161 -0.275963</row3>
+																</transform>
+															</node>
+														</node>
+														<node>
+															<identifier>LeftHandThumb3_BlendBone</identifier>
+															<transform>
+																<row0>0.090266 0.168592 0.981544</row0>
+																<row1>-0.629671 0.773242 -0.074907</row1>
+																<row2>0.771600 0.611288 -0.175956</row2>
+																<row3>0.300326 -0.581161 -0.275963</row3>
+															</transform>
+														</node>
+													</node>
+													<node>
+														<identifier>LeftHandThumb2_BlendBone</identifier>
+														<transform>
+															<row0>0.193944 0.111067 0.974705</row0>
+															<row1>-0.504259 0.863550 0.001935</row1>
+															<row2>0.841492 0.491880 -0.223487</row2>
+															<row3>0.201826 -0.608344 -0.317537</row3>
+														</transform>
+													</node>
+												</node>
+												<node>
+													<identifier>LeftHandThumb1_BlendBone</identifier>
+													<transform>
+														<row0>0.181826 0.087118 0.979464</row0>
+														<row1>-0.246251 0.968363 -0.040417</row1>
+														<row2>0.951998 0.233845 -0.197526</row2>
+														<row3>0.066781 -0.650967 -0.294077</row3>
+													</transform>
+												</node>
+											</node>
+											<node>
+												<identifier>LeftHand_BlendBone</identifier>
+												<transform>
+													<row0>0.505752 0.830000 0.235192</row0>
+													<row1>-0.752602 0.557764 -0.349986</row1>
+													<row2>0.421670 -0.000000 -0.906750</row2>
+													<row3>0.321772 -0.630890 0.153739</row3>
+												</transform>
+											</node>
+										</node>
+										<node>
+											<identifier>LeftForeArm_BlendBone</identifier>
+											<transform>
+												<row0>0.605742 0.770098 0.200064</row0>
+												<row1>-0.731244 0.637926 -0.241523</row1>
+												<row2>0.313622 -0.000005 -0.949548</row2>
+												<row3>0.462902 -0.663370 0.095036</row3>
+											</transform>
+										</node>
+									</node>
+									<node>
+										<identifier>LeftArm_BlendBone</identifier>
+										<transform>
+											<row0>0.600682 0.799267 -0.018820</row0>
+											<row1>-0.798875 0.600976 0.025025</row1>
+											<row2>-0.031312 -0.000003 -0.999510</row2>
+											<row3>0.653834 -0.640546 -0.070569</row3>
+										</transform>
+									</node>
+								</node>
+								<node>
+									<identifier>LeftShoulder_BlendBone</identifier>
+									<transform>
+										<row0>0.994455 0.105158 -0.000645</row0>
+										<row1>-0.105158 0.994456 0.000069</row1>
+										<row2>-0.000648 0.000001 -1.000000</row2>
+										<row3>0.056919 -0.916408 -0.050049</row3>
+									</transform>
+								</node>
+							</node>
+							<node>
+								<identifier>Neck</identifier>
+								<transform>
+									<row0>0.911719 0.000000 -0.410814</row0>
+									<row1>-0.000000 1.000000 -0.000000</row1>
+									<row2>0.410814 -0.000000 0.911719</row2>
+									<row3>0.097475 0.000000 -0.000000</row3>
+								</transform>
+								<node>
+									<identifier>Head</identifier>
+									<transform>
+										<row0>1.000000 0.000000 0.000006</row0>
+										<row1>0.000000 1.000000 -0.000000</row1>
+										<row2>-0.000006 0.000000 1.000000</row2>
+										<row3>0.075548 0.000000 0.000000</row3>
+									</transform>
+									<node>
+										<identifier>Head_BlendBone</identifier>
+										<transform>
+											<row0>-0.000003 -1.000000 0.000007</row0>
+											<row1>0.955801 -0.000001 0.294014</row1>
+											<row2>0.294014 -0.000007 -0.955801</row2>
+											<row3>-0.941761 0.000000 -0.318753</row3>
+										</transform>
+									</node>
+								</node>
+								<node>
+									<identifier>Neck_BlendBone</identifier>
+									<transform>
+										<row0>-0.000003 -1.000000 0.000007</row0>
+										<row1>0.955799 -0.000001 0.294020</row1>
+										<row2>0.294020 -0.000007 -0.955799</row2>
+										<row3>-0.866211 0.000000 -0.318758</row3>
+									</transform>
+								</node>
+							</node>
+							<node>
+								<identifier>RightShoulder</identifier>
+								<transform>
+									<row0>-0.104430 0.994454 0.012445</row0>
+									<row1>-0.986706 -0.105167 0.123902</row1>
+									<row2>0.124524 0.000659 0.992216</row2>
+									<row3>0.093177 0.039733 0.000514</row3>
+								</transform>
+								<node>
+									<identifier>RightArm</identifier>
+									<transform>
+										<row0>0.681318 0.731236 0.033188</row0>
+										<row1>-0.731627 0.681704 -0.000480</row1>
+										<row2>-0.022975 -0.023954 0.999449</row2>
+										<row3>0.078596 0.000000 0.000000</row3>
+									</transform>
+									<node>
+										<identifier>RightForeArm</identifier>
+										<transform>
+											<row0>0.944889 -0.044989 -0.324284</row0>
+											<row1>0.047031 0.998892 -0.001541</row1>
+											<row2>0.323994 -0.013796 0.945959</row2>
+											<row3>0.155755 0.000000 0.000000</row3>
+										</transform>
+										<node>
+											<identifier>RightHand</identifier>
+											<transform>
+												<row0>0.985897 0.108951 -0.127033</row0>
+												<row1>-0.114232 0.992836 -0.035029</row1>
+												<row2>0.122307 0.049046 0.991280</row2>
+												<row3>0.185761 0.000000 0.000000</row3>
+											</transform>
+											<node>
+												<identifier>RightHandIndex1</identifier>
+												<transform>
+													<row0>0.994745 0.030045 -0.097878</row0>
+													<row1>0.050282 -0.976106 0.211396</row1>
+													<row2>-0.089188 -0.215207 -0.972487</row2>
+													<row3>0.073249 -0.008533 -0.003687</row3>
+												</transform>
+												<node>
+													<identifier>RightHandIndex2</identifier>
+													<transform>
+														<row0>0.998871 0.044433 -0.016789</row0>
+														<row1>-0.044387 0.999010 0.003106</row1>
+														<row2>0.016911 -0.002358 0.999854</row2>
+														<row3>0.023202 0.000000 0.000000</row3>
+													</transform>
+													<node>
+														<identifier>RightHandIndex3</identifier>
+														<transform>
+															<row0>0.990770 -0.135208 -0.009652</row0>
+															<row1>0.132674 0.981868 -0.135398</row1>
+															<row2>0.027783 0.132868 0.990744</row2>
+															<row3>0.018653 -0.000000 -0.000000</row3>
+														</transform>
+														<node>
+															<identifier>RightHandIndex4</identifier>
+															<transform>
+																<row0>1.000000 0.000000 0.000000</row0>
+																<row1>0.000000 1.000000 0.000000</row1>
+																<row2>0.000000 0.000000 1.000000</row2>
+																<row3>0.018547 -0.000000 -0.000000</row3>
+															</transform>
+															<node>
+																<identifier>RightHandIndex4_BlendBone</identifier>
+																<transform>
+																	<row0>-0.362895 -0.930134 -0.056195</row0>
+																	<row1>-0.793640 0.276913 0.541714</row1>
+																	<row2>0.488305 -0.241184 0.838682</row2>
+																	<row3>0.264817 -0.503633 -0.373354</row3>
+																</transform>
+															</node>
+														</node>
+														<node>
+															<identifier>RightHandIndex3_BlendBone</identifier>
+															<transform>
+																<row0>-0.362895 -0.930134 -0.056195</row0>
+																<row1>-0.793640 0.276913 0.541714</row1>
+																<row2>0.488305 -0.241184 0.838682</row2>
+																<row3>0.283363 -0.503633 -0.373354</row3>
+															</transform>
+														</node>
+													</node>
+													<node>
+														<identifier>RightHandIndex2_BlendBone</identifier>
+														<transform>
+															<row0>-0.484511 -0.871670 0.073766</row0>
+															<row1>-0.734526 0.451175 0.506866</row1>
+															<row2>0.475101 -0.191400 0.858863</row2>
+															<row3>0.222209 -0.582421 -0.304442</row3>
+														</transform>
+													</node>
+												</node>
+												<node>
+													<identifier>RightHandIndex1_BlendBone</identifier>
+													<transform>
+														<row0>-0.444026 -0.892508 0.079182</row0>
+														<row1>-0.745151 0.416896 0.520526</row1>
+														<row2>0.497584 -0.172125 0.850166</row2>
+														<row3>0.265863 -0.571253 -0.309938</row3>
+													</transform>
+												</node>
+											</node>
+											<node>
+												<identifier>RightHandThumb1</identifier>
+												<transform>
+													<row0>0.691937 -0.028118 -0.721410</row0>
+													<row1>-0.525222 -0.705195 -0.476279</row1>
+													<row2>-0.495343 0.708456 -0.502719</row2>
+													<row3>0.024123 0.001391 -0.021573</row3>
+												</transform>
+												<node>
+													<identifier>RightHandThumb2</identifier>
+													<transform>
+														<row0>0.933313 -0.357182 0.036731</row0>
+														<row1>0.357794 0.933730 -0.011511</row1>
+														<row2>-0.030185 0.023886 0.999259</row2>
+														<row3>0.028065 -0.000000 -0.000000</row3>
+													</transform>
+													<node>
+														<identifier>RightHandThumb3</identifier>
+														<transform>
+															<row0>0.997703 0.038642 -0.055630</row0>
+															<row1>-0.037592 0.999097 0.019795</row1>
+															<row2>0.056344 -0.017658 0.998255</row2>
+															<row3>0.020857 0.000000 -0.000000</row3>
+														</transform>
+														<node>
+															<identifier>RightHandThumb4</identifier>
+															<transform>
+																<row0>1.000000 0.000000 0.000000</row0>
+																<row1>0.000000 1.000000 0.000000</row1>
+																<row2>0.000000 -0.000000 1.000000</row2>
+																<row3>0.021784 -0.000000 -0.000000</row3>
+															</transform>
+															<node>
+																<identifier>RightHandThumb4_BlendBone</identifier>
+																<transform>
+																	<row0>-0.139153 -0.275068 0.951301</row0>
+																	<row1>-0.560538 0.813812 0.153320</row1>
+																	<row2>0.816354 0.511906 0.267430</row2>
+																	<row3>0.217662 -0.631698 0.207672</row3>
+																</transform>
+															</node>
+														</node>
+														<node>
+															<identifier>RightHandThumb3_BlendBone</identifier>
+															<transform>
+																<row0>-0.139153 -0.275068 0.951301</row0>
+																<row1>-0.560538 0.813812 0.153320</row1>
+																<row2>0.816354 0.511906 0.267430</row2>
+																<row3>0.239445 -0.631698 0.207672</row3>
+															</transform>
+														</node>
+													</node>
+													<node>
+														<identifier>RightHandThumb2_BlendBone</identifier>
+														<transform>
+															<row0>-0.074892 -0.296995 0.951938</row0>
+															<row1>-0.581205 0.788710 0.200344</row1>
+															<row2>0.810304 0.538267 0.231683</row2>
+															<row3>0.295201 -0.625542 0.181485</row3>
+														</transform>
+													</node>
+												</node>
+												<node>
+													<identifier>RightHandThumb1_BlendBone</identifier>
+													<transform>
+														<row0>-0.204895 -0.227826 0.951900</row0>
+														<row1>-0.266298 0.948823 0.169769</row1>
+														<row2>0.941862 0.218704 0.255079</row2>
+														<row3>0.074286 -0.685193 0.199394</row3>
+													</transform>
+												</node>
+											</node>
+											<node>
+												<identifier>RightHand_BlendBone</identifier>
+												<transform>
+													<row0>-0.493632 0.840802 -0.222216</row0>
+													<row1>-0.766698 -0.541344 -0.345141</row1>
+													<row2>0.410490 0.000000 -0.911865</row2>
+													<row3>0.336634 0.623759 0.150940</row3>
+												</transform>
+											</node>
+										</node>
+										<node>
+											<identifier>RightForeArm_BlendBone</identifier>
+											<transform>
+												<row0>-0.609895 0.770098 -0.187023</row0>
+												<row1>-0.736259 -0.637926 -0.225772</row1>
+												<row2>0.293173 0.000000 -0.956059</row2>
+												<row3>0.464856 0.663370 0.085011</row3>
+											</transform>
+										</node>
+									</node>
+									<node>
+										<identifier>RightArm_BlendBone</identifier>
+										<transform>
+											<row0>-0.600658 0.799264 0.019677</row0>
+											<row1>-0.798835 -0.600981 0.026169</row1>
+											<row2>-0.032741 0.000000 -0.999464</row2>
+											<row3>0.653734 0.640549 -0.071350</row3>
+										</transform>
+									</node>
+								</node>
+								<node>
+									<identifier>RightShoulder_BlendBone</identifier>
+									<transform>
+										<row0>-0.994454 0.105168 -0.000652</row0>
+										<row1>-0.105168 -0.994454 -0.000069</row1>
+										<row2>0.000655 -0.000000 -1.000000</row2>
+										<row3>0.056993 0.916408 -0.049922</row3>
+									</transform>
+								</node>
+							</node>
+							<node>
+								<identifier>Spine2_BlendBone</identifier>
+								<transform>
+									<row0>0.000000 -1.000000 0.000007</row0>
+									<row1>0.992208 -0.000001 -0.124592</row1>
+									<row2>-0.124592 -0.000007 -0.992208</row2>
+									<row3>-0.823217 0.000000 0.065234</row3>
+								</transform>
+							</node>
+						</node>
+						<node>
+							<identifier>Spine1_BlendBone</identifier>
+							<transform>
+								<row0>-0.000000 -1.000000 0.000004</row0>
+								<row1>0.992208 -0.000000 -0.124589</row1>
+								<row2>-0.124589 -0.000004 -0.992208</row2>
+								<row3>-0.736572 0.000000 0.065231</row3>
+							</transform>
+						</node>
+					</node>
+					<node>
+						<identifier>Spine_BlendBone</identifier>
+						<transform>
+							<row0>0.000000 -1.000000 0.000000</row0>
+							<row1>0.992208 0.000000 -0.124589</row1>
+							<row2>-0.124589 0.000000 -0.992208</row2>
+							<row3>-0.660758 -0.000000 0.065231</row3>
+						</transform>
+					</node>
+				</node>
+				<node>
+					<identifier>Hips_BlendBone</identifier>
+					<transform>
+						<row0>0.000000 -1.000000 0.000000</row0>
+						<row1>0.992208 0.000000 -0.124589</row1>
+						<row2>-0.124589 0.000000 -0.992208</row2>
+						<row3>-0.595775 -0.000000 0.065232</row3>
+					</transform>
+				</node>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>RightUpLeg_BlendBone</node>
+		<node>LeftUpLeg_BlendBone</node>
+		<node>RightLeg_BlendBone</node>
+		<node>Hips_BlendBone</node>
+		<node>LeftLeg_BlendBone</node>
+		<geometry>
+			<vertices>s1Shape_split_2.vertices</vertices>
+			<primitive>s1Shape_split_2.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd2_skinned</identifier>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>101</materialKind>
+					<fx>shaders/std_effects/PBS_ext_skinned.fx</fx>
+					<property>
+						dynamicObject
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_tintColor
+						<Vector4>0.222300 0.350949 0.570000 1.000000</Vector4>
+					</property>
+					<property>
+						g_useTintColor
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h01_victory_day_2023/Characters/Civil_Boy_VD/cloth_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Hangars/h01_victory_day_2023/Characters/Civil_Boy_VD/cloth_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Hangars/h01_victory_day_2023/Characters/Civil_Boy_VD/cloth_GMM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.000774 0.432110 -0.022468</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>LeftForeArm_BlendBone</node>
+		<node>LeftArm_BlendBone</node>
+		<node>LeftHand_BlendBone</node>
+		<node>LeftShoulder_BlendBone</node>
+		<node>Spine2_BlendBone</node>
+		<node>Hips_BlendBone</node>
+		<node>Spine_BlendBone</node>
+		<node>RightUpLeg_BlendBone</node>
+		<node>Spine1_BlendBone</node>
+		<geometry>
+			<vertices>s1Shape_split_1.vertices</vertices>
+			<primitive>s1Shape_split_1.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd1_skinned</identifier>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>101</materialKind>
+					<fx>shaders/std_effects/PBS_ext_skinned.fx</fx>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_tintColor
+						<Vector4>0.725490 0.894118 0.980392 1.000000</Vector4>
+					</property>
+					<property>
+						g_useTintColor
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h01_victory_day_2023/Characters/Civil_Boy_VD/cloth_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Hangars/h01_victory_day_2023/Characters/Civil_Boy_VD/cloth_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Hangars/h01_victory_day_2023/Characters/Civil_Boy_VD/cloth_GMM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.114233 0.747534 -0.034506</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>RightFoot_BlendBone</node>
+		<node>RightLeg_BlendBone</node>
+		<node>RightToeBase_BlendBone</node>
+		<node>LeftFoot_BlendBone</node>
+		<node>LeftLeg_BlendBone</node>
+		<node>RightForeArm_BlendBone</node>
+		<node>RightHand_BlendBone</node>
+		<node>RightArm_BlendBone</node>
+		<node>RightShoulder_BlendBone</node>
+		<node>Spine2_BlendBone</node>
+		<node>LeftToeBase_BlendBone</node>
+		<node>Neck_BlendBone</node>
+		<node>Spine1_BlendBone</node>
+		<node>Spine_BlendBone</node>
+		<node>Hips_BlendBone</node>
+		<node>LeftShoulder_BlendBone</node>
+		<node>LeftArm_BlendBone</node>
+		<geometry>
+			<vertices>s1Shape_split_0.vertices</vertices>
+			<primitive>s1Shape_split_0.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd1_skinned</identifier>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>101</materialKind>
+					<fx>shaders/std_effects/PBS_ext_skinned.fx</fx>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_tintColor
+						<Vector4>0.725490 0.894118 0.980392 1.000000</Vector4>
+					</property>
+					<property>
+						g_useTintColor
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h01_victory_day_2023/Characters/Civil_Boy_VD/cloth_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Hangars/h01_victory_day_2023/Characters/Civil_Boy_VD/cloth_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Hangars/h01_victory_day_2023/Characters/Civil_Boy_VD/cloth_GMM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.086643 0.489383 0.012166</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>LeftHandIndex1_BlendBone</node>
+		<node>LeftHandIndex2_BlendBone</node>
+		<node>LeftHandIndex3_BlendBone</node>
+		<node>LeftHand_BlendBone</node>
+		<node>LeftHandIndex4_BlendBone</node>
+		<node>RightHandIndex3_BlendBone</node>
+		<node>RightHandIndex4_BlendBone</node>
+		<node>RightHand_BlendBone</node>
+		<node>RightForeArm_BlendBone</node>
+		<node>RightHandIndex2_BlendBone</node>
+		<node>RightHandIndex1_BlendBone</node>
+		<node>RightHandThumb2_BlendBone</node>
+		<node>RightHandThumb1_BlendBone</node>
+		<node>RightLeg_BlendBone</node>
+		<node>RightFoot_BlendBone</node>
+		<node>RightUpLeg_BlendBone</node>
+		<geometry>
+			<vertices>pasted__polySurfaceShape2_split_1.vertices</vertices>
+			<primitive>pasted__polySurfaceShape2_split_1.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0_skinned</identifier>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>101</materialKind>
+					<fx>shaders/std_effects/PBS_ext_skinned.fx</fx>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_tintColor
+						<Vector4>0.515000 0.000000 0.494400 1.000000</Vector4>
+					</property>
+					<property>
+						g_useTintColor
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h01_victory_day_2023/Characters/Civil_Boy_VD/body_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Hangars/h01_victory_day_2023/Characters/Civil_Boy_VD/body_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Hangars/h01_victory_day_2023/Characters/Civil_Boy_VD/body_GMM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.000451 0.348908 0.012843</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>Neck_BlendBone</node>
+		<node>Head_BlendBone</node>
+		<node>RightShoulder_BlendBone</node>
+		<node>LeftShoulder_BlendBone</node>
+		<node>LeftHandThumb3_BlendBone</node>
+		<node>LeftHandThumb4_BlendBone</node>
+		<node>LeftHandThumb2_BlendBone</node>
+		<node>LeftHandThumb1_BlendBone</node>
+		<node>LeftHand_BlendBone</node>
+		<node>LeftHandIndex1_BlendBone</node>
+		<node>LeftLeg_BlendBone</node>
+		<node>LeftUpLeg_BlendBone</node>
+		<node>LeftFoot_BlendBone</node>
+		<node>RightHandThumb3_BlendBone</node>
+		<node>RightHandThumb4_BlendBone</node>
+		<node>RightHandThumb2_BlendBone</node>
+		<node>RightHandThumb1_BlendBone</node>
+		<geometry>
+			<vertices>pasted__polySurfaceShape2_split_0.vertices</vertices>
+			<primitive>pasted__polySurfaceShape2_split_0.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0_skinned</identifier>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>101</materialKind>
+					<fx>shaders/std_effects/PBS_ext_skinned.fx</fx>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_tintColor
+						<Vector4>0.515000 0.000000 0.494400 1.000000</Vector4>
+					</property>
+					<property>
+						g_useTintColor
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h01_victory_day_2023/Characters/Civil_Boy_VD/body_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Hangars/h01_victory_day_2023/Characters/Civil_Boy_VD/body_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Hangars/h01_victory_day_2023/Characters/Civil_Boy_VD/body_GMM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.013116 0.610580 -0.010465</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<constraints/>
+	<boundingBox>
+		<min>-2.397217 -0.000516 -2.142088</min>
+		<max>2.397536 2.193364 2.120699</max>
+	</boundingBox>
+	<primitivesName>content/Hangars/h01_victory_day_2023/Characters/Civil_Boy_VD/normal/lod2/CivilBoy_02_VD</primitivesName>
+	<geometrySize>130848</geometrySize>
+	<minUVDensity>0.309055</minUVDensity>
+</root>

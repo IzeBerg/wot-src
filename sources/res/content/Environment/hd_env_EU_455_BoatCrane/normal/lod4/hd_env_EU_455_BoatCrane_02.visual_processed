@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<collisionFlags>144</collisionFlags>
+					<materialKind>112</materialKind>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_EU_455_BoatCrane/hd_env_EU_455_BoatCrane_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env_EU_455_BoatCrane/hd_env_EU_455_BoatCrane_GMM.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_EU_455_BoatCrane/hd_env_EU_455_BoatCrane_AM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.000000 2.349458 0.107426</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-3.400000 -3.862063 -14.875378</min>
+		<max>3.400000 14.249687 15.090230</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>7402</geometrySize>
+	<minUVDensity>0.000031</minUVDensity>
+</root>

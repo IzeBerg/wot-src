@@ -2409,8 +2409,6 @@ package net.wg.data.constants.generated
       
       public static const POSTMORTEM_TIPS_BG:String = "postmortemTips_bg";
       
-      public static const POSTMORTEM_TIPS_EVENT_BG:String = "postmortemTips_event_bg";
-      
       public static const PURE_ATSPG_H:String = "pure_atspg_h";
       
       public static const PURE_ATSPG_M:String = "pure_atspg_m";

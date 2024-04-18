@@ -1,10 +1,12 @@
-import BigWorld, SoundGroups
+import typing, BigWorld, SoundGroups
 from constants import EQUIPMENT_STAGES
 from items import vehicles
 from gui.battle_control import avatar_getter
 from gui.battle_control.controllers.consumables.equipment_ctrl import InCooldownError, _TriggerItem, _OrderItem, EquipmentsController, EquipmentsReplayPlayer, _ReplayItem, _ActivationError
 from historical_battles.gui.sounds.sound_constants import HBDeathZoneEvent, HBUISound
 from gui.shared.system_factory import registerEquipmentItem
+if typing.TYPE_CHECKING:
+    from gui.battle_control.controllers.consumables.equipment_ctrl import _EquipmentItem
 
 class _HBBufItem(_TriggerItem):
 
@@ -77,6 +79,11 @@ class _AoeArcadeArtileryItem(_HBAbilityItem):
 
 class HBDynamicActiveStageCooldownItem(_HBBufItem):
 
+    @property
+    def becomeActive(self):
+        isSuperActive = super(HBDynamicActiveStageCooldownItem, self).becomeActive
+        return isSuperActive or self._prevStage == EQUIPMENT_STAGES.READY and self._stage == EQUIPMENT_STAGES.PREPARING
+
     def update(self, quantity, stage, timeRemaining, totalTime):
         super(HBDynamicActiveStageCooldownItem, self).update(quantity, stage, timeRemaining, totalTime)
         if stage in (EQUIPMENT_STAGES.COOLDOWN, EQUIPMENT_STAGES.READY):
@@ -88,6 +95,16 @@ class HBDynamicActiveStageCooldownItem(_HBBufItem):
 
     def getEntitiesIterator(self, avatar=None):
         return []
+
+    def canActivate(self, entityName=None, avatar=None):
+        result, error = super(HBDynamicActiveStageCooldownItem, self).canActivate()
+        if not result:
+            return (result, error)
+        if self.getStage() == EQUIPMENT_STAGES.PREPARING:
+            error = _ActivationError('equipmentAlreadyActivated', {'name': self._descriptor.userString})
+            result = False
+        return (
+         result, error)
 
     def canDeactivate(self):
         return False
@@ -183,6 +200,43 @@ class HBEquipmentController(EquipmentsController):
 class HBReplayEquipmentController(EquipmentsReplayPlayer):
     __slots__ = ()
 
+    def startControl(self, *args):
+        super(HBReplayEquipmentController, self).startControl(*args)
+        self.onEquipmentUpdated += self.__onEquipmentUpdated
+
+    def stopControl(self):
+        self.onEquipmentUpdated -= self.__onEquipmentUpdated
+        super(HBReplayEquipmentController, self).stopControl()
+
+    def __onEquipmentUpdated(self, _, item):
+        if not isinstance(item, _ReplayItem) or item is None:
+            return
+        if item.becomeReady:
+            SoundGroups.g_instance.playSound2D(HBUISound.READY_SOUND)
+        elif self.__isItemApplied(item):
+            SoundGroups.g_instance.playSound2D(HBUISound.PRESSED_SOUND)
+        elif self.__isItemAppointed(item):
+            SoundGroups.g_instance.playSound2D(HBUISound.ARTILERY_APPOINTED_SOUND)
+        return
+
+    def __isItemApplied(self, item):
+        prevStage = item.getPrevStage()
+        curStage = item.getStage()
+        if prevStage == curStage:
+            return False
+        if prevStage == EQUIPMENT_STAGES.READY and curStage in (EQUIPMENT_STAGES.PREPARING, EQUIPMENT_STAGES.ACTIVE,
+         EQUIPMENT_STAGES.COOLDOWN, EQUIPMENT_STAGES.SHARED_COOLDOWN):
+            return True
+        return False
+
+    def __isItemAppointed(self, item):
+        prevStage = item.getPrevStage()
+        curStage = item.getStage()
+        if prevStage in (EQUIPMENT_STAGES.READY, EQUIPMENT_STAGES.PREPARING) and curStage in (EQUIPMENT_STAGES.ACTIVE, EQUIPMENT_STAGES.COOLDOWN, EQUIPMENT_STAGES.SHARED_COOLDOWN,
+         EQUIPMENT_STAGES.EXHAUSTED):
+            return True
+        return False
+
 
 class HBAfterburning(_HBBufItem):
     pass
@@ -195,6 +249,12 @@ class HBHealPoint(_HBBufItem):
             return (False,
              _ActivationError('combatEquipmentNotReady', {'equipmentName': self._descriptor.userString}))
         return super(HBHealPoint, self).canActivate(entityName, avatar)
+
+
+class HBDeathZoneReplayItem(_ReplayItem):
+
+    def _soundUpdate(self, *_):
+        SoundGroups.g_instance.playSound2D(HBDeathZoneEvent.SOUND)
 
 
 def registerHBEquipmentCtrls():

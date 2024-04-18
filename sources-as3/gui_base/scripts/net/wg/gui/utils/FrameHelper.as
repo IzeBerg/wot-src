@@ -3,6 +3,7 @@ package net.wg.gui.utils
    import flash.display.FrameLabel;
    import flash.display.MovieClip;
    import net.wg.data.constants.Errors;
+   import net.wg.utils.IAssertable;
    import net.wg.utils.IFramesHelper;
    
    public class FrameHelper implements IFramesHelper
@@ -19,11 +20,14 @@ package net.wg.gui.utils
       
       private var _disposed:Boolean = false;
       
+      private var _asserter:IAssertable;
+      
       public function FrameHelper(param1:MovieClip)
       {
          var _loc2_:FrameLabel = null;
+         this._asserter = App.utils.asserter;
          super();
-         App.utils.asserter.assertNotNull(param1,Errors.CANT_NULL);
+         this._asserter.assertNotNull(param1,Errors.CANT_NULL);
          this._target = param1;
          this._frames = {};
          for each(_loc2_ in param1.currentLabels)
@@ -35,10 +39,22 @@ package net.wg.gui.utils
       
       public function addScriptToFrame(param1:int, param2:Function) : void
       {
-         App.utils.asserter.assertNotNull(this._target,Errors.CANT_NULL);
+         this._asserter.assertNotNull(this._target,Errors.CANT_NULL);
          param1--;
          this._target.addFrameScript(param1,param2);
          this._scriptOnFrames.push(param1);
+      }
+      
+      public function addScriptToFrameByLabel(param1:String, param2:Function) : void
+      {
+         var _loc3_:int = 0;
+         this._asserter.assertNotNull(this._target,Errors.CANT_NULL);
+         if(this._frames.hasOwnProperty(param1))
+         {
+            _loc3_ = this._frames[param1] - 1;
+            this._target.addFrameScript(_loc3_,param2);
+            this._scriptOnFrames.push(_loc3_);
+         }
       }
       
       public function clearFrameScripts() : void
@@ -66,6 +82,7 @@ package net.wg.gui.utils
          this._target = null;
          this._frames = null;
          this._scriptOnFrames = null;
+         this._asserter = null;
       }
       
       public function getFrameBeforeLabel(param1:String) : int
@@ -83,9 +100,14 @@ package net.wg.gui.utils
          return !!_loc2_ ? int(this._frames[param1]) : int(NOT_EXIST_INDEX);
       }
       
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
+      }
+      
       public function removeScriptFromFrame(param1:int) : void
       {
-         App.utils.asserter.assertNotNull(this._target,Errors.CANT_NULL);
+         this._asserter.assertNotNull(this._target,Errors.CANT_NULL);
          param1--;
          this._target.addFrameScript(param1,null);
          this._scriptOnFrames.splice(this._scriptOnFrames.indexOf(param1),1);
@@ -95,11 +117,6 @@ package net.wg.gui.utils
       {
          this.clearFrameScripts();
          this._target = param1;
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
       }
    }
 }

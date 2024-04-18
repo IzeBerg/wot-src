@@ -1,4 +1,4 @@
-import struct, Math
+import struct, Math, BigWorld
 from chat_commands_consts import BATTLE_CHAT_COMMAND_NAMES
 from debug_utils import LOG_ERROR
 from gui.Scaleform.locale.INGAME_GUI import INGAME_GUI as I18N_INGAME_GUI
@@ -13,6 +13,8 @@ from messenger_common_chat2 import BATTLE_CHAT_COMMANDS_BY_NAMES
 from messenger_common_chat2 import MESSENGER_ACTION_IDS as _ACTIONS
 from messenger_common_chat2 import messageArgs, BATTLE_CHAT_COMMANDS
 from skeletons.gui.battle_session import IBattleSessionProvider
+from historical_battles_common.hb_constants_extension import ARENA_GUI_TYPE
+from historical_battles.skeletons.gui.game_event_controller import IGameEventController
 AUTOCOMMIT_COMMAND_NAMES = (
  BATTLE_CHAT_COMMAND_NAMES.ATTACKING_ENEMY, BATTLE_CHAT_COMMAND_NAMES.SUPPORTING_ALLY,
  BATTLE_CHAT_COMMAND_NAMES.ATTACKING_ENEMY_WITH_SPG,
@@ -195,6 +197,7 @@ class _OutCmdDecorator(OutChatCommand):
 class _ReceivedCmdDecorator(ReceivedBattleChatCommand):
     __slots__ = ('_commandID', '__isSilentMode')
     sessionProvider = dependency.descriptor(IBattleSessionProvider)
+    _gameEventController = dependency.descriptor(IGameEventController)
 
     def __init__(self, commandID, args):
         super(_ReceivedCmdDecorator, self).__init__(args, getClientID4BattleChannel(BATTLE_CHANNEL.TEAM.name))
@@ -223,7 +226,10 @@ class _ReceivedCmdDecorator(ReceivedBattleChatCommand):
                             i18nArguments['reloadTime'] = reloadTime
                             i18nKey += '_reloading'
                 elif self.hasTarget():
-                    i18nArguments['target'] = self._getTarget()
+                    if BigWorld.player().arena.guiType == ARENA_GUI_TYPE.HISTORICAL_BATTLES and BATTLE_CHAT_COMMAND_NAMES.ATTACKING_ENEMY == command.name:
+                        i18nArguments['target'] = self._getEventEnemyName()
+                    else:
+                        i18nArguments['target'] = self._getTarget()
                     if self.isSPGAimCommand():
                         reloadTime = self._protoData['floatArg1']
                         if reloadTime > 0:
@@ -380,6 +386,14 @@ class _ReceivedCmdDecorator(ReceivedBattleChatCommand):
         target = self.sessionProvider.getCtx().getPlayerFullName(vID=self.getFirstTargetID())
         if self.isReceiver():
             target = g_settings.battle.targetFormat % {'target': target}
+        return target
+
+    def _getEventEnemyName(self):
+        target = self._getTarget()
+        vehInfo = self.sessionProvider.getCtx().getVehicleInfo(vID=self.getFirstTargetID())
+        vehType = vehInfo.vehicleType
+        if vehType is not None:
+            target = vehType.shortName
         return target
 
     def _getCommandVehMarker(self):

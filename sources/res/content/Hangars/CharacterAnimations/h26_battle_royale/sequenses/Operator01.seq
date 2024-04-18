@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>97.700005</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+		<track>
+			<name>animation</name>
+			<type>animation</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>97.699997</duration>
+				<resourceID>content/Hangars/CharacterAnimations/h26_battle_royale/animation/MapShot/Operator01.fbx</resourceID>
+				<clipName/>
+				<speed>1.000000</speed>
+				<layer>0</layer>
+				<blendIn>constant</blendIn>
+				<blendOut>constant</blendOut>
+				<blendInTime>0.000000</blendInTime>
+				<blendOutTime>0.000000</blendOutTime>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Model Object 1</name>
+		<type>model</type>
+		<resource>content/Hangars/CharacterAnimations/h26_battle_royale/normal/lod0/h26_battle_royale_Letter.model</resource>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>97.700005</duration>
+				<value>Root|Character1_Root_Slot01</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Model Object 2</name>
+		<type>model</type>
+		<resource>content/Hangars/CharacterAnimations/h26_battle_royale/normal/lod0/h26_br_057_RadioStation.model</resource>
+		<track>
+			<name>animation</name>
+			<type>animation</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>97.700005</duration>
+				<resourceID>content/Hangars/CharacterAnimations/h26_battle_royale/animation/MapShot/h26_br_057_RadioStation_MapShot.fbx</resourceID>
+				<clipName/>
+				<speed>1.000000</speed>
+				<layer>0</layer>
+				<blendIn>constant</blendIn>
+				<blendOut>constant</blendOut>
+				<blendInTime>0.000000</blendInTime>
+				<blendOutTime>0.000000</blendOutTime>
+			</frame>
+		</track>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>97.700005</duration>
+				<value>Root|Character1_Root_Slot03</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Model Object 3</name>
+		<type>model</type>
+		<resource>content/Hangars/CharacterAnimations/h26_battle_royale/normal/lod0/h26_br_MapShot_Pen.model</resource>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>97.699997</duration>
+				<value>Root|Character1_Root_Slot02</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>31.283335</startTime>
+				<value>-0.009647 -0.000183 -0.004332</value>
+				<inTangent>-0.000046 -0.000006 -0.049078</inTangent>
+				<outTangent>-0.000046 -0.000006 -0.049078</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

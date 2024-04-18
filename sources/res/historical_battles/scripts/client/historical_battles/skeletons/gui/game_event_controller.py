@@ -103,6 +103,9 @@ class IGameEventController(IGameController):
     def switchPrb(self):
         raise NotImplementedError
 
+    def selectRandomMode(self):
+        raise NotImplementedError
+
     def isShowingProgressionView(self):
         raise NotImplementedError
 

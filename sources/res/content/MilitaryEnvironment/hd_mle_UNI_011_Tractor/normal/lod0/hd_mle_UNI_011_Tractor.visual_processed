@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_wall_0</identifier>
+					<collisionFlags>131</collisionFlags>
+					<materialKind>112</materialKind>
+				</material>
+				<groupOrigin>-3.564953 1.210356 -9.631546</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd1</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>112</materialKind>
+					<fx>shaders/std_effects/PBS_ext_detail_dual.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_011_Tractor/hd_mle_UNI_011_Tractor_Tent_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_011_Tractor/hd_mle_UNI_011_Tractor_Tent_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_011_Tractor/hd_mle_UNI_011_Tractor_Tent_GMM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap2
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_011_Tractor/hd_mle_UNI_011_Tractor_Tent_AM2.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_detailInfluences
+						<Vector4>2.000000 0.500000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_detailMap
+						<Texture>content/Detail_tex/Detail_tile_Textile.dds</Texture>
+					</property>
+					<property>
+						g_detailRejectTiling
+						<Vector4>1.000000 1.000000 25.000000 25.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>-2.001012 2.141090 -9.225078</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>s_nd0</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>112</materialKind>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_011_Tractor/hd_mle_UNI_011_Tractor_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_011_Tractor/hd_mle_UNI_011_Tractor_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_011_Tractor/hd_mle_UNI_011_Tractor_GMM.dds</Texture>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaReference
+						<Int>64</Int>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>-3.642385 1.445507 -9.640180</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-7.210979 -0.051312 -13.209857</min>
+		<max>-0.073791 2.961035 -6.053236</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>966588</geometrySize>
+	<minUVDensity>0.001010</minUVDensity>
+</root>

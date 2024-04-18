@@ -38,6 +38,7 @@
 		<userString>#artefacts:bomber/name</userString>
 		<description>#artefacts:bomber/descr</description>
 		<icon>artillery 0 0</icon>
+		<code>artillery</code>
 		<price>
 			750
 			<gold/>
@@ -90,7 +91,7 @@
 			</actions>
 			<ctrlItems>
 				<default>historical_battles.gui.battle_control.controllers.equipments.HBDeathZoneItem</default>
-				<replay>_ReplayItem</replay>
+				<replay>historical_battles.gui.battle_control.controllers.equipments.HBDeathZoneReplayItem</replay>
 			</ctrlItems>
 		</script>
 	</death_zone_event_historical_battles>
@@ -98,6 +99,7 @@
 		<id>13004</id>
 		<userString>#historical_battles.hb_artefacts:artillery/name</userString>
 		<description>#historical_battles.hb_artefacts:artillery/descr</description>
+		<playerMessagesKey>ARCADE_ARTILLERY_HISTORICAL_BATTLES</playerMessagesKey>
 		<icon>artillery 0 0</icon>
 		<price>
 			150
@@ -174,6 +176,7 @@
 		<id>13005</id>
 		<userString>#historical_battles.hb_artefacts:bomber/name</userString>
 		<description>#historical_battles.hb_artefacts:bomber/descr</description>
+		<playerMessagesKey>ARCADE_BOMBER_HISTORICAL_BATTLES</playerMessagesKey>
 		<icon>bomber 0 0</icon>
 		<price>
 			750
@@ -250,6 +253,7 @@
 		<id>13006</id>
 		<userString>#historical_battles.hb_artefacts:arcade_rockets/name</userString>
 		<description>#historical_battles.hb_artefacts:arcade_rockets/descr</description>
+		<playerMessagesKey>ARCADE_ARTILLERY_ROCKET_HISTORICAL_BATTLES</playerMessagesKey>
 		<icon>rocket_artillery 0 0</icon>
 		<price>
 			150
@@ -266,7 +270,7 @@
 			<shortFilterAlert/>
 			<longFilterAlert/>
 			<tooltips>cooldownTime delay areaRadius shotsNumber duration-artillery</tooltips>
-			<cooldownTime>180</cooldownTime>
+			<cooldownTime>210</cooldownTime>
 			<cooldownFactors/>
 			<sharedCooldownTime>0</sharedCooldownTime>
 			<consumeAmmo>false</consumeAmmo>
@@ -337,9 +341,11 @@
 		</script>
 	</arcade_artilleryrocket_historical_battles>
 	<arcade_artillerymortar_historical_battles>
+		&gt;
 		<id>13007</id>
 		<userString>#historical_battles.hb_artefacts:artillery_mortar/name</userString>
 		<description>#historical_battles.hb_artefacts:artillery_mortar/descr</description>
+		<playerMessagesKey>ARCADE_ARTILLERY_MORTAR_HISTORICAL_BATTLES</playerMessagesKey>
 		<icon>mortar 0 0</icon>
 		<price>
 			150
@@ -374,7 +380,7 @@
 			<duration>6</duration>
 			<shotsNumber>6</shotsNumber>
 			<explodeDestructible>true</explodeDestructible>
-			<areaRadius>15</areaRadius>
+			<areaRadius>20</areaRadius>
 			<areaVisual>content/Interface/TargetPoint/circle_31.visual</areaVisual>
 			<areaShow>always</areaShow>
 			<noOwner>false</noOwner>
@@ -396,7 +402,7 @@
 					<type>DamageVehicle</type>
 					<applyTo>team2</applyTo>
 					<args>
-						<damage>50</damage>
+						<damage>85</damage>
 					</args>
 				</action>
 			</actions>
@@ -410,6 +416,7 @@
 		<id>13008</id>
 		<userString>#historical_battles.hb_artefacts:bomber_attack/name</userString>
 		<description>#historical_battles.hb_artefacts:bomber_attack/descr</description>
+		<playerMessagesKey>ARCADE_BOMBER_CAS_HISTORICAL_BATTLES</playerMessagesKey>
 		<icon>bombercas 0 0</icon>
 		<price>
 			750
@@ -492,6 +499,7 @@
 		<id>13009</id>
 		<userString>#historical_battles.hb_artefacts:afterburning/name</userString>
 		<description>#historical_battles.hb_artefacts:afterburning/descr</description>
+		<playerMessagesKey>AFTERBURNING_HB</playerMessagesKey>
 		<icon>afterburning 0 0</icon>
 		<activationWWSoundFeedback>ev_secret_event_gameplay_ability_nitro_activation</activationWWSoundFeedback>
 		<deactivationWWSoundFeedback>ev_secret_event_gameplay_ability_nitro_deactivation</deactivationWWSoundFeedback>
@@ -534,6 +542,7 @@
 		<id>13012</id>
 		<userString>#historical_battles.hb_artefacts:teamRepairKit/name</userString>
 		<description>#historical_battles.hb_artefacts:teamRepairKit/descr</description>
+		<playerMessageskey>ARCADE_TEAM_REPAIR_KIT_HISTORICAL_BATTLES</playerMessageskey>
 		<icon>h_Resuply 0 0</icon>
 		<price>15000</price>
 		<notInShop>true</notInShop>
@@ -575,6 +584,7 @@
 		<id>13013</id>
 		<userString>#historical_battles.hb_artefacts:super_shot_1/name</userString>
 		<description>#historical_battles.hb_artefacts:super_shot_1/descr</description>
+		<playerMessagesKey>SUPER_SHOT</playerMessagesKey>
 		<icon>super_shot_1 0 0</icon>
 		<price>3000</price>
 		<notInShop>true</notInShop>
@@ -596,6 +606,7 @@
 		<id>13015</id>
 		<userString>#artefacts:bomber/name</userString>
 		<description>#artefacts:bomber/descr</description>
+		<playerMessagesKey>SUPER_SHOT</playerMessagesKey>
 		<icon>artillery 0 0</icon>
 		<price>
 			750
@@ -660,6 +671,7 @@
 		<description>#artefacts:largeRepairkit/descr</description>
 		<shortDescriptionSpecial>#artefacts:largeRepairkit/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:largeRepairkit/long_special</longDescriptionSpecial>
+		<playerMessagesKey>HB_LARGE_REPAIR_KIT</playerMessagesKey>
 		<icon>largeRepairkit</icon>
 		<price>20000</price>
 		<notInShop>true</notInShop>
@@ -703,6 +715,7 @@
 		<description>#artefacts:largeMedkit/descr</description>
 		<shortDescriptionSpecial>#artefacts:largeMedkit/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:largeMedkit/long_special</longDescriptionSpecial>
+		<playerMessagesKey>HB_LARGE_MED_KIT</playerMessagesKey>
 		<icon>largeMedkit</icon>
 		<price>20000</price>
 		<notInShop>true</notInShop>
@@ -751,6 +764,7 @@
 		<id>13018</id>
 		<userString>#historical_battles.hb_artefacts:teamRepairKit/name</userString>
 		<description>#historical_battles.hb_artefacts:teamRepairKit/descr</description>
+		<playerMessagesKey>HEAL_POINT_HB</playerMessagesKey>
 		<icon>h_Resuply 0 0</icon>
 		<activationWWSoundFeedback>ev_secret_event_gameplay_ability_repair_pc</activationWWSoundFeedback>
 		<deactivationWWSoundFeedback/>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_guns</identifier>
+					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						g_crashUVTiling
+						<Vector4>2.000000 2.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						crashTileMap
+						<Texture>vehicles/russian/Tank_detail/crash_tile.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/chinese/Ch48_BZ_75/_skins/Ch48_BZ_75_3dst_BP13_MT/BZ_75_3dst_BP13_MT_guns_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/chinese/Ch48_BZ_75/_skins/Ch48_BZ_75_3dst_BP13_MT/BZ_75_3dst_BP13_MT_guns_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/chinese/Ch48_BZ_75/_skins/Ch48_BZ_75_3dst_BP13_MT/BZ_75_3dst_BP13_MT_guns_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/chinese/Ch48_BZ_75/_skins/Ch48_BZ_75_3dst_BP13_MT/BZ_75_3dst_BP13_MT_guns_AO.dds</Texture>
+					</property>
+					<property>
+						alphaReference
+						<Int>128</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						colorIdMap
+						<Texture>vehicles/chinese/Ch48_BZ_75/BZ_75_guns_ID.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.025552 -0.091611 2.097479</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.424939 -0.435033 -1.717157</min>
+		<max>0.373835 0.251812 5.912114</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>129112</geometrySize>
+	<minUVDensity>0.037212</minUVDensity>
+</root>

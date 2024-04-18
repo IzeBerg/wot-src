@@ -142,6 +142,7 @@ def preInit():
     initBattleResults()
     from historical_battles.gui.battle_control.controllers import equipments
     consumables.updateEquipmentControllers(hb_constants_extension.ARENA_BONUS_TYPE.HISTORICAL_BATTLES, equipments.HBEquipmentController)
+    consumables.updateReplayEquipmentControllers(hb_constants_extension.ARENA_BONUS_TYPE.HISTORICAL_BATTLES, equipments.HBReplayEquipmentController)
     registerHBEquipmentCtrls()
     from historical_battles.gui.battle_results.composer import HistoryBattleStatsComposer
     from gui.shared.system_factory import registerBattleResultsComposer

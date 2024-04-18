@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd1</identifier>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>108</materialKind>
+					<fx>shaders/std_effects/PBS_glass.fx</fx>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_EU_484_TransportBoats/hd_env_EU_484_TransportBoats_Glass_ANM.dds</Texture>
+					</property>
+					<property>
+						dirtAlbedoMap
+						<Texture>content/Environment/hd_env_EU_484_TransportBoats/hd_env_EU_484_TransportBoats_Glass_AM.dds</Texture>
+					</property>
+					<property>
+						glassMap
+						<Texture>content/Environment/hd_env_EU_484_TransportBoats/hd_env_EU_484_TransportBoats_Glass_GMM.dds</Texture>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+				</material>
+				<groupOrigin>18.213367 2.958258 0.000086</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd0</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>108</materialKind>
+					<fx>shaders/std_effects/PBS_ext_dual.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_EU_484_TransportBoats/hd_env_EU_484_TransportBoats_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_EU_484_TransportBoats/hd_env_EU_484_TransportBoats_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env_EU_484_TransportBoats/hd_env_EU_484_TransportBoats_GMM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap2
+						<Texture>content/Environment/hd_env_EU_484_TransportBoats/hd_env_EU_484_TransportBoats_AM2.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>1.517881 2.463717 -0.081819</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-21.606195 -1.339600 -3.251599</min>
+		<max>24.641958 6.266068 3.087961</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>140920</geometrySize>
+	<minUVDensity>0.000055</minUVDensity>
+</root>

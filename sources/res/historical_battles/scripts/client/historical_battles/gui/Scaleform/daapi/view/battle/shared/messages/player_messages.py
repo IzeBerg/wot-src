@@ -9,10 +9,24 @@ _HB_EQUIPMENT_NAME_TO_POSTFIX_KEY = {'arcade_teamRepairKit_historical_battles': 
 
 class HistoricalBattlePlayerMessages(player_messages.PlayerMessages):
 
+    def _addGameListeners(self):
+        super(HistoricalBattlePlayerMessages, self)._addGameListeners()
+        ctrl = self.sessionProvider.shared.equipments
+        if ctrl is not None:
+            ctrl.onEquipmentUpdated += self.__onEquipmentUpdated
+        return
+
+    def _removeGameListeners(self):
+        ctrl = self.sessionProvider.shared.equipments
+        if ctrl is not None:
+            ctrl.onEquipmentUpdated -= self.__onEquipmentUpdated
+        super(HistoricalBattlePlayerMessages, self)._removeGameListeners()
+        return
+
     def showMessage(self, key, args=None, extra=None, postfix=''):
         if key == 'DEATH_FROM_DEATH_ZONE':
             key = 'EVENT_DEATH_FROM_DEATH_ZONE'
-        elif postfix in ('SELF_ENEMY', 'ALLY_ENEMY'):
+        elif postfix == 'SELF_ENEMY':
             key = 'EVENT_DEATH'
         super(HistoricalBattlePlayerMessages, self).showMessage(key, args=args, extra=extra, postfix=postfix)
 
@@ -36,3 +50,24 @@ class HistoricalBattlePlayerMessages(player_messages.PlayerMessages):
         if isBot:
             return getFullName(vehicleID, showClan=False, showName=False)
         return getFullName(vehicleID, showClan=False)
+
+    def __onEquipmentUpdated(self, _, item):
+        if not item or not self.__isEquipmentBecomeActive(item):
+            return
+        itemDescriptor = item.getDescriptor()
+        self.showMessage('COMBAT_EQUIPMENT_ACTIVATED', {}, postfix=self.__getPostfixFromEquipment(itemDescriptor))
+
+    @staticmethod
+    def __getPostfixFromEquipment(equipment):
+        postfix = equipment.playerMessagesKey
+        if postfix is None:
+            postfix = equipment.name.split('_')[0].upper()
+        return postfix
+
+    @staticmethod
+    def __isEquipmentBecomeActive(equipment):
+        if hasattr(equipment, 'becomeActive'):
+            return equipment.becomeActive
+        if hasattr(equipment, 'becomeAppointed'):
+            return equipment.becomeAppointed
+        return False

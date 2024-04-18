@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>nodes_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_gb91_sequence_turret</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_gunJoint</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.015844 0.414391 1.601733</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_hull_01_2</identifier>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/british/GB91_Super_Conqueror/_skin/GB91_Super_Conqueror_MD22_III_3DSt/Super_Conqueror_MD22_III_3DSt_Hull_01_2_AM.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/british/GB91_Super_Conqueror/_skin/GB91_Super_Conqueror_MD22_III_3DSt/Super_Conqueror_MD22_III_3DSt_Hull_01_2_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/british/GB91_Super_Conqueror/_skin/GB91_Super_Conqueror_MD22_III_3DSt/Super_Conqueror_MD22_III_3DSt_Hull_01_2_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/british/GB91_Super_Conqueror/_skin/GB91_Super_Conqueror_MD22_III_3DSt/Super_Conqueror_MD22_III_3DSt_Hull_01_2_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.264410 0.720894 -1.051406</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>tank_turret_01</identifier>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/british/GB91_Super_Conqueror/_skin/GB91_Super_Conqueror_MD22_III_3DSt/Super_Conqueror_MD22_III_3DSt_Turret_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/british/GB91_Super_Conqueror/_skin/GB91_Super_Conqueror_MD22_III_3DSt/Super_Conqueror_MD22_III_3DSt_Turret_01_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/british/GB91_Super_Conqueror/_skin/GB91_Super_Conqueror_MD22_III_3DSt/Super_Conqueror_MD22_III_3DSt_Turret_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/british/GB91_Super_Conqueror/_skin/GB91_Super_Conqueror_MD22_III_3DSt/Super_Conqueror_MD22_III_3DSt_Turret_01_AO.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.000000 0.742282 -0.652063</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.781900 -0.000000 -3.021242</min>
+		<max>1.550207 1.484564 1.717116</max>
+	</boundingBox>
+	<geometrySize>161132</geometrySize>
+	<minUVDensity>0.003648</minUVDensity>
+</root>

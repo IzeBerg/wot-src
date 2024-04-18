@@ -1,5 +1,6 @@
 from enum import Enum
 from functools import partial
+from typing import Dict
 import adisp, BigWorld
 from account_helpers.AccountSettings import ArmoryYard, AccountSettings
 from armory_yard_constants import getCurrencyToken, getGroupName, getStageToken, getEndToken, getEndQuestID, getBundleBlockToken, getFinalEndQuestID, PROGRESSION_LEVEL_PDATA_KEY, State, CLAIMED_FINAL_REWARD, PDATA_KEY_ARMORY_YARD, INTRO_VIDEO, isArmoryYardStyleQuest, DAY_BEFORE_END_STYLE_QUEST, AY_VIDEOS, VEHICLE_NAME
@@ -17,6 +18,7 @@ from Event import Event, EventManager
 from gui.ClientUpdateManager import g_clientUpdateManager
 from gui.server_events.event_items import Group
 from gui.shared import g_eventBus, events, EVENT_BUS_SCOPE
+from gui.shared.utils.HangarSpace import g_execute_after_hangar_space_inited
 from gui.game_control.season_provider import SeasonProvider
 from gui.shared.utils.scheduled_notifications import AcyclicNotifier, Notifiable, SimpleNotifier
 from gui.Scaleform.framework.managers.loaders import GuiImplViewLoadParams
@@ -144,10 +146,10 @@ class ArmoryYardController(IArmoryYardController):
             self.__isPaused = self.serverSettings.isPaused
             if self.__bundlesState == BundleState.EMPTY:
                 self.__fillBundlesProducts()
-            if self.isStarterPackAvailable():
-                self.__bundlesNotifier.startNotification()
             if not self.__isStarted:
                 self.__hangarSpace.onHeroTankReady += self.__checkRewards
+            if self.isStarterPackAvailable():
+                self.__bundlesNotifier.startNotification()
         self.__connectionMgr.onDisconnected += self.__onDisconnected
         self.__isStarted = True
         if self.getTotalSteps() == self.getCurrencyTokenCount():
@@ -298,41 +300,39 @@ class ArmoryYardController(IArmoryYardController):
         if self.__bundlesState == BundleState.FILLING or self.__itemsCache.items.tokens.getTokenCount(self.getBundleBlockToken()) > 0:
             return
         packSettings = self.getStarterPackSettings()
-        if not packSettings.get('isEnabled', False) or 'storefrontName' not in packSettings or packSettings.get('startTime', 0) > time_utils.getServerUTCTime() >= packSettings.get('endTime', 0):
-            return
-        if not self.__webCtrl.isEnabled() and self.__webCtrl.isAvailable() and self.__webCtrl.isStarted:
-            return
-        else:
+        if not (not packSettings.get('isEnabled', False) or 'storefrontName' not in packSettings):
+            if packSettings.get('startTime', 0) > time_utils.getServerUTCTime() >= packSettings.get('endTime', 0):
+                return
+            if not self.__webCtrl.isEnabled() and self.__webCtrl.isAvailable() and self.__webCtrl.isStarted:
+                return
             self.__bundlesState = BundleState.FILLING
             result = yield self.__webCtrl.sendRequest(ctx=ShopStorefrontProductsCtx(storefront=packSettings['storefrontName']))
             self.__bundlesState = BundleState.FILL
-            if not result.isSuccess():
-                return
-            self.__bundlesProducts = []
-            for product in result.getData().get('data', []):
-                entitlements = product['entitlements']
-                price = product['price']
-                cost = float(price['value'])
-                promotion = product.get('promotion', None)
-                tokens = 0
-                tokenName = getCurrencyToken(self.serverSettings.getCurrentSeason().getSeasonID())
-                if promotion:
-                    cost = float(promotion['discounted_cost'])
-                for entitlement in entitlements:
-                    if tokenName == entitlement['cd']:
-                        tokens = int(entitlement['amount'])
-                        break
+            return result.isSuccess() or None
+        self.__bundlesProducts = []
+        for product in result.getData().get('data', []):
+            entitlements = product['entitlements']
+            price = product['price']
+            cost = float(price['value'])
+            promotion = product.get('promotion', {})
+            tokens = 0
+            tokenName = getCurrencyToken(self.serverSettings.getCurrentSeason().getSeasonID())
+            if isinstance(promotion, Dict) and 'discounted_cost' in promotion:
+                cost = float(promotion['discounted_cost'])
+            for entitlement in entitlements:
+                if tokenName == entitlement['cd']:
+                    tokens = int(entitlement['amount'])
+                    break
 
-                if tokens == 0:
-                    continue
-                self.__bundlesProducts.append({'tokens': tokens, 
-                   'tags': product['tags'], 
-                   'price': Money.makeFrom(price['currency'], cost), 
-                   'productCode': product['code'], 
-                   'id': product['id']})
+            if tokens == 0:
+                continue
+            self.__bundlesProducts.append({'tokens': tokens, 
+               'tags': product['tags'], 
+               'price': Money.makeFrom(price['currency'], cost), 
+               'productCode': product['code'], 
+               'id': product['id']})
 
-            self.__bundlesProducts.sort(key=lambda elem: elem['tokens'])
-            return
+        self.__bundlesProducts.sort(key=lambda elem: elem['tokens'])
 
     def isChapterFinished(self, cycleID):
         return bool(self.__eventsCache.questsProgress.getTokenCount(getEndToken(cycleID)))
@@ -407,6 +407,7 @@ class ArmoryYardController(IArmoryYardController):
             return State.POSTPROGRESSION
         return State.ACTIVE
 
+    @g_execute_after_hangar_space_inited
     def goToArmoryYard(self, tabId=TabId.PROGRESS, loadBuyView=False):
         if not self.isActive():
             return

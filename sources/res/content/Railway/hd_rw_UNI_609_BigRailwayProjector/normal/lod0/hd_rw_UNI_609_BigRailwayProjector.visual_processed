@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_wall_0</identifier>
+					<collisionFlags>131</collisionFlags>
+					<materialKind>0</materialKind>
+				</material>
+				<groupOrigin>0.230665 12.465492 -0.071368</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>112</materialKind>
+					<property>
+						normalMap
+						<Texture>content/Railway/hd_rw_UNI_609_BigRailwayProjector/hd_rw_UNI_609_BigRailwayProjector_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Railway/hd_rw_UNI_609_BigRailwayProjector/hd_rw_UNI_609_BigRailwayProjector_GMM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Railway/hd_rw_UNI_609_BigRailwayProjector/hd_rw_UNI_609_BigRailwayProjector_AM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.390163 15.370795 -0.134763</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.194874 -0.026202 -2.249228</min>
+		<max>1.947259 30.767792 1.979703</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>287806</geometrySize>
+	<minUVDensity>0.001203</minUVDensity>
+</root>

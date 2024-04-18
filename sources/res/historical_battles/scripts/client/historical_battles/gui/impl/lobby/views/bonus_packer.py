@@ -153,6 +153,7 @@ class HBTokenBonusUIPacker(TokenBonusUIPacker):
         keys = bonus.getValue().keys()
         if keys:
             model.setName(keys[0])
+            model.setUserName(backport.text(R.strings.quests.bonusName.dyn(keys[0])()))
         model.setValue(str(bonus.getCount()))
         model.setIconSmall(backport.image(R.images.historical_battles.gui.maps.icons.quests.bonuses.small.hbUnlockVehicles()))
         model.setIconBig(backport.image(R.images.historical_battles.gui.maps.icons.quests.bonuses.big.hbUnlockVehicles()))

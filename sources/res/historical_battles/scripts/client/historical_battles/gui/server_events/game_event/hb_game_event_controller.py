@@ -272,6 +272,15 @@ class HBGameEventController(PerformanceAnalyzerMixin, Notifiable, IGameEventCont
                 yield prbDispatcher.doSelectAction(PrbAction(PREBATTLE_ACTION_NAME.HISTORICAL_BATTLES))
             return
 
+    @adisp_process
+    def selectRandomMode(self):
+        dispatcher = self.prbDispatcher
+        if dispatcher is None:
+            return
+        else:
+            yield dispatcher.doSelectAction(PrbAction(PREBATTLE_ACTION_NAME.RANDOM))
+            return
+
     def isShowingProgressionView(self):
         return self.__isShowingProgressionView
 

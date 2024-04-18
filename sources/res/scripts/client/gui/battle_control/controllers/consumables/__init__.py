@@ -10,6 +10,10 @@ def updateEquipmentControllers(key, value):
     _EQUIPMENT_CONTROLLERS.update({key: value})
 
 
+def updateReplayEquipmentControllers(key, value):
+    _REPLAY_EQUIPMENT_CONTROLLERS.update({key: value})
+
+
 def createAmmoCtrl(setup):
     if setup.isReplayRecording:
         return ammo_ctrl.AmmoReplayRecorder(setup.replayCtrl)

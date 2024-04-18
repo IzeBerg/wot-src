@@ -19,6 +19,9 @@ from gui.impl import backport
 from gui.impl.gen import R
 from gui.platform.base.statuses.constants import StatusTypes
 from gui.prb_control import prbDispatcherProperty, prbInvitesProperty
+from gui.prb_control import settings as prb_control_settings
+from gui.prb_control.dispatcher import g_prbLoader
+from gui.prb_control.entities.base.ctx import PrbAction
 from gui.ranked_battles import ranked_helpers
 from gui.server_events.events_dispatcher import showMissionsBattlePass, showMissionsMapboxProgression, showPersonalMission
 from gui.shared import EVENT_BUS_SCOPE, actions, event_dispatcher as shared_events, events, g_eventBus
@@ -50,10 +53,22 @@ from uilogging.wot_plus.logging_constants import NotificationAdditionalData
 from web.web_client_api import webApiCollection
 from web.web_client_api.sound import HangarSoundWebApi
 from wg_async import wg_async, wg_await
+from historical_battles.skeletons.gui.game_event_controller import IGameEventController
 if typing.TYPE_CHECKING:
     from typing import Tuple
     from notification.NotificationsModel import NotificationsModel
     from gui.platform.wgnp.steam_account.statuses import SteamAccEmailStatus
+
+@adisp_process
+def showRandomHangar():
+    yield g_prbLoader.getDispatcher().doSelectAction(PrbAction(prb_control_settings.PREBATTLE_ACTION_NAME.RANDOM))
+
+
+def preprocessInHBMode():
+    gameEventController = dependency.instance(IGameEventController)
+    if gameEventController.isHistoricalBattlesMode():
+        showRandomHangar()
+
 
 class ActionHandler(object):
 
@@ -1316,6 +1331,7 @@ class _OpenArmoryYardMain(NavigationDisabledActionHandler):
         return ('openArmoryYardMain', )
 
     def doAction(self, model, entityID, action):
+        preprocessInHBMode()
         self.__ctrl.goToArmoryYard()
 
 
@@ -1331,6 +1347,7 @@ class _OpenArmoryYardBuyView(NavigationDisabledActionHandler):
         return ('openArmoryYardBuy', )
 
     def doAction(self, model, entityID, action):
+        preprocessInHBMode()
         self.__ctrl.goToArmoryYard(loadBuyView=True)
 
 
@@ -1346,6 +1363,7 @@ class _OpenArmoryYardQuest(NavigationDisabledActionHandler):
         return ('openArmoryYardQuest', )
 
     def doAction(self, model, entityID, action):
+        preprocessInHBMode()
         self.__ctrl.goToArmoryYardQuests()
 
 

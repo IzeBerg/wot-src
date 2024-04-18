@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd1</identifier>
+					<fx>shaders/std_effects/PBS_ext_dual.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>111</materialKind>
+					<property>
+						normalMap
+						<Texture>content/Environment/env_112_06_WideBridge/env_112_06_WideBridge_ctf_tile_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/env_112_06_WideBridge/env_112_06_WideBridge_ctf_tile_GMM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap2
+						<Texture>content/Environment/env_112_06_WideBridge/env_112_06_WideBridge_ctf_AM2.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/env_112_06_WideBridge/env_112_06_WideBridge_ctf_tile_AM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-2.021160 5.619202 0.000000</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext_dual.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>111</materialKind>
+					<property>
+						normalMap
+						<Texture>content/Environment/env_112_07_Embankment/env_112_07_Embankment_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/env_112_07_Embankment/env_112_07_Embankment_GMM.dds</Texture>
+					</property>
+					<property>
+						g_useNormalPackDXT1
+						<Bool>false</Bool>
+					</property>
+					<property>
+						diffuseMap2
+						<Texture>content/Environment/env_112_06_WideBridge/env_112_06_WideBridge_ctf_AM2.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/env_112_07_Embankment/env_112_07_Embankment_AM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-1.742581 0.253077 0.000001</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-4.226427 -5.154191 -5.029023</min>
+		<max>0.741266 5.660345 5.029026</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>1548</geometrySize>
+	<minUVDensity>0.009868</minUVDensity>
+</root>

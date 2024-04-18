@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>Root</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>Gun_01</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.038275 0.546765 0.152260</row3>
+				</transform>
+				<node>
+					<identifier>Gun_02</identifier>
+					<transform>
+						<row0>1.000000 0.000000 -0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>-0.038275 0.696088 0.036301</row3>
+					</transform>
+					<node>
+						<identifier>Gun_02_BlendBone</identifier>
+						<transform>
+							<row0>1.000000 0.000000 0.000000</row0>
+							<row1>0.000000 1.000000 0.000000</row1>
+							<row2>0.000000 0.000000 -1.000000</row2>
+							<row3>0.000000 -1.242854 -0.188561</row3>
+						</transform>
+					</node>
+				</node>
+				<node>
+					<identifier>Gun_01_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 -1.000000</row2>
+						<row3>-0.038275 -0.546765 -0.152260</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>Root_BlendBone</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 -1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>Gun_02_BlendBone</node>
+		<node>Gun_01_BlendBone</node>
+		<node>Root_BlendBone</node>
+		<geometry>
+			<vertices>n0Shape.vertices</vertices>
+			<primitive>n0Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>n_metal0_skinned</identifier>
+					<fx>shaders/std_effects/lightonly_skinned.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						diffuseMap
+						<Texture>content/MilitaryEnvironment/hd_mle_SU_013_ZAP61K/hd_mle_SU_013_ZAP61K_AM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.001551 1.124445 0.304516</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<constraints/>
+	<boundingBox>
+		<min>-2.260198 -0.003145 -3.247101</min>
+		<max>2.263299 2.252036 2.638069</max>
+	</boundingBox>
+	<geometrySize>273320</geometrySize>
+	<minUVDensity>0.006077</minUVDensity>
+</root>

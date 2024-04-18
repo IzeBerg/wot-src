@@ -13,6 +13,7 @@ class _LootBoxSchema(W2CSchema):
 
 class _LootBoxStorageViewSchema(W2CSchema):
     id = Field(required=False, type=int, default=0)
+    lootbox_id = Field(required=False, type=int, default=0)
     category = Field(required=False, type=basestring)
     lootBoxType = Field(required=False, type=basestring)
 
@@ -109,10 +110,14 @@ class ReferralLootBoxesWindowWebApiMixin(object):
 
     @w2c(_LootBoxStorageViewSchema, 'referral_lootboxes_storage_window')
     def showReferralLootBoxesStorage(self, cmd):
+        from gui_lootboxes.gui.shared.event_dispatcher import showStorageView
         from gui_lootboxes.gui.shared.event_dispatcher import showSpecificBoxInStorageView
 
         def closeCallback():
             url = referral_program_helpers.getReferralShopURL()
             self.__referralCtrl.showWindow(url=url)
 
-        showSpecificBoxInStorageView(category=cmd.category, lootBoxType=cmd.lootBoxType, returnPlace=ReturnPlaces.TO_REFERRAL, closeCallback=closeCallback)
+        if cmd.lootbox_id:
+            showStorageView(initialLootBoxId=cmd.lootbox_id, returnPlace=ReturnPlaces.TO_REFERRAL)
+        else:
+            showSpecificBoxInStorageView(category=cmd.category, lootBoxType=cmd.lootBoxType, returnPlace=ReturnPlaces.TO_REFERRAL, closeCallback=closeCallback)

@@ -51,6 +51,9 @@ class SoundBattleController(CallbackDelayer):
         VehicleLivesComponent.onVehicleDestroyed -= self.__onVehicleDestroyed
         HBBattleFeedbackComponent.onVehicleHeal -= self.__onVehicleHeal
         g_playerEvents.onRoundFinished -= self.__onRoundFinished
+        if self.__hurryUpTimerSoundIsPlaying:
+            SoundGroups.g_instance.playSound2D(HBTimerEvents.STOP)
+            self.__hurryUpTimerSoundIsPlaying = False
         CallbackDelayer.destroy(self)
 
     def __onVehicleHeal(self, eventID):

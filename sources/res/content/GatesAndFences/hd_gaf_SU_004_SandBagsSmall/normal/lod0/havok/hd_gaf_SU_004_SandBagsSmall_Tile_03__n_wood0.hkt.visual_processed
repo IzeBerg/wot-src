@@ -227,7 +227,36 @@
 					</property>
 					<property>
 						g_detailInfluences
-						<Vector4>3.000000 2.000000 20.000000 1.000000</Vector4>
+						<Vector4>1.000000 3.000000 2.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_detailMap
+						<Texture>content/Detail_tex/Detail_tile_Textile.dds</Texture>
+					</property>
+					<property>
+						g_detailRejectTiling
+						<Vector4>20.000000 1.000000 1.000000 60.000000</Vector4>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/GatesAndFences/hd_gaf_SU_004_SandBagsSmall/hd_gaf_SU_004_SandBagsSmall_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/GatesAndFences/hd_gaf_SU_004_SandBagsSmall/hd_gaf_SU_004_SandBagsSmall_ANM.dds</Texture>
+					</property>
+				</material>
+				<fade_material>
+					<identifier>n_wood0_fade</identifier>
+					<fx>shaders/std_effects/PBS_ext_detail_rigid_skinned_havok_fade.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/GatesAndFences/hd_gaf_SU_004_SandBagsSmall/hd_gaf_SU_004_SandBagsSmall_AM.dds</Texture>
+					</property>
+					<property>
+						g_detailInfluences
+						<Vector4>1.000000 1.000000 40.000000 1.000000</Vector4>
 					</property>
 					<property>
 						g_detailMap
@@ -245,22 +274,9 @@
 						normalMap
 						<Texture>content/GatesAndFences/hd_gaf_SU_004_SandBagsSmall/hd_gaf_SU_004_SandBagsSmall_ANM.dds</Texture>
 					</property>
-				</material>
-				<fade_material>
-					<identifier>n_wood0_fade</identifier>
-					<fx>shaders/std_effects/PBS_ext_rigid_skinned_havok_fade.fx</fx>
-					<collisionFlags>0</collisionFlags>
 					<property>
-						normalMap
-						<Texture>content/GatesAndFences/hd_gaf_SU_004_SandBagsSmall/hd_gaf_SU_004_SandBagsSmall_ANM.dds</Texture>
-					</property>
-					<property>
-						metallicGlossMap
-						<Texture>content/GatesAndFences/hd_gaf_SU_004_SandBagsSmall/hd_gaf_SU_004_SandBagsSmall_GMM.dds</Texture>
-					</property>
-					<property>
-						diffuseMap
-						<Texture>content/GatesAndFences/hd_gaf_SU_004_SandBagsSmall/hd_gaf_SU_004_SandBagsSmall_AM.dds</Texture>
+						g_enableTerrainBlending
+						<Bool>false</Bool>
 					</property>
 					<property>
 						texRandom
@@ -283,6 +299,6 @@
 		<min>-1.703118 0.148173 -3.335943</min>
 		<max>0.486370 0.884413 0.354477</max>
 	</boundingBox>
-	<geometrySize>59832</geometrySize>
+	<geometrySize>60156</geometrySize>
 	<minUVDensity>0.004841</minUVDensity>
 </root>

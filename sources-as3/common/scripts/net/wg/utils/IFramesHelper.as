@@ -12,6 +12,8 @@ package net.wg.utils
       
       function addScriptToFrame(param1:int, param2:Function) : void;
       
+      function addScriptToFrameByLabel(param1:String, param2:Function) : void;
+      
       function clearFrameScripts() : void;
    }
 }

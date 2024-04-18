@@ -185,6 +185,7 @@ package net.wg.gui.battle
       override protected function updateCurrentTab() : void
       {
          var _loc1_:Boolean = false;
+         var _loc3_:Boolean = false;
          statsTable.visible = tabs.selectedIndex == 0;
          _loc1_ = this.getTabDataAlias(tabs.selectedIndex) == PERSONAL_RESERVES_TAB_ALIAS;
          if(this.tabReserves != null)
@@ -196,7 +197,7 @@ package net.wg.gui.battle
          {
             this.tabQuest.visible = _loc2_;
          }
-         var _loc3_:Boolean = statsTable.visible || _loc2_ || _loc1_;
+         _loc3_ = statsTable.visible || _loc2_ || _loc1_;
          title.visible = _loc3_ && !_loc1_;
          if(_loc3_)
          {

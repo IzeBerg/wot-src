@@ -23,6 +23,7 @@ from historical_battles.gui.impl.lobby.order_info_view import OrderInfoView
 from historical_battles.gui.impl.lobby.shop_views.base_shop_group_view import BaseShopGroupView
 from historical_battles.gui.impl.lobby.shop_views.booster_buy_dialog_view import BoosterBuyDialogView
 from historical_battles.gui.impl.lobby.tooltips.order_tooltip import OrderTooltip
+from historical_battles.gui.server_events.hb_awards_formatter import HBQuestsTokenBonusFormatter
 from historical_battles.gui.shared.event_dispatcher import showHBHangar
 from historical_battles.gui.shared.gui_items.items_actions.hb_shop import HBShopBuyBundleAction
 from historical_battles.gui.sounds.sound_constants import BOOSTERS_SHOP_SOUND_SPACE
@@ -64,6 +65,7 @@ def getHBBoostersShopFormatterMap():
     formattersMap = getDefaultFormattersMap()
     formattersMap.update({PREMIUM_ENTITLEMENTS.BASIC: HBBoostersShopPremiumDaysBonusFormatter(), 
        PREMIUM_ENTITLEMENTS.PLUS: HBBoostersShopPremiumDaysBonusFormatter(), 
+       'HBCoupon': HBQuestsTokenBonusFormatter(), 
        'goodies': HBBoostersShopGoodiesBonusFormatter(), 
        'items': HBBoostersShopItemsBonusFormatter()})
     return formattersMap
@@ -76,6 +78,7 @@ def getHBBoostersShopAwardFormatter():
 class BonusGroups(Enum):
     PREMIUM = 'premium_plus'
     TOKENS = 'battleToken'
+    HB_TOKENS = 'HBCoupon'
     CUSTOMIZATIONS = 'customizations'
     OTHER = 'other'
 
@@ -262,6 +265,8 @@ class BoostersShopView(BaseShopGroupView):
         result = {}
         for bonus in bonuses:
             bonusType = BonusGroups.valueToEnum(bonus.getName())
+            if bonusType == BonusGroups.HB_TOKENS:
+                bonusType = BonusGroups.TOKENS
             if bonusType is not None and bonusType in groups:
                 result.setdefault(bonusType, []).append(bonus)
             else:

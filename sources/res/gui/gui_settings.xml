@@ -1137,22 +1137,50 @@
 	</setting>
 	<setting>
 		<name>referralProgram</name>
-		<type>dict</type>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://wotrp-ru-cdn.lesta.ru
-				<name>baseUrl</name>
-				<type>url</type>
+				<name>default</name>
+				<type>dict</type>
+				<value>
+					<item>
+						https://wotrp-ru-cdn.lesta.ru
+						<name>baseUrl</name>
+						<type>url</type>
+					</item>
+					<item>
+						$PARAMS(/reward_player)
+						<name>getVehicle</name>
+						<type>url</type>
+					</item>
+					<item>
+						$PARAMS(/main/shop/all)
+						<name>referralShop</name>
+						<type>url</type>
+					</item>
+				</value>
 			</item>
 			<item>
-				$PARAMS(/reward_player)
-				<name>getVehicle</name>
-				<type>url</type>
-			</item>
-			<item>
-				$PARAMS(/main/shop/all)
-				<name>referralShop</name>
-				<type>url</type>
+				<name>CT</name>
+				<type>dict</type>
+				<value>
+					<item>
+						https://wotrp-rtst-static.tanki.su
+						<name>baseUrl</name>
+						<type>url</type>
+					</item>
+					<item>
+						$PARAMS(/reward_player)
+						<name>getVehicle</name>
+						<type>url</type>
+					</item>
+					<item>
+						$PARAMS(/main/shop/all)
+						<name>referralShop</name>
+						<type>url</type>
+					</item>
+				</value>
 			</item>
 		</value>
 	</setting>

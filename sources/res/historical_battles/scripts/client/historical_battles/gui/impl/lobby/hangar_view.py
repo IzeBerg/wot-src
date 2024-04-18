@@ -41,6 +41,7 @@ from historical_battles.gui.prb_control import prb_config
 from historical_battles.gui.shared.event_dispatcher import openBuyBoosterBundleWindow, showInfoPage, showShopView, showHBProgressionView, showOrdersX15InfoWindow
 from historical_battles.gui.sounds.sound_constants import HANGAR_SOUND_SPACE, HBHangarEvents
 from historical_battles_common.hb_constants import AccountSettingsKeys, HB_GAME_PARAMS_KEY
+from historical_battles.skeletons.gui.game_event_controller import IGameEventController
 _logger = logging.getLogger(__name__)
 _BACKGROUND_ALPHA = 0.0
 _ORDER_ANIMATION_WAIT_TICK = 0.5
@@ -59,6 +60,7 @@ class HangarView(SelectableViewImpl, HangarSelectableView, BaseEventView):
     _spaceSwitchController = dependency.descriptor(IHangarSpaceSwitchController)
     guiLoader = dependency.descriptor(IGuiLoader)
     _hangarSpace = dependency.descriptor(IHangarSpace)
+    __gameEventController = dependency.descriptor(IGameEventController)
 
     def __init__(self, layoutID):
         settings = ViewSettings(layoutID)
@@ -162,6 +164,7 @@ class HangarView(SelectableViewImpl, HangarSelectableView, BaseEventView):
         self.viewModel.shopButton.onShopButtonClick += self.__onShopButtonClick
         self.viewModel.progressionButton.onProgressionButtonClick += self.__onProgressionButtonClick
         self.viewModel.onInfoClick += self.__onInfoClick
+        self.viewModel.onCloseClick += self.__onCloseClick
         self.viewModel.onMousePressed += self.__onMousePressed
         self._gameEventController.onFrontmanLockChanged += self.__onFrontmanLockChanged
         self._gameEventController.onQuestsUpdated += self.__onQuestsSyncCompleted
@@ -191,6 +194,7 @@ class HangarView(SelectableViewImpl, HangarSelectableView, BaseEventView):
         self.viewModel.shopButton.onShopButtonClick -= self.__onShopButtonClick
         self.viewModel.progressionButton.onProgressionButtonClick -= self.__onProgressionButtonClick
         self.viewModel.onInfoClick -= self.__onInfoClick
+        self.viewModel.onCloseClick -= self.__onCloseClick
         self.viewModel.onMousePressed -= self.__onMousePressed
         self._gameEventController.onFrontmanLockChanged -= self.__onFrontmanLockChanged
         self._gameEventController.onQuestsUpdated -= self.__onQuestsSyncCompleted
@@ -534,6 +538,10 @@ class HangarView(SelectableViewImpl, HangarSelectableView, BaseEventView):
     @staticmethod
     def __onInfoClick():
         showInfoPage()
+
+    def __onCloseClick(self):
+        self.__gameEventController.selectRandomMode()
+        self.destroyWindow()
 
     def __onMousePressed(self, args):
         WWISE.WW_setState(HangarFullscreenState.GROUP, HangarFullscreenState.OPEN if args.get('isPressed', False) else HangarFullscreenState.CLOSE)

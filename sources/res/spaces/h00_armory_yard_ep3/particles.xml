@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<forward>
+		<name>default</name>
+		<preload>
+			<shader>\data\shaders\ps.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_tex_hangar_v3.dds</texture>
+		</preload>
+		<fn_effect_bin>particles/environment/hangar/h00_ay_dust.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/hangar/h00_ay_godsmoke.eff</fn_effect_bin>
+	</forward>
+	<deferred>
+		<name>default</name>
+		<preload>
+			<shader>\data\shaders\ps.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_tex_hangar_v3.dds</texture>
+		</preload>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/hangar/h00_ay_dust.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/hangar/h00_ay_godsmoke.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/environment/hangar/h00_ay_dust.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/hangar/h00_ay_godsmoke.eff</fn_effect_bin>
+	</deferred>
+</root>

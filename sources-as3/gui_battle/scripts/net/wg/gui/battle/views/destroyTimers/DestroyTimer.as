@@ -16,6 +16,8 @@ package net.wg.gui.battle.views.destroyTimers
    import net.wg.gui.battle.views.destroyTimers.data.StatusNotificationVO;
    import net.wg.gui.battle.views.destroyTimers.events.DestroyTimerEvent;
    import net.wg.gui.components.controls.TextFieldContainer;
+   import net.wg.gui.utils.FrameHelper;
+   import net.wg.utils.IFramesHelper;
    import net.wg.utils.IScheduler;
    import org.idmedia.as3commons.util.StringUtils;
    import scaleform.clik.motion.Tween;
@@ -60,6 +62,8 @@ package net.wg.gui.battle.views.destroyTimers
       private static const HIDE_FRAME_LABEL:String = "hide";
       
       private static const BEAT_LAST_FRAME:String = "repeat";
+      
+      private static const HIDE_COMPLETE_FRAME:String = "hideComplete";
       
       private static const DESC_TEXT_COLORS:Object = {
          "red":15626240,
@@ -106,12 +110,22 @@ package net.wg.gui.battle.views.destroyTimers
       
       private var _fontSize:int = -1;
       
+      private var _frameHelper:IFramesHelper;
+      
       public function DestroyTimer()
       {
          super();
          stop();
          init(true,true);
          this._scheduler = App.utils.scheduler;
+         this._frameHelper = new FrameHelper(this);
+         this._frameHelper.addScriptToFrameByLabel(HIDE_COMPLETE_FRAME,this.onHideComplete);
+      }
+      
+      private function onHideComplete() : void
+      {
+         stop();
+         visible = false;
       }
       
       override protected function invokeAdditionalActionOnIntervalUpdate() : void
@@ -131,6 +145,8 @@ package net.wg.gui.battle.views.destroyTimers
       
       override protected function onDispose() : void
       {
+         this._frameHelper.dispose();
+         this._frameHelper = null;
          this.clearTweenX();
          this.resetTimerStates();
          this._scheduler = null;
