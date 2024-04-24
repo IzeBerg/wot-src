@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<version>3</version>
+	<GameObjects>
+		<GameObject>
+			<name>River_sound_02</name>
+			<UUID>f5f1e5cb-e420-4da6-bc39-85c0f03a6217</UUID>
+			<flags>0</flags>
+		</GameObject>
+	</GameObjects>
+	<components>
+		<ComponentPool>
+			<type>Transform</type>
+			<version>1</version>
+			<component>
+				<objectIndex>0</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>0 0 0</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>-0 0 0</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>PrismArea</type>
+			<version>1</version>
+			<component>
+				<objectIndex>0</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Curvature</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Tesselation Step</name>
+						<value>20</value>
+					</property>
+					<property>
+						<name>Height</name>
+						<value>20</value>
+					</property>
+					<property>
+						<name>Points</name>
+						<collection>
+							<item>
+								<value>
+									8.21722 -8.08374
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-7.6091 9.12875
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									32.7053 31.4628
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									116.814 35.6533
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									164.178 43.3426
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									217.596 76.7031
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									226.362 66.6452
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									182.516 34.5294
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									108.585 22.171
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									54.9886 20.2233
+									<!--BW_String-->
+								</value>
+							</item>
+						</collection>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>SoundZone</type>
+			<version>1</version>
+			<component>
+				<objectIndex>0</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Zone Enter Event</name>
+						<value/>
+					</property>
+					<property>
+						<name>Zone Exit Event</name>
+						<value/>
+					</property>
+					<property>
+						<name>Emitter Event</name>
+						<value>ambient_water_calm_02</value>
+					</property>
+					<property>
+						<name>Reverb</name>
+						<value/>
+					</property>
+					<property>
+						<name>Reverb Level</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Volume Deviation</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Color</name>
+						<value>
+							0 0 1 0.5
+							<!--BW_String-->
+						</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+	</components>
+</root>

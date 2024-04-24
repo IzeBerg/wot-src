@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<version>3</version>
+	<GameObjects>
+		<GameObject>
+			<name>cave_zone</name>
+			<UUID>392dbea9-68ae-4f3c-9e33-2e7bd4acbeb5</UUID>
+			<flags>0</flags>
+		</GameObject>
+	</GameObjects>
+	<components>
+		<ComponentPool>
+			<type>Transform</type>
+			<version>1</version>
+			<component>
+				<objectIndex>0</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>0 0 0</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>-0 0 0</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>PrismArea</type>
+			<version>1</version>
+			<component>
+				<objectIndex>0</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Curvature</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Tesselation Step</name>
+						<value>100</value>
+					</property>
+					<property>
+						<name>Height</name>
+						<value>34</value>
+					</property>
+					<property>
+						<name>Points</name>
+						<collection>
+							<item>
+								<value>
+									-38.2174 -49.0857
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-114.687 -60.8511
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-79.1755 -123.923
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-77.3262 -210.306
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									17.1929 -200.732
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									76.1012 -192.052
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									36.7607 -103.227
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-4.99548 -46.6071
+									<!--BW_String-->
+								</value>
+							</item>
+						</collection>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>SoundZone</type>
+			<version>1</version>
+			<component>
+				<objectIndex>0</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Zone Enter Event</name>
+						<value>amb_map_210_bf_epic_desert_cave_ZoneEnter</value>
+					</property>
+					<property>
+						<name>Zone Exit Event</name>
+						<value>amb_map_210_bf_epic_desert_cave_ZoneExit</value>
+					</property>
+					<property>
+						<name>Emitter Event</name>
+						<value/>
+					</property>
+					<property>
+						<name>Reverb</name>
+						<value>AUX_env_Mountain</value>
+					</property>
+					<property>
+						<name>Reverb Level</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Volume Deviation</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Color</name>
+						<value>
+							0 0 1 0.5
+							<!--BW_String-->
+						</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+	</components>
+</root>

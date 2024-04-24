@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>111</materialKind>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<property>
+						alphaReference
+						<Int>181</Int>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_vertexColorMode
+						<Int>0</Int>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Buildings/hd_bld_UNI_008_WorkshopNew/hd_bld_UNI_008_WorkshopNew_05_BAM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Buildings/hd_bld_UNI_008_WorkshopNew/hd_bld_UNI_008_WorkshopNew_05_BANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Buildings/hd_bld_UNI_008_WorkshopNew/hd_bld_UNI_008_WorkshopNew_05_BGMM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>20.013988 1.580993 0.066221</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.093143 -0.192088 -0.365048</min>
+		<max>40.121120 3.354074 0.497490</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>1704</geometrySize>
+	<minUVDensity>0.000197</minUVDensity>
+</root>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd1</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>110</materialKind>
+					<fx>shaders/std_effects/PBS_ext_detail.fx</fx>
+					<property>
+						g_detailRejectTiling
+						<Vector4>1.000000 1.000000 50.000000 50.000000</Vector4>
+					</property>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_vertexColorMode
+						<Int>2</Int>
+					</property>
+					<property>
+						g_detailMap
+						<Texture>content/Environment/hd_env_EU_466_Iceberg/Snow_Detailmap.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/MilitaryEnvironment/00_Tiles/snow2_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/MilitaryEnvironment/00_Tiles/snow2_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/MilitaryEnvironment/00_Tiles/snow2_GMM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>2.872997 50.354050 21.186495</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd0</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>110</materialKind>
+					<fx>shaders/std_effects/PBS_ext_detail.fx</fx>
+					<property>
+						g_detailInfluences
+						<Vector4>1.000000 2.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_detailRejectTiling
+						<Vector4>1.000000 1.000000 64.000000 64.000000</Vector4>
+					</property>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_enableTransmission
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_detailMap
+						<Texture>content/Environment/hd_env_EU_466_Iceberg/Snow_Detailmap.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_EU_466_Iceberg/hd_env_EU_466_Iceberg_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_UNI_001_IceRock/hd_env_UNI_001_IceRock_Global_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env_UNI_001_IceRock/hd_env_UNI_001_IceRock_GMM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>3.628237 27.676128 21.807854</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-55.535000 -20.243055 -55.252300</min>
+		<max>61.280994 79.235001 98.212624</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>39144</geometrySize>
+	<minUVDensity>0.000005</minUVDensity>
+</root>

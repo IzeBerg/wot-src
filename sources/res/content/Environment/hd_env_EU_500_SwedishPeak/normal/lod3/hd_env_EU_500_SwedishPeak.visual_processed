@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_tiled_atlas_global.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>111</materialKind>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_tileUVScale
+						<Vector4>32.000000 32.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_atlasIndexes
+						<Vector4>0.000000 1.000000 2.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>0.821811 0.885000 0.792075 1.000000</Vector4>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.880000 0.700089 0.475200 0.010000</Vector4>
+					</property>
+					<property>
+						g_atlasSizes
+						<Vector4>2.000000 2.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						globalTex
+						<Texture>content/Environment/hd_env_EU_500_SwedishPeak/hd_env_EU_500_SwedishPeak_Global_GT.dds</Texture>
+					</property>
+					<property>
+						atlasAlbedoHeight
+						<Texture>content/Environment/00_Atlases/hd_env_EU_004_Snow_rocks_01_atlas_AM.atlas</Texture>
+					</property>
+					<property>
+						atlasNormalGlossSpec
+						<Texture>content/Environment/00_Atlases/hd_env_EU_004_Snow_rocks_01_atlas_GBMT.atlas</Texture>
+					</property>
+					<property>
+						atlasMetallicAO
+						<Texture>content/Environment/00_Atlases/hd_env_EU_004_Snow_rocks_01_atlas_MAO.atlas</Texture>
+					</property>
+					<property>
+						atlasBlend
+						<Texture>content/Environment/00_Atlases/hd_env_EU_500_SwedishPeak_atlas_blend.png</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Environment/hd_env_EU_004_Snow_rocks/hd_env_EU_004_Snow_rocks_dirt2_DM.dds</Texture>
+					</property>
+					<property>
+						g_dirtParams
+						<Vector4>0.100000 49.080002 1.000000 0.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>0.002448 6.672935 0.003322</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-7.273405 0.380529 -13.886401</min>
+		<max>7.281923 12.965343 13.890635</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>51504</geometrySize>
+	<minUVDensity>0.000108</minUVDensity>
+</root>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd2</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>content/Buildings/hd_bld_UNI_009_WorkshopOld/hd_bld_UNI_009_WorkshopOld_03_BAM.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>111</materialKind>
+					<property>
+						normalMap
+						<Texture>content/Buildings/hd_bld_UNI_009_WorkshopOld/hd_bld_UNI_009_WorkshopOld_03_BANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Buildings/hd_bld_UNI_009_WorkshopOld/hd_bld_UNI_009_WorkshopOld_03_BGMM.dds</Texture>
+					</property>
+					<property>
+						g_vertexColorMode
+						<Int>3</Int>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaReference
+						<Int>147</Int>
+					</property>
+				</material>
+				<groupOrigin>9.066435 7.018849 -9.667738</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.025085 -1.496975 -20.184391</min>
+		<max>19.157955 15.534674 0.848914</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>4900</geometrySize>
+	<minUVDensity>0.000400</minUVDensity>
+</root>

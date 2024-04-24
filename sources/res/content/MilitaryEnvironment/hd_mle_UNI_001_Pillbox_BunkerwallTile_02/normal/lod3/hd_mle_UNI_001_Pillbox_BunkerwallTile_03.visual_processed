@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>112</materialKind>
+				</material>
+				<groupOrigin>1.573388 1.599187 -0.158704</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd2</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>112</materialKind>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<property>
+						normalMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_001_Pillbox_BunkerwallTile_02/hd_mle_UNI_001_Pillbox_BunkerwallTile_02_BANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_001_Pillbox_BunkerwallTile_02/hd_mle_UNI_001_Pillbox_BunkerwallTile_02_BGMM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_001_Pillbox_BunkerwallTile_02/hd_mle_UNI_001_Pillbox_BunkerwallTile_02_BAM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.027253 2.366732 0.393531</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-7.567024 -0.436355 -2.736713</min>
+		<max>7.512517 5.169819 3.523774</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>9496</geometrySize>
+	<minUVDensity>0.003177</minUVDensity>
+</root>

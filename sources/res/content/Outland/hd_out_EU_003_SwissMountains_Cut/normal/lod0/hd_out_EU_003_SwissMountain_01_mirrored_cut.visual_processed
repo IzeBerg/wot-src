@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<mfm>materials/template_mfms/lightonly.mfm</mfm>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>111</materialKind>
+					<fx>shaders/std_effects/PBS_ext_detail.fx</fx>
+					<property>
+						g_detailRejectTiling
+						<Vector4>1 1 32 32</Vector4>
+					</property>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_detailMap
+						<Texture>content/Buildings/bld_19_02_Monastery/bld_19_detalimap.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Outland/hd_out_EU_003_SwissMountains_Cut/hd_out_EU_003_SwissMountain_01_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Outland/hd_out_EU_003_SwissMountains/hd_out_EU_003_SwissMountain_01_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Outland/hd_out_EU_003_SwissMountains/hd_out_EU_003_SwissMountain_01_GMM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-50.109299 101.872917 -630.137817</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-507.179291 -4.481037 -822.591492</min>
+		<max>405.176117 206.838333 -437.840546</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>63238</geometrySize>
+	<minUVDensity>0.000001</minUVDensity>
+</root>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_tiled.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>112</materialKind>
+					<property>
+						g_atlasSizes
+						<Vector4>4.000000 4.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						blendMask
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_817_InvertedShip/hd_mle_UNI_817_InvertedShip_blend.png</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/MilitaryEnvironment/00_Tiles/Dirt_Ships_DM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile0
+						<Texture>content/MilitaryEnvironment/00_Tiles/dds/deck_dark_grey_rivets_AM.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile0
+						<Texture>content/MilitaryEnvironment/00_Tiles/dds/deck_dark_grey_rivets_GBMT.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile0
+						<Texture>content/MilitaryEnvironment/00_Tiles/dds/deck_dark_grey_rivets_MAO.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile1
+						<Texture>content/MilitaryEnvironment/00_Tiles/dds/rust_AM.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile1
+						<Texture>content/MilitaryEnvironment/00_Tiles/dds/rust_GBMT.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile1
+						<Texture>content/MilitaryEnvironment/00_Tiles/dds/rust_MAO.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile2
+						<Texture>content/MilitaryEnvironment/00_Tiles/dds/snow_AM.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile2
+						<Texture>content/MilitaryEnvironment/00_Tiles/dds/snow_GBMT.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile2
+						<Texture>content/MilitaryEnvironment/00_Tiles/dds/snow_MAO.dds</Texture>
+					</property>
+					<property>
+						colorTex
+						<Texture>content/UniversalTextures/Universal_GCM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.061922 0.455883 2.348413</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.687840 -0.234274 -0.033029</min>
+		<max>1.563996 1.117632 4.693644</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>6304</geometrySize>
+	<minUVDensity>0.020005</minUVDensity>
+</root>

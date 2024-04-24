@@ -1,0 +1,576 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>hd_mle_UNI_017_BunkerEntrance_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>lod1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+				<node>
+					<identifier>s0</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>s1</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>s2</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>s3</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>s7</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd5</identifier>
+					<fx>shaders/std_effects/PBS_tiled_atlas_global.fx</fx>
+					<materialKind>111</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						atlasAlbedoHeight
+						<Texture>content/MilitaryEnvironment/00_Atlases/hd_mle_UNI_Island_atlas_AM.atlas</Texture>
+					</property>
+					<property>
+						atlasBlend
+						<Texture>content/MilitaryEnvironment/00_Atlases/hd_mle_UNI_017_BunkerEntrance_atlas_blend.png</Texture>
+					</property>
+					<property>
+						atlasMetallicAO
+						<Texture>content/MilitaryEnvironment/00_Atlases/hd_mle_UNI_Island_atlas_MAO.atlas</Texture>
+					</property>
+					<property>
+						atlasNormalGlossSpec
+						<Texture>content/MilitaryEnvironment/00_Atlases/hd_mle_UNI_Island_atlas_GBMT.atlas</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/MilitaryEnvironment/00_Tiles/Dirt_Bunker_04_DM.dds</Texture>
+					</property>
+					<property>
+						g_atlasIndexes
+						<Vector4>9.000000 10.000000 3.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_atlasSizes
+						<Vector4>4.000000 3.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.470000 0.430000 0.380000 0.060000</Vector4>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>0.847059 0.847059 0.847059 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>0.772549 0.749020 0.721569 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>0.737255 0.729412 0.717647 1.000000</Vector4>
+					</property>
+					<property>
+						globalTex
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_017_BunkerEntrance/hd_mle_UNI_017_BunkerEntrance_GT.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>16.391376 35.778847 0.278887</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd4</identifier>
+					<fx>shaders/std_effects/PBS_tiled_atlas_global.fx</fx>
+					<materialKind>111</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						atlasAlbedoHeight
+						<Texture>content/MilitaryEnvironment/00_Atlases/hd_mle_UNI_Island_atlas_AM.atlas</Texture>
+					</property>
+					<property>
+						atlasBlend
+						<Texture>content/MilitaryEnvironment/00_Atlases/hd_mle_UNI_017_BunkerEntrance_atlas_blend.png</Texture>
+					</property>
+					<property>
+						atlasMetallicAO
+						<Texture>content/MilitaryEnvironment/00_Atlases/hd_mle_UNI_Island_atlas_MAO.atlas</Texture>
+					</property>
+					<property>
+						atlasNormalGlossSpec
+						<Texture>content/MilitaryEnvironment/00_Atlases/hd_mle_UNI_Island_atlas_GBMT.atlas</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Buildings/00_Tiles/bld_19_dirt_01_DM.dds</Texture>
+					</property>
+					<property>
+						g_atlasIndexes
+						<Vector4>8.000000 10.000000 2.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_atlasSizes
+						<Vector4>4.000000 3.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.470588 0.431373 0.380392 0.060000</Vector4>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>0.596078 0.596078 0.596078 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>0.772549 0.749020 0.721569 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>0.827451 0.827451 0.827451 1.000000</Vector4>
+					</property>
+					<property>
+						globalTex
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_017_BunkerEntrance/hd_mle_UNI_017_BunkerEntrance_GT.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>22.898628 -10.391007 0.418612</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>s_nd6</identifier>
+					<fx>shaders/std_effects/PBS_tiled_atlas_global.fx</fx>
+					<materialKind>111</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						atlasAlbedoHeight
+						<Texture>content/MilitaryEnvironment/00_Atlases/hd_mle_UNI_Island_atlas_AM.atlas</Texture>
+					</property>
+					<property>
+						atlasBlend
+						<Texture>content/MilitaryEnvironment/00_Atlases/hd_mle_UNI_017_BunkerEntrance_atlas_blend.png</Texture>
+					</property>
+					<property>
+						atlasMetallicAO
+						<Texture>content/MilitaryEnvironment/00_Atlases/hd_mle_UNI_Island_atlas_MAO.atlas</Texture>
+					</property>
+					<property>
+						atlasNormalGlossSpec
+						<Texture>content/MilitaryEnvironment/00_Atlases/hd_mle_UNI_Island_atlas_GBMT.atlas</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/MilitaryEnvironment/00_Tiles/Dirt_Bunker_01_DM.dds</Texture>
+					</property>
+					<property>
+						g_atlasIndexes
+						<Vector4>8.000000 10.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_atlasSizes
+						<Vector4>4.000000 3.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.470000 0.430000 0.380000 0.060000</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>0.596078 0.596078 0.596078 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>0.772549 0.749020 0.721569 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>0.749020 0.745098 0.741176 1.000000</Vector4>
+					</property>
+					<property>
+						globalTex
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_017_BunkerEntrance/hd_mle_UNI_017_BunkerEntrance_GT.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>21.543974 48.827969 -0.007710</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				3
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_tiled_atlas_global.fx</fx>
+					<materialKind>111</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						atlasAlbedoHeight
+						<Texture>content/MilitaryEnvironment/00_Atlases/hd_mle_UNI_Island_atlas_AM.atlas</Texture>
+					</property>
+					<property>
+						atlasBlend
+						<Texture>content/MilitaryEnvironment/00_Atlases/hd_mle_UNI_017_BunkerEntrance_atlas_blend.png</Texture>
+					</property>
+					<property>
+						atlasMetallicAO
+						<Texture>content/MilitaryEnvironment/00_Atlases/hd_mle_UNI_Island_atlas_MAO.atlas</Texture>
+					</property>
+					<property>
+						atlasNormalGlossSpec
+						<Texture>content/MilitaryEnvironment/00_Atlases/hd_mle_UNI_Island_atlas_GBMT.atlas</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/MilitaryEnvironment/00_Tiles/Dirt_Bunker_01_DM.dds</Texture>
+					</property>
+					<property>
+						g_atlasIndexes
+						<Vector4>8.000000 10.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_atlasSizes
+						<Vector4>4.000000 3.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.470000 0.430000 0.380000 0.060000</Vector4>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>0.596078 0.596078 0.596078 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>0.772549 0.749020 0.721569 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>0.878431 0.878431 0.878431 1.000000</Vector4>
+					</property>
+					<property>
+						globalTex
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_017_BunkerEntrance/hd_mle_UNI_017_BunkerEntrance_GT.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>21.512667 36.256977 0.015409</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				4
+				<material>
+					<identifier>s_nd7</identifier>
+					<fx>shaders/std_effects/PBS_tiled_atlas_global.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						atlasAlbedoHeight
+						<Texture>content/Buildings/00_Atlases/UNI_Industrial_01_atlas_AM.atlas</Texture>
+					</property>
+					<property>
+						atlasBlend
+						<Texture>content/MilitaryEnvironment/00_Atlases/hd_mle_UNI_017_BunkerEntrance_atlas_blend.png</Texture>
+					</property>
+					<property>
+						atlasMetallicAO
+						<Texture>content/Buildings/00_Atlases/UNI_Industrial_01_atlas_MAO.atlas</Texture>
+					</property>
+					<property>
+						atlasNormalGlossSpec
+						<Texture>content/Buildings/00_Atlases/UNI_Industrial_01_atlas_GBMT.atlas</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/MilitaryEnvironment/00_Tiles/Dirt_Bunker_04_DM.dds</Texture>
+					</property>
+					<property>
+						g_atlasIndexes
+						<Vector4>0.000000 1.000000 2.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_atlasSizes
+						<Vector4>6.000000 4.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.470000 0.430000 0.380000 0.060000</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>0.521569 0.368627 0.329412 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>0.709804 0.556863 0.388235 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>0.847059 0.800000 0.800000 1.000000</Vector4>
+					</property>
+					<property>
+						globalTex
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_017_BunkerEntrance/hd_mle_UNI_017_BunkerEntrance_GT.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-6.916722 19.620911 0.575516</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				5
+				<material>
+					<identifier>s_nd3</identifier>
+					<fx>shaders/std_effects/PBS_tiled_atlas_global.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						atlasAlbedoHeight
+						<Texture>content/Buildings/00_Atlases/UNI_Industrial_01_atlas_AM.atlas</Texture>
+					</property>
+					<property>
+						atlasBlend
+						<Texture>content/MilitaryEnvironment/00_Atlases/hd_mle_UNI_017_BunkerEntrance_atlas_blend.png</Texture>
+					</property>
+					<property>
+						atlasMetallicAO
+						<Texture>content/Buildings/00_Atlases/UNI_Industrial_01_atlas_MAO.atlas</Texture>
+					</property>
+					<property>
+						atlasNormalGlossSpec
+						<Texture>content/Buildings/00_Atlases/UNI_Industrial_01_atlas_GBMT.atlas</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Buildings/00_Tiles/Dirt_PChurch_03_DM.dds</Texture>
+					</property>
+					<property>
+						g_atlasIndexes
+						<Vector4>17.000000 18.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_atlasSizes
+						<Vector4>6.000000 4.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.470000 0.430000 0.380000 0.060000</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>0.760784 0.556863 0.447059 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>0.776471 0.776471 0.776471 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>0.619608 0.443137 0.341176 1.000000</Vector4>
+					</property>
+					<property>
+						globalTex
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_017_BunkerEntrance/hd_mle_UNI_017_BunkerEntrance_GT.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-8.899737 23.413244 0.014116</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				6
+				<material>
+					<identifier>s_nd2</identifier>
+					<fx>shaders/std_effects/PBS_tiled_atlas_global.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						atlasAlbedoHeight
+						<Texture>content/Buildings/00_Atlases/UNI_Industrial_01_atlas_AM.atlas</Texture>
+					</property>
+					<property>
+						atlasBlend
+						<Texture>content/MilitaryEnvironment/00_Atlases/hd_mle_UNI_017_BunkerEntrance_atlas_blend.png</Texture>
+					</property>
+					<property>
+						atlasMetallicAO
+						<Texture>content/Buildings/00_Atlases/UNI_Industrial_01_atlas_MAO.atlas</Texture>
+					</property>
+					<property>
+						atlasNormalGlossSpec
+						<Texture>content/Buildings/00_Atlases/UNI_Industrial_01_atlas_GBMT.atlas</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/MilitaryEnvironment/00_Tiles/Dirt_Bunker_04_DM.dds</Texture>
+					</property>
+					<property>
+						g_atlasIndexes
+						<Vector4>0.000000 1.000000 2.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_atlasSizes
+						<Vector4>6.000000 4.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.470000 0.430000 0.380000 0.060000</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>0.411765 0.309804 0.243137 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>0.662745 0.439216 0.329412 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>0.717647 0.717647 0.717647 1.000000</Vector4>
+					</property>
+					<property>
+						globalTex
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_017_BunkerEntrance/hd_mle_UNI_017_BunkerEntrance_GT.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-11.582159 25.900009 0.011135</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				7
+				<material>
+					<identifier>s_nd1</identifier>
+					<fx>shaders/std_effects/PBS_tiled_atlas_global.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						atlasAlbedoHeight
+						<Texture>content/Buildings/00_Atlases/UNI_Industrial_01_atlas_AM.atlas</Texture>
+					</property>
+					<property>
+						atlasBlend
+						<Texture>content/MilitaryEnvironment/00_Atlases/hd_mle_UNI_017_BunkerEntrance_atlas_blend.png</Texture>
+					</property>
+					<property>
+						atlasMetallicAO
+						<Texture>content/Buildings/00_Atlases/UNI_Industrial_01_atlas_MAO.atlas</Texture>
+					</property>
+					<property>
+						atlasNormalGlossSpec
+						<Texture>content/Buildings/00_Atlases/UNI_Industrial_01_atlas_GBMT.atlas</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/MilitaryEnvironment/00_Tiles/Dirt_Bunker_01_DM.dds</Texture>
+					</property>
+					<property>
+						g_atlasIndexes
+						<Vector4>10.000000 10.000000 2.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_atlasSizes
+						<Vector4>6.000000 4.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.470000 0.430000 0.380000 0.060000</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>0.596078 0.596078 0.596078 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>0.717647 0.678431 0.615686 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>0.674510 0.643137 0.588235 1.000000</Vector4>
+					</property>
+					<property>
+						globalTex
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_017_BunkerEntrance/hd_mle_UNI_017_BunkerEntrance_GT.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-4.857442 22.774971 15.404055</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				8
+				<material>
+					<identifier>s_wall_0</identifier>
+					<materialKind>0</materialKind>
+					<collisionFlags>144</collisionFlags>
+				</material>
+				<groupOrigin>-6.928988 9.928512 0.028872</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-27.099722 -19.279261 -47.868458</min>
+		<max>72.896996 77.080124 48.705681</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>278260</geometrySize>
+	<minUVDensity>0.000034</minUVDensity>
+</root>

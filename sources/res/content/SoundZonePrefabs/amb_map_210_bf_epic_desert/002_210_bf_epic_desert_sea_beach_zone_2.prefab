@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<version>3</version>
+	<GameObjects>
+		<GameObject>
+			<name>Sea_Beach_Zone_2</name>
+			<UUID>40cfe6b7-79ad-4ab8-bfb6-7131f91b359a</UUID>
+			<flags>0</flags>
+		</GameObject>
+	</GameObjects>
+	<components>
+		<ComponentPool>
+			<type>Transform</type>
+			<version>1</version>
+			<component>
+				<objectIndex>0</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>0 0 0</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>-0 0 0</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>PrismArea</type>
+			<version>1</version>
+			<component>
+				<objectIndex>0</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Curvature</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Tesselation Step</name>
+						<value>100</value>
+					</property>
+					<property>
+						<name>Height</name>
+						<value>40</value>
+					</property>
+					<property>
+						<name>Points</name>
+						<collection>
+							<item>
+								<value>
+									-224.724 -41.6932
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-312.419 134.393
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-205.541 279.951
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-22.6017 321.932
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									163.345 299.898
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									274.675 236.178
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									314.287 174.679
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									427.867 102.697
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									542.19 104.5
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									656.633 38.3563
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									744.766 -37.9071
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									811.478 -128.719
+									<!--BW_String-->
+								</value>
+							</item>
+						</collection>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>SoundZone</type>
+			<version>1</version>
+			<component>
+				<objectIndex>0</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Zone Enter Event</name>
+						<value/>
+					</property>
+					<property>
+						<name>Zone Exit Event</name>
+						<value/>
+					</property>
+					<property>
+						<name>Emitter Event</name>
+						<value>amb_map_3D_210_bf_epic_desert_sea</value>
+					</property>
+					<property>
+						<name>Reverb</name>
+						<value/>
+					</property>
+					<property>
+						<name>Reverb Level</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Volume Deviation</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Color</name>
+						<value>
+							0 0 1 0.5
+							<!--BW_String-->
+						</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+	</components>
+</root>

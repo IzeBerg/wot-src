@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd1</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>111</materialKind>
+					<property>
+						metallicGlossMap
+						<Texture>content/Buildings/bld_101_06_Church/bld_101_06_Church_details_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Buildings/bld_101_06_Church/bld_101_06_Church_details_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Buildings/bld_101_06_Church/bld_101_06_Church_details_AM.dds</Texture>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>5.229246 11.292170 1.696615</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext_dual.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>111</materialKind>
+					<property>
+						diffuseMap2
+						<Texture>content/Buildings/bld_101_06_Church/bld_101_06_Church_AM2.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Buildings/bld_101_06_Church/bld_101_06_Church_tile_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Buildings/bld_101_06_Church/bld_101_06_Church_tile_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Buildings/bld_101_06_Church/bld_101_06_Church_tile_AM.dds</Texture>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>5.221680 10.556178 1.708735</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-11.036601 -1.525384 -5.944353</min>
+		<max>21.495092 22.697628 9.337584</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>1562296</geometrySize>
+	<minUVDensity>0.000672</minUVDensity>
+</root>
