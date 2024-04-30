@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/glow.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						destBlend
+						<Int>2</Int>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h01_victory_day_2024/enviroment/hd_h01_VD24_0015_Light_Panel_AM.dds</Texture>
+					</property>
+					<property>
+						g_tintColor
+						<Vector4>0.949020 0.474510 0.113725 1.000000</Vector4>
+					</property>
+					<property>
+						selfIllumination
+						<Float>10.000000</Float>
+					</property>
+					<property>
+						srcBlend
+						<Int>9</Int>
+					</property>
+				</material>
+				<groupOrigin>0.000000 0.023950 -1.101389</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-11.959139 -0.000000 -2.212188</min>
+		<max>11.959139 0.047900 0.009411</max>
+	</boundingBox>
+	<geometrySize>140</geometrySize>
+	<minUVDensity>0.202185</minUVDensity>
+</root>

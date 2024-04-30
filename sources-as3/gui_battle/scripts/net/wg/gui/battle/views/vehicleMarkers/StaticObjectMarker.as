@@ -7,23 +7,32 @@ package net.wg.gui.battle.views.vehicleMarkers
    import flash.text.TextField;
    import flash.utils.getDefinitionByName;
    import net.wg.data.constants.Errors;
-   import net.wg.gui.battle.components.BattleUIComponent;
+   import net.wg.data.constants.Values;
+   import net.wg.gui.battle.views.actionMarkers.BaseActionMarker;
    import scaleform.clik.motion.Tween;
    import scaleform.gfx.TextFieldEx;
    
-   public class StaticObjectMarker extends BattleUIComponent
+   public class StaticObjectMarker extends BaseActionMarker
    {
       
       private static const ALPHA_SPEED:int = 1;
       
       private static const SHAPE_XY:Point = new Point(-145,-178);
       
+      private static const REPLY_POSITION:Point = new Point(24,0);
+      
       private static const COLOR_GREEN:String = "green";
       
       private static const COLOR_YELLOW:String = "yellow";
       
       private static const COLOR_ORANGE:String = "orange";
+      
+      private static const REPLIED_ME_STATE:int = 1;
        
+      
+      public var repliedMe:Sprite;
+      
+      public var hover:MovieClip;
       
       public var marker:MovieClip = null;
       
@@ -60,6 +69,8 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.distanceFieldGreen.visible = false;
          this.distanceFieldYellow.visible = false;
          this.distanceFieldOrange.visible = false;
+         this.hover.visible = false;
+         this.repliedMe.visible = false;
          TextFieldEx.setNoTranslate(this.distanceFieldGreen,true);
          TextFieldEx.setNoTranslate(this.distanceFieldYellow,true);
          TextFieldEx.setNoTranslate(this.distanceFieldOrange,true);
@@ -92,6 +103,11 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.setShape();
          this.setInitialAlpha();
          this.setDistanceText();
+      }
+      
+      public function activateHover(param1:Boolean) : void
+      {
+         this.hover.visible = param1;
       }
       
       public function doAlphaAnimation() : void
@@ -144,6 +160,11 @@ package net.wg.gui.battle.views.vehicleMarkers
          }
       }
       
+      public function setActiveState(param1:int) : void
+      {
+         this.repliedMe.visible = param1 == REPLIED_ME_STATE;
+      }
+      
       public function setDistance(param1:Number) : void
       {
          var _loc2_:Number = !isNaN(param1) ? Number(Math.round(param1)) : Number(-1);
@@ -178,10 +199,12 @@ package net.wg.gui.battle.views.vehicleMarkers
          if(this._distance > -1)
          {
             this._distanceTF.text = this._distance.toString() + this._metersString;
+            this._distanceTF.visible = true;
          }
          else
          {
-            this._distanceTF.text = "";
+            this._distanceTF.text = Values.EMPTY_STR;
+            this._distanceTF.visible = false;
          }
       }
       
@@ -219,6 +242,11 @@ package net.wg.gui.battle.views.vehicleMarkers
             this._tween.dispose();
             this._tween = null;
          }
+      }
+      
+      override protected function get getReplyPosition() : Point
+      {
+         return REPLY_POSITION;
       }
    }
 }

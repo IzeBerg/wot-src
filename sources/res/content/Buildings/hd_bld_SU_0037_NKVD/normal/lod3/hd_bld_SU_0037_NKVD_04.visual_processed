@@ -19,87 +19,359 @@
 			<primitiveGroup>
 				0
 				<material>
-					<identifier>s_wall_0</identifier>
-					<materialKind>111</materialKind>
-					<collisionFlags>131</collisionFlags>
-				</material>
-				<groupOrigin>-10.769516 2.543516 4.262865</groupOrigin>
-			</primitiveGroup>
-			<primitiveGroup>
-				1
-				<material>
 					<identifier>s_nd0</identifier>
-					<fx>shaders/std_effects/PBS_ext_dual.fx</fx>
+					<fx>shaders/std_effects/PBS_tiled.fx</fx>
 					<materialKind>111</materialKind>
 					<collisionFlags>0</collisionFlags>
 					<property>
-						diffuseMap
-						<Texture>content/Buildings/hd_bld_SU_0037_NKVD/hd_bld_SU_0037_NKVD_AM.dds</Texture>
+						albedoHeightTile0
+						<Texture>content/Buildings/00_Tiles/dds/Concrete_10_512_AM.dds</Texture>
 					</property>
 					<property>
-						diffuseMap2
-						<Texture>content/Buildings/hd_bld_SU_0037_NKVD/hd_bld_SU_0037_NKVD_04_AM2.dds</Texture>
+						albedoHeightTile1
+						<Texture>content/Buildings/00_Tiles/dds/RedBrick_10_debris_512_AM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile2
+						<Texture>content/Buildings/00_Tiles/dds/Plaster_01_crash_512_AM.dds</Texture>
+					</property>
+					<property>
+						alphaReference
+						<Int>100</Int>
+					</property>
+					<property>
+						blendMask
+						<Texture>content/Buildings/hd_bld_SU_0037_NKVD/hd_bld_SU_0037_NKVD_04_blend.png</Texture>
+					</property>
+					<property>
+						colorTex
+						<Texture>content/Buildings/hd_bld_SU_0037_NKVD/hd_bld_SU_0037_NKVD_04_GCM.dds</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Buildings/00_Tiles/Dirt_Railroad_02_DM.dds</Texture>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.300000 0.430000 0.380000 0.600000</Vector4>
+					</property>
+					<property>
+						g_dirtColorParams
+						<Vector4>0.100000 0.450000 0.360000 0.310000</Vector4>
 					</property>
 					<property>
 						g_enableTerrainBlending
 						<Bool>true</Bool>
 					</property>
 					<property>
-						metallicGlossMap
-						<Texture>content/Buildings/hd_bld_SU_0037_NKVD/hd_bld_SU_0037_NKVD_GMM.dds</Texture>
+						g_tile0Tint
+						<Vector4>0.749020 0.749020 0.749020 1.000000</Vector4>
 					</property>
 					<property>
-						normalMap
-						<Texture>content/Buildings/hd_bld_SU_0037_NKVD/hd_bld_SU_0037_NKVD_ANM.dds</Texture>
+						g_tile1Tint
+						<Vector4>0.980392 0.980392 0.980392 1.000000</Vector4>
 					</property>
 					<property>
-						g_enableAO
+						g_tile2Tint
+						<Vector4>0.811765 0.811765 0.811765 1.000000</Vector4>
+					</property>
+					<property>
+						metallicAOTile0
+						<Texture>content/Buildings/00_Tiles/dds/Concrete_10_512_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile1
+						<Texture>content/Buildings/00_Tiles/dds/RedBrick_10_debris_512_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile2
+						<Texture>content/Buildings/00_Tiles/dds/Plaster_01_crash_512_MAO.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile0
+						<Texture>content/Buildings/00_Tiles/dds/Concrete_10_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile1
+						<Texture>content/Buildings/00_Tiles/dds/RedBrick_10_debris_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile2
+						<Texture>content/Buildings/00_Tiles/dds/Plaster_01_crash_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						doubleSided
 						<Bool>true</Bool>
 					</property>
 				</material>
-				<groupOrigin>-0.374599 11.245420 -0.020569</groupOrigin>
+				<groupOrigin>-0.000003 11.233424 0.058278</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_wall_0</identifier>
+					<materialKind>0</materialKind>
+					<collisionFlags>128</collisionFlags>
+				</material>
+				<groupOrigin>-11.051943 8.375675 0.180756</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
 				2
 				<material>
 					<identifier>s_nd1</identifier>
-					<fx>shaders/std_effects/PBS_ext_dual.fx</fx>
+					<fx>shaders/std_effects/PBS_tiled.fx</fx>
 					<materialKind>111</materialKind>
-					<collisionFlags>255</collisionFlags>
+					<collisionFlags>0</collisionFlags>
 					<property>
-						diffuseMap
-						<Texture>content/Buildings/hd_bld_SU_0037_NKVD/hd_bld_SU_0037_NKVD_tile_AM.dds</Texture>
+						albedoHeightTile0
+						<Texture>content/Buildings/00_Tiles/dds/RedBrick_11_512_AM.dds</Texture>
 					</property>
 					<property>
-						diffuseMap2
-						<Texture>content/Buildings/hd_bld_SU_0037_NKVD/hd_bld_SU_0037_NKVD_04_AM2.dds</Texture>
+						albedoHeightTile1
+						<Texture>content/Buildings/00_Tiles/dds/Plaster_10_flat_painted_512_AM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile2
+						<Texture>content/Buildings/00_Tiles/dds/RedBrick_11_crash_512_AM.dds</Texture>
+					</property>
+					<property>
+						blendMask
+						<Texture>content/Buildings/hd_bld_SU_0037_NKVD/hd_bld_SU_0037_NKVD_04_blend.png</Texture>
+					</property>
+					<property>
+						colorTex
+						<Texture>content/Buildings/hd_bld_SU_0037_NKVD/hd_bld_SU_0037_NKVD_04_GCM.dds</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Buildings/00_Tiles/Dirt_WhiteBrick_12_DM.dds</Texture>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>1.000000 0.430000 0.380000 1.000000</Vector4>
+					</property>
+					<property>
+						g_dirtColorParams
+						<Vector4>0.100000 0.600000 1.000000 0.070000</Vector4>
 					</property>
 					<property>
 						g_enableTerrainBlending
 						<Bool>true</Bool>
 					</property>
 					<property>
-						metallicGlossMap
-						<Texture>content/Buildings/hd_bld_SU_0037_NKVD/hd_bld_SU_0037_NKVD_tile_GMM.dds</Texture>
+						g_tile0Tint
+						<Vector4>0.745098 0.796078 0.800000 1.000000</Vector4>
 					</property>
 					<property>
-						normalMap
-						<Texture>content/Buildings/hd_bld_SU_0037_NKVD/hd_bld_SU_0037_NKVD_tile_ANM.dds</Texture>
+						g_tile1Tint
+						<Vector4>0.800000 0.780392 0.752941 1.000000</Vector4>
 					</property>
 					<property>
-						g_enableAO
+						g_tile2Tint
+						<Vector4>0.631373 0.592157 0.552941 1.000000</Vector4>
+					</property>
+					<property>
+						metallicAOTile0
+						<Texture>content/Buildings/00_Tiles/dds/RedBrick_11_512_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile1
+						<Texture>content/Buildings/00_Tiles/dds/Plaster_10_flat_painted_512_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile2
+						<Texture>content/Buildings/00_Tiles/dds/RedBrick_11_crash_512_MAO.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile0
+						<Texture>content/Buildings/00_Tiles/dds/RedBrick_11_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile1
+						<Texture>content/Buildings/00_Tiles/dds/Plaster_07_Painted_03_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile2
+						<Texture>content/Buildings/00_Tiles/dds/RedBrick_11_crash_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						doubleSided
 						<Bool>true</Bool>
 					</property>
 				</material>
-				<groupOrigin>0.000003 11.245618 0.041148</groupOrigin>
+				<groupOrigin>0.327618 11.247097 -0.947129</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				3
+				<material>
+					<identifier>s_nd2</identifier>
+					<fx>shaders/std_effects/PBS_tiled.fx</fx>
+					<materialKind>111</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						albedoHeightTile0
+						<Texture>content/Buildings/00_Tiles/dds/Plaster_10_flat_painted_512_AM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile1
+						<Texture>content/Buildings/00_Tiles/dds/Plaster_10_crash_512_AM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile2
+						<Texture>content/Buildings/00_Tiles/dds/RedBrick_11_crash_512_AM.dds</Texture>
+					</property>
+					<property>
+						blendMask
+						<Texture>content/Buildings/hd_bld_SU_0037_NKVD/hd_bld_SU_0037_NKVD_04_blend.png</Texture>
+					</property>
+					<property>
+						colorTex
+						<Texture>content/Buildings/hd_bld_SU_0037_NKVD/hd_bld_SU_0037_NKVD_04_GCM.dds</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Buildings/00_Tiles/Dirt_Soot_02_DM.dds</Texture>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.500000 0.430000 0.380000 0.450000</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>0.635294 0.635294 0.635294 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>0.678431 0.654902 0.631373 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>0.678431 0.631373 0.596078 1.000000</Vector4>
+					</property>
+					<property>
+						metallicAOTile0
+						<Texture>content/Buildings/00_Tiles/dds/Plaster_10_flat_painted_512_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile1
+						<Texture>content/Buildings/00_Tiles/dds/Plaster_10_crash_512_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile2
+						<Texture>content/Buildings/00_Tiles/dds/RedBrick_11_crash_512_MAO.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile0
+						<Texture>content/Buildings/00_Tiles/dds/Plaster_10_flat_painted_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile1
+						<Texture>content/Buildings/00_Tiles/dds/Plaster_10_crash_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile2
+						<Texture>content/Buildings/00_Tiles/dds/RedBrick_11_crash_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						g_dirtColorParams
+						<Vector4>0.100000 0.720000 0.180000 0.220000</Vector4>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>0.512719 11.210835 -0.947143</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				4
+				<material>
+					<identifier>s_nd4</identifier>
+					<fx>shaders/std_effects/PBS_tiled.fx</fx>
+					<materialKind>111</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						albedoHeightTile0
+						<Texture>content/Buildings/00_Tiles/dds/Borders_28_512_AM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile1
+						<Texture>content/Buildings/00_Tiles/dds/Plaster_10_crash_512_AM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile2
+						<Texture>content/Buildings/00_Tiles/dds/RedBrick_10_debris_512_AM.dds</Texture>
+					</property>
+					<property>
+						blendMask
+						<Texture>content/Buildings/hd_bld_SU_0037_NKVD/hd_bld_SU_0037_NKVD_04_blend.png</Texture>
+					</property>
+					<property>
+						colorTex
+						<Texture>content/Buildings/hd_bld_SU_0037_NKVD/hd_bld_SU_0037_NKVD_04_GCM.dds</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Buildings/00_Tiles/Dirt_Railroad_02_DM.dds</Texture>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.600000 0.430000 0.380000 0.150000</Vector4>
+					</property>
+					<property>
+						g_dirtColorParams
+						<Vector4>0.100000 0.000000 0.290000 0.160000</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>0.701961 0.674510 0.607843 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>0.901961 0.886275 0.858824 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>0.741176 0.721569 0.662745 1.000000</Vector4>
+					</property>
+					<property>
+						metallicAOTile0
+						<Texture>content/Buildings/00_Tiles/dds/Borders_28_512_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile1
+						<Texture>content/Buildings/00_Tiles/dds/Plaster_10_crash_512_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile2
+						<Texture>content/Buildings/00_Tiles/dds/RedBrick_10_debris_512_MAO.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile0
+						<Texture>content/Buildings/00_Tiles/dds/Borders_28_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile1
+						<Texture>content/Buildings/00_Tiles/dds/Plaster_10_crash_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile2
+						<Texture>content/Buildings/00_Tiles/dds/RedBrick_10_debris_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>0.112478 9.373749 -0.048662</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<boundingBox>
-		<min>-19.391613 -1.000395 -9.174310</min>
-		<max>19.402147 23.491236 9.239370</max>
+		<min>-19.391619 -1.000392 -9.264867</min>
+		<max>19.578959 23.492714 9.239399</max>
 	</boundingBox>
 	<customBsp>true</customBsp>
-	<geometrySize>118214</geometrySize>
-	<minUVDensity>0.000133</minUVDensity>
+	<geometrySize>125164</geometrySize>
+	<minUVDensity>0.000864</minUVDensity>
 </root>

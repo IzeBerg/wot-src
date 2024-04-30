@@ -113,8 +113,7 @@ package net.wg.gui.battle.epicRandom.views
          super.updateStage(param1,param2);
          var _loc3_:int = param1 >> 1;
          this.teamBasesPanelUI.x = _loc3_;
-         this.sixthSense.x = _loc3_;
-         this.sixthSense.y = param2 >> 2;
+         this.sixthSense.updateStage(param1,param2);
          var _loc4_:Number = stage.scaleY;
          this.damageInfoPanel.y = (param2 >> 1) / _loc4_ + DAMAGE_INFO_PANEL_CONSTS.HEIGHT * _loc4_ | 0;
          this.damageInfoPanel.x = param1 - DAMAGE_INFO_PANEL_CONSTS.WIDTH >> 1;
@@ -164,6 +163,8 @@ package net.wg.gui.battle.epicRandom.views
          super.configUI();
          minimap.updateSizeIndex(false);
          this.hintPanel.addEventListener(Event.RESIZE,this.onHintPanelResizeHandler);
+         this.sixthSense.addEventListener(SixthSense.EVENT_CHANGE_VISIBILITY,this.onSixthSenseChangeVisibility);
+         this.sixthSense.addEventListener(SixthSense.EVENT_POSITION_CHANGED,this.onSixthSensePositionChanged);
       }
       
       override protected function onPopulate() : void
@@ -217,6 +218,8 @@ package net.wg.gui.battle.epicRandom.views
          this.teamBasesPanelUI.removeEventListener(Event.CHANGE,this.onTeamBasesPanelUIChangeHandler);
          this.teamBasesPanelUI = null;
          this.endWarningPanel.removeEventListener(EndWarningPanelEvent.VISIBILITY_CHANGED,this.onEndWarningPanelVisibilityChangedHandler);
+         this.sixthSense.removeEventListener(SixthSense.EVENT_CHANGE_VISIBILITY,this.onSixthSenseChangeVisibility);
+         this.sixthSense.removeEventListener(SixthSense.EVENT_POSITION_CHANGED,this.onSixthSensePositionChanged);
          this.debugPanel = null;
          this.sixthSense = null;
          this.damageInfoPanel = null;
@@ -317,6 +320,15 @@ package net.wg.gui.battle.epicRandom.views
          }
       }
       
+      override protected function needsToFadeQuests() : Boolean
+      {
+         if(this.sixthSense.visible)
+         {
+            return questProgressTopView.getVisibleBottomY() > this.sixthSense.y - SixthSense.HALF_HEIGHT;
+         }
+         return super.needsToFadeQuests();
+      }
+      
       private function updatePositionForQuestProgress() : void
       {
          var _loc1_:int = 0;
@@ -327,6 +339,7 @@ package net.wg.gui.battle.epicRandom.views
             _loc1_ += this.endWarningPanel.panelHeight;
             _loc1_ += this.teamBasesPanelUI.panelHeight;
             updatePositionQuestProgressTop(_loc1_);
+            updateQuestTopViewAlpha();
          }
       }
       
@@ -469,6 +482,16 @@ package net.wg.gui.battle.epicRandom.views
             _loc2_ = !!this.consumablesPanel.isExpand ? int(CONSUMABLES_POPUP_OFFSET) : int(0);
             vehicleMessageList.setLocation(_originalWidth - VEHICLE_MESSAGES_LIST_OFFSET.x >> 1,_originalHeight - VEHICLE_MESSAGES_LIST_OFFSET.y - _loc2_ | 0);
          }
+      }
+      
+      private function onSixthSensePositionChanged(param1:Event) : void
+      {
+         updateQuestTopViewAlpha();
+      }
+      
+      private function onSixthSenseChangeVisibility(param1:Event) : void
+      {
+         updateQuestTopViewAlpha();
       }
    }
 }

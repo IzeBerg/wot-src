@@ -421,7 +421,7 @@ package net.wg.gui.lobby.fortifications.battleRoom
             }
             if(_loc8_.selectedVehicle != null && _loc8_.selectedVehicle.state == FROZEN_VEHICLE_STATE)
             {
-               _loc7_.vehicleBtn.showAlertIcon = _loc8_.hasFrozenVehicle;
+               _loc7_.vehicleBtn.showFrozenIcon = _loc8_.hasFrozenVehicle;
             }
          }
          if(!_loc3_)

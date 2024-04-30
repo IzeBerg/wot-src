@@ -380,7 +380,7 @@ class ArtyAimingSystemRemote(ArtyAimingSystem):
 	def updateTargetPos(self, *args, **kwargs): pass
 
 
-class AssaultAimingSystem(BaseStrategicAimingSystem):
+class AssaultAimingSystem(IAimingSystem):
 	def __delattr__(*args, **kwargs): pass
 	__doc__ = None
 	def __format__(*args, **kwargs): pass
@@ -399,29 +399,26 @@ class AssaultAimingSystem(BaseStrategicAimingSystem):
 	def __subclasshook__(*args, **kwargs): pass
 	aimMatrix = property(lambda self: None)
 	aimPoint = property(lambda self: None)
-	def clampAimingMovement(self, *args, **kwargs): pass
 	def destroy(self, *args, **kwargs): pass
+	direction = property(lambda self: None)
 	def disable(self, *args, **kwargs): pass
 	def enable(self, *args, **kwargs): pass
-	def findSphereNoCollisionAdvance(self, *args, **kwargs): pass
-	def getCamDist(self, *args, **kwargs): pass
 	def getDesiredShotPoint(self, *args, **kwargs): pass
 	def getShotPoint(self, *args, **kwargs): pass
-	def getSphereCollsionDist(self, *args, **kwargs): pass
+	def getSphereCollisionDist(self, *args, **kwargs): pass
 	def getZoom(self, *args, **kwargs): pass
 	def handleMovement(self, *args, **kwargs): pass
-	height = property(lambda self: None)
-	heightFromPlane = property(lambda self: None)
 	matrix = property(lambda self: None)
 	matrixProvider = property(lambda self: None)
-	def overrideCamDist(self, *args, **kwargs): pass
-	planePosition = property(lambda self: None)
-	def resolveCameraCollisions(self, *args, **kwargs): pass
+	position = property(lambda self: None)
 	def setAimingLimits(self, *args, **kwargs): pass
-	def setYaw(self, *args, **kwargs): pass
+	def setCollisionSphereRadius(self, *args, **kwargs): pass
+	def setDistInterpolationSpeedParams(self, *args, **kwargs): pass
+	def setPitchInterpolationSpeed(self, *args, **kwargs): pass
+	def setState(self, *args, **kwargs): pass
+	def setup(self, *args, **kwargs): pass
+	transitionBlocked = property(lambda self: None)
 	def update(self, *args, **kwargs): pass
-	def updatePlanePoint(self, *args, **kwargs): pass
-	def updateTargetPos(self, *args, **kwargs): pass
 
 
 class Attachments(pybind11_object):
@@ -6923,6 +6920,7 @@ def wg_restoreDestructibles(*args, **kwargs): pass
 def wg_saveWatchers(*args, **kwargs): pass
 def wg_setAdapterOrdinalNotifyCallback(*args, **kwargs): pass
 def wg_setAimingParam(*args, **kwargs): pass
+def wg_setBaseFlagColor(*args, **kwargs): pass
 def wg_setChunkModelFashion(*args, **kwargs): pass
 def wg_setDestructibleActive(*args, **kwargs): pass
 def wg_setDestructibleMatrix(*args, **kwargs): pass

@@ -56,28 +56,28 @@
 				0
 				<material>
 					<identifier>s_nd2</identifier>
-					<fx>shaders/std_effects/PBS_glass.fx</fx>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
 					<materialKind>112</materialKind>
 					<collisionFlags>255</collisionFlags>
 					<property>
-						dirtAlbedoMap
+						diffuseMap
 						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_Glass_03_AM.dds</Texture>
 					</property>
 					<property>
-						g_filterColor
-						<Vector4>0.000000 0.000000 0.000000 1.000000</Vector4>
+						doubleSided
+						<Bool>true</Bool>
 					</property>
 					<property>
-						glassMap
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
 						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_Glass_03_GMM.dds</Texture>
 					</property>
 					<property>
 						normalMap
 						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_Glass_03_ANM.dds</Texture>
-					</property>
-					<property>
-						doubleSided
-						<Bool>true</Bool>
 					</property>
 				</material>
 				<groupOrigin>20.740036 2.337483 -10.196549</groupOrigin>
@@ -249,6 +249,6 @@
 		<max>41.477161 3.824420 0.095434</max>
 	</boundingBox>
 	<customBsp>true</customBsp>
-	<geometrySize>292006</geometrySize>
+	<geometrySize>240748</geometrySize>
 	<minUVDensity>0.012439</minUVDensity>
 </root>

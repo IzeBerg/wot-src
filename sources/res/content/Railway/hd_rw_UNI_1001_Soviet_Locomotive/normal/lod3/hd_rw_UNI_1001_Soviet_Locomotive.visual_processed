@@ -22,7 +22,7 @@
 					<row0>1.000000 0.000000 0.000000</row0>
 					<row1>0.000000 1.000000 0.000000</row1>
 					<row2>0.000000 0.000000 1.000000</row2>
-					<row3>0.000000 0.000000 4.791223</row3>
+					<row3>0.000000 0.000000 -5.991086</row3>
 				</transform>
 			</node>
 			<node>
@@ -31,7 +31,7 @@
 					<row0>1.000000 0.000000 0.000000</row0>
 					<row1>0.000000 1.000000 0.000000</row1>
 					<row2>0.000000 0.000000 1.000000</row2>
-					<row3>0.000000 0.000000 -6.000000</row3>
+					<row3>0.000000 0.000000 4.759862</row3>
 				</transform>
 			</node>
 			<node>
@@ -43,43 +43,52 @@
 					<row3>0.000000 0.000000 0.000000</row3>
 				</transform>
 				<node>
-					<identifier>d1</identifier>
-					<transform>
-						<row0>1.000000 0.000000 0.000000</row0>
-						<row1>0.000000 1.000000 0.000000</row1>
-						<row2>0.000000 0.000000 1.000000</row2>
-						<row3>0.000000 0.000000 0.000000</row3>
-					</transform>
-				</node>
-				<node>
-					<identifier>n0</identifier>
-					<transform>
-						<row0>1.000000 0.000000 0.000000</row0>
-						<row1>0.000000 1.000000 0.000000</row1>
-						<row2>0.000000 0.000000 1.000000</row2>
-						<row3>0.000000 0.000000 0.000000</row3>
-					</transform>
-				</node>
-				<node>
-					<identifier>n1</identifier>
-					<transform>
-						<row0>1.000000 0.000000 0.000000</row0>
-						<row1>0.000000 1.000000 0.000000</row1>
-						<row2>0.000000 0.000000 1.000000</row2>
-						<row3>0.000000 0.000000 0.000000</row3>
-					</transform>
-				</node>
-				<node>
-					<identifier>s_wall0</identifier>
-					<transform>
-						<row0>1.000000 0.000000 0.000000</row0>
-						<row1>0.000000 1.000000 0.000000</row1>
-						<row2>0.000000 0.000000 1.000000</row2>
-						<row3>0.000000 0.000000 0.000000</row3>
-					</transform>
-				</node>
-				<node>
 					<identifier>s_wall1</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>lod3</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+				<node>
+					<identifier>d0_1</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>d0_2</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>n0_1</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>n0_2</identifier>
 					<transform>
 						<row0>1.000000 0.000000 0.000000</row0>
 						<row1>0.000000 1.000000 0.000000</row1>
@@ -106,7 +115,7 @@
 					<collisionFlags>0</collisionFlags>
 					<property>
 						diffuseMap
-						<Texture>content/Railway/hd_rw_UNI_1001_Soviet_Locomotive/hd_rw_UNI_1001_Soviet_Locomotive_tender_AM.dds</Texture>
+						<Texture>content/Railway/hd_rw_UNI_1001_Soviet_Locomotive/hd_rw_UNI_1001_Soviet_Locomotive_BAM.dds</Texture>
 					</property>
 					<property>
 						g_enableAO
@@ -114,14 +123,26 @@
 					</property>
 					<property>
 						metallicGlossMap
-						<Texture>content/Railway/hd_rw_UNI_1001_Soviet_Locomotive/hd_rw_UNI_1001_Soviet_Locomotive_tender_GMM.dds</Texture>
+						<Texture>content/Railway/hd_rw_UNI_1001_Soviet_Locomotive/hd_rw_UNI_1001_Soviet_Locomotive_BGMM.dds</Texture>
 					</property>
 					<property>
 						normalMap
-						<Texture>content/Railway/hd_rw_UNI_1001_Soviet_Locomotive/hd_rw_UNI_1001_Soviet_Locomotive_tender_ANM.dds</Texture>
+						<Texture>content/Railway/hd_rw_UNI_1001_Soviet_Locomotive/hd_rw_UNI_1001_Soviet_Locomotive_BANM.dds</Texture>
+					</property>
+					<property>
+						alphaReference
+						<Int>100</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
 					</property>
 				</material>
-				<groupOrigin>-0.107212 2.279306 -6.219719</groupOrigin>
+				<groupOrigin>-0.148286 2.297349 -6.216935</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
 				1
@@ -132,7 +153,7 @@
 					<collisionFlags>0</collisionFlags>
 					<property>
 						diffuseMap
-						<Texture>content/Railway/hd_rw_UNI_1001_Soviet_Locomotive/hd_rw_UNI_1001_Soviet_Locomotive_AM.dds</Texture>
+						<Texture>content/Railway/hd_rw_UNI_1001_Soviet_Locomotive/hd_rw_UNI_1001_Soviet_Locomotive_BAM.dds</Texture>
 					</property>
 					<property>
 						g_enableAO
@@ -140,14 +161,26 @@
 					</property>
 					<property>
 						metallicGlossMap
-						<Texture>content/Railway/hd_rw_UNI_1001_Soviet_Locomotive/hd_rw_UNI_1001_Soviet_Locomotive_GMM.dds</Texture>
+						<Texture>content/Railway/hd_rw_UNI_1001_Soviet_Locomotive/hd_rw_UNI_1001_Soviet_Locomotive_BGMM.dds</Texture>
 					</property>
 					<property>
 						normalMap
-						<Texture>content/Railway/hd_rw_UNI_1001_Soviet_Locomotive/hd_rw_UNI_1001_Soviet_Locomotive_ANM.dds</Texture>
+						<Texture>content/Railway/hd_rw_UNI_1001_Soviet_Locomotive/hd_rw_UNI_1001_Soviet_Locomotive_BANM.dds</Texture>
+					</property>
+					<property>
+						alphaReference
+						<Int>100</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
 					</property>
 				</material>
-				<groupOrigin>0.040845 2.466419 4.273883</groupOrigin>
+				<groupOrigin>0.000000 2.480029 4.626936</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
 				2
@@ -158,7 +191,7 @@
 					<collisionFlags>0</collisionFlags>
 					<property>
 						diffuseMap
-						<Texture>content/Railway/hd_rw_UNI_1001_Soviet_Locomotive/hd_rw_UNI_1001_Soviet_Locomotive_tender_AM.dds</Texture>
+						<Texture>content/Railway/hd_rw_UNI_1001_Soviet_Locomotive/hd_rw_UNI_1001_Soviet_Locomotive_BAM.dds</Texture>
 					</property>
 					<property>
 						g_enableAO
@@ -166,14 +199,26 @@
 					</property>
 					<property>
 						metallicGlossMap
-						<Texture>content/Railway/hd_rw_UNI_1001_Soviet_Locomotive/hd_rw_UNI_1001_Soviet_Locomotive_tender_GMM.dds</Texture>
+						<Texture>content/Railway/hd_rw_UNI_1001_Soviet_Locomotive/hd_rw_UNI_1001_Soviet_Locomotive_BGMM.dds</Texture>
 					</property>
 					<property>
 						normalMap
-						<Texture>content/Railway/hd_rw_UNI_1001_Soviet_Locomotive/hd_rw_UNI_1001_Soviet_Locomotive_tender_ANM.dds</Texture>
+						<Texture>content/Railway/hd_rw_UNI_1001_Soviet_Locomotive/hd_rw_UNI_1001_Soviet_Locomotive_BANM.dds</Texture>
+					</property>
+					<property>
+						alphaReference
+						<Int>100</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
 					</property>
 				</material>
-				<groupOrigin>-0.005321 2.286928 -6.205322</groupOrigin>
+				<groupOrigin>0.000000 2.297349 -6.216935</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
 				3
@@ -184,7 +229,7 @@
 					<collisionFlags>0</collisionFlags>
 					<property>
 						diffuseMap
-						<Texture>content/Railway/hd_rw_UNI_1001_Soviet_Locomotive/hd_rw_UNI_1001_Soviet_Locomotive_AM.dds</Texture>
+						<Texture>content/Railway/hd_rw_UNI_1001_Soviet_Locomotive/hd_rw_UNI_1001_Soviet_Locomotive_BAM.dds</Texture>
 					</property>
 					<property>
 						g_enableAO
@@ -192,20 +237,32 @@
 					</property>
 					<property>
 						metallicGlossMap
-						<Texture>content/Railway/hd_rw_UNI_1001_Soviet_Locomotive/hd_rw_UNI_1001_Soviet_Locomotive_GMM.dds</Texture>
+						<Texture>content/Railway/hd_rw_UNI_1001_Soviet_Locomotive/hd_rw_UNI_1001_Soviet_Locomotive_BGMM.dds</Texture>
 					</property>
 					<property>
 						normalMap
-						<Texture>content/Railway/hd_rw_UNI_1001_Soviet_Locomotive/hd_rw_UNI_1001_Soviet_Locomotive_ANM.dds</Texture>
+						<Texture>content/Railway/hd_rw_UNI_1001_Soviet_Locomotive/hd_rw_UNI_1001_Soviet_Locomotive_BANM.dds</Texture>
+					</property>
+					<property>
+						alphaReference
+						<Int>100</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
 					</property>
 				</material>
-				<groupOrigin>-0.000596 2.467517 4.619355</groupOrigin>
+				<groupOrigin>0.000000 2.474767 4.626936</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
 				4
 				<material>
 					<identifier>s_wall_1</identifier>
-					<materialKind>112</materialKind>
+					<materialKind>0</materialKind>
 					<collisionFlags>131</collisionFlags>
 				</material>
 				<groupOrigin>-0.000284 2.428234 -6.247595</groupOrigin>
@@ -214,7 +271,7 @@
 				5
 				<material>
 					<identifier>s_wall_0</identifier>
-					<materialKind>112</materialKind>
+					<materialKind>0</materialKind>
 					<collisionFlags>131</collisionFlags>
 				</material>
 				<groupOrigin>-0.000284 2.569339 4.449126</groupOrigin>
@@ -222,10 +279,10 @@
 		</geometry>
 	</renderSet>
 	<boundingBox>
-		<min>-1.937114 -0.044120 -10.621160</min>
-		<max>1.749694 5.138677 11.026057</max>
+		<min>-1.760390 -0.015323 -11.037210</min>
+		<max>1.749694 5.138677 11.038916</max>
 	</boundingBox>
 	<customBsp>true</customBsp>
-	<geometrySize>163308</geometrySize>
-	<minUVDensity>0.000078</minUVDensity>
+	<geometrySize>64998</geometrySize>
+	<minUVDensity>0.000070</minUVDensity>
 </root>

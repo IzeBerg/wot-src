@@ -8,6 +8,60 @@
 			<row2>0.000000 0.000000 1.000000</row2>
 			<row3>0.000000 0.000000 0.000000</row3>
 		</transform>
+		<node>
+			<identifier>hd_bld_UNI_003_RHouse_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>lod0</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+				<node>
+					<identifier>s4</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>s5</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>s6</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>s_wall0</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+			</node>
+		</node>
 	</node>
 	<renderSet>
 		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
@@ -31,20 +85,8 @@
 				<material>
 					<identifier>s_nd6</identifier>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
-					<collisionFlags>0</collisionFlags>
+					<collisionFlags>255</collisionFlags>
 					<materialKind>111</materialKind>
-					<property>
-						alphaReference
-						<Int>0</Int>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>false</Bool>
-					</property>
-					<property>
-						doubleSided
-						<Bool>false</Bool>
-					</property>
 					<property>
 						g_atlasSizes
 						<Vector4>7 2 7 1</Vector4>
@@ -58,22 +100,12 @@
 						<Texture>content/Buildings/hd_bld_UNI_003_RHouse/UNI_Factory_01_02_blend.png</Texture>
 					</property>
 					<property>
-						g_tile2Tint
-						<Vector4>1 1 1 1</Vector4>
-					</property>
-					<property>
 						g_fakeShadowsAndDetailParams
-						<Vector4>
-							0.1 0.35 1 0.000000
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>0.100000 0.350000 1.000000 0.000000</Vector4>
 					</property>
 					<property>
 						g_tile0Tint
-						<Vector4>
-							0.87 0.87 0.87 1
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>0.870000 0.870000 0.870000 1.000000</Vector4>
 					</property>
 					<property>
 						g_enableTerrainBlending
@@ -127,20 +159,8 @@
 				<material>
 					<identifier>s_nd5</identifier>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
-					<collisionFlags>0</collisionFlags>
+					<collisionFlags>255</collisionFlags>
 					<materialKind>111</materialKind>
-					<property>
-						alphaReference
-						<Int>0</Int>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>false</Bool>
-					</property>
-					<property>
-						doubleSided
-						<Bool>false</Bool>
-					</property>
 					<property>
 						g_atlasSizes
 						<Vector4>7 2 7 1</Vector4>
@@ -155,17 +175,11 @@
 					</property>
 					<property>
 						g_tile0Tint
-						<Vector4>
-							0.87 0.87 0.87 1
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>0.870000 0.870000 0.870000 1.000000</Vector4>
 					</property>
 					<property>
 						g_fakeShadowsAndDetailParams
-						<Vector4>
-							0.1 0.35 1 0.000000
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>0.100000 0.350000 1.000000 0.000000</Vector4>
 					</property>
 					<property>
 						g_enableTerrainBlending
@@ -219,7 +233,7 @@
 				<material>
 					<identifier>s_nd4</identifier>
 					<fx>shaders/std_effects/PBS_ext.fx</fx>
-					<collisionFlags>0</collisionFlags>
+					<collisionFlags>255</collisionFlags>
 					<materialKind>108</materialKind>
 					<property>
 						normalMap
@@ -253,7 +267,7 @@
 				<material>
 					<identifier>s_nd3</identifier>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
-					<collisionFlags>0</collisionFlags>
+					<collisionFlags>255</collisionFlags>
 					<materialKind>111</materialKind>
 					<property>
 						g_atlasSizes
@@ -269,10 +283,7 @@
 					</property>
 					<property>
 						g_fakeShadowsAndDetailParams
-						<Vector4>
-							0.1 0.35 1 0.000000
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>0.100000 0.350000 1.000000 0.000000</Vector4>
 					</property>
 					<property>
 						g_enableTerrainBlending
@@ -326,20 +337,8 @@
 				<material>
 					<identifier>s_nd2</identifier>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
-					<collisionFlags>0</collisionFlags>
+					<collisionFlags>255</collisionFlags>
 					<materialKind>111</materialKind>
-					<property>
-						alphaReference
-						<Int>0</Int>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>false</Bool>
-					</property>
-					<property>
-						doubleSided
-						<Bool>false</Bool>
-					</property>
 					<property>
 						g_atlasSizes
 						<Vector4>7 2 7 1</Vector4>
@@ -353,15 +352,8 @@
 						<Texture>content/Buildings/hd_bld_UNI_003_RHouse/UNI_Factory_01_02_blend.png</Texture>
 					</property>
 					<property>
-						g_tile1Tint
-						<Vector4>1 1 1 1</Vector4>
-					</property>
-					<property>
 						g_fakeShadowsAndDetailParams
-						<Vector4>
-							0.1 0.35 1 0.000000
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>0.100000 0.350000 1.000000 0.000000</Vector4>
 					</property>
 					<property>
 						g_enableTerrainBlending
@@ -431,35 +423,19 @@
 					</property>
 					<property>
 						g_tile2Tint
-						<Vector4>
-							1 0.968628 0.92549 1
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>1.000000 0.968628 0.925490 1.000000</Vector4>
 					</property>
 					<property>
 						g_tile1Tint
-						<Vector4>
-							0.825 0.825 0.825 1
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>0.825000 0.825000 0.825000 1.000000</Vector4>
 					</property>
 					<property>
 						g_fakeShadowsAndDetailParams
-						<Vector4>
-							0.1 0.35 1 0.000000
-							<!--BW_String-->
-						</Vector4>
-					</property>
-					<property>
-						g_dirtColorParams
-						<Vector4>0.100000 0.000000 0.000000 0.000000</Vector4>
+						<Vector4>0.100000 0.350000 1.000000 0.000000</Vector4>
 					</property>
 					<property>
 						g_dirtColor
-						<Vector4>
-							0.47 0.43 0.38 0.1
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>0.470000 0.430000 0.380000 0.100000</Vector4>
 					</property>
 					<property>
 						g_enableTerrainBlending

@@ -490,9 +490,8 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       private function updateMarkerSettings() : void
       {
-         var _loc2_:Boolean = false;
          var _loc1_:Boolean = this.getIsPartVisible(HEALTH_BAR);
-         _loc2_ = this.getIsPartVisible(HEALTH_LBL);
+         var _loc2_:Boolean = this.getIsPartVisible(HEALTH_LBL);
          var _loc3_:Boolean = this.getIsPartVisible(DAMAGE_PANEL);
          var _loc4_:Boolean = this._isVehicleDistVisible && this.getIsPartVisible(VEHICLE_DIST);
          this.vehicleDist.visible = _loc4_;

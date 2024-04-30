@@ -39,17 +39,7 @@ package net.wg.gui.battle.views
             return;
          }
          this._isArtyShotIndVisible = param1;
-         if(this.isQuestProgress)
-         {
-            if(param1 && height < StageSizeBoundaries.HEIGHT_1080)
-            {
-               this.questProgressTopView.alpha = this.questProgressTopAnimContainer.alpha = FADED_QUESTS_PROGRESS_ALPHA;
-            }
-            else
-            {
-               this.questProgressTopView.alpha = this.questProgressTopAnimContainer.alpha = 1;
-            }
-         }
+         this.updateQuestTopViewAlpha();
       }
       
       override public function updateStage(param1:Number, param2:Number) : void
@@ -61,17 +51,7 @@ package net.wg.gui.battle.views
             this.questProgressTopView.x = _loc3_;
             this.questProgressTopAnimContainer.x = _loc3_;
          }
-         if(this._isArtyShotIndVisible && this.isQuestProgress)
-         {
-            if(param2 < StageSizeBoundaries.HEIGHT_1080)
-            {
-               this.questProgressTopView.alpha = this.questProgressTopAnimContainer.alpha = FADED_QUESTS_PROGRESS_ALPHA;
-            }
-            else
-            {
-               this.questProgressTopView.alpha = this.questProgressTopAnimContainer.alpha = 1;
-            }
-         }
+         this.updateQuestTopViewAlpha();
       }
       
       override protected function initializeStatisticsController(param1:BattleStatisticDataController) : void
@@ -123,6 +103,11 @@ package net.wg.gui.battle.views
          this.hideQuestProgressTopView(null,FINAL_HIDE_PROGRESS_DELAY);
       }
       
+      protected function needsToFadeQuests() : Boolean
+      {
+         return this._isArtyShotIndVisible && height < StageSizeBoundaries.HEIGHT_1080;
+      }
+      
       protected function getFullStatsTabQuestProgress() : IQuestProgressView
       {
          return null;
@@ -143,6 +128,21 @@ package net.wg.gui.battle.views
          {
             this.questProgressTopView.setYPosition(param1);
             this.questProgressTopAnimContainer.y = param1;
+         }
+      }
+      
+      protected function updateQuestTopViewAlpha() : void
+      {
+         if(this.isQuestProgress)
+         {
+            if(this.needsToFadeQuests())
+            {
+               this.questProgressTopView.alpha = this.questProgressTopAnimContainer.alpha = FADED_QUESTS_PROGRESS_ALPHA;
+            }
+            else
+            {
+               this.questProgressTopView.alpha = this.questProgressTopAnimContainer.alpha = 1;
+            }
          }
       }
       

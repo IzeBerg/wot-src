@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd3</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>101</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						alphaReference
+						<Int>162</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h01_victory_day_2024/enviroment/hd_h01_VD24_0005_Big_Entry_Zone_01_AM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Hangars/h01_victory_day_2024/enviroment/hd_h01_VD24_0005_Big_Entry_Zone_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Hangars/h01_victory_day_2024/enviroment/hd_h01_VD24_0005_Big_Entry_Zone_01_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.045655 4.462380 -0.426872</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd2</identifier>
+					<fx>shaders/std_effects/glow_noalpha.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h01_victory_day_2024/enviroment/hd_h01_VD24_0005_Big_Entry_Zone_AM.dds</Texture>
+					</property>
+					<property>
+						g_tintColor
+						<Vector4>0.980392 0.478431 0.384314 1.000000</Vector4>
+					</property>
+					<property>
+						selfIllumination
+						<Float>10.000000</Float>
+					</property>
+				</material>
+				<groupOrigin>0.000000 4.441263 5.210043</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h01_victory_day_2024/enviroment/hd_h01_VD24_0005_Big_Entry_Zone_AM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Hangars/h01_victory_day_2024/enviroment/hd_h01_VD24_0005_Big_Entry_Zone_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Hangars/h01_victory_day_2024/enviroment/hd_h01_VD24_0005_Big_Entry_Zone_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.296930 6.339853 0.034985</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-36.126095 -0.060836 -11.156838</min>
+		<max>35.532234 12.740541 11.226808</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>58734</geometrySize>
+	<minUVDensity>0.000012</minUVDensity>
+</root>

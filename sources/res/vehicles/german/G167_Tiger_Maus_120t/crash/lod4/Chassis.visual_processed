@@ -65,8 +65,8 @@
 	</node>
 	<renderSet>
 		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
-		<node>V_BlendBone</node>
 		<node>Tank_BlendBone</node>
+		<node>V_BlendBone</node>
 		<geometry>
 			<vertices>chassis_R_Shape.vertices</vertices>
 			<primitive>chassis_R_Shape.indices</primitive>
@@ -105,19 +105,15 @@
 						alphaReference
 						<Int>64</Int>
 					</property>
-					<property>
-						alphaTestEnable
-						<Bool>true</Bool>
-					</property>
 				</material>
-				<groupOrigin>1.506603 0.577354 -0.254231</groupOrigin>
+				<groupOrigin>1.506603 0.573495 -0.254231</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<renderSet>
 		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
-		<node>V_BlendBone</node>
 		<node>Tank_BlendBone</node>
+		<node>V_BlendBone</node>
 		<geometry>
 			<vertices>chassis_L_Shape.vertices</vertices>
 			<primitive>chassis_L_Shape.indices</primitive>
@@ -156,18 +152,14 @@
 						alphaReference
 						<Int>64</Int>
 					</property>
-					<property>
-						alphaTestEnable
-						<Bool>true</Bool>
-					</property>
 				</material>
-				<groupOrigin>-1.548823 0.620188 -0.186532</groupOrigin>
+				<groupOrigin>-1.548823 0.616970 -0.186532</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<constraints/>
 	<boundingBox>
-		<min>-1.969359 0.000000 -3.606807</min>
+		<min>-1.969359 -0.007718 -3.606807</min>
 		<max>1.998494 1.240376 3.984182</max>
 	</boundingBox>
 	<geometrySize>3984</geometrySize>

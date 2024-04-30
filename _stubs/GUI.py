@@ -2427,12 +2427,14 @@ class WGVehicleMarkersCanvasFlashAS3(Flash):
 	def markerInvoke(self, *args, **kwargs): pass
 	def markerSetActive(self, *args, **kwargs): pass
 	def markerSetBoundCheckEnabled(self, *args, **kwargs): pass
+	def markerSetCustomDistanceStr(self, *args, **kwargs): pass
 	def markerSetLocationOffset(self, *args, **kwargs): pass
 	def markerSetMarkerObjectInFocus(self, *args, **kwargs): pass
 	def markerSetMatrix(self, *args, **kwargs): pass
 	def markerSetMinScale(self, *args, **kwargs): pass
 	def markerSetRenderInfo(self, *args, **kwargs): pass
 	def markerSetSticky(self, *args, **kwargs): pass
+	def markerSetTextLabelEnabled(self, *args, **kwargs): pass
 	materialFX = property(lambda self: None)
 	mouseButtonFocus = property(lambda self: None)
 	moveFocus = property(lambda self: None)

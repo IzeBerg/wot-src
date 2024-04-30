@@ -8,87 +8,6 @@
 			<row2>0.000000 0.000000 1.000000</row2>
 			<row3>0.000000 0.000000 0.000000</row3>
 		</transform>
-		<node>
-			<identifier>hd_bld_SU_0029_Railway_Station_01</identifier>
-			<transform>
-				<row0>1.000000 0.000000 0.000000</row0>
-				<row1>0.000000 1.000000 0.000000</row1>
-				<row2>0.000000 0.000000 1.000000</row2>
-				<row3>0.000000 0.000000 0.000000</row3>
-			</transform>
-			<node>
-				<identifier>lod2</identifier>
-				<transform>
-					<row0>1.000000 0.000000 0.000000</row0>
-					<row1>0.000000 1.000000 0.000000</row1>
-					<row2>0.000000 0.000000 1.000000</row2>
-					<row3>0.000000 0.000000 0.000000</row3>
-				</transform>
-				<node>
-					<identifier>s1</identifier>
-					<transform>
-						<row0>1.000000 0.000000 0.000000</row0>
-						<row1>0.000000 1.000000 0.000000</row1>
-						<row2>0.000000 0.000000 1.000000</row2>
-						<row3>0.000000 0.000000 0.000000</row3>
-					</transform>
-				</node>
-				<node>
-					<identifier>s10</identifier>
-					<transform>
-						<row0>1.000000 0.000000 0.000000</row0>
-						<row1>0.000000 1.000000 0.000000</row1>
-						<row2>0.000000 0.000000 1.000000</row2>
-						<row3>0.000000 0.000000 0.000000</row3>
-					</transform>
-				</node>
-				<node>
-					<identifier>s2</identifier>
-					<transform>
-						<row0>1.000000 0.000000 0.000000</row0>
-						<row1>0.000000 1.000000 0.000000</row1>
-						<row2>0.000000 0.000000 1.000000</row2>
-						<row3>0.000000 0.000000 0.000000</row3>
-					</transform>
-				</node>
-				<node>
-					<identifier>s4</identifier>
-					<transform>
-						<row0>1.000000 0.000000 0.000000</row0>
-						<row1>0.000000 1.000000 0.000000</row1>
-						<row2>0.000000 0.000000 1.000000</row2>
-						<row3>0.000000 0.000000 0.000000</row3>
-					</transform>
-				</node>
-				<node>
-					<identifier>s5</identifier>
-					<transform>
-						<row0>1.000000 0.000000 0.000000</row0>
-						<row1>0.000000 1.000000 0.000000</row1>
-						<row2>0.000000 0.000000 1.000000</row2>
-						<row3>0.000000 0.000000 0.000000</row3>
-					</transform>
-				</node>
-				<node>
-					<identifier>s6</identifier>
-					<transform>
-						<row0>1.000000 0.000000 0.000000</row0>
-						<row1>0.000000 1.000000 0.000000</row1>
-						<row2>0.000000 0.000000 1.000000</row2>
-						<row3>0.000000 0.000000 0.000000</row3>
-					</transform>
-				</node>
-				<node>
-					<identifier>s9</identifier>
-					<transform>
-						<row0>1.000000 0.000000 0.000000</row0>
-						<row1>0.000000 1.000000 0.000000</row1>
-						<row2>0.000000 0.000000 1.000000</row2>
-						<row3>0.000000 0.000000 0.000000</row3>
-					</transform>
-				</node>
-			</node>
-		</node>
 	</node>
 	<renderSet>
 		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
@@ -258,7 +177,7 @@
 					<collisionFlags>255</collisionFlags>
 					<property>
 						albedoHeightTile0
-						<Texture>content/Buildings/00_Tiles/dds/Metal_Bare_01_512_AM.dds</Texture>
+						<Texture>content/Buildings/00_Tiles/dds/Concrete_04_Clean_512_AM.dds</Texture>
 					</property>
 					<property>
 						albedoHeightTile1
@@ -282,11 +201,7 @@
 					</property>
 					<property>
 						g_dirtColorParams
-						<Vector4>0.100000 0.000000 0.000000 1.000000</Vector4>
-					</property>
-					<property>
-						g_tile0Tint
-						<Vector4>1.000000 1.000000 1.000000 1.000000</Vector4>
+						<Vector4>0.100000 1.000000 0.000000 1.000000</Vector4>
 					</property>
 					<property>
 						g_tile1Tint
@@ -298,7 +213,7 @@
 					</property>
 					<property>
 						metallicAOTile0
-						<Texture>content/Buildings/00_Tiles/dds/Metal_Bare_01_512_MAO.dds</Texture>
+						<Texture>content/Buildings/00_Tiles/dds/Concrete_04_Clean_512_MAO.dds</Texture>
 					</property>
 					<property>
 						metallicAOTile1
@@ -310,7 +225,7 @@
 					</property>
 					<property>
 						normalGlossSpecTile0
-						<Texture>content/Buildings/00_Tiles/dds/Metal_Bare_01_512_GBMT.dds</Texture>
+						<Texture>content/Buildings/00_Tiles/dds/Concrete_04_Clean_512_GBMT.dds</Texture>
 					</property>
 					<property>
 						normalGlossSpecTile1
@@ -319,6 +234,14 @@
 					<property>
 						normalGlossSpecTile2
 						<Texture>content/Environment/00_Tiles/dds/Marble_Tiles_01_VicMon_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>0.741176 0.741176 0.717647 1.000000</Vector4>
 					</property>
 				</material>
 				<groupOrigin>-0.000000 33.096523 -3.976036</groupOrigin>
@@ -608,6 +531,6 @@
 		<max>13.491187 66.653419 15.601152</max>
 	</boundingBox>
 	<customBsp>true</customBsp>
-	<geometrySize>246776</geometrySize>
+	<geometrySize>246638</geometrySize>
 	<minUVDensity>0.000048</minUVDensity>
 </root>

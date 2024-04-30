@@ -45,6 +45,7 @@ BATTLEPASS_CAROUSEL_FILTER_CLIENT_1 = 'BATTLEPASS_CAROUSEL_FILTER_CLIENT_1'
 ROYALE_CAROUSEL_FILTER_1 = 'ROYALE_CAROUSEL_FILTER_1'
 ROYALE_CAROUSEL_FILTER_2 = 'ROYALE_CAROUSEL_FILTER_2'
 ROYALE_CAROUSEL_FILTER_CLIENT_1 = 'ROYALE_CAROUSEL_FILTER_CLIENT_1'
+ROYALE_INTRO_VIDEO_SHOWN = 'ROYALE_INTRO_VIDEO_SHOWN'
 MAPBOX_CAROUSEL_FILTER_1 = 'MAPBOX_CAROUSEL_FILTER_1'
 MAPBOX_CAROUSEL_FILTER_2 = 'MAPBOX_CAROUSEL_FILTER_2'
 MAPBOX_CAROUSEL_FILTER_CLIENT_1 = 'MAPBOX_CAROUSEL_FILTER_CLIENT_1'
@@ -296,6 +297,8 @@ class ArmoryYard(object):
     FINISH_CHAPTER_PREFIX = 'finish_chapter'
     START_CHAPTER_PREFIX = 'start_chapter'
     STYLE_QUEST_ENDS = 'style_quest_ends'
+    ARMORY_YARD_CURRENT_SEASON = 'armoryYardCurrSeason'
+    AY_SECTION_LAST_LISTENED_MESSAGE = 'lastListenedMessage'
 
 
 KNOWN_SELECTOR_BATTLES = 'knownSelectorBattles'
@@ -1021,7 +1024,9 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                                                                                          ScorePanelStorageKeys.SHOW_HP_BAR: True, 
                                                                                          'progressViewType': True, 
                                                                                          'progressViewConditions': True}, 
-                                                              'feedbackDamageIndicator': {'damageIndicatorAllies': True}}, 
+                                                              'feedbackDamageIndicator': {'damageIndicatorAllies': True}, 
+                                                              'feedbackSixthSense': {'indicatorSize': 0, 
+                                                                                     'indicatorAlpha': 100}}, 
                                          'ControlsSettings': {'highlightLocation': True, 
                                                               'showQuestProgress': True, 
                                                               'chargeFire': True, 
@@ -1118,6 +1123,7 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                                                           BattleMatters.LAST_QUEST_PROGRESS: 0, 
                                                           BattleMatters.REMINDER_LAST_DISPLAY_TIME: 0}, 
                   BR_PROGRESSION_POINTS_SEEN: 0, 
+                  ROYALE_INTRO_VIDEO_SHOWN: False, 
                   Winback.WINBACK_SETTINGS: {Winback.COMPLETED_STARTING_QUEST_COUNT: 0, 
                                              Winback.INTRO_SHOWN: False, 
                                              Winback.BATTLE_SELECTOR_SETTINGS_BULLET_SHOWN: False}, 
@@ -1324,7 +1330,9 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                                      ArmoryYard.ANNOUNCEMENT_CHAPTER_PREFIX: False, 
                                      ArmoryYard.CHAPTER_PREFIX: False, 
                                      ArmoryYard.FINISH_CHAPTER_PREFIX: False, 
-                                     ArmoryYard.STYLE_QUEST_ENDS: False}}
+                                     ArmoryYard.STYLE_QUEST_ENDS: False, 
+                                     ArmoryYard.ARMORY_YARD_CURRENT_SEASON: None, 
+                                     ArmoryYard.AY_SECTION_LAST_LISTENED_MESSAGE: 0}}
 
 def _filterAccountSection(dataSec):
     for key, section in dataSec.items()[:]:
@@ -1364,7 +1372,7 @@ def _recursiveStep(defaultDict, savedDict, finalDict):
 
 class AccountSettings(object):
     onSettingsChanging = Event.Event()
-    version = 68
+    version = 69
     settingsCore = dependency.descriptor(ISettingsCore)
     __cache = {'login': None, 'section': None}
     __sessionSettings = {'login': None, 'section': None}
@@ -2032,6 +2040,12 @@ class AccountSettings(object):
                         extraStarted = _unpack(keySettings['isBattlePassExtraStarted'].asString)
                         keySettings.deleteSection('isBattlePassExtraStarted')
                         keySettings.write(IS_BATTLE_PASS_MARATHON_STARTED, _pack(extraStarted))
+
+            if currVersion < 69:
+                for key, section in _filterAccountSection(ads):
+                    keySettings = AccountSettings._readSection(section, KEY_SETTINGS)
+                    if SOUND.DETECTION_ALERT_SOUND in keySettings.keys():
+                        keySettings.write(SOUND.DETECTION_ALERT_SOUND, _pack('lightbulb'))
 
             ads.writeInt('version', AccountSettings.version)
         return

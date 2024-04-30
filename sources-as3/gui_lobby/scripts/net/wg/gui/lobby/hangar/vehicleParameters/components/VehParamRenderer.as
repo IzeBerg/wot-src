@@ -23,13 +23,13 @@ package net.wg.gui.lobby.hangar.vehicleParameters.components
       
       private static const RENDERER_HEIGHT:int = 24;
       
-      private static const SIMPLE_TITLE_TF_X:int = 122;
+      private static const SIMPLE_TITLE_TF_X:int = 129;
       
       private static const SIMPLE_VALUE_TF_X:int = 270;
       
-      private static const ADVANCED_TITLE_TF_X:int = 151;
+      private static const ADVANCED_TITLE_TF_X:int = 158;
       
-      private static const EXTRA_TITLE_TF_X:int = 125;
+      private static const EXTRA_TITLE_TF_X:int = 132;
       
       private static const EXTRA_TITLE_TEXT_HEIGHT:int = 4;
       

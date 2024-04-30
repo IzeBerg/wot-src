@@ -16,6 +16,8 @@ package net.wg.gui.battle.views.destroyTimers
    import net.wg.gui.battle.views.destroyTimers.data.StatusNotificationVO;
    import net.wg.gui.battle.views.destroyTimers.events.DestroyTimerEvent;
    import net.wg.gui.components.controls.TextFieldContainer;
+   import net.wg.gui.utils.FrameHelper;
+   import net.wg.utils.IFramesHelper;
    import net.wg.utils.IScheduler;
    import org.idmedia.as3commons.util.StringUtils;
    import scaleform.clik.motion.Tween;
@@ -61,14 +63,23 @@ package net.wg.gui.battle.views.destroyTimers
       
       private static const BEAT_LAST_FRAME:String = "repeat";
       
+      private static const HIDE_COMPLETE_FRAME:String = "hideComplete";
+      
       private static const DESC_TEXT_COLORS:Object = {
+         "red":15626240,
          "orange":16689972,
          "gray":15626240,
-         "green":8442938,
+         "green":8041216,
          "yellow":16689972
       };
       
-      private static const DESC_TEXT_FILTERS:Object = {"yellow":[new DropShadowFilter(0,0,12783619,1,8,8)]};
+      private static const DESC_TEXT_FILTERS:Object = {
+         "red":[new DropShadowFilter(0,0,0,0.5,12,12),new DropShadowFilter(0,0,0,1,4,4)],
+         "orange":[],
+         "gray":[],
+         "green":[],
+         "yellow":[new DropShadowFilter(0,0,12783619,1,8,8)]
+      };
        
       
       public var graphicsSpr:TimerContainer = null;
@@ -99,12 +110,22 @@ package net.wg.gui.battle.views.destroyTimers
       
       private var _fontSize:int = -1;
       
+      private var _frameHelper:IFramesHelper;
+      
       public function DestroyTimer()
       {
          super();
          stop();
          init(true,true);
          this._scheduler = App.utils.scheduler;
+         this._frameHelper = new FrameHelper(this);
+         this._frameHelper.addScriptToFrameByLabel(HIDE_COMPLETE_FRAME,this.onHideComplete);
+      }
+      
+      private function onHideComplete() : void
+      {
+         stop();
+         visible = false;
       }
       
       override protected function invokeAdditionalActionOnIntervalUpdate() : void
@@ -124,6 +145,8 @@ package net.wg.gui.battle.views.destroyTimers
       
       override protected function onDispose() : void
       {
+         this._frameHelper.dispose();
+         this._frameHelper = null;
          this.clearTweenX();
          this.resetTimerStates();
          this._scheduler = null;
@@ -389,7 +412,10 @@ package net.wg.gui.battle.views.destroyTimers
          this.graphicsSpr.setColor(this._currentColor);
          iconSpr = this.graphicsSpr.iconSpr;
          this.desc.textColor = DESC_TEXT_COLORS[this._currentColor];
-         this.desc.textFilters = DESC_TEXT_FILTERS[this._currentColor];
+         if(DESC_TEXT_FILTERS[this._currentColor])
+         {
+            this.desc.textFilters = DESC_TEXT_FILTERS[this._currentColor];
+         }
       }
       
       private function clearTweenX() : void

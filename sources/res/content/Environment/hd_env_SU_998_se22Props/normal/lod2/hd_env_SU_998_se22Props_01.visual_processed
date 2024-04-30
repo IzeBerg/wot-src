@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						alphaReference
+						<Int>60</Int>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_SU_998_se22Props/hd_env_su_998_se22Props_BAM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env_SU_998_se22Props/hd_env_su_998_se22Props_BGMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_SU_998_se22Props/hd_env_su_998_se22Props_BANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.265657 1.990000 -0.007467</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.286677 -0.020000 -0.148001</min>
+		<max>0.817991 4.000000 0.126954</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>3688</geometrySize>
+	<minUVDensity>0.012105</minUVDensity>
+</root>

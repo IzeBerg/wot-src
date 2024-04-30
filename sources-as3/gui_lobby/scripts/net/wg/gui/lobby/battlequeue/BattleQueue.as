@@ -5,9 +5,9 @@ package net.wg.gui.lobby.battlequeue
    import flash.ui.Keyboard;
    import net.wg.data.constants.AlignType;
    import net.wg.gui.components.common.FrameStateCmpnt;
+   import net.wg.gui.components.controls.Image;
    import net.wg.gui.components.controls.ImageComponent;
    import net.wg.gui.components.controls.ScrollingListEx;
-   import net.wg.gui.components.controls.UILoaderAlt;
    import net.wg.gui.interfaces.ISoundButtonEx;
    import net.wg.gui.utils.FrameHelper;
    import net.wg.infrastructure.base.meta.IBattleQueueMeta;
@@ -69,7 +69,7 @@ package net.wg.gui.lobby.battlequeue
       
       public var startButton:ISoundButtonEx;
       
-      public var battleIcon:UILoaderAlt;
+      public var battleIcon:Image;
       
       public var battleIconBg:FrameStateCmpnt;
       

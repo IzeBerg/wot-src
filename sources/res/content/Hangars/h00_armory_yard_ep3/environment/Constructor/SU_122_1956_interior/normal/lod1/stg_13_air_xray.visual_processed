@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/custom/xray_inside.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						g_freshnelParamsPacked
+						<Vector4>10.000000 3.000000 1.000000 2.000000</Vector4>
+					</property>
+					<property>
+						g_glowColor
+						<Vector4>1.000000 0.098039 0.098039 1.000000</Vector4>
+					</property>
+					<property>
+						g_lightMultipliersPacked
+						<Vector4>0.500000 0.400000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_pervading
+						<Float>0.100000</Float>
+					</property>
+					<property>
+						g_spawnNoiseTexture
+						<Texture>content/Hangars/h00_armory_yard_ep3/environment/Constructor/SU_122_1956_interior/noise_alpha_mask.dds</Texture>
+					</property>
+					<property>
+						g_spawnTextureTransform
+						<Vector4>4.000000 2.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_transitionStage
+						<Float>1.000000</Float>
+					</property>
+				</material>
+				<groupOrigin>0.233529 1.045368 -0.102386</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.921749 -0.500000 -2.635527</min>
+		<max>1.388808 1.620764 2.430756</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>164350</geometrySize>
+	<minUVDensity>0.022331</minUVDensity>
+</root>

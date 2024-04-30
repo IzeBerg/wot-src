@@ -14,68 +14,29 @@
 		<node>Scene Root</node>
 		<geometry>
 			<vertices>vertices</vertices>
-			<stream>uv2</stream>
 			<primitive>indices</primitive>
 			<primitiveGroup>
 				0
 				<material>
-					<identifier>s_nd1</identifier>
-					<fx>shaders/std_effects/PBS_ext_dual.fx</fx>
-					<materialKind>111</materialKind>
-					<collisionFlags>255</collisionFlags>
-					<property>
-						diffuseMap
-						<Texture>content/Buildings/hd_bld_SU_0037_NKVD/hd_bld_SU_0037_NKVD_tile_AM.dds</Texture>
-					</property>
-					<property>
-						diffuseMap2
-						<Texture>content/Buildings/hd_bld_SU_0037_NKVD/hd_bld_SU_0037_NKVD_01_AM2.dds</Texture>
-					</property>
-					<property>
-						g_enableTerrainBlending
-						<Bool>true</Bool>
-					</property>
-					<property>
-						metallicGlossMap
-						<Texture>content/Buildings/hd_bld_SU_0037_NKVD/hd_bld_SU_0037_NKVD_tile_GMM.dds</Texture>
-					</property>
-					<property>
-						normalMap
-						<Texture>content/Buildings/hd_bld_SU_0037_NKVD/hd_bld_SU_0037_NKVD_tile_ANM.dds</Texture>
-					</property>
-					<property>
-						g_enableAO
-						<Bool>true</Bool>
-					</property>
-				</material>
-				<groupOrigin>-0.089485 5.542723 -0.002672</groupOrigin>
-			</primitiveGroup>
-			<primitiveGroup>
-				1
-				<material>
 					<identifier>s_nd0</identifier>
-					<fx>shaders/std_effects/PBS_ext_dual.fx</fx>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
 					<materialKind>111</materialKind>
 					<collisionFlags>0</collisionFlags>
 					<property>
 						diffuseMap
-						<Texture>content/Buildings/hd_bld_SU_0037_NKVD/hd_bld_SU_0037_NKVD_AM.dds</Texture>
-					</property>
-					<property>
-						diffuseMap2
-						<Texture>content/Buildings/hd_bld_SU_0037_NKVD/hd_bld_SU_0037_NKVD_01_AM2.dds</Texture>
-					</property>
-					<property>
-						g_enableTerrainBlending
-						<Bool>true</Bool>
+						<Texture>content/Buildings/hd_bld_SU_0037_NKVD/hd_bld_SU_0037_NKVD_01_BAM.dds</Texture>
 					</property>
 					<property>
 						metallicGlossMap
-						<Texture>content/Buildings/hd_bld_SU_0037_NKVD/hd_bld_SU_0037_NKVD_GMM.dds</Texture>
+						<Texture>content/Buildings/hd_bld_SU_0037_NKVD/hd_bld_SU_0037_NKVD_01_BGMM.dds</Texture>
 					</property>
 					<property>
 						normalMap
-						<Texture>content/Buildings/hd_bld_SU_0037_NKVD/hd_bld_SU_0037_NKVD_ANM.dds</Texture>
+						<Texture>content/Buildings/hd_bld_SU_0037_NKVD/hd_bld_SU_0037_NKVD_01_BANM.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
 					</property>
 					<property>
 						g_enableAO
@@ -83,22 +44,26 @@
 					</property>
 					<property>
 						alphaReference
-						<Int>100</Int>
+						<Int>189</Int>
 					</property>
 					<property>
 						alphaTestEnable
 						<Bool>true</Bool>
 					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
 				</material>
-				<groupOrigin>-2.598586 5.039014 0.004894</groupOrigin>
+				<groupOrigin>0.019651 5.541665 -0.130540</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<boundingBox>
-		<min>-33.199364 -1.000006 -16.456909</min>
-		<max>33.226162 12.087873 16.344366</max>
+		<min>-33.375793 -1.000005 -16.610798</min>
+		<max>33.226162 12.083352 16.499905</max>
 	</boundingBox>
 	<customBsp>true</customBsp>
-	<geometrySize>46996</geometrySize>
-	<minUVDensity>0.000090</minUVDensity>
+	<geometrySize>29766</geometrySize>
+	<minUVDensity>0.000015</minUVDensity>
 </root>

@@ -7,7 +7,7 @@ package net.wg.gui.lobby.battleRoyale
       
       private static const PANEL_WIDTH:int = 349;
       
-      private static const PANEL_HEIGHT:int = 92;
+      private static const PANEL_HEIGHT:int = 83;
        
       
       public function ProxyCurrencyPanel()

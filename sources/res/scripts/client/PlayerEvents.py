@@ -62,6 +62,7 @@ class _PlayerEvents(object):
         self.onGuiCacheSyncCompleted = Event.Event()
         self.onPMLocksChanged = Event.Event()
         self.onDailyQuestsInfoChange = Event.Event()
+        self.onFrontmanLockChanged = Event.Event()
         self.onBootcampEnqueued = Event.Event()
         self.onBootcampStartChoice = Event.Event()
         self.onBootcampAccountMigrationComplete = Event.Event()
@@ -71,6 +72,8 @@ class _PlayerEvents(object):
         self.onShowDevelopmentInfo = Event.Event()
         self.onEntityCheckOutEnqueued = Event.Event()
         self.onRoundFinished = Event.Event()
+        self.onStaticDeathZoneActivated = Event.Event()
+        self.onStaticDeathZoneDeactivated = Event.Event()
         self.onServerReplayEntering = Event.Event()
         self.onServerReplayExiting = Event.Event()
         self.onPlatformBlueprintsConvertSaleLimits = Event.Event()
@@ -82,3 +85,11 @@ class _PlayerEvents(object):
 
 
 g_playerEvents = _PlayerEvents()
+
+class _ExtensionEvents(object):
+
+    def __init__(self):
+        self.onExtGetCustomPunishmentWindow = Event.Event()
+
+
+g_extPlayerEvents = _ExtensionEvents()

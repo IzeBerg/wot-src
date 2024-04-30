@@ -1735,6 +1735,8 @@ package
       
       public static const UNIT_ERRORS_JOIN_CTX_LOCK:String = "#system_messages:unit/errors/JOIN_CTX_LOCK";
       
+      public static const UNIT_ERRORS_HB_BANNED:String = "#system_messages:unit/errors/HB_BANNED";
+      
       public static const UNIT_ERRORS_CANT_INVITE:String = "#system_messages:unit/errors/CANT_INVITE";
       
       public static const UNIT_ERRORS_NOT_READY:String = "#system_messages:unit/errors/NOT_READY";

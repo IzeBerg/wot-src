@@ -176,6 +176,7 @@ package net.wg.gui.battle.battleRoyale.views.configurator
          var _loc1_:int = 0;
          var _loc2_:Number = NaN;
          var _loc3_:Rectangle = null;
+         var _loc4_:int = 0;
          super.draw();
          if(isInvalid(InvalidationType.STATE))
          {
@@ -239,11 +240,12 @@ package net.wg.gui.battle.battleRoyale.views.configurator
             this.vehNameTf.x = this.vehTypeIcon.x + this.vehTypeIcon.width + VEHTYPE_ICON_RIGHT_MARGIN | 0;
             this.vehTypeIcon.y = (this.vehNameTf.textHeight - this.vehTypeIcon.height >> 1) + TF_BORDER_SIZE;
             this._headerContainer.x = width - this._headerContainer.width >> 1;
-            this._headerContainer.y = HEADER_OFFSET_Y + this._offsetDependsOnScreenHeight;
+            this._headerContainer.y = HEADER_OFFSET_Y + this._offsetDependsOnScreenHeight | 0;
             this.separator.x = this.choiceInfoPanel.x = this.moduleInfoPanel.x = this.levelPanel.x = _loc2_;
-            this.levelPanel.y = this._headerContainer.y + VEHICLE_TYPE_ICON_HEIGHT + HEADER_OFFSET_Y | 0;
+            _loc4_ = Math.min(0,height - 840) >> 1;
+            this.levelPanel.y = this._headerContainer.y + VEHICLE_TYPE_ICON_HEIGHT + HEADER_OFFSET_Y + _loc4_;
             this.vehModulesConfigurator.x = (width - _loc3_.width >> 1) - _loc3_.x;
-            this.vehModulesConfigurator.y = this.levelPanel.y + LEVEL_BOTTOM_OFFSET + this._offsetDependsOnScreenHeight;
+            this.vehModulesConfigurator.y = this.levelPanel.y + LEVEL_BOTTOM_OFFSET + this._offsetDependsOnScreenHeight - _loc4_;
             this.separator.y = this.vehModulesConfigurator.y + VEHICLE_CONFIGURATOR_HEIGHT;
             this.choiceInfoPanel.y = this.moduleInfoPanel.y = this.separator.y + SEPARATOR_OFFSET_Y;
             this.substrate.x = width - this.substrate.width >> 1;

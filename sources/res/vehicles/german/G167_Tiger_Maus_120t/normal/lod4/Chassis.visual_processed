@@ -1215,7 +1215,7 @@
 			<primitiveGroup>
 				0
 				<material>
-					<identifier>tank_chassis_01_skinned</identifier>
+					<identifier>tank_proxy_skinned</identifier>
 					<collisionFlags>0</collisionFlags>
 					<materialKind>0</materialKind>
 					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
@@ -1246,10 +1246,6 @@
 					<property>
 						alphaReference
 						<Int>64</Int>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>true</Bool>
 					</property>
 					<property>
 						g_detailUVTiling
@@ -1269,7 +1265,7 @@
 			<primitiveGroup>
 				0
 				<material>
-					<identifier>tank_chassis_01_skinned</identifier>
+					<identifier>tank_proxy_skinned</identifier>
 					<collisionFlags>0</collisionFlags>
 					<materialKind>0</materialKind>
 					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
@@ -1300,10 +1296,6 @@
 					<property>
 						alphaReference
 						<Int>64</Int>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>true</Bool>
 					</property>
 					<property>
 						g_detailUVTiling

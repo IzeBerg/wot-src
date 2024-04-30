@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>4.000000</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>4.000000</startTime>
+				<value>true</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Explosion_stage1</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/event_se22/explosion_01.model</resource>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 -105.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.001000 0.001000 0.001000</value>
+				<inTangent>7.492500 7.492500 7.492500</inTangent>
+				<outTangent>7.492500 7.492500 7.492500</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.133333</startTime>
+				<value>1.000000 1.000000 1.000000</value>
+				<inTangent>4.746250 4.746250 4.746250</inTangent>
+				<outTangent>4.746250 4.746250 4.746250</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.233333</startTime>
+				<value>1.200000 1.200000 1.200000</value>
+				<inTangent>0.143536 0.133525 0.122573</inTangent>
+				<outTangent>0.143536 0.133525 0.122573</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>0.233333</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>0.266667</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Explosion_stage2</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/event_se22/explosion_02.model</resource>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 -105.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.233333</startTime>
+				<value>1.200000 1.200000 1.200000</value>
+				<inTangent>0.163636 0.163636 0.163636</inTangent>
+				<outTangent>0.163636 0.163636 0.163636</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.600000</startTime>
+				<value>1.260000 1.260000 1.260000</value>
+				<inTangent>0.163636 0.163636 0.163636</inTangent>
+				<outTangent>0.163636 0.163636 0.163636</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.233333</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>0.600000</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Explosion_stage3</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/event_se22/explosion_03.model</resource>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 -105.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.600000</startTime>
+				<value>1.260000 1.260000 1.260000</value>
+				<inTangent>-0.100000 -0.100000 -0.100000</inTangent>
+				<outTangent>-0.100000 -0.100000 -0.100000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.200000</startTime>
+				<value>1.200000 1.200000 1.200000</value>
+				<inTangent>-0.100000 -0.100000 -0.100000</inTangent>
+				<outTangent>-0.100000 -0.100000 -0.100000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.600000</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>explosion_sparks</name>
+		<type>particle</type>
+		<resource>particles/Environment/scenarios/se22_bomb_explosion.eff</resource>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.000000</value>
+				<inTangent>-0.386667</inTangent>
+				<outTangent>-0.386667</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

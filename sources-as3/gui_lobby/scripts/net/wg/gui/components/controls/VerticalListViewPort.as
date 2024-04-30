@@ -679,7 +679,7 @@ package net.wg.gui.components.controls
       
       private function onRendererResizeHandler(param1:Event) : void
       {
-         var _loc2_:IReusableListItemRenderer = IReusableListItemRenderer(param1.target);
+         var _loc2_:IReusableListItemRenderer = IReusableListItemRenderer(param1.currentTarget);
          this.invalidateRendererSize(_loc2_);
       }
       

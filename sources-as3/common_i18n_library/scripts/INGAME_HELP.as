@@ -213,9 +213,9 @@ package
       
       public static const DETAILSHELP_BATTLEROYALE_RADAR_DESCRIPTION:String = "#ingame_help:detailsHelp/battleRoyale/radar/description";
       
-      public static const DETAILSHELP_BATTLEROYALE_SECTORVISION_TITLE:String = "#ingame_help:detailsHelp/battleRoyale/sectorVision/title";
+      public static const DETAILSHELP_BATTLEROYALE_CONEVISIBILITY_TITLE:String = "#ingame_help:detailsHelp/battleRoyale/coneVisibility/title";
       
-      public static const DETAILSHELP_BATTLEROYALE_SECTORVISION_DESCRIPTION:String = "#ingame_help:detailsHelp/battleRoyale/sectorVision/description";
+      public static const DETAILSHELP_BATTLEROYALE_CONEVISIBILITY_DESCRIPTION:String = "#ingame_help:detailsHelp/battleRoyale/coneVisibility/description";
       
       public static const DETAILSHELP_BATTLEROYALE_ZONE_TITLE:String = "#ingame_help:detailsHelp/battleRoyale/zone/title";
       

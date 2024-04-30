@@ -1103,10 +1103,6 @@
 						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
 					</property>
 					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
-					</property>
-					<property>
 						g_useDetailMetallic
 						<Bool>true</Bool>
 					</property>
@@ -1119,10 +1115,7 @@
 					</property>
 					<property>
 						g_detailUVTiling
-						<Vector4>
-							4.20822 1.05205 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>4.208220 1.052050 0.000000 0.000000</Vector4>
 					</property>
 					<property>
 						g_detailPowerGloss
@@ -1200,10 +1193,6 @@
 						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
 					</property>
 					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
-					</property>
-					<property>
 						g_useDetailMetallic
 						<Bool>true</Bool>
 					</property>
@@ -1216,10 +1205,7 @@
 					</property>
 					<property>
 						g_detailUVTiling
-						<Vector4>
-							4.20822 1.05205 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>4.208220 1.052050 0.000000 0.000000</Vector4>
 					</property>
 					<property>
 						g_detailPowerGloss
@@ -1300,10 +1286,6 @@
 						colorIdMap
 						<Texture>vehicles/russian/common/common_ID.dds</Texture>
 					</property>
-					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
-					</property>
 					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
 					<property>
 						g_detailPowerGloss
@@ -1329,10 +1311,7 @@
 					</property>
 					<property>
 						g_detailUVTiling
-						<Vector4>
-							4.20822 4.20822 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>4.208220 4.208220 0.000000 0.000000</Vector4>
 					</property>
 					<property>
 						g_detailPower
@@ -1344,6 +1323,14 @@
 					</property>
 					<property>
 						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaReference
+						<Int>128</Int>
+					</property>
+					<property>
+						alphaTestEnable
 						<Bool>true</Bool>
 					</property>
 				</material>
@@ -1395,10 +1382,6 @@
 						colorIdMap
 						<Texture>vehicles/russian/common/common_ID.dds</Texture>
 					</property>
-					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
-					</property>
 					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
 					<property>
 						g_detailPowerGloss
@@ -1424,10 +1407,7 @@
 					</property>
 					<property>
 						g_detailUVTiling
-						<Vector4>
-							4.20822 4.20822 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>4.208220 4.208220 0.000000 0.000000</Vector4>
 					</property>
 					<property>
 						g_detailPower
@@ -1439,6 +1419,14 @@
 					</property>
 					<property>
 						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaReference
+						<Int>128</Int>
+					</property>
+					<property>
+						alphaTestEnable
 						<Bool>true</Bool>
 					</property>
 				</material>

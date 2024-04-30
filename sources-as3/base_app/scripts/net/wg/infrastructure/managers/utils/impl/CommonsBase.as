@@ -139,7 +139,7 @@ package net.wg.infrastructure.managers.utils.impl
          param1.transform.matrix = _loc2_;
       }
       
-      public function formatPlayerName(param1:TextField, param2:IUserProps, param3:Boolean = false, param4:Boolean = false) : Boolean
+      public function formatPlayerName(param1:TextField, param2:IUserProps, param3:Boolean = false, param4:Boolean = false, param5:String = "..") : Boolean
       {
          throw new AbstractException(Errors.ABSTRACT_INVOKE);
       }

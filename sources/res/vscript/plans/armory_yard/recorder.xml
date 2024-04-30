@@ -418,31 +418,6 @@
 				<slots/>
 			</block>
 			<block>
-				<class>Macro</class>
-				<id>Macro_18</id>
-				<params>
-					<param>
-						RecorderLampUpdate
-						<name>Macro Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>SetVariable</class>
-				<id>SetVariable_7</id>
-				<buddy>Variable_4</buddy>
-				<params>
-					<param>
-						IntT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
 				<class>SetVariable</class>
 				<id>SetVariable_1</id>
 				<buddy>Variable_1</buddy>
@@ -464,6 +439,31 @@
 						SoundT
 						<name>Variable Type</name>
 						<type>TypeT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>SetVariable</class>
+				<id>SetVariable_7</id>
+				<buddy>Variable_4</buddy>
+				<params>
+					<param>
+						IntT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>Macro</class>
+				<id>Macro_18</id>
+				<params>
+					<param>
+						RecorderLampUpdate
+						<name>Macro Name</name>
+						<type>StringT</type>
 					</param>
 				</params>
 				<slots/>
@@ -493,11 +493,11 @@
 				<slots>
 					<slot>
 						<name>soundName</name>
-						<const>\ay_voiceover_taperecorder_ep_02_stop\</const>
+						<const>\ay_voiceover_taperecorder_ep_03_stop\</const>
 					</slot>
 					<slot>
 						<name>soundObjectName</name>
-						<const>\ay_voiceover_taperecorder_ep_02_stop\</const>
+						<const>\ay_voiceover_taperecorder_ep_03_stop\</const>
 					</slot>
 				</slots>
 			</block>
@@ -508,16 +508,9 @@
 				<slots/>
 			</block>
 			<block>
-				<class>SetVariable</class>
-				<id>SetVariable_3</id>
-				<buddy>Variable_5</buddy>
-				<params>
-					<param>
-						IntT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
+				<class>OnStageFinish</class>
+				<id>OnStageFinish_1</id>
+				<params/>
 				<slots/>
 			</block>
 			<block>
@@ -533,9 +526,16 @@
 				<slots/>
 			</block>
 			<block>
-				<class>OnStageFinish</class>
-				<id>OnStageFinish_1</id>
-				<params/>
+				<class>SetVariable</class>
+				<id>SetVariable_3</id>
+				<buddy>Variable_5</buddy>
+				<params>
+					<param>
+						IntT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
 				<slots/>
 			</block>
 			<block>
@@ -801,30 +801,6 @@
 				<output>totalCount</output>
 			</connection>
 			<connection>
-				<from>SetVariable_7</from>
-				<input>input</input>
-				<to>Macro_18</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>ContextGetSelf_1</from>
-				<input>gameObject</input>
-				<to>Macro_18</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>SetVariable_2</from>
-				<input>input</input>
-				<to>SetVariable_7</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>GetLastListenedMessage_1</from>
-				<input>value</input>
-				<to>SetVariable_7</to>
-				<output>index</output>
-			</connection>
-			<connection>
 				<from>For_1</from>
 				<input>input</input>
 				<to>SetVariable_1</to>
@@ -849,6 +825,30 @@
 				<output>sound</output>
 			</connection>
 			<connection>
+				<from>SetVariable_2</from>
+				<input>input</input>
+				<to>SetVariable_7</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>GetLastListenedMessage_1</from>
+				<input>value</input>
+				<to>SetVariable_7</to>
+				<output>index</output>
+			</connection>
+			<connection>
+				<from>SetVariable_7</from>
+				<input>input</input>
+				<to>Macro_18</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>ContextGetSelf_1</from>
+				<input>gameObject</input>
+				<to>Macro_18</to>
+				<output>value</output>
+			</connection>
+			<connection>
 				<from>GetCurrentProgress_1</from>
 				<input>inStageIndex</input>
 				<to>GetLastValidSound_2</to>
@@ -867,18 +867,6 @@
 				<output>value</output>
 			</connection>
 			<connection>
-				<from>Macro_7</from>
-				<input>input</input>
-				<to>SetVariable_3</to>
-				<output>Playing</output>
-			</connection>
-			<connection>
-				<from>GetNextValidSoundStageIndex_3</from>
-				<input>value</input>
-				<to>SetVariable_3</to>
-				<output>outStageIndex</output>
-			</connection>
-			<connection>
 				<from>OnStageFinish_1</from>
 				<input>input</input>
 				<to>Macro_1</to>
@@ -889,6 +877,18 @@
 				<input>gameObject</input>
 				<to>Macro_1</to>
 				<output>value</output>
+			</connection>
+			<connection>
+				<from>Macro_7</from>
+				<input>input</input>
+				<to>SetVariable_3</to>
+				<output>Playing</output>
+			</connection>
+			<connection>
+				<from>GetNextValidSoundStageIndex_3</from>
+				<input>value</input>
+				<to>SetVariable_3</to>
+				<output>outStageIndex</output>
 			</connection>
 			<connection>
 				<from>Macro_1</from>
@@ -1037,6 +1037,18 @@
 						<slots/>
 					</block>
 					<block>
+						<class>ComponentMethod</class>
+						<id>ComponentMethod_5</id>
+						<params>
+							<param>
+								Animator.pause
+								<name>Component Type</name>
+								<type>StringT</type>
+							</param>
+						</params>
+						<slots/>
+					</block>
+					<block>
 						<class>MacroOutput</class>
 						<id>MacroOutput_1</id>
 						<params>
@@ -1049,18 +1061,6 @@
 								EventT
 								<name>Output Type</name>
 								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>ComponentMethod</class>
-						<id>ComponentMethod_5</id>
-						<params>
-							<param>
-								Animator.pause
-								<name>Component Type</name>
-								<type>StringT</type>
 							</param>
 						</params>
 						<slots/>
@@ -1130,12 +1130,6 @@
 						<output>gameObject</output>
 					</connection>
 					<connection>
-						<from>ComponentMethod_5</from>
-						<input>out</input>
-						<to>MacroOutput_1</to>
-						<output>out</output>
-					</connection>
-					<connection>
 						<from>ComponentMethod_2</from>
 						<input>in</input>
 						<to>ComponentMethod_5</to>
@@ -1146,6 +1140,12 @@
 						<input>gameObject</input>
 						<to>ComponentMethod_5</to>
 						<output>spool2</output>
+					</connection>
+					<connection>
+						<from>ComponentMethod_5</from>
+						<input>out</input>
+						<to>MacroOutput_1</to>
+						<output>out</output>
 					</connection>
 				</connections>
 			</macro>
@@ -1195,11 +1195,11 @@
 						<slots/>
 					</block>
 					<block>
-						<class>GetComponentProperties</class>
-						<id>GetComponentProperties_6</id>
+						<class>ComponentMethod</class>
+						<id>ComponentMethod_9</id>
 						<params>
 							<param>
-								Recorder component
+								Animator.stop
 								<name>Component Type</name>
 								<type>StringT</type>
 							</param>
@@ -1207,11 +1207,11 @@
 						<slots/>
 					</block>
 					<block>
-						<class>ComponentMethod</class>
-						<id>ComponentMethod_9</id>
+						<class>GetComponentProperties</class>
+						<id>GetComponentProperties_6</id>
 						<params>
 							<param>
-								Animator.stop
+								Recorder component
 								<name>Component Type</name>
 								<type>StringT</type>
 							</param>
@@ -1261,18 +1261,6 @@
 				</blocks>
 				<connections>
 					<connection>
-						<from>MacroInput_1</from>
-						<input>in</input>
-						<to>GetComponentProperties_6</to>
-						<output>in</output>
-					</connection>
-					<connection>
-						<from>MacroInput_2</from>
-						<input>gameObject</input>
-						<to>GetComponentProperties_6</to>
-						<output>gameObject</output>
-					</connection>
-					<connection>
 						<from>GetComponentProperties_6</from>
 						<input>in</input>
 						<to>ComponentMethod_9</to>
@@ -1283,6 +1271,18 @@
 						<input>gameObject</input>
 						<to>ComponentMethod_9</to>
 						<output>lampAnimation</output>
+					</connection>
+					<connection>
+						<from>MacroInput_1</from>
+						<input>in</input>
+						<to>GetComponentProperties_6</to>
+						<output>in</output>
+					</connection>
+					<connection>
+						<from>MacroInput_2</from>
+						<input>gameObject</input>
+						<to>GetComponentProperties_6</to>
+						<output>gameObject</output>
 					</connection>
 					<connection>
 						<from>ComponentMethod_9</from>
@@ -1308,23 +1308,6 @@
 				<name>IsSoundPlaying</name>
 				<blocks>
 					<block>
-						<class>MacroOutput</class>
-						<id>MacroOutput_1</id>
-						<params>
-							<param>
-								Playing
-								<name>Output Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								EventT
-								<name>Output Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
 						<class>MacroInput</class>
 						<id>MacroInput_1</id>
 						<params>
@@ -1341,6 +1324,23 @@
 							<param>
 								<name>Input Editor</name>
 								<type>StringT</type>
+							</param>
+						</params>
+						<slots/>
+					</block>
+					<block>
+						<class>MacroOutput</class>
+						<id>MacroOutput_1</id>
+						<params>
+							<param>
+								Playing
+								<name>Output Name</name>
+								<type>StringT</type>
+							</param>
+							<param>
+								EventT
+								<name>Output Type</name>
+								<type>TypeT</type>
 							</param>
 						</params>
 						<slots/>
@@ -1469,6 +1469,17 @@
 						<slots/>
 					</block>
 					<block>
+						<class>SubtractInteger</class>
+						<id>SubtractInteger_1</id>
+						<params/>
+						<slots>
+							<slot>
+								<name>b</name>
+								<const>\1\</const>
+							</slot>
+						</slots>
+					</block>
+					<block>
 						<class>ArrayVariableGet</class>
 						<id>ArrayVariableGet_1</id>
 						<buddy>Variable_2</buddy>
@@ -1480,17 +1491,6 @@
 							</param>
 						</params>
 						<slots/>
-					</block>
-					<block>
-						<class>SubtractInteger</class>
-						<id>SubtractInteger_1</id>
-						<params/>
-						<slots>
-							<slot>
-								<name>b</name>
-								<const>\1\</const>
-							</slot>
-						</slots>
 					</block>
 				</blocks>
 				<connections>
@@ -1555,22 +1555,40 @@
 						<output>value</output>
 					</connection>
 					<connection>
-						<from>SubtractInteger_1</from>
-						<input>index</input>
-						<to>ArrayVariableGet_1</to>
-						<output>res</output>
-					</connection>
-					<connection>
 						<from>GetVariable_1</from>
 						<input>a</input>
 						<to>SubtractInteger_1</to>
 						<output>value</output>
+					</connection>
+					<connection>
+						<from>SubtractInteger_1</from>
+						<input>index</input>
+						<to>ArrayVariableGet_1</to>
+						<output>res</output>
 					</connection>
 				</connections>
 			</macro>
 			<macro>
 				<name>LastListenedMsgUpdate</name>
 				<blocks>
+					<block>
+						<class>If</class>
+						<id>If_5</id>
+						<params/>
+						<slots/>
+					</block>
+					<block>
+						<class>Macro</class>
+						<id>Macro_5</id>
+						<params>
+							<param>
+								RecorderStopAnimator
+								<name>Macro Name</name>
+								<type>StringT</type>
+							</param>
+						</params>
+						<slots/>
+					</block>
 					<block>
 						<class>MacroInput</class>
 						<id>MacroInput_2</id>
@@ -1587,24 +1605,6 @@
 							</param>
 							<param>
 								<name>Input Editor</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>If</class>
-						<id>If_5</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
-						<class>Macro</class>
-						<id>Macro_5</id>
-						<params>
-							<param>
-								RecorderStopAnimator
-								<name>Macro Name</name>
 								<type>StringT</type>
 							</param>
 						</params>
@@ -2262,12 +2262,6 @@
 						<slots/>
 					</block>
 					<block>
-						<class>Create3DSound</class>
-						<id>Create3DSound_3</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
 						<class>MacroInput</class>
 						<id>MacroInput_3</id>
 						<params>
@@ -2286,6 +2280,12 @@
 								<type>StringT</type>
 							</param>
 						</params>
+						<slots/>
+					</block>
+					<block>
+						<class>Create3DSound</class>
+						<id>Create3DSound_3</id>
+						<params/>
 						<slots/>
 					</block>
 					<block>
@@ -2443,14 +2443,14 @@
 						<slots/>
 					</block>
 					<block>
-						<class>PlaySound</class>
-						<id>PlaySound_3</id>
+						<class>StopSound</class>
+						<id>StopSound_2</id>
 						<params/>
 						<slots/>
 					</block>
 					<block>
-						<class>StopSound</class>
-						<id>StopSound_2</id>
+						<class>PlaySound</class>
+						<id>PlaySound_3</id>
 						<params/>
 						<slots/>
 					</block>
@@ -2497,18 +2497,6 @@
 						<output>out</output>
 					</connection>
 					<connection>
-						<from>StopSound_2</from>
-						<input>in</input>
-						<to>PlaySound_3</to>
-						<output>out</output>
-					</connection>
-					<connection>
-						<from>GetVariable_5</from>
-						<input>soundToPlay</input>
-						<to>PlaySound_3</to>
-						<output>value</output>
-					</connection>
-					<connection>
 						<from>MacroInput_1</from>
 						<input>in</input>
 						<to>StopSound_2</to>
@@ -2519,6 +2507,18 @@
 						<input>sound</input>
 						<to>StopSound_2</to>
 						<output>sound</output>
+					</connection>
+					<connection>
+						<from>StopSound_2</from>
+						<input>in</input>
+						<to>PlaySound_3</to>
+						<output>out</output>
+					</connection>
+					<connection>
+						<from>GetVariable_5</from>
+						<input>soundToPlay</input>
+						<to>PlaySound_3</to>
+						<output>value</output>
 					</connection>
 				</connections>
 			</macro>
@@ -2587,12 +2587,6 @@
 						<slots/>
 					</block>
 					<block>
-						<class>IsStageSoundValid</class>
-						<id>IsStageSoundValid_1</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
 						<class>MacroInput</class>
 						<id>MacroInput_2</id>
 						<params>
@@ -2611,6 +2605,12 @@
 								<type>StringT</type>
 							</param>
 						</params>
+						<slots/>
+					</block>
+					<block>
+						<class>IsStageSoundValid</class>
+						<id>IsStageSoundValid_1</id>
+						<params/>
 						<slots/>
 					</block>
 					<block>
@@ -2668,27 +2668,6 @@
 				<name>SetNextStageMessage</name>
 				<blocks>
 					<block>
-						<class>MacroInput</class>
-						<id>MacroInput_1</id>
-						<params>
-							<param>
-								input
-								<name>Input Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								EventT
-								<name>Input Type</name>
-								<type>TypeT</type>
-							</param>
-							<param>
-								<name>Input Editor</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
 						<class>If</class>
 						<id>If_3</id>
 						<params/>
@@ -2711,6 +2690,27 @@
 								<const>\1\</const>
 							</slot>
 						</slots>
+					</block>
+					<block>
+						<class>MacroInput</class>
+						<id>MacroInput_1</id>
+						<params>
+							<param>
+								input
+								<name>Input Name</name>
+								<type>StringT</type>
+							</param>
+							<param>
+								EventT
+								<name>Input Type</name>
+								<type>TypeT</type>
+							</param>
+							<param>
+								<name>Input Editor</name>
+								<type>StringT</type>
+							</param>
+						</params>
+						<slots/>
 					</block>
 					<block>
 						<class>GetCurrentProgress</class>
@@ -2738,12 +2738,6 @@
 						<slots/>
 					</block>
 					<block>
-						<class>If</class>
-						<id>If_5</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
 						<class>GetVariable</class>
 						<id>GetVariable_4</id>
 						<buddy>Variable_1</buddy>
@@ -2754,6 +2748,12 @@
 								<type>TypeT</type>
 							</param>
 						</params>
+						<slots/>
+					</block>
+					<block>
+						<class>If</class>
+						<id>If_5</id>
+						<params/>
 						<slots/>
 					</block>
 					<block>
@@ -2945,6 +2945,12 @@
 						<slots/>
 					</block>
 					<block>
+						<class>If</class>
+						<id>If_4</id>
+						<params/>
+						<slots/>
+					</block>
+					<block>
 						<class>Macro</class>
 						<id>Macro_3</id>
 						<params>
@@ -2957,18 +2963,6 @@
 						<slots/>
 					</block>
 					<block>
-						<class>If</class>
-						<id>If_4</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
-						<class>If</class>
-						<id>If_1</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
 						<class>GetComponentProperty</class>
 						<id>GetComponentProperty_1</id>
 						<params>
@@ -2978,6 +2972,12 @@
 								<type>StringT</type>
 							</param>
 						</params>
+						<slots/>
+					</block>
+					<block>
+						<class>If</class>
+						<id>If_1</id>
+						<params/>
 						<slots/>
 					</block>
 					<block>
@@ -3046,18 +3046,6 @@
 				</blocks>
 				<connections>
 					<connection>
-						<from>If_1</from>
-						<input>in</input>
-						<to>Macro_3</to>
-						<output>true</output>
-					</connection>
-					<connection>
-						<from>MacroInput_2</from>
-						<input>gameObject</input>
-						<to>Macro_3</to>
-						<output>gameObject</output>
-					</connection>
-					<connection>
 						<from>MacroInput_1</from>
 						<input>input</input>
 						<to>If_4</to>
@@ -3070,16 +3058,16 @@
 						<output>needToUpdate</output>
 					</connection>
 					<connection>
-						<from>GetComponentProperty_1</from>
-						<input>input</input>
-						<to>If_1</to>
-						<output>out</output>
+						<from>If_1</from>
+						<input>in</input>
+						<to>Macro_3</to>
+						<output>true</output>
 					</connection>
 					<connection>
-						<from>IsActive_2</from>
-						<input>value</input>
-						<to>If_1</to>
-						<output>res</output>
+						<from>MacroInput_2</from>
+						<input>gameObject</input>
+						<to>Macro_3</to>
+						<output>gameObject</output>
 					</connection>
 					<connection>
 						<from>If_4</from>
@@ -3092,6 +3080,18 @@
 						<input>gameObject</input>
 						<to>GetComponentProperty_1</to>
 						<output>value</output>
+					</connection>
+					<connection>
+						<from>GetComponentProperty_1</from>
+						<input>input</input>
+						<to>If_1</to>
+						<output>out</output>
+					</connection>
+					<connection>
+						<from>IsActive_2</from>
+						<input>value</input>
+						<to>If_1</to>
+						<output>res</output>
 					</connection>
 					<connection>
 						<from>GetComponentProperty_1</from>

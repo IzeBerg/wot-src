@@ -17,6 +17,7 @@ class ClanInvitesViewWithTable(ClanInvitesViewWithTableMeta):
     def __init__(self):
         super(ClanInvitesViewWithTable, self).__init__()
         self._parentWnd = None
+        self._searchDP = self._createSearchDP()
         return
 
     @property
@@ -24,12 +25,12 @@ class ClanInvitesViewWithTable(ClanInvitesViewWithTableMeta):
         return self._searchDP
 
     def setParentWindow(self, wnd):
+        super(ClanInvitesViewWithTable, self).setParentWindow(wnd)
         self._parentWnd = weakref.proxy(wnd)
         self._onAttachedToWindow()
 
     def _populate(self):
         super(ClanInvitesViewWithTable, self)._populate()
-        self._searchDP = self._createSearchDP()
         self._searchDP.setFlashObject(self.as_getTableDPS())
         self._searchDP.buildList(None)
         return

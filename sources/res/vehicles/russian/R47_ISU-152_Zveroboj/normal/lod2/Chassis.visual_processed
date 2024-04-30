@@ -1046,12 +1046,6 @@
 	</renderSet>
 	<renderSet>
 		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
-		<node>W_L5_BlendBone</node>
-		<node>W_L3_BlendBone</node>
-		<node>W_L4_BlendBone</node>
-		<node>W_L2_BlendBone</node>
-		<node>W_L1_BlendBone</node>
-		<node>W_L0_BlendBone</node>
 		<node>Track_L0_BlendBone</node>
 		<node>V_BlendBone</node>
 		<node>Track_L1_BlendBone</node>
@@ -1059,11 +1053,17 @@
 		<node>Track_L3_BlendBone</node>
 		<node>Track_L4_BlendBone</node>
 		<node>Track_L5_BlendBone</node>
-		<node>WD_L0_BlendBone</node>
 		<node>WD_L1_BlendBone</node>
 		<node>WD_L2_BlendBone</node>
 		<node>WD_L3_BlendBone</node>
 		<node>WD_L4_BlendBone</node>
+		<node>W_L0_BlendBone</node>
+		<node>WD_L0_BlendBone</node>
+		<node>W_L1_BlendBone</node>
+		<node>W_L2_BlendBone</node>
+		<node>W_L3_BlendBone</node>
+		<node>W_L4_BlendBone</node>
+		<node>W_L5_BlendBone</node>
 		<geometry>
 			<vertices>exportChassL1_Shape.vertices</vertices>
 			<primitive>exportChassL1_Shape.indices</primitive>
@@ -1117,10 +1117,6 @@
 	</renderSet>
 	<renderSet>
 		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
-		<node>W_R3_BlendBone</node>
-		<node>W_R1_BlendBone</node>
-		<node>W_R2_BlendBone</node>
-		<node>W_R0_BlendBone</node>
 		<node>V_BlendBone</node>
 		<node>Track_R0_BlendBone</node>
 		<node>Track_R1_BlendBone</node>
@@ -1128,13 +1124,17 @@
 		<node>Track_R3_BlendBone</node>
 		<node>Track_R4_BlendBone</node>
 		<node>Track_R5_BlendBone</node>
-		<node>W_R4_BlendBone</node>
-		<node>W_R5_BlendBone</node>
-		<node>WD_R0_BlendBone</node>
 		<node>WD_R1_BlendBone</node>
 		<node>WD_R3_BlendBone</node>
 		<node>WD_R4_BlendBone</node>
 		<node>WD_R2_BlendBone</node>
+		<node>WD_R0_BlendBone</node>
+		<node>W_R5_BlendBone</node>
+		<node>W_R4_BlendBone</node>
+		<node>W_R3_BlendBone</node>
+		<node>W_R2_BlendBone</node>
+		<node>W_R1_BlendBone</node>
+		<node>W_R0_BlendBone</node>
 		<geometry>
 			<vertices>exportChassR1_Shape.vertices</vertices>
 			<primitive>exportChassR1_Shape.indices</primitive>
@@ -1182,7 +1182,7 @@
 						<Texture>vehicles/russian/R47_ISU-152_Zveroboj/ISU-152_Zveroboj_chassis_01_ANM.dds</Texture>
 					</property>
 				</material>
-				<groupOrigin>1.212960 0.584536 0.031027</groupOrigin>
+				<groupOrigin>1.212960 0.584536 0.030120</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
@@ -1191,6 +1191,6 @@
 		<min>-1.554368 -0.000001 -3.297413</min>
 		<max>1.554181 1.116939 3.290822</max>
 	</boundingBox>
-	<geometrySize>124782</geometrySize>
+	<geometrySize>135262</geometrySize>
 	<minUVDensity>0.013889</minUVDensity>
 </root>

@@ -92,6 +92,7 @@ class VIEW_ALIAS(COMMON_VIEW_ALIAS):
     VEHICLE_SELL_DIALOG = 'vehicleSellDialog'
     SETTINGS_WINDOW = 'settingsWindow'
     BATTLE_RESULTS = 'battleResults'
+    EVENTS_WINDOW = 'EventsWindow'
     TANKMAN_SKILLS_DROP_FOR_FREE_WINDOW = 'tankmanSkillsDropForFreeWindow'
     BROWSER_WINDOW = 'browserWindow'
     BROWSER_WINDOW_MODAL = 'browserWindowModal'
@@ -237,6 +238,7 @@ class VIEW_ALIAS(COMMON_VIEW_ALIAS):
     FEEDBACK_DAMAGE_INDICATOR = 'feedbackDamageIndicator'
     FEEDBACK_BATTLE_BORDER_MAP = 'feedbackBattleBorderMap'
     FEEDBACK_QUESTS_PROGRESS = 'feedbackQuestsProgress'
+    FEEDBACK_SIXTH_SENSE = 'feedbackSixthSense'
     BATTLE_PAGES = (
      CLASSIC_BATTLE_PAGE, DEV_BATTLE_PAGE, EVENT_BATTLE_PAGE, RANKED_BATTLE_PAGE, BOOTCAMP_BATTLE_PAGE,
      EPIC_BATTLE_PAGE, BATTLE_ROYALE_PAGE, WINBACK_BATTLE_PAGE)

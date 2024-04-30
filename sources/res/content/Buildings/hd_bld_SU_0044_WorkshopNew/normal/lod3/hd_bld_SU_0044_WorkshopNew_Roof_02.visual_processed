@@ -8,33 +8,6 @@
 			<row2>0.000000 0.000000 1.000000</row2>
 			<row3>0.000000 0.000000 0.000000</row3>
 		</transform>
-		<node>
-			<identifier>hd_bld_SU_0044_WorkshopNew_Roof_02</identifier>
-			<transform>
-				<row0>1.000000 0.000000 0.000000</row0>
-				<row1>0.000000 1.000000 0.000000</row1>
-				<row2>0.000000 0.000000 1.000000</row2>
-				<row3>0.000000 0.000000 0.000000</row3>
-			</transform>
-			<node>
-				<identifier>lod0</identifier>
-				<transform>
-					<row0>1.000000 0.000000 0.000000</row0>
-					<row1>0.000000 1.000000 0.000000</row1>
-					<row2>0.000000 0.000000 1.000000</row2>
-					<row3>0.000000 0.000000 0.000000</row3>
-				</transform>
-				<node>
-					<identifier>s1</identifier>
-					<transform>
-						<row0>1.000000 0.000000 0.000000</row0>
-						<row1>0.000000 1.000000 0.000000</row1>
-						<row2>0.000000 0.000000 1.000000</row2>
-						<row3>0.000000 0.000000 0.000000</row3>
-					</transform>
-				</node>
-			</node>
-		</node>
 	</node>
 	<renderSet>
 		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
@@ -51,7 +24,7 @@
 					<collisionFlags>0</collisionFlags>
 					<property>
 						diffuseMap
-						<Texture>content/Buildings/hd_bld_SU_0044_WorkshopNew/hd_bld_SU_0044_WorkshopNew_BAM.dds</Texture>
+						<Texture>content/Buildings/hd_bld_SU_0044_WorkshopNew/hd_bld_SU_0044_WorkshopNew_Roof_02_BAM.dds</Texture>
 					</property>
 					<property>
 						doubleSided
@@ -63,11 +36,11 @@
 					</property>
 					<property>
 						metallicGlossMap
-						<Texture>content/Buildings/hd_bld_SU_0044_WorkshopNew/hd_bld_SU_0044_WorkshopNew_BGMM.dds</Texture>
+						<Texture>content/Buildings/hd_bld_SU_0044_WorkshopNew/hd_bld_SU_0044_WorkshopNew_Roof_02_BGMM.dds</Texture>
 					</property>
 					<property>
 						normalMap
-						<Texture>content/Buildings/hd_bld_SU_0044_WorkshopNew/hd_bld_SU_0044_WorkshopNew_BANM.dds</Texture>
+						<Texture>content/Buildings/hd_bld_SU_0044_WorkshopNew/hd_bld_SU_0044_WorkshopNew_Roof_02_BANM.dds</Texture>
 					</property>
 					<property>
 						alphaReference
@@ -78,15 +51,15 @@
 						<Bool>true</Bool>
 					</property>
 				</material>
-				<groupOrigin>20.721107 1.217527 -10.147465</groupOrigin>
+				<groupOrigin>20.711229 1.268174 -10.023781</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<boundingBox>
-		<min>-0.005979 0.452428 -20.122162</min>
-		<max>41.448074 2.081836 0.086702</max>
+		<min>-0.018289 0.448846 -20.122162</min>
+		<max>41.448074 2.087502 0.086702</max>
 	</boundingBox>
 	<customBsp>true</customBsp>
-	<geometrySize>216</geometrySize>
-	<minUVDensity>0.000111</minUVDensity>
+	<geometrySize>814</geometrySize>
+	<minUVDensity>0.000525</minUVDensity>
 </root>

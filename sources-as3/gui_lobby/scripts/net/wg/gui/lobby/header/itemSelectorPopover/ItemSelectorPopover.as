@@ -239,7 +239,11 @@ package net.wg.gui.lobby.header.itemSelectorPopover
          if(_loc3_)
          {
             _loc4_ = new ItemSelectorTooltipDataVO(_loc3_);
-            if(_loc4_.isSpecial)
+            if(_loc4_.isWulf)
+            {
+               App.toolTipMgr.showWulfTooltip(_loc4_.tooltip,null);
+            }
+            else if(_loc4_.isSpecial)
             {
                App.toolTipMgr.showSpecial(_loc4_.tooltip,null);
             }

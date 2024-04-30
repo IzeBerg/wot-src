@@ -136,6 +136,7 @@ package net.wg.gui.lobby.vehiclePreview.infoPanel.browse
                   this.title.addEventListener(MouseEvent.ROLL_OUT,this.onTitleRollOutHandler);
                   this.title.htmlText = this._titleInfoStr;
                   this.historicReference.mouseEnabled = true;
+                  this.title.mouseEnabled = true;
                }
                else
                {
@@ -143,6 +144,7 @@ package net.wg.gui.lobby.vehiclePreview.infoPanel.browse
                   this.title.removeEventListener(MouseEvent.ROLL_OUT,this.onTitleRollOutHandler);
                   this.title.text = VEHICLE_PREVIEW.INFOPANEL_TAB_ELITEFACTSHEET_INFO;
                   this.historicReference.mouseEnabled = this._isTooltip;
+                  this.title.mouseEnabled = this._isTooltip;
                }
             }
             invalidateLayout();
@@ -177,6 +179,7 @@ package net.wg.gui.lobby.vehiclePreview.infoPanel.browse
          this._isTooltip = param1.showTooltip;
          this._needDisclaimer = param1.needDisclaimer;
          this.historicReference.mouseEnabled = this._isTooltip;
+         this.title.mouseEnabled = this._isTooltip;
          this.setRenderersData(param1.benefitsData);
          invalidateSize();
       }

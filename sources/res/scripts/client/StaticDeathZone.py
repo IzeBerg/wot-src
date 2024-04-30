@@ -1,7 +1,9 @@
 import functools, random, BigWorld, Math, Event
+from account_helpers.settings_core import settings_constants, ISettingsCore
 from items import vehicles
 from helpers import dependency
 from PlayerEvents import g_playerEvents
+from gui.battle_control.controllers.arena_border_ctrl import ArenaBorderController
 from skeletons.gui.battle_session import IBattleSessionProvider
 from debug_utils import LOG_DEBUG_DEV
 from gui.shared.gui_items.marker_items import MarkerItem
@@ -10,6 +12,7 @@ _TIME_TO_STOP_FIRE_ON_LEAVE_ZONE = 5.0
 
 class StaticDeathZone(BigWorld.Entity):
     sessionProvider = dependency.descriptor(IBattleSessionProvider)
+    settingsCore = dependency.descriptor(ISettingsCore)
 
     def __init__(self):
         super(StaticDeathZone, self).__init__()
@@ -120,6 +123,20 @@ class StaticDeathZone(BigWorld.Entity):
             callback()
             return
 
+    def _updateBorderColor(self, isColorBlind=None):
+        spaceID = self._spaceID
+        if not spaceID:
+            return
+        else:
+            if isColorBlind is None:
+                isColorBlind = self.settingsCore.getSetting(settings_constants.GRAPHICS.COLOR_BLIND)
+            color = ArenaBorderController.getColor(isColorBlind)
+            BigWorld.ArenaBorderHelper.setBorderColor(spaceID, self.zoneIndex, color)
+            return
+
+    def _onArenaBorderTypeChanged(self, event):
+        self._updateBorderDrawType(event.ctx['drawType'])
+
     def _createMarker(self):
         if self._marker is None and self.isAvatarReady:
             self._marker = _DeathZoneMarkerHandler(self)
@@ -137,6 +154,10 @@ class StaticDeathZone(BigWorld.Entity):
                 BigWorld.cancelCallback(self.__callbackOnLeaveDeathZone)
             self.__callbackOnLeaveDeathZone = BigWorld.callback(_TIME_TO_STOP_FIRE_ON_LEAVE_ZONE, self.__functionOnLeaveDeathZone)
         return
+
+    def __onSettingsChanged(self, diff):
+        if settings_constants.GRAPHICS.COLOR_BLIND in diff:
+            self._updateBorderColor(isColorBlind=diff[settings_constants.GRAPHICS.COLOR_BLIND])
 
 
 class _DeathZoneMarkerHandler(object):

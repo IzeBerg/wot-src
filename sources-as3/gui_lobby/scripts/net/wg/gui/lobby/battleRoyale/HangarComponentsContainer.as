@@ -12,11 +12,9 @@ package net.wg.gui.lobby.battleRoyale
       
       private static const COMMANDER_HEIGHT:int = 220;
       
-      private static const COMMANDER_Y:int = 51;
+      private static const COMMANDER_Y:int = 38;
       
-      private static const PROXY_CURRENCY_PANEL_Y:int = 43;
-      
-      private static const TECH_PARAMETERS_MARGIN_TOP:int = 2;
+      private static const PROXY_CURRENCY_PANEL_Y:int = 52;
       
       private static const COMNANDER_LAYER_NAME:String = "commander";
       
@@ -55,7 +53,7 @@ package net.wg.gui.lobby.battleRoyale
          this.proxyCurrencyPanel.x = App.appWidth - this.proxyCurrencyPanel.width;
          this.proxyCurrencyPanel.y = PROXY_CURRENCY_PANEL_Y;
          this.techParameters.x = App.appWidth - this.techParameters.width;
-         this.techParameters.y = this.proxyCurrencyPanel.y + this.proxyCurrencyPanel.height + TECH_PARAMETERS_MARGIN_TOP;
+         this.techParameters.y = this.proxyCurrencyPanel.y + this.proxyCurrencyPanel.height;
          addChild(this.commander);
          addChild(this.techParameters);
          addChild(this.bottomPanel);

@@ -16,6 +16,10 @@ package net.wg.gui.cyberSport.controls.interfaces
       
       function set showAlertIcon(param1:Boolean) : void;
       
+      function get showFrozenIcon() : Boolean;
+      
+      function set showFrozenIcon(param1:Boolean) : void;
+      
       function get currentState() : int;
       
       function get vehicleCount() : int;

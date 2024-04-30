@@ -70,6 +70,10 @@
 					</args>
 				</action>
 			</actions>
+			<ctrlItems>
+				<default>_ArcadeArtilleryItem</default>
+				<replay>_ReplayArtilleryItem</replay>
+			</ctrlItems>
 		</script>
 	</arcade_artillery_aoe>
 	<arcade_bomber_aoe>
@@ -145,6 +149,10 @@
 					</args>
 				</action>
 			</actions>
+			<ctrlItems>
+				<default>_ArcadeBomberItem</default>
+				<replay>_ReplayBomberItem</replay>
+			</ctrlItems>
 		</script>
 	</arcade_bomber_aoe>
 	<artillery_deathzone_aoe>
@@ -183,7 +191,7 @@
 			<areaVisual>content/Interface/TargetPoint/TargetPoint.visual</areaVisual>
 			<areaShow>always</areaShow>
 			<noOwner>false</noOwner>
-			<attackerType>DEATH_ZONE</attackerType>
+			<attackerType>PERSONAL_DEATH_ZONE</attackerType>
 			<shotSoundPreDelay>1</shotSoundPreDelay>
 			<wwsoundShot>eb_ability_artillery_firing</wwsoundShot>
 			<effects>
@@ -210,6 +218,10 @@
 					</args>
 				</action>
 			</actions>
+			<ctrlItems>
+				<default>_ArtilleryItem</default>
+				<replay>_ReplayArtilleryItem</replay>
+			</ctrlItems>
 		</script>
 	</artillery_deathzone_aoe>
 </root>

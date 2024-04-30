@@ -54,26 +54,10 @@
 			<primitiveGroup>
 				0
 				<material>
-					<identifier>tank_hull_01</identifier>
-					<collisionFlags>0</collisionFlags>
-					<materialKind>0</materialKind>
+					<identifier>tank_proxy</identifier>
 					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
-					<property>
-						metallicGlossMap
-						<Texture>vehicles/german/G167_Tiger_Maus_120t/Tiger_Maus_120t_hull_01_GMM.dds</Texture>
-					</property>
-					<property>
-						normalMap
-						<Texture>vehicles/german/G167_Tiger_Maus_120t/Tiger_Maus_120t_hull_01_ANM.dds</Texture>
-					</property>
-					<property>
-						diffuseMap
-						<Texture>vehicles/german/G167_Tiger_Maus_120t/Tiger_Maus_120t_hull_01_AM.dds</Texture>
-					</property>
-					<property>
-						excludeMaskAndAOMap
-						<Texture>vehicles/german/G167_Tiger_Maus_120t/Tiger_Maus_120t_hull_01_AO.dds</Texture>
-					</property>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
 					<property>
 						colorIdMap
 						<Texture>vehicles/russian/common/common_ID.dds</Texture>
@@ -81,6 +65,26 @@
 					<property>
 						crashTileMap
 						<Texture>vehicles/russian/Tank_detail/crash_tile.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/german/G167_Tiger_Maus_120t/Tiger_Maus_120t_proxy_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/german/G167_Tiger_Maus_120t/Tiger_Maus_120t_proxy_AO.dds</Texture>
+					</property>
+					<property>
+						g_crashUVTiling
+						<Vector4>0.500000 0.500000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/german/G167_Tiger_Maus_120t/Tiger_Maus_120t_proxy_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/german/G167_Tiger_Maus_120t/Tiger_Maus_120t_proxy_ANM.dds</Texture>
 					</property>
 				</material>
 				<groupOrigin>-0.007689 0.140473 0.064159</groupOrigin>
@@ -91,6 +95,6 @@
 		<min>-2.076770 -0.586743 -4.218457</min>
 		<max>2.061392 0.867688 4.346774</max>
 	</boundingBox>
-	<geometrySize>2276</geometrySize>
+	<geometrySize>1796</geometrySize>
 	<minUVDensity>0.002159</minUVDensity>
 </root>

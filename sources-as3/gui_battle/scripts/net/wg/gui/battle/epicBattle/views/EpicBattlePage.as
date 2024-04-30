@@ -166,7 +166,7 @@ package net.wg.gui.battle.epicBattle.views
       
       override public function updateStage(param1:Number, param2:Number) : void
       {
-         var _loc3_:Number = NaN;
+         var _loc3_:int = 0;
          super.updateStage(param1,param2);
          _loc3_ = param1 >> 1;
          _originalWidth = param1;
@@ -192,8 +192,7 @@ package net.wg.gui.battle.epicBattle.views
             this.teamBasesPanelUI.y = TEAM_BASES_PANEL_OFFSETS[this._scorePanelState];
          }
          this.teamBasesPanelUI.x = _loc3_;
-         this.sixthSense.x = _loc3_;
-         this.sixthSense.y = param2 >> 2;
+         this.sixthSense.updateStage(param1,param2);
          this.damageInfoPanel.y = (param2 >> 1) / stage.scaleY + DAMAGE_INFO_PANEL_CONSTS.HEIGHT * stage.scaleY | 0;
          this.damageInfoPanel.x = param1 - DAMAGE_INFO_PANEL_CONSTS.WIDTH >> 1;
          this.battleMessenger.x = damagePanel.x;
@@ -214,7 +213,7 @@ package net.wg.gui.battle.epicBattle.views
          this.updateBattleDamageLogPanelPosition();
          if(this._messagePlaying)
          {
-            this.epicScorePanelUI.x = param1 >> 1;
+            this.epicScorePanelUI.x = _loc3_;
             this.epicScorePanelUI.y = SCORE_PANEL_HIDDEN_OFFSET;
          }
          else

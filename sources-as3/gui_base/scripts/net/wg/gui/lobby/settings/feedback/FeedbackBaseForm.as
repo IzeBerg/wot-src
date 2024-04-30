@@ -3,6 +3,7 @@ package net.wg.gui.lobby.settings.feedback
    import flash.display.InteractiveObject;
    import flash.events.Event;
    import net.wg.gui.components.controls.CheckBox;
+   import net.wg.gui.components.controls.Slider;
    import net.wg.gui.lobby.settings.SettingsNewCountersForm;
    import net.wg.gui.lobby.settings.components.RadioButtonBar;
    import net.wg.gui.lobby.settings.config.SettingsConfigHelper;
@@ -14,6 +15,7 @@ package net.wg.gui.lobby.settings.feedback
    import scaleform.clik.core.UIComponent;
    import scaleform.clik.data.DataProvider;
    import scaleform.clik.events.IndexEvent;
+   import scaleform.clik.events.SliderEvent;
    
    public class FeedbackBaseForm extends SettingsNewCountersForm implements IViewStackContent
    {
@@ -25,12 +27,15 @@ package net.wg.gui.lobby.settings.feedback
       
       private var _buttonBars:Vector.<RadioButtonBar>;
       
+      private var _sliders:Vector.<Slider>;
+      
       private var _data:SettingsDataVo;
       
       public function FeedbackBaseForm()
       {
          this._checkBoxes = new Vector.<CheckBox>();
          this._buttonBars = new Vector.<RadioButtonBar>();
+         this._sliders = new Vector.<Slider>();
          super();
       }
       
@@ -38,6 +43,7 @@ package net.wg.gui.lobby.settings.feedback
       {
          var _loc1_:CheckBox = null;
          var _loc2_:RadioButtonBar = null;
+         var _loc3_:Slider = null;
          for each(_loc1_ in this._checkBoxes)
          {
             _loc1_.removeEventListener(Event.SELECT,this.onCheckBoxSelectHandler);
@@ -45,6 +51,10 @@ package net.wg.gui.lobby.settings.feedback
          for each(_loc2_ in this._buttonBars)
          {
             _loc2_.removeEventListener(IndexEvent.INDEX_CHANGE,this.onButtonBarIndexChangeHandler);
+         }
+         for each(_loc3_ in this._sliders)
+         {
+            _loc3_.removeEventListener(SliderEvent.VALUE_CHANGE,this.onSliderValueChangeHandler);
          }
          super.onBeforeDispose();
       }
@@ -55,8 +65,19 @@ package net.wg.gui.lobby.settings.feedback
          this._checkBoxes = null;
          this._buttonBars.splice(0,this._buttonBars.length);
          this._buttonBars = null;
+         this._sliders.splice(0,this._sliders.length);
+         this._sliders = null;
          this._data = null;
          super.onDispose();
+      }
+      
+      override protected function getControlPropsByKey(param1:String) : SettingsControlProp
+      {
+         if(this._data && this._data[param1])
+         {
+            return this._data[param1];
+         }
+         return super.getControlPropsByKey(param1);
       }
       
       public function canShowAutomatically() : Boolean
@@ -76,8 +97,9 @@ package net.wg.gui.lobby.settings.feedback
          var _loc7_:IDisplayObject = null;
          var _loc8_:CheckBox = null;
          var _loc9_:RadioButtonBar = null;
-         var _loc10_:Boolean = false;
+         var _loc10_:Slider = null;
          var _loc11_:Boolean = false;
+         var _loc12_:Boolean = false;
          if(this._initialized)
          {
             return;
@@ -96,26 +118,25 @@ package net.wg.gui.lobby.settings.feedback
             {
                continue;
             }
-            _loc10_ = !(_loc6_.current == null || _loc6_.readOnly);
+            _loc11_ = !(_loc6_.current == null || _loc6_.readOnly);
             switch(_loc6_.type)
             {
                case SettingsConfigHelper.TYPE_CHECKBOX:
                   _loc8_ = CheckBox(_loc7_);
-                  _loc11_ = _loc6_.current != null;
-                  this.setupCheckBox(_loc8_,_loc6_.changedVal,_loc10_,_loc11_);
+                  _loc12_ = _loc6_.current != null;
+                  this.setupCheckBox(_loc8_,_loc6_.changedVal,_loc11_,_loc12_);
                   break;
                case SettingsConfigHelper.TYPE_BUTTON_BAR:
                   _loc9_ = RadioButtonBar(_loc7_);
-                  this.setupButtonBar(_loc9_,_loc6_.options,int(_loc6_.current),_loc10_);
+                  this.setupButtonBar(_loc9_,_loc6_.options,int(_loc6_.current),_loc11_);
+                  break;
+               case SettingsConfigHelper.TYPE_SLIDER:
+                  _loc10_ = Slider(_loc7_);
+                  this.setupSlider(_loc10_,Number(_loc6_.changedVal),_loc11_);
                   break;
             }
          }
          this._initialized = true;
-      }
-      
-      protected function getControlByName(param1:String) : IDisplayObject
-      {
-         return this[param1];
       }
       
       public function update(param1:Object) : void
@@ -153,8 +174,19 @@ package net.wg.gui.lobby.settings.feedback
                      CheckBox(_loc2_).selected = param1[_loc4_];
                   }
                   break;
+               case SettingsConfigHelper.TYPE_SLIDER:
+                  if(Slider(_loc2_).value != param1[_loc4_])
+                  {
+                     this.applySliderValue(Slider(_loc2_),param1[_loc4_]);
+                  }
+                  break;
             }
          }
+      }
+      
+      protected function getControlByName(param1:String) : IDisplayObject
+      {
+         return this[param1];
       }
       
       protected function setupCheckBox(param1:CheckBox, param2:Boolean, param3:Boolean, param4:Boolean) : void
@@ -167,6 +199,11 @@ package net.wg.gui.lobby.settings.feedback
             param1.addEventListener(Event.SELECT,this.onCheckBoxSelectHandler);
             this._checkBoxes.push(param1);
          }
+      }
+      
+      protected function applySliderValue(param1:Slider, param2:Number) : void
+      {
+         param1.value = param2;
       }
       
       protected function dispatchSettingSubVewEvent(param1:String, param2:Object) : void
@@ -189,6 +226,12 @@ package net.wg.gui.lobby.settings.feedback
          this.dispatchSettingSubVewEvent(_loc2_,param1.selected);
       }
       
+      protected function onSliderValueChange(param1:Slider) : void
+      {
+         var _loc2_:String = SettingsConfigHelper.instance.getControlIdByControlNameAndType(param1.name,SettingsConfigHelper.TYPE_SLIDER);
+         this.dispatchSettingSubVewEvent(_loc2_,param1.value);
+      }
+      
       protected function onButtonBarIndexChange(param1:RadioButtonBar) : void
       {
          var _loc2_:String = SettingsConfigHelper.instance.getControlIdByControlNameAndType(param1.name,SettingsConfigHelper.TYPE_BUTTON_BAR);
@@ -203,13 +246,15 @@ package net.wg.gui.lobby.settings.feedback
          }
       }
       
-      override protected function getControlPropsByKey(param1:String) : SettingsControlProp
+      private function setupSlider(param1:Slider, param2:Number, param3:Boolean) : void
       {
-         if(this._data && this._data[param1])
+         this.applySliderValue(param1,param2);
+         param1.enabled = param3;
+         if(param3)
          {
-            return this._data[param1];
+            param1.addEventListener(SliderEvent.VALUE_CHANGE,this.onSliderValueChangeHandler);
+            this._sliders.push(param1);
          }
-         return super.getControlPropsByKey(param1);
       }
       
       private function onCheckBoxSelectHandler(param1:Event) : void
@@ -222,6 +267,12 @@ package net.wg.gui.lobby.settings.feedback
       {
          var _loc2_:RadioButtonBar = RadioButtonBar(param1.target);
          this.onButtonBarIndexChange(_loc2_);
+      }
+      
+      private function onSliderValueChangeHandler(param1:SliderEvent) : void
+      {
+         var _loc2_:Slider = Slider(param1.target);
+         this.onSliderValueChange(_loc2_);
       }
    }
 }

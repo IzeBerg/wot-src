@@ -56,6 +56,7 @@ class SETTINGS_SECTIONS(CONST_CONTAINER):
     DAMAGE_LOG = 'FEEDBACK_DAMAGE_LOG'
     BATTLE_EVENTS = 'FEEDBACK_BATTLE_EVENTS'
     BATTLE_BORDER_MAP = 'FEEDBACK_BORDER_MAP'
+    SIXTH_SENSE = 'FEEDBACK_SIXTH_SENSE'
     QUESTS_PROGRESS = 'QUESTS_PROGRESS'
     UI_STORAGE = 'UI_STORAGE'
     UI_STORAGE_2 = 'UI_STORAGE_2'
@@ -137,6 +138,7 @@ class LIMITED_UI_SPAM_OFF(CONST_CONTAINER):
 
 class ARMORY_YARD_KEYS(CONST_CONTAINER):
     BUILD_PROGRESS = 'buildProgress'
+    CURRENT_SEASON = 'currentSeason'
 
 
 class ServerSettingsManager(object):
@@ -153,6 +155,7 @@ class ServerSettingsManager(object):
     BATTLE_EVENTS = settings_constants.BATTLE_EVENTS
     BATTLE_BORDER_MAP = settings_constants.BATTLE_BORDER_MAP
     QUESTS_PROGRESS = settings_constants.QUESTS_PROGRESS
+    SIXTH_SENSE = settings_constants.SIXTH_SENSE
     SESSION_STATS = settings_constants.SESSION_STATS
     BATTLE_COMM = settings_constants.BattleCommStorageKeys
     BATTLE_PASS = settings_constants.BattlePassStorageKeys
@@ -294,7 +297,9 @@ class ServerSettingsManager(object):
                                              'role_LT_universal': 23, 
                                              'role_LT_wheeled': 24, 
                                              'role_SPG': 25, 
-                                             'debut_boxes': 26}, offsets={}), 
+                                             'debut_boxes': 26, 
+                                             'role_SPG_flame': 27, 
+                                             'role_SPG_assault': 28}, offsets={}), 
        SETTINGS_SECTIONS.RANKED_CAROUSEL_FILTER_1: Section(masks={'ussr': 0, 
                                                     'germany': 1, 
                                                     'usa': 2, 
@@ -346,7 +351,9 @@ class ServerSettingsManager(object):
                                                     'role_LT_universal': 23, 
                                                     'role_LT_wheeled': 24, 
                                                     'role_SPG': 25, 
-                                                    'debut_boxes': 26}, offsets={}), 
+                                                    'debut_boxes': 26, 
+                                                    'role_SPG_flame': 27, 
+                                                    'role_SPG_assault': 28}, offsets={}), 
        SETTINGS_SECTIONS.EPICBATTLE_CAROUSEL_FILTER_1: Section(masks={'ussr': 0, 
                                                         'germany': 1, 
                                                         'usa': 2, 
@@ -396,7 +403,9 @@ class ServerSettingsManager(object):
                                                         'role_ATSPG_support': 22, 
                                                         'role_LT_universal': 23, 
                                                         'role_LT_wheeled': 24, 
-                                                        'role_SPG': 25}, offsets={}), 
+                                                        'role_SPG': 25, 
+                                                        'role_SPG_flame': 26, 
+                                                        'role_SPG_assault': 27}, offsets={}), 
        SETTINGS_SECTIONS.BATTLEPASS_CAROUSEL_FILTER_1: Section(masks={'isCommonProgression': 0}, offsets={}), 
        SETTINGS_SECTIONS.COMP7_CAROUSEL_FILTER_1: Section(masks={'ussr': 0, 
                                                    'germany': 1, 
@@ -449,7 +458,9 @@ class ServerSettingsManager(object):
                                                    'role_LT_universal': 23, 
                                                    'role_LT_wheeled': 24, 
                                                    'role_SPG': 25, 
-                                                   'debut_boxes': 26}, offsets={}), 
+                                                   'debut_boxes': 26, 
+                                                   'role_SPG_flame': 27, 
+                                                   'role_SPG_assault': 28}, offsets={}), 
        SETTINGS_SECTIONS.GUI_START_BEHAVIOR: Section(masks={GuiSettingsBehavior.FREE_XP_INFO_DIALOG_SHOWED: 0, 
                                               GuiSettingsBehavior.RANKED_WELCOME_VIEW_SHOWED: 1, 
                                               GuiSettingsBehavior.RANKED_WELCOME_VIEW_STARTED: 2, 
@@ -566,6 +577,8 @@ class ServerSettingsManager(object):
                                          BATTLE_EVENTS.ENEMIES_STUN: 18}, offsets={}), 
        SETTINGS_SECTIONS.BATTLE_BORDER_MAP: Section(masks={}, offsets={BATTLE_BORDER_MAP.MODE_SHOW_BORDER: Offset(0, 3), 
                                              BATTLE_BORDER_MAP.TYPE_BORDER: Offset(2, 3 << 2)}), 
+       SETTINGS_SECTIONS.SIXTH_SENSE: Section(masks={}, offsets={SIXTH_SENSE.INDICATOR_SIZE: Offset(0, 3), 
+                                       SIXTH_SENSE.INDICATOR_ALPHA: Offset(3, 1016)}), 
        SETTINGS_SECTIONS.UI_STORAGE: Section(masks={PM_TUTOR_FIELDS.GREETING_SCREEN_SHOWN: 0, 
                                       PM_TUTOR_FIELDS.FIRST_ENTRY_AWARDS_SHOWN: 1, 
                                       PM_TUTOR_FIELDS.ONE_FAL_SHOWN: 7, 
@@ -717,7 +730,9 @@ class ServerSettingsManager(object):
                                                     'role_ATSPG_support': 22, 
                                                     'role_LT_universal': 23, 
                                                     'role_LT_wheeled': 24, 
-                                                    'role_SPG': 25}, offsets={}), 
+                                                    'role_SPG': 25, 
+                                                    'role_SPG_flame': 26, 
+                                                    'role_SPG_assault': 27}, offsets={}), 
        SETTINGS_SECTIONS.UNIT_FILTER: Section(masks={}, offsets={GAME.UNIT_FILTER: Offset(0, 2047)}), 
        SETTINGS_SECTIONS.FUN_RANDOM_CAROUSEL_FILTER_1: Section(masks={'ussr': 0, 
                                                         'germany': 1, 
@@ -769,10 +784,13 @@ class ServerSettingsManager(object):
                                                         'role_ATSPG_support': 22, 
                                                         'role_LT_universal': 23, 
                                                         'role_LT_wheeled': 24, 
-                                                        'role_SPG': 25}, offsets={}), 
+                                                        'role_SPG': 25, 
+                                                        'role_SPG_flame': 26, 
+                                                        'role_SPG_assault': 27}, offsets={}), 
        SETTINGS_SECTIONS.LIMITED_UI_1: Section(masks={}, offsets={LIMITED_UI_KEY: Offset(0, 4294967295)}), 
        SETTINGS_SECTIONS.LIMITED_UI_2: Section(masks={}, offsets={LIMITED_UI_KEY: Offset(0, 4294967295)}), 
-       SETTINGS_SECTIONS.ARMORY_YARD: Section(masks={}, offsets={ARMORY_YARD_KEYS.BUILD_PROGRESS: Offset(0, 65535)}), 
+       SETTINGS_SECTIONS.ARMORY_YARD: Section(masks={}, offsets={ARMORY_YARD_KEYS.BUILD_PROGRESS: Offset(0, 255), 
+                                       ARMORY_YARD_KEYS.CURRENT_SEASON: Offset(8, 4294967040)}), 
        SETTINGS_SECTIONS.NEW_YEAR: Section(masks={NewYearStorageKeys.HAS_TOYS_HINT_SHOWN: 0, 
                                     NewYearStorageKeys.GLADE_INTRO_VISITED: 8, 
                                     NewYearStorageKeys.DECORATIONS_POPOVER_VIEWED: 9, 
@@ -826,7 +844,9 @@ class ServerSettingsManager(object):
                                                        'role_ATSPG_support': 22, 
                                                        'role_LT_universal': 23, 
                                                        'role_LT_wheeled': 24, 
-                                                       'role_SPG': 25}, offsets={})}
+                                                       'role_SPG': 25, 
+                                                       'role_SPG_flame': 26, 
+                                                       'role_SPG_assault': 27}, offsets={})}
     AIM_MAPPING = {'net': 1, 
        'netType': 1, 
        'centralTag': 1, 
@@ -1060,10 +1080,16 @@ class ServerSettingsManager(object):
         self.setSectionSettings(SETTINGS_SECTIONS.QUESTS_PROGRESS, settings)
 
     def getArmoryYardProgress(self):
-        return self.getSectionSettings(SETTINGS_SECTIONS.ARMORY_YARD, ARMORY_YARD_KEYS.BUILD_PROGRESS, -1)
+        return self.getSectionSettings(SETTINGS_SECTIONS.ARMORY_YARD, ARMORY_YARD_KEYS.BUILD_PROGRESS, 0)
 
     def setArmoryYardProgress(self, lastSeenProgress):
         self.setSectionSettings(SETTINGS_SECTIONS.ARMORY_YARD, {ARMORY_YARD_KEYS.BUILD_PROGRESS: lastSeenProgress})
+
+    def getArmoryYardSeason(self):
+        return self.getSectionSettings(SETTINGS_SECTIONS.ARMORY_YARD, ARMORY_YARD_KEYS.CURRENT_SEASON, 0)
+
+    def setArmoryYardSeason(self, seasonID):
+        self.setSectionSettings(SETTINGS_SECTIONS.ARMORY_YARD, {ARMORY_YARD_KEYS.CURRENT_SEASON: seasonID})
 
     def _buildAimSettings(self, settings):
         settingToServer = {}
@@ -1253,7 +1279,7 @@ class ServerSettingsManager(object):
     @adisp_process
     def _updateToVersion(self, callback=None):
         currentVersion = self.settingsCache.getVersion()
-        data = {'gameData': {}, 'gameExtData': {}, 'gameExtData2': {}, 'gameplayData': {}, 'controlsData': {}, 'aimData': {}, 'markersData': {}, 'graphicsData': {}, 'marksOnGun': {}, 'fallout': {}, 'carousel_filter': {}, 'feedbackDamageIndicator': {}, 'feedbackDamageLog': {}, 'feedbackBattleEvents': {}, 'onceOnlyHints': {}, 'onceOnlyHints2': {}, 'onceOnlyHints3': {}, 'uiStorage': {}, SETTINGS_SECTIONS.UI_STORAGE_2: {}, 'epicCarouselFilter2': {}, 'rankedCarouselFilter1': {}, 'rankedCarouselFilter2': {}, 'comp7CarouselFilter1': {}, 'comp7CarouselFilter2': {}, 'sessionStats': {}, 'battleComm': {}, 'dogTags': {}, 'battleHud': {}, 'spgAim': {}, GUI_START_BEHAVIOR: {}, 'battlePassStorage': {}, SETTINGS_SECTIONS.CONTOUR: {}, SETTINGS_SECTIONS.ROYALE_CAROUSEL_FILTER_1: {}, SETTINGS_SECTIONS.ROYALE_CAROUSEL_FILTER_2: {}, 'clear': {}, 'delete': [], SETTINGS_SECTIONS.LIMITED_UI_1: {}, SETTINGS_SECTIONS.LIMITED_UI_2: {}, SETTINGS_SECTIONS.BATTLE_MATTERS_QUESTS: {}, 'nyStorage': {}, SETTINGS_SECTIONS.ARMORY_YARD: {}}
+        data = {'gameData': {}, 'gameExtData': {}, 'gameExtData2': {}, 'gameplayData': {}, 'controlsData': {}, 'aimData': {}, 'markersData': {}, 'graphicsData': {}, 'marksOnGun': {}, 'fallout': {}, 'carousel_filter': {}, 'feedbackDamageIndicator': {}, 'feedbackDamageLog': {}, 'feedbackBattleEvents': {}, 'feedbackSixthSense': {}, 'onceOnlyHints': {}, 'onceOnlyHints2': {}, 'onceOnlyHints3': {}, 'uiStorage': {}, SETTINGS_SECTIONS.UI_STORAGE_2: {}, 'epicCarouselFilter2': {}, 'rankedCarouselFilter1': {}, 'rankedCarouselFilter2': {}, 'comp7CarouselFilter1': {}, 'comp7CarouselFilter2': {}, 'sessionStats': {}, 'battleComm': {}, 'dogTags': {}, 'battleHud': {}, 'spgAim': {}, GUI_START_BEHAVIOR: {}, 'battlePassStorage': {}, SETTINGS_SECTIONS.CONTOUR: {}, SETTINGS_SECTIONS.ROYALE_CAROUSEL_FILTER_1: {}, SETTINGS_SECTIONS.ROYALE_CAROUSEL_FILTER_2: {}, 'clear': {}, 'delete': [], SETTINGS_SECTIONS.LIMITED_UI_1: {}, SETTINGS_SECTIONS.LIMITED_UI_2: {}, SETTINGS_SECTIONS.BATTLE_MATTERS_QUESTS: {}, 'nyStorage': {}, SETTINGS_SECTIONS.ARMORY_YARD: {}}
         yield migrateToVersion(currentVersion, self._core, data)
         self._setSettingsSections(data)
         callback(self)
@@ -1342,6 +1368,9 @@ class ServerSettingsManager(object):
         feedbackBattleEvents = data.get('feedbackBattleEvents', {})
         if feedbackBattleEvents:
             settings[SETTINGS_SECTIONS.BATTLE_EVENTS] = self._buildSectionSettings(SETTINGS_SECTIONS.BATTLE_EVENTS, feedbackBattleEvents)
+        feedbackSixthSense = data.get('feedbackSixthSense', {})
+        if feedbackSixthSense:
+            settings[SETTINGS_SECTIONS.SIXTH_SENSE] = self._buildSectionSettings(SETTINGS_SECTIONS.SIXTH_SENSE, feedbackSixthSense)
         onceOnlyHints = data.get('onceOnlyHints', {})
         clearOnceOnlyHints = clear.get('onceOnlyHints', 0)
         if onceOnlyHints or clearOnceOnlyHints:

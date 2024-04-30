@@ -1,7 +1,8 @@
 from functools import partial
-import BigWorld
+import BigWorld, Math
 from aih_constants import CTRL_MODE_NAME
 from gui.Scaleform.daapi.view.battle.shared.minimap import entries, settings
+from gui.battle_control.battle_constants import FEEDBACK_EVENT_ID
 from gui.shared.utils.plugins import IPlugin
 from helpers import dependency
 from skeletons.account_helpers.settings_core import ISettingsCore
@@ -80,6 +81,9 @@ class SimplePlugin(IPlugin):
 
     def _isInArtyMode(self):
         return self._ctrlMode == CTRL_MODE_NAME.ARTY
+
+    def _isInAssaultSpg(self):
+        return self._ctrlMode == CTRL_MODE_NAME.ASSAULT_SPG
 
     def _isInOnlyArtyMode(self):
         return self._ctrlMode == CTRL_MODE_NAME.SPG_ONLY_ARTY_MODE
@@ -230,3 +234,50 @@ class BaseAreaMarkerEntriesPlugin(EntriesPlugin):
 
     def setActive(self, uniqueID, isActive):
         self._setActiveEx(uniqueID, isActive)
+
+
+class AttentionToCellPlugin(IntervalPlugin):
+    __slots__ = ('_boundingBox', )
+
+    def __init__(self, parent):
+        super(AttentionToCellPlugin, self).__init__(parent)
+        self._boundingBox = (Math.Vector2(0, 0), Math.Vector2(0, 0))
+
+    def start(self):
+        super(AttentionToCellPlugin, self).start()
+        self._boundingBox = self._arenaVisitor.type.getBoundingBox()
+        ctrl = self.sessionProvider.shared.feedback
+        if ctrl is not None:
+            ctrl.onMinimapFeedbackReceived += self.__onMinimapFeedbackReceived
+        return
+
+    def stop(self):
+        self._boundingBox = (
+         Math.Vector2(0, 0), Math.Vector2(0, 0))
+        ctrl = self.sessionProvider.shared.feedback
+        if ctrl is not None:
+            ctrl.onMinimapFeedbackReceived -= self.__onMinimapFeedbackReceived
+        super(AttentionToCellPlugin, self).stop()
+        return
+
+    def _doAttention(self, index, duration):
+        raise NotImplementedError
+
+    def _doAttentionAtPosition(self, senderID, position, duration):
+        raise NotImplementedError
+
+    def _doAttentionToObjective(self, senderID, hqIdx, duration):
+        raise NotImplementedError
+
+    def _doAttentionToBase(self, senderID, baseIdx, baseName, duration):
+        raise NotImplementedError
+
+    def __onMinimapFeedbackReceived(self, eventID, entityID, value):
+        if eventID == FEEDBACK_EVENT_ID.MINIMAP_MARK_CELL:
+            self._doAttention(*value)
+        elif eventID == FEEDBACK_EVENT_ID.MINIMAP_MARK_POSITION:
+            self._doAttentionAtPosition(entityID, *value)
+        elif eventID == FEEDBACK_EVENT_ID.MINIMAP_MARK_OBJECTIVE:
+            self._doAttentionToObjective(entityID, *value)
+        elif eventID == FEEDBACK_EVENT_ID.MINIMAP_MARK_BASE:
+            self._doAttentionToBase(entityID, *value)

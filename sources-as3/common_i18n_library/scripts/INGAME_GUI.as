@@ -353,6 +353,8 @@ package
       
       public static const STATISTICS_TAB_LINE_UP_TITLE:String = "#ingame_gui:statistics/tab/line_up/title";
       
+      public static const STATISTICS_TAB_LINE_UP_ENEMY:String = "#ingame_gui:statistics/tab/line_up/enemy";
+      
       public static const STATISTICS_TAB_QUESTS_HEADER:String = "#ingame_gui:statistics/tab/quests/header";
       
       public static const STATISTICS_TAB_QUESTS_STATUS_INPROGRESS:String = "#ingame_gui:statistics/tab/quests/status/inProgress";
@@ -1137,6 +1139,8 @@ package
       
       public static const POSTMORTEM_MESSAGES_DEATH_FROM_CLING_BRANDER:String = "#ingame_gui:postmortem_messages/DEATH_FROM_CLING_BRANDER";
       
+      public static const POSTMORTEM_MESSAGES_DEATH_FROM_BR_BOT:String = "#ingame_gui:postmortem_messages/DEATH_FROM_BR_BOT";
+      
       public static const POSTMORTEM_MESSAGES_DEATH_FROM_SHOT_ARCADE_BOMBER_BATTLE_ROYALE:String = "#ingame_gui:postmortem_messages/DEATH_FROM_SHOT_ARCADE_BOMBER_BATTLE_ROYALE";
       
       public static const PLAYER_MESSAGES_DEATH_FROM_OVERTURN_SELF_SUICIDE:String = "#ingame_gui:player_messages/DEATH_FROM_OVERTURN_SELF_SUICIDE";
@@ -1256,6 +1260,10 @@ package
       public static const EFFICIENCYRIBBONS_DEATHZONE:String = "#ingame_gui:efficiencyRibbons/deathZone";
       
       public static const EFFICIENCYRIBBONS_STATICDEATHZONE:String = "#ingame_gui:efficiencyRibbons/staticDeathZone";
+      
+      public static const EFFICIENCYRIBBONS_HBDEATHZONE:String = "#ingame_gui:efficiencyRibbons/HBDeathZone";
+      
+      public static const EFFICIENCYRIBBONS_EVENTDEATHONPHASECHANGE:String = "#ingame_gui:efficiencyRibbons/eventDeathOnPhaseChange";
       
       public static const EFFICIENCYRIBBONS_CANNONDMG:String = "#ingame_gui:efficiencyRibbons/CannonDmg";
       

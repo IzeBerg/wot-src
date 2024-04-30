@@ -78,6 +78,10 @@
 						normalMap
 						<Texture>vehicles/russian/Crash_inside/crash_inside_NM.dds</Texture>
 					</property>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
 				</material>
 				<groupOrigin>-0.001670 0.414552 -0.211143</groupOrigin>
 			</primitiveGroup>
@@ -153,6 +157,14 @@
 					<property>
 						normalMap
 						<Texture>vehicles/russian/R47_ISU-152_Zveroboj/ISU-152_Zveroboj_chassis_01_ANM.dds</Texture>
+					</property>
+					<property>
+						alphaReference
+						<Int>128</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
 					</property>
 				</material>
 				<groupOrigin>0.000563 -0.357694 -0.025373</groupOrigin>

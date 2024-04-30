@@ -8,6 +8,60 @@
 			<row2>0.000000 0.000000 1.000000</row2>
 			<row3>0.000000 0.000000 0.000000</row3>
 		</transform>
+		<node>
+			<identifier>hd_bld_SU_015_Thouse_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>lod0</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+				<node>
+					<identifier>s5</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>s6</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>s7</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>s8</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+			</node>
+		</node>
 	</node>
 	<renderSet>
 		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
@@ -20,7 +74,7 @@
 				0
 				<material>
 					<identifier>s_nd8</identifier>
-					<collisionFlags>0</collisionFlags>
+					<collisionFlags>255</collisionFlags>
 					<materialKind>111</materialKind>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
 					<property>
@@ -30,10 +84,6 @@
 					<property>
 						g_tile1Tint
 						<Vector4>0.850000 0.850000 0.850000 1.000000</Vector4>
-					</property>
-					<property>
-						g_tile2Tint
-						<Vector4>1.000000 1.000000 1.000000 1.000000</Vector4>
 					</property>
 					<property>
 						g_atlasSizes
@@ -98,17 +148,9 @@
 				1
 				<material>
 					<identifier>s_nd7</identifier>
-					<collisionFlags>0</collisionFlags>
+					<collisionFlags>255</collisionFlags>
 					<materialKind>111</materialKind>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
-					<property>
-						alphaReference
-						<Int>0</Int>
-					</property>
-					<property>
-						g_tile0Tint
-						<Vector4>1.000000 1.000000 1.000000 1.000000</Vector4>
-					</property>
 					<property>
 						g_dirtColor
 						<Vector4>0.470000 0.386105 0.350150 1.000000</Vector4>
@@ -120,14 +162,6 @@
 					<property>
 						g_enableTerrainBlending
 						<Bool>true</Bool>
-					</property>
-					<property>
-						doubleSided
-						<Bool>false</Bool>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>false</Bool>
 					</property>
 					<property>
 						blendMask
@@ -184,13 +218,9 @@
 				2
 				<material>
 					<identifier>s_nd6</identifier>
-					<collisionFlags>0</collisionFlags>
+					<collisionFlags>255</collisionFlags>
 					<materialKind>111</materialKind>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
-					<property>
-						alphaReference
-						<Int>0</Int>
-					</property>
 					<property>
 						g_tile0Tint
 						<Vector4>0.855000 0.855000 0.855000 1.000000</Vector4>
@@ -206,14 +236,6 @@
 					<property>
 						g_enableTerrainBlending
 						<Bool>true</Bool>
-					</property>
-					<property>
-						doubleSided
-						<Bool>false</Bool>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>false</Bool>
 					</property>
 					<property>
 						blendMask
@@ -270,13 +292,9 @@
 				3
 				<material>
 					<identifier>s_nd5</identifier>
-					<collisionFlags>0</collisionFlags>
+					<collisionFlags>255</collisionFlags>
 					<materialKind>111</materialKind>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
-					<property>
-						alphaReference
-						<Int>0</Int>
-					</property>
 					<property>
 						g_tile0Tint
 						<Vector4>0.710000 0.710000 0.710000 1.000000</Vector4>
@@ -300,14 +318,6 @@
 					<property>
 						g_enableTerrainBlending
 						<Bool>true</Bool>
-					</property>
-					<property>
-						doubleSided
-						<Bool>false</Bool>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>false</Bool>
 					</property>
 					<property>
 						blendMask
@@ -364,13 +374,9 @@
 				4
 				<material>
 					<identifier>s_nd4</identifier>
-					<collisionFlags>0</collisionFlags>
+					<collisionFlags>255</collisionFlags>
 					<materialKind>111</materialKind>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
-					<property>
-						alphaReference
-						<Int>0</Int>
-					</property>
 					<property>
 						g_tile0Tint
 						<Vector4>0.785000 0.785000 0.785000 1.000000</Vector4>
@@ -390,14 +396,6 @@
 					<property>
 						g_enableTerrainBlending
 						<Bool>true</Bool>
-					</property>
-					<property>
-						doubleSided
-						<Bool>false</Bool>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>false</Bool>
 					</property>
 					<property>
 						blendMask
@@ -454,7 +452,7 @@
 				5
 				<material>
 					<identifier>s_nd3</identifier>
-					<collisionFlags>0</collisionFlags>
+					<collisionFlags>255</collisionFlags>
 					<materialKind>111</materialKind>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
 					<property>
@@ -622,7 +620,7 @@
 				7
 				<material>
 					<identifier>s_nd1</identifier>
-					<collisionFlags>0</collisionFlags>
+					<collisionFlags>255</collisionFlags>
 					<materialKind>112</materialKind>
 					<fx>shaders/std_effects/PBS_ext.fx</fx>
 					<property>
@@ -729,7 +727,7 @@
 		</geometry>
 	</renderSet>
 	<boundingBox>
-		<min>-15.864451 -1.021971 -7.037759</min>
+		<min>-15.864451 -1.021971 -7.037757</min>
 		<max>17.280903 15.190932 10.183023</max>
 	</boundingBox>
 	<customBsp>true</customBsp>

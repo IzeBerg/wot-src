@@ -302,6 +302,10 @@ class BattlePassConfig(object):
         return self._season.get('finalOfferTime', 0)
 
     @property
+    def shopOfferFinishTime(self):
+        return self._season.get('shopOfferFinishTime', 0)
+
+    @property
     def points(self):
         return self._season.get('points', {})
 

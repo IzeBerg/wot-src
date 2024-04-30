@@ -1473,6 +1473,16 @@ package
       
       public static const FEEDBACK_TAB_QUESTSPROGRESS_ENABLETIERGROUPING:String = "#settings:feedback/tab/questsProgress/enableTierGrouping";
       
+      public static const FEEDBACK_TAB_SIXTHSENSE:String = "#settings:feedback/tab/sixthSense";
+      
+      public static const FEEDBACK_TAB_SIXTHSENSE_ALPHA:String = "#settings:feedback/tab/sixthSense/alpha";
+      
+      public static const FEEDBACK_TAB_SIXTHSENSE_SIZE:String = "#settings:feedback/tab/sixthSense/size";
+      
+      public static const FEEDBACK_TAB_SIXTHSENSE_SIZE_SMALL:String = "#settings:feedback/tab/sixthSense/size/small";
+      
+      public static const FEEDBACK_TAB_SIXTHSENSE_SIZE_BIG:String = "#settings:feedback/tab/sixthSense/size/big";
+      
       public static const GAMMAWIZARD_TITLE:String = "#settings:gammaWizard/title";
       
       public static const GAMMAWIZARD_HEADER:String = "#settings:gammaWizard/header";

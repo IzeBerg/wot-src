@@ -1,0 +1,5 @@
+
+
+class HB_GAME_MESSAGES_CONSTS(object):
+    BASE_CAPTURED_LINKAGE = 'HBBaseCapturedUI'
+    BASE_CAPTURED_POSITIVE_LINKAGE = 'HBBaseCapturedUI'

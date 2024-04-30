@@ -126,6 +126,8 @@ class SettingsWindow(SettingsWindowMeta):
         dataVO = [
          {'label': SETTINGS.FEEDBACK_TAB_DAMAGEINDICATOR, 
             'linkage': VIEW_ALIAS.FEEDBACK_DAMAGE_INDICATOR},
+         {'label': SETTINGS.FEEDBACK_TAB_SIXTHSENSE, 
+            'linkage': VIEW_ALIAS.FEEDBACK_SIXTH_SENSE},
          {'label': SETTINGS.FEEDBACK_TAB_EVENTSINFO, 
             'linkage': VIEW_ALIAS.FEEDBACK_BATTLE_EVENTS},
          {'label': SETTINGS.FEEDBACK_TAB_DAMAGELOGPANEL, 

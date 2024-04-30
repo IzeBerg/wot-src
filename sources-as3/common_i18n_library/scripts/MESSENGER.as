@@ -741,6 +741,8 @@ package
       
       public static const SERVICECHANNELMESSAGES_BRBATTLERESULTS_BATTLEROYALEBRCOIN:String = "#messenger:serviceChannelMessages/BRbattleResults/battleRoyaleBrCoin";
       
+      public static const SERVICECHANNELMESSAGES_BRBATTLERESULTS_BRPROGRESSIONTITLE:String = "#messenger:serviceChannelMessages/BRbattleResults/BRProgressionTitle";
+      
       public static const SERVICECHANNELMESSAGES_BOOTCAMP_FINISHED:String = "#messenger:serviceChannelMessages/bootcamp/finished";
       
       public static const SERVICECHANNELMESSAGES_BOOTCAMP_AWARDS:String = "#messenger:serviceChannelMessages/bootcamp/awards";
@@ -926,6 +928,10 @@ package
       public static const SERVICECHANNELMESSAGES_INVOICERECEIVED_EQUIPMENT:String = "#messenger:serviceChannelMessages/invoiceReceived/equipment";
       
       public static const SERVICECHANNELMESSAGES_INVOICERECEIVED_PIECES:String = "#messenger:serviceChannelMessages/invoiceReceived/pieces";
+      
+      public static const SERVICECHANNELMESSAGES_INVOICERECEIVED_FORMAT_ITEMS_DEFAULT:String = "#messenger:serviceChannelMessages/invoiceReceived/format/items/default";
+      
+      public static const SERVICECHANNELMESSAGES_INVOICERECEIVED_FORMAT_ITEMS_CREWBOOK:String = "#messenger:serviceChannelMessages/invoiceReceived/format/items/crewBook";
       
       public static const SERVICECHANNELMESSAGES_INVOICERECEIVED_RENTDAYS:String = "#messenger:serviceChannelMessages/invoiceReceived/rentDays";
       
@@ -2022,6 +2028,10 @@ package
       public static const SERVICECHANNELMESSAGES_BRVEHICLESINVOICE_BUTTON:String = "#messenger:serviceChannelMessages/BRVehiclesInvoice/button";
       
       public static const SERVICECHANNELMESSAGES_BRVEHICLESINVOICE_DESCR:String = "#messenger:serviceChannelMessages/BRVehiclesInvoice/descr";
+      
+      public static const SERVICECHANNELMESSAGES_BRBATTLERESULTS_DISQUALIFIED:String = "#messenger:serviceChannelMessages/BRbattleResults/disqualified";
+      
+      public static const SERVICECHANNELMESSAGES_BRBATTLERESULTS_NO_REWARD:String = "#messenger:serviceChannelMessages/BRbattleResults/no_reward";
       
       public static const SERVICECHANNELMESSAGES_BLUEPRINTSCONVERTSALE_HEADER:String = "#messenger:serviceChannelMessages/blueprintsConvertSale/header";
       

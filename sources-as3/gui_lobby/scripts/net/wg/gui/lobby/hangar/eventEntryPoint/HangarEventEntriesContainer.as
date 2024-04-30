@@ -56,7 +56,7 @@ package net.wg.gui.lobby.hangar.eventEntryPoint
       {
          var _loc3_:Boolean = param1 != _width || param2 != _height;
          super.setSize(param1,param2);
-         if(_loc3_)
+         if(_loc3_ && this._data.length > 0)
          {
             dispatchEvent(new Event(Event.RESIZE));
          }

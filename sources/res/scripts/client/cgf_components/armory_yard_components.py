@@ -5,6 +5,7 @@ from cgf_components.hover_component import SelectionComponent
 from cache import cached_property
 from cgf_script.component_meta_class import registerComponent, ComponentProperty, CGFMetaTypes
 from cgf_script.managers_registrator import autoregister, onAddedQuery, onRemovedQuery
+from debug_utils import LOG_ERROR
 from vehicle_systems.stricted_loading import makeCallbackWeak
 from vehicle_systems.tankStructure import ColliderTypes
 
@@ -12,7 +13,7 @@ from vehicle_systems.tankStructure import ColliderTypes
 class ArmoryYardCameraRuleComponent(object):
     domain = CGF.DomainOption.DomainClient | CGF.DomainOption.DomainEditor
     editorTitle = 'Armory Yard Camera Rule'
-    category = 'Common'
+    category = 'Armory Yard'
     stageCamera = ComponentProperty(type=CGFMetaTypes.LINK, editorName='Camera', value=CGF.GameObject)
 
 
@@ -20,7 +21,7 @@ class ArmoryYardCameraRuleComponent(object):
 class AssemblyStageVideo(object):
     domain = CGF.DomainOption.DomainClient | CGF.DomainOption.DomainEditor
     editorTitle = 'Assembly stage video'
-    category = 'Common'
+    category = 'Armory Yard'
     videoName = ComponentProperty(type=CGFMetaTypes.STRING, editorName='Video name')
 
 
@@ -28,7 +29,7 @@ class AssemblyStageVideo(object):
 class TankAssemblyPartComponent(object):
     domain = CGF.DomainOption.DomainClient | CGF.DomainOption.DomainEditor
     editorTitle = 'Tank Assembly Part'
-    category = 'Common'
+    category = 'Armory Yard'
     index = ComponentProperty(type=CGFMetaTypes.INT, editorName='Group index', value=1)
     visualGO = ComponentProperty(type=CGFMetaTypes.LINK, editorName='Visual part', value=CGF.GameObject)
     animGO = ComponentProperty(type=CGFMetaTypes.LINK, editorName='Animation part', value=CGF.GameObject)
@@ -38,7 +39,7 @@ class TankAssemblyPartComponent(object):
 class AssemblyStageIndex(object):
     domain = CGF.DomainOption.DomainClient | CGF.DomainOption.DomainEditor
     editorTitle = 'Assembly Stage Index'
-    category = 'Common'
+    category = 'Armory Yard'
     index = ComponentProperty(type=CGFMetaTypes.INT, editorName='Stage index')
 
 
@@ -46,14 +47,14 @@ class AssemblyStageIndex(object):
 class TankAssemblyRootComponent(object):
     domain = CGF.DomainOption.DomainClient | CGF.DomainOption.DomainEditor
     editorTitle = 'Tank Assembly Root'
-    category = 'Common'
+    category = 'Armory Yard'
 
 
 @registerComponent
 class HideDetailsAfterStageComponent(object):
     domain = CGF.DomainOption.DomainClient | CGF.DomainOption.DomainEditor
     editorTitle = 'Hide details after stage'
-    category = 'Common'
+    category = 'Armory Yard'
     toHideAfterStage = ComponentProperty(type=CGFMetaTypes.INT, editorName='To hide after stage')
 
 
@@ -61,7 +62,7 @@ class HideDetailsAfterStageComponent(object):
 class HideDetailsOnStageComponent(object):
     domain = CGF.DomainOption.DomainClient | CGF.DomainOption.DomainEditor
     editorTitle = 'Hide details on stage'
-    category = 'Common'
+    category = 'Armory Yard'
     toHideOnStage = ComponentProperty(type=CGFMetaTypes.INT, editorName='To hide on stage')
 
 
@@ -69,7 +70,7 @@ class HideDetailsOnStageComponent(object):
 class ShowDetailsAfterStageComponent(object):
     domain = CGF.DomainOption.DomainClient | CGF.DomainOption.DomainEditor
     editorTitle = 'Show details after stage'
-    category = 'Common'
+    category = 'Armory Yard'
     toShowAfterStage = ComponentProperty(type=CGFMetaTypes.INT, editorName='To show after stage')
 
 
@@ -77,7 +78,7 @@ class ShowDetailsAfterStageComponent(object):
 class HideDetailsOnPresetComponent(object):
     domain = CGF.DomainOption.DomainClient | CGF.DomainOption.DomainEditor
     editorTitle = 'Hide details on graphics preset'
-    category = 'Common'
+    category = 'Armory Yard'
     toHideOnForward = ComponentProperty(type=CGFMetaTypes.BOOL, editorName='To hide on forward')
     toHideOnDeferred = ComponentProperty(type=CGFMetaTypes.BOOL, editorName='To hide on deferred')
 
@@ -86,7 +87,7 @@ class HideDetailsOnPresetComponent(object):
 class SchemeStagesRuleComponent(object):
     domain = CGF.DomainOption.DomainClient | CGF.DomainOption.DomainEditor
     editorTitle = 'Scheme stages rule'
-    category = 'Common'
+    category = 'Armory Yard'
     fromStage = ComponentProperty(type=CGFMetaTypes.INT, editorName='From stage')
     toStage = ComponentProperty(type=CGFMetaTypes.INT, editorName='To stage')
 
@@ -95,7 +96,7 @@ class SchemeStagesRuleComponent(object):
 class SchemeProgressionStateComponent(object):
     domain = CGF.DomainOption.DomainClient | CGF.DomainOption.DomainEditor
     editorTitle = 'Scheme progression state'
-    category = 'Common'
+    category = 'Armory Yard'
     stage = ComponentProperty(type=CGFMetaTypes.INT, editorName='Stage')
     progression = ComponentProperty(type=CGFMetaTypes.FLOAT, editorName='Progression', value=0.0)
 
@@ -104,7 +105,7 @@ class SchemeProgressionStateComponent(object):
 class RecorderComponent(object):
     domain = CGF.DomainOption.DomainClient | CGF.DomainOption.DomainEditor
     editorTitle = 'Recorder component'
-    category = 'Common'
+    category = 'Armory Yard'
     spool1 = ComponentProperty(type=CGFMetaTypes.LINK, editorName='Spool 1', value=CGF.GameObject)
     spool2 = ComponentProperty(type=CGFMetaTypes.LINK, editorName='Spool 2', value=CGF.GameObject)
     lamp = ComponentProperty(type=CGFMetaTypes.LINK, editorName='Lamp', value=CGF.GameObject)
@@ -115,7 +116,7 @@ class RecorderComponent(object):
 class HangarDetailsComponent(object):
     domain = CGF.DomainOption.DomainClient | CGF.DomainOption.DomainEditor
     editorTitle = 'Hangar Details'
-    category = 'Common'
+    category = 'Armory Yard'
     prefabPath = ComponentProperty(type=CGFMetaTypes.STRING, editorName='Prefab path', value='')
 
 
@@ -123,7 +124,7 @@ class HangarDetailsComponent(object):
 class ArmoryPointOfInterest(object):
     domain = CGF.DomainOption.DomainClient | CGF.DomainOption.DomainEditor
     editorTitle = 'Armory yard point of interest'
-    category = 'Common'
+    category = 'Armory Yard'
     cameraName = ComponentProperty(type=CGFMetaTypes.STRING, editorName='Camera name', value='')
 
 
@@ -131,7 +132,7 @@ class ArmoryPointOfInterest(object):
 class ArmoryCameraToPoiComponent(object):
     domain = CGF.DomainOption.DomainClient | CGF.DomainOption.DomainEditor
     editorTitle = 'Armory yard camera to POI setting'
-    category = 'Common'
+    category = 'Armory Yard'
     poiName = ComponentProperty(type=CGFMetaTypes.STRING, editorName='POI name', value='')
 
 
@@ -139,7 +140,7 @@ class ArmoryCameraToPoiComponent(object):
 class ArmoryCharacterDistributionComponent(object):
     domain = CGF.DomainOption.DomainClient | CGF.DomainOption.DomainEditor
     editorTitle = 'Armory yard character distribution'
-    category = 'Common'
+    category = 'Armory Yard'
     fromStage = ComponentProperty(type=CGFMetaTypes.INT, editorName='From stage', value=0)
     toStage = ComponentProperty(type=CGFMetaTypes.INT, editorName='To stage', value=0)
 
@@ -148,8 +149,24 @@ class ArmoryCharacterDistributionComponent(object):
 class ArmoryDynamicCameraColliderComponent(object):
     domain = CGF.DomainOption.DomainClient | CGF.DomainOption.DomainEditor
     editorTitle = 'Armory dynamic camera collider'
-    category = 'Common'
+    category = 'Armory Yard'
     modelPath = ComponentProperty(type=CGFMetaTypes.STRING, editorName='Model path', annotations={'path': '*.model'})
+
+
+@registerComponent
+class AssemblyStageXrayComponent(object):
+    domain = CGF.DomainOption.DomainClient | CGF.DomainOption.DomainEditor
+    editorTitle = 'Assembly stage xray'
+    category = 'Armory Yard'
+
+
+@registerComponent
+class ArmoryHullXrayAnimationComponent(object):
+    domain = CGF.DomainOption.DomainClient | CGF.DomainOption.DomainEditor
+    editorTitle = 'Armory hull xray animation'
+    category = 'Armory Yard'
+    openName = ComponentProperty(type=CGFMetaTypes.STRING, editorName='Open anim layer name', value='')
+    closeName = ComponentProperty(type=CGFMetaTypes.STRING, editorName='Close anim layer name', value='')
 
 
 def partAnimatorComponent(part):
@@ -185,6 +202,7 @@ class AssemblyStageIndexManager(CGF.ComponentManager):
         self.__schemeStageRange = None
         self.__schemeGO = None
         self.__schemeProgressionStates = {}
+        self.__hullXrayGO = None
         return
 
     @onRemovedQuery(TankAssemblyRootComponent, CGF.GameObject)
@@ -207,6 +225,7 @@ class AssemblyStageIndexManager(CGF.ComponentManager):
         self.__schemeStageRange = None
         self.__schemeGO = None
         self.__schemeProgressionStates = {}
+        self.__hullXrayGO = None
         self.__eventManager.clear()
         return
 
@@ -258,6 +277,13 @@ class AssemblyStageIndexManager(CGF.ComponentManager):
                 self.__stageGroupDuration[stage][0] = max(self.__stageGroupDuration[stage][0], duration)
 
             return
+
+    @onAddedQuery(ArmoryHullXrayAnimationComponent, GenericComponents.DynamicModelComponent, GenericComponents.AnimatorComponent, CGF.GameObject)
+    def onAddedHullXrayAnimation(self, xrayComponent, dynModelComponent, animatorComponent, go):
+        if xrayComponent.openName == '' or xrayComponent.closeName == '':
+            LOG_ERROR(('GO {} : ArmoryHullXrayAnimationComponent has empty layer names!').format(go.name))
+            return
+        self.__hullXrayGO = go
 
     @onAddedQuery(ArmoryDynamicCameraColliderComponent, CGF.GameObject)
     def onAddedCollider(self, colliderComponent, go):
@@ -340,6 +366,45 @@ class AssemblyStageIndexManager(CGF.ComponentManager):
         if videoNameComponent is not None:
             self.__stageVideo[stageIndex] = videoNameComponent.videoName
         return
+
+    def __getXrayComponents(self):
+        xrayComponent = self.__hullXrayGO.findComponentByType(ArmoryHullXrayAnimationComponent)
+        animatorComponent = self.__hullXrayGO.findComponentByType(GenericComponents.AnimatorComponent)
+        return (xrayComponent, animatorComponent)
+
+    def openXray(self):
+        xrayComponent, animatorComponent = self.__getXrayComponents()
+        if xrayComponent is not None and animatorComponent is not None:
+            animatorComponent.stop()
+            animatorComponent.startLayerByName(xrayComponent.openName)
+            return animatorComponent.getDurationByName(xrayComponent.openName)
+        else:
+            return 0.0
+
+    def closeXray(self):
+        xrayComponent, animatorComponent = self.__getXrayComponents()
+        if xrayComponent is not None and animatorComponent is not None:
+            animatorComponent.stop()
+            animatorComponent.startLayerByName(xrayComponent.closeName)
+            return animatorComponent.getDurationByName(xrayComponent.closeName)
+        else:
+            return 0.0
+
+    @property
+    def openXrayDuration(self):
+        xrayComponent, animatorComponent = self.__getXrayComponents()
+        if xrayComponent is not None and animatorComponent is not None:
+            return animatorComponent.getDurationByName(xrayComponent.closeName)
+        else:
+            return 0.0
+
+    def stageHasXray(self, stageIndex):
+        if stageIndex in self.__stageIndexToStageGO:
+            stageGO = self.__stageIndexToStageGO[stageIndex]
+            xrayStageComponent = stageGO.findComponentByType(AssemblyStageXrayComponent)
+            return xrayStageComponent is not None
+        else:
+            return False
 
     def __startSchemeStage(self, stageIndex):
         if self.__schemeGO is None:

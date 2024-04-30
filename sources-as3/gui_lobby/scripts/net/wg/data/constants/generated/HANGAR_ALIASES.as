@@ -153,11 +153,11 @@ package net.wg.data.constants.generated
       
       public static const EVENT_COINS_COMPONENT:String = "eventCoinsComponent";
       
-      public static const HE20_EVENT_ENTRY_POINT:String = "he20EventEntryPoint";
-      
       public static const CAROUSEL_EVENT_ENTRY_HOLDER:String = "carouselEventEntryHolder";
       
       public static const COLLECTION_ENTRY_POINT:String = "CollectionEntryPoint";
+      
+      public static const SE22_EVENT_ENTRY_POINT:String = "SE22EntryPoint";
        
       
       public function HANGAR_ALIASES()

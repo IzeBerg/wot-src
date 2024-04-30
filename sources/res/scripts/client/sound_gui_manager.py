@@ -8,6 +8,10 @@ CommonSoundSpaceSettings = namedtuple('CommonSoundSpaceSettings', ('name', 'entr
                                                                    'exitEvent', 'parentSpace'))
 CommonSoundSpaceSettings.__new__.func_defaults = (None, ) * len(CommonSoundSpaceSettings._fields)
 
+def createSpaceSettings(name=None, entranceStates=None, exitStates=None, persistentSounds=None, stoppableSounds=None, priorities=None, autoStart=None, enterEvent=None, exitEvent=None, parentSpace=None):
+    return CommonSoundSpaceSettings(name=name, entranceStates=entranceStates or {}, exitStates=exitStates or {}, persistentSounds=persistentSounds or (), stoppableSounds=stoppableSounds or (), priorities=priorities or (), autoStart=autoStart or False, enterEvent=enterEvent, exitEvent=exitEvent, parentSpace=parentSpace)
+
+
 class ViewSoundExtension(object):
     __commonSoundManagers = {}
 

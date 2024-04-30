@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>111</materialKind>
+					<property>
+						diffuseMap
+						<Texture>content/Outland/hd_out_SU_1004_Stalingrad_Railways/hd_out_SU_1004_Stalingrad_Railways_AM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Outland/hd_out_SU_1004_Stalingrad_Railways/hd_out_SU_1004_Stalingrad_Railways_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Outland/hd_out_SU_1004_Stalingrad_Railways/hd_out_SU_1004_Stalingrad_Railways_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>36.536179 -0.001011 10.294365</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-68.288651 -0.271010 -187.666641</min>
+		<max>141.361008 0.268987 208.255371</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>27144</geometrySize>
+	<minUVDensity>0.084938</minUVDensity>
+</root>

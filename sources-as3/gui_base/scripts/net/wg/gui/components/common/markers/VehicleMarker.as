@@ -61,6 +61,10 @@ package net.wg.gui.components.common.markers
       
       private static var HEALTH_BAR_Y:int = -29;
       
+      private static const LEVEL_ICON_ALPHA_DESTROYED:Number = 0.4;
+      
+      private static const LEVEL_ICON_ALPHA_ALIVE:int = 1;
+      
       private static var V_DIST_OFFSET:int = 0;
       
       private static var ICON_OFFSET:int = 10;
@@ -519,6 +523,7 @@ package net.wg.gui.components.common.markers
       private function updateIconColor() : void
       {
          this.iconLoader.transform.colorTransform = this.colorsManager.getTransform(this.colorSchemeName);
+         this.levelIcon.alpha = !!this.vehicleDestroyed ? Number(LEVEL_ICON_ALPHA_DESTROYED) : Number(LEVEL_ICON_ALPHA_ALIVE);
       }
       
       private function layoutParts(param1:Array) : void

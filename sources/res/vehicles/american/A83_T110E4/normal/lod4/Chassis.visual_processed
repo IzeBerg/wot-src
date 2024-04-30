@@ -1093,10 +1093,6 @@
 						colorIdMap
 						<Texture>vehicles/russian/common/common_ID.dds</Texture>
 					</property>
-					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
-					</property>
 					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
 					<property>
 						g_detailPowerGloss
@@ -1122,10 +1118,7 @@
 					</property>
 					<property>
 						g_detailUVTiling
-						<Vector4>
-							4.20822 4.20822 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>4.208220 4.208220 0.000000 0.000000</Vector4>
 					</property>
 					<property>
 						g_detailPower
@@ -1134,6 +1127,14 @@
 					<property>
 						normalMap
 						<Texture>vehicles/american/A83_T110E4/T110E4_chassis_01_ANM.dds</Texture>
+					</property>
+					<property>
+						alphaReference
+						<Int>128</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
 					</property>
 				</material>
 				<groupOrigin>1.510974 0.772186 -0.054980</groupOrigin>
@@ -1171,10 +1172,6 @@
 						colorIdMap
 						<Texture>vehicles/russian/common/common_ID.dds</Texture>
 					</property>
-					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
-					</property>
 					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
 					<property>
 						g_detailPowerGloss
@@ -1200,10 +1197,7 @@
 					</property>
 					<property>
 						g_detailUVTiling
-						<Vector4>
-							4.20822 4.20822 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>4.208220 4.208220 0.000000 0.000000</Vector4>
 					</property>
 					<property>
 						g_detailPower
@@ -1212,6 +1206,14 @@
 					<property>
 						normalMap
 						<Texture>vehicles/american/A83_T110E4/T110E4_chassis_01_ANM.dds</Texture>
+					</property>
+					<property>
+						alphaReference
+						<Int>128</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
 					</property>
 				</material>
 				<groupOrigin>-1.510976 0.772186 -0.054980</groupOrigin>

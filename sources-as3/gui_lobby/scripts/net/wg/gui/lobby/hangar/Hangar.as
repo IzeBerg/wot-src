@@ -144,6 +144,10 @@ package net.wg.gui.lobby.hangar
       
       private static const WIDGETS_OFFSET_Y:int = 64;
       
+      private static const CAROUSEL_EVENT_ENTRY_X_OFFSET:int = -65;
+      
+      private static const CAROUSEL_EVENT_ENTRY_Y_OFFSET:int = 127;
+      
       private static const CAROUSEL_EVENT_ENTRY_MARGIN:int = 1;
        
       
@@ -167,7 +171,7 @@ package net.wg.gui.lobby.hangar
       
       public var dqWidget:DailyQuestWidget;
       
-      public var carouselEventEntry:CarouselEventEntry;
+      public var carouselEventEntry:CarouselEventEntry = null;
       
       public var crewPanelInject:CrewPanelInject;
       
@@ -209,6 +213,8 @@ package net.wg.gui.lobby.hangar
       
       private var _comp7ModifiersPanelInject:GFInjectComponent;
       
+      private var _isCnSubscribeVisible:Boolean = false;
+      
       private var _appStage:Stage;
       
       private var _topMargin:int = 0;
@@ -229,7 +235,7 @@ package net.wg.gui.lobby.hangar
       
       private var _carouselEventEntryContainer:Sprite = null;
       
-      private var _carouselEventEntryVisible:Boolean = false;
+      private var _carouselEventEntryVisible:Boolean = true;
       
       private var _carouselVisible:Boolean = true;
       
@@ -350,6 +356,8 @@ package net.wg.gui.lobby.hangar
       override protected function onDispose() : void
       {
          this.tryRemoveBattleRoyaleContainer();
+         this.removeComp7ModifiersPanel();
+         this.removeBattleRoyaleContainer();
          this.removeComp7ModifiersPanel();
          this.bottomBg.dispose();
          this.bottomBg = null;
@@ -767,6 +775,11 @@ package net.wg.gui.lobby.hangar
          return name;
       }
       
+      public function as_toggleCnSubscription(param1:Boolean) : void
+      {
+         this._isCnSubscribeVisible = param1;
+      }
+      
       public function needPreventInnerEvents() : Boolean
       {
          return true;
@@ -867,6 +880,16 @@ package net.wg.gui.lobby.hangar
          }
       }
       
+      private function removeBattleRoyaleContainer() : void
+      {
+         if(this._battleRoyaleComponents != null)
+         {
+            removeChild(this._battleRoyaleComponents);
+            this._battleRoyaleComponents.dispose();
+            this._battleRoyaleComponents = null;
+         }
+      }
+      
       private function resolveVisibility() : void
       {
          super.visible = this._isVisibleByAnimator && this._isVisible;
@@ -892,6 +915,8 @@ package net.wg.gui.lobby.hangar
       private function updateEntriesPosition() : void
       {
          var _loc3_:Boolean = false;
+         var _loc4_:int = 0;
+         var _loc5_:int = 0;
          var _loc1_:Rectangle = this.ammunitionPanelInject.hitRect;
          var _loc2_:Boolean = this.carousel && this._eventsEntryContainer.isActive;
          this._eventsEntryContainer.visible = _loc2_;
@@ -902,11 +927,13 @@ package net.wg.gui.lobby.hangar
             _loc3_ = false;
             if(_loc1_ && this.ammunitionPanelInject.visible && _loc1_.width > 0)
             {
-               _loc3_ = this.ammunitionPanelInject.x + _loc1_.x + _loc1_.width + AMMUNITION_PANEL_INJECT_OFFSET_RIGHT > this._eventsEntryContainer.x;
+               _loc4_ = _loc1_.x / App.appScale;
+               _loc5_ = _loc1_.y / App.appScale;
+               _loc3_ = this.ammunitionPanelInject.x + _loc4_ + _loc1_.width + AMMUNITION_PANEL_INJECT_OFFSET_RIGHT > this._eventsEntryContainer.x;
             }
             if(_loc3_)
             {
-               this._eventsEntryContainer.y -= _loc1_.y + (_loc1_.height >> 1);
+               this._eventsEntryContainer.y -= _loc5_ + (_loc1_.height >> 1);
             }
             else
             {
@@ -1057,6 +1084,7 @@ package net.wg.gui.lobby.hangar
       private function updateCarouselPosition() : void
       {
          this._carousel.updateCarouselPosition(_height - this._carousel.getBottom() ^ 0);
+         this.updateEventLootBoxWidgetPosition();
          this.updateAmmunitionPanelPosition();
          if(this._hangarViewSwitchAnimator)
          {
@@ -1070,6 +1098,20 @@ package net.wg.gui.lobby.hangar
          {
             this._comp7ModifiersPanelInject.y = this.params.y + (this.params.visible && this.params.actualHeight + COMP7_MODIFIERS_PANEL_INJECT_OFFSET_Y) ^ 0;
             this._comp7ModifiersPanelInject.x = this.params.x + this.params.width - this._comp7ModifiersPanelInject.width + COMP7_MODIFIERS_PANEL_INJECT_OFFSET_X ^ 0;
+         }
+      }
+      
+      private function updateEventLootBoxWidgetPosition() : void
+      {
+         var _loc1_:int = 0;
+         var _loc2_:int = 0;
+         if(this.carouselEventEntry && this._carousel)
+         {
+            _loc1_ = this.carousel.x + this._carousel.rightArrow.x + this._carousel.rightArrow.width + CAROUSEL_EVENT_ENTRY_X_OFFSET;
+            _loc2_ = this._carousel.y + this._carousel.leftArrow.y + (this._carousel.leftArrow.height >> 1);
+            _loc2_ -= CAROUSEL_EVENT_ENTRY_Y_OFFSET;
+            this.carouselEventEntry.x = _loc1_;
+            this.carouselEventEntry.y = _loc2_;
          }
       }
       
@@ -1155,6 +1197,11 @@ package net.wg.gui.lobby.hangar
          return this._eventsEntryContainer;
       }
       
+      public function onAmmunitionViewHideAnimCompleteHandler(param1:Event) : void
+      {
+         invalidate(INVALIDATE_CAROUSEL_SIZE);
+      }
+      
       public function get miniClient() : HangarMiniClientComponent
       {
          return this._miniClient;
@@ -1164,11 +1211,6 @@ package net.wg.gui.lobby.hangar
       {
          this._carouselVisible = param1;
          this.carousel.visible = this._carouselVisible;
-      }
-      
-      private function onAmmunitionViewHideAnimCompleteHandler(param1:Event) : void
-      {
-         invalidate(INVALIDATE_CAROUSEL_SIZE);
       }
       
       private function onTeaserTeaserClickHandler(param1:TeaserEvent) : void

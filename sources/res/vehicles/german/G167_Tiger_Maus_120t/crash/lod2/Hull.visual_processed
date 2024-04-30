@@ -54,6 +54,36 @@
 			<primitiveGroup>
 				0
 				<material>
+					<identifier>tank_mat_inside</identifier>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>vehicles/american/crash_inside/crash_inside_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/american/crash_inside/crash_inside_AO.dds</Texture>
+					</property>
+					<property>
+						g_useNormalPackDXT1
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/american/crash_inside/crash_inside_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/american/crash_inside/crash_inside_NM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.000000 0.086353 -0.000448</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
 					<identifier>tank_hull_01</identifier>
 					<property>
 						selfIllumination
@@ -94,35 +124,19 @@
 				<groupOrigin>0.007068 0.182457 0.082201</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
-				1
+				2
 				<material>
 					<identifier>tank_chassis_01</identifier>
-					<property>
-						selfIllumination
-						<Float>0.000000</Float>
-					</property>
-					<property>
-						g_crashUVTiling
-						<Vector4>2.000000 1.000000 0.000000 0.000000</Vector4>
-					</property>
-					<collisionFlags>0</collisionFlags>
-					<materialKind>0</materialKind>
 					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
 					<property>
-						metallicGlossMap
-						<Texture>vehicles/german/G167_Tiger_Maus_120t/Tiger_Maus_120t_chassis_01_GMM.dds</Texture>
+						alphaReference
+						<Int>64</Int>
 					</property>
 					<property>
-						normalMap
-						<Texture>vehicles/german/G167_Tiger_Maus_120t/Tiger_Maus_120t_chassis_01_ANM.dds</Texture>
-					</property>
-					<property>
-						diffuseMap
-						<Texture>vehicles/german/G167_Tiger_Maus_120t/Tiger_Maus_120t_chassis_01_AM.dds</Texture>
-					</property>
-					<property>
-						excludeMaskAndAOMap
-						<Texture>vehicles/german/G167_Tiger_Maus_120t/Tiger_Maus_120t_chassis_01_AO.dds</Texture>
+						alphaTestEnable
+						<Bool>true</Bool>
 					</property>
 					<property>
 						colorIdMap
@@ -133,12 +147,24 @@
 						<Texture>vehicles/russian/Tank_detail/crash_tile.dds</Texture>
 					</property>
 					<property>
-						alphaReference
-						<Int>64</Int>
+						diffuseMap
+						<Texture>vehicles/german/G167_Tiger_Maus_120t/Tiger_Maus_120t_chassis_01_AM.dds</Texture>
 					</property>
 					<property>
-						alphaTestEnable
-						<Bool>true</Bool>
+						excludeMaskAndAOMap
+						<Texture>vehicles/german/G167_Tiger_Maus_120t/Tiger_Maus_120t_chassis_01_AO.dds</Texture>
+					</property>
+					<property>
+						g_crashUVTiling
+						<Vector4>2.000000 1.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/german/G167_Tiger_Maus_120t/Tiger_Maus_120t_chassis_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/german/G167_Tiger_Maus_120t/Tiger_Maus_120t_chassis_01_ANM.dds</Texture>
 					</property>
 				</material>
 				<groupOrigin>0.000007 -0.408924 0.174350</groupOrigin>
@@ -149,6 +175,6 @@
 		<min>-2.057273 -0.961148 -4.201975</min>
 		<max>2.071410 0.986040 4.366377</max>
 	</boundingBox>
-	<geometrySize>314430</geometrySize>
+	<geometrySize>312710</geometrySize>
 	<minUVDensity>0.002348</minUVDensity>
 </root>

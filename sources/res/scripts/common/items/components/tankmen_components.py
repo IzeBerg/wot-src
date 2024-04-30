@@ -1,11 +1,13 @@
 from debug_utils import LOG_ERROR
-import weakref, itertools
+import typing, weakref, itertools
 from constants import IS_CLIENT
 from items.components import component_constants
 from items.components import legacy_stuff
 from items.components import shared_components
 from items.components import skills_constants
 from soft_exception import SoftException
+if typing.TYPE_CHECKING:
+    from typing import Dict, Optional, Set, Union
 
 class SPECIAL_VOICE_TAG(object):
     ARIA_2023 = 'AriaZhorikSpecialVoice'

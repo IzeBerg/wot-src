@@ -60,6 +60,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.data.constants.generated.ROOT_SWF_CONSTANTS;
    import net.wg.data.constants.generated.SEASONS_CONSTANTS;
    import net.wg.data.constants.generated.SETTINGS_DIALOGS;
+   import net.wg.data.constants.generated.SIXTHSENSEINDICATOR_CONSTS;
    import net.wg.data.constants.generated.TOOLTIPS_CONSTANTS;
    import net.wg.data.managers.impl.PythonTween;
    import net.wg.data.managers.impl.ToolTipParams;
@@ -141,6 +142,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.battleDamagePanel.components.DamageLogRenderer;
    import net.wg.gui.components.battleDamagePanel.components.DefaultSummaryImages;
    import net.wg.gui.components.battleDamagePanel.components.ShellTypeBG;
+   import net.wg.gui.components.battleDamagePanel.components.SummaryAnimation;
    import net.wg.gui.components.battleDamagePanel.constants.BattleDamageLogConstants;
    import net.wg.gui.components.battleDamagePanel.models.MessageRenderModel;
    import net.wg.gui.components.battleRoyale.ColumnHeader;
@@ -207,6 +209,8 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.common.bugreport.ReportBugPanel;
    import net.wg.gui.components.common.lobbyVehicleMarkers.CustomMarker;
    import net.wg.gui.components.common.lobbyVehicleMarkers.CustomMarkerVO;
+   import net.wg.gui.components.common.lobbyVehicleMarkers.HBLobbyVehicleMarkers;
+   import net.wg.gui.components.common.lobbyVehicleMarkers.HBLobbyVehicleMarkersVO;
    import net.wg.gui.components.common.lobbyVehicleMarkers.LobbyVehicleMarkers;
    import net.wg.gui.components.common.lobbyVehicleMarkers.LobbyVehicleMarkersVO;
    import net.wg.gui.components.common.lobbyVehicleMarkers.PlatoonMarker;
@@ -509,6 +513,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.paginator.PaginationDetailsNumButton;
    import net.wg.gui.components.paginator.PaginationGroup;
    import net.wg.gui.components.paginator.PaginationPageButton;
+   import net.wg.gui.components.paginator.PaginationStepper;
    import net.wg.gui.components.paginator.PaginatorArrowBtn;
    import net.wg.gui.components.paginator.PaginatorArrowsController;
    import net.wg.gui.components.paginator.vo.PaginatorPageNumVO;
@@ -800,6 +805,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.settings.feedback.ribbons.SettingsRibbonContainer;
    import net.wg.gui.lobby.settings.feedback.ribbons.SettingsRibbonItem;
    import net.wg.gui.lobby.settings.feedback.ribbons.data.RibbonItemData;
+   import net.wg.gui.lobby.settings.feedback.sixthSense.SixthSenseForm;
    import net.wg.gui.lobby.settings.vo.AnonymizerExtraVO;
    import net.wg.gui.lobby.settings.vo.CheckboxVo;
    import net.wg.gui.lobby.settings.vo.ColorFilerSettingsVo;
@@ -833,6 +839,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.settings.vo.config.feedback.DamageIndicatorDataVo;
    import net.wg.gui.lobby.settings.vo.config.feedback.DamageLogPanelDataVo;
    import net.wg.gui.lobby.settings.vo.config.feedback.QuestsProgressDataVo;
+   import net.wg.gui.lobby.settings.vo.config.feedback.SixthSenseDataVo;
    import net.wg.gui.lobby.settings.vo.config.marker.MarkerAllySettingsDataVo;
    import net.wg.gui.lobby.settings.vo.config.marker.MarkerDeadSettingsDataVo;
    import net.wg.gui.lobby.settings.vo.config.marker.MarkerEnemySettingsDataVo;
@@ -989,6 +996,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_DATA_CONSTANTS_GENERATED_SEASONS_CONSTANTS:Class = SEASONS_CONSTANTS;
       
       public static const NET_WG_DATA_CONSTANTS_GENERATED_SETTINGS_DIALOGS:Class = SETTINGS_DIALOGS;
+      
+      public static const NET_WG_DATA_CONSTANTS_GENERATED_SIXTHSENSEINDICATOR_CONSTS:Class = SIXTHSENSEINDICATOR_CONSTS;
       
       public static const NET_WG_DATA_CONSTANTS_GENERATED_TOOLTIPS_CONSTANTS:Class = TOOLTIPS_CONSTANTS;
       
@@ -1186,6 +1195,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_COMPONENTS_BATTLEDAMAGEPANEL_COMPONENTS_SHELLTYPEBG:Class = ShellTypeBG;
       
+      public static const NET_WG_GUI_COMPONENTS_BATTLEDAMAGEPANEL_COMPONENTS_SUMMARYANIMATION:Class = SummaryAnimation;
+      
       public static const NET_WG_GUI_COMPONENTS_BATTLEDAMAGEPANEL_CONSTANTS_BATTLEDAMAGELOGCONSTANTS:Class = BattleDamageLogConstants;
       
       public static const NET_WG_GUI_COMPONENTS_BATTLEDAMAGEPANEL_MODELS_MESSAGERENDERMODEL:Class = MessageRenderModel;
@@ -1317,6 +1328,10 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_COMPONENTS_COMMON_LOBBYVEHICLEMARKERS_CUSTOMMARKER:Class = CustomMarker;
       
       public static const NET_WG_GUI_COMPONENTS_COMMON_LOBBYVEHICLEMARKERS_CUSTOMMARKERVO:Class = CustomMarkerVO;
+      
+      public static const NET_WG_GUI_COMPONENTS_COMMON_LOBBYVEHICLEMARKERS_HBLOBBYVEHICLEMARKERS:Class = HBLobbyVehicleMarkers;
+      
+      public static const NET_WG_GUI_COMPONENTS_COMMON_LOBBYVEHICLEMARKERS_HBLOBBYVEHICLEMARKERSVO:Class = HBLobbyVehicleMarkersVO;
       
       public static const NET_WG_GUI_COMPONENTS_COMMON_LOBBYVEHICLEMARKERS_LOBBYVEHICLEMARKERS:Class = LobbyVehicleMarkers;
       
@@ -1922,6 +1937,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_COMPONENTS_PAGINATOR_PAGINATIONPAGEBUTTON:Class = PaginationPageButton;
       
+      public static const NET_WG_GUI_COMPONENTS_PAGINATOR_PAGINATIONSTEPPER:Class = PaginationStepper;
+      
       public static const NET_WG_GUI_COMPONENTS_PAGINATOR_PAGINATORARROWBTN:Class = PaginatorArrowBtn;
       
       public static const NET_WG_GUI_COMPONENTS_PAGINATOR_PAGINATORARROWSCONTROLLER:Class = PaginatorArrowsController;
@@ -2504,6 +2521,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_SETTINGS_FEEDBACK_RIBBONS_DATA_RIBBONITEMDATA:Class = RibbonItemData;
       
+      public static const NET_WG_GUI_LOBBY_SETTINGS_FEEDBACK_SIXTHSENSE_SIXTHSENSEFORM:Class = SixthSenseForm;
+      
       public static const NET_WG_GUI_LOBBY_SETTINGS_VO_ANONYMIZEREXTRAVO:Class = AnonymizerExtraVO;
       
       public static const NET_WG_GUI_LOBBY_SETTINGS_VO_CHECKBOXVO:Class = CheckboxVo;
@@ -2569,6 +2588,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_SETTINGS_VO_CONFIG_FEEDBACK_DAMAGELOGPANELDATAVO:Class = DamageLogPanelDataVo;
       
       public static const NET_WG_GUI_LOBBY_SETTINGS_VO_CONFIG_FEEDBACK_QUESTSPROGRESSDATAVO:Class = QuestsProgressDataVo;
+      
+      public static const NET_WG_GUI_LOBBY_SETTINGS_VO_CONFIG_FEEDBACK_SIXTHSENSEDATAVO:Class = SixthSenseDataVo;
       
       public static const NET_WG_GUI_LOBBY_SETTINGS_VO_CONFIG_MARKER_MARKERALLYSETTINGSDATAVO:Class = MarkerAllySettingsDataVo;
       

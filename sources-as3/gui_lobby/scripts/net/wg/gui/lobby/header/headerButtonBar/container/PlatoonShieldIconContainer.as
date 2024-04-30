@@ -139,13 +139,13 @@ package net.wg.gui.lobby.header.headerButtonBar.container
                {
                   this.rightBGShieldsIcon.visible = false;
                   this.leftBGShieldsIcon.visible = this._isMain && !this._isWideScreen;
-                  this.setLeftPlayerData(this._squadManArray[PLAYERS.current]);
+                  this.setLeftPlayerData(this._squadManArray[this.getPlayers().current]);
                }
                else
                {
                   this.leftBGShieldsIcon.visible = this.rightBGShieldsIcon.visible = this._isMain && !this._isWideScreen;
-                  this.setLeftPlayerData(this._squadManArray[PLAYERS.left]);
-                  this.setRightPlayerData(this._squadManArray[PLAYERS.right]);
+                  this.setLeftPlayerData(this._squadManArray[this.getPlayers().left]);
+                  this.setRightPlayerData(this._squadManArray[this.getPlayers().right]);
                }
             }
             else
@@ -211,7 +211,7 @@ package net.wg.gui.lobby.header.headerButtonBar.container
          }
          this._commanderIndex = param1.commanderIndex;
          this._platoonState = param1.platoonState;
-         this._isNormalSizePlatoon = param1.squadManStates.length && param1.squadManStates.length <= HBC_Squad.NORMAL_SIZE_PLATOON;
+         this._isNormalSizePlatoon = param1.squadManStates.length && param1.squadManStates.length <= this.getPlatoonSize();
          this._squadManArray = param1.squadManStates.concat();
          this._iconContainerIndex = param2;
          this._hasMembers = this._squadManArray != null && this._squadManArray.length > 0;
@@ -222,6 +222,16 @@ package net.wg.gui.lobby.header.headerButtonBar.container
       {
          this._isWideScreen = param1;
          invalidateData();
+      }
+      
+      protected function getPlatoonSize() : int
+      {
+         return HBC_Squad.NORMAL_SIZE_PLATOON;
+      }
+      
+      protected function getPlayers() : Object
+      {
+         return PLAYERS;
       }
       
       private function setEventIconVisibility(param1:String) : void

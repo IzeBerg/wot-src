@@ -21,7 +21,6 @@ from gui.shared.view_helpers.blur_manager import CachedBlur
 from gui.wgcg.shop.contexts import ShopBuyStorefrontProductCtx
 from helpers import dependency
 from skeletons.gui.game_control import IArmoryYardController, IWalletController
-from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.shared import IItemsCache
 from skeletons.gui.web import IWebController
 BUNDLE_TYPES = {'small_bundle': BundleType.SMALL, 
@@ -32,7 +31,6 @@ class ArmoryYardBuyBundleView(ViewImpl):
     __slots__ = ('__tooltipData', '__blur', '__onLoadedCallback', '__parent', '__bundleId',
                  '__timeoutCallback', '__isBuying', '__stepAfterBuy', '__onClosedCallback')
     __armoryYardCtrl = dependency.descriptor(IArmoryYardController)
-    __lobbyContext = dependency.descriptor(ILobbyContext)
     __itemsCache = dependency.descriptor(IItemsCache)
     __wallet = dependency.descriptor(IWalletController)
     __webCtrl = dependency.descriptor(IWebController)
@@ -169,13 +167,13 @@ class ArmoryYardBuyBundleView(ViewImpl):
          (
           self.viewModel.onBuyBundle, self.onBuyBundle),
          (
-          self.__lobbyContext.getServerSettings().onServerSettingsChange, self.__onServerSettingsChange),
-         (
           self.__armoryYardCtrl.onUpdated, self.__onProgressUpdated),
          (
           self.__armoryYardCtrl.onProgressUpdated, self.__onProgressUpdated),
          (
-          self.__wallet.onWalletStatusChanged, self.__onWalletStatusChanged))
+          self.__wallet.onWalletStatusChanged, self.__onWalletStatusChanged),
+         (
+          self.__armoryYardCtrl.onBundlesDisabled, self.__onProgressUpdated))
 
     def __setMainData(self):
         with self.viewModel.transaction() as (model):
@@ -197,9 +195,6 @@ class ArmoryYardBuyBundleView(ViewImpl):
             model.setEndLevel(endLevel if maxTokens >= endLevel else maxTokens)
             model.setType(bundleType)
             PriceModelBuilder.fillPriceModel(model.price, product['price'], checkBalanceAvailability=True)
-
-    def __onServerSettingsChange(self, _):
-        self.__onProgressUpdated()
 
     def __fullUpdate(self):
         self.__setMainData()

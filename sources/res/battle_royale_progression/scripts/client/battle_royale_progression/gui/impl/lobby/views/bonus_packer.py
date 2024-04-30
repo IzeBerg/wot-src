@@ -1,5 +1,5 @@
 import typing
-from battle_royale_progression.skeletons.game_controller import IBRProgressionOnTokensController
+from battle_royale_progression.gui.game_control.progression_controller import BRProgressionController
 from gui.battle_pass.battle_pass_bonuses_packers import getBattlePassBonusPacker
 from gui.impl import backport
 from gui.impl.backport import createTooltipData
@@ -10,7 +10,6 @@ from gui.server_events.formatters import COMPLEX_TOKEN
 from gui.shared.missions.packers.bonus import SimpleBonusUIPacker, getLocalizedBonusName, TokenBonusUIPacker
 from gui.shared.money import Currency
 from gui.shared.utils.functions import makeTooltip
-from helpers import dependency
 if typing.TYPE_CHECKING:
     from gui.server_events.bonuses import CurrenciesBonus
 
@@ -67,11 +66,10 @@ class CurrenciesBonusUIPacker(SimpleBonusUIPacker):
 BR_PROGRESSION_TOKEN = 'BRProgressionToken'
 
 class BRTokenBonusUIPacker(TokenBonusUIPacker):
-    _brProgressionController = dependency.descriptor(IBRProgressionOnTokensController)
 
     @classmethod
     def _getTokenBonusType(cls, tokenID, complexToken):
-        if tokenID.startswith(cls._brProgressionController.progressionToken):
+        if tokenID.startswith(BRProgressionController.progressionToken):
             return BR_PROGRESSION_TOKEN
         super(BRTokenBonusUIPacker, cls)._getTokenBonusType(tokenID, complexToken)
 

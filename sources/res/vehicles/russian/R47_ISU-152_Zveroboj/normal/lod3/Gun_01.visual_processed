@@ -73,10 +73,18 @@
 			<primitiveGroup>
 				0
 				<material>
-					<identifier>tank_guns_leaves_skinned</identifier>
+					<identifier>tank_guns_skinned</identifier>
 					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
 					<materialKind>0</materialKind>
-					<collisionFlags>255</collisionFlags>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						alphaReference
+						<Int>128</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
 					<property>
 						colorIdMap
 						<Texture>vehicles/russian/R47_ISU-152_Zveroboj/ISU-152_Zveroboj_guns_ID.dds</Texture>
@@ -84,6 +92,10 @@
 					<property>
 						diffuseMap
 						<Texture>vehicles/russian/R47_ISU-152_Zveroboj/ISU-152_Zveroboj_guns_AM.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
 					</property>
 					<property>
 						excludeMaskAndAOMap
@@ -105,18 +117,6 @@
 						normalMap
 						<Texture>vehicles/russian/R47_ISU-152_Zveroboj/ISU-152_Zveroboj_guns_ANM.dds</Texture>
 					</property>
-					<property>
-						alphaReference
-						<Int>128</Int>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>true</Bool>
-					</property>
-					<property>
-						doubleSided
-						<Bool>true</Bool>
-					</property>
 				</material>
 				<groupOrigin>0.021145 -0.024966 -1.720065</groupOrigin>
 			</primitiveGroup>
@@ -127,6 +127,6 @@
 		<min>-0.404980 -0.450536 0.215226</min>
 		<max>0.447270 0.400605 3.224903</max>
 	</boundingBox>
-	<geometrySize>36964</geometrySize>
+	<geometrySize>36882</geometrySize>
 	<minUVDensity>0.005008</minUVDensity>
 </root>

@@ -103,11 +103,10 @@ package net.wg.gui.battle.eventBattle.views
          this.battleDamageLogPanel.updateSize(param1,param2);
          var _loc3_:uint = param1 >> 1;
          var _loc4_:uint = param2 >> 1;
-         this.sixthSense.x = _loc3_;
-         this.sixthSense.y = param2 >> 2;
+         this.sixthSense.updateStage(param1,param2);
          this.consumablesPanel.updateStage(param1,param2);
          this.statusNotificationsPanel.updateStage(param1,param2);
-         this.damageInfoPanel.y = (param2 >> 1) / scaleY + DAMAGE_INFO_PANEL_CONSTS.HEIGHT * scaleY | 0;
+         this.damageInfoPanel.y = _loc4_ / scaleY + DAMAGE_INFO_PANEL_CONSTS.HEIGHT * scaleY | 0;
          this.damageInfoPanel.x = param1 - DAMAGE_INFO_PANEL_CONSTS.WIDTH >> 1;
          this.radialMenu.updateStage(param1,param2);
          this.eventMessage.updateStage(param1,param2);

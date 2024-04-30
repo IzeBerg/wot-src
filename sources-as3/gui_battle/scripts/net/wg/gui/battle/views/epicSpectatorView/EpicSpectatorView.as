@@ -15,6 +15,8 @@ package net.wg.gui.battle.views.epicSpectatorView
    public class EpicSpectatorView extends EpicSpectatorViewMeta implements IEpicSpectatorViewMeta, IPostmortemPanelMeta
    {
       
+      private static const PLAYER_INFO_DELTA_Y:int = 250;
+      
       private static const LEFT_POSTMORTEM_PANE_OVERLAY_OFFSET:int = 24;
       
       private static const FOLLOW_LABEL_MOUSE_HINT_OFFSET:int = -20;

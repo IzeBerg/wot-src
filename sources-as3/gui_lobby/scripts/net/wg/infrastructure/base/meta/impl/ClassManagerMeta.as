@@ -1198,6 +1198,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.MarathonEntryPoint;
    import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.RankedEntryPoint;
    import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.ResizableEntryPoint;
+   import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.SE22EntryPoint;
    import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.ShopSalesEntryPoint;
    import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.StrongholdEntryPoint;
    import net.wg.gui.lobby.hangar.interfaces.IHangar;
@@ -1264,6 +1265,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.header.headerButtonBar.HBC_ActionItem;
    import net.wg.gui.lobby.header.headerButtonBar.HBC_BattleSelector;
    import net.wg.gui.lobby.header.headerButtonBar.HBC_Finance;
+   import net.wg.gui.lobby.header.headerButtonBar.HBC_HBSquad;
    import net.wg.gui.lobby.header.headerButtonBar.HBC_PersonalReserves;
    import net.wg.gui.lobby.header.headerButtonBar.HBC_PersonalReservesWidgetInject;
    import net.wg.gui.lobby.header.headerButtonBar.HBC_Prem;
@@ -1277,6 +1279,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.header.headerButtonBar.HeaderButtonBar;
    import net.wg.gui.lobby.header.headerButtonBar.HeaderButtonContentItem;
    import net.wg.gui.lobby.header.headerButtonBar.HeaderButtonsHelper;
+   import net.wg.gui.lobby.header.headerButtonBar.container.HBPlatoonShieldIconContainer;
    import net.wg.gui.lobby.header.headerButtonBar.container.PlatoonShieldIconContainer;
    import net.wg.gui.lobby.header.interfaces.ILobbyHeader;
    import net.wg.gui.lobby.header.itemSelectorPopover.BattleTypeSelectPopoverDemonstrator;
@@ -2630,6 +2633,8 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.vehiclePreview.bottomPanel.SetVehiclesRenderer;
    import net.wg.gui.lobby.vehiclePreview.bottomPanel.SetVehiclesView;
    import net.wg.gui.lobby.vehiclePreview.bottomPanel.VPBottomPanel;
+   import net.wg.gui.lobby.vehiclePreview.bottomPanel.VPBottomPanelHistoricalBattles;
+   import net.wg.gui.lobby.vehiclePreview.bottomPanel.VPBottomPanelHistoricalBattlesRestore;
    import net.wg.gui.lobby.vehiclePreview.bottomPanel.VPBottomPanelOfferGift;
    import net.wg.gui.lobby.vehiclePreview.bottomPanel.VPBottomPanelShowcaseStyleBuying;
    import net.wg.gui.lobby.vehiclePreview.bottomPanel.VPBottomPanelStyleBuying;
@@ -2644,6 +2649,8 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.vehiclePreview.data.VPBuyingPanelVO;
    import net.wg.gui.lobby.vehiclePreview.data.VPCompensationVO;
    import net.wg.gui.lobby.vehiclePreview.data.VPCouponVO;
+   import net.wg.gui.lobby.vehiclePreview.data.VPHBBuyingPanelVO;
+   import net.wg.gui.lobby.vehiclePreview.data.VPHBRestorePanelVO;
    import net.wg.gui.lobby.vehiclePreview.data.VPOfferGiftBuyingPanelVO;
    import net.wg.gui.lobby.vehiclePreview.data.VPOfferVO;
    import net.wg.gui.lobby.vehiclePreview.data.VPPackItemVO;
@@ -5439,6 +5446,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_HANGAR_EVENTENTRYPOINT_GFWRAPPER_RESIZABLEENTRYPOINT:Class = ResizableEntryPoint;
       
+      public static const NET_WG_GUI_LOBBY_HANGAR_EVENTENTRYPOINT_GFWRAPPER_SE22ENTRYPOINT:Class = SE22EntryPoint;
+      
       public static const NET_WG_GUI_LOBBY_HANGAR_EVENTENTRYPOINT_GFWRAPPER_SHOPSALESENTRYPOINT:Class = ShopSalesEntryPoint;
       
       public static const NET_WG_GUI_LOBBY_HANGAR_EVENTENTRYPOINT_GFWRAPPER_STRONGHOLDENTRYPOINT:Class = StrongholdEntryPoint;
@@ -5571,6 +5580,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_HEADER_HEADERBUTTONBAR_HBC_FINANCE:Class = HBC_Finance;
       
+      public static const NET_WG_GUI_LOBBY_HEADER_HEADERBUTTONBAR_HBC_HBSQUAD:Class = HBC_HBSquad;
+      
       public static const NET_WG_GUI_LOBBY_HEADER_HEADERBUTTONBAR_HBC_PERSONALRESERVES:Class = HBC_PersonalReserves;
       
       public static const NET_WG_GUI_LOBBY_HEADER_HEADERBUTTONBAR_HBC_PERSONALRESERVESWIDGETINJECT:Class = HBC_PersonalReservesWidgetInject;
@@ -5596,6 +5607,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_HEADER_HEADERBUTTONBAR_HEADERBUTTONCONTENTITEM:Class = HeaderButtonContentItem;
       
       public static const NET_WG_GUI_LOBBY_HEADER_HEADERBUTTONBAR_HEADERBUTTONSHELPER:Class = HeaderButtonsHelper;
+      
+      public static const NET_WG_GUI_LOBBY_HEADER_HEADERBUTTONBAR_CONTAINER_HBPLATOONSHIELDICONCONTAINER:Class = HBPlatoonShieldIconContainer;
       
       public static const NET_WG_GUI_LOBBY_HEADER_HEADERBUTTONBAR_CONTAINER_PLATOONSHIELDICONCONTAINER:Class = PlatoonShieldIconContainer;
       
@@ -8281,6 +8294,10 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_VEHICLEPREVIEW_BOTTOMPANEL_VPBOTTOMPANEL:Class = VPBottomPanel;
       
+      public static const NET_WG_GUI_LOBBY_VEHICLEPREVIEW_BOTTOMPANEL_VPBOTTOMPANELHISTORICALBATTLES:Class = VPBottomPanelHistoricalBattles;
+      
+      public static const NET_WG_GUI_LOBBY_VEHICLEPREVIEW_BOTTOMPANEL_VPBOTTOMPANELHISTORICALBATTLESRESTORE:Class = VPBottomPanelHistoricalBattlesRestore;
+      
       public static const NET_WG_GUI_LOBBY_VEHICLEPREVIEW_BOTTOMPANEL_VPBOTTOMPANELOFFERGIFT:Class = VPBottomPanelOfferGift;
       
       public static const NET_WG_GUI_LOBBY_VEHICLEPREVIEW_BOTTOMPANEL_VPBOTTOMPANELSHOWCASESTYLEBUYING:Class = VPBottomPanelShowcaseStyleBuying;
@@ -8306,6 +8323,10 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_VEHICLEPREVIEW_DATA_VPCOMPENSATIONVO:Class = VPCompensationVO;
       
       public static const NET_WG_GUI_LOBBY_VEHICLEPREVIEW_DATA_VPCOUPONVO:Class = VPCouponVO;
+      
+      public static const NET_WG_GUI_LOBBY_VEHICLEPREVIEW_DATA_VPHBBUYINGPANELVO:Class = VPHBBuyingPanelVO;
+      
+      public static const NET_WG_GUI_LOBBY_VEHICLEPREVIEW_DATA_VPHBRESTOREPANELVO:Class = VPHBRestorePanelVO;
       
       public static const NET_WG_GUI_LOBBY_VEHICLEPREVIEW_DATA_VPOFFERGIFTBUYINGPANELVO:Class = VPOfferGiftBuyingPanelVO;
       

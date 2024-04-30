@@ -2,7 +2,7 @@ import typing
 from gui.Scaleform.daapi.view.lobby.missions.awards_formatters import NewStyleBonusComposer
 from gui.impl import backport
 from gui.impl.gen import R
-from gui.impl.auxiliary.rewards_helper import NEW_STYLE_FORMATTED_BONUSES
+from gui.impl import auxiliary
 from gui.server_events import formatters
 from gui.server_events.awards_formatters import AWARDS_SIZES, AwardsPacker, QuestsBonusComposer, getPostBattleAwardsPacker
 from gui.server_events.bonuses import BlueprintsBonusSubtypes, formatBlueprint
@@ -261,7 +261,7 @@ class OldStyleAwardsPacker(AwardsPacker):
         return formattedBonuses
 
     def _getBonusFormatter(self, bonusName):
-        if bonusName in NEW_STYLE_FORMATTED_BONUSES:
+        if bonusName in auxiliary.rewards_helper.NEW_STYLE_FORMATTED_BONUSES:
             return self.__newStyleFormatter
         return self.getFormatters().get(bonusName, self.__defaultFormatter)
 

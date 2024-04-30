@@ -23,6 +23,10 @@ package net.wg.data.constants.generated
       
       public static const BOTTOM_PANEL_SHOWCASE_STYLE_BUYING_LINKAGE:String = "VehiclePreviewBottomPanelShowcaseStyleBuyingUI";
       
+      public static const HB_PANEL_LINKAGE:String = "VPHBPanelUI";
+      
+      public static const HB_RESTORE_PANEL_LINKAGE:String = "VehiclePreviewHPRestorePanelUI";
+      
       public static const FACT_SHEET_LINKAGE:String = "VehPreviewFactSheetUI";
       
       public static const ELITE_FACT_SHEET_LINKAGE:String = "VehPreviewEliteFactSheetUI";

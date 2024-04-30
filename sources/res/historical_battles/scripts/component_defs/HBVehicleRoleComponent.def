@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<CellMethods/>
+	<ClientMethods/>
+	<Properties>
+		<role>
+			<Type>INT32</Type>
+			<Flags>ALL_CLIENTS</Flags>
+		</role>
+		<frontmanRoleID>
+			<Type>UINT8</Type>
+			<Flags>ALL_CLIENTS</Flags>
+		</frontmanRoleID>
+		<unlockPercent>
+			<Type>UINT8</Type>
+			<Default>0</Default>
+			<Flags>ALL_CLIENTS</Flags>
+			<DetailLevel>MY_VEHICLE</DetailLevel>
+		</unlockPercent>
+		<roleAbilityId>
+			<Type>INT32</Type>
+			<Default>0</Default>
+			<Flags>ALL_CLIENTS</Flags>
+			<DetailLevel>MY_VEHICLE</DetailLevel>
+		</roleAbilityId>
+	</Properties>
+	<ofEntity>
+		<Vehicle/>
+	</ofEntity>
+	<DefaultKeyName>roleComponent</DefaultKeyName>
+</root>

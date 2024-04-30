@@ -259,6 +259,10 @@ package
       
       public static const SETTINGS_FEEDBACK_INDICATORS_SHOWALLIES:String = "#tooltips:settings/feedback/indicators/showAllies";
       
+      public static const SETTINGS_FEEDBACK_SIXTHSENSE_SIZEINFO:String = "#tooltips:settings/feedback/sixthSense/sizeInfo";
+      
+      public static const SETTINGS_FEEDBACK_SIXTHSENSE_ALPHAINFO:String = "#tooltips:settings/feedback/sixthSense/alphaInfo";
+      
       public static const MISSIONS_TOKENPOPOVER_BUYBTN:String = "#tooltips:missions/tokenPopover/buyBtn";
       
       public static const ELEN_EXCEL_SELECTRATINGBTN_TOOLTIP:String = "#tooltips:elen/excel/selectRatingBtn/tooltip";
@@ -316,6 +320,10 @@ package
       public static const DEMONSTRATOR_PLATOONWARNING:String = "#tooltips:demonstrator/platoonWarning";
       
       public static const LOBY_MESSENGER_LISTVIEW_NEWS_TOOLTIP:String = "#tooltips:loby_messenger/listView/news/tooltip";
+      
+      public static const LOBY_MESSENGER_BTNREFERRALDISABLED:String = "#tooltips:loby_messenger/btnReferralDisabled";
+      
+      public static const LOBY_MESSENGER_BTNVEHICLECARTDISABLED:String = "#tooltips:loby_messenger/btnVehicleCartDisabled";
       
       public static const BADGEINFO_TITLE:String = "#tooltips:badgeinfo/title";
       
@@ -566,6 +574,14 @@ package
       public static const SETTINGS_FEEDBACK_INDICATORS_SHOWALLIES_HEADER:String = "#tooltips:settings/feedback/indicators/showAllies/header";
       
       public static const SETTINGS_FEEDBACK_INDICATORS_SHOWALLIES_BODY:String = "#tooltips:settings/feedback/indicators/showAllies/body";
+      
+      public static const SETTINGS_FEEDBACK_SIXTHSENSE_SIZEINFO_HEADER:String = "#tooltips:settings/feedback/sixthSense/sizeInfo/header";
+      
+      public static const SETTINGS_FEEDBACK_SIXTHSENSE_SIZEINFO_BODY:String = "#tooltips:settings/feedback/sixthSense/sizeInfo/body";
+      
+      public static const SETTINGS_FEEDBACK_SIXTHSENSE_ALPHAINFO_HEADER:String = "#tooltips:settings/feedback/sixthSense/alphaInfo/header";
+      
+      public static const SETTINGS_FEEDBACK_SIXTHSENSE_ALPHAINFO_BODY:String = "#tooltips:settings/feedback/sixthSense/alphaInfo/body";
       
       public static const SETTINGS_SOUND_DEVICEALERT_HEADER:String = "#tooltips:settings/sound/deviceAlert/header";
       
@@ -1096,6 +1112,8 @@ package
       public static const BATTLETYPES_RANKED_BONUSBATTLE_DESCRIPTION:String = "#tooltips:battleTypes/ranked/bonusBattle/description";
       
       public static const BATTLETYPES_BATTLEROYALE_HEADER:String = "#tooltips:battleTypes/battleRoyale/header";
+      
+      public static const BATTLETYPES_BATTLEROYALE_WIDGET_HEADER:String = "#tooltips:battleTypes/battleRoyale/widget/header";
       
       public static const BATTLETYPES_BATTLEROYALE_BODY:String = "#tooltips:battleTypes/battleRoyale/body";
       
@@ -1916,6 +1934,14 @@ package
       public static const LOBBY_HEADER_BUYPREMIUMACCOUNT_DISABLED_HEADER:String = "#tooltips:lobby/header/buyPremiumAccount/disabled/header";
       
       public static const LOBBY_HEADER_BUYPREMIUMACCOUNT_DISABLED_BODY:String = "#tooltips:lobby/header/buyPremiumAccount/disabled/body";
+      
+      public static const LOBY_MESSENGER_BTNREFERRALDISABLED_HEADER:String = "#tooltips:loby_messenger/btnReferralDisabled/header";
+      
+      public static const LOBY_MESSENGER_BTNREFERRALDISABLED_BODY:String = "#tooltips:loby_messenger/btnReferralDisabled/body";
+      
+      public static const LOBY_MESSENGER_BTNVEHICLECARTDISABLED_HEADER:String = "#tooltips:loby_messenger/btnVehicleCartDisabled/header";
+      
+      public static const LOBY_MESSENGER_BTNVEHICLECARTDISABLED_BODY:String = "#tooltips:loby_messenger/btnVehicleCartDisabled/body";
       
       public static const TRAINING_CREATE_INVITES_CHECKBOX_HEADER:String = "#tooltips:training/create/invites_checkbox/header";
       
@@ -3363,7 +3389,11 @@ package
       
       public static const CONTACT_STATUS_INBATTLE_RANDOM:String = "#tooltips:Contact/status/inBattle/random";
       
+      public static const CONTACT_STATUS_INBATTLE_VERSUS_AI:String = "#tooltips:Contact/status/inBattle/versus_ai";
+      
       public static const CONTACT_STATUS_INBATTLE_TRAINING:String = "#tooltips:Contact/status/inBattle/training";
+      
+      public static const CONTACT_STATUS_INBATTLE_MAPS_TRAINING:String = "#tooltips:Contact/status/inBattle/maps_training";
       
       public static const CONTACT_STATUS_INBATTLE_EPIC_RANDOM_TRAINING:String = "#tooltips:Contact/status/inBattle/epic_random_training";
       
@@ -7464,6 +7494,18 @@ package
       public static const NOTRECRUITEDTANKMAN_TANKMEN_BP13_4_DESC:String = "#tooltips:notrecruitedtankman/tankmen_BP13_4/desc";
       
       public static const NOTRECRUITEDTANKMAN_TANKMEN_BP13_4_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_BP13_4/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_ARTILLERYMAN_1_DESC:String = "#tooltips:notrecruitedtankman/tankmen_Artilleryman_1/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_ARTILLERYMAN_1_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_Artilleryman_1/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_INZHENER_2_DESC:String = "#tooltips:notrecruitedtankman/tankmen_Inzhener_2/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_INZHENER_2_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_Inzhener_2/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_RAZVEDCHIK_3_DESC:String = "#tooltips:notrecruitedtankman/tankmen_Razvedchik_3/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_RAZVEDCHIK_3_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_Razvedchik_3/label";
       
       public static const ELEN_SUMMARY_RANK_ENUM:Array = [ELEN_SUMMARY_RANK_1,ELEN_SUMMARY_RANK_2,ELEN_SUMMARY_RANK_3,ELEN_SUMMARY_RANK_4,ELEN_SUMMARY_RANK_NORANK];
       

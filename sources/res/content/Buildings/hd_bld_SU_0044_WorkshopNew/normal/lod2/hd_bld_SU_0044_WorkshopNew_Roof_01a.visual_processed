@@ -17,7 +17,7 @@
 				<row3>0.000000 0.000000 0.000000</row3>
 			</transform>
 			<node>
-				<identifier>lod0</identifier>
+				<identifier>lod2</identifier>
 				<transform>
 					<row0>1.000000 0.000000 0.000000</row0>
 					<row1>0.000000 1.000000 0.000000</row1>
@@ -56,11 +56,11 @@
 				0
 				<material>
 					<identifier>s_nd2</identifier>
-					<fx>shaders/std_effects/PBS_glass.fx</fx>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
 					<materialKind>112</materialKind>
 					<collisionFlags>255</collisionFlags>
 					<property>
-						dirtAlbedoMap
+						diffuseMap
 						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_Glass_03_AM.dds</Texture>
 					</property>
 					<property>
@@ -68,11 +68,11 @@
 						<Bool>true</Bool>
 					</property>
 					<property>
-						g_filterColor
-						<Vector4>0.000000 0.000000 0.000000 1.000000</Vector4>
+						g_enableAO
+						<Bool>true</Bool>
 					</property>
 					<property>
-						glassMap
+						metallicGlossMap
 						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_Glass_03_GMM.dds</Texture>
 					</property>
 					<property>
@@ -248,15 +248,15 @@
 						<Bool>true</Bool>
 					</property>
 				</material>
-				<groupOrigin>20.720068 1.857754 -10.026174</groupOrigin>
+				<groupOrigin>20.719481 1.857754 -10.026174</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<boundingBox>
 		<min>-0.030283 0.155356 -20.127396</min>
-		<max>41.470421 3.569337 0.074597</max>
+		<max>41.469246 3.569337 0.074597</max>
 	</boundingBox>
 	<customBsp>true</customBsp>
-	<geometrySize>47976</geometrySize>
+	<geometrySize>42546</geometrySize>
 	<minUVDensity>0.003013</minUVDensity>
 </root>

@@ -30,6 +30,8 @@ package net.wg.gui.cyberSport.controls
       
       private static const INV_ALERT_ICON:String = "invAlertIcon";
       
+      private static const INV_FROZEN_ICON:String = "invFrozenIcon";
+      
       private static const BATTLE_ROYALE_NATION_POSTFIX:String = "_br";
       
       private static const BATTLE_ROYALE_CUT_RECTANGLE:Rectangle = new Rectangle(0,2,100,20);
@@ -89,11 +91,15 @@ package net.wg.gui.cyberSport.controls
       
       public var alertIcon:MovieClip;
       
+      public var frozenIcon:MovieClip;
+      
       public var clickableArea:MovieClip;
       
       private var _currentViewType:String = "autoSearch";
       
       private var _showAlertIcon:Boolean = false;
+      
+      private var _showFrozenIcon:Boolean = false;
       
       private var _rangeModel:SettingRosterVO;
       
@@ -116,6 +122,8 @@ package net.wg.gui.cyberSport.controls
       private var _showCommanderSettings:Boolean = false;
       
       private var _mouseOverAlert:Boolean = false;
+      
+      private var _mouseOverFrozen:Boolean = false;
       
       private var _updatedFlag:Boolean = false;
       
@@ -156,9 +164,10 @@ package net.wg.gui.cyberSport.controls
          {
             this.updateVehIcon();
          }
-         if(isInvalid(INV_ALERT_ICON))
+         if(isInvalid(INV_FROZEN_ICON) || isInvalid(INV_ALERT_ICON))
          {
-            this.alertIcon.visible = this._showAlertIcon && this._vehicleModel && !this._vehicleModel.isReadyToFight;
+            this.frozenIcon.visible = this._showFrozenIcon && this._vehicleModel && !this._vehicleModel.isReadyToFight;
+            this.alertIcon.visible = !this._showFrozenIcon && this._showAlertIcon && this._vehicleModel && !this._vehicleModel.isReadyToFight;
          }
       }
       
@@ -198,6 +207,11 @@ package net.wg.gui.cyberSport.controls
          this.alertIcon.useHandCursor = false;
          this.alertIcon.mouseEnabled = true;
          this.alertIcon.buttonMode = false;
+         this.frozenIcon.addEventListener(MouseEvent.ROLL_OVER,this.onFrozenRollOverHandler);
+         this.frozenIcon.addEventListener(MouseEvent.ROLL_OUT,this.onFrozenRollOutHandler);
+         this.frozenIcon.useHandCursor = false;
+         this.frozenIcon.mouseEnabled = true;
+         this.frozenIcon.buttonMode = false;
          this.clickableArea.mouseEnabled = true;
          this.clickableArea.addEventListener(MouseEvent.ROLL_OUT,this.onComponentRollOutHandler);
          this.clickableArea.addEventListener(MouseEvent.ROLL_OVER,this.onComponentRollOverHandler);
@@ -246,6 +260,9 @@ package net.wg.gui.cyberSport.controls
          this.alertIcon.removeEventListener(MouseEvent.ROLL_OVER,this.onAlertRollOverHandler);
          this.alertIcon.removeEventListener(MouseEvent.ROLL_OUT,this.onAlertRollOutHandler);
          this.alertIcon = null;
+         this.frozenIcon.removeEventListener(MouseEvent.ROLL_OVER,this.onFrozenRollOverHandler);
+         this.frozenIcon.removeEventListener(MouseEvent.ROLL_OUT,this.onFrozenRollOutHandler);
+         this.frozenIcon = null;
          this.clickableArea.removeEventListener(MouseEvent.ROLL_OUT,this.onComponentRollOutHandler);
          this.clickableArea.removeEventListener(MouseEvent.ROLL_OVER,this.onComponentRollOverHandler);
          this.clickableArea.removeEventListener(MouseEvent.CLICK,this.onAreaClickHandler);
@@ -571,6 +588,17 @@ package net.wg.gui.cyberSport.controls
          invalidate(INV_ALERT_ICON);
       }
       
+      public function get showFrozenIcon() : Boolean
+      {
+         return this._showFrozenIcon;
+      }
+      
+      public function set showFrozenIcon(param1:Boolean) : void
+      {
+         this._showFrozenIcon = param1;
+         invalidate(INV_FROZEN_ICON);
+      }
+      
       public function set showVehicleIcon(param1:Boolean) : void
       {
          this._showVehicleIcon = param1;
@@ -597,7 +625,7 @@ package net.wg.gui.cyberSport.controls
       {
          super.handleMouseRollOver(param1);
          this.playSounds(param1.type);
-         if(!this._mouseOverAlert)
+         if(!this._mouseOverAlert && !this._mouseOverFrozen)
          {
             dispatchEvent(new RallyViewsEvent(RallyViewsEvent.VEH_BTN_ROLL_OVER));
          }
@@ -607,7 +635,7 @@ package net.wg.gui.cyberSport.controls
       {
          super.handleMouseRollOut(param1);
          this.playSounds(param1.type);
-         if(!this._mouseOverAlert)
+         if(!this._mouseOverAlert && !this._mouseOverFrozen)
          {
             dispatchEvent(new RallyViewsEvent(RallyViewsEvent.VEH_BTN_ROLL_OUT));
          }
@@ -645,6 +673,27 @@ package net.wg.gui.cyberSport.controls
       private function onAlertRollOutHandler(param1:MouseEvent) : void
       {
          this._mouseOverAlert = false;
+         dispatchEvent(new RallyViewsEvent(RallyViewsEvent.VEH_BTN_ROLL_OUT));
+         var _loc2_:Point = new Point(mouseX,mouseY);
+         _loc2_ = localToGlobal(_loc2_);
+         if(hitTestPoint(_loc2_.x,_loc2_.y))
+         {
+            dispatchEvent(new RallyViewsEvent(RallyViewsEvent.VEH_BTN_ROLL_OVER));
+         }
+      }
+      
+      private function onFrozenRollOverHandler(param1:MouseEvent) : void
+      {
+         this._mouseOverFrozen = true;
+         dispatchEvent(new RallyViewsEvent(RallyViewsEvent.VEH_BTN_ROLL_OVER,{
+            "type":ALERT_DATA_TYPE,
+            "state":this._vehicleModel.state
+         }));
+      }
+      
+      private function onFrozenRollOutHandler(param1:MouseEvent) : void
+      {
+         this._mouseOverFrozen = false;
          dispatchEvent(new RallyViewsEvent(RallyViewsEvent.VEH_BTN_ROLL_OUT));
          var _loc2_:Point = new Point(mouseX,mouseY);
          _loc2_ = localToGlobal(_loc2_);

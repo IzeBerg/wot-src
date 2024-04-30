@@ -26,7 +26,7 @@
 				</transform>
 			</node>
 			<node>
-				<identifier>lod2</identifier>
+				<identifier>lod0</identifier>
 				<transform>
 					<row0>1.000000 0.000000 0.000000</row0>
 					<row1>0.000000 1.000000 0.000000</row1>
@@ -93,10 +93,6 @@
 						<Texture>content/Environment/hd_env_SU_1019_Entry_Canopy/hd_env_SU_1019_Entry_Canopy_AM.dds</Texture>
 					</property>
 					<property>
-						g_applyScreenSpaceMorphing
-						<Bool>false</Bool>
-					</property>
-					<property>
 						g_enableAO
 						<Bool>true</Bool>
 					</property>
@@ -108,8 +104,12 @@
 						normalMap
 						<Texture>content/Environment/hd_env_SU_1019_Entry_Canopy/hd_env_SU_1019_Entry_Canopy_ANM.dds</Texture>
 					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
 				</material>
-				<groupOrigin>0.000519 2.699637 -1.390479</groupOrigin>
+				<groupOrigin>0.000519 2.699637 -1.387579</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
@@ -118,6 +118,6 @@
 		<max>2.001096 5.397281 0.019643</max>
 	</boundingBox>
 	<customBsp>true</customBsp>
-	<geometrySize>31444</geometrySize>
-	<minUVDensity>0.005422</minUVDensity>
+	<geometrySize>20456</geometrySize>
+	<minUVDensity>0.005103</minUVDensity>
 </root>

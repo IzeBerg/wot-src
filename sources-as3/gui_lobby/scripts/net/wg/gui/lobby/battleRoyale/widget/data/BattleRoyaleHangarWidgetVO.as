@@ -11,8 +11,6 @@ package net.wg.gui.lobby.battleRoyale.widget.data
       
       public var calendarStatus:AlertMessageBlockVO = null;
       
-      public var tooltipId:String = "";
-      
       public var showAlert:Boolean = false;
       
       public function BattleRoyaleHangarWidgetVO(param1:Object = null)

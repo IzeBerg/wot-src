@@ -99,6 +99,8 @@ package
       
       public static const BUTTONS_INVITE_PLAYER_DESCRIPTION:String = "#platoon:buttons/invite/player/description";
       
+      public static const BUTTONS_INVITE_FULLSQUAD_DESCRIPTION:String = "#platoon:buttons/invite/fullSquad/description";
+      
       public static const BUTTONS_CANCELSEARCH_CAPTION:String = "#platoon:buttons/cancelSearch/caption";
       
       public static const BUTTONS_CANCELSEARCH_DESCRIPTION:String = "#platoon:buttons/cancelSearch/description";

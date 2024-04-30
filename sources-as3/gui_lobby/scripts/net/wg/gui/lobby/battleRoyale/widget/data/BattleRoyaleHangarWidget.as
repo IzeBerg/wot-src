@@ -9,7 +9,6 @@ package net.wg.gui.lobby.battleRoyale.widget.data
    import net.wg.gui.lobby.hangar.alertMessage.AlertMessageBlock;
    import net.wg.infrastructure.base.meta.IBattleRoyaleHangarWidgetMeta;
    import net.wg.infrastructure.base.meta.impl.BattleRoyaleHangarWidgetMeta;
-   import net.wg.infrastructure.managers.ITooltipMgr;
    import net.wg.utils.IStageSizeDependComponent;
    import net.wg.utils.StageSizeBoundaries;
    import scaleform.clik.constants.InvalidationType;
@@ -37,17 +36,12 @@ package net.wg.gui.lobby.battleRoyale.widget.data
       
       public var content:GFInjectComponent = null;
       
-      private var _tooltipId:String = "";
-      
-      private var _toolTipMgr:ITooltipMgr;
-      
       private var _data:BattleRoyaleHangarWidgetVO = null;
       
       private var _isCompactLayout:Boolean = false;
       
       public function BattleRoyaleHangarWidget()
       {
-         this._toolTipMgr = App.toolTipMgr;
          super();
       }
       
@@ -71,7 +65,6 @@ package net.wg.gui.lobby.battleRoyale.widget.data
       override protected function setData(param1:BattleRoyaleHangarWidgetVO) : void
       {
          this._data = param1;
-         this._tooltipId = param1.tooltipId;
          this.content.y = !!this._data.showAlert ? Number(ALERT_BG_Y_OFFSET) : Number(BG_NORMAL_Y_OFFSET + CONTENT_TOP_PADDING);
          invalidateData();
       }
@@ -108,7 +101,6 @@ package net.wg.gui.lobby.battleRoyale.widget.data
          {
             unregisterFlashComponent(HANGAR_ALIASES.BATTLE_ROYALE_HANGAR_WIDGET);
          }
-         this._toolTipMgr = null;
          this._data = null;
          super.onDispose();
       }
@@ -129,6 +121,11 @@ package net.wg.gui.lobby.battleRoyale.widget.data
          return this.content.height;
       }
       
+      override public function get marginRight() : int
+      {
+         return 0;
+      }
+      
       override public function get marginLeft() : int
       {
          return !!this._isCompactLayout ? int(MARGIN_LEFT_SMALL) : int(MARGIN_LEFT);
@@ -141,14 +138,12 @@ package net.wg.gui.lobby.battleRoyale.widget.data
       
       private function onMouseRollOutHandler(param1:MouseEvent) : void
       {
-         this._toolTipMgr.hide();
          gotoAndPlay(OUT_LABEL);
       }
       
       private function onMouseRollOverHandler(param1:MouseEvent) : void
       {
          App.soundMgr.playControlsSnd(SoundManagerStates.SND_OVER,SoundTypes.NORMAL_BTN,null);
-         this._toolTipMgr.showSpecial(this._tooltipId,null);
          gotoAndPlay(OVER_LABEL);
       }
       

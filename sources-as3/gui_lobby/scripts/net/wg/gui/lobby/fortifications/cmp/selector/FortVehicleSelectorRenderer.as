@@ -43,6 +43,8 @@ package net.wg.gui.lobby.fortifications.cmp.selector
       
       public var notReadyAlert:MovieClip;
       
+      public var frozenAlert:MovieClip;
+      
       private var _itemVO:FortVehicleSelectorItemVO = null;
       
       private var _multiSelectionMode:Boolean = false;
@@ -70,6 +72,7 @@ package net.wg.gui.lobby.fortifications.cmp.selector
       {
          super.initialize();
          this.notReadyAlert.visible = false;
+         this.frozenAlert.visible = false;
          mouseEnabledOnDisabled = true;
       }
       
@@ -85,6 +88,7 @@ package net.wg.gui.lobby.fortifications.cmp.selector
          removeEventListener(MouseEvent.CLICK,this.onMouseClickHandler);
          removeEventListener(MouseEvent.DOUBLE_CLICK,this.onRendererDoubleClickHandler);
          this.notReadyAlert = null;
+         this.frozenAlert = null;
          this.checkBox.dispose();
          this.checkBox = null;
          this._itemVO = null;
@@ -99,7 +103,8 @@ package net.wg.gui.lobby.fortifications.cmp.selector
          {
             this.checkBox.selected = this._itemVO.selected;
             this._isVehicleReady = !this._multiSelectionMode ? Boolean(this._itemVO.isReadyToFight) : Boolean(true);
-            this.notReadyAlert.visible = !this._isVehicleReady;
+            this.frozenAlert.visible = this._itemVO.isFrozen;
+            this.notReadyAlert.visible = !this._itemVO.isFrozen && !this._isVehicleReady;
             if(!this._multiSelectionMode)
             {
                enabled = this._itemVO.enabled;
@@ -177,7 +182,7 @@ package net.wg.gui.lobby.fortifications.cmp.selector
       override protected function handleMouseRollOver(param1:MouseEvent) : void
       {
          this._isMouseOver = true;
-         if(this.notReadyAlert.visible)
+         if(this.notReadyAlert.visible || this.frozenAlert.visible)
          {
             this.showAlertTooltip();
          }

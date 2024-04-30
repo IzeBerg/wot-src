@@ -114,11 +114,10 @@ package net.wg.gui.lobby.header.mainMenuButtonBar
       
       override protected function populateRendererData(param1:Button, param2:uint) : void
       {
-         var _loc3_:HangarMenuTabItemVO = null;
          param1.label = itemToLabel(_dataProvider.requestItemAt(param2));
          param1.data = _dataProvider.requestItemAt(param2);
          param1.selected = param2 == selectedIndex;
-         _loc3_ = HangarMenuTabItemVO(_dataProvider[param2]);
+         var _loc3_:HangarMenuTabItemVO = HangarMenuTabItemVO(_dataProvider[param2]);
          param1.enabled = _loc3_.enabled && enabled;
          var _loc4_:MainMenuButton = MainMenuButton(param1);
          if(_loc3_.icon)

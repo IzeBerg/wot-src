@@ -56,6 +56,7 @@ package net.wg.gui.lobby.settings.feedback
       override protected function configUI() : void
       {
          super.configUI();
+         this.tabs.enableOversize = true;
          this.viewStack.addEventListener(ViewStackEvent.VIEW_CHANGED,this.onViewViewChangedHandler);
          this.viewStack.addEventListener(SettingsSubVewEvent.ON_CONTROL_CHANGE,this.onViewStackOnControlChangeHandler,true);
          this.viewStack.addEventListener(SettingViewEvent.ON_CONTROL_NEW_COUNTERS_VISITED,this.onViewStackOnControlNewCountersVisitedHandler,true);

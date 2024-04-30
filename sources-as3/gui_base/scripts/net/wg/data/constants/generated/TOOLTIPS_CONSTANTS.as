@@ -157,6 +157,10 @@ package net.wg.data.constants.generated
       
       public static const COMMANDER_BONUS:String = "commanderBonus";
       
+      public static const TANKMAN_SKILL:String = "tankmanSkill";
+      
+      public static const PREVIEW_CREW_SKILL:String = "previewCrewSkill";
+      
       public static const EFFICIENCY_PARAM:String = "efficiencyParam";
       
       public static const MAP:String = "map";
@@ -371,6 +375,8 @@ package net.wg.data.constants.generated
       
       public static const EVENT_BOARDS_BADGES_GROUP:String = "eventBoardsBadgesGroup";
       
+      public static const EVENT_SELECTOR_INFO:String = "eventSelectorInfo";
+      
       public static const OPERATION:String = "operation";
       
       public static const OPERATIONS_CHAIN_DETAILS:String = "operationsChainDetails";
@@ -499,6 +505,8 @@ package net.wg.data.constants.generated
       
       public static const BATTLE_ROYALE_EQUIPMENT:String = "battleRoyaleEquipment";
       
+      public static const BATTLE_ROYALE_RESPAWN:String = "battleRoyaleRespawn";
+      
       public static const BATTLE_ROYALE_VEHICLE:String = "battleRoyaleVehicle";
       
       public static const BATTLE_ROYALE_PERF_SIMPLE:String = "battleRoyalePerfSimple";
@@ -508,8 +516,6 @@ package net.wg.data.constants.generated
       public static const BATTLE_ROYALE_SELECTOR_INFO:String = "battleRoyaleSelectorInfo";
       
       public static const BATTLE_ROYALE_SELECTOR_CALENDAR_INFO:String = "battleRoyaleSelectorCalendarInfo";
-      
-      public static const BATTLE_ROYALE_WIDGET_INFO:String = "battleRoyaleWidgetInfo";
       
       public static const BLUEPRINT_INFO:String = "blueprintInfo";
       
@@ -683,6 +689,10 @@ package net.wg.data.constants.generated
       
       public static const VEH_CMP_SKILLS:String = "vehCmpSkills";
       
+      public static const TANKMAN_SKILL_EXTENDED:String = "tankmanSkillExtended";
+      
+      public static const TANKMAN_SKILL_EXTENDED_UI:String = "ToolTipInblocksDefaultUI";
+      
       public static const MISSIONS_TOKEN:String = "missionsToken";
       
       public static const MISSIONS_TOKEN_UI:String = "ToolTipInblocksDefaultUI";
@@ -767,6 +777,22 @@ package net.wg.data.constants.generated
       
       public static const OPTDEV_SLOT_STATE_ACTIVE_SELECTED:String = "activeSelected";
       
+      public static const HB_QUESTS_PREVIEW:String = "HBBattleQuest";
+      
+      public static const HANGAR_INTERACTIVE_OBJECT:String = "hangarInteractiveObject";
+      
+      public static const ENTRY_POINT_TOOLTIP:String = "EntryPointTooltip";
+      
+      public static const HB_ORDER_TOOLTIP:String = "HBOrderTooltip";
+      
+      public static const HB_UNAVAILABLE_QUEST:String = "HBUnavailableQuest";
+      
+      public static const HB_VEHICLE:String = "HBVehicle";
+      
+      public static const HB_CALENDAR_TOOLTIP:String = "HBCalendarTooltip";
+      
+      public static const HB_SPECIAL_VEHICLES_TOOLTIP:String = "HBSpecialVehiclesTooltip";
+      
       public static const LOOT_BOXES_VEHICLE_BLUEPRINT_FRAGMENT:String = "lootBoxesVehicleBlueprintFragment";
       
       public static const LOOT_BOX_TOOLTIP:String = "lootBoxTooltip";
@@ -847,7 +873,7 @@ package net.wg.data.constants.generated
       
       public static const ROYALE_BATTLE_SET:Array = [BATTLE_ROYALE_MODULES];
       
-      public static const ROYALE_LOBBY_SET:Array = [BATTLE_ROYALE_VEHICLE,BATTLE_ROYALE_MODULES_HANGAR,BATTLE_ROYALE_BATTLE_PROGRESSION,BATTLE_ROYALE_EQUIPMENT,BATTLE_ROYALE_PERF_SIMPLE,BATTLE_ROYALE_PERF_ADVANCED,BATTLE_ROYALE_SELECTOR_INFO,BATTLE_ROYALE_WIDGET_INFO,BATTLE_ROYALE_COMPLETED_QUESTS_INFO,BATTLE_ROYALE_SELECTOR_CALENDAR_INFO,BATTLE_ROYALE_PROXY_CURRENCY];
+      public static const ROYALE_LOBBY_SET:Array = [BATTLE_ROYALE_VEHICLE,BATTLE_ROYALE_MODULES_HANGAR,BATTLE_ROYALE_BATTLE_PROGRESSION,BATTLE_ROYALE_RESPAWN,BATTLE_ROYALE_EQUIPMENT,BATTLE_ROYALE_PERF_SIMPLE,BATTLE_ROYALE_PERF_ADVANCED,BATTLE_ROYALE_SELECTOR_INFO,BATTLE_ROYALE_COMPLETED_QUESTS_INFO,BATTLE_ROYALE_SELECTOR_CALENDAR_INFO,BATTLE_ROYALE_PROXY_CURRENCY];
       
       public static const MAPBOX_LOBBY_SET:Array = [MAPBOX_SELECTOR_INFO,MAPBOX_PROGRESSION_PREVIEW,SELECTABLE_CREWBOOK,RANDOM_CREWBOOK_MAPBOX,MAPBOX_CALENDAR];
       
@@ -868,6 +894,10 @@ package net.wg.data.constants.generated
       public static const ARMORY_YARD_LOBBY_SET:Array = [ARMORY_YARD_AWARD_VEHICLE];
       
       public static const WOT_PLUS_SET:Array = [WOT_PLUS];
+      
+      public static const EVENT_SET:Array = [EVENT_SELECTOR_INFO];
+      
+      public static const HISTORICAL_BATTLES_SET:Array = [HB_QUESTS_PREVIEW,HANGAR_INTERACTIVE_OBJECT,ENTRY_POINT_TOOLTIP,HB_ORDER_TOOLTIP,HB_UNAVAILABLE_QUEST,HB_VEHICLE,HB_CALENDAR_TOOLTIP,HB_SPECIAL_VEHICLES_TOOLTIP];
        
       
       public function TOOLTIPS_CONSTANTS()

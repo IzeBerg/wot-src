@@ -12,7 +12,6 @@ from gui.shared.events import LobbySimpleEvent
 from gui.shared.view_helpers.blur_manager import CachedBlur
 from helpers import dependency, time_utils
 from skeletons.gui.game_control import IArmoryYardController, IWalletController
-from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.shared import IItemsCache
 BUNDLE_TYPES = {'small_bundle': BundleType.SMALL, 
    'medium_bundle': BundleType.MEDIUM, 
@@ -21,7 +20,6 @@ BUNDLE_TYPES = {'small_bundle': BundleType.SMALL,
 class ArmoryYardBundlesView(ViewImpl):
     __slots__ = ('__blur', '__onLoadedCallback', '__parent')
     __armoryYardCtrl = dependency.descriptor(IArmoryYardController)
-    __lobbyContext = dependency.descriptor(ILobbyContext)
     __itemsCache = dependency.descriptor(IItemsCache)
     __wallet = dependency.descriptor(IWalletController)
 
@@ -129,11 +127,11 @@ class ArmoryYardBundlesView(ViewImpl):
          (
           self.viewModel.onBuyTokens, self.onBuyTokens),
          (
-          self.__lobbyContext.getServerSettings().onServerSettingsChange, self.__onEventUpdated),
-         (
           self.__armoryYardCtrl.onUpdated, self.__onEventUpdated),
          (
-          self.__armoryYardCtrl.onProgressUpdated, self.__onProgressUpdated))
+          self.__armoryYardCtrl.onProgressUpdated, self.__onProgressUpdated),
+         (
+          self.__armoryYardCtrl.onBundlesDisabled, self.__onEventUpdated))
 
 
 class ArmoryYardBundlesWindow(LobbyWindow):
