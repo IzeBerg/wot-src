@@ -7395,6 +7395,42 @@ package
       
       public static const NOTRECRUITEDTANKMAN_WT_2023_DRIVER_LABEL:String = "#tooltips:notrecruitedtankman/wt_2023_driver/label";
       
+      public static const NOTRECRUITEDTANKMAN_COSM02_KIRK_LABEL:String = "#tooltips:notrecruitedtankman/cosm02_Kirk/label";
+      
+      public static const NOTRECRUITEDTANKMAN_COSM02_KIRK_DESC:String = "#tooltips:notrecruitedtankman/cosm02_Kirk/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_COSM02_KIRK_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/cosm02_Kirk/howToGetInfo";
+      
+      public static const NOTRECRUITEDTANKMAN_COSM02_SPOCK_LABEL:String = "#tooltips:notrecruitedtankman/cosm02_Spock/label";
+      
+      public static const NOTRECRUITEDTANKMAN_COSM02_SPOCK_DESC:String = "#tooltips:notrecruitedtankman/cosm02_Spock/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_COSM02_SPOCK_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/cosm02_Spock/howToGetInfo";
+      
+      public static const NOTRECRUITEDTANKMAN_COSM02_SULU_LABEL:String = "#tooltips:notrecruitedtankman/cosm02_Sulu/label";
+      
+      public static const NOTRECRUITEDTANKMAN_COSM02_SULU_DESC:String = "#tooltips:notrecruitedtankman/cosm02_Sulu/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_COSM02_SULU_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/cosm02_Sulu/howToGetInfo";
+      
+      public static const NOTRECRUITEDTANKMAN_COSM02_MCCOY_LABEL:String = "#tooltips:notrecruitedtankman/cosm02_McCoy/label";
+      
+      public static const NOTRECRUITEDTANKMAN_COSM02_MCCOY_DESC:String = "#tooltips:notrecruitedtankman/cosm02_McCoy/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_COSM02_MCCOY_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/cosm02_McCoy/howToGetInfo";
+      
+      public static const NOTRECRUITEDTANKMAN_COSM02_UHURA_LABEL:String = "#tooltips:notrecruitedtankman/cosm02_Uhura/label";
+      
+      public static const NOTRECRUITEDTANKMAN_COSM02_UHURA_DESC:String = "#tooltips:notrecruitedtankman/cosm02_Uhura/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_COSM02_UHURA_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/cosm02_Uhura/howToGetInfo";
+      
+      public static const NOTRECRUITEDTANKMAN_COSM02_SCOTTY_LABEL:String = "#tooltips:notrecruitedtankman/cosm02_Scotty/label";
+      
+      public static const NOTRECRUITEDTANKMAN_COSM02_SCOTTY_DESC:String = "#tooltips:notrecruitedtankman/cosm02_Scotty/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_COSM02_SCOTTY_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/cosm02_Scotty/howToGetInfo";
+      
       public static const COMMANDERBONUS_NAME:String = "#tooltips:commanderBonus/name";
       
       public static const COMMANDERBONUS_DESCRIPTION:String = "#tooltips:commanderBonus/description";

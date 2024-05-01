@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_guns</identifier>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/french/F17_AMX_13_90/_skins/F17_AMX_13_90_3Dst_HW20/AMX_13_90_3Dst_HW20_proxy_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/french/F17_AMX_13_90/_skins/F17_AMX_13_90_3Dst_HW20/AMX_13_90_3Dst_HW20_proxy_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/french/F17_AMX_13_90/_skins/F17_AMX_13_90_3Dst_HW20/AMX_13_90_3Dst_HW20_proxy_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/french/F17_AMX_13_90/_skins/F17_AMX_13_90_3Dst_HW20/AMX_13_90_3Dst_HW20_proxy_AO.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.015562 -0.103063 1.109700</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.883981 -0.662182 -2.053331</min>
+		<max>0.915104 0.456055 4.272730</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>3268</geometrySize>
+	<minUVDensity>0.005372</minUVDensity>
+</root>

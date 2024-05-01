@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd1</identifier>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/envSU_92_10_Debris_big/envSU_92_10_Debris_big_AM.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>108</materialKind>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/envSU_92_10_Debris_big/envSU_92_10_Debris_big_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Environment/envSU_92_10_Debris_big/envSU_92_10_Debris_big_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.142153 0.702480 0.036525</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/envSU_92_10_Debris_big/envSU_92_10_Debris_big_tile_AM.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>111</materialKind>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/envSU_92_10_Debris_big/envSU_92_10_Debris_big_tile_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Environment/envSU_92_10_Debris_big/envSU_92_10_Debris_big_tile_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.130629 0.279738 0.119166</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>s_ramp_0</identifier>
+					<collisionFlags>131</collisionFlags>
+					<materialKind>111</materialKind>
+				</material>
+				<groupOrigin>0.175816 0.156928 0.001428</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.664173 -0.037675 -1.211826</min>
+		<max>2.015805 1.437216 1.214682</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>5908</geometrySize>
+	<minUVDensity>0.005302</minUVDensity>
+</root>

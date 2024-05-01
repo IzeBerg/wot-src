@@ -7,7 +7,7 @@ from gui import SystemMessages
 from gui.Scaleform.locale.BATTLE_RESULTS import BATTLE_RESULTS
 from gui.battle_results import composer, context, emblems, reusable, stored_sorting
 from gui.battle_results.composer import StatsComposer
-from gui.battle_results.settings import PREMIUM_STATE
+from gui.battle_results.settings import PREMIUM_STATE, REQUEST_SOURCE
 from gui.shared import event_dispatcher, events, g_eventBus
 from gui.shared.gui_items.processors.common import BattleResultsGetter, PremiumBonusApplier
 from gui.shared.utils import decorators
@@ -70,7 +70,7 @@ class BattleResultsService(IBattleResultsService):
                 return
 
             yield dummy
-            self.__notifyBattleResultsPosted(arenaUniqueID, needToShowUI=ctx.needToShowIfPosted())
+            self.__notifyBattleResultsPosted(arenaUniqueID, needToShowUI=ctx.needToShowIfPosted(), requestSource=ctx.getRequestSource())
         else:
             results = yield BattleResultsGetter(arenaUniqueID).request()
             if not results.success and ctx.getArenaBonusType() == ARENA_BONUS_TYPE.MAPS_TRAINING:
@@ -205,12 +205,12 @@ class BattleResultsService(IBattleResultsService):
     def notifyBattleResultsPosted(self, arenaUniqueID, needToShowUI=False):
         self.__notifyBattleResultsPosted(arenaUniqueID, needToShowUI)
 
-    def __notifyBattleResultsPosted(self, arenaUniqueID, needToShowUI=False):
+    def __notifyBattleResultsPosted(self, arenaUniqueID, needToShowUI=False, requestSource=REQUEST_SOURCE.OTHER):
         composerObj = self.__composers[arenaUniqueID]
         window = None
         if needToShowUI:
-            window = composerObj.onShowResults(arenaUniqueID)
-        composerObj.onResultsPosted(arenaUniqueID)
+            window = composerObj.onShowResults(arenaUniqueID, requestSource)
+        composerObj.onResultsPosted(arenaUniqueID, requestSource)
         return window
 
     def __handleLobbyViewLoaded(self, _):

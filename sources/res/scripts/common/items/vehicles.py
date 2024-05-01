@@ -415,6 +415,7 @@ class VehicleDescriptor(object):
     hasHydraulicChassis = property(lambda self: self.type.hasHydraulicChassis)
     hasCharge = property(lambda self: self.type.hasCharge)
     hasRocketAcceleration = property(lambda self: self.type.hasRocketAcceleration)
+    isCosmicVehicle = property(lambda self: self.type.isCosmicVehicle)
     hasBurst = property(lambda self: self.gun.burst != component_constants.DEFAULT_GUN_BURST)
     role = property(lambda self: self.type.role)
     isPitchHullAimingAvailable = property(lambda self: self.type.hullAimingParams['pitch']['isAvailable'])
@@ -1795,8 +1796,8 @@ class VehicleType(object):
      'rollerExtras', 'hasCharge', 'role', 'actionsGroup', 'actions', 'builtins',
      'nationChangeGroupId', 'isCollectorVehicle', 'isPremium', 'hasTurboshaftEngine', 'hasHydraulicChassis',
      'hasSpeedometer', 'supplySlots', 'optDevsOverrides', 'postProgressionTree', 'postProgressionPricesOverrides',
-     'customRoleSlotOptions', 'hasRocketAcceleration', 'rocketAccelerationParams', 'classTag', 'armorMaxHealth',
-     '__weakref__')
+     'customRoleSlotOptions', 'hasRocketAcceleration', 'isCosmicVehicle', 'rocketAccelerationParams',
+     'classTag', 'armorMaxHealth', '__weakref__')
 
     def __init__(self, nationID, basicInfo, xmlPath, vehMode=VEHICLE_MODE.DEFAULT):
         self.name = basicInfo.name
@@ -1821,6 +1822,7 @@ class VehicleType(object):
         self.hasCharge = 'charger' in self.tags
         self.builtins = {t.split('_user')[0] for t in self.tags if t.startswith('builtin') if t.startswith('builtin')}
         self.hasRocketAcceleration = 'rocketAcceleration' in self.tags
+        self.isCosmicVehicle = 'cosmicVehicle' in self.tags
         self.isCollectorVehicle = CollectorVehicleConsts.COLLECTOR_VEHICLES_TAG in self.tags
         self.isPremium = 'premium' in self.tags
         self.role = self.__getRoleFromTags() if self.level in ROLE_LEVELS else ROLE_TYPE.NOT_DEFINED

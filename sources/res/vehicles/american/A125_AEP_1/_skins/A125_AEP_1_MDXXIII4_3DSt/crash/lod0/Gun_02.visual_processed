@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_guns</identifier>
+					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						crashTileMap
+						<Texture>vehicles/russian/Tank_detail/crash_tile.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/american/A125_AEP_1/_skins/A125_AEP_1_MDXXIII4_3DSt/AEP_1_MDXXIII4_3DSt_guns_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/american/A125_AEP_1/_skins/A125_AEP_1_MDXXIII4_3DSt/AEP_1_MDXXIII4_3DSt_guns_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/american/A125_AEP_1/_skins/A125_AEP_1_MDXXIII4_3DSt/AEP_1_MDXXIII4_3DSt_guns_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/american/A125_AEP_1/_skins/A125_AEP_1_MDXXIII4_3DSt/AEP_1_MDXXIII4_3DSt_guns_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.033063 -0.055235 1.611107</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.407137 -0.470928 -2.719524</min>
+		<max>0.473262 0.360457 5.941738</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>104052</geometrySize>
+	<minUVDensity>0.006338</minUVDensity>
+</root>

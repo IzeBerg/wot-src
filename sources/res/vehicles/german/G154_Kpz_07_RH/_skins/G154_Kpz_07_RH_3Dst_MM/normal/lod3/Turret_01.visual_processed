@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>nodes_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_gunJoint</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>-0.009434 0.491014 -0.000001</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_turret_01</identifier>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/german/G154_Kpz_07_RH/_skins/G154_Kpz_07_RH_3Dst_MM/Kpz_07_RH_3Dst_turret_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/german/G154_Kpz_07_RH/_skins/G154_Kpz_07_RH_3Dst_MM/Kpz_07_RH_3Dst_turret_01_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/german/G154_Kpz_07_RH/_skins/G154_Kpz_07_RH_3Dst_MM/Kpz_07_RH_3Dst_turret_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/german/G154_Kpz_07_RH/_skins/G154_Kpz_07_RH_3Dst_MM/Kpz_07_RH_3Dst_turret_01_AO.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>3.506850 1.753430 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.000000 0.327432 -0.023208</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>tank_equipment</identifier>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/german/G154_Kpz_07_RH/_skins/G154_Kpz_07_RH_3Dst_MM/Kpz_07_RH_3Dst_equipment_AM.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						alphaReference
+						<Int>64</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/german/G154_Kpz_07_RH/_skins/G154_Kpz_07_RH_3Dst_MM/Kpz_07_RH_3Dst_equipment_AO.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>7.013700 3.507000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/german/G154_Kpz_07_RH/_skins/G154_Kpz_07_RH_3Dst_MM/Kpz_07_RH_3Dst_equipment_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/german/G154_Kpz_07_RH/_skins/G154_Kpz_07_RH_3Dst_MM/Kpz_07_RH_3Dst_equipment_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.281950 0.536033 -1.247581</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>tank_guns</identifier>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/german/G154_Kpz_07_RH/_skins/G154_Kpz_07_RH_3Dst_MM/Kpz_07_RH_3Dst_guns_AM.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						alphaReference
+						<Int>64</Int>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/german/G154_Kpz_07_RH/_skins/G154_Kpz_07_RH_3Dst_MM/Kpz_07_RH_3Dst_guns_AO.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>7.013700 3.507000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/german/G154_Kpz_07_RH/_skins/G154_Kpz_07_RH_3Dst_MM/Kpz_07_RH_3Dst_guns_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/german/G154_Kpz_07_RH/_skins/G154_Kpz_07_RH_3Dst_MM/Kpz_07_RH_3Dst_guns_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.592855 0.449158 -0.949972</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				3
+				<material>
+					<identifier>tank_hull_01</identifier>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/german/G154_Kpz_07_RH/_skins/G154_Kpz_07_RH_3Dst_MM/Kpz_07_RH_3Dst_hull_01_AM.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						alphaReference
+						<Int>64</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/german/G154_Kpz_07_RH/_skins/G154_Kpz_07_RH_3Dst_MM/Kpz_07_RH_3Dst_hull_01_AO.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>7.013700 7.013700 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/german/G154_Kpz_07_RH/_skins/G154_Kpz_07_RH_3Dst_MM/Kpz_07_RH_3Dst_hull_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/german/G154_Kpz_07_RH/_skins/G154_Kpz_07_RH_3Dst_MM/Kpz_07_RH_3Dst_hull_01_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-1.259003 0.319907 -0.549983</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.545707 -0.002205 -2.031404</min>
+		<max>1.545707 0.916470 1.391456</max>
+	</boundingBox>
+	<geometrySize>70178</geometrySize>
+	<minUVDensity>0.002572</minUVDensity>
+</root>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>lambert1</identifier>
+					<fx>shaders/custom/vector_animation_2.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						alphaFadeAmountSoft
+						<Vector4>1.000000 1.000000 0.010000 0.500000</Vector4>
+					</property>
+					<property>
+						attachToTerrain
+						<Bool>true</Bool>
+					</property>
+					<property>
+						compensationValue
+						<Vector4>1.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/cosm_event/supernova_wall.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						gradientMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Gradients/PzKpfw_green_gradien_lumps.dds</Texture>
+					</property>
+					<property>
+						rampFreshnelMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Gradients/Gradient_transparentEdge_02.dds</Texture>
+					</property>
+					<property>
+						srcBlend
+						<Int>8</Int>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>0.000000 0.000000 0.010000 0.010000</Vector4>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Distortion01__01.dds</Texture>
+					</property>
+					<property>
+						opacity_UV_Speed_Scale
+						<Vector4>0.000000 0.100000 30.000000 1.000000</Vector4>
+					</property>
+					<property>
+						opacityMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/sparks_01.dds</Texture>
+					</property>
+					<property>
+						opacityMapEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						gradientMapEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaFreshnelEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						overTerrainHeight
+						<Float>-1.000000</Float>
+					</property>
+					<property>
+						enableLighting
+						<Bool>true</Bool>
+					</property>
+					<property>
+						fogAdjustBlend
+						<Float>1.000000</Float>
+					</property>
+				</material>
+				<groupOrigin>-0.000000 1.500000 0.000000</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.987764 -0.000000 -0.987764</min>
+		<max>0.987764 3.000000 0.987764</max>
+	</boundingBox>
+	<geometrySize>17124</geometrySize>
+	<minUVDensity>0.047825</minUVDensity>
+</root>

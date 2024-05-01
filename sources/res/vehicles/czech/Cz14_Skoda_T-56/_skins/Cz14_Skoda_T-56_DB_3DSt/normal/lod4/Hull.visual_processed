@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>nodes_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_Fire_1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 -0.054579 -2.582053</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Fire_2</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>-0.636732 0.041758 1.846758</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_LFront</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.584838 0.811150</row1>
+					<row2>0.000000 -0.811150 0.584838</row2>
+					<row3>-1.397000 -0.032400 3.509599</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_LRear</identifier>
+				<transform>
+					<row0>-1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.312844 -0.949804</row1>
+					<row2>-0.000000 -0.949804 -0.312844</row2>
+					<row3>-1.397000 -0.149425 -3.604669</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_RFront</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.584838 0.811150</row1>
+					<row2>0.000000 -0.811150 0.584838</row2>
+					<row3>1.397000 -0.032400 3.509599</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_RRear</identifier>
+				<transform>
+					<row0>-1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.312844 -0.949804</row1>
+					<row2>-0.000000 -0.949804 -0.312844</row2>
+					<row3>1.397000 -0.149425 -3.604669</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_Exhaus_1</identifier>
+				<transform>
+					<row0>-0.701350 0.000000 0.712817</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>-0.712817 0.000000 -0.701350</row2>
+					<row3>-1.516145 0.309124 -3.330202</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_Exhaus_2</identifier>
+				<transform>
+					<row0>-0.732985 0.000000 -0.680244</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.680244 0.000000 -0.732985</row2>
+					<row3>1.516679 0.309124 -3.330202</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_turretJoint</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.519041 0.688390</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_proxy</identifier>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/czech/Cz14_Skoda_T-56/_skins/Cz14_Skoda_T-56_DB_3DSt/Skoda_T-56_DB_3DSt_proxy_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/czech/Cz14_Skoda_T-56/_skins/Cz14_Skoda_T-56_DB_3DSt/Skoda_T-56_DB_3DSt_proxy_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/czech/Cz14_Skoda_T-56/_skins/Cz14_Skoda_T-56_DB_3DSt/Skoda_T-56_DB_3DSt_proxy_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/czech/Cz14_Skoda_T-56/_skins/Cz14_Skoda_T-56_DB_3DSt/Skoda_T-56_DB_3DSt_proxy_AO.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.009768 0.041192 -0.500298</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-2.262740 -0.519667 -4.663017</min>
+		<max>2.243204 0.602051 3.662421</max>
+	</boundingBox>
+	<geometrySize>6532</geometrySize>
+	<minUVDensity>0.002958</minUVDensity>
+</root>

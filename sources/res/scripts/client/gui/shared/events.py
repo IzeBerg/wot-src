@@ -841,3 +841,7 @@ class BattleRoyalePlatoonEvent(SharedEvent):
 class ScalableBattleMinimapEvent(HasCtxEvent):
     BORDERS_UPDATED = 'ScalableBattleMinimapEvent/BORDERS_UPDATED'
     ZOOM_UPDATED = 'ScalableBattleMinimapEvent/ZOOM_UPDATED'
+
+
+class CosmicEvent(SharedEvent):
+    OPEN_COSMIC = 'openCosmic'

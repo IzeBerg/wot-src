@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext_dual.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>112</materialKind>
+					<property>
+						diffuseMap2
+						<Texture>content/Outland/hd_out_EU_045_EiffelTower/hd_out_EU_045_EiffelTower_AM2.dds</Texture>
+					</property>
+					<property>
+						g_useNormalPackDXT1
+						<Bool>false</Bool>
+					</property>
+					<property>
+						alphaReference
+						<Int>73</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Outland/hd_out_EU_045_EiffelTower/hd_out_EU_045_EiffelTower_GMM.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Outland/hd_out_EU_045_EiffelTower/hd_out_EU_045_EiffelTower_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Outland/hd_out_EU_045_EiffelTower/hd_out_EU_045_EiffelTower_AM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-30.010263 56.962742 -30.514250</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-61.170902 -0.642480 -61.076473</min>
+		<max>1.058525 114.567963 0.047973</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>119548</geometrySize>
+	<minUVDensity>0.000068</minUVDensity>
+</root>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>hd_gaf_UNI_005_WoodFence_03</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_module0</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.100000 0.000000</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>lod1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+				<node>
+					<identifier>n0</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>d_wood0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>87</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/GatesAndFences/hd_gaf_UNI_005_WoodFence/hd_gaf_UNI_005_WoodFence_AM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/GatesAndFences/hd_gaf_UNI_005_WoodFence/hd_gaf_UNI_005_WoodFence_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/GatesAndFences/hd_gaf_UNI_005_WoodFence/hd_gaf_UNI_005_WoodFence_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.003918 -0.009332 -0.033869</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>n_wood0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>73</materialKind>
+					<collisionFlags>131</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/GatesAndFences/hd_gaf_UNI_005_WoodFence/hd_gaf_UNI_005_WoodFence_AM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/GatesAndFences/hd_gaf_UNI_005_WoodFence/hd_gaf_UNI_005_WoodFence_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/GatesAndFences/hd_gaf_UNI_005_WoodFence/hd_gaf_UNI_005_WoodFence_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.003918 0.643808 -0.029646</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.086352 -0.358656 -0.129279</min>
+		<max>0.094187 1.646273 0.069988</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>1616</geometrySize>
+	<minUVDensity>0.083930</minUVDensity>
+</root>

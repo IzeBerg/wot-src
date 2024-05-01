@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>lambert1</identifier>
+					<fx>shaders/custom/shield_shimmer.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						alphaFresnelEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>1.000000 0.000000 0.050000 0.050000</Vector4>
+					</property>
+					<property>
+						distortionFrames
+						<Vector4>0.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/content_deferred/GFX_models/cosm_event/delivery_zone/wave2_nm.dds</Texture>
+					</property>
+					<property>
+						phase_UV_Speed_Scale
+						<Vector4>2.000000 0.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						phaseMap
+						<Texture>particles/content_deferred/GFX_models/cosm_event/delivery_zone/wave13_nm.dds</Texture>
+					</property>
+					<property>
+						rampFresnelMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Gradients/wt_InnerErenergy_FreshnelMap.dds</Texture>
+					</property>
+					<property>
+						fresnelPower
+						<UInt>4</UInt>
+					</property>
+				</material>
+				<groupOrigin>-0.000000 0.000000 0.000000</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.990000 -0.990000 -0.990000</min>
+		<max>0.990000 0.990000 0.990000</max>
+	</boundingBox>
+	<geometrySize>20364</geometrySize>
+	<minUVDensity>0.698934</minUVDensity>
+</root>

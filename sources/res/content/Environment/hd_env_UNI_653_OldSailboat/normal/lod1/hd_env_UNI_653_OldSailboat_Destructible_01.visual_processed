@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>hd_env_UNI_653_OldSailboat_Destructible_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_module0</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>-1.408064 0.000000 9.587090</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_module1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>-1.946775 0.000000 -0.543573</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>n_wood1_2</identifier>
+					<collisionFlags>131</collisionFlags>
+					<materialKind>74</materialKind>
+				</material>
+				<groupOrigin>-0.290555 2.664907 -2.076073</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>n_wood1_1</identifier>
+					<collisionFlags>131</collisionFlags>
+					<materialKind>73</materialKind>
+				</material>
+				<groupOrigin>-0.197295 2.336517 8.681909</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>d_wood0_2</identifier>
+					<fx>shaders/std_effects/PBS_ext_dual.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>88</materialKind>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_UNI_653_OldSailboat/hd_env_UNI_653_OldSailboat_Boat_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env_UNI_653_OldSailboat/hd_env_UNI_653_OldSailboat_Boat_GMM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap2
+						<Texture>content/Environment/hd_env_UNI_653_OldSailboat/hd_env_UNI_653_OldSailboat_Boat_Details_AM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_UNI_653_OldSailboat/hd_env_UNI_653_OldSailboat_Boat_Tile_AM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.695460 0.315742 1.132791</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				3
+				<material>
+					<identifier>d_wood0_1</identifier>
+					<fx>shaders/std_effects/PBS_ext_dual.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>87</materialKind>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_UNI_653_OldSailboat/hd_env_UNI_653_OldSailboat_Boat_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env_UNI_653_OldSailboat/hd_env_UNI_653_OldSailboat_Boat_GMM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap2
+						<Texture>content/Environment/hd_env_UNI_653_OldSailboat/hd_env_UNI_653_OldSailboat_Boat_Details_AM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_UNI_653_OldSailboat/hd_env_UNI_653_OldSailboat_Boat_Tile_AM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.726318 0.276337 9.254156</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				4
+				<material>
+					<identifier>n_wood0_2</identifier>
+					<fx>shaders/std_effects/PBS_ext_dual.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>74</materialKind>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_UNI_653_OldSailboat/hd_env_UNI_653_OldSailboat_Boat_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env_UNI_653_OldSailboat/hd_env_UNI_653_OldSailboat_Boat_GMM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap2
+						<Texture>content/Environment/hd_env_UNI_653_OldSailboat/hd_env_UNI_653_OldSailboat_Boat_Details_AM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_UNI_653_OldSailboat/hd_env_UNI_653_OldSailboat_Boat_Tile_AM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.088759 2.909287 -1.440579</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				5
+				<material>
+					<identifier>n_wood0_1</identifier>
+					<fx>shaders/std_effects/PBS_ext_dual.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>73</materialKind>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_UNI_653_OldSailboat/hd_env_UNI_653_OldSailboat_Boat_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env_UNI_653_OldSailboat/hd_env_UNI_653_OldSailboat_Boat_GMM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap2
+						<Texture>content/Environment/hd_env_UNI_653_OldSailboat/hd_env_UNI_653_OldSailboat_Boat_Details_AM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_UNI_653_OldSailboat/hd_env_UNI_653_OldSailboat_Boat_Tile_AM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>1.210153 5.726329 8.742569</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-4.485615 -0.290571 -10.849692</min>
+		<max>5.699027 11.587428 14.859921</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>533662</geometrySize>
+	<minUVDensity>0.000489</minUVDensity>
+</root>

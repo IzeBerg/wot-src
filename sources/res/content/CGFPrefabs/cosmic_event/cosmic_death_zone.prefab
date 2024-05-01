@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<version>3</version>
+	<GameObjects>
+		<GameObject>
+			<name>cosmic_death_zone</name>
+			<UUID>78aa618d-b298-4751-b8a5-91f624fd6450</UUID>
+			<flags>0</flags>
+		</GameObject>
+	</GameObjects>
+	<components>
+		<ComponentPool>
+			<type>Transform</type>
+			<version>1</version>
+			<component>
+				<objectIndex>0</objectIndex>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>0 0 0</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>-0 0 0</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>SquareArea</type>
+			<version>1</version>
+			<component>
+				<objectIndex>0</objectIndex>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Min Bound</name>
+						<value>-1 -1 -1</value>
+					</property>
+					<property>
+						<name>Max Bound</name>
+						<value>580 5 580</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>Area trigger</type>
+			<version>1</version>
+			<component>
+				<objectIndex>0</objectIndex>
+				<flags>35</flags>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>CosmicDeathAreaTrigger</type>
+			<version>1</version>
+			<component>
+				<objectIndex>0</objectIndex>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>trigger</name>
+						<link>78aa618d-b298-4751-b8a5-91f624fd6450</link>
+					</property>
+					<property>
+						<name>zoneType</name>
+						<value>outland</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+	</components>
+</root>

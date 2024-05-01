@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>19.983334</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+		<track>
+			<name>animation</name>
+			<type>animation</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>18.966667</duration>
+				<resourceID>content/Hangars/CharacterAnimations/h26_battle_royale/animation/Rat/Rat_Run01.fbx</resourceID>
+				<clipName/>
+				<speed>1.000000</speed>
+				<layer>0</layer>
+				<blendIn>constant</blendIn>
+				<blendOut>constant</blendOut>
+				<blendInTime>0.000000</blendInTime>
+				<blendOutTime>0.000000</blendOutTime>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 -0.000001 0.000000</value>
+				<inTangent>-0.213624 0.207030 -1.211532</inTangent>
+				<outTangent>-0.213624 0.207030 -1.211532</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.966667</startTime>
+				<value>-0.206503 0.200129 -1.171148</value>
+				<inTangent>-0.213624 0.207030 -1.211532</inTangent>
+				<outTangent>-0.215191 -0.231189 -2.528548</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>9.000000</startTime>
+				<value>-1.935202 -1.657089 -21.483816</value>
+				<inTangent>-0.215191 -0.231189 -2.528548</inTangent>
+				<outTangent>-0.443071 0.132578 -1.963446</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>18.000000</startTime>
+				<value>-5.922842 -0.463892 -39.154831</value>
+				<inTangent>-0.443071 0.132578 -1.963446</inTangent>
+				<outTangent>1.497759 1.488856 17.766621</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>-10.344824 5.172412 0.000000</inTangent>
+				<outTangent>-10.344824 5.172412 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.966667</startTime>
+				<value>-10.000000 5.000000 0.000000</value>
+				<inTangent>-5.172412 2.586206 0.000000</inTangent>
+				<outTangent>-5.172412 2.586206 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>9.000000</startTime>
+				<value>-10.000000 5.000000 0.000000</value>
+				<inTangent>7.499993 7.499993 0.000000</inTangent>
+				<outTangent>7.499993 7.499993 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>10.000001</startTime>
+				<value>5.000000 20.000000 0.000000</value>
+				<inTangent>7.499993 6.249993 0.000000</inTangent>
+				<outTangent>7.499993 6.249993 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>18.000000</startTime>
+				<value>5.000000 0.000000 0.000000</value>
+				<inTangent>-0.000000 -2.500000 -0.000000</inTangent>
+				<outTangent>-0.000000 -2.500000 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Sound Object 1</name>
+		<type>sound</type>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>19.983334</duration>
+				<value>Root|Rat_Root_01</value>
+			</frame>
+		</track>
+		<track>
+			<name>sound</name>
+			<type>sound</type>
+			<frame>
+				<startTime>0.083333</startTime>
+				<duration>19.900000</duration>
+				<sequenceSound>ev_battle_royale_2019_hangar_rat_squeak</sequenceSound>
+				<type>play_till_end</type>
+				<fade>0.000000</fade>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

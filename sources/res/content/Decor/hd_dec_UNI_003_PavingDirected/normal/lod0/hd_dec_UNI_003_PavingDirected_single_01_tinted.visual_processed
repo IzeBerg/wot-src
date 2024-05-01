@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>111</materialKind>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Decor/hd_dec_UNI_003_PavingDirected/hd_dec_UNI_003_PavingDirected_tinted_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Decor/hd_dec_UNI_003_PavingDirected/hd_dec_UNI_003_PavingDirected_NM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Decor/hd_dec_UNI_003_PavingDirected/hd_dec_UNI_003_PavingDirected_GMM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.002220 -0.028525 -0.006623</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.249644 -0.097210 -0.254807</min>
+		<max>0.243523 0.040159 0.241151</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>5252</geometrySize>
+	<minUVDensity>0.640859</minUVDensity>
+</root>

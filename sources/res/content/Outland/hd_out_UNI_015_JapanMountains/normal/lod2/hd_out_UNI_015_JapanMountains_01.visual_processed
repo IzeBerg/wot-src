@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_tiled_atlas_global.fx</fx>
+					<materialKind>111</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						atlasAlbedoHeight
+						<Texture>content/Environment/00_Atlases/hd_env_EU_063_Cliff_Rock_01_atlas_AM.atlas</Texture>
+					</property>
+					<property>
+						atlasBlend
+						<Texture>content/Outland/hd_out_UNI_015_JapanMountains/hd_out_UNI_015_JapanMountains_atlas_blend.png</Texture>
+					</property>
+					<property>
+						atlasMetallicAO
+						<Texture>content/Environment/00_Atlases/hd_env_EU_063_Cliff_Rock_01_atlas_MAO.atlas</Texture>
+					</property>
+					<property>
+						atlasNormalGlossSpec
+						<Texture>content/Environment/00_Atlases/hd_env_EU_063_Cliff_Rock_01_atlas_GBMT.atlas</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Buildings/00_Tiles/Dirt_Moss_Roof_02_DM.dds</Texture>
+					</property>
+					<property>
+						g_atlasIndexes
+						<Vector4>3.000000 0.000000 2.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_atlasSizes
+						<Vector4>2.000000 2.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.470000 0.430000 0.380000 0.000000</Vector4>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_fakeShadowsParams
+						<Vector4>0.480000 0.500000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>0.898039 0.901961 0.886275 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>0.341176 0.462745 0.156863 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>0.843137 0.800000 0.752941 1.000000</Vector4>
+					</property>
+					<property>
+						g_tileUVScale
+						<Vector4>20.000000 20.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						globalTex
+						<Texture>content/Outland/hd_out_UNI_015_JapanMountains/hd_out_UNI_015_JapanMountains_GT.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.032396 44.400372 -0.075166</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-34.050747 -0.133233 -32.056438</min>
+		<max>34.115540 88.933975 31.906107</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>38448</geometrySize>
+	<minUVDensity>0.000006</minUVDensity>
+</root>

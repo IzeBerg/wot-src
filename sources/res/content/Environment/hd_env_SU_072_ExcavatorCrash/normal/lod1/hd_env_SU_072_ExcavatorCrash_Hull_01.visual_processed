@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd1</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>112</materialKind>
+					<fx>shaders/std_effects/PBS_glass.fx</fx>
+					<property>
+						alphaReference
+						<Int>64</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_SU_072_ExcavatorCrash/hd_env_SU_072_ExcavatorCrash_Glass_ANM.dds</Texture>
+					</property>
+					<property>
+						dirtAlbedoMap
+						<Texture>content/Environment/hd_env_SU_072_ExcavatorCrash/hd_env_SU_072_ExcavatorCrash_Glass_AM.dds</Texture>
+					</property>
+					<property>
+						glassMap
+						<Texture>content/Environment/hd_env_SU_072_ExcavatorCrash/hd_env_SU_072_ExcavatorCrash_Glass_GMM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.320109 1.495356 0.620591</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd0</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>112</materialKind>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_SU_072_ExcavatorCrash/hd_env_SU_072_ExcavatorCrash_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_SU_072_ExcavatorCrash/hd_env_SU_072_ExcavatorCrash_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env_SU_072_ExcavatorCrash/hd_env_SU_072_ExcavatorCrash_GMM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.011951 1.272151 -0.959195</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.477278 -0.048747 -3.205850</min>
+		<max>1.501181 2.593048 1.287460</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>102700</geometrySize>
+	<minUVDensity>0.003045</minUVDensity>
+</root>

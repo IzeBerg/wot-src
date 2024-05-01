@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>FactoryLamp_Root</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>FactoryLamp_Rope01</identifier>
+				<transform>
+					<row0>0.000060 -0.999994 -0.003398</row0>
+					<row1>0.997467 0.000301 -0.071136</row1>
+					<row2>0.071137 -0.003385 0.997461</row2>
+					<row3>0.000000 0.004000 0.000000</row3>
+				</transform>
+				<node>
+					<identifier>FactoryLamp_Lamp01</identifier>
+					<transform>
+						<row0>0.999766 -0.021617 -0.000110</row0>
+						<row1>0.021617 0.999766 0.000000</row1>
+						<row2>0.000110 -0.000002 1.000000</row2>
+						<row3>5.505324 -0.000000 0.000000</row3>
+					</transform>
+					<node>
+						<identifier>FactoryLamp_Lamp01_BlendBone</identifier>
+						<transform>
+							<row0>-0.021511 0.997235 0.071134</row0>
+							<row1>-0.999767 -0.021316 -0.003495</row1>
+							<row2>0.001969 0.071193 -0.997461</row2>
+							<row3>-5.500040 -0.118925 -0.000591</row3>
+						</transform>
+					</node>
+				</node>
+				<node>
+					<identifier>FactoryLamp_Rope01_BlendBone</identifier>
+					<transform>
+						<row0>0.000060 0.997467 0.071137</row0>
+						<row1>-0.999994 0.000301 -0.003385</row1>
+						<row2>0.003398 0.071136 -0.997461</row2>
+						<row3>0.004000 -0.000001 0.000013</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>FactoryLamp_Root_BlendBone</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 -1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>FactoryLamp_Lamp01_BlendBone</node>
+		<geometry>
+			<vertices>sShape1.vertices</vertices>
+			<stream>sShape1.colour</stream>
+			<primitive>sShape1.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd1_skinned</identifier>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/custom/volumetric_effect_vtx_skinned.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h26_battle_royale/Environment/h26_br_005_FactoryLamp_AM.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						enableLighting
+						<Bool>true</Bool>
+					</property>
+					<property>
+						softFactor
+						<Float>0.001000</Float>
+					</property>
+					<property>
+						fadeMaxDistance
+						<Float>3.000000</Float>
+					</property>
+					<property>
+						selfIllumLight
+						<Vector4>1.000000 0.635294 0.094118 0.000000</Vector4>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>6.000000 2.000000 2.000000 0.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>-0.011759 -6.089932 0.013112</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>FactoryLamp_Rope01_BlendBone</node>
+		<node>FactoryLamp_Lamp01_BlendBone</node>
+		<node>FactoryLamp_Root_BlendBone</node>
+		<geometry>
+			<vertices>sShape0.vertices</vertices>
+			<primitive>sShape0.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0_skinned</identifier>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_ext_skinned.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h26_battle_royale/Environment/h26_br_005_FactoryLamp_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Hangars/h26_battle_royale/Environment/h26_br_005_FactoryLamp_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Hangars/h26_battle_royale/Environment/h26_br_005_FactoryLamp_GMM.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						dynamicObject
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>-0.015877 3.889029 0.014589</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<constraints/>
+	<boundingBox>
+		<min>-0.465806 -6.308364 -0.464610</min>
+		<max>0.434051 14.086421 0.435432</max>
+	</boundingBox>
+	<geometrySize>7376</geometrySize>
+	<minUVDensity>0.024531</minUVDensity>
+</root>

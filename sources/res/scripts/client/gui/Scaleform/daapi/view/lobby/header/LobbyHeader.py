@@ -150,6 +150,10 @@ class _DisabledLobbyHeaderViewLifecycleHandler(IViewLifecycleHandler):
         super(_DisabledLobbyHeaderViewLifecycleHandler, self).__init__(controlledViews)
         self.__lobbyHeader = weakref.proxy(lobbyHeader)
 
+    @property
+    def lobbyHeader(self):
+        return self.__lobbyHeader
+
     def onViewCreated(self, view):
         self.__lobbyHeader.disableLobbyHeaderControls(True)
 
@@ -1428,7 +1432,9 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
          'epic_config' in diff,
          battleRoyaleStateChanged,
          mapsTrainingStateChanged,
-         eventBattlesStateChanged))
+         eventBattlesStateChanged,
+         'cosmic_event_battles_config' in diff,
+         'cosmic_event_config' in diff))
         if updateHangarMenuData:
             self._updateHangarMenuData()
         elif 'hallOfFame' in diff or constants.Configs.ACHIEVEMENTS20_CONFIG.value in diff:

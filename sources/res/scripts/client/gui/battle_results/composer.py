@@ -1,6 +1,7 @@
 from constants import ARENA_BONUS_TYPE
 from gui.battle_results import templates
 from gui.battle_results.components import base
+from gui.battle_results.settings import REQUEST_SOURCE
 from gui.shared import event_dispatcher
 from gui.shared.system_factory import collectBattleResultsComposer, registerBattleResultsComposer
 from helpers import dependency
@@ -21,11 +22,11 @@ class IStatsComposer(object):
         raise NotImplementedError
 
     @staticmethod
-    def onShowResults(arenaUniqueID):
+    def onShowResults(arenaUniqueID, requestSource=REQUEST_SOURCE.OTHER):
         raise NotImplementedError
 
     @staticmethod
-    def onResultsPosted(arenaUniqueID):
+    def onResultsPosted(arenaUniqueID, requestSource=REQUEST_SOURCE.OTHER):
         raise NotImplementedError
 
 
@@ -72,11 +73,11 @@ class StatsComposer(IStatsComposer):
         return animation
 
     @staticmethod
-    def onShowResults(arenaUniqueID):
+    def onShowResults(arenaUniqueID, requestSource=REQUEST_SOURCE.OTHER):
         return event_dispatcher.showBattleResultsWindow(arenaUniqueID)
 
     @staticmethod
-    def onResultsPosted(arenaUniqueID):
+    def onResultsPosted(arenaUniqueID, requestSource=REQUEST_SOURCE.OTHER):
         event_dispatcher.notifyBattleResultsPosted(arenaUniqueID)
 
     def _registerTabs(self, reusable):
@@ -167,11 +168,11 @@ class BattleRoyaleStatsComposer(IStatsComposer):
         pass
 
     @staticmethod
-    def onShowResults(arenaUniqueID):
+    def onShowResults(arenaUniqueID, requestSource=REQUEST_SOURCE.OTHER):
         return
 
     @staticmethod
-    def onResultsPosted(arenaUniqueID):
+    def onResultsPosted(arenaUniqueID, requestSource=REQUEST_SOURCE.OTHER):
         event_dispatcher.showBattleRoyaleResultsView({'arenaUniqueID': arenaUniqueID})
 
 
@@ -196,11 +197,11 @@ class MapsTrainingStatsComposer(IStatsComposer):
         pass
 
     @staticmethod
-    def onShowResults(arenaUniqueID):
+    def onShowResults(arenaUniqueID, requestSource=REQUEST_SOURCE.OTHER):
         MapsTrainingStatsComposer._fromNotifications.add(arenaUniqueID)
 
     @staticmethod
-    def onResultsPosted(arenaUniqueID):
+    def onResultsPosted(arenaUniqueID, requestSource=REQUEST_SOURCE.OTHER):
         isFromNotifications = arenaUniqueID in MapsTrainingStatsComposer._fromNotifications
         event_dispatcher.showMapsTrainingResultsWindow(arenaUniqueID, isFromNotifications)
         if isFromNotifications:

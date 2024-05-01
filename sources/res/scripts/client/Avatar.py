@@ -954,13 +954,13 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
         if self.vehicle:
             if self.vehicle.id == self.__target.id:
                 return
-        self.__guiSetTargetInFocus(entity, True)
         if self.inputHandler.isGuiVisible and entity.isAlive():
             TriggersManager.g_manager.activateTrigger(TRIGGER_TYPE.AIM_AT_VEHICLE, vehicleId=entity.id)
             entity.drawEdge()
             isVehicle = entity.__class__.__name__ == 'Vehicle'
             if isVehicle and self.__maySeeOtherVehicleDamagedDevices:
                 self.cell.monitorVehicleDamagedDevices(entity.id)
+        self.__guiSetTargetInFocus(entity, True)
 
     def reload(self):
         self.__reloadGUI()

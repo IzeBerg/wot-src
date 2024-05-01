@@ -1,0 +1,172 @@
+# Stubs Generator
+# import operator
+# <module 'operator' (built-in)>
+
+def __abs__(*args, **kwargs): pass
+def __add__(*args, **kwargs): pass
+def __and__(*args, **kwargs): pass
+def __concat__(*args, **kwargs): pass
+def __contains__(*args, **kwargs): pass
+def __delitem__(*args, **kwargs): pass
+def __delslice__(*args, **kwargs): pass
+def __div__(*args, **kwargs): pass
+def __doc__(*args, **kwargs): pass
+def __eq__(*args, **kwargs): pass
+def __floordiv__(*args, **kwargs): pass
+def __ge__(*args, **kwargs): pass
+def __getitem__(*args, **kwargs): pass
+def __getslice__(*args, **kwargs): pass
+def __gt__(*args, **kwargs): pass
+def __iadd__(*args, **kwargs): pass
+def __iand__(*args, **kwargs): pass
+def __iconcat__(*args, **kwargs): pass
+def __idiv__(*args, **kwargs): pass
+def __ifloordiv__(*args, **kwargs): pass
+def __ilshift__(*args, **kwargs): pass
+def __imod__(*args, **kwargs): pass
+def __imul__(*args, **kwargs): pass
+def __index__(*args, **kwargs): pass
+def __inv__(*args, **kwargs): pass
+def __invert__(*args, **kwargs): pass
+def __ior__(*args, **kwargs): pass
+def __ipow__(*args, **kwargs): pass
+def __irepeat__(*args, **kwargs): pass
+def __irshift__(*args, **kwargs): pass
+def __isub__(*args, **kwargs): pass
+def __itruediv__(*args, **kwargs): pass
+def __ixor__(*args, **kwargs): pass
+def __le__(*args, **kwargs): pass
+def __lshift__(*args, **kwargs): pass
+def __lt__(*args, **kwargs): pass
+def __mod__(*args, **kwargs): pass
+def __mul__(*args, **kwargs): pass
+__name__ = 'operator'
+def __ne__(*args, **kwargs): pass
+def __neg__(*args, **kwargs): pass
+def __not__(*args, **kwargs): pass
+def __or__(*args, **kwargs): pass
+__package__ = None
+def __pos__(*args, **kwargs): pass
+def __pow__(*args, **kwargs): pass
+def __repeat__(*args, **kwargs): pass
+def __rshift__(*args, **kwargs): pass
+def __setitem__(*args, **kwargs): pass
+def __setslice__(*args, **kwargs): pass
+def __sub__(*args, **kwargs): pass
+def __truediv__(*args, **kwargs): pass
+def __xor__(*args, **kwargs): pass
+def _compare_digest(*args, **kwargs): pass
+def abs(*args, **kwargs): pass
+def add(*args, **kwargs): pass
+def and_(*args, **kwargs): pass
+
+class attrgetter(object):
+	def __call__(*args, **kwargs): pass
+	def __delattr__(*args, **kwargs): pass
+	__doc__ = "attrgetter(attr, ...) --> attrgetter object\n\nReturn a callable object that fetches the given attribute(s) from its operand.\nAfter f = attrgetter('name'), the call f(r) returns r.name.\nAfter g = attrgetter('name', 'date'), the call g(r) returns (r.name, r.date).\nAfter h = attrgetter('name.first', 'name.last'), the call h(r) returns\n(r.name.first, r.name.last)."
+	def __format__(*args, **kwargs): pass
+	def __getattribute__(*args, **kwargs): pass
+	def __hash__(*args, **kwargs): pass
+	def __init__(*args, **kwargs): pass
+	def __new__(*args, **kwargs): pass
+	def __reduce__(*args, **kwargs): pass
+	def __reduce_ex__(*args, **kwargs): pass
+	def __repr__(*args, **kwargs): pass
+	def __setattr__(*args, **kwargs): pass
+	def __sizeof__(*args, **kwargs): pass
+	def __str__(*args, **kwargs): pass
+	def __subclasshook__(*args, **kwargs): pass
+
+def concat(*args, **kwargs): pass
+def contains(*args, **kwargs): pass
+def countOf(*args, **kwargs): pass
+def delitem(*args, **kwargs): pass
+def delslice(*args, **kwargs): pass
+def div(*args, **kwargs): pass
+def eq(*args, **kwargs): pass
+def floordiv(*args, **kwargs): pass
+def ge(*args, **kwargs): pass
+def getitem(*args, **kwargs): pass
+def getslice(*args, **kwargs): pass
+def gt(*args, **kwargs): pass
+def iadd(*args, **kwargs): pass
+def iand(*args, **kwargs): pass
+def iconcat(*args, **kwargs): pass
+def idiv(*args, **kwargs): pass
+def ifloordiv(*args, **kwargs): pass
+def ilshift(*args, **kwargs): pass
+def imod(*args, **kwargs): pass
+def imul(*args, **kwargs): pass
+def index(*args, **kwargs): pass
+def indexOf(*args, **kwargs): pass
+def inv(*args, **kwargs): pass
+def invert(*args, **kwargs): pass
+def ior(*args, **kwargs): pass
+def ipow(*args, **kwargs): pass
+def irepeat(*args, **kwargs): pass
+def irshift(*args, **kwargs): pass
+def isCallable(*args, **kwargs): pass
+def isMappingType(*args, **kwargs): pass
+def isNumberType(*args, **kwargs): pass
+def isSequenceType(*args, **kwargs): pass
+def is_(*args, **kwargs): pass
+def is_not(*args, **kwargs): pass
+def isub(*args, **kwargs): pass
+
+class itemgetter(object):
+	def __call__(*args, **kwargs): pass
+	def __delattr__(*args, **kwargs): pass
+	__doc__ = 'itemgetter(item, ...) --> itemgetter object\n\nReturn a callable object that fetches the given item(s) from its operand.\nAfter f = itemgetter(2), the call f(r) returns r[2].\nAfter g = itemgetter(2, 5, 3), the call g(r) returns (r[2], r[5], r[3])'
+	def __format__(*args, **kwargs): pass
+	def __getattribute__(*args, **kwargs): pass
+	def __hash__(*args, **kwargs): pass
+	def __init__(*args, **kwargs): pass
+	def __new__(*args, **kwargs): pass
+	def __reduce__(*args, **kwargs): pass
+	def __reduce_ex__(*args, **kwargs): pass
+	def __repr__(*args, **kwargs): pass
+	def __setattr__(*args, **kwargs): pass
+	def __sizeof__(*args, **kwargs): pass
+	def __str__(*args, **kwargs): pass
+	def __subclasshook__(*args, **kwargs): pass
+
+def itruediv(*args, **kwargs): pass
+def ixor(*args, **kwargs): pass
+def le(*args, **kwargs): pass
+def lshift(*args, **kwargs): pass
+def lt(*args, **kwargs): pass
+
+class methodcaller(object):
+	def __call__(*args, **kwargs): pass
+	def __delattr__(*args, **kwargs): pass
+	def __doc__(*args, **kwargs): pass
+	def __format__(*args, **kwargs): pass
+	def __getattribute__(*args, **kwargs): pass
+	def __hash__(*args, **kwargs): pass
+	def __init__(*args, **kwargs): pass
+	def __new__(*args, **kwargs): pass
+	def __reduce__(*args, **kwargs): pass
+	def __reduce_ex__(*args, **kwargs): pass
+	def __repr__(*args, **kwargs): pass
+	def __setattr__(*args, **kwargs): pass
+	def __sizeof__(*args, **kwargs): pass
+	def __str__(*args, **kwargs): pass
+	def __subclasshook__(*args, **kwargs): pass
+
+def mod(*args, **kwargs): pass
+def mul(*args, **kwargs): pass
+def ne(*args, **kwargs): pass
+def neg(*args, **kwargs): pass
+def not_(*args, **kwargs): pass
+def or_(*args, **kwargs): pass
+def pos(*args, **kwargs): pass
+def pow(*args, **kwargs): pass
+def repeat(*args, **kwargs): pass
+def rshift(*args, **kwargs): pass
+def sequenceIncludes(*args, **kwargs): pass
+def setitem(*args, **kwargs): pass
+def setslice(*args, **kwargs): pass
+def sub(*args, **kwargs): pass
+def truediv(*args, **kwargs): pass
+def truth(*args, **kwargs): pass
+def xor(*args, **kwargs): pass

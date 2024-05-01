@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>111</materialKind>
+					<property>
+						normalMap
+						<Texture>content/Buildings/hd_bld_10_01_CastleRuins/hd_bld_10_01_CastleRuins_plane_BANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Buildings/hd_bld_10_01_CastleRuins/hd_bld_10_01_CastleRuins_plane_BGMM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Buildings/hd_bld_10_01_CastleRuins/hd_bld_10_01_CastleRuins_plane_BAM.dds</Texture>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>2.682819 -0.055133 -5.000001</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.799734 -0.580459 -12.000000</min>
+		<max>6.165372 0.470194 1.999998</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>304</geometrySize>
+	<minUVDensity>0.002982</minUVDensity>
+</root>

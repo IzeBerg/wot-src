@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>screens1</identifier>
+					<fx>shaders/custom/vector_animation_2.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						compensationValue
+						<Vector4>2.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/cosm_event/vehicle_gravizapa_02/screens_01.dds</Texture>
+					</property>
+					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>0.000000 0.000000 3.000000 0.000000</Vector4>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>-0.100000 0.300000 0.500000 0.500000</Vector4>
+					</property>
+					<property>
+						distortionFrames
+						<Vector4>0.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						distortionFrequency
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/glitch.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						enableLighting
+						<Bool>true</Bool>
+					</property>
+					<property>
+						gradientMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Gradients/Gradient_90_degrease.dds</Texture>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>2.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						opacity_UV_Distortion_Amount
+						<Vector4>0.000000 0.000000 0.500000 2.000000</Vector4>
+					</property>
+					<property>
+						opacity_UV_Speed_Scale
+						<Vector4>0.000000 0.500000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						opacityMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Masks/cosm_shield_mask.dds</Texture>
+					</property>
+					<property>
+						opacityMapEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						phase_UV_Speed_Scale
+						<Vector4>1.000000 0.000000 2.000000 2.000000</Vector4>
+					</property>
+					<property>
+						phaseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Masks/lightingDynamics_mask1.dds</Texture>
+					</property>
+					<property>
+						rampFreshnelMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Gradients/Cosmic_gradient_blue_01.dds</Texture>
+					</property>
+					<property>
+						selfIllumLight
+						<Vector3>0.396078 0.725490 0.854902</Vector3>
+					</property>
+				</material>
+				<groupOrigin>0.000000 0.470818 0.433226</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.840430 0.315528 0.384490</min>
+		<max>0.840430 0.626109 0.481962</max>
+	</boundingBox>
+	<geometrySize>2496</geometrySize>
+	<minUVDensity>4.725931</minUVDensity>
+</root>

@@ -14,6 +14,7 @@ from gui.Scaleform.genConsts.BARRACKS_CONSTANTS import BARRACKS_CONSTANTS
 from gui.Scaleform.genConsts.FORTIFICATION_ALIASES import FORTIFICATION_ALIASES
 from gui.Scaleform.genConsts.QUESTS_ALIASES import QUESTS_ALIASES
 from gui.battle_results import RequestResultsContext
+from gui.battle_results.settings import REQUEST_SOURCE
 from gui.clans.clan_helpers import showAcceptClanInviteDialog
 from gui.collection.collections_helpers import loadHangarFromCollections
 from gui.customization.constants import CustomizationModeSource, CustomizationModes
@@ -458,7 +459,7 @@ class ShowBattleResultsHandler(_ShowArenaResultHandler):
     @decorators.adisp_process('loadStats')
     def _showWindow(self, notification, arenaUniqueID):
         uniqueID = long(arenaUniqueID)
-        result = yield self.battleResults.requestResults(RequestResultsContext(uniqueID, showImmediately=False, showIfPosted=True, resetCache=False))
+        result = yield self.battleResults.requestResults(RequestResultsContext(uniqueID, showImmediately=False, showIfPosted=True, resetCache=False, requestSource=REQUEST_SOURCE.NOTIFICATION))
         if not result:
             self._updateNotification(notification)
 

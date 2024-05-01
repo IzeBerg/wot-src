@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>nodes_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>Gun</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+				<node>
+					<identifier>G</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 3.038120</row3>
+					</transform>
+					<node>
+						<identifier>HP_gunFire</identifier>
+						<transform>
+							<row0>1.000000 0.000000 0.000000</row0>
+							<row1>0.000000 1.000000 0.000000</row1>
+							<row2>0.000000 0.000000 1.000000</row2>
+							<row3>0.000000 -0.000018 3.573507</row3>
+						</transform>
+					</node>
+					<node>
+						<identifier>G_BlendBone</identifier>
+						<transform>
+							<row0>1.000000 0.000000 0.000000</row0>
+							<row1>0.000000 1.000000 0.000000</row1>
+							<row2>0.000000 0.000000 -1.000000</row2>
+							<row3>0.000000 0.000000 -3.038120</row3>
+						</transform>
+					</node>
+				</node>
+				<node>
+					<identifier>Gun_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 -1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>Joint_01</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.998203 0.059929</row1>
+					<row2>0.000000 -0.059929 0.998203</row2>
+					<row3>0.000000 0.369426 -0.015047</row3>
+				</transform>
+				<node>
+					<identifier>Joint_01_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 0.998203 -0.059929</row1>
+						<row2>0.000000 -0.059929 -0.998203</row2>
+						<row3>-0.000000 -0.367861 0.037160</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>static</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.998203 0.059929</row1>
+					<row2>0.000000 -0.059929 0.998203</row2>
+					<row3>0.000000 0.092168 -0.015047</row3>
+				</transform>
+				<node>
+					<identifier>static_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 0.998203 -0.059929</row1>
+						<row2>0.000000 -0.059929 -0.998203</row2>
+						<row3>-0.000000 -0.091100 0.020544</row3>
+					</transform>
+				</node>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>G_BlendBone</node>
+		<node>Gun_BlendBone</node>
+		<node>Joint_01_BlendBone</node>
+		<node>static_BlendBone</node>
+		<geometry>
+			<vertices>gun_0Shape3.vertices</vertices>
+			<primitive>gun_0Shape3.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_upgrade_02_skinned</identifier>
+					<property>
+						diffuseMap
+						<Texture>vehicles/poland/Pl15_60TP_Lewandowskiego/_skins/Pl15_60TP_LewandowskiegoB9BS_3DSt/60TP_LewandowskiegoB9BS_3DSt_guns_AM.dds</Texture>
+					</property>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/poland/Pl15_60TP_Lewandowskiego/_skins/Pl15_60TP_LewandowskiegoB9BS_3DSt/60TP_LewandowskiegoB9BS_3DSt_guns_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/poland/Pl15_60TP_Lewandowskiego/_skins/Pl15_60TP_LewandowskiegoB9BS_3DSt/60TP_LewandowskiegoB9BS_3DSt_guns_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/poland/Pl15_60TP_Lewandowskiego/_skins/Pl15_60TP_LewandowskiegoB9BS_3DSt/60TP_LewandowskiegoB9BS_3DSt_guns_ANM.dds</Texture>
+					</property>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>4.208219 4.208219 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.029595 0.113124 -3.133622</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>tank_upgrade_03_skinned</identifier>
+					<property>
+						diffuseMap
+						<Texture>vehicles/poland/Pl15_60TP_Lewandowskiego/_skins/Pl15_60TP_LewandowskiegoB9BS_3DSt/60TP_LewandowskiegoB9BS_3DSt_guns_AM.dds</Texture>
+					</property>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/poland/Pl15_60TP_Lewandowskiego/_skins/Pl15_60TP_LewandowskiegoB9BS_3DSt/60TP_LewandowskiegoB9BS_3DSt_guns_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/poland/Pl15_60TP_Lewandowskiego/_skins/Pl15_60TP_LewandowskiegoB9BS_3DSt/60TP_LewandowskiegoB9BS_3DSt_guns_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/poland/Pl15_60TP_Lewandowskiego/_skins/Pl15_60TP_LewandowskiegoB9BS_3DSt/60TP_LewandowskiegoB9BS_3DSt_guns_ANM.dds</Texture>
+					</property>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>4.208219 4.208219 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.017400 0.103422 -3.085842</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>tank_upgrade_03_eq_skinned</identifier>
+					<property>
+						diffuseMap
+						<Texture>vehicles/poland/Pl15_60TP_Lewandowskiego/_skins/Pl15_60TP_LewandowskiegoB9BS_3DSt/60TP_LewandowskiegoB9BS_3DSt_equipment_01_AM.dds</Texture>
+					</property>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/poland/Pl15_60TP_Lewandowskiego/_skins/Pl15_60TP_LewandowskiegoB9BS_3DSt/60TP_LewandowskiegoB9BS_3DSt_equipment_01_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/poland/Pl15_60TP_Lewandowskiego/_skins/Pl15_60TP_LewandowskiegoB9BS_3DSt/60TP_LewandowskiegoB9BS_3DSt_equipment_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/poland/Pl15_60TP_Lewandowskiego/_skins/Pl15_60TP_LewandowskiegoB9BS_3DSt/60TP_LewandowskiegoB9BS_3DSt_equipment_01_ANM.dds</Texture>
+					</property>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>8.416438 8.416438 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.006850 0.012552 -0.410206</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				3
+				<material>
+					<identifier>tank_upgrade_04_skinned</identifier>
+					<property>
+						diffuseMap
+						<Texture>vehicles/poland/Pl15_60TP_Lewandowskiego/_skins/Pl15_60TP_LewandowskiegoB9BS_3DSt/60TP_LewandowskiegoB9BS_3DSt_guns_AM.dds</Texture>
+					</property>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/poland/Pl15_60TP_Lewandowskiego/_skins/Pl15_60TP_LewandowskiegoB9BS_3DSt/60TP_LewandowskiegoB9BS_3DSt_guns_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/poland/Pl15_60TP_Lewandowskiego/_skins/Pl15_60TP_LewandowskiegoB9BS_3DSt/60TP_LewandowskiegoB9BS_3DSt_guns_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/poland/Pl15_60TP_Lewandowskiego/_skins/Pl15_60TP_LewandowskiegoB9BS_3DSt/60TP_LewandowskiegoB9BS_3DSt_guns_ANM.dds</Texture>
+					</property>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>4.208219 4.208219 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.017400 0.103422 -3.085842</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				4
+				<material>
+					<identifier>tank_upgrade_04_eq_skinned</identifier>
+					<property>
+						diffuseMap
+						<Texture>vehicles/poland/Pl15_60TP_Lewandowskiego/_skins/Pl15_60TP_LewandowskiegoB9BS_3DSt/60TP_LewandowskiegoB9BS_3DSt_equipment_01_AM.dds</Texture>
+					</property>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/poland/Pl15_60TP_Lewandowskiego/_skins/Pl15_60TP_LewandowskiegoB9BS_3DSt/60TP_LewandowskiegoB9BS_3DSt_equipment_01_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/poland/Pl15_60TP_Lewandowskiego/_skins/Pl15_60TP_LewandowskiegoB9BS_3DSt/60TP_LewandowskiegoB9BS_3DSt_equipment_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/poland/Pl15_60TP_Lewandowskiego/_skins/Pl15_60TP_LewandowskiegoB9BS_3DSt/60TP_LewandowskiegoB9BS_3DSt_equipment_01_ANM.dds</Texture>
+					</property>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>8.416438 8.416438 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.006772 0.012552 -0.410206</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				5
+				<material>
+					<identifier>tank_guns_skinned</identifier>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/poland/Pl15_60TP_Lewandowskiego/_skins/Pl15_60TP_LewandowskiegoB9BS_3DSt/60TP_LewandowskiegoB9BS_3DSt_guns_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/poland/Pl15_60TP_Lewandowskiego/_skins/Pl15_60TP_LewandowskiegoB9BS_3DSt/60TP_LewandowskiegoB9BS_3DSt_guns_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/poland/Pl15_60TP_Lewandowskiego/_skins/Pl15_60TP_LewandowskiegoB9BS_3DSt/60TP_LewandowskiegoB9BS_3DSt_guns_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/poland/Pl15_60TP_Lewandowskiego/_skins/Pl15_60TP_LewandowskiegoB9BS_3DSt/60TP_LewandowskiegoB9BS_3DSt_guns_AO.dds</Texture>
+					</property>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>4.208219 4.208219 0.000000 0.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>-0.000091 0.002435 -3.980740</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				6
+				<material>
+					<identifier>tank_upgrade_01_skinned</identifier>
+					<property>
+						diffuseMap
+						<Texture>vehicles/poland/Pl15_60TP_Lewandowskiego/_skins/Pl15_60TP_LewandowskiegoB9BS_3DSt/60TP_LewandowskiegoB9BS_3DSt_guns_AM.dds</Texture>
+					</property>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/poland/Pl15_60TP_Lewandowskiego/_skins/Pl15_60TP_LewandowskiegoB9BS_3DSt/60TP_LewandowskiegoB9BS_3DSt_guns_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/poland/Pl15_60TP_Lewandowskiego/_skins/Pl15_60TP_LewandowskiegoB9BS_3DSt/60TP_LewandowskiegoB9BS_3DSt_guns_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/poland/Pl15_60TP_Lewandowskiego/_skins/Pl15_60TP_LewandowskiegoB9BS_3DSt/60TP_LewandowskiegoB9BS_3DSt_guns_ANM.dds</Texture>
+					</property>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>4.208219 4.208219 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.000104 0.024160 -0.425730</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<constraints/>
+	<boundingBox>
+		<min>-0.593849 -0.384191 -0.112883</min>
+		<max>0.607471 0.553902 7.095575</max>
+	</boundingBox>
+	<geometrySize>688044</geometrySize>
+	<minUVDensity>0.017782</minUVDensity>
+</root>

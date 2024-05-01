@@ -1,0 +1,647 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>8.633334</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>idle_fx</name>
+		<type>particle</type>
+		<resource>particles/Environment/cosm_event/281_fragment_ligth.eff</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.016125 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>tintColor</name>
+			<type>vector4</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.431373 0.854902 0.925490 1.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>idle_core</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/cosm_event/ability_anchor_sphere_01.model</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-0.015331 -0.100000 0.079444</value>
+				<inTangent>0.000000 0.180000 0.000000</inTangent>
+				<outTangent>0.000000 0.180000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.833333</startTime>
+				<value>-0.015331 0.050000 0.079444</value>
+				<inTangent>0.000001 0.120199 0.000000</inTangent>
+				<outTangent>0.000001 0.120199 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.833333</startTime>
+				<value>-0.015327 0.170795 0.079445</value>
+				<inTangent>0.000001 -0.029397 0.000000</inTangent>
+				<outTangent>0.000001 -0.029397 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>5.000000</startTime>
+				<value>-0.015327 -0.087452 0.079445</value>
+				<inTangent>0.000000 -0.028186 0.000000</inTangent>
+				<outTangent>0.000000 -0.028186 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>6.966667</startTime>
+				<value>-0.015327 0.036091 0.079445</value>
+				<inTangent>-0.000001 -0.009418 -0.000000</inTangent>
+				<outTangent>-0.000001 -0.009418 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>8.633334</startTime>
+				<value>-0.015331 -0.100000 0.079444</value>
+				<inTangent>-0.000002 -0.081654 -0.000001</inTangent>
+				<outTangent>-0.000002 -0.081654 -0.000001</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.100000 0.100000 0.100000</value>
+				<inTangent>0.085714 0.085714 0.085714</inTangent>
+				<outTangent>0.085714 0.085714 0.085714</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>true</value>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>lambert1</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.670588 0.878431 0.901961 0.010000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property vector4</name>
+			<type>vector4</type>
+			<identifier>lambert1</identifier>
+			<property>lightMultipliers</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>50.000000 50.000000 1.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property vector4</name>
+			<type>vector4</type>
+			<identifier>lambert1</identifier>
+			<property>compensationValue</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>30.000000 30.000000 30.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>down_cntrl</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.000000 1.000000 1.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>fragment_up</name>
+		<type>model</type>
+		<resource>content/Environment/hd_env_UNI_680_CosmicFragment/normal/lod0/hd_env_UNI_680_CosmicFragment_04.model</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.772160 0.000000</value>
+				<inTangent>0.000000 0.172161 0.000000</inTangent>
+				<outTangent>0.000000 0.172161 0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.900000</startTime>
+				<value>0.000000 0.973499 0.000000</value>
+				<inTangent>0.000000 0.002823 0.000000</inTangent>
+				<outTangent>0.000000 0.002823 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>4.700000</startTime>
+				<value>0.000000 0.692596 0.000000</value>
+				<inTangent>0.000000 -0.016889 0.000000</inTangent>
+				<outTangent>0.000000 -0.016889 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>6.900001</startTime>
+				<value>0.000000 0.838993 0.000000</value>
+				<inTangent>0.000000 0.013993 0.000000</inTangent>
+				<outTangent>0.000000 0.013993 0.000000</outTangent>
+				<tangentMode>768</tangentMode>
+			</frame>
+			<frame>
+				<startTime>8.633334</startTime>
+				<value>0.000000 0.772160 0.000000</value>
+				<inTangent>-0.000000 0.132894 -0.000000</inTangent>
+				<outTangent>-0.000000 0.132894 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>-0.000000 -50.943390 -0.000000</inTangent>
+				<outTangent>-0.000000 -50.943390 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.000000 1.000000 1.000000</value>
+				<inTangent>0.258621 0.232759 0.258621</inTangent>
+				<outTangent>0.258621 0.232759 0.258621</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>fragment_down_base</name>
+		<type>model</type>
+		<resource>content/Environment/hd_env_UNI_680_CosmicFragment/normal/lod0/hd_env_UNI_680_CosmicFragment_01.model</resource>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>8.633329</duration>
+				<value>down_cntrl|</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 -1.163904 0.000000</value>
+				<inTangent>0.000000 -0.055177 0.000000</inTangent>
+				<outTangent>0.000000 -0.055177 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.600000</startTime>
+				<value>0.000000 -1.197010 0.000000</value>
+				<inTangent>0.000000 0.001788 0.000000</inTangent>
+				<outTangent>0.000000 0.001788 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.100000</startTime>
+				<value>0.000000 -1.050129 0.000000</value>
+				<inTangent>0.000000 -0.006034 0.000000</inTangent>
+				<outTangent>0.000000 -0.006034 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>5.633334</startTime>
+				<value>0.000000 -1.229542 0.000000</value>
+				<inTangent>0.000000 -0.020153 0.000000</inTangent>
+				<outTangent>0.000000 -0.020153 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>8.300000</startTime>
+				<value>0.000000 -1.148167 0.000000</value>
+				<inTangent>0.000000 -0.008348 0.000000</inTangent>
+				<outTangent>0.000000 -0.008348 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>8.633334</startTime>
+				<value>0.000000 -1.163904 0.000000</value>
+				<inTangent>-0.000000 -0.047211 -0.000000</inTangent>
+				<outTangent>-0.000000 -0.047211 -0.000000</outTangent>
+				<tangentMode>3</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.000000 1.000000 1.000000</value>
+				<inTangent>0.265487 0.265487 0.265487</inTangent>
+				<outTangent>0.265487 0.265487 0.265487</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>fragment_down_02</name>
+		<type>model</type>
+		<resource>content/Environment/hd_env_UNI_680_CosmicFragment/normal/lod0/hd_env_UNI_680_CosmicFragment_02.model</resource>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>8.633329</duration>
+				<value>down_cntrl|</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.198891 -0.832260 -0.078261</value>
+				<inTangent>0.000000 0.074102 0.000000</inTangent>
+				<outTangent>0.000000 0.074102 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.033333</startTime>
+				<value>0.198891 -0.755688 -0.078261</value>
+				<inTangent>0.000000 0.059729 0.000000</inTangent>
+				<outTangent>0.000000 0.059729 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.466667</startTime>
+				<value>0.198891 -0.645321 -0.078260</value>
+				<inTangent>-0.000000 -0.018628 0.000000</inTangent>
+				<outTangent>-0.000000 -0.018628 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>5.966667</startTime>
+				<value>0.198891 -0.851852 -0.078260</value>
+				<inTangent>0.000000 -0.037633 -0.000000</inTangent>
+				<outTangent>0.000000 -0.037633 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>8.633334</startTime>
+				<value>0.198891 -0.832260 -0.078261</value>
+				<inTangent>0.000000 0.007347 -0.000000</inTangent>
+				<outTangent>0.000000 0.007347 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.000000 1.000000 1.000000</value>
+				<inTangent>0.306122 -0.000000 0.306122</inTangent>
+				<outTangent>0.306122 -0.000000 0.306122</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>fragment_down_upper</name>
+		<type>model</type>
+		<resource>content/Environment/hd_env_UNI_680_CosmicFragment/normal/lod0/hd_env_UNI_680_CosmicFragment_03.model</resource>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>8.633329</duration>
+				<value>down_cntrl|</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-0.112354 -0.434361 0.083951</value>
+				<inTangent>0.000000 0.060288 0.000000</inTangent>
+				<outTangent>0.000000 0.060288 0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.666667</startTime>
+				<value>-0.112354 -0.380032 0.083951</value>
+				<inTangent>0.000000 0.075761 0.000000</inTangent>
+				<outTangent>0.000000 0.075761 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.633333</startTime>
+				<value>-0.112354 -0.242310 0.083951</value>
+				<inTangent>-0.000000 -0.002706 -0.000000</inTangent>
+				<outTangent>-0.000000 -0.002706 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>4.966667</startTime>
+				<value>-0.112354 -0.444859 0.083951</value>
+				<inTangent>-0.000000 0.007780 -0.000000</inTangent>
+				<outTangent>-0.000000 0.007780 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>7.233334</startTime>
+				<value>-0.112350 -0.285622 0.083950</value>
+				<inTangent>-0.000000 -0.017995 0.000000</inTangent>
+				<outTangent>-0.000000 -0.017995 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>8.633334</startTime>
+				<value>-0.112354 -0.434361 0.083951</value>
+				<inTangent>0.000000 0.068709 0.000000</inTangent>
+				<outTangent>0.000000 0.068709 0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>1.524486 -0.000000 -5.000000</inTangent>
+				<outTangent>1.524486 -0.000000 -5.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.000000 1.000000 1.000000</value>
+				<inTangent>0.243902 0.243902 0.243902</inTangent>
+				<outTangent>0.243902 0.243902 0.243902</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>light_colum</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/cosm_event/delivery_zone/wall_cylinder_big.model</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 22.092373 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>180.000000 0.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.300000 15.000000 0.300000</value>
+				<inTangent>-0.000000 90.000023 -0.000000</inTangent>
+				<outTangent>-0.000000 90.000023 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>lambert1</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.670588 0.878431 0.901961 0.010000</value>
+				<inTangent>-1.405573 -0.173373 -0.000000 -0.000000</inTangent>
+				<outTangent>-1.405573 -0.173373 -0.000000 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property vector4</name>
+			<type>vector4</type>
+			<identifier>lambert1</identifier>
+			<property>lightMultipliers</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.700000 0.700000 0.500000 0.000000</value>
+				<inTangent>-3.631579 -3.631579 -3.947369 -0.000000</inTangent>
+				<outTangent>-3.631579 -3.631579 -3.947369 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Idle_shockwave_02</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/cosm_event/fragment/fragment_shockwave_02.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>2.000000 1.000000 2.000000</value>
+				<inTangent>10.178567 6.372012 10.178567</inTangent>
+				<outTangent>10.178567 6.372012 10.178567</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>lambert2</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.274510 0.941176 1.000000 0.200000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Idle_shockwave_02_copied</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/cosm_event/fragment/fragment_shockwave_02.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.186993 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>180.000000 0.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>2.371647 1.185823 2.371646</value>
+				<inTangent>10.178567 6.372012 10.178567</inTangent>
+				<outTangent>10.178567 6.372012 10.178567</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>lambert2</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.274510 0.941176 1.000000 0.500000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

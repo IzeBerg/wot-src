@@ -341,9 +341,10 @@ class EventLootBoxesController(IEventLootBoxesController):
         slots = dict()
         if data:
             for idx, slotsData in enumerate(data):
-                probability, bonuses = self.__parseSlotSection(slotsData)
+                probability, bonuses, isGuaranteedBonus = self.__parseSlotSection(slotsData)
                 slots.setdefault(idx, {}).setdefault('probability', probability)
                 slots.setdefault(idx, {}).setdefault('bonuses', bonuses)
+                slots.setdefault(idx, {}).setdefault('isGuaranteedBonus', isGuaranteedBonus)
 
         return slots
 
@@ -352,8 +353,9 @@ class EventLootBoxesController(IEventLootBoxesController):
             probability, _, _, rawData = data
             bonuses = []
             bonuses.extend(self.__parseGroupsSection(rawData))
+            isGuaranteedBonus = rawData.get('properties', {}).get('limitID', '') == 'guaranteedBonusLimit'
             return (
-             probability, bonuses)
+             probability, bonuses, isGuaranteedBonus)
         return (0, [])
 
     def __parseGroupsSection(self, data):

@@ -80,6 +80,9 @@ class IEventsCache(object):
     def getHiddenQuests(self, filterFunc=None):
         raise NotImplementedError
 
+    def getHiddenBattleQuests(self, filterFunc=None):
+        raise NotImplementedError
+
     def getRankedQuests(self, filterFunc=None):
         raise NotImplementedError
 

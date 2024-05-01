@@ -57,6 +57,7 @@ class LuiRules(enum.Enum):
     FUN_RANDOM_ENTRY_POINT = 'FunRandomEntryPoint'
     FUN_RANDOM_NOTIFICATIONS = 'FunRandomNotifications'
     WDR_NEWBIE_REWARD = 'WDRNewbieReward'
+    COSMIC_ENTRY_POINT = 'CosmicBannerEntryPoint'
 
 
 _POSTPONED_RULES_DELAY = 5.0
@@ -181,11 +182,17 @@ class _LimitedUIRules(object):
         return
 
     def updateRules(self, rules):
-        self.__postponedCompletedRules.clear()
-        self.clearPostponedRulesCallback()
         self.__rules = rules
         if not self.__isInited:
+            self.__postponedCompletedRules.clear()
             self.__clearStoredVersionedRules()
+            self.clearPostponedRulesCallback()
+        else:
+            hasPostponedCallback = self.__hasPostponedRules() and self.__postponedRulesCallbackID is not None
+            self.clearPostponedRulesCallback()
+            if hasPostponedCallback:
+                self.__postponedRulesCallbackID = BigWorld.callback(_POSTPONED_RULES_DELAY, self.__storePostponedRulesByDelay)
+        return
 
     def __storePostponedRulesByDelay(self):
         self.__postponedRulesCallbackID = None

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>111</materialKind>
+					<fx>shaders/std_effects/PBS_tiled_atlas_global.fx</fx>
+					<property>
+						atlasAlbedoHeight
+						<Texture>content/Environment/hd_env_UNI_028_Rocks/hd_env_UNI_028_Rocks_01_atlas_AM.atlas</Texture>
+					</property>
+					<property>
+						atlasBlend
+						<Texture>content/Environment/hd_env_UNI_028_Rocks/hd_env_UNI_028_Rocks_01_atlas_blend.png</Texture>
+					</property>
+					<property>
+						atlasMetallicAO
+						<Texture>content/Environment/hd_env_UNI_028_Rocks/hd_env_UNI_028_Rocks_01_atlas_MAO.atlas</Texture>
+					</property>
+					<property>
+						atlasNormalGlossSpec
+						<Texture>content/Environment/hd_env_UNI_028_Rocks/hd_env_UNI_028_Rocks_01_atlas_GBMT.atlas</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Environment/hd_env_EU_001_Cliff_rocks/hd_env_EU_001_Cliff_rocks_dirt_DM.dds</Texture>
+					</property>
+					<property>
+						g_atlasIndexes
+						<Vector4>0.000000 1.000000 2.000000 2.000000</Vector4>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>0.792157 0.698039 0.611765 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>0.752941 0.650980 0.490196 1.000000</Vector4>
+					</property>
+					<property>
+						globalTex
+						<Texture>content/Environment/hd_env_EU_001_Cliff_rocks/hd_env_EU_001_Cliff_rocks_03-04_GT.dds</Texture>
+					</property>
+					<property>
+						g_atlasSizes
+						<Vector4>3.000000 3.000000 8.000000 1.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>0.914855 1.784035 -0.747268</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-7.687249 -0.087133 -6.680439</min>
+		<max>9.516959 3.637696 5.615042</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>3576</geometrySize>
+	<minUVDensity>0.023422</minUVDensity>
+</root>

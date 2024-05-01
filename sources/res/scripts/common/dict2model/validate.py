@@ -206,3 +206,16 @@ class Regexp(Validator):
 
     def _reprArgs(self):
         return ('regex={}').format(self._regex.pattern)
+
+
+class ValidateUniqueValidator(Validator):
+    _message = 'itemList: {value} has not unique elements'
+    __slots__ = ('delimiter', )
+
+    def __init__(self, delimiter=' '):
+        self.delimiter = delimiter
+
+    def __call__(self, incoming):
+        itemList = incoming.split(self.delimiter)
+        if len(set(itemList)) != len(itemList):
+            raise ValidationError(self._message.format(value=incoming))

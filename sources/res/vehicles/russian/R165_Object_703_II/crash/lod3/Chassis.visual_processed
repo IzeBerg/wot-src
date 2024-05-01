@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>nodes_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_gui</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.000000 -1.000000</row1>
+					<row2>0.000000 1.000000 0.000000</row2>
+					<row3>0.000000 5.000000 0.000000</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>Tank</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.500000 0.000000</row3>
+				</transform>
+				<node>
+					<identifier>V</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.419232 0.000000</row3>
+					</transform>
+					<node>
+						<identifier>V_BlendBone</identifier>
+						<transform>
+							<row0>1.000000 0.000000 0.000000</row0>
+							<row1>0.000000 1.000000 0.000000</row1>
+							<row2>0.000000 0.000000 -1.000000</row2>
+							<row3>0.000000 -0.919232 0.000000</row3>
+						</transform>
+					</node>
+				</node>
+				<node>
+					<identifier>Tank_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 -1.000000</row2>
+						<row3>0.000000 -0.500000 0.000000</row3>
+					</transform>
+				</node>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>Tank_BlendBone</node>
+		<node>V_BlendBone</node>
+		<geometry>
+			<vertices>track_R_Shape.vertices</vertices>
+			<stream>track_R_Shape.uv2</stream>
+			<primitive>track_R_Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>track_mat_R_skinned</identifier>
+					<property>
+						crash_coefficient
+						<Float>0.300000</Float>
+					</property>
+					<property>
+						dynamicObject
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_dirtWetParams
+						<Vector4>0.000000 0.000000 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_enableDirt
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_enabledProjectionDecalsCount
+						<Int>0</Int>
+					</property>
+					<property>
+						g_isChassis
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_projectionDecal1PosDoubleSided
+						<Vector4>0.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_projectionDecal1RotationQuaternion
+						<Vector4>0.000000 0.000000 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_projectionDecal1ScaleMaxAngleCos
+						<Vector4>1.000000 10.000000 2.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_projectionDecal1Tint
+						<Vector4>1.000000 1.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_projectionDecal2PosDoubleSided
+						<Vector4>0.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_projectionDecal2RotationQuaternion
+						<Vector4>0.000000 0.000000 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_projectionDecal2ScaleMaxAngleCos
+						<Vector4>1.000000 10.000000 2.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_projectionDecal2Tint
+						<Vector4>1.000000 1.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_tankSize
+						<Vector4>0.000000 1.900000 0.500000 0.000000</Vector4>
+					</property>
+					<property>
+						g_useOldCamoDetail
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_useRepaint
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_waterLevelWS
+						<Float>-1000.000000</Float>
+					</property>
+					<property>
+						texAddressMode
+						<Int>1</Int>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank_skinned_ao.fx</fx>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/russian/tracks/KV-1S_split_track_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/russian/tracks/KV-1S_split_track_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/russian/tracks/KV-1S_split_track_AM.dds</Texture>
+					</property>
+					<property>
+						alphaReference
+						<Int>64</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_useNormalPackDXT1
+						<Bool>false</Bool>
+					</property>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>1.401635 0.539372 -0.118002</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>V_BlendBone</node>
+		<node>Tank_BlendBone</node>
+		<geometry>
+			<vertices>track_L_Shape.vertices</vertices>
+			<stream>track_L_Shape.uv2</stream>
+			<primitive>track_L_Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>track_mat_L_skinned</identifier>
+					<property>
+						crash_coefficient
+						<Float>0.300000</Float>
+					</property>
+					<property>
+						dynamicObject
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_dirtWetParams
+						<Vector4>0.000000 0.000000 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_enableDirt
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_enabledProjectionDecalsCount
+						<Int>0</Int>
+					</property>
+					<property>
+						g_isChassis
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_projectionDecal1PosDoubleSided
+						<Vector4>0.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_projectionDecal1RotationQuaternion
+						<Vector4>0.000000 0.000000 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_projectionDecal1ScaleMaxAngleCos
+						<Vector4>1.000000 10.000000 2.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_projectionDecal1Tint
+						<Vector4>1.000000 1.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_projectionDecal2PosDoubleSided
+						<Vector4>0.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_projectionDecal2RotationQuaternion
+						<Vector4>0.000000 0.000000 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_projectionDecal2ScaleMaxAngleCos
+						<Vector4>1.000000 10.000000 2.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_projectionDecal2Tint
+						<Vector4>1.000000 1.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_tankSize
+						<Vector4>0.000000 1.900000 0.500000 0.000000</Vector4>
+					</property>
+					<property>
+						g_useOldCamoDetail
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_useRepaint
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_waterLevelWS
+						<Float>-1000.000000</Float>
+					</property>
+					<property>
+						texAddressMode
+						<Int>1</Int>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank_skinned_ao.fx</fx>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/russian/tracks/KV-1S_split_track_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/russian/tracks/KV-1S_split_track_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/russian/tracks/KV-1S_split_track_AM.dds</Texture>
+					</property>
+					<property>
+						alphaReference
+						<Int>64</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_useNormalPackDXT1
+						<Bool>false</Bool>
+					</property>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-1.408089 0.541457 -0.113913</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<constraints/>
+	<boundingBox>
+		<min>-1.733383 0.002476 -3.453361</min>
+		<max>1.726929 1.080438 3.682209</max>
+	</boundingBox>
+	<geometrySize>127632</geometrySize>
+	<minUVDensity>0.393516</minUVDensity>
+</root>

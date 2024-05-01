@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>107</materialKind>
+					<fx>shaders/std_effects/PBS_tiled_atlas_global.fx</fx>
+					<property>
+						g_tileUVScale
+						<Vector4>6.000000 6.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_atlasIndexes
+						<Vector4>1.000000 1.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>0.839216 0.792157 0.717647 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>1.000000 0.972549 0.909804 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>0.800001 0.772549 0.741176 1.000000</Vector4>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						globalTex
+						<Texture>content/Environment/hd_env_EU_101_16_LargeRocks/hd_env_EU_101_16_LargeRocks_01_GNM.dds</Texture>
+					</property>
+					<property>
+						atlasAlbedoHeight
+						<Texture>content/Environment/00_Atlases/hd_env_EU_101_Cliff_Rocks_AM.atlas</Texture>
+					</property>
+					<property>
+						atlasNormalGlossSpec
+						<Texture>content/Environment/00_Atlases/hd_env_EU_101_Cliff_Rocks_GBMT.atlas</Texture>
+					</property>
+					<property>
+						atlasMetallicAO
+						<Texture>content/Environment/00_Atlases/hd_env_EU_101_Cliff_Rocks_MAO.atlas</Texture>
+					</property>
+					<property>
+						atlasBlend
+						<Texture>content/Environment/hd_env_EU_101_16_LargeRocks/hd_env_EU_101_16_LargeRocks_atlas_blend.png</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Environment/00_Tiles/Dirt_DDay_Soil_01_DM.dds</Texture>
+					</property>
+					<property>
+						g_atlasSizes
+						<Vector4>2.000000 2.000000 3.000000 1.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>-0.008014 3.445018 0.020609</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-7.573759 -2.272490 -7.578039</min>
+		<max>7.557731 9.162527 7.619256</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>91772</geometrySize>
+	<minUVDensity>0.000455</minUVDensity>
+</root>

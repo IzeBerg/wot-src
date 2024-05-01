@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>hd_bld_SU_003_MiddleWoodShed</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_module1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>1.378251 0.189378 0.000000</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_module2</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>-3.681936 0.117509 0.000000</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>d_wood1_2</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>88</materialKind>
+					<property>
+						normalMap
+						<Texture>content/Buildings/hd_bld_SU_003_MiddleWoodShed/hd_bld_SU_003_MiddleWoodShed_crash_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Buildings/hd_bld_SU_003_MiddleWoodShed/hd_bld_SU_003_MiddleWoodShed_crash_GMM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Buildings/hd_bld_SU_003_MiddleWoodShed/hd_bld_SU_003_MiddleWoodShed_crash_AM.dds</Texture>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>-3.896213 -2.230913 0.802906</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>n_wood0_2</identifier>
+					<fx>shaders/std_effects/PBS_ext_detail.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>74</materialKind>
+					<property>
+						normalMap
+						<Texture>content/Buildings/hd_bld_SU_003_MiddleWoodShed/hd_bld_SU_003_MiddleWoodShed_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Buildings/hd_bld_SU_003_MiddleWoodShed/hd_bld_SU_003_MiddleWoodShed_GMM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Buildings/hd_bld_SU_003_MiddleWoodShed/hd_bld_SU_003_MiddleWoodShed_AM.dds</Texture>
+					</property>
+					<property>
+						g_detailRejectTiling
+						<Vector4>1 1 12 12</Vector4>
+					</property>
+					<property>
+						g_detailMap
+						<Texture>content/Detail_tex/Detail_tile_universal.dds</Texture>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>-2.633854 1.050744 0.904927</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>d_wood1_1</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>87</materialKind>
+					<property>
+						normalMap
+						<Texture>content/Buildings/hd_bld_SU_003_MiddleWoodShed/hd_bld_SU_003_MiddleWoodShed_crash_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Buildings/hd_bld_SU_003_MiddleWoodShed/hd_bld_SU_003_MiddleWoodShed_crash_GMM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Buildings/hd_bld_SU_003_MiddleWoodShed/hd_bld_SU_003_MiddleWoodShed_crash_AM.dds</Texture>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>2.273045 -1.491201 0.439369</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				3
+				<material>
+					<identifier>n_wood0_1</identifier>
+					<fx>shaders/std_effects/PBS_ext_detail.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>73</materialKind>
+					<property>
+						normalMap
+						<Texture>content/Buildings/hd_bld_SU_003_MiddleWoodShed/hd_bld_SU_003_MiddleWoodShed_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Buildings/hd_bld_SU_003_MiddleWoodShed/hd_bld_SU_003_MiddleWoodShed_GMM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Buildings/hd_bld_SU_003_MiddleWoodShed/hd_bld_SU_003_MiddleWoodShed_AM.dds</Texture>
+					</property>
+					<property>
+						g_detailRejectTiling
+						<Vector4>1 1 12 12</Vector4>
+					</property>
+					<property>
+						g_detailMap
+						<Texture>content/Detail_tex/Detail_tile_universal.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>false</Bool>
+					</property>
+					<property>
+						dynamicObject
+						<Bool>false</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>0.794456 0.849667 0.637291</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				4
+				<material>
+					<identifier>s_ramp_0</identifier>
+					<collisionFlags>131</collisionFlags>
+					<materialKind>108</materialKind>
+				</material>
+				<groupOrigin>-1.043483 -0.007112 0.265133</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-7.590585 -5.737941 -3.659177</min>
+		<max>5.735504 4.471301 4.801538</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>37624</geometrySize>
+	<minUVDensity>0.001009</minUVDensity>
+</root>

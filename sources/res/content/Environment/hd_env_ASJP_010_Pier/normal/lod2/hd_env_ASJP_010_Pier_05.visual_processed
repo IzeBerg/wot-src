@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd2</identifier>
+					<fx>shaders/std_effects/PBS_tiled_atlas_global.fx</fx>
+					<materialKind>111</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						atlasAlbedoHeight
+						<Texture>content/Buildings/00_Atlases/ASJP_Industrial_01_atlas_AM.atlas</Texture>
+					</property>
+					<property>
+						atlasBlend
+						<Texture>content/Environment/hd_env_ASJP_010_Pier/hd_env_ASJP_010_Pier_atlas_blend.png</Texture>
+					</property>
+					<property>
+						atlasMetallicAO
+						<Texture>content/Buildings/00_Atlases/ASJP_Industrial_01_atlas_MAO.atlas</Texture>
+					</property>
+					<property>
+						atlasNormalGlossSpec
+						<Texture>content/Buildings/00_Atlases/ASJP_Industrial_01_atlas_GBMT.atlas</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Environment/00_Tiles/hd_env_EU_063_Cliffs_DM.dds</Texture>
+					</property>
+					<property>
+						g_atlasIndexes
+						<Vector4>9.000000 4.000000 17.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_atlasSizes
+						<Vector4>4.000000 5.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.243137 0.329412 0.203922 0.650000</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>0.607843 0.603922 0.588235 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>0.756863 0.752941 0.749020 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>0.658824 0.623529 0.576471 1.000000</Vector4>
+					</property>
+					<property>
+						globalTex
+						<Texture>content/Environment/hd_env_ASJP_010_Pier/hd_env_ASJP_010_Pier_GT.dds</Texture>
+					</property>
+					<property>
+						g_dirtParams
+						<Vector4>0.500000 24.799999 1.000000 0.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>0.369615 0.559102 5.000565</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.005820 0.000237 -0.000090</min>
+		<max>0.745050 1.117967 10.001219</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>1704</geometrySize>
+	<minUVDensity>0.291512</minUVDensity>
+</root>

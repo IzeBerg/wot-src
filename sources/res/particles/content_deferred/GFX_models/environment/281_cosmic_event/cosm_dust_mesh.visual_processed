@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>smoke</identifier>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/custom/volumetric_effect_vtx.fx</fx>
+					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>0.010000 0.050000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>1.000000 0.100000 2.000000 0.000000</Vector4>
+					</property>
+					<property>
+						alphaFadeAmountFresnel
+						<Vector4>0.000000 1.000000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/environment/281_cosmic_event/Noise01.dds</Texture>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/content_deferred/GFX_models/environment/281_cosmic_event/Distortion01.dds</Texture>
+					</property>
+					<property>
+						alphaFreshnelEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						TintlColor
+						<Vector4>0.337255 0.380392 0.450980 0.600000</Vector4>
+					</property>
+					<property>
+						FreshnelColor
+						<Vector4>0.921569 0.921569 0.921569 1.000000</Vector4>
+					</property>
+					<property>
+						enableLighting
+						<Bool>true</Bool>
+					</property>
+					<property>
+						softFactor
+						<Float>100.000000</Float>
+					</property>
+				</material>
+				<groupOrigin>0.536843 1.495475 3.203877</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-2.326498 -0.124853 -0.707913</min>
+		<max>3.400184 3.115802 7.115667</max>
+	</boundingBox>
+	<geometrySize>6840</geometrySize>
+	<minUVDensity>0.060866</minUVDensity>
+</root>

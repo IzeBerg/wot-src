@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<mfm>materials/template_mfms/lightonly.mfm</mfm>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>111</materialKind>
+					<fx>shaders/std_effects/PBS_tiled_atlas_global.fx</fx>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						globalTex
+						<Texture>content/Outland/hd_out_EU_008_ItalianMountains/hd_out_EU_008_ItalianMountains_01_NM.dds</Texture>
+					</property>
+					<property>
+						atlasBlend
+						<Texture>content/Outland/hd_out_EU_008_ItalianMountains/hd_out_EU_008_ItalianMountains_01_Atlas_Blend.png</Texture>
+					</property>
+					<property>
+						g_tileUVScale
+						<Vector4>
+							15 15 0.000000 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_atlasIndexes
+						<Vector4>
+							2 0.000000 2 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						atlasAlbedoHeight
+						<Texture>content/Outland/00_Atlases/hd_out_EU_001_Seacliff_01_Atlas_AM.dds</Texture>
+					</property>
+					<property>
+						atlasNormalGlossSpec
+						<Texture>content/Outland/00_Atlases/hd_out_EU_001_Seacliff_01_Atlas_GBMT.dds</Texture>
+					</property>
+					<property>
+						atlasMetallicAO
+						<Texture>content/Outland/00_Atlases/hd_out_EU_001_Seacliff_Atlas_MAO.dds</Texture>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>
+							0.553774 0.715 0.676446 1
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>
+							0.597739 0.643468 0.65 1
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>
+							0.619608 0.8 0.756863 1
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>
+							0.47 0.43 0.38 0.81
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_atlasSizes
+						<Vector4>2 2 1 1</Vector4>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Environment/00_Tiles/env_29_RockDirt_01_DM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.090271 20.375126 2.561470</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-104.447403 -6.707136 -136.524902</min>
+		<max>104.947250 48.476589 141.868790</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>348078</geometrySize>
+	<minUVDensity>0.000011</minUVDensity>
+</root>

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>hd_dec_EU_028_Flowerpot_15</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_module0</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.056684 0.000000</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>lod0</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+				<node>
+					<identifier>n0</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>n1</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>s_wall0</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_wall_0</identifier>
+					<collisionFlags>131</collisionFlags>
+					<materialKind>73</materialKind>
+				</material>
+				<groupOrigin>0.000000 1.092824 0.171690</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>d_stone0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>content/Decor/hd_dec_EU_028_Flowerpot/hd_dec_EU_028_Flowerpot_AM.dds</Texture>
+					</property>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>87</materialKind>
+					<property>
+						metallicGlossMap
+						<Texture>content/Decor/hd_dec_EU_028_Flowerpot/hd_dec_EU_028_Flowerpot_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Decor/hd_dec_EU_028_Flowerpot/hd_dec_EU_028_Flowerpot_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.047910 0.127703 0.167265</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>n_stone1</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>content/Decor/hd_dec_EU_028_Flowerpot/hd_dec_EU_028_Flowerpot_Petunia_AM.dds</Texture>
+					</property>
+					<property>
+						alphaReference
+						<Int>64</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<collisionFlags>128</collisionFlags>
+					<materialKind>73</materialKind>
+					<property>
+						metallicGlossMap
+						<Texture>content/Decor/hd_dec_EU_028_Flowerpot/hd_dec_EU_028_Flowerpot_Petunia_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Decor/hd_dec_EU_028_Flowerpot/hd_dec_EU_028_Flowerpot_Petunia_ANM.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>0.064769 0.346505 0.147303</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				3
+				<material>
+					<identifier>n_stone0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>content/Decor/hd_dec_EU_028_Flowerpot/hd_dec_EU_028_Flowerpot_AM.dds</Texture>
+					</property>
+					<collisionFlags>128</collisionFlags>
+					<materialKind>73</materialKind>
+					<property>
+						metallicGlossMap
+						<Texture>content/Decor/hd_dec_EU_028_Flowerpot/hd_dec_EU_028_Flowerpot_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Decor/hd_dec_EU_028_Flowerpot/hd_dec_EU_028_Flowerpot_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.004779 0.135150 0.172572</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.361924 -0.020094 -0.370526</min>
+		<max>0.266105 2.189220 0.705055</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>31858</geometrySize>
+	<minUVDensity>0.045959</minUVDensity>
+</root>
