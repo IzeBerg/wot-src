@@ -178,6 +178,7 @@
 			<module>client.cgf_components.on_click_components</module>
 			<module>client.cgf_components.arena_camera_manager</module>
 			<module>client.cgf_components.hangar_camera_manager</module>
+			<module>client.cgf_components.sequence_components</module>
 			<module>client.gui.hangar_cameras.hangar_camera_flyby</module>
 			<module>client.cgf_components.hangar_rules</module>
 			<module>client.points_of_interest.registrars</module>
@@ -202,6 +203,7 @@
 			<module>cell.cgf_cell.cgf_loggers</module>
 			<module>editor.cgf_editor.entity_follower</module>
 			<module>client.cgf_components.visual_effect_component_manager</module>
+			<module>client.cgf_components.gun_shot_effect_component</module>
 		</script>
 		<testScript>
 			<module>client.cgf_demo_client.test_client_component</module>
@@ -256,6 +258,49 @@
 			<path>content/CGFPrefabs/Onboarding/108_walls_ruins.prefab</path>
 			<path>particles/Tank/rocket_accelerator/Ch54_BZ_72_1_Rocket.prefab</path>
 			<path>particles/Tank/rocket_accelerator/Cz35_T56_G_Rocket.prefab</path>
+			<path>content/CGFPrefabs/cosmic_event/cosmic_arena_rule.prefab</path>
+			<path>content/CGFPrefabs/cosmic_event/cosmic_death_zone.prefab</path>
+			<path>content/CGFPrefabs/cosmic_event/cosmic_death_zone_pool.prefab</path>
+			<path>content/CGFPrefabs/cosmic_event/cosmic_death_zone_vertical.prefab</path>
+			<path>content/CGFPrefabs/cosmic_event/cosmic_event_boost.prefab</path>
+			<path>content/CGFPrefabs/cosmic_event/cosmic_event_collision_effect.prefab</path>
+			<path>content/CGFPrefabs/cosmic_event/cosmic_event_delivery_zone.prefab</path>
+			<path>content/CGFPrefabs/cosmic_event/cosmic_event_evacuation_zone.prefab</path>
+			<path>content/CGFPrefabs/cosmic_event/cosmic_event_fragment.prefab</path>
+			<path>content/CGFPrefabs/cosmic_event/cosmic_event_fragment_delivery_hologram.prefab</path>
+			<path>content/CGFPrefabs/cosmic_event/cosmic_event_fragment_hint.prefab</path>
+			<path>content/CGFPrefabs/cosmic_event/cosmic_event_fragment_hologram.prefab</path>
+			<path>content/CGFPrefabs/cosmic_event/cosmic_event_jump.prefab</path>
+			<path>content/CGFPrefabs/cosmic_event/cosmic_event_lakes.prefab</path>
+			<path>content/CGFPrefabs/cosmic_event/cosmic_event_mine_explosion.prefab</path>
+			<path>content/CGFPrefabs/cosmic_event/cosmic_event_mine_spawn.prefab</path>
+			<path>content/CGFPrefabs/cosmic_event/cosmic_event_passive_shield_shockwave.prefab</path>
+			<path>content/CGFPrefabs/cosmic_event/cosmic_event_pickup_hint.prefab</path>
+			<path>content/CGFPrefabs/cosmic_event/cosmic_event_pickup_jump.prefab</path>
+			<path>content/CGFPrefabs/cosmic_event/cosmic_event_pickup_jump_disappearing.prefab</path>
+			<path>content/CGFPrefabs/cosmic_event/cosmic_event_pickup_jump_spawn.prefab</path>
+			<path>content/CGFPrefabs/cosmic_event/cosmic_event_pickup_mine.prefab</path>
+			<path>content/CGFPrefabs/cosmic_event/cosmic_event_pickup_mine_disappearing.prefab</path>
+			<path>content/CGFPrefabs/cosmic_event/cosmic_event_pickup_repulsor.prefab</path>
+			<path>content/CGFPrefabs/cosmic_event/cosmic_event_pickup_repulsor_disappearing.prefab</path>
+			<path>content/CGFPrefabs/cosmic_event/cosmic_event_pickup_repulsor_spawn.prefab</path>
+			<path>content/CGFPrefabs/cosmic_event/cosmic_event_pickup_vortex.prefab</path>
+			<path>content/CGFPrefabs/cosmic_event/cosmic_event_pickup_vortex_disappearing.prefab</path>
+			<path>content/CGFPrefabs/cosmic_event/cosmic_event_pickup_vortex_spawn.prefab</path>
+			<path>content/CGFPrefabs/cosmic_event/cosmic_event_ramming_field.prefab</path>
+			<path>content/CGFPrefabs/cosmic_event/cosmic_event_repulsor.prefab</path>
+			<path>content/CGFPrefabs/cosmic_event/cosmic_event_respawn_protection_02.prefab</path>
+			<path>content/CGFPrefabs/cosmic_event/cosmic_event_shield_transponter.prefab</path>
+			<path>content/CGFPrefabs/cosmic_event/cosmic_event_transponter_death.prefab</path>
+			<path>content/CGFPrefabs/cosmic_event/cosmic_event_transponter_evac.prefab</path>
+			<path>content/CGFPrefabs/cosmic_event/cosmic_event_transponter_respawn.prefab</path>
+			<path>content/CGFPrefabs/cosmic_event/cosmic_event_vehicle_lights.prefab</path>
+			<path>content/CGFPrefabs/cosmic_event/cosmic_event_vortex.prefab</path>
+			<path>content/CGFPrefabs/cosmic_event/cosmic_event_vortex_hint.prefab</path>
+			<path>content/CGFPrefabs/cosmic_event/cosmic_event_pickup_block.prefab</path>
+			<path>content/CGFPrefabs/cosmic_event/cosmic_event_vehicle_evacuation_electricity.prefab</path>
+			<path>content/CGFPrefabs/cosmic_event/cosmic_event_fragment_delivery_effect.prefab</path>
+			<path>content/CGFPrefabs/cosmic_event/cosmic_event_pickup_mine_spawn.prefab</path>
 		</prefabs>
 	</cgf>
 </root>

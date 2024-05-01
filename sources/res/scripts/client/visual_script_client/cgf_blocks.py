@@ -178,3 +178,20 @@ def _extractRACComponent(gameObjectLink):
         if provider is None:
             return (None, None, 'No RocketAccelerationController can be found')
         return (go, provider, None)
+
+
+class TransferOwnershipToWorld(Block, CGFMeta):
+
+    def __init__(self, *args, **kwargs):
+        super(TransferOwnershipToWorld, self).__init__(*args, **kwargs)
+        self._in = self._makeEventInputSlot('in', self._exec)
+        self._gameObject = self._makeDataInputSlot('gameObject', SLOT_TYPE.GAME_OBJECT)
+        self._out = self._makeEventOutputSlot('out')
+
+    def _exec(self):
+        if self._gameObject.hasValue():
+            gameObject = self._gameObject.getValue()
+            if gameObject is not None:
+                gameObject.transferOwnershipToWorld()
+        self._out.call()
+        return

@@ -311,7 +311,8 @@ class CommonTankAppearance(ScriptGameObject):
         self.__postSetupFilter()
         compoundModel.setPartBoundingBoxAttachNode(TankPartIndexes.GUN, TankNodeNames.GUN_INCLINATION)
         camouflages.updateFashions(self)
-        model_assembler.assembleCustomLogicComponents(self, self.typeDescriptor, self.__attachments, self.__modelAnimators)
+        if not IS_EDITOR and not self.typeDescriptor.isCosmicVehicle:
+            model_assembler.assembleCustomLogicComponents(self, self.typeDescriptor, self.__attachments, self.__modelAnimators)
         self._createStickers()
         while self._loadingQueue:
             prefab, go, vector, callback = self._loadingQueue.pop()
@@ -613,11 +614,14 @@ class CommonTankAppearance(ScriptGameObject):
             self.__periodicTimerID = None
         self.__modelAnimators = []
         self.filter.enableLagDetection(False)
+        self.clearUndamagedStateChildren()
+        return
+
+    def clearUndamagedStateChildren(self):
         for go in self.undamagedStateChildren:
             CGF.removeGameObject(go)
 
         self.undamagedStateChildren = []
-        return
 
     def _onRequestModelsRefresh(self):
         self.flagComponent = None

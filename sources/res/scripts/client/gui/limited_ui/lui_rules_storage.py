@@ -57,6 +57,7 @@ class LuiRules(enum.Enum):
     FUN_RANDOM_ENTRY_POINT = 'FunRandomEntryPoint'
     FUN_RANDOM_NOTIFICATIONS = 'FunRandomNotifications'
     WDR_NEWBIE_REWARD = 'WDRNewbieReward'
+    COSMIC_ENTRY_POINT = 'CosmicBannerEntryPoint'
 
 
 _POSTPONED_RULES_DELAY = 5.0

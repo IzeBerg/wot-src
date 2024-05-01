@@ -72,6 +72,7 @@ class BATTLE_VIEW_ALIASES(object):
     CALLOUT_PANEL = 'calloutPanel'
     BATTLE_NOTIFIER = 'battleNotifier'
     DEATH_CAM_HUD = 'deathCamHud'
+    COSMIC_HUD = 'cosmicHud'
     CORRODING_SHOT_INDICATOR = 'corrodingShotIndicator'
     PERSONAL_RESERVES_TAB = 'personalReservesTab'
     POSTMORTEM_INFO_PAGE = 'postmortemInfoPage'

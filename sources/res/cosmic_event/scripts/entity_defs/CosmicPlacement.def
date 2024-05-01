@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<AppealRadius>3000</AppealRadius>
+	<Properties>
+		<typeID>
+			<Type>INT32</Type>
+			<Flags>ALL_CLIENTS</Flags>
+		</typeID>
+		<dropTime>
+			<Type>FLOAT32</Type>
+			<Flags>ALL_CLIENTS</Flags>
+		</dropTime>
+		<teamID>
+			<Type>INT32</Type>
+			<Flags>ALL_CLIENTS</Flags>
+			<Default>0</Default>
+		</teamID>
+		<yawAxis>
+			<Type>FLOAT32</Type>
+			<Flags>ALL_CLIENTS</Flags>
+			<Default>0</Default>
+		</yawAxis>
+	</Properties>
+	<ClientMethods/>
+	<BaseMethods/>
+	<TempProperties>
+		<_spawner/>
+	</TempProperties>
+	<shouldBackup>false</shouldBackup>
+</root>

@@ -52,3 +52,8 @@ class EMBLEM_TYPE(object):
 class UI_VISIBILITY(object):
     SHOW_SQUAD = 1
     SHOW_RESOURCES = 2
+
+
+class REQUEST_SOURCE(object):
+    NOTIFICATION = 'notification'
+    OTHER = 'other'

@@ -135,6 +135,8 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.battleloading.BattleLoading;
    import net.wg.gui.battle.battleloading.BattleLoadingForm;
    import net.wg.gui.battle.battleloading.BattleLoadingHelper;
+   import net.wg.gui.battle.battleloading.SimpleBattleLoading;
+   import net.wg.gui.battle.battleloading.SimpleBattleLoadingForm;
    import net.wg.gui.battle.battleloading.constants.PlayerStatus;
    import net.wg.gui.battle.battleloading.constants.VehicleStatus;
    import net.wg.gui.battle.battleloading.constants.VehicleStatusSchemes;
@@ -274,6 +276,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.components.stats.playersPanel.list.BasePlayersPanelList;
    import net.wg.gui.battle.components.stats.playersPanel.list.BasePlayersPanelListItem;
    import net.wg.gui.battle.components.stats.playersPanel.list.HPBarPlayersPanelListItem;
+   import net.wg.gui.battle.cosmic.CosmicBattlePage;
    import net.wg.gui.battle.epicBattle.VO.daapi.EpicPlayerStatsVO;
    import net.wg.gui.battle.epicBattle.VO.daapi.EpicVehicleStatsVO;
    import net.wg.gui.battle.epicBattle.VO.daapi.EpicVehiclesStatsVO;
@@ -606,6 +609,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.consumablesPanel.interfaces.IConsumablesButton;
    import net.wg.gui.battle.views.consumablesPanel.interfaces.IConsumablesPanel;
    import net.wg.gui.battle.views.consumablesPanel.interfaces.IEntityStateButton;
+   import net.wg.gui.battle.views.cosmicHud.CosmicHud;
    import net.wg.gui.battle.views.damageIndicator.DamageIndicator;
    import net.wg.gui.battle.views.damageInfoPanel.DamageInfoPanel;
    import net.wg.gui.battle.views.damageInfoPanel.components.DamageItem;
@@ -1191,6 +1195,10 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_BATTLELOADING_BATTLELOADINGHELPER:Class = BattleLoadingHelper;
       
+      public static const NET_WG_GUI_BATTLE_BATTLELOADING_SIMPLEBATTLELOADING:Class = SimpleBattleLoading;
+      
+      public static const NET_WG_GUI_BATTLE_BATTLELOADING_SIMPLEBATTLELOADINGFORM:Class = SimpleBattleLoadingForm;
+      
       public static const NET_WG_GUI_BATTLE_BATTLELOADING_CONSTANTS_PLAYERSTATUS:Class = PlayerStatus;
       
       public static const NET_WG_GUI_BATTLE_BATTLELOADING_CONSTANTS_VEHICLESTATUS:Class = VehicleStatus;
@@ -1602,6 +1610,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_COMPONENTS_STATS_PLAYERSPANEL_LIST_BASEPLAYERSPANELLISTITEM:Class = BasePlayersPanelListItem;
       
       public static const NET_WG_GUI_BATTLE_COMPONENTS_STATS_PLAYERSPANEL_LIST_HPBARPLAYERSPANELLISTITEM:Class = HPBarPlayersPanelListItem;
+      
+      public static const NET_WG_GUI_BATTLE_COSMIC_COSMICBATTLEPAGE:Class = CosmicBattlePage;
       
       public static const NET_WG_GUI_BATTLE_EPICBATTLE_BATTLELOADING_EPICBATTLELOADING:Class = EpicBattleLoading;
       
@@ -2266,6 +2276,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_VIEWS_CONSUMABLESPANEL_INTERFACES_IENTITYSTATEBUTTON:Class = IEntityStateButton;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_CONSUMABLESPANEL_VO_CONSUMABLESVO:Class = ConsumablesVO;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_COSMICHUD_COSMICHUD:Class = CosmicHud;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_DAMAGEINDICATOR_DAMAGEINDICATOR:Class = DamageIndicator;
       

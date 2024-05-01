@@ -543,6 +543,7 @@ class BonusNodeAcceptor(object):
 
 
 class NodeVisitor(object):
+    _ignored_subsections = ('config', 'properties', 'needsExpansion')
 
     def __init__(self, mergers, args):
         self._mergers = mergers
@@ -572,7 +573,7 @@ class NodeVisitor(object):
                 self.onAllOf(result, bonusValue)
             elif bonusName == 'groups':
                 self.onGroup(result, bonusValue)
-            elif bonusName in ('config', 'properties', 'needsExpansion'):
+            elif bonusName in self._ignored_subsections:
                 continue
             else:
                 self.onMergeValue(result, bonusName, bonusValue, True)
@@ -727,8 +728,10 @@ class StripVisitor(NodeVisitor):
         def copyMerger(storage, name, value, isLeaf):
             storage[name] = value
 
-    def __init__(self, needProbabilitiesInfo=False):
+    def __init__(self, needProbabilitiesInfo=False, needPropertiesInfo=False):
         self.__needProbabilitiesInfo = needProbabilitiesInfo
+        if needPropertiesInfo:
+            self._ignored_subsections = ('config', 'needsExpansion')
         super(StripVisitor, self).__init__(self.ValuesMerger(), tuple())
 
     def onOneOf(self, storage, values):

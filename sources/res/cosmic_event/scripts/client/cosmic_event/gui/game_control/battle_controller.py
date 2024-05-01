@@ -1,0 +1,391 @@
+import logging
+from typing import TYPE_CHECKING
+import Event, adisp
+from cosmic_account_settings import isEventStartedNotificationViewed, setEventStartedNotificationViewed
+from cosmic_constants import EVENT_STATES
+from cosmic_event.account_helpers.settings_core.settings_disable.cosmic_disable_settings_controller import CosmicDisableSettingsController
+from cosmic_event.cosmic_hangar_camera import CameraMover
+from cosmic_event.gui.gui_constants import SCH_CLIENT_MSG_TYPE
+from cosmic_event.gui.impl.gen.view_models.views.lobby.cosmic_lobby_view.cosmic_lobby_view_model import LobbyRouteEnum
+from cosmic_event.gui.prb_control import prb_config
+from cosmic_event.gui.prb_control.prb_config import FUNCTIONAL_FLAG
+from cosmic_event.gui.prb_control.prb_config import PREBATTLE_ACTION_NAME
+from cosmic_event.gui.prebattle_hints.random_prb_hints import PrbRandomHintManager
+from cosmic_event.skeletons.battle_controller import ICosmicEventBattleController
+from cosmic_event.skeletons.cosmic_fading_controller import ICosmicFadingController
+from cosmic_event_common.configs.CosmicBattleConfig import cosmicBattleConfigSchema
+from cosmic_event_common.cosmic_constants import COSMIC_EVENT_GAME_PARAMS_KEY, QUEUE_TYPE
+from cosmic_sound import CosmicHangarSounds
+from frameworks.wulf import ViewFlags
+from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
+from gui.Scaleform.framework import ScopeTemplates
+from gui.Scaleform.framework.managers.loaders import GuiImplViewLoadParams
+from gui.game_control.season_provider import SeasonProvider
+from gui.impl.gen import R
+from gui.periodic_battles.models import PrimeTimeStatus
+from gui.prb_control.entities.base.ctx import PrbAction
+from gui.prb_control.entities.base.pre_queue.ctx import DequeueCtx
+from gui.prb_control.entities.base.pre_queue.listener import IPreQueueListener
+from gui.shared import g_eventBus, events, EVENT_BUS_SCOPE, EventPriority
+from gui.shared.event_dispatcher import closeViewsWithFlags
+from gui.shared.utils import SelectorBattleTypesUtils
+from gui.shared.utils.scheduled_notifications import Notifiable, SimpleNotifier, TimerNotifier
+from helpers import dependency, time_utils
+from skeletons.gui.impl import IGuiLoader
+from skeletons.gui.lobby_context import ILobbyContext
+from skeletons.gui.shared import IItemsCache
+from skeletons.gui.system_messages import ISystemMessages
+from wotdecorators import condition
+_logger = logging.getLogger(__name__)
+if TYPE_CHECKING:
+    from helpers.server_settings import ServerSettings
+    from gui.shared.gui_items.Vehicle import Vehicle
+    from gui.impl.gen_utils import DynAccessor
+    from typing import Optional, List, Dict
+    from gui.impl.lobby.mode_selector.mode_selector_view import ModeSelectorView
+    from cosmic_event_common.configs.CosmicBattleConfig import CosmicBattleConfigModel
+
+class CosmicEventBattleController(ICosmicEventBattleController, Notifiable, SeasonProvider, IPreQueueListener):
+    __lobbyContext = dependency.descriptor(ILobbyContext)
+    __itemsCache = dependency.descriptor(IItemsCache)
+    __systemMessages = dependency.descriptor(ISystemMessages)
+    _fadeManager = dependency.descriptor(ICosmicFadingController)
+    ifEnabled = condition('isEnabled')
+    ifCosmicPrbActive = condition('isCosmicPrbActive')
+
+    def __init__(self):
+        super(CosmicEventBattleController, self).__init__()
+        self.__serverSettings = None
+        self.__cosmicEventConfig = None
+        self.__disableSettingsCtrl = CosmicDisableSettingsController()
+        self.__isPrimeTime = False
+        self.__prbHintManager = None
+        self.__lastSuspensionState = False
+        self.__isPrbActive = False
+        self.__cameraMover = CameraMover()
+        self.onPrimeTimeStatusUpdated = Event.Event()
+        self.onCosmicConfigChanged = Event.Event()
+        self.onStatusTick = Event.Event()
+        self.onLobbyRouteChange = Event.Event()
+        self.lobbyViewRoute = LobbyRouteEnum.MAIN
+        return
+
+    @property
+    def prbHintManager(self):
+        if self.__prbHintManager is None:
+            self.__prbHintManager = PrbRandomHintManager(R.strings.cosmicEvent.battle.loadingScreen, R.images.cosmic_event.gui.maps.icons.map.screen.prebattle_hints)
+        return self.__prbHintManager
+
+    @property
+    def isCosmicPrbActive(self):
+        if self.prbEntity is None:
+            return False
+        else:
+            return bool(self.prbEntity.getModeFlags() & FUNCTIONAL_FLAG.COSMIC_EVENT)
+
+    @property
+    def isEnabled(self):
+        return self._isEnabled()
+
+    def getEventVehicle(self):
+        vehCD = self.__cosmicEventConfig.eventVehicleCD if self.__cosmicEventConfig else None
+        if vehCD is None:
+            return
+        else:
+            return self.__itemsCache.items.getItemByCD(vehCD)
+
+    def init(self):
+        super(CosmicEventBattleController, self).init()
+        self.__disableSettingsCtrl.init()
+        self.addNotificator(SimpleNotifier(self.__getTimer, self.__timerUpdate))
+        self.addNotificator(TimerNotifier(self.__getStateTimer, self.__timerTick))
+
+    def fini(self):
+        self.onPrimeTimeStatusUpdated.clear()
+        self.onCosmicConfigChanged.clear()
+        self.onStatusTick.clear()
+        self.clearNotification()
+        self.__clear()
+        self.__disableSettingsCtrl.fini()
+        self.__disableSettingsCtrl = None
+        self.__cameraMover = None
+        self.__isPrbActive = False
+        super(CosmicEventBattleController, self).fini()
+        return
+
+    def onDisconnected(self):
+        super(CosmicEventBattleController, self).onDisconnected()
+        self.__disableSettingsCtrl.onDisconnected()
+        self.__clear()
+
+    def onAvatarBecomePlayer(self):
+        super(CosmicEventBattleController, self).onAvatarBecomePlayer()
+        self.setLobbyRoute(LobbyRouteEnum.MAIN)
+        self.__disableSettingsCtrl.onAvatarBecomePlayer()
+        self.__clear()
+
+    def onAccountBecomePlayer(self):
+        super(CosmicEventBattleController, self).onAccountBecomePlayer()
+        self.setLobbyRoute(LobbyRouteEnum.MAIN)
+        self.__onServerSettingsChanged(self.__lobbyContext.getServerSettings())
+        self.__disableSettingsCtrl.onAccountBecomePlayer()
+
+    def onLobbyInited(self, event):
+        super(CosmicEventBattleController, self).onLobbyInited(event)
+        self.__disableSettingsCtrl.onLobbyInited(event)
+        g_eventBus.addListener(events.CosmicEvent.OPEN_COSMIC, self.__onOpenEventPrb, scope=EVENT_BUS_SCOPE.LOBBY)
+
+    @adisp.adisp_process
+    def switchPrb(self, cameraData=None):
+        if not self.isEnabled:
+            return
+        else:
+            from gui.prb_control.dispatcher import g_prbLoader
+            prbDispatcher = g_prbLoader.getDispatcher()
+            if prbDispatcher is not None:
+                entityType = prbDispatcher.getEntity().getEntityType()
+                if entityType == QUEUE_TYPE.COSMIC_EVENT:
+                    self.openEventLobby()
+                else:
+                    if cameraData:
+                        switchPrb = yield self.__cameraMover.start(cameraData)
+                    else:
+                        switchPrb = not self.__cameraMover.isInProcess()
+                    if switchPrb:
+                        switched = yield prbDispatcher.doSelectAction(PrbAction(prb_config.PREBATTLE_ACTION_NAME.COSMIC_EVENT))
+                        if not switched:
+                            self.__cameraMover.reset(False)
+                        else:
+                            self._fadeManager.show()
+            return
+
+    def onPrbEnter(self):
+        isKnownBattleType = SelectorBattleTypesUtils.isKnownBattleType(PREBATTLE_ACTION_NAME.COSMIC_EVENT)
+        if not isKnownBattleType:
+            SelectorBattleTypesUtils.setBattleTypeAsKnown(PREBATTLE_ACTION_NAME.COSMIC_EVENT)
+        g_eventBus.addListener(events.ViewEventType.LOAD_VIEW, self.__viewLoaded, EVENT_BUS_SCOPE.LOBBY, priority=EventPriority.VERY_LOW)
+        self.__isPrbActive = True
+
+    def onPrbLeave(self):
+        self.__cameraMover.reset()
+        self.__isPrbActive = False
+        g_eventBus.removeListener(events.ViewEventType.LOAD_VIEW, self.__viewLoaded, EVENT_BUS_SCOPE.LOBBY)
+        self.closeEventLobby()
+        self.closePostBattleScreen()
+
+    def isPrbActive(self):
+        return self.__isPrbActive
+
+    def isAvailable(self):
+        return self.isEnabled and not self.isFrozen() and self.getCurrentSeason() is not None
+
+    def isTemporaryUnavailable(self):
+        return self.getCurrentSeason() is not None and (not self.isEnabled or not self.isBattleAvailable())
+
+    def isAvailabilityStateChanged(self):
+        return self.__lastSuspensionState != self.isTemporaryUnavailable()
+
+    def isBattleAvailable(self):
+        if self.__cosmicEventConfig:
+            return self.__cosmicEventConfig.isBattleEnabled
+        return False
+
+    def isFrozen(self):
+        primeTimeStatus = self.getPrimeTimeStatus()[0]
+        return primeTimeStatus != PrimeTimeStatus.AVAILABLE
+
+    def getModeSettings(self):
+        if self.__cosmicEventConfig is None:
+            self.__setCosmicEventConfig(self.__lobbyContext.getServerSettings())
+        return self.__cosmicEventConfig
+
+    def showQueueUI(self):
+        CosmicHangarSounds.playPrebattleEnter()
+        self.closePostBattleScreen()
+        self.setLobbyRoute(LobbyRouteEnum.QUEUE, True)
+        closeViewsWithFlags([], [ViewFlags.LOBBY_TOP_SUB_VIEW])
+        self.openEventLobby()
+
+    def showMainRoute(self):
+        self.setLobbyRoute(LobbyRouteEnum.MAIN, True)
+
+    def leaveQueue(self):
+        CosmicHangarSounds.playPrebattleExit()
+        self.prbEntity.dequeue(DequeueCtx(waitingID='prebattle/leave'))
+
+    def closeRewardScreen(self):
+        contentID = R.views.cosmic_event.lobby.rewards_view.RewardsView()
+        self.__closeCosmicView(contentID)
+
+    def closeEventLobby(self):
+        contentID = R.views.cosmic_event.lobby.cosmic_lobby_view.CosmicLobbyView()
+        self.__closeCosmicView(contentID)
+
+    def closePostBattleScreen(self):
+        contentID = R.views.cosmic_event.lobby.cosmic_post_battle.CosmicPostBattleView()
+        self.__closeCosmicView(contentID)
+
+    def openEventLobby(self, *args, **kwargs):
+        uiLoader = dependency.instance(IGuiLoader)
+        contentID = R.views.cosmic_event.lobby.cosmic_lobby_view.CosmicLobbyView()
+        if uiLoader.windowsManager.getViewByLayoutID(contentID) is None:
+            from cosmic_event.gui.impl.lobby.cosmic_lobby_view.cosmic_lobby_view import CosmicLobbyView
+            g_eventBus.handleEvent(events.LoadGuiImplViewEvent(GuiImplViewLoadParams(layoutID=contentID, viewClass=CosmicLobbyView, scope=ScopeTemplates.LOBBY_SUB_SCOPE)), scope=EVENT_BUS_SCOPE.LOBBY)
+        return
+
+    def getTokenProgressionID(self):
+        if self.__cosmicEventConfig:
+            return self.__cosmicEventConfig.rewardSettings.rewardToken
+        return ''
+
+    def getProgressionQuestPrefix(self):
+        if self.__cosmicEventConfig:
+            return self.__cosmicEventConfig.rewardSettings.questPrefix
+        return ''
+
+    def getProgressionQuestGroupId(self):
+        if self.__cosmicEventConfig:
+            return self.__cosmicEventConfig.rewardSettings.progressionQuestGroupId
+        return ''
+
+    def getVehicleRentQuestID(self):
+        if self.__cosmicEventConfig:
+            return self.__cosmicEventConfig.vehicleRentQuestID
+        return ''
+
+    def getProgressionChapterTokens(self):
+        if self.__cosmicEventConfig:
+            return (
+             self.__cosmicEventConfig.rewardSettings.chapter1TokenComplete,
+             self.__cosmicEventConfig.rewardSettings.chapter2TokenComplete,
+             self.__cosmicEventConfig.rewardSettings.chapter3TokenComplete)
+        return ()
+
+    def getArtifactToken(self):
+        if self.__cosmicEventConfig:
+            return self.__cosmicEventConfig.rewardSettings.artifactToken
+        else:
+            return
+
+    def _isEnabled(self):
+        return self.getModeSettings().isEnabled
+
+    @ifEnabled
+    @ifCosmicPrbActive
+    def __viewLoaded(self, event):
+        if event.alias == VIEW_ALIAS.LOBBY_HANGAR:
+            self.openEventLobby()
+
+    def __setCosmicEventConfig(self, serverSettings):
+        self.__serverSettings = serverSettings
+        settings = self.__serverSettings.getSettings()
+        if COSMIC_EVENT_GAME_PARAMS_KEY in settings:
+            self.__cosmicEventConfig = self.__serverSettings.getConfigModel(cosmicBattleConfigSchema)
+            self.__lastSuspensionState = self.isTemporaryUnavailable()
+
+    def __onServerSettingsChanged(self, serverSettings):
+        if self.__serverSettings is not None:
+            self.__serverSettings.onServerSettingsChange -= self.__updateCosmicEventSettings
+        self.__serverSettings = serverSettings
+        self.__serverSettings.onServerSettingsChange += self.__updateCosmicEventSettings
+        self.__setCosmicEventConfig(serverSettings)
+        self.__resetTimer()
+        self.onCosmicConfigChanged()
+        return
+
+    def __closeCosmicView(self, contentID):
+        uiLoader = dependency.instance(IGuiLoader)
+        view = uiLoader.windowsManager.getViewByLayoutID(contentID)
+        if view is not None:
+            view.destroyWindow()
+        return
+
+    def __updateCosmicEventSettings(self, ssDiff):
+        if COSMIC_EVENT_GAME_PARAMS_KEY in ssDiff:
+            self.__cosmicEventConfig = self.__serverSettings.getConfigModel(cosmicBattleConfigSchema)
+            isSuspended = self.isTemporaryUnavailable()
+            if self.isAvailabilityStateChanged():
+                eventType = EVENT_STATES.SUSPEND if isSuspended else EVENT_STATES.RESUME
+                self.__triggerEventStateNotification(eventType)
+                self.__lastSuspensionState = isSuspended
+            self.__resetTimer()
+            self.onCosmicConfigChanged()
+            uiLoader = dependency.instance(IGuiLoader)
+            contentID = R.views.lobby.mode_selector.ModeSelectorView()
+            view = uiLoader.windowsManager.getViewByLayoutID(contentID)
+            if view:
+                view.refresh()
+
+    def __triggerEventStateNotification(self, eventType):
+        self.__systemMessages.proto.serviceChannel.pushClientMessage({'state': eventType}, SCH_CLIENT_MSG_TYPE.COSMIC_EVENT_STATE)
+
+    def __getActiveSeason(self):
+        return self.getCurrentSeason() or self.getNextSeason()
+
+    def __showStartedNotification(self):
+        isSuspended = self.isTemporaryUnavailable()
+        if not isSuspended:
+            self.__triggerEventStateNotification(EVENT_STATES.START)
+            setEventStartedNotificationViewed(True)
+
+    def __triggerSeasonStateNotification(self):
+        if self.__isPrimeTime and not isEventStartedNotificationViewed():
+            self.__showStartedNotification()
+            return
+        else:
+            wasLastSeason = self.__getActiveSeason() is None
+            if wasLastSeason:
+                self.__triggerEventStateNotification(EVENT_STATES.FINISH)
+            return
+
+    def __clear(self):
+        self.stopNotification()
+        g_eventBus.removeListener(events.ViewEventType.LOAD_VIEW, self.__viewLoaded, EVENT_BUS_SCOPE.LOBBY)
+        g_eventBus.removeListener(events.CosmicEvent.OPEN_COSMIC, self.__onOpenEventPrb, scope=EVENT_BUS_SCOPE.LOBBY)
+        self.__cameraMover.reset()
+        if self.__serverSettings is not None:
+            self.__serverSettings.onServerSettingsChange -= self.__updateCosmicEventSettings
+        self.__serverSettings = None
+        self.__cosmicEventConfig = None
+        return
+
+    def __getTimer(self):
+        _, timeLeft, _ = self.getPrimeTimeStatus()
+        if timeLeft > 0:
+            return timeLeft + 1
+        return time_utils.ONE_MINUTE
+
+    def __getStateTimer(self):
+        return time_utils.ONE_MINUTE
+
+    def __resetTimer(self):
+        self.startNotification()
+        self.__timerUpdate()
+        self.__timerTick()
+
+    def __timerUpdate(self):
+        status, _, isPrimeTime = self.getPrimeTimeStatus()
+        if isPrimeTime and not isEventStartedNotificationViewed():
+            self.__showStartedNotification()
+        elif isPrimeTime is not self.__isPrimeTime:
+            self.__isPrimeTime = isPrimeTime
+            self.__triggerSeasonStateNotification()
+        self.onPrimeTimeStatusUpdated(status)
+
+    def __timerTick(self):
+        self.onStatusTick()
+
+    def __onOpenEventPrb(self, *_, **__):
+        self.switchPrb()
+
+    def getLobbyRoute(self):
+        return self.lobbyViewRoute
+
+    def setLobbyRoute(self, route, notify=False):
+        if self.lobbyViewRoute != route:
+            self.lobbyViewRoute = route
+            if notify:
+                self.onLobbyRouteChange(route)
+
+    def isVehicleRentQuest(self, questID):
+        return questID == self.getVehicleRentQuestID()
