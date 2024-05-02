@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>30.000002</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>-1.362658 0.929001 0.000000</inTangent>
+				<outTangent>-1.362658 0.929001 0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>9.933333</startTime>
+				<value>-5.024806 4.509087 0.000000</value>
+				<inTangent>0.032884 -0.091940 0.000000</inTangent>
+				<outTangent>0.032884 -0.091940 0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>20.533335</startTime>
+				<value>5.642064 -1.875099 0.000000</value>
+				<inTangent>0.205158 -0.202104 0.000000</inTangent>
+				<outTangent>0.205158 -0.202104 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>30.000002</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>-1.253973 0.597926 -0.000000</inTangent>
+				<outTangent>-1.253973 0.597926 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Model 0</name>
+		<type>model</type>
+		<resource>content/Outland/hd_out_UNI_033_CosmicSpaceShip/normal/lod0/hd_out_UNI_033_CosmicSpaceShip_01.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>4.000000 4.000000 4.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Particle 0</name>
+		<type>particle</type>
+		<resource>particles/Environment/interior/281_cosmic_electrical_engine_01.eff</resource>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>30.000000</duration>
+				<value>Model 0|root</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>-1.286560 11.981750 -60.942177</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Particle 0_copied</name>
+		<type>particle</type>
+		<resource>particles/Environment/interior/281_cosmic_electrical_engine_01.eff</resource>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>30.000000</duration>
+				<value>Model 0|root</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>43.287109 53.401703 3.709717</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Particle 0_copied_copied</name>
+		<type>particle</type>
+		<resource>particles/Environment/interior/281_cosmic_electrical_engine_01.eff</resource>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>30.000000</duration>
+				<value>Model 0|root</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-42.632507 55.697266 4.552612</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

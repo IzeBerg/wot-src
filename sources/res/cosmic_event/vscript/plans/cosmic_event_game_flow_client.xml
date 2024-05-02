@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<info>
+		<name>cosmic_event_game_flow_client</name>
+		<isMacro>false</isMacro>
+		<version>0</version>
+		<aspect>
+			<compatibles>CLIENT</compatibles>
+		</aspect>
+		<blocks>
+			<block>
+				<class>VariableReadOnly</class>
+				<id>VariableReadOnly_1</id>
+				<params>
+					<param>
+						ARTIFACT_POSITION
+						<name>Variable Name</name>
+						<type>StringT</type>
+					</param>
+					<param>
+						Vector3T
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+					<param>
+						false
+						<name>External Init</name>
+						<type>BoolT</type>
+					</param>
+					<param>
+						true
+						<name>Is Const</name>
+						<type>BoolT</type>
+					</param>
+					<param>
+						-17.299999, 28.400000, -16.400000
+						<!--BW_String-->
+						<name>Initial Value</name>
+						<type>Vector3T</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>default</name>
+						<const>\-17.299999, 28.400000, -16.400000\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>ListenEvent</class>
+				<id>ListenEvent_1</id>
+				<params>
+					<param>
+						onEvacuationStarted
+						<name>Event Name</name>
+						<type>StringT</type>
+					</param>
+					<param>
+						ArenaT
+						<name>Event Scope</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>active</name>
+						<const>\true\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>GetSpaceId</class>
+				<id>GetSpaceId_1</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>LoadPrefab</class>
+				<id>LoadPrefab_2</id>
+				<params>
+					<param>
+						false
+						<name>Use transform matrix</name>
+						<type>BoolT</type>
+					</param>
+					<param>
+						false
+						<name>Load with parent</name>
+						<type>BoolT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>path</name>
+						<const>\content/CGFPrefabs/cosmic_event/cosmic_event_artifact_evacuation.prefab\</const>
+					</slot>
+					<slot>
+						<name>scale</name>
+						<const>\1.000000, 1.000000, 1.000000\</const>
+					</slot>
+					<slot>
+						<name>rotation</name>
+						<const>\0.000000, 0.000000, 0.000000\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>ClientArena</class>
+				<id>ClientArena_1</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>GetVariable</class>
+				<id>GetVariable_1</id>
+				<buddy>VariableReadOnly_1</buddy>
+				<params>
+					<param>
+						Vector3T
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+		</blocks>
+		<connections>
+			<connection>
+				<from>ClientArena_1</from>
+				<input>scope</input>
+				<to>ListenEvent_1</to>
+				<output>arena</output>
+			</connection>
+			<connection>
+				<from>ListenEvent_1</from>
+				<input>in</input>
+				<to>LoadPrefab_2</to>
+				<output>exec</output>
+			</connection>
+			<connection>
+				<from>GetSpaceId_1</from>
+				<input>spaceId</input>
+				<to>LoadPrefab_2</to>
+				<output>spaceId</output>
+			</connection>
+			<connection>
+				<from>GetVariable_1</from>
+				<input>translation</input>
+				<to>LoadPrefab_2</to>
+				<output>value</output>
+			</connection>
+		</connections>
+		<macros/>
+		<curves/>
+	</info>
+</root>

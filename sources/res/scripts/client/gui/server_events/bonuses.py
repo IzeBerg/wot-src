@@ -856,6 +856,21 @@ class LootBoxTokensBonus(TokensBonus):
 
         return result
 
+    def getWrappedEpicBonusList(self):
+        result = []
+        for _, tokenRecord in self._value.iteritems():
+            countDynKey = 'one' if tokenRecord['count'] == 1 else 'several'
+            awardItem = R.strings.tooltips.awardItem.dyn(self._name).dyn(countDynKey)
+            result.append({'id': 0, 
+               'type': ItemPackType.CUSTOM_X5_BATTLE_BONUS, 
+               'value': tokenRecord['count'], 
+               'icon': {AWARDS_SIZES.SMALL: self.getIconBySize(AWARDS_SIZES.SMALL), 
+                        AWARDS_SIZES.BIG: self.getIconBySize(AWARDS_SIZES.BIG)}, 
+               'name': backport.text(awardItem.header()) if awardItem else '', 
+               'description': backport.text(awardItem.body()) if awardItem else ''})
+
+        return result
+
 
 class TmanTemplateTokensBonus(TokensBonus):
 

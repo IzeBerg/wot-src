@@ -1192,6 +1192,7 @@ class _PostmortemSwitchType(Enum):
 
 class PostMortemControlMode(IControlMode, CallbackDelayer):
     _IS_POSTMORTEM_DELAY_ENABLED = True
+    _POSTMORTEM_DELAY_IMPL = PostmortemDelay
     guiSessionProvider = dependency.descriptor(IBattleSessionProvider)
     __aimOffset = aih_global_binding.bindRO(aih_global_binding.BINDING_ID.AIM_OFFSET)
 
@@ -1598,7 +1599,7 @@ class PostMortemControlMode(IControlMode, CallbackDelayer):
     def __startPostmortemDelay(self):
         if BattleReplay.g_replayCtrl.isPlaying:
             return
-        self.__postmortemDelay = PostmortemDelay(self.__cam, self._onPostmortemDelayStart, self._onPostmortemDelayStop, self._isPostmortemDelayEnabled())
+        self.__postmortemDelay = self._POSTMORTEM_DELAY_IMPL(self.__cam, self._onPostmortemDelayStart, self._onPostmortemDelayStop, self._isPostmortemDelayEnabled())
         self.__postmortemDelay.start()
 
     def __finishCameraTransition(self):

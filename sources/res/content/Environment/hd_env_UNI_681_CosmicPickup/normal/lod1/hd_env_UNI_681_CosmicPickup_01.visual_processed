@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>hd_env_UNI_681_CosmicPickup_01</identifier>
+			<transform>
+				<row0>0.500000 0.000000 0.000000</row0>
+				<row1>0.000000 0.500000 0.000000</row1>
+				<row2>0.000000 0.000000 0.500000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>lod1</identifier>
+				<transform>
+					<row0>2.000000 0.000000 0.000000</row0>
+					<row1>0.000000 2.000000 0.000000</row1>
+					<row2>0.000000 0.000000 2.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+				<node>
+					<identifier>s1</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd1</identifier>
+					<fx>shaders/std_effects/glow.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_UNI_681_CosmicPickup/Universal_GCM.dds</Texture>
+					</property>
+					<property>
+						selfIllumination
+						<Float>80.800003</Float>
+					</property>
+				</material>
+				<groupOrigin>0.000000 0.768503 0.000000</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_UNI_681_CosmicPickup/hd_env_UNI_681_CosmicPickup_AM.dds</Texture>
+					</property>
+					<property>
+						dynamicObject
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env_UNI_681_CosmicPickup/hd_env_UNI_681_CosmicPickup_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_UNI_681_CosmicPickup/hd_env_UNI_681_CosmicPickup_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.000826 0.531638 0.000000</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.295978 -0.057629 -0.240913</min>
+		<max>0.295978 1.102104 0.240913</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>35580</geometrySize>
+	<minUVDensity>0.003980</minUVDensity>
+</root>

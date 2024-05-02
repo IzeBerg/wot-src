@@ -1018,4 +1018,19 @@
 			</min>
 		</restrictions>
 	</damageInterpolationDistLast>
+	<visionMaxRadius>
+		<id>79</id>
+		<dataType>float</dataType>
+		<client>
+			<domain>visibility</domain>
+			<physicalType>meters</physicalType>
+			<useTypes>val mul add</useTypes>
+		</client>
+		<restrictions>
+			<min>
+				0.0
+				<!--BW_String-->
+			</min>
+		</restrictions>
+	</visionMaxRadius>
 </root>

@@ -667,3 +667,6 @@ class AbstractBattleMode(object):
     def registerFairplayVehicleBattleStats(self):
         from server_constants_utils import addFairplayVehicleBattleStats
         addFairplayVehicleBattleStats(self._ARENA_GUI_TYPE, self._FAIRPLAY_VEHICLE_BATTLE_STATS_COMPONENT, self._personality)
+
+    def registerNonReplayMode(self):
+        ARENA_BONUS_TYPE.REPLAY_DISABLE_RANGE.append(self._ARENA_BONUS_TYPE)

@@ -1131,6 +1131,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.BREntryPoint;
    import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.CommonEntryPoint;
    import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.Comp7EntryPoint;
+   import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.CosmicBannerEntryPoint;
    import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.CraftMachineEntryPoint;
    import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.EpicBattlesEntryPoint;
    import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.FunRandomEntryPoint;
@@ -5221,6 +5222,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_HANGAR_EVENTENTRYPOINT_GFWRAPPER_COMMONENTRYPOINT:Class = CommonEntryPoint;
       
       public static const NET_WG_GUI_LOBBY_HANGAR_EVENTENTRYPOINT_GFWRAPPER_COMP7ENTRYPOINT:Class = Comp7EntryPoint;
+      
+      public static const NET_WG_GUI_LOBBY_HANGAR_EVENTENTRYPOINT_GFWRAPPER_COSMICBANNERENTRYPOINT:Class = CosmicBannerEntryPoint;
       
       public static const NET_WG_GUI_LOBBY_HANGAR_EVENTENTRYPOINT_GFWRAPPER_CRAFTMACHINEENTRYPOINT:Class = CraftMachineEntryPoint;
       

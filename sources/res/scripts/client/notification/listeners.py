@@ -1999,7 +1999,6 @@ class EventLootBoxesListener(_NotificationListener, EventsHandler):
 
     def __onIntroShownChanged(self, wasShown):
         if self.__eventLootBoxes.isActive() and not self.__isLootBoxesWasStarted and wasShown:
-            self.__pushStarted()
             self.__isLootBoxesWasStarted = wasShown
 
     def __onStatusChange(self):

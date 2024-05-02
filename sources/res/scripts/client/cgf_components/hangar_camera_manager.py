@@ -184,6 +184,9 @@ class HangarCameraManager(CGF.ComponentManager):
     def getCurrentCameraDirection(self):
         return self.__cam.direction
 
+    def getCurrentFlightParams(self):
+        return self.__flightParams
+
     def switchToTank(self, instantly=True, resetTransform=True):
         self.switchByCameraName(self.__cameraMode, instantly, resetTransform)
 

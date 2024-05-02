@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<params>
+		<param>
+			<name>isDeferred</name>
+			<type>bool</type>
+		</param>
+		<param>
+			<name>Stop</name>
+			<type>trigger</type>
+		</param>
+		<param>
+			<name>Move</name>
+			<type>trigger</type>
+		</param>
+	</params>
+	<node>
+		<name>hull_idle</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/A155_AAT60_ST_3DSt/hull_turbine_idle.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>-1</loop>
+		<transition>
+			<to>fadein</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>trigger</type>
+					<name>Move</name>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-247.000000 -222.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>hull_move</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/A155_AAT60_ST_3DSt/hull_turbine.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>-1</loop>
+		<transition>
+			<to>hull_move</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>trigger</type>
+					<name>Move</name>
+				</condition>
+			</conditions>
+		</transition>
+		<transition>
+			<to>fadeout</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>trigger</type>
+					<name>Stop</name>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-252.000000 169.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>fadein</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/A155_AAT60_ST_3DSt/hull_turbine_idle_fadein.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>1</loop>
+		<transition>
+			<to>Sleep Node</to>
+			<blendDuration>2.000000</blendDuration>
+			<conditions/>
+		</transition>
+		<uiPosition>-441.000000 -92.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>fadeout</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/A155_AAT60_ST_3DSt/hull_turbine_idle_fadeout.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>1</loop>
+		<transition>
+			<to>Sleep Node0</to>
+			<blendDuration>2.000000</blendDuration>
+			<conditions/>
+		</transition>
+		<uiPosition>-93.000000 32.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>Sleep Node</name>
+		<type>sleep</type>
+		<time>1.000000 1.000000</time>
+		<transition>
+			<to>hull_move</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions/>
+		</transition>
+		<uiPosition>-436.000000 32.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>Sleep Node0</name>
+		<type>sleep</type>
+		<time>1.000000 1.000000</time>
+		<transition>
+			<to>hull_idle</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions/>
+		</transition>
+		<uiPosition>-94.000000 -93.000000 0.000000</uiPosition>
+	</node>
+</root>

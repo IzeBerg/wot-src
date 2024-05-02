@@ -158,6 +158,8 @@ class ARENAS(object):
     TYPE_WINBACK_DESCRIPTION = '#arenas:type/winback/description'
     C_210_BF_EPIC_DESERT_NAME = '#arenas:210_bf_epic_desert/name'
     C_210_BF_EPIC_DESERT_DESCRIPTION = '#arenas:210_bf_epic_desert/description'
+    C_281_COSMIC_NAME = '#arenas:281_cosmic/name'
+    C_281_COSMIC_DESCRIPTION = '#arenas:281_cosmic/description'
     ALL_ENUM = (
      TYPE_CTF_NAME,
      TYPE_CTF_DESCRIPTION,
@@ -315,7 +317,9 @@ class ARENAS(object):
      TYPE_WINBACK_NAME,
      TYPE_WINBACK_DESCRIPTION,
      C_210_BF_EPIC_DESERT_NAME,
-     C_210_BF_EPIC_DESERT_DESCRIPTION)
+     C_210_BF_EPIC_DESERT_DESCRIPTION,
+     C_281_COSMIC_NAME,
+     C_281_COSMIC_DESCRIPTION)
 
     @classmethod
     def all(cls, key0):

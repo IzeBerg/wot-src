@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<info>
+		<name>cosmic_event_entities/repulsor_entity_client</name>
+		<isMacro>false</isMacro>
+		<version>0</version>
+		<aspect>
+			<compatibles>CLIENT</compatibles>
+		</aspect>
+		<blocks>
+			<block>
+				<class>StartScript</class>
+				<id>StartScript_1</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>LoadPrefab</class>
+				<id>LoadPrefab_6</id>
+				<params>
+					<param>
+						false
+						<name>Use transform matrix</name>
+						<type>BoolT</type>
+					</param>
+					<param>
+						true
+						<name>Load with parent</name>
+						<type>BoolT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>path</name>
+						<const>\content/CGFPrefabs/cosmic_event/cosmic_event_repulsor_hint.prefab\</const>
+					</slot>
+					<slot>
+						<name>translation</name>
+						<const>\0.000000, 0.000000, 0.000000\</const>
+					</slot>
+					<slot>
+						<name>scale</name>
+						<const>\1.000000, 1.000000, 1.000000\</const>
+					</slot>
+					<slot>
+						<name>rotation</name>
+						<const>\0.000000, 0.000000, 0.000000\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>ContextGetSelf</class>
+				<id>ContextGetSelf_1</id>
+				<params>
+					<param>
+						EntityContextClient
+						<name>Context Name</name>
+						<type>StringT</type>
+					</param>
+					<param>
+						getSelf
+						<name>Member Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>ContextPropertyGet</class>
+				<id>ContextPropertyGet_3</id>
+				<params>
+					<param>
+						EntityContextClient
+						<name>Context Name</name>
+						<type>StringT</type>
+					</param>
+					<param>
+						getSelf
+						<name>Member Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>GetEntityGameObject</class>
+				<id>GetEntityGameObject_3</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>LoadPrefab</class>
+				<id>LoadPrefab_7</id>
+				<params>
+					<param>
+						false
+						<name>Use transform matrix</name>
+						<type>BoolT</type>
+					</param>
+					<param>
+						true
+						<name>Load with parent</name>
+						<type>BoolT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>path</name>
+						<const>\content/CGFPrefabs/cosmic_event/cosmic_event_repulsor.prefab\</const>
+					</slot>
+					<slot>
+						<name>translation</name>
+						<const>\0.000000, 0.000000, 0.000000\</const>
+					</slot>
+					<slot>
+						<name>scale</name>
+						<const>\1.250000, 1.250000, 1.250000\</const>
+					</slot>
+					<slot>
+						<name>rotation</name>
+						<const>\0.000000, 0.000000, 0.000000\</const>
+					</slot>
+				</slots>
+			</block>
+		</blocks>
+		<connections>
+			<connection>
+				<from>StartScript_1</from>
+				<input>in</input>
+				<to>LoadPrefab_6</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>GetEntityGameObject_3</from>
+				<input>parent</input>
+				<to>LoadPrefab_6</to>
+				<output>gameObject</output>
+			</connection>
+			<connection>
+				<from>ContextPropertyGet_3</from>
+				<input>entity</input>
+				<to>GetEntityGameObject_3</to>
+				<output>value</output>
+			</connection>
+			<connection>
+				<from>LoadPrefab_6</from>
+				<input>in</input>
+				<to>LoadPrefab_7</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>GetEntityGameObject_3</from>
+				<input>parent</input>
+				<to>LoadPrefab_7</to>
+				<output>gameObject</output>
+			</connection>
+		</connections>
+		<macros/>
+		<curves/>
+	</info>
+</root>

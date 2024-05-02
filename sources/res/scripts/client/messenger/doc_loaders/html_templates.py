@@ -127,6 +127,8 @@ class MessageTemplates(templates.XMLCollection):
             width = section.readInt('width')
             if width > 0:
                 result['width'] = width
+            if section.readBool('dynamicSizeByText'):
+                result['dynamicSizeByText'] = True
             return result
 
     def _makeBgIconsData(self, section):
