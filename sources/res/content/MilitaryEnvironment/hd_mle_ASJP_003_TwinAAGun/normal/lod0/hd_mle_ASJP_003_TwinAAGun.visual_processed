@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>hd_mle_ASJP_003_TwinAAGun</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_module0</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.333381 0.000000</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>n_metal0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>73</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/MilitaryEnvironment/hd_mle_ASJP_003_TwinAAGun/hd_mle_ASJP_003_TwinAAGun_AM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/MilitaryEnvironment/hd_mle_ASJP_003_TwinAAGun/hd_mle_ASJP_003_TwinAAGun_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/MilitaryEnvironment/hd_mle_ASJP_003_TwinAAGun/hd_mle_ASJP_003_TwinAAGun_ANM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>-0.000031 0.999477 -0.017394</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.411717 -0.012637 -1.626714</min>
+		<max>1.411656 2.011592 1.591926</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>394102</geometrySize>
+	<minUVDensity>0.014234</minUVDensity>
+</root>

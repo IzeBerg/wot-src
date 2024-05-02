@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>111</materialKind>
+					<property>
+						normalMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_001_Pillbox_Bunker150mm/hd_mle_UNI_001_Pillbox_Bunker150mm_BANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_001_Pillbox_Bunker150mm/hd_mle_UNI_001_Pillbox_Bunker150mm_BGMM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_001_Pillbox_Bunker150mm/hd_mle_UNI_001_Pillbox_Bunker150mm_BAM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.025299 4.245023 -1.508126</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd5</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>111</materialKind>
+					<property>
+						alphaReference
+						<Int>131</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/MilitaryEnvironment/mle_101_11_CamouflageTent/mle_101_11_CamouflageTent_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/MilitaryEnvironment/mle_101_11_CamouflageTent/mle_101_11_CamouflageTent_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/MilitaryEnvironment/mle_101_11_CamouflageTent/mle_101_11_CamouflageTent_GMM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.041610 5.103575 0.111760</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-11.906051 -1.402895 -16.557255</min>
+		<max>11.822830 9.939230 13.638005</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>37994</geometrySize>
+	<minUVDensity>0.000156</minUVDensity>
+</root>

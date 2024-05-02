@@ -1,0 +1,749 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>hd_bld_UNI_008_WorkshopNew_Doors_Big_03_Right</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_module0</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>-0.135384 0.000000 3.866758</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>lod0</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+				<node>
+					<identifier>n1</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>n2</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>n4</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>s_wall0</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>d_metal4</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>87</materialKind>
+					<fx>shaders/std_effects/PBS_tiled.fx</fx>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						g_fakeShadowsAndDetailParams
+						<Vector4>0.050000 0.350000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>0.677333 0.741176 0.596078 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>0.760318 0.815000 0.709051 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>0.913726 1.000000 0.992157 1.000000</Vector4>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.470000 0.430000 0.380000 0.300000</Vector4>
+					</property>
+					<property>
+						g_atlasSizes
+						<Vector4>6.000000 4.000000 6.000000 2.000000</Vector4>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						blendMask
+						<Texture>content/Buildings/hd_bld_UNI_008_WorkshopNew/UNI_Workshop_01_04_blend.png</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Buildings/00_Tiles/Dirt_Rust_01_DM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile0
+						<Texture>content/Buildings/00_Tiles/dds/Metal_01_Painted_512_AM.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile0
+						<Texture>content/Buildings/00_Tiles/dds/Metal_01_Painted_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile0
+						<Texture>content/Buildings/00_Tiles/dds/Metal_01_Painted_512_MAO.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile1
+						<Texture>content/Buildings/00_Tiles/dds/Metal_01_Painted_02_512_AM.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile1
+						<Texture>content/Buildings/00_Tiles/dds/Metal_01_Painted_02_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile1
+						<Texture>content/Buildings/00_Tiles/dds/Metal_01_Painted_02_512_MAO.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile2
+						<Texture>content/Buildings/00_Tiles/dds/Metal_Rusted_01_512_AM.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile2
+						<Texture>content/Buildings/00_Tiles/dds/Metal_Rusted_01_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile2
+						<Texture>content/Buildings/00_Tiles/dds/Metal_Rusted_01_512_MAO.dds</Texture>
+					</property>
+					<property>
+						colorTex
+						<Texture>content/UniversalTextures/Universal_GCM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.837894 0.262326 3.322312</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>d_metal2</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>87</materialKind>
+					<fx>shaders/std_effects/PBS_tiled.fx</fx>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						g_fakeShadowsAndDetailParams
+						<Vector4>0.050000 0.350000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.470000 0.430000 0.380000 0.300000</Vector4>
+					</property>
+					<property>
+						g_atlasSizes
+						<Vector4>6.000000 4.000000 6.000000 2.000000</Vector4>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						blendMask
+						<Texture>content/Buildings/hd_bld_UNI_008_WorkshopNew/UNI_Workshop_01_04_blend.png</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Buildings/00_Tiles/Dirt_Rust_01_DM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile0
+						<Texture>content/Buildings/00_Tiles/dds/Borders_05_Painted_512_AM.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile0
+						<Texture>content/Buildings/00_Tiles/dds/Borders_05_Painted_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile0
+						<Texture>content/Buildings/00_Tiles/dds/Borders_05_Painted_512_MAO.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile1
+						<Texture>content/Buildings/00_Tiles/dds/Borders_05_Painted_512_AM.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile1
+						<Texture>content/Buildings/00_Tiles/dds/Borders_05_Painted_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile1
+						<Texture>content/Buildings/00_Tiles/dds/Borders_05_Painted_512_MAO.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile2
+						<Texture>content/Buildings/00_Tiles/dds/Borders_05_Rusted_512_AM.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile2
+						<Texture>content/Buildings/00_Tiles/dds/Borders_05_Rusted_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile2
+						<Texture>content/Buildings/00_Tiles/dds/Borders_05_Rusted_512_MAO.dds</Texture>
+					</property>
+					<property>
+						colorTex
+						<Texture>content/UniversalTextures/Universal_GCM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.781084 0.399071 3.184988</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>d_metal1</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>87</materialKind>
+					<fx>shaders/std_effects/PBS_tiled.fx</fx>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						g_fakeShadowsAndDetailParams
+						<Vector4>0.050000 0.350000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.470000 0.430000 0.380000 0.300000</Vector4>
+					</property>
+					<property>
+						g_atlasSizes
+						<Vector4>6.000000 4.000000 6.000000 2.000000</Vector4>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						blendMask
+						<Texture>content/Buildings/hd_bld_UNI_008_WorkshopNew/UNI_Workshop_01_04_blend.png</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Buildings/00_Tiles/Dirt_Rust_01_DM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile0
+						<Texture>content/Buildings/00_Tiles/dds/Borders_04_Painted_512_AM.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile0
+						<Texture>content/Buildings/00_Tiles/dds/Borders_04_Painted_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile0
+						<Texture>content/Buildings/00_Tiles/dds/Borders_04_Painted_512_MAO.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile1
+						<Texture>content/Buildings/00_Tiles/dds/Borders_04_Painted_512_AM.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile1
+						<Texture>content/Buildings/00_Tiles/dds/Borders_04_Painted_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile1
+						<Texture>content/Buildings/00_Tiles/dds/Borders_04_Painted_512_MAO.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile2
+						<Texture>content/Buildings/00_Tiles/dds/Borders_04_Rusted_512_AM.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile2
+						<Texture>content/Buildings/00_Tiles/dds/Borders_04_Rusted_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile2
+						<Texture>content/Buildings/00_Tiles/dds/Borders_04_Rusted_512_MAO.dds</Texture>
+					</property>
+					<property>
+						colorTex
+						<Texture>content/UniversalTextures/Universal_GCM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.508275 0.218970 3.237311</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				3
+				<material>
+					<identifier>d_metal0</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>87</materialKind>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<property>
+						alphaReference
+						<Int>156</Int>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_vertexColorMode
+						<Int>3</Int>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_Industrial_01_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_Industrial_01_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_Industrial_01_GMM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-1.108349 0.114513 3.257640</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				4
+				<material>
+					<identifier>n_metal4</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>73</materialKind>
+					<fx>shaders/std_effects/PBS_tiled.fx</fx>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						g_fakeShadowsAndDetailParams
+						<Vector4>0.050000 0.350000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>0.677333 0.741176 0.596078 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>0.760318 0.815000 0.709051 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>0.913726 1.000000 0.992157 1.000000</Vector4>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.470000 0.430000 0.380000 0.300000</Vector4>
+					</property>
+					<property>
+						g_atlasSizes
+						<Vector4>6.000000 4.000000 6.000000 2.000000</Vector4>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						blendMask
+						<Texture>content/Buildings/hd_bld_UNI_008_WorkshopNew/UNI_Workshop_01_04_blend.png</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Buildings/00_Tiles/Dirt_Rust_01_DM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile0
+						<Texture>content/Buildings/00_Tiles/dds/Metal_01_Painted_512_AM.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile0
+						<Texture>content/Buildings/00_Tiles/dds/Metal_01_Painted_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile0
+						<Texture>content/Buildings/00_Tiles/dds/Metal_01_Painted_512_MAO.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile1
+						<Texture>content/Buildings/00_Tiles/dds/Metal_01_Painted_02_512_AM.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile1
+						<Texture>content/Buildings/00_Tiles/dds/Metal_01_Painted_02_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile1
+						<Texture>content/Buildings/00_Tiles/dds/Metal_01_Painted_02_512_MAO.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile2
+						<Texture>content/Buildings/00_Tiles/dds/Metal_Rusted_01_512_AM.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile2
+						<Texture>content/Buildings/00_Tiles/dds/Metal_Rusted_01_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile2
+						<Texture>content/Buildings/00_Tiles/dds/Metal_Rusted_01_512_MAO.dds</Texture>
+					</property>
+					<property>
+						colorTex
+						<Texture>content/UniversalTextures/Universal_GCM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.246719 5.152580 3.902320</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				5
+				<material>
+					<identifier>n_metal2</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>73</materialKind>
+					<fx>shaders/std_effects/PBS_tiled.fx</fx>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						g_fakeShadowsAndDetailParams
+						<Vector4>0.050000 0.350000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>0.788235 0.850980 0.784314 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>0.788235 0.850980 0.784314 1.000000</Vector4>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.470000 0.430000 0.380000 0.300000</Vector4>
+					</property>
+					<property>
+						g_atlasSizes
+						<Vector4>6.000000 4.000000 6.000000 2.000000</Vector4>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						blendMask
+						<Texture>content/Buildings/hd_bld_UNI_008_WorkshopNew/UNI_Workshop_01_04_blend.png</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Buildings/00_Tiles/Dirt_Rust_01_DM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile0
+						<Texture>content/Buildings/00_Tiles/dds/Borders_05_Painted_512_AM.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile0
+						<Texture>content/Buildings/00_Tiles/dds/Borders_05_Painted_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile0
+						<Texture>content/Buildings/00_Tiles/dds/Borders_05_Painted_512_MAO.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile1
+						<Texture>content/Buildings/00_Tiles/dds/Borders_05_Painted_512_AM.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile1
+						<Texture>content/Buildings/00_Tiles/dds/Borders_05_Painted_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile1
+						<Texture>content/Buildings/00_Tiles/dds/Borders_05_Painted_512_MAO.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile2
+						<Texture>content/Buildings/00_Tiles/dds/Borders_05_Rusted_512_AM.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile2
+						<Texture>content/Buildings/00_Tiles/dds/Borders_05_Rusted_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile2
+						<Texture>content/Buildings/00_Tiles/dds/Borders_05_Rusted_512_MAO.dds</Texture>
+					</property>
+					<property>
+						colorTex
+						<Texture>content/UniversalTextures/Universal_GCM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.220952 5.169697 3.904312</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				6
+				<material>
+					<identifier>n_metal1</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>73</materialKind>
+					<fx>shaders/std_effects/PBS_tiled.fx</fx>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						g_fakeShadowsAndDetailParams
+						<Vector4>0.050000 0.350000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>0.750278 0.810000 0.746545 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>0.750278 0.810000 0.746545 1.000000</Vector4>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.470000 0.430000 0.380000 0.300000</Vector4>
+					</property>
+					<property>
+						g_atlasSizes
+						<Vector4>6.000000 4.000000 6.000000 2.000000</Vector4>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						blendMask
+						<Texture>content/Buildings/hd_bld_UNI_008_WorkshopNew/UNI_Workshop_01_04_blend.png</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Buildings/00_Tiles/Dirt_Rust_01_DM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile0
+						<Texture>content/Buildings/00_Tiles/dds/Borders_04_Painted_512_AM.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile0
+						<Texture>content/Buildings/00_Tiles/dds/Borders_04_Painted_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile0
+						<Texture>content/Buildings/00_Tiles/dds/Borders_04_Painted_512_MAO.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile1
+						<Texture>content/Buildings/00_Tiles/dds/Borders_04_Painted_512_AM.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile1
+						<Texture>content/Buildings/00_Tiles/dds/Borders_04_Painted_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile1
+						<Texture>content/Buildings/00_Tiles/dds/Borders_04_Painted_512_MAO.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile2
+						<Texture>content/Buildings/00_Tiles/dds/Borders_04_Rusted_512_AM.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile2
+						<Texture>content/Buildings/00_Tiles/dds/Borders_04_Rusted_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile2
+						<Texture>content/Buildings/00_Tiles/dds/Borders_04_Rusted_512_MAO.dds</Texture>
+					</property>
+					<property>
+						colorTex
+						<Texture>content/UniversalTextures/Universal_GCM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.183237 5.148077 3.898345</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				7
+				<material>
+					<identifier>n_metal0</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>73</materialKind>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_vertexColorMode
+						<Int>3</Int>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_Industrial_01_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_Industrial_01_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_Industrial_01_GMM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.078980 5.169062 3.903003</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				8
+				<material>
+					<identifier>s_wall_0</identifier>
+					<collisionFlags>131</collisionFlags>
+					<materialKind>73</materialKind>
+				</material>
+				<groupOrigin>-0.246557 5.160922 3.904312</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-4.738338 -0.118174 -0.382579</min>
+		<max>6.300506 10.341099 7.751348</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>59846</geometrySize>
+	<minUVDensity>0.003043</minUVDensity>
+</root>

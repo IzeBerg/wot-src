@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_tiled_atlas_global.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>107</materialKind>
+					<property>
+						globalTex
+						<Texture>content/Environment/env213_Monastery_Rocks/env213_MediumRocks_01-04_NM.dds</Texture>
+					</property>
+					<property>
+						g_tileUVScale
+						<Vector4>
+							2 2 0.000000 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>
+							0.890196 0.858824 0.717647 1
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>
+							0.87451 0.854902 0.792157 1
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_atlasIndexes
+						<Vector4>
+							0.000000 1 2 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Environment/env213_Monastery_Rocks/env213_Dirt_01_DM.dds</Texture>
+					</property>
+					<property>
+						atlasNormalGlossSpec
+						<Texture>content/Environment/00_Atlases/env213_Atlas_GBMT.dds</Texture>
+					</property>
+					<property>
+						atlasMetallicAO
+						<Texture>content/Environment/00_Atlases/env213_Atlas_MAO.dds</Texture>
+					</property>
+					<property>
+						atlasBlend
+						<Texture>content/Environment/00_Atlases/env213_Atlas_Blend.png</Texture>
+					</property>
+					<property>
+						atlasAlbedoHeight
+						<Texture>content/Environment/00_Atlases/env213_Atlas_AM.dds</Texture>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>0.006527 1.159030 -0.044064</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-4.010258 -0.031240 -4.304786</min>
+		<max>4.023312 2.349301 4.216658</max>
+	</boundingBox>
+	<geometrySize>22632</geometrySize>
+	<minUVDensity>0.025411</minUVDensity>
+</root>

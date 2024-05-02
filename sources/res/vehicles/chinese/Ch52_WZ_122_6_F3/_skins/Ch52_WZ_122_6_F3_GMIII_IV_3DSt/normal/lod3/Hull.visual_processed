@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>nodes_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_Fire_1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.023095 -3.026358</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Fire_2</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>-0.602338 0.023095 2.140357</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_LFront</identifier>
+				<transform>
+					<row0>0.999846 0.017380 0.002428</row0>
+					<row1>-0.013348 0.663424 0.748125</row1>
+					<row2>0.011391 -0.748042 0.663554</row2>
+					<row3>-1.387992 0.018139 3.874986</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_LRear</identifier>
+				<transform>
+					<row0>-0.995284 0.092591 -0.028908</row0>
+					<row1>0.052019 0.257964 -0.964753</row1>
+					<row2>-0.081870 -0.961707 -0.261564</row2>
+					<row3>-1.385186 -0.081951 -3.599686</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_RFront</identifier>
+				<transform>
+					<row0>0.999846 0.017380 0.002428</row0>
+					<row1>-0.013348 0.663424 0.748125</row1>
+					<row2>0.011391 -0.748042 0.663554</row2>
+					<row3>1.382381 0.018142 3.874988</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_RRear</identifier>
+				<transform>
+					<row0>-0.995284 0.092591 -0.028908</row0>
+					<row1>0.052019 0.257964 -0.964753</row1>
+					<row2>-0.081870 -0.961707 -0.261564</row2>
+					<row3>1.385187 -0.076514 -3.607084</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_Exhaus_1</identifier>
+				<transform>
+					<row0>0.000000 1.000000 0.000000</row0>
+					<row1>-0.000000 0.000000 -1.000000</row1>
+					<row2>-1.000000 0.000000 0.000000</row2>
+					<row3>-1.690279 0.444418 -2.353243</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_Exhaus_2</identifier>
+				<transform>
+					<row0>0.000000 1.000000 0.000000</row0>
+					<row1>-0.000000 0.000000 -1.000000</row1>
+					<row2>-1.000000 0.000000 0.000000</row2>
+					<row3>-1.690279 0.362392 -2.192720</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_Exhaus_3</identifier>
+				<transform>
+					<row0>0.000000 1.000000 0.000000</row0>
+					<row1>-0.000000 0.000000 -1.000000</row1>
+					<row2>-1.000000 0.000000 0.000000</row2>
+					<row3>-1.690281 0.362392 -1.643891</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_Exhaus_4</identifier>
+				<transform>
+					<row0>0.000000 1.000000 0.000000</row0>
+					<row1>-0.000000 0.000000 1.000000</row1>
+					<row2>1.000000 -0.000000 0.000000</row2>
+					<row3>1.691754 0.444418 -2.353239</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_turretJoint</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.017361 0.470764 0.358979</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_hull_01</identifier>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/chinese/Ch52_WZ_122_6_F3/_skins/Ch52_WZ_122_6_F3_GMIII_IV_3DSt/WZ_122_6_F3_GMIII_IV_3DSt_hull_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/chinese/Ch52_WZ_122_6_F3/_skins/Ch52_WZ_122_6_F3_GMIII_IV_3DSt/WZ_122_6_F3_GMIII_IV_3DSt_hull_01_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/chinese/Ch52_WZ_122_6_F3/_skins/Ch52_WZ_122_6_F3_GMIII_IV_3DSt/WZ_122_6_F3_GMIII_IV_3DSt_hull_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/chinese/Ch52_WZ_122_6_F3/_skins/Ch52_WZ_122_6_F3_GMIII_IV_3DSt/WZ_122_6_F3_GMIII_IV_3DSt_hull_01_AO.dds</Texture>
+					</property>
+					<property>
+						alphaReference
+						<Int>64</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>-0.007996 0.039259 -0.055244</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>tank_equipment</identifier>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/chinese/Ch52_WZ_122_6_F3/_skins/Ch52_WZ_122_6_F3_GMIII_IV_3DSt/WZ_122_6_F3_GMIII_IV_3DSt_equipment_AM.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/chinese/Ch52_WZ_122_6_F3/_skins/Ch52_WZ_122_6_F3_GMIII_IV_3DSt/WZ_122_6_F3_GMIII_IV_3DSt_equipment_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/chinese/Ch52_WZ_122_6_F3/_skins/Ch52_WZ_122_6_F3_GMIII_IV_3DSt/WZ_122_6_F3_GMIII_IV_3DSt_equipment_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/chinese/Ch52_WZ_122_6_F3/_skins/Ch52_WZ_122_6_F3_GMIII_IV_3DSt/WZ_122_6_F3_GMIII_IV_3DSt_equipment_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.002228 0.568399 -2.503224</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.772308 -0.638044 -4.196349</min>
+		<max>1.756317 0.716563 4.085861</max>
+	</boundingBox>
+	<geometrySize>63978</geometrySize>
+	<minUVDensity>0.004240</minUVDensity>
+</root>

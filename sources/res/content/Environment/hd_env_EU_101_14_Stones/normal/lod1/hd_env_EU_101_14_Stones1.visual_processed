@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_tiled_atlas_global.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>111</materialKind>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						globalTex
+						<Texture>content/Environment/hd_env_EU_101_14_Stones/hd_env_EU_101_14_Stones_NM.dds</Texture>
+					</property>
+					<property>
+						g_tileUVScale
+						<Vector4>
+							8 8 0.000000 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>
+							0.89 0.867928 0.8188 1
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>
+							0.88 0.88 0.88 1
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>
+							0.99 0.99 0.99 1
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_atlasIndexes
+						<Vector4>
+							1 1 2 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Environment/00_Tiles/Dirt_DDay_Soil_01_Dirt.dds</Texture>
+					</property>
+					<property>
+						atlasNormalGlossSpec
+						<Texture>content/Environment/00_Atlases/hd_env_EU_101_Cliff_Rocks_GBMT.atlas</Texture>
+					</property>
+					<property>
+						atlasMetallicAO
+						<Texture>content/Environment/00_Atlases/hd_env_EU_101_Cliff_Rocks_MAO.atlas</Texture>
+					</property>
+					<property>
+						atlasBlend
+						<Texture>content/Environment/00_Atlases/hd_env_EU_101_14_Stones_Atlas_Blend.png</Texture>
+					</property>
+					<property>
+						atlasAlbedoHeight
+						<Texture>content/Environment/00_Atlases/hd_env_EU_101_Cliff_Rocks_AM.atlas</Texture>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>0.988592 2.367511 -1.314251</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-3.183113 -0.456567 -13.862812</min>
+		<max>5.160297 5.191588 11.234309</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>72702</geometrySize>
+	<minUVDensity>0.000156</minUVDensity>
+</root>

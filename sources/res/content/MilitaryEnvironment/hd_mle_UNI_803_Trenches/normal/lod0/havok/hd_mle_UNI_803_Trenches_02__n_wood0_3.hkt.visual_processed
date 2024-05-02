@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>d9_DUP</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+		</node>
+		<node>
+			<identifier>d10_DUP</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+		</node>
+		<node>
+			<identifier>d11_DUP</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+		</node>
+		<node>
+			<identifier>d12_DUP</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+		</node>
+		<node>
+			<identifier>d17_DUP</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>d9_DUP</node>
+		<node>d10_DUP</node>
+		<node>d11_DUP</node>
+		<node>d12_DUP</node>
+		<node>d17_DUP</node>
+		<geometry>
+			<vertices>part.vertices</vertices>
+			<primitive>part.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>n_wood0_3</identifier>
+					<fx>shaders/std_effects/PBS_ext_rigid_skinned.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_803_Trenches/hd_mle_UNI_803_Trenches_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_803_Trenches/hd_mle_UNI_803_Trenches_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_803_Trenches/hd_mle_UNI_803_Trenches_GMM.dds</Texture>
+					</property>
+				</material>
+				<fade_material>
+					<identifier>n_wood0_3_fade</identifier>
+					<fx>shaders/std_effects/PBS_ext_rigid_skinned_havok_fade.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_803_Trenches/hd_mle_UNI_803_Trenches_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_803_Trenches/hd_mle_UNI_803_Trenches_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_803_Trenches/hd_mle_UNI_803_Trenches_GMM.dds</Texture>
+					</property>
+					<property>
+						texRandom
+						<Texture>maps/fx/random.dds</Texture>
+					</property>
+					<property>
+						alphaReference
+						<Int>1</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+				</fade_material>
+				<groupOrigin>-4.826985 2.680151 0.706547</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-5.642992 2.265770 -0.268621</min>
+		<max>-4.010978 3.094532 1.681715</max>
+	</boundingBox>
+	<geometrySize>17172</geometrySize>
+	<minUVDensity>0.005670</minUVDensity>
+</root>

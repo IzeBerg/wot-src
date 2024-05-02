@@ -3304,7 +3304,13 @@ RECORDS = (
  (
   'singleAchievements', 'comp7_3_yearly_champion', 'p', 'B', 1),
  (
-  'singleAchievements', 'comp7_3_yearly_legend', 'p', 'B', 1))
+  'singleAchievements', 'comp7_3_yearly_legend', 'p', 'B', 1),
+ (
+  'singleAchievements', 'Cosmic_StarTrekCrew', 'p', 'B', 1),
+ (
+  'singleAchievements', 'Cosmic_LiveLongAndProsper', 'p', 'B', 1),
+ (
+  'singleAchievements', 'Cosmic_KlingonValor', 'p', 'B', 1))
 RECORD_INDICES = dict((rec[:2], idx) for idx, rec in enumerate(RECORDS))
 RECORD_DB_IDS = {('total', 'creationTime'): 68, 
    ('total', 'lastBattleTime'): 7, 
@@ -4958,7 +4964,10 @@ RECORD_DB_IDS = {('total', 'creationTime'): 68,
    ('singleAchievements', 'comp7_3_yearly_silver'): 1928, 
    ('singleAchievements', 'comp7_3_yearly_gold'): 1929, 
    ('singleAchievements', 'comp7_3_yearly_champion'): 1930, 
-   ('singleAchievements', 'comp7_3_yearly_legend'): 1931}
+   ('singleAchievements', 'comp7_3_yearly_legend'): 1931, 
+   ('singleAchievements', 'Cosmic_StarTrekCrew'): 1932, 
+   ('singleAchievements', 'Cosmic_LiveLongAndProsper'): 1933, 
+   ('singleAchievements', 'Cosmic_KlingonValor'): 1934}
 DB_ID_TO_RECORD = dict([ (value, key) for key, value in RECORD_DB_IDS.iteritems() ])
 RECORD_DB_IDS.update({('vehTypeFrags', ''): 863, 
    ('a15x15Cut', ''): 864, 

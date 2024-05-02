@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd1</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>112</materialKind>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_WaterTower_01_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_WaterTower_01_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_WaterTower_01_GMM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.120488 9.578836 0.000216</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd0</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>112</materialKind>
+					<fx>shaders/std_effects/PBS_tiled.fx</fx>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						g_fakeShadowsAndDetailParams
+						<Vector4>
+							0.01 0.93 1 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>
+							0.65675 0.6745 0.71 1
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>
+							0.895 0.895 0.895 1
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>
+							0.26 0.237872 0.210213 0.15
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_dirtColorParams
+						<Vector4>0.100000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_atlasSizes
+						<Vector4>3 3 1 1</Vector4>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						blendMask
+						<Texture>content/Buildings/hd_bld_UNI_4211_Tank/hd_bld_UNI_4211_Tank_atlas_blend.png</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Buildings/00_Tiles/Dirt_Rust_02.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile0
+						<Texture>content/Buildings/00_Tiles/dds/Metal_Bare_01_512_AM.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile0
+						<Texture>content/Buildings/00_Tiles/dds/Metal_Bare_01_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile0
+						<Texture>content/Buildings/00_Tiles/dds/Metal_Bare_01_512_MAO.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile1
+						<Texture>content/Buildings/00_Tiles/dds/Metal_Bare_02_512_AM.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile1
+						<Texture>content/Buildings/00_Tiles/dds/Metal_Bare_02_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile1
+						<Texture>content/Buildings/00_Tiles/dds/Metal_Bare_02_512_MAO.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile2
+						<Texture>content/Buildings/00_Tiles/dds/Metal_Rusted_01_512_AM.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile2
+						<Texture>content/Buildings/00_Tiles/dds/Metal_Rusted_01_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile2
+						<Texture>content/Buildings/00_Tiles/dds/Metal_Rusted_01_512_MAO.dds</Texture>
+					</property>
+					<property>
+						colorTex
+						<Texture>content/UniversalTextures/Universal_GCM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.078431 8.834356 -0.064250</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-8.037267 -0.178791 -8.036237</min>
+		<max>7.880404 18.270428 7.976267</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>63202</geometrySize>
+	<minUVDensity>0.006866</minUVDensity>
+</root>

@@ -734,7 +734,7 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
             return
         else:
             self.guiSessionProvider.setVehicleHealth(self.isPlayerVehicle, self.id, newHealth, attackerID, attackReasonID)
-            if not self.isStarted:
+            if not self.isStarted or self.typeDescriptor.isCosmicVehicle:
                 self.__prevHealth = newHealth
                 return
             BigWorld.player().arena.onVehicleHealthChanged(self.id, attackerID, oldHealth - newHealth)

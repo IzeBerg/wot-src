@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd1</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>111</materialKind>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						g_useNormalPackDXT1
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Buildings/bld_101_01_Vhouse01/bld_101_01_05_details_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Buildings/bld_101_01_Vhouse01/bld_101_01_05_details_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Buildings/bld_101_01_Vhouse01/bld_101_01_05_details_GMM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>1.385474 6.437493 -0.027059</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd0</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>111</materialKind>
+					<fx>shaders/std_effects/PBS_ext_dual.fx</fx>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						g_useNormalPackDXT1
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Buildings/bld_101_01_Vhouse01/bld_101_01_05_tile_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Buildings/bld_101_01_Vhouse01/bld_101_01_05_tile_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Buildings/bld_101_01_Vhouse01/bld_101_01_05_tile_GMM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap2
+						<Texture>content/Buildings/bld_101_02_Vhouse02/bld_101_02_Vhouse02_AM2.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>1.745427 5.341558 -0.026768</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-8.299856 -0.950243 -4.393718</min>
+		<max>11.790710 13.003115 4.339601</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>182868</geometrySize>
+	<minUVDensity>0.000785</minUVDensity>
+</root>

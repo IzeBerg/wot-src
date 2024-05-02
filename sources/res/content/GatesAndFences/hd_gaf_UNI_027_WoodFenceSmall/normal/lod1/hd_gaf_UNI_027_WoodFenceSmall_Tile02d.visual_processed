@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>hd_gaf_UNI_027_WoodFenceSmall_Tile02d</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_module0</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 -3.000000</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>n_wood0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<collisionFlags>131</collisionFlags>
+					<materialKind>73</materialKind>
+					<property>
+						diffuseMap
+						<Texture>content/GatesAndFences/hd_gaf_UNI_027_WoodFenceSmall/hd_gaf_UNI_027_WoodFenceSmall_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/GatesAndFences/hd_gaf_UNI_027_WoodFenceSmall/hd_gaf_UNI_027_WoodFenceSmall_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/GatesAndFences/hd_gaf_UNI_027_WoodFenceSmall/hd_gaf_UNI_027_WoodFenceSmall_GMM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.010249 0.576660 -3.055094</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.142166 -0.115307 -6.109942</min>
+		<max>0.162664 1.267028 0.012196</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>24248</geometrySize>
+	<minUVDensity>0.135163</minUVDensity>
+</root>

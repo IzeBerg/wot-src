@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd1</identifier>
+					<fx>shaders/std_effects/PBS_ext_dual.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>111</materialKind>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_EU_471_WideBridge/hd_env_EU_471_WideBridge_Tile_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env_EU_471_WideBridge/hd_env_EU_471_WideBridge_Tile_GMM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap2
+						<Texture>content/Environment/hd_env_EU_471_WideBridge/hd_env_EU_471_WideBridge_AM2.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_EU_471_WideBridge/hd_env_EU_471_WideBridge_Tile_AM.dds</Texture>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>0.085489 5.429685 2.113020</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext_dual.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>111</materialKind>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_EU_471_WideBridge/env_112_07_Embankment_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env_EU_471_WideBridge/env_112_07_Embankment_GMM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap2
+						<Texture>content/Environment/hd_env_EU_471_WideBridge/hd_env_EU_471_WideBridge_AM2.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_EU_471_WideBridge/env_112_07_Embankment_AM.dds</Texture>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>-0.648767 0.122203 -0.688808</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-3.155951 -5.441379 -16.141169</min>
+		<max>1.858418 5.685785 15.811912</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>11618</geometrySize>
+	<minUVDensity>0.003193</minUVDensity>
+</root>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>end_d_body</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+		</node>
+		<node>
+			<identifier>end_d_up</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+		</node>
+		<node>
+			<identifier>end_d_body2</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>end_d_body</node>
+		<node>end_d_up</node>
+		<node>end_d_body2</node>
+		<geometry>
+			<vertices>part.vertices</vertices>
+			<primitive>part.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>n_metal0</identifier>
+					<fx>shaders/std_effects/PBS_ext_detail_rigid_skinned.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						normalMap
+						<Texture>content/GatesAndFences/hd_gaf023_ForgedFence/hd_gaf023_ForgedFence_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/GatesAndFences/hd_gaf023_ForgedFence/hd_gaf023_ForgedFence_GMM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/GatesAndFences/hd_gaf023_ForgedFence/hd_gaf023_ForgedFence_AM.dds</Texture>
+					</property>
+					<property>
+						g_detailMap
+						<Texture>content/Detail_tex/Detail_tile_stone.dds</Texture>
+					</property>
+					<property>
+						g_detailRejectTiling
+						<Vector4>1 12 2 2</Vector4>
+					</property>
+					<property>
+						g_detailInfluences
+						<Vector4>
+							0.000000 0.5 0.000000 1
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaReference
+						<Int>80</Int>
+					</property>
+				</material>
+				<fade_material>
+					<identifier>n_metal0_fade</identifier>
+					<fx>shaders/std_effects/PBS_ext_detail_rigid_skinned_havok_fade.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						normalMap
+						<Texture>content/GatesAndFences/hd_gaf023_ForgedFence/hd_gaf023_ForgedFence_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/GatesAndFences/hd_gaf023_ForgedFence/hd_gaf023_ForgedFence_GMM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/GatesAndFences/hd_gaf023_ForgedFence/hd_gaf023_ForgedFence_AM.dds</Texture>
+					</property>
+					<property>
+						g_detailMap
+						<Texture>content/Detail_tex/Detail_tile_stone.dds</Texture>
+					</property>
+					<property>
+						g_detailRejectTiling
+						<Vector4>1 12 2 2</Vector4>
+					</property>
+					<property>
+						g_detailInfluences
+						<Vector4>
+							0.000000 0.5 0.000000 1
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						texRandom
+						<Texture>maps/fx/random.dds</Texture>
+					</property>
+					<property>
+						alphaReference
+						<Int>80</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+				</fade_material>
+				<groupOrigin>0.014018 0.814576 0.032459</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.088480 -0.016307 -0.077083</min>
+		<max>0.116515 1.645460 0.142002</max>
+	</boundingBox>
+	<geometrySize>6984</geometrySize>
+	<minUVDensity>0.125548</minUVDensity>
+</root>

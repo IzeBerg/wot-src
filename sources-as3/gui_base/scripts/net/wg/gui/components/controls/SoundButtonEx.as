@@ -289,7 +289,7 @@ package net.wg.gui.components.controls
          var _loc1_:Number = NaN;
          if(textField && textField.text != Values.EMPTY_STR)
          {
-            _loc1_ = textField.textWidth + (this._paddingHorizontal + this._textFieldPaddingHorizontal << 1) ^ 0;
+            _loc1_ = this.calculateWidth();
             if(this.canChangeSize(_loc1_))
             {
                setActualSize(_loc1_,_height);

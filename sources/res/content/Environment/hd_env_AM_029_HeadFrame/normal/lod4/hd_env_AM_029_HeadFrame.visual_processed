@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>hd_env_AM_029_HeadFrame</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_module0</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>16.479368 0.341600 0.543911</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>d_metal0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_AM_029_HeadFrame/hd_env_AM_029_HeadFrame_BAM.dds</Texture>
+					</property>
+					<property>
+						alphaReference
+						<Int>70</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<materialKind>87</materialKind>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env_AM_029_HeadFrame/hd_env_AM_029_HeadFrame_BGMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_AM_029_HeadFrame/hd_env_AM_029_HeadFrame_BANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>16.505602 0.089362 0.498301</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>n_metal0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_AM_029_HeadFrame/hd_env_AM_029_HeadFrame_BAM.dds</Texture>
+					</property>
+					<property>
+						alphaReference
+						<Int>70</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<materialKind>73</materialKind>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env_AM_029_HeadFrame/hd_env_AM_029_HeadFrame_BGMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_AM_029_HeadFrame/hd_env_AM_029_HeadFrame_BANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>7.524258 8.480824 0.423586</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_AM_029_HeadFrame/hd_env_AM_029_HeadFrame_BAM.dds</Texture>
+					</property>
+					<property>
+						alphaReference
+						<Int>70</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<materialKind>108</materialKind>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env_AM_029_HeadFrame/hd_env_AM_029_HeadFrame_BGMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_AM_029_HeadFrame/hd_env_AM_029_HeadFrame_BANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.325273 8.604054 0.474938</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				3
+				<material>
+					<identifier>s_ramp_0</identifier>
+					<collisionFlags>131</collisionFlags>
+					<materialKind>108</materialKind>
+				</material>
+				<groupOrigin>16.454044 0.089370 0.554434</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				4
+				<material>
+					<identifier>s_wall_0</identifier>
+					<collisionFlags>131</collisionFlags>
+					<materialKind>108</materialKind>
+				</material>
+				<groupOrigin>-0.708648 0.810149 -0.011738</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-7.412432 -0.868811 -5.803594</min>
+		<max>19.519323 18.076920 6.753470</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>11018</geometrySize>
+	<minUVDensity>0.000043</minUVDensity>
+</root>

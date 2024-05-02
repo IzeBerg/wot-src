@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>hd_gaf_AS_007_StoneRichWall_Gate</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_module0</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>n_stone0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/GatesAndFences/hd_gaf_AS_007_StoneRichWall/hd_gaf_AS_007_StoneRichWall_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/GatesAndFences/hd_gaf_AS_007_StoneRichWall/hd_gaf_AS_007_StoneRichWall_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/GatesAndFences/hd_gaf_AS_007_StoneRichWall/hd_gaf_AS_007_StoneRichWall_GMM.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>73</materialKind>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>0.048990 2.457479 -2.253739</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>d_stone0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/GatesAndFences/hd_gaf_AS_007_StoneRichWall/hd_gaf_AS_007_StoneRichWall_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/GatesAndFences/hd_gaf_AS_007_StoneRichWall/hd_gaf_AS_007_StoneRichWall_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/GatesAndFences/hd_gaf_AS_007_StoneRichWall/hd_gaf_AS_007_StoneRichWall_GMM.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>87</materialKind>
+				</material>
+				<groupOrigin>-0.036217 0.217363 -2.260441</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>s_ramp_0</identifier>
+					<collisionFlags>131</collisionFlags>
+					<materialKind>111</materialKind>
+				</material>
+				<groupOrigin>-0.224091 -0.074759 -2.428164</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-3.117261 -0.500000 -6.335085</min>
+		<max>2.669079 5.296708 1.478758</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>14766</geometrySize>
+	<minUVDensity>0.001184</minUVDensity>
+</root>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd4</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>111</materialKind>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>content/Buildings/hd_bld_SU_093_KharkivHouse/hd_bld_SU_093_KharkivHouse_02_BAM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Buildings/hd_bld_SU_093_KharkivHouse/hd_bld_SU_093_KharkivHouse_02_BANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Buildings/hd_bld_SU_093_KharkivHouse/hd_bld_SU_093_KharkivHouse_02_BGMM.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaReference
+						<Int>182</Int>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>11.044462 9.797085 -8.416197</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_wall_0</identifier>
+					<collisionFlags>144</collisionFlags>
+					<materialKind>111</materialKind>
+				</material>
+				<groupOrigin>-0.206708 12.539471 -22.850155</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>s_ramp_0</identifier>
+					<collisionFlags>131</collisionFlags>
+					<materialKind>111</materialKind>
+				</material>
+				<groupOrigin>-4.198098 0.548065 4.797363</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-9.686559 -1.817557 -25.959747</min>
+		<max>30.450171 21.411726 10.226546</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>33684</geometrySize>
+	<minUVDensity>0.000045</minUVDensity>
+</root>

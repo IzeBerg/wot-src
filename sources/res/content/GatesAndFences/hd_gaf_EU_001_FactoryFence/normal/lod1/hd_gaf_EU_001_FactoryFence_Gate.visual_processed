@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>hd_gafF_001_FactoryFence_gate</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_module0</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 4.000000</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_module1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 -4.000000</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>lod0</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+				<node>
+					<identifier>n0_1</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>n0_2</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>s_ramp0</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>s_wall0</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>s_wall1</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>d_stone0_2</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>88</materialKind>
+					<property>
+						normalMap
+						<Texture>content/GatesAndFences/hd_gaf_EU_001_FactoryFence/hd_gaf_EU_001_FactoryFence_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/GatesAndFences/hd_gaf_EU_001_FactoryFence/hd_gaf_EU_001_FactoryFence_GMM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/GatesAndFences/hd_gaf_EU_001_FactoryFence/hd_gaf_EU_001_FactoryFence_AM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.222461 0.297245 -2.499078</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>d_stone0_1</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>87</materialKind>
+					<property>
+						normalMap
+						<Texture>content/GatesAndFences/hd_gaf_EU_001_FactoryFence/hd_gaf_EU_001_FactoryFence_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/GatesAndFences/hd_gaf_EU_001_FactoryFence/hd_gaf_EU_001_FactoryFence_GMM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/GatesAndFences/hd_gaf_EU_001_FactoryFence/hd_gaf_EU_001_FactoryFence_AM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.150019 0.298597 2.577833</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>n_stone0_2</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>74</materialKind>
+					<property>
+						normalMap
+						<Texture>content/GatesAndFences/hd_gaf_EU_001_FactoryFence/hd_gaf_EU_001_FactoryFence_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/GatesAndFences/hd_gaf_EU_001_FactoryFence/hd_gaf_EU_001_FactoryFence_GMM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/GatesAndFences/hd_gaf_EU_001_FactoryFence/hd_gaf_EU_001_FactoryFence_AM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.125439 3.063972 -2.761116</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				3
+				<material>
+					<identifier>n_stone0_1</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>73</materialKind>
+					<property>
+						normalMap
+						<Texture>content/GatesAndFences/hd_gaf_EU_001_FactoryFence/hd_gaf_EU_001_FactoryFence_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/GatesAndFences/hd_gaf_EU_001_FactoryFence/hd_gaf_EU_001_FactoryFence_GMM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/GatesAndFences/hd_gaf_EU_001_FactoryFence/hd_gaf_EU_001_FactoryFence_AM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.129500 3.075126 2.878585</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				4
+				<material>
+					<identifier>s_wall_1</identifier>
+					<collisionFlags>131</collisionFlags>
+					<materialKind>74</materialKind>
+				</material>
+				<groupOrigin>-0.236852 1.601952 -0.830219</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				5
+				<material>
+					<identifier>s_wall_0</identifier>
+					<collisionFlags>131</collisionFlags>
+					<materialKind>73</materialKind>
+				</material>
+				<groupOrigin>-0.050016 1.601952 0.825207</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				6
+				<material>
+					<identifier>s_ramp_0</identifier>
+					<collisionFlags>131</collisionFlags>
+					<materialKind>111</materialKind>
+				</material>
+				<groupOrigin>0.056624 0.106309 0.031613</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-2.963865 -0.305646 -7.099224</min>
+		<max>2.518943 6.455639 7.162449</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>138672</geometrySize>
+	<minUVDensity>0.001916</minUVDensity>
+</root>

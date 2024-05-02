@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>nodes_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_gui</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.000000 -1.000000</row1>
+					<row2>0.000000 1.000000 0.000000</row2>
+					<row3>0.000000 4.355869 0.000000</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>Tank</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.500000 0.000000</row3>
+				</transform>
+				<node>
+					<identifier>V</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.488815 0.000000</row3>
+					</transform>
+					<node>
+						<identifier>V_BlendBone</identifier>
+						<transform>
+							<row0>1.000000 0.000000 0.000000</row0>
+							<row1>0.000000 1.000000 0.000000</row1>
+							<row2>0.000000 0.000000 -1.000000</row2>
+							<row3>0.000000 -0.988815 0.000000</row3>
+						</transform>
+					</node>
+				</node>
+				<node>
+					<identifier>Tank_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 -1.000000</row2>
+						<row3>0.000000 -0.500000 0.000000</row3>
+					</transform>
+				</node>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>V_BlendBone</node>
+		<node>Tank_BlendBone</node>
+		<geometry>
+			<vertices>track_R_Shape.vertices</vertices>
+			<stream>track_R_Shape.uv2</stream>
+			<primitive>track_R_Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_proxy_skinned</identifier>
+					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						diffuseMap
+						<Texture>vehicles/italy/It20_Carro_Combattimento_45t/_skins/It20_Carro_Combattimento_45t_3Dst_MG/Carro_Combattimento_45t_3Dst_MG_proxy_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/italy/It20_Carro_Combattimento_45t/_skins/It20_Carro_Combattimento_45t_3Dst_MG/Carro_Combattimento_45t_3Dst_MG_proxy_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/italy/It20_Carro_Combattimento_45t/_skins/It20_Carro_Combattimento_45t_3Dst_MG/Carro_Combattimento_45t_3Dst_MG_proxy_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/italy/It20_Carro_Combattimento_45t/_skins/It20_Carro_Combattimento_45t_3Dst_MG/Carro_Combattimento_45t_3Dst_MG_proxy_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>1.280169 0.591051 0.129402</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>V_BlendBone</node>
+		<node>Tank_BlendBone</node>
+		<geometry>
+			<vertices>track_L_Shape.vertices</vertices>
+			<stream>track_L_Shape.uv2</stream>
+			<primitive>track_L_Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_proxy_skinned</identifier>
+					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						diffuseMap
+						<Texture>vehicles/italy/It20_Carro_Combattimento_45t/_skins/It20_Carro_Combattimento_45t_3Dst_MG/Carro_Combattimento_45t_3Dst_MG_proxy_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/italy/It20_Carro_Combattimento_45t/_skins/It20_Carro_Combattimento_45t_3Dst_MG/Carro_Combattimento_45t_3Dst_MG_proxy_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/italy/It20_Carro_Combattimento_45t/_skins/It20_Carro_Combattimento_45t_3Dst_MG/Carro_Combattimento_45t_3Dst_MG_proxy_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/italy/It20_Carro_Combattimento_45t/_skins/It20_Carro_Combattimento_45t_3Dst_MG/Carro_Combattimento_45t_3Dst_MG_proxy_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-1.290635 0.627740 0.100873</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<constraints/>
+	<boundingBox>
+		<min>-1.688962 0.005206 -3.348585</min>
+		<max>1.650758 1.250274 3.220090</max>
+	</boundingBox>
+	<geometrySize>5208</geometrySize>
+	<minUVDensity>0.003515</minUVDensity>
+</root>

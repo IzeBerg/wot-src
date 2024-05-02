@@ -347,7 +347,8 @@ _SINGLE_ACHIEVEMENTS_VALUES = [
  'hw2023Medal', 'BattlePassCommonPr_12extra', '13YearsOfService', 'NY24_CelebChallenge',
  'NY24_AtmsphrLevel', 'comp7_3_2', 'BattlePassCommonPr_NY24', 'BattlePassCommonPr_13',
  'comp7_3_3', 'comp7_3_yearly_iron', 'comp7_3_yearly_bronze', 'comp7_3_yearly_silver',
- 'comp7_3_yearly_gold', 'comp7_3_yearly_champion', 'comp7_3_yearly_legend']
+ 'comp7_3_yearly_gold', 'comp7_3_yearly_champion', 'comp7_3_yearly_legend',
+ 'Cosmic_StarTrekCrew', 'Cosmic_LiveLongAndProsper', 'Cosmic_KlingonValor']
 _singleAchievementsPopUps = [
  'titleSniper', 'invincible', 'diehard', 'handOfDeath',
  'armorPiercer', 'battleCitizen', 'WFC2014', 'tacticalBreakthrough', 'aimer',
@@ -406,7 +407,8 @@ _singleAchievementsPopUps = [
  'NY24_CelebChallenge', 'NY24_AtmsphrLevel', 'comp7_3_2',
  'BattlePassCommonPr_NY24', 'BattlePassCommonPr_13comp7_3_3',
  'comp7_3_yearly_iron', 'comp7_3_yearly_bronze', 'comp7_3_yearly_silver',
- 'comp7_3_yearly_gold', 'comp7_3_yearly_champion', 'comp7_3_yearly_legend']
+ 'comp7_3_yearly_gold', 'comp7_3_yearly_champion', 'comp7_3_yearly_legend',
+ 'Cosmic_StarTrekCrew', 'Cosmic_LiveLongAndProsper', 'Cosmic_KlingonValor']
 _singleAchievementsBlockBuilder = BinarySetDossierBlockBuilder('singleAchievements', _SINGLE_ACHIEVEMENTS_VALUES, SINGLE_ACHIEVEMENTS_DEPENDENCIES, _singleAchievementsPopUps)
 FORT_ACHIEVEMENTS_BLOCK_LAYOUT = [
  'conqueror', 'fireAndSword', 'crusher', 'counterblow', 'kampfer', 'soldierOfFortune']

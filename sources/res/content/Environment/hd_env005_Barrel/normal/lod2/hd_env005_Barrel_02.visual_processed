@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>hd_env005_Barrel_02</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_module0</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>d_wood0</identifier>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env005_Barrel/hd_env005_Barrel_02_AM.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>87</materialKind>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env005_Barrel/hd_env005_Barrel_02_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env005_Barrel/hd_env005_Barrel_02_ANM.dds</Texture>
+					</property>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+				</material>
+				<groupOrigin>-1.136137 0.295551 -0.406791</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>n_wood0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>73</materialKind>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env005_Barrel/hd_env005_Barrel_02_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env005_Barrel/hd_env005_Barrel_02_GMM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env005_Barrel/hd_env005_Barrel_02_AM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.000655 1.359087 0.054590</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-4.809265 -0.053146 -3.147064</min>
+		<max>2.536991 2.727597 2.333483</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>22162</geometrySize>
+	<minUVDensity>0.008129</minUVDensity>
+</root>

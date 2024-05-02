@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>111</materialKind>
+					<fx>shaders/std_effects/PBS_tiled_atlas_global.fx</fx>
+					<property>
+						g_tileUVScale
+						<Vector4>
+							14 14 0.000000 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						g_atlasIndexes
+						<Vector4>1 4 5 4</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>
+							0.54 0.6 0.48 1
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>
+							0.65 0.65 0.65 1
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>
+							0.6 0.54969 0.483 1
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_atlasSizes
+						<Vector4>3 2 8 1</Vector4>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						globalTex
+						<Texture>content/Environment/hd_env_AS_033_PaddyFiled/hd_env_AS_033_PaddyFiled_NM.dds</Texture>
+					</property>
+					<property>
+						atlasAlbedoHeight
+						<Texture>content/Environment/00_Atlases/hd_env_AS_033_PaddyFiled_atlas_AM.atlas</Texture>
+					</property>
+					<property>
+						atlasNormalGlossSpec
+						<Texture>content/Environment/00_Atlases/hd_env_AS_033_PaddyFiled_atlas_GBMT.atlas</Texture>
+					</property>
+					<property>
+						atlasMetallicAO
+						<Texture>content/Environment/00_Atlases/hd_env_AS_033_PaddyFiled_atlas_MAO.atlas</Texture>
+					</property>
+					<property>
+						atlasBlend
+						<Texture>content/Environment/00_Atlases/hd_env_AS_033_PaddyFiled_atlas_blend.png</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Environment/00_Tiles/Dirt_DDay_Soil_01_Dirt.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>7.470716 1.813036 1.676026</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-35.425098 -5.631924 -10.834805</min>
+		<max>50.366531 9.257996 14.186857</max>
+	</boundingBox>
+	<geometrySize>93130</geometrySize>
+	<minUVDensity>0.000088</minUVDensity>
+</root>

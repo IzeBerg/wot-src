@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_tiled_atlas_global.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>111</materialKind>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_tileUVScale
+						<Vector4>
+							10 10 0.000000 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_atlasIndexes
+						<Vector4>
+							0.000000 2 1 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>
+							0.86 0.86 0.86 1
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>
+							0.82 0.82 0.82 1
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_atlasSizes
+						<Vector4>2 2 1 1</Vector4>
+					</property>
+					<property>
+						globalTex
+						<Texture>content/Outland/hd_out_EU_006_SwedenMountains/hd_out_EU_006_SwedenMountain_01_GT.dds</Texture>
+					</property>
+					<property>
+						atlasAlbedoHeight
+						<Texture>content/Environment/00_Atlases/hd_out_UNI_002_Glacier_atlas_AM.atlas</Texture>
+					</property>
+					<property>
+						atlasNormalGlossSpec
+						<Texture>content/Environment/00_Atlases/hd_out_UNI_002_Glacier_atlas_GBMT.atlas</Texture>
+					</property>
+					<property>
+						atlasMetallicAO
+						<Texture>content/Environment/00_Atlases/hd_out_UNI_002_Glacier_atlas_MAO.atlas</Texture>
+					</property>
+					<property>
+						atlasBlend
+						<Texture>content/Environment/00_Atlases/hd_out_EU_006_SwedenMountains_atlas_blend.png</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Environment/00_Tiles/Glacier_rocks_DM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-5.023824 11.234145 -4.524254</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-32.852623 -2.624651 -22.836237</min>
+		<max>29.084585 25.900764 22.843046</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>9962</geometrySize>
+	<minUVDensity>0.000044</minUVDensity>
+</root>

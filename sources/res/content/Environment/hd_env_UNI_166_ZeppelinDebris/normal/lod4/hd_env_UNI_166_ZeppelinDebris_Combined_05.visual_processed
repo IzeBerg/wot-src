@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd2</identifier>
+					<fx>shaders/std_effects/PBS_ext_dual.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						alphaReference
+						<Int>100</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_UNI_161_Zeppelin/hd_env_UNI_161_Zeppelin_Fabric_01_AM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap2
+						<Texture>content/Environment/hd_env_UNI_166_ZeppelinDebris/hd_env_UNI_166_ZeppelinDebris_AM2.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env_UNI_166_ZeppelinDebris/hd_env_UNI_166_ZeppelinDebris_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_UNI_166_ZeppelinDebris/hd_env_UNI_166_ZeppelinDebris_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>2.620427 0.572054 0.797651</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd1</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						alphaReference
+						<Int>32</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_UNI_161_Zeppelin/hd_env_UNI_161_Zeppelin_01_AM.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env_UNI_161_Zeppelin/hd_env_UNI_161_Zeppelin_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_UNI_161_Zeppelin/hd_env_UNI_161_Zeppelin_01_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-1.232544 -1.694561 3.214523</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						alphaReference
+						<Int>70</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_UNI_161_Zeppelin/hd_env_UNI_161_Zeppelin_02_AM.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env_UNI_161_Zeppelin/hd_env_UNI_161_Zeppelin_02_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_UNI_161_Zeppelin/hd_env_UNI_161_Zeppelin_02_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>1.405306 1.077240 -0.176137</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-9.495330 -6.206960 -14.822308</min>
+		<max>13.259360 8.530252 15.350356</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>33666</geometrySize>
+	<minUVDensity>0.000662</minUVDensity>
+</root>

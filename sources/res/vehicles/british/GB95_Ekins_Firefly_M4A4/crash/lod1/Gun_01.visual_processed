@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_guns</identifier>
+					<mfm>materials/template_mfms/lightonly.mfm</mfm>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/british/GB95_Ekins_Firefly_M4A4/Ekins_Firefly_M4A4_guns_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/british/GB95_Ekins_Firefly_M4A4/Ekins_Firefly_M4A4_guns_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/british/GB95_Ekins_Firefly_M4A4/Ekins_Firefly_M4A4_guns_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/british/GB95_Ekins_Firefly_M4A4/Ekins_Firefly_M4A4_guns_AO.dds</Texture>
+					</property>
+					<property>
+						crashTileMap
+						<Texture>vehicles/russian/Tank_detail/crash_tile.dds</Texture>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_useNormalPackDXT1
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_crashUVTiling
+						<Vector4>
+							1 1 0.000000 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						colorIdMap
+						<Texture>vehicles/british/GB95_Ekins_Firefly_M4A4/Ekins_Firefly_M4A4_guns_ID.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.000153 -0.053375 1.307005</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.524366 -0.399984 -1.067292</min>
+		<max>0.524672 0.293234 3.681303</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>52762</geometrySize>
+	<minUVDensity>0.016746</minUVDensity>
+</root>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext_dual.fx</fx>
+					<materialKind>111</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/Buildings/bld_107_04_StadiumStands/bld_107_04_StadiumStands_AM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap2
+						<Texture>content/Buildings/bld_107_04_StadiumStands/bld_107_04_StadiumStands_AM2.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_vertexColorMode
+						<Int>3</Int>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Buildings/bld_107_04_StadiumStands/bld_107_04_StadiumStands_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Buildings/bld_107_04_StadiumStands/bld_107_04_StadiumStands_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.033962 3.833270 0.137594</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-13.476917 -0.587119 -5.248616</min>
+		<max>13.552220 8.253659 5.523804</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>39972</geometrySize>
+	<minUVDensity>0.002980</minUVDensity>
+</root>

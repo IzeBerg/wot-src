@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>nodes_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_Fire_1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 -0.032460 -2.107978</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Fire_2</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>-0.579654 -0.327015 1.715300</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_LFront</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.862031 0.506855</row1>
+					<row2>0.000000 -0.506855 0.862031</row2>
+					<row3>-1.444412 0.065350 2.694386</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_LRear</identifier>
+				<transform>
+					<row0>-1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.644187 -0.764868</row1>
+					<row2>-0.000000 -0.764868 -0.644187</row2>
+					<row3>-1.444412 -0.001065 -2.602476</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_RFront</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.862031 0.506855</row1>
+					<row2>0.000000 -0.506855 0.862031</row2>
+					<row3>1.444877 0.065782 2.694897</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_RRear</identifier>
+				<transform>
+					<row0>-1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.644187 -0.764868</row1>
+					<row2>-0.000000 -0.764868 -0.644187</row2>
+					<row3>1.444877 -0.001051 -2.602494</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_Exhaus_1</identifier>
+				<transform>
+					<row0>0.580996 0.813907 0.000053</row0>
+					<row1>0.813907 -0.580996 -0.000102</row1>
+					<row2>-0.000053 0.000102 -1.000000</row2>
+					<row3>-1.352283 0.352561 -2.583278</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_Exhaus_2</identifier>
+				<transform>
+					<row0>0.563374 -0.826202 -0.000054</row0>
+					<row1>-0.826202 -0.563374 -0.000102</row1>
+					<row2>0.000054 0.000102 -1.000000</row2>
+					<row3>1.359783 0.352561 -2.583131</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_turretJoint</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.006493 0.576830 0.345237</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_hull_01</identifier>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/american/A136_T42/_skins/A136_T42_3Dst/T42_3Dst_hull_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/american/A136_T42/_skins/A136_T42_3Dst/T42_3Dst_hull_01_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/american/A136_T42/_skins/A136_T42_3Dst/T42_3Dst_hull_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/american/A136_T42/_skins/A136_T42_3Dst/T42_3Dst_hull_01_AO.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.005322 -0.022097 0.078428</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>equipment</identifier>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/american/A136_T42/_skins/A136_T42_3Dst/T42_3Dst_equipment_AM.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/american/A136_T42/_skins/A136_T42_3Dst/T42_3Dst_equipment_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/american/A136_T42/_skins/A136_T42_3Dst/T42_3Dst_equipment_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/american/A136_T42/_skins/A136_T42_3Dst/T42_3Dst_equipment_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.616833 0.093930 -0.505765</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.925130 -0.658248 -3.151109</min>
+		<max>1.925089 0.572610 3.070789</max>
+	</boundingBox>
+	<geometrySize>84074</geometrySize>
+	<minUVDensity>0.001567</minUVDensity>
+</root>

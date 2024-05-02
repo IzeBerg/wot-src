@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_ndo</identifier>
+					<fx>shaders/std_effects/PBS_tiled_atlas_global.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>111</materialKind>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						globalTex
+						<Texture>content/Outland/hd_out_EU_063_Mountains/hd_out_EU_063_Mountain_03_NM.dds</Texture>
+					</property>
+					<property>
+						g_tileUVScale
+						<Vector4>
+							16 16 0.000000 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>
+							0.68 0.68 0.68 1
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>
+							0.995 0.995 0.995 1
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>
+							0.455 0.4849 0.52 1
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_atlasSizes
+						<Vector4>3 2 8 1</Vector4>
+					</property>
+					<property>
+						g_atlasIndexes
+						<Vector4>
+							0.000000 1 2 6
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Environment/00_Tiles/Dirt_DDay_Soil_01_Dirt.dds</Texture>
+					</property>
+					<property>
+						atlasNormalGlossSpec
+						<Texture>content/Environment/00_Atlases/hd_out_EU_063_Mountains_GBMT.atlas</Texture>
+					</property>
+					<property>
+						atlasMetallicAO
+						<Texture>content/Environment/00_Atlases/hd_out_EU_063_Mountains_MAO.atlas</Texture>
+					</property>
+					<property>
+						atlasBlend
+						<Texture>content/Outland/00_Atlases/hd_out_EU_063_Mountain_Atlas_Blend.png</Texture>
+					</property>
+					<property>
+						atlasAlbedoHeight
+						<Texture>content/Environment/00_Atlases/hd_out_EU_063_Mountains_AM.atlas</Texture>
+					</property>
+					<property>
+						g_dirtParams
+						<Vector4>
+							0.1 0.2 1 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>
+							0.47 0.43 0.38 0.02
+							<!--BW_String-->
+						</Vector4>
+					</property>
+				</material>
+				<groupOrigin>-2.170609 10.271384 17.321968</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-137.188217 -17.029608 -54.945320</min>
+		<max>132.817993 37.572380 89.635330</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>102526</geometrySize>
+	<minUVDensity>0.000008</minUVDensity>
+</root>

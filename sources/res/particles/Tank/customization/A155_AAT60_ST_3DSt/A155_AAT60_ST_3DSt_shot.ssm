@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<params>
+		<param>
+			<name>isDeferred</name>
+			<type>bool</type>
+		</param>
+		<param>
+			<name>Shot</name>
+			<type>trigger</type>
+		</param>
+	</params>
+	<node>
+		<name>gun_idle</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/empty_sequence.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>-1</loop>
+		<transition>
+			<to>gun_shot</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>trigger</type>
+					<name>Shot</name>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-349.000000 -320.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>gun_shot</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/A155_AAT60_ST_3DSt/gun_shot.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<transition>
+			<to>gun_idle</to>
+			<blendDuration>1.670000</blendDuration>
+			<conditions/>
+		</transition>
+		<uiPosition>-346.000000 -200.000000 0.000000</uiPosition>
+	</node>
+</root>

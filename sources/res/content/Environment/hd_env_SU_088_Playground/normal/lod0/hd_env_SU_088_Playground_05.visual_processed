@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>hd_env_SU_088_Playground_05</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_module0</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.378765 0.118055</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>d_metal0</identifier>
+					<collisionFlags>128</collisionFlags>
+					<materialKind>87</materialKind>
+					<fx>shaders/std_effects/PBS_ext_dual.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_SU_088_Playground/hd_env_SU_088_Playground_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_SU_088_Playground/hd_env_SU_088_Playground_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env_SU_088_Playground/hd_env_SU_088_Playground_GMM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap2
+						<Texture>content/Environment/hd_env_SU_088_Playground/hd_env_SU_088_Playground_UV2.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>false</Bool>
+					</property>
+				</material>
+				<groupOrigin>-0.081925 -0.058450 -0.003606</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>n_metal0</identifier>
+					<collisionFlags>128</collisionFlags>
+					<materialKind>73</materialKind>
+					<fx>shaders/std_effects/PBS_ext_dual.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_SU_088_Playground/hd_env_SU_088_Playground_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_SU_088_Playground/hd_env_SU_088_Playground_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env_SU_088_Playground/hd_env_SU_088_Playground_GMM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap2
+						<Texture>content/Environment/hd_env_SU_088_Playground/hd_env_SU_088_Playground_UV2.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>false</Bool>
+					</property>
+				</material>
+				<groupOrigin>-0.000000 1.232104 0.000000</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.720146 -0.289774 -1.911674</min>
+		<max>0.556295 2.753982 1.911674</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>44060</geometrySize>
+	<minUVDensity>0.173797</minUVDensity>
+</root>

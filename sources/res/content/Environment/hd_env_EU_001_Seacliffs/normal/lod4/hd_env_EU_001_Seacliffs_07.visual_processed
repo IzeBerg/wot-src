@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_tiled_global.fx</fx>
+					<materialKind>107</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						albedoHeightTile0
+						<Texture>content/Environment/00_Tiles/dds/Grass_Green_01_AM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile1
+						<Texture>content/Environment/00_Tiles/dds/Rock_Smooth_02_01_AM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile2
+						<Texture>content/Environment/00_Tiles/dds/Rock_Smooth_01_AM.dds</Texture>
+					</property>
+					<property>
+						blendMask
+						<Texture>content/Environment/hd_env_EU_001_Seacliffs/hd_env_EU_001_Seacliffs_05_06_blend.png</Texture>
+					</property>
+					<property>
+						colorTex
+						<Texture>content/Environment/hd_env_EU_001_Seacliffs/hd_env_EU_001_Seacliffs_05_06_GCM.dds</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Buildings/00_Tiles/Dirt_Leaks_02_512_DM.dds</Texture>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.550000 0.430000 0.380000 0.200000</Vector4>
+					</property>
+					<property>
+						g_dirtColorParams
+						<Vector4>0.060000 0.180000 0.580000 0.540000</Vector4>
+					</property>
+					<property>
+						g_tileUVScale
+						<Vector4>20.000000 20.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						globalTex
+						<Texture>content/Environment/hd_env_EU_001_Seacliffs/hd_env_EU_001_Seacliffs_05_06_GNM.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile0
+						<Texture>content/Environment/00_Tiles/dds/hd_env_EU_001_Cliff_rocks_moss_01_Dark_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile1
+						<Texture>content/Environment/00_Tiles/dds/Rock_Smooth_02_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile2
+						<Texture>content/Environment/00_Tiles/dds/Rock_Smooth_01_MAO.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile0
+						<Texture>content/Environment/00_Tiles/dds/hd_env_EU_001_Cliff_rocks_moss_01_Dark_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile1
+						<Texture>content/Environment/00_Tiles/dds/Rock_Smooth_02_01_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile2
+						<Texture>content/Environment/00_Tiles/dds/Rock_Smooth_01_GBMT.dds</Texture>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>-0.088272 4.312499 -1.027835</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-9.102591 -0.676957 -6.164663</min>
+		<max>9.009488 9.155159 4.085767</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>1996</geometrySize>
+	<minUVDensity>0.000503</minUVDensity>
+</root>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_tiled_atlas_global.fx</fx>
+					<materialKind>111</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						atlasAlbedoHeight
+						<Texture>content/Environment/hd_env_UNI_028_Rocks/hd_env_UNI_028_Rocks_01_atlas_AM.atlas</Texture>
+					</property>
+					<property>
+						atlasBlend
+						<Texture>content/Outland/hd_out_AS_004_DetianFalls/hd_out_AS_004_DetianFalls_01_atlas_blend.png</Texture>
+					</property>
+					<property>
+						atlasMetallicAO
+						<Texture>content/Environment/hd_env_UNI_028_Rocks/hd_env_UNI_028_Rocks_01_atlas_MAO.atlas</Texture>
+					</property>
+					<property>
+						atlasNormalGlossSpec
+						<Texture>content/Environment/hd_env_UNI_028_Rocks/hd_env_UNI_028_Rocks_01_atlas_GBMT.atlas</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Environment/00_Tiles/hd_out_AS_004_DetianFalls_01_DM.dds</Texture>
+					</property>
+					<property>
+						g_atlasIndexes
+						<Vector4>4.000000 6.000000 2.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_atlasSizes
+						<Vector4>3.000000 3.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.470588 0.431373 0.380392 0.200000</Vector4>
+					</property>
+					<property>
+						g_dirtParams
+						<Vector4>3.000000 20.000000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_fakeShadowsParams
+						<Vector4>0.240000 0.500000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>0.988235 0.827451 0.694118 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>1.000000 0.862745 0.639216 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>0.580392 0.745098 0.796078 1.000000</Vector4>
+					</property>
+					<property>
+						g_tileUVScale
+						<Vector4>15.000000 15.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						globalTex
+						<Texture>content/Outland/hd_out_AS_004_DetianFalls/hd_out_AS_004_DetianFalls_01_GT.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>3.663429 7.508930 9.065088</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-40.107368 -0.608435 -32.556473</min>
+		<max>47.434227 15.626295 50.686649</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>4212</geometrySize>
+	<minUVDensity>0.000050</minUVDensity>
+</root>

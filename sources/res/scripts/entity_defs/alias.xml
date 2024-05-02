@@ -880,6 +880,9 @@
 			<gunPiercing>
 				<Type>FLOAT</Type>
 			</gunPiercing>
+			<gunCanShoot>
+				<Type>BOOL</Type>
+			</gunCanShoot>
 		</Properties>
 	</VEHICLE_SYNC_ATTRS>
 	<IS_OBSERVED_BY_ENEMY>
@@ -2914,4 +2917,19 @@
 			</lastVisiblePosition>
 		</Properties>
 	</PVE_TARGET_MARKER>
+	<VEHICLE_FRAGMENTS>
+		FIXED_DICT
+		<Properties>
+			<vehicleID>
+				<Type>OBJECT_ID</Type>
+			</vehicleID>
+			<fragmentsCount>
+				<Type>UINT8</Type>
+			</fragmentsCount>
+		</Properties>
+	</VEHICLE_FRAGMENTS>
+	<VEHICLES_FRAGMENTS>
+		ARRAY
+		<of>VEHICLE_FRAGMENTS</of>
+	</VEHICLES_FRAGMENTS>
 </root>

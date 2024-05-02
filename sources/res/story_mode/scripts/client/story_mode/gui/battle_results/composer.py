@@ -1,6 +1,6 @@
 from logging import getLogger
 from gui.battle_results.composer import IStatsComposer
-from gui.battle_results.settings import PLAYER_TEAM_RESULT
+from gui.battle_results.settings import PLAYER_TEAM_RESULT, REQUEST_SOURCE
 from helpers import dependency
 from story_mode.gui.battle_results.templates import STORY_MODE_RESULTS_BLOCK
 from story_mode.gui.shared.event_dispatcher import showEpilogueWindow, showOnboardingBattleResultWindow, showPrebattleAndGoToQueue, showBattleResultWindow
@@ -28,10 +28,10 @@ class StoryModeStatsComposer(IStatsComposer):
         return
 
     @staticmethod
-    def onShowResults(arenaUniqueID):
+    def onShowResults(arenaUniqueID, requestSource=REQUEST_SOURCE.OTHER):
         pass
 
-    def onResultsPosted(self, arenaUniqueID):
+    def onResultsPosted(self, arenaUniqueID, requestSource=REQUEST_SOURCE.OTHER):
         resultVO = self._block.getVO()
         if resultVO['isForceOnboarding']:
             if not self._storyModeCtrl.isEnabled():

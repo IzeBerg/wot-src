@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd1</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h26_battle_royale/Buildings/h26_br_002_WorkshopOld_AM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Hangars/h26_battle_royale/Buildings/h26_br_002_WorkshopOld_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Hangars/h26_battle_royale/Buildings/h26_br_002_WorkshopOld_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.463347 7.018935 -9.439366</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd_15</identifier>
+					<fx>shaders/std_effects/glow.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h26_battle_royale/Buildings/Detail_Set_Industrial_01_AM.dds</Texture>
+					</property>
+					<property>
+						selfIllumination
+						<Float>20.000000</Float>
+					</property>
+				</material>
+				<groupOrigin>1.324463 3.769954 -4.988557</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						alphaReference
+						<Int>42</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h26_battle_royale/Buildings/Detail_Set_Industrial_01_AM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Hangars/h26_battle_royale/Buildings/Detail_Set_Industrial_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Hangars/h26_battle_royale/Buildings/Detail_Set_Industrial_01_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.768536 7.803752 -9.484088</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				3
+				<material>
+					<identifier>s_nd12</identifier>
+					<fx>shaders/std_effects/PBS_glass.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						dirtAlbedoMap
+						<Texture>content/Hangars/h26_battle_royale/Buildings/Detail_Set_Industrial_01_AM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.123379 7.000172 -10.953711</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.931600 -1.496890 -19.727253</min>
+		<max>1.997431 15.538127 0.951721</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>100108</geometrySize>
+	<minUVDensity>0.000199</minUVDensity>
+</root>

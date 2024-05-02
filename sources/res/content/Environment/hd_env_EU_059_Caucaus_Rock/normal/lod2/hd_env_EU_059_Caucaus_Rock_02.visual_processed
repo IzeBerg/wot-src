@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd1</identifier>
+					<fx>shaders/std_effects/PBS_tiled_atlas_global.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>111</materialKind>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_tileUVScale
+						<Vector4>
+							20 20 0.000000 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_atlasSizes
+						<Vector4>2 2 5 1</Vector4>
+					</property>
+					<property>
+						atlasNormalGlossSpec
+						<Texture>content/Environment/00_Atlases/hd_env_059_Caucasus_Rocks_atlas_GBMT.atlas</Texture>
+					</property>
+					<property>
+						atlasMetallicAO
+						<Texture>content/Environment/00_Atlases/hd_env_059_Caucasus_Rocks_atlas_MAO.atlas</Texture>
+					</property>
+					<property>
+						atlasAlbedoHeight
+						<Texture>content/Environment/00_Atlases/hd_env_059_Caucasus_Rocks_atlas_AM.atlas</Texture>
+					</property>
+					<property>
+						globalTex
+						<Texture>content/Environment/hd_env_EU_059_Caucaus_Rock/hd_env_059_Caucasus_Rocks_02_GT.dds</Texture>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>
+							0.67 0.67 0.67 1
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>
+							0.84 0.84 0.84 1
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Environment/00_Tiles/Moss_GreenDirt_02_DM.dds</Texture>
+					</property>
+					<property>
+						atlasBlend
+						<Texture>content/Environment/00_Atlases/hd_env_059_Caucasus_Rocks_atlas_blend.png</Texture>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>
+							0.47 0.43 0.38 1
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_atlasIndexes
+						<Vector4>
+							1 2 0.000000 1
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>
+							0.89 0.89 0.89 1
+							<!--BW_String-->
+						</Vector4>
+					</property>
+				</material>
+				<groupOrigin>-0.306845 0.809101 -0.020795</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-4.797525 -1.484267 -6.335708</min>
+		<max>4.183835 3.102470 6.310709</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>19380</geometrySize>
+	<minUVDensity>0.000840</minUVDensity>
+</root>

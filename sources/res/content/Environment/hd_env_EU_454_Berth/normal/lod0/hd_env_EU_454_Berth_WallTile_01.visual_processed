@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>hd_env_EU_454_Berth_WallTile_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd1</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>108</materialKind>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_EU_454_Berth/hd_env_EU_454_Berth_02_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env_EU_454_Berth/hd_env_EU_454_Berth_02_GMM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_EU_454_Berth/hd_env_EU_454_Berth_02_AM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.307568 0.449888 -2.395221</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.702280 -0.048504 -4.900746</min>
+		<max>0.087143 0.948280 0.110303</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>5160</geometrySize>
+	<minUVDensity>0.022733</minUVDensity>
+</root>

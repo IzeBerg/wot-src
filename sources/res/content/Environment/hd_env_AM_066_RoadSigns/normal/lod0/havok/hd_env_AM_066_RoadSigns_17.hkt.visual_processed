@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>n2</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+		</node>
+		<node>
+			<identifier>n3</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+		</node>
+		<node>
+			<identifier>n4</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+		</node>
+		<node>
+			<identifier>n5</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+		</node>
+		<node>
+			<identifier>RoadSigns_17_</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>n2</node>
+		<node>n3</node>
+		<node>n4</node>
+		<node>n5</node>
+		<node>RoadSigns_17_</node>
+		<geometry>
+			<vertices>part.vertices</vertices>
+			<primitive>part.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>n_metal0</identifier>
+					<fx>shaders/std_effects/PBS_ext_rigid_skinned.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_AM_066_RoadSigns/hd_env_AM_066_RoadSigns_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_AM_066_RoadSigns/hd_env_AM_066_RoadSigns_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env_AM_066_RoadSigns/hd_env_AM_066_RoadSigns_GMM.dds</Texture>
+					</property>
+				</material>
+				<fade_material>
+					<identifier>n_metal0_fade</identifier>
+					<fx>shaders/std_effects/PBS_ext_rigid_skinned_havok_fade.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_AM_066_RoadSigns/hd_env_AM_066_RoadSigns_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_AM_066_RoadSigns/hd_env_AM_066_RoadSigns_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env_AM_066_RoadSigns/hd_env_AM_066_RoadSigns_GMM.dds</Texture>
+					</property>
+					<property>
+						texRandom
+						<Texture>maps/fx/random.dds</Texture>
+					</property>
+					<property>
+						alphaReference
+						<Int>1</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+				</fade_material>
+				<groupOrigin>0.014430 1.714719 0.042718</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.485260 -0.000033 -0.087188</min>
+		<max>0.514120 3.429471 0.172623</max>
+	</boundingBox>
+	<geometrySize>78336</geometrySize>
+	<minUVDensity>0.037403</minUVDensity>
+</root>

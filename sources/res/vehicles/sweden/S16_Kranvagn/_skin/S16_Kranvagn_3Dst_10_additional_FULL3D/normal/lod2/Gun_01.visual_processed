@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>nodes_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>Gun</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+				<node>
+					<identifier>G</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 3.000000</row3>
+					</transform>
+					<node>
+						<identifier>HP_gunFire</identifier>
+						<transform>
+							<row0>1.000000 0.000000 0.000000</row0>
+							<row1>0.000000 1.000000 0.000000</row1>
+							<row2>0.000000 0.000000 1.000000</row2>
+							<row3>-0.000380 0.228047 1.725377</row3>
+						</transform>
+					</node>
+					<node>
+						<identifier>G_BlendBone</identifier>
+						<transform>
+							<row0>1.000000 0.000000 0.000000</row0>
+							<row1>0.000000 1.000000 0.000000</row1>
+							<row2>0.000000 0.000000 -1.000000</row2>
+							<row3>0.000000 0.000000 -3.000000</row3>
+						</transform>
+					</node>
+				</node>
+				<node>
+					<identifier>Gun_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 -1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>Joint_01</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.999999 0.001184</row1>
+					<row2>0.000000 -0.001184 0.999999</row2>
+					<row3>0.000000 0.614128 0.054351</row3>
+				</transform>
+				<node>
+					<identifier>Joint_01_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 -0.000000</row0>
+						<row1>0.000000 0.999999 -0.001184</row1>
+						<row2>0.000000 -0.001184 -0.999999</row2>
+						<row3>0.000000 -0.614192 -0.053624</row3>
+					</transform>
+				</node>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>G_BlendBone</node>
+		<node>Gun_BlendBone</node>
+		<node>Joint_01_BlendBone</node>
+		<geometry>
+			<vertices>gun_0Shape1.vertices</vertices>
+			<primitive>gun_0Shape1.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_guns_skinned</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/sweden/S16_Kranvagn/_skin/S16_Kranvagn_3Dst_10_additional_FULL3D/Kranvagn_3Dst_guns_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/sweden/S16_Kranvagn/_skin/S16_Kranvagn_3Dst_10_additional_FULL3D/Kranvagn_3Dst_guns_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/sweden/S16_Kranvagn/_skin/S16_Kranvagn_3Dst_10_additional_FULL3D/Kranvagn_3Dst_guns_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/sweden/S16_Kranvagn/_skin/S16_Kranvagn_3Dst_10_additional_FULL3D/Kranvagn_3Dst_guns_AO.dds</Texture>
+					</property>
+					<property>
+						colorIdMap
+						<Texture>vehicles/sweden/S16_Kranvagn/_skin/S16_Kranvagn_3Dst_10_additional_FULL3D/Kranvagn_3Dst_guns_ID.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.000186 0.787616 -0.534156</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>tank_equipment_01_skinned</identifier>
+					<property>
+						diffuseMap
+						<Texture>vehicles/sweden/S16_Kranvagn/_skin/S16_Kranvagn_3Dst_10_additional_FULL3D/Kranvagn_3Dst_equipment_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/sweden/S16_Kranvagn/_skin/S16_Kranvagn_3Dst_10_additional_FULL3D/Kranvagn_3Dst_equipment_01_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/sweden/S16_Kranvagn/_skin/S16_Kranvagn_3Dst_10_additional_FULL3D/Kranvagn_3Dst_equipment_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/sweden/S16_Kranvagn/_skin/S16_Kranvagn_3Dst_10_additional_FULL3D/Kranvagn_3Dst_equipment_01_ANM.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+				</material>
+				<groupOrigin>0.147495 0.630339 3.197725</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<constraints/>
+	<boundingBox>
+		<min>-1.177895 -0.362199 -5.079171</min>
+		<max>1.177524 1.937431 4.839156</max>
+	</boundingBox>
+	<geometrySize>199762</geometrySize>
+	<minUVDensity>0.006672</minUVDensity>
+</root>

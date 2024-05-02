@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>base_04</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+		</node>
+		<node>
+			<identifier>base_05</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+		</node>
+		<node>
+			<identifier>base_02</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+		</node>
+		<node>
+			<identifier>pole_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+		</node>
+		<node>
+			<identifier>pole_02</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+		</node>
+		<node>
+			<identifier>plate_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+		</node>
+		<node>
+			<identifier>plate_02</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+		</node>
+		<node>
+			<identifier>plate_03</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+		</node>
+		<node>
+			<identifier>plate_04</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+		</node>
+		<node>
+			<identifier>base_03</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+		</node>
+		<node>
+			<identifier>base_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>base_04</node>
+		<node>base_05</node>
+		<node>base_02</node>
+		<node>pole_01</node>
+		<node>pole_02</node>
+		<node>plate_01</node>
+		<node>plate_02</node>
+		<node>plate_03</node>
+		<node>plate_04</node>
+		<node>base_03</node>
+		<node>base_01</node>
+		<geometry>
+			<vertices>part.vertices</vertices>
+			<primitive>part.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>n_metal0</identifier>
+					<fx>shaders/std_effects/PBS_ext_rigid_skinned.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						normalMap
+						<Texture>content/GatesAndFences/hd_gaf_EU_024_ParkFence/hd_gaf_EU_024_ParkFence_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/GatesAndFences/hd_gaf_EU_024_ParkFence/hd_gaf_EU_024_ParkFence_GMM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/GatesAndFences/hd_gaf_EU_024_ParkFence/hd_gaf_EU_024_ParkFence_AM.dds</Texture>
+					</property>
+				</material>
+				<fade_material>
+					<identifier>n_metal0_fade</identifier>
+					<fx>shaders/std_effects/PBS_ext_rigid_skinned_havok_fade.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						normalMap
+						<Texture>content/GatesAndFences/hd_gaf_EU_024_ParkFence/hd_gaf_EU_024_ParkFence_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/GatesAndFences/hd_gaf_EU_024_ParkFence/hd_gaf_EU_024_ParkFence_GMM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/GatesAndFences/hd_gaf_EU_024_ParkFence/hd_gaf_EU_024_ParkFence_AM.dds</Texture>
+					</property>
+					<property>
+						texRandom
+						<Texture>maps/fx/random.dds</Texture>
+					</property>
+					<property>
+						alphaReference
+						<Int>1</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+				</fade_material>
+				<groupOrigin>-0.000882 0.472334 -1.984895</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.230024 0.001419 -3.968673</min>
+		<max>0.228260 0.943250 -0.001118</max>
+	</boundingBox>
+	<geometrySize>28320</geometrySize>
+	<minUVDensity>0.093317</minUVDensity>
+</root>

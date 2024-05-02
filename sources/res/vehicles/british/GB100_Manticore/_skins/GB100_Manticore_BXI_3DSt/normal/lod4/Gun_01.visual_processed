@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>nodes_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>Gun</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000001 -0.000005 -0.000004</row3>
+				</transform>
+				<node>
+					<identifier>Eye_root</identifier>
+					<transform>
+						<row0>0.715659 0.000000 0.698450</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>-0.698450 0.000000 0.715659</row2>
+						<row3>-0.000071 0.387357 -0.432911</row3>
+					</transform>
+					<node>
+						<identifier>Eyelid</identifier>
+						<transform>
+							<row0>1.000000 0.000000 0.000000</row0>
+							<row1>0.000000 1.000000 0.000000</row1>
+							<row2>0.000000 0.000000 1.000000</row2>
+							<row3>-0.000001 0.277091 0.000001</row3>
+						</transform>
+						<node>
+							<identifier>Eyelid_BlendBone</identifier>
+							<transform>
+								<row0>0.715659 0.000000 -0.698450</row0>
+								<row1>0.000000 1.000000 0.000000</row1>
+								<row2>-0.698450 0.000000 -0.715659</row2>
+								<row3>0.302421 -0.664443 0.309769</row3>
+							</transform>
+						</node>
+					</node>
+					<node>
+						<identifier>Eye_root_BlendBone</identifier>
+						<transform>
+							<row0>0.715659 0.000000 -0.698450</row0>
+							<row1>0.000000 1.000000 0.000000</row1>
+							<row2>-0.698450 0.000000 -0.715659</row2>
+							<row3>0.302420 -0.387352 0.309770</row3>
+						</transform>
+					</node>
+				</node>
+				<node>
+					<identifier>G</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 3.000000</row3>
+					</transform>
+					<node>
+						<identifier>HP_gunFire</identifier>
+						<transform>
+							<row0>1.000000 0.000000 0.000000</row0>
+							<row1>0.000000 1.000000 0.000000</row1>
+							<row2>-0.000000 0.000000 1.000000</row2>
+							<row3>0.012496 0.000000 1.957094</row3>
+						</transform>
+					</node>
+					<node>
+						<identifier>G_BlendBone</identifier>
+						<transform>
+							<row0>1.000000 0.000000 0.000000</row0>
+							<row1>0.000000 1.000000 0.000000</row1>
+							<row2>0.000000 0.000000 -1.000000</row2>
+							<row3>-0.000001 0.000005 -2.999996</row3>
+						</transform>
+					</node>
+					<node>
+						<identifier>HP_GB100_Manticore_attachment_gun</identifier>
+						<transform>
+							<row0>1.000000 0.000000 0.000000</row0>
+							<row1>0.000000 1.000000 0.000000</row1>
+							<row2>0.000000 0.000000 1.000000</row2>
+							<row3>0.000000 0.000000 -3.000000</row3>
+						</transform>
+					</node>
+				</node>
+				<node>
+					<identifier>Gun_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 -1.000000</row2>
+						<row3>-0.000001 0.000005 0.000004</row3>
+					</transform>
+				</node>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>G_BlendBone</node>
+		<node>Gun_BlendBone</node>
+		<node>Eyelid_BlendBone</node>
+		<node>Eye_root_BlendBone</node>
+		<geometry>
+			<vertices>gun_01_Shape.vertices</vertices>
+			<primitive>gun_01_Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_proxy_skinned</identifier>
+					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>vehicles/british/GB100_Manticore/_skins/GB100_Manticore_BXI_3DSt/Manticore_BXI_3DSt_proxy_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/british/GB100_Manticore/_skins/GB100_Manticore_BXI_3DSt/Manticore_BXI_3DSt_proxy_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/british/GB100_Manticore/_skins/GB100_Manticore_BXI_3DSt/Manticore_BXI_3DSt_proxy_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/british/GB100_Manticore/_skins/GB100_Manticore_BXI_3DSt/Manticore_BXI_3DSt_proxy_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.028674 -0.185334 -1.686426</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<constraints/>
+	<boundingBox>
+		<min>-1.072800 -0.708488 -1.599086</min>
+		<max>1.015455 0.337811 4.971929</max>
+	</boundingBox>
+	<geometrySize>3876</geometrySize>
+	<minUVDensity>0.005281</minUVDensity>
+</root>

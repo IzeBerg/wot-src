@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>nodes_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_gunJoint</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>-0.008329 0.525455 0.069396</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_havoc</identifier>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						alphaReference
+						<Int>128</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/british/GB100_Manticore/_skins/GB100_Manticore_3DSt_HW_21/Manticore_3Dst_HW_21_havoc_AM.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/british/GB100_Manticore/_skins/GB100_Manticore_3DSt_HW_21/Manticore_3Dst_HW_21_havoc_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/british/GB100_Manticore/_skins/GB100_Manticore_3DSt_HW_21/Manticore_3Dst_HW_21_havoc_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/british/GB100_Manticore/_skins/GB100_Manticore_3DSt_HW_21/Manticore_3Dst_HW_21_havoc_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.001533 0.182446 0.596677</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>tank_equipment</identifier>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>vehicles/british/GB100_Manticore/_skins/GB100_Manticore_3DSt_HW_21/Manticore_3Dst_HW_21_equipment_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/british/GB100_Manticore/_skins/GB100_Manticore_3DSt_HW_21/Manticore_3Dst_HW_21_equipment_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/british/GB100_Manticore/_skins/GB100_Manticore_3DSt_HW_21/Manticore_3Dst_HW_21_equipment_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/british/GB100_Manticore/_skins/GB100_Manticore_3DSt_HW_21/Manticore_3Dst_HW_21_equipment_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.002891 0.389645 0.048236</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>tank_turret_01</identifier>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>vehicles/british/GB100_Manticore/_skins/GB100_Manticore_3DSt_HW_21/Manticore_3Dst_HW_21_turret_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/british/GB100_Manticore/_skins/GB100_Manticore_3DSt_HW_21/Manticore_3Dst_HW_21_turret_01_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/british/GB100_Manticore/_skins/GB100_Manticore_3DSt_HW_21/Manticore_3Dst_HW_21_turret_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/british/GB100_Manticore/_skins/GB100_Manticore_3DSt_HW_21/Manticore_3Dst_HW_21_turret_01_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.007576 0.247777 -0.035763</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.195337 -0.040967 -1.072256</min>
+		<max>1.201120 0.618431 1.029232</max>
+	</boundingBox>
+	<geometrySize>16258</geometrySize>
+	<minUVDensity>0.004464</minUVDensity>
+</root>

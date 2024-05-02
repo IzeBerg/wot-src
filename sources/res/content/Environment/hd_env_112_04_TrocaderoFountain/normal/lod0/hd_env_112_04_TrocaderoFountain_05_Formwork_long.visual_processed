@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>hd_env_112_04_TrocaderoFountain_05_Formwork_long</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_module0</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 1.623357 0.000000</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>lod0</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+				<node>
+					<identifier>s_wall0</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_wall_0</identifier>
+					<collisionFlags>131</collisionFlags>
+					<materialKind>73</materialKind>
+				</material>
+				<groupOrigin>0.005449 2.640515 -0.146266</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_ramp_0</identifier>
+					<collisionFlags>131</collisionFlags>
+					<materialKind>111</materialKind>
+				</material>
+				<groupOrigin>0.000000 1.413882 0.000000</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>d_wood0_1</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>87</materialKind>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_112_04_TrocaderoFountain/hd_env_112_04_TrocaderoFountain_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_112_04_TrocaderoFountain/hd_env_112_04_TrocaderoFountain_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env_112_04_TrocaderoFountain/hd_env_112_04_TrocaderoFountain_GMM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.073908 1.686954 -0.075380</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				3
+				<material>
+					<identifier>n_wood0_1</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>73</materialKind>
+					<fx>shaders/std_effects/PBS_ext_dual.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_112_04_TrocaderoFountain/hd_env_112_04_TrocaderoFountain_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_112_04_TrocaderoFountain/hd_env_112_04_TrocaderoFountain_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env_112_04_TrocaderoFountain/hd_env_112_04_TrocaderoFountain_GMM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap2
+						<Texture>content/Environment/hd_env_112_04_TrocaderoFountain/hd_env_112_04_TrocaderoFountain_AM2.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.005449 1.586811 -0.155045</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				4
+				<material>
+					<identifier>s_nd0</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>111</materialKind>
+					<fx>shaders/std_effects/PBS_ext_dual.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_112_04_TrocaderoFountain/hd_env_112_04_TrocaderoFountain_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_112_04_TrocaderoFountain/hd_env_112_04_TrocaderoFountain_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env_112_04_TrocaderoFountain/hd_env_112_04_TrocaderoFountain_GMM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap2
+						<Texture>content/Environment/hd_env_112_04_TrocaderoFountain/hd_env_112_04_TrocaderoFountain_AM2.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.000000 -0.155264 0.000000</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-2.454079 -1.830679 -8.177490</min>
+		<max>2.454079 4.000000 8.177490</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>192626</geometrySize>
+	<minUVDensity>0.006697</minUVDensity>
+</root>

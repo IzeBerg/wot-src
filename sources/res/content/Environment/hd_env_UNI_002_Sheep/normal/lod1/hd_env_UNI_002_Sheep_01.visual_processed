@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>101</materialKind>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_UNI_002_Sheep/hd_env_UNI_002_Sheep_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env_UNI_002_Sheep/hd_env_UNI_002_Sheep_GMM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_UNI_002_Sheep/hd_env_UNI_002_Sheep_AM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.000454 0.440205 -0.175526</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.225716 -0.002376 -0.769841</min>
+		<max>0.226624 0.882786 0.418789</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>18320</geometrySize>
+	<minUVDensity>0.328301</minUVDensity>
+</root>

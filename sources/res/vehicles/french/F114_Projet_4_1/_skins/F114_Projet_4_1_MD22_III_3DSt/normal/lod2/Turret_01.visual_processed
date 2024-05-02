@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>nodes_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_gunJoint</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.593862 -0.300538</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_turret_01</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/french/F114_Projet_4_1/_skins/F114_Projet_4_1_MD22_III_3DSt/Projet_4_1_MD22_III_3DSt_turret_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/french/F114_Projet_4_1/_skins/F114_Projet_4_1_MD22_III_3DSt/Projet_4_1_MD22_III_3DSt_turret_01_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/french/F114_Projet_4_1/_skins/F114_Projet_4_1_MD22_III_3DSt/Projet_4_1_MD22_III_3DSt_turret_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/french/F114_Projet_4_1/_skins/F114_Projet_4_1_MD22_III_3DSt/Projet_4_1_MD22_III_3DSt_turret_01_AO.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.132905 0.642418 0.570312</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>tank_equipment</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/french/F114_Projet_4_1/_skins/F114_Projet_4_1_MD22_III_3DSt/Projet_4_1_MD22_III_3DSt_equipment_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/french/F114_Projet_4_1/_skins/F114_Projet_4_1_MD22_III_3DSt/Projet_4_1_MD22_III_3DSt_equipment_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/french/F114_Projet_4_1/_skins/F114_Projet_4_1_MD22_III_3DSt/Projet_4_1_MD22_III_3DSt_equipment_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/french/F114_Projet_4_1/_skins/F114_Projet_4_1_MD22_III_3DSt/Projet_4_1_MD22_III_3DSt_equipment_AO.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.000522 0.285619 0.344132</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.107506 0.024818 -0.906826</min>
+		<max>1.300812 1.260017 2.047450</max>
+	</boundingBox>
+	<geometrySize>84966</geometrySize>
+	<minUVDensity>0.004874</minUVDensity>
+</root>

@@ -142,7 +142,8 @@ class FadeManager(object):
         yield self._transit(self._doHide)
 
     def hideImmediately(self):
-        self._gui.windowsManager.onWindowStatusChanged -= self._windowStatusChanged
+        if self._gui.windowsManager:
+            self._gui.windowsManager.onWindowStatusChanged -= self._windowStatusChanged
         if self._currentWindow:
             self._currentWindow.destroy()
             self._currentWindow = None

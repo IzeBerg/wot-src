@@ -897,7 +897,7 @@ def showTankPremiumAboutPage():
 
 
 @adisp.adisp_process
-def showBrowserOverlayView(url, alias=VIEW_ALIAS.BROWSER_LOBBY_TOP_SUB, params=None, callbackOnLoad=None, webHandlers=None, forcedSkipEscape=False, browserParams=None, hiddenLayers=None, parent=None):
+def showBrowserOverlayView(url, alias=VIEW_ALIAS.BROWSER_LOBBY_TOP_SUB, params=None, callbackOnLoad=None, webHandlers=None, forcedSkipEscape=False, browserParams=None, hiddenLayers=None, parent=None, callbackOnClose=None):
     if url:
         if browserParams is None:
             browserParams = {}
@@ -908,7 +908,8 @@ def showBrowserOverlayView(url, alias=VIEW_ALIAS.BROWSER_LOBBY_TOP_SUB, params=N
            'webHandlers': webHandlers, 
            'forcedSkipEscape': forcedSkipEscape, 
            'browserParams': browserParams, 
-           'hiddenLayers': hiddenLayers or ()}), EVENT_BUS_SCOPE.LOBBY)
+           'hiddenLayers': hiddenLayers or (), 
+           'callbackOnClose': callbackOnClose}), EVENT_BUS_SCOPE.LOBBY)
     return
 
 

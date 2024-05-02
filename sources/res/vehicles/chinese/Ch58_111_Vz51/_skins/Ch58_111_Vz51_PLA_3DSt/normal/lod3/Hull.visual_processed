@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>nodes_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_Fire_1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.043888 -2.742742</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Fire_2</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.043888 2.153784</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_LFront</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.226158 0.974091</row1>
+					<row2>0.000000 -0.974091 0.226158</row2>
+					<row3>-1.343394 -0.093273 3.628639</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_LRear</identifier>
+				<transform>
+					<row0>-1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.454734 -0.890627</row1>
+					<row2>-0.000000 -0.890627 -0.454734</row2>
+					<row3>-1.343394 -0.088709 -3.519315</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_RFront</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.226158 0.974091</row1>
+					<row2>0.000000 -0.974091 0.226158</row2>
+					<row3>1.343390 -0.093208 3.628639</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_RRear</identifier>
+				<transform>
+					<row0>-1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.454734 -0.890627</row1>
+					<row2>-0.000000 -0.890627 -0.454734</row2>
+					<row3>1.343390 -0.088709 -3.519314</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_Exhaus_1</identifier>
+				<transform>
+					<row0>-0.183013 -0.183013 -0.965926</row0>
+					<row1>-0.683013 -0.683013 0.258819</row1>
+					<row2>-0.707107 0.707107 -0.000000</row2>
+					<row3>-1.449254 0.588640 -1.451586</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_Exhaus_2</identifier>
+				<transform>
+					<row0>0.000000 0.000000 -1.000000</row0>
+					<row1>-0.707107 0.707107 -0.000000</row1>
+					<row2>0.707107 0.707107 0.000000</row2>
+					<row3>1.450654 0.588640 -1.451586</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_turretJoint</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>-0.000011 0.580252 0.777528</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_hull_01</identifier>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/chinese/Ch58_111_Vz51/_skins/Ch58_111_Vz51_PLA_3DSt/111_Vz51_PLA_3DSt_hull_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/chinese/Ch58_111_Vz51/_skins/Ch58_111_Vz51_PLA_3DSt/111_Vz51_PLA_3DSt_hull_01_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/chinese/Ch58_111_Vz51/_skins/Ch58_111_Vz51_PLA_3DSt/111_Vz51_PLA_3DSt_hull_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/chinese/Ch58_111_Vz51/_skins/Ch58_111_Vz51_PLA_3DSt/111_Vz51_PLA_3DSt_hull_01_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.001305 0.007619 0.018790</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>tank_equipment_01</identifier>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/chinese/Ch58_111_Vz51/_skins/Ch58_111_Vz51_PLA_3DSt/111_Vz51_PLA_3DSt_equipment_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/chinese/Ch58_111_Vz51/_skins/Ch58_111_Vz51_PLA_3DSt/111_Vz51_PLA_3DSt_equipment_01_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/chinese/Ch58_111_Vz51/_skins/Ch58_111_Vz51_PLA_3DSt/111_Vz51_PLA_3DSt_equipment_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/chinese/Ch58_111_Vz51/_skins/Ch58_111_Vz51_PLA_3DSt/111_Vz51_PLA_3DSt_equipment_01_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-1.463743 0.477264 -1.656927</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>tank_net_01</identifier>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						alphaReference
+						<Int>116</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/chinese/Ch58_111_Vz51/_skins/Ch58_111_Vz51_PLA_3DSt/111_Vz51_PLA_3DSt_hull_01_2_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/chinese/Ch58_111_Vz51/_skins/Ch58_111_Vz51_PLA_3DSt/111_Vz51_PLA_3DSt_hull_01_2_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/chinese/Ch58_111_Vz51/_skins/Ch58_111_Vz51_PLA_3DSt/111_Vz51_PLA_3DSt_hull_01_2_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/chinese/Ch58_111_Vz51/_skins/Ch58_111_Vz51_PLA_3DSt/111_Vz51_PLA_3DSt_hull_01_2_ANM.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>0.033278 0.146672 -3.137493</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.883596 -0.595972 -3.770385</min>
+		<max>1.813440 0.621211 3.800466</max>
+	</boundingBox>
+	<geometrySize>78224</geometrySize>
+	<minUVDensity>0.000143</minUVDensity>
+</root>

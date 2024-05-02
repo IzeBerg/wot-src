@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext_dual.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>111</materialKind>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/MillitaryInstallations/mil_122_05_PillboxesWalls_Mark1/mil_122_05_PillboxesWalls_Mark1_tile_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/MillitaryInstallations/mil_122_05_PillboxesWalls_Mark1/mil_122_05_PillboxesWalls_Mark1_tile_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/MillitaryInstallations/mil_122_05_PillboxesWalls_Mark1/mil_122_05_PillboxesWalls_Mark1_tile_GMM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap2
+						<Texture>content/MillitaryInstallations/mil_122_05_PillboxesWalls_Mark1/mil_122_05_PillboxesWalls_Mark1_AM2.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.090981 1.190562 0.922594</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-4.041235 -2.320178 -4.154812</min>
+		<max>4.223197 4.701302 6.000000</max>
+	</boundingBox>
+	<geometrySize>16254</geometrySize>
+	<minUVDensity>0.009203</minUVDensity>
+</root>

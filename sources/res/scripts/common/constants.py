@@ -294,6 +294,7 @@ class ARENA_BONUS_TYPE:
     EXTERNAL_RANGE = (
      SORTIE_2, FORT_BATTLE_2, GLOBAL_MAP,
      TOURNAMENT, TOURNAMENT_CLAN, TOURNAMENT_REGULAR, TOURNAMENT_EVENT, TOURNAMENT_COMP7)
+    REPLAY_DISABLE_RANGE = []
 
 
 ARENA_BONUS_TYPE_NAMES = dict([ (k, v) for k, v in ARENA_BONUS_TYPE.__dict__.iteritems() if isinstance(v, int) ])
@@ -2392,8 +2393,8 @@ class VISIBILITY:
     MIN_RADIUS = 50.0
 
 
-VEHICLE_ATTRS_TO_SYNC = frozenset(['circularVisionRadius', 'gun/piercing'])
-VEHICLE_ATTRS_TO_SYNC_ALIASES = {'gun/piercing': 'gunPiercing'}
+VEHICLE_ATTRS_TO_SYNC = frozenset(['circularVisionRadius', 'gun/piercing', 'gun/canShoot'])
+VEHICLE_ATTRS_TO_SYNC_ALIASES = {'gun/piercing': 'gunPiercing', 'gun/canShoot': 'gunCanShoot'}
 
 class OBSTACLE_KIND:
     CHUNK_DESTRUCTIBLE = 1
@@ -3409,3 +3410,10 @@ PVE_MINIMAP_DEFAULT_ZOOM = 1.0
 PVE_MINIMAP_DEFAULT_BORDERS = (Vector2(), Vector2())
 INFINITE_SHELL_TAG = 'infinite'
 INFINITE_SHELL_COUNT = 9
+
+class EquipmentApplicationPointParams(object):
+    EQUIPMENT_ID = 'equipmentID'
+    APPLICATION_POSITION = 'applicationPosition'
+    APPLICATION_DIRECTION = 'applicationDirection'
+    REQUIRED_PARAMS = (
+     EQUIPMENT_ID, APPLICATION_POSITION, APPLICATION_DIRECTION)

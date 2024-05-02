@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>111</materialKind>
+					<fx>shaders/std_effects/PBS_tiled_atlas_global.fx</fx>
+					<property>
+						g_tileUVScale
+						<Vector4>16.000000 16.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						g_atlasIndexes
+						<Vector4>0.000000 3.000000 0.000000 3.000000</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>0.955000 0.908873 0.854725 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>0.890000 0.823250 0.823250 1.000000</Vector4>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						globalTex
+						<Texture>content/Environment/hd_env_NA_047_Canada_CoverStones/hd_Canada_CoverStones_04_NM.dds</Texture>
+					</property>
+					<property>
+						atlasAlbedoHeight
+						<Texture>content/Environment/00_Atlases/env213_Atlas_AM.dds</Texture>
+					</property>
+					<property>
+						atlasNormalGlossSpec
+						<Texture>content/Environment/00_Atlases/env213_Atlas_GBMT.dds</Texture>
+					</property>
+					<property>
+						atlasMetallicAO
+						<Texture>content/Environment/00_Atlases/env213_Atlas_MAO.dds</Texture>
+					</property>
+					<property>
+						atlasBlend
+						<Texture>content/Environment/00_Atlases/hd_env_NA_047_Canada_CoverStones_Atlas_Blend.png</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Environment/00_Tiles/env213_RocksDirt_01_DM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.105023 1.517175 0.080170</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-7.336568 -1.406071 -6.697413</min>
+		<max>7.126522 4.440422 6.857752</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>61108</geometrySize>
+	<minUVDensity>0.000978</minUVDensity>
+</root>

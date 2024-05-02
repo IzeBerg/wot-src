@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>HP_Fire_1</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 -0.102776 -2.820987</row3>
+			</transform>
+		</node>
+		<node>
+			<identifier>HP_Fire_2</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 -0.171267 2.168040</row3>
+			</transform>
+		</node>
+		<node>
+			<identifier>HP_TrackUp_LFront</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 0.624073 0.781366</row1>
+				<row2>0.000000 -0.781366 0.624073</row2>
+				<row3>-1.465019 -0.069954 3.199346</row3>
+			</transform>
+		</node>
+		<node>
+			<identifier>HP_TrackUp_LRear</identifier>
+			<transform>
+				<row0>-1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 0.736414 -0.676531</row1>
+				<row2>-0.000000 -0.676531 -0.736414</row2>
+				<row3>-1.465019 0.086567 -3.108063</row3>
+			</transform>
+		</node>
+		<node>
+			<identifier>HP_TrackUp_RFront</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 0.624073 0.781366</row1>
+				<row2>0.000000 -0.781366 0.624073</row2>
+				<row3>1.465019 -0.069954 3.199346</row3>
+			</transform>
+		</node>
+		<node>
+			<identifier>HP_TrackUp_RRear</identifier>
+			<transform>
+				<row0>-1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 0.736414 -0.676531</row1>
+				<row2>-0.000000 -0.676531 -0.736414</row2>
+				<row3>1.465019 0.086567 -3.108063</row3>
+			</transform>
+		</node>
+		<node>
+			<identifier>HP_Track_Exhaus_1</identifier>
+			<transform>
+				<row0>0.954212 -0.156416 -0.254977</row0>
+				<row1>-0.000000 -0.852392 0.522903</row1>
+				<row2>-0.299131 -0.498960 -0.813363</row2>
+				<row3>0.248993 0.158246 -3.159252</row3>
+			</transform>
+		</node>
+		<node>
+			<identifier>HP_Track_Exhaus_2</identifier>
+			<transform>
+				<row0>0.910819 0.215857 0.351872</row0>
+				<row1>-0.000000 -0.852392 0.522903</row1>
+				<row2>0.412806 -0.476270 -0.776375</row2>
+				<row3>-0.238391 0.158246 -3.159252</row3>
+			</transform>
+		</node>
+		<node>
+			<identifier>HP_turretJoint</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.373244 0.575780</row3>
+			</transform>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_hull</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						g_detailPowerAlbedo
+						<Float>
+							0.11
+							<!--BW_String-->
+						</Float>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/american/A106_M48A2_120/M48A2_hull_01_AM.dds</Texture>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/american/A106_M48A2_120/M48A2_hull_01_AO.dds</Texture>
+					</property>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+					<property>
+						g_useNormalPackDXT1
+						<Bool>false</Bool>
+					</property>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						g_detailPowerGloss
+						<Float>
+							0.35
+							<!--BW_String-->
+						</Float>
+					</property>
+					<property>
+						g_maskBias
+						<Float>
+							0.22
+							<!--BW_String-->
+						</Float>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/american/A106_M48A2_120/M48A2_hull_01_GMM.dds</Texture>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>
+							7.0137 7.0137 0.000000 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_detailPower
+						<Float>5</Float>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/american/A106_M48A2_120/M48A2_hull_01_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.000023 -0.109354 0.094897</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.815987 -0.868851 -3.345300</min>
+		<max>1.816033 0.650143 3.535094</max>
+	</boundingBox>
+	<geometrySize>286832</geometrySize>
+	<minUVDensity>0.000756</minUVDensity>
+</root>

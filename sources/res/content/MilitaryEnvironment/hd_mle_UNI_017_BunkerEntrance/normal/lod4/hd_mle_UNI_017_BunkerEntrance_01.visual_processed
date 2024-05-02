@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>hd_mle_UNI_017_BunkerEntrance_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>lod4</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+				<node>
+					<identifier>s0</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>s2</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd2</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_017_BunkerEntrance/hd_mle_UNI_017_BunkerEntrance_BAM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_017_BunkerEntrance/hd_mle_UNI_017_BunkerEntrance_BGMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_017_BunkerEntrance/hd_mle_UNI_017_BunkerEntrance_BANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-10.752207 25.378735 0.011133</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>111</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_017_BunkerEntrance/hd_mle_UNI_017_BunkerEntrance_BAM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_017_BunkerEntrance/hd_mle_UNI_017_BunkerEntrance_BGMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_017_BunkerEntrance/hd_mle_UNI_017_BunkerEntrance_BANM.dds</Texture>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>22.898632 28.874969 0.418612</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>s_wall_0</identifier>
+					<materialKind>0</materialKind>
+					<collisionFlags>144</collisionFlags>
+				</material>
+				<groupOrigin>-6.928988 9.928512 0.028872</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-27.099716 -19.279261 -47.868458</min>
+		<max>72.896996 77.029198 48.705681</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>10998</geometrySize>
+	<minUVDensity>0.000001</minUVDensity>
+</root>
