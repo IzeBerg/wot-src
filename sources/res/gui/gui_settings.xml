@@ -1062,7 +1062,7 @@
 		<type>dict</type>
 		<value>
 			<item>
-				/$LANGUAGE_CODE/promocontent/13BPContentPage/
+				/$LANGUAGE_CODE/promocontent/14BPContentPage/
 				<name>infoPage</name>
 				<type>url</type>
 			</item>
@@ -1072,7 +1072,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				/$LANGUAGE_CODE/promocontent/13BPIntroVideo/
+				/$LANGUAGE_CODE/promocontent/14BPIntroVideo/
 				<name>introVideo</name>
 				<type>url</type>
 			</item>
@@ -1094,15 +1094,56 @@
 				<value>
 					<item>
 						<type>string</type>
-						<value>styles</value>
-					</item>
-					<item>
-						<type>string</type>
 						<value>seasonDescription</value>
 					</item>
+				</value>
+			</item>
+		</value>
+	</setting>
+	<setting>
+		<name>battlePassVisuals</name>
+		<type>dict</type>
+		<value>
+			<item>
+				<name>season</name>
+				<type>dict</type>
+				<value>
 					<item>
-						<type>string</type>
-						<value>shopCategory</value>
+						<name>hasAdditionalBackground</name>
+						<type>bool</type>
+						<value>False</value>
+					</item>
+					<item>
+						<name>hasSpecialTankmenScreen</name>
+						<type>bool</type>
+						<value>False</value>
+					</item>
+				</value>
+			</item>
+			<item>
+				<name>chapter</name>
+				<type>dict</type>
+				<value>
+					<item>
+						<name>hasChapterLogoInBg</name>
+						<type>dict</type>
+						<value>
+							<item>
+								<name>141</name>
+								<type>bool</type>
+								<value>False</value>
+							</item>
+							<item>
+								<name>142</name>
+								<type>bool</type>
+								<value>False</value>
+							</item>
+							<item>
+								<name>143</name>
+								<type>bool</type>
+								<value>False</value>
+							</item>
+						</value>
 					</item>
 				</value>
 			</item>

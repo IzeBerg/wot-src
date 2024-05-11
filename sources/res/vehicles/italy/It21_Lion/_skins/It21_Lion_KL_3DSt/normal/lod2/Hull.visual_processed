@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>nodes_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_Fire_1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.089169 -2.672725</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Fire_2</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.740883 0.089169 2.074492</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_LFront</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 -0.108526 0.994094</row1>
+					<row2>0.000000 -0.994094 -0.108526</row2>
+					<row3>-1.346527 -0.209068 3.243262</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_LRear</identifier>
+				<transform>
+					<row0>-1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.258819 -0.965926</row1>
+					<row2>-0.000000 -0.965926 -0.258819</row2>
+					<row3>-1.346527 -0.164479 -3.123396</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_RFront</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 -0.108526 0.994094</row1>
+					<row2>0.000000 -0.994094 -0.108526</row2>
+					<row3>1.345749 -0.209059 3.243261</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_RRear</identifier>
+				<transform>
+					<row0>-1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.258819 -0.965926</row1>
+					<row2>-0.000000 -0.965926 -0.258819</row2>
+					<row3>1.345749 -0.164609 -3.123334</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_Exhaus_1</identifier>
+				<transform>
+					<row0>0.258819 0.965926 -0.000000</row0>
+					<row1>-0.000000 0.000000 1.000000</row1>
+					<row2>0.965926 -0.258819 0.000000</row2>
+					<row3>1.555282 0.463077 -2.718265</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_Exhaus_2</identifier>
+				<transform>
+					<row0>-0.258819 0.965926 0.000000</row0>
+					<row1>-0.000000 0.000000 -1.000000</row1>
+					<row2>-0.965926 -0.258819 0.000000</row2>
+					<row3>-1.555283 0.463077 -2.718265</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_turretJoint</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>-0.000000 0.536580 0.543219</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_hull_01</identifier>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/italy/It21_Lion/_skins/It21_Lion_KL_3DSt/Lion_KL_3Dst_hull_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/italy/It21_Lion/_skins/It21_Lion_KL_3DSt/Lion_KL_3Dst_hull_01_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/italy/It21_Lion/_skins/It21_Lion_KL_3DSt/Lion_KL_3Dst_hull_01_AM.dds</Texture>
+					</property>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/italy/It21_Lion/_skins/It21_Lion_KL_3DSt/Lion_KL_3Dst_hull_01_AO.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.002624 0.133751 -0.119338</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>tank_turret_01_2</identifier>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/italy/It21_Lion/_skins/It21_Lion_KL_3DSt/Lion_KL_3DSt_turret_01_2_AM.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/italy/It21_Lion/_skins/It21_Lion_KL_3DSt/Lion_KL_3DSt_turret_01_2_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/italy/It21_Lion/_skins/It21_Lion_KL_3DSt/Lion_KL_3DSt_turret_01_2_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/italy/It21_Lion/_skins/It21_Lion_KL_3DSt/Lion_KL_3DSt_turret_01_2_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.039456 0.394613 1.718426</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>tank_net</identifier>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/italy/It21_Lion/_skins/It21_Lion_KL_3DSt/Lion_KL_3DSt_net_AM.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						alphaReference
+						<Int>64</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/italy/It21_Lion/_skins/It21_Lion_KL_3DSt/Lion_KL_3DSt_net_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/italy/It21_Lion/_skins/It21_Lion_KL_3DSt/Lion_KL_3DSt_net_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/italy/It21_Lion/_skins/It21_Lion_KL_3DSt/Lion_KL_3DSt_net_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.027936 0.403528 2.160184</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.738721 -0.630162 -3.656427</min>
+		<max>1.709183 0.897661 3.417751</max>
+	</boundingBox>
+	<geometrySize>160690</geometrySize>
+	<minUVDensity>0.002254</minUVDensity>
+</root>

@@ -2,7 +2,7 @@ import logging, typing
 from collections import namedtuple
 import BigWorld
 from BWUtil import AsyncReturn
-from CurrentVehicle import g_currentVehicle, g_currentPreviewVehicle
+from CurrentVehicle import g_currentVehicle
 from Event import Event
 from Math import Matrix
 from account_helpers.AccountSettings import AccountSettings, CUSTOMIZATION_SECTION, CAROUSEL_ARROWS_HINT_SHOWN_FIELD, IS_CUSTOMIZATION_INTRO_VIEWED
@@ -198,6 +198,7 @@ class MainView(LobbySubView, CustomizationMainViewMeta, LobbyHeaderVisibility):
     _COMMON_SOUND_SPACE = C11N_SOUND_SPACE
     _ZOOM_ON_EMBLEM = 0.1
     _ZOOM_ON_INSCRIPTION = 0.1
+    _ENVIRONMENT_NAME = 'Customization'
     lobbyContext = dependency.descriptor(ILobbyContext)
     itemsCache = dependency.descriptor(IItemsCache)
     service = dependency.descriptor(ICustomizationService)
@@ -216,7 +217,6 @@ class MainView(LobbySubView, CustomizationMainViewMeta, LobbyHeaderVisibility):
         self._seasonSoundAnimation = None
         self.__ctx = None
         self.__viewCtx = ctx or {}
-        self.__renderEnv = None
         self.__initAnchorsPositionsCallback = None
         self.__selectedSlot = C11nId()
         self.__locateCameraToStyleInfo = False
@@ -592,6 +592,9 @@ class MainView(LobbySubView, CustomizationMainViewMeta, LobbyHeaderVisibility):
         if self.__ctx.c11nCameraManager is None:
             return
         else:
+            entity = self.hangarSpace.getVehicleEntity()
+            if entity is None or entity.appearance is None or not entity.isVehicleLoaded:
+                return
             self.__updateAnchorsData()
             anchorParams = self.__ctx.mode.getAnchorParams(slotId)
             if anchorParams is None:
@@ -767,7 +770,6 @@ class MainView(LobbySubView, CustomizationMainViewMeta, LobbyHeaderVisibility):
         self.__ctx.events.onSlotSelected += self.__onSlotSelected
         self.__ctx.events.onSlotUnselected += self.__onSlotUnselected
         self.__ctx.events.onAnchorsStateChanged += self.__onAnchorsStateChanged
-        g_currentPreviewVehicle.selectNoVehicle()
         g_currentVehicle.onChangeStarted += self.__onVehicleChangeStarted
         g_currentVehicle.onChanged += self.__onVehicleChanged
         self.settingsCore.onSettingsChanged += self.__onSettingsChanged
@@ -786,8 +788,7 @@ class MainView(LobbySubView, CustomizationMainViewMeta, LobbyHeaderVisibility):
         self.as_selectSeasonS(SEASON_TYPE_TO_IDX[self.__ctx.season])
         self.fireEvent(CameraRelatedEvents(CameraRelatedEvents.FORCE_DISABLE_IDLE_PARALAX_MOVEMENT, ctx={'isDisable': True, 'setIdle': True, 'setParallax': True}), scope=EVENT_BUS_SCOPE.LOBBY)
         self.suspendLobbyHeader(self.key, HeaderMenuVisibilityState.ONLINE_COUNTER)
-        self.__renderEnv = BigWorld.CustomizationEnvironment()
-        self.__renderEnv.enable(True)
+        self.__setEnvironment()
         if self.__ctx.vehicleAnchorsUpdater is not None:
             self.__ctx.vehicleAnchorsUpdater.setMainView(self.flashObject)
         entity = self.hangarSpace.getVehicleEntity()
@@ -828,8 +829,7 @@ class MainView(LobbySubView, CustomizationMainViewMeta, LobbyHeaderVisibility):
             self.__styleInfo.disableBlur()
             self.__disableStyleInfoSound()
         self._seasonSoundAnimation = None
-        self.__renderEnv.enable(False)
-        self.__renderEnv = None
+        self.__resetEnvironment()
         self.__viewLifecycleWatcher.stop()
         self.__viewLifecycleWatcher = None
         self.service.stopHighlighter()
@@ -881,6 +881,18 @@ class MainView(LobbySubView, CustomizationMainViewMeta, LobbyHeaderVisibility):
         if self.__itemsGrabMode:
             self.__clearGrabModeCallback()
             self.__finishGrabMode()
+        return
+
+    def __setEnvironment(self):
+        if self.hangarSpace.space is not None:
+            space = self.hangarSpace.space.getSpace()
+            space.setEnvironment(self._ENVIRONMENT_NAME)
+        return
+
+    def __resetEnvironment(self):
+        if self.hangarSpace.space is not None:
+            space = self.hangarSpace.space.getSpace()
+            space.resetEnvironment()
         return
 
     def _getUpdatedAnchorsData(self):

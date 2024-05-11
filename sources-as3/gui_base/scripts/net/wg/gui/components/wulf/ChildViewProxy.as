@@ -155,7 +155,7 @@ package net.wg.gui.components.wulf
          this.updateWrapperSize();
       }
       
-      public function setWindowPosition(param1:IViewWrapper, param2:int, param3:int) : void
+      public function setWindowPosition(param1:IViewWrapper, param2:Number, param3:Number) : void
       {
          App.utils.asserter.assert(false,Errors.ABSTRACT_INVOKE);
       }

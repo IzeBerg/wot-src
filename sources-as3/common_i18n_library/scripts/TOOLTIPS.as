@@ -6985,6 +6985,30 @@ package
       
       public static const NOTRECRUITEDTANKMAN_TANKMEN_BP13_9_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/tankmen_bp13_9/howToGetInfo";
       
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_1_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_bp14_1/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_1_DESC:String = "#tooltips:notrecruitedtankman/tankmen_bp14_1/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_1_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/tankmen_bp14_1/howToGetInfo";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_2_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_bp14_2/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_2_DESC:String = "#tooltips:notrecruitedtankman/tankmen_bp14_2/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_2_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/tankmen_bp14_2/howToGetInfo";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_3_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_bp14_3/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_3_DESC:String = "#tooltips:notrecruitedtankman/tankmen_bp14_3/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_3_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/tankmen_bp14_3/howToGetInfo";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_4_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_bp14_4/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_4_DESC:String = "#tooltips:notrecruitedtankman/tankmen_bp14_4/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_4_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/tankmen_bp14_4/howToGetInfo";
+      
       public static const NOTRECRUITEDTANKMAN_TANKMEN_AUC_1_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_auc_1/label";
       
       public static const NOTRECRUITEDTANKMAN_TANKMEN_AUC_1_DESC:String = "#tooltips:notrecruitedtankman/tankmen_auc_1/desc";
@@ -7395,6 +7419,42 @@ package
       
       public static const NOTRECRUITEDTANKMAN_WT_2023_DRIVER_LABEL:String = "#tooltips:notrecruitedtankman/wt_2023_driver/label";
       
+      public static const NOTRECRUITEDTANKMAN_COSM02_KIRK_LABEL:String = "#tooltips:notrecruitedtankman/cosm02_Kirk/label";
+      
+      public static const NOTRECRUITEDTANKMAN_COSM02_KIRK_DESC:String = "#tooltips:notrecruitedtankman/cosm02_Kirk/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_COSM02_KIRK_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/cosm02_Kirk/howToGetInfo";
+      
+      public static const NOTRECRUITEDTANKMAN_COSM02_SPOCK_LABEL:String = "#tooltips:notrecruitedtankman/cosm02_Spock/label";
+      
+      public static const NOTRECRUITEDTANKMAN_COSM02_SPOCK_DESC:String = "#tooltips:notrecruitedtankman/cosm02_Spock/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_COSM02_SPOCK_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/cosm02_Spock/howToGetInfo";
+      
+      public static const NOTRECRUITEDTANKMAN_COSM02_SULU_LABEL:String = "#tooltips:notrecruitedtankman/cosm02_Sulu/label";
+      
+      public static const NOTRECRUITEDTANKMAN_COSM02_SULU_DESC:String = "#tooltips:notrecruitedtankman/cosm02_Sulu/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_COSM02_SULU_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/cosm02_Sulu/howToGetInfo";
+      
+      public static const NOTRECRUITEDTANKMAN_COSM02_MCCOY_LABEL:String = "#tooltips:notrecruitedtankman/cosm02_McCoy/label";
+      
+      public static const NOTRECRUITEDTANKMAN_COSM02_MCCOY_DESC:String = "#tooltips:notrecruitedtankman/cosm02_McCoy/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_COSM02_MCCOY_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/cosm02_McCoy/howToGetInfo";
+      
+      public static const NOTRECRUITEDTANKMAN_COSM02_UHURA_LABEL:String = "#tooltips:notrecruitedtankman/cosm02_Uhura/label";
+      
+      public static const NOTRECRUITEDTANKMAN_COSM02_UHURA_DESC:String = "#tooltips:notrecruitedtankman/cosm02_Uhura/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_COSM02_UHURA_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/cosm02_Uhura/howToGetInfo";
+      
+      public static const NOTRECRUITEDTANKMAN_COSM02_SCOTTY_LABEL:String = "#tooltips:notrecruitedtankman/cosm02_Scotty/label";
+      
+      public static const NOTRECRUITEDTANKMAN_COSM02_SCOTTY_DESC:String = "#tooltips:notrecruitedtankman/cosm02_Scotty/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_COSM02_SCOTTY_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/cosm02_Scotty/howToGetInfo";
+      
       public static const COMMANDERBONUS_NAME:String = "#tooltips:commanderBonus/name";
       
       public static const COMMANDERBONUS_DESCRIPTION:String = "#tooltips:commanderBonus/description";
@@ -7540,6 +7600,18 @@ package
       public static const BUTTONS_RETRAIN_BODY:String = "#tooltips:buttons/retrain/body";
       
       public static const BUTTONS_INCREASE_BODY:String = "#tooltips:buttons/increase/body";
+      
+      public static const LIVEOPS_ENTRYPOINTTOOLTIP_TITLE:String = "#tooltips:liveOps/entryPointTooltip/title";
+      
+      public static const LIVEOPS_ENTRYPOINTTOOLTIP_BODY:String = "#tooltips:liveOps/entryPointTooltip/body";
+      
+      public static const LIVEOPS_ENTRYPOINTTOOLTIP_DATE_START:String = "#tooltips:liveOps/entryPointTooltip/date/start";
+      
+      public static const LIVEOPS_ENTRYPOINTTOOLTIP_DATE_END:String = "#tooltips:liveOps/entryPointTooltip/date/end";
+      
+      public static const LIVEOPS_ENTRYPOINTTOOLTIP_FINISHED:String = "#tooltips:liveOps/entryPointTooltip/finished";
+      
+      public static const LIVEOPS_ENTRYPOINTTOOLTIP_RESULTS:String = "#tooltips:liveOps/entryPointTooltip/results";
       
       public static const ELEN_SUMMARY_RANK_ENUM:Array = [ELEN_SUMMARY_RANK_1,ELEN_SUMMARY_RANK_2,ELEN_SUMMARY_RANK_3,ELEN_SUMMARY_RANK_4,ELEN_SUMMARY_RANK_NORANK];
       

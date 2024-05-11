@@ -68,44 +68,6 @@
 			</roundStart>
 		</Properties>
 	</PUBLIC_ARENA_INFO>
-	<PUBLIC_VEHICLE_INFO>
-		FIXED_DICT
-		<Properties>
-			<name>
-				<Type>STRING</Type>
-			</name>
-			<compDescr>
-				<Type>STRING</Type>
-			</compDescr>
-			<outfit>
-				<Type>STRING</Type>
-			</outfit>
-			<index>
-				<Type>UINT8</Type>
-			</index>
-			<team>
-				<Type>UINT8</Type>
-			</team>
-			<prebattleID>
-				<Type>OBJECT_ID</Type>
-			</prebattleID>
-			<marksOnGun>
-				<Type>UINT8</Type>
-			</marksOnGun>
-			<crewGroups>
-				<Type>
-					ARRAY
-					<of>UINT16</of>
-				</Type>
-			</crewGroups>
-			<commanderSkinID>
-				<Type>UINT16</Type>
-			</commanderSkinID>
-			<maxHealth>
-				<Type>UINT16</Type>
-			</maxHealth>
-		</Properties>
-	</PUBLIC_VEHICLE_INFO>
 	<ATTACK_RESULTS>
 		FIXED_DICT
 		<Properties>
@@ -454,6 +416,44 @@
 			</showDogTagToKiller>
 		</Properties>
 	</DOG_TAG_SETTINGS>
+	<PUBLIC_VEHICLE_INFO>
+		FIXED_DICT
+		<Properties>
+			<name>
+				<Type>STRING</Type>
+			</name>
+			<compDescr>
+				<Type>STRING</Type>
+			</compDescr>
+			<outfit>
+				<Type>STRING</Type>
+			</outfit>
+			<index>
+				<Type>UINT8</Type>
+			</index>
+			<team>
+				<Type>UINT8</Type>
+			</team>
+			<prebattleID>
+				<Type>OBJECT_ID</Type>
+			</prebattleID>
+			<marksOnGun>
+				<Type>UINT8</Type>
+			</marksOnGun>
+			<crewGroups>
+				<Type>
+					ARRAY
+					<of>UINT16</of>
+				</Type>
+			</crewGroups>
+			<commanderSkinID>
+				<Type>UINT16</Type>
+			</commanderSkinID>
+			<maxHealth>
+				<Type>UINT16</Type>
+			</maxHealth>
+		</Properties>
+	</PUBLIC_VEHICLE_INFO>
 	<ARENA_VEH_INFO>
 		FIXED_DICT
 		<Properties>
@@ -1040,18 +1040,6 @@
 			</times>
 		</Properties>
 	</DROWN_LEVEL>
-	<SpaceToD>
-		FIXED_DICT
-		<TypeName>SpaceToD</TypeName>
-		<Properties>
-			<initialTimeOfDay>
-				<Type>FLOAT</Type>
-			</initialTimeOfDay>
-			<gameSecondsPerSecond>
-				<Type>FLOAT</Type>
-			</gameSecondsPerSecond>
-		</Properties>
-	</SpaceToD>
 	<BATTLE_EVENT>
 		FIXED_DICT
 		<AllowNone>true</AllowNone>
@@ -1934,9 +1922,6 @@
 		FIXED_DICT
 		<AllowNone>true</AllowNone>
 		<Properties>
-			<currentPos>
-				<Type>VECTOR3</Type>
-			</currentPos>
 			<position>
 				<Type>VECTOR3</Type>
 			</position>

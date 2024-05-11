@@ -1,9 +1,5 @@
 import BattleReplay
 
-class CallbackDataNames(object):
-    FL_MODIFIER = 'fl_modifier'
-
-
 class FLReplayController:
 
     def __init__(self):

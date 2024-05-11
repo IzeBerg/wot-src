@@ -367,6 +367,8 @@ class OnceOnlyHints(CONST_CONTAINER):
     HANGAR_MANUAL_HINT = 'HangarManualHint'
     DOGTAG_HANGAR_HINT = 'DogTagHangarHint'
     DOGTAG_PROFILE_HINT = 'DogTagProfileHint'
+    ANIMATED_DOGTAG_HANGAR_HINT = 'AnimatedDogTagHangarHint'
+    ANIMATED_DOGTAG_PROFILE_HINT = 'AnimatedDogTagProfileHint'
     WOTPLUS_HANGAR_HINT = 'WotPlusHangarHint'
     WOTPLUS_PROFILE_HINT = 'WotPlusProfileHint'
     MODE_SELECTOR_WIDGETS_BTN_HINT = 'ModeSelectorWidgetsBtnHint'
@@ -390,6 +392,9 @@ class OnceOnlyHints(CONST_CONTAINER):
     FL_SCENARIO_HINT = 'FrontlineScenariosHint'
     FL_SCENARIO_HINT_SMALL = 'FrontlineScenariosHintSmallSizes'
     BATTLE_ROYALE_DYNAMIC_PLATOON_SUB_MODE_HINT = 'BattleRoyaleDynamicPlatoonSubModeHint'
+    ACHIEVEMENTS_HANGAR_HINT = 'AchievementsHangarHint'
+    ACHIEVEMENTS_PROFILE_HINT = 'AchievementsProfileHint'
+    ACHIEVEMENTS_PROFILE_HINT_SMALL = 'AchievementsProfileHintSmallSize'
 
 
 class SESSION_STATS(CONST_CONTAINER):

@@ -53,6 +53,8 @@ package net.wg.gui.battle.views
       
       protected static const MESSENGER_Y_OFFSET:int = 2;
       
+      protected static const MESSAGE_LISTS_CONTAINER_NAME:String = "messageListsContainer";
+      
       private static const RIBBONS_CENTER_SCREEN_OFFSET_Y:int = 150;
       
       private static const RIBBONS_MIN_BOTTOM_PADDING_Y:int = 116;
@@ -560,7 +562,7 @@ package net.wg.gui.battle.views
       protected function initializeMessageLists() : void
       {
          this._messagesContainer = new Sprite();
-         this._messagesContainer.name = "messageListsContainer";
+         this._messagesContainer.name = MESSAGE_LISTS_CONTAINER_NAME;
          this._messagesContainer.mouseEnabled = this._messagesContainer.mouseChildren = false;
          addChild(this._messagesContainer);
          if(this.battleLoading)

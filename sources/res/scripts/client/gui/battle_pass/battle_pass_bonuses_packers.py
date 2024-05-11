@@ -46,7 +46,7 @@ def getBattlePassBonusPacker():
        'premium_plus': BattlePassPremiumDaysPacker(), 
        'slots': BattlePassSlotsBonusPacker(), 
        'tmanToken': TmanTemplateBonusPacker(), 
-       'token': BattlePassTokenBonusPacker(), 
+       'tokens': BattlePassTokenBonusPacker(), 
        'vehicles': BattlePassVehiclesBonusUIPacker(), 
        BATTLE_PASS_Q_CHAIN_BONUS_NAME: QuestChainBonusPacker(), 
        BATTLE_PASS_RANDOM_QUEST_BONUS_NAME: RandomQuestBonusPacker(), 
@@ -55,7 +55,8 @@ def getBattlePassBonusPacker():
        Currency.BPCOIN: CoinBonusPacker(), 
        Currency.CREDITS: currencyBonusUIPacker, 
        Currency.CRYSTAL: currencyBonusUIPacker, 
-       Currency.GOLD: currencyBonusUIPacker})
+       Currency.GOLD: currencyBonusUIPacker, 
+       Currency.EQUIP_COIN: currencyBonusUIPacker})
     return BonusUIPacker(mapping)
 
 
@@ -144,8 +145,8 @@ class TmanTemplateBonusPacker(_BattlePassFinalBonusPacker):
             cls._packCommon(bonus, model)
             if groupName in cls.__battlePass.getSpecialTankmen():
                 if recruitInfo.getSpecialVoiceTag(cls.__specialSounds) is not None:
-                    bonusImageName = cls.__ICON_FORMAT.format(bonusImageName)
-                model.setIcon(('_').join([bonusImageName, groupName]))
+                    customBonusImageName = cls.__ICON_FORMAT.format(bonusImageName)
+                model.setIcon(('_').join([customBonusImageName, groupName]))
             else:
                 model.setIcon(bonusImageName)
             model.setUserName(tankManFullName)
@@ -631,7 +632,8 @@ class BattlePassTokenBonusPacker(TokenBonusUIPacker):
 
     @classmethod
     def _packToken(cls, bonusPacker, bonus, *args):
-        if bonus.getName() in [BATTLE_BONUS_X5_TOKEN, CREW_BONUS_X3_TOKEN]:
+        name = first(bonus.getTokens())
+        if name in [BATTLE_BONUS_X5_TOKEN, CREW_BONUS_X3_TOKEN]:
             model = RewardItemModel()
         else:
             model = TokenBonusModel()
@@ -649,7 +651,7 @@ class BattlePassTokenBonusPacker(TokenBonusUIPacker):
     def __packBattleBonusX5Token(cls, model, bonus, *args):
         model.setName(BATTLE_BONUS_X5_TOKEN)
         model.setValue(str(bonus.getCount()))
-        model.setLabel(R.strings.tooltips.quests.bonuses.token.battle_bonus_x5.header())
+        model.setUserName(backport.text(R.strings.battle_pass.battleBonusX5()))
         model.setBigIcon(BATTLE_BONUS_X5_TOKEN)
         return model
 
@@ -657,7 +659,6 @@ class BattlePassTokenBonusPacker(TokenBonusUIPacker):
     def __packCrewBonusX3Token(cls, model, bonus, *args):
         model.setName(CREW_BONUS_X3_TOKEN)
         model.setValue(str(bonus.getCount()))
-        model.setLabel(R.strings.tooltips.quests.bonuses.token.crew_bonus_x3.header())
         model.setBigIcon(CREW_BONUS_X3_TOKEN)
         return model
 

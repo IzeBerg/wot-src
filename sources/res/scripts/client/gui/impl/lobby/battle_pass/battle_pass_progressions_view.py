@@ -2,6 +2,7 @@ import logging
 from functools import partial
 from operator import itemgetter
 import typing
+from ClientSelectableCameraObject import ClientSelectableCameraObject
 from PlayerEvents import g_playerEvents
 from account_helpers.AccountSettings import AccountSettings, IS_BATTLE_PASS_COLLECTION_SEEN, LAST_BATTLE_PASS_POINTS_SEEN
 from account_helpers.settings_core.settings_constants import BattlePassStorageKeys
@@ -16,7 +17,7 @@ from gui.Scaleform.genConsts.VEHPREVIEW_CONSTANTS import VEHPREVIEW_CONSTANTS
 from gui.battle_pass.battle_pass_bonuses_packers import changeBonusTooltipData, packBonusModelAndTooltipData, packSpecialTooltipData
 from gui.battle_pass.battle_pass_constants import ChapterState, MIN_LEVEL
 from gui.battle_pass.battle_pass_decorators import createBackportTooltipDecorator, createTooltipContentDecorator
-from gui.battle_pass.battle_pass_helpers import fillBattlePassCompoundPrice, getChapterType, getDataByTankman, getExtraInfoPageURL, getInfoPageURL, getIntroVideoURL, getRewardSourceByType, getStyleForChapter, getTankmanInfo, getVehicleInfoForChapter, isCommonBattlePassChapter, isSeasonEndingSoon, updateBuyAnimationFlag, TANKMAN_BONUS_NAME
+from gui.battle_pass.battle_pass_helpers import fillBattlePassCompoundPrice, getAllFinalRewards, getChapterType, getDataByTankman, getExtraInfoPageURL, getFinalTankmen, getInfoPageURL, getIntroVideoURL, getRewardSourceByType, getStyleForChapter, getVehicleInfoForChapter, isSeasonEndingSoon, isSeasonWithSpecialTankmenScreen, updateBuyAnimationFlag
 from gui.battle_pass.sounds import BattlePassSounds
 from gui.collection.collections_helpers import getCollectionRes, loadBattlePassFromCollections
 from gui.impl import backport
@@ -31,7 +32,7 @@ from gui.impl.wrappers.function_helpers import replaceNoneKwargsModel
 from gui.server_events.events_dispatcher import showMissionsBattlePass
 from gui.shared import events
 from gui.shared.event_bus import EVENT_BUS_SCOPE
-from gui.shared.event_dispatcher import showBattlePassBuyLevelWindow, showBattlePassBuyWindow, showBattlePassHowToEarnPointsView, showBattlePassStyleProgressionPreview, showBattlePassTankmenVoiceover, showBrowserOverlayView, showCollectionWindow, showHangar, showShop, showStylePreview
+from gui.shared.event_dispatcher import showBattlePassBuyLevelWindow, showBattlePassBuyWindow, showBattlePassHowToEarnPointsView, showBattlePassStyleProgressionPreview, showBattlePassTankmenVoiceover, showBrowserOverlayView, showCollectionWindow, showHangar, showShop, showStylePreview, showVehiclePreviewWithoutBottomPanel
 from gui.shared.utils.scheduled_notifications import Notifiable, PeriodicNotifier, SimpleNotifier
 from helpers import dependency, time_utils
 from shared_utils import findFirst, first
@@ -128,9 +129,9 @@ class BattlePassProgressionsView(ViewImpl):
          (
           self.viewModel.onClose, self.__onClose),
          (
-          self.viewModel.widget3dStyle.onPreviewClick, self.__onPreviewClick),
+          self.viewModel.widget3dStyle.onPreviewClick, self.__onProgressiveStylePreview),
          (
-          self.viewModel.widgetFinalRewards.onRewardPreviewClick, self.__onFinalRewardPreviewClick),
+          self.viewModel.widgetFinalRewards.onRewardPreviewClick, self.__onFinalRewardPreview),
          (
           self.viewModel.onTakeClick, self.__onTakeClick),
          (
@@ -264,33 +265,27 @@ class BattlePassProgressionsView(ViewImpl):
         bpController = self.__battlePass
         self.__tooltipItems.clear()
         self.__specialTooltipItems.clear()
-        if isCommonBattlePassChapter(self.__chapterID):
-            self.__setStyleWidget(model)
-        else:
-            if self.__battlePass.getPaidFinalRewardTypes(self.__chapterID):
-                self.__setFinalRewardsWidget(model)
-            else:
-                _logger.error('Cannot find rewards for widget in progression for chapter=%s', self.__chapterID)
-            model.levels.clearItems()
-            minLevel, maxLevel = bpController.getChapterLevelInterval(self.__chapterID)
-            freeBonuses = sorted(bpController.getAwardsInterval(self.__chapterID, minLevel, maxLevel, BattlePassConsts.REWARD_FREE).iteritems(), key=itemgetter(0))
-            paidBonuses = sorted(bpController.getAwardsInterval(self.__chapterID, minLevel, maxLevel, BattlePassConsts.REWARD_PAID).iteritems(), key=itemgetter(0))
-            for (level, freeBonus), (_, paidBonus) in zip(freeBonuses, paidBonuses):
-                isNeedToTakeFree, isChooseFreeRewardEnabled = self.__getRewardLevelState(BattlePassConsts.REWARD_FREE, level)
-                isNeedToTakePaid, isChoosePaidRewardEnabled = self.__getRewardLevelState(BattlePassConsts.REWARD_PAID, level)
-                levelModel = RewardLevelModel()
-                levelModel.setLevel(level)
-                levelModel.setIsRare(bpController.isRareLevel(self.__chapterID, level))
-                levelModel.setIsFreeRewardChoiceEnabled(isChooseFreeRewardEnabled)
-                levelModel.setIsPaidRewardChoiceEnabled(isChoosePaidRewardEnabled)
-                levelModel.setLevelPoints(bpController.getLevelPoints(self.__chapterID, level - 1))
-                levelModel.setNeedTakeFree(isNeedToTakeFree)
-                levelModel.setNeedTakePaid(isNeedToTakePaid)
-                realFreeAwards = self.__battlePass.replaceOfferByReward(freeBonus)
-                packBonusModelAndTooltipData(realFreeAwards, levelModel.freeRewardItems, self.__tooltipItems)
-                realPaidAwards = self.__battlePass.replaceOfferByReward(paidBonus)
-                packBonusModelAndTooltipData(realPaidAwards, levelModel.paidRewardItems, self.__tooltipItems)
-                model.levels.addViewModel(levelModel)
+        self.__setFinalRewardsWidget(model)
+        model.levels.clearItems()
+        minLevel, maxLevel = bpController.getChapterLevelInterval(self.__chapterID)
+        freeBonuses = sorted(bpController.getAwardsInterval(self.__chapterID, minLevel, maxLevel, BattlePassConsts.REWARD_FREE).iteritems(), key=itemgetter(0))
+        paidBonuses = sorted(bpController.getAwardsInterval(self.__chapterID, minLevel, maxLevel, BattlePassConsts.REWARD_PAID).iteritems(), key=itemgetter(0))
+        for (level, freeBonus), (_, paidBonus) in zip(freeBonuses, paidBonuses):
+            isNeedToTakeFree, isChooseFreeRewardEnabled = self.__getRewardLevelState(BattlePassConsts.REWARD_FREE, level)
+            isNeedToTakePaid, isChoosePaidRewardEnabled = self.__getRewardLevelState(BattlePassConsts.REWARD_PAID, level)
+            levelModel = RewardLevelModel()
+            levelModel.setLevel(level)
+            levelModel.setIsRare(bpController.isRareLevel(self.__chapterID, level))
+            levelModel.setIsFreeRewardChoiceEnabled(isChooseFreeRewardEnabled)
+            levelModel.setIsPaidRewardChoiceEnabled(isChoosePaidRewardEnabled)
+            levelModel.setLevelPoints(bpController.getLevelPoints(self.__chapterID, level - 1))
+            levelModel.setNeedTakeFree(isNeedToTakeFree)
+            levelModel.setNeedTakePaid(isNeedToTakePaid)
+            realFreeAwards = self.__battlePass.replaceOfferByReward(freeBonus)
+            packBonusModelAndTooltipData(realFreeAwards, levelModel.freeRewardItems, self.__tooltipItems)
+            realPaidAwards = self.__battlePass.replaceOfferByReward(paidBonus)
+            packBonusModelAndTooltipData(realPaidAwards, levelModel.paidRewardItems, self.__tooltipItems)
+            model.levels.addViewModel(levelModel)
 
     def __setStyleWidget(self, model):
         style = getStyleForChapter(self.__chapterID)
@@ -300,6 +295,7 @@ class BattlePassProgressionsView(ViewImpl):
             fillVehicleInfo(model.widget3dStyle.vehicleInfo, vehicle)
             model.widget3dStyle.setStyleName(style.userName)
             model.widget3dStyle.setStyleId(style.id)
+            self.__setStyleTaken(model=model)
         return
 
     def __setCharacterWidget(self, model, rewardSource=BattlePassConsts.REWARD_FREE):
@@ -327,26 +323,33 @@ class BattlePassProgressionsView(ViewImpl):
         packSpecialTooltipData(TOOLTIPS_CONSTANTS.TANKMAN_NOT_RECRUITED, self.__specialTooltipItems, character.getRecruitID())
 
     def __setFinalRewardsWidget(self, model):
-        maxLevel = self.__battlePass.getMaxLevelInChapter(self.__chapterID)
-        style = getStyleForChapter(self.__chapterID)
-        if style is not None:
-            model.widgetFinalRewards.styleInfo.setStyleName(style.userName)
-            model.widgetFinalRewards.styleInfo.setStyleId(style.id)
-        vehicleSource = getRewardSourceByType(FinalReward.VEHICLE, self.__chapterID)
-        if vehicleSource is not None:
-            vehicle, _ = getVehicleInfoForChapter(self.__chapterID, awardSource=vehicleSource)
-            if vehicle is not None:
-                fillVehicleInfo(model.widgetFinalRewards.vehicleInfo, vehicle)
-        tankmanSource = getRewardSourceByType(FinalReward.TANKMAN, self.__chapterID)
-        if tankmanSource is not None:
-            self.__setCharacterWidget(model.widgetFinalRewards.tankmanInfo, rewardSource=tankmanSource)
-        questSource = getRewardSourceByType(FinalReward.BATTLE_QUEST, self.__chapterID)
-        if questSource is not None:
-            rewards = self.__battlePass.getSingleAward(self.__chapterID, maxLevel, questSource)
-            battleQuestReward = findFirst(lambda b: b.getName() == BATTLE_PASS_RANDOM_QUEST_BONUS_NAME, rewards)
-            if battleQuestReward is not None:
-                model.widgetFinalRewards.setBattleQuest(battleQuestReward.tokenID)
-        return
+        if not self.__battlePass.getRewardTypes(self.__chapterID):
+            _logger.error('Cannot find rewards for widget in progression for chapter=%s', self.__chapterID)
+            return
+        else:
+            if getRewardSourceByType(FinalReward.PROGRESSIVE_STYLE, self.__chapterID) == BattlePassConsts.REWARD_FREE:
+                self.__setStyleWidget(model)
+                return
+            maxLevel = self.__battlePass.getMaxLevelInChapter(self.__chapterID)
+            style = getStyleForChapter(self.__chapterID)
+            if style is not None:
+                model.widgetFinalRewards.styleInfo.setStyleName(style.userName)
+                model.widgetFinalRewards.styleInfo.setStyleId(style.id)
+            vehicleSource = getRewardSourceByType(FinalReward.VEHICLE, self.__chapterID)
+            if vehicleSource is not None:
+                vehicle, _ = getVehicleInfoForChapter(self.__chapterID, awardSource=vehicleSource)
+                if vehicle is not None:
+                    fillVehicleInfo(model.widgetFinalRewards.vehicleInfo, vehicle)
+            tankmanSource = getRewardSourceByType(FinalReward.TANKMAN, self.__chapterID)
+            if tankmanSource is not None:
+                self.__setCharacterWidget(model.widgetFinalRewards.tankmanInfo, rewardSource=tankmanSource)
+            questSource = getRewardSourceByType(FinalReward.BATTLE_QUEST, self.__chapterID)
+            if questSource is not None:
+                rewards = self.__battlePass.getSingleAward(self.__chapterID, maxLevel, questSource)
+                battleQuestReward = findFirst(lambda b: b.getName() == BATTLE_PASS_RANDOM_QUEST_BONUS_NAME, rewards)
+                if battleQuestReward is not None:
+                    model.widgetFinalRewards.setBattleQuest(battleQuestReward.tokenID)
+            return
 
     def __resetRewardsInterval(self, model, fromLevel, toLevel, replaceRewards=False):
         startLevel, finalLevel = self.__battlePass.getChapterLevelInterval(self.__chapterID)
@@ -399,7 +402,7 @@ class BattlePassProgressionsView(ViewImpl):
         model.setChapterType(ChapterType(getChapterType(self.__chapterID)))
         model.setIsSeasonEndingSoon(isSeasonEndingSoon())
         model.setHasExtra(self.__battlePass.hasExtra())
-        model.setSpecialVoiceTankmenCount(len(self.__battlePass.getSpecialTankmen()))
+        model.setIsSpecialTankmenEnabled(self.__isSpecialVoiceTankmenEnabled())
         model.awardsWidget.setIsBpBitEnabled(not self.__battlePass.isHoliday())
         model.awardsWidget.setIsBpCoinEnabled(not self.__battlePass.isHoliday())
         model.awardsWidget.setBpbitCount(self.__itemsCache.items.stats.dynamicCurrencies.get(CurrencyBP.BIT.value, 0))
@@ -410,10 +413,7 @@ class BattlePassProgressionsView(ViewImpl):
         model.awardsWidget.setIsSpecialVoiceTankmenEnabled(self.__isSpecialVoiceTankmenEnabled())
         fillCollectionModel(model.awardsWidget.collectionEntryPoint, self.__battlePass.getCurrentCollectionId())
         self.__setExpirations(model)
-        if isCommonBattlePassChapter(self.__chapterID):
-            self.__setStyleTaken(model)
-        elif self.__battlePass.getPaidFinalRewardTypes(self.__chapterID):
-            self.__setFinalRewardsWidget(model)
+        self.__setFinalRewardsWidget(model)
         self.__updateRewardSelectButton(model=model)
 
     def __setExpirations(self, model):
@@ -554,25 +554,46 @@ class BattlePassProgressionsView(ViewImpl):
             self.__updateActionType()
             return
 
-    def __onPreviewClick(self, args):
+    def __onProgressiveStylePreview(self, args):
         level = args.get('level')
         if level is None:
             return
         else:
             styleInfo = getStyleForChapter(self.__chapterID, battlePass=self.__battlePass)
             vehicleCD = getVehicleCDForStyle(styleInfo, itemsCache=self.__itemsCache)
+            self.__switchCamera()
             showBattlePassStyleProgressionPreview(vehicleCD, styleInfo, styleInfo.getDescription(), self.__getPreviewCallback(), chapterId=self.__chapterID, styleLevel=int(level))
             return
 
-    def __onFinalRewardPreviewClick(self):
+    def __onFinalRewardPreview(self):
+        self.__switchCamera()
+        allRewardTypes = getAllFinalRewards(self.__chapterID, battlePass=self.__battlePass)
+        if FinalReward.VEHICLE in allRewardTypes:
+            self.__showVehiclePreview()
+        elif FinalReward.STYLE in allRewardTypes:
+            self.__showStylePreview()
+
+    def __showVehiclePreview(self):
+        vehicle, style = getVehicleInfoForChapter(self.__chapterID, awardSource=BattlePassConsts.REWARD_BOTH)
         styleInfo = getStyleForChapter(self.__chapterID, battlePass=self.__battlePass)
-        vehicleCD = getVehicleCDForStyle(styleInfo, itemsCache=self.__itemsCache)
-        itemsPack = (ItemPackEntry(type=ItemPackType.CREW_100, groupID=1),)
-        showStylePreview(vehicleCD, style=styleInfo, topPanelData={'linkage': VEHPREVIEW_CONSTANTS.TOP_PANEL_TABS_LINKAGE, 
-           'tabIDs': (
-                    TabID.VEHICLE, TabID.STYLE), 
-           'currentTabID': TabID.STYLE, 
-           'style': styleInfo}, itemsPack=itemsPack, backCallback=self.__getPreviewCallback())
+        if styleInfo is not None:
+            showStylePreview(vehicle.intCD, style=styleInfo, topPanelData={'linkage': VEHPREVIEW_CONSTANTS.TOP_PANEL_TABS_LINKAGE, 
+               'tabIDs': (
+                        TabID.VEHICLE, TabID.STYLE), 
+               'currentTabID': TabID.STYLE, 
+               'style': styleInfo}, itemsPack=self.__getPreviewItemPack(), backCallback=self.__getPreviewCallback())
+        else:
+            showVehiclePreviewWithoutBottomPanel(vehicle.intCD, backCallback=self.__getPreviewCallback(), itemsPack=self.__getPreviewItemPack(), style=style)
+        return
+
+    def __showStylePreview(self):
+        style = getStyleForChapter(self.__chapterID, battlePass=self.__battlePass)
+        vehicleCD = getVehicleCDForStyle(style, itemsCache=self.__itemsCache)
+        showStylePreview(vehicleCD, style=style, itemsPack=self.__getPreviewItemPack(), backCallback=self.__getPreviewCallback())
+
+    def __getPreviewItemPack(self):
+        return (
+         ItemPackEntry(type=ItemPackType.CREW_100, groupID=1),)
 
     def __getPreviewCallback(self):
         return partial(showMissionsBattlePass, R.views.lobby.battle_pass.BattlePassProgressionsView(), self.__chapterID)
@@ -610,10 +631,7 @@ class BattlePassProgressionsView(ViewImpl):
     def __onRewardSelectChange(self):
         self.__updateRewardSelectButton()
         with self.viewModel.transaction() as (model):
-            if isCommonBattlePassChapter(self.__chapterID):
-                self.__setStyleWidget(model)
-            elif self.__battlePass.getPaidFinalRewardTypes(self.__chapterID):
-                self.__setFinalRewardsWidget(model)
+            self.__setFinalRewardsWidget(model)
             finalLevel = self.__battlePass.getMaxLevelInChapter(self.__chapterID)
             self.__resetRewardsInterval(model, MIN_LEVEL, finalLevel, replaceRewards=True)
 
@@ -627,10 +645,7 @@ class BattlePassProgressionsView(ViewImpl):
             return
         self.__updateRewardSelectButton()
         with self.viewModel.transaction() as (model):
-            if isCommonBattlePassChapter(self.__chapterID):
-                self.__setStyleWidget(model)
-            elif self.__battlePass.getPaidFinalRewardTypes(self.__chapterID):
-                self.__setFinalRewardsWidget(model)
+            self.__setFinalRewardsWidget(model)
             model.awardsWidget.setNotChosenRewardCount(self.__battlePass.getNotChosenRewardCount())
             model.awardsWidget.setIsChooseRewardsEnabled(self.__battlePass.canChooseAnyReward())
             finalLevel = self.__battlePass.getMaxLevelInChapter(self.__chapterID)
@@ -784,7 +799,7 @@ class BattlePassProgressionsView(ViewImpl):
         self.__exitSoundsIsPlayed = False
 
     def __isSpecialVoiceTankmenEnabled(self):
-        if len(self.__battlePass.getSpecialTankmen()) < self.__MINIMAL_TANKMEN_COUNT:
+        if not isSeasonWithSpecialTankmenScreen():
             return False
         specialVoiceChapters = self.__battlePass.getSpecialVoiceChapters()
         return self.__battlePass.isExtraChapter(self.__chapterID) and self.__chapterID in specialVoiceChapters or any(not self.__battlePass.isExtraChapter(chapterID) for chapterID in specialVoiceChapters)
@@ -808,15 +823,13 @@ class BattlePassProgressionsView(ViewImpl):
         paidArray.invalidate()
 
     def __getFinalTankman(self, awardType):
-        maxLevel = self.__battlePass.getMaxLevelInChapter(self.__chapterID)
-        rewards = self.__battlePass.getSingleAward(self.__chapterID, maxLevel, awardType=awardType)
-        characterBonus = findFirst(lambda b: b.getName() == TANKMAN_BONUS_NAME, rewards)
-        if characterBonus is None:
-            _logger.warning('%s chapter does not have tankman at final level!', self.__chapterID)
-            return
-        else:
-            return getTankmanInfo(characterBonus)
+        finalTankmen = getFinalTankmen(self.__chapterID, awardType, battlePass=self.__battlePass)
+        return first(finalTankmen)
 
     def __isFinalTankmanVoiced(self, awardType):
         tankman = self.__getFinalTankman(awardType)
         return tankman is not None and self.__battlePass.isVoicedTankman(tankman.getGroupName())
+
+    @staticmethod
+    def __switchCamera():
+        ClientSelectableCameraObject.switchCamera()

@@ -74,6 +74,9 @@ msgstr "ЧЛЕНЫ ЭКИПАЖА"
 msgid "awardsWidget/title/point"
 msgstr "ТОВАРЫ ЗА ОЧКИ"
 
+msgid "battleBonusX5"
+msgstr "Боевые задачи на x5 опыта"
+
 msgid "battlePassAwardsView/additionalRewards/bpBuyLevelAwardsText"
 msgstr ""
 "Вы получили улучшенную награду за завершённый этап основной части "
@@ -412,35 +415,26 @@ msgstr "Боевой пропуск"
 msgid "chapter/fullName/10021"
 msgstr "Песнь о зубре"
 
-msgid "chapter/fullName/131"
-msgstr "Час Шреддера"
+msgid "chapter/fullName/141"
+msgstr "Сохраняйте спокойствие"
 
-msgid "chapter/fullName/132"
-msgstr "Юные таланты"
+msgid "chapter/fullName/142"
+msgstr "Пусть справедливость восторжествует"
 
-msgid "chapter/fullName/133"
-msgstr "Технодром атакует"
-
-msgid "chapter/fullNameSpecial/131"
-msgstr "«Час Шреддера»"
-
-msgid "chapter/fullNameSpecial/132"
-msgstr "«Юные таланты»"
-
-msgid "chapter/fullNameSpecial/133"
-msgstr "«Технодром атакует»"
+msgid "chapter/fullName/143"
+msgstr "Освобождение"
 
 msgid "chapter/fullNameUppercased/10021"
 msgstr "ПЕСНЬ О ЗУБРЕ"
 
-msgid "chapter/fullNameUppercased/131"
-msgstr "ЧАС ШРЕДДЕРА"
+msgid "chapter/fullNameUppercased/141"
+msgstr "СОХРАНЯЙТЕ СПОКОЙСТВИЕ"
 
-msgid "chapter/fullNameUppercased/132"
-msgstr "ЮНЫЕ ТАЛАНТЫ"
+msgid "chapter/fullNameUppercased/142"
+msgstr "ПУСТЬ СПРАВЕДЛИВОСТЬ ВОСТОРЖЕСТВУЕТ"
 
-msgid "chapter/fullNameUppercased/133"
-msgstr "ТЕХНОДРОМ АТАКУЕТ"
+msgid "chapter/fullNameUppercased/143"
+msgstr "ОСВОБОЖДЕНИЕ"
 
 msgid "chapter/title"
 msgstr "ГЛАВА «%(chapter)s»"
@@ -491,6 +485,9 @@ msgstr "Активировать главу «%(chName)s»?"
 msgid "chapterChoice/confirmation/title/switch"
 msgstr "Переключиться на главу «%(chName)s»?"
 
+msgid "chapterChoice/crewMember/reward"
+msgstr "Члены экипажа"
+
 msgid "chapterChoice/extraChapter/reward"
 msgstr "Премиум техника"
 
@@ -504,6 +501,9 @@ msgstr ""
 
 msgid "chapterChoice/freePoints/tooltip/title"
 msgstr "Нераспределённые очки Боевого пропуска"
+
+msgid "chapterChoice/premiumVehicle/reward"
+msgstr "Премиум машина"
 
 msgid "chapterChoice/style/description"
 msgstr "Все 3D-стили привязаны к определённым главам."
@@ -553,67 +553,14 @@ msgstr "Трофейное оборудование на выбор"
 msgid "common/collectionText"
 msgstr "(элемент коллекции)"
 
+msgid "common/comma"
+msgstr ", "
+
 msgid "common/multiplier"
 msgstr "x%(multiplier)s"
 
 msgid "commonProgression/body/ended"
 msgstr "Сезон Боевого пропуска окончен"
-
-msgid "customTankmenVoiceover/availableInQuestChain"
-msgstr "Будет получен за выполнение задач"
-
-msgid "customTankmenVoiceover/button/confirm/text"
-msgstr "Кавабанга!"
-
-msgid "customTankmenVoiceover/free/chapter_131"
-msgstr "В базовых наградах главы %(chapter)s"
-
-msgid "customTankmenVoiceover/free/chapter_132"
-msgstr "В базовых наградах главы %(chapter)s"
-
-msgid "customTankmenVoiceover/free/chapter_133"
-msgstr "В базовых наградах главы %(chapter)s"
-
-msgid "customTankmenVoiceover/header/description/text"
-msgstr ""
-"У всех членов экипажа изучен навык «Боевое братство» в качестве «нулевого», а также достаточно опыта\n"
-"для изучения двух дополнительных навыков."
-
-msgid "customTankmenVoiceover/header/subTitle/text"
-msgstr "БОЕВОЙ ПРОПУСК: %(season)s"
-
-msgid "customTankmenVoiceover/header/title/text"
-msgstr "ЧЛЕНЫ ЭКИПАЖА С ОЗВУЧКОЙ"
-
-msgid "customTankmenVoiceover/inShop"
-msgstr "В составе набора"
-
-msgid "customTankmenVoiceover/notFull"
-msgstr "Доступно ещё %(availableCount)s из %(count)s"
-
-msgid "customTankmenVoiceover/paid/chapter_131"
-msgstr "В улучшенных наградах главы %(chapter)s"
-
-msgid "customTankmenVoiceover/paid/chapter_132"
-msgstr "В улучшенных наградах главы %(chapter)s"
-
-msgid "customTankmenVoiceover/paid/chapter_133"
-msgstr "В улучшенных наградах главы %(chapter)s"
-
-msgid "customTankmenVoiceover/questChain"
-msgstr "В цепочке боевых задач"
-
-msgid "customTankmenVoiceover/received"
-msgstr "Получено"
-
-msgid "customTankmenVoiceover/shopButton"
-msgstr "Смотреть в Магазине"
-
-msgid "customTankmenVoiceover/soundOn"
-msgstr "Прослушать"
-
-msgid "customTankmenVoiceover/unavailable"
-msgstr "Недоступно"
 
 msgid "dailyQuests/button"
 msgstr "Так точно!"
@@ -629,6 +576,9 @@ msgstr "Очки Боевого пропуска"
 
 msgid "dailyQuests/title"
 msgstr "Очки Боевого пропуска за ежедневные задачи"
+
+msgid "equipCoinBonus"
+msgstr "Компоненты: %(count)s"
 
 msgid "extraIntroView/confirmLabel"
 msgstr "Так точно!"
@@ -827,42 +777,19 @@ msgstr "О БОЕВОМ ПРОПУСКЕ"
 msgid "intro/button"
 msgstr "Так точно!"
 
-msgid "intro/rewards/text"
-msgstr ""
-"В качестве награды вы сможете получить уникальную кастомизацию, членов "
-"экипажа с озвучкой и многое другое."
-
-msgid "intro/rewards/title"
-msgstr "НОВЫЕ НАГРАДЫ"
-
 msgid "intro/seasonDescription/text"
 msgstr ""
-"В XIII сезоне Боевого пропуска Леонардо, Микеланджело, Рафаэль и Донателло "
-"сразятся с коварным Шреддером и его приспешниками. В рамках этого сезона вы "
-"сможете получить множество тематических наград, элементы внешнего вида, а "
-"также уникальных членов экипажа с озвучкой. Кавабанга!"
+"Этот сезон Боевого пропуска приурочен к 80-й годовщине высадки в Нормандии, "
+"известной во многих странах как «День Д». Главные награды за прохождение "
+"пропуска — три премиум машины VI уровня, у каждой из которых уникальный "
+"внешний вид, вдохновлённый техникой союзников того "
+"времени:&nbsp;Churchill&nbsp;Crocodile,&nbsp;M4A3(76)W&nbsp;Sherman&nbsp;и&nbsp;Char&nbsp;de&nbsp;transition."
 
 msgid "intro/seasonDescription/title"
-msgstr "ТЕМАТИЧЕСКИЙ СЕЗОН"
-
-msgid "intro/shopCategory/text"
-msgstr ""
-"В этом сезоне для вашего удобства во внутриигровом Магазине появится новый "
-"специальный раздел Боевого пропуска."
-
-msgid "intro/shopCategory/title"
-msgstr "КАТЕГОРИЯ БОЕВОГО ПРОПУСКА В МАГАЗИНЕ"
-
-msgid "intro/styles/text"
-msgstr ""
-"В рамках XIII сезона вам будут доступны три специальных стиля для следующей "
-"ключевой техники: BZ-75, Manticore и TVP T 50/51."
-
-msgid "intro/styles/title"
-msgstr "НОВЫЕ ПРОГРЕССИОННЫЕ СТИЛИ"
+msgstr "ТРИ ПРЕМИУМ МАШИНЫ В НАГРАДУ"
 
 msgid "intro/title"
-msgstr "XIII СЕЗОН: ЧЕРЕПАШКИ-НИНДЗЯ"
+msgstr "XIV СЕЗОН: «ДЕНЬ Д»"
 
 msgid "offSeason/alertTooltip"
 msgstr "Результаты голосования временно недоступны. Попробуйте зайти позже."
@@ -1098,6 +1025,11 @@ msgstr "3D-стиль"
 msgid "progression/extraChapterWidget/tank"
 msgstr "Премиум техника"
 
+msgid "progression/extraChapterWidget/tank/description/14"
+msgstr ""
+"В память о 80-й годовщине\n"
+"«Дня Д»"
+
 msgid "progression/extraChapterWidget/tankName"
 msgstr "%(vehicleName)s"
 
@@ -1267,14 +1199,14 @@ msgstr "БОЕВОЙ ПРОПУСК. ГЛАВА «%(chapter)s», ЭТАП %(leve
 msgid "season/fullName/1002"
 msgstr "Песнь о зубре"
 
-msgid "season/fullName/13"
-msgstr "Черепашки-ниндзя"
+msgid "season/fullName/14"
+msgstr "День Д"
 
 msgid "season/fullNameUppercased/1002"
 msgstr "ПЕСНЬ О ЗУБРЕ"
 
-msgid "season/fullNameUppercased/13"
-msgstr "ЧЕРЕПАШКИ-НИНДЗЯ"
+msgid "season/fullNameUppercased/14"
+msgstr "ДЕНЬ Д"
 
 msgid "selectBonus/battle_booster_gift"
 msgstr "Предбоевые инструкции к оборудованию на выбор"

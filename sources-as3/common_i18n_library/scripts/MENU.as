@@ -3587,14 +3587,6 @@ package
       
       public static const DATETIME_SHORTDATEFORMATWITHOUTYEAR:String = "#menu:dateTime/shortDateFormatWithoutYear";
       
-      public static const DATERANGE_DASHDIVIDER_FULL:String = "#menu:dateRange/dashDivider/full";
-      
-      public static const DATERANGE_DASHDIVIDER_SHORT:String = "#menu:dateRange/dashDivider/short";
-      
-      public static const DATERANGE_TEXTDIVIDER_DATE:String = "#menu:dateRange/textDivider/date";
-      
-      public static const DATERANGE_TEXTDIVIDER_TIME:String = "#menu:dateRange/textDivider/time";
-      
       public static const VALIDATION_PUBLICINFO_ABBREV_INVALID:String = "#menu:validation/publicInfo/abbrev/invalid";
       
       public static const VALIDATION_PUBLICINFO_ABBREV_INVALID_CN:String = "#menu:validation/publicInfo/abbrev/invalid/CN";

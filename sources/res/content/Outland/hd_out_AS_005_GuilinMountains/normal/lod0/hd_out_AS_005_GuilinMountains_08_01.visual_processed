@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd1</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>105</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						alphaReference
+						<Int>143</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Outland/hd_out_AS_005_GuilinMountains/hd_out_AS_005_GuilinMountains_PL_05_AM.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Outland/hd_out_AS_005_GuilinMountains/hd_out_AS_005_GuilinMountains_PL_05_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Outland/hd_out_AS_005_GuilinMountains/hd_out_AS_005_GuilinMountains_PL_05_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.530694 8.853287 -0.093376</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>105</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/Outland/hd_out_AS_005_GuilinMountains/hd_out_AS_005_GuilinMountains_08_AM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Outland/hd_out_AS_005_GuilinMountains/hd_out_AS_005_GuilinMountains_08_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Outland/hd_out_AS_005_GuilinMountains/hd_out_AS_005_GuilinMountains_08_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.003607 8.143971 -0.017351</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-9.988444 -0.049758 -8.160071</min>
+		<max>9.995658 16.979496 8.125369</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>261576</geometrySize>
+	<minUVDensity>0.000398</minUVDensity>
+</root>

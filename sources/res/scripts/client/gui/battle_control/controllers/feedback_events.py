@@ -61,7 +61,7 @@ _PLAYER_FEEDBACK_EXTRA_DATA_CONVERTERS = {_FET.PLAYER_DAMAGED_HP_ENEMY: _unpackD
    _FET.PLAYER_ASSIST_TO_STUN_ENEMY: _unpackDamage, 
    _FET.VEHICLE_VISIBILITY_CHANGED: _unpackVisibility, 
    _FET.VEHICLE_DETECTED: _unpackVisibility, 
-   _FET.DESTRUCTIBLE_DAMAGED: _unpackInteger, 
+   _FET.DESTRUCTIBLE_DAMAGED: _unpackDamage, 
    _FET.DESTRUCTIBLES_DEFENDED: _unpackInteger, 
    _FET.SMOKE_ASSIST: _unpackDamage, 
    _FET.INSPIRE_ASSIST: _unpackDamage, 
@@ -136,6 +136,9 @@ class _DamageExtra(object):
     def isStaticDeathZone(self):
         return self.isAttackReason(ATTACK_REASON.STATIC_DEATH_ZONE)
 
+    def isMinefieldZone(self):
+        return self.isAttackReason(ATTACK_REASON.MINEFIELD_ZONE)
+
     def isProtectionZone(self, primary=True):
         if primary:
             return self.isAttackReason(ATTACK_REASON.ARTILLERY_PROTECTION) or self.isAttackReason(ATTACK_REASON.ARTILLERY_SECTOR)
@@ -185,6 +188,16 @@ class _DamageExtra(object):
         if primary:
             return self.isAttackReason(ATTACK_REASON.THUNDER_STRIKE)
         return self.isSecondaryAttackReason(ATTACK_REASON.THUNDER_STRIKE)
+
+    def isBattleshipStrike(self, primary=True):
+        if primary:
+            return self.isAttackReason(ATTACK_REASON.BATTLESHIP)
+        return self.isSecondaryAttackReason(ATTACK_REASON.BATTLESHIP)
+
+    def isDestroyerStrike(self, primary=True):
+        if primary:
+            return self.isAttackReason(ATTACK_REASON.DESTROYER)
+        return self.isSecondaryAttackReason(ATTACK_REASON.DESTROYER)
 
     def isAttackReason(self, attackReason):
         return ATTACK_REASONS[self.__attackReasonID] == attackReason
@@ -307,6 +320,9 @@ class _CritsExtra(object):
     def isStaticDeathZone(self):
         return self.isAttackReason(ATTACK_REASON.STATIC_DEATH_ZONE)
 
+    def isMinefieldZone(self):
+        return self.isAttackReason(ATTACK_REASON.MINEFIELD_ZONE)
+
     def isProtectionZone(self, primary=True):
         if primary:
             return self.isAttackReason(ATTACK_REASON.ARTILLERY_PROTECTION) or self.isAttackReason(ATTACK_REASON.ARTILLERY_SECTOR)
@@ -331,6 +347,16 @@ class _CritsExtra(object):
         if primary:
             return self.isAttackReason(ATTACK_REASON.BOMBERS)
         return self.isSecondaryAttackReason(ATTACK_REASON.BOMBERS)
+
+    def isBattleshipStrike(self, primary=True):
+        if primary:
+            return self.isAttackReason(ATTACK_REASON.BATTLESHIP)
+        return self.isSecondaryAttackReason(ATTACK_REASON.BATTLESHIP)
+
+    def isDestroyerStrike(self, primary=True):
+        if primary:
+            return self.isAttackReason(ATTACK_REASON.DESTROYER)
+        return self.isSecondaryAttackReason(ATTACK_REASON.DESTROYER)
 
     def isSecondaryAttackReason(self, attackReason):
         return ATTACK_REASONS[self.__secondaryAttackReasonID] == attackReason

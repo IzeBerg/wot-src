@@ -555,6 +555,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.battleHint.BattleHint;
    import net.wg.gui.battle.views.battleHint.constants.HINT_LABELS;
    import net.wg.gui.battle.views.battleHint.containers.HintContainer;
+   import net.wg.gui.battle.views.battleHint.containers.HintHighlightContainer;
    import net.wg.gui.battle.views.battleHint.containers.HintIconContainer;
    import net.wg.gui.battle.views.battleHint.containers.HintInfoContainer;
    import net.wg.gui.battle.views.battleHint.vo.BattleHintVO;
@@ -2164,6 +2165,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_VIEWS_BATTLEHINT_CONSTANTS_HINT_LABELS:Class = HINT_LABELS;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_BATTLEHINT_CONTAINERS_HINTCONTAINER:Class = HintContainer;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_BATTLEHINT_CONTAINERS_HINTHIGHLIGHTCONTAINER:Class = HintHighlightContainer;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_BATTLEHINT_CONTAINERS_HINTICONCONTAINER:Class = HintIconContainer;
       

@@ -34,6 +34,17 @@ msgstr ""
 "Нанесённый\n"
 "урон"
 
+msgid "battleResult/difficultyInfo/extraSmall"
+msgstr ""
+"%(icon)s Задачи, выполняемые на продвинутом уровне сложности,\n"
+"автоматически выполняются и на простом.\n"
+"Таким образом, вы получите награды за оба уровня сложности."
+
+msgid "battleResult/difficultyInfo/smallAndUp"
+msgstr ""
+"%(icon)s Задачи, выполняемые на продвинутом уровне сложности, автоматически выполняются и на простом.\n"
+"Таким образом, вы получите награды за оба уровня сложности."
+
 msgid "battleResult/kills"
 msgstr ""
 "Противников\n"
@@ -45,16 +56,30 @@ msgstr "БОЙ ЗАВЕРШЁН"
 msgid "battleResult/missionName/1"
 msgstr "ОХОТНИК НА ТИГРОВ: Операция «Стальная лавина»"
 
+msgid "battleResult/missionName/1000"
+msgstr "ОПЕРАЦИЯ «ОВЕРЛОРД»"
+
+msgid "battleResult/missionName/1001"
+msgstr "ОПЕРАЦИЯ «ОВЕРЛОРД»"
+
 msgid "battleResult/missionName/2"
 msgstr "ОХОТНИК НА ТИГРОВ: Операция «Зверолов»"
 
-msgid "battleResult/operationsCompleted"
+msgid "battleResult/noTasksToComplete"
 msgstr ""
-"Операции\n"
-"завершены"
+"Нет активных\n"
+"задач"
+
+msgid "battleResult/rewards/other"
+msgstr "Также получено:"
 
 msgid "battleResult/slash"
 msgstr "/"
+
+msgid "battleResult/tasksCompleted"
+msgstr ""
+"Выполненные\n"
+"задачи"
 
 msgid "battleResult/vehicleName"
 msgstr "%(playerName)s — %(vehicleName)s"
@@ -67,6 +92,33 @@ msgstr "{par_Start}Не выжил{par_End}"
 
 msgid "battleResult/win/title"
 msgstr "ПОБЕДА!"
+
+msgid "countdown/days"
+msgstr "{days} д"
+
+msgid "countdown/daysHours"
+msgstr "{days} д {hours} ч"
+
+msgid "countdown/endsSoon"
+msgstr "Менее {minutes} мин"
+
+msgid "countdown/hours"
+msgstr "{hours} ч"
+
+msgid "countdown/hoursMinutes"
+msgstr "{hours} ч {minutes} мин"
+
+msgid "countdown/hoursMinutesShort"
+msgstr "{hours} ч {minutes} м"
+
+msgid "countdown/lessThanMinute"
+msgstr "Менее 1 минуты"
+
+msgid "countdown/minutes"
+msgstr "{minutes} мин"
+
+msgid "countdown/minutesShort"
+msgstr "{minutes} м"
 
 msgid "dialogs/missionCompleted/cancel"
 msgstr "Отменить"
@@ -82,8 +134,35 @@ msgstr "Подтвердить"
 msgid "dialogs/missionCompleted/title"
 msgstr "Нет активных задач для этой операции"
 
+msgid "entryPoint/new"
+msgstr "НОВОЕ"
+
+msgid "entryPoint/subtitle/newMission"
+msgstr "ДОСТУПНЫ НОВЫЕ ЗАДАЧИ"
+
+msgid "entryPoint/subtitle/newMode"
+msgstr "ДОСТУПНА НОВАЯ ИСТОРИЯ"
+
+msgid "entryPoint/timer/dates"
+msgstr "%(startDate)s – %(endDate)"
+
+msgid "entryPoint/title/newMission"
+msgstr "ОПЕРАЦИЯ «ОВЕРЛОРД»"
+
+msgid "entryPoint/title/newMode"
+msgstr "ОПЕРАЦИЯ «ОВЕРЛОРД»"
+
 msgid "headerButtons/battle/types/story_mode"
 msgstr "Истории"
+
+msgid "missionSelection/about"
+msgstr "ОБ ИСТОРИЯХ"
+
+msgid "missionSelection/difficulty/hard"
+msgstr "Продвинутые"
+
+msgid "missionSelection/difficulty/normal"
+msgstr "Простые"
 
 msgid "missionSelection/exitButton"
 msgstr "ПОКИНУТЬ РЕЖИМ"
@@ -94,6 +173,18 @@ msgstr ""
 "Едь за нами и не попадись на «зубы дракона». Этих бетонных «клыков» там всё поле в несколько рядов. Ничего. Прорвёмся. Главное, слушай меня и выполняй приказы быстро и чётко. Мы с МакЛаудом тебя прикроем.\n"
 "И да, не обращай внимания на его шутки. У каждого свой способ справляться со стрессом. Вперёд!»"
 
+msgid "missionSelection/missionDescription/1000"
+msgstr ""
+"Капитан Джон Маккормик: «Ну что ж, парни, ваш день настал. С войной пора заканчивать. Этим мы сейчас и займёмся. Все мы заодно: американцы, британцы, французы, канадцы, австралийцы, бельгийцы, чехословаки, греки, голландцы, новозеландцы, норвежцы, поляки. И вместе мы покончим со злом раз и навсегда.\n"
+"Мы прорвём Атлантический вал и закрепимся на нём.\n"
+"Приготовиться к высадке!»"
+
+msgid "missionSelection/missionDescription/1001"
+msgstr ""
+"Капитан Джон Маккормик: «Ну что ж, парни, ваш день настал. С войной пора заканчивать. Этим мы сейчас и займёмся. Все мы заодно: американцы, британцы, французы, канадцы, австралийцы, бельгийцы, чехословаки, греки, голландцы, новозеландцы, норвежцы, поляки. И вместе мы покончим со злом раз и навсегда.\n"
+"Мы прорвём Атлантический вал и закрепимся на нём.\n"
+"Приготовиться к высадке!»"
+
 msgid "missionSelection/missionDescription/2"
 msgstr ""
 "МакЛауд: «\"Тигры\". Худшее, что можно встретить на поле боя. И если командование говорит, что у них проблема, значит это \"Тигры\". Первая штурмовая группа не выходит на связь. Вторая только что отправилась. Нас посылают за ними.\n"
@@ -103,30 +194,62 @@ msgstr ""
 msgid "missionSelection/missionName/1"
 msgstr "ОПЕРАЦИЯ «СТАЛЬНАЯ ЛАВИНА»"
 
+msgid "missionSelection/missionName/1000"
+msgstr "ОПЕРАЦИЯ «ОВЕРЛОРД»"
+
+msgid "missionSelection/missionName/1001"
+msgstr "ОПЕРАЦИЯ «ОВЕРЛОРД»"
+
 msgid "missionSelection/missionName/2"
 msgstr "ОПЕРАЦИЯ «ЗВЕРОЛОВ»"
 
 msgid "missionSelection/specialVehicle"
 msgstr "Специальная техника"
 
-msgid "missionSelection/taskDescription/1"
-msgstr ""
-"{whiteSpanish_Start}Задача:{whiteSpanish_End} атакуйте город и уничтожьте "
-"машины противника."
+msgid "missionSelection/tab/event"
+msgstr "ОПЕРАЦИЯ «ОВЕРЛОРД»"
 
-msgid "missionSelection/taskDescription/2"
-msgstr ""
-"{whiteSpanish_Start}Задача:{whiteSpanish_End} атакуйте город и уничтожьте "
-"машины противника."
+msgid "missionSelection/tab/newbies"
+msgstr "ОБУЧАЮЩИЕ ИСТОРИИ"
+
+msgid "missionSelection/taskDescription/1/1"
+msgstr "Атакуйте город и уничтожьте машины противника."
+
+msgid "missionSelection/taskDescription/1000/1"
+msgstr "Прорвите оборону, уничтожьте береговые пушки и захватите плацдарм."
+
+msgid "missionSelection/taskDescription/1000/2"
+msgstr "Достигните основных целей задачи менее чем за 15 минут."
+
+msgid "missionSelection/taskDescription/1000/3"
+msgstr "Достигните основных целей задачи, не потеряв ни одной машины."
+
+msgid "missionSelection/taskDescription/1001/1"
+msgstr "Прорвите оборону, уничтожьте береговые пушки и захватите плацдарм."
+
+msgid "missionSelection/taskDescription/1001/2"
+msgstr "Достигните основных целей задачи менее чем за 15 минут."
+
+msgid "missionSelection/taskDescription/1001/3"
+msgstr "Достигните основных целей задачи, не потеряв ни одной машины."
+
+msgid "missionSelection/taskDescription/2/1"
+msgstr "Атакуйте город и уничтожьте машины противника."
+
+msgid "missionSelection/taskDescription/locked"
+msgstr "Задача недоступна: %(timer)s"
 
 msgid "missionSelection/tooltipDescription"
-msgstr "Эта машина доступна только для операций «Охотник на Тигров»."
+msgstr "Эта машина доступна только в режиме «Истории»."
 
 msgid "mode/story_mode/callToAction"
 msgstr "Сценарии для начинающих"
 
 msgid "mode/story_mode/description"
 msgstr "Выполните сюжетные операции против машин под управлением ИИ."
+
+msgid "mode/story_mode_event/callToAction"
+msgstr "Доступна операция «Оверлорд»"
 
 msgid "onboardingBattleResult/startButton"
 msgstr "Перезапустить"
@@ -139,8 +262,143 @@ msgstr "Пропустить"
 
 msgid "onboardingQueue/skipText"
 msgstr ""
-"Все сервера перегружены. Пожалуйста, подождите или пропустите историю "
-"«Охотник на Тигров»."
+"Все сервера перегружены. Пожалуйста, подождите или пропустите эту историю."
 
 msgid "onboardingQueue/spinnerText"
 msgstr "Подготовка сервера. Пожалуйста, подождите..."
+
+msgid "tooltips/battleResultStat/armorUse/blocked"
+msgstr ""
+"Урон, заблокированный бронёй {parSecondary_Start}(ед.){parSecondary_End}"
+
+msgid "tooltips/battleResultStat/armorUse/header"
+msgstr "Заблокировано урона"
+
+msgid "tooltips/battleResultStat/armorUse/info"
+msgstr ""
+"Засчитывается:\n"
+"• Рикошет от выстрелов противника\n"
+" • Непробитие\n"
+"\n"
+"Попадания осколочно-фугасными и HESH-снарядами не учитываются."
+
+msgid "tooltips/battleResultStat/assist/header"
+msgstr "Содействие"
+
+msgid "tooltips/battleResultStat/assist/info"
+msgstr ""
+"Засчитывается урон союзников по противнику:\n"
+" • Нанесённый по вашим разведданным\n"
+" • После вашего попадания, сбившего гусеницу и обездвижившего противника"
+
+msgid "tooltips/battleResultStat/assist/total"
+msgstr ""
+"Весь урон, нанесённый союзниками\n"
+"{parSecondary_Start}(ед.){parSecondary_End}"
+
+msgid "tooltips/battleResultStat/damage/header"
+msgstr "Нанесённый урон"
+
+msgid "tooltips/battleResultStat/damage/info"
+msgstr ""
+"Засчитывается урон:\n"
+" • Выстрелом\n"
+" • Тараном\n"
+" • Поджогом\n"
+" • В результате сильного удара."
+
+msgid "tooltips/battleResultStat/damage/total"
+msgstr "Весь урон {parSecondary_Start}(ед.){parSecondary_End}"
+
+msgid "tooltips/battleResultStat/kills/header"
+msgstr "Уничтоженная техника"
+
+msgid "tooltips/battleResultStat/kills/info"
+msgstr ""
+"Засчитывается уничтожение:\n"
+" • Выстрелом\n"
+" • Поджогом\n"
+" • Тараном\n"
+" • Потоплением\n"
+" • В результате сильного удара\n"
+"• Переворотом"
+
+msgid "tooltips/battleResultStat/missions/header"
+msgstr "Выполненные задачи"
+
+msgid "tooltips/battleResultStat/missions/info"
+msgstr ""
+"Количество выполненных задач и \n"
+"всех задач, доступных на данный момент.\n"
+"Задачи, выполняемые на продвинутом уровне сложности,\n"
+"автоматически выполняются и\n"
+"на простом."
+
+msgid "tooltips/difficulty/available"
+msgstr "Доступно"
+
+msgid "tooltips/difficulty/hard/description"
+msgstr ""
+"Противник быстрее реагирует, точнее стреляет и энергичнее нападает на вас. Взамен выполненные задачи принесут больше наград.\n"
+"Задачи, выполняемые на продвинутом уровне сложности, автоматически выполняются и на простом."
+
+msgid "tooltips/difficulty/hard/title"
+msgstr "Продвинутые"
+
+msgid "tooltips/difficulty/normal/description"
+msgstr ""
+"Соперники медленнее и не такие меткие, а за выполненные задачи вы получите "
+"стандартные награды."
+
+msgid "tooltips/difficulty/normal/title"
+msgstr "Простые"
+
+msgid "tooltips/difficulty/selected"
+msgstr "Выбрано"
+
+msgid "tooltips/task/active"
+msgstr "Выполняется"
+
+msgid "tooltips/task/completed"
+msgstr "Выполнено"
+
+msgid "tooltips/task/condition/locked"
+msgstr "Условия неизвестны"
+
+msgid "tooltips/task/locked"
+msgstr "Недоступно: %(timer)s"
+
+msgid "welcomeScreen/column/subtitle/1"
+msgstr ""
+"Эта история приурочена к 80-летию со дня высадки союзников в Нормандии, "
+"также известной как операция «Оверлорд». Отдайте дань уважения героям, "
+"которые заплатили высокую цену, чтобы освободить Европу и положить конец "
+"Второй мировой войне."
+
+msgid "welcomeScreen/column/subtitle/2"
+msgstr ""
+"В рамках этой эпичной истории вам предстоит в одиночку сразиться с "
+"соперниками под управлением ИИ. Встречайте и вербуйте танкистов из XIV "
+"сезона Боевого пропуска, задействуйте всю мощь ВМС США и ВВС Великобритании,"
+" избегайте минных полей и уничтожайте бетонные бункеры!"
+
+msgid "welcomeScreen/column/subtitle/3"
+msgstr ""
+"Выполните все задачи и получите памятную медаль, камуфляжные схемы, "
+"созданные в честь подвига союзных солдат во время высадки в Нормандии в 1944"
+" г., и другие ценные награды."
+
+msgid "welcomeScreen/column/title/1"
+msgstr "Исторические события"
+
+msgid "welcomeScreen/column/title/2"
+msgstr "Одиночная история"
+
+msgid "welcomeScreen/column/title/3"
+msgstr "Награды"
+
+msgid "welcomeScreen/header"
+msgstr "ОПЕРАЦИЯ «ОВЕРЛОРД»"
+
+msgid "welcomeScreen/subheader"
+msgstr "%(startDate)s – %(endDate)"

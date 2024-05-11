@@ -577,6 +577,7 @@ package net.wg.gui.lobby.header
       {
          this.mainMenuGradient.visible = this.centerMenuBg.visible = Boolean(param1 & BG_OVERLAY_ONLY);
          this.mainMenuButtonBar.visible = Boolean(param1 & BUTTON_BAR_ONLY);
+         this.mainMenuButtonBar.setButtonsVisibility(Boolean(param1 & BUTTON_BAR_ONLY));
          this.onlineCounter.visible = Boolean(param1 & ONLINE_COUNTER_ONLY);
       }
       

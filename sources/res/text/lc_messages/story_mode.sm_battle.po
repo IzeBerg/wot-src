@@ -9,12 +9,18 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+msgid "#PluralForms"
+msgstr ""
+"nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && "
+"(n%100<10 || n%100>=20) ? 1 : 2);"
 
 msgid "battleResult/reason/1"
 msgstr "Вся техника противника уничтожена"
 
 msgid "battleResult/reason/11"
-msgstr "Все задачи выполнены"
+msgstr "Все цели достигнуты"
 
 msgid "battleResult/reason/3"
 msgstr "Время боя истекло"
@@ -40,8 +46,23 @@ msgstr "ПОБЕДА!"
 msgid "botNames/Brooks"
 msgstr "Сержант Брукс"
 
+msgid "botNames/Connolly"
+msgstr "Л-т Артур Коннолли"
+
+msgid "botNames/Dubois"
+msgstr "К-н Луи Дюбуа"
+
+msgid "botNames/McCormick"
+msgstr "К-н Джон Маккормик"
+
 msgid "botNames/McLaud"
 msgstr "Алистер МакЛауд"
+
+msgid "botNames/Murphy"
+msgstr "К-н Джек Мёрфи"
+
+msgid "bunker"
+msgstr "Береговой бункер"
 
 msgid "common/battleBtn"
 msgstr "В бой!"
@@ -58,11 +79,125 @@ msgstr "Пропустить"
 msgid "confirmExit/exit"
 msgstr "Пропустить"
 
+msgid "confirmExit/exitRegular"
+msgstr "Выйти"
+
 msgid "confirmExit/stay"
 msgstr "Отменить"
 
 msgid "confirmExit/title"
 msgstr "Пропустить историю «Охотник на Тигров»?"
+
+msgid "confirmExit/titleRegular"
+msgstr "Выйти из истории?"
+
+msgid "dday/hint01"
+msgstr "Найдите способ уничтожить береговые бункеры"
+
+msgid "dday/hint02"
+msgstr "Используйте дымовые сигналы, чтобы помочь линкору"
+
+msgid "dday/objective01/header"
+msgstr "Выживите на пляже"
+
+msgid "dday/objective01/subheader"
+msgstr "Избегайте огня противника любой ценой"
+
+msgid "dday/objective02/header"
+msgstr "Прорвите оборону противника"
+
+msgid "dday/objective02/subheader"
+msgid_plural "plural/dday/objective02/subheader"
+msgstr[0] "Уничтожьте береговых бункеров: %d"
+msgstr[1] "Уничтожьте береговых бункеров: %d"
+msgstr[2] "Уничтожьте береговых бункеров: %d"
+
+msgid "dday/objective02/success"
+msgstr "Все береговые бункеры уничтожены!"
+
+msgid "dday/objective03/header"
+msgstr "Заберитесь наверх"
+
+msgid "dday/objective03/subheader"
+msgstr "Доберитесь до защиты зенитных батарей противника и уничтожьте её"
+
+msgid "dday/objective03/success"
+msgstr "Защита уничтожена! Зенитные орудия умолкли!"
+
+msgid "dday/objective04/header"
+msgstr "Помогите союзникам прорвать оборону"
+
+msgid "dday/objective04/subheader"
+msgstr "Нейтрализуйте оборону противника в секторе D6"
+
+msgid "dday/objective04/success"
+msgstr "Путь для капитана Мёрфи расчищен!"
+
+msgid "dday/objective05/header"
+msgstr "Помогите капитану Дюбуа"
+
+msgid "dday/objective05/subheader"
+msgstr "Нейтрализуйте оборону противника в секторе H6"
+
+msgid "dday/objective05/success"
+msgstr "Путь для капитана Дюбуа расчищен!"
+
+msgid "dday/objective06/header"
+msgstr "Защитите флот"
+
+msgid "dday/objective06/subheader"
+msgid_plural "plural/dday/objective06/subheader"
+msgstr[0] "Уничтожьте береговых пушек: %d"
+msgstr[1] "Уничтожьте береговых пушек: %d"
+msgstr[2] "Уничтожьте береговых пушек: %d"
+
+msgid "dday/objective06/success"
+msgstr "Все береговые пушки уничтожены!"
+
+msgid "dday/objective07/header"
+msgstr "Зачистите участок"
+
+msgid "dday/objective07/subheader"
+msgid_plural "plural/dday/objective07/subheader"
+msgstr[0] "Уничтожьте оставшихся соперников: %d"
+msgstr[1] "Уничтожьте оставшихся противников: %d"
+msgstr[2] "Уничтожьте оставшихся противников: %d"
+
+msgid "dday/objective07/success"
+msgstr "Противник уничтожен!"
+
+msgid "dday/objective08/header"
+msgstr "Удерживайте позиции"
+
+msgid "dday/objective08/subheader"
+msgid_plural "plural/dday/objective08/subheader"
+msgstr[0] "Уничтожьте машин противника: %d"
+msgstr[1] "Уничтожьте машин противника: %d"
+msgstr[2] "Уничтожьте машин противника: %d"
+
+msgid "dday/objective08/success"
+msgstr "Плацдарм защищён!"
+
+msgid "dday/prebattle/header"
+msgstr "Подготовка к наступлению"
+
+msgid "dday/prebattle/start"
+msgstr "В атаку!"
+
+msgid "dday/prebattle/subheader"
+msgstr "?empty?"
+
+msgid "dday/respawn/header"
+msgstr "Будь наготове, солдат"
+
+msgid "dday/respawn/subheader"
+msgstr "Подкрепление в пути"
+
+msgid "dday/respawn_over/header"
+msgstr "Всё кончено"
+
+msgid "dday/respawn_over/subheader"
+msgstr "Все доступные машины уничтожены"
 
 msgid "epilogue/text"
 msgstr ""
@@ -79,7 +214,7 @@ msgid "finish/reason/1"
 msgstr "ВСЯ ТЕХНИКА ПРОТИВНИКА УНИЧТОЖЕНА"
 
 msgid "finish/reason/11"
-msgstr "ВСЕ ЗАДАЧИ ВЫПОЛНЕНЫ"
+msgstr "ВСЕ ЦЕЛИ ДОСТИГНУТЫ"
 
 msgid "finish/reason/3"
 msgstr "ВРЕМЯ БОЯ ИСТЕКЛО"
@@ -129,6 +264,12 @@ msgstr "Загружается..."
 msgid "prebattle/mission/stage/1"
 msgstr "Операция 1"
 
+msgid "prebattle/mission/stage/1000"
+msgstr "Простые"
+
+msgid "prebattle/mission/stage/1001"
+msgstr "Продвинутые"
+
 msgid "prebattle/mission/stage/2"
 msgstr "Операция 2"
 
@@ -136,6 +277,16 @@ msgid "prebattle/mission/task/1"
 msgstr ""
 "{whiteSpanish_Start}Задача:{whiteSpanish_End} атакуйте город и уничтожьте "
 "все машины противника."
+
+msgid "prebattle/mission/task/1000"
+msgstr ""
+"{whiteSpanish_Start}Прорвите оборону, уничтожьте береговые пушки и захватите"
+" плацдарм.{whiteSpanish_End}"
+
+msgid "prebattle/mission/task/1001"
+msgstr ""
+"{whiteSpanish_Start}Прорвите оборону, уничтожьте береговые пушки и захватите"
+" плацдарм.{whiteSpanish_End}"
 
 msgid "prebattle/mission/task/2"
 msgstr ""
@@ -150,6 +301,22 @@ msgstr ""
 "\n"
 "И да, не обращай внимания на его шутки. У каждого свой способ справляться со стрессом. Вперёд!»"
 
+msgid "prebattle/mission/text/1000"
+msgstr ""
+"Капитан Джон Маккормик: «Ну что ж, парни, ваш день настал. С войной пора заканчивать. Этим мы сейчас и займёмся. Все мы заодно: американцы, британцы, французы, канадцы, австралийцы, бельгийцы, чехословаки, греки, голландцы, новозеландцы, норвежцы, поляки. И вместе мы покончим со злом раз и навсегда.\n"
+"\n"
+"Мы прорвём Атлантический вал и закрепимся на нём.\n"
+"\n"
+"Приготовиться к высадке!»"
+
+msgid "prebattle/mission/text/1001"
+msgstr ""
+"Капитан Джон Маккормик: «Ну что ж, парни, ваш день настал. С войной пора заканчивать. Этим мы сейчас и займёмся. Все мы заодно: американцы, британцы, французы, канадцы, австралийцы, бельгийцы, чехословаки, греки, голландцы, новозеландцы, норвежцы, поляки. И вместе мы покончим со злом раз и навсегда.\n"
+"\n"
+"Мы прорвём Атлантический вал и закрепимся на нём.\n"
+"\n"
+"Приготовиться к высадке!»"
+
 msgid "prebattle/mission/text/2"
 msgstr ""
 "МакЛауд: «\"Тигры\". Худшее, что можно встретить на поле боя. И если командование говорит, что у них проблема, значит это \"Тигры\". Первая штурмовая группа не выходит на связь. Вторая только что отправилась. Нас посылают за ними.\n"
@@ -160,6 +327,12 @@ msgstr ""
 
 msgid "prebattle/mission/title/1"
 msgstr "Стальная лавина"
+
+msgid "prebattle/mission/title/1000"
+msgstr "Операция «Оверлорд»"
+
+msgid "prebattle/mission/title/1001"
+msgstr "Операция «Оверлорд»"
 
 msgid "prebattle/mission/title/2"
 msgstr "Зверолов"

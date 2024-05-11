@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_tiled_atlas_global.fx</fx>
+					<materialKind>111</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						atlasAlbedoHeight
+						<Texture>content/Outland/00_Atlases/hd_out_EU_001_Seacliff_01_Atlas_AM.dds</Texture>
+					</property>
+					<property>
+						atlasBlend
+						<Texture>content/Outland/hd_out_UNI_017_JapanHills/hd_out_UNI_017_JapanHills_01_atlas_blend.png</Texture>
+					</property>
+					<property>
+						atlasMetallicAO
+						<Texture>content/Outland/00_Atlases/hd_out_EU_001_Seacliff_Atlas_MAO.dds</Texture>
+					</property>
+					<property>
+						atlasNormalGlossSpec
+						<Texture>content/Outland/00_Atlases/hd_out_EU_001_Seacliff_01_Atlas_GBMT.dds</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Environment/00_Tiles/Moss_GreenDirt_02_DM.dds</Texture>
+					</property>
+					<property>
+						g_atlasIndexes
+						<Vector4>2.000000 2.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_atlasSizes
+						<Vector4>2.000000 2.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.584314 0.694118 0.600000 0.250000</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>0.450980 0.588235 0.556863 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>0.600000 0.729412 0.635294 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>0.552941 0.592157 0.572549 1.000000</Vector4>
+					</property>
+					<property>
+						g_tileUVScale
+						<Vector4>13.000000 13.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						globalTex
+						<Texture>content/Outland/hd_out_UNI_017_JapanHills/hd_out_UNI_017_JapanHills_01_GT.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.528347 12.023788 9.932764</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-44.691723 -0.631608 -32.163967</min>
+		<max>45.748417 24.679186 52.029495</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>12244</geometrySize>
+	<minUVDensity>0.000049</minUVDensity>
+</root>

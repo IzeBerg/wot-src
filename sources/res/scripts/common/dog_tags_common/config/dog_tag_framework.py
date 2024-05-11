@@ -2,7 +2,7 @@ import inspect, sys
 from functools import partial
 import typing
 from common import ParameterType, Visibility, ParseException, ComponentPurpose, ComponentViewType, ComponentNumberType
-from validators import validateTriumphMedal, validateTriumph, validateSkill, validateDedication, validateDedicationUnlock, validateBase, validateRankedSkill, validateViewType, validateCommon, validateStartingComponent
+from validators import validateTriumphMedal, validateTriumph, validateSkill, validateDedication, validateDedicationUnlock, validateBase, validateRankedSkill, validateViewType, validateCommon, validateStartingComponent, validateCoupled
 if typing.TYPE_CHECKING:
     from typing import List
 
@@ -33,6 +33,12 @@ class ComponentBuilder(XMLObjBuilder):
                       ParameterType.STR, Visibility.ALL), 
        'viewType': (
                   ParameterType.VIEW_TYPE, Visibility.ALL), 
+       'coupledComponentId': (
+                            ParameterType.INT, Visibility.ALL), 
+       'animation': (
+                   ParameterType.STR, Visibility.ALL), 
+       'isShowInPrebattle': (
+                           ParameterType.BOOL, Visibility.ALL), 
        'purpose': (
                  ParameterType.TYPE, Visibility.ALL), 
        'unlockKey': (
@@ -66,6 +72,7 @@ class ComponentBuilder(XMLObjBuilder):
        'isDefault': False, 
        'isDeprecated': False, 
        'isExternalUnlockOnly': False, 
+       'isShowInPrebattle': False, 
        'numberType': ComponentNumberType.NUMBER, 
        'glossaryName': ''}
     VALIDATORS = {ComponentPurpose.TRIUMPH_MEDAL: [
@@ -89,6 +96,9 @@ class ComponentBuilder(XMLObjBuilder):
                                      validateCommon,
                                      partial(validateViewType, viewType=ComponentViewType.ENGRAVING, purpose=ComponentPurpose.RANKED_SKILL),
                                      validateRankedSkill], 
+       ComponentPurpose.COUPLED: [
+                                validateCommon,
+                                validateCoupled], 
        ComponentPurpose.BASE: [
                              validateCommon,
                              partial(validateViewType, viewType=ComponentViewType.BACKGROUND, purpose=ComponentPurpose.BASE),
@@ -105,6 +115,15 @@ class ComponentBuilder(XMLObjBuilder):
 
     def viewType(self, value):
         self._component.viewType = value
+
+    def coupledComponentId(self, value):
+        self._component.coupledComponentId = value
+
+    def animation(self, value):
+        self._component.animation = value
+
+    def isShowInPrebattle(self, value):
+        self._component.isShowInPrebattle = value
 
     def purpose(self, value):
         self._component.purpose = value
@@ -194,6 +213,9 @@ class ComponentDefinition(object):
         self.componentId = 0
         self.resourceRoot = ''
         self.viewType = None
+        self.coupledComponentId = None
+        self.animation = None
+        self.isShowInPrebattle = None
         self.purpose = None
         self.unlockKey = None
         self.progressKey = None
@@ -211,7 +233,7 @@ class ComponentDefinition(object):
         return
 
     def __str__(self):
-        return ("[id: {componentId}, {purpose}, {viewType}, unlock keys: {unlockKey}, progress keys: {progressKey}, hidden: {isHidden}, default: {isDefault}, deprecated: {isDeprecated}, grades: {grades}, secret: {isSecret}, only external unlock: {isExternalUnlockOnly}, src: '{src}']").format(componentId=self.componentId, purpose='None' if self.purpose is None else self.purpose.value, viewType='None' if self.viewType is None else self.viewType.value, unlockKey=self.unlockKey, progressKey=self.progressKey, isHidden=self.isHidden, isDefault=self.isDefault, isDeprecated=self.isDeprecated, grades=self.grades, isSecret=self.isSecret, isExternalUnlockOnly=self.isExternalUnlockOnly, src=self.src)
+        return ("[id: {componentId}, {purpose}, {viewType}, unlock keys: {unlockKey}, progress keys: {progressKey}, hidden: {isHidden}, default: {isDefault}, deprecated: {isDeprecated}, grades: {grades}, secret: {isSecret}, only external unlock: {isExternalUnlockOnly}, src: '{src}', coupled component id: {coupledComponentId}, animation: {animation}]").format(componentId=self.componentId, purpose='None' if self.purpose is None else self.purpose.value, viewType='None' if self.viewType is None else self.viewType.value, unlockKey=self.unlockKey, progressKey=self.progressKey, isHidden=self.isHidden, isDefault=self.isDefault, isDeprecated=self.isDeprecated, grades=self.grades, isSecret=self.isSecret, isExternalUnlockOnly=self.isExternalUnlockOnly, src=self.src, coupledComponentId=self.coupledComponentId, animation=self.animation)
 
     def __repr__(self):
         return self.__str__()

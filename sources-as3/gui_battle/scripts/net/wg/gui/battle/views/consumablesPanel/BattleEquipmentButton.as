@@ -426,6 +426,11 @@ package net.wg.gui.battle.views.consumablesPanel
          }
       }
       
+      public function setIdleEnabledGlow(param1:Boolean) : void
+      {
+         this.glow.setIdleEnabledGlow(param1);
+      }
+      
       public function showGlow(param1:int) : void
       {
          if(this._isReloading || !enabled)

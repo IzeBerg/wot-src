@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd1</identifier>
+					<fx>shaders/std_effects/PBS_tiled_atlas_global.fx</fx>
+					<materialKind>110</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						atlasAlbedoHeight
+						<Texture>content/Environment/00_Atlases/hd_out_UNI_002_Glacier_atlas_AM.atlas</Texture>
+					</property>
+					<property>
+						atlasBlend
+						<Texture>content/Outland/00_Atlases/hd_out_UNI_002_Glacier_Rock_atlas_blend.png</Texture>
+					</property>
+					<property>
+						atlasMetallicAO
+						<Texture>content/Environment/00_Atlases/hd_out_UNI_002_Glacier_atlas_MAO.atlas</Texture>
+					</property>
+					<property>
+						atlasNormalGlossSpec
+						<Texture>content/Environment/00_Atlases/hd_out_UNI_002_Glacier_atlas_GBMT.atlas</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Environment/00_Tiles/Glacier_rocks_DM.dds</Texture>
+					</property>
+					<property>
+						g_atlasIndexes
+						<Vector4>2.000000 2.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_atlasSizes
+						<Vector4>2.000000 2.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>0.860000 0.860000 0.860000 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>0.820000 0.820000 0.820000 1.000000</Vector4>
+					</property>
+					<property>
+						g_tileUVScale
+						<Vector4>10.000000 10.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						globalTex
+						<Texture>content/Outland/hd_out_UNI_002_Glacier_snow/hd_out_UNI_002_Glacier_Rock_snow_GT.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.024006 12.691801 -0.995085</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-57.584106 -4.084079 -47.174232</min>
+		<max>57.632118 29.467680 45.210381</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>53176</geometrySize>
+	<minUVDensity>0.000037</minUVDensity>
+</root>

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>nodes_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_Fire_1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.138910 -2.291626</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Fire_2</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 -0.051579 1.956961</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_LFront</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.665542 0.746360</row1>
+					<row2>0.000000 -0.746360 0.665542</row2>
+					<row3>-1.274270 0.056526 3.496151</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_LRear</identifier>
+				<transform>
+					<row0>-1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.530056 -0.847962</row1>
+					<row2>-0.000000 -0.847962 -0.530056</row2>
+					<row3>-1.274270 0.007809 -3.359552</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_RFront</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.665542 0.746360</row1>
+					<row2>0.000000 -0.746360 0.665542</row2>
+					<row3>1.274268 0.056526 3.496151</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_RRear</identifier>
+				<transform>
+					<row0>-1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.530056 -0.847962</row1>
+					<row2>-0.000000 -0.847962 -0.530056</row2>
+					<row3>1.274268 0.007809 -3.359552</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_Exhaus_1</identifier>
+				<transform>
+					<row0>0.213717 0.833730 0.509136</row0>
+					<row1>0.833730 0.115960 -0.539859</row1>
+					<row2>-0.509136 0.539859 -0.670324</row2>
+					<row3>-1.392834 0.502425 -2.587051</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_Exhaus_2</identifier>
+				<transform>
+					<row0>0.213716 -0.833728 -0.509140</row0>
+					<row1>-0.833728 0.115965 -0.539861</row1>
+					<row2>0.509140 0.539861 -0.670319</row2>
+					<row3>1.393472 0.502425 -2.587050</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_turretJoint</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000318 0.545438 0.403011</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_hull_01</identifier>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/italy/It15_Rinoceronte/_skins/It15_Rinoceronte_3DSt_MD_21_XXII/Rinoceronte_3DSt_MD_21_XXII_hull_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/italy/It15_Rinoceronte/_skins/It15_Rinoceronte_3DSt_MD_21_XXII/Rinoceronte_3DSt_MD_21_XXII_hull_01_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/italy/It15_Rinoceronte/_skins/It15_Rinoceronte_3DSt_MD_21_XXII/Rinoceronte_3DSt_MD_21_XXII_hull_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/italy/It15_Rinoceronte/_skins/It15_Rinoceronte_3DSt_MD_21_XXII/Rinoceronte_3DSt_MD_21_XXII_hull_01_AO.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.001964 0.075057 -0.237476</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>tank_equipment</identifier>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/italy/It15_Rinoceronte/_skins/It15_Rinoceronte_3DSt_MD_21_XXII/Rinoceronte_3DSt_MD_21_XXII_equipment_AM.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/italy/It15_Rinoceronte/_skins/It15_Rinoceronte_3DSt_MD_21_XXII/Rinoceronte_3DSt_MD_21_XXII_equipment_AO.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>7.013700 3.050000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/italy/It15_Rinoceronte/_skins/It15_Rinoceronte_3DSt_MD_21_XXII/Rinoceronte_3DSt_MD_21_XXII_equipment_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/italy/It15_Rinoceronte/_skins/It15_Rinoceronte_3DSt_MD_21_XXII/Rinoceronte_3DSt_MD_21_XXII_equipment_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.085947 0.515366 -0.786271</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.665727 -0.533580 -4.111845</min>
+		<max>1.661800 0.908631 3.636893</max>
+	</boundingBox>
+	<geometrySize>82878</geometrySize>
+	<minUVDensity>0.001420</minUVDensity>
+</root>

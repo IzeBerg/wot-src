@@ -531,3 +531,6 @@ class EpicBattlePage(EpicBattlePageMeta, BattleGUIKeyHandler):
             specCtrl.onSpectatorViewModeChanged -= self.__onSpectatorModeChanged
         super(EpicBattlePage, self)._stopBattleSession()
         return
+
+    def onDeactivateRadialMenu(self):
+        self.__checkRadialMenu()

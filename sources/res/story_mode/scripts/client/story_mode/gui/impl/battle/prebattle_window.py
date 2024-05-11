@@ -1,6 +1,6 @@
 from functools import partial
 from logging import getLogger
-import typing, BattleReplay, BigWorld, SoundGroups
+import typing, WWISE, BattleReplay, BigWorld, SoundGroups
 from frameworks.wulf import ViewSettings, WindowFlags
 from gui.app_loader import app_getter
 from gui.battle_control.arena_info.interfaces import IArenaLoadController
@@ -16,6 +16,7 @@ from story_mode.gui.impl.battle.lore_settings_model import getLoreSettings
 from story_mode.gui.impl.gen.view_models.views.battle.prebattle_window_view_model import PrebattleWindowViewModel
 from story_mode.gui.impl.mixins import DestroyWindowOnDisconnectMixin
 from story_mode.gui.shared.event_dispatcher import showQueueWindow, sendViewLoadedEvent
+from story_mode.gui.story_mode_gui_constants import EventMusicState, Ambience, Music
 from story_mode.skeletons.story_mode_controller import IStoryModeController
 from story_mode.uilogging.story_mode.consts import LogWindows, LogButtons
 from story_mode.uilogging.story_mode.loggers import MissionWindowLogger
@@ -73,10 +74,15 @@ class PrebattleView(BaseWaitQueueView, IArenaLoadController):
 
     def _onLoaded(self, *args, **kwargs):
         super(PrebattleView, self)._onLoaded(*args, **kwargs)
-        self._storyModeCtrl.startOnboardingMusic()
+        if self._storyModeCtrl.isSelectedMissionEvent:
+            WWISE.WW_setState(EventMusicState.GROUP, EventMusicState.LORE)
+            SoundGroups.g_instance.playSound2D(Ambience.EVENT_START)
+        else:
+            SoundGroups.g_instance.playSound2D(Music.ONBOARDING_START)
         if self._missionLoreSettings is not None:
-            SoundGroups.g_instance.playSound2D(self._missionLoreSettings.music)
             SoundGroups.g_instance.playSound2D(self._missionLoreSettings.vo)
+            if self._missionLoreSettings.music:
+                SoundGroups.g_instance.playSound2D(self._missionLoreSettings.music)
         self._uiLogger.logOpen(missionId=self.missionId, info=None if self.viewModel and self.viewModel.getIsLoading() else LogButtons.BATTLE)
         loading.getLoader().idl()
         return
@@ -100,6 +106,8 @@ class PrebattleView(BaseWaitQueueView, IArenaLoadController):
             SoundGroups.g_instance.playSound2D(self._missionLoreSettings.battleMusic)
         self.app.detachCursor()
         self.viewModel.setIsLoading(True)
+        if self._storyModeCtrl.isSelectedMissionEvent:
+            SoundGroups.g_instance.playSound2D(Ambience.EVENT_STOP)
         self._storyModeCtrl.goToBattle()
         return
 

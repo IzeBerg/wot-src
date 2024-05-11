@@ -362,6 +362,10 @@ package net.wg.gui.battle.battleRoyale.views.components
          }
       }
       
+      public function setIdleEnabledGlow(param1:Boolean) : void
+      {
+      }
+      
       public function showGlow(param1:int) : void
       {
          this._glowId = param1;

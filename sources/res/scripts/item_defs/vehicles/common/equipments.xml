@@ -5030,6 +5030,18 @@
 					<!--BW_String-->
 				</factor>
 			</level>
+			<level>
+				<deviceFilter>
+					<tags>
+						<required>improvedSights deluxe</required>
+					</tags>
+				</deviceFilter>
+				<attribute>multShotDispersionFactor</attribute>
+				<factor>
+					0.978
+					<!--BW_String-->
+				</factor>
+			</level>
 		</script>
 		<kpi>
 			<mul>
@@ -10537,11 +10549,11 @@
 				<exports>vse tooltip</exports>
 			</duration>
 			<heal>
-				3 5 7
+				5 7 10
 				<exports>vse</exports>
 			</heal>
 			<gunReloadTimeBuff>
-				1
+				2
 				<exports>vse tooltip</exports>
 			</gunReloadTimeBuff>
 			<tickInterval>
@@ -10776,7 +10788,7 @@
 				<exports>vse</exports>
 			</cooldownSeconds>
 			<duration>
-				15 20 30
+				12 15 20
 				<exports>vse tooltip</exports>
 			</duration>
 			<enginePowerFactor>
@@ -10794,7 +10806,7 @@
 				<exports>vse tooltip</exports>
 			</repairBuff>
 			<gunReloadBoost>
-				5.0
+				4.0
 				<!--BW_String-->
 				<exports>vse tooltip</exports>
 			</gunReloadBoost>
@@ -10953,7 +10965,7 @@
 				<exports>vse</exports>
 			</cooldownSeconds>
 			<duration>
-				15 20 25
+				8 12 17
 				<exports>vse tooltip</exports>
 			</duration>
 			<delay>

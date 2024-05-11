@@ -1615,6 +1615,30 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 			</buttonsLayout>
 			<buttonsAlign>center</buttonsAlign>
 		</achievementFirstEntryWithOutWTR>
+		<achievementEarningSingle>
+			<priority>low</priority>
+			<icon>InformationIcon</icon>
+			<message>&lt;textformat leading=&quot;4&quot;&gt;&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&apos;&gt;%(title)s&lt;/font&gt;&lt;br/&gt;&lt;/textformat&gt;&lt;textformat leading=&quot;4&quot;&gt;&lt;font size=&quot;14&quot; color=&apos;#8C8C7E&apos;&gt;%(body)s&lt;/font&gt;&lt;/textformat&gt;</message>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#system_messages:earning/button/single)</label>
+					<action>advancedAchievementsScreen</action>
+				</button>
+			</buttonsLayout>
+		</achievementEarningSingle>
+		<achievementEarningMultiple>
+			<priority>low</priority>
+			<icon>InformationIcon</icon>
+			<message>&lt;textformat leading=&quot;4&quot;&gt;&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&apos;&gt;%(title)s&lt;/font&gt;&lt;br/&gt;&lt;/textformat&gt;&lt;textformat leading=&quot;4&quot;&gt;&lt;font size=&quot;14&quot; color=&apos;#8C8C7E&apos;&gt;%(body)s&lt;/font&gt;&lt;/textformat&gt;</message>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#system_messages:earning/button/multiple)</label>
+					<action>advancedAchievementsScreen</action>
+				</button>
+			</buttonsLayout>
+		</achievementEarningMultiple>
 		<royaleVehiclesInvoiceReceived>
 			<type>yellow</type>
 			<icon>MessageIcon</icon>
@@ -3024,6 +3048,20 @@ _(#messenger:serviceChannelMessages/piggyBank/continueAfterSmashed)</message>
 				</button>
 			</buttonsLayout>
 		</Customization2DProgressionMessage>
+		<BondEquipmentChoosingMessage>
+			<priority>medium</priority>
+			<groupID>offer</groupID>
+			<type>grey</type>
+			<linkage>BondEquipmentChoosingMessage</linkage>
+			<message>&lt;P ALIGN=&quot;center&quot;&gt;&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(title)s&lt;/font&gt;&lt;/P&gt;</message>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#messenger:serviceChannelMessages/bondEquipmentChoosingButton)</label>
+					<action>openBondEquipmentSelection</action>
+				</button>
+			</buttonsLayout>
+		</BondEquipmentChoosingMessage>
 		<IntegratedAuctionStageStart>
 			<type>auctionStart</type>
 			<linkage>AuctionMessage</linkage>
@@ -3481,19 +3519,6 @@ _(#lootboxes:notification/lootBoxesAutoOpen/boxes)&lt;br/&gt;%(rewards)s</messag
 				</button>
 			</buttonsLayout>
 		</NotEnoughBerthErrorSysMessage>
-		<NotEnoughBerthWarningSysMessage>
-			<type>red</type>
-			<icon>WarningIcon</icon>
-			<message>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#system_messages:unload_crew/not_enough_space)&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
-			<buttonsLayout>
-				<button>
-					<type>submit</type>
-					<label>_(#system_messages:unload/button)</label>
-					<action>openBarracks</action>
-					<width>107</width>
-				</button>
-			</buttonsLayout>
-		</NotEnoughBerthWarningSysMessage>
 		<PrestigeFirstEntryMessage>
 			<priority>medium</priority>
 			<type>lightGrey</type>

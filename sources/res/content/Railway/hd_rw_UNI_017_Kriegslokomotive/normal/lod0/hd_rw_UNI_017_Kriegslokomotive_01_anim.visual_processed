@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>hd_rw_UNI_017_Kriegslokomotive_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>lod0</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+				<node>
+					<identifier>sd0</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+			</node>
+		</node>
+		<node>
+			<identifier>locomotive_root_jnt</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>Z_upper_connector_jnt</identifier>
+				<transform>
+					<row0>0.000000 -0.002699 -0.999996</row0>
+					<row1>0.000000 0.999996 -0.002699</row1>
+					<row2>1.000000 -0.000000 0.000000</row2>
+					<row3>0.000000 1.502978 3.632447</row3>
+				</transform>
+				<node>
+					<identifier>Z_upper_connector_01_jnt</identifier>
+					<transform>
+						<row0>-0.002699 0.999996 0.000000</row0>
+						<row1>-0.999996 -0.002699 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>2.025742 -0.000000 -0.000000</row3>
+					</transform>
+					<node>
+						<identifier>Z_upper_connector_01_jnt_BlendBone</identifier>
+						<transform>
+							<row0>0.000000 -0.000000 1.000000</row0>
+							<row1>1.000000 -0.000000 -0.000000</row1>
+							<row2>-0.000000 -1.000000 -0.000000</row2>
+							<row3>-1.497511 -1.606713 -0.000000</row3>
+						</transform>
+					</node>
+				</node>
+				<node>
+					<identifier>Z_upper_connector_jnt_BlendBone</identifier>
+					<transform>
+						<row0>0.000000 0.000000 1.000000</row0>
+						<row1>-0.002699 0.999996 -0.000000</row1>
+						<row2>0.999996 0.002699 -0.000000</row2>
+						<row3>3.636491 -1.493169 -0.000000</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>big_piston_plunger_jnt</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>-0.000252 0.756665 3.161317</row3>
+				</transform>
+				<node>
+					<identifier>big_piston_plunger_jnt_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 -1.000000</row2>
+						<row3>0.000252 -0.756665 -3.161317</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>locomotive_wheel_1th_jnt</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.999848 -0.017452</row1>
+					<row2>0.000000 0.017452 0.999848</row2>
+					<row3>-0.000252 0.727441 3.162466</row3>
+				</transform>
+				<node>
+					<identifier>locomotive_wheel_1th_jnt_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 0.999848 0.017452</row1>
+						<row2>0.000000 0.017452 -0.999848</row2>
+						<row3>0.000252 -0.672138 -3.174680</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>locomotive_wheel_2th_jnt</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.999848 -0.017452</row1>
+					<row2>0.000000 0.017452 0.999848</row2>
+					<row3>-0.000252 0.727441 1.522310</row3>
+				</transform>
+				<node>
+					<identifier>locomotive_wheel_2th_child_rotate_jnt</identifier>
+					<transform>
+						<row0>1.000000 0.000000 -0.000001</row0>
+						<row1>0.000000 0.999848 0.017449</row1>
+						<row2>0.000001 -0.017449 0.999848</row2>
+						<row3>0.000000 -0.300422 0.000000</row3>
+					</transform>
+					<node>
+						<identifier>locomotive_wheel_2th_child_rotate_jnt_BlendBone</identifier>
+						<transform>
+							<row0>1.000000 0.000000 0.000001</row0>
+							<row1>-0.000000 1.000000 0.000004</row1>
+							<row2>0.000001 0.000004 -1.000000</row2>
+							<row3>0.000253 -0.427060 -1.527555</row3>
+						</transform>
+					</node>
+				</node>
+				<node>
+					<identifier>locomotive_wheel_2th_jnt_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 0.999848 0.017452</row1>
+						<row2>0.000000 0.017452 -0.999848</row2>
+						<row3>0.000252 -0.700762 -1.534774</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>locomotive_wheel_3th_big_long_connector_jnt</identifier>
+				<transform>
+					<row0>1.000000 0.000000 -0.000000</row0>
+					<row1>-0.000000 1.000000 -0.000139</row1>
+					<row2>0.000000 0.000139 1.000000</row2>
+					<row3>-0.000618 0.427060 -0.112603</row3>
+				</transform>
+				<node>
+					<identifier>locomotive_wheel_3th_big_long_connector_jnt_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 -0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000139</row1>
+						<row2>0.000000 0.000139 -1.000000</row2>
+						<row3>0.000618 -0.427076 0.112543</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>locomotive_wheel_3th_hub_jnt</identifier>
+				<transform>
+					<row0>1.000000 0.000000 -0.000223</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000223 0.000000 1.000000</row2>
+					<row3>-0.000618 0.427060 -0.112603</row3>
+				</transform>
+				<node>
+					<identifier>locomotive_wheel_3th_hub_jnt_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000223</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000223 0.000000 -1.000000</row2>
+						<row3>0.000593 -0.427060 0.112603</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>locomotive_wheel_3th_jnt</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.999848 -0.017452</row1>
+					<row2>0.000000 0.017452 0.999848</row2>
+					<row3>-0.000618 0.727437 -0.117541</row3>
+				</transform>
+				<node>
+					<identifier>locomotive_wheel_3th_jnt_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 0.999848 0.017452</row1>
+						<row2>0.000000 0.017452 -0.999848</row2>
+						<row3>0.000618 -0.729378 0.104828</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>locomotive_wheel_4th_jnt</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.999848 -0.017452</row1>
+					<row2>0.000000 0.017452 0.999848</row2>
+					<row3>-0.000253 0.727441 -1.758002</row3>
+				</transform>
+				<node>
+					<identifier>locomotive_wheel_4th_child_rotate_jnt</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>-0.000000 0.999848 0.017456</row1>
+						<row2>0.000000 -0.017456 0.999848</row2>
+						<row3>-0.000000 -0.300422 0.000000</row3>
+					</transform>
+					<node>
+						<identifier>locomotive_wheel_4th_child_rotate_jnt_BlendBone</identifier>
+						<transform>
+							<row0>1.000000 -0.000000 0.000000</row0>
+							<row1>0.000000 1.000000 -0.000004</row1>
+							<row2>0.000000 -0.000004 -1.000000</row2>
+							<row3>0.000253 -0.427059 1.752760</row3>
+						</transform>
+					</node>
+				</node>
+				<node>
+					<identifier>locomotive_wheel_4th_jnt_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 0.999848 0.017452</row1>
+						<row2>0.000000 0.017452 -0.999848</row2>
+						<row3>0.000253 -0.758012 1.745038</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>locomotive_wheel_5th_jnt</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.999848 -0.017452</row1>
+					<row2>0.000000 0.017452 0.999848</row2>
+					<row3>-0.000356 0.727441 -3.398158</row3>
+				</transform>
+				<node>
+					<identifier>locomotive_wheel_5th_child_rotate_jnt</identifier>
+					<transform>
+						<row0>1.000000 0.000001 -0.000063</row0>
+						<row1>-0.000000 0.999848 0.017448</row1>
+						<row2>0.000063 -0.017448 0.999848</row2>
+						<row3>0.000000 -0.300421 -0.000389</row3>
+					</transform>
+					<node>
+						<identifier>locomotive_wheel_5th_child_rotate_jnt_BlendBone</identifier>
+						<transform>
+							<row0>1.000000 -0.000000 0.000063</row0>
+							<row1>-0.000000 1.000000 0.000004</row1>
+							<row2>0.000063 0.000004 -1.000000</row2>
+							<row3>0.000142 -0.427072 3.393302</row3>
+						</transform>
+					</node>
+				</node>
+				<node>
+					<identifier>locomotive_wheel_5th_jnt_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 0.999848 0.017452</row1>
+						<row2>0.000000 0.017452 -0.999848</row2>
+						<row3>0.000356 -0.786636 3.384945</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>locomotive_wheel_small_jnt</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.999848 -0.017452</row1>
+					<row2>0.000000 0.017452 0.999848</row2>
+					<row3>-0.000146 0.473119 5.783733</row3>
+				</transform>
+				<node>
+					<identifier>locomotive_wheel_small_jnt_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 0.999848 0.017452</row1>
+						<row2>0.000000 0.017452 -0.999848</row2>
+						<row3>0.000146 -0.372106 -5.791109</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>small_piston_plunger_jnt</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>-0.000252 1.408497 3.647410</row3>
+				</transform>
+				<node>
+					<identifier>small_piston_plunger_jnt_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 -1.000000</row2>
+						<row3>0.000252 -1.408497 -3.647410</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>small_piston_z_connector_jnt</identifier>
+				<transform>
+					<row0>-0.000140 -0.030752 0.999527</row0>
+					<row1>-0.000212 0.999527 0.030752</row1>
+					<row2>-1.000000 -0.000207 -0.000147</row2>
+					<row3>-0.000000 0.598017 3.100429</row3>
+				</transform>
+				<node>
+					<identifier>small_piston_z_connector_01_jnt</identifier>
+					<transform>
+						<row0>-0.132339 0.991204 -0.000000</row0>
+						<row1>0.991205 0.132339 -0.000000</row1>
+						<row2>-0.000000 -0.000000 -1.000000</row2>
+						<row3>0.689626 0.000000 0.000000</row3>
+					</transform>
+					<node>
+						<identifier>small_piston_z_connector_01_jnt_BlendBone</identifier>
+						<transform>
+							<row0>-0.000191 -0.000167 1.000000</row0>
+							<row1>0.994805 0.101795 0.000207</row1>
+							<row2>0.101795 -0.994805 -0.000146</row2>
+							<row3>-0.188038 -3.828759 -0.000578</row3>
+						</transform>
+					</node>
+				</node>
+				<node>
+					<identifier>small_piston_z_connector_jnt_BlendBone</identifier>
+					<transform>
+						<row0>-0.000140 -0.000212 -1.000000</row0>
+						<row1>-0.030752 0.999527 -0.000207</row1>
+						<row2>-0.999527 -0.030752 0.000147</row2>
+						<row3>-3.080572 -0.693077 0.000579</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>upper_lever_jnt</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>-0.000618 1.502763 1.950678</row3>
+				</transform>
+				<node>
+					<identifier>upper_lever_02_jnt</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>-0.000000 -0.000000 1.000000</row2>
+						<row3>0.000035 -0.442815 0.068648</row3>
+					</transform>
+					<node>
+						<identifier>upper_lever_02_jnt_BlendBone</identifier>
+						<transform>
+							<row0>1.000000 0.000000 -0.000000</row0>
+							<row1>0.000000 1.000000 0.000000</row1>
+							<row2>-0.000000 0.000000 -1.000000</row2>
+							<row3>0.000583 -1.059948 -2.019326</row3>
+						</transform>
+					</node>
+				</node>
+				<node>
+					<identifier>upper_lever_jnt_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 -1.000000</row2>
+						<row3>0.000618 -1.502763 -1.950678</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>wheel_z_connector_01_jnt</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>-0.000000 0.426855 -0.112824</row3>
+				</transform>
+				<node>
+					<identifier>wheel_z_connector_02_jnt</identifier>
+					<transform>
+						<row0>0.000000 -0.819415 -0.573201</row0>
+						<row1>0.000000 0.573201 -0.819415</row1>
+						<row2>1.000000 0.000000 0.000000</row2>
+						<row3>0.000000 0.286477 0.200398</row3>
+					</transform>
+					<node>
+						<identifier>wheel_z_connector_02_jnt_BlendBone</identifier>
+						<transform>
+							<row0>0.000000 0.000000 1.000000</row0>
+							<row1>-0.819415 0.573201 0.000000</row1>
+							<row2>0.573201 0.819415 0.000000</row2>
+							<row3>0.634712 -0.337123 0.000000</row3>
+						</transform>
+					</node>
+				</node>
+				<node>
+					<identifier>wheel_z_connector_01_jnt_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 -1.000000</row2>
+						<row3>0.000000 -0.426855 0.112824</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>locomotive_root_jnt_BlendBone</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 -1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>sd0</node>
+		<geometry>
+			<vertices>sd0Shape.vertices</vertices>
+			<primitive>sd0Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+				</material>
+				<groupOrigin>0.000177 2.190199 0.543634</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>locomotive_root_jnt_BlendBone</node>
+		<geometry>
+			<vertices>s2Shape.vertices</vertices>
+			<primitive>s2Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd2_skinned</identifier>
+					<fx>shaders/std_effects/PBS_glass_skinned.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						dirtAlbedoMap
+						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_Glass_02_AM.dds</Texture>
+					</property>
+					<property>
+						glassMap
+						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_Glass_02_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_Glass_02_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.000001 3.145146 5.307263</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>locomotive_root_jnt_BlendBone</node>
+		<geometry>
+			<vertices>s1Shape.vertices</vertices>
+			<primitive>s1Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd1_skinned</identifier>
+					<fx>shaders/std_effects/PBS_ext_skinned.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/Railway/hd_rw_UNI_017_Kriegslokomotive/hd_rw_UNI_017_Kriegslokomotive_02_AM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Railway/hd_rw_UNI_017_Kriegslokomotive/hd_rw_UNI_017_Kriegslokomotive_02_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Railway/hd_rw_UNI_017_Kriegslokomotive/hd_rw_UNI_017_Kriegslokomotive_02_ANM.dds</Texture>
+					</property>
+					<property>
+						ditherTestEnable
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>-0.000001 0.851740 -1.867487</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>locomotive_root_jnt_BlendBone</node>
+		<node>locomotive_wheel_small_jnt_BlendBone</node>
+		<node>locomotive_wheel_3th_jnt_BlendBone</node>
+		<node>locomotive_wheel_5th_jnt_BlendBone</node>
+		<node>locomotive_wheel_4th_jnt_BlendBone</node>
+		<node>locomotive_wheel_2th_jnt_BlendBone</node>
+		<node>locomotive_wheel_1th_jnt_BlendBone</node>
+		<node>locomotive_wheel_3th_big_long_connector_jnt_BlendBone</node>
+		<node>wheel_z_connector_01_jnt_BlendBone</node>
+		<node>big_piston_plunger_jnt_BlendBone</node>
+		<node>Z_upper_connector_jnt_BlendBone</node>
+		<node>small_piston_plunger_jnt_BlendBone</node>
+		<node>Z_upper_connector_01_jnt_BlendBone</node>
+		<node>small_piston_z_connector_01_jnt_BlendBone</node>
+		<node>upper_lever_jnt_BlendBone</node>
+		<node>locomotive_wheel_4th_child_rotate_jnt_BlendBone</node>
+		<node>locomotive_wheel_3th_hub_jnt_BlendBone</node>
+		<node>locomotive_wheel_2th_child_rotate_jnt_BlendBone</node>
+		<node>small_piston_z_connector_jnt_BlendBone</node>
+		<node>locomotive_wheel_5th_child_rotate_jnt_BlendBone</node>
+		<node>wheel_z_connector_02_jnt_BlendBone</node>
+		<geometry>
+			<vertices>s0Shape.vertices</vertices>
+			<primitive>s0Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0_skinned</identifier>
+					<fx>shaders/std_effects/PBS_ext_skinned.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/Railway/hd_rw_UNI_017_Kriegslokomotive/hd_rw_UNI_017_Kriegslokomotive_01_AM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Railway/hd_rw_UNI_017_Kriegslokomotive/hd_rw_UNI_017_Kriegslokomotive_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Railway/hd_rw_UNI_017_Kriegslokomotive/hd_rw_UNI_017_Kriegslokomotive_01_ANM.dds</Texture>
+					</property>
+					<property>
+						ditherTestEnable
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>0.003380 2.190530 -0.493502</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<constraints/>
+	<boundingBox>
+		<min>-1.480131 -0.006786 -6.622605</min>
+		<max>1.480130 4.380933 7.709870</max>
+	</boundingBox>
+	<geometrySize>2010648</geometrySize>
+	<minUVDensity>0.001006</minUVDensity>
+</root>

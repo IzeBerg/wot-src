@@ -31,7 +31,9 @@ package net.wg.data.constants.generated
       
       public static const BOSS:String = "boss";
       
-      public static const DAMAGE_SOURCES:Array = [HEAVY_TANK,MEDIUM_TANK,LIGHT_TANK,AT_SPG,SPG,ARTILLERY,AIRSTRIKE,FORT_ARTILLERY,HEAVY_TANK_ELITE,MEDIUM_TANK_ELITE,LIGHT_TANK_ELITE,AT_SPG_ELITE,SPG_ELITE,BOSS];
+      public static const BUNKER:String = "bunkerTurret";
+      
+      public static const DAMAGE_SOURCES:Array = [HEAVY_TANK,MEDIUM_TANK,LIGHT_TANK,AT_SPG,SPG,ARTILLERY,AIRSTRIKE,FORT_ARTILLERY,HEAVY_TANK_ELITE,MEDIUM_TANK_ELITE,LIGHT_TANK_ELITE,AT_SPG_ELITE,SPG_ELITE,BOSS,BUNKER];
        
       
       public function DAMAGE_SOURCE_TYPES()

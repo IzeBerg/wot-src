@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>hd_bld_AF_013_AthenaStatue_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_module0</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>-0.184726 0.626153 0.000000</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_module1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>-0.184726 3.732107 0.000000</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>d_stone0_7</identifier>
+					<fx>shaders/std_effects/PBS_ext_detail.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>content/Buildings/hd_bld_AF_013_AthenaStatue/hd_bld_AF_013_AthenaStatue_01_AM.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>88</materialKind>
+					<property>
+						normalMap
+						<Texture>content/Buildings/hd_bld_AF_013_AthenaStatue/hd_bld_AF_013_AthenaStatue_01_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Buildings/hd_bld_AF_013_AthenaStatue/hd_bld_AF_013_AthenaStatue_01_GMM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_detailMap
+						<Texture>content/Buildings/bld_19_02_Monastery/bld_19_detalimap.dds</Texture>
+					</property>
+					<property>
+						g_detailInfluences
+						<Vector4>
+							1.2 1 1 1
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>-0.974075 0.062984 -0.130442</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>d_stone0_1_7</identifier>
+					<fx>shaders/std_effects/PBS_ext_detail.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>content/Buildings/hd_bld_AF_013_AthenaStatue/hd_bld_AF_013_AthenaStatue_01_AM.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>87</materialKind>
+					<property>
+						g_detailMap
+						<Texture>content/Buildings/bld_19_02_Monastery/bld_19_detalimap.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Buildings/hd_bld_AF_013_AthenaStatue/hd_bld_AF_013_AthenaStatue_01_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Buildings/hd_bld_AF_013_AthenaStatue/hd_bld_AF_013_AthenaStatue_01_GMM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_detailInfluences
+						<Vector4>
+							1.2 1 1 1
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>-0.087962 0.125680 -0.100126</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>n_stone0_1_7</identifier>
+					<fx>shaders/std_effects/PBS_ext_detail.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>content/Buildings/hd_bld_AF_013_AthenaStatue/hd_bld_AF_013_AthenaStatue_01_AM.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>73</materialKind>
+					<property>
+						normalMap
+						<Texture>content/Buildings/hd_bld_AF_013_AthenaStatue/hd_bld_AF_013_AthenaStatue_01_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Buildings/hd_bld_AF_013_AthenaStatue/hd_bld_AF_013_AthenaStatue_01_GMM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_detailMap
+						<Texture>content/Buildings/bld_19_02_Monastery/bld_19_detalimap.dds</Texture>
+					</property>
+					<property>
+						g_detailInfluences
+						<Vector4>
+							1.2 1 1 1
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>-0.172031 2.159484 0.005713</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				3
+				<material>
+					<identifier>n_stone0_7</identifier>
+					<fx>shaders/std_effects/PBS_ext_detail.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>content/Buildings/hd_bld_AF_013_AthenaStatue/hd_bld_AF_013_AthenaStatue_01_AM.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>74</materialKind>
+					<property>
+						normalMap
+						<Texture>content/Buildings/hd_bld_AF_013_AthenaStatue/hd_bld_AF_013_AthenaStatue_01_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Buildings/hd_bld_AF_013_AthenaStatue/hd_bld_AF_013_AthenaStatue_01_GMM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_detailMap
+						<Texture>content/Buildings/bld_19_02_Monastery/bld_19_detalimap.dds</Texture>
+					</property>
+					<property>
+						g_detailInfluences
+						<Vector4>
+							1.2 1 1 1
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>-0.077883 4.636050 0.134627</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				4
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext_detail.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>content/Buildings/hd_bld_AF_013_AthenaStatue/hd_bld_AF_013_AthenaStatue_01_AM.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>111</materialKind>
+					<property>
+						normalMap
+						<Texture>content/Buildings/hd_bld_AF_013_AthenaStatue/hd_bld_AF_013_AthenaStatue_01_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Buildings/hd_bld_AF_013_AthenaStatue/hd_bld_AF_013_AthenaStatue_01_GMM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_detailMap
+						<Texture>content/Buildings/bld_19_02_Monastery/bld_19_detalimap.dds</Texture>
+					</property>
+					<property>
+						g_detailInfluences
+						<Vector4>
+							1.2 1 1 1
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>0.075709 0.287430 -0.060186</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				5
+				<material>
+					<identifier>s_ramp_0</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>111</materialKind>
+				</material>
+				<groupOrigin>0.103877 0.238140 -0.214866</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.771101 -0.118108 -1.580595</min>
+		<max>1.978856 6.023650 1.150864</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>58668</geometrySize>
+	<minUVDensity>0.002745</minUVDensity>
+</root>

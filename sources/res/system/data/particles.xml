@@ -8,6 +8,10 @@
 		</preload>
 		<preload>
 			<shader>\data\shaders\ps_water.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_tex_water.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_water.fx</shader>
 			<texture>particles/content_forward/PFX_textures/eff_tex.dds</texture>
 		</preload>
 		<preload>
@@ -86,6 +90,7 @@
 		<fn_effect_bin>particles/tank/customization/A140_ASTRON_REX_105mm_SPD_3DSt/a140_oven_fire.eff</fn_effect_bin>
 		<fn_effect_bin>particles/tank/customization/A140_ASTRON_REX_105mm_SPD_3DSt/a140_steam.eff</fn_effect_bin>
 		<fn_effect_bin>particles/tank/customization/A140_ASTRON_REX_105mm_SPD_3DSt/a140_steam_smoke.eff</fn_effect_bin>
+		<fn_effect_bin>particles/tank/customization/A155_AAT60_ST_3DSt/engine_idle.eff</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/pfx/tank/customization/s31_strv_k/soul_shimmer.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/pfx/tank/customization/s31_strv_k/holy_settling.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/pfx/tank/customization/s31_strv_k/holy_settling2.vfx</fn_effect_bin>
@@ -121,6 +126,7 @@
 		<fn_effect_bin>particles/content_forward/PFX/Tank/customization/A140_ASTRON_REX_105mm_SPD_3DSt/a140_oven_fire.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Tank/customization/A140_ASTRON_REX_105mm_SPD_3DSt/a140_steam.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Tank/customization/A140_ASTRON_REX_105mm_SPD_3DSt/a140_steam_smoke.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Tank/customization/A155_AAT60_ST_3DSt/engine_idle.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Battle_Royal/Afterburning/br_nitro_gearup.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Battle_Royal/Afterburning/br_nitro_idle.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Battle_Royal/Afterburning/br_nitro_load.vfx</fn_effect_bin>
@@ -130,6 +136,8 @@
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Battle_Royal/CorrodedHit/CorrodedHit_Trace.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Scenarios/instant_explosion.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Scenarios/instant_explosion_quality_set_0.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Environment/Storymode/08_ruinberg_antitank_mine_explosion_01.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Environment/Storymode/ability_battleship_strike_groundHit.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Null.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Shells_Eff/armorHit_AP_1.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Shells_Eff/armorHit_AP_2.vfx</fn_effect_bin>
@@ -1143,6 +1151,8 @@
 		<fn_effect_bin>particles/content_forward/PFX/Tank/shots/shot_MTSL.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Tank/shots/shot_small_01.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Tank/shots/shot_small_02.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Tank/shots/shot_small_auto_01.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Tank/shots/shot_small_auto_02.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Tank/spark_big.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Tank/spark_big_2.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Tank/strv_change_hull_dirt.vfx</fn_effect_bin>
@@ -1180,6 +1190,7 @@
 		<fn_effect_bin>particles/Environment/Battle_Royal/CorrodedHit/CorrodedHit_Fail.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/Battle_Royal/CorrodedHit/CorrodedHit_Trace.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/scenarios/instant_explosion.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/storymode/08_ruinberg_antitank_mine_explosion_01.eff</fn_effect_bin>
 		<preloadVisual>particles/mesh_particles/dirt/Dirt_Mesh_01.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/dirt/Dirt_Mesh_02.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/dirt/Dirt_Mesh_03.visual</preloadVisual>
@@ -2166,6 +2177,8 @@
 		<fn_effect_bin>particles/Tank/shots/shot_MTLS.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Tank/shots/shot_small_01.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Tank/shots/shot_small_02.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Tank/shots/shot_small_auto_01.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Tank/shots/shot_small_auto_02.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Tank/strv_change_hull_dirt.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Tank/strv_change_hull_ground.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Tank/strv_change_hull_oil.eff</fn_effect_bin>
@@ -2302,6 +2315,7 @@
 		<fn_effect_bin>particles/tank/customization/A140_ASTRON_REX_105mm_SPD_3DSt/a140_oven_fire.eff</fn_effect_bin>
 		<fn_effect_bin>particles/tank/customization/A140_ASTRON_REX_105mm_SPD_3DSt/a140_steam.eff</fn_effect_bin>
 		<fn_effect_bin>particles/tank/customization/A140_ASTRON_REX_105mm_SPD_3DSt/a140_steam_smoke.eff</fn_effect_bin>
+		<fn_effect_bin>particles/tank/customization/A155_AAT60_ST_3DSt/engine_idle.eff</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/pfx/tank/customization/s31_strv_k/soul_shimmer.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/pfx/tank/customization/s31_strv_k/holy_settling.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/pfx/tank/customization/s31_strv_k/holy_settling2.vfx</fn_effect_bin>
@@ -2343,6 +2357,7 @@
 		<fn_effect_bin>particles/content_deferred/PFX/Tank/customization/A140_ASTRON_REX_105mm_SPD_3DSt/a140_oven_fire.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Tank/customization/A140_ASTRON_REX_105mm_SPD_3DSt/a140_steam.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Tank/customization/A140_ASTRON_REX_105mm_SPD_3DSt/a140_steam_smoke.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Tank/customization/A155_AAT60_ST_3DSt/engine_idle.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Battle_Royal/Afterburning/br_nitro_gearup.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Battle_Royal/Afterburning/br_nitro_idle.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Battle_Royal/Afterburning/br_nitro_load.vfx</fn_effect_bin>
@@ -2352,6 +2367,8 @@
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Battle_Royal/CorrodedHit/CorrodedHit_Trace.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Scenarios/instant_explosion.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Scenarios/instant_explosion_quality_set_0.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/Storymode/08_ruinberg_antitank_mine_explosion_01.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/Storymode/ability_battleship_strike_groundHit.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Null.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Shells_Eff/armorHit_AP_1.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Shells_Eff/armorHit_AP_2.vfx</fn_effect_bin>
@@ -3492,7 +3509,10 @@
 		<fn_effect_bin>particles/content_deferred/PFX/Tank/shots/shot_MTSL.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Tank/shots/shot_small_01.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Tank/shots/shot_small_02.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Tank/shots/shot_small_auto_01.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Tank/shots/shot_small_auto_02.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Tank/shots/shot_small_ForceField.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Tank/shots/shot_small_ForceField_auto.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Tank/spark_big.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Tank/spark_big_2.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Tank/strv_change_hull_dirt.vfx</fn_effect_bin>
@@ -3530,6 +3550,7 @@
 		<fn_effect_bin>particles/Environment/Battle_Royal/CorrodedHit/CorrodedHit_Fail.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/Battle_Royal/CorrodedHit/CorrodedHit_Trace.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/scenarios/instant_explosion.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/storymode/08_ruinberg_antitank_mine_explosion_01.eff</fn_effect_bin>
 		<preloadVisual>particles/mesh_particles/dirt/Dirt_Mesh_01.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/dirt/Dirt_Mesh_02.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/dirt/Dirt_Mesh_03.visual</preloadVisual>
@@ -4517,6 +4538,8 @@
 		<fn_effect_bin>particles/Tank/shots/shot_MTLS.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Tank/shots/shot_small_01.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Tank/shots/shot_small_02.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Tank/shots/shot_small_auto_01.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Tank/shots/shot_small_auto_02.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Tank/strv_change_hull_dirt.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Tank/strv_change_hull_ground.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Tank/strv_change_hull_oil.eff</fn_effect_bin>

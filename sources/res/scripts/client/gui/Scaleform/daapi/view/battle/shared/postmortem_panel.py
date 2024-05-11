@@ -9,6 +9,7 @@ from dog_tags_common.components_config import componentConfigAdapter
 from dog_tags_common.components_packer import unpack_component, pack_component
 from dog_tags_common.player_dog_tag import PlayerDogTag, DisplayableDogTag
 from gui import makeHtmlString
+from dog_tags_common.config.common import ComponentPurpose, ComponentViewType
 from gui.Scaleform.daapi.view.battle.shared.formatters import normalizeHealthPercent
 from gui.Scaleform.daapi.view.meta.PostmortemPanelMeta import PostmortemPanelMeta
 from gui.Scaleform.settings import ICONS_SIZES
@@ -198,14 +199,14 @@ class _SummaryPostmortemPanel(_BasePostmortemPanel):
 
 
 class PostmortemPanel(_SummaryPostmortemPanel):
-    __slots__ = ('__playerInfo', '_isPlayerVehicle', '__maxHealth', '__healthPercent',
+    __slots__ = ('__playerInfo', '_isPlayerVehicle', '_maxHealth', '__healthPercent',
                  '_isInPostmortem', '_deathAlreadySet', '__isColorBlind')
 
     def __init__(self):
         super(PostmortemPanel, self).__init__()
         self.__playerInfo = None
         self._isPlayerVehicle = False
-        self.__maxHealth = 0
+        self._maxHealth = 0
         self.__healthPercent = 0
         self._isInPostmortem = False
         self._deathAlreadySet = False
@@ -215,6 +216,10 @@ class PostmortemPanel(_SummaryPostmortemPanel):
         self.__arenaInfo = arena.arenaInfo if arena is not None else None
         self.__isPostmortemEnabled = avatar_getter.isPostmortemFeatureEnabled(CTRL_MODE_NAME.KILL_CAM)
         return
+
+    def changeCtrlMode(self, ctrlMode):
+        if ctrlMode == CTRL_MODE_NAME.DEATH_FREE_CAM:
+            self.as_hideAnyVehDescriptionS()
 
     def _populate(self):
         super(PostmortemPanel, self)._populate()
@@ -238,14 +243,14 @@ class PostmortemPanel(_SummaryPostmortemPanel):
         ctrl = self.sessionProvider.shared.vehicleState
         if ctrl is not None:
             ctrl.onVehicleStateUpdated += self.__onVehicleStateUpdated
-            ctrl.onVehicleControlling += self.__onVehicleControlling
+            ctrl.onVehicleControlling += self._onVehicleControlling
             ctrl.onPostMortemSwitched += self.__onPostMortemSwitched
             ctrl.onRespawnBaseMoving += self.__onRespawnBaseMoving
             self._isInPostmortem = ctrl.isInPostmortem
             vehicle = ctrl.getControllingVehicle()
             if vehicle is not None:
                 self.__setPlayerInfo(vehicle.id)
-                self.__onVehicleControlling(vehicle)
+                self._onVehicleControlling(vehicle)
         self.settingsCore.onSettingsChanged += self.__onSettingsChanged
         dogTagsCtrl = self.sessionProvider.dynamic.dogTags
         if dogTagsCtrl is not None:
@@ -264,7 +269,7 @@ class PostmortemPanel(_SummaryPostmortemPanel):
         ctrl = self.sessionProvider.shared.vehicleState
         if ctrl is not None:
             ctrl.onVehicleStateUpdated -= self.__onVehicleStateUpdated
-            ctrl.onVehicleControlling -= self.__onVehicleControlling
+            ctrl.onVehicleControlling -= self._onVehicleControlling
             ctrl.onPostMortemSwitched -= self.__onPostMortemSwitched
             ctrl.onRespawnBaseMoving -= self.__onRespawnBaseMoving
         self.settingsCore.onSettingsChanged -= self.__onSettingsChanged
@@ -289,8 +294,13 @@ class PostmortemPanel(_SummaryPostmortemPanel):
             compId, grade, teamId = unpack_component(componentPacked)
             if skipSameTeam and teamId == BigWorld.player().team:
                 continue
-            viewType = componentConfigAdapter.getComponentById(compId).viewType
-            componentImages.add(('{}_{}_{}').format(viewType.value.lower(), compId, grade))
+            component = componentConfigAdapter.getComponentById(compId)
+            if component.purpose == ComponentPurpose.COUPLED:
+                componentImages.add(layoutComposer.getBottomPlateImage(compId))
+                isEngraving = component.viewType == ComponentViewType.ENGRAVING
+                componentImages.add(layoutComposer.getComponentImage(compId, grade, localized=isEngraving))
+            else:
+                componentImages.add(layoutComposer.getComponentImage(compId, grade))
 
         if componentImages:
             _logger.debug('PostmortemPanel preloading %s', str(componentImages))
@@ -304,27 +314,24 @@ class PostmortemPanel(_SummaryPostmortemPanel):
         else:
             return ARENA_BONUS_TYPE_CAPS.checkAny(player.arenaBonusType, cap)
 
-    def __setHealthPercent(self, health):
-        self.__healthPercent = normalizeHealthPercent(health, self.__maxHealth)
+    def _setHealthPercent(self, health):
+        self.__healthPercent = normalizeHealthPercent(health, self._maxHealth)
 
     def __setPlayerInfo(self, vehicleID):
         self.__playerInfo = self.sessionProvider.getCtx().getPlayerFullNameParts(vID=vehicleID, showVehShortName=True)
 
-    def __onVehicleControlling(self, vehicle):
-        self.__maxHealth = vehicle.maxHealth
+    def _onVehicleControlling(self, vehicle):
+        self._maxHealth = vehicle.maxHealth
         self._isPlayerVehicle = vehicle.isPlayerVehicle
-        self.__setHealthPercent(vehicle.health)
-        if BigWorld.player().isObserver() and vehicle.isAlive() and self._deathAlreadySet:
-            self._deathAlreadySet = False
-            self.resetDeathInfo()
+        self._setHealthPercent(vehicle.health)
         self._updateVehicleInfo()
 
     def __onVehicleStateUpdated(self, state, value):
         if state == VEHICLE_VIEW_STATE.HEALTH:
-            if self.__maxHealth != 0 and self.__maxHealth > value:
-                self.__setHealthPercent(value)
+            if self._maxHealth != 0 and self._maxHealth > value:
+                self._setHealthPercent(value)
                 self._updateVehicleInfo()
-            if BattleReplay.g_replayCtrl.isPlaying and value > 0 and self.__maxHealth != 0 and self.__maxHealth >= value:
+            if BattleReplay.g_replayCtrl.isPlaying and value > 0 and self._maxHealth != 0 and self._maxHealth >= value:
                 try:
                     self.as_hideComponentsS()
                 except:
@@ -334,7 +341,7 @@ class PostmortemPanel(_SummaryPostmortemPanel):
         elif state == VEHICLE_VIEW_STATE.PLAYER_INFO:
             self.__setPlayerInfo(value)
         elif state == VEHICLE_VIEW_STATE.SWITCHING:
-            self.__maxHealth = 0
+            self._maxHealth = 0
             self.__healthPercent = 0
 
     def __onPostMortemSwitched(self, noRespawnPossible, respawnAvailable):

@@ -1,6 +1,6 @@
+from gui.battle_control.controllers.vse_hud_settings_ctrl.settings.base_models import BaseClientModel
 
-
-class MinimapClientModel(object):
+class MinimapClientModel(BaseClientModel):
     __slots__ = ('showGrid', 'minimumAnimationDuration', 'maximumAnimationDuration',
                  'animationDurationPerMeter', 'minimumAnimationDistance', 'canToggleFullMap')
 

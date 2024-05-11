@@ -683,6 +683,12 @@ msgstr "Критический урон"
 msgid "efficiencyRibbons/damage"
 msgstr "Урон выстрелом"
 
+msgid "efficiencyRibbons/damageByBattleship"
+msgstr "Урон от залпа линкора"
+
+msgid "efficiencyRibbons/damageByDestroyer"
+msgstr "Урон от эсминца «Фрэнкфорд»"
+
 msgid "efficiencyRibbons/damageByMinefield"
 msgstr "Урон минами"
 
@@ -724,6 +730,9 @@ msgstr "Машина отремонтирована"
 
 msgid "efficiencyRibbons/kill"
 msgstr "Уничтожил"
+
+msgid "efficiencyRibbons/minefieldZone"
+msgstr "Урон от мин"
 
 msgid "efficiencyRibbons/ram"
 msgstr "Таран"
@@ -1212,6 +1221,12 @@ msgstr "Экипаж %(target)s уничтожен."
 msgid ""
 "player_messages/DEATH_FROM_INACTIVE_CREW_AT_WORLD_COLLISION_SELF_SUICIDE"
 msgstr "Экипаж уничтожен."
+
+msgid "player_messages/DEATH_FROM_MINEFIELD_ZONE_ALLY_SUICIDE"
+msgstr "Союзник %(target)s уничтожен миной."
+
+msgid "player_messages/DEATH_FROM_MINEFIELD_ZONE_SELF_SUICIDE"
+msgstr "%(target)s уничтожен."
 
 msgid "player_messages/DEATH_FROM_MINE_EXPLOSION_ALLY_ENEMY_ARCADE"
 msgstr "%(attacker)s уничтожил минами %(target)s"
@@ -1737,6 +1752,9 @@ msgstr "Экипаж уничтожен в результате сильного
 
 msgid "postmortem_messages/DEATH_FROM_KAMIKAZE"
 msgstr "Машина уничтожена Брандером."
+
+msgid "postmortem_messages/DEATH_FROM_MINEFIELD_ZONE_SELF_SUICIDE"
+msgstr "Машина уничтожена миной"
 
 msgid "postmortem_messages/DEATH_FROM_MINE_EXPLOSION"
 msgstr "Машина уничтожена минами"
@@ -3122,6 +3140,12 @@ msgstr "Противник %(entity)s повредил устройство [%(d
 
 msgid "vehicle_messages/DEVICE_CRITICAL_AT_WORLD_COLLISION_SELF_SUICIDE"
 msgstr "Устройство [%(device)s] повреждено в результате сильного удара."
+
+msgid "vehicle_messages/DEVICE_DESTROYED_AT_MINEFIELD_ZONE_ALLY_SUICIDE"
+msgstr "Устройство [%(device)s] уничтожено миной."
+
+msgid "vehicle_messages/DEVICE_DESTROYED_AT_MINEFIELD_ZONE_SELF_SUICIDE"
+msgstr "Устройство [%(device)s] уничтожено миной."
 
 msgid "vehicle_messages/DEVICE_DESTROYED_AT_RAMMING_ALLY_ALLY"
 msgstr "Союзник %(entity)s разрушил устройство [%(device)s] тараном."

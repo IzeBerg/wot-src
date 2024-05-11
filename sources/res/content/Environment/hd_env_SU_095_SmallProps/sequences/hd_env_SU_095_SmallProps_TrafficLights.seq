@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>6.000000</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+		<track>
+			<name>animation</name>
+			<type>animation</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>6.000000</duration>
+				<resourceID>content/Environment/hd_env_SU_095_SmallProps/animation/hd_env_SU_095_SmallProps_TrafficLights_anim_CalmWind.fbx</resourceID>
+				<clipName/>
+				<speed>1.000000</speed>
+				<layer>0</layer>
+				<blendIn>constant</blendIn>
+				<blendOut>constant</blendOut>
+				<blendInTime>0.000000</blendInTime>
+				<blendOutTime>0.000000</blendOutTime>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Model Object 1</name>
+		<type>model</type>
+		<resource>content/Environment/hd_env_SU_095_SmallProps/normal/lod0/hd_env_SU_095_SmallProps_TrafficLightsGlass_anim.model</resource>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>6.000000</duration>
+				<value>Root|TrafficLights_Ancor</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

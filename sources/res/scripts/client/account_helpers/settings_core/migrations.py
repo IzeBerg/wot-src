@@ -1264,6 +1264,11 @@ def _migrateTo125(core, data, initialized):
             clear['onceOnlyHints2'] = clear.get('onceOnlyHints2', 0) | settingOffset
 
 
+def _migrateTo126(core, data, initialized):
+    from account_helpers.settings_core.ServerSettingsManager import SETTINGS_SECTIONS as SECTIONS
+    data[SECTIONS.ADVANCED_ACHIEVEMENTS_STORAGE] = 0
+
+
 _versions = (
  (
   1, _initializeDefaultSettings, True, False),
@@ -1512,7 +1517,9 @@ _versions = (
  (
   124, _migrateTo124, False, False),
  (
-  125, _migrateTo125, False, False))
+  125, _migrateTo125, False, False),
+ (
+  126, _migrateTo126, False, False))
 
 @adisp_async
 @adisp_process

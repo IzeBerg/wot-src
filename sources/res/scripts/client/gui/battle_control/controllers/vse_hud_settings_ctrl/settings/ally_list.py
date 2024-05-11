@@ -1,6 +1,6 @@
+from gui.battle_control.controllers.vse_hud_settings_ctrl.settings.base_models import BaseClientModel
 
-
-class AllyListClientModel(object):
+class AllyListClientModel(BaseClientModel):
     __slots__ = ('showFrags', 'showVehicleTypeIcon', 'highlightElite')
 
     def __init__(self, showFrags, showVehicleTypeIcon, highlightElite):

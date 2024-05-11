@@ -1,23 +1,24 @@
-import typing, logging, CGF, Event
-from GenericComponents import TransformComponent, EntityGOSync
-import math_utils
+import importlib, logging, typing, CGF, Event, GenericComponents, Math, math_utils
 from arena_bonus_type_caps import ARENA_BONUS_TYPE_CAPS
 from cache import cached_property
 from cgf_script.bonus_caps_rules import bonusCapsManager
 from cgf_script.component_meta_class import ComponentProperty, CGFMetaTypes, registerComponent
 from cgf_script.managers_registrator import onAddedQuery, onRemovedQuery, autoregister
-from helpers import dependency
 from constants import IS_CLIENT, IS_CGF_DUMP
-import Math
+from helpers import dependency
+from UIComponents import GamefaceMarkerComponent
 if IS_CLIENT:
     from skeletons.gui.battle_session import IBattleSessionProvider
     from CurrentVehicle import g_currentPreviewVehicle
     from skeletons.gui.app_loader import IAppLoader
+    from skeletons.gui.impl import IGuiLoader
     from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
     from gui.Scaleform.framework.entities.View import ViewKey
     from gui.app_loader.settings import APP_NAME_SPACE
     from gui.Scaleform.daapi.view.battle.shared.component_marker.markers import AreaMarker
     from gui.Scaleform.daapi.view.battle.shared.component_marker.markers_components import ComponentBitMask
+    from gui.impl.pub import WindowImpl
+    from frameworks.wulf import WindowFlags, WindowLayer
 else:
 
     class IBattleSessionProvider(object):
@@ -25,6 +26,10 @@ else:
 
 
     class IAppLoader(object):
+        pass
+
+
+    class IGuiLoader(object):
         pass
 
 
@@ -75,7 +80,7 @@ class LobbyMarkersManager(CGF.ComponentManager):
         self.onMarkerComponentAdded = Event.Event()
         self.onMarkerComponentRemoved = Event.Event()
 
-    @onAddedQuery(CGF.GameObject, LobbyFlashMarker, TransformComponent)
+    @onAddedQuery(CGF.GameObject, LobbyFlashMarker, GenericComponents.TransformComponent)
     def handleMarkerAdded(self, gameObject, flashMarkerComponent, transformComponent):
         entity = self.__getRootEntity(gameObject)
         matrix = transformComponent.worldTransform
@@ -84,7 +89,7 @@ class LobbyMarkersManager(CGF.ComponentManager):
             view.addCgfMarker(entity.id, flashMarkerComponent, matrix)
         return
 
-    @onRemovedQuery(CGF.GameObject, LobbyFlashMarker, TransformComponent)
+    @onRemovedQuery(CGF.GameObject, LobbyFlashMarker, GenericComponents.TransformComponent)
     def handleMarkerRemoved(self, gameObject, *_):
         entity = self.__getRootEntity(gameObject)
         view = self.__getMarkerView()
@@ -99,7 +104,7 @@ class LobbyMarkersManager(CGF.ComponentManager):
 
     def __getRootEntity(self, gameObject):
         rootGameObject = self.__hierarchyManager.getTopMostParent(gameObject)
-        goSyncComponent = rootGameObject.findComponentByType(EntityGOSync)
+        goSyncComponent = rootGameObject.findComponentByType(GenericComponents.EntityGOSync)
         if goSyncComponent is None:
             _logger.error('gameObject id=%d, name=%s has no root bigworld entity to show marker', gameObject.id, gameObject.name)
             return
@@ -148,7 +153,7 @@ class LobbyMarkersVisibilityManager(CGF.ComponentManager):
 class CombatMarkerManager(CGF.ComponentManager):
     __guiSessionProvider = dependency.descriptor(IBattleSessionProvider)
 
-    @onAddedQuery(CombatMarker, TransformComponent)
+    @onAddedQuery(CombatMarker, GenericComponents.TransformComponent)
     def onAddedMarker(self, combatMarker, transform):
         transform = transform.worldTransform
         matrixProduct = math_utils.MatrixProviders.product(transform, math_utils.createTranslationMatrix(combatMarker.offset))
@@ -171,3 +176,25 @@ class CombatMarkerManager(CGF.ComponentManager):
     @onRemovedQuery(CombatMarker)
     def onRemovedMarker(self, combatMarker):
         self.__guiSessionProvider.shared.areaMarker.removeMarker(combatMarker.markerID)
+
+
+@autoregister(presentInAllWorlds=True, domain=CGF.DomainOption.DomainClient)
+class GFMarkersCreator(CGF.ComponentManager):
+    __gui = dependency.descriptor(IGuiLoader)
+
+    @onAddedQuery(GamefaceMarkerComponent)
+    def onMarkerAdded(self, markerComponent):
+        module = importlib.import_module(markerComponent.viewPath)
+        if not module or not hasattr(module, markerComponent.viewName):
+            _logger.error('Cant find view. Module: %s, Name: %s', markerComponent.viewPath, markerComponent.viewName)
+            return
+        view = getattr(module, markerComponent.viewName)(markerComponent.viewKey)
+        window = WindowImpl(WindowFlags.WINDOW, content=view, layer=WindowLayer.MARKER)
+        window.load()
+        markerComponent.windowID = window.uniqueID
+
+    @onRemovedQuery(GamefaceMarkerComponent)
+    def onMarkerRemoved(self, markerComponent):
+        window = self.__gui.windowsManager.getWindow(markerComponent.windowID)
+        if window:
+            window.destroy()

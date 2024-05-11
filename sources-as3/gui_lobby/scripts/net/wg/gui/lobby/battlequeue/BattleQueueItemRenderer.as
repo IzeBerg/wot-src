@@ -65,7 +65,7 @@ package net.wg.gui.lobby.battlequeue
          this.tankType.horizontalAlign = AlignType.CENTER;
          this.tankType.verticalAlign = AlignType.CENTER;
          this.textField.autoSize = TextFieldAutoSize.LEFT;
-         this.highlight.mouseChildren = this.highlight.mouseEnabled = this.highlight.tabEnabled = false;
+         this.highlight.visible = this.highlight.mouseChildren = this.highlight.mouseEnabled = this.highlight.tabEnabled = false;
          this._utils.commons.addEmptyHitArea(this.highlight);
       }
       

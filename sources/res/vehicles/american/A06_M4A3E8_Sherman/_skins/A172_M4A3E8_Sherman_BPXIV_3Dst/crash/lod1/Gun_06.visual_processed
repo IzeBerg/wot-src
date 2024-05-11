@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_guns</identifier>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/american/A06_M4A3E8_Sherman/_skins/A172_M4A3E8_Sherman_BPXIV_3Dst/M4A3E8_Sherman_BPXIV_3Dst_guns_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/american/A06_M4A3E8_Sherman/_skins/A172_M4A3E8_Sherman_BPXIV_3Dst/M4A3E8_Sherman_BPXIV_3Dst_guns_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/american/A06_M4A3E8_Sherman/_skins/A172_M4A3E8_Sherman_BPXIV_3Dst/M4A3E8_Sherman_BPXIV_3Dst_guns_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/american/A06_M4A3E8_Sherman/_skins/A172_M4A3E8_Sherman_BPXIV_3Dst/M4A3E8_Sherman_BPXIV_3Dst_guns_AO.dds</Texture>
+					</property>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+					<property>
+						crashTileMap
+						<Texture>vehicles/russian/Tank_detail/crash_tile.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.000540 0.033351 0.984978</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.616946 -0.232532 -1.376080</min>
+		<max>0.618027 0.299234 3.346036</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>37490</geometrySize>
+	<minUVDensity>0.011368</minUVDensity>
+</root>

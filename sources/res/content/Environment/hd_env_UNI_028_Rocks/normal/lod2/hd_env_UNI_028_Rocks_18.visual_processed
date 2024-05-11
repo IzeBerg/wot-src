@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>111</materialKind>
+					<fx>shaders/std_effects/PBS_tiled_atlas_global.fx</fx>
+					<property>
+						g_tileUVScale
+						<Vector4>16.000000 16.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_atlasIndexes
+						<Vector4>4.000000 5.000000 4.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>0.870588 0.843137 0.831373 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>0.984314 0.984314 0.984314 1.000000</Vector4>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.470000 0.430000 0.380000 0.000000</Vector4>
+					</property>
+					<property>
+						g_atlasSizes
+						<Vector4>3.000000 3.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						globalTex
+						<Texture>content/Environment/hd_env_EU_005_Cliff_rocks/hd_env_EU_005_Cliff_Cliff_06_NM.dds</Texture>
+					</property>
+					<property>
+						atlasAlbedoHeight
+						<Texture>content/Environment/hd_env_UNI_028_Rocks/hd_env_UNI_028_Rocks_01_atlas_AM.atlas</Texture>
+					</property>
+					<property>
+						atlasNormalGlossSpec
+						<Texture>content/Environment/hd_env_UNI_028_Rocks/hd_env_UNI_028_Rocks_01_atlas_GBMT.atlas</Texture>
+					</property>
+					<property>
+						atlasMetallicAO
+						<Texture>content/Environment/hd_env_UNI_028_Rocks/hd_env_UNI_028_Rocks_01_atlas_MAO.atlas</Texture>
+					</property>
+					<property>
+						atlasBlend
+						<Texture>content/Environment/hd_env_UNI_028_Rocks/hd_env_UNI_028_Rocks_18_atlas_blend.png</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Environment/hd_env_EU_005_Cliff_rocks/hd_env_EU_005_Cliff_rocks_02_DM.dds</Texture>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>0.890196 0.964706 0.956863 1.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>-0.455591 3.823933 1.657446</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-10.758194 -0.253994 -6.551267</min>
+		<max>9.848141 7.901861 9.866159</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>66528</geometrySize>
+	<minUVDensity>0.000278</minUVDensity>
+</root>

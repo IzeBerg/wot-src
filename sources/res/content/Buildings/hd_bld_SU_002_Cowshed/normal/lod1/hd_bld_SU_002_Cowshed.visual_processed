@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd1</identifier>
+					<fx>shaders/std_effects/PBS_ext_dual.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>content/Buildings/hd_bld_SU_002_Cowshed/hd_bld_SU_002_Cowshed_roof_AM.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap2
+						<Texture>content/Buildings/hd_bld_SU_002_Cowshed/hd_bld_SU_002_Cowshed_roof_UV2.dds</Texture>
+					</property>
+					<materialKind>111</materialKind>
+					<property>
+						metallicGlossMap
+						<Texture>content/Buildings/hd_bld_SU_002_Cowshed/hd_bld_SU_002_Cowshed_roof_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Buildings/hd_bld_SU_002_Cowshed/hd_bld_SU_002_Cowshed_roof_ANM.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>-0.018544 3.526235 -0.035945</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext_dual.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>content/Buildings/hd_bld_SU_002_Cowshed/hd_bld_SU_002_Cowshed_AM.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap2
+						<Texture>content/Buildings/hd_bld_SU_002_Cowshed/hd_bld_SU_002_Cowshed_UV2.dds</Texture>
+					</property>
+					<materialKind>111</materialKind>
+					<property>
+						metallicGlossMap
+						<Texture>content/Buildings/hd_bld_SU_002_Cowshed/hd_bld_SU_002_Cowshed_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Buildings/hd_bld_SU_002_Cowshed/hd_bld_SU_002_Cowshed_ANM.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>0.001771 3.448354 -0.107086</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-7.665011 -0.937418 -12.541986</min>
+		<max>7.627924 7.834791 12.470095</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>133732</geometrySize>
+	<minUVDensity>0.001960</minUVDensity>
+</root>

@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>hd_env_AM_012_WindTurbine</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_module0</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.341600 0.000000</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>WindTurbine_EngineBlock</identifier>
+				<transform>
+					<row0>-0.008914 -0.001519 0.999959</row0>
+					<row1>-0.010223 0.999947 0.001428</row1>
+					<row2>-0.999908 -0.010210 -0.008930</row2>
+					<row3>-0.000378 16.105896 -0.004138</row3>
+				</transform>
+				<node>
+					<identifier>WindTurbine_Blades</identifier>
+					<transform>
+						<row0>1.000000 -0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.167664 -0.000001 0.000000</row3>
+					</transform>
+					<node>
+						<identifier>WindTurbine_Blades_BlendBone</identifier>
+						<transform>
+							<row0>-0.008914 -0.010223 -0.999908</row0>
+							<row1>-0.001519 0.999947 -0.010210</row1>
+							<row2>-0.999959 -0.001428 0.008930</row2>
+							<row3>-0.139058 -16.105036 0.164029</row3>
+						</transform>
+					</node>
+				</node>
+				<node>
+					<identifier>WindTurbine_EngineBlock_BlendBone</identifier>
+					<transform>
+						<row0>-0.008914 -0.010223 -0.999908</row0>
+						<row1>-0.001519 0.999947 -0.010210</row1>
+						<row2>-0.999959 -0.001428 0.008930</row2>
+						<row3>0.028607 -16.105036 0.164029</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>lod0</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+				<node>
+					<identifier>s_wall0</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>lod1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+				<node>
+					<identifier>d0</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>n0</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>s_wall0</node>
+		<geometry>
+			<vertices>s_wall0Shape.vertices</vertices>
+			<primitive>s_wall0Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_wall_0</identifier>
+					<collisionFlags>144</collisionFlags>
+					<materialKind>73</materialKind>
+				</material>
+				<groupOrigin>0.000000 8.259027 -0.000000</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>WindTurbine_EngineBlock_BlendBone</node>
+		<node>WindTurbine_Blades_BlendBone</node>
+		<geometry>
+			<vertices>n1Shape.vertices</vertices>
+			<primitive>n1Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>n_metal0_skinned</identifier>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>73</materialKind>
+					<fx>shaders/std_effects/PBS_ext_skinned.fx</fx>
+					<property>
+						dynamicObject
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_AM_012_WindTurbine/hd_env_AM_012_WindTurbine_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_AM_012_WindTurbine/hd_env_AM_012_WindTurbine_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env_AM_012_WindTurbine/hd_env_AM_012_WindTurbine_GMM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.014001 16.084511 1.363603</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>n0</node>
+		<geometry>
+			<vertices>nShape0.vertices</vertices>
+			<primitive>nShape0.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>n_metal0</identifier>
+					<collisionFlags>128</collisionFlags>
+					<materialKind>73</materialKind>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_AM_012_WindTurbine/hd_env_AM_012_WindTurbine_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_AM_012_WindTurbine/hd_env_AM_012_WindTurbine_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env_AM_012_WindTurbine/hd_env_AM_012_WindTurbine_GMM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.001877 7.659221 -0.005880</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>d0</node>
+		<geometry>
+			<vertices>d0Shape.vertices</vertices>
+			<primitive>d0Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>d_metal0</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>87</materialKind>
+					<fx>shaders/std_effects/lightonly.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_AM_012_WindTurbine/hd_env_AM_012_WindTurbine_AM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.597106 0.094447 0.082762</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<constraints/>
+	<boundingBox>
+		<min>-2.511827 -0.557603 -3.732827</min>
+		<max>3.701299 18.633385 3.704091</max>
+	</boundingBox>
+	<geometrySize>84858</geometrySize>
+	<minUVDensity>0.013660</minUVDensity>
+</root>

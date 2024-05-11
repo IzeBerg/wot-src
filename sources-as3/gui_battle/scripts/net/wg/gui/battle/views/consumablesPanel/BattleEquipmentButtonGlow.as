@@ -30,6 +30,10 @@ package net.wg.gui.battle.views.consumablesPanel
       
       private static const SHOW_GLOW_HIDE_NO_HOT_KEY_STATE:String = "hideNoHotKey";
       
+      private static const IDLE_GLOW_GREEN_SPECIAL_STATE:int = 155;
+      
+      private static const TFCONTAINER_Y:int = -5;
+      
       private static const RED_TEXT_COLOR:uint = 16768409;
       
       private static const GREEN_TEXT_COLOR:uint = 11854471;
@@ -39,12 +43,17 @@ package net.wg.gui.battle.views.consumablesPanel
       
       public var tfContainer:MovieClip = null;
       
+      public var specialGreenBorder:MovieClip = null;
+      
       private var _textField:TextField = null;
+      
+      private var _isIdleEnabled:Boolean = false;
       
       public function BattleEquipmentButtonGlow()
       {
          super();
          addFrameScript(0,this.goIdle);
+         addFrameScript(IDLE_GLOW_GREEN_SPECIAL_STATE,this.goIdleGlowGreenSpecialState);
       }
       
       override protected function initialize() : void
@@ -59,14 +68,20 @@ package net.wg.gui.battle.views.consumablesPanel
          super.configUI();
          mouseEnabled = false;
          mouseChildren = false;
+         if(this.specialGreenBorder)
+         {
+            this.specialGreenBorder.visible = false;
+         }
       }
       
       override protected function onDispose() : void
       {
          addFrameScript(0,null);
+         addFrameScript(IDLE_GLOW_GREEN_SPECIAL_STATE,null);
          stop();
          this._textField = null;
          this.tfContainer = null;
+         this.specialGreenBorder = null;
          super.onDispose();
       }
       
@@ -90,6 +105,16 @@ package net.wg.gui.battle.views.consumablesPanel
       public function setBindKeyTextVisibility(param1:Boolean) : void
       {
          this._textField.visible = param1;
+      }
+      
+      public function setIdleEnabledGlow(param1:Boolean) : void
+      {
+         this._isIdleEnabled = param1;
+         this._textField.y = TFCONTAINER_Y;
+         if(this.specialGreenBorder)
+         {
+            this.specialGreenBorder.visible = true;
+         }
       }
       
       public function showGlow(param1:int, param2:Boolean = true) : void
@@ -127,6 +152,15 @@ package net.wg.gui.battle.views.consumablesPanel
          stop();
          this._textField.textColor = NORMAL_TEXT_COLOR;
          dispatchEvent(new Event(ConsumablesButtonEvent.GLOW_ON_IDLE_STATE));
+      }
+      
+      private function goIdleGlowGreenSpecialState() : void
+      {
+         if(this._isIdleEnabled)
+         {
+            this._isIdleEnabled = false;
+            stop();
+         }
       }
    }
 }

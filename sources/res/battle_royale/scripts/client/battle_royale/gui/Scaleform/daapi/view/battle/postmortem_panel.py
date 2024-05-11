@@ -26,8 +26,20 @@ class BattleRoyalePostmortemPanel(BattleRoyalePostmortemPanelMeta):
 
     def _populate(self):
         super(BattleRoyalePostmortemPanel, self)._populate()
-        if self.__isBattleRoyaleTournament and self.__isObserver:
-            self.as_setPostmortemPanelVisibleS(False)
+        self.__updatePostmortemTipsVisibility()
+
+    def __updatePostmortemTipsVisibility(self):
+        canBeVisible = not (self.__isBattleRoyaleTournament and self.__isObserver)
+        self.as_setPostmortemPanelCanBeVisibleS(canBeVisible)
+
+    def _onVehicleControlling(self, vehicle):
+        self._maxHealth = vehicle.maxHealth
+        self._isPlayerVehicle = vehicle.isPlayerVehicle
+        self._setHealthPercent(vehicle.health)
+        if BigWorld.player().isObserver() and vehicle.isAlive() and self._deathAlreadySet:
+            self._deathAlreadySet = False
+            self.resetDeathInfo()
+        self._updateVehicleInfo()
 
     def _showOwnDeathInfo(self):
         if not self._deathAlreadySet:
@@ -56,6 +68,7 @@ class BattleRoyalePostmortemPanel(BattleRoyalePostmortemPanelMeta):
             return
         if self._isPlayerVehicle or self.__isObserver:
             if self.__isBattleRoyaleTournament and not self.__isObserver:
+                self.__updatePostmortemTipsVisibility()
                 return
             self._showOwnDeathInfo()
         else:

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>nodes_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_gunJoint</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.011800 0.404725 1.144161</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_havok_01</identifier>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/chinese/Ch25_121_mod_1971B/_skins/Ch25_121_mod_1971B_MC_3DSt/121_mod_1971B_MC_3DSt_havok_AM.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/chinese/Ch25_121_mod_1971B/_skins/Ch25_121_mod_1971B_MC_3DSt/121_mod_1971B_MC_3DSt_havok_AO.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>7.013700 3.507000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/chinese/Ch25_121_mod_1971B/_skins/Ch25_121_mod_1971B_MC_3DSt/121_mod_1971B_MC_3DSt_havok_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/chinese/Ch25_121_mod_1971B/_skins/Ch25_121_mod_1971B_MC_3DSt/121_mod_1971B_MC_3DSt_havok_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.010472 0.469616 0.072174</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>tank_turret_01</identifier>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/chinese/Ch25_121_mod_1971B/_skins/Ch25_121_mod_1971B_MC_3DSt/121_mod_1971B_MC_3DSt_turret_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/chinese/Ch25_121_mod_1971B/_skins/Ch25_121_mod_1971B_MC_3DSt/121_mod_1971B_MC_3DSt_turret_01_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/chinese/Ch25_121_mod_1971B/_skins/Ch25_121_mod_1971B_MC_3DSt/121_mod_1971B_MC_3DSt_turret_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/chinese/Ch25_121_mod_1971B/_skins/Ch25_121_mod_1971B_MC_3DSt/121_mod_1971B_MC_3DSt_turret_01_AO.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.020564 0.835968 0.183490</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.354627 0.030205 -1.337228</min>
+		<max>1.375571 1.585465 1.698470</max>
+	</boundingBox>
+	<geometrySize>67832</geometrySize>
+	<minUVDensity>0.002298</minUVDensity>
+</root>
