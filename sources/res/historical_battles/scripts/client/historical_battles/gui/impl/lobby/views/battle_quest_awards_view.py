@@ -83,7 +83,9 @@ class BattleQuestAwardsView(ViewImpl, IPrbListener):
         level = self._stage.get('stage', 0)
         isFinishStage = self._stage.get('finishStage', False)
         rewardsData = self._stage.get('detailedRewards', {})
+        isBought = self.__itemsCache.items.tokens.getTokenCount('historical_battles_bought') > 0
         hasHeroVehicle = self._gameEventController.heroTank.hasHeroVehicle()
+        hasHeroVehicle = hasHeroVehicle and isBought
         bonuses = awardsFactory(rewardsData, hasHeroVehicle=hasHeroVehicle)
         with self.viewModel.transaction() as (model):
             model.setBattleStatus((isFinishStage or BattleStatus).INPROGRESS if 1 else BattleStatus.COMPLETED)
