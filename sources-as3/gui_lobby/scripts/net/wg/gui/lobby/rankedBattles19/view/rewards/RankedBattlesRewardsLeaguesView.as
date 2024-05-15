@@ -177,10 +177,11 @@ package net.wg.gui.lobby.rankedBattles19.view.rewards
       private function updateComponentsPosition() : void
       {
          var _loc1_:Boolean = false;
+         var _loc3_:int = 0;
          App.utils.commons.updateTextFieldSize(this.rewardsDescriptionTf,false,true);
          _loc1_ = _width > this.container.width;
          var _loc2_:int = _width >> 1;
-         var _loc3_:int = !!_loc1_ ? int(_loc2_ - this._containerGlobalLeftShift) : int(_loc2_);
+         _loc3_ = !!_loc1_ ? int(_loc2_ - this._containerGlobalLeftShift) : int(_loc2_);
          var _loc4_:int = INFO_BLOCK_MAX_HEIGHT;
          if(this._hasDescr)
          {

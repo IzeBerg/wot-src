@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>nodes_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_gunJoint</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.446800 1.608680</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_turret_01</identifier>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/german/G172_PzVIB_Tiger_II_DIT/_skins/G172_PzVIB_Tiger_II_DIT_3DSt/PzVIB_Tiger_II_DIT_3DSt_turret_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/german/G172_PzVIB_Tiger_II_DIT/_skins/G172_PzVIB_Tiger_II_DIT_3DSt/PzVIB_Tiger_II_DIT_3DSt_turret_01_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/german/G172_PzVIB_Tiger_II_DIT/_skins/G172_PzVIB_Tiger_II_DIT_3DSt/PzVIB_Tiger_II_DIT_3DSt_turret_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/german/G172_PzVIB_Tiger_II_DIT/_skins/G172_PzVIB_Tiger_II_DIT_3DSt/PzVIB_Tiger_II_DIT_3DSt_turret_01_AO.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.004093 0.597364 -0.192008</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>tank_logo_01</identifier>
+					<property>
+						alphaReference
+						<Int>64</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/german/G172_PzVIB_Tiger_II_DIT/_skins/G172_PzVIB_Tiger_II_DIT_3DSt/PzVIB_Tiger_II_DIT_3DSt_logo_01_AM.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/german/G172_PzVIB_Tiger_II_DIT/_skins/G172_PzVIB_Tiger_II_DIT_3DSt/PzVIB_Tiger_II_DIT_3DSt_logo_01_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/german/G172_PzVIB_Tiger_II_DIT/_skins/G172_PzVIB_Tiger_II_DIT_3DSt/PzVIB_Tiger_II_DIT_3DSt_logo_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/german/G172_PzVIB_Tiger_II_DIT/_skins/G172_PzVIB_Tiger_II_DIT_3DSt/PzVIB_Tiger_II_DIT_3DSt_logo_01_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.000000 0.493496 -0.215036</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.274106 -0.008777 -2.120881</min>
+		<max>1.270637 1.203504 1.736864</max>
+	</boundingBox>
+	<geometrySize>44716</geometrySize>
+	<minUVDensity>0.003488</minUVDensity>
+</root>
