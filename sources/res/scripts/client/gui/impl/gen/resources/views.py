@@ -1681,25 +1681,36 @@ class Views(DynAccessor):
             class _tooltips(DynAccessor):
                 __slots__ = ()
                 BrCoinTooltipView = DynAccessor(507)
-                LeaderboardRewardTooltipView = DynAccessor(508)
-                RespawnInfoTooltipView = DynAccessor(509)
-                RewardCurrencyTooltipView = DynAccessor(510)
-                TabTooltipView = DynAccessor(511)
-                VehicleTooltipView = DynAccessor(512)
-                WidgetTooltipView = DynAccessor(513)
+
+                class _common(DynAccessor):
+                    __slots__ = ()
+
+                    class _LeaderBoard(DynAccessor):
+                        __slots__ = ()
+                        Column = DynAccessor(508)
+                        Table = DynAccessor(509)
+
+                    LeaderBoard = _LeaderBoard()
+
+                common = _common()
+                LeaderboardRewardTooltipView = DynAccessor(510)
+                RespawnInfoTooltipView = DynAccessor(511)
+                RewardCurrencyTooltipView = DynAccessor(512)
+                TabTooltipView = DynAccessor(513)
+                VehicleTooltipView = DynAccessor(514)
+                WidgetTooltipView = DynAccessor(515)
 
             tooltips = _tooltips()
 
             class _views(DynAccessor):
                 __slots__ = ()
-                BattleRoyaleEntryPoint = DynAccessor(514)
-                BattleTypeSelectorView = DynAccessor(515)
-                InfoPage = DynAccessor(516)
-                IntroView = DynAccessor(517)
-                LeavePlatoonConfirmView = DynAccessor(518)
-                PreBattleView = DynAccessor(519)
-                ProxyCurrencyView = DynAccessor(520)
-                WidgetView = DynAccessor(521)
+                BattleRoyaleEntryPoint = DynAccessor(516)
+                BattleTypeSelectorView = DynAccessor(517)
+                InfoPage = DynAccessor(518)
+                IntroView = DynAccessor(519)
+                PreBattleView = DynAccessor(520)
+                ProxyCurrencyView = DynAccessor(521)
+                WidgetView = DynAccessor(522)
 
             views = _views()
 
@@ -1709,8 +1720,8 @@ class Views(DynAccessor):
 
     class _battle_royale_progression(DynAccessor):
         __slots__ = ()
-        BattleQuestAwardsView = DynAccessor(522)
-        ProgressionMainView = DynAccessor(523)
+        BattleQuestAwardsView = DynAccessor(523)
+        ProgressionMainView = DynAccessor(524)
 
     battle_royale_progression = _battle_royale_progression()
 
@@ -1722,8 +1733,7 @@ class Views(DynAccessor):
 
             class _cosmic_hud(DynAccessor):
                 __slots__ = ()
-                CosmicBattleHelpView = DynAccessor(524)
-                CosmicPostBattleView = DynAccessor(525)
+                CosmicBattleHelpView = DynAccessor(525)
                 CosmicReactHudView = DynAccessor(526)
                 LeavingView = DynAccessor(527)
 
