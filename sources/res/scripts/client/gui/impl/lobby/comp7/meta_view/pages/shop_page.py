@@ -429,7 +429,11 @@ class ShopPage(PageSubModelPresenter):
         self.__disableBlur()
 
     def __onHeroStateChanged(self):
-        g_currentPreviewVehicle.selectVehicle(self.__currentItemCD)
+        itemType = getItemType(self.__currentItemCD)
+        if itemType == GUI_ITEM_TYPE.VEHICLE:
+            self.__selectVehicle()
+        elif itemType == GUI_ITEM_TYPE.STYLE:
+            self.__selectStyle()
         g_currentPreviewVehicle.onHeroStateUpdated -= self.__onHeroStateChanged
 
     def __checkComparisonBacketState(self, model):
@@ -438,6 +442,9 @@ class ShopPage(PageSubModelPresenter):
         model.setVehicleCompareTooltipId(tooltip)
 
     def __selectStyle(self):
+        if g_currentPreviewVehicle.isHeroTank:
+            g_currentPreviewVehicle.onHeroStateUpdated += self.__onHeroStateChanged
+            return
         vCompDescr, style = getVehicleCDAndStyle(self.__currentItemCD)
         if g_currentPreviewVehicle.intCD != vCompDescr:
             g_currentPreviewVehicle.selectVehicle(vCompDescr, style=style)

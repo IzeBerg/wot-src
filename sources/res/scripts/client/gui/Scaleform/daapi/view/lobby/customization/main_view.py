@@ -441,15 +441,13 @@ class MainView(LobbySubView, CustomizationMainViewMeta, LobbyHeaderVisibility):
             modeId = self.__ctx.modeId
             highlightingMode = chooseMode(slotType, modeId, g_currentVehicle.item)
             self.service.startHighlighter(highlightingMode)
-        if self.__ctx.c11nCameraManager is not None:
-            self.__resetCustomizationCamera(False)
+        self.__resetCustomizationCamera(False, False)
         self.__setAnchorsInitData()
         self.__updateAnchorsData()
         self.__updateDnd()
         self.__setHeaderInitData()
         self.__setNotificationCounters()
         self.__tryHideCarouselArrowsHint()
-        return
 
     def __onItemsInstalled(self, item, slotId, season, component):
         self.__setHeaderInitData()
@@ -629,12 +627,14 @@ class MainView(LobbySubView, CustomizationMainViewMeta, LobbyHeaderVisibility):
                 self.__ctx.vehicleAnchorsUpdater.onCameraLocated(self.__selectedSlot)
             return
 
-    def __resetCustomizationCamera(self, resetRotation=True):
+    def __resetCustomizationCamera(self, resetRotation=True, resetDistance=True):
         if self.__ctx.c11nCameraManager is None:
             return
         else:
-            self.__ctx.c11nCameraManager.resetCustomizationCamera(resetRotation)
-            self.__selectedSlot = C11nId()
+            emptySlot = C11nId()
+            resetDistance = resetDistance or self.__selectedSlot != emptySlot
+            self.__ctx.c11nCameraManager.resetCustomizationCamera(resetRotation, resetDistance)
+            self.__selectedSlot = emptySlot
             self.__propertiesSheet.locateToCustomizationPreview()
             self.__ctx.vehicleAnchorsUpdater.onCameraLocated()
             return
@@ -1020,14 +1020,15 @@ class MainView(LobbySubView, CustomizationMainViewMeta, LobbyHeaderVisibility):
             if item is not None:
                 self.__locateCameraOnAnchor(slotId)
             else:
-                self.__resetCustomizationCamera(False)
+                self.__resetCustomizationCamera(False, False)
         else:
             self.__locateCameraOnAnchor(slotId)
         self.__updateDnd()
         return
 
-    def __onSlotUnselected(self):
-        self.__resetCustomizationCamera(False)
+    def __onSlotUnselected(self, isResetCamera):
+        if isResetCamera:
+            self.__resetCustomizationCamera(False)
         self.__updateAnchorsData()
         if self.__ctx.mode.isRegion:
             self.service.selectRegions(ApplyArea.NONE)
@@ -1192,7 +1193,7 @@ class MainView(LobbySubView, CustomizationMainViewMeta, LobbyHeaderVisibility):
             if toBuyWindow:
                 self.changeVisible(False)
             else:
-                self.__resetCustomizationCamera(False)
+                self.__resetCustomizationCamera(False, False)
                 self.service.resumeHighlighter()
             self.__styleInfo.hide()
             return

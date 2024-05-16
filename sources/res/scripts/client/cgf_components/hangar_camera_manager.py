@@ -227,7 +227,7 @@ class HangarCameraManager(CGF.ComponentManager):
                 self.__startFlight(matrix, Math.Matrix(self.__cam.matrix))
             return
 
-    def resetCameraTarget(self, duration=0, resetRotation=True):
+    def resetCameraTarget(self, duration=0, resetRotation=True, resetDistance=True):
         if BigWorld.camera() != self.__cam:
             return
         else:
@@ -247,7 +247,7 @@ class HangarCameraManager(CGF.ComponentManager):
                 worldPitch = parentTransformComponent.worldTransform.pitch
                 yaw = self.__normaliseAngle(orbitComponent.currentYaw + worldYaw + math.pi) if resetRotation else None
                 pitch = self.__normaliseAngle(orbitComponent.currentPitch + worldPitch) if resetRotation else None
-                distance = orbitComponent.currentDist if resetRotation else None
+                distance = orbitComponent.currentDist if resetDistance else None
                 distConstraints = orbitComponent.distLimits
                 self.__setCameraShift(gameObject.findComponentByType(ShiftComponent))
 

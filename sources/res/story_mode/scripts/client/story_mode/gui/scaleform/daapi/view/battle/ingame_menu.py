@@ -33,7 +33,7 @@ class StoryModeIngameMenu(IngameMenu):
         wantToExit = yield wg_await(confirmExitDialog())
         if wantToExit:
             self._uiLogger.logClick(LogButtons.SKIP)
-            self._storyModeCtrl.skipOnboarding()
+            self._storyModeCtrl.quitBattle()
         else:
             self.destroy()
 

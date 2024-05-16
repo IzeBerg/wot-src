@@ -2237,7 +2237,8 @@ def showAdvancedAchievementsCatalogView(initAchievementIDs, achievementCategory,
     from gui.impl.lobby.achievements.catalog_view import CatalogViewWindow
     uiLoader = dependency.instance(IGuiLoader)
     contentResId = R.views.lobby.achievements.CatalogView()
-    if uiLoader.windowsManager.getViewByLayoutID(contentResId) is None:
+    fullScreenWindows = uiLoader.windowsManager.findWindows(lambda w: w.layer == WindowLayer.FULLSCREEN_WINDOW)
+    if uiLoader.windowsManager.getViewByLayoutID(contentResId) is None and not fullScreenWindows:
         window = CatalogViewWindow(initAchievementIDs=initAchievementIDs, achievementCategory=achievementCategory, closeCallback=closeCallback, uiParentScreen=parentScreen, *args, **kwargs)
         window.load()
     return
@@ -2247,7 +2248,8 @@ def showTrophiesView(closeCallback, parentScreen, *args, **kwargs):
     from gui.impl.lobby.achievements.catalog_view import CatalogViewWindow
     uiLoader = dependency.instance(IGuiLoader)
     contentResId = R.views.lobby.achievements.CatalogView()
-    if uiLoader.windowsManager.getViewByLayoutID(contentResId) is None:
+    fullScreenWindows = uiLoader.windowsManager.findWindows(lambda w: w.layer == WindowLayer.FULLSCREEN_WINDOW)
+    if uiLoader.windowsManager.getViewByLayoutID(contentResId) is None and not fullScreenWindows:
         window = CatalogViewWindow(initAchievementIDs=[
          TROPHIES_ACHIEVEMENT_ID], achievementCategory='', closeCallback=closeCallback, uiParentScreen=parentScreen, *args, **kwargs)
         window.load()

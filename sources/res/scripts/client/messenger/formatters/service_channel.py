@@ -110,7 +110,6 @@ _PREMIUM_MESSAGES = {PREMIUM_TYPE.BASIC: {str(SYS_MESSAGE_TYPE.premiumBought): R
                        str(SYS_MESSAGE_TYPE.premiumChanged): R.strings.messenger.serviceChannelMessages.premiumPlusChanged()}}
 _PREMIUM_TEMPLATES = {PREMIUM_ENTITLEMENTS.BASIC: b'battleQuestsPremium', 
    PREMIUM_ENTITLEMENTS.PLUS: b'battleQuestsPremiumPlus'}
-_PROGRESSION_INVOICE_POSTFIX = b'progression'
 EPIC_LEVELUP_TOKEN_TEMPLATE = b'epicmetagame:levelup:'
 
 def _getTimeStamp(message):
@@ -130,8 +129,6 @@ def _extendCustomizationData(newData, extendable, htmlTplPostfix):
             splittedCustType = customizationItem.get(b'custType', b'').split(b':')
             custType = splittedCustType[0]
             custValue = customizationItem[b'value']
-            if len(splittedCustType) == 2 and _PROGRESSION_INVOICE_POSTFIX in splittedCustType[1]:
-                continue
             if custValue > 0:
                 operation = b'added'
             elif custValue < 0:
@@ -4772,7 +4769,6 @@ class EpicQuestAchievesFormatter(QuestAchievesFormatter):
 
 
 class EpicSeasonEndFormatter(WaitItemsSyncFormatter):
-    __battlePass = dependency.descriptor(IBattlePassController)
     __itemsCache = dependency.descriptor(IItemsCache)
     __template = b'EpicSeasonEndMessage'
     __rewardTemplate = b'epicDefaultRewardReceived'
@@ -4786,11 +4782,8 @@ class EpicSeasonEndFormatter(WaitItemsSyncFormatter):
             data = message.data
             rewards = data.get(b'data')
             if rewards is not None:
-                if self.__battlePass.isHoliday():
-                    description = backport.text(R.strings.system_messages.battlePassH.seasonEnd.text())
-                else:
-                    description = backport.text(R.strings.system_messages.battlePass.seasonEnd.text())
                 title = backport.text(R.strings.system_messages.epicBattles.seasonEnd.title())
+                description = backport.text(R.strings.system_messages.epicBattles.seasonEnd.text())
                 text = []
                 if b'items' in rewards:
                     text.extend(self.__formatItemsStrings(rewards[b'items']))

@@ -1,5 +1,5 @@
 from logging import getLogger
-import BattleReplay, BigWorld, typing, WWISE, Windowing
+import BattleReplay, BigWorld, SoundGroups, typing, WWISE, Windowing
 from account_helpers import AccountSettings
 from account_helpers.settings_core.settings_constants import SOUND
 from gui import g_keyEventHandlers
@@ -13,7 +13,7 @@ from story_mode.gui.fade_in_out import UseStoryModeFading
 from story_mode.gui.scaleform.daapi.view.meta.IntroVideoMeta import IntroVideoMeta
 from story_mode.gui.scaleform.daapi.view.model.intro_video_settings_model import getSettings
 from story_mode.gui.shared.event_dispatcher import showPrebattleWindow
-from story_mode.gui.story_mode_gui_constants import EventMusicState
+from story_mode.gui.story_mode_gui_constants import EventMusicState, Music, Ambience
 from story_mode.skeletons.story_mode_controller import IStoryModeController
 from story_mode.uilogging.story_mode.consts import LogButtons
 from story_mode.uilogging.story_mode.loggers import IntroVideoLogger
@@ -61,7 +61,8 @@ class IntroVideo(IntroVideoMeta, IArenaLoadController):
         if self._storyModeCtrl.isSelectedMissionEvent:
             WWISE.WW_setState(EventMusicState.GROUP, EventMusicState.VIDEO)
         else:
-            self._storyModeCtrl.stopMusic()
+            SoundGroups.g_instance.playSound2D(Music.ONBOARDING_STOP)
+            SoundGroups.g_instance.playSound2D(Ambience.ONBOARDING_STOP)
         if self._introVideoSettings.music.start:
             self.soundManager.playSound(self._introVideoSettings.music.start)
         self.soundManager.playSound(self._introVideoSettings.vo)
@@ -116,6 +117,8 @@ class IntroVideo(IntroVideoMeta, IArenaLoadController):
     def _closeWindow(self):
         sendWWISEEventGlobal(self._introVideoSettings.music.stop)
         self.soundManager.stopSound(self._introVideoSettings.vo)
+        if not self._storyModeCtrl.isSelectedMissionEvent:
+            SoundGroups.g_instance.playSound2D(Music.ONBOARDING_START)
         self.destroy()
 
     def _onWindowAccessibilityChanged(self, isAccessible):

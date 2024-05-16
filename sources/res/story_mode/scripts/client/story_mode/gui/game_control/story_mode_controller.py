@@ -200,16 +200,16 @@ class StoryModeController(IStoryModeController, IGlobalListener):
             if mission.missionId == nextMissionId:
                 return mission
 
-    def skipOnboarding(self):
+    def quitBattle(self):
         player = BigWorld.player()
-        _logger.debug('skipOnboarding')
+        _logger.debug('quitBattle')
         self.__isQuittingBattle = True
         if not player:
-            _logger.error('skipOnboarding: player is not available')
+            _logger.error('quitBattle: player is not available')
             return
         else:
+            self.__selectRandomBattle = self.__isOnboarding
             self.__isOnboarding = False
-            self.__selectRandomBattle = True
             player._doCmdNoArgs(AccountCommands.CMD_REMOVE_FORCE_ONBOARDING, None)
             if isPlayerAvatar():
                 self._sessionProvider.exit()

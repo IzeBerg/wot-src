@@ -466,7 +466,10 @@ class PostmortemPanel(_SummaryPostmortemPanel):
     def __onKillerDogTagSet(self, dogTagInfo):
         dogTagModel = layoutComposer.getModel(self._buildDogTag(dogTagInfo['dogTag']))
         _logger.info('PostmortemPanel.__onKillerDogTagSet: dogTagInfo %s, dogTagModel %s', str(dogTagInfo), str(dogTagModel))
-        self.as_showKillerDogTagS(dogTagModel, not self.__isSimpleDeathCam())
+        killCamCtrl = self.sessionProvider.shared.killCamCtrl
+        fadeOut = killCamCtrl and (killCamCtrl.killCtrlState is None or not self.__isSimpleDeathCam())
+        self.as_showKillerDogTagS(dogTagModel, fadeOut)
+        return
 
     def __onVictimDogTagSet(self, dogTagInfo):
         dogTagModel = layoutComposer.getModel(self._buildDogTag(dogTagInfo['dogTag']))

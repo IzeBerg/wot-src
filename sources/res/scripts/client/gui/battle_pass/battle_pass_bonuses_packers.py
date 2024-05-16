@@ -117,7 +117,6 @@ class _BattlePassFinalBonusPacker(BaseBonusUIPacker):
 class TmanTemplateBonusPacker(_BattlePassFinalBonusPacker):
     __battlePass = dependency.descriptor(IBattlePassController)
     __specialSounds = dependency.descriptor(ISpecialSoundCtrl)
-    __ICON_FORMAT = '{}SpecialVoice'
 
     @classmethod
     def _pack(cls, bonus):
@@ -139,19 +138,14 @@ class TmanTemplateBonusPacker(_BattlePassFinalBonusPacker):
             return
         else:
             groupName = recruitInfo.getGroupName()
-            bonusImageName = cls.__getBonusImageName(recruitInfo)
+            bonusImageName = ('_').join([cls.__getBonusImageName(recruitInfo), groupName])
             tankManFullName = recruitInfo.getFullUserName()
             model = RewardItemModel()
             cls._packCommon(bonus, model)
-            if groupName in cls.__battlePass.getSpecialTankmen():
-                if recruitInfo.getSpecialVoiceTag(cls.__specialSounds) is not None:
-                    customBonusImageName = cls.__ICON_FORMAT.format(bonusImageName)
-                model.setIcon(('_').join([customBonusImageName, groupName]))
-            else:
-                model.setIcon(bonusImageName)
+            model.setIcon(bonusImageName)
             model.setUserName(tankManFullName)
             model.setLabel(tankManFullName)
-            model.setBigIcon(('_').join([bonusImageName, groupName]))
+            model.setBigIcon(bonusImageName)
             model.setIsCollectionEntity(cls._isCollectionItem(groupName))
             cls._injectAwardID(model, recruitInfo.getGroupName())
             return model

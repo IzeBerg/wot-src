@@ -1,6 +1,5 @@
 import logging
 from datetime import datetime
-from functools import partial
 import typing, WWISE
 from frameworks.wulf import ViewStatus, WindowLayer
 from gui import GUI_SETTINGS
@@ -49,6 +48,7 @@ class MissionSelectionView(BasePrbView):
     def __init__(self, *args, **kwargs):
         super(MissionSelectionView, self).__init__(*args, **kwargs)
         self._animationCounter = 0
+        self._isBackgroundLoaded = False
         self._uiLogger = SelectMissionWindow()
         self.__isAnimationPlayedAfterWindowMap = {R.views.story_mode.lobby.BattleResultView(): False, 
            R.views.story_mode.lobby.WelcomeView(): False, 
@@ -110,7 +110,7 @@ class MissionSelectionView(BasePrbView):
         viewModel = self.getViewModel()
         return (
          (
-          viewModel.onLoaded, partial(sendViewLoadedEvent, self.LAYOUT_ID)),
+          viewModel.onLoaded, self._onBackgroundLoaded),
          (
           viewModel.onQuit, self._quit),
          (
@@ -128,9 +128,14 @@ class MissionSelectionView(BasePrbView):
          (
           self._storyModeCtrl.onMissionsConfigUpdated, self.__onMissionsDataUpdated))
 
+    def _onBackgroundLoaded(self):
+        sendViewLoadedEvent(self.LAYOUT_ID)
+        self._isBackgroundLoaded = True
+
     def _quit(self):
-        self._uiLogger.logClick(LogButtons.CLOSE)
-        super(MissionSelectionView, self)._quit()
+        if self._isBackgroundLoaded:
+            self._uiLogger.logClick(LogButtons.CLOSE)
+            super(MissionSelectionView, self)._quit()
 
     def __onViewStatusChanged(self, uniqueID, newState):
         if newState == ViewStatus.DESTROYING:

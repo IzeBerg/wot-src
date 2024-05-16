@@ -87,7 +87,7 @@ class IStoryModeController(IGameController):
     def goToHangar(self, guiCtx=None):
         raise NotImplementedError
 
-    def skipOnboarding(self):
+    def quitBattle(self):
         raise NotImplementedError
 
     def popWaitingToBeShownAwardData(self):

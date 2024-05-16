@@ -378,8 +378,8 @@ class BattleRoyalePage(BattleRoyalePageMeta, ISpawnListener):
 
     def _getComponentsVideoModeSwitching(self, ctrlMode):
         components = super(BattleRoyalePage, self)._getComponentsVideoModeSwitching(ctrlMode)
-        if not self.__panelsIsVisible:
-            components.discard(BATTLE_VIEW_ALIASES.CONSUMABLES_PANEL)
+        if self.__panelsIsVisible:
+            components.add(BATTLE_VIEW_ALIASES.CONSUMABLES_PANEL)
         return components
 
     def __onCameraChanged(self, ctrlMode, _=None):
