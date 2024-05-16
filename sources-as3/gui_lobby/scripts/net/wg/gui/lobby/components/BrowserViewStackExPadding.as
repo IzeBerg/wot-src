@@ -150,10 +150,9 @@ package net.wg.gui.lobby.components
       
       private function updateLayout() : void
       {
-         var _loc2_:int = 0;
          var _loc3_:int = 0;
          var _loc1_:int = this.browserWidth;
-         _loc2_ = this.browserHeight;
+         var _loc2_:int = this.browserHeight;
          if(!this._isSizeInited && isDAAPIInited && _loc1_ > 0 && _loc2_ > 0)
          {
             if(this._isApplyPadding)

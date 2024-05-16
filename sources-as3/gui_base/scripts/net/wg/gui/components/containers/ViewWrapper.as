@@ -52,8 +52,9 @@ package net.wg.gui.components.containers
       
       override public function caretPosChanged(param1:Number, param2:Number) : void
       {
+         var _loc3_:Number = NaN;
          App.utils.asserter.assert(contains(this._inputTF),"_inputTF must be on stage during text input");
-         var _loc3_:Number = this._inputTF.x;
+         _loc3_ = this._inputTF.x;
          this._inputTF.x = param1 - this._inputTF.textWidth;
          this._inputTF.y = param2;
          this._inputTF.width -= this._inputTF.x - _loc3_;

@@ -1,7 +1,5 @@
 package net.wg.gui.lobby.header.vo
 {
-   import net.wg.data.constants.IconsTypes;
-   
    public class HBC_FinanceVo extends HBC_AbstractVO
    {
        
@@ -16,7 +14,7 @@ package net.wg.gui.lobby.header.vo
       
       public var isHasAction:Boolean = false;
       
-      public var icon:String;
+      public var icon:String = "empty";
       
       public var isNew:Boolean = false;
       
@@ -24,7 +22,6 @@ package net.wg.gui.lobby.header.vo
       
       public function HBC_FinanceVo(param1:Object = null)
       {
-         this.icon = IconsTypes.EMPTY;
          super(param1);
       }
    }
