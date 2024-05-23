@@ -321,6 +321,8 @@ package
       
       public static const LOBY_MESSENGER_LISTVIEW_NEWS_TOOLTIP:String = "#tooltips:loby_messenger/listView/news/tooltip";
       
+      public static const SHOWPERSONALANIMATEDDOGTAG:String = "#tooltips:showPersonalAnimatedDogTag";
+      
       public static const BADGEINFO_TITLE:String = "#tooltips:badgeinfo/title";
       
       public static const BADGEINFO_TEXT:String = "#tooltips:badgeinfo/text";
@@ -706,6 +708,10 @@ package
       public static const SHOWDOGTAG_HEADER:String = "#tooltips:showDogTag/header";
       
       public static const SHOWDOGTAG_BODY:String = "#tooltips:showDogTag/body";
+      
+      public static const SHOWPERSONALANIMATEDDOGTAG_HEADER:String = "#tooltips:showPersonalAnimatedDogTag/header";
+      
+      public static const SHOWPERSONALANIMATEDDOGTAG_BODY:String = "#tooltips:showPersonalAnimatedDogTag/body";
       
       public static const POSTMORTEMMODE_HEADER:String = "#tooltips:postmortemMode/header";
       

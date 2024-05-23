@@ -499,7 +499,7 @@ class MainView(LobbySubView, CustomizationMainViewMeta, LobbyHeaderVisibility):
         self.as_releaseItemS()
 
     def __onItemsRemoved(self, slotId=None):
-        self.soundManager.playInstantSound(SOUNDS.TAB_SWITCH)
+        self.soundManager.playInstantSound(SOUNDS.REMOVE)
         self.__setHeaderInitData()
         self.__setSeasonData()
         self.__setAnchorsInitData(True)

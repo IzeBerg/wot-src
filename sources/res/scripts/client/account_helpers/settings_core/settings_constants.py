@@ -98,6 +98,7 @@ class GAME(CONST_CONTAINER):
     SHOW_VICTIMS_DOGTAG = 'showVictimsDogTag'
     SHOW_DOGTAG_TO_KILLER = 'showDogTagToKiller'
     SHOW_KILLERS_DOGTAG = 'showKillersDogTag'
+    SHOW_PERSONAL_ANIMATED_DOGTAG = 'showPersonalAnimatedDogTag'
     DYNAMIC_CAMERA = 'dynamicCamera'
     SNIPER_MODE_STABILIZATION = 'horStabilizationSnp'
     INCREASED_ZOOM = 'increasedZoom'

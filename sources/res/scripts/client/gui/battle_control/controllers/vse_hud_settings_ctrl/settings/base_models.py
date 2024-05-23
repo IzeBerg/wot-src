@@ -10,12 +10,29 @@ def validateTemplateKey(func):
             result = ''
         elif i18n.isValidKey(templateKey):
             result = func(self, templateKey, *args, **kwargs)
+            if result.startswith('#'):
+                _logger.error('Text for key=%s not found.', templateKey)
         else:
-            _logger.error('Text for key=%s not found.', templateKey)
             result = templateKey.replace('\\n', '\n')
+            if args:
+                validParams = _normalizeParams(templateKey, args[0])
+                result = result % tuple(validParams)
         return result
 
     return wrapper
+
+
+def _normalizeParams(text, params):
+    places = text.count('%')
+    parameters = len(params)
+    emptyPlaces = places - parameters
+    if emptyPlaces > 0:
+        _logger.error('Not enough params. text=%s, params=%s', text, params)
+        params = list(params) + [''] * emptyPlaces
+    elif emptyPlaces < 0:
+        _logger.error('Too much params for template. text=%s, params=%s', text, params)
+        params = params[:emptyPlaces]
+    return params
 
 
 class BaseClientModel(object):
@@ -30,21 +47,7 @@ class TextClientModel(BaseClientModel):
 
     @validateTemplateKey
     def _getPluralText(self, templateKey, params):
-        validParams = self._normalizeParams(templateKey, params)
+        validParams = _normalizeParams(i18n.makeString(templateKey), params)
         pluralTemplate = templateKey.replace(':', ':plural/')
         pluralNumber = validParams[0] if validParams else 0
         return i18n.makePluralString(templateKey, pluralTemplate, pluralNumber, *validParams)
-
-    @staticmethod
-    def _normalizeParams(templateKey, params):
-        text = i18n.makeString(templateKey)
-        places = text.count('%')
-        parameters = len(params)
-        emptyPlaces = places - parameters
-        if emptyPlaces > 0:
-            _logger.error('Not enough params. text=%s, params=%s', text, params)
-            params = list(params) + [''] * emptyPlaces
-        elif emptyPlaces < 0:
-            _logger.error('Too much params for template. text=%s, params=%s', text, params)
-            params = params[:emptyPlaces]
-        return params

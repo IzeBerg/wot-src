@@ -228,6 +228,7 @@ class BattlePassProgressionsView(ViewImpl):
 
     def __onActionClick(self):
         self.__resetBuyAnimation()
+        self.__stopVoiceovers()
         ctrl = self.__battlePass
         if ctrl.isChapterActive(self.__chapterID):
             if ctrl.isBought(chapterID=self.__chapterID):
@@ -781,14 +782,7 @@ class BattlePassProgressionsView(ViewImpl):
         self.destroyWindow()
 
     def __stopSounds(self):
-        if self.__battlePass.getSpecialTankmen():
-            if self.__battlePass.isHoliday():
-                voiceoverStopSound = BattlePassSounds.HOLIDAY_VOICEOVER_STOP
-            elif self.__battlePass.isExtraChapter(self.__chapterID):
-                voiceoverStopSound = BattlePassSounds.VOICEOVER_STOP
-            else:
-                voiceoverStopSound = BattlePassSounds.REGULAR_VOICEOVER_STOP
-            self.soundManager.playInstantSound(voiceoverStopSound)
+        self.__stopVoiceovers()
         if self.__battlePass.isExtraChapter(self.__chapterID):
             self.soundManager.playInstantSound(BattlePassSounds.SPECIAL_TASKS_EXIT)
         self.__exitSoundsIsPlayed = True
@@ -797,6 +791,16 @@ class BattlePassProgressionsView(ViewImpl):
         if self.__battlePass.isExtraChapter(self.__chapterID):
             self.soundManager.playInstantSound(BattlePassSounds.SPECIAL_TASKS_ENTER)
         self.__exitSoundsIsPlayed = False
+
+    def __stopVoiceovers(self):
+        if self.__battlePass.getSpecialTankmen():
+            if self.__battlePass.isHoliday():
+                voiceoverStopSound = BattlePassSounds.HOLIDAY_VOICEOVER_STOP
+            elif self.__battlePass.isExtraChapter(self.__chapterID):
+                voiceoverStopSound = BattlePassSounds.VOICEOVER_STOP
+            else:
+                voiceoverStopSound = BattlePassSounds.REGULAR_VOICEOVER_STOP
+            self.soundManager.playInstantSound(voiceoverStopSound)
 
     def __isSpecialVoiceTankmenEnabled(self):
         if not isSeasonWithSpecialTankmenScreen():

@@ -25,12 +25,16 @@ class StoryModeBattlePageBase(object):
     def isWinMessageShown(self):
         return self._isWinMessageShown
 
-    def hideAll(self):
+    def hideAndStop(self):
         self._setComponentsVisibility(hidden=self.as_getComponentsVisibilityS())
+        self._stopBattleSession()
 
     def reload(self):
+        wasWinMessageShown = self._isWinMessageShown
         self._isWinMessageShown = False
         super(StoryModeBattlePageBase, self).reload()
+        if wasWinMessageShown:
+            toggleCrosshairVisibility()
         _logger.debug('[%s] reload', self)
 
     def _populate(self):
@@ -62,7 +66,6 @@ class StoryModeBattlePageBase(object):
         if inputHandler.ctrlModeName != CTRL_MODE_NAME.ARCADE:
             inputHandler.onControlModeChanged(CTRL_MODE_NAME.ARCADE, preferredPos=inputHandler.getDesiredShotPoint())
         self.__onRoundFinished()
-        self._isWinMessageShown = True
 
     def _onBattleLoadingStart(self):
         super(StoryModeBattlePageBase, self)._onBattleLoadingStart()
@@ -82,4 +85,5 @@ class StoryModeBattlePageBase(object):
          STORY_MODE_BATTLE_VIEW_ALIASES.SUBTITLES}, hidden=hideSet)
         if not self._isWinMessageShown:
             toggleCrosshairVisibility()
+            self._isWinMessageShown = True
         avatar_getter.setComponentsVisibility(False)

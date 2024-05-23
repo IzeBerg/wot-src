@@ -25,6 +25,7 @@ class AnimatedDogTagComposer(DogTagComposerLobby):
     def fillModel(self, model, dogtag, isUnlocked=True):
         super(AnimatedDogTagComposer, self).fillModel(model, dogtag, isUnlocked)
         model.setAnimation(dogtag.getComponentByType(ComponentViewType.BACKGROUND).componentDefinition.animation)
+        model.setIsShowInPrebattle(dogtag.getComponentByType(ComponentViewType.BACKGROUND).componentDefinition.isShowInPrebattle)
         model.setIsSelected(self.isDogTagEquipped(dogtag))
 
     def fillEntryPoint(self, model):

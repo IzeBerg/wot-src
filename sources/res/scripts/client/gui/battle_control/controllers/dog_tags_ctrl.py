@@ -36,7 +36,6 @@ class DogTagsController(IBattleController):
         self.onKillerDogTagSet = Event.Event(self.__eManager)
         self.onVictimDogTagSet = Event.Event(self.__eManager)
         self.onKillerDogTagCheat = Event.Event(self.__eManager)
-        self.guiSessionProvider.arenaVisitor.getArenaSubscription().onPeriodChange += self.__onArenaPeriodChange
 
     def setKillerDogTag(self, killerDogTag):
         showKillersDogTag = bool(self.settingsCore.getSetting(GAME.SHOW_KILLERS_DOGTAG))
@@ -80,6 +79,9 @@ class DogTagsController(IBattleController):
         return BATTLE_CTRL_ID.DOG_TAGS
 
     def startControl(self):
+        arenaSubscription = self.guiSessionProvider.arenaVisitor.getArenaSubscription()
+        if arenaSubscription is not None:
+            arenaSubscription.onPeriodChange += self.__onArenaPeriodChange
         avatar = BigWorld.player()
         avatar.onVehicleEnterWorld += self.__onVehicleEnterWorld
         avatar.onVehicleLeaveWorld += self.__onVehicleLeaveWorld
@@ -89,16 +91,26 @@ class DogTagsController(IBattleController):
         return
 
     def stopControl(self):
+        arenaSubscription = self.guiSessionProvider.arenaVisitor.getArenaSubscription()
+        if arenaSubscription is not None:
+            arenaSubscription.onPeriodChange -= self.__onArenaPeriodChange
         avatar = BigWorld.player()
         avatar.onVehicleEnterWorld -= self.__onVehicleEnterWorld
         avatar.onVehicleLeaveWorld -= self.__onVehicleLeaveWorld
+        PlayerEvents.g_playerEvents.onAvatarReady -= self.__onAvatarReady
         self.__clearMarkers()
+        self.__eManager.clear()
+        self.__eManager = None
+        self.__arenaDP = None
+        return
 
     def __onVehicleEnterWorld(self, vehicle):
         if self.guiSessionProvider.getArenaDP().isObserver(vehicle.id):
             return
         if vehicle.id == avatar_getter.getPlayerVehicleID():
             self._initDogTagsInfo(vehicle)
+            if bool(self.settingsCore.getSetting(GAME.SHOW_PERSONAL_ANIMATED_DOGTAG)):
+                self.__addDogTagMarker(vehicle)
         else:
             self.__addDogTagMarker(vehicle)
 

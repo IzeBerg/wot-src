@@ -585,6 +585,7 @@ class Comp7Controller(Notifiable, SeasonProvider, IComp7Controller, IGlobalListe
     def __onEntitlementsCacheUpdated(self, isSuccess):
         if isSuccess:
             self.onEntitlementsUpdated()
+            self.__updateRank()
             self.__tryToShowSeasonStatistics()
 
     def __getActualEntitlements(self):

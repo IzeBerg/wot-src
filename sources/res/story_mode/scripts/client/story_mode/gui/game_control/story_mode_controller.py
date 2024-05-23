@@ -325,9 +325,11 @@ class StoryModeController(IStoryModeController, IGlobalListener):
         return defaultMissionId
 
     def __onAvatarBecomeNonPlayer(self):
+        self.__musicStarted = None
         if self.__isNameFormatterSubstituted:
             self.__isNameFormatterSubstituted = False
             self._sessionProvider.getCtx().resetPlayerFullNameFormatter()
+        return
 
     def __configModelUpdateHandler(self, gpKey):
         if settingsSchema.gpKey == gpKey:

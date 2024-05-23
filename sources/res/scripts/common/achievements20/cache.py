@@ -46,6 +46,7 @@ class UIConfigFields(Enum):
     ORDER = 'order'
     THEME = 'theme'
     ICON_SIZE_MAP = 'iconSizeMap'
+    VEHICLE = 'vehicle'
 
 
 _VALID_UI_CONFIG_KEYS = {k.value for k in UIConfigFields}

@@ -132,9 +132,9 @@ class RewardView(ViewImpl):
         self.destroyWindow()
 
     def __onOpenAchievement(self, args):
+        self.__onClose()
         initAchievementsIds = createAdvancedAchievementsCatalogInitAchievementIDs(args['id'], args['category'])
         showAdvancedAchievementsCatalogView(initAchievementsIds, args['category'], closeCallback=showAdvancedAchievementsView, parentScreen=AdvancedAchievementViewKey.REWARD_SCREEN)
-        self.__onClose()
 
     def __onOpenNextReward(self):
         self.__uiLogger.logRewardClick(AdvancedAchievementButtons.MORE_REWARDS, len(self.__getBonusTuples()))

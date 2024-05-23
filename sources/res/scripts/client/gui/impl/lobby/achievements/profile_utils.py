@@ -22,6 +22,7 @@ from gui.shared.formatters.date_time import getRegionalDateTime
 from gui.shared.gui_items.Vehicle import getNationLessName
 from helpers import dependency
 from advanced_achievements_client.getters import getAchievementByID
+from items import vehicles
 from shared_utils import first
 from skeletons.account_helpers.settings_core import ISettingsCore
 from skeletons.gui.lobby_context import ILobbyContext
@@ -320,7 +321,8 @@ def getAdvancedAchievementsBonusPacker():
     return BonusUIPacker(getAdvancedAchievementsBonusPackersMap())
 
 
-def fillDetailsModel(achievement, tooltipData, detailsModel=None):
+@dependency.replace_none_kwargs(itemsCache=IItemsCache)
+def fillDetailsModel(achievement, tooltipData, detailsModel=None, itemsCache=None):
     if detailsModel is None:
         detailsModel = DetailsModel()
     with detailsModel.transaction() as (model):
@@ -337,6 +339,8 @@ def fillDetailsModel(achievement, tooltipData, detailsModel=None):
             model.setProgressType(ProgressType.PERCENTAGE)
         else:
             model.setProgressType(ProgressType.STEPPED)
+        if achievement.getVehicle():
+            model.setSpecificItemLevel(getVehicleByName(achievement.getVehicle()))
     return detailsModel
 
 
@@ -345,7 +349,7 @@ def fillAchievementCardModel(achievement, tooltipData, bubbles, itemsCache=None,
     if achievementCardModel is None:
         achievementCardModel = AchievementCardModel()
     with achievementCardModel.transaction() as (model):
-        fillDetailsModel(achievement, tooltipData, model)
+        fillDetailsModel(achievement, tooltipData, model, itemsCache=itemsCache)
         model.setId(achievement.getID())
         model.setNewItemsCount(bubbles)
         if isinstance(achievement, VirtualStepAchievement):
@@ -359,7 +363,10 @@ def fillAchievementCardModel(achievement, tooltipData, bubbles, itemsCache=None,
                 item = itemsCache.items.getItemByCD(conditionID)
                 model.setSpecificItemName(item.shortUserName)
                 model.setSpecificItemIconName(getNationLessName(item.name))
+                model.setSpecificItemLevel(item.level)
                 model.setIsResearchable(bool(achievement.getOpenByUnlock()))
+        if achievement.getVehicle():
+            model.setSpecificItemLevel(getVehicleByName(achievement.getVehicle()))
         if achievement.isDeprecated:
             model.setIsProgressive(False)
     return achievementCardModel
@@ -372,6 +379,10 @@ def fillBreadcrumbModel(achievement, breadcrumbModel=None):
         model.setAchievementId(achievement.getID())
         model.setKey(achievement.getStringKey())
     return breadcrumbModel
+
+
+def getVehicleByName(name):
+    return vehicles.g_cache.vehicle(*vehicles.g_list.getIDsByName(name)).level
 
 
 def getTrophiesData():

@@ -89,7 +89,7 @@ class HitDirectionController(IViewComponentsController):
         attackerVehInfo = self.__arenaDP.getVehicleInfo(attackerID)
         isAlly = self.__arenaDP.isAllyTeam(attackerVehInfo.team)
         playerVehType = self.__arenaDP.getVehicleInfo(damagedID).vehicleType
-        classTag = attackerVehInfo.getDisplayedClassTag()
+        classTag = attackerVehInfo.getDisplayedClassTag() if attackerVehInfo.vehicleType.classTag is not None else None
         if VEHICLE_BUNKER_TURRET_TAG in attackerVehInfo.vehicleType.tags:
             classTag = VEHICLE_BUNKER_TURRET_TAG
         attackerVehName = attackerVehInfo.getDisplayedName()

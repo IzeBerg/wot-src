@@ -16,6 +16,9 @@ class IUILoggingCore(object):
     def log(self, feature, group, action, loglevel, **params):
         raise NotImplementedError
 
+    def logImmediately(self, feature, group, action, loglevel, **params):
+        raise NotImplementedError
+
     def ensureSession(self):
         raise NotImplementedError
 

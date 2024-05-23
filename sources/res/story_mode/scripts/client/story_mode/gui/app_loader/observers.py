@@ -51,7 +51,7 @@ class StoryModeBattlePageObserver(BattlePageObserver):
         else:
             battlePage = getStoryModeBattle()
             if battlePage is not None:
-                battlePage.hideAll()
+                battlePage.hideAndStop()
         return
 
 

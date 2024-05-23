@@ -4,7 +4,7 @@ from gui.impl.gen.view_models.views.lobby.achievements.views.achievements.upcomi
 from helpers import dependency
 from frameworks.wulf import WindowLayer, WindowStatus
 from gui.shared.event_dispatcher import showAdvancedAchievementsCatalogView, showTrophiesView, showAdvancedAchievementsView
-from gui.impl.lobby.achievements.profile_utils import fillAdvancedAchievementModel, createAdvancedAchievementsCatalogInitAchievementIDs, getTrophiesData, fillSubcategoryAdvancedAchievementModel
+from gui.impl.lobby.achievements.profile_utils import fillAdvancedAchievementModel, createAdvancedAchievementsCatalogInitAchievementIDs, getTrophiesData, fillSubcategoryAdvancedAchievementModel, getVehicleByName
 from advanced_achievements_client.constants import AchievementType
 from advanced_achievements_client.getters import ROOT_ACHIEVEMENT_IDS, getAchievementByID, getNearest, getLastReceivedAchievements
 from uilogging.advanced_achievement.logger import AdvancedAchievementLogger
@@ -172,6 +172,9 @@ class AdvancedAchievementsView(SubModelPresenter):
                     item = self.__itemsCache.items.getItemByCD(conditionID)
                     model.setIsResearchable(isResearchable)
                     model.setSpecificItemName(item.shortUserName)
+                    model.setSpecificItemLevel(item.level)
+        if achievement.getVehicle():
+            model.setSpecificItemLevel(getVehicleByName(achievement.getVehicle()))
         return upcomingModel
 
     def __setPrevAchievementScore(self):

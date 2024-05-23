@@ -1269,6 +1269,11 @@ def _migrateTo126(core, data, initialized):
     data[SECTIONS.ADVANCED_ACHIEVEMENTS_STORAGE] = 0
 
 
+def _migrateTo127(core, data, initialized):
+    dtData = data['dogTags']
+    dtData[GAME.SHOW_PERSONAL_ANIMATED_DOGTAG] = True
+
+
 _versions = (
  (
   1, _initializeDefaultSettings, True, False),
@@ -1519,7 +1524,9 @@ _versions = (
  (
   125, _migrateTo125, False, False),
  (
-  126, _migrateTo126, False, False))
+  126, _migrateTo126, False, False),
+ (
+  127, _migrateTo127, False, False))
 
 @adisp_async
 @adisp_process

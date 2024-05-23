@@ -43,16 +43,18 @@ class _AsyncEventWithTimout(AsyncEvent):
 
 
 class UseStoryModeFading(object):
-    __slots__ = ('_hide', '_show', '_layer', '_waitForLayoutReady', '_currentFunctions')
+    __slots__ = ('_hide', '_show', '_layer', '_waitForLayoutReady', '_currentFunctions',
+                 '_callback')
     _fadeManager = dependency.descriptor(IStoryModeFadingController)
 
-    def __init__(self, show=True, hide=True, layer=WindowLayer.OVERLAY, waitForLayoutReady=None):
+    def __init__(self, show=True, hide=True, layer=WindowLayer.OVERLAY, waitForLayoutReady=None, callback=None):
         super(UseStoryModeFading, self).__init__()
         self._hide = hide
         self._show = show
         self._layer = layer
         self._waitForLayoutReady = waitForLayoutReady
         self._currentFunctions = set()
+        self._callback = callback
 
     def __call__(self, func):
 
@@ -88,6 +90,8 @@ class UseStoryModeFading(object):
                     _logger.debug('%s got BrokenPromiseError during the fade-in/fade-out animation.', func)
 
                 self._currentFunctions.remove(func)
+                if self._callback is not None:
+                    self._callback()
                 return
 
         return wrapper

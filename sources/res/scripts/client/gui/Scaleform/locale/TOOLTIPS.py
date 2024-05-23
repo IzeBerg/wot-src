@@ -355,6 +355,8 @@ class TOOLTIPS(object):
     SHOWMARKSONGUN_BODY = '#tooltips:showMarksOnGun/body'
     SHOWDOGTAG_HEADER = '#tooltips:showDogTag/header'
     SHOWDOGTAG_BODY = '#tooltips:showDogTag/body'
+    SHOWPERSONALANIMATEDDOGTAG_HEADER = '#tooltips:showPersonalAnimatedDogTag/header'
+    SHOWPERSONALANIMATEDDOGTAG_BODY = '#tooltips:showPersonalAnimatedDogTag/body'
     POSTMORTEMMODE_HEADER = '#tooltips:postmortemMode/header'
     POSTMORTEMMODE_BODY = '#tooltips:postmortemMode/body'
     ANONYMIZER_HEADER = '#tooltips:anonymizer/header'

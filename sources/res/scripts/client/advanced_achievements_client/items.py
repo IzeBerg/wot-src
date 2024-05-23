@@ -84,6 +84,7 @@ class _BaseGuiAchievement(object):
         ICON_POSITION = UIConfigFields.ICON_POSITION.value
         ORDER = UIConfigFields.ORDER.value
         ICON_SIZE_MAP = UIConfigFields.ICON_SIZE_MAP.value
+        VEHICLE = UIConfigFields.VEHICLE.value
 
     _TYPE = None
     _OWN_SCORE = 0
@@ -127,6 +128,9 @@ class _BaseGuiAchievement(object):
 
     def getIconSizeMap(self):
         return self._staticData.UI.get(self._FieldNames.ICON_SIZE_MAP, IconSizeMap.DEFAULT.value)
+
+    def getVehicle(self):
+        return self._staticData.UI.get(self._FieldNames.VEHICLE, None)
 
     def _getOrder(self):
         return self._staticData.UI.get(self._FieldNames.ORDER, None)
