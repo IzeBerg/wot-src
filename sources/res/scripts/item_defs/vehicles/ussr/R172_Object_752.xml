@@ -3902,10 +3902,13 @@
 						<gun>50</gun>
 					</armor>
 					<shotDispersionRadius>
-						0.42
+						0.4
 						<!--BW_String-->
 					</shotDispersionRadius>
-					<reloadTime>14</reloadTime>
+					<reloadTime>
+						14.7
+						<!--BW_String-->
+					</reloadTime>
 					<shotDispersionFactors>
 						<turretRotation>
 							0.1
@@ -3917,22 +3920,12 @@
 							<!--BW_String-->
 						</whileGunDamaged>
 					</shotDispersionFactors>
-					<aimingTime>
-						2.8
-						<!--BW_String-->
-					</aimingTime>
+					<aimingTime>3</aimingTime>
 					<invisibilityFactorAtShot>
 						0.18
 						<!--BW_String-->
 					</invisibilityFactorAtShot>
 					<turretYawLimits>-180 180</turretYawLimits>
-					<clip>
-						<count>2</count>
-						<rate>15</rate>
-					</clip>
-					<autoreload>
-						<reloadTime>14 19</reloadTime>
-					</autoreload>
 					<models>
 						<undamaged>vehicles/russian/R172_Object_752/normal/lod0/Gun_01.model</undamaged>
 						<destroyed>vehicles/russian/R172_Object_752/crash/lod0/Gun_01.model</destroyed>
@@ -3943,7 +3936,7 @@
 						<collisionModelClient>vehicles/russian/R172_Object_752/collision_client/Gun_01.model</collisionModelClient>
 					</hitTester>
 					<effects>shot_large_mb</effects>
-					<reloadEffect>autoloader_reload85_107</reloadEffect>
+					<reloadEffect>reload115_152</reloadEffect>
 					<customizationSlots>
 						<slot>
 							<slotType>paint</slotType>

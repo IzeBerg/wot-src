@@ -156,7 +156,7 @@ class MessengerBar(MessengerBarMeta, IGlobalListener):
         self.addListener(events.FightButtonEvent.FIGHT_BUTTON_UPDATE, self.__handleFightButtonUpdated, scope=EVENT_BUS_SCOPE.LOBBY)
         self.startGlobalListening()
         self.as_setInitDataS({'channelsHtmlIcon': _formatIcon('iconChannels'), 
-           'isReferralEnabled': isReferralProgramEnabled(), 
+           'isReferralEnabled': self.__isReferralProgramGUIEnabled(), 
            'referralCounter': self._referralCtrl.getBubbleCount(), 
            'isReferralScoresLimitIndication': self._referralCtrl.isScoresLimitReached(), 
            'referralHtmlIcon': backport.image(R.images.gui.maps.icons.messenger.iconReferral()), 
@@ -181,12 +181,16 @@ class MessengerBar(MessengerBarMeta, IGlobalListener):
         super(MessengerBar, self)._dispose()
 
     def __onReferralProgramEnabled(self):
-        self.as_setReferralProgramButtonVisibleS(True)
+        self.as_setReferralProgramButtonVisibleS(self.__isReferralProgramGUIEnabled())
 
     def __onReferralProgramDisabled(self):
-        self.as_setReferralProgramButtonVisibleS(False)
+        self.as_setReferralProgramButtonVisibleS(self.__isReferralProgramGUIEnabled())
+
+    def __isReferralProgramGUIEnabled(self):
+        return isReferralProgramEnabled(lobbyContext=self._lobbyContext) and self._lobbyContext.getServerSettings().getRPConfig().messageBarGUIEnabled
 
     def __onReferralProgramUpdated(self, *_):
+        self.as_setReferralProgramButtonVisibleS(self.__isReferralProgramGUIEnabled())
         self.as_setReferralBtnCounterS(self._referralCtrl.getBubbleCount())
 
     def __onPointsChanged(self, *_):

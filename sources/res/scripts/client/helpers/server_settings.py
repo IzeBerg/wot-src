@@ -1292,12 +1292,13 @@ class _LimitedUIConfig(namedtuple('_LimitedUIConfig', ('enabled', 'rules', 'vers
 
 
 class RPConfig(namedtuple('RPConfig', (
+ 'messageBarGUIEnabled',
  'pgbCapacity',
  'pgbDayLimit'))):
     __slots__ = ()
 
     def __new__(cls, **kwargs):
-        defaults = dict(pgbCapacity=0, pgbDayLimit=0)
+        defaults = dict(messageBarGUIEnabled=True, pgbCapacity=0, pgbDayLimit=0)
         defaults.update(kwargs)
         return super(RPConfig, cls).__new__(cls, **defaults)
 
