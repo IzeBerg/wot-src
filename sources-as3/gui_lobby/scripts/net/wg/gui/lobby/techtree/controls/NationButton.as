@@ -29,6 +29,8 @@ package net.wg.gui.lobby.techtree.controls
       
       public var discount:Sprite;
       
+      public var earlyAccess:Sprite;
+      
       private var _flagScale:Number = 1;
       
       private var _tooltipMgr:ITooltipMgr;
@@ -52,6 +54,7 @@ package net.wg.gui.lobby.techtree.controls
          this.borderStates.dispose();
          this.borderStates = null;
          this.discount = null;
+         this.earlyAccess = null;
          this.arrowMc = null;
          this._tooltipMgr = null;
          super.onDispose();
@@ -114,6 +117,11 @@ package net.wg.gui.lobby.techtree.controls
       public function setDiscountVisible(param1:Boolean) : void
       {
          this.discount.visible = param1;
+      }
+      
+      public function setEarlyAccessVisible(param1:Boolean) : void
+      {
+         this.earlyAccess.visible = param1;
       }
       
       public function setFlagScale(param1:Number) : void

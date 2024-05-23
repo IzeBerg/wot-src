@@ -289,6 +289,7 @@ class BATTLE_RESULTS(object):
     DETAILS_CALCULATIONS_SQUADBONUS = '#battle_results:details/calculations/squadBonus'
     DETAILS_CALCULATIONS_NOPENALTY = '#battle_results:details/calculations/noPenalty'
     DETAILS_CALCULATIONS_EVENT = '#battle_results:details/calculations/event'
+    DETAILS_CALCULATIONS_SUBSTEAMBONUS = '#battle_results:details/calculations/subsTeamBonus'
     DETAILS_CALCULATIONS_FAIRPLAYVIOLATION_DESERTER = '#battle_results:details/calculations/fairPlayViolation/deserter'
     DETAILS_CALCULATIONS_FAIRPLAYVIOLATION_EPIC_DESERTER = '#battle_results:details/calculations/fairPlayViolation/epic_deserter'
     DETAILS_CALCULATIONS_FAIRPLAYVIOLATION_COMP7_DESERTER = '#battle_results:details/calculations/fairPlayViolation/comp7_deserter'
@@ -311,6 +312,7 @@ class BATTLE_RESULTS(object):
     DETAILS_CALCULATIONS_ADDITIONALBONUS = '#battle_results:details/calculations/additionalBonus'
     DETAILS_CALCULATIONS_TOTAL = '#battle_results:details/calculations/total'
     DETAILS_CALCULATIONS_PIGGYBANKINFO = '#battle_results:details/calculations/piggyBankInfo'
+    DETAILS_CALCULATIONS_PIGGYBANKINFO_TOOLTIP = '#battle_results:details/calculations/piggyBankInfo/tooltip'
     DETAILS_CALCULATIONS_FIRSTWIN = '#battle_results:details/calculations/firstWin'
     DETAILS_CALCULATIONS_IGRBONUS = '#battle_results:details/calculations/igrBonus'
     DETAILS_CALCULATIONS_FORTORDER = '#battle_results:details/calculations/fortOrder'
@@ -374,6 +376,7 @@ class BATTLE_RESULTS(object):
      DETAILS_CALCULATIONS_SQUADBONUS,
      DETAILS_CALCULATIONS_NOPENALTY,
      DETAILS_CALCULATIONS_EVENT,
+     DETAILS_CALCULATIONS_SUBSTEAMBONUS,
      DETAILS_CALCULATIONS_FAIRPLAYVIOLATION_DESERTER,
      DETAILS_CALCULATIONS_FAIRPLAYVIOLATION_EPIC_DESERTER,
      DETAILS_CALCULATIONS_FAIRPLAYVIOLATION_COMP7_DESERTER,
@@ -396,6 +399,7 @@ class BATTLE_RESULTS(object):
      DETAILS_CALCULATIONS_ADDITIONALBONUS,
      DETAILS_CALCULATIONS_TOTAL,
      DETAILS_CALCULATIONS_PIGGYBANKINFO,
+     DETAILS_CALCULATIONS_PIGGYBANKINFO_TOOLTIP,
      DETAILS_CALCULATIONS_FIRSTWIN,
      DETAILS_CALCULATIONS_IGRBONUS,
      DETAILS_CALCULATIONS_FORTORDER,

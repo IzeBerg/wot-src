@@ -41,4 +41,3 @@ class CommonMarkerType(IntEnum):
     FRONTLINE_WARNING = 5
     LOCATION = 6
     VEHICLE = 7
-    STATIC_OBJECT = 8

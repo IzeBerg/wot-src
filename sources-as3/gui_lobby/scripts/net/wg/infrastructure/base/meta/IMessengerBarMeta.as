@@ -16,8 +16,6 @@ package net.wg.infrastructure.base.meta
       
       function as_setVehicleCompareCartButtonVisible(param1:Boolean) : void;
       
-      function as_setVehicleCompareCartButtonEnabled(param1:Boolean) : void;
-      
       function as_setReferralProgramButtonVisible(param1:Boolean) : void;
       
       function as_setReferralButtonEnabled(param1:Boolean) : void;

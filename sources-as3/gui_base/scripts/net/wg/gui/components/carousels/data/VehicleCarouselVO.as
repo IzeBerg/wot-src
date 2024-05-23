@@ -71,6 +71,8 @@ package net.wg.gui.components.carousels.data
       
       public var isCrystalsLimitReached:Boolean = false;
       
+      public var isEarlyAccess:Boolean = false;
+      
       public var label:String = "";
       
       public var level:Number = 0;

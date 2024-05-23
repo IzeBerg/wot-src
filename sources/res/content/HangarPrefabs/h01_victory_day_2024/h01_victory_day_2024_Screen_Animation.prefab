@@ -17,16 +17,6 @@
 			<UUID>ed599933-3379-41be-a384-d17c15c3c50c</UUID>
 			<flags>0</flags>
 		</GameObject>
-		<GameObject>
-			<name>ClicableCollision</name>
-			<UUID>80eb46cd-ac99-4a1b-80f3-0b162aae0e61</UUID>
-			<flags>0</flags>
-		</GameObject>
-		<GameObject>
-			<name>ScreenSound</name>
-			<UUID>94265a76-4c1c-4b4d-a9c4-1c7bd57a044c</UUID>
-			<flags>0</flags>
-		</GameObject>
 	</GameObjects>
 	<components>
 		<ComponentPool>
@@ -38,7 +28,7 @@
 				<config>
 					<property>
 						<name>Parent</name>
-						<link>80eb46cd-ac99-4a1b-80f3-0b162aae0e61</link>
+						<link>cfd7c9c0-b45d-426b-acda-f3435de621c5</link>
 					</property>
 				</config>
 			</component>
@@ -48,27 +38,7 @@
 				<config>
 					<property>
 						<name>Parent</name>
-						<link>80eb46cd-ac99-4a1b-80f3-0b162aae0e61</link>
-					</property>
-				</config>
-			</component>
-			<component>
-				<objectIndex>3</objectIndex>
-				<flags>35</flags>
-				<config>
-					<property>
-						<name>Parent</name>
 						<link>cfd7c9c0-b45d-426b-acda-f3435de621c5</link>
-					</property>
-				</config>
-			</component>
-			<component>
-				<objectIndex>4</objectIndex>
-				<flags>35</flags>
-				<config>
-					<property>
-						<name>Parent</name>
-						<link>80eb46cd-ac99-4a1b-80f3-0b162aae0e61</link>
 					</property>
 				</config>
 			</component>
@@ -100,10 +70,7 @@
 				<config>
 					<property>
 						<name>Position</name>
-						<value>
-							0 0 -0.0673981
-							<!--BW_String-->
-						</value>
+						<value>0 0 0</value>
 					</property>
 					<property>
 						<name>Scale</name>
@@ -121,10 +88,7 @@
 				<config>
 					<property>
 						<name>Position</name>
-						<value>
-							0 0 -0.0673981
-							<!--BW_String-->
-						</value>
+						<value>0 0 0</value>
 					</property>
 					<property>
 						<name>Scale</name>
@@ -135,83 +99,10 @@
 					</property>
 					<property>
 						<name>Rotation</name>
-						<value>-0 0 0</value>
-					</property>
-				</config>
-			</component>
-			<component>
-				<objectIndex>3</objectIndex>
-				<flags>35</flags>
-				<config>
-					<property>
-						<name>Position</name>
 						<value>
-							0 0 0.0673981
+							-0 4.65662e-10 0
 							<!--BW_String-->
 						</value>
-					</property>
-					<property>
-						<name>Scale</name>
-						<value>1 1 1</value>
-					</property>
-					<property>
-						<name>Rotation</name>
-						<value>-0 0 0</value>
-					</property>
-				</config>
-			</component>
-			<component>
-				<objectIndex>4</objectIndex>
-				<flags>35</flags>
-				<config>
-					<property>
-						<name>Position</name>
-						<value>0 0 0</value>
-					</property>
-					<property>
-						<name>Scale</name>
-						<value>1 1 1</value>
-					</property>
-					<property>
-						<name>Rotation</name>
-						<value>0 0 0</value>
-					</property>
-				</config>
-			</component>
-		</ComponentPool>
-		<ComponentPool>
-			<type>Colliders</type>
-			<version>1</version>
-			<component>
-				<objectIndex>3</objectIndex>
-				<flags>35</flags>
-				<config>
-					<property>
-						<name>Colliders</name>
-						<collection>
-							<item>
-								<object>
-									<property>
-										<name>Type</name>
-										<value>3</value>
-									</property>
-									<property>
-										<name>Parameters</name>
-										<object>
-											<property>
-												<name>Model name</name>
-												<isAsset>true</isAsset>
-												<value>content/Hangars/h01_victory_day_2024/enviroment/normal/lod0/hd_h01_VD24_0014_Screen_collision.model</value>
-											</property>
-											<property>
-												<name>Module name</name>
-												<value>default</value>
-											</property>
-										</object>
-									</property>
-								</object>
-							</item>
-						</collection>
 					</property>
 				</config>
 			</component>
@@ -246,281 +137,6 @@
 					<property>
 						<name>Cast Shadows</name>
 						<value>0</value>
-					</property>
-				</config>
-			</component>
-			<component>
-				<objectIndex>3</objectIndex>
-				<flags>3</flags>
-				<config>
-					<property>
-						<name>Model name</name>
-						<isAsset>true</isAsset>
-						<value>content/Hangars/h01_victory_day_2024/enviroment/normal/lod0/hd_h01_VD24_0014_Screen_collision.model</value>
-					</property>
-					<property>
-						<name>Cast Shadows</name>
-						<value>0</value>
-					</property>
-				</config>
-			</component>
-		</ComponentPool>
-		<ComponentPool>
-			<type>Sound3D</type>
-			<version>1</version>
-			<component>
-				<objectIndex>4</objectIndex>
-				<flags>3</flags>
-				<config>
-					<property>
-						<name>Object name</name>
-						<value>hangar_h01_seq_music_story</value>
-					</property>
-					<property>
-						<name>Event name</name>
-						<value>hangar_h01_seq_music_story</value>
-					</property>
-					<property>
-						<name>AutoStart</name>
-						<value>0</value>
-					</property>
-				</config>
-			</component>
-		</ComponentPool>
-		<ComponentPool>
-			<type>Animator</type>
-			<version>2</version>
-			<component>
-				<objectIndex>1</objectIndex>
-				<flags>3</flags>
-				<config>
-					<property>
-						<name>Auto Start</name>
-						<value>0</value>
-					</property>
-					<property>
-						<name>Layers</name>
-						<collection>
-							<item>
-								<object>
-									<property>
-										<name>Path</name>
-										<isAsset>true</isAsset>
-										<value>particles/eff_sequence/h01_victory_day_2024/h01_victory_day_2024_screen_show.seq</value>
-									</property>
-									<property>
-										<name>Properties</name>
-										<object>
-											<property>
-												<name>delay</name>
-												<value>0</value>
-											</property>
-											<property>
-												<name>speed</name>
-												<value>1</value>
-											</property>
-											<property>
-												<name>loop</name>
-												<value>0</value>
-											</property>
-											<property>
-												<name>loopCount</name>
-												<value>-1</value>
-											</property>
-										</object>
-									</property>
-									<property>
-										<name>Clip</name>
-										<value>&lt;Default Clip&gt;</value>
-									</property>
-									<property>
-										<name>LayerName</name>
-										<value>0</value>
-									</property>
-									<property>
-										<name>Weight</name>
-										<value>1</value>
-									</property>
-									<property>
-										<name>LOD Scale</name>
-										<value>
-											0.5
-											<!--BW_String-->
-										</value>
-									</property>
-									<property>
-										<name>Auto Start</name>
-										<value>0</value>
-									</property>
-									<property>
-										<name>Graphics preset</name>
-										<value>2</value>
-									</property>
-								</object>
-							</item>
-						</collection>
-					</property>
-					<property>
-						<name>Path</name>
-						<isAsset>true</isAsset>
-						<value>particles/eff_sequence/h01_victory_day_2024/h01_victory_day_2024_screen_show.seq</value>
-					</property>
-					<property>
-						<name>Delay</name>
-						<value>0</value>
-					</property>
-					<property>
-						<name>Speed</name>
-						<value>1</value>
-					</property>
-					<property>
-						<name>Loop</name>
-						<value>0</value>
-					</property>
-					<property>
-						<name>Loop Count</name>
-						<value>-1</value>
-					</property>
-				</config>
-			</component>
-			<component>
-				<objectIndex>2</objectIndex>
-				<flags>3</flags>
-				<config>
-					<property>
-						<name>Auto Start</name>
-						<value>0</value>
-					</property>
-					<property>
-						<name>Layers</name>
-						<collection>
-							<item>
-								<object>
-									<property>
-										<name>Path</name>
-										<isAsset>true</isAsset>
-										<value>particles/eff_sequence/h01_victory_day_2024/h01_victory_day_2024_screen_show.seq</value>
-									</property>
-									<property>
-										<name>Properties</name>
-										<object>
-											<property>
-												<name>delay</name>
-												<value>0</value>
-											</property>
-											<property>
-												<name>speed</name>
-												<value>1</value>
-											</property>
-											<property>
-												<name>loop</name>
-												<value>0</value>
-											</property>
-											<property>
-												<name>loopCount</name>
-												<value>-1</value>
-											</property>
-										</object>
-									</property>
-									<property>
-										<name>Clip</name>
-										<value>&lt;Default Clip&gt;</value>
-									</property>
-									<property>
-										<name>LayerName</name>
-										<value>0</value>
-									</property>
-									<property>
-										<name>Weight</name>
-										<value>1</value>
-									</property>
-									<property>
-										<name>LOD Scale</name>
-										<value>
-											0.5
-											<!--BW_String-->
-										</value>
-									</property>
-									<property>
-										<name>Auto Start</name>
-										<value>0</value>
-									</property>
-									<property>
-										<name>Graphics preset</name>
-										<value>2</value>
-									</property>
-								</object>
-							</item>
-						</collection>
-					</property>
-					<property>
-						<name>Path</name>
-						<isAsset>true</isAsset>
-						<value>particles/eff_sequence/h01_victory_day_2024/h01_victory_day_2024_screen_show.seq</value>
-					</property>
-					<property>
-						<name>Delay</name>
-						<value>0</value>
-					</property>
-					<property>
-						<name>Speed</name>
-						<value>1</value>
-					</property>
-					<property>
-						<name>Loop</name>
-						<value>0</value>
-					</property>
-					<property>
-						<name>Loop Count</name>
-						<value>-1</value>
-					</property>
-				</config>
-			</component>
-		</ComponentPool>
-		<ComponentPool>
-			<type>VSEComponent</type>
-			<version>1</version>
-			<component>
-				<objectIndex>3</objectIndex>
-				<flags>35</flags>
-				<config>
-					<property>
-						<name>Path</name>
-						<isAsset>true</isAsset>
-						<value>vscript/plans/hangar/h01_victory_day_2024_ScreenAnimation.xml</value>
-					</property>
-					<property>
-						<name>AutoStart</name>
-						<value>1</value>
-					</property>
-				</config>
-			</component>
-		</ComponentPool>
-		<ComponentPool>
-			<type>SelectionComponent</type>
-			<version>1</version>
-			<component>
-				<objectIndex>3</objectIndex>
-				<flags>3</flags>
-			</component>
-		</ComponentPool>
-		<ComponentPool>
-			<type>HighlightComponent</type>
-			<version>1</version>
-			<component>
-				<objectIndex>3</objectIndex>
-				<flags>3</flags>
-				<config>
-					<property>
-						<name>color</name>
-						<value>
-							0.992157 0.784314 0.254902 1
-							<!--BW_String-->
-						</value>
-					</property>
-					<property>
-						<name>groupName</name>
-						<value>screen</value>
 					</property>
 				</config>
 			</component>

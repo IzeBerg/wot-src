@@ -25,12 +25,6 @@ package net.wg.data.constants.generated
       
       public static const POI_SECONDARY_TIMER_UI:String = "poiSecondaryTimerUI";
       
-      public static const HB_DESTROY_TIMER_UI:String = "HBDestroyTimerWrapUI";
-      
-      public static const HB_DESTROY_TIMER_BIG_UI:String = "HBDestroyTimerUI";
-      
-      public static const HB_SECONDARY_TIMER_UI:String = "HBSecondaryTimerUI";
-      
       public static const FIRE_ICON:String = "destroyTimerFireUI";
       
       public static const BERSERKER_ICON:String = "destroyTimerBerserkerUI";
@@ -154,10 +148,6 @@ package net.wg.data.constants.generated
       public static const COMP7_MARCH_ICON:String = "Comp7MarchIconUI";
       
       public static const COMP7_AGGRESSIVE_DETECTION_ICON:String = "Comp7AggressiveDetectionIconUI";
-      
-      public static const AIR_STRIKE_ICON_CONTENT:String = "AirStrikeContentUI";
-      
-      public static const AIR_STRIKE_ICON:String = "AirStrikeUI";
        
       
       public function BATTLE_NOTIFICATIONS_TIMER_LINKAGES()

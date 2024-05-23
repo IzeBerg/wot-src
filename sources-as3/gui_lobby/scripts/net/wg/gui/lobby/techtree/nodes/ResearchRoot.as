@@ -4,11 +4,14 @@ package net.wg.gui.lobby.techtree.nodes
    import flash.events.Event;
    import flash.events.MouseEvent;
    import flash.geom.Point;
+   import flash.text.TextField;
+   import flash.text.TextFieldAutoSize;
    import net.wg.data.constants.Linkages;
    import net.wg.data.constants.UniversalBtnStylesConst;
    import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.NODE_STATE_FLAGS;
    import net.wg.data.constants.generated.TOOLTIPS_CONSTANTS;
+   import net.wg.data.managers.ITooltipProps;
    import net.wg.data.managers.impl.ToolTipParams;
    import net.wg.gui.components.controls.VO.ItemPriceVO;
    import net.wg.gui.components.controls.price.CompoundPrice;
@@ -22,6 +25,8 @@ package net.wg.gui.lobby.techtree.nodes
    import net.wg.gui.lobby.techtree.constants.NodeRendererState;
    import net.wg.gui.lobby.techtree.controls.BlueprintBar;
    import net.wg.gui.lobby.techtree.controls.DiscountBanner;
+   import net.wg.gui.lobby.techtree.controls.EarlyAccessButton;
+   import net.wg.gui.lobby.techtree.controls.EarlyAccessStatus;
    import net.wg.gui.lobby.techtree.controls.ExperienceBlock;
    import net.wg.gui.lobby.techtree.data.ResearchRootVO;
    import net.wg.gui.lobby.techtree.data.state.NodeStateCollection;
@@ -76,6 +81,12 @@ package net.wg.gui.lobby.techtree.nodes
       private static const CHANGE_NATION_DISABLE_ICON_ALPHA:Number = 0.5;
       
       private static const COUNTER_PROPS:CounterProps = new CounterProps(3,-1);
+      
+      private static const EARLY_ACCESS_COINS_TF_OFFSET:int = -4;
+      
+      private static const EARLY_ACCESS_COIN_ID:String = "eaCoin";
+      
+      private static const EARLY_ACCESS_SIMPLE_TOOLTIP_MAX_WIDTH:int = 300;
        
       
       public var price:CompoundPrice = null;
@@ -91,6 +102,14 @@ package net.wg.gui.lobby.techtree.nodes
       public var tradeOffWidget:TradeOffWidget;
       
       public var collectibleStatus:CollectibleStatus = null;
+      
+      public var earlyAccessQuestsButton:EarlyAccessButton = null;
+      
+      public var earlyAccessStatus:EarlyAccessStatus = null;
+      
+      public var earlyAccessCoinsTF:TextField = null;
+      
+      public var earlyAccessLock:MovieClip = null;
       
       private var _nodeData:NodeData = null;
       
@@ -158,6 +177,15 @@ package net.wg.gui.lobby.techtree.nodes
          this.actionButton.addEventListener(ButtonEvent.CLICK,this.onActionButtonClickHandler,false,0,true);
          this.actionButton.addEventListener(MouseEvent.ROLL_OVER,this.onButtonRollOverHandler,false,0,true);
          this.actionButton.addEventListener(MouseEvent.ROLL_OUT,this.onButtonRollOutHandler,false,0,true);
+         this.earlyAccessQuestsButton.mouseEnabledOnDisabled = true;
+         this.earlyAccessQuestsButton.addEventListener(ButtonEvent.CLICK,this.onActionButtonClickHandler,false,0,true);
+         this.earlyAccessQuestsButton.addEventListener(MouseEvent.ROLL_OVER,this.onButtonRollOverHandler,false,0,true);
+         this.earlyAccessQuestsButton.addEventListener(MouseEvent.ROLL_OUT,this.onButtonRollOutHandler,false,0,true);
+         this.earlyAccessStatus.addEventListener(MouseEvent.ROLL_OVER,this.onButtonRollOverHandler,false,0,true);
+         this.earlyAccessStatus.addEventListener(MouseEvent.ROLL_OUT,this.onButtonRollOutHandler,false,0,true);
+         this.earlyAccessLock.addEventListener(MouseEvent.ROLL_OVER,this.onButtonRollOverHandler,false,0,true);
+         this.earlyAccessLock.addEventListener(MouseEvent.ROLL_OUT,this.onButtonRollOutHandler,false,0,true);
+         this.earlyAccessCoinsTF.autoSize = TextFieldAutoSize.LEFT;
       }
       
       override protected function onDispose() : void
@@ -177,6 +205,19 @@ package net.wg.gui.lobby.techtree.nodes
          this.actionButton.removeEventListener(MouseEvent.ROLL_OUT,this.onButtonRollOutHandler);
          this.actionButton.dispose();
          this.actionButton = null;
+         this.earlyAccessQuestsButton.removeEventListener(ButtonEvent.CLICK,this.onActionButtonClickHandler);
+         this.earlyAccessQuestsButton.removeEventListener(MouseEvent.ROLL_OVER,this.onButtonRollOverHandler);
+         this.earlyAccessQuestsButton.removeEventListener(MouseEvent.ROLL_OUT,this.onButtonRollOutHandler);
+         this.earlyAccessQuestsButton.dispose();
+         this.earlyAccessQuestsButton = null;
+         this.earlyAccessStatus.removeEventListener(MouseEvent.ROLL_OVER,this.onButtonRollOverHandler);
+         this.earlyAccessStatus.removeEventListener(MouseEvent.ROLL_OUT,this.onButtonRollOutHandler);
+         this.earlyAccessStatus.dispose();
+         this.earlyAccessStatus = null;
+         this.earlyAccessCoinsTF = null;
+         this.earlyAccessLock.removeEventListener(MouseEvent.ROLL_OVER,this.onButtonRollOverHandler);
+         this.earlyAccessLock.removeEventListener(MouseEvent.ROLL_OUT,this.onButtonRollOutHandler);
+         this.earlyAccessLock = null;
          this.price.dispose();
          this.price = null;
          if(this._experienceBlock)
@@ -408,6 +449,16 @@ package net.wg.gui.lobby.techtree.nodes
          return this._nodeData != null && (this._nodeData.state & NODE_STATE_FLAGS.UNLOCKED) > 0;
       }
       
+      private function isRentAvailable() : Boolean
+      {
+         return this._nodeData != null && (this._nodeData.state & NODE_STATE_FLAGS.RENT_AVAILABLE) > 0;
+      }
+      
+      private function isEarlyAccess() : Boolean
+      {
+         return this._nodeData != null && (this._nodeData.state & NODE_STATE_FLAGS.EARLY_ACCESS) > 0;
+      }
+      
       public function needPreventInnerEvents() : Boolean
       {
          return false;
@@ -449,7 +500,16 @@ package net.wg.gui.lobby.techtree.nodes
       {
          var _loc1_:String = null;
          this.vehicleButton.setData(this._data.vehicleButton);
-         this.blueprintBar.visible = this.canHaveBlueprint();
+         this.blueprintBar.enabled = !this.isEarlyAccess();
+         this.blueprintBar.mouseEnabledOnDisabled = true;
+         if(this.isEarlyAccess())
+         {
+            this.blueprintBar.visible = this.canHaveBlueprint() && (this.isLocked() || this.isNext2Unlock()) && !this._nodeData.isEarlyAccessLocked;
+         }
+         else
+         {
+            this.blueprintBar.visible = this.canHaveBlueprint();
+         }
          if(this.blueprintBar.visible)
          {
             this.blueprintBar.setData(this._data,this._nodeData.id,!this.isUnlocked());
@@ -466,11 +526,27 @@ package net.wg.gui.lobby.techtree.nodes
          this.price.visible = this._nodeState != NodeRendererState.ROOT_HANGAR && this._nodeState != NodeRendererState.ROOT_COLLECTIBLE;
          if(this.price.visible && this._data.itemPrices)
          {
-            this.price.setData(new ItemPriceVO(this._data.itemPrices[0]));
+            if(this.isEarlyAccess() && (this.isLocked() || this.isNext2Unlock()) && !this._nodeData.isEarlyAccessLocked)
+            {
+               this.price.setData(new ItemPriceVO({"price":[[EARLY_ACCESS_COIN_ID,this._nodeData.earlyAccessTotalTokens]]}));
+            }
+            else
+            {
+               this.price.setData(new ItemPriceVO(this._data.itemPrices[0]));
+            }
+         }
+         this.earlyAccessCoinsTF.visible = this.price.visible && this.isEarlyAccess() && this.isNext2Unlock() && !this._nodeData.isEarlyAccessLocked;
+         if(this.earlyAccessCoinsTF.visible)
+         {
+            this.earlyAccessCoinsTF.text = this._nodeData.earlyAccessCurrentTokens + " / ";
          }
          this.actionButton.visible = this._actionAvailable;
          this.actionButton.enabled = this._actionEnabled && this._data.isInteractive;
          this.actionButton.label = this._data.buttonLabel;
+         this.earlyAccessQuestsButton.visible = this.isEarlyAccess() && !this.isUnlocked() && !this._nodeData.isEarlyAccessLocked;
+         this.earlyAccessQuestsButton.enabled = !this._nodeData.isEarlyAccessPaused;
+         this.earlyAccessStatus.visible = this.isEarlyAccess() && !this._nodeData.isEarlyAccessLocked;
+         this.earlyAccessLock.visible = this.isEarlyAccess() && this._nodeData.isEarlyAccessLocked;
          this.discountBanner.visible = Boolean(this._data.discountStr);
          if(this.discountBanner.visible)
          {
@@ -493,7 +569,7 @@ package net.wg.gui.lobby.techtree.nodes
                _loc1_ = UniversalBtnStylesConst.STYLE_HEAVY_GREEN;
          }
          this._universalBtnStyles.setStyle(this.actionButton,_loc1_);
-         this._rentBtn = this.setupOrRemoveExtraBtn(this._rentBtn,this.isRentAvailable);
+         this._rentBtn = this.setupOrRemoveExtraBtn(this._rentBtn,this.isRentAvailable());
          if(this._rentBtn != null)
          {
             this._rentBtn.useHtmlText = true;
@@ -526,6 +602,7 @@ package net.wg.gui.lobby.techtree.nodes
       
       private function updateLayout() : void
       {
+         var _loc3_:int = 0;
          var _loc1_:Number = -this.getRatioY();
          if(this.discountBanner.visible)
          {
@@ -543,8 +620,24 @@ package net.wg.gui.lobby.techtree.nodes
          {
             this.price.validateNow();
             this.price.y = _loc1_ | 0;
-            this.price.x = -this.price.contentWidth >> 1;
+            if(this.earlyAccessCoinsTF.visible)
+            {
+               this.earlyAccessCoinsTF.y = this.price.y;
+               _loc3_ = this.earlyAccessCoinsTF.width + EARLY_ACCESS_COINS_TF_OFFSET;
+               this.price.x = -(this.price.contentWidth - _loc3_) >> 1;
+               this.earlyAccessCoinsTF.x = this.price.x - _loc3_ | 0;
+            }
+            else
+            {
+               this.price.x = -this.price.contentWidth >> 1;
+            }
             _loc1_ += this.price.contentHeight + ACTION_BUTTON_Y_GAP;
+         }
+         if(this.earlyAccessLock.visible)
+         {
+            this.earlyAccessLock.y = _loc1_ | 0;
+            this.earlyAccessLock.x = -(this.earlyAccessLock.width >> 1);
+            _loc1_ += this.earlyAccessLock.height;
          }
          if(this._changeNationBtn)
          {
@@ -562,6 +655,15 @@ package net.wg.gui.lobby.techtree.nodes
             }
             this.actionButton.y = _loc1_ | 0;
             _loc1_ += this.actionButton.actualHeight;
+         }
+         if(this.earlyAccessQuestsButton.visible)
+         {
+            if(this.actionButton.visible)
+            {
+               _loc1_ += ACTION_BUTTON_Y_GAP;
+            }
+            this.earlyAccessQuestsButton.y = _loc1_ | 0;
+            _loc1_ += this.earlyAccessQuestsButton.hitMc.height;
          }
          if(this._rentBtn)
          {
@@ -591,12 +693,23 @@ package net.wg.gui.lobby.techtree.nodes
             _loc1_ += this.tradeOffWidget.actualHeight;
          }
          this.internalXShift = this._size == SMALL_SIZE && this.tradeOffWidget.visible ? int(TRADE_OFF_WIDGET_DO_INTERNAL_X_SHIFT) : int(Values.ZERO);
-         if(this._experienceBlock && this._experienceBlock.visible)
+         var _loc2_:Boolean = this._experienceBlock && this._experienceBlock.visible;
+         if(_loc2_)
          {
             _loc1_ += EXPERIENCE_Y_GAP;
             this._experienceBlock.validateNow();
             this._experienceBlock.y = _loc1_ | 0;
             this._experienceBlock.x = -this._experienceBlock.actualWidth >> 1;
+            _loc1_ += this._experienceBlock.actualHeight | 0;
+         }
+         if(this.earlyAccessStatus.visible)
+         {
+            if(!_loc2_)
+            {
+               _loc1_ += BLUEPRINT_BAR_Y_GAP;
+            }
+            this.earlyAccessStatus.y = _loc1_ | 0;
+            this.earlyAccessStatus.x = -(this.earlyAccessStatus.width >> 1);
          }
       }
       
@@ -700,11 +813,6 @@ package net.wg.gui.lobby.techtree.nodes
          this._owner = param1 as IResearchContainer;
       }
       
-      private function get isRentAvailable() : Boolean
-      {
-         return this._nodeData != null && (this._nodeData.state & NODE_STATE_FLAGS.RENT_AVAILABLE) > 0;
-      }
-      
       private function set internalXShift(param1:int) : void
       {
          if(this._internalXShift == param1)
@@ -724,12 +832,45 @@ package net.wg.gui.lobby.techtree.nodes
       private function onButtonRollOverHandler(param1:MouseEvent) : void
       {
          var _loc2_:String = null;
+         var _loc3_:ITooltipProps = null;
+         var _loc4_:String = null;
+         var _loc5_:String = null;
+         if(param1.target != this.actionButton)
+         {
+            _loc2_ = Values.EMPTY_STR;
+            if(param1.target == this.earlyAccessQuestsButton)
+            {
+               if(this.earlyAccessQuestsButton.enabled)
+               {
+                  _loc3_ = ITooltipProps(this._tooltipMgr.getDefaultTooltipProps().clone());
+                  _loc3_.maxWidth = EARLY_ACCESS_SIMPLE_TOOLTIP_MAX_WIDTH;
+                  _loc4_ = this._tooltipMgr.getNewFormatter().addHeader(TOOLTIPS.TECHTREEPAGE_EARLYACCESSQUESTSENTRYPOINTTOOLTIP_HEADER,true).addBody(TOOLTIPS.TECHTREEPAGE_EARLYACCESSQUESTSENTRYPOINTTOOLTIP_BODY,true).make();
+                  this._tooltipMgr.showComplex(_loc4_,_loc3_);
+               }
+               else
+               {
+                  _loc2_ = TOOLTIPS_CONSTANTS.EARLY_ACCESS_PAUSED;
+               }
+            }
+            if(param1.target == this.earlyAccessStatus)
+            {
+               _loc2_ = TOOLTIPS_CONSTANTS.EARLY_ACCESS_COMMON_INFO;
+            }
+            if(param1.target == this.earlyAccessLock)
+            {
+               _loc2_ = TOOLTIPS_CONSTANTS.EARLY_ACCESS_VEHICLE_LOCKED;
+            }
+            if(_loc2_ != Values.EMPTY_STR)
+            {
+               this._tooltipMgr.showWulfTooltip(_loc2_);
+            }
+         }
          if(this.isCollectible())
          {
             if(this.actionButton.enabled)
             {
-               _loc2_ = App.utils.locale.makeString(NATIONS.genetiveCase(this._owner.getNation()));
-               this._tooltipMgr.showComplexWithParams(TOOLTIPS.RESEARCHPAGE_COLLECTIBLEVEHICLE_VEHICLEENABLED,new ToolTipParams({},{"nation":_loc2_}));
+               _loc5_ = App.utils.locale.makeString(NATIONS.genetiveCase(this._owner.getNation()));
+               this._tooltipMgr.showComplexWithParams(TOOLTIPS.RESEARCHPAGE_COLLECTIBLEVEHICLE_VEHICLEENABLED,new ToolTipParams({},{"nation":_loc5_}));
             }
             else
             {
@@ -781,6 +922,9 @@ package net.wg.gui.lobby.techtree.nodes
                break;
             case ActionName.SHOP:
                _loc2_ = TechTreeEvent.GO_TO_SHOP;
+               break;
+            case ActionName.EARLY_ACCESS:
+               _loc2_ = TechTreeEvent.GO_TO_EARLY_ACCESS;
          }
          if(_loc2_)
          {

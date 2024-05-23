@@ -7,7 +7,7 @@
 		</respawnController_requestRespawnGroupChange>
 		<respawnController_chooseVehicleForRespawn>
 			<Exposed/>
-			<Arg>UINT16</Arg>
+			<Arg>VEH_TYPE_CD</Arg>
 		</respawnController_chooseVehicleForRespawn>
 		<respawnController_performRespawn>
 			<Exposed/>
@@ -52,7 +52,7 @@
 			<Exposed/>
 		</respawnController_chooseRespawnZone>
 		<respawnController_switchSetup>
-			<Arg>UINT16</Arg>
+			<Arg>VEH_TYPE_CD</Arg>
 			<Arg>UINT8</Arg>
 			<Arg>UINT8</Arg>
 			<Exposed/>

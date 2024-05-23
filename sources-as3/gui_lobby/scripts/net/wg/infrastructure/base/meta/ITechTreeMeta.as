@@ -24,6 +24,8 @@ package net.wg.infrastructure.base.meta
       
       function onGoToPremiumShopS(param1:String, param2:int) : void;
       
+      function onGoToEarlyAccessS() : void;
+      
       function onPlayHintAnimationS(param1:Boolean) : void;
       
       function as_setAvailableNations(param1:Array) : void;

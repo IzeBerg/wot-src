@@ -285,7 +285,7 @@ package net.wg.gui.bootcamp.battleResult
       
       private function validateLayout() : void
       {
-         var _loc3_:int = 0;
+         var _loc2_:int = 0;
          var _loc1_:String = this.getLabel();
          this.finishReason.gotoAndStop(_loc1_);
          if(_baseDisposed)
@@ -305,8 +305,8 @@ package net.wg.gui.bootcamp.battleResult
          this.videoList.invalidateLayout();
          this.updateBg();
          this.updateText();
-         var _loc2_:int = this._stageDimensions.x;
-         _loc3_ = this._stageDimensions.y;
+         _loc2_ = this._stageDimensions.x;
+         var _loc3_:int = this._stageDimensions.y;
          this.bg.x = _loc2_ - this.bg.width >> 1;
          this.finishReason.x = _loc2_ - this.finishReason.width >> 1;
          this.result.x = _loc2_ - this.result.width >> 1;

@@ -63,7 +63,7 @@ package net.wg.data.constants.generated
       
       public static const HAS_TECH_TREE_EVENT:int = 536870912;
       
-      public static const TECH_TREE_EVENT_DISCOUNT_ONLY:int = 1073741824;
+      public static const EARLY_ACCESS:int = 1073741824;
        
       
       public function NODE_STATE_FLAGS()

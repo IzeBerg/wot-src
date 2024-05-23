@@ -101,6 +101,11 @@ package net.wg.gui.lobby.techtree.nodes
          }
       }
       
+      public function getFirstChild() : IRenderer
+      {
+         return this._children.length > 0 ? this._children[0] : null;
+      }
+      
       public function setParents(param1:Vector.<IRenderer>) : void
       {
          this.clearParents();

@@ -37,6 +37,8 @@ package net.wg.gui.lobby.fortifications.cmp.selector
       private static const OVER_STATE:String = "over";
       
       private static const FROZEN_VEHICLE_STATE:String = "frozenVehicle";
+      
+      private static const FORBIDDEN_VEHICLE_STATE:String = "forbiddenVehicle";
        
       
       public var checkBox:CheckBox;
@@ -162,7 +164,11 @@ package net.wg.gui.lobby.fortifications.cmp.selector
          if(this._itemVO.state && this._itemVO.state != Values.EMPTY_STR)
          {
             _loc1_ = App.toolTipMgr.getNewFormatter();
-            if(this._itemVO.state == FROZEN_VEHICLE_STATE)
+            if(this._itemVO.state == FORBIDDEN_VEHICLE_STATE)
+            {
+               _loc1_.addBody(TOOLTIPS.VEHICLESTATUS_FORBIDDENVEHICLE_BODY,true);
+            }
+            else if(this._itemVO.state == FROZEN_VEHICLE_STATE)
             {
                _loc1_.addBody(TOOLTIPS.VEHICLESTATUS_STRONGHOLDEVENTFROZEN_BODY,true);
             }

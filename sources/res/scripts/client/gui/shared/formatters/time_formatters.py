@@ -55,14 +55,6 @@ def getTimeLeftInfoEx(timeLeft, timeStyle=None):
      RentDurationKeys.MINUTES, formatTime(timeLeft, time_utils.ONE_MINUTE, timeStyle))
 
 
-def getBattleTimerString(timeLeft):
-    if timeLeft > 0 and timeLeft != float('inf'):
-        minutes = int(timeLeft / time_utils.ONE_MINUTE)
-        seconds = int(timeLeft % time_utils.ONE_MINUTE)
-        return ('{}:{}').format('%02d' % minutes, '%02d' % seconds)
-    return '00:00'
-
-
 def getTimeLeftStr(localization, timeLeft, timeStyle=None, ctx=None, formatter=None):
     if ctx is None:
         ctx = {}

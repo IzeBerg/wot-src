@@ -45,7 +45,7 @@ package net.wg.mock.utils
       {
       }
       
-      public function formatPlayerName(param1:TextField, param2:IUserProps, param3:Boolean = false, param4:Boolean = false, param5:String = "..") : Boolean
+      public function formatPlayerName(param1:TextField, param2:IUserProps, param3:Boolean = false, param4:Boolean = false) : Boolean
       {
          return false;
       }

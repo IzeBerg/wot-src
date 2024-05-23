@@ -123,23 +123,6 @@ package net.wg.gui.lobby.hangar
          AnimPositionProps(this._animProps.carouselContainer).bottomY = this._hangar.carousel.actualHeight + CAROUSEL_CONTAINER_OFFSET;
       }
       
-      public function updateAnimProps(param1:DisplayObject, param2:Number, param3:Number) : void
-      {
-         var _loc5_:AnimPositionProps = null;
-         var _loc4_:String = param1.name;
-         if(!this._animProps.hasOwnProperty(_loc4_))
-         {
-            this._animProps[_loc4_] = new AnimPositionProps(param2,param3);
-         }
-         else
-         {
-            _loc5_ = AnimPositionProps(this._animProps[_loc4_]);
-            _loc5_.topY = param2;
-            _loc5_.bottomY = param3;
-         }
-         this.updateItemPosition(param1);
-      }
-      
       private function stageMouseChildrenSetEnabled() : void
       {
          this._appStage.mouseChildren = true;
@@ -234,26 +217,22 @@ package net.wg.gui.lobby.hangar
       
       private function updatePosition() : void
       {
-         var _loc1_:DisplayObject = null;
-         for each(_loc1_ in this._moveDownAnimatedParts)
+         var _loc2_:AnimPositionProps = null;
+         var _loc3_:DisplayObject = null;
+         var _loc1_:int = 0;
+         for each(_loc3_ in this._moveDownAnimatedParts)
          {
-            this.updateItemPosition(_loc1_);
+            _loc2_ = AnimPositionProps(this._animProps[_loc3_.name]);
+            if(this._isShow)
+            {
+               _loc1_ = _loc2_.topY + (1 - this._percents) * (_loc2_.bottomY - _loc2_.topY);
+            }
+            else
+            {
+               _loc1_ = _loc2_.topY + this._percents * (_loc2_.bottomY - _loc2_.topY);
+            }
+            _loc3_.y = _loc1_;
          }
-      }
-      
-      private function updateItemPosition(param1:DisplayObject) : void
-      {
-         var _loc2_:int = 0;
-         var _loc3_:AnimPositionProps = AnimPositionProps(this._animProps[param1.name]);
-         if(this._isShow)
-         {
-            _loc2_ = _loc3_.topY + (1 - this._percents) * (_loc3_.bottomY - _loc3_.topY);
-         }
-         else
-         {
-            _loc2_ = _loc3_.topY + this._percents * (_loc3_.bottomY - _loc3_.topY);
-         }
-         param1.y = _loc2_;
       }
       
       public function get percents() : Number

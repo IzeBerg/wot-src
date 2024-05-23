@@ -24,7 +24,9 @@ package net.wg.gui.lobby.techtree.helpers
       
       private static const ANIM_FRAME_TIME:int = 100;
       
-      private static const ANIM_TIME_OUT:int = 300;
+      private static const TECH_TREE_EVENT_ANIM_TIME_OUT:int = 300;
+      
+      private static const EARLY_ACCESS_ANIM_TIME_OUT:int = 200;
       
       private static const ARROW_ANIMATION_START_TIMEOUT:int = 400;
       
@@ -113,6 +115,7 @@ package net.wg.gui.lobby.techtree.helpers
       
       public function setupRenderer(param1:IRenderer, param2:NodeData, param3:DisplayObjectContainer) : void
       {
+         var _loc8_:AnimSequenceItem = null;
          var _loc4_:NTDisplayInfo = param2.displayInfo as NTDisplayInfo;
          var _loc5_:String = param2.actionMessage;
          var _loc6_:Boolean = StringUtils.isNotEmpty(_loc5_);
@@ -139,12 +142,18 @@ package net.wg.gui.lobby.techtree.helpers
          }
          if(_loc7_)
          {
-            _loc7_.resetNationTreeEventAnimation();
+            _loc7_.resetAnimations();
             _loc7_.isFirstTimeActionShow = this._isFirstTimeActionShow;
          }
          if(this._isFirstTimeActionShow && param2.hasTechTreeEvent && _loc4_)
          {
             this.prepareActionAnimation(_loc7_,_loc4_.column - this._techTreeEventStartColumn,_loc6_,param2.isTopActionNode);
+         }
+         if(param2.isFirstTimeEarlyAccessShow && param2.isEarlyAccess && _loc4_)
+         {
+            _loc8_ = new AnimSequenceItem(_loc7_.createAnimationCallback(_loc7_.earlyAccessAnimMc),_loc4_.column * EARLY_ACCESS_ANIM_TIME_OUT);
+            this._sequence.push(_loc8_);
+            _loc8_.startAnimation();
          }
       }
       
@@ -173,7 +182,7 @@ package net.wg.gui.lobby.techtree.helpers
             this._scheduler.scheduleTask(this.startAnimation,ARROW_ANIMATION_START_TIMEOUT);
          }
          this._sequence.push(new AnimSequenceItem(param1.animateFrameHighlight,ANIM_FRAME_TIME));
-         this._sequence.push(new AnimSequenceItem(param1.animateNationTreeEvent,param2 * ANIM_TIME_OUT));
+         this._sequence.push(new AnimSequenceItem(param1.createAnimationCallback(param1.techTreeEventAnimMc),param2 * TECH_TREE_EVENT_ANIM_TIME_OUT));
          if(param4)
          {
             if(this._animFrameHelper)

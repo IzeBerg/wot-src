@@ -20,7 +20,11 @@ package net.wg.gui.lobby.questsWindow.components
       
       private var _tooltip:String;
       
+      private var _wulfTooltipArg:String = "";
+      
       private var _isTooltipComplex:Boolean = false;
+      
+      private var _isTooltipWulf:Boolean = false;
       
       private var _linesLimit:int = -1;
       
@@ -71,7 +75,13 @@ package net.wg.gui.lobby.questsWindow.components
                this.textTf.addEventListener(MouseEvent.ROLL_OVER,this.onTextTfRollOverHandler);
                this.textTf.addEventListener(MouseEvent.ROLL_OUT,this.onTextTfRollOutHandler);
                this._isTooltipComplex = StringUtils.isNotEmpty(_loc2_.complexTooltip);
-               if(this._isTooltipComplex)
+               this._isTooltipWulf = StringUtils.isNotEmpty(_loc2_.wulfTooltip);
+               if(this._isTooltipWulf)
+               {
+                  this._tooltip = _loc2_.wulfTooltip;
+                  this._wulfTooltipArg = _loc2_.wulfTooltipArg;
+               }
+               else if(this._isTooltipComplex)
                {
                   this._tooltip = _loc2_.complexTooltip;
                }
@@ -123,7 +133,11 @@ package net.wg.gui.lobby.questsWindow.components
       {
          if(this._showTooltip)
          {
-            if(this._isTooltipComplex)
+            if(this._isTooltipWulf)
+            {
+               App.toolTipMgr.showWulfTooltip(this._tooltip,this._wulfTooltipArg);
+            }
+            else if(this._isTooltipComplex)
             {
                App.toolTipMgr.showComplex(this._tooltip);
             }

@@ -357,10 +357,6 @@ class Booster(BoosterUICommon):
         return BOOSTER_QUALITY_NAMES.SMALL
 
     @property
-    def qualityStr(self):
-        return _ms(MENU.boosterQualityLocale(self.quality))
-
-    @property
     def inCooldown(self):
         return self.state == GOODIE_STATE.ACTIVE
 
@@ -387,10 +383,6 @@ class Booster(BoosterUICommon):
                     return self.effectValue > aEffectValue
 
         return False
-
-    @property
-    def fullUserName(self):
-        return _ms(MENU.BOOSTERSWINDOW_BOOSTERSTABLERENDERER_HEADER, boosterName=self.userName, quality=self.qualityStr)
 
     @property
     def shortDescriptionSpecial(self):

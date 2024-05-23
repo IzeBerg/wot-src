@@ -38,7 +38,7 @@ package net.wg.data.constants
       
       public static function isIgnored(param1:Array) : Boolean
       {
-         return param1 && (param1.indexOf(IGNORED) != -1 || param1.indexOf(IGNORED_TMP) != -1);
+         return param1 && param1.indexOf(IGNORED) != -1 || param1.indexOf(IGNORED_TMP) != -1;
       }
       
       public static function isIgnoredTmp(param1:Array) : Boolean
@@ -73,7 +73,7 @@ package net.wg.data.constants
       
       public static function isInIGR(param1:Array) : Boolean
       {
-         return param1 && (isBaseIGR(param1) || isPremiumIGR(param1));
+         return isBaseIGR(param1) || isPremiumIGR(param1);
       }
       
       public static function isChatBan(param1:Array) : Boolean

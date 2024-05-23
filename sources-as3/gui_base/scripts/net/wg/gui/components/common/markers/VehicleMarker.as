@@ -315,14 +315,14 @@ package net.wg.gui.components.common.markers
       
       public function updateMarkerSettings() : void
       {
-         var _loc7_:Boolean = false;
+         var _loc3_:Boolean = false;
          var _loc1_:Boolean = this.getIsPartVisible(ICON);
          var _loc2_:Boolean = this.getIsPartVisible(LEVEL);
-         var _loc3_:Boolean = this.getIsPartVisible(P_NAME_LBL);
+         _loc3_ = this.getIsPartVisible(P_NAME_LBL);
          var _loc4_:Boolean = this.getIsPartVisible(V_NAME_LBL);
          var _loc5_:Boolean = this.getIsPartVisible(HEALTH_BAR);
          var _loc6_:Boolean = this.getIsPartVisible(HEALTH_LBL);
-         _loc7_ = this.getIsPartVisible(DAMAGE_PANEL);
+         var _loc7_:Boolean = this.getIsPartVisible(DAMAGE_PANEL);
          var _loc8_:Boolean = !this.vehicleDestroyed && this.getIsPartVisible(VEHICLE_DIST);
          this.vehicleDist.visible = _loc8_;
          this.playerNameField.visible = _loc3_;

@@ -106,6 +106,6 @@ package net.wg.infrastructure.base.meta
       
       function as_setIsFullscreenBattleSelectorShowing(param1:Boolean) : void;
       
-      function as_setButtonHighlight(param1:String, param2:Boolean) : void;
+      function as_setButtonHighlight(param1:String, param2:String) : void;
    }
 }

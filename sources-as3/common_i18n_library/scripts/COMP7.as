@@ -263,7 +263,11 @@ package
       
       public static const WEEKLYQUESTS_RESETSTATUS_TIMER:String = "#comp7:weeklyQuests/resetStatus/timer";
       
-      public static const WEEKLYQUESTS_RESETSTATUS_ENDED:String = "#comp7:weeklyQuests/resetStatus/ended";
+      public static const WEEKLYQUESTS_RESETSTATUS_ENDED_TITLE:String = "#comp7:weeklyQuests/resetStatus/ended/title";
+      
+      public static const WEEKLYQUESTS_RESETSTATUS_ENDED_SUBTITLE:String = "#comp7:weeklyQuests/resetStatus/ended/subtitle";
+      
+      public static const WEEKLYQUESTS_RESETSTATUS_ENDED_LASTWEEK_TITLE:String = "#comp7:weeklyQuests/resetStatus/ended/lastWeek/title";
       
       public static const WEEKLYQUESTS_CARD_PROGRESS_COUNTER:String = "#comp7:weeklyQuests/card/progress/counter";
       
@@ -472,32 +476,6 @@ package
       public static const SEASONPOINTTOOLTIP_TEXT_YEAR:String = "#comp7:seasonPointTooltip/text/year";
       
       public static const SEASONPOINTTOOLTIP_TEXT_COMPENSATE:String = "#comp7:seasonPointTooltip/text/compensate";
-      
-      public static const INTRO_TITLE_CRIMSONSEASON:String = "#comp7:intro/title/crimsonSeason";
-      
-      public static const INTRO_TITLE_VEHICLESONMAP:String = "#comp7:intro/title/vehiclesOnMap";
-      
-      public static const INTRO_TITLE_POINTSOFINTEREST:String = "#comp7:intro/title/pointsOfInterest";
-      
-      public static const INTRO_TITLE_ROLESKILLS:String = "#comp7:intro/title/roleSkills";
-      
-      public static const INTRO_TITLE_QUALIFICATION:String = "#comp7:intro/title/qualification";
-      
-      public static const INTRO_TITLE_RANKS:String = "#comp7:intro/title/ranks";
-      
-      public static const INTRO_DESCRIPTION_CRIMSONSEASON:String = "#comp7:intro/description/crimsonSeason";
-      
-      public static const INTRO_DESCRIPTION_VEHICLESONMAP:String = "#comp7:intro/description/vehiclesOnMap";
-      
-      public static const INTRO_DESCRIPTION_POINTSOFINTEREST:String = "#comp7:intro/description/pointsOfInterest";
-      
-      public static const INTRO_DESCRIPTION_ROLESKILLS:String = "#comp7:intro/description/roleSkills";
-      
-      public static const INTRO_DESCRIPTION_QUALIFICATION:String = "#comp7:intro/description/qualification";
-      
-      public static const INTRO_DESCRIPTION_RANKS:String = "#comp7:intro/description/ranks";
-      
-      public static const INTRO_CONFIRMBUTTON:String = "#comp7:intro/confirmButton";
       
       public static const SELECTORTOOLTIP_TITLE:String = "#comp7:selectorTooltip/title";
       
@@ -899,25 +877,9 @@ package
       
       public static const BATTLEMESSAGES_SPECIFYVOIP:String = "#comp7:battleMessages/specifyVOIP";
       
-      public static const WHATSNEWVIEW_BANNER_TITLE_SMALL:String = "#comp7:whatsNewView/banner/title/small";
+      public static const WHATSNEWVIEW_TITLE:String = "#comp7:whatsNewView/title";
       
       public static const WHATSNEWVIEW_BANNER_TITLE_LARGE:String = "#comp7:whatsNewView/banner/title/large";
-      
-      public static const WHATSNEWVIEW_WATCHVIDEO:String = "#comp7:whatsNewView/watchVideo";
-      
-      public static const WHATSNEWVIEW_TAG_NEW:String = "#comp7:whatsNewView/tag/new";
-      
-      public static const WHATSNEWVIEW_TAG_CHANGED:String = "#comp7:whatsNewView/tag/changed";
-      
-      public static const WHATSNEWVIEW_TAG_SEASONUPDATE:String = "#comp7:whatsNewView/tag/seasonUpdate";
-      
-      public static const WHATSNEWVIEW_TAG_SEASONUPDATED:String = "#comp7:whatsNewView/tag/seasonUpdated";
-      
-      public static const WHATSNEWVIEW_TAG_MAPREMOVED:String = "#comp7:whatsNewView/tag/mapRemoved";
-      
-      public static const WHATSNEWVIEW_YEAROFTHEPEGASUS_HEADING:String = "#comp7:whatsNewView/yearOfThePegasus/heading";
-      
-      public static const WHATSNEWVIEW_YEAROFTHEPEGASUS_DESCRIPTION:String = "#comp7:whatsNewView/yearOfThePegasus/description";
       
       public static const WHATSNEWVIEW_QUALIFICATION_HEADING:String = "#comp7:whatsNewView/qualification/heading";
       
@@ -940,6 +902,50 @@ package
       public static const WHATSNEWVIEW_VEHICLESFORRENT_HEADING:String = "#comp7:whatsNewView/vehiclesForRent/heading";
       
       public static const WHATSNEWVIEW_BUTTON_OK:String = "#comp7:whatsNewView/button/ok";
+      
+      public static const WHATSNEWVIEW_SLIDES_TITLE_SHOP:String = "#comp7:whatsNewView/slides/title/shop";
+      
+      public static const WHATSNEWVIEW_SLIDES_TITLE_MAPS:String = "#comp7:whatsNewView/slides/title/maps";
+      
+      public static const WHATSNEWVIEW_SLIDES_TITLE_SEASONVEHICLES:String = "#comp7:whatsNewView/slides/title/seasonVehicles";
+      
+      public static const WHATSNEWVIEW_SLIDES_TITLE_MODIFICATOR:String = "#comp7:whatsNewView/slides/title/modificator";
+      
+      public static const WHATSNEWVIEW_SLIDES_DESCRIPTION_SHOP:String = "#comp7:whatsNewView/slides/description/shop";
+      
+      public static const WHATSNEWVIEW_SLIDES_DESCRIPTION_SEASONVEHICLES:String = "#comp7:whatsNewView/slides/description/seasonVehicles";
+      
+      public static const WHATSNEWVIEW_SLIDES_DESCRIPTION_MODIFICATOR:String = "#comp7:whatsNewView/slides/description/modificator";
+      
+      public static const WHATSNEWVIEW_CONFIRMBUTTON:String = "#comp7:whatsNewView/confirmButton";
+      
+      public static const WHATSNEWVIEW_NEWMAPS:String = "#comp7:whatsNewView/newMaps";
+      
+      public static const WHATSNEWVIEW_DEPRECATEDMAPS:String = "#comp7:whatsNewView/deprecatedMaps";
+      
+      public static const WHATSNEWVIEW_SLIDES_TITLE_CRIMSONSEASON:String = "#comp7:whatsNewView/slides/title/crimsonSeason";
+      
+      public static const WHATSNEWVIEW_SLIDES_DESCRIPTION_CRIMSONSEASON:String = "#comp7:whatsNewView/slides/description/crimsonSeason";
+      
+      public static const WHATSNEWVIEW_SLIDES_TITLE_VEHICLESONMAP:String = "#comp7:whatsNewView/slides/title/vehiclesOnMap";
+      
+      public static const WHATSNEWVIEW_SLIDES_DESCRIPTION_VEHICLESONMAP:String = "#comp7:whatsNewView/slides/description/vehiclesOnMap";
+      
+      public static const WHATSNEWVIEW_SLIDES_TITLE_POINTSOFINTEREST:String = "#comp7:whatsNewView/slides/title/pointsOfInterest";
+      
+      public static const WHATSNEWVIEW_SLIDES_DESCRIPTION_POINTSOFINTEREST:String = "#comp7:whatsNewView/slides/description/pointsOfInterest";
+      
+      public static const WHATSNEWVIEW_SLIDES_TITLE_ROLESKILLS:String = "#comp7:whatsNewView/slides/title/roleSkills";
+      
+      public static const WHATSNEWVIEW_SLIDES_DESCRIPTION_ROLESKILLS:String = "#comp7:whatsNewView/slides/description/roleSkills";
+      
+      public static const WHATSNEWVIEW_SLIDES_TITLE_INTROQUALIFICATION:String = "#comp7:whatsNewView/slides/title/introQualification";
+      
+      public static const WHATSNEWVIEW_SLIDES_DESCRIPTION_INTROQUALIFICATION:String = "#comp7:whatsNewView/slides/description/introQualification";
+      
+      public static const WHATSNEWVIEW_SLIDES_TITLE_RANKS:String = "#comp7:whatsNewView/slides/title/ranks";
+      
+      public static const WHATSNEWVIEW_SLIDES_DESCRIPTION_RANKS:String = "#comp7:whatsNewView/slides/description/ranks";
        
       
       public function COMP7()

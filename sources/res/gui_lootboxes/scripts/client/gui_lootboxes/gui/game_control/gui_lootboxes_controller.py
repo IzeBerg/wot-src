@@ -70,7 +70,7 @@ class GuiLootBoxesController(IGuiLootBoxesController):
 
     @property
     def isConsumesEntitlements(self):
-        return self.isLootBoxesAvailable() and self.isEnabled()
+        return False
 
     @property
     def boxCountToGuaranteedBonus(self):

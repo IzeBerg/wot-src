@@ -1,4 +1,4 @@
-from constants import PLAYER_SUBSCRIPTIONS_CONFIG
+from constants import RENEWABLE_SUBSCRIPTION_CONFIG
 from gui.impl.gen.view_models.views.lobby.account_dashboard.subscriptions_entry_point_model import SubscriptionsEntryPointModel
 from gui.impl.lobby.account_dashboard.features.base import FeatureItem
 from gui.impl.wrappers.function_helpers import replaceNoneKwargsModel
@@ -26,12 +26,13 @@ class SubscriptionsFeature(FeatureItem):
 
     @replaceNoneKwargsModel
     def __update(self, model=None):
+        subscriptionEnabled = self.__lobbyContext.getServerSettings().isRenewableSubEnabled()
         submodel = model.subscriptions
-        submodel.setIsEnabled(self.__lobbyContext.getServerSettings().isPlayerSubscriptionsEnabled())
-        model.setIsPlayerSubscriptionsEntrypointHidden(self.__lobbyContext.getServerSettings().isPlayerSubscriptionsEntrypointHidden())
+        submodel.setIsEnabled(subscriptionEnabled)
+        model.setIsPlayerSubscriptionsEntrypointHidden(not subscriptionEnabled)
 
     def __onServerSettingsChanged(self, diff):
-        if PLAYER_SUBSCRIPTIONS_CONFIG in diff:
+        if RENEWABLE_SUBSCRIPTION_CONFIG in diff:
             self.__update()
 
     @staticmethod

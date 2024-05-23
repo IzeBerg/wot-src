@@ -85,11 +85,8 @@ package net.wg.gui.battle.views.epicDeploymentMap
          this.mapContainer.removeEventListener(EpicDeploymentMapEvent.MAP_CLICKED,this.onDeploymentMapClickedHandler);
          this._entryContainer.splice(0,this._entryContainer.length);
          this._entryContainer = null;
-         if(this.bigBackground)
-         {
-            this.bigBackground.dispose();
-            this.bigBackground = null;
-         }
+         this.bigBackground.dispose();
+         this.bigBackground = null;
          this.mapContainer.dispose();
          this.mapContainer = null;
          super.onDispose();
@@ -144,7 +141,7 @@ package net.wg.gui.battle.views.epicDeploymentMap
          mouseEnabled = mouseChildren = !this._inRespawnScreen;
       }
       
-      protected function updateLayout() : void
+      private function updateLayout() : void
       {
          var _loc2_:Number = NaN;
          var _loc3_:Number = NaN;
@@ -205,26 +202,6 @@ package net.wg.gui.battle.views.epicDeploymentMap
       private function onDeploymentMapClickedHandler(param1:EpicDeploymentMapEvent) : void
       {
          onMinimapClickedS(param1.mouseX,param1.mouseY,param1.buttonIdx,0);
-      }
-      
-      protected function get originalWidth() : int
-      {
-         return this._originalWidth;
-      }
-      
-      protected function get originalHeight() : int
-      {
-         return this._originalHeight;
-      }
-      
-      protected function get mapWidth() : int
-      {
-         return this._mapWidth;
-      }
-      
-      protected function get mapHeight() : int
-      {
-         return this._mapHeight;
       }
    }
 }

@@ -32,9 +32,6 @@ def parseComplexToken(tokenID):
     match = re.match(COMPLEX_TOKEN_TEMPLATE, tokenID)
     if match:
         return TokenComplex(True, match.group('styleID'), match.group('webID'))
-    from historical_battles_common.hb_constants import FRONT_COUPON_TOKEN_PREFIX
-    if FRONT_COUPON_TOKEN_PREFIX in tokenID:
-        return TokenComplex(True, tokenID, '')
     return TokenComplex(False, '', '')
 
 
@@ -275,6 +272,17 @@ def packSimpleBonusesBlock(bonusesList, endlineSymbol='', complexTooltip=''):
        'ellipsis': '..', 
        'endline': endlineSymbol, 
        'complexTooltip': complexTooltip}
+    return UiElement(data)
+
+
+def packWulfTooltipSimpleBonusesBlock(bonusesList, endlineSymbol='', wulfTooltip='', wulfTooltipArg=''):
+    data = {'linkage': 'QuestTextAwardBlockUI', 
+       'items': bonusesList, 
+       'separator': ', ', 
+       'ellipsis': '..', 
+       'endline': endlineSymbol, 
+       'wulfTooltip': wulfTooltip, 
+       'wulfTooltipArg': wulfTooltipArg}
     return UiElement(data)
 
 

@@ -12,13 +12,18 @@ package net.wg.gui.lobby.techtree.sub
    import net.wg.data.constants.Cursors;
    import net.wg.data.constants.DragType;
    import net.wg.data.constants.Errors;
+   import net.wg.data.constants.Linkages;
    import net.wg.data.constants.SoundManagerStates;
    import net.wg.data.constants.SoundTypes;
    import net.wg.data.constants.Values;
+   import net.wg.data.constants.generated.TOOLTIPS_CONSTANTS;
+   import net.wg.data.managers.ITooltipProps;
    import net.wg.gui.components.controls.ScrollBar;
+   import net.wg.gui.components.controls.SoundButtonEx;
    import net.wg.gui.interfaces.ISoundButtonEx;
    import net.wg.gui.lobby.techtree.TechTreeEvent;
    import net.wg.gui.lobby.techtree.constants.NodeEntityType;
+   import net.wg.gui.lobby.techtree.controls.EarlyAccessButton;
    import net.wg.gui.lobby.techtree.controls.LevelsContainer;
    import net.wg.gui.lobby.techtree.controls.PremiumPanelBackground;
    import net.wg.gui.lobby.techtree.controls.PremiumPanelHitArea;
@@ -35,12 +40,14 @@ package net.wg.gui.lobby.techtree.sub
    import net.wg.gui.lobby.techtree.interfaces.INodesContainer;
    import net.wg.gui.lobby.techtree.interfaces.IRenderer;
    import net.wg.gui.lobby.techtree.interfaces.ITechTreePage;
+   import net.wg.gui.lobby.techtree.nodes.NationTreeNode;
    import net.wg.infrastructure.base.UIComponentEx;
    import net.wg.infrastructure.interfaces.ICursorManager;
    import net.wg.infrastructure.interfaces.ITutorialCustomComponent;
    import net.wg.infrastructure.interfaces.entity.IDraggable;
    import net.wg.infrastructure.managers.IContextMenuManager;
    import net.wg.infrastructure.managers.ISoundManager;
+   import net.wg.infrastructure.managers.ITooltipMgr;
    import net.wg.infrastructure.managers.ITutorialManager;
    import net.wg.utils.IAssertable;
    import net.wg.utils.IScheduler;
@@ -101,6 +108,10 @@ package net.wg.gui.lobby.techtree.sub
       
       private static const PREMIUM_PANEL_CLICK_AREA_OFFSET:int = 11;
       
+      private static const EARLY_ACCESS_BUTTON_OFFSET_FROM_FIRST_NODE:int = 184;
+      
+      private static const EARLY_ACCESS_SIMPLE_TOOLTIP_MAX_WIDTH:int = 300;
+      
       private static const LEVELS_BG_COLOR:uint = 1249808;
       
       private static const LEVELS_BG_COLOR_BP:uint = 1449766;
@@ -112,6 +123,8 @@ package net.wg.gui.lobby.techtree.sub
       private static const PANEL_TITLE:String = "panelTitle";
       
       private static const LEVELS_BG_NAME:String = "levelsBg";
+      
+      private static const EARLY_ACCESS_BUTTON_NAME:String = "earlyAccessButton";
       
       private static const MIN_NODE_MARGIN:int = 23;
       
@@ -198,6 +211,10 @@ package net.wg.gui.lobby.techtree.sub
       
       private var _nationTreeActionsHelper:NationTreeActionsHelper = null;
       
+      private var _earlyAccessButton:SoundButtonEx = null;
+      
+      private var _tooltipMgr:ITooltipMgr;
+      
       public function NationTree()
       {
          this._hPositionByNation = {};
@@ -209,6 +226,7 @@ package net.wg.gui.lobby.techtree.sub
          this._contextMenuMgr = App.contextMenuMgr;
          this._soundMgr = App.soundMgr;
          this._levelsBg = new Sprite();
+         this._tooltipMgr = App.toolTipMgr;
          super();
          this._tutorialMgr.addListenersToCustomTutorialComponent(this);
          this._levelsBg.name = LEVELS_BG_NAME;
@@ -234,8 +252,10 @@ package net.wg.gui.lobby.techtree.sub
       
       override protected function onDispose() : void
       {
+         this.removeEarlyAccessButton();
          this.levels.dispose();
          this.levels = null;
+         this._tooltipMgr = null;
          this._tutorialMgr.removeListenersFromCustomTutorialComponent(this);
          this._tutorialMgr = null;
          visible = false;
@@ -440,7 +460,8 @@ package net.wg.gui.lobby.techtree.sub
       
       public function getNodeByID(param1:int) : IRenderer
       {
-         return this._renderers[this._dataProvider.getIndexByID(param1)];
+         var _loc2_:Number = this._dataProvider.getIndexByID(param1);
+         return _loc2_ == -1 ? null : this._renderers[_loc2_];
       }
       
       public function getTutorialDescriptionName() : String
@@ -802,6 +823,39 @@ package net.wg.gui.lobby.techtree.sub
          }
       }
       
+      private function createEarlyAccessButton(param1:Number, param2:Number, param3:NodeData) : void
+      {
+         if(this._earlyAccessButton)
+         {
+            return;
+         }
+         this._earlyAccessButton = App.utils.classFactory.getComponent(Linkages.NATION_TREE_EARLY_ACCESS_BTN,EarlyAccessButton,{
+            "x":param1,
+            "y":param2,
+            "name":EARLY_ACCESS_BUTTON_NAME,
+            "dynamicSizeByText":false
+         });
+         this._earlyAccessButton.mouseEnabledOnDisabled = true;
+         this._earlyAccessButton.enabled = !param3.isEarlyAccessPaused;
+         this._earlyAccessButton.addEventListener(ButtonEvent.CLICK,this.onEarlyAccessClickHandler);
+         this._earlyAccessButton.addEventListener(MouseEvent.ROLL_OVER,this.onEarlyAccessRollOverHandler);
+         this._earlyAccessButton.addEventListener(MouseEvent.ROLL_OUT,this.onEarlyAccessRollOutHandler);
+         this.ntGraphics.addChild(this._earlyAccessButton);
+      }
+      
+      private function removeEarlyAccessButton() : void
+      {
+         if(this._earlyAccessButton)
+         {
+            this._earlyAccessButton.removeEventListener(ButtonEvent.CLICK,this.onEarlyAccessClickHandler);
+            this._earlyAccessButton.removeEventListener(MouseEvent.ROLL_OVER,this.onEarlyAccessRollOverHandler);
+            this._earlyAccessButton.removeEventListener(MouseEvent.ROLL_OUT,this.onEarlyAccessRollOutHandler);
+            this.ntGraphics.removeChild(this._earlyAccessButton);
+            this._earlyAccessButton.dispose();
+            this._earlyAccessButton = null;
+         }
+      }
+      
       private function drawRenderers() : void
       {
          var _loc2_:IRenderer = null;
@@ -820,6 +874,7 @@ package net.wg.gui.lobby.techtree.sub
          var _loc5_:Boolean = false;
          var _loc6_:Boolean = false;
          this.premiumPanel.clearButtons();
+         this.removeEarlyAccessButton();
          var _loc7_:uint = this._renderers.length;
          var _loc8_:int = 0;
          while(_loc8_ < _loc1_)
@@ -862,6 +917,10 @@ package net.wg.gui.lobby.techtree.sub
                   this.ntGraphics.addChild(DisplayObject(_loc2_));
                }
                this._renderers.push(_loc2_);
+            }
+            if(_loc3_.isEarlyAccess)
+            {
+               this.createEarlyAccessButton(_loc2_.x - EARLY_ACCESS_BUTTON_OFFSET_FROM_FIRST_NODE,_loc2_.y,_loc3_);
             }
             _loc8_++;
          }
@@ -1333,6 +1392,54 @@ package net.wg.gui.lobby.techtree.sub
          if(this.maxHScroll > 0 && param1.buttonDown)
          {
             this.getHitArea().dispatchEvent(new MouseEvent(MouseEvent.MOUSE_DOWN));
+         }
+      }
+      
+      private function onEarlyAccessClickHandler(param1:ButtonEvent) : void
+      {
+         dispatchEvent(new TechTreeEvent(TechTreeEvent.GO_TO_EARLY_ACCESS));
+      }
+      
+      private function showEarlyAccessBorderHighlights(param1:Boolean) : void
+      {
+         var _loc2_:NationTreeNode = null;
+         var _loc3_:uint = this._renderers.length;
+         var _loc4_:int = 0;
+         while(_loc4_ < _loc3_)
+         {
+            _loc2_ = this._renderers[_loc4_] as NationTreeNode;
+            if(_loc2_ && _loc2_.getNodeData().isEarlyAccess)
+            {
+               _loc2_.showEarlyAccessBorderHighlight(param1);
+            }
+            _loc4_++;
+         }
+      }
+      
+      private function onEarlyAccessRollOverHandler(param1:MouseEvent) : void
+      {
+         var _loc2_:ITooltipProps = null;
+         var _loc3_:String = null;
+         if(this._earlyAccessButton.enabled)
+         {
+            this.showEarlyAccessBorderHighlights(true);
+            _loc2_ = ITooltipProps(this._tooltipMgr.getDefaultTooltipProps().clone());
+            _loc2_.maxWidth = EARLY_ACCESS_SIMPLE_TOOLTIP_MAX_WIDTH;
+            _loc3_ = this._tooltipMgr.getNewFormatter().addHeader(TOOLTIPS.TECHTREEPAGE_EARLYACCESSENTRYPOINTTOOLTIP_HEADER,true).addBody(TOOLTIPS.TECHTREEPAGE_EARLYACCESSENTRYPOINTTOOLTIP_BODY,true).make();
+            this._tooltipMgr.showComplex(_loc3_,_loc2_);
+         }
+         else
+         {
+            this._tooltipMgr.showWulfTooltip(TOOLTIPS_CONSTANTS.EARLY_ACCESS_PAUSED);
+         }
+      }
+      
+      private function onEarlyAccessRollOutHandler(param1:MouseEvent) : void
+      {
+         this._tooltipMgr.hide();
+         if(this._earlyAccessButton.enabled)
+         {
+            this.showEarlyAccessBorderHighlights(false);
          }
       }
    }

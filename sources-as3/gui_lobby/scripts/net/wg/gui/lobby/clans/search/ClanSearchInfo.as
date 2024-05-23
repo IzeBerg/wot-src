@@ -275,9 +275,10 @@ package net.wg.gui.lobby.clans.search
       
       private function updateEmblemLayout() : void
       {
+         var _loc2_:int = 0;
          this._utils.commons.updateTextFieldSize(this.ratingTitleTF,false);
          var _loc1_:int = EMBLEM_PLACE_SIZE + CLAN_NAME_GAP + this.clanNameTF.height + this.ratingTitleTF.height >> 0;
-         var _loc2_:int = CLAN_BASE_INFO_PLACE - _loc1_ >> 1;
+         _loc2_ = CLAN_BASE_INFO_PLACE - _loc1_ >> 1;
          this.emblem.y = _loc2_ + (EMBLEM_PLACE_SIZE - TEMP_EMBLEM_SIZE >> 1);
          this.clanNameTF.y = _loc2_ + EMBLEM_PLACE_SIZE + CLAN_NAME_GAP;
          this.emblem.x = this.width - TEMP_EMBLEM_SIZE >> 1;

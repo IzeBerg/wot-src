@@ -223,6 +223,11 @@ package net.wg.gui.lobby.hangar
          this.setQuestFlagsEntryPoint(param1,Linkages.ARMORY_YARD_ENTRY_POINT,HANGAR_ALIASES.ARMORY_YARD_ENTRY_POINT,false);
       }
       
+      public function as_setEarlyAccessEntryPoint(param1:Boolean) : void
+      {
+         this.setQuestFlagsEntryPoint(param1,Linkages.EARLY_ACCESS_ENTRY_POINT,HANGAR_ALIASES.EARLY_ACCESS_SECONDARY_ENTRY_POINT,false);
+      }
+      
       public function as_setSecondaryEntryPointVisible(param1:Boolean) : void
       {
          if(this.secondaryEntryPoint.visible == param1)
@@ -306,7 +311,7 @@ package net.wg.gui.lobby.hangar
             {
                return;
             }
-            this.removeQuestFlagsEntryPoint(param2,param3);
+            this.removeQuestFlagsEntryPoint(_loc4_.alias,param3);
          }
          _loc4_ = App.instance.utils.classFactory.getComponent(param1,IHeaderSecondaryWidget);
          _loc4_.alias = param2;

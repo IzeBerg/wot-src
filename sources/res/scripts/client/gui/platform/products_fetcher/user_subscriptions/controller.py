@@ -32,7 +32,7 @@ class PlatformGetUserSubscriptionsParams(object):
 
     def setFields(self):
         serverSettings = self._lobbyContext.getServerSettings()
-        self.status = [SubscriptionStatus.ACTIVE]
+        self.status = [SubscriptionStatus.ACTIVE, SubscriptionStatus.INACTIVE]
         self.productCode = serverSettings.getWotPlusProductCode()
 
     def __repr__(self):
@@ -52,6 +52,9 @@ class UserSubscriptionsFetchController(ProductsFetchController, IUserSubscriptio
         self._fetchResult.stop()
         self._connectionMgr.onDisconnected -= self._onDisconnect
 
+    def resetFetch(self):
+        self._fetchResult.reset()
+
     @wg_async.wg_async
     def getProducts(self, showWaiting=True):
         _logger.debug('Trying to fetch products')
@@ -64,7 +67,7 @@ class UserSubscriptionsFetchController(ProductsFetchController, IUserSubscriptio
         params = self.platformParams()
         params.setFields()
         requestSuccess, productsData = yield wg_async.await_callback(partial(self._requestProducts, params))()
-        if requestSuccess and productsData:
+        if requestSuccess:
             _logger.debug('Products request has been successfully processed.')
             self._createDescriptors(productsData)
             self._fetchResult.setProcessed()

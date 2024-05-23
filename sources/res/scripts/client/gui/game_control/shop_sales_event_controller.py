@@ -3,6 +3,8 @@ from Event import Event, EventManager
 from constants import EventPhase
 from gui.impl.lobby.shop_sales.shop_sales_main_view import ShopSalesMainWindow
 from gui.shared.utils.scheduled_notifications import Notifiable, PeriodicNotifier
+from gui.shared.event_dispatcher import showHangar, showShop
+from gui.shop import Origin
 from helpers import dependency
 from helpers.time_utils import getServerUTCTime, getTimestampByStrDate
 from helpers.events_handler import EventsHandler
@@ -97,6 +99,10 @@ class ShopSalesEventController(IShopSalesEventController, _Notifiable, EventsHan
          self.eventFinishTime, sys.maxint)
 
     def openMainView(self, url=None, origin=None):
+        if origin == Origin.SHOP:
+            showShop()
+        else:
+            showHangar()
         url = url or self.__url
         _logger.info('I will open shop sales with url %s', url)
         window = ShopSalesMainWindow(url)

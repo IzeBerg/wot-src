@@ -11,11 +11,6 @@
 			<Flags>OWN_CLIENT</Flags>
 			<ExposedForReplay>true</ExposedForReplay>
 		</isObserverFPV>
-		<observerFPVControlMode>
-			<Type>UINT8</Type>
-			<Flags>OWN_CLIENT</Flags>
-			<ExposedForReplay>true</ExposedForReplay>
-		</observerFPVControlMode>
 		<numOfObservers>
 			<Type>UINT8</Type>
 			<Flags>OWN_CLIENT</Flags>
@@ -27,9 +22,6 @@
 			<Exposed>OWN_CLIENT</Exposed>
 			<Arg>BOOL</Arg>
 		</switchObserverFPV>
-		<switchObserverFPVControlMode>
-			<Arg>UINT8</Arg>
-		</switchObserverFPVControlMode>
 		<setRemoteCamera>
 			<Arg>REMOTE_CAMERA_DATA</Arg>
 		</setRemoteCamera>

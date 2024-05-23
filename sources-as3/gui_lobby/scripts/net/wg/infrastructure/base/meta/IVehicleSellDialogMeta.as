@@ -29,5 +29,7 @@ package net.wg.infrastructure.base.meta
       function as_setTotal(param1:int, param2:Object) : void;
       
       function as_updateAccountMoney(param1:String, param2:int) : void;
+      
+      function as_updateDevice(param1:Object) : void;
    }
 }

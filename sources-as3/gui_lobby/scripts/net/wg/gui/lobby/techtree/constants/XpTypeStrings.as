@@ -12,6 +12,8 @@ package net.wg.gui.lobby.techtree.constants
       public static const FREE_XP_TYPE:String = "free";
       
       public static const ACTION_XP_TYPE:String = "action";
+      
+      public static const EA_COIN_TYPE:String = "eacoin";
        
       
       public function XpTypeStrings()

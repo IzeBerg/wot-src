@@ -132,8 +132,6 @@ package net.wg.gui.lobby.header
       
       private var _tooltipMgr:ITooltipMgr;
       
-      private var _squadId:String = "squad";
-      
       public function LobbyHeader()
       {
          this._tooltipMgr = App.toolTipMgr;
@@ -350,8 +348,7 @@ package net.wg.gui.lobby.header
       
       override protected function updateSquad(param1:Boolean, param2:String, param3:String, param4:Boolean, param5:String, param6:Boolean, param7:ExtendedSquadInfoVo) : void
       {
-         this._squadId = !!this._headerButtonsHelper.hasDataProviderButtonById(HeaderButtonsHelper.ITEM_ID_SQUAD) ? HeaderButtonsHelper.ITEM_ID_SQUAD : HeaderButtonsHelper.ITEM_ID_HBSQUAD;
-         var _loc8_:HBC_SquadDataVo = HBC_SquadDataVo(this._headerButtonsHelper.getContentDataById(this._squadId));
+         var _loc8_:HBC_SquadDataVo = HBC_SquadDataVo(this._headerButtonsHelper.getContentDataById(HeaderButtonsHelper.ITEM_ID_SQUAD));
          _loc8_.isInSquad = param1;
          _loc8_.tooltip = param2;
          _loc8_.tooltipType = param3;
@@ -367,7 +364,7 @@ package net.wg.gui.lobby.header
             "squadManStates":param7.squadManStates,
             "commanderIndex":param7.commanderIndex
          });
-         this._headerButtonsHelper.invalidateDataById(this._squadId);
+         this._headerButtonsHelper.invalidateDataById(HeaderButtonsHelper.ITEM_ID_SQUAD);
       }
       
       public function as_disableFightButton(param1:Boolean) : void
@@ -427,7 +424,7 @@ package net.wg.gui.lobby.header
          this._counterManager.setCounter(_loc3_.hitMc,param2);
       }
       
-      public function as_setButtonHighlight(param1:String, param2:Boolean) : void
+      public function as_setButtonHighlight(param1:String, param2:String) : void
       {
          var _loc3_:MainMenuButton = this.mainMenuButtonBar.getButtonByValue(param1);
          if(_loc3_ == null)
@@ -436,7 +433,7 @@ package net.wg.gui.lobby.header
             _loc3_ = this.mainMenuButtonBar.getButtonByValue(param1);
          }
          this.assertMainMenuButtonWasntFound(_loc3_,param1);
-         _loc3_.isHighlighted = param2;
+         _loc3_.highlightImage = param2;
       }
       
       public function as_setCoolDownForReady(param1:uint) : void
@@ -501,7 +498,7 @@ package net.wg.gui.lobby.header
       
       public function as_setIsPlatoonDropdownShowing(param1:Boolean) : void
       {
-         var _loc2_:HeaderButton = this._headerButtonsHelper.searchButtonById(this._squadId);
+         var _loc2_:HeaderButton = this._headerButtonsHelper.searchButtonById(HeaderButtonsHelper.ITEM_ID_SQUAD);
          if(_loc2_ != null)
          {
             if(param1)
@@ -698,7 +695,7 @@ package net.wg.gui.lobby.header
          this.headerButtonBar.updateScreen(_loc1_,_loc4_,_loc2_,_loc3_);
          this.sparks.x = this.fightBtn.x + SPARKS_OFFSET_X;
          this.sparks.y = this.fightBtn.y + SPARKS_OFFSET_Y;
-         movePlatoonPopoverS(this.getSquadButtonMiddleXPosition(this._headerButtonsHelper.searchButtonById(this._squadId)));
+         movePlatoonPopoverS(this.getSquadButtonMiddleXPosition(this._headerButtonsHelper.searchButtonById(HeaderButtonsHelper.ITEM_ID_SQUAD)));
          dispatchEvent(new LifeCycleEvent(LifeCycleEvent.ON_GRAPHICS_RECTANGLES_UPDATE));
       }
       
@@ -750,9 +747,9 @@ package net.wg.gui.lobby.header
          var _loc4_:HBC_SquadDataVo = null;
          var _loc2_:HeaderButton = HeaderButton(param1.target);
          var _loc3_:HeaderButtonVo = HeaderButtonVo(_loc2_.data);
-         if(_loc3_.id == this._squadId)
+         if(_loc3_.id == HeaderButtonsHelper.ITEM_ID_SQUAD)
          {
-            _loc4_ = HBC_SquadDataVo(this._headerButtonsHelper.getContentDataById(this._squadId));
+            _loc4_ = HBC_SquadDataVo(this._headerButtonsHelper.getContentDataById(HeaderButtonsHelper.ITEM_ID_SQUAD));
             if(!_loc4_.isEvent)
             {
                this._canShowSquad = true;
@@ -783,8 +780,8 @@ package net.wg.gui.lobby.header
             case HeaderButtonsHelper.ITEM_ID_PREMSHOP:
                onPremShopClickS();
                break;
-            case this._squadId:
-               _loc4_ = HBC_SquadDataVo(this._headerButtonsHelper.getContentDataById(this._squadId));
+            case HeaderButtonsHelper.ITEM_ID_SQUAD:
+               _loc4_ = HBC_SquadDataVo(this._headerButtonsHelper.getContentDataById(HeaderButtonsHelper.ITEM_ID_SQUAD));
                if(_loc4_.isEvent)
                {
                   App.popoverMgr.show(_loc2_,Aliases.SQUAD_TYPE_SELECT_POPOVER,null,_loc2_);
@@ -855,7 +852,7 @@ package net.wg.gui.lobby.header
       
       private function onButtonBarHeaderItemsRepositionHandler(param1:HeaderEvents) : void
       {
-         movePlatoonPopoverS(this.getSquadButtonMiddleXPosition(this._headerButtonsHelper.searchButtonById(this._squadId)));
+         movePlatoonPopoverS(this.getSquadButtonMiddleXPosition(this._headerButtonsHelper.searchButtonById(HeaderButtonsHelper.ITEM_ID_SQUAD)));
       }
       
       private function onFightBtnMouseOverHandler(param1:MouseEvent) : void

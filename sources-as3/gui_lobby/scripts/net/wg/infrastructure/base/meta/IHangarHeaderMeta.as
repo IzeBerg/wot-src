@@ -19,5 +19,7 @@ package net.wg.infrastructure.base.meta
       function as_setCollectiveGoalEntryPoint(param1:Boolean) : void;
       
       function as_setArmoryYardEntryPoint(param1:Boolean) : void;
+      
+      function as_setEarlyAccessEntryPoint(param1:Boolean) : void;
    }
 }

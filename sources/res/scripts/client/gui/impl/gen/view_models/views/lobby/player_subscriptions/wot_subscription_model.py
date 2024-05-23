@@ -5,6 +5,8 @@ class WotSubscriptionStateEnum(Enum):
     INACTIVE = 'Inactive'
     ACTIVE = 'Active'
     CANCELLED = 'Cancelled'
+    ERROR = 'Error'
+    TRIAL = 'Trial'
 
 
 class WotSubscriptionModel(SubscriptionModel):

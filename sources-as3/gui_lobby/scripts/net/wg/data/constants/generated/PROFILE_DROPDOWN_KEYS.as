@@ -45,6 +45,8 @@ package net.wg.data.constants.generated
       
       public static const COMP7_SEASON_3:String = "comp7_season_3";
       
+      public static const COMP7_SEASON_4:String = "comp7_season_4";
+      
       public static const VERSUS_AI:String = "versusAI";
        
       

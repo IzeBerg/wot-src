@@ -19,3 +19,9 @@ class WotPlusState(Enum):
     INACTIVE = 0
     ACTIVE = 1
     CANCELLED = 2
+    ERROR = 3
+    TRIAL = 4
+
+
+SUBSCRIPTION_STATE = {'INACTIVE': 2, 
+   'ACTIVE': 1}

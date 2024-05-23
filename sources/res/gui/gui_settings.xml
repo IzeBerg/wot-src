@@ -389,7 +389,7 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://eu.wargaming.net/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=$TARGET_URL(https://eu.wargaming.net/shop/subscriptions?language=$LANGUAGE_CODE)
+				https://lesta.ru/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=$TARGET_URL(https://lesta.ru/shop/wot/premium/subscription_mt?language=$LANGUAGE_CODE)
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -1340,7 +1340,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				$PARAMS(/featured/featured/items/platform_bp2024_13ep)
+				$PARAMS(/featured/featured/items/platform_bp2024_14ep)
 				<name>buyBattlePass</name>
 				<type>url</type>
 			</item>
@@ -1365,7 +1365,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				$PARAMS(/featured/featured/items/platform_subscription/preview/)
+				$PARAMS(/featured/featured/items/platform_subscription_mt/preview/)
 				<name>buyWotPlus</name>
 				<type>url</type>
 			</item>
@@ -1400,8 +1400,8 @@
 				<type>url</type>
 			</item>
 			<item>
-				$PARAMS(/HB24_category/HB24_category)
-				<name>HB24Category</name>
+				$PARAMS(/comp7_category/comp7_category)
+				<name>comp7Products</name>
 				<type>url</type>
 			</item>
 		</value>
@@ -1448,22 +1448,17 @@
 		<type>dict</type>
 		<value>
 			<item>
-				/$LANGUAGE_CODE/promocontent/13BPContentPage/
+				/$LANGUAGE_CODE/promocontent/14BPContentPage/
 				<name>infoPage</name>
 				<type>url</type>
 			</item>
 			<item>
-				/$LANGUAGE_CODE/promocontent/11BPContentPage/#bp11extrachapter
+				/$LANGUAGE_CODE/promocontent/14BPContentPage/#bp14extrachapter
 				<name>extraInfoPage</name>
 				<type>url</type>
 			</item>
 			<item>
-				/$LANGUAGE_CODE/promocontent/13BPIntroVideo/
-				<name>introVideo</name>
-				<type>url</type>
-			</item>
-			<item>
-				/$LANGUAGE_CODE/promocontent/11BPExtraChapter/
+				/$LANGUAGE_CODE/promocontent/14BPExtraChapter/
 				<name>extraIntroVideo</name>
 				<type>url</type>
 			</item>
@@ -1480,11 +1475,11 @@
 				<value>
 					<item>
 						<type>int</type>
-						<value>2</value>
+						<value>1</value>
 					</item>
 					<item>
 						<type>int</type>
-						<value>1</value>
+						<value>2</value>
 					</item>
 					<item>
 						<type>int</type>
@@ -1730,7 +1725,7 @@
 		<type>dict</type>
 		<value>
 			<item>
-				{webBridgeRootURL}/$LANGUAGE_CODE/promocontent/SH2023IntroVideo/
+				https://webbrg.tanki.su/$LANGUAGE_CODE/promocontent/steel_hunter_2024/
 				<name>introVideo</name>
 				<type>url</type>
 			</item>
@@ -1778,12 +1773,12 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://webbrg.tanki.su/$LANGUAGE_CODE/promocontent/subscriptions/
+				https://webbrg.tanki.su/$LANGUAGE_CODE/promocontent/Subscription/
 				<name>default</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg-rpt.tanki.su/$LANGUAGE_CODE/promocontent/wot_plus/
+				https://webbrg.tanki.su/$LANGUAGE_CODE/promocontent/Subscription/
 				<name>CT</name>
 				<type>url</type>
 			</item>
@@ -1819,6 +1814,306 @@
 		</value>
 	</setting>
 	<setting>
+		<name>whatsNewPageComp7</name>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
+			<item>
+				https://webbrg.tanki.su/$LANGUAGE_CODE/promocontent/onslaught_wolf_Intro/
+				<name>default</name>
+				<type>url</type>
+			</item>
+		</value>
+	</setting>
+	<setting>
+		<name>whatsNewPageComp7Slides</name>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
+			<item>
+				<name>default</name>
+				<type>dict</type>
+				<value>
+					<item>
+						<name>pages</name>
+						<type>list</type>
+						<value>
+							<item>
+								<name>shop</name>
+								<type>list</type>
+								<value>
+									<item>
+										<name>name</name>
+										<type>string</type>
+										<value>shop</value>
+									</item>
+									<item>
+										<name>type</name>
+										<type>string</type>
+										<value>page</value>
+									</item>
+								</value>
+							</item>
+							<item>
+								<name>maps</name>
+								<type>list</type>
+								<value>
+									<item>
+										<name>name</name>
+										<type>string</type>
+										<value>maps</value>
+									</item>
+									<item>
+										<name>type</name>
+										<type>string</type>
+										<value>maps</value>
+									</item>
+								</value>
+							</item>
+							<item>
+								<name>seasonVehicles</name>
+								<type>list</type>
+								<value>
+									<item>
+										<name>name</name>
+										<type>string</type>
+										<value>seasonVehicles</value>
+									</item>
+									<item>
+										<name>type</name>
+										<type>string</type>
+										<value>seasonVehicles</value>
+									</item>
+								</value>
+							</item>
+							<item>
+								<name>modificator</name>
+								<type>list</type>
+								<value>
+									<item>
+										<name>name</name>
+										<type>string</type>
+										<value>modificator</value>
+									</item>
+									<item>
+										<name>type</name>
+										<type>string</type>
+										<value>page</value>
+									</item>
+								</value>
+							</item>
+						</value>
+					</item>
+					<item>
+						<name>deprecatedMaps</name>
+						<type>list</type>
+						<value>
+							<item>
+								<type>string</type>
+								<value>04_himmelsdorf</value>
+							</item>
+							<item>
+								<type>string</type>
+								<value>115_sweden</value>
+							</item>
+							<item>
+								<type>string</type>
+								<value>31_airfield</value>
+							</item>
+							<item>
+								<type>string</type>
+								<value>08_ruinberg</value>
+							</item>
+						</value>
+					</item>
+					<item>
+						<name>seasonVehicles</name>
+						<type>list</type>
+						<value>
+							<item>
+								<type>int</type>
+								<value>61233</value>
+							</item>
+							<item>
+								<type>int</type>
+								<value>58385</value>
+							</item>
+							<item>
+								<type>int</type>
+								<value>9569</value>
+							</item>
+						</value>
+					</item>
+				</value>
+			</item>
+		</value>
+	</setting>
+	<setting>
+		<name>IntroPagesComp7Slides</name>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
+			<item>
+				<name>default</name>
+				<type>dict</type>
+				<value>
+					<item>
+						<name>pages</name>
+						<type>list</type>
+						<value>
+							<item>
+								<name>crimsonSeason</name>
+								<type>list</type>
+								<value>
+									<item>
+										<name>name</name>
+										<type>string</type>
+										<value>crimsonSeason</value>
+									</item>
+									<item>
+										<name>type</name>
+										<type>string</type>
+										<value>page</value>
+									</item>
+								</value>
+							</item>
+							<item>
+								<name>vehiclesOnMap</name>
+								<type>list</type>
+								<value>
+									<item>
+										<name>name</name>
+										<type>string</type>
+										<value>vehiclesOnMap</value>
+									</item>
+									<item>
+										<name>type</name>
+										<type>string</type>
+										<value>page</value>
+									</item>
+								</value>
+							</item>
+							<item>
+								<name>pointsOfInterest</name>
+								<type>list</type>
+								<value>
+									<item>
+										<name>name</name>
+										<type>string</type>
+										<value>pointsOfInterest</value>
+									</item>
+									<item>
+										<name>type</name>
+										<type>string</type>
+										<value>page</value>
+									</item>
+								</value>
+							</item>
+							<item>
+								<name>roleSkills</name>
+								<type>list</type>
+								<value>
+									<item>
+										<name>name</name>
+										<type>string</type>
+										<value>roleSkills</value>
+									</item>
+									<item>
+										<name>type</name>
+										<type>string</type>
+										<value>page</value>
+									</item>
+								</value>
+							</item>
+							<item>
+								<name>introQualification</name>
+								<type>list</type>
+								<value>
+									<item>
+										<name>name</name>
+										<type>string</type>
+										<value>introQualification</value>
+									</item>
+									<item>
+										<name>type</name>
+										<type>string</type>
+										<value>page</value>
+									</item>
+								</value>
+							</item>
+							<item>
+								<name>ranks</name>
+								<type>list</type>
+								<value>
+									<item>
+										<name>name</name>
+										<type>string</type>
+										<value>ranks</value>
+									</item>
+									<item>
+										<name>type</name>
+										<type>string</type>
+										<value>page</value>
+									</item>
+								</value>
+							</item>
+							<item>
+								<name>shop</name>
+								<type>list</type>
+								<value>
+									<item>
+										<name>name</name>
+										<type>string</type>
+										<value>shop</value>
+									</item>
+									<item>
+										<name>type</name>
+										<type>string</type>
+										<value>page</value>
+									</item>
+								</value>
+							</item>
+							<item>
+								<name>seasonVehicles</name>
+								<type>list</type>
+								<value>
+									<item>
+										<name>name</name>
+										<type>string</type>
+										<value>seasonVehicles</value>
+									</item>
+									<item>
+										<name>type</name>
+										<type>string</type>
+										<value>seasonVehicles</value>
+									</item>
+								</value>
+							</item>
+						</value>
+					</item>
+					<item>
+						<name>seasonVehicles</name>
+						<type>list</type>
+						<value>
+							<item>
+								<type>int</type>
+								<value>61233</value>
+							</item>
+							<item>
+								<type>int</type>
+								<value>58385</value>
+							</item>
+							<item>
+								<type>int</type>
+								<value>9569</value>
+							</item>
+						</value>
+					</item>
+				</value>
+			</item>
+		</value>
+	</setting>
+	<setting>
 		<name>infoPageStory_mode</name>
 		<type>macros</type>
 		<macros>AUTH_REALM</macros>
@@ -1831,18 +2126,6 @@
 			<item>
 				https://webbrg-rpt.tanki.su/$LANGUAGE_CODE/promocontent/stories-onboarding/
 				<name>CT</name>
-				<type>url</type>
-			</item>
-		</value>
-	</setting>
-	<setting>
-		<name>whatsNewPageComp7</name>
-		<type>macros</type>
-		<macros>AUTH_REALM</macros>
-		<value>
-			<item>
-				https://webbrg.tanki.su/$LANGUAGE_CODE/promocontent/onslaught_wolf_Intro/
-				<name>default</name>
 				<type>url</type>
 			</item>
 		</value>
@@ -1879,23 +2162,6 @@
 						<type>url</type>
 					</item>
 				</value>
-			</item>
-		</value>
-	</setting>
-	<setting>
-		<name>infoPageHistoricalBattles</name>
-		<type>macros</type>
-		<macros>AUTH_REALM</macros>
-		<value>
-			<item>
-				https://webbrg.tanki.su/$LANGUAGE_CODE/promocontent/EventMay24/
-				<name>default</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-rpt.tanki.su/$LANGUAGE_CODE/promocontent/EventMay24/
-				<name>CT</name>
-				<type>url</type>
 			</item>
 		</value>
 	</setting>
@@ -1967,12 +2233,12 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://webbrg.tanki.su/$LANGUAGE_CODE/promocontent/player-subscriptions/
+				https://webbrg.tanki.su/$LANGUAGE_CODE/promocontent/Subscription/
 				<name>default</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg-rpt.tanki.su/$LANGUAGE_CODE/promocontent/player-subscriptions/
+				https://webbrg.tanki.su/$LANGUAGE_CODE/promocontent/Subscription/
 				<name>CT</name>
 				<type>url</type>
 			</item>

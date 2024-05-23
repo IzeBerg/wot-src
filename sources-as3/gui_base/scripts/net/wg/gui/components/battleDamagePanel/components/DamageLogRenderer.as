@@ -215,11 +215,6 @@ package net.wg.gui.components.battleDamagePanel.components
          this.vehNameTF.x = _loc2_ + VEH_TF_X_OFFSET;
       }
       
-      protected function getBlindIconIndex(param1:String) : int
-      {
-         return ICONS_WITH_BLIND.indexOf(param1);
-      }
-      
       private function setActionIcon(param1:Boolean) : void
       {
          if(this._actionAtlasIconPath == Values.EMPTY_STR)
@@ -227,7 +222,7 @@ package net.wg.gui.components.battleDamagePanel.components
             return;
          }
          var _loc2_:String = this._actionAtlasIconPath;
-         if(param1 && this.getBlindIconIndex(_loc2_) >= 0)
+         if(param1 && ICONS_WITH_BLIND.indexOf(_loc2_) >= 0)
          {
             _loc2_ += BLIND_POSTFIX;
          }

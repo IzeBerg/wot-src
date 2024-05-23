@@ -1103,6 +1103,8 @@ package
       
       public static const PROFILE_DROPDOWN_LABELS_COMP7_SEASON_3:String = "#profile:profile/dropdown/labels/comp7_season_3";
       
+      public static const PROFILE_DROPDOWN_LABELS_COMP7_SEASON_4:String = "#profile:profile/dropdown/labels/comp7_season_4";
+      
       public static const SECTION_STATISTICS_HEADERTEXT_COMP7_ARCHIVE_GRIFFIN:String = "#profile:section/statistics/headerText/comp7_archive_Griffin";
       
       public static const SECTION_STATISTICS_HEADERTEXT_COMP7_SEASON_1:String = "#profile:section/statistics/headerText/comp7_season_1";
@@ -1110,6 +1112,8 @@ package
       public static const SECTION_STATISTICS_HEADERTEXT_COMP7_SEASON_2:String = "#profile:section/statistics/headerText/comp7_season_2";
       
       public static const SECTION_STATISTICS_HEADERTEXT_COMP7_SEASON_3:String = "#profile:section/statistics/headerText/comp7_season_3";
+      
+      public static const SECTION_STATISTICS_HEADERTEXT_COMP7_SEASON_4:String = "#profile:section/statistics/headerText/comp7_season_4";
       
       public static const SECTION_STATISTICS_SCORES_AVGPRESTIGEPOINTS:String = "#profile:section/statistics/scores/avgPrestigePoints";
       

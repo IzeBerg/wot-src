@@ -28,6 +28,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public var onGoToPremiumShop:Function;
       
+      public var onGoToEarlyAccess:Function;
+      
       public var onPlayHintAnimation:Function;
       
       private var _dataProviderTechTreeNationMenuItemVO:DataProvider;
@@ -118,6 +120,12 @@ package net.wg.infrastructure.base.meta.impl
       {
          App.utils.asserter.assertNotNull(this.onGoToPremiumShop,"onGoToPremiumShop" + Errors.CANT_NULL);
          this.onGoToPremiumShop(param1,param2);
+      }
+      
+      public function onGoToEarlyAccessS() : void
+      {
+         App.utils.asserter.assertNotNull(this.onGoToEarlyAccess,"onGoToEarlyAccess" + Errors.CANT_NULL);
+         this.onGoToEarlyAccess();
       }
       
       public function onPlayHintAnimationS(param1:Boolean) : void

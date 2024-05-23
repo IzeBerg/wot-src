@@ -17,6 +17,16 @@
 			<UUID>052e0c98-473d-4168-a55a-3344bd1e682f</UUID>
 			<flags>0</flags>
 		</GameObject>
+		<GameObject>
+			<name>TankShifted</name>
+			<UUID>f7d5fed3-6c21-4140-856c-aa9bf501153a</UUID>
+			<flags>0</flags>
+		</GameObject>
+		<GameObject>
+			<name>ShiftedTankCamera</name>
+			<UUID>0545fc59-fc01-3f71-9396-832ea02b00cd</UUID>
+			<flags>0</flags>
+		</GameObject>
 	</GameObjects>
 	<components>
 		<ComponentPool>
@@ -39,6 +49,26 @@
 					<property>
 						<name>Parent</name>
 						<link>b30b9646-3c6a-4b62-8dbe-fd116d443142</link>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>3</objectIndex>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Parent</name>
+						<link>fb6bd1ed-7152-4428-a15f-115603d5978b</link>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>4</objectIndex>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Parent</name>
+						<link>f7d5fed3-6c21-4140-856c-aa9bf501153a</link>
 					</property>
 				</config>
 			</component>
@@ -106,6 +136,51 @@
 					</property>
 				</config>
 			</component>
+			<component>
+				<objectIndex>3</objectIndex>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>
+							0 1.15189 0
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>-0 0 0</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>4</objectIndex>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>
+							-9.65395 0.331552 2.58677
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>
+							0.0331613 1.8326 9.31835e-10
+							<!--BW_String-->
+						</value>
+					</property>
+				</config>
+			</component>
 		</ComponentPool>
 		<ComponentPool>
 			<type>CameraComponent</type>
@@ -117,6 +192,37 @@
 					<property>
 						<name>Name</name>
 						<value>Tank</value>
+					</property>
+					<property>
+						<name>Rotation sensitivity</name>
+						<value>
+							0.005
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Zoom sensitivity</name>
+						<value>
+							0.003
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Fluency</name>
+						<value>
+							0.1
+							<!--BW_String-->
+						</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>4</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Name</name>
+						<value>ShiftedTank</value>
 					</property>
 					<property>
 						<name>Rotation sensitivity</name>
@@ -172,6 +278,46 @@
 					<property>
 						<name>StartPitch</name>
 						<value>-6</value>
+					</property>
+					<property>
+						<name>StartDist</name>
+						<value>10</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>4</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>_requestRecalc</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>YawLimits</name>
+						<value>-180 180</value>
+					</property>
+					<property>
+						<name>PitchLimits</name>
+						<value>
+							-80 -1.9
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>DistLimits</name>
+						<value>10 10</value>
+					</property>
+					<property>
+						<name>StartYaw</name>
+						<value>-75</value>
+					</property>
+					<property>
+						<name>StartPitch</name>
+						<value>
+							-1.9
+							<!--BW_String-->
+						</value>
 					</property>
 					<property>
 						<name>StartDist</name>
@@ -244,12 +390,90 @@
 					</property>
 				</config>
 			</component>
+			<component>
+				<objectIndex>4</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>DistDelta</name>
+						<value>0 0</value>
+					</property>
+					<property>
+						<name>AngelsDelta</name>
+						<value>
+							0.26 0.15
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Smoothing</name>
+						<value>5</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>FovComponent</type>
+			<version>1</version>
+			<component>
+				<objectIndex>4</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Fov</name>
+						<value>90</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>ShiftComponent</type>
+			<version>1</version>
+			<component>
+				<objectIndex>4</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>pivotShiftLimitsX</name>
+						<value>
+							-3 -3.3
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>pivotShiftLimitsY</name>
+						<value>0 0</value>
+					</property>
+					<property>
+						<name>pivotShiftLimitsZ</name>
+						<value>0 0</value>
+					</property>
+					<property>
+						<name>pivotHalfTimeMultiplier</name>
+						<value>2</value>
+					</property>
+				</config>
+			</component>
 		</ComponentPool>
 		<ComponentPool>
 			<type>CameraPreviewComponent</type>
 			<version>1</version>
 			<component>
 				<objectIndex>2</objectIndex>
+				<flags>2</flags>
+				<config>
+					<property>
+						<name>ChangeStartParams</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>DrawFrustrum</name>
+						<value>0</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>4</objectIndex>
 				<flags>2</flags>
 				<config>
 					<property>

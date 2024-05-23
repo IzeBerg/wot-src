@@ -5,7 +5,7 @@ from debug_utils import LOG_CURRENT_EXCEPTION
 from items import vehicles
 from items.components import shared_components
 from soft_exception import SoftException
-from items.components.c11n_constants import ApplyArea, SeasonType, Options, ItemTags, CustomizationType, MAX_CAMOUFLAGE_PATTERN_SIZE, DecalType, HIDDEN_CAMOUFLAGE_ID, PROJECTION_DECALS_SCALE_ID_VALUES, MAX_USERS_PROJECTION_DECALS, CustomizationTypeNames, DecalTypeNames, ProjectionDecalFormTags, DEFAULT_SCALE_FACTOR_ID, CUSTOMIZATION_SLOTS_VEHICLE_PARTS, CamouflageTilingType, SLOT_TYPE_NAMES, EMPTY_ITEM_ID, SLOT_DEFAULT_ALLOWED_MODEL, EDITING_STYLE_REASONS, CustomizationDisplayType
+from items.components.c11n_constants import ApplyArea, SeasonType, Options, ItemTags, CustomizationType, MAX_CAMOUFLAGE_PATTERN_SIZE, DecalType, HIDDEN_CAMOUFLAGE_ID, PROJECTION_DECALS_SCALE_ID_VALUES, MAX_USERS_PROJECTION_DECALS, CustomizationTypeNames, DecalTypeNames, ProjectionDecalFormTags, DEFAULT_SCALE_FACTOR_ID, CUSTOMIZATION_SLOTS_VEHICLE_PARTS, CamouflageTilingType, SLOT_TYPE_NAMES, EMPTY_ITEM_ID, SLOT_DEFAULT_ALLOWED_MODEL, EDITING_STYLE_REASONS, CustomizationDisplayType, DEFAULT_FORWARD_EMISSION, DEFAULT_DEFERRED_EMISSION, DEFAULT_EMISSION_ANIMATION_SPEED
 from typing import List, Dict, Type, Tuple, Optional, TypeVar, FrozenSet, Iterable, Callable, TYPE_CHECKING
 from string import lower, upper
 from copy import deepcopy
@@ -183,13 +183,16 @@ class DecalItem(BaseCustomizationItem):
 class ProjectionDecalItem(BaseCustomizationItem):
     __metaclass__ = ReflectionMetaclass
     itemType = CustomizationType.PROJECTION_DECAL
-    __slots__ = ('canBeMirroredHorizontally', 'glossTexture', 'scaleFactorId')
+    __slots__ = ('canBeMirroredHorizontally', 'glossTexture', 'scaleFactorId', 'emissionSettings')
     allSlots = BaseCustomizationItem.__slots__ + __slots__
 
     def __init__(self, parentGroup=None):
         self.canBeMirroredHorizontally = False
         self.glossTexture = ''
         self.scaleFactorId = DEFAULT_SCALE_FACTOR_ID
+        self.emissionSettings = {'emissionMap': '', 'emissionPatternMap': '', 'forwardEmissionBrightness': DEFAULT_FORWARD_EMISSION, 
+           'deferredEmissionBrightness': DEFAULT_DEFERRED_EMISSION, 
+           'emissionAnimationSpeed': DEFAULT_EMISSION_ANIMATION_SPEED}
         super(ProjectionDecalItem, self).__init__(parentGroup)
 
     @property
@@ -206,7 +209,8 @@ class CamouflageItem(BaseCustomizationItem):
     itemType = CustomizationType.CAMOUFLAGE
     __slots__ = ('camoTypeIndex', 'palettes', 'compatibleParts', 'componentsCovering',
                  'invisibilityFactor', 'tiling', 'tilingSettings', 'scales', 'rotation',
-                 'glossMetallicSettings', 'styleId')
+                 'exclusionImpact', 'glossMetallicSettings', 'emissionSettings',
+                 'styleId')
     allSlots = BaseCustomizationItem.__slots__ + __slots__
     CAMO_TYPES = {'Transparent': '#vehicle_customization:camouflage/transparent', 
        'Opaque': '#vehicle_customization:camouflage/opaque'}
@@ -221,7 +225,11 @@ class CamouflageItem(BaseCustomizationItem):
         self.tiling = {}
         self.tilingSettings = (CamouflageTilingType.LEGACY, None, None)
         self.scales = (1.2, 1.0, 0.7)
+        self.exclusionImpact = 1.0
         self.glossMetallicSettings = {'glossMetallicMap': '', 'gloss': Math.Vector4(0.0), 'metallic': Math.Vector4(0.0)}
+        self.emissionSettings = {'emissionMap': '', 'emissionPatternMap': '', 'forwardEmissionBrightness': DEFAULT_FORWARD_EMISSION, 
+           'deferredEmissionBrightness': DEFAULT_DEFERRED_EMISSION, 
+           'emissionAnimationSpeed': DEFAULT_EMISSION_ANIMATION_SPEED}
         self.styleId = None
         super(CamouflageItem, self).__init__(parentGroup)
         return
@@ -237,6 +245,8 @@ class CamouflageItem(BaseCustomizationItem):
         newItem.tiling = deepcopy(self.tiling)
         newItem.tilingSettings = deepcopy(self.tilingSettings)
         newItem.scales = self.scales
+        newItem.exclusionImpact = self.exclusionImpact
+        newItem.emissionSettings = deepcopy(self.emissionSettings)
         super(CamouflageItem, self)._copy(newItem)
         return newItem
 

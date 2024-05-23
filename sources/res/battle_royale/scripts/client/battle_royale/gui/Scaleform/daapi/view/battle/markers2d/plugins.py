@@ -33,8 +33,7 @@ _BATTLE_ROYALE_STATUS_EFFECTS_PRIORITY = (
  (
   BATTLE_MARKER_STATES.INSPIRED_STATE,))
 _MARKERS_WITH_TIMER = (
- BATTLE_MARKER_STATES.INSPIRING_STATE,
- BATTLE_MARKER_STATES.HEALING_STATE)
+ BATTLE_MARKER_STATES.HEALING_STATE,)
 
 class BattleRoyaleVehicleMarkerPlugin(VehicleMarkerPlugin):
     __sessionProvider = dependency.descriptor(IBattleSessionProvider)

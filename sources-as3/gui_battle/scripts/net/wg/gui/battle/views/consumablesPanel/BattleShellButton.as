@@ -27,15 +27,15 @@ package net.wg.gui.battle.views.consumablesPanel
       
       private static const END_FRAME:int = 101;
       
-      protected static const END_RELOADING_FRAME:int = 142;
+      private static const END_RELOADING_FRAME:int = 142;
       
-      protected static const DEFAULT_TIME_COEF:Number = 1;
+      private static const DEFAULT_TIME_COEF:Number = 1;
       
       private static const KEY_VALIDATION:uint = InvalidationType.SYSTEM_FLAGS_BORDER << 2;
       
-      protected static const QUANTITY_VALIDATION:uint = InvalidationType.SYSTEM_FLAGS_BORDER << 3;
+      private static const QUANTITY_VALIDATION:uint = InvalidationType.SYSTEM_FLAGS_BORDER << 3;
       
-      protected static const SELECTED_INDICATOR_VISIBILITY:uint = InvalidationType.SYSTEM_FLAGS_BORDER << 4;
+      private static const SELECTED_INDICATOR_VISIBILITY:uint = InvalidationType.SYSTEM_FLAGS_BORDER << 4;
       
       private static const SPG_SHOT_RED_FRAME_LBL:String = "red";
       
@@ -56,7 +56,7 @@ package net.wg.gui.battle.views.consumablesPanel
       
       public var glow:IBattleEquipmentButtonGlow = null;
       
-      protected var _isCurrent:Boolean;
+      private var _isCurrent:Boolean;
       
       private var _isNext:Boolean;
       
@@ -70,9 +70,9 @@ package net.wg.gui.battle.views.consumablesPanel
       
       private var _isAfterCoolDown:Boolean;
       
-      protected var _isSelectedIndicatorVisible:Boolean = false;
+      private var _isSelectedIndicatorVisible:Boolean = false;
       
-      protected var _coolDownTimer:CoolDownTimer = null;
+      private var _coolDownTimer:CoolDownTimer = null;
       
       private var _consumablesVO:ConsumablesVO;
       
@@ -200,7 +200,7 @@ package net.wg.gui.battle.views.consumablesPanel
             _loc5_ = param3 / param2;
             this.state = BATTLE_ITEM_STATES.COOLDOWN;
             this._isReloading = true;
-            this.startCoolDown(param1,_loc5_);
+            this._coolDownTimer.start(param1,this,(END_FRAME - START_FRAME) * _loc5_,DEFAULT_TIME_COEF);
          }
          else
          {
@@ -216,11 +216,6 @@ package net.wg.gui.battle.views.consumablesPanel
                this._coolDownTimer.moveToFrame(FIRST_FRAME);
             }
          }
-      }
-      
-      protected function startCoolDown(param1:Number, param2:Number) : void
-      {
-         this._coolDownTimer.start(param1,this,(END_FRAME - START_FRAME) * param2,DEFAULT_TIME_COEF);
       }
       
       public function setCurrent(param1:Boolean, param2:Boolean = false) : void
@@ -350,7 +345,7 @@ package net.wg.gui.battle.views.consumablesPanel
          }
       }
       
-      protected function reloadingEnd() : void
+      private function reloadingEnd() : void
       {
          this._isSelectedIndicatorVisible = this._quantity > 0;
          invalidate(SELECTED_INDICATOR_VISIBILITY);
@@ -399,11 +394,6 @@ package net.wg.gui.battle.views.consumablesPanel
       public function set quantity(param1:int) : void
       {
          this.setQuantity(param1);
-      }
-      
-      public function get quantity() : int
-      {
-         return this._quantity;
       }
       
       public function get reloading() : Boolean

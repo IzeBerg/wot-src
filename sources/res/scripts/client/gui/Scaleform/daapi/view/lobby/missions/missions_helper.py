@@ -3,7 +3,7 @@ from collections import namedtuple
 import typing, constants
 from debug_utils import LOG_WARNING
 from gui.ranked_battles.ranked_helpers import isRankedQuestID
-from gui.Scaleform.daapi.view.lobby.missions import cards_formatters, g_missionInfoMapList
+from gui.Scaleform.daapi.view.lobby.missions import cards_formatters
 from gui.Scaleform.daapi.view.lobby.missions.awards_formatters import CurtailingAwardsComposer, AwardsWindowComposer, DetailedCardAwardComposer, PersonalMissionsAwardComposer
 from gui.Scaleform.daapi.view.lobby.server_events.events_helpers import getVehicleRequirements
 from gui.Scaleform.genConsts.PERSONAL_MISSIONS_ALIASES import PERSONAL_MISSIONS_ALIASES
@@ -250,7 +250,7 @@ class _MissionInfo(QuestInfoModel):
 
     def __init__(self, event):
         super(_MissionInfo, self).__init__(event)
-        self._formattedBonuses = None
+        self.__formattedBonuses = None
         self._mainFormattedConditions = None
         return
 
@@ -388,9 +388,9 @@ class _MissionInfo(QuestInfoModel):
         return BG_STATES.DEFAULT
 
     def _getAwards(self, mainQuest=None):
-        if self._formattedBonuses is None:
-            self._formattedBonuses = _cardAwardsFormatter.getFormattedBonuses(self._substituteBonuses(mainQuest))
-        return {'awards': self._formattedBonuses}
+        if self.__formattedBonuses is None:
+            self.__formattedBonuses = _cardAwardsFormatter.getFormattedBonuses(self._substituteBonuses(mainQuest))
+        return {'awards': self.__formattedBonuses}
 
     def _getConditions(self):
         return {'battleConditions': self._getMainConditions()}
@@ -1340,10 +1340,6 @@ class _DebutBoxesDetailedMissionInfo(_DetailedMissionInfo):
 
 
 def getMissionInfoData(event):
-    for infoMap in g_missionInfoMapList:
-        if str(event.getID()).startswith(infoMap.questPrefix):
-            return infoMap.infoClass(event)
-
     if event.getType() == constants.EVENT_TYPE.TOKEN_QUEST:
         return _TokenMissionInfo(event)
     else:
@@ -1368,10 +1364,6 @@ def getMissionInfoData(event):
 
 
 def getDetailedMissionData(event):
-    for infoMap in g_missionInfoMapList:
-        if str(event.getID()).startswith(infoMap.questPrefix):
-            return infoMap.detailedInfoClass(event)
-
     if event.getType() == constants.EVENT_TYPE.TOKEN_QUEST:
         return _DetailedTokenMissionInfo(event)
     else:

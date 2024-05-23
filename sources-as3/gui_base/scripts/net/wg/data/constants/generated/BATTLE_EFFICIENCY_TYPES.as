@@ -29,10 +29,6 @@ package net.wg.data.constants.generated
       
       public static const ASSIST:String = "assist";
       
-      public static const BOMBERS:String = "bombers";
-      
-      public static const ARTILLERY:String = "artillery";
-      
       public static const WORLD_COLLISION:String = "worldCollision";
       
       public static const RECEIVED_CRITS:String = "receivedCrits";
@@ -42,8 +38,6 @@ package net.wg.data.constants.generated
       public static const RECEIVED_BURN:String = "receivedBurn";
       
       public static const RECEIVED_RAM:String = "receivedRam";
-      
-      public static const RECEIVED_BOMBERS_DAMAGE:String = "receivedBombersDamage";
       
       public static const RECEIVED_WORLD_COLLISION:String = "receivedWorldCollision";
       
@@ -110,28 +104,6 @@ package net.wg.data.constants.generated
       public static const DEALT_DMG_BY_THUNDER_STRIKE:String = "dealtDamageByThunderStrike";
       
       public static const RECEIVED_BY_THUNDER_STRIKE:String = "receivedByThunderStrike";
-      
-      public static const EVENT_DEATH_ON_PHASE_CHANGE:String = "eventDeathOnPhaseChange";
-      
-      public static const DAMAGE_BY_HB_MINEFIELD:String = "damageByHBMinefield";
-      
-      public static const DAMAGE_BY_ARTILLERY_ROCKET:String = "damageByArtilleryRocket";
-      
-      public static const DAMAGE_BY_ARTILLERY_MORTAR:String = "damageByArtilleryMortar";
-      
-      public static const DAMAGE_BY_BOMBERCAS:String = "damageByBombercas";
-      
-      public static const HB_DEATH_ZONE:String = "HBDeathZone";
-      
-      public static const HB_PERSONAL_DEATH_ZONE:String = "HBPersonalDeathZone";
-      
-      public static const HEAL_VEHICLE_APPLIED:String = "healVehicleApplied";
-      
-      public static const TOTAL_VEHICLES_HEAL_APPLIED:String = "TotalVehiclesHealApplied";
-      
-      public static const HEAL_SELF_VEHICLE_APPLIED:String = "healSelfVehicleApplied";
-      
-      public static const DAMAGE_BY_HB_TACTICAL_MINE:String = "damageByHBTacticalMine";
        
       
       public function BATTLE_EFFICIENCY_TYPES()

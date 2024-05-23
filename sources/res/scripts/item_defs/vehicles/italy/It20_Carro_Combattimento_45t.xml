@@ -8,7 +8,7 @@
 		<loader/>
 	</crew>
 	<supplySlots>2 1 1 6 6 6 7 8 8 8</supplySlots>
-	<postProgressionTree>role_MT_universal</postProgressionTree>
+	<postProgressionTree>role_MT_support</postProgressionTree>
 	<customRoleSlotOptions>3 5</customRoleSlotOptions>
 	<optDevsOverrides>
 		<camouflageNet>
@@ -3880,7 +3880,10 @@
 						</armor_5>
 						<gun>60</gun>
 					</armor>
-					<aimingTime>3</aimingTime>
+					<aimingTime>
+						2.4
+						<!--BW_String-->
+					</aimingTime>
 					<shotDispersionFactors>
 						<turretRotation>
 							0.12
@@ -3900,11 +3903,11 @@
 						</maxPitch>
 					</pitchLimits>
 					<shotDispersionRadius>
-						0.38
+						0.36
 						<!--BW_String-->
 					</shotDispersionRadius>
 					<reloadTime>
-						15.4
+						9.5
 						<!--BW_String-->
 					</reloadTime>
 					<invisibilityFactorAtShot>
@@ -3912,15 +3915,14 @@
 						<!--BW_String-->
 					</invisibilityFactorAtShot>
 					<clip>
-						<count>4</count>
+						<count>3</count>
 						<rate>15</rate>
 					</clip>
 					<autoreload>
-						<reloadTime>10 12 14 16</reloadTime>
-						<revertFraction>
-							1.0
+						<reloadTime>
+							9.5 11.5 13.5
 							<!--BW_String-->
-						</revertFraction>
+						</reloadTime>
 					</autoreload>
 					<models>
 						<undamaged>vehicles/italy/It20_Carro_Combattimento_45t/normal/lod0/Gun_01.model</undamaged>

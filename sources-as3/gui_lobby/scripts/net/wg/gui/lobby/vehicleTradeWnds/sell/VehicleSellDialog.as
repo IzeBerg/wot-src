@@ -10,6 +10,7 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
    import net.wg.gui.events.VehicleSellDialogEvent;
    import net.wg.gui.lobby.vehicleTradeWnds.sell.utils.VehicleSellDialogMoney;
    import net.wg.gui.lobby.vehicleTradeWnds.sell.vo.SellDialogVO;
+   import net.wg.gui.lobby.vehicleTradeWnds.sell.vo.SellOnVehicleOptionalDeviceVo;
    import net.wg.gui.lobby.vehicleTradeWnds.sell.vo.SellVehicleVo;
    import net.wg.infrastructure.base.meta.IVehicleSellDialogMeta;
    import net.wg.infrastructure.base.meta.impl.VehicleSellDialogMeta;
@@ -221,6 +222,11 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
          this.slidingComponent.setInventory(this._data.modulesInInventory,this._data.shellsInInventory);
          this.slidingComponent.setCustomization(this._data.customizationOnVehicle);
          invalidate(InvalidationType.SIZE);
+      }
+      
+      override protected function updateDevice(param1:SellOnVehicleOptionalDeviceVo) : void
+      {
+         this.devicesComponent.updateDevice(param1);
       }
       
       public function as_enableButton(param1:Boolean, param2:String) : void

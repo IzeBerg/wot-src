@@ -228,51 +228,45 @@ package net.wg.gui.battle.components
             _loc7_.tweenToX(0);
             return;
          }
-         this.layoutTimers(_loc2_,_loc3_);
-      }
-      
-      protected function layoutTimers(param1:Array, param2:Array) : void
-      {
-         var _loc3_:IStatusNotification = null;
-         var _loc4_:Boolean = false;
-         var _loc5_:Boolean = false;
-         var _loc6_:uint = 0;
-         var _loc7_:uint = 0;
-         for each(_loc3_ in param1)
+         var _loc8_:Boolean = false;
+         var _loc9_:Boolean = false;
+         var _loc10_:uint = 0;
+         var _loc11_:uint = 0;
+         for each(_loc7_ in _loc2_)
          {
-            if(_loc3_.isShowing)
+            if(_loc7_.isShowing)
             {
-               if(_loc7_ > 0)
+               if(_loc11_ > 0)
                {
-                  _loc4_ = _loc3_.cropSize();
-                  if(_loc4_ && !_loc5_)
+                  _loc8_ = _loc7_.cropSize();
+                  if(_loc8_ && !_loc9_)
                   {
-                     _loc6_ -= NOTIFICATION_TIMERS_OFFSET_X;
+                     _loc10_ -= NOTIFICATION_TIMERS_OFFSET_X;
                   }
-                  _loc5_ = _loc4_;
+                  _loc9_ = _loc8_;
                }
-               else if(!_loc3_ is SecondaryTimer && !_loc3_ is ResupplyTimer || _loc3_.typeId == BATTLE_NOTIFICATIONS_TIMER_TYPES.ORANGE_ZONE || _loc3_.typeId == BATTLE_NOTIFICATIONS_TIMER_TYPES.DAMAGING_ZONE || _loc3_ is StatusNotificationTimer)
+               else if(!_loc7_ is SecondaryTimer && !_loc7_ is ResupplyTimer || _loc7_.typeId == BATTLE_NOTIFICATIONS_TIMER_TYPES.ORANGE_ZONE || _loc7_.typeId == BATTLE_NOTIFICATIONS_TIMER_TYPES.DAMAGING_ZONE || _loc7_ is StatusNotificationTimer)
                {
-                  _loc3_.fullSize();
+                  _loc7_.fullSize();
                }
                else
                {
-                  _loc3_.cropSize();
-                  _loc5_ = true;
+                  _loc7_.cropSize();
+                  _loc9_ = true;
                }
-               _loc7_++;
-               if(param2.indexOf(_loc3_) == -1)
+               _loc11_++;
+               if(_loc3_.indexOf(_loc7_) == -1)
                {
-                  if(_loc3_.x != _loc6_)
+                  if(_loc7_.x != _loc10_)
                   {
-                     _loc3_.tweenToX(_loc6_);
+                     _loc7_.tweenToX(_loc10_);
                   }
                }
                else
                {
-                  _loc3_.x = _loc6_;
+                  _loc7_.x = _loc10_;
                }
-               _loc6_ += _loc3_.actualWidth;
+               _loc10_ += _loc7_.actualWidth;
             }
          }
          this.updtateNotificationsVisible();

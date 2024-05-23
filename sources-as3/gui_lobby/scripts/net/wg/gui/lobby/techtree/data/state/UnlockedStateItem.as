@@ -1,7 +1,5 @@
 package net.wg.gui.lobby.techtree.data.state
 {
-   import net.wg.data.constants.generated.NODE_STATE_FLAGS;
-   
    public class UnlockedStateItem extends NodeStateItem
    {
       
@@ -14,9 +12,9 @@ package net.wg.gui.lobby.techtree.data.state
       
       private var _availableForBuy:StateProperties;
       
-      public function UnlockedStateItem(param1:StateProperties, param2:StateProperties)
+      public function UnlockedStateItem(param1:StateProperties, param2:StateProperties, param3:uint = 4)
       {
-         super(NODE_STATE_FLAGS.UNLOCKED,param1);
+         super(param3,param1);
          this._availableForBuy = param2;
       }
       

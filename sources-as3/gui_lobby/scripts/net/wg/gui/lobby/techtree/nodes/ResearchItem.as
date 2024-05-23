@@ -64,12 +64,12 @@ package net.wg.gui.lobby.techtree.nodes
       override public function invalidateNodeState() : void
       {
          updateStateProps();
-         if(Math.abs(this._lastInvalidatedState - valueObject.state) != NODE_STATE_FLAGS.DASHED)
+         if(Math.abs(this._lastInvalidatedState - getState()) != NODE_STATE_FLAGS.DASHED)
          {
             App.contextMenuMgr.hide();
          }
          invalidateData();
-         this._lastInvalidatedState = valueObject.state;
+         this._lastInvalidatedState = getState();
       }
       
       override public function showContextMenu() : void
@@ -79,9 +79,9 @@ package net.wg.gui.lobby.techtree.nodes
             this.button.endAnimation(true);
          }
          App.contextMenuMgr.show(CONTEXT_MENU_HANDLER_TYPE.RESEARCH_ITEM,this,{
-            "nodeCD":valueObject.id,
+            "nodeCD":getID(),
             "rootCD":container.rootRenderer.getID(),
-            "nodeState":valueObject.state,
+            "nodeState":getState(),
             "previewAlias":Aliases.RESEARCH
          });
       }
@@ -127,17 +127,17 @@ package net.wg.gui.lobby.techtree.nodes
          }
          if(this.xpField)
          {
-            _loc4_ = dataInited && (valueObject.state & NODE_STATE_FLAGS.AUTO_UNLOCKED) > 0;
+            _loc4_ = dataInited && (getState() & NODE_STATE_FLAGS.AUTO_UNLOCKED) > 0;
             if(!_loc4_)
             {
-               this.xpField.setData(valueObject.unlockProps.xpCost,XpTypeStrings.COST_XP_TYPE);
+               this.xpField.setData(getNodeData().unlockProps.xpCost,XpTypeStrings.COST_XP_TYPE);
             }
             this.xpField.visible = !_loc4_;
          }
          if(this.button != null)
          {
             this.button.action = stateProps.action;
-            this.button.label = valueObject.costLabel;
+            this.button.label = getNodeData().costLabel;
             this.button.enabled = isActionEnabled();
             this.button.visible = stateProps.visible;
             this.button.setAnimation(stateProps.id,stateProps.animation);
@@ -203,12 +203,12 @@ package net.wg.gui.lobby.techtree.nodes
       
       public function isDashed() : Boolean
       {
-         return valueObject && (valueObject.state & NODE_STATE_FLAGS.DASHED) > 0;
+         return (getState() & NODE_STATE_FLAGS.DASHED) > 0;
       }
       
       private function applyExtraSource() : void
       {
-         var _loc1_:String = valueObject.extraInfo;
+         var _loc1_:String = getNodeData().extraInfo;
          this.typeIcon.hideExtraIcon();
          if(StringUtils.isNotEmpty(_loc1_))
          {

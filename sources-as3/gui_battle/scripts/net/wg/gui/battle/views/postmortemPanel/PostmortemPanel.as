@@ -270,7 +270,7 @@ package net.wg.gui.battle.views.postmortemPanel
          this._isEnabledSpectatorPanel = param1;
       }
       
-      protected function showSpectatorPanel(param1:Boolean) : void
+      private function showSpectatorPanel(param1:Boolean) : void
       {
          if(!param1 || this._isEnabledSpectatorPanel && param1)
          {

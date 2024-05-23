@@ -171,7 +171,7 @@ class ResearchVehicleContextMenuHandler(SimpleVehicleCMHandler):
                 else:
                     label = MENU.CONTEXTMENU_BUY
                 options.append(self._makeItem(VEHICLE.BUY, label, {'enabled': NODE_STATE.isAvailable2Buy(self._nodeState)}))
-        else:
+        elif not vehicle.isEarlyAccess:
             options.append(self._makeItem(VEHICLE.UNLOCK, MENU.CONTEXTMENU_UNLOCK, {'enabled': NODE_STATE.isAvailable2Unlock(self._nodeState) and not NODE_STATE.isPremium(self._nodeState)}))
         if vehicle.hasNationGroup:
             if vehicle.isInInventory or vehicle.isRented:
@@ -229,6 +229,9 @@ class BlueprintVehicleContextMenuHandler(SimpleVehicleCMHandler):
         return
 
     def _generateOptions(self, ctx=None):
-        options = [self._makeItem(VEHICLE.BLUEPRINT, MENU.CONTEXTMENU_GOTOBLUEPRINT),
-         self._makeItem(VEHICLE.UNLOCK, MENU.CONTEXTMENU_UNLOCK, {'enabled': NODE_STATE.isAvailable2Unlock(self._nodeState)})]
+        vehicle = self.itemsCache.items.getItemByCD(self._nodeCD)
+        options = []
+        if not vehicle.isEarlyAccess:
+            options = [self._makeItem(VEHICLE.UNLOCK, MENU.CONTEXTMENU_UNLOCK, {'enabled': NODE_STATE.isAvailable2Unlock(self._nodeState)}),
+             self._makeItem(VEHICLE.BLUEPRINT, MENU.CONTEXTMENU_GOTOBLUEPRINT)]
         return options

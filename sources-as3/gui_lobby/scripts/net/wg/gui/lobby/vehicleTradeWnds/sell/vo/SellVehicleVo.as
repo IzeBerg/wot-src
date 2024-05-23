@@ -19,6 +19,8 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell.vo
       
       public var isPremium:Boolean = false;
       
+      public var isWotPlus:Boolean = false;
+      
       public var type:String = "";
       
       public var nationID:Number = 0;

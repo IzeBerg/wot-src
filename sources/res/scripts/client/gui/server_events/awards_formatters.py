@@ -374,7 +374,7 @@ def formatTimeLabel(hours):
     return str(int(time)) + ' ' + timeMetric
 
 
-_PreformattedBonus = namedtuple('_PreformattedBonus', 'bonusName label userName images tooltip labelFormatter areTokensPawned specialArgs specialAlias isSpecial isCompensation align highlightType overlayType highlightIcon overlayIcon compensationReason postProcessTags isWulf')
+_PreformattedBonus = namedtuple('_PreformattedBonus', 'bonusName label userName images tooltip labelFormatter areTokensPawned specialArgs specialAlias isSpecial isCompensation align highlightType overlayType highlightIcon overlayIcon compensationReason postProcessTags')
 
 class PostProcessTags(CONST_CONTAINER):
     IS_SUFFIX_BADGE = 'isSuffixBadge'
@@ -417,8 +417,7 @@ class PreformattedBonus(_PreformattedBonus):
 
 PreformattedBonus.__new__.__defaults__ = (
  None, None, None, None, None, None, False, None, None,
- False, False, LABEL_ALIGN.CENTER, None, None, None, None, None, tuple(),
- False)
+ False, False, LABEL_ALIGN.CENTER, None, None, None, None, None, tuple())
 
 class QuestsBonusComposer(object):
 
@@ -444,7 +443,6 @@ class QuestsBonusComposer(object):
            'imgSource': bonus.getImage(size), 
            'tooltip': bonus.tooltip, 
            'isSpecial': bonus.isSpecial, 
-           'isWulfTooltip': bonus.isWulf, 
            'specialAlias': bonus.specialAlias, 
            'specialArgs': bonus.specialArgs, 
            'align': bonus.align, 
@@ -460,20 +458,19 @@ class AwardsPacker(object):
         preformattedBonuses = []
         for b in bonuses:
             if b.isShowInGUI():
-                bonusName = b.getName()
-                formatter = self._getBonusFormatter(bonusName)
+                formatter = self._getBonusFormatter(b)
                 if formatter:
                     preformattedBonuses.extend(formatter.format(b))
                 else:
-                    _logger.warn('No formatter found for %s', bonusName)
+                    _logger.warn('No formatter found for %s', b.getName())
 
         return preformattedBonuses
 
-    def getFormatters(self):
+    def getFormattersMap(self):
         return self.__formatters
 
-    def _getBonusFormatter(self, bonusName):
-        return self.__formatters.get(bonusName)
+    def _getBonusFormatter(self, bonus):
+        return self.__formatters.get(bonus.getName())
 
 
 class AwardFormatter(object):

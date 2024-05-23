@@ -8,6 +8,7 @@ package net.wg.gui.lobby.techtree.nodes
    import flash.geom.Point;
    import flash.text.TextField;
    import net.wg.data.constants.Linkages;
+   import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.CONTEXT_MENU_HANDLER_TYPE;
    import net.wg.data.constants.generated.TOOLTIPS_CONSTANTS;
    import net.wg.gui.components.controls.TradeIco;
@@ -17,6 +18,7 @@ package net.wg.gui.lobby.techtree.nodes
    import net.wg.gui.lobby.techtree.constants.NodeRendererState;
    import net.wg.gui.lobby.techtree.constants.XpTypeStrings;
    import net.wg.gui.lobby.techtree.controls.ActionButton;
+   import net.wg.gui.lobby.techtree.controls.EAField;
    import net.wg.gui.lobby.techtree.controls.FadeComponent;
    import net.wg.gui.lobby.techtree.controls.TypeAndLevelField;
    import net.wg.gui.lobby.techtree.controls.XPField;
@@ -62,6 +64,18 @@ package net.wg.gui.lobby.techtree.nodes
       private static const DISCOUNT_LABEL_BLUE:String = "blue";
       
       private static const DISCOUNT_LABEL_RED:String = "red";
+      
+      private static const EARLY_ACCESS_BORDER_LABEL:String = "border";
+      
+      private static const EARLY_ACCESS_BORDER_HOVER_LABEL:String = "_hover";
+      
+      private static const EARLY_ACCESS_BORDER_LOCKED_LABEL:String = "_locked";
+      
+      private static const EARLY_ACCESS_BORDER_PAUSED_LABEL:String = "_paused";
+      
+      private static const EARLY_ACCESS_BORDER_HIGHLIGHT_SHOW_LABEL:String = "show";
+      
+      private static const EARLY_ACCESS_BORDER_HIGHLIGHT_HIDE_LABEL:String = "hide";
        
       
       public var lockedModuleHighlight:NodeHighlightAnimation = null;
@@ -86,11 +100,21 @@ package net.wg.gui.lobby.techtree.nodes
       
       public var xpField:XPField = null;
       
+      public var eaField:EAField = null;
+      
       public var nameTF:TextField = null;
       
       public var techTreeEventAnimMc:MovieClip = null;
       
       public var techTreeEventFrameMc:MovieClip = null;
+      
+      public var earlyAccessAnimMc:MovieClip = null;
+      
+      public var earlyAccessLock:MovieClip = null;
+      
+      public var earlyAccessBorder:MovieClip = null;
+      
+      public var earlyAccessBorderHighlight:MovieClip = null;
       
       private var _isFirstTimeActionShow:Boolean = false;
       
@@ -107,19 +131,27 @@ package net.wg.gui.lobby.techtree.nodes
       override public function cleanUp() : void
       {
          super.cleanUp();
-         this.blueprintPlus.enabled = false;
+         if(!isEarlyAccess)
+         {
+            this.blueprintPlus.enabled = false;
+         }
       }
       
       override public function getColorIndex(param1:IRenderer = null) : uint
       {
-         var _loc2_:NationTreeNode = null;
+         var _loc3_:Boolean = false;
+         var _loc2_:NationTreeNode = param1 as NationTreeNode;
          if(this._isFirstTimeActionShow && hasTechTreeEvent)
          {
-            _loc2_ = param1 as NationTreeNode;
             if(_loc2_ && _loc2_.hasTechTreeEvent && _loc2_.isFirstTimeActionShow)
             {
                return ColorIndex.EVENT_AVAILABLE;
             }
+         }
+         if(isEarlyAccess)
+         {
+            _loc3_ = _loc2_ && _loc2_.getNodeData().isEarlyAccess;
+            return isFirstTimeEarlyAccessShow && _loc3_ ? uint(ColorIndex.EARLY_ACCESS) : uint(ColorIndex.LOCKED);
          }
          return super.getColorIndex(param1);
       }
@@ -131,7 +163,7 @@ package net.wg.gui.lobby.techtree.nodes
       
       override public function getIconPath() : String
       {
-         return !!dataInited ? valueObject.smallIconPath : "";
+         return !!dataInited ? getNodeData().smallIconPath : "";
       }
       
       override public function getInX() : Number
@@ -166,8 +198,8 @@ package net.wg.gui.lobby.techtree.nodes
       {
          this.button.endAnimation(true);
          var _loc1_:Object = {
-            "vehCD":valueObject.id,
-            "nodeState":valueObject.state
+            "vehCD":getID(),
+            "nodeState":getState()
          };
          if(this.isBlueprintMode)
          {
@@ -181,9 +213,9 @@ package net.wg.gui.lobby.techtree.nodes
       
       override public function showTooltip() : void
       {
-         if(this.isBlueprintMode && valueObject && valueObject.dataIsReady && this._tooltipMgr != null)
+         if(this.isBlueprintMode && dataInited && getNodeData().dataIsReady && this._tooltipMgr != null)
          {
-            this._tooltipMgr.showSpecial(TOOLTIPS_CONSTANTS.BLUEPRINT_INFO,null,valueObject.id);
+            this._tooltipMgr.showSpecial(TOOLTIPS_CONSTANTS.BLUEPRINT_INFO,null,getID());
             return;
          }
          super.showTooltip();
@@ -212,7 +244,7 @@ package net.wg.gui.lobby.techtree.nodes
          _loc1_ = isLocked();
          var _loc2_:Boolean = isNext2Unlock();
          var _loc3_:String = hasAction && (_loc1_ || _loc2_) ? DISCOUNT_LABEL_BLUE : DISCOUNT_LABEL_RED;
-         var _loc4_:Boolean = hasAction || hasTechTreeEvent || hasTechTreeEventDiscountOnly;
+         var _loc4_:Boolean = hasAction || hasTechTreeEvent;
          if(this.discountIcon)
          {
             this.discountIcon.visible = _loc4_;
@@ -228,7 +260,7 @@ package net.wg.gui.lobby.techtree.nodes
             this.xpField.alpha = stateProps.cmpAlpha;
             if(_loc1_)
             {
-               this.xpField.setData(valueObject.unlockProps.xpCost,XpTypeStrings.COST_XP_TYPE);
+               this.xpField.setData(getNodeData().unlockProps.xpCost,XpTypeStrings.COST_XP_TYPE);
             }
             else if(getEarnedXP() > 0 && !stateProps.visible)
             {
@@ -241,20 +273,34 @@ package net.wg.gui.lobby.techtree.nodes
             }
             this.xpField.x = _loc4_ && this.discountIcon ? Number(XP_FIELD_ACTION_OFFSET_X) : Number(XP_FIELD_DEFAULT_OFFSET_X);
          }
+         if(this.eaField)
+         {
+            this.eaField.visible = isEarlyAccess && (isLocked() || _loc2_) && !getNodeData().isEarlyAccessLocked;
+            this.eaField.setData(getNodeData().earlyAccessCurrentTokens,getNodeData().earlyAccessTotalTokens,_loc2_);
+            this.eaField.x = _loc4_ && this.discountIcon ? Number(XP_FIELD_ACTION_OFFSET_X) : Number(XP_FIELD_DEFAULT_OFFSET_X);
+         }
+         if(this.xpField && this.eaField)
+         {
+            if(this.eaField.visible || getNodeData().isEarlyAccessLocked)
+            {
+               this.xpField.visible = false;
+            }
+         }
          if(isRestoreAvailable())
          {
             this.button.label = App.utils.locale.makeString(MENU.RESEARCH_LABELS_BUTTON_RESTORE);
+            this.button.imgSubstitution = ActionButton.DEFAULT_IMAGE_SUBSTITUTION;
          }
          else
          {
-            this.button.label = valueObject.costLabel;
+            this.button.label = getNodeData().costLabel;
          }
          this.button.action = stateProps.action;
          this.button.enabled = isActionEnabled();
          this.button.visible = stateProps.visible;
          this.button.setAnimation(stateProps.id,stateProps.animation);
          this.button.setOwner(this);
-         if(this.isBlueprintMode)
+         if(this.isBlueprintMode && !isEarlyAccess)
          {
             this.blueprintBorder.enabled = _loc2_;
             this.blueprintProgressBar.scaleX = blueprintProgress;
@@ -272,8 +318,24 @@ package net.wg.gui.lobby.techtree.nodes
             this.blueprintBorder.enabled = false;
             this.blueprintPlus.enabled = false;
          }
-         this.nationChangeIcon.visible = valueObject.isNationChangeAvailable;
-         this.nameTF.width = !!valueObject.isNationChangeAvailable ? Number(NAME_TF_SHORT_WIDTH_FOR_NATION_CHANGE_ICON) : Number(NAME_TF_FULL_WIDTH);
+         if(this.earlyAccessLock)
+         {
+            this.earlyAccessLock.visible = isEarlyAccess && isEarlyAccessLocked;
+         }
+         if(this.earlyAccessBorder)
+         {
+            this.earlyAccessBorder.mouseEnabled = this.earlyAccessBorder.mouseChildren = false;
+            this.earlyAccessBorder.gotoAndStop(this.getEarlyAccessBorderState());
+         }
+         if(this.earlyAccessBorderHighlight)
+         {
+            this.earlyAccessBorderHighlight.mouseEnabled = this.earlyAccessBorderHighlight.mouseChildren = false;
+         }
+         if(this.nationChangeIcon)
+         {
+            this.nationChangeIcon.visible = getNodeData().isNationChangeAvailable;
+         }
+         this.nameTF.width = !!getNodeData().isNationChangeAvailable ? Number(NAME_TF_SHORT_WIDTH_FOR_NATION_CHANGE_ICON) : Number(NAME_TF_FULL_WIDTH);
          this.setTradeIcon();
          this.updateTechTreeEventBorder();
       }
@@ -297,25 +359,38 @@ package net.wg.gui.lobby.techtree.nodes
          {
             this.techTreeEventFrameMc = null;
          }
+         this.earlyAccessAnimMc = null;
+         this.earlyAccessLock = null;
+         this.earlyAccessBorder = null;
+         this.earlyAccessBorderHighlight = null;
          this.button.dispose();
          this.button = null;
          this.typeAndLevel.dispose();
          this.typeAndLevel = null;
          this.vehicleImage.dispose();
          this.vehicleImage = null;
-         this.blueprintProgressBar.dispose();
-         this.blueprintProgressBar = null;
-         this.blueprintBorder.dispose();
-         this.blueprintBorder = null;
-         this.blueprintPlus.removeEventListener(MouseEvent.ROLL_OVER,this.onBlueprintPlusRollOverHandler);
-         this.blueprintPlus.removeEventListener(MouseEvent.ROLL_OUT,this.onBlueprintPlusRollOutHandler);
-         this.blueprintPlus.removeEventListener(MouseEvent.CLICK,this.onBlueprintPlusClickHandler);
-         this.blueprintPlus.dispose();
-         this.blueprintPlus = null;
+         if(!isEarlyAccess)
+         {
+            this.blueprintProgressBar.dispose();
+            this.blueprintProgressBar = null;
+            this.blueprintBorder.dispose();
+            this.blueprintBorder = null;
+            this.blueprintPlus.removeEventListener(MouseEvent.ROLL_OVER,this.onBlueprintPlusRollOverHandler);
+            this.blueprintPlus.removeEventListener(MouseEvent.ROLL_OUT,this.onBlueprintPlusRollOutHandler);
+            this.blueprintPlus.removeEventListener(MouseEvent.CLICK,this.onBlueprintPlusClickHandler);
+            this.blueprintPlus.dispose();
+            this.blueprintPlus = null;
+            this.blueprintCount = null;
+         }
          if(this.xpField)
          {
             this.xpField.dispose();
             this.xpField = null;
+         }
+         if(this.eaField)
+         {
+            this.eaField.dispose();
+            this.eaField = null;
          }
          if(this._trade)
          {
@@ -323,13 +398,15 @@ package net.wg.gui.lobby.techtree.nodes
             this._trade.dispose();
             this._trade = null;
          }
-         this.blueprintCount = null;
          this.discountIcon = null;
          this.nameTF = null;
          this._tooltipMgr = null;
          this.nationChangeIcon = null;
-         this.lockedModuleHighlight.dispose();
-         this.lockedModuleHighlight = null;
+         if(this.lockedModuleHighlight)
+         {
+            this.lockedModuleHighlight.dispose();
+            this.lockedModuleHighlight = null;
+         }
          super.onDispose();
       }
       
@@ -359,24 +436,43 @@ package net.wg.gui.lobby.techtree.nodes
       override protected function configUI() : void
       {
          super.configUI();
-         this.blueprintPlus.addEventListener(MouseEvent.ROLL_OVER,this.onBlueprintPlusRollOverHandler,false,0,true);
-         this.blueprintPlus.addEventListener(MouseEvent.ROLL_OUT,this.onBlueprintPlusRollOutHandler,false,0,true);
-         this.blueprintPlus.addEventListener(MouseEvent.CLICK,this.onBlueprintPlusClickHandler,false,0,true);
+         if(!isEarlyAccess)
+         {
+            this.blueprintPlus.addEventListener(MouseEvent.ROLL_OVER,this.onBlueprintPlusRollOverHandler,false,0,true);
+            this.blueprintPlus.addEventListener(MouseEvent.ROLL_OUT,this.onBlueprintPlusRollOutHandler,false,0,true);
+            this.blueprintPlus.addEventListener(MouseEvent.CLICK,this.onBlueprintPlusClickHandler,false,0,true);
+         }
+      }
+      
+      public function showEarlyAccessBorderHighlight(param1:Boolean) : void
+      {
+         if(this.earlyAccessBorderHighlight)
+         {
+            this.earlyAccessBorderHighlight.gotoAndPlay(!!param1 ? EARLY_ACCESS_BORDER_HIGHLIGHT_SHOW_LABEL : EARLY_ACCESS_BORDER_HIGHLIGHT_HIDE_LABEL);
+         }
       }
       
       public function animateFrameHighlight() : void
       {
-         this.techTreeEventFrameMc.gotoAndPlay(LABEL_ANIM_START);
+         if(this.techTreeEventFrameMc)
+         {
+            this.techTreeEventFrameMc.gotoAndPlay(LABEL_ANIM_START);
+         }
       }
       
-      public function animateNationTreeEvent() : void
+      public function createAnimationCallback(param1:MovieClip) : Function
       {
-         this.techTreeEventAnimMc.gotoAndPlay(LABEL_ANIM_START);
+         var mc:MovieClip = param1;
+         return function():void
+         {
+            mc.gotoAndPlay(LABEL_ANIM_START);
+         };
       }
       
-      public function resetNationTreeEventAnimation() : void
+      public function resetAnimations() : void
       {
          this.techTreeEventAnimMc.gotoAndStop(1);
+         this.earlyAccessAnimMc.gotoAndStop(1);
       }
       
       private function setTradeIcon() : void
@@ -389,7 +485,7 @@ package net.wg.gui.lobby.techtree.nodes
                this._trade.x = TRADE_POS_X;
                this._trade.y = TRADE_POS_Y;
                this.addChildAt(this._trade,this.numChildren);
-               this._trade.setData(valueObject.id,label);
+               this._trade.setData(getID(),label);
             }
          }
          else if(this._trade != null)
@@ -424,11 +520,32 @@ package net.wg.gui.lobby.techtree.nodes
          }
       }
       
+      private function getEarlyAccessBorderState(param1:Boolean = false) : String
+      {
+         var _loc2_:String = Values.EMPTY_STR;
+         if(isLocked() || isNext2Unlock())
+         {
+            _loc2_ = EARLY_ACCESS_BORDER_LOCKED_LABEL;
+         }
+         if(getNodeData().isEarlyAccessPaused)
+         {
+            _loc2_ = EARLY_ACCESS_BORDER_PAUSED_LABEL;
+         }
+         if(param1)
+         {
+            _loc2_ += EARLY_ACCESS_BORDER_HOVER_LABEL;
+         }
+         return EARLY_ACCESS_BORDER_LABEL + _loc2_;
+      }
+      
       override protected function get mouseEnabledChildren() : Vector.<DisplayObject>
       {
          var _loc1_:Vector.<DisplayObject> = super.mouseEnabledChildren;
          _loc1_.push(this.button);
-         _loc1_.push(this.blueprintPlus);
+         if(!isEarlyAccess)
+         {
+            _loc1_.push(this.blueprintPlus);
+         }
          if(this._trade != null)
          {
             _loc1_.push(this._trade);
@@ -467,12 +584,15 @@ package net.wg.gui.lobby.techtree.nodes
       
       public function get isBorderHighlighted() : Boolean
       {
-         return this.lockedModuleHighlight.isHighlighted;
+         return Boolean(this.lockedModuleHighlight) ? Boolean(this.lockedModuleHighlight.isHighlighted) : Boolean(false);
       }
       
       public function set isBorderHighlighted(param1:Boolean) : void
       {
-         this.lockedModuleHighlight.isHighlighted = param1;
+         if(this.lockedModuleHighlight)
+         {
+            this.lockedModuleHighlight.isHighlighted = param1;
+         }
       }
       
       private function onHitClickHandler(param1:MouseEvent) : void
@@ -485,17 +605,19 @@ package net.wg.gui.lobby.techtree.nodes
       
       private function onNationNodeRollOverHandler(param1:MouseEvent) : void
       {
-         if(this.button != null)
+         this.button.startAnimation();
+         if(this.earlyAccessBorder)
          {
-            this.button.startAnimation();
+            this.earlyAccessBorder.gotoAndStop(this.getEarlyAccessBorderState(true));
          }
       }
       
       private function onNationNodeRollOutHandler(param1:MouseEvent) : void
       {
-         if(this.button != null)
+         this.button.endAnimation(false);
+         if(this.earlyAccessBorder)
          {
-            this.button.endAnimation(false);
+            this.earlyAccessBorder.gotoAndStop(this.getEarlyAccessBorderState());
          }
       }
       
@@ -503,7 +625,7 @@ package net.wg.gui.lobby.techtree.nodes
       {
          if(this._tooltipMgr)
          {
-            this._tooltipMgr.showSpecial(TOOLTIPS_CONSTANTS.BLUEPRINT_CONVERT_INFO,null,valueObject.id);
+            this._tooltipMgr.showSpecial(TOOLTIPS_CONSTANTS.BLUEPRINT_CONVERT_INFO,null,getID());
          }
          this.blueprintPlusHoverEffectEnable();
       }

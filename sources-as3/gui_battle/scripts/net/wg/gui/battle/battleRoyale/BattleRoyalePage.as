@@ -186,6 +186,8 @@ package net.wg.gui.battle.battleRoyale
       
       private var _ubComponentsLoader:Loader = null;
       
+      private var _fullStatsVisible:Boolean = false;
+      
       public function BattleRoyalePage()
       {
          this._atlasHolder = {};
@@ -461,6 +463,10 @@ package net.wg.gui.battle.battleRoyale
             this.updateBattleMessengerPosition();
             this.updateFreeWidthForMessengerInRespawn();
          }
+         if(param1 == BATTLE_VIEW_ALIASES.FULL_STATS)
+         {
+            this._fullStatsVisible = param2;
+         }
       }
       
       override protected function getRibbonsCenterOffset(param1:Number) : int
@@ -514,8 +520,7 @@ package net.wg.gui.battle.battleRoyale
       
       private function updateBattleMessengerPosition() : void
       {
-         var _loc1_:int = 0;
-         _loc1_ = this.teamPanel.y + this.teamPanel.height;
+         var _loc1_:int = this.teamPanel.y + this.teamPanel.height;
          if(this._respawnVisible)
          {
             this.battleMessenger.x = damagePanel.x + MESSENGER_RESPAWN_X_OFFSET;
@@ -601,16 +606,22 @@ package net.wg.gui.battle.battleRoyale
       
       private function onFullStatsCloseHandler(param1:Event) : void
       {
-         this._minimap.restoreZoomMode();
-         this._minimap.toggleTabMode(false);
-         this.grid.visible = false;
+         if(this._fullStatsVisible)
+         {
+            this._minimap.restoreZoomMode();
+            this._minimap.toggleTabMode(false);
+            this.grid.visible = false;
+         }
       }
       
       private function onFullStatsOpenHandler(param1:Event) : void
       {
-         this._minimap.toggleTabMode(true);
-         this._minimap.setTabZoomMode();
-         this.grid.visible = true;
+         if(!this._fullStatsVisible)
+         {
+            this._minimap.toggleTabMode(true);
+            this._minimap.setTabZoomMode();
+            this.grid.visible = true;
+         }
       }
       
       private function onConsumablesPanelUpdatePositionHandler(param1:ConsumablesPanelEvent) : void

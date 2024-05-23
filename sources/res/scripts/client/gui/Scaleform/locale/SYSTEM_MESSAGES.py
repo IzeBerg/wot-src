@@ -867,7 +867,6 @@ class SYSTEM_MESSAGES(object):
     UNIT_ERRORS_INSUFFICIENT_ROLE = '#system_messages:unit/errors/INSUFFICIENT_ROLE'
     UNIT_ERRORS_NO_UNIT = '#system_messages:unit/errors/NO_UNIT'
     UNIT_ERRORS_JOIN_CTX_LOCK = '#system_messages:unit/errors/JOIN_CTX_LOCK'
-    UNIT_ERRORS_HB_BANNED = '#system_messages:unit/errors/HB_BANNED'
     UNIT_ERRORS_CANT_INVITE = '#system_messages:unit/errors/CANT_INVITE'
     UNIT_ERRORS_NOT_READY = '#system_messages:unit/errors/NOT_READY'
     UNIT_ERRORS_NOT_IN_QUEUE = '#system_messages:unit/errors/NOT_IN_QUEUE'
@@ -1350,6 +1349,7 @@ class SYSTEM_MESSAGES(object):
     DEBUTBOXES_ENABLED_BODY = '#system_messages:debutBoxes/enabled/body'
     DEBUTBOXES_DISABLED_HEADER = '#system_messages:debutBoxes/disabled/header'
     DEBUTBOXES_DISABLED_BODY = '#system_messages:debutBoxes/disabled/body'
+    COMP7_OPEN_SHOP = '#system_messages:comp7/open_shop'
     UNIT_NOTIFICATION_DIVISIONTYPE_ENUM = (
      UNIT_NOTIFICATION_DIVISIONTYPE_MIDDLE,
      UNIT_NOTIFICATION_DIVISIONTYPE_CHAMPION,
@@ -1373,7 +1373,6 @@ class SYSTEM_MESSAGES(object):
      UNIT_ERRORS_INSUFFICIENT_ROLE,
      UNIT_ERRORS_NO_UNIT,
      UNIT_ERRORS_JOIN_CTX_LOCK,
-     UNIT_ERRORS_HB_BANNED,
      UNIT_ERRORS_CANT_INVITE,
      UNIT_ERRORS_NOT_READY,
      UNIT_ERRORS_NOT_IN_QUEUE,
@@ -2354,7 +2353,6 @@ class SYSTEM_MESSAGES(object):
      UNIT_ERRORS_INSUFFICIENT_ROLE,
      UNIT_ERRORS_NO_UNIT,
      UNIT_ERRORS_JOIN_CTX_LOCK,
-     UNIT_ERRORS_HB_BANNED,
      UNIT_ERRORS_CANT_INVITE,
      UNIT_ERRORS_NOT_READY,
      UNIT_ERRORS_NOT_IN_QUEUE,
@@ -2836,7 +2834,8 @@ class SYSTEM_MESSAGES(object):
      DEBUTBOXES_ENABLED_HEADER,
      DEBUTBOXES_ENABLED_BODY,
      DEBUTBOXES_DISABLED_HEADER,
-     DEBUTBOXES_DISABLED_BODY)
+     DEBUTBOXES_DISABLED_BODY,
+     COMP7_OPEN_SHOP)
 
     @classmethod
     def unit_notification_divisiontype(cls, key0):

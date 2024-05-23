@@ -631,6 +631,8 @@ package
       
       public static const DETAILS_CALCULATIONS_EVENT:String = "#battle_results:details/calculations/event";
       
+      public static const DETAILS_CALCULATIONS_SUBSTEAMBONUS:String = "#battle_results:details/calculations/subsTeamBonus";
+      
       public static const DETAILS_CALCULATIONS_FAIRPLAYVIOLATION_DESERTER:String = "#battle_results:details/calculations/fairPlayViolation/deserter";
       
       public static const DETAILS_CALCULATIONS_FAIRPLAYVIOLATION_EPIC_DESERTER:String = "#battle_results:details/calculations/fairPlayViolation/epic_deserter";
@@ -674,6 +676,8 @@ package
       public static const DETAILS_CALCULATIONS_TOTAL:String = "#battle_results:details/calculations/total";
       
       public static const DETAILS_CALCULATIONS_PIGGYBANKINFO:String = "#battle_results:details/calculations/piggyBankInfo";
+      
+      public static const DETAILS_CALCULATIONS_PIGGYBANKINFO_TOOLTIP:String = "#battle_results:details/calculations/piggyBankInfo/tooltip";
       
       public static const DETAILS_CALCULATIONS_FIRSTWIN:String = "#battle_results:details/calculations/firstWin";
       

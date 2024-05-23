@@ -10,7 +10,7 @@ class BattlePassBuyViewModel(ViewModel):
     CONFIRM_STATE = 'confirmState'
     REWARDS_STATE = 'rewardsState'
 
-    def __init__(self, properties=7, commands=5):
+    def __init__(self, properties=8, commands=5):
         super(BattlePassBuyViewModel, self).__init__(properties=properties, commands=commands)
 
     @property
@@ -61,6 +61,12 @@ class BattlePassBuyViewModel(ViewModel):
     def setShopOfferDiscount(self, value):
         self._setNumber(6, value)
 
+    def getShopOfferTimeLeft(self):
+        return self._getNumber(7)
+
+    def setShopOfferTimeLeft(self, value):
+        self._setNumber(7, value)
+
     def _initialize(self):
         super(BattlePassBuyViewModel, self)._initialize()
         self._addViewModelProperty('packages', UserListModel())
@@ -70,6 +76,7 @@ class BattlePassBuyViewModel(ViewModel):
         self._addBoolProperty('isWalletAvailable', False)
         self._addBoolProperty('isShopOfferAvailable', False)
         self._addNumberProperty('shopOfferDiscount', 0)
+        self._addNumberProperty('shopOfferTimeLeft', 0)
         self.onBackClick = self._addCommand('onBackClick')
         self.choosePackage = self._addCommand('choosePackage')
         self.showConfirm = self._addCommand('showConfirm')

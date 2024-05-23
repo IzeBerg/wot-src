@@ -7,6 +7,7 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
    import net.wg.data.constants.generated.FITTING_TYPES;
    import net.wg.gui.components.controls.ResizableScrollPane;
    import net.wg.gui.events.VehicleSellDialogEvent;
+   import net.wg.gui.interfaces.ISaleItemBlockRenderer;
    import net.wg.gui.lobby.vehicleTradeWnds.sell.vo.SellOnVehicleOptionalDeviceVo;
    import net.wg.infrastructure.base.UIComponentEx;
    import scaleform.clik.constants.InvalidationType;
@@ -110,6 +111,16 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
          return Number(_loc2_ + (!!param1 ? PADDING_FOR_NEXT_ELEMENT : -PADDING_FOR_NEXT_ELEMENT));
       }
       
+      public function updateDevice(param1:SellOnVehicleOptionalDeviceVo) : void
+      {
+         var _loc2_:SellDialogElementVO = this.getElementVo(param1);
+         var _loc3_:* = this.getRenderer(_loc2_);
+         if(_loc3_)
+         {
+            _loc3_.setData(_loc2_);
+         }
+      }
+      
       public function setData(param1:Vector.<SellOnVehicleOptionalDeviceVo>) : void
       {
          var _loc6_:SellDialogElementVO = null;
@@ -125,22 +136,7 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
          while(_loc5_ < _loc3_)
          {
             _loc4_ = param1[_loc5_];
-            _loc6_ = new SellDialogElementVO();
-            _loc6_.id = _loc4_.userName;
-            _loc6_.type = FITTING_TYPES.OPTIONAL_DEVICE;
-            _loc6_.itemIDList = [_loc4_.itemID];
-            _loc6_.count = _loc4_.count;
-            _loc6_.moneyValue = _loc4_.sellPrice[!!_loc4_.isModernized ? CURRENCIES_CONSTANTS.EQUIP_COIN_INDEX : CURRENCIES_CONSTANTS.CREDITS_INDEX];
-            _loc6_.sellActionPriceVo = _loc4_.actionVo;
-            _loc6_.removePrice = _loc4_.removePrice;
-            _loc6_.removeCurrency = _loc4_.removeCurrency;
-            _loc6_.isRemovable = _loc4_.isRemovable;
-            _loc6_.isModernized = _loc4_.isModernized;
-            _loc6_.isWotPlusEnabled = _loc4_.isWotPlusEnabled;
-            _loc6_.toInventory = _loc4_.toInventory;
-            _loc6_.onlyToInventory = _loc4_.onlyToInventory;
-            _loc6_.removeActionPriceVo = _loc4_.removeActionPrice;
-            _loc6_.alertIconDataID = _loc4_.alertIconDataID;
+            _loc6_ = this.getElementVo(_loc4_);
             if(_loc4_.isRemovable)
             {
                _loc2_.elements.push(_loc6_);
@@ -200,6 +196,44 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
       public function get sellData() : Array
       {
          return this._sellData;
+      }
+      
+      private function getElementVo(param1:SellOnVehicleOptionalDeviceVo) : SellDialogElementVO
+      {
+         var _loc2_:SellDialogElementVO = new SellDialogElementVO();
+         _loc2_.id = param1.userName;
+         _loc2_.type = FITTING_TYPES.OPTIONAL_DEVICE;
+         _loc2_.itemIDList = [param1.itemID];
+         _loc2_.count = param1.count;
+         _loc2_.moneyValue = param1.sellPrice[!!param1.isModernized ? CURRENCIES_CONSTANTS.EQUIP_COIN_INDEX : CURRENCIES_CONSTANTS.CREDITS_INDEX];
+         _loc2_.sellActionPriceVo = param1.actionVo;
+         _loc2_.removePrice = param1.removePrice;
+         _loc2_.removeCurrency = param1.removeCurrency;
+         _loc2_.isRemovable = param1.isRemovable;
+         _loc2_.isModernized = param1.isModernized;
+         _loc2_.isWotPlusEnabled = param1.isWotPlusEnabled;
+         _loc2_.toInventory = param1.toInventory;
+         _loc2_.onlyToInventory = param1.onlyToInventory;
+         _loc2_.removeActionPriceVo = param1.removeActionPrice;
+         _loc2_.alertIconDataID = param1.alertIconDataID;
+         _loc2_.isAlertVisible = param1.isAlertVisible;
+         return _loc2_;
+      }
+      
+      private function getRenderer(param1:SellDialogElementVO) : ISaleItemBlockRenderer
+      {
+         var _loc3_:ISaleItemBlockRenderer = null;
+         var _loc4_:SellDialogElementVO = null;
+         var _loc2_:Vector.<ISaleItemBlockRenderer> = this._content.getRenderers();
+         for each(_loc3_ in _loc2_)
+         {
+            _loc4_ = _loc3_.getData() as SellDialogElementVO;
+            if(_loc4_ && _loc4_.id == param1.id)
+            {
+               return _loc3_;
+            }
+         }
+         return null;
       }
       
       private function onSellDialogListItemRendererWasDrawnHandler(param1:VehicleSellDialogEvent) : void

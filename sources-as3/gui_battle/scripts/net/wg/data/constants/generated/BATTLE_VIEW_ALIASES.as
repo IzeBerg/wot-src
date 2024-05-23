@@ -147,30 +147,6 @@ package net.wg.data.constants.generated
       
       public static const PERSONAL_RESERVES_TAB:String = "personalReservesTab";
       
-      public static const EVENT_BUFF_NOTIFICATION_SYSTEM:String = "eventBuffNotificationSystem";
-      
-      public static const EVENT_FULL_MAP:String = "eventFullMap";
-      
-      public static const HISTORICAL_BATTLES_BUFF_NOTIFICATION_SYSTEM:String = "historicalBattlesBuffNotificationSystem";
-      
-      public static const HISTORICAL_BATTLES_FULL_MAP:String = "historicalBattlesFullMap";
-      
-      public static const HISTORICAL_BATTLES_TIMER:String = "historicalBattlesTimer";
-      
-      public static const HISTORICAL_BATTLES_PLAYER_LIVES:String = "historicalBattlesPlayerLives";
-      
-      public static const HISTORICAL_BATTLES_PLAYERS_PANEL:String = "historicalBattlesPlayersPanel";
-      
-      public static const HISTORICAL_BATTLES_PHASE_INDICATOR:String = "historicalBattlesPhaseIndicator";
-      
-      public static const HISTORICAL_BATTLES_DESTROY_TIMERS_PANEL:String = "historicalBattlesDestroyTimersPanel";
-      
-      public static const HISTORICAL_BATTLES_STATS_WIDGET:String = "historicalBattlesStatsWidget";
-      
-      public static const HISTORICAL_BATTLES_BASE_HINT:String = "battleBaseHint";
-      
-      public static const HISTORICAL_BATTLES_ROLE_NOTIFICATION:String = "historicalBattlesRoleNotification";
-      
       public static const EVENT_POSTMORTEM_PANEL:String = "eventPostmortemPanel";
       
       public static const BATTLE_VEHICLE_CONFIGURATOR:String = "battleVehicleConfigurator";

@@ -1028,10 +1028,3 @@ class ArcadeCameraEpic(ArcadeCamera):
         ResMgr.purge('gui/avatar_input_handler.xml')
         cameraSec = ResMgr.openSection('gui/avatar_input_handler.xml/arcadeEpicMinefieldMode/camera/')
         self._reloadConfigs(cameraSec)
-
-
-class ArcadeCameraAOE(ArcadeCamera):
-
-    @staticmethod
-    def _getConfigsKey():
-        return ArcadeCameraAOE.__name__

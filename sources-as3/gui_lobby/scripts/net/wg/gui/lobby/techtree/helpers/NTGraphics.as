@@ -17,6 +17,8 @@ package net.wg.gui.lobby.techtree.helpers
       
       private static const ACTION_LINE_COLOR:uint = 16768409;
       
+      private static const EARLY_ACCESS_LINE_COLOR:uint = 9961452;
+      
       private static const FIELD_Y:String = "y";
       
       private static const LOG_MSG_DRAW_TM_SET_WARNING:String = "Warning! From top part of node can goes only one line.";
@@ -69,7 +71,7 @@ package net.wg.gui.lobby.techtree.helpers
       
       override public function setup() : void
       {
-         colorIdxs = new <uint>[ARROW_COLOR,ARROW_COLOR,ACTION_LINE_COLOR];
+         colorIdxs = new <uint>[ARROW_COLOR,ARROW_COLOR,ACTION_LINE_COLOR,EARLY_ACCESS_LINE_COLOR];
       }
       
       override protected function onDispose() : void
@@ -203,7 +205,7 @@ package net.wg.gui.lobby.techtree.helpers
                   _loc10_ = colorIdxs[_loc9_];
                   _loc19_ = getLineThickness(_loc16_,param1);
                   _loc11_ = this.getArrowAlpha(_loc10_,_loc19_);
-                  drawLineAndArrow(param1,_loc10_,_loc7_,_loc8_,_loc19_,_loc11_);
+                  drawLineAndArrow(param1,_loc10_,_loc7_,_loc8_,_loc19_,_loc11_,false,false,getLineStyle(_loc16_));
                }
             }
             _loc14_++;
@@ -267,7 +269,7 @@ package net.wg.gui.lobby.techtree.helpers
             _loc13_ = this.getArrowAlpha(_loc11_,_loc14_);
             param4.y = _loc6_ == _loc7_ - 1 ? Number(param3.y) : Number(param2[_loc6_ + 1].point.y);
             param5.y = _loc8_.point.y;
-            drawLineAndArrow(param1,_loc11_,param5,_loc8_.point,_loc14_,_loc13_);
+            drawLineAndArrow(param1,_loc11_,param5,_loc8_.point,_loc14_,_loc13_,false,false,getLineStyle(_loc9_));
             drawLine(param1,_loc11_,param4,param5,_loc14_,_loc13_);
             _loc6_++;
          }
@@ -318,12 +320,12 @@ package net.wg.gui.lobby.techtree.helpers
                _loc16_++;
             }
             _loc13_ = new Point(_loc6_[0],_loc6_[1]);
-            drawLineAndArrow(param1,_loc10_,_loc12_,_loc13_,_loc8_,_loc11_);
+            drawLineAndArrow(param1,_loc10_,_loc12_,_loc13_,_loc8_,_loc11_,false,false,getLineStyle(_loc5_));
          }
          else
          {
             _loc13_ = new Point(_loc6_[0],_loc6_[1]);
-            drawLineAndArrow(param1,_loc10_,_loc12_,_loc13_,_loc8_,_loc11_);
+            drawLineAndArrow(param1,_loc10_,_loc12_,_loc13_,_loc8_,_loc11_,false,false,getLineStyle(_loc5_));
          }
          if(!param4)
          {
@@ -387,14 +389,14 @@ package net.wg.gui.lobby.techtree.helpers
             _loc19_ = this.getArrowAlpha(_loc22_,_loc20_);
             if(_loc23_.drawArrow)
             {
-               drawLineAndArrow(param1,_loc22_,_loc17_,_loc23_.endPin,_loc20_,_loc19_);
+               drawLineAndArrow(param1,_loc22_,_loc17_,_loc23_.endPin,_loc20_,_loc19_,false,false,getLineStyle(_loc12_));
             }
             else
             {
                _loc8_ = _loc23_.endPin;
                _loc21_ = new Point(_loc17_.x,_loc8_.y);
                drawLine(param1,_loc22_,_loc17_,_loc21_,_loc20_,_loc19_);
-               drawLineAndArrow(param1,_loc22_,_loc21_,_loc8_,_loc20_,_loc19_);
+               drawLineAndArrow(param1,_loc22_,_loc21_,_loc8_,_loc20_,_loc19_,false,false,getLineStyle(_loc12_));
             }
             if(!param3)
             {

@@ -1,10 +1,14 @@
 import typing, logging
+from constants import IS_DEVELOPMENT
 from frameworks import wulf
 _logger = logging.getLogger(__name__)
 
 def text(resId, *args, **kwargs):
     if resId <= 0:
         _logger.warning('Invalid resId')
+        if IS_DEVELOPMENT:
+            import traceback
+            traceback.print_stack(limit=2)
         return ''
     if args:
         try:
@@ -26,6 +30,9 @@ def text(resId, *args, **kwargs):
 def ntext(resId, n, *args, **kwargs):
     if resId <= 0:
         _logger.warning('Invalid resId')
+        if IS_DEVELOPMENT:
+            import traceback
+            traceback.print_stack(limit=2)
         return ''
     if args:
         try:

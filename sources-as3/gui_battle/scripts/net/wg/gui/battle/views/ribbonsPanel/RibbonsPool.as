@@ -59,7 +59,7 @@ package net.wg.gui.battle.views.ribbonsPanel
             _loc7_ = param4[_loc11_];
             _loc8_ = _loc7_[RIBBON_TYPE_PARAM_IDX];
             _loc10_ = _loc7_[RIBBON_TEXT_PARAM_IDX];
-            _loc9_ = this.createRibbonSettings(_loc8_,_loc10_);
+            _loc9_ = new RibbonSettings(_loc8_,_loc10_);
             this._ribbonsSettings[_loc8_] = _loc9_;
             _loc12_ = new Vector.<RibbonCtrl>(0);
             this._mapVectorsWithItemsByRibbonType[_loc8_] = _loc12_;
@@ -112,11 +112,6 @@ package net.wg.gui.battle.views.ribbonsPanel
          return _loc2_.shift();
       }
       
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
-      }
-      
       public function returnInPool(param1:RibbonCtrl) : void
       {
          this._mapVectorsWithItemsByRibbonType[param1.ribbonType].push(param1);
@@ -134,11 +129,6 @@ package net.wg.gui.battle.views.ribbonsPanel
          }
       }
       
-      protected function createRibbonSettings(param1:String, param2:String) : RibbonSettings
-      {
-         return new RibbonSettings(param1,param2);
-      }
-      
       private function createRibbonCtrl(param1:String) : RibbonCtrl
       {
          var _loc2_:RibbonSettings = this._ribbonsSettings[param1];
@@ -148,6 +138,11 @@ package net.wg.gui.battle.views.ribbonsPanel
          this._bonusContainer.addChild(_loc3_.bonusAnim);
          this._ribbonsStorage.push(_loc3_);
          return _loc3_;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -4,7 +4,6 @@ package net.wg.gui.lobby.lobbyVehicleMarkerView
    import flash.utils.Dictionary;
    import net.wg.data.constants.Linkages;
    import net.wg.gui.components.common.lobbyVehicleMarkers.CustomMarker;
-   import net.wg.gui.components.common.lobbyVehicleMarkers.HBLobbyVehicleMarkers;
    import net.wg.gui.components.common.lobbyVehicleMarkers.LobbyVehicleMarkers;
    import net.wg.gui.components.common.lobbyVehicleMarkers.PlatoonMarker;
    import net.wg.infrastructure.base.meta.ILobbyVehicleMarkerViewMeta;
@@ -50,15 +49,6 @@ package net.wg.gui.lobby.lobbyVehicleMarkerView
          addChild(_loc4_);
          this._markers[param1] = _loc4_;
          return _loc4_;
-      }
-      
-      public function as_createHBMarker(param1:int, param2:String, param3:String, param4:String, param5:String) : DisplayObject
-      {
-         var _loc6_:HBLobbyVehicleMarkers = App.instance.utils.classFactory.getComponent(Linkages.LOBBY_HB_VEH_MARKER,HBLobbyVehicleMarkers);
-         _loc6_.setVehicleInfo(param2,param3,param4,param5);
-         addChild(_loc6_);
-         this._markers[param1] = _loc6_;
-         return _loc6_;
       }
       
       public function as_createPlatoonMarker(param1:int, param2:String, param3:String) : DisplayObject

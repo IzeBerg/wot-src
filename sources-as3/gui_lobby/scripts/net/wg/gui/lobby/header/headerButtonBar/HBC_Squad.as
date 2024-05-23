@@ -23,7 +23,7 @@ package net.wg.gui.lobby.header.headerButtonBar
       
       private static const NOT_RANDOM_SHIELD_ANIMATION_X:int = -4;
       
-      protected static const DIMENSIONS:Object = {
+      private static const DIMENSIONS:Object = {
          "searchingPadding":15,
          "platoonOrSquadPadding":10,
          "createPadding":10,
@@ -49,8 +49,6 @@ package net.wg.gui.lobby.header.headerButtonBar
       
       public var rightIconContainer:PlatoonShieldIconContainer = null;
       
-      protected var arrowXDefault:int = -1;
-      
       private var _squadDataVo:HBC_SquadDataVo = null;
       
       private var _isShort:Boolean = false;
@@ -60,6 +58,8 @@ package net.wg.gui.lobby.header.headerButtonBar
       private var _textFieldXDefault:int = -1;
       
       private var _containersDefPositionsX:Array = null;
+      
+      private var _arrowXDefault:int = -1;
       
       private var _containersOrder:Vector.<PlatoonShieldIconContainer> = null;
       
@@ -74,8 +74,14 @@ package net.wg.gui.lobby.header.headerButtonBar
          additionalScreenPadding.left = 4;
          additionalScreenPadding.right = -2;
          maxFontSize = 14;
-         this.setVisibilityContainerIcons(this.leftIconContainer,false);
-         this.setVisibilityContainerIcons(this.rightIconContainer,false);
+         this.leftIconContainer.leftBGShieldsIcon.visible = false;
+         this.leftIconContainer.leftBGShieldsIconAnimation.visible = false;
+         this.leftIconContainer.rightBGShieldsIcon.visible = false;
+         this.leftIconContainer.rightBGShieldsIconAnimation.visible = false;
+         this.rightIconContainer.leftBGShieldsIcon.visible = false;
+         this.rightIconContainer.leftBGShieldsIconAnimation.visible = false;
+         this.rightIconContainer.rightBGShieldsIcon.visible = false;
+         this.rightIconContainer.rightBGShieldsIconAnimation.visible = false;
          this.mainIconContainer.isMain = true;
          this._containersOrder = new <PlatoonShieldIconContainer>[this.leftIconContainer,this.mainIconContainer,this.rightIconContainer];
          this._innerOrder = new <Vector.<MovieClip>>[new <MovieClip>[this.mainIconContainer.leftBGShieldsIcon,this.mainIconContainer.leftBGShieldsIconAnimation],new Vector.<MovieClip>(0),new <MovieClip>[this.mainIconContainer.rightBGShieldsIcon,this.mainIconContainer.rightBGShieldsIconAnimation]];
@@ -93,10 +99,37 @@ package net.wg.gui.lobby.header.headerButtonBar
       
       override protected function draw() : void
       {
+         var _loc1_:Boolean = false;
          super.draw();
          if(isInvalid(UPDATE_SQUAD_STATE_ID))
          {
-            this.updateSquadState();
+            _loc1_ = this._squadDataVo.squadExtendInfoVo.squadManStates.length && this._squadDataVo.squadExtendInfoVo.squadManStates.length <= NORMAL_SIZE_PLATOON;
+            if(_loc1_)
+            {
+               switch(this._squadDataVo.squadExtendInfoVo.platoonState)
+               {
+                  case PlatoonShieldIconContainer.STATES.create:
+                     this.positionMainIconContainer();
+                     this.arrow.x = !!this._isWideScreen ? Number(this._arrowXDefault) : Number(this._arrowXDefault + DIMENSIONS.minResArrowPadding);
+                     break;
+                  case PlatoonShieldIconContainer.STATES.searching:
+                     this.textField.x = this.searchingAnimation.x + this.searchingAnimation.width + DIMENSIONS.distanceBetweenTextAndSearch >> 0;
+                     break;
+                  case PlatoonShieldIconContainer.STATES.inPlatoon:
+                     this.restoreDefaultPositions();
+                     if(!this._isWideScreen)
+                     {
+                        this.mainIconContainer.x = this._containersDefPositionsX[0];
+                     }
+                     break;
+                  case PlatoonShieldIconContainer.STATES.squadEvent:
+                     this.mainIconContainer.x = this.textField.x + this.textField.width + (this.mainIconContainer.width >> 1);
+               }
+            }
+            else
+            {
+               this.positionMainIconContainer();
+            }
          }
       }
       
@@ -112,7 +145,7 @@ package net.wg.gui.lobby.header.headerButtonBar
             _loc2_++;
          }
          this._textFieldXDefault = this.textField.x;
-         this.arrowXDefault = this.arrow.x;
+         this._arrowXDefault = this.arrow.x;
          this.mainIconContainer.addEventListener(UILoaderEvent.COMPLETE,this.onIconLoadCompleteHandler);
          this.leftIconContainer.addEventListener(UILoaderEvent.COMPLETE,this.onIconLoadCompleteHandler);
          this.rightIconContainer.addEventListener(UILoaderEvent.COMPLETE,this.onIconLoadCompleteHandler);
@@ -120,93 +153,6 @@ package net.wg.gui.lobby.header.headerButtonBar
       }
       
       override protected function updateSize() : void
-      {
-         this.updateSquadSize();
-         invalidate(UPDATE_SQUAD_STATE_ID);
-         super.updateSize();
-      }
-      
-      override protected function updateData() : void
-      {
-         this.updateSquadData();
-         invalidate(UPDATE_SQUAD_STATE_ID);
-         super.updateData();
-      }
-      
-      override protected function onDispose() : void
-      {
-         this.clearOrderList();
-         var _loc1_:int = this._innerOrder.length;
-         var _loc2_:int = Values.ZERO;
-         while(_loc2_ < _loc1_)
-         {
-            this._innerOrder[_loc2_].splice(0,this._innerOrder[_loc2_].length);
-            _loc2_++;
-         }
-         this._innerOrder.splice(0,_loc1_);
-         this._innerOrder = null;
-         if(this._containersDefPositionsX)
-         {
-            this._containersDefPositionsX.length = 0;
-            this._containersDefPositionsX = null;
-         }
-         this.mainIconContainer.removeEventListener(UILoaderEvent.COMPLETE,this.onIconLoadCompleteHandler);
-         this.leftIconContainer.removeEventListener(UILoaderEvent.COMPLETE,this.onIconLoadCompleteHandler);
-         this.rightIconContainer.removeEventListener(UILoaderEvent.COMPLETE,this.onIconLoadCompleteHandler);
-         this.textField = null;
-         this._squadDataVo = null;
-         this.arrow.dispose();
-         this.arrow = null;
-         this.leftIconContainer.dispose();
-         this.leftIconContainer = null;
-         this.mainIconContainer.dispose();
-         this.mainIconContainer = null;
-         this.rightIconContainer.dispose();
-         this.rightIconContainer = null;
-         this.searchingAnimation.dispose();
-         this.searchingAnimation = null;
-         super.onDispose();
-      }
-      
-      private function clearOrderList() : void
-      {
-         this._containersOrder.splice(0,this._containersOrder.length);
-         this._containersOrder = null;
-      }
-      
-      protected function updateSquadState() : void
-      {
-         var _loc1_:int = this._squadDataVo.squadExtendInfoVo.squadManStates.length;
-         var _loc2_:Boolean = _loc1_ && _loc1_ <= NORMAL_SIZE_PLATOON;
-         if(_loc2_)
-         {
-            switch(this._squadDataVo.squadExtendInfoVo.platoonState)
-            {
-               case PlatoonShieldIconContainer.STATES.create:
-                  this.positionMainIconContainer();
-                  this.arrow.x = !!this._isWideScreen ? Number(this.arrowXDefault) : Number(this.arrowXDefault + DIMENSIONS.minResArrowPadding);
-                  break;
-               case PlatoonShieldIconContainer.STATES.searching:
-                  this.textField.x = this.searchingAnimation.x + this.searchingAnimation.width + DIMENSIONS.distanceBetweenTextAndSearch >> 0;
-                  break;
-               case PlatoonShieldIconContainer.STATES.inPlatoon:
-                  this.restoreDefaultPositions();
-                  if(!this._isWideScreen)
-                  {
-                     this.mainIconContainer.x = this._containersDefPositionsX[0];
-                  }
-                  break;
-               case PlatoonShieldIconContainer.STATES.squadEvent:
-                  this.mainIconContainer.x = this.textField.x + this.textField.width + (this.mainIconContainer.width >> 1);
-            }
-         }
-         else
-         {
-            this.positionMainIconContainer();
-         }
-      }
-      
-      protected function updateSquadSize() : void
       {
          this._isWideScreen = wideScreenPrc > WIDE_SCREEN_PRC_BORDER;
          this.clearOrderList();
@@ -255,9 +201,11 @@ package net.wg.gui.lobby.header.headerButtonBar
          }
          var _loc8_:int = this.getPaddingDependingOnState(this._squadDataVo.squadExtendInfoVo.platoonState);
          bounds.width = _loc2_ + _loc3_ + _loc4_ + _loc6_ + _loc5_ + _loc8_ + _loc7_;
+         invalidate(UPDATE_SQUAD_STATE_ID);
+         super.updateSize();
       }
       
-      protected function updateSquadData() : void
+      override protected function updateData() : void
       {
          var _loc2_:int = 0;
          this.mainIconContainer.setEventIcon(this._squadDataVo.icon);
@@ -313,29 +261,43 @@ package net.wg.gui.lobby.header.headerButtonBar
                   this.mainIconContainer.updateIconContainer(this._squadDataVo.squadExtendInfoVo,PlatoonShieldIconContainer.PLAYERS.left);
                }
          }
+         invalidate(UPDATE_SQUAD_STATE_ID);
+         super.updateData();
       }
       
-      protected function set squadDataVo(param1:HBC_SquadDataVo) : void
+      override protected function onDispose() : void
       {
-         this._squadDataVo = param1;
-      }
-      
-      protected function get squadDataVo() : HBC_SquadDataVo
-      {
-         return this._squadDataVo;
-      }
-      
-      protected function set isWideScreen(param1:Boolean) : void
-      {
-         if(this._isWideScreen != param1)
+         this.clearOrderList();
+         var _loc1_:int = this._innerOrder.length;
+         var _loc2_:int = Values.ZERO;
+         while(_loc2_ < _loc1_)
          {
-            this._isWideScreen = param1;
+            this._innerOrder[_loc2_].splice(0,this._innerOrder[_loc2_].length);
+            _loc2_++;
          }
-      }
-      
-      protected function get isWideScreen() : Boolean
-      {
-         return this._isWideScreen;
+         this._innerOrder.splice(0,_loc1_);
+         this._innerOrder = null;
+         if(this._containersDefPositionsX)
+         {
+            this._containersDefPositionsX.length = 0;
+            this._containersDefPositionsX = null;
+         }
+         this.mainIconContainer.removeEventListener(UILoaderEvent.COMPLETE,this.onIconLoadCompleteHandler);
+         this.leftIconContainer.removeEventListener(UILoaderEvent.COMPLETE,this.onIconLoadCompleteHandler);
+         this.rightIconContainer.removeEventListener(UILoaderEvent.COMPLETE,this.onIconLoadCompleteHandler);
+         this.textField = null;
+         this._squadDataVo = null;
+         this.arrow.dispose();
+         this.arrow = null;
+         this.leftIconContainer.dispose();
+         this.leftIconContainer = null;
+         this.mainIconContainer.dispose();
+         this.mainIconContainer = null;
+         this.rightIconContainer.dispose();
+         this.rightIconContainer = null;
+         this.searchingAnimation.dispose();
+         this.searchingAnimation = null;
+         super.onDispose();
       }
       
       override protected function isNeedUpdateFont() : Boolean
@@ -343,7 +305,13 @@ package net.wg.gui.lobby.header.headerButtonBar
          return super.isNeedUpdateFont() || useFontSize != this.textField.getTextFormat().size;
       }
       
-      protected function restoreDefaultPositions() : void
+      private function clearOrderList() : void
+      {
+         this._containersOrder.splice(0,this._containersOrder.length);
+         this._containersOrder = null;
+      }
+      
+      private function restoreDefaultPositions() : void
       {
          var _loc2_:PlatoonShieldIconContainer = null;
          this.textField.x = this._textFieldXDefault;
@@ -355,16 +323,16 @@ package net.wg.gui.lobby.header.headerButtonBar
             _loc2_.x = !!_loc2_.visible ? Number(this._containersDefPositionsX[_loc3_]) : Number(Values.ZERO);
             _loc3_++;
          }
-         this.arrow.x = this.arrowXDefault;
+         this.arrow.x = this._arrowXDefault;
       }
       
-      protected function positionMainIconContainer() : void
+      private function positionMainIconContainer() : void
       {
          this.restoreDefaultPositions();
          this.mainIconContainer.x = !!this._isWideScreen ? Number(this.textField.x + this.textField.width + DIMENSIONS.shieldDistanceToText >> 0) : Number(this._containersDefPositionsX[this._containersOrder.indexOf(this.leftIconContainer)]);
       }
       
-      protected function getPaddingDependingOnState(param1:String) : int
+      private function getPaddingDependingOnState(param1:String) : int
       {
          var _loc2_:int = 0;
          var _loc3_:Boolean = this._squadDataVo.squadExtendInfoVo.squadManStates.length && this._squadDataVo.squadExtendInfoVo.squadManStates.length <= NORMAL_SIZE_PLATOON;
@@ -412,7 +380,7 @@ package net.wg.gui.lobby.header.headerButtonBar
          return _loc2_;
       }
       
-      protected function setSideIconsVisibility(param1:Boolean, param2:int = 0) : void
+      private function setSideIconsVisibility(param1:Boolean, param2:int = 0) : void
       {
          var _loc3_:int = this._containersOrder.length;
          var _loc4_:int = 0;
@@ -423,7 +391,7 @@ package net.wg.gui.lobby.header.headerButtonBar
          }
       }
       
-      protected function setSubiconsVisibility(param1:Boolean, param2:int = 0) : void
+      private function setSubiconsVisibility(param1:Boolean, param2:int = 0) : void
       {
          var _loc5_:int = 0;
          var _loc6_:int = 0;
@@ -442,14 +410,14 @@ package net.wg.gui.lobby.header.headerButtonBar
          }
       }
       
-      protected function setHatVisibility(param1:Boolean) : void
+      private function setHatVisibility(param1:Boolean) : void
       {
          this.mainIconContainer.isCommanderHatVisible(param1);
          this.leftIconContainer.isCommanderHatVisible(param1);
          this.rightIconContainer.isCommanderHatVisible(param1);
       }
       
-      protected function updateIconsVisibility() : void
+      private function updateIconsVisibility() : void
       {
          this.searchingAnimation.visible = this._squadDataVo.squadExtendInfoVo.platoonState == PlatoonShieldIconContainer.STATES.searching;
          var _loc1_:Boolean = this._squadDataVo.squadExtendInfoVo.squadManStates.length && this._squadDataVo.squadExtendInfoVo.squadManStates.length <= NORMAL_SIZE_PLATOON;
@@ -469,7 +437,7 @@ package net.wg.gui.lobby.header.headerButtonBar
          }
       }
       
-      protected function updateContainersSizeScreen() : void
+      private function updateContainersSizeScreen() : void
       {
          var _loc1_:PlatoonShieldIconContainer = null;
          for each(_loc1_ in this._containersOrder)
@@ -502,14 +470,6 @@ package net.wg.gui.lobby.header.headerButtonBar
       private function onIconLoadCompleteHandler(param1:UILoaderEvent) : void
       {
          invalidate(InvalidationType.DATA,InvalidationType.SIZE);
-      }
-      
-      protected function setVisibilityContainerIcons(param1:PlatoonShieldIconContainer, param2:Boolean) : void
-      {
-         param1.leftBGShieldsIcon.visible = param2;
-         param1.leftBGShieldsIconAnimation.visible = param2;
-         param1.rightBGShieldsIcon.visible = param2;
-         param1.rightBGShieldsIconAnimation.visible = param2;
       }
    }
 }

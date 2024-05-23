@@ -41,6 +41,14 @@ package net.wg.infrastructure.managers.impl.tutorial
          return false;
       }
       
+      protected function onComponentStateChangeHandler(param1:Event) : void
+      {
+         if(this.checkComponentEnabled())
+         {
+            dispatchTriggerEvent();
+         }
+      }
+      
       protected function get componentIsEnabled() : Boolean
       {
          if(target != null && target.hasOwnProperty(PROPERTY_ENABLED))
@@ -48,14 +56,6 @@ package net.wg.infrastructure.managers.impl.tutorial
             return target[PROPERTY_ENABLED];
          }
          return false;
-      }
-      
-      private function onComponentStateChangeHandler(param1:Event) : void
-      {
-         if(this.checkComponentEnabled())
-         {
-            dispatchTriggerEvent();
-         }
       }
    }
 }

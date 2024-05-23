@@ -1,6 +1,7 @@
 package net.wg.infrastructure.managers.impl.tutorial
 {
    import flash.display.DisplayObject;
+   import flash.events.Event;
    
    public class EnabledChangeTriggerWatcher extends BaseEnabledTriggerWatcher
    {
@@ -19,7 +20,12 @@ package net.wg.infrastructure.managers.impl.tutorial
       
       override protected function dispatchTriggerEvent() : void
       {
-         dispatchEvent(new TriggerEvent(TriggerEvent.TRIGGER_ACTIVATED,false,false,_enabled));
+         dispatchEvent(new TriggerEvent(TriggerEvent.TRIGGER_ACTIVATED,false,false,componentIsEnabled));
+      }
+      
+      override protected function onComponentStateChangeHandler(param1:Event) : void
+      {
+         this.dispatchTriggerEvent();
       }
    }
 }

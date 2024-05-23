@@ -909,9 +909,6 @@ msgstr "Купить"
 msgid "boostersWindow/boostersTableRenderer/goToQuestBtnLabel"
 msgstr "Перейти к задаче"
 
-msgid "boostersWindow/boostersTableRenderer/header"
-msgstr "%(boosterName)s %(quality)s"
-
 msgid "boostersWindow/boostersTableRenderer/questForOpen"
 msgstr "Для доступа выполните «%(questName)s»"
 
@@ -1103,9 +1100,6 @@ msgstr "Создать заметку"
 
 msgid "contextMenu/createEventSquad"
 msgstr "Создать ивентный взвод"
-
-msgid "contextMenu/createHistoricalBattleSquad"
-msgstr "Взвод события «Время героев»"
 
 msgid "contextMenu/createMapboxSquad"
 msgstr "Разведка боем: создать взвод"
@@ -1733,7 +1727,7 @@ msgid "currentVehicleStatus/serverRestriction"
 msgstr "Серверное ограничение"
 
 msgid "currentVehicleStatus/subscription_suspended"
-msgstr "?empty?"
+msgstr "Подписка отменена"
 
 msgid "currentVehicleStatus/undamaged"
 msgstr "К бою готов!"
@@ -2952,9 +2946,6 @@ msgstr "Тренировочный бой"
 msgid "headerButtons/battle/types/epicTraining/descr"
 msgstr "Линия фронта"
 
-msgid "headerButtons/battle/types/eventBattle"
-msgstr "Время героев"
-
 msgid "headerButtons/battle/types/eventSquad"
 msgstr "Ивентовый взвод"
 
@@ -3385,10 +3376,10 @@ msgid "headerButtons/fightBtn/tooltip/vehicleIsBroken/header"
 msgstr "Машина повреждена"
 
 msgid "headerButtons/fightBtn/tooltip/wotPlusExclusiveUnavailable/body"
-msgstr "?empty?"
+msgstr "Активируйте подписку или выберите другую машину."
 
 msgid "headerButtons/fightBtn/tooltip/wotPlusExclusiveUnavailable/header"
-msgstr "?empty?"
+msgstr "Подписка на технику отменена"
 
 msgid "headerButtons/hangar"
 msgstr "Ангар"
@@ -5374,6 +5365,9 @@ msgstr "Показать в Ангаре"
 msgid "research/labels/button/toCollection"
 msgstr "К коллекции"
 
+msgid "research/labels/button/toEarlyAccessQuestsButton"
+msgstr "К ЗАДАЧАМ"
+
 msgid "research/labels/button/trade-in"
 msgstr "Обменять"
 
@@ -5412,6 +5406,9 @@ msgstr "Время восстановления не ограничено"
 
 msgid "research/restore/dueDate"
 msgstr "до %(date)s"
+
+msgid "research/status/earlyAccess"
+msgstr "Техника раннего доступа"
 
 msgid "research/status/historicalModules"
 msgstr "На технике установлена историческая комплектация"
@@ -6245,7 +6242,9 @@ msgid "tankCarousel/vehicleStates/serverRestriction"
 msgstr "Серверное ограничение"
 
 msgid "tankCarousel/vehicleStates/subscription_suspended"
-msgstr "Приостановлено"
+msgstr ""
+"Подписка\n"
+"отменена"
 
 msgid "tankCarousel/vehicleStates/unavailable"
 msgstr "Недоступно"
@@ -6263,7 +6262,9 @@ msgid "tankCarousel/vehicleStates/willBeUnlockedInBattle"
 msgstr "?empty?"
 
 msgid "tankCarousel/vehicleStates/wot_plus_exclusive_vehicle_disabled"
-msgstr "Приостановлено"
+msgstr ""
+"Подписка\n"
+"отменена"
 
 msgid "tankCarousel/vehicleStates/xpMultReceived"
 msgstr "Сбить x%(factor)s"
@@ -6696,6 +6697,12 @@ msgstr "средний танк"
 
 msgid "techtree/Announcement"
 msgstr "Скоро"
+
+msgid "techtree/EarlyAccessButton"
+msgstr "РАННИЙ ДОСТУП"
+
+msgid "techtree/EarlyAccessLock"
+msgstr "СКОРО В ИГРЕ"
 
 msgid "techtree/premiumPanel/btnLabel"
 msgstr "Ещё %(count)s в Магазине"

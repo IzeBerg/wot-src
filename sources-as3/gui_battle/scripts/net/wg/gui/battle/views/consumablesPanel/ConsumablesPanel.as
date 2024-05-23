@@ -894,21 +894,6 @@ package net.wg.gui.battle.views.consumablesPanel
          return this.x + this._basePanelWidth;
       }
       
-      protected function set basePanelWidth(param1:Number) : void
-      {
-         this._basePanelWidth = param1;
-      }
-      
-      protected function get itemsPadding() : int
-      {
-         return this._itemsPadding;
-      }
-      
-      protected function get renderers() : Vector.<IConsumablesButton>
-      {
-         return this._renderers;
-      }
-      
       private function onStageMouseDownHandler(param1:MouseEvent) : void
       {
          var _loc2_:MouseEventEx = param1 as MouseEventEx;

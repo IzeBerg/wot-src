@@ -131,7 +131,7 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
          super.configUI();
          this.emptySellIT.textFieldYOffset = VehicleSellDialog.ICONS_TEXT_OFFSET;
          this.vehicleActionPrice.textYOffset = VehicleSellDialog.ICONS_TEXT_OFFSET;
-         this.discardPairModificationsInfoTF.text = DIALOGS.VEHICLESELLDIALOG_POSTPROGRESSIONINFO;
+         this.discardPairModificationsInfoTF.text = !!this._sellData.isWotPlus ? DIALOGS.VEHICLESELLDIALOG_POSTPROGRESSIONINFO_SUBSCRIPTION : DIALOGS.VEHICLESELLDIALOG_POSTPROGRESSIONINFO;
          this.discardPairModificationsIcon.source = RES_ICONS.MAPS_ICONS_LIBRARY_NOTIFICATIONS_OFF;
       }
       

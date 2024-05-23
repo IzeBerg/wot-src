@@ -38,6 +38,8 @@ package net.wg.gui.lobby.techtree
       public static const ON_START_HINT_ANIMATION:String = "startHintAnimation";
       
       public static const ON_END_HINT_ANIMATION:String = "endHintAnimation";
+      
+      public static const GO_TO_EARLY_ACCESS:String = "gotToEarlyAccess";
        
       
       public var nodeState:String = "";

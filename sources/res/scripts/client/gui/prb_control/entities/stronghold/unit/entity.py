@@ -7,6 +7,7 @@ from debug_utils import LOG_DEBUG, LOG_ERROR
 from gui import SystemMessages
 from gui.Scaleform.daapi.view.lobby.clans.clan_helpers import getStrongholdEventBattleModeSettings, getStrongholdEventEnabled
 from gui.clans.clan_helpers import isStrongholdsEnabled, isLeaguesEnabled
+from gui.clans.stronghold_forbidden_vehicle_requester import ForbiddenVehiclesRequester
 from gui.clans.stronghold_event_requester import FrozenVehiclesRequester, FrozenVehiclesConstants
 from gui.impl import backport
 from gui.impl.gen import R
@@ -34,7 +35,7 @@ from gui.Scaleform.locale.FORTIFICATIONS import FORTIFICATIONS
 from gui.Scaleform.locale.TOOLTIPS import TOOLTIPS
 from gui.shared.notifications import NotificationPriorityLevel
 from gui.shared.utils.requesters.abstract import Response
-from gui.wgcg.strongholds.contexts import StrongholdJoinBattleCtx, StrongholdUpdateCtx, StrongholdMatchmakingInfoCtx, StrongholdLeaveModeCtx, SlotVehicleFiltersUpdateCtx, StrongholdEventGetFrozenVehiclesCtx
+from gui.wgcg.strongholds.contexts import StrongholdJoinBattleCtx, StrongholdUpdateCtx, StrongholdMatchmakingInfoCtx, StrongholdLeaveModeCtx, SlotVehicleFiltersUpdateCtx, StrongholdEventGetFrozenVehiclesCtx, StrongholdGetForbiddenVehiclesCtx
 from helpers import time_utils, dependency
 from UnitBase import UNIT_ERROR, UNIT_ROLE
 from skeletons.gui.game_control import IGameSessionController
@@ -193,6 +194,7 @@ class StrongholdEntity(UnitEntity):
         self.__playersMatchingStartedAt = None
         self.__slotVehicleFilters = []
         self.__eventFrozenVehiclesRequester = None
+        self.__forbiddenVehiclesRequester = None
         self.storage = prequeue_storage_getter(QUEUE_TYPE.STRONGHOLD_UNITS)()
         return
 
@@ -232,6 +234,9 @@ class StrongholdEntity(UnitEntity):
         if self.__eventFrozenVehiclesRequester is not None:
             self.__eventFrozenVehiclesRequester.stop()
             self.__eventFrozenVehiclesRequester = None
+        if self.__forbiddenVehiclesRequester is not None:
+            self.__forbiddenVehiclesRequester.stop()
+            self.__forbiddenVehiclesRequester = None
         self.__cancelMatchmakingTimer()
         unitMgr = prb_getters.getClientUnitMgr()
         if unitMgr:
@@ -669,6 +674,18 @@ class StrongholdEntity(UnitEntity):
         else:
             return
 
+    def getFortBattleForbiddenVehicles(self):
+        if self.__forbiddenVehiclesRequester is not None:
+            return self.__forbiddenVehiclesRequester.getCache().get('fort_battle_forbidden_vehicles', [])
+        else:
+            return []
+
+    def getSortieBattleForbiddenVehicles(self):
+        if self.__forbiddenVehiclesRequester is not None:
+            return self.__forbiddenVehiclesRequester.getCache().get('sortie_forbidden_vehicles', [])
+        else:
+            return []
+
     def hasEventFrozenVehicles(self):
         if not self.__isStrongholdEventEnabled():
             return False
@@ -817,6 +834,10 @@ class StrongholdEntity(UnitEntity):
         ctx = StrongholdEventGetFrozenVehiclesCtx()
         self._requestsProcessor.doRequest(ctx, 'getFrozenVehicles', callback=self.__frozenVehiclesReceived)
 
+    def __getForbiddenVehicles(self):
+        ctx = StrongholdGetForbiddenVehiclesCtx()
+        self._requestsProcessor.doRequest(ctx, 'getForbiddenVehicles', callback=self.__forbiddenVehiclesReceived)
+
     def __frozenVehiclesReceived(self, response):
         if not self.__processResponseMessage(response):
             BigWorld.callback(0.1, self.__getEventFrozenVehicles)
@@ -825,6 +846,15 @@ class StrongholdEntity(UnitEntity):
         if response.getCode() != ResponseCodes.NO_ERRORS:
             return
         self.__eventFrozenVehiclesRequester.setInitialDataAndStart(rawData)
+
+    def __forbiddenVehiclesReceived(self, response):
+        if not self.__processResponseMessage(response):
+            BigWorld.callback(0.1, self.__getForbiddenVehicles)
+            return
+        rawData = response.getData()
+        if response.getCode() != ResponseCodes.NO_ERRORS:
+            return
+        self.__forbiddenVehiclesRequester.setInitialDataAndStart(rawData)
 
     def __frozenVehiclesUpdated(self, updatedSpaIDs):
         self._invokeListeners('onEventFrozenVehiclesChanged', updatedSpaIDs)
@@ -841,6 +871,11 @@ class StrongholdEntity(UnitEntity):
         return True
 
     def __checkStrongholdEvent(self):
+        if self.__forbiddenVehiclesRequester is not None:
+            self.__forbiddenVehiclesRequester.stop()
+        else:
+            self.__forbiddenVehiclesRequester = ForbiddenVehiclesRequester()
+        self.__getForbiddenVehicles()
         if not self.__isStrongholdEventEnabled():
             return False
         else:

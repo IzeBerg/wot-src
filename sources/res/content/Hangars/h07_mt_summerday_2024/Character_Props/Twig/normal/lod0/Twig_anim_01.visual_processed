@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>hd_env_UNI_0022_Twig</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>Twig</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+				<node>
+					<identifier>Twig_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 -1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>Twig_BlendBone</node>
+		<geometry>
+			<vertices>s0Shape.vertices</vertices>
+			<primitive>s0Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0_skinned</identifier>
+					<fx>shaders/std_effects/PBS_ext_skinned.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h07_mt_summerday_2024/hd_h07_SDAY24_0014_Fence1_AM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Hangars/h07_mt_summerday_2024/hd_h07_SDAY24_0014_Fence1_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Hangars/h07_mt_summerday_2024/hd_h07_SDAY24_0014_Fence1_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.001995 0.183371 0.246415</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<constraints>
+		<parentConstraint>
+			<identifier>Twig_parentConstraint1</identifier>
+			<target>Twig</target>
+			<source>
+				<weight>1.000000</weight>
+				<identifier>Twig_ctrl2</identifier>
+				<translateOffset>0.000000 0.000000 -0.000000</translateOffset>
+				<rotateOffset>-0.000000 -0.000000 0.000000</rotateOffset>
+			</source>
+		</parentConstraint>
+	</constraints>
+	<boundingBox>
+		<min>-7.015816 -0.019033 -20.570873</min>
+		<max>0.019807 0.385774 0.078044</max>
+	</boundingBox>
+	<geometrySize>2818</geometrySize>
+	<minUVDensity>2.005893</minUVDensity>
+</root>

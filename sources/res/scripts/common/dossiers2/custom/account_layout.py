@@ -43,6 +43,7 @@ _ranked_10x10BlockBuilder = StaticSizeBlockBuilder('ranked_10x10', RANKED_BLOCK_
 _comp7Season1BlockBuilder = StaticSizeBlockBuilder('comp7Season1', COMP7_BLOCK_LAYOUT, {}, [])
 _comp7Season2BlockBuilder = StaticSizeBlockBuilder('comp7Season2', COMP7_BLOCK_LAYOUT, {}, [])
 _comp7Season3BlockBuilder = StaticSizeBlockBuilder('comp7Season3', COMP7_BLOCK_LAYOUT, {}, [])
+_comp7Season4BlockBuilder = StaticSizeBlockBuilder('comp7Season4', COMP7_BLOCK_LAYOUT, {}, [])
 _comp7ArchiveGriffinBlockBuilder = StaticSizeBlockBuilder('comp7ArchiveGriffin', COMP7_BLOCK_LAYOUT, {}, [])
 _versusAIBlockBuilder = StaticSizeBlockBuilder('mt_versusAI', VERSUS_AI_BLOCK_LAYOUT, {}, [])
 _max15x15BlockBuilder = StaticSizeBlockBuilder('max15x15', MAX_15x15_AND_BEST_VEHICLE_BLOCK_LAYOUT, {}, [])
@@ -68,6 +69,7 @@ _maxRanked_10x10BlockBuilder = StaticSizeBlockBuilder('maxRanked_10x10', MAX_AND
 _maxComp7Season1BlockBuilder = StaticSizeBlockBuilder('maxComp7Season1', MAX_COMP7_BLOCK_LAYOUT, {}, [])
 _maxComp7Season2BlockBuilder = StaticSizeBlockBuilder('maxComp7Season2', MAX_COMP7_BLOCK_LAYOUT, {}, [])
 _maxComp7Season3BlockBuilder = StaticSizeBlockBuilder('maxComp7Season3', MAX_COMP7_BLOCK_LAYOUT, {}, [])
+_maxComp7Season4BlockBuilder = StaticSizeBlockBuilder('maxComp7Season4', MAX_COMP7_BLOCK_LAYOUT, {}, [])
 _maxComp7ArchiveGriffinBlockBuilder = StaticSizeBlockBuilder('maxComp7ArchiveGriffin', MAX_COMP7_BLOCK_LAYOUT, {}, [])
 _maxVersusAIBlockBuilder = StaticSizeBlockBuilder('mt_maxVersusAI', MAX_AND_BEST_VEHICLE_BLOCK_LAYOUT, {}, [])
 
@@ -93,13 +95,15 @@ class VEHICLE_STATS:
     COMP7_CUT_SEASON_1 = 'comp7CutSeason1'
     COMP7_CUT_SEASON_2 = 'comp7CutSeason2'
     COMP7_CUT_SEASON_3 = 'comp7CutSeason3'
+    COMP7_CUT_SEASON_4 = 'comp7CutSeason4'
     COMP7_CUT_ARCHIVE_GRIFFIN = 'comp7CutArchiveGriffin'
     MT_VERSUS_AI_CUT = 'mt_versusAICut'
     ALL = (
      FRAGS, A15x15_CUT, A30x30_CUT, A7x7_CUT, HISTORICAL_CUT, FORT_SORTIES_CUT, FORT_BATTLES_CUT, RANKED_CUT,
      RANKED_CUT_SEASON_1, RANKED_CUT_SEASON_2, RANKED_CUT_SEASON_3, RANKED_CUT_ARCHIVE, RANKED_CUT_10X10,
      RATED_7x7_CUT, GLOBAL_MAP_COMMON_CUT, FALLOUT_CUT, MARK_OF_MASTERY_CUT, EPIC_BATTLE_CUT,
-     COMP7_CUT_SEASON_1, COMP7_CUT_SEASON_2, COMP7_CUT_SEASON_3, COMP7_CUT_ARCHIVE_GRIFFIN, MT_VERSUS_AI_CUT)
+     COMP7_CUT_SEASON_1, COMP7_CUT_SEASON_2, COMP7_CUT_SEASON_3, COMP7_CUT_SEASON_4, COMP7_CUT_ARCHIVE_GRIFFIN,
+     MT_VERSUS_AI_CUT)
 
 
 _vehTypeFragsBlockBuilder = DictBlockBuilder(VEHICLE_STATS.FRAGS, 'I', 'H', VEH_TYPE_FRAGS_DEPENDENCIES)
@@ -123,6 +127,7 @@ _epicBattleCutBlockBuilder = DictBlockBuilder(VEHICLE_STATS.EPIC_BATTLE_CUT, 'I'
 _comp7CutSeason1BlockBuilder = DictBlockBuilder(VEHICLE_STATS.COMP7_CUT_SEASON_1, 'I', 'IIII', {})
 _comp7CutSeason2BlockBuilder = DictBlockBuilder(VEHICLE_STATS.COMP7_CUT_SEASON_2, 'I', 'IIII', {})
 _comp7CutSeason3BlockBuilder = DictBlockBuilder(VEHICLE_STATS.COMP7_CUT_SEASON_3, 'I', 'IIII', {})
+_comp7CutSeason4BlockBuilder = DictBlockBuilder(VEHICLE_STATS.COMP7_CUT_SEASON_4, 'I', 'IIII', {})
 _comp7CutArchiveGriffinBlockBuilder = DictBlockBuilder(VEHICLE_STATS.COMP7_CUT_ARCHIVE_GRIFFIN, 'I', 'IIII', {})
 _versusAICutBlockBuilder = DictBlockBuilder(VEHICLE_STATS.MT_VERSUS_AI_CUT, 'I', 'III', {})
 _ACHIEVEMENTS15X15_BLOCK_LAYOUT = [
@@ -347,7 +352,8 @@ _SINGLE_ACHIEVEMENTS_VALUES = [
  'prime_gaming_reserved_24', 'onboardingMedal', 'BattlePassCommonPr_12', 'comp7_3_1',
  'mt_comp_3_1', '13YearsOfService', 'hw2023Medal01', 'hw2023Medal02',
  'comp7_3_2', 'NY24_AtmsphrLevel', 'comp7_3_3', 'comp7_3_3_champion', 'comp7_3_3_legend',
- 'BattlePassCommonPr_13', 'hb24Medal']
+ 'BattlePassCommonPr_13', 'hb24Medal', 'BattlePassCommonPr_14', 'comp7_3_4',
+ 'comp7_3_4_champion', 'comp7_3_4_legend']
 _singleAchievementsPopUps = [
  'titleSniper', 'invincible', 'diehard', 'handOfDeath',
  'armorPiercer', 'battleCitizen', 'WFC2014', 'tacticalBreakthrough', 'aimer',
@@ -404,7 +410,8 @@ _singleAchievementsPopUps = [
  'onboardingMedal', 'BattlePassCommonPr_12', 'comp7_3_1', 'mt_comp_3_1',
  '13YearsOfService', 'hw2023Medal01', 'hw2023Medal02',
  'comp7_3_2', 'NY24_AtmsphrLevel', 'comp7_3_3', 'comp7_3_3_champion', 'comp7_3_3_legend',
- 'BattlePassCommonPr_13', 'hb24Medal']
+ 'BattlePassCommonPr_13', 'hb24Medal', 'BattlePassCommonPr_14', 'comp7_3_4',
+ 'comp7_3_4_champion', 'comp7_3_4_legend']
 _singleAchievementsBlockBuilder = BinarySetDossierBlockBuilder('singleAchievements', _SINGLE_ACHIEVEMENTS_VALUES, SINGLE_ACHIEVEMENTS_DEPENDENCIES, _singleAchievementsPopUps)
 FORT_ACHIEVEMENTS_BLOCK_LAYOUT = [
  'conqueror', 'fireAndSword', 'crusher', 'counterblow', 'kampfer', 'soldierOfFortune']
@@ -494,7 +501,8 @@ accountDossierLayout = (
  _versusAIBlockBuilder, _maxVersusAIBlockBuilder, _versusAICutBlockBuilder,
  _comp7Season3BlockBuilder, _maxComp7Season3BlockBuilder, _comp7CutSeason3BlockBuilder,
  _comp7ArchiveGriffinBlockBuilder, _maxComp7ArchiveGriffinBlockBuilder,
- _comp7CutArchiveGriffinBlockBuilder)
+ _comp7CutArchiveGriffinBlockBuilder, _comp7Season4BlockBuilder, _maxComp7Season4BlockBuilder,
+ _comp7CutSeason4BlockBuilder)
 ACCOUNT_DOSSIER_BLOCKS = {b.name:b for b in accountDossierLayout}
 ACCOUNT_DOSSIER_STATIC_BLOCKS = frozenset(b.name for b in accountDossierLayout if type(b) == StaticSizeBlockBuilder)
 ACCOUNT_DOSSIER_BINARY_SET_BLOCKS = [ b.name for b in accountDossierLayout if type(b) == BinarySetDossierBlockBuilder ]

@@ -42,6 +42,8 @@ package net.wg.data.VO
       
       public var alertIconDataID:String = "";
       
+      public var isAlertVisible:Boolean = false;
+      
       private var _disposed:Boolean = false;
       
       public function SellDialogElementVO()

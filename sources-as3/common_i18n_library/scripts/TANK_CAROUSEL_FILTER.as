@@ -89,6 +89,10 @@ package
       
       public static const TOOLTIP_BONUS_BODY:String = "#tank_carousel_filter:tooltip/bonus/body";
       
+      public static const TOOLTIP_EARLY_ACCESS_HEADER:String = "#tank_carousel_filter:tooltip/early_access/header";
+      
+      public static const TOOLTIP_EARLY_ACCESS_BODY:String = "#tank_carousel_filter:tooltip/early_access/body";
+      
       public static const TOOLTIP_RENTED_HEADER:String = "#tank_carousel_filter:tooltip/rented/header";
       
       public static const TOOLTIP_RENTED_BODY:String = "#tank_carousel_filter:tooltip/rented/body";

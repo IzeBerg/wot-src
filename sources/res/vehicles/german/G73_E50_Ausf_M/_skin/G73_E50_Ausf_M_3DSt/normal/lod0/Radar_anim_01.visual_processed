@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>Root</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>Binokl_base</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.419137 0.994939 -0.148821</row3>
+				</transform>
+				<node>
+					<identifier>Binokl</identifier>
+					<transform>
+						<row0>1.000000 -0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.003363 0.020687 0.003427</row3>
+					</transform>
+					<node>
+						<identifier>HP_Laser</identifier>
+						<transform>
+							<row0>0.707107 0.000000 -0.707107</row0>
+							<row1>-0.183013 0.965926 -0.183013</row1>
+							<row2>0.683013 0.258819 0.683013</row2>
+							<row3>-0.037244 0.221398 0.095224</row3>
+						</transform>
+					</node>
+					<node>
+						<identifier>Binokl_BlendBone</identifier>
+						<transform>
+							<row0>1.000000 0.000000 0.000000</row0>
+							<row1>0.000000 1.000000 0.000000</row1>
+							<row2>0.000000 0.000000 -1.000000</row2>
+							<row3>-0.422501 -1.015626 0.145394</row3>
+						</transform>
+					</node>
+				</node>
+				<node>
+					<identifier>Binokl_base_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 -1.000000</row2>
+						<row3>-0.419137 -0.994939 0.148821</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>Radar_base</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.987505 -1.813925</row3>
+				</transform>
+				<node>
+					<identifier>Radar</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 -0.000000 1.000000</row2>
+						<row3>0.000000 -0.009828 -0.297881</row3>
+					</transform>
+					<node>
+						<identifier>Radar_BlendBone</identifier>
+						<transform>
+							<row0>1.000000 0.000000 0.000000</row0>
+							<row1>0.000000 1.000000 0.000000</row1>
+							<row2>0.000000 0.000000 -1.000000</row2>
+							<row3>0.000000 -0.977677 2.111806</row3>
+						</transform>
+					</node>
+				</node>
+				<node>
+					<identifier>Radar_base_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 -1.000000</row2>
+						<row3>0.000000 -0.987505 1.813925</row3>
+					</transform>
+				</node>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>Binokl_base_BlendBone</node>
+		<node>Binokl_BlendBone</node>
+		<geometry>
+			<vertices>turret_anim_Shape.vertices</vertices>
+			<primitive>turret_anim_Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_turret_01_skinned</identifier>
+					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>vehicles/german/G73_E50_Ausf_M/_skin/G73_E50_Ausf_M_3DSt/E50_Ausf_M_3DSt_turret_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/german/G73_E50_Ausf_M/_skin/G73_E50_Ausf_M_3DSt/E50_Ausf_M_3DSt_turret_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/german/G73_E50_Ausf_M/_skin/G73_E50_Ausf_M_3DSt/E50_Ausf_M_3DSt_turret_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/german/G73_E50_Ausf_M/_skin/G73_E50_Ausf_M_3DSt/E50_Ausf_M_3DSt_turret_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.382677 1.089355 0.191005</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>Radar_base_BlendBone</node>
+		<node>Radar_BlendBone</node>
+		<node>Binokl_base_BlendBone</node>
+		<node>Binokl_BlendBone</node>
+		<geometry>
+			<vertices>turret_equipmentanim_Shape.vertices</vertices>
+			<primitive>turret_equipmentanim_Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_equipment_skinned</identifier>
+					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>vehicles/german/G73_E50_Ausf_M/_skin/G73_E50_Ausf_M_3DSt/E50_Ausf_M_3DSt_equipment_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/german/G73_E50_Ausf_M/_skin/G73_E50_Ausf_M_3DSt/E50_Ausf_M_3DSt_equipment_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/german/G73_E50_Ausf_M/_skin/G73_E50_Ausf_M_3DSt/E50_Ausf_M_3DSt_equipment_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/german/G73_E50_Ausf_M/_skin/G73_E50_Ausf_M_3DSt/E50_Ausf_M_3DSt_equipment_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.000000 0.746547 2.251163</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<constraints/>
+	<boundingBox>
+		<min>-1.628196 -1.005010 -3.042784</min>
+		<max>1.577826 1.292149 2.758869</max>
+	</boundingBox>
+	<geometrySize>153290</geometrySize>
+	<minUVDensity>0.016777</minUVDensity>
+</root>

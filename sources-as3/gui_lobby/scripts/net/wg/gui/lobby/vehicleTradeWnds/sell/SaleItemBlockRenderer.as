@@ -19,7 +19,6 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
    import net.wg.gui.events.VehicleSellDialogEvent;
    import net.wg.gui.interfaces.ISaleItemBlockRenderer;
    import net.wg.gui.lobby.vehicleTradeWnds.sell.utils.VehicleSellDialogUtils;
-   import org.idmedia.as3commons.util.StringUtils;
    import scaleform.clik.constants.InvalidationType;
    import scaleform.clik.controls.ListItemRenderer;
    import scaleform.clik.data.DataProvider;
@@ -157,10 +156,10 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
             _loc1_ = this._rendererData.onlyToInventory;
             this.labelTf.visible = _loc1_;
             this.ddm.visible = !_loc1_;
+            this.alertIcon.visible = this._rendererData.isAlertVisible && this._rendererData.alertIconDataID;
             if(_loc1_)
             {
                this.actionPrice.setData(null);
-               this.alertIcon.visible = false;
                this.drawMoney(CURRENCIES_CONSTANTS.CREDITS,0);
             }
             else
@@ -277,13 +276,11 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
          if(_loc1_.currency == VehicleSellDialogUtils.WOT_PLUS)
          {
             this.actionPrice.setData(null);
-            this.alertIcon.visible = false;
             this.money.visible = false;
          }
          else
          {
             this.actionPrice.setData(_loc1_.actionPrice);
-            this.alertIcon.visible = !_loc1_.toInventory && !StringUtils.isEmpty(this._rendererData.alertIconDataID);
             this.money.visible = !this.actionPrice.visible;
          }
       }

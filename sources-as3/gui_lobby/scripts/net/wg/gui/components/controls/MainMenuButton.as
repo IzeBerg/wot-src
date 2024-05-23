@@ -140,7 +140,6 @@ package net.wg.gui.components.controls
          super.configUI();
          this.paddingHorizontal = 0;
          this.highlight.mouseChildren = this.highlight.mouseEnabled = false;
-         this.highlight.visible = false;
          this.icon.addEventListener(Event.CHANGE,this.onIconChangeHandler);
          this.actionIcon.addEventListener(Event.CHANGE,this.onActionIconChangeHandler);
          addEventListener(MouseEvent.ROLL_OVER,this.onRollOverHandler);
@@ -331,7 +330,7 @@ package net.wg.gui.components.controls
          this._externalSize = param1;
          this._textFormat.size = MainMenuButtonSize.TEXT_SIZE[param1];
          this._iconY = MainMenuButtonSize.ICON_Y[param1];
-         this.highlight.setSize(param1);
+         this.highlight.imageSize = param1;
          invalidate(INVALIDATE_TEXT_SIZE);
          invalidate(INVALIDATE_ACTION_ICON_POS);
       }
@@ -412,9 +411,9 @@ package net.wg.gui.components.controls
          }
       }
       
-      public function set isHighlighted(param1:Boolean) : void
+      public function set highlightImage(param1:String) : void
       {
-         this.highlight.visible = param1;
+         this.highlight.imageSource = param1;
       }
       
       public function set isTooltipSpecial(param1:Boolean) : void

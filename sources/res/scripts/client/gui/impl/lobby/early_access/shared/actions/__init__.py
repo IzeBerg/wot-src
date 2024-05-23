@@ -1,0 +1,4 @@
+from gui.shared.gui_items.items_actions.factory import registerAction
+from gui.impl.lobby.early_access.shared.actions.early_access_actions import BuyEarlyAccessTokensAction
+BUY_EARLY_ACCESS_TOKENS = 'buyEarlyAccessTokens'
+registerAction(BUY_EARLY_ACCESS_TOKENS, BuyEarlyAccessTokensAction)

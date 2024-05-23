@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>Character1_Root</identifier>
+			<transform>
+				<row0>0.000000 1.000000 0.000000</row0>
+				<row1>-1.000000 0.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>-0.032208 0.000000 0.071605</row3>
+			</transform>
+			<node>
+				<identifier>Chatacter1_Root_Slot02</identifier>
+				<transform>
+					<row0>0.000000 -1.000000 0.000000</row0>
+					<row1>1.000000 0.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.922453 0.445767 -0.688354</row3>
+				</transform>
+				<node>
+					<identifier>Chatacter1_Root_Slot02_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 -1.000000</row2>
+						<row3>0.477975 -0.922453 0.616749</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>Chatacter1_Root_Slot03</identifier>
+				<transform>
+					<row0>0.000000 -1.000000 0.000000</row0>
+					<row1>1.000000 0.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.922453 0.445767 -0.688354</row3>
+				</transform>
+				<node>
+					<identifier>Chatacter1_Root_Slot03_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 -1.000000</row2>
+						<row3>0.477975 -0.922453 0.616749</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>Chatacter1_Root_Slot04</identifier>
+				<transform>
+					<row0>0.000000 -1.000000 0.000000</row0>
+					<row1>1.000000 0.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.922453 0.445767 -0.688354</row3>
+				</transform>
+				<node>
+					<identifier>Chatacter1_Root_Slot04_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 -1.000000</row2>
+						<row3>0.477975 -0.922453 0.616749</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>Chatacter1_Root_Slot05</identifier>
+				<transform>
+					<row0>0.000000 -1.000000 -0.000000</row0>
+					<row1>1.000000 0.000000 -0.000000</row1>
+					<row2>0.000000 -0.000000 1.000000</row2>
+					<row3>0.922453 0.445767 -0.688354</row3>
+				</transform>
+				<node>
+					<identifier>Chatacter1_Root_Slot05_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 -1.000000</row2>
+						<row3>0.477975 -0.922453 0.616749</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>Character1_Root_BlendBone</identifier>
+				<transform>
+					<row0>0.000000 -1.000000 0.000000</row0>
+					<row1>1.000000 0.000000 0.000000</row1>
+					<row2>0.000000 0.000000 -1.000000</row2>
+					<row3>0.000000 -0.032208 -0.071605</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>Chatacter1_Root_Slot04_BlendBone</node>
+		<geometry>
+			<vertices>apple_3Shape.vertices</vertices>
+			<primitive>apple_3Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>blinn1_skinned</identifier>
+					<fx>shaders/std_effects/PBS_ext_skinned.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h07_mt_summerday_2024/hd_h07_SDAY24_0004_Ration_AM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Hangars/h07_mt_summerday_2024/hd_h07_SDAY24_0004_Ration_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Hangars/h07_mt_summerday_2024/hd_h07_SDAY24_0004_Ration_ANM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>-0.456258 0.965200 0.638466</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>Chatacter1_Root_Slot02_BlendBone</node>
+		<geometry>
+			<vertices>apple_2Shape.vertices</vertices>
+			<primitive>apple_2Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>blinn1_skinned</identifier>
+					<fx>shaders/std_effects/PBS_ext_skinned.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h07_mt_summerday_2024/hd_h07_SDAY24_0004_Ration_AM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Hangars/h07_mt_summerday_2024/hd_h07_SDAY24_0004_Ration_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Hangars/h07_mt_summerday_2024/hd_h07_SDAY24_0004_Ration_ANM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>-0.456258 0.965200 0.595031</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>Chatacter1_Root_Slot03_BlendBone</node>
+		<geometry>
+			<vertices>apple_1Shape.vertices</vertices>
+			<primitive>apple_1Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>blinn1_skinned</identifier>
+					<fx>shaders/std_effects/PBS_ext_skinned.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h07_mt_summerday_2024/hd_h07_SDAY24_0004_Ration_AM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Hangars/h07_mt_summerday_2024/hd_h07_SDAY24_0004_Ration_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Hangars/h07_mt_summerday_2024/hd_h07_SDAY24_0004_Ration_ANM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>-0.499693 0.965200 0.595031</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>Chatacter1_Root_Slot05_BlendBone</node>
+		<geometry>
+			<vertices>apple_0Shape.vertices</vertices>
+			<primitive>apple_0Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>blinn1_skinned</identifier>
+					<fx>shaders/std_effects/PBS_ext_skinned.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h07_mt_summerday_2024/hd_h07_SDAY24_0004_Ration_AM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Hangars/h07_mt_summerday_2024/hd_h07_SDAY24_0004_Ration_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Hangars/h07_mt_summerday_2024/hd_h07_SDAY24_0004_Ration_ANM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>-0.499693 0.965200 0.638466</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<constraints/>
+	<boundingBox>
+		<min>-0.521410 0.922453 -0.660184</min>
+		<max>-0.434540 1.007946 -0.573313</max>
+	</boundingBox>
+	<geometrySize>6880</geometrySize>
+	<minUVDensity>2.806247</minUVDensity>
+</root>

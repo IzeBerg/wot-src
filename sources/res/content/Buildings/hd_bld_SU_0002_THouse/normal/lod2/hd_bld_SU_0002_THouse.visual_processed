@@ -17,21 +17,21 @@
 				<row3>0.000000 0.000000 0.000000</row3>
 			</transform>
 			<node>
-				<identifier>HP_module0</identifier>
+				<identifier>HP_module0_1</identifier>
 				<transform>
 					<row0>1.000000 0.000000 0.000000</row0>
 					<row1>0.000000 1.000000 0.000000</row1>
 					<row2>0.000000 0.000000 1.000000</row2>
-					<row3>-6.036839 0.783970 7.874479</row3>
+					<row3>5.309139 0.747779 -8.349354</row3>
 				</transform>
 			</node>
 			<node>
-				<identifier>HP_module1</identifier>
+				<identifier>HP_module0_2</identifier>
 				<transform>
 					<row0>1.000000 0.000000 0.000000</row0>
 					<row1>0.000000 1.000000 0.000000</row1>
 					<row2>0.000000 0.000000 1.000000</row2>
-					<row3>5.311967 0.715773 -8.350297</row3>
+					<row3>-6.017984 0.747779 7.960943</row3>
 				</transform>
 			</node>
 			<node>
@@ -128,6 +128,92 @@
 			<primitiveGroup>
 				0
 				<material>
+					<identifier>n_metal0_2</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>74</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						alphaReference
+						<Int>25</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_StalingradHouses_01_AM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_StalingradHouses_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_StalingradHouses_01_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-6.044699 0.770114 7.890719</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>n_metal0_1</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>73</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						alphaReference
+						<Int>25</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_StalingradHouses_01_AM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_StalingradHouses_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_StalingradHouses_01_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>5.309897 0.762207 -8.380600</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>s_wall_0</identifier>
+					<collisionFlags>131</collisionFlags>
+					<materialKind>111</materialKind>
+				</material>
+				<groupOrigin>-0.458487 1.595968 0.057935</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				3
+				<material>
+					<identifier>s_ramp_0</identifier>
+					<collisionFlags>131</collisionFlags>
+					<materialKind>111</materialKind>
+				</material>
+				<groupOrigin>-0.336271 -0.678303 0.243926</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				4
+				<material>
 					<identifier>s_nd8</identifier>
 					<collisionFlags>255</collisionFlags>
 					<materialKind>111</materialKind>
@@ -208,7 +294,7 @@
 				<groupOrigin>-0.520226 4.954122 -0.209888</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
-				1
+				5
 				<material>
 					<identifier>s_nd7</identifier>
 					<fx>shaders/std_effects/PBS_glass.fx</fx>
@@ -234,7 +320,7 @@
 				<groupOrigin>-1.221100 3.260006 -1.273664</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
-				2
+				6
 				<material>
 					<identifier>s_nd6</identifier>
 					<collisionFlags>255</collisionFlags>
@@ -316,7 +402,7 @@
 				<groupOrigin>-0.340988 4.473304 1.469453</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
-				3
+				7
 				<material>
 					<identifier>s_nd5</identifier>
 					<collisionFlags>255</collisionFlags>
@@ -398,7 +484,7 @@
 				<groupOrigin>-0.484625 4.952090 -0.033521</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
-				4
+				8
 				<material>
 					<identifier>s_nd4</identifier>
 					<collisionFlags>255</collisionFlags>
@@ -476,7 +562,7 @@
 				<groupOrigin>-0.492142 4.703217 -0.040977</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
-				5
+				9
 				<material>
 					<identifier>s_nd2</identifier>
 					<collisionFlags>255</collisionFlags>
@@ -558,7 +644,7 @@
 				<groupOrigin>-0.378060 3.899272 0.671743</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
-				6
+				10
 				<material>
 					<identifier>s_nd1</identifier>
 					<collisionFlags>0</collisionFlags>
@@ -636,7 +722,7 @@
 				<groupOrigin>-0.464200 4.907612 -0.180562</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
-				7
+				11
 				<material>
 					<identifier>s_nd0</identifier>
 					<collisionFlags>255</collisionFlags>
@@ -667,25 +753,7 @@
 						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_StalingradHouses_01_GMM.dds</Texture>
 					</property>
 				</material>
-				<groupOrigin>-0.443035 5.105270 -0.244940</groupOrigin>
-			</primitiveGroup>
-			<primitiveGroup>
-				8
-				<material>
-					<identifier>s_ramp_0</identifier>
-					<collisionFlags>131</collisionFlags>
-					<materialKind>111</materialKind>
-				</material>
-				<groupOrigin>-0.336271 -0.678303 0.243926</groupOrigin>
-			</primitiveGroup>
-			<primitiveGroup>
-				9
-				<material>
-					<identifier>s_wall_0</identifier>
-					<collisionFlags>131</collisionFlags>
-					<materialKind>111</materialKind>
-				</material>
-				<groupOrigin>-0.458487 1.595968 0.057935</groupOrigin>
+				<groupOrigin>-0.443035 5.105270 -0.016315</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
@@ -694,26 +762,6 @@
 		<max>10.139954 10.235514 9.785165</max>
 	</boundingBox>
 	<customBsp>true</customBsp>
-	<missingBspMaterial>
-		<material>
-			<identifier>n_metal0</identifier>
-		</material>
-	</missingBspMaterial>
-	<missingBspMaterial>
-		<material>
-			<identifier>n_metal0_1</identifier>
-		</material>
-	</missingBspMaterial>
-	<missingBspMaterial>
-		<material>
-			<identifier>n_metal0</identifier>
-		</material>
-	</missingBspMaterial>
-	<missingBspMaterial>
-		<material>
-			<identifier>n_metal0_1</identifier>
-		</material>
-	</missingBspMaterial>
 	<geometrySize>201250</geometrySize>
 	<minUVDensity>0.001940</minUVDensity>
 </root>
