@@ -956,10 +956,10 @@
 	</node>
 	<renderSet>
 		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
-		<node>W_L0_BlendBone</node>
+		<node>W_L4_BlendBone</node>
 		<geometry>
-			<vertices>w_L01_Shape.vertices</vertices>
-			<primitive>w_L01_Shape.indices</primitive>
+			<vertices>w_L05_Shape.vertices</vertices>
+			<primitive>w_L05_Shape.indices</primitive>
 			<primitiveGroup>
 				0
 				<material>
@@ -970,10 +970,6 @@
 					<property>
 						alphaReference
 						<Int>128</Int>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>true</Bool>
 					</property>
 					<property>
 						colorIdMap
@@ -1011,132 +1007,12 @@
 						normalMap
 						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_ANM.dds</Texture>
 					</property>
-				</material>
-				<groupOrigin>-1.399929 0.488508 -1.791743</groupOrigin>
-			</primitiveGroup>
-		</geometry>
-	</renderSet>
-	<renderSet>
-		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
-		<node>W_L1_BlendBone</node>
-		<geometry>
-			<vertices>w_L02_Shape.vertices</vertices>
-			<primitive>w_L02_Shape.indices</primitive>
-			<primitiveGroup>
-				0
-				<material>
-					<identifier>tank_chassis_01_skinned</identifier>
-					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
-					<materialKind>0</materialKind>
-					<collisionFlags>0</collisionFlags>
-					<property>
-						alphaReference
-						<Int>128</Int>
-					</property>
 					<property>
 						alphaTestEnable
 						<Bool>true</Bool>
 					</property>
-					<property>
-						colorIdMap
-						<Texture>vehicles/russian/common/common_ID.dds</Texture>
-					</property>
-					<property>
-						diffuseMap
-						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_AM.dds</Texture>
-					</property>
-					<property>
-						doubleSided
-						<Bool>true</Bool>
-					</property>
-					<property>
-						excludeMaskAndAOMap
-						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_AO.dds</Texture>
-					</property>
-					<property>
-						g_detailUVTiling
-						<Vector4>4.208220 4.208220 0.000000 0.000000</Vector4>
-					</property>
-					<property>
-						g_useDetailMetallic
-						<Bool>true</Bool>
-					</property>
-					<property>
-						metallicDetailMap
-						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
-					</property>
-					<property>
-						metallicGlossMap
-						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_GMM.dds</Texture>
-					</property>
-					<property>
-						normalMap
-						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_ANM.dds</Texture>
-					</property>
 				</material>
-				<groupOrigin>-1.399929 0.488508 -0.911116</groupOrigin>
-			</primitiveGroup>
-		</geometry>
-	</renderSet>
-	<renderSet>
-		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
-		<node>W_L2_BlendBone</node>
-		<geometry>
-			<vertices>w_L03_Shape.vertices</vertices>
-			<primitive>w_L03_Shape.indices</primitive>
-			<primitiveGroup>
-				0
-				<material>
-					<identifier>tank_chassis_01_skinned</identifier>
-					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
-					<materialKind>0</materialKind>
-					<collisionFlags>0</collisionFlags>
-					<property>
-						alphaReference
-						<Int>128</Int>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>true</Bool>
-					</property>
-					<property>
-						colorIdMap
-						<Texture>vehicles/russian/common/common_ID.dds</Texture>
-					</property>
-					<property>
-						diffuseMap
-						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_AM.dds</Texture>
-					</property>
-					<property>
-						doubleSided
-						<Bool>true</Bool>
-					</property>
-					<property>
-						excludeMaskAndAOMap
-						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_AO.dds</Texture>
-					</property>
-					<property>
-						g_detailUVTiling
-						<Vector4>4.208220 4.208220 0.000000 0.000000</Vector4>
-					</property>
-					<property>
-						g_useDetailMetallic
-						<Bool>true</Bool>
-					</property>
-					<property>
-						metallicDetailMap
-						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
-					</property>
-					<property>
-						metallicGlossMap
-						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_GMM.dds</Texture>
-					</property>
-					<property>
-						normalMap
-						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_ANM.dds</Texture>
-					</property>
-				</material>
-				<groupOrigin>-1.400767 0.487918 -0.052363</groupOrigin>
+				<groupOrigin>-1.400767 0.488954 1.711543</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
@@ -1158,10 +1034,6 @@
 						<Int>128</Int>
 					</property>
 					<property>
-						alphaTestEnable
-						<Bool>true</Bool>
-					</property>
-					<property>
 						colorIdMap
 						<Texture>vehicles/russian/common/common_ID.dds</Texture>
 					</property>
@@ -1197,17 +1069,21 @@
 						normalMap
 						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_ANM.dds</Texture>
 					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
 				</material>
-				<groupOrigin>-1.400767 0.487918 0.828110</groupOrigin>
+				<groupOrigin>-1.400767 0.488954 0.829110</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<renderSet>
 		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
-		<node>W_L4_BlendBone</node>
+		<node>W_L2_BlendBone</node>
 		<geometry>
-			<vertices>w_L05_Shape.vertices</vertices>
-			<primitive>w_L05_Shape.indices</primitive>
+			<vertices>w_L03_Shape.vertices</vertices>
+			<primitive>w_L03_Shape.indices</primitive>
 			<primitiveGroup>
 				0
 				<material>
@@ -1220,10 +1096,6 @@
 						<Int>128</Int>
 					</property>
 					<property>
-						alphaTestEnable
-						<Bool>true</Bool>
-					</property>
-					<property>
 						colorIdMap
 						<Texture>vehicles/russian/common/common_ID.dds</Texture>
 					</property>
@@ -1259,22 +1131,21 @@
 						normalMap
 						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_ANM.dds</Texture>
 					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
 				</material>
-				<groupOrigin>-1.400767 0.487918 1.713542</groupOrigin>
+				<groupOrigin>-1.398640 0.487684 -0.052363</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<renderSet>
 		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
-		<node>Track_L3_BlendBone</node>
-		<node>V_BlendBone</node>
-		<node>Track_L2_BlendBone</node>
-		<node>Track_L0_BlendBone</node>
-		<node>Track_L4_BlendBone</node>
-		<node>Track_L1_BlendBone</node>
+		<node>W_L1_BlendBone</node>
 		<geometry>
-			<vertices>chassis_L_Shape.vertices</vertices>
-			<primitive>chassis_L_Shape.indices</primitive>
+			<vertices>w_L02_Shape.vertices</vertices>
+			<primitive>w_L02_Shape.indices</primitive>
 			<primitiveGroup>
 				0
 				<material>
@@ -1287,10 +1158,6 @@
 						<Int>128</Int>
 					</property>
 					<property>
-						alphaTestEnable
-						<Bool>true</Bool>
-					</property>
-					<property>
 						colorIdMap
 						<Texture>vehicles/russian/common/common_ID.dds</Texture>
 					</property>
@@ -1326,17 +1193,21 @@
 						normalMap
 						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_ANM.dds</Texture>
 					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
 				</material>
-				<groupOrigin>-1.021173 0.760041 -0.059584</groupOrigin>
+				<groupOrigin>-1.399220 0.488508 -0.910771</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<renderSet>
 		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
-		<node>WD_L0_BlendBone</node>
+		<node>W_L0_BlendBone</node>
 		<geometry>
-			<vertices>wd_L01_Shape.vertices</vertices>
-			<primitive>wd_L01_Shape.indices</primitive>
+			<vertices>w_L01_Shape.vertices</vertices>
+			<primitive>w_L01_Shape.indices</primitive>
 			<primitiveGroup>
 				0
 				<material>
@@ -1349,10 +1220,6 @@
 						<Int>128</Int>
 					</property>
 					<property>
-						alphaTestEnable
-						<Bool>true</Bool>
-					</property>
-					<property>
 						colorIdMap
 						<Texture>vehicles/russian/common/common_ID.dds</Texture>
 					</property>
@@ -1388,8 +1255,12 @@
 						normalMap
 						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_ANM.dds</Texture>
 					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
 				</material>
-				<groupOrigin>-1.402001 0.673895 -2.758024</groupOrigin>
+				<groupOrigin>-1.409844 0.488508 -1.792198</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
@@ -1411,10 +1282,6 @@
 						<Int>128</Int>
 					</property>
 					<property>
-						alphaTestEnable
-						<Bool>true</Bool>
-					</property>
-					<property>
 						colorIdMap
 						<Texture>vehicles/russian/common/common_ID.dds</Texture>
 					</property>
@@ -1450,6 +1317,10 @@
 						normalMap
 						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_ANM.dds</Texture>
 					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
 				</material>
 				<groupOrigin>-1.397897 0.692563 2.537072</groupOrigin>
 			</primitiveGroup>
@@ -1457,15 +1328,10 @@
 	</renderSet>
 	<renderSet>
 		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
-		<node>Track_R3_BlendBone</node>
-		<node>V_BlendBone</node>
-		<node>Track_R2_BlendBone</node>
-		<node>Track_R0_BlendBone</node>
-		<node>Track_R4_BlendBone</node>
-		<node>Track_R1_BlendBone</node>
+		<node>WD_L0_BlendBone</node>
 		<geometry>
-			<vertices>chassis_R_Shape.vertices</vertices>
-			<primitive>chassis_R_Shape.indices</primitive>
+			<vertices>wd_L01_Shape.vertices</vertices>
+			<primitive>wd_L01_Shape.indices</primitive>
 			<primitiveGroup>
 				0
 				<material>
@@ -1478,10 +1344,6 @@
 						<Int>128</Int>
 					</property>
 					<property>
-						alphaTestEnable
-						<Bool>true</Bool>
-					</property>
-					<property>
 						colorIdMap
 						<Texture>vehicles/russian/common/common_ID.dds</Texture>
 					</property>
@@ -1517,8 +1379,12 @@
 						normalMap
 						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_ANM.dds</Texture>
 					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
 				</material>
-				<groupOrigin>1.019518 0.760041 -0.059584</groupOrigin>
+				<groupOrigin>-1.401817 0.673895 -2.758024</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
@@ -1540,10 +1406,6 @@
 						<Int>128</Int>
 					</property>
 					<property>
-						alphaTestEnable
-						<Bool>true</Bool>
-					</property>
-					<property>
 						colorIdMap
 						<Texture>vehicles/russian/common/common_ID.dds</Texture>
 					</property>
@@ -1579,8 +1441,12 @@
 						normalMap
 						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_ANM.dds</Texture>
 					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
 				</material>
-				<groupOrigin>1.401129 0.673895 -2.758024</groupOrigin>
+				<groupOrigin>1.404060 0.673895 -2.758024</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
@@ -1602,8 +1468,66 @@
 						<Int>128</Int>
 					</property>
 					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_AM.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_AO.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>4.208220 4.208220 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_ANM.dds</Texture>
+					</property>
+					<property>
 						alphaTestEnable
 						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>1.400140 0.689095 2.533577</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>W_R4_BlendBone</node>
+		<geometry>
+			<vertices>w_R05_Shape.vertices</vertices>
+			<primitive>w_R05_Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_chassis_01_skinned</identifier>
+					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						alphaReference
+						<Int>128</Int>
 					</property>
 					<property>
 						colorIdMap
@@ -1641,8 +1565,394 @@
 						normalMap
 						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_ANM.dds</Texture>
 					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
 				</material>
-				<groupOrigin>1.397026 0.688862 2.533340</groupOrigin>
+				<groupOrigin>1.403010 0.488954 1.800364</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>W_R3_BlendBone</node>
+		<geometry>
+			<vertices>w_R04_Shape.vertices</vertices>
+			<primitive>w_R04_Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_chassis_01_skinned</identifier>
+					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						alphaReference
+						<Int>128</Int>
+					</property>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_AM.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_AO.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>4.208220 4.208220 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_ANM.dds</Texture>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>1.403010 0.488954 0.928205</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>W_R2_BlendBone</node>
+		<geometry>
+			<vertices>w_R03_Shape.vertices</vertices>
+			<primitive>w_R03_Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_chassis_01_skinned</identifier>
+					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						alphaReference
+						<Int>128</Int>
+					</property>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_AM.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_AO.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>4.208220 4.208220 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_ANM.dds</Texture>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>1.400883 0.487684 0.064353</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>W_R1_BlendBone</node>
+		<geometry>
+			<vertices>w_R02_Shape.vertices</vertices>
+			<primitive>w_R02_Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_chassis_01_skinned</identifier>
+					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						alphaReference
+						<Int>128</Int>
+					</property>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_AM.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_AO.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>4.208220 4.208220 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_ANM.dds</Texture>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>1.401464 0.488508 -0.809819</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>V_BlendBone</node>
+		<node>Track_L2_BlendBone</node>
+		<node>Track_L1_BlendBone</node>
+		<node>Track_L4_BlendBone</node>
+		<node>Track_L3_BlendBone</node>
+		<node>Track_L0_BlendBone</node>
+		<geometry>
+			<vertices>chassis_L_Shape.vertices</vertices>
+			<primitive>chassis_L_Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_chassis_01_skinned</identifier>
+					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						alphaReference
+						<Int>128</Int>
+					</property>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_AM.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_AO.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>4.208220 4.208220 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_ANM.dds</Texture>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>-1.021177 0.755453 -0.061030</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>W_R0_BlendBone</node>
+		<geometry>
+			<vertices>w_R01_Shape.vertices</vertices>
+			<primitive>w_R01_Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_chassis_01_skinned</identifier>
+					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						alphaReference
+						<Int>128</Int>
+					</property>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_AM.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_AO.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>4.208220 4.208220 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_ANM.dds</Texture>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>1.401464 0.488508 -1.703799</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>V_BlendBone</node>
+		<node>Track_R2_BlendBone</node>
+		<node>Track_R3_BlendBone</node>
+		<node>Track_R1_BlendBone</node>
+		<node>Track_R4_BlendBone</node>
+		<node>Track_R0_BlendBone</node>
+		<geometry>
+			<vertices>chassis_R_Shape.vertices</vertices>
+			<primitive>chassis_R_Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_chassis_01_skinned</identifier>
+					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						alphaReference
+						<Int>128</Int>
+					</property>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_AM.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_AO.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>4.208220 4.208220 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_ANM.dds</Texture>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>1.019522 0.762486 -0.061030</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
@@ -1656,12 +1966,13 @@
 		<node>Track_L1_BlendBone</node>
 		<node>Track_L2_BlendBone</node>
 		<node>Track_VT_L1_BlendBone</node>
-		<node>Track_VT_L0_BlendBone</node>
 		<node>Track_VT_L2_BlendBone</node>
 		<node>Track_VT_L3_BlendBone</node>
 		<node>Track_VT_L4_BlendBone</node>
 		<node>Track_VT_L5_BlendBone</node>
+		<node>Track_VT_L6_BlendBone</node>
 		<node>Track_L3_BlendBone</node>
+		<node>Track_VT_L0_BlendBone</node>
 		<geometry>
 			<vertices>track_L1_Shape.vertices</vertices>
 			<stream>track_L1_Shape.uv2</stream>
@@ -1721,7 +2032,6 @@
 		<node>Track_R0_BlendBone</node>
 		<node>V_BlendBone</node>
 		<node>Track_VT_R1_BlendBone</node>
-		<node>Track_VT_R0_BlendBone</node>
 		<node>Track_VT_R2_BlendBone</node>
 		<node>Track_VT_R3_BlendBone</node>
 		<node>Track_VT_R4_BlendBone</node>
@@ -1731,6 +2041,7 @@
 		<node>Track_R1_BlendBone</node>
 		<node>Track_VD_R0_BlendBone</node>
 		<node>Track_VT_R6_BlendBone</node>
+		<node>Track_VT_R0_BlendBone</node>
 		<geometry>
 			<vertices>track_R1_Shape.vertices</vertices>
 			<stream>track_R1_Shape.uv2</stream>
@@ -1785,79 +2096,19 @@
 	</renderSet>
 	<renderSet>
 		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
-		<node>Track_L4_BlendBone</node>
-		<node>Track_L2_BlendBone</node>
-		<node>Track_VT_L4_BlendBone</node>
-		<node>V_BlendBone</node>
-		<node>Track_VT_L5_BlendBone</node>
-		<node>Track_VD_L1_BlendBone</node>
-		<node>Track_L3_BlendBone</node>
-		<node>Track_VT_L6_BlendBone</node>
-		<geometry>
-			<vertices>track_L0_Shape.vertices</vertices>
-			<stream>track_L0_Shape.uv2</stream>
-			<primitive>track_L0_Shape.indices</primitive>
-			<primitiveGroup>
-				0
-				<material>
-					<identifier>track_mat_L0_skinned</identifier>
-					<fx>shaders/std_effects/PBS_tank_uvtransform_skinned_ao.fx</fx>
-					<materialKind>0</materialKind>
-					<collisionFlags>0</collisionFlags>
-					<property>
-						alphaReference
-						<Int>128</Int>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>true</Bool>
-					</property>
-					<property>
-						diffuseMap
-						<Texture>vehicles/american/tracks/M_VII_Y_track_AM.dds</Texture>
-					</property>
-					<property>
-						doubleSided
-						<Bool>true</Bool>
-					</property>
-					<property>
-						g_detailUVTiling
-						<Vector4>8.416440 1.052060 0.000000 0.000000</Vector4>
-					</property>
-					<property>
-						g_useDetailMetallic
-						<Bool>true</Bool>
-					</property>
-					<property>
-						metallicDetailMap
-						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
-					</property>
-					<property>
-						metallicGlossMap
-						<Texture>vehicles/american/tracks/M_VII_Y_track_GMM.dds</Texture>
-					</property>
-					<property>
-						normalMap
-						<Texture>vehicles/american/tracks/M_VII_Y_track_ANM.dds</Texture>
-					</property>
-				</material>
-				<groupOrigin>-1.399942 0.513437 1.162227</groupOrigin>
-			</primitiveGroup>
-		</geometry>
-	</renderSet>
-	<renderSet>
-		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
 		<node>Track_R4_BlendBone</node>
 		<node>Track_R2_BlendBone</node>
-		<node>Track_R3_BlendBone</node>
 		<node>Track_VT_R4_BlendBone</node>
 		<node>V_BlendBone</node>
 		<node>Track_VT_R5_BlendBone</node>
 		<node>Track_VD_R1_BlendBone</node>
+		<node>Track_R3_BlendBone</node>
+		<node>Track_VT_R3_BlendBone</node>
+		<node>Track_VT_R6_BlendBone</node>
 		<geometry>
-			<vertices>track_R0_Shape.vertices</vertices>
-			<stream>track_R0_Shape.uv2</stream>
-			<primitive>track_R0_Shape.indices</primitive>
+			<vertices>track_R_Shape.vertices</vertices>
+			<stream>track_R_Shape.uv2</stream>
+			<primitive>track_R_Shape.indices</primitive>
 			<primitiveGroup>
 				0
 				<material>
@@ -1908,15 +2159,24 @@
 	</renderSet>
 	<renderSet>
 		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
-		<node>W_R0_BlendBone</node>
+		<node>Track_L4_BlendBone</node>
+		<node>Track_L2_BlendBone</node>
+		<node>Track_VT_L4_BlendBone</node>
+		<node>V_BlendBone</node>
+		<node>Track_VT_L5_BlendBone</node>
+		<node>Track_VD_L1_BlendBone</node>
+		<node>Track_L3_BlendBone</node>
+		<node>Track_VT_L3_BlendBone</node>
+		<node>Track_VT_L6_BlendBone</node>
 		<geometry>
-			<vertices>w_R01_Shape.vertices</vertices>
-			<primitive>w_R01_Shape.indices</primitive>
+			<vertices>track_L_Shape.vertices</vertices>
+			<stream>track_L_Shape.uv2</stream>
+			<primitive>track_L_Shape.indices</primitive>
 			<primitiveGroup>
 				0
 				<material>
-					<identifier>tank_chassis_01_skinned</identifier>
-					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<identifier>track_mat_L0_skinned</identifier>
+					<fx>shaders/std_effects/PBS_tank_uvtransform_skinned_ao.fx</fx>
 					<materialKind>0</materialKind>
 					<collisionFlags>0</collisionFlags>
 					<property>
@@ -1928,24 +2188,16 @@
 						<Bool>true</Bool>
 					</property>
 					<property>
-						colorIdMap
-						<Texture>vehicles/russian/common/common_ID.dds</Texture>
-					</property>
-					<property>
 						diffuseMap
-						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_AM.dds</Texture>
+						<Texture>vehicles/american/tracks/M_VII_Y_track_AM.dds</Texture>
 					</property>
 					<property>
 						doubleSided
 						<Bool>true</Bool>
 					</property>
 					<property>
-						excludeMaskAndAOMap
-						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_AO.dds</Texture>
-					</property>
-					<property>
 						g_detailUVTiling
-						<Vector4>4.208220 4.208220 0.000000 0.000000</Vector4>
+						<Vector4>8.416440 1.052060 0.000000 0.000000</Vector4>
 					</property>
 					<property>
 						g_useDetailMetallic
@@ -1957,270 +2209,22 @@
 					</property>
 					<property>
 						metallicGlossMap
-						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_GMM.dds</Texture>
+						<Texture>vehicles/american/tracks/M_VII_Y_track_GMM.dds</Texture>
 					</property>
 					<property>
 						normalMap
-						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_ANM.dds</Texture>
+						<Texture>vehicles/american/tracks/M_VII_Y_track_ANM.dds</Texture>
 					</property>
 				</material>
-				<groupOrigin>1.398049 0.489214 -1.695171</groupOrigin>
-			</primitiveGroup>
-		</geometry>
-	</renderSet>
-	<renderSet>
-		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
-		<node>W_R1_BlendBone</node>
-		<geometry>
-			<vertices>w_R02_Shape.vertices</vertices>
-			<primitive>w_R02_Shape.indices</primitive>
-			<primitiveGroup>
-				0
-				<material>
-					<identifier>tank_chassis_01_skinned</identifier>
-					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
-					<materialKind>0</materialKind>
-					<collisionFlags>0</collisionFlags>
-					<property>
-						alphaReference
-						<Int>128</Int>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>true</Bool>
-					</property>
-					<property>
-						colorIdMap
-						<Texture>vehicles/russian/common/common_ID.dds</Texture>
-					</property>
-					<property>
-						diffuseMap
-						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_AM.dds</Texture>
-					</property>
-					<property>
-						doubleSided
-						<Bool>true</Bool>
-					</property>
-					<property>
-						excludeMaskAndAOMap
-						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_AO.dds</Texture>
-					</property>
-					<property>
-						g_detailUVTiling
-						<Vector4>4.208220 4.208220 0.000000 0.000000</Vector4>
-					</property>
-					<property>
-						g_useDetailMetallic
-						<Bool>true</Bool>
-					</property>
-					<property>
-						metallicDetailMap
-						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
-					</property>
-					<property>
-						metallicGlossMap
-						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_GMM.dds</Texture>
-					</property>
-					<property>
-						normalMap
-						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_ANM.dds</Texture>
-					</property>
-				</material>
-				<groupOrigin>1.398049 0.488507 -0.810691</groupOrigin>
-			</primitiveGroup>
-		</geometry>
-	</renderSet>
-	<renderSet>
-		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
-		<node>W_R2_BlendBone</node>
-		<geometry>
-			<vertices>w_R03_Shape.vertices</vertices>
-			<primitive>w_R03_Shape.indices</primitive>
-			<primitiveGroup>
-				0
-				<material>
-					<identifier>tank_chassis_01_skinned</identifier>
-					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
-					<materialKind>0</materialKind>
-					<collisionFlags>0</collisionFlags>
-					<property>
-						alphaReference
-						<Int>128</Int>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>true</Bool>
-					</property>
-					<property>
-						colorIdMap
-						<Texture>vehicles/russian/common/common_ID.dds</Texture>
-					</property>
-					<property>
-						diffuseMap
-						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_AM.dds</Texture>
-					</property>
-					<property>
-						doubleSided
-						<Bool>true</Bool>
-					</property>
-					<property>
-						excludeMaskAndAOMap
-						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_AO.dds</Texture>
-					</property>
-					<property>
-						g_detailUVTiling
-						<Vector4>4.208220 4.208220 0.000000 0.000000</Vector4>
-					</property>
-					<property>
-						g_useDetailMetallic
-						<Bool>true</Bool>
-					</property>
-					<property>
-						metallicDetailMap
-						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
-					</property>
-					<property>
-						metallicGlossMap
-						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_GMM.dds</Texture>
-					</property>
-					<property>
-						normalMap
-						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_ANM.dds</Texture>
-					</property>
-				</material>
-				<groupOrigin>1.398887 0.487918 0.058869</groupOrigin>
-			</primitiveGroup>
-		</geometry>
-	</renderSet>
-	<renderSet>
-		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
-		<node>W_R3_BlendBone</node>
-		<geometry>
-			<vertices>w_R04_Shape.vertices</vertices>
-			<primitive>w_R04_Shape.indices</primitive>
-			<primitiveGroup>
-				0
-				<material>
-					<identifier>tank_chassis_01_skinned</identifier>
-					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
-					<materialKind>0</materialKind>
-					<collisionFlags>0</collisionFlags>
-					<property>
-						alphaReference
-						<Int>128</Int>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>true</Bool>
-					</property>
-					<property>
-						colorIdMap
-						<Texture>vehicles/russian/common/common_ID.dds</Texture>
-					</property>
-					<property>
-						diffuseMap
-						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_AM.dds</Texture>
-					</property>
-					<property>
-						doubleSided
-						<Bool>true</Bool>
-					</property>
-					<property>
-						excludeMaskAndAOMap
-						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_AO.dds</Texture>
-					</property>
-					<property>
-						g_detailUVTiling
-						<Vector4>4.208220 4.208220 0.000000 0.000000</Vector4>
-					</property>
-					<property>
-						g_useDetailMetallic
-						<Bool>true</Bool>
-					</property>
-					<property>
-						metallicDetailMap
-						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
-					</property>
-					<property>
-						metallicGlossMap
-						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_GMM.dds</Texture>
-					</property>
-					<property>
-						normalMap
-						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_ANM.dds</Texture>
-					</property>
-				</material>
-				<groupOrigin>1.398887 0.487918 0.929632</groupOrigin>
-			</primitiveGroup>
-		</geometry>
-	</renderSet>
-	<renderSet>
-		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
-		<node>W_R4_BlendBone</node>
-		<geometry>
-			<vertices>w_R05_Shape.vertices</vertices>
-			<primitive>w_R05_Shape.indices</primitive>
-			<primitiveGroup>
-				0
-				<material>
-					<identifier>tank_chassis_01_skinned</identifier>
-					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
-					<materialKind>0</materialKind>
-					<collisionFlags>0</collisionFlags>
-					<property>
-						alphaReference
-						<Int>128</Int>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>true</Bool>
-					</property>
-					<property>
-						colorIdMap
-						<Texture>vehicles/russian/common/common_ID.dds</Texture>
-					</property>
-					<property>
-						diffuseMap
-						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_AM.dds</Texture>
-					</property>
-					<property>
-						doubleSided
-						<Bool>true</Bool>
-					</property>
-					<property>
-						excludeMaskAndAOMap
-						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_AO.dds</Texture>
-					</property>
-					<property>
-						g_detailUVTiling
-						<Vector4>4.208220 4.208220 0.000000 0.000000</Vector4>
-					</property>
-					<property>
-						g_useDetailMetallic
-						<Bool>true</Bool>
-					</property>
-					<property>
-						metallicDetailMap
-						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
-					</property>
-					<property>
-						metallicGlossMap
-						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_GMM.dds</Texture>
-					</property>
-					<property>
-						normalMap
-						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_ANM.dds</Texture>
-					</property>
-				</material>
-				<groupOrigin>1.398886 0.488617 1.797001</groupOrigin>
+				<groupOrigin>-1.399942 0.513437 1.162227</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<constraints/>
 	<boundingBox>
 		<min>-1.753157 -0.000016 -2.897708</min>
-		<max>1.751725 1.194760 3.071731</max>
+		<max>1.751725 1.185583 3.071731</max>
 	</boundingBox>
-	<geometrySize>815376</geometrySize>
-	<minUVDensity>0.024764</minUVDensity>
+	<geometrySize>458576</geometrySize>
+	<minUVDensity>0.018349</minUVDensity>
 </root>

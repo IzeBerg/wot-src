@@ -28,9 +28,18 @@
 					<identifier>HP_Fire_2</identifier>
 					<transform>
 						<row0>1.000000 0.000000 0.000000</row0>
-						<row1>-0.000000 1.000000 0.000000</row1>
+						<row1>0.000000 1.000000 0.000000</row1>
 						<row2>0.000000 0.000000 1.000000</row2>
-						<row3>0.584047 0.684000 1.572135</row3>
+						<row3>0.584047 0.551973 1.348468</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>HP_Fire_1</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>-0.000936 0.670000 -0.155501</row3>
 					</transform>
 				</node>
 				<node>
@@ -153,6 +162,14 @@
 					<property>
 						normalMap
 						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_chassis_01_ANM.dds</Texture>
+					</property>
+					<property>
+						alphaReference
+						<Int>128</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
 					</property>
 				</material>
 				<groupOrigin>-0.000436 -0.418530 0.062036</groupOrigin>

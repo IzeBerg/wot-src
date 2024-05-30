@@ -5777,6 +5777,6 @@ class EarlyAccessQuestsTokensFormatter(object):
                     compensationCredits = cls.__earlyAccessCtrl.getTokenCompensation(Currency.CREDITS).credits * count
                     formatter = getBWFormatter(Currency.CREDITS)
                     return backport.text(R.strings.messenger.serviceChannelMessages.resourceWell.credits(), count=formatter(str(compensationCredits)))
-                return makeHtmlString(b'messenger:htmlTemplatesSimple', b'earlyAccessToken', {b'count': str(count)})
+                return backport.text(R.strings.messenger.serviceChannelMessages.battleResults.quests.items.name(), name=backport.text(R.strings.early_access.serviceChannelMessages.questAchieves.text()), count=count)
 
         return b''

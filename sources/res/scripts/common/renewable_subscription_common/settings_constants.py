@@ -23,5 +23,5 @@ class WotPlusState(Enum):
     TRIAL = 4
 
 
-SUBSCRIPTION_STATE = {'INACTIVE': 2, 
-   'ACTIVE': 1}
+SUBSCRIPTION_STATE = {'ACTIVE': 1, 
+   'INACTIVE': 2}

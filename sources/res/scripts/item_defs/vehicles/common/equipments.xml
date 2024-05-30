@@ -10983,7 +10983,7 @@
 				</server>
 			</visualScript>
 			<cooldownSeconds>
-				20
+				10
 				<exports>vse</exports>
 			</cooldownSeconds>
 			<duration>
@@ -10991,7 +10991,7 @@
 				<exports>vse tooltip</exports>
 			</duration>
 			<crewBuff>
-				25 40 60
+				20 35 50
 				<exports>vse tooltip</exports>
 			</crewBuff>
 		</script>
@@ -11014,7 +11014,7 @@
 				</server>
 			</visualScript>
 			<cooldownSeconds>
-				5
+				17
 				<exports>vse</exports>
 			</cooldownSeconds>
 			<delay>
@@ -11022,16 +11022,15 @@
 				<exports>vse tooltip</exports>
 			</delay>
 			<radius>
-				7.5 10 12.5
-				<!--BW_String-->
+				10 11 12
 				<exports>vse tooltip</exports>
 			</radius>
 			<damage>
-				100 150 225
+				75 125 200
 				<exports>vse tooltip</exports>
 			</damage>
 			<stunDuration>
-				0 6 10
+				0 0 6
 				<exports>vse tooltip</exports>
 			</stunDuration>
 			<fraction>
@@ -11050,10 +11049,7 @@
 			<effects>
 				<action>
 					<shotEffects>epicArtilleryStrike</shotEffects>
-					<offsetDeviation>
-						12.5
-						<!--BW_String-->
-					</offsetDeviation>
+					<offsetDeviation>11</offsetDeviation>
 					<repeatCount>4</repeatCount>
 					<repeatDelay>0</repeatDelay>
 					<repeatDelayDeviationPercent>0</repeatDelayDeviationPercent>

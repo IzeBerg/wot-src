@@ -17,6 +17,7 @@ from helpers import dependency
 from nations import NAMES
 from skeletons.gui.game_control import IEarlyAccessController
 if typing.TYPE_CHECKING:
+    from typing import Optional, List
     from gui.server_events.bonuses import SimpleBonus, VehiclesBonus
 SIMPLE_BONUSES_MAX_ITEMS = 5
 _DISPLAYED_AWARDS_COUNT = 2
@@ -335,7 +336,7 @@ class BattlePassTextBonusesPacker(AwardsPacker):
         formattedBonuses = []
         for b in bonuses:
             if b.isShowInGUI():
-                formatter = self._getBonusFormatter(b.getName())
+                formatter = self._getBonusFormatter(b)
                 if formatter:
                     formatter.accumulateBonuses(b)
 

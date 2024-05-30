@@ -304,8 +304,9 @@ class WotPlusController(IWotPlusController):
             return
         self._isStateUpdate = False
         subscriptions = yield wg_await(self._userSubscriptionFetchCtrl.getProducts(False))
+        sortedSubscriptions = sorted(subscriptions.products, key=lambda p: (SUBSCRIPTION_STATE.get(p.status), -p.nextBilling))
         if subscriptions.isProcessed:
-            product = first(subscriptions.products)
+            product = first(sortedSubscriptions)
             if product:
                 self._state = WotPlusState(SUBSCRIPTION_STATE.get(product.status, WotPlusState.ERROR))
             else:

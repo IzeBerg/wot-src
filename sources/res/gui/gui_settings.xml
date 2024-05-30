@@ -378,6 +378,7 @@
 				<type>url</type>
 			</item>
 			<item>
+				https://tanki.su/$LANGUAGE_CODE/news/
 				<name>CT</name>
 				<type>url</type>
 			</item>
@@ -389,11 +390,12 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://lesta.ru/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=$TARGET_URL(https://lesta.ru/shop/wot/premium/subscription_mt?language=$LANGUAGE_CODE)
+				https://lesta.ru/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=$TARGET_URL(https://lesta.ru/shop/wot/main/subscription_mt?language=$LANGUAGE_CODE)
 				<name>default</name>
 				<type>url</type>
 			</item>
 			<item>
+				https://apex.lesta.ru/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=https://apex.lesta.ru/shop/wotrpt/main/subscription_mt?language=$LANGUAGE_CODE
 				<name>CT</name>
 				<type>url</type>
 			</item>
@@ -1350,7 +1352,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				$PARAMS(/bpcoin_category/bpcoin_category)
+				$PARAMS(/bpcoin_category/bpcoin_category_tab_vehicle)
 				<name>bpcoinProducts</name>
 				<type>url</type>
 			</item>

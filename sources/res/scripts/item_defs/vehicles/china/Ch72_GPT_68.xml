@@ -1958,17 +1958,17 @@
 					-9.8
 					<!--BW_String-->
 				</gravity>
-				<elasticity>1100</elasticity>
+				<elasticity>1000</elasticity>
 				<damping>2</damping>
 				<node>
 					<isLeft>true</isLeft>
 					<name>Track_VD_L0</name>
 					<forwardElastK>
-						0.7
+						0.65
 						<!--BW_String-->
 					</forwardElastK>
 					<backwardElastK>
-						0.8
+						0.9
 						<!--BW_String-->
 					</backwardElastK>
 					<offset>
@@ -1984,7 +1984,7 @@
 						<!--BW_String-->
 					</forwardElastK>
 					<backwardElastK>
-						0.7
+						0.65
 						<!--BW_String-->
 					</backwardElastK>
 					<offset>
@@ -1996,11 +1996,11 @@
 					<isLeft>false</isLeft>
 					<name>Track_VD_R0</name>
 					<forwardElastK>
-						0.7
+						0.65
 						<!--BW_String-->
 					</forwardElastK>
 					<backwardElastK>
-						0.8
+						0.9
 						<!--BW_String-->
 					</backwardElastK>
 					<offset>
@@ -2016,7 +2016,7 @@
 						<!--BW_String-->
 					</forwardElastK>
 					<backwardElastK>
-						0.7
+						0.65
 						<!--BW_String-->
 					</backwardElastK>
 					<offset>
@@ -2031,12 +2031,20 @@
 						-0.04
 						<!--BW_String-->
 					</offset>
+					<forwardElastK>
+						0.7
+						<!--BW_String-->
+					</forwardElastK>
+					<backwardElastK>
+						1.1
+						<!--BW_String-->
+					</backwardElastK>
 				</node>
 				<node>
 					<isLeft>true</isLeft>
 					<name>Track_VT_L1</name>
 					<forwardElastK>
-						0.8
+						0.65
 						<!--BW_String-->
 					</forwardElastK>
 					<offset>
@@ -2048,7 +2056,7 @@
 					<isLeft>true</isLeft>
 					<name>Track_VT_L2</name>
 					<forwardElastK>
-						0.8
+						0.65
 						<!--BW_String-->
 					</forwardElastK>
 					<offset>
@@ -2072,7 +2080,7 @@
 					<isLeft>true</isLeft>
 					<name>Track_VT_L4</name>
 					<forwardElastK>
-						0.8
+						0.7
 						<!--BW_String-->
 					</forwardElastK>
 					<backwardElastK>
@@ -2091,12 +2099,20 @@
 						-0.04
 						<!--BW_String-->
 					</offset>
+					<forwardElastK>
+						0.7
+						<!--BW_String-->
+					</forwardElastK>
+					<backwardElastK>
+						1.1
+						<!--BW_String-->
+					</backwardElastK>
 				</node>
 				<node>
 					<isLeft>false</isLeft>
 					<name>Track_VT_R1</name>
 					<forwardElastK>
-						0.8
+						0.65
 						<!--BW_String-->
 					</forwardElastK>
 					<offset>
@@ -2108,7 +2124,7 @@
 					<isLeft>false</isLeft>
 					<name>Track_VT_R2</name>
 					<forwardElastK>
-						0.8
+						0.65
 						<!--BW_String-->
 					</forwardElastK>
 					<offset>
@@ -2132,7 +2148,7 @@
 					<isLeft>false</isLeft>
 					<name>Track_VT_R4</name>
 					<forwardElastK>
-						0.8
+						0.7
 						<!--BW_String-->
 					</forwardElastK>
 					<backwardElastK>
@@ -2146,7 +2162,7 @@
 				</node>
 			</trackNodes>
 			<trackThickness>
-				-0.03
+				-0.015
 				<!--BW_String-->
 			</trackThickness>
 			<groundNodes>
@@ -2206,7 +2222,7 @@
 					<trackPairIdx>0</trackPairIdx>
 					<segmentsCount>102</segmentsCount>
 					<segmentsOuterThickness>
-						0.02
+						0.06
 						<!--BW_String-->
 					</segmentsOuterThickness>
 					<segmentsInnerThickness>
@@ -2223,22 +2239,22 @@
 					</mainSegment>
 					<springsLength>
 						<backwardMovement>
-							<back>
-								0.149
-								<!--BW_String-->
-							</back>
+							<back>0.145476</back>
 							<top>
-								0.143
+								0.14
 								<!--BW_String-->
 							</top>
-							<front>0.143466</front>
-							<bottom>0.116945</bottom>
+							<front>0.141443</front>
+							<bottom>0.108192</bottom>
 						</backwardMovement>
 						<forwardMovement>
-							<back>0.143619</back>
-							<top>0.146755</top>
-							<front>0.148935</front>
-							<bottom>0.116945</bottom>
+							<back>0.140788</back>
+							<top>0.144256</top>
+							<front>
+								0.14574
+								<!--BW_String-->
+							</front>
+							<bottom>0.108192</bottom>
 						</forwardMovement>
 					</springsLength>
 					<bottomWheels>
@@ -2775,7 +2791,7 @@
 					<trackPairIdx>0</trackPairIdx>
 					<segmentsCount>102</segmentsCount>
 					<segmentsOuterThickness>
-						0.02
+						0.06
 						<!--BW_String-->
 					</segmentsOuterThickness>
 					<segmentsInnerThickness>
@@ -2792,19 +2808,22 @@
 					</mainSegment>
 					<springsLength>
 						<backwardMovement>
-							<back>0.148792</back>
+							<back>0.145681</back>
 							<top>
-								0.143
+								0.14
 								<!--BW_String-->
 							</top>
-							<front>0.142542</front>
-							<bottom>0.116965</bottom>
+							<front>0.140402</front>
+							<bottom>0.114978</bottom>
 						</backwardMovement>
 						<forwardMovement>
-							<back>0.143323</back>
-							<top>0.146779</top>
-							<front>0.148011</front>
-							<bottom>0.116965</bottom>
+							<back>0.140994</back>
+							<top>0.144286</top>
+							<front>
+								0.14548
+								<!--BW_String-->
+							</front>
+							<bottom>0.114978</bottom>
 						</forwardMovement>
 					</springsLength>
 					<bottomWheels>
@@ -3751,11 +3770,11 @@
 					<isLeft>true</isLeft>
 					<name>Track_VD_L0</name>
 					<forwardElastK>
-						0.7
+						0.65
 						<!--BW_String-->
 					</forwardElastK>
 					<backwardElastK>
-						0.8
+						0.9
 						<!--BW_String-->
 					</backwardElastK>
 					<offset>
@@ -3767,11 +3786,11 @@
 					<isLeft>true</isLeft>
 					<name>Track_VD_L1</name>
 					<forwardElastK>
-						0.8
+						0.9
 						<!--BW_String-->
 					</forwardElastK>
 					<backwardElastK>
-						0.7
+						0.65
 						<!--BW_String-->
 					</backwardElastK>
 					<offset>
@@ -3783,11 +3802,11 @@
 					<isLeft>false</isLeft>
 					<name>Track_VD_R0</name>
 					<forwardElastK>
-						0.7
+						0.65
 						<!--BW_String-->
 					</forwardElastK>
 					<backwardElastK>
-						0.8
+						0.9
 						<!--BW_String-->
 					</backwardElastK>
 					<offset>
@@ -3799,11 +3818,11 @@
 					<isLeft>false</isLeft>
 					<name>Track_VD_R1</name>
 					<forwardElastK>
-						0.8
+						0.9
 						<!--BW_String-->
 					</forwardElastK>
 					<backwardElastK>
-						0.7
+						0.65
 						<!--BW_String-->
 					</backwardElastK>
 					<offset>
@@ -3818,12 +3837,20 @@
 						-0.04
 						<!--BW_String-->
 					</offset>
+					<forwardElastK>
+						0.7
+						<!--BW_String-->
+					</forwardElastK>
+					<backwardElastK>
+						1.1
+						<!--BW_String-->
+					</backwardElastK>
 				</node>
 				<node>
 					<isLeft>true</isLeft>
 					<name>Track_VT_L1</name>
 					<forwardElastK>
-						0.8
+						0.65
 						<!--BW_String-->
 					</forwardElastK>
 					<offset>
@@ -3835,7 +3862,7 @@
 					<isLeft>true</isLeft>
 					<name>Track_VT_L2</name>
 					<forwardElastK>
-						0.8
+						0.65
 						<!--BW_String-->
 					</forwardElastK>
 					<offset>
@@ -3859,7 +3886,7 @@
 					<isLeft>true</isLeft>
 					<name>Track_VT_L4</name>
 					<forwardElastK>
-						0.8
+						0.7
 						<!--BW_String-->
 					</forwardElastK>
 					<backwardElastK>
@@ -3878,12 +3905,20 @@
 						-0.04
 						<!--BW_String-->
 					</offset>
+					<forwardElastK>
+						0.7
+						<!--BW_String-->
+					</forwardElastK>
+					<backwardElastK>
+						1.1
+						<!--BW_String-->
+					</backwardElastK>
 				</node>
 				<node>
 					<isLeft>false</isLeft>
 					<name>Track_VT_R1</name>
 					<forwardElastK>
-						0.8
+						0.65
 						<!--BW_String-->
 					</forwardElastK>
 					<offset>
@@ -3895,7 +3930,7 @@
 					<isLeft>false</isLeft>
 					<name>Track_VT_R2</name>
 					<forwardElastK>
-						0.8
+						0.65
 						<!--BW_String-->
 					</forwardElastK>
 					<offset>
@@ -3919,7 +3954,7 @@
 					<isLeft>false</isLeft>
 					<name>Track_VT_R4</name>
 					<forwardElastK>
-						0.8
+						0.7
 						<!--BW_String-->
 					</forwardElastK>
 					<backwardElastK>
@@ -3933,7 +3968,7 @@
 				</node>
 			</trackNodes>
 			<trackThickness>
-				-0.03
+				-0.015
 				<!--BW_String-->
 			</trackThickness>
 			<groundNodes>
@@ -3993,7 +4028,7 @@
 					<trackPairIdx>0</trackPairIdx>
 					<segmentsCount>102</segmentsCount>
 					<segmentsOuterThickness>
-						0.02
+						0.06
 						<!--BW_String-->
 					</segmentsOuterThickness>
 					<segmentsInnerThickness>
@@ -4011,7 +4046,10 @@
 					<springsLength>
 						<backwardMovement>
 							<back>0.145476</back>
-							<top>0.144256</top>
+							<top>
+								0.14
+								<!--BW_String-->
+							</top>
 							<front>0.141443</front>
 							<bottom>0.108192</bottom>
 						</backwardMovement>
@@ -4315,7 +4353,7 @@
 					<trackPairIdx>0</trackPairIdx>
 					<segmentsCount>102</segmentsCount>
 					<segmentsOuterThickness>
-						0.02
+						0.06
 						<!--BW_String-->
 					</segmentsOuterThickness>
 					<segmentsInnerThickness>
@@ -4333,7 +4371,10 @@
 					<springsLength>
 						<backwardMovement>
 							<back>0.145681</back>
-							<top>0.144286</top>
+							<top>
+								0.14
+								<!--BW_String-->
+							</top>
 							<front>0.140402</front>
 							<bottom>0.114978</bottom>
 						</backwardMovement>
