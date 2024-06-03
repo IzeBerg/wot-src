@@ -3,6 +3,7 @@ from operator import attrgetter
 import Steam, adisp, typing
 from BWUtil import AsyncReturn
 from shared_utils import first
+from advanced_achievements_client.constants import TROPHIES_ACHIEVEMENT_ID
 from CurrentVehicle import HeroTankPreviewAppearance
 from constants import GameSeasonType, RentType
 from debug_utils import LOG_WARNING
@@ -331,7 +332,11 @@ def showDailyExpPageView(exitEvent=None):
 
 def showDashboardView():
     from gui.impl.lobby.account_dashboard.account_dashboard_view import AccountDashboardView
-    g_eventBus.handleEvent(events.LoadGuiImplViewEvent(GuiImplViewLoadParams(R.views.lobby.account_dashboard.AccountDashboard(), AccountDashboardView, ScopeTemplates.LOBBY_SUB_SCOPE)), scope=EVENT_BUS_SCOPE.LOBBY)
+    uiLoader = dependency.instance(IGuiLoader)
+    accountDashboard = uiLoader.windowsManager.getViewByLayoutID(R.views.lobby.account_dashboard.AccountDashboard())
+    if accountDashboard is None:
+        g_eventBus.handleEvent(events.LoadGuiImplViewEvent(GuiImplViewLoadParams(R.views.lobby.account_dashboard.AccountDashboard(), AccountDashboardView, ScopeTemplates.LOBBY_SUB_SCOPE)), scope=EVENT_BUS_SCOPE.LOBBY)
+    return
 
 
 @wg_async
@@ -449,6 +454,28 @@ def showDogTags(compID=-1, makeTopView=True):
         else:
             g_eventBus.handleEvent(events.LoadGuiImplViewEvent(GuiImplViewLoadParams(contentResId, DogTagsView, ScopeTemplates.LOBBY_SUB_SCOPE), highlightedComponentId=compID, makeTopView=makeTopView), scope=EVENT_BUS_SCOPE.LOBBY)
         return
+
+
+def showAnimatedDogTags(initBackgroundId=0, initEngravingId=0, closeCallback=None, makeTopView=True):
+    lobbyContext = dependency.instance(ILobbyContext)
+    if not lobbyContext.getServerSettings().isDogTagCustomizationScreenEnabled():
+        return
+    else:
+        from gui.impl.lobby.dog_tags.animated_dog_tags_view import AnimatedDogTagsView
+        uiLoader = dependency.instance(IGuiLoader)
+        contentResId = R.views.lobby.dog_tags.AnimatedDogTagsView()
+        dtView = uiLoader.windowsManager.getViewByLayoutID(contentResId)
+        if dtView is None:
+            g_eventBus.handleEvent(events.LoadGuiImplViewEvent(GuiImplViewLoadParams(R.views.lobby.dog_tags.AnimatedDogTagsView(), AnimatedDogTagsView, ScopeTemplates.LOBBY_SUB_SCOPE), initBackgroundId=initBackgroundId, initEngravingId=initEngravingId, closeCallback=closeCallback, makeTopView=makeTopView), scope=EVENT_BUS_SCOPE.LOBBY)
+        return
+
+
+@wg_async
+def showDogTagCustomizationConfirmDialog(backgroundId=None, engravingId=None, parent=None):
+    from gui.impl.dialogs.dialogs import showSingleDialogWithResultData
+    from gui.impl.lobby.dog_tags.customization_confirm_dialog import CustomizationConfirmDialog
+    result = yield wg_await(showSingleDialogWithResultData(layoutID=R.views.lobby.dog_tags.CustomizationConfirmDialog(), wrappedViewClass=CustomizationConfirmDialog, backgroundId=backgroundId, engravingId=engravingId, parent=parent))
+    raise AsyncReturn(result)
 
 
 def showStrongholds(url=None, reloadView=False):
@@ -667,7 +694,7 @@ def showPersonalMissionsQuestAwardScreen(quest, ctx, proxyEvent, notificationMgr
     notificationMgr.append(WindowNotificationCommand(window))
 
 
-def showProfileWindow(databaseID, userName, selectedAlias=None, eventOwner=None):
+def showProfileWindow(databaseID, userName, selectedAlias=VIEW_ALIAS.PROFILE_TOTAL_PAGE, eventOwner=None):
     alias = VIEW_ALIAS.PROFILE_WINDOW
     g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(alias, getViewName(alias, databaseID)), ctx={'userName': userName, 'databaseID': databaseID, 
        'selectedAlias': selectedAlias, 
@@ -897,7 +924,7 @@ def showTankPremiumAboutPage():
 
 
 @adisp.adisp_process
-def showBrowserOverlayView(url, alias=VIEW_ALIAS.BROWSER_LOBBY_TOP_SUB, params=None, callbackOnLoad=None, webHandlers=None, forcedSkipEscape=False, browserParams=None, hiddenLayers=None, parent=None, callbackOnClose=None):
+def showBrowserOverlayView(url, alias=VIEW_ALIAS.BROWSER_LOBBY_TOP_SUB, params=None, callbackOnLoad=None, webHandlers=None, forcedSkipEscape=False, browserParams=None, hiddenLayers=None, parent=None):
     if url:
         if browserParams is None:
             browserParams = {}
@@ -908,8 +935,7 @@ def showBrowserOverlayView(url, alias=VIEW_ALIAS.BROWSER_LOBBY_TOP_SUB, params=N
            'webHandlers': webHandlers, 
            'forcedSkipEscape': forcedSkipEscape, 
            'browserParams': browserParams, 
-           'hiddenLayers': hiddenLayers or (), 
-           'callbackOnClose': callbackOnClose}), EVENT_BUS_SCOPE.LOBBY)
+           'hiddenLayers': hiddenLayers or ()}), EVENT_BUS_SCOPE.LOBBY)
     return
 
 
@@ -2034,22 +2060,42 @@ def showComp7WhatsNewScreen(notificationMgr=None):
 
 @dependency.replace_none_kwargs(notificationMgr=INotificationWindowController)
 def showComp7RanksRewardsScreen(quest, periodicQuests, notificationMgr=None):
-    from gui.impl.lobby.comp7.rewards_screen import RanksRewardsScreenWindow
-    window = RanksRewardsScreenWindow(quest=quest, periodicQuests=periodicQuests)
+    from gui.impl.lobby.comp7.rewards_screen import RanksRewardsWindow
+    window = RanksRewardsWindow(quest=quest, periodicQuests=periodicQuests)
     notificationMgr.append(WindowNotificationCommand(window))
 
 
 @dependency.replace_none_kwargs(notificationMgr=INotificationWindowController)
 def showComp7TokensRewardsScreen(quest, notificationMgr=None):
-    from gui.impl.lobby.comp7.rewards_screen import TokensRewardsScreenWindow
-    window = TokensRewardsScreenWindow(quest=quest)
+    from gui.impl.lobby.comp7.rewards_screen import TokensRewardsWindow
+    window = TokensRewardsWindow(quest=quest)
     notificationMgr.append(WindowNotificationCommand(window))
 
 
 @dependency.replace_none_kwargs(notificationMgr=INotificationWindowController)
 def showComp7QualificationRewardsScreen(quests, notificationMgr=None):
-    from gui.impl.lobby.comp7.rewards_screen import QualificationRewardsScreenWindow
-    window = QualificationRewardsScreenWindow(quests=quests)
+    from gui.impl.lobby.comp7.rewards_screen import QualificationRewardsWindow
+    window = QualificationRewardsWindow(quests=quests)
+    notificationMgr.append(WindowNotificationCommand(window))
+
+
+@dependency.replace_none_kwargs(notificationMgr=INotificationWindowController)
+def showComp7YearlyRewardsScreen(bonuses, showSeasonResults=True, notificationMgr=None):
+    from gui.impl.lobby.comp7.rewards_screen import YearlyRewardsWindow
+    window = YearlyRewardsWindow(bonuses=bonuses, showSeasonResults=showSeasonResults)
+    notificationMgr.append(WindowNotificationCommand(window))
+
+
+def showComp7YearlyRewardsSelectionWindow():
+    from gui.impl.lobby.comp7.yearly_rewards_selection_screen import YearlyRewardsSelectionWindow
+    window = YearlyRewardsSelectionWindow()
+    window.load()
+
+
+@dependency.replace_none_kwargs(notificationMgr=INotificationWindowController)
+def showComp7SelectedRewardsScreen(bonuses, notificationMgr=None):
+    from gui.impl.lobby.comp7.rewards_screen import SelectedRewardsWindow
+    window = SelectedRewardsWindow(bonuses=bonuses)
     notificationMgr.append(WindowNotificationCommand(window))
 
 
@@ -2159,8 +2205,8 @@ def showSteamEmailConfirmRewardsView(rewards=None, notificationMgr=None):
 
 
 def showBattlePassTankmenVoiceover(ctx=None):
-    from gui.impl.lobby.battle_pass.custom_tankmen_voiceover_view import CustomTankmenVoiceoverWindow
-    window = CustomTankmenVoiceoverWindow(ctx=ctx)
+    from gui.impl.lobby.battle_pass.tankmen_voiceover_view import TankmenVoiceoverWindow
+    window = TankmenVoiceoverWindow(ctx=ctx)
     window.load()
 
 
@@ -2185,3 +2231,40 @@ def showPrebattleHintsWindow(hintModel, hintsViewClass=None):
 def showPrebattleHintsConfirmWindow(notificationsMgr=None):
     from gui.impl.battle.prebattle.prebattle_hints_confirm import showPrebattleHintsConfirm
     notificationsMgr.append(EventNotificationCommand(NotificationEvent(method=showPrebattleHintsConfirm)))
+
+
+def showAdvancedAchievementsCatalogView(initAchievementIDs, achievementCategory, closeCallback, parentScreen, *args, **kwargs):
+    from gui.impl.lobby.achievements.catalog_view import CatalogViewWindow
+    uiLoader = dependency.instance(IGuiLoader)
+    contentResId = R.views.lobby.achievements.CatalogView()
+    fullScreenWindows = uiLoader.windowsManager.findWindows(lambda w: w.layer == WindowLayer.FULLSCREEN_WINDOW)
+    if uiLoader.windowsManager.getViewByLayoutID(contentResId) is None and not fullScreenWindows:
+        window = CatalogViewWindow(initAchievementIDs=initAchievementIDs, achievementCategory=achievementCategory, closeCallback=closeCallback, uiParentScreen=parentScreen, *args, **kwargs)
+        window.load()
+    return
+
+
+def showTrophiesView(closeCallback, parentScreen, *args, **kwargs):
+    from gui.impl.lobby.achievements.catalog_view import CatalogViewWindow
+    uiLoader = dependency.instance(IGuiLoader)
+    contentResId = R.views.lobby.achievements.CatalogView()
+    fullScreenWindows = uiLoader.windowsManager.findWindows(lambda w: w.layer == WindowLayer.FULLSCREEN_WINDOW)
+    if uiLoader.windowsManager.getViewByLayoutID(contentResId) is None and not fullScreenWindows:
+        window = CatalogViewWindow(initAchievementIDs=[
+         TROPHIES_ACHIEVEMENT_ID], achievementCategory='', closeCallback=closeCallback, uiParentScreen=parentScreen, *args, **kwargs)
+        window.load()
+    return
+
+
+def showAdvancedAchievementsView(closeCallback=None):
+    g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.LOBBY_PROFILE), ctx={'selectedAlias': VIEW_ALIAS.PROFILE_ACHIEVEMENTS_PAGE, 'closeCallback': closeCallback}), scope=EVENT_BUS_SCOPE.LOBBY)
+
+
+def showAdvancedAchievementsRewardView(bonusTuples, *args, **kwargs):
+    from gui.impl.lobby.achievements.reward_view import RewardViewWindow
+    uiLoader = dependency.instance(IGuiLoader)
+    contentResId = R.views.lobby.achievements.RewardView()
+    if uiLoader.windowsManager.getViewByLayoutID(contentResId) is None:
+        window = RewardViewWindow(bonusTuples=bonusTuples, *args, **kwargs)
+        window.load()
+    return

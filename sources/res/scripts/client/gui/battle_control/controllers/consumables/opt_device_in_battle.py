@@ -1,4 +1,4 @@
-import SoundGroups, nations
+import BattleReplay, SoundGroups, nations, functools
 from constants import ARENA_PERIOD
 from gui.impl import backport
 from gui.impl.gen import R
@@ -12,6 +12,17 @@ OPT_DEVICE_USED = 'OPT_DEVICE_USED'
 
 def _getDescriptor(deviceID):
     return vehicles.g_cache.optionalDevices()[deviceID]
+
+
+def skipOnRewind(func):
+
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        if BattleReplay.isPlaying() and BattleReplay.g_replayCtrl.isTimeWarpInProgress:
+            return
+        return func(*args, **kwargs)
+
+    return wrapper
 
 
 def createOptDeviceInBattle(deviceID, status):
@@ -108,6 +119,7 @@ class ResurrectionOptDeviceInBattle(OptDeviceInBattle):
     def isResurrectionDeviceEnable(self, deviceName):
         return 1 << VEHICLE_DEVICE_INDICES.get(deviceName) & self._status
 
+    @skipOnRewind
     def isNeedGlow(self):
         return self._lastStatus != self._status and self._lastStatus
 
@@ -126,6 +138,7 @@ class ResurrectionOptDeviceInBattle(OptDeviceInBattle):
 
         return result
 
+    @skipOnRewind
     def apply(self):
         applyStatus = self._lastStatus ^ self._status
         if not applyStatus:

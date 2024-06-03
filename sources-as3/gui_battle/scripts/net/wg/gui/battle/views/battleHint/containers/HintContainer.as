@@ -5,16 +5,19 @@ package net.wg.gui.battle.views.battleHint.containers
    import net.wg.gui.battle.views.battleHint.vo.BattleHintVO;
    import net.wg.gui.events.UILoaderEvent;
    import net.wg.infrastructure.interfaces.entity.IDisposable;
+   import net.wg.utils.StageSizeBoundaries;
    
    public class HintContainer extends MovieClip implements IDisposable
    {
+      
+      private static const DEFAULT_IMAGE_HEIGHT:int = 100;
        
       
       public var txt:HintInfoContainer = null;
       
-      public var icon:HintIconContainer = null;
+      public var highlight:HintHighlightContainer = null;
       
-      private const TXT_PADDING:int = -100;
+      public var icon:HintIconContainer = null;
       
       private var _disposed:Boolean = false;
       
@@ -22,6 +25,7 @@ package net.wg.gui.battle.views.battleHint.containers
       {
          super();
          this.icon.addEventListener(UILoaderEvent.COMPLETE,this.onIconCompleteHandler,false,0,true);
+         this.highlight.setTextField(this.txt.txt);
       }
       
       public final function dispose() : void
@@ -32,6 +36,14 @@ package net.wg.gui.battle.views.battleHint.containers
          this.icon = null;
          this.txt.dispose();
          this.txt = null;
+         this.highlight.dispose();
+         this.highlight = null;
+      }
+      
+      public function updateStage(param1:Number) : void
+      {
+         this.txt.setIsBigSize(param1 >= StageSizeBoundaries.WIDTH_1920);
+         this.highlight.updatePosition();
       }
       
       public function hideHint() : void
@@ -43,7 +55,8 @@ package net.wg.gui.battle.views.battleHint.containers
       {
          gotoAndPlay(HINT_LABELS.SHOW_LABEL);
          this.icon.setHintData(param1.iconSource);
-         this.txt.setHintData(param1.message,param1.messageHighlight);
+         this.txt.setMessage(param1.message);
+         this.highlight.setHighlight(param1.messageHighlight);
       }
       
       public function stopHint() : void
@@ -51,6 +64,7 @@ package net.wg.gui.battle.views.battleHint.containers
          gotoAndStop(1);
          this.txt.clear();
          this.icon.clear();
+         this.highlight.clear();
       }
       
       public function isDisposed() : Boolean
@@ -60,7 +74,8 @@ package net.wg.gui.battle.views.battleHint.containers
       
       private function onIconCompleteHandler(param1:UILoaderEvent) : void
       {
-         this.txt.setOffset(this.icon.y + this.icon.height + this.TXT_PADDING);
+         this.txt.setOffset(this.icon.y + this.icon.height - DEFAULT_IMAGE_HEIGHT);
+         this.highlight.updatePosition();
       }
    }
 }

@@ -186,11 +186,13 @@ package net.wg.gui.lobby.hangar.quests
          if(this._secondaryEntryPointLeft)
          {
             removeChild(DisplayObject(this._secondaryEntryPointLeft));
+            this._secondaryEntryPointLeft.removeEventListener(Event.RESIZE,this.onEntryPointResizeHandler);
             this._secondaryEntryPointLeft = null;
          }
          if(this._secondaryEntryPointRight)
          {
             removeChild(DisplayObject(this._secondaryEntryPointRight));
+            this._secondaryEntryPointRight.removeEventListener(Event.RESIZE,this.onEntryPointResizeHandler);
             this._secondaryEntryPointRight = null;
          }
          super.onDispose();
@@ -211,6 +213,7 @@ package net.wg.gui.lobby.hangar.quests
             {
                this._secondaryEntryPointLeft = param1;
             }
+            param1.addEventListener(Event.RESIZE,this.onEntryPointResizeHandler);
             invalidateSize();
          }
          invalidate(INV_SECONDARY_ENTRY_POINT);

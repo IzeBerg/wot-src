@@ -20,6 +20,13 @@
 			<priority>100</priority>
 			<bigIcon>Standard</bigIcon>
 		</battlePassQuestChainToken>
+		<tokens>
+			<override>
+				<id>battle_bonus_x5</id>
+				<priority>83</priority>
+				<bigIcon>Standard</bigIcon>
+			</override>
+		</tokens>
 		<randomQuestToken>
 			<priority>110</priority>
 			<bigIcon>Standard</bigIcon>
@@ -48,6 +55,10 @@
 			<priority>108</priority>
 			<bigIcon>Standard</bigIcon>
 		</gold>
+		<equipCoin>
+			<priority>108</priority>
+			<bigIcon>Standard</bigIcon>
+		</equipCoin>
 		<dossier>
 			<priority>100</priority>
 			<bigIcon>Standard</bigIcon>
@@ -61,6 +72,9 @@
 				<priority>120</priority>
 				<bigIcon>Standard</bigIcon>
 			</style3D>
+			<lockedStyle>
+				<isVisible>False</isVisible>
+			</lockedStyle>
 			<projectionDecal>
 				<priority>75</priority>
 			</projectionDecal>
@@ -132,7 +146,7 @@
 			</override>
 			<override>
 				<id>121000</id>
-				<priority>51</priority>
+				<priority>52</priority>
 			</override>
 			<override>
 				<id>5042</id>

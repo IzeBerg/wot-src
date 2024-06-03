@@ -1,6 +1,8 @@
+import typing
 from typing import List
+from gui.battle_control.controllers.vse_hud_settings_ctrl.settings.base_models import TextClientModel
 
-class PrimaryObjectiveClientModel(object):
+class PrimaryObjectiveClientModel(TextClientModel):
     __slots__ = ('id', 'header', 'subheader', 'startSound', 'remindTimers', 'remindSound',
                  'countdownTimer', 'countdownSound', 'success', 'successIcon', 'successSound',
                  'failure', 'failureIcon', 'failureSound')
@@ -21,6 +23,18 @@ class PrimaryObjectiveClientModel(object):
         self.failure = failure
         self.failureIcon = failureIcon
         self.failureSound = failureSound
+
+    def getHeader(self):
+        return self._getText(self.header)
+
+    def getSubheader(self, params):
+        return self._getPluralText(self.subheader, params)
+
+    def getSuccess(self):
+        return self._getText(self.success)
+
+    def getFailure(self):
+        return self._getText(self.failure)
 
     def __repr__(self):
         return '<PrimaryObjectiveClientModel>: id=%s, header=%s, subheader=%s, startSound=%s, remindTimers=%s, remindSound=%s, countdownTimer=%s, countdownSound=%s, success=%s, successIcon=%s, successSound=%s, failure=%s, failureIcon=%s, failureSound=%s' % (

@@ -27,6 +27,8 @@ package
       
       public static const MISSIONS_TAB_WINBACK:String = "#quests:missions/tab/winback";
       
+      public static const MISSIONS_TAB_LIVE_OPS_WEB_EVENTS:String = "#quests:missions/tab/live_ops_web_events";
+      
       public static const MISSIONS_FILTERCOUNTER_CLOSEBUTTON:String = "#quests:missions/filterCounter/closeButton";
       
       public static const MISSIONS_FILTER_FILTERBUTTON:String = "#quests:missions/filter/filterButton";
@@ -2116,6 +2118,10 @@ package
       public static const MISSIONS_TAB_BATTLE_PASS_BODY:String = "#quests:missions/tab/battle_pass/body";
       
       public static const MISSIONS_TAB_BATTLE_PASS_HEADER:String = "#quests:missions/tab/battle_pass/header";
+      
+      public static const MISSIONS_TAB_LIVE_OPS_WEB_EVENTS_BODY:String = "#quests:missions/tab/live_ops_web_events/body";
+      
+      public static const MISSIONS_TAB_LIVE_OPS_WEB_EVENTS_HEADER:String = "#quests:missions/tab/live_ops_web_events/header";
       
       public static const MISSIONS_TAB_MAPBOX_HEADER:String = "#quests:missions/tab/mapbox/header";
       

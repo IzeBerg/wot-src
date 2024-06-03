@@ -418,7 +418,8 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
            'backBtnLabel': self._backBtnLabel, 
            'outfit': self.__ctx.get('outfit'), 
            'heroInteractive': self.__ctx.get('heroInteractive', True), 
-           'crewText': self.__ctx.get('crewText')})
+           'crewText': self.__ctx.get('crewText', None), 
+           'skipInventoryUpdate': self.__ctx.get('skipInventoryUpdate', False)})
 
     def __onViewLoaded(self, event):
         if event.alias == VIEW_ALIAS.LOBBY_HANGAR:
@@ -541,7 +542,7 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
         return
 
     def _onInventoryChanged(self, *_):
-        if not BuyVehicleWindow.getInstances():
+        if not BuyVehicleWindow.getInstances() and not self.__ctx.get('skipInventoryUpdate', False):
             g_currentPreviewVehicle.selectNoVehicle()
 
     def __onOfferChanged(self, event):

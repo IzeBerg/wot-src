@@ -1,7 +1,7 @@
 from __future__ import absolute_import
+from constants import PREBATTLE_TYPE, QUEUE_TYPE
 from gui.Scaleform.daapi.view.lobby.header import battle_selector_items
 from gui.shared.utils import SelectorBattleTypesUtils as selectorUtils
-from story_mode_common.story_mode_constants import QUEUE_TYPE, PREBATTLE_TYPE
 from story_mode.gui.story_mode_gui_constants import PREBATTLE_ACTION_NAME, SELECTOR_BATTLE_TYPES
 from story_mode.skeletons.story_mode_controller import IStoryModeController
 from gui.impl import backport
@@ -36,6 +36,9 @@ class _StoryModeItem(battle_selector_items.SelectorItem):
 
     def isInSquad(self, state):
         return state.isInUnit(PREBATTLE_TYPE.STORY_MODE)
+
+    def isShowActiveModeState(self):
+        return self.storyModeCtrl.isShowActiveModeState()
 
     def _update(self, state):
         self._isSelected = state.isQueueSelected(QUEUE_TYPE.STORY_MODE)

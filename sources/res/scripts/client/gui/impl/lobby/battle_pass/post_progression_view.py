@@ -1,8 +1,9 @@
+from ClientSelectableCameraObject import ClientSelectableCameraObject
 from frameworks.wulf import ViewFlags, ViewSettings
 from battle_pass_common import FinalReward, BattlePassConsts, BattlePassTankmenSource
 from gui.battle_pass.battle_pass_award import BattlePassAwardsManager
 from gui.battle_pass.battle_pass_decorators import createBackportTooltipDecorator, createTooltipContentDecorator
-from gui.battle_pass.battle_pass_helpers import getReceivedTankmenCount, getTankmenShopPackages, getStyleForChapter, getVehicleInfoForChapter, isSeasonEndingSoon
+from gui.battle_pass.battle_pass_helpers import getReceivedTankmenCount, getTankmenShopPackages, getStyleForChapter, getVehicleInfoForChapter, isSeasonEndingSoon, isSeasonWithSpecialTankmenScreen
 from gui.battle_pass.battle_pass_bonuses_packers import packBonusModelAndTooltipData
 from gui.impl.gen import R
 from gui.Scaleform.daapi.view.lobby.storage.storage_helpers import getVehicleCDForStyle
@@ -109,7 +110,7 @@ class PostProgressionView(ViewImpl):
         with self.viewModel.transaction() as (model):
             model.awardsWidget.setIsBpBitEnabled(not self.__battlePass.isHoliday())
             model.awardsWidget.setIsBpCoinEnabled(not self.__battlePass.isHoliday())
-            model.awardsWidget.setIsSpecialVoiceTankmenEnabled(not len(self.__battlePass.getSpecialTankmen()) < 2)
+            model.awardsWidget.setIsSpecialVoiceTankmenEnabled(isSeasonWithSpecialTankmenScreen())
             model.setIsSeasonEndingSoon(isSeasonEndingSoon())
             self.__updateRewardChoice(model=model)
 
@@ -174,6 +175,7 @@ class PostProgressionView(ViewImpl):
         self.viewModel.setState(state)
 
     def __onPreview(self):
+        self.__switchCamera()
         if FinalReward.STYLE in self.__battlePass.getPaidFinalRewardTypes(self.__chapter):
             styleInfo = getStyleForChapter(self.__chapter, battlePass=self.__battlePass)
             vehicleCD = getVehicleCDForStyle(styleInfo, itemsCache=self.__itemsCache)
@@ -216,3 +218,7 @@ class PostProgressionView(ViewImpl):
             self.__updateState()
         else:
             showHangar()
+
+    @staticmethod
+    def __switchCamera():
+        ClientSelectableCameraObject.switchCamera()

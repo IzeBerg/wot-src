@@ -76,9 +76,6 @@ class IMarkersManager(object):
     def destroyMarker(self, markerID):
         raise NotImplementedError
 
-    def setMarkerSticky(self, markerID, isSticky):
-        raise NotImplementedError
-
     def _createCanvas(self, arenaVisitor):
         raise NotImplementedError
 
@@ -955,7 +952,7 @@ class TeamsOrControlsPointsPlugin(MarkerPlugin, ChatCommunicationComponent):
     def __onVehicleStateUpdated(self, state, value):
         if state in (VEHICLE_VIEW_STATE.DESTROYED, VEHICLE_VIEW_STATE.CREW_DEACTIVATED):
             for marker in self._markers.values():
-                if marker.getState() != ReplyStateForMarker.NO_ACTION:
+                if marker.getState() not in (ReplyStateForMarker.NO_ACTION, ReplyStateForMarker.REPLIED_ME_STATE):
                     self._setMarkerBoundEnabled(marker.getMarkerID(), False)
 
         elif state in (VEHICLE_VIEW_STATE.SWITCHING, VEHICLE_VIEW_STATE.RESPAWNING):

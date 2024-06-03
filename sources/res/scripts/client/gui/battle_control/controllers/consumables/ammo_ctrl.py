@@ -592,8 +592,11 @@ class AmmoController(MethodsRules, ViewComponentsController):
             canBeFull = shellCounts[0] >= clipCapacity
             lastShell = shellsInClip == clipCapacity - 1
             reloadStart = fabs(timeLeft - baseTime) < 0.001
-            if timeLeft > 0.0 and reloadStart:
-                self.__gunSettings.reloadEffect.onClipLoad(timeLeft, shellsInClip, lastShell, canBeFull)
+            if timeLeft > 0.0:
+                if reloadStart:
+                    self.__gunSettings.reloadEffect.onClipLoad(timeLeft, shellsInClip, lastShell, canBeFull)
+                else:
+                    self.__gunSettings.reloadEffect.updateReloadTime(timeLeft, shellsInClip, lastShell, canBeFull)
             elif self.__gunSettings.clip.size == shellsInClip and not reloadStart:
                 self.__gunSettings.reloadEffect.onFull()
         if self.__quickChangerActive:
@@ -743,7 +746,6 @@ class AmmoController(MethodsRules, ViewComponentsController):
                 avatar_getter.changeVehicleSetting(VEHICLE_SETTING.RELOAD_PARTIAL_CLIP, 0, avatar)
 
     def canShoot(self, isRepeat=False):
-        attrs = self.__guiSessionProvider.shared.feedback.getVehicleAttrs()
         if self.__currShellCD is None:
             result, error = False, CANT_SHOOT_ERROR.WAITING
         elif self.__ammo[self.__currShellCD][0] == 0:
@@ -752,8 +754,6 @@ class AmmoController(MethodsRules, ViewComponentsController):
             if not isRepeat and self.__gunSettings.hasAutoReload():
                 self.__shotFail()
             result, error = False, CANT_SHOOT_ERROR.RELOADING
-        elif not attrs.get('gunCanShoot', True):
-            result, error = False, CANT_SHOOT_ERROR.GUN_LOCKED
         elif self.__ammo[self.__currShellCD][1] == 0 and self.__gunSettings.isCassetteClip():
             result, error = True, CANT_SHOOT_ERROR.EMPTY_CLIP
         else:

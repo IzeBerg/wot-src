@@ -14,7 +14,7 @@
 				<row0>1.000000 0.000000 0.000000</row0>
 				<row1>0.000000 1.000000 0.000000</row1>
 				<row2>0.000000 0.000000 1.000000</row2>
-				<row3>-0.097830 0.382140 0.852530</row3>
+				<row3>-0.052471 0.336687 0.776697</row3>
 			</transform>
 		</node>
 	</node>
@@ -32,15 +32,8 @@
 					<materialKind>0</materialKind>
 					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
 					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
-					</property>
-					<property>
 						g_crashUVTiling
-						<Vector4>
-							2 2 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>2.000000 2.000000 0.000000 0.000000</Vector4>
 					</property>
 					<property>
 						diffuseMap
@@ -67,7 +60,7 @@
 						<Texture>vehicles/russian/Tank_detail/crash_tile.dds</Texture>
 					</property>
 				</material>
-				<groupOrigin>-0.042374 0.571093 0.020089</groupOrigin>
+				<groupOrigin>0.002985 0.526393 -0.055744</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
@@ -75,6 +68,6 @@
 		<min>-0.914363 -0.005000 -1.012844</min>
 		<max>0.829615 1.147186 1.053022</max>
 	</boundingBox>
-	<geometrySize>18636</geometrySize>
+	<geometrySize>18668</geometrySize>
 	<minUVDensity>0.004121</minUVDensity>
 </root>

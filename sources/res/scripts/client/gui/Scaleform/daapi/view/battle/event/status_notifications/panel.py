@@ -20,6 +20,7 @@ class EventStatusNotificationTimerPanel(StatusNotificationTimerPanel):
         items = [
          _EventHighPriorityGroup,
          sn_items.StaticDeathZoneSN,
+         sn_items.PersonalDeathZoneSN,
          sn_items.StunSN]
         return items
 

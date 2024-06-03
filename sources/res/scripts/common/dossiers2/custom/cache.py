@@ -27,6 +27,7 @@ def buildCache():
     collectorVehiclesLevelsByNations = {}
     vehiclesNameToDescr = {}
     vehicleEliteStatusXp = {}
+    vehiclesByClass = {tag:set() for tag in vehicles.VEHICLE_CLASS_TAGS}
     unlocksSources = vehicles.getUnlocksSources()
     for nationIdx in xrange(len(nations.NAMES)):
         nationList = vehicles.g_list.getList(nationIdx)
@@ -37,14 +38,21 @@ def buildCache():
             else:
                 if 'battle_royale' in vehDescr.tags:
                     continue
-                elif 'maps_training' in vehDescr.tags:
-                    continue
-                vehiclesNameToDescr[vehDescr.name] = vehDescr.compactDescr
-                vehicleEliteStatusXp[vehDescr.compactDescr] = __getVehicleEliteStatusXp(vehDescr.compactDescr)
-                vehiclesByLevel.setdefault(vehDescr.level, set()).add(vehDescr.compactDescr)
-                for tag in TAGS_TO_COLLECT:
+                else:
+                    if 'maps_training' in vehDescr.tags:
+                        continue
+                    elif 'bunkerTurret' in vehDescr.tags:
+                        continue
+                    vehiclesNameToDescr[vehDescr.name] = vehDescr.compactDescr
+                    vehicleEliteStatusXp[vehDescr.compactDescr] = __getVehicleEliteStatusXp(vehDescr.compactDescr)
+                    vehiclesByLevel.setdefault(vehDescr.level, set()).add(vehDescr.compactDescr)
+                    for tag in TAGS_TO_COLLECT:
+                        if tag in vehDescr.tags:
+                            vehiclesByTag[tag].add(vehDescr.compactDescr)
+
+                for tag in vehicles.VEHICLE_CLASS_TAGS:
                     if tag in vehDescr.tags:
-                        vehiclesByTag[tag].add(vehDescr.compactDescr)
+                        vehiclesByClass[tag].add(vehDescr.compactDescr)
 
             if CollectorVehicleConsts.COLLECTOR_VEHICLES_TAG in vehDescr.tags:
                 collectorVehiclesByNations.setdefault(nationIdx, set()).add(vehDescr.compactDescr)
@@ -70,7 +78,8 @@ def buildCache():
        'collectorVehiclesByNations': collectorVehiclesByNations, 
        'collectorVehiclesLevelsByNations': collectorVehiclesLevelsByNations, 
        'vehiclesNameToDescr': vehiclesNameToDescr, 
-       'vehicleEliteStatusXp': vehicleEliteStatusXp})
+       'vehicleEliteStatusXp': vehicleEliteStatusXp, 
+       'vehiclesByClass': vehiclesByClass})
 
 
 _g_cache = {}

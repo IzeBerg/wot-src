@@ -749,6 +749,10 @@ package
       
       public static const VEHICLE_MESSAGES_DEVICE_STARTED_FIRE_AT_RAMMING_ALLY_ALLY:String = "#ingame_gui:vehicle_messages/DEVICE_STARTED_FIRE_AT_RAMMING_ALLY_ALLY";
       
+      public static const VEHICLE_MESSAGES_DEVICE_DESTROYED_AT_MINEFIELD_ZONE_SELF_SUICIDE:String = "#ingame_gui:vehicle_messages/DEVICE_DESTROYED_AT_MINEFIELD_ZONE_SELF_SUICIDE";
+      
+      public static const VEHICLE_MESSAGES_DEVICE_DESTROYED_AT_MINEFIELD_ZONE_ALLY_SUICIDE:String = "#ingame_gui:vehicle_messages/DEVICE_DESTROYED_AT_MINEFIELD_ZONE_ALLY_SUICIDE";
+      
       public static const VEHICLE_MESSAGES_TANKMAN_HIT_AT_WORLD_COLLISION_SELF_SUICIDE:String = "#ingame_gui:vehicle_messages/TANKMAN_HIT_AT_WORLD_COLLISION_SELF_SUICIDE";
       
       public static const VEHICLE_MESSAGES_TANKMAN_HIT_AT_WORLD_COLLISION_ENEMY_SELF:String = "#ingame_gui:vehicle_messages/TANKMAN_HIT_AT_WORLD_COLLISION_ENEMY_SELF";
@@ -1063,6 +1067,8 @@ package
       
       public static const POSTMORTEM_MESSAGES_DEATH_FROM_STATIC_DEATH_ZONE_SELF_SUICIDE:String = "#ingame_gui:postmortem_messages/DEATH_FROM_STATIC_DEATH_ZONE_SELF_SUICIDE";
       
+      public static const POSTMORTEM_MESSAGES_DEATH_FROM_MINEFIELD_ZONE_SELF_SUICIDE:String = "#ingame_gui:postmortem_messages/DEATH_FROM_MINEFIELD_ZONE_SELF_SUICIDE";
+      
       public static const VEHICLE_MESSAGES_DEATH_FROM_DEATH_ZONE_ENEMY_SELF:String = "#ingame_gui:vehicle_messages/DEATH_FROM_DEATH_ZONE_ENEMY_SELF";
       
       public static const POSTMORTEM_MESSAGES_DEATH_FROM_DEATH_ZONE_ENEMY_SELF:String = "#ingame_gui:postmortem_messages/DEATH_FROM_DEATH_ZONE_ENEMY_SELF";
@@ -1084,6 +1090,10 @@ package
       public static const PLAYER_MESSAGES_DEATH_FROM_DEATH_ZONE_ALLY_SUICIDE:String = "#ingame_gui:player_messages/DEATH_FROM_DEATH_ZONE_ALLY_SUICIDE";
       
       public static const PLAYER_MESSAGES_DEATH_FROM_STATIC_DEATH_ZONE_ALLY_SUICIDE:String = "#ingame_gui:player_messages/DEATH_FROM_STATIC_DEATH_ZONE_ALLY_SUICIDE";
+      
+      public static const PLAYER_MESSAGES_DEATH_FROM_MINEFIELD_ZONE_ALLY_SUICIDE:String = "#ingame_gui:player_messages/DEATH_FROM_MINEFIELD_ZONE_ALLY_SUICIDE";
+      
+      public static const PLAYER_MESSAGES_DEATH_FROM_MINEFIELD_ZONE_SELF_SUICIDE:String = "#ingame_gui:player_messages/DEATH_FROM_MINEFIELD_ZONE_SELF_SUICIDE";
       
       public static const PLAYER_MESSAGES_DEATH_FROM_DEATH_ZONE_ALLY_SELF:String = "#ingame_gui:player_messages/DEATH_FROM_DEATH_ZONE_ALLY_SELF";
       
@@ -1275,6 +1285,8 @@ package
       
       public static const EFFICIENCYRIBBONS_STATICDEATHZONE:String = "#ingame_gui:efficiencyRibbons/staticDeathZone";
       
+      public static const EFFICIENCYRIBBONS_MINEFIELDZONE:String = "#ingame_gui:efficiencyRibbons/minefieldZone";
+      
       public static const EFFICIENCYRIBBONS_CANNONDMG:String = "#ingame_gui:efficiencyRibbons/CannonDmg";
       
       public static const EFFICIENCYRIBBONS_AIRSTRIKEDMG:String = "#ingame_gui:efficiencyRibbons/AirstrikeDmg";
@@ -1282,6 +1294,10 @@ package
       public static const EFFICIENCYRIBBONS_ARTILLERYDMG:String = "#ingame_gui:efficiencyRibbons/ArtilleryDmg";
       
       public static const EFFICIENCYRIBBONS_HEALTHADDED:String = "#ingame_gui:efficiencyRibbons/healthAdded";
+      
+      public static const EFFICIENCYRIBBONS_DAMAGEBYBATTLESHIP:String = "#ingame_gui:efficiencyRibbons/damageByBattleship";
+      
+      public static const EFFICIENCYRIBBONS_DAMAGEBYDESTROYER:String = "#ingame_gui:efficiencyRibbons/damageByDestroyer";
       
       public static const DAMAGELOG_SHELLTYPE_ARMOR_PIERCING:String = "#ingame_gui:damageLog/shellType/ARMOR_PIERCING";
       

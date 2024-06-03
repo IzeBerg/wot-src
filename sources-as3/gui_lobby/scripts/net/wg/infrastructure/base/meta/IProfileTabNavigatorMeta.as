@@ -8,6 +8,8 @@ package net.wg.infrastructure.base.meta
       
       function onTabChangeS(param1:String) : void;
       
+      function onViewReadyS(param1:String) : void;
+      
       function as_setInitData(param1:Object) : void;
       
       function as_setBtnTabCounters(param1:Array) : void;

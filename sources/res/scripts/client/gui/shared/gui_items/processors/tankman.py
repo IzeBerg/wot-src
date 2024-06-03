@@ -72,7 +72,6 @@ class TankmanRecruit(Processor):
          plugins.VehicleCrewLockedValidator(self.vehicle),
          plugins.MoneyValidator(_getRecruitPrice(tmanCostTypeIdx)),
          plugins.FreeTankmanValidator(isEnabled=tmanCostTypeIdx == 0),
-         plugins.BarracksSlotsValidator(),
          plugins.IsLongDisconnectedFromCenter()])
         self.nationID = nationID
         self.vehTypeID = vehTypeID
@@ -99,8 +98,7 @@ class TankmanTokenRecruit(Processor):
         vehicle = self.itemsCache.items.getItemByCD(makeIntCompactDescrByID('vehicle', nationID, vehTypeID))
         super(TankmanTokenRecruit, self).__init__([
          plugins.VehicleCrewLockedValidator(vehicle),
-         plugins.IsLongDisconnectedFromCenter(),
-         plugins.BarracksSlotsValidator(addWarning=True)])
+         plugins.IsLongDisconnectedFromCenter()])
         self.nationID = nationID
         self.vehTypeID = vehTypeID
         self.role = role
@@ -132,17 +130,14 @@ class TankmanEquip(GroupedRequestProcessor):
         self.__vehicleSlotIdx = vehicleSlotIdx
         tankman = self.itemsCache.items.getTankman(tankmanInvID)
         vehicle = self.itemsCache.items.getVehicle(vehicleInvID)
-        isEnableBarrackValidator = False
         self.__sysMsgPrefix = 'equip_tankman'
         anotherTankman = dict(vehicle.crew).get(vehicleSlotIdx)
         if tankman is not None and anotherTankman is not None and anotherTankman.invID != tankman.invID:
             self.__sysMsgPrefix = 'reequip_tankman'
-            isEnableBarrackValidator = True
         super(TankmanEquip, self).__init__(BigWorld.player().inventory.equipTankman, vehicleInvID, vehicleSlotIdx, tankmanInvID, groupID=groupID, groupSize=groupSize, plugins=(
          plugins.TankmanLockedValidator(tankman),
          plugins.VehicleCrewLockedValidator(vehicle),
-         plugins.VehicleValidator(vehicle, False, prop={'isLocked': True}),
-         plugins.BarracksSlotsValidator(isEnabled=isEnableBarrackValidator, addWarning=True)))
+         plugins.VehicleValidator(vehicle, False, prop={'isLocked': True})))
         return
 
     def _errorHandler(self, code, errStr='', ctx=None):
@@ -164,8 +159,7 @@ class TankmanRecruitAndEquip(Processor):
          plugins.VehicleValidator(vehicle, False, prop={'isLocked': True}),
          plugins.VehicleCrewLockedValidator(vehicle),
          plugins.MoneyValidator(_getRecruitPrice(tmanCostTypeIdx)),
-         plugins.FreeTankmanValidator(isEnabled=tmanCostTypeIdx == 0),
-         plugins.BarracksSlotsValidator(isEnabled=self.isReplace)))
+         plugins.FreeTankmanValidator(isEnabled=tmanCostTypeIdx == 0)))
         return
 
     def _request(self, callback):
@@ -233,8 +227,6 @@ class TankmanUnload(GroupedRequestProcessor):
         return makeI18nError(sysMsgKey=('{}/{}').format(self.__sysMsgPrefix(ctx), errStr), defaultSysMsgKey=('{}/server_error').format(self.__sysMsgPrefix(ctx)), auxData=self._makeErrorData(errStr), type=SM_TYPE.NotEnoughBerthError if errStr == 'not_enough_space' else SM_TYPE.Error)
 
     def _successHandler(self, code, ctx=None):
-        if self.itemsCache.items.freeTankmenBerthsCount() < 0:
-            plugins.showWarning(text='', type=SM_TYPE.NotEnoughBerthWarning)
         return makeI18nSuccess(sysMsgKey=('{}/success').format(self.__sysMsgPrefix(ctx)), auxData=self._makeSuccessData(ctx))
 
     @staticmethod
@@ -447,14 +439,13 @@ class TankmanChangePassport(ItemProcessor):
 
 class TankmanRestore(GroupedRequestProcessor):
 
-    def __init__(self, tankman, berthsNeeded, groupID=0, groupSize=1):
+    def __init__(self, tankman, groupID=0, groupSize=1):
         self.__tankmanInvID = tankman.invID
         self.__restorePrice, _ = getTankmenRestoreInfo(tankman)
         super(TankmanRestore, self).__init__(BigWorld.player().recycleBin.restoreTankman, tankman.invID, groupID=groupID, groupSize=groupSize, plugins=(
          plugins.TankmanLockedValidator(tankman),
          plugins.MoneyValidator(self.__restorePrice),
-         plugins.IsLongDisconnectedFromCenter(),
-         plugins.BarracksSlotsValidator(berthsNeeded=berthsNeeded, addWarning=True)))
+         plugins.IsLongDisconnectedFromCenter()))
 
     def _errorHandler(self, code, errStr='', ctx=None):
         return makeI18nError(sysMsgKey=('restore_tankman/{}').format(errStr), defaultSysMsgKey='restore_tankman/server_error', auxData=self._makeErrorData())

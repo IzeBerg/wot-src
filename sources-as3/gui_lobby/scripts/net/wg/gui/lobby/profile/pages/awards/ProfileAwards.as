@@ -23,6 +23,8 @@ package net.wg.gui.lobby.profile.pages.awards
       
       private static const SB_MARGIN:Number = 10;
       
+      private static const SB_MARGIN_WINDOWED:Number = 20;
+      
       private static const TXT_LABEL_OFFSET_X:int = 5;
       
       private static const MAIN_SCROLLPANE_OFFSET_X:int = 6;
@@ -35,9 +37,15 @@ package net.wg.gui.lobby.profile.pages.awards
       
       private static const BLOCK_OFFSET:int = 100;
       
-      private static const SCROLL_OFFSET:int = 90;
+      private static const SCROLL_OFFSET:int = 80;
       
       private static const SCROLL_OFFSET_SMALL:int = -20;
+      
+      private static const DROP_DOWN_WINDOW_Y:int = 106;
+      
+      private static const DROP_DOWN_WINDOW_LABEL_Y:int = 108;
+      
+      private static const DROP_DOWN_WINDOW_X:int = 5;
        
       
       public var mainScrollPane:ResizableScrollPane;
@@ -107,6 +115,15 @@ package net.wg.gui.lobby.profile.pages.awards
          var _loc2_:AwardsMainContainer = this.getMainContainer();
          var _loc3_:Array = param1.achievementsList;
          var _loc4_:Array = param1.totalItemsList;
+         if(this.dropdownMenu.visible)
+         {
+            if(isWindowed)
+            {
+               this.dropdownMenu.y = DROP_DOWN_WINDOW_Y;
+               this.txtLabel.y = DROP_DOWN_WINDOW_LABEL_Y;
+               this.mainScrollPane.scrollBarMargin = SB_MARGIN_WINDOWED;
+            }
+         }
          var _loc5_:Vector.<AwardsBlock> = new Vector.<AwardsBlock>();
          _loc5_.push(_loc2_.blockBattleHeroes);
          _loc5_.push(_loc2_.blockHonors);
@@ -164,6 +181,11 @@ package net.wg.gui.lobby.profile.pages.awards
          this.dropdownMenu.x = this._startMenuX + _loc1_;
          this.txtLabel.autoSize = TextFieldAutoSize.LEFT;
          this.txtLabel.x = this.dropdownMenu.x - this.txtLabel.width - TXT_LABEL_OFFSET_X;
+         if(isWindowed)
+         {
+            this.dropdownMenu.x = this._startMenuX + _loc1_ + DROP_DOWN_WINDOW_X;
+            this.txtLabel.x = this.dropdownMenu.x - this.txtLabel.width - TXT_LABEL_OFFSET_X + DROP_DOWN_WINDOW_X;
+         }
          var _loc3_:Number = Math.min(ProfileConstants.MIN_APP_WIDTH,currentDimension.x);
          this.mainScrollPane.target.x = _loc1_ + (_loc3_ - this.mainScrollPane.target.width >> 1) + MAIN_SCROLLPANE_OFFSET_X;
          var _loc4_:int = currentDimension.y;

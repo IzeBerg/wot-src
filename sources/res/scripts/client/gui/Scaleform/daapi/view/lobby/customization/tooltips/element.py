@@ -1,5 +1,5 @@
 import logging
-from CurrentVehicle import g_currentVehicle
+from CurrentVehicle import g_currentVehicle, g_currentPreviewVehicle
 from gui.Scaleform.daapi.view.lobby.customization.shared import getItemInventoryCount, makeVehiclesShortNamesString, getSuitableText, ITEM_TYPE_TO_TAB, CustomizationTabs
 from gui.Scaleform.daapi.view.lobby.customization.shared import getProgressionItemStatusText
 from gui.Scaleform.genConsts.BLOCKS_TOOLTIP_TYPES import BLOCKS_TOOLTIP_TYPES
@@ -195,7 +195,7 @@ class ElementTooltip(BlocksTooltipData):
         if config.vehicleIntCD == 0:
             self.__vehicle = None
         elif config.vehicleIntCD == -1:
-            self.__vehicle = g_currentVehicle.item
+            self.__vehicle = g_currentVehicle.item or g_currentPreviewVehicle.item
         else:
             self.__vehicle = self.__itemsCache.items.getItemByCD(config.vehicleIntCD)
         showInventoryBlock = config.showInventoryBlock
@@ -535,6 +535,8 @@ class ElementTooltip(BlocksTooltipData):
             if self._appliedCount > 0:
                 vehicles.add(self.__vehicle.intCD)
             elif not self.installedVehs:
+                return
+            if not self.__vehicle:
                 return
             if self.__vehicle.intCD not in vehicles and self._item.descriptor.filter is not None and not self._item.descriptor.filter.match(self.__vehicle.descriptor):
                 return

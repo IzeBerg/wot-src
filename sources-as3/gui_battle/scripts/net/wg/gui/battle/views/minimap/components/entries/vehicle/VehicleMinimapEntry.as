@@ -208,9 +208,13 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
             {
                this._atlasItemName = this._classTagName + ATLAS_NAME_DELIMITER + this._guiLabel + ATLAS_NAME_DELIMITER + this._deadState + this._aliasColor;
             }
+            else if(this._deadState == VehicleMinimapEntryConst.DEAD)
+            {
+               this._atlasItemName = Values.EMPTY_STR;
+            }
             else
             {
-               this._atlasItemName = VehicleMinimapEntryConst.LAST_LIT_ICON_NAME + ATLAS_NAME_DELIMITER + this._guiLabel + ATLAS_NAME_DELIMITER + this._deadState + this._aliasColor;
+               this._atlasItemName = VehicleMinimapEntryConst.LAST_LIT_ICON_NAME + ATLAS_NAME_DELIMITER + this._guiLabel + ATLAS_NAME_DELIMITER + this._aliasColor;
             }
             if(this._deadState == VehicleMinimapEntryConst.DEAD)
             {
@@ -222,7 +226,10 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
                {
                   this._currVehicleAnimation = this.deadAnimation;
                }
-               this._currVehicleAnimation.drawEntry(this._atlasItemName);
+               if(this._atlasItemName != Values.EMPTY_STR)
+               {
+                  this._currVehicleAnimation.drawEntry(this._atlasItemName);
+               }
                if(_loc4_ != VehicleMinimapEntryConst.DESTROYED_FRAME_LABEL)
                {
                   this._vehicleAnimationFrameLabel = VehicleMinimapEntryConst.DESTROY_FRAME;
@@ -238,7 +245,10 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
             else
             {
                this._currVehicleAnimation = this._vehicleAnimations[this._guiLabel + ATLAS_NAME_DELIMITER + this._deadState + this._aliasColor];
-               this._currVehicleAnimation.drawEntry(this._atlasItemName);
+               if(this._atlasItemName != Values.EMPTY_STR)
+               {
+                  this._currVehicleAnimation.drawEntry(this._atlasItemName);
+               }
                if(_loc4_ == VehicleMinimapEntryConst.HIGHLIGHT_ANIMATION_FRAME || _loc4_ == VehicleMinimapEntryConst.HIGHLIGHTED_FRAME)
                {
                   this._vehicleAnimationFrameLabel = VehicleMinimapEntryConst.HIGHLIGHTED_FRAME;

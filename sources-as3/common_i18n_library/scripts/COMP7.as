@@ -71,6 +71,12 @@ package
       
       public static const CALENDARDAY_TIMELEFT_THIRD:String = "#comp7:calendarDay/timeLeft/third";
       
+      public static const SHORTSEASONNAME_FIRST:String = "#comp7:shortSeasonName/first";
+      
+      public static const SHORTSEASONNAME_SECOND:String = "#comp7:shortSeasonName/second";
+      
+      public static const SHORTSEASONNAME_THIRD:String = "#comp7:shortSeasonName/third";
+      
       public static const SEASONNAME_FIRST:String = "#comp7:seasonName/first";
       
       public static const SEASONNAME_SECOND:String = "#comp7:seasonName/second";
@@ -261,6 +267,8 @@ package
       
       public static const REWARDSSCREEN_DESCRIPTION_SEASON_THIRD:String = "#comp7:rewardsScreen/description/season/third";
       
+      public static const REWARDSSCREEN_DESCRIPTION_YEAR:String = "#comp7:rewardsScreen/description/year";
+      
       public static const REWARDSSCREEN_DESCRIPTION_QUALIFICATIONENDED:String = "#comp7:rewardsScreen/description/qualificationEnded";
       
       public static const REWARDSSCREEN_TITLE_RANK:String = "#comp7:rewardsScreen/title/rank";
@@ -275,6 +283,10 @@ package
       
       public static const REWARDSSCREEN_TITLE_QUALIFICATIONRANK:String = "#comp7:rewardsScreen/title/qualificationRank";
       
+      public static const REWARDSSCREEN_TITLE_YEARLYREWARDS:String = "#comp7:rewardsScreen/title/yearlyRewards";
+      
+      public static const REWARDSSCREEN_TITLE_SELECTEDREWARDS:String = "#comp7:rewardsScreen/title/selectedRewards";
+      
       public static const REWARDSSCREEN_SUBTITLE_DIVISION:String = "#comp7:rewardsScreen/subtitle/division";
       
       public static const REWARDSSCREEN_SUBTITLE_RANKREWARDS:String = "#comp7:rewardsScreen/subtitle/rankRewards";
@@ -286,6 +298,12 @@ package
       public static const REWARDSSCREEN_SUBTITLE_QUALIFICATIONREWARDSSEPARATOR:String = "#comp7:rewardsScreen/subtitle/qualificationRewardsSeparator";
       
       public static const REWARDSSCREEN_ADDITIONALREWARDS:String = "#comp7:rewardsScreen/additionalRewards";
+      
+      public static const REWARDSSCREEN_YEARLYVEHICLECREW:String = "#comp7:rewardsScreen/yearlyVehicleCrew";
+      
+      public static const REWARDSSCREEN_SEASONPOINTSAMOUNT:String = "#comp7:rewardsScreen/seasonPointsAmount";
+      
+      public static const REWARDSSCREEN_NOSEASONRESULT:String = "#comp7:rewardsScreen/noSeasonResult";
       
       public static const REWARDSSCREEN_SHOPINFO_HEADER_OPEN:String = "#comp7:rewardsScreen/shopInfo/header/open";
       
@@ -299,11 +317,17 @@ package
       
       public static const REWARDSSCREEN_BUTTONTOREWARDS:String = "#comp7:rewardsScreen/buttonToRewards";
       
+      public static const REWARDSSCREEN_BUTTONTOOTHERREWARDS:String = "#comp7:rewardsScreen/buttonToOtherRewards";
+      
       public static const REWARDSSCREEN_BUTTONTOSHOP:String = "#comp7:rewardsScreen/buttonToShop";
       
       public static const REWARDSSCREEN_NOTICE_TITLE:String = "#comp7:rewardsScreen/notice/title";
       
       public static const REWARDSSCREEN_NOTICE_SUBTITLE:String = "#comp7:rewardsScreen/notice/subTitle";
+      
+      public static const YEARLYREWARDSSELECTIONSCREEN_DESCRIPTION:String = "#comp7:yearlyRewardsSelectionScreen/description";
+      
+      public static const YEARLYREWARDSSELECTIONSCREEN_TITLE:String = "#comp7:yearlyRewardsSelectionScreen/title";
       
       public static const RANKINFO_CURRENT_FIFTH:String = "#comp7:rankInfo/current/fifth";
       
@@ -658,6 +682,8 @@ package
       public static const REWARDS_PREVIEW:String = "#comp7:rewards/preview";
       
       public static const REWARDS_BONUS_STYLE_PROGRESS:String = "#comp7:rewards/bonus/style_progress";
+      
+      public static const REWARDS_BONUS_DELUXE_GIFT:String = "#comp7:rewards/bonus/deluxe_gift";
       
       public static const MEMBERSWINDOW_MEMBERCOUNTDROPDOWN_DESCRIPTION:String = "#comp7:membersWindow/memberCountDropdown/description";
       

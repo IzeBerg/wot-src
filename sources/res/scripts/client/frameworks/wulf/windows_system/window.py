@@ -95,7 +95,8 @@ class Window(PyObjectEntity):
                  '__isFocused', '__isReady', '__weakref__', '__em')
 
     def __init__(self, settings):
-        settings.name = self.getName()
+        if not settings.name:
+            settings.name = self.getName()
         super(Window, self).__init__(PyObjectWindow(settings.proxy))
         self.__em = Event.EventManager()
         self.onStatusChanged = Event.Event(self.__em)

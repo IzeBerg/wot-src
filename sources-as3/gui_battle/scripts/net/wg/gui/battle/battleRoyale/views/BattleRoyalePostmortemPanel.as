@@ -17,6 +17,8 @@ package net.wg.gui.battle.battleRoyale.views
    public class BattleRoyalePostmortemPanel extends BattleRoyalePostmortemPanelMeta implements IBattleRoyalePostmortemPanelMeta, IStageSizeDependComponent
    {
       
+      private static const PLAYER_INFO_FILTERS:Array = [new DropShadowFilter(0,0,0,0.5,12,12),new DropShadowFilter(0,0,0,1,4,4)];
+      
       private static const FADE_IN_DURATION:Number = 500;
       
       private static const TIP_FADE_IN_ALPHA:Number = 1;
@@ -46,11 +48,10 @@ package net.wg.gui.battle.battleRoyale.views
       
       private var _isSmallSize:Boolean = false;
       
-      private var PLAYER_INFO_FILTERS:Array;
+      private var _canShowPanelTips:Boolean = false;
       
       public function BattleRoyalePostmortemPanel()
       {
-         this.PLAYER_INFO_FILTERS = [new DropShadowFilter(0,0,0,0.5,12,12),new DropShadowFilter(0,0,0,1,4,4)];
          super();
          this.firstTipTitle.blendMode = this.secondTipTitle.blendMode = this.firstTipBody.blendMode = this.secondTipBody.blendMode = BlendMode.SCREEN;
       }
@@ -68,7 +69,7 @@ package net.wg.gui.battle.battleRoyale.views
       override protected function configUI() : void
       {
          super.configUI();
-         playerInfoTF.filters = this.PLAYER_INFO_FILTERS;
+         playerInfoTF.filters = PLAYER_INFO_FILTERS;
          deadReasonBG.imageName = BATTLEATLAS.POSTMORTEM_DEAD_REASON_BG;
          this.firstTipTitle.text = BATTLE_ROYALE.POSTMORTEMPANEL_FIRSTTIP_TITLE;
          this.secondTipTitle.text = BATTLE_ROYALE.POSTMORTEMPANEL_SECONDTIP_TITLE;
@@ -93,28 +94,19 @@ package net.wg.gui.battle.battleRoyale.views
          super.onDispose();
       }
       
-      override public function as_setPlayerInfo(param1:String) : void
-      {
-         setPlayerInfo(param1);
-      }
-      
-      public function as_setPostmortemPanelVisible(param1:Boolean) : void
-      {
-         this.firstTipTitle.visible = this.secondTipTitle.visible = this.firstTipBody.visible = this.secondTipBody.visible = this.mouseIcon.visible = this.escIcon.visible = this.bg.visible = param1;
-      }
-      
-      override public function as_showDeadReason() : void
-      {
-         showDeadReason();
-      }
-      
       override protected function createPostmortemPanelElements() : void
       {
       }
       
       override protected function showPostmortemPanel(param1:Boolean) : void
       {
-         this.as_setPostmortemPanelVisible(param1);
+         this.firstTipTitle.visible = this.secondTipTitle.visible = this.firstTipBody.visible = this.secondTipBody.visible = this.mouseIcon.visible = this.escIcon.visible = this.bg.visible = param1 && this._canShowPanelTips;
+      }
+      
+      public function as_setPostmortemPanelCanBeVisible(param1:Boolean) : void
+      {
+         this._canShowPanelTips = param1;
+         this.showPostmortemPanel(param1);
       }
       
       public function setStateSizeBoundaries(param1:int, param2:int) : void
@@ -146,7 +138,7 @@ package net.wg.gui.battle.battleRoyale.views
       {
          super.visible = param1;
          this.clearTween();
-         if(param1)
+         if(param1 && this.tipAlpha != Values.DEFAULT_ALPHA)
          {
             this.tipAlpha = 0;
             this._currentTween = new Tween(FADE_IN_DURATION,this,{"tipAlpha":TIP_FADE_IN_ALPHA},{"ease":Linear.easeNone});

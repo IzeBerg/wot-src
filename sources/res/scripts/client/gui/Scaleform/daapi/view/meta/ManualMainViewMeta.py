@@ -26,3 +26,7 @@ class ManualMainViewMeta(View):
     def as_showBackBtnS(self, value):
         if self._isDAAPIInited():
             return self.flashObject.as_showBackBtn(value)
+
+    def as_setDescrLabelBackBtnS(self, value):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setDescrLabelBackBtn(value)

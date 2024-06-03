@@ -719,8 +719,6 @@ package
       
       public static const UNLOAD_CREW_SERVER_ERROR:String = "#system_messages:unload_crew/server_error";
       
-      public static const UNLOAD_CREW_NOT_ENOUGH_SPACE:String = "#system_messages:unload_crew/not_enough_space";
-      
       public static const UNLOAD_CREW_INVALID_VEHICLE:String = "#system_messages:unload_crew/invalid_vehicle";
       
       public static const UNLOAD_CREW_VEHICLE_NEED_REPAIR:String = "#system_messages:unload_crew/vehicle_need_repair";
@@ -2479,8 +2477,6 @@ package
       
       public static const BATTLEPASS_SWITCH_DISABLE_BODY:String = "#system_messages:battlePass/switch_disable/body";
       
-      public static const BATTLEPASS_SWITCH_DISABLE_INCOMPLETESTYLE:String = "#system_messages:battlePass/switch_disable/incompleteStyle";
-      
       public static const BATTLEPASS_SWITCH_ENABLED_BODY:String = "#system_messages:battlePass/switch_enabled/body";
       
       public static const BATTLEPASS_SWITCH_DISABLE_BATTLE_ROYALE_BODY:String = "#system_messages:battlePass/switch_disable/battle_royale/body";
@@ -2526,16 +2522,6 @@ package
       public static const BATTLEPASS_GAMEMODEENABLED_BODY_43:String = "#system_messages:battlePass/gameModeEnabled/body/43";
       
       public static const BATTLEPASS_SEASONEND_TEXT:String = "#system_messages:battlePass/seasonEnd/text";
-      
-      public static const BATTLEPASS_SEASONEND_REWARDS_STYLE:String = "#system_messages:battlePass/seasonEnd/rewards/style";
-      
-      public static const BATTLEPASS_SEASONEND_REWARDS_CREWBOOK:String = "#system_messages:battlePass/seasonEnd/rewards/crewBook";
-      
-      public static const BATTLEPASS_SEASONEND_REWARDS_DEVICE:String = "#system_messages:battlePass/seasonEnd/rewards/device";
-      
-      public static const BATTLEPASS_SEASONEND_REWARDS_TROPHY:String = "#system_messages:battlePass/seasonEnd/rewards/trophy";
-      
-      public static const BATTLEPASS_SEASONEND_REWARDS_BLUEPRINTS:String = "#system_messages:battlePass/seasonEnd/rewards/blueprints";
       
       public static const BATTLEPASS_SWITCHCHAPTER_ERROR:String = "#system_messages:battlePass/switchChapter/error";
       
@@ -2730,6 +2716,20 @@ package
       public static const LIMITEDUI_SWITCHON:String = "#system_messages:limitedUI/switchOn";
       
       public static const LIMITEDUI_SWITCHOFF:String = "#system_messages:limitedUI/switchOff";
+      
+      public static const EARNING_TITLE:String = "#system_messages:earning/title";
+      
+      public static const EARNING_BUTTON_SINGLE:String = "#system_messages:earning/button/single";
+      
+      public static const EARNING_BUTTON_MULTIPLE:String = "#system_messages:earning/button/multiple";
+      
+      public static const EARNING_COMMON_SINGLE:String = "#system_messages:earning/common/single";
+      
+      public static const EARNING_COMMON_MULTIPLE:String = "#system_messages:earning/common/multiple";
+      
+      public static const EARNING_TROPHY_SINGLE:String = "#system_messages:earning/trophy/single";
+      
+      public static const EARNING_TROPHY_MULTIPLE:String = "#system_messages:earning/trophy/multiple";
       
       public static const SENIORITYAWARDS_SWITCH_PAUSE_ON_BODY:String = "#system_messages:seniorityAwards/switch_pause_on/body";
       

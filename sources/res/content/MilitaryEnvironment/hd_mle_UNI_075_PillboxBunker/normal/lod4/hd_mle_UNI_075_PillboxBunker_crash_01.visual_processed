@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd1</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>111</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_075_PillboxBunker/hd_mle_UNI_075_PillboxBunker_crash_01_BAM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_075_PillboxBunker/hd_mle_UNI_075_PillboxBunker_crash_01_BGMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_075_PillboxBunker/hd_mle_UNI_075_PillboxBunker_crash_01_BANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.002039 4.617525 -3.389261</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_wall_0</identifier>
+					<materialKind>111</materialKind>
+					<collisionFlags>131</collisionFlags>
+				</material>
+				<groupOrigin>1.323547 3.390812 3.551176</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-18.284140 -2.037879 -18.286160</min>
+		<max>18.306780 11.277123 11.694135</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>26310</geometrySize>
+	<minUVDensity>0.000088</minUVDensity>
+</root>

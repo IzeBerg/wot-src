@@ -12,8 +12,6 @@ package net.wg.infrastructure.base.meta
       
       function onVictimDogTagInPlaySoundS() : void;
       
-      function as_showDeadReason() : void;
-      
       function as_setPlayerInfo(param1:String) : void;
       
       function as_showKillerDogTag(param1:Object, param2:Boolean) : void;

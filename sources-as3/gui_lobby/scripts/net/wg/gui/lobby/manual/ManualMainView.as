@@ -198,7 +198,6 @@ package net.wg.gui.lobby.manual
          this.backBtn.addEventListener(ButtonEvent.CLICK,this.onBackBtnClickHandler);
          this.closeBtn.label = MENU.VIEWHEADER_CLOSEBTN_LABEL;
          this.backBtn.label = MENU.VIEWHEADER_BACKBTN_LABEL;
-         this.backBtn.descrLabel = MENU.VIEWHEADER_BACKBTN_DESCRLABEL_BATTLEMATTERS;
          this.screenBg.isShowHeaderBg = false;
       }
       
@@ -221,6 +220,11 @@ package net.wg.gui.lobby.manual
       public function as_showBackBtn(param1:Boolean) : void
       {
          this.backBtn.visible = param1;
+      }
+      
+      public function as_setDescrLabelBackBtn(param1:String) : void
+      {
+         this.backBtn.descrLabel = param1;
       }
       
       override public function handleInput(param1:InputEvent) : void

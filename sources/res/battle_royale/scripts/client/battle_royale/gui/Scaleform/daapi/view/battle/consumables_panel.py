@@ -112,18 +112,23 @@ class BattleRoyaleConsumablesPanel(ConsumablesPanel, ISpawnListener):
         super(BattleRoyaleConsumablesPanel, self)._updateShellSlot(idx, quantity)
         prevQuantity = self.__quantityMap[idx]
         self.__quantityMap[idx] = quantity
-        if prevQuantity is not None and quantity > prevQuantity:
-            self.as_setGlowS(idx, CONSUMABLES_PANEL_SETTINGS.GLOW_ID_GREEN)
-        return
+        if self.__isVehicleUpgrading:
+            return
+        else:
+            if prevQuantity is not None and quantity > prevQuantity:
+                self.as_setGlowS(idx, CONSUMABLES_PANEL_SETTINGS.GLOW_ID_GREEN)
+            return
 
     def _updateEquipmentSlot(self, idx, item):
         super(BattleRoyaleConsumablesPanel, self)._updateEquipmentSlot(idx, item)
         prevQuantity = self.__quantityMap[idx]
         quantity = self.__quantityMap[idx] = item.getQuantity()
-        if prevQuantity is not None and quantity > prevQuantity:
-            self.as_setGlowS(idx, CONSUMABLES_PANEL_SETTINGS.GLOW_ID_GREEN)
+        if self.__isVehicleUpgrading:
             return
         else:
+            if prevQuantity is not None and quantity > prevQuantity:
+                self.as_setGlowS(idx, CONSUMABLES_PANEL_SETTINGS.GLOW_ID_GREEN)
+                return
             currStage = item.getStage()
             prevStage = item.getPrevStage()
             if currStage == EQUIPMENT_STAGES.READY and prevStage == EQUIPMENT_STAGES.COOLDOWN:
@@ -238,3 +243,12 @@ class BattleRoyaleConsumablesPanel(ConsumablesPanel, ISpawnListener):
 
     def __onRespawnAvailabilityChanged(self, isAvailable):
         self.as_setRespawnSlotStateS(self._RESPAWN_EQUIPMENT_IDX, isAvailable)
+
+    @property
+    def __isVehicleUpgrading(self):
+        vehicle = BigWorld.player().getVehicleAttached()
+        if vehicle is not None:
+            inBattleUpgradesComponent = vehicle.dynamicComponents.get('inBattleUpgrades')
+            if inBattleUpgradesComponent is not None:
+                return inBattleUpgradesComponent.isVehicleUpgrading
+        return False

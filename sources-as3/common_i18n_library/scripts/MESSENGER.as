@@ -1259,6 +1259,10 @@ package
       
       public static const SERVICECHANNELMESSAGES_SYSMSG_CUSTOMIZATION_ITEM_PROGRESSIONSTYLE:String = "#messenger:serviceChannelMessages/sysMsg/customization/item/progressionStyle";
       
+      public static const SERVICECHANNELMESSAGES_BONDEQUIPMENTCHOOSING:String = "#messenger:serviceChannelMessages/bondEquipmentChoosing";
+      
+      public static const SERVICECHANNELMESSAGES_BONDEQUIPMENTCHOOSINGBUTTON:String = "#messenger:serviceChannelMessages/bondEquipmentChoosingButton";
+      
       public static const SERVICECHANNELMESSAGES_SYSMSG_CONVERTER_CUSTOMIZATIONSBUY:String = "#messenger:serviceChannelMessages/sysMsg/converter/customizationsBuy";
       
       public static const SERVICECHANNELMESSAGES_SYSMSG_CUSTOMIZATIONS_SELL:String = "#messenger:serviceChannelMessages/sysMsg/customizations/sell";
@@ -2030,6 +2034,8 @@ package
       public static const SERVICECHANNELMESSAGES_DOGTAGS_BONUS_ENGRAVING:String = "#messenger:serviceChannelMessages/dogTags/bonus/engraving";
       
       public static const SERVICECHANNELMESSAGES_DOGTAGS_BONUS_BACKGROUND:String = "#messenger:serviceChannelMessages/dogTags/bonus/background";
+      
+      public static const SERVICECHANNELMESSAGES_DOGTAGS_COUPLED:String = "#messenger:serviceChannelMessages/dogTags/coupled";
       
       public static const SERVICECHANNELMESSAGES_DEDICATIONREWARD_HEADER:String = "#messenger:serviceChannelMessages/dedicationReward/header";
       

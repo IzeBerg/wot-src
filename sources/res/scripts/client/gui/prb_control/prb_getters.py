@@ -198,6 +198,14 @@ def getQueueTypeFromEntityType(prebattleType=None):
     return _PRB_TO_QUEUE.get(prebattleType or getPrebattleType(), QUEUE_TYPE.UNKNOWN)
 
 
+def getQueueTypeFromPrbEntity(prbEntity):
+    if not prbEntity:
+        return QUEUE_TYPE.UNKNOWN
+    if prbEntity.getQueueType() > QUEUE_TYPE.UNKNOWN:
+        return prbEntity.getQueueType()
+    return getQueueTypeFromEntityType(prbEntity.getEntityType())
+
+
 @dependency.replace_none_kwargs(lobbyContext=ILobbyContext)
 def getCreatorFullName(lobbyContext=None):
     settings = getPrebattleSettings()

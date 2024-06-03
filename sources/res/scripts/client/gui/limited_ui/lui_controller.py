@@ -278,6 +278,8 @@ class LimitedUIController(ILimitedUIController):
             self.__updateConfig()
 
     def __updateConfig(self):
+        if not self.__itemsCache.isSynced():
+            return
         self.__luiConfig = self.__serverSettings.limitedUIConfig
         self.__buildRules()
         if not self.__updateStatus():

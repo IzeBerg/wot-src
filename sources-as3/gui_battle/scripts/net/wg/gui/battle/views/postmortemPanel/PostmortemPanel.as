@@ -26,7 +26,7 @@ package net.wg.gui.battle.views.postmortemPanel
       
       private static const DOGTAG_VICTIM_MINI_MAP_OFFSET:int = -760;
       
-      private static const DOGTAG_KILLER_OFFSET_Y:int = 60;
+      private static const DOGTAG_KILLER_OFFSET_Y:int = 70;
       
       private static const DOG_TAG_VICTIM_TWEEN_ANIMATION_TIME:int = 300;
       
@@ -38,7 +38,7 @@ package net.wg.gui.battle.views.postmortemPanel
       
       private static const DELAY_DT_VICTIM_APPEARANCE:int = 600;
       
-      protected static const INVALID_HIDE_COMPONENTS:uint = 1 << 11;
+      protected static const INVALID_HIDE_COMPONENTS:uint = 1 << 15;
       
       private static const POSTMORTEM_DC_BOTTOM_OFFSET_PERCENT_SMALL:Number = 0.79;
       
@@ -49,6 +49,10 @@ package net.wg.gui.battle.views.postmortemPanel
       private static const POSTMORTEM_INFO_PANEL_HEIGHT_MULTIPLIER:Number = 0.25;
       
       private static const POSTMORTEM_INFO_PANEL_WIDTH_MULTIPLIER:Number = 0.5;
+      
+      private static const POST_MORTEM_INFO_NAME:String = "postmortemInfoPanel";
+      
+      private static const DOG_TAG_KILLER_NAME:String = "dogTagKiller";
        
       
       public var postmortemInfoPanel:PostmortemInfoPanel = null;
@@ -87,7 +91,7 @@ package net.wg.gui.battle.views.postmortemPanel
       
       private var _postmortemInfoPanelBaseYPosition:int;
       
-      private var _dogTagComponentAnimateShowEndHandler:Function;
+      private var _dogTagComponentAnimateShowEndHandler:Function = null;
       
       public function PostmortemPanel()
       {
@@ -106,14 +110,17 @@ package net.wg.gui.battle.views.postmortemPanel
          }
       }
       
-      override public function showDeadReason() : void
+      override protected function invalidateDeadReasonItems(param1:Boolean, param2:uint = 0) : void
       {
-         super.showDeadReason();
+         super.invalidateDeadReasonItems(param1,param2);
          if(this._dogTagKiller)
          {
-            this._dogTagKiller.visible = true;
+            this._dogTagKiller.visible = param1;
          }
-         this.showPostmortemPanel(true);
+         if(param1)
+         {
+            this.showPostmortemPanel(param1);
+         }
       }
       
       override protected function configUI() : void
@@ -166,6 +173,11 @@ package net.wg.gui.battle.views.postmortemPanel
          ImageRepository.getInstance().setImages(param1);
       }
       
+      override protected function canShowKillerBg() : Boolean
+      {
+         return isShowVehiclePanel();
+      }
+      
       override protected function draw() : void
       {
          super.draw();
@@ -180,7 +192,6 @@ package net.wg.gui.battle.views.postmortemPanel
          if(isInvalid(INVALID_VEHICLE_PANEL))
          {
             this.showPostmortemPanel(true);
-            nicknameKillerBG.visible = _showVehiclePanel;
             if(_userName && _userName.userVO && _userName.userVO.userName != Values.EMPTY_STR)
             {
                this.showPanel();
@@ -200,44 +211,26 @@ package net.wg.gui.battle.views.postmortemPanel
          if(this._dogTagVictim)
          {
             this._dogTagVictim.dispose();
+            this._dogTagVictim = null;
          }
          if(this._dogTagKiller)
          {
             this.removeDogTagKillerListeners();
             this._dogTagKiller.dispose();
+            this._dogTagKiller = null;
          }
          if(this.postmortemInfoPanel)
          {
             removeChild(this.postmortemInfoPanel);
             this.postmortemInfoPanel = null;
          }
+         if(this._dogTagComponentAnimateShowEndHandler != null)
+         {
+            this._dogTagComponentAnimateShowEndHandler = null;
+         }
          this.clearTweens();
          ImageRepository.getInstance().dispose();
          super.onDispose();
-      }
-      
-      protected function createPostmortemPanelElements() : void
-      {
-         if(!this.postmortemInfoPanel)
-         {
-            this.postmortemInfoPanel = new PostmortemInfoPanel();
-            this.postmortemInfoPanel.setManageSize(true);
-            this.postmortemInfoPanel.setSize(this.parent.width,this.parent.height * POSTMORTEM_INFO_PANEL_HEIGHT_MULTIPLIER | 0);
-            this.postmortemInfoPanel.x = -this.postmortemInfoPanel.width * POSTMORTEM_INFO_PANEL_WIDTH_MULTIPLIER | 0;
-            this.postmortemInfoPanel.y = -this.parent.height * POSTMORTEM_INFO_PANEL_HEIGHT_MULTIPLIER | 0;
-            this._postmortemInfoPanelBaseYPosition = this.postmortemInfoPanel.y;
-            addChild(this.postmortemInfoPanel);
-            registerFlashComponentS(this.postmortemInfoPanel,BATTLE_VIEW_ALIASES.POSTMORTEM_INFO_PAGE);
-         }
-      }
-      
-      public function anchorVictimDogTag(param1:int) : void
-      {
-         this._dogTagVictimMiniMapAnchor = DOGTAG_VICTIM_MINI_MAP_OFFSET + param1;
-         if(this._dogTagVictim)
-         {
-            this._dogTagVictim.y = this._dogTagVictimMiniMapAnchor;
-         }
       }
       
       public function addPostmortemInfoPanelYOffset(param1:int) : void
@@ -247,6 +240,15 @@ package net.wg.gui.battle.views.postmortemPanel
             return;
          }
          this.postmortemInfoPanel.y = this._postmortemInfoPanelBaseYPosition + param1;
+      }
+      
+      public function anchorVictimDogTag(param1:int) : void
+      {
+         this._dogTagVictimMiniMapAnchor = DOGTAG_VICTIM_MINI_MAP_OFFSET + param1;
+         if(this._dogTagVictim)
+         {
+            this._dogTagVictim.y = this._dogTagVictimMiniMapAnchor;
+         }
       }
       
       public function animateVictimDogTag() : void
@@ -269,19 +271,13 @@ package net.wg.gui.battle.views.postmortemPanel
          });
       }
       
-      public function as_hideComponents() : void
+      public function as_fadePostmortemPanelOut() : void
       {
-         invalidate(INVALID_HIDE_COMPONENTS);
-      }
-      
-      public function as_setPlayerInfo(param1:String) : void
-      {
-         this.setPlayerInfo(param1);
-      }
-      
-      public function as_showDeadReason() : void
-      {
-         this.showDeadReason();
+         if(this._dogTagKiller)
+         {
+            this._dogTagKiller.animateHide();
+         }
+         this.hideDeadReason();
       }
       
       public function as_handleAsReplay() : void
@@ -289,14 +285,63 @@ package net.wg.gui.battle.views.postmortemPanel
          this._isReplay = true;
       }
       
-      public function as_togglePostmortemInfoPanel(param1:Boolean) : void
+      public function as_hideComponents() : void
       {
-         this.postmortemInfoPanel.visible = param1;
+         invalidate(INVALID_HIDE_COMPONENTS);
       }
       
       public function as_movePostmortemPanelUp() : void
       {
          this.movePostmortemInfoUp();
+      }
+      
+      public function as_resetPostmortemPosition() : void
+      {
+         if(this._dogTagKiller)
+         {
+            this._dogTagKiller.animateHide();
+         }
+         this.y = App.appHeight | 0;
+         this.alpha = 1;
+      }
+      
+      public function as_setInDeathCam(param1:Boolean) : void
+      {
+         this._isInDeathCam = param1;
+      }
+      
+      public function as_setPlayerInfo(param1:String) : void
+      {
+         this.setPlayerInfo(param1);
+      }
+      
+      public function as_togglePostmortemInfoPanel(param1:Boolean) : void
+      {
+         this.postmortemInfoPanel.visible = param1;
+      }
+      
+      protected function createPostmortemPanelElements() : void
+      {
+         if(!this.postmortemInfoPanel)
+         {
+            this.postmortemInfoPanel = new PostmortemInfoPanel();
+            this.postmortemInfoPanel.name = POST_MORTEM_INFO_NAME;
+            this.postmortemInfoPanel.setManageSize(true);
+            this.postmortemInfoPanel.setSize(this.parent.width,this.parent.height * POSTMORTEM_INFO_PANEL_HEIGHT_MULTIPLIER | 0);
+            this.postmortemInfoPanel.x = -this.postmortemInfoPanel.width * POSTMORTEM_INFO_PANEL_WIDTH_MULTIPLIER | 0;
+            this.postmortemInfoPanel.y = -this.parent.height * POSTMORTEM_INFO_PANEL_HEIGHT_MULTIPLIER | 0;
+            this._postmortemInfoPanelBaseYPosition = this.postmortemInfoPanel.y;
+            addChild(this.postmortemInfoPanel);
+            registerFlashComponentS(this.postmortemInfoPanel,BATTLE_VIEW_ALIASES.POSTMORTEM_INFO_PAGE);
+         }
+      }
+      
+      protected function showPostmortemPanel(param1:Boolean) : void
+      {
+         if(!param1 || !this._isReplay && this._isEnabledPostmortemPanel && param1)
+         {
+            this.postmortemInfoPanel.visible = param1;
+         }
       }
       
       private function movePostmortemInfoUp() : void
@@ -307,33 +352,10 @@ package net.wg.gui.battle.views.postmortemPanel
          this._postmortemDCTweenUp = new Tween(POSTMORTEM_DC_ANIMATION_TIME,this,{"y":_loc3_},{"paused":false});
       }
       
-      public function as_setInDeathCam(param1:Boolean) : void
-      {
-         this._isInDeathCam = param1;
-      }
-      
-      public function as_resetPostmortemPosition() : void
-      {
-         if(this._dogTagKiller)
-         {
-            this._dogTagKiller.gotoAndPlay(DogtagComponent.DOGTAG_LABEL_ANIMATE_HIDE);
-         }
-         this.y = App.appHeight | 0;
-         this.alpha = 1;
-      }
-      
-      public function as_fadePostmortemPanelOut() : void
-      {
-         if(this._dogTagKiller)
-         {
-            this._dogTagKiller.gotoAndPlay(DogtagComponent.DOGTAG_LABEL_ANIMATE_HIDE);
-         }
-         this.hideDeadReason();
-      }
-      
       private function initDogTagKiller(param1:Boolean) : void
       {
          this._dogTagKiller = App.utils.classFactory.getComponent(Linkages.DOGTAG,DogtagComponent);
+         this._dogTagKiller.name = DOG_TAG_KILLER_NAME;
          addChild(this._dogTagKiller);
          this._dogTagKiller.x = -this._dogTagKiller.width >> 1;
          this._dogTagKiller.y = deadReasonTF.y - this._dogTagKiller.height - DOGTAG_KILLER_OFFSET_Y;
@@ -388,14 +410,6 @@ package net.wg.gui.battle.views.postmortemPanel
             "delay":VICTIM_DOGTAG_LINGERING_TIME,
             "paused":false
          });
-      }
-      
-      protected function showPostmortemPanel(param1:Boolean) : void
-      {
-         if(!param1 || !this._isReplay && this._isEnabledPostmortemPanel && param1)
-         {
-            this.postmortemInfoPanel.visible = param1;
-         }
       }
       
       private function showPanel() : void
@@ -529,41 +543,6 @@ package net.wg.gui.battle.views.postmortemPanel
          }
       }
       
-      override public function setCompVisible(param1:Boolean) : void
-      {
-         if(_isCompVisible != param1)
-         {
-            _isCompVisible = param1;
-            updateVisibility();
-            if(!_isCompVisible)
-            {
-               setDeadReasonsVisibility(false);
-            }
-         }
-      }
-      
-      public function set isEnabledPostmortemPanel(param1:Boolean) : void
-      {
-         this._isEnabledPostmortemPanel = param1;
-      }
-      
-      public function get deadReasonOpacity() : Number
-      {
-         return deadReasonTF.alpha;
-      }
-      
-      public function set deadReasonOpacity(param1:Number) : void
-      {
-         deadReasonTF.alpha = param1;
-         deadReasonBG.alpha = param1;
-      }
-      
-      private function onDogTagAnimateHideStart(param1:Event) : void
-      {
-         onDogTagKillerOutPlaySoundS();
-         this.tweenReasonAndName(false);
-      }
-      
       private function createDogTagAnimateShowEndHandler(param1:Boolean) : Function
       {
          var fadeOut:Boolean = param1;
@@ -579,7 +558,29 @@ package net.wg.gui.battle.views.postmortemPanel
          {
             return;
          }
-         this._dogTagKiller.goToLabel(DogtagComponent.DOGTAG_LABEL_END_FULL);
+         this._dogTagKiller.stop();
+         onDogTagKillerOutPlaySoundS();
+         this.tweenReasonAndName(false);
+      }
+      
+      public function set isEnabledPostmortemPanel(param1:Boolean) : void
+      {
+         this._isEnabledPostmortemPanel = param1;
+      }
+      
+      public function set deadReasonOpacity(param1:Number) : void
+      {
+         deadReasonTF.alpha = param1;
+         deadReasonBG.alpha = param1;
+      }
+      
+      public function get deadReasonOpacity() : Number
+      {
+         return deadReasonTF.alpha;
+      }
+      
+      private function onDogTagAnimateHideStart(param1:Event) : void
+      {
          onDogTagKillerOutPlaySoundS();
          this.tweenReasonAndName(false);
       }

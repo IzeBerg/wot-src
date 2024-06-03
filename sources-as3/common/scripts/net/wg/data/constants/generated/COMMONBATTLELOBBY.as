@@ -21,6 +21,8 @@ package net.wg.data.constants.generated
       
       public static const DAMAGE_LOG_ART_16X16:String = "damageLog_art_16x16";
       
+      public static const DAMAGE_LOG_ARTILLERY_16X16:String = "damageLog_artillery_16x16";
+      
       public static const DAMAGE_LOG_ARTILLERY_ENEMY_16X16:String = "damageLog_artillery_enemy_16x16";
       
       public static const DAMAGE_LOG_ARTILLERY_ENEMY_16X16_BLIND:String = "damageLog_artillery_enemy_16x16Blind";
@@ -260,6 +262,8 @@ package net.wg.data.constants.generated
       public static const WHITE_ICON_AT_SPG16X16:String = "whiteIconAt-SPG16x16";
       
       public static const WHITE_ICON_BOSS16X16:String = "whiteIconBoss16x16";
+      
+      public static const WHITE_ICON_BUNKER16X16:String = "whiteIconBunker16x16";
       
       public static const WHITE_ICON_HEAVY_TANK_ELITE16X16:String = "whiteIconHeavyTank_elite16x16";
       

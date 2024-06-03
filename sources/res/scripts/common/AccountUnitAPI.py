@@ -1,4 +1,4 @@
-import cPickle
+import json
 from typing import Optional as TOptional
 import constants
 from UnitBase import UNIT_SLOT, CLIENT_UNIT_CMD, INV_ID_CLEAR_VEHICLE
@@ -90,11 +90,11 @@ class UnitClientAPI(object):
         return self._doCreate(PREBATTLE_TYPE.MAPBOX)
 
     def createFunRandomSquad(self, subModeID):
-        unitExtrasInitStr = cPickle.dumps({'funEventID': subModeID}, -1)
+        unitExtrasInitStr = json.dumps({'funEventID': subModeID})
         return self._doCreate(PREBATTLE_TYPE.FUN_RANDOM, unitExtrasInitStr=unitExtrasInitStr)
 
     def createComp7Squad(self, squadSize):
-        return self._doCreate(PREBATTLE_TYPE.COMP7, modeExtrasStr=cPickle.dumps({'squadSize': squadSize}, -1))
+        return self._doCreate(PREBATTLE_TYPE.COMP7, modeExtrasStr=json.dumps({'squadSize': squadSize}))
 
     def createSquadByPrbType(self, prbType):
         return self._doCreate(prbType)
