@@ -1,9 +1,11 @@
-import typing, BigWorld, SoundGroups, WWISE
+import typing
+from account_helpers.settings_core.settings_constants import SOUND
+import BigWorld, SoundGroups, WWISE
 from Event import Event
 from PlayerEvents import g_playerEvents
 from account_helpers import AccountSettings
-from account_helpers.settings_core.settings_constants import SOUND
-from helpers import i18n
+from constants import IS_DEVELOPMENT
+from helpers import i18n, dependency
 from story_mode.skeletons.voiceover_controller import IVoiceoverManager
 _UPDATE_PERIOD = 0.1
 
@@ -98,9 +100,23 @@ class VoiceoverManager(IVoiceoverManager):
     def _soundMarkerHandler(self, marker):
         if not AccountSettings.getSettings(SOUND.SUBTITLES):
             return
-        if marker == '#end' and self._currentSubtitle:
-            self._currentSubtitle = ''
-            self.onSubtitleHide()
+        marker = marker.strip()
+        if marker == '#end':
+            if self._currentSubtitle:
+                self._currentSubtitle = ''
+                self.onSubtitleHide()
         elif marker.startswith('#'):
             self._currentSubtitle = i18n.makeString(marker)
             self.onSubtitleShow()
+
+
+if IS_DEVELOPMENT:
+
+    def debugSubtitle(text=''):
+        voiceoverManager = dependency.instance(IVoiceoverManager)
+        if text:
+            voiceoverManager._currentSubtitle = text
+            voiceoverManager.onSubtitleShow()
+        else:
+            voiceoverManager._currentSubtitle = ''
+            voiceoverManager.onSubtitleHide()

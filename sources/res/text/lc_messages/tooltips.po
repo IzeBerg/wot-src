@@ -476,10 +476,10 @@ msgid "additionalRewards/xp"
 msgstr "%(value)s战斗经验"
 
 msgid "advanced/ARMOR_PIERCING"
-msgstr "最常见的炮弹类型只有在穿透坦克装甲时才会造成损伤。如果它以一定角度撞击装甲，炮弹可能会弹跳。穿甲弹的穿透力随着行进距离而减少。"
+msgstr "最常见的炮弹类型，仅在穿透坦克装甲时才会造成损伤。如果撞击装甲的角度过大，将会发生跳弹。AP炮弹的穿透力随飞行距离而降低。"
 
 msgid "advanced/ARMOR_PIERCING_CR"
-msgstr "展现高飞行速度并仅在穿透坦克装甲时造成损伤。当它以一定角度撞击装甲时，炮弹会弹跳。APCR炮弹的穿透力随行进距离而减少。"
+msgstr "飞行速度高，仅在穿透坦克装甲时才会造成损伤。如果撞击装甲的角度过大，将会发生跳弹。APCR炮弹的穿透力随飞行距离而降低。"
 
 msgid "advanced/ARMOR_PIERCING_CR_TRAY"
 msgstr "星形弹托炮弹有利有弊，因为它造成的损伤取决于坦克射击时与目标之间相隔的距离。这种炮弹可以在50米的距离内对目标造成最大平均损伤。"
@@ -492,7 +492,7 @@ msgstr "即使未击穿装甲也能造成损伤。造成损伤的几率更高，
 
 msgid "advanced/HIGH_EXPLOSIVE_MODERN"
 msgstr ""
-"即使未击穿装甲也能对生命值、内部模块和乘员造成损伤。相比于其他炮弹类型，造成损伤的几率更高，但损伤数值可能较低。能击穿薄弱的间隙装甲和部分可摧毁的障碍物，但在此过程中会损失部分穿透力。如未击穿装甲则会爆炸。"
+"即使未击穿装甲也能对生命值、内部模块和乘员造成损伤。相比于其他炮弹类型，造成损伤的几率更高，但损伤数值可能较低。能击穿薄弱的间隙装甲和部分可破坏的障碍物，但在此过程中会损失部分穿透力。如未击穿装甲则会爆炸。"
 
 msgid "advanced/HOLLOW_CHARGE"
 msgstr ""
@@ -1394,13 +1394,13 @@ msgid "battlePassOffer/footer/modernized_device_gift"
 msgstr "此阶段完成后，您可以通过点击阶段上方的\"领取奖励\"按钮来获得一个试验型配件。"
 
 msgid "battlePassOffer/footer/new_device_gift"
-msgstr "此阶段完成后，您可以通过点击阶段上方的\"领取奖励\"按钮来获得所选系别的一个标准配件。"
+msgstr "此阶段完成后，您可以通过点击阶段上方的\"领取奖励\"按钮来获得一个标准配件。"
 
 msgid "battlePassOffer/footer/recertification_gift"
 msgstr "免费重置全部特长"
 
 msgid "battlePassOffer/footer/trophy_gift"
-msgstr "此阶段完成后，您可以通过点击阶段上方的\"领取奖励\"按钮来获得所选系别的一个赏金配件。"
+msgstr "此阶段完成后，您可以通过点击阶段上方的\"领取奖励\"按钮来获得一个赏金配件。"
 
 msgid "battlePassOffer/point"
 msgstr "• %(item)s"
@@ -3357,7 +3357,7 @@ msgstr ""
 "请注意！解雇缓冲区可容纳%(maxCount)s名乘员。该缓冲区现已包含%(currCount)s名乘员，解雇的乘员将替换最早转移至缓冲区的%(deletedStr)s和另%(extraCount)s名乘员。确定替换？"
 
 msgid "dismissedToggle/body"
-msgstr "乘员必须拥有足以将至少1项特长训练至100%的经验(或已训练至少1项特长)，才会在被解雇后于此处显示。"
+msgstr "乘员必须拥有足以将至少2项特长训练至100%的经验，才会在被解雇后于此处显示。"
 
 msgid "dismissedToggle/footer/body"
 msgstr "最多可容纳%(quantity)s名乘员，这些乘员可在以后恢复。"
@@ -4751,10 +4751,10 @@ msgid "hangar/header/personalMissions/award/body"
 msgstr "%(chainName)s组中的任务已完成。点击前往任务列表并领取奖励。"
 
 msgid "hangar/header/personalMissions/award/header"
-msgstr "%(tileName)s活动"
+msgstr "%(tileName)s作战行动"
 
 msgid "hangar/header/personalMissions/branch_disabled/body"
-msgstr "由于技术原因，所选广告系列目前无法使用。我们很快就会恢复可操作性。"
+msgstr "由于技术原因，所选个人任务目前无法使用。我们很快就会恢复此功能。"
 
 msgid "hangar/header/personalMissions/branch_disabled/header"
 msgstr "个人任务不可用"
@@ -4766,7 +4766,7 @@ msgid "hangar/header/personalMissions/completed/header"
 msgstr "所有任务都已完成"
 
 msgid "hangar/header/personalMissions/completedLockedNext/body"
-msgstr "完成其他车型的任务，解锁下一次操作。"
+msgstr "完成其他坦克类型的任务，才能解锁下一个作战行动。"
 
 msgid "hangar/header/personalMissions/completedLockedNext/header"
 msgstr "此类型坦克的任务已完成"
@@ -4785,19 +4785,19 @@ msgid "hangar/header/personalMissions/done/header"
 msgstr "所有任务都以荣誉完成"
 
 msgid "hangar/header/personalMissions/doneAll/body"
-msgstr "您已完成两个广告系列中的所有个人任务。"
+msgstr "您已完成两项个人任务中的所有任务。"
 
 msgid "hangar/header/personalMissions/doneAll/header"
 msgstr "个人任务无法使用"
 
 msgid "hangar/header/personalMissions/doneLockedNext/body"
-msgstr "完成其他车型的任务，解锁下一次操作。"
+msgstr "完成其他坦克类型的任务，才能解锁下一个作战行动。"
 
 msgid "hangar/header/personalMissions/doneLockedNext/header"
 msgstr "此类型坦克的任务已完成"
 
 msgid "hangar/header/personalMissions/lowLevel/body"
-msgstr "所选坦克的等级太低。要解锁第二战线任务，请选择与此操作所需等级对应的坦克"
+msgstr "所选坦克的等级太低。若要解锁第二战线任务，请选择符合此作战行动所需等级的坦克"
 
 msgid "hangar/header/personalMissions/lowLevel/header"
 msgstr "无可用任务"
@@ -4828,13 +4828,13 @@ msgid "hangar/header/personalMissions/unavailable/header"
 msgstr "无可用任务"
 
 msgid "hangar/header/personalMissions2/completedLockedNext/body"
-msgstr "完成其他车型的任务，解锁下一次操作。"
+msgstr "完成其他坦克类型的任务，才能解锁下一个作战行动。"
 
 msgid "hangar/header/personalMissions2/completedLockedNext/header"
 msgstr "此类型坦克的任务已完成"
 
 msgid "hangar/header/personalMissions2/doneLockedNext/body"
-msgstr "完成其他车型的任务，解锁下一次操作。"
+msgstr "完成其他坦克类型的任务，才能解锁下一个作战行动。"
 
 msgid "hangar/header/personalMissions2/doneLockedNext/header"
 msgstr "此类型坦克的任务已完成"
@@ -4846,7 +4846,7 @@ msgid "hangar/header/personalMissions2/noVehicle/header"
 msgstr "个人任务不可用"
 
 msgid "hangar/header/personalMissions2/unavailableFull/body"
-msgstr "完成IV号突击炮操作以解锁第二战线活动。一旦您获得此坦克，您就可以开始完成第二战线的个人任务。"
+msgstr "完成IV号突击炮作战行动以解锁第二战线个人任务。一旦您获得此坦克，您就可以开始完成第二战线的作战行动。"
 
 msgid "hangar/header/personalMissions2/unavailableFull/header"
 msgstr "个人任务不可用"
@@ -5060,7 +5060,7 @@ msgid "hangarTutorial/ammunition/type/high-explosive/title"
 msgstr "HE"
 
 msgid "hangarTutorial/ammunition/type/piercing/description"
-msgstr "高飞行速度，但是穿透力随着距离增加而递减。"
+msgstr "飞行速度高，但是穿透力随飞行距离而降低。"
 
 msgid "hangarTutorial/ammunition/type/piercing/title"
 msgstr "AP"
@@ -5708,6 +5708,24 @@ msgstr "车库中的一些界面元素被暂时隐藏，以方便您熟悉游戏
 
 msgid "limitedUISettingBlock/info/header"
 msgstr "隐藏界面元素的逐步显示"
+
+msgid "liveOps/entryPointTooltip/body"
+msgstr "参加限时活动，获取奖励。"
+
+msgid "liveOps/entryPointTooltip/date/end"
+msgstr "%(icon)s活动将于%(date)s结束"
+
+msgid "liveOps/entryPointTooltip/date/start"
+msgstr "%(icon)s活动将于%(date)s开启"
+
+msgid "liveOps/entryPointTooltip/finished"
+msgstr "活动已结束"
+
+msgid "liveOps/entryPointTooltip/results"
+msgstr "您可查看活动结果，并领取奖励。"
+
+msgid "liveOps/entryPointTooltip/title"
+msgstr "新活动"
 
 msgid "lobby/header/buyPremiumAccount/disabled/body"
 msgstr "当高级账号剩余%(number)s天或已过期时，您可以延期高级账号。"
@@ -7552,6 +7570,46 @@ msgstr "?empty?"
 msgid "notrecruitedtankman/tankmen_bp13_9/label"
 msgstr "战斗通行证赛季XIII"
 
+msgid "notrecruitedtankman/tankmen_bp14_1/desc"
+msgstr ""
+"亚瑟是一名Y系小伙子，从小就把责任、荣誉、纪律看得比什么都重要，似乎注定要成为领导者。现在，他为国王和祖国效力，并拥有两样秘密武器——北方人的豪情帮他克服万难、英式智慧助其化解各种紧张局势。作为一名天生的外交家和勤奋的战略家，亚瑟就像粘合剂，将他的团队紧紧地凝聚在一起。即使情绪激昂，他也能保持坚定的决心，毫不动摇地专注于手头的任务。"
+
+msgid "notrecruitedtankman/tankmen_bp14_1/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp14_1/label"
+msgstr "战斗通行证赛季XIV"
+
+msgid "notrecruitedtankman/tankmen_bp14_2/desc"
+msgstr ""
+"杰克讨厌循规蹈矩，喜欢率性而为、随心所欲。这让他的上司非常恼火。值得庆幸的是，凭借非凡的直觉和惊人的临场应变能力，他总能化险为夷。杰克争强好胜、勇敢无畏、成熟老练，是车组中的王牌。其变幻莫测的性格让敌人难以捉摸，再加上坚定不移的意志，他总能克敌制胜。"
+
+msgid "notrecruitedtankman/tankmen_bp14_2/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp14_2/label"
+msgstr "战斗通行证赛季XIV"
+
+msgid "notrecruitedtankman/tankmen_bp14_3/desc"
+msgstr ""
+"路易充满热情、忠心爱国。出于这份情感，他在家乡沦陷后便马上加入了抵抗组织。尽管始终坚持正义，但他绝非一名头脑发热的理想主义者。他性格粗犷，如同家乡诺曼底的悬崖峭壁，同时，他也是一名无畏的战士和精明的战术家，善于从大局出发。他意志坚定，勇往直前，决心为家乡的自由奋战到底。"
+
+msgid "notrecruitedtankman/tankmen_bp14_3/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp14_3/label"
+msgstr "战斗通行证赛季XIV"
+
+msgid "notrecruitedtankman/tankmen_bp14_4/desc"
+msgstr ""
+"当家乡沦陷、任人践踏时，罗曼明白是时候追随前人脚步，为家乡的自由而英勇奋战了。他思维缜密，凡事都能做到有备无患。即使身处敌人的猛烈炮火之下，他也能表现得异常镇定。罗曼心地善良，热情好客。遇到困难时，他能鼓舞车组士气。但最重要的，结束战事、回到家乡才是他坚持战斗的动力。"
+
+msgid "notrecruitedtankman/tankmen_bp14_4/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp14_4/label"
+msgstr "战斗通行证赛季XIV"
+
 msgid "notrecruitedtankman/tankmen_bp2_1/desc"
 msgstr ""
 "很多人都问我认不认识杰克·里德。在回答之前，我常常会闭上眼睛，深呼吸，因为当他的指挥官可一点都不轻松。里德是个叛逆的家伙，他总能以自己的方式完成命令，还能不违反军队规定。虽然在现实中他困在一个闷热的坦克里。但在内心世界中，他正骑着摩托，沿着高速公路前行，享受着清风吹拂脸颊的感觉。"
@@ -8108,9 +8166,9 @@ msgid "personalMissions/awards/camouflage/alliance/body"
 msgstr ""
 "一套三个图案的涂装(草地，雪地和沙地)。\n"
 "\n"
-"当您完成了一个行动所有60个任务的主要条件后，您就可以免费获得此涂装并应用于奖励坦克。\n"
+"当您完成了一个作战行动所有60个任务的主要条件后，您就可以免费获得此涂装并应用于奖励坦克。\n"
 "\n"
-"当您完美完成了所有60个任务后，您就可以将此涂装应用于奖励坦克所属系别的任何坦克。\n"
+"当您完美完成了这60个任务后，您就可以将此涂装应用于奖励坦克所属系别的任何坦克。\n"
 "\n"
 "您可以在个性化界面搜索独特的涂装图案。"
 
@@ -8121,9 +8179,9 @@ msgid "personalMissions/awards/camouflage/body"
 msgstr ""
 "一套三个图案的涂装(草地，雪地和沙地)。\n"
 "\n"
-"当您完成了一个行动所有75个任务的主要条件后，您就可以免费获得此涂装并应用于奖励坦克。\n"
+"当您完成了一个作战行动所有75个任务的主要条件后，您就可以免费获得此涂装并应用于奖励坦克。\n"
 "\n"
-"当您完美完成了所有75个任务后，您就可以将此涂装应用于奖励坦克所属系别的任何坦克。\n"
+"当您完美完成了这75个任务后，您就可以将此涂装应用于奖励坦克所属系别的任何坦克。\n"
 "\n"
 "您可以在个性化界面搜索独特的涂装图案。"
 
@@ -8267,10 +8325,10 @@ msgid "personalMissions/onPauseBtn/turnOnPause/header"
 msgstr "暂停"
 
 msgid "personalMissions/operation/awards/title/done"
-msgstr "完成个人任务的奖励:"
+msgstr "完成作战行动的奖励:"
 
 msgid "personalMissions/operation/awards/title/excellentDone"
-msgstr "完美完成个人任务的奖励:"
+msgstr "完美完成作战行动的奖励:"
 
 msgid "personalMissions/operation/footer/descr/completionTokens"
 msgstr "坦克模块: "
@@ -8282,7 +8340,7 @@ msgid "personalMissions/operation/footer/descr/disabled"
 msgstr "禁用作战行动"
 
 msgid "personalMissions/operation/footer/descr/doPrevOperation"
-msgstr "请完成前置个人任务"
+msgstr "请完成前置作战行动"
 
 msgid "personalMissions/operation/footer/descr/freeSheets"
 msgstr "通行令: "
@@ -8318,10 +8376,10 @@ msgid "personalMissions/operation/header/descr/postponed"
 msgstr "如果您在下一作战行动开始前完成上一作战行动的所有任务，您可以获得一个独特的徽章。"
 
 msgid "personalMissions/operation/missions/title"
-msgstr "个人任务:"
+msgstr "作战行动:"
 
 msgid "personalMissions/operation/title"
-msgstr "%(name)s个人任务"
+msgstr "%(name)s作战行动"
 
 msgid "personalMissions/operationTitle/completeState/body"
 msgstr "完美完成任务、获得奖章，然后就有机会可以为您心爱的坦克购买独特的涂装。"
@@ -8330,16 +8388,16 @@ msgid "personalMissions/operationTitle/completeState/header"
 msgstr "完美完成任务"
 
 msgid "personalMissions/rareCamouflage/notObtained/addIncomplete/title"
-msgstr "完美完成%(operationName)s个人任务的所有任务:%(countLabel)s"
+msgstr "完美完成%(operationName)s作战行动的所有任务: %(countLabel)s"
 
 msgid "personalMissions/rareCamouflage/notObtained/mainIncomplete/title"
-msgstr "完成%(operationName)s个人任务的所有任务:%(countLabel)s"
+msgstr "完成%(operationName)s作战行动的所有任务: %(countLabel)s"
 
 msgid "personalMissions/rareCamouflage/obtained/complete/add"
-msgstr "完美完成%(operationName)s个人任务I就能解开。"
+msgstr "在第1项个人任务中，完美完成%(operationName)s作战行动即可解锁。"
 
 msgid "personalMissions/rareCamouflage/obtained/complete/main"
-msgstr "完美完成%(operationName)s个人任务I就会颁发。"
+msgstr "在第1项个人任务中，完美完成%(operationName)s作战行动即可获得。"
 
 msgid "personalMissions/status/addInProgress/body"
 msgstr "通过达成所有主要和次要条件来完美完成任务。"
@@ -8476,7 +8534,7 @@ msgid "premiumPlus/days/header"
 msgstr "坦克世界高级账号天数:%d"
 
 msgid "premiumVehicle/caption"
-msgstr "该乘员可转移至所有%(vehType)s(%(nation)s)，没有处罚。"
+msgstr "该乘员可转移至%(vehType)s(%(nation)s)，没有处罚。"
 
 msgid "premiumVehicle/content/credits"
 msgstr "在战斗中获得更多银币"
@@ -9748,18 +9806,29 @@ msgstr "未击穿车轮"
 
 msgid "showDogTag/body"
 msgstr ""
-"关闭后，敌人在击毁您的坦克后将看到一个标准军用识别牌。\n"
+"关闭后，玩家在击毁您的坦克后将看到一个标准的可定制军用识别牌。\n"
 "\n"
 "设置变更将在下一场战斗中生效。"
 
 msgid "showDogTag/header"
-msgstr "显示当前军用识别牌"
+msgstr "显示已应用的可定制军用识别牌"
 
 msgid "showMarksOnGun/body"
 msgstr "在所有模式中禁用或启用您的坦克上的战绩标识。在某次战斗中修改的设置将在战斗结束/退出战斗后生效。"
 
 msgid "showMarksOnGun/header"
 msgstr "显示战绩标识"
+
+msgid "showPersonalAnimatedDogTag/body"
+msgstr ""
+"关闭后，您所选择的动画军用识别牌将不会在战前倒计时期间向您展示。\n"
+"\n"
+"该军用识别牌会始终向您的盟友展示。\n"
+"\n"
+"设置变更将在下一场战斗中生效。"
+
+msgid "showPersonalAnimatedDogTag/header"
+msgstr "向您展示已应用的动画军用识别牌"
 
 msgid "showSectorOnMap/body"
 msgstr ""

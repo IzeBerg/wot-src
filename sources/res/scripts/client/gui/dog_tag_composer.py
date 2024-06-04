@@ -1,12 +1,11 @@
 from enum import Enum
 import logging, typing
 from dog_tags_common.components_config import componentConfigAdapter as componentConfig
-from dog_tags_common.config.common import ComponentViewType
+from dog_tags_common.config.common import ComponentViewType, ComponentPurpose
 from gui.impl import backport
 from gui.impl.gen import R
 if typing.TYPE_CHECKING:
     from typing import Optional
-    from dog_tags_common.config.common import ComponentPurpose
     from gui.impl.gen_utils import DynAccessor
     from dog_tags_common.config.dog_tag_framework import ComponentDefinition
 _logger = logging.getLogger(__name__)
@@ -31,15 +30,30 @@ def getResourceRoot(component):
     return res
 
 
+LANGUAGE_CODE = backport.text(R.strings.settings.LANGUAGE_CODE())
+SUPPORTED_LANGUAGES = ['de', 'es', 'fr', 'hu', 'it', 'pl', 'pt_br', 'ru', 'tr', 'uk', 'zh_cn', 'cs']
+
+def getLocalizePostfix():
+    if LANGUAGE_CODE in SUPPORTED_LANGUAGES:
+        return ('_{}').format(LANGUAGE_CODE)
+    return ''
+
+
 class DogTagComposerClient(object):
     MAX_NAME_LENGTH = 12
 
     @staticmethod
-    def getComponentImage(componentId, grade=0):
+    def getComponentImage(componentId, grade=0, localized=False):
         if grade < 0:
             _logger.error('Tried loading an image with incorrect grade: %d for component %d', grade, componentId)
             grade = 0
-        return ('{}_{}_{}').format(componentConfig.getComponentById(componentId).viewType.value.lower(), componentId, grade)
+        return ('{}_{}_{}{}').format(componentConfig.getComponentById(componentId).viewType.value.lower(), componentId, grade, getLocalizePostfix() if localized else '')
+
+    @staticmethod
+    def getBottomPlateImage(backgroundId):
+        if componentConfig.getComponentById(backgroundId).purpose != ComponentPurpose.COUPLED:
+            return ''
+        return ('bottom_plate_{}').format(backgroundId)
 
     @classmethod
     def getComponentImageFullPath(cls, size, componentId, grade=0):
@@ -60,7 +74,7 @@ class DogTagComposerClient(object):
     @staticmethod
     def getComponentTitleRes(componentId):
         comp = componentConfig.getComponentById(componentId)
-        titleRes = getResourceRoot(comp).dyn('title')
+        titleRes = getResourceRoot(comp).dyn('title' if comp.purpose != ComponentPurpose.COUPLED else 'counter')
         if not titleRes.exists():
             _logger.error('Missing title string for dogtag component %d', componentId)
             return -1
@@ -91,6 +105,13 @@ class DogTagComposerClient(object):
     @staticmethod
     def getPurposeTooltipRes(purposeGroup):
         return R.strings.dogtags.component.purposeTooltip.dyn(purposeGroup.lower())()
+
+    @staticmethod
+    def getAnimationSrc(animation):
+        if animation is None:
+            return ''
+        else:
+            return ('animations/dogtags/{}.swf').format(animation)
 
 
 dogTagComposer = DogTagComposerClient()

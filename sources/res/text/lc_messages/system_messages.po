@@ -377,7 +377,7 @@ msgid "battlePass/extraFinish/header"
 msgstr "战斗通行证：%(name)s章节"
 
 msgid "battlePass/extraStarted/body"
-msgstr "各位指挥官，%(name)s活动已于战斗通行证期间开始了！在本活动中，您将有机会获得一辆全新坦克及其3D风格。"
+msgstr "各位指挥官！战斗通行证期间，%(name)s活动已经开启，您将有机会从中获取特殊奖励！"
 
 msgid "battlePass/extraStarted/header"
 msgstr "战斗通行证:一个全新的章节已经开启！"
@@ -406,21 +406,6 @@ msgstr "战斗通行证第%(seasonNum)d赛季"
 msgid "battlePass/rewardChoice/error"
 msgstr "选择奖励错误。请再试一次。"
 
-msgid "battlePass/seasonEnd/rewards/blueprints"
-msgstr "已获得蓝图：%(name)s"
-
-msgid "battlePass/seasonEnd/rewards/crewBook"
-msgstr "已获得: %(name)s"
-
-msgid "battlePass/seasonEnd/rewards/device"
-msgstr "已获得标准配件：%(name)s"
-
-msgid "battlePass/seasonEnd/rewards/style"
-msgstr "已获得风格：%(name)s"
-
-msgid "battlePass/seasonEnd/rewards/trophy"
-msgstr "已获得赏金配件：%(name)s"
-
 msgid "battlePass/seasonEnd/text"
 msgstr "战斗通行证赛季已结束。您在赛季期间未选择的所有奖励已按默认选择发放:"
 
@@ -444,9 +429,6 @@ msgstr "由于系统维护，您在天梯战模式中暂时无法获得战斗通
 
 msgid "battlePass/switch_disable/epicBattle/body"
 msgstr "由于系统维护，战斗通行证功能暂时无法在前线模式中使用。"
-
-msgid "battlePass/switch_disable/incompleteStyle"
-msgstr "可以在个性化界面升级%(styleName)s风格。"
 
 msgid "battlePass/switch_disable/ranked/body"
 msgstr "由于系统维护，战斗通行证功能暂时无法在排位赛中使用。"
@@ -472,7 +454,7 @@ msgid "battlePass/switch_pause/body"
 msgstr "战斗通行证由于维护暂时不可用。"
 
 msgid "battlePass/switch_started/body"
-msgstr "各位指挥官！又到了为独特战斗通行证奖励而战的时候了，奖励包括:渐进风格、令牌、专属角色等！"
+msgstr "各位指挥官！是时候再次投身战斗，获取独特的战斗通行证奖励了！"
 
 msgid "battlePass/switch_started/title"
 msgstr "战斗通行证赛季%(seasonNum)d"
@@ -1316,7 +1298,7 @@ msgid "dog_tags/switch_on/body"
 msgstr "技术问题已修复。我们对给您造成的不便深表歉意。"
 
 msgid "dog_tags/switch_on/title"
-msgstr "军用识别牌功能再次可用。"
+msgstr "军用识别牌功能再次可用"
 
 msgid "dossiers_unavailable"
 msgstr "账号未就绪(数据不可用)"
@@ -1351,6 +1333,27 @@ msgstr "画面分辨率提升至 %(scale)d%%。"
 
 msgid "drr_scale/step_up"
 msgstr "画面分辨率降低至 %(scale)d%%。"
+
+msgid "earning/button/multiple"
+msgstr "前往成就"
+
+msgid "earning/button/single"
+msgstr "前往成就"
+
+msgid "earning/common/multiple"
+msgstr "已解锁%(value)s项成就！"
+
+msgid "earning/common/single"
+msgstr "已解锁\"%(value)s\"成就！"
+
+msgid "earning/title"
+msgstr "恭喜！"
+
+msgid "earning/trophy/multiple"
+msgstr "已获得%(value)s项战利品！"
+
+msgid "earning/trophy/single"
+msgstr "已获得\"%(value)s\"战利品！"
 
 msgid "epicBattles/levelUp/awards"
 msgstr "已获得奖励:"
@@ -2406,7 +2409,7 @@ msgid "personalMissions/select/server_error/LOCKED_BY_VEHICLE_QUEST"
 msgstr "注意！若要改变任务，请等待所有用于当前活动任务的坦克返回车库。"
 
 msgid "personalMissions/select/server_error/NOT_BOUGHT_TILE"
-msgstr "任务%(questNames)s无法选择。请先完成前面的操作。"
+msgstr "无法选择%(questNames)s任务。请先完成前置作战行动。"
 
 msgid "personalMissions/select/server_error/NOT_ENOUGH_SLOTS"
 msgstr "%(questNames)s任务未选中。车位不足。"
@@ -3767,11 +3770,8 @@ msgstr "无法将乘员调回兵营:该坦克拥有独特的永久乘员。"
 msgid "unload_crew/invalid_vehicle"
 msgstr "将车组乘员调回兵营失败。坦克错误。"
 
-msgid "unload_crew/not_enough_space"
-msgstr "兵营中没有足够的床位。"
-
 msgid "unload_crew/server_error"
-msgstr "车组乘员调回军营，请稍后再试。"
+msgstr "乘员无法调回兵营，请稍后再试。"
 
 msgid "unload_crew/success"
 msgstr "乘员已调回兵营。"
@@ -3801,10 +3801,10 @@ msgid "unload_tankman/success"
 msgstr "乘员已调回兵营。"
 
 msgid "unload_tankman/vehicle_locked"
-msgstr "调车组乘员回军营出错，请修复你的坦克。"
+msgstr "将乘员调回兵营时出错，坦克被锁定。"
 
 msgid "unload_tankman/vehicle_need_repair"
-msgstr "调车组乘员回军营出错，请修复你的坦克。"
+msgstr "将乘员调回兵营时出错，请修复坦克。"
 
 msgid "unlocks/drawFailed"
 msgstr "设置错误。升级路线被锁定。"

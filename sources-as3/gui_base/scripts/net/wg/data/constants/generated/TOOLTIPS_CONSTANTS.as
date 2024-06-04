@@ -567,6 +567,8 @@ package net.wg.data.constants.generated
       
       public static const TRAINING_COMP7_BATTLE_RESULTS_RATING_POINTS:String = "trainingComp7BattleResultsRatingPoints";
       
+      public static const COMP7_GIFT_TOKEN:String = "comp7GiftToken";
+      
       public static const BLOCKS_DEFAULT_UI:String = "ToolTipInblocksDefaultUI";
       
       public static const TANKMEN_UI:String = "ToolTipTankmenUI";

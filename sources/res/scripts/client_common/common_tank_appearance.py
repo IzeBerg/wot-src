@@ -254,6 +254,7 @@ class CommonTankAppearance(ScriptGameObject):
         self.transform = self.createComponent(GenericComponents.TransformComponent, Math.Vector3(0, 0, 0))
         self.areaTriggerTarget = self.createComponent(Triggers.AreaTriggerTarget)
         self.__filter = model_assembler.createVehicleFilter(self.typeDescriptor)
+        self.__filter.setFlyingInfo(DataLinks.createBoolLink(self.flyingInfoProvider, 'isFlying'))
         compoundModel = self.compoundModel
         if self.isAlive:
             self.detailedEngineState, self.gearbox = model_assembler.assembleDrivetrain(self, isPlayer)
@@ -311,8 +312,7 @@ class CommonTankAppearance(ScriptGameObject):
         self.__postSetupFilter()
         compoundModel.setPartBoundingBoxAttachNode(TankPartIndexes.GUN, TankNodeNames.GUN_INCLINATION)
         camouflages.updateFashions(self)
-        if not IS_EDITOR and not self.typeDescriptor.isCosmicVehicle:
-            model_assembler.assembleCustomLogicComponents(self, self.typeDescriptor, self.__attachments, self.__modelAnimators)
+        model_assembler.assembleCustomLogicComponents(self, self.typeDescriptor, self.__attachments, self.__modelAnimators)
         self._createStickers()
         while self._loadingQueue:
             prefab, go, vector, callback = self._loadingQueue.pop()
@@ -614,14 +614,11 @@ class CommonTankAppearance(ScriptGameObject):
             self.__periodicTimerID = None
         self.__modelAnimators = []
         self.filter.enableLagDetection(False)
-        self.clearUndamagedStateChildren()
-        return
-
-    def clearUndamagedStateChildren(self):
         for go in self.undamagedStateChildren:
             CGF.removeGameObject(go)
 
         self.undamagedStateChildren = []
+        return
 
     def _onRequestModelsRefresh(self):
         self.flagComponent = None
@@ -866,7 +863,7 @@ class CommonTankAppearance(ScriptGameObject):
 
     def getTrackStates(self):
         if self.crashedTracksController is None:
-            return False
+            return []
         else:
             return list(self.crashedTracksController.getLeftTrackStates() + self.crashedTracksController.getRightTrackStates())
 
@@ -903,7 +900,7 @@ class CommonTankAppearance(ScriptGameObject):
         if not self.__shouldUseTrackCrashWithDebris(pairIndex, shouldCreateDebris):
             if self.crashedTracksController is not None:
                 for idx in indices:
-                    self.crashedTracksController.addCrashedTrack(isLeft, idx, isSideFlying)
+                    self.crashedTracksController.addCrashedTrack(isLeft, idx, hitPoint, isSideFlying)
 
             return
         modelsSet = self.getCurrentModelsSet()
@@ -911,7 +908,7 @@ class CommonTankAppearance(ScriptGameObject):
             track = self.tracks.getTrackGameObject(isLeft, idx)
             track.createComponent(DebrisCrashedTrackComponent, isLeft, idx, self.typeDescriptor, self.gameObject, self.boundEffects, self.filter, self._vehicle.isPlayerVehicle, shouldCreateDebris, hitPoint, modelsSet)
             if self.crashedTracksController is not None:
-                self.crashedTracksController.addDebrisCrashedTrack(isLeft, idx)
+                self.crashedTracksController.addDebrisCrashedTrack(isLeft, idx, hitPoint)
 
         return
 

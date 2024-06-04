@@ -321,6 +321,8 @@ package
       
       public static const LOBY_MESSENGER_LISTVIEW_NEWS_TOOLTIP:String = "#tooltips:loby_messenger/listView/news/tooltip";
       
+      public static const SHOWPERSONALANIMATEDDOGTAG:String = "#tooltips:showPersonalAnimatedDogTag";
+      
       public static const BADGEINFO_TITLE:String = "#tooltips:badgeinfo/title";
       
       public static const BADGEINFO_TEXT:String = "#tooltips:badgeinfo/text";
@@ -706,6 +708,10 @@ package
       public static const SHOWDOGTAG_HEADER:String = "#tooltips:showDogTag/header";
       
       public static const SHOWDOGTAG_BODY:String = "#tooltips:showDogTag/body";
+      
+      public static const SHOWPERSONALANIMATEDDOGTAG_HEADER:String = "#tooltips:showPersonalAnimatedDogTag/header";
+      
+      public static const SHOWPERSONALANIMATEDDOGTAG_BODY:String = "#tooltips:showPersonalAnimatedDogTag/body";
       
       public static const POSTMORTEMMODE_HEADER:String = "#tooltips:postmortemMode/header";
       
@@ -6985,6 +6991,30 @@ package
       
       public static const NOTRECRUITEDTANKMAN_TANKMEN_BP13_9_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/tankmen_bp13_9/howToGetInfo";
       
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_1_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_bp14_1/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_1_DESC:String = "#tooltips:notrecruitedtankman/tankmen_bp14_1/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_1_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/tankmen_bp14_1/howToGetInfo";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_2_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_bp14_2/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_2_DESC:String = "#tooltips:notrecruitedtankman/tankmen_bp14_2/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_2_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/tankmen_bp14_2/howToGetInfo";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_3_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_bp14_3/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_3_DESC:String = "#tooltips:notrecruitedtankman/tankmen_bp14_3/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_3_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/tankmen_bp14_3/howToGetInfo";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_4_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_bp14_4/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_4_DESC:String = "#tooltips:notrecruitedtankman/tankmen_bp14_4/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_4_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/tankmen_bp14_4/howToGetInfo";
+      
       public static const NOTRECRUITEDTANKMAN_TANKMEN_AUC_1_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_auc_1/label";
       
       public static const NOTRECRUITEDTANKMAN_TANKMEN_AUC_1_DESC:String = "#tooltips:notrecruitedtankman/tankmen_auc_1/desc";
@@ -7576,6 +7606,18 @@ package
       public static const BUTTONS_RETRAIN_BODY:String = "#tooltips:buttons/retrain/body";
       
       public static const BUTTONS_INCREASE_BODY:String = "#tooltips:buttons/increase/body";
+      
+      public static const LIVEOPS_ENTRYPOINTTOOLTIP_TITLE:String = "#tooltips:liveOps/entryPointTooltip/title";
+      
+      public static const LIVEOPS_ENTRYPOINTTOOLTIP_BODY:String = "#tooltips:liveOps/entryPointTooltip/body";
+      
+      public static const LIVEOPS_ENTRYPOINTTOOLTIP_DATE_START:String = "#tooltips:liveOps/entryPointTooltip/date/start";
+      
+      public static const LIVEOPS_ENTRYPOINTTOOLTIP_DATE_END:String = "#tooltips:liveOps/entryPointTooltip/date/end";
+      
+      public static const LIVEOPS_ENTRYPOINTTOOLTIP_FINISHED:String = "#tooltips:liveOps/entryPointTooltip/finished";
+      
+      public static const LIVEOPS_ENTRYPOINTTOOLTIP_RESULTS:String = "#tooltips:liveOps/entryPointTooltip/results";
       
       public static const ELEN_SUMMARY_RANK_ENUM:Array = [ELEN_SUMMARY_RANK_1,ELEN_SUMMARY_RANK_2,ELEN_SUMMARY_RANK_3,ELEN_SUMMARY_RANK_4,ELEN_SUMMARY_RANK_NORANK];
       

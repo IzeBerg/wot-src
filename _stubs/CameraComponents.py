@@ -95,12 +95,11 @@ class CameraFlightComponent(PyComponentWrapperBase):
 	cameraName = property(lambda self: None)
 	def clear(self, *args, **kwargs): pass
 	def destroy(self, *args, **kwargs): pass
+	duration = property(lambda self: None)
+	easing = property(lambda self: None)
 	def id(self, *args, **kwargs): pass
-	maxDuration = property(lambda self: None)
-	minDuration = property(lambda self: None)
 	motionBlur = property(lambda self: None)
-	positionEasing = property(lambda self: None)
-	rotationEasing = property(lambda self: None)
+	points = property(lambda self: None)
 	def valid(self, *args, **kwargs): pass
 
 

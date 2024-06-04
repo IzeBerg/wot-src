@@ -115,9 +115,9 @@ package net.wg.gui.battle.pveBase.views
          if(postmortemPanelUI == null)
          {
             postmortemPanelUI = App.utils.classFactory.getComponent(Linkages.PVE_POSTMORTEM_PANEL,PostmortemPanel);
+            addChild(postmortemPanelUI);
          }
          postmortemPanelUI.setCompVisible(false);
-         addChild(postmortemPanelUI);
          registerComponent(this.pveProgressCounter,BATTLE_VIEW_ALIASES.PVE_PROGRESS_COUNTER);
          registerComponent(this.pvePrimaryObjective,BATTLE_VIEW_ALIASES.PVE_PRIMARY_OBJECTIVE);
          registerComponent(this.pveSecondaryObjectives,BATTLE_VIEW_ALIASES.PVE_SECONDARY_OBJECTIVES);

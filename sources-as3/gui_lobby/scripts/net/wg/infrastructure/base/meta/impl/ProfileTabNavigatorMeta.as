@@ -2,7 +2,7 @@ package net.wg.infrastructure.base.meta.impl
 {
    import net.wg.data.VO.CountersVo;
    import net.wg.data.constants.Errors;
-   import net.wg.gui.lobby.profile.ProfileMenuInfoVO;
+   import net.wg.gui.lobby.profile.data.ProfileMenuInfoVO;
    import net.wg.infrastructure.base.BaseDAAPIComponent;
    import net.wg.infrastructure.exceptions.AbstractException;
    
@@ -11,6 +11,8 @@ package net.wg.infrastructure.base.meta.impl
        
       
       public var onTabChange:Function;
+      
+      public var onViewReady:Function;
       
       private var _profileMenuInfoVO:ProfileMenuInfoVO;
       
@@ -45,6 +47,12 @@ package net.wg.infrastructure.base.meta.impl
       {
          App.utils.asserter.assertNotNull(this.onTabChange,"onTabChange" + Errors.CANT_NULL);
          this.onTabChange(param1);
+      }
+      
+      public function onViewReadyS(param1:String) : void
+      {
+         App.utils.asserter.assertNotNull(this.onViewReady,"onViewReady" + Errors.CANT_NULL);
+         this.onViewReady(param1);
       }
       
       public final function as_setInitData(param1:Object) : void

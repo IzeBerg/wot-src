@@ -11,6 +11,8 @@ from dossiers2.custom.dependencies import RANKED_STATS_DEPENDENCIES
 from dossiers2.custom.dependencies import A30X30_STATS_DEPENDENCIES
 from dossiers2.custom.dependencies import EPIC_BATTLE_STATS_DEPENDENCIES
 from dossiers2.custom.dependencies import STEAM_ACHIEVEMENT_DEPENDENCIES
+from dossiers2.custom.dependencies import VEHICLE_ACHIEVEMENTS_DEPENDENCIES, VEHICLE_ACHIEVEMENTS_POP_UPS
+from dossiers2.custom.dependencies import CUSTOMIZATION_ACHIEVEMENTS_DEPENDENCIES, CUSTOMIZATION_ACHIEVEMENTS_POP_UPS
 from battle_statistics_layouts import *
 TOTAL_BLOCK_LAYOUT = [
  'creationTime', 'lastBattleTime', 'battleLifeTime', 'treesCut', 'mileage']
@@ -93,11 +95,14 @@ class VEHICLE_STATS:
     COMP7_CUT_SEASON_3 = 'comp7CutSeason3'
     COMP7_CUT_ARCHIVE_GRIFFIN = 'comp7CutArchiveGriffin'
     PRESTIGE_SYSTEM = 'prestigeSystem'
+    VEHICLE_ACHIEVEMENTS = 'vehicleAchievements'
+    CUSTOMIZATION_ACHIEVEMENTS = 'customizationAchievements'
     ALL = (
      FRAGS, A15x15_CUT, A30x30_CUT, A7x7_CUT, HISTORICAL_CUT, FORT_SORTIES_CUT, FORT_BATTLES_CUT, RANKED_CUT,
      RANKED_CUT_SEASON_1, RANKED_CUT_SEASON_2, RANKED_CUT_SEASON_3, RANKED_CUT_ARCHIVE, RANKED_CUT_10X10,
      RATED_7x7_CUT, GLOBAL_MAP_COMMON_CUT, FALLOUT_CUT, MARK_OF_MASTERY_CUT, EPIC_BATTLE_CUT,
-     COMP7_CUT_SEASON_1, COMP7_CUT_SEASON_2, COMP7_CUT_SEASON_3, COMP7_CUT_ARCHIVE_GRIFFIN, PRESTIGE_SYSTEM)
+     COMP7_CUT_SEASON_1, COMP7_CUT_SEASON_2, COMP7_CUT_SEASON_3, COMP7_CUT_ARCHIVE_GRIFFIN, PRESTIGE_SYSTEM,
+     VEHICLE_ACHIEVEMENTS, CUSTOMIZATION_ACHIEVEMENTS)
 
 
 _vehTypeFragsBlockBuilder = DictBlockBuilder(VEHICLE_STATS.FRAGS, 'I', 'H', VEH_TYPE_FRAGS_DEPENDENCIES)
@@ -348,7 +353,8 @@ _SINGLE_ACHIEVEMENTS_VALUES = [
  'NY24_AtmsphrLevel', 'comp7_3_2', 'BattlePassCommonPr_NY24', 'BattlePassCommonPr_13',
  'comp7_3_3', 'comp7_3_yearly_iron', 'comp7_3_yearly_bronze', 'comp7_3_yearly_silver',
  'comp7_3_yearly_gold', 'comp7_3_yearly_champion', 'comp7_3_yearly_legend',
- 'Cosmic_StarTrekCrew', 'Cosmic_LiveLongAndProsper', 'Cosmic_KlingonValor']
+ 'Cosmic_StarTrekCrew', 'Cosmic_LiveLongAndProsper', 'Cosmic_KlingonValor',
+ 'BattlePassCommonPr_14', 'dDayFighter']
 _singleAchievementsPopUps = [
  'titleSniper', 'invincible', 'diehard', 'handOfDeath',
  'armorPiercer', 'battleCitizen', 'WFC2014', 'tacticalBreakthrough', 'aimer',
@@ -408,7 +414,8 @@ _singleAchievementsPopUps = [
  'BattlePassCommonPr_NY24', 'BattlePassCommonPr_13comp7_3_3',
  'comp7_3_yearly_iron', 'comp7_3_yearly_bronze', 'comp7_3_yearly_silver',
  'comp7_3_yearly_gold', 'comp7_3_yearly_champion', 'comp7_3_yearly_legend',
- 'Cosmic_StarTrekCrew', 'Cosmic_LiveLongAndProsper', 'Cosmic_KlingonValor']
+ 'Cosmic_StarTrekCrew', 'Cosmic_LiveLongAndProsper', 'Cosmic_KlingonValor',
+ 'BattlePassCommonPr_14', 'dDayFighter']
 _singleAchievementsBlockBuilder = BinarySetDossierBlockBuilder('singleAchievements', _SINGLE_ACHIEVEMENTS_VALUES, SINGLE_ACHIEVEMENTS_DEPENDENCIES, _singleAchievementsPopUps)
 FORT_ACHIEVEMENTS_BLOCK_LAYOUT = [
  'conqueror', 'fireAndSword', 'crusher', 'counterblow', 'kampfer', 'soldierOfFortune']
@@ -454,6 +461,8 @@ _epicBattleAchievementsBlockBuilder = StaticSizeBlockBuilder('epicBattleAchievem
 _epicBattleSeasonsBlockBuilder = DictBlockBuilder('epicSeasons', 'II', 'HHBHH', {})
 _battleRoyaleSeasonsBlockBuilder = DictBlockBuilder('battleRoyaleSeasons', 'II', 'HHH', {})
 _prestigeSystemBlockBuilder = DictBlockBuilder(VEHICLE_STATS.PRESTIGE_SYSTEM, 'I', 'II', {})
+_vehicleAchievementsBlockBuilder = DictBlockBuilder(VEHICLE_STATS.VEHICLE_ACHIEVEMENTS, 'H', 'HHI', VEHICLE_ACHIEVEMENTS_DEPENDENCIES, VEHICLE_ACHIEVEMENTS_POP_UPS, set())
+_customizationAchievementsBlockBuilder = DictBlockBuilder(VEHICLE_STATS.CUSTOMIZATION_ACHIEVEMENTS, 'H', 'HHI', CUSTOMIZATION_ACHIEVEMENTS_DEPENDENCIES, CUSTOMIZATION_ACHIEVEMENTS_POP_UPS, set())
 accountDossierLayout = (
  _a15x15BlockBuilder, _a15x15_2BlockBuilder, _clanBlockBuilder,
  _clan2BlockBuilder, _companyBlockBuilder, _company2BlockBuilder, _a7x7BlockBuilder,
@@ -494,7 +503,8 @@ accountDossierLayout = (
  _comp7Season3BlockBuilder, _maxComp7Season3BlockBuilder, _comp7CutSeason3BlockBuilder,
  _comp7ArchiveGriffinBlockBuilder, _maxComp7ArchiveGriffinBlockBuilder,
  _comp7CutArchiveGriffinBlockBuilder,
- _prestigeSystemBlockBuilder)
+ _prestigeSystemBlockBuilder, _vehicleAchievementsBlockBuilder,
+ _customizationAchievementsBlockBuilder)
 ACCOUNT_DOSSIER_BLOCKS = {b.name:b for b in accountDossierLayout}
 ACCOUNT_DOSSIER_STATIC_BLOCKS = frozenset(b.name for b in accountDossierLayout if type(b) == StaticSizeBlockBuilder)
 ACCOUNT_DOSSIER_BINARY_SET_BLOCKS = [ b.name for b in accountDossierLayout if type(b) == BinarySetDossierBlockBuilder ]

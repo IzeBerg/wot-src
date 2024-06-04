@@ -74,7 +74,6 @@ ALLOWED_DYNAMIC_ATTRS = {
  'enginePowerFactor',
  'gun/aimingTime',
  'gun/changeShell/reloadFactor',
- 'gun/canShoot',
  'gun/piercing',
  'gun/reloadTime',
  'gun/rotationSpeed',

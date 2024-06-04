@@ -672,6 +672,12 @@ msgstr "关键打击"
 msgid "efficiencyRibbons/damage"
 msgstr "造成损伤"
 
+msgid "efficiencyRibbons/damageByBattleship"
+msgstr "战舰齐射损伤"
+
+msgid "efficiencyRibbons/damageByDestroyer"
+msgstr "弗兰克福号造成的损伤"
+
 msgid "efficiencyRibbons/damageByMinefield"
 msgstr "地雷损伤"
 
@@ -713,6 +719,9 @@ msgstr "坦克已修复"
 
 msgid "efficiencyRibbons/kill"
 msgstr "击毁坦克"
+
+msgid "efficiencyRibbons/minefieldZone"
+msgstr "雷区造成的损伤"
 
 msgid "efficiencyRibbons/ram"
 msgstr "撞击"
@@ -1201,6 +1210,12 @@ msgid ""
 "player_messages/DEATH_FROM_INACTIVE_CREW_AT_WORLD_COLLISION_SELF_SUICIDE"
 msgstr "车组乘员已经阵亡。"
 
+msgid "player_messages/DEATH_FROM_MINEFIELD_ZONE_ALLY_SUICIDE"
+msgstr "盟友%(target)s被雷区摧毁。"
+
+msgid "player_messages/DEATH_FROM_MINEFIELD_ZONE_SELF_SUICIDE"
+msgstr "%(target)s被摧毁。"
+
 msgid "player_messages/DEATH_FROM_MINE_EXPLOSION_ALLY_ENEMY_ARCADE"
 msgstr "%(attacker)s用地雷击毁了%(target)s。"
 
@@ -1643,7 +1658,7 @@ msgid "postmortem/tips/observerMode/label"
 msgstr "观察视角"
 
 msgid "postmortem/tips/observerMode/text"
-msgstr "在盟友坦克之间切换。"
+msgstr "在盟友坦克间切换。"
 
 msgid "postmortem/tips/observerModeFrontline/label"
 msgstr "跟随坦克"
@@ -1719,6 +1734,9 @@ msgstr "乘员因强力撞击而受伤"
 
 msgid "postmortem_messages/DEATH_FROM_KAMIKAZE"
 msgstr "坦克被飞火流星击毁。"
+
+msgid "postmortem_messages/DEATH_FROM_MINEFIELD_ZONE_SELF_SUICIDE"
+msgstr "坦克被雷区摧毁"
 
 msgid "postmortem_messages/DEATH_FROM_MINE_EXPLOSION"
 msgstr "坦克被地雷击毁"
@@ -2829,7 +2847,7 @@ msgid "statistics/tab/quests/nothingToPerform/descr"
 msgstr "前往车库的个人任务系统选择一个任务"
 
 msgid "statistics/tab/quests/nothingToPerform/title"
-msgstr "你对这辆车没有任何有效的任务"
+msgstr "这辆坦克目前没有进行任何任务"
 
 msgid "statistics/tab/quests/status/done"
 msgstr "主要条件已满足"
@@ -3023,6 +3041,12 @@ msgstr "[%(device)s]装备因敌方 %(entity)s 撞击而损坏。"
 
 msgid "vehicle_messages/DEVICE_CRITICAL_AT_WORLD_COLLISION_SELF_SUICIDE"
 msgstr "[%(device)s]装备因撞击而损坏。"
+
+msgid "vehicle_messages/DEVICE_DESTROYED_AT_MINEFIELD_ZONE_ALLY_SUICIDE"
+msgstr "模块[%(device)s]被雷区击毁。"
+
+msgid "vehicle_messages/DEVICE_DESTROYED_AT_MINEFIELD_ZONE_SELF_SUICIDE"
+msgstr "模块[%(device)s]被雷区击毁。"
 
 msgid "vehicle_messages/DEVICE_DESTROYED_AT_RAMMING_ALLY_ALLY"
 msgstr "[%(device)s]装备因盟友 %(entity)s 碰撞而损坏。"

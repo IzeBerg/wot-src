@@ -73,7 +73,7 @@ from shared_utils import CONST_CONTAINER, BitmaskHelper, first
 from skeletons.account_helpers.settings_core import ISettingsCore
 from skeletons.connection_mgr import IConnectionManager
 from skeletons.gui.battle_matters import IBattleMattersController
-from skeletons.gui.game_control import IAnonymizerController, IBadgesController, IBattleRoyaleController, IBoostersController, IChinaController, IClanNotificationController, IComp7Controller, IEpicBattleMetaGameController, IFunRandomController, IGameSessionController, IIGRController, ILimitedUIController, IMapboxController, IMapsTrainingController, IPlatoonController, IRankedBattlesController, IServerStatsController, ISteamCompletionController, IWalletController, IWinbackController, IAchievements20Controller
+from skeletons.gui.game_control import IAnonymizerController, IBadgesController, IBattleRoyaleController, IBoostersController, IChinaController, IClanNotificationController, IComp7Controller, IEpicBattleMetaGameController, IFunRandomController, IGameSessionController, IIGRController, ILimitedUIController, IMapboxController, IMapsTrainingController, IPlatoonController, IRankedBattlesController, IServerStatsController, ISteamCompletionController, IWalletController, IWinbackController, IAchievements20Controller, IAchievementsController
 from skeletons.gui.game_control import IWotPlusController
 from skeletons.gui.goodies import IGoodiesCache
 from skeletons.gui.impl import IGuiLoader
@@ -149,10 +149,6 @@ class _DisabledLobbyHeaderViewLifecycleHandler(IViewLifecycleHandler):
     def __init__(self, lobbyHeader, controlledViews):
         super(_DisabledLobbyHeaderViewLifecycleHandler, self).__init__(controlledViews)
         self.__lobbyHeader = weakref.proxy(lobbyHeader)
-
-    @property
-    def lobbyHeader(self):
-        return self.__lobbyHeader
 
     def onViewCreated(self, view):
         self.__lobbyHeader.disableLobbyHeaderControls(True)
@@ -301,6 +297,7 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
     __winbackController = dependency.descriptor(IWinbackController)
     __achievements20Controller = dependency.descriptor(IAchievements20Controller)
     __limitedUICtrl = dependency.descriptor(ILimitedUIController)
+    __advAchmntCtrl = dependency.descriptor(IAchievementsController)
     __SELECTOR_TOOLTIP_TYPE = TOOLTIPS.HEADER_BATTLETYPE
 
     def __init__(self):
@@ -605,6 +602,7 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
         self.__comp7Controller.onQualificationStateUpdated += self.__updateComp7
         self.__achievements20Controller.onUpdate += self.__onProfileVisited
         JunkTankmanHelper().onShowNoveltyUpdated += self.__onShowNoveltyUpdated
+        self.__advAchmntCtrl.onUnseenAchievementsUpdate += self.__updateUnseenAchievementsCounter
         g_playerEvents.onEnqueued += self._updatePrebattleControls
         g_playerEvents.onDequeued += self._updatePrebattleControls
         g_playerEvents.onArenaCreated += self._updatePrebattleControls
@@ -668,7 +666,8 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
            LuiRules.LOBBY_HEADER_COUNTERS_MISSIONS: self.__onEventsVisited, 
            LuiRules.LOBBY_HEADER_COUNTERS_PROFILE: self.__updateProfileTabCounter, 
            LuiRules.LOBBY_HEADER_COUNTERS_PM_OPERATIONS: self.__updateMissionsTabCounter, 
-           LuiRules.LOBBY_HEADER_COUNTERS_STORAGE: self.__updateStorageTabCounter}
+           LuiRules.LOBBY_HEADER_COUNTERS_STORAGE: self.__updateStorageTabCounter, 
+           LuiRules.ADVANCED_ACHIEVEMENTS: self.__updateProfileTabCounter}
 
     def __onLuiRuleCompleted(self, ruleID, *_):
         updater = self.__luiRulesUpdaters.get(ruleID)
@@ -714,6 +713,7 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
         self.__comp7Controller.onOfflineStatusUpdated -= self.__updateComp7
         self.__comp7Controller.onQualificationStateUpdated -= self.__updateComp7
         self.__achievements20Controller.onUpdate -= self.__onProfileVisited
+        self.__advAchmntCtrl.onUnseenAchievementsUpdate -= self.__updateUnseenAchievementsCounter
         self.clanNotificationCtrl.onClanNotificationUpdated -= self.__updateStrongholdCounter
         self.__funRandomCtrl.subscription.removeSubModesWatcher(self._updatePrebattleControls, True)
         JunkTankmanHelper().onShowNoveltyUpdated -= self.__onShowNoveltyUpdated
@@ -1198,6 +1198,7 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
         self.__updateStrongholdCounter()
         self.__updateShopTabCounter()
         self.__updateStorageTabCounter()
+        self.__updateUnseenAchievementsCounter()
         self.__onEventsVisited()
         self.__updateMissionsTabCounter()
         self.__updateRecruitsTabCounter(self.TABS.BARRACKS)
@@ -1277,6 +1278,9 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
             counters[alias] = False
             AccountSettings.setCounters(NEW_LOBBY_TAB_COUNTER, counters)
         self.__updateMissionsTabCounter()
+
+    def __updateUnseenAchievementsCounter(self):
+        self.__updateProfileTabCounter()
 
     def __onIGRChanged(self, *_):
         self._updatePrebattleControls()
@@ -1432,9 +1436,7 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
          'epic_config' in diff,
          battleRoyaleStateChanged,
          mapsTrainingStateChanged,
-         eventBattlesStateChanged,
-         'cosmic_event_battles_config' in diff,
-         'cosmic_event_config' in diff))
+         eventBattlesStateChanged))
         if updateHangarMenuData:
             self._updateHangarMenuData()
         elif 'hallOfFame' in diff or constants.Configs.ACHIEVEMENTS20_CONFIG.value in diff:
@@ -1448,11 +1450,15 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
     def __updateProfileTabCounter(self):
         if self.__limitedUICtrl.isRuleCompleted(LuiRules.LOBBY_HEADER_COUNTERS_PROFILE):
             hofCounters = 0
+            unseenAchievements = 0
             ach20Counters = self.__achievements20Controller.getAchievementsTabCounter()
+            if self.__limitedUICtrl.isRuleCompleted(LuiRules.ADVANCED_ACHIEVEMENTS):
+                unseenAchievements = self.__advAchmntCtrl.getTotalUnseenAdvancedAchievementsCount()
             if self.lobbyContext.getServerSettings().isHofEnabled():
                 hofCounters = getTabCounter()
-            if hofCounters + ach20Counters:
-                self.__setCounter(self.TABS.PROFILE, hofCounters + ach20Counters)
+            counterValue = hofCounters + ach20Counters + unseenAchievements
+            if counterValue:
+                self.__setCounter(self.TABS.PROFILE, counterValue)
             else:
                 self.__hideCounter(self.TABS.PROFILE)
         else:

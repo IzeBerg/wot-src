@@ -9,12 +9,16 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "#PluralForms"
+msgstr "nplurals=1; plural=0;"
 
 msgid "battleResult/reason/1"
 msgstr "所有敌方坦克被击毁"
 
 msgid "battleResult/reason/11"
-msgstr "已完成所有任务"
+msgstr "已完成所有目标"
 
 msgid "battleResult/reason/3"
 msgstr "战斗时间结束"
@@ -40,8 +44,23 @@ msgstr "胜利！"
 msgid "botNames/Brooks"
 msgstr "布鲁克斯中士"
 
+msgid "botNames/Connolly"
+msgstr "亚瑟·康诺利中尉"
+
+msgid "botNames/Dubois"
+msgstr "路易斯·杜布瓦上尉"
+
+msgid "botNames/McCormick"
+msgstr "约翰·麦科米克上尉"
+
 msgid "botNames/McLaud"
 msgstr "阿利斯泰尔 麦克劳德"
+
+msgid "botNames/Murphy"
+msgstr "杰克·墨菲上尉"
+
+msgid "bunker"
+msgstr "地堡"
 
 msgid "common/battleBtn"
 msgstr "加入战斗！"
@@ -58,11 +77,125 @@ msgstr "跳过"
 msgid "confirmExit/exit"
 msgstr "跳过"
 
+msgid "confirmExit/exitRegular"
+msgstr "退出"
+
 msgid "confirmExit/stay"
 msgstr "取消"
 
 msgid "confirmExit/title"
 msgstr "您想跳过虎式猎手故事吗？"
+
+msgid "confirmExit/titleRegular"
+msgstr "您要退出故事模式吗？"
+
+msgid "dday/hint01"
+msgstr "设法摧毁地堡"
+
+msgid "dday/hint02"
+msgstr "使用烟雾信号为战舰标记目标"
+
+msgid "dday/objective01/header"
+msgstr "在海滩上幸存"
+
+msgid "dday/objective01/subheader"
+msgstr "不惜一切代价避开敌方炮火"
+
+msgid "dday/objective02/header"
+msgstr "突破敌方防线"
+
+msgid "dday/objective02/subheader"
+msgid_plural "plural/dday/objective02/subheader"
+msgstr[0] "摧毁%d座地堡"
+msgstr[1] "摧毁%d座地堡"
+msgstr[2] "摧毁%d座地堡"
+
+msgid "dday/objective02/success"
+msgstr "已摧毁全部地堡！"
+
+msgid "dday/objective03/header"
+msgstr "登上坡顶"
+
+msgid "dday/objective03/subheader"
+msgstr "抵达并摧毁敌方防空炮台的防御工事"
+
+msgid "dday/objective03/success"
+msgstr "防御工事已摧毁！防空炮台已停止射击！"
+
+msgid "dday/objective04/header"
+msgstr "帮助您的盟友推进"
+
+msgid "dday/objective04/subheader"
+msgstr "清除D6区域的敌方防御工事"
+
+msgid "dday/objective04/success"
+msgstr "已为墨菲上尉扫清障碍！"
+
+msgid "dday/objective05/header"
+msgstr "帮助杜布瓦上尉"
+
+msgid "dday/objective05/subheader"
+msgstr "清除H6区域的敌方防御工事"
+
+msgid "dday/objective05/success"
+msgstr "已为杜布瓦上尉扫清障碍！"
+
+msgid "dday/objective06/header"
+msgstr "保护海军部队"
+
+msgid "dday/objective06/subheader"
+msgid_plural "plural/dday/objective06/subheader"
+msgstr[0] "摧毁%d门岸防炮"
+msgstr[1] "摧毁%d门岸防炮"
+msgstr[2] "摧毁%d门岸防炮"
+
+msgid "dday/objective06/success"
+msgstr "已摧毁全部岸防炮！"
+
+msgid "dday/objective07/header"
+msgstr "清理区域"
+
+msgid "dday/objective07/subheader"
+msgid_plural "plural/dday/objective07/subheader"
+msgstr[0] "消灭%d辆残余敌方坦克"
+msgstr[1] "消灭%d辆残余敌方坦克"
+msgstr[2] "消灭%d辆残余敌方坦克"
+
+msgid "dday/objective07/success"
+msgstr "已消灭所有敌人！"
+
+msgid "dday/objective08/header"
+msgstr "坚守阵地"
+
+msgid "dday/objective08/subheader"
+msgid_plural "plural/dday/objective08/subheader"
+msgstr[0] "击毁%d辆敌方坦克"
+msgstr[1] "击毁%d辆敌方坦克"
+msgstr[2] "击毁%d辆敌方坦克"
+
+msgid "dday/objective08/success"
+msgstr "滩头守住了！"
+
+msgid "dday/prebattle/header"
+msgstr "准备攻击"
+
+msgid "dday/prebattle/start"
+msgstr "进攻！"
+
+msgid "dday/prebattle/subheader"
+msgstr "?empty?"
+
+msgid "dday/respawn/header"
+msgstr "士兵，待命"
+
+msgid "dday/respawn/subheader"
+msgstr "增援即将抵达"
+
+msgid "dday/respawn_over/header"
+msgstr "结束了"
+
+msgid "dday/respawn_over/subheader"
+msgstr "全部坦克都已被击毁"
 
 msgid "epilogue/text"
 msgstr ""
@@ -79,7 +212,7 @@ msgid "finish/reason/1"
 msgstr "已击毁所有敌方坦克"
 
 msgid "finish/reason/11"
-msgstr "已完成所有任务"
+msgstr "已完成所有目标"
 
 msgid "finish/reason/3"
 msgstr "战斗时间结束"
@@ -129,11 +262,23 @@ msgstr "正在加载…"
 msgid "prebattle/mission/stage/1"
 msgstr "行动1"
 
+msgid "prebattle/mission/stage/1000"
+msgstr "普通"
+
+msgid "prebattle/mission/stage/1001"
+msgstr "严酷"
+
 msgid "prebattle/mission/stage/2"
 msgstr "行动2"
 
 msgid "prebattle/mission/task/1"
 msgstr "{whiteSpanish_Start}任务: {whiteSpanish_End}攻击城镇并击毁所有敌方坦克。"
+
+msgid "prebattle/mission/task/1000"
+msgstr "{whiteSpanish_Start}突破防线，摧毁岸防炮，占领滩头。{whiteSpanish_End}"
+
+msgid "prebattle/mission/task/1001"
+msgstr "{whiteSpanish_Start}突破防线，摧毁岸防炮，占领滩头。{whiteSpanish_End}"
 
 msgid "prebattle/mission/task/2"
 msgstr "{whiteSpanish_Start}任务: {whiteSpanish_End}攻击城镇并击毁所有敌方坦克。"
@@ -146,6 +291,22 @@ msgstr ""
 "\n"
 "不要在意他的玩笑。每个人都有属于自己的应对方法…前进！\""
 
+msgid "prebattle/mission/text/1000"
+msgstr ""
+"约翰·麦科米克上尉: \"好了，伙计们，这一天终于到了。是时候终结战局了，让我们亲手为这场战役拉下帷幕。所有人荣辱与共，齐心协力，一举消灭这个邪恶势力。\n"
+"\n"
+"我们势必突破敌人的防线，拿下滩头。\n"
+"\n"
+"做好登陆准备！\""
+
+msgid "prebattle/mission/text/1001"
+msgstr ""
+"约翰·麦科米克上尉: \"好了，伙计们，这一天终于到了。是时候终结战局了，让我们亲手为这场战役拉下帷幕。所有人荣辱与共，齐心协力，一举消灭这个邪恶势力。\n"
+"\n"
+"我们势必突破敌人的防线，拿下滩头。\n"
+"\n"
+"做好登陆准备！\""
+
 msgid "prebattle/mission/text/2"
 msgstr ""
 "麦克劳德: \"战场上你最不想碰到的就是\"虎\"式。若指挥部说他们遇到了麻烦，那八成就是指\"虎\"式。一队联系不上，二队刚刚出发，现在轮到我们了，要跟上他们的脚步。\n"
@@ -156,6 +317,12 @@ msgstr ""
 
 msgid "prebattle/mission/title/1"
 msgstr "破甲"
+
+msgid "prebattle/mission/title/1000"
+msgstr "诺曼底行动"
+
+msgid "prebattle/mission/title/1001"
+msgstr "诺曼底行动"
 
 msgid "prebattle/mission/title/2"
 msgstr "诱捕"

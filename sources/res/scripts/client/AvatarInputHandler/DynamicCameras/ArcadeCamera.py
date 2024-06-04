@@ -354,7 +354,10 @@ class ArcadeCamera(CameraWithSettings, CallbackDelayer, TimeDeltaMeter):
             self._cameraUpdate()
             self.delayCallback(0.0, self._cameraUpdate)
             if not self.__isCamInTransition:
-                self.delayCallback(0.0, self.__setCamera)
+                if self.__postmortemMode:
+                    self.delayCallback(0.0, self.__setCamera)
+                else:
+                    self.__setCamera()
             from gui import g_guiResetters
             g_guiResetters.add(self.__onRecreateDevice)
             self.__updateAdvancedCollision()
@@ -367,6 +370,7 @@ class ArcadeCamera(CameraWithSettings, CallbackDelayer, TimeDeltaMeter):
     def __setCamera(self):
         if self.__cameraTransition.isInTransition():
             self.__cameraTransition.finish()
+            self.__isCamInTransition = False
         BigWorld.camera(self.__cam)
         aih = BigWorld.player().inputHandler
         if aih:
@@ -438,6 +442,9 @@ class ArcadeCamera(CameraWithSettings, CallbackDelayer, TimeDeltaMeter):
         from gui import g_guiResetters
         if self.__onRecreateDevice in g_guiResetters:
             g_guiResetters.remove(self.__onRecreateDevice)
+        if self.__cameraTransition.isInTransition():
+            self.__cameraTransition.finish()
+        self.__isCamInTransition = False
         self._setDynamicCollisions(False)
         self.__cam.speedTreeTarget = None
         if self.__shiftKeySensor is not None:

@@ -427,12 +427,35 @@ package net.wg.infrastructure.managers.impl
          this.removeItemFromContainer(param2,param1.getContainerWrapper());
       }
       
-      public function setWindowPosition(param1:IViewWrapper, param2:int, param3:int) : void
+      public function setWindowPosition(param1:IViewWrapper, param2:Number, param3:Number) : void
       {
          App.utils.asserter.assertNotNull(param1,Errors.CANT_NULL);
          var _loc4_:IBaseContainerWrapper = param1.getContainerWrapper();
          _loc4_.x = param2;
          _loc4_.y = param3;
+      }
+      
+      public function setWindowScale(param1:IViewWrapper, param2:Number, param3:Number) : void
+      {
+         App.utils.asserter.assertNotNull(param1,Errors.CANT_NULL);
+         var _loc4_:IBaseContainerWrapper = param1.getContainerWrapper();
+         _loc4_.scaleX = param2;
+         _loc4_.scaleY = param3;
+      }
+      
+      public function setWindowAlpha(param1:IViewWrapper, param2:Number) : void
+      {
+         App.utils.asserter.assertNotNull(param1,Errors.CANT_NULL);
+         var _loc3_:IBaseContainerWrapper = param1.getContainerWrapper();
+         _loc3_.alpha = param2;
+      }
+      
+      public function setIndexInContainer(param1:uint, param2:IViewWrapper, param3:uint) : void
+      {
+         App.utils.asserter.assertNotNull(param2,Errors.CANT_NULL);
+         var _loc4_:IBaseContainerWrapper = param2.getContainerWrapper();
+         var _loc5_:DisplayObjectContainer = DisplayObjectContainer(this.getContainer(param1));
+         _loc5_.setChildIndex(DisplayObject(_loc4_),param3);
       }
       
       public function updateFocus(param1:Object = null) : void

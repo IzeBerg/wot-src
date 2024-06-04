@@ -5,7 +5,7 @@ from constants import ARENA_PERIOD
 from debug_utils import LOG_CURRENT_EXCEPTION, LOG_DEBUG
 
 class PostmortemDelay(object):
-    FADE_DELAY_TIME = 0
+    FADE_DELAY_TIME = 2.0
     KILLER_VISION_TIME = 5.0
     KILLER_VEHICLE_CAMERA_DISTANCE = 15.0
     KILLER_VEHICLE_CAMERA_PIVOT_SETTINGS = (1.5, 3.0)
@@ -44,10 +44,7 @@ class PostmortemDelay(object):
             return
         self.__bActive = True
         self.__fadeScreen()
-        if self.FADE_DELAY_TIME > 0:
-            self.__cbIDWait = BigWorld.callback(self.FADE_DELAY_TIME, self.__tryStartKillerVision)
-        else:
-            self.__tryStartKillerVision()
+        self.__tryStartKillerVision()
 
     def stop(self):
         if not self.__bActive:
@@ -78,9 +75,6 @@ class PostmortemDelay(object):
     def handleMouseEvent(self, dx, dy, dz):
         if self.__bActive and self.__mouseInputEnabled:
             self.__arcadeCamera.update(dx, dy, math_utils.clamp(-1, 1, dz))
-
-    def _getKillerVisionVehicleID(self):
-        return BigWorld.player().inputHandler.getKillerVehicleID()
 
     def __fadeScreen(self, bFade=True):
         if self.__bFadeScreenActive == bFade:
@@ -136,7 +130,7 @@ class PostmortemDelay(object):
 
     def __tryStartKillerVision(self):
         if self.__killerVehicleID is None:
-            self.__killerVehicleID = self._getKillerVisionVehicleID()
+            self.__killerVehicleID = BigWorld.player().inputHandler.getKillerVehicleID()
         if not self.__enableKillerVision or not self.__killerVehicleID or self.__killerVehicleID and not BigWorld.entity(self.__killerVehicleID):
             self.__moveCameraTo(BigWorld.player().playerVehicleID)
             self.__mouseInputEnabled = True

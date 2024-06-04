@@ -201,6 +201,8 @@ package net.wg.gui.lobby.settings
       
       public var showKillersDogTagCheckbox:CheckBox = null;
       
+      public var showPersonalAnimatedDogTagCheckbox:CheckBox = null;
+      
       private var _initYCarouselTypeFieldSet:int;
       
       private var _initYCarouselTypeButtonBar:int;
@@ -390,6 +392,9 @@ package net.wg.gui.lobby.settings
          this.showDogTagToKillerCheckbox.infoIcoType = InfoIcon.TYPE_INFO;
          this.showVictimsDogTagCheckbox.label = SETTINGS.GAME_SHOWVICTIMSDOGTAG;
          this.showKillersDogTagCheckbox.label = SETTINGS.GAME_SHOWKILLERSDOGTAG;
+         this.showPersonalAnimatedDogTagCheckbox.label = SETTINGS.GAME_SHOWPERSONALANIMATEDDOGTAG;
+         this.showPersonalAnimatedDogTagCheckbox.toolTip = TOOLTIPS.SHOWPERSONALANIMATEDDOGTAG;
+         this.showPersonalAnimatedDogTagCheckbox.infoIcoType = InfoIcon.TYPE_INFO;
          this.customizationDisplayTypeButtonBar.setInfoButton(TOOLTIPS.CUSTOMIZATIONDISPLAYTYPE_HISTORICAL,0);
          this.customizationDisplayTypeButtonBar.setInfoButton(TOOLTIPS.CUSTOMIZATIONDISPLAYTYPE_NOTHISTORICAL,1);
          this.customizationDisplayTypeButtonBar.setInfoButton(TOOLTIPS.CUSTOMIZATIONDISPLAYTYPE_ALL,2);
@@ -511,6 +516,8 @@ package net.wg.gui.lobby.settings
          this.showVictimsDogTagCheckbox = null;
          this.showKillersDogTagCheckbox.dispose();
          this.showKillersDogTagCheckbox = null;
+         this.showPersonalAnimatedDogTagCheckbox.dispose();
+         this.showPersonalAnimatedDogTagCheckbox = null;
          this.displayPlatoonMembersCheckbox.dispose();
          this.displayPlatoonMembersCheckbox = null;
          this.loginServerSelectionCheckbox.dispose();

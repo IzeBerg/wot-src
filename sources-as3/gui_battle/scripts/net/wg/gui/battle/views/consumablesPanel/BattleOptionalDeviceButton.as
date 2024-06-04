@@ -159,6 +159,10 @@ package net.wg.gui.battle.views.consumablesPanel
       {
       }
       
+      public function setIdleEnabledGlow(param1:Boolean) : void
+      {
+      }
+      
       public function showGlow(param1:int) : void
       {
          this.glow.addEventListener(ConsumablesButtonEvent.GLOW_ON_IDLE_STATE,this.onGlowOnIdleStateHandler);

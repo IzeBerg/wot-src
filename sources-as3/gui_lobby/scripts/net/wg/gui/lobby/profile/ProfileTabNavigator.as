@@ -2,7 +2,6 @@ package net.wg.gui.lobby.profile
 {
    import flash.display.DisplayObject;
    import flash.events.Event;
-   import net.wg.data.Aliases;
    import net.wg.data.VO.CountersVo;
    import net.wg.data.constants.Errors;
    import net.wg.data.constants.Linkages;
@@ -10,6 +9,8 @@ package net.wg.gui.lobby.profile
    import net.wg.gui.components.advanced.ButtonBarEx;
    import net.wg.gui.events.ViewStackEvent;
    import net.wg.gui.lobby.components.ResizableViewStack;
+   import net.wg.gui.lobby.profile.data.ProfileMenuInfoVO;
+   import net.wg.gui.lobby.profile.data.SectionInfoVO;
    import net.wg.gui.lobby.profile.pages.ProfileSection;
    import net.wg.infrastructure.base.meta.IProfileTabNavigatorMeta;
    import net.wg.infrastructure.base.meta.impl.ProfileTabNavigatorMeta;
@@ -52,8 +53,6 @@ package net.wg.gui.lobby.profile
       
       private var _data:ProfileMenuInfoVO = null;
       
-      private var _sectionsDataUtil:LinkageUtils;
-      
       private var _centerOffset:int = 0;
       
       private var _countersToSet:Vector.<CountersVo> = null;
@@ -68,21 +67,9 @@ package net.wg.gui.lobby.profile
       
       public function ProfileTabNavigator()
       {
-         this._sectionsDataUtil = new LinkageUtils();
          this._actualCounters = new Vector.<DisplayObject>();
          this._counterManager = App.utils.counterManager;
          super();
-         this._sectionsDataUtil.addEntity(Aliases.PROFILE_TOTAL_PAGE,Linkages.PROFILE_TOTAL_PAGE);
-         this._sectionsDataUtil.addEntity(Aliases.PROFILE_SUMMARY_PAGE,Linkages.PROFILE_SUMMARY_PAGE);
-         this._sectionsDataUtil.addEntity(Aliases.PROFILE_SECTION,Linkages.PROFILE_TEST);
-         this._sectionsDataUtil.addEntity(Aliases.PROFILE_SUMMARY_WINDOW,Linkages.PROFILE_SUMMARY_WINDOW);
-         this._sectionsDataUtil.addEntity(Aliases.PROFILE_AWARDS,Linkages.PROFILE_AWARDS);
-         this._sectionsDataUtil.addEntity(Aliases.PROFILE_STATISTICS,Linkages.PROFILE_STATISTICS);
-         this._sectionsDataUtil.addEntity(Aliases.PROFILE_TECHNIQUE_WINDOW,Linkages.PROFILE_TECHNIQUE_WINDOW);
-         this._sectionsDataUtil.addEntity(Aliases.PROFILE_TECHNIQUE_PAGE,Linkages.PROFILE_TECHNIQUE_PAGE);
-         this._sectionsDataUtil.addEntity(Aliases.PROFILE_FORMATIONS_PAGE,Linkages.PROFILE_FORMATIONS);
-         this._sectionsDataUtil.addEntity(Aliases.PROFILE_HOF,Linkages.PROFILE_HOF);
-         this._sectionsDataUtil.addEntity(Aliases.PROFILE_COLLECTIONS_PAGE,Linkages.PROFILE_COLLECTIONS_PAGE);
       }
       
       override protected function configUI() : void
@@ -99,46 +86,34 @@ package net.wg.gui.lobby.profile
       {
          var _loc1_:Array = null;
          var _loc2_:uint = 0;
-         var _loc3_:Array = null;
-         var _loc4_:Object = null;
-         var _loc5_:int = 0;
-         var _loc6_:String = null;
-         var _loc7_:int = 0;
-         var _loc8_:String = null;
-         var _loc9_:int = 0;
-         var _loc10_:String = null;
-         var _loc11_:DisplayObject = null;
-         var _loc12_:ICounterProps = null;
-         var _loc13_:int = 0;
+         var _loc3_:SectionInfoVO = null;
+         var _loc4_:int = 0;
+         var _loc5_:String = null;
+         var _loc6_:DisplayObject = null;
+         var _loc7_:ICounterProps = null;
+         var _loc8_:int = 0;
          super.draw();
          if(isInvalid(INIT_DATA_INV) && this._data)
          {
-            _loc1_ = this._data.sectionsData;
-            _loc2_ = _loc1_.length;
-            _loc3_ = [];
-            _loc5_ = 0;
-            _loc6_ = this._data.selectedAlias;
-            _loc7_ = 0;
-            while(_loc7_ < _loc2_)
+            _loc1_ = [];
+            _loc2_ = 0;
+            for each(_loc3_ in this._data.tabBarData)
             {
-               _loc4_ = _loc1_[_loc7_];
-               _loc8_ = _loc4_.alias;
-               _loc3_.push(new SectionInfo(_loc8_,this._sectionsDataUtil.getLinkageByAlias(_loc8_),_loc4_.label,_loc4_.tooltip,_loc4_.enabled,_loc4_.id));
-               if(_loc6_ == _loc8_)
+               _loc1_.push(_loc3_);
+               if(_loc3_.alias == this._data.selectedAlias)
                {
-                  _loc5_ = _loc7_;
+                  this.menu.selectedIndex = _loc2_;
                }
-               _loc7_++;
+               else
+               {
+                  _loc2_++;
+               }
             }
             if(this.menu.dataProvider != null)
             {
                this.menu.dataProvider.cleanUp();
             }
-            this.menu.dataProvider = new DataProvider(_loc3_);
-            if(_loc3_.length > 0)
-            {
-               this.menu.selectedIndex = _loc5_;
-            }
+            this.menu.dataProvider = new DataProvider(_loc1_);
             this.menu.validateNow();
          }
          if(isInvalid(InvalidationType.SIZE))
@@ -156,23 +131,23 @@ package net.wg.gui.lobby.profile
          }
          if(this._isButtonBarReady && isInvalid(INVALIDATE_TAB_COUNTERS))
          {
-            _loc9_ = 0;
-            _loc10_ = Values.EMPTY_STR;
-            _loc11_ = null;
+            _loc4_ = 0;
+            _loc5_ = Values.EMPTY_STR;
+            _loc6_ = null;
             this.removeCounters();
-            _loc12_ = new CounterProps(COUNTER_OFFSET_X,CounterProps.DEFAULT_OFFSET_Y);
+            _loc7_ = new CounterProps(COUNTER_OFFSET_X,CounterProps.DEFAULT_OFFSET_Y);
             if(this._countersToSet)
             {
-               _loc9_ = this._countersToSet.length;
-               _loc13_ = 0;
-               while(_loc13_ < _loc9_)
+               _loc4_ = this._countersToSet.length;
+               _loc8_ = 0;
+               while(_loc8_ < _loc4_)
                {
-                  _loc10_ = this._countersToSet[_loc13_].componentId;
-                  _loc11_ = this.getTabRenderer(_loc10_);
-                  App.utils.asserter.assertNotNull(_loc11_,_loc10_ + " " + Errors.CANT_NULL);
-                  this._counterManager.setCounter(_loc11_,this._countersToSet[_loc13_].count,null,_loc12_);
-                  this._actualCounters.push(_loc11_);
-                  _loc13_++;
+                  _loc5_ = this._countersToSet[_loc8_].componentId;
+                  _loc6_ = this.getTabRenderer(_loc5_);
+                  App.utils.asserter.assertNotNull(_loc6_,_loc5_ + " " + Errors.CANT_NULL);
+                  this._counterManager.setCounter(_loc6_,this._countersToSet[_loc8_].count,null,_loc7_);
+                  this._actualCounters.push(_loc6_);
+                  _loc8_++;
                }
             }
          }
@@ -197,8 +172,6 @@ package net.wg.gui.lobby.profile
       
       override protected function onDispose() : void
       {
-         this._sectionsDataUtil.dispose();
-         this._sectionsDataUtil = null;
          this.menu.removeEventListener(IndexEvent.INDEX_CHANGE,this.onTabBarIndexChanged,false);
          this.menu.removeEventListener(Event.COMPLETE,this.onButtonBarCompleteHandler);
          this.menu.dispose();
@@ -239,12 +212,12 @@ package net.wg.gui.lobby.profile
       private function getTabRenderer(param1:String) : DisplayObject
       {
          var _loc2_:IDataProvider = this.menu.dataProvider;
-         var _loc3_:SectionInfo = null;
+         var _loc3_:SectionInfoVO = null;
          var _loc4_:int = _loc2_.length;
          var _loc5_:int = 0;
          while(_loc5_ < _loc4_)
          {
-            _loc3_ = SectionInfo(_loc2_.requestItemAt(_loc5_));
+            _loc3_ = SectionInfoVO(_loc2_.requestItemAt(_loc5_));
             if(_loc3_.alias == param1)
             {
                return this.menu.getButtonAt(_loc5_) as DisplayObject;
@@ -271,32 +244,38 @@ package net.wg.gui.lobby.profile
          invalidate(OFFSET_INVALID);
       }
       
-      private function onSectionViewShowed(param1:ViewStackEvent) : void
-      {
-         var _loc2_:String = this._sectionsDataUtil.getAliasByLinkage(param1.viewId);
-         if(!isFlashComponentRegisteredS(_loc2_))
-         {
-            registerFlashComponentS(IDAAPIModule(param1.view),_loc2_);
-         }
-      }
-      
       private function onTabBarIndexChanged(param1:IndexEvent) : void
       {
-         var _loc2_:String = null;
-         var _loc3_:String = null;
+         var _loc3_:SectionInfoVO = null;
          var _loc4_:IViewStackContent = null;
-         if(param1.index != -1)
+         var _loc2_:int = param1.index;
+         if(_loc2_ != -1)
          {
-            _loc2_ = SectionInfo(param1.data).alias;
-            _loc3_ = this._sectionsDataUtil.getLinkageByAlias(_loc2_);
-            _loc4_ = this.viewStack.show(_loc3_,_loc3_);
+            _loc3_ = this._data.tabBarData[param1.index];
+            _loc4_ = this.viewStack.show(_loc3_.linkage,_loc3_.linkage);
             if(_loc4_ is ProfileSection)
             {
                (_loc4_ as ProfileSection).isWindowed = this._isWindowed;
             }
-            onTabChangeS(_loc2_);
+            onTabChangeS(_loc3_.alias);
+            this.OnViewStackReady(_loc3_.alias);
             invalidate(INVALIDATE_TAB_COUNTERS);
          }
+      }
+      
+      private function onSectionViewShowed(param1:ViewStackEvent) : void
+      {
+         var _loc2_:String = this._data.tabBarData[this.menu.selectedIndex].alias;
+         if(!isFlashComponentRegisteredS(_loc2_))
+         {
+            registerFlashComponentS(IDAAPIModule(param1.view),_loc2_);
+         }
+         this.OnViewStackReady(_loc2_);
+      }
+      
+      private function OnViewStackReady(param1:String) : void
+      {
+         onViewReadyS(param1);
       }
       
       private function onButtonBarCompleteHandler(param1:Event) : void

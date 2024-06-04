@@ -1,4 +1,4 @@
-from story_mode_common.story_mode_constants import QUEUE_TYPE
+from constants import QUEUE_TYPE
 from gui.prb_control.entities.base.pre_queue.ctx import QueueCtx
 from gui.shared.utils.decorators import ReprInjector
 

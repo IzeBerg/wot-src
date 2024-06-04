@@ -4,6 +4,10 @@ package net.wg.gui.components.dogtag.VO
    
    public class DogTagVO extends DAAPIDataClass
    {
+      
+      private static const BACKGROUND:String = "background";
+      
+      private static const ENGRAVING:String = "engraving";
        
       
       public var playerName:String = "";
@@ -14,32 +18,25 @@ package net.wg.gui.components.dogtag.VO
       
       public var engraving:ComponentVO = null;
       
-      public var hasData:Boolean = false;
-      
       public var isEngravingMaxLevel:Boolean = false;
       
-      private const PLAYER_NAME:String = "playerName";
+      public var animationSrc:String = "";
       
-      private const CLAN_TAG:String = "clanTag";
-      
-      private const BACKGROUND:String = "background";
-      
-      private const ENGRAVING:String = "engraving";
+      public var bottomPlateSrc:String = "";
       
       public function DogTagVO(param1:Object)
       {
          super(param1);
-         this.hasData = param1 != null;
       }
       
       override protected function onDataWrite(param1:String, param2:Object) : Boolean
       {
-         if(param1 == this.BACKGROUND && param2 != null)
+         if(param1 == BACKGROUND && param2 != null)
          {
             this.background = new ComponentVO(param2);
             return false;
          }
-         if(param1 == this.ENGRAVING && param2 != null)
+         if(param1 == ENGRAVING && param2 != null)
          {
             this.engraving = new ComponentVO(param2);
             return false;

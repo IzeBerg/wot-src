@@ -875,7 +875,7 @@
 				</amplitude>
 				<recoilEffect>auto</recoilEffect>
 			</recoil>
-			<effects>shot_auto</effects>
+			<effects>shot_small_auto</effects>
 			<reloadEffect>reload20_45</reloadEffect>
 			<pitchLimits>
 				<minPitch>
@@ -10057,8 +10057,8 @@
 		<_100mm_NT_12>
 			<userString>#ussr_vehicles:_100mm_NT_12</userString>
 			<tags/>
-			<level>8</level>
-			<price>115000</price>
+			<level>10</level>
+			<price>240000</price>
 			<notInShop>true</notInShop>
 			<impulse>
 				0.44
@@ -10073,7 +10073,7 @@
 				<recoilEffect>main</recoilEffect>
 			</recoil>
 			<effects>shot_mainext_mb</effects>
-			<reloadEffect>reload85_107</reloadEffect>
+			<reloadEffect>autoloader_reload85_107</reloadEffect>
 			<turretYawLimits>-180 180</turretYawLimits>
 			<pitchLimits>
 				<minPitch>
@@ -10089,74 +10089,75 @@
 				33.25
 				<!--BW_String-->
 			</rotationSpeed>
-			<reloadTime>
-				8.0
-				<!--BW_String-->
-			</reloadTime>
-			<maxAmmo>24</maxAmmo>
+			<reloadTime>8</reloadTime>
+			<maxAmmo>50</maxAmmo>
 			<aimingTime>
-				2.85714285714286
+				2.3
 				<!--BW_String-->
 			</aimingTime>
 			<weight>2300</weight>
-			<maxHealth>164</maxHealth>
-			<maxRegenHealth>82</maxRegenHealth>
-			<repairCost>8</repairCost>
+			<maxHealth>200</maxHealth>
+			<maxRegenHealth>100</maxRegenHealth>
+			<repairCost>10</repairCost>
 			<invisibilityFactorAtShot>
-				0.1
+				0.198
 				<!--BW_String-->
 			</invisibilityFactorAtShot>
 			<shotDispersionRadius>
-				0.388571428571429
+				0.37
 				<!--BW_String-->
 			</shotDispersionRadius>
 			<shotDispersionFactors>
 				<turretRotation>
-					0.16
+					0.1
 					<!--BW_String-->
 				</turretRotation>
-				<afterShot>
-					4.0
-					<!--BW_String-->
-				</afterShot>
+				<afterShot>3</afterShot>
 				<whileGunDamaged>
 					2.0
 					<!--BW_String-->
 				</whileGunDamaged>
 			</shotDispersionFactors>
+			<clip>
+				<count>3</count>
+				<rate>30</rate>
+			</clip>
+			<autoreload>
+				<reloadTime>14 11 8</reloadTime>
+			</autoreload>
 			<shots>
 				<_100mm_ZUBM_101>
 					<defaultPortion>
-						0.80
+						0.9
 						<!--BW_String-->
 					</defaultPortion>
-					<speed>1223</speed>
+					<speed>1320</speed>
 					<gravity>
 						9.81
 						<!--BW_String-->
 					</gravity>
 					<maxDistance>720</maxDistance>
-					<piercingPower>200 180</piercingPower>
+					<piercingPower>260 250</piercingPower>
 				</_100mm_ZUBM_101>
 				<_100mm_ZUBK_81>
 					<defaultPortion>
 						0.0
 						<!--BW_String-->
 					</defaultPortion>
-					<speed>1052</speed>
+					<speed>950</speed>
 					<gravity>
 						9.81
 						<!--BW_String-->
 					</gravity>
 					<maxDistance>720</maxDistance>
-					<piercingPower>255 255</piercingPower>
+					<piercingPower>330 330</piercingPower>
 				</_100mm_ZUBK_81>
 				<_100mm_ZUOF_121>
 					<defaultPortion>
-						0.20
+						0.1
 						<!--BW_String-->
 					</defaultPortion>
-					<speed>895</speed>
+					<speed>950</speed>
 					<gravity>
 						9.81
 						<!--BW_String-->

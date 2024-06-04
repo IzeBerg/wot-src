@@ -32,7 +32,7 @@
 				<row0>1.000000 0.000000 0.000000</row0>
 				<row1>0.000000 1.000000 0.000000</row1>
 				<row2>0.000000 0.000000 1.000000</row2>
-				<row3>0.000000 0.286228 0.132000</row3>
+				<row3>-0.045359 0.331680 0.207833</row3>
 			</transform>
 		</node>
 		<node>
@@ -59,7 +59,6 @@
 		<node>Scene Root</node>
 		<geometry>
 			<vertices>vertices</vertices>
-			<stream>colour</stream>
 			<primitive>indices</primitive>
 			<primitiveGroup>
 				0
@@ -89,7 +88,7 @@
 						<Texture>vehicles/american/crash_inside/crash_inside_AO.dds</Texture>
 					</property>
 				</material>
-				<groupOrigin>0.000000 -0.548465 0.231230</groupOrigin>
+				<groupOrigin>0.035163 -0.221585 -0.338047</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
 				1
@@ -99,15 +98,8 @@
 					<materialKind>0</materialKind>
 					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
 					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
-					</property>
-					<property>
 						g_crashUVTiling
-						<Vector4>
-							4 4 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>4.000000 4.000000 0.000000 0.000000</Vector4>
 					</property>
 					<property>
 						diffuseMap
@@ -144,15 +136,8 @@
 					<materialKind>0</materialKind>
 					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
 					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
-					</property>
-					<property>
 						g_crashUVTiling
-						<Vector4>
-							2 1 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>2.000000 1.000000 0.000000 0.000000</Vector4>
 					</property>
 					<property>
 						diffuseMap
@@ -187,6 +172,6 @@
 		<min>-1.775130 -1.234825 -3.542427</min>
 		<max>1.791253 0.436409 3.600468</max>
 	</boundingBox>
-	<geometrySize>214146</geometrySize>
+	<geometrySize>223150</geometrySize>
 	<minUVDensity>0.002047</minUVDensity>
 </root>

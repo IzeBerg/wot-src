@@ -943,8 +943,8 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       private function makeColorSchemeName() : void
       {
-         this._markerSchemeName = (!!this.vehicleDestroyed ? VM_DEAD_PREFIX : VM_PREFIX) + this._entityName;
-         this._stunSchemeName = VM_STUN_PREFIX + this._entityName + VM_STUN_POSTFIX;
+         this._markerSchemeName = (!!this.vehicleDestroyed ? this.vmDeadPrefix : this.vmPrefix) + this._entityName;
+         this._stunSchemeName = this.vmStunPrefix + this._entityName + this.vmStunPostfix;
       }
       
       private function updateVehicleMarkerHover() : void
@@ -1263,6 +1263,26 @@ package net.wg.gui.battle.views.vehicleMarkers
       public function set entityType(param1:String) : void
       {
          this._entityType = param1;
+      }
+      
+      protected function get vmPrefix() : String
+      {
+         return VM_PREFIX;
+      }
+      
+      protected function get vmDeadPrefix() : String
+      {
+         return VM_DEAD_PREFIX;
+      }
+      
+      protected function get vmStunPrefix() : String
+      {
+         return VM_STUN_PREFIX;
+      }
+      
+      protected function get vmStunPostfix() : String
+      {
+         return VM_STUN_POSTFIX;
       }
       
       protected function get damageType() : String

@@ -1131,7 +1131,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.BREntryPoint;
    import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.CommonEntryPoint;
    import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.Comp7EntryPoint;
-   import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.CosmicBannerEntryPoint;
    import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.CraftMachineEntryPoint;
    import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.EpicBattlesEntryPoint;
    import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.FunRandomEntryPoint;
@@ -1162,6 +1161,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.hangar.quests.HeaderSecondaryWidgetInject;
    import net.wg.gui.lobby.hangar.quests.IHeaderEntryPoint;
    import net.wg.gui.lobby.hangar.quests.IHeaderSecondaryWidget;
+   import net.wg.gui.lobby.hangar.quests.LiveOpsWebEventsEntryPoint;
    import net.wg.gui.lobby.hangar.quests.QuestFlagIconContainer;
    import net.wg.gui.lobby.hangar.quests.QuestInformerButton;
    import net.wg.gui.lobby.hangar.quests.QuestInformerContent;
@@ -1589,10 +1589,8 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.profile.Profile;
    import net.wg.gui.lobby.profile.ProfileConstants;
    import net.wg.gui.lobby.profile.ProfileInvalidationTypes;
-   import net.wg.gui.lobby.profile.ProfileMenuInfoVO;
    import net.wg.gui.lobby.profile.ProfileOpenInfoEvent;
    import net.wg.gui.lobby.profile.ProfileTabNavigator;
-   import net.wg.gui.lobby.profile.SectionInfo;
    import net.wg.gui.lobby.profile.SectionViewInfo;
    import net.wg.gui.lobby.profile.UserInfoForm;
    import net.wg.gui.lobby.profile.components.AwardsTileListBlock;
@@ -1636,7 +1634,9 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.profile.data.ProfileCommonInfoVO;
    import net.wg.gui.lobby.profile.data.ProfileDossierInfoVO;
    import net.wg.gui.lobby.profile.data.ProfileGroupBlockVO;
+   import net.wg.gui.lobby.profile.data.ProfileMenuInfoVO;
    import net.wg.gui.lobby.profile.data.ProfileUserVO;
+   import net.wg.gui.lobby.profile.data.SectionInfoVO;
    import net.wg.gui.lobby.profile.data.SectionLayoutManager;
    import net.wg.gui.lobby.profile.pages.ProfileAchievementsSection;
    import net.wg.gui.lobby.profile.pages.ProfileSection;
@@ -2797,7 +2797,9 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.messenger.windows.LazyChannelWindow;
    import net.wg.gui.messenger.windows.LobbyChannelWindow;
    import net.wg.gui.messenger.windows.PMWarningPanel;
+   import net.wg.gui.notification.AdvancedAchievementEarningView;
    import net.wg.gui.notification.AuctionMessageContent;
+   import net.wg.gui.notification.BondEquipmentChoosingMessageContent;
    import net.wg.gui.notification.GoToNewsWidget;
    import net.wg.gui.notification.NotificationListView;
    import net.wg.gui.notification.NotificationPopUpViewer;
@@ -5223,8 +5225,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_HANGAR_EVENTENTRYPOINT_GFWRAPPER_COMP7ENTRYPOINT:Class = Comp7EntryPoint;
       
-      public static const NET_WG_GUI_LOBBY_HANGAR_EVENTENTRYPOINT_GFWRAPPER_COSMICBANNERENTRYPOINT:Class = CosmicBannerEntryPoint;
-      
       public static const NET_WG_GUI_LOBBY_HANGAR_EVENTENTRYPOINT_GFWRAPPER_CRAFTMACHINEENTRYPOINT:Class = CraftMachineEntryPoint;
       
       public static const NET_WG_GUI_LOBBY_HANGAR_EVENTENTRYPOINT_GFWRAPPER_EPICBATTLESENTRYPOINT:Class = EpicBattlesEntryPoint;
@@ -5284,6 +5284,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_HANGAR_QUESTS_IHEADERENTRYPOINT:Class = IHeaderEntryPoint;
       
       public static const NET_WG_GUI_LOBBY_HANGAR_QUESTS_IHEADERSECONDARYWIDGET:Class = IHeaderSecondaryWidget;
+      
+      public static const NET_WG_GUI_LOBBY_HANGAR_QUESTS_LIVEOPSWEBEVENTSENTRYPOINT:Class = LiveOpsWebEventsEntryPoint;
       
       public static const NET_WG_GUI_LOBBY_HANGAR_QUESTS_QUESTFLAGICONCONTAINER:Class = QuestFlagIconContainer;
       
@@ -6139,13 +6141,9 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_PROFILE_PROFILEINVALIDATIONTYPES:Class = ProfileInvalidationTypes;
       
-      public static const NET_WG_GUI_LOBBY_PROFILE_PROFILEMENUINFOVO:Class = ProfileMenuInfoVO;
-      
       public static const NET_WG_GUI_LOBBY_PROFILE_PROFILEOPENINFOEVENT:Class = ProfileOpenInfoEvent;
       
       public static const NET_WG_GUI_LOBBY_PROFILE_PROFILETABNAVIGATOR:Class = ProfileTabNavigator;
-      
-      public static const NET_WG_GUI_LOBBY_PROFILE_SECTIONINFO:Class = SectionInfo;
       
       public static const NET_WG_GUI_LOBBY_PROFILE_SECTIONVIEWINFO:Class = SectionViewInfo;
       
@@ -6233,7 +6231,11 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_PROFILE_DATA_PROFILEGROUPBLOCKVO:Class = ProfileGroupBlockVO;
       
+      public static const NET_WG_GUI_LOBBY_PROFILE_DATA_PROFILEMENUINFOVO:Class = ProfileMenuInfoVO;
+      
       public static const NET_WG_GUI_LOBBY_PROFILE_DATA_PROFILEUSERVO:Class = ProfileUserVO;
+      
+      public static const NET_WG_GUI_LOBBY_PROFILE_DATA_SECTIONINFOVO:Class = SectionInfoVO;
       
       public static const NET_WG_GUI_LOBBY_PROFILE_DATA_SECTIONLAYOUTMANAGER:Class = SectionLayoutManager;
       
@@ -8555,7 +8557,11 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_MESSENGER_WINDOWS_PMWARNINGPANEL:Class = PMWarningPanel;
       
+      public static const NET_WG_GUI_NOTIFICATION_ADVANCEDACHIEVEMENTEARNINGVIEW:Class = AdvancedAchievementEarningView;
+      
       public static const NET_WG_GUI_NOTIFICATION_AUCTIONMESSAGECONTENT:Class = AuctionMessageContent;
+      
+      public static const NET_WG_GUI_NOTIFICATION_BONDEQUIPMENTCHOOSINGMESSAGECONTENT:Class = BondEquipmentChoosingMessageContent;
       
       public static const NET_WG_GUI_NOTIFICATION_GOTONEWSWIDGET:Class = GoToNewsWidget;
       

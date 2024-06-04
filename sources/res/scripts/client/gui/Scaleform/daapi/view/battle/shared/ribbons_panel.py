@@ -5,6 +5,7 @@ from gui.Scaleform.daapi.view.battle.shared.ribbons_aggregator import DAMAGE_SOU
 from gui.Scaleform.daapi.view.meta.RibbonsPanelMeta import RibbonsPanelMeta
 from gui.Scaleform.genConsts.BATTLE_EFFICIENCY_TYPES import BATTLE_EFFICIENCY_TYPES as _BET
 from gui.battle_control import avatar_getter
+from constants import VEHICLE_BUNKER_TURRET_TAG
 from gui.battle_control.arena_info.interfaces import IArenaVehiclesController
 from gui.battle_control.arena_info.settings import ARENA_LISTENER_SCOPE
 from gui.battle_control.battle_constants import BonusRibbonLabel as _BRL
@@ -73,7 +74,8 @@ _BATTLE_EVENTS_SETTINGS_TO_BATTLE_EFFICIENCY_TYPES = {BATTLE_EVENTS.ENEMY_HP_DAM
                                  _BET.RECEIVED_BY_CLING_BRANDER,
                                  _BET.RECEIVED_BY_AIRSTRIKE,
                                  _BET.RECEIVED_BY_ARTILLERY,
-                                 _BET.RECEIVED_BY_DEATH_ZONE), 
+                                 _BET.RECEIVED_BY_DEATH_ZONE,
+                                 _BET.MINEFIELD_ZONE), 
    BATTLE_EVENTS.RECEIVED_CRITS: (
                                 _BET.RECEIVED_CRITS,), 
    BATTLE_EVENTS.ENEMIES_STUN: (
@@ -90,6 +92,8 @@ def _getVehicleData(arenaDP, vehArenaID):
     vehicleName = vInfo.getDisplayedName()
     if isBattleRoyale(vTypeInfoVO.tags) and isSpawnedBot(vTypeInfoVO.tags):
         vehicleClassTag = ''
+    if VEHICLE_BUNKER_TURRET_TAG in vTypeInfoVO.tags:
+        vehicleClassTag = VEHICLE_BUNKER_TURRET_TAG
     return (vehicleName, vehicleClassTag)
 
 
@@ -209,6 +213,7 @@ _RIBBONS_FMTS = {_BET.CAPTURE: _baseRibbonFormatter,
    _BET.ASSIST_BY_ABILITY: _singleVehRibbonFormatter, 
    _BET.DEATH_ZONE: _singleVehRibbonFormatter, 
    _BET.STATIC_DEATH_ZONE: _singleVehRibbonFormatter, 
+   _BET.MINEFIELD_ZONE: _singleVehRibbonFormatter, 
    _BET.BERSERKER: _singleVehRibbonFormatter, 
    _BET.SPAWNED_BOT_DMG: _singleVehRibbonFormatter, 
    _BET.RECEIVED_DMG_BY_SPAWNED_BOT: _singleVehRibbonFormatter, 
@@ -229,7 +234,9 @@ _RIBBONS_FMTS = {_BET.CAPTURE: _baseRibbonFormatter,
    _BET.DEALT_DMG_BY_THUNDER_STRIKE: _singleVehRibbonFormatter, 
    _BET.RECEIVED_BY_THUNDER_STRIKE: _singleVehRibbonFormatter, 
    _BET.VEHICLE_HEALTH_ADDED: _healthAddedFormatter, 
-   _BET.PERK: _perkRibbonFormatter}
+   _BET.PERK: _perkRibbonFormatter, 
+   _BET.DAMAGE_BY_BATTLESHIP: _singleVehRibbonFormatter, 
+   _BET.DAMAGE_BY_DESTROYER: _singleVehRibbonFormatter}
 _DISPLAY_PRECONDITIONS = {_BET.DETECTION: lambda dp, ribbon: dp.getVehicleInfo(ribbon.getVehIDs()[0]).vehicleType.compactDescr > 0}
 
 class BattleRibbonsPanel(RibbonsPanelMeta, IArenaVehiclesController):
@@ -497,6 +504,9 @@ class BattleRibbonsPanel(RibbonsPanelMeta, IArenaVehiclesController):
           _BET.STATIC_DEATH_ZONE,
           backport.text(R.strings.ingame_gui.efficiencyRibbons.staticDeathZone())],
          [
+          _BET.MINEFIELD_ZONE,
+          backport.text(R.strings.ingame_gui.efficiencyRibbons.minefieldZone())],
+         [
           _BET.BERSERKER,
           backport.text(R.strings.ingame_gui.efficiencyRibbons.berserker())],
          [
@@ -556,6 +566,12 @@ class BattleRibbonsPanel(RibbonsPanelMeta, IArenaVehiclesController):
          [
           _BET.VEHICLE_HEALTH_ADDED,
           backport.text(R.strings.ingame_gui.efficiencyRibbons.healthAdded())],
+         [
+          _BET.DAMAGE_BY_BATTLESHIP,
+          backport.text(R.strings.ingame_gui.efficiencyRibbons.damageByBattleship())],
+         [
+          _BET.DAMAGE_BY_DESTROYER,
+          backport.text(R.strings.ingame_gui.efficiencyRibbons.damageByDestroyer())],
          [
           _BET.PERK,
           '']]

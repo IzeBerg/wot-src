@@ -2,6 +2,10 @@ from gui.Scaleform.framework.entities.BaseDAAPIComponent import BaseDAAPICompone
 
 class StoryModeSubtitlesMeta(BaseDAAPIComponent):
 
+    def as_setNonOnboardingS(self):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setNonOnboarding()
+
     def as_showS(self, message):
         if self._isDAAPIInited():
             return self.flashObject.as_show(message)

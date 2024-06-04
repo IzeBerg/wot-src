@@ -3310,7 +3310,11 @@ RECORDS = (
  (
   'singleAchievements', 'Cosmic_LiveLongAndProsper', 'p', 'B', 1),
  (
-  'singleAchievements', 'Cosmic_KlingonValor', 'p', 'B', 1))
+  'singleAchievements', 'Cosmic_KlingonValor', 'p', 'B', 1),
+ (
+  'singleAchievements', 'BattlePassCommonPr_14', 'p', 'B', 1),
+ (
+  'singleAchievements', 'dDayFighter', 'p', 'B', 1))
 RECORD_INDICES = dict((rec[:2], idx) for idx, rec in enumerate(RECORDS))
 RECORD_DB_IDS = {('total', 'creationTime'): 68, 
    ('total', 'lastBattleTime'): 7, 
@@ -4967,7 +4971,9 @@ RECORD_DB_IDS = {('total', 'creationTime'): 68,
    ('singleAchievements', 'comp7_3_yearly_legend'): 1931, 
    ('singleAchievements', 'Cosmic_StarTrekCrew'): 1932, 
    ('singleAchievements', 'Cosmic_LiveLongAndProsper'): 1933, 
-   ('singleAchievements', 'Cosmic_KlingonValor'): 1934}
+   ('singleAchievements', 'Cosmic_KlingonValor'): 1934, 
+   ('singleAchievements', 'BattlePassCommonPr_14'): 1935, 
+   ('singleAchievements', 'dDayFighter'): 1938}
 DB_ID_TO_RECORD = dict([ (value, key) for key, value in RECORD_DB_IDS.iteritems() ])
 RECORD_DB_IDS.update({('vehTypeFrags', ''): 863, 
    ('a15x15Cut', ''): 864, 
@@ -4990,7 +4996,9 @@ RECORD_DB_IDS.update({('vehTypeFrags', ''): 863,
    ('comp7CutSeason1', ''): 1727, 
    ('comp7CutSeason2', ''): 1784, 
    ('comp7CutSeason3', ''): 1861, 
-   ('comp7CutArchiveGriffin', ''): 1913})
+   ('comp7CutArchiveGriffin', ''): 1913, 
+   ('vehicleAchievements', ''): 1936, 
+   ('customizationAchievements', ''): 1937})
 BATTLE_HERO_MEDAL_SET = {RECORD_DB_IDS[achievementDescriptor] for achievementDescriptor in [
  (
   'achievements', 'warrior'),

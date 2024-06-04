@@ -7,15 +7,16 @@ from gui.impl.gen import R
 from gui.server_events.recruit_helper import getRecruitInfo
 from gui import makeHtmlString
 from gui.server_events.bonuses import IntelligenceBlueprintBonus, NationalBlueprintBonus, DossierBonus
-from gui.shared.formatters import text_styles
+from gui.shared.formatters import icons, text_styles
 from gui.shared.gui_items import GUI_ITEM_TYPE
+from gui.shared.money import Currency
 from gui.shared.utils.requesters.blueprints_requester import getVehicleCDForIntelligence, getVehicleCDForNational
 from helpers import i18n, int2roman, dependency
 from items.tankmen import RECRUIT_TMAN_TOKEN_PREFIX
 from shared_utils import first
 from skeletons.gui.offers import IOffersDataProvider
 if typing.TYPE_CHECKING:
-    from gui.server_events.bonuses import SimpleBonus, VehicleBlueprintBonus, ItemsBonus, CustomizationsBonus, BattlePassSelectTokensBonus, BattlePassStyleProgressTokenBonus
+    from gui.server_events.bonuses import SimpleBonus, VehicleBlueprintBonus, ItemsBonus, CustomizationsBonus, BattlePassSelectTokensBonus, BattlePassStyleProgressTokenBonus, TokensBonus
 _logger = logging.getLogger(__name__)
 
 class BonusesHelper(object):
@@ -113,8 +114,11 @@ class _CustomizationSubTypeGetter(_BaseSubTypeGetter):
         itemData = first(customizations)
         c11nItem = bonus.getC11nItem(itemData)
         itemType = c11nItem.itemTypeName
-        if itemType == 'style' and c11nItem.modelsSet:
-            return _HelperConsts.STYLE_3D_TYPE
+        if itemType == 'style':
+            if c11nItem.isLockedOnVehicle:
+                return _HelperConsts.LOCKED_STYLE
+            if c11nItem.modelsSet:
+                return _HelperConsts.STYLE_3D_TYPE
         return itemType
 
 
@@ -198,6 +202,13 @@ class _VehiclesValueGetter(_BaseValueGetter):
         return value
 
 
+class _TokenValueGetter(_BaseValueGetter):
+
+    @classmethod
+    def getValue(cls, bonus, _):
+        return first(bonus.getTokens().iterkeys(), '')
+
+
 _VALUE_GETTERS_MAP = {'default': _BaseValueGetter, 
    'blueprints': _BlueprintValueGetter, 
    'items': _IntCDValueGetter, 
@@ -205,7 +216,8 @@ _VALUE_GETTERS_MAP = {'default': _BaseValueGetter,
    'crewBooks': _IntCDValueGetter, 
    'customizations': _CustomizationValueGetter, 
    'styleProgressToken': _StyleProgressTokenValueGetter, 
-   'vehicles': _VehiclesValueGetter}
+   'vehicles': _VehiclesValueGetter, 
+   'tokens': _TokenValueGetter}
 
 class _BaseTextGetter(object):
 
@@ -366,6 +378,14 @@ class _RandomQuestTokenTextGetter(_BaseTextGetter):
         return backport.text(R.strings.battle_pass.randomQuestBonus(), vehicle=item.vehicle.shortUserName)
 
 
+class _EquipCoinTextGetter(_BaseTextGetter):
+
+    @classmethod
+    def getText(cls, item):
+        count = backport.getIntegralFormat(item.getCount())
+        return text_styles.concatStylesToSingleLine(backport.text(R.strings.battle_pass.equipCoinBonus(), count=count), icons.equipCoin())
+
+
 _TEXT_GETTERS_MAP = {'default': _BaseTextGetter, 
    'crewBooks': _CrewBookTextGetter, 
    'crewSkins': _CrewSkinTextGetter, 
@@ -373,7 +393,8 @@ _TEXT_GETTERS_MAP = {'default': _BaseTextGetter,
    'battlePassSelectToken': _SelectTokenTextGetter, 
    'styleProgressToken': _StyleProgressTokenTextGetter, 
    'tmanToken': _TankmanTokenTextGetter, 
-   'randomQuestToken': _RandomQuestTokenTextGetter}
+   'randomQuestToken': _RandomQuestTokenTextGetter, 
+   Currency.EQUIP_COIN: _EquipCoinTextGetter}
 
 class _HelperConsts(object):
     HTML_BONUS_PATH = 'html_templates:lobby/quests/bonuses'
@@ -390,3 +411,4 @@ class _HelperConsts(object):
     CREW_BATTLE_BOOSTER_TYPE = 'crewBattleBooster'
     DEVICE_BATTLE_BOOSTER_TYPE = 'deviceBattleBooster'
     STYLE_3D_TYPE = 'style3D'
+    LOCKED_STYLE = 'lockedStyle'

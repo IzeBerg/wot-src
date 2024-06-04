@@ -27,6 +27,7 @@ class KillCameraController(IBattleController):
         self.__distanceMarkerData = None
         self.__impactMarkerData = None
         self.__totalSceneDuration = 0.0
+        self.killCtrlState = None
         self.__eManager = Event.EventManager()
         self.onKillCamModeStateChanged = Event.Event(self.__eManager)
         self.onMarkerDisplayChanged = Event.Event(self.__eManager)
@@ -67,6 +68,7 @@ class KillCameraController(IBattleController):
             self.__gunMarkerData = None
             self.__distanceMarkerData = None
             self.__impactMarkerData = None
+        self.killCtrlState = state
         self.onKillCamModeStateChanged(state, self.__totalSceneDuration)
         return
 

@@ -26,6 +26,8 @@ package net.wg.data.constants.generated
       public static const COLOR_YELLOW:String = "yellow";
       
       public static const COLOR_RED:String = "red";
+      
+      public static const COLORS:Array = [COLOR_GREEN,COLOR_YELLOW,COLOR_RED];
        
       
       public function BATTLE_MARKERS_CONSTS()

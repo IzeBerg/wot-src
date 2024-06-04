@@ -4,4 +4,8 @@ BATTLE_RESULTS = [
  (
   'missionId', int, UNDEFINED_MISSION_ID, None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
  (
-  'isForceOnboarding', bool, False, None, 'skip', ENTRY_TYPE.ACCOUNT_SELF)]
+  'isForceOnboarding', bool, False, None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
+ (
+  'rewards', None, None, None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
+ (
+  'progressionInfo', None, None, None, 'skip', ENTRY_TYPE.ACCOUNT_SELF)]

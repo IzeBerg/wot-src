@@ -38,7 +38,6 @@ package net.wg.gui.lobby.vehicleCustomization.controls
       
       override protected function configUI() : void
       {
-         var _loc1_:Sprite = null;
          super.configUI();
          this.textField.mouseEnabled = false;
          this.nonHistoricIcon.mouseEnabled = this.nonHistoricIcon.mouseChildren = false;
@@ -46,7 +45,7 @@ package net.wg.gui.lobby.vehicleCustomization.controls
          this.nonHistoricIcon.visible = false;
          this.textField.autoSize = TextFieldAutoSize.LEFT;
          this.glow.mouseEnabled = this.glow.mouseChildren = false;
-         _loc1_ = new Sprite();
+         var _loc1_:Sprite = new Sprite();
          this.glow.hitArea = _loc1_;
          addChild(_loc1_);
       }

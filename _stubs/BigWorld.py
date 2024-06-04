@@ -906,6 +906,7 @@ class CollidableTransitionCamera(BaseCamera):
 	def __str__(*args, **kwargs): pass
 	def __subclasshook__(*args, **kwargs): pass
 	direction = property(lambda self: None)
+	def easingProgress(self, *args, **kwargs): pass
 	def finish(self, *args, **kwargs): pass
 	def handleAxisEvent(self, *args, **kwargs): pass
 	def handleKeyEvent(self, *args, **kwargs): pass
@@ -914,9 +915,7 @@ class CollidableTransitionCamera(BaseCamera):
 	def isInTransition(self, *args, **kwargs): pass
 	matrix = property(lambda self: None)
 	position = property(lambda self: None)
-	def positionEasingProgress(self, *args, **kwargs): pass
 	def render(self, *args, **kwargs): pass
-	def rotationEasingProgress(self, *args, **kwargs): pass
 	def set(self, *args, **kwargs): pass
 	spaceID = property(lambda self: None)
 	def start(self, *args, **kwargs): pass
@@ -1128,26 +1127,6 @@ class CursorCamera(BaseCamera):
 	turningHalfLife = property(lambda self: None)
 	def update(self, *args, **kwargs): pass
 	uprightDirection = property(lambda self: None)
-
-
-class CustomizationEnvironment(pybind11_object):
-	def __delattr__(*args, **kwargs): pass
-	__doc__ = None
-	def __format__(*args, **kwargs): pass
-	def __getattribute__(*args, **kwargs): pass
-	def __hash__(*args, **kwargs): pass
-	def __init__(self, *args, **kwargs): pass
-	__module__ = 'BigWorld'
-	def __new__(*args, **kwargs): pass
-	__qualname__ = 'CustomizationEnvironment'
-	def __reduce__(*args, **kwargs): pass
-	def __reduce_ex__(*args, **kwargs): pass
-	def __repr__(*args, **kwargs): pass
-	def __setattr__(*args, **kwargs): pass
-	def __sizeof__(*args, **kwargs): pass
-	def __str__(*args, **kwargs): pass
-	def __subclasshook__(*args, **kwargs): pass
-	def enable(self, *args, **kwargs): pass
 
 D15S1 = ResourceFormat.D15S1
 D16 = ResourceFormat.D16
@@ -1768,26 +1747,6 @@ class EntityMProv(MatrixProvider):
 	def __sizeof__(*args, **kwargs): pass
 	def __str__(*args, **kwargs): pass
 	def __subclasshook__(*args, **kwargs): pass
-
-
-class EnvironmentSwitcher(pybind11_object):
-	def __delattr__(*args, **kwargs): pass
-	__doc__ = None
-	def __format__(*args, **kwargs): pass
-	def __getattribute__(*args, **kwargs): pass
-	def __hash__(*args, **kwargs): pass
-	def __init__(self, *args, **kwargs): pass
-	__module__ = 'BigWorld'
-	def __new__(*args, **kwargs): pass
-	__qualname__ = 'EnvironmentSwitcher'
-	def __reduce__(*args, **kwargs): pass
-	def __reduce_ex__(*args, **kwargs): pass
-	def __repr__(*args, **kwargs): pass
-	def __setattr__(*args, **kwargs): pass
-	def __sizeof__(*args, **kwargs): pass
-	def __str__(*args, **kwargs): pass
-	def __subclasshook__(*args, **kwargs): pass
-	def enable(self, *args, **kwargs): pass
 
 
 class EventType(pybind11_object):
@@ -3715,13 +3674,12 @@ class PyTerrainSelectedArea(PyAttachment):
 	def setColor(self, *args, **kwargs): pass
 	def setCutOffAngle(self, *args, **kwargs): pass
 	def setCutOffDistance(self, *args, **kwargs): pass
-	def setLocalTransform(self, *args, **kwargs): pass
 	def setMaxHeight(self, *args, **kwargs): pass
 	def setMinHeight(self, *args, **kwargs): pass
 	def setOverTerrainOffset(self, *args, **kwargs): pass
-	def setParent(self, *args, **kwargs): pass
 	def setSize(self, *args, **kwargs): pass
 	def setUVAnimationType(self, *args, **kwargs): pass
+	def setVisible(self, *args, **kwargs): pass
 	def setup(self, *args, **kwargs): pass
 	def updateHeights(self, *args, **kwargs): pass
 
@@ -4049,6 +4007,7 @@ class RouteTransitionCamera(CollidableTransitionCamera):
 	def __str__(*args, **kwargs): pass
 	def __subclasshook__(*args, **kwargs): pass
 	direction = property(lambda self: None)
+	def easingProgress(self, *args, **kwargs): pass
 	def finish(self, *args, **kwargs): pass
 	def handleAxisEvent(self, *args, **kwargs): pass
 	def handleKeyEvent(self, *args, **kwargs): pass
@@ -4057,9 +4016,7 @@ class RouteTransitionCamera(CollidableTransitionCamera):
 	def isInTransition(self, *args, **kwargs): pass
 	matrix = property(lambda self: None)
 	position = property(lambda self: None)
-	def positionEasingProgress(self, *args, **kwargs): pass
 	def render(self, *args, **kwargs): pass
-	def rotationEasingProgress(self, *args, **kwargs): pass
 	def set(self, *args, **kwargs): pass
 	spaceID = property(lambda self: None)
 	def start(self, *args, **kwargs): pass
@@ -4314,7 +4271,10 @@ class Space(pybind11_object):
 	def __sizeof__(*args, **kwargs): pass
 	def __str__(*args, **kwargs): pass
 	def __subclasshook__(*args, **kwargs): pass
+	def getEnvironment(self, *args, **kwargs): pass
 	id = property(lambda self: None)
+	def resetEnvironment(self, *args, **kwargs): pass
+	def setEnvironment(self, *args, **kwargs): pass
 
 
 class SpaceIDList(pybind11_object):
@@ -4922,6 +4882,7 @@ class WGEntityFilter(PyFilter):
 	def output(self, *args, **kwargs): pass
 	def reset(self, *args, **kwargs): pass
 	def segmentMayHitEntity(self, *args, **kwargs): pass
+	def setFlyingInfo(self, *args, **kwargs): pass
 	def setScriptInputCallback(self, *args, **kwargs): pass
 	def transferInput(self, *args, **kwargs): pass
 	def transferInputAsVehicle(self, *args, **kwargs): pass
@@ -5182,6 +5143,7 @@ class WGPillboxFilter(WGEntityFilter):
 	def output(self, *args, **kwargs): pass
 	def reset(self, *args, **kwargs): pass
 	def segmentMayHitEntity(self, *args, **kwargs): pass
+	def setFlyingInfo(self, *args, **kwargs): pass
 	def setScriptInputCallback(self, *args, **kwargs): pass
 	speedInfo = property(lambda self: None)
 	def syncGunAngles(self, *args, **kwargs): pass
@@ -5747,156 +5709,6 @@ class WGTankPhysics(WGVehiclePhysics):
 	velocity = property(lambda self: None)
 
 
-class WGTankProximityPhysics(WGVehiclePhysics):
-	def __delattr__(*args, **kwargs): pass
-	__doc__ = None
-	def __format__(*args, **kwargs): pass
-	def __getattribute__(*args, **kwargs): pass
-	def __hash__(*args, **kwargs): pass
-	def __init__(self, *args, **kwargs): pass
-	__module__ = 'BigWorld'
-	def __new__(*args, **kwargs): pass
-	__qualname__ = 'WGTankProximityPhysics'
-	def __reduce__(*args, **kwargs): pass
-	def __reduce_ex__(*args, **kwargs): pass
-	def __repr__(*args, **kwargs): pass
-	def __setattr__(*args, **kwargs): pass
-	def __sizeof__(*args, **kwargs): pass
-	def __str__(*args, **kwargs): pass
-	def __subclasshook__(*args, **kwargs): pass
-	acceleration = property(lambda self: None)
-	actualChassisTransform = property(lambda self: None)
-	def addDamperSpring(self, *args, **kwargs): pass
-	allowFreeze = property(lambda self: None)
-	angAcceleration = property(lambda self: None)
-	angVelocity = property(lambda self: None)
-	def applyForce(self, *args, **kwargs): pass
-	def applyForceLocal(self, *args, **kwargs): pass
-	def applyForceLocalToCoM(self, *args, **kwargs): pass
-	def applyForceToCoM(self, *args, **kwargs): pass
-	def applyImpulse(self, *args, **kwargs): pass
-	def applyImpulseLocal(self, *args, **kwargs): pass
-	def applyImpulseLocalToCoM(self, *args, **kwargs): pass
-	def applyImpulseToCoM(self, *args, **kwargs): pass
-	def applyTorque(self, *args, **kwargs): pass
-	def applyTorqueLocal(self, *args, **kwargs): pass
-	auxDataForClient = property(lambda self: None)
-	auxEnginePowerScale = property(lambda self: None)
-	auxGroundRotFactors = property(lambda self: None)
-	badState = property(lambda self: None)
-	bkSpeedLimitBonus = property(lambda self: None)
-	bkSpeedLimitScale = property(lambda self: None)
-	bkwdPowerMod = property(lambda self: None)
-	boundingRadius = property(lambda self: None)
-	centerOfMass = property(lambda self: None)
-	choker = property(lambda self: None)
-	def configure(self, *args, **kwargs): pass
-	cruiseSignals = property(lambda self: None)
-	currentCenterOfMass = property(lambda self: None)
-	def destructibleImpactCb(self, *args, **kwargs): pass
-	def destructibleRequestCb(self, *args, **kwargs): pass
-	distanceTraveled = property(lambda self: None)
-	drownWarning = property(lambda self: None)
-	def enableTurretCollision(self, *args, **kwargs): pass
-	enginePowerMode = property(lambda self: None)
-	def environmentEnergyCbThreshold(self, *args, **kwargs): pass
-	externalForce = property(lambda self: None)
-	def fireEngine(self, *args, **kwargs): pass
-	forceApplied = property(lambda self: None)
-	freezeAccelEpsilon = property(lambda self: None)
-	freezeAngAccelEpsilon = property(lambda self: None)
-	freezeAngVelEpsilon = property(lambda self: None)
-	freezeVelEpsilon = property(lambda self: None)
-	fwSpeedLimitBonus = property(lambda self: None)
-	fwSpeedLimitScale = property(lambda self: None)
-	gear = property(lambda self: None)
-	def getAggressiveImpacts(self, *args, **kwargs): pass
-	def getPointVelocity(self, *args, **kwargs): pass
-	def getRollerPosition(self, *args, **kwargs): pass
-	def getTouchedGround(self, *args, **kwargs): pass
-	def getTouchedMatkind(self, *args, **kwargs): pass
-	gotCarcassContact = property(lambda self: None)
-	gotTracksContact = property(lambda self: None)
-	gravity = property(lambda self: None)
-	groundResistances = property(lambda self: None)
-	groundType = property(lambda self: None)
-	handbrake = property(lambda self: None)
-	hullCOMZ = property(lambda self: None)
-	hullCollisionReaction = property(lambda self: None)
-	hullContactPt = property(lambda self: None)
-	hullDamageMp = property(lambda self: None)
-	hullPitchCorrection = property(lambda self: None)
-	hullPitchCorrectionAllowed = property(lambda self: None)
-	hullPitchCorrectionSector = property(lambda self: None)
-	hydroResistanceFactor = property(lambda self: None)
-	hydroResistanceRotFactor = property(lambda self: None)
-	isFrozen = property(lambda self: None)
-	isFrozenDuringFrame = property(lambda self: None)
-	isLeftTrackBroken = property(lambda self: None)
-	isOutOfControl = property(lambda self: None)
-	isPitchHullAimingEnabled = property(lambda self: None)
-	isRightTrackBroken = property(lambda self: None)
-	isSpeedtreeDestroyed = property(lambda self: None)
-	isYawHullAimingEnabled = property(lambda self: None)
-	lastTickMatrix = property(lambda self: None)
-	leftTrackBrakeForce = property(lambda self: None)
-	leftTrackScroll = property(lambda self: None)
-	majorDestructible = property(lambda self: None)
-	mass = property(lambda self: None)
-	matrix = property(lambda self: None)
-	maxUnaidedRPM = property(lambda self: None)
-	movementSignals = property(lambda self: None)
-	normalisedRPM = property(lambda self: None)
-	def onBecameFrozenCb(self, *args, **kwargs): pass
-	def onBecameStillCb(self, *args, **kwargs): pass
-	onEngineModeChangedCb = property(lambda self: None)
-	def onEnvironmentCollisionCb(self, *args, **kwargs): pass
-	def onFrictionWithVehicleCb(self, *args, **kwargs): pass
-	def onKinematicsChangedCb(self, *args, **kwargs): pass
-	def onMiscDataChangedCb(self, *args, **kwargs): pass
-	onProximitySensorHit = property(lambda self: None)
-	def onRammingCb(self, *args, **kwargs): pass
-	def onResurrectVehicle(self, *args, **kwargs): pass
-	def onSideMovementChangedCb(self, *args, **kwargs): pass
-	def onVehicleStatusChanged(self, *args, **kwargs): pass
-	owner = property(lambda self: None)
-	quietRotationEnabled = property(lambda self: None)
-	def removeAllDamperSprings(self, *args, **kwargs): pass
-	def removeAllSubscriptions(self, *args, **kwargs): pass
-	rightTrackBrakeForce = property(lambda self: None)
-	rightTrackScroll = property(lambda self: None)
-	def rollback(self, *args, **kwargs): pass
-	rpm = property(lambda self: None)
-	rspeed = property(lambda self: None)
-	def setArenaBounds(self, *args, **kwargs): pass
-	def setDamperSpringsLength(self, *args, **kwargs): pass
-	def setHullAimingAnglesDelta(self, *args, **kwargs): pass
-	def setProximityParams(self, *args, **kwargs): pass
-	def setSignal(self, *args, **kwargs): pass
-	siegeModeState = property(lambda self: None)
-	simulationYBound = property(lambda self: None)
-	speed = property(lambda self: None)
-	speedFromPreviousTick = property(lambda self: None)
-	speedtreeReaction = property(lambda self: None)
-	stabilisedMatrixLatency = property(lambda self: None)
-	stabilisedMatrixWithLatency = property(lambda self: None)
-	staticCollisionNormal = property(lambda self: None)
-	staticCollisionPt = property(lambda self: None)
-	staticMode = property(lambda self: None)
-	def subscribeAfterSimulation(self, *args, **kwargs): pass
-	def subscribeBeforeSimulation(self, *args, **kwargs): pass
-	ticksFromLastCollision = property(lambda self: None)
-	timeAfterLanding = property(lambda self: None)
-	torqueApplied = property(lambda self: None)
-	torqueModifier = property(lambda self: None)
-	def touchGround(self, *args, **kwargs): pass
-	def unsubscribeAfterSimulation(self, *args, **kwargs): pass
-	def unsubscribeBeforeSimulation(self, *args, **kwargs): pass
-	def updateSettings(self, *args, **kwargs): pass
-	vehicleID = property(lambda self: None)
-	velocity = property(lambda self: None)
-
-
 class WGTextureFashion(PyMaterialFashion):
 	def __delattr__(*args, **kwargs): pass
 	__doc__ = None
@@ -5952,6 +5764,7 @@ class WGTurretFilter(WGEntityFilter):
 	def output(self, *args, **kwargs): pass
 	def reset(self, *args, **kwargs): pass
 	def segmentMayHitEntity(self, *args, **kwargs): pass
+	def setFlyingInfo(self, *args, **kwargs): pass
 	def setScriptInputCallback(self, *args, **kwargs): pass
 	def transferInput(self, *args, **kwargs): pass
 	def transferInputAsVehicle(self, *args, **kwargs): pass
@@ -6062,6 +5875,7 @@ class WGVehicleFilter(WGEntityFilter):
 	rightTrackScroll = property(lambda self: None)
 	def rightTrackScroll_gen(*args, **kwargs): pass
 	def segmentMayHitEntity(self, *args, **kwargs): pass
+	def setFlyingInfo(self, *args, **kwargs): pass
 	def setScriptInputCallback(self, *args, **kwargs): pass
 	def setTracksSpeed(self, *args, **kwargs): pass
 	def setVehiclePhysics(self, *args, **kwargs): pass

@@ -1571,6 +1571,7 @@ SYS_MESSAGE_TYPE = Enumeration('systemMessageType', [
  'resourceWellReward',
  'resourceWellNoVehicles',
  'customization2dProgressionChanged',
+ 'bondEquipmentChoosing',
  'prbVehicleMaxScoutKick',
  'personalReservesHaveBeenConverted',
  'changeSquadSize',

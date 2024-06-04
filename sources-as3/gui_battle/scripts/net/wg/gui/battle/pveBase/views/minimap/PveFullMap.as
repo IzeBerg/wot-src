@@ -41,6 +41,7 @@ package net.wg.gui.battle.pveBase.views.minimap
          this.entriesContainer.grid.setSize(PveFullMapConst.VISIBLE_SIZE,PveFullMapConst.VISIBLE_SIZE);
          var _loc1_:Number = PveFullMapConst.INITIAL_SIZE / PveMinimapConst.MINIMAL_SIZE;
          this.entriesContainer.setAdditionalLayerScale(this.entriesContainer.arrows,_loc1_,_loc1_);
+         this.entriesContainer.setAdditionalLayerScale(this.entriesContainer.stretchableDeathZone,_loc1_,_loc1_);
          this.entriesContainer.setAdditionalLayerScale(this.entriesContainer.attention,_loc1_,_loc1_);
          this._clickAreaSpr = new Sprite();
          addChild(this._clickAreaSpr);

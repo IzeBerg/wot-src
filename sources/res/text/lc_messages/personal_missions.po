@@ -23,10 +23,10 @@ msgid "PersonalMissionAwardView/subTitle"
 msgstr "点击您的昵称以选择和装备奖章。"
 
 msgid "PersonalMissionAwardView/title"
-msgstr "因完成个人任务而获得奖章！"
+msgstr "因完成作战行动而获得奖章！"
 
 msgid "PersonalMissionAwardView/title/one"
-msgstr "因个人任务\"%(vehicleName)s\"而获得奖章！"
+msgstr "因完成\"%(vehicleName)s\"作战行动而获得奖章！"
 
 msgid "PersonalMissionAwardView/title/perfect"
 msgstr "您因完美完成而获得奖章！"
@@ -73,16 +73,16 @@ msgid "PersonalMissionFirstEntryView/item0/header"
 msgstr "1. 任务"
 
 msgid "PersonalMissionFirstEntryView/item0/innerDescr"
-msgstr "所有任务都具有基于特定操作的特定完成条件。"
+msgstr "所有任务都具有基于特定作战行动的指定完成条件。"
 
 msgid "PersonalMissionFirstEntryView/item0/warning"
 msgstr "更改/取消特定类型的任务时，其所有进度都将被重置，您将不得不重新开始。"
 
 msgid "PersonalMissionFirstEntryView/item1/blocks/0/descr"
 msgstr ""
-"战斗界面显示了任务进度\n"
+"任务进度将于战斗界面中显示\n"
 "\n"
-"请记住，特定条件的进展是在战斗结束后计算出来的。 有些任务只能在特定车辆类型上完成，没有国家限制; 其他任务需要特定国家的车辆完成。"
+"请记住，特定条件的进度是在战斗结束后计算出来的。 有些任务只能在特定坦克类型上完成，没有系别限制; 其余任务需要使用特定系别的坦克完成。"
 
 msgid "PersonalMissionFirstEntryView/item1/blocks/0/title"
 msgstr "战斗中的进度指标"
@@ -116,26 +116,26 @@ msgid "PersonalMissionFirstEntryView/item1/innerDescr"
 msgstr "在战斗中可以监测任务进展情况。"
 
 msgid "PersonalMissionFirstEntryView/item2/blocks/0/descr"
-msgstr "特定任务只能在特定类型的车辆上完成(模型和国家不计算在内)。"
+msgstr "特定任务只能在指定类型的坦克上完成(没有型号和系别限制)。"
 
 msgid "PersonalMissionFirstEntryView/item2/blocks/0/title"
 msgstr "坦克类型"
 
 msgid "PersonalMissionFirstEntryView/item2/blocks/1/descr"
 msgstr ""
-"有些任务需要特定国家的车辆，对类型没有限制。 所有任务分为4个编队：\n"
+"有些任务需要特定系别的坦克，对类型没有限制。 所有任务分为4个阵营:\n"
 "\n"
-"• 联合：S系，C系。\n"
-"• 集团：D系，R系。\n"
-"• 同盟：M系，Y系，B系。\n"
-"• 联盟：F系，V系，J系，I系。"
+"• 联合: S系、C系。\n"
+"• 集团: D系、R系。\n"
+"• 同盟: M系、Y系、B系。\n"
+"• 联盟: F系、V系、J系、I系。"
 
 msgid "PersonalMissionFirstEntryView/item2/blocks/1/title"
-msgstr "编队"
+msgstr "阵营"
 
 msgid "PersonalMissionFirstEntryView/item2/blocks/2/descr"
 msgstr ""
-"每项操作都有自己对完成任务所用的最低车辆等级的要求：\n"
+"若要完成任务，请注意每个作战行动的坦克最低等级限制:\n"
 "\n"
 "• IV号突击炮: IV-X级\n"
 "• T28(概念车): V-X级\n"
@@ -155,20 +155,20 @@ msgid "PersonalMissionFirstEntryView/item2/blocks/3/title"
 msgstr "标准模式"
 
 msgid "PersonalMissionFirstEntryView/item2/descr"
-msgstr "在第二战线中，任务现在由编队分发，而不是按类型分配。"
+msgstr "在第二战线个人任务中，任务现在按阵营分配，而不是按坦克类型分配。"
 
 msgid "PersonalMissionFirstEntryView/item2/header"
 msgstr "3. 条件"
 
 msgid "PersonalMissionFirstEntryView/item2/innerDescr"
-msgstr "任务活动提供了在完成任务期间将应用于玩家的共同条件和限制。"
+msgstr "完成个人任务时，玩家不但需要满足常见任务条件，还会受到特定的限制。"
 
 msgid "PersonalMissionFirstEntryView/item2/warning"
 msgstr "请仔细研究每项任务的要求。"
 
 msgid "PersonalMissionFirstEntryView/item3/blocks/0/descr"
 msgstr ""
-"主要奖励是完成个人任务才会授予的独特坦克。 每个行动都具有不同的奖励：\n"
+"主要奖励是完成任务才会授予的独特坦克。 每项个人任务都具有不同的奖励:\n"
 "\n"
 "•迟来的支援: IV号突击炮、T28(概念车)、T-55A、260工程。\n"
 "•第二战线: 圣剑、奇美拉、279工程早期型。"
@@ -178,10 +178,10 @@ msgstr "特定坦克"
 
 msgid "PersonalMissionFirstEntryView/item3/blocks/1/descr"
 msgstr ""
-"每辆奖励坦克都具有特定的部件。 收集所有部件即可获得坦克：\n"
+"每辆奖励坦克都具有特定的部件。 收集所有部件即可获得坦克:\n"
 "\n"
-"•组件—在迟来的支援行动中完成任务即可获得。\n"
-"•蓝图—在第二战线行动中完成任务即可获得。"
+"•组件—在\"迟来的支援\"个人任务中完成任务即可获得。\n"
+"•蓝图—在\"第二战线\"个人任务中完成任务即可获得。"
 
 msgid "PersonalMissionFirstEntryView/item3/blocks/1/title"
 msgstr "组件和蓝图"
@@ -202,7 +202,7 @@ msgid "PersonalMissionFirstEntryView/item3/blocks/3/title"
 msgstr "其他奖励"
 
 msgid "PersonalMissionFirstEntryView/item3/descr"
-msgstr "在第二战线战役中，为了完成一组中的每个最后任务，您将获得奖励车辆的五个蓝图中的一个。"
+msgstr "在第二战线个人任务中，完成一系列任务中的任意最后任务，即可获得奖励坦克的五个蓝图中的一个。"
 
 msgid "PersonalMissionFirstEntryView/item3/header"
 msgstr "4. 奖励"
@@ -301,7 +301,7 @@ msgid "awardsView/closeBtn/label"
 msgstr "关闭"
 
 msgid "awardsView/description"
-msgstr "操作的主要奖励"
+msgstr "作战行动的主要奖励"
 
 msgid "awardsView/mainAwards/title"
 msgstr "主要奖励"
@@ -328,16 +328,16 @@ msgid "bonus/multiplier/progress"
 msgstr "x%(value)s加成:"
 
 msgid "chainTooltipData/description/text/alliance0"
-msgstr "只能在指定国家的车辆上完成作战任务。"
+msgstr "只能使用指定系别的坦克完成作战行动任务。"
 
 msgid "chainTooltipData/description/text/alliance1"
-msgstr "只能在指定国家的车辆上完成作战任务。"
+msgstr "只能使用指定系别的坦克完成作战行动任务。"
 
 msgid "chainTooltipData/description/text/alliance2"
-msgstr "只能在指定国家的车辆上完成作战任务。"
+msgstr "只能使用指定系别的坦克完成作战行动任务。"
 
 msgid "chainTooltipData/description/text/alliance3"
-msgstr "只能在指定国家的车辆上完成作战任务。"
+msgstr "只能使用指定系别的坦克完成作战行动任务。"
 
 msgid "chainTooltipData/description/title"
 msgstr "说明:"
@@ -457,7 +457,7 @@ msgid "detailedView/tooltips/holdAwardSheetBtn/body"
 msgstr "点击向任务提交通行令并完成主要条件。"
 
 msgid "detailedView/tooltips/holdAwardSheetBtn/disabled/body"
-msgstr "想要获得通行令，请于任意个人任务类别内完美完成任意系列的最后一个任务。"
+msgstr "想要获得通行令，请于任意作战行动内完美完成任意系列的最后一个任务。"
 
 msgid "detailedView/tooltips/holdAwardSheetBtn/disabled/header"
 msgstr "通行令不足"
@@ -511,13 +511,13 @@ msgid "fourFreeSheetsObtainedPopup/regular/pawnedDescr"
 msgstr "取回任务中的%(pawnedCount)s个通行令，以便提交4个通行令至%(questName)s任务并获得缺少的坦克模块。"
 
 msgid "freeSheetObtainedPopup/pm2/descrLeft"
-msgstr "您可以使用通行令完成第二战线系列中的任意任务。"
+msgstr "您可以使用通行令完成第二战线个人任务系列中的任意任务。"
 
 msgid "freeSheetObtainedPopup/pm2/descrRight"
-msgstr "完美完成第二战线中任意系列中的最后一个任务即可获得。"
+msgstr "完美完成第二战线个人任务中任意系列的最后一个任务即可获得。"
 
 msgid "freeSheetObtainedPopup/pm2/title"
-msgstr "您获得了第二战线的通行令。"
+msgstr "您获得了第二战线个人任务的通行令。"
 
 msgid "freeSheetObtainedPopup/pm2/titleLeft"
 msgstr "如何使用"
@@ -590,7 +590,7 @@ msgid "operationInfo/operationBtn/postponed/lessThanDay"
 msgstr "少于1天"
 
 msgid "operationInfo/title"
-msgstr "作战地图"
+msgstr "作战行动地图"
 
 msgid "operationTitle/label/done"
 msgstr "通行令:%(icon)s%(count)s/%(total)s  %(infoIcon)s"
@@ -605,7 +605,7 @@ msgid "operationTitle/label/inProgress/regular"
 msgstr "可以使用坦克完成 %(vehData)s系列"
 
 msgid "operationTitle/label/locked"
-msgstr "不可用: 请完成前一个人任务"
+msgstr "不可用: 请完成前一作战行动"
 
 msgid "operationTitle/label/noVehicle/pm2"
 msgstr "不可用: 没有适用的 %(vehData)s坦克"
@@ -623,22 +623,22 @@ msgid "operationTitle/label/unlocked/regular"
 msgstr "选择任务使用 %(vehData)s系列坦克来完成"
 
 msgid "operationTitle/title"
-msgstr "个人任务:%(title)s"
+msgstr "%(title)s作战行动"
 
 msgid "operationUnlockedWindow/awardText"
-msgstr "恭喜！您现在可以继续完成%(title)s个人任务。"
+msgstr "恭喜！您现在可以继续完成%(title)s作战行动。"
 
 msgid "operationUnlockedWindow/descr"
 msgstr "按下%(label)s选择任务并尝试领取新的奖励。"
 
 msgid "operationUnlockedWindow/header"
-msgstr "%(title)s个人任务"
+msgstr "%(title)s作战行动"
 
 msgid "operationUnlockedWindow/nextButton"
 msgstr "开始"
 
 msgid "operationUnlockedWindow/title"
-msgstr "个人任务已解锁"
+msgstr "作战行动已解锁"
 
 msgid "operations/completed/desc"
 msgstr "坦克已获得"
@@ -763,7 +763,7 @@ msgid "statusPanel/status/improve"
 msgstr "(结果优化)"
 
 msgid "statusPanel/status/locked"
-msgstr "不可用: 请完成前一个人任务"
+msgstr "不可用: 请完成前一作战行动"
 
 msgid "statusPanel/status/pawned"
 msgstr "(取回%(count)d%(icon)s)"

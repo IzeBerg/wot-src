@@ -111,6 +111,10 @@ package
       
       public static const PROFILE_TABS_TOOLTIP_COLLECTIONS_BODY:String = "#profile:profile/tabs/tooltip/collections/body";
       
+      public static const PROFILE_TABS_TOOLTIP_ADVANCEDACHIEVEMENTS_HEADER:String = "#profile:profile/tabs/tooltip/advancedAchievements/header";
+      
+      public static const PROFILE_TABS_TOOLTIP_ADVANCEDACHIEVEMENTS_BODY:String = "#profile:profile/tabs/tooltip/advancedAchievements/body";
+      
       public static const SECTION_SUMMARY_TITLE:String = "#profile:section/summary/title";
       
       public static const SECTION_SUMMARY_SCORES_TOTALBATTLES:String = "#profile:section/summary/scores/totalBattles";
@@ -1204,6 +1208,8 @@ package
       public static const PROFILE_PARAMS_TOOLTIP_MAXHEALTHREPAIR_BODY:String = "#profile:profile/params/tooltip/maxHealthRepair/body";
       
       public static const SEASONS_DROPDOWN_LABEL:String = "#profile:seasons/dropdown_label";
+      
+      public static const SECTION_ADVANCEDACHIEVEMENTS_TITLE:String = "#profile:section/advancedAchievements/title";
        
       
       public function PROFILE()

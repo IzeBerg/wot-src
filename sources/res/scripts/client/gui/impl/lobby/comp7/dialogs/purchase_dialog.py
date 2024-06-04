@@ -27,6 +27,7 @@ from skeletons.gui.game_control import IOverlayController, IComp7ShopController
 from skeletons.gui.shared import IItemsCache
 from skeletons.gui.shared.utils import IHangarSpace
 from wg_async import wg_async
+from skeletons.gui.app_loader import IAppLoader
 if typing.TYPE_CHECKING:
     from typing import Optional
     from frameworks.wulf import ViewEvent, Window
@@ -38,6 +39,7 @@ class PurchaseDialog(ViewImpl):
     __itemsCache = dependency.instance(IItemsCache)
     __comp7ShopController = dependency.instance(IComp7ShopController)
     __hangarSpace = dependency.descriptor(IHangarSpace)
+    __appLoader = dependency.descriptor(IAppLoader)
     __BLUR_INTENSITY = 0.5
 
     def __init__(self, productCode):
@@ -78,10 +80,12 @@ class PurchaseDialog(ViewImpl):
             tx.setPageState(PageState.CONFIRMATION)
             self.__setBalance(tx)
             self.__setProducts(tx)
-        self.__overlayCtrl.setOverlayState(True)
-        self.__blur = CachedBlur(enabled=not self.__isCameraFlybyNeeded(), blurRadius=self.__BLUR_INTENSITY)
         self.__prevCameraName = self.__rotationHelper.getCameraManager().getCurrentCameraName()
         self.__rotationHelper.switchCamera(Comp7Cameras.PURCHASE.value, False)
+        self.__overlayCtrl.setOverlayState(True)
+        lobby = self.__appLoader.getDefLobbyApp()
+        lobby.containerManager.showContainers((WindowLayer.TOP_WINDOW,), 300)
+        self.__blur = CachedBlur(enabled=not self.__isCameraFlybyNeeded(), blurRadius=self.__BLUR_INTENSITY)
 
     def _finalize(self):
         super(PurchaseDialog, self)._finalize()
@@ -138,14 +142,20 @@ class PurchaseDialog(ViewImpl):
         viewModel.setIsWGMAvailable(self.__itemsCache.items.stats.mayConsumeWalletResources)
 
     def __setProducts(self, viewModel):
-        productModel = packProduct(self.__comp7ShopController.getProducts()[self.__productCode])
+        products = self.__comp7ShopController.getProducts()
+        if not products:
+            _logger.warning('Failed to set product info, no products')
+        productModel = packProduct(products[self.__productCode])
         fillViewModelsArray([productModel], viewModel.getProduct())
         if isinstance(productModel, Style3dProductModel):
             viewModel.setHasSuitableVehicle(productModel.getCanGoToCustomization())
 
     def __updateData(self, *_):
         if self.viewModel.getPageState() == PageState.CONFIRMATION:
-            productData = self.__comp7ShopController.getProducts()[self.__productCode]
+            products = self.__comp7ShopController.getProducts()
+            if not products:
+                _logger.warning('Failed to update product info, no products')
+            productData = products[self.__productCode]
             productModel = first(self.viewModel.getProduct())
             setProductModelData(productData, productModel)
             updateComp7BalanceModel(self.viewModel.getBalance())

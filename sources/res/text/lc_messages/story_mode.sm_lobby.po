@@ -34,6 +34,17 @@ msgstr ""
 "造成\n"
 "损伤"
 
+msgid "battleResult/difficultyInfo/extraSmall"
+msgstr ""
+"%(icon)s完成严酷难度的任务后，\n"
+"您也将自动完成普通难度的任务。\n"
+"这意味着您将同时获得2个难度等级的奖励。"
+
+msgid "battleResult/difficultyInfo/smallAndUp"
+msgstr ""
+"%(icon)s完成严酷难度的任务后，您也将自动完成普通难度的任务。\n"
+"这意味着您将同时获得2个难度等级的奖励。"
+
 msgid "battleResult/kills"
 msgstr ""
 "击毁\n"
@@ -45,16 +56,30 @@ msgstr "战斗已结束"
 msgid "battleResult/missionName/1"
 msgstr "虎式猎手: 破甲行动"
 
+msgid "battleResult/missionName/1000"
+msgstr "诺曼底行动"
+
+msgid "battleResult/missionName/1001"
+msgstr "诺曼底行动"
+
 msgid "battleResult/missionName/2"
 msgstr "虎式猎手: 诱捕行动"
 
-msgid "battleResult/operationsCompleted"
+msgid "battleResult/noTasksToComplete"
 msgstr ""
-"行动\n"
-"已完成"
+"目前没有进行\n"
+"任何任务"
+
+msgid "battleResult/rewards/other"
+msgstr "同时获得:"
 
 msgid "battleResult/slash"
 msgstr "/"
+
+msgid "battleResult/tasksCompleted"
+msgstr ""
+"已完成\n"
+"任务"
 
 msgid "battleResult/vehicleName"
 msgstr "%(playerName)s-%(vehicleName)s"
@@ -67,6 +92,33 @@ msgstr "{par_Start}未幸存{par_End}"
 
 msgid "battleResult/win/title"
 msgstr "胜利！"
+
+msgid "countdown/days"
+msgstr "{days}天"
+
+msgid "countdown/daysHours"
+msgstr "{days}天{hours}时"
+
+msgid "countdown/endsSoon"
+msgstr "少于{minutes}分钟"
+
+msgid "countdown/hours"
+msgstr "{hours}时"
+
+msgid "countdown/hoursMinutes"
+msgstr "{hours}时{minutes}分"
+
+msgid "countdown/hoursMinutesShort"
+msgstr "{hours}时{minutes}分"
+
+msgid "countdown/lessThanMinute"
+msgstr "少于1分钟"
+
+msgid "countdown/minutes"
+msgstr "{minutes}分"
+
+msgid "countdown/minutesShort"
+msgstr "{minutes}分"
 
 msgid "dialogs/missionCompleted/cancel"
 msgstr "取消"
@@ -82,8 +134,35 @@ msgstr "确认"
 msgid "dialogs/missionCompleted/title"
 msgstr "该行动中没有开放的任务"
 
+msgid "entryPoint/new"
+msgstr "新"
+
+msgid "entryPoint/subtitle/newMission"
+msgstr "新任务已开放"
+
+msgid "entryPoint/subtitle/newMode"
+msgstr "新故事已开放"
+
+msgid "entryPoint/timer/dates"
+msgstr "%(startDate)s–%(endDate)"
+
+msgid "entryPoint/title/newMission"
+msgstr "诺曼底行动"
+
+msgid "entryPoint/title/newMode"
+msgstr "诺曼底行动"
+
 msgid "headerButtons/battle/types/story_mode"
 msgstr "故事"
+
+msgid "missionSelection/about"
+msgstr "关于故事"
+
+msgid "missionSelection/difficulty/hard"
+msgstr "严酷"
+
+msgid "missionSelection/difficulty/normal"
+msgstr "普通"
 
 msgid "missionSelection/exitButton"
 msgstr "退出模式"
@@ -94,6 +173,18 @@ msgstr ""
 "跟着我们，避开\"龙牙\"。虽然田野里布满了那些混凝土反坦克锥，但它们不足为惧。只要你认真听从我的指示并准确无误地执行，我们就能顺利通过。麦克劳德和我会掩护你。\n"
 "不要在意他的玩笑。每个人都有属于自己的应对方法…前进！\""
 
+msgid "missionSelection/missionDescription/1000"
+msgstr ""
+"约翰·麦科米克上尉: \"好了，伙计们，这一天终于到了。是时候终结战局了，让我们亲手为这场战役拉下帷幕。所有人荣辱与共，齐心协力，一举消灭这个邪恶势力。\n"
+"我们势必突破敌人的防线，拿下滩头。\n"
+"做好登陆准备！\""
+
+msgid "missionSelection/missionDescription/1001"
+msgstr ""
+"约翰·麦科米克上尉: \"好了，伙计们，这一天终于到了。是时候终结战局了，让我们亲手为这场战役拉下帷幕。所有人荣辱与共，齐心协力，一举消灭这个邪恶势力。\n"
+"我们势必突破敌人的防线，拿下滩头。\n"
+"做好登陆准备！\""
+
 msgid "missionSelection/missionDescription/2"
 msgstr ""
 "麦克劳德: \"战场上你最不想碰到的就是\"虎\"式。若指挥部说他们遇到了麻烦，那八成就是指\"虎\"式。一队联系不上，二队刚刚出发，现在轮到我们了，要跟上他们的脚步。\n"
@@ -103,26 +194,62 @@ msgstr ""
 msgid "missionSelection/missionName/1"
 msgstr "破甲行动"
 
+msgid "missionSelection/missionName/1000"
+msgstr "诺曼底行动"
+
+msgid "missionSelection/missionName/1001"
+msgstr "诺曼底行动"
+
 msgid "missionSelection/missionName/2"
 msgstr "诱捕行动"
 
 msgid "missionSelection/specialVehicle"
 msgstr "特殊坦克"
 
-msgid "missionSelection/taskDescription/1"
-msgstr "{whiteSpanish_Start}任务: {whiteSpanish_End}攻击城镇并击毁敌方坦克。"
+msgid "missionSelection/tab/event"
+msgstr "诺曼底行动"
 
-msgid "missionSelection/taskDescription/2"
-msgstr "{whiteSpanish_Start}任务: {whiteSpanish_End}攻击城镇并击毁敌方坦克。"
+msgid "missionSelection/tab/newbies"
+msgstr "教学故事"
+
+msgid "missionSelection/taskDescription/1/1"
+msgstr "攻击城镇并击毁敌方坦克。"
+
+msgid "missionSelection/taskDescription/1000/1"
+msgstr "突破防线，摧毁岸防炮，占领滩头。"
+
+msgid "missionSelection/taskDescription/1000/2"
+msgstr "在15分钟内完成主要任务目标。"
+
+msgid "missionSelection/taskDescription/1000/3"
+msgstr "在不损失任何自身坦克的情况下完成主要任务目标。"
+
+msgid "missionSelection/taskDescription/1001/1"
+msgstr "突破防线，摧毁岸防炮，占领滩头。"
+
+msgid "missionSelection/taskDescription/1001/2"
+msgstr "在15分钟内完成主要任务目标。"
+
+msgid "missionSelection/taskDescription/1001/3"
+msgstr "在不损失任何坦克的情况下完成主要任务目标。"
+
+msgid "missionSelection/taskDescription/2/1"
+msgstr "攻击城镇并击毁敌方坦克。"
+
+msgid "missionSelection/taskDescription/locked"
+msgstr "距任务解锁还有%(timer)s"
 
 msgid "missionSelection/tooltipDescription"
-msgstr "该坦克仅适用于虎式猎手行动。"
+msgstr "该坦克仅适用于故事模式。"
 
 msgid "mode/story_mode/callToAction"
 msgstr "适合新玩家的战斗场景"
 
 msgid "mode/story_mode/description"
 msgstr "与AI控制的坦克对抗，完成带有剧情的行动"
+
+msgid "mode/story_mode_event/callToAction"
+msgstr "诺曼底行动已开放"
 
 msgid "onboardingBattleResult/startButton"
 msgstr "重新开始"
@@ -134,7 +261,128 @@ msgid "onboardingQueue/skipButton"
 msgstr "跳过"
 
 msgid "onboardingQueue/skipText"
-msgstr "所有服务器繁忙。请稍候或跳过虎式猎手故事。"
+msgstr "所有服务器繁忙。请稍候或跳过该故事。"
 
 msgid "onboardingQueue/spinnerText"
 msgstr "服务器正在准备中。请稍等…"
+
+msgid "tooltips/battleResultStat/armorUse/blocked"
+msgstr "装甲抵挡的损伤{parSecondary_Start}(点){parSecondary_End}"
+
+msgid "tooltips/battleResultStat/armorUse/header"
+msgstr "抵挡损伤"
+
+msgid "tooltips/battleResultStat/armorUse/info"
+msgstr ""
+"计入:\n"
+"• 弹开的敌方炮弹\n"
+"• 敌方命中但未击穿\n"
+"\n"
+"HE与HESH炮弹命中不会计入。"
+
+msgid "tooltips/battleResultStat/assist/header"
+msgstr "协助损伤"
+
+msgid "tooltips/battleResultStat/assist/info"
+msgstr ""
+"计入盟友在您协助下所造成的以下损伤:\n"
+"• 您点亮后盟友造成的损伤\n"
+"• 由您击毁敌方坦克履带使其无法移动后，盟友造成的损伤"
+
+msgid "tooltips/battleResultStat/assist/total"
+msgstr "盟友造成的总损伤{parSecondary_Start}(点){parSecondary_End}"
+
+msgid "tooltips/battleResultStat/damage/header"
+msgstr "造成损伤"
+
+msgid "tooltips/battleResultStat/damage/info"
+msgstr ""
+"计入:\n"
+"• 射击损伤\n"
+"• 撞击损伤\n"
+"• 通过引发起火造成的损伤\n"
+"• 通过将敌方从高处推下造成的损伤。"
+
+msgid "tooltips/battleResultStat/damage/total"
+msgstr "总损伤{parSecondary_Start}(点){parSecondary_End}"
+
+msgid "tooltips/battleResultStat/kills/header"
+msgstr "击毁敌方坦克"
+
+msgid "tooltips/battleResultStat/kills/info"
+msgstr ""
+"计入:\n"
+"• 射击击毁\n"
+"• 通过引发起火击毁\n"
+"• 撞击击毁\n"
+"• 通过使敌方溺水击毁\n"
+"• 通过将敌方从高处推下击毁\n"
+"• 通过使敌方翻车击毁。"
+
+msgid "tooltips/battleResultStat/missions/header"
+msgstr "已完成任务"
+
+msgid "tooltips/battleResultStat/missions/info"
+msgstr ""
+"已完成任务和所有当前\n"
+"开放任务的数量。完成\n"
+"严酷难度的任务后，您\n"
+"也将自动完成普通难度\n"
+"的任务。"
+
+msgid "tooltips/difficulty/available"
+msgstr "已开放"
+
+msgid "tooltips/difficulty/hard/description"
+msgstr ""
+"敌人的反应速度和射击精度均有所提高，它们会对您展开更猛烈的攻击。作为回报，您将在完成任务后获得额外奖励。\n"
+"完成严酷难度的任务后，您也将自动获得普通难度的奖励。"
+
+msgid "tooltips/difficulty/hard/title"
+msgstr "严酷"
+
+msgid "tooltips/difficulty/normal/description"
+msgstr "对手速度较慢，且射击精度不高，完成任务后可获得标准奖励。"
+
+msgid "tooltips/difficulty/normal/title"
+msgstr "普通"
+
+msgid "tooltips/difficulty/selected"
+msgstr "已选择"
+
+msgid "tooltips/task/active"
+msgstr "已开放"
+
+msgid "tooltips/task/completed"
+msgstr "已完成"
+
+msgid "tooltips/task/condition/locked"
+msgstr "条件未知"
+
+msgid "tooltips/task/locked"
+msgstr "%(timer)s后解锁"
+
+msgid "welcomeScreen/column/subtitle/1"
+msgstr "本故事旨在纪念诺曼底登陆(又称霸王行动)80周年。缅怀为解放事业和结束战事而献出一切的英雄们。"
+
+msgid "welcomeScreen/column/subtitle/2"
+msgstr ""
+"在这个史诗般的故事中，您可以进行单人战斗，对抗AI敌人。认识并营救战斗通行证赛季XIV中的坦克手，利用M系海军和Y系皇家空军的力量，避开雷区，摧毁混凝土地堡！"
+
+msgid "welcomeScreen/column/subtitle/3"
+msgstr "完成所有任务后，您将获得1枚纪念勋章、多款2D涂装(纪念参加1944年诺曼底登陆的盟军战士)，以及其他珍贵奖励。"
+
+msgid "welcomeScreen/column/title/1"
+msgstr "历史事件"
+
+msgid "welcomeScreen/column/title/2"
+msgstr "单人故事"
+
+msgid "welcomeScreen/column/title/3"
+msgstr "奖励"
+
+msgid "welcomeScreen/header"
+msgstr "诺曼底行动"
+
+msgid "welcomeScreen/subheader"
+msgstr "%(startDate)s–%(endDate)"

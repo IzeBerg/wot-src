@@ -1,11 +1,11 @@
-import typing
 from collections import defaultdict
 from collections import namedtuple
-import BigWorld, BattleReplay, Event
+import BattleReplay, BigWorld, Event, typing
 from ReplayEvents import g_replayEvents
 from constants import SECTOR_STATE, PLAYER_RANK
 from debug_utils import verify, LOG_ERROR, LOG_DEBUG
 from epic_constants import EPIC_BATTLE_TEAM_ID
+from frontline_common.frontline_constants import FLBattleReservesModifier
 from gui import makeHtmlString
 from gui.Scaleform.genConsts.EPIC_CONSTS import EPIC_CONSTS
 from gui.Scaleform.genConsts.GAME_MESSAGES_CONSTS import GAME_MESSAGES_CONSTS
@@ -20,7 +20,6 @@ from gui.impl.gen import R
 from helpers import dependency, i18n
 from items.vehicles import getVehicleClassFromVehicleType
 from shared_utils import first
-from skeletons.gui.battle_session import IBattleSessionProvider
 from skeletons.gui.game_control import IEpicBattleMetaGameController
 if typing.TYPE_CHECKING:
     from SectorBase import SectorBase
@@ -74,7 +73,6 @@ class PlayerMission(object):
 MissionTriggerArgs = namedtuple('MissionTriggerArgs', ('forceMissionUpdate', 'callback'))
 
 class EpicMissionsController(IViewComponentsController):
-    sessionProvider = dependency.descriptor(IBattleSessionProvider)
     __epicController = dependency.descriptor(IEpicBattleMetaGameController)
     EMPTY_SUB_TITLE_TEXT = ''
 
@@ -603,7 +601,7 @@ class EpicMissionsController(IViewComponentsController):
                 msgType = GAME_MESSAGES_CONSTS.DESTROY_OBJECTIVE if isAttacker else GAME_MESSAGES_CONSTS.DEFEND_OBJECTIVE
             else:
                 msgType = GAME_MESSAGES_CONSTS.CAPTURE_BASE if isAttacker else GAME_MESSAGES_CONSTS.DEFEND_BASE
-            ctrl = self.sessionProvider.dynamic.gameNotifications
+            ctrl = self.__sessionProvider.dynamic.gameNotifications
             if ctrl is not None:
                 notificationId = ctrl.translateMsgId(msgType)
                 if notificationId != -1 and self.__activeMessages[notificationId] != 0:
@@ -694,7 +692,8 @@ class EpicMissionsController(IViewComponentsController):
         subTitleText = self.EMPTY_SUB_TITLE_TEXT
         rankIdx = rank + 1
         rRank = R.strings.epic_battle.rank
-        if self.__epicController.isRandomBattleReserves():
+        arenaDP = self.__sessionProvider.getArenaDP()
+        if arenaDP and arenaDP.getReservesModifier() == FLBattleReservesModifier.RANDOM:
             subTitleText = backport.text(rRank.slotUnlocked(), slotNumber=backport.text(rRank.dyn(('slot_{}').format(rankIdx))())) if rankIdx in [PLAYER_RANK.SERGEANT, PLAYER_RANK.LIEUTENANT] else backport.text(rRank.allReserveUpgraded()) if rankIdx != PLAYER_RANK.GENERAL else self.EMPTY_SUB_TITLE_TEXT
         else:
             firstUnlocked, updateInfo = self.getRankUpdateData(rank)
@@ -744,7 +743,7 @@ class EpicMissionsController(IViewComponentsController):
         return PlayerMessageData(messageType=str(msgType), length=MSG_ID_TO_DURATION[msgType], priority=MSG_ID_TO_PRIORITY[msgType], msgData=data)
 
     def __sendNotification(self, messageType):
-        ctrl = self.sessionProvider.dynamic.gameNotifications
+        ctrl = self.__sessionProvider.dynamic.gameNotifications
         if ctrl is not None:
             notificationId = ctrl.translateMsgId(messageType)
             if notificationId != -1:
@@ -753,7 +752,7 @@ class EpicMissionsController(IViewComponentsController):
         return
 
     def __sendIngameMessage(self, msgData):
-        ctrl = self.sessionProvider.dynamic.gameNotifications
+        ctrl = self.__sessionProvider.dynamic.gameNotifications
         if ctrl is not None:
             notificationId = ctrl.translateMsgId(msgData.messageType)
             if notificationId != -1:

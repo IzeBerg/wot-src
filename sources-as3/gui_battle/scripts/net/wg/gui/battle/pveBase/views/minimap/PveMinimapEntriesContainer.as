@@ -29,6 +29,8 @@ package net.wg.gui.battle.pveBase.views.minimap
       
       public var deathZone:Sprite = null;
       
+      public var stretchableDeathZone:Sprite = null;
+      
       public var goal:Sprite = null;
       
       public var grid:PveMinimapGrid = null;
@@ -80,7 +82,7 @@ package net.wg.gui.battle.pveBase.views.minimap
          {
             this._container.addChild(_loc3_);
          }
-         this._layersWithSameScaleAsBackground = new <DisplayObject>[this.arrows];
+         this._layersWithSameScaleAsBackground = new <DisplayObject>[this.arrows,this.stretchableDeathZone];
          this._backgroundLoader = new Loader();
          this._backgroundLoader.contentLoaderInfo.addEventListener(Event.COMPLETE,this.onLoadingCompleteHandler);
          this._backgroundLoader.contentLoaderInfo.addEventListener(IOErrorEvent.IO_ERROR,this.onLoadingIoErrorHandler);
@@ -115,6 +117,7 @@ package net.wg.gui.battle.pveBase.views.minimap
          this.enemy = null;
          this.ally = null;
          this.deathZone = null;
+         this.stretchableDeathZone = null;
          this.goal = null;
          this._container = null;
          this._backgroundLoader.close();
