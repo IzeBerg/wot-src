@@ -65,6 +65,8 @@ package net.wg.data.constants.generated
       
       public static const WHITE_ICON_SPG_ELITE_16X16:String = "whiteIconSPG_elite16x16";
       
+      public static const WHITE_ICON_BUNKER_16X16:String = "whiteIconBunker16x16";
+      
       public static const DAMAGELOG_ARTILLERY_16X16:String = "damageLog_artillery_16x16";
       
       public static const DAMAGELOG_BERSERKER_16X16:String = "damageLog_berserker_16x16";

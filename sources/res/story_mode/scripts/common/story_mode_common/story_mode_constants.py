@@ -1,5 +1,5 @@
-import enum, arena_bonus_type_caps, constants
-from constants_utils import ConstInjector
+import typing, enum
+from constants import ARENA_BONUS_TYPE, ARENA_GUI_TYPE
 EXTENSION_NAME = 'story_mode'
 LOGGER_NAME = 'story_mode'
 DEFAULT_BATTLES_LIMIT = 500
@@ -8,31 +8,11 @@ PLAYERS_COUNT_KEY = 'stats/story_mode/Queue{}Players'
 PLAYER_BATTLES_COUNT_KEY = 'stats/story_mode/Queue{}PlayerBattlesCount'
 AVG_WAIT_TIME_KEY = 'stats/story_mode/Queue{}AvgWaitTime'
 SM_CONGRATULATIONS_MESSAGE = 'StoryModeCongratulationsMessage'
-STORY_MODE_GAME_PARAMS_KEY = 'story_mode_settings'
-
-class ARENA_GUI_TYPE(constants.ARENA_GUI_TYPE, ConstInjector):
-    STORY_MODE = 100
-
-
-class ARENA_BONUS_TYPE(constants.ARENA_BONUS_TYPE, ConstInjector):
-    STORY_MODE = 100
-
-
-class ARENA_BONUS_TYPE_CAPS(arena_bonus_type_caps.ARENA_BONUS_TYPE_CAPS, ConstInjector):
-    pass
-
-
-class QUEUE_TYPE(constants.QUEUE_TYPE, ConstInjector):
-    STORY_MODE = 100
-
-
-class PREBATTLE_TYPE(constants.PREBATTLE_TYPE, ConstInjector):
-    STORY_MODE = 100
-
-
-class FINISH_REASON(constants.FINISH_REASON, ConstInjector):
-    AFK = 101
-
+STORY_MODE_BONUS_TYPES = (
+ ARENA_BONUS_TYPE.STORY_MODE_ONBOARDING, ARENA_BONUS_TYPE.STORY_MODE_REGULAR)
+STORY_MODE_GUI_TYPE_BY_BONUS_TYPE = {ARENA_BONUS_TYPE.STORY_MODE_ONBOARDING: ARENA_GUI_TYPE.STORY_MODE_ONBOARDING, 
+   ARENA_BONUS_TYPE.STORY_MODE_REGULAR: ARENA_GUI_TYPE.STORY_MODE_REGULAR}
+EVENT_NAME = 'story_mode_dday'
 
 class PRIORITY(enum.IntEnum):
     HIGH = 0
@@ -40,7 +20,26 @@ class PRIORITY(enum.IntEnum):
     LOW = 2
 
 
+@enum.unique
+class MissionsDifficulty(str, enum.Enum):
+    UNDEFINED = ''
+    NORMAL = 'normal'
+    HARD = 'hard'
+
+    @classmethod
+    def getDifficultiesByBattles(cls, battlesCount):
+        hard = {
+         cls.HARD}
+        other = set(cls) - hard
+        if battlesCount > HARD_DIFFICULTY_BATTLES_COUNT:
+            return hard
+        return other
+
+
+HARD_DIFFICULTY_BATTLES_COUNT = 1000
 PROGRESS_PDATA_KEY = 'progress'
 STORY_MODE_PDATA_KEY = 'storyMode'
 UNDEFINED_MISSION_ID = -1
 FIRST_MISSION_ID = 1
+FIRST_MISSION_TASK_ID = 1
+LONG_INT_HALF_SHIFT = 32

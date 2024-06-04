@@ -9,12 +9,16 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "#PluralForms"
+msgstr "nplurals=2; plural=(n != 1);"
 
 msgid "battleResult/reason/1"
 msgstr "All enemy vehicles destroyed"
 
 msgid "battleResult/reason/11"
-msgstr "All missions completed"
+msgstr "All objectives completed"
 
 msgid "battleResult/reason/3"
 msgstr "Battle time expired"
@@ -40,8 +44,23 @@ msgstr "VICTORY!"
 msgid "botNames/Brooks"
 msgstr "Sgt. Brooks"
 
+msgid "botNames/Connolly"
+msgstr "Lt. Arthur Connolly"
+
+msgid "botNames/Dubois"
+msgstr "Capt. Louis Dubois"
+
+msgid "botNames/McCormick"
+msgstr "Capt. John McCormick"
+
 msgid "botNames/McLaud"
 msgstr "Alistair MacLeod"
+
+msgid "botNames/Murphy"
+msgstr "Capt. Jack Murphy"
+
+msgid "bunker"
+msgstr "Coastal Bunker"
 
 msgid "common/battleBtn"
 msgstr "Battle!"
@@ -58,11 +77,125 @@ msgstr "Skip"
 msgid "confirmExit/exit"
 msgstr "Skip"
 
+msgid "confirmExit/exitRegular"
+msgstr "Exit"
+
 msgid "confirmExit/stay"
 msgstr "Cancel"
 
 msgid "confirmExit/title"
 msgstr "Do you want to skip the Tiger Hunter story?"
+
+msgid "confirmExit/titleRegular"
+msgstr "Do you want to exit the story?"
+
+msgid "dday/hint01"
+msgstr "Find a way to destroy the coastal bunkers"
+
+msgid "dday/hint02"
+msgstr "Use smoke signals to aid the battleship"
+
+msgid "dday/objective01/header"
+msgstr "Survive on the beach"
+
+msgid "dday/objective01/subheader"
+msgstr "Avoid enemy fire at all costs"
+
+msgid "dday/objective02/header"
+msgstr "Break the enemy lines"
+
+msgid "dday/objective02/subheader"
+msgid_plural "plural/dday/objective02/subheader"
+msgstr[0] "Destroy %d coastal bunker"
+msgstr[1] "Destroy %d coastal bunkers"
+msgstr[2] "Destroy %d coastal bunkers"
+
+msgid "dday/objective02/success"
+msgstr "All coastal bunkers destroyed!"
+
+msgid "dday/objective03/header"
+msgstr "Make the climb"
+
+msgid "dday/objective03/subheader"
+msgstr "Reach and destroy enemy anti-air battery defenses"
+
+msgid "dday/objective03/success"
+msgstr "Defenses destroyed! Anti-air batteries are silent!"
+
+msgid "dday/objective04/header"
+msgstr "Help your allies break through"
+
+msgid "dday/objective04/subheader"
+msgstr "Neutralize enemy defenses in sector D6"
+
+msgid "dday/objective04/success"
+msgstr "Path for Captain Murphy cleared!"
+
+msgid "dday/objective05/header"
+msgstr "Help Captain Dubois"
+
+msgid "dday/objective05/subheader"
+msgstr "Neutralize enemy defenses in sector H6"
+
+msgid "dday/objective05/success"
+msgstr "Path for Captain Dubois cleared!"
+
+msgid "dday/objective06/header"
+msgstr "Protect the naval forces"
+
+msgid "dday/objective06/subheader"
+msgid_plural "plural/dday/objective06/subheader"
+msgstr[0] "Destroy %d coastal gun"
+msgstr[1] "Destroy %d coastal guns"
+msgstr[2] "Destroy %d coastal guns"
+
+msgid "dday/objective06/success"
+msgstr "All coastal guns destroyed!"
+
+msgid "dday/objective07/header"
+msgstr "Mop up the area"
+
+msgid "dday/objective07/subheader"
+msgid_plural "plural/dday/objective07/subheader"
+msgstr[0] "Destroy %d remaining enemy"
+msgstr[1] "Destroy %d remaining enemies"
+msgstr[2] "Destroy %d remaining enemies"
+
+msgid "dday/objective07/success"
+msgstr "All enemies destroyed!"
+
+msgid "dday/objective08/header"
+msgstr "Hold the ground"
+
+msgid "dday/objective08/subheader"
+msgid_plural "plural/dday/objective08/subheader"
+msgstr[0] "Destroy %d enemy vehicle"
+msgstr[1] "Destroy %d enemy vehicles"
+msgstr[2] "Destroy %d enemy vehicles"
+
+msgid "dday/objective08/success"
+msgstr "Beachhead protected!"
+
+msgid "dday/prebattle/header"
+msgstr "Prepare for the assault"
+
+msgid "dday/prebattle/start"
+msgstr "Attack!"
+
+msgid "dday/prebattle/subheader"
+msgstr "?empty?"
+
+msgid "dday/respawn/header"
+msgstr "Stand by, soldier"
+
+msgid "dday/respawn/subheader"
+msgstr "Reinforcement is arriving"
+
+msgid "dday/respawn_over/header"
+msgstr "It's over"
+
+msgid "dday/respawn_over/subheader"
+msgstr "All available vehicles have been destroyed"
 
 msgid "epilogue/text"
 msgstr ""
@@ -79,7 +212,7 @@ msgid "finish/reason/1"
 msgstr "ALL ENEMY VEHICLES DESTROYED"
 
 msgid "finish/reason/11"
-msgstr "ALL MISSIONS COMPLETED"
+msgstr "ALL OBJECTIVES COMPLETED"
 
 msgid "finish/reason/3"
 msgstr "BATTLE TIME EXPIRED"
@@ -130,6 +263,12 @@ msgstr "Loading..."
 msgid "prebattle/mission/stage/1"
 msgstr "Operation 1"
 
+msgid "prebattle/mission/stage/1000"
+msgstr "Regular"
+
+msgid "prebattle/mission/stage/1001"
+msgstr "Rigorous"
+
 msgid "prebattle/mission/stage/2"
 msgstr "Operation 2"
 
@@ -137,6 +276,16 @@ msgid "prebattle/mission/task/1"
 msgstr ""
 "{whiteSpanish_Start}Mission:{whiteSpanish_End} Attack the town and destroy "
 "all enemy vehicles."
+
+msgid "prebattle/mission/task/1000"
+msgstr ""
+"{whiteSpanish_Start}Break through, destroy the coastal guns, and capture the"
+" bridgehead.{whiteSpanish_End}"
+
+msgid "prebattle/mission/task/1001"
+msgstr ""
+"{whiteSpanish_Start}Break through, destroy the coastal guns, and capture the"
+" bridgehead.{whiteSpanish_End}"
 
 msgid "prebattle/mission/task/2"
 msgstr ""
@@ -151,6 +300,22 @@ msgstr ""
 "\n"
 "And don't pay his jokes any mind. Everyone has their own unique coping mechanisms… Forward!\""
 
+msgid "prebattle/mission/text/1000"
+msgstr ""
+"Captain John McCormick: \"Alright, fellas, the day has come. It's time to put an end to this war, and that's exactly what we're gonna do. All of us, together–Americans, Brits, French, Canadians, Australians, Belgians, Czechoslovaks, Greeks, Dutch, Kiwis, Norwegians, Poles. We're united to put an end to this evil once and for all.\n"
+"\n"
+"We're gonna break through the Atlantic Wall and establish our foothold.\n"
+"\n"
+"Get ready for the landing!\""
+
+msgid "prebattle/mission/text/1001"
+msgstr ""
+"Captain John McCormick: \"Alright, fellas, the day has come. It's time to put an end to this war, and that's exactly what we're gonna do. All of us, together–Americans, Brits, French, Canadians, Australians, Belgians, Czechoslovaks, Greeks, Dutch, Kiwis, Norwegians, Poles. We're united to put an end to this evil once and for all.\n"
+"\n"
+"We're gonna break through the Atlantic Wall and establish our foothold.\n"
+"\n"
+"Get ready for the landing!\""
+
 msgid "prebattle/mission/text/2"
 msgstr ""
 "MacLeod: \"Ah, Tigers — those are the worst ye can face on the battlefield. And if the command says they have a problem, they probably mean Tigers. We cannot contact the first assault squad, the second's just departed, and here we are — sent to follow them.\n"
@@ -161,6 +326,12 @@ msgstr ""
 
 msgid "prebattle/mission/title/1"
 msgstr "Steel Avalanche"
+
+msgid "prebattle/mission/title/1000"
+msgstr "Operation Overlord"
+
+msgid "prebattle/mission/title/1001"
+msgstr "Operation Overlord"
 
 msgid "prebattle/mission/title/2"
 msgstr "Trapper"

@@ -2,14 +2,6 @@ from gui.Scaleform.daapi.view.battle.shared.postmortem_panel import PostmortemPa
 
 class BattleRoyalePostmortemPanelMeta(PostmortemPanel):
 
-    def as_showDeadReasonS(self):
+    def as_setPostmortemPanelCanBeVisibleS(self, value):
         if self._isDAAPIInited():
-            return self.flashObject.as_showDeadReason()
-
-    def as_setPlayerInfoS(self, playerInfo):
-        if self._isDAAPIInited():
-            return self.flashObject.as_setPlayerInfo(playerInfo)
-
-    def as_setPostmortemPanelVisibleS(self, value):
-        if self._isDAAPIInited():
-            return self.flashObject.as_setPostmortemPanelVisible(value)
+            return self.flashObject.as_setPostmortemPanelCanBeVisible(value)

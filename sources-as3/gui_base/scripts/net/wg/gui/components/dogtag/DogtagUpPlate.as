@@ -9,6 +9,10 @@ package net.wg.gui.components.dogtag
    {
       
       private static const BLINK_ANIMATE_PLAY:String = "play";
+      
+      private static const DEFAULT_DOGTAG_FRAME_LABEL:String = "default";
+      
+      private static const ANIMATED_DOGTAG_FRAME_LABEL:String = "animated";
        
       
       public var playerName:TextField = null;
@@ -23,8 +27,11 @@ package net.wg.gui.components.dogtag
       
       private var _engraving:Image = null;
       
+      private var _imageRepository:ImageRepository;
+      
       public function DogtagUpPlate()
       {
+         this._imageRepository = ImageRepository.getInstance();
          super();
          this._plate = new Image();
          this._engraving = new Image();
@@ -46,20 +53,22 @@ package net.wg.gui.components.dogtag
          this.rankShadowMc = null;
          this._plate.dispose();
          this._plate = null;
+         this._imageRepository = null;
          super.onDispose();
       }
       
-      public function setDogTagInfo(param1:String, param2:String, param3:String, param4:String) : void
+      public function setDogTagInfo(param1:String, param2:String, param3:String, param4:String, param5:Boolean) : void
       {
+         this.gotoAndStop(!!param5 ? ANIMATED_DOGTAG_FRAME_LABEL : DEFAULT_DOGTAG_FRAME_LABEL);
          this.playerName.text = param1;
          this.clan.text = param2;
          App.utils.commons.updateTextFieldSize(this.playerName,true,false);
          App.utils.commons.truncateTextFieldText(this.playerName,param1);
          App.utils.commons.updateTextFieldSize(this.playerName,true,false);
-         if(ImageRepository.getInstance().hasImages)
+         if(this._imageRepository.hasImages)
          {
-            this._plate.bitmapData = ImageRepository.getInstance().getImageBitmapData(param3);
-            this._engraving.bitmapData = ImageRepository.getInstance().getImageBitmapData(param4);
+            this._plate.bitmapData = this._imageRepository.getImageBitmapData(param3);
+            this._engraving.bitmapData = this._imageRepository.getImageBitmapData(param4);
          }
          else
          {

@@ -6,6 +6,8 @@ package net.wg.infrastructure.base.meta
    {
        
       
+      function onDeactivateRadialMenuS() : void;
+      
       function as_setSelectReservesAvailable(param1:Boolean) : void;
       
       function as_setVehPostProgressionEnabled(param1:Boolean) : void;

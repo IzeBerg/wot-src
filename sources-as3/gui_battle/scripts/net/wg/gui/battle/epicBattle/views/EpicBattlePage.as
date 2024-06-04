@@ -285,6 +285,7 @@ package net.wg.gui.battle.epicBattle.views
          this.epicRespawnView.mouseEnabled = false;
          this.hintPanel.addEventListener(Event.RESIZE,this.onHintPanelResizeHandler);
          this.upgradePanel.addEventListener(ComponentEvent.STATE_CHANGE,this.onUpgradePanelStateChange);
+         this.radialMenu.addEventListener(Event.DEACTIVATE,this.onRedialMenuDeactivateHandler);
       }
       
       override protected function onPopulate() : void
@@ -344,6 +345,7 @@ package net.wg.gui.battle.epicBattle.views
          this.epicScorePanelUI.removeEventListener(EpicScorePanelEvent.STATE_CHANGED,this.onScorePanelStateChangedHandler);
          battleLoading.removeEventListener(EpicBattleLoadingEvent.VISIBILITY_CHANGED,this.onBattleLoadingVisibilityChangedHandler);
          this.hintPanel.removeEventListener(Event.RESIZE,this.onHintPanelResizeHandler);
+         this.radialMenu.removeEventListener(Event.DEACTIVATE,this.onRedialMenuDeactivateHandler);
          super.onBeforeDispose();
       }
       
@@ -557,6 +559,11 @@ package net.wg.gui.battle.epicBattle.views
       private function onHintPanelResizeHandler(param1:Event) : void
       {
          this.updateHintPanelPosition();
+      }
+      
+      private function onRedialMenuDeactivateHandler(param1:Event) : void
+      {
+         onDeactivateRadialMenuS();
       }
       
       private function onBattleMessengerRequestFocusHandler(param1:FocusRequestEvent) : void

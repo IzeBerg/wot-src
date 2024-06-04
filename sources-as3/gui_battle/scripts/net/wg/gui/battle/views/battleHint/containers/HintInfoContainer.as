@@ -3,70 +3,86 @@ package net.wg.gui.battle.views.battleHint.containers
    import flash.display.Sprite;
    import flash.text.TextField;
    import flash.text.TextFieldAutoSize;
+   import flash.text.TextFormat;
    import net.wg.data.constants.Values;
-   import net.wg.gui.components.controls.UILoaderAlt;
-   import net.wg.gui.events.UILoaderEvent;
    import net.wg.infrastructure.interfaces.entity.IDisposable;
    
    public class HintInfoContainer extends Sprite implements IDisposable
    {
+      
+      private static const TEXTFIELD_Y_SMALL:int = -11;
+      
+      private static const TEXTFIELD_Y_BIG:int = -14;
+      
+      private static const FONT_SIZE_SMALL:int = 24;
+      
+      private static const FONT_SIZE_BIG:int = 36;
        
       
       public var txt:TextField = null;
       
-      public var highlight:UILoaderAlt = null;
-      
       private var _disposed:Boolean = false;
+      
+      private var _isBig:Boolean = false;
+      
+      private var _offset:int = 0;
+      
+      private var _textFormat:TextFormat = null;
       
       public function HintInfoContainer()
       {
          super();
          this.txt.autoSize = TextFieldAutoSize.CENTER;
-         this.highlight.addEventListener(UILoaderEvent.COMPLETE,this.onHighlightCompleteHandler,false,0,true);
+         this._textFormat = this.txt.getTextFormat();
       }
       
       public final function dispose() : void
       {
-         this._disposed = true;
-         this.highlight.removeEventListener(UILoaderEvent.COMPLETE,this.onHighlightCompleteHandler);
-         this.highlight.dispose();
          this.txt = null;
-         this.highlight = null;
+         this._disposed = true;
       }
       
       public function clear() : void
       {
          this.txt.htmlText = Values.EMPTY_STR;
-         this.highlight.unload();
          this.setOffset(0);
       }
       
-      public function setHintData(param1:String, param2:String = null) : void
+      public function setMessage(param1:String) : void
       {
          this.txt.htmlText = param1;
-         this.highlight.source = param2;
       }
       
       public function setOffset(param1:int) : void
       {
-         this.txt.y = param1;
-         this.updateHighlightPosition();
+         this._offset = param1;
+         this.updateTextField();
+      }
+      
+      public function setIsBigSize(param1:Boolean) : void
+      {
+         this._isBig = param1;
+         this.updateTextField();
+      }
+      
+      private function updateTextField() : void
+      {
+         if(this._isBig)
+         {
+            this.txt.y = TEXTFIELD_Y_BIG + this._offset;
+            this._textFormat.size = FONT_SIZE_BIG;
+         }
+         else
+         {
+            this.txt.y = TEXTFIELD_Y_SMALL + this._offset;
+            this._textFormat.size = FONT_SIZE_SMALL;
+         }
+         this.txt.setTextFormat(this._textFormat);
       }
       
       public function isDisposed() : Boolean
       {
          return this._disposed;
-      }
-      
-      private function onHighlightCompleteHandler(param1:UILoaderEvent) : void
-      {
-         this.updateHighlightPosition();
-      }
-      
-      private function updateHighlightPosition() : void
-      {
-         this.highlight.x = -this.highlight.width >> 1;
-         this.highlight.y = this.txt.y + (this.txt.height - this.highlight.height >> 1) | 0;
       }
    }
 }

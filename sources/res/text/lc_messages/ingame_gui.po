@@ -680,6 +680,12 @@ msgstr "Critical Damage"
 msgid "efficiencyRibbons/damage"
 msgstr "Damage Caused"
 
+msgid "efficiencyRibbons/damageByBattleship"
+msgstr "Battleship salvo damage"
+
+msgid "efficiencyRibbons/damageByDestroyer"
+msgstr "U.S.S. Frankford damage"
+
 msgid "efficiencyRibbons/damageByMinefield"
 msgstr "Damage by Mines"
 
@@ -721,6 +727,9 @@ msgstr "Vehicle repaired"
 
 msgid "efficiencyRibbons/kill"
 msgstr "Destroyed"
+
+msgid "efficiencyRibbons/minefieldZone"
+msgstr "Minefield damage"
 
 msgid "efficiencyRibbons/ram"
 msgstr "Ramming"
@@ -1212,6 +1221,12 @@ msgstr "Crew %(target)s destroyed."
 msgid ""
 "player_messages/DEATH_FROM_INACTIVE_CREW_AT_WORLD_COLLISION_SELF_SUICIDE"
 msgstr "Crew destroyed."
+
+msgid "player_messages/DEATH_FROM_MINEFIELD_ZONE_ALLY_SUICIDE"
+msgstr "Ally %(target)s destroyed by minefield."
+
+msgid "player_messages/DEATH_FROM_MINEFIELD_ZONE_SELF_SUICIDE"
+msgstr "%(target)s destroyed."
 
 msgid "player_messages/DEATH_FROM_MINE_EXPLOSION_ALLY_ENEMY_ARCADE"
 msgstr "%(attacker)s destroyed %(target)s by mines."
@@ -1734,6 +1749,9 @@ msgstr "Crew knocked out by a strong impact"
 
 msgid "postmortem_messages/DEATH_FROM_KAMIKAZE"
 msgstr "Vehicle destroyed by Fireball."
+
+msgid "postmortem_messages/DEATH_FROM_MINEFIELD_ZONE_SELF_SUICIDE"
+msgstr "Vehicle destroyed on minefield"
 
 msgid "postmortem_messages/DEATH_FROM_MINE_EXPLOSION"
 msgstr "Vehicle destroyed by mines"
@@ -3118,6 +3136,12 @@ msgstr "Enemy %(entity)s impact damaged device [%(device)s]."
 
 msgid "vehicle_messages/DEVICE_CRITICAL_AT_WORLD_COLLISION_SELF_SUICIDE"
 msgstr "Device [%(device)s] is damaged by impact."
+
+msgid "vehicle_messages/DEVICE_DESTROYED_AT_MINEFIELD_ZONE_ALLY_SUICIDE"
+msgstr "Device [%(device)s] was destroyed on the minefield."
+
+msgid "vehicle_messages/DEVICE_DESTROYED_AT_MINEFIELD_ZONE_SELF_SUICIDE"
+msgstr "Device [%(device)s] was destroyed on the minefield."
 
 msgid "vehicle_messages/DEVICE_DESTROYED_AT_RAMMING_ALLY_ALLY"
 msgstr "Ally %(entity)s destroyed device [%(device)s] by ramming."

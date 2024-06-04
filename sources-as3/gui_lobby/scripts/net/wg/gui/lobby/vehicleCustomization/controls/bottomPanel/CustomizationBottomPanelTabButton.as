@@ -68,6 +68,11 @@ package net.wg.gui.lobby.vehicleCustomization.controls.bottomPanel
          super();
       }
       
+      override public function getOriginSize() : Point
+      {
+         return new Point(this.calculateOriginWidth(),calculateOriginHeight());
+      }
+      
       override protected function initialize() : void
       {
          super.initialize();
@@ -301,15 +306,15 @@ package net.wg.gui.lobby.vehicleCustomization.controls.bottomPanel
          this.setState(OUT);
       }
       
-      private function onIconChangeHandler(param1:Event) : void
-      {
-         invalidate(LAYOUT_INVALID);
-      }
-      
       override protected function onMouseRollOverHandler(param1:MouseEvent) : void
       {
          super.onMouseRollOverHandler(param1);
          dispatchEvent(new CustomizationSoundEvent(CustomizationSoundEvent.PLAY_SOUND,CUSTOMIZATION_ALIASES.SOUND_CUST_HIGHLIGHT));
+      }
+      
+      private function onIconChangeHandler(param1:Event) : void
+      {
+         invalidate(LAYOUT_INVALID);
       }
    }
 }

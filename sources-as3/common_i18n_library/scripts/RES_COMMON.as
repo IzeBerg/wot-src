@@ -15,9 +15,9 @@ package
       
       public static const MAPS_ICONS_ACHIEVEMENTS_BG:String = "../maps/icons/achievements/bg.png";
       
-      public static const MAPS_ICONS_BATTLEMATTERS_ENTRYPOINT_BG:String = "../maps/icons/battleMatters/entryPoint/bg.png";
+      public static const MAPS_ICONS_ACHIEVEMENTS_REWARDVIEW_BG:String = "../maps/icons/achievements/rewardView/bg.png";
       
-      public static const MAPS_ICONS_BATTLEPASS_CUSTOM_TANKMEN_SCREEN_BACKGROUNDS_BG:String = "../maps/icons/battlePass/custom_tankmen_screen/backgrounds/bg.png";
+      public static const MAPS_ICONS_BATTLEMATTERS_ENTRYPOINT_BG:String = "../maps/icons/battleMatters/entryPoint/bg.png";
       
       public static const MAPS_ICONS_BATTLEPASS_OFF_SEASON_BG:String = "../maps/icons/battlePass/off_season/bg.png";
       

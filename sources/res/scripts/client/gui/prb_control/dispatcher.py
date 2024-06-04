@@ -84,6 +84,9 @@ class _PreBattleDispatcher(ListenersCollection):
     def getEntity(self):
         return self.__entity
 
+    def getPrevEntity(self):
+        return self.__prevEntity
+
     def getControlFactories(self):
         return self.__factories
 
@@ -674,6 +677,7 @@ class _PreBattleDispatcher(ListenersCollection):
             self.__entity = created
             if self.__prevEntity is not None and self.__prevEntity.isActive():
                 self.__prevEntity.fini()
+            self.__entity.setPreviousEntity(self.__prevEntity)
             self.__prevEntity = NotSupportedEntity()
             flag = self.__entity.init(ctx=ctx)
             self.notifyPrbEntitySwitched()

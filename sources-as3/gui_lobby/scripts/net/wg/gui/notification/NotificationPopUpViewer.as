@@ -1,6 +1,7 @@
 package net.wg.gui.notification
 {
    import fl.transitions.easing.Strong;
+   import flash.display.DisplayObject;
    import flash.display.DisplayObjectContainer;
    import flash.events.Event;
    import flash.events.MouseEvent;
@@ -29,6 +30,10 @@ package net.wg.gui.notification
       private static const DEFAULT_PADDING:Point = new Point(5,40);
       
       private static const LAYERS_DEF_PADDING:Vector.<String> = new <String>[LAYER_NAMES.FULLSCREEN_WINDOWS,LAYER_NAMES.OVERLAY,LAYER_NAMES.TOP_SUB_VIEW];
+      
+      private static const EARNING_OFFSET_X:Number = 500;
+      
+      private static const EARNING_OFFSET_Y:Number = 0;
       
       private static const EXCLUDED_VIEW_ALIASES:Vector.<String> = new <String>[Aliases.LOBBY_HANGAR,"customization","ammunitionSetupView"];
        
@@ -63,6 +68,10 @@ package net.wg.gui.notification
       
       private var _countViewsWithExternalPadding:int = 0;
       
+      private var _earningView:AdvancedAchievementEarningView = null;
+      
+      private var _earningViewDisplayObject:DisplayObject = null;
+      
       public function NotificationPopUpViewer(param1:Class)
       {
          this._pendingForDisplay = new Vector.<PopUpNotificationInfoVO>();
@@ -85,6 +94,16 @@ package net.wg.gui.notification
          this._containerMgr.addEventListener(ContainerManagerEvent.VIEW_REMOVED,this.onContainerMgrViewLoadingHandler);
       }
       
+      override protected function onPopulate() : void
+      {
+         super.onPopulate();
+         this._earningView = new AdvancedAchievementEarningView();
+         this._earningView.name = "EarningView";
+         this._earningViewDisplayObject = DisplayObject(this._earningView);
+         this._smContainer.addChild(DisplayObject(this._earningView));
+         registerFlashComponentS(this._earningView,Aliases.ADVANCED_ACHIEVEMENTS_EARNING_VIEW);
+      }
+      
       override protected function draw() : void
       {
          var _loc1_:ServiceMessagePopUp = null;
@@ -97,6 +116,10 @@ package net.wg.gui.notification
          var _loc8_:uint = 0;
          var _loc9_:int = 0;
          super.draw();
+         if(this._arrangeLayout && this._stageDimensions)
+         {
+            this.setupEarningPosition();
+         }
          if((this._arrangeLayout || this._isMessagesCountInvalid) && this._stageDimensions)
          {
             _loc4_ = 0;
@@ -124,6 +147,7 @@ package net.wg.gui.notification
                   _loc4_ += _loc2_;
                   this._displayingNowPopUps.splice(_loc7_,0,_loc1_);
                   _loc7_++;
+                  this._smContainer.setChildIndex(this._earningViewDisplayObject,this._smContainer.numChildren - 1);
                }
                else
                {
@@ -213,6 +237,8 @@ package net.wg.gui.notification
          this._animationManager.dispose();
          this._animationManager = null;
          this._padding = null;
+         this._earningView = null;
+         this._earningViewDisplayObject = null;
          this._externalPadding = null;
          this._stageDimensions = null;
          this._popupClass = null;
@@ -300,6 +326,12 @@ package net.wg.gui.notification
             "alpha":1,
             "x":this._stageDimensions.x - param1.width - this._padding.x >> 0
          },this.getDefaultTweenSet());
+      }
+      
+      private function setupEarningPosition() : void
+      {
+         this._earningView.x = App.appWidth - EARNING_OFFSET_X;
+         this._earningView.y = EARNING_OFFSET_Y;
       }
       
       private function getDefaultTweenSet() : Object

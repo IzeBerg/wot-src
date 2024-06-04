@@ -266,7 +266,10 @@ def vehiclesComparator(comparableVehicle, vehicle):
 
 
 def previewVehiclesComparator(comparableVehicle, vehicle):
-    return VehiclesComparator(params.VehicleParams(comparableVehicle).getParamsDict(), params.VehicleParams(vehicle).getParamsDict(), suitableArtefacts=g_paramsCache.getCompatibleArtefacts(comparableVehicle), bonuses=params.VehicleParams(comparableVehicle).getBonuses(comparableVehicle, False))
+    if vehicle is None:
+        return
+    else:
+        return VehiclesComparator(params.VehicleParams(comparableVehicle).getParamsDict(), params.VehicleParams(vehicle).getParamsDict(), suitableArtefacts=g_paramsCache.getCompatibleArtefacts(comparableVehicle), bonuses=params.VehicleParams(comparableVehicle).getBonuses(comparableVehicle, False))
 
 
 def _getIdealCrewVehicle(vehicle):

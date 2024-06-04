@@ -345,14 +345,6 @@ class EventsCache(IEventsCache):
 
         return self._getQuests(hiddenFilterFunc)
 
-    def getHiddenBattleQuests(self, filterFunc=None):
-        filterFunc = filterFunc or (lambda a: True)
-
-        def userFilterFunc(q):
-            return q.isHidden() and q.getType() == EVENT_TYPE.BATTLE_QUEST and filterFunc(q)
-
-        return self._getQuests(userFilterFunc)
-
     def getRankedQuests(self, filterFunc=None):
         filterFunc = filterFunc or (lambda a: True)
 

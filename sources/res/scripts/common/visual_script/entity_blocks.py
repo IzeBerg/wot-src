@@ -265,25 +265,3 @@ class IsEntityDestroyed(Block, EntityMeta):
                 self._isDestroyed.setValue(True)
         except (AttributeError, ReferenceError):
             self._isDestroyed.setValue(True)
-
-
-class MoveRelative(Block, EntityMeta):
-
-    def __init__(self, *args, **kwargs):
-        super(MoveRelative, self).__init__(*args, **kwargs)
-        self._in = self._makeEventInputSlot('in', self._exec)
-        self._entity = self._makeDataInputSlot('entity', SLOT_TYPE.ENTITY)
-        self._position = self._makeDataInputSlot('position', SLOT_TYPE.VECTOR3)
-        self._velocity = self._makeDataInputSlot('velocity', SLOT_TYPE.FLOAT)
-        self._out = self._makeEventOutputSlot('out')
-
-    @classmethod
-    def blockAspects(cls):
-        return [ASPECT.SERVER]
-
-    def _exec(self):
-        entity = self._entity.getValue()
-        position = self._position.getValue()
-        velocity = self._velocity.getValue()
-        entity.moveToPoint(entity.position + position, velocity, 0, False, True)
-        self._out.call()

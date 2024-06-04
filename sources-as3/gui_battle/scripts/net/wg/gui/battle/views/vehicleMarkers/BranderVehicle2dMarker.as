@@ -56,7 +56,7 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       private static const VM_DEAD_PREFIX:String = "vm_dead_";
       
-      private static const VM_STUN_PREFIX:String = "vm_stun_";
+      private static const VM_STUN_PREFIX:String = "vm_stun_br_";
       
       private static const VM_STUN_POSTFIX:String = "_schema";
       

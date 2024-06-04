@@ -445,6 +445,15 @@ package net.wg.gui.battle.views.consumablesPanel
          }
       }
       
+      public function as_setIdleEnabledGlow(param1:int, param2:Boolean) : void
+      {
+         var _loc3_:IConsumablesButton = this.getRendererBySlotIdx(param1);
+         if(_loc3_)
+         {
+            _loc3_.setIdleEnabledGlow(param2);
+         }
+      }
+      
       public function as_setGlow(param1:int, param2:int) : void
       {
          var _loc3_:IConsumablesButton = this.getRendererBySlotIdx(param1);

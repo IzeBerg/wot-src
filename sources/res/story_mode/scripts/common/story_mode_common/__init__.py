@@ -1,10 +1,10 @@
-import constants
-from constants_utils import initCommonTypes
-from story_mode_common import story_mode_constants
-from story_mode_common.configs.story_mode_settings import settingsSchema
+
 
 def injectConsts(personality):
-    initCommonTypes(story_mode_constants, personality)
-    story_mode_constants.FINISH_REASON.inject(personality)
-    constants.FINISH_REASON_NAMES.update((v, k) for k, v in story_mode_constants.FINISH_REASON.getExtraAttrs().iteritems())
+    import constants
+    from story_mode_common.configs.story_mode_missions import missionsSchema
+    from story_mode_common.configs.story_mode_settings import settingsSchema
+    from story_mode_common.configs.story_mode_battle_mgr_quotums import quotumsSchema
     constants.INBATTLE_CONFIGS.append(settingsSchema.gpKey)
+    constants.INBATTLE_CONFIGS.append(missionsSchema.gpKey)
+    constants.INBATTLE_CONFIGS.append(quotumsSchema.gpKey)

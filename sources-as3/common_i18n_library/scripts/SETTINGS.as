@@ -787,6 +787,8 @@ package
       
       public static const GAME_SHOWDOGTAGTOKILLER:String = "#settings:game/showDogTagToKiller";
       
+      public static const GAME_SHOWPERSONALANIMATEDDOGTAG:String = "#settings:game/showPersonalAnimatedDogTag";
+      
       public static const GAME_FIELDSET_HEADERCHAT:String = "#settings:game/fieldset/headerChat";
       
       public static const GAME_FIELDSET_HEADERBATTLECOMMUNICATION:String = "#settings:game/fieldset/headerBattleCommunication";

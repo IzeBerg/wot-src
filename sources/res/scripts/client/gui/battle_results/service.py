@@ -7,7 +7,7 @@ from gui import SystemMessages
 from gui.Scaleform.locale.BATTLE_RESULTS import BATTLE_RESULTS
 from gui.battle_results import composer, context, emblems, reusable, stored_sorting
 from gui.battle_results.composer import StatsComposer
-from gui.battle_results.settings import PREMIUM_STATE, REQUEST_SOURCE
+from gui.battle_results.settings import PREMIUM_STATE
 from gui.shared import event_dispatcher, events, g_eventBus
 from gui.shared.gui_items.processors.common import BattleResultsGetter, PremiumBonusApplier
 from gui.shared.utils import decorators
@@ -70,10 +70,11 @@ class BattleResultsService(IBattleResultsService):
                 return
 
             yield dummy
-            self.__notifyBattleResultsPosted(arenaUniqueID, needToShowUI=ctx.needToShowIfPosted(), requestSource=ctx.getRequestSource())
+            self.__notifyBattleResultsPosted(arenaUniqueID, needToShowUI=ctx.needToShowIfPosted())
         else:
             results = yield BattleResultsGetter(arenaUniqueID).request()
-            if not results.success and ctx.getArenaBonusType() == ARENA_BONUS_TYPE.MAPS_TRAINING:
+            if not results.success and ctx.getArenaBonusType() in (ARENA_BONUS_TYPE.MAPS_TRAINING,
+             ARENA_BONUS_TYPE.EPIC_BATTLE):
                 results = yield self.waitForBattleResults(arenaUniqueID)
             isSuccess = results.success
             if not isSuccess or not self.postResult(results.auxData, ctx.needToShowIfPosted()):
@@ -151,7 +152,8 @@ class BattleResultsService(IBattleResultsService):
         return arenaUniqueID in self.__appliedAddXPBonus
 
     def isAddXPBonusEnabled(self, arenaUniqueID):
-        return arenaUniqueID in self.__getAdditionalXPBattles() and (self.itemsCache.items.stats.isPremium or self.wotPlusController.isEnabled() and self.itemsCache.items.stats.applyAdditionalWoTPlusXPCount > 0)
+        isWotPlusEnabled = self.lobbyContext.getServerSettings().isRenewableSubEnabled()
+        return arenaUniqueID in self.__getAdditionalXPBattles() and (self.itemsCache.items.stats.isPremium or self.wotPlusController.isEnabled() and isWotPlusEnabled)
 
     def getAdditionalXPValue(self, arenaUniqueID):
         arenaInfo = self.__getAdditionalXPBattles().get(arenaUniqueID)
@@ -205,12 +207,12 @@ class BattleResultsService(IBattleResultsService):
     def notifyBattleResultsPosted(self, arenaUniqueID, needToShowUI=False):
         self.__notifyBattleResultsPosted(arenaUniqueID, needToShowUI)
 
-    def __notifyBattleResultsPosted(self, arenaUniqueID, needToShowUI=False, requestSource=REQUEST_SOURCE.OTHER):
+    def __notifyBattleResultsPosted(self, arenaUniqueID, needToShowUI=False):
         composerObj = self.__composers[arenaUniqueID]
         window = None
         if needToShowUI:
-            window = composerObj.onShowResults(arenaUniqueID, requestSource)
-        composerObj.onResultsPosted(arenaUniqueID, requestSource)
+            window = composerObj.onShowResults(arenaUniqueID)
+        composerObj.onResultsPosted(arenaUniqueID)
         return window
 
     def __handleLobbyViewLoaded(self, _):

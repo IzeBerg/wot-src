@@ -191,6 +191,8 @@ package net.wg.data
       
       public static const ITEM_SELECTOR_DEMONSTRATOR:String = "DemonstrationItem_UI";
       
+      public static const ADVANCED_ACHIEVEMENTS_EARNING_VIEW:String = "achievementsEarningView";
+      
       public static const BOOSTERS_PANEL:String = "boostersPanel";
       
       public static const LOBBY_EVENT_BOARDS_AWARDGROUPS:String = "eventBoardsAwardGroupsLobby";

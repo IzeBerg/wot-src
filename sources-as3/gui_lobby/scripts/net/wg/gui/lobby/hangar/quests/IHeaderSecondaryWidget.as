@@ -1,8 +1,9 @@
 package net.wg.gui.lobby.hangar.quests
 {
+   import flash.events.IEventDispatcher;
    import flash.geom.Point;
    
-   public interface IHeaderSecondaryWidget extends IHeaderEntryPoint
+   public interface IHeaderSecondaryWidget extends IHeaderEntryPoint, IEventDispatcher
    {
        
       

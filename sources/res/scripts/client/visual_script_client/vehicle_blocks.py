@@ -1,14 +1,15 @@
-import weakref, random, BigWorld, GenericComponents
+import random, weakref, BigWorld, GenericComponents
+from constants import IS_VS_EDITOR, VEHICLE_CLASSES
 from visual_script.block import Block, InitParam, buildStrKeysValue
-from visual_script.slot_types import SLOT_TYPE
 from visual_script.misc import ASPECT, EDITOR_TYPE, errorVScript
+from visual_script.slot_types import SLOT_TYPE
 from visual_script.tunable_event_block import TunableEventBlock
 from visual_script.vehicle_blocks import VehicleMeta
 from visual_script.vehicle_blocks_bases import NoCrewCriticalBase, OptionalDevicesBase, VehicleClassBase, GunTypeInfoBase, VehicleForwardSpeedBase, VehicleCooldownEquipmentBase, VehicleClipFullAndReadyBase, GetTankOptDevicesHPModBase, IsInHangarBase, VehicleRadioDistanceBase, NoInnerDeviceDamagedBase
-from constants import IS_VS_EDITOR, VEHICLE_CLASSES
 if not IS_VS_EDITOR:
     from helpers import dependency, isPlayerAccount
     from skeletons.gui.shared import IItemsCache
+    from VehicleRespawnComponent import VehicleRespawnComponent
 
 class GetVehicleLabel(Block, VehicleMeta):
 
@@ -402,3 +403,27 @@ class GetVehicleTier(Block):
     @classmethod
     def blockAspects(cls):
         return [ASPECT.CLIENT]
+
+
+class OnAnyVehicleRespawned(TunableEventBlock, VehicleMeta):
+    _EVENT_SLOT_NAMES = [
+     'onRespawn']
+
+    def __init__(self, *args, **kwargs):
+        super(OnAnyVehicleRespawned, self).__init__(*args, **kwargs)
+        self._vehicle = self._makeDataOutputSlot('vehicle', SLOT_TYPE.VEHICLE, None)
+        return
+
+    @classmethod
+    def blockIcon(cls):
+        return ':vse/blocks/arena_event'
+
+    def onStartScript(self):
+        VehicleRespawnComponent.onVehicleRespawned += self._vehicleRespawnHandler
+
+    def onFinishScript(self):
+        VehicleRespawnComponent.onVehicleRespawned -= self._vehicleRespawnHandler
+
+    @TunableEventBlock.eventProcessor
+    def _vehicleRespawnHandler(self, vehicle):
+        self._vehicle.setValue(weakref.proxy(vehicle))

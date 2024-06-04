@@ -107,6 +107,14 @@
 			<offset>0 0 0 0</offset>
 		</transform>
 	</oliveTransform>
+	<redStatusMarkerColor>
+		<alias_color>red</alias_color>
+		<rgba>255 221 156 255</rgba>
+	</redStatusMarkerColor>
+	<purpleStatusMarkerColor>
+		<alias_color>purple</alias_color>
+		<rgba>153 153 255 255</rgba>
+	</purpleStatusMarkerColor>
 	<selectedOrSquadDeadSchema>
 		<default>
 			<schemeGroup>brownColor</schemeGroup>
@@ -325,6 +333,30 @@
 			<rgba>153 153 255 255</rgba>
 		</color_blind>
 	</vm_stun_enemy_schema>
+	<vm_stun_br_ally_schema>
+		<default>
+			<schemeGroup>redStatusMarkerColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
+		</color_blind>
+	</vm_stun_br_ally_schema>
+	<vm_stun_br_squadman_schema>
+		<default>
+			<schemeGroup>redStatusMarkerColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
+		</color_blind>
+	</vm_stun_br_squadman_schema>
+	<vm_stun_br_enemy_schema>
+		<default>
+			<schemeGroup>redStatusMarkerColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
+		</color_blind>
+	</vm_stun_br_enemy_schema>
 	<yellow_tank_color>
 		<alias_color>green</alias_color>
 		<rgba>52 118 12 255</rgba>
@@ -842,10 +874,14 @@
 			</transform>
 		</default>
 	</vm_dead_team1>
-	<vm_stun_team1_schema>
-		<alias_color>green</alias_color>
-		<rgba>221 255 153 255</rgba>
-	</vm_stun_team1_schema>
+	<vm_stun_br_team1_schema>
+		<default>
+			<schemeGroup>redStatusMarkerColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
+		</color_blind>
+	</vm_stun_br_team1_schema>
 	<vm_team2>
 		<default>
 			<alias_color>white</alias_color>
@@ -872,10 +908,14 @@
 			</transform>
 		</default>
 	</vm_dead_team2>
-	<vm_stun_team2_schema>
-		<alias_color>green</alias_color>
-		<rgba>221 255 153 255</rgba>
-	</vm_stun_team2_schema>
+	<vm_stun_br_team2_schema>
+		<default>
+			<schemeGroup>redStatusMarkerColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
+		</color_blind>
+	</vm_stun_br_team2_schema>
 	<vm_team3>
 		<default>
 			<alias_color>white</alias_color>
@@ -902,10 +942,14 @@
 			</transform>
 		</default>
 	</vm_dead_team3>
-	<vm_stun_team3_schema>
-		<alias_color>green</alias_color>
-		<rgba>221 255 153 255</rgba>
-	</vm_stun_team3_schema>
+	<vm_stun_br_team3_schema>
+		<default>
+			<schemeGroup>redStatusMarkerColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
+		</color_blind>
+	</vm_stun_br_team3_schema>
 	<vm_team4>
 		<default>
 			<alias_color>white</alias_color>
@@ -932,10 +976,14 @@
 			</transform>
 		</default>
 	</vm_dead_team4>
-	<vm_stun_team4_schema>
-		<alias_color>green</alias_color>
-		<rgba>221 255 153 255</rgba>
-	</vm_stun_team4_schema>
+	<vm_stun_br_team4_schema>
+		<default>
+			<schemeGroup>redStatusMarkerColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
+		</color_blind>
+	</vm_stun_br_team4_schema>
 	<vm_team5>
 		<default>
 			<alias_color>white</alias_color>
@@ -962,10 +1010,14 @@
 			</transform>
 		</default>
 	</vm_dead_team5>
-	<vm_stun_team5_schema>
-		<alias_color>green</alias_color>
-		<rgba>221 255 153 255</rgba>
-	</vm_stun_team5_schema>
+	<vm_stun_br_team5_schema>
+		<default>
+			<schemeGroup>redStatusMarkerColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
+		</color_blind>
+	</vm_stun_br_team5_schema>
 	<vm_team6>
 		<default>
 			<alias_color>white</alias_color>
@@ -992,10 +1044,14 @@
 			</transform>
 		</default>
 	</vm_dead_team6>
-	<vm_stun_team6_schema>
-		<alias_color>green</alias_color>
-		<rgba>221 255 153 255</rgba>
-	</vm_stun_team6_schema>
+	<vm_stun_br_team6_schema>
+		<default>
+			<schemeGroup>redStatusMarkerColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
+		</color_blind>
+	</vm_stun_br_team6_schema>
 	<vm_team7>
 		<default>
 			<alias_color>white</alias_color>
@@ -1022,10 +1078,14 @@
 			</transform>
 		</default>
 	</vm_dead_team7>
-	<vm_stun_team7_schema>
-		<alias_color>green</alias_color>
-		<rgba>221 255 153 255</rgba>
-	</vm_stun_team7_schema>
+	<vm_stun_br_team7_schema>
+		<default>
+			<schemeGroup>redStatusMarkerColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
+		</color_blind>
+	</vm_stun_br_team7_schema>
 	<vm_team8>
 		<default>
 			<alias_color>white</alias_color>
@@ -1052,10 +1112,14 @@
 			</transform>
 		</default>
 	</vm_dead_team8>
-	<vm_stun_team8_schema>
-		<alias_color>green</alias_color>
-		<rgba>221 255 153 255</rgba>
-	</vm_stun_team8_schema>
+	<vm_stun_br_team8_schema>
+		<default>
+			<schemeGroup>redStatusMarkerColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
+		</color_blind>
+	</vm_stun_br_team8_schema>
 	<vm_team9>
 		<default>
 			<alias_color>white</alias_color>
@@ -1082,10 +1146,14 @@
 			</transform>
 		</default>
 	</vm_dead_team9>
-	<vm_stun_team9_schema>
-		<alias_color>green</alias_color>
-		<rgba>221 255 153 255</rgba>
-	</vm_stun_team9_schema>
+	<vm_stun_br_team9_schema>
+		<default>
+			<schemeGroup>redStatusMarkerColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
+		</color_blind>
+	</vm_stun_br_team9_schema>
 	<vm_team10>
 		<default>
 			<alias_color>white</alias_color>
@@ -1112,10 +1180,14 @@
 			</transform>
 		</default>
 	</vm_dead_team10>
-	<vm_stun_team10_schema>
-		<alias_color>green</alias_color>
-		<rgba>221 255 153 255</rgba>
-	</vm_stun_team10_schema>
+	<vm_stun_br_team10_schema>
+		<default>
+			<schemeGroup>redStatusMarkerColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
+		</color_blind>
+	</vm_stun_br_team10_schema>
 	<vm_team11>
 		<default>
 			<alias_color>white</alias_color>
@@ -1142,10 +1214,14 @@
 			</transform>
 		</default>
 	</vm_dead_team11>
-	<vm_stun_team11_schema>
-		<alias_color>green</alias_color>
-		<rgba>221 255 153 255</rgba>
-	</vm_stun_team11_schema>
+	<vm_stun_br_team11_schema>
+		<default>
+			<schemeGroup>redStatusMarkerColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
+		</color_blind>
+	</vm_stun_br_team11_schema>
 	<vm_team12>
 		<default>
 			<alias_color>white</alias_color>
@@ -1172,10 +1248,14 @@
 			</transform>
 		</default>
 	</vm_dead_team12>
-	<vm_stun_team12_schema>
-		<alias_color>green</alias_color>
-		<rgba>221 255 153 255</rgba>
-	</vm_stun_team12_schema>
+	<vm_stun_br_team12_schema>
+		<default>
+			<schemeGroup>redStatusMarkerColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
+		</color_blind>
+	</vm_stun_br_team12_schema>
 	<vm_team13>
 		<default>
 			<alias_color>white</alias_color>
@@ -1202,10 +1282,14 @@
 			</transform>
 		</default>
 	</vm_dead_team13>
-	<vm_stun_team13_schema>
-		<alias_color>green</alias_color>
-		<rgba>221 255 153 255</rgba>
-	</vm_stun_team13_schema>
+	<vm_stun_br_team13_schema>
+		<default>
+			<schemeGroup>redStatusMarkerColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
+		</color_blind>
+	</vm_stun_br_team13_schema>
 	<vm_team14>
 		<default>
 			<alias_color>white</alias_color>
@@ -1232,10 +1316,14 @@
 			</transform>
 		</default>
 	</vm_dead_team14>
-	<vm_stun_team14_schema>
-		<alias_color>green</alias_color>
-		<rgba>221 255 153 255</rgba>
-	</vm_stun_team14_schema>
+	<vm_stun_br_team14_schema>
+		<default>
+			<schemeGroup>redStatusMarkerColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
+		</color_blind>
+	</vm_stun_br_team14_schema>
 	<vm_team15>
 		<default>
 			<alias_color>white</alias_color>
@@ -1262,10 +1350,14 @@
 			</transform>
 		</default>
 	</vm_dead_team15>
-	<vm_stun_team15_schema>
-		<alias_color>green</alias_color>
-		<rgba>221 255 153 255</rgba>
-	</vm_stun_team15_schema>
+	<vm_stun_br_team15_schema>
+		<default>
+			<schemeGroup>redStatusMarkerColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
+		</color_blind>
+	</vm_stun_br_team15_schema>
 	<vm_team16>
 		<default>
 			<alias_color>white</alias_color>
@@ -1292,10 +1384,14 @@
 			</transform>
 		</default>
 	</vm_dead_team16>
-	<vm_stun_team16_schema>
-		<alias_color>green</alias_color>
-		<rgba>221 255 153 255</rgba>
-	</vm_stun_team16_schema>
+	<vm_stun_br_team16_schema>
+		<default>
+			<schemeGroup>redStatusMarkerColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
+		</color_blind>
+	</vm_stun_br_team16_schema>
 	<vm_team17>
 		<default>
 			<alias_color>white</alias_color>
@@ -1322,10 +1418,14 @@
 			</transform>
 		</default>
 	</vm_dead_team17>
-	<vm_stun_team17_schema>
-		<alias_color>green</alias_color>
-		<rgba>221 255 153 255</rgba>
-	</vm_stun_team17_schema>
+	<vm_stun_br_team17_schema>
+		<default>
+			<schemeGroup>redStatusMarkerColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
+		</color_blind>
+	</vm_stun_br_team17_schema>
 	<vm_team18>
 		<default>
 			<alias_color>white</alias_color>
@@ -1352,10 +1452,14 @@
 			</transform>
 		</default>
 	</vm_dead_team18>
-	<vm_stun_team18_schema>
-		<alias_color>green</alias_color>
-		<rgba>221 255 153 255</rgba>
-	</vm_stun_team18_schema>
+	<vm_stun_br_team18_schema>
+		<default>
+			<schemeGroup>redStatusMarkerColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
+		</color_blind>
+	</vm_stun_br_team18_schema>
 	<vm_team19>
 		<default>
 			<alias_color>white</alias_color>
@@ -1382,10 +1486,14 @@
 			</transform>
 		</default>
 	</vm_dead_team19>
-	<vm_stun_team19_schema>
-		<alias_color>green</alias_color>
-		<rgba>221 255 153 255</rgba>
-	</vm_stun_team19_schema>
+	<vm_stun_br_team19_schema>
+		<default>
+			<schemeGroup>redStatusMarkerColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
+		</color_blind>
+	</vm_stun_br_team19_schema>
 	<vm_team20>
 		<default>
 			<alias_color>white</alias_color>
@@ -1412,10 +1520,14 @@
 			</transform>
 		</default>
 	</vm_dead_team20>
-	<vm_stun_team20_schema>
-		<alias_color>green</alias_color>
-		<rgba>221 255 153 255</rgba>
-	</vm_stun_team20_schema>
+	<vm_stun_br_team20_schema>
+		<default>
+			<schemeGroup>redStatusMarkerColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
+		</color_blind>
+	</vm_stun_br_team20_schema>
 	<vm_teamKiller>
 		<schemeGroup>blueColor</schemeGroup>
 		<transform>

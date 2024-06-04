@@ -55,11 +55,17 @@ package net.wg.gui.lobby.profile.pages.technique
       
       private static const CONTENT_Y_DEFAULT:int = 156;
       
-      private static const CONTENT_Y_WINDOWED:int = 39;
-      
       private static const CONTENT_Y_SEASON_DROPDOWN:int = 210;
       
-      private static const CONTENT_Y_SEASON_DROPDOWN_WINDOWED:int = 89;
+      private static const CONTENT_Y_SEASON_BATTLE_DROPDOWNS_WINDOWED:int = 79;
+      
+      private static const CONTENT_Y_SEASON_DROPDOWN_WINDOWED:int = 109;
+      
+      private static const DROP_DOWN_BATTLE_MODE_WINDOW_Y:int = 4;
+      
+      private static const DROP_DOWN_SEASON_WINDOW_Y:int = 34;
+      
+      private static const DROP_DOWN_SEASON_LABEL_WINDOW_Y:int = 36;
        
       
       public var lblSeasonDropdown:TextField = null;
@@ -160,7 +166,17 @@ package net.wg.gui.lobby.profile.pages.technique
          this.emptyScreen.x = _loc1_ - this.emptyScreen.width >> 1;
          if(isWindowed)
          {
-            this.listComponent.y = this.stackComponent.y = !!this.seasonDropdown.visible ? Number(CONTENT_Y_SEASON_DROPDOWN_WINDOWED) : Number(CONTENT_Y_WINDOWED);
+            if(battlesDropdown.visible)
+            {
+               this.listComponent.y = this.stackComponent.y = CONTENT_Y_SEASON_BATTLE_DROPDOWNS_WINDOWED;
+               battlesDropdown.y = DROP_DOWN_BATTLE_MODE_WINDOW_Y;
+            }
+            if(this.seasonDropdown.visible)
+            {
+               this.stackComponent.y = CONTENT_Y_SEASON_DROPDOWN_WINDOWED;
+               this.seasonDropdown.y = DROP_DOWN_SEASON_WINDOW_Y;
+               this.lblSeasonDropdown.y = DROP_DOWN_SEASON_LABEL_WINDOW_Y;
+            }
          }
          else
          {

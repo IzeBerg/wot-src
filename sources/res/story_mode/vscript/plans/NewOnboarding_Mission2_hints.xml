@@ -2502,6 +2502,18 @@
 			</block>
 			<block>
 				<class>Macro</class>
+				<id>Macro_18</id>
+				<params>
+					<param>
+						ControlHint
+						<name>Macro Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>Macro</class>
 				<id>Macro_10</id>
 				<params>
 					<param>
@@ -2553,18 +2565,6 @@
 					<param>
 						story_mode.story_mode.sniper_on_distance
 						<name>scope, hintId</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>Macro</class>
-				<id>Macro_18</id>
-				<params>
-					<param>
-						ControlHint
-						<name>Macro Name</name>
 						<type>StringT</type>
 					</param>
 				</params>
@@ -2955,6 +2955,18 @@
 				</slots>
 			</block>
 			<block>
+				<class>Macro</class>
+				<id>Macro_21</id>
+				<params>
+					<param>
+						ControlHint
+						<name>Macro Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
 				<class>FlowGate</class>
 				<id>FlowGate_7</id>
 				<params/>
@@ -3144,18 +3156,6 @@
 				<class>OnPlayerSnipeMode</class>
 				<id>OnPlayerSnipeMode_6</id>
 				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>Macro</class>
-				<id>Macro_21</id>
-				<params>
-					<param>
-						ControlHint
-						<name>Macro Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
 				<slots/>
 			</block>
 			<block>
@@ -5446,6 +5446,23 @@
 				</slots>
 			</block>
 			<block>
+				<class>Macro</class>
+				<id>Macro_125</id>
+				<params>
+					<param>
+						AllVehiclesDestroyed
+						<name>Macro Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>labels</name>
+						<const>\R3JvdXAwUG9pbnRfQjE=\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
 				<class>PlayVoiceover</class>
 				<id>PlayVoiceover_3</id>
 				<params/>
@@ -5453,6 +5470,43 @@
 					<slot>
 						<name>voiceover</name>
 						<const>\vo_ob_char01_m01_stg00_03\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>LogicGate</class>
+				<id>LogicGate_5</id>
+				<params/>
+				<slots>
+					<slot>
+						<name>valueAtStart</name>
+						<const>\true\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>Select</class>
+				<id>Select_2</id>
+				<params>
+					<param>
+						IntT
+						<name>Slot Type</name>
+						<type>TypeT</type>
+					</param>
+					<param>
+						2
+						<name>Input Count</name>
+						<type>IntT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>i0</name>
+						<const>\5\</const>
+					</slot>
+					<slot>
+						<name>i1</name>
+						<const>\0\</const>
 					</slot>
 				</slots>
 			</block>
@@ -5554,10 +5608,6 @@
 					</param>
 				</params>
 				<slots>
-					<slot>
-						<name>min</name>
-						<const>\0\</const>
-					</slot>
 					<slot>
 						<name>max</name>
 						<const>\9\</const>
@@ -7853,18 +7903,6 @@
 				<output>onEnter</output>
 			</connection>
 			<connection>
-				<from>Macro_10</from>
-				<input>input</input>
-				<to>Sequence_12</to>
-				<output>allDestroyed</output>
-			</connection>
-			<connection>
-				<from>Macro_48</from>
-				<input>input</input>
-				<to>Sequence_12</to>
-				<output>allDestroyed</output>
-			</connection>
-			<connection>
 				<from>FlowGate_6</from>
 				<input>show</input>
 				<to>Macro_18</to>
@@ -7899,6 +7937,18 @@
 				<input>hintId</input>
 				<to>Macro_18</to>
 				<output>id</output>
+			</connection>
+			<connection>
+				<from>Macro_10</from>
+				<input>input</input>
+				<to>Sequence_12</to>
+				<output>allDestroyed</output>
+			</connection>
+			<connection>
+				<from>Macro_48</from>
+				<input>input</input>
+				<to>Sequence_12</to>
+				<output>allDestroyed</output>
 			</connection>
 			<connection>
 				<from>Macro_23</from>
@@ -8075,6 +8125,30 @@
 				<output>inCone</output>
 			</connection>
 			<connection>
+				<from>FlowGate_7</from>
+				<input>show</input>
+				<to>Macro_21</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>Sequence_21</from>
+				<input>hide</input>
+				<to>Macro_21</to>
+				<output>o1</output>
+			</connection>
+			<connection>
+				<from>OnPlayerSnipeMode_6</from>
+				<input>hide</input>
+				<to>Macro_21</to>
+				<output>onEnter</output>
+			</connection>
+			<connection>
+				<from>SelectHint_3</from>
+				<input>hintId</input>
+				<to>Macro_21</to>
+				<output>id</output>
+			</connection>
+			<connection>
 				<from>Sequence_17</from>
 				<input>input</input>
 				<to>FlowGate_7</to>
@@ -8199,30 +8273,6 @@
 				<input>input</input>
 				<to>Sequence_11</to>
 				<output>allDestroyed</output>
-			</connection>
-			<connection>
-				<from>FlowGate_7</from>
-				<input>show</input>
-				<to>Macro_21</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>Sequence_21</from>
-				<input>hide</input>
-				<to>Macro_21</to>
-				<output>o1</output>
-			</connection>
-			<connection>
-				<from>OnPlayerSnipeMode_6</from>
-				<input>hide</input>
-				<to>Macro_21</to>
-				<output>onEnter</output>
-			</connection>
-			<connection>
-				<from>SelectHint_3</from>
-				<input>hintId</input>
-				<to>Macro_21</to>
-				<output>id</output>
 			</connection>
 			<connection>
 				<from>TriggerExternal_1</from>
@@ -9599,6 +9649,18 @@
 				<output>value</output>
 			</connection>
 			<connection>
+				<from>Macro_125</from>
+				<input>false</input>
+				<to>LogicGate_5</to>
+				<output>allDestroyed</output>
+			</connection>
+			<connection>
+				<from>LogicGate_5</from>
+				<input>index</input>
+				<to>Select_2</to>
+				<output>value</output>
+			</connection>
+			<connection>
 				<from>Choice_5</from>
 				<input>in</input>
 				<to>PlayVoiceover_4</to>
@@ -9659,16 +9721,22 @@
 				<output>o0</output>
 			</connection>
 			<connection>
+				<from>Sequence_44</from>
+				<input>in_</input>
+				<to>Macro_122</to>
+				<output>o0</output>
+			</connection>
+			<connection>
 				<from>Timer_16</from>
 				<input>in_</input>
 				<to>Macro_122</to>
 				<output>event0</output>
 			</connection>
 			<connection>
-				<from>Sequence_44</from>
-				<input>in_</input>
+				<from>Select_2</from>
+				<input>min</input>
 				<to>Macro_122</to>
-				<output>o0</output>
+				<output>res</output>
 			</connection>
 			<connection>
 				<from>Repeat_4</from>

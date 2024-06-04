@@ -37,10 +37,11 @@ package net.wg.gui.lobby.vehiclePreview.data
       
       public var actionBtnLabel:String = "";
       
-      private var _priceType:String = "goldBig";
+      private var _priceType:String;
       
       public function VPShowcaseStyleBuyingVO(param1:Object)
       {
+         this._priceType = IconsTypes.GOLD_BIG;
          super(param1);
          if(this.discountPercent > 0 && !this.actionPrice)
          {

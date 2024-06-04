@@ -11,9 +11,9 @@ from gui.impl.gen.view_models.views.lobby.collection.reward_model import RewardM
 from gui.server_events.recruit_helper import getRecruitInfo
 from gui.shared.missions.packers.bonus import BACKPORT_TOOLTIP_CONTENT_ID, BaseBonusUIPacker, BonusUIPacker, CustomizationBonusUIPacker, SimpleBonusUIPacker, getDefaultBonusPackersMap
 from gui.shared.money import Currency
-from helpers.dependency import replace_none_kwargs, descriptor
+from helpers.dependency import replace_none_kwargs
 from items.tankmen import RECRUIT_TMAN_TOKEN_PREFIX
-from skeletons.gui.game_control import ICollectionsSystemController, ISpecialSoundCtrl
+from skeletons.gui.game_control import ICollectionsSystemController
 if typing.TYPE_CHECKING:
     from typing import Dict
     from gui.impl.gen.view_models.common.missions.bonuses.bonus_model import BonusModel
@@ -71,7 +71,6 @@ class BattlePassCoinBonusPacker(CurrencyBonusUIPacker):
 
 
 class TmanTemplateBonusPacker(BaseBonusUIPacker):
-    __specialSounds = descriptor(ISpecialSoundCtrl)
 
     @classmethod
     def _pack(cls, bonus):
@@ -107,17 +106,7 @@ class TmanTemplateBonusPacker(BaseBonusUIPacker):
         else:
             model = RewardModel()
             cls._packCommon(bonus, model)
-            imageName = 'tankwoman' if recruitInfo.isFemale() else 'tankman'
-            voiceTag = recruitInfo.getSpecialVoiceTag(cls.__specialSounds)
-            if voiceTag is not None:
-                voiceDefaultImageName = ('{}SpecialVoice').format(imageName)
-                specificVoiceImgName = ('_').join([voiceDefaultImageName, voiceTag])
-                specImgRef = R.images.gui.maps.icons.quests.bonuses.small.dyn(specificVoiceImgName)
-                if specImgRef:
-                    imageName = specificVoiceImgName
-                else:
-                    imageName = voiceDefaultImageName
-            model.setIcon(imageName)
+            model.setIcon('tankwoman' if recruitInfo.isFemale() else 'tankman')
             model.setLabel(recruitInfo.getFullUserName())
             return model
 

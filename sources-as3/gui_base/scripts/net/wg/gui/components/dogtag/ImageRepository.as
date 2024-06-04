@@ -17,6 +17,8 @@ package net.wg.gui.components.dogtag
       
       private static const ENGRAVING:String = "engraving";
       
+      private static const BOTTOM_PLATE:String = "bottom_plate";
+      
       private static const POSTFIX_K:String = "_k";
       
       private static const POSTFIX_M:String = "_m";
@@ -130,9 +132,13 @@ package net.wg.gui.components.dogtag
             {
                _loc4_.source = RES_ICONS.maps_icons_dogtags_small_backgrounds_all_png(param1[_loc3_]);
             }
-            if(param1[_loc3_].indexOf(ENGRAVING) != -1)
+            else if(param1[_loc3_].indexOf(ENGRAVING) != -1)
             {
                _loc4_.source = RES_ICONS.maps_icons_dogtags_small_engravings_all_png(param1[_loc3_]);
+            }
+            else if(param1[_loc3_].indexOf(BOTTOM_PLATE) != -1)
+            {
+               _loc4_.source = RES_ICONS.maps_icons_dogtags_small_bottom_plates_all_png(param1[_loc3_]);
             }
             if(_loc4_.source == Values.EMPTY_STR)
             {

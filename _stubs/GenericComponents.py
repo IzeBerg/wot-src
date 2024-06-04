@@ -96,6 +96,7 @@ class AnimatorComponent(PyComponentWrapperBase):
 	def getStateNodeName(self, *args, **kwargs): pass
 	def id(self, *args, **kwargs): pass
 	def isPlaying(self, *args, **kwargs): pass
+	def isPlayingByName(self, *args, **kwargs): pass
 	def reset(self, *args, **kwargs): pass
 	def setFloatParam(self, *args, **kwargs): pass
 	def setTrigger(self, *args, **kwargs): pass
