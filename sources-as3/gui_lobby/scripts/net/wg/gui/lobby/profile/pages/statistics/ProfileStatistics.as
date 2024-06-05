@@ -51,11 +51,13 @@ package net.wg.gui.lobby.profile.pages.statistics
       
       private static const DROP_DOWN_LADDER_Y:int = 132;
       
-      private static const DROP_DOWN_LADDER_WINDOW_Y:int = 120;
+      private static const DROP_DOWN_LADDER_WINDOW_Y:int = 130;
+      
+      private static const DROP_DOWN_BATTLE_MODE_WINDOW_Y:int = 104;
       
       private static const DROP_DOWN_LADDER_LABEL_Y:int = 134;
       
-      private static const DROP_DOWN_LADDER_LABEL_WINDOW_Y:int = 122;
+      private static const DROP_DOWN_LADDER_LABEL_WINDOW_Y:int = 132;
       
       private static const STATS_BTN_Y:int = 135;
       
@@ -155,6 +157,13 @@ package net.wg.gui.lobby.profile.pages.statistics
          else
          {
             this.playersStats.removeEventListener(MouseEvent.CLICK,this.onPlayersStatsClickHandler);
+         }
+         if(battlesDropdown.visible)
+         {
+            if(isWindowed)
+            {
+               battlesDropdown.y = DROP_DOWN_BATTLE_MODE_WINDOW_Y;
+            }
          }
          if(this.seasonDropdown.visible)
          {

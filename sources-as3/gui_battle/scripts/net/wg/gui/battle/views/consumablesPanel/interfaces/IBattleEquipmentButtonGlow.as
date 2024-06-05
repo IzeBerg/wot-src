@@ -11,6 +11,8 @@ package net.wg.gui.battle.views.consumablesPanel.interfaces
       
       function setBindKeyTextVisibility(param1:Boolean) : void;
       
+      function setIdleEnabledGlow(param1:Boolean) : void;
+      
       function showGlow(param1:int, param2:Boolean = true) : void;
       
       function hideGlow(param1:Boolean = true) : void;

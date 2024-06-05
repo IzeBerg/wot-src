@@ -22,6 +22,6 @@ BATTLE_RESULTS = [
  (
   'flXPReplay', str, '', ValueReplayPacker(), 'skip', ENTRY_TYPE.ACCOUNT_ALL),
  (
-  'reservesModifier', int, 0, None, 'skip', ENTRY_TYPE.SERVER),
+  'reservesModifier', int, 0, None, 'skip', ENTRY_TYPE.ACCOUNT_ALL),
  (
   'avatarReserves', list, [], None, 'skip', ENTRY_TYPE.SERVER)]

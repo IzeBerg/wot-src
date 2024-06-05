@@ -67,7 +67,7 @@ def _createLoots(dataSection, typeSection):
     return loots
 
 
-def _createTerrainCircleSettings(section):
+def createTerrainCircleSettings(section):
     sectionKeys = ('ally', 'enemy')
     result = dict.fromkeys(sectionKeys)
 
@@ -199,6 +199,9 @@ class DynObjectsBase(object):
     def getHealPointEffect(self):
         return {}
 
+    def getAimingCircleRestrictionEffect(self):
+        return {}
+
 
 class _CommonForBattleRoyaleAndEpicBattleDynObjects(DynObjectsBase):
 
@@ -210,8 +213,8 @@ class _CommonForBattleRoyaleAndEpicBattleDynObjects(DynObjectsBase):
 
     def init(self, dataSection):
         if not self._initialized:
-            self.__inspiringEffect = _createTerrainCircleSettings(dataSection['InspireAreaVisual'])
-            self.__healPointEffect = _createTerrainCircleSettings(dataSection[self._healPointKey])
+            self.__inspiringEffect = createTerrainCircleSettings(dataSection['InspireAreaVisual'])
+            self.__healPointEffect = createTerrainCircleSettings(dataSection[self._healPointKey])
             super(_CommonForBattleRoyaleAndEpicBattleDynObjects, self).init(dataSection)
 
     def getInspiringEffect(self):
@@ -240,7 +243,7 @@ class _StrongholdDynObjects(DynObjectsBase):
 
     def init(self, dataSection):
         if not self._initialized:
-            self.__inspiringEffect = _createTerrainCircleSettings(dataSection['InspireAreaVisual'])
+            self.__inspiringEffect = createTerrainCircleSettings(dataSection['InspireAreaVisual'])
             super(_StrongholdDynObjects, self).init(dataSection)
 
     def getInspiringEffect(self):

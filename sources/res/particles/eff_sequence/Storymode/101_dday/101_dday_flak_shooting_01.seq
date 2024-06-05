@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>10.000000</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Flak</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>220.705292 81.682228 513.247986</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-40.188118 -133.736893 13.186941</value>
+				<inTangent>6.949866 8.040291 -1.180453</inTangent>
+				<outTangent>6.949866 8.040291 -1.180453</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.000000</startTime>
+				<value>-26.288385 -117.656311 10.826035</value>
+				<inTangent>-20.617079 14.590642 -3.908964</inTangent>
+				<outTangent>-20.617079 14.590642 -3.908964</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.000000</startTime>
+				<value>-74.472420 -96.515312 4.188559</value>
+				<inTangent>-9.805684 6.368131 -2.157935</inTangent>
+				<outTangent>-9.805684 6.368131 -2.157935</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>5.000000</startTime>
+				<value>-17.327099 -113.324776 8.831769</value>
+				<inTangent>-4.836986 -6.871154 14.215782</inTangent>
+				<outTangent>-4.836986 -6.871154 14.215782</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>6.000000</startTime>
+				<value>-55.573727 -118.662354 34.941727</value>
+				<inTangent>-16.940233 -5.025082 14.156788</inTangent>
+				<outTangent>-16.940233 -5.025082 14.156788</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>9.000000</startTime>
+				<value>-42.475239 -132.800110 41.552578</value>
+				<inTangent>4.366163 -4.712585 2.203617</inTangent>
+				<outTangent>4.366163 -4.712585 2.203617</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>sequence</name>
+			<type>sequence</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>2.000000</duration>
+				<value>particles/eff_sequence/Storymode/101_dday/101_effsfx_flak_shooting_01.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+			<frame>
+				<startTime>3.000000</startTime>
+				<duration>2.000000</duration>
+				<value>particles/eff_sequence/Storymode/101_dday/101_effsfx_flak_shooting_01.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+			<frame>
+				<startTime>6.000000</startTime>
+				<duration>3.000000</duration>
+				<value>particles/eff_sequence/Storymode/101_dday/101_effsfx_flak_shooting_01.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Explosions</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>76.276398 291.835052 612.694031</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>sequence</name>
+			<type>sequence</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>10.000000</duration>
+				<value>particles/eff_sequence/Storymode/101_dday/101_effsfx_antiaircraft_attack_big_area.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

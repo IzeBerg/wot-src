@@ -400,6 +400,62 @@
 			</value>
 		</item>
 		<item>
+			<name>AnimatedDogTagsEntryPoint</name>
+			<type>dict</type>
+			<value>
+				<item>
+					<name>view</name>
+					<value>R.views.lobby.account_dashboard.AccountDashboard</value>
+				</item>
+				<item>
+					<name>path</name>
+					<value>div[id=animated-dogtag-card]</value>
+				</item>
+			</value>
+		</item>
+		<item>
+			<name>MenuProfile</name>
+			<type>dict</type>
+			<value>
+				<item>
+					<name>view</name>
+					<value>lobby</value>
+				</item>
+				<item>
+					<name>path</name>
+					<value>header.mainMenuButtonBar:MainMenuButton?value=profile</value>
+				</item>
+			</value>
+		</item>
+		<item>
+			<name>ProfileAchievementsTab</name>
+			<type>dict</type>
+			<value>
+				<item>
+					<name>view</name>
+					<value>profile</value>
+				</item>
+				<item>
+					<name>path</name>
+					<value>tabNavigator.menu:SideBarRendererUI?id=statsAchievements</value>
+				</item>
+			</value>
+		</item>
+		<item>
+			<name>ProfileAchievementsTabSmall</name>
+			<type>dict</type>
+			<value>
+				<item>
+					<name>view</name>
+					<value>profile</value>
+				</item>
+				<item>
+					<name>path</name>
+					<value>tabNavigator.menu:SideBarSmallRendererUI?id=statsAchievements</value>
+				</item>
+			</value>
+		</item>
+		<item>
 			<name>BattleSessionUpButtonTournament</name>
 			<type>dict</type>
 			<value>
@@ -2980,6 +3036,46 @@
 				<item>
 					<name>path</name>
 					<value>div[id=scenarios_btn_small]</value>
+				</item>
+			</value>
+		</item>
+		<item>
+			<name>VehicleResearchButton</name>
+			<type>dict</type>
+			<value>
+				<item>
+					<name>view</name>
+					<value>hangar</value>
+				</item>
+				<item>
+					<name>path</name>
+					<value>vehResearchPanel.button</value>
+				</item>
+				<item>
+					<name>padding</name>
+					<type>dict</type>
+					<value>
+						<item>
+							<name>left</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>top</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>right</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>bottom</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+					</value>
 				</item>
 			</value>
 		</item>

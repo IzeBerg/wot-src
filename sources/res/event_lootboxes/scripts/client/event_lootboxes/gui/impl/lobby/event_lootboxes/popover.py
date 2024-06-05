@@ -7,7 +7,7 @@ from gui import SystemMessages
 from gui.impl import backport
 from gui.impl.gen.resources import R
 from gui.impl.pub import PopOverViewImpl
-from event_lootboxes.gui.shared.event_dispatcher import showEventLootBoxOpenErrorWindow, showEventLootBoxOpenWindow
+from event_lootboxes.gui.shared.event_dispatcher import showEventLootBoxOpenErrorWindow, showEventLootBoxOpenWindow, showEventLootBoxesWelcomeScreen
 from gui.shared.gui_items.loot_box import EVENT_LOOT_BOXES_CATEGORY, EventLootBoxes
 from gui.shared.gui_items.processors.loot_boxes import LootBoxOpenProcessor
 from gui.shared.notifications import NotificationPriorityLevel
@@ -47,6 +47,8 @@ class EventLootBoxesPopover(PopOverViewImpl):
           self.viewModel.onOpenBtnClick, self.__onOpenBtnClick),
          (
           self.viewModel.onBuyBtnClick, self.__onBuyBtnClick),
+         (
+          self.viewModel.onAboutBtnClick, self.__onAboutBtnClick),
          (
           self.__eventLootBoxes.onAvailabilityChange, self.__onAvailabilityChange),
          (
@@ -92,6 +94,10 @@ class EventLootBoxesPopover(PopOverViewImpl):
         self.destroyWindow()
         self.__eventLootBoxes.openShop()
 
+    def __onAboutBtnClick(self):
+        self.destroyWindow()
+        showEventLootBoxesWelcomeScreen()
+
     def __updateBoxesCount(self):
         availableToBuyBoxes = self.__eventLootBoxes.getDayLimit() - self.__eventLootBoxes.getDayInfoStatistics()
         self.__hasBuyableBoxes = availableToBuyBoxes > 0
@@ -135,6 +141,7 @@ class EventLootBoxesPopover(PopOverViewImpl):
         else:
             buyingEnableTime = dayTimeLeft if dayTimeLeft > ONE_MINUTE else 0
         with self.viewModel.transaction() as (tx):
+            tx.setIsLootBoxesAvailable(isLootBoxesAvailable)
             tx.setIsLastEventDay(isLastEventDay)
             tx.setHasErrors(hasErrors)
             tx.setBuyingEnableTime(buyingEnableTime)

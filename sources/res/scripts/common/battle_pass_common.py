@@ -274,7 +274,6 @@ class BattlePassConfig(object):
         self._rewards = config.get('rewards', {})
         self._regularChapterIds = set()
         self._extraChapterIds = set()
-        self._customChapterIds = set()
         if not self.chapters:
             return
         for chapterID, chapterData in self.chapters.iteritems():
@@ -282,8 +281,6 @@ class BattlePassConfig(object):
                 self._extraChapterIds.add(chapterID)
             else:
                 self._regularChapterIds.add(chapterID)
-            if chapterData['custom']:
-                self._customChapterIds.add(chapterID)
 
     @property
     def mode(self):
@@ -347,9 +344,6 @@ class BattlePassConfig(object):
     def getChapterLevels(self, chapterID):
         return self.getChapter(chapterID).get('levels', (0, ))
 
-    def getCustomChapterIds(self):
-        return self._customChapterIds
-
     def getMaxChapterLevel(self, chapterID):
         if chapterID:
             return len(self.getChapterLevels(chapterID))
@@ -398,9 +392,6 @@ class BattlePassConfig(object):
     def isSeasonTimeOver(self, curTime):
         return int(curTime) >= self.seasonFinish
 
-    def isCustomChapter(self, chapterID):
-        return chapterID in self._customChapterIds
-
     def isExtraChapter(self, chapterID):
         return chapterID in self._extraChapterIds
 
@@ -418,9 +409,6 @@ class BattlePassConfig(object):
 
     def isSpecialVoiceChapter(self, chapterID):
         return chapterID in self.specialVoiceChapters
-
-    def isCustomSeason(self):
-        return self._season.get('customSeason', False)
 
     def capBonusList(self):
         return self._season.get('capBonuses', (0, ) * MAX_VEHICLE_LEVEL)

@@ -228,6 +228,18 @@ package net.wg.gui.lobby.header.mainMenuButtonBar
          this.enabled = !param1;
       }
       
+      public function setButtonsVisibility(param1:Boolean) : void
+      {
+         var _loc2_:Button = null;
+         for each(_loc2_ in _renderers)
+         {
+            if(_loc2_.visible != param1)
+            {
+               _loc2_.visible = param1;
+            }
+         }
+      }
+      
       protected function disposeRenderer(param1:Button) : void
       {
          if(container.contains(param1))

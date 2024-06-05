@@ -17,11 +17,6 @@
 			<UUID>37c3e4cc-f649-3f31-bc80-c5f06a55bbfc</UUID>
 			<flags>0</flags>
 		</GameObject>
-		<GameObject>
-			<name>Flight_from_Tank</name>
-			<UUID>383a4b53-af5e-49da-8710-22b6005f79f6</UUID>
-			<flags>0</flags>
-		</GameObject>
 	</GameObjects>
 	<components>
 		<ComponentPool>
@@ -29,7 +24,7 @@
 			<version>2</version>
 			<component>
 				<objectIndex>1</objectIndex>
-				<flags>3</flags>
+				<flags>35</flags>
 				<config>
 					<property>
 						<name>Parent</name>
@@ -39,21 +34,11 @@
 			</component>
 			<component>
 				<objectIndex>2</objectIndex>
-				<flags>3</flags>
+				<flags>35</flags>
 				<config>
 					<property>
 						<name>Parent</name>
 						<link>337fc197-6578-360a-b88b-a9307e1b5b3f</link>
-					</property>
-				</config>
-			</component>
-			<component>
-				<objectIndex>3</objectIndex>
-				<flags>3</flags>
-				<config>
-					<property>
-						<name>Parent</name>
-						<link>37c3e4cc-f649-3f31-bc80-c5f06a55bbfc</link>
 					</property>
 				</config>
 			</component>
@@ -127,30 +112,6 @@
 					</property>
 				</config>
 			</component>
-			<component>
-				<objectIndex>3</objectIndex>
-				<flags>3</flags>
-				<config>
-					<property>
-						<name>Position</name>
-						<value>
-							-0.352566 4.91559 2.17486
-							<!--BW_String-->
-						</value>
-					</property>
-					<property>
-						<name>Scale</name>
-						<value>
-							0.999911 1.00003 1.00005
-							<!--BW_String-->
-						</value>
-					</property>
-					<property>
-						<name>Rotation</name>
-						<value>-0.206268 -0.917399 0.261388</value>
-					</property>
-				</config>
-			</component>
 		</ComponentPool>
 		<ComponentPool>
 			<type>CameraComponent</type>
@@ -183,43 +144,6 @@
 							0.1
 							<!--BW_String-->
 						</value>
-					</property>
-				</config>
-			</component>
-		</ComponentPool>
-		<ComponentPool>
-			<type>CameraFlightComponent</type>
-			<version>1</version>
-			<component>
-				<objectIndex>3</objectIndex>
-				<flags>3</flags>
-				<config>
-					<property>
-						<name>Camera name</name>
-						<value>Tank</value>
-					</property>
-					<property>
-						<name>Motion blur</name>
-						<value>
-							0.5
-							<!--BW_String-->
-						</value>
-					</property>
-					<property>
-						<name>Min duration</name>
-						<value>2</value>
-					</property>
-					<property>
-						<name>Max duration</name>
-						<value>3</value>
-					</property>
-					<property>
-						<name>Position Easing</name>
-						<value>2</value>
-					</property>
-					<property>
-						<name>Rotation Easing</name>
-						<value>2</value>
 					</property>
 				</config>
 			</component>
@@ -341,7 +265,7 @@
 			<version>1</version>
 			<component>
 				<objectIndex>2</objectIndex>
-				<flags>3</flags>
+				<flags>2</flags>
 				<config>
 					<property>
 						<name>ChangeStartParams</name>

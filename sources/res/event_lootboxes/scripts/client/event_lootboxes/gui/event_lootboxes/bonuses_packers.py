@@ -58,9 +58,7 @@ def getEventLootBoxesInfoTypeBonusPacker():
        'items': InfoTypeItemPacker(), 
        'tmanToken': InfoTypeTmanTemplateBonusPacker(), 
        'tokens': InfoTypeTokenPacker(), 
-       'vehicles': InfoTypeVehiclePacker(), 
-       Currency.CREDITS: InfoTypeCountedPacker(), 
-       Currency.EQUIP_COIN: InfoTypeCountedPacker()})
+       'vehicles': InfoTypeVehiclePacker()})
     return BonusUIPacker(mapping)
 
 
@@ -87,15 +85,7 @@ class TmanTemplateBonusPacker(SimpleBonusUIPacker):
         else:
             model = RewardModel()
             cls._packCommon(bonus, model)
-            imageName = recruit.getGroupName()
-            if '_' in imageName:
-                imageName = imageName.split('_')[1].lower()
-            imageRes = _R_BONUS_ICONS.s600x450.dyn(imageName)
-            if imageRes.exists():
-                imageRes = imageRes()
-            else:
-                imageRes = _R_BONUS_ICONS.s600x450.dyn('tankwoman' if recruit.isFemale() else 'tankman')()
-            model.setIconSource(imageRes)
+            model.setIconSource(_R_BONUS_ICONS.s600x450.dyn('tankwoman' if recruit.isFemale() else 'tankman')())
             return model
 
     @classmethod
@@ -314,17 +304,6 @@ class InfoTypeRewardPacker(SimpleBonusUIPacker):
         return []
 
 
-class InfoTypeCountedPacker(InfoTypeRewardPacker):
-
-    @classmethod
-    def _packSingleBonus(cls, bonus, label):
-        model = InfotypeRewardModel()
-        cls._packCommon(bonus, model)
-        model.setCount(bonus.getCount())
-        model.setIcon(bonus.getIconResource(AWARDS_SIZES.SMALL))
-        return model
-
-
 class InfoTypeBlueprintRewardPacker(InfoTypeRewardPacker):
 
     @classmethod
@@ -387,15 +366,7 @@ class InfoTypeTmanTemplateBonusPacker(InfoTypeRewardPacker):
         else:
             model = InfotypeRewardModel()
             cls._packCommon(bonus, model)
-            imageName = recruit.getGroupName()
-            if '_' in imageName:
-                imageName = imageName.split('_')[1].lower()
-            imageRes = _R_BONUS_ICONS.dyn(AWARDS_SIZES.SMALL).dyn(imageName)
-            if imageRes.exists():
-                imageRes = imageRes()
-            else:
-                imageRes = _R_BONUS_ICONS.dyn(AWARDS_SIZES.SMALL).dyn('tankwoman' if recruit.isFemale() else 'tankman')()
-            model.setIcon(imageRes)
+            model.setIcon(_R_BONUS_ICONS.dyn(AWARDS_SIZES.SMALL).dyn('tankwoman' if recruit.isFemale() else 'tankman')())
             return model
 
     @classmethod
@@ -424,13 +395,8 @@ class InfoTypeCustomizationPacker(InfoTypeRewardPacker):
     def _packSingleBonus(cls, bonus, label):
         model = InfotypeRewardModel()
         model.setName(bonus.getName())
-        customizations = bonus.getCustomizations()
-        model.setCount(sum(item.get('value', 1) for item in customizations))
-        smallIcon = bonus.getIconResource(AWARDS_SIZES.SMALL)
-        if customizations:
-            item = bonus.getC11nItem(customizations[0])
-            smallIcon = _R_BONUS_ICONS.small.dyn(item.itemTypeName)()
-        model.setIcon(smallIcon)
+        model.setCount(sum(item.get('value', 1) for item in bonus.getCustomizations()))
+        model.setIcon(_R_BONUS_ICONS.small.style())
         return model
 
 
@@ -467,7 +433,7 @@ class InfoTypeCrewBooksPacker(InfoTypeItemPacker):
         return [ cls._packSingleItem(item, count) for item, count in bonus.getItems() ]
 
 
-class InfoTypeCrewSkinsPacker(InfoTypeItemPacker):
+class InfoTypeCrewSkinsPacker(InfoTypeCrewBooksPacker):
 
     @classmethod
     def _packSingleItem(cls, item, count):
@@ -475,10 +441,6 @@ class InfoTypeCrewSkinsPacker(InfoTypeItemPacker):
         model.setCount(count)
         model.setIcon(_R_BONUS_ICONS.small.dyn(('{}{}').format(item.itemTypeName, item.getRarity()))())
         return model
-
-    @classmethod
-    def _pack(cls, bonus):
-        return [ cls._packSingleItem(item, count) for item, count, _, _ in bonus.getItems() ]
 
 
 class InfoTypeTokenPacker(EventLootBoxTokenBonusUIPacker):

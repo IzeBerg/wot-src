@@ -1,10 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-	<videoPath>videos/intro.usm</videoPath>
-	<music>
-		<start>ob_music_video_start</start>
-		<pause>ob_music_pause</pause>
-		<resume>ob_music_resume</resume>
-	</music>
-	<vo>vo_ob_char01_char_02_intro</vo>
+	<missions>
+		<id>1</id>
+		<videoPath>videos/intro.usm</videoPath>
+		<music>
+			<start>ob_music_video_start</start>
+			<pause>ob_music_pause</pause>
+			<resume>ob_music_resume</resume>
+		</music>
+		<vo>vo_ob_char01_char_02_intro</vo>
+	</missions>
+	<missions>
+		<id>1000</id>
+		<videoPath>videos/d_day.usm</videoPath>
+		<music>
+			<pause>sm_lobby_dday_music_pause</pause>
+			<resume>sm_lobby_dday_music_resume</resume>
+		</music>
+		<vo>vo_sm_dday_intro</vo>
+	</missions>
+	<missions>
+		<id>1001</id>
+		<videoPath>videos/d_day.usm</videoPath>
+		<music>
+			<pause>sm_lobby_dday_music_pause</pause>
+			<resume>sm_lobby_dday_music_resume</resume>
+		</music>
+		<vo>vo_sm_dday_intro</vo>
+	</missions>
 </root>

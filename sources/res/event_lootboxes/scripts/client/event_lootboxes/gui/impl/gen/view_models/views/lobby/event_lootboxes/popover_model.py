@@ -1,9 +1,9 @@
 from frameworks.wulf import ViewModel
 
 class PopoverModel(ViewModel):
-    __slots__ = ('onOpenBtnClick', 'onBuyBtnClick')
+    __slots__ = ('onOpenBtnClick', 'onBuyBtnClick', 'onAboutBtnClick')
 
-    def __init__(self, properties=12, commands=2):
+    def __init__(self, properties=13, commands=3):
         super(PopoverModel, self).__init__(properties=properties, commands=commands)
 
     def getEventExpireTime(self):
@@ -30,53 +30,59 @@ class PopoverModel(ViewModel):
     def setIsBuyAvailable(self, value):
         self._setBool(3, value)
 
+    def getIsLootBoxesAvailable(self):
+        return self._getBool(4)
+
+    def setIsLootBoxesAvailable(self, value):
+        self._setBool(4, value)
+
     def getMainRewardBoxesLeft(self):
-        return self._getNumber(4)
-
-    def setMainRewardBoxesLeft(self, value):
-        self._setNumber(4, value)
-
-    def getMaxBoxesAvailableToBuy(self):
         return self._getNumber(5)
 
-    def setMaxBoxesAvailableToBuy(self, value):
+    def setMainRewardBoxesLeft(self, value):
         self._setNumber(5, value)
 
-    def getBoxesAvailableToBuy(self):
+    def getMaxBoxesAvailableToBuy(self):
         return self._getNumber(6)
 
-    def setBoxesAvailableToBuy(self, value):
+    def setMaxBoxesAvailableToBuy(self, value):
         self._setNumber(6, value)
 
-    def getGuaranteedLimit(self):
+    def getBoxesAvailableToBuy(self):
         return self._getNumber(7)
 
-    def setGuaranteedLimit(self, value):
+    def setBoxesAvailableToBuy(self, value):
         self._setNumber(7, value)
 
-    def getBuyingEnableTime(self):
+    def getGuaranteedLimit(self):
         return self._getNumber(8)
 
-    def setBuyingEnableTime(self, value):
+    def setGuaranteedLimit(self, value):
         self._setNumber(8, value)
 
+    def getBuyingEnableTime(self):
+        return self._getNumber(9)
+
+    def setBuyingEnableTime(self, value):
+        self._setNumber(9, value)
+
     def getIsLastEventDay(self):
-        return self._getBool(9)
-
-    def setIsLastEventDay(self, value):
-        self._setBool(9, value)
-
-    def getHasErrors(self):
         return self._getBool(10)
 
-    def setHasErrors(self, value):
+    def setIsLastEventDay(self, value):
         self._setBool(10, value)
 
-    def getUseExternalShop(self):
+    def getHasErrors(self):
         return self._getBool(11)
 
-    def setUseExternalShop(self, value):
+    def setHasErrors(self, value):
         self._setBool(11, value)
+
+    def getUseExternalShop(self):
+        return self._getBool(12)
+
+    def setUseExternalShop(self, value):
+        self._setBool(12, value)
 
     def _initialize(self):
         super(PopoverModel, self)._initialize()
@@ -84,6 +90,7 @@ class PopoverModel(ViewModel):
         self._addNumberProperty('count', 0)
         self._addBoolProperty('isOpenAvailable', True)
         self._addBoolProperty('isBuyAvailable', True)
+        self._addBoolProperty('isLootBoxesAvailable', True)
         self._addNumberProperty('mainRewardBoxesLeft', 0)
         self._addNumberProperty('maxBoxesAvailableToBuy', 0)
         self._addNumberProperty('boxesAvailableToBuy', 0)
@@ -94,3 +101,4 @@ class PopoverModel(ViewModel):
         self._addBoolProperty('useExternalShop', False)
         self.onOpenBtnClick = self._addCommand('onOpenBtnClick')
         self.onBuyBtnClick = self._addCommand('onBuyBtnClick')
+        self.onAboutBtnClick = self._addCommand('onAboutBtnClick')

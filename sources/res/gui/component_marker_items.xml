@@ -132,6 +132,43 @@
 			</MARKER_2D>
 		</components>
 	</STATIC_DEATH_ZONE_PROXIMITY>
+	<MINEFIELD_PROXIMITY>
+		<visible>true</visible>
+		<areaRadius>
+			5.0
+			<!--BW_String-->
+		</areaRadius>
+		<disappearingRadius>
+			50.0
+			<!--BW_String-->
+		</disappearingRadius>
+		<reverseDisappearing>true</reverseDisappearing>
+		<offset>0 10 0</offset>
+		<components>
+			<MARKER_2D>
+				<item>
+					<class>gui.Scaleform.daapi.view.battle.shared.component_marker.markers_components.World2DMarkerComponent</class>
+					<config>
+						<shape>deathZone</shape>
+						<min_distance>
+							0.0
+							<!--BW_String-->
+						</min_distance>
+						<max_distance>
+							0.0
+							<!--BW_String-->
+						</max_distance>
+						<distance>
+							0.0
+							<!--BW_String-->
+						</distance>
+						<distanceFieldColor>green</distanceFieldColor>
+						<symbol>StaticObjectMarker</symbol>
+					</config>
+				</item>
+			</MARKER_2D>
+		</components>
+	</MINEFIELD_PROXIMITY>
 	<COMP7_RECON>
 		<visible>true</visible>
 		<components>

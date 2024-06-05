@@ -46,7 +46,6 @@ class ModType(Enum):
     ENV_MODULE_DAMAGE_CHANCE = 'envModuleDamageChance'
     REPAIR_SPEED = 'repairSpeed'
     VISION_MIN_RADIUS = 'visionMinRadius'
-    VISION_MAX_RADIUS = 'visionMaxRadius'
     VISION_TIME = 'visionTime'
     EQUIPMENT_COOLDOWN = 'equipmentCooldown'
     INVISIBILITY_FACTOR_AT_SHOT = 'invisibilityFactorAtShot'

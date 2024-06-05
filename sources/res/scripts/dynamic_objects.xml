@@ -365,6 +365,21 @@
 			</overTerrainHeight>
 		</ally>
 	</HealPointVisual>
+	<AimingCircleRestrictionVisual>
+		<ally>
+			<visual>content/Interface/TargetPoint/inspire.model</visual>
+			<color>0xffffffff</color>
+			<enableAccurateCollision>False</enableAccurateCollision>
+			<maxUpdateInterval>
+				0.04
+				<!--BW_String-->
+			</maxUpdateInterval>
+			<overTerrainHeight>
+				0.5
+				<!--BW_String-->
+			</overTerrainHeight>
+		</ally>
+	</AimingCircleRestrictionVisual>
 	<battleRoyaleHealpoint>
 		<enemy>
 			<visual>content/Interface/TargetPoint/inspire_enemy.model</visual>

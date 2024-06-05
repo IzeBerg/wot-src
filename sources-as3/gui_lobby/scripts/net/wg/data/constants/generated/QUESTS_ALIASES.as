@@ -27,6 +27,10 @@ package net.wg.data.constants.generated
       
       public static const MISSIONS_MARATHON_VIEW_LINKAGE:String = "MissionsMarathonViewUI";
       
+      public static const LIVE_OPS_WEB_EVENTS_VIEW_PY_ALIAS:String = "LiveOpsWebEventsView";
+      
+      public static const LIVE_OPS_WEB_EVENTS_VIEW_LINKAGE:String = "LiveOpsWebEventsViewUI";
+      
       public static const MISSIONS_PREMIUM_VIEW_PY_ALIAS:String = "MissionsPremiumView";
       
       public static const MISSIONS_PREMIUM_VIEW_LINKAGE:String = "MissionsPremiumViewUI";

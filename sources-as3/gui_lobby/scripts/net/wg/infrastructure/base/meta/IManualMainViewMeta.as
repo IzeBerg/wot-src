@@ -19,5 +19,7 @@ package net.wg.infrastructure.base.meta
       function as_showCloseBtn(param1:Boolean) : void;
       
       function as_showBackBtn(param1:Boolean) : void;
+      
+      function as_setDescrLabelBackBtn(param1:String) : void;
    }
 }

@@ -1,4 +1,4 @@
-import logging, math, random, weakref
+import functools, logging, math, random, weakref
 from collections import namedtuple
 import typing, BigWorld, Math, Health, WoT, AreaDestructibles, BattleReplay, DestructiblesCache, TriggersManager, constants, physics_shared
 from account_helpers.settings_core.settings_constants import GAME
@@ -9,6 +9,7 @@ from cgf_components.arena_camera_manager import ArenaCameraManager
 from cgf_script.entity_dyn_components import BWEntitiyComponentTracker
 from constants import VEHICLE_HIT_EFFECT, VEHICLE_SIEGE_STATE, ATTACK_REASON_INDICES, ATTACK_REASON, SPT_MATKIND
 from debug_utils import LOG_DEBUG_DEV
+from shared_utils import nextTick
 from visual_script.misc import ASPECT
 from Event import Event
 from gui.battle_control import vehicle_getter, avatar_getter
@@ -19,6 +20,7 @@ from helpers import dependency
 from helpers.EffectMaterialCalculation import calcSurfaceMaterialNearPoint
 from helpers.EffectsList import SoundStartParam
 from items import vehicles
+from items.components.component_constants import DEFAULT_TRACK_HIT_VECTOR
 from material_kinds import EFFECT_MATERIAL_INDEXES_BY_NAMES, EFFECT_MATERIALS
 from skeletons.account_helpers.settings_core import ISettingsCore
 from skeletons.gui.battle_session import IBattleSessionProvider
@@ -276,6 +278,14 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
         _logger.debug('respawnVehicle(%d)', vID)
         vehicle = BigWorld.entities.get(vID)
         if vehicle is not None:
+            avatar = BigWorld.player()
+            vehInfo = avatar.arena.vehicles[vID]
+            avatarVehicle = avatar.vehicle
+            isVehicleAlive = vehInfo['isAlive'] and vehicle.isAlive()
+            isVehicleEntityReady = avatar.playerVehicleID != vID or avatarVehicle and avatarVehicle.id == avatar.playerVehicleID
+            if not isVehicleAlive or not isVehicleEntityReady:
+                nextTick(functools.partial(Vehicle.respawnVehicle, vID, compactDescr, outfitCompactDescr))()
+                return
             vehicle.respawnCompactDescr = compactDescr
             vehicle.respawnOutfitCompactDescr = outfitCompactDescr
             _g_respawnQueue.pop(vID, None)
@@ -711,9 +721,8 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
 
     def getExtraHitPoint(self, extraIndex):
         if extraIndex is None or extraIndex not in self.extrasHitPoint:
-            return Math.Vector3(0.0, 10.0, 0.0)
-        else:
-            return self.extrasHitPoint[extraIndex]
+            return DEFAULT_TRACK_HIT_VECTOR
+        return self.extrasHitPoint[extraIndex]
 
     def set_perks(self, _=None):
         ctrl = self.guiSessionProvider.dynamic.perks
@@ -734,7 +743,7 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
             return
         else:
             self.guiSessionProvider.setVehicleHealth(self.isPlayerVehicle, self.id, newHealth, attackerID, attackReasonID)
-            if not self.isStarted or self.typeDescriptor.isCosmicVehicle:
+            if not self.isStarted:
                 self.__prevHealth = newHealth
                 return
             BigWorld.player().arena.onVehicleHealthChanged(self.id, attackerID, oldHealth - newHealth)

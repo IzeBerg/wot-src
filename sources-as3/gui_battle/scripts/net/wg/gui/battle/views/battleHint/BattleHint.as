@@ -68,6 +68,7 @@ package net.wg.gui.battle.views.battleHint
       
       public function updateStage(param1:Number, param2:Number) : void
       {
+         this.hintContainer.updateStage(param1);
          this.hintContainer.x = param1 >> 1;
       }
       

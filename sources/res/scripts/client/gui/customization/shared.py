@@ -457,7 +457,10 @@ class _QuestGroupWrapper(object):
         groupID, _ = self.item.getQuestsProgressionInfo()
         if not groupID:
             return ''
-        return backport.text(R.strings.vehicle_customization.questProgress.dyn(groupID)())
+        accessor = R.strings.vehicle_customization.questProgress.dyn(groupID)
+        if not accessor.isValid():
+            return ''
+        return backport.text(accessor())
 
 
 class _ClassicGroupWrapper(object):

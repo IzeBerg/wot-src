@@ -11,18 +11,18 @@ from helpers import dependency
 from items.components.crew_books_constants import CREW_BOOK_RARITY
 from skeletons.gui.game_control import IEventLootBoxesController
 _VEHICLES_BONUS_NAME = 'vehicles'
+_SLOTS_ORDER = range(0, 4)
 _REWARDS_WHICH_NEED_MERGE = (
  BlueprintsBonusSubtypes.NATION_FRAGMENT,
  CREW_BOOK_RARITY.CREW_COMMON)
 
 class LootBoxSlot(object):
-    __slots__ = ('__probability', '__bonuses', '__rewardsType', '__isGuaranteedBonus')
+    __slots__ = ('__probability', '__bonuses', '__rewardsType')
 
-    def __init__(self, probability, bonuses, isGuaranteedBonus):
+    def __init__(self, probability, bonuses):
         self.__probability = round(probability * 100, 2)
         self.__bonuses = bonuses
         self.__detectRewardsType(bonuses)
-        self.__isGuaranteedBonus = isGuaranteedBonus
 
     def getProbability(self):
         return self.__probability
@@ -33,14 +33,10 @@ class LootBoxSlot(object):
     def getRewardsType(self):
         return self.__rewardsType
 
-    def getIsGuaranteedBonus(self):
-        return self.__isGuaranteedBonus
-
     def getViewModel(self):
         slotModel = InfotypeSlotModel()
         slotModel.setProbability(self.__probability)
         slotModel.setRewardType(RewardType(self.__rewardsType))
-        slotModel.setIsGuaranteedBonus(self.__isGuaranteedBonus)
         rewardsModelArray = slotModel.getRewards()
         for bonus in self.__packBonuses():
             rewardsModelArray.addViewModel(bonus)
@@ -59,21 +55,21 @@ class LootBoxSlot(object):
         bonusList = []
         mergeRewards = {}
         for bonus in self.__bonuses:
-            if not self.__isValidBonus(bonus):
-                continue
-            packedBonuses = packer.pack(bonus)
-            for packedBonus in packedBonuses:
-                packedBonusName = packedBonus.getName()
-                if packedBonusName in _REWARDS_WHICH_NEED_MERGE:
-                    if packedBonusName in mergeRewards:
-                        count = mergeRewards[packedBonusName].getCount()
-                        mergeRewards[packedBonusName].setCount(max(count, packedBonus.getCount()))
-                        packedBonus.unbind()
-                    else:
-                        mergeRewards[packedBonusName] = packedBonus
+            if self.__isValidBonus(bonus):
+                packedBonuses = packer.pack(bonus)
+                for packedBonus in packedBonuses:
+                    if packedBonus.getName() in _REWARDS_WHICH_NEED_MERGE:
+                        if packedBonus.getName() in mergeRewards:
+                            count = mergeRewards[packedBonus.getName()].getCount()
+                            mergeRewards[packedBonus.getName()].setCount(max(count, packedBonus.getCount()))
+                            packedBonus.unbind()
+                        else:
+                            mergeRewards[packedBonus.getName()] = packedBonus
+                    elif not self.__isExistingVehicle(packedBonus, bonusList):
                         bonusList.append(packedBonus)
-                elif not self.__isExistingVehicle(packedBonus, bonusList):
-                    bonusList.append(packedBonus)
+
+        for mergeReward in mergeRewards.itervalues():
+            bonusList.append(mergeReward)
 
         return bonusList
 
@@ -121,8 +117,9 @@ class EventLootBoxTooltip(ViewImpl):
     def __updateSlots(self, slots, model=None):
         slotsModel = model.getSlots()
         slotsModel.clear()
-        for slot in slots.values():
-            lbSlot = LootBoxSlot(slot.get('probability', [[0]])[0][0], slot.get('bonuses', []), slot.get('isGuaranteedBonus', False))
+        for slotName in _SLOTS_ORDER:
+            slot = slots.get(slotName, {})
+            lbSlot = LootBoxSlot(slot.get('probability', [[0]])[0][0], slot.get('bonuses', []))
             slotsModel.addViewModel(lbSlot.getViewModel())
 
         slotsModel.invalidate()

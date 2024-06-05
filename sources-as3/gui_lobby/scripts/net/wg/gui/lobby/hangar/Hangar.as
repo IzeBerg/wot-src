@@ -153,6 +153,10 @@ package net.wg.gui.lobby.hangar
       
       private static const AMMUNITION_PANEL_INJECT_OFFSET_TOP:int = 7;
       
+      private static const AMMUNITION_PANEL_INJECT_FACTOR:int = 1;
+      
+      private static const AMMUNITION_PANEL_INJECT_FACTOR_X2:int = 2;
+      
       private static const WIDGETS_OFFSET_Y:int = 64;
       
       private static const CAROUSEL_EVENT_ENTRY_X_OFFSET:int = -65;
@@ -986,6 +990,7 @@ package net.wg.gui.lobby.hangar
       {
          var _loc1_:Rectangle = null;
          var _loc4_:Boolean = false;
+         var _loc5_:int = 0;
          _loc1_ = this.ammunitionPanelInject.hitRect;
          var _loc2_:Boolean = _loc1_ && _loc1_.width > 0;
          var _loc3_:Boolean = this.carousel && this._eventsEntryContainer.isActive;
@@ -999,7 +1004,12 @@ package net.wg.gui.lobby.hangar
                _loc4_ = false;
                if(_loc1_ && this.ammunitionPanelInject.visible && _loc1_.width > 0)
                {
-                  _loc4_ = this.ammunitionPanelInject.x + _loc1_.x + _loc1_.width + AMMUNITION_PANEL_INJECT_OFFSET_RIGHT > this._eventsEntryContainer.x;
+                  _loc5_ = AMMUNITION_PANEL_INJECT_FACTOR;
+                  if(_loc1_.x + _loc1_.width >= this.ammunitionPanelInject.width)
+                  {
+                     _loc5_ = AMMUNITION_PANEL_INJECT_FACTOR_X2;
+                  }
+                  _loc4_ = this.ammunitionPanelInject.x + _loc1_.x / _loc5_ + _loc1_.width + AMMUNITION_PANEL_INJECT_OFFSET_RIGHT > this._eventsEntryContainer.x;
                }
                if(_loc4_)
                {

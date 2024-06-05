@@ -86,7 +86,7 @@
 				<row0>1.000000 0.000000 0.000000</row0>
 				<row1>0.000000 1.000000 0.000000</row1>
 				<row2>0.000000 0.000000 1.000000</row2>
-				<row3>0.000000 0.286228 0.132000</row3>
+				<row3>-0.045359 0.331680 0.207833</row3>
 			</transform>
 		</node>
 	</node>
@@ -95,7 +95,6 @@
 		<node>Scene Root</node>
 		<geometry>
 			<vertices>vertices</vertices>
-			<stream>colour</stream>
 			<primitive>indices</primitive>
 			<primitiveGroup>
 				0
@@ -104,10 +103,6 @@
 					<collisionFlags>0</collisionFlags>
 					<materialKind>0</materialKind>
 					<fx>shaders/std_effects/PBS_tank.fx</fx>
-					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
-					</property>
 					<property>
 						diffuseMap
 						<Texture>vehicles/british/GB09_Churchill_VII/Churchill_VII_proxy_AM.dds</Texture>
@@ -129,14 +124,14 @@
 						<Texture>vehicles/russian/common/common_ID.dds</Texture>
 					</property>
 				</material>
-				<groupOrigin>0.044116 -0.158046 0.125722</groupOrigin>
+				<groupOrigin>-0.014666 -0.264156 0.139871</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<boundingBox>
-		<min>-1.695769 -0.746137 -3.542410</min>
-		<max>1.784001 0.430045 3.793854</max>
+		<min>-1.761370 -0.943819 -3.540420</min>
+		<max>1.732038 0.415507 3.820163</max>
 	</boundingBox>
-	<geometrySize>9762</geometrySize>
-	<minUVDensity>0.001625</minUVDensity>
+	<geometrySize>3240</geometrySize>
+	<minUVDensity>0.001788</minUVDensity>
 </root>

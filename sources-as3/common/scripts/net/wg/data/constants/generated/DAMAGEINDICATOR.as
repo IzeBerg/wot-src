@@ -47,6 +47,8 @@ package net.wg.data.constants.generated
       
       public static const BOSS:String = "boss";
       
+      public static const BUNKER_TURRET:String = "bunkerTurret";
+      
       public static const COMMANDER_CIRCLE:String = "commanderCircle";
       
       public static const CRIT:String = "crit";

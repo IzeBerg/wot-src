@@ -1,6 +1,6 @@
+from gui.battle_control.controllers.vse_hud_settings_ctrl.settings.base_models import BaseClientModel
 
-
-class EnemyListClientModel(object):
+class EnemyListClientModel(BaseClientModel):
     __slots__ = ('showSpottedIcon', 'highlightElite')
 
     def __init__(self, showSpottedIcon, highlightElite):

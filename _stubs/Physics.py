@@ -108,6 +108,38 @@ class CollidersComponent(PyComponentWrapperBase):
 	def valid(self, *args, **kwargs): pass
 
 
+class CollisionResolveType(pybind11_object):
+	KILL_AND_DESTROY = CollisionResolveType.KILL_AND_DESTROY
+	KILL_AND_FREEZE = CollisionResolveType.KILL_AND_FREEZE
+	KILL_AND_PUSH_OUT = CollisionResolveType.KILL_AND_PUSH_OUT
+	PUSH_OUT = CollisionResolveType.PUSH_OUT
+	def __delattr__(*args, **kwargs): pass
+	__doc__ = u'Members:\n\n  KILL_AND_DESTROY\n\n  KILL_AND_FREEZE\n\n  KILL_AND_PUSH_OUT\n\n  PUSH_OUT'
+	__entries = {u'KILL_AND_DESTROY': (CollisionResolveType.KILL_AND_DESTROY, None), u'KILL_AND_FREEZE': (CollisionResolveType.KILL_AND_FREEZE, None), u'KILL_AND_PUSH_OUT': (CollisionResolveType.KILL_AND_PUSH_OUT, None), u'PUSH_OUT': (CollisionResolveType.PUSH_OUT, None)}
+	def __eq__(self, *args, **kwargs): pass
+	def __format__(*args, **kwargs): pass
+	def __getattribute__(*args, **kwargs): pass
+	def __getstate__(self, *args, **kwargs): pass
+	def __hash__(self, *args, **kwargs): pass
+	def __init__(self, *args, **kwargs): pass
+	def __int__(self, *args, **kwargs): pass
+	def __long__(self, *args, **kwargs): pass
+	__members__ = {u'PUSH_OUT': CollisionResolveType.PUSH_OUT, u'KILL_AND_FREEZE': CollisionResolveType.KILL_AND_FREEZE, u'KILL_AND_PUSH_OUT': CollisionResolveType.KILL_AND_PUSH_OUT, u'KILL_AND_DESTROY': CollisionResolveType.KILL_AND_DESTROY}
+	__module__ = 'Physics'
+	def __ne__(self, *args, **kwargs): pass
+	def __new__(*args, **kwargs): pass
+	__qualname__ = 'CollisionResolveType'
+	def __reduce__(*args, **kwargs): pass
+	def __reduce_ex__(*args, **kwargs): pass
+	def __repr__(self, *args, **kwargs): pass
+	def __setattr__(*args, **kwargs): pass
+	def __setstate__(self, *args, **kwargs): pass
+	def __sizeof__(*args, **kwargs): pass
+	def __str__(*args, **kwargs): pass
+	def __subclasshook__(*args, **kwargs): pass
+	name = property(lambda self: None)
+
+
 class CylinderColliderDesc(PrimitiveColliderDesc):
 	def __delattr__(*args, **kwargs): pass
 	__doc__ = None

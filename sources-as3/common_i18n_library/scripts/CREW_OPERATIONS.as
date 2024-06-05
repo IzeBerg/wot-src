@@ -41,10 +41,6 @@ package
       
       public static const RETURN_WARNING_MEMBERDEMOBILIZED_TOOLTIP_BODY:String = "#crew_operations:return/warning/memberDemobilized/tooltip/body";
       
-      public static const RETURN_WARNING_NOSPACE_TOOLTIP_HEADER:String = "#crew_operations:return/warning/noSpace/tooltip/header";
-      
-      public static const RETURN_WARNING_NOSPACE_TOOLTIP_BODY:String = "#crew_operations:return/warning/noSpace/tooltip/body";
-      
       public static const RETURN_WARNING_MEMBERSINBATTLE_TOOLTIP_HEADER:String = "#crew_operations:return/warning/membersInBattle/tooltip/header";
       
       public static const RETURN_WARNING_MEMBERSINBATTLE_TOOLTIP_BODY:String = "#crew_operations:return/warning/membersInBattle/tooltip/body";

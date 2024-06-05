@@ -119,6 +119,8 @@ package net.wg.gui.battle.battleRoyale
       private static const RADIAL_MENU_ALPHA_NORMAL:int = 1;
       
       private static const RADIAL_MENU_ALPHA_HIDDEN:Number = 0.15;
+      
+      private static const POSTMORTEM_LAYER_NAME:String = "postmortemPanelUI";
        
       
       public var fragPanel:BattleRoyaleScoreBar = null;
@@ -253,6 +255,7 @@ package net.wg.gui.battle.battleRoyale
             postmortemPanelUI = App.utils.classFactory.getComponent(Linkages.BATTLE_ROYALE_POSTMORTEM_PANEL,BattleRoyalePostmortemPanel);
          }
          postmortemPanelUI.setCompVisible(false);
+         postmortemPanelUI.name = POSTMORTEM_LAYER_NAME;
          addChild(postmortemPanelUI);
          super.createPostmortemPanelComponent();
       }

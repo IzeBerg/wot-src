@@ -96,6 +96,10 @@ package net.wg.gui.battle.comp7.views.consumablesPanel
          invalidate(INV_ICON);
       }
       
+      public function setIdleEnabledGlow(param1:Boolean) : void
+      {
+      }
+      
       public function showGlow(param1:int, param2:Boolean = true) : void
       {
          if(param1 == CONSUMABLES_PANEL_SETTINGS.GLOW_ID_ORANGE)

@@ -1124,7 +1124,7 @@
 		<type>dict</type>
 		<value>
 			<item>
-				/$LANGUAGE_CODE/promocontent/13BPContentPage/
+				/$LANGUAGE_CODE/promocontent/14BPContentPage/
 				<name>infoPage</name>
 				<type>url</type>
 			</item>
@@ -1134,7 +1134,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				/$LANGUAGE_CODE/promocontent/13BPIntroVideo/
+				/$LANGUAGE_CODE/promocontent/14BPIntroVideo/
 				<name>introVideo</name>
 				<type>url</type>
 			</item>
@@ -1156,15 +1156,56 @@
 				<value>
 					<item>
 						<type>string</type>
-						<value>styles</value>
-					</item>
-					<item>
-						<type>string</type>
 						<value>seasonDescription</value>
 					</item>
+				</value>
+			</item>
+		</value>
+	</setting>
+	<setting>
+		<name>battlePassVisuals</name>
+		<type>dict</type>
+		<value>
+			<item>
+				<name>season</name>
+				<type>dict</type>
+				<value>
 					<item>
-						<type>string</type>
-						<value>shopCategory</value>
+						<name>hasAdditionalBackground</name>
+						<type>bool</type>
+						<value>False</value>
+					</item>
+					<item>
+						<name>hasSpecialTankmenScreen</name>
+						<type>bool</type>
+						<value>False</value>
+					</item>
+				</value>
+			</item>
+			<item>
+				<name>chapter</name>
+				<type>dict</type>
+				<value>
+					<item>
+						<name>hasChapterLogoInBg</name>
+						<type>dict</type>
+						<value>
+							<item>
+								<name>141</name>
+								<type>bool</type>
+								<value>False</value>
+							</item>
+							<item>
+								<name>142</name>
+								<type>bool</type>
+								<value>False</value>
+							</item>
+							<item>
+								<name>143</name>
+								<type>bool</type>
+								<value>False</value>
+							</item>
+						</value>
 					</item>
 				</value>
 			</item>
@@ -1644,57 +1685,6 @@
 			<item>
 				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/tour_of_duty_2024/
 				<name>baseURL</name>
-				<type>url</type>
-			</item>
-		</value>
-	</setting>
-	<setting>
-		<name>cosmicWelcomePageURL</name>
-		<type>macros</type>
-		<macros>AUTH_REALM</macros>
-		<value>
-			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/call-to-the-final-frontierVideo/
-				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/call-to-the-final-frontierVideo/
-				<name>default</name>
-				<type>url</type>
-			</item>
-		</value>
-	</setting>
-	<setting>
-		<name>cosmicInfoPageURL</name>
-		<type>macros</type>
-		<macros>AUTH_REALM</macros>
-		<value>
-			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/call-to-the-final-frontier/
-				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/call-to-the-final-frontier/
-				<name>default</name>
-				<type>url</type>
-			</item>
-		</value>
-	</setting>
-	<setting>
-		<name>cosmicArtifactRewardURL</name>
-		<type>macros</type>
-		<macros>AUTH_REALM</macros>
-		<value>
-			<item>
-				https://worldoftanks.eu/$LANGUAGE_CODE/content/call-to-final-frontier-wallpapers-and-soundtrack/
-				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://worldoftanks.eu/$LANGUAGE_CODE/content/call-to-final-frontier-wallpapers-and-soundtrack/
-				<name>default</name>
 				<type>url</type>
 			</item>
 		</value>

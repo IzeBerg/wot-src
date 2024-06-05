@@ -5,7 +5,6 @@ package net.wg.gui.battle.pveBase.views.postmortemPanel
    import flash.events.Event;
    import flash.text.TextField;
    import net.wg.data.VO.UserVO;
-   import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.BATTLEATLAS;
    import net.wg.gui.battle.components.BattleAtlasSprite;
    import net.wg.gui.battle.views.postmortemPanel.BasePostmortemPanel;
@@ -34,7 +33,7 @@ package net.wg.gui.battle.pveBase.views.postmortemPanel
       
       private static const TITLE_EXIT_Y:int = -174;
       
-      private static const INVALID_POSTMORTEM_STATE:int = 1 << 12;
+      private static const INVALID_POSTMORTEM_STATE:int = 1 << 16;
       
       private static const DEAD_REASON_TF_Y:int = -447;
       
@@ -85,6 +84,13 @@ package net.wg.gui.battle.pveBase.views.postmortemPanel
       {
          super();
          this._textFields = new <TextField>[this.hintTitleTF,this.hintDescTF,this.hintDescBigTF,playerInfoTF,deadReasonTF];
+      }
+      
+      override public function updateStage(param1:int, param2:int) : void
+      {
+         this._w = param1;
+         this._h = param2;
+         this.updateDeadReasonPosition();
       }
       
       override protected function configUI() : void
@@ -175,7 +181,7 @@ package net.wg.gui.battle.pveBase.views.postmortemPanel
             deadReasonBG.visible = false;
             nicknameKillerBG.visible = false;
             this.bg.visible = false;
-            deadReasonBack.visible = _deadReason != Values.EMPTY_STR;
+            deadReasonBack.visible = this.isShowDeathReason;
             this.updateDeadReasonPosition();
          }
          if(isInvalid(INVALID_PLAYER_INFO))
@@ -184,31 +190,15 @@ package net.wg.gui.battle.pveBase.views.postmortemPanel
          }
          if(isInvalid(INVALID_HIDE_COMPONENTS))
          {
-            deadReasonBack.visible = deadReasonTF.visible = _deadReason == Values.EMPTY_STR;
-         }
-         if(isInvalid(INVALID_DEAD_REASON_VISIBILITY))
-         {
-            deadReasonBack.visible = deadReasonTF.visible = _deadReason != Values.EMPTY_STR;
-            deadReasonBG.visible = false;
+            deadReasonBack.visible = deadReasonTF.visible = this.isShowDeathReason;
          }
          dispatchEvent(new Event(CHANGED_EVENT,true));
       }
       
-      private function updateDeadReasonPosition() : void
+      override protected function updateDeathReasonVisibility() : void
       {
-         var _loc1_:Boolean = this._w <= StageSizeBoundaries.WIDTH_1366 || this._h <= StageSizeBoundaries.HEIGHT_768;
-         var _loc2_:int = !!_loc1_ ? int(OFFSET) : int(0);
-         deadReasonTF.y = DEAD_REASON_TF_Y + _loc2_;
-         deadReasonBG.y = DEAD_REASON_BG_Y + _loc2_;
-         deadReasonBack.y = DEAD_REASON_BACK_Y + _loc2_;
-         vehiclePanel.y = VEHICLE_PANEL_Y + _loc2_;
-      }
-      
-      override public function updateStage(param1:int, param2:int) : void
-      {
-         this._w = param1;
-         this._h = param2;
-         this.updateDeadReasonPosition();
+         deadReasonBack.visible = deadReasonTF.visible = this.isShowDeathReason;
+         deadReasonBG.visible = false;
       }
       
       override protected function showPostmortemPanel(param1:Boolean) : void
@@ -222,6 +212,12 @@ package net.wg.gui.battle.pveBase.views.postmortemPanel
          this.observerModeDescTF.visible = param1;
          this.exitToHangarTitleTF.visible = param1 && this._canExit;
          this.exitToHangarDescTF.visible = param1 && this._canExit;
+      }
+      
+      public function as_hidePanel() : void
+      {
+         this._hideHintPanel = true;
+         invalidate(INVALID_POSTMORTEM_STATE);
       }
       
       public function as_setCanExit(param1:Boolean) : void
@@ -279,10 +275,24 @@ package net.wg.gui.battle.pveBase.views.postmortemPanel
          return App.appWidth - x - _loc1_ / 2;
       }
       
-      public function as_hidePanel() : void
+      private function updateDeadReasonPosition() : void
       {
-         this._hideHintPanel = true;
-         invalidate(INVALID_POSTMORTEM_STATE);
+         var _loc1_:Boolean = this._w <= StageSizeBoundaries.WIDTH_1366 || this._h <= StageSizeBoundaries.HEIGHT_768;
+         var _loc2_:int = !!_loc1_ ? int(OFFSET) : int(0);
+         deadReasonTF.y = DEAD_REASON_TF_Y + _loc2_;
+         deadReasonBG.y = DEAD_REASON_BG_Y + _loc2_;
+         deadReasonBack.y = DEAD_REASON_BACK_Y + _loc2_;
+         vehiclePanel.y = VEHICLE_PANEL_Y + _loc2_;
+      }
+      
+      override public function setCompVisible(param1:Boolean) : void
+      {
+         if(param1 && _isCompVisible != param1 && this.isShowDeathReason)
+         {
+            invalidateDeadReasonItems(true,INVALID_DEAD_REASON_ITEMS_VISIBILITY);
+            deadReasonBG.visible = false;
+         }
+         super.setCompVisible(param1);
       }
    }
 }

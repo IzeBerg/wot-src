@@ -179,6 +179,9 @@ class SettingsCore(ISettingsCore):
           GAME.SHOW_KILLERS_DOGTAG,
           options.DogtagsSetting(GAME.SHOW_KILLERS_DOGTAG, storage=DOG_TAGS_SETTINGS_STORAGE)),
          (
+          GAME.SHOW_PERSONAL_ANIMATED_DOGTAG,
+          options.DogtagsSetting(GAME.SHOW_PERSONAL_ANIMATED_DOGTAG, storage=DOG_TAGS_SETTINGS_STORAGE)),
+         (
           GAME.DYNAMIC_CAMERA,
           options.DynamicCamera(GAME.DYNAMIC_CAMERA, storage=GAME_SETTINGS_STORAGE)),
          (

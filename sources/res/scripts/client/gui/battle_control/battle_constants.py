@@ -40,7 +40,6 @@ class CANT_SHOOT_ERROR(object):
     NO_AMMO = 'no_ammo'
     RELOADING = 'gun_reload'
     EMPTY_CLIP = 'empty_clip'
-    GUN_LOCKED = 'gun_locked'
 
 
 SHELL_QUANTITY_UNKNOWN = -1

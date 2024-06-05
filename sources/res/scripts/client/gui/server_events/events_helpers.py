@@ -18,7 +18,7 @@ from skeletons.gui.game_control import IMarathonEventsController
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
-from gui.server_events.events_constants import BATTLE_MATTERS_QUEST_ID, MARATHON_GROUP_PREFIX, PREMIUM_GROUP_PREFIX, DAILY_QUEST_ID_PREFIX, RANKED_DAILY_GROUP_ID, RANKED_PLATFORM_GROUP_ID, BATTLE_ROYALE_GROUPS_ID, EPIC_BATTLE_GROUPS_ID, MAPS_TRAINING_GROUPS_ID, MAPS_TRAINING_QUEST_PREFIX, FUN_RANDOM_GROUP_ID, COSMIC_EVENT_PREFIX
+from gui.server_events.events_constants import BATTLE_MATTERS_QUEST_ID, MARATHON_GROUP_PREFIX, PREMIUM_GROUP_PREFIX, DAILY_QUEST_ID_PREFIX, RANKED_DAILY_GROUP_ID, RANKED_PLATFORM_GROUP_ID, BATTLE_ROYALE_GROUPS_ID, EPIC_BATTLE_GROUPS_ID, MAPS_TRAINING_GROUPS_ID, MAPS_TRAINING_QUEST_PREFIX, FUN_RANDOM_GROUP_ID
 from helpers.i18n import makeString as _ms
 if typing.TYPE_CHECKING:
     from gui.server_events.event_items import Quest
@@ -349,12 +349,6 @@ def isACEmailConfirmationQuest(eventID):
     return False
 
 
-def isCosmicQuest(eventID):
-    if eventID:
-        return eventID.find(COSMIC_EVENT_PREFIX) != -1
-    return False
-
-
 def isRegularQuest(eventID):
     idGameModeEvent = isDailyEpic(eventID) or isRankedDaily(eventID) or isRankedPlatform(eventID)
     return not (isMarathon(eventID) or isBattleMattersQuestID(eventID) or isPremium(eventID) or idGameModeEvent)
@@ -381,7 +375,8 @@ def parseC11nProgressToken(token):
     if not validateToken(tokenID):
         return C11nStyleProgressData()
     styleID, branch = deserializeToken(tokenID)
-    return C11nStyleProgressData(styleID=styleID, branch=branch, level=token.limit)
+    level = token.limit or token.count
+    return C11nStyleProgressData(styleID=styleID, branch=branch, level=level)
 
 
 def getIdxFromQuest(quest):

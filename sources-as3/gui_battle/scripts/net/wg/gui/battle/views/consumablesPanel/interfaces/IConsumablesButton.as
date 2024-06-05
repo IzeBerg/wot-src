@@ -28,6 +28,8 @@ package net.wg.gui.battle.views.consumablesPanel.interfaces
       
       function clearCoolDownTime() : void;
       
+      function setIdleEnabledGlow(param1:Boolean) : void;
+      
       function showGlow(param1:int) : void;
       
       function hideGlow() : void;

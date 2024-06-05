@@ -80,7 +80,6 @@ class EventLootBoxesOpenBoxScreen(ViewImpl):
         self.__rewards = kwargs.get('rewards')
         self.__updateData()
         self.__updateCounters()
-        self.__inBoxesFlowEnter()
         return
 
     def _initialize(self, *args, **kwargs):
@@ -94,7 +93,6 @@ class EventLootBoxesOpenBoxScreen(ViewImpl):
             self.__notifier.clear()
             self.__notifier = None
         self.__onHideWaiting()
-        self.__inBoxesFlowExit()
         super(EventLootBoxesOpenBoxScreen, self)._finalize()
         return
 
@@ -288,9 +286,9 @@ class EventLootBoxesOpenBoxScreen(ViewImpl):
     def __updateMainRewardBoxesLeft(self, model=None):
         model.setMainRewardBoxesLeft(self.__eventLootBoxes.boxCountToGuaranteedBonus)
 
-    def __inBoxesFlowEnter(self):
-        animationEnabled = self.__eventLootBoxes.getSetting(EVENT_LOOT_BOXES_CATEGORY, LOOT_BOXES_OPEN_ANIMATION_ENABLED)
-        playStorageOpened(animationEnabled=animationEnabled)
+    @staticmethod
+    def __inBoxesFlowEnter():
+        playStorageOpened()
 
     @staticmethod
     def __inBoxesFlowExit():
