@@ -9,6 +9,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "#PluralForms"
+msgstr "nplurals=2; plural=(n != 1);"
 
 msgid "error/button"
 msgstr "Affirmative!"
@@ -24,14 +28,23 @@ msgstr "Unable to Open Reward Selection"
 msgid "footer/closeBtn/label"
 msgstr "Select Later"
 
+msgid "footer/multipleCategories/selectRewards"
+msgid_plural "plural/footer/multipleCategories/selectRewards"
+msgstr[0] "Select reward from the categories provided."
+msgstr[1] "Select rewards from the categories provided."
+msgstr[2] "Select rewards from the categories provided."
+
 msgid "footer/okBtn/label"
 msgstr "Claim"
 
 msgid "footer/rewardsSelected"
 msgstr "Rewards selected:"
 
-msgid "footer/selectRewards"
-msgstr "Select rewards from the categories provided."
+msgid "footer/singleCategory/selectRewards"
+msgid_plural "plural/footer/singleCategory/selectRewards"
+msgstr[0] "Select reward from the category provided."
+msgstr[1] "Select rewards from the category provided."
+msgstr[2] "Select rewards from the category provided."
 
 msgid "reward/packSizeCount"
 msgstr "x{packSize}"

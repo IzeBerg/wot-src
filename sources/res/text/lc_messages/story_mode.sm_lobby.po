@@ -34,6 +34,17 @@ msgstr ""
 "Damage\n"
 "caused"
 
+msgid "battleResult/difficultyInfo/extraSmall"
+msgstr ""
+"%(icon)s By completing missions on Rigorous difficulty,\n"
+"you also automatically complete them on Regular.\n"
+"This means you receive rewards for both difficulty levels."
+
+msgid "battleResult/difficultyInfo/smallAndUp"
+msgstr ""
+"%(icon)s By completing missions on Rigorous difficulty, you also automatically complete them on Regular.\n"
+"This means you receive rewards for both difficulty levels."
+
 msgid "battleResult/kills"
 msgstr ""
 "Enemies\n"
@@ -45,16 +56,30 @@ msgstr "THE BATTLE IS OVER"
 msgid "battleResult/missionName/1"
 msgstr "TIGER HUNTER: Operation Steel Avalanche"
 
+msgid "battleResult/missionName/1000"
+msgstr "OPERATION OVERLORD"
+
+msgid "battleResult/missionName/1001"
+msgstr "OPERATION OVERLORD"
+
 msgid "battleResult/missionName/2"
 msgstr "TIGER HUNTER: Operation Trapper"
 
-msgid "battleResult/operationsCompleted"
+msgid "battleResult/noTasksToComplete"
 msgstr ""
-"Operations\n"
-"completed"
+"No active\n"
+"missions"
+
+msgid "battleResult/rewards/other"
+msgstr "Also received:"
 
 msgid "battleResult/slash"
 msgstr "/"
+
+msgid "battleResult/tasksCompleted"
+msgstr ""
+"Missions\n"
+"completed"
 
 msgid "battleResult/vehicleName"
 msgstr "%(playerName)s - %(vehicleName)s"
@@ -67,6 +92,33 @@ msgstr "{par_Start}Not survived{par_End}"
 
 msgid "battleResult/win/title"
 msgstr "VICTORY!"
+
+msgid "countdown/days"
+msgstr "{days} d"
+
+msgid "countdown/daysHours"
+msgstr "{days} d {hours} h"
+
+msgid "countdown/endsSoon"
+msgstr "Less than {minutes} minutes"
+
+msgid "countdown/hours"
+msgstr "{hours} h"
+
+msgid "countdown/hoursMinutes"
+msgstr "{hours} h {minutes} min"
+
+msgid "countdown/hoursMinutesShort"
+msgstr "{hours} h {minutes} m"
+
+msgid "countdown/lessThanMinute"
+msgstr "Less than 1 minute"
+
+msgid "countdown/minutes"
+msgstr "{minutes} min"
+
+msgid "countdown/minutesShort"
+msgstr "{minutes} m"
 
 msgid "dialogs/missionCompleted/cancel"
 msgstr "Cancel"
@@ -82,8 +134,35 @@ msgstr "Confirm"
 msgid "dialogs/missionCompleted/title"
 msgstr "No Active Missions in This Operation"
 
+msgid "entryPoint/new"
+msgstr "NEW"
+
+msgid "entryPoint/subtitle/newMission"
+msgstr "NEW MISSIONS AVAILABLE"
+
+msgid "entryPoint/subtitle/newMode"
+msgstr "NEW STORY AVAILABLE"
+
+msgid "entryPoint/timer/dates"
+msgstr "%(startDate)s – %(endDate)"
+
+msgid "entryPoint/title/newMission"
+msgstr "OPERATION OVERLORD"
+
+msgid "entryPoint/title/newMode"
+msgstr "OPERATION OVERLORD"
+
 msgid "headerButtons/battle/types/story_mode"
 msgstr "Stories"
+
+msgid "missionSelection/about"
+msgstr "ABOUT STORIES"
+
+msgid "missionSelection/difficulty/hard"
+msgstr "Rigorous"
+
+msgid "missionSelection/difficulty/normal"
+msgstr "Regular"
 
 msgid "missionSelection/exitButton"
 msgstr "EXIT MODE"
@@ -94,6 +173,18 @@ msgstr ""
 "Follow us—and avoid the dragon's teeth. They've got a bunch of rows of those concrete fangs in that field. But that's okay. We'll come through. All you gotta do is listen to me and execute my orders quickly and precisely. MacLeod and I will cover you.\n"
 "And don't pay his jokes any mind. Everyone has their own unique coping mechanisms… Forward!\""
 
+msgid "missionSelection/missionDescription/1000"
+msgstr ""
+"Captain John McCormick: \"Alright, fellas, the day has come. It's time to put an end to this war, and that's exactly what we're gonna do. All of us, together–Americans, Brits, French, Canadians, Australians, Belgians, Czechoslovaks, Greeks, Dutch, Kiwis, Norwegians, Poles. We're united to put an end to this evil once and for all.\n"
+"We're gonna break through the Atlantic Wall and establish our foothold.\n"
+"Get ready for the landing!\""
+
+msgid "missionSelection/missionDescription/1001"
+msgstr ""
+"Captain John McCormick: \"Alright, fellas, the day has come. It's time to put an end to this war, and that's exactly what we're gonna do. All of us, together–Americans, Brits, French, Canadians, Australians, Belgians, Czechoslovaks, Greeks, Dutch, Kiwis, Norwegians, Poles. We're united to put an end to this evil once and for all.\n"
+"We're gonna break through the Atlantic Wall and establish our foothold.\n"
+"Get ready for the landing!\""
+
 msgid "missionSelection/missionDescription/2"
 msgstr ""
 "MacLeod: \"Ah, Tigers—those are the worst ye can face on the battlefield. And if the command says they have a problem, they probably mean Tigers. We cannot contact the first assault squad, the second's just departed, and here we are—sent to follow them.\n"
@@ -103,30 +194,62 @@ msgstr ""
 msgid "missionSelection/missionName/1"
 msgstr "OPERATION STEEL AVALANCHE"
 
+msgid "missionSelection/missionName/1000"
+msgstr "OPERATION OVERLORD"
+
+msgid "missionSelection/missionName/1001"
+msgstr "OPERATION OVERLORD"
+
 msgid "missionSelection/missionName/2"
 msgstr "OPERATION TRAPPER"
 
 msgid "missionSelection/specialVehicle"
 msgstr "Special Vehicle"
 
-msgid "missionSelection/taskDescription/1"
-msgstr ""
-"{whiteSpanish_Start}Mission:{whiteSpanish_End} Attack the town and destroy "
-"enemy vehicles."
+msgid "missionSelection/tab/event"
+msgstr "OPERATION OVERLORD"
 
-msgid "missionSelection/taskDescription/2"
-msgstr ""
-"{whiteSpanish_Start}Mission:{whiteSpanish_End} Attack the town and destroy "
-"enemy vehicles."
+msgid "missionSelection/tab/newbies"
+msgstr "TUTORIAL STORIES"
+
+msgid "missionSelection/taskDescription/1/1"
+msgstr "Attack the town and destroy enemy vehicles."
+
+msgid "missionSelection/taskDescription/1000/1"
+msgstr "Break through, destroy the coastal guns, and capture the bridgehead."
+
+msgid "missionSelection/taskDescription/1000/2"
+msgstr "Complete the main mission objectives in under 15 minutes."
+
+msgid "missionSelection/taskDescription/1000/3"
+msgstr "Complete the main mission objectives without losing a single vehicle."
+
+msgid "missionSelection/taskDescription/1001/1"
+msgstr "Break through, destroy the coastal guns, and capture the bridgehead."
+
+msgid "missionSelection/taskDescription/1001/2"
+msgstr "Complete the main mission objectives in under 15 minutes."
+
+msgid "missionSelection/taskDescription/1001/3"
+msgstr "Complete the main mission objectives without losing a single vehicle."
+
+msgid "missionSelection/taskDescription/2/1"
+msgstr "Attack the town and destroy enemy vehicles."
+
+msgid "missionSelection/taskDescription/locked"
+msgstr "The mission is locked: %(timer)s"
 
 msgid "missionSelection/tooltipDescription"
-msgstr "The vehicle is only available for Tiger Hunter operations."
+msgstr "This vehicle is only available in Stories."
 
 msgid "mode/story_mode/callToAction"
 msgstr "Scenarios for beginners"
 
 msgid "mode/story_mode/description"
 msgstr "Complete scripted operations against AI-driven vehicles"
+
+msgid "mode/story_mode_event/callToAction"
+msgstr "Operation Overlord available"
 
 msgid "onboardingBattleResult/startButton"
 msgstr "Restart"
@@ -138,7 +261,141 @@ msgid "onboardingQueue/skipButton"
 msgstr "Skip"
 
 msgid "onboardingQueue/skipText"
-msgstr "All servers busy. Please wait or skip the Tiger Hunter story."
+msgstr "All servers busy. Please wait or skip this story."
 
 msgid "onboardingQueue/spinnerText"
 msgstr "We are preparing the server for you. Please wait..."
+
+msgid "tooltips/battleResultStat/armorUse/blocked"
+msgstr "Damage blocked by armor {parSecondary_Start}(units){parSecondary_End}"
+
+msgid "tooltips/battleResultStat/armorUse/header"
+msgstr "Damage blocked"
+
+msgid "tooltips/battleResultStat/armorUse/info"
+msgstr ""
+"Counted:\n"
+"• Ricochet of enemy shots\n"
+"• Non-penetrating hits\n"
+"\n"
+"Hits by HE and HESH shells are not counted."
+
+msgid "tooltips/battleResultStat/assist/header"
+msgstr "Damage assisted"
+
+msgid "tooltips/battleResultStat/assist/info"
+msgstr ""
+"The following damage caused by allies with your assistance is counted:\n"
+"• Damage upon your spotting\n"
+"• Damage upon your destroying a track and immobilizing the enemy vehicle"
+
+msgid "tooltips/battleResultStat/assist/total"
+msgstr ""
+"Total damage caused by allies\n"
+"{parSecondary_Start}(units){parSecondary_End}"
+
+msgid "tooltips/battleResultStat/damage/header"
+msgstr "Damage caused"
+
+msgid "tooltips/battleResultStat/damage/info"
+msgstr ""
+"Counted:\n"
+"• Damage by a shot\n"
+"• Damage by ramming\n"
+"• Damage by fire\n"
+"• Damage by pushing the enemy vehicle off an obstacle."
+
+msgid "tooltips/battleResultStat/damage/total"
+msgstr "Total damage {parSecondary_Start}(units){parSecondary_End}"
+
+msgid "tooltips/battleResultStat/kills/header"
+msgstr "Enemies destroyed"
+
+msgid "tooltips/battleResultStat/kills/info"
+msgstr ""
+"Counted:\n"
+"• Destruction by a shot\n"
+"• Destruction by fire\n"
+"• Destruction by ramming\n"
+"• Destruction by drowning\n"
+"• Destruction by pushing the enemy vehicle off an obstacle\n"
+"• Destruction by overturning."
+
+msgid "tooltips/battleResultStat/missions/header"
+msgstr "Completed missions"
+
+msgid "tooltips/battleResultStat/missions/info"
+msgstr ""
+"The number of completed missions and\n"
+"all currently available missions.\n"
+"Missions completed on Rigorous difficulty\n"
+"are also automatically completed\n"
+"on Regular."
+
+msgid "tooltips/difficulty/available"
+msgstr "Available"
+
+msgid "tooltips/difficulty/hard/description"
+msgstr ""
+"Enemies' reaction speed and accuracy have been increased, and they will attack you more aggressively. In return, you will receive extra rewards upon mission completion.\n"
+"By completing missions on Rigorous difficulty, you also receive Regular difficulty rewards automatically."
+
+msgid "tooltips/difficulty/hard/title"
+msgstr "Rigorous"
+
+msgid "tooltips/difficulty/normal/description"
+msgstr ""
+"Opponents are slower and less accurate, and you receive standard rewards "
+"upon mission completion."
+
+msgid "tooltips/difficulty/normal/title"
+msgstr "Regular"
+
+msgid "tooltips/difficulty/selected"
+msgstr "Selected"
+
+msgid "tooltips/task/active"
+msgstr "Active"
+
+msgid "tooltips/task/completed"
+msgstr "Completed"
+
+msgid "tooltips/task/condition/locked"
+msgstr "Conditions unknown"
+
+msgid "tooltips/task/locked"
+msgstr "Locked: %(timer)s"
+
+msgid "welcomeScreen/column/subtitle/1"
+msgstr ""
+"This story is dedicated to the 80th anniversary of the Normandy landings, "
+"also known as Operation Overlord. Honor the memory of the heroes who gave "
+"everything to liberate Europe and end the Second World War."
+
+msgid "welcomeScreen/column/subtitle/2"
+msgstr ""
+"Play solo and fight against AI-driven enemies in this epic story. Meet and "
+"save tankers from Battle Pass Season XIV, utilize the might of the U.S. "
+"Naval Forces and Britain's Royal Air Force, avoid minefields, and destroy "
+"concrete bunkers!"
+
+msgid "welcomeScreen/column/subtitle/3"
+msgstr ""
+"Complete all missions and receive a commemorative medal, 2D camouflages "
+"dedicated to the role played by Allied soldiers in the Normandy landings of "
+"1944, and other valuable rewards."
+
+msgid "welcomeScreen/column/title/1"
+msgstr "Historical Events"
+
+msgid "welcomeScreen/column/title/2"
+msgstr "Solo Story"
+
+msgid "welcomeScreen/column/title/3"
+msgstr "Rewards"
+
+msgid "welcomeScreen/header"
+msgstr "OPERATION OVERLORD"
+
+msgid "welcomeScreen/subheader"
+msgstr "%(startDate)s – %(endDate)"
