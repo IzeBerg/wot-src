@@ -4,6 +4,7 @@ from helpers import dependency
 from skeletons.gui.game_control import IEarlyAccessController
 
 class EarlyAccessHangarFeatureState(object):
+    __slots__ = ('__activeLayoutIDs', '__isInVehicleState')
     __earlyAccessController = dependency.descriptor(IEarlyAccessController)
 
     def __init__(self):
@@ -35,3 +36,6 @@ class EarlyAccessHangarFeatureState(object):
                     cgfCameraManager.enableShiftedMode(False)
                     cgfCameraManager.switchToTank(instantly=False)
                 self.__isInVehicleState = False
+
+    def isLayoutIdActive(self, layoutID):
+        return layoutID in self.__activeLayoutIDs

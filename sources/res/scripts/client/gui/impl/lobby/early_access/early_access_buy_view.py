@@ -1,5 +1,5 @@
 from adisp import adisp_process
-from frameworks.wulf import ViewFlags, ViewSettings, WindowFlags, ViewModel
+from frameworks.wulf import ViewFlags, ViewSettings, WindowFlags, WindowLayer, ViewModel
 from gui.Scaleform.daapi.view.lobby.techtree.sound_constants import TECHTREE_SOUND_SPACE
 from gui.Scaleform.daapi.view.lobby.techtree.techtree_dp import g_techTreeDP
 from gui.Scaleform.genConsts.TOOLTIPS_CONSTANTS import TOOLTIPS_CONSTANTS
@@ -130,9 +130,6 @@ class EarlyAccessBuyView(ViewImpl):
             if not result and not self.__itemsCache.items.stats.mayConsumeWalletResources:
                 self.__exitBuyWindow()
 
-    def __buyCallback(self):
-        self.__exitBuyWindow()
-
     def __onBackToPrevScreen(self):
         self.__exitBuyWindow()
 
@@ -147,4 +144,4 @@ class EarlyAccessBuyViewWindow(LobbyWindow):
     __slots__ = ()
 
     def __init__(self, parent=None, backCallback=None):
-        super(EarlyAccessBuyViewWindow, self).__init__(wndFlags=WindowFlags.WINDOW, content=EarlyAccessBuyView(R.views.lobby.early_access.EarlyAccessBuyView(), backCallback=backCallback), parent=parent)
+        super(EarlyAccessBuyViewWindow, self).__init__(wndFlags=WindowFlags.WINDOW, layer=WindowLayer.TOP_SUB_VIEW, content=EarlyAccessBuyView(R.views.lobby.early_access.EarlyAccessBuyView(), backCallback=backCallback), parent=parent)

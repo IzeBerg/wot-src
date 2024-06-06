@@ -28,6 +28,7 @@ from wg_async import wg_async, wg_await
 from wotdecorators import condition
 from shared_utils import first
 from adisp import adisp_async
+from helpers.time_utils import getServerUTCTime
 if typing.TYPE_CHECKING:
     from typing import Dict, Optional, Callable, Any, List
     from gui.shared.gui_items import ItemsCollection
@@ -304,7 +305,9 @@ class WotPlusController(IWotPlusController):
             return
         self._isStateUpdate = False
         subscriptions = yield wg_await(self._userSubscriptionFetchCtrl.getProducts(False))
-        sortedSubscriptions = sorted(subscriptions.products, key=lambda p: (SUBSCRIPTION_STATE.get(p.status), -p.nextBilling))
+        serverUTCTime = getServerUTCTime()
+        filterSubscriptions = [ p for p in subscriptions.products if p.nextBilling > serverUTCTime ]
+        sortedSubscriptions = sorted(filterSubscriptions, key=lambda p: (SUBSCRIPTION_STATE.get(p.status), -p.nextBilling))
         if subscriptions.isProcessed:
             product = first(sortedSubscriptions)
             if product:

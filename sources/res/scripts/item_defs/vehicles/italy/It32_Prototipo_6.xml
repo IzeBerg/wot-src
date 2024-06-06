@@ -11,8 +11,8 @@
 	<postProgressionTree>role_MT_support</postProgressionTree>
 	<customRoleSlotOptions>3 5</customRoleSlotOptions>
 	<speedLimits>
-		<forward>65</forward>
-		<backward>23</backward>
+		<forward>60</forward>
+		<backward>20</backward>
 	</speedLimits>
 	<invisibility>
 		<moving>
@@ -3590,7 +3590,7 @@
 					</shotDispersionRadius>
 					<shotDispersionFactors>
 						<turretRotation>
-							0.12
+							0.15
 							<!--BW_String-->
 						</turretRotation>
 						<afterShot>4</afterShot>
@@ -3604,10 +3604,7 @@
 						<rate>40</rate>
 					</clip>
 					<autoreload>
-						<reloadTime>
-							7 7.8 8.7 9.8 11
-							<!--BW_String-->
-						</reloadTime>
+						<reloadTime>7 8 10 11 12</reloadTime>
 					</autoreload>
 					<customizationSlots>
 						<slot>
@@ -4551,7 +4548,7 @@
 			<engines>
 				<MB_837_Ea_P6>
 					<smplEnginePower>700</smplEnginePower>
-					<smplFwMaxSpeed>65</smplFwMaxSpeed>
+					<smplFwMaxSpeed>60</smplFwMaxSpeed>
 				</MB_837_Ea_P6>
 			</engines>
 			<chassis>
