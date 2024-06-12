@@ -21,19 +21,19 @@
 				<exports>vse</exports>
 			</cooldownSeconds>
 			<duration>
-				10
+				15
 				<exports>vse tooltip</exports>
 			</duration>
 			<radius>
-				50
+				30
 				<exports>vse tooltip</exports>
 			</radius>
 			<heal>
-				15 25 35
+				12 20 30
 				<exports>vse</exports>
 			</heal>
 			<secondaryHealDebuff>
-				50
+				30
 				<exports>vse tooltip</exports>
 			</secondaryHealDebuff>
 			<tickInterval>
@@ -60,7 +60,7 @@
 				</server>
 			</visualScript>
 			<cooldownSeconds>
-				5
+				8
 				<exports>vse</exports>
 			</cooldownSeconds>
 			<duration>
@@ -68,8 +68,7 @@
 				<exports>vse tooltip</exports>
 			</duration>
 			<crewBuff>
-				7.5 11.5 15
-				<!--BW_String-->
+				8 12 16
 				<exports>vse tooltip</exports>
 			</crewBuff>
 		</script>
@@ -98,7 +97,7 @@
 				<exports>vse</exports>
 			</cooldownSeconds>
 			<duration>
-				5
+				7
 				<exports>vse tooltip</exports>
 			</duration>
 			<heal>
@@ -106,8 +105,7 @@
 				<exports>vse</exports>
 			</heal>
 			<gunReloadTimeBuff>
-				1.5
-				<!--BW_String-->
+				2
 				<exports>vse tooltip</exports>
 			</gunReloadTimeBuff>
 			<tickInterval>
@@ -138,7 +136,7 @@
 				<exports>vse</exports>
 			</cooldownSeconds>
 			<duration>
-				8
+				12
 				<exports>vse tooltip</exports>
 			</duration>
 			<aimingTimeBuff>
@@ -152,7 +150,7 @@
 				<exports>vse</exports>
 			</shotDispersionFactors>
 			<clipReloadTimeBoost>
-				0.6 0.7 0.8
+				0.6 0.8 1.0
 				<!--BW_String-->
 				<exports>vse tooltip</exports>
 			</clipReloadTimeBoost>
@@ -175,11 +173,11 @@
 				</server>
 			</visualScript>
 			<cooldownSeconds>
-				10
+				8
 				<exports>vse</exports>
 			</cooldownSeconds>
 			<duration>
-				12
+				15
 				<exports>vse tooltip</exports>
 			</duration>
 			<gunReloadTimeBuff>
@@ -215,15 +213,15 @@
 				</server>
 			</visualScript>
 			<cooldownSeconds>
-				3
+				10
 				<exports>vse</exports>
 			</cooldownSeconds>
 			<duration>
-				20
+				15
 				<exports>vse tooltip</exports>
 			</duration>
 			<crewBuff>
-				15 25 35
+				20 35 50
 				<exports>vse tooltip</exports>
 			</crewBuff>
 		</script>
@@ -246,24 +244,23 @@
 				</server>
 			</visualScript>
 			<cooldownSeconds>
-				5
+				17
 				<exports>vse</exports>
 			</cooldownSeconds>
 			<delay>
-				3
+				2
 				<exports>vse tooltip</exports>
 			</delay>
 			<radius>
-				12.5 15 17.5
-				<!--BW_String-->
+				10 11 12
 				<exports>vse tooltip</exports>
 			</radius>
 			<damage>
-				100 175 300
+				75 125 200
 				<exports>vse tooltip</exports>
 			</damage>
 			<stunDuration>
-				0 6 10
+				0 0 6
 				<exports>vse tooltip</exports>
 			</stunDuration>
 			<fraction>
@@ -282,7 +279,7 @@
 			<effects>
 				<action>
 					<shotEffects>epicArtilleryStrike</shotEffects>
-					<offsetDeviation>15</offsetDeviation>
+					<offsetDeviation>11</offsetDeviation>
 					<repeatCount>4</repeatCount>
 					<repeatDelay>0</repeatDelay>
 					<repeatDelayDeviationPercent>0</repeatDelayDeviationPercent>
@@ -514,11 +511,11 @@
 				</server>
 			</visualScript>
 			<cooldownSeconds>
-				10
+				20
 				<exports>vse</exports>
 			</cooldownSeconds>
 			<duration>
-				12 18 25
+				10 15 25
 				<exports>vse tooltip</exports>
 			</duration>
 			<delay>
@@ -526,7 +523,7 @@
 				<exports>vse tooltip</exports>
 			</delay>
 			<radius>
-				50 70 95
+				35 50 75
 				<exports>vse tooltip</exports>
 			</radius>
 			<areaVisual>content/Interface/TargetPoint/ReconFlight_02.visual</areaVisual>
@@ -549,7 +546,7 @@
 				</server>
 			</visualScript>
 			<cooldownSeconds>
-				10
+				20
 				<exports>vse</exports>
 			</cooldownSeconds>
 			<duration>
@@ -557,7 +554,7 @@
 				<exports>vse tooltip</exports>
 			</duration>
 			<visionFactor>
-				1.05 1.15 1.25
+				1.05 1.1 1.15
 				<!--BW_String-->
 				<exports>vse</exports>
 			</visionFactor>

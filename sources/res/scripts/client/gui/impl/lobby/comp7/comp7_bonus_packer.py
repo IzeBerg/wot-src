@@ -1,5 +1,5 @@
 import logging, typing
-from comp7_common import COMP7_TOKEN_WEEKLY_REWARD_NAME
+from comp7_common import COMP7_TOKEN_WEEKLY_REWARD_NAME, COMP7_TOKEN_COUPON_REWARD_NAME
 from dog_tags_common.components_config import componentConfigAdapter
 from dog_tags_common.config.common import ComponentViewType
 from gui.impl import backport
@@ -43,7 +43,8 @@ def getComp7BonusPacker():
        'vehicles': Comp7VehicleBonusUIPacker(), 
        Currency.CRYSTAL: Comp7CrystalBonusPacker(), 
        C11nProgressTokenBonus.BONUS_NAME: Comp7StyleProgressBonusUIPacker(), 
-       COMP7_TOKEN_WEEKLY_REWARD_NAME: Comp7TokenRewardBonusUIPacker()})
+       COMP7_TOKEN_WEEKLY_REWARD_NAME: Comp7TokenRewardBonusUIPacker(), 
+       COMP7_TOKEN_COUPON_REWARD_NAME: Comp7TokenRewardBonusUIPacker()})
     return BonusUIPacker(mapping)
 
 

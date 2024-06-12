@@ -1,8 +1,5 @@
 package net.wg.infrastructure.base.meta.impl
 {
-   import net.wg.gui.battle.historicalBattles.staticMarkers.controlPoint.HBLocationActionMarker;
-   import net.wg.gui.battle.historicalBattles.vehicleMarkers.HBVehicleActionMarker;
-   import net.wg.gui.battle.historicalBattles.vehicleMarkers.HBVehicleMarker;
    import net.wg.gui.battle.views.staticMarkers.epic.ObjectiveIdReplyState;
    import net.wg.gui.battle.views.staticMarkers.epic.headquarter.HeadquarterActionMarker;
    import net.wg.gui.battle.views.staticMarkers.epic.headquarter.HeadquarterAnimation;
@@ -79,12 +76,6 @@ package net.wg.infrastructure.base.meta.impl
    
    public class ClassManagerBattleMarkersMeta
    {
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_STATICMARKERS_CONTROLPOINT_HBLOCATIONACTIONMARKER:Class = HBLocationActionMarker;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_VEHICLEMARKERS_HBVEHICLEACTIONMARKER:Class = HBVehicleActionMarker;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_VEHICLEMARKERS_HBVEHICLEMARKER:Class = HBVehicleMarker;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_EPIC_OBJECTIVEIDREPLYSTATE:Class = ObjectiveIdReplyState;
       

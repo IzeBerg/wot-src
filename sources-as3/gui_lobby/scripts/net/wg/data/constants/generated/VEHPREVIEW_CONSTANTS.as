@@ -23,10 +23,6 @@ package net.wg.data.constants.generated
       
       public static const BOTTOM_PANEL_SHOWCASE_STYLE_BUYING_LINKAGE:String = "VehiclePreviewBottomPanelShowcaseStyleBuyingUI";
       
-      public static const HB_PANEL_LINKAGE:String = "VPHBPanelUI";
-      
-      public static const HB_RESTORE_PANEL_LINKAGE:String = "VehiclePreviewHPRestorePanelUI";
-      
       public static const FACT_SHEET_LINKAGE:String = "VehPreviewFactSheetUI";
       
       public static const ELITE_FACT_SHEET_LINKAGE:String = "VehPreviewEliteFactSheetUI";
@@ -60,6 +56,8 @@ package net.wg.data.constants.generated
       public static const BOTTOM_PANEL_OFFER_GIFT_PY_ALIAS:String = "vehPreviewBottomPanelOfferGift";
       
       public static const BOTTOM_PANEL_WELL_PY_ALIAS:String = "vehPreviewBottomPanelWell";
+      
+      public static const BOTTOM_PANEL_EARLY_ACCESS_PY_ALIAS:String = "vehPreviewBottomPanelEarlyAccess";
       
       public static const TRADE_OFF_WIDGET_ALIAS:String = "vehPreviewTradeOffWidget";
       

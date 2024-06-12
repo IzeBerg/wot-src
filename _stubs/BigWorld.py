@@ -1151,6 +1151,7 @@ class CursorCamera(BaseCamera):
 	spaceID = property(lambda self: None)
 	target = property(lambda self: None)
 	targetMaxDist = property(lambda self: None)
+	targetPivotPosition = property(lambda self: None)
 	terrainMinDist = property(lambda self: None)
 	turningHalfLife = property(lambda self: None)
 	def update(self, *args, **kwargs): pass
@@ -4502,6 +4503,7 @@ class SphericalTransitionCamera(CursorCamera):
 	def stop(self, *args, **kwargs): pass
 	target = property(lambda self: None)
 	targetMaxDist = property(lambda self: None)
+	targetPivotPosition = property(lambda self: None)
 	terrainMinDist = property(lambda self: None)
 	turningHalfLife = property(lambda self: None)
 	def update(self, *args, **kwargs): pass
@@ -6920,7 +6922,6 @@ def wg_restoreDestructibles(*args, **kwargs): pass
 def wg_saveWatchers(*args, **kwargs): pass
 def wg_setAdapterOrdinalNotifyCallback(*args, **kwargs): pass
 def wg_setAimingParam(*args, **kwargs): pass
-def wg_setBaseFlagColor(*args, **kwargs): pass
 def wg_setChunkModelFashion(*args, **kwargs): pass
 def wg_setDestructibleActive(*args, **kwargs): pass
 def wg_setDestructibleMatrix(*args, **kwargs): pass

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>Gun_Root</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>joint25</identifier>
+				<transform>
+					<row0>0.664380 0.606770 0.436382</row0>
+					<row1>-0.558404 0.014902 0.829435</row1>
+					<row2>0.496773 -0.794738 0.348723</row2>
+					<row3>-1.058698 0.226818 1.241289</row3>
+				</transform>
+				<node>
+					<identifier>joint25_BlendBone</identifier>
+					<transform>
+						<row0>0.664380 -0.558404 0.496773</row0>
+						<row1>0.606770 0.014902 -0.794738</row1>
+						<row2>-0.436382 -0.829435 -0.348723</row2>
+						<row3>0.024076 -1.624130 0.273328</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>joint26</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>-1.058698 0.171673 1.168058</row3>
+				</transform>
+				<node>
+					<identifier>joint26_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 -1.000000</row2>
+						<row3>1.058698 -0.171673 -1.168058</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>joint27</identifier>
+				<transform>
+					<row0>0.671840 -0.605910 -0.426032</row0>
+					<row1>0.558619 0.036786 0.828608</row1>
+					<row2>-0.486390 -0.794682 0.363187</row2>
+					<row3>1.058804 0.226114 1.240285</row3>
+				</transform>
+				<node>
+					<identifier>joint27_BlendBone</identifier>
+					<transform>
+						<row0>0.671840 0.558619 -0.486390</row0>
+						<row1>-0.605910 0.036786 -0.794682</row1>
+						<row2>0.426032 -0.828609 -0.363187</row2>
+						<row3>-0.045942 -1.627496 0.244225</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>joint28</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>1.058804 0.170969 1.167054</row3>
+				</transform>
+				<node>
+					<identifier>joint28_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 -1.000000</row2>
+						<row3>-1.058804 -0.170969 -1.167054</row3>
+					</transform>
+				</node>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>joint27_BlendBone</node>
+		<node>joint28_BlendBone</node>
+		<node>joint26_BlendBone</node>
+		<node>joint25_BlendBone</node>
+		<geometry>
+			<vertices>turret_equipment_anim_Shape.vertices</vertices>
+			<primitive>turret_equipment_anim_Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_turret_02_skinned</identifier>
+					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>vehicles/italy/It23_CC_3/_skins/It23_CC_3_3DSt/CC_3_3DSt_turret_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/italy/It23_CC_3/_skins/It23_CC_3_3DSt/CC_3_3DSt_turret_01_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/italy/It23_CC_3/_skins/It23_CC_3_3DSt/CC_3_3DSt_turret_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/italy/It23_CC_3/_skins/It23_CC_3_3DSt/CC_3_3DSt_turret_01_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.000782 0.178298 -1.200012</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<constraints/>
+	<boundingBox>
+		<min>-1.246219 0.122955 0.999196</min>
+		<max>1.247783 0.233640 1.400827</max>
+	</boundingBox>
+	<geometrySize>5808</geometrySize>
+	<minUVDensity>0.018888</minUVDensity>
+</root>

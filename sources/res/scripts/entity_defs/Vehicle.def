@@ -119,8 +119,7 @@
 		</stunInfo>
 		<status>
 			<Type>INT8</Type>
-			<Flags>ALL_CLIENTS</Flags>
-			<DetailLevel>MY_VEHICLE</DetailLevel>
+			<Flags>CELL_PUBLIC</Flags>
 		</status>
 		<invisibility>
 			<Type>FLOAT32</Type>
@@ -375,13 +374,6 @@
 			<Type>UINT8</Type>
 			<Flags>ALL_CLIENTS</Flags>
 		</botDisplayStatus>
-		<buffs>
-			<Type>
-				ARRAY
-				<of>UINT16</of>
-			</Type>
-			<Flags>ALL_CLIENTS</Flags>
-		</buffs>
 	</Properties>
 	<TempProperties>
 		<events/>
@@ -405,7 +397,6 @@
 		<_ProximityManager__data/>
 		<_TimerManager__unpersistedTimers/>
 		<gameObject/>
-		<buffContainer/>
 	</TempProperties>
 	<ClientMethods>
 		<onVehiclePickup/>
@@ -658,9 +649,6 @@
 			<Arg>VECTOR3</Arg>
 			<Arg>VECTOR2</Arg>
 		</setEquipmentApplicationPoint>
-		<redrawVehicleOnRespawnAfterReconnect/>
-		<getLastDeathReason/>
-		<getDamageDealt/>
 	</CellMethods>
 	<BaseMethods>
 		<onCreateCellSuccess/>

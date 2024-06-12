@@ -20,8 +20,6 @@ package net.wg.gui.events
       
       public static const INDEX_CHANGE:String = "listIndexChange";
       
-      public static const LAYOUT_CHANGE:String = "layoutChange";
-      
       public static const ITEM_TEXT_CHANGE:String = "itemTextChange";
       
       public static const ITEM_DRAG_OVER:String = "itemDragOver";

@@ -5612,6 +5612,12 @@
 			<tags/>
 			<level>7</level>
 			<price>18000</price>
+			<unlocks>
+				<turret>
+					Turret_2_Cz07_TVP_46
+					<cost>16200</cost>
+				</turret>
+			</unlocks>
 			<armor>
 				<armor_1>65</armor_1>
 				<armor_2>30</armor_2>
@@ -5636,7 +5642,7 @@
 					<!--BW_String-->
 				</repairCost>
 			</turretRotatorHealth>
-			<circularVisionRadius>370</circularVisionRadius>
+			<circularVisionRadius>380</circularVisionRadius>
 			<surveyingDeviceHealth>
 				<maxHealth>100</maxHealth>
 				<maxRegenHealth>50</maxRegenHealth>
@@ -5650,10 +5656,6 @@
 					shared
 					<maxAmmo>80</maxAmmo>
 					<unlocks>
-						<gun>
-							_88mm_vz_41N
-							<cost>17100</cost>
-						</gun>
 						<gun>
 							_100mm_vz_44S
 							<cost>16550</cost>
@@ -5841,12 +5843,6 @@
 				<_88mm_vz_41N>
 					shared
 					<maxAmmo>53</maxAmmo>
-					<unlocks>
-						<gun>
-							_105mm_vz_39N
-							<cost>17800</cost>
-						</gun>
-					</unlocks>
 					<armor>
 						<armor_1>
 							65
@@ -6037,12 +6033,6 @@
 				<_100mm_vz_44S>
 					shared
 					<maxAmmo>66</maxAmmo>
-					<unlocks>
-						<turret>
-							Turret_2_Cz07_TVP_46
-							<cost>16200</cost>
-						</turret>
-					</unlocks>
 					<armor>
 						<armor_1>
 							65
@@ -6083,7 +6073,7 @@
 						<!--BW_String-->
 					</invisibilityFactorAtShot>
 					<shotDispersionRadius>
-						0.38
+						0.34
 						<!--BW_String-->
 					</shotDispersionRadius>
 					<reloadTime>
@@ -6105,7 +6095,7 @@
 						</whileGunDamaged>
 					</shotDispersionFactors>
 					<aimingTime>
-						2.4
+						2.1
 						<!--BW_String-->
 					</aimingTime>
 					<models>
@@ -6270,7 +6260,7 @@
 						<!--BW_String-->
 					</invisibilityFactorAtShot>
 					<reloadTime>
-						10.3
+						9.8
 						<!--BW_String-->
 					</reloadTime>
 					<shotDispersionFactors>
@@ -6285,9 +6275,13 @@
 						</whileGunDamaged>
 					</shotDispersionFactors>
 					<aimingTime>
-						2.2
+						2.0
 						<!--BW_String-->
 					</aimingTime>
+					<shotDispersionRadius>
+						0.36
+						<!--BW_String-->
+					</shotDispersionRadius>
 					<models>
 						<undamaged>vehicles/czech/Cz07_TVP_46/normal/lod0/Gun_04.model</undamaged>
 						<destroyed>vehicles/czech/Cz07_TVP_46/crash/lod0/Gun_04.model</destroyed>
@@ -7300,10 +7294,14 @@
 			<level>8</level>
 			<price>31800</price>
 			<unlocks>
-				<vehicle>
-					Cz02_TVP_T50
-					<cost>156150</cost>
-				</vehicle>
+				<gun>
+					_105mm_vz_39N
+					<cost>17800</cost>
+				</gun>
+				<gun>
+					_88mm_vz_41N
+					<cost>17100</cost>
+				</gun>
 			</unlocks>
 			<armor>
 				<armor_1>65</armor_1>
@@ -7331,7 +7329,7 @@
 					<!--BW_String-->
 				</repairCost>
 			</turretRotatorHealth>
-			<circularVisionRadius>380</circularVisionRadius>
+			<circularVisionRadius>390</circularVisionRadius>
 			<surveyingDeviceHealth>
 				<maxHealth>100</maxHealth>
 				<maxRegenHealth>50</maxRegenHealth>
@@ -7704,7 +7702,7 @@
 						<!--BW_String-->
 					</invisibilityFactorAtShot>
 					<shotDispersionRadius>
-						0.38
+						0.34
 						<!--BW_String-->
 					</shotDispersionRadius>
 					<reloadTime>8</reloadTime>
@@ -7723,7 +7721,7 @@
 						</whileGunDamaged>
 					</shotDispersionFactors>
 					<aimingTime>
-						2.4
+						1.9
 						<!--BW_String-->
 					</aimingTime>
 					<models>
@@ -7832,6 +7830,12 @@
 				<_105mm_vz_39N>
 					shared
 					<maxAmmo>74</maxAmmo>
+					<unlocks>
+						<vehicle>
+							Cz02_TVP_T50
+							<cost>156150</cost>
+						</vehicle>
+					</unlocks>
 					<armor>
 						<armor_1>
 							65
@@ -7865,9 +7869,13 @@
 						<!--BW_String-->
 					</invisibilityFactorAtShot>
 					<reloadTime>
-						9.8
+						8.8
 						<!--BW_String-->
 					</reloadTime>
+					<shotDispersionRadius>
+						0.36
+						<!--BW_String-->
+					</shotDispersionRadius>
 					<shotDispersionFactors>
 						<turretRotation>
 							0.1
@@ -7880,7 +7888,7 @@
 						</whileGunDamaged>
 					</shotDispersionFactors>
 					<aimingTime>
-						2.2
+						2.0
 						<!--BW_String-->
 					</aimingTime>
 					<models>

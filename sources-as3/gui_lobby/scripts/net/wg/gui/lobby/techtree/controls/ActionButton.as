@@ -21,6 +21,14 @@ package net.wg.gui.lobby.techtree.controls
    public class ActionButton extends SoundButton
    {
       
+      public static const DEFAULT_IMAGE_SUBSTITUTION:Object = {
+         "subString":"",
+         "source":"",
+         "baseLineY":0,
+         "width":16,
+         "height":16
+      };
+      
       private static const SEPARATOR:String = "_";
       
       private static const SELECTED_PREFIX:String = "selected_";
@@ -131,16 +139,18 @@ package net.wg.gui.lobby.techtree.controls
             return;
          }
          this.tryToClearImgSubstitution();
-         if(this._imgSubstitution != null && this._action != ActionName.RESTORE)
+         if(this._imgSubstitution != null)
          {
-            this._imgSubstitution.loadImage();
-            TextFieldEx.setImageSubstitutions(textField,this._imgSubstitution);
-            textField.text = label + this._imgSubstitution.subString;
-         }
-         else
-         {
-            textField.text = label;
-            TextFieldEx.setVerticalAlign(textField,TextFieldEx.VALIGN_CENTER);
+            if(this._imgSubstitution.loadImage())
+            {
+               TextFieldEx.setImageSubstitutions(textField,this._imgSubstitution);
+               textField.text = label + this._imgSubstitution.subString;
+            }
+            else
+            {
+               textField.text = label;
+               TextFieldEx.setVerticalAlign(textField,TextFieldEx.VALIGN_CENTER);
+            }
          }
       }
       

@@ -4,7 +4,7 @@ import typing, BigWorld, motivation_quests, customization_quests, static_quests,
 from Event import Event, EventManager
 from PlayerEvents import g_playerEvents
 from adisp import adisp_async, adisp_process
-from constants import EVENT_CLIENT_DATA, EVENT_TYPE
+from constants import EVENT_CLIENT_DATA, EVENT_TYPE, DailyQuestsLevels
 from debug_utils import LOG_DEBUG
 from dossiers2.ui.achievements import ACHIEVEMENT_BLOCK
 from gui.server_events import caches as quests_caches
@@ -29,7 +29,7 @@ from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared.utils import IRaresCache
 if typing.TYPE_CHECKING:
     from typing import Optional, Dict, Callable, Union
-    from gui.server_events.event_items import DailyEpicTokenQuest, DailyQuest
+    from gui.server_events.event_items import DailyTokenQuest, DailyQuest
 PM_TOKEN_PREFIXES = frozenset([
  'pm2_',
  'token:pt:',
@@ -268,27 +268,34 @@ class EventsCache(IEventsCache):
 
         def userFilterFunc(q):
             qGroup = q.getGroupID()
-            qIsValid = q.isAvailable().isValid
+            qIsValid = None
             qID = q.getID()
-            if q.getType() == EVENT_TYPE.MOTIVE_QUEST and not qIsValid:
-                return False
+            if q.getType() == EVENT_TYPE.MOTIVE_QUEST:
+                if qIsValid is None:
+                    qIsValid = q.isAvailable().isValid
+                if not qIsValid:
+                    return False
             if q.getType() == EVENT_TYPE.TOKEN_QUEST and isMarathon(qID):
                 return False
-            if isBattleMattersQuestID(qID) or isPremium(qGroup) and not qIsValid:
-                return False
-            if not isEpicBattleEnabled and isDailyEpic(qGroup):
-                return False
-            if isBattleRoyale(qGroup):
-                quests = self.__battleRoyaleController.getQuests()
-                if qID not in quests:
+            else:
+                if isBattleMattersQuestID(qID) or isPremium(qGroup):
+                    if qIsValid is None:
+                        qIsValid = q.isAvailable().isValid
+                    if not qIsValid:
+                        return False
+                if not isEpicBattleEnabled and isDailyEpic(qGroup):
                     return False
-            if isMapsTraining(qGroup):
-                return q.shouldBeShown()
-            if isRankedSeasonOff and (isRankedDaily(qGroup) or isRankedPlatform(qGroup)):
-                return False
-            if isFunRandomOff and isFunRandomQuest(qID):
-                return False
-            return filterFunc(q)
+                if isBattleRoyale(qGroup):
+                    quests = self.__battleRoyaleController.getQuests()
+                    if qID not in quests:
+                        return False
+                if isMapsTraining(qGroup):
+                    return q.shouldBeShown()
+                if isRankedSeasonOff and (isRankedDaily(qGroup) or isRankedPlatform(qGroup)):
+                    return False
+                if isFunRandomOff and isFunRandomQuest(qID):
+                    return False
+                return filterFunc(q)
 
         return self.getActiveQuests(userFilterFunc)
 
@@ -312,7 +319,17 @@ class EventsCache(IEventsCache):
         filterFunc = filterFunc or (lambda a: True)
 
         def userFilterFunc(q):
-            if not includeEpic and q.getType() == EVENT_TYPE.TOKEN_QUEST:
+            if not includeEpic and q.getLevel() == DailyQuestsLevels.EPIC or q.getLevel() not in DailyQuestsLevels.DAILY:
+                return False
+            return filterFunc(q)
+
+        return self._getDailyQuests(userFilterFunc)
+
+    def getDailyQuestsSub(self, filterFunc=None):
+        filterFunc = filterFunc or (lambda a: True)
+
+        def userFilterFunc(q):
+            if q.getLevel() not in DailyQuestsLevels.SUBS:
                 return False
             return filterFunc(q)
 
@@ -321,7 +338,7 @@ class EventsCache(IEventsCache):
     def getDailyEpicQuest(self):
         dailyQuests = self._getDailyQuests()
         for q in dailyQuests.values():
-            if q.getType() == EVENT_TYPE.TOKEN_QUEST and not q.isCompleted():
+            if q.getLevel() == DailyQuestsLevels.EPIC and not q.isCompleted():
                 return q
 
     def getBattleQuests(self, filterFunc=None):

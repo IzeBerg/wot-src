@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>16.000000</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+		<track>
+			<name>animation</name>
+			<type>animation</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>15.000000</duration>
+				<resourceID>vehicles/german/G73_E50_Ausf_M/_skin/G73_E50_Ausf_M_3DSt/Animation/G73_E50_Ausf_M_Radar_PreBattle_anim_01.fbx</resourceID>
+				<clipName/>
+				<speed>1.000000</speed>
+				<layer>0</layer>
+				<blendIn>constant</blendIn>
+				<blendOut>constant</blendOut>
+				<blendInTime>0.000000</blendInTime>
+				<blendOutTime>0.000000</blendOutTime>
+				<clipStartTime>0.000000</clipStartTime>
+				<clipEndTime>15.000000</clipEndTime>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Laser</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/tank_customization/G73_E50_Ausf_M_3DSt/G73_E50_Ausf_M_3DSt_Laser.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>15.000000</duration>
+				<value>Root|HP_Laser</value>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>s_nd0</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.019608 1.000000 0.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.428571</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.428571</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.333333</startTime>
+				<value>0.019608 1.000000 0.000000 1.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 0.428571</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>13.666667</startTime>
+				<value>0.019608 1.000000 0.000000 1.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -0.750000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>15.000001</startTime>
+				<value>0.019608 1.000000 0.000000 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.750000</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 -1.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Sound 0</name>
+		<type>sound</type>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>5.133334</duration>
+				<value>Root|</value>
+			</frame>
+		</track>
+		<track>
+			<name>Sound</name>
+			<type>sound</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>5.146511</duration>
+				<sequenceSound>style_cust_G73_E50_Ausf_M_3DSt_radar_open</sequenceSound>
+				<type>play_till_end</type>
+				<fade>0.000000</fade>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Sound 1</name>
+		<type>sound</type>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>3.433333</startTime>
+				<duration>3.900000</duration>
+				<value>Root|</value>
+			</frame>
+		</track>
+		<track>
+			<name>Sound</name>
+			<type>sound</type>
+			<frame>
+				<startTime>3.433333</startTime>
+				<duration>3.900000</duration>
+				<sequenceSound>style_cust_G73_E50_Ausf_M_3DSt_radar_start</sequenceSound>
+				<type>play_till_end</type>
+				<fade>2.000000</fade>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Sound 2</name>
+		<type>sound</type>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>6.033334</startTime>
+				<duration>5.000000</duration>
+				<value>Root|</value>
+			</frame>
+		</track>
+		<track>
+			<name>Sound</name>
+			<type>sound</type>
+			<frame>
+				<startTime>6.033334</startTime>
+				<duration>5.000000</duration>
+				<sequenceSound>style_cust_G73_E50_Ausf_M_3DSt_radar_stop</sequenceSound>
+				<type>play_till_end</type>
+				<fade>0.000000</fade>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Sound 3</name>
+		<type>sound</type>
+		<track>
+			<name>Sound</name>
+			<type>sound</type>
+			<frame>
+				<startTime>9.033334</startTime>
+				<duration>6.966666</duration>
+				<sequenceSound>style_cust_G73_E50_Ausf_M_3DSt_radar_close</sequenceSound>
+				<type>play_till_end</type>
+				<fade>0.000000</fade>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Sound 4</name>
+		<type>sound</type>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>3.466667</startTime>
+				<duration>5.533333</duration>
+				<value>Root|</value>
+			</frame>
+		</track>
+		<track>
+			<name>Sound</name>
+			<type>sound</type>
+			<frame>
+				<startTime>3.466667</startTime>
+				<duration>5.533333</duration>
+				<sequenceSound>style_cust_G73_E50_Ausf_M_3DSt_radar_additionals</sequenceSound>
+				<type>play_till_end</type>
+				<fade>5.000000</fade>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

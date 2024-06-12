@@ -53,6 +53,8 @@ package net.wg.data.constants.generated
       
       public static const TOOLTIP_BUILDUP_BLOCK_ELITE_VEHICLE_BG_LINKAGE:String = "TooltipBuildUpBlockEliteVehicleBgUI";
       
+      public static const TOOLTIP_BUILDUP_BLOCK_EARLY_ACCESS_VEHICLE_BG_LINKAGE:String = "TooltipBuildUpBlockEarlyAccessVehicleBgUI";
+      
       public static const TOOLTIP_BUILDUP_BLOCK_NORMAL_VEHICLE_BG_LINKAGE:String = "TooltipBuildUpBlockNormalVehicleBgUI";
       
       public static const TOOLTIP_VEHICLE_HEADER_LINKAGE:String = "VehicleHeaderBlockUI";

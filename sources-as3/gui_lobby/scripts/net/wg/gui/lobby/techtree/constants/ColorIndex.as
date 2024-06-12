@@ -12,6 +12,8 @@ package net.wg.gui.lobby.techtree.constants
       public static const DEFAULT:uint = LOCKED;
       
       public static const EVENT_AVAILABLE:uint = 2;
+      
+      public static const EARLY_ACCESS:uint = 3;
        
       
       public function ColorIndex()

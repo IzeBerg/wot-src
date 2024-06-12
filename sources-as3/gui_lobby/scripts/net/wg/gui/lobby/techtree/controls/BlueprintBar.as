@@ -26,7 +26,7 @@ package net.wg.gui.lobby.techtree.controls
       
       private var _progressVisible:Boolean = false;
       
-      private var _plusVisible:Boolean = false;
+      private var _blueprintCanConvert:Boolean = false;
       
       private var _vehicleCD:uint = 0;
       
@@ -80,12 +80,26 @@ package net.wg.gui.lobby.techtree.controls
             this.progressBar.scaleX = this._progressValue;
             this.progressBar.completed = this._progressValue >= 1;
             this.progressBar.visible = this._progressVisible;
-            this.plus.enabled = this._plusVisible;
+            this.plus.enabled = this._blueprintCanConvert && enabled && visible;
             this.plus.validateNow();
-            if(this._plusVisible && isReadyForTutorialByDefault())
+            if(this.plus.enabled && isReadyForTutorialByDefault())
             {
                tutorialFunctionPointer(this.plus);
             }
+         }
+      }
+      
+      override protected function updateDisable() : void
+      {
+         if(disableMc != null)
+         {
+            disableMc.x = disabledFillPadding.left;
+            disableMc.y = disabledFillPadding.top;
+            disableMc.scaleX = 1 / this.scaleX;
+            disableMc.scaleY = 1 / this.scaleY;
+            disableMc.widthFill = Math.round(this.glowBorder.width * this.scaleX) - disabledFillPadding.horizontal;
+            disableMc.heightFill = Math.round(this.glowBorder.height * this.scaleY) - disabledFillPadding.vertical;
+            disableMc.visible = !enabled;
          }
       }
       
@@ -117,7 +131,7 @@ package net.wg.gui.lobby.techtree.controls
       {
          label = param1.blueprintLabel;
          this._glowEnabled = param1.bpbGlowEnabled;
-         this._plusVisible = param1.blueprintCanConvert;
+         this._blueprintCanConvert = param1.blueprintCanConvert;
          this._progressValue = param1.blueprintProgress;
          this._progressVisible = param3;
          this._vehicleCD = param2;
@@ -126,10 +140,18 @@ package net.wg.gui.lobby.techtree.controls
       
       override public function set visible(param1:Boolean) : void
       {
-         super.visible = param1;
-         if(param1 != this._plusVisible)
+         if(visible != param1)
          {
-            this._plusVisible = param1;
+            super.visible = param1;
+            invalidateData();
+         }
+      }
+      
+      override public function set enabled(param1:Boolean) : void
+      {
+         if(enabled != param1)
+         {
+            super.enabled = param1;
             invalidateData();
          }
       }

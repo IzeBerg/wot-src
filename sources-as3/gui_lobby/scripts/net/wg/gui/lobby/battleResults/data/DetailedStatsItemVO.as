@@ -20,6 +20,8 @@ package net.wg.gui.lobby.battleResults.data
       
       public var labelStripped:String = "";
       
+      public var tooltip:String = "";
+      
       public function DetailedStatsItemVO(param1:Object)
       {
          super(param1);

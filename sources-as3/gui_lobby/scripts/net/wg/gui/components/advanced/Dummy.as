@@ -258,7 +258,6 @@ package net.wg.gui.components.advanced
       
       private function layoutCenter(param1:int, param2:int, param3:Boolean) : void
       {
-         var _loc6_:int = 0;
          var _loc4_:int = 0;
          if(this._icon && !param3)
          {
@@ -269,7 +268,7 @@ package net.wg.gui.components.advanced
          {
             _loc5_ = this._button.height + BUTTON_GAP;
          }
-         _loc6_ = param2 - this.text.height - _loc4_ - _loc5_ >> 1;
+         var _loc6_:int = param2 - this.text.height - _loc4_ - _loc5_ >> 1;
          this.text.x = (param1 - this.text.width >> 1) + this._padding.left * _width >> 0;
          this.text.y = _loc6_ + this._padding.top * _height + _loc4_ >> 0;
          var _loc7_:int = BUTTON_GAP;

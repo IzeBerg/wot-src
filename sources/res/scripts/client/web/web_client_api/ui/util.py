@@ -1,4 +1,5 @@
 import typing
+from shared_utils import first
 from account_helpers import AccountSettings
 from account_helpers.AccountSettings import NEW_LOBBY_TAB_COUNTER
 from dossiers2.ui.achievements import ACHIEVEMENT_BLOCK
@@ -76,6 +77,11 @@ class _ShowCustomTooltipSchema(W2CSchema):
 
 class _ShowSimpleTooltipSchema(W2CSchema):
     body = Field(required=True, type=basestring)
+
+
+class _ShowBonusTooltipSchema(W2CSchema):
+    name = Field(required=True, type=basestring)
+    value = Field(required=True, type=basestring)
 
 
 class _ShowItemTooltipSchema(W2CSchema):
@@ -210,6 +216,10 @@ class UtilWebApiMixin(object):
     @w2c(_ShowCustomTooltipSchema, 'show_custom_tooltip')
     def showCustomTooltip(self, cmd):
         self.__getTooltipMgr().onCreateComplexTooltip(makeTooltip(header=cmd.header, body=cmd.body), 'INFO')
+
+    @w2c(_ShowBonusTooltipSchema, 'show_bonus_tooltip')
+    def showBonusTooltip(self, cmd):
+        self.__getTooltipMgr().onCreateComplexTooltip(first(getNonQuestBonuses(cmd.name, cmd.value)).getTooltip(), 'INFO')
 
     @w2c(_ShowSimpleTooltipSchema, 'show_simple_tooltip')
     def showSimpleTooltip(self, cmd):

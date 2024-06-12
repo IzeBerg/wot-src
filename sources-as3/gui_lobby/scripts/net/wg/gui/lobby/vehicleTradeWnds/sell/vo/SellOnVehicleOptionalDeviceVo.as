@@ -16,6 +16,8 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell.vo
       
       public var alertIconDataID:String = "";
       
+      public var isAlertVisible:Boolean = false;
+      
       public function SellOnVehicleOptionalDeviceVo(param1:Object)
       {
          super(param1);

@@ -38,7 +38,7 @@ class Comp7Controller(Notifiable, SeasonProvider, IComp7Controller, IGlobalListe
     _ALERT_DATA_CLASS = Comp7AlertData
     __ENTITLEMENTS = {
      COMP7_RATING_ENTITLEMENT, COMP7_ELITE_ENTITLEMENT, COMP7_ACTIVITY_ENTITLEMENT}
-    __STATS_SEASONS_KEYS = ('1', '2', '3')
+    __STATS_SEASONS_KEYS = ('1', '2', '3', '4')
     __lobbyContext = dependency.descriptor(ILobbyContext)
     __itemsCache = dependency.descriptor(IItemsCache)
     __eventsCache = dependency.descriptor(IEventsCache)
@@ -265,9 +265,6 @@ class Comp7Controller(Notifiable, SeasonProvider, IComp7Controller, IGlobalListe
         criteria = self.__filterEnabledVehiclesCriteria(REQ_CRITERIA.INVENTORY)
         v = self.__itemsCache.items.getVehicles(criteria)
         return len(v) > 0
-
-    def getSeasonVehicles(self):
-        return self.__serverSettings.comp7Config.seasonVehicles
 
     def vehicleIsAvailableForBuy(self):
         criteria = self.__filterEnabledVehiclesCriteria(REQ_CRITERIA.UNLOCKED)

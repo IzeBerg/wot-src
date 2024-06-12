@@ -21,8 +21,6 @@ from gui.impl.gen.view_models.views.lobby.platoon.comp7_window_model import Comp
 from gui.impl.gen.view_models.views.lobby.platoon.members_window_model import MembersWindowModel, PrebattleTypes
 from gui.impl.gen.view_models.views.lobby.platoon.slot_label_element_model import SlotLabelElementModel, Types
 from gui.impl.gen.view_models.views.lobby.platoon.slot_model import SlotModel, ErrorType
-from gui.impl.gen.view_models.views.lobby.platoon.comp7_member_count_dropdown import Comp7DropdownItem
-from gui.impl.gui_decorators import args2params
 from gui.impl.lobby.comp7 import comp7_shared
 from gui.impl.lobby.platoon.platoon_helpers import formatSearchEstimatedTime
 from gui.impl.lobby.platoon.tooltip.platoon_alert_tooltip import AlertTooltip
@@ -735,14 +733,16 @@ class BattleRoyalMembersView(SquadMembersView):
         return False
 
     @staticmethod
-    def __sortCurrentUser(slot):
-        accID = BigWorld.player().id
-        player = slot['player'] or {}
-        return accID != player.get('accID')
+    def __sortCommanderUser(slot):
+        player = slot.get('player', {})
+        if player is not None:
+            return player.get('isCommander')
+        else:
+            return False
 
     def _getPlatoonSlotsData(self):
         slots = super(BattleRoyalMembersView, self)._getPlatoonSlotsData()
-        slots.sort(key=self.__sortCurrentUser)
+        slots.sort(reverse=True, key=self.__sortCommanderUser)
         return slots
 
 
@@ -778,6 +778,29 @@ class Comp7MembersView(SquadMembersView):
             return Comp7SquadBonusTooltipContent(SELECTOR_BATTLE_TYPES.COMP7)
         return super(Comp7MembersView, self).createToolTipContent(event=event, contentID=contentID)
 
+    def _addSubviews(self):
+        self._addSubviewToLayout(ChatSubview())
+
+    def _onFindPlayers(self):
+        pass
+
+    def _getIsVehiclePremium(self, vehicle):
+        return False
+
+    def _getWTRStatus(self):
+        return False
+
+    @staticmethod
+    def __sortCurrentUser(slot):
+        accID = BigWorld.player().id
+        player = slot['player'] or {}
+        return accID != player.get('accID')
+
+    def _getPlatoonSlotsData(self):
+        slots = super(Comp7MembersView, self)._getPlatoonSlotsData()
+        slots.sort(key=self.__sortCurrentUser)
+        return slots
+
     @property
     def _viewModelClass(self):
         return Comp7WindowModel
@@ -785,9 +808,6 @@ class Comp7MembersView(SquadMembersView):
     @property
     def _slotModelClass(self):
         return Comp7SlotModel
-
-    def _addSubviews(self):
-        self._addSubviewToLayout(ChatSubview())
 
     def _setModeSlotSpecificData(self, slotData, slotModel):
         playerData = slotData.get('player', {})
@@ -819,92 +839,17 @@ class Comp7MembersView(SquadMembersView):
         body = backport.text(R.strings.tooltips.squadBonus.complex.comp7.body())
         return self._createSimpleTooltipContent(header=header, body=body)
 
-    def _initWindowModeSpecificData(self, model):
-        options = self._comp7Controller.getModeSettings().squadSizes
-        model.header.memberCountDropdown.setMultiple(False)
-        items = model.header.memberCountDropdown.getItems()
-        for option in options:
-            item = Comp7DropdownItem()
-            item.setId(str(option))
-            item.setLabel(str(option))
-            items.addViewModel(item)
-
-    def _updateHeader(self):
-        super(Comp7MembersView, self)._updateHeader()
-        self.__updateDropDown()
-
-    def _getPlatoonSlotsData(self):
-        slots = super(Comp7MembersView, self)._getPlatoonSlotsData()
-        slots.sort(key=self.__playerTimeJoin)
-        return slots
-
     def _hasFreeSlot(self):
         if self.__unitMgr is not None and self.__unitMgr.unit is not None:
             return len(self.__unitMgr.unit.getPlayers()) < self.__unitMgr.unit.getSquadSize()
         else:
             return False
 
-    def _addListeners(self):
-        super(Comp7MembersView, self)._addListeners()
-        self.viewModel.header.memberCountDropdown.onChange += self.__onMemberCountDropdown
-
-    def _removeListeners(self):
-        super(Comp7MembersView, self)._removeListeners()
-        self.viewModel.header.memberCountDropdown.onChange -= self.__onMemberCountDropdown
-
-    @args2params(int)
-    def __onMemberCountDropdown(self, selectedIds):
-        if selectedIds:
-            self.__unitMgr.setSquadSize(selectedIds)
-
-    def __updateDropDown(self):
-        with self.viewModel.transaction() as (model):
-            self.__updateMemberCountDropdown(model)
-            items = model.header.memberCountDropdown.getItems()
-            actualSquadSize = self.__unitMgr.unit.getSquadSize()
-            selected = model.header.memberCountDropdown.getSelected()
-            selected.clear()
-            selected.addString(str(actualSquadSize))
-            selected.invalidate()
-            playersCount = len(self.__unitMgr.unit.getPlayers())
-            for item in items:
-                self.__updateDropdownItem(item, playersCount)
-
-    def __updateMemberCountDropdown(self, model):
-        if not self._isCommander():
-            model.header.memberCountDropdown.setIsDisabled(True)
-            model.header.memberCountDropdown.setTooltipText(self.__getDropDownTooltipText())
-        else:
-            model.header.memberCountDropdown.setIsDisabled(False)
-            model.header.memberCountDropdown.setTooltipText('')
-
-    def __updateDropdownItem(self, item, playersCount):
-        itemNumber = int(item.getLabel())
-        if itemNumber < playersCount:
-            item.setIsDisabled(True)
-            item.meta.setTooltipText(self.__getDropDownItemTooltipText())
-        else:
-            item.setIsDisabled(False)
-            item.meta.setTooltipText('')
-
-    def __getDropDownTooltipText(self):
-        return backport.text(R.strings.platoon.members.header.tooltip.comp7.dropdown())
-
-    def __getDropDownItemTooltipText(self):
-        return backport.text(R.strings.platoon.members.header.tooltip.comp7.dropdown.item())
-
     @classmethod
     def __getDivision(cls, rank, rating):
         ranksConfig = cls._lobbyContext.getServerSettings().comp7RanksConfig
         division = findFirst(lambda d: rating in d.range, ranksConfig.divisionsByRank.get(rank, ()))
         return division
-
-    @staticmethod
-    def __playerTimeJoin(slot):
-        player = slot['player'] or {}
-        roleIndex = -(player.get('isOffline') or slot['role']) if 1 else 0
-        return (
-         not player, roleIndex, player.get('timeJoin', 0))
 
 
 class MembersWindow(PreloadableWindow):

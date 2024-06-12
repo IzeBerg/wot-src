@@ -12,13 +12,13 @@ msgid "awardView/badgeDescription"
 msgstr "?empty?"
 
 msgid "awardView/button/affirmative"
-msgstr "?empty?"
+msgstr "Так точно!"
 
 msgid "awardView/button/details"
-msgstr "?empty?"
+msgstr "Подробнее"
 
 msgid "awardView/close"
-msgstr "?empty?"
+msgstr "ЗАКРЫТЬ"
 
 msgid "awardView/dedicatedTank/label"
 msgstr "?empty?"
@@ -27,10 +27,15 @@ msgid "awardView/dedicatedTank/tooltipBody"
 msgstr "?empty?"
 
 msgid "awardView/dedicatedTank/tooltipHeading"
-msgstr "Эксклюзивная машина"
+msgstr "Эксклюзивная техника"
 
 msgid "awardView/features/label"
-msgstr "?empty?"
+msgstr "Подписка — это полезные улучшения и облегчения игрового процесса."
+
+msgid "awardView/footerDetails"
+msgstr ""
+"Вы можете оформить подписку, чтобы продолжить пользоваться её бонусами после"
+" завершения пробного периода."
 
 msgid "awardView/goldCashback/label"
 msgstr "?empty?"
@@ -48,7 +53,10 @@ msgid "awardView/goldReserve/tooltipHeading"
 msgstr "?empty?"
 
 msgid "awardView/heading"
-msgstr "?empty?"
+msgstr "ПОДПИСКА АКТИВИРОВАНА"
+
+msgid "awardView/headingTrial"
+msgstr "АКТИВЕН ПРОБНЫЙ ПЕРИОД"
 
 msgid "awardView/idleCrewXp/label"
 msgstr "?empty?"
@@ -60,7 +68,10 @@ msgid "awardView/idleCrewXp/tooltipHeading"
 msgstr "?empty?"
 
 msgid "awardView/nextCharge"
-msgstr "?empty?"
+msgstr "Все бонусы подписки будут бесплатно доступны до %(date)s"
+
+msgid "awardView/subHeading"
+msgstr "Сделайте свою игру более комфортной!"
 
 msgid "awardView/tankRental/label"
 msgstr "?empty?"
@@ -71,14 +82,52 @@ msgstr "?empty?"
 msgid "awardView/tankRental/tooltipHeading"
 msgstr "?empty?"
 
+msgid "awardView/title"
+msgstr "ПОДПИСКА"
+
+msgid "dailyQuestsDisabledReward/description"
+msgstr ""
+"При активной подписке за выполнение ежедневных задач вы сможете получать "
+"дополнительные награды."
+
+msgid "dailyQuestsDisabledReward/header"
+msgstr "Дополнительная награда недоступна"
+
+msgid "dailyQuestsDisabledReward/subheader"
+msgstr "Бонус подписки"
+
+msgid "dailyQuestsIntro/button"
+msgstr "Так точно!"
+
+msgid "dailyQuestsIntro/description"
+msgstr ""
+"Во время действия подписки к наградам за выполнение ежедневных задач будут "
+"выдаваться дополнительные награды как за выполнение стандартных задач, так и"
+" за бонусную."
+
+msgid "dailyQuestsIntro/title"
+msgstr "Дополнительные награды по подписке"
+
+msgid "dailyQuestsLockedReward/body"
+msgstr ""
+"Награды за задачу, выполненную до активации подписки, не пересчитываются. "
+"Доступ к слоту дополнительной награды откроется после обновления задачи."
+
+msgid "dailyQuestsLockedReward/header"
+msgstr "Дополнительная награда недоступна"
+
 msgid "dashboard/subscriptionCard/description"
-msgstr "?empty?"
+msgstr ""
+"Подписка — это абонемент, который даёт возможность получить дополнительные "
+"бонусы для более комфортной игры. Зарабатывайте золото в каждом бою, играйте"
+" на эксклюзивной машине %(vehicleName)s, бесплатно демонтируйте "
+"оборудование, ускоряйте обучение экипажа и многое другое!"
 
 msgid "dashboard/subscriptionCard/label"
-msgstr "?empty?"
+msgstr "Подписка"
 
 msgid "dashboard/subscriptionCard/labelShort"
-msgstr "?empty?"
+msgstr "Подписка"
 
 msgid "dashboard/subscriptionCard/state/active/long"
 msgstr "?empty?"
@@ -96,16 +145,19 @@ msgid "dashboard/subscriptionCard/state/disable/short"
 msgstr "?empty?"
 
 msgid "headerButton/label"
-msgstr "?empty?"
+msgstr "Подписка"
 
 msgid "headerButton/state/active"
-msgstr "?empty?"
+msgstr "Управлять"
 
 msgid "headerButton/state/available"
-msgstr "?empty?"
+msgstr "Оформить"
 
 msgid "headerButton/state/cancelled"
-msgstr "?empty?"
+msgstr "Управлять"
+
+msgid "headerButton/state/error"
+msgstr "Ошибка"
 
 msgid "introView/affirmative"
 msgstr "?empty?"
@@ -126,7 +178,7 @@ msgid "introView/generalInformationContent"
 msgstr "?empty?"
 
 msgid "introView/heading"
-msgstr "?empty?"
+msgstr "НАГРАДЫ ПО ПОДПИСКЕ"
 
 msgid "introView/rewardsInformation"
 msgstr "?empty?"
@@ -140,35 +192,66 @@ msgstr "?empty?"
 msgid "introView/superHeading"
 msgstr "?empty?"
 
+msgid "notification/subscriptionExpiration/active/header"
+msgstr "Продление подписки"
+
+msgid "notification/subscriptionExpiration/active/text"
+msgstr ""
+"Подписка будет автоматически продлена %(timeExpiration)s. С вашего счёта "
+"будет списана оплата за следующий 30-дневный период пользования подпиской."
+
+msgid "notification/subscriptionExpiration/cancel/header"
+msgstr "Бонусы подписки скоро станут недоступны"
+
+msgid "notification/subscriptionExpiration/cancel/text"
+msgstr ""
+"Подписка была отменена ранее: все бонусы подписки будут отключены "
+"%(timeExpiration)s."
+
 msgid "rentButton/label"
 msgstr "Арендовать"
 
-msgid "subscriptionCardTooltip/active"
-msgstr "?empty?"
+msgid "subscriptionCardTooltip/Active"
+msgstr "Активна"
 
-msgid "subscriptionCardTooltip/available"
-msgstr "?empty?"
+msgid "subscriptionCardTooltip/Canceled"
+msgstr "Отменена"
 
-msgid "subscriptionCardTooltip/canceled"
-msgstr "?empty?"
+msgid "subscriptionCardTooltip/Error"
+msgstr "Техническая ошибка"
 
-msgid "subscriptionCardTooltip/chargeTime"
-msgstr "?empty?"
+msgid "subscriptionCardTooltip/Inactive"
+msgstr "Неактивна"
 
-msgid "subscriptionCardTooltip/desc/active"
-msgstr "?empty?"
+msgid "subscriptionCardTooltip/Trial"
+msgstr "Пробный период"
+
+msgid "subscriptionCardTooltip/chargeTime/Active"
+msgstr "Следующий платёж %(date)s"
+
+msgid "subscriptionCardTooltip/chargeTime/Canceled"
+msgstr ""
+"Ваша подписка была отменена.\n"
+"Бонусы действуют до %(date)s"
+
+msgid "subscriptionCardTooltip/chargeTime/Error"
+msgstr ""
+"Информация о статусе подписки временно недоступна.\n"
+"Бонусы продолжают действовать до истечения срока действия подписки."
+
+msgid "subscriptionCardTooltip/chargeTime/Trial"
+msgstr ""
+"У вас активен бесплатный пробный период.\n"
+"Все бонусы подписки будут доступны до %(date)s"
 
 msgid "subscriptionCardTooltip/desc/available"
-msgstr "?empty?"
-
-msgid "subscriptionCardTooltip/desc/canceled"
-msgstr "?empty?"
+msgstr "Подключите подписку и получайте специальные бонусы!"
 
 msgid "subscriptionCardTooltip/headerDescription"
-msgstr "?empty?"
+msgstr "Сделайте игру более комфортной!"
 
 msgid "subscriptionCardTooltip/headerTitle"
-msgstr "?empty?"
+msgstr "Подписка"
 
 msgid "subscriptionCardTooltip/title"
 msgstr "?empty?"

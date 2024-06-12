@@ -607,6 +607,8 @@ package
       
       public static const SERVICECHANNELMESSAGES_BATTLERESULTS_PIGGYBANK:String = "#messenger:serviceChannelMessages/battleResults/piggyBank";
       
+      public static const SERVICECHANNELMESSAGES_BATTLERESULTS_GOLDBANKGAIN:String = "#messenger:serviceChannelMessages/battleResults/goldBankGain";
+      
       public static const SERVICECHANNELMESSAGES_BATTLERESULTS_ACTIONSRESULTSGOLD:String = "#messenger:serviceChannelMessages/battleResults/actionsResultsGold";
       
       public static const SERVICECHANNELMESSAGES_BATTLERESULTS_ACTIONSRESULTSCREDITS:String = "#messenger:serviceChannelMessages/battleResults/actionsResultsCredits";
@@ -928,10 +930,6 @@ package
       public static const SERVICECHANNELMESSAGES_INVOICERECEIVED_EQUIPMENT:String = "#messenger:serviceChannelMessages/invoiceReceived/equipment";
       
       public static const SERVICECHANNELMESSAGES_INVOICERECEIVED_PIECES:String = "#messenger:serviceChannelMessages/invoiceReceived/pieces";
-      
-      public static const SERVICECHANNELMESSAGES_INVOICERECEIVED_FORMAT_ITEMS_DEFAULT:String = "#messenger:serviceChannelMessages/invoiceReceived/format/items/default";
-      
-      public static const SERVICECHANNELMESSAGES_INVOICERECEIVED_FORMAT_ITEMS_CREWBOOK:String = "#messenger:serviceChannelMessages/invoiceReceived/format/items/crewBook";
       
       public static const SERVICECHANNELMESSAGES_INVOICERECEIVED_RENTDAYS:String = "#messenger:serviceChannelMessages/invoiceReceived/rentDays";
       
@@ -2081,19 +2079,25 @@ package
       
       public static const SERVICECHANNELMESSAGES_WOTPLUS_UNLOCKMESSAGE_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/unlockMessage/title";
       
-      public static const SERVICECHANNELMESSAGES_WOTPLUS_RENEWMESSAGE_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/renewMessage/title";
-      
       public static const SERVICECHANNELMESSAGES_WOTPLUS_EXPIREMESSAGE_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/expireMessage/title";
       
       public static const SERVICECHANNELMESSAGES_WOTPLUS_UNAVAILABLEMESSAGE_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/unavailableMessage/title";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_AVAILABLEMESSAGE_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/availableMessage/title";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_UNLOCKTRIALMESSAGE_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/unlockTrialMessage/title";
       
       public static const SERVICECHANNELMESSAGES_WOTPLUS_UNLOCKFREEDEMOUNT_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/unlockFreeDemount/title";
       
       public static const SERVICECHANNELMESSAGES_WOTPLUS_EXPIREFREEDEMOUNT_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/expireFreeDemount/title";
       
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_UNLOCKTRIALMESSAGE_TEXT:String = "#messenger:serviceChannelMessages/wotPlus/unlockTrialMessage/text";
+      
       public static const SERVICECHANNELMESSAGES_WOTPLUS_EXPIREMESSAGE_TEXT:String = "#messenger:serviceChannelMessages/wotPlus/expireMessage/text";
       
       public static const SERVICECHANNELMESSAGES_WOTPLUS_UNAVAILABLEMESSAGE_TEXT:String = "#messenger:serviceChannelMessages/wotPlus/unavailableMessage/text";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_AVAILABLEMESSAGE_TEXT:String = "#messenger:serviceChannelMessages/wotPlus/availableMessage/text";
       
       public static const SERVICECHANNELMESSAGES_WOTPLUS_NEXTDATEOFRENEWAL:String = "#messenger:serviceChannelMessages/wotPlus/nextDateOfRenewal";
       
@@ -2124,6 +2128,10 @@ package
       public static const SERVICECHANNELMESSAGES_WOTPLUS_PASSIVEXP_ISDISABLED_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/passiveXP/isDisabled/title";
       
       public static const SERVICECHANNELMESSAGES_WOTPLUS_PASSIVEXP_ISDISABLED_TEXT:String = "#messenger:serviceChannelMessages/wotPlus/passiveXP/isDisabled/text";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_PASSIVEXP_INVALIDCREW_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/passiveXP/invalidCrew/title";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_PASSIVEXP_INVALIDCREW_TEXT:String = "#messenger:serviceChannelMessages/wotPlus/passiveXP/invalidCrew/text";
       
       public static const SERVICECHANNELMESSAGES_WOTPLUS_PASSIVEXP_ISENABLED_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/passiveXP/isEnabled/title";
       
@@ -2164,6 +2172,22 @@ package
       public static const SERVICECHANNELMESSAGES_WOTPLUS_DAILYATTENDANCEREWARDED_BIG_CYCLEENDED_STARTTEXT:String = "#messenger:serviceChannelMessages/wotPlus/dailyAttendanceRewarded/big/cycleEnded/startText";
       
       public static const SERVICECHANNELMESSAGES_WOTPLUS_DAILYATTENDANCEREWARDED_BIG_CYCLEENDED_ENDTEXT:String = "#messenger:serviceChannelMessages/wotPlus/dailyAttendanceRewarded/big/cycleEnded/endText";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_DAILYQUESTSEXTRAREWARDS_ISDISABLED_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/dailyQuestsExtraRewards/isDisabled/title";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_DAILYQUESTSEXTRAREWARDS_ISENABLED_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/dailyQuestsExtraRewards/isEnabled/title";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_TEAMCREDITSBONUS_ISDISABLED_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/teamCreditsBonus/isDisabled/title";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_TEAMCREDITSBONUS_ISENABLED_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/teamCreditsBonus/isEnabled/title";
+      
+      public static const SERVICECHANNELMESSAGES_PREMIUMSUBS_PREMIUMSUBSINVOICERECEIVED_TITLE:String = "#messenger:serviceChannelMessages/premiumSubs/premiumSubsInvoiceReceived/title";
+      
+      public static const SERVICECHANNELMESSAGES_PREMIUMSUBS_PREMIUMSUBSINVOICERECEIVED_BODY:String = "#messenger:serviceChannelMessages/premiumSubs/premiumSubsInvoiceReceived/body";
+      
+      public static const SERVICECHANNELMESSAGES_PREMIUMSUBS_PREMIUMSUBSTRIALUPDATED_TITLE:String = "#messenger:serviceChannelMessages/premiumSubs/premiumSubsTrialUpdated/title";
+      
+      public static const SERVICECHANNELMESSAGES_PREMIUMSUBS_PREMIUMSUBSTRIALUPDATED_BODY:String = "#messenger:serviceChannelMessages/premiumSubs/premiumSubsTrialUpdated/body";
       
       public static const SERVICECHANNELMESSAGES_VEHICLEPOSTPROGRESSION_DISCARDALLPAIRSMODIFICATION_BODY:String = "#messenger:serviceChannelMessages/vehiclePostProgression/discardAllPairsModification/body";
       
@@ -2252,6 +2276,8 @@ package
       public static const SERVICECHANNELMESSAGES_RESOURCEWELL_BREAKLINE:String = "#messenger:serviceChannelMessages/resourceWell/breakLine";
       
       public static const SERVICECHANNELMESSAGES_RESOURCEWELL_GOLD:String = "#messenger:serviceChannelMessages/resourceWell/gold";
+      
+      public static const SERVICECHANNELMESSAGES_RESOURCEWELL_PREMIUM_PLUS:String = "#messenger:serviceChannelMessages/resourceWell/premium_plus";
       
       public static const SERVICECHANNELMESSAGES_RESOURCEWELL_CREDITS:String = "#messenger:serviceChannelMessages/resourceWell/credits";
       
@@ -2410,6 +2436,8 @@ package
       public static const SERVICECHANNELMESSAGES_REFERRALTRANSACTION_HEADER:String = "#messenger:serviceChannelMessages/referralTransaction/header";
       
       public static const SERVICECHANNELMESSAGES_REFERRALTRANSACTION_DATE:String = "#messenger:serviceChannelMessages/referralTransaction/date";
+      
+      public static const SERVICECHANNELMESSAGES_COMP7_COUPONRECEIVED:String = "#messenger:serviceChannelMessages/comp7/couponReceived";
       
       public static const DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_ENUM:Array = [DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_OFFLINE,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_NOTREADY,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_READY,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_INBATTLE,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_AFK];
        

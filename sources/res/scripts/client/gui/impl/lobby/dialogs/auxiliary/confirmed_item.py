@@ -132,6 +132,7 @@ class ConfirmedOptDevice(ConfirmedArtefact):
         isFEDEnabled = self.__lobbyContext.getServerSettings().isFreeEquipmentDemountingEnabled()
         isDeluxeEnabled = self.__lobbyContext.getServerSettings().isFreeDeluxeEquipmentDemountingEnabled()
         isDeluxe = self._item.isDeluxe
+        isRegular = self._item.isRegular
         if not isFEDEnabled:
             return super(ConfirmedOptDevice, self).getOptItemDescKey()
         if isDeluxe:
@@ -143,8 +144,10 @@ class ConfirmedOptDevice(ConfirmedArtefact):
         if self._item.isModernized:
             if self._item.level > 1:
                 return 'itemDeluxe'
-        if isActive:
-            return 'itemWotPlus'
+        if isRegular:
+            if isActive:
+                return 'itemWotPlus'
+            return 'itemWithDemountKitWotPlus'
         return 'itemWithDemountKit'
 
     @classmethod

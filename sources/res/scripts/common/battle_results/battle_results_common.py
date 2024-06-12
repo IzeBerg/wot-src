@@ -505,6 +505,24 @@ BATTLE_RESULTS = [
  (
   'dogTags', dict, {}, None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
  (
+  'eventCreditsList', list, [], None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
+ (
+  'eventXPList', list, [], None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
+ (
+  'eventFreeXPList', list, [], None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
+ (
+  'eventTMenXPList', list, [], None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
+ (
+  'eventGoldList', list, [], None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
+ (
+  'eventCrystalList', list, [], None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
+ (
+  'eventEventCoinList', list, [], None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
+ (
+  'eventBpcoinList', list, [], None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
+ (
+  'eventEquipCoinList', list, [], None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
+ (
   'eventCredits', int, 0, None, 'sum', ENTRY_TYPE.ACCOUNT_SELF),
  (
   'eventXP', int, 0, None, 'sum', ENTRY_TYPE.ACCOUNT_SELF),
@@ -744,7 +762,11 @@ BATTLE_RESULTS = [
  (
   'eventBattlePassPoints', int, 0, None, 'sum', ENTRY_TYPE.ACCOUNT_SELF),
  (
-  'isDebutBoxesEnabled', bool, False, None, 'any', ENTRY_TYPE.VEHICLE_SELF)]
+  'isDebutBoxesEnabled', bool, False, None, 'any', ENTRY_TYPE.VEHICLE_SELF),
+ (
+  'teamSubscribersCount', int, 0, None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
+ (
+  'teamSubsBonusCredits', int, 0, None, 'sum', ENTRY_TYPE.VEHICLE_SELF)]
 BATTLE_PASS_RESULTS = [
  (
   'bpChapter', int, 0, None, 'skip', ENTRY_TYPE.ACCOUNT_ALL),

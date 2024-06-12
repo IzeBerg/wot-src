@@ -186,6 +186,6 @@ class LobbyHeaderMeta(BaseDAAPIComponent):
         if self._isDAAPIInited():
             return self.flashObject.as_setIsFullscreenBattleSelectorShowing(visible)
 
-    def as_setButtonHighlightS(self, btnAlias, isHighlighted):
+    def as_setButtonHighlightS(self, btnAlias, highlightImage):
         if self._isDAAPIInited():
-            return self.flashObject.as_setButtonHighlight(btnAlias, isHighlighted)
+            return self.flashObject.as_setButtonHighlight(btnAlias, highlightImage)

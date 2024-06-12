@@ -33,11 +33,6 @@ package net.wg.gui.battle.views.epicDeploymentMap.components
       
       public final function dispose() : void
       {
-         this.onDispose();
-      }
-      
-      protected function onDispose() : void
-      {
          this._disposed = true;
          this._clickAreaSpr.removeEventListener(MouseEvent.CLICK,this.onMouseClickHandler);
          this._clickAreaSpr = null;

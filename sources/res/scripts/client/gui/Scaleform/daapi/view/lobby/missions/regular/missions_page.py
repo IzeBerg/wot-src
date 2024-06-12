@@ -25,6 +25,7 @@ from gui.Scaleform.locale.BATTLE_PASS import BATTLE_PASS
 from gui.Scaleform.locale.QUESTS import QUESTS
 from gui.Scaleform.locale.RES_ICONS import RES_ICONS
 from gui.battle_pass.battle_pass_helpers import isBattlePassDailyQuestsIntroShown
+from gui.impl.lobby.subscription.subscription_helpers import isSubscriptionDailyQuestsIntroShown
 from gui.impl import backport
 from gui.impl.gen import R
 from gui.marathon.marathon_event_controller import getMarathons
@@ -49,7 +50,7 @@ from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.server_events import IEventsCache
 if typing.TYPE_CHECKING:
     from typing import List, Union
-    from gui.server_events.event_items import DailyEpicTokenQuest, DailyQuest, PremiumQuest
+    from gui.server_events.event_items import DailyTokenQuest, DailyQuest, PremiumQuest
 TabData = namedtuple('TabData', ('alias', 'linkage', 'tooltip', 'tooltipDisabled', 'label', 'prefix'))
 TABS_DATA_ORDERED = [
  TabData(QUESTS_ALIASES.MISSIONS_EVENT_BOARDS_VIEW_PY_ALIAS, QUESTS_ALIASES.MISSIONS_EVENT_BOARDS_VIEW_LINKAGE, QUESTS.MISSIONS_TAB_EVENTBOARDS, QUESTS.MISSIONS_TAB_EVENTBOARDS_DISABLED, _ms(QUESTS.MISSIONS_TAB_LABEL_EVENTBOARDS), None),
@@ -452,6 +453,8 @@ class MissionsPage(LobbySubView, MissionsPageMeta):
                     newEventsCount = len(settings.getNewCommonEvents(availableDailyQuests))
                     if self.battlePass.isActive() and not isBattlePassDailyQuestsIntroShown():
                         newEventsCount += 1
+                if self.lobbyContext.getServerSettings().isDailyQuestsExtraRewardsEnabled() and not isSubscriptionDailyQuestsIntroShown():
+                    newEventsCount += 1
             elif alias == QUESTS_ALIASES.MAPBOX_VIEW_PY_ALIAS:
                 newEventsCount = self.__mapboxCtrl.getUnseenItemsCount()
             elif self.currentTab is not None and self.__currentTabAlias == alias:

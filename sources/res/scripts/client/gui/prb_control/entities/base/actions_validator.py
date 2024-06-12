@@ -2,8 +2,10 @@ import logging, weakref
 from CurrentVehicle import g_currentPreviewVehicle, g_currentVehicle
 from gui.prb_control.items import ValidationResult
 from gui.prb_control.settings import PREBATTLE_RESTRICTION
+from gui.impl.gen import R
 from helpers import dependency
 from skeletons.tutorial import ITutorialLoader
+from skeletons.gui.game_control import IEarlyAccessController
 from soft_exception import SoftException
 _logger = logging.getLogger(__name__)
 
@@ -67,6 +69,16 @@ class CurrentVehicleActionsValidator(BaseActionsValidator):
         if g_currentVehicle.isUnsuitableToQueue():
             return ValidationResult(False, PREBATTLE_RESTRICTION.VEHICLE_NOT_SUPPORTED)
         return super(CurrentVehicleActionsValidator, self)._validate()
+
+
+class EarlyAccessActionsValidator(BaseActionsValidator):
+    __earlyAccessCtrl = dependency.descriptor(IEarlyAccessController)
+
+    def _validate(self):
+        if self.__earlyAccessCtrl.isEnabled():
+            if self.__earlyAccessCtrl.hangarFeatureState.isLayoutIdActive(R.views.lobby.early_access.EarlyAccessMainView()):
+                return ValidationResult(False, PREBATTLE_RESTRICTION.EARLY_ACCESS_SPACE)
+        return super(EarlyAccessActionsValidator, self)._validate()
 
 
 class TutorialActionsValidator(BaseActionsValidator):

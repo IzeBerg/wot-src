@@ -38,7 +38,7 @@
 							<row0>1.000000 0.000000 0.000000</row0>
 							<row1>0.000000 1.000000 0.000000</row1>
 							<row2>0.000000 0.000000 1.000000</row2>
-							<row3>-0.024946 0.001004 1.550213</row3>
+							<row3>0.000000 -0.010426 1.550390</row3>
 						</transform>
 					</node>
 					<node>
@@ -66,6 +66,7 @@
 	<renderSet>
 		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
 		<node>Gun_BlendBone</node>
+		<node>G_BlendBone</node>
 		<geometry>
 			<vertices>gun_01_Shape.vertices</vertices>
 			<primitive>gun_01_Shape.indices</primitive>
@@ -109,15 +110,15 @@
 						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
 					</property>
 				</material>
-				<groupOrigin>0.000362 0.017036 -2.318995</groupOrigin>
+				<groupOrigin>0.198946 0.150316 -2.138260</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<constraints/>
 	<boundingBox>
-		<min>-0.525433 -0.244081 0.087774</min>
-		<max>0.526158 0.278153 4.550216</max>
+		<min>-0.681193 -0.231458 -0.273872</min>
+		<max>1.079085 0.532090 4.550392</max>
 	</boundingBox>
-	<geometrySize>38352</geometrySize>
-	<minUVDensity>0.019468</minUVDensity>
+	<geometrySize>62726</geometrySize>
+	<minUVDensity>0.032948</minUVDensity>
 </root>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<params/>
+	<node>
+		<name>Sleep Node</name>
+		<type>sleep</type>
+		<time>3.000000 3.000000</time>
+		<transition>
+			<to>turret</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>1.000000</exitOffset>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-266.500000 -106.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>turret</name>
+		<type>sequence</type>
+		<resource>vehicles/german/G73_E50_Ausf_M/_skin/G73_E50_Ausf_M_3DSt/Sequence/G73_E50_Ausf_M_Radar_Full_Action.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<transition>
+			<to>Sleep</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>1.000000</exitOffset>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-269.000000 43.500000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>Sleep</name>
+		<type>sleep</type>
+		<time>20.000000 20.000000</time>
+		<transition>
+			<to>Sleep Node</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>1.000000</exitOffset>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>77.000000 -39.500000 0.000000</uiPosition>
+	</node>
+</root>

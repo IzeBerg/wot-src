@@ -14,11 +14,11 @@ package net.wg.gui.battle.views.postmortemPanel
    public class VehiclePanel extends Sprite implements IDisposable
    {
       
-      protected static const HORIZONTAL_MARGIN:int = 12;
+      private static const HORIZONTAL_MARGIN:int = 12;
       
-      protected static const ELEMENTS_GAP:int = 7;
+      private static const ELEMENTS_GAP:int = 7;
       
-      protected static const VEHICLE_IMAGE_HEIGHT:int = 22;
+      private static const VEHICLE_IMAGE_HEIGHT:int = 22;
        
       
       public var bgMC:BattleAtlasSprite = null;
@@ -78,7 +78,7 @@ package net.wg.gui.battle.views.postmortemPanel
          }
       }
       
-      protected function adjustPositions() : void
+      private function adjustPositions() : void
       {
          this.levelTF.x = HORIZONTAL_MARGIN;
          this._vehicleMC.y = this.height - VEHICLE_IMAGE_HEIGHT >> 1;
@@ -87,11 +87,6 @@ package net.wg.gui.battle.views.postmortemPanel
          this.nameTF.x = this.typeMC.x + this.typeMC.originalWidth + ELEMENTS_GAP;
          this.bgMC.width = this.nameTF.x + this.nameTF.width + HORIZONTAL_MARGIN;
          this.x = -this.width >> 1;
-      }
-      
-      protected function get vehicleMC() : Image
-      {
-         return this._vehicleMC;
       }
       
       private function onVehicleMCChangeHandler(param1:Event) : void

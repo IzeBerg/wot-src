@@ -30,8 +30,6 @@ class BATTLE_EVENT_TYPE:
     MULTI_STUN = 21
     DETECTED = 22
     EQUIPMENT_TIMER_EXPIRED = 23
-    BUFF_APPLIED = 24
-    BUFF_EFFECT_APPLIED = 25
     HIDE_IF_TARGET_INVISIBLE = (
      CRIT, DAMAGE, TRACK_ASSIST, STUN_ASSIST, RADIO_ASSIST, MULTI_STUN, INSPIRE_ASSIST)
     DISCLOSED_ATTACK_REASON_IDS = (
@@ -49,12 +47,11 @@ class BATTLE_EVENT_TYPE:
     TARGET_POINTS_EVENTS = frozenset([DESTRUCTIBLE_DAMAGED, DESTRUCTIBLE_DESTROYED, DESTRUCTIBLES_DEFENDED,
      ENEMY_SECTOR_CAPTURED, DEFENDER_BONUS])
     EQUIPMENT_EVENTS = frozenset([EQUIPMENT_TIMER_EXPIRED])
-    BUFF_EVENTS = frozenset([BUFF_APPLIED, BUFF_EFFECT_APPLIED])
     ALL = frozenset([SPOTTED, RADIO_ASSIST, TRACK_ASSIST, STUN_ASSIST, BASE_CAPTURE_POINTS, BASE_CAPTURE_DROPPED,
      TANKING, CRIT, DAMAGE, KILL, RECEIVED_CRIT, RECEIVED_DAMAGE, TARGET_VISIBILITY,
      ENEMY_SECTOR_CAPTURED, DESTRUCTIBLE_DAMAGED, DESTRUCTIBLE_DESTROYED, DESTRUCTIBLES_DEFENDED,
      DEFENDER_BONUS, SMOKE_ASSIST, INSPIRE_ASSIST, BASE_CAPTURE_BLOCKED, MULTI_STUN, DETECTED,
-     EQUIPMENT_TIMER_EXPIRED, BUFF_APPLIED, BUFF_EFFECT_APPLIED])
+     EQUIPMENT_TIMER_EXPIRED])
 
     @staticmethod
     def packDamage(damage, attackReasonID, isBurst=False, shellTypeID=NONE_SHELL_TYPE, shellIsGold=False, secondaryAttackReasonID=ATTACK_REASON_INDICES[ATTACK_REASON.NONE], isRoleAction=False):
@@ -89,12 +86,3 @@ class BATTLE_EVENT_TYPE:
     def unpackVisibility(packedVisibility):
         return (
          packedVisibility & 1, packedVisibility & 2, packedVisibility & 4)
-
-    @staticmethod
-    def packBuffEffectApplied(effectValue, buffIndex, victimID):
-        return (int(victimID) & 65535) << 24 | (int(effectValue) & 4095) << 12 | buffIndex & 255
-
-    @staticmethod
-    def unpackBuffEffectApplied(packedEffect):
-        return (
-         packedEffect >> 24 & 65535, packedEffect >> 12 & 4095, packedEffect & 255)

@@ -20,6 +20,8 @@ package net.wg.infrastructure.base.meta
       
       function goToVehicleCollectionS(param1:String) : void;
       
+      function goToEarlyAccessS() : void;
+      
       function as_setNodesStates(param1:Number, param2:Array, param3:Boolean) : void;
       
       function as_setNext2Unlock(param1:Array) : void;

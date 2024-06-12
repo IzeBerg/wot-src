@@ -55,6 +55,7 @@ package net.wg.gui.lobby.techtree.controls
          var _loc4_:NationButton = NationButton(param1);
          _loc4_.isTooltipSpecial = _loc3_.isTooltipSpecial;
          _loc4_.setDiscountVisible(_loc3_.hasDiscount);
+         _loc4_.setEarlyAccessVisible(_loc3_.hasEarlyAccess);
          super.populateRendererData(param1,param2);
       }
       

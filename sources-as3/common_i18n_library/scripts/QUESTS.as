@@ -111,6 +111,8 @@ package
       
       public static const BONUSES_ITEM_LOOTBOXES:String = "#quests:bonuses/item/lootBoxes";
       
+      public static const BONUSES_ITEM_EARLYACCESSTOKEN:String = "#quests:bonuses/item/earlyAccessToken";
+      
       public static const BONUSNAME_BLUEPRINTS_ANY:String = "#quests:bonusName/blueprints/any";
       
       public static const BONUSES_CREWBOOK_TEXT:String = "#quests:bonuses/crewBook/text";
@@ -2551,6 +2553,10 @@ package
       
       public static const BONUSNAME_ATTENDANCE_REWARD:String = "#quests:bonusName/attendance_reward";
       
+      public static const BONUSNAME_TEAM_CREDITS_BONUS:String = "#quests:bonusName/team_credits_bonus";
+      
+      public static const BONUSNAME_DAILY_QUESTS_REWARDS:String = "#quests:bonusName/daily_quests_rewards";
+      
       public static const ACTION_AUTO_CALENDAR:String = "#quests:action/auto/calendar";
       
       public static const ACTION_FULL_CALENDAR:String = "#quests:action/full/calendar";
@@ -3273,6 +3279,14 @@ package
       
       public static const DAILYQUESTS_POSTBATTLE_GENERICTITLE_HARD:String = "#quests:dailyQuests/postBattle/genericTitle_hard";
       
+      public static const DAILYQUESTS_POSTBATTLE_GENERICTITLE_EASY_SUBS:String = "#quests:dailyQuests/postBattle/genericTitle_easy_subs";
+      
+      public static const DAILYQUESTS_POSTBATTLE_GENERICTITLE_MEDIUM_SUBS:String = "#quests:dailyQuests/postBattle/genericTitle_medium_subs";
+      
+      public static const DAILYQUESTS_POSTBATTLE_GENERICTITLE_HARD_SUBS:String = "#quests:dailyQuests/postBattle/genericTitle_hard_subs";
+      
+      public static const DAILYQUESTS_POSTBATTLE_GENERICTITLE_BONUS_SUBS:String = "#quests:dailyQuests/postBattle/genericTitle_bonus_subs";
+      
       public static const DAILYQUESTS_POSTBATTLE_GENERICTITLE_BONUS:String = "#quests:dailyQuests/postBattle/genericTitle_bonus";
       
       public static const DAILYQUESTS_POSTBATTLE_GENERICTITLE_EPIC:String = "#quests:dailyQuests/postBattle/genericTitle_epic";
@@ -3344,6 +3358,8 @@ package
       public static const INFOPAGE_PREMIUMMISSIONSTITLE:String = "#quests:infoPage/premiumMissionsTitle";
       
       public static const INFOPAGE_DAILYMISSIONS_DEFAULT:String = "#quests:infoPage/dailyMissions/default";
+      
+      public static const INFOPAGE_DAILYMISSIONS_SUBSCRIPTION_DEFAULT:String = "#quests:infoPage/dailyMissions/subscription/default";
       
       public static const INFOPAGE_DAILYMISSIONS_BATTLEPASSDAILYMISSIONS_DEFAULT:String = "#quests:infoPage/dailyMissions/battlePassDailyMissions/default";
       

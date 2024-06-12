@@ -1,4 +1,4 @@
-import collections, enum
+import collections
 from soft_exception import SoftException
 from wrapped_reflection_framework import reflectedNamedTuple
 from Math import Vector3
@@ -66,7 +66,3 @@ ShootImpulse = collections.namedtuple('ShootImpulse', [
  'magnitude', 'applicationPoint', 'isStillSafe'])
 DEFAULT_STUN_TYPE = 'DEFAULT'
 DEFAULT_SHELL_HIT_EXTRAS_CHANCE_MULTIPLIER = 1.0
-
-class EquipmentCtrlItemKeys(enum.Enum):
-    default = 'gui.battle_control.controllers.consumables.equipment_ctrl._AutoItem'
-    replay = 'gui.battle_control.controllers.consumables.equipment_ctrl._ReplayItem'

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<quests>
+		<tokenQuest>
+			<enabled>true</enabled>
+			<id>daily_subs_quests_consume_tokens</id>
+			<serverOnly>true</serverOnly>
+			<hidden>true</hidden>
+			<conditions>
+				<preBattle>
+					<account>
+						<and>
+							<premiumSubs>false</premiumSubs>
+							<or>
+								<token>
+									<id>dqt:control:ticket:easy_subs_reward</id>
+									<greaterOrEqual>1</greaterOrEqual>
+									<consume>10</consume>
+								</token>
+								<token>
+									<id>dqt:control:ticket:medium_subs_reward</id>
+									<greaterOrEqual>1</greaterOrEqual>
+									<consume>10</consume>
+								</token>
+								<token>
+									<id>dqt:control:ticket:hard_subs_reward</id>
+									<greaterOrEqual>1</greaterOrEqual>
+									<consume>10</consume>
+								</token>
+								<token>
+									<id>dqt:control:ticket:bonus_subs_reward</id>
+									<greaterOrEqual>1</greaterOrEqual>
+									<consume>10</consume>
+								</token>
+							</or>
+						</and>
+					</account>
+				</preBattle>
+				<common>
+					<daily/>
+					<bonusLimit>4</bonusLimit>
+				</common>
+			</conditions>
+			<bonus/>
+		</tokenQuest>
+	</quests>
+</root>

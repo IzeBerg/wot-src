@@ -1,4 +1,5 @@
 import logging, SoundGroups
+from constants import SECONDS_IN_THIRTY_DAYS
 from PlayerEvents import g_playerEvents
 from frameworks.wulf import ViewFlags, ViewSettings, WindowFlags
 from gui.Scaleform.daapi.view.lobby.store.browser.shop_helpers import getBuyBattlePassUrl
@@ -146,6 +147,7 @@ class BattlePassBuyView(ViewImpl):
         with self.viewModel.transaction() as (tx):
             tx.setIsWalletAvailable(self.__wallet.isAvailable)
             tx.setIsShopOfferAvailable(self.__isShopOfferAvailable())
+            tx.setShopOfferTimeLeft(self.__shopOfferTimeLeft())
 
     def __clearTooltips(self):
         self.__tooltipItems.clear()
@@ -250,6 +252,12 @@ class BattlePassBuyView(ViewImpl):
 
     def __isShopOfferAvailable(self):
         return self.__battlePass.isShopOfferActive() and not any(package.isBought() and not package.isMarathon() for package in self.__packages.itervalues())
+
+    def __shopOfferTimeLeft(self):
+        timeLeft = self.__battlePass.getShopOfferFinishTimeLeft()
+        if timeLeft <= SECONDS_IN_THIRTY_DAYS:
+            return timeLeft
+        return 0
 
     def __onShopOfferClick(self):
         showShop(getBuyBattlePassUrl())

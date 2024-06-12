@@ -35,6 +35,16 @@ package net.wg.gui.lobby.techtree.data.vo
       private static const IS_TOP_ACTION_NODE:String = "isTopActionNode";
       
       private static const ACTION_MESSAGE:String = "actionMessage";
+      
+      private static const IS_FIRST_TIME_EARLY_ACCESS_SHOW:String = "isFirstTimeEarlyAccessShow";
+      
+      private static const IS_EARLY_ACCESS_LOCKED:String = "isEarlyAccessLocked";
+      
+      private static const IS_EARLY_ACCESS_PAUSED:String = "isEarlyAccessPaused";
+      
+      private static const EARLY_ACCESS_CURRENT_TOKENS:String = "earlyAccessCurrentTokens";
+      
+      private static const EARLY_ACCESS_TOTAL_TOKENS:String = "earlyAccessTotalTokens";
        
       
       public var id:uint = 0;
@@ -66,6 +76,16 @@ package net.wg.gui.lobby.techtree.data.vo
       public var isTopActionNode:Boolean = false;
       
       public var actionMessage:String = "";
+      
+      public var isFirstTimeEarlyAccessShow:Boolean = false;
+      
+      public var isEarlyAccessLocked:Boolean = false;
+      
+      public var isEarlyAccessPaused:Boolean = false;
+      
+      public var earlyAccessCurrentTokens:int = 0;
+      
+      public var earlyAccessTotalTokens:int = 0;
       
       private var _blueprintLabel:String = "";
       
@@ -201,6 +221,26 @@ package net.wg.gui.lobby.techtree.data.vo
          {
             this.actionMessage = param1[ACTION_MESSAGE];
          }
+         if(param1.hasOwnProperty(IS_FIRST_TIME_EARLY_ACCESS_SHOW))
+         {
+            this.isFirstTimeEarlyAccessShow = param1[IS_FIRST_TIME_EARLY_ACCESS_SHOW];
+         }
+         if(param1.hasOwnProperty(IS_EARLY_ACCESS_LOCKED))
+         {
+            this.isEarlyAccessLocked = param1[IS_EARLY_ACCESS_LOCKED];
+         }
+         if(param1.hasOwnProperty(IS_EARLY_ACCESS_PAUSED))
+         {
+            this.isEarlyAccessPaused = param1[IS_EARLY_ACCESS_PAUSED];
+         }
+         if(param1.hasOwnProperty(EARLY_ACCESS_CURRENT_TOKENS))
+         {
+            this.earlyAccessCurrentTokens = param1[EARLY_ACCESS_CURRENT_TOKENS];
+         }
+         if(param1.hasOwnProperty(EARLY_ACCESS_TOTAL_TOKENS))
+         {
+            this.earlyAccessTotalTokens = param1[EARLY_ACCESS_TOTAL_TOKENS];
+         }
          this.dataIsReady = true;
       }
       
@@ -264,7 +304,7 @@ package net.wg.gui.lobby.techtree.data.vo
       public function get costLabel() : String
       {
          var _loc1_:int = 0;
-         if(this.unlockProps != null && ((this.state & NODE_STATE_FLAGS.LOCKED) > 0 || (this.state & NODE_STATE_FLAGS.NEXT_2_UNLOCK) > 0))
+         if(this.unlockProps != null && (this.isLocked || this.isNext2Unlock))
          {
             _loc1_ = this.unlockProps.xpCost;
          }
@@ -313,6 +353,26 @@ package net.wg.gui.lobby.techtree.data.vo
       public function get hasTechTreeEvent() : Boolean
       {
          return (this.state & NODE_STATE_FLAGS.HAS_TECH_TREE_EVENT) > 0;
+      }
+      
+      public function get isAnnouncement() : Boolean
+      {
+         return (this.state & NODE_STATE_FLAGS.ANNOUNCEMENT) > 0;
+      }
+      
+      public function get isEarlyAccess() : Boolean
+      {
+         return (this.state & NODE_STATE_FLAGS.EARLY_ACCESS) > 0;
+      }
+      
+      public function get isLocked() : Boolean
+      {
+         return (this.state & NODE_STATE_FLAGS.LOCKED) > 0;
+      }
+      
+      public function get isNext2Unlock() : Boolean
+      {
+         return (this.state & NODE_STATE_FLAGS.NEXT_2_UNLOCK) > 0;
       }
    }
 }

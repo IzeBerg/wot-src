@@ -290,7 +290,7 @@ package net.wg.gui.battle.random.views.teamBasesPanel
          dispatchEvent(new Event(Event.CHANGE));
       }
       
-      protected function getCaptureBarById(param1:Number) : TeamCaptureBar
+      private function getCaptureBarById(param1:Number) : TeamCaptureBar
       {
          var _loc3_:int = 0;
          var _loc2_:TeamCaptureBar = null;

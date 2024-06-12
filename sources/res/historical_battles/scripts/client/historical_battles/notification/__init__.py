@@ -1,7 +1,0 @@
-from historical_battles.notification.actions_handlers import ShowHBFairPlayActionHandler, ShowHBWarningFairPlayActionHandler, ShowHBProgressionActionHandler, ShowHBEventStartHandler, ShowHBBattleResultsHandler
-from gui.shared.system_factory import registerNotificationsActionsHandlers
-
-def registerClientNotificationHandlers():
-    registerNotificationsActionsHandlers((ShowHBFairPlayActionHandler, ShowHBWarningFairPlayActionHandler,
-     ShowHBProgressionActionHandler, ShowHBEventStartHandler,
-     ShowHBBattleResultsHandler))

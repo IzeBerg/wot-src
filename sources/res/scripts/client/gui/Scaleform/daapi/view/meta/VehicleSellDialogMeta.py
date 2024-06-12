@@ -44,3 +44,7 @@ class VehicleSellDialogMeta(AbstractWindowView):
     def as_updateAccountMoneyS(self, currency, value):
         if self._isDAAPIInited():
             return self.flashObject.as_updateAccountMoney(currency, value)
+
+    def as_updateDeviceS(self, item):
+        if self._isDAAPIInited():
+            return self.flashObject.as_updateDevice(item)

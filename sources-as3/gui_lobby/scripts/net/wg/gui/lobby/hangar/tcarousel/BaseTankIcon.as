@@ -229,9 +229,8 @@ package net.wg.gui.lobby.hangar.tcarousel
          this.addImg.visible = StringUtils.isNotEmpty(param1.additionalImgSrc);
          this.extraImage.visible = StringUtils.isNotEmpty(param1.extraImage);
          var _loc2_:Boolean = this._isEarnCrystals && !param1.isCrystalsLimitReached;
-         this.crystalsGlowBlend.visible = _loc2_;
-         this.extraGlow.visible = _loc2_ || param1.isWotPlusSlot;
-         this.extraGlow.gotoAndStop(!!param1.isWotPlusSlot ? TankCarouselItemRenderer.LABEL_WOT_PLUS : TankCarouselItemRenderer.LABEL_CRYSTAL);
+         this.extraGlow.visible = this.crystalsGlowBlend.visible = _loc2_;
+         this.extraGlow.gotoAndStop(TankCarouselItemRenderer.LABEL_CRYSTAL);
          this._infoImgOffset = !!this.infoImg.visible ? int(INFO_IMG_OFFSET_H) : int(0);
          this.isWotPlusSlot = param1.isWotPlusSlot;
          this._isBuySlot = param1.buySlot;

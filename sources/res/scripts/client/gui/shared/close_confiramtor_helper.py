@@ -10,7 +10,6 @@ from skeletons.gui.lobby_context import ILobbyContext
 class CloseConfirmatorsHelper(object):
     __slots__ = ('__closeConfirmator', )
     _lobbyContext = dependency.descriptor(ILobbyContext)
-    ADD_HEADER_NAV_CONFIRMATOR = True
 
     def __init__(self):
         self.__closeConfirmator = None
@@ -47,15 +46,13 @@ class CloseConfirmatorsHelper(object):
 
     def start(self, closeConfirmator):
         self.__closeConfirmator = closeConfirmator
-        if self.ADD_HEADER_NAV_CONFIRMATOR:
-            self._lobbyContext.addHeaderNavigationConfirmator(self.__confirmHeaderNavigation)
+        self._lobbyContext.addHeaderNavigationConfirmator(self.__confirmHeaderNavigation)
         for event in self.getRestrictedEvents():
             g_eventBus.addRestriction(event, self.__confirmEvent, scope=EVENT_BUS_SCOPE.LOBBY)
 
     def stop(self):
         self.__closeConfirmator = None
-        if self.ADD_HEADER_NAV_CONFIRMATOR:
-            self._lobbyContext.deleteHeaderNavigationConfirmator(self.__confirmHeaderNavigation)
+        self._lobbyContext.deleteHeaderNavigationConfirmator(self.__confirmHeaderNavigation)
         for event in self.getRestrictedEvents():
             g_eventBus.removeRestriction(event, self.__confirmEvent, scope=EVENT_BUS_SCOPE.LOBBY)
 
@@ -88,7 +85,7 @@ class CloseConfirmatorsHelper(object):
 
     @adisp.adisp_async
     @wg_async
-    def __confirmHeaderNavigation(self, callback):
+    def __confirmHeaderNavigation(self, callback, alias=None):
         result = yield wg_await(self.__closeConfirmator())
         callback(result)
 

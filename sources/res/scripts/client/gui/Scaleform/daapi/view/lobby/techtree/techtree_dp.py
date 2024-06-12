@@ -1,6 +1,7 @@
 import operator
 from collections import defaultdict, namedtuple
 import ResMgr, nations
+from account_helpers.AccountSettings import AccountSettings, EarlyAccess
 from constants import IS_DEVELOPMENT
 from debug_utils import LOG_ERROR, LOG_DEBUG
 from gui import GUI_NATIONS_ORDER_INDEX
@@ -16,6 +17,7 @@ from gui.shared.gui_items import GUI_ITEM_TYPE, GUI_ITEM_TYPE_NAMES
 from gui.shared.utils.requesters.ItemsRequester import REQ_CRITERIA
 from helpers import dependency
 from items import _xml, vehicles, getTypeOfCompactDescr
+from skeletons.gui.game_control import IEarlyAccessController
 from skeletons.gui.shared import IItemsCache
 from skeletons.gui.techtree_events import ITechTreeEventsListener
 from soft_exception import SoftException
@@ -55,6 +57,7 @@ class _TechTreeDataProvider(object):
                  '__nextAnnouncements', '__nodes', '__nextTypeIDs')
     itemsCache = dependency.descriptor(IItemsCache)
     techTreeEventsListener = dependency.descriptor(ITechTreeEventsListener)
+    earlyAccessController = dependency.descriptor(IEarlyAccessController)
 
     def __init__(self):
         super(_TechTreeDataProvider, self).__init__()
@@ -141,6 +144,7 @@ class _TechTreeDataProvider(object):
     def isNext2Unlock(self, vTypeCD, unlocked=None, xps=None, freeXP=0, level=UNKNOWN_VEHICLE_LEVEL):
         unlocked = unlocked or set()
         topLevel = self.getTopLevel(vTypeCD)
+        isEarlyAccess = self.itemsCache.items.getItemByCD(vTypeCD).isEarlyAccess
         available = False
         topIDs = set()
         compare = []
@@ -149,7 +153,8 @@ class _TechTreeDataProvider(object):
             nextLevel = self.__nextLevels[parentCD]
             idx, xpCost, required = nextLevel[vTypeCD]
             discount, newCost = self.getBlueprintDiscountData(vTypeCD, level, xpCost)
-            if required.issubset(unlocked) and parentCD in unlocked:
+            isEarlyAccessUnlock = isEarlyAccess and vTypeCD not in self.earlyAccessController.getBlockedVehicles() and (parentCD in unlocked or vTypeCD == self.earlyAccessController.getFirstVehicleCD())
+            if required.issubset(unlocked) and parentCD in unlocked or isEarlyAccessUnlock:
                 topIDs.add(parentCD)
                 compare.append(UnlockProps(parentCD, idx, newCost, topIDs, discount, xpCost))
                 available = True
@@ -203,10 +208,12 @@ class _TechTreeDataProvider(object):
     def _getNationsMenuItem(self, nation):
         nationID = nations.INDICES[nation]
         hasDiscount = nationID in self.techTreeEventsListener.getNations(unviewed=True)
+        hasEarlyAccess = self.earlyAccessController.isQuestActive() and nationID == self.earlyAccessController.getNationID() and not AccountSettings.getEarlyAccess(EarlyAccess.INTRO_SEEN)
         isTooltipSpecial = hasDiscount or nationID in self.techTreeEventsListener.getNations()
         return {'tooltip': TOOLTIPS_CONSTANTS.TECHTREE_NATION_DISCOUNT if isTooltipSpecial else nation, 
            'isTooltipSpecial': isTooltipSpecial, 
            'hasDiscount': hasDiscount, 
+           'hasEarlyAccess': hasEarlyAccess, 
            'label': nation}
 
     def getAvailableNationsIndices(self):

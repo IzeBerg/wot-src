@@ -1198,7 +1198,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.MarathonEntryPoint;
    import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.RankedEntryPoint;
    import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.ResizableEntryPoint;
-   import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.SE22EntryPoint;
    import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.ShopSalesEntryPoint;
    import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.StrongholdEntryPoint;
    import net.wg.gui.lobby.hangar.interfaces.IHangar;
@@ -1214,6 +1213,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.hangar.quests.BattlePassEntryPoint;
    import net.wg.gui.lobby.hangar.quests.CollectiveGoalEntryPoint;
    import net.wg.gui.lobby.hangar.quests.Comp7Widget;
+   import net.wg.gui.lobby.hangar.quests.EarlyAccessEntryPoint;
    import net.wg.gui.lobby.hangar.quests.FlagContainer;
    import net.wg.gui.lobby.hangar.quests.FunRandomHangarWidget;
    import net.wg.gui.lobby.hangar.quests.HEADER_QUESTS_CONSTANTS;
@@ -1235,6 +1235,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.hangar.tcarousel.BaseTankIcon;
    import net.wg.gui.lobby.hangar.tcarousel.CarouselProgressionPoints;
    import net.wg.gui.lobby.hangar.tcarousel.ClanLockUI;
+   import net.wg.gui.lobby.hangar.tcarousel.EarlyAccessIcon;
    import net.wg.gui.lobby.hangar.tcarousel.ITankCarousel;
    import net.wg.gui.lobby.hangar.tcarousel.MultiselectionInfoBlock;
    import net.wg.gui.lobby.hangar.tcarousel.MultiselectionSlotRenderer;
@@ -1265,7 +1266,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.header.headerButtonBar.HBC_ActionItem;
    import net.wg.gui.lobby.header.headerButtonBar.HBC_BattleSelector;
    import net.wg.gui.lobby.header.headerButtonBar.HBC_Finance;
-   import net.wg.gui.lobby.header.headerButtonBar.HBC_HBSquad;
    import net.wg.gui.lobby.header.headerButtonBar.HBC_PersonalReserves;
    import net.wg.gui.lobby.header.headerButtonBar.HBC_PersonalReservesWidgetInject;
    import net.wg.gui.lobby.header.headerButtonBar.HBC_Prem;
@@ -1279,7 +1279,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.header.headerButtonBar.HeaderButtonBar;
    import net.wg.gui.lobby.header.headerButtonBar.HeaderButtonContentItem;
    import net.wg.gui.lobby.header.headerButtonBar.HeaderButtonsHelper;
-   import net.wg.gui.lobby.header.headerButtonBar.container.HBPlatoonShieldIconContainer;
    import net.wg.gui.lobby.header.headerButtonBar.container.PlatoonShieldIconContainer;
    import net.wg.gui.lobby.header.interfaces.ILobbyHeader;
    import net.wg.gui.lobby.header.itemSelectorPopover.BattleTypeSelectPopoverDemonstrator;
@@ -2216,6 +2215,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.techtree.TechTreePage;
    import net.wg.gui.lobby.techtree.constants.ActionName;
    import net.wg.gui.lobby.techtree.constants.ColorIndex;
+   import net.wg.gui.lobby.techtree.constants.LineStyle;
    import net.wg.gui.lobby.techtree.constants.NodeEntityType;
    import net.wg.gui.lobby.techtree.constants.NodeRendererState;
    import net.wg.gui.lobby.techtree.constants.OutLiteral;
@@ -2233,6 +2233,9 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.techtree.controls.BlueprintProgressBar;
    import net.wg.gui.lobby.techtree.controls.BlueprintsModeSwitchButton;
    import net.wg.gui.lobby.techtree.controls.DiscountBanner;
+   import net.wg.gui.lobby.techtree.controls.EAField;
+   import net.wg.gui.lobby.techtree.controls.EarlyAccessButton;
+   import net.wg.gui.lobby.techtree.controls.EarlyAccessStatus;
    import net.wg.gui.lobby.techtree.controls.ExperienceBlock;
    import net.wg.gui.lobby.techtree.controls.FadeComponent;
    import net.wg.gui.lobby.techtree.controls.LevelDelimiter;
@@ -2243,6 +2246,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.techtree.controls.NationTreeVehicleCollectionBtn;
    import net.wg.gui.lobby.techtree.controls.NationsButtonBar;
    import net.wg.gui.lobby.techtree.controls.NodeComponent;
+   import net.wg.gui.lobby.techtree.controls.NodeLock;
    import net.wg.gui.lobby.techtree.controls.PremiumPanelBackground;
    import net.wg.gui.lobby.techtree.controls.PremiumPanelContainer;
    import net.wg.gui.lobby.techtree.controls.PremiumPanelHitArea;
@@ -2277,6 +2281,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.techtree.data.vo.TechTreeNationMenuItemVO;
    import net.wg.gui.lobby.techtree.data.vo.UnlockProps;
    import net.wg.gui.lobby.techtree.data.vo.VehCompareEntrypointTreeNodeVO;
+   import net.wg.gui.lobby.techtree.helpers.DrawHelper;
    import net.wg.gui.lobby.techtree.helpers.LevelHeaderInfo;
    import net.wg.gui.lobby.techtree.helpers.LinesGraphics;
    import net.wg.gui.lobby.techtree.helpers.ModulesGraphics;
@@ -2633,8 +2638,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.vehiclePreview.bottomPanel.SetVehiclesRenderer;
    import net.wg.gui.lobby.vehiclePreview.bottomPanel.SetVehiclesView;
    import net.wg.gui.lobby.vehiclePreview.bottomPanel.VPBottomPanel;
-   import net.wg.gui.lobby.vehiclePreview.bottomPanel.VPBottomPanelHistoricalBattles;
-   import net.wg.gui.lobby.vehiclePreview.bottomPanel.VPBottomPanelHistoricalBattlesRestore;
+   import net.wg.gui.lobby.vehiclePreview.bottomPanel.VPBottomPanelEarlyAccess;
    import net.wg.gui.lobby.vehiclePreview.bottomPanel.VPBottomPanelOfferGift;
    import net.wg.gui.lobby.vehiclePreview.bottomPanel.VPBottomPanelShowcaseStyleBuying;
    import net.wg.gui.lobby.vehiclePreview.bottomPanel.VPBottomPanelStyleBuying;
@@ -2649,8 +2653,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.vehiclePreview.data.VPBuyingPanelVO;
    import net.wg.gui.lobby.vehiclePreview.data.VPCompensationVO;
    import net.wg.gui.lobby.vehiclePreview.data.VPCouponVO;
-   import net.wg.gui.lobby.vehiclePreview.data.VPHBBuyingPanelVO;
-   import net.wg.gui.lobby.vehiclePreview.data.VPHBRestorePanelVO;
    import net.wg.gui.lobby.vehiclePreview.data.VPOfferGiftBuyingPanelVO;
    import net.wg.gui.lobby.vehiclePreview.data.VPOfferVO;
    import net.wg.gui.lobby.vehiclePreview.data.VPPackItemVO;
@@ -5446,8 +5448,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_HANGAR_EVENTENTRYPOINT_GFWRAPPER_RESIZABLEENTRYPOINT:Class = ResizableEntryPoint;
       
-      public static const NET_WG_GUI_LOBBY_HANGAR_EVENTENTRYPOINT_GFWRAPPER_SE22ENTRYPOINT:Class = SE22EntryPoint;
-      
       public static const NET_WG_GUI_LOBBY_HANGAR_EVENTENTRYPOINT_GFWRAPPER_SHOPSALESENTRYPOINT:Class = ShopSalesEntryPoint;
       
       public static const NET_WG_GUI_LOBBY_HANGAR_EVENTENTRYPOINT_GFWRAPPER_STRONGHOLDENTRYPOINT:Class = StrongholdEntryPoint;
@@ -5477,6 +5477,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_HANGAR_QUESTS_COLLECTIVEGOALENTRYPOINT:Class = CollectiveGoalEntryPoint;
       
       public static const NET_WG_GUI_LOBBY_HANGAR_QUESTS_COMP7WIDGET:Class = Comp7Widget;
+      
+      public static const NET_WG_GUI_LOBBY_HANGAR_QUESTS_EARLYACCESSENTRYPOINT:Class = EarlyAccessEntryPoint;
       
       public static const NET_WG_GUI_LOBBY_HANGAR_QUESTS_FLAGCONTAINER:Class = FlagContainer;
       
@@ -5519,6 +5521,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_HANGAR_TCAROUSEL_CAROUSELPROGRESSIONPOINTS:Class = CarouselProgressionPoints;
       
       public static const NET_WG_GUI_LOBBY_HANGAR_TCAROUSEL_CLANLOCKUI:Class = ClanLockUI;
+      
+      public static const NET_WG_GUI_LOBBY_HANGAR_TCAROUSEL_EARLYACCESSICON:Class = EarlyAccessIcon;
       
       public static const NET_WG_GUI_LOBBY_HANGAR_TCAROUSEL_ITANKCAROUSEL:Class = ITankCarousel;
       
@@ -5580,8 +5584,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_HEADER_HEADERBUTTONBAR_HBC_FINANCE:Class = HBC_Finance;
       
-      public static const NET_WG_GUI_LOBBY_HEADER_HEADERBUTTONBAR_HBC_HBSQUAD:Class = HBC_HBSquad;
-      
       public static const NET_WG_GUI_LOBBY_HEADER_HEADERBUTTONBAR_HBC_PERSONALRESERVES:Class = HBC_PersonalReserves;
       
       public static const NET_WG_GUI_LOBBY_HEADER_HEADERBUTTONBAR_HBC_PERSONALRESERVESWIDGETINJECT:Class = HBC_PersonalReservesWidgetInject;
@@ -5607,8 +5609,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_HEADER_HEADERBUTTONBAR_HEADERBUTTONCONTENTITEM:Class = HeaderButtonContentItem;
       
       public static const NET_WG_GUI_LOBBY_HEADER_HEADERBUTTONBAR_HEADERBUTTONSHELPER:Class = HeaderButtonsHelper;
-      
-      public static const NET_WG_GUI_LOBBY_HEADER_HEADERBUTTONBAR_CONTAINER_HBPLATOONSHIELDICONCONTAINER:Class = HBPlatoonShieldIconContainer;
       
       public static const NET_WG_GUI_LOBBY_HEADER_HEADERBUTTONBAR_CONTAINER_PLATOONSHIELDICONCONTAINER:Class = PlatoonShieldIconContainer;
       
@@ -7482,6 +7482,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_TECHTREE_CONSTANTS_COLORINDEX:Class = ColorIndex;
       
+      public static const NET_WG_GUI_LOBBY_TECHTREE_CONSTANTS_LINESTYLE:Class = LineStyle;
+      
       public static const NET_WG_GUI_LOBBY_TECHTREE_CONSTANTS_NODEENTITYTYPE:Class = NodeEntityType;
       
       public static const NET_WG_GUI_LOBBY_TECHTREE_CONSTANTS_NODERENDERERSTATE:Class = NodeRendererState;
@@ -7516,6 +7518,12 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_TECHTREE_CONTROLS_DISCOUNTBANNER:Class = DiscountBanner;
       
+      public static const NET_WG_GUI_LOBBY_TECHTREE_CONTROLS_EAFIELD:Class = EAField;
+      
+      public static const NET_WG_GUI_LOBBY_TECHTREE_CONTROLS_EARLYACCESSBUTTON:Class = EarlyAccessButton;
+      
+      public static const NET_WG_GUI_LOBBY_TECHTREE_CONTROLS_EARLYACCESSSTATUS:Class = EarlyAccessStatus;
+      
       public static const NET_WG_GUI_LOBBY_TECHTREE_CONTROLS_EXPERIENCEBLOCK:Class = ExperienceBlock;
       
       public static const NET_WG_GUI_LOBBY_TECHTREE_CONTROLS_FADECOMPONENT:Class = FadeComponent;
@@ -7535,6 +7543,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_TECHTREE_CONTROLS_NATIONTREEVEHICLECOLLECTIONBTN:Class = NationTreeVehicleCollectionBtn;
       
       public static const NET_WG_GUI_LOBBY_TECHTREE_CONTROLS_NODECOMPONENT:Class = NodeComponent;
+      
+      public static const NET_WG_GUI_LOBBY_TECHTREE_CONTROLS_NODELOCK:Class = NodeLock;
       
       public static const NET_WG_GUI_LOBBY_TECHTREE_CONTROLS_PREMIUMPANELBACKGROUND:Class = PremiumPanelBackground;
       
@@ -7603,6 +7613,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_TECHTREE_DATA_VO_UNLOCKPROPS:Class = UnlockProps;
       
       public static const NET_WG_GUI_LOBBY_TECHTREE_DATA_VO_VEHCOMPAREENTRYPOINTTREENODEVO:Class = VehCompareEntrypointTreeNodeVO;
+      
+      public static const NET_WG_GUI_LOBBY_TECHTREE_HELPERS_DRAWHELPER:Class = DrawHelper;
       
       public static const NET_WG_GUI_LOBBY_TECHTREE_HELPERS_LEVELHEADERINFO:Class = LevelHeaderInfo;
       
@@ -8294,9 +8306,7 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_VEHICLEPREVIEW_BOTTOMPANEL_VPBOTTOMPANEL:Class = VPBottomPanel;
       
-      public static const NET_WG_GUI_LOBBY_VEHICLEPREVIEW_BOTTOMPANEL_VPBOTTOMPANELHISTORICALBATTLES:Class = VPBottomPanelHistoricalBattles;
-      
-      public static const NET_WG_GUI_LOBBY_VEHICLEPREVIEW_BOTTOMPANEL_VPBOTTOMPANELHISTORICALBATTLESRESTORE:Class = VPBottomPanelHistoricalBattlesRestore;
+      public static const NET_WG_GUI_LOBBY_VEHICLEPREVIEW_BOTTOMPANEL_VPBOTTOMPANELEARLYACCESS:Class = VPBottomPanelEarlyAccess;
       
       public static const NET_WG_GUI_LOBBY_VEHICLEPREVIEW_BOTTOMPANEL_VPBOTTOMPANELOFFERGIFT:Class = VPBottomPanelOfferGift;
       
@@ -8323,10 +8333,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_VEHICLEPREVIEW_DATA_VPCOMPENSATIONVO:Class = VPCompensationVO;
       
       public static const NET_WG_GUI_LOBBY_VEHICLEPREVIEW_DATA_VPCOUPONVO:Class = VPCouponVO;
-      
-      public static const NET_WG_GUI_LOBBY_VEHICLEPREVIEW_DATA_VPHBBUYINGPANELVO:Class = VPHBBuyingPanelVO;
-      
-      public static const NET_WG_GUI_LOBBY_VEHICLEPREVIEW_DATA_VPHBRESTOREPANELVO:Class = VPHBRestorePanelVO;
       
       public static const NET_WG_GUI_LOBBY_VEHICLEPREVIEW_DATA_VPOFFERGIFTBUYINGPANELVO:Class = VPOfferGiftBuyingPanelVO;
       

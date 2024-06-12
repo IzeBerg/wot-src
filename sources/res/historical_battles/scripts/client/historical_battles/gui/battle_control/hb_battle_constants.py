@@ -1,4 +1,0 @@
-from gui.battle_control.battle_constants import FEEDBACK_EVENT_ID as ORIG_FEEDBACK_EVENT_ID
-
-class FEEDBACK_EVENT_ID(ORIG_FEEDBACK_EVENT_ID):
-    HB_ACTION_APPLIED = 101

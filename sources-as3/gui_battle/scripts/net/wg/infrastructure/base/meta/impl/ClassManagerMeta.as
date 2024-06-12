@@ -49,13 +49,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.data.constants.generated.DAMAGE_INFO_PANEL_CONSTS;
    import net.wg.data.constants.generated.EPIC_CONSTS;
    import net.wg.data.constants.generated.GAME_MESSAGES_CONSTS;
-   import net.wg.data.constants.generated.HBBATTLEDAMAGELOG_IMAGES;
-   import net.wg.data.constants.generated.HBBATTLE_CONSUMABLES_PANEL_PASSIVE_STATES;
-   import net.wg.data.constants.generated.HBBATTLE_NOTIFICATIONS_TIMER_LINKAGES;
-   import net.wg.data.constants.generated.HBTYPE;
-   import net.wg.data.constants.generated.HB_DAMAGE_SOURCE_TYPES;
-   import net.wg.data.constants.generated.HB_GAME_MESSAGES_CONSTS;
-   import net.wg.data.constants.generated.HB_RADIAL_MENU_CONST;
    import net.wg.data.constants.generated.INTERFACE_STATES;
    import net.wg.data.constants.generated.KEYBOARD_KEYS;
    import net.wg.data.constants.generated.PLAYERS_PANEL_STATE;
@@ -370,6 +363,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.eventBattle.views.eventStats.renderers.StatsPlayerRenderer;
    import net.wg.gui.battle.eventBattle.views.eventTimer.EventTimer;
    import net.wg.gui.battle.eventBattle.views.eventTimer.TimerMovie;
+   import net.wg.gui.battle.eventBattle.views.introVideoPage.EventIntroLogoContainer;
    import net.wg.gui.battle.eventBattle.views.minimap.entries.CustomDeathZoneMinimapEntry;
    import net.wg.gui.battle.eventBattle.views.minimap.entries.EventDeathZoneMinimapEntry;
    import net.wg.gui.battle.eventBattle.views.radialMenu.EventRadialButton;
@@ -387,85 +381,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.eventInfoPanel.interfaces.IEventInfoPanel;
    import net.wg.gui.battle.events.BattleSoundEvent;
    import net.wg.gui.battle.events.RepairAnimEvent;
-   import net.wg.gui.battle.historicalBattles.HBBattlePage;
-   import net.wg.gui.battle.historicalBattles.HBLoading;
-   import net.wg.gui.battle.historicalBattles.battleDamagePanel.HBDamageLogRenderer;
-   import net.wg.gui.battle.historicalBattles.battleHints.HBBattleHint;
-   import net.wg.gui.battle.historicalBattles.battleHints.InfoContainer;
-   import net.wg.gui.battle.historicalBattles.battleHints.TextContainer;
-   import net.wg.gui.battle.historicalBattles.battleHints.data.HintInfoVO;
-   import net.wg.gui.battle.historicalBattles.components.HBIconContainer;
-   import net.wg.gui.battle.historicalBattles.components.HBPlayerRole;
-   import net.wg.gui.battle.historicalBattles.components.HBVehicleType;
-   import net.wg.gui.battle.historicalBattles.components.LoadingProgress;
-   import net.wg.gui.battle.historicalBattles.constants.HB_BATTLE;
-   import net.wg.gui.battle.historicalBattles.constants.HB_EQUIPMENT_STAGES;
-   import net.wg.gui.battle.historicalBattles.consumablesPanel.HBAbilityButton;
-   import net.wg.gui.battle.historicalBattles.consumablesPanel.HBAbilityButtonGlow;
-   import net.wg.gui.battle.historicalBattles.consumablesPanel.HBConsumablesPanel;
-   import net.wg.gui.battle.historicalBattles.consumablesPanel.HBEquipmentButton;
-   import net.wg.gui.battle.historicalBattles.consumablesPanel.HBEquipmentButtonBase;
-   import net.wg.gui.battle.historicalBattles.consumablesPanel.HBEquipmentButtonGlow;
-   import net.wg.gui.battle.historicalBattles.consumablesPanel.HBGlowBase;
-   import net.wg.gui.battle.historicalBattles.consumablesPanel.HBKeyIndicator;
-   import net.wg.gui.battle.historicalBattles.consumablesPanel.HBPassiveAbility;
-   import net.wg.gui.battle.historicalBattles.consumablesPanel.HBProgressBar;
-   import net.wg.gui.battle.historicalBattles.consumablesPanel.HBRoleAbilityButton;
-   import net.wg.gui.battle.historicalBattles.consumablesPanel.HBShellButton;
-   import net.wg.gui.battle.historicalBattles.consumablesPanel.events.HBProgressBarEvent;
-   import net.wg.gui.battle.historicalBattles.data.BattleLoadingHintVO;
-   import net.wg.gui.battle.historicalBattles.destroyTimers.HBDestroySecTimer;
-   import net.wg.gui.battle.historicalBattles.destroyTimers.HBDestroyTimer;
-   import net.wg.gui.battle.historicalBattles.destroyTimers.HBStatusNotificationPanel;
-   import net.wg.gui.battle.historicalBattles.destroyTimers.components.HBTextFieldContainer;
-   import net.wg.gui.battle.historicalBattles.gameMessagesPanel.HBGameMessagesPanel;
-   import net.wg.gui.battle.historicalBattles.gameMessagesPanel.components.ObjectiveGameMessage;
-   import net.wg.gui.battle.historicalBattles.messenger.HBBattleMessenger;
-   import net.wg.gui.battle.historicalBattles.minimap.HBFullMap;
-   import net.wg.gui.battle.historicalBattles.minimap.HBFullMapContainer;
-   import net.wg.gui.battle.historicalBattles.minimap.HBMinimap;
-   import net.wg.gui.battle.historicalBattles.minimap.components.MapSectors;
-   import net.wg.gui.battle.historicalBattles.minimap.components.entries.HBAirstrikeMarkerMinimapEntry;
-   import net.wg.gui.battle.historicalBattles.minimap.components.entries.HBArrowContainer;
-   import net.wg.gui.battle.historicalBattles.minimap.components.entries.HBArrowMinimapEntry;
-   import net.wg.gui.battle.historicalBattles.minimap.components.entries.HBCustomMinimapEntry;
-   import net.wg.gui.battle.historicalBattles.minimap.components.entries.HBKeyTargetMinimapEntry;
-   import net.wg.gui.battle.historicalBattles.phaseIndicator.HBPhaseIndicator;
-   import net.wg.gui.battle.historicalBattles.playerLives.HBPlayerLives;
-   import net.wg.gui.battle.historicalBattles.playersPanel.HBPlayerRenderer;
-   import net.wg.gui.battle.historicalBattles.playersPanel.HBPlayersList;
-   import net.wg.gui.battle.historicalBattles.playersPanel.HBPlayersPanel;
-   import net.wg.gui.battle.historicalBattles.playersPanel.VO.HBPlayerInfoVO;
-   import net.wg.gui.battle.historicalBattles.playersPanel.components.HBChatCommandItemComponent;
-   import net.wg.gui.battle.historicalBattles.playersPanel.components.HBDynamicSquad;
-   import net.wg.gui.battle.historicalBattles.playersPanel.components.HBLiveCounter;
-   import net.wg.gui.battle.historicalBattles.playersPanel.components.HBPlayerName;
-   import net.wg.gui.battle.historicalBattles.playersPanel.components.HBRespawnTimer;
-   import net.wg.gui.battle.historicalBattles.playersPanel.components.healthBar.HBHealthBar;
-   import net.wg.gui.battle.historicalBattles.playersPanel.components.healthBar.HBHealthBarFx;
-   import net.wg.gui.battle.historicalBattles.playersPanel.events.HBPlayerListEvent;
-   import net.wg.gui.battle.historicalBattles.playersPanel.events.HBPlayerRendererEvent;
-   import net.wg.gui.battle.historicalBattles.postmortemPanel.HBPostmortemPanel;
-   import net.wg.gui.battle.historicalBattles.postmortemPanel.HBPostmortemTimer;
-   import net.wg.gui.battle.historicalBattles.postmortemPanel.HBPostmortemTimerContainer;
-   import net.wg.gui.battle.historicalBattles.postmortemPanel.HBPostmortemVehiclePanel;
-   import net.wg.gui.battle.historicalBattles.radialMenu.components.HBIcons;
-   import net.wg.gui.battle.historicalBattles.ribbonsPanel.HBRibbonSettings;
-   import net.wg.gui.battle.historicalBattles.ribbonsPanel.HBRibbonsPanel;
-   import net.wg.gui.battle.historicalBattles.ribbonsPanel.HBRibbonsPool;
-   import net.wg.gui.battle.historicalBattles.roleNotification.HBRoleNotification;
-   import net.wg.gui.battle.historicalBattles.staticMarkers.controlPoint.HBLocationActionMarker;
-   import net.wg.gui.battle.historicalBattles.stats.HBStatsWidget;
-   import net.wg.gui.battle.historicalBattles.teamBasesPanel.HBTeamBasesPanel;
-   import net.wg.gui.battle.historicalBattles.timer.HBTimer;
-   import net.wg.gui.battle.historicalBattles.timer.controls.TimerGoalText;
-   import net.wg.gui.battle.historicalBattles.timer.controls.TimerMessage;
-   import net.wg.gui.battle.historicalBattles.timer.controls.TimerMovie;
-   import net.wg.gui.battle.historicalBattles.timer.controls.TimerTask;
-   import net.wg.gui.battle.historicalBattles.timer.controls.TimerTaskBar;
-   import net.wg.gui.battle.historicalBattles.timer.controls.TimerText;
-   import net.wg.gui.battle.historicalBattles.vehicleMarkers.HBVehicleActionMarker;
-   import net.wg.gui.battle.historicalBattles.vehicleMarkers.HBVehicleMarker;
    import net.wg.gui.battle.interfaces.IBattleInfo;
    import net.wg.gui.battle.interfaces.IFullStats;
    import net.wg.gui.battle.interfaces.IPrebattleTimerBase;
@@ -562,7 +477,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.actionMarkers.BaseActionMarker;
    import net.wg.gui.battle.views.actionMarkers.RepliedMarker;
    import net.wg.gui.battle.views.actionMarkers.RepliedMarkerIcon;
-   import net.wg.gui.battle.views.actionMarkers.StickyArrow;
    import net.wg.gui.battle.views.actionMarkers.StickyMarker;
    import net.wg.gui.battle.views.ammunitionPanel.EpicRespawnAmmunitionPanelView;
    import net.wg.gui.battle.views.ammunitionPanel.PrbAmmunitionPanelEvent;
@@ -799,19 +713,10 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.minimap.components.entries.epic.SectorBaseMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.epic.SectorMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.epic.SectorOverlayMinimapEntry;
-   import net.wg.gui.battle.views.minimap.components.entries.fallout.absorptionFlag.AllyAbsorptionFlagMinimapEntry;
-   import net.wg.gui.battle.views.minimap.components.entries.fallout.absorptionFlag.EnemyAbsorptionFlagMinimapEntry;
-   import net.wg.gui.battle.views.minimap.components.entries.fallout.absorptionFlag.containers.AbsorptionFlagAnimContainer;
-   import net.wg.gui.battle.views.minimap.components.entries.fallout.flag.FlagMinimapEntry;
-   import net.wg.gui.battle.views.minimap.components.entries.fallout.repair.AllyRepairMinimapEntry;
-   import net.wg.gui.battle.views.minimap.components.entries.fallout.repair.EnemyRepairMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.fortconsumables.AOEArtilleryMinimapEntry;
-   import net.wg.gui.battle.views.minimap.components.entries.fortconsumables.ArtilleryGreenMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.fortconsumables.ArtilleryMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.fortconsumables.ArtilleryYellowMinimapEntry;
-   import net.wg.gui.battle.views.minimap.components.entries.fortconsumables.BomberCasMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.fortconsumables.BomberMinimapEntry;
-   import net.wg.gui.battle.views.minimap.components.entries.fortconsumables.MineMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.fortconsumables.SmokeMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.interfaces.IHighlightableMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.interfaces.IMinimapEntryWithNonScaleContent;
@@ -1141,20 +1046,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_DATA_CONSTANTS_GENERATED_EPIC_CONSTS:Class = EPIC_CONSTS;
       
       public static const NET_WG_DATA_CONSTANTS_GENERATED_GAME_MESSAGES_CONSTS:Class = GAME_MESSAGES_CONSTS;
-      
-      public static const NET_WG_DATA_CONSTANTS_GENERATED_HBBATTLEDAMAGELOG_IMAGES:Class = HBBATTLEDAMAGELOG_IMAGES;
-      
-      public static const NET_WG_DATA_CONSTANTS_GENERATED_HBBATTLE_CONSUMABLES_PANEL_PASSIVE_STATES:Class = HBBATTLE_CONSUMABLES_PANEL_PASSIVE_STATES;
-      
-      public static const NET_WG_DATA_CONSTANTS_GENERATED_HBBATTLE_NOTIFICATIONS_TIMER_LINKAGES:Class = HBBATTLE_NOTIFICATIONS_TIMER_LINKAGES;
-      
-      public static const NET_WG_DATA_CONSTANTS_GENERATED_HBTYPE:Class = HBTYPE;
-      
-      public static const NET_WG_DATA_CONSTANTS_GENERATED_HB_DAMAGE_SOURCE_TYPES:Class = HB_DAMAGE_SOURCE_TYPES;
-      
-      public static const NET_WG_DATA_CONSTANTS_GENERATED_HB_GAME_MESSAGES_CONSTS:Class = HB_GAME_MESSAGES_CONSTS;
-      
-      public static const NET_WG_DATA_CONSTANTS_GENERATED_HB_RADIAL_MENU_CONST:Class = HB_RADIAL_MENU_CONST;
       
       public static const NET_WG_DATA_CONSTANTS_GENERATED_INTERFACE_STATES:Class = INTERFACE_STATES;
       
@@ -1818,6 +1709,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTTIMER_TIMERMOVIE:Class = TimerMovie;
       
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_INTROVIDEOPAGE_EVENTINTROLOGOCONTAINER:Class = EventIntroLogoContainer;
+      
       public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_MINIMAP_ENTRIES_CUSTOMDEATHZONEMINIMAPENTRY:Class = CustomDeathZoneMinimapEntry;
       
       public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_MINIMAP_ENTRIES_EVENTDEATHZONEMINIMAPENTRY:Class = EventDeathZoneMinimapEntry;
@@ -1851,164 +1744,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_EVENTS_BATTLESOUNDEVENT:Class = BattleSoundEvent;
       
       public static const NET_WG_GUI_BATTLE_EVENTS_REPAIRANIMEVENT:Class = RepairAnimEvent;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_HBBATTLEPAGE:Class = HBBattlePage;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_HBLOADING:Class = HBLoading;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_BATTLEDAMAGEPANEL_HBDAMAGELOGRENDERER:Class = HBDamageLogRenderer;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_BATTLEHINTS_HBBATTLEHINT:Class = HBBattleHint;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_BATTLEHINTS_INFOCONTAINER:Class = InfoContainer;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_BATTLEHINTS_TEXTCONTAINER:Class = TextContainer;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_BATTLEHINTS_DATA_HINTINFOVO:Class = HintInfoVO;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_COMPONENTS_HBICONCONTAINER:Class = HBIconContainer;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_COMPONENTS_HBPLAYERROLE:Class = HBPlayerRole;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_COMPONENTS_HBVEHICLETYPE:Class = HBVehicleType;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_COMPONENTS_LOADINGPROGRESS:Class = LoadingProgress;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_CONSTANTS_HB_BATTLE:Class = HB_BATTLE;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_CONSTANTS_HB_EQUIPMENT_STAGES:Class = HB_EQUIPMENT_STAGES;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_CONSUMABLESPANEL_HBABILITYBUTTON:Class = HBAbilityButton;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_CONSUMABLESPANEL_HBABILITYBUTTONGLOW:Class = HBAbilityButtonGlow;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_CONSUMABLESPANEL_HBCONSUMABLESPANEL:Class = HBConsumablesPanel;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_CONSUMABLESPANEL_HBEQUIPMENTBUTTON:Class = HBEquipmentButton;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_CONSUMABLESPANEL_HBEQUIPMENTBUTTONBASE:Class = HBEquipmentButtonBase;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_CONSUMABLESPANEL_HBEQUIPMENTBUTTONGLOW:Class = HBEquipmentButtonGlow;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_CONSUMABLESPANEL_HBGLOWBASE:Class = HBGlowBase;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_CONSUMABLESPANEL_HBKEYINDICATOR:Class = HBKeyIndicator;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_CONSUMABLESPANEL_HBPASSIVEABILITY:Class = HBPassiveAbility;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_CONSUMABLESPANEL_HBPROGRESSBAR:Class = HBProgressBar;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_CONSUMABLESPANEL_HBROLEABILITYBUTTON:Class = HBRoleAbilityButton;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_CONSUMABLESPANEL_HBSHELLBUTTON:Class = HBShellButton;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_CONSUMABLESPANEL_EVENTS_HBPROGRESSBAREVENT:Class = HBProgressBarEvent;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_DATA_BATTLELOADINGHINTVO:Class = BattleLoadingHintVO;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_DESTROYTIMERS_HBDESTROYSECTIMER:Class = HBDestroySecTimer;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_DESTROYTIMERS_HBDESTROYTIMER:Class = HBDestroyTimer;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_DESTROYTIMERS_HBSTATUSNOTIFICATIONPANEL:Class = HBStatusNotificationPanel;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_DESTROYTIMERS_COMPONENTS_HBTEXTFIELDCONTAINER:Class = HBTextFieldContainer;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_GAMEMESSAGESPANEL_HBGAMEMESSAGESPANEL:Class = HBGameMessagesPanel;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_GAMEMESSAGESPANEL_COMPONENTS_OBJECTIVEGAMEMESSAGE:Class = ObjectiveGameMessage;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_MESSENGER_HBBATTLEMESSENGER:Class = HBBattleMessenger;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_MINIMAP_HBFULLMAP:Class = HBFullMap;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_MINIMAP_HBFULLMAPCONTAINER:Class = HBFullMapContainer;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_MINIMAP_HBMINIMAP:Class = HBMinimap;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_MINIMAP_COMPONENTS_MAPSECTORS:Class = MapSectors;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_MINIMAP_COMPONENTS_ENTRIES_HBAIRSTRIKEMARKERMINIMAPENTRY:Class = HBAirstrikeMarkerMinimapEntry;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_MINIMAP_COMPONENTS_ENTRIES_HBARROWCONTAINER:Class = HBArrowContainer;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_MINIMAP_COMPONENTS_ENTRIES_HBARROWMINIMAPENTRY:Class = HBArrowMinimapEntry;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_MINIMAP_COMPONENTS_ENTRIES_HBCUSTOMMINIMAPENTRY:Class = HBCustomMinimapEntry;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_MINIMAP_COMPONENTS_ENTRIES_HBKEYTARGETMINIMAPENTRY:Class = HBKeyTargetMinimapEntry;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_PHASEINDICATOR_HBPHASEINDICATOR:Class = HBPhaseIndicator;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_PLAYERLIVES_HBPLAYERLIVES:Class = HBPlayerLives;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_PLAYERSPANEL_HBPLAYERRENDERER:Class = HBPlayerRenderer;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_PLAYERSPANEL_HBPLAYERSLIST:Class = HBPlayersList;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_PLAYERSPANEL_HBPLAYERSPANEL:Class = HBPlayersPanel;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_PLAYERSPANEL_COMPONENTS_HBCHATCOMMANDITEMCOMPONENT:Class = HBChatCommandItemComponent;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_PLAYERSPANEL_COMPONENTS_HBDYNAMICSQUAD:Class = HBDynamicSquad;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_PLAYERSPANEL_COMPONENTS_HBLIVECOUNTER:Class = HBLiveCounter;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_PLAYERSPANEL_COMPONENTS_HBPLAYERNAME:Class = HBPlayerName;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_PLAYERSPANEL_COMPONENTS_HBRESPAWNTIMER:Class = HBRespawnTimer;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_PLAYERSPANEL_COMPONENTS_HEALTHBAR_HBHEALTHBAR:Class = HBHealthBar;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_PLAYERSPANEL_COMPONENTS_HEALTHBAR_HBHEALTHBARFX:Class = HBHealthBarFx;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_PLAYERSPANEL_EVENTS_HBPLAYERLISTEVENT:Class = HBPlayerListEvent;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_PLAYERSPANEL_EVENTS_HBPLAYERRENDEREREVENT:Class = HBPlayerRendererEvent;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_PLAYERSPANEL_VO_HBPLAYERINFOVO:Class = HBPlayerInfoVO;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_POSTMORTEMPANEL_HBPOSTMORTEMPANEL:Class = HBPostmortemPanel;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_POSTMORTEMPANEL_HBPOSTMORTEMTIMER:Class = HBPostmortemTimer;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_POSTMORTEMPANEL_HBPOSTMORTEMTIMERCONTAINER:Class = HBPostmortemTimerContainer;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_POSTMORTEMPANEL_HBPOSTMORTEMVEHICLEPANEL:Class = HBPostmortemVehiclePanel;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_RADIALMENU_COMPONENTS_HBICONS:Class = HBIcons;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_RIBBONSPANEL_HBRIBBONSETTINGS:Class = HBRibbonSettings;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_RIBBONSPANEL_HBRIBBONSPANEL:Class = HBRibbonsPanel;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_RIBBONSPANEL_HBRIBBONSPOOL:Class = HBRibbonsPool;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_ROLENOTIFICATION_HBROLENOTIFICATION:Class = HBRoleNotification;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_STATICMARKERS_CONTROLPOINT_HBLOCATIONACTIONMARKER:Class = HBLocationActionMarker;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_STATS_HBSTATSWIDGET:Class = HBStatsWidget;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_TEAMBASESPANEL_HBTEAMBASESPANEL:Class = HBTeamBasesPanel;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_TIMER_HBTIMER:Class = HBTimer;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_TIMER_CONTROLS_TIMERGOALTEXT:Class = TimerGoalText;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_TIMER_CONTROLS_TIMERMESSAGE:Class = TimerMessage;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_TIMER_CONTROLS_TIMERMOVIE:Class = TimerMovie;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_TIMER_CONTROLS_TIMERTASK:Class = TimerTask;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_TIMER_CONTROLS_TIMERTASKBAR:Class = TimerTaskBar;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_TIMER_CONTROLS_TIMERTEXT:Class = TimerText;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_VEHICLEMARKERS_HBVEHICLEACTIONMARKER:Class = HBVehicleActionMarker;
-      
-      public static const NET_WG_GUI_BATTLE_HISTORICALBATTLES_VEHICLEMARKERS_HBVEHICLEMARKER:Class = HBVehicleMarker;
       
       public static const NET_WG_GUI_BATTLE_INTERFACES_IBATTLEINFO:Class = IBattleInfo;
       
@@ -2201,8 +1936,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_VIEWS_ACTIONMARKERS_REPLIEDMARKER:Class = RepliedMarker;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_ACTIONMARKERS_REPLIEDMARKERICON:Class = RepliedMarkerIcon;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_ACTIONMARKERS_STICKYARROW:Class = StickyArrow;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_ACTIONMARKERS_STICKYMARKER:Class = StickyMarker;
       
@@ -2676,31 +2409,13 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_EPIC_SECTOROVERLAYMINIMAPENTRY:Class = SectorOverlayMinimapEntry;
       
-      public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_FALLOUT_ABSORPTIONFLAG_ALLYABSORPTIONFLAGMINIMAPENTRY:Class = AllyAbsorptionFlagMinimapEntry;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_FALLOUT_ABSORPTIONFLAG_ENEMYABSORPTIONFLAGMINIMAPENTRY:Class = EnemyAbsorptionFlagMinimapEntry;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_FALLOUT_ABSORPTIONFLAG_CONTAINERS_ABSORPTIONFLAGANIMCONTAINER:Class = AbsorptionFlagAnimContainer;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_FALLOUT_FLAG_FLAGMINIMAPENTRY:Class = FlagMinimapEntry;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_FALLOUT_REPAIR_ALLYREPAIRMINIMAPENTRY:Class = AllyRepairMinimapEntry;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_FALLOUT_REPAIR_ENEMYREPAIRMINIMAPENTRY:Class = EnemyRepairMinimapEntry;
-      
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_FORTCONSUMABLES_AOEARTILLERYMINIMAPENTRY:Class = AOEArtilleryMinimapEntry;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_FORTCONSUMABLES_ARTILLERYGREENMINIMAPENTRY:Class = ArtilleryGreenMinimapEntry;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_FORTCONSUMABLES_ARTILLERYMINIMAPENTRY:Class = ArtilleryMinimapEntry;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_FORTCONSUMABLES_ARTILLERYYELLOWMINIMAPENTRY:Class = ArtilleryYellowMinimapEntry;
       
-      public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_FORTCONSUMABLES_BOMBERCASMINIMAPENTRY:Class = BomberCasMinimapEntry;
-      
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_FORTCONSUMABLES_BOMBERMINIMAPENTRY:Class = BomberMinimapEntry;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_FORTCONSUMABLES_MINEMINIMAPENTRY:Class = MineMinimapEntry;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_FORTCONSUMABLES_SMOKEMINIMAPENTRY:Class = SmokeMinimapEntry;
       

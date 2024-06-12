@@ -223,7 +223,12 @@ package net.wg.gui.lobby.techtree.nodes
       
       public function getNodeData() : NodeData
       {
-         return null;
+         return this._valueObject;
+      }
+      
+      public function getState() : uint
+      {
+         return !!this._dataInited ? uint(this._valueObject.state) : uint(0);
       }
       
       public function getOutX() : Number
@@ -463,11 +468,6 @@ package net.wg.gui.lobby.techtree.nodes
          return this._nodeState;
       }
       
-      public function get isAnnouncement() : Boolean
-      {
-         return this._dataInited && (this._valueObject.state & NODE_STATE_FLAGS.ANNOUNCEMENT) > 0;
-      }
-      
       public function get stateProps() : StateProperties
       {
          return this._stateProps;
@@ -504,11 +504,6 @@ package net.wg.gui.lobby.techtree.nodes
          invalidate(InvalidationType.SETTINGS);
       }
       
-      public function get valueObject() : NodeData
-      {
-         return this._valueObject;
-      }
-      
       public function get matrixPosition() : MatrixPosition
       {
          return this._matrixPosition;
@@ -517,11 +512,6 @@ package net.wg.gui.lobby.techtree.nodes
       public function get hasTechTreeEvent() : Boolean
       {
          return this._dataInited && this._valueObject.hasTechTreeEvent;
-      }
-      
-      protected function get hasTechTreeEventDiscountOnly() : Boolean
-      {
-         return this._dataInited && (this._valueObject.state & NODE_STATE_FLAGS.TECH_TREE_EVENT_DISCOUNT_ONLY) > 0;
       }
       
       protected function get mouseEnabledChildren() : Vector.<DisplayObject>
@@ -557,6 +547,26 @@ package net.wg.gui.lobby.techtree.nodes
       protected function set tooltipID(param1:String) : void
       {
          this._tooltipID = param1;
+      }
+      
+      public function get isAnnouncement() : Boolean
+      {
+         return !!this._dataInited ? Boolean(this._valueObject.isAnnouncement) : Boolean(false);
+      }
+      
+      protected function get isEarlyAccess() : Boolean
+      {
+         return !!this._dataInited ? Boolean(this._valueObject.isEarlyAccess) : Boolean(false);
+      }
+      
+      protected function get isEarlyAccessLocked() : Boolean
+      {
+         return !!this._dataInited ? Boolean(this._valueObject.isEarlyAccessLocked) : Boolean(false);
+      }
+      
+      protected function get isFirstTimeEarlyAccessShow() : Boolean
+      {
+         return !!this._dataInited ? Boolean(this._valueObject.isFirstTimeEarlyAccessShow) : Boolean(false);
       }
       
       private function onNodeClickHandler(param1:MouseEvent) : void

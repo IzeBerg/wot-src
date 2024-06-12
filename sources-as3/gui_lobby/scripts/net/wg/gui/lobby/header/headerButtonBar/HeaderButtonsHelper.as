@@ -35,15 +35,13 @@ package net.wg.gui.lobby.header.headerButtonBar
       
       public static const ITEM_ID_SQUAD:String = "squad";
       
-      public static const ITEM_ID_HBSQUAD:String = "hbSquad";
-      
       public static const ITEM_ID_BATTLE_SELECTOR:String = "battleSelector";
       
       public static const ITEM_ID_PERSONAL_RESERVES_WIDGET:String = "personalReservesWidget";
       
       private static const BOTTOM_HELP_DIR:String = "B";
       
-      private static const BUTTONS_ORDER:Vector.<String> = new <String>[ITEM_ID_SETTINGS,ITEM_ID_ACCOUNT,ITEM_ID_WOT_PLUS,ITEM_ID_PREM,ITEM_ID_PREMSHOP,ITEM_ID_SQUAD,ITEM_ID_HBSQUAD,ITEM_ID_BATTLE_SELECTOR,ITEM_ID_PERSONAL_RESERVES_WIDGET,CURRENCIES_CONSTANTS.CRYSTAL,CURRENCIES_CONSTANTS.GOLD,CURRENCIES_CONSTANTS.CREDITS,CURRENCIES_CONSTANTS.FREE_XP];
+      private static const BUTTONS_ORDER:Vector.<String> = new <String>[ITEM_ID_SETTINGS,ITEM_ID_ACCOUNT,ITEM_ID_WOT_PLUS,ITEM_ID_PREM,ITEM_ID_PREMSHOP,ITEM_ID_SQUAD,ITEM_ID_BATTLE_SELECTOR,ITEM_ID_PERSONAL_RESERVES_WIDGET,CURRENCIES_CONSTANTS.CRYSTAL,CURRENCIES_CONSTANTS.GOLD,CURRENCIES_CONSTANTS.CREDITS,CURRENCIES_CONSTANTS.FREE_XP];
        
       
       private var _settingsData:HeaderButtonVo;
@@ -57,8 +55,6 @@ package net.wg.gui.lobby.header.headerButtonBar
       private var _premShopData:HeaderButtonVo;
       
       private var _squadData:HeaderButtonVo;
-      
-      private var _hbSquadData:HeaderButtonVo;
       
       private var _battleSelectorData:HeaderButtonVo;
       
@@ -148,17 +144,6 @@ package net.wg.gui.lobby.header.headerButtonBar
             "helpDirection":BOTTOM_HELP_DIR,
             "enabled":true
          });
-         this._hbSquadData = new HeaderButtonVo({
-            "id":ITEM_ID_HBSQUAD,
-            "linkage":Linkages.HBC_HBSQUAD_UI,
-            "direction":TextFieldAutoSize.LEFT,
-            "align":TextFieldAutoSize.RIGHT,
-            "resizePriority":0,
-            "data":new HBC_SquadDataVo(),
-            "helpText":LOBBY_HELP.HEADER_SQUAD_BUTTON,
-            "helpDirection":BOTTOM_HELP_DIR,
-            "enabled":true
-         });
          this._battleSelectorData = new HeaderButtonVo({
             "id":ITEM_ID_BATTLE_SELECTOR,
             "linkage":Linkages.HBC_BATTLE_SELECTOR_UI,
@@ -234,7 +219,6 @@ package net.wg.gui.lobby.header.headerButtonBar
          this._btnsMap[this._premData.id] = this._premData;
          this._btnsMap[this._premShopData.id] = this._premShopData;
          this._btnsMap[this._squadData.id] = this._squadData;
-         this._btnsMap[this._hbSquadData.id] = this._hbSquadData;
          this._btnsMap[this._battleSelectorData.id] = this._battleSelectorData;
          this._btnsMap[this._personalReservesWidgetData.id] = this._personalReservesWidgetData;
          this._btnsMap[this._crystalData.id] = this._crystalData;
@@ -277,8 +261,6 @@ package net.wg.gui.lobby.header.headerButtonBar
          this._premShopData = null;
          this._squadData.dispose();
          this._squadData = null;
-         this._hbSquadData.dispose();
-         this._hbSquadData = null;
          this._battleSelectorData.dispose();
          this._battleSelectorData = null;
          this._goldData.dispose();
@@ -361,23 +343,6 @@ package net.wg.gui.lobby.header.headerButtonBar
             return _loc2_.headerButton;
          }
          return null;
-      }
-      
-      public function hasDataProviderButtonById(param1:String) : Boolean
-      {
-         var _loc2_:HeaderButtonVo = null;
-         var _loc3_:int = this._btnsDataProvider.length;
-         var _loc4_:int = 0;
-         while(_loc4_ < _loc3_)
-         {
-            _loc2_ = HeaderButtonVo(this._btnsDataProvider[_loc4_]);
-            if(_loc2_.id == param1)
-            {
-               return true;
-            }
-            _loc4_++;
-         }
-         return false;
       }
       
       protected function getHeaderDataProvider() : IDataProvider

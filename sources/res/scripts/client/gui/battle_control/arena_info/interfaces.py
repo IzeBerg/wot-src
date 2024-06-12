@@ -116,12 +116,6 @@ class ITeamsBasesController(IArenaController):
     def removeTeamsBases(self):
         pass
 
-    def addTeamBase(self, base):
-        pass
-
-    def getTeamBases(self):
-        pass
-
 
 class IArenaPeriodController(IArenaController):
     __slots__ = ()

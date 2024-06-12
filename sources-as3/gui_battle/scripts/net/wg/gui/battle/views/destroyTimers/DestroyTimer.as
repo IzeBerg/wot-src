@@ -412,10 +412,7 @@ package net.wg.gui.battle.views.destroyTimers
          this.graphicsSpr.setColor(this._currentColor);
          iconSpr = this.graphicsSpr.iconSpr;
          this.desc.textColor = DESC_TEXT_COLORS[this._currentColor];
-         if(DESC_TEXT_FILTERS[this._currentColor])
-         {
-            this.desc.textFilters = DESC_TEXT_FILTERS[this._currentColor];
-         }
+         this.desc.textFilters = DESC_TEXT_FILTERS[this._currentColor];
       }
       
       private function clearTweenX() : void

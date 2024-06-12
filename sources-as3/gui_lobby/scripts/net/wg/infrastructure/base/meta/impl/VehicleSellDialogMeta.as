@@ -2,6 +2,7 @@ package net.wg.infrastructure.base.meta.impl
 {
    import net.wg.data.constants.Errors;
    import net.wg.gui.lobby.vehicleTradeWnds.sell.vo.SellDialogVO;
+   import net.wg.gui.lobby.vehicleTradeWnds.sell.vo.SellOnVehicleOptionalDeviceVo;
    import net.wg.infrastructure.base.AbstractWindowView;
    import net.wg.infrastructure.exceptions.AbstractException;
    
@@ -21,6 +22,8 @@ package net.wg.infrastructure.base.meta.impl
       
       private var _sellDialogVO:SellDialogVO;
       
+      private var _sellOnVehicleOptionalDeviceVo:SellOnVehicleOptionalDeviceVo;
+      
       public function VehicleSellDialogMeta()
       {
          super();
@@ -32,6 +35,11 @@ package net.wg.infrastructure.base.meta.impl
          {
             this._sellDialogVO.dispose();
             this._sellDialogVO = null;
+         }
+         if(this._sellOnVehicleOptionalDeviceVo)
+         {
+            this._sellOnVehicleOptionalDeviceVo.dispose();
+            this._sellOnVehicleOptionalDeviceVo = null;
          }
          super.onDispose();
       }
@@ -77,9 +85,27 @@ package net.wg.infrastructure.base.meta.impl
          }
       }
       
+      public final function as_updateDevice(param1:Object) : void
+      {
+         var _loc2_:SellOnVehicleOptionalDeviceVo = this._sellOnVehicleOptionalDeviceVo;
+         this._sellOnVehicleOptionalDeviceVo = new SellOnVehicleOptionalDeviceVo(param1);
+         this.updateDevice(this._sellOnVehicleOptionalDeviceVo);
+         if(_loc2_)
+         {
+            _loc2_.dispose();
+         }
+      }
+      
       protected function setData(param1:SellDialogVO) : void
       {
          var _loc2_:String = "as_setData" + Errors.ABSTRACT_INVOKE;
+         DebugUtils.LOG_ERROR(_loc2_);
+         throw new AbstractException(_loc2_);
+      }
+      
+      protected function updateDevice(param1:SellOnVehicleOptionalDeviceVo) : void
+      {
+         var _loc2_:String = "as_updateDevice" + Errors.ABSTRACT_INVOKE;
          DebugUtils.LOG_ERROR(_loc2_);
          throw new AbstractException(_loc2_);
       }

@@ -1,4 +1,4 @@
-
+import time, calendar
 
 class UserSubscriptionDescriptor(object):
 
@@ -12,3 +12,7 @@ class UserSubscriptionDescriptor(object):
     @property
     def status(self):
         return self._params.get('status')
+
+    @property
+    def nextBilling(self):
+        return int(calendar.timegm(time.strptime(self._params.get('next_billing_time'), '%Y-%m-%dT%H:%M:%SZ')))

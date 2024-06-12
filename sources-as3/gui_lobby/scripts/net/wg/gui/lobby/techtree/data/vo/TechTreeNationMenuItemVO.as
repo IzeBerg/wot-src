@@ -14,6 +14,8 @@ package net.wg.gui.lobby.techtree.data.vo
       
       public var hasDiscount:Boolean = false;
       
+      public var hasEarlyAccess:Boolean = false;
+      
       public function TechTreeNationMenuItemVO(param1:Object = null)
       {
          super(param1);

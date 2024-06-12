@@ -1,15 +1,13 @@
 package net.wg.gui.lobby.techtree.helpers
 {
-   import flash.display.CapsStyle;
    import flash.display.DisplayObject;
-   import flash.display.Graphics;
-   import flash.display.JointStyle;
-   import flash.display.LineScaleMode;
    import flash.display.MovieClip;
    import flash.display.Sprite;
    import flash.geom.ColorTransform;
    import flash.geom.Point;
    import net.wg.data.constants.Values;
+   import net.wg.gui.lobby.techtree.constants.LineStyle;
+   import net.wg.gui.lobby.techtree.data.vo.NodeData;
    import net.wg.gui.lobby.techtree.interfaces.INodesContainer;
    import net.wg.gui.lobby.techtree.interfaces.IRenderer;
    import net.wg.gui.lobby.techtree.nodes.Renderer;
@@ -83,10 +81,8 @@ package net.wg.gui.lobby.techtree.helpers
          this.onDispose();
       }
       
-      public function drawLine(param1:IRenderer, param2:Number, param3:Point, param4:Point, param5:int = 1, param6:Number = 1, param7:Boolean = false, param8:Boolean = false) : void
+      public function drawLine(param1:IRenderer, param2:Number, param3:Point, param4:Point, param5:int = 1, param6:Number = 1, param7:Boolean = false, param8:Boolean = false, param9:uint = 0) : void
       {
-         var _loc9_:Graphics = this.getLinesAndArrowsSprite(param1).graphics;
-         _loc9_.lineStyle(param5,param2,param6,false,LineScaleMode.NORMAL,CapsStyle.SQUARE,JointStyle.BEVEL);
          var _loc10_:Number = this.getVectorAngle(param3,param4);
          var _loc11_:Number = param5 * Math.cos(_loc10_);
          var _loc12_:Number = param5 * Math.sin(_loc10_);
@@ -109,29 +105,28 @@ package net.wg.gui.lobby.techtree.helpers
          {
             _loc13_ -= LINES_PIXEL_PERFECT_HACK_COORD;
          }
-         _loc9_.moveTo(param3.x + _loc11_ + _loc15_,param3.y + _loc12_);
-         _loc9_.lineTo(param4.x - _loc11_ + _loc13_,param4.y - _loc12_ + _loc14_);
+         DrawHelper.instance.drawLine(this.getLinesAndArrowsSprite(param1).graphics,new Point(param3.x + _loc11_ + _loc15_,param3.y + _loc12_),new Point(param4.x - _loc11_ + _loc13_,param4.y - _loc12_ + _loc14_),param5,param2,param6,param9);
       }
       
-      public function drawLineAndArrow(param1:IRenderer, param2:Number, param3:Point, param4:Point, param5:uint = 1, param6:Number = 1, param7:Boolean = false, param8:Boolean = false) : void
+      public function drawLineAndArrow(param1:IRenderer, param2:Number, param3:Point, param4:Point, param5:uint = 1, param6:Number = 1, param7:Boolean = false, param8:Boolean = false, param9:uint = 0) : void
       {
-         var _loc9_:Number = this.getVectorAngle(param3,param4);
-         var _loc10_:Object = {
+         var _loc10_:Number = this.getVectorAngle(param3,param4);
+         var _loc11_:Object = {
             "x":param4.x,
             "y":param4.y,
-            "rotation":_loc9_ * 180 / Math.PI
+            "rotation":_loc10_ * 180 / Math.PI
          };
-         var _loc11_:MovieClip = App.utils.classFactory.getComponent(this.arrowRenderer,MovieClip,_loc10_);
-         _loc11_.gotoAndStop(ARROW_LABEL + param5);
-         var _loc12_:ColorTransform = new ColorTransform();
-         _loc12_.color = param2;
-         _loc12_.alphaMultiplier = param6;
-         _loc11_.transform.colorTransform = _loc12_;
-         this.getLinesAndArrowsSprite(param1).addChild(_loc11_);
-         var _loc13_:Number = _loc11_.width + param5 * 0.5;
-         param4.x -= _loc13_ * Math.cos(_loc9_);
-         param4.y -= _loc13_ * Math.sin(_loc9_);
-         this.drawLine(param1,param2,param3,param4,param5,param6,param7,param8);
+         var _loc12_:MovieClip = App.utils.classFactory.getComponent(this.arrowRenderer,MovieClip,_loc11_);
+         _loc12_.gotoAndStop(ARROW_LABEL + param5);
+         var _loc13_:ColorTransform = new ColorTransform();
+         _loc13_.color = param2;
+         _loc13_.alphaMultiplier = param6;
+         _loc12_.transform.colorTransform = _loc13_;
+         this.getLinesAndArrowsSprite(param1).addChild(_loc12_);
+         var _loc14_:Number = _loc12_.width + param5 * 0.5;
+         param4.x -= _loc14_ * Math.cos(_loc10_);
+         param4.y -= _loc14_ * Math.sin(_loc10_);
+         this.drawLine(param1,param2,param3,param4,param5,param6,param7,param8,param9);
       }
       
       public function getVectorAngle(param1:Point, param2:Point) : Number
@@ -178,6 +173,20 @@ package net.wg.gui.lobby.techtree.helpers
             addChildAt(_loc4_,0);
          }
          return _loc4_;
+      }
+      
+      protected function getLineStyle(param1:IRenderer) : uint
+      {
+         var _loc2_:NodeData = null;
+         _loc2_ = param1.getNodeData();
+         var _loc3_:Boolean = Boolean(_loc2_) ? Boolean(_loc2_.isEarlyAccess) : Boolean(false);
+         var _loc4_:Boolean = Boolean(_loc2_) ? Boolean(_loc2_.isEarlyAccessLocked) : Boolean(false);
+         var _loc5_:Boolean = Boolean(_loc2_) ? Boolean(_loc2_.isEarlyAccessPaused) : Boolean(false);
+         if(_loc3_ && (_loc4_ || _loc5_))
+         {
+            return LineStyle.DASHED;
+         }
+         return LineStyle.SOLID;
       }
       
       protected function getLineThickness(param1:IRenderer, param2:IRenderer) : uint

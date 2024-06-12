@@ -1,4 +1,4 @@
-import struct, Math, BigWorld
+import struct, Math
 from chat_commands_consts import BATTLE_CHAT_COMMAND_NAMES
 from debug_utils import LOG_ERROR
 from gui.Scaleform.locale.INGAME_GUI import INGAME_GUI as I18N_INGAME_GUI
@@ -13,8 +13,6 @@ from messenger_common_chat2 import BATTLE_CHAT_COMMANDS_BY_NAMES
 from messenger_common_chat2 import MESSENGER_ACTION_IDS as _ACTIONS
 from messenger_common_chat2 import messageArgs, BATTLE_CHAT_COMMANDS
 from skeletons.gui.battle_session import IBattleSessionProvider
-from historical_battles_common.hb_constants_extension import ARENA_GUI_TYPE
-from historical_battles.skeletons.gui.game_event_controller import IGameEventController
 AUTOCOMMIT_COMMAND_NAMES = (
  BATTLE_CHAT_COMMAND_NAMES.ATTACKING_ENEMY, BATTLE_CHAT_COMMAND_NAMES.SUPPORTING_ALLY,
  BATTLE_CHAT_COMMAND_NAMES.ATTACKING_ENEMY_WITH_SPG,
@@ -25,8 +23,7 @@ AUTOCOMMIT_COMMAND_NAMES = (
 LOCATION_CMD_NAMES = (BATTLE_CHAT_COMMAND_NAMES.SPG_AIM_AREA, BATTLE_CHAT_COMMAND_NAMES.GOING_THERE,
  BATTLE_CHAT_COMMAND_NAMES.ATTENTION_TO_POSITION, BATTLE_CHAT_COMMAND_NAMES.PREBATTLE_WAYPOINT,
  BATTLE_CHAT_COMMAND_NAMES.VEHICLE_SPOTPOINT, BATTLE_CHAT_COMMAND_NAMES.SHOOTING_POINT,
- BATTLE_CHAT_COMMAND_NAMES.NAVIGATION_POINT,
- BATTLE_CHAT_COMMAND_NAMES.OBJECTIVES_POINT, BATTLE_CHAT_COMMAND_NAMES.FLAG_POINT)
+ BATTLE_CHAT_COMMAND_NAMES.NAVIGATION_POINT, BATTLE_CHAT_COMMAND_NAMES.FLAG_POINT)
 EPIC_GLOBAL_CMD_NAMES = (BATTLE_CHAT_COMMAND_NAMES.EPIC_GLOBAL_SAVE_TANKS_ATK,
  BATTLE_CHAT_COMMAND_NAMES.EPIC_GLOBAL_TIME_ATK,
  BATTLE_CHAT_COMMAND_NAMES.EPIC_GLOBAL_HQ_ATK, BATTLE_CHAT_COMMAND_NAMES.EPIC_GLOBAL_TIME_DEF,
@@ -65,8 +62,7 @@ _PUBLIC_CMD_NAMES = (
  BATTLE_CHAT_COMMAND_NAMES.EVENT_CHAT_5, BATTLE_CHAT_COMMAND_NAMES.EVENT_CHAT_6,
  BATTLE_CHAT_COMMAND_NAMES.EVENT_CHAT_7, BATTLE_CHAT_COMMAND_NAMES.VEHICLE_SPOTPOINT,
  BATTLE_CHAT_COMMAND_NAMES.SHOOTING_POINT, BATTLE_CHAT_COMMAND_NAMES.NAVIGATION_POINT,
- BATTLE_CHAT_COMMAND_NAMES.FLAG_POINT,
- BATTLE_CHAT_COMMAND_NAMES.OBJECTIVES_POINT)
+ BATTLE_CHAT_COMMAND_NAMES.FLAG_POINT)
 _PRIVATE_CMD_NAMES = (
  BATTLE_CHAT_COMMAND_NAMES.TURNBACK, BATTLE_CHAT_COMMAND_NAMES.HELPME,
  BATTLE_CHAT_COMMAND_NAMES.THANKS, BATTLE_CHAT_COMMAND_NAMES.POSITIVE,
@@ -102,8 +98,7 @@ _TEMPORARY_STICKY_NAMES = (
  BATTLE_CHAT_COMMAND_NAMES.PREBATTLE_WAYPOINT, BATTLE_CHAT_COMMAND_NAMES.POSITIVE,
  BATTLE_CHAT_COMMAND_NAMES.SOS, BATTLE_CHAT_COMMAND_NAMES.SPG_AIM_AREA,
  BATTLE_CHAT_COMMAND_NAMES.VEHICLE_SPOTPOINT, BATTLE_CHAT_COMMAND_NAMES.SHOOTING_POINT,
- BATTLE_CHAT_COMMAND_NAMES.NAVIGATION_POINT, BATTLE_CHAT_COMMAND_NAMES.FLAG_POINT,
- BATTLE_CHAT_COMMAND_NAMES.OBJECTIVES_POINT)
+ BATTLE_CHAT_COMMAND_NAMES.NAVIGATION_POINT, BATTLE_CHAT_COMMAND_NAMES.FLAG_POINT)
 _TARGETED_CMD_IDS = []
 _PUBLIC_CMD_IDS = []
 _PRIVATE_CMD_IDS = []
@@ -197,7 +192,6 @@ class _OutCmdDecorator(OutChatCommand):
 class _ReceivedCmdDecorator(ReceivedBattleChatCommand):
     __slots__ = ('_commandID', '__isSilentMode')
     sessionProvider = dependency.descriptor(IBattleSessionProvider)
-    _gameEventController = dependency.descriptor(IGameEventController)
 
     def __init__(self, commandID, args):
         super(_ReceivedCmdDecorator, self).__init__(args, getClientID4BattleChannel(BATTLE_CHANNEL.TEAM.name))
@@ -226,10 +220,7 @@ class _ReceivedCmdDecorator(ReceivedBattleChatCommand):
                             i18nArguments['reloadTime'] = reloadTime
                             i18nKey += '_reloading'
                 elif self.hasTarget():
-                    if BigWorld.player().arena.guiType == ARENA_GUI_TYPE.HISTORICAL_BATTLES and BATTLE_CHAT_COMMAND_NAMES.ATTACKING_ENEMY == command.name:
-                        i18nArguments['target'] = self._getEventEnemyName()
-                    else:
-                        i18nArguments['target'] = self._getTarget()
+                    i18nArguments['target'] = self._getTarget()
                     if self.isSPGAimCommand():
                         reloadTime = self._protoData['floatArg1']
                         if reloadTime > 0:
@@ -386,14 +377,6 @@ class _ReceivedCmdDecorator(ReceivedBattleChatCommand):
         target = self.sessionProvider.getCtx().getPlayerFullName(vID=self.getFirstTargetID())
         if self.isReceiver():
             target = g_settings.battle.targetFormat % {'target': target}
-        return target
-
-    def _getEventEnemyName(self):
-        target = self._getTarget()
-        vehInfo = self.sessionProvider.getCtx().getVehicleInfo(vID=self.getFirstTargetID())
-        vehType = vehInfo.vehicleType
-        if vehType is not None:
-            target = vehType.shortName
         return target
 
     def _getCommandVehMarker(self):

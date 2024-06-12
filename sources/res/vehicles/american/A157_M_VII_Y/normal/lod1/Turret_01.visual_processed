@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>lod0</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>turret_01</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+				<node>
+					<identifier>HP_Fire_1</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.851000 -2.109139</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>HP_Track_Exhaus_1</identifier>
+					<transform>
+						<row0>-0.052979 0.998563 0.008047</row0>
+						<row1>0.000000 -0.008058 0.999968</row1>
+						<row2>0.998596 0.052977 0.000427</row2>
+						<row3>1.048098 0.069000 -2.359030</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>HP_Track_Exhaus_2</identifier>
+					<transform>
+						<row0>-0.052979 0.998563 0.008047</row0>
+						<row1>0.000000 -0.008058 0.999968</row1>
+						<row2>0.998596 0.052977 0.000427</row2>
+						<row3>1.048098 0.069000 -2.021958</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>HP_Track_Exhaus_3</identifier>
+					<transform>
+						<row0>-0.084776 -0.995503 0.042271</row0>
+						<row1>-0.000000 0.042423 0.999100</row1>
+						<row2>-0.996400 0.084700 -0.003596</row2>
+						<row3>-1.049978 0.069000 -2.365199</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>HP_Track_Exhaus_4</identifier>
+					<transform>
+						<row0>-0.084776 -0.995503 0.042271</row0>
+						<row1>-0.000000 0.042423 0.999100</row1>
+						<row2>-0.996400 0.084700 -0.003596</row2>
+						<row3>-1.049978 0.069000 -2.020272</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>HP_gunJoint</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>-0.000000 0.438000 1.588000</row3>
+					</transform>
+				</node>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_turret_01</identifier>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_turret_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_turret_01_AO.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>8.416441 4.208220 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_turret_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_turret_01_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.014212 0.751799 -0.715160</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.433300 -0.000001 -3.176701</min>
+		<max>1.461723 1.503599 1.746380</max>
+	</boundingBox>
+	<geometrySize>147340</geometrySize>
+	<minUVDensity>0.001002</minUVDensity>
+</root>

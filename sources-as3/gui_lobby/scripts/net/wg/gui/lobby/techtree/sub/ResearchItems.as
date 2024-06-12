@@ -139,6 +139,7 @@ package net.wg.gui.lobby.techtree.sub
          param1.removeEventListener(TechTreeEvent.GO_TO_SHOP,this.onRendererGoToShopHandler);
          param1.removeEventListener(TechTreeEvent.GO_TO_CHANGE_NATION_VIEW,this.onGoToChangeNationViewHandler);
          param1.removeEventListener(TechTreeEvent.ON_MODULE_HOVER,this.onRendererOnModuleHoverHandler);
+         param1.removeEventListener(TechTreeEvent.GO_TO_EARLY_ACCESS,this.onRendererGoToEarlyAccessHandler);
          super.removeItemRenderer(param1);
       }
       
@@ -279,6 +280,7 @@ package net.wg.gui.lobby.techtree.sub
          param1.addEventListener(TechTreeEvent.GO_TO_BLUEPRINT_VIEW,this.onGoToBlueprintViewHandler,false,0,true);
          param1.addEventListener(TechTreeEvent.CLICK_2_RENT,this.onRendererClick2RentHandler,false,0,true);
          param1.addEventListener(TechTreeEvent.GO_TO_SHOP,this.onRendererGoToShopHandler,false,0,true);
+         param1.addEventListener(TechTreeEvent.GO_TO_EARLY_ACCESS,this.onRendererGoToEarlyAccessHandler,false,0,true);
          if(!param2)
          {
             param1.addEventListener(TechTreeEvent.CLICK_2_OPEN,this.onRendererClick2OpenHandler,false,0,true);
@@ -825,6 +827,11 @@ package net.wg.gui.lobby.techtree.sub
       private function onPostProgressionRollOutHandler(param1:MouseEvent) : void
       {
          this.selectRequiredModules(false);
+      }
+      
+      private function onRendererGoToEarlyAccessHandler(param1:TechTreeEvent) : void
+      {
+         this.view.goToEarlyAccessS();
       }
    }
 }

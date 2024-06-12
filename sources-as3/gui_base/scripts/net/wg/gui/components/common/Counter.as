@@ -76,6 +76,7 @@ package net.wg.gui.components.common
          {
             this.gotoAndStop(this.viewState);
          }
+         this.counterView.tfPadding = tfPadding;
       }
    }
 }

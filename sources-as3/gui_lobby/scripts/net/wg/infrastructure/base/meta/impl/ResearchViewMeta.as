@@ -22,6 +22,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public var goToVehicleCollection:Function;
       
+      public var goToEarlyAccess:Function;
+      
       private var _array:Array;
       
       private var _array1:Array;
@@ -107,6 +109,12 @@ package net.wg.infrastructure.base.meta.impl
       {
          App.utils.asserter.assertNotNull(this.goToVehicleCollection,"goToVehicleCollection" + Errors.CANT_NULL);
          this.goToVehicleCollection(param1);
+      }
+      
+      public function goToEarlyAccessS() : void
+      {
+         App.utils.asserter.assertNotNull(this.goToEarlyAccess,"goToEarlyAccess" + Errors.CANT_NULL);
+         this.goToEarlyAccess();
       }
       
       public final function as_setNodesStates(param1:Number, param2:Array, param3:Boolean) : void

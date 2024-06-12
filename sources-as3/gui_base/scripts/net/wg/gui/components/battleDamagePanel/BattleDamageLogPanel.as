@@ -77,8 +77,6 @@ package net.wg.gui.components.battleDamagePanel
       
       private var _topContainerXPos:int = 0;
       
-      private var _topDetailsOffsetY:Number = 0;
-      
       public function BattleDamageLogPanel()
       {
          this._detailsBottomContainer = new Sprite();
@@ -87,7 +85,6 @@ package net.wg.gui.components.battleDamagePanel
          visible = false;
          this._detailsTopContainer.name = "detailsTopContainer";
          this._detailsBottomContainer.name = "detailsBottomContainer";
-         this._topDetailsOffsetY = TOP_DETAILS_OFFSET_Y;
       }
       
       private static function updateSummaryCounter(param1:MovieClip, param2:TextField, param3:String) : void
@@ -279,14 +276,9 @@ package net.wg.gui.components.battleDamagePanel
          this._detailsBottomContainer.y = BOTTOM_DETAILS_POS_Y - this._additionalRowsCount * BattleDamageLogConstants.RENDER_STEP_SIZE >> 0;
       }
       
-      public function setTopDetailsOffsetY(param1:Number) : void
-      {
-         this._topDetailsOffsetY = param1;
-      }
-      
       public function updateSize(param1:Number, param2:Number) : void
       {
-         this._detailsTopContainer.y = -param2 + this._topDetailsOffsetY >> 0;
+         this._detailsTopContainer.y = -param2 + TOP_DETAILS_OFFSET_Y >> 0;
       }
       
       public function updateTopContainerPosition(param1:int) : void

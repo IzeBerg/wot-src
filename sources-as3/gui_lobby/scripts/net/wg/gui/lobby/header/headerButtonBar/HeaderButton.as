@@ -265,14 +265,15 @@ package net.wg.gui.lobby.header.headerButtonBar
       
       public function updateScreen(param1:String, param2:Number, param3:Number) : void
       {
-         var _loc4_:Boolean = this._dataVo.id == HeaderButtonsHelper.ITEM_ID_HBSQUAD || this._dataVo.id == HeaderButtonsHelper.ITEM_ID_SQUAD;
-         var _loc5_:Boolean = _loc4_ || (param1 != this._screen || this._wideScreenPrc != param2 || this._maxScreenPrc != param3);
-         if(_loc5_ && this._content != null)
+         if(param1 != this._screen || this._wideScreenPrc != param2 || this._maxScreenPrc != param3)
          {
-            this._screen = param1;
-            this._wideScreenPrc = param2;
-            this._maxScreenPrc = param3;
-            this._content.updateScreen(this._screen,this._wideScreenPrc,this._maxScreenPrc);
+            if(this._content != null)
+            {
+               this._screen = param1;
+               this._wideScreenPrc = param2;
+               this._maxScreenPrc = param3;
+               this._content.updateScreen(this._screen,this._wideScreenPrc,this._maxScreenPrc);
+            }
          }
       }
       
@@ -340,7 +341,7 @@ package net.wg.gui.lobby.header.headerButtonBar
          {
             this._helpLayout.unregisterComponent(this);
          }
-         mouseEnabledOnDisabled = this._dataVo.id == HeaderButtonsHelper.ITEM_ID_PREM || this._dataVo.id == HeaderButtonsHelper.ITEM_ID_SQUAD || this._dataVo.id == HeaderButtonsHelper.ITEM_ID_HBSQUAD || this._dataVo.id == HeaderButtonsHelper.ITEM_ID_WOT_PLUS;
+         mouseEnabledOnDisabled = this._dataVo.id == HeaderButtonsHelper.ITEM_ID_PREM || this._dataVo.id == HeaderButtonsHelper.ITEM_ID_WOT_PLUS || this._dataVo.id == HeaderButtonsHelper.ITEM_ID_SQUAD;
          if(this._dataVo.id == HeaderButtonsHelper.ITEM_ID_SQUAD)
          {
             this.isDisableMcVisible = false;
@@ -350,7 +351,7 @@ package net.wg.gui.lobby.header.headerButtonBar
       
       override public function set enabled(param1:Boolean) : void
       {
-         if(this._dataVo && (this._dataVo.id == HeaderButtonsHelper.ITEM_ID_SQUAD || this._dataVo.id == HeaderButtonsHelper.ITEM_ID_HBSQUAD || this._dataVo.id == HeaderButtonsHelper.ITEM_ID_BATTLE_SELECTOR))
+         if(this._dataVo && (this._dataVo.id == HeaderButtonsHelper.ITEM_ID_SQUAD || this._dataVo.id == HeaderButtonsHelper.ITEM_ID_BATTLE_SELECTOR))
          {
             this.alpha = !!param1 ? Number(ALPHA_ENABLED) : Number(ALPHA_DISABLED);
          }

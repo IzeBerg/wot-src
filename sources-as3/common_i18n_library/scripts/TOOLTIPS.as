@@ -321,10 +321,6 @@ package
       
       public static const LOBY_MESSENGER_LISTVIEW_NEWS_TOOLTIP:String = "#tooltips:loby_messenger/listView/news/tooltip";
       
-      public static const LOBY_MESSENGER_BTNREFERRALDISABLED:String = "#tooltips:loby_messenger/btnReferralDisabled";
-      
-      public static const LOBY_MESSENGER_BTNVEHICLECARTDISABLED:String = "#tooltips:loby_messenger/btnVehicleCartDisabled";
-      
       public static const BADGEINFO_TITLE:String = "#tooltips:badgeinfo/title";
       
       public static const BADGEINFO_TEXT:String = "#tooltips:badgeinfo/text";
@@ -1935,14 +1931,6 @@ package
       
       public static const LOBBY_HEADER_BUYPREMIUMACCOUNT_DISABLED_BODY:String = "#tooltips:lobby/header/buyPremiumAccount/disabled/body";
       
-      public static const LOBY_MESSENGER_BTNREFERRALDISABLED_HEADER:String = "#tooltips:loby_messenger/btnReferralDisabled/header";
-      
-      public static const LOBY_MESSENGER_BTNREFERRALDISABLED_BODY:String = "#tooltips:loby_messenger/btnReferralDisabled/body";
-      
-      public static const LOBY_MESSENGER_BTNVEHICLECARTDISABLED_HEADER:String = "#tooltips:loby_messenger/btnVehicleCartDisabled/header";
-      
-      public static const LOBY_MESSENGER_BTNVEHICLECARTDISABLED_BODY:String = "#tooltips:loby_messenger/btnVehicleCartDisabled/body";
-      
       public static const TRAINING_CREATE_INVITES_CHECKBOX_HEADER:String = "#tooltips:training/create/invites_checkbox/header";
       
       public static const TRAINING_CREATE_INVITES_CHECKBOX_BODY:String = "#tooltips:training/create/invites_checkbox/body";
@@ -2291,6 +2279,10 @@ package
       
       public static const VEHICLE_RESTORE_PRICE:String = "#tooltips:vehicle/restore_price";
       
+      public static const VEHICLE_EA_PRICE:String = "#tooltips:vehicle/ea_price";
+      
+      public static const VEHICLE_UNLOCKPRICEAFTEREA:String = "#tooltips:vehicle/unlockPriceAfterEA";
+      
       public static const VEHICLE_ACTION_PRC:String = "#tooltips:vehicle/action_prc";
       
       public static const VEHICLE_MINRENTALSPRICE:String = "#tooltips:vehicle/minRentalsPrice";
@@ -2389,6 +2381,8 @@ package
       
       public static const QUESTS_PROGRESS_EARNEDINBATTLE:String = "#tooltips:quests/progress/earnedInBattle";
       
+      public static const QUESTS_PROGRESS_EARLYACCESS:String = "#tooltips:quests/progress/earlyAccess";
+      
       public static const QUESTS_PROGRESS_DEBUTBOXES:String = "#tooltips:quests/progress/debutBoxes";
       
       public static const QUESTS_IGR:String = "#tooltips:quests/igr";
@@ -2400,6 +2394,8 @@ package
       public static const QUESTS_LINKBTN_TASK:String = "#tooltips:quests/linkBtn/task";
       
       public static const QUESTS_LINKBTN_EPIC:String = "#tooltips:quests/linkBtn/epic";
+      
+      public static const QUESTS_LINKBTN_EARLYACCESS:String = "#tooltips:quests/linkBtn/earlyAccess";
       
       public static const QUESTS_LINKBTN_CUSTOMIZATIONPROGRESSION_ENABLED:String = "#tooltips:quests/linkBtn/customizationProgression/enabled";
       
@@ -2557,6 +2553,8 @@ package
       
       public static const VEHICLESTATUS_ROTATIONGROUPUNLOCKED_HEADER:String = "#tooltips:vehicleStatus/rotationGroupUnlocked/header";
       
+      public static const VEHICLESTATUS_FORBIDDENVEHICLE_BODY:String = "#tooltips:vehicleStatus/forbiddenVehicle/body";
+      
       public static const TRADEINVEHICLESTATUS_BATTLE_HEADER:String = "#tooltips:tradeInVehicleStatus/battle/header";
       
       public static const TRADEINVEHICLESTATUS_BATTLE_BODY:String = "#tooltips:tradeInVehicleStatus/battle/body";
@@ -2705,6 +2703,24 @@ package
       
       public static const RESEARCHPAGE_COLLECTIBLEVEHICLE_VEHICLEENABLED_BODY:String = "#tooltips:researchPage/collectibleVehicle/vehicleEnabled/body";
       
+      public static const RESEARCHPAGE_VEHICLE_STATUS_EARLYACCESSPARENTVEHICLEISLOCKED_HEADER:String = "#tooltips:researchPage/vehicle/status/earlyAccessParentVehicleIsLocked/header";
+      
+      public static const RESEARCHPAGE_VEHICLE_STATUS_EARLYACCESSPARENTVEHICLEISLOCKED_TEXT:String = "#tooltips:researchPage/vehicle/status/earlyAccessParentVehicleIsLocked/text";
+      
+      public static const RESEARCHPAGE_VEHICLE_STATUS_EARLYACCESSNOTENOUGHTOKENS_HEADER:String = "#tooltips:researchPage/vehicle/status/earlyAccessNotEnoughTokens/header";
+      
+      public static const RESEARCHPAGE_VEHICLE_STATUS_EARLYACCESSNOTENOUGHTOKENS_TEXT:String = "#tooltips:researchPage/vehicle/status/earlyAccessNotEnoughTokens/text";
+      
+      public static const RESEARCHPAGE_VEHICLE_STATUS_EARLYACCESSSOON_HEADER:String = "#tooltips:researchPage/vehicle/status/earlyAccessSoon/header";
+      
+      public static const RESEARCHPAGE_VEHICLE_STATUS_EARLYACCESSSOON_TEXT:String = "#tooltips:researchPage/vehicle/status/earlyAccessSoon/text";
+      
+      public static const RESEARCHPAGE_EARLYACCESSINFO_HEADER:String = "#tooltips:researchPage/earlyAccessInfo/header";
+      
+      public static const RESEARCHPAGE_EARLYACCESSINFO_TITLE:String = "#tooltips:researchPage/earlyAccessInfo/title";
+      
+      public static const RESEARCHPAGE_EARLYACCESSINFO_TEXT:String = "#tooltips:researchPage/earlyAccessInfo/text";
+      
       public static const TECHTREEPAGE_NATIONS_USSR:String = "#tooltips:techTreePage/nations/ussr";
       
       public static const TECHTREEPAGE_NATIONS_GERMANY:String = "#tooltips:techTreePage/nations/germany";
@@ -2752,6 +2768,20 @@ package
       public static const TECHTREEPAGE_BLUEPRINTSSWITCHTOOLTIPDISABLED_HEADER:String = "#tooltips:techTreePage/blueprintsSwitchTooltipDisabled/header";
       
       public static const TECHTREEPAGE_BLUEPRINTSSWITCHTOOLTIPDISABLED_BODY:String = "#tooltips:techTreePage/blueprintsSwitchTooltipDisabled/body";
+      
+      public static const TECHTREEPAGE_EARLYACCESSENTRYPOINTTOOLTIP_HEADER:String = "#tooltips:techTreePage/earlyAccessEntryPointTooltip/header";
+      
+      public static const TECHTREEPAGE_EARLYACCESSENTRYPOINTTOOLTIP_BODY:String = "#tooltips:techTreePage/earlyAccessEntryPointTooltip/body";
+      
+      public static const TECHTREEPAGE_EARLYACCESSQUESTSENTRYPOINTTOOLTIP_HEADER:String = "#tooltips:techTreePage/earlyAccessQuestsEntryPointTooltip/header";
+      
+      public static const TECHTREEPAGE_EARLYACCESSQUESTSENTRYPOINTTOOLTIP_BODY:String = "#tooltips:techTreePage/earlyAccessQuestsEntryPointTooltip/body";
+      
+      public static const TECHTREEPAGE_EARLYACCESSVEHICLELOCKEDTOOLTIP_HEADER:String = "#tooltips:techTreePage/earlyAccessVehicleLockedTooltip/header";
+      
+      public static const TECHTREEPAGE_EARLYACCESSVEHICLELOCKEDTOOLTIP_BODY:String = "#tooltips:techTreePage/earlyAccessVehicleLockedTooltip/body";
+      
+      public static const TECHTREEPAGE_EARLYACCESSVEHICLELOCKEDTOOLTIP_WILLAVAILABLE:String = "#tooltips:techTreePage/earlyAccessVehicleLockedTooltip/willAvailable";
       
       public static const COLLECTIBLEVEHICLETOOLTIP_HEADER:String = "#tooltips:collectibleVehicleTooltip/header";
       
@@ -2810,6 +2840,14 @@ package
       public static const BLUEPRINT_VEHICLEBLUEPRINTTOOLTIP_VEHICLEUNLOCKED_HEADER:String = "#tooltips:blueprint/VehicleBlueprintTooltip/vehicleUnlocked/header";
       
       public static const BLUEPRINT_VEHICLEBLUEPRINTTOOLTIP_VEHICLEUNLOCKED_BODY:String = "#tooltips:blueprint/VehicleBlueprintTooltip/vehicleUnlocked/body";
+      
+      public static const BLUEPRINT_VEHICLEBLUEPRINTTOOLTIP_VEHICLEISINEARLYACCESS_HEADER:String = "#tooltips:blueprint/VehicleBlueprintTooltip/vehicleIsInEarlyAccess/header";
+      
+      public static const BLUEPRINT_VEHICLEBLUEPRINTTOOLTIP_VEHICLEISINEARLYACCESS_BODY:String = "#tooltips:blueprint/VehicleBlueprintTooltip/vehicleIsInEarlyAccess/body";
+      
+      public static const BLUEPRINT_VEHICLEBLUEPRINTTOOLTIP_VEHICLEISINEARLYACCESSBLOCKED_HEADER:String = "#tooltips:blueprint/VehicleBlueprintTooltip/vehicleIsInEarlyAccessBlocked/header";
+      
+      public static const BLUEPRINT_VEHICLEBLUEPRINTTOOLTIP_VEHICLEISINEARLYACCESSBLOCKED_BODY:String = "#tooltips:blueprint/VehicleBlueprintTooltip/vehicleIsInEarlyAccessBlocked/body";
       
       public static const BLUEPRINT_BLUEPRINTEMPTYSLOT_TITLE:String = "#tooltips:blueprint/BlueprintEmptySlot/title";
       
@@ -2872,6 +2910,10 @@ package
       public static const VEHICLESELLDIALOG_RENDERER_ALERTICONSELL_HEADER:String = "#tooltips:vehicleSellDialog/renderer/alertIconSell/header";
       
       public static const VEHICLESELLDIALOG_RENDERER_ALERTICONSELL_BODY:String = "#tooltips:vehicleSellDialog/renderer/alertIconSell/body";
+      
+      public static const VEHICLESELLDIALOG_RENDERER_ALERTICONREMOVE_HEADER:String = "#tooltips:vehicleSellDialog/renderer/alertIconRemove/header";
+      
+      public static const VEHICLESELLDIALOG_RENDERER_ALERTICONREMOVE_BODY:String = "#tooltips:vehicleSellDialog/renderer/alertIconRemove/body";
       
       public static const VEHICLESELLDIALOG_RENDERER_ALERTICONDECONSTRUCT_HEADER:String = "#tooltips:vehicleSellDialog/renderer/alertIconDeconstruct/header";
       
@@ -4045,9 +4087,21 @@ package
       
       public static const AWARDITEM_ATTENDANCE_REWARD_BODY:String = "#tooltips:awardItem/attendance_reward/body";
       
+      public static const AWARDITEM_TEAM_CREDITS_BONUS_HEADER:String = "#tooltips:awardItem/team_credits_bonus/header";
+      
+      public static const AWARDITEM_TEAM_CREDITS_BONUS_BODY:String = "#tooltips:awardItem/team_credits_bonus/body";
+      
+      public static const AWARDITEM_DAILY_QUESTS_REWARDS_HEADER:String = "#tooltips:awardItem/daily_quests_rewards/header";
+      
+      public static const AWARDITEM_DAILY_QUESTS_REWARDS_BODY:String = "#tooltips:awardItem/daily_quests_rewards/body";
+      
       public static const AWARDITEM_COMP7TOKENWEEKLYREWARD_HEADER:String = "#tooltips:awardItem/comp7TokenWeeklyReward/header";
       
       public static const AWARDITEM_COMP7TOKENWEEKLYREWARD_BODY:String = "#tooltips:awardItem/comp7TokenWeeklyReward/body";
+      
+      public static const AWARDITEM_COMP7TOKENCOUPONREWARD_HEADER:String = "#tooltips:awardItem/comp7TokenCouponReward/header";
+      
+      public static const AWARDITEM_COMP7TOKENCOUPONREWARD_BODY:String = "#tooltips:awardItem/comp7TokenCouponReward/body";
       
       public static const RANKEDBATTLEVIEW_SCOREPOINT_SHORT_HEADER:String = "#tooltips:rankedBattleView/scorePoint/short/header";
       
@@ -7047,6 +7101,8 @@ package
       
       public static const IDLE_CREW_TOOLTIP_STATUS_UNAVAILABLE_DESCRIPTION_INCOMPATIBLEVEHICLE:String = "#tooltips:idle_crew_tooltip/status/unavailable/description/incompatibleVehicle";
       
+      public static const IDLE_CREW_TOOLTIP_STATUS_UNAVAILABLE_DESCRIPTION_INCOMPATIBLECREW:String = "#tooltips:idle_crew_tooltip/status/unavailable/description/incompatibleCrew";
+      
       public static const IDLE_CREW_TOOLTIP_ACTIVATEDWOTPLUSNEEDED:String = "#tooltips:idle_crew_tooltip/activatedWoTPlusNeeded";
       
       public static const IDLE_CREW_TOOLTIP_CURRENTLYACTIVEON:String = "#tooltips:idle_crew_tooltip/currentlyActiveOn";
@@ -7230,6 +7286,8 @@ package
       public static const ROLESKILL_DESCRIPTION_PASSIVE:String = "#tooltips:roleSkill/description/passive";
       
       public static const ROLESKILL_INFO:String = "#tooltips:roleSkill/info";
+      
+      public static const ROLESKILL_START_CHARGE:String = "#tooltips:roleSkill/start_charge";
       
       public static const PERIODICREWARD_HEADER:String = "#tooltips:periodicReward/header";
       
@@ -7506,6 +7564,26 @@ package
       public static const NOTRECRUITEDTANKMAN_TANKMEN_RAZVEDCHIK_3_DESC:String = "#tooltips:notrecruitedtankman/tankmen_Razvedchik_3/desc";
       
       public static const NOTRECRUITEDTANKMAN_TANKMEN_RAZVEDCHIK_3_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_Razvedchik_3/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_1_DESC:String = "#tooltips:notrecruitedtankman/tankmen_BP14_1/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_1_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_BP14_1/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_2_DESC:String = "#tooltips:notrecruitedtankman/tankmen_BP14_2/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_2_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_BP14_2/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_3_DESC:String = "#tooltips:notrecruitedtankman/tankmen_BP14_3/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_3_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_BP14_3/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_4_DESC:String = "#tooltips:notrecruitedtankman/tankmen_BP14_4/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_4_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_BP14_4/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_5_DESC:String = "#tooltips:notrecruitedtankman/tankmen_BP14_5/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_5_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_BP14_5/label";
       
       public static const ELEN_SUMMARY_RANK_ENUM:Array = [ELEN_SUMMARY_RANK_1,ELEN_SUMMARY_RANK_2,ELEN_SUMMARY_RANK_3,ELEN_SUMMARY_RANK_4,ELEN_SUMMARY_RANK_NORANK];
       

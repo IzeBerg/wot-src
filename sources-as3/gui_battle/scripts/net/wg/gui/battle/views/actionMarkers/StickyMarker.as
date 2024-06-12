@@ -10,7 +10,7 @@ package net.wg.gui.battle.views.actionMarkers
    {
        
       
-      public var arrow:StickyArrow = null;
+      public var arrow:MovieClip = null;
       
       public var txtLabel:TextField = null;
       

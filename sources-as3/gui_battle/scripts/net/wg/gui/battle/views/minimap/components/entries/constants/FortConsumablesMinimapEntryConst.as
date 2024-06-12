@@ -7,8 +7,6 @@ package net.wg.gui.battle.views.minimap.components.entries.constants
       
       public static const ARTILLERY_ATLAS_ITEM_NAME:String = "ArtilleryEntry";
       
-      public static const ARTILLERY_GREEN_ATLAS_ITEM_NAME:String = "ArtilleryGreenEntry";
-      
       public static const ARTILLERY_YELLOW_ATLAS_ITEM_NAME:String = "ArtilleryYellowEntry";
       
       public static const AOE_ARTILLERY_ALLY_ATLAS_ITEM_NAME:String = "AOEArtilleryEntryAlly";
@@ -18,10 +16,6 @@ package net.wg.gui.battle.views.minimap.components.entries.constants
       public static const AOE_ARTILLERY_ENEMY_COLOR_BLIND_ATLAS_ITEM_NAME:String = "AOEArtilleryEntryEnemyColorBlind";
       
       public static const BOMBER_ATLAS_ITEM_NAME:String = "BomberEntry";
-      
-      public static const BOMBER_CAS_ATLAS_ITEM_NAME:String = "BomberCasEntry";
-      
-      public static const MINE_ATLAS_ITEM_NAME:String = "MineEntry";
       
       public static const SMOKE_ATLAS_ITEM_NAME:String = "SmokeEntry";
        

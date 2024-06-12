@@ -1,13 +1,27 @@
 package net.wg.gui.lobby.techtree.helpers
 {
    import flash.display.DisplayObject;
+   import flash.events.MouseEvent;
    import flash.geom.Point;
+   import net.wg.data.constants.generated.TOOLTIPS_CONSTANTS;
+   import net.wg.gui.lobby.techtree.controls.NodeLock;
+   import net.wg.gui.lobby.techtree.data.vo.NodeData;
    import net.wg.gui.lobby.techtree.interfaces.IRenderer;
    import net.wg.gui.lobby.techtree.interfaces.IResearchContainer;
+   import net.wg.gui.lobby.techtree.nodes.FakeNode;
    import net.wg.gui.lobby.techtree.nodes.ResearchItem;
+   import net.wg.infrastructure.managers.ITooltipMgr;
    
    public class ModulesGraphics extends LinesGraphics
    {
+      
+      protected static const LOCKED_LINE_COMP_NAME:String = "ResearchLineLocked";
+      
+      protected static const LOCKED_TWO_LINES_COMP_NAME:String = "ResearchTwoLinesLocked";
+      
+      protected static const LOCKED_THREE_LINES_COMP_NAME:String = "ResearchThreeLinesLocked";
+      
+      protected static const EARLY_ACCESS_LOCKED_LINE_COMP_NAME:String = "EarlyAccessResearchLineLocked";
       
       private static const Y_PROP:String = "y";
        
@@ -19,8 +33,13 @@ package net.wg.gui.lobby.techtree.helpers
       
       public var rootRenderer:IRenderer;
       
+      private var _lineAndArrowLocks:Vector.<NodeLock> = null;
+      
+      private var _toolTipMgr:ITooltipMgr;
+      
       public function ModulesGraphics()
       {
+         this._toolTipMgr = App.toolTipMgr;
          super();
       }
       
@@ -43,10 +62,18 @@ package net.wg.gui.lobby.techtree.helpers
       
       override protected function onDispose() : void
       {
+         this.clearLineAndArrowLocks();
          this.clearUp();
+         this._toolTipMgr = null;
          this.rootRenderer = null;
          container = null;
          super.onDispose();
+      }
+      
+      override public function clearLinesAndArrowsRenderers() : void
+      {
+         super.clearLinesAndArrowsRenderers();
+         this.clearLineAndArrowLocks();
       }
       
       override protected function getLineThickness(param1:IRenderer, param2:IRenderer) : uint
@@ -97,10 +124,44 @@ package net.wg.gui.lobby.techtree.helpers
          }
       }
       
+      protected function createLineAndArrowLock(param1:String, param2:IRenderer, param3:Object = null) : NodeLock
+      {
+         if(this._lineAndArrowLocks == null)
+         {
+            this._lineAndArrowLocks = new Vector.<NodeLock>(0);
+         }
+         var _loc4_:NodeLock = App.utils.classFactory.getComponent(param1,NodeLock,param3);
+         _loc4_.renderer = param2;
+         _loc4_.addEventListener(MouseEvent.ROLL_OVER,this.onLockedOverlayRollOverHandler,false,0,true);
+         _loc4_.addEventListener(MouseEvent.ROLL_OUT,this.onLockedOverlayRollOutHandler,false,0,true);
+         this._lineAndArrowLocks.push(_loc4_);
+         return _loc4_;
+      }
+      
+      protected function clearLineAndArrowLocks() : void
+      {
+         var _loc1_:NodeLock = null;
+         if(this._lineAndArrowLocks != null)
+         {
+            for each(_loc1_ in this._lineAndArrowLocks)
+            {
+               _loc1_.removeEventListener(MouseEvent.ROLL_OVER,this.onLockedOverlayRollOverHandler);
+               _loc1_.removeEventListener(MouseEvent.ROLL_OUT,this.onLockedOverlayRollOutHandler);
+               _loc1_.dispose();
+            }
+            this._lineAndArrowLocks.length = 0;
+            this._lineAndArrowLocks = null;
+         }
+      }
+      
       private function drawOutgoingLines(param1:IRenderer, param2:Vector.<IRenderer>) : void
       {
          var _loc17_:uint = 0;
          var _loc18_:Number = NaN;
+         var _loc19_:IRenderer = null;
+         var _loc20_:uint = 0;
+         var _loc21_:FakeNode = null;
+         var _loc22_:IRenderer = null;
          var _loc3_:uint = param2.length;
          if(_loc3_ == 0)
          {
@@ -147,15 +208,29 @@ package net.wg.gui.lobby.techtree.helpers
          var _loc16_:uint = colorIdxs[_loc13_];
          if(_loc7_ != null)
          {
-            _loc17_ = this.getLineThickness(_loc7_.child,_loc7_.parent);
+            _loc19_ = _loc7_.child;
+            _loc17_ = this.getLineThickness(_loc19_,_loc7_.parent);
             _loc18_ = getArrowAlphaByThickness(_loc17_);
             if(_loc7_.drawArrow)
             {
-               drawLineAndArrow(param1,_loc16_,_loc4_,_loc7_.point,_loc17_,_loc18_,!param1.isFake(),true);
+               drawLineAndArrow(param1,_loc16_,_loc4_,_loc7_.point,_loc17_,_loc18_,!param1.isFake(),true,getLineStyle(_loc19_));
             }
             else
             {
-               drawLine(param1,_loc16_,_loc4_,_loc7_.point,_loc17_,_loc18_,!param1.isFake());
+               _loc20_ = getLineStyle(_loc19_);
+               if(_loc19_.isFake())
+               {
+                  _loc21_ = _loc19_ as FakeNode;
+                  if(_loc21_ != null)
+                  {
+                     _loc22_ = _loc21_.getFirstChild();
+                     if(_loc22_ != null)
+                     {
+                        _loc20_ = getLineStyle(_loc22_);
+                     }
+                  }
+               }
+               drawLine(param1,_loc16_,_loc4_,_loc7_.point,_loc17_,_loc18_,!param1.isFake(),false,_loc20_);
             }
          }
          else
@@ -163,6 +238,25 @@ package net.wg.gui.lobby.techtree.helpers
             _loc17_ = Math.max(_loc11_,_loc12_);
             drawLine(param1,_loc16_,_loc4_,_loc14_,_loc17_,getArrowAlphaByThickness(_loc17_));
          }
+      }
+      
+      private function onLockedOverlayRollOverHandler(param1:MouseEvent) : void
+      {
+         var _loc3_:NodeData = null;
+         var _loc2_:NodeLock = param1.target as NodeLock;
+         if(_loc2_ != null)
+         {
+            _loc3_ = _loc2_.renderer.getNodeData();
+            if(_loc3_)
+            {
+               this._toolTipMgr.showSpecial(TOOLTIPS_CONSTANTS.TECHTREE_VEHICLE_STATUS,null,_loc3_,this.rootRenderer.getID());
+            }
+         }
+      }
+      
+      private function onLockedOverlayRollOutHandler(param1:MouseEvent) : void
+      {
+         this._toolTipMgr.hide();
       }
       
       private function drawLines(param1:Array, param2:Point, param3:uint, param4:Boolean = true) : void

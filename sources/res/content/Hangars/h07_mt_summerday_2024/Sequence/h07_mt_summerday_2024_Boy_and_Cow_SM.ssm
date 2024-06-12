@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<params/>
+	<node>
+		<name>Start_animation</name>
+		<type>sequence</type>
+		<resource>content/Hangars/h07_mt_summerday_2024/Sequence/h07_mt_summerday_2024_Boy_and_Cow_Scene.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<transition>
+			<to>Loop_idle</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>1.000000</exitOffset>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-349.000000 -107.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>Loop_idle</name>
+		<type>sequence</type>
+		<resource>content/Hangars/h07_mt_summerday_2024/Sequence/h07_mt_summerday_2024_Boy_and_Cow_idle.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>-1</loop>
+		<uiPosition>-89.000000 -108.000000 0.000000</uiPosition>
+	</node>
+</root>

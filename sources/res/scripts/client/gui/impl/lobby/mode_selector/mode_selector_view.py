@@ -63,8 +63,7 @@ _SIMPLE_TOOLTIP_IDS = [
  ModeSelectorTooltipsConstants.RANKED_BATTLES_BONUS_TOOLTIP,
  ModeSelectorTooltipsConstants.MAPBOX_CALENDAR_TOOLTIP,
  ModeSelectorTooltipsConstants.EPIC_BATTLE_CALENDAR_TOOLTIP,
- ModeSelectorTooltipsConstants.COMP7_CALENDAR_DAY_EXTENDED_INFO,
- ModeSelectorTooltipsConstants.HB_CALENDAR_TOOLTIP]
+ ModeSelectorTooltipsConstants.COMP7_CALENDAR_DAY_EXTENDED_INFO]
 
 def _getTooltipByContentIdMap():
     return {R.views.lobby.battle_pass.tooltips.BattlePassNotStartedTooltipView(): BattlePassNotStartedTooltipView, 
@@ -352,7 +351,7 @@ class ModeSelectorView(ViewImpl):
         return
 
     @adisp.adisp_async
-    def __handleHeaderNavigation(self, callback):
+    def __handleHeaderNavigation(self, callback, alias=None):
         if self.viewStatus not in (ViewStatus.DESTROYED, ViewStatus.DESTROYING) and not self.__isClickProcessing:
             self.close()
         callback(True)

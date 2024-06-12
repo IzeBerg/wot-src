@@ -1,4 +1,5 @@
 import logging, typing
+from account_helpers.AccountSettings import AccountSettings, SHOWN_WOT_PLUS_COUNTER
 from frameworks.wulf import ViewFlags, ViewSettings
 from gui import GUI_SETTINGS
 from gui.Scaleform.Waiting import Waiting
@@ -10,11 +11,14 @@ from gui.impl.gen.view_models.views.lobby.player_subscriptions.player_subscripti
 from gui.impl.gen.view_models.views.lobby.player_subscriptions.subscription_model import SubscriptionTypeEnum
 from gui.impl.gen.view_models.views.lobby.player_subscriptions.wot_subscription_model import WotSubscriptionModel
 from gui.impl.pub import ViewImpl
+from gui.limited_ui.lui_rules_storage import LuiRules
 from gui.platform.base.statuses.constants import StatusTypes
 from gui.platform.products_fetcher.fetch_result import FetchResult
+from gui.shared import EVENT_BUS_SCOPE, events
+from gui.shared import event_dispatcher as shared_events
 from gui.shared.event_dispatcher import showOfferGiftsWindow, showBrowserOverlayView, showShop, showWotPlusInfoPage, showSteamRedirectWotPlus, showWotPlusProductPage
 from helpers import dependency
-from skeletons.gui.game_control import IExternalLinksController, ISteamCompletionController, IWotPlusController
+from skeletons.gui.game_control import IExternalLinksController, ISteamCompletionController, IWotPlusController, ILimitedUIController
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.platform.product_fetch_controller import ISubscriptionsFetchController
 from skeletons.gui.platform.wgnp_controllers import IWGNPSteamAccRequestController
@@ -67,6 +71,7 @@ class PlayerSubscriptionsView(ViewImpl):
     _wgnpSteamAccCtrl = dependency.descriptor(IWGNPSteamAccRequestController)
     _steamCompletionCtrl = dependency.descriptor(ISteamCompletionController)
     _wotPlusCtrl = dependency.descriptor(IWotPlusController)
+    __limitedUIController = dependency.descriptor(ILimitedUIController)
     __slots__ = ('__subscriptionsFetchResult', '__incompleteSteamAccount', '__subscriptions',
                  '_wotPlusUILogger')
 
@@ -117,6 +122,8 @@ class PlayerSubscriptionsView(ViewImpl):
         super(PlayerSubscriptionsView, self)._onLoading(*args, **kwargs)
         Waiting.show('loadingData')
         self.__fetchExternalSubs()
+        if self.__limitedUIController.isRuleCompleted(LuiRules.SUBSCRIPTION_STATE):
+            AccountSettings.setSettings(SHOWN_WOT_PLUS_COUNTER, True)
 
     def _getEvents(self):
         return (
@@ -128,6 +135,14 @@ class PlayerSubscriptionsView(ViewImpl):
           self.viewModel.onButtonClick, self.__onButtonClick),
          (
           self._lobbyContext.getServerSettings().onServerSettingsChange, self.__onServerSettingsChange))
+
+    def _getListeners(self):
+        return (
+         (
+          events.LobbyHeaderMenuEvent.MENU_CLICK, self.__onHeaderMenuClick, EVENT_BUS_SCOPE.LOBBY),)
+
+    def __onHeaderMenuClick(self, event):
+        self.destroyWindow()
 
     def __onWotPlusStatusChanged(self, args):
         if 'isEnabled' in args:
@@ -157,6 +172,7 @@ class PlayerSubscriptionsView(ViewImpl):
 
     def __onBackClick(self):
         self._wotPlusUILogger.logCloseEvent()
+        shared_events.showDashboardView()
         self.destroyWindow()
 
     def __onCardClick(self, args):
@@ -193,5 +209,5 @@ class PlayerSubscriptionsView(ViewImpl):
             showOfferGiftsWindow(subcriptionDescriptor.getOfferID())
 
     def __onServerSettingsChange(self, *args, **kwargs):
-        if not self._lobbyContext.getServerSettings().isPlayerSubscriptionsEnabled():
+        if not self._lobbyContext.getServerSettings().isRenewableSubEnabled():
             self.destroyWindow()

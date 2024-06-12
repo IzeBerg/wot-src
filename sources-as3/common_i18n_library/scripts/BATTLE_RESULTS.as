@@ -301,6 +301,8 @@ package
       
       public static const COMMON_VEHICLESTATE_DEAD7:String = "#battle_results:common/vehicleState/dead7";
       
+      public static const COMMON_VEHICLESTATE_DEAD12:String = "#battle_results:common/vehicleState/dead12";
+      
       public static const COMMON_VEHICLESTATE_DEAD13:String = "#battle_results:common/vehicleState/dead13";
       
       public static const COMMON_VEHICLESTATE_DEAD27:String = "#battle_results:common/vehicleState/dead27";
@@ -631,6 +633,8 @@ package
       
       public static const DETAILS_CALCULATIONS_EVENT:String = "#battle_results:details/calculations/event";
       
+      public static const DETAILS_CALCULATIONS_SUBSTEAMBONUS:String = "#battle_results:details/calculations/subsTeamBonus";
+      
       public static const DETAILS_CALCULATIONS_FAIRPLAYVIOLATION_DESERTER:String = "#battle_results:details/calculations/fairPlayViolation/deserter";
       
       public static const DETAILS_CALCULATIONS_FAIRPLAYVIOLATION_EPIC_DESERTER:String = "#battle_results:details/calculations/fairPlayViolation/epic_deserter";
@@ -674,6 +678,8 @@ package
       public static const DETAILS_CALCULATIONS_TOTAL:String = "#battle_results:details/calculations/total";
       
       public static const DETAILS_CALCULATIONS_PIGGYBANKINFO:String = "#battle_results:details/calculations/piggyBankInfo";
+      
+      public static const DETAILS_CALCULATIONS_PIGGYBANKINFO_TOOLTIP:String = "#battle_results:details/calculations/piggyBankInfo/tooltip";
       
       public static const DETAILS_CALCULATIONS_FIRSTWIN:String = "#battle_results:details/calculations/firstWin";
       

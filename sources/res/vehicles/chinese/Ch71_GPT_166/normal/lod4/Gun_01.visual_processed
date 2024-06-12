@@ -38,7 +38,7 @@
 							<row0>1.000000 0.000000 0.000000</row0>
 							<row1>0.000000 1.000000 0.000000</row1>
 							<row2>0.000000 0.000000 1.000000</row2>
-							<row3>-0.024946 0.001004 1.550213</row3>
+							<row3>0.000000 -0.010426 1.550390</row3>
 						</transform>
 					</node>
 					<node>
@@ -66,6 +66,7 @@
 	<renderSet>
 		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
 		<node>Gun_BlendBone</node>
+		<node>G_BlendBone</node>
 		<geometry>
 			<vertices>gun_01_Shape.vertices</vertices>
 			<primitive>gun_01_Shape.indices</primitive>
@@ -73,16 +74,12 @@
 				0
 				<material>
 					<identifier>tank_proxy_skinned</identifier>
-					<collisionFlags>0</collisionFlags>
-					<materialKind>0</materialKind>
 					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
 					<property>
-						metallicGlossMap
-						<Texture>vehicles/chinese/Ch71_GPT_166/GPT_166_proxy_GMM.dds</Texture>
-					</property>
-					<property>
-						normalMap
-						<Texture>vehicles/chinese/Ch71_GPT_166/GPT_166_proxy_ANM.dds</Texture>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
 					</property>
 					<property>
 						diffuseMap
@@ -93,31 +90,23 @@
 						<Texture>vehicles/chinese/Ch71_GPT_166/GPT_166_proxy_AO.dds</Texture>
 					</property>
 					<property>
-						colorIdMap
-						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+						metallicGlossMap
+						<Texture>vehicles/chinese/Ch71_GPT_166/GPT_166_proxy_GMM.dds</Texture>
 					</property>
 					<property>
-						crashTileMap
-						<Texture>vehicles/russian/Tank_detail/crash_tile.dds</Texture>
-					</property>
-					<property>
-						alphaReference
-						<Int>64</Int>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>true</Bool>
+						normalMap
+						<Texture>vehicles/chinese/Ch71_GPT_166/GPT_166_proxy_ANM.dds</Texture>
 					</property>
 				</material>
-				<groupOrigin>-0.001461 0.007049 -2.355608</groupOrigin>
+				<groupOrigin>0.000000 -0.010930 -2.131664</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<constraints/>
 	<boundingBox>
-		<min>-0.526536 -0.251917 0.127292</min>
-		<max>0.523615 0.266015 4.583924</max>
+		<min>-0.188266 -0.199196 -0.287062</min>
+		<max>0.188266 0.177336 4.550389</max>
 	</boundingBox>
-	<geometrySize>2524</geometrySize>
-	<minUVDensity>0.001192</minUVDensity>
+	<geometrySize>620</geometrySize>
+	<minUVDensity>0.002717</minUVDensity>
 </root>

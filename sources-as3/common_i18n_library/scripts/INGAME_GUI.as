@@ -1261,10 +1261,6 @@ package
       
       public static const EFFICIENCYRIBBONS_STATICDEATHZONE:String = "#ingame_gui:efficiencyRibbons/staticDeathZone";
       
-      public static const EFFICIENCYRIBBONS_HBDEATHZONE:String = "#ingame_gui:efficiencyRibbons/HBDeathZone";
-      
-      public static const EFFICIENCYRIBBONS_EVENTDEATHONPHASECHANGE:String = "#ingame_gui:efficiencyRibbons/eventDeathOnPhaseChange";
-      
       public static const EFFICIENCYRIBBONS_CANNONDMG:String = "#ingame_gui:efficiencyRibbons/CannonDmg";
       
       public static const EFFICIENCYRIBBONS_AIRSTRIKEDMG:String = "#ingame_gui:efficiencyRibbons/AirstrikeDmg";

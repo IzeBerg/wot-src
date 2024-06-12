@@ -208,8 +208,9 @@ package net.wg.gui.components.tooltips.inblocks.blocks
       
       private function applyData() : void
       {
+         var _loc2_:Boolean = false;
          var _loc1_:String = this._blockData.overlayPath;
-         var _loc2_:Boolean = StringUtils.isNotEmpty(_loc1_);
+         _loc2_ = StringUtils.isNotEmpty(_loc1_);
          this.overlay.visible = _loc2_;
          if(_loc2_)
          {

@@ -44,6 +44,12 @@ package net.wg.gui.lobby.hangar.tcarousel
       
       private static const LINKAGE_CAROUSEL_PROGRESSION_POINTS:String = "CarouselProgressionPointsUI";
       
+      private static const LINKAGE_EARLY_ACCESS_ICON:String = "EarlyAccessIconUI";
+      
+      private static const EARLY_ACCESS_ICON_OFFSET_X:int = -1;
+      
+      private static const EARLY_ACCESS_ICON_OFFSET_Y:int = 3;
+      
       private static const PROGRESSION_POINTS_OFFSET:int = -8;
       
       private static const LEVEL_INFO_OFFSET:int = -10;
@@ -82,6 +88,8 @@ package net.wg.gui.lobby.hangar.tcarousel
       private var _rankedBonus:Sprite = null;
       
       private var _progressionPoints:CarouselProgressionPoints = null;
+      
+      private var _earlyAccessIcon:EarlyAccessIcon = null;
       
       private var _infoLevelContent:LevelInfoItem = null;
       
@@ -137,6 +145,7 @@ package net.wg.gui.lobby.hangar.tcarousel
          this.clearRankedBonus();
          this.clearProgressionPoints();
          this.clearInfoLevelContent();
+         this.clearEarlyAccess();
          super.onDispose();
       }
       
@@ -171,6 +180,7 @@ package net.wg.gui.lobby.hangar.tcarousel
          this._hasProgression = !!_loc1_ ? Boolean(this._dataVO.hasProgression) : Boolean(false);
          this.updateProgressionPoints();
          this.updateInteractiveState();
+         this.updateEarlyAccess();
          this._hasLevelInfo = false;
          if(_loc1_ && this._dataVO.hasExtendedInfo)
          {
@@ -243,6 +253,40 @@ package net.wg.gui.lobby.hangar.tcarousel
          if(this.extraBorder.visible)
          {
             this.extraBorder.gotoAndStop(!!this._dataVO.isWotPlusSlot ? LABEL_WOT_PLUS : LABEL_CRYSTAL);
+         }
+      }
+      
+      private function updateEarlyAccess() : void
+      {
+         if(this._dataVO == null)
+         {
+            this.clearEarlyAccess();
+            return;
+         }
+         var _loc1_:Boolean = this._dataVO.isEarlyAccess;
+         if(_loc1_)
+         {
+            if(!this._earlyAccessIcon)
+            {
+               this._earlyAccessIcon = this._classFactory.getComponent(LINKAGE_EARLY_ACCESS_ICON,EarlyAccessIcon);
+               addChild(this._earlyAccessIcon);
+            }
+            this._earlyAccessIcon.x = this.border.width + EARLY_ACCESS_ICON_OFFSET_X;
+            this._earlyAccessIcon.y = EARLY_ACCESS_ICON_OFFSET_Y;
+         }
+         else
+         {
+            this.clearEarlyAccess();
+         }
+      }
+      
+      private function clearEarlyAccess() : void
+      {
+         if(this._earlyAccessIcon != null)
+         {
+            removeChild(this._earlyAccessIcon);
+            this._earlyAccessIcon.dispose();
+            this._earlyAccessIcon = null;
          }
       }
       

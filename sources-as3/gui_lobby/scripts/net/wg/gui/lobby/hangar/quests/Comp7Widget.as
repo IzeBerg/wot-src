@@ -49,7 +49,7 @@ package net.wg.gui.lobby.hangar.quests
          this._bgImage.cacheType = ImageCacheTypes.NOT_USE_CACHE;
          this._bgImage.blendMode = BlendMode.ADD;
          this._bgImage.tabEnabled = this._bgImage.mouseEnabled = this._bgImage.mouseChildren = false;
-         this._bgImage.source = RES_ICONS.MAPS_ICONS_COMP7_BACKGROUNDS_HANGAR_WIDGET_BG;
+         this._bgImage.source = RES_ICONS.MAPS_ICONS_LIBRARY_HANGARENTRYPOINTS_COMP7_WIDGET_BG;
          this._bgImage.x = BG_POS_X;
          addChildAt(this._bgImage,0);
          App.utils.commons.addEmptyHitArea(this._bgImage);

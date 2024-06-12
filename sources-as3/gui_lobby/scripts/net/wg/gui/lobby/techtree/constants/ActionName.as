@@ -14,6 +14,8 @@ package net.wg.gui.lobby.techtree.constants
       public static const RENT:String = "rent";
       
       public static const SHOP:String = "shop";
+      
+      public static const EARLY_ACCESS:String = "earlyAccess";
        
       
       public function ActionName()

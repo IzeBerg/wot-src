@@ -290,12 +290,11 @@ package net.wg.gui.lobby.window
       
       public function as_setWalletStatus(param1:Object, param2:Boolean) : void
       {
-         var _loc5_:Boolean = false;
          var _loc3_:IWalletStatusVO = App.utils.voMgr.walletStatusVO;
          _loc3_.update(param1);
          var _loc4_:Boolean = !this.onHandHaveNotMoney.updateStatus(_loc3_.goldStatus);
          this.resultHaveNotMoney.updateStatus(_loc3_.goldStatus);
-         _loc5_ = !this.onHandHaveNotFreeXp.updateStatus(_loc3_.freeXpStatus);
+         var _loc5_:Boolean = !this.onHandHaveNotFreeXp.updateStatus(_loc3_.freeXpStatus);
          this.resultHaveNotFreeXp.updateStatus(_loc3_.freeXpStatus);
          this.itGoldBefore.visible = _loc4_;
          this.itGoldResult.visible = _loc4_;

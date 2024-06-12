@@ -199,16 +199,11 @@ package net.wg.gui.battle.components.stats.playersPanel
                _loc3_ = ATTACK_PURPLE_STATE;
             }
          }
-         this.activeChatCommand.gotoAndStop(this.getActiveChatCommandFrame(_loc3_));
+         this.activeChatCommand.gotoAndStop(COMMAND_NAME_TO_FRAME_STATE[_loc3_]);
          this.activeChatCommand.visible = _loc3_ != EMPTY_FRAME_STATE;
          var _loc4_:ChatCommandItemEvent = new ChatCommandItemEvent(ChatCommandItemEvent.ACTIVE_COMMAND_CHANGED);
          _loc4_.isActiveCommandVisible = this.activeChatCommand.visible;
          dispatchEvent(_loc4_);
-      }
-      
-      protected function getActiveChatCommandFrame(param1:String) : int
-      {
-         return COMMAND_NAME_TO_FRAME_STATE[param1];
       }
    }
 }

@@ -1735,8 +1735,6 @@ package
       
       public static const UNIT_ERRORS_JOIN_CTX_LOCK:String = "#system_messages:unit/errors/JOIN_CTX_LOCK";
       
-      public static const UNIT_ERRORS_HB_BANNED:String = "#system_messages:unit/errors/HB_BANNED";
-      
       public static const UNIT_ERRORS_CANT_INVITE:String = "#system_messages:unit/errors/CANT_INVITE";
       
       public static const UNIT_ERRORS_NOT_READY:String = "#system_messages:unit/errors/NOT_READY";
@@ -2700,6 +2698,8 @@ package
       public static const DEBUTBOXES_DISABLED_HEADER:String = "#system_messages:debutBoxes/disabled/header";
       
       public static const DEBUTBOXES_DISABLED_BODY:String = "#system_messages:debutBoxes/disabled/body";
+      
+      public static const COMP7_OPEN_SHOP:String = "#system_messages:comp7/open_shop";
        
       
       public function SYSTEM_MESSAGES()

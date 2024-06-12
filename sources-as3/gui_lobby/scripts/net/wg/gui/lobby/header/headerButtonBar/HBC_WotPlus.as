@@ -2,21 +2,32 @@ package net.wg.gui.lobby.header.headerButtonBar
 {
    import flash.display.MovieClip;
    import flash.text.TextField;
+   import flash.text.TextFormatAlign;
+   import net.wg.data.constants.Linkages;
+   import net.wg.gui.components.common.Counter;
    import net.wg.gui.lobby.header.vo.HBC_WotPlusDataVO;
    import net.wg.infrastructure.interfaces.IImage;
-   import net.wg.infrastructure.interfaces.ITween;
-   import net.wg.infrastructure.interfaces.ITweenHandler;
-   import net.wg.infrastructure.interfaces.ITweenPropertiesVO;
-   import net.wg.infrastructure.managers.ITweenManagerHelper;
+   import net.wg.infrastructure.managers.counter.CounterProps;
    import net.wg.utils.ICommons;
    import net.wg.utils.IStageSizeDependComponent;
-   import net.wg.utils.ITweenManager;
    import net.wg.utils.StageSizeBoundaries;
    
-   public class HBC_WotPlus extends HeaderButtonContentItem implements IStageSizeDependComponent, ITweenHandler
+   public class HBC_WotPlus extends HeaderButtonContentItem implements IStageSizeDependComponent
    {
       
       private static const PADDING_RIGHT:int = 10;
+      
+      private static const COUNTER_PADDING:int = 15;
+      
+      private static const OFFSET_X_SMALL:int = 0;
+      
+      private static const OFFSET_X_BIG:int = 3;
+      
+      private static const OFFSET_Y_SMALL:int = 6;
+      
+      private static const OFFSET_Y_BIG:int = 30;
+      
+      private static const INVALIDATE_COUNT:String = "invalidateCount";
        
       
       public var wotPlusIcon:IImage = null;
@@ -25,15 +36,13 @@ package net.wg.gui.lobby.header.headerButtonBar
       
       public var state:TextField = null;
       
-      public var noveltyIndicator:MovieClip = null;
-      
       public var cross:MovieClip = null;
-      
-      private var fadeTween:ITween;
       
       private var _isCompact:Boolean = false;
       
       private var _commons:ICommons;
+      
+      private var _isNew:Boolean = false;
       
       public function HBC_WotPlus()
       {
@@ -53,20 +62,29 @@ package net.wg.gui.lobby.header.headerButtonBar
       
       override protected function onDispose() : void
       {
-         this.disposeTween();
          App.stageSizeMgr.unregister(this);
          this.wotPlusIcon.dispose();
          this.wotPlusIcon = null;
-         this.noveltyIndicator = null;
          this.cross = null;
          this.label = null;
          this.state = null;
+         this._commons = null;
          super.onDispose();
+      }
+      
+      override protected function draw() : void
+      {
+         super.draw();
+         if(isInvalid(INVALIDATE_COUNT))
+         {
+            this.updateCounter();
+         }
       }
       
       override protected function updateSize() : void
       {
-         this.label.visible = this.state.visible = !this._isCompact;
+         this.label.visible = !this._isCompact;
+         this.state.visible = !this._isCompact && !this._isNew;
          if(this._isCompact)
          {
             bounds.width = this.label.x >> 0;
@@ -76,6 +94,10 @@ package net.wg.gui.lobby.header.headerButtonBar
          {
             bounds.width = Math.max(this.label.x + this.label.width,this.state.x + this.state.width) >> 0;
             minScreenPadding.right = PADDING_RIGHT;
+         }
+         if(this._isNew)
+         {
+            invalidate(INVALIDATE_COUNT);
          }
          super.updateSize();
       }
@@ -89,16 +111,13 @@ package net.wg.gui.lobby.header.headerButtonBar
             this.wotPlusIcon.source = _loc1_.wotPlusIcon;
             this.label.htmlText = _loc1_.label;
             this.state.htmlText = _loc1_.state;
-            if(_loc1_.showAsNew)
-            {
-               this.showNoveltyIndicator();
-            }
-            else
-            {
-               this.hideNoveltyIndicator();
-            }
             this._commons.updateTextFieldSize(this.label,true,true);
             this._commons.updateTextFieldSize(this.state,true,true);
+            if(this._isNew != _loc1_.showAsNew)
+            {
+               this._isNew = _loc1_.showAsNew;
+               invalidate(INVALIDATE_COUNT);
+            }
          }
          super.updateData();
       }
@@ -113,56 +132,20 @@ package net.wg.gui.lobby.header.headerButtonBar
          }
       }
       
-      override public function set data(param1:Object) : void
+      private function updateCounter() : void
       {
-         super.data = param1;
-      }
-      
-      public function onComplete(param1:ITween) : void
-      {
-         this.disposeTween();
-         this.noveltyIndicator.visible = false;
-      }
-      
-      public function onStart(param1:ITween) : void
-      {
-      }
-      
-      private function showNoveltyIndicator() : void
-      {
-         this.disposeTween();
-         this.cross.visible = true;
-         this.noveltyIndicator.visible = true;
-         this.noveltyIndicator.alpha = 1;
-         this.noveltyIndicator.gotoAndPlay(0);
-      }
-      
-      private function hideNoveltyIndicator() : void
-      {
-         this.cross.visible = false;
-         this.noveltyIndicator.stop();
-         var _loc1_:ITweenPropertiesVO = App.utils.tweenAnimator.createPropsForAlpha(this.noveltyIndicator,this.tweenMgrHelper.getFadeDurationSlow(),0,0);
-         _loc1_.setPaused(false);
-         this.fadeTween = this.tweenMgr.createNewTween(_loc1_);
-         this.fadeTween.setHandler(this);
-      }
-      
-      private function get tweenMgrHelper() : ITweenManagerHelper
-      {
-         return App.tweenMgr.getTweenManagerHelper();
-      }
-      
-      private function get tweenMgr() : ITweenManager
-      {
-         return App.tweenMgr;
-      }
-      
-      private function disposeTween() : void
-      {
-         if(this.fadeTween != null)
+         var _loc1_:int = 0;
+         var _loc2_:int = 0;
+         var _loc3_:String = null;
+         var _loc4_:CounterProps = null;
+         App.utils.counterManager.removeCounter(this.bounds);
+         if(this._isNew)
          {
-            this.tweenMgr.disposeTweenS(this.fadeTween);
-            this.fadeTween = null;
+            _loc1_ = !!this._isCompact ? int(OFFSET_X_SMALL) : int(OFFSET_X_BIG - (this.label.width >> 1));
+            _loc2_ = !!this._isCompact ? int(OFFSET_Y_SMALL) : int(OFFSET_Y_BIG);
+            _loc3_ = !!this._isCompact ? Counter.EMPTY_STATE : Counter.NORMAL_STATE;
+            _loc4_ = new CounterProps(_loc1_,_loc2_,TextFormatAlign.CENTER,true,Linkages.COUNTER_UI,COUNTER_PADDING,false,_loc3_);
+            App.utils.counterManager.setCounter(this.bounds,MENU.COUNTER_NEWCOUNTER,null,_loc4_);
          }
       }
    }

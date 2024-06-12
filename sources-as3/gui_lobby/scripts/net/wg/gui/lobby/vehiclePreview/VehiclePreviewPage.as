@@ -20,8 +20,7 @@ package net.wg.gui.lobby.vehiclePreview
    import net.wg.gui.lobby.vehicleCompare.events.VehCompareEvent;
    import net.wg.gui.lobby.vehiclePreview.bottomPanel.IVPBottomPanel;
    import net.wg.gui.lobby.vehiclePreview.bottomPanel.VPBottomPanel;
-   import net.wg.gui.lobby.vehiclePreview.bottomPanel.VPBottomPanelHistoricalBattles;
-   import net.wg.gui.lobby.vehiclePreview.bottomPanel.VPBottomPanelHistoricalBattlesRestore;
+   import net.wg.gui.lobby.vehiclePreview.bottomPanel.VPBottomPanelEarlyAccess;
    import net.wg.gui.lobby.vehiclePreview.bottomPanel.VPBottomPanelOfferGift;
    import net.wg.gui.lobby.vehiclePreview.bottomPanel.VPBottomPanelTradeIn;
    import net.wg.gui.lobby.vehiclePreview.bottomPanel.VPBottomPanelWell;
@@ -49,11 +48,7 @@ package net.wg.gui.lobby.vehiclePreview
       
       private static const BIG_OFFSET:int = 50;
       
-      private static const BIG_OFFSET_HB:int = 60;
-      
       private static const SMALL_OFFSET:int = BIG_OFFSET >> 1;
-      
-      private static const SMALL_OFFSET_HB:int = 42;
       
       private static const BIG_PANELS_VERTICAL_OFFSET:int = 90;
       
@@ -212,22 +207,16 @@ package net.wg.gui.lobby.vehiclePreview
          super.onPopulate();
          this._stage.dispatchEvent(new LobbyEvent(LobbyEvent.REGISTER_DRAGGING));
          App.gameInputMgr.setKeyHandler(Keyboard.ESCAPE,KeyboardEvent.KEY_DOWN,this.onEscapeKeyUpHandler,true);
-         var _loc1_:Boolean = this.bottomPanel is VPBottomPanelHistoricalBattles;
-         var _loc2_:Boolean = this.bottomPanel is VPBottomPanelHistoricalBattlesRestore;
-         var _loc3_:String = this.getTopPanelAlias();
-         if(_loc3_)
+         var _loc1_:String = this.getTopPanelAlias();
+         if(_loc1_)
          {
-            registerFlashComponentS(IDAAPIModule(this.topPanel),_loc3_);
+            registerFlashComponentS(IDAAPIModule(this.topPanel),_loc1_);
             this.topPanel.addEventListener(Event.RESIZE,this.onTopPanelResizeHandler);
          }
-         if(this.bottomPanel != null)
+         var _loc2_:String = this.getBottomPanelAlias();
+         if(_loc2_)
          {
-            this.bottomPanel.alpha = 0;
-         }
-         var _loc4_:String = this.getBottomPanelAlias();
-         if(_loc4_)
-         {
-            registerFlashComponentS(IDAAPIModule(this.bottomPanel),_loc4_);
+            registerFlashComponentS(IDAAPIModule(this.bottomPanel),_loc2_);
             this.bottomPanel.addEventListener(Event.RESIZE,this.onBottomPanelResizeHandler);
          }
          if(this.bottomPanel is VPBottomPanelWell)
@@ -237,14 +226,6 @@ package net.wg.gui.lobby.vehiclePreview
          if(this.bottomPanel != null)
          {
             this.bottomPanel.alpha = 0;
-         }
-         else if(_loc1_)
-         {
-            registerFlashComponentS(VPBottomPanelHistoricalBattles(this.bottomPanel),VEHPREVIEW_CONSTANTS.HB_PANEL_LINKAGE);
-         }
-         else if(_loc2_)
-         {
-            registerFlashComponentS(VPBottomPanelHistoricalBattlesRestore(this.bottomPanel),VEHPREVIEW_CONSTANTS.HB_RESTORE_PANEL_LINKAGE);
          }
       }
       
@@ -379,15 +360,14 @@ package net.wg.gui.lobby.vehiclePreview
       
       public function setStateSizeBoundaries(param1:int, param2:int) : void
       {
-         var _loc3_:Boolean = this.bottomPanel is VPBottomPanelHistoricalBattles || this.bottomPanel is VPBottomPanelHistoricalBattlesRestore;
          if(param2 <= StageSizeBoundaries.HEIGHT_900)
          {
-            this._offset = !!_loc3_ ? int(SMALL_OFFSET_HB) : int(SMALL_OFFSET);
+            this._offset = SMALL_OFFSET;
             this._panelVerticalOffset = SMALL_PANELS_VERTICAL_OFFSET;
          }
          else
          {
-            this._offset = !!_loc3_ ? int(BIG_OFFSET_HB) : int(BIG_OFFSET);
+            this._offset = BIG_OFFSET;
             this._panelVerticalOffset = BIG_PANELS_VERTICAL_OFFSET;
          }
          invalidateSize();
@@ -423,6 +403,10 @@ package net.wg.gui.lobby.vehiclePreview
          if(this.bottomPanel is VPBottomPanelWell)
          {
             return VEHPREVIEW_CONSTANTS.BOTTOM_PANEL_WELL_PY_ALIAS;
+         }
+         if(this.bottomPanel is VPBottomPanelEarlyAccess)
+         {
+            return VEHPREVIEW_CONSTANTS.BOTTOM_PANEL_EARLY_ACCESS_PY_ALIAS;
          }
          return null;
       }

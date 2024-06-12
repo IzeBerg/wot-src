@@ -105,9 +105,8 @@ package net.wg.gui.components.controls
       
       public function clearBookmarks() : void
       {
-         var _loc2_:int = 0;
          var _loc1_:int = this._bookmarks.length;
-         _loc2_ = 0;
+         var _loc2_:int = 0;
          while(_loc2_ < _loc1_)
          {
             removeChild(this._bookmarks[_loc2_]);

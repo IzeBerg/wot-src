@@ -131,6 +131,7 @@ package net.wg.gui.lobby.techtree
          this.nationsBar.dispose();
          this.nationsBar = null;
          this.nationTree.removeEventListener(TechTreeEvent.GO_TO_PREMIUM_SHOP,this.onNationTreeGoToPremiumShopHandler);
+         this.nationTree.removeEventListener(TechTreeEvent.GO_TO_EARLY_ACCESS,this.onNationTreeGoToEarlyAccessHandler);
          this.nationTree.dispose();
          this.nationTree = null;
          this.scrollBar.dispose();
@@ -171,6 +172,7 @@ package net.wg.gui.lobby.techtree
          this.nationsBar.tabVAlign = NationsButtonBar.TOP_ALIGN;
          this.nationTree.view = this;
          this.nationTree.addEventListener(TechTreeEvent.GO_TO_PREMIUM_SHOP,this.onNationTreeGoToPremiumShopHandler);
+         this.nationTree.addEventListener(TechTreeEvent.GO_TO_EARLY_ACCESS,this.onNationTreeGoToEarlyAccessHandler);
          this.blueprintsSwitchButton.addEventListener(Event.SELECT,this.onBlueprintsSwitchCheckboxSelectHandler);
          this.blueprintsSwitchButton.tooltip = TOOLTIPS.TECHTREEPAGE_BLUEPRINTSSWITCHTOOLTIP;
          this.vehicleCollectionBtn.addEventListener(MouseEvent.CLICK,this.onVehicleCollectionBtnClickHandler);
@@ -444,6 +446,11 @@ package net.wg.gui.lobby.techtree
       private function onNationTreeGoToPremiumShopHandler(param1:TechTreeEvent) : void
       {
          onGoToPremiumShopS(this.nationTree.getNation(),param1.level);
+      }
+      
+      private function onNationTreeGoToEarlyAccessHandler(param1:TechTreeEvent) : void
+      {
+         onGoToEarlyAccessS();
       }
       
       private function onOnStartHintAnimationHandler(param1:TechTreeEvent) : void

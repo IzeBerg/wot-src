@@ -35,6 +35,20 @@ package
       
       public static const MAPS_ICONS_DEMOUNTKIT_BG:String = "../maps/icons/demountKit/bg.png";
       
+      public static const MAPS_ICONS_EARLY_ACCESS_BUY_TOKENS_CARD_BIG_BG:String = "../maps/icons/early_access/buy_tokens/card_big/bg.png";
+      
+      public static const MAPS_ICONS_EARLY_ACCESS_BUY_TOKENS_CARD_SMALL_BG:String = "../maps/icons/early_access/buy_tokens/card_small/bg.png";
+      
+      public static const MAPS_ICONS_EARLY_ACCESS_CAROUSEL_BG:String = "../maps/icons/early_access/carousel/bg.png";
+      
+      public static const MAPS_ICONS_EARLY_ACCESS_CAROUSEL_PROGRESS_BAR_BG:String = "../maps/icons/early_access/carousel/progress_bar/bg.png";
+      
+      public static const MAPS_ICONS_EARLY_ACCESS_QUESTS_PROGRESS_BAR_BG:String = "../maps/icons/early_access/quests/progress_bar/bg.png";
+      
+      public static const MAPS_ICONS_EARLY_ACCESS_QUESTS_QUEST_TOKEN_BIG_BG:String = "../maps/icons/early_access/quests/quest/token/big/bg.png";
+      
+      public static const MAPS_ICONS_EARLY_ACCESS_QUESTS_QUEST_TOKEN_SMALL_BG:String = "../maps/icons/early_access/quests/quest/token/small/bg.png";
+      
       public static const MAPS_ICONS_EPICBATTLES_ARROW_BG:String = "../maps/icons/epicBattles/arrow/bg.png";
       
       public static const MAPS_ICONS_EPICBATTLES_SKILLS_INTRO_BG:String = "../maps/icons/epicBattles/skills/intro/bg.png";

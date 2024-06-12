@@ -30,13 +30,8 @@ package net.wg.gui.components.controls
       public function TextFieldContainer()
       {
          super();
-         this.init();
-         this._tf = this.textField.getTextFormat();
-      }
-      
-      protected function init() : void
-      {
          this.isCacheAsBitmap = true;
+         this._tf = this.textField.getTextFormat();
       }
       
       public final function dispose() : void
