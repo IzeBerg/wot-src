@@ -162,9 +162,10 @@ package net.wg.infrastructure.tutorial.builders
       
       private function layoutHighLight() : void
       {
+         var _loc2_:PaddingVO = null;
          var _loc1_:Point = component.localToGlobal(new Point(0,0));
          _loc1_ = view.globalToLocal(_loc1_);
-         var _loc2_:PaddingVO = this._model.padding;
+         _loc2_ = this._model.padding;
          if(!_loc2_)
          {
             _loc2_ = new PaddingVO({});
