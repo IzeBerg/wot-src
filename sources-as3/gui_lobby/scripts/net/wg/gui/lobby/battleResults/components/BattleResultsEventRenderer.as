@@ -225,7 +225,8 @@ package net.wg.gui.lobby.battleResults.components
       
       private function checkProgressList(param1:int) : int
       {
-         var _loc2_:Boolean = this._data.progressList && this._data.progressList.length > 0;
+         var _loc2_:Boolean = false;
+         _loc2_ = this._data.progressList && this._data.progressList.length > 0;
          this.progressList.visible = _loc2_;
          if(_loc2_)
          {
