@@ -3799,6 +3799,10 @@ package
       
       public static const CAMOUFLAGE_THREE_TONE_LARGE_SPOTS_WESTERN_DESCRIPTION:String = "#vehicle_customization:camouflage/three_tone_large_spots_western/description";
       
+      public static const CAMOUFLAGE_BOVINGTON_LABEL:String = "#vehicle_customization:camouflage/bovington/label";
+      
+      public static const CAMOUFLAGE_BOVINGTON_DESCRIPTION:String = "#vehicle_customization:camouflage/bovington/description";
+      
       public static const EMBLEM:String = "#vehicle_customization:emblem";
       
       public static const EMBLEM_CLAN_CONTENT:String = "#vehicle_customization:emblem/clan_content";
@@ -7752,6 +7756,8 @@ package
       public static const INSCRIPTION_SPECIAL_SPECIAL_738_DESCRIPTION:String = "#vehicle_customization:inscription/special/special_738/description";
       
       public static const INSCRIPTION_SPECIAL_SPECIAL_739:String = "#vehicle_customization:inscription/special/special_739";
+      
+      public static const INSCRIPTION_SPECIAL_SPECIAL_748:String = "#vehicle_customization:inscription/special/special_748";
       
       public static const ITEM_EMBLEM1:String = "#vehicle_customization:item/emblem1";
       
@@ -13256,6 +13262,10 @@ package
       public static const SPECIAL_STYLE_THREE_TONE_THREADS:String = "#vehicle_customization:special_style/three_tone_threads";
       
       public static const SPECIAL_STYLE_THREE_TONE_LARGE_SPOTS_WESTERN:String = "#vehicle_customization:special_style/three_tone_large_spots_western";
+      
+      public static const SPECIAL_STYLE_BOVINGTON:String = "#vehicle_customization:special_style/bovington";
+      
+      public static const SPECIAL_STYLE_BOVINGTON_DESC_LONG:String = "#vehicle_customization:special_style/bovington_desc/long";
       
       public static const CUSTOMIZATION_POPOVER_STYLE_SUMMER:String = "#vehicle_customization:customization/popover/style/summer";
       

@@ -102,8 +102,9 @@ package net.wg.gui.battle.battleRoyale.views.components.respawnMessages
       
       private function createMessage(param1:RespawnMessageVO, param2:Boolean, param3:Boolean = false) : BaseRespawnMessage
       {
+         var _loc5_:BaseRespawnMessage = null;
          var _loc4_:String = !!this._isSmallRendererSize ? param1.messageLinkage + SMALL_SUFFIX : param1.messageLinkage;
-         var _loc5_:BaseRespawnMessage = App.utils.classFactory.getComponent(_loc4_,BaseRespawnMessage);
+         _loc5_ = App.utils.classFactory.getComponent(_loc4_,BaseRespawnMessage);
          _loc5_.setData(param1,param3);
          _loc5_.show(param2);
          _loc5_.addEventListener(Event.DEACTIVATE,this.onMessageDeactivateHandler,false,0,true);

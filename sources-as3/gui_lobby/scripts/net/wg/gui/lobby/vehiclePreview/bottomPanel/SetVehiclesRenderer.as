@@ -116,6 +116,7 @@ package net.wg.gui.lobby.vehiclePreview.bottomPanel
       
       override protected function configUI() : void
       {
+         var _loc1_:Sprite = null;
          super.configUI();
          this._hoverTweens = new Vector.<Tween>(0);
          mouseChildren = false;
@@ -128,7 +129,7 @@ package net.wg.gui.lobby.vehiclePreview.bottomPanel
          addEventListener(MouseEvent.CLICK,this.onBtnSlotClickHandler);
          addEventListener(MouseEvent.MOUSE_OUT,this.onBtnSlotMouseOutHandler);
          addEventListener(MouseEvent.MOUSE_OVER,this.onBtnSlotMouseOverHandler);
-         var _loc1_:Sprite = new Sprite();
+         _loc1_ = new Sprite();
          _loc1_.name = "hitArea";
          hitArea = _loc1_;
          addChildAt(hitArea,0);
