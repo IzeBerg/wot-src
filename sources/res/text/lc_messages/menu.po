@@ -1919,6 +1919,11 @@ msgstr ""
 "Перезарядка %(autoReloadTime)s с; Средний урон: %(avgDamageList)s\n"
 "Средняя пробиваемость: %(avgPiercingPower)s мм"
 
+msgid "descriptions/vehicleGun/autoShoot"
+msgstr ""
+"%(continuousShotsPerMinute)s выстр/мин; Средний урон: %(avgDamageList)s\n"
+"Средняя бронепробиваемость: %(avgPiercingPower)s мм"
+
 msgid "descriptions/vehicleGun/dualGun"
 msgstr ""
 "Заряжание орудия: %(reloadTimeSecs)s с; Средний урон: %(avgDamageList)s\n"
@@ -2841,7 +2846,7 @@ msgid "headerButtons/battle/types/battleRoyaleSquad/description"
 msgstr "Создать взвод из 2 игроков"
 
 msgid "headerButtons/battle/types/comp7"
-msgstr "Натиск"
+msgstr "Натиск Лайт"
 
 msgid "headerButtons/battle/types/comp7/descr"
 msgstr "?empty?"
@@ -3231,26 +3236,6 @@ msgstr "Выберите машину %(level)s уровня."
 
 msgid "headerButtons/fightBtn/tooltip/falloutVehMin/header"
 msgstr "Выход в бой недоступен"
-
-msgid "headerButtons/fightBtn/tooltip/funRandomDisabled/body"
-msgstr ""
-"На этом сервере идёт режим прекращения огня. Попробуйте перейти на другой "
-"сервер."
-
-msgid "headerButtons/fightBtn/tooltip/funRandomDisabled/header"
-msgstr "Выход в бой невозможен"
-
-msgid "headerButtons/fightBtn/tooltip/funRandomNotSet/body"
-msgstr "Режим недоступен на выбранном сервере."
-
-msgid "headerButtons/fightBtn/tooltip/funRandomNotSet/header"
-msgstr "Выход в бой невозможен"
-
-msgid "headerButtons/fightBtn/tooltip/funRandomVehLimits/body"
-msgstr "Смените режим или выберите подходящую по требованиям машину."
-
-msgid "headerButtons/fightBtn/tooltip/funRandomVehLimits/header"
-msgstr "Машина не подходит для режима"
 
 msgid "headerButtons/fightBtn/tooltip/inPremiumIgrOnly/body"
 msgstr "Выберите другую машину."
@@ -3788,13 +3773,13 @@ msgid "loading/battleTypes/29"
 msgstr "%(modeName)s"
 
 msgid "loading/battleTypes/30"
-msgstr "Натиск"
+msgstr "Натиск Лайт"
 
 msgid "loading/battleTypes/31"
 msgstr "Разминка"
 
 msgid "loading/battleTypes/33"
-msgstr "Натиск"
+msgstr "Натиск Лайт"
 
 msgid "loading/battleTypes/34"
 msgstr "Тренировка в «Натиске»"
@@ -4352,6 +4337,9 @@ msgstr ""
 "Доработанная система дозарядки:\n"
 "Позволяет уменьшить базовое время дозарядки снарядов."
 
+msgid "moduleInfo/autoShootGunLabel"
+msgstr "Орудие с системой непрерывного огня"
+
 msgid "moduleInfo/clipGunLabel"
 msgstr "Магазинная система заряжания"
 
@@ -4403,6 +4391,9 @@ msgstr ""
 "Гидропневматический привод телескопического типа: позволяет изменять "
 "положение дополнительных колёс."
 
+msgid "moduleInfo/nonPiercingDamageLabel"
+msgstr "Способно нанести небольшой урон даже при непробитии"
+
 msgid "moduleInfo/parametersClipGunLabel"
 msgstr ""
 "<img src='%s' vspace='-4'/> Для орудия с магазинной системой заряжания:"
@@ -4439,6 +4430,9 @@ msgstr "Средний урон"
 
 msgid "moduleInfo/params/avgDamagePerMinute"
 msgstr "Средний урон в минуту"
+
+msgid "moduleInfo/params/avgDamagePerSecond"
+msgstr "Урон в секунду"
 
 msgid "moduleInfo/params/avgMutableDamage"
 msgstr "Средний урон"
@@ -4484,6 +4478,12 @@ msgstr "Радиус действия"
 
 msgid "moduleInfo/params/commonDelay"
 msgstr "Время развёртывания"
+
+msgid "moduleInfo/params/continuousDamagePerSecond"
+msgstr "Урон в секунду"
+
+msgid "moduleInfo/params/continuousShotsPerMinute"
+msgstr "Темп непрерывного огня"
 
 msgid "moduleInfo/params/cooldownSeconds"
 msgstr "Время подготовки"
@@ -6197,11 +6197,20 @@ msgstr "Скорость, набираемая за 5 секунд"
 msgid "tank_params/autoReloadTime"
 msgstr "Время дозарядки одного снаряда"
 
+msgid "tank_params/autoShootClipFireRate"
+msgstr "Перезарядка"
+
+msgid "tank_params/autoShootClipSec"
+msgstr "(магазин/количество)"
+
 msgid "tank_params/avgDamage"
 msgstr "Средний урон"
 
 msgid "tank_params/avgDamagePerMinute"
 msgstr "Средний урон в минуту"
+
+msgid "tank_params/avgDamagePerSecond"
+msgstr "Урон в секунду"
 
 msgid "tank_params/avgPiercingPower"
 msgstr "Средняя бронепробиваемость"
@@ -6238,6 +6247,9 @@ msgstr "(полная/между/кол-во)"
 
 msgid "tank_params/cnt"
 msgstr "(шт)"
+
+msgid "tank_params/continuousShotsPerMinute"
+msgstr "Темп непрерывного огня"
 
 msgid "tank_params/damage"
 msgstr "Урон базовым снарядом"
@@ -6505,6 +6517,9 @@ msgstr "Масса / предельная масса машины"
 
 msgid "tank_params/vpm"
 msgstr "(ед./мин)"
+
+msgid "tank_params/vps"
+msgstr "(ед./с)"
 
 msgid "tank_params/wheeledSpeedModeSpeed"
 msgstr "Макс. скорость / задний ход (скоростной)"
@@ -6915,11 +6930,17 @@ msgstr "Время дозарядки одного снаряда (c)"
 msgid "vehicleInfo/params/autoReloadTimeBoost"
 msgstr "Базовое время дозарядки одного снаряда (с)"
 
+msgid "vehicleInfo/params/autoShootClipFireRate"
+msgstr "Перезарядка (магазин/количество)"
+
 msgid "vehicleInfo/params/avgDamage"
 msgstr "Средний урон за выстрел"
 
 msgid "vehicleInfo/params/avgDamagePerMinute"
 msgstr "Средний урон в минуту"
+
+msgid "vehicleInfo/params/avgDamagePerSecond"
+msgstr "Урон в секунду (ед./с)"
 
 msgid "vehicleInfo/params/avgPiercingPower"
 msgstr "Средняя бронепробиваемость"
@@ -6944,6 +6965,9 @@ msgstr "Обзор (м)"
 
 msgid "vehicleInfo/params/clipFireRate"
 msgstr "Перезарядка (полная/между/кол-во)"
+
+msgid "vehicleInfo/params/continuousShotsPerMinute"
+msgstr "Темп непрерывного огня (выстр/мин)"
 
 msgid "vehicleInfo/params/dualAccuracyCoolingDelay"
 msgstr "Время остывания орудия после выстрела (с)"

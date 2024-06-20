@@ -1274,6 +1274,12 @@ def _migrateTo127(core, data, initialized):
     dtData[GAME.SHOW_PERSONAL_ANIMATED_DOGTAG] = True
 
 
+def _migrateTo128(core, data, initialized):
+    from account_helpers.settings_core.ServerSettingsManager import UI_STORAGE_KEYS, SETTINGS_SECTIONS
+    data[SETTINGS_SECTIONS.UI_STORAGE_2][UI_STORAGE_KEYS.AUTO_SHOOT_HIGHLIGHTS_COUNTER] = 0
+    data[SETTINGS_SECTIONS.UI_STORAGE_2][UI_STORAGE_KEYS.AUTO_SHOT_NPD_SHELLS_MARK_IS_SHOWN] = False
+
+
 _versions = (
  (
   1, _initializeDefaultSettings, True, False),
@@ -1526,7 +1532,9 @@ _versions = (
  (
   126, _migrateTo126, False, False),
  (
-  127, _migrateTo127, False, False))
+  127, _migrateTo127, False, False),
+ (
+  128, _migrateTo128, False, False))
 
 @adisp_async
 @adisp_process

@@ -36,6 +36,7 @@
 		<_122mm_armata_wz_59>43</_122mm_armata_wz_59>
 		<GG_85_175_mm>45</GG_85_175_mm>
 		<GG_100_162_mm>46</GG_100_162_mm>
+		<GG_100_162_mm_K>48</GG_100_162_mm_K>
 		<GG_85_150_mm>49</GG_85_150_mm>
 		<_100mm_DAP>50</_100mm_DAP>
 		<_90mm_wz_39_90>51</_90mm_wz_39_90>
@@ -2215,7 +2216,7 @@
 						0.0
 						<!--BW_String-->
 					</defaultPortion>
-					<speed>846</speed>
+					<speed>1030</speed>
 					<gravity>
 						9.81
 						<!--BW_String-->
@@ -4390,6 +4391,112 @@
 				</PW_GG_m100_162>
 			</shots>
 		</GG_100_162_mm>
+		<GG_100_162_mm_K>
+			<userString>#poland_vehicles:GG_100_162_mm_K</userString>
+			<tags/>
+			<level>9</level>
+			<price>215000</price>
+			<notInShop>true</notInShop>
+			<impulse>
+				0.44
+				<!--BW_String-->
+			</impulse>
+			<recoil>
+				<lodDist>MEDIUM</lodDist>
+				<amplitude>
+					0.0
+					<!--BW_String-->
+				</amplitude>
+				<recoilEffect>main</recoilEffect>
+			</recoil>
+			<effects>shot_mainext</effects>
+			<reloadEffect>reload85_107</reloadEffect>
+			<pitchLimits>
+				<minPitch>
+					0.0 -18.0 1.0 -18.0
+					<!--BW_String-->
+				</minPitch>
+				<maxPitch>
+					0.0 6.0 1.0 6.0
+					<!--BW_String-->
+				</maxPitch>
+			</pitchLimits>
+			<turretYawLimits>-180 180</turretYawLimits>
+			<rotationSpeed>24</rotationSpeed>
+			<reloadTime>13</reloadTime>
+			<maxAmmo>40</maxAmmo>
+			<aimingTime>
+				2.3
+				<!--BW_String-->
+			</aimingTime>
+			<weight>2400</weight>
+			<maxHealth>210</maxHealth>
+			<maxRegenHealth>105</maxRegenHealth>
+			<repairCost>8</repairCost>
+			<invisibilityFactorAtShot>
+				0.1
+				<!--BW_String-->
+			</invisibilityFactorAtShot>
+			<shotDispersionRadius>
+				0.4
+				<!--BW_String-->
+			</shotDispersionRadius>
+			<shotDispersionFactors>
+				<turretRotation>
+					0.08
+					<!--BW_String-->
+				</turretRotation>
+				<afterShot>
+					3.0
+					<!--BW_String-->
+				</afterShot>
+				<whileGunDamaged>
+					2.0
+					<!--BW_String-->
+				</whileGunDamaged>
+			</shotDispersionFactors>
+			<shots>
+				<PP_GG_m100_162_K>
+					<defaultPortion>
+						0.9
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>1400</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>260 230</piercingPower>
+				</PP_GG_m100_162_K>
+				<PPrz_GG_m100_162_K>
+					<defaultPortion>
+						0.0
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>1600</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>290 270</piercingPower>
+				</PPrz_GG_m100_162_K>
+				<PW_GG_m100_162_K>
+					<defaultPortion>
+						0.1
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>1000</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>80 80</piercingPower>
+				</PW_GG_m100_162_K>
+			</shots>
+		</GG_100_162_mm_K>
 		<GG_85_175_mm>
 			<userString>#poland_vehicles:GG_85_175_mm</userString>
 			<tags/>

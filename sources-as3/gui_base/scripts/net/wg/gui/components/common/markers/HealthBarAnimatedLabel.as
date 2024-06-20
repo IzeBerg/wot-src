@@ -3,7 +3,7 @@ package net.wg.gui.components.common.markers
    public class HealthBarAnimatedLabel extends HealthBarAnimatedPart
    {
       
-      private static var INVALIDATE_DAMAGE:String = "invalidateDamage";
+      private static const INVALIDATE_DAMAGE:String = "invalidateDamage";
        
       
       public var damageLabel:DamageLabel;
@@ -21,6 +21,15 @@ package net.wg.gui.components.common.markers
          super();
       }
       
+      override protected function draw() : void
+      {
+         super.draw();
+         if(isInvalid(INVALIDATE_DAMAGE))
+         {
+            this.imitationDamage(this.imitation,this.fakeDamage,this.imitationFlag);
+         }
+      }
+      
       public function damage(param1:Number, param2:String) : void
       {
          if(tweenState != INACTIVE_STATE && tweenState != IMITATION_STATE)
@@ -33,6 +42,17 @@ package net.wg.gui.components.common.markers
          }
          this.damageLabel.color = param2;
          this.damageLabel.text = this._damage > 0 ? String(-this._damage) : "";
+      }
+      
+      public function imitationDamage(param1:Boolean, param2:Number, param3:String) : void
+      {
+         if(param1)
+         {
+            this.damage(param2,param3);
+            tweenState = IMITATION_STATE;
+            setState();
+         }
+         visible = param1;
       }
       
       public function get fakeDamage() : Number
@@ -78,26 +98,6 @@ package net.wg.gui.components.common.markers
          }
          this._imitation = param1;
          invalidate(INVALIDATE_DAMAGE);
-      }
-      
-      override protected function draw() : void
-      {
-         super.draw();
-         if(isInvalid(INVALIDATE_DAMAGE))
-         {
-            this.imitationDamage(this.imitation,this.fakeDamage,this.imitationFlag);
-         }
-      }
-      
-      public function imitationDamage(param1:Boolean, param2:Number, param3:String) : void
-      {
-         if(param1)
-         {
-            this.damage(param2,param3);
-            tweenState = IMITATION_STATE;
-            setState();
-         }
-         visible = param1;
       }
    }
 }

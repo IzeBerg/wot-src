@@ -5,6 +5,9 @@
 		<ap_premium>ARMOR_PIERCING_PREMIUM.png 0 0</ap_premium>
 		<ap_cr>ARMOR_PIERCING_CR.png 0 0</ap_cr>
 		<ap_cr_premium>ARMOR_PIERCING_CR_PREMIUM.png 0 0</ap_cr_premium>
+		<ap_npd>ARMOR_PIERCING_NPD.png 0 0</ap_npd>
+		<ap_cr_npd>ARMOR_PIERCING_CR_NPD.png 0 0</ap_cr_npd>
+		<ap_cr_premium_npd>ARMOR_PIERCING_CR_NPD_PREMIUM.png 0 0</ap_cr_premium_npd>
 		<ap_tray>ARMOR_PIERCING_TRAY.png 0 0</ap_tray>
 		<ap_premium_tray>ARMOR_PIERCING_PREMIUM_TRAY.png 0 0</ap_premium_tray>
 		<ap_cr_tray>ARMOR_PIERCING_CR_TRAY.png 0 0</ap_cr_tray>
@@ -17,6 +20,8 @@
 		<hc_premium>HOLLOW_CHARGE_PREMIUM.png 0 0</hc_premium>
 		<he_spg>HIGH_EXPLOSIVE_SPG.png 0 0</he_spg>
 		<he_spg_stun>HIGH_EXPLOSIVE_SPG_STUN.png 0 0</he_spg_stun>
+		<aap>AUTOCANNON_ARMOR_PIERCING.png 0 0</aap>
+		<aap_cr>AUTOCANNON_ARMOR_PIERCING_CR.png 0 0</aap_cr>
 	</icons>
 	<_12.7mm_AP_B32>
 		<id>117</id>
@@ -34,6 +39,8 @@
 			<armor>8</armor>
 			<devices>17</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_12.7mm_AP_B32>
 	<_20mm_BC-20>
 		<id>0</id>
@@ -48,6 +55,8 @@
 			<armor>10</armor>
 			<devices>27</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_20mm_BC-20>
 	<_20mm_UBR-20>
 		<id>1</id>
@@ -63,6 +72,8 @@
 			<armor>10</armor>
 			<devices>27</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_20mm_UBR-20>
 	<_23mm_BC-23>
 		<id>2</id>
@@ -78,6 +89,8 @@
 			<armor>12</armor>
 			<devices>31</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_23mm_BC-23>
 	<_23mm_UBR-23>
 		<id>3</id>
@@ -94,6 +107,8 @@
 			<armor>12</armor>
 			<devices>31</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_23mm_UBR-23>
 	<_37mm_AP_M74_LL>
 		<id>73</id>
@@ -108,6 +123,8 @@
 			<armor>40</armor>
 			<devices>50</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_37mm_AP_M74_LL>
 	<_37mm_APC_M51_LL>
 		<id>74</id>
@@ -123,6 +140,8 @@
 			<armor>40</armor>
 			<devices>50</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_37mm_APC_M51_LL>
 	<_37mm_HE_M63_LL>
 		<id>75</id>
@@ -167,6 +186,8 @@
 			<armor>36</armor>
 			<devices>50</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_37mm_UBR-160>
 	<_37mm_UBR-160P>
 		<id>5</id>
@@ -182,6 +203,8 @@
 			<armor>36</armor>
 			<devices>50</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_37mm_UBR-160P>
 	<_37mm_UOF-160>
 		<id>6</id>
@@ -226,6 +249,8 @@
 			<armor>40</armor>
 			<devices>50</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_37mm_UBR160bis>
 	<_37mm_UBR160PA>
 		<id>8</id>
@@ -241,6 +266,8 @@
 			<armor>40</armor>
 			<devices>50</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_37mm_UBR160PA>
 	<_37mm_UO160A>
 		<id>9</id>
@@ -285,6 +312,8 @@
 			<armor>30</armor>
 			<devices>50</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_37mm_UBRT1>
 	<_37mm_BPT1>
 		<id>11</id>
@@ -300,6 +329,7 @@
 			<armor>30</armor>
 			<devices>50</devices>
 		</damage>
+		<ricochetAngle>85</ricochetAngle>
 		<piercingPowerLossFactorByDistance>
 			0.05
 			<!--BW_String-->
@@ -348,6 +378,8 @@
 			<armor>45</armor>
 			<devices>54</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_2pdr_AP_Mk.1T>
 	<_2pdr_APCNR_Mk.1>
 		<id>83</id>
@@ -363,6 +395,8 @@
 			<armor>45</armor>
 			<devices>54</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_2pdr_APCNR_Mk.1>
 	<_2pdr_HE_Mk.2>
 		<id>84</id>
@@ -407,6 +441,8 @@
 			<armor>47</armor>
 			<devices>61</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_45mm_UBR-240A>
 	<_45mm_UBR-240PA>
 		<id>14</id>
@@ -422,6 +458,8 @@
 			<armor>47</armor>
 			<devices>61</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_45mm_UBR-240PA>
 	<_45mm_UOF-240A>
 		<id>15</id>
@@ -466,6 +504,8 @@
 			<armor>47</armor>
 			<devices>61</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_45mm_UBR-243>
 	<_45mm_UBR-243P>
 		<id>260</id>
@@ -481,6 +521,8 @@
 			<armor>47</armor>
 			<devices>61</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_45mm_UBR-243P>
 	<_45mm_UO-243>
 		<id>261</id>
@@ -525,6 +567,8 @@
 			<armor>55</armor>
 			<devices>61</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_45mm_UBR-243SP>
 	<_45mm_UBR-243SPA>
 		<id>17</id>
@@ -540,6 +584,8 @@
 			<armor>55</armor>
 			<devices>61</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_45mm_UBR-243SPA>
 	<_45mm_UOF-243>
 		<id>18</id>
@@ -584,6 +630,8 @@
 			<armor>70</armor>
 			<devices>61</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_45mm_UBR-243SPU>
 	<_45mm_UBR-243SPAU>
 		<id>178</id>
@@ -599,6 +647,8 @@
 			<armor>70</armor>
 			<devices>61</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_45mm_UBR-243SPAU>
 	<_45mm_UOF-243U>
 		<id>179</id>
@@ -643,6 +693,8 @@
 			<armor>75</armor>
 			<devices>76</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_57mm_UBR-271KO>
 	<_57mm_UBR-271NO>
 		<id>20</id>
@@ -658,6 +710,8 @@
 			<armor>75</armor>
 			<devices>76</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_57mm_UBR-271NO>
 	<_57mm_UO-271UO>
 		<id>21</id>
@@ -702,6 +756,8 @@
 			<armor>85</armor>
 			<devices>76</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_57mm_UBR-271K>
 	<_57mm_UBR-271N>
 		<id>23</id>
@@ -717,6 +773,8 @@
 			<armor>85</armor>
 			<devices>76</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_57mm_UBR-271N>
 	<_57mm_UO-271U>
 		<id>24</id>
@@ -761,6 +819,8 @@
 			<armor>75</armor>
 			<devices>76</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_6pdr_AP_MKs_4>
 	<_6pdr_APCR_MK_1T>
 		<id>26</id>
@@ -776,6 +836,8 @@
 			<armor>75</armor>
 			<devices>76</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_6pdr_APCR_MK_1T>
 	<_76mm_UBR-354A>
 		<id>28</id>
@@ -790,6 +852,8 @@
 			<armor>110</armor>
 			<devices>105</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_76mm_UBR-354A>
 	<_76mm_BR-350A>
 		<id>119</id>
@@ -805,6 +869,8 @@
 			<armor>110</armor>
 			<devices>105</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_76mm_BR-350A>
 	<_76mm_BP-354>
 		<id>29</id>
@@ -820,6 +886,7 @@
 			<armor>110</armor>
 			<devices>105</devices>
 		</damage>
+		<ricochetAngle>85</ricochetAngle>
 		<piercingPowerLossFactorByDistance>
 			0.05
 			<!--BW_String-->
@@ -868,6 +935,8 @@
 			<armor>115</armor>
 			<devices>105</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_76mm_UBR-354MA>
 	<_76mm_UBR-354MP>
 		<id>32</id>
@@ -883,6 +952,8 @@
 			<armor>110</armor>
 			<devices>105</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_76mm_UBR-354MP>
 	<_76mm_UBR_350P>
 		<id>230</id>
@@ -897,6 +968,8 @@
 			<armor>110</armor>
 			<devices>105</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_76mm_UBR_350P>
 	<_76mm_UBR_354P>
 		<id>231</id>
@@ -912,6 +985,8 @@
 			<armor>110</armor>
 			<devices>105</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_76mm_UBR_354P>
 	<_76mm_UOF-354M>
 		<id>33</id>
@@ -956,6 +1031,8 @@
 			<armor>110</armor>
 			<devices>105</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_76mm_UBR-354KA>
 	<_76mm_UBR-354KB>
 		<id>164</id>
@@ -971,6 +1048,8 @@
 			<armor>110</armor>
 			<devices>105</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_76mm_UBR-354KB>
 	<_76mm_UOF-354K>
 		<id>35</id>
@@ -1015,6 +1094,8 @@
 			<armor>110</armor>
 			<devices>105</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_76mm_UBR_350P1>
 	<_76mm_UBR_354P1>
 		<id>287</id>
@@ -1030,6 +1111,8 @@
 			<armor>110</armor>
 			<devices>105</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_76mm_UBR_354P1>
 	<_76mm_OF_350M>
 		<id>288</id>
@@ -1074,6 +1157,8 @@
 			<armor>110</armor>
 			<devices>105</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_76mm_BR_350A_1>
 	<_76mm_BR_350B>
 		<id>290</id>
@@ -1089,6 +1174,8 @@
 			<armor>110</armor>
 			<devices>105</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_76mm_BR_350B>
 	<_76mm_F_354>
 		<id>291</id>
@@ -1151,6 +1238,8 @@
 			<armor>110</armor>
 			<devices>105</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_76mm_UBR-354IT>
 	<_76mm_BP-354IT>
 		<id>208</id>
@@ -1166,6 +1255,7 @@
 			<armor>110</armor>
 			<devices>105</devices>
 		</damage>
+		<ricochetAngle>85</ricochetAngle>
 		<piercingPowerLossFactorByDistance>
 			0.05
 			<!--BW_String-->
@@ -1214,6 +1304,8 @@
 			<armor>115</armor>
 			<devices>105</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_76mm_AP_M79>
 	<_76mm_HVAP_M93>
 		<id>205</id>
@@ -1229,6 +1321,8 @@
 			<armor>115</armor>
 			<devices>105</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_76mm_HVAP_M93>
 	<_76mm_HE_M42A1>
 		<id>206</id>
@@ -1273,6 +1367,8 @@
 			<armor>160</armor>
 			<devices>115</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_85mm_UBR-365K>
 	<_85mm_UBR-365P>
 		<id>37</id>
@@ -1288,6 +1384,8 @@
 			<armor>160</armor>
 			<devices>115</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_85mm_UBR-365P>
 	<_85mm_UOF-365K>
 		<id>38</id>
@@ -1332,6 +1430,8 @@
 			<armor>180</armor>
 			<devices>115</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_85mm_BR-365-DG>
 	<_85mm_BR-365P-DG>
 		<id>248</id>
@@ -1347,6 +1447,8 @@
 			<armor>180</armor>
 			<devices>115</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_85mm_BR-365P-DG>
 	<_85mm_UOF-412-DG>
 		<id>249</id>
@@ -1391,6 +1493,8 @@
 			<armor>180</armor>
 			<devices>115</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_85mm_UBR-365KBM>
 	<_85mm_UBR-365PBM>
 		<id>40</id>
@@ -1406,6 +1510,8 @@
 			<armor>180</armor>
 			<devices>115</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_85mm_UBR-365PBM>
 	<_85mm_UOF-365BM>
 		<id>41</id>
@@ -1450,6 +1556,8 @@
 			<armor>180</armor>
 			<devices>115</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_85mm_UBR-365KBM100>
 	<_85mm_UBR-365PBM100>
 		<id>127</id>
@@ -1465,6 +1573,8 @@
 			<armor>180</armor>
 			<devices>115</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_85mm_UBR-365PBM100>
 	<_85mm_UOF-365BM100>
 		<id>128</id>
@@ -1509,6 +1619,8 @@
 			<armor>180</armor>
 			<devices>115</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_85mm_UBR_372P_432>
 	<_85mm_UBR_372_432>
 		<id>233</id>
@@ -1524,6 +1636,8 @@
 			<armor>180</armor>
 			<devices>115</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_85mm_UBR_372_432>
 	<_85mm_UOF_372_432>
 		<id>234</id>
@@ -1568,6 +1682,8 @@
 			<armor>200</armor>
 			<devices>115</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_85mm_UBR-367>
 	<_85mm_UBR-367P>
 		<id>123</id>
@@ -1583,6 +1699,8 @@
 			<armor>200</armor>
 			<devices>115</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_85mm_UBR-367P>
 	<_85mm_UO-367>
 		<id>124</id>
@@ -1627,6 +1745,8 @@
 			<armor>250</armor>
 			<devices>135</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_100mm_UBR-412>
 	<_100mm_UBR-412P>
 		<id>43</id>
@@ -1642,6 +1762,8 @@
 			<armor>250</armor>
 			<devices>135</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_100mm_UBR-412P>
 	<_100mm_UBR-412PA>
 		<id>173</id>
@@ -1656,6 +1778,8 @@
 			<armor>250</armor>
 			<devices>135</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_100mm_UBR-412PA>
 	<_100mm_UOF-412>
 		<id>44</id>
@@ -1700,6 +1824,8 @@
 			<armor>320</armor>
 			<devices>135</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_100mm_UBR-412B>
 	<_100mm_UBR-412PB>
 		<id>77</id>
@@ -1714,6 +1840,8 @@
 			<armor>320</armor>
 			<devices>135</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_100mm_UBR-412PB>
 	<_100mm_BR_412DM>
 		<id>319</id>
@@ -1728,6 +1856,8 @@
 			<armor>300</armor>
 			<devices>135</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_100mm_BR_412DM>
 	<_100mm_ZBK17M>
 		<id>320</id>
@@ -1743,6 +1873,7 @@
 			<armor>300</armor>
 			<devices>135</devices>
 		</damage>
+		<ricochetAngle>85</ricochetAngle>
 		<piercingPowerLossFactorByDistance>
 			0.05
 			<!--BW_String-->
@@ -1791,6 +1922,8 @@
 			<armor>200</armor>
 			<devices>115</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_85mm_H_3_UBR_365K>
 	<_85mm_H_3_UBR_365P>
 		<id>326</id>
@@ -1806,6 +1939,8 @@
 			<armor>200</armor>
 			<devices>115</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_85mm_H_3_UBR_365P>
 	<_85mm_H_3_UOF_365K>
 		<id>327</id>
@@ -1850,6 +1985,8 @@
 			<armor>320</armor>
 			<devices>135</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_100mm_UBR-412PB_fallout>
 	<_100mm_UOF-412B>
 		<id>78</id>
@@ -1985,6 +2122,7 @@
 			<armor>320</armor>
 			<devices>135</devices>
 		</damage>
+		<ricochetAngle>85</ricochetAngle>
 		<piercingPowerLossFactorByDistance>
 			0.05
 			<!--BW_String-->
@@ -2004,6 +2142,7 @@
 			<armor>320</armor>
 			<devices>135</devices>
 		</damage>
+		<ricochetAngle>85</ricochetAngle>
 		<piercingPowerLossFactorByDistance>
 			0.05
 			<!--BW_String-->
@@ -2023,6 +2162,7 @@
 			<armor>360</armor>
 			<devices>135</devices>
 		</damage>
+		<ricochetAngle>85</ricochetAngle>
 		<piercingPowerLossFactorByDistance>
 			0.05
 			<!--BW_String-->
@@ -2042,6 +2182,7 @@
 			<armor>320</armor>
 			<devices>135</devices>
 		</damage>
+		<ricochetAngle>85</ricochetAngle>
 		<piercingPowerLossFactorByDistance>
 			0.05
 			<!--BW_String-->
@@ -2060,6 +2201,8 @@
 			<armor>320</armor>
 			<devices>135</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_100mm_BR-412D>
 	<_100mm_BR-412A>
 		<id>313</id>
@@ -2074,6 +2217,8 @@
 			<armor>360</armor>
 			<devices>135</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_100mm_BR-412A>
 	<_100mm_3VBM>
 		<id>165</id>
@@ -2088,6 +2233,8 @@
 			<armor>300</armor>
 			<devices>135</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_100mm_3VBM>
 	<_100mm_3VBB>
 		<id>166</id>
@@ -2103,6 +2250,8 @@
 			<armor>300</armor>
 			<devices>135</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_100mm_3VBB>
 	<_100mm_3VOF>
 		<id>167</id>
@@ -2148,6 +2297,8 @@
 			<armor>300</armor>
 			<devices>150</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_100mm_UBR-412BM>
 	<_100mm_UBR-412PBM>
 		<id>171</id>
@@ -2164,6 +2315,8 @@
 			<armor>300</armor>
 			<devices>150</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_100mm_UBR-412PBM>
 	<_100mm_UOF-412BM>
 		<id>172</id>
@@ -2198,6 +2351,8 @@
 			<armor>320</armor>
 			<devices>135</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_100mm_UBR-412U>
 	<_100mm_UBR-412PBU>
 		<id>292</id>
@@ -2212,6 +2367,8 @@
 			<armor>320</armor>
 			<devices>135</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_100mm_UBR-412PBU>
 	<_100mm_UOF-412B1>
 		<id>294</id>
@@ -2256,6 +2413,8 @@
 			<armor>320</armor>
 			<devices>135</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_100mm_UBR_LM>
 	<_100mm_3UBK_LM>
 		<id>228</id>
@@ -2271,6 +2430,7 @@
 			<armor>320</armor>
 			<devices>135</devices>
 		</damage>
+		<ricochetAngle>85</ricochetAngle>
 		<piercingPowerLossFactorByDistance>
 			0.05
 			<!--BW_String-->
@@ -2319,6 +2479,8 @@
 			<armor>320</armor>
 			<devices>135</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_100mm_ZUBM_101>
 	<_100mm_ZUBK_81>
 		<id>301</id>
@@ -2334,6 +2496,7 @@
 			<armor>320</armor>
 			<devices>135</devices>
 		</damage>
+		<ricochetAngle>85</ricochetAngle>
 		<piercingPowerLossFactorByDistance>
 			0.05
 			<!--BW_String-->
@@ -2382,6 +2545,8 @@
 			<armor>300</armor>
 			<devices>135</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_100mm_UBR_LMK>
 	<_100mm_3UBK_LMK>
 		<id>257</id>
@@ -2397,6 +2562,7 @@
 			<armor>300</armor>
 			<devices>135</devices>
 		</damage>
+		<ricochetAngle>85</ricochetAngle>
 		<piercingPowerLossFactorByDistance>
 			0.05
 			<!--BW_String-->
@@ -2445,6 +2611,8 @@
 			<armor>300</armor>
 			<devices>135</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_100mm_UBR-412-DG>
 	<_100mm_UBR-412P-DG>
 		<id>239</id>
@@ -2460,6 +2628,8 @@
 			<armor>300</armor>
 			<devices>135</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_100mm_UBR-412P-DG>
 	<_100mm_UOF-412-DG>
 		<id>240</id>
@@ -2504,6 +2674,8 @@
 			<armor>300</armor>
 			<devices>150</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_107mm_UBR-420>
 	<_107mm_UBR-420P>
 		<id>46</id>
@@ -2519,6 +2691,8 @@
 			<armor>300</armor>
 			<devices>150</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_107mm_UBR-420P>
 	<_107mm_UOF-420>
 		<id>47</id>
@@ -2563,6 +2737,8 @@
 			<armor>320</armor>
 			<devices>150</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_107mm_UBR-420M>
 	<_107mm_UBR-420PM>
 		<id>92</id>
@@ -2578,6 +2754,8 @@
 			<armor>320</armor>
 			<devices>150</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_107mm_UBR-420PM>
 	<_107mm_UOF-420M>
 		<id>93</id>
@@ -2622,6 +2800,8 @@
 			<armor>340</armor>
 			<devices>150</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_107mm_BR_420LP>
 	<_107mm_UBR_420LP>
 		<id>344</id>
@@ -2637,6 +2817,8 @@
 			<armor>340</armor>
 			<devices>150</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_107mm_UBR_420LP>
 	<_107mm_UOF_420LP>
 		<id>345</id>
@@ -2681,6 +2863,8 @@
 			<armor>360</armor>
 			<devices>150</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_107mm_UBR-420M1>
 	<_107mm_UBR-420PM1>
 		<id>309</id>
@@ -2696,6 +2880,8 @@
 			<armor>360</armor>
 			<devices>150</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_107mm_UBR-420PM1>
 	<_107mm_UOF-420M1>
 		<id>310</id>
@@ -2741,6 +2927,7 @@
 			<armor>370</armor>
 			<devices>165</devices>
 		</damage>
+		<ricochetAngle>85</ricochetAngle>
 		<piercingPowerLossFactorByDistance>
 			0.05
 			<!--BW_String-->
@@ -2789,6 +2976,8 @@
 			<armor>390</armor>
 			<devices>165</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_122mm_UBR-471>
 	<_122mm_BR_471M>
 		<id>197</id>
@@ -2803,6 +2992,8 @@
 			<armor>390</armor>
 			<devices>165</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_122mm_BR_471M>
 	<_122mm_UBR-471P>
 		<id>52</id>
@@ -2818,6 +3009,8 @@
 			<armor>390</armor>
 			<devices>165</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_122mm_UBR-471P>
 	<_122mm_UBR-471P_KV4>
 		<id>265</id>
@@ -2832,6 +3025,8 @@
 			<armor>390</armor>
 			<devices>165</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_122mm_UBR-471P_KV4>
 	<_122mm_BR_471PM>
 		<id>198</id>
@@ -2847,6 +3042,8 @@
 			<armor>390</armor>
 			<devices>165</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_122mm_BR_471PM>
 	<_122mm_3BM14>
 		<id>137</id>
@@ -2861,6 +3058,8 @@
 			<armor>390</armor>
 			<devices>165</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_122mm_3BM14>
 	<_122mm_3BM145>
 		<id>303</id>
@@ -2875,6 +3074,8 @@
 			<armor>420</armor>
 			<devices>165</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_122mm_3BM145>
 	<_122mm_3BM145_CN>
 		<id>306</id>
@@ -2889,6 +3090,8 @@
 			<armor>390</armor>
 			<devices>165</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_122mm_3BM145_CN>
 	<_122mm_UBR-471PBM>
 		<id>129</id>
@@ -2903,6 +3106,8 @@
 			<armor>440</armor>
 			<devices>165</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_122mm_UBR-471PBM>
 	<_122mm_UBR-471BMM>
 		<id>168</id>
@@ -2917,6 +3122,8 @@
 			<armor>440</armor>
 			<devices>165</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_122mm_UBR-471BMM>
 	<_122mm_UBR-471PBMM>
 		<id>169</id>
@@ -2932,6 +3139,8 @@
 			<armor>440</armor>
 			<devices>165</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_122mm_UBR-471PBMM>
 	<_122mm_3VBK6>
 		<id>138</id>
@@ -2947,6 +3156,7 @@
 			<armor>390</armor>
 			<devices>165</devices>
 		</damage>
+		<ricochetAngle>85</ricochetAngle>
 		<piercingPowerLossFactorByDistance>
 			0.05
 			<!--BW_String-->
@@ -2966,6 +3176,7 @@
 			<armor>420</armor>
 			<devices>165</devices>
 		</damage>
+		<ricochetAngle>85</ricochetAngle>
 		<piercingPowerLossFactorByDistance>
 			0.05
 			<!--BW_String-->
@@ -2985,6 +3196,7 @@
 			<armor>390</armor>
 			<devices>165</devices>
 		</damage>
+		<ricochetAngle>85</ricochetAngle>
 		<piercingPowerLossFactorByDistance>
 			0.05
 			<!--BW_String-->
@@ -3004,6 +3216,7 @@
 			<armor>440</armor>
 			<devices>165</devices>
 		</damage>
+		<ricochetAngle>85</ricochetAngle>
 		<piercingPowerLossFactorByDistance>
 			0.05
 			<!--BW_String-->
@@ -3198,6 +3411,7 @@
 			<armor>270</armor>
 			<devices>165</devices>
 		</damage>
+		<ricochetAngle>85</ricochetAngle>
 		<piercingPowerLossFactorByDistance>
 			0.05
 			<!--BW_String-->
@@ -3216,6 +3430,8 @@
 			<armor>440</armor>
 			<devices>165</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_122mm_BR-471D>
 	<_122mm_BM11>
 		<id>86</id>
@@ -3231,6 +3447,7 @@
 			<armor>440</armor>
 			<devices>165</devices>
 		</damage>
+		<ricochetAngle>85</ricochetAngle>
 		<piercingPowerLossFactorByDistance>
 			0.05
 			<!--BW_String-->
@@ -3279,6 +3496,8 @@
 			<armor>390</armor>
 			<devices>165</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_122mm_BR-471D_P>
 	<_122mm_BM11_P>
 		<id>299</id>
@@ -3294,6 +3513,7 @@
 			<armor>390</armor>
 			<devices>165</devices>
 		</damage>
+		<ricochetAngle>85</ricochetAngle>
 		<piercingPowerLossFactorByDistance>
 			0.05
 			<!--BW_String-->
@@ -3332,6 +3552,7 @@
 			<armor>390</armor>
 			<devices>165</devices>
 		</damage>
+		<ricochetAngle>85</ricochetAngle>
 		<piercingPowerLossFactorByDistance>
 			0.05
 			<!--BW_String-->
@@ -3350,6 +3571,8 @@
 			<armor>440</armor>
 			<devices>165</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_122mm_BR_472U>
 	<_122mm_BK_9U>
 		<id>215</id>
@@ -3365,6 +3588,7 @@
 			<armor>440</armor>
 			<devices>165</devices>
 		</damage>
+		<ricochetAngle>85</ricochetAngle>
 		<piercingPowerLossFactorByDistance>
 			0.05
 			<!--BW_String-->
@@ -3413,6 +3637,8 @@
 			<armor>390</armor>
 			<devices>165</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_122mm_53-VBR-471B>
 	<_122mm_53-VBR-471D>
 		<id>242</id>
@@ -3428,6 +3654,8 @@
 			<armor>390</armor>
 			<devices>165</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_122mm_53-VBR-471D>
 	<_122mm_53-VOF-471>
 		<id>243</id>
@@ -3472,6 +3700,8 @@
 			<armor>390</armor>
 			<devices>165</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_122mm_UBR-471M-DG>
 	<_122mm_UBR-471PM-DG>
 		<id>245</id>
@@ -3487,6 +3717,8 @@
 			<armor>390</armor>
 			<devices>165</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_122mm_UBR-471PM-DG>
 	<_122mm_UOF-471M-DG>
 		<id>246</id>
@@ -3531,6 +3763,8 @@
 			<armor>440</armor>
 			<devices>165</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_122mm_BR-471D-DG>
 	<_122mm_BM11-DG>
 		<id>251</id>
@@ -3546,6 +3780,7 @@
 			<armor>440</armor>
 			<devices>165</devices>
 		</damage>
+		<ricochetAngle>85</ricochetAngle>
 		<piercingPowerLossFactorByDistance>
 			0.05
 			<!--BW_String-->
@@ -3594,6 +3829,8 @@
 			<armor>390</armor>
 			<devices>165</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_122mm_53_VBR_472>
 	<_122mm_3BM11>
 		<id>254</id>
@@ -3609,6 +3846,8 @@
 			<armor>390</armor>
 			<devices>165</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_122mm_3BM11>
 	<_122mm_53_OF_472>
 		<id>255</id>
@@ -3653,6 +3892,8 @@
 			<armor>390</armor>
 			<devices>165</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_53-BR-471-DG>
 	<_53-BR-471B-DG>
 		<id>329</id>
@@ -3668,6 +3909,7 @@
 			<armor>390</armor>
 			<devices>165</devices>
 		</damage>
+		<ricochetAngle>85</ricochetAngle>
 		<piercingPowerLossFactorByDistance>
 			0.05
 			<!--BW_String-->
@@ -3716,6 +3958,8 @@
 			<armor>390</armor>
 			<devices>165</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_122mm_3BM14B>
 	<_122mm_3VBK6B>
 		<id>332</id>
@@ -3731,6 +3975,7 @@
 			<armor>390</armor>
 			<devices>165</devices>
 		</damage>
+		<ricochetAngle>85</ricochetAngle>
 		<piercingPowerLossFactorByDistance>
 			0.05
 			<!--BW_String-->
@@ -3779,6 +4024,8 @@
 			<armor>390</armor>
 			<devices>165</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_122mm_53_VBR_472U>
 	<_122mm_3BM11P>
 		<id>284</id>
@@ -3794,6 +4041,8 @@
 			<armor>390</armor>
 			<devices>165</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_122mm_3BM11P>
 	<_122mm_53_OF_472US>
 		<id>285</id>
@@ -3839,6 +4088,7 @@
 			<armor>370</armor>
 			<devices>165</devices>
 		</damage>
+		<ricochetAngle>85</ricochetAngle>
 		<piercingPowerLossFactorByDistance>
 			0.05
 			<!--BW_String-->
@@ -3887,6 +4137,8 @@
 			<armor>490</armor>
 			<devices>180</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_130mm_UBR-482>
 	<_130mm_UBR-482P>
 		<id>58</id>
@@ -3902,6 +4154,8 @@
 			<armor>490</armor>
 			<devices>180</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_130mm_UBR-482P>
 	<_130mm_UOF-482>
 		<id>59</id>
@@ -3947,6 +4201,8 @@
 			<armor>490</armor>
 			<devices>180</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_130mm_UBR-482_fallout>
 	<_130mm_UBR-482_fallout2>
 		<id>155</id>
@@ -3961,6 +4217,8 @@
 			<armor>490</armor>
 			<devices>180</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_130mm_UBR-482_fallout2>
 	<_130mm_UBR-482P_fallout>
 		<id>143</id>
@@ -3977,6 +4235,8 @@
 			<armor>490</armor>
 			<devices>180</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_130mm_UBR-482P_fallout>
 	<_130mm_UBR-482P_fallout2>
 		<id>156</id>
@@ -3992,6 +4252,8 @@
 			<armor>490</armor>
 			<devices>180</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_130mm_UBR-482P_fallout2>
 	<_130mm_UOF-482_fallout>
 		<id>144</id>
@@ -4055,6 +4317,8 @@
 			<armor>440</armor>
 			<devices>180</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_130mm_PB-46>
 	<_130mm_PB-46A>
 		<id>115</id>
@@ -4070,6 +4334,8 @@
 			<armor>510</armor>
 			<devices>180</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_130mm_PB-46A>
 	<_130mm_PB-46T>
 		<id>182</id>
@@ -4084,6 +4350,8 @@
 			<armor>440</armor>
 			<devices>180</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_130mm_PB-46T>
 	<_130mm_PB-46TA>
 		<id>183</id>
@@ -4099,6 +4367,8 @@
 			<armor>440</armor>
 			<devices>180</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_130mm_PB-46TA>
 	<_130mm_OF-46>
 		<id>116</id>
@@ -4143,6 +4413,8 @@
 			<armor>490</armor>
 			<devices>180</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_130mm_2-02864A>
 	<_130mm_2-01743>
 		<id>132</id>
@@ -4158,6 +4430,8 @@
 			<armor>570</armor>
 			<devices>180</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_130mm_2-01743>
 	<_130mm_2-02742>
 		<id>133</id>
@@ -4202,6 +4476,8 @@
 			<armor>550</armor>
 			<devices>180</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_130mm_UBR-482M>
 	<_130mm_UBR-482PM>
 		<id>106</id>
@@ -4217,6 +4493,8 @@
 			<armor>550</armor>
 			<devices>180</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_130mm_UBR-482PM>
 	<_130mm_UOF-482M>
 		<id>107</id>
@@ -4261,6 +4539,8 @@
 			<armor>490</armor>
 			<devices>180</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_130mm_53_VBR_482>
 	<_130mm_3VBK>
 		<id>162</id>
@@ -4276,6 +4556,7 @@
 			<armor>490</armor>
 			<devices>180</devices>
 		</damage>
+		<ricochetAngle>85</ricochetAngle>
 		<piercingPowerLossFactorByDistance>
 			0.05
 			<!--BW_String-->
@@ -4324,6 +4605,8 @@
 			<armor>560</armor>
 			<devices>180</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_130mm_53_BR_482>
 	<_130mm_ZBK60M>
 		<id>341</id>
@@ -4339,6 +4622,7 @@
 			<armor>560</armor>
 			<devices>180</devices>
 		</damage>
+		<ricochetAngle>85</ricochetAngle>
 		<piercingPowerLossFactorByDistance>
 			0.05
 			<!--BW_String-->
@@ -4387,6 +4671,8 @@
 			<armor>520</armor>
 			<devices>180</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_130mm_53_VBR_482S>
 	<_130mm_3VBKS>
 		<id>236</id>
@@ -4402,6 +4688,7 @@
 			<armor>520</armor>
 			<devices>180</devices>
 		</damage>
+		<ricochetAngle>85</ricochetAngle>
 		<piercingPowerLossFactorByDistance>
 			0.05
 			<!--BW_String-->
@@ -4450,6 +4737,8 @@
 			<armor>530</armor>
 			<devices>180</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_130mm_3VBR_CH>
 	<_130mm_3VBM_CH>
 		<id>263</id>
@@ -4465,6 +4754,8 @@
 			<armor>530</armor>
 			<devices>180</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_130mm_3VBM_CH>
 	<_130mm_3VOF_CH>
 		<id>264</id>
@@ -4558,6 +4849,8 @@
 			<armor>300</armor>
 			<devices>100</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_152mm_53-G-530_spg>
 	<_152mm_53-G-530>
 		<id>62</id>
@@ -4572,6 +4865,8 @@
 			<armor>700</armor>
 			<devices>203</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_152mm_53-G-530>
 	<_152mm_MPB_1915>
 		<id>118</id>
@@ -4587,6 +4882,8 @@
 			<armor>700</armor>
 			<devices>203</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_152mm_MPB_1915>
 	<_152mm_53BP540>
 		<id>63</id>
@@ -4602,6 +4899,7 @@
 			<armor>700</armor>
 			<devices>203</devices>
 		</damage>
+		<ricochetAngle>85</ricochetAngle>
 		<piercingPowerLossFactorByDistance>
 			0.05
 			<!--BW_String-->
@@ -4726,6 +5024,8 @@
 			<armor>380</armor>
 			<devices>100</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_152mm_53-BR-540B>
 	<_152mm_53-OF-551>
 		<id>65</id>
@@ -4816,6 +5116,8 @@
 			<armor>440</armor>
 			<devices>100</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_152mm_53-G-551>
 	<_152mm_UBR551>
 		<id>68</id>
@@ -4830,6 +5132,8 @@
 			<armor>750</armor>
 			<devices>203</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_152mm_UBR551>
 	<_152mm_UBR551M>
 		<id>102</id>
@@ -4844,6 +5148,8 @@
 			<armor>750</armor>
 			<devices>203</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_152mm_UBR551M>
 	<_152mm_UBK551M>
 		<id>103</id>
@@ -4859,6 +5165,7 @@
 			<armor>750</armor>
 			<devices>203</devices>
 		</damage>
+		<ricochetAngle>85</ricochetAngle>
 		<piercingPowerLossFactorByDistance>
 			0.05
 			<!--BW_String-->
@@ -4907,6 +5214,8 @@
 			<armor>650</armor>
 			<devices>203</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_152mm_UBR551M_BB>
 	<_152mm_UBK551M_K>
 		<id>222</id>
@@ -4922,6 +5231,7 @@
 			<armor>650</armor>
 			<devices>203</devices>
 		</damage>
+		<ricochetAngle>85</ricochetAngle>
 		<piercingPowerLossFactorByDistance>
 			0.05
 			<!--BW_String-->
@@ -4971,6 +5281,8 @@
 			<armor>750</armor>
 			<devices>203</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_152mm_UBR551M_fallout>
 	<_152mm_UBK551M_fallout>
 		<id>149</id>
@@ -4987,6 +5299,7 @@
 			<armor>750</armor>
 			<devices>203</devices>
 		</damage>
+		<ricochetAngle>85</ricochetAngle>
 		<piercingPowerLossFactorByDistance>
 			0.05
 			<!--BW_String-->
@@ -5025,6 +5338,8 @@
 			<armor>750</armor>
 			<devices>203</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_152mm_UBR551P>
 	<_152mm_UBR551O>
 		<id>217</id>
@@ -5039,6 +5354,8 @@
 			<armor>650</armor>
 			<devices>203</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_152mm_UBR551O>
 	<_152mm_UBK551O>
 		<id>218</id>
@@ -5054,6 +5371,7 @@
 			<armor>650</armor>
 			<devices>203</devices>
 		</damage>
+		<ricochetAngle>85</ricochetAngle>
 		<piercingPowerLossFactorByDistance>
 			0.05
 			<!--BW_String-->
@@ -5148,6 +5466,8 @@
 			<armor>520</armor>
 			<devices>120</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_180mm_UBR-600>
 	<_203mm_F-625D>
 		<id>70</id>
@@ -5193,6 +5513,8 @@
 			<armor>600</armor>
 			<devices>135</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_203mm_G-620>
 	<_203mm_F-625DBM>
 		<id>72</id>
@@ -5226,6 +5548,8 @@
 			<armor>8</armor>
 			<devices>17</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</Development_Shell>
 	<_122mm_BP450SO_SH>
 		<id>277</id>
@@ -5238,10 +5562,12 @@
 		<caliber>122</caliber>
 		<isTracer>true</isTracer>
 		<effects>BRlargeArmorPiercing</effects>
+		<normalizationAngle>5</normalizationAngle>
 		<damage>
 			<armor>270</armor>
 			<devices>23</devices>
 		</damage>
+		<ricochetAngle>70</ricochetAngle>
 	</_122mm_BP450SO_SH>
 	<_122mm_UBR_472PM_SH>
 		<id>275</id>
@@ -5258,6 +5584,8 @@
 			<armor>215</armor>
 			<devices>23</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_122mm_UBR_472PM_SH>
 	<_100mm_3UBK4M_SH>
 		<id>278</id>
@@ -5274,6 +5602,8 @@
 			<armor>310</armor>
 			<devices>32</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_100mm_3UBK4M_SH>
 	<_100mm_3VBM2_SH>
 		<id>267</id>
@@ -5290,6 +5620,8 @@
 			<armor>250</armor>
 			<devices>32</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_100mm_3VBM2_SH>
 	<_122mm_BP450S_SH>
 		<id>279</id>
@@ -5306,6 +5638,8 @@
 			<armor>380</armor>
 			<devices>40</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_122mm_BP450S_SH>
 	<_122mm_VBR472B_SH>
 		<id>282</id>
@@ -5322,6 +5656,8 @@
 			<armor>305</armor>
 			<devices>40</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_122mm_VBR472B_SH>
 	<_122mm_BR_471PM_SH>
 		<id>270</id>
@@ -5337,6 +5673,8 @@
 			<armor>440</armor>
 			<devices>45</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_122mm_BR_471PM_SH>
 	<_122mm_UBR-472PBM_SH>
 		<id>271</id>
@@ -5353,6 +5691,8 @@
 			<armor>350</armor>
 			<devices>45</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_122mm_UBR-472PBM_SH>
 	<_107mm_BP450M_SH>
 		<id>280</id>
@@ -5369,6 +5709,8 @@
 			<armor>500</armor>
 			<devices>55</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_107mm_BP450M_SH>
 	<_107mm_UBR-420PM_SH>
 		<id>273</id>
@@ -5385,6 +5727,8 @@
 			<armor>400</armor>
 			<devices>55</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_107mm_UBR-420PM_SH>
 	<_130mm_3VBK_SH>
 		<id>281</id>
@@ -5401,6 +5745,8 @@
 			<armor>610</armor>
 			<devices>65</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_130mm_3VBK_SH>
 	<_130mm_3VBM_SH>
 		<id>269</id>
@@ -5417,6 +5763,8 @@
 			<armor>490</armor>
 			<devices>65</devices>
 		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 	</_130mm_3VBM_SH>
 	<_37mm_UBR160bis_MapsTraining_Dummy_LT_1>
 		<id>89</id>
@@ -5431,6 +5779,8 @@
 			<armor>40</armor>
 			<devices>50</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 		<notInShop>True</notInShop>
 	</_37mm_UBR160bis_MapsTraining_Dummy_LT_1>
 	<_152mm_53OF500_MapsTraining_Dummy_SPG_1>
@@ -5465,6 +5815,8 @@
 			<armor>115</armor>
 			<devices>105</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 		<notInShop>True</notInShop>
 	</_76mm_UBR-354MA_MapsTraining_Player_MT_1>
 	<_85mm_UBR-365KBM_MapsTraining_Player_MT_2>
@@ -5480,6 +5832,8 @@
 			<armor>180</armor>
 			<devices>115</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 		<notInShop>True</notInShop>
 	</_85mm_UBR-365KBM_MapsTraining_Player_MT_2>
 	<_107mm_UBR-420_MapsTraining_Dummy_HT_2>
@@ -5495,6 +5849,85 @@
 			<armor>200</armor>
 			<devices>150</devices>
 		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
 		<notInShop>True</notInShop>
 	</_107mm_UBR-420_MapsTraining_Dummy_HT_2>
+	<_23mm_BZT_FEP>
+		<id>601</id>
+		<userString>#ussr_vehicles:_23mm_BZT_FEP</userString>
+		<icon>aap</icon>
+		<price>0</price>
+		<kind>ARMOR_PIERCING</kind>
+		<caliber>23</caliber>
+		<isTracer>true</isTracer>
+		<effects>smallArmorPiercing1</effects>
+		<dynamicEffects>
+			<effect>
+				<name>smallArmorPiercing1</name>
+				<maxShotsCount>3</maxShotsCount>
+			</effect>
+			<effect>
+				<name>smallArmorPiercing3</name>
+				<minShotsCount>3</minShotsCount>
+				<maxShotsCount>6</maxShotsCount>
+			</effect>
+			<effect>
+				<name>smallArmorPiercing6</name>
+				<minShotsCount>6</minShotsCount>
+			</effect>
+		</dynamicEffects>
+		<damage>
+			<armor>8</armor>
+			<devices>4</devices>
+		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>90</ricochetAngle>
+		<deviceDamagePossibility>
+			<protectFromDirectHits>internal external tankmen</protectFromDirectHits>
+		</deviceDamagePossibility>
+	</_23mm_BZT_FEP>
+	<_23mm_BZK_FEP>
+		<id>602</id>
+		<userString>#ussr_vehicles:_23mm_BZK_FEP</userString>
+		<icon>aap_cr</icon>
+		<price>0</price>
+		<kind>ARMOR_PIERCING_CR</kind>
+		<mechanics>NON_PIERCING_DAMAGE</mechanics>
+		<nonPiercingDamage>
+			<damage>
+				<armor>
+					2.0
+					<!--BW_String-->
+				</armor>
+			</damage>
+		</nonPiercingDamage>
+		<caliber>23</caliber>
+		<isTracer>true</isTracer>
+		<effects>smallAPCR1</effects>
+		<dynamicEffects>
+			<effect>
+				<name>smallAPCR1</name>
+				<maxShotsCount>3</maxShotsCount>
+			</effect>
+			<effect>
+				<name>smallAPCR3</name>
+				<minShotsCount>3</minShotsCount>
+				<maxShotsCount>6</maxShotsCount>
+			</effect>
+			<effect>
+				<name>smallAPCR6</name>
+				<minShotsCount>6</minShotsCount>
+			</effect>
+		</dynamicEffects>
+		<damage>
+			<armor>4</armor>
+			<devices>2</devices>
+		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>90</ricochetAngle>
+		<deviceDamagePossibility>
+			<protectFromDirectHits>internal external tankmen</protectFromDirectHits>
+		</deviceDamagePossibility>
+	</_23mm_BZK_FEP>
 </root>

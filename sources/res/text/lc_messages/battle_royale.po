@@ -49,6 +49,9 @@ msgstr "Второй шанс и награды"
 msgid "banner/seasonDate/seasonLasts"
 msgstr "До %(day)s %(month)s"
 
+msgid "banner/subtitle"
+msgstr "Королевская битва с ценными наградами"
+
 msgid "banner/timeLeft/hour"
 msgstr "%(hour)s ч"
 
@@ -372,19 +375,22 @@ msgstr "Лично уничтожено"
 
 msgid "fullStats/icons/airDrop/description"
 msgstr ""
-"Воздушный груз: опыт, восстановление прочности и модулей, заряды всех "
-"умений, снаряды."
+"Воздушный груз: опыт, восстановление прочности, ремонт модулей, заряды всех "
+"боевых умений, снаряды."
 
 msgid "fullStats/icons/corpseLoot/description"
 msgstr ""
-"Трофеи: опыт, восстановление прочности и модулей, снаряды, заряды умений."
+"Трофеи: опыт, восстановление прочности, ремонт модулей, заряды некоторых "
+"боевых умений, снаряды."
 
 msgid "fullStats/icons/defaultLoot/description"
-msgstr "Припасы: опыт, восстановление модулей, заряды умений."
+msgstr ""
+"Припасы: опыт, снаряды, с некоторой вероятностью заряд боевого умения."
 
 msgid "fullStats/icons/extendedLoot/description"
 msgstr ""
-"Снаряжение: опыт, восстановление прочности, снаряды, заряд Восстановления."
+"Снаряжение: опыт, восстановление прочности, ремонт модулей, заряд "
+"«Восстановления», снаряды."
 
 msgid "fullStats/subTitle"
 msgstr "Битва за ценные ресурсы по правилам «один против всех»."
@@ -826,6 +832,21 @@ msgstr "Броню съедает коррозия!"
 msgid "statusNotificationTimers/thunderStrike"
 msgstr "Подвижность снижена!"
 
+msgid "techParams/type/damage"
+msgstr "ОГНЕВАЯ МОЩЬ"
+
+msgid "techParams/type/difficulty"
+msgstr "СЛОЖНОСТЬ"
+
+msgid "techParams/type/mobility"
+msgstr "МОБИЛЬНОСТЬ"
+
+msgid "techParams/type/spotting"
+msgstr "РАЗВЕДКА"
+
+msgid "techParams/type/survivability"
+msgstr "ЖИВУЧЕСТЬ"
+
 msgid "techtree/body_armor"
 msgstr "Бронирование"
 
@@ -1018,42 +1039,38 @@ msgstr "На что потратить"
 msgid "tooltips/brCoin/title"
 msgstr "Стальные печати"
 
-msgid "tooltips/respawnIcon/definition"
-msgstr "Заряд Возрождения можно получить при подборе Воздушного груза."
-
-msgid "tooltips/respawnIcon/description"
+msgid "tooltips/respawn/common/description"
 msgstr ""
 "Позволяет вернуться в бой после того, как ваша машина была уничтожена, "
 "сохранив при этом её уровень улучшений. Можно использовать ограниченное "
 "количество раз."
 
-msgid "tooltips/respawnIcon/min"
-msgstr "%(duration)s мин"
+msgid "tooltips/respawn/footer/text"
+msgstr "Заряд Возрождения можно получить при подборе Воздушного груза."
 
-msgid "tooltips/respawnIcon/platoon/description"
+msgid "tooltips/respawn/platoon/description"
 msgstr ""
 "Для возрождения вашего союзника не вступайте в бой в течение "
-"%(timeToResurrect)s. Механика действует в течение первых %(duration)s "
-"сражения. Для взвода заряд Возрождения общий."
+"{brown_Open}%(timeToResurrect)s с{brown_Close}. Механика действует в течение"
+" первых {brown_Open}%(duration)s мин{brown_Close} сражения. Для взвода заряд"
+" «Возрождения» общий."
 
-msgid "tooltips/respawnIcon/platoon/subtitle"
+msgid "tooltips/respawn/platoon/title"
 msgstr "При игре во взводе"
 
-msgid "tooltips/respawnIcon/sec"
-msgstr "%(duration)s с"
-
-msgid "tooltips/respawnIcon/solo/description"
+msgid "tooltips/respawn/solo/description"
 msgstr ""
 "Возрождение происходит автоматически после уничтожения вашей машины. "
-"Механика действует в течение первых %(duration)s сражения."
+"Механика действует в течение первых "
+"{brown_Open}%(duration)s мин{brown_Close} сражения."
 
-msgid "tooltips/respawnIcon/solo/subtitle"
+msgid "tooltips/respawn/solo/title"
 msgstr "При игре в одиночку"
 
-msgid "tooltips/respawnIcon/subtitle"
+msgid "tooltips/respawn/subtitle"
 msgstr "Однократное использование"
 
-msgid "tooltips/respawnIcon/title"
+msgid "tooltips/respawn/title"
 msgstr "Возрождение"
 
 msgid "tooltips/vehicle/description"

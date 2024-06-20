@@ -1277,9 +1277,9 @@ package
       
       public static const HANGAR_TANKCARUSEL_WRONGSQUADVEHICLE_BODY:String = "#tooltips:hangar/tankCarusel/wrongSquadVehicle/body";
       
-      public static const HANGAR_TANKCARUSEL_WRONGSQUADSPGVEHICLE_HEADER:String = "#tooltips:hangar/tankCarusel/wrongSquadSPGVehicle/header";
+      public static const HANGAR_TANKCARUSEL_WRONGSQUADTYPEVEHICLE_HEADER:String = "#tooltips:hangar/tankCarusel/wrongSquadTypeVehicle/header";
       
-      public static const HANGAR_TANKCARUSEL_WRONGSQUADSPGVEHICLE_BODY:String = "#tooltips:hangar/tankCarusel/wrongSquadSPGVehicle/body";
+      public static const HANGAR_TANKCARUSEL_WRONGSQUADTYPEVEHICLE_BODY:String = "#tooltips:hangar/tankCarusel/wrongSquadTypeVehicle/body";
       
       public static const ACHIEVEMENT_HISTORYDESCRIPTIONHEADER:String = "#tooltips:achievement/historyDescriptionHeader";
       
@@ -2240,14 +2240,6 @@ package
       public static const VEHICLE_DAILYXPFACTOR:String = "#tooltips:vehicle/dailyXPFactor";
       
       public static const VEHICLE_RANKEDBONUSBATTLE:String = "#tooltips:vehicle/rankedBonusBattle";
-      
-      public static const VEHICLE_SPEEDLIMITS:String = "#tooltips:vehicle/speedLimits";
-      
-      public static const VEHICLE_DAMAGE:String = "#tooltips:vehicle/damage";
-      
-      public static const VEHICLE_TURRETROTATIONSPEED:String = "#tooltips:vehicle/turretRotationSpeed";
-      
-      public static const VEHICLE_RADIODISTANCE:String = "#tooltips:vehicle/radioDistance";
       
       public static const VEHICLE_TEXTDELIMITER_OR:String = "#tooltips:vehicle/textDelimiter/or";
       
@@ -4193,6 +4185,8 @@ package
       
       public static const TANK_PARAMS_DESC_RELOADTIME:String = "#tooltips:tank_params/desc/reloadTime";
       
+      public static const TANK_PARAMS_DESC_CONTINUOUSSHOTSPERMINUTE:String = "#tooltips:tank_params/desc/continuousShotsPerMinute";
+      
       public static const TANK_PARAMS_DESC_AUTORELOADTIME:String = "#tooltips:tank_params/desc/autoReloadTime";
       
       public static const TANK_PARAMS_DESC_AUTORELOADTIME_BOOST:String = "#tooltips:tank_params/desc/autoReloadTime/boost";
@@ -4210,6 +4204,8 @@ package
       public static const TANK_PARAMS_DESC_DAMAGE:String = "#tooltips:tank_params/desc/damage";
       
       public static const TANK_PARAMS_DESC_AVGDAMAGE:String = "#tooltips:tank_params/desc/avgDamage";
+      
+      public static const TANK_PARAMS_DESC_AVGDAMAGEPERSECOND:String = "#tooltips:tank_params/desc/avgDamagePerSecond";
       
       public static const TANK_PARAMS_DESC_CHASSISREPAIRTIME:String = "#tooltips:tank_params/desc/chassisRepairTime";
       
@@ -4242,6 +4238,8 @@ package
       public static const TANK_PARAMS_DESC_GUNYAWLIMITS:String = "#tooltips:tank_params/desc/gunYawLimits";
       
       public static const TANK_PARAMS_DESC_CLIPFIRERATE:String = "#tooltips:tank_params/desc/clipFireRate";
+      
+      public static const TANK_PARAMS_DESC_AUTOSHOOTCLIPFIRERATE:String = "#tooltips:tank_params/desc/autoShootClipFireRate";
       
       public static const TANK_PARAMS_DESC_BURSTFIRERATE:String = "#tooltips:tank_params/desc/burstFireRate";
       
@@ -4835,6 +4833,8 @@ package
       
       public static const QUESTS_AWARDS_ADDITIONAL_HEADER:String = "#tooltips:quests/awards/additional/header";
       
+      public static const QUESTS_AWARDS_NEAREST_HEADER:String = "#tooltips:quests/awards/nearest/header";
+      
       public static const QUESTS_AWARDS_ADDITIONAL_BOTTOM:String = "#tooltips:quests/awards/additional/bottom";
       
       public static const QUESTS_VEHICLES_HEADER:String = "#tooltips:quests/vehicles/header";
@@ -4856,6 +4856,10 @@ package
       public static const ADVANCED_ARMOR_PIERCING:String = "#tooltips:advanced/ARMOR_PIERCING";
       
       public static const ADVANCED_ARMOR_PIERCING_CR:String = "#tooltips:advanced/ARMOR_PIERCING_CR";
+      
+      public static const ADVANCED_ARMOR_PIERCING_NOT_PIERCING_DAMAGE:String = "#tooltips:advanced/ARMOR_PIERCING_NOT_PIERCING_DAMAGE";
+      
+      public static const ADVANCED_ARMOR_PIERCING_CR_NOT_PIERCING_DAMAGE:String = "#tooltips:advanced/ARMOR_PIERCING_CR_NOT_PIERCING_DAMAGE";
       
       public static const ADVANCED_ARMOR_PIERCING_TRAY:String = "#tooltips:advanced/ARMOR_PIERCING_TRAY";
       
@@ -6331,7 +6335,11 @@ package
       
       public static const SQUADBONUS_DESCRIPTION:String = "#tooltips:squadBonus/description";
       
+      public static const SQUADBONUS_NOEXPDESCRIPTION:String = "#tooltips:squadBonus/noExpDescription";
+      
       public static const SQUADBONUS_COMP7_DESCRIPTION:String = "#tooltips:squadBonus/comp7/description";
+      
+      public static const SQUADBONUS_COMP7_NOEXPDESCRIPTION:String = "#tooltips:squadBonus/comp7/noExpDescription";
       
       public static const SQUADBONUS_CREDITS_HEADER:String = "#tooltips:squadBonus/credits/header";
       
@@ -6341,17 +6349,11 @@ package
       
       public static const SQUADBONUS_EXPERIENCE_HEADER:String = "#tooltips:squadBonus/experience/header";
       
-      public static const SQUADBONUS_EXPERIENCE_BONUS:String = "#tooltips:squadBonus/experience/bonus";
+      public static const SQUADBONUS_EXPERIENCE_BODY:String = "#tooltips:squadBonus/experience/body";
       
       public static const SQUADBONUS_COMPLEX_HEADER:String = "#tooltips:squadBonus/complex/header";
       
       public static const SQUADBONUS_COMPLEX_BODY:String = "#tooltips:squadBonus/complex/body";
-      
-      public static const SQUADBONUS_COMPLEX_COMP7_HEADER:String = "#tooltips:squadBonus/complex/comp7/header";
-      
-      public static const SQUADBONUS_COMPLEX_COMP7_BODY:String = "#tooltips:squadBonus/complex/comp7/body";
-      
-      public static const SQUADBONUS_COMPLEX_BONUSPERCENT:String = "#tooltips:squadBonus/complex/bonusPercent";
       
       public static const PREM_DASHBOARD_HEADER_BADGESLOT:String = "#tooltips:prem/dashboard/header/badgeSlot";
       
@@ -6504,6 +6506,8 @@ package
       public static const BATTLE_ROYALE_HANGAR_MAINBTN_PERF_EVENTDESCRIPTION:String = "#tooltips:battle_royale/hangar/mainBtn/perf/eventDescription";
       
       public static const BATTLE_ROYALE_HANGAR_MAINBTN_PERF_PROBLEMDESCRIPTION:String = "#tooltips:battle_royale/hangar/mainBtn/perf/problemDescription";
+      
+      public static const BATTLE_ROYALE_HANGAR_TANKSETUPPANEL_ABILITY_COOLDOWNTIME:String = "#tooltips:battle_royale/hangar/tankSetupPanel/ability/cooldownTime";
       
       public static const BATTLE_ROYALE_PROGRESSPAGE_EVENTNAME:String = "#tooltips:battle_royale/progressPage/eventName";
       
@@ -7014,6 +7018,18 @@ package
       public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_4_DESC:String = "#tooltips:notrecruitedtankman/tankmen_bp14_4/desc";
       
       public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_4_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/tankmen_bp14_4/howToGetInfo";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_5_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_bp14_5/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_5_DESC:String = "#tooltips:notrecruitedtankman/tankmen_bp14_5/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_5_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/tankmen_bp14_5/howToGetInfo";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_6_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_bp14_6/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_6_DESC:String = "#tooltips:notrecruitedtankman/tankmen_bp14_6/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_6_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/tankmen_bp14_6/howToGetInfo";
       
       public static const NOTRECRUITEDTANKMAN_TANKMEN_AUC_1_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_auc_1/label";
       

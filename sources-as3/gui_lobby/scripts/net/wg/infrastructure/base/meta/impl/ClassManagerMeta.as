@@ -236,7 +236,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.common.containers.CenterAlignedGroupLayout;
    import net.wg.gui.components.common.containers.EqualGapsHorizontalLayout;
    import net.wg.gui.components.common.containers.EqualWidthHorizontalLayout;
-   import net.wg.gui.components.common.containers.Group;
    import net.wg.gui.components.common.containers.GroupExAnimated;
    import net.wg.gui.components.common.containers.TiledLayout;
    import net.wg.gui.components.common.containers.Vertical100PercWidthLayout;
@@ -593,6 +592,8 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.battleResults.components.MedalsList;
    import net.wg.gui.lobby.battleResults.components.MultiColumnSubtasksList;
    import net.wg.gui.lobby.battleResults.components.MultipleTankList;
+   import net.wg.gui.lobby.battleResults.components.PersonalQuestCondition;
+   import net.wg.gui.lobby.battleResults.components.PersonalQuestConditionGroupLayout;
    import net.wg.gui.lobby.battleResults.components.PersonalQuestState;
    import net.wg.gui.lobby.battleResults.components.PrestigePoints;
    import net.wg.gui.lobby.battleResults.components.ProgressElement;
@@ -685,6 +686,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.battleRoyale.BattleRoyaleTankCarouselItemRenderer;
    import net.wg.gui.lobby.battleRoyale.BattleRoyaleTankIcon;
    import net.wg.gui.lobby.battleRoyale.BattleTypeSelector;
+   import net.wg.gui.lobby.battleRoyale.BottomPanelComponent;
    import net.wg.gui.lobby.battleRoyale.HangarComponentsContainer;
    import net.wg.gui.lobby.battleRoyale.HeaderAnimationController;
    import net.wg.gui.lobby.battleRoyale.ProxyCurrencyPanel;
@@ -1093,16 +1095,17 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.fortifications.popovers.PopoverWithDropdown;
    import net.wg.gui.lobby.goldFishEvent.GoldFishWindow;
    import net.wg.gui.lobby.hangar.CarouselEventEntry;
-   import net.wg.gui.lobby.hangar.Comp7TournamentBannerInject;
    import net.wg.gui.lobby.hangar.CrewDropDownEvent;
    import net.wg.gui.lobby.hangar.CrewPanelInject;
    import net.wg.gui.lobby.hangar.DailyQuestWidget;
+   import net.wg.gui.lobby.hangar.EventTournamentBannerInject;
    import net.wg.gui.lobby.hangar.Hangar;
    import net.wg.gui.lobby.hangar.HangarAmunitionSwitchAnimator;
    import net.wg.gui.lobby.hangar.HangarContentHelper;
    import net.wg.gui.lobby.hangar.HangarHeader;
    import net.wg.gui.lobby.hangar.PrestigeProgressInject;
    import net.wg.gui.lobby.hangar.ResearchPanel;
+   import net.wg.gui.lobby.hangar.StrengthsWeaknessesPanelInject;
    import net.wg.gui.lobby.hangar.SwitchModePanel;
    import net.wg.gui.lobby.hangar.VehPostProgressionBtn;
    import net.wg.gui.lobby.hangar.VehicleParameters;
@@ -1815,6 +1818,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.questsWindow.data.InfoDataVO;
    import net.wg.gui.lobby.questsWindow.data.PaddingsVO;
    import net.wg.gui.lobby.questsWindow.data.PersonalInfoVO;
+   import net.wg.gui.lobby.questsWindow.data.PersonalQuestConditionVO;
    import net.wg.gui.lobby.questsWindow.data.ProgressBlockVO;
    import net.wg.gui.lobby.questsWindow.data.QuestDashlineItemVO;
    import net.wg.gui.lobby.questsWindow.data.QuestDetailsVO;
@@ -2827,6 +2831,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.notification.custom.SMAchievementsFirstEntryWithoutWTR;
    import net.wg.gui.notification.custom.SMBattleMattersReminder;
    import net.wg.gui.notification.custom.SMCollectionsCustom;
+   import net.wg.gui.notification.custom.SMFunRandomReward;
    import net.wg.gui.notification.custom.SMSeniorityAwardsQuest;
    import net.wg.gui.notification.custom.SMSeniorityAwardsTokens;
    import net.wg.gui.notification.custom.SMWotPlusAttendanceBig;
@@ -2835,6 +2840,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.notification.custom.WotPlusAttendanceSmall;
    import net.wg.gui.notification.custom.vo.SMBattleMattersTaskReminderVO;
    import net.wg.gui.notification.custom.vo.SMCustomSeniorityAwardsTokensVO;
+   import net.wg.gui.notification.custom.vo.SMFunRandomRewardVO;
    import net.wg.gui.notification.custom.vo.WotPlusAttendanceVO;
    import net.wg.gui.notification.events.NewsWidgetEvent;
    import net.wg.gui.notification.events.NotificationLayoutEvent;
@@ -3434,8 +3440,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_COMPONENTS_COMMON_CONTAINERS_EQUALGAPSHORIZONTALLAYOUT:Class = EqualGapsHorizontalLayout;
       
       public static const NET_WG_GUI_COMPONENTS_COMMON_CONTAINERS_EQUALWIDTHHORIZONTALLAYOUT:Class = EqualWidthHorizontalLayout;
-      
-      public static const NET_WG_GUI_COMPONENTS_COMMON_CONTAINERS_GROUP:Class = Group;
       
       public static const NET_WG_GUI_COMPONENTS_COMMON_CONTAINERS_GROUPEXANIMATED:Class = GroupExAnimated;
       
@@ -4167,6 +4171,10 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_BATTLERESULTS_COMPONENTS_MULTIPLETANKLIST:Class = MultipleTankList;
       
+      public static const NET_WG_GUI_LOBBY_BATTLERESULTS_COMPONENTS_PERSONALQUESTCONDITION:Class = PersonalQuestCondition;
+      
+      public static const NET_WG_GUI_LOBBY_BATTLERESULTS_COMPONENTS_PERSONALQUESTCONDITIONGROUPLAYOUT:Class = PersonalQuestConditionGroupLayout;
+      
       public static const NET_WG_GUI_LOBBY_BATTLERESULTS_COMPONENTS_PERSONALQUESTSTATE:Class = PersonalQuestState;
       
       public static const NET_WG_GUI_LOBBY_BATTLERESULTS_COMPONENTS_PRESTIGEPOINTS:Class = PrestigePoints;
@@ -4350,6 +4358,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_BATTLEROYALE_BATTLEROYALETANKICON:Class = BattleRoyaleTankIcon;
       
       public static const NET_WG_GUI_LOBBY_BATTLEROYALE_BATTLETYPESELECTOR:Class = BattleTypeSelector;
+      
+      public static const NET_WG_GUI_LOBBY_BATTLEROYALE_BOTTOMPANELCOMPONENT:Class = BottomPanelComponent;
       
       public static const NET_WG_GUI_LOBBY_BATTLEROYALE_HANGARCOMPONENTSCONTAINER:Class = HangarComponentsContainer;
       
@@ -5149,13 +5159,13 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_HANGAR_CAROUSELEVENTENTRY:Class = CarouselEventEntry;
       
-      public static const NET_WG_GUI_LOBBY_HANGAR_COMP7TOURNAMENTBANNERINJECT:Class = Comp7TournamentBannerInject;
-      
       public static const NET_WG_GUI_LOBBY_HANGAR_CREWDROPDOWNEVENT:Class = CrewDropDownEvent;
       
       public static const NET_WG_GUI_LOBBY_HANGAR_CREWPANELINJECT:Class = CrewPanelInject;
       
       public static const NET_WG_GUI_LOBBY_HANGAR_DAILYQUESTWIDGET:Class = DailyQuestWidget;
+      
+      public static const NET_WG_GUI_LOBBY_HANGAR_EVENTTOURNAMENTBANNERINJECT:Class = EventTournamentBannerInject;
       
       public static const NET_WG_GUI_LOBBY_HANGAR_HANGAR:Class = Hangar;
       
@@ -5168,6 +5178,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_HANGAR_PRESTIGEPROGRESSINJECT:Class = PrestigeProgressInject;
       
       public static const NET_WG_GUI_LOBBY_HANGAR_RESEARCHPANEL:Class = ResearchPanel;
+      
+      public static const NET_WG_GUI_LOBBY_HANGAR_STRENGTHSWEAKNESSESPANELINJECT:Class = StrengthsWeaknessesPanelInject;
       
       public static const NET_WG_GUI_LOBBY_HANGAR_SWITCHMODEPANEL:Class = SwitchModePanel;
       
@@ -6592,6 +6604,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_QUESTSWINDOW_DATA_PADDINGSVO:Class = PaddingsVO;
       
       public static const NET_WG_GUI_LOBBY_QUESTSWINDOW_DATA_PERSONALINFOVO:Class = PersonalInfoVO;
+      
+      public static const NET_WG_GUI_LOBBY_QUESTSWINDOW_DATA_PERSONALQUESTCONDITIONVO:Class = PersonalQuestConditionVO;
       
       public static const NET_WG_GUI_LOBBY_QUESTSWINDOW_DATA_PROGRESSBLOCKVO:Class = ProgressBlockVO;
       
@@ -8619,6 +8633,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_NOTIFICATION_CUSTOM_SMCOLLECTIONSCUSTOM:Class = SMCollectionsCustom;
       
+      public static const NET_WG_GUI_NOTIFICATION_CUSTOM_SMFUNRANDOMREWARD:Class = SMFunRandomReward;
+      
       public static const NET_WG_GUI_NOTIFICATION_CUSTOM_SMSENIORITYAWARDSQUEST:Class = SMSeniorityAwardsQuest;
       
       public static const NET_WG_GUI_NOTIFICATION_CUSTOM_SMSENIORITYAWARDSTOKENS:Class = SMSeniorityAwardsTokens;
@@ -8632,6 +8648,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_NOTIFICATION_CUSTOM_VO_SMBATTLEMATTERSTASKREMINDERVO:Class = SMBattleMattersTaskReminderVO;
       
       public static const NET_WG_GUI_NOTIFICATION_CUSTOM_VO_SMCUSTOMSENIORITYAWARDSTOKENSVO:Class = SMCustomSeniorityAwardsTokensVO;
+      
+      public static const NET_WG_GUI_NOTIFICATION_CUSTOM_VO_SMFUNRANDOMREWARDVO:Class = SMFunRandomRewardVO;
       
       public static const NET_WG_GUI_NOTIFICATION_CUSTOM_VO_WOTPLUSATTENDANCEVO:Class = WotPlusAttendanceVO;
       

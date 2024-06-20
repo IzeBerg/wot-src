@@ -54,6 +54,12 @@ package net.wg.data.constants.generated
       public static const GUN_TAG_SHOT_RESULT_TYPES:Array = [0,2,3,6,9,12];
       
       public static const DISPERSION_CIRCLE_RELOADING_TYPES:Array = [0,1,2];
+      
+      public static const AIM_DAMAGE_STAGE_0:String = "stage0";
+      
+      public static const AIM_DAMAGE_STAGE_1:String = "stage1";
+      
+      public static const AIM_DAMAGE_STAGE_2:String = "stage2";
        
       
       public function GUN_MARKER_VIEW_CONSTANTS()

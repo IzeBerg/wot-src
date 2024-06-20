@@ -492,12 +492,22 @@ msgstr ""
 "брони. Если броня под углом — может отрикошетить. Теряет бронепробиваемость "
 "с расстоянием."
 
+msgid "advanced/ARMOR_PIERCING_CR_NOT_PIERCING_DAMAGE"
+msgstr ""
+"Помимо основных плюсов и минусов, у снарядов этого типа более высокий шанс "
+"нанести урон даже при непробитии."
+
 msgid "advanced/ARMOR_PIERCING_CR_TRAY"
 msgstr ""
 "Снаряды со звёздчатым поддоном обладают стандартными для своего типа "
 "преимуществами и недостатками, однако наносимый ими урон зависит от "
 "расстоянии до цели. На дистанции до 50 метров такие боеприпасы наносят "
 "максимальный урон."
+
+msgid "advanced/ARMOR_PIERCING_NOT_PIERCING_DAMAGE"
+msgstr ""
+"Помимо основных плюсов и минусов, у снарядов этого типа более высокий шанс "
+"нанести урон даже при непробитии."
 
 msgid "advanced/ARMOR_PIERCING_TRAY"
 msgstr ""
@@ -1542,12 +1552,12 @@ msgstr ""
 msgid "battleBooster/skill/learnt"
 msgstr ""
 "(навык «{boosterName}» изучен до 100% членами экипажа, которым он доступен, "
-"и их эффективность составляет 100%)"
+"и эффективность навыков составляет 100%)"
 
 msgid "battleBooster/skill/not_learnt"
 msgstr ""
 "(навык «{boosterName}» не изучен до 100% членами экипажа, которым он "
-"доступен, или их эффективность ниже 100%)"
+"доступен, или эффективность навыков ниже 100%)"
 
 msgid "battleBooster/useless/body"
 msgstr ""
@@ -2180,6 +2190,10 @@ msgstr ""
 
 msgid "battle_royale/hangar/perf/medium_risk/header"
 msgstr "Возможно снижение производительности"
+
+msgid "battle_royale/hangar/tankSetupPanel/ability/cooldownTime"
+msgstr ""
+"{whiteSpanish_Open}%(cooldown)s{whiteSpanish_Close} с Время подготовки (с)"
 
 msgid "battle_royale/hangar/vehicle/description/china"
 msgstr ""
@@ -5566,10 +5580,10 @@ msgstr ""
 msgid "hangar/status/toRent"
 msgstr "Перейти к продлению аренды."
 
-msgid "hangar/tankCarusel/wrongSquadSPGVehicle/body"
+msgid "hangar/tankCarusel/wrongSquadTypeVehicle/body"
 msgstr "Для подтверждения готовности выберите другой тип техники."
 
-msgid "hangar/tankCarusel/wrongSquadSPGVehicle/header"
+msgid "hangar/tankCarusel/wrongSquadTypeVehicle/header"
 msgstr "Недоступно"
 
 msgid "hangar/tankCarusel/wrongSquadVehicle/body"
@@ -8869,6 +8883,36 @@ msgstr "?empty?"
 msgid "notrecruitedtankman/tankmen_bp14_4/label"
 msgstr "Боевой пропуск, четырнадцатый сезон"
 
+msgid "notrecruitedtankman/tankmen_bp14_5/desc"
+msgstr ""
+"Ричард Катленд служил в Королевском танковом полку около 30 лет и с "
+"гордостью носил чёрный берет. В начале карьеры он занимал должность "
+"механика-водителя танка Chieftain, где по большей части занимался ремонтными"
+" работами. За годы службы успел побывать мехводом и командиром на разной "
+"технике, включая Challenger 1 и 2, а также Scorpion. Кроме того, Ричард был "
+"инструктором по огневой подготовке и преподавал тактику ведения боя для "
+"вооружённых сил различных государств по всему миру."
+
+msgid "notrecruitedtankman/tankmen_bp14_5/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp14_5/label"
+msgstr "Специальное предложение Tankfest"
+
+msgid "notrecruitedtankman/tankmen_bp14_6/desc"
+msgstr ""
+"Дэвид Бэгли, также известный как «Eekeeboo» или же просто «Eek», применяет в"
+" сражениях необычную тактику, постоянно меняя технику. Во время боя он любит"
+" напевать различные мелодии, подбадривая союзников и раздражая соперников. "
+"Легенды гласят, что фирменная фраза Дэвида — «Boop of nope» — это последнее,"
+" что слышит его противник перед отправкой в Ангар."
+
+msgid "notrecruitedtankman/tankmen_bp14_6/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp14_6/label"
+msgstr "Специальное предложение Tankfest"
+
 msgid "notrecruitedtankman/tankmen_bp2_1/desc"
 msgstr ""
 "Если вы попросите характеристику на Рида у его командира, тот скорее всего "
@@ -10308,6 +10352,9 @@ msgstr "И ещё: %(count)s"
 msgid "quests/awards/additional/header"
 msgstr "Награды:"
 
+msgid "quests/awards/nearest/header"
+msgstr "Ближайшие награды:"
+
 msgid "quests/awards/vehicleRent/bottom"
 msgstr "И ещё: %(count)s"
 
@@ -11642,29 +11689,27 @@ msgstr "Низкое качество"
 msgid "squadBonus/comp7/description"
 msgstr "Играя взводом, вы можете получать дополнительные кредиты и опыт."
 
+msgid "squadBonus/comp7/noExpDescription"
+msgstr "Вы можете получить дополнительные кредиты, играя во взводе."
+
 msgid "squadBonus/complex/body"
 msgstr ""
-"Получайте дополнительные %(bonus)s к боевому опыту по итогам каждого боя, играя во взводе с другими игроками.\n"
+"Получайте дополнительные {brown_Open}%(value)s{brown_Close} к боевому опыту по итогам каждого боя, играя во взводе с другими игроками.\n"
 "\n"
 "Бонус доступен только для постоянных формирований и недоступен при создании динамического взвода."
-
-msgid "squadBonus/complex/bonusPercent"
-msgstr "%(value)s%%"
-
-msgid "squadBonus/complex/comp7/body"
-msgstr "Играя взводом, вы будете получать дополнительные кредиты и опыт."
-
-msgid "squadBonus/complex/comp7/header"
-msgstr "Бонусы за игру взводом"
 
 msgid "squadBonus/complex/header"
 msgstr "Бонус за игру взводом"
 
 msgid "squadBonus/credits/bonusWithPremium"
-msgstr "+{value}, если у вас есть Танковый премиум аккаунт;"
+msgstr ""
+"{brown_Open}+%(value)s{brown_Close}, если у вас есть Танковый премиум "
+"аккаунт;"
 
 msgid "squadBonus/credits/bonusWithoutPremium"
-msgstr "+{value}, если Танковый премиум аккаунт есть у вашего совзводного."
+msgstr ""
+"{brown_Open}+%(value)s{brown_Close}, если Танковый премиум аккаунт есть у "
+"вашего совзводного."
 
 msgid "squadBonus/credits/header"
 msgstr "Дополнительные кредиты"
@@ -11674,13 +11719,18 @@ msgstr ""
 "Играя взводом, вы можете получать дополнительные кредиты и опыт. Бонус "
 "недоступен для динамических взводов."
 
-msgid "squadBonus/experience/bonus"
+msgid "squadBonus/experience/body"
 msgstr ""
-"+{value} за игру во взводе, независимо от уровня техники, результата боя и "
-"наличия премиум аккаунта."
+"{brown_Open}+%(value)s{brown_Close} за игру во взводе, независимо от уровня "
+"техники, результата боя и наличия Премиум аккаунта."
 
 msgid "squadBonus/experience/header"
 msgstr "Дополнительный опыт"
+
+msgid "squadBonus/noExpDescription"
+msgstr ""
+"Играя взводом, вы можете получать дополнительные кредиты. Бонус недоступен "
+"для динамических взводов."
 
 msgid "squadBonus/title"
 msgstr "Бонусы за игру взводом"
@@ -11954,6 +12004,11 @@ msgstr ""
 "Доработанная система дозарядки магазина позволяет уменьшить базовое время "
 "дозарядки снарядов."
 
+msgid "tank_params/desc/autoShootClipFireRate"
+msgstr ""
+"Время между выстрелом последнего снаряда (или ствола) и заряжанием нового "
+"магазина. / Количество стволов или снарядов в магазине."
+
 msgid "tank_params/desc/avgDamage"
 msgstr ""
 "Среднее значение урона, наносимого базовым снарядом за один выстрел при "
@@ -11964,6 +12019,11 @@ msgid "tank_params/desc/avgDamagePerMinute"
 msgstr ""
 "Количество урона, потенциально наносимого противнику за 1 минуту при "
 "постоянном пробитии брони."
+
+msgid "tank_params/desc/avgDamagePerSecond"
+msgstr ""
+"Количество урона, потенциально наносимого противнику за 1 секунду при "
+"непрерывной стрельбе и постоянном пробитии брони."
 
 msgid "tank_params/desc/avgPiercingPower"
 msgstr ""
@@ -12002,6 +12062,9 @@ msgstr ""
 "Время между полной разрядкой магазина (или орудий) и полным заряжанием. / "
 "Время между выстрелом и переходом к следующему заряженному снаряду, орудию "
 "или кассете. / Количество орудий или снарядов в магазине."
+
+msgid "tank_params/desc/continuousShotsPerMinute"
+msgstr "Количество выстрелов в минуту без учёта времени перезарядки."
 
 msgid "tank_params/desc/damage"
 msgstr "Урон, наносимый базовым снарядом за один выстрел при пробитии брони."
@@ -12721,9 +12784,6 @@ msgstr "Экипаж (%d%%)"
 msgid "vehicle/dailyXPFactor"
 msgstr "Опыт за первую победу в день"
 
-msgid "vehicle/damage"
-msgstr "<h1>Урон</h1> <h2>(hp)</h2>"
-
 msgid "vehicle/deal/epic/main"
 msgstr "Машина для режима «Линия фронта»"
 
@@ -12800,9 +12860,6 @@ msgstr "Аренда от"
 msgid "vehicle/multiplied_xp"
 msgstr "Боевой опыт"
 
-msgid "vehicle/radioDistance"
-msgstr "<h1>Дальность связи</h1> <h2>(км)</h2>"
-
 msgid "vehicle/rankedBonusBattle"
 msgstr "Доступен призовой бой"
 
@@ -12860,9 +12917,6 @@ msgstr "Восстановление"
 msgid "vehicle/sell_price"
 msgstr "Продажа"
 
-msgid "vehicle/speedLimits"
-msgstr "<h1>Скорость</h1> <h2>(км/ч)</h2>"
-
 msgid "vehicle/telecomRental/remainingTime/days"
 msgstr "Осталось дней аренды: %(time)s"
 
@@ -12877,9 +12931,6 @@ msgstr "или"
 
 msgid "vehicle/trade"
 msgstr "Данная машина доступна для обмена"
-
-msgid "vehicle/turretRotationSpeed"
-msgstr "<h1>Перевод прицела</h1> <h2>(град/с)</h2>"
 
 msgid "vehicle/unlock_price"
 msgstr "Исследование"

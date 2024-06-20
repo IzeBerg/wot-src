@@ -81,14 +81,18 @@ class ActionButtonStateVO(dict):
                                           CYBERSPORT.WINDOW_UNIT_MESSAGE_FORTIFICATIONNOTAVAILABLE, {}), 
            UNIT_RESTRICTION.VEHICLE_INVALID_LEVEL: (
                                                   self.__getNotAvailableIcon() + i18n.makeString(PLATOON.MEMBERS_FOOTER_INVALIDVEHICLELEVEL), {}), 
-           UNIT_RESTRICTION.SPG_IS_FORBIDDEN: (
-                                             self.__getNotAvailableIcon() + i18n.makeString(PLATOON.MEMBERS_FOOTER_SPGFORBIDDEN), {}), 
            UNIT_RESTRICTION.SPG_IS_FULL: (
                                         self.__getNotAvailableIcon() + i18n.makeString(PLATOON.MEMBERS_FOOTER_SPGFULL), {}), 
-           UNIT_RESTRICTION.SCOUT_IS_FORBIDDEN: (
-                                               self.__getNotAvailableIcon() + i18n.makeString(PLATOON.MEMBERS_FOOTER_SCOUTFORBIDDEN), {}), 
            UNIT_RESTRICTION.SCOUT_IS_FULL: (
                                           self.__getNotAvailableIcon() + i18n.makeString(PLATOON.MEMBERS_FOOTER_SCOUTFULL), {}), 
+           UNIT_RESTRICTION.WHEELED_IS_FULL: (
+                                            self.__getNotAvailableIcon() + i18n.makeString(PLATOON.MEMBERS_FOOTER_WHEELEDFULL), {}), 
+           UNIT_RESTRICTION.MEDIUMTANK_IS_FULL: (
+                                               self.__getNotAvailableIcon() + i18n.makeString(PLATOON.MEMBERS_FOOTER_MEDIUMTANKFULL), {}), 
+           UNIT_RESTRICTION.HEAVYTANK_IS_FULL: (
+                                              self.__getNotAvailableIcon() + i18n.makeString(PLATOON.MEMBERS_FOOTER_HEAVYTANKFULL), {}), 
+           UNIT_RESTRICTION.AT_SPG_IS_FULL: (
+                                           self.__getNotAvailableIcon() + i18n.makeString(PLATOON.MEMBERS_FOOTER_AT_SPG_FULL), {}), 
            UNIT_RESTRICTION.ROTATION_GROUP_LOCKED: BoundMethodWeakref(self._rotationGroupBlockMessage), 
            UNIT_RESTRICTION.UNIT_MAINTENANCE: (
                                              CYBERSPORT.WINDOW_UNIT_MESSAGE_MAINTENANCE, {}), 

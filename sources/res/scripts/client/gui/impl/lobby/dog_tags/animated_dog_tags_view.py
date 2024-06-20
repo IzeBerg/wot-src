@@ -37,11 +37,11 @@ class AnimatedDogTagsView(ViewImpl):
     lobbyContext = dependency.descriptor(ILobbyContext)
     _COMMON_SOUND_SPACE = ACC_DASHBOARD_SOUND_SPACE
 
-    def __init__(self, layoutID=R.views.lobby.dog_tags.AnimatedDogTagsView(), initBackgroundId=0, initEngravingId=0, closeCallback=None, *args, **kwargs):
+    def __init__(self, layoutID=R.views.lobby.dog_tags.AnimatedDogTagsView(), initBackgroundId=0, initEngravingId=0, closeCallback=None, makeTopView=True, *args, **kwargs):
         settings = ViewSettings(layoutID)
         settings.args = args
         settings.kwargs = kwargs
-        settings.flags = ViewFlags.LOBBY_TOP_SUB_VIEW
+        settings.flags = ViewFlags.LOBBY_TOP_SUB_VIEW if makeTopView else ViewFlags.LOBBY_SUB_VIEW
         settings.model = AnimatedDogTagsViewModel()
         self.__initBackgroundId = initBackgroundId
         self.__initEngravingId = initEngravingId
@@ -100,9 +100,9 @@ class AnimatedDogTagsView(ViewImpl):
             return
 
     def __onClose(self):
+        self.destroyWindow()
         if callable(self.__closeCallback):
             self.__closeCallback()
-        self.destroyWindow()
 
     def __update(self):
         with self.viewModel.transaction() as (tx):

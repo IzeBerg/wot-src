@@ -132,6 +132,24 @@ package net.wg.gui.components.crosshairPanel
          return this._disposed;
       }
       
+      public function setAimDamageStage(param1:String) : void
+      {
+         var _loc2_:IGunMarker = null;
+         for each(_loc2_ in this._gunMarkers)
+         {
+            _loc2_.setAimDamageStage(param1);
+         }
+      }
+      
+      public function setZoomFactor(param1:Number) : void
+      {
+         var _loc2_:IGunMarker = null;
+         for each(_loc2_ in this._gunMarkers)
+         {
+            _loc2_.setZoomFactor(param1);
+         }
+      }
+      
       public function setDualAccActive(param1:Boolean) : void
       {
          var _loc2_:IGunMarker = null;

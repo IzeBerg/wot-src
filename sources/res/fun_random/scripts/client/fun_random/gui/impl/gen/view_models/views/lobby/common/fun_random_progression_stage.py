@@ -1,11 +1,20 @@
+from enum import Enum
 from frameworks.wulf import Array
 from frameworks.wulf import ViewModel
 from gui.impl.gen.view_models.common.missions.bonuses.item_bonus_model import ItemBonusModel
 
+class Rarity(Enum):
+    ORDINARY = 'ordinary'
+    UNUSUAL = 'unusual'
+    RARE = 'rare'
+    EPIC = 'epic'
+    LEGENDARY = 'legendary'
+
+
 class FunRandomProgressionStage(ViewModel):
     __slots__ = ()
 
-    def __init__(self, properties=3, commands=0):
+    def __init__(self, properties=5, commands=0):
         super(FunRandomProgressionStage, self).__init__(properties=properties, commands=commands)
 
     def getCurrentPoints(self):
@@ -20,11 +29,23 @@ class FunRandomProgressionStage(ViewModel):
     def setMaximumPoints(self, value):
         self._setNumber(1, value)
 
+    def getIsCompleted(self):
+        return self._getBool(2)
+
+    def setIsCompleted(self, value):
+        self._setBool(2, value)
+
+    def getRarity(self):
+        return Rarity(self._getString(3))
+
+    def setRarity(self, value):
+        self._setString(3, value.value)
+
     def getRewards(self):
-        return self._getArray(2)
+        return self._getArray(4)
 
     def setRewards(self, value):
-        self._setArray(2, value)
+        self._setArray(4, value)
 
     @staticmethod
     def getRewardsType():
@@ -34,4 +55,6 @@ class FunRandomProgressionStage(ViewModel):
         super(FunRandomProgressionStage, self)._initialize()
         self._addNumberProperty('currentPoints', -1)
         self._addNumberProperty('maximumPoints', -1)
+        self._addBoolProperty('isCompleted', False)
+        self._addStringProperty('rarity')
         self._addArrayProperty('rewards', Array())

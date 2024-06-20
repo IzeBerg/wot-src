@@ -23,6 +23,8 @@ package net.wg.gui.battle.battleRoyale.data
       
       public var header:BattleRoyaleEventHeaderVO = null;
       
+      public var mapName:String = "";
+      
       public function BattleRoyaleFullStatsVO(param1:Object = null)
       {
          this.minimapItems = [];

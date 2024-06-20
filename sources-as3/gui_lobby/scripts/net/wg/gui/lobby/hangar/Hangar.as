@@ -61,7 +61,7 @@ package net.wg.gui.lobby.hangar
       
       private static const INVALIDATE_COMP7_MODIFIERS_VISIBILITY:String = "invalidComp7Modifiers";
       
-      private static const INVALIDATE_COMP7_TOURNAMENT_BANNER_VISIBILITY:String = "invalidComp7TournamentBanner";
+      private static const INVALIDATE_EVENT_TOURNAMENT_BANNER_VISIBILITY:String = "invalidEventTournamentBanner";
       
       private static const INVALIDATE_PRESTIGE_WIDGET_VISIBILITY:String = "invalidPrestigeProgress";
       
@@ -139,9 +139,9 @@ package net.wg.gui.lobby.hangar
       
       private static const COMP7_MODIFIERS_PANEL_INJECT_OFFSET_X:int = 1;
       
-      private static const COMP7_TOURNAMENT_BANNER_OFFSET_X:int = -15;
+      private static const EVENT_TOURNAMENT_BANNER_OFFSET_X:int = -15;
       
-      private static const COMP7_TOURNAMENT_BANNER_OFFSET_Y:int = -12;
+      private static const EVENT_TOURNAMENT_BANNER_OFFSET_Y:int = -12;
       
       private static const SMALL_SCREEN_WIDTH_THRESHOLD:int = 1280;
       
@@ -232,7 +232,9 @@ package net.wg.gui.lobby.hangar
       
       private var _comp7ModifiersPanelInject:GFInjectComponent = null;
       
-      private var _comp7TournamentBanner:Comp7TournamentBannerInject = null;
+      private var _eventTournamentBanner:EventTournamentBannerInject = null;
+      
+      private var _strengthsWeaknessesPanelInject:StrengthsWeaknessesPanelInject;
       
       private var _appStage:Stage;
       
@@ -323,6 +325,10 @@ package net.wg.gui.lobby.hangar
             _loc3_ = this.vehResearchBG.getBounds(this.vehResearchBG);
             this.vehResearchBG.x = param1 - _loc3_.x - _loc3_.width - RIGHT_MARGIN >> 0;
          }
+         if(this._strengthsWeaknessesPanelInject != null)
+         {
+            this._strengthsWeaknessesPanelInject.x = param1 - this._strengthsWeaknessesPanelInject.width >> 0;
+         }
          this._helpLayout.hide();
          invalidate(ENTRY_CONT_POSITION_INVALID);
       }
@@ -383,6 +389,8 @@ package net.wg.gui.lobby.hangar
       {
          this.tryRemoveBattleRoyaleContainer();
          this.removeComp7ModifiersPanel();
+         this.removePrestigeWidgetPanel();
+         this.removeStrengthsWeaknessesPanel();
          this.bottomBg.dispose();
          this.bottomBg = null;
          this.teaser.dispose();
@@ -408,7 +416,6 @@ package net.wg.gui.lobby.hangar
          this.dqWidget = null;
          this.carouselEventEntry = null;
          this._widgetInitialized = false;
-         this.prestigeProgressInject = null;
          this.prestigeBg.dispose();
          this.prestigeBg = null;
          this._utils.data.cleanupDynamicObject(this._widgetSizes);
@@ -531,9 +538,9 @@ package net.wg.gui.lobby.hangar
             }
             this.updateEventLootBoxWidgetPosition();
          }
-         if(isInvalid(INVALIDATE_COMP7_TOURNAMENT_BANNER_VISIBILITY))
+         if(isInvalid(INVALIDATE_EVENT_TOURNAMENT_BANNER_VISIBILITY))
          {
-            this.updateComp7TournamentBannerSizeAndPosition();
+            this.updateEventTournamentBannerSizeAndPosition();
          }
          if(_loc1_)
          {
@@ -642,15 +649,44 @@ package net.wg.gui.lobby.hangar
          }
       }
       
-      public function addComp7TournamentBanner() : void
+      public function addEventTournamentBanner(param1:String) : void
       {
-         if(!this._comp7TournamentBanner)
+         if(this._eventTournamentBanner && this._eventTournamentBanner.alias != param1)
          {
-            this._comp7TournamentBanner = new Comp7TournamentBannerInject();
-            addChild(this._comp7TournamentBanner);
-            registerFlashComponentS(this._comp7TournamentBanner,HANGAR_ALIASES.COMP7_TOURNAMENT_BANNER);
+            this.removeEventTournamentBanner(this._eventTournamentBanner.alias);
          }
-         invalidate(INVALIDATE_COMP7_TOURNAMENT_BANNER_VISIBILITY);
+         if(!this._eventTournamentBanner)
+         {
+            this._eventTournamentBanner = new EventTournamentBannerInject(param1);
+            addChild(this._eventTournamentBanner);
+            registerFlashComponentS(this._eventTournamentBanner,param1);
+         }
+         invalidate(INVALIDATE_EVENT_TOURNAMENT_BANNER_VISIBILITY);
+      }
+      
+      public function addPrestigeWidget() : void
+      {
+         if(!this.prestigeProgressInject)
+         {
+            this.prestigeProgressInject = PrestigeProgressInject(this._utils.classFactory.getComponent(Linkages.PRESTIGE_HANGAR_WIDGET_UI,PrestigeProgressInject));
+            this.prestigeProgressInject.name = PrestigeProgressInject.PRESTIGE_WIDGET_NAME;
+            addChildAt(this.prestigeProgressInject,getChildIndex(this.params as DisplayObject) + 1);
+            registerFlashComponentS(this.prestigeProgressInject,HANGAR_ALIASES.PRESTIGE_PROGRESS_WIDGET);
+            invalidate(INVALIDATE_PRESTIGE_WIDGET_VISIBILITY);
+         }
+      }
+      
+      public function addStrengthsWeaknessesPanel() : void
+      {
+         if(!this._strengthsWeaknessesPanelInject)
+         {
+            this._strengthsWeaknessesPanelInject = new StrengthsWeaknessesPanelInject();
+            this._strengthsWeaknessesPanelInject.setManageSize(true);
+            this._strengthsWeaknessesPanelInject.x = _originalWidth - this._strengthsWeaknessesPanelInject.width >> 0;
+            this._strengthsWeaknessesPanelInject.y = StrengthsWeaknessesPanelInject.STRENGTHS_WEAKNESSES_PANEL_INJECT_OFFSET_Y;
+            addChild(this._strengthsWeaknessesPanelInject);
+            registerFlashComponentS(this._strengthsWeaknessesPanelInject,HANGAR_ALIASES.STRENGTHS_WEAKNESSES_PANEL);
+         }
       }
       
       public function as_closeHelpLayout() : void
@@ -692,9 +728,9 @@ package net.wg.gui.lobby.hangar
          {
             this.carousel.setRightMargin(CarouselEventEntry.WIDTH + CAROUSEL_EVENT_ENTRY_X_OFFSET);
          }
-         else if(this._comp7TournamentBanner)
+         else if(this._eventTournamentBanner)
          {
-            this.carousel.setRightMargin(this._comp7TournamentBanner.width);
+            this.carousel.setRightMargin(this._eventTournamentBanner.width);
          }
          this.carousel.addEventListener(Event.RESIZE,this.onCarouselResizeHandler);
          this.carousel.updateStage(_originalWidth,_originalHeight);
@@ -722,18 +758,6 @@ package net.wg.gui.lobby.hangar
          }
       }
       
-      public function as_setComp7TournamentBannerVisible(param1:Boolean) : void
-      {
-         if(param1 && !this._comp7TournamentBanner)
-         {
-            this.addComp7TournamentBanner();
-         }
-         if(!param1 && this._comp7TournamentBanner)
-         {
-            this.removeComp7TournamentBanner();
-         }
-      }
-      
       public function as_setControlsVisible(param1:Boolean) : void
       {
          if(param1 != this.isControlsVisible)
@@ -747,25 +771,27 @@ package net.wg.gui.lobby.hangar
          this._forcedWidgetLayout = param1;
       }
       
+      public function as_setEventTournamentBannerVisible(param1:String, param2:Boolean) : void
+      {
+         if(param2 && !this._eventTournamentBanner)
+         {
+            this.addEventTournamentBanner(param1);
+         }
+         if(!param2 && this._eventTournamentBanner)
+         {
+            this.removeEventTournamentBanner(param1);
+         }
+      }
+      
       public function as_setPrestigeWidgetVisible(param1:Boolean) : void
       {
          if(param1 && this.prestigeProgressInject == null)
          {
-            this.prestigeProgressInject = PrestigeProgressInject(this._utils.classFactory.getComponent(Linkages.PRESTIGE_HANGAR_WIDGET_UI,PrestigeProgressInject));
-            this.prestigeProgressInject.name = PrestigeProgressInject.PRESTIGE_WIDGET_NAME;
-            addChildAt(this.prestigeProgressInject,getChildIndex(this.params as DisplayObject) + 1);
-            registerFlashComponentS(this.prestigeProgressInject,HANGAR_ALIASES.PRESTIGE_PROGRESS_WIDGET);
-            invalidate(INVALIDATE_PRESTIGE_WIDGET_VISIBILITY);
+            this.addPrestigeWidget();
          }
          if(!param1 && this.prestigeProgressInject != null)
          {
-            removeChild(this.prestigeProgressInject);
-            if(isFlashComponentRegisteredS(HANGAR_ALIASES.PRESTIGE_PROGRESS_WIDGET))
-            {
-               unregisterFlashComponentS(HANGAR_ALIASES.PRESTIGE_PROGRESS_WIDGET);
-            }
-            this.prestigeProgressInject = null;
-            invalidate(INVALIDATE_PRESTIGE_WIDGET_VISIBILITY);
+            this.removePrestigeWidget();
          }
       }
       
@@ -896,18 +922,37 @@ package net.wg.gui.lobby.hangar
          invalidate(INVALIDATE_COMP7_MODIFIERS_VISIBILITY);
       }
       
-      public function removeComp7TournamentBanner() : void
+      public function removeEventTournamentBanner(param1:String) : void
       {
-         if(this._comp7TournamentBanner != null)
+         if(this._eventTournamentBanner != null && this._eventTournamentBanner.alias == param1)
          {
-            removeChild(this._comp7TournamentBanner);
-            if(!_baseDisposed && isFlashComponentRegisteredS(HANGAR_ALIASES.COMP7_TOURNAMENT_BANNER))
+            removeChild(this._eventTournamentBanner);
+            if(!_baseDisposed && isFlashComponentRegisteredS(this._eventTournamentBanner.alias))
             {
-               unregisterFlashComponentS(HANGAR_ALIASES.COMP7_TOURNAMENT_BANNER);
+               unregisterFlashComponentS(this._eventTournamentBanner.alias);
             }
-            this._comp7TournamentBanner = null;
+            this._eventTournamentBanner = null;
+            invalidate(INVALIDATE_EVENT_TOURNAMENT_BANNER_VISIBILITY);
          }
-         invalidate(INVALIDATE_COMP7_TOURNAMENT_BANNER_VISIBILITY);
+      }
+      
+      public function removePrestigeWidget() : void
+      {
+         this.removePrestigeWidgetPanel();
+         invalidate(INVALIDATE_PRESTIGE_WIDGET_VISIBILITY);
+      }
+      
+      public function removeStrengthsWeaknessesPanel() : void
+      {
+         if(this._strengthsWeaknessesPanelInject != null)
+         {
+            removeChild(this._strengthsWeaknessesPanelInject);
+            if(!_baseDisposed && isFlashComponentRegisteredS(HANGAR_ALIASES.STRENGTHS_WEAKNESSES_PANEL))
+            {
+               unregisterFlashComponentS(HANGAR_ALIASES.STRENGTHS_WEAKNESSES_PANEL);
+            }
+            this._strengthsWeaknessesPanelInject = null;
+         }
       }
       
       public function setAnimatorVisibility(param1:Boolean) : void
@@ -961,6 +1006,19 @@ package net.wg.gui.lobby.hangar
                unregisterFlashComponentS(HANGAR_ALIASES.COMP7_MODIFIERS_PANEL);
             }
             this._comp7ModifiersPanelInject = null;
+         }
+      }
+      
+      private function removePrestigeWidgetPanel() : void
+      {
+         if(this.prestigeProgressInject != null)
+         {
+            removeChild(this.prestigeProgressInject);
+            if(!_baseDisposed && isFlashComponentRegisteredS(HANGAR_ALIASES.PRESTIGE_PROGRESS_WIDGET))
+            {
+               unregisterFlashComponentS(HANGAR_ALIASES.PRESTIGE_PROGRESS_WIDGET);
+            }
+            this.prestigeProgressInject = null;
          }
       }
       
@@ -1188,7 +1246,7 @@ package net.wg.gui.lobby.hangar
       private function updateCarouselPosition() : void
       {
          this._carousel.updateCarouselPosition(_height - this._carousel.getBottom() ^ 0);
-         this.updateComp7TournamentBannerSizeAndPosition();
+         this.updateEventTournamentBannerSizeAndPosition();
          this.updateEventLootBoxWidgetPosition();
          this.updateAmmunitionPanelPosition();
          if(this._hangarViewSwitchAnimator)
@@ -1220,18 +1278,18 @@ package net.wg.gui.lobby.hangar
          }
       }
       
-      private function updateComp7TournamentBannerSizeAndPosition() : void
+      private function updateEventTournamentBannerSizeAndPosition() : void
       {
          if(!this._carousel)
          {
             return;
          }
-         if(this._comp7TournamentBanner)
+         if(this._eventTournamentBanner)
          {
-            this._comp7TournamentBanner.isExtended = this._carousel.isExtended;
-            this._carousel.setRightMargin(this._comp7TournamentBanner.width);
-            this._comp7TournamentBanner.x = this._carousel.x + this._carousel.rightArrow.x + this._carousel.rightArrow.width + COMP7_TOURNAMENT_BANNER_OFFSET_X | 0;
-            this._comp7TournamentBanner.y = this._carousel.y + this._carousel.getBottom() - this._comp7TournamentBanner.height + COMP7_TOURNAMENT_BANNER_OFFSET_Y | 0;
+            this._eventTournamentBanner.isExtended = this._carousel.isExtended || App.appHeight >= StageSizeBoundaries.HEIGHT_1080;
+            this._carousel.setRightMargin(this._eventTournamentBanner.width);
+            this._eventTournamentBanner.x = this._carousel.x + this._carousel.rightArrow.x + this._carousel.rightArrow.width + EVENT_TOURNAMENT_BANNER_OFFSET_X | 0;
+            this._eventTournamentBanner.y = this._carousel.y + this._carousel.getBottom() - this._eventTournamentBanner.height + EVENT_TOURNAMENT_BANNER_OFFSET_Y | 0;
          }
          else if(!this._carouselEventEntryVisible)
          {

@@ -42,6 +42,11 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats.nationsVehicle
          this._data = null;
       }
       
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
+      }
+      
       public function setData(param1:BattleRoyaleNationsVehiclesCounterVO) : void
       {
          var _loc2_:BattleRoyaleNationsVehiclesCounterVO = null;
@@ -157,11 +162,6 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats.nationsVehicle
             _loc5_++;
          }
          dispatchEvent(new Event(Event.RESIZE));
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
       }
    }
 }

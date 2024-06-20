@@ -1,4 +1,3 @@
-from arena_bonus_type_caps import ARENA_BONUS_TYPE_CAPS
 from debug_utils import LOG_WARNING
 from client_arena_component_system import ClientArenaComponentSystem
 from arena_components.player_type_specific_components import getDefaultComponents
@@ -39,9 +38,9 @@ class ClientArenaComponentAssembler(object):
     @staticmethod
     def _assembleBonusCapsComponents(componentSystem):
         from arena_component_system.assembler_helper import ARENA_BONUS_TYPE_CAP_COMPONENTS
+        arena = componentSystem.arena()
         for name, (bonusFlag, componentClass) in ARENA_BONUS_TYPE_CAP_COMPONENTS.iteritems():
-            isBonusTypeCapActive = ARENA_BONUS_TYPE_CAPS.checkAny(componentSystem.bonusType, bonusFlag)
-            if isBonusTypeCapActive:
+            if arena.hasBonusCap(bonusFlag):
                 ClientArenaComponentAssembler._addArenaComponent(componentSystem, name, componentClass)
 
     @staticmethod

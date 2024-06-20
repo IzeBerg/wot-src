@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
+	<presets>
+		<preset>
+			<name>comp7Tournament</name>
+			<basePreset>comp7</basePreset>
+			<components>
+				<component>
+					<name>headerWidget</name>
+					<visible>False</visible>
+				</component>
+			</components>
+		</preset>
+	</presets>
 	<queueTypePresets>
 		<item>
 			<queueType>13</queueType>
 			<guiTypes>33</guiTypes>
-			<presetName>comp7</presetName>
+			<presetName>comp7Tournament</presetName>
 		</item>
 	</queueTypePresets>
 </root>

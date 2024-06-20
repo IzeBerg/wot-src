@@ -24,6 +24,6 @@ package net.wg.gui.components.questProgress.interfaces.data
       
       function get state() : int;
       
-      function get conditionIcon() : String;
+      function get conditions() : Array;
    }
 }

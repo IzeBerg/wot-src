@@ -2551,7 +2551,7 @@
 		</ComponentPool>
 		<ComponentPool>
 			<type>SequenceComponent</type>
-			<version>2</version>
+			<version>3</version>
 			<component>
 				<objectIndex>0</objectIndex>
 				<flags>35</flags>
@@ -3789,48 +3789,26 @@
 			</component>
 		</ComponentPool>
 		<ComponentPool>
+			<type>NavmeshPatch</type>
+			<version>2</version>
+			<component>
+				<objectIndex>0</objectIndex>
+				<flags>34</flags>
+				<config>
+					<property>
+						<name>patchName</name>
+						<value>08_bigCityBombing_ai</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
 			<type>EmbeddedDecal</type>
 			<version>1</version>
 			<component>
 				<objectIndex>29</objectIndex>
 				<flags>3</flags>
 				<config>
-					<property>
-						<name>chunkItemData</name>
-						<isEditorOnly>true</isEditorOnly>
-						<section>
-							<editorOnly>
-								<hidden>true</hidden>
-								<frozen>false</frozen>
-								<groupName>group_38</groupName>
-								<groupPivotYPR>0.000000 -0.000000 0.000000</groupPivotYPR>
-							</editorOnly>
-							<visibilityMask>4294967295</visibilityMask>
-							<transform>
-								<row0>6.505087 -0.130351 -7.434165</row0>
-								<row1>3.717591 0.027309 3.252509</row1>
-								<row2>-0.002231 -0.492794 0.006688</row2>
-								<row3>37.866196 2.600217 47.480053</row3>
-							</transform>
-							<diffTex>maps/decals_pbs/Garbage_ConOpt_02_gray_AM.dds</diffTex>
-							<bumpTex>maps/decals_pbs/Garbage_ConOpt_02_NM.dds</bumpTex>
-							<hmTex>maps/decals_pbs/Garbage_ConOpt_02_GMM.dds</hmTex>
-							<addTex/>
-							<priority>16</priority>
-							<type>1</type>
-							<influence>2</influence>
-							<offsets>0.000000 0.000000 0.000000 0.000000</offsets>
-							<uvWrapping>1.000000 1.000000</uvWrapping>
-							<accurate>0</accurate>
-							<tilesFade>0.050000</tilesFade>
-							<invertDistanceFadeFlag>false</invertDistanceFadeFlag>
-							<isHidden>true</isHidden>
-							<parallax_offset>0.500000</parallax_offset>
-							<parallax_mode>0.000000</parallax_mode>
-							<parallax_amplitude>0.250000</parallax_amplitude>
-							<configUuid>90ea8dfb-f159-3430-b065-67df7c362eb6</configUuid>
-						</section>
-					</property>
 					<property>
 						<name>_upside</name>
 						<value>-0 -0 -1</value>
@@ -3842,42 +3820,6 @@
 				<flags>3</flags>
 				<config>
 					<property>
-						<name>chunkItemData</name>
-						<isEditorOnly>true</isEditorOnly>
-						<section>
-							<editorOnly>
-								<hidden>true</hidden>
-								<frozen>false</frozen>
-								<groupName>group_38</groupName>
-								<groupPivotYPR>0.000000 -0.000000 0.000000</groupPivotYPR>
-							</editorOnly>
-							<visibilityMask>4294967295</visibilityMask>
-							<transform>
-								<row0>7.430969 -0.137821 0.760949</row0>
-								<row1>-0.759905 0.062125 7.432024</row1>
-								<row2>-0.023905 -1.244935 0.007962</row2>
-								<row3>25.578110 2.842237 53.475830</row3>
-							</transform>
-							<diffTex>maps/decals_pbs/Garbage_ConOpt_04_AM.dds</diffTex>
-							<bumpTex>maps/decals_pbs/Garbage_ConOpt_04_NM.dds</bumpTex>
-							<hmTex>maps/decals_pbs/Garbage_ConOpt_04_GMM.dds</hmTex>
-							<addTex/>
-							<priority>2</priority>
-							<type>1</type>
-							<influence>2</influence>
-							<offsets>0.000000 0.000000 0.000000 0.000000</offsets>
-							<uvWrapping>1.000000 1.000000</uvWrapping>
-							<accurate>0</accurate>
-							<tilesFade>0.050000</tilesFade>
-							<invertDistanceFadeFlag>false</invertDistanceFadeFlag>
-							<isHidden>true</isHidden>
-							<parallax_offset>0.500000</parallax_offset>
-							<parallax_mode>0.000000</parallax_mode>
-							<parallax_amplitude>0.350000</parallax_amplitude>
-							<configUuid>b4005999-e3c4-3073-ba65-c58c58e5badd</configUuid>
-						</section>
-					</property>
-					<property>
 						<name>_upside</name>
 						<value>-0 -0 -1</value>
 					</property>
@@ -3887,42 +3829,6 @@
 				<objectIndex>31</objectIndex>
 				<flags>3</flags>
 				<config>
-					<property>
-						<name>chunkItemData</name>
-						<isEditorOnly>true</isEditorOnly>
-						<section>
-							<editorOnly>
-								<hidden>true</hidden>
-								<frozen>false</frozen>
-								<groupName>group_38</groupName>
-								<groupPivotYPR>0.000000 -0.000000 0.000000</groupPivotYPR>
-							</editorOnly>
-							<visibilityMask>4294967295</visibilityMask>
-							<transform>
-								<row0>-5.856379 -0.081671 -1.302362</row0>
-								<row1>1.737095 -0.035214 -7.809050</row1>
-								<row2>0.006166 -0.499949 0.003626</row2>
-								<row3>47.214249 2.478865 65.175247</row3>
-							</transform>
-							<diffTex>maps/decals_pbs/Sand_Dunes_Small_00333_AM.dds</diffTex>
-							<bumpTex>maps/decals_pbs/Sand_Dunes_Small_00328_NM.dds</bumpTex>
-							<hmTex>maps/decals_pbs/Sand_Dunes_Small_00328_GMM.dds</hmTex>
-							<addTex/>
-							<priority>1024</priority>
-							<type>1</type>
-							<influence>2</influence>
-							<offsets>0.000000 0.000000 0.000000 0.000000</offsets>
-							<uvWrapping>1.000000 1.000000</uvWrapping>
-							<accurate>0</accurate>
-							<tilesFade>0.050000</tilesFade>
-							<invertDistanceFadeFlag>false</invertDistanceFadeFlag>
-							<isHidden>true</isHidden>
-							<parallax_offset>0.500000</parallax_offset>
-							<parallax_mode>0.000000</parallax_mode>
-							<parallax_amplitude>0.010000</parallax_amplitude>
-							<configUuid>d31ed341-7b3f-3ae9-a332-9ee9ea0ae723</configUuid>
-						</section>
-					</property>
 					<property>
 						<name>_upside</name>
 						<value>-0 -0 -1</value>
@@ -3934,42 +3840,6 @@
 				<flags>3</flags>
 				<config>
 					<property>
-						<name>chunkItemData</name>
-						<isEditorOnly>true</isEditorOnly>
-						<section>
-							<editorOnly>
-								<hidden>true</hidden>
-								<frozen>false</frozen>
-								<groupName>group_38</groupName>
-								<groupPivotYPR>0.000000 -0.000000 0.000000</groupPivotYPR>
-							</editorOnly>
-							<visibilityMask>4294967295</visibilityMask>
-							<transform>
-								<row0>-3.521266 0.281492 -7.177843</row0>
-								<row1>3.591145 -0.000003 -1.761724</row1>
-								<row2>-0.007749 -0.499691 -0.015795</row2>
-								<row3>42.539291 2.455402 66.097862</row3>
-							</transform>
-							<diffTex>maps/decals_pbs/Garbage_ConOpt_02_gray_AM.dds</diffTex>
-							<bumpTex>maps/decals_pbs/Garbage_ConOpt_02_NM.dds</bumpTex>
-							<hmTex>maps/decals_pbs/Garbage_ConOpt_02_GMM.dds</hmTex>
-							<addTex/>
-							<priority>62</priority>
-							<type>1</type>
-							<influence>2</influence>
-							<offsets>0.000000 0.000000 0.000000 0.000000</offsets>
-							<uvWrapping>1.000000 1.000000</uvWrapping>
-							<accurate>0</accurate>
-							<tilesFade>0.050000</tilesFade>
-							<invertDistanceFadeFlag>false</invertDistanceFadeFlag>
-							<isHidden>true</isHidden>
-							<parallax_offset>0.500000</parallax_offset>
-							<parallax_mode>0.000000</parallax_mode>
-							<parallax_amplitude>0.250000</parallax_amplitude>
-							<configUuid>1316bc92-975b-3727-9e0c-367aaa0db10c</configUuid>
-						</section>
-					</property>
-					<property>
 						<name>_upside</name>
 						<value>-0 -0 -1</value>
 					</property>
@@ -3979,42 +3849,6 @@
 				<objectIndex>33</objectIndex>
 				<flags>3</flags>
 				<config>
-					<property>
-						<name>chunkItemData</name>
-						<isEditorOnly>true</isEditorOnly>
-						<section>
-							<editorOnly>
-								<hidden>true</hidden>
-								<frozen>false</frozen>
-								<groupName>group_38</groupName>
-								<groupPivotYPR>0.000000 -0.000000 0.000000</groupPivotYPR>
-							</editorOnly>
-							<visibilityMask>4294967295</visibilityMask>
-							<transform>
-								<row0>2.855793 0.281411 -7.467615</row0>
-								<row1>3.736120 -0.000004 1.428781</row1>
-								<row2>0.006282 -0.499691 -0.016428</row2>
-								<row3>40.021103 2.478915 68.360542</row3>
-							</transform>
-							<diffTex>maps/decals_pbs/Garbage_ConOpt_02_gray_AM.dds</diffTex>
-							<bumpTex>maps/decals_pbs/Garbage_ConOpt_02_NM.dds</bumpTex>
-							<hmTex>maps/decals_pbs/Garbage_ConOpt_02_GMM.dds</hmTex>
-							<addTex/>
-							<priority>56</priority>
-							<type>1</type>
-							<influence>2</influence>
-							<offsets>0.000000 0.000000 0.000000 0.000000</offsets>
-							<uvWrapping>1.000000 1.000000</uvWrapping>
-							<accurate>0</accurate>
-							<tilesFade>0.050000</tilesFade>
-							<invertDistanceFadeFlag>false</invertDistanceFadeFlag>
-							<isHidden>true</isHidden>
-							<parallax_offset>0.500000</parallax_offset>
-							<parallax_mode>0.000000</parallax_mode>
-							<parallax_amplitude>0.250000</parallax_amplitude>
-							<configUuid>fb5753c4-fb8e-3067-b6e4-90f637a5a94a</configUuid>
-						</section>
-					</property>
 					<property>
 						<name>_upside</name>
 						<value>-0 -0 -1</value>
@@ -4026,42 +3860,6 @@
 				<flags>3</flags>
 				<config>
 					<property>
-						<name>chunkItemData</name>
-						<isEditorOnly>true</isEditorOnly>
-						<section>
-							<editorOnly>
-								<hidden>true</hidden>
-								<frozen>false</frozen>
-								<groupName>group_38</groupName>
-								<groupPivotYPR>0.000000 -0.000000 0.000000</groupPivotYPR>
-							</editorOnly>
-							<visibilityMask>4294967295</visibilityMask>
-							<transform>
-								<row0>-1.260643 0.281413 -7.895036</row0>
-								<row1>3.949962 -0.000003 -0.630712</row1>
-								<row2>-0.002774 -0.499691 -0.017368</row2>
-								<row3>42.877548 2.498190 62.415241</row3>
-							</transform>
-							<diffTex>maps/decals_pbs/Garbage_ConOpt_02_gray_AM.dds</diffTex>
-							<bumpTex>maps/decals_pbs/Garbage_ConOpt_02_NM.dds</bumpTex>
-							<hmTex>maps/decals_pbs/Garbage_ConOpt_02_GMM.dds</hmTex>
-							<addTex/>
-							<priority>64</priority>
-							<type>1</type>
-							<influence>2</influence>
-							<offsets>0.000000 0.000000 0.000000 0.000000</offsets>
-							<uvWrapping>1.000000 1.000000</uvWrapping>
-							<accurate>0</accurate>
-							<tilesFade>0.050000</tilesFade>
-							<invertDistanceFadeFlag>false</invertDistanceFadeFlag>
-							<isHidden>true</isHidden>
-							<parallax_offset>0.500000</parallax_offset>
-							<parallax_mode>0.000000</parallax_mode>
-							<parallax_amplitude>0.250000</parallax_amplitude>
-							<configUuid>ff0d767d-e40d-3cbc-8424-aac94047f2b9</configUuid>
-						</section>
-					</property>
-					<property>
 						<name>_upside</name>
 						<value>-0 -0 -1</value>
 					</property>
@@ -4071,42 +3869,6 @@
 				<objectIndex>35</objectIndex>
 				<flags>3</flags>
 				<config>
-					<property>
-						<name>chunkItemData</name>
-						<isEditorOnly>true</isEditorOnly>
-						<section>
-							<editorOnly>
-								<hidden>true</hidden>
-								<frozen>false</frozen>
-								<groupName>group_38</groupName>
-								<groupPivotYPR>0.000000 -0.000000 0.000000</groupPivotYPR>
-							</editorOnly>
-							<visibilityMask>4294967295</visibilityMask>
-							<transform>
-								<row0>-4.031404 0.225129 -4.965591</row0>
-								<row1>2.484333 -0.000001 -2.016951</row1>
-								<row2>-0.011086 -0.499690 -0.013655</row2>
-								<row3>45.442398 2.432582 69.142044</row3>
-							</transform>
-							<diffTex>maps/decals_pbs/Garbage_ConOpt_02_gray_AM.dds</diffTex>
-							<bumpTex>maps/decals_pbs/Garbage_ConOpt_02_NM.dds</bumpTex>
-							<hmTex>maps/decals_pbs/Garbage_ConOpt_02_GMM.dds</hmTex>
-							<addTex/>
-							<priority>62</priority>
-							<type>1</type>
-							<influence>2</influence>
-							<offsets>0.000000 0.000000 0.000000 0.000000</offsets>
-							<uvWrapping>1.000000 1.000000</uvWrapping>
-							<accurate>0</accurate>
-							<tilesFade>0.050000</tilesFade>
-							<invertDistanceFadeFlag>false</invertDistanceFadeFlag>
-							<isHidden>true</isHidden>
-							<parallax_offset>0.500000</parallax_offset>
-							<parallax_mode>0.000000</parallax_mode>
-							<parallax_amplitude>0.100000</parallax_amplitude>
-							<configUuid>63c144b3-4504-36f5-a714-5bb420533f79</configUuid>
-						</section>
-					</property>
 					<property>
 						<name>_upside</name>
 						<value>-0 -0 -1</value>
@@ -4118,42 +3880,6 @@
 				<flags>3</flags>
 				<config>
 					<property>
-						<name>chunkItemData</name>
-						<isEditorOnly>true</isEditorOnly>
-						<section>
-							<editorOnly>
-								<hidden>true</hidden>
-								<frozen>false</frozen>
-								<groupName>group_38</groupName>
-								<groupPivotYPR>0.000000 -0.000000 0.000000</groupPivotYPR>
-							</editorOnly>
-							<visibilityMask>4294967295</visibilityMask>
-							<transform>
-								<row0>-1.556447 0.347517 -9.749711</row0>
-								<row1>4.877874 -0.000008 -0.778706</row1>
-								<row2>-0.002734 -0.492539 -0.017120</row2>
-								<row3>44.664047 2.595073 49.350960</row3>
-							</transform>
-							<diffTex>maps/decals_pbs/Garbage_ConOpt_02_gray_AM.dds</diffTex>
-							<bumpTex>maps/decals_pbs/Garbage_ConOpt_02_NM.dds</bumpTex>
-							<hmTex>maps/decals_pbs/Garbage_ConOpt_02_GMM.dds</hmTex>
-							<addTex/>
-							<priority>18</priority>
-							<type>1</type>
-							<influence>2</influence>
-							<offsets>0.000000 0.000000 0.000000 0.000000</offsets>
-							<uvWrapping>1.000000 1.000000</uvWrapping>
-							<accurate>0</accurate>
-							<tilesFade>0.050000</tilesFade>
-							<invertDistanceFadeFlag>false</invertDistanceFadeFlag>
-							<isHidden>true</isHidden>
-							<parallax_offset>0.500000</parallax_offset>
-							<parallax_mode>0.000000</parallax_mode>
-							<parallax_amplitude>0.250000</parallax_amplitude>
-							<configUuid>67b85cd0-ab55-3066-b8bb-3862444c34e2</configUuid>
-						</section>
-					</property>
-					<property>
 						<name>_upside</name>
 						<value>-0 -0 -1</value>
 					</property>
@@ -4163,42 +3889,6 @@
 				<objectIndex>37</objectIndex>
 				<flags>3</flags>
 				<config>
-					<property>
-						<name>chunkItemData</name>
-						<isEditorOnly>true</isEditorOnly>
-						<section>
-							<editorOnly>
-								<hidden>true</hidden>
-								<frozen>false</frozen>
-								<groupName>group_38</groupName>
-								<groupPivotYPR>0.000000 -0.000000 0.000000</groupPivotYPR>
-							</editorOnly>
-							<visibilityMask>4294967295</visibilityMask>
-							<transform>
-								<row0>10.779961 -0.148395 1.635297</row0>
-								<row1>-2.012873 -0.059055 13.263600</row1>
-								<row2>-0.014304 -1.117855 -0.007148</row2>
-								<row3>48.663849 2.479116 56.012070</row3>
-							</transform>
-							<diffTex>maps/decals_pbs/Sand_Dunes_Small_00333_AM.dds</diffTex>
-							<bumpTex>maps/decals_pbs/Sand_Dunes_Small_00328_NM.dds</bumpTex>
-							<hmTex>maps/decals_pbs/Sand_Dunes_Small_00328_GMM.dds</hmTex>
-							<addTex/>
-							<priority>1024</priority>
-							<type>1</type>
-							<influence>2</influence>
-							<offsets>0.000000 0.000000 0.000000 0.000000</offsets>
-							<uvWrapping>1.000000 1.000000</uvWrapping>
-							<accurate>0</accurate>
-							<tilesFade>0.050000</tilesFade>
-							<invertDistanceFadeFlag>false</invertDistanceFadeFlag>
-							<isHidden>true</isHidden>
-							<parallax_offset>0.500000</parallax_offset>
-							<parallax_mode>0.000000</parallax_mode>
-							<parallax_amplitude>0.010000</parallax_amplitude>
-							<configUuid>5eeebbf7-7009-30a7-80a1-4c3e25f4ea2e</configUuid>
-						</section>
-					</property>
 					<property>
 						<name>_upside</name>
 						<value>-0 -0 -1</value>
@@ -4210,42 +3900,6 @@
 				<flags>3</flags>
 				<config>
 					<property>
-						<name>chunkItemData</name>
-						<isEditorOnly>true</isEditorOnly>
-						<section>
-							<editorOnly>
-								<hidden>true</hidden>
-								<frozen>false</frozen>
-								<groupName>group_38</groupName>
-								<groupPivotYPR>0.000000 -0.000000 0.000000</groupPivotYPR>
-							</editorOnly>
-							<visibilityMask>4294967295</visibilityMask>
-							<transform>
-								<row0>3.787848 -0.078235 4.652535</row0>
-								<row1>-4.652560 0.035313 3.788462</row1>
-								<row2>-0.006398 -0.499949 -0.003198</row2>
-								<row3>47.116348 2.647875 59.719311</row3>
-							</transform>
-							<diffTex>maps/decals_pbs/Garbage_ConOpt_04_AM.dds</diffTex>
-							<bumpTex>maps/decals_pbs/Garbage_ConOpt_04_NM.dds</bumpTex>
-							<hmTex>maps/decals_pbs/Garbage_ConOpt_04_GMM.dds</hmTex>
-							<addTex/>
-							<priority>16</priority>
-							<type>1</type>
-							<influence>2</influence>
-							<offsets>0.000000 0.000000 0.000000 0.000000</offsets>
-							<uvWrapping>1.000000 1.000000</uvWrapping>
-							<accurate>0</accurate>
-							<tilesFade>0.050000</tilesFade>
-							<invertDistanceFadeFlag>false</invertDistanceFadeFlag>
-							<isHidden>true</isHidden>
-							<parallax_offset>0.500000</parallax_offset>
-							<parallax_mode>0.000000</parallax_mode>
-							<parallax_amplitude>0.350000</parallax_amplitude>
-							<configUuid>6a0fd56c-9db6-3ce3-9822-65699989c903</configUuid>
-						</section>
-					</property>
-					<property>
 						<name>_upside</name>
 						<value>-0 -0 -1</value>
 					</property>
@@ -4255,42 +3909,6 @@
 				<objectIndex>39</objectIndex>
 				<flags>3</flags>
 				<config>
-					<property>
-						<name>chunkItemData</name>
-						<isEditorOnly>true</isEditorOnly>
-						<section>
-							<editorOnly>
-								<hidden>true</hidden>
-								<frozen>false</frozen>
-								<groupName>group_38</groupName>
-								<groupPivotYPR>0.000000 -0.000000 0.000000</groupPivotYPR>
-							</editorOnly>
-							<visibilityMask>4294967295</visibilityMask>
-							<transform>
-								<row0>9.661889 -0.107439 -7.115923</row0>
-								<row1>5.930266 0.013610 8.051818</row1>
-								<row2>-0.003201 -0.499980 0.003203</row2>
-								<row3>49.254257 2.514425 48.604221</row3>
-							</transform>
-							<diffTex>maps/decals_pbs/Sand_Dunes_Small_00333_AM.dds</diffTex>
-							<bumpTex>maps/decals_pbs/Sand_Dunes_Small_00328_NM.dds</bumpTex>
-							<hmTex>maps/decals_pbs/Sand_Dunes_Small_00328_GMM.dds</hmTex>
-							<addTex/>
-							<priority>8</priority>
-							<type>1</type>
-							<influence>2</influence>
-							<offsets>0.000000 0.000000 0.000000 0.000000</offsets>
-							<uvWrapping>1.000000 1.000000</uvWrapping>
-							<accurate>0</accurate>
-							<tilesFade>0.050000</tilesFade>
-							<invertDistanceFadeFlag>false</invertDistanceFadeFlag>
-							<isHidden>true</isHidden>
-							<parallax_offset>0.500000</parallax_offset>
-							<parallax_mode>0.000000</parallax_mode>
-							<parallax_amplitude>0.010000</parallax_amplitude>
-							<configUuid>7403d2ba-4391-31af-b522-16deee94999f</configUuid>
-						</section>
-					</property>
 					<property>
 						<name>_upside</name>
 						<value>-0 -0 -1</value>
@@ -4302,42 +3920,6 @@
 				<flags>3</flags>
 				<config>
 					<property>
-						<name>chunkItemData</name>
-						<isEditorOnly>true</isEditorOnly>
-						<section>
-							<editorOnly>
-								<hidden>true</hidden>
-								<frozen>false</frozen>
-								<groupName>group_38</groupName>
-								<groupPivotYPR>0.000000 -0.000000 0.000000</groupPivotYPR>
-							</editorOnly>
-							<visibilityMask>4294967295</visibilityMask>
-							<transform>
-								<row0>-3.722105 0.003115 3.030828</row0>
-								<row1>-3.030753 0.030497 -3.722043</row1>
-								<row2>-0.004334 -0.959981 -0.004336</row2>
-								<row3>45.667191 2.298186 57.193562</row3>
-							</transform>
-							<diffTex>maps/decals_pbs/Garbage_ConOpt_04_AM.dds</diffTex>
-							<bumpTex>maps/decals_pbs/Garbage_ConOpt_04_NM.dds</bumpTex>
-							<hmTex>maps/decals_pbs/Garbage_ConOpt_04_GMM.dds</hmTex>
-							<addTex/>
-							<priority>1030</priority>
-							<type>1</type>
-							<influence>2</influence>
-							<offsets>0.000000 0.000000 0.000000 0.000000</offsets>
-							<uvWrapping>1.000000 1.000000</uvWrapping>
-							<accurate>0</accurate>
-							<tilesFade>0.050000</tilesFade>
-							<invertDistanceFadeFlag>false</invertDistanceFadeFlag>
-							<isHidden>true</isHidden>
-							<parallax_offset>0.500000</parallax_offset>
-							<parallax_mode>0.000000</parallax_mode>
-							<parallax_amplitude>0.300000</parallax_amplitude>
-							<configUuid>82b1fcc7-a3e0-330b-ac30-7bb0dd28123d</configUuid>
-						</section>
-					</property>
-					<property>
 						<name>_upside</name>
 						<value>-0 -0 -1</value>
 					</property>
@@ -4347,42 +3929,6 @@
 				<objectIndex>41</objectIndex>
 				<flags>3</flags>
 				<config>
-					<property>
-						<name>chunkItemData</name>
-						<isEditorOnly>true</isEditorOnly>
-						<section>
-							<editorOnly>
-								<hidden>true</hidden>
-								<frozen>false</frozen>
-								<groupName>group_38</groupName>
-								<groupPivotYPR>0.000000 -0.000000 0.000000</groupPivotYPR>
-							</editorOnly>
-							<visibilityMask>4294967295</visibilityMask>
-							<transform>
-								<row0>5.179209 0.225147 3.753013</row0>
-								<row1>-1.877669 -0.000003 2.591209</row1>
-								<row2>0.014243 -0.499690 0.010321</row2>
-								<row3>43.421982 2.420711 70.224442</row3>
-							</transform>
-							<diffTex>maps/decals_pbs/Garbage_ConOpt_02_gray_AM.dds</diffTex>
-							<bumpTex>maps/decals_pbs/Garbage_ConOpt_02_NM.dds</bumpTex>
-							<hmTex>maps/decals_pbs/Garbage_ConOpt_02_GMM.dds</hmTex>
-							<addTex/>
-							<priority>55</priority>
-							<type>1</type>
-							<influence>2</influence>
-							<offsets>0.000000 0.000000 0.000000 0.000000</offsets>
-							<uvWrapping>1.000000 1.000000</uvWrapping>
-							<accurate>0</accurate>
-							<tilesFade>0.050000</tilesFade>
-							<invertDistanceFadeFlag>false</invertDistanceFadeFlag>
-							<isHidden>true</isHidden>
-							<parallax_offset>0.500000</parallax_offset>
-							<parallax_mode>0.000000</parallax_mode>
-							<parallax_amplitude>0.100000</parallax_amplitude>
-							<configUuid>82bdbf26-56d6-3b0b-8d39-22b0569e9e20</configUuid>
-						</section>
-					</property>
 					<property>
 						<name>_upside</name>
 						<value>-0 -0 -1</value>
@@ -4394,42 +3940,6 @@
 				<flags>3</flags>
 				<config>
 					<property>
-						<name>chunkItemData</name>
-						<isEditorOnly>true</isEditorOnly>
-						<section>
-							<editorOnly>
-								<hidden>true</hidden>
-								<frozen>false</frozen>
-								<groupName>group_38</groupName>
-								<groupPivotYPR>0.000000 -0.000000 0.000000</groupPivotYPR>
-							</editorOnly>
-							<visibilityMask>4294967295</visibilityMask>
-							<transform>
-								<row0>7.093036 -0.108872 3.698240</row0>
-								<row1>-4.623715 -0.044019 8.866753</row1>
-								<row2>-0.005016 -0.499949 -0.005098</row2>
-								<row3>46.618286 2.446321 71.516388</row3>
-							</transform>
-							<diffTex>maps/decals_pbs/Sand_Dunes_Small_00333_AM.dds</diffTex>
-							<bumpTex>maps/decals_pbs/Sand_Dunes_Small_00328_NM.dds</bumpTex>
-							<hmTex>maps/decals_pbs/Sand_Dunes_Small_00328_GMM.dds</hmTex>
-							<addTex/>
-							<priority>1024</priority>
-							<type>1</type>
-							<influence>2</influence>
-							<offsets>0.000000 0.000000 0.000000 0.000000</offsets>
-							<uvWrapping>1.000000 1.000000</uvWrapping>
-							<accurate>0</accurate>
-							<tilesFade>0.050000</tilesFade>
-							<invertDistanceFadeFlag>false</invertDistanceFadeFlag>
-							<isHidden>true</isHidden>
-							<parallax_offset>0.500000</parallax_offset>
-							<parallax_mode>0.000000</parallax_mode>
-							<parallax_amplitude>0.010000</parallax_amplitude>
-							<configUuid>de83ba4e-fdbd-390f-9e61-09114ac6af7e</configUuid>
-						</section>
-					</property>
-					<property>
 						<name>_upside</name>
 						<value>-0 -0 -1</value>
 					</property>
@@ -4439,42 +3949,6 @@
 				<objectIndex>43</objectIndex>
 				<flags>3</flags>
 				<config>
-					<property>
-						<name>chunkItemData</name>
-						<isEditorOnly>true</isEditorOnly>
-						<section>
-							<editorOnly>
-								<hidden>true</hidden>
-								<frozen>false</frozen>
-								<groupName>group_38</groupName>
-								<groupPivotYPR>0.000000 -0.000000 0.000000</groupPivotYPR>
-							</editorOnly>
-							<visibilityMask>4294967295</visibilityMask>
-							<transform>
-								<row0>0.763478 0.003115 4.738892</row0>
-								<row1>-4.738800 0.030496 0.763444</row1>
-								<row2>-0.005922 -0.959981 0.001585</row2>
-								<row3>45.304810 2.468922 54.369282</row3>
-							</transform>
-							<diffTex>maps/decals_pbs/Garbage_ConOpt_04_AM.dds</diffTex>
-							<bumpTex>maps/decals_pbs/Garbage_ConOpt_04_NM.dds</bumpTex>
-							<hmTex>maps/decals_pbs/Garbage_ConOpt_04_GMM.dds</hmTex>
-							<addTex/>
-							<priority>1032</priority>
-							<type>1</type>
-							<influence>2</influence>
-							<offsets>0.000000 0.000000 0.000000 0.000000</offsets>
-							<uvWrapping>1.000000 1.000000</uvWrapping>
-							<accurate>0</accurate>
-							<tilesFade>0.050000</tilesFade>
-							<invertDistanceFadeFlag>false</invertDistanceFadeFlag>
-							<isHidden>true</isHidden>
-							<parallax_offset>0.500000</parallax_offset>
-							<parallax_mode>0.000000</parallax_mode>
-							<parallax_amplitude>0.300000</parallax_amplitude>
-							<configUuid>d472b3b8-98c8-3a40-a79e-93eaf26adb94</configUuid>
-						</section>
-					</property>
 					<property>
 						<name>_upside</name>
 						<value>-0 -0 -1</value>
@@ -4486,42 +3960,6 @@
 				<flags>3</flags>
 				<config>
 					<property>
-						<name>chunkItemData</name>
-						<isEditorOnly>true</isEditorOnly>
-						<section>
-							<editorOnly>
-								<hidden>true</hidden>
-								<frozen>false</frozen>
-								<groupName>group_38</groupName>
-								<groupPivotYPR>0.000000 -0.000000 0.000000</groupPivotYPR>
-							</editorOnly>
-							<visibilityMask>4294967295</visibilityMask>
-							<transform>
-								<row0>-1.109810 -0.089634 -9.937820</row0>
-								<row1>9.938197 0.013620 -1.109976</row1>
-								<row2>0.001174 -0.499979 0.004378</row2>
-								<row3>39.481537 2.588669 41.467190</row3>
-							</transform>
-							<diffTex>maps/decals_pbs/Sand_Dunes_Small_00333_AM.dds</diffTex>
-							<bumpTex>maps/decals_pbs/Sand_Dunes_Small_00328_NM.dds</bumpTex>
-							<hmTex>maps/decals_pbs/Sand_Dunes_Small_00328_GMM.dds</hmTex>
-							<addTex/>
-							<priority>64</priority>
-							<type>1</type>
-							<influence>2</influence>
-							<offsets>0.000000 0.000000 0.000000 0.000000</offsets>
-							<uvWrapping>1.000000 1.000000</uvWrapping>
-							<accurate>0</accurate>
-							<tilesFade>0.050000</tilesFade>
-							<invertDistanceFadeFlag>false</invertDistanceFadeFlag>
-							<isHidden>true</isHidden>
-							<parallax_offset>0.500000</parallax_offset>
-							<parallax_mode>0.000000</parallax_mode>
-							<parallax_amplitude>0.010000</parallax_amplitude>
-							<configUuid>d30681bf-edde-3820-a2c2-640959817eca</configUuid>
-						</section>
-					</property>
-					<property>
 						<name>_upside</name>
 						<value>-0 -0 -1</value>
 					</property>
@@ -4531,42 +3969,6 @@
 				<objectIndex>45</objectIndex>
 				<flags>3</flags>
 				<config>
-					<property>
-						<name>chunkItemData</name>
-						<isEditorOnly>true</isEditorOnly>
-						<section>
-							<editorOnly>
-								<hidden>true</hidden>
-								<frozen>false</frozen>
-								<groupName>group_38</groupName>
-								<groupPivotYPR>0.000000 -0.000000 0.000000</groupPivotYPR>
-							</editorOnly>
-							<visibilityMask>4294967295</visibilityMask>
-							<transform>
-								<row0>-7.299723 0.281433 3.261106</row0>
-								<row1>-1.631563 -0.000005 -3.652122</row1>
-								<row2>-0.016059 -0.499690 0.007175</row2>
-								<row3>40.451019 2.468316 72.578552</row3>
-							</transform>
-							<diffTex>maps/decals_pbs/Garbage_ConOpt_02_gray_AM.dds</diffTex>
-							<bumpTex>maps/decals_pbs/Garbage_ConOpt_02_NM.dds</bumpTex>
-							<hmTex>maps/decals_pbs/Garbage_ConOpt_02_GMM.dds</hmTex>
-							<addTex/>
-							<priority>66</priority>
-							<type>1</type>
-							<influence>2</influence>
-							<offsets>0.000000 0.000000 0.000000 0.000000</offsets>
-							<uvWrapping>1.000000 1.000000</uvWrapping>
-							<accurate>0</accurate>
-							<tilesFade>0.050000</tilesFade>
-							<invertDistanceFadeFlag>false</invertDistanceFadeFlag>
-							<isHidden>true</isHidden>
-							<parallax_offset>0.500000</parallax_offset>
-							<parallax_mode>0.000000</parallax_mode>
-							<parallax_amplitude>0.250000</parallax_amplitude>
-							<configUuid>b7d8a98e-2b08-39ec-9e3a-501d0f31e5ac</configUuid>
-						</section>
-					</property>
 					<property>
 						<name>_upside</name>
 						<value>-0 -0 -1</value>
@@ -4578,42 +3980,6 @@
 				<flags>3</flags>
 				<config>
 					<property>
-						<name>chunkItemData</name>
-						<isEditorOnly>true</isEditorOnly>
-						<section>
-							<editorOnly>
-								<hidden>true</hidden>
-								<frozen>false</frozen>
-								<groupName>group_38</groupName>
-								<groupPivotYPR>0.000000 -0.000000 0.000000</groupPivotYPR>
-							</editorOnly>
-							<visibilityMask>4294967295</visibilityMask>
-							<transform>
-								<row0>-4.008068 -0.089634 9.161186</row0>
-								<row1>-9.161594 0.013620 -4.008114</row1>
-								<row2>0.001172 -0.499979 -0.004379</row2>
-								<row3>46.325500 2.560545 43.158241</row3>
-							</transform>
-							<diffTex>maps/decals_pbs/Sand_Dunes_Small_00333_AM.dds</diffTex>
-							<bumpTex>maps/decals_pbs/Sand_Dunes_Small_00328_NM.dds</bumpTex>
-							<hmTex>maps/decals_pbs/Sand_Dunes_Small_00328_GMM.dds</hmTex>
-							<addTex/>
-							<priority>6</priority>
-							<type>1</type>
-							<influence>2</influence>
-							<offsets>0.000000 0.000000 0.000000 0.000000</offsets>
-							<uvWrapping>1.000000 1.000000</uvWrapping>
-							<accurate>0</accurate>
-							<tilesFade>0.050000</tilesFade>
-							<invertDistanceFadeFlag>false</invertDistanceFadeFlag>
-							<isHidden>true</isHidden>
-							<parallax_offset>0.500000</parallax_offset>
-							<parallax_mode>0.000000</parallax_mode>
-							<parallax_amplitude>0.010000</parallax_amplitude>
-							<configUuid>7569ff82-3023-3bbf-9db2-c6d56960c886</configUuid>
-						</section>
-					</property>
-					<property>
 						<name>_upside</name>
 						<value>-0 -0 -1</value>
 					</property>
@@ -4623,42 +3989,6 @@
 				<objectIndex>47</objectIndex>
 				<flags>3</flags>
 				<config>
-					<property>
-						<name>chunkItemData</name>
-						<isEditorOnly>true</isEditorOnly>
-						<section>
-							<editorOnly>
-								<hidden>true</hidden>
-								<frozen>false</frozen>
-								<groupName>group_38</groupName>
-								<groupPivotYPR>0.000000 -0.000000 0.000000</groupPivotYPR>
-							</editorOnly>
-							<visibilityMask>4294967295</visibilityMask>
-							<transform>
-								<row0>9.855369 -0.199901 -0.657058</row0>
-								<row1>0.328583 -0.000666 4.928689</row1>
-								<row2>-0.009955 -0.492743 0.000597</row2>
-								<row3>30.424728 2.943436 49.805653</row3>
-							</transform>
-							<diffTex>maps/decals_pbs/Garbage_ConOpt_02_gray_AM.dds</diffTex>
-							<bumpTex>maps/decals_pbs/Garbage_ConOpt_02_NM.dds</bumpTex>
-							<hmTex>maps/decals_pbs/Garbage_ConOpt_02_GMM.dds</hmTex>
-							<addTex/>
-							<priority>64</priority>
-							<type>1</type>
-							<influence>2</influence>
-							<offsets>0.000000 0.000000 0.000000 0.000000</offsets>
-							<uvWrapping>1.000000 1.000000</uvWrapping>
-							<accurate>0</accurate>
-							<tilesFade>0.050000</tilesFade>
-							<invertDistanceFadeFlag>false</invertDistanceFadeFlag>
-							<isHidden>true</isHidden>
-							<parallax_offset>0.450000</parallax_offset>
-							<parallax_mode>0.000000</parallax_mode>
-							<parallax_amplitude>0.150000</parallax_amplitude>
-							<configUuid>afdb7ac1-73f2-3b59-81be-05600718bbac</configUuid>
-						</section>
-					</property>
 					<property>
 						<name>_upside</name>
 						<value>-0 -0 -1</value>

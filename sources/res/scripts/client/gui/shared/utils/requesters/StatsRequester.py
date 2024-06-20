@@ -16,7 +16,8 @@ if typing.TYPE_CHECKING:
 _ADDITIONAL_XP_DATA_KEY = '_additionalXPCache'
 _ControllableXPData = namedtuple('_ControllableXPData', ('vehicleID', 'bonusType',
                                                          'extraXP', 'extraFreeXP',
-                                                         'extraTmenXP', 'isXPToTMan'))
+                                                         'extraTmenXP', 'isXPToTMan',
+                                                         'premMask'))
 
 class StatsRequester(AbstractSyncDataRequester, IStatsRequester):
     wallet = dependency.descriptor(IWalletController)

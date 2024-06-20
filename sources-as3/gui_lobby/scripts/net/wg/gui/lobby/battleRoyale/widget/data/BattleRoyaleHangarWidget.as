@@ -118,7 +118,10 @@ package net.wg.gui.lobby.battleRoyale.widget.data
       
       public function startWidgetBlinkAnimation() : void
       {
-         this.content.playBlinkAnimationS();
+         if(isFlashComponentRegisteredS(HANGAR_ALIASES.BATTLE_ROYALE_HANGAR_WIDGET))
+         {
+            this.content.playBlinkAnimationS();
+         }
       }
       
       override public function get width() : Number

@@ -4,11 +4,11 @@
 	<NonChunk>True</NonChunk>
 	<SupportVSE>True</SupportVSE>
 	<Properties>
-		<preferableTankType>
+		<zonesMap>
 			<Type>STRING</Type>
-			<Default>&lt;any&gt;</Default>
-			<Editable>True</Editable>
-		</preferableTankType>
+			<Default/>
+			<Editable>true</Editable>
+		</zonesMap>
 		<preferenceLightTank>
 			<Type>UINT8</Type>
 			<Default>100</Default>
@@ -47,9 +47,5 @@
 			<Default>100</Default>
 			<Editable>True</Editable>
 		</desirability>
-		<name>
-			<Type>STRING</Type>
-			<Editable>True</Editable>
-		</name>
 	</Properties>
 </root>

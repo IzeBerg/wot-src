@@ -2,6 +2,7 @@ package net.wg.gui.battle.views.vehicleMarkers
 {
    import flash.display.MovieClip;
    import flash.events.Event;
+   import flash.geom.ColorTransform;
    import flash.geom.Point;
    import flash.text.TextField;
    import net.wg.data.constants.InvalidationType;
@@ -85,11 +86,15 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       public var statusContainer:VehicleStatusContainerMarker = null;
       
-      public var hitLabel:HealthBarAnimatedLabel = null;
+      public var playerHitLabel:HealthBarAnimatedLabel = null;
+      
+      public var otherHitLabel:HealthBarAnimatedLabel = null;
       
       public var criticalHitLabel:HealthBarAnimatedLabel = null;
       
       public var hitExplosion:AnimateExplosion = null;
+      
+      public var criticalHit:AnimateExplosion = null;
       
       public var hpField:TextField = null;
       
@@ -128,8 +133,6 @@ package net.wg.gui.battle.views.vehicleMarkers
       private var _isManagerReady:Boolean = false;
       
       private var _canUseCachedVisibility:Boolean = false;
-      
-      private var _hitIconOffset:int = -1;
       
       private var _markerParts:Vector.<VehicleMarkerPart> = null;
       
@@ -191,16 +194,26 @@ package net.wg.gui.battle.views.vehicleMarkers
             this.actionMarker.dispose();
          }
          this.actionMarker = null;
-         if(this.hitLabel != null)
+         if(this.playerHitLabel != null)
          {
-            this.hitLabel.dispose();
+            this.playerHitLabel.dispose();
          }
-         this.hitLabel = null;
+         this.playerHitLabel = null;
+         if(this.otherHitLabel != null)
+         {
+            this.otherHitLabel.dispose();
+         }
+         this.otherHitLabel = null;
          if(this.hitExplosion != null)
          {
             this.hitExplosion.dispose();
          }
          this.hitExplosion = null;
+         if(this.criticalHit != null)
+         {
+            this.criticalHit.dispose();
+         }
+         this.criticalHit = null;
          if(this.healthBar != null)
          {
             this.healthBar.dispose();
@@ -380,8 +393,9 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.updateMarkerSettings();
       }
       
-      public function updateHealth(param1:int, param2:int, param3:String) : void
+      public function updateHealth(param1:int, param2:Boolean, param3:String) : void
       {
+         var _loc5_:String = null;
          if(param1 < 0)
          {
             param3 = VehicleMarkerFlags.DAMAGE_EXPLOSION;
@@ -391,24 +405,33 @@ package net.wg.gui.battle.views.vehicleMarkers
          this._model.currHealth = param1;
          if(this._isPopulated)
          {
+            _loc5_ = this.getDamageColor(param2);
             if(this.getIsPartVisible(HEALTH_BAR))
             {
-               this.healthBar.updateHealth(param1,this.getDamageColor(param2));
+               this.healthBar.updateHealth(param1,_loc5_);
             }
             if(this.getIsPartVisible(DAMAGE_PANEL))
             {
                if(_loc4_ > 0)
                {
-                  this.hitLabel.damage(_loc4_,this.getDamageColor(param2));
-                  this.hitLabel.playShowTween();
+                  if(param2)
+                  {
+                     this.playerHitLabel.damage(_loc4_,_loc5_);
+                     this.playerHitLabel.playShowTween();
+                  }
+                  else
+                  {
+                     this.otherHitLabel.damage(_loc4_,_loc5_);
+                     this.otherHitLabel.playShowTween();
+                  }
+                  this.otherHitLabel.y = !!this.playerHitLabel.isActive() ? Number(VehicleMarker.OTHER_HIT_LABEL_Y) : Number(this.playerHitLabel.y);
                }
                if(VehicleMarkerFlags.checkAllowedDamages(param3))
                {
-                  this.hitExplosion.setColorAndDamageType(this.getDamageColor(param2),param3);
+                  this.hitExplosion.setColorAndDamageType(_loc5_,param3);
                   this.hitExplosion.playShowTween();
-                  this._hitIconOffset = EXPLOSION_HORIZONTAL_OFFSET;
                }
-               this.updateHitLayout();
+               this.updateCriticalLayout();
             }
             if(this.getIsPartVisible(HEALTH_LBL))
             {
@@ -421,7 +444,7 @@ package net.wg.gui.battle.views.vehicleMarkers
          }
       }
       
-      public function updateState(param1:String, param2:Boolean, param3:String = "", param4:String = "") : void
+      public function updateState(param1:String, param2:Boolean, param3:String = "", param4:String = "", param5:Boolean = false) : void
       {
          if(this._vehicleDestroyed)
          {
@@ -433,12 +456,14 @@ package net.wg.gui.battle.views.vehicleMarkers
          }
          if((param4 != Values.EMPTY_STR || param3 != Values.EMPTY_STR) && this.getIsPartVisible(DAMAGE_PANEL))
          {
-            this.hitExplosion.playShowTween();
-            this.criticalHitLabel.setLabel(param3,WHITE_COLOR);
-            this.hitExplosion.setAnimationType(param4);
-            this._hitIconOffset = BLOCK_HORIZONTAL_OFFSET;
-            this.updateHitLayout();
-            this.criticalHitLabel.playShowTween();
+            if(!param5 || !(this.criticalHit.isActive() || this.criticalHitLabel.isActive()))
+            {
+               this.criticalHit.setAnimationType(param4);
+               this.criticalHitLabel.setLabel(param3,WHITE_COLOR);
+            }
+            this.criticalHit.playShowTween(param5);
+            this.criticalHitLabel.playShowTween(param5);
+            this.updateCriticalLayout();
          }
          this.setMarkerState(param1);
       }
@@ -453,13 +478,19 @@ package net.wg.gui.battle.views.vehicleMarkers
       {
       }
       
-      private function updateHitLayout() : void
+      private function updateExplosionLayout() : void
       {
-         var _loc1_:Boolean = this.hitLabel.visible && this.hitLabel.isActive();
-         var _loc2_:int = !!_loc1_ ? int(this.hitLabel.damageLabel.textWidth) : int(0);
-         var _loc3_:int = !!_loc1_ ? int(this._hitIconOffset) : int(START_HORIZONTAL_OFFSET);
-         this.hitExplosion.x = this.hitLabel.x + _loc2_ + _loc3_ | 0;
-         this.criticalHitLabel.x = this.hitExplosion.x + EXPLOSION_SIZE | 0;
+         this.hitExplosion.x = this.healthBar.x + EXPLOSION_HORIZONTAL_OFFSET | 0;
+      }
+      
+      private function updateCriticalLayout() : void
+      {
+         var _loc1_:Boolean = false;
+         _loc1_ = this.playerHitLabel.visible && this.playerHitLabel.isActive() || this.otherHitLabel.visible && this.otherHitLabel.isActive();
+         var _loc2_:int = !!_loc1_ ? int(this.playerHitLabel.damageLabel.textWidth) : int(0);
+         var _loc3_:int = !!_loc1_ ? int(BLOCK_HORIZONTAL_OFFSET) : int(START_HORIZONTAL_OFFSET);
+         this.criticalHit.x = this.playerHitLabel.x + _loc2_ + _loc3_ | 0;
+         this.criticalHitLabel.x = this.criticalHit.x + EXPLOSION_SIZE | 0;
       }
       
       private function makeColorSchemeName() : void
@@ -484,7 +515,8 @@ package net.wg.gui.battle.views.vehicleMarkers
             this.setDestroyedColorForHP();
          }
          this.setHealthText();
-         this.hitLabel.visible = _loc3_;
+         this.playerHitLabel.visible = _loc3_;
+         this.otherHitLabel.visible = _loc3_;
          this.hitExplosion.visible = _loc3_;
          if(_loc2_ && !_loc1_)
          {
@@ -569,10 +601,12 @@ package net.wg.gui.battle.views.vehicleMarkers
             this._markerParts.push(_loc4_);
             _loc6_++;
          }
+         this.updateExplosionLayout();
       }
       
       private function setMarkerState(param1:String) : void
       {
+         var _loc2_:ColorTransform = null;
          this._markerState = param1;
          this._vehicleDestroyed = this._markerState == STATE_DEAD || this._markerState == STATE_IMMEDIATE_DEAD;
          this.makeColorSchemeName();
@@ -587,7 +621,9 @@ package net.wg.gui.battle.views.vehicleMarkers
                   this.setDestroyedColorForHP();
                   if(this._markerState == STATE_IMMEDIATE_DEAD)
                   {
-                     this.hitLabel.transform.colorTransform = this._vmManager.getTransform(this._markerSchemeName);
+                     _loc2_ = this._vmManager.getTransform(this._markerSchemeName);
+                     this.playerHitLabel.transform.colorTransform = _loc2_;
+                     this.otherHitLabel.transform.colorTransform = _loc2_;
                   }
                }
                this.updateMarkerSettings();
@@ -615,14 +651,14 @@ package net.wg.gui.battle.views.vehicleMarkers
          return _loc2_;
       }
       
-      private function getDamageColor(param1:int) : String
+      private function getDamageColor(param1:Boolean) : String
       {
-         var _loc2_:String = VehicleMarkerFlags.DAMAGE_FROM[param1];
+         var _loc2_:Object = !!param1 ? VehicleMarkerFlags.PLAYER_DAMAGE_COLOR : VehicleMarkerFlags.OTHER_DAMAGE_COLOR;
          if(this.isObserver)
          {
-            return VehicleMarkerFlags.DAMAGE_COLOR[_loc2_][DEFAULT_DAMAGE_COLOR];
+            return _loc2_[DEFAULT_DAMAGE_COLOR];
          }
-         return VehicleMarkerFlags.DAMAGE_COLOR[_loc2_][this._markerColor];
+         return _loc2_[this._markerColor];
       }
       
       private function setDestroyedColorForHP() : void

@@ -1,9 +1,12 @@
-import logging, typing
+import logging, BigWorld
 from enum import Enum
-import BigWorld, VOIP
+from helpers.CallbackDelayer import CallbackDelayer
+import VOIP
+from BonusCaps import BonusCapsConst
 from CurrentVehicle import g_currentVehicle
 from UnitBase import UNDEFINED_ESTIMATED_TIME
-from constants import PremiumConfigs
+from adisp import adisp_process
+from constants import PremiumConfigs, Configs
 from frameworks.wulf import WindowFlags, ViewSettings, WindowStatus
 from gui.Scaleform.daapi.view.lobby.cyberSport import PLAYER_GUI_STATUS
 from gui.Scaleform.daapi.view.lobby.prb_windows.squad_action_button_state_vo import SquadActionButtonStateVO
@@ -16,49 +19,41 @@ from gui.impl.backport import BackportContextMenuWindow
 from gui.impl.backport.backport_context_menu import createContextMenuData
 from gui.impl.gen import R
 from gui.impl.gen.view_models.views.lobby.platoon.bonus_model import BonusModel
+from gui.impl.gen.view_models.views.lobby.platoon.comp7_member_count_dropdown import Comp7DropdownItem
 from gui.impl.gen.view_models.views.lobby.platoon.comp7_slot_model import Comp7SlotModel
 from gui.impl.gen.view_models.views.lobby.platoon.comp7_window_model import Comp7WindowModel
 from gui.impl.gen.view_models.views.lobby.platoon.members_window_model import MembersWindowModel, PrebattleTypes
 from gui.impl.gen.view_models.views.lobby.platoon.slot_label_element_model import SlotLabelElementModel, Types
 from gui.impl.gen.view_models.views.lobby.platoon.slot_model import SlotModel, ErrorType
-from gui.impl.gen.view_models.views.lobby.platoon.comp7_member_count_dropdown import Comp7DropdownItem
 from gui.impl.gui_decorators import args2params
-from gui.impl.lobby.comp7 import comp7_shared
+from gui.impl.lobby.common.vehicle_model_helpers import fillVehicleModel
 from gui.impl.lobby.comp7.comp7_model_helpers import getSeasonNameEnum
-from gui.impl.lobby.platoon.platoon_helpers import formatSearchEstimatedTime
+from gui.impl.lobby.platoon.platoon_helpers import PreloadableWindow
+from gui.impl.lobby.platoon.platoon_helpers import formatSearchEstimatedTime, BonusState, getPlatoonBonusState
 from gui.impl.lobby.platoon.tooltip.platoon_alert_tooltip import AlertTooltip
 from gui.impl.lobby.platoon.tooltip.platoon_wtr_tooltip import WTRTooltip
 from gui.impl.lobby.platoon.view.slot_label_html_handler import SlotLabelHtmlParser
 from gui.impl.lobby.platoon.view.subview.platoon_chat_subview import ChatSubview
 from gui.impl.lobby.platoon.view.subview.platoon_tiers_filter_subview import SettingsPopover
 from gui.impl.lobby.platoon.view.subview.platoon_tiers_limit_subview import TiersLimitSubview
-from gui.impl.lobby.common.vehicle_model_helpers import fillVehicleModel
-from gui.impl.lobby.premacc.squad_bonus_tooltip_content import SquadBonusTooltipContent, Comp7SquadBonusTooltipContent
-from gui.prestige.prestige_helpers import hasVehiclePrestige, fillPrestigeEmblemModel
+from gui.impl.lobby.premacc.squad_bonus_tooltip_content import SquadBonusTooltipContent
 from gui.impl.pub import ViewImpl
 from gui.prb_control import prb_getters, prbEntityProperty
 from gui.prb_control.settings import CTRL_ENTITY_TYPE, REQUEST_TYPE, SELECTOR_BATTLE_TYPES
+from gui.prestige.prestige_helpers import hasVehiclePrestige, fillPrestigeEmblemModel
 from gui.shared import g_eventBus, events, EVENT_BUS_SCOPE
 from gui.shared.events import ChannelCarouselEvent
 from gui.shared.gui_items.badge import Badge
 from helpers import i18n, dependency
-from helpers.CallbackDelayer import CallbackDelayer
+from messenger.ext import channel_num_gen
 from messenger.m_constants import PROTO_TYPE
+from messenger.m_constants import USER_TAG
 from messenger.proto import proto_getter
 from messenger.proto.events import g_messengerEvents
-from shared_utils import findFirst
 from skeletons.gui.game_control import IPlatoonController, IComp7Controller
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
-from messenger.m_constants import USER_TAG
-from gui.impl.lobby.platoon.platoon_helpers import PreloadableWindow
-from gui.impl.pub.tooltip_window import SimpleTooltipContent
-from messenger.ext import channel_num_gen
-from adisp import adisp_process
-if typing.TYPE_CHECKING:
-    from helpers.server_settings import Comp7RanksConfig
-    from comp7_ranks_common import Comp7Division
 _logger = logging.getLogger(__name__)
 _strButtons = R.strings.platoon.buttons
 
@@ -86,13 +81,6 @@ class _LayoutStyle(Enum):
     VERTICAL = 'vertical'
 
 
-class BonusState(Enum):
-    NO_BONUS = 0
-    BONUS = 1
-    UNIT_BONUS = 2
-    PREMIUM_BONUS = 3
-
-
 class SquadMembersView(ViewImpl, CallbackDelayer):
     _platoonCtrl = dependency.descriptor(IPlatoonController)
     _lobbyContext = dependency.descriptor(ILobbyContext)
@@ -100,7 +88,6 @@ class SquadMembersView(ViewImpl, CallbackDelayer):
     _itemsCache = dependency.descriptor(IItemsCache)
     _layoutID = R.views.lobby.platoon.MembersWindow()
     _prebattleType = PrebattleTypes.SQUAD
-    _bonusTooltipTexts = R.strings.tooltips.squadBonus.complex
 
     def __init__(self, prbType):
         settings = ViewSettings(layoutID=self._layoutID, model=self._viewModelClass())
@@ -171,8 +158,8 @@ class SquadMembersView(ViewImpl, CallbackDelayer):
                 body = tooltip.noSuitableTank.body()
             return AlertTooltip(header, body)
         else:
-            if contentID == R.views.lobby.premacc.squad_bonus_tooltip_content.SquadBonusTooltipContent():
-                return self._createHeaderInfoTooltip()
+            if contentID == R.views.lobby.premacc.tooltips.SquadBonusTooltip():
+                return SquadBonusTooltipContent(bonusState=getPlatoonBonusState(True))
             if contentID == R.views.lobby.platoon.WTRTooltip():
                 slotId = event.getArgument('slotId')
                 slot = next((slot for slot in self.viewModel.getSlots() if slot.getSlotId() == slotId), None)
@@ -374,23 +361,10 @@ class SquadMembersView(ViewImpl, CallbackDelayer):
         tooltipBody = backport.text(R.strings.platoon.members.header.tooltip.standard.body())
         return (tooltipHeader, tooltipBody)
 
-    def _getBonusState(self):
-        if self.__isPremiumBonusEnabled():
-            playerInfo = self._platoonCtrl.getPlayerInfo()
-            if playerInfo and playerInfo.hasPremium:
-                return BonusState.PREMIUM_BONUS
-            if self._platoonCtrl.isUnitWithPremium():
-                return BonusState.UNIT_BONUS
-            return BonusState.BONUS
-        return BonusState.NO_BONUS
-
     def _initWindowData(self):
         with self.viewModel.transaction() as (model):
             model.setCanMinimize(True)
             model.setRawTitle(self._getTitle())
-            header, body = self._getWindowInfoTooltipHeaderAndBody()
-            model.setWindowTooltipHeader(header)
-            model.setWindowTooltipBody(body)
             layoutStyle = self.__getLayoutStyle()
             fileName = ('{battleType}_{layout}_list').format(battleType=self._prebattleType.value, layout=layoutStyle.value)
             self._setHeaderBg(fileName, model)
@@ -398,7 +372,7 @@ class SquadMembersView(ViewImpl, CallbackDelayer):
             model.setIsShort(layoutStyle == _LayoutStyle.HORIZONTAL_SHORT)
             model.setPrebattleType(self._prebattleType)
             self._initWindowModeSpecificData(model)
-        self._setBonusInformation(self._getBonusState())
+        self._setBonusInformation(getPlatoonBonusState(True))
 
     def _setHeaderBg(self, fileName, model):
         fileNameRes = R.images.gui.maps.icons.platoon.members_window.backgrounds.dyn(fileName)
@@ -411,51 +385,45 @@ class SquadMembersView(ViewImpl, CallbackDelayer):
         pass
 
     def _setBonusInformation(self, bonusState):
+        hasBonuses = bonusState != BonusState.NO_BONUS
         with self.viewModel.header.transaction() as (model):
-            model.setShowInfoIcon(True)
-            model.setShowNoBonusPlaceholder(False)
-            bonusesArray = model.getBonuses()
-            bonusesArray.clear()
-            xpBonusModel = self._createXpBonusModel()
-            bonusesArray.addViewModel(xpBonusModel)
-            creditBonusModel = self._createPremiumBonusModel(bonusState)
-            if creditBonusModel:
-                bonusesArray.addViewModel(creditBonusModel)
-            bonusesArray.invalidate()
+            model.setShowInfoIcon(hasBonuses)
+            model.setShowNoBonusPlaceholder(not hasBonuses)
+            if hasBonuses:
+                bonusesArray = model.getBonuses()
+                bonusesArray.clear()
+                xpBonusModel = self._createXpBonusModel(bonusState)
+                if xpBonusModel:
+                    bonusesArray.addViewModel(xpBonusModel)
+                creditBonusModel = self._createPremiumBonusModel(bonusState)
+                if creditBonusModel:
+                    bonusesArray.addViewModel(creditBonusModel)
+                bonusesArray.invalidate()
+            else:
+                self._setNoBonusInformation(model)
         self._currentBonusState = bonusState
 
+    def _setNoBonusInformation(self, model):
+        pass
+
     def _updateHeader(self):
-        bonusState = self._getBonusState()
+        bonusState = getPlatoonBonusState(True)
         if bonusState != self._currentBonusState:
             self._setBonusInformation(bonusState)
 
-    def _createHeaderInfoTooltip(self):
-        bonusState = self._getBonusState()
-        if bonusState in (BonusState.PREMIUM_BONUS, BonusState.UNIT_BONUS):
-            return SquadBonusTooltipContent()
-        return self._createSimpleBonusTooltip()
-
-    def _createSimpleBonusTooltip(self):
-        bonusFactor = _floatToPercents(self._eventsCache.getSquadXPFactor())
-        bonusFactor = backport.text(R.strings.tooltips.squadBonus.complex.bonusPercent(), value=str(bonusFactor))
-        header = backport.text(self._bonusTooltipTexts.header())
-        body = backport.text(self._bonusTooltipTexts.body(), bonus=bonusFactor)
-        return self._createSimpleTooltipContent(header=header, body=body)
-
-    def _createSimpleTooltipContent(self, header, body):
-        contentID = R.views.common.tooltip_window.simple_tooltip_content.SimpleTooltipContent()
-        return SimpleTooltipContent(contentID=contentID, header=header, body=body)
-
-    def _createXpBonusModel(self):
-        xpBonusModel = BonusModel()
-        xpBonusModel.setCurrency(BonusModel.XP)
-        xpBonusModel.setAmount(_floatToPercents(self._eventsCache.getSquadXPFactor()))
-        return xpBonusModel
+    def _createXpBonusModel(self, bonusState):
+        if BonusState.hasAnyBitSet(bonusState, BonusState.XP_BONUS):
+            xpBonusModel = BonusModel()
+            xpBonusModel.setCurrency(BonusModel.XP)
+            xpBonusModel.setAmount(_floatToPercents(self._eventsCache.getSquadXPFactor()))
+            return xpBonusModel
+        else:
+            return
 
     def _createPremiumBonusModel(self, bonusState):
-        if bonusState in (BonusState.PREMIUM_BONUS, BonusState.UNIT_BONUS):
+        if BonusState.hasAnyBitSet(bonusState, BonusState.SQUAD_CREDITS_BONUS | BonusState.PREM_CREDITS_BONUS):
             squadPremiumBonus = self._lobbyContext.getServerSettings().squadPremiumBonus
-            amount = squadPremiumBonus.ownCredits if bonusState == BonusState.PREMIUM_BONUS else squadPremiumBonus.mateCredits
+            amount = squadPremiumBonus.ownCredits if BonusState.hasAnyBitSet(bonusState, BonusState.PREM_CREDITS_BONUS) else squadPremiumBonus.mateCredits
             amount = int(round(amount * 100))
             creditBonusModel = BonusModel()
             creditBonusModel.setCurrency(BonusModel.CREDITS)
@@ -585,10 +553,10 @@ class SquadMembersView(ViewImpl, CallbackDelayer):
         self._platoonCtrl.leavePlatoon(parent=self)
 
     def __onServerSettingsChange(self, diff):
-        if 'unit_assembler_config' in diff:
+        if Configs.UNIT_ASSEMBLER_CONFIG.value in diff:
             self._updateButtons()
-        if PremiumConfigs.PREM_SQUAD in diff:
-            self._setBonusInformation(self._getBonusState())
+        if PremiumConfigs.PREM_SQUAD in diff or BonusCapsConst.CONFIG_NAME in diff:
+            self._setBonusInformation(getPlatoonBonusState(True))
 
     def __onAvailableTiersForSearchChanged(self):
         self._updateButtons()
@@ -606,9 +574,6 @@ class SquadMembersView(ViewImpl, CallbackDelayer):
         if maxSlotCount < 3:
             return _LayoutStyle.HORIZONTAL_SHORT
         return _LayoutStyle.VERTICAL
-
-    def __isPremiumBonusEnabled(self):
-        return self._lobbyContext.getServerSettings().squadPremiumBonus.isEnabled
 
     def __updateVoiceChatToggleState(self, *_):
         voipMgr = VOIP.getVOIPManager()
@@ -678,23 +643,10 @@ class EventMembersView(SquadMembersView):
         tooltipBody = backport.text(R.strings.platoon.members.header.tooltip.event.body())
         return (tooltipHeader, tooltipBody)
 
-    def _setBonusInformation(self, bonusState):
-        with self.viewModel.header.transaction() as (model):
-            model.setShowInfoIcon(True)
-            model.setShowNoBonusPlaceholder(True)
-            infoText = R.strings.messenger.dialogs.squadChannel.headerMsg.eventFormationRestriction()
-            model.noBonusPlaceholder.setText(infoText)
-            model.noBonusPlaceholder.setIcon(R.images.gui.maps.icons.battleTypes.c_64x64.event())
-            self._currentBonusState = bonusState
-
-    def _getBonusState(self):
-        return BonusState.NO_BONUS
-
-    def _createHeaderInfoTooltip(self):
-        tooltip = R.strings.platoon.members.header.noBonusPlaceholder.tooltip
-        header = backport.text(tooltip.header())
-        body = backport.text(tooltip.body())
-        return self._createSimpleTooltipContent(header=header, body=body)
+    def _setNoBonusInformation(self, model):
+        infoText = R.strings.messenger.dialogs.squadChannel.headerMsg.eventFormationRestriction()
+        model.noBonusPlaceholder.setText(infoText)
+        model.noBonusPlaceholder.setIcon(R.images.gui.maps.icons.battleTypes.c_64x64.event())
 
 
 class EpicMembersView(SquadMembersView):
@@ -705,25 +657,10 @@ class EpicMembersView(SquadMembersView):
         body = backport.text(R.strings.platoon.members.header.tooltip.epic.body())
         return (header, body)
 
-    def _setBonusInformation(self, bonusState):
-        hasBonuses = bonusState != BonusState.NO_BONUS
-        with self.viewModel.header.transaction() as (model):
-            model.setShowInfoIcon(hasBonuses)
-            model.setShowNoBonusPlaceholder(not hasBonuses)
-            if hasBonuses:
-                bonusesArray = model.getBonuses()
-                bonusesArray.clear()
-                xpBonusModel = self._createXpBonusModel()
-                bonusesArray.addViewModel(xpBonusModel)
-                creditBonusModel = self._createPremiumBonusModel(bonusState)
-                if creditBonusModel:
-                    bonusesArray.addViewModel(creditBonusModel)
-                bonusesArray.invalidate()
-            else:
-                infoText = R.strings.messenger.dialogs.squadChannel.headerMsg.epicBattleFormationRestriction()
-                model.noBonusPlaceholder.setText(infoText)
-                model.noBonusPlaceholder.setIcon(R.images.gui.maps.icons.battleTypes.c_64x64.epicbattle())
-        self._currentBonusState = bonusState
+    def _setNoBonusInformation(self, model):
+        infoText = R.strings.messenger.dialogs.squadChannel.headerMsg.epicBattleFormationRestriction()
+        model.noBonusPlaceholder.setText(infoText)
+        model.noBonusPlaceholder.setIcon(R.images.gui.maps.icons.battleTypes.c_64x64.epicbattle())
 
 
 class BattleRoyalMembersView(SquadMembersView):
@@ -773,7 +710,6 @@ class MapboxMembersView(SquadMembersView):
 class Comp7MembersView(SquadMembersView):
     _comp7Controller = dependency.descriptor(IComp7Controller)
     _prebattleType = PrebattleTypes.COMP7
-    _bonusTooltipTexts = R.strings.tooltips.squadBonus.complex.comp7
 
     def __init__(self, prbType):
         super(Comp7MembersView, self).__init__(prbType)
@@ -784,8 +720,8 @@ class Comp7MembersView(SquadMembersView):
         return
 
     def createToolTipContent(self, event, contentID):
-        if contentID == R.views.lobby.premacc.squad_bonus_tooltip_content.SquadBonusTooltipContent():
-            return Comp7SquadBonusTooltipContent(SELECTOR_BATTLE_TYPES.COMP7)
+        if contentID == R.views.lobby.premacc.tooltips.SquadBonusTooltip():
+            return SquadBonusTooltipContent(battleType=SELECTOR_BATTLE_TYPES.COMP7, bonusState=getPlatoonBonusState(True))
         return super(Comp7MembersView, self).createToolTipContent(event=event, contentID=contentID)
 
     @property
@@ -802,32 +738,8 @@ class Comp7MembersView(SquadMembersView):
     def _setModeSlotSpecificData(self, slotData, slotModel):
         playerData = slotData.get('player', {})
         queueInfo = playerData.get('extraData', {}).get('comp7EnqueueData', {})
-        rank = queueInfo.get('rank', 0)
-        rating = queueInfo.get('rating', 0)
         isOnline = bool(queueInfo.get('isOnline', 0))
-        division = self.__getDivision(rank, rating)
-        if division is None:
-            _logger.error("Failed to get player's division. dbID: %d; rank: %d; rating: %d", playerData.get('dbID'), rank, rating)
-            return
-        else:
-            slotModel.rankData.setRank(comp7_shared.getRankEnumValue(division))
-            slotModel.rankData.setDivision(comp7_shared.getDivisionEnumValue(division))
-            slotModel.rankData.setScore(rating)
-            slotModel.setErrorType(ErrorType.NONE if isOnline else ErrorType.MODEOFFLINE)
-            return
-
-    def _getWindowInfoTooltipHeaderAndBody(self):
-        squadRatingSettings = self._comp7Controller.getModeSettings().squadRatingRestriction
-        rating = squadRatingSettings.get(2)
-        tooltipHeader = backport.text(R.strings.platoon.members.header.tooltip.comp7.header())
-        tooltipBody = backport.text(R.strings.platoon.members.header.tooltip.comp7.body(), rating=rating)
-        return (
-         tooltipHeader, tooltipBody)
-
-    def _createSimpleBonusTooltip(self):
-        header = backport.text(R.strings.tooltips.squadBonus.complex.comp7.header())
-        body = backport.text(R.strings.tooltips.squadBonus.complex.comp7.body())
-        return self._createSimpleTooltipContent(header=header, body=body)
+        slotModel.setErrorType(ErrorType.NONE if isOnline else ErrorType.MODEOFFLINE)
 
     def _initWindowModeSpecificData(self, model):
         options = self._comp7Controller.getModeSettings().squadSizes
@@ -903,12 +815,6 @@ class Comp7MembersView(SquadMembersView):
 
     def __getDropDownItemTooltipText(self):
         return backport.text(R.strings.platoon.members.header.tooltip.comp7.dropdown.item())
-
-    @classmethod
-    def __getDivision(cls, rank, rating):
-        ranksConfig = cls._lobbyContext.getServerSettings().comp7RanksConfig
-        division = findFirst(lambda d: rating in d.range, ranksConfig.divisionsByRank.get(rank, ()))
-        return division
 
     @staticmethod
     def __playerTimeJoin(slot):

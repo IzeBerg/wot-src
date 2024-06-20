@@ -1987,14 +1987,20 @@
 			<hasProjectilePierced>
 				<Type>BOOL</Type>
 			</hasProjectilePierced>
+			<hasNonPiercedDamage>
+				<Type>BOOL</Type>
+			</hasNonPiercedDamage>
 			<ricochetCount>
 				<Type>UINT16</Type>
 			</ricochetCount>
 			<ricochetPoint>
 				<Type>VECTOR3</Type>
 			</ricochetPoint>
+			<ricochetAngleCos>
+				<Type>FLOAT</Type>
+			</ricochetAngleCos>
 			<effectiveShellDamage>
-				<Type>INT16</Type>
+				<Type>FLOAT</Type>
 			</effectiveShellDamage>
 			<damageRandomizationFactor>
 				<Type>FLOAT</Type>
@@ -2212,10 +2218,10 @@
 				<Type>UINT16</Type>
 			</quantity>
 			<quantityInClip>
-				<Type>UINT8</Type>
+				<Type>UINT16</Type>
 			</quantityInClip>
 			<previousStage>
-				<Type>UINT8</Type>
+				<Type>UINT16</Type>
 			</previousStage>
 			<endTime>
 				<Type>FLOAT32</Type>
@@ -2458,6 +2464,45 @@
 			</reuseCount>
 		</Properties>
 	</ROCKET_ACCELERATION_STATE_STATUS>
+	<AUTO_SHOOT_GUN_STATE_STATUS>
+		FIXED_DICT
+		<AllowNone>true</AllowNone>
+		<Properties>
+			<state>
+				<Type>UINT8</Type>
+			</state>
+			<stateActivationTime>
+				<Type>FLOAT32</Type>
+			</stateActivationTime>
+			<dispersionFactor>
+				<Type>FLOAT32</Type>
+			</dispersionFactor>
+			<updateTime>
+				<Type>FLOAT32</Type>
+			</updateTime>
+			<shotDispersionPerSec>
+				<Type>FLOAT32</Type>
+			</shotDispersionPerSec>
+			<maxShotDispersion>
+				<Type>FLOAT32</Type>
+			</maxShotDispersion>
+		</Properties>
+	</AUTO_SHOOT_GUN_STATE_STATUS>
+	<SPIN_GUN_STATE_STATUS>
+		FIXED_DICT
+		<AllowNone>true</AllowNone>
+		<Properties>
+			<state>
+				<Type>UINT8</Type>
+			</state>
+			<stateActivationTime>
+				<Type>FLOAT32</Type>
+			</stateActivationTime>
+			<spinFactor>
+				<Type>FLOAT32</Type>
+			</spinFactor>
+		</Properties>
+	</SPIN_GUN_STATE_STATUS>
 	<GOODIE_RESOURCE>
 		FIXED_DICT
 		<AllowNone>true</AllowNone>

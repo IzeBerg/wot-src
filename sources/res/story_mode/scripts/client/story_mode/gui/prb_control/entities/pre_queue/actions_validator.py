@@ -1,4 +1,3 @@
-from CurrentVehicle import g_currentVehicle
 from gui.prb_control.entities.base.pre_queue.actions_validator import InQueueValidator
 from gui.prb_control.items import ValidationResult
 from gui.prb_control.entities.base.actions_validator import BaseActionsValidator, ActionsValidatorComposite
@@ -8,8 +7,10 @@ from story_mode.skeletons.story_mode_controller import IStoryModeController
 class StoryModeVehicleValidator(BaseActionsValidator):
 
     def _validate(self):
-        vehicle = g_currentVehicle.item
-        if vehicle is None:
+        ctrl = dependency.instance(IStoryModeController)
+        selectedMissionId = ctrl.selectedMissionId
+        mission = ctrl.missions.getMission(selectedMissionId)
+        if mission is None or not mission.vehicle.name:
             return ValidationResult(False)
         else:
             return super(StoryModeVehicleValidator, self)._validate()

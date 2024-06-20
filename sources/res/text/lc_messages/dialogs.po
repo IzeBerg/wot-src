@@ -573,18 +573,15 @@ msgstr "Отменить"
 
 msgid "comp7/deserter/message"
 msgstr ""
-"Сражение ещё не завершено. Выходя из боя до его завершения, вы подставляете команду.\n"
-"К вам будет {brown_open}применено дисциплинарное взыскание.{brown_close}\n"
-"Вы уверены, что хотите покинуть бой?"
-
-msgid "comp7/deserter/msgTitle"
-msgstr "Вы потеряете очки рейтинга!"
+"Вы нужны команде! Выход из боя до уничтожения собственной машины "
+"расценивается как дезертирство и может повлечь применение дисциплинарного "
+"взыскания."
 
 msgid "comp7/deserter/submit"
 msgstr "Бежать"
 
 msgid "comp7/deserter/title"
-msgstr "Бегство с поля боя"
+msgstr "Бежать с поля боя?"
 
 msgid "confirmBattleBoosterBuyAndInstall/cancel"
 msgstr "Отменить"
@@ -1169,15 +1166,19 @@ msgstr "Больше не спрашивать"
 msgid "editableStyles/confirmReset/formattedPartOfMessage"
 msgstr "будет сброшен"
 
+msgid "editableStyles/confirmReset/formattedPartOfMessageStyle"
+msgstr "стиль"
+
 msgid "editableStyles/confirmReset/message"
 msgstr ""
-"При нанесении этого элемента стиль {formatted_message} до вида по умолчанию."
+"При нанесении этого элемента, {style} «{formatted_message}» {reset} до вида "
+"по умолчанию."
 
 msgid "editableStyles/confirmReset/submit"
 msgstr "Подтвердить"
 
 msgid "editableStyles/confirmReset/title"
-msgstr "Нанести стиль {}?"
+msgstr "Применить стиль «{}»?"
 
 msgid "elementType/chassis"
 msgstr "ходовую"
@@ -2173,7 +2174,7 @@ msgstr ""
 msgid "punishmentWindow/message/ban/comp7"
 msgstr ""
 "Вы нарушили игровые правила на карте {whiteSpanish_Open}%(arenaName)s{whiteSpanish_Close} в {whiteSpanish_Open}%(time)s{whiteSpanish_Close}.\n"
-"Вы оштрафованы на {whiteSpanish_Open}%(penalty)s{whiteSpanish_Close} очков рейтинга, доступ к боям режима {whiteSpanish_Open}«Натиск»{whiteSpanish_Close} временно заблокирован."
+"Доступ к боям режима {whiteSpanish_Open}«Натиск Лайт»{whiteSpanish_Close} временно заблокирован."
 
 msgid "punishmentWindow/message/ban/comp7/qualification"
 msgstr ""

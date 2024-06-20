@@ -36,13 +36,11 @@ package net.wg.gui.lobby.personalMissions.components
       
       private static const BG_FADE_IN_TWEEN_ALPHA:Number = 0.6;
       
-      private static const VERTICAL_SIZE_BREAK_POINT:int = 880;
+      private static const VERTICAL_SIZE_BREAK_POINT:int = 900;
       
       private static const VERTICAL_SIZE_ID_WIDE:String = "verticalWide";
       
       private static const VERTICAL_SIZE_ID_SHORT:String = "verticalShort";
-      
-      private static const NUM_PAGE_OFFSET_X:int = 8;
       
       private static const BG_WIDTH_PADDING:int = 1;
        
@@ -106,15 +104,14 @@ package net.wg.gui.lobby.personalMissions.components
       
       override protected function updateLayout() : void
       {
-         var _loc1_:Boolean = false;
          waiting.width = _width;
          waiting.height = _height;
          bg.width = _width + BG_WIDTH_PADDING;
          bg.height = _height - TOP_PANEL_HEIGHT;
          view.x = _width >> 1;
          view.y = VIEW_TOP_OFFSET_MIN + Math.max(0,_height - LobbyMetrics.MIN_STAGE_HEIGHT >> 1);
-         _loc1_ = false;
-         var _loc2_:String = App.appHeight > VERTICAL_SIZE_BREAK_POINT ? VERTICAL_SIZE_ID_WIDE : VERTICAL_SIZE_ID_SHORT;
+         var _loc1_:Boolean = false;
+         var _loc2_:String = App.appHeight >= VERTICAL_SIZE_BREAK_POINT ? VERTICAL_SIZE_ID_WIDE : VERTICAL_SIZE_ID_SHORT;
          if(_loc2_ != this._verticalSizeID)
          {
             _loc1_ = _loc2_ == VERTICAL_SIZE_ID_WIDE;

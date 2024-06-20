@@ -98,8 +98,10 @@ ATTACK_REASON = globals().get(&apos;ATTACK_REASON&apos;)
 filters = globals().get(&apos;filters&apos;)
 &quot;&quot;&quot;:type: battle_result_event_list_helpers&quot;&quot;&quot;
 
+filter = globals().get(&apos;BattleResults&apos;)
 
 PIERCINGS = &apos;piercings&apos;
+DAMAGE = &apos;damage&apos;
 KILLS_IN_BATTLE = &apos;killsInBattle&apos;
 KILLS_IN_BATTLE_SERIES = &apos;killsInBattleSeries&apos;
 
@@ -117,6 +119,12 @@ def onFinishBattle(eventType, eventData, quest, processor):
     piercingCount = sum(filters.sumPiercings(eventList) for _, eventList in eventLog.iteritems())
 
     questProgress.increaseUntilComplete(PIERCINGS, piercingCount)
+
+    brfilter = filter.BattleResultsFilter(eventData)
+    method = questProgress.getProgress(DAMAGE).getParam(&apos;attackReasons&apos;)
+    damageDealt = brfilter.sumDamage(brfilter.filterDamageTo(method=method, result=[&apos;damaged&apos;]))
+
+    questProgress.increaseUntilComplete(DAMAGE, damageDealt)
 
     eventData[&apos;results&apos;].update(processor.checkComplete(questProgress, quest.progressID, additionalProgressID=KILLS_IN_BATTLE_SERIES))
 

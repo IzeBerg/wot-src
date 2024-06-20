@@ -189,6 +189,10 @@ package
       
       public static const DETAILSHELP_DUALACCURACY_MECHANICS:String = "#ingame_help:detailsHelp/dualAccuracy/mechanics";
       
+      public static const DETAILSHELP_AUTOSHOOTGUN_MECHANICS_TITLE:String = "#ingame_help:detailsHelp/autoShootGun/mechanics/title";
+      
+      public static const DETAILSHELP_AUTOSHOOTGUN_MECHANICS:String = "#ingame_help:detailsHelp/autoShootGun/mechanics";
+      
       public static const DETAILSHELP_NOKEYSWARNING:String = "#ingame_help:detailsHelp/noKeysWarning";
       
       public static const DETAILSHELP_BATTLEROYALE_RADAR_TITLE:String = "#ingame_help:detailsHelp/battleRoyale/radar/title";

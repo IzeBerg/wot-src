@@ -65,9 +65,6 @@ msgstr "?empty?"
 msgid "alertMessage/unsuitableVehicles"
 msgstr "В Ангаре нет подходящей техники"
 
-msgid "battleResult/progressDescription"
-msgstr "1. %(triggerDescription)s."
-
 msgid "calendarDay/serverName"
 msgstr "%(server)s"
 
@@ -116,12 +113,37 @@ msgstr "На %(forbiddenType)s нельзя участвовать в режим
 msgid "funRandomCarousel/lockedTooltip/vehType/header"
 msgstr "Неподходящая машина"
 
-msgid "headerButton/tooltips/funRandomSquad/body"
+msgid "headerButtons/fightBtn/tooltip/funRandomDisabled/body"
+msgstr ""
+"На этом сервере режим прекращения огня. Попробуйте перейти на другой сервер."
+
+msgid "headerButtons/fightBtn/tooltip/funRandomDisabled/header"
+msgstr "Невозможно выйти в бой"
+
+msgid "headerButtons/fightBtn/tooltip/funRandomNotSet/body"
+msgstr "Режим недоступен на выбранном сервере."
+
+msgid "headerButtons/fightBtn/tooltip/funRandomNotSet/header"
+msgstr "Невозможно выйти в бой"
+
+msgid "headerButtons/fightBtn/tooltip/funRandomSubModeEnded/body"
+msgstr "Бои режима «%(subModeName)s» завершены"
+
+msgid "headerButtons/fightBtn/tooltip/funRandomSubModeEnded/header"
+msgstr "Невозможно выйти в бой"
+
+msgid "headerButtons/fightBtn/tooltip/funRandomVehLimits/body"
+msgstr "Смените режим или выберите подходящую по требованиям машину."
+
+msgid "headerButtons/fightBtn/tooltip/funRandomVehLimits/header"
+msgstr "Машина не подходит для режима"
+
+msgid "headerButtons/tooltips/funRandomSquad/body"
 msgstr ""
 "Создание формирования из 2–3 игроков для совместной игры в боях режима "
 "«%(modeName)s»."
 
-msgid "headerButton/tooltips/funRandomSquad/header"
+msgid "headerButtons/tooltips/funRandomSquad/header"
 msgstr "Взвод"
 
 msgid "invite/text/detailedTitle"
@@ -129,6 +151,12 @@ msgstr "Приглашение войти в состав взвода для р
 
 msgid "invite/tooltip/noVehicles"
 msgstr "Нужна хотя бы одна машина в Ангаре."
+
+msgid "lootboxTooltip/chance"
+msgstr "Шанс выпадения: %(percent)s"
+
+msgid "lootboxTooltip/description"
+msgstr "Один игровой предмет из списка ниже:"
 
 msgid "metaProgressionTooltip/header/completedFinal"
 msgstr "ВСЕ ЭТАПЫ ПРОЙДЕНЫ"
@@ -138,11 +166,17 @@ msgstr ""
 "ВСЕ ЭТАПЫ ТЕКУЩЕЙ\n"
 "ЗАДАЧИ ПРОЙДЕНЫ"
 
-msgid "metaProgressionTooltip/reward/header"
+msgid "metaProgressionTooltip/reward/header/common"
 msgstr "Награда"
 
-msgid "metaProgressionTooltip/timer/activeResettable"
-msgstr "до сброса прогресса с наградами"
+msgid "metaProgressionTooltip/reward/header/infinite"
+msgstr "Ближайшая награда этапа"
+
+msgid "metaProgressionTooltip/timer/untilFinish"
+msgstr "%(time)s до окончания события"
+
+msgid "metaProgressionTooltip/timer/untilRelaunch"
+msgstr "%(time)s до следующего запуска"
 
 msgid "modeSelector/notStarted"
 msgstr "Событие скоро начнётся"
@@ -174,6 +208,9 @@ msgstr "Недоступен по техническим причинам"
 msgid "modeSubSelector/progression/header/completedResettable"
 msgstr "Вы прошли все этапы текущей задачи"
 
+msgid "modeSubSelector/progression/rewards"
+msgstr "Награды: %(count)s"
+
 msgid "modeSubSelector/subModeCard/finished"
 msgstr "Бои завершены"
 
@@ -186,10 +223,154 @@ msgstr "Начнётся через:"
 msgid "modeSubSelector/subtitle"
 msgstr "ВЫБЕРИТЕ ПОДРЕЖИМ"
 
+msgid "modes/auto_shoot_guns/capsUserName"
+msgstr "ШКВАЛЬНЫЙ ОГОНЬ"
+
+msgid "modes/auto_shoot_guns/detailedUserName"
+msgstr "?empty?"
+
+msgid "modes/auto_shoot_guns/lootbox/fep_epic"
+msgstr "Случайная особая награда"
+
+msgid "modes/auto_shoot_guns/lootbox/fep_legendary"
+msgstr "Случайная легендарная награда"
+
+msgid "modes/auto_shoot_guns/lootbox/fep_ordinary"
+msgstr "Случайная обычная награда"
+
+msgid "modes/auto_shoot_guns/lootbox/fep_rare"
+msgstr "Случайная редкая награда"
+
+msgid "modes/auto_shoot_guns/lootbox/fep_unusual"
+msgstr "Случайная необычная награда"
+
+msgid "modes/auto_shoot_guns/metaProgressionTooltip/header/active"
+msgstr ""
+"Шквальный огонь: задача. Этап: %(done)s{par_Open}/%(total)s{par_Close}"
+
+msgid "modes/auto_shoot_guns/metaProgressionTooltip/subheader"
+msgstr "Шквальный огонь: задача"
+
+msgid "modes/auto_shoot_guns/modeSubSelector/progression/info"
+msgstr "?empty?"
+
+msgid "modes/auto_shoot_guns/modeSubSelector/progression/timer"
+msgstr "?empty?"
+
+msgid "modes/auto_shoot_guns/mode_selector/description"
+msgstr "Экспериментальные бои по нестандартным правилам на необычных машинах."
+
+msgid "modes/auto_shoot_guns/mode_selector/progression/resettable"
+msgstr "До новой задачи «Шквальный огонь»:"
+
+msgid "modes/auto_shoot_guns/notification/finishSubModes/withProgression"
+msgstr "Режим %(subModeName)s завершён: прогрессия сброшена."
+
+msgid "modes/auto_shoot_guns/notification/finishSubModes/withoutProgression"
+msgstr "Режим %(subModeName)s завершён."
+
+msgid "modes/auto_shoot_guns/notification/newSubModes/withProgression"
+msgstr "Доступны новые награды и режим %(subModeName)s."
+
+msgid "modes/auto_shoot_guns/notification/newSubModes/withoutProgression"
+msgstr "Доступен режим %(subModeName)s."
+
+msgid "modes/auto_shoot_guns/notification/switchOffSubModes"
+msgstr "Режим %(subModeName)s недоступен: ведутся технические работы."
+
+msgid "modes/auto_shoot_guns/notification/switchOnSubModes"
+msgstr "Режим %(subModeName)s снова доступен."
+
+msgid "modes/auto_shoot_guns/progression/cardsFan/listOfRandomRewards"
+msgstr "Список наград"
+
+msgid "modes/auto_shoot_guns/progression/complete/congratulations"
+msgstr "Поздравляем!"
+
+msgid "modes/auto_shoot_guns/progression/complete/title"
+msgstr "Вы завершили основную прогрессию"
+
+msgid "modes/auto_shoot_guns/progression/infinite/congratulations"
+msgstr "Поздравляем!"
+
+msgid "modes/auto_shoot_guns/progression/infinite/infinityStep"
+msgstr "Повторяемый этап"
+
+msgid "modes/auto_shoot_guns/progression/infinite/mainProgressionFinished"
+msgstr "Вы завершили основную прогрессию"
+
+msgid "modes/auto_shoot_guns/progression/info"
+msgstr "?empty?"
+
+msgid ""
+"modes/auto_shoot_guns/progression/questsList/quest/infinityStageProgress"
+msgstr ""
+"Получите столько наград, сколько сможете: %(currentPoints) / "
+"%(infinitySign)s"
+
+msgid "modes/auto_shoot_guns/progression/questsList/totalPointsEarned"
+msgstr "Заработано очков: %(progressionSteps)s"
+
+msgid ""
+"modes/auto_shoot_guns/progression/questsList/totalPointsEarnedStandAloneTitle"
+msgstr "Получено очков:"
+
+msgid "modes/auto_shoot_guns/progression/title"
+msgstr "ШКВАЛЬНЫЙ ОГОНЬ: ЗАДАЧА"
+
+msgid "modes/auto_shoot_guns/rewardsView/header"
+msgstr "ПОЛУЧЕНА ЛЕГЕНДАРНАЯ НАГРАДА"
+
+msgid "modes/auto_shoot_guns/scheduler/notification/available"
+msgstr "Бои подрежима %(subModeName)s снова доступны."
+
+msgid "modes/auto_shoot_guns/scheduler/notification/available/title"
+msgstr "Режим прекращения огня"
+
+msgid "modes/auto_shoot_guns/scheduler/notification/primeTime"
+msgstr ""
+"Бои подрежима %(subModeName)s недоступны до окончания режима прекращения "
+"огня."
+
+msgid "modes/auto_shoot_guns/scheduler/notification/primeTime/title"
+msgstr "Режим прекращения огня"
+
+msgid "modes/auto_shoot_guns/tierList/description"
+msgstr ""
+"Каждая случайная награда — это один предмет из списка ниже, который вы "
+"можете получить с определённой вероятностью."
+
+msgid "modes/auto_shoot_guns/tierList/title"
+msgstr "Что внутри?"
+
+msgid "modes/auto_shoot_guns/tooltip/filter/body"
+msgstr "?empty?"
+
+msgid "modes/auto_shoot_guns/tooltip/filter/header"
+msgstr "?empty?"
+
+msgid "modes/auto_shoot_guns/userName"
+msgstr "Шквальный огонь"
+
 msgid "modes/development/capsUserName"
 msgstr "?empty?"
 
 msgid "modes/development/detailedUserName"
+msgstr "?empty?"
+
+msgid "modes/development/lootbox/fep_epic"
+msgstr "?empty?"
+
+msgid "modes/development/lootbox/fep_legendary"
+msgstr "?empty?"
+
+msgid "modes/development/lootbox/fep_ordinary"
+msgstr "?empty?"
+
+msgid "modes/development/lootbox/fep_rare"
+msgstr "?empty?"
+
+msgid "modes/development/lootbox/fep_unusual"
 msgstr "?empty?"
 
 msgid "modes/development/metaProgressionTooltip/header/active"
@@ -199,9 +380,6 @@ msgid "modes/development/metaProgressionTooltip/reward/tip"
 msgstr "?empty?"
 
 msgid "modes/development/metaProgressionTooltip/subheader"
-msgstr "?empty?"
-
-msgid "modes/development/metaProgressionTooltip/timer/completedResettable"
 msgstr "?empty?"
 
 msgid "modes/development/modeSubSelector/progression/info"
@@ -234,13 +412,41 @@ msgstr "?empty?"
 msgid "modes/development/notification/switchOnSubModes"
 msgstr "?empty?"
 
-msgid "modes/development/progression/congratulation/descr"
+msgid "modes/development/progression/cardsFan/listOfRandomRewards"
+msgstr "?empty?"
+
+msgid "modes/development/progression/complete/congratulations"
+msgstr "?empty?"
+
+msgid "modes/development/progression/complete/title"
+msgstr "?empty?"
+
+msgid "modes/development/progression/infinite/congratulations"
+msgstr "?empty?"
+
+msgid "modes/development/progression/infinite/infinityStep"
+msgstr "?empty?"
+
+msgid "modes/development/progression/infinite/mainProgressionFinished"
 msgstr "?empty?"
 
 msgid "modes/development/progression/info"
 msgstr "?empty?"
 
+msgid "modes/development/progression/questsList/quest/infinityStageProgress"
+msgstr "?empty?"
+
+msgid "modes/development/progression/questsList/totalPointsEarned"
+msgstr "?empty?"
+
+msgid ""
+"modes/development/progression/questsList/totalPointsEarnedStandAloneTitle"
+msgstr "?empty?"
+
 msgid "modes/development/progression/title"
+msgstr "?empty?"
+
+msgid "modes/development/rewardsView/header"
 msgstr "?empty?"
 
 msgid "modes/development/scheduler/notification/available"
@@ -249,10 +455,22 @@ msgstr "?empty?"
 msgid "modes/development/scheduler/notification/available/title"
 msgstr "?empty?"
 
+msgid "modes/development/scheduler/notification/modeEnded"
+msgstr "?empty?"
+
+msgid "modes/development/scheduler/notification/modeEnded/title"
+msgstr "?empty?"
+
 msgid "modes/development/scheduler/notification/primeTime"
 msgstr "?empty?"
 
 msgid "modes/development/scheduler/notification/primeTime/title"
+msgstr "?empty?"
+
+msgid "modes/development/tierList/description"
+msgstr "?empty?"
+
+msgid "modes/development/tierList/title"
 msgstr "?empty?"
 
 msgid "modes/development/tooltip/filter/body"
@@ -264,94 +482,26 @@ msgstr "?empty?"
 msgid "modes/development/userName"
 msgstr "?empty?"
 
-msgid "modes/night_battles_2024/capsUserName"
-msgstr "АРКАДА"
-
-msgid "modes/night_battles_2024/detailedUserName"
-msgstr "%(modeName)s: %(subModeName)s"
-
-msgid "modes/night_battles_2024/metaProgressionTooltip/header/active"
-msgstr "Задача Аркады. Этап %(done)s{par_Open}/%(total)s{par_Close}"
-
-msgid "modes/night_battles_2024/metaProgressionTooltip/subheader"
-msgstr "Задача Аркады"
-
-msgid ""
-"modes/night_battles_2024/metaProgressionTooltip/timer/completedResettable"
-msgstr "до новой задачи Аркады"
-
-msgid "modes/night_battles_2024/modeSubSelector/progression/timer"
-msgstr "до сброса прогресса и появления новой задачи"
-
-msgid "modes/night_battles_2024/mode_selector/battleCondition"
-msgstr "15x15"
-
-msgid "modes/night_battles_2024/mode_selector/description"
-msgstr "Экспериментальные бои по нестандартным правилам."
-
-msgid "modes/night_battles_2024/mode_selector/levelCondition"
-msgstr "{parSecondary_open}I{parSecondary_close} &nbsp;%(levels)s уровни"
-
-msgid "modes/night_battles_2024/mode_selector/progression/resettable"
-msgstr "До новой задачи Аркады:"
-
-msgid "modes/night_battles_2024/notification/finishSubModes/withProgression"
-msgstr "Подрежим %(subModeName)s завершён: прогрессия сброшена."
-
-msgid ""
-"modes/night_battles_2024/notification/finishSubModes/withoutProgression"
-msgstr "Подрежим %(subModeName)s завершён."
-
-msgid "modes/night_battles_2024/notification/newSubModes/withProgression"
-msgstr "Доступны новые награды и подрежим %(subModeName)s."
-
-msgid "modes/night_battles_2024/notification/newSubModes/withoutProgression"
-msgstr "Доступен новый подрежим — %(subModeName)s."
-
-msgid "modes/night_battles_2024/notification/switchOffSubModes"
-msgstr "Подрежим %(subModeName)s недоступен: ведутся технические работы."
-
-msgid "modes/night_battles_2024/notification/switchOnSubModes"
-msgstr "Подрежим %(subModeName)s снова доступен."
-
-msgid "modes/night_battles_2024/progression/congratulation/descr"
-msgstr "Вы выполнили все задачи Аркады"
-
-msgid "modes/night_battles_2024/progression/resettable"
-msgstr "До новой задачи Аркады"
-
-msgid "modes/night_battles_2024/progression/title"
-msgstr "ЗАДАЧА АРКАДЫ"
-
-msgid "modes/night_battles_2024/scheduler/notification/available"
-msgstr "Бои подрежима %(subModeName)s снова доступны."
-
-msgid "modes/night_battles_2024/scheduler/notification/available/title"
-msgstr "Режим прекращения огня"
-
-msgid "modes/night_battles_2024/scheduler/notification/primeTime"
-msgstr ""
-"Бои подрежима %(subModeName)s недоступны до окончания режима прекращения "
-"огня."
-
-msgid "modes/night_battles_2024/scheduler/notification/primeTime/title"
-msgstr "Режим прекращения огня"
-
-msgid "modes/night_battles_2024/tooltip/filter/body"
-msgstr ""
-"Включить/отключить отображение подходящей техники для режима «Аркада»."
-
-msgid "modes/night_battles_2024/tooltip/filter/header"
-msgstr "Аркадная техника"
-
-msgid "modes/night_battles_2024/userName"
-msgstr "Аркада"
-
 msgid "modes/undefined/capsUserName"
 msgstr "АРКАДА"
 
 msgid "modes/undefined/detailedUserName"
 msgstr "%(modeName)s: %(subModeName)s"
+
+msgid "modes/undefined/lootbox/fep_epic"
+msgstr "Случайная особая награда"
+
+msgid "modes/undefined/lootbox/fep_legendary"
+msgstr "Случайная легендарная награда"
+
+msgid "modes/undefined/lootbox/fep_ordinary"
+msgstr "Случайная обычная награда"
+
+msgid "modes/undefined/lootbox/fep_rare"
+msgstr "Случайная редкая награда"
+
+msgid "modes/undefined/lootbox/fep_unusual"
+msgstr "Случайная необычная награда"
 
 msgid "modes/undefined/metaProgressionTooltip/header/active"
 msgstr "Задача Аркады. Этап: %(done)s{par_Open}/%(total)s{par_Close}"
@@ -361,9 +511,6 @@ msgstr "Прогресс выполнения засчитывается в лю
 
 msgid "modes/undefined/metaProgressionTooltip/subheader"
 msgstr "Задача Аркады"
-
-msgid "modes/undefined/metaProgressionTooltip/timer/completedResettable"
-msgstr "до новой задачи Аркады"
 
 msgid "modes/undefined/modeSubSelector/progression/info"
 msgstr "Прогресс выполнения засчитывается в любом подрежиме Аркады."
@@ -401,19 +548,55 @@ msgstr "Подрежим %(subModeName)s недоступен: ведутся т
 msgid "modes/undefined/notification/switchOnSubModes"
 msgstr "Подрежим %(subModeName)s снова доступен."
 
-msgid "modes/undefined/progression/congratulation/descr"
-msgstr "Вы выполнили все задачи Аркады"
+msgid "modes/undefined/progression/cardsFan/listOfRandomRewards"
+msgstr "Список наград"
+
+msgid "modes/undefined/progression/complete/congratulations"
+msgstr "Поздравляем!"
+
+msgid "modes/undefined/progression/complete/title"
+msgstr "Вы завершили основную прогрессию"
+
+msgid "modes/undefined/progression/infinite/congratulations"
+msgstr "Поздравляем!"
+
+msgid "modes/undefined/progression/infinite/infinityStep"
+msgstr "Повторяемый этап"
+
+msgid "modes/undefined/progression/infinite/mainProgressionFinished"
+msgstr "Вы завершили основную прогрессию"
 
 msgid "modes/undefined/progression/info"
 msgstr "Задачу можно выполнять в любом подрежиме Аркады."
 
+msgid "modes/undefined/progression/questsList/quest/infinityStageProgress"
+msgstr ""
+"Получите столько наград, сколько сможете: %(currentPoints) / "
+"%(infinitySign)s"
+
+msgid "modes/undefined/progression/questsList/totalPointsEarned"
+msgstr "Заработано очков: %(progressionSteps)s"
+
+msgid ""
+"modes/undefined/progression/questsList/totalPointsEarnedStandAloneTitle"
+msgstr "Получено очков:"
+
 msgid "modes/undefined/progression/title"
 msgstr "ЗАДАЧА АРКАДЫ"
+
+msgid "modes/undefined/rewardsView/header"
+msgstr "ПОЛУЧЕНА ЛЕГЕНДАРНАЯ НАГРАДА"
 
 msgid "modes/undefined/scheduler/notification/available"
 msgstr "Бои подрежима %(subModeName)s снова доступны."
 
 msgid "modes/undefined/scheduler/notification/available/title"
+msgstr "Режим прекращения огня"
+
+msgid "modes/undefined/scheduler/notification/modeEnded"
+msgstr "Бои режима «%(subModeName)s» завершены"
+
+msgid "modes/undefined/scheduler/notification/modeEnded/title"
 msgstr "Режим прекращения огня"
 
 msgid "modes/undefined/scheduler/notification/primeTime"
@@ -423,6 +606,14 @@ msgstr ""
 
 msgid "modes/undefined/scheduler/notification/primeTime/title"
 msgstr "Режим прекращения огня"
+
+msgid "modes/undefined/tierList/description"
+msgstr ""
+"Каждая случайная награда — это один предмет из списка ниже, который вы "
+"можете получить с определённой вероятностью."
+
+msgid "modes/undefined/tierList/title"
+msgstr "Что внутри?"
 
 msgid "modes/undefined/tooltip/filter/body"
 msgstr ""
@@ -446,6 +637,9 @@ msgstr "Подрежимы %(subModesNames)s завершены: прогрес�
 msgid "notification/finishSubModes/withoutProgression"
 msgstr "Подрежимы %(subModesNames)s завершены."
 
+msgid "notification/lootboxAutoOpen/rewardText"
+msgstr "Получена награда"
+
 msgid "notification/newProgression"
 msgstr "Прогрессия режима сброшена — вы можете снова получить награды!"
 
@@ -459,6 +653,11 @@ msgstr "Доступны новые подрежимы: %(subModesNames)s."
 msgid "notification/progressionComplete"
 msgstr "Вы выполнили все доступные задачи %(modeName)s. Получена награда:"
 
+msgid "notification/progressionComplete/infiniteStarted"
+msgstr ""
+"Вы выполнили все доступные задачи режима «%(modeName)s». Разблокирован "
+"повторяемый этап. Получена награда:"
+
 msgid "notification/progressionComplete/resetLessDay"
 msgstr ""
 "До сброса прогрессии осталось меньше 1 д. После этого вы сможете выполнить "
@@ -470,7 +669,7 @@ msgstr ""
 "выполнить задачи ещё раз."
 
 msgid "notification/progressionStageComplete"
-msgstr "Вы выполнили задач %(modeName)s: %(counter)s. Получена награда:"
+msgstr "Выполнена задача «%(modeName)s», этап %(stage)s. Получена награда:"
 
 msgid "notification/subModesSeparator"
 msgstr ", "
@@ -603,14 +802,47 @@ msgstr ""
 msgid "primeTimes/timeText/undefined"
 msgstr "?empty?"
 
-msgid "progression/complete/timer"
-msgstr "до новой задачи"
+msgid "progression/cards/points"
+msgstr "Очки"
 
-msgid "progression/complete/title"
-msgstr "Вы прошли все этапы задачи"
+msgid "progression/complete/affirmative"
+msgstr "Так точно!"
 
-msgid "progression/congratulation/title"
-msgstr "Поздравляем!"
+msgid "progression/defaultCondition/text"
+msgstr "Зарабатывайте очки и продвигайтесь по прогрессии."
+
+msgid "progression/infinite/pointsEarned"
+msgstr "Получено очков:"
+
+msgid "progression/infinite/steps"
+msgstr "%(done)s / %(total)s"
+
+msgid "progression/questsList/quest/infinityProgress"
+msgstr "Повторяемая"
+
+msgid "progression/questsList/quest/pointsPlus"
+msgstr "+%(pointsCount)s"
+
+msgid "progression/questsList/quest/progressChangeLabel/forCompletion"
+msgstr "За выполнение: %(points)s"
+
+msgid "progression/questsList/quest/progressChangeLabel/forLoss"
+msgstr "За поражение: %(points)s"
+
+msgid "progression/questsList/quest/progressChangeLabel/forWin"
+msgstr "За победу: %(points)s"
+
+msgid "progression/questsList/quest/progressChangeLabel/pointsEarned"
+msgstr "Получено: %(points)s"
+
+msgid "progression/questsList/quest/progressTitle"
+msgstr "Выполнено: %(currentPoints) / %(totalPoints)s"
+
+msgid "progression/questsList/questsFinishTimerTitle"
+msgstr "До конца события: %(time)s"
+
+msgid "progression/questsList/questsRenewTimerTitle"
+msgstr "До следующего запуска: %(time)s"
 
 msgid "progression/steps"
 msgstr "%(done)s / %(total)s"
@@ -621,14 +853,181 @@ msgstr "{yellow_Open}%(done)s{yellow_Close} / %(total)s"
 msgid "progression/stepsNoProgress"
 msgstr "{bond_Open}%(done)s{bond_Close} / %(total)s"
 
-msgid "progression/timer"
-msgstr "до сброса прогресса с наградами и появления новой задачи"
+msgid "rewardsView/additionalRewards/title"
+msgstr "Также получено:"
+
+msgid "rewardsView/footer/acceptButton"
+msgstr "Так точно!"
+
+msgid "rewardsView/subheader"
+msgstr "«%(subModeName)s»"
 
 msgid "scheduler/notification/squadModeSwitch"
 msgstr "Командир взвода сменил подрежим на %(subModeName)s."
 
 msgid "scheduler/notification/squadModeSwitch/title"
 msgstr "Смена подрежима"
+
+msgid "strengths_weaknesses/strength/armour"
+msgstr "Неплохая броня корпуса и башни"
+
+msgid "strengths_weaknesses/strength/armoured_hull"
+msgstr "Хорошее бронирование корпуса"
+
+msgid "strengths_weaknesses/strength/best_speed"
+msgstr ""
+"Лучшие (ультимативные) показатели скорости, подвижности и манёвренности"
+
+msgid "strengths_weaknesses/strength/curved_trajectory"
+msgstr "Крутая траектория полёта снаряда"
+
+msgid "strengths_weaknesses/strength/damage"
+msgstr "Хороший урон очередью"
+
+msgid "strengths_weaknesses/strength/four_cannons"
+msgstr "Счетверённое орудие"
+
+msgid "strengths_weaknesses/strength/infinity_load"
+msgstr "Большая лента"
+
+msgid "strengths_weaknesses/strength/piercing"
+msgstr "Достойное бронепробитие"
+
+msgid "strengths_weaknesses/strength/rate_of_fire"
+msgstr "Высокий темп стрельбы"
+
+msgid "strengths_weaknesses/strength/rate_of_fire_and_dpm"
+msgstr "Высокая скорострельность"
+
+msgid "strengths_weaknesses/strength/rotary_gun"
+msgstr "Мощное роторное орудие"
+
+msgid "strengths_weaknesses/strength/six_guns"
+msgstr "Шестиствольное роторное орудие"
+
+msgid "strengths_weaknesses/strength/speed"
+msgstr "Хорошая скорость и манёвренность"
+
+msgid "strengths_weaknesses/strength/stabilization"
+msgstr "Очень комфортное орудие"
+
+msgid "strengths_weaknesses/strength/strong_armour"
+msgstr "Крепкое бронирование"
+
+msgid "strengths_weaknesses/strength/two_cannons"
+msgstr "Спаренные 57-мм орудия"
+
+msgid "strengths_weaknesses/strength/two_cannons_with_autoloader"
+msgstr "Спаренные 88-мм орудия"
+
+msgid "strengths_weaknesses/strength/two_salvos"
+msgstr "Две реактивные установки"
+
+msgid "strengths_weaknesses/strength/versatility"
+msgstr "Универсальность"
+
+msgid "strengths_weaknesses/strength/wide_aoe"
+msgstr "Большая площадь поражения"
+
+msgid "strengths_weaknesses/strengths"
+msgstr "Сильные стороны"
+
+msgid "strengths_weaknesses/weakness/accuracy"
+msgstr "Большой разброс"
+
+msgid "strengths_weaknesses/weakness/armour"
+msgstr "Слабая броня"
+
+msgid "strengths_weaknesses/weakness/overheating"
+msgstr "Нагрев орудия"
+
+msgid "strengths_weaknesses/weakness/penetration"
+msgstr "Посредственное бронепробитие"
+
+msgid "strengths_weaknesses/weakness/reload"
+msgstr "Долгая перезарядка"
+
+msgid "strengths_weaknesses/weakness/size_and_armour"
+msgstr "Большие габариты, слабая броня"
+
+msgid "strengths_weaknesses/weakness/speed"
+msgstr "Низкая скорость и манёвренность"
+
+msgid "strengths_weaknesses/weakness/turret_armour"
+msgstr "Слабая броня башни"
+
+msgid "strengths_weaknesses/weakness/weak_armour"
+msgstr "Слабая броня"
+
+msgid "strengths_weaknesses/weakness/weak_speed"
+msgstr "Не лучшие показатели скорости и манёвренности"
+
+msgid "strengths_weaknesses/weakness/weakspot"
+msgstr "Очевидные слабые зоны в броне"
+
+msgid "strengths_weaknesses/weaknesses"
+msgstr "Слабые стороны"
+
+msgid "sub_modes/auto_shoot_guns/alert_tooltip/alert"
+msgstr "Снижение производительности"
+
+msgid "sub_modes/auto_shoot_guns/alert_tooltip/description"
+msgstr ""
+"Режим требователен к компьютеру. Возможно снижение FPS при интенсивных "
+"боевых действиях. При недостаточной производительности попробуйте понизить "
+"настройки графики."
+
+msgid "sub_modes/auto_shoot_guns/alert_tooltip/entryPointHeader"
+msgstr "Возможно снижение производительности"
+
+msgid "sub_modes/auto_shoot_guns/alert_tooltip/modeSelectHeader"
+msgstr "Снижение производительности"
+
+msgid "sub_modes/auto_shoot_guns/alert_tooltip/submodeDescription"
+msgstr "Режим с необычной техникой, оснащённой автоматическими орудиями."
+
+msgid "sub_modes/auto_shoot_guns/capsUserName"
+msgstr "ШКВАЛЬНЫЙ ОГОНЬ"
+
+msgid "sub_modes/auto_shoot_guns/detailsHelp/page1/description"
+msgstr ""
+"Пора устроить оглушительную канонаду! Машины с автопушками созданы для "
+"быстрой стрельбы — ведите огонь на подавление, не дайте противнику высунуть "
+"носа из укрытия, но следите за тем, чтобы ваше орудие не перегревалось."
+
+msgid "sub_modes/auto_shoot_guns/detailsHelp/page1/title"
+msgstr "ШКВАЛЬНЫЙ ОГОНЬ"
+
+msgid "sub_modes/auto_shoot_guns/detailsHelpHint/description"
+msgstr "для знакомства с особенностями машины"
+
+msgid "sub_modes/auto_shoot_guns/detailsHelpHint/press"
+msgstr "Нажмите"
+
+msgid "sub_modes/auto_shoot_guns/detailsHelpTitle"
+msgstr "ШКВАЛЬНЫЙ ОГОНЬ"
+
+msgid "sub_modes/auto_shoot_guns/subModeCard/description"
+msgstr "?empty?"
+
+msgid "sub_modes/auto_shoot_guns/subModeCard/title"
+msgstr "?empty?"
+
+msgid "sub_modes/auto_shoot_guns/tips/tip1/description"
+msgstr ""
+"Забудьте о цикличных орудиях и долгой перезарядке. Машины с автопушками "
+"созданы для того, чтобы вести огонь на подавление. Готовьте обоймы и ленты, "
+"не дайте противнику высунуть носа из укрытия, устройте пекло на поле боя! "
+"Главное, не перегрейтесь."
+
+msgid "sub_modes/auto_shoot_guns/tips/tip1/title"
+msgstr "ШКВАЛЬНЫЙ ОГОНЬ"
+
+msgid "sub_modes/auto_shoot_guns/userName"
+msgstr "Шквальный огонь"
+
+msgid "sub_modes/auto_shoot_guns/userName/quoted"
+msgstr "«Шквальный огонь»"
 
 msgid "sub_modes/development/capsUserName"
 msgstr "?empty?"
@@ -661,7 +1060,7 @@ msgid "sub_modes/development/subModeCard/description"
 msgstr "?empty?"
 
 msgid "sub_modes/development/subModeCard/levelCondition"
-msgstr "?empty?"
+msgstr "{parSecondary_open}I{parSecondary_close} &nbsp;%(levels)s уровни"
 
 msgid "sub_modes/development/subModeCard/title"
 msgstr "?empty?"
@@ -677,43 +1076,6 @@ msgstr "?empty?"
 
 msgid "sub_modes/development/userName/quoted"
 msgstr "?empty?"
-
-msgid "sub_modes/night_battles_2024/capsUserName"
-msgstr "ПОД ПОКРОВОМ НОЧИ"
-
-msgid "sub_modes/night_battles_2024/detailsHelp/page1/description"
-msgstr ""
-"Ночь — не причина прекращать боевые действия. В темноте приборы наблюдения "
-"работают хуже, а обнаружить затаившегося противника намного сложнее, чем при"
-" свете дня. Конечно, если он сам себя не выдаст, когда от напряжения начнёт "
-"палить во всё, что шевелится."
-
-msgid "sub_modes/night_battles_2024/detailsHelp/page1/title"
-msgstr "Под покровом ночи"
-
-msgid "sub_modes/night_battles_2024/detailsHelpHint/description"
-msgstr "для знакомства с особенностями режима"
-
-msgid "sub_modes/night_battles_2024/detailsHelpHint/press"
-msgstr "Нажмите"
-
-msgid "sub_modes/night_battles_2024/detailsHelpTitle"
-msgstr "Аркада: Под покровом ночи"
-
-msgid "sub_modes/night_battles_2024/tips/tip1/description"
-msgstr ""
-"В темноте приборы наблюдения работают хуже, и обнаружить противника намного "
-"сложнее. Обратите это в свою пользу: двигайтесь незаметно и не открывайте "
-"огонь без повода."
-
-msgid "sub_modes/night_battles_2024/tips/tip1/title"
-msgstr "ПОД ПОКРОВОМ НОЧИ"
-
-msgid "sub_modes/night_battles_2024/userName"
-msgstr "Под покровом ночи"
-
-msgid "sub_modes/night_battles_2024/userName/quoted"
-msgstr "«Под покровом ночи»"
 
 msgid "sub_modes/undefined/capsUserName"
 msgstr "UNKNOWN SUB MODE NAME"
@@ -740,7 +1102,7 @@ msgid "sub_modes/undefined/subModeCard/description"
 msgstr "Unknown subModeCard description"
 
 msgid "sub_modes/undefined/subModeCard/levelCondition"
-msgstr "?empty?"
+msgstr "{parSecondary_open}I{parSecondary_close} &nbsp;%(levels)s уровни"
 
 msgid "sub_modes/undefined/subModeCard/title"
 msgstr "Unknown subModeCard title"
@@ -756,3 +1118,74 @@ msgstr "Unknown sub mode name"
 
 msgid "sub_modes/undefined/userName/quoted"
 msgstr "«Unknown sub mode name»"
+
+msgid "vehicle_tooltip/status/in_battle"
+msgstr "В бою"
+
+msgid "vehicle_tooltip/status/not_ready"
+msgstr "Техника не готова к бою"
+
+msgid "vehicle_tooltip/status/ready"
+msgstr "К бою готов"
+
+msgid "vehicle_tooltip/subtitle"
+msgstr "Машина режима «Шквальный огонь»"
+
+msgid "vehicle_tooltip/vehicle/description/A116_XM551_FEP23"
+msgstr ""
+"Этот потомок «Шеридана» не унаследовал мощное 155-мм орудие. Вместо этого он"
+" получил шестиствольный вращающийся «Миниган», позволяющий отправлять в "
+"противника большое количество снарядов за короткое время. Остальные "
+"показатели остались такими же: подвижность, крупные габариты и экраны на "
+"корпусе."
+
+msgid "vehicle_tooltip/vehicle/description/A143_M_V_Y_FEP23"
+msgstr ""
+"Универсальный тяжёлый танк, вооружённый 75-мм орудием с ленточным "
+"боепитанием и обладающий достойной подвижностью. Он может доставить немало "
+"неприятностей противнику, однако не стоит забывать о том, что орудие "
+"экспериментальное и может перегреваться. К тому же у танка есть уязвимые "
+"«уши», поэтому игра на нём потребует определённых умений."
+
+msgid "vehicle_tooltip/vehicle/description/Cz04_T50_51_FEP23"
+msgstr ""
+"Эта машина с неплохой бронёй и хорошей подвижностью вооружена спаренными "
+"57-мм орудиями и считается самой универсальной."
+
+msgid "vehicle_tooltip/vehicle/description/F108_Panhard_EBR_105_FEP23"
+msgstr ""
+"«Бюджетный» Panhard EBR. Машина обладает всеми достоинствами обычной версии,"
+" кроме орудия. Великолепная подвижность, небольшие габариты и крепкие колёса"
+" дают возможность устроить хаос на поле боя, а новая 40-мм пушка "
+"демонстрирует отличную скорострельность."
+
+msgid "vehicle_tooltip/vehicle/description/F38_Bat_Chatillon155_58_FEP23"
+msgstr ""
+"Это не просто очередная ствольная артиллерия. Сохраняя подвижность и "
+"хрупкость, свойственную машинам на базе B.C., она несёт два пакета "
+"направляющих для 150-мм ракет. В рамках одного цикла перезарядки САУ "
+"способна совершить два залпа по шесть ракет, накрывающих обширную площадь."
+
+msgid "vehicle_tooltip/vehicle/description/G42_Maus_FEP23"
+msgstr ""
+"Сверхтяжёлая машина, оснащённая спаренными зенитными орудиями крупного "
+"калибра. Она не слишком подвижна, но динамики вполне хватает, чтобы выдать "
+"«двоечку» противнику. Между тем, сам «Флакмаус» держит далеко не каждый "
+"удар, ведь из тяжелобронированного в нём только корпус."
+
+msgid "vehicle_tooltip/vehicle/description/G72_JagdPz_E100_FEP23"
+msgstr ""
+"Этот стальной монстр прекрасно бронирован, что компенсирует низкую "
+"подвижность и большие габариты. Впрочем, его главная особенность — это "
+"вооружение. Огромное восьмиствольное роторное орудие просто сметает "
+"соперников с пути."
+
+msgid "vehicle_tooltip/vehicle/description/R97_Object_140_FEP23"
+msgstr ""
+"Машина, обладающая великолепным комплексом вооружения. Четырёхствольная "
+"установка демонстрирует высокий темп стрельбы, а хороший носитель позволяет "
+"эффективно его реализовать, что в совокупности с неплохой (но не идеальной) "
+"бронёй создаёт хорошую комбинацию."
+
+msgid "widget/steps"
+msgstr "{cream_Open}%(current)s{cream_Close}/%(total)s"

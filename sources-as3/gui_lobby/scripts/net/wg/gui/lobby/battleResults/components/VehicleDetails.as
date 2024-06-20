@@ -11,7 +11,6 @@ package net.wg.gui.lobby.battleResults.components
    import net.wg.infrastructure.base.UIComponentEx;
    import net.wg.utils.IClassFactory;
    import net.wg.utils.ICommons;
-   import net.wg.utils.IUtils;
    import org.idmedia.as3commons.util.StringUtils;
    
    public class VehicleDetails extends UIComponentEx
@@ -55,13 +54,13 @@ package net.wg.gui.lobby.battleResults.components
       
       private static const EPIC_WIDTH:int = 345;
       
-      private static const DEFAULT_LBL_WIDTH:int = 300;
+      private static const DEFAULT_LBL_WIDTH:int = 272;
       
-      private static const DEFAULT_VALUES_POS_X:int = 302;
+      private static const DEFAULT_VALUES_POS_X:int = 274;
       
       private static const DEFAULT_VALUES_POS_Y:int = 2;
       
-      private static const DEFAULT_VALUES_WIDTH:int = 60;
+      private static const DEFAULT_VALUES_WIDTH:int = 88;
       
       private static const DEFAULT_WIDTH:int = 362;
       
@@ -90,8 +89,14 @@ package net.wg.gui.lobby.battleResults.components
       
       private var _stateDirty:Boolean = false;
       
+      private var _commons:ICommons;
+      
+      private var _classFactory:IClassFactory;
+      
       public function VehicleDetails()
       {
+         this._commons = App.utils.commons;
+         this._classFactory = App.utils.classFactory;
          super();
       }
       
@@ -112,6 +117,8 @@ package net.wg.gui.lobby.battleResults.components
          this._infoIconsContainer = null;
          this._lineType = null;
          this._data = null;
+         this._commons = null;
+         this._classFactory = null;
          super.onDispose();
       }
       
@@ -168,14 +175,12 @@ package net.wg.gui.lobby.battleResults.components
       
       private function populateStats(param1:Vector.<StatItemVO>) : void
       {
-         var _loc2_:Number = NaN;
-         var _loc3_:Number = NaN;
+         var _loc2_:int = 0;
+         var _loc3_:int = 0;
          var _loc4_:StatItemVO = null;
          var _loc5_:MovieClip = null;
          var _loc6_:InfoIcon = null;
-         var _loc7_:IUtils = null;
-         var _loc8_:ICommons = null;
-         var _loc9_:IClassFactory = null;
+         var _loc7_:int = 0;
          this.statsLbl.htmlText = Values.EMPTY_STR;
          this.statsValuesLbl.htmlText = Values.EMPTY_STR;
          this.clearLines();
@@ -184,27 +189,25 @@ package net.wg.gui.lobby.battleResults.components
          {
             _loc2_ = 0;
             _loc3_ = param1.length;
-            _loc7_ = App.utils;
-            _loc8_ = _loc7_.commons;
-            _loc9_ = _loc7_.classFactory;
             while(_loc2_ < _loc3_)
             {
                _loc4_ = param1[_loc2_];
-               _loc8_.addBlankLines(_loc4_.label,this.statsLbl,Vector.<TextField>([this.statsValuesLbl]));
+               this._commons.addBlankLines(_loc4_.label,this.statsLbl,Vector.<TextField>([this.statsValuesLbl]));
                this.statsLbl.htmlText += _loc4_.label;
                this.statsValuesLbl.htmlText += _loc4_.value;
-               App.utils.commons.updateTextFieldSize(this.statsLbl,false,true);
-               if(Math.floor(this.statsLbl.y + this.statsLbl.textHeight) + TINY_OFFSET < this.statsLbl.height)
+               this._commons.updateTextFieldSize(this.statsLbl,false,true);
+               _loc7_ = Math.floor(this.statsLbl.y + this.statsLbl.textHeight) + TINY_OFFSET;
+               if(_loc7_ < this.statsLbl.height)
                {
-                  _loc5_ = _loc9_.getComponent(this._lineType,MovieClip,{
+                  _loc5_ = this._classFactory.getComponent(this._lineType,MovieClip,{
                      "x":this.statsLbl.x + TINY_OFFSET,
-                     "y":Math.floor(this.statsLbl.y + this.statsLbl.textHeight) + TINY_OFFSET
+                     "y":_loc7_
                   });
                   this._linesContainer.addChild(_loc5_);
                }
                if(StringUtils.isNotEmpty(_loc4_.infoTooltip))
                {
-                  _loc6_ = InfoIcon(App.utils.classFactory.getComponent(Linkages.INFO_ICON_UI,InfoIcon,{
+                  _loc6_ = InfoIcon(this._classFactory.getComponent(Linkages.INFO_ICON_UI,InfoIcon,{
                      "x":this.statsValuesLbl.x + this.statsValuesLbl.width + INFO_ICON_OFFSET_X | 0,
                      "y":this.statsValuesLbl.y + this.statsLbl.textHeight + INFO_ICON_OFFSET_Y | 0
                   }));
@@ -214,7 +217,7 @@ package net.wg.gui.lobby.battleResults.components
                _loc2_++;
             }
          }
-         App.utils.commons.updateTextFieldSize(this.statsValuesLbl,false,true);
+         this._commons.updateTextFieldSize(this.statsValuesLbl,false,true);
          _height = this.statsLbl.y + this.statsLbl.height > this.statsValuesLbl.height ? Number(this.statsLbl.height) : Number(this.statsValuesLbl.height);
          dispatchEvent(new Event(Event.RESIZE));
       }

@@ -312,7 +312,7 @@ class PostmortemPanel(_SummaryPostmortemPanel):
         if player is None:
             return False
         else:
-            return ARENA_BONUS_TYPE_CAPS.checkAny(player.arenaBonusType, cap)
+            return player.hasBonusCap(cap)
 
     def _setHealthPercent(self, health):
         self.__healthPercent = normalizeHealthPercent(health, self._maxHealth)
@@ -492,6 +492,9 @@ class PostmortemPanel(_SummaryPostmortemPanel):
             self.as_fadePostmortemPanelOutS()
         elif killCamState is DeathCamEvent.State.FINISHED:
             self.as_setInDeathCamS(False)
+            respawnCtrl = self.sessionProvider.dynamic.respawn
+            if respawnCtrl and respawnCtrl.playerLives > 0:
+                return
             self.as_togglePostmortemInfoPanelS(True)
             self.as_resetPostmortemPositionS()
 

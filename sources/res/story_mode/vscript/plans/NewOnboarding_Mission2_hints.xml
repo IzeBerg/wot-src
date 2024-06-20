@@ -5272,14 +5272,14 @@
 				<slots/>
 			</block>
 			<block>
-				<class>If</class>
-				<id>If_17</id>
+				<class>OnPlayerVehicleDiscreteShoot</class>
+				<id>OnPlayerVehicleDiscreteShoot_3</id>
 				<params/>
 				<slots/>
 			</block>
 			<block>
-				<class>OnPlayerVehicleShoot</class>
-				<id>OnPlayerVehicleShoot_1</id>
+				<class>If</class>
+				<id>If_17</id>
 				<params/>
 				<slots/>
 			</block>
@@ -9487,10 +9487,10 @@
 				<output>out</output>
 			</connection>
 			<connection>
-				<from>OnPlayerVehicleShoot_1</from>
+				<from>OnPlayerVehicleDiscreteShoot_3</from>
 				<input>input</input>
 				<to>If_17</to>
-				<output>onShoot</output>
+				<output>onDiscreteShoot</output>
 			</connection>
 			<connection>
 				<from>CompareIntegers_7</from>

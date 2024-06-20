@@ -144,7 +144,8 @@ package net.wg.gui.lobby.rankedBattles19.components.divisionProgress.helpers
       
       private function onFirstEnterPhase2Complete(param1:Tween) : void
       {
-         var _loc2_:DisplayObject = progressBlock.stepsContainer;
+         var _loc2_:DisplayObject = null;
+         _loc2_ = progressBlock.stepsContainer;
          _loc2_.y = -(_loc2_.height >> 1);
          _loc2_.visible = true;
          _loc2_.alpha = 0;

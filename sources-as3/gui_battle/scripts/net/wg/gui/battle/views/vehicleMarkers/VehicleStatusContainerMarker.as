@@ -127,9 +127,8 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.statusMarker.setupFrameEvents();
       }
       
-      override protected function onDispose() : void
+      override protected function onBeforeDispose() : void
       {
-         var _loc1_:* = undefined;
          this.stunMarker.removeEventListener(StatusAnimationEvent.EVENT_HIDDEN,this.onStatusAnimationEventHiddenHandler);
          this.baseEngineerMarker.removeEventListener(StatusAnimationEvent.EVENT_HIDDEN,this.onStatusAnimationEventHiddenHandler);
          this.inspireMarker.removeEventListener(StatusAnimationEvent.EVENT_HIDDEN,this.onStatusAnimationEventHiddenHandler);
@@ -144,6 +143,12 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.shotPassionMarker.removeEventListener(StatusAnimationEvent.EVENT_HIDDEN,this.onStatusAnimationEventHiddenHandler);
          this.adaptationHealthRestoreMarker.removeEventListener(StatusAnimationEvent.EVENT_HIDDEN,this.onStatusAnimationEventHiddenHandler);
          this.statusMarker.removeEventListener(StatusAnimationEvent.EVENT_HIDDEN,this.onStatusAnimationEventHiddenHandler);
+         super.onBeforeDispose();
+      }
+      
+      override protected function onDispose() : void
+      {
+         var _loc1_:* = undefined;
          this.baseEngineerMarker.dispose();
          this.baseEngineerMarker = null;
          this.inspireMarker.dispose();
