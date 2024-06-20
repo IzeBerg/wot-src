@@ -7015,6 +7015,18 @@ package
       
       public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_4_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/tankmen_bp14_4/howToGetInfo";
       
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_5_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_bp14_5/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_5_DESC:String = "#tooltips:notrecruitedtankman/tankmen_bp14_5/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_5_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/tankmen_bp14_5/howToGetInfo";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_6_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_bp14_6/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_6_DESC:String = "#tooltips:notrecruitedtankman/tankmen_bp14_6/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_6_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/tankmen_bp14_6/howToGetInfo";
+      
       public static const NOTRECRUITEDTANKMAN_TANKMEN_AUC_1_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_auc_1/label";
       
       public static const NOTRECRUITEDTANKMAN_TANKMEN_AUC_1_DESC:String = "#tooltips:notrecruitedtankman/tankmen_auc_1/desc";
