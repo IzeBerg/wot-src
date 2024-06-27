@@ -3944,7 +3944,7 @@
 							<!--BW_String-->
 						</turretRotation>
 						<afterShot>
-							20.0
+							6.0
 							<!--BW_String-->
 						</afterShot>
 						<whileGunDamaged>
@@ -3957,7 +3957,7 @@
 						<!--BW_String-->
 					</shotDispersionRadius>
 					<aimingTime>
-						4.0
+						2.8
 						<!--BW_String-->
 					</aimingTime>
 					<invisibilityFactorAtShot>
@@ -5054,31 +5054,6 @@
 			</chassis>
 		</detailed>
 	</physics>
-	<siege_mode>
-		<switchOnTime>2</switchOnTime>
-		<switchOffTime>2</switchOffTime>
-		<engineDamageCoeff>2</engineDamageCoeff>
-		<soundStateChange>
-			<on>strv_siege_mode_on_PC</on>
-			<off>strv_siege_mode_off_PC</off>
-		</soundStateChange>
-	</siege_mode>
-	<hull_aiming>
-		<pitch>
-			<isFlexible>True</isFlexible>
-			<wheelCorrectionCenterZ>
-				1.165
-				<!--BW_String-->
-			</wheelCorrectionCenterZ>
-			<wheelsCorrectionSpeed>10</wheelsCorrectionSpeed>
-			<wheelsCorrectionAngles>
-				<pitchMin>0</pitchMin>
-				<pitchMax>0</pitchMax>
-			</wheelsCorrectionAngles>
-		</pitch>
-		<yawDisabled/>
-	</hull_aiming>
-	<useHullZSize>True</useHullZSize>
 	<effects>
 		<collision/>
 		<damagedStateGroup>large</damagedStateGroup>
