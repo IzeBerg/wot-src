@@ -348,7 +348,8 @@ package net.wg.gui.battle.views.vehicleMarkers
             this._entityName = this._model.entityName;
             this.actionMarker.entityName = this._entityName;
             this.makeColorSchemeName();
-            this.statusContainer.setEffectColor(this._vmManager.getAliasColor(this._stunSchemeName),this._vmManager.getRGB(this._stunSchemeName));
+            this.statusContainer.setBuffEffectColor(this._vmManager.getAliasColor(this._stunSchemeName),this._vmManager.getRGB(this._stunSchemeName));
+            this.statusContainer.setDebuffEffectColor(this._vmManager.getAliasColor(this._stunSchemeName),this._vmManager.getRGB(this._stunSchemeName));
             if(this._entityName == VehicleMarkersConstants.ENTITY_NAME_ENEMY)
             {
                this._entityType = VehicleMarkersConstants.ENTITY_TYPE_ENEMY;
@@ -630,7 +631,8 @@ package net.wg.gui.battle.views.vehicleMarkers
             }
             if(!this._vehicleDestroyed)
             {
-               this.statusContainer.setEffectColor(this._vmManager.getAliasColor(this._stunSchemeName),this._vmManager.getRGB(this._stunSchemeName));
+               this.statusContainer.setBuffEffectColor(this._vmManager.getAliasColor(this._stunSchemeName),this._vmManager.getRGB(this._stunSchemeName));
+               this.statusContainer.setDebuffEffectColor(this._vmManager.getAliasColor(this._stunSchemeName),this._vmManager.getRGB(this._stunSchemeName));
             }
             this._vehicleDestroyedAlready = this._vehicleDestroyedAlready || this._vehicleDestroyed;
          }

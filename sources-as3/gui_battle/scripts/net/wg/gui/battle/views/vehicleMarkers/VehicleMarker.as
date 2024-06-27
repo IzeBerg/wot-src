@@ -76,9 +76,13 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       private static const VM_DEAD_PREFIX:String = "vm_dead_";
       
-      private static const VM_STUN_PREFIX:String = "vm_stun_";
+      private static const VM_DEBUFF_PREFIX:String = "vm_stun_";
       
-      private static const VM_STUN_POSTFIX:String = "_schema";
+      private static const VM_BUFF_PREFIX:String = "vm_stun_";
+      
+      private static const VM_DEBUFF_POSTFIX:String = "_schema";
+      
+      private static const VM_BUFF_POSTFIX:String = "_schema";
       
       private static const MAX_HEALTH_PERCENT:uint = 100;
       
@@ -203,7 +207,9 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       private var _markerSchemeName:String = "";
       
-      private var _stunSchemeName:String = "";
+      private var _debuffSchemeName:String = "";
+      
+      private var _buffSchemeName:String = "";
       
       private var _isFlagShown:Boolean = false;
       
@@ -583,7 +589,7 @@ package net.wg.gui.battle.views.vehicleMarkers
             this._entityName = this.model.entityName;
             this.actionMarker.entityName = this._entityName;
             this.makeColorSchemeName();
-            this.statusContainer.setEffectColor(this.vmManager.getAliasColor(this._stunSchemeName),this.vmManager.getRGB(this._stunSchemeName));
+            this.updateEffectColor();
             if(this.isEnemy())
             {
                this._entityType = VehicleMarkersConstants.ENTITY_TYPE_ENEMY;
@@ -871,6 +877,12 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.otherHitLabel.y = !!this.playerHitLabel.isActive() ? Number(OTHER_HIT_LABEL_Y) : Number(this.playerHitLabel.y);
       }
       
+      private function updateEffectColor() : void
+      {
+         this.statusContainer.setBuffEffectColor(this.vmManager.getAliasColor(this._buffSchemeName),this.vmManager.getRGB(this._buffSchemeName));
+         this.statusContainer.setDebuffEffectColor(this.vmManager.getAliasColor(this._debuffSchemeName),this.vmManager.getRGB(this._debuffSchemeName));
+      }
+      
       private function sortInsertedSymbols(param1:VehicleMarkerPart, param2:VehicleMarkerPart) : int
       {
          var _loc3_:int = this.markerParts.indexOf(param1);
@@ -964,7 +976,8 @@ package net.wg.gui.battle.views.vehicleMarkers
       private function makeColorSchemeName() : void
       {
          this._markerSchemeName = (!!this.vehicleDestroyed ? this.vmDeadPrefix : this.vmPrefix) + this._entityName;
-         this._stunSchemeName = this.vmStunPrefix + this._entityName + this.vmStunPostfix;
+         this._debuffSchemeName = this.vmDebuffPrefix + this._entityName + this.vmDebuffPostfix;
+         this._buffSchemeName = this.vmBuffPrefix + this._entityName + this.vmBuffPostfix;
       }
       
       private function updateVehicleMarkerHover() : void
@@ -1100,7 +1113,7 @@ package net.wg.gui.battle.views.vehicleMarkers
             }
             if(!this.vehicleDestroyed)
             {
-               this.statusContainer.setEffectColor(this.vmManager.getAliasColor(this._stunSchemeName),this.vmManager.getRGB(this._stunSchemeName));
+               this.updateEffectColor();
             }
             this._vehicleDestroyedAlready = this._vehicleDestroyedAlready || this.vehicleDestroyed;
          }
@@ -1314,14 +1327,24 @@ package net.wg.gui.battle.views.vehicleMarkers
          return VM_DEAD_PREFIX;
       }
       
-      protected function get vmStunPrefix() : String
+      protected function get vmDebuffPrefix() : String
       {
-         return VM_STUN_PREFIX;
+         return VM_DEBUFF_PREFIX;
       }
       
-      protected function get vmStunPostfix() : String
+      protected function get vmBuffPrefix() : String
       {
-         return VM_STUN_POSTFIX;
+         return VM_BUFF_PREFIX;
+      }
+      
+      protected function get vmBuffPostfix() : String
+      {
+         return VM_BUFF_POSTFIX;
+      }
+      
+      protected function get vmDebuffPostfix() : String
+      {
+         return VM_DEBUFF_POSTFIX;
       }
       
       protected function get damageType() : String

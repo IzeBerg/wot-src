@@ -14,7 +14,6 @@ from battle_royale.gui.impl.lobby.tank_setup.dialogs.need_repair import NeedRepa
 from frameworks.wulf import ViewFlags, ViewSettings, Array
 from gui import SystemMessages
 from gui.Scaleform.daapi.view.common.battle_royale.br_helpers import isIncorrectVehicle
-from gui.impl.gen.view_models.views.battle_royale.equipment_panel_cmp_tooltips import EquipmentPanelCmpTooltips
 from gui.impl.pub import ViewImpl
 from gui.prb_control.entities.listener import IGlobalListener
 from gui.shared.gui_items.items_actions.actions import VehicleRepairAction
@@ -133,7 +132,7 @@ class TankSetupPanelView(ViewImpl, IGlobalListener):
 
     @staticmethod
     def __getAmmoTooltipData(intCD):
-        return createTooltipData(isSpecial=True, specialAlias=EquipmentPanelCmpTooltips.TOOLTIP_SHELL, specialArgs=(
+        return createTooltipData(isSpecial=True, specialAlias=TankSetupPanelViewModel.TOOLTIP_SHELL, specialArgs=(
          intCD, _DEFAULT_SLOT_VALUE))
 
     @staticmethod

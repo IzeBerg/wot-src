@@ -4,7 +4,7 @@ from battle_royale.gui.impl.gen.view_models.views.lobby.views.consumable_model i
 
 class TankSetupPanelViewModel(ViewModel):
     __slots__ = ('onClick', )
-    TOOLTIP_SHELL = 'shell'
+    TOOLTIP_SHELL = 'hangarShell'
     TOOLTIP_ABILITY = 'ability'
     TOOLTIP_RESPAWN = 'respawn'
 

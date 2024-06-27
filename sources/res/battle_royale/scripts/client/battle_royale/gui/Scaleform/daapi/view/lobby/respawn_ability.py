@@ -1,6 +1,6 @@
 from constants import ARENA_BONUS_TYPE
+from battle_royale.gui.impl.gen.view_models.views.lobby.views.tank_setup_panel_view_model import TankSetupPanelViewModel
 from gui.impl.gen import R
-from gui.impl.gen.view_models.views.battle_royale.equipment_panel_cmp_tooltips import EquipmentPanelCmpTooltips
 from helpers import dependency
 from skeletons.gui.game_control import IBattleRoyaleController
 
@@ -9,7 +9,7 @@ class RespawnAbility(object):
     name = R.strings.artefacts.br_respawn.name()
     description = R.strings.artefacts.br_respawn.solo.descr()
     icon = R.images.gui.maps.icons.battleRoyale.artefact.respawn()
-    tooltipType = EquipmentPanelCmpTooltips.TOOLTIP_RESPAWN
+    tooltipType = TankSetupPanelViewModel.TOOLTIP_RESPAWN
     soloTooltip = R.strings.artefacts.br_respawn.solo
     platoonTooltip = R.strings.artefacts.br_respawn.platoon
 

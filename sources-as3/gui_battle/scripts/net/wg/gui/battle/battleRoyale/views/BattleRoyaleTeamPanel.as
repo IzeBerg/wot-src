@@ -71,6 +71,8 @@ package net.wg.gui.battle.battleRoyale.views
          this._renderersContainer = new Sprite();
          addChild(this._renderersContainer);
          this._listItems = new Vector.<BattleRoyaleTeamPanelListItem>(0);
+         this.titleTF.visible = false;
+         this.bg.visible = false;
       }
       
       override protected function onDispose() : void
@@ -119,7 +121,7 @@ package net.wg.gui.battle.battleRoyale.views
             _loc5_++;
          }
          this._playerTeamIndex = param4;
-         this.titleTF.visible = this.bg.visible = Boolean(this._listItems.length);
+         this.titleTF.visible = this.bg.visible = this.isInitialized();
       }
       
       override protected function configUI() : void
@@ -129,8 +131,6 @@ package net.wg.gui.battle.battleRoyale.views
          App.voiceChatMgr.addEventListener(VoiceChatEvent.STOP_SPEAKING,this.onVoiceChatStopSpeakingHandler);
          addEventListener(PlayersPanelListEvent.ITEM_CONTEXT_MENU_OPEN,this.onListItemContextMenuOpenHandler);
          this.titleTF.alpha = TITLE_TF_ALPHA;
-         this.titleTF.visible = false;
-         this.bg.visible = false;
          this.bgBlinkMC.stop();
          App.utils.commons.addEmptyHitArea(this.bg);
       }

@@ -3,8 +3,6 @@ package net.wg.data.constants.generated
    public class BATTLEATLAS
    {
       
-      public static const A143_M_V_Y_FEP23:String = "a143_m_v_y_fep23";
-      
       public static const ACCEPT_TO_SQUAD_HOVER:String = "accept_to_squad_hover";
       
       public static const ACCEPT_TO_SQUAD_NORMAL:String = "accept_to_squad_normal";

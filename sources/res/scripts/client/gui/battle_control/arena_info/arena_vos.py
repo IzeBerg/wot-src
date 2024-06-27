@@ -3,7 +3,7 @@ from collections import defaultdict
 import typing
 from enum import Enum
 import nations
-from constants import IGR_TYPE, FLAG_ACTION, ARENA_GUI_TYPE, ROLE_TYPE, BOT_DISPLAY_STATUS, BOT_DISPLAY_CLASS_NAMES, LocalizableBotName, BotNamingType
+from constants import IGR_TYPE, FLAG_ACTION, ARENA_GUI_TYPE, ROLE_TYPE, BOT_DISPLAY_STATUS, BOT_DISPLAY_CLASS_NAMES, LocalizableBotName, BotNamingType, TEAM_PANEL_MODE
 from arena_bonus_type_caps import ARENA_BONUS_TYPE_CAPS
 from debug_utils import LOG_ERROR
 from gui import makeHtmlString
@@ -361,7 +361,7 @@ class VehicleArenaInfoVO(object):
                  '__suffixBadge', 'dogTag', 'prestigeLevel', 'prestigeGradeMarkID',
                  'teamPanelMode', 'botDisplayStatus', 'dogTagModel')
 
-    def __init__(self, vehicleID, team=0, isAlive=None, isAvatarReady=None, isTeamKiller=None, prebattleID=None, events=None, forbidInBattleInvitations=False, ranked=None, badges=None, overriddenBadge=None, prestigeLevel=None, prestigeGradeMarkID=None, teamPanelMode=None, botDisplayStatus=BOT_DISPLAY_STATUS.REGULAR, **kwargs):
+    def __init__(self, vehicleID, team=0, isAlive=None, isAvatarReady=None, isTeamKiller=None, prebattleID=None, events=None, forbidInBattleInvitations=False, ranked=None, badges=None, overriddenBadge=None, prestigeLevel=None, prestigeGradeMarkID=None, teamPanelMode=TEAM_PANEL_MODE.SHOW.value, botDisplayStatus=BOT_DISPLAY_STATUS.REGULAR, **kwargs):
         super(VehicleArenaInfoVO, self).__init__()
         self.vehicleID = vehicleID
         self.team = team

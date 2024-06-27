@@ -455,7 +455,6 @@ class ConsumableSpawnBot(Equipment, TooltipConfigReader, CountableConsumableConf
         self.explosionDamage = _xml.readFloat(xmlCtx, scriptSection, 'explosionDamage', 0.0)
         self.explosionByShoot = _xml.readBool(xmlCtx, scriptSection, 'explosionByShoot', False)
         self.damageReductionRate = _xml.readFloat(xmlCtx, scriptSection, 'damageReductionRate', 0.0)
-        self.vehicleRemoveDelay = _xml.readInt(xmlCtx, scriptSection, 'vehicleRemoveDelay', 0.0)
         self.clientRemovalNotificationDelay = _xml.readInt(xmlCtx, scriptSection, 'clientRemovalNotificationDelay', 0.0)
         self.cooldownTime = _xml.readInt(xmlCtx, scriptSection, 'cooldownSeconds')
         self.disableAllyDamage = _xml.readBool(xmlCtx, scriptSection, 'disableAllyDamage', True)

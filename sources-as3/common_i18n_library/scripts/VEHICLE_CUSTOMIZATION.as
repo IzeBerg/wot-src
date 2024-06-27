@@ -9463,6 +9463,8 @@ package
       
       public static const REPAINT_ST_PATRICKS_DAY_2023:String = "#vehicle_customization:repaint/st_patricks_day_2023";
       
+      public static const REPAINT_DESERTPOWER:String = "#vehicle_customization:repaint/desertpower";
+      
       public static const REPAINT_METEORIT:String = "#vehicle_customization:repaint/meteorit";
       
       public static const REPAINT_STEEL_HUNTER_ARCADE_1:String = "#vehicle_customization:repaint/steel_hunter_arcade_1";
