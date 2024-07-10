@@ -64,9 +64,6 @@ msgstr "?empty?"
 msgid "alertMessage/unsuitableVehicles"
 msgstr "您的车库中没有满足要求的坦克"
 
-msgid "battleResult/progressDescription"
-msgstr "1. %(triggerDescription)s。"
-
 msgid "calendarDay/serverName"
 msgstr "%(server)s"
 
@@ -115,10 +112,34 @@ msgstr "%(forbiddenType)s无法参加%(modeName)s模式的战斗。"
 msgid "funRandomCarousel/lockedTooltip/vehType/header"
 msgstr "坦克不符"
 
-msgid "headerButton/tooltips/funRandomSquad/body"
+msgid "headerButtons/fightBtn/tooltip/funRandomDisabled/body"
+msgstr "此服务器正处于休战期。请选择其他服务器。"
+
+msgid "headerButtons/fightBtn/tooltip/funRandomDisabled/header"
+msgstr "加入战斗失败"
+
+msgid "headerButtons/fightBtn/tooltip/funRandomNotSet/body"
+msgstr "此模式在所选服务器上不开放。"
+
+msgid "headerButtons/fightBtn/tooltip/funRandomNotSet/header"
+msgstr "加入战斗失败"
+
+msgid "headerButtons/fightBtn/tooltip/funRandomSubModeEnded/body"
+msgstr "%(subModeName)s战斗已结束"
+
+msgid "headerButtons/fightBtn/tooltip/funRandomSubModeEnded/header"
+msgstr "加入战斗失败"
+
+msgid "headerButtons/fightBtn/tooltip/funRandomVehLimits/body"
+msgstr "更改模式或选择一辆符合要求的坦克。"
+
+msgid "headerButtons/fightBtn/tooltip/funRandomVehLimits/header"
+msgstr "坦克不适用于模式"
+
+msgid "headerButtons/tooltips/funRandomSquad/body"
 msgstr "创建一个2人或3人小队，在%(modeName)s中协同作战。"
 
-msgid "headerButton/tooltips/funRandomSquad/header"
+msgid "headerButtons/tooltips/funRandomSquad/header"
 msgstr "小队"
 
 msgid "invite/text/detailedTitle"
@@ -126,6 +147,12 @@ msgstr "邀请加入\"%(detailedModeName)s\"小队"
 
 msgid "invite/tooltip/noVehicles"
 msgstr "您的车库中需要拥有至少1辆坦克。"
+
+msgid "lootboxTooltip/chance"
+msgstr "掉落几率: %(percent)s"
+
+msgid "lootboxTooltip/description"
+msgstr "下列游戏内物品之一:"
 
 msgid "metaProgressionTooltip/header/completedFinal"
 msgstr "已完成所有阶段"
@@ -135,11 +162,17 @@ msgstr ""
 "已完成当前任务的\n"
 "所有阶段"
 
-msgid "metaProgressionTooltip/reward/header"
+msgid "metaProgressionTooltip/reward/header/common"
 msgstr "奖励"
 
-msgid "metaProgressionTooltip/timer/activeResettable"
-msgstr "后奖励进度将会重置"
+msgid "metaProgressionTooltip/reward/header/infinite"
+msgstr "下个阶段奖励"
+
+msgid "metaProgressionTooltip/timer/untilFinish"
+msgstr "距结束还有%(time)s"
+
+msgid "metaProgressionTooltip/timer/untilRelaunch"
+msgstr "距下次开启还有%(time)s"
 
 msgid "modeSelector/notStarted"
 msgstr "该模式即将开放"
@@ -171,6 +204,9 @@ msgstr "由于技术性问题暂不开放"
 msgid "modeSubSelector/progression/header/completedResettable"
 msgstr "您已完成了当前任务的所有阶段"
 
+msgid "modeSubSelector/progression/rewards"
+msgstr "奖励: %(count)s"
+
 msgid "modeSubSelector/subModeCard/finished"
 msgstr "战斗已结束"
 
@@ -183,10 +219,147 @@ msgstr "距开始还有:"
 msgid "modeSubSelector/subtitle"
 msgstr "选择子模式"
 
+msgid "modes/auto_shoot_guns/capsUserName"
+msgstr "极限火力"
+
+msgid "modes/auto_shoot_guns/detailedUserName"
+msgstr "?empty?"
+
+msgid "modes/auto_shoot_guns/lootbox/fep_epic"
+msgstr "随机史诗奖励"
+
+msgid "modes/auto_shoot_guns/lootbox/fep_legendary"
+msgstr "随机传说奖励"
+
+msgid "modes/auto_shoot_guns/lootbox/fep_ordinary"
+msgstr "随机普通奖励"
+
+msgid "modes/auto_shoot_guns/lootbox/fep_rare"
+msgstr "随机稀有奖励"
+
+msgid "modes/auto_shoot_guns/lootbox/fep_unusual"
+msgstr "随机罕见奖励"
+
+msgid "modes/auto_shoot_guns/metaProgressionTooltip/header/active"
+msgstr "极限火力任务–阶段: %(done)s{par_Open}/%(total)s{par_Close}"
+
+msgid "modes/auto_shoot_guns/metaProgressionTooltip/subheader"
+msgstr "极限火力任务"
+
+msgid "modes/auto_shoot_guns/modeSubSelector/progression/info"
+msgstr "?empty?"
+
+msgid "modes/auto_shoot_guns/modeSubSelector/progression/timer"
+msgstr "?empty?"
+
+msgid "modes/auto_shoot_guns/mode_selector/description"
+msgstr "驾驶超凡坦克，参加具有非常规规则的试验性战斗。"
+
+msgid "modes/auto_shoot_guns/mode_selector/progression/resettable"
+msgstr "距新的极限火力任务开放还有:"
+
+msgid "modes/auto_shoot_guns/notification/finishSubModes/withProgression"
+msgstr "%(subModeName)s模式已结束。进度已重置。"
+
+msgid "modes/auto_shoot_guns/notification/finishSubModes/withoutProgression"
+msgstr "%(subModeName)s模式已结束。"
+
+msgid "modes/auto_shoot_guns/notification/newSubModes/withProgression"
+msgstr "新的奖励和%(subModeName)s模式已开放。"
+
+msgid "modes/auto_shoot_guns/notification/newSubModes/withoutProgression"
+msgstr "%(subModeName)s模式已开放。"
+
+msgid "modes/auto_shoot_guns/notification/switchOffSubModes"
+msgstr "由于系统维护，%(subModeName)s模式暂不开放。"
+
+msgid "modes/auto_shoot_guns/notification/switchOnSubModes"
+msgstr "%(subModeName)s模式已再次开放。"
+
+msgid "modes/auto_shoot_guns/progression/cardsFan/listOfRandomRewards"
+msgstr "奖励列表"
+
+msgid "modes/auto_shoot_guns/progression/complete/congratulations"
+msgstr "恭喜！"
+
+msgid "modes/auto_shoot_guns/progression/complete/title"
+msgstr "您已完成主要进度"
+
+msgid "modes/auto_shoot_guns/progression/infinite/congratulations"
+msgstr "恭喜！"
+
+msgid "modes/auto_shoot_guns/progression/infinite/infinityStep"
+msgstr "可重复完成的阶段"
+
+msgid "modes/auto_shoot_guns/progression/infinite/mainProgressionFinished"
+msgstr "您已完成主要进度"
+
+msgid "modes/auto_shoot_guns/progression/info"
+msgstr "?empty?"
+
+msgid ""
+"modes/auto_shoot_guns/progression/questsList/quest/infinityStageProgress"
+msgstr "尽可能获取更多奖励: %(currentPoints)/%(infinitySign)s"
+
+msgid "modes/auto_shoot_guns/progression/questsList/totalPointsEarned"
+msgstr "获得点数: %(progressionSteps)s"
+
+msgid ""
+"modes/auto_shoot_guns/progression/questsList/totalPointsEarnedStandAloneTitle"
+msgstr "获得点数:"
+
+msgid "modes/auto_shoot_guns/progression/title"
+msgstr "极限火力任务"
+
+msgid "modes/auto_shoot_guns/rewardsView/header"
+msgstr "已获得传说奖励"
+
+msgid "modes/auto_shoot_guns/scheduler/notification/available"
+msgstr "%(subModeName)s的战斗已再次开放。"
+
+msgid "modes/auto_shoot_guns/scheduler/notification/available/title"
+msgstr "休战"
+
+msgid "modes/auto_shoot_guns/scheduler/notification/primeTime"
+msgstr "目前处于休战期。%(subModeName)s的战斗暂不开放。"
+
+msgid "modes/auto_shoot_guns/scheduler/notification/primeTime/title"
+msgstr "休战"
+
+msgid "modes/auto_shoot_guns/tierList/description"
+msgstr "下方列表展示了您有机会获得的随机奖励，每个物品都具有特定的掉落率。"
+
+msgid "modes/auto_shoot_guns/tierList/title"
+msgstr "奖励列表"
+
+msgid "modes/auto_shoot_guns/tooltip/filter/body"
+msgstr "?empty?"
+
+msgid "modes/auto_shoot_guns/tooltip/filter/header"
+msgstr "?empty?"
+
+msgid "modes/auto_shoot_guns/userName"
+msgstr "极限火力"
+
 msgid "modes/development/capsUserName"
 msgstr "?empty?"
 
 msgid "modes/development/detailedUserName"
+msgstr "?empty?"
+
+msgid "modes/development/lootbox/fep_epic"
+msgstr "?empty?"
+
+msgid "modes/development/lootbox/fep_legendary"
+msgstr "?empty?"
+
+msgid "modes/development/lootbox/fep_ordinary"
+msgstr "?empty?"
+
+msgid "modes/development/lootbox/fep_rare"
+msgstr "?empty?"
+
+msgid "modes/development/lootbox/fep_unusual"
 msgstr "?empty?"
 
 msgid "modes/development/metaProgressionTooltip/header/active"
@@ -196,9 +369,6 @@ msgid "modes/development/metaProgressionTooltip/reward/tip"
 msgstr "?empty?"
 
 msgid "modes/development/metaProgressionTooltip/subheader"
-msgstr "?empty?"
-
-msgid "modes/development/metaProgressionTooltip/timer/completedResettable"
 msgstr "?empty?"
 
 msgid "modes/development/modeSubSelector/progression/info"
@@ -231,13 +401,41 @@ msgstr "?empty?"
 msgid "modes/development/notification/switchOnSubModes"
 msgstr "?empty?"
 
-msgid "modes/development/progression/congratulation/descr"
+msgid "modes/development/progression/cardsFan/listOfRandomRewards"
+msgstr "?empty?"
+
+msgid "modes/development/progression/complete/congratulations"
+msgstr "?empty?"
+
+msgid "modes/development/progression/complete/title"
+msgstr "?empty?"
+
+msgid "modes/development/progression/infinite/congratulations"
+msgstr "?empty?"
+
+msgid "modes/development/progression/infinite/infinityStep"
+msgstr "?empty?"
+
+msgid "modes/development/progression/infinite/mainProgressionFinished"
 msgstr "?empty?"
 
 msgid "modes/development/progression/info"
 msgstr "?empty?"
 
+msgid "modes/development/progression/questsList/quest/infinityStageProgress"
+msgstr "?empty?"
+
+msgid "modes/development/progression/questsList/totalPointsEarned"
+msgstr "?empty?"
+
+msgid ""
+"modes/development/progression/questsList/totalPointsEarnedStandAloneTitle"
+msgstr "?empty?"
+
 msgid "modes/development/progression/title"
+msgstr "?empty?"
+
+msgid "modes/development/rewardsView/header"
 msgstr "?empty?"
 
 msgid "modes/development/scheduler/notification/available"
@@ -246,10 +444,22 @@ msgstr "?empty?"
 msgid "modes/development/scheduler/notification/available/title"
 msgstr "?empty?"
 
+msgid "modes/development/scheduler/notification/modeEnded"
+msgstr "?empty?"
+
+msgid "modes/development/scheduler/notification/modeEnded/title"
+msgstr "?empty?"
+
 msgid "modes/development/scheduler/notification/primeTime"
 msgstr "?empty?"
 
 msgid "modes/development/scheduler/notification/primeTime/title"
+msgstr "?empty?"
+
+msgid "modes/development/tierList/description"
+msgstr "?empty?"
+
+msgid "modes/development/tierList/title"
 msgstr "?empty?"
 
 msgid "modes/development/tooltip/filter/body"
@@ -261,91 +471,26 @@ msgstr "?empty?"
 msgid "modes/development/userName"
 msgstr "?empty?"
 
-msgid "modes/night_battles_2024/capsUserName"
-msgstr "街机模式"
-
-msgid "modes/night_battles_2024/detailedUserName"
-msgstr "%(modeName)s:%(subModeName)s"
-
-msgid "modes/night_battles_2024/metaProgressionTooltip/header/active"
-msgstr "街机模式任务 – 阶段: %(done)s{par_Open}/%(total)s{par_Close}"
-
-msgid "modes/night_battles_2024/metaProgressionTooltip/subheader"
-msgstr "街机模式任务"
-
-msgid ""
-"modes/night_battles_2024/metaProgressionTooltip/timer/completedResettable"
-msgstr "后新的街机模式任务开放"
-
-msgid "modes/night_battles_2024/modeSubSelector/progression/timer"
-msgstr "后进度重置，并且新的任务将会开放"
-
-msgid "modes/night_battles_2024/mode_selector/battleCondition"
-msgstr "15对15"
-
-msgid "modes/night_battles_2024/mode_selector/description"
-msgstr "具有非常规规则的试验性战斗。"
-
-msgid "modes/night_battles_2024/mode_selector/levelCondition"
-msgstr "{parSecondary_open}I{parSecondary_close}&nbsp;%(levels)s级"
-
-msgid "modes/night_battles_2024/mode_selector/progression/resettable"
-msgstr "距新的街机模式任务开放:"
-
-msgid "modes/night_battles_2024/notification/finishSubModes/withProgression"
-msgstr "%(subModeName)s子模式已结束。进度已重置。"
-
-msgid ""
-"modes/night_battles_2024/notification/finishSubModes/withoutProgression"
-msgstr "%(subModeName)s子模式已结束。"
-
-msgid "modes/night_battles_2024/notification/newSubModes/withProgression"
-msgstr "新的奖励和%(subModeName)s子模式已开放。"
-
-msgid "modes/night_battles_2024/notification/newSubModes/withoutProgression"
-msgstr "新的子模式已开放: %(subModeName)s。"
-
-msgid "modes/night_battles_2024/notification/switchOffSubModes"
-msgstr "由于系统维护，%(subModeName)s子模式暂不开放。"
-
-msgid "modes/night_battles_2024/notification/switchOnSubModes"
-msgstr "%(subModeName)s子模式已再次开放。"
-
-msgid "modes/night_battles_2024/progression/congratulation/descr"
-msgstr "您已完成了所有街机模式任务"
-
-msgid "modes/night_battles_2024/progression/resettable"
-msgstr "后新的街机模式任务开放"
-
-msgid "modes/night_battles_2024/progression/title"
-msgstr "街机模式任务"
-
-msgid "modes/night_battles_2024/scheduler/notification/available"
-msgstr "%(subModeName)s的战斗已再次开放。"
-
-msgid "modes/night_battles_2024/scheduler/notification/available/title"
-msgstr "休战"
-
-msgid "modes/night_battles_2024/scheduler/notification/primeTime"
-msgstr "目前处于休战期。%(subModeName)s的战斗暂不开放。"
-
-msgid "modes/night_battles_2024/scheduler/notification/primeTime/title"
-msgstr "休战"
-
-msgid "modes/night_battles_2024/tooltip/filter/body"
-msgstr "显示/隐藏符合街机模式条件的坦克。"
-
-msgid "modes/night_battles_2024/tooltip/filter/header"
-msgstr "街机模式坦克"
-
-msgid "modes/night_battles_2024/userName"
-msgstr "街机模式"
-
 msgid "modes/undefined/capsUserName"
 msgstr "街机模式"
 
 msgid "modes/undefined/detailedUserName"
 msgstr "%(modeName)s:%(subModeName)s"
+
+msgid "modes/undefined/lootbox/fep_epic"
+msgstr "随机史诗奖励"
+
+msgid "modes/undefined/lootbox/fep_legendary"
+msgstr "随机传说奖励"
+
+msgid "modes/undefined/lootbox/fep_ordinary"
+msgstr "随机普通奖励"
+
+msgid "modes/undefined/lootbox/fep_rare"
+msgstr "随机稀有奖励"
+
+msgid "modes/undefined/lootbox/fep_unusual"
+msgstr "随机罕见奖励"
 
 msgid "modes/undefined/metaProgressionTooltip/header/active"
 msgstr "街机模式任务 – 阶段: %(done)s{par_Open}/%(total)s{par_Close}"
@@ -355,9 +500,6 @@ msgstr "您在所有街机模式子模式中的进度都将纳入计算。"
 
 msgid "modes/undefined/metaProgressionTooltip/subheader"
 msgstr "街机模式任务"
-
-msgid "modes/undefined/metaProgressionTooltip/timer/completedResettable"
-msgstr "后新的街机模式任务可用"
 
 msgid "modes/undefined/modeSubSelector/progression/info"
 msgstr "您在所有街机模式子模式中的进度都将纳入计算。"
@@ -395,14 +537,42 @@ msgstr "由于系统维护，%(subModeName)s子模式暂不开放。"
 msgid "modes/undefined/notification/switchOnSubModes"
 msgstr "%(subModeName)s子模式已再次开放。"
 
-msgid "modes/undefined/progression/congratulation/descr"
-msgstr "您已完成了所有街机模式任务"
+msgid "modes/undefined/progression/cardsFan/listOfRandomRewards"
+msgstr "奖励列表"
+
+msgid "modes/undefined/progression/complete/congratulations"
+msgstr "恭喜！"
+
+msgid "modes/undefined/progression/complete/title"
+msgstr "您已完成主要进度"
+
+msgid "modes/undefined/progression/infinite/congratulations"
+msgstr "恭喜！"
+
+msgid "modes/undefined/progression/infinite/infinityStep"
+msgstr "可重复完成的阶段"
+
+msgid "modes/undefined/progression/infinite/mainProgressionFinished"
+msgstr "您已完成主要进度"
 
 msgid "modes/undefined/progression/info"
 msgstr "您可以在任意街机模式的子模式中完成此任务。"
 
+msgid "modes/undefined/progression/questsList/quest/infinityStageProgress"
+msgstr "尽可能获取更多奖励: %(currentPoints)/%(infinitySign)s"
+
+msgid "modes/undefined/progression/questsList/totalPointsEarned"
+msgstr "获得点数: %(progressionSteps)s"
+
+msgid ""
+"modes/undefined/progression/questsList/totalPointsEarnedStandAloneTitle"
+msgstr "获得点数:"
+
 msgid "modes/undefined/progression/title"
 msgstr "街机模式任务"
+
+msgid "modes/undefined/rewardsView/header"
+msgstr "已获得传说奖励"
 
 msgid "modes/undefined/scheduler/notification/available"
 msgstr "%(subModeName)s的战斗已再次开放。"
@@ -410,11 +580,23 @@ msgstr "%(subModeName)s的战斗已再次开放。"
 msgid "modes/undefined/scheduler/notification/available/title"
 msgstr "休战"
 
+msgid "modes/undefined/scheduler/notification/modeEnded"
+msgstr "%(subModeName)s战斗已结束"
+
+msgid "modes/undefined/scheduler/notification/modeEnded/title"
+msgstr "休战"
+
 msgid "modes/undefined/scheduler/notification/primeTime"
 msgstr "目前处于休战期。%(subModeName)s的战斗暂不开放。"
 
 msgid "modes/undefined/scheduler/notification/primeTime/title"
 msgstr "休战"
+
+msgid "modes/undefined/tierList/description"
+msgstr "下方列表展示了您有机会获得的随机奖励，每个物品都具有特定的掉落率。"
+
+msgid "modes/undefined/tierList/title"
+msgstr "奖励列表"
 
 msgid "modes/undefined/tooltip/filter/body"
 msgstr "显示/隐藏符合街机模式条件的坦克。"
@@ -437,6 +619,9 @@ msgstr "%(subModesNames)s子模式已结束。进度已重置。"
 msgid "notification/finishSubModes/withoutProgression"
 msgstr "%(subModesNames)s子模式已结束。"
 
+msgid "notification/lootboxAutoOpen/rewardText"
+msgstr "已获得奖励"
+
 msgid "notification/newProgression"
 msgstr "活动进度已重置—您可以再次获取奖励！"
 
@@ -449,6 +634,9 @@ msgstr "新的子模式已开放: %(subModesNames)s。"
 msgid "notification/progressionComplete"
 msgstr "您已完成了所有的%(modeName)s任务。已获得奖励:"
 
+msgid "notification/progressionComplete/infiniteStarted"
+msgstr "您已完成了所有的\"%(modeName)s\"任务。可重复完成的阶段已开放。已获得奖励:"
+
 msgid "notification/progressionComplete/resetLessDay"
 msgstr "进度将在1天内重置。在那之后您将可以再次尝试完成任务。"
 
@@ -456,7 +644,7 @@ msgid "notification/progressionComplete/resetTimeLeft"
 msgstr "进度将在%(days)d天后重置。在那之后您将可以再次尝试完成任务。"
 
 msgid "notification/progressionStageComplete"
-msgstr "您已完成的%(modeName)s任务数量: %(counter)s。已获得奖励:"
+msgstr "您已完成的\"%(modeName)s\"阶段数量: %(stage)s。已获得奖励:"
 
 msgid "notification/subModesSeparator"
 msgstr "、"
@@ -584,14 +772,47 @@ msgstr "%(serverName)s服务器上的%(leftDetailedSeasonName)s战斗已结束�
 msgid "primeTimes/timeText/undefined"
 msgstr "?empty?"
 
-msgid "progression/complete/timer"
-msgstr "后新的任务可用"
+msgid "progression/cards/points"
+msgstr "点数"
 
-msgid "progression/complete/title"
-msgstr "您已完成了所有任务阶段"
+msgid "progression/complete/affirmative"
+msgstr "收到！"
 
-msgid "progression/congratulation/title"
-msgstr "恭喜！"
+msgid "progression/defaultCondition/text"
+msgstr "获取点数即可推进活动进度。"
+
+msgid "progression/infinite/pointsEarned"
+msgstr "获得点数:"
+
+msgid "progression/infinite/steps"
+msgstr "%(done)s/%(total)s"
+
+msgid "progression/questsList/quest/infinityProgress"
+msgstr "可重复完成"
+
+msgid "progression/questsList/quest/pointsPlus"
+msgstr "+%(pointsCount)s"
+
+msgid "progression/questsList/quest/progressChangeLabel/forCompletion"
+msgstr "完成后: %(points)s"
+
+msgid "progression/questsList/quest/progressChangeLabel/forLoss"
+msgstr "失败: %(points)s"
+
+msgid "progression/questsList/quest/progressChangeLabel/forWin"
+msgstr "胜利: %(points)s"
+
+msgid "progression/questsList/quest/progressChangeLabel/pointsEarned"
+msgstr "已获得: %(points)s"
+
+msgid "progression/questsList/quest/progressTitle"
+msgstr "已完成: %(currentPoints)/%(totalPoints)s"
+
+msgid "progression/questsList/questsFinishTimerTitle"
+msgstr "距活动结束还有: %(time)s"
+
+msgid "progression/questsList/questsRenewTimerTitle"
+msgstr "距下次发布还有: %(time)s"
 
 msgid "progression/steps"
 msgstr "%(done)s/%(total)s"
@@ -602,14 +823,171 @@ msgstr "{yellow_Open}%(done)s{yellow_Close}/%(total)s"
 msgid "progression/stepsNoProgress"
 msgstr "{bond_Open}%(done)s{bond_Close}/%(total)s"
 
-msgid "progression/timer"
-msgstr "后进度重置，并且新的任务将会开放"
+msgid "rewardsView/additionalRewards/title"
+msgstr "您同时获得:"
+
+msgid "rewardsView/footer/acceptButton"
+msgstr "收到！"
+
+msgid "rewardsView/subheader"
+msgstr "%(subModeName)s"
 
 msgid "scheduler/notification/squadModeSwitch"
 msgstr "小队指挥官已将子模式切换为%(subModeName)s。"
 
 msgid "scheduler/notification/squadModeSwitch/title"
 msgstr "子模式切换"
+
+msgid "strengths_weaknesses/strength/armour"
+msgstr "车体和炮塔装甲坚固"
+
+msgid "strengths_weaknesses/strength/armoured_hull"
+msgstr "车体装甲坚固"
+
+msgid "strengths_weaknesses/strength/best_speed"
+msgstr "速度、机动性和操控性最强(极佳)"
+
+msgid "strengths_weaknesses/strength/curved_trajectory"
+msgstr "弹道弯曲"
+
+msgid "strengths_weaknesses/strength/damage"
+msgstr "单次连发损伤高"
+
+msgid "strengths_weaknesses/strength/four_cannons"
+msgstr "四联火炮"
+
+msgid "strengths_weaknesses/strength/infinity_load"
+msgstr "弹链容量大"
+
+msgid "strengths_weaknesses/strength/piercing"
+msgstr "穿透力高"
+
+msgid "strengths_weaknesses/strength/rate_of_fire"
+msgstr "射速快"
+
+msgid "strengths_weaknesses/strength/rate_of_fire_and_dpm"
+msgstr "射速快，平均每分钟损伤高"
+
+msgid "strengths_weaknesses/strength/rotary_gun"
+msgstr "火力强大的转管炮"
+
+msgid "strengths_weaknesses/strength/six_guns"
+msgstr "6管转管炮"
+
+msgid "strengths_weaknesses/strength/speed"
+msgstr "速度和操控性强"
+
+msgid "strengths_weaknesses/strength/stabilization"
+msgstr "火炮手感好"
+
+msgid "strengths_weaknesses/strength/strong_armour"
+msgstr "装甲可靠"
+
+msgid "strengths_weaknesses/strength/two_cannons"
+msgstr "57mm双管火炮"
+
+msgid "strengths_weaknesses/strength/two_cannons_with_autoloader"
+msgstr "88mm双管火炮"
+
+msgid "strengths_weaknesses/strength/two_salvos"
+msgstr "2组火箭发射器"
+
+msgid "strengths_weaknesses/strength/versatility"
+msgstr "性能全面"
+
+msgid "strengths_weaknesses/strength/wide_aoe"
+msgstr "打击范围大"
+
+msgid "strengths_weaknesses/strengths"
+msgstr "优势"
+
+msgid "strengths_weaknesses/weakness/accuracy"
+msgstr "精度较低"
+
+msgid "strengths_weaknesses/weakness/armour"
+msgstr "装甲薄弱"
+
+msgid "strengths_weaknesses/weakness/overheating"
+msgstr "火炮容易过热"
+
+msgid "strengths_weaknesses/weakness/penetration"
+msgstr "穿透力平庸"
+
+msgid "strengths_weaknesses/weakness/reload"
+msgstr "装填时间较长"
+
+msgid "strengths_weaknesses/weakness/size_and_armour"
+msgstr "尺寸较大，装甲薄弱"
+
+msgid "strengths_weaknesses/weakness/speed"
+msgstr "速度和操控性较低"
+
+msgid "strengths_weaknesses/weakness/turret_armour"
+msgstr "炮塔装甲薄弱"
+
+msgid "strengths_weaknesses/weakness/weak_armour"
+msgstr "装甲薄弱"
+
+msgid "strengths_weaknesses/weakness/weak_speed"
+msgstr "速度和操控性平庸"
+
+msgid "strengths_weaknesses/weakness/weakspot"
+msgstr "装甲薄弱的部位较多"
+
+msgid "strengths_weaknesses/weaknesses"
+msgstr "劣势"
+
+msgid "sub_modes/auto_shoot_guns/alert_tooltip/alert"
+msgstr "性能降低"
+
+msgid "sub_modes/auto_shoot_guns/alert_tooltip/description"
+msgstr "该模式需要较高的计算机性能。战斗激烈时，帧数可能会下降。如果性能受到影响，请在设置中尝试较低的图形质量。"
+
+msgid "sub_modes/auto_shoot_guns/alert_tooltip/entryPointHeader"
+msgstr "可能会降低性能"
+
+msgid "sub_modes/auto_shoot_guns/alert_tooltip/modeSelectHeader"
+msgstr "性能降低"
+
+msgid "sub_modes/auto_shoot_guns/alert_tooltip/submodeDescription"
+msgstr "在本模式中体验装备自动炮的超凡坦克。"
+
+msgid "sub_modes/auto_shoot_guns/capsUserName"
+msgstr "极限火力"
+
+msgid "sub_modes/auto_shoot_guns/detailsHelp/page1/description"
+msgstr "是时候释放火炮的震撼火力了！装备自动炮的坦克专为高射速而设计。展开火力压制，不给敌人留下任何可乘之机——但请注意，不要让您的火炮过热。"
+
+msgid "sub_modes/auto_shoot_guns/detailsHelp/page1/title"
+msgstr "极限火力"
+
+msgid "sub_modes/auto_shoot_guns/detailsHelpHint/description"
+msgstr "查看坦克参数"
+
+msgid "sub_modes/auto_shoot_guns/detailsHelpHint/press"
+msgstr "按下"
+
+msgid "sub_modes/auto_shoot_guns/detailsHelpTitle"
+msgstr "极限火力"
+
+msgid "sub_modes/auto_shoot_guns/subModeCard/description"
+msgstr "?empty?"
+
+msgid "sub_modes/auto_shoot_guns/subModeCard/title"
+msgstr "?empty?"
+
+msgid "sub_modes/auto_shoot_guns/tips/tip1/description"
+msgstr ""
+"循环式火炮和漫长的装填时间先放一边！装备自动炮的坦克专为火力压制而生。准备好您的弹夹和弹链，火力全开压制敌人，让他们龟缩在掩体后不敢探头！但请注意别让火炮过热。"
+
+msgid "sub_modes/auto_shoot_guns/tips/tip1/title"
+msgstr "极限火力"
+
+msgid "sub_modes/auto_shoot_guns/userName"
+msgstr "极限火力"
+
+msgid "sub_modes/auto_shoot_guns/userName/quoted"
+msgstr "极限火力"
 
 msgid "sub_modes/development/capsUserName"
 msgstr "?empty?"
@@ -642,7 +1020,7 @@ msgid "sub_modes/development/subModeCard/description"
 msgstr "?empty?"
 
 msgid "sub_modes/development/subModeCard/levelCondition"
-msgstr "?empty?"
+msgstr "{parSecondary_open}I{parSecondary_close}&nbsp;%(levels)s级"
 
 msgid "sub_modes/development/subModeCard/title"
 msgstr "?empty?"
@@ -658,37 +1036,6 @@ msgstr "?empty?"
 
 msgid "sub_modes/development/userName/quoted"
 msgstr "?empty?"
-
-msgid "sub_modes/night_battles_2024/capsUserName"
-msgstr "夜幕降临"
-
-msgid "sub_modes/night_battles_2024/detailsHelp/page1/description"
-msgstr ""
-"黑夜不是停止战斗的理由。黑暗中，观察设备的性能会减弱——侦察潜伏的敌人比白天更加困难...除非他们草木皆兵，朝任何会动的东西胡乱开火，暴露自身行踪。"
-
-msgid "sub_modes/night_battles_2024/detailsHelp/page1/title"
-msgstr "夜幕降临"
-
-msgid "sub_modes/night_battles_2024/detailsHelpHint/description"
-msgstr "可查看模式特点"
-
-msgid "sub_modes/night_battles_2024/detailsHelpHint/press"
-msgstr "按下"
-
-msgid "sub_modes/night_battles_2024/detailsHelpTitle"
-msgstr "街机模式:夜幕降临"
-
-msgid "sub_modes/night_battles_2024/tips/tip1/description"
-msgstr "黑暗中，观察设备的性能会减弱——侦察潜伏的敌人比白天更加困难。您可以将其化为优势: 隐藏自身踪迹，避免无故开火。"
-
-msgid "sub_modes/night_battles_2024/tips/tip1/title"
-msgstr "夜幕降临"
-
-msgid "sub_modes/night_battles_2024/userName"
-msgstr "夜幕降临"
-
-msgid "sub_modes/night_battles_2024/userName/quoted"
-msgstr "夜幕降临"
 
 msgid "sub_modes/undefined/capsUserName"
 msgstr "UNKNOWN SUB MODE NAME"
@@ -715,7 +1062,7 @@ msgid "sub_modes/undefined/subModeCard/description"
 msgstr "Unknown subModeCard description"
 
 msgid "sub_modes/undefined/subModeCard/levelCondition"
-msgstr "?empty?"
+msgstr "{parSecondary_open}I{parSecondary_close}&nbsp;%(levels)s级"
 
 msgid "sub_modes/undefined/subModeCard/title"
 msgstr "Unknown subModeCard title"
@@ -731,3 +1078,49 @@ msgstr "Unknown sub mode name"
 
 msgid "sub_modes/undefined/userName/quoted"
 msgstr "\"Unknown sub mode name\""
+
+msgid "vehicle_tooltip/status/in_battle"
+msgstr "战斗中"
+
+msgid "vehicle_tooltip/status/not_ready"
+msgstr "未做好战斗准备"
+
+msgid "vehicle_tooltip/status/ready"
+msgstr "准备就绪"
+
+msgid "vehicle_tooltip/subtitle"
+msgstr "极限火力模式坦克"
+
+msgid "vehicle_tooltip/vehicle/description/A116_XM551_FEP23"
+msgstr ""
+"该坦克并未继承谢里登强大的155mm火炮，取而代之的则是一门6管加特林转管炮，可在短时间内向敌人倾泻弹雨。其它特性则保持不变——机动性，较大的尺寸及车体的间隙装甲。"
+
+msgid "vehicle_tooltip/vehicle/description/A143_M_V_Y_FEP23"
+msgstr ""
+"一辆拥有不俗机动的全能型重型坦克，装备一门弹链供弹的75毫米火炮。它可以制造各种麻烦，让敌人叫苦不迭，但别忘了它的试验型火炮比较容易过热。此外，该坦克有多处装甲薄弱部位，驾驭它需要一定的战斗技巧。"
+
+msgid "vehicle_tooltip/vehicle/description/Cz04_T50_51_FEP23"
+msgstr "这辆坦克拥有可靠的装甲和优秀的机动性，装备了57毫米双管火炮，性能最为均衡。"
+
+msgid "vehicle_tooltip/vehicle/description/F108_Panhard_EBR_105_FEP23"
+msgstr ""
+"潘哈德 EBR的\"低配版\"。除火炮外，该坦克继承了原型的\n"
+"所有优点。出色的机动性、较小的尺寸和坚固的车轮使它能够秀翻战场，全新的40毫米火炮也拥有惊人的射速。"
+
+msgid "vehicle_tooltip/vehicle/description/F38_Bat_Chatillon155_58_FEP23"
+msgstr ""
+"该坦克并非普通的自行火炮，它基于查狄伦的底盘设计，在继承了前者高机动与弱防护的同时，还装备了2组150毫米火箭发射器。一轮装填后，这辆自行火炮便能进行2次各6发火箭齐射，火力能够覆盖大片区域。"
+
+msgid "vehicle_tooltip/vehicle/description/G42_Maus_FEP23"
+msgstr ""
+"一辆配备大口径双管防空炮的超重型坦克。机动性并不是它的强项，但也足以让它赶赴前线，利用双管火炮向敌人射击。不过，\"鼠\"式防空型并非坚不可摧，因为仅有车体部分才配备了坚固的装甲。"
+
+msgid "vehicle_tooltip/vehicle/description/G72_JagdPz_E100_FEP23"
+msgstr "这辆钢铁猛兽拥有坚固的装甲，弥补了其机动性较差和尺寸较大的不足。然而，武器才是它的主要特点，强大的8管转管炮足以横扫对手。"
+
+msgid "vehicle_tooltip/vehicle/description/R97_Object_140_FEP23"
+msgstr ""
+"一辆装备出色武器的坦克。它的四管火炮拥有高射速，优秀的底盘更能使其火力得到高效发挥。尽管装甲做不到无懈可击，但也足够坚固，强强联合成就了这辆坦克优秀的性能。"
+
+msgid "widget/steps"
+msgstr "{cream_Open}%(current)s{cream_Close}/%(total)s"

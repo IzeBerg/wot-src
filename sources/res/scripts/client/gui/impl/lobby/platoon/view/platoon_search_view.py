@@ -12,7 +12,7 @@ from gui.impl import backport
 from gui.shared import g_eventBus
 from gui.shared.events import PlatoonDropdownEvent
 from gui.impl.lobby.premacc.squad_bonus_tooltip_content import SquadBonusTooltipContent
-from gui.impl.lobby.platoon.platoon_helpers import formatSearchEstimatedTime, getQueueInfoByQueueType, Position
+from gui.impl.lobby.platoon.platoon_helpers import formatSearchEstimatedTime, getQueueInfoByQueueType, Position, getPlatoonBonusState, BonusState
 from PlayerEvents import g_playerEvents
 from UnitBase import UNDEFINED_ESTIMATED_TIME
 from frameworks.wulf.gui_constants import ViewStatus, WindowLayer
@@ -58,13 +58,13 @@ class SearchView(ViewImpl, CallbackDelayer):
         return self.getViewModel()
 
     def createToolTipContent(self, event, contentID):
-        if contentID == R.views.lobby.premacc.squad_bonus_tooltip_content.SquadBonusTooltipContent():
-            return SquadBonusTooltipContent()
+        if contentID == R.views.lobby.premacc.tooltips.SquadBonusTooltip():
+            return SquadBonusTooltipContent(bonusState=getPlatoonBonusState(False))
         return super(SearchView, self).createToolTipContent(event=event, contentID=contentID)
 
     def __addListeners(self):
         with self.viewModel.transaction() as (model):
-            model.btnCancelSearch.onClick += self.__cancelSearch
+            model.cancelSearch.onClick += self.__cancelSearch
             model.onOutsideClick += self.__onOutsideClick
         g_playerEvents.onQueueInfoReceived += self.__onQueueInfoReceived
         unitMgr = prb_getters.getClientUnitMgr()
@@ -73,7 +73,7 @@ class SearchView(ViewImpl, CallbackDelayer):
 
     def __removeListeners(self):
         with self.viewModel.transaction() as (model):
-            model.btnCancelSearch.onClick -= self.__cancelSearch
+            model.cancelSearch.onClick -= self.__cancelSearch
             model.onOutsideClick -= self.__onOutsideClick
         g_playerEvents.onQueueInfoReceived -= self.__onQueueInfoReceived
         unitMgr = prb_getters.getClientUnitMgr()
@@ -86,8 +86,11 @@ class SearchView(ViewImpl, CallbackDelayer):
 
     def __initButtons(self):
         with self.viewModel.transaction() as (model):
-            model.btnCancelSearch.setCaption(backport.text(R.strings.platoon.buttons.cancelSearch.caption()))
-            model.btnCancelSearch.setDescription(backport.text(R.strings.platoon.buttons.cancelSearch.description()))
+            bonusState = getPlatoonBonusState(False)
+            model.setHasXpBonus(BonusState.hasAnyBitSet(BonusState.XP_BONUS, bonusState))
+            model.setHasCreditsBonus(BonusState.hasAnyBitSet(BonusState.SQUAD_CREDITS_BONUS | BonusState.PREM_CREDITS_BONUS, bonusState))
+            model.cancelSearch.setCaption(backport.text(R.strings.platoon.buttons.cancelSearch.caption()))
+            model.cancelSearch.setDescription(backport.text(R.strings.platoon.buttons.cancelSearch.description()))
 
     def __askForPlayerQueueInfo(self):
         self.__platoonCtrl.requestPlayerQueueInfo()

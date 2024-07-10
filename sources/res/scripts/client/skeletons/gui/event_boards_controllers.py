@@ -1,6 +1,10 @@
+import typing
 from adisp import adisp_process, adisp_async
 
 class IEventBoardController(object):
+
+    def isElenQuestsStatusWrong(self, currentEvent):
+        raise NotImplementedError
 
     def getPlayerEventsData(self):
         raise NotImplementedError

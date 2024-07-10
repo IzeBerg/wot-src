@@ -1,5 +1,6 @@
 package net.wg.gui.lobby.hangar
 {
+   import net.wg.data.constants.generated.HANGAR_ALIASES;
    import net.wg.data.constants.generated.HANGAR_CONSTS;
    import net.wg.infrastructure.interfaces.entity.IDisposable;
    
@@ -79,10 +80,19 @@ package net.wg.gui.lobby.hangar
                   this._hangar.removeComp7Modifiers();
                   break;
                case HANGAR_CONSTS.COMP7_TOURNAMENT_BANNER:
-                  this._hangar.removeComp7TournamentBanner();
+                  this._hangar.removeEventTournamentBanner(HANGAR_ALIASES.COMP7_TOURNAMENT_BANNER);
+                  break;
+               case HANGAR_CONSTS.PRESTIGE_WIDGET:
+                  this._hangar.removePrestigeWidget();
                   break;
                case HANGAR_CONSTS.BR_PANELS:
                   this._hangar.tryRemoveBattleRoyaleContainer();
+                  break;
+               case HANGAR_CONSTS.BATTLE_ROYALE_TOURNAMENT_BANNER:
+                  this._hangar.removeEventTournamentBanner(HANGAR_ALIASES.BATTLE_ROYALE_TOURNAMENT_BANNER);
+                  break;
+               case HANGAR_CONSTS.STRENGTHS_WEAKNESSES:
+                  this._hangar.removeStrengthsWeaknessesPanel();
                   break;
             }
          }
@@ -139,10 +149,19 @@ package net.wg.gui.lobby.hangar
                   this._hangar.addComp7Modifiers();
                   break;
                case HANGAR_CONSTS.COMP7_TOURNAMENT_BANNER:
-                  this._hangar.addComp7TournamentBanner();
+                  this._hangar.addEventTournamentBanner(HANGAR_ALIASES.COMP7_TOURNAMENT_BANNER);
+                  break;
+               case HANGAR_CONSTS.PRESTIGE_WIDGET:
+                  this._hangar.addPrestigeWidget();
                   break;
                case HANGAR_CONSTS.BR_PANELS:
                   this._hangar.createBattleRoyaleComponents();
+                  break;
+               case HANGAR_CONSTS.BATTLE_ROYALE_TOURNAMENT_BANNER:
+                  this._hangar.addEventTournamentBanner(HANGAR_ALIASES.BATTLE_ROYALE_TOURNAMENT_BANNER);
+                  break;
+               case HANGAR_CONSTS.STRENGTHS_WEAKNESSES:
+                  this._hangar.addStrengthsWeaknessesPanel();
                   break;
             }
          }

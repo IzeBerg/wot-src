@@ -127,9 +127,8 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.statusMarker.setupFrameEvents();
       }
       
-      override protected function onDispose() : void
+      override protected function onBeforeDispose() : void
       {
-         var _loc1_:* = undefined;
          this.stunMarker.removeEventListener(StatusAnimationEvent.EVENT_HIDDEN,this.onStatusAnimationEventHiddenHandler);
          this.baseEngineerMarker.removeEventListener(StatusAnimationEvent.EVENT_HIDDEN,this.onStatusAnimationEventHiddenHandler);
          this.inspireMarker.removeEventListener(StatusAnimationEvent.EVENT_HIDDEN,this.onStatusAnimationEventHiddenHandler);
@@ -144,6 +143,12 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.shotPassionMarker.removeEventListener(StatusAnimationEvent.EVENT_HIDDEN,this.onStatusAnimationEventHiddenHandler);
          this.adaptationHealthRestoreMarker.removeEventListener(StatusAnimationEvent.EVENT_HIDDEN,this.onStatusAnimationEventHiddenHandler);
          this.statusMarker.removeEventListener(StatusAnimationEvent.EVENT_HIDDEN,this.onStatusAnimationEventHiddenHandler);
+         super.onBeforeDispose();
+      }
+      
+      override protected function onDispose() : void
+      {
+         var _loc1_:* = undefined;
          this.baseEngineerMarker.dispose();
          this.baseEngineerMarker = null;
          this.inspireMarker.dispose();
@@ -227,21 +232,25 @@ package net.wg.gui.battle.views.vehicleMarkers
          return this._activeEffectID == -1 ? Boolean(false) : Boolean(this.getMarker(this._activeEffectID).isVisible());
       }
       
-      public function setEffectColor(param1:String, param2:uint) : void
+      public function setBuffEffectColor(param1:String, param2:uint) : void
       {
-         this.stunMarker.setEffectColor(param1,param2);
-         this.baseEngineerMarker.setEffectColor(param1,param2);
          this.inspireMarker.setEffectColor(param1,param2);
          this.inspireTargetMarker.setEffectColor(param1,param2);
          this.healMarker.setEffectColor(param1,param2);
-         this.berserkerMarker.setEffectColor(param1,param2);
          this.recoveryMarker.setEffectColor(param1,param2);
+         this.adaptationHealthRestoreMarker.setEffectColor(param1,param2);
+         this.berserkerMarker.setEffectColor(param1,param2);
+         this.shotPassionMarker.setEffectColor(param1,param2);
+      }
+      
+      public function setDebuffEffectColor(param1:String, param2:uint) : void
+      {
+         this.stunMarker.setEffectColor(param1,param2);
+         this.baseEngineerMarker.setEffectColor(param1,param2);
          this.stealthMarker.setEffectColor(param1,param2);
          this.flRegenerationKitMarker.setEffectColor(param1,param2);
          this.fireCircleMarker.setEffectColor(param1,param2);
          this.thunderStrikeMarker.setEffectColor(param1,param2);
-         this.shotPassionMarker.setEffectColor(param1,param2);
-         this.adaptationHealthRestoreMarker.setEffectColor(param1,param2);
          this.statusMarker.setEffectColor(param1,param2);
       }
       

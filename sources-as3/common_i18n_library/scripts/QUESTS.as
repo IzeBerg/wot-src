@@ -2397,6 +2397,8 @@ package
       
       public static const TOKEN_DEFAULT_BATTLE_ROYALE:String = "#quests:token/default/battle_royale";
       
+      public static const TOKEN_DEFAULT_COMP7_LIGHT:String = "#quests:token/default/comp7_light";
+      
       public static const BONUSNAME_CREDITS:String = "#quests:bonusName/credits";
       
       public static const BONUSNAME_GOLD:String = "#quests:bonusName/gold";

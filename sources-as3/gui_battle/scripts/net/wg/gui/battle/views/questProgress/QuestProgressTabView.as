@@ -38,7 +38,7 @@ package net.wg.gui.battle.views.questProgress
       
       private static const ADDITIONAL_CONTENT_HEIGHT:int = 59;
       
-      private static const DEF_CONTAINER_HEIGHT:int = 235;
+      private static const DEF_CONTAINER_HEIGHT:int = 270;
       
       private static const PAGE_SCROLL_SIZE:int = 10;
       

@@ -1011,8 +1011,8 @@
 				<slots/>
 			</block>
 			<block>
-				<class>OnPlayerVehicleShoot</class>
-				<id>OnPlayerVehicleShoot_1</id>
+				<class>OnPlayerVehicleDiscreteShoot</class>
+				<id>OnPlayerVehicleDiscreteShoot_1</id>
 				<params/>
 				<slots/>
 			</block>
@@ -5017,8 +5017,8 @@
 				<slots/>
 			</block>
 			<block>
-				<class>OnPlayerVehicleShoot</class>
-				<id>OnPlayerVehicleShoot_2</id>
+				<class>OnPlayerVehicleDiscreteShoot</class>
+				<id>OnPlayerVehicleDiscreteShoot_2</id>
 				<params/>
 				<slots/>
 			</block>
@@ -5635,10 +5635,10 @@
 				<output>finished</output>
 			</connection>
 			<connection>
-				<from>OnPlayerVehicleShoot_1</from>
+				<from>OnPlayerVehicleDiscreteShoot_1</from>
 				<input>input</input>
 				<to>If_11</to>
-				<output>onShoot</output>
+				<output>onDiscreteShoot</output>
 			</connection>
 			<connection>
 				<from>CompareIntegers_5</from>
@@ -8023,10 +8023,10 @@
 				<output>o0</output>
 			</connection>
 			<connection>
-				<from>OnPlayerVehicleShoot_2</from>
+				<from>OnPlayerVehicleDiscreteShoot_2</from>
 				<input>windup</input>
 				<to>Timer_10</to>
-				<output>onShoot</output>
+				<output>onDiscreteShoot</output>
 			</connection>
 			<connection>
 				<from>Sequence_30</from>
@@ -8043,7 +8043,7 @@
 			<connection>
 				<from>LogicGate_5</from>
 				<input>active</input>
-				<to>OnPlayerVehicleShoot_2</to>
+				<to>OnPlayerVehicleDiscreteShoot_2</to>
 				<output>value</output>
 			</connection>
 			<connection>

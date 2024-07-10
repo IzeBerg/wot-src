@@ -2,7 +2,7 @@ from functools import partial
 import typing
 from battle_modifiers.gui.feature.modifiers_data_provider import ModifiersDataProvider
 from Event import Event, EventManager
-from constants import BATTLE_MODE_VEH_TAGS_EXCEPT_FUN
+from fun_random_common.fun_constants import BATTLE_MODE_VEH_TAGS_EXCEPT_FUN
 from fun_random.gui.feature.fun_constants import FunTimersShifts
 from fun_random.gui.feature.models.common import FunRandomAlertData, FunRandomSeason, FunPeriodInfo
 from fun_random.gui.shared.event_dispatcher import showFunRandomInfoPage, showFunRandomPrimeTimeWindow
@@ -17,6 +17,7 @@ from gui.shared.utils.requesters.ItemsRequester import REQ_CRITERIA
 from gui.shared.utils.scheduled_notifications import Notifiable, SimpleNotifier, TimerNotifier
 from helpers import dependency
 from helpers import time_utils
+from season_common import CycleStatus
 from skeletons.gui.game_control import ISeasonProvider
 from skeletons.gui.shared import IItemsCache
 if typing.TYPE_CHECKING:
@@ -39,6 +40,9 @@ class IFunSubMode(ISeasonProvider, Notifiable):
 
     def isEntryPointAvailable(self):
         raise NotImplementedError
+
+    def isLastActiveCycleEnded(self):
+        return False
 
     def isSquadAvailable(self):
         raise NotImplementedError
@@ -68,6 +72,9 @@ class IFunSubMode(ISeasonProvider, Notifiable):
         raise NotImplementedError
 
     def getModifiersDataProvider(self):
+        raise NotImplementedError
+
+    def getEfficiencyParameters(self):
         raise NotImplementedError
 
     def getPriority(self):
@@ -128,6 +135,14 @@ class FunBaseSubMode(IFunSubMode, SeasonProvider):
     def isEntryPointAvailable(self):
         return self.hasSuitableVehicles() or self.isSuitableVehicleAvailable()
 
+    def isLastActiveCycleEnded(self):
+        now = time_utils.getCurrentLocalServerTimestamp()
+        if not self.isAvailable(now):
+            return False
+        else:
+            lastActiveCycle = self.getCurrentSeason(now).getLastActiveCycleInfo(now)
+            return lastActiveCycle is not None and lastActiveCycle.status == CycleStatus.PAST
+
     def isSquadAvailable(self):
         now = time_utils.getCurrentLocalServerTimestamp()
         return self.isAvailable(now) and self.getCurrentSeason(now).hasActiveCycle(now)
@@ -171,7 +186,7 @@ class FunBaseSubMode(IFunSubMode, SeasonProvider):
             alertData = self._ALERT_DATA_CLASS.constructNoVehicles()
             buttonCallback = partial(showFunRandomInfoPage, self._settings.client.infoPageUrl)
         return (
-         buttonCallback, alertData or self._ALERT_DATA_CLASS(), alertData is not None)
+         alertData is not None, alertData, self._ALERT_DATA_CLASS.packCallbacks(buttonCallback))
 
     def getAssetsPointer(self):
         return self._settings.client.assetsPointer
@@ -199,6 +214,9 @@ class FunBaseSubMode(IFunSubMode, SeasonProvider):
 
     def getModifiersDataProvider(self):
         return self._modifiersDataProvider
+
+    def getEfficiencyParameters(self):
+        return self._settings.client.postbattle.get('postbattleEfficiency', {})
 
     def getPriority(self):
         return self._settings.client.priority

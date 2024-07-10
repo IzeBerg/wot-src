@@ -47,6 +47,9 @@ msgstr "第二次机会和奖励"
 msgid "banner/seasonDate/seasonLasts"
 msgstr "%(month)s%(day)s日结束"
 
+msgid "banner/subtitle"
+msgstr "包含珍贵奖励的军事演习模式"
+
 msgid "banner/timeLeft/hour"
 msgstr "%(hour)s时"
 
@@ -189,13 +192,13 @@ msgid "battleResult/progressStage"
 msgstr "阶段{stage}进度"
 
 msgid "battleResult/stats/anonymizer/body"
-msgstr "您的真实昵称和军团标签在战斗中不会对其他玩家显示。"
+msgstr "玩家的真实昵称和军团标签在战斗中不会对其他玩家显示。"
 
 msgid "battleResult/stats/anonymizer/enemy/header"
 msgstr "玩家的真实昵称: {name}"
 
 msgid "battleResult/stats/anonymizer/header"
-msgstr "您的名字已被更改为{name}"
+msgstr "玩家的昵称已更改为{name}"
 
 msgid "battleResult/stats/damageBlockedByArmor/body"
 msgstr "您的坦克装甲抵挡的损伤。"
@@ -362,16 +365,16 @@ msgid "fullStats/destroyed"
 msgstr "您击毁的坦克"
 
 msgid "fullStats/icons/airDrop/description"
-msgstr "空投: 经验、生命值恢复、模块维修、全部能力的充能次数、炮弹。"
+msgstr "空投: 经验、恢复生命值、修理模块、全部战斗能力的充能次数、弹药。"
 
 msgid "fullStats/icons/corpseLoot/description"
-msgstr "战利品: 经验、生命值恢复、模块维修、部分能力的充能次数、炮弹。"
+msgstr "战利品: 经验、恢复生命值、修理模块、部分战斗能力的充能次数、弹药。"
 
 msgid "fullStats/icons/defaultLoot/description"
-msgstr "补给: 经验、模块维修、部分能力充能恢复。"
+msgstr "补给: 经验、可能包含战斗能力充能次数、弹药。"
 
 msgid "fullStats/icons/extendedLoot/description"
-msgstr "给养: 经验、生命值恢复、恢复能力的1次充能次数、炮弹。"
+msgstr "给养: 经验、恢复生命值、修理模块、恢复能力的1次充能次数、弹药。"
 
 msgid "fullStats/subTitle"
 msgstr "在“混战”规则下为宝贵的资源而战。"
@@ -786,6 +789,21 @@ msgstr "我们的装甲正在受到腐蚀！"
 msgid "statusNotificationTimers/thunderStrike"
 msgstr "机动性下降！"
 
+msgid "techParams/type/damage"
+msgstr "火力"
+
+msgid "techParams/type/difficulty"
+msgstr "难度"
+
+msgid "techParams/type/mobility"
+msgstr "机动"
+
+msgid "techParams/type/spotting"
+msgstr "点亮"
+
+msgid "techParams/type/survivability"
+msgstr "防护"
+
 msgid "techtree/body_armor"
 msgstr "装甲"
 
@@ -956,35 +974,29 @@ msgstr "印章的用处"
 msgid "tooltips/brCoin/title"
 msgstr "钢铁印章"
 
-msgid "tooltips/respawnIcon/definition"
-msgstr "重生充能次数可从空投中获取。"
-
-msgid "tooltips/respawnIcon/description"
+msgid "tooltips/respawn/common/description"
 msgstr "让您可以在坦克被击毁后重返战斗。在这种情况下，坦克的升级等级不会丢失。每场战斗均有使用次数限制。"
 
-msgid "tooltips/respawnIcon/min"
-msgstr "%(duration)s分钟"
+msgid "tooltips/respawn/footer/text"
+msgstr "重生充能次数可从空投中获取。"
 
-msgid "tooltips/respawnIcon/platoon/description"
+msgid "tooltips/respawn/platoon/description"
 msgstr ""
-"您需要脱离战斗%(timeToResurrect)s才能使盟友重生。该机制仅在战斗的前%(duration)s内生效。小队中的盟友共享重生充能次数。"
+"您需要脱离战斗{brown_Open}%(timeToResurrect)s秒{brown_Close}才能使盟友重生。该机制仅在战斗的前{brown_Open}%(duration)s分钟{brown_Close}内生效。小队中的盟友共享重生充能次数。"
 
-msgid "tooltips/respawnIcon/platoon/subtitle"
+msgid "tooltips/respawn/platoon/title"
 msgstr "组队战斗时"
 
-msgid "tooltips/respawnIcon/sec"
-msgstr "%(duration)s秒"
+msgid "tooltips/respawn/solo/description"
+msgstr "坦克在击毁后自动重生。该机制在战斗的前{brown_Open}%(duration)s分钟{brown_Close}内生效。"
 
-msgid "tooltips/respawnIcon/solo/description"
-msgstr "坦克在击毁后自动重生。该机制在战斗的前%(duration)s内生效。"
-
-msgid "tooltips/respawnIcon/solo/subtitle"
+msgid "tooltips/respawn/solo/title"
 msgstr "单人战斗时"
 
-msgid "tooltips/respawnIcon/subtitle"
+msgid "tooltips/respawn/subtitle"
 msgstr "一次性使用"
 
-msgid "tooltips/respawnIcon/title"
+msgid "tooltips/respawn/title"
 msgstr "重生"
 
 msgid "tooltips/vehicle/description"

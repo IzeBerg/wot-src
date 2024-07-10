@@ -1196,6 +1196,7 @@ class QUESTS(object):
     TOKEN_DEFAULT_BOX = '#quests:token/default/box'
     TOKEN_DEFAULT_TANKREWARDS = '#quests:token/default/tankrewards'
     TOKEN_DEFAULT_BATTLE_ROYALE = '#quests:token/default/battle_royale'
+    TOKEN_DEFAULT_COMP7_LIGHT = '#quests:token/default/comp7_light'
     BONUSNAME_CREDITS = '#quests:bonusName/credits'
     BONUSNAME_GOLD = '#quests:bonusName/gold'
     BONUSNAME_CRYSTAL = '#quests:bonusName/crystal'
@@ -1750,7 +1751,8 @@ class QUESTS(object):
      TOKEN_DEFAULT_WHEEL,
      TOKEN_DEFAULT_BOX,
      TOKEN_DEFAULT_TANKREWARDS,
-     TOKEN_DEFAULT_BATTLE_ROYALE)
+     TOKEN_DEFAULT_BATTLE_ROYALE,
+     TOKEN_DEFAULT_COMP7_LIGHT)
     BONUSNAME_ENUM = (
      BONUSNAME_BLUEPRINTS_ANY,
      BONUSNAME_BLUEPRINTS_VEHICLE,

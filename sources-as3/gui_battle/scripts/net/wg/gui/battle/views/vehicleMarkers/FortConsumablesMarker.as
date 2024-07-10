@@ -59,32 +59,6 @@ package net.wg.gui.battle.views.vehicleMarkers
          this._vmManager.addEventListener(VehicleMarkersManagerEvent.UPDATE_COLORS,this.onUpdateColorsHandler);
       }
       
-      private function getFilters() : Array
-      {
-         if(this._markerColor == BATTLE_MARKERS_CONSTS.COLOR_GREEN)
-         {
-            return GREEN_DROPSHADOW_FILTERS;
-         }
-         if(this._markerColor == BATTLE_MARKERS_CONSTS.COLOR_RED)
-         {
-            if(this._vmManager.isColorBlind)
-            {
-               return PURPLE_DROPSHADOW_FILTERS;
-            }
-            return RED_DROPSHADOW_FILTERS;
-         }
-         return YELLOW_DROPSHADOW_FILTERS;
-      }
-      
-      private function getMarkerClassName() : String
-      {
-         if(this._vmManager.isColorBlind && this._markerType == ARTILLERY_FORT_ENEMY)
-         {
-            return ARTILLERY_FORT_ENEMY_COLOR_BLIND;
-         }
-         return this._markerType;
-      }
-      
       override protected function onDispose() : void
       {
          this._vmManager.removeEventListener(VehicleMarkersManagerEvent.UPDATE_COLORS,this.onUpdateColorsHandler);
@@ -116,6 +90,32 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.updateTimerText();
       }
       
+      private function getFilters() : Array
+      {
+         if(this._markerColor == BATTLE_MARKERS_CONSTS.COLOR_GREEN)
+         {
+            return GREEN_DROPSHADOW_FILTERS;
+         }
+         if(this._markerColor == BATTLE_MARKERS_CONSTS.COLOR_RED)
+         {
+            if(this._vmManager.isColorBlind)
+            {
+               return PURPLE_DROPSHADOW_FILTERS;
+            }
+            return RED_DROPSHADOW_FILTERS;
+         }
+         return YELLOW_DROPSHADOW_FILTERS;
+      }
+      
+      private function getMarkerClassName() : String
+      {
+         if(this._vmManager.isColorBlind && this._markerType == ARTILLERY_FORT_ENEMY)
+         {
+            return ARTILLERY_FORT_ENEMY_COLOR_BLIND;
+         }
+         return this._markerType;
+      }
+      
       private function clearMarkerBitmap() : void
       {
          if(this._markerBitmap != null)
@@ -137,15 +137,6 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.timerTF.text = this._timer;
       }
       
-      private function onUpdateColorsHandler(param1:VehicleMarkersManagerEvent) : void
-      {
-         if(StringUtils.isNotEmpty(this._markerType) && StringUtils.isNotEmpty(this._markerColor))
-         {
-            this.createMarker();
-            invalidateData();
-         }
-      }
-      
       private function createMarker() : void
       {
          this.clearMarkerBitmap();
@@ -164,6 +155,15 @@ package net.wg.gui.battle.views.vehicleMarkers
          var _loc2_:Array = this.getFilters();
          this.defaultTF.filters = _loc2_;
          this.timerTF.filters = _loc2_;
+      }
+      
+      private function onUpdateColorsHandler(param1:VehicleMarkersManagerEvent) : void
+      {
+         if(StringUtils.isNotEmpty(this._markerType) && StringUtils.isNotEmpty(this._markerColor))
+         {
+            this.createMarker();
+            invalidateData();
+         }
       }
    }
 }

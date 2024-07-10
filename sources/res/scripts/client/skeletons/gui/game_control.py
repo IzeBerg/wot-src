@@ -2,6 +2,7 @@ import typing
 from constants import ARENA_BONUS_TYPE
 if typing.TYPE_CHECKING:
     from typing import Callable, Dict, Iterable, Iterator, List, Optional, Set, Tuple, Union, Sequence
+    from battle_modifiers_common import BattleModifiers
     from collections_common import Collection, CollectionItem
     from Event import Event
     from wg_async import _Future
@@ -32,6 +33,7 @@ if typing.TYPE_CHECKING:
     from gui.ranked_battles.ranked_helpers.stats_composer import RankedBattlesStatsComposer
     from gui.ranked_battles.ranked_helpers.web_season_provider import RankedWebSeasonProvider, WebSeasonInfo
     from gui.ranked_battles.ranked_models import BattleRankInfo, Division, PostBattleRankInfo, Rank
+    from gui.Scaleform.daapi.view.lobby.hangar.header_helpers.quest_flags_getters import IQuestFlagsGetter
     from gui.server_events.bonuses import BattlePassSelectTokensBonus, BattlePassStyleProgressTokenBonus, SimpleBonus, TokensBonus, WoTPlusBonus
     from gui.server_events.event_items import RankedQuest
     from gui.shared.event_bus import SharedEvent
@@ -52,6 +54,7 @@ if typing.TYPE_CHECKING:
     from gui.entitlements.entitlement_model import AgateEntitlement
     from gui.server_events.event_items import Quest
     from advanced_achievements_client.items import _BaseGuiAchievement
+    from gui.Scaleform.daapi.view.lobby.header.helpers.controls_helpers import ILobbyHeaderControlsHelper
     BattlePassBonusOpts = Optional[(TokensBonus, BattlePassSelectTokensBonus)]
 
 class IGameController(object):
@@ -543,6 +546,9 @@ class IPlatoonController(IGameController):
     def canSelectSquadSize(self):
         raise NotImplementedError
 
+    def hasSelectorPopover(self):
+        raise NotImplementedError
+
     def hasSearchSupport(self):
         raise NotImplementedError
 
@@ -985,6 +991,9 @@ class IRankedBattlesController(IGameController, ISeasonProvider):
     def getCurrentRank(self):
         raise NotImplementedError
 
+    def getDailyBattleQuests(self):
+        raise NotImplementedError
+
     def getDivision(self, rankID):
         raise NotImplementedError
 
@@ -1185,6 +1194,12 @@ class IEpicBattleMetaGameController(IGameController, ISeasonProvider):
     def isDailyQuestsRefreshAvailable(self):
         raise NotImplementedError
 
+    def getAlertBlock(self):
+        raise NotImplementedError
+
+    def getDailyBattleQuests(self):
+        raise NotImplementedError
+
     def getPerformanceGroup(self):
         raise NotImplementedError
 
@@ -1365,6 +1380,8 @@ class IBattleRoyaleController(IGameController, ISeasonProvider):
     onSubModeUpdated = None
     onBattleRoyaleSpaceLoaded = None
     onStatusTick = None
+    onTournamentBannerStateChanged = None
+    onEntryPointUpdated = None
     TOKEN_QUEST_ID = ''
 
     def isEnabled(self):
@@ -1457,6 +1474,13 @@ class IBattleRoyaleController(IGameController, ISeasonProvider):
         raise NotImplementedError
 
     def openInfoPageWindow(self, isModeSelector=False):
+        raise NotImplementedError
+
+    def getTournamentBannerData(self):
+        raise NotImplementedError
+
+    @property
+    def isTournamentBannerEnabled(self):
         raise NotImplementedError
 
 
@@ -1978,6 +2002,9 @@ class IMapboxController(IGameController, ISeasonProvider):
         raise NotImplementedError
 
     def selectMapboxBattle(self):
+        raise NotImplementedError
+
+    def getAlertBlock(self):
         raise NotImplementedError
 
     def getProgressionData(self):
@@ -2694,6 +2721,12 @@ class IFunRandomController(IGameController):
 
     class IFunSubscription(IFunSubSystem):
 
+        def resume(self):
+            raise NotImplementedError
+
+        def suspend(self):
+            raise NotImplementedError
+
         def addListener(self, eventType, handler, scope=None):
             raise NotImplementedError
 
@@ -2703,16 +2736,7 @@ class IFunRandomController(IGameController):
         def handleEvent(self, event, scope=None):
             raise NotImplementedError
 
-        def addSubModesWatcher(self, method, desiredOnly=False, withTicks=False):
-            raise NotImplementedError
-
-        def removeSubModesWatcher(self, method, desiredOnly=False, withTicks=False):
-            raise NotImplementedError
-
-        def resume(self):
-            raise NotImplementedError
-
-        def suspend(self):
+        def startCoreNotifications(self):
             raise NotImplementedError
 
     class IFunSubModesHolder(IFunSubSystem):
@@ -2935,6 +2959,9 @@ class IComp7Controller(IGameController, ISeasonProvider):
         raise NotImplementedError
 
     def hasPlayableVehicle(self):
+        raise NotImplementedError
+
+    def isComp7LightProgressionActive(self):
         raise NotImplementedError
 
     def isComp7PrbActive(self):
@@ -3323,7 +3350,34 @@ class IHangarGuiController(IGameController):
     def getAmmoInjectViewAlias(self):
         raise NotImplementedError
 
+    def getHangarAlertBlock(self):
+        raise NotImplementedError
+
     def getHangarCarouselSettings(self):
+        raise NotImplementedError
+
+    def getHangarHeaderBlock(self):
+        raise NotImplementedError
+
+    def getHangarWidgetAlias(self):
+        raise NotImplementedError
+
+    def getLobbyHeaderHelper(self):
+        raise NotImplementedError
+
+    def getBattleModifiers(self):
+        raise NotImplementedError
+
+    def checkBonusCaps(self, bonusType, bonusCaps):
+        raise NotImplementedError
+
+    def checkCurrentBonusCaps(self, bonusCaps, default=False):
+        raise NotImplementedError
+
+    def checkCrystalRewards(self, bonusType):
+        raise NotImplementedError
+
+    def checkCurrentCrystalRewards(self, default=None):
         raise NotImplementedError
 
     def holdHangar(self, hangar):

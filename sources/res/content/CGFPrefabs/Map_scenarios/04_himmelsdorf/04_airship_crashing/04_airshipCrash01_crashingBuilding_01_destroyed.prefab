@@ -2868,7 +2868,7 @@
 		</ComponentPool>
 		<ComponentPool>
 			<type>SequenceComponent</type>
-			<version>2</version>
+			<version>3</version>
 			<component>
 				<objectIndex>0</objectIndex>
 				<flags>35</flags>
@@ -5194,6 +5194,18 @@
 					<property>
 						<name>AutoStart</name>
 						<value>1</value>
+					</property>
+					<property>
+						<name>Volume</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Fade time</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Fade type</name>
+						<value>4</value>
 					</property>
 				</config>
 			</component>
@@ -8650,48 +8662,26 @@
 			</component>
 		</ComponentPool>
 		<ComponentPool>
+			<type>NavmeshPatch</type>
+			<version>2</version>
+			<component>
+				<objectIndex>0</objectIndex>
+				<flags>34</flags>
+				<config>
+					<property>
+						<name>patchName</name>
+						<value>04_airshipCrash_ai</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
 			<type>EmbeddedDecal</type>
 			<version>1</version>
 			<component>
 				<objectIndex>17</objectIndex>
 				<flags>3</flags>
 				<config>
-					<property>
-						<name>chunkItemData</name>
-						<isEditorOnly>true</isEditorOnly>
-						<section>
-							<editorOnly>
-								<hidden>true</hidden>
-								<frozen>false</frozen>
-								<groupName>04_airshipCrash01_crashingBuilding_01_destroyed_new</groupName>
-								<groupPivotYPR>0.000000 -0.000000 0.000000</groupPivotYPR>
-							</editorOnly>
-							<visibilityMask>4294967295</visibilityMask>
-							<transform>
-								<row0>-4.068242 -0.008136 7.937133</row0>
-								<row1>-7.815434 -0.299017 -4.006170</row1>
-								<row2>0.083649 -2.723381 0.040083</row2>
-								<row3>84.600143 1.119145 49.945599</row3>
-							</transform>
-							<diffTex>maps/decals_pbs/Zeppelin_Debris_01_1_AM.dds</diffTex>
-							<bumpTex>maps/decals_pbs/Zeppelin_Debris_01_1_NM.dds</bumpTex>
-							<hmTex>maps/decals_pbs/Zeppelin_Debris_01_1_GMM.dds</hmTex>
-							<addTex/>
-							<priority>0</priority>
-							<type>1</type>
-							<influence>2</influence>
-							<offsets>0.000000 0.000000 0.000000 0.000000</offsets>
-							<uvWrapping>1.000000 1.000000</uvWrapping>
-							<accurate>0</accurate>
-							<tilesFade>0.050000</tilesFade>
-							<invertDistanceFadeFlag>false</invertDistanceFadeFlag>
-							<isHidden>true</isHidden>
-							<parallax_offset>0.530000</parallax_offset>
-							<parallax_mode>0.000000</parallax_mode>
-							<parallax_amplitude>0.100000</parallax_amplitude>
-							<configUuid>977fdb24-a5a2-38d4-a59f-88999166119f</configUuid>
-						</section>
-					</property>
 					<property>
 						<name>_upside</name>
 						<value>-0 -0 -1</value>
@@ -8703,42 +8693,6 @@
 				<flags>3</flags>
 				<config>
 					<property>
-						<name>chunkItemData</name>
-						<isEditorOnly>true</isEditorOnly>
-						<section>
-							<editorOnly>
-								<hidden>true</hidden>
-								<frozen>false</frozen>
-								<groupName>04_airshipCrash01_crashingBuilding_01_destroyed_new</groupName>
-								<groupPivotYPR>0.000000 -0.000000 0.000000</groupPivotYPR>
-							</editorOnly>
-							<visibilityMask>4294967295</visibilityMask>
-							<transform>
-								<row0>-2.054727 0.000002 -2.272709</row0>
-								<row1>2.272710 -0.000011 -2.054728</row1>
-								<row2>-0.000002 -0.510645 0.000001</row2>
-								<row3>73.009445 1.110139 17.386400</row3>
-							</transform>
-							<diffTex>maps/decals_pbs/Garbage_ConOpt_04_AM.dds</diffTex>
-							<bumpTex>maps/decals_pbs/Garbage_ConOpt_04_NM.dds</bumpTex>
-							<hmTex>maps/decals_pbs/Garbage_ConOpt_04_GMM.dds</hmTex>
-							<addTex/>
-							<priority>822</priority>
-							<type>1</type>
-							<influence>2</influence>
-							<offsets>0.000000 0.000000 0.000000 0.000000</offsets>
-							<uvWrapping>1.000000 1.000000</uvWrapping>
-							<accurate>0</accurate>
-							<tilesFade>0.050000</tilesFade>
-							<invertDistanceFadeFlag>false</invertDistanceFadeFlag>
-							<isHidden>true</isHidden>
-							<parallax_offset>0.500000</parallax_offset>
-							<parallax_mode>0.000000</parallax_mode>
-							<parallax_amplitude>0.350000</parallax_amplitude>
-							<configUuid>7323f19b-3dbc-3fb5-9356-0ff0b1569f57</configUuid>
-						</section>
-					</property>
-					<property>
 						<name>_upside</name>
 						<value>-0 -0 -1</value>
 					</property>
@@ -8748,42 +8702,6 @@
 				<objectIndex>42</objectIndex>
 				<flags>3</flags>
 				<config>
-					<property>
-						<name>chunkItemData</name>
-						<isEditorOnly>true</isEditorOnly>
-						<section>
-							<editorOnly>
-								<hidden>true</hidden>
-								<frozen>false</frozen>
-								<groupName>04_airshipCrash01_crashingBuilding_01_destroyed_new</groupName>
-								<groupPivotYPR>0.000000 -0.000000 0.000000</groupPivotYPR>
-							</editorOnly>
-							<visibilityMask>4294967295</visibilityMask>
-							<transform>
-								<row0>-1.583513 -0.000168 2.365325</row0>
-								<row1>-2.365325 0.000972 -1.583513</row1>
-								<row2>-0.000119 -0.474413 -0.000113</row2>
-								<row3>70.405823 1.110846 49.370499</row3>
-							</transform>
-							<diffTex>maps/decals_pbs/Garbage_ConOpt_04_AM.dds</diffTex>
-							<bumpTex>maps/decals_pbs/Garbage_ConOpt_04_NM.dds</bumpTex>
-							<hmTex>maps/decals_pbs/Garbage_ConOpt_04_GMM.dds</hmTex>
-							<addTex/>
-							<priority>822</priority>
-							<type>1</type>
-							<influence>2</influence>
-							<offsets>0.000000 0.000000 0.000000 0.000000</offsets>
-							<uvWrapping>1.000000 1.000000</uvWrapping>
-							<accurate>0</accurate>
-							<tilesFade>0.050000</tilesFade>
-							<invertDistanceFadeFlag>false</invertDistanceFadeFlag>
-							<isHidden>true</isHidden>
-							<parallax_offset>0.500000</parallax_offset>
-							<parallax_mode>0.000000</parallax_mode>
-							<parallax_amplitude>0.350000</parallax_amplitude>
-							<configUuid>d731dc9d-fe6f-3ed1-a619-45c4def666c0</configUuid>
-						</section>
-					</property>
 					<property>
 						<name>_upside</name>
 						<value>-0 -0 -1</value>
@@ -8795,42 +8713,6 @@
 				<flags>3</flags>
 				<config>
 					<property>
-						<name>chunkItemData</name>
-						<isEditorOnly>true</isEditorOnly>
-						<section>
-							<editorOnly>
-								<hidden>true</hidden>
-								<frozen>false</frozen>
-								<groupName>04_airshipCrash01_crashingBuilding_01_destroyed_new</groupName>
-								<groupPivotYPR>0.000000 -0.000000 0.000000</groupPivotYPR>
-							</editorOnly>
-							<visibilityMask>4294967295</visibilityMask>
-							<transform>
-								<row0>-4.068242 -0.008136 7.937133</row0>
-								<row1>-7.815434 -0.299017 -4.006170</row1>
-								<row2>0.083649 -2.723381 0.040083</row2>
-								<row3>85.682007 1.161996 19.467699</row3>
-							</transform>
-							<diffTex>maps/decals_pbs/Zeppelin_Debris_01_1_AM.dds</diffTex>
-							<bumpTex>maps/decals_pbs/Zeppelin_Debris_01_1_NM.dds</bumpTex>
-							<hmTex>maps/decals_pbs/Zeppelin_Debris_01_1_GMM.dds</hmTex>
-							<addTex/>
-							<priority>0</priority>
-							<type>1</type>
-							<influence>2</influence>
-							<offsets>0.000000 0.000000 0.000000 0.000000</offsets>
-							<uvWrapping>1.000000 1.000000</uvWrapping>
-							<accurate>0</accurate>
-							<tilesFade>0.050000</tilesFade>
-							<invertDistanceFadeFlag>false</invertDistanceFadeFlag>
-							<isHidden>true</isHidden>
-							<parallax_offset>0.530000</parallax_offset>
-							<parallax_mode>0.000000</parallax_mode>
-							<parallax_amplitude>0.100000</parallax_amplitude>
-							<configUuid>11e4d0a9-f133-3b42-9fd1-ea5a5e894162</configUuid>
-						</section>
-					</property>
-					<property>
 						<name>_upside</name>
 						<value>-0 -0 -1</value>
 					</property>
@@ -8840,42 +8722,6 @@
 				<objectIndex>47</objectIndex>
 				<flags>3</flags>
 				<config>
-					<property>
-						<name>chunkItemData</name>
-						<isEditorOnly>true</isEditorOnly>
-						<section>
-							<editorOnly>
-								<hidden>true</hidden>
-								<frozen>false</frozen>
-								<groupName>04_airshipCrash01_crashingBuilding_01_destroyed_new</groupName>
-								<groupPivotYPR>0.000000 -0.000000 0.000000</groupPivotYPR>
-							</editorOnly>
-							<visibilityMask>4294967295</visibilityMask>
-							<transform>
-								<row0>-2.054727 0.000002 -2.272709</row0>
-								<row1>2.272710 -0.000011 -2.054728</row1>
-								<row2>-0.000002 -0.510645 0.000001</row2>
-								<row3>78.576706 1.122912 48.175697</row3>
-							</transform>
-							<diffTex>maps/decals_pbs/Garbage_ConOpt_04_AM.dds</diffTex>
-							<bumpTex>maps/decals_pbs/Garbage_ConOpt_04_NM.dds</bumpTex>
-							<hmTex>maps/decals_pbs/Garbage_ConOpt_04_GMM.dds</hmTex>
-							<addTex/>
-							<priority>822</priority>
-							<type>1</type>
-							<influence>2</influence>
-							<offsets>0.000000 0.000000 0.000000 0.000000</offsets>
-							<uvWrapping>1.000000 1.000000</uvWrapping>
-							<accurate>0</accurate>
-							<tilesFade>0.050000</tilesFade>
-							<invertDistanceFadeFlag>false</invertDistanceFadeFlag>
-							<isHidden>true</isHidden>
-							<parallax_offset>0.500000</parallax_offset>
-							<parallax_mode>0.000000</parallax_mode>
-							<parallax_amplitude>0.350000</parallax_amplitude>
-							<configUuid>f30e81b5-2659-33b1-93bc-fcafcb632764</configUuid>
-						</section>
-					</property>
 					<property>
 						<name>_upside</name>
 						<value>-0 -0 -1</value>
@@ -8887,42 +8733,6 @@
 				<flags>3</flags>
 				<config>
 					<property>
-						<name>chunkItemData</name>
-						<isEditorOnly>true</isEditorOnly>
-						<section>
-							<editorOnly>
-								<hidden>true</hidden>
-								<frozen>false</frozen>
-								<groupName>04_airshipCrash01_crashingBuilding_01_destroyed_new</groupName>
-								<groupPivotYPR>0.000000 -0.000000 0.000000</groupPivotYPR>
-							</editorOnly>
-							<visibilityMask>4294967295</visibilityMask>
-							<transform>
-								<row0>-4.068242 -0.008136 7.937133</row0>
-								<row1>-7.815434 -0.299017 -4.006170</row1>
-								<row2>0.083649 -2.723381 0.040083</row2>
-								<row3>72.683899 1.110146 15.396299</row3>
-							</transform>
-							<diffTex>maps/decals_pbs/Zeppelin_Debris_01_1_AM.dds</diffTex>
-							<bumpTex>maps/decals_pbs/Zeppelin_Debris_01_1_NM.dds</bumpTex>
-							<hmTex>maps/decals_pbs/Zeppelin_Debris_01_1_GMM.dds</hmTex>
-							<addTex/>
-							<priority>0</priority>
-							<type>1</type>
-							<influence>2</influence>
-							<offsets>0.000000 0.000000 0.000000 0.000000</offsets>
-							<uvWrapping>1.000000 1.000000</uvWrapping>
-							<accurate>0</accurate>
-							<tilesFade>0.050000</tilesFade>
-							<invertDistanceFadeFlag>false</invertDistanceFadeFlag>
-							<isHidden>true</isHidden>
-							<parallax_offset>0.530000</parallax_offset>
-							<parallax_mode>0.000000</parallax_mode>
-							<parallax_amplitude>0.100000</parallax_amplitude>
-							<configUuid>e3b2c8e3-6591-36b2-9d16-5422d0db80b1</configUuid>
-						</section>
-					</property>
-					<property>
 						<name>_upside</name>
 						<value>-0 -0 -1</value>
 					</property>
@@ -8932,42 +8742,6 @@
 				<objectIndex>49</objectIndex>
 				<flags>3</flags>
 				<config>
-					<property>
-						<name>chunkItemData</name>
-						<isEditorOnly>true</isEditorOnly>
-						<section>
-							<editorOnly>
-								<hidden>true</hidden>
-								<frozen>false</frozen>
-								<groupName>04_airshipCrash01_crashingBuilding_01_destroyed_new</groupName>
-								<groupPivotYPR>0.000000 -0.000000 0.000000</groupPivotYPR>
-							</editorOnly>
-							<visibilityMask>4294967295</visibilityMask>
-							<transform>
-								<row0>-2.054727 0.000002 -2.272709</row0>
-								<row1>2.272710 -0.000011 -2.054728</row1>
-								<row2>-0.000002 -0.510645 0.000001</row2>
-								<row3>80.941986 1.110145 18.682800</row3>
-							</transform>
-							<diffTex>maps/decals_pbs/Garbage_ConOpt_04_AM.dds</diffTex>
-							<bumpTex>maps/decals_pbs/Garbage_ConOpt_04_NM.dds</bumpTex>
-							<hmTex>maps/decals_pbs/Garbage_ConOpt_04_GMM.dds</hmTex>
-							<addTex/>
-							<priority>822</priority>
-							<type>1</type>
-							<influence>2</influence>
-							<offsets>0.000000 0.000000 0.000000 0.000000</offsets>
-							<uvWrapping>1.000000 1.000000</uvWrapping>
-							<accurate>0</accurate>
-							<tilesFade>0.050000</tilesFade>
-							<invertDistanceFadeFlag>false</invertDistanceFadeFlag>
-							<isHidden>true</isHidden>
-							<parallax_offset>0.500000</parallax_offset>
-							<parallax_mode>0.000000</parallax_mode>
-							<parallax_amplitude>0.350000</parallax_amplitude>
-							<configUuid>4b7da063-d16e-32ae-9e85-8570cd60b543</configUuid>
-						</section>
-					</property>
 					<property>
 						<name>_upside</name>
 						<value>-0 -0 -1</value>
@@ -8979,42 +8753,6 @@
 				<flags>3</flags>
 				<config>
 					<property>
-						<name>chunkItemData</name>
-						<isEditorOnly>true</isEditorOnly>
-						<section>
-							<editorOnly>
-								<hidden>true</hidden>
-								<frozen>false</frozen>
-								<groupName>04_airshipCrash01_crashingBuilding_01_destroyed_new</groupName>
-								<groupPivotYPR>0.000000 -0.000000 0.000000</groupPivotYPR>
-							</editorOnly>
-							<visibilityMask>4294967295</visibilityMask>
-							<transform>
-								<row0>1.251997 0.000002 -3.490494</row0>
-								<row1>3.490494 -0.000014 1.251997</row1>
-								<row2>-0.000002 -0.618046 -0.000001</row2>
-								<row3>68.176865 1.109407 49.574398</row3>
-							</transform>
-							<diffTex>maps/decals_pbs/Garbage_ConOpt_04_AM.dds</diffTex>
-							<bumpTex>maps/decals_pbs/Garbage_ConOpt_04_NM.dds</bumpTex>
-							<hmTex>maps/decals_pbs/Garbage_ConOpt_04_GMM.dds</hmTex>
-							<addTex/>
-							<priority>822</priority>
-							<type>1</type>
-							<influence>2</influence>
-							<offsets>0.000000 0.000000 0.000000 0.000000</offsets>
-							<uvWrapping>1.000000 1.000000</uvWrapping>
-							<accurate>0</accurate>
-							<tilesFade>0.050000</tilesFade>
-							<invertDistanceFadeFlag>false</invertDistanceFadeFlag>
-							<isHidden>true</isHidden>
-							<parallax_offset>0.500000</parallax_offset>
-							<parallax_mode>0.000000</parallax_mode>
-							<parallax_amplitude>0.350000</parallax_amplitude>
-							<configUuid>cf355d45-7142-3194-830b-9d8d0a10e82d</configUuid>
-						</section>
-					</property>
-					<property>
 						<name>_upside</name>
 						<value>-0 -0 -1</value>
 					</property>
@@ -9024,42 +8762,6 @@
 				<objectIndex>51</objectIndex>
 				<flags>3</flags>
 				<config>
-					<property>
-						<name>chunkItemData</name>
-						<isEditorOnly>true</isEditorOnly>
-						<section>
-							<editorOnly>
-								<hidden>true</hidden>
-								<frozen>false</frozen>
-								<groupName>04_airshipCrash01_crashingBuilding_01_destroyed_new</groupName>
-								<groupPivotYPR>0.000000 -0.000000 0.000000</groupPivotYPR>
-							</editorOnly>
-							<visibilityMask>4294967295</visibilityMask>
-							<transform>
-								<row0>1.251997 0.000002 -3.490494</row0>
-								<row1>3.490494 -0.000014 1.251997</row1>
-								<row2>-0.000002 -0.618046 -0.000001</row2>
-								<row3>81.103851 1.122929 47.269798</row3>
-							</transform>
-							<diffTex>maps/decals_pbs/Garbage_ConOpt_04_AM.dds</diffTex>
-							<bumpTex>maps/decals_pbs/Garbage_ConOpt_04_NM.dds</bumpTex>
-							<hmTex>maps/decals_pbs/Garbage_ConOpt_04_GMM.dds</hmTex>
-							<addTex/>
-							<priority>822</priority>
-							<type>1</type>
-							<influence>2</influence>
-							<offsets>0.000000 0.000000 0.000000 0.000000</offsets>
-							<uvWrapping>1.000000 1.000000</uvWrapping>
-							<accurate>0</accurate>
-							<tilesFade>0.050000</tilesFade>
-							<invertDistanceFadeFlag>false</invertDistanceFadeFlag>
-							<isHidden>true</isHidden>
-							<parallax_offset>0.500000</parallax_offset>
-							<parallax_mode>0.000000</parallax_mode>
-							<parallax_amplitude>0.350000</parallax_amplitude>
-							<configUuid>e751c12b-b7e3-380e-9909-542896297e3a</configUuid>
-						</section>
-					</property>
 					<property>
 						<name>_upside</name>
 						<value>-0 -0 -1</value>

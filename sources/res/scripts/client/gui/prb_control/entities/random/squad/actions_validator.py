@@ -1,7 +1,7 @@
 from CurrentVehicle import g_currentVehicle
-from gui.shared.gui_items.Vehicle import VEHICLE_CLASS_NAME
 from gui.prb_control.entities.base.actions_validator import BaseActionsValidator, ActionsValidatorComposite
 from gui.prb_control.entities.base.squad.actions_validator import SquadActionsValidator
+from gui.prb_control.entities.base.squad.components import getRestrictedVehicleClassTag
 from gui.prb_control.entities.base.unit.actions_validator import CommanderValidator
 from gui.prb_control.items import ValidationResult
 from gui.prb_control.settings import UNIT_RESTRICTION
@@ -25,29 +25,28 @@ class BalancedSquadSlotsValidator(CommanderValidator):
             return ValidationResult(False, UNIT_RESTRICTION.COMMANDER_VEHICLE_NOT_SELECTED)
 
 
-class SPGForbiddenSquadVehiclesValidator(BaseActionsValidator):
+class RoleForbiddenSquadVehiclesValidator(BaseActionsValidator):
+    ROLE_RESTRICTIONS = {'role_LT_wheeled': UNIT_RESTRICTION.WHEELED_IS_FULL, 
+       'scout': UNIT_RESTRICTION.SCOUT_IS_FULL, 
+       'mediumTank': UNIT_RESTRICTION.MEDIUMTANK_IS_FULL, 
+       'heavyTank': UNIT_RESTRICTION.HEAVYTANK_IS_FULL, 
+       'AT-SPG': UNIT_RESTRICTION.AT_SPG_IS_FULL, 
+       'SPG': UNIT_RESTRICTION.SPG_IS_FULL}
 
     def _validate(self):
         pInfo = self._entity.getPlayerInfo()
-        if not pInfo.isReady and g_currentVehicle.isPresent() and g_currentVehicle.item.type == VEHICLE_CLASS_NAME.SPG:
-            if self._entity.getMaxSPGCount() <= 0:
-                return ValidationResult(False, UNIT_RESTRICTION.SPG_IS_FORBIDDEN)
-            if not self._entity.hasSlotForSPG():
-                return ValidationResult(False, UNIT_RESTRICTION.SPG_IS_FULL)
-        return super(SPGForbiddenSquadVehiclesValidator, self)._validate()
-
-
-class ScoutForbiddenSquadVehiclesValidator(BaseActionsValidator):
-
-    def _validate(self):
-        pInfo = self._entity.getPlayerInfo()
-        if not pInfo.isReady and g_currentVehicle.isPresent() and g_currentVehicle.item.isScout:
-            if g_currentVehicle.item.level in self._entity.getMaxScoutLevels():
-                if self._entity.getMaxScoutCount() <= 0:
-                    return ValidationResult(False, UNIT_RESTRICTION.SCOUT_IS_FORBIDDEN)
-                if not self._entity.hasSlotForScout():
-                    return ValidationResult(False, UNIT_RESTRICTION.SCOUT_IS_FULL)
-        return super(ScoutForbiddenSquadVehiclesValidator, self)._validate()
+        result = super(RoleForbiddenSquadVehiclesValidator, self)._validate()
+        if pInfo.isReady or not g_currentVehicle.isPresent():
+            return result
+        vehicleTag = getRestrictedVehicleClassTag(g_currentVehicle.item.tags)
+        if vehicleTag not in self._entity.squadRestrictions:
+            return result
+        levels = self._entity.getMaxRoleLevels(vehicleTag)
+        if g_currentVehicle.item.level not in levels:
+            return result
+        if not self._entity.hasSlotForRole(vehicleTag):
+            result = ValidationResult(False, self.ROLE_RESTRICTIONS[vehicleTag])
+        return result
 
 
 class RandomSquadActionsValidator(SquadActionsValidator):
@@ -74,8 +73,7 @@ class VehTypeForbiddenSquadActionsValidator(RandomSquadActionsValidator):
     def _createVehiclesValidator(self, entity):
         baseValidator = super(VehTypeForbiddenSquadActionsValidator, self)._createVehiclesValidator(entity)
         return ActionsValidatorComposite(entity, validators=[
-         SPGForbiddenSquadVehiclesValidator(entity),
-         ScoutForbiddenSquadVehiclesValidator(entity),
+         RoleForbiddenSquadVehiclesValidator(entity),
          baseValidator])
 
 
@@ -85,5 +83,4 @@ class VehTypeForbiddenBalancedSquadActionsValidator(BalancedSquadActionsValidato
         baseValidator = super(VehTypeForbiddenBalancedSquadActionsValidator, self)._createVehiclesValidator(entity)
         return ActionsValidatorComposite(entity, validators=[
          baseValidator,
-         SPGForbiddenSquadVehiclesValidator(entity),
-         ScoutForbiddenSquadVehiclesValidator(entity)])
+         RoleForbiddenSquadVehiclesValidator(entity)])

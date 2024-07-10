@@ -73,9 +73,9 @@ class CrosshairPanelContainerMeta(DAAPISimpleContainerMeta):
         if self._isDAAPIInited():
             return self.flashObject.as_updateAmmoState(ammoState)
 
-    def as_setZoomS(self, zoomStr):
+    def as_setZoomS(self, zoomStr, zoomFactor):
         if self._isDAAPIInited():
-            return self.flashObject.as_setZoom(zoomStr)
+            return self.flashObject.as_setZoom(zoomStr, zoomFactor)
 
     def as_createGunMarkerS(self, viewID, linkage, name):
         if self._isDAAPIInited():
@@ -208,3 +208,19 @@ class CrosshairPanelContainerMeta(DAAPISimpleContainerMeta):
     def as_setDualAccActiveS(self, value):
         if self._isDAAPIInited():
             return self.flashObject.as_setDualAccActive(value)
+
+    def as_setAimDamageStageS(self, value):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setAimDamageStage(value)
+
+    def as_setOverheatProgressS(self, value, isOverheated):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setOverheatProgress(value, isOverheated)
+
+    def as_addOverheatS(self, overheatMark):
+        if self._isDAAPIInited():
+            return self.flashObject.as_addOverheat(overheatMark)
+
+    def as_removeOverheatS(self):
+        if self._isDAAPIInited():
+            return self.flashObject.as_removeOverheat()

@@ -157,6 +157,12 @@ package
       
       public static const COMMON_TOOLTIP_ASSIST_TOTAL:String = "#battle_results:common/tooltip/assist/total";
       
+      public static const COMMON_TOTALTOOLTIP_ASSIST_PART1:String = "#battle_results:common/totalTooltip/assist/part1";
+      
+      public static const COMMON_TOTALTOOLTIP_ASSIST_PART2:String = "#battle_results:common/totalTooltip/assist/part2";
+      
+      public static const COMMON_TOTALTOOLTIP_ASSIST_TOTAL:String = "#battle_results:common/totalTooltip/assist/total";
+      
       public static const COMMON_PROGRESSTITLE:String = "#battle_results:common/progressTitle";
       
       public static const COMMON_VEHICLE_RESEARCH:String = "#battle_results:common/vehicle/research";
@@ -189,6 +195,10 @@ package
       
       public static const COMMON_TOOLTIP_DAMAGE_PART2:String = "#battle_results:common/tooltip/damage/part2";
       
+      public static const COMMON_TOTALTOOLTIP_DAMAGE_PART1:String = "#battle_results:common/totalTooltip/damage/part1";
+      
+      public static const COMMON_TOTALTOOLTIP_DAMAGE_PART2:String = "#battle_results:common/totalTooltip/damage/part2";
+      
       public static const COMMON_TOOLTIP_SPOTTED_HEADER:String = "#battle_results:common/tooltip/spotted/header";
       
       public static const COMMON_TOOLTIP_SPOTTED_DESCRIPTION:String = "#battle_results:common/tooltip/spotted/description";
@@ -203,6 +213,12 @@ package
       
       public static const COMMON_TOOLTIP_ARMOR_PART3:String = "#battle_results:common/tooltip/armor/part3";
       
+      public static const COMMON_TOTALTOOLTIP_ARMOR_PART1:String = "#battle_results:common/totalTooltip/armor/part1";
+      
+      public static const COMMON_TOTALTOOLTIP_ARMOR_PART2:String = "#battle_results:common/totalTooltip/armor/part2";
+      
+      public static const COMMON_TOTALTOOLTIP_ARMOR_PART3:String = "#battle_results:common/totalTooltip/armor/part3";
+      
       public static const COMMON_TOOLTIP_STUN_HEADER:String = "#battle_results:common/tooltip/stun/header";
       
       public static const COMMON_TOOLTIP_STUN_DESCRIPTION:String = "#battle_results:common/tooltip/stun/description";
@@ -212,6 +228,12 @@ package
       public static const COMMON_TOOLTIP_STUN_PART2:String = "#battle_results:common/tooltip/stun/part2";
       
       public static const COMMON_TOOLTIP_STUN_PART3:String = "#battle_results:common/tooltip/stun/part3";
+      
+      public static const COMMON_TOTALTOOLTIP_STUN_PART1:String = "#battle_results:common/totalTooltip/stun/part1";
+      
+      public static const COMMON_TOTALTOOLTIP_STUN_PART2:String = "#battle_results:common/totalTooltip/stun/part2";
+      
+      public static const COMMON_TOTALTOOLTIP_STUN_PART3:String = "#battle_results:common/totalTooltip/stun/part3";
       
       public static const COMMON_TOOLTIP_DEFENCE_HEADER:String = "#battle_results:common/tooltip/defence/header";
       
@@ -227,7 +249,7 @@ package
       
       public static const COMMON_TOOLTIP_KILL_HEADER:String = "#battle_results:common/tooltip/kill/header";
       
-      public static const COMMON_TOOLTIP_KILL_1_DESCRIPTION:String = "#battle_results:common/tooltip/kill-1/description";
+      public static const COMMON_TOOLTIP_KILLCOMMON_DESCRIPTION:String = "#battle_results:common/tooltip/killCommon/description";
       
       public static const COMMON_TOOLTIP_KILL0_DESCRIPTION:String = "#battle_results:common/tooltip/kill0/description";
       
@@ -507,6 +529,10 @@ package
       
       public static const TEAM_STATS_LABELS_HITS:String = "#battle_results:team/stats/labels_hits";
       
+      public static const TEAM_STATS_LABELS_DIRECTHITS:String = "#battle_results:team/stats/labels_directHits";
+      
+      public static const TEAM_STATS_LABELS_PIERCINGHITS:String = "#battle_results:team/stats/labels_piercingHits";
+      
       public static const TEAM_STATS_LABELS_EXPLOSIONHITS:String = "#battle_results:team/stats/labels_explosionHits";
       
       public static const TEAM_STATS_LABELS_DAMAGEDEALT:String = "#battle_results:team/stats/labels_damageDealt";
@@ -637,6 +663,12 @@ package
       
       public static const DETAILS_CALCULATIONS_HEAVYTRUCKS:String = "#battle_results:details/calculations/heavyTrucks";
       
+      public static const DETAILS_CALCULATIONS_TITLE_BASE:String = "#battle_results:details/calculations/title/base";
+      
+      public static const DETAILS_CALCULATIONS_TITLE_EXPENSES:String = "#battle_results:details/calculations/title/expenses";
+      
+      public static const DETAILS_CALCULATIONS_TITLE_TOTAL:String = "#battle_results:details/calculations/title/total";
+      
       public static const DETAILS_CALCULATIONS_INTERMEDIATETOTAL:String = "#battle_results:details/calculations/intermediateTotal";
       
       public static const DETAILS_CALCULATIONS_BASE:String = "#battle_results:details/calculations/base";
@@ -699,9 +731,13 @@ package
       
       public static const DETAILS_CALCULATIONS_IGRBONUS:String = "#battle_results:details/calculations/igrBonus";
       
+      public static const DETAILS_CALCULATIONS_IGRBONUS_SIMPLELABEL:String = "#battle_results:details/calculations/igrBonus/simpleLabel";
+      
       public static const DETAILS_CALCULATIONS_FORTORDER:String = "#battle_results:details/calculations/fortOrder";
       
       public static const DETAILS_CALCULATIONS_REFERRALBONUS:String = "#battle_results:details/calculations/referralBonus";
+      
+      public static const DETAILS_CALCULATIONS_REFERRALBONUS_SIMPLELABEL:String = "#battle_results:details/calculations/referralBonus/simpleLabel";
       
       public static const DETAILS_CALCULATIONS_MULTIPLIERINFO_HEADER:String = "#battle_results:details/calculations/multiplierInfo/header";
       
@@ -788,6 +824,50 @@ package
       public static const PRESTIGE_COMMON_DESCRIPTION:String = "#battle_results:prestige/common/description";
       
       public static const PRESTIGE_MAX_DESCRIPTION:String = "#battle_results:prestige/max/description";
+      
+      public static const TEAM_STATS_PARAMETER_SHOTS:String = "#battle_results:team/stats/parameter/shots";
+      
+      public static const TEAM_STATS_PARAMETER_HITS:String = "#battle_results:team/stats/parameter/hits";
+      
+      public static const TEAM_STATS_PARAMETER_EXPLOSIONHITS:String = "#battle_results:team/stats/parameter/explosionHits";
+      
+      public static const TEAM_STATS_PARAMETER_DAMAGEDEALT:String = "#battle_results:team/stats/parameter/damageDealt";
+      
+      public static const TEAM_STATS_PARAMETER_SNIPERDAMAGEDEALT:String = "#battle_results:team/stats/parameter/sniperDamageDealt";
+      
+      public static const TEAM_STATS_PARAMETER_DIRECTHITSRECEIVED:String = "#battle_results:team/stats/parameter/directHitsReceived";
+      
+      public static const TEAM_STATS_PARAMETER_PIERCINGSRECEIVED:String = "#battle_results:team/stats/parameter/piercingsReceived";
+      
+      public static const TEAM_STATS_PARAMETER_NODAMAGEDIRECTHITSRECEIVED:String = "#battle_results:team/stats/parameter/noDamageDirectHitsReceived";
+      
+      public static const TEAM_STATS_PARAMETER_EXPLOSIONHITSRECEIVED:String = "#battle_results:team/stats/parameter/explosionHitsReceived";
+      
+      public static const TEAM_STATS_PARAMETER_DAMAGEBLOCKEDBYARMOR:String = "#battle_results:team/stats/parameter/damageBlockedByArmor";
+      
+      public static const TEAM_STATS_PARAMETER_TEAMHITSDAMAGE:String = "#battle_results:team/stats/parameter/teamHitsDamage";
+      
+      public static const TEAM_STATS_PARAMETER_SPOTTED:String = "#battle_results:team/stats/parameter/spotted";
+      
+      public static const TEAM_STATS_PARAMETER_DAMAGEDKILLED:String = "#battle_results:team/stats/parameter/damagedKilled";
+      
+      public static const TEAM_STATS_PARAMETER_DAMAGEASSISTED:String = "#battle_results:team/stats/parameter/damageAssisted";
+      
+      public static const TEAM_STATS_PARAMETER_DAMAGEASSISTEDSELF:String = "#battle_results:team/stats/parameter/damageAssistedSelf";
+      
+      public static const TEAM_STATS_PARAMETER_STUNDURATION:String = "#battle_results:team/stats/parameter/stunDuration";
+      
+      public static const TEAM_STATS_PARAMETER_DAMAGEASSISTEDSTUN:String = "#battle_results:team/stats/parameter/damageAssistedStun";
+      
+      public static const TEAM_STATS_PARAMETER_DAMAGEASSISTEDSTUNSELF:String = "#battle_results:team/stats/parameter/damageAssistedStunSelf";
+      
+      public static const TEAM_STATS_PARAMETER_STUNNUM:String = "#battle_results:team/stats/parameter/stunNum";
+      
+      public static const TEAM_STATS_PARAMETER_CAPTUREPOINTSVAL:String = "#battle_results:team/stats/parameter/capturePointsVal";
+      
+      public static const TEAM_STATS_PARAMETER_MILEAGE:String = "#battle_results:team/stats/parameter/mileage";
+      
+      public static const TOOLTIPS_STATS_FOOTER_TEXT:String = "#battle_results:tooltips/stats/footer/text";
        
       
       public function BATTLE_RESULTS()

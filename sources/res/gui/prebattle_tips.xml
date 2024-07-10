@@ -171,6 +171,13 @@
 			</preceding>
 		</filter>
 		<filter>
+			<id>only_autoShootGun_first_5_times</id>
+			<tags>autocannon</tags>
+			<preceding>
+				<showTimes>5</showTimes>
+			</preceding>
+		</filter>
+		<filter>
 			<id>only_dualAccuracy_first_5_times</id>
 			<vehProperty>hasDualAccuracy</vehProperty>
 			<preceding>
@@ -992,6 +999,11 @@
 			<filter>only_dualAccuracy_first_5_times</filter>
 		</tip>
 		<tip>
+			<id>tip205</id>
+			<status>tip205Status</status>
+			<filter>only_autoShootGun_first_5_times</filter>
+		</tip>
+		<tip>
 			<id>epicTip1</id>
 			<status>epicModeIntroduction</status>
 			<filter>max_15_battles</filter>
@@ -1194,26 +1206,6 @@
 			<status>battleRoyale6Status</status>
 		</tip>
 		<tip>
-			<id>comp70</id>
-			<status>comp70Status</status>
-		</tip>
-		<tip>
-			<id>comp71</id>
-			<status>comp71Status</status>
-		</tip>
-		<tip>
-			<id>comp72</id>
-			<status>comp72Status</status>
-		</tip>
-		<tip>
-			<id>comp73</id>
-			<status>comp73Status</status>
-		</tip>
-		<tip>
-			<id>comp74</id>
-			<status>comp74Status</status>
-		</tip>
-		<tip>
 			<id>comp75</id>
 			<status>comp75Status</status>
 		</tip>
@@ -1300,16 +1292,8 @@
 			<filter>nonCnRealms</filter>
 		</tip>
 		<tip>
-			<id>comp726</id>
-			<status>comp726Status</status>
-		</tip>
-		<tip>
 			<id>comp727</id>
 			<status>comp727Status</status>
-		</tip>
-		<tip>
-			<id>comp728</id>
-			<status>comp728Status</status>
 		</tip>
 		<tip>
 			<id>comp729</id>
@@ -1334,10 +1318,6 @@
 		<tip>
 			<id>comp735</id>
 			<status>comp735Status</status>
-		</tip>
-		<tip>
-			<id>comp736</id>
-			<status>comp736Status</status>
 		</tip>
 		<tip>
 			<id>comp737</id>

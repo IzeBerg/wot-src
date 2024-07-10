@@ -3,6 +3,7 @@ from frameworks.wulf import ViewModel
 
 class ImpactMode(Enum):
     PENETRATION = 'penetration'
+    NONPENETRATIONDAMAGE = 'nonPenetrationDamage'
     LEGACYHE = 'legacyHE'
     MODERNHE = 'modernHE'
 

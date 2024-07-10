@@ -414,10 +414,25 @@
 				<slots/>
 			</block>
 			<block>
-				<class>OnPlayerVehicleShoot</class>
-				<id>OnPlayerVehicleShoot_1</id>
-				<params/>
-				<slots/>
+				<class>Macro</class>
+				<id>Macro_7</id>
+				<params>
+					<param>
+						OnPlayerVehicleShoot
+						<name>Macro Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>switchable</name>
+						<const>\false\</const>
+					</slot>
+					<slot>
+						<name>continuousInterval</name>
+						<const>\0.250000\</const>
+					</slot>
+				</slots>
 			</block>
 			<block>
 				<class>Not</class>
@@ -658,7 +673,7 @@
 				<id>BitMask_17</id>
 				<params>
 					<param>
-						2
+						3
 						<name>Flags Count</name>
 						<type>IntT</type>
 					</param>
@@ -676,6 +691,10 @@
 					<slot>
 						<name>f1</name>
 						<const>\MATERIAL_WITH_POSITIVE_DF_PIERCED_BY_PROJECTILE\</const>
+					</slot>
+					<slot>
+						<name>f2</name>
+						<const>\MATERIAL_WITH_POSITIVE_DF_NOT_PIERCED_WITH_DAMAGE_BY_PROJECTILE\</const>
 					</slot>
 				</slots>
 			</block>
@@ -784,6 +803,27 @@
 				<slots/>
 			</block>
 			<block>
+				<class>Macro</class>
+				<id>Macro_3</id>
+				<params>
+					<param>
+						Hint_Manager
+						<name>Macro Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>Show_only_if_vehicle_is_alive</name>
+						<const>\true\</const>
+					</slot>
+					<slot>
+						<name>Hide_on_vehicle_destruction</name>
+						<const>\true\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
 				<class>GetVariable</class>
 				<id>GetVariable_7</id>
 				<buddy>Variable_41</buddy>
@@ -820,6 +860,27 @@
 				</slots>
 			</block>
 			<block>
+				<class>Macro</class>
+				<id>Macro_5</id>
+				<params>
+					<param>
+						Hint_Manager
+						<name>Macro Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>Show_only_if_vehicle_is_alive</name>
+						<const>\true\</const>
+					</slot>
+					<slot>
+						<name>Hide_on_vehicle_destruction</name>
+						<const>\true\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
 				<class>SelectHint</class>
 				<id>SelectHint_4</id>
 				<params>
@@ -848,48 +909,6 @@
 					</param>
 				</params>
 				<slots/>
-			</block>
-			<block>
-				<class>Macro</class>
-				<id>Macro_3</id>
-				<params>
-					<param>
-						Hint_Manager
-						<name>Macro Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>Show_only_if_vehicle_is_alive</name>
-						<const>\true\</const>
-					</slot>
-					<slot>
-						<name>Hide_on_vehicle_destruction</name>
-						<const>\true\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>Macro</class>
-				<id>Macro_5</id>
-				<params>
-					<param>
-						Hint_Manager
-						<name>Macro Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>Show_only_if_vehicle_is_alive</name>
-						<const>\true\</const>
-					</slot>
-					<slot>
-						<name>Hide_on_vehicle_destruction</name>
-						<const>\true\</const>
-					</slot>
-				</slots>
 			</block>
 			<block>
 				<class>ArenaPeriodStartEvent</class>
@@ -940,6 +959,27 @@
 					<slot>
 						<name>count</name>
 						<const>\3\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>Macro</class>
+				<id>Macro_1</id>
+				<params>
+					<param>
+						Hint_Manager
+						<name>Macro Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>Show_only_if_vehicle_is_alive</name>
+						<const>\true\</const>
+					</slot>
+					<slot>
+						<name>Hide_on_vehicle_destruction</name>
+						<const>\true\</const>
 					</slot>
 				</slots>
 			</block>
@@ -1052,6 +1092,27 @@
 					<slot>
 						<name>b</name>
 						<const>\3\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>Macro</class>
+				<id>Macro_4</id>
+				<params>
+					<param>
+						Hint_Manager
+						<name>Macro Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>Show_only_if_vehicle_is_alive</name>
+						<const>\true\</const>
+					</slot>
+					<slot>
+						<name>Hide_on_vehicle_destruction</name>
+						<const>\true\</const>
 					</slot>
 				</slots>
 			</block>
@@ -1260,48 +1321,6 @@
 					</slot>
 				</slots>
 			</block>
-			<block>
-				<class>Macro</class>
-				<id>Macro_1</id>
-				<params>
-					<param>
-						Hint_Manager
-						<name>Macro Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>Show_only_if_vehicle_is_alive</name>
-						<const>\true\</const>
-					</slot>
-					<slot>
-						<name>Hide_on_vehicle_destruction</name>
-						<const>\true\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>Macro</class>
-				<id>Macro_4</id>
-				<params>
-					<param>
-						Hint_Manager
-						<name>Macro Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>Show_only_if_vehicle_is_alive</name>
-						<const>\true\</const>
-					</slot>
-					<slot>
-						<name>Hide_on_vehicle_destruction</name>
-						<const>\true\</const>
-					</slot>
-				</slots>
-			</block>
 		</blocks>
 		<connections>
 			<connection>
@@ -1449,7 +1468,7 @@
 				<output>res</output>
 			</connection>
 			<connection>
-				<from>OnPlayerVehicleShoot_1</from>
+				<from>Macro_7</from>
 				<input>input</input>
 				<to>If_8</to>
 				<output>onShoot</output>
@@ -1475,7 +1494,7 @@
 			<connection>
 				<from>Or_5</from>
 				<input>active</input>
-				<to>OnPlayerVehicleShoot_1</to>
+				<to>Macro_7</to>
 				<output>res</output>
 			</connection>
 			<connection>
@@ -1732,6 +1751,18 @@
 			</connection>
 			<connection>
 				<from>If_35</from>
+				<input>Show_Hint</input>
+				<to>Macro_3</to>
+				<output>true</output>
+			</connection>
+			<connection>
+				<from>SelectHint_3</from>
+				<input>HintID</input>
+				<to>Macro_3</to>
+				<output>id</output>
+			</connection>
+			<connection>
+				<from>If_35</from>
 				<input>input</input>
 				<to>FlowGate_5</to>
 				<output>false</output>
@@ -1749,24 +1780,6 @@
 				<output>o0</output>
 			</connection>
 			<connection>
-				<from>SelectHint_14</from>
-				<input>hintId</input>
-				<to>CanShowHint_10</to>
-				<output>id</output>
-			</connection>
-			<connection>
-				<from>If_35</from>
-				<input>Show_Hint</input>
-				<to>Macro_3</to>
-				<output>true</output>
-			</connection>
-			<connection>
-				<from>SelectHint_3</from>
-				<input>HintID</input>
-				<to>Macro_3</to>
-				<output>id</output>
-			</connection>
-			<connection>
 				<from>FlowGate_5</from>
 				<input>Show_Hint</input>
 				<to>Macro_5</to>
@@ -1776,6 +1789,12 @@
 				<from>SelectHint_4</from>
 				<input>HintID</input>
 				<to>Macro_5</to>
+				<output>id</output>
+			</connection>
+			<connection>
+				<from>SelectHint_14</from>
+				<input>hintId</input>
+				<to>CanShowHint_10</to>
 				<output>id</output>
 			</connection>
 			<connection>
@@ -1839,6 +1858,18 @@
 				<output>false</output>
 			</connection>
 			<connection>
+				<from>If_7</from>
+				<input>Show_Hint</input>
+				<to>Macro_1</to>
+				<output>true</output>
+			</connection>
+			<connection>
+				<from>SelectHint_1</from>
+				<input>HintID</input>
+				<to>Macro_1</to>
+				<output>id</output>
+			</connection>
+			<connection>
 				<from>SelectHint_9</from>
 				<input>hintId</input>
 				<to>CanShowHint_5</to>
@@ -1891,6 +1922,18 @@
 				<input>a</input>
 				<to>CompareIntegers_2</to>
 				<output>state</output>
+			</connection>
+			<connection>
+				<from>If_7</from>
+				<input>Show_Hint</input>
+				<to>Macro_4</to>
+				<output>false</output>
+			</connection>
+			<connection>
+				<from>SelectHint_2</from>
+				<input>HintID</input>
+				<to>Macro_4</to>
+				<output>id</output>
 			</connection>
 			<connection>
 				<from>Not_5</from>
@@ -1987,30 +2030,6 @@
 				<input>dict</input>
 				<to>GetFromDictionary_2</to>
 				<output>value</output>
-			</connection>
-			<connection>
-				<from>If_7</from>
-				<input>Show_Hint</input>
-				<to>Macro_1</to>
-				<output>true</output>
-			</connection>
-			<connection>
-				<from>SelectHint_1</from>
-				<input>HintID</input>
-				<to>Macro_1</to>
-				<output>id</output>
-			</connection>
-			<connection>
-				<from>If_7</from>
-				<input>Show_Hint</input>
-				<to>Macro_4</to>
-				<output>false</output>
-			</connection>
-			<connection>
-				<from>SelectHint_2</from>
-				<input>HintID</input>
-				<to>Macro_4</to>
-				<output>id</output>
 			</connection>
 		</connections>
 		<macros/>

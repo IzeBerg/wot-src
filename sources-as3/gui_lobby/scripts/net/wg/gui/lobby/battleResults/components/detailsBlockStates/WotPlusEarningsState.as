@@ -1,8 +1,7 @@
 package net.wg.gui.lobby.battleResults.components.detailsBlockStates
 {
-   import flash.events.MouseEvent;
+   import flash.events.TextEvent;
    import flash.text.TextField;
-   import flash.text.TextFormat;
    import net.wg.gui.lobby.battleResults.data.PremiumBonusVO;
    import net.wg.gui.lobby.battleResults.event.BattleResultsViewEvent;
    import scaleform.clik.constants.InvalidationType;
@@ -11,15 +10,11 @@ package net.wg.gui.lobby.battleResults.components.detailsBlockStates
    {
       
       private static const TRANSPARENCY_VALUE:Number = 0.4;
-      
-      private static const BONUS_IMAGE_LEFT_OFFSET:int = 200;
        
       
       public var description:TextField = null;
       
       public var bonusLeft:TextField = null;
-      
-      public var detailsLink:TextField = null;
       
       public var xpValue:TextField = null;
       
@@ -37,26 +32,18 @@ package net.wg.gui.lobby.battleResults.components.detailsBlockStates
          super.configUI();
          this.xpValue.alpha = TRANSPARENCY_VALUE;
          backgroundIcon.source = RES_ICONS.MAPS_ICONS_PREMACC_BATTLERESULT_PLUS_BONUS_X3;
-         this.detailsLink.addEventListener(MouseEvent.CLICK,this.onDetailsLinkClickHandler);
+         this.bonusLeft.addEventListener(TextEvent.LINK,this.onDetailsLinkClickHandler);
       }
       
       override protected function draw() : void
       {
-         var _loc1_:TextFormat = null;
          super.draw();
          if(this._data != null)
          {
             if(isInvalid(InvalidationType.DATA))
             {
                this.description.htmlText = this._data.description;
-               this.bonusLeft.htmlText = this._data.bonusLeft + " " + this._data.additionalBonusLeft;
-               this.bonusLeft.width = this.bonusLeft.textWidth;
-               _loc1_ = new TextFormat();
-               _loc1_.underline = true;
-               this.detailsLink.htmlText = this._data.detailsLink;
-               this.detailsLink.setTextFormat(_loc1_);
-               this.detailsLink.width = this.detailsLink.textWidth;
-               this.detailsLink.x = this.bonusLeft.width + BONUS_IMAGE_LEFT_OFFSET;
+               this.bonusLeft.htmlText = this._data.bonusLeft + this._data.additionalBonusLeft + this._data.detailsLink;
                this.xpValue.htmlText = this._data.xpValue;
                this._hasWotPremium = this._data.hasWotPremium;
             }
@@ -69,8 +56,8 @@ package net.wg.gui.lobby.battleResults.components.detailsBlockStates
          this.description = null;
          this.bonusLeft = null;
          this.xpValue = null;
-         this.detailsLink.removeEventListener(MouseEvent.CLICK,this.onDetailsLinkClickHandler);
-         this.detailsLink = null;
+         this.bonusLeft.removeEventListener(TextEvent.LINK,this.onDetailsLinkClickHandler);
+         this.bonusLeft = null;
          super.onDispose();
       }
       
@@ -80,7 +67,7 @@ package net.wg.gui.lobby.battleResults.components.detailsBlockStates
          invalidateData();
       }
       
-      private function onDetailsLinkClickHandler(param1:MouseEvent) : void
+      private function onDetailsLinkClickHandler(param1:TextEvent) : void
       {
          if(this._hasWotPremium)
          {

@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
+	<fakeModifier>
+		<scope>hangar</scope>
+		<domain>fake</domain>
+	</fakeModifier>
+	<vseModifier>
+		<scope>cell client</scope>
+		<domain>vse</domain>
+	</vseModifier>
 	<vehicleHealth>
-		<id>1</id>
+		<scope>base cell client hangar</scope>
 		<dataType>int</dataType>
 		<domain>vehicle</domain>
 		<client>
@@ -14,7 +22,7 @@
 		</restrictions>
 	</vehicleHealth>
 	<gravityFactor>
-		<id>2</id>
+		<scope>cell hangar</scope>
 		<dataType>float</dataType>
 		<domain>physics</domain>
 		<client>
@@ -29,7 +37,7 @@
 		</restrictions>
 	</gravityFactor>
 	<dispFactorChassisMovement>
-		<id>3</id>
+		<scope>base cell client hangar</scope>
 		<dataType>float</dataType>
 		<domain>chassis</domain>
 		<client>
@@ -44,7 +52,7 @@
 		</restrictions>
 	</dispFactorChassisMovement>
 	<dispFactorChassisRotation>
-		<id>4</id>
+		<scope>base cell client hangar</scope>
 		<dataType>float</dataType>
 		<domain>chassis</domain>
 		<client>
@@ -59,7 +67,7 @@
 		</restrictions>
 	</dispFactorChassisRotation>
 	<turretRotationSpeed>
-		<id>5</id>
+		<scope>base cell client hangar</scope>
 		<dataType>float</dataType>
 		<domain>turret</domain>
 		<client>
@@ -75,7 +83,7 @@
 		</restrictions>
 	</turretRotationSpeed>
 	<gunRotationSpeed>
-		<id>6</id>
+		<scope>base cell client hangar</scope>
 		<dataType>float</dataType>
 		<domain>gun</domain>
 		<client>
@@ -91,7 +99,7 @@
 		</restrictions>
 	</gunRotationSpeed>
 	<reloadTime>
-		<id>7</id>
+		<scope>base cell client hangar</scope>
 		<dataType>float</dataType>
 		<domain>gun</domain>
 		<client>
@@ -107,7 +115,7 @@
 		</restrictions>
 	</reloadTime>
 	<clipInterval>
-		<id>8</id>
+		<scope>base cell client hangar</scope>
 		<dataType>float</dataType>
 		<domain>gun</domain>
 		<client>
@@ -123,7 +131,7 @@
 		</restrictions>
 	</clipInterval>
 	<burstInterval>
-		<id>9</id>
+		<scope>base cell client hangar</scope>
 		<dataType>float</dataType>
 		<domain>gun</domain>
 		<client>
@@ -139,7 +147,7 @@
 		</restrictions>
 	</burstInterval>
 	<autoreloadTime>
-		<id>10</id>
+		<scope>base cell client hangar</scope>
 		<dataType>float</dataType>
 		<domain>gun</domain>
 		<client>
@@ -155,7 +163,7 @@
 		</restrictions>
 	</autoreloadTime>
 	<aimingTime>
-		<id>11</id>
+		<scope>base cell client hangar</scope>
 		<dataType>float</dataType>
 		<domain>gun</domain>
 		<client>
@@ -171,7 +179,7 @@
 		</restrictions>
 	</aimingTime>
 	<shotDispersionRadius>
-		<id>12</id>
+		<scope>base cell client hangar</scope>
 		<dataType>float</dataType>
 		<domain>gun</domain>
 		<client>
@@ -187,7 +195,7 @@
 		</restrictions>
 	</shotDispersionRadius>
 	<dispFactorTurretRotation>
-		<id>13</id>
+		<scope>base cell client hangar</scope>
 		<dataType>float</dataType>
 		<domain>gun</domain>
 		<client>
@@ -202,7 +210,7 @@
 		</restrictions>
 	</dispFactorTurretRotation>
 	<dispFactorAfterShot>
-		<id>14</id>
+		<scope>base cell client hangar</scope>
 		<dataType>float</dataType>
 		<domain>gun</domain>
 		<client>
@@ -217,7 +225,7 @@
 		</restrictions>
 	</dispFactorAfterShot>
 	<dispFactorWhileGunDamaged>
-		<id>15</id>
+		<scope>base cell client hangar</scope>
 		<dataType>float</dataType>
 		<domain>gun</domain>
 		<client>
@@ -232,7 +240,7 @@
 		</restrictions>
 	</dispFactorWhileGunDamaged>
 	<shellGravity>
-		<id>16</id>
+		<scope>base cell client hangar</scope>
 		<dataType>float</dataType>
 		<domain>shot</domain>
 		<client>
@@ -248,7 +256,7 @@
 		</restrictions>
 	</shellGravity>
 	<shellSpeed>
-		<id>17</id>
+		<scope>base cell client hangar</scope>
 		<dataType>float</dataType>
 		<domain>shot</domain>
 		<client>
@@ -264,7 +272,7 @@
 		</restrictions>
 	</shellSpeed>
 	<piercingPowerFirst>
-		<id>18</id>
+		<scope>base cell client</scope>
 		<dataType>float</dataType>
 		<domain>shot</domain>
 		<restrictions>
@@ -275,7 +283,7 @@
 		</restrictions>
 	</piercingPowerFirst>
 	<piercingPowerLast>
-		<id>19</id>
+		<scope>base cell client</scope>
 		<dataType>float</dataType>
 		<domain>shot</domain>
 		<restrictions>
@@ -286,7 +294,7 @@
 		</restrictions>
 	</piercingPowerLast>
 	<damageRandomization>
-		<id>20</id>
+		<scope>base cell client hangar</scope>
 		<dataType>float</dataType>
 		<domain>shell</domain>
 		<client>
@@ -302,7 +310,7 @@
 		</restrictions>
 	</damageRandomization>
 	<piercingPowerRandomization>
-		<id>21</id>
+		<scope>base cell client hangar</scope>
 		<dataType>float</dataType>
 		<domain>shell</domain>
 		<client>
@@ -318,7 +326,7 @@
 		</restrictions>
 	</piercingPowerRandomization>
 	<normalizationAngle>
-		<id>22</id>
+		<scope>base cell client hangar</scope>
 		<dataType>float</dataType>
 		<domain>shellType</domain>
 		<client>
@@ -338,7 +346,7 @@
 		</restrictions>
 	</normalizationAngle>
 	<ricochetAngle>
-		<id>23</id>
+		<scope>base cell client hangar</scope>
 		<dataType>float</dataType>
 		<domain>shellType</domain>
 		<client>
@@ -358,7 +366,7 @@
 		</restrictions>
 	</ricochetAngle>
 	<enginePower>
-		<id>24</id>
+		<scope>cell client hangar</scope>
 		<dataType>float</dataType>
 		<domain>physics</domain>
 		<client>
@@ -374,7 +382,7 @@
 		</restrictions>
 	</enginePower>
 	<fwMaxSpeed>
-		<id>25</id>
+		<scope>cell client hangar</scope>
 		<dataType>float</dataType>
 		<domain>physics</domain>
 		<client>
@@ -390,7 +398,7 @@
 		</restrictions>
 	</fwMaxSpeed>
 	<bkMaxSpeed>
-		<id>26</id>
+		<scope>cell hangar</scope>
 		<dataType>float</dataType>
 		<domain>physics</domain>
 		<client>
@@ -406,7 +414,7 @@
 		</restrictions>
 	</bkMaxSpeed>
 	<rotationSpeedOnStill>
-		<id>27</id>
+		<scope>cell hangar</scope>
 		<dataType>float</dataType>
 		<domain>physics</domain>
 		<client>
@@ -422,7 +430,7 @@
 		</restrictions>
 	</rotationSpeedOnStill>
 	<rotationSpeedOnMove>
-		<id>28</id>
+		<scope>cell</scope>
 		<dataType>float</dataType>
 		<domain>physics</domain>
 		<restrictions>
@@ -433,7 +441,7 @@
 		</restrictions>
 	</rotationSpeedOnMove>
 	<armorDamageFirst>
-		<id>29</id>
+		<scope>base cell client</scope>
 		<dataType>float</dataType>
 		<domain>shell</domain>
 		<restrictions>
@@ -443,8 +451,19 @@
 			</min>
 		</restrictions>
 	</armorDamageFirst>
+	<armorDamageLast>
+		<scope>base cell client</scope>
+		<dataType>float</dataType>
+		<domain>shell</domain>
+		<restrictions>
+			<min>
+				0.0
+				<!--BW_String-->
+			</min>
+		</restrictions>
+	</armorDamageLast>
 	<deviceDamageFirst>
-		<id>30</id>
+		<scope>base cell client</scope>
 		<dataType>float</dataType>
 		<domain>shell</domain>
 		<restrictions>
@@ -454,8 +473,19 @@
 			</min>
 		</restrictions>
 	</deviceDamageFirst>
+	<deviceDamageLast>
+		<scope>base cell client</scope>
+		<dataType>float</dataType>
+		<domain>shell</domain>
+		<restrictions>
+			<min>
+				0.0
+				<!--BW_String-->
+			</min>
+		</restrictions>
+	</deviceDamageLast>
 	<invisibilityOnStill>
-		<id>31</id>
+		<scope>base cell client hangar</scope>
 		<dataType>float</dataType>
 		<domain>vehType</domain>
 		<client>
@@ -474,7 +504,7 @@
 		</restrictions>
 	</invisibilityOnStill>
 	<invisibilityOnMove>
-		<id>32</id>
+		<scope>base cell client hangar</scope>
 		<dataType>float</dataType>
 		<domain>vehType</domain>
 		<client>
@@ -493,7 +523,7 @@
 		</restrictions>
 	</invisibilityOnMove>
 	<visionRadius>
-		<id>33</id>
+		<scope>base cell client hangar</scope>
 		<dataType>float</dataType>
 		<domain>turret</domain>
 		<client>
@@ -509,7 +539,7 @@
 		</restrictions>
 	</visionRadius>
 	<radioDistance>
-		<id>34</id>
+		<scope>base cell client hangar</scope>
 		<dataType>float</dataType>
 		<domain>radio</domain>
 		<client>
@@ -525,7 +555,7 @@
 		</restrictions>
 	</radioDistance>
 	<battleLength>
-		<id>35</id>
+		<scope>base client hangar</scope>
 		<dataType>int</dataType>
 		<client>
 			<domain>battleParams</domain>
@@ -537,7 +567,7 @@
 		</restrictions>
 	</battleLength>
 	<vehicleRammingDamage>
-		<id>36</id>
+		<scope>cell hangar</scope>
 		<dataType>float</dataType>
 		<client>
 			<domain>battleParams</domain>
@@ -551,7 +581,7 @@
 		</restrictions>
 	</vehicleRammingDamage>
 	<vehiclePressureDamage>
-		<id>37</id>
+		<scope>cell hangar</scope>
 		<dataType>float</dataType>
 		<client>
 			<domain>battleParams</domain>
@@ -565,7 +595,7 @@
 		</restrictions>
 	</vehiclePressureDamage>
 	<turretRammingDamage>
-		<id>38</id>
+		<scope>cell hangar</scope>
 		<dataType>float</dataType>
 		<client>
 			<domain>battleParams</domain>
@@ -579,7 +609,7 @@
 		</restrictions>
 	</turretRammingDamage>
 	<turretPressureDamage>
-		<id>39</id>
+		<scope>cell hangar</scope>
 		<dataType>float</dataType>
 		<client>
 			<domain>battleParams</domain>
@@ -593,7 +623,7 @@
 		</restrictions>
 	</turretPressureDamage>
 	<envHullDamage>
-		<id>40</id>
+		<scope>cell hangar</scope>
 		<dataType>float</dataType>
 		<client>
 			<domain>battleParams</domain>
@@ -607,7 +637,7 @@
 		</restrictions>
 	</envHullDamage>
 	<envChassisDamage>
-		<id>41</id>
+		<scope>cell hangar</scope>
 		<dataType>float</dataType>
 		<client>
 			<domain>battleParams</domain>
@@ -621,7 +651,7 @@
 		</restrictions>
 	</envChassisDamage>
 	<envTankmanDamageChance>
-		<id>42</id>
+		<scope>cell base client hangar</scope>
 		<dataType>float</dataType>
 		<domain>vehType</domain>
 		<client>
@@ -641,7 +671,7 @@
 		</restrictions>
 	</envTankmanDamageChance>
 	<envModuleDamageChance>
-		<id>43</id>
+		<scope>cell base client hangar</scope>
 		<dataType>float</dataType>
 		<domain>vehType</domain>
 		<client>
@@ -661,7 +691,7 @@
 		</restrictions>
 	</envModuleDamageChance>
 	<repairSpeed>
-		<id>44</id>
+		<scope>cell hangar</scope>
 		<dataType>float</dataType>
 		<client>
 			<domain>sustaining</domain>
@@ -675,7 +705,7 @@
 		</restrictions>
 	</repairSpeed>
 	<visionMinRadius>
-		<id>45</id>
+		<scope>cell client hangar</scope>
 		<dataType>float</dataType>
 		<client>
 			<domain>visibility</domain>
@@ -690,7 +720,7 @@
 		</restrictions>
 	</visionMinRadius>
 	<visionTime>
-		<id>46</id>
+		<scope>cell hangar</scope>
 		<dataType>float</dataType>
 		<client>
 			<domain>visibility</domain>
@@ -705,7 +735,7 @@
 		</restrictions>
 	</visionTime>
 	<equipmentCooldown>
-		<id>47</id>
+		<scope>cell hangar</scope>
 		<dataType>int</dataType>
 		<client>
 			<domain>sustaining</domain>
@@ -717,7 +747,7 @@
 		</restrictions>
 	</equipmentCooldown>
 	<fwdFriction>
-		<id>48</id>
+		<scope>cell</scope>
 		<dataType>float</dataType>
 		<domain>physics</domain>
 		<restrictions>
@@ -728,7 +758,7 @@
 		</restrictions>
 	</fwdFriction>
 	<sideFriction>
-		<id>49</id>
+		<scope>cell</scope>
 		<dataType>float</dataType>
 		<domain>physics</domain>
 		<restrictions>
@@ -739,7 +769,7 @@
 		</restrictions>
 	</sideFriction>
 	<dirtReleaseRate>
-		<id>50</id>
+		<scope>cell</scope>
 		<dataType>float</dataType>
 		<domain>physics</domain>
 		<restrictions>
@@ -750,7 +780,7 @@
 		</restrictions>
 	</dirtReleaseRate>
 	<maxDirt>
-		<id>51</id>
+		<scope>cell</scope>
 		<dataType>float</dataType>
 		<domain>physics</domain>
 		<restrictions>
@@ -761,32 +791,32 @@
 		</restrictions>
 	</maxDirt>
 	<shotEffects>
-		<id>52</id>
+		<scope>base cell client</scope>
 		<dataType>string</dataType>
 		<domain>shell</domain>
 	</shotEffects>
 	<gunEffects>
-		<id>53</id>
+		<scope>client</scope>
 		<dataType>string</dataType>
 		<domain>gun</domain>
 	</gunEffects>
 	<chassisDecals>
-		<id>54</id>
+		<scope>client</scope>
 		<dataType>string</dataType>
 		<domain>chassis</domain>
 	</chassisDecals>
 	<engineSounds>
-		<id>55</id>
+		<scope>client</scope>
 		<dataType>string</dataType>
 		<domain>engine</domain>
 	</engineSounds>
 	<exhaustEffect>
-		<id>56</id>
+		<scope>client</scope>
 		<dataType>string</dataType>
 		<domain>hull</domain>
 	</exhaustEffect>
 	<armorSpallsArmorDamageFirst>
-		<id>57</id>
+		<scope>base cell client</scope>
 		<dataType>float</dataType>
 		<domain>shellType</domain>
 		<restrictions>
@@ -796,8 +826,19 @@
 			</min>
 		</restrictions>
 	</armorSpallsArmorDamageFirst>
+	<armorSpallsArmorDamageLast>
+		<scope>base cell client</scope>
+		<dataType>float</dataType>
+		<domain>shellType</domain>
+		<restrictions>
+			<min>
+				0.0
+				<!--BW_String-->
+			</min>
+		</restrictions>
+	</armorSpallsArmorDamageLast>
 	<armorSpallsDeviceDamageFirst>
-		<id>58</id>
+		<scope>base cell client</scope>
 		<dataType>float</dataType>
 		<domain>shellType</domain>
 		<restrictions>
@@ -807,8 +848,19 @@
 			</min>
 		</restrictions>
 	</armorSpallsDeviceDamageFirst>
+	<armorSpallsDeviceDamageLast>
+		<scope>base cell client</scope>
+		<dataType>float</dataType>
+		<domain>shellType</domain>
+		<restrictions>
+			<min>
+				0.0
+				<!--BW_String-->
+			</min>
+		</restrictions>
+	</armorSpallsDeviceDamageLast>
 	<armorSpallsImpactRadius>
-		<id>59</id>
+		<scope>base cell client</scope>
 		<dataType>float</dataType>
 		<domain>shellType</domain>
 		<restrictions>
@@ -819,7 +871,7 @@
 		</restrictions>
 	</armorSpallsImpactRadius>
 	<armorSpallsConeAngle>
-		<id>60</id>
+		<scope>base cell client</scope>
 		<dataType>float</dataType>
 		<domain>shellType</domain>
 		<restrictions>
@@ -834,12 +886,12 @@
 		</restrictions>
 	</armorSpallsConeAngle>
 	<armorSpallsDamageAbsorption>
-		<id>61</id>
+		<scope>base cell client</scope>
 		<dataType>string</dataType>
 		<domain>shellType</domain>
 	</armorSpallsDamageAbsorption>
 	<modeCreditsFactor>
-		<id>62</id>
+		<scope>cell</scope>
 		<dataType>float</dataType>
 		<domain>vehicle</domain>
 		<restrictions>
@@ -850,7 +902,7 @@
 		</restrictions>
 	</modeCreditsFactor>
 	<invisibilityFactorAtShot>
-		<id>63</id>
+		<scope>base cell client</scope>
 		<dataType>float</dataType>
 		<domain>gun</domain>
 		<restrictions>
@@ -861,7 +913,7 @@
 		</restrictions>
 	</invisibilityFactorAtShot>
 	<vehicleAoIRadius>
-		<id>64</id>
+		<scope>base cell client hangar</scope>
 		<dataType>float</dataType>
 		<domain>constants</domain>
 		<client>
@@ -877,11 +929,11 @@
 		</restrictions>
 	</vehicleAoIRadius>
 	<soundNotifications>
-		<id>65</id>
+		<scope>client</scope>
 		<dataType>string</dataType>
 	</soundNotifications>
 	<divingDestructionDelay>
-		<id>66</id>
+		<scope>cell</scope>
 		<dataType>float</dataType>
 		<restrictions>
 			<min>
@@ -891,7 +943,7 @@
 		</restrictions>
 	</divingDestructionDelay>
 	<stunFactorEnginePower>
-		<id>67</id>
+		<scope>cell</scope>
 		<dataType>float</dataType>
 		<restrictions>
 			<min>
@@ -901,7 +953,7 @@
 		</restrictions>
 	</stunFactorEnginePower>
 	<stunFactorVehicleRotationSpeed>
-		<id>68</id>
+		<scope>cell</scope>
 		<dataType>float</dataType>
 		<restrictions>
 			<min>
@@ -911,7 +963,7 @@
 		</restrictions>
 	</stunFactorVehicleRotationSpeed>
 	<stunFactorTurretTraverse>
-		<id>69</id>
+		<scope>cell</scope>
 		<dataType>float</dataType>
 		<restrictions>
 			<min>
@@ -921,7 +973,7 @@
 		</restrictions>
 	</stunFactorTurretTraverse>
 	<stunFactorMaxSpeed>
-		<id>70</id>
+		<scope>cell</scope>
 		<dataType>float</dataType>
 		<restrictions>
 			<min>
@@ -930,52 +982,8 @@
 			</min>
 		</restrictions>
 	</stunFactorMaxSpeed>
-	<armorDamageLast>
-		<id>71</id>
-		<dataType>float</dataType>
-		<domain>shell</domain>
-		<restrictions>
-			<min>
-				0.0
-				<!--BW_String-->
-			</min>
-		</restrictions>
-	</armorDamageLast>
-	<deviceDamageLast>
-		<id>72</id>
-		<dataType>float</dataType>
-		<domain>shell</domain>
-		<restrictions>
-			<min>
-				0.0
-				<!--BW_String-->
-			</min>
-		</restrictions>
-	</deviceDamageLast>
-	<armorSpallsArmorDamageLast>
-		<id>73</id>
-		<dataType>float</dataType>
-		<domain>shellType</domain>
-		<restrictions>
-			<min>
-				0.0
-				<!--BW_String-->
-			</min>
-		</restrictions>
-	</armorSpallsArmorDamageLast>
-	<armorSpallsDeviceDamageLast>
-		<id>74</id>
-		<dataType>float</dataType>
-		<domain>shellType</domain>
-		<restrictions>
-			<min>
-				0.0
-				<!--BW_String-->
-			</min>
-		</restrictions>
-	</armorSpallsDeviceDamageLast>
 	<piercingPowerInterpolationDistFirst>
-		<id>75</id>
+		<scope>base cell client</scope>
 		<dataType>float</dataType>
 		<domain>constants</domain>
 		<restrictions>
@@ -986,7 +994,7 @@
 		</restrictions>
 	</piercingPowerInterpolationDistFirst>
 	<piercingPowerInterpolationDistLast>
-		<id>76</id>
+		<scope>base cell client</scope>
 		<dataType>float</dataType>
 		<domain>constants</domain>
 		<restrictions>
@@ -997,7 +1005,7 @@
 		</restrictions>
 	</piercingPowerInterpolationDistLast>
 	<damageInterpolationDistFirst>
-		<id>77</id>
+		<scope>base cell client</scope>
 		<dataType>float</dataType>
 		<domain>constants</domain>
 		<restrictions>
@@ -1008,7 +1016,7 @@
 		</restrictions>
 	</damageInterpolationDistFirst>
 	<damageInterpolationDistLast>
-		<id>78</id>
+		<scope>base cell client</scope>
 		<dataType>float</dataType>
 		<domain>constants</domain>
 		<restrictions>
@@ -1018,4 +1026,65 @@
 			</min>
 		</restrictions>
 	</damageInterpolationDistLast>
+	<bonusCapsOverrides>
+		<scope>base hangar</scope>
+		<dataType>dict</dataType>
+	</bonusCapsOverrides>
+	<crystalRewards>
+		<scope>base postBattle hangar</scope>
+		<dataType>dict</dataType>
+		<domain>vehicle</domain>
+	</crystalRewards>
+	<goldReserveGains>
+		<scope>base postBattle</scope>
+		<dataType>dict</dataType>
+	</goldReserveGains>
+	<damageRandomizationType>
+		<scope>base cell client</scope>
+		<dataType>string</dataType>
+		<domain>shell</domain>
+	</damageRandomizationType>
+	<piercingPowerRandomizationType>
+		<scope>base cell client</scope>
+		<dataType>string</dataType>
+		<domain>shell</domain>
+	</piercingPowerRandomizationType>
+	<forcedReloadTime>
+		<scope>base cell client</scope>
+		<dataType>float</dataType>
+		<domain>gun</domain>
+		<restrictions>
+			<min>
+				0.1
+				<!--BW_String-->
+			</min>
+		</restrictions>
+	</forcedReloadTime>
+	<autoShootDispersionPerSec>
+		<scope>base cell client</scope>
+		<dataType>float</dataType>
+		<domain>gun</domain>
+		<restrictions>
+			<min>
+				0.0
+				<!--BW_String-->
+			</min>
+		</restrictions>
+	</autoShootDispersionPerSec>
+	<autoShootMaxShotDispersionFactor>
+		<scope>base cell client</scope>
+		<dataType>float</dataType>
+		<domain>gun</domain>
+		<restrictions>
+			<min>
+				0.0
+				<!--BW_String-->
+			</min>
+		</restrictions>
+	</autoShootMaxShotDispersionFactor>
+	<gunMainPrefab>
+		<scope>client</scope>
+		<dataType>string</dataType>
+		<domain>gun</domain>
+	</gunMainPrefab>
 </root>

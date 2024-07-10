@@ -1,3 +1,4 @@
+from typing import Optional, Callable
 from gui.impl import backport
 
 def formatInt(value, negativeOrZero=None, formatter=backport.getIntegralFormat):

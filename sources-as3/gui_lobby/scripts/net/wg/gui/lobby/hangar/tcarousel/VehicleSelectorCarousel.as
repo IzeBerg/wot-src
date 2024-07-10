@@ -312,6 +312,11 @@ class TankCarouselHelper implements ITankCarouselHelper
       return PADDING;
    }
    
+   public function get isSmall() : Boolean
+   {
+      return false;
+   }
+   
    public function get rendererVisibleHeight() : int
    {
       return RENDERER_VISIBLE_HEIGHT;

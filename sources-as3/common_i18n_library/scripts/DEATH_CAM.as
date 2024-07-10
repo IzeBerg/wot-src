@@ -19,6 +19,8 @@ package
       
       public static const HINTS_DEATH_REASON_PENETRATION:String = "#death_cam:hints/death_reason/penetration";
       
+      public static const HINTS_DEATH_REASON_NONPENETRATIONDAMAGE:String = "#death_cam:hints/death_reason/nonPenetrationDamage";
+      
       public static const HINTS_DEATH_REASON_LEGACYHE:String = "#death_cam:hints/death_reason/legacyHE";
       
       public static const HINTS_DEATH_REASON_MODERNHE:String = "#death_cam:hints/death_reason/modernHE";
@@ -106,6 +108,8 @@ package
       public static const MARKER_PARAMNAME_ANGLEIMPACT:String = "#death_cam:marker/paramName/angleImpact";
       
       public static const MARKER_PARAMNAME_SHELLDAMAGEEFFECTIVE_PENETRATION:String = "#death_cam:marker/paramName/shellDamageEffective/penetration";
+      
+      public static const MARKER_PARAMNAME_SHELLDAMAGEEFFECTIVE_NONPENETRATIONDAMAGE:String = "#death_cam:marker/paramName/shellDamageEffective/nonPenetrationDamage";
       
       public static const MARKER_PARAMNAME_SHELLDAMAGEEFFECTIVE_LEGACYHE:String = "#death_cam:marker/paramName/shellDamageEffective/legacyHE";
       

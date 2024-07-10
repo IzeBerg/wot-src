@@ -410,6 +410,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.crosshairPanel.VO.ShotFlyTimeVO;
    import net.wg.gui.components.crosshairPanel.components.CrosshairClipQuantityBar;
    import net.wg.gui.components.crosshairPanel.components.CrosshairClipQuantityBarContainer;
+   import net.wg.gui.components.crosshairPanel.components.OverheatBar;
    import net.wg.gui.components.crosshairPanel.components.artyScale.ArtyIndicationScale;
    import net.wg.gui.components.crosshairPanel.components.artyShot.ArtyShotIndicator;
    import net.wg.gui.components.crosshairPanel.components.artyShot.ArtyShotIndicatorText;
@@ -424,6 +425,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.crosshairPanel.components.gunMarker.DualGunMarker;
    import net.wg.gui.components.crosshairPanel.components.gunMarker.DualGunMarkerDebug;
    import net.wg.gui.components.crosshairPanel.components.gunMarker.GunMarker;
+   import net.wg.gui.components.crosshairPanel.components.gunMarker.GunMarkerAimDamage;
    import net.wg.gui.components.crosshairPanel.components.gunMarker.GunMarkerArtillery;
    import net.wg.gui.components.crosshairPanel.components.gunMarker.GunMarkerDebug;
    import net.wg.gui.components.crosshairPanel.components.gunMarker.GunMarkerDebugStrategic;
@@ -438,6 +440,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.crosshairPanel.components.gunMarker.GunMarkerTag;
    import net.wg.gui.components.crosshairPanel.components.gunMarker.IGunMarker;
    import net.wg.gui.components.crosshairPanel.components.gunMarker.IGunMarkerMixing;
+   import net.wg.gui.components.crosshairPanel.components.gunMarker.ZoomingAimDamage;
    import net.wg.gui.components.crosshairPanel.components.gunMarker.constants.GunMarkerConsts;
    import net.wg.gui.components.crosshairPanel.components.speedometer.Speedometer;
    import net.wg.gui.components.crosshairPanel.components.speedometer.SpeedometerWarningAnim;
@@ -496,6 +499,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.predictionIndicator.PredictionIndicatorItem;
    import net.wg.gui.components.predictionIndicator.PredictionIndicatorSettings;
    import net.wg.gui.components.questProgress.ItemRenderer;
+   import net.wg.gui.components.questProgress.ItemRendererConditionAwardScreen;
    import net.wg.gui.components.questProgress.ItemRendererQuestAwardScreen;
    import net.wg.gui.components.questProgress.ItemRendererTabView;
    import net.wg.gui.components.questProgress.ItemRendererTopView;
@@ -547,6 +551,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.questProgress.components.metrics.vehicleValue.MetricsVehicleComponentBase;
    import net.wg.gui.components.questProgress.components.metrics.vehicleValue.MetricsVehicleComponentTab;
    import net.wg.gui.components.questProgress.components.metrics.vehicleValue.MetricsVehicleComponentTop;
+   import net.wg.gui.components.questProgress.data.HeaderProgressConditionVO;
    import net.wg.gui.components.questProgress.data.HeaderProgressDataVO;
    import net.wg.gui.components.questProgress.data.QPInitVo;
    import net.wg.gui.components.questProgress.data.QPProgressVO;
@@ -1676,6 +1681,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_COMPONENTS_CROSSHAIRCLIPQUANTITYBARCONTAINER:Class = CrosshairClipQuantityBarContainer;
       
+      public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_COMPONENTS_OVERHEATBAR:Class = OverheatBar;
+      
       public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_COMPONENTS_ARTYSCALE_ARTYINDICATIONSCALE:Class = ArtyIndicationScale;
       
       public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_COMPONENTS_ARTYSHOT_ARTYSHOTINDICATOR:Class = ArtyShotIndicator;
@@ -1704,6 +1711,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_COMPONENTS_GUNMARKER_GUNMARKER:Class = GunMarker;
       
+      public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_COMPONENTS_GUNMARKER_GUNMARKERAIMDAMAGE:Class = GunMarkerAimDamage;
+      
       public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_COMPONENTS_GUNMARKER_GUNMARKERARTILLERY:Class = GunMarkerArtillery;
       
       public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_COMPONENTS_GUNMARKER_GUNMARKERDEBUG:Class = GunMarkerDebug;
@@ -1731,6 +1740,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_COMPONENTS_GUNMARKER_IGUNMARKER:Class = IGunMarker;
       
       public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_COMPONENTS_GUNMARKER_IGUNMARKERMIXING:Class = IGunMarkerMixing;
+      
+      public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_COMPONENTS_GUNMARKER_ZOOMINGAIMDAMAGE:Class = ZoomingAimDamage;
       
       public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_COMPONENTS_GUNMARKER_CONSTANTS_GUNMARKERCONSTS:Class = GunMarkerConsts;
       
@@ -1854,6 +1865,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_COMPONENTS_QUESTPROGRESS_ITEMRENDERER:Class = ItemRenderer;
       
+      public static const NET_WG_GUI_COMPONENTS_QUESTPROGRESS_ITEMRENDERERCONDITIONAWARDSCREEN:Class = ItemRendererConditionAwardScreen;
+      
       public static const NET_WG_GUI_COMPONENTS_QUESTPROGRESS_ITEMRENDERERQUESTAWARDSCREEN:Class = ItemRendererQuestAwardScreen;
       
       public static const NET_WG_GUI_COMPONENTS_QUESTPROGRESS_ITEMRENDERERTABVIEW:Class = ItemRendererTabView;
@@ -1955,6 +1968,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_COMPONENTS_QUESTPROGRESS_COMPONENTS_METRICS_VEHICLEVALUE_METRICSVEHICLECOMPONENTTAB:Class = MetricsVehicleComponentTab;
       
       public static const NET_WG_GUI_COMPONENTS_QUESTPROGRESS_COMPONENTS_METRICS_VEHICLEVALUE_METRICSVEHICLECOMPONENTTOP:Class = MetricsVehicleComponentTop;
+      
+      public static const NET_WG_GUI_COMPONENTS_QUESTPROGRESS_DATA_HEADERPROGRESSCONDITIONVO:Class = HeaderProgressConditionVO;
       
       public static const NET_WG_GUI_COMPONENTS_QUESTPROGRESS_DATA_HEADERPROGRESSDATAVO:Class = HeaderProgressDataVO;
       

@@ -318,20 +318,20 @@ class Quest(ServerEventAbstract):
     __slots__ = ServerEventAbstract.__slots__ + ('_progress', '_children', '_parents',
                                                  '_parentsName', 'accountReqs', 'vehicleReqs',
                                                  'preBattleCond', 'bonusCond', 'postBattleCond',
-                                                 '__linkedActions', '_meta')
+                                                 '__linkedActions', '_meta', '_conditions')
 
     def __init__(self, qID, data, progress=None):
         super(Quest, self).__init__(qID, data)
         self._progress = progress
         self._children, self._parents, self._parentsName = {}, {}, {}
         self._meta = data.get('meta', {})
-        conds = dict(data['conditions'])
-        preBattle = dict(conds['preBattle'])
+        self._conditions = dict(data['conditions'])
+        preBattle = dict(self._conditions['preBattle'])
         self.accountReqs = AccountRequirements(preBattle['account'])
         self.vehicleReqs = VehicleRequirements(preBattle['vehicle'])
         self.preBattleCond = PreBattleConditions(preBattle['battle'])
-        self.bonusCond = BonusConditions(conds['common'], self.getProgressData(), self.preBattleCond)
-        self.postBattleCond = PostBattleConditions(conds['postBattle'], self.preBattleCond)
+        self.bonusCond = BonusConditions(self._conditions['common'], self.getProgressData(), self.preBattleCond)
+        self.postBattleCond = PostBattleConditions(self._conditions['postBattle'], self.preBattleCond)
         self._groupID = DEFAULTS_GROUPS.UNGROUPED_QUESTS
         self.__linkedActions = []
 
@@ -343,12 +343,23 @@ class Quest(ServerEventAbstract):
     def showMissionAction(cls):
         return
 
+    def getConditionsDescription(self):
+        description = self._conditions.get('description')
+        if description:
+            if 'key' in description:
+                return i18n.makeString(description['key'])
+            return getLocalizedData(self._conditions, 'description')
+        else:
+            return
+
     def isCompensationPossible(self):
         return events_helpers.isMarathon(self.getGroupID()) and bool(self.getBonuses('tokens'))
 
     def shouldBeShown(self):
         if events_helpers.isMapsTraining(self.getGroupID()):
             return self.isAvailable().isValid and self.lobbyContext.getServerSettings().isMapsTrainingEnabled()
+        if events_helpers.isComp7Light(self.getGroupID()):
+            return self.isAvailable().isValid and self.lobbyContext.getServerSettings().comp7Config.isEnabled
         return True
 
     def getGroupType(self):

@@ -973,7 +973,7 @@
 		</ComponentPool>
 		<ComponentPool>
 			<type>SequenceComponent</type>
-			<version>2</version>
+			<version>3</version>
 			<component>
 				<objectIndex>0</objectIndex>
 				<flags>35</flags>
@@ -1058,14 +1058,14 @@
 																			<property>
 																				<name>left</name>
 																				<value>
-																					6.28319
+																					1.5708 0 0
 																					<!--BW_String-->
 																				</value>
 																			</property>
 																			<property>
 																				<name>right</name>
 																				<value>
-																					6.28319
+																					1.5708 0 0
 																					<!--BW_String-->
 																				</value>
 																			</property>
@@ -1785,41 +1785,6 @@
 				<flags>3</flags>
 				<config>
 					<property>
-						<name>chunkItemData</name>
-						<isEditorOnly>true</isEditorOnly>
-						<section>
-							<editorOnly>
-								<hidden>false</hidden>
-								<frozen>false</frozen>
-								<groupName>UNI_076_PillboxTank_destroyed_Decals</groupName>
-								<groupPivotYPR>0.000000 -0.000000 0.000000</groupPivotYPR>
-							</editorOnly>
-							<visibilityMask>4294967295</visibilityMask>
-							<transform>
-								<row0>-2.699405 -0.020608 7.530787</row0>
-								<row1>-7.530369 0.094266 -2.698998</row1>
-								<row2>-0.010223 -0.999927 -0.006401</row2>
-								<row3>66.346802 84.059708 18.662043</row3>
-							</transform>
-							<diffTex>maps/decals_pbs/PBS_Ground_22_AM.dds</diffTex>
-							<bumpTex>maps/decals_pbs/PBS_Ground_22_NM.dds</bumpTex>
-							<hmTex>maps/decals_pbs/PBS_Ground_22_GMM.dds</hmTex>
-							<addTex/>
-							<priority>0</priority>
-							<type>1</type>
-							<influence>2</influence>
-							<offsets>0.000000 0.000000 0.000000 0.000000</offsets>
-							<uvWrapping>1.000000 1.000000</uvWrapping>
-							<accurate>0</accurate>
-							<tilesFade>0.050000</tilesFade>
-							<invertDistanceFadeFlag>false</invertDistanceFadeFlag>
-							<isHidden>false</isHidden>
-							<parallax_offset>0.500000</parallax_offset>
-							<parallax_mode>0.000000</parallax_mode>
-							<parallax_amplitude>0.200000</parallax_amplitude>
-						</section>
-					</property>
-					<property>
 						<name>_upside</name>
 						<value>-0 -0 -1</value>
 					</property>
@@ -1829,38 +1794,6 @@
 				<objectIndex>19</objectIndex>
 				<flags>3</flags>
 				<config>
-					<property>
-						<name>chunkItemData</name>
-						<isEditorOnly>true</isEditorOnly>
-						<section>
-							<editorOnly>
-								<hidden>false</hidden>
-								<frozen>false</frozen>
-								<groupName>UNI_076_PillboxTank_destroyed_Decals</groupName>
-								<groupPivotYPR>0.000000 -0.000000 0.000000</groupPivotYPR>
-							</editorOnly>
-							<visibilityMask>4294967295</visibilityMask>
-							<transform>
-								<row0>6.920920 -0.163837 4.009237</row0>
-								<row1>-4.011850 -0.129814 6.920125</row1>
-								<row2>-0.009583 -0.999659 -0.024308</row2>
-								<row3>62.581848 84.048790 12.158789</row3>
-							</transform>
-							<diffTex>maps/decals_pbs/00_CA_Decals/PBS_Dirt_01_DDay_AM.dds</diffTex>
-							<bumpTex>maps/decals_pbs/00_CA_Decals/PBS_Dirt_01_DDay_NM.dds</bumpTex>
-							<hmTex>maps/decals_pbs/00_CA_Decals/PBS_Dirt_01_DDay_GMM.dds</hmTex>
-							<addTex/>
-							<priority>2</priority>
-							<type>0</type>
-							<influence>2</influence>
-							<offsets>0.000000 0.000000 0.000000 0.000000</offsets>
-							<uvWrapping>1.000000 1.000000</uvWrapping>
-							<accurate>0</accurate>
-							<tilesFade>0.050000</tilesFade>
-							<invertDistanceFadeFlag>false</invertDistanceFadeFlag>
-							<isHidden>false</isHidden>
-						</section>
-					</property>
 					<property>
 						<name>_upside</name>
 						<value>-0 -0 -1</value>
@@ -1872,38 +1805,6 @@
 				<flags>3</flags>
 				<config>
 					<property>
-						<name>chunkItemData</name>
-						<isEditorOnly>true</isEditorOnly>
-						<section>
-							<editorOnly>
-								<hidden>false</hidden>
-								<frozen>false</frozen>
-								<groupName>UNI_076_PillboxTank_destroyed_Decals</groupName>
-								<groupPivotYPR>0.000000 -0.000000 0.000000</groupPivotYPR>
-							</editorOnly>
-							<visibilityMask>4294967295</visibilityMask>
-							<transform>
-								<row0>-6.934613 -0.059193 3.988438</row0>
-								<row1>-3.988714 0.030982 -6.934633</row1>
-								<row2>0.004483 -0.999965 -0.007046</row2>
-								<row3>65.487793 84.061325 12.225471</row3>
-							</transform>
-							<diffTex>maps/decals_pbs/00_CA_Decals/PBS_Dirt_01_DDay_AM.dds</diffTex>
-							<bumpTex>maps/decals_pbs/00_CA_Decals/PBS_Dirt_01_DDay_NM.dds</bumpTex>
-							<hmTex>maps/decals_pbs/00_CA_Decals/PBS_Dirt_01_DDay_GMM.dds</hmTex>
-							<addTex/>
-							<priority>7</priority>
-							<type>0</type>
-							<influence>2</influence>
-							<offsets>0.000000 0.000000 0.000000 0.000000</offsets>
-							<uvWrapping>1.000000 1.000000</uvWrapping>
-							<accurate>0</accurate>
-							<tilesFade>0.050000</tilesFade>
-							<invertDistanceFadeFlag>false</invertDistanceFadeFlag>
-							<isHidden>false</isHidden>
-						</section>
-					</property>
-					<property>
 						<name>_upside</name>
 						<value>-0 -0 -1</value>
 					</property>
@@ -1913,41 +1814,6 @@
 				<objectIndex>21</objectIndex>
 				<flags>3</flags>
 				<config>
-					<property>
-						<name>chunkItemData</name>
-						<isEditorOnly>true</isEditorOnly>
-						<section>
-							<editorOnly>
-								<hidden>false</hidden>
-								<frozen>false</frozen>
-								<groupName>UNI_076_PillboxTank_destroyed_Decals</groupName>
-								<groupPivotYPR>0.000000 -0.000000 0.000000</groupPivotYPR>
-							</editorOnly>
-							<visibilityMask>4294967295</visibilityMask>
-							<transform>
-								<row0>0.631835 -0.385092 -7.965703</row0>
-								<row1>7.924098 -0.871113 0.670647</row1>
-								<row2>-0.112458 -0.992888 0.039080</row2>
-								<row3>61.448883 84.244675 20.485867</row3>
-							</transform>
-							<diffTex>maps/decals_pbs/PBS_Ground_22_AM.dds</diffTex>
-							<bumpTex>maps/decals_pbs/PBS_Ground_22_NM.dds</bumpTex>
-							<hmTex>maps/decals_pbs/PBS_Ground_22_GMM.dds</hmTex>
-							<addTex/>
-							<priority>0</priority>
-							<type>1</type>
-							<influence>2</influence>
-							<offsets>0.000000 0.000000 0.000000 0.000000</offsets>
-							<uvWrapping>1.000000 1.000000</uvWrapping>
-							<accurate>0</accurate>
-							<tilesFade>0.050000</tilesFade>
-							<invertDistanceFadeFlag>false</invertDistanceFadeFlag>
-							<isHidden>false</isHidden>
-							<parallax_offset>0.500000</parallax_offset>
-							<parallax_mode>0.000000</parallax_mode>
-							<parallax_amplitude>0.200000</parallax_amplitude>
-						</section>
-					</property>
 					<property>
 						<name>_upside</name>
 						<value>-0 -0 -1</value>

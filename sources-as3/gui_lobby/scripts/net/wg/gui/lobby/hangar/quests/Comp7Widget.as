@@ -24,7 +24,9 @@ package net.wg.gui.lobby.hangar.quests
       
       private static const MARGIN_TOP:int = 0;
       
-      private static const BG_POS_X:int = -57;
+      private static const BG_POS_X:int = -45;
+      
+      private static const BG_POS_Y:int = -30;
        
       
       private var _isSmall:Boolean = false;
@@ -49,6 +51,7 @@ package net.wg.gui.lobby.hangar.quests
          this._bgImage.tabEnabled = this._bgImage.mouseEnabled = this._bgImage.mouseChildren = false;
          this._bgImage.source = RES_ICONS.MAPS_ICONS_COMP7_BACKGROUNDS_HANGAR_WIDGET_BG;
          this._bgImage.x = BG_POS_X;
+         this._bgImage.y = BG_POS_Y;
          addChildAt(this._bgImage,0);
          App.utils.commons.addEmptyHitArea(this._bgImage);
       }

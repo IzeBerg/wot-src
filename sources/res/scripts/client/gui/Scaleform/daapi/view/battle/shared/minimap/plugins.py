@@ -1443,12 +1443,13 @@ RadarPluginParams = namedtuple('RadarPluginParams', 'fadeIn fadeOut lifetime veh
 
 class _RadarEntryData(object):
 
-    def __init__(self, entryId, destroyMeCallback, params, typeId=None):
+    def __init__(self, entryId, destroyMeCallback, params, entityId=None, typeId=None):
         super(_RadarEntryData, self).__init__()
         self.__entryId = entryId
-        self.__lifeTime = params.lifetime
         self.__destroyMeCallback = destroyMeCallback
         self.__typeId = typeId
+        self.__entityId = entityId
+        self._lifeTime = params.lifetime
         self._callbackDelayer = CallbackDelayer()
 
     @property
@@ -1458,6 +1459,9 @@ class _RadarEntryData(object):
     def getTypeId(self):
         return self.__typeId
 
+    def getEntityId(self):
+        return self.__entityId
+
     def destroy(self):
         self.stopTimer()
         self.__destroyMeCallback = None
@@ -1466,7 +1470,7 @@ class _RadarEntryData(object):
 
     def upTimer(self):
         self.stopTimer()
-        self._callbackDelayer.delayCallback(self.__lifeTime, partial(self.__destroyMeCallback, self.__entryId))
+        self._callbackDelayer.delayCallback(self._lifeTime, partial(self.__destroyMeCallback, self.__entryId))
 
     def stopTimer(self):
         self._callbackDelayer.destroy()
@@ -1478,7 +1482,7 @@ class RadarPlugin(common.SimplePlugin, IRadarListener):
         super(RadarPlugin, self).__init__(parent)
         self._vehicleEntries = {}
         self._lootEntries = []
-        self.__es = EventsSubscriber()
+        self._es = EventsSubscriber()
         self._params = RadarPluginParams(fadeIn=0.0, fadeOut=0.0, lifetime=0.0, vehicleEntryParams=RadarEntryParams(container='', symbol=''), lootEntryParams=RadarEntryParams(container='', symbol=''))
 
     def init(self, arenaVisitor, arenaDP):
@@ -1486,10 +1490,10 @@ class RadarPlugin(common.SimplePlugin, IRadarListener):
         radarCtrl = self.sessionProvider.dynamic.radar
         if radarCtrl:
             radarCtrl.addRuntimeView(self)
-            self.__es.addCallbackOnUnsubscribe(lambda : radarCtrl.removeRuntimeView(self))
+            self._es.addCallbackOnUnsubscribe(lambda : radarCtrl.removeRuntimeView(self))
 
     def fini(self):
-        self.__es.unsubscribeFromAllEvents()
+        self._es.unsubscribeFromAllEvents()
         for lootData in self._lootEntries:
             lootData.destroy()
 
@@ -1502,11 +1506,11 @@ class RadarPlugin(common.SimplePlugin, IRadarListener):
         for vehicleId, vehicleXZPos in data[1]:
             self._addVehicleEntry(vehicleId, vehicleXZPos)
 
-        for typeId, lootXZPos in data[2]:
-            self._addLootEntry(typeId, lootXZPos)
+        for lootId, lootInfo in data[2]:
+            self._addLootEntry(lootId, lootInfo)
 
-    def _createEntryData(self, entryId, destroyMeCallback, params, typeId=None):
-        return _RadarEntryData(entryId, destroyMeCallback, params, typeId)
+    def _createEntryData(self, entryId, destroyMeCallback, params, entityId=None, typeId=None):
+        return _RadarEntryData(entryId, destroyMeCallback, params, entityId, typeId)
 
     def _addVehicleEntry(self, vehicleId, xzPosition):
         if self._arenaDP.getPlayerVehicleID() == vehicleId:
@@ -1523,12 +1527,13 @@ class RadarPlugin(common.SimplePlugin, IRadarListener):
             vEntry.upTimer()
             return vEntry.entryId
 
-    def _addLootEntry(self, typeId, xzPosition):
+    def _addLootEntry(self, lootId, lootInfo):
+        typeId, xzPosition = lootInfo
         entryId = self._addEntry(self._params.lootEntryParams.symbol, self._params.lootEntryParams.container, matrix=self.__getMatrixByXZ(xzPosition), active=True)
-        lEntry = self._createEntryData(entryId, self.__destroyLootEntry, self._params, typeId=typeId)
+        lEntry = self._createEntryData(entryId, self.__destroyLootEntry, self._params, entityId=lootId, typeId=typeId)
         lEntry.upTimer()
         self._lootEntries.append(lEntry)
-        return lEntry.entryId
+        return lEntry
 
     def _destroyVehicleEntry(self, entryId, destroyedVehId):
         self._delEntry(entryId)
@@ -1537,7 +1542,7 @@ class RadarPlugin(common.SimplePlugin, IRadarListener):
             entry.destroy()
         return
 
-    def __clearLootEntries(self):
+    def _clearLootEntries(self):
         while self._lootEntries:
             entry = self._lootEntries.pop()
             entry.stopTimer()

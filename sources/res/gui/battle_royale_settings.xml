@@ -16,6 +16,22 @@
 			</fadeOut>
 		</marker>
 	</radar>
+	<spottedLoot>
+		<marker>
+			<lifeTime>
+				10.0
+				<!--BW_String-->
+			</lifeTime>
+			<fadeIn>
+				0.2
+				<!--BW_String-->
+			</fadeIn>
+			<fadeOut>
+				1.0
+				<!--BW_String-->
+			</fadeOut>
+		</marker>
+	</spottedLoot>
 	<spawn>
 		<selectEndingSoonTime>10</selectEndingSoonTime>
 	</spawn>
@@ -2622,48 +2638,62 @@
 		</modules>
 	</techTree>
 	<vehicleProperties>
-		<properties>
-			<property>speed</property>
-			<property>dpm</property>
-			<property>radar</property>
-			<property>armor</property>
-			<property>hp</property>
-			<property>damage</property>
-			<property>penetration</property>
-			<property>revolver</property>
-		</properties>
 		<vehicles>
 			<germany>
-				<strengths>hp damage</strengths>
-				<weaknesses>speed radar</weaknesses>
+				<difficulty>20</difficulty>
+				<survivability>100 </survivability>
+				<mobility>50</mobility>
+				<damage>40</damage>
+				<spotting>40</spotting>
 			</germany>
 			<ussr>
-				<strengths>armor damage</strengths>
-				<weaknesses>speed radar</weaknesses>
+				<difficulty>40 </difficulty>
+				<survivability>80</survivability>
+				<mobility>50</mobility>
+				<damage>50</damage>
+				<spotting>40</spotting>
 			</ussr>
 			<sweden>
-				<strengths>armor hp</strengths>
-				<weaknesses>speed dpm</weaknesses>
+				<difficulty>60 </difficulty>
+				<survivability>90</survivability>
+				<mobility>40</mobility>
+				<damage>70</damage>
+				<spotting>40</spotting>
 			</sweden>
 			<usa>
-				<strengths>penetration speed</strengths>
-				<weaknesses>hp damage</weaknesses>
+				<difficulty>40</difficulty>
+				<survivability>70</survivability>
+				<mobility>60</mobility>
+				<damage>80</damage>
+				<spotting>60</spotting>
 			</usa>
 			<france>
-				<strengths>speed dpm</strengths>
-				<weaknesses>armor hp</weaknesses>
+				<difficulty>80</difficulty>
+				<survivability>10</survivability>
+				<mobility>100</mobility>
+				<damage>60</damage>
+				<spotting>100 </spotting>
 			</france>
 			<uk>
-				<strengths>penetration radar</strengths>
-				<weaknesses>damage speed</weaknesses>
+				<difficulty>90</difficulty>
+				<survivability>50</survivability>
+				<mobility>50</mobility>
+				<damage>100</damage>
+				<spotting>60</spotting>
 			</uk>
 			<china>
-				<strengths>speed dpm</strengths>
-				<weaknesses>armor hp</weaknesses>
+				<difficulty>70</difficulty>
+				<survivability>20</survivability>
+				<mobility>80</mobility>
+				<damage>70</damage>
+				<spotting>100</spotting>
 			</china>
 			<poland>
-				<strengths>penetration revolver</strengths>
-				<weaknesses>armor damage</weaknesses>
+				<difficulty>100</difficulty>
+				<survivability>40</survivability>
+				<mobility>80</mobility>
+				<damage>100</damage>
+				<spotting>60</spotting>
 			</poland>
 		</vehicles>
 	</vehicleProperties>
@@ -2671,6 +2701,7 @@
 		10.0
 		<!--BW_String-->
 	</upgradeAttentionTime>
+	<observerBotMarkersVisibilityDistance>360</observerBotMarkersVisibilityDistance>
 	<sounds>
 		<battlePhases>
 			<final>

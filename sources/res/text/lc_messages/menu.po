@@ -1880,6 +1880,11 @@ msgstr ""
 "%(autoReloadTime)s秒装填；平均损伤:%(avgDamageList)s\n"
 "平均穿透力:%(avgPiercingPower)s毫米"
 
+msgid "descriptions/vehicleGun/autoShoot"
+msgstr ""
+"%(continuousShotsPerMinute)s发/分钟；平均损伤: %(avgDamageList)s\n"
+"平均穿透力: %(avgPiercingPower)s毫米"
+
 msgid "descriptions/vehicleGun/dualGun"
 msgstr ""
 "火炮装填时间：%(reloadTimeSecs)s秒；平均损伤：%(avgDamageList)s\n"
@@ -2697,7 +2702,7 @@ msgid "headerButtons/battle/types/battleRoyaleSquad/description"
 msgstr "创建一个2人小队"
 
 msgid "headerButtons/battle/types/comp7"
-msgstr "天梯战"
+msgstr "轻量级天梯战"
 
 msgid "headerButtons/battle/types/comp7/descr"
 msgstr "?empty?"
@@ -3074,24 +3079,6 @@ msgstr "选择一辆%(level)s级坦克"
 
 msgid "headerButtons/fightBtn/tooltip/falloutVehMin/header"
 msgstr "加入战斗失败"
-
-msgid "headerButtons/fightBtn/tooltip/funRandomDisabled/body"
-msgstr "该服务器正处于休战期。请选择其他服务器。"
-
-msgid "headerButtons/fightBtn/tooltip/funRandomDisabled/header"
-msgstr "加入战斗失败"
-
-msgid "headerButtons/fightBtn/tooltip/funRandomNotSet/body"
-msgstr "此模式在所选服务器上未开放。"
-
-msgid "headerButtons/fightBtn/tooltip/funRandomNotSet/header"
-msgstr "加入战斗失败"
-
-msgid "headerButtons/fightBtn/tooltip/funRandomVehLimits/body"
-msgstr "更改模式或选择一辆符合要求的坦克。"
-
-msgid "headerButtons/fightBtn/tooltip/funRandomVehLimits/header"
-msgstr "坦克不适用于模式"
 
 msgid "headerButtons/fightBtn/tooltip/inPremiumIgrOnly/body"
 msgstr "选择其它坦克。"
@@ -3628,13 +3615,13 @@ msgid "loading/battleTypes/29"
 msgstr "%(modeName)s"
 
 msgid "loading/battleTypes/30"
-msgstr "天梯战"
+msgstr "轻量级天梯战"
 
 msgid "loading/battleTypes/31"
 msgstr "热身模式"
 
 msgid "loading/battleTypes/33"
-msgstr "天梯战"
+msgstr "轻量级天梯战"
 
 msgid "loading/battleTypes/34"
 msgstr "天梯战训练"
@@ -4158,6 +4145,9 @@ msgstr ""
 "改进型自动装填系统: \n"
 "缩短自动装填炮弹的标准时长。"
 
+msgid "moduleInfo/autoShootGunLabel"
+msgstr "具有连射系统的火炮"
+
 msgid "moduleInfo/clipGunLabel"
 msgstr "弹夹装填系统"
 
@@ -4203,6 +4193,9 @@ msgstr "液气悬挂装置: 坦克可以在攻城和行驶模式之间切换"
 msgid "moduleInfo/hydraulicWheeledChassisLabel"
 msgstr "伸缩式液压传动装置: 坦克可以调整附加车轮的位置。"
 
+msgid "moduleInfo/nonPiercingDamageLabel"
+msgstr "即使未击穿装甲也能造成些许损伤。"
+
 msgid "moduleInfo/parametersClipGunLabel"
 msgstr "<img src='%s' vspace='-4'/> 火炮弹夹装填系统:"
 
@@ -4238,6 +4231,9 @@ msgstr "平均损伤"
 
 msgid "moduleInfo/params/avgDamagePerMinute"
 msgstr "平均每分钟损伤"
+
+msgid "moduleInfo/params/avgDamagePerSecond"
+msgstr "平均每秒损伤"
 
 msgid "moduleInfo/params/avgMutableDamage"
 msgstr "平均损伤"
@@ -4283,6 +4279,12 @@ msgstr "影响半径"
 
 msgid "moduleInfo/params/commonDelay"
 msgstr "部署时间"
+
+msgid "moduleInfo/params/continuousDamagePerSecond"
+msgstr "平均每秒损伤"
+
+msgid "moduleInfo/params/continuousShotsPerMinute"
+msgstr "连射射速"
 
 msgid "moduleInfo/params/cooldownSeconds"
 msgstr "冷却时间"
@@ -5952,11 +5954,20 @@ msgstr "加速5秒后的速度"
 msgid "tank_params/autoReloadTime"
 msgstr "自动装填一发炮弹的时间"
 
+msgid "tank_params/autoShootClipFireRate"
+msgstr "装填时间"
+
+msgid "tank_params/autoShootClipSec"
+msgstr "(弹匣/数量)"
+
 msgid "tank_params/avgDamage"
 msgstr "平均损伤"
 
 msgid "tank_params/avgDamagePerMinute"
 msgstr "平均每分钟损伤"
+
+msgid "tank_params/avgDamagePerSecond"
+msgstr "平均每秒损伤"
 
 msgid "tank_params/avgPiercingPower"
 msgstr "平均穿透力"
@@ -5993,6 +6004,9 @@ msgstr "(弹夹/炮弹或短弹夹/炮弹数量)"
 
 msgid "tank_params/cnt"
 msgstr "(个)"
+
+msgid "tank_params/continuousShotsPerMinute"
+msgstr "连射射速"
 
 msgid "tank_params/damage"
 msgstr "标准炮弹损伤"
@@ -6260,6 +6274,9 @@ msgstr "重量/最大载重量"
 
 msgid "tank_params/vpm"
 msgstr "(HP/分钟)"
+
+msgid "tank_params/vps"
+msgstr "(HP/秒)"
 
 msgid "tank_params/wheeledSpeedModeSpeed"
 msgstr "最大速度/倒车速度(快速)"
@@ -6666,11 +6683,17 @@ msgstr "自动装填一发炮弹时间(秒)"
 msgid "vehicleInfo/params/autoReloadTimeBoost"
 msgstr "自动装填一发炮弹的标准时长 (秒)"
 
+msgid "vehicleInfo/params/autoShootClipFireRate"
+msgstr "装填时间(弹夹/数量)"
+
 msgid "vehicleInfo/params/avgDamage"
 msgstr "标准炮弹的平均损伤"
 
 msgid "vehicleInfo/params/avgDamagePerMinute"
 msgstr "平均每分钟损伤"
+
+msgid "vehicleInfo/params/avgDamagePerSecond"
+msgstr "平均每秒损伤(HP/秒)"
 
 msgid "vehicleInfo/params/avgPiercingPower"
 msgstr "标准炮弹的平均穿透力"
@@ -6695,6 +6718,9 @@ msgstr "观察范围(米)"
 
 msgid "vehicleInfo/params/clipFireRate"
 msgstr "装填(弹夹/炮弹或短弹夹/炮弹数量)"
+
+msgid "vehicleInfo/params/continuousShotsPerMinute"
+msgstr "连射射速(发/分钟)"
 
 msgid "vehicleInfo/params/dualAccuracyCoolingDelay"
 msgstr "射击后的火炮冷却时间(秒)"

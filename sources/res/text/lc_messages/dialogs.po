@@ -538,19 +538,13 @@ msgid "comp7/deserter/cancel"
 msgstr "取消"
 
 msgid "comp7/deserter/message"
-msgstr ""
-"本场战斗尚未结束。如果中途离场，您将有负众望。\n"
-"{brown_open}您将因违规受到处罚。{brown_close}\n"
-"您确定要离开战斗？"
-
-msgid "comp7/deserter/msgTitle"
-msgstr "您将失去您的评级点数！"
+msgstr "您的团队需要您！在战斗结束或您的坦克被击毁前退出战斗将被视为中途退场。您可能会因为违规而受到处罚。"
 
 msgid "comp7/deserter/submit"
 msgstr "确认"
 
 msgid "comp7/deserter/title"
-msgstr "中途离场"
+msgstr "您确定要中途离场？"
 
 msgid "confirmBattleBoosterBuyAndInstall/cancel"
 msgstr "取消"
@@ -1094,8 +1088,11 @@ msgstr "请勿再次请求"
 msgid "editableStyles/confirmReset/formattedPartOfMessage"
 msgstr "将被重置"
 
+msgid "editableStyles/confirmReset/formattedPartOfMessageStyle"
+msgstr "风格"
+
 msgid "editableStyles/confirmReset/message"
-msgstr "如果您应用此元素，风格{formatted_message}为默认。"
+msgstr "如果您应用此元素，{formatted_message}{style}{reset}为默认状态。"
 
 msgid "editableStyles/confirmReset/submit"
 msgstr "确认"
@@ -2028,7 +2025,7 @@ msgstr ""
 msgid "punishmentWindow/message/ban/comp7"
 msgstr ""
 "您于{whiteSpanish_Open}%(time)s{whiteSpanish_Close}在{whiteSpanish_Open}%(arenaName)s{whiteSpanish_Close}地图上违反了游戏规则。\n"
-"{whiteSpanish_Open}%(penalty)s{whiteSpanish_Close}评级点数已被扣除，同时，您已被暂时封禁，无法参加{whiteSpanish_Open}天梯战{whiteSpanish_Close}模式中的战斗。"
+"您已被暂时封禁，无法参加{whiteSpanish_Open}轻量级天梯战{whiteSpanish_Close}模式中的战斗。"
 
 msgid "punishmentWindow/message/ban/comp7/qualification"
 msgstr ""

@@ -300,16 +300,6 @@ msgstr "防御基地"
 msgid "common/tooltip/defence/totalPoints"
 msgstr "基地总防御点数"
 
-msgid "common/tooltip/kill-1/description"
-msgstr ""
-"计入:\n"
-"• 射击击毁\n"
-"• 通过引发起火击毁\n"
-"• 撞击击毁\n"
-"• 通过使敌方溺水击毁\n"
-"• 通过将敌方从高处推下击毁\n"
-"• 通过使敌方翻车击毁。"
-
 msgid "common/tooltip/kill/header"
 msgstr "击毁敌方坦克"
 
@@ -336,6 +326,16 @@ msgstr "被风暴击毁"
 
 msgid "common/tooltip/kill7/description"
 msgstr "敌方坦克被推翻"
+
+msgid "common/tooltip/killCommon/description"
+msgstr ""
+"计入:\n"
+"• 射击击毁\n"
+"• 通过引发起火击毁\n"
+"• 撞击击毁\n"
+"• 通过使敌方溺水击毁\n"
+"• 通过将敌方从高处推下击毁\n"
+"• 通过使敌方翻车击毁。"
 
 msgid "common/tooltip/params/val"
 msgstr "(生命值)"
@@ -392,6 +392,39 @@ msgstr "友军坦克已溺亡"
 
 msgid "common/tooltip/xpTitleSquad"
 msgstr "由于您组队参与了本次战斗，您获得了额外经验。"
+
+msgid "common/totalTooltip/armor/part1"
+msgstr "跳弹"
+
+msgid "common/totalTooltip/armor/part2"
+msgstr "未击穿"
+
+msgid "common/totalTooltip/armor/part3"
+msgstr "由装甲抵挡的损伤"
+
+msgid "common/totalTooltip/assist/part1"
+msgstr "您点亮后盟友造成的损伤"
+
+msgid "common/totalTooltip/assist/part2"
+msgstr "由您击毁敌方坦克履带使其无法移动后，盟友造成的损伤"
+
+msgid "common/totalTooltip/assist/total"
+msgstr "盟友对敌方坦克造成的总损伤"
+
+msgid "common/totalTooltip/damage/part1"
+msgstr "总损伤"
+
+msgid "common/totalTooltip/damage/part2"
+msgstr "总穿透次数"
+
+msgid "common/totalTooltip/stun/part1"
+msgstr "总损伤"
+
+msgid "common/totalTooltip/stun/part2"
+msgstr "弹震次数"
+
+msgid "common/totalTooltip/stun/part3"
+msgstr "造成弹震效果总时长"
 
 msgid "common/vehicle/details"
 msgstr "%(vehicle)s，%(type)s"
@@ -555,6 +588,9 @@ msgstr "超级传输"
 msgid "details/calculations/igrBonus"
 msgstr "游戏奖励%(igrIcon)s"
 
+msgid "details/calculations/igrBonus/simpleLabel"
+msgstr "IGR加成"
+
 msgid "details/calculations/intermediateTotal"
 msgstr "总战斗收益:"
 
@@ -585,6 +621,9 @@ msgstr "驾驶金币坦克奖励"
 msgid "details/calculations/referralBonus"
 msgstr "推荐奖励(%(bonusFactor)d%%)"
 
+msgid "details/calculations/referralBonus/simpleLabel"
+msgstr "推荐计划加成"
+
 msgid "details/calculations/squad/restrictions/title"
 msgstr "组队战斗"
 
@@ -599,6 +638,15 @@ msgstr "因组队不当而惩罚"
 
 msgid "details/calculations/tacticalTraining"
 msgstr "经验加成"
+
+msgid "details/calculations/title/base"
+msgstr "获得"
+
+msgid "details/calculations/title/expenses"
+msgstr "开销"
+
+msgid "details/calculations/title/total"
+msgstr "总计"
 
 msgid "details/calculations/total"
 msgstr "总计:"
@@ -1039,6 +1087,9 @@ msgstr "被击毁/修复自有坦克数"
 msgid "team/stats/labels_destructiblesDamageDealt"
 msgstr "\t前往炮台"
 
+msgid "team/stats/labels_directHits"
+msgstr "\t直接命中"
+
 msgid "team/stats/labels_directHitsReceived"
 msgstr "被击中"
 
@@ -1074,6 +1125,9 @@ msgstr "行驶里程"
 
 msgid "team/stats/labels_noDamageDirectHitsReceived"
 msgstr "\t未被穿透"
+
+msgid "team/stats/labels_piercingHits"
+msgstr "\t击穿次数"
 
 msgid "team/stats/labels_piercingsReceived"
 msgstr "\t击穿次数"
@@ -1120,6 +1174,69 @@ msgstr "?empty?"
 msgid "team/stats/ownTeam"
 msgstr "己方队伍"
 
+msgid "team/stats/parameter/capturePointsVal"
+msgstr "占领/防御基地点数"
+
+msgid "team/stats/parameter/damageAssisted"
+msgstr "玩家协助造成的损伤"
+
+msgid "team/stats/parameter/damageAssistedSelf"
+msgstr "由您协助造成的损伤"
+
+msgid "team/stats/parameter/damageAssistedStun"
+msgstr "对由该玩家造成弹震的敌方坦克造成的损伤"
+
+msgid "team/stats/parameter/damageAssistedStunSelf"
+msgstr "对由您造成弹震的敌方坦克造成的损伤"
+
+msgid "team/stats/parameter/damageBlockedByArmor"
+msgstr "由装甲抵挡的损伤值"
+
+msgid "team/stats/parameter/damageDealt"
+msgstr "总损伤"
+
+msgid "team/stats/parameter/damagedKilled"
+msgstr "击伤/击毁敌方坦克"
+
+msgid "team/stats/parameter/directHitsReceived"
+msgstr "被击中"
+
+msgid "team/stats/parameter/explosionHits"
+msgstr "溅射损伤"
+
+msgid "team/stats/parameter/explosionHitsReceived"
+msgstr "HE溅射造成的损伤次数"
+
+msgid "team/stats/parameter/hits"
+msgstr "直接命中/击穿"
+
+msgid "team/stats/parameter/mileage"
+msgstr "行驶里程"
+
+msgid "team/stats/parameter/noDamageDirectHitsReceived"
+msgstr "未被击穿"
+
+msgid "team/stats/parameter/piercingsReceived"
+msgstr "击穿"
+
+msgid "team/stats/parameter/shots"
+msgstr "射击次数"
+
+msgid "team/stats/parameter/sniperDamageDealt"
+msgstr "从300米以外的距离"
+
+msgid "team/stats/parameter/spotted"
+msgstr "点亮敌方坦克"
+
+msgid "team/stats/parameter/stunDuration"
+msgstr "造成弹震效果总时长(秒)"
+
+msgid "team/stats/parameter/stunNum"
+msgstr "造成的弹震次数"
+
+msgid "team/stats/parameter/teamHitsDamage"
+msgstr "对盟友造成损伤 (击伤/生命值)"
+
 msgid "team/tankHeader/body"
 msgstr "按团队列表中的位置排序。"
 
@@ -1157,6 +1274,9 @@ msgstr "经验"
 
 msgid "team/xpHeaderNoSort/header"
 msgstr "经验"
+
+msgid "tooltips/stats/footer/text"
+msgstr "%(label)s&nbsp;%(type)s"
 
 msgid "victoryScore"
 msgstr "已获得的胜利点数"

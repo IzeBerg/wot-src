@@ -80,9 +80,11 @@ filter = globals().get(&apos;BattleResults&apos;)
 
 PROGRESS_ID_MAIN = &apos;piercings&apos;
 PROGRESS_ID_MAIN_LIMITATION = &apos;piercingsInBattle&apos;
+PROGRESS_ID_MAIN_DAMAGE = &apos;damage&apos;
 PROGRESS_ID_MAIN_SERIES = &apos;battlesSeries&apos;
 PROGRESS_ID_ADD = &apos;piercingsAdv&apos;
 PROGRESS_ID_ADD_LIMITATION = &apos;piercingsInBattleAdv&apos;
+PROGRESS_ID_ADD_DAMAGE = &apos;damageAdv&apos;
 PROGRESS_ID_ADD_SERIES = &apos;battlesSeriesAdv&apos;
 
 def onInit(eventType, eventData, quest, processor):
@@ -94,13 +96,16 @@ def onFinishBattle(eventType, eventData, quest, processor):
     questProgress = quest_progress.BaseQuestProgress(quest.config, processor.getQuestProgress(quest.progressID))
 
     brfilter = filter.BattleResultsFilter(eventData)
-    piercings = sum([len(shots) for shots in (brfilter.filterDamageTo(result=[&apos;pierced&apos;]).itervalues())])
+    piercings = brfilter.sumHitsCount(brfilter.filterDamageTo(result=[&apos;pierced&apos;]))
     piercingsMain = piercings if questProgress.increaseUntilComplete(PROGRESS_ID_MAIN_LIMITATION, piercings) else 0
     piercingsAdv = piercings if questProgress.increaseUntilComplete(PROGRESS_ID_ADD_LIMITATION, piercings) else 0
-    questProgress.increaseSumProgress(PROGRESS_ID_MAIN, PROGRESS_ID_MAIN_SERIES, piercingsMain)
-    questProgress.increaseSumProgress(PROGRESS_ID_ADD, PROGRESS_ID_ADD_SERIES, piercingsAdv, PROGRESS_ID_MAIN)
 
-    eventData[&apos;results&apos;].update(processor.checkComplete(questProgress, quest.progressID, additionalProgressID=PROGRESS_ID_ADD))
+    totalDamage = brfilter.sumDamage(brfilter.filterDamageTo())
+
+    questProgress.increaseSumProgress((PROGRESS_ID_MAIN, PROGRESS_ID_MAIN_DAMAGE), PROGRESS_ID_MAIN_SERIES, (piercingsMain, totalDamage))
+    questProgress.increaseSumProgress((PROGRESS_ID_ADD, PROGRESS_ID_ADD_DAMAGE), PROGRESS_ID_ADD_SERIES, (piercingsAdv, totalDamage), (PROGRESS_ID_MAIN, PROGRESS_ID_MAIN_DAMAGE))
+
+    eventData[&apos;results&apos;].update(processor.checkComplete(questProgress, quest.progressID))
 
     processor.setQuestProgress(quest.progressID, questProgress.save())
 

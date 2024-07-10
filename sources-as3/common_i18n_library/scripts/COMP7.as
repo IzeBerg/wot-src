@@ -57,19 +57,17 @@ package
       
       public static const SEASON_SECONDSLEFT:String = "#comp7:season/secondsLeft";
       
-      public static const SEASON_OVER:String = "#comp7:season/over";
-      
       public static const CALENDARDAY_TITLE:String = "#comp7:calendarDay/title";
       
       public static const CALENDARDAY_SERVERNAME:String = "#comp7:calendarDay/serverName";
       
       public static const CALENDARDAY_TIME:String = "#comp7:calendarDay/time";
       
-      public static const CALENDARDAY_TIMELEFT_FIRST:String = "#comp7:calendarDay/timeLeft/first";
-      
       public static const CALENDARDAY_TIMELEFT_SECOND:String = "#comp7:calendarDay/timeLeft/second";
       
       public static const CALENDARDAY_TIMELEFT_THIRD:String = "#comp7:calendarDay/timeLeft/third";
+      
+      public static const CALENDARDAY_TIMELEFT_FIRST:String = "#comp7:calendarDay/timeLeft/first";
       
       public static const SHORTSEASONNAME_FIRST:String = "#comp7:shortSeasonName/first";
       
@@ -543,9 +541,7 @@ package
       
       public static const INTRO_TITLE_ROLESKILLS:String = "#comp7:intro/title/roleSkills";
       
-      public static const INTRO_TITLE_QUALIFICATION:String = "#comp7:intro/title/qualification";
-      
-      public static const INTRO_TITLE_RANKS:String = "#comp7:intro/title/ranks";
+      public static const INTRO_TITLE_NORANKEDSYSTEM:String = "#comp7:intro/title/noRankedSystem";
       
       public static const INTRO_DESCRIPTION_ONSLAUGHTMODIFIERS:String = "#comp7:intro/description/onslaughtModifiers";
       
@@ -555,9 +551,7 @@ package
       
       public static const INTRO_DESCRIPTION_ROLESKILLS:String = "#comp7:intro/description/roleSkills";
       
-      public static const INTRO_DESCRIPTION_QUALIFICATION:String = "#comp7:intro/description/qualification";
-      
-      public static const INTRO_DESCRIPTION_RANKS:String = "#comp7:intro/description/ranks";
+      public static const INTRO_DESCRIPTION_NORANKEDSYSTEM:String = "#comp7:intro/description/noRankedSystem";
       
       public static const INTRO_CONFIRMBUTTON:String = "#comp7:intro/confirmButton";
       
@@ -623,7 +617,29 @@ package
       
       public static const MAINWIDGETTOOLTIP_QUALIFICATION_CONDITION:String = "#comp7:mainWidgetTooltip/qualification/condition";
       
+      public static const MAINWIDGETTOOLTIP_FEATURENAME:String = "#comp7:mainWidgetTooltip/featureName";
+      
       public static const MAINWIDGETTOOLTIP_BATTLESCOUNTER:String = "#comp7:mainWidgetTooltip/battlesCounter";
+      
+      public static const MAINWIDGETTOOLTIP_DESCRIPTION_INPROGRESS:String = "#comp7:mainWidgetTooltip/description/inProgress";
+      
+      public static const MAINWIDGETTOOLTIP_DESCRIPTIONHEADER:String = "#comp7:mainWidgetTooltip/descriptionHeader";
+      
+      public static const MAINWIDGETTOOLTIP_DESCRIPTION_COMPLETED:String = "#comp7:mainWidgetTooltip/description/completed";
+      
+      public static const MAINWIDGETTOOLTIP_EVENTENDS:String = "#comp7:mainWidgetTooltip/eventEnds";
+      
+      public static const MAINWIDGETTOOLTIP_COLUMN_0:String = "#comp7:mainWidgetTooltip/column/0";
+      
+      public static const MAINWIDGETTOOLTIP_COLUMN_1:String = "#comp7:mainWidgetTooltip/column/1";
+      
+      public static const MAINWIDGETTOOLTIP_COLUMN_2:String = "#comp7:mainWidgetTooltip/column/2";
+      
+      public static const MAINWIDGETTOOLTIP_TOP_0:String = "#comp7:mainWidgetTooltip/top/0";
+      
+      public static const MAINWIDGETTOOLTIP_TOP_1:String = "#comp7:mainWidgetTooltip/top/1";
+      
+      public static const MAINWIDGETTOOLTIP_TOP_2:String = "#comp7:mainWidgetTooltip/top/2";
       
       public static const WAITINGSPINNER_MESSAGE:String = "#comp7:waitingSpinner/message";
       
@@ -811,29 +827,29 @@ package
       
       public static const ALERTMESSAGE_NOTAVAILABLEEND:String = "#comp7:alertMessage/notAvailableEnd";
       
-      public static const ALERTMESSAGE_ALLNOTAVAILABLEEND_FIRST:String = "#comp7:alertMessage/allNotAvailableEnd/first";
-      
       public static const ALERTMESSAGE_ALLNOTAVAILABLEEND_SECOND:String = "#comp7:alertMessage/allNotAvailableEnd/second";
       
       public static const ALERTMESSAGE_ALLNOTAVAILABLEEND_THIRD:String = "#comp7:alertMessage/allNotAvailableEnd/third";
       
-      public static const ALERTMESSAGE_STANDALONENOTAVAILABLEEND_FIRST:String = "#comp7:alertMessage/standaloneNotAvailableEnd/first";
+      public static const ALERTMESSAGE_ALLNOTAVAILABLEEND_FIRST:String = "#comp7:alertMessage/allNotAvailableEnd/first";
       
       public static const ALERTMESSAGE_STANDALONENOTAVAILABLEEND_SECOND:String = "#comp7:alertMessage/standaloneNotAvailableEnd/second";
       
       public static const ALERTMESSAGE_STANDALONENOTAVAILABLEEND_THIRD:String = "#comp7:alertMessage/standaloneNotAvailableEnd/third";
       
-      public static const ALERTMESSAGE_AFTERSEASON_FIRST:String = "#comp7:alertMessage/afterSeason/first";
+      public static const ALERTMESSAGE_STANDALONENOTAVAILABLEEND_FIRST:String = "#comp7:alertMessage/standaloneNotAvailableEnd/first";
       
       public static const ALERTMESSAGE_AFTERSEASON_SECOND:String = "#comp7:alertMessage/afterSeason/second";
       
       public static const ALERTMESSAGE_AFTERSEASON_THIRD:String = "#comp7:alertMessage/afterSeason/third";
       
-      public static const ALERTMESSAGE_BETWEENSEASONS_FIRST:String = "#comp7:alertMessage/betweenSeasons/first";
+      public static const ALERTMESSAGE_AFTERSEASON_FIRST:String = "#comp7:alertMessage/afterSeason/first";
       
       public static const ALERTMESSAGE_BETWEENSEASONS_SECOND:String = "#comp7:alertMessage/betweenSeasons/second";
       
       public static const ALERTMESSAGE_BETWEENSEASONS_THIRD:String = "#comp7:alertMessage/betweenSeasons/third";
+      
+      public static const ALERTMESSAGE_BETWEENSEASONS_FIRST:String = "#comp7:alertMessage/betweenSeasons/first";
       
       public static const ALERTMESSAGE_BUTTON_CHANGESERVER:String = "#comp7:alertMessage/button/changeServer";
       
@@ -915,11 +931,11 @@ package
       
       public static const PRIMETIMEVIEW_TITLE:String = "#comp7:primeTimeView/title";
       
-      public static const PRIMETIMEVIEW_STATUS_SEASONDISABLED_FIRST:String = "#comp7:primeTimeView/status/seasonDisabled/first";
-      
       public static const PRIMETIMEVIEW_STATUS_SEASONDISABLED_SECOND:String = "#comp7:primeTimeView/status/seasonDisabled/second";
       
       public static const PRIMETIMEVIEW_STATUS_SEASONDISABLED_THIRD:String = "#comp7:primeTimeView/status/seasonDisabled/third";
+      
+      public static const PRIMETIMEVIEW_STATUS_SEASONDISABLED_FIRST:String = "#comp7:primeTimeView/status/seasonDisabled/first";
       
       public static const PRIMETIMEVIEW_STATUS_ALLSERVERSDISABLED:String = "#comp7:primeTimeView/status/allServersDisabled";
       
@@ -999,23 +1015,15 @@ package
       
       public static const BANNER_TITLE:String = "#comp7:banner/title";
       
-      public static const BANNER_SEASON_FIRST:String = "#comp7:banner/season/first";
-      
-      public static const BANNER_SEASON_SECOND:String = "#comp7:banner/season/second";
-      
-      public static const BANNER_SEASON_THIRD:String = "#comp7:banner/season/third";
-      
       public static const BANNER_INFO_SEASONJUSTSTARTED:String = "#comp7:banner/info/seasonJustStarted";
       
       public static const BANNER_INFO_SEASONENDSOON:String = "#comp7:banner/info/seasonEndSoon";
       
-      public static const BANNER_INFO_SEASONEND_FIRST:String = "#comp7:banner/info/seasonEnd/first";
-      
-      public static const BANNER_INFO_SEASONEND_SECOND:String = "#comp7:banner/info/seasonEnd/second";
-      
-      public static const BANNER_INFO_SEASONEND_THIRD:String = "#comp7:banner/info/seasonEnd/third";
+      public static const BANNER_INFO_SEASONEND:String = "#comp7:banner/info/seasonEnd";
       
       public static const BANNER_INFO_DISABLED:String = "#comp7:banner/info/disabled";
+      
+      public static const BANNER_INFO_SEASONNOTSTARTED:String = "#comp7:banner/info/seasonNotStarted";
       
       public static const BANNER_INFOSMALL_DISABLED:String = "#comp7:banner/infoSmall/disabled";
       

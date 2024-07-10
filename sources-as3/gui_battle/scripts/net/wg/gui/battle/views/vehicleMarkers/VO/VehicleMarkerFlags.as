@@ -25,49 +25,22 @@ package net.wg.gui.battle.views.vehicleMarkers.VO
       
       public static const DAMAGE_RICOCHET:String = "ricochet";
       
-      public static const DAMAGE_FROM:Array = ["FROM_UNKNOWN","FROM_ALLY","FROM_ENEMY","FROM_SQUAD","FROM_PLAYER"];
+      public static const PLAYER_DAMAGE_COLOR:Object = {
+         "green":"green",
+         "red":"gold",
+         "gold":"green",
+         "blue":"green",
+         "yellow":"green",
+         "purple":"yellow"
+      };
       
-      public static const DAMAGE_COLOR:Object = {
-         "FROM_UNKNOWN":{
-            "green":"green",
-            "red":"red",
-            "gold":"green",
-            "blue":"green",
-            "yellow":"green",
-            "purple":"purple"
-         },
-         "FROM_ALLY":{
-            "green":"green",
-            "red":"red",
-            "gold":"green",
-            "blue":"green",
-            "yellow":"green",
-            "purple":"purple"
-         },
-         "FROM_ENEMY":{
-            "green":"green",
-            "red":"red",
-            "gold":"green",
-            "blue":"green",
-            "yellow":"green",
-            "purple":"purple"
-         },
-         "FROM_SQUAD":{
-            "green":"green",
-            "red":"gold",
-            "gold":"green",
-            "blue":"green",
-            "yellow":"green",
-            "purple":"yellow"
-         },
-         "FROM_PLAYER":{
-            "green":"green",
-            "red":"gold",
-            "gold":"green",
-            "blue":"green",
-            "yellow":"green",
-            "purple":"yellow"
-         }
+      public static const OTHER_DAMAGE_COLOR:Object = {
+         "green":"green",
+         "red":"red",
+         "gold":"green",
+         "blue":"green",
+         "yellow":"green",
+         "purple":"purple"
       };
       
       public static const ALL_DAMAGE_TYPES:Array = [DAMAGE_SHOT,DAMAGE_FIRE,DAMAGE_RAMMING,DAMAGE_WORLD_COLLISION,DAMAGE_DEATH_ZONE,DAMAGE_DROWNING,DAMAGE_EXPLOSION];

@@ -15,7 +15,7 @@ msgid "#PluralForms"
 msgstr "nplurals=1; plural=0;"
 
 msgid "alertMessage/afterSeason/first"
-msgstr "苍蓝天马赛季已结束"
+msgstr "轻量级天梯战已结束"
 
 msgid "alertMessage/afterSeason/second"
 msgstr "绯红天马赛季已结束"
@@ -27,7 +27,7 @@ msgid "alertMessage/allNotAvailable"
 msgstr "距服务器上的战斗开放还有%(primeDelta)s"
 
 msgid "alertMessage/allNotAvailableEnd/first"
-msgstr "苍蓝天马赛季已结束"
+msgstr "轻量级天梯战已结束"
 
 msgid "alertMessage/allNotAvailableEnd/second"
 msgstr "绯红天马赛季已结束"
@@ -39,7 +39,7 @@ msgid "alertMessage/allNotSet"
 msgstr "此模式在所有服务器上不开放"
 
 msgid "alertMessage/betweenSeasons/first"
-msgstr "苍蓝天马赛季已结束"
+msgstr "轻量级天梯战已结束"
 
 msgid "alertMessage/betweenSeasons/second"
 msgstr "绯红天马赛季已结束"
@@ -69,7 +69,7 @@ msgid "alertMessage/standaloneNotAvailable"
 msgstr "距此服务器上的战斗开放还有%(primeDelta)s"
 
 msgid "alertMessage/standaloneNotAvailableEnd/first"
-msgstr "苍蓝天马赛季已结束"
+msgstr "轻量级天梯战已结束"
 
 msgid "alertMessage/standaloneNotAvailableEnd/second"
 msgstr "绯红天马赛季已结束"
@@ -99,43 +99,31 @@ msgid "alertMessage/undefined"
 msgstr "?empty?"
 
 msgid "alertMessage/unsuitableVehicles"
-msgstr "车库中没有满足要求的%(levels)s级坦克"
+msgstr "您的车库中没有符合要求的坦克"
 
 msgid "banner/info/disabled"
 msgstr "休战"
 
-msgid "banner/info/seasonEnd/first"
-msgstr "苍蓝天马赛季已结束"
-
-msgid "banner/info/seasonEnd/second"
-msgstr "绯红天马赛季已结束"
-
-msgid "banner/info/seasonEnd/third"
-msgstr "翡翠天马赛季已结束"
+msgid "banner/info/seasonEnd"
+msgstr "赛季已结束"
 
 msgid "banner/info/seasonEndSoon"
-msgstr "展示您战斗技巧的最后机会！"
+msgstr "快来尝试VIII级坦克的天梯战！"
 
 msgid "banner/info/seasonJustStarted"
-msgstr "同场竞技，一显身手！"
+msgstr "投身VIII级坦克战斗！"
+
+msgid "banner/info/seasonNotStarted"
+msgstr "激烈的VIII级战斗等待着您！"
 
 msgid "banner/infoSmall/disabled"
 msgstr "等待黄金时间开启"
 
-msgid "banner/season/first"
-msgstr "苍蓝天马"
-
-msgid "banner/season/second"
-msgstr "绯红天马"
-
-msgid "banner/season/third"
-msgstr "翡翠天马"
-
 msgid "banner/seasonDate/seasonLasts"
-msgstr "%(season)s，%(month)s%(day)s日结束"
+msgstr "%(month)s%(day)s日结束"
 
 msgid "banner/seasonDate/seasonNotStarted"
-msgstr "%(season)s，%(month)s%(day)s日开始"
+msgstr "%(month)s%(day)s日开始"
 
 msgid "banner/seasonDateSmall/seasonLasts"
 msgstr "%(month)s%(day)s日结束"
@@ -144,13 +132,13 @@ msgid "banner/seasonDateSmall/seasonNotStarted"
 msgstr "%(month)s%(day)s日开始"
 
 msgid "banner/timeLeft/hours"
-msgstr "黄金时间: %(hour)s时%(min)s分"
+msgstr "%(hour)s小时%(min)s分钟"
 
 msgid "banner/timeLeft/min"
-msgstr "黄金时间: %(min)s分"
+msgstr "%(min)s分钟"
 
 msgid "banner/title"
-msgstr "天梯战"
+msgstr "轻量级天梯战"
 
 msgid "battleCarousel/filterButtonTooltip/body"
 msgstr "设置按类型、角色和系别显示坦克。"
@@ -228,7 +216,7 @@ msgid "battlePage/statusNotificationTimers/sureShot"
 msgstr "坦克参数已提升"
 
 msgid "battleResult/header/deserter"
-msgstr "您因违规受到了处罚:评级点数处罚"
+msgstr "您因违规受到了处罚"
 
 msgid "battleResult/header/deserterQualification"
 msgstr "您受到了处罚: 完成资格赛后，您的评级将被降低"
@@ -237,9 +225,7 @@ msgid "battleResult/label/deserter"
 msgstr "中途离场"
 
 msgid "battleResult/message/deserter"
-msgstr ""
-"您因违规受到了处罚。\n"
-"失去评级点数: %(penalty)s"
+msgstr "您受到了处罚: 暂时封禁。"
 
 msgid "battleResult/message/deserterQualification"
 msgstr ""
@@ -307,7 +293,7 @@ msgid "battleResult/subTask/title/raise"
 msgstr "您已晋升至%(rank)s. %(division)s！"
 
 msgid "battleResult/team/prestigePoints/body"
-msgstr "按声望点数排序。声望点数会影响玩家在战斗中获得和失去的评级点数数量。"
+msgstr "按声望点数排序。"
 
 msgid "battleResult/team/prestigePoints/header"
 msgstr "声望点数"
@@ -319,10 +305,10 @@ msgid "calendarDay/time"
 msgstr "%(start)s–%(end)s"
 
 msgid "calendarDay/timeLeft/first"
-msgid_plural "plural/calendarDay/timeLeft/first"
-msgstr[0] "苍蓝天马赛季将持续%(days)d天"
-msgstr[1] "苍蓝天马赛季将持续%(days)d天"
-msgstr[2] "苍蓝天马赛季将持续%(days)d天"
+msgid_plural "plural/calendarDay/timeLeft"
+msgstr[0] "轻量级天梯战将持续%(days)d天"
+msgstr[1] "轻量级天梯战将持续%(days)d天"
+msgstr[2] "轻量级天梯战将持续%(days)d天"
 
 msgid "calendarDay/timeLeft/second"
 msgid_plural "plural/calendarDay/timeLeft/second"
@@ -363,7 +349,7 @@ msgid "dataError/title"
 msgstr "加载数据时出错"
 
 msgid "detailsHelp/mainTitle"
-msgstr "天梯战模式提示"
+msgstr "轻量级天梯战模式提示"
 
 msgid "detailsHelp/poi"
 msgstr ""
@@ -422,10 +408,10 @@ msgid "divisionTooltip/heading"
 msgstr "梯队%(divisionName)s"
 
 msgid "featureName"
-msgstr "天梯战"
+msgstr "轻量级天梯战"
 
 msgid "featureNameCapitalized"
-msgstr "天梯战"
+msgstr "轻量级天梯战"
 
 msgid "fifthRankTooltip/description"
 msgstr ""
@@ -459,6 +445,9 @@ msgstr "活动详情"
 msgid "intro/confirmButton"
 msgstr "收到！"
 
+msgid "intro/description/noRankedSystem"
+msgstr "无需顾虑资格赛、段位或服役记录，尽享原版天梯战的乐趣。"
+
 msgid "intro/description/onslaughtModifiers"
 msgstr "该模式的修改器可改变坦克的某些参数，如: 生命值、给养冷却时间、可见时长等。"
 
@@ -467,24 +456,6 @@ msgstr ""
 "一旦占领地图上的特定区域，您就能够使用战术能力。一共有2种焦点位置:\n"
 "火炮中枢让您可以命令火炮攻击特定位置，通讯中心可点亮全部敌方坦克。\n"
 "根据地图的不同，这些焦点位置的数量和位置可能会改变。"
-
-msgid "intro/description/qualification"
-msgid_plural "plural/intro/description/qualification"
-msgstr[0] ""
-"参加%(count)s场资格赛战斗以确定您的战斗技巧水平和段位。完成后，您将获得所达到段位和之前所有段位的奖励。\n"
-"\n"
-"在资格赛中，中途离场或平局将被视为失败。"
-msgstr[1] ""
-"参加%(count)s场资格赛战斗以确定您的战斗技巧水平和段位。完成后，您将获得所达到段位和之前所有段位的奖励。\n"
-"\n"
-"在资格赛中，中途离场或平局将被视为失败。"
-msgstr[2] ""
-"参加%(count)s场资格赛战斗以确定您的战斗技巧水平和段位。完成后，您将获得所达到段位和之前所有段位的奖励。\n"
-"\n"
-"在资格赛中，中途离场或平局将被视为失败。"
-
-msgid "intro/description/ranks"
-msgstr "反映玩家战斗技巧的系统。从黑铁段位晋升到传说段位并获得珍贵奖励。在整个天马赛年中持续战斗，获取独特的年度奖励。"
 
 msgid "intro/description/roleSkills"
 msgstr ""
@@ -496,19 +467,16 @@ msgstr ""
 
 msgid "intro/description/vehiclesOnMap"
 msgstr ""
-"您可以驾驶X级可研发或收藏坦克(自行火炮除外)参加战斗。在车库中准备好坦克，进入战场后再根据指定地图的特点选择最佳坦克。选择坦克时，您还要考虑盟友选择了哪些坦克。"
+"该模式仅限使用VIII级坦克(自行火炮和特定坦克除外)。在车库中准备好坦克，进入战场后再根据地图的特点选择最合适的坦克。选择坦克时，您还要考虑盟友选择了哪些坦克。"
+
+msgid "intro/title/noRankedSystem"
+msgstr "尽享战斗乐趣，指挥官"
 
 msgid "intro/title/onslaughtModifiers"
 msgstr "天梯战修改器"
 
 msgid "intro/title/pointsOfInterest"
 msgstr "焦点位置"
-
-msgid "intro/title/qualification"
-msgstr "资格赛"
-
-msgid "intro/title/ranks"
-msgstr "段位系统"
 
 msgid "intro/title/roleSkills"
 msgstr "角色能力"
@@ -620,12 +588,36 @@ msgid "mainWidgetTooltip/battlesCounter"
 msgstr ""
 "%(battleIcon)s{cream_Open}%(battlesCount)s{cream_Close}/%(maxBattlesCount)s"
 
+msgid "mainWidgetTooltip/column/0"
+msgstr " "
+
+msgid "mainWidgetTooltip/column/1"
+msgstr "胜利"
+
+msgid "mainWidgetTooltip/column/2"
+msgstr "失败/平局"
+
+msgid "mainWidgetTooltip/description/completed"
+msgstr "干得漂亮，指挥官，再接再厉！"
+
+msgid "mainWidgetTooltip/description/inProgress"
+msgstr "在轻量级天梯战中完成任务，以及在战斗中取得靠前的名次，即可推进活动进度。"
+
+msgid "mainWidgetTooltip/descriptionHeader"
+msgstr "主要进度已完成"
+
 msgid "mainWidgetTooltip/division"
 msgstr "梯队：%(divisionName)s"
 
 msgid "mainWidgetTooltip/divisionDescription"
 msgstr ""
 "拥有{whiteSpanish_Open}%(fromScore)至%(toScore){whiteSpanish_Close}评级点数的玩家属于此梯队。"
+
+msgid "mainWidgetTooltip/eventEnds"
+msgstr "距活动结束还有%(value)s"
+
+msgid "mainWidgetTooltip/featureName"
+msgstr "轻量级天梯战"
 
 msgid "mainWidgetTooltip/info/fifth"
 msgstr ""
@@ -647,6 +639,15 @@ msgstr "资格赛"
 msgid "mainWidgetTooltip/ratingScore"
 msgstr "评级点数"
 
+msgid "mainWidgetTooltip/top/0"
+msgstr "所获声望点数排名前2"
+
+msgid "mainWidgetTooltip/top/1"
+msgstr "所获声望点数排名前5"
+
+msgid "mainWidgetTooltip/top/2"
+msgstr "所获声望点数排名前7"
+
 msgid "membersWindow/memberCountDropdown/description"
 msgstr "组队玩家"
 
@@ -664,16 +665,16 @@ msgstr "如何用最快的方法获得%(levels)s级坦克？"
 
 msgid "noVehicles/text/vehicleAvailableForBuy"
 msgstr ""
-"您的车库中需要拥有至少一辆符合该模式要求的%(levels)s级坦克才能参加天梯战。\n"
+"您的车库中需要拥有至少一辆符合该模式要求的%(levels)s级坦克才能参加轻量级天梯战。 \n"
 "您已研发了一辆%(levels)s级坦克，但尚未购买它。"
 
 msgid "noVehicles/text/vehicleAvailableForRestore"
 msgstr ""
-"您的车库中需要拥有至少一辆符合该模式要求的%(levels)s级坦克才能参加天梯战。\n"
+"您的车库中需要拥有至少一辆符合该模式要求的%(levels)s级坦克才能参加轻量级天梯战。\n"
 "您拥有一辆可以恢复的%(levels)s级坦克。"
 
 msgid "noVehicles/text/vehicleUnavailable"
-msgstr "您的车库中需要拥有至少一辆符合该模式要求的%(levels)s级坦克才能参加天梯战。"
+msgstr "您的车库中需要拥有至少一辆符合该模式要求的%(levels)s级坦克才能参加轻量级天梯战。"
 
 msgid "page/heading/leaderboard"
 msgstr "排行榜"
@@ -788,7 +789,7 @@ msgid "primeTimeView/status/primeWillBeAvailable"
 msgstr "距%(server)s服务器上的战斗开放还有%(time)s"
 
 msgid "primeTimeView/status/seasonDisabled/first"
-msgstr "%(server)s服务器上的苍蓝天马赛季已结束。"
+msgstr "%(server)s服务器上的轻量级天梯战已结束。"
 
 msgid "primeTimeView/status/seasonDisabled/second"
 msgstr "%(server)s服务器上的绯红天马赛季已结束。"
@@ -800,7 +801,7 @@ msgid "primeTimeView/status/untill"
 msgstr "%(server)s服务器上的战斗将于%(startTime)s开放"
 
 msgid "primeTimeView/title"
-msgstr "天梯战"
+msgstr "轻量级天梯战"
 
 msgid "products/actions/buy"
 msgstr "购买"
@@ -1216,9 +1217,6 @@ msgstr "距结束还有%(hours)s时"
 msgid "season/minutesLeft"
 msgstr "距结束还有%(minutes)s分"
 
-msgid "season/over"
-msgstr "%(seasonName)s已结束"
-
 msgid "season/range"
 msgstr "%(startDate)s–%(endDate)s"
 
@@ -1409,10 +1407,10 @@ msgid "seasonalBattleSelector/timeTable/tomorrow"
 msgstr "明天"
 
 msgid "selectorTooltip/desc"
-msgstr "竞技模式。7对7 | X级"
+msgstr "无段位的7对7模式 | VIII级"
 
 msgid "selectorTooltip/title"
-msgstr "天梯战"
+msgstr "轻量级天梯战"
 
 msgid "selectorTooltip/unavailable/finished"
 msgstr "查看游戏官网的最新消息，关注全新赛季开始的最新进展。"
@@ -1487,13 +1485,13 @@ msgid "system_messages/periodicReward/title"
 msgstr "每日奖励"
 
 msgid "system_messages/primeTime/end/body"
-msgstr "已进入休战期。天梯战战斗暂不开放。"
+msgstr "已进入休战期。轻量级天梯战战斗暂不开放。"
 
 msgid "system_messages/primeTime/end/title"
 msgstr "休战"
 
 msgid "system_messages/primeTime/start/body"
-msgstr "休战期已结束。天梯战战斗已重新开放。"
+msgstr "休战期已结束。轻量级天梯战战斗已重新开放。"
 
 msgid "system_messages/primeTime/start/title"
 msgstr "休战"
@@ -1534,7 +1532,7 @@ msgid "system_messages/shop/purchase/error"
 msgstr "支付出错。请稍后再试。"
 
 msgid "system_messages/temporaryBan/end/body"
-msgstr "您的临时封禁已解除。您可以再次参加天梯战模式了。"
+msgstr "您的临时封禁已解除。您可以再次参加轻量级天梯战模式了。"
 
 msgid "system_messages/temporaryBan/end/title"
 msgstr "封禁结束"

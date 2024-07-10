@@ -481,8 +481,14 @@ msgstr "最常见的炮弹类型，仅在穿透坦克装甲时才会造成损伤
 msgid "advanced/ARMOR_PIERCING_CR"
 msgstr "飞行速度高，仅在穿透坦克装甲时才会造成损伤。如果撞击装甲的角度过大，将会发生跳弹。APCR炮弹的穿透力随飞行距离而降低。"
 
+msgid "advanced/ARMOR_PIERCING_CR_NOT_PIERCING_DAMAGE"
+msgstr "除此类别炮弹的基本优缺点之外，这种炮弹造成损伤的几率较高(即使没能击穿敌方坦克的装甲)。"
+
 msgid "advanced/ARMOR_PIERCING_CR_TRAY"
 msgstr "星形弹托炮弹有利有弊，因为它造成的损伤取决于坦克射击时与目标之间相隔的距离。这种炮弹可以在50米的距离内对目标造成最大平均损伤。"
+
+msgid "advanced/ARMOR_PIERCING_NOT_PIERCING_DAMAGE"
+msgstr "除此类别炮弹的基本优缺点之外，这种炮弹造成损伤的几率较高(即使没能击穿敌方坦克的装甲)。"
 
 msgid "advanced/ARMOR_PIERCING_TRAY"
 msgstr "星形弹托炮弹有利有弊，因为它造成的损伤取决于坦克射击时与目标之间相隔的距离。这种炮弹可以在50米的距离内对目标造成最大平均损伤。"
@@ -801,7 +807,7 @@ msgid "awardItem/battleToken/description"
 msgstr "解锁多个任务。"
 
 msgid "awardItem/battleToken/one/body"
-msgstr "解锁«%(name)s»任务。"
+msgstr "解锁%(name)s任务。"
 
 msgid "awardItem/battleToken/one/header"
 msgstr "任务可用"
@@ -813,7 +819,7 @@ msgid "awardItem/battleToken/several/header"
 msgstr "可用的任务"
 
 msgid "awardItem/battleToken/several/line"
-msgstr "%(num)s。 《%(name)s》。"
+msgstr "%(num)s。 %(name)s。"
 
 msgid "awardItem/battle_bonuses/body"
 msgstr "所获得的银币、战斗与全局经验、乘员经验提高%(earnings)d%%。"
@@ -1905,6 +1911,9 @@ msgstr "该模式需要较高的计算机性能。您可能会遇到地图加载
 msgid "battle_royale/hangar/perf/medium_risk/header"
 msgstr "可能会降低性能"
 
+msgid "battle_royale/hangar/tankSetupPanel/ability/cooldownTime"
+msgstr "{whiteSpanish_Open}%(cooldown)s{whiteSpanish_Close}秒冷却时间"
+
 msgid "battle_royale/hangar/vehicle/description/china"
 msgstr ""
 "这辆C系坦克背后的专业团队运用了最先进的坦克制造工艺。能够在钢铁猎手这样的极端条件下测试硬件性能，对设计它的工程师而言无疑是千载难逢的好机会。"
@@ -2529,7 +2538,7 @@ msgid "commanderBonus/alt/info"
 msgstr "特殊的车长特性，无需训练，车长默认拥有。"
 
 msgid "commanderBonus/description"
-msgstr "其他所有乘员的乘员效率加成提高{greenBright_Start}%(commBonus)s%%{greenBright_End}。"
+msgstr "其他所有乘员的乘员效率加成{greenBright_Start}+%(commBonus)s%%{greenBright_End}。"
 
 msgid "commanderBonus/name"
 msgstr "车长加成"
@@ -4986,10 +4995,10 @@ msgstr "当前负载超过了悬挂装置的承载能力。请升级悬挂装置
 msgid "hangar/status/toRent"
 msgstr "延期租用时间"
 
-msgid "hangar/tankCarusel/wrongSquadSPGVehicle/body"
+msgid "hangar/tankCarusel/wrongSquadTypeVehicle/body"
 msgstr "选择其它坦克类型以确认您是否就绪"
 
-msgid "hangar/tankCarusel/wrongSquadSPGVehicle/header"
+msgid "hangar/tankCarusel/wrongSquadTypeVehicle/header"
 msgstr "不可用"
 
 msgid "hangar/tankCarusel/wrongSquadVehicle/body"
@@ -6674,7 +6683,8 @@ msgstr "独一无二的乘员"
 
 msgid "notrecruitedtankman/commander_tolmeron/desc"
 msgstr ""
-"托尔梅隆副官是一名原铸星际战士，虽然不像战团中的老兵那样受人爱戴，但战友们依然对他尊敬有加。他被认为是好战的正义典范，对战友不离不弃。官衔和荣誉对他来说皆如浮云，但意想不到的是，他却总能轻松地获得这一切。战友们总说：“战斗中他的行动就像精金上滑落的血滴一样迅疾且势不可挡。圣吉列斯的血脉因他而荣耀。伤疤就是最好的证明。”"
+"托尔梅隆副官是一名原铸星际战士，虽然不像战团中的老兵那样受人爱戴，但战友们依然对他尊敬有加。他被认为是好战的正义典范，对战友不离不弃。官衔和荣誉对他来说皆如浮云，但意想不到的是，他却总能轻松地获得这一切。战友们总说:"
+" \"战斗中他的行动就像精金上滑落的血滴一样迅疾且势不可挡。圣吉列斯的血脉因他而荣耀。伤疤就是最好的证明。\""
 
 msgid "notrecruitedtankman/commander_tolmeron/label"
 msgstr "独特指挥官"
@@ -7613,7 +7623,7 @@ msgstr "战斗通行证赛季XIV"
 msgid "notrecruitedtankman/tankmen_bp14_5/desc"
 msgstr ""
 "理查德对佩戴黑色贝雷帽的部队情有独钟，因此加入了皇家坦克团，持续服役将近30年。最初担任\"酋长\"的驾驶员(当时他大部分时间是在修坦克，而不是开坦克)，在晋升的过程中胜任各种各样的职务，还指挥过数辆坦克，包括:"
-" 挑战者-I、挑战者-II、“蝎”式坦克。除了担任炮术教官和教导装甲部队战术，理查德还在各地的行动中与多方武装部队合作过。"
+" 挑战者-I、挑战者-II、\"蝎\"式坦克。除了担任炮术教官和教导装甲部队战术，理查德还在各地的行动中与多方武装部队合作过。"
 
 msgid "notrecruitedtankman/tankmen_bp14_5/howToGetInfo"
 msgstr "?empty?"
@@ -8785,6 +8795,9 @@ msgstr "还有%(count)s个"
 
 msgid "quests/awards/additional/header"
 msgstr "奖励:"
+
+msgid "quests/awards/nearest/header"
+msgstr "下组奖励:"
 
 msgid "quests/awards/vehicleRent/bottom"
 msgstr "还有%(count)s个"
@@ -9959,29 +9972,23 @@ msgstr "低品质声音"
 msgid "squadBonus/comp7/description"
 msgstr "组队战斗时，您可获得额外银币和经验。"
 
+msgid "squadBonus/comp7/noExpDescription"
+msgstr "组队战斗时，您可获得额外银币。"
+
 msgid "squadBonus/complex/body"
 msgstr ""
-"当和其他玩家组队时，每场战斗结束后您将额外获得%(bonus)s战斗经验。\n"
+"当和其他玩家组队时，每场战斗结束后您将额外获得{brown_Open}%(value)s{brown_Close}战斗经验。\n"
 "\n"
-"该奖励仅对常驻小队生效，在战斗中动态组队无效。"
-
-msgid "squadBonus/complex/bonusPercent"
-msgstr "%(value)s%%"
-
-msgid "squadBonus/complex/comp7/body"
-msgstr "组队战斗时，您可获得额外银币和经验。"
-
-msgid "squadBonus/complex/comp7/header"
-msgstr "组队战斗加成"
+"该加成仅对常驻小队生效，不适用于战斗中的动态组队。"
 
 msgid "squadBonus/complex/header"
 msgstr "组队战斗奖励"
 
 msgid "squadBonus/credits/bonusWithPremium"
-msgstr "+{value}，如果您有坦克世界高级账号。"
+msgstr "{brown_Open}+%(value)s{brown_Close}，如果您拥有《坦克世界》高级账号。"
 
 msgid "squadBonus/credits/bonusWithoutPremium"
-msgstr "+{value}，如果您的组队成员有坦克世界高级账号。"
+msgstr "{brown_Open}+%(value)s{brown_Close}，如果您的小队成员拥有《坦克世界》高级账号。"
 
 msgid "squadBonus/credits/header"
 msgstr "额外银币"
@@ -9989,11 +9996,14 @@ msgstr "额外银币"
 msgid "squadBonus/description"
 msgstr "当组队时您可以额外获得一定的银币和经验。该奖励对在战斗中动态组队是无效的。"
 
-msgid "squadBonus/experience/bonus"
-msgstr "无论坦克等级、战斗结果或高级账号，组队战斗时+{value}。"
+msgid "squadBonus/experience/body"
+msgstr "无论坦克等级、战斗结果或高级账号，组队战斗时{brown_Open}+%(value)s{brown_Close}。"
 
 msgid "squadBonus/experience/header"
 msgstr "额外经验"
+
+msgid "squadBonus/noExpDescription"
+msgstr "组队时您可以额外获得一定的银币。该加成不适用于战斗中的动态组队。"
 
 msgid "squadBonus/title"
 msgstr "组队战斗奖励"
@@ -10249,11 +10259,17 @@ msgstr "对应指示器出现时，改进后的系统可以缩短射击后自动
 msgid "tank_params/desc/autoReloadTime/boost/shortDescription"
 msgstr "改进型自动装填系统可以缩短自动装填炮弹的标准时长。"
 
+msgid "tank_params/desc/autoShootClipFireRate"
+msgstr "射出弹夹(或两门火炮)中最后一发炮弹和重新装填完整弹匣的间隔时间。/火炮数量或弹匣中的炮弹数量。"
+
 msgid "tank_params/desc/avgDamage"
 msgstr "标准炮弹击穿后所造成的平均损伤。损伤浮动范围为平均值的+/- 25%。"
 
 msgid "tank_params/desc/avgDamagePerMinute"
 msgstr "如果所有射击都能击穿装甲，于1分钟内可能对敌方坦克造成的损伤量。"
+
+msgid "tank_params/desc/avgDamagePerSecond"
+msgstr "如果每次命中都击穿装甲，连射时于1秒内可能对敌方坦克造成的损伤量。"
 
 msgid "tank_params/desc/avgPiercingPower"
 msgstr "标准炮弹的平均穿透力，已计入炮弹转正效应。穿透力浮动范围为平均值的+/- 25%。"
@@ -10280,6 +10296,9 @@ msgstr ""
 msgid "tank_params/desc/clipFireRate"
 msgstr ""
 "射出弹夹(或两门火炮)中最后一发炮弹和重新装填完整弹夹的间隔时间。/弹夹中两发炮弹、火炮、短弹夹之间的射击间隔时间。/火炮数量或弹夹中的炮弹数量。"
+
+msgid "tank_params/desc/continuousShotsPerMinute"
+msgstr "每分钟可射出的炮弹数量，不包括装填时间。"
 
 msgid "tank_params/desc/damage"
 msgstr "标准炮弹击穿敌方装甲造成的损伤。"
@@ -10894,9 +10913,6 @@ msgstr "乘员(%d%%)"
 msgid "vehicle/dailyXPFactor"
 msgstr "每天首场战斗胜利获得经验"
 
-msgid "vehicle/damage"
-msgstr "<h1>损伤</h1> <h2>(hp)</h2>"
-
 msgid "vehicle/deal/epic/main"
 msgstr "前线模式的坦克"
 
@@ -10972,9 +10988,6 @@ msgstr "租用自"
 msgid "vehicle/multiplied_xp"
 msgstr "经验"
 
-msgid "vehicle/radioDistance"
-msgstr "<h1>信号范围</h1> <h2>(km)</h2>"
-
 msgid "vehicle/rankedBonusBattle"
 msgstr "战斗奖励可用"
 
@@ -11032,9 +11045,6 @@ msgstr "恢复"
 msgid "vehicle/sell_price"
 msgstr "出售"
 
-msgid "vehicle/speedLimits"
-msgstr "<h1>最高速度</h1> <h2>(km/h)</h2>"
-
 msgid "vehicle/telecomRental/remainingTime/days"
 msgstr "租用期:还剩%(time)s天"
 
@@ -11049,9 +11059,6 @@ msgstr "或"
 
 msgid "vehicle/trade"
 msgstr "该坦克符合折价置换条件"
-
-msgid "vehicle/turretRotationSpeed"
-msgstr "<h1>火炮旋转速度</h1> <h2>(deg/s)</h2>"
 
 msgid "vehicle/unlock_price"
 msgstr "研发"
