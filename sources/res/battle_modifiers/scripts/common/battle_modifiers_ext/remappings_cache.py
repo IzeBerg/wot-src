@@ -33,10 +33,14 @@ class RemappingCache(object):
         else:
             return
 
-    def __readConfig(self):
-        config = ResMgr.openSection(REMAPPING_XML_PATH)
+    def reloadCache(self, configPath=''):
+        self.__readConfig(configPath)
+
+    def __readConfig(self, configPath=''):
+        configPath = configPath or REMAPPING_XML_PATH
+        config = ResMgr.openSection(configPath)
         if config is None:
-            raise SoftException(("[Remapping] Cannot open or read '{}'").format(REMAPPING_XML_PATH))
+            raise SoftException(("[Remapping] Cannot open or read '{}'").format(configPath))
         self.__remapping = {}
         for remappingName, remappingSection in config.items():
             if remappingName == 'xmlns:xmlref':

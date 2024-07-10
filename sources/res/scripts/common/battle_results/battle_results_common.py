@@ -223,6 +223,8 @@ BATTLE_RESULTS = [
  (
   'originalXP', int, 0, None, 'sum', ENTRY_TYPE.VEHICLE_SELF),
  (
+  'pureXP', int, 0, None, 'sum', ENTRY_TYPE.SERVER),
+ (
   'xpReplay', str, '', ValueReplayPacker(), 'skip', ENTRY_TYPE.VEHICLE_SELF),
  (
   'originalFreeXP', int, 0, None, 'sum', ENTRY_TYPE.VEHICLE_SELF),
@@ -457,6 +459,8 @@ BATTLE_RESULTS = [
  (
   'questsProgress', dict, {}, None, 'joinDicts', ENTRY_TYPE.VEHICLE_SELF),
  (
+  'questTokensCount', dict, {}, None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
+ (
   'c11nProgress', dict, {}, None, 'skip', ENTRY_TYPE.VEHICLE_SELF),
  (
   'originalCreditsToDrawSquad', int, 0, None, 'sum', ENTRY_TYPE.VEHICLE_SELF),
@@ -596,6 +600,10 @@ BATTLE_RESULTS = [
   'accountCompDescr', dict, {}, None, 'skip', ENTRY_TYPE.COMMON),
  (
   'teamHealth', dict, {}, None, 'skip', ENTRY_TYPE.COMMON),
+ (
+  'battleModifiersDescr', tuple, (), None, 'skip', ENTRY_TYPE.COMMON),
+ (
+  'bonusCapsOverrides', dict, {}, None, 'skip', ENTRY_TYPE.COMMON),
  (
   'canStun', bool, False, None, 'any', ENTRY_TYPE.SERVER),
  (

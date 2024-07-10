@@ -382,3 +382,14 @@ def readFloatPair(xmlCtx, section, subsectionName):
     if count == 1:
         return (values[0], values[0])
     return values
+
+
+def readPrefabsSets(section, prefabsKeys):
+    if section is None:
+        return component_constants.EMPTY_DICT
+    else:
+        prefabs = {'default': {k:section.readStrings(k) for k in prefabsKeys}}
+        for k, v in (section['sets'] or {}).items():
+            prefabs[k] = {k:v.readStrings(k) for k in prefabsKeys}
+
+        return prefabs

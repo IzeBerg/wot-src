@@ -1186,7 +1186,7 @@
 		</ComponentPool>
 		<ComponentPool>
 			<type>SequenceComponent</type>
-			<version>2</version>
+			<version>3</version>
 			<component>
 				<objectIndex>0</objectIndex>
 				<flags>35</flags>
@@ -1271,14 +1271,14 @@
 																			<property>
 																				<name>left</name>
 																				<value>
-																					6.28319
+																					1.5708 0 0
 																					<!--BW_String-->
 																				</value>
 																			</property>
 																			<property>
 																				<name>right</name>
 																				<value>
-																					6.28319
+																					1.5708 0 0
 																					<!--BW_String-->
 																				</value>
 																			</property>
@@ -1860,40 +1860,6 @@
 				<flags>3</flags>
 				<config>
 					<property>
-						<name>chunkItemData</name>
-						<isEditorOnly>true</isEditorOnly>
-						<section>
-							<editorOnly>
-								<hidden>false</hidden>
-								<frozen>false</frozen>
-							</editorOnly>
-							<visibilityMask>4294967295</visibilityMask>
-							<transform>
-								<row0>1.086403 0.104067 -5.118245</row0>
-								<row1>5.119083 0.026388 1.087117</row1>
-								<row2>0.047426 -5.232209 -0.096317</row2>
-								<row3>67.047546 38.445755 29.647339</row3>
-							</transform>
-							<diffTex>maps/decals_pbs/PBS_Ground_22_AM.dds</diffTex>
-							<bumpTex>maps/decals_pbs/PBS_Ground_22_NM.dds</bumpTex>
-							<hmTex>maps/decals_pbs/PBS_Ground_22_GMM.dds</hmTex>
-							<addTex/>
-							<priority>3</priority>
-							<type>1</type>
-							<influence>2</influence>
-							<offsets>0.000000 0.000000 0.000000 0.000000</offsets>
-							<uvWrapping>1.000000 1.000000</uvWrapping>
-							<accurate>3</accurate>
-							<tilesFade>0.050000</tilesFade>
-							<invertDistanceFadeFlag>false</invertDistanceFadeFlag>
-							<isHidden>false</isHidden>
-							<configUuid>1e126eb7-d1b4-39e8-b890-02d8677c009a</configUuid>
-							<parallax_offset>0.500000</parallax_offset>
-							<parallax_mode>0.000000</parallax_mode>
-							<parallax_amplitude>0.100000</parallax_amplitude>
-						</section>
-					</property>
-					<property>
 						<name>_upside</name>
 						<value>-0 -0 -1</value>
 					</property>
@@ -1904,40 +1870,6 @@
 				<flags>3</flags>
 				<config>
 					<property>
-						<name>chunkItemData</name>
-						<isEditorOnly>true</isEditorOnly>
-						<section>
-							<editorOnly>
-								<hidden>false</hidden>
-								<frozen>false</frozen>
-							</editorOnly>
-							<visibilityMask>4294967295</visibilityMask>
-							<transform>
-								<row0>4.347032 -0.160380 -2.909488</row0>
-								<row1>2.911818 0.436828 4.326434</row1>
-								<row2>0.110269 -5.212591 0.452086</row2>
-								<row3>64.523300 38.410938 33.089478</row3>
-							</transform>
-							<diffTex>maps/decals_pbs/PBS_Ground_22_AM.dds</diffTex>
-							<bumpTex>maps/decals_pbs/PBS_Ground_22_NM.dds</bumpTex>
-							<hmTex>maps/decals_pbs/PBS_Ground_22_GMM.dds</hmTex>
-							<addTex/>
-							<priority>2</priority>
-							<type>1</type>
-							<influence>2</influence>
-							<offsets>0.000000 0.000000 0.000000 0.000000</offsets>
-							<uvWrapping>1.000000 1.000000</uvWrapping>
-							<accurate>3</accurate>
-							<tilesFade>0.050000</tilesFade>
-							<invertDistanceFadeFlag>false</invertDistanceFadeFlag>
-							<isHidden>false</isHidden>
-							<configUuid>b3f1876e-af5a-35c2-8478-2bf669a2fdfc</configUuid>
-							<parallax_offset>0.500000</parallax_offset>
-							<parallax_mode>0.000000</parallax_mode>
-							<parallax_amplitude>0.100000</parallax_amplitude>
-						</section>
-					</property>
-					<property>
 						<name>_upside</name>
 						<value>-0 -0 -1</value>
 					</property>
@@ -1947,40 +1879,6 @@
 				<objectIndex>10</objectIndex>
 				<flags>3</flags>
 				<config>
-					<property>
-						<name>chunkItemData</name>
-						<isEditorOnly>true</isEditorOnly>
-						<section>
-							<editorOnly>
-								<hidden>false</hidden>
-								<frozen>false</frozen>
-							</editorOnly>
-							<visibilityMask>4294967295</visibilityMask>
-							<transform>
-								<row0>2.729088 0.053920 -13.643321</row0>
-								<row1>8.192139 0.005266 1.638703</row1>
-								<row2>0.019177 -13.913695 -0.051153</row2>
-								<row3>67.470764 38.448982 28.307892</row3>
-							</transform>
-							<diffTex>maps/decals_pbs/Road_decal_03_AM.dds</diffTex>
-							<bumpTex>maps/decals_pbs/Road_decal_03_NM.dds</bumpTex>
-							<hmTex>maps/decals_pbs/Road_decal_03_GMM.dds</hmTex>
-							<addTex/>
-							<priority>1</priority>
-							<type>1</type>
-							<influence>2</influence>
-							<offsets>0.000000 0.000000 0.000000 0.000000</offsets>
-							<uvWrapping>1.000000 1.000000</uvWrapping>
-							<accurate>3</accurate>
-							<tilesFade>0.050000</tilesFade>
-							<invertDistanceFadeFlag>false</invertDistanceFadeFlag>
-							<isHidden>false</isHidden>
-							<configUuid>206a1c6c-e3d7-31ef-bdb5-d8867789a344</configUuid>
-							<parallax_offset>0.500000</parallax_offset>
-							<parallax_mode>0.000000</parallax_mode>
-							<parallax_amplitude>0.100000</parallax_amplitude>
-						</section>
-					</property>
 					<property>
 						<name>_upside</name>
 						<value>-0 -0 -1</value>

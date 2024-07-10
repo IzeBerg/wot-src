@@ -4,6 +4,7 @@ package net.wg.gui.components.wulf
    import flash.display.InteractiveObject;
    import flash.display.Sprite;
    import flash.events.Event;
+   import flash.events.FocusEvent;
    import flash.geom.Rectangle;
    import net.wg.data.constants.Errors;
    import net.wg.gui.components.containers.UssWrapper;
@@ -128,6 +129,10 @@ package net.wg.gui.components.wulf
          if(!this._disposed && this._wrapper.focused)
          {
             tryMoveFocus(InteractiveObject(this._wrapper),this,true);
+            if(this._wrapper.focused)
+            {
+               this._wrapper.dispatchEvent(new FocusEvent(FocusEvent.FOCUS_OUT));
+            }
          }
          removeChild(this._wrapper as DisplayObject);
          this._wrapper.dispose();

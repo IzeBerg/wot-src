@@ -1,3 +1,4 @@
+from BattleRoyaleConstants import BATTLE_ROYALE_REPAIR_COST
 from constants import Configs
 from gui.impl.lobby.tank_setup.dialogs.main_content.main_contents import NeedRepairMainContent
 from gui.impl.lobby.tank_setup.dialogs.need_repair import NeedRepair
@@ -8,8 +9,10 @@ class NeedRepairMainContentBattleRoyale(NeedRepairMainContent):
 
     def onLoading(self, *args, **kwargs):
         super(NeedRepairMainContentBattleRoyale, self).onLoading(*args, **kwargs)
+        repairCost = self.vehicle.repairCost
+        maxRepairCost = BATTLE_ROYALE_REPAIR_COST
         with self._viewModel.transaction() as (model):
-            model.setRepairPercentage(self._repairPercentage)
+            model.setRepairPercentage(round((maxRepairCost - repairCost) * 100 / maxRepairCost))
             model.setFreeAutoRepair(False)
 
 

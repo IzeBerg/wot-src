@@ -8,6 +8,6 @@ package net.wg.infrastructure.base.meta
       
       function as_show() : void;
       
-      function as_hide() : void;
+      function as_hide(param1:Boolean) : void;
    }
 }

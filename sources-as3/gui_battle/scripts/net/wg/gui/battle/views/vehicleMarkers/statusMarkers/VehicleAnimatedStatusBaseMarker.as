@@ -30,7 +30,7 @@ package net.wg.gui.battle.views.vehicleMarkers.statusMarkers
       
       protected var color:String = "";
       
-      private var _altasIconAlias:String = "";
+      private var _atlasIconAlias:String = "";
       
       private var _atlasSrcMode:Boolean;
       
@@ -109,8 +109,8 @@ package net.wg.gui.battle.views.vehicleMarkers.statusMarkers
       public function setStatusID(param1:int) : void
       {
          this._statusID = param1;
-         this._altasIconAlias = VehicleMarkersConstants.getStatusMarkerIconNameByStatusId(param1);
-         this._atlasSrcMode = !StringUtils.isEmpty(this._altasIconAlias);
+         this._atlasIconAlias = VehicleMarkersConstants.getStatusMarkerIconNameByStatusId(param1);
+         this._atlasSrcMode = !StringUtils.isEmpty(this._atlasIconAlias);
       }
       
       public function setVisibility(param1:Boolean) : void
@@ -203,9 +203,9 @@ package net.wg.gui.battle.views.vehicleMarkers.statusMarkers
          }
       }
       
-      public function get altasIconAlias() : String
+      public function get atlasIconAlias() : String
       {
-         return this._altasIconAlias;
+         return this._atlasIconAlias;
       }
       
       public function get arrowColorFrame() : String

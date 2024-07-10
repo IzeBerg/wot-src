@@ -226,7 +226,7 @@ class EventPostBattleInfo(EventInfoModel):
            'progressList': progresses, 
            'alertMsg': alertMsg, 
            'questInfo': self.getInfo(svrEvents, pCur, pPrev), 
-           'personalInfo': [], 'questType': self.event.getType()}
+           'questType': self.event.getType()}
 
     @classmethod
     def _getEventsByIDs(cls, ids, svrEvents):
@@ -420,9 +420,8 @@ class PersonalMissionPostBattleInfo(EventPostBattleInfo):
            'linkBtnVisible': statusState == PERSONAL_MISSIONS_ALIASES.POST_BATTLE_STATE_IN_PROGRESS, 
            'collapsedToggleBtnVisible': statusState == PERSONAL_MISSIONS_ALIASES.POST_BATTLE_STATE_IN_PROGRESS, 
            'descr': descr, 
-           'personalInfo': [
-                          condFormatter.getConditionsData(isMain=True),
-                          condFormatter.getConditionsData(isMain=False)], 
+           'personalInfo': {'mainConditions': condFormatter.getConditionsData(isMain=True), 
+                            'addConditions': condFormatter.getConditionsData(isMain=False)}, 
            'questState': {'statusState': statusState, 
                           'statusText': statusText}, 
            'awards': []})

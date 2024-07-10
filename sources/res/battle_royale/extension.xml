@@ -33,7 +33,7 @@
 			<VehicleShotPassionComponent/>
 			<VehicleSelfBuffComponent/>
 			<VehicleBerserkerComponent/>
-			<ArenaInfoAbilityNotifier/>
+			<ArenaInfoBRComponent/>
 			<VehicleHealPointComponent/>
 			<VehicleHealingComponent/>
 			<VehicleFireCircleEffectComponent/>
@@ -54,6 +54,7 @@
 			<ThunderStrike/>
 		</ClientServerEntities>
 		<ServerOnlyEntities>
+			<BattleRoyaleMgr/>
 			<BattleRoyaleTournamentMgr/>
 		</ServerOnlyEntities>
 	</Entities>
@@ -68,6 +69,7 @@
 			<module>client.battle_royale.abilities.self_buff</module>
 			<module>client.battle_royale.abilities.corroding_shot_preparing</module>
 			<module>client.battle_royale.abilities.adaptation_restore_health</module>
+			<module>client.battle_royale.cgf_components.loot_transparency</module>
 		</script>
 	</cgf>
 </root>

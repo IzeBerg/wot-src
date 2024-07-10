@@ -304,7 +304,6 @@ package net.wg.gui.lobby.settings
          registerToolTip(this.nightModeCheckbox,SettingsConfigHelper.NIGHT_MODE);
          registerToolTip(this.bassBoostCheckbox,SettingsConfigHelper.BASS_BOOST);
          registerToolTip(this.soundQualityCheckbox,SettingsConfigHelper.SOUND_QUALITY);
-         registerToolTip(this.artyBulbVoicesIcon,SettingsConfigHelper.ARTY_BULB_VOICES);
          registerToolTip(this.artyBulbVoicesLabel,SettingsConfigHelper.ARTY_BULB_VOICES);
          registerToolTip(this.artyBulbVoicesDropDown,SettingsConfigHelper.ARTY_BULB_VOICES);
       }

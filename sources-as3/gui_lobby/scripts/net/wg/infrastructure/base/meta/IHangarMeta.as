@@ -24,7 +24,9 @@ package net.wg.infrastructure.base.meta
       
       function as_setComp7ModifiersVisible(param1:Boolean) : void;
       
-      function as_setComp7TournamentBannerVisible(param1:Boolean) : void;
+      function as_setEventTournamentBannerVisible(param1:String, param2:Boolean) : void;
+      
+      function as_setPrestigeWidgetVisible(param1:Boolean) : void;
       
       function as_setVisible(param1:Boolean) : void;
       
@@ -45,8 +47,6 @@ package net.wg.infrastructure.base.meta
       function as_setTeaserTimer(param1:String) : void;
       
       function as_hideTeaserTimer() : void;
-      
-      function as_setPrestigeWidgetVisible(param1:Boolean) : void;
       
       function as_showSwitchToAmmunition() : void;
       

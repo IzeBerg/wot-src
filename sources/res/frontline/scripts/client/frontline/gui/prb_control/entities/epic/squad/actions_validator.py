@@ -1,14 +1,14 @@
-from constants import BATTLE_MODE_VEH_TAGS_EXCEPT_EPIC
 from CurrentVehicle import g_currentVehicle
+from constants import BATTLE_MODE_VEH_TAGS_EXCEPT_EPIC
 from gui.prb_control.entities.base.actions_validator import ActionsValidatorComposite
 from gui.prb_control.entities.base.squad.actions_validator import SquadActionsValidator, SquadVehiclesValidator
-from gui.prb_control.entities.random.squad.actions_validator import BalancedSquadVehiclesValidator, SPGForbiddenSquadVehiclesValidator
+from gui.prb_control.entities.base.unit.actions_validator import CommanderValidator
+from gui.prb_control.entities.base.unit.actions_validator import UnitStateValidator
+from gui.prb_control.entities.random.squad.actions_validator import BalancedSquadVehiclesValidator, RoleForbiddenSquadVehiclesValidator
 from gui.prb_control.items import ValidationResult
 from gui.prb_control.settings import UNIT_RESTRICTION
-from gui.prb_control.entities.base.unit.actions_validator import UnitStateValidator
 from helpers import time_utils, dependency
 from skeletons.gui.game_control import IEpicBattleMetaGameController
-from gui.prb_control.entities.base.unit.actions_validator import CommanderValidator
 
 class _EpicVehiclesValidator(SquadVehiclesValidator):
     _BATTLE_MODE_VEHICLE_TAGS = BATTLE_MODE_VEH_TAGS_EXCEPT_EPIC
@@ -42,7 +42,7 @@ class EpicSquadActionsValidator(SquadActionsValidator):
         return ActionsValidatorComposite(entity, validators=[
          _EpicBalancedSquadVehiclesValidator(entity),
          _EpicVehiclesValidator(entity),
-         SPGForbiddenSquadVehiclesValidator(entity)])
+         RoleForbiddenSquadVehiclesValidator(entity)])
 
     def _createStateValidator(self, entity):
         return _EpicStateValidator(entity)

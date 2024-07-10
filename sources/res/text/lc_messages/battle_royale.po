@@ -49,6 +49,9 @@ msgstr "Second chance and rewards"
 msgid "banner/seasonDate/seasonLasts"
 msgstr "Until %(month)s %(day)s"
 
+msgid "banner/subtitle"
+msgstr "Battle royale with valuable rewards"
+
 msgid "banner/timeLeft/hour"
 msgstr "%(hour)s h"
 
@@ -195,14 +198,14 @@ msgstr "Stage {stage} progress"
 
 msgid "battleResult/stats/anonymizer/body"
 msgstr ""
-"Your actual nickname and clan tag are not displayed to other players in the "
-"battle."
+"Player's actual nickname and clan tag are not displayed to other players in "
+"the battle."
 
 msgid "battleResult/stats/anonymizer/enemy/header"
 msgstr "Player's actual nickname: {name}"
 
 msgid "battleResult/stats/anonymizer/header"
-msgstr "Your actual name was changed to {name}"
+msgstr "Player's actual nickname was changed to {name}"
 
 msgid "battleResult/stats/damageBlockedByArmor/body"
 msgstr "The amount of damage blocked by your vehicle's armor."
@@ -372,20 +375,20 @@ msgstr "Destroyed by you"
 
 msgid "fullStats/icons/airDrop/description"
 msgstr ""
-"Airdrop: experience, hit points recovery, module repairs, charges for all "
-"abilities, shells."
+"Airdrop: XP, HP recovery, module repairs, charges for all Combat Abilities, "
+"ammo."
 
 msgid "fullStats/icons/corpseLoot/description"
 msgstr ""
-"Spoils of War: experience, hit points recovery, module repairs, charges for "
-"some abilities, shells."
+"Spoils of War: XP, HP recovery, module repairs, charges for some Combat "
+"Abilities, ammo."
 
 msgid "fullStats/icons/defaultLoot/description"
-msgstr "Supplies: experience, module repairs, charges for some abilities."
+msgstr "Supplies: XP, possible Combat Ability charge, ammo."
 
 msgid "fullStats/icons/extendedLoot/description"
 msgstr ""
-"Consumables: experience, hit points recovery, charge for Recovery, shells."
+"Consumables: XP, HP recovery, module repairs, charge for Recovery, ammo."
 
 msgid "fullStats/subTitle"
 msgstr "Battle for valuable resources under \"free-for-all\" rules."
@@ -832,6 +835,21 @@ msgstr "Our armor is corroding!"
 msgid "statusNotificationTimers/thunderStrike"
 msgstr "Mobility decreased!"
 
+msgid "techParams/type/damage"
+msgstr "DAMAGE"
+
+msgid "techParams/type/difficulty"
+msgstr "DIFFICULTY"
+
+msgid "techParams/type/mobility"
+msgstr "MOBILITY"
+
+msgid "techParams/type/spotting"
+msgstr "SPOTTING"
+
+msgid "techParams/type/survivability"
+msgstr "SURVIVABILITY"
+
 msgid "techtree/body_armor"
 msgstr "Armor"
 
@@ -1022,42 +1040,37 @@ msgstr "What to Spend Seals On"
 msgid "tooltips/brCoin/title"
 msgstr "Steel Seals"
 
-msgid "tooltips/respawnIcon/definition"
-msgstr "Respawn charges can be received from an Airdrop."
-
-msgid "tooltips/respawnIcon/description"
+msgid "tooltips/respawn/common/description"
 msgstr ""
 "Allows you to get back to battle after your vehicle has been destroyed. When"
 " this happens, the vehicle's upgrade level is not lost. It can only be used "
 "a limited number of times per battle."
 
-msgid "tooltips/respawnIcon/min"
-msgstr "%(duration)s min"
+msgid "tooltips/respawn/footer/text"
+msgstr "Respawn charges can be received from an Airdrop."
 
-msgid "tooltips/respawnIcon/platoon/description"
+msgid "tooltips/respawn/platoon/description"
 msgstr ""
-"To respawn an ally, stay out of combat during %(timeToResurrect)s. This "
-"mechanic works within the first %(duration)s of a battle. Respawn charges "
-"are shared between Platoon members."
+"To respawn an ally, stay out of combat during "
+"{brown_Open}%(timeToResurrect)s s{brown_Close}. This mechanic works within "
+"the first {brown_Open}%(duration)s min{brown_Close} of a battle. Respawn "
+"charges are shared between Platoon members."
 
-msgid "tooltips/respawnIcon/platoon/subtitle"
+msgid "tooltips/respawn/platoon/title"
 msgstr "When Playing in a Platoon"
 
-msgid "tooltips/respawnIcon/sec"
-msgstr "%(duration)s s"
-
-msgid "tooltips/respawnIcon/solo/description"
+msgid "tooltips/respawn/solo/description"
 msgstr ""
 "Once destroyed, your vehicle respawns automatically. This mechanic works "
-"within the first %(duration)s of a battle."
+"within the first {brown_Open}%(duration)s min{brown_Close} of a battle."
 
-msgid "tooltips/respawnIcon/solo/subtitle"
+msgid "tooltips/respawn/solo/title"
 msgstr "When Playing Solo"
 
-msgid "tooltips/respawnIcon/subtitle"
+msgid "tooltips/respawn/subtitle"
 msgstr "Single-time use"
 
-msgid "tooltips/respawnIcon/title"
+msgid "tooltips/respawn/title"
 msgstr "Respawn"
 
 msgid "tooltips/vehicle/description"

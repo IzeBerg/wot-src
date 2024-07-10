@@ -40,6 +40,7 @@ class ModeSelectorRewardID(Enum):
     EXPERIENCE = 'experience'
     IMPROVED_EQUIPMENT = 'improvedEquipment'
     OTHER = 'other'
+    RANDOM = 'random'
     STYLE = 'style'
     PROGRESSION_STYLE = 'progressionStyle'
     VEHICLE = 'vehicle'

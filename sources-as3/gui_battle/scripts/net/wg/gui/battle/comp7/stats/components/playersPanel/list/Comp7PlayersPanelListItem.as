@@ -9,7 +9,6 @@ package net.wg.gui.battle.comp7.stats.components.playersPanel.list
    import net.wg.gui.battle.components.stats.playersPanel.list.BasePlayersPanelListItem;
    import net.wg.gui.battle.random.views.stats.components.playersPanel.constants.PlayersPanelInvalidationType;
    import net.wg.gui.battle.views.stats.constants.SquadInvalidationType;
-   import org.idmedia.as3commons.util.StringUtils;
    import scaleform.clik.motion.Tween;
    
    public class Comp7PlayersPanelListItem extends BasePlayersPanelListItem implements IComp7PlayersPanelListItem
@@ -103,28 +102,18 @@ package net.wg.gui.battle.comp7.stats.components.playersPanel.list
       override protected function draw() : void
       {
          var _loc1_:Boolean = false;
-         var _loc2_:Boolean = false;
-         var _loc3_:Function = null;
-         var _loc4_:Boolean = false;
+         var _loc2_:Function = null;
+         var _loc3_:Boolean = false;
          super.draw();
          if(isInvalid(PlayersPanelInvalidationType.RANK_CHANGED))
          {
-            _loc1_ = StringUtils.isNotEmpty(this._rank) && StringUtils.isNotEmpty(this._rankDivision);
-            this.rankIcon.visible = _loc1_ || this._isQualification;
-            if(_loc1_)
-            {
-               this.rankIcon.imageName = BATTLEATLAS.getRankIcon(this._rank,this._rankDivision);
-            }
-            else if(this._isQualification)
-            {
-               this.rankIcon.imageName = BATTLEATLAS.QUALIFICATION_22X22;
-            }
+            this.rankIcon.imageName = BATTLEATLAS.DEFAULT_ICON;
          }
          if(isInvalid(SquadInvalidationType.SQUAD_INDEX))
          {
-            _loc2_ = (this._squadIndex > 0 || this._isSuperSquad) && !dogTag.visible;
-            this.updateSquadIconVisibility(_loc2_);
-            if(_loc2_)
+            _loc1_ = (this._squadIndex > 0 || this._isSuperSquad) && !dogTag.visible;
+            this.updateSquadIconVisibility(_loc1_);
+            if(_loc1_)
             {
                if(this._isSuperSquad)
                {
@@ -132,20 +121,20 @@ package net.wg.gui.battle.comp7.stats.components.playersPanel.list
                }
                else
                {
-                  _loc3_ = !!this._isSquadPersonal ? BATTLEATLAS.squad_gold : BATTLEATLAS.squad_silver;
-                  this.squadIcon.imageName = _loc3_(this._squadIndex.toString());
+                  _loc2_ = !!this._isSquadPersonal ? BATTLEATLAS.squad_gold : BATTLEATLAS.squad_silver;
+                  this.squadIcon.imageName = _loc2_(this._squadIndex.toString());
                }
             }
          }
          if(isInvalid(PlayersPanelInvalidationType.VOICE_CHAT_STATUS_CHANGED))
          {
-            _loc4_ = state > PLAYERS_PANEL_STATE.HIDDEN && !this._voiceChatConnected;
-            if(_loc4_)
+            _loc3_ = state > PLAYERS_PANEL_STATE.HIDDEN && !this._voiceChatConnected;
+            if(_loc3_)
             {
                this.noSoundIcon.imageName = BATTLEATLAS.ICON_NO_SOUND;
                this.updateNoSoundIconY();
             }
-            this.noSoundIcon.visible = _loc4_;
+            this.noSoundIcon.visible = _loc3_;
          }
       }
       

@@ -402,12 +402,12 @@ class GetPlayerVehicleTankmanState(Block, PlayerMeta):
         return [ASPECT.CLIENT]
 
 
-class OnPlayerVehicleShoot(TunablePlayerVehicleEventBlock, PlayerEventMeta):
+class OnPlayerVehicleDiscreteShoot(TunablePlayerVehicleEventBlock, PlayerEventMeta):
     _EVENT_SLOT_NAMES = [
-     'onShoot']
+     'onDiscreteShoot']
 
     @TunableEventBlock.eventProcessor
-    def onPlayerShoot(self, aimInfo):
+    def onPlayerDiscreteShoot(self, aimInfo):
         pass
 
 
@@ -548,6 +548,24 @@ class OnPlayerVehicleFireEvent(TunablePlayerVehicleEventBlock, PlayerEventMeta):
 
     @TunableEventBlock.eventProcessor
     def _callOutput(self):
+        pass
+
+
+class OnPlayerVehicleContinuousBurstStart(TunablePlayerVehicleEventBlock, PlayerEventMeta):
+    _EVENT_SLOT_NAMES = [
+     'onContinuousBurstStart']
+
+    @TunableEventBlock.eventProcessor
+    def onPlayerContinuousBurstStart(self):
+        pass
+
+
+class OnPlayerVehicleContinuousBurstStop(TunablePlayerVehicleEventBlock, PlayerEventMeta):
+    _EVENT_SLOT_NAMES = [
+     'onContinuousBurstStop']
+
+    @TunableEventBlock.eventProcessor
+    def onPlayerContinuousBurstStop(self):
         pass
 
 

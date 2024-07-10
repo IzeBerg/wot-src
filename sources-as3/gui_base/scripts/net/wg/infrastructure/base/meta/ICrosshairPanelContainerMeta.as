@@ -42,7 +42,7 @@ package net.wg.infrastructure.base.meta
       
       function as_updateAmmoState(param1:String) : void;
       
-      function as_setZoom(param1:String) : void;
+      function as_setZoom(param1:String, param2:Number) : void;
       
       function as_createGunMarker(param1:Number, param2:String, param3:String) : Boolean;
       
@@ -109,5 +109,13 @@ package net.wg.infrastructure.base.meta
       function as_blinkReloadTime(param1:int) : void;
       
       function as_setDualAccActive(param1:Boolean) : void;
+      
+      function as_setAimDamageStage(param1:String) : void;
+      
+      function as_setOverheatProgress(param1:Number, param2:Boolean) : void;
+      
+      function as_addOverheat(param1:Number) : void;
+      
+      function as_removeOverheat() : void;
    }
 }

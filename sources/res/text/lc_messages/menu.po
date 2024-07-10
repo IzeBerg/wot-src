@@ -1926,6 +1926,11 @@ msgstr ""
 "Reload %(autoReloadTime)s s; Average Damage: %(avgDamageList)s\n"
 "Average Penetration: %(avgPiercingPower)s mm"
 
+msgid "descriptions/vehicleGun/autoShoot"
+msgstr ""
+"%(continuousShotsPerMinute)s rounds/min; Average Damage: %(avgDamageList)s\n"
+"Average Penetration: %(avgPiercingPower)s mm"
+
 msgid "descriptions/vehicleGun/dualGun"
 msgstr ""
 "Gun Loading: %(reloadTimeSecs)s s; Average Damage: %(avgDamageList)s\n"
@@ -2838,7 +2843,7 @@ msgid "headerButtons/battle/types/battleRoyaleSquad/description"
 msgstr "Create a Platoon of 2 players"
 
 msgid "headerButtons/battle/types/comp7"
-msgstr "Onslaught"
+msgstr "Onslaught Light"
 
 msgid "headerButtons/battle/types/comp7/descr"
 msgstr "?empty?"
@@ -3224,24 +3229,6 @@ msgstr "Select a Tier %(level)s vehicle"
 
 msgid "headerButtons/fightBtn/tooltip/falloutVehMin/header"
 msgstr "Unable to Enter Battle"
-
-msgid "headerButtons/fightBtn/tooltip/funRandomDisabled/body"
-msgstr "Ceasefire is in effect on this server. Please select another server."
-
-msgid "headerButtons/fightBtn/tooltip/funRandomDisabled/header"
-msgstr "Unable to Enter Battle"
-
-msgid "headerButtons/fightBtn/tooltip/funRandomNotSet/body"
-msgstr "This mode is unavailable on the selected server."
-
-msgid "headerButtons/fightBtn/tooltip/funRandomNotSet/header"
-msgstr "Unable to Enter Battle"
-
-msgid "headerButtons/fightBtn/tooltip/funRandomVehLimits/body"
-msgstr "Change the mode or choose a vehicle that meets the requirements."
-
-msgid "headerButtons/fightBtn/tooltip/funRandomVehLimits/header"
-msgstr "Vehicle Not Suitable for Mode"
 
 msgid "headerButtons/fightBtn/tooltip/inPremiumIgrOnly/body"
 msgstr "Select another vehicle."
@@ -3778,13 +3765,13 @@ msgid "loading/battleTypes/29"
 msgstr "%(modeName)s"
 
 msgid "loading/battleTypes/30"
-msgstr "Onslaught"
+msgstr "Onslaught Light"
 
 msgid "loading/battleTypes/31"
 msgstr "Warm-Up"
 
 msgid "loading/battleTypes/33"
-msgstr "Onslaught"
+msgstr "Onslaught Light"
 
 msgid "loading/battleTypes/34"
 msgstr "Onslaught Training"
@@ -4334,6 +4321,9 @@ msgstr ""
 "Improved autoreloading system:\n"
 "Reduces the standard time for autoreloading shells."
 
+msgid "moduleInfo/autoShootGunLabel"
+msgstr "Gun with continuous fire system"
+
 msgid "moduleInfo/clipGunLabel"
 msgstr "Magazine loading system"
 
@@ -4383,6 +4373,9 @@ msgstr ""
 "Telescopic hydropneumatic drive: allows the vehicle to change the position "
 "of additional wheels."
 
+msgid "moduleInfo/nonPiercingDamageLabel"
+msgstr "Can cause minor damage even without penetrating enemy armor"
+
 msgid "moduleInfo/parametersClipGunLabel"
 msgstr "<img src='%s' vspace='-4'/> For guns with magazine loading system:"
 
@@ -4418,6 +4411,9 @@ msgstr "Average Damage"
 
 msgid "moduleInfo/params/avgDamagePerMinute"
 msgstr "Average Damage per Minute"
+
+msgid "moduleInfo/params/avgDamagePerSecond"
+msgstr "Damage per Second"
 
 msgid "moduleInfo/params/avgMutableDamage"
 msgstr "Average damage"
@@ -4463,6 +4459,12 @@ msgstr "Effect Radius"
 
 msgid "moduleInfo/params/commonDelay"
 msgstr "Deployment Time"
+
+msgid "moduleInfo/params/continuousDamagePerSecond"
+msgstr "Damage per Second"
+
+msgid "moduleInfo/params/continuousShotsPerMinute"
+msgstr "Rate of Continuous Fire"
 
 msgid "moduleInfo/params/cooldownSeconds"
 msgstr "Cooldown time"
@@ -6176,11 +6178,20 @@ msgstr "Speed After 5 Seconds of Acceleration"
 msgid "tank_params/autoReloadTime"
 msgstr "Time for Autoreloading One Shell"
 
+msgid "tank_params/autoShootClipFireRate"
+msgstr "Reload"
+
+msgid "tank_params/autoShootClipSec"
+msgstr "(magazine/quantity)"
+
 msgid "tank_params/avgDamage"
 msgstr "Average Damage"
 
 msgid "tank_params/avgDamagePerMinute"
 msgstr "Average Damage per Minute"
+
+msgid "tank_params/avgDamagePerSecond"
+msgstr "Damage per Second"
 
 msgid "tank_params/avgPiercingPower"
 msgstr "Average Penetration"
@@ -6217,6 +6228,9 @@ msgstr "(magazine/shell or container/quantity)"
 
 msgid "tank_params/cnt"
 msgstr "(item(s))"
+
+msgid "tank_params/continuousShotsPerMinute"
+msgstr "Rate of Continuous Fire"
 
 msgid "tank_params/damage"
 msgstr "Standard Shell Damage"
@@ -6484,6 +6498,9 @@ msgstr "Weight/Load Limit"
 
 msgid "tank_params/vpm"
 msgstr "(HP/min)"
+
+msgid "tank_params/vps"
+msgstr "(HP/s)"
 
 msgid "tank_params/wheeledSpeedModeSpeed"
 msgstr "Top Speed/Reverse Speed (Rapid)"
@@ -6894,11 +6911,17 @@ msgstr "Time for Autoreloading One Shell (s)"
 msgid "vehicleInfo/params/autoReloadTimeBoost"
 msgstr "Standard Time for Autoreloading One Shell (s)"
 
+msgid "vehicleInfo/params/autoShootClipFireRate"
+msgstr "Reload (magazine/quantity)"
+
 msgid "vehicleInfo/params/avgDamage"
 msgstr "Average Damage per Shot"
 
 msgid "vehicleInfo/params/avgDamagePerMinute"
 msgstr "Average Damage per Minute"
+
+msgid "vehicleInfo/params/avgDamagePerSecond"
+msgstr "Damage per Second (HP/s)"
 
 msgid "vehicleInfo/params/avgPiercingPower"
 msgstr "Average Penetration"
@@ -6923,6 +6946,9 @@ msgstr "View Range (m)"
 
 msgid "vehicleInfo/params/clipFireRate"
 msgstr "Reload (magazine/shell or container/quantity)"
+
+msgid "vehicleInfo/params/continuousShotsPerMinute"
+msgstr "Rate of Continuous Fire (rounds/min)"
 
 msgid "vehicleInfo/params/dualAccuracyCoolingDelay"
 msgstr "Gun cooling time after firing (s)"

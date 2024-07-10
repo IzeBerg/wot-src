@@ -4,6 +4,8 @@ package net.wg.gui.battle.views.vehicleMarkers
    {
       
       private static const VM_STUN_PREFIX:String = "vm_stun_br_";
+      
+      private static const VM_BUFF_PREFIX:String = "vm_buff_br_";
        
       
       public function BRBotVehicleMarker()
@@ -20,9 +22,14 @@ package net.wg.gui.battle.views.vehicleMarkers
          return super.getIsPartVisible(param1);
       }
       
-      override protected function get vmStunPrefix() : String
+      override protected function get vmDebuffPrefix() : String
       {
          return VM_STUN_PREFIX;
+      }
+      
+      override protected function get vmBuffPrefix() : String
+      {
+         return VM_BUFF_PREFIX;
       }
    }
 }

@@ -33,9 +33,13 @@ class HangarMeta(View):
         if self._isDAAPIInited():
             return self.flashObject.as_setComp7ModifiersVisible(value)
 
-    def as_setComp7TournamentBannerVisibleS(self, value):
+    def as_setEventTournamentBannerVisibleS(self, alias, isVisible):
         if self._isDAAPIInited():
-            return self.flashObject.as_setComp7TournamentBannerVisible(value)
+            return self.flashObject.as_setEventTournamentBannerVisible(alias, isVisible)
+
+    def as_setPrestigeWidgetVisibleS(self, value):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setPrestigeWidgetVisible(value)
 
     def as_setVisibleS(self, value):
         if self._isDAAPIInited():
@@ -76,10 +80,6 @@ class HangarMeta(View):
     def as_hideTeaserTimerS(self):
         if self._isDAAPIInited():
             return self.flashObject.as_hideTeaserTimer()
-
-    def as_setPrestigeWidgetVisibleS(self, value):
-        if self._isDAAPIInited():
-            return self.flashObject.as_setPrestigeWidgetVisible(value)
 
     def as_showSwitchToAmmunitionS(self):
         if self._isDAAPIInited():

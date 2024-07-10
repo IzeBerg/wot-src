@@ -11,6 +11,8 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
       
       public var radiusMC:GunMarkerDispersionCircle = null;
       
+      public var aimDamage:GunMarkerAimDamage = null;
+      
       private var _gunTagAlpha:Number = -1;
       
       private var _mixingAlpha:Number = -1;
@@ -38,22 +40,32 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
          if(isInvalid(GunMarkerConsts.GUN_SCALE_VALIDATION))
          {
             this.gunTag.scaleX = this.gunTag.scaleY = this._scale;
+            this.aimDamage.scaleX = this.aimDamage.scaleY = this._scale;
          }
       }
       
       override protected function onDispose() : void
       {
-         if(this.radiusMC)
+         this.radiusMC.dispose();
+         this.radiusMC = null;
+         this.gunTag.dispose();
+         this.gunTag = null;
+         if(this.aimDamage)
          {
-            this.radiusMC.dispose();
-            this.radiusMC = null;
-         }
-         if(this.gunTag)
-         {
-            this.gunTag.dispose();
-            this.gunTag = null;
+            this.aimDamage.dispose();
+            this.aimDamage = null;
          }
          super.onDispose();
+      }
+      
+      public function setAimDamageStage(param1:String) : void
+      {
+         this.aimDamage.setStage(param1);
+      }
+      
+      public function setZoomFactor(param1:Number) : void
+      {
+         this.aimDamage.zoomFactor = param1;
       }
       
       public function setColor(param1:String) : void

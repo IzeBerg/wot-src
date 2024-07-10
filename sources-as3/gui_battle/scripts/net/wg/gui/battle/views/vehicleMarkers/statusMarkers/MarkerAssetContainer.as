@@ -18,14 +18,14 @@ package net.wg.gui.battle.views.vehicleMarkers.statusMarkers
       
       private var _atlasSrcMode:Boolean;
       
-      private var _vmManager:VehicleMarkersManager = null;
+      private var _vmManager:VehicleMarkersManager;
       
       private var _animated:Boolean = true;
       
       public function MarkerAssetContainer()
       {
-         super();
          this._vmManager = VehicleMarkersManager.getInstance();
+         super();
       }
       
       public final function dispose() : void

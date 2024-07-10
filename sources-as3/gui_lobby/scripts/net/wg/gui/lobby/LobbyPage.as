@@ -28,6 +28,7 @@ package net.wg.gui.lobby
    import net.wg.gui.notification.NotificationPopUpViewer;
    import net.wg.infrastructure.base.meta.impl.LobbyPageMeta;
    import net.wg.infrastructure.interfaces.IManagedContainer;
+   import net.wg.infrastructure.interfaces.IManagedContent;
    import scaleform.clik.constants.ConstrainMode;
    import scaleform.clik.constants.InvalidationType;
    import scaleform.clik.motion.Tween;
@@ -229,26 +230,29 @@ package net.wg.gui.lobby
       
       public function as_setSubContainerItemsVisibility(param1:Boolean) : void
       {
-         var _loc3_:IManagedContainer = null;
-         var _loc4_:int = 0;
+         var _loc4_:IManagedContainer = null;
          var _loc5_:int = 0;
-         var _loc6_:DisplayObject = null;
-         var _loc2_:InteractiveObject = null;
-         for each(_loc3_ in this.getSubContainers())
+         var _loc6_:int = 0;
+         var _loc2_:IManagedContainer = null;
+         var _loc3_:IManagedContent = null;
+         for each(_loc4_ in this.getSubContainers())
          {
-            _loc4_ = _loc3_.numChildren;
-            _loc5_ = 0;
-            while(_loc5_ < _loc4_)
+            _loc5_ = _loc4_.numChildren;
+            _loc6_ = 0;
+            while(_loc6_ < _loc5_)
             {
-               _loc6_ = _loc3_.getChildAt(_loc5_);
-               _loc6_.visible = param1;
-               _loc2_ = _loc6_ as InteractiveObject;
-               _loc5_++;
+               _loc4_.getChildAt(_loc6_).visible = param1;
+               _loc6_++;
+            }
+            if(_loc5_ > 0)
+            {
+               _loc2_ = _loc4_;
+               _loc3_ = _loc4_.getChildAt(_loc5_ - 1) as IManagedContent;
             }
          }
-         if(param1 && _loc2_)
+         if(param1 && _loc3_ && _loc2_)
          {
-            setFocus(_loc2_);
+            _loc2_.setFocusedView(_loc3_ as IManagedContent);
          }
       }
       

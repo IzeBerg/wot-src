@@ -93,9 +93,8 @@ package net.wg.gui.battle.comp7.stats.fullStats.tableItem
       override protected function draw() : void
       {
          var _loc1_:Boolean = false;
-         var _loc2_:Boolean = false;
-         var _loc3_:Function = null;
-         var _loc4_:Boolean = false;
+         var _loc2_:Function = null;
+         var _loc3_:Boolean = false;
          super.draw();
          if(isInvalid(FullStatsValidationType.COLORS))
          {
@@ -108,22 +107,13 @@ package net.wg.gui.battle.comp7.stats.fullStats.tableItem
          }
          if(isInvalid(FullStatsValidationType.RANK))
          {
-            _loc1_ = StringUtils.isNotEmpty(this._rank) && StringUtils.isNotEmpty(this._rankDivision);
-            this._rankIcon.visible = _loc1_ || this._isQualification;
-            if(_loc1_)
-            {
-               this._rankIcon.imageName = BATTLEATLAS.getRankIcon(this._rank,this._rankDivision);
-            }
-            else if(this._isQualification)
-            {
-               this._rankIcon.imageName = BATTLEATLAS.QUALIFICATION_22X22;
-            }
+            this._rankIcon.imageName = BATTLEATLAS.DEFAULT_ICON;
          }
          if(isInvalid(SquadInvalidationType.SQUAD_INDEX))
          {
-            _loc2_ = this._squadIndex > 0 || this._isSuperSquad;
-            this._squadIcon.visible = _loc2_;
-            if(_loc2_)
+            _loc1_ = this._squadIndex > 0 || this._isSuperSquad;
+            this._squadIcon.visible = _loc1_;
+            if(_loc1_)
             {
                if(this._isSuperSquad)
                {
@@ -131,8 +121,8 @@ package net.wg.gui.battle.comp7.stats.fullStats.tableItem
                }
                else
                {
-                  _loc3_ = !!isSquadPersonal ? BATTLEATLAS.squad_gold : BATTLEATLAS.squad_silver;
-                  this._squadIcon.imageName = _loc3_(this._squadIndex.toString());
+                  _loc2_ = !!isSquadPersonal ? BATTLEATLAS.squad_gold : BATTLEATLAS.squad_silver;
+                  this._squadIcon.imageName = _loc2_(this._squadIndex.toString());
                }
             }
             this.updateNoSoundIconY();
@@ -141,13 +131,13 @@ package net.wg.gui.battle.comp7.stats.fullStats.tableItem
          {
             if(this._noSoundIcon)
             {
-               _loc4_ = userProps && !this._voiceChatConnected;
-               if(_loc4_)
+               _loc3_ = userProps && !this._voiceChatConnected;
+               if(_loc3_)
                {
                   this._noSoundIcon.imageName = BATTLEATLAS.ICON_NO_SOUND;
                   this.updateNoSoundIconY();
                }
-               this._noSoundIcon.visible = _loc4_;
+               this._noSoundIcon.visible = _loc3_;
             }
          }
       }

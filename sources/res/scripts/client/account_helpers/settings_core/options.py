@@ -2908,9 +2908,16 @@ class GraphicsQualityNote(SettingAbstract):
      CONTENT_TYPE.SANDBOX}
 
     def _get(self):
-        if ResMgr.activeContentType() in self._GRAPHICS_QUALITY_TYPES:
-            return ('{0}{1}  {2}{3}').format("<font face='$FieldFont' size='13' color='#595950'>", i18n.makeString(SETTINGS.GRAPHICSQUALITYHDSD_SD), icons.info(), '</font>')
-        return ''
+        activeContentType = ResMgr.activeContentType()
+        contentTypeName = None
+        if activeContentType in self._GRAPHICS_QUALITY_TYPES:
+            contentTypeName = SETTINGS.GRAPHICSQUALITYHDSD_SD
+        elif activeContentType == CONTENT_TYPE.HD_TEXTURES:
+            contentTypeName = SETTINGS.GRAPHICSQUALITYHDSD_HD
+        if contentTypeName is not None:
+            return ('{0}{1}  {2}{3}').format("<font face='$FieldFont' size='13' color='#595950'>", i18n.makeString(contentTypeName), icons.info(), '</font>')
+        else:
+            return ''
 
     def _set(self, value):
         pass

@@ -77,7 +77,8 @@ quest_progress = globals().get(&apos;quest_progress&apos;)
 
 filter = globals().get(&apos;BattleResults&apos;)
 
-PROGRESS_ID_MAIN = &apos;blockedHits&apos;  # take from personal_missions_config
+PROGRESS_ID_HITS = &apos;blockedHits&apos;  # take from personal_missions_config
+PROGRESS_ID_DAMAGE = &apos;blockedDamage&apos;  # take from personal_missions_config
 ADD_PROGRESS_ID = &apos;alive&apos;
 PROGRESS_SERIES = &apos;aliveSeries&apos;  # take from personal_missions_config
 
@@ -91,12 +92,17 @@ def onFinishBattle(eventType, eventData, quest, processor):
     questProgress = quest_progress.BaseQuestProgress(quest.config, processor.getQuestProgress(quest.progressID))
 
     brfilter = filter.BattleResultsFilter(eventData)
-    mainCondition = sum(len(shots) for shots in brfilter.filterDamageFrom(hitBlocked=True).itervalues())
+    damageFromFiltered = brfilter.filterDamageFrom(hitBlocked=True)
+    blockedHits = brfilter.sumBlockedHitsCount(damageFromFiltered)
+    blockedDamage = brfilter.sumBlockedDamage(damageFromFiltered)
+
     addCondition = brfilter.alive()
     if addCondition:
         questProgress.setCompleted(ADD_PROGRESS_ID)
         questProgress.increaseUntilComplete(PROGRESS_SERIES, 1)
-    questProgress.increaseUntilComplete(PROGRESS_ID_MAIN, mainCondition)
+
+    questProgress.increaseUntilComplete(PROGRESS_ID_HITS, blockedHits)
+    questProgress.increaseUntilComplete(PROGRESS_ID_DAMAGE, blockedDamage)
 
     eventData[&apos;results&apos;].update(processor.checkComplete(questProgress, quest.progressID, additionalProgressID=PROGRESS_SERIES))
 

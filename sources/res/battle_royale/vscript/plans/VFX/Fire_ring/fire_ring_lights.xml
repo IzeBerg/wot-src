@@ -68,24 +68,6 @@
 				<slots/>
 			</block>
 			<block>
-				<class>HasComponent</class>
-				<id>HasComponent_1</id>
-				<params>
-					<param>
-						Influence Zone Equipment
-						<name>Component Type</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>GetParentOf</class>
-				<id>GetParentOf_1</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
 				<class>SetComponentProperties</class>
 				<id>SetComponentProperties_1</id>
 				<params>
@@ -202,6 +184,12 @@
 				<slots/>
 			</block>
 			<block>
+				<class>GetParentOf</class>
+				<id>GetParentOf_1</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
 				<class>CreateVector</class>
 				<id>CreateVector_2</id>
 				<params>
@@ -233,18 +221,6 @@
 			</block>
 		</blocks>
 		<connections>
-			<connection>
-				<from>GetParentOf_1</from>
-				<input>gameObject</input>
-				<to>HasComponent_1</to>
-				<output>parent</output>
-			</connection>
-			<connection>
-				<from>ContextGetSelf_1</from>
-				<input>gameObject</input>
-				<to>GetParentOf_1</to>
-				<output>value</output>
-			</connection>
 			<connection>
 				<from>GetComponentProperties_2</from>
 				<input>in</input>
@@ -346,6 +322,12 @@
 				<input>a</input>
 				<to>MatrixScale_1</to>
 				<output>local</output>
+			</connection>
+			<connection>
+				<from>ContextGetSelf_1</from>
+				<input>gameObject</input>
+				<to>GetParentOf_1</to>
+				<output>value</output>
 			</connection>
 			<connection>
 				<from>GetVariable_1</from>

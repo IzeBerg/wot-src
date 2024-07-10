@@ -2,9 +2,12 @@ package net.wg.gui.components.questProgress.data
 {
    import net.wg.data.daapi.base.DAAPIDataClass;
    import net.wg.gui.components.questProgress.interfaces.data.IHeaderProgressData;
+   import net.wg.infrastructure.interfaces.entity.IDisposable;
    
    public class HeaderProgressDataVO extends DAAPIDataClass implements IHeaderProgressData
    {
+      
+      private static const CONDITIONS_FIELD_NAME:String = "conditions";
        
       
       private var _header:String = "";
@@ -25,18 +28,45 @@ package net.wg.gui.components.questProgress.data
       
       private var _scope:String = "";
       
-      private var _conditionIcon:String = "";
+      private var _conditions:Array = null;
       
       public function HeaderProgressDataVO(param1:Object)
       {
          super(param1);
       }
       
+      override protected function onDataWrite(param1:String, param2:Object) : Boolean
+      {
+         var _loc3_:Array = null;
+         var _loc4_:Object = null;
+         if(param1 == CONDITIONS_FIELD_NAME)
+         {
+            _loc3_ = param2 as Array;
+            this._conditions = [];
+            for each(_loc4_ in _loc3_)
+            {
+               this._conditions.push(new HeaderProgressConditionVO(_loc4_));
+            }
+            return false;
+         }
+         return super.onDataWrite(param1,param2);
+      }
+      
       override protected function onDispose() : void
       {
+         var _loc1_:IDisposable = null;
+         if(this._conditions)
+         {
+            for each(_loc1_ in this._conditions)
+            {
+               _loc1_.dispose();
+            }
+            this._conditions.length = 0;
+            this._conditions = null;
+         }
          if(this._progress)
          {
-            this._progress.splice(0,this._progress.length);
+            this._progress.length = 0;
             this._progress = null;
          }
          super.onDispose();
@@ -132,14 +162,9 @@ package net.wg.gui.components.questProgress.data
          this._state = param1;
       }
       
-      public function get conditionIcon() : String
+      public function get conditions() : Array
       {
-         return this._conditionIcon;
-      }
-      
-      public function set conditionIcon(param1:String) : void
-      {
-         this._conditionIcon = param1;
+         return this._conditions;
       }
    }
 }

@@ -90,14 +90,11 @@ package net.wg.gui.battle.views.vehicleMarkers
             this.healthBar.stop();
             invalidate(INVALIDATE_BAR);
          }
-         if(isInvalid(INVALIDATE_BAR))
+         if(!isNaN(this._maxHealth) && !isNaN(this._currHealth) && isInvalid(INVALIDATE_BAR))
          {
-            if(!isNaN(this._maxHealth) && !isNaN(this._currHealth))
-            {
-               healthPercent = this._currHealth * this._maxHealthMult;
-               frameNumber = Math.ceil(healthPercent * (this.healthBar.totalFrames - 1)) + 1;
-               this.healthBar.gotoAndStop(frameNumber);
-            }
+            healthPercent = this._currHealth * this._maxHealthMult;
+            frameNumber = Math.ceil(healthPercent * (this.healthBar.totalFrames - 1)) + 1;
+            this.healthBar.gotoAndStop(frameNumber);
          }
       }
       

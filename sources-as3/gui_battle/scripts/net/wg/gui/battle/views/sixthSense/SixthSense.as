@@ -15,14 +15,14 @@ package net.wg.gui.battle.views.sixthSense
          mouseEnabled = false;
       }
       
+      public function as_hide(param1:Boolean) : void
+      {
+         gotoAndPlay(!!param1 ? DAMAGE_INFO_PANEL_CONSTS.INIT_SIXTH_SENSE : DAMAGE_INFO_PANEL_CONSTS.HIDE_SIXTH_SENSE);
+      }
+      
       public function as_show() : void
       {
          gotoAndPlay(DAMAGE_INFO_PANEL_CONSTS.SHOW_SIXTH_SENSE);
-      }
-      
-      public function as_hide() : void
-      {
-         gotoAndPlay(DAMAGE_INFO_PANEL_CONSTS.HIDE_SIXTH_SENSE);
       }
    }
 }

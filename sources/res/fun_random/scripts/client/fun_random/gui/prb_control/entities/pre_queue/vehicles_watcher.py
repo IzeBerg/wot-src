@@ -1,5 +1,5 @@
 from itertools import chain
-from constants import BATTLE_MODE_VEH_TAGS_EXCEPT_FUN
+from fun_random_common.fun_constants import BATTLE_MODE_VEH_TAGS_EXCEPT_FUN
 from fun_random.gui.feature.util.fun_mixins import FunSubModesWatcher
 from fun_random.gui.feature.util.fun_wrappers import hasDesiredSubMode
 from gui.prb_control.entities.base.pre_queue.vehicles_watcher import LimitedLevelVehiclesWatcher, RestrictedVehiclesWatcher

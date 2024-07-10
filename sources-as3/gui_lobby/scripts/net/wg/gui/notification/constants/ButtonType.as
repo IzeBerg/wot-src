@@ -5,9 +5,11 @@ package net.wg.gui.notification.constants
    public class ButtonType
    {
       
-      public static const SUBMIT:String = "submit";
+      private static const SUBMIT:String = "submit";
       
-      public static const CANCEL:String = "cancel";
+      private static const CANCEL:String = "cancel";
+      
+      private static const INFO:String = "info";
        
       
       public function ButtonType()
@@ -25,6 +27,9 @@ package net.wg.gui.notification.constants
                break;
             case CANCEL:
                _loc2_ = Linkages.BUTTON_BLACK;
+               break;
+            case INFO:
+               _loc2_ = Linkages.GHOST_BUTTON_SLIM;
                break;
             default:
                DebugUtils.LOG_ERROR("Type of button is not valid.",param1);

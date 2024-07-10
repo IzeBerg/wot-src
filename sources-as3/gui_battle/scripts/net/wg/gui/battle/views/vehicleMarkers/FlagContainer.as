@@ -31,7 +31,7 @@ package net.wg.gui.battle.views.vehicleMarkers
          super();
       }
       
-      public function dispose() : void
+      public final function dispose() : void
       {
          this._disposed = true;
          this._flagGreen = null;
@@ -52,7 +52,7 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       public function showPurple() : void
       {
-         this._flagPurple = this.showFlag(this._flagGreen,LINKAGE_FLAG_GREEN);
+         this._flagPurple = this.showFlag(this._flagPurple,LINKAGE_FLAG_PURPLE);
       }
       
       public function hide() : void

@@ -45,8 +45,8 @@ EPIC_TEAM_ITEM_VO_META = regular.TEAM_ITEM_VO_META.replace((
 EPIC_TEAM_ITEM_VO_META.bind(vehicles.EpicVehicleStatsBlock)
 EPIC_VEHICLE_STATS_BLOCK_VO_META = base.PropertyMeta((
  ('shots', 0, 'shots'),
- (
-  'hits', style.SlashedValuesBlock('hits'), 'hits'),
+ ('directHits', 0, 'directHits'),
+ ('piercingHits', 0, 'piercingHits'),
  ('explosionHits', 0, 'explosionHits'),
  ('damageDealt', 0, 'damageDealt'),
  ('sniperDamageDealt', 0, 'sniperDamageDealt'),

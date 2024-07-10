@@ -24,10 +24,6 @@ package net.wg.gui.battle.views.staticMarkers.epic.headquarter
       
       private static const HQ_DESTROYED_TWEEN_DELAY_LENGTH:int = 1000;
       
-      private static const HIT_LABEL_X_OFFSET:int = 41;
-      
-      private static const DAMAGE_FROM_ENEMY:int = 3;
-      
       private static const HOVER_HIT_LABEL_Y_OFFSET:int = 27;
       
       private static const HOVER_HP_FIELD_CONTAINER_Y_OFFSET:int = 32;
@@ -37,6 +33,8 @@ package net.wg.gui.battle.views.staticMarkers.epic.headquarter
       private static const HOVER_HEALTH_BAR_SHADOW_Y_OFFSET:int = 81;
       
       private static const HIT_LABEL_Y_OFFSET:int = 20;
+      
+      private static const OTHER_HIT_LABEL_Y_OFFSET:int = 17;
       
       private static const HP_FIELD_CONTAINER_Y_OFFSET:int = 25;
       
@@ -51,7 +49,9 @@ package net.wg.gui.battle.views.staticMarkers.epic.headquarter
       
       public var hpFieldContainer:HPFieldContainer = null;
       
-      public var hitLabel:HealthBarAnimatedLabel = null;
+      public var playerHitLabel:HealthBarAnimatedLabel = null;
+      
+      public var otherHitLabel:HealthBarAnimatedLabel = null;
       
       public var healthBar:HealthBar = null;
       
@@ -92,22 +92,16 @@ package net.wg.gui.battle.views.staticMarkers.epic.headquarter
          this._vmManager.addEventListener(VehicleMarkersManagerEvent.UPDATE_COLORS,this.onUpdateColorsHandler);
       }
       
-      private function onUpdateColorsHandler(param1:VehicleMarkersManagerEvent) : void
-      {
-         this.setHealthColor();
-         this.actionMarker.setColor();
-         this.marker.setColor();
-         invalidateData();
-      }
-      
       override protected function onDispose() : void
       {
          this._vmManager.removeEventListener(VehicleMarkersManagerEvent.UPDATE_COLORS,this.onUpdateColorsHandler);
          this._vmManager = null;
          this.hpFieldContainer.dispose();
          this.hpFieldContainer = null;
-         this.hitLabel.dispose();
-         this.hitLabel = null;
+         this.playerHitLabel.dispose();
+         this.playerHitLabel = null;
+         this.otherHitLabel.dispose();
+         this.otherHitLabel = null;
          this.healthBar.dispose();
          this.healthBar = null;
          this.healthBarShadow = null;
@@ -120,19 +114,28 @@ package net.wg.gui.battle.views.staticMarkers.epic.headquarter
          super.onDispose();
       }
       
-      public function setReplyCount(param1:int) : void
+      override protected function draw() : void
       {
-         this.actionMarker.setReplyCount(param1);
+         super.draw();
+         if(isInvalid(InvalidationType.DATA))
+         {
+            this.marker.activateHover(this._activateHover);
+            this.actionMarker.setActiveState(this._activeMarkerState);
+            this.actionMarker.activateHover(this._activateHover);
+            this.updateLayout();
+         }
       }
       
-      public function setMarkerReplied(param1:Boolean) : void
+      public function activateHover(param1:Boolean) : void
       {
-         this.actionMarker.setMarkerReplied(param1);
+         this._activateHover = param1;
+         invalidateData();
       }
       
-      public function triggerClickAnimation() : void
+      public function setActiveState(param1:int) : void
       {
-         this.actionMarker.triggerClickAnimation();
+         this._activeMarkerState = param1;
+         invalidateData();
       }
       
       public function setDead(param1:Boolean) : void
@@ -158,7 +161,7 @@ package net.wg.gui.battle.views.staticMarkers.epic.headquarter
          this.marker.setDead(this._headquarterDestroyed);
       }
       
-      public function setHealth(param1:Number, param2:int = 3, param3:Boolean = true) : void
+      public function setHealth(param1:Number, param2:Boolean = false, param3:Boolean = true) : void
       {
          var _loc4_:int = 0;
          var _loc5_:String = null;
@@ -166,16 +169,17 @@ package net.wg.gui.battle.views.staticMarkers.epic.headquarter
          {
             _loc4_ = this._currentHealth - param1;
             this._currentHealth = param1;
-            _loc5_ = VehicleMarkerFlags.DAMAGE_FROM[param2];
-            this.healthBar.updateHealth(param1,VehicleMarkerFlags.DAMAGE_COLOR[_loc5_][this._markerColor]);
+            _loc5_ = this.getDamageColor(param2);
+            this.healthBar.updateHealth(param1,_loc5_);
             this.hpFieldContainer.setText(int(param1) + SEPARATOR + this._maxHealth);
             if(_loc4_ > 0)
             {
-               this.marker.setHit(param3);
-               this.actionMarker.setHit(param3);
-               this.hitLabel.x = HIT_LABEL_X_OFFSET;
-               this.hitLabel.damage(_loc4_,VehicleMarkerFlags.DAMAGE_COLOR[_loc5_][this._markerColor]);
-               this.hitLabel.playShowTween();
+               if(param3)
+               {
+                  this.marker.setHit();
+                  this.actionMarker.setHit();
+               }
+               this.showHitLabelAnim(_loc4_,_loc5_,param2);
             }
          }
       }
@@ -188,6 +192,12 @@ package net.wg.gui.battle.views.staticMarkers.epic.headquarter
          invalidateData();
       }
       
+      public function setIdentifier(param1:int) : void
+      {
+         this.marker.setHeadquarterId(param1);
+         this.actionMarker.setIdentifier(param1);
+      }
+      
       public function setIsStickyAndOutOfScreen(param1:Boolean) : void
       {
          if(this._healthBarVisible)
@@ -195,14 +205,14 @@ package net.wg.gui.battle.views.staticMarkers.epic.headquarter
             this.healthBar.visible = !param1;
             this.healthBarShadow.visible = !param1;
             this.hpFieldContainer.visible = !param1;
-            this.hitLabel.visible = !param1;
+            this.playerHitLabel.visible = !param1;
+            this.otherHitLabel.visible = !param1;
          }
       }
       
-      public function setIdentifier(param1:int) : void
+      public function setMarkerReplied(param1:Boolean) : void
       {
-         this.marker.setHeadquarterId(param1);
-         this.actionMarker.setIdentifier(param1);
+         this.actionMarker.setMarkerReplied(param1);
       }
       
       public function setMaxHealth(param1:Number) : void
@@ -223,6 +233,47 @@ package net.wg.gui.battle.views.staticMarkers.epic.headquarter
          this.setHealthColor();
       }
       
+      public function setReplyCount(param1:int) : void
+      {
+         this.actionMarker.setReplyCount(param1);
+      }
+      
+      public function setTarget() : void
+      {
+         this.actionMarker.play();
+      }
+      
+      public function triggerClickAnimation() : void
+      {
+         this.actionMarker.triggerClickAnimation();
+      }
+      
+      protected function showHitLabelAnim(param1:int, param2:String, param3:Boolean) : void
+      {
+         if(param3)
+         {
+            this.playerHitLabel.damage(param1,param2);
+            this.playerHitLabel.playShowTween();
+         }
+         else
+         {
+            this.otherHitLabel.damage(param1,param2);
+            this.otherHitLabel.playShowTween();
+         }
+         this.updateLayout();
+      }
+      
+      private function updateLayout() : void
+      {
+         this.setHealthBarHeight(this._activateHover || this._activeMarkerState == ActionMarkerStates.REPLIED_ME || this._isHighlighted);
+      }
+      
+      private function getDamageColor(param1:Boolean) : String
+      {
+         var _loc2_:Object = !!param1 ? VehicleMarkerFlags.PLAYER_DAMAGE_COLOR : VehicleMarkerFlags.OTHER_DAMAGE_COLOR;
+         return _loc2_[this._markerColor];
+      }
+      
       private function setHealthColor() : void
       {
          if(this._isPlayerTeam)
@@ -240,11 +291,6 @@ package net.wg.gui.battle.views.staticMarkers.epic.headquarter
          this.healthBar.color = this._markerColor;
       }
       
-      public function setTarget() : void
-      {
-         this.actionMarker.play();
-      }
-      
       private function hideHealthBar() : void
       {
          this.setHealthComponentVisibility(false);
@@ -253,52 +299,38 @@ package net.wg.gui.battle.views.staticMarkers.epic.headquarter
       private function setHealthComponentVisibility(param1:Boolean) : void
       {
          this._healthBarVisible = param1;
-         this.hitLabel.visible = param1;
+         this.playerHitLabel.visible = param1;
+         this.otherHitLabel.visible = param1;
          this.hpFieldContainer.visible = param1;
          this.healthBar.visible = param1;
          this.healthBarShadow.visible = param1;
-      }
-      
-      public function setActiveState(param1:int) : void
-      {
-         this._activeMarkerState = param1;
-         invalidateData();
-      }
-      
-      public function activateHover(param1:Boolean) : void
-      {
-         this._activateHover = param1;
-         invalidateData();
       }
       
       private function setHealthBarHeight(param1:Boolean) : void
       {
          if(param1)
          {
-            this.hitLabel.y = HOVER_HIT_LABEL_Y_OFFSET;
+            this.playerHitLabel.y = HOVER_HIT_LABEL_Y_OFFSET;
             this.hpFieldContainer.y = HOVER_HP_FIELD_CONTAINER_Y_OFFSET;
             this.healthBar.y = HOVER_HEALTH_BAR_Y_OFFSET;
             this.healthBarShadow.y = HOVER_HEALTH_BAR_SHADOW_Y_OFFSET;
          }
          else
          {
-            this.hitLabel.y = HIT_LABEL_Y_OFFSET;
+            this.playerHitLabel.y = HIT_LABEL_Y_OFFSET;
             this.hpFieldContainer.y = HP_FIELD_CONTAINER_Y_OFFSET;
             this.healthBar.y = HEALTH_BAR_Y_OFFSET;
             this.healthBarShadow.y = HEALTH_BAR_SHADOW_Y_OFFSET;
          }
+         this.otherHitLabel.y = !!this.playerHitLabel.isActive() ? Number(this.playerHitLabel.y + OTHER_HIT_LABEL_Y_OFFSET) : Number(this.playerHitLabel.y);
       }
       
-      override protected function draw() : void
+      private function onUpdateColorsHandler(param1:VehicleMarkersManagerEvent) : void
       {
-         super.draw();
-         if(isInvalid(InvalidationType.DATA))
-         {
-            this.marker.activateHover(this._activateHover);
-            this.setHealthBarHeight(this._activateHover || this._activeMarkerState == ActionMarkerStates.REPLIED_ME || this._isHighlighted);
-            this.actionMarker.setActiveState(this._activeMarkerState);
-            this.actionMarker.activateHover(this._activateHover);
-         }
+         this.setHealthColor();
+         this.actionMarker.setColor();
+         this.marker.setColor();
+         invalidateData();
       }
    }
 }

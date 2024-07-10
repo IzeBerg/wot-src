@@ -4,10 +4,12 @@ from Queue import Queue
 from collections import OrderedDict, defaultdict, deque
 from copy import copy, deepcopy
 from itertools import chain, islice
-import typing, ArenaType, BigWorld, constants, nations, personal_missions
-from adisp import adisp_async, adisp_process
-from battle_pass_common import BATTLE_PASS_CHOICE_REWARD_OFFER_GIFT_TOKENS, BATTLE_PASS_TOKEN_3D_STYLE, BattlePassRewardReason, FinalReward
+import BigWorld, typing
 from battle_royale_progression.skeletons.game_controller import IBRProgressionOnTokensController
+import ArenaType, constants, nations, personal_missions
+from adisp import adisp_async, adisp_process
+from arena_bonus_type_caps import ARENA_BONUS_TYPE_CAPS as BONUS_CAPS
+from battle_pass_common import BATTLE_PASS_CHOICE_REWARD_OFFER_GIFT_TOKENS, BATTLE_PASS_TOKEN_3D_STYLE, BattlePassRewardReason, FinalReward
 from blueprints.BlueprintTypes import BlueprintTypes
 from blueprints.FragmentTypes import getFragmentType
 from cache import cached_property
@@ -38,9 +40,9 @@ from gui.impl.backport import getNiceNumberFormat
 from gui.impl.gen import R
 from gui.impl.lobby.comp7.comp7_quest_helpers import isComp7Quest, getComp7QuestType, getActualSeasonWeeklyRewardToken
 from gui.impl.lobby.winback.winback_helpers import getDiscountFromBlueprint, getDiscountFromGoody, getLevelFromSelectableToken
-from gui.prestige.prestige_helpers import prestigePointsToXP, needShowPrestigeRewardWindow, hasVehiclePrestige, getCurrentGrade, mapGradeIDToUI
 from gui.mapbox.mapbox_helpers import formatMapboxRewards
 from gui.prb_control.formatters import getPrebattleFullDescription
+from gui.prestige.prestige_helpers import prestigePointsToXP, needShowPrestigeRewardWindow, hasVehiclePrestige, getCurrentGrade, mapGradeIDToUI
 from gui.ranked_battles.constants import YEAR_AWARD_SELECTABLE_OPT_DEVICE_PREFIX, YEAR_POINTS_TOKEN
 from gui.ranked_battles.ranked_helpers import getBonusBattlesIncome, getQualificationBattlesCountFromID, isQualificationQuestID
 from gui.ranked_battles.ranked_models import PostBattleRankInfo, RankChangeStates
@@ -61,7 +63,7 @@ from gui.shared.gui_items.dossier.factories import getAchievementFactory
 from gui.shared.gui_items.fitting_item import RentalInfoProvider
 from gui.shared.money import Currency, MONEY_UNDEFINED, Money, ZERO_MONEY
 from gui.shared.notifications import NotificationGuiSettings, NotificationPriorityLevel
-from gui.shared.system_factory import collectTokenQuestsSubFormatters
+from gui.shared.system_factory import collectTokenQuestsSubFormatters, collectLootBoxAutoOpenSubFormatters
 from gui.shared.utils.requesters.ShopRequester import _NamedGoodieData
 from gui.shared.utils.requesters.blueprints_requester import getFragmentNationID, getUniqueBlueprints
 from gui.shared.utils.transport import z_loads
@@ -670,8 +672,8 @@ class BattleResultsFormatter(WaitItemsSyncFormatter):
             arenaCreateTime = battleResults.get(b'arenaCreateTime', None)
             if arenaCreateTime and arenaType:
                 ctx = {b'arenaName': i18n.makeString(arenaType.name), b'vehicleNames': b'N/A', 
-                   b'xp': b'0', 
-                   Currency.CREDITS: b'0'}
+                   b'xp': b'', 
+                   Currency.CREDITS: b''}
                 templateName, formatData = self._prepareFormatData(message)
                 ctx.update(formatData)
                 bgIconSource = None
@@ -750,14 +752,16 @@ class BattleResultsFormatter(WaitItemsSyncFormatter):
         vehicleNames = {intCD:self._itemsCache.items.getItemByCD(intCD) for intCD in battleResults.get(b'playerVehicles', {}).keys()}
         ctx[b'vehicleNames'] = (b', ').join(map(operator.attrgetter(b'userName'), sorted(vehicleNames.values())))
         xp = battleResults.get(b'xp')
-        if xp:
-            ctx[b'xp'] = backport.getIntegralFormat(xp)
+        bonusType = battleResults.get(b'bonusType', 0)
+        bonusCapsOverrides = battleResults.get(b'bonusCapsOverrides')
+        if xp or BONUS_CAPS.checkAny(bonusType, BONUS_CAPS.XP, specificOverrides=bonusCapsOverrides):
+            ctx[b'xp'] = b'<br/>' + backport.text(R.strings.messenger.serviceChannelMessages.battleResults.experience(), text_styles.expText(backport.getIntegralFormat(xp)))
         battleResKey = battleResults.get(b'isWinner', 0)
         ctx[b'xpEx'] = self.__makeXpExString(xp, battleResKey, battleResults.get(b'xpPenalty', 0), battleResults)
         ctx[Currency.GOLD] = self.__makeGoldString(battleResults.get(Currency.GOLD, 0))
         accCredits = battleResults.get(Currency.CREDITS) - battleResults.get(b'creditsToDraw', 0)
-        if accCredits:
-            ctx[Currency.CREDITS] = self.__makeCurrencyString(Currency.CREDITS, accCredits)
+        if accCredits or BONUS_CAPS.checkAny(bonusType, BONUS_CAPS.CREDITS, specificOverrides=bonusCapsOverrides):
+            ctx[Currency.CREDITS] = b'<br/>' + backport.text(R.strings.messenger.serviceChannelMessages.battleResults.credits(), text_styles.credits(self.__makeCurrencyString(Currency.CREDITS, accCredits)))
         ctx[b'piggyBank'] = self.__makePiggyBankString(battleResults.get(b'piggyBank'))
         accCrystal = battleResults.get(Currency.CRYSTAL)
         ctx[b'crystalStr'] = b''
@@ -819,7 +823,6 @@ class BattleResultsFormatter(WaitItemsSyncFormatter):
             battleResultKeys = self.__FLResultsKeys
         elif guiType == ARENA_GUI_TYPE.TOURNAMENT_COMP7:
             battleResultKeys = self.__COMP7SeasonResultsKeys
-            ctx = self.__makeTournamentComp7SeasonMsgCtx(battleResults, ctx)
         else:
             battleResultKeys = self._battleResultKeys
         templateName = battleResultKeys[battleResKey]
@@ -858,12 +861,26 @@ class BattleResultsFormatter(WaitItemsSyncFormatter):
         return (b'<br/>').join(rewards)
 
     def __makeComp7SeasonMsgCtx(self, battleResults, ctx):
-        ctx[b'ratingPointsStr'] = g_settings.htmlTemplates.format(b'battleResultRatingPoints', {b'ratingPoints': (b'{:+}').format(battleResults[b'comp7RatingDelta'])})
+        progressionPoints = self.__getComp7LightProgressionTokenBonus(battleResults)
+        if self.__comp7Controller.isComp7LightProgressionActive() or progressionPoints > 0:
+            ctx[b'progressionPointsStr'] = g_settings.htmlTemplates.format(b'battleResultComp7LightProgressionPoints', {b'comp7LightProgressionPoints': str(progressionPoints)})
+        else:
+            ctx[b'progressionPointsStr'] = b''
         return ctx
 
-    def __makeTournamentComp7SeasonMsgCtx(self, battleResults, ctx):
-        ctx[b'ratingPointsStr'] = g_settings.htmlTemplates.format(b'battleResultRatingPoints', {b'ratingPoints': str(battleResults[b'comp7RatingDelta'])})
-        return ctx
+    def __getComp7LightProgressionTokenBonus(self, battleResults):
+        progressionSettings = self.__lobbyContext.getServerSettings().comp7Config.progression
+        if not progressionSettings:
+            return 0
+        progressionTokenName = progressionSettings[b'token']
+        completedQuestIDs = battleResults.get(b'completedQuestIDs', [])
+        completedQuests = self.__eventsCache.getAllQuests(filterFunc=lambda q: q.getID() in completedQuestIDs)
+        result = 0
+        for quest in completedQuests.values():
+            for tokenBonus in quest.getBonuses(b'tokens'):
+                result += parseTokenBonusCount(tokenBonus, progressionTokenName)
+
+        return result
 
     def __makeQuestsAchieve(self, message):
         fmtMsg = QuestAchievesFormatter.formatQuestAchieves(message.data, asBattleFormatter=True)
@@ -2820,7 +2837,7 @@ class QuestAchievesFormatter(object):
     _SEPARATOR = b'<br/>'
     __lobbyContext = dependency.descriptor(ILobbyContext)
     __goodiesCache = dependency.descriptor(IGoodiesCache)
-    __itemsCache = dependency.descriptor(IItemsCache)
+    _itemsCache = dependency.descriptor(IItemsCache)
 
     @classmethod
     def formatQuestAchieves(cls, data, asBattleFormatter, processCustomizations=True, processTokens=True):
@@ -2909,12 +2926,12 @@ class QuestAchievesFormatter(object):
         goodies = data.get(b'goodies', {})
         excludeGoodies = set()
         for goodieID, ginfo in goodies.iteritems():
-            if goodieID in cls.__itemsCache.items.shop.demountKits:
+            if goodieID in cls._itemsCache.items.shop.demountKits:
                 excludeGoodies.add(goodieID)
                 demountKit = cls.__goodiesCache.getDemountKit(goodieID)
                 if demountKit is not None and demountKit.enabled:
                     itemsNames.append(backport.text(R.strings.demount_kit.demountKit.gained.count(), count=ginfo.get(b'count')))
-            elif goodieID in cls.__itemsCache.items.shop.recertificationForms:
+            elif goodieID in cls._itemsCache.items.shop.recertificationForms:
                 excludeGoodies.add(goodieID)
                 rf = cls.__goodiesCache.getRecertificationForm(goodieID)
                 if rf is not None and rf.enabled:
@@ -3866,7 +3883,7 @@ class PrbVehicleKickFilterFormatter(PrbVehicleKickFormatter):
     typeKick = b'prbVehicleKickFilter'
 
 
-class PrbVehicleMaxSpgKickFormatter(ServiceChannelFormatter):
+class PrbVehicleMaxTypeKickFormatter(ServiceChannelFormatter):
     __itemsCache = dependency.descriptor(IItemsCache)
 
     def format(self, message, *args):
@@ -3876,22 +3893,8 @@ class PrbVehicleMaxSpgKickFormatter(ServiceChannelFormatter):
         if vehInvID:
             vehicle = self.__itemsCache.items.getVehicle(vehInvID)
             if vehicle:
-                formatted = g_settings.msgTemplates.format(b'prbVehicleMaxSpgKick', ctx={b'vehName': vehicle.userName})
-        return [MessageData(formatted, self._getGuiSettings(message, b'prbVehicleMaxSpgKick'))]
-
-
-class PrbVehicleMaxScoutKickFormatter(ServiceChannelFormatter):
-    __itemsCache = dependency.descriptor(IItemsCache)
-
-    def format(self, message, *args):
-        formatted = None
-        data = message.data
-        vehInvID = data.get(b'vehInvID', None)
-        if vehInvID:
-            vehicle = self.__itemsCache.items.getVehicle(vehInvID)
-            if vehicle:
-                formatted = g_settings.msgTemplates.format(b'prbVehicleMaxScoutKick', ctx={b'vehName': vehicle.userName})
-        return [MessageData(formatted, self._getGuiSettings(message, b'prbVehicleMaxScoutKick'))]
+                formatted = g_settings.msgTemplates.format(b'prbVehicleMaxTypeKick', ctx={b'vehName': vehicle.userName})
+        return [MessageData(formatted, self._getGuiSettings(message, b'prbVehicleMaxTypeKick'))]
 
 
 class RotationGroupLockFormatter(ServiceChannelFormatter):
@@ -4158,7 +4161,7 @@ class LootBoxAutoOpenFormatter(WaitItemsSyncFormatter):
         messageDataList = []
         if isSynced and message.data:
             openedBoxesIDs = set(message.data.keys())
-            for subFormatter in self.__subFormatters:
+            for subFormatter in self.__collectSubFormatters():
                 subBoxesIDs = subFormatter.getBoxesOfThisGroup(openedBoxesIDs)
                 if subBoxesIDs:
                     if subFormatter.isAsync():
@@ -4190,6 +4193,10 @@ class LootBoxAutoOpenFormatter(WaitItemsSyncFormatter):
         settingsRewards = self._getGuiSettings(message, self.__MESSAGE_TEMPLATE)
         settingsRewards.showAt = BigWorld.time()
         return MessageData(formattedRewards, settingsRewards)
+
+    def __collectSubFormatters(self):
+        self.__subFormatters = self.__subFormatters or collectLootBoxAutoOpenSubFormatters()
+        return self.__subFormatters
 
 
 class ProgressiveRewardFormatter(WaitItemsSyncFormatter):
@@ -4663,7 +4670,7 @@ class EpicLevelUpFormatter(WaitItemsSyncFormatter):
 
 class EpicQuestAchievesFormatter(QuestAchievesFormatter):
     __offersProvider = dependency.descriptor(IOffersDataProvider)
-    __itemsCache = dependency.descriptor(IItemsCache)
+    _itemsCache = dependency.descriptor(IItemsCache)
     __goodiesCache = dependency.descriptor(IGoodiesCache)
     _SEPARATOR = b'<br>'
     __rEpicReward = R.strings.messenger.serviceChannelMessages.epicReward

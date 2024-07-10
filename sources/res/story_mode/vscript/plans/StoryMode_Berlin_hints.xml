@@ -555,23 +555,6 @@
 				</slots>
 			</block>
 			<block>
-				<class>Macro</class>
-				<id>Macro_145</id>
-				<params>
-					<param>
-						PlayVO
-						<name>Macro Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>voiceover</name>
-						<const>\vo_ob_char02_m03_stg42_01\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
 				<class>DoOnce</class>
 				<id>DoOnce_18</id>
 				<params/>
@@ -585,23 +568,6 @@
 					<slot>
 						<name>count</name>
 						<const>\2\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>Macro</class>
-				<id>Macro_146</id>
-				<params>
-					<param>
-						PlayVO
-						<name>Macro Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>voiceover</name>
-						<const>\vo_ob_char02_m03_stg42_02\</const>
 					</slot>
 				</slots>
 			</block>
@@ -659,6 +625,57 @@
 				</slots>
 			</block>
 			<block>
+				<class>DoOnce</class>
+				<id>DoOnce_20</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>Counter</class>
+				<id>Counter_8</id>
+				<params/>
+				<slots>
+					<slot>
+						<name>count</name>
+						<const>\4\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>Macro</class>
+				<id>Macro_145</id>
+				<params>
+					<param>
+						PlayVO
+						<name>Macro Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>voiceover</name>
+						<const>\vo_ob_char02_m03_stg42_01\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>Macro</class>
+				<id>Macro_146</id>
+				<params>
+					<param>
+						PlayVO
+						<name>Macro Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>voiceover</name>
+						<const>\vo_ob_char02_m03_stg42_02\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
 				<class>Macro</class>
 				<id>Macro_147</id>
 				<params>
@@ -676,12 +693,6 @@
 				</slots>
 			</block>
 			<block>
-				<class>DoOnce</class>
-				<id>DoOnce_20</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
 				<class>Macro</class>
 				<id>Macro_148</id>
 				<params>
@@ -695,17 +706,6 @@
 					<slot>
 						<name>voiceover</name>
 						<const>\vo_ob_char02_m03_stg42_04\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>Counter</class>
-				<id>Counter_8</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>count</name>
-						<const>\4\</const>
 					</slot>
 				</slots>
 			</block>
@@ -1062,10 +1062,29 @@
 				<slots/>
 			</block>
 			<block>
-				<class>OnPlayerVehicleShoot</class>
-				<id>OnPlayerVehicleShoot_2</id>
-				<params/>
-				<slots/>
+				<class>Macro</class>
+				<id>Macro_151</id>
+				<params>
+					<param>
+						OnPlayerVehicleShoot
+						<name>Macro Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>switchable</name>
+						<const>\false\</const>
+					</slot>
+					<slot>
+						<name>continuousInterval</name>
+						<const>\0.500000\</const>
+					</slot>
+					<slot>
+						<name>active</name>
+						<const>\true\</const>
+					</slot>
+				</slots>
 			</block>
 			<block>
 				<class>ArrayLength</class>
@@ -2731,23 +2750,6 @@
 			</block>
 			<block>
 				<class>Macro</class>
-				<id>Macro_32</id>
-				<params>
-					<param>
-						PlayVO
-						<name>Macro Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>voiceover</name>
-						<const>\vo_sm_char02_m04_stg03_03\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>Macro</class>
 				<id>Macro_31</id>
 				<params>
 					<param>
@@ -3031,6 +3033,23 @@
 				<slots/>
 			</block>
 			<block>
+				<class>Macro</class>
+				<id>Macro_32</id>
+				<params>
+					<param>
+						PlayVO
+						<name>Macro Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>voiceover</name>
+						<const>\vo_sm_char02_m04_stg03_03\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
 				<class>Timer</class>
 				<id>Timer_24</id>
 				<params>
@@ -3048,6 +3067,21 @@
 				</slots>
 			</block>
 			<block>
+				<class>TriggerExternal</class>
+				<id>TriggerExternal_8</id>
+				<params/>
+				<slots>
+					<slot>
+						<name>eventID</name>
+						<const>\AbMissed\</const>
+					</slot>
+					<slot>
+						<name>isActive</name>
+						<const>\true\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
 				<class>Macro</class>
 				<id>Macro_27</id>
 				<params>
@@ -3061,21 +3095,6 @@
 					<slot>
 						<name>voiceover</name>
 						<const>\vo_sm_char12_m04_stg08_01\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>TriggerExternal</class>
-				<id>TriggerExternal_8</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>eventID</name>
-						<const>\AbMissed\</const>
-					</slot>
-					<slot>
-						<name>isActive</name>
-						<const>\true\</const>
 					</slot>
 				</slots>
 			</block>
@@ -3227,23 +3246,6 @@
 				</slots>
 			</block>
 			<block>
-				<class>Macro</class>
-				<id>Macro_44</id>
-				<params>
-					<param>
-						PlayVO
-						<name>Macro Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>voiceover</name>
-						<const>\vo_sm_char02_m04_stg09_01\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
 				<class>GetVariable</class>
 				<id>GetVariable_65</id>
 				<buddy>Variable_2</buddy>
@@ -3315,6 +3317,23 @@
 					</param>
 				</params>
 				<slots/>
+			</block>
+			<block>
+				<class>Macro</class>
+				<id>Macro_44</id>
+				<params>
+					<param>
+						PlayVO
+						<name>Macro Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>voiceover</name>
+						<const>\vo_sm_char02_m04_stg09_01\</const>
+					</slot>
+				</slots>
 			</block>
 			<block>
 				<class>Timer</class>
@@ -3459,23 +3478,6 @@
 			</block>
 			<block>
 				<class>Macro</class>
-				<id>Macro_52</id>
-				<params>
-					<param>
-						PlayVO
-						<name>Macro Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>voiceover</name>
-						<const>\vo_sm_char01_m04_stg13_03\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>Macro</class>
 				<id>Macro_51</id>
 				<params>
 					<param>
@@ -3563,6 +3565,23 @@
 					</param>
 				</params>
 				<slots/>
+			</block>
+			<block>
+				<class>Macro</class>
+				<id>Macro_52</id>
+				<params>
+					<param>
+						PlayVO
+						<name>Macro Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>voiceover</name>
+						<const>\vo_sm_char01_m04_stg13_03\</const>
+					</slot>
+				</slots>
 			</block>
 			<block>
 				<class>Timer</class>
@@ -4819,40 +4838,6 @@
 				</slots>
 			</block>
 			<block>
-				<class>Macro</class>
-				<id>Macro_135</id>
-				<params>
-					<param>
-						PlayVO
-						<name>Macro Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>voiceover</name>
-						<const>\vo_sm_char12_m04_stg49_02\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>Macro</class>
-				<id>Macro_136</id>
-				<params>
-					<param>
-						PlayVO
-						<name>Macro Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>voiceover</name>
-						<const>\vo_sm_char12_m04_stg49_03\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
 				<class>DoOnce</class>
 				<id>DoOnce_10</id>
 				<params/>
@@ -5027,6 +5012,23 @@
 				<slots/>
 			</block>
 			<block>
+				<class>Macro</class>
+				<id>Macro_135</id>
+				<params>
+					<param>
+						PlayVO
+						<name>Macro Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>voiceover</name>
+						<const>\vo_sm_char12_m04_stg49_02\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
 				<class>RandomInteger</class>
 				<id>RandomInteger_7</id>
 				<params/>
@@ -5055,6 +5057,23 @@
 					<slot>
 						<name>time0</name>
 						<const>\25.000000\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>Macro</class>
+				<id>Macro_136</id>
+				<params>
+					<param>
+						PlayVO
+						<name>Macro Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>voiceover</name>
+						<const>\vo_sm_char12_m04_stg49_03\</const>
 					</slot>
 				</slots>
 			</block>
@@ -5338,6 +5357,19 @@
 				</slots>
 			</block>
 			<block>
+				<class>GetVariable</class>
+				<id>GetVariable_116</id>
+				<buddy>Variable_2</buddy>
+				<params>
+					<param>
+						VehicleT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
 				<class>Macro</class>
 				<id>Macro_106</id>
 				<params>
@@ -5353,19 +5385,6 @@
 						<const>\vo_sm_char12_m04_stg32_02\</const>
 					</slot>
 				</slots>
-			</block>
-			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_116</id>
-				<buddy>Variable_2</buddy>
-				<params>
-					<param>
-						VehicleT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
 			</block>
 			<block>
 				<class>Macro</class>
@@ -6214,18 +6233,6 @@
 				<output>o0</output>
 			</connection>
 			<connection>
-				<from>DoOnce_17</from>
-				<input>in</input>
-				<to>Macro_145</to>
-				<output>completed</output>
-			</connection>
-			<connection>
-				<from>GetVariable_143</from>
-				<input>vehicle</input>
-				<to>Macro_145</to>
-				<output>value</output>
-			</connection>
-			<connection>
 				<from>Counter_6</from>
 				<input>input</input>
 				<to>DoOnce_18</to>
@@ -6236,18 +6243,6 @@
 				<input>input</input>
 				<to>Counter_6</to>
 				<output>o1</output>
-			</connection>
-			<connection>
-				<from>DoOnce_18</from>
-				<input>in</input>
-				<to>Macro_146</to>
-				<output>completed</output>
-			</connection>
-			<connection>
-				<from>GetVariable_143</from>
-				<input>vehicle</input>
-				<to>Macro_146</to>
-				<output>value</output>
 			</connection>
 			<connection>
 				<from>Counter_7</from>
@@ -6262,6 +6257,42 @@
 				<output>o2</output>
 			</connection>
 			<connection>
+				<from>Counter_8</from>
+				<input>input</input>
+				<to>DoOnce_20</to>
+				<output>completed</output>
+			</connection>
+			<connection>
+				<from>Sequence_30</from>
+				<input>input</input>
+				<to>Counter_8</to>
+				<output>o3</output>
+			</connection>
+			<connection>
+				<from>DoOnce_17</from>
+				<input>in</input>
+				<to>Macro_145</to>
+				<output>completed</output>
+			</connection>
+			<connection>
+				<from>GetVariable_143</from>
+				<input>vehicle</input>
+				<to>Macro_145</to>
+				<output>value</output>
+			</connection>
+			<connection>
+				<from>DoOnce_18</from>
+				<input>in</input>
+				<to>Macro_146</to>
+				<output>completed</output>
+			</connection>
+			<connection>
+				<from>GetVariable_143</from>
+				<input>vehicle</input>
+				<to>Macro_146</to>
+				<output>value</output>
+			</connection>
+			<connection>
 				<from>DoOnce_19</from>
 				<input>in</input>
 				<to>Macro_147</to>
@@ -6274,12 +6305,6 @@
 				<output>value</output>
 			</connection>
 			<connection>
-				<from>Counter_8</from>
-				<input>input</input>
-				<to>DoOnce_20</to>
-				<output>completed</output>
-			</connection>
-			<connection>
 				<from>DoOnce_20</from>
 				<input>in</input>
 				<to>Macro_148</to>
@@ -6290,12 +6315,6 @@
 				<input>vehicle</input>
 				<to>Macro_148</to>
 				<output>value</output>
-			</connection>
-			<connection>
-				<from>Sequence_30</from>
-				<input>input</input>
-				<to>Counter_8</to>
-				<output>o3</output>
 			</connection>
 			<connection>
 				<from>Choice_8</from>
@@ -6472,7 +6491,7 @@
 				<output>event0</output>
 			</connection>
 			<connection>
-				<from>OnPlayerVehicleShoot_2</from>
+				<from>Macro_151</from>
 				<input>input</input>
 				<to>If_31</to>
 				<output>onShoot</output>
@@ -7486,18 +7505,6 @@
 				<output>out</output>
 			</connection>
 			<connection>
-				<from>Macro_31</from>
-				<input>in</input>
-				<to>Macro_32</to>
-				<output>finished</output>
-			</connection>
-			<connection>
-				<from>GetVariable_62</from>
-				<input>vehicle</input>
-				<to>Macro_32</to>
-				<output>value</output>
-			</connection>
-			<connection>
 				<from>Macro_30</from>
 				<input>in</input>
 				<to>Macro_31</to>
@@ -7588,6 +7595,18 @@
 				<output>finished</output>
 			</connection>
 			<connection>
+				<from>Macro_31</from>
+				<input>in</input>
+				<to>Macro_32</to>
+				<output>finished</output>
+			</connection>
+			<connection>
+				<from>GetVariable_62</from>
+				<input>vehicle</input>
+				<to>Macro_32</to>
+				<output>value</output>
+			</connection>
+			<connection>
 				<from>TriggerExternal_8</from>
 				<input>windup</input>
 				<to>Timer_24</to>
@@ -7672,18 +7691,6 @@
 				<output>finished</output>
 			</connection>
 			<connection>
-				<from>Macro_29</from>
-				<input>in</input>
-				<to>Macro_44</to>
-				<output>finished</output>
-			</connection>
-			<connection>
-				<from>GetVariable_66</from>
-				<input>vehicle</input>
-				<to>Macro_44</to>
-				<output>value</output>
-			</connection>
-			<connection>
 				<from>Macro_44</from>
 				<input>windup</input>
 				<to>Timer_21</to>
@@ -7723,6 +7730,18 @@
 				<from>GetVariable_101</from>
 				<input>vehicle</input>
 				<to>Macro_45</to>
+				<output>value</output>
+			</connection>
+			<connection>
+				<from>Macro_29</from>
+				<input>in</input>
+				<to>Macro_44</to>
+				<output>finished</output>
+			</connection>
+			<connection>
+				<from>GetVariable_66</from>
+				<input>vehicle</input>
+				<to>Macro_44</to>
 				<output>value</output>
 			</connection>
 			<connection>
@@ -7792,12 +7811,6 @@
 				<output>value</output>
 			</connection>
 			<connection>
-				<from>Macro_51</from>
-				<input>in</input>
-				<to>Macro_52</to>
-				<output>finished</output>
-			</connection>
-			<connection>
 				<from>Timer_27</from>
 				<input>in</input>
 				<to>Macro_51</to>
@@ -7819,6 +7832,12 @@
 				<from>Macro_50</from>
 				<input>windup</input>
 				<to>Timer_27</to>
+				<output>finished</output>
+			</connection>
+			<connection>
+				<from>Macro_51</from>
+				<input>in</input>
+				<to>Macro_52</to>
 				<output>finished</output>
 			</connection>
 			<connection>
@@ -8254,18 +8273,6 @@
 				<output>o0</output>
 			</connection>
 			<connection>
-				<from>Choice_9</from>
-				<input>in</input>
-				<to>Macro_135</to>
-				<output>o1</output>
-			</connection>
-			<connection>
-				<from>Choice_9</from>
-				<input>in</input>
-				<to>Macro_136</to>
-				<output>o2</output>
-			</connection>
-			<connection>
 				<from>Timer_41</from>
 				<input>input</input>
 				<to>DoOnce_10</to>
@@ -8338,6 +8345,12 @@
 				<output>res</output>
 			</connection>
 			<connection>
+				<from>Choice_9</from>
+				<input>in</input>
+				<to>Macro_135</to>
+				<output>o1</output>
+			</connection>
+			<connection>
 				<from>Macro_98</from>
 				<input>windup</input>
 				<to>Timer_41</to>
@@ -8348,6 +8361,12 @@
 				<input>cancel</input>
 				<to>Timer_41</to>
 				<output>o0</output>
+			</connection>
+			<connection>
+				<from>Choice_9</from>
+				<input>in</input>
+				<to>Macro_136</to>
+				<output>o2</output>
 			</connection>
 			<connection>
 				<from>TriggerExternal_23</from>

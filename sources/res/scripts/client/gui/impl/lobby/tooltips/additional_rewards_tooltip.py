@@ -1,4 +1,5 @@
 from frameworks.wulf import ViewSettings
+from frameworks.wulf.view.array import fillViewModelsArray
 from gui.impl.gen import R
 from gui.impl.gen.view_models.views.lobby.tooltips.additional_rewards_tooltip_model import AdditionalRewardsTooltipModel
 from gui.impl.pub import ViewImpl
@@ -20,13 +21,12 @@ class AdditionalRewardsTooltip(ViewImpl):
     def _onLoading(self, packedBonuses, *args, **kwargs):
         super(AdditionalRewardsTooltip, self)._onLoading(*args, **kwargs)
         with self.viewModel.transaction() as (model):
-            model.setHeaderText(R.strings.tooltips.quests.awards.additional.header())
+            model.setHeaderText(self._getHeader())
             model.setHeaderCount(0)
             model.setDescription(R.invalid())
             model.setDescriptionCount(0)
-            bonusArray = model.getBonus()
-            bonusArray.clear()
-            for item in packedBonuses:
-                bonusArray.addViewModel(item)
+            fillViewModelsArray(packedBonuses, model.getBonus())
 
-            bonusArray.invalidate()
+    @classmethod
+    def _getHeader(cls):
+        return R.strings.tooltips.quests.awards.additional.header()
