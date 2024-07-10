@@ -3,19 +3,8 @@
 	<presets>
 		<preset>
 			<name>battle_royale</name>
+			<basePreset>empty</basePreset>
 			<components>
-				<component>
-					<name>crew</name>
-					<visible>False</visible>
-				</component>
-				<component>
-					<name>ammunition</name>
-					<visible>False</visible>
-				</component>
-				<component>
-					<name>ammunitionInject</name>
-					<visible>False</visible>
-				</component>
 				<component>
 					<name>carousel</name>
 					<visible>True</visible>
@@ -23,28 +12,40 @@
 					<layout>BRTanksCarouselUI</layout>
 				</component>
 				<component>
-					<name>vehicleParameters</name>
-					<visible>False</visible>
-				</component>
-				<component>
-					<name>vehicleResearch</name>
-					<visible>False</visible>
-				</component>
-				<component>
-					<name>dailyQuest</name>
-					<visible>False</visible>
-				</component>
-				<component>
-					<name>comp7Modifiers</name>
-					<visible>False</visible>
-				</component>
-				<component>
-					<name>comp7TournamentBanner</name>
-					<visible>False</visible>
-				</component>
-				<component>
 					<name>battleRoyalePanels</name>
 					<visible>True</visible>
+				</component>
+				<component>
+					<name>header</name>
+					<visible>True</visible>
+				</component>
+				<component>
+					<name>headerWidget</name>
+					<visible>True</visible>
+					<type>battleRoyaleEntryPoint</type>
+				</component>
+				<component>
+					<name>headerQuestFlags</name>
+					<visible>True</visible>
+				</component>
+				<component>
+					<name>battleRoyaleTournamentBanner</name>
+					<visible>True</visible>
+				</component>
+			</components>
+		</preset>
+		<preset>
+			<name>battle_royale_tournament</name>
+			<basePreset>battle_royale</basePreset>
+			<components>
+				<component>
+					<name>headerWidget</name>
+					<visible>True</visible>
+					<type>battleRoyaleTournament</type>
+				</component>
+				<component>
+					<name>headerQuestFlags</name>
+					<visible>False</visible>
 				</component>
 			</components>
 		</preset>
@@ -56,7 +57,7 @@
 		</item>
 		<item>
 			<queueType>22</queueType>
-			<presetName>battle_royale</presetName>
+			<presetName>battle_royale_tournament</presetName>
 		</item>
 	</queueTypePresets>
 </root>

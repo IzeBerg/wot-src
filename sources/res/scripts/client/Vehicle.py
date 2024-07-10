@@ -1,6 +1,6 @@
 import functools, logging, math, random, weakref
 from collections import namedtuple
-import typing, BigWorld, Math, Health, WoT, AreaDestructibles, BattleReplay, DestructiblesCache, TriggersManager, constants, physics_shared
+import typing, BigWorld, Math, Statuses, WoT, AreaDestructibles, BattleReplay, DestructiblesCache, TriggersManager, constants, physics_shared
 from account_helpers.settings_core.settings_constants import GAME
 from TriggersManager import TRIGGER_TYPE
 from VehicleEffects import DamageFromShotDecoder
@@ -14,7 +14,7 @@ from visual_script.misc import ASPECT
 from Event import Event
 from gui.battle_control import vehicle_getter, avatar_getter
 from gui.battle_control.avatar_getter import getSoundNotifications
-from gui.battle_control.battle_constants import FEEDBACK_EVENT_ID as _GUI_EVENT_ID, VEHICLE_VIEW_STATE
+from gui.battle_control.battle_constants import FEEDBACK_EVENT_ID as _FET, VEHICLE_VIEW_STATE
 from gun_rotation_shared import decodeGunAngles
 from helpers import dependency
 from helpers.EffectMaterialCalculation import calcSurfaceMaterialNearPoint
@@ -25,7 +25,7 @@ from material_kinds import EFFECT_MATERIAL_INDEXES_BY_NAMES, EFFECT_MATERIALS
 from skeletons.account_helpers.settings_core import ISettingsCore
 from skeletons.gui.battle_session import IBattleSessionProvider
 from skeletons.gui.lobby_context import ILobbyContext
-from skeletons.gui.game_control import ISpecialSoundCtrl, IBattleRoyaleController
+from skeletons.gui.game_control import ISpecialSoundCtrl
 from skeletons.vehicle_appearance_cache import IAppearanceCache
 from soft_exception import SoftException
 from vehicle_systems.components.shot_damage_components import ShotDamageComponent
@@ -34,8 +34,9 @@ from vehicle_systems.components.vehicle_pickup_component import VehiclePickupCom
 from vehicle_systems.model_assembler import collisionIdxToTrackPairIdx
 from vehicle_systems.tankStructure import TankPartNames, TankPartIndexes, TankSoundObjectsIndexes
 from vehicle_systems.appearance_cache import VehicleAppearanceCacheInfo
+from vehicle_systems.instant_status_helpers import invokeInstantStatusForVehicle
 from shared_utils.vehicle_utils import createWheelFilters
-import GenericComponents, Projectiles, CGF
+import GenericComponents, InstantStatuses, CGF
 from helpers.styles_perf_toolset import g_stylesOverrider
 if typing.TYPE_CHECKING:
     import OwnVehicle
@@ -88,7 +89,6 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
     lobbyContext = dependency.descriptor(ILobbyContext)
     __specialSounds = dependency.descriptor(ISpecialSoundCtrl)
     __appearanceCache = dependency.descriptor(IAppearanceCache)
-    __battleRoyaleController = dependency.descriptor(IBattleRoyaleController)
     __settingsCore = dependency.descriptor(ISettingsCore)
     activeGunIndex = property(lambda self: self.__activeGunIndex)
 
@@ -339,7 +339,7 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
         self.__stopExtras()
         BigWorld.player().vehicle_onLeaveWorld(self)
 
-    def showShooting(self, burstCount, gunIndex, isPredictedShot=False):
+    def showShooting(self, burstCount, currentGuns, isPredictedShot=False):
         blockShooting = self.siegeState is not None and self.siegeState != VEHICLE_SIEGE_STATE.ENABLED and self.siegeState != VEHICLE_SIEGE_STATE.DISABLED and not self.typeDescriptor.hasAutoSiegeMode
         if not self.isStarted or blockShooting:
             return
@@ -348,11 +348,11 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
                 return
         extra = self.typeDescriptor.extrasDict[self.typeDescriptor.shootExtraName]
         extra.stopFor(self)
-        extra.startFor(self, (burstCount, gunIndex))
+        extra.startFor(self, (burstCount, currentGuns))
         if not isPredictedShot and self.isPlayerVehicle:
             ctrl = self.guiSessionProvider.shared.feedback
             if ctrl is not None:
-                ctrl.onShotDone()
+                ctrl.onDiscreteShotDone()
             BigWorld.player().cancelWaitingForShot()
         return
 
@@ -366,15 +366,11 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
             maxComponentIdx = maxComponentIdx + wheelsConfig.getNonTrackWheelsCount()
         return maxComponentIdx
 
-    def showDamageFromShot(self, attackerID, points, effectsIndex, damageFactor, lastMaterialIsShield):
+    def showDamageFromShot(self, attackerID, points, effectsIndex, damage, damageFactor, lastMaterialIsShield):
         if not self.isStarted:
             return
         else:
-            hitsReceived = self.appearance.findComponentByType(Projectiles.ProjectileHitsReceivedComponent)
-            if hitsReceived is None:
-                self.appearance.createComponent(Projectiles.ProjectileHitsReceivedComponent)
-            else:
-                hitsReceived.addHit()
+            invokeInstantStatusForVehicle(self, InstantStatuses.ProjectileHitsReceivedComponent)
             effectsDescr = vehicles.g_cache.shotEffects[effectsIndex]
             maxComponentIdx = self.calcMaxComponentIdx()
             decodedPoints = DamageFromShotDecoder.decodeHitPoints(points, self.appearance.collisions, maxComponentIdx, self.typeDescriptor)
@@ -391,7 +387,7 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
             firstHitDir = compMatrix.applyVector(firstHitDirLocal)
             self.appearance.receiveShotImpulse(firstHitDir, effectsDescr['targetImpulse'])
             player = BigWorld.player()
-            player.inputHandler.onVehicleShaken(self, compMatrix.translation, firstHitDir, effectsDescr['caliber'], ShakeReason.HIT if hasDamageHit else ShakeReason.HIT_NO_DAMAGE)
+            player.inputHandler.onVehicleShaken(self, ShakeReason.HIT if hasDamageHit else ShakeReason.HIT_NO_DAMAGE, compMatrix.translation, firstHitDir, effectsDescr['caliber'], effectsDescr['targetCameraSensitivity'])
             showFriendlyFlashBang = False
             sessionProvider = self.guiSessionProvider
             isAlly = sessionProvider.getArenaDP().isAlly(attackerID)
@@ -401,7 +397,7 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
                 showFriendlyFlashBang = isFriendlyFireMode and hasCustomAllyDamageEffect
             showFullscreenEffs = self.isPlayerVehicle and self.isAlive()
             keyPoints, effects, _ = effectsDescr[maxPriorityHitPoint.hitEffectGroup]
-            self.appearance.boundEffects.addNewToNode(maxPriorityHitPoint.componentName, maxPriorityHitPoint.matrix, effects, keyPoints, isPlayerVehicle=self.isPlayerVehicle, showShockWave=showFullscreenEffs, showFlashBang=showFullscreenEffs and not showFriendlyFlashBang, showFriendlyFlashBang=showFullscreenEffs and showFriendlyFlashBang, entity_id=self.id, damageFactor=damageFactor, attackerID=attackerID, hitdir=firstHitDir, surfaceNormal=maxPriorityHitPoint.matrix.applyVector(Math.Vector3(0, 0, -1)))
+            self.appearance.boundEffects.addNewToNode(TankPartNames.getActualNodeNameByPartName(maxPriorityHitPoint.componentName, self.isAlive()), maxPriorityHitPoint.matrix, effects, keyPoints, isPlayerVehicle=self.isPlayerVehicle, showShockWave=showFullscreenEffs, showFlashBang=showFullscreenEffs and not showFriendlyFlashBang, showFriendlyFlashBang=showFullscreenEffs and showFriendlyFlashBang, entity_id=self.id, damageFactor=damageFactor, attackerID=attackerID, hitdir=firstHitDir, surfaceNormal=maxPriorityHitPoint.matrix.applyVector(Math.Vector3(0, 0, -1)))
             prefabHit = effectsDescr['hitPrefabs'].get(maxPriorityHitPoint.hitEffectGroup) if 'hitPrefabs' in effectsDescr else None
             if prefabHit:
 
@@ -424,32 +420,32 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
             if isAttacker or isObserverFPV:
                 ctrl = sessionProvider.shared.feedback
                 if ctrl is not None:
-                    ctrl.updateMarkerHitState(self.id, maxPriorityHitPoint.componentName, maxHitEffectCode, damageFactor, lastMaterialIsShield, hasPiercedHit)
+                    ctrl.updateMarkerHitState(self.id, None, maxPriorityHitPoint.componentName, maxHitEffectCode, damage, damageFactor, lastMaterialIsShield, hasPiercedHit)
                 if needArmorScreenNotDamageSound:
                     soundNotifications.play('ui_armor_screen_not_damage_PC_NPC')
             elif self.id == controllingVehicleID and attackerID != self.id and needArmorScreenNotDamageSound:
                 soundNotifications.play('ui_armor_screen_not_damage_NPC_PC')
             return
 
-    def showDamageFromExplosion(self, attackerID, center, effectsIndex, damageFactor):
+    def showDamageFromExplosion(self, attackerID, center, effectsIndex, damage, damageFactor):
         if not self.isStarted:
             return
         else:
-            impulse = vehicles.g_cache.shotEffects[effectsIndex]['targetImpulse']
+            effectsDescr = vehicles.g_cache.shotEffects[effectsIndex]
             direction = self.position - center
             direction.normalise()
-            self.appearance.receiveShotImpulse(direction, impulse / 4.0)
+            self.appearance.receiveShotImpulse(direction, effectsDescr['targetImpulse'] / 4.0)
             if not self.isAlive():
                 return
             self.showSplashHitEffect(effectsIndex, damageFactor)
             if self.id == attackerID:
                 return
             player = BigWorld.player()
-            player.inputHandler.onVehicleShaken(self, center, direction, vehicles.g_cache.shotEffects[effectsIndex]['caliber'], ShakeReason.SPLASH)
-            if attackerID == BigWorld.player().playerVehicleID:
+            player.inputHandler.onVehicleShaken(self, ShakeReason.SPLASH, center, direction, effectsDescr['caliber'], effectsDescr['targetCameraSensitivity'])
+            if attackerID == player.playerVehicleID:
                 ctrl = self.guiSessionProvider.shared.feedback
                 if ctrl is not None:
-                    ctrl.setVehicleState(self.id, _GUI_EVENT_ID.VEHICLE_ARMOR_PIERCED)
+                    ctrl.updateMarkerHitState(self.id, _FET.VEHICLE_ARMOR_PIERCED, damage=damage)
             return
 
     def showVehicleCollisionEffect(self, pos, delta_spd, energy=0):
@@ -770,10 +766,10 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
 
     def set_stunInfo(self, prev=None):
         _logger.debug('Set stun info(curr,~ prev): %s, %s', self.stunInfo, prev)
-        if self.stunInfo > 0.0 and self.appearance.findComponentByType(Health.StunComponent) is None:
-            self.appearance.createComponent(Health.StunComponent)
+        if self.stunInfo > 0.0 and self.appearance.findComponentByType(Statuses.StunComponent) is None:
+            self.appearance.createComponent(Statuses.StunComponent)
         if self.stunInfo < 0.01:
-            self.appearance.removeComponentByType(Health.StunComponent)
+            self.appearance.removeComponentByType(Statuses.StunComponent)
         self.updateStunInfo()
         return
 
@@ -1172,7 +1168,7 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
         if not self.isPlayerVehicle:
             ctrl = self.guiSessionProvider.shared.feedback
             if ctrl is not None:
-                ctrl.setVehicleState(self.id, _GUI_EVENT_ID.VEHICLE_DEAD, isDeadStarted)
+                ctrl.setVehicleState(self.id, _FET.VEHICLE_DEAD, isDeadStarted)
         TriggersManager.g_manager.fireTrigger(TRIGGER_TYPE.VEHICLE_DESTROYED, vehicleId=self.id)
         self._removeInspire()
         self._removeHealing()

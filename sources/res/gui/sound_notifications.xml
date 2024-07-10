@@ -2061,11 +2061,43 @@
 		<queueClearAtStart>0</queueClearAtStart>
 	</event>
 	<event>
+		<name>frequent_enemy_hp_damaged_by_explosion_at_direct_hit_by_player</name>
+		<chance>100</chance>
+		<infEvent>vo_enemy_hp_damaged_by_explosion_at_direct_hit_by_player</infEvent>
+		<infChance>100</infChance>
+		<cooldownEvent>
+			5.1
+			<!--BW_String-->
+		</cooldownEvent>
+		<queue>1</queue>
+		<priority>50</priority>
+		<lifetime>3</lifetime>
+		<interrupt>1</interrupt>
+		<predelay>1</predelay>
+		<queueClearAtStart>0</queueClearAtStart>
+	</event>
+	<event>
 		<name>enemy_hp_damaged_by_near_explosion_by_player</name>
 		<chance>100</chance>
 		<infEvent>vo_damage_by_near_explosion_by_player</infEvent>
 		<infChance>100</infChance>
 		<cooldownEvent>0</cooldownEvent>
+		<queue>1</queue>
+		<priority>52</priority>
+		<lifetime>3</lifetime>
+		<interrupt>1</interrupt>
+		<predelay>1</predelay>
+		<queueClearAtStart>0</queueClearAtStart>
+	</event>
+	<event>
+		<name>frequent_enemy_hp_damaged_by_near_explosion_by_player</name>
+		<chance>100</chance>
+		<infEvent>vo_damage_by_near_explosion_by_player</infEvent>
+		<infChance>100</infChance>
+		<cooldownEvent>
+			5.1
+			<!--BW_String-->
+		</cooldownEvent>
 		<queue>1</queue>
 		<priority>52</priority>
 		<lifetime>3</lifetime>
@@ -2087,6 +2119,22 @@
 		<queueClearAtStart>0</queueClearAtStart>
 	</event>
 	<event>
+		<name>frequent_enemy_hp_damaged_by_projectile_and_chassis_damaged_by_player</name>
+		<chance>100</chance>
+		<infEvent>vo_enemy_hp_damaged_by_projectile_and_chassis_damaged_by_player</infEvent>
+		<infChance>100</infChance>
+		<cooldownEvent>
+			5.1
+			<!--BW_String-->
+		</cooldownEvent>
+		<queue>1</queue>
+		<priority>50</priority>
+		<lifetime>3</lifetime>
+		<interrupt>2</interrupt>
+		<predelay>1</predelay>
+		<queueClearAtStart>0</queueClearAtStart>
+	</event>
+	<event>
 		<name>enemy_hp_damaged_by_projectile_and_gun_damaged_by_player</name>
 		<chance>100</chance>
 		<infEvent>vo_enemy_hp_damaged_by_projectile_and_gun_damaged_by_player</infEvent>
@@ -2100,11 +2148,43 @@
 		<queueClearAtStart>0</queueClearAtStart>
 	</event>
 	<event>
+		<name>frequent_enemy_hp_damaged_by_projectile_and_gun_damaged_by_player</name>
+		<chance>100</chance>
+		<infEvent>vo_enemy_hp_damaged_by_projectile_and_gun_damaged_by_player</infEvent>
+		<infChance>100</infChance>
+		<cooldownEvent>
+			5.1
+			<!--BW_String-->
+		</cooldownEvent>
+		<queue>1</queue>
+		<priority>52</priority>
+		<lifetime>3</lifetime>
+		<interrupt>2</interrupt>
+		<predelay>1</predelay>
+		<queueClearAtStart>0</queueClearAtStart>
+	</event>
+	<event>
 		<name>enemy_hp_damaged_by_projectile_by_player</name>
 		<chance>100</chance>
 		<infEvent>vo_enemy_hp_damaged_by_projectile_by_player</infEvent>
 		<infChance>100</infChance>
 		<cooldownEvent>0</cooldownEvent>
+		<queue>1</queue>
+		<priority>52</priority>
+		<lifetime>3</lifetime>
+		<interrupt>2</interrupt>
+		<predelay>1</predelay>
+		<queueClearAtStart>0</queueClearAtStart>
+	</event>
+	<event>
+		<name>frequent_enemy_hp_damaged_by_projectile_by_player</name>
+		<chance>100</chance>
+		<infEvent>vo_enemy_hp_damaged_by_projectile_by_player</infEvent>
+		<infChance>100</infChance>
+		<cooldownEvent>
+			5.1
+			<!--BW_String-->
+		</cooldownEvent>
 		<queue>1</queue>
 		<priority>52</priority>
 		<lifetime>3</lifetime>
@@ -2167,7 +2247,39 @@
 		<queueClearAtStart>0</queueClearAtStart>
 	</event>
 	<event>
+		<name>frequent_enemy_no_hp_damage_at_attempt_and_chassis_damaged_by_player</name>
+		<chance>100</chance>
+		<infEvent>vo_enemy_no_hp_damage_at_attempt_and_chassis_damaged_by_player</infEvent>
+		<infChance>100</infChance>
+		<cooldownEvent>5</cooldownEvent>
+		<queue>1</queue>
+		<priority>50</priority>
+		<lifetime>1</lifetime>
+		<interrupt>2</interrupt>
+		<predelay>
+			0.7
+			<!--BW_String-->
+		</predelay>
+		<queueClearAtStart>0</queueClearAtStart>
+	</event>
+	<event>
 		<name>enemy_no_hp_damage_at_attempt_and_gun_damaged_by_player</name>
+		<chance>100</chance>
+		<infEvent>vo_enemy_no_hp_damage_at_attempt_and_gun_damaged_by_player</infEvent>
+		<infChance>100</infChance>
+		<cooldownEvent>5</cooldownEvent>
+		<queue>1</queue>
+		<priority>50</priority>
+		<lifetime>1</lifetime>
+		<interrupt>2</interrupt>
+		<predelay>
+			0.7
+			<!--BW_String-->
+		</predelay>
+		<queueClearAtStart>0</queueClearAtStart>
+	</event>
+	<event>
+		<name>frequent_enemy_no_hp_damage_at_attempt_and_gun_damaged_by_player</name>
 		<chance>100</chance>
 		<infEvent>vo_enemy_no_hp_damage_at_attempt_and_gun_damaged_by_player</infEvent>
 		<infChance>100</infChance>
@@ -2199,11 +2311,43 @@
 		<queueClearAtStart>0</queueClearAtStart>
 	</event>
 	<event>
+		<name>frequent_enemy_no_hp_damage_at_attempt_by_player</name>
+		<chance>100</chance>
+		<infEvent>vo_armor_not_pierced_by_player</infEvent>
+		<infChance>100</infChance>
+		<cooldownEvent>5</cooldownEvent>
+		<queue>1</queue>
+		<priority>50</priority>
+		<lifetime>1</lifetime>
+		<interrupt>2</interrupt>
+		<predelay>
+			0.7
+			<!--BW_String-->
+		</predelay>
+		<queueClearAtStart>0</queueClearAtStart>
+	</event>
+	<event>
 		<name>enemy_no_hp_damage_at_no_attempt_and_chassis_damaged_by_player</name>
 		<chance>100</chance>
 		<infEvent>vo_enemy_no_hp_damage_at_no_attempt_and_chassis_damaged_by_player</infEvent>
 		<infChance>100</infChance>
 		<cooldownEvent>0</cooldownEvent>
+		<queue>1</queue>
+		<priority>50</priority>
+		<lifetime>3</lifetime>
+		<interrupt>1</interrupt>
+		<predelay>1</predelay>
+		<queueClearAtStart>0</queueClearAtStart>
+	</event>
+	<event>
+		<name>frequent_enemy_no_hp_damage_at_no_attempt_and_chassis_damaged_by_player</name>
+		<chance>100</chance>
+		<infEvent>vo_enemy_no_hp_damage_at_no_attempt_and_chassis_damaged_by_player</infEvent>
+		<infChance>100</infChance>
+		<cooldownEvent>
+			5.1
+			<!--BW_String-->
+		</cooldownEvent>
 		<queue>1</queue>
 		<priority>50</priority>
 		<lifetime>3</lifetime>
@@ -2225,6 +2369,22 @@
 		<queueClearAtStart>0</queueClearAtStart>
 	</event>
 	<event>
+		<name>frequent_enemy_no_hp_damage_at_no_attempt_and_gun_damaged_by_player</name>
+		<chance>100</chance>
+		<infEvent>vo_enemy_no_hp_damage_at_no_attempt_and_gun_damaged_by_player</infEvent>
+		<infChance>100</infChance>
+		<cooldownEvent>
+			5.1
+			<!--BW_String-->
+		</cooldownEvent>
+		<queue>1</queue>
+		<priority>50</priority>
+		<lifetime>3</lifetime>
+		<interrupt>1</interrupt>
+		<predelay>1</predelay>
+		<queueClearAtStart>0</queueClearAtStart>
+	</event>
+	<event>
 		<name>enemy_no_hp_damage_at_no_attempt_by_player</name>
 		<chance>100</chance>
 		<infEvent>vo_enemy_no_hp_damage_at_no_attempt_by_player</infEvent>
@@ -2238,11 +2398,43 @@
 		<queueClearAtStart>0</queueClearAtStart>
 	</event>
 	<event>
+		<name>frequent_enemy_no_hp_damage_at_no_attempt_by_player</name>
+		<chance>100</chance>
+		<infEvent>vo_enemy_no_hp_damage_at_no_attempt_by_player</infEvent>
+		<infChance>100</infChance>
+		<cooldownEvent>
+			5.1
+			<!--BW_String-->
+		</cooldownEvent>
+		<queue>1</queue>
+		<priority>50</priority>
+		<lifetime>3</lifetime>
+		<interrupt>1</interrupt>
+		<predelay>1</predelay>
+		<queueClearAtStart>0</queueClearAtStart>
+	</event>
+	<event>
 		<name>enemy_no_hp_damage_by_near_explosion_by_player</name>
 		<chance>100</chance>
 		<infEvent>vo_damage_by_near_explosion_by_player</infEvent>
 		<infChance>100</infChance>
 		<cooldownEvent>0</cooldownEvent>
+		<queue>1</queue>
+		<priority>50</priority>
+		<lifetime>3</lifetime>
+		<interrupt>2</interrupt>
+		<predelay>1</predelay>
+		<queueClearAtStart>0</queueClearAtStart>
+	</event>
+	<event>
+		<name>frequent_enemy_no_hp_damage_by_near_explosion_by_player</name>
+		<chance>100</chance>
+		<infEvent>vo_damage_by_near_explosion_by_player</infEvent>
+		<infChance>100</infChance>
+		<cooldownEvent>
+			5.1
+			<!--BW_String-->
+		</cooldownEvent>
 		<queue>1</queue>
 		<priority>50</priority>
 		<lifetime>3</lifetime>
@@ -2267,11 +2459,49 @@
 		<queueClearAtStart>0</queueClearAtStart>
 	</event>
 	<event>
+		<name>frequent_enemy_no_piercing_by_player</name>
+		<chance>100</chance>
+		<infEvent>vo_armor_not_pierced_by_player</infEvent>
+		<infChance>100</infChance>
+		<cooldownEvent>
+			5.1
+			<!--BW_String-->
+		</cooldownEvent>
+		<queue>1</queue>
+		<priority>50</priority>
+		<lifetime>3</lifetime>
+		<interrupt>2</interrupt>
+		<predelay>
+			0.7
+			<!--BW_String-->
+		</predelay>
+		<queueClearAtStart>0</queueClearAtStart>
+	</event>
+	<event>
 		<name>enemy_ricochet_by_player</name>
 		<chance>100</chance>
 		<infEvent>vo_armor_ricochet_by_player</infEvent>
 		<infChance>100</infChance>
 		<cooldownEvent>0</cooldownEvent>
+		<queue>1</queue>
+		<priority>50</priority>
+		<lifetime>3</lifetime>
+		<interrupt>2</interrupt>
+		<predelay>
+			0.7
+			<!--BW_String-->
+		</predelay>
+		<queueClearAtStart>0</queueClearAtStart>
+	</event>
+	<event>
+		<name>frequent_enemy_ricochet_by_player</name>
+		<chance>100</chance>
+		<infEvent>vo_armor_ricochet_by_player</infEvent>
+		<infChance>100</infChance>
+		<cooldownEvent>
+			5.1
+			<!--BW_String-->
+		</cooldownEvent>
 		<queue>1</queue>
 		<priority>50</priority>
 		<lifetime>3</lifetime>
@@ -3932,5 +4162,81 @@
 		<chance>100</chance>
 		<fxEvent>dc_fc_ui_stop_to_follow</fxEvent>
 		<cooldownFx>0</cooldownFx>
+	</event>
+	<event>
+		<name>fep_track_damaged</name>
+		<chance>100</chance>
+		<infEvent>vo_track_damaged</infEvent>
+		<infChance>37</infChance>
+		<cooldownEvent>
+			5.1
+			<!--BW_String-->
+		</cooldownEvent>
+		<queue>1</queue>
+		<priority>30</priority>
+		<lifetime>2</lifetime>
+		<interrupt>1</interrupt>
+		<predelay>
+			0.5
+			<!--BW_String-->
+		</predelay>
+		<queueClearAtStart>0</queueClearAtStart>
+	</event>
+	<event>
+		<name>fep_track_destroyed</name>
+		<chance>100</chance>
+		<infEvent>vo_track_destroyed</infEvent>
+		<infChance>100</infChance>
+		<cooldownEvent>
+			3.5
+			<!--BW_String-->
+		</cooldownEvent>
+		<queue>1</queue>
+		<priority>70</priority>
+		<lifetime>2</lifetime>
+		<interrupt>2</interrupt>
+		<predelay>
+			0.5
+			<!--BW_String-->
+		</predelay>
+		<queueClearAtStart>0</queueClearAtStart>
+	</event>
+	<event>
+		<name>fep_track_functional</name>
+		<chance>100</chance>
+		<infEvent>vo_track_functional</infEvent>
+		<infChance>25</infChance>
+		<cooldownEvent>
+			6.1
+			<!--BW_String-->
+		</cooldownEvent>
+		<queue>1</queue>
+		<priority>30</priority>
+		<lifetime>2</lifetime>
+		<interrupt>1</interrupt>
+		<predelay>
+			0.6
+			<!--BW_String-->
+		</predelay>
+		<queueClearAtStart>0</queueClearAtStart>
+	</event>
+	<event>
+		<name>fep_track_functional_can_move</name>
+		<chance>100</chance>
+		<infEvent>vo_track_functional_can_move</infEvent>
+		<infChance>100</infChance>
+		<cooldownEvent>
+			3.1
+			<!--BW_String-->
+		</cooldownEvent>
+		<queue>1</queue>
+		<priority>70</priority>
+		<lifetime>2</lifetime>
+		<interrupt>2</interrupt>
+		<predelay>
+			0.75
+			<!--BW_String-->
+		</predelay>
+		<queueClearAtStart>0</queueClearAtStart>
 	</event>
 </root>

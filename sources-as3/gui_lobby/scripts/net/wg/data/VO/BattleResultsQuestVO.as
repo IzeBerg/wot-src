@@ -1,10 +1,8 @@
 package net.wg.data.VO
 {
-   import net.wg.data.constants.Errors;
    import net.wg.gui.lobby.questsWindow.data.PersonalInfoVO;
    import net.wg.gui.lobby.questsWindow.data.StateVO;
    import net.wg.gui.lobby.questsWindow.data.SubtaskVO;
-   import net.wg.infrastructure.interfaces.entity.IDisposable;
    
    public class BattleResultsQuestVO extends SubtaskVO
    {
@@ -16,7 +14,7 @@ package net.wg.data.VO
       
       public var questType:int = -1;
       
-      public var personalInfo:Vector.<PersonalInfoVO> = null;
+      public var personalInfo:PersonalInfoVO = null;
       
       public var isLinkBtnVisible:Boolean = true;
       
@@ -45,14 +43,9 @@ package net.wg.data.VO
       
       override protected function onDispose() : void
       {
-         var _loc1_:IDisposable = null;
          if(this.personalInfo != null)
          {
-            for each(_loc1_ in this.personalInfo)
-            {
-               _loc1_.dispose();
-            }
-            this.personalInfo.splice(0,this.personalInfo.length);
+            this.personalInfo.dispose();
             this.personalInfo = null;
          }
          if(this.awards != null)
@@ -75,17 +68,9 @@ package net.wg.data.VO
       
       override protected function onDataWrite(param1:String, param2:Object) : Boolean
       {
-         var _loc3_:Array = null;
-         var _loc4_:Object = null;
          if(param1 == PERSONAL_INFO_KEY)
          {
-            _loc3_ = param2 as Array;
-            App.utils.asserter.assertNotNull(_loc3_,PERSONAL_INFO_KEY + Errors.CANT_NULL);
-            this.personalInfo = new Vector.<PersonalInfoVO>(0);
-            for each(_loc4_ in _loc3_)
-            {
-               this.personalInfo.push(new PersonalInfoVO(_loc4_));
-            }
+            this.personalInfo = new PersonalInfoVO(param2);
             return false;
          }
          if(param1 == QUEST_STATE_KEY)

@@ -11,6 +11,7 @@ RELATIVE_PARAMS = ('relativePower', 'relativeArmor', 'relativeMobility', 'relati
 MAX_RELATIVE_VALUE = 1000
 NO_DATA = 'no data'
 _AUTO_RELOAD_TAG = 'autoreload'
+_AUTO_SHOOT_TAG = 'autoShoot'
 _DUAL_GUN_TAG = 'dualGun'
 _DUAL_ACCURACY_TAG = 'dualAccuracy'
 
@@ -39,6 +40,13 @@ def _addAutoReload(result, configReloadTimes, shellsCount):
 def isAutoReloadGun(gun):
     if gun is not None:
         return _AUTO_RELOAD_TAG in gun.tags
+    else:
+        return False
+
+
+def isAutoShootGun(gun):
+    if gun is not None:
+        return _AUTO_SHOOT_TAG in gun.tags
     else:
         return False
 

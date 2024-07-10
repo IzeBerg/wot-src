@@ -151,6 +151,7 @@ package net.wg.gui.notification
       private function onComponentClickHandler(param1:MouseEvent) : void
       {
          dispatchEvent(new ServiceMessageEvent(ServiceMessageEvent.MESSAGE_AREA_CLICKED,data.typeID,data.entityID,true));
+         App.toolTipMgr.hide();
       }
    }
 }

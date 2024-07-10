@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<htmlTemplatesSimple>
+		<funRandomLootBox>&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s: &lt;font color=&apos;#D6D7D4&apos;&gt;&lt;b&gt;%(count)s&lt;/b&gt;&lt;/font&gt;&lt;/font&gt;</funRandomLootBox>
+	</htmlTemplatesSimple>
+	<htmlTemplates>
+		<FunRandomNewSubModes>
+			<type>grey</type>
+			<icon>InformationIcon</icon>
+			<priority>medium</priority>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#messenger:serviceChannelMessages/funRandom/newSubModesButton)</label>
+					<action>selectFunRandomMode</action>
+					<width>120</width>
+				</button>
+			</buttonsLayout>
+		</FunRandomNewSubModes>
+		<FunRandomProgressionStage>
+			<type>grey</type>
+			<icon>InformationIcon</icon>
+			<priority>medium</priority>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#messenger:serviceChannelMessages/funRandom/progressionStageButton)</label>
+					<action>showFunRandomProgression</action>
+					<width>120</width>
+				</button>
+			</buttonsLayout>
+		</FunRandomProgressionStage>
+		<FunRandomLootBoxesAutoOpenMessage>
+			<priority>medium</priority>
+			<type>grey</type>
+			<linkage>SMFunRandomReward</linkage>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;font face=&quot;$TitleFont&quot; size=&quot;12&quot; color=&quot;#E9E2BF&quot;&gt;%(rewardText)s&lt;/font&gt;&lt;br/&gt;</message>
+			<buttonsLayout>
+				<button>
+					<type>info</type>
+					<label>&lt;font face=&quot;$TitleFont&quot; size=&quot;14&quot; color=&quot;#FEFEEC&quot;&gt;_(#messenger:serviceChannelMessages/funRandom/progressionStageButton)&lt;/font&gt;</label>
+					<action>showFunRandomProgression</action>
+					<width>128</width>
+				</button>
+			</buttonsLayout>
+		</FunRandomLootBoxesAutoOpenMessage>
+	</htmlTemplates>
+</root>

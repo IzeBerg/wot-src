@@ -219,6 +219,7 @@ package net.wg.gui.lobby.hangar.tcarousel
       {
          this.vehicleFilters.visible = param1.isVisible;
          this.vehicleFilters.initData(param1);
+         invalidate(InvalidationType.SETTINGS);
       }
       
       override protected function setCarouselFilter(param1:TankCarouselFilterSelectedVO) : void
@@ -335,11 +336,6 @@ package net.wg.gui.lobby.hangar.tcarousel
          invalidate(InvalidationType.SIZE);
       }
       
-      public function get isExtended() : Boolean
-      {
-         return this._helper && this._helper is TankCarouselHelper && this._rowCount > 1;
-      }
-      
       protected function getNewHelper() : ITankCarouselHelper
       {
          var _loc1_:ITankCarouselHelper = this._helper;
@@ -418,6 +414,11 @@ package net.wg.gui.lobby.hangar.tcarousel
          leftArrow.y = _loc5_;
          rightArrow.y = _loc5_ + this._listVisibleHeight;
          this.vehicleFilters.height = this._listVisibleHeight;
+      }
+      
+      public function get isExtended() : Boolean
+      {
+         return this._helper && !this._helper.isSmall && this._rowCount > 1;
       }
       
       public function get rowCount() : int
@@ -529,6 +530,11 @@ class TankCarouselHelper implements ITankCarouselHelper
       return PADDING;
    }
    
+   public function get isSmall() : Boolean
+   {
+      return false;
+   }
+   
    public function get rendererVisibleHeight() : int
    {
       return RENDERER_VISIBLE_HEIGHT;
@@ -604,5 +610,10 @@ class SmallTankCarouselHelper implements ITankCarouselHelper
    public function get rendererHeightDiff() : int
    {
       return RENDERER_HEIGHT_DIFF;
+   }
+   
+   public function get isSmall() : Boolean
+   {
+      return true;
    }
 }

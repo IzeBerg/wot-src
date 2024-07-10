@@ -116,7 +116,7 @@ package net.wg.gui.lobby.moduleInfo
                }
                if(_loc5_.highlight)
                {
-                  this.addHighlightCounter(_loc3_,_loc7_);
+                  this.addHighlightCounter(_loc3_);
                }
                _loc3_ += _loc6_;
             }
@@ -124,14 +124,13 @@ package net.wg.gui.lobby.moduleInfo
          height = this.paramValue.y + this.paramValue.height + this._bottomMargin;
       }
       
-      private function addHighlightCounter(param1:int, param2:Boolean) : void
+      private function addHighlightCounter(param1:int) : void
       {
-         var _loc3_:Sprite = new Sprite();
-         addChild(_loc3_);
-         var _loc4_:String = !!param2 ? Linkages.COUNTER_DOUBLE_LINE_BIG_UI : Linkages.COUNTER_LINE_BIG_UI;
-         var _loc5_:ICounterProps = new CounterProps(COUNTER_OFFSET_X,this.paramValue.y + COUNTER_OFFSET_Y + COUNTER_STEP * param1,TextFormatAlign.LEFT,true,_loc4_);
-         this._counterManager.setCounter(_loc3_,CounterManager.COUNTER_EMPTY,null,_loc5_);
-         this._parametersHighlightTargets.push(_loc3_);
+         var _loc2_:Sprite = new Sprite();
+         addChild(_loc2_);
+         var _loc3_:ICounterProps = new CounterProps(COUNTER_OFFSET_X,this.paramValue.y + COUNTER_OFFSET_Y + COUNTER_STEP * param1,TextFormatAlign.LEFT,true,Linkages.COUNTER_LINE_BIG_UI);
+         this._counterManager.setCounter(_loc2_,CounterManager.COUNTER_EMPTY,null,_loc3_);
+         this._parametersHighlightTargets.push(_loc2_);
       }
       
       [Inspectable(defaultValue="0",name="bottomMargin",type="Number")]

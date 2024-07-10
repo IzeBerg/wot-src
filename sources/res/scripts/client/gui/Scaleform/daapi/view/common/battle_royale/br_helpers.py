@@ -1,8 +1,7 @@
 import logging, math, BigWorld, CommandMapping
 from constants import BATTLE_ROYALE_SCENE
 from helpers import dependency
-from items import vehicles
-from skeletons.gui.game_control import IBattleRoyaleController
+from items import vehicles, parseIntCompactDescr, ITEM_TYPES
 from gui.Scaleform.daapi.view.common.keybord_helpers import getHotKeyList, getHotKeyVkList
 from skeletons.gui.game_control import IHangarSpaceSwitchController
 from skeletons.gui.lobby_context import ILobbyContext
@@ -81,11 +80,14 @@ def isAdditionalModule(level, unlocks, moduleGetter):
     return False
 
 
-@dependency.replace_none_kwargs(brCtrl=IBattleRoyaleController)
-def canVehicleSpawnBot(vehicleName, brCtrl=None):
-    vehicleEquipmentIDs = brCtrl.getBrVehicleEquipmentIds(vehicleName)
+def canVehicleSpawnBot(vehicle):
     equipments = vehicles.g_cache.equipments()
-    return any(eqID for eqID in vehicleEquipmentIDs if hasattr(equipments[eqID], 'botType'))
+    for ammo in vehicle.ownVehicle.vehicleAmmoList:
+        itemTypeID, _, eqID = parseIntCompactDescr(ammo.compactDescr)
+        if itemTypeID == ITEM_TYPES.equipment and hasattr(equipments[eqID], 'botType'):
+            return True
+
+    return False
 
 
 @dependency.replace_none_kwargs(hangarSwitchController=IHangarSpaceSwitchController)

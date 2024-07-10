@@ -238,6 +238,20 @@ package net.wg.gui.components.crosshairPanel
          }
       }
       
+      public function as_addOverheat(param1:Number) : void
+      {
+         var _loc3_:ICrosshair = null;
+         var _loc2_:CrosshairSettingsVO = this._settings[this._settingId];
+         for each(_loc3_ in this._crosshairs)
+         {
+            _loc3_.addOverheat(param1);
+            if(_loc2_)
+            {
+               _loc3_.updateOverheatColorBlind(_loc2_.isColorBlind);
+            }
+         }
+      }
+      
       public function as_addSpeedometer(param1:int, param2:int) : void
       {
          if(this._speedometer == null)
@@ -386,6 +400,15 @@ package net.wg.gui.components.crosshairPanel
          }
       }
       
+      public function as_removeOverheat() : void
+      {
+         var _loc1_:ICrosshair = null;
+         for each(_loc1_ in this._crosshairs)
+         {
+            _loc1_.removeOverheat();
+         }
+      }
+      
       public function as_removeSpeedometer() : void
       {
          if(this._speedometer)
@@ -405,6 +428,14 @@ package net.wg.gui.components.crosshairPanel
             this._sniperCameraTransitionFx.setCameraTransitionDuration(param2);
             this._sniperCameraTransitionFx.setActiveGunId(param1);
             this._sniperCameraTransitionFx.start();
+         }
+      }
+      
+      public function as_setAimDamageStage(param1:String) : void
+      {
+         if(this._gunMarkersContainer != null)
+         {
+            this._gunMarkersContainer.setAimDamageStage(param1);
          }
       }
       
@@ -572,6 +603,15 @@ package net.wg.gui.components.crosshairPanel
          if(this._currentCrosshair != null)
          {
             this._currentCrosshair.setVisibleNet(this._visibleNet);
+         }
+      }
+      
+      public function as_setOverheatProgress(param1:Number, param2:Boolean) : void
+      {
+         var _loc3_:ICrosshair = null;
+         for each(_loc3_ in this._crosshairs)
+         {
+            _loc3_.setOverheatProgress(param1,param2);
          }
       }
       
@@ -748,12 +788,16 @@ package net.wg.gui.components.crosshairPanel
          this.applyData();
       }
       
-      public function as_setZoom(param1:String) : void
+      public function as_setZoom(param1:String, param2:Number) : void
       {
          if(this._currentCrosshair != null)
          {
             this._zoomStr = param1;
             this._currentCrosshair.setZoom(this._zoomStr);
+         }
+         if(this._gunMarkersContainer != null)
+         {
+            this._gunMarkersContainer.setZoomFactor(param2);
          }
       }
       
@@ -1038,6 +1082,7 @@ package net.wg.gui.components.crosshairPanel
             this._currentCrosshair.setCenterType(_loc1_.centerType);
             this._currentCrosshair.scaleWidgetEnabled = _loc1_.spgScaleWidgetEnabled;
             this._currentCrosshair.setGunMarkersData(this._indicatorsData,_loc1_.isColorBlind);
+            this._currentCrosshair.updateOverheatColorBlind(_loc1_.isColorBlind);
             this._gunMarkersContainer.updateSettings(_loc1_);
          }
       }

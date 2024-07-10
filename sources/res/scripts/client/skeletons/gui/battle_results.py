@@ -1,4 +1,7 @@
+import typing
 from Event import Event
+if typing.TYPE_CHECKING:
+    from gui.battle_results.stats_ctrl import IBattleResultStatsCtrl
 
 class IBattleResultsService(object):
     __slots__ = ()
@@ -28,7 +31,7 @@ class IBattleResultsService(object):
     def getResultsVO(self, arenaUniqueID):
         raise NotImplementedError
 
-    def popResultsAnimation(self, arenaUniqueID):
+    def getPresenter(self, arenaUniqueID):
         raise NotImplementedError
 
     def saveStatsSorting(self, bonusType, iconType, sortDirection):

@@ -313,16 +313,6 @@ msgstr "Base Defense"
 msgid "common/tooltip/defence/totalPoints"
 msgstr "Total base defense points"
 
-msgid "common/tooltip/kill-1/description"
-msgstr ""
-"Counted:\n"
-"• Destruction by a shot\n"
-"• Destruction by fire\n"
-"• Destruction by ramming\n"
-"• Destruction by drowning\n"
-"• Destruction by pushing the enemy vehicle off an obstacle\n"
-"• Destruction by overturning."
-
 msgid "common/tooltip/kill/header"
 msgstr "Enemy destroyed"
 
@@ -349,6 +339,16 @@ msgstr "Destroyed by Firestorm"
 
 msgid "common/tooltip/kill7/description"
 msgstr "Enemy vehicle overturned."
+
+msgid "common/tooltip/killCommon/description"
+msgstr ""
+"Counted:\n"
+"• Destruction by a shot\n"
+"• Destruction by fire\n"
+"• Destruction by ramming\n"
+"• Destruction by drowning\n"
+"• Destruction by pushing the enemy vehicle off an obstacle\n"
+"• Destruction by overturning."
 
 msgid "common/tooltip/params/val"
 msgstr "(HP)"
@@ -406,6 +406,39 @@ msgstr "Ally vehicle was drowned"
 msgid "common/tooltip/xpTitleSquad"
 msgstr ""
 "You received additional experience for playing in a Platoon in this battle."
+
+msgid "common/totalTooltip/armor/part1"
+msgstr "Ricochets"
+
+msgid "common/totalTooltip/armor/part2"
+msgstr "Non-penetrations"
+
+msgid "common/totalTooltip/armor/part3"
+msgstr "Damage blocked by armor"
+
+msgid "common/totalTooltip/assist/part1"
+msgstr "Damage upon your spotting"
+
+msgid "common/totalTooltip/assist/part2"
+msgstr "Damage upon your destroying a track and immobilizing an enemy vehicle"
+
+msgid "common/totalTooltip/assist/total"
+msgstr "Total damage caused by allies to enemy vehicle"
+
+msgid "common/totalTooltip/damage/part1"
+msgstr "Total damage"
+
+msgid "common/totalTooltip/damage/part2"
+msgstr "Total number of penetrations"
+
+msgid "common/totalTooltip/stun/part1"
+msgstr "Total damage"
+
+msgid "common/totalTooltip/stun/part2"
+msgstr "Number of stuns"
+
+msgid "common/totalTooltip/stun/part3"
+msgstr "Total duration of stun caused"
 
 msgid "common/vehicle/details"
 msgstr "%(vehicle)s, %(type)s"
@@ -569,6 +602,9 @@ msgstr "High-Capacity Transport"
 msgid "details/calculations/igrBonus"
 msgstr "Award for playing at %(igrIcon)s"
 
+msgid "details/calculations/igrBonus/simpleLabel"
+msgstr "IGR bonus"
+
 msgid "details/calculations/intermediateTotal"
 msgstr "Total amount for battle:"
 
@@ -601,6 +637,9 @@ msgstr "Bonus for Premium vehicle tier"
 msgid "details/calculations/referralBonus"
 msgstr "Referral Bonus (%(bonusFactor)d%%)"
 
+msgid "details/calculations/referralBonus/simpleLabel"
+msgstr "Referral bonus"
+
 msgid "details/calculations/squad/restrictions/title"
 msgstr "For Platoon Play"
 
@@ -615,6 +654,15 @@ msgstr "Penalty due to inappropriate Platoon composition"
 
 msgid "details/calculations/tacticalTraining"
 msgstr "For tactical training"
+
+msgid "details/calculations/title/base"
+msgstr "Earned for battle"
+
+msgid "details/calculations/title/expenses"
+msgstr "Expenses"
+
+msgid "details/calculations/title/total"
+msgstr "Total"
 
 msgid "details/calculations/total"
 msgstr "Total:"
@@ -1065,6 +1113,9 @@ msgstr "Number of own vehicles destroyed / recovered"
 msgid "team/stats/labels_destructiblesDamageDealt"
 msgstr "\tto objectives"
 
+msgid "team/stats/labels_directHits"
+msgstr "\tdirect hits"
+
 msgid "team/stats/labels_directHitsReceived"
 msgstr "Hits received"
 
@@ -1100,6 +1151,9 @@ msgstr "Distance traveled"
 
 msgid "team/stats/labels_noDamageDirectHitsReceived"
 msgstr "\tnon-penetration"
+
+msgid "team/stats/labels_piercingHits"
+msgstr "\tpenetrations"
 
 msgid "team/stats/labels_piercingsReceived"
 msgstr "\tpenetrations"
@@ -1146,6 +1200,69 @@ msgstr "?empty?"
 msgid "team/stats/ownTeam"
 msgstr "Our Team"
 
+msgid "team/stats/parameter/capturePointsVal"
+msgstr "Base capture/defense points"
+
+msgid "team/stats/parameter/damageAssisted"
+msgstr "Damage caused with the player’s assistance"
+
+msgid "team/stats/parameter/damageAssistedSelf"
+msgstr "Damage caused with your assistance"
+
+msgid "team/stats/parameter/damageAssistedStun"
+msgstr "Damage to enemy vehicles stunned by this player"
+
+msgid "team/stats/parameter/damageAssistedStunSelf"
+msgstr "Damage to enemy vehicles stunned by you"
+
+msgid "team/stats/parameter/damageBlockedByArmor"
+msgstr "Damage blocked by armor"
+
+msgid "team/stats/parameter/damageDealt"
+msgstr "Total Damage"
+
+msgid "team/stats/parameter/damagedKilled"
+msgstr "Enemy vehicles damaged/destroyed"
+
+msgid "team/stats/parameter/directHitsReceived"
+msgstr "Hits received"
+
+msgid "team/stats/parameter/explosionHits"
+msgstr "splash damage"
+
+msgid "team/stats/parameter/explosionHitsReceived"
+msgstr "Hits received as a result of splash damage"
+
+msgid "team/stats/parameter/hits"
+msgstr "direct hits/penetrations"
+
+msgid "team/stats/parameter/mileage"
+msgstr "Distance traveled"
+
+msgid "team/stats/parameter/noDamageDirectHitsReceived"
+msgstr "non-penetration"
+
+msgid "team/stats/parameter/piercingsReceived"
+msgstr "penetrations"
+
+msgid "team/stats/parameter/shots"
+msgstr "Shots fired"
+
+msgid "team/stats/parameter/sniperDamageDealt"
+msgstr "from a distance of more than 300 meters"
+
+msgid "team/stats/parameter/spotted"
+msgstr "Enemy vehicles spotted"
+
+msgid "team/stats/parameter/stunDuration"
+msgstr "Total duration of stun caused, s"
+
+msgid "team/stats/parameter/stunNum"
+msgstr "Stuns caused"
+
+msgid "team/stats/parameter/teamHitsDamage"
+msgstr "Damage caused to allies (destroyed/HP)"
+
 msgid "team/tankHeader/body"
 msgstr "Sort by position in a team panel."
 
@@ -1185,6 +1302,9 @@ msgstr "Experience"
 
 msgid "team/xpHeaderNoSort/header"
 msgstr "Experience"
+
+msgid "tooltips/stats/footer/text"
+msgstr "%(label)s&nbsp;%(type)s"
 
 msgid "victoryScore"
 msgstr "Victory points earned"

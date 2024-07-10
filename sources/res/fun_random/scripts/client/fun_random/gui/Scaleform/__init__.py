@@ -1,4 +1,4 @@
-from constants import ARENA_GUI_TYPE
+from fun_random_common.fun_constants import ARENA_GUI_TYPE
 from gui.Scaleform.daapi.settings import config as sf_config
 from gui.Scaleform.genConsts.TOOLTIPS_CONSTANTS import TOOLTIPS_CONSTANTS as _TOOLTIPS
 from gui.shared.system_factory import registerScaleformLobbyPackages, registerLobbyTooltipsBuilders, registerScaleformBattlePackages

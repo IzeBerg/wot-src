@@ -37,6 +37,8 @@ package net.wg.gui.lobby.components
       private static const GLOW_ANIM_SCALE:Number = 0.4;
       
       private static const GLOW_MASK_SIZE:Number = 160;
+      
+      private static const ITEM_NAME_VEHICLE:String = "vehicles";
        
       
       public var img:IImage;
@@ -54,6 +56,10 @@ package net.wg.gui.lobby.components
       public var glowAnim:MovieClip = null;
       
       public var glowMask:MovieClip = null;
+      
+      public var overlayImg:IImage;
+      
+      public var highlightImg:IImage;
       
       private var _data:AwardItemRendererExVO;
       
@@ -80,7 +86,7 @@ package net.wg.gui.lobby.components
          super();
          this._toolTipMgr = App.toolTipMgr;
          this.txtLabel.autoSize = TextFieldAutoSize.LEFT;
-         this.highlight.mouseEnabled = this.overlay.mouseEnabled = false;
+         this.mouseChildren = false;
       }
       
       override public function setSize(param1:Number, param2:Number) : void
@@ -96,6 +102,10 @@ package net.wg.gui.lobby.components
          this.img.removeEventListener(Event.CHANGE,this.onImgChangeHandler);
          this.img.dispose();
          this.img = null;
+         this.overlayImg.dispose();
+         this.overlayImg = null;
+         this.highlightImg.dispose();
+         this.highlightImg = null;
          this.overlay = null;
          this.highlight = null;
          this.glowAnim = null;
@@ -153,6 +163,10 @@ package net.wg.gui.lobby.components
                this.img.scaleX = this.img.scaleY = 1;
                this.txtLabel.htmlText = this._data.label;
                this.img.source = this._data.imgSource;
+               if(this._data.hasCompensation && this._data.compensationReason && this._data.compensationReason.itemName == ITEM_NAME_VEHICLE)
+               {
+                  this.starIcon.source = RES_ICONS.MAPS_ICONS_LIBRARY_CHANGETANK;
+               }
                this.starIcon.visible = this._data.hasCompensation;
                _loc1_ = this._data.obtainedImage;
                this.awardObtainedIcon.visible = this._data.isObtained && StringUtils.isNotEmpty(_loc1_) && StringUtils.isNotEmpty(this._data.imgSource);
@@ -179,12 +193,22 @@ package net.wg.gui.lobby.components
                {
                   this.overlay.gotoAndStop(_loc2_);
                }
+               this.overlayImg.visible = !_loc3_ && StringUtils.isNotEmpty(this._data.overlayIcon);
+               if(this.overlayImg.visible)
+               {
+                  this.overlayImg.source = this._data.overlayIcon;
+               }
                _loc4_ = this._data.highlightType;
                _loc5_ = StringUtils.isNotEmpty(_loc4_);
                this.highlight.visible = _loc5_;
                if(_loc5_)
                {
                   this.highlight.gotoAndStop(_loc4_);
+               }
+               this.highlightImg.visible = !_loc5_ && StringUtils.isNotEmpty(this._data.highlightIcon);
+               if(this.highlightImg.visible)
+               {
+                  this.highlightImg.source = this._data.highlightIcon;
                }
                this._gap = this._data.gap;
                this.updateTextFieldLayout();
@@ -221,6 +245,10 @@ package net.wg.gui.lobby.components
                this.img.y = this._rendererHeight - this.img.height >> 1;
                this.highlight.x = this.overlay.x = this.img.x + EFFECTS_OFFSET_X;
                this.highlight.y = this.overlay.y = this.img.y + EFFECTS_OFFSET_Y;
+               this.overlayImg.x = this._rendererWidth - this.overlayImg.width >> 1;
+               this.overlayImg.y = this._rendererHeight - this.overlayImg.height >> 1;
+               hitArea.width = this.highlightImg.width = this._rendererWidth;
+               hitArea.height = this.highlightImg.height = this._rendererHeight;
                this.starIcon.x = this.width - this.starIcon.width + ICONS_OFFSET ^ 0;
                this.awardObtainedIcon.x = this._rendererWidth - this.awardObtainedIcon.width >> 1;
                this.awardObtainedIcon.y = this.img.y + this.img.height - (this.awardObtainedIcon.height >> 1) + this._data.obtainedImageOffset ^ 0;

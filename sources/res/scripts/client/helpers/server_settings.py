@@ -1,10 +1,12 @@
 import copy, functools, logging, types
 from collections import namedtuple
+from itertools import chain
 import typing, constants, post_progression_common
 from BonusCaps import BonusCapsConst
 from Event import Event
 from UnitBase import PREBATTLE_TYPE_TO_UNIT_ASSEMBLER, UNIT_ASSEMBLER_IMPL_TO_CONFIG
 from arena_bonus_type_caps import ARENA_BONUS_TYPE_CAPS as BONUS_CAPS
+from battle_modifiers_common import BattleParams, BattleModifiers, ModifiersContext
 from battle_pass_common import BATTLE_PASS_CONFIG_NAME, BattlePassConfig
 from collections_common import CollectionsConfig
 from collector_vehicle import CollectorVehicleConsts
@@ -18,13 +20,14 @@ from gui.SystemMessages import SM_TYPE
 from gui.limited_ui.lui_rules_storage import LuiRuleTypes
 from gui.shared.utils.decorators import ReprInjector
 from helpers import time_utils
+from items import vehicles
 from personal_missions import PM_BRANCH
 from post_progression_common import FEATURE_BY_GROUP_ID, ROLESLOT_FEATURE
 from prestige_system.prestige_common import PrestigeConfig
 from ranked_common import SwitchState
 from renewable_subscription_common.settings_constants import GOLD_RESERVE_GAINS_SECTION, ADDITIONAL_BONUS_SECTION, ADDITIONAL_BONUS_APPLY_COUNT, ADDITIONAL_BONUS_ENABLED, ENABLE_BADGES
 from schema_manager import getSchemaManager
-from shared_utils import makeTupleByDict, updateDict, findFirst
+from shared_utils import makeTupleByDict, updateDict
 from soft_exception import SoftException
 from telecom_rentals_common import TELECOM_RENTALS_CONFIG
 from trade_in_common.constants_types import CONFIG_NAME as TRADE_IN_CONFIG_NAME
@@ -412,11 +415,11 @@ _EpicMetaGameConfig.__new__.__defaults__ = (
 class EpicGameConfig(namedtuple('EpicGameConfig', ('isEnabled', 'enableWelcomeScreen', 'validVehicleLevels', 'battlePassDataEnabled',
  'levelsToUpgrateAllReserves', 'seasons', 'cycleTimes', 'unlockableInBattleVehLevels',
  'inBattleModifiers', 'peripheryIDs', 'primeTimes', 'rentVehicles', 'tooltips',
- 'reservesModifiers'))):
+ 'reservesModifiers', 'squadRestrictions'))):
     __slots__ = ()
 
     def __new__(cls, **kwargs):
-        defaults = dict(isEnabled=False, enableWelcomeScreen=True, validVehicleLevels=[], battlePassDataEnabled=True, levelsToUpgrateAllReserves=[], unlockableInBattleVehLevels=[], inBattleModifiers={}, seasons={}, cycleTimes=(), peripheryIDs={}, primeTimes={}, rentVehicles=[], tooltips={}, reservesModifiers=[])
+        defaults = dict(isEnabled=False, enableWelcomeScreen=True, validVehicleLevels=[], battlePassDataEnabled=True, levelsToUpgrateAllReserves=[], unlockableInBattleVehLevels=[], inBattleModifiers={}, seasons={}, cycleTimes=(), peripheryIDs={}, primeTimes={}, rentVehicles=[], tooltips={}, reservesModifiers=[], squadRestrictions={})
         defaults.update(kwargs)
         return super(EpicGameConfig, cls).__new__(cls, **defaults)
 
@@ -508,11 +511,12 @@ class _SquadPremiumBonus(namedtuple('_SquadPremiumBonus', ('isEnabled', 'ownCred
 class BattleRoyaleConfig(namedtuple('BattleRoyaleConfig', ('isEnabled', 'peripheryIDs', 'unburnableTitles',
  'eventProgression', 'primeTimes', 'seasons', 'cycleTimes',
  'maps', 'battleXP', 'coneVisibility', 'loot', 'defaultAmmo',
- 'vehiclesSlotsConfig', 'economics', 'url', 'respawns', 'progressionTokenAward'))):
+ 'vehiclesSlotsConfig', 'economics', 'url', 'respawns', 'progressionTokenAward',
+ 'tournamentsWidget'))):
     __slots__ = ()
 
     def __new__(cls, **kwargs):
-        defaults = dict(isEnabled=False, peripheryIDs={}, eventProgression={}, unburnableTitles=(), primeTimes={}, seasons={}, cycleTimes={}, maps=(), battleXP={}, coneVisibility={}, loot={}, defaultAmmo={}, vehiclesSlotsConfig={}, economics={}, url='', respawns={}, progressionTokenAward={})
+        defaults = dict(isEnabled=False, peripheryIDs={}, eventProgression={}, unburnableTitles=(), primeTimes={}, seasons={}, cycleTimes={}, maps=(), battleXP={}, coneVisibility={}, loot={}, defaultAmmo={}, vehiclesSlotsConfig={}, economics={}, url='', respawns={}, progressionTokenAward={}, tournamentsWidget={})
         defaults.update(kwargs)
         return super(BattleRoyaleConfig, cls).__new__(cls, **defaults)
 
@@ -658,7 +662,7 @@ class _AdventCalendarConfig(namedtuple('_AdventCalendarConfig', ('calendarURL', 
         return self._replace(**dataToUpdate)
 
 
-_crystalRewardInfo = namedtuple('_crystalRewardInfo', 'level, arenaType, winTop3, loseTop3, winTop10, loseTop10, topLength firstTopLength')
+_crystalRewardInfo = namedtuple('_crystalRewardInfo', 'level, arenaType, winTop3, loseTop3, winTop10, loseTop10, topLength, firstTopLength')
 
 class _crystalRewardConfigSection(namedtuple('_crystalRewardConfigSection', ('level', 'vehicle'))):
     __slots__ = ()
@@ -677,6 +681,20 @@ class _crystalRewardsConfig(namedtuple('_crystalRewardsConfig', ('limits', 'rewa
         defaults = {'limits': _crystalRewardConfigSection(kwargs.get('limits', {})), 'rewards': _crystalRewardConfigSection(kwargs.get('rewards', {}))}
         return super(_crystalRewardsConfig, cls).__new__(cls, **defaults)
 
+    def isCrystalEarnPossible(self, arenaType, battleModifiers=None):
+        battleModifiers = battleModifiers or BattleModifiers()
+        for level, rewardData in self.rewards.level.iteritems():
+            battleModifiersCtx = ModifiersContext(modifiers=battleModifiers, level=level)
+            if self.__isCrystalEarnPossible(arenaType, battleModifiersCtx(BattleParams.CRYSTAL_REWARDS, rewardData)):
+                return True
+
+        for vehCD, rewardData in self.rewards.vehicle.iteritems():
+            battleModifiersCtx = ModifiersContext(modifiers=battleModifiers, vehType=vehicles.getVehicleType(vehCD))
+            if self.__isCrystalEarnPossible(arenaType, battleModifiersCtx(BattleParams.CRYSTAL_REWARDS, rewardData)):
+                return True
+
+        return False
+
     def getRewardInfoData(self):
         results = []
         for level, rewardData in self.rewards.level.iteritems():
@@ -687,8 +705,10 @@ class _crystalRewardsConfig(namedtuple('_crystalRewardsConfig', ('limits', 'rewa
 
         return results
 
-    def isCrystalEarnPossible(self, arenaType):
-        return findFirst(lambda item: item.arenaType == arenaType, self.getRewardInfoData(), None) is not None
+    def __isCrystalEarnPossible(self, arenaType, rewardData):
+        if arenaType in rewardData:
+            return sum(chain(rewardData[arenaType][False].itervalues(), rewardData[arenaType][True].itervalues())) > 0
+        return False
 
 
 class _ReactiveCommunicationConfig(object):
@@ -736,11 +756,11 @@ class _BlueprintsConvertSaleConfig(namedtuple('_BlueprintsConvertSaleConfig', ('
 
 class _MapboxConfig(namedtuple('_MapboxConfig', (
  'isEnabled', 'progressionUpdateInterval', 'peripheryIDs', 'forbiddenClassTags', 'forbiddenVehTypes',
- 'primeTimes', 'seasons', 'cycleTimes', 'levels', 'geometryIDs'))):
+ 'primeTimes', 'seasons', 'cycleTimes', 'levels', 'geometryIDs', 'squadRestrictions'))):
     __slots__ = ()
 
     def __new__(cls, **kwargs):
-        defaults = dict(isEnabled=False, peripheryIDs={}, forbiddenClassTags=set(), forbiddenVehTypes=set(), primeTimes={}, seasons={}, cycleTimes={}, levels=[], geometryIDs={}, progressionUpdateInterval=time_utils.ONE_MINUTE * 2)
+        defaults = dict(isEnabled=False, peripheryIDs={}, forbiddenClassTags=set(), forbiddenVehTypes=set(), primeTimes={}, seasons={}, cycleTimes={}, levels=[], geometryIDs={}, progressionUpdateInterval=time_utils.ONE_MINUTE * 2, squadRestrictions={})
         defaults.update(kwargs)
         return super(_MapboxConfig, cls).__new__(cls, **defaults)
 
@@ -1052,12 +1072,13 @@ class Comp7Config(settingsBlock('Comp7Config', (
  'qualification',
  'maps',
  'tournaments',
+ 'progression',
  'remainingOfferTokensNotifications'))):
     __slots__ = ()
 
     @classmethod
     def defaults(cls):
-        return dict(isEnabled=False, isShopEnabled=False, isTrainingEnabled=False, peripheryIDs={}, primeTimes={}, seasons={}, battleModifiersDescr=(), cycleTimes={}, roleEquipments={}, numPlayers=7, levels=[], forbiddenClassTags=set(), forbiddenVehTypes=set(), squadRatingRestriction={}, squadSizes=[], createVivoxTeamChannels=False, qualification=makeTupleByDict(_Comp7QualificationConfig, {}), maps=set(), tournaments={}, remainingOfferTokensNotifications=[])
+        return dict(isEnabled=False, isShopEnabled=False, isTrainingEnabled=False, peripheryIDs={}, primeTimes={}, seasons={}, battleModifiersDescr=(), cycleTimes={}, roleEquipments={}, numPlayers=7, levels=[], forbiddenClassTags=set(), forbiddenVehTypes=set(), squadRatingRestriction={}, squadSizes=[], createVivoxTeamChannels=False, qualification=makeTupleByDict(_Comp7QualificationConfig, {}), maps=set(), tournaments={}, progression={}, remainingOfferTokensNotifications=[])
 
     @classmethod
     def _preprocessData(cls, data):
@@ -1441,8 +1462,8 @@ class ServerSettings(object):
             LOG_DEBUG('epic_config', self.__serverSettings['epic_config'])
             self.__epicMetaGameSettings = makeTupleByDict(_EpicMetaGameConfig, self.__serverSettings['epic_config']['epicMetaGame'])
             self.__epicGameSettings = makeTupleByDict(EpicGameConfig, self.__serverSettings['epic_config'])
-        if 'unit_assembler_config' in self.__serverSettings:
-            self.__unitAssemblerConfig = makeTupleByDict(_UnitAssemblerConfig, self.__serverSettings['unit_assembler_config'])
+        if Configs.UNIT_ASSEMBLER_CONFIG.value in self.__serverSettings:
+            self.__unitAssemblerConfig = makeTupleByDict(_UnitAssemblerConfig, self.__serverSettings[Configs.UNIT_ASSEMBLER_CONFIG.value])
         if PremiumConfigs.PREM_SQUAD in self.__serverSettings:
             self.__squadPremiumBonus = _SquadPremiumBonus.create(self.__serverSettings[PremiumConfigs.PREM_SQUAD])
         if Configs.BATTLE_ROYALE_CONFIG.value in self.__serverSettings:
@@ -1593,9 +1614,10 @@ class ServerSettings(object):
             self.__updateBattleRoyale(serverSettingsDiff)
         if Configs.MAPBOX_CONFIG.value in serverSettingsDiff:
             self.__updateMapbox(serverSettingsDiff)
-        if 'unit_assembler_config' in serverSettingsDiff:
+        if Configs.UNIT_ASSEMBLER_CONFIG.value in serverSettingsDiff:
             self.__updateUnitAssemblerConfig(serverSettingsDiff)
-            self.__serverSettings['unit_assembler_config'] = serverSettingsDiff['unit_assembler_config']
+            configName = Configs.UNIT_ASSEMBLER_CONFIG.value
+            self.__serverSettings[configName] = serverSettingsDiff[configName]
         if Configs.COMP7_CONFIG.value in serverSettingsDiff:
             self.__updateComp7(serverSettingsDiff)
         if Configs.COMP7_RANKS_CONFIG.value in serverSettingsDiff:
@@ -2052,8 +2074,10 @@ class ServerSettings(object):
     def getRenewableSubMaxGoldReserveCapacity(self):
         return self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('maxGoldReserveCapacity', 0)
 
-    def getArenaTypesWithGoldReserve(self):
-        return self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get(GOLD_RESERVE_GAINS_SECTION, {}).keys()
+    def getArenaTypesWithGoldReserve(self, battleModifiers=None):
+        battleModifiers = battleModifiers or BattleModifiers()
+        goldConfig = self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get(GOLD_RESERVE_GAINS_SECTION, {})
+        return battleModifiers(BattleParams.GOLD_RESERVE_GAINS, goldConfig).keys()
 
     def getWotPlusProductCodes(self):
         return self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('subscriptionProductCode', set())
@@ -2116,14 +2140,8 @@ class ServerSettings(object):
         else:
             return False
 
-    def getMaxSPGinSquads(self):
-        return self.__getGlobalSetting('maxSPGinSquads', 0)
-
-    def getMaxScoutInSquads(self):
-        return self.__getGlobalSetting('maxScoutInSquads', 0)
-
-    def getMaxScoutInSquadsLevels(self):
-        return self.__getGlobalSetting('maxScoutInSquadsLevels', [])
+    def getSquadRestrictions(self):
+        return self.__getGlobalSetting('squadRestrictions', {})
 
     def getRandomMapsForDemonstrator(self):
         return self.__getGlobalSetting('randomMapsForDemonstrator', {})
@@ -2233,6 +2251,9 @@ class ServerSettings(object):
     def getAchievements20GeneralConfig(self):
         return Achievements20GeneralConfig(self.__getGlobalSetting(Configs.ACHIEVEMENTS20_CONFIG.value, {}))
 
+    def getLootBoxesTooltipConfig(self):
+        return self.__getGlobalSetting(Configs.LOOTBOXES_TOOLTIP_CONFIG.value, {})
+
     def __getGlobalSetting(self, settingsName, default=None):
         return self.__serverSettings.get(settingsName, default)
 
@@ -2264,7 +2285,8 @@ class ServerSettings(object):
         self.__epicGameSettings = self.__epicGameSettings.replace(targetSettings['epic_config'])
 
     def __updateUnitAssemblerConfig(self, targetSettings):
-        self.__unitAssemblerConfig = self.__unitAssemblerConfig.replace(targetSettings['unit_assembler_config'])
+        config = targetSettings[Configs.UNIT_ASSEMBLER_CONFIG.value]
+        self.__unitAssemblerConfig = self.__unitAssemblerConfig.replace(config)
 
     def __updateComp7(self, targetSettings):
         config = targetSettings[Configs.COMP7_CONFIG.value]
@@ -2402,6 +2424,8 @@ def serverSettingsChangeListener(*configKeys):
         def wrapper(self, diff):
             if any(configKey in diff for configKey in configKeys):
                 func(self, diff)
+                return True
+            return False
 
         return wrapper
 

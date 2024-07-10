@@ -1,5 +1,5 @@
 from constants import PREBATTLE_TYPE, QUEUE_TYPE, ARENA_BONUS_TYPE
-from fun_random.gui.battle_results.composer import FunRandomStatsComposer
+from fun_random.gui.battle_results.presenter import FunRandomBattleResultsPresenter
 from fun_random.gui.feature.util.fun_mixins import FunAssetPacksMixin
 from fun_random.gui.impl.lobby.tooltips.fun_random_progression_tooltip_view import FunRandomProgressionTooltipView
 from fun_random.gui.prb_control.formatters.invites import FunPrbInviteHtmlTextFormatter
@@ -7,7 +7,7 @@ from fun_random.gui.prb_control.storages.fun_random_storage import FunRandomStor
 from gui.impl.gen import R
 from gui.impl.gen.view_models.views.lobby.mode_selector.tooltips.mode_selector_tooltips_constants import ModeSelectorTooltipsConstants
 from gui.prb_control.storages import makeQueueName
-from gui.shared.system_factory import registerPrbInviteHtmlFormatter, registerPrbStorage, registerModeSelectorTooltips, registerModeNameKwargsGetterByPrb, registerModeNameKwargsGetterByQueue, registerModeNameKwargsGetterByBonusType, registerPrebattleConditionIconGetter, registerBattleResultsComposer
+from gui.shared.system_factory import registerPrbInviteHtmlFormatter, registerPrbStorage, registerModeSelectorTooltips, registerModeNameKwargsGetterByPrb, registerModeNameKwargsGetterByQueue, registerModeNameKwargsGetterByBonusType, registerPrebattleConditionIconGetter, registerBattleResultStatsCtrl
 
 def registerFunRandomOthersPrbParams():
     registerModeSelectorTooltips([
@@ -19,4 +19,4 @@ def registerFunRandomOthersPrbParams():
     registerModeNameKwargsGetterByPrb(PREBATTLE_TYPE.FUN_RANDOM, FunAssetPacksMixin.getModeNameKwargs)
     registerModeNameKwargsGetterByBonusType(ARENA_BONUS_TYPE.FUN_RANDOM, FunAssetPacksMixin.getModeNameKwargs)
     registerPrebattleConditionIconGetter(ARENA_BONUS_TYPE.FUN_RANDOM, FunAssetPacksMixin.getPrebattleConditionIcon)
-    registerBattleResultsComposer(ARENA_BONUS_TYPE.FUN_RANDOM, FunRandomStatsComposer)
+    registerBattleResultStatsCtrl(ARENA_BONUS_TYPE.FUN_RANDOM, FunRandomBattleResultsPresenter)

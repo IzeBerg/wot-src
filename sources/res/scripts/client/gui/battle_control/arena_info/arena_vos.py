@@ -3,7 +3,7 @@ from collections import defaultdict
 import typing
 from enum import Enum
 import nations
-from constants import IGR_TYPE, FLAG_ACTION, ARENA_GUI_TYPE, ROLE_TYPE, BOT_DISPLAY_STATUS, BOT_DISPLAY_CLASS_NAMES, LocalizableBotName, BotNamingType
+from constants import IGR_TYPE, FLAG_ACTION, ARENA_GUI_TYPE, ROLE_TYPE, BOT_DISPLAY_STATUS, BOT_DISPLAY_CLASS_NAMES, LocalizableBotName, BotNamingType, TEAM_PANEL_MODE
 from arena_bonus_type_caps import ARENA_BONUS_TYPE_CAPS
 from debug_utils import LOG_ERROR
 from gui import makeHtmlString
@@ -258,8 +258,8 @@ class PlayerInfoVO(object):
 class VehicleTypeInfoVO(object):
     __slots__ = ('compactDescr', 'shortName', 'name', 'level', 'iconName', 'iconPath',
                  'isObserver', 'isPremiumIGR', 'isDualGunVehicle', 'hasDualAccuracy',
-                 'guiName', 'shortNameWithPrefix', 'classTag', 'nationID', 'turretYawLimits',
-                 'maxHealth', 'strCompactDescr', 'isOnlyForBattleRoyaleBattles',
+                 'isAutoShootGunVehicle', 'guiName', 'shortNameWithPrefix', 'classTag',
+                 'nationID', 'turretYawLimits', 'maxHealth', 'strCompactDescr', 'isOnlyForBattleRoyaleBattles',
                  'tags', 'chassisType', 'role')
 
     def __init__(self, vehicleType=None, maxHealth=None, **kwargs):
@@ -303,6 +303,7 @@ class VehicleTypeInfoVO(object):
             self.turretYawLimits = vehicle_getter.getYawLimits(vehicleDescr)
             self.isDualGunVehicle = vehicleDescr.isDualgunVehicle
             self.hasDualAccuracy = vehicleDescr.hasDualAccuracy
+            self.isAutoShootGunVehicle = vehicleDescr.isAutoShootGunVehicle
             self.chassisType = vehicleDescr.chassis.chassisType
             self.shortName = vehicleType.shortUserString
             self.name = Vehicle.getUserName(vehicleType=vehicleType, textPrefix=True)
@@ -327,6 +328,7 @@ class VehicleTypeInfoVO(object):
             self.turretYawLimits = None
             self.shortName = vehicleName
             self.isDualGunVehicle = False
+            self.isAutoShootGunVehicle = False
             self.hasDualAccuracy = False
             self.chassisType = 0
             self.name = vehicleName
@@ -359,7 +361,7 @@ class VehicleArenaInfoVO(object):
                  '__suffixBadge', 'dogTag', 'prestigeLevel', 'prestigeGradeMarkID',
                  'teamPanelMode', 'botDisplayStatus', 'dogTagModel')
 
-    def __init__(self, vehicleID, team=0, isAlive=None, isAvatarReady=None, isTeamKiller=None, prebattleID=None, events=None, forbidInBattleInvitations=False, ranked=None, badges=None, overriddenBadge=None, prestigeLevel=None, prestigeGradeMarkID=None, teamPanelMode=None, botDisplayStatus=BOT_DISPLAY_STATUS.REGULAR, **kwargs):
+    def __init__(self, vehicleID, team=0, isAlive=None, isAvatarReady=None, isTeamKiller=None, prebattleID=None, events=None, forbidInBattleInvitations=False, ranked=None, badges=None, overriddenBadge=None, prestigeLevel=None, prestigeGradeMarkID=None, teamPanelMode=TEAM_PANEL_MODE.SHOW.value, botDisplayStatus=BOT_DISPLAY_STATUS.REGULAR, **kwargs):
         super(VehicleArenaInfoVO, self).__init__()
         self.vehicleID = vehicleID
         self.team = team
@@ -549,6 +551,9 @@ class VehicleArenaInfoVO(object):
     def isSPG(self):
         return self.vehicleType.classTag == VEHICLE_CLASS_NAME.SPG
 
+    def isAutoShootGunVehicle(self):
+        return self.vehicleType.isAutoShootGunVehicle
+
     def isDualGunVehicle(self):
         return self.vehicleType.isDualGunVehicle
 
@@ -566,7 +571,7 @@ class VehicleArenaInfoVO(object):
             return False
         else:
             arena = avatar_getter.getArena()
-            ignore = ARENA_BONUS_TYPE_CAPS.checkAny(arena.bonusType, ARENA_BONUS_TYPE_CAPS.HIGHLIGHT_BOTS_AS_PLAYERS_IN_BC) if arena else False
+            ignore = arena.hasBonusCap(ARENA_BONUS_TYPE_CAPS.HIGHLIGHT_BOTS_AS_PLAYERS_IN_BC) if arena else False
             if not (self.player.avatarSessionID or ignore):
                 if isAlly:
                     return True

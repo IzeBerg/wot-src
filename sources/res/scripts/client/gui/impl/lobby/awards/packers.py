@@ -63,7 +63,7 @@ def _getOffersTokenStateData(offers):
      rentData[0] if rentTypesCount == 1 else None)
 
 
-def _getVehicleUIData(vehicle):
+def getVehicleUIData(vehicle):
     return {'vehicleName': vehicle.shortUserName, 
        'vehicleType': getIconResourceName(vehicle.type), 
        'isElite': vehicle.isElite, 
@@ -133,7 +133,7 @@ class _MultiAwardTokenBonusUIPacker(BaseBonusUIPacker):
                 if hasRent:
                     uiVehs = []
                     for vIntCD in vehicles:
-                        uiVehs.append(_getVehicleUIData(self.__itemsCache.items.getItemByCD(vIntCD)))
+                        uiVehs.append(getVehicleUIData(self.__itemsCache.items.getItemByCD(vIntCD)))
 
                     result.append(createTooltipData(isSpecial=True, specialAlias=VEH_FOR_CHOOSE_ID, specialArgs={'vehicles': uiVehs}))
                     continue
@@ -187,13 +187,19 @@ class MultiAwardVehiclesBonusUIPacker(VehiclesBonusUIPacker):
     def _getContentId(cls, bonus):
         outcome = []
         for vehicle, _ in bonus.getVehicles():
-            compensation = bonus.compensation(vehicle, bonus)
+            compensation = cls._getCompensation(vehicle, bonus)
             if compensation:
-                outcome.append(R.views.common.tooltip_window.loot_box_compensation_tooltip.LootBoxVehicleCompensationTooltipContent())
+                for _ in compensation:
+                    outcome.append(cls._getVehicleCompensationTooltipContent())
+
             else:
                 outcome.append(BACKPORT_TOOLTIP_CONTENT_ID)
 
         return outcome
+
+    @classmethod
+    def _getVehicleCompensationTooltipContent(cls):
+        return R.views.common.tooltip_window.loot_box_compensation_tooltip.LootBoxVehicleCompensationTooltipContent()
 
     @classmethod
     def _packCompensationTooltip(cls, bonusComp, vehicle):
@@ -219,7 +225,7 @@ class MultiAwardVehiclesBonusUIPacker(VehiclesBonusUIPacker):
            'iconAfter': backport.image(iconAfterRes()), 
            'labelAfter': bonusComp.getIconLabel(), 
            'bonusName': bonusComp.getName()}
-        uiData = _getVehicleUIData(vehicle)
+        uiData = getVehicleUIData(vehicle)
         formattedTypeName = uiData['vehicleType']
         isElite = vehicle.isElite
         uiData['vehicleType'] = ('{}_elite').format(formattedTypeName) if isElite else formattedTypeName

@@ -146,7 +146,8 @@ class IngameMenu(IngameMenuMeta, BattleGUIKeyHandler):
 
     @staticmethod
     def _showLeaverAliveWindow(isPlayerIGR):
-        if ARENA_BONUS_TYPE_CAPS.checkAny(BigWorld.player().arenaBonusType, ARENA_BONUS_TYPE_CAPS.COMP7):
+        player = BigWorld.player()
+        if player.hasBonusCap(ARENA_BONUS_TYPE_CAPS.COMP7):
             return showComp7LeaverAliveWindow()
         return showLeaverAliveWindow(isPlayerIGR)
 

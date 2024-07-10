@@ -1,4 +1,4 @@
-import logging, BigWorld, CGF, GenericComponents, Math, constants
+import logging, BigWorld, CGF, GenericComponents, Math, BattleReplay, constants
 from Event import Event, EventManager
 from constants import ARENA_PERIOD
 from gui.battle_control import avatar_getter
@@ -132,6 +132,7 @@ class Comp7PrebattleSetupController(IComp7PrebattleSetupController):
                 if prevCD == self.__guiVehicle.intCD:
                     self.__sessionProvider.shared.ammo.updateForNewSetup(self.__guiVehicle.descriptor.gun, self.__guiVehicle.shells.installed.getItems())
                     playSound(Sounds.GAMEPLAY_SETUP_SWITCH)
+            BattleReplay.g_replayCtrl.updateArenaInfo(self.__guiVehicle.name)
             self.onVehicleChanged(self.__guiVehicle)
         return
 

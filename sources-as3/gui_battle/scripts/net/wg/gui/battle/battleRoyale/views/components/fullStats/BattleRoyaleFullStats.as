@@ -2,6 +2,8 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats
 {
    import flash.display.Sprite;
    import flash.events.Event;
+   import flash.geom.Rectangle;
+   import flash.text.TextField;
    import net.wg.data.constants.InvalidationType;
    import net.wg.gui.battle.battleRoyale.BattleRoyalePage;
    import net.wg.gui.battle.battleRoyale.data.BattleRoyaleFullStatsVO;
@@ -27,12 +29,18 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats
       
       private static const MINIMAP_ITEMS_BOTTOM_OFFSET_BIG:int = 399;
       
-      private static const CONTENT_SMALL_SIZE:int = 507;
+      private static const MAP_NAME_MODE_BIG_OFFSET_X:int = 10;
       
-      private static const CONTENT_BIG_SIZE:int = 725;
+      private static const MAP_NAME_MODE_SMALL_OFFSET_X:int = 10;
+      
+      private static const MAP_NAME_MODE_BIG_OFFSET_Y:int = 94;
+      
+      private static const MAP_NAME_MODE_SMALL_OFFSET_Y:int = 45;
        
       
       public var bg:Sprite = null;
+      
+      public var mapNameTF:TextField = null;
       
       public var header:EventViewHeader = null;
       
@@ -41,6 +49,12 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats
       public var score:ScoreBlock = null;
       
       public var vehiclesCounter:BattleRoyaleNationsVehiclesCounter = null;
+      
+      private var _minimapBounds:Rectangle = null;
+      
+      private var _stageWidth:int = -1;
+      
+      private var _stageHeight:int = -1;
       
       private var _isSmallScreenSize:Boolean = false;
       
@@ -78,11 +92,13 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats
          this.header.dispose();
          this.header = null;
          this.bg = null;
+         this.mapNameTF = null;
          super.onDispose();
       }
       
       override protected function setData(param1:BattleRoyaleFullStatsVO) : void
       {
+         this.mapNameTF.text = param1.mapName;
          this.header.setData(param1.header);
          this.score.setData(param1);
          this.minimapItems.dataProvider = new DataProvider(param1.minimapItems);
@@ -99,7 +115,13 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats
          this.score.update(param1,param2,param3);
       }
       
-      public function updateStage(param1:Number, param2:Number) : void
+      public function setMinimapBounds(param1:Rectangle) : void
+      {
+         this._minimapBounds = param1;
+         invalidateSize();
+      }
+      
+      public function updateStage(param1:int, param2:int) : void
       {
          this.header.updateStage(param1,param2);
          this.bg.width = param1;
@@ -109,16 +131,28 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats
          this.score.useSmallLayout = this._isSmallScreenSize;
          this.minimapItems.useSmallLayout = this._isSmallScreenSize;
          this.vehiclesCounter.useSmallLayout = this._isSmallScreenSize;
-         var _loc3_:Number = this.header.getContentHeight();
-         var _loc4_:int = !!this._isSmallScreenSize ? int(CONTENT_SMALL_SIZE) : int(CONTENT_BIG_SIZE);
-         var _loc5_:int = param2 + _loc3_ - _loc4_ >> 1;
-         this.score.x = !!this._isSmallScreenSize ? Number(SCORE_X) : Number(SCORE_X_BIG);
-         this.score.y = _loc5_;
+         this._stageWidth = param1;
+         this._stageHeight = param2;
          invalidateSize();
       }
       
       private function layoutElements() : void
       {
+         var _loc1_:Number = NaN;
+         var _loc2_:int = 0;
+         var _loc3_:Number = NaN;
+         var _loc4_:Number = NaN;
+         if(this._minimapBounds)
+         {
+            _loc1_ = this.header.getContentHeight();
+            _loc2_ = this._stageHeight + _loc1_ - this._minimapBounds.height >> 1;
+            this.score.x = !!this._isSmallScreenSize ? Number(SCORE_X) : Number(SCORE_X_BIG);
+            this.score.y = _loc2_;
+            _loc3_ = !!this._isSmallScreenSize ? Number(MAP_NAME_MODE_SMALL_OFFSET_X) : Number(MAP_NAME_MODE_BIG_OFFSET_X);
+            _loc4_ = !!this._isSmallScreenSize ? Number(MAP_NAME_MODE_SMALL_OFFSET_Y) : Number(MAP_NAME_MODE_BIG_OFFSET_Y);
+            this.mapNameTF.x = -(this.mapNameTF.width >> 1) - (this._minimapBounds.width >> 1) + _loc3_;
+            this.mapNameTF.y = (this._stageHeight + this._minimapBounds.height >> 1) + _loc4_;
+         }
          this.vehiclesCounter.x = this.score.x + this.score.width - this.vehiclesCounter.width | 0;
          this.vehiclesCounter.y = this.score.y + this.score.height + (!!this._isSmallScreenSize ? VEHICLES_COUNTER_BOTTOM_OFFSET : VEHICLES_COUNTER_BOTTOM_OFFSET_BIG) | 0;
          this.minimapItems.x = this.score.x;

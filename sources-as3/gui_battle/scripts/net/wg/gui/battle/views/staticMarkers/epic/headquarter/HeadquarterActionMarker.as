@@ -26,8 +26,6 @@ package net.wg.gui.battle.views.staticMarkers.epic.headquarter
       
       private static const LABEL_DEAD:String = "death";
       
-      private static const LABEL_HIT:String = "hit";
-      
       private static const LABEL_HIT_PIERCED:String = "hit_pierced";
        
       
@@ -53,49 +51,22 @@ package net.wg.gui.battle.views.staticMarkers.epic.headquarter
       
       private var _lastActiveState:int = 3;
       
-      private var _vmManager:VehicleMarkersManager = null;
+      private var _vmManager:VehicleMarkersManager;
       
       private var _isPlayerTeam:Boolean = false;
       
       public function HeadquarterActionMarker()
       {
+         this._vmManager = VehicleMarkersManager.getInstance();
          super();
          this._hitFlag = LABEL_LIVE;
-         this._vmManager = VehicleMarkersManager.getInstance();
          this.deactivateAttackAndDefendStates();
       }
       
-      override protected function get getReplyPosition() : Point
+      override public function setReplyCount(param1:int) : void
       {
-         return REPLY_POSITION;
-      }
-      
-      override protected function get getArrowPosition() : Point
-      {
-         return ARROW_POSITION;
-      }
-      
-      override protected function get getDistanceToMarkerPosition() : Point
-      {
-         return DISTANCE_POSITION;
-      }
-      
-      public function setColor() : void
-      {
-         if(this._isPlayerTeam)
-         {
-            this._hqType = ALLY;
-         }
-         else if(this._vmManager.isColorBlind)
-         {
-            this._hqType = ENEMY_COLORBLIND;
-         }
-         else
-         {
-            this._hqType = ENEMY;
-         }
-         gotoAndStop(this._hqType);
-         this.setActiveState(this._lastActiveState);
+         super.setReplyCount(param1);
+         this._count = param1;
       }
       
       override protected function onDispose() : void
@@ -114,6 +85,11 @@ package net.wg.gui.battle.views.staticMarkers.epic.headquarter
          super.onDispose();
       }
       
+      public function activateHover(param1:Boolean) : void
+      {
+         this.hoverShadow.visible = param1;
+      }
+      
       public function deactivateAttackAndDefendStates() : void
       {
          this.clickAnim.visible = false;
@@ -122,45 +98,6 @@ package net.wg.gui.battle.views.staticMarkers.epic.headquarter
          this.bg.visible = false;
          this.hoverShadow.visible = false;
          this.hqID.visible = false;
-      }
-      
-      public function setOwningTeam(param1:Boolean) : void
-      {
-         this._isPlayerTeam = param1;
-         this.setColor();
-         this.hqID.visible = true;
-         this.bg.visible = true;
-      }
-      
-      override public function setReplyCount(param1:int) : void
-      {
-         super.setReplyCount(param1);
-         this._count = param1;
-      }
-      
-      public function triggerClickAnimation() : void
-      {
-         this.clickAnim.visible = true;
-         this.clickAnim.gotoAndStop(this._hitFlag);
-         this.clickAnim.playAnimation();
-      }
-      
-      public function activateHover(param1:Boolean) : void
-      {
-         this.hoverShadow.visible = param1;
-      }
-      
-      public function setHit(param1:Boolean) : void
-      {
-         if(param1)
-         {
-            this._hitFlag = LABEL_HIT_PIERCED;
-         }
-         else
-         {
-            this._hitFlag = LABEL_HIT;
-         }
-         this.setActiveState(this._lastActiveState);
       }
       
       public function setActiveState(param1:int) : void
@@ -195,6 +132,60 @@ package net.wg.gui.battle.views.staticMarkers.epic.headquarter
             this.markerStates.setActiveState(this._hitFlag,param1);
             this.hqID.setActiveState(param1,id);
          }
+      }
+      
+      public function setColor() : void
+      {
+         if(this._isPlayerTeam)
+         {
+            this._hqType = ALLY;
+         }
+         else if(this._vmManager.isColorBlind)
+         {
+            this._hqType = ENEMY_COLORBLIND;
+         }
+         else
+         {
+            this._hqType = ENEMY;
+         }
+         gotoAndStop(this._hqType);
+         this.setActiveState(this._lastActiveState);
+      }
+      
+      public function setHit() : void
+      {
+         this._hitFlag = LABEL_HIT_PIERCED;
+         this.setActiveState(this._lastActiveState);
+      }
+      
+      public function setOwningTeam(param1:Boolean) : void
+      {
+         this._isPlayerTeam = param1;
+         this.setColor();
+         this.hqID.visible = true;
+         this.bg.visible = true;
+      }
+      
+      public function triggerClickAnimation() : void
+      {
+         this.clickAnim.visible = true;
+         this.clickAnim.gotoAndStop(this._hitFlag);
+         this.clickAnim.playAnimation();
+      }
+      
+      override protected function get getReplyPosition() : Point
+      {
+         return REPLY_POSITION;
+      }
+      
+      override protected function get getArrowPosition() : Point
+      {
+         return ARROW_POSITION;
+      }
+      
+      override protected function get getDistanceToMarkerPosition() : Point
+      {
+         return DISTANCE_POSITION;
       }
    }
 }

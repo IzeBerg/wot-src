@@ -397,6 +397,16 @@
 			<UUID>55f9d5ec-bcef-3d73-b5f9-abd726b3f1eb</UUID>
 			<flags>2</flags>
 		</GameObject>
+		<GameObject>
+			<name>04_airshipCrash01_ai_nav_helper01</name>
+			<UUID>e27c8962-6824-4889-a5b2-b28808d325f5</UUID>
+			<flags>0</flags>
+		</GameObject>
+		<GameObject>
+			<name>04_airshipCrash01_ai_nav_helper02</name>
+			<UUID>d815f06e-006f-4725-9a9a-48f450e9cdbe</UUID>
+			<flags>0</flags>
+		</GameObject>
 	</GameObjects>
 	<components>
 		<ComponentPool>
@@ -1179,6 +1189,26 @@
 					<property>
 						<name>Parent</name>
 						<link>ad28543c-6109-4234-8677-f7248d8740ad</link>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>79</objectIndex>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Parent</name>
+						<link>7110de12-32f5-4821-b246-d9cda8de7980</link>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>80</objectIndex>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Parent</name>
+						<link>7110de12-32f5-4821-b246-d9cda8de7980</link>
 					</property>
 				</config>
 			</component>
@@ -3028,10 +3058,55 @@
 					</property>
 				</config>
 			</component>
+			<component>
+				<objectIndex>79</objectIndex>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>
+							25.8115 -1.2871 -30.7017
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>-0 0 0</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>80</objectIndex>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>
+							145.276 43.4156 -20.9371
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>
+							0.143175 0.0158206 0.113302
+							<!--BW_String-->
+						</value>
+					</property>
+				</config>
+			</component>
 		</ComponentPool>
 		<ComponentPool>
 			<type>SequenceComponent</type>
-			<version>2</version>
+			<version>3</version>
 			<component>
 				<objectIndex>0</objectIndex>
 				<flags>35</flags>
@@ -4780,6 +4855,70 @@
 					</property>
 				</config>
 			</component>
+			<component>
+				<objectIndex>79</objectIndex>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Colliders</name>
+						<collection>
+							<item>
+								<object>
+									<property>
+										<name>Type</name>
+										<value>1</value>
+									</property>
+									<property>
+										<name>Parameters</name>
+										<object>
+											<property>
+												<name>Offset</name>
+												<value>((      48,       0,       0,       0), (       0,      48,       0,       0), (       0,       0,      48,       0), (       0,       0,       0,       1))</value>
+											</property>
+											<property>
+												<name>Radius</name>
+												<value>24</value>
+											</property>
+										</object>
+									</property>
+								</object>
+							</item>
+						</collection>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>80</objectIndex>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Colliders</name>
+						<collection>
+							<item>
+								<object>
+									<property>
+										<name>Type</name>
+										<value>1</value>
+									</property>
+									<property>
+										<name>Parameters</name>
+										<object>
+											<property>
+												<name>Offset</name>
+												<value>((       8,       0,       0,       0), (       0,       8,       0,       0), (       0,       0,       8,       0), (       0,       0,       0,       1))</value>
+											</property>
+											<property>
+												<name>Radius</name>
+												<value>4</value>
+											</property>
+										</object>
+									</property>
+								</object>
+							</item>
+						</collection>
+					</property>
+				</config>
+			</component>
 		</ComponentPool>
 		<ComponentPool>
 			<type>StaticObstacle</type>
@@ -6182,6 +6321,32 @@
 						<value>1</value>
 					</property>
 				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>NavmeshPatch</type>
+			<version>2</version>
+			<component>
+				<objectIndex>0</objectIndex>
+				<flags>34</flags>
+				<config>
+					<property>
+						<name>patchName</name>
+						<value>04_airshipCrash_ai</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>NavigationHelper</type>
+			<version>2</version>
+			<component>
+				<objectIndex>79</objectIndex>
+				<flags>34</flags>
+			</component>
+			<component>
+				<objectIndex>80</objectIndex>
+				<flags>34</flags>
 			</component>
 		</ComponentPool>
 		<ComponentPool>

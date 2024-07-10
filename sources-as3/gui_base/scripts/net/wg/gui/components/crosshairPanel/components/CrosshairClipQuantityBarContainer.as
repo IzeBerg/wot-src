@@ -6,19 +6,13 @@ package net.wg.gui.components.crosshairPanel.components
    public class CrosshairClipQuantityBarContainer extends SimpleContainer
    {
       
-      private static const MEDIUM_LIMIT:int = 31;
-      
-      private static const HEAVY_LIMIT:int = 13;
+      private static const HEAVY_LIMIT:int = 12;
       
       private static const LIGHT_CLIP_QUANTITY_BAR_TOTAL_FRAMES:int = 100;
-      
-      private static const MEDIUM_CLIP_QUANTITY_BAR_TOTAL_FRAMES:int = 31;
       
       private static const HEAVY_CLIP_QUANTITY_BAR_TOTAL_FRAMES:int = 13;
       
       public static const TYPE_LIGHT:String = "ClipQuantityBarLightUI";
-      
-      public static const TYPE_MEDIUM:String = "ClipQuantityBarMediumUI";
       
       public static const TYPE_HEAVY:String = "ClipQuantityBarHeavyUI";
       
@@ -60,7 +54,7 @@ package net.wg.gui.components.crosshairPanel.components
       {
          var viewType:String = null;
          var mode:String = null;
-         var clipTotalFrames:Number = NaN;
+         var clipTotalFrames:int = 0;
          var metric:Number = NaN;
          var viewClass:Class = null;
          super.draw();
@@ -82,7 +76,7 @@ package net.wg.gui.components.crosshairPanel.components
                {
                   metric = Math.ceil(this._clipCapacity / this._burst);
                }
-               if(metric < HEAVY_LIMIT)
+               if(metric <= HEAVY_LIMIT)
                {
                   viewType = TYPE_HEAVY;
                   if(this._burst > 1)
@@ -94,21 +88,6 @@ package net.wg.gui.components.crosshairPanel.components
                   {
                      mode = CrosshairClipQuantityBar.MODE_AMMO;
                      clipTotalFrames = Math.min(this._clipCapacity + 1,HEAVY_CLIP_QUANTITY_BAR_TOTAL_FRAMES);
-                  }
-               }
-               else if(metric < MEDIUM_LIMIT)
-               {
-                  viewType = TYPE_MEDIUM;
-                  clipTotalFrames = MEDIUM_CLIP_QUANTITY_BAR_TOTAL_FRAMES;
-                  if(this._burst > 1)
-                  {
-                     mode = CrosshairClipQuantityBar.MODE_QUEUE;
-                     clipTotalFrames = Math.min(metric + 1,MEDIUM_CLIP_QUANTITY_BAR_TOTAL_FRAMES);
-                  }
-                  else
-                  {
-                     mode = CrosshairClipQuantityBar.MODE_AMMO;
-                     clipTotalFrames = Math.min(this._clipCapacity + 1,MEDIUM_CLIP_QUANTITY_BAR_TOTAL_FRAMES);
                   }
                }
                try

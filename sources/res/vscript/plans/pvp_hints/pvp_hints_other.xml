@@ -558,18 +558,6 @@
 				<slots/>
 			</block>
 			<block>
-				<class>Or</class>
-				<id>Or_5</id>
-				<params>
-					<param>
-						2
-						<name>Input Count</name>
-						<type>IntT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
 				<class>SetVariable</class>
 				<id>SetVariable_50</id>
 				<buddy>Variable_49</buddy>
@@ -583,10 +571,37 @@
 				<slots/>
 			</block>
 			<block>
-				<class>OnPlayerVehicleShoot</class>
-				<id>OnPlayerVehicleShoot_4</id>
-				<params/>
+				<class>Or</class>
+				<id>Or_5</id>
+				<params>
+					<param>
+						2
+						<name>Input Count</name>
+						<type>IntT</type>
+					</param>
+				</params>
 				<slots/>
+			</block>
+			<block>
+				<class>Macro</class>
+				<id>Macro_70</id>
+				<params>
+					<param>
+						OnPlayerVehicleShoot
+						<name>Macro Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>switchable</name>
+						<const>\false\</const>
+					</slot>
+					<slot>
+						<name>continuousInterval</name>
+						<const>\0.250000\</const>
+					</slot>
+				</slots>
 			</block>
 			<block>
 				<class>SelectHint</class>
@@ -1109,10 +1124,25 @@
 				</slots>
 			</block>
 			<block>
-				<class>OnPlayerVehicleShoot</class>
-				<id>OnPlayerVehicleShoot_1</id>
-				<params/>
-				<slots/>
+				<class>Macro</class>
+				<id>Macro_69</id>
+				<params>
+					<param>
+						OnPlayerVehicleShoot
+						<name>Macro Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>switchable</name>
+						<const>\false\</const>
+					</slot>
+					<slot>
+						<name>continuousInterval</name>
+						<const>\0.250000\</const>
+					</slot>
+				</slots>
 			</block>
 			<block>
 				<class>Macro</class>
@@ -1495,6 +1525,18 @@
 				<output>id</output>
 			</connection>
 			<connection>
+				<from>Macro_70</from>
+				<input>input</input>
+				<to>SetVariable_50</to>
+				<output>onShoot</output>
+			</connection>
+			<connection>
+				<from>Macro_29</from>
+				<input>value</input>
+				<to>SetVariable_50</to>
+				<output>res</output>
+			</connection>
+			<connection>
 				<from>CanShowHint_7</from>
 				<input>i1</input>
 				<to>Or_5</to>
@@ -1507,21 +1549,9 @@
 				<output>result</output>
 			</connection>
 			<connection>
-				<from>OnPlayerVehicleShoot_4</from>
-				<input>input</input>
-				<to>SetVariable_50</to>
-				<output>onShoot</output>
-			</connection>
-			<connection>
-				<from>Macro_29</from>
-				<input>value</input>
-				<to>SetVariable_50</to>
-				<output>res</output>
-			</connection>
-			<connection>
 				<from>Or_5</from>
 				<input>active</input>
-				<to>OnPlayerVehicleShoot_4</to>
+				<to>Macro_70</to>
 				<output>res</output>
 			</connection>
 			<connection>
@@ -1821,7 +1851,7 @@
 			<connection>
 				<from>Or_3</from>
 				<input>active</input>
-				<to>OnPlayerVehicleShoot_1</to>
+				<to>Macro_69</to>
 				<output>res</output>
 			</connection>
 			<connection>
@@ -1843,7 +1873,7 @@
 				<output>id</output>
 			</connection>
 			<connection>
-				<from>OnPlayerVehicleShoot_1</from>
+				<from>Macro_69</from>
 				<input>input</input>
 				<to>Sequence_1</to>
 				<output>onShoot</output>

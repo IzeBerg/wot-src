@@ -43,8 +43,6 @@ package net.wg.gui.battle.battleRoyale.views.playersPanel
       
       private static const COLOR_YELLOW:int = 4294951779;
       
-      private static const SQUAD_COLOR_MAP:Vector.<int> = new <int>[1,2,4,5,7,8,9,11,13,14];
-      
       private static const FRAME_SMALL:String = "small";
       
       private static const FRAME_NORMAL:String = "normal";
@@ -242,12 +240,7 @@ package net.wg.gui.battle.battleRoyale.views.playersPanel
       
       private function get colorSchemeName() : String
       {
-         var _loc1_:uint = this._data.teamIndex;
-         if(this._isSquadMode && SQUAD_COLOR_MAP.length >= this._data.teamIndex)
-         {
-            _loc1_ = SQUAD_COLOR_MAP[_loc1_ - 1];
-         }
-         return "vm_team" + _loc1_;
+         return "vm_team" + this._data.teamIndex;
       }
       
       private function onRollOverHandler(param1:MouseEvent) : void

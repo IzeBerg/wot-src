@@ -353,9 +353,7 @@ package
       
       public static const SQUAD_NOTVALIDDELETEDFILTER:String = "#system_messages:squad/notValidDeletedFilter";
       
-      public static const SQUAD_NOTVALIDMAXSPGDELETED:String = "#system_messages:squad/notValidMaxSpgDeleted";
-      
-      public static const SQUAD_NOTVALIDMAXSCOUTDELETED:String = "#system_messages:squad/notValidMaxScoutDeleted";
+      public static const SQUAD_NOTVALIDMAXVEHTYPEDELETED:String = "#system_messages:squad/notValidMaxVehTypeDeleted";
       
       public static const SQUAD_NOTVALIDENQUEUEDATA:String = "#system_messages:squad/notValidEnqueueData";
       

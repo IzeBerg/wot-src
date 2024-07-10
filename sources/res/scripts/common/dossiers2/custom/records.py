@@ -6,7 +6,7 @@ RECORDS = (
  (
   'total', 'battleLifeTime', 'p', 'I', 4000000001),
  (
-  'total', 'treesCut', 'p', 'H', 60001),
+  'total', 'treesCut', 'p', 'H', 65535),
  (
   'total', 'mileage', 'p', 'I', 4000000001),
  (

@@ -1,4 +1,5 @@
 import sys, time, typing, BigWorld, Event, account_shared, constants
+from battle_modifiers_common import BattleParams
 from constants import SECONDS_IN_DAY
 from debug_utils import LOG_DEBUG
 from gui import SystemMessages
@@ -8,12 +9,13 @@ from gui.impl import backport
 from gui.impl.gen import R
 from gui.prb_control import prbEntityProperty
 from gui.prb_control.entities.listener import IGlobalListener
+from gui.shared import events, g_eventBus, EVENT_BUS_SCOPE
 from gui.shared.formatters import text_styles
 from gui.shared.notifications import NotificationPriorityLevel
 from gui.shared.utils.scheduled_notifications import Notifiable, PeriodicNotifier, SimpleNotifier, AcyclicNotifier
 from helpers import dependency
 from helpers import time_utils
-from skeletons.gui.game_control import IGameSessionController
+from skeletons.gui.game_control import IGameSessionController, IHangarGuiController
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.shared import IItemsCache
 if typing.TYPE_CHECKING:
@@ -61,6 +63,7 @@ class GameSessionController(IGameSessionController, IGlobalListener, Notifiable)
     onNotifyTimeTillKick = Event.Event()
     itemsCache = dependency.descriptor(IItemsCache)
     lobbyContext = dependency.descriptor(ILobbyContext)
+    __hangarGuiCtrl = dependency.descriptor(IHangarGuiController)
     _DEFAULT_TIME_KEY = 'DEFAULT'
     _QUEUE_TYPE_TO_CONFIG_TIME_KEY = {constants.QUEUE_TYPE.EPIC: constants.ARENA_BONUS_TYPE_IDS[constants.ARENA_BONUS_TYPE.EPIC_BATTLE], 
        constants.QUEUE_TYPE.COMP7: constants.ARENA_BONUS_TYPE_IDS[constants.ARENA_BONUS_TYPE.COMP7]}
@@ -112,6 +115,7 @@ class GameSessionController(IGameSessionController, IGlobalListener, Notifiable)
            'stats.playLimits': self.__onPlayLimitsChanged, 
            'cache.gameRestrictions.session': self.__onParentControlChanged, 
            'cache.gameRestrictions.session_r': self.__onParentControlChanged})
+        g_eventBus.addListener(events.GameSessionEvent.UPDATE_KICK_NOTIFICATION, self.onPrbEntitySwitched, EVENT_BUS_SCOPE.LOBBY)
         self.startGlobalListening()
         return
 
@@ -186,9 +190,11 @@ class GameSessionController(IGameSessionController, IGlobalListener, Notifiable)
     def onPrbEntitySwitching(self):
         self.__lastPlayTimeNotify = self.getPlayTimeNotify()
 
-    def onPrbEntitySwitched(self):
-        if self.__timeTillKickNotifier is not None and self.__lastPlayTimeNotify != self.getPlayTimeNotify():
+    def onPrbEntitySwitched(self, *_):
+        playTimeNotify = self.getPlayTimeNotify()
+        if self.__timeTillKickNotifier is not None and self.__lastPlayTimeNotify != playTimeNotify:
             self.__timeTillKickNotifier.startNotification()
+            self.__lastPlayTimeNotify = playTimeNotify
         return
 
     def incBattlesCounter(self):
@@ -246,6 +252,7 @@ class GameSessionController(IGameSessionController, IGlobalListener, Notifiable)
         self.__doNotifyInStart = doNotifyInStart
         self.__clearBanCallback()
         self.stopGlobalListening()
+        g_eventBus.removeListener(events.GameSessionEvent.UPDATE_KICK_NOTIFICATION, self.onPrbEntitySwitched, EVENT_BUS_SCOPE.LOBBY)
         g_clientUpdateManager.removeObjectCallbacks(self)
         return
 
@@ -426,4 +433,5 @@ class GameSessionController(IGameSessionController, IGlobalListener, Notifiable)
                     timeKey = constants.ARENA_BONUS_TYPE_IDS[constants.ARENA_BONUS_TYPE.FORT_BATTLE_2]
             else:
                 timeKey = self._QUEUE_TYPE_TO_CONFIG_TIME_KEY.get(queueType, self._DEFAULT_TIME_KEY)
-        return config.get(timeKey, self.PLAY_TIME_LEFT_NOTIFY)
+        battleModifiers = self.__hangarGuiCtrl.getBattleModifiers()
+        return battleModifiers(BattleParams.BATTLE_LENGTH, config.get(timeKey, self.PLAY_TIME_LEFT_NOTIFY))

@@ -26,9 +26,9 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       function update() : void;
       
-      function updateHealth(param1:int, param2:int, param3:String) : void;
+      function updateHealth(param1:int, param2:Boolean, param3:String) : void;
       
-      function updateState(param1:String, param2:Boolean, param3:String = "", param4:String = "") : void;
+      function updateState(param1:String, param2:Boolean, param3:String = "", param4:String = "", param5:Boolean = false) : void;
       
       function updateStatusEffectTimer(param1:int, param2:Number, param3:Boolean = false) : void;
       

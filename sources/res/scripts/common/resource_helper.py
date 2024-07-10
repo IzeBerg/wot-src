@@ -92,12 +92,13 @@ def root_generator(filePath):
             ResMgr.purge(filePath, True)
 
 
-def root_iterator(filePath, customReaders=None):
+def root_iterator(filePath, customReaders=None, nameFromSection=False):
     readers = customReaders or {}
     _ITEM_VALUE_READERS.update(readers)
     with root_generator(filePath) as (ctx, section):
         for ctx, subSection in getIterator(ctx, section):
-            yield readItem(ctx, subSection, name='setting')
+            sectionName = subSection.name if nameFromSection else 'setting'
+            yield readItem(ctx, subSection, name=sectionName, nameFromSection=nameFromSection)
 
     for k in readers.keys():
         _ITEM_VALUE_READERS.pop(k)
@@ -132,7 +133,9 @@ def readItemAttr(xmlCtx, section, attr, default=None, keys=None):
     return value
 
 
-def readItemName(xmlCtx, section, keys=None):
+def readItemName(xmlCtx, section, keys=None, nameFromSection=False):
+    if nameFromSection:
+        return section.name
     return readItemAttr(xmlCtx, section, 'name', default='', keys=keys)
 
 
@@ -142,65 +145,65 @@ def _readItemType(xmlCtx, section, keys=None):
 
 ResourceItem = namedtuple('_Item', ('type', 'name', 'value'))
 
-def readBoolItem(xmlCtx, section):
+def readBoolItem(xmlCtx, section, nameFromSection=False):
     if 'value' in section.keys():
         value = section.readBool('value')
     else:
         value = section.asBool
-    return ResourceItem(RESOURCE_ITEM_TYPE.BOOL, readItemName(xmlCtx, section), value)
+    return ResourceItem(RESOURCE_ITEM_TYPE.BOOL, readItemName(xmlCtx, section, nameFromSection=nameFromSection), value)
 
 
-def readIntItem(xmlCtx, section):
+def readIntItem(xmlCtx, section, nameFromSection=False):
     if 'value' in section.keys():
         value = section.readInt('value')
     else:
         value = section.asInt
-    return ResourceItem(RESOURCE_ITEM_TYPE.INTEGER, readItemName(xmlCtx, section), value)
+    return ResourceItem(RESOURCE_ITEM_TYPE.INTEGER, readItemName(xmlCtx, section, nameFromSection=nameFromSection), value)
 
 
-def readFloatItem(xmlCtx, section):
+def readFloatItem(xmlCtx, section, nameFromSection=False):
     if 'value' in section.keys():
         value = section.readFloat('value')
     else:
         value = section.asFloat
-    return ResourceItem(RESOURCE_ITEM_TYPE.FLOAT, readItemName(xmlCtx, section), value)
+    return ResourceItem(RESOURCE_ITEM_TYPE.FLOAT, readItemName(xmlCtx, section, nameFromSection=nameFromSection), value)
 
 
-def readStringItem(xmlCtx, section):
+def readStringItem(xmlCtx, section, nameFromSection=False):
     if 'value' in section.keys():
         value = section.readWideString('value')
     else:
         value = section.asWideString
-    return ResourceItem(RESOURCE_ITEM_TYPE.STRING, readItemName(xmlCtx, section), value)
+    return ResourceItem(RESOURCE_ITEM_TYPE.STRING, readItemName(xmlCtx, section, nameFromSection=nameFromSection), value)
 
 
-def readVector2Item(xmlCtx, section):
+def readVector2Item(xmlCtx, section, nameFromSection=False):
     if 'value' in section.keys():
         value = section.readVector2('value')
     else:
         value = section.asVector2
-    return ResourceItem(RESOURCE_ITEM_TYPE.VECTOR2, readItemName(xmlCtx, section), value)
+    return ResourceItem(RESOURCE_ITEM_TYPE.VECTOR2, readItemName(xmlCtx, section, nameFromSection=nameFromSection), value)
 
 
-def readVector3Item(xmlCtx, section):
+def readVector3Item(xmlCtx, section, nameFromSection=False):
     if 'value' in section.keys():
         value = section.readVector3('value')
     else:
         value = section.asVector3
-    return ResourceItem(RESOURCE_ITEM_TYPE.VECTOR3, readItemName(xmlCtx, section), value)
+    return ResourceItem(RESOURCE_ITEM_TYPE.VECTOR3, readItemName(xmlCtx, section, nameFromSection=nameFromSection), value)
 
 
-def readVector4Item(xmlCtx, section):
+def readVector4Item(xmlCtx, section, nameFromSection=False):
     if 'value' in section.keys():
         value = section.readVector4('value')
     else:
         value = section.asVector4
-    return ResourceItem(RESOURCE_ITEM_TYPE.VECTOR4, readItemName(xmlCtx, section), value)
+    return ResourceItem(RESOURCE_ITEM_TYPE.VECTOR4, readItemName(xmlCtx, section, nameFromSection=nameFromSection), value)
 
 
-def readList(xmlCtx, section, valueName='value'):
+def readList(xmlCtx, section, valueName='value', nameFromSection=False):
     result = []
-    name = readItemName(xmlCtx, section)
+    name = readItemName(xmlCtx, section, nameFromSection=nameFromSection)
     subCtx, subSection = getSubSection(xmlCtx, section, valueName)
     for nextCtx, nextSection in getIterator(subCtx, subSection):
         result.append(readItem(nextCtx, nextSection).value)
@@ -208,9 +211,9 @@ def readList(xmlCtx, section, valueName='value'):
     return ResourceItem(RESOURCE_ITEM_TYPE.LIST, name, result)
 
 
-def readDict(xmlCtx, section, valueName='value'):
+def readDict(xmlCtx, section, valueName='value', nameFromSection=False):
     result = {}
-    name = readItemName(xmlCtx, section)
+    name = readItemName(xmlCtx, section, nameFromSection=nameFromSection)
     subCtx, subSection = getSubSection(xmlCtx, section, valueName)
     for nextCtx, nextSection in getIterator(subCtx, subSection):
         item = readItem(nextCtx, nextSection)
@@ -221,9 +224,9 @@ def readDict(xmlCtx, section, valueName='value'):
     return ResourceItem(RESOURCE_ITEM_TYPE.DICT, name, result)
 
 
-def readSeqPairs(xmlCtx, section, valueName='value'):
+def readSeqPairs(xmlCtx, section, valueName='value', nameFromSection=False):
     result = []
-    name = readItemName(xmlCtx, section)
+    name = readItemName(xmlCtx, section, nameFromSection=nameFromSection)
     subCtx, subSection = getSubSection(xmlCtx, section, valueName)
     for nextCtx, nextSection in getIterator(subCtx, subSection):
         item = readItem(nextCtx, nextSection)
@@ -232,7 +235,7 @@ def readSeqPairs(xmlCtx, section, valueName='value'):
     return ResourceItem(RESOURCE_ITEM_TYPE.SEQ_PAIRS, name, tuple(result))
 
 
-def readClassItem(xmlCtx, section):
+def readClassItem(xmlCtx, section, nameFromSection=False):
     if 'value' in section.keys():
         value = section.readString('value')
     else:
@@ -248,7 +251,7 @@ def readClassItem(xmlCtx, section):
     clazz = getattr(module, parts[(-1)], None)
     if clazz is None or not inspect.isclass(clazz):
         raise ResourceError(xmlCtx, ('There is not path to class {0}').format(value))
-    return ResourceItem(RESOURCE_ITEM_TYPE.STRING, readItemName(xmlCtx, section), clazz)
+    return ResourceItem(RESOURCE_ITEM_TYPE.STRING, readItemName(xmlCtx, section, nameFromSection=nameFromSection), clazz)
 
 
 _ITEM_VALUE_READERS = {RESOURCE_ITEM_TYPE.BOOL: readBoolItem, 
@@ -264,15 +267,15 @@ _ITEM_VALUE_READERS = {RESOURCE_ITEM_TYPE.BOOL: readBoolItem,
    RESOURCE_ITEM_TYPE.SEQ_PAIRS: readSeqPairs, 
    RESOURCE_ITEM_TYPE.CLASS: readClassItem}
 
-def readItem(ctx, section, name='item'):
+def readItem(ctx, section, name='item', nameFromSection=False):
     if section.name != name:
         raise ResourceError(ctx, ('Resource {0} is invalid').format(section.name))
     keys = section.keys()
     itemType = _readItemType(ctx, section, keys=keys)
-    name = readItemName(ctx, section, keys=keys)
+    name = readItemName(ctx, section, keys=keys, nameFromSection=nameFromSection)
     if itemType in _ITEM_VALUE_READERS:
         reader = _ITEM_VALUE_READERS[itemType]
-        item = reader(ctx, section)
+        item = reader(ctx, section, nameFromSection=nameFromSection)
     else:
         raise ResourceError(ctx, ('"{0}: type {1} is invalid.').format(name, itemType))
     return item

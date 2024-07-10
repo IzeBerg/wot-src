@@ -243,6 +243,7 @@ class OwnVehicleBase(BigWorld.DynamicScriptComponent):
         avatar = self._avatar()
         if not avatar:
             return
+        avatar.battleEventsSummary(data)
 
     @noexcept
     def update_remoteCamera(self, data):

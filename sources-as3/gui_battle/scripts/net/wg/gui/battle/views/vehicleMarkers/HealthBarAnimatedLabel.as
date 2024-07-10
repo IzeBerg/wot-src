@@ -83,10 +83,6 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.damageLabel.text = param1;
       }
       
-      private function imitationDamage(param1:Boolean, param2:int, param3:String) : void
-      {
-      }
-      
       public function get fakeDamage() : Number
       {
          return this._fakeDamage;

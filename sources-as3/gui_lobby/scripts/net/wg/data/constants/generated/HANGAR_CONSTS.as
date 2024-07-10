@@ -32,6 +32,16 @@ package net.wg.data.constants.generated
       public static const MINI_CLIENT:String = "miniClient";
       
       public static const BR_PANELS:String = "battleRoyalePanels";
+      
+      public static const PRESTIGE_WIDGET:String = "prestigeWidget";
+      
+      public static const BATTLE_ROYALE_TOURNAMENT_BANNER:String = "battleRoyaleTournamentBanner";
+      
+      public static const HEADER_WIDGET:String = "headerWidget";
+      
+      public static const HEADER_QUEST_FLAGS:String = "headerQuestFlags";
+      
+      public static const STRENGTHS_WEAKNESSES:String = "StrengthsWeaknesses";
        
       
       public function HANGAR_CONSTS()

@@ -422,6 +422,7 @@ package net.wg.gui.battle.battleRoyale
             this._minimap.x = (_width >> 1) - _loc3_.width;
             this._minimap.y = _loc2_ + (_height - _loc3_.height >> 1);
             this._minimap.dispatchEvent(new LifeCycleEvent(LifeCycleEvent.ON_GRAPHICS_RECTANGLES_UPDATE));
+            this.fullStats.setMinimapBounds(_loc3_);
             if(_loc1_)
             {
                this._minimap.x += MINIMAP_SMALL_SCREEN_OFFSET_X;

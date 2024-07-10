@@ -18,6 +18,8 @@ package net.wg.gui.lobby.hangar.tcarousel.helper
       
       function get padding() : Padding;
       
+      function get isSmall() : Boolean;
+      
       function get rendererVisibleHeight() : int;
       
       function get rendererHeightDiff() : int;

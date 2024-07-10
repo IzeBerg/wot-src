@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<params>
+		<param>
+			<name>OnFire</name>
+			<type>bool</type>
+		</param>
+	</params>
+	<node>
+		<name>gun_idle</name>
+		<type>sequence</type>
+		<resource>particles/Tank/fep_qfg/guns/empty.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>-1</loop>
+		<transition>
+			<to>gun_overheated</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>bool</type>
+					<name>OnFire</name>
+					<checked>true</checked>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-350.000000 -191.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>gun_overheated</name>
+		<type>sequence</type>
+		<resource>particles/Tank/fep_qfg/guns/fep_qfg_MVY_shot_90_overheat.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>-1</loop>
+		<transition>
+			<to>gun_idle</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>bool</type>
+					<name>OnFire</name>
+					<checked>false</checked>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-33.000000 -191.000000 0.000000</uiPosition>
+	</node>
+</root>

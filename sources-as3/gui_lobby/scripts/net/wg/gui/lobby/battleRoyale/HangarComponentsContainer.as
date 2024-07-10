@@ -2,7 +2,6 @@ package net.wg.gui.lobby.battleRoyale
 {
    import flash.display.Sprite;
    import net.wg.gui.components.containers.inject.GFInjectComponent;
-   import net.wg.gui.components.containers.inject.UssInjectComponent;
    import net.wg.gui.lobby.hangar.HangarHeader;
    import net.wg.infrastructure.interfaces.entity.IDisposable;
    
@@ -40,7 +39,7 @@ package net.wg.gui.lobby.battleRoyale
       
       public var techParameters:TechParametersComponent = null;
       
-      public var bottomPanel:UssInjectComponent = null;
+      public var bottomPanel:BottomPanelComponent = null;
       
       private var _disposed:Boolean = false;
       
@@ -51,7 +50,7 @@ package net.wg.gui.lobby.battleRoyale
          super();
          name = "BRComponentsContainer";
          this.techParameters = new TechParametersComponent();
-         this.bottomPanel = new UssInjectComponent();
+         this.bottomPanel = new BottomPanelComponent();
          this.commander = new GFInjectComponent();
          this.proxyCurrencyPanel = new ProxyCurrencyPanel();
          this.battleTypeSelector = new BattleTypeSelector();
@@ -72,9 +71,9 @@ package net.wg.gui.lobby.battleRoyale
          this.battleTypeSelector.width = BATTLE_TYPE_SELECTOR_WIDTH;
          this.battleTypeSelector.height = BATTLE_TYPE_SELECTOR_HEIGHT;
          this.battleTypeSelector.x = App.appWidth - this.battleTypeSelector.width >> 1;
+         addChild(this.bottomPanel);
          addChild(this.commander);
          addChild(this.techParameters);
-         addChild(this.bottomPanel);
          addChild(this.proxyCurrencyPanel);
          addChild(this.battleTypeSelector);
       }
@@ -119,7 +118,8 @@ package net.wg.gui.lobby.battleRoyale
       
       public function updateStage(param1:int, param2:int) : void
       {
-         this.bottomPanel.y = param2;
+         this.bottomPanel.x = param1 - this.bottomPanel.width >> 1;
+         this.bottomPanel.y = param2 - this.bottomPanel.height;
          this.techParameters.x = param1 - this.techParameters.width;
          this.proxyCurrencyPanel.x = param1 - this.proxyCurrencyPanel.width;
          this.battleTypeSelector.x = param1 - this.battleTypeSelector.width >> 1;

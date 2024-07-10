@@ -1,7 +1,7 @@
 from functools import partial
 from logging import getLogger
 import BigWorld
-from gui.battle_results.composer import IStatsComposer
+from gui.battle_results.stats_ctrl import IBattleResultStatsCtrl
 from gui.battle_results.settings import PLAYER_TEAM_RESULT
 from helpers import dependency
 from story_mode.gui.battle_results.templates import STORY_MODE_RESULTS_BLOCK
@@ -10,7 +10,7 @@ from story_mode.skeletons.story_mode_controller import IStoryModeController
 from story_mode_common.story_mode_constants import LOGGER_NAME
 _logger = getLogger(LOGGER_NAME)
 
-class StoryModeStatsComposer(IStatsComposer):
+class StoryModeStatsComposer(IBattleResultStatsCtrl):
     _storyModeCtrl = dependency.descriptor(IStoryModeController)
 
     def __init__(self, _):
@@ -25,9 +25,6 @@ class StoryModeStatsComposer(IStatsComposer):
 
     def getVO(self):
         return self._block.getVO()
-
-    def popAnimation(self):
-        return
 
     @staticmethod
     def onShowResults(arenaUniqueID):

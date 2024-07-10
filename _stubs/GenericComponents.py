@@ -160,6 +160,7 @@ class ControlModeStatus(PyComponentWrapperBase):
 	def clear(self, *args, **kwargs): pass
 	def destroy(self, *args, **kwargs): pass
 	def id(self, *args, **kwargs): pass
+	mode = property(lambda self: None)
 	def valid(self, *args, **kwargs): pass
 
 
@@ -418,7 +419,10 @@ class ParticleComponent(PyComponentWrapperBase):
 	def __subclasshook__(*args, **kwargs): pass
 	def clear(self, *args, **kwargs): pass
 	def destroy(self, *args, **kwargs): pass
+	emissionRate = property(lambda self: None)
+	emissionSize = property(lambda self: None)
 	def id(self, *args, **kwargs): pass
+	opacity = property(lambda self: None)
 	def valid(self, *args, **kwargs): pass
 
 
@@ -546,6 +550,30 @@ class Sequence(PyComponentWrapperBase):
 	def stop(self, *args, **kwargs): pass
 	def syncSubSequences(self, *args, **kwargs): pass
 	time = property(lambda self: None)
+	def valid(self, *args, **kwargs): pass
+
+
+class StaticDecalComponent(PyComponentWrapperBase):
+	def __cmp__(self, *args, **kwargs): pass
+	def __delattr__(*args, **kwargs): pass
+	__doc__ = None
+	def __format__(*args, **kwargs): pass
+	def __getattribute__(self, *args, **kwargs): pass
+	def __hash__(*args, **kwargs): pass
+	def __init__(self, *args, **kwargs): pass
+	__module__ = 'GenericComponents'
+	def __new__(*args, **kwargs): pass
+	__qualname__ = 'StaticDecalComponent'
+	def __reduce__(*args, **kwargs): pass
+	def __reduce_ex__(*args, **kwargs): pass
+	def __repr__(*args, **kwargs): pass
+	def __setattr__(*args, **kwargs): pass
+	def __sizeof__(*args, **kwargs): pass
+	def __str__(*args, **kwargs): pass
+	def __subclasshook__(*args, **kwargs): pass
+	def clear(self, *args, **kwargs): pass
+	def destroy(self, *args, **kwargs): pass
+	def id(self, *args, **kwargs): pass
 	def valid(self, *args, **kwargs): pass
 
 
@@ -689,11 +717,15 @@ class TransformComponent(PyComponentWrapperBase):
 	isUpdated = property(lambda self: None)
 	position = property(lambda self: None)
 	rotation = property(lambda self: None)
+	rotationPYR = property(lambda self: None)
+	rotationYPR = property(lambda self: None)
 	scale = property(lambda self: None)
 	transform = property(lambda self: None)
 	def valid(self, *args, **kwargs): pass
 	worldPosition = property(lambda self: None)
 	worldRotation = property(lambda self: None)
+	worldRotationPYR = property(lambda self: None)
+	worldRotationYPR = property(lambda self: None)
 	worldScale = property(lambda self: None)
 	worldTransform = property(lambda self: None)
 

@@ -18,7 +18,7 @@ def ifComponentAvailable(componentType=None):
     return decorator
 
 
-def ifComponentInPreset(componentType=None, defReturn=None):
+def ifComponentInPreset(componentType=None, defReturn=None, abortAction=None):
 
     def decorator(method):
 
@@ -28,6 +28,8 @@ def ifComponentInPreset(componentType=None, defReturn=None):
             if preset is not None and componentType in preset.visibleComponents:
                 return method(presetGetter, preset, *args, **kwargs)
             else:
+                if abortAction is not None:
+                    return operator.methodcaller(abortAction)(presetGetter)
                 return defReturn
 
         return wrapper

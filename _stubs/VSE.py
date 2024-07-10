@@ -96,6 +96,7 @@ class PyBlockAgent(pybind11_object):
 	def __subclasshook__(*args, **kwargs): pass
 	def blockId(self, *args, **kwargs): pass
 	def getInitParams(self, *args, **kwargs): pass
+	def getSlots(self, *args, **kwargs): pass
 	def makeDataInputSlot(self, *args, **kwargs): pass
 	def makeDataOutputSlot(self, *args, **kwargs): pass
 	def makeEventInputSlot(self, *args, **kwargs): pass
@@ -170,6 +171,7 @@ class PyProxyDataInputSlot(pybind11_object):
 	def getValue(self, *args, **kwargs): pass
 	def hasValue(self, *args, **kwargs): pass
 	def isConstValue(self, *args, **kwargs): pass
+	def name(self, *args, **kwargs): pass
 	def setDefaultValue(self, *args, **kwargs): pass
 	def setEditorData(self, *args, **kwargs): pass
 

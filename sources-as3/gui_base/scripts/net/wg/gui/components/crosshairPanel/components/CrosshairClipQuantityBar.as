@@ -73,9 +73,13 @@ package net.wg.gui.components.crosshairPanel.components
                gotoAndPlay(STATE_RELOAD_FINISHED);
             }
          }
-         else
+         else if(param2 == STATE_NORMAL)
          {
             gotoAndStop(param2);
+         }
+         else
+         {
+            gotoAndPlay(param2);
          }
          this.quantityInClipBar.gotoAndStop(this.calcCurrentFrame());
       }
@@ -95,7 +99,7 @@ package net.wg.gui.components.crosshairPanel.components
             }
             else
             {
-               _loc1_ = this._initQuantityBarTotalFrames * this._currentQuantityInClip / this._initClipCapacity ^ 0;
+               _loc1_ = Math.ceil(this._initQuantityBarTotalFrames * this._currentQuantityInClip / this._initClipCapacity) + 1;
             }
          }
          return _loc1_;

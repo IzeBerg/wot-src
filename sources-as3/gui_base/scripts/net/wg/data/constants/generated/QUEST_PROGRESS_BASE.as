@@ -39,6 +39,8 @@ package net.wg.data.constants.generated
       
       public static const QP_VIEW_RENDERER_QUEST_AWARD:String = "QuestProgressItemRendererQuestAwardViewUI";
       
+      public static const QP_VIEW_RENDERER_CONDITION_AWARD:String = "QuestProgressItemRendererConditionAwardViewUI";
+      
       public static const QP_TAB_ALERT_LABEL:String = "TabAlertLabelUI";
       
       public static const QP_OR_CONDITION_ICON_TAB:String = "QuestProgressOrConditionTabUI";

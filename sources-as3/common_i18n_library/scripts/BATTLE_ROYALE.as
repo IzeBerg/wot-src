@@ -445,6 +445,16 @@ package
       
       public static const COMMANDERTOOLTIP_SPECIALTY_SKILLS:String = "#battle_royale:commanderTooltip/specialty_skills";
       
+      public static const TECHPARAMS_TYPE_DIFFICULTY:String = "#battle_royale:techParams/type/difficulty";
+      
+      public static const TECHPARAMS_TYPE_SURVIVABILITY:String = "#battle_royale:techParams/type/survivability";
+      
+      public static const TECHPARAMS_TYPE_MOBILITY:String = "#battle_royale:techParams/type/mobility";
+      
+      public static const TECHPARAMS_TYPE_DAMAGE:String = "#battle_royale:techParams/type/damage";
+      
+      public static const TECHPARAMS_TYPE_SPOTTING:String = "#battle_royale:techParams/type/spotting";
+      
       public static const VEHICLEFEATURES_SUBTITLE_FORCE:String = "#battle_royale:vehicleFeatures/subTitle/force";
       
       public static const VEHICLEFEATURES_SUBTITLE_WEAK:String = "#battle_royale:vehicleFeatures/subTitle/weak";
@@ -483,25 +493,21 @@ package
       
       public static const TOOLTIPS_VEHICLE_DESCRIPTION:String = "#battle_royale:tooltips/vehicle/description";
       
-      public static const TOOLTIPS_RESPAWNICON_TITLE:String = "#battle_royale:tooltips/respawnIcon/title";
+      public static const TOOLTIPS_RESPAWN_TITLE:String = "#battle_royale:tooltips/respawn/title";
       
-      public static const TOOLTIPS_RESPAWNICON_MIN:String = "#battle_royale:tooltips/respawnIcon/min";
+      public static const TOOLTIPS_RESPAWN_SUBTITLE:String = "#battle_royale:tooltips/respawn/subtitle";
       
-      public static const TOOLTIPS_RESPAWNICON_SEC:String = "#battle_royale:tooltips/respawnIcon/sec";
+      public static const TOOLTIPS_RESPAWN_COMMON_DESCRIPTION:String = "#battle_royale:tooltips/respawn/common/description";
       
-      public static const TOOLTIPS_RESPAWNICON_SUBTITLE:String = "#battle_royale:tooltips/respawnIcon/subtitle";
+      public static const TOOLTIPS_RESPAWN_SOLO_TITLE:String = "#battle_royale:tooltips/respawn/solo/title";
       
-      public static const TOOLTIPS_RESPAWNICON_DESCRIPTION:String = "#battle_royale:tooltips/respawnIcon/description";
+      public static const TOOLTIPS_RESPAWN_SOLO_DESCRIPTION:String = "#battle_royale:tooltips/respawn/solo/description";
       
-      public static const TOOLTIPS_RESPAWNICON_SOLO_SUBTITLE:String = "#battle_royale:tooltips/respawnIcon/solo/subtitle";
+      public static const TOOLTIPS_RESPAWN_PLATOON_TITLE:String = "#battle_royale:tooltips/respawn/platoon/title";
       
-      public static const TOOLTIPS_RESPAWNICON_SOLO_DESCRIPTION:String = "#battle_royale:tooltips/respawnIcon/solo/description";
+      public static const TOOLTIPS_RESPAWN_PLATOON_DESCRIPTION:String = "#battle_royale:tooltips/respawn/platoon/description";
       
-      public static const TOOLTIPS_RESPAWNICON_PLATOON_SUBTITLE:String = "#battle_royale:tooltips/respawnIcon/platoon/subtitle";
-      
-      public static const TOOLTIPS_RESPAWNICON_PLATOON_DESCRIPTION:String = "#battle_royale:tooltips/respawnIcon/platoon/description";
-      
-      public static const TOOLTIPS_RESPAWNICON_DEFINITION:String = "#battle_royale:tooltips/respawnIcon/definition";
+      public static const TOOLTIPS_RESPAWN_FOOTER_TEXT:String = "#battle_royale:tooltips/respawn/footer/text";
       
       public static const POSTMORTEMPANEL_FIRSTTIP_TITLE:String = "#battle_royale:postmortemPanel/firstTip/title";
       
@@ -672,6 +678,8 @@ package
       public static const STATUSNOTIFICATIONTIMERS_LOOT_MULTIPLE:String = "#battle_royale:statusNotificationTimers/loot/multiple";
       
       public static const BANNER_TITLE:String = "#battle_royale:banner/title";
+      
+      public static const BANNER_SUBTITLE:String = "#battle_royale:banner/subtitle";
       
       public static const BANNER_INFO_SEASONACTIVE:String = "#battle_royale:banner/info/seasonActive";
       

@@ -15,8 +15,6 @@ package net.wg.data.constants.generated
       
       public static const QUEST_TYPE_EVENT:String = "eventQuest";
       
-      public static const QUEST_TYPE_BATTLE_PASS:String = "questBattlePass";
-      
       public static const QUEST_TYPE_BATTLE_ROYALE:String = "questBattleRoyale";
       
       public static const QUEST_TYPE_MAPBOX:String = "mapboxProgression";

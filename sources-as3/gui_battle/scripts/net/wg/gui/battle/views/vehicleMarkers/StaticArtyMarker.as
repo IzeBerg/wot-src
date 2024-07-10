@@ -29,9 +29,13 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       override protected function onDispose() : void
       {
+         if(this._targetAnimation)
+         {
+            this._targetAnimation.addFrameScript(LOOP_ANIMATION_END,null);
+            this._targetAnimation = null;
+         }
          this.marker = null;
          this.bgShadow = null;
-         this._targetAnimation = null;
          super.onDispose();
       }
       

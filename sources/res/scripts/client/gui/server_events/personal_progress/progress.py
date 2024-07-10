@@ -142,7 +142,7 @@ class HeaderProgress(ClientProgress):
             if progress.isMain() == self.isMain() and progress.getContainerType() == CONTAINER.BODY:
                 if multiplierValue:
                     progress.setHeaderMuliplier(multiplierValue)
-                if state:
+                if state == QUEST_PROGRESS_STATE.FAILED:
                     progress.setState(state)
 
     @classmethod
@@ -319,11 +319,15 @@ class BodyProgress(ClientProgress):
     def getIconID(self):
         return self._description.iconID
 
-    def getPriority(self):
+    def getIconPriority(self):
         key = self.getIconID()
         if key in ORDERED_ICON_IDS:
             return ORDERED_ICON_IDS.index(key)
         return len(ORDERED_ICON_IDS)
+
+    def getPriority(self):
+        return (
+         self._description.priority, self.getIconPriority())
 
     def getProgressType(self):
         if self._commonProgress.isCumulative():

@@ -7,7 +7,6 @@ package net.wg.gui.battle.views.vehicleMarkers
    import flash.utils.Timer;
    import net.wg.data.constants.generated.ATLAS_CONSTANTS;
    import net.wg.gui.battle.components.BattleUIComponent;
-   import net.wg.gui.battle.views.vehicleMarkers.events.TimelineEvent;
    import net.wg.gui.utils.RootSWFAtlasManager;
    
    public class HealthBarAnimatedPart extends BattleUIComponent
@@ -21,7 +20,15 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       private static const ACTIVE_STATE:String = "active";
       
+      private static const BLINK_STATE:String = "blink";
+      
       private static const HIDE_STATE:String = "hide";
+      
+      private static const ACTIVE_LABEL_INDEX:uint = 1;
+      
+      private static const INACTIVE_LABEL_INDEX:uint = 3;
+      
+      private static const BLINK_END_LABEL_INDEX:uint = 5;
       
       private static const DMG_BAR_XY:Point = new Point(0,-19);
       
@@ -36,6 +43,8 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       private var _splashTimer:Timer = null;
       
+      private var _animationType:String = null;
+      
       private var _vmManager:VehicleMarkersManager = null;
       
       public function HealthBarAnimatedPart()
@@ -44,12 +53,12 @@ package net.wg.gui.battle.views.vehicleMarkers
          stop();
          visible = false;
          this._vmManager = VehicleMarkersManager.getInstance();
-         this.addDispatchers();
+         this.addFrameScripts();
       }
       
       override protected function onDispose() : void
       {
-         removeEventListener(TimelineEvent.TWEEN_COMPLETE,this.onTimelineTweenCompleteHandler);
+         this.removeFrameScripts();
          if(this._splashTimer)
          {
             this._splashTimer.stop();
@@ -61,15 +70,23 @@ package net.wg.gui.battle.views.vehicleMarkers
          super.onDispose();
       }
       
-      override protected function configUI() : void
+      public function isActive() : Boolean
       {
-         super.configUI();
-         addEventListener(TimelineEvent.TWEEN_COMPLETE,this.onTimelineTweenCompleteHandler);
+         return this._tweenState != VehicleMarkersConstants.HB_ANIMATED_INACTIVE_STATE;
       }
       
-      public function playShowTween() : void
+      public function playShowTween(param1:Boolean = false) : void
       {
-         var _loc1_:String = this._tweenState;
+         if(param1)
+         {
+            if(!this.isActive())
+            {
+               gotoAndPlay(BLINK_STATE);
+               visible = true;
+            }
+            return;
+         }
+         var _loc2_:String = this._tweenState;
          switch(this._tweenState)
          {
             case VehicleMarkersConstants.HB_ANIMATED_INACTIVE_STATE:
@@ -82,7 +99,7 @@ package net.wg.gui.battle.views.vehicleMarkers
             case HIDE_STATE:
                this._tweenState = SHOW_STATE;
          }
-         if(_loc1_ != this._tweenState)
+         if(_loc2_ != this._tweenState)
          {
             this.setState();
          }
@@ -90,19 +107,15 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       public function setAnimationType(param1:String) : void
       {
-         if(this.animateMc == null)
+         if(this.animateMc == null || param1 == this._animationType)
          {
             return;
          }
+         this._animationType = param1;
          var _loc2_:String = this._partType == VehicleMarkersConstants.HB_ANIMATED_PART_SPLASH ? VMAtlasItemName.getDamageBarName(param1) : VMAtlasItemName.getHitAnimationName(param1);
          var _loc3_:Point = this._partType == VehicleMarkersConstants.HB_ANIMATED_PART_SPLASH ? DMG_BAR_XY : EXPLOSION_XY;
          var _loc4_:Point = new Point(_loc3_.x,_loc3_.y);
          RootSWFAtlasManager.instance.drawGraphics(ATLAS_CONSTANTS.VEHICLE_MARKER_ATLAS,_loc2_,this.animateMc.graphics,_loc4_);
-      }
-      
-      public function isActive() : Boolean
-      {
-         return this._tweenState != HIDE_STATE && this._tweenState != VehicleMarkersConstants.HB_ANIMATED_INACTIVE_STATE;
       }
       
       protected function setState() : void
@@ -110,24 +123,36 @@ package net.wg.gui.battle.views.vehicleMarkers
          gotoAndPlay(this._tweenState);
       }
       
-      private function addDispatchers() : void
+      private function addFrameScripts() : void
       {
-         var _loc1_:int = currentScene.labels[1].frame;
-         addFrameScript(_loc1_,this.tweenCompleteDispatchTrue);
-         _loc1_ = currentScene.labels[3].frame;
-         addFrameScript(_loc1_,this.tweenCompleteDispatchFalse);
+         var _loc1_:int = currentScene.labels[ACTIVE_LABEL_INDEX].frame;
+         addFrameScript(_loc1_,this.tweenCompleteShowTrue);
+         _loc1_ = currentScene.labels[INACTIVE_LABEL_INDEX].frame;
+         addFrameScript(_loc1_,this.tweenCompleteShowFalse);
+         _loc1_ = currentScene.labels[BLINK_END_LABEL_INDEX].frame;
+         addFrameScript(_loc1_,this.tweenCompleteShowFalse);
       }
       
-      private function tweenCompleteDispatchTrue() : void
+      private function removeFrameScripts() : void
       {
-         stop();
-         dispatchEvent(new TimelineEvent(TimelineEvent.TWEEN_COMPLETE,true));
+         var _loc1_:int = currentScene.labels[ACTIVE_LABEL_INDEX].frame;
+         addFrameScript(_loc1_,null);
+         _loc1_ = currentScene.labels[INACTIVE_LABEL_INDEX].frame;
+         addFrameScript(_loc1_,null);
+         _loc1_ = currentScene.labels[BLINK_END_LABEL_INDEX].frame;
+         addFrameScript(_loc1_,null);
       }
       
-      private function tweenCompleteDispatchFalse() : void
+      private function tweenCompleteShowTrue() : void
       {
          stop();
-         dispatchEvent(new TimelineEvent(TimelineEvent.TWEEN_COMPLETE,false));
+         this.onTweenComplete(true);
+      }
+      
+      private function tweenCompleteShowFalse() : void
+      {
+         stop();
+         this.onTweenComplete(false);
       }
       
       private function onTweenComplete(param1:Boolean) : void
@@ -173,11 +198,6 @@ package net.wg.gui.battle.views.vehicleMarkers
       public function set partType(param1:String) : void
       {
          this._partType = param1;
-      }
-      
-      private function onTimelineTweenCompleteHandler(param1:TimelineEvent) : void
-      {
-         this.onTweenComplete(param1.isShow);
       }
       
       private function onSplashTimerCompleteHandler(param1:TimerEvent) : void
