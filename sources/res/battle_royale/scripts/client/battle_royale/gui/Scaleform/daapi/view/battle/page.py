@@ -176,7 +176,7 @@ class BattleRoyalePage(BattleRoyalePageMeta, ISpawnListener):
     def showSpawnPoints(self):
         visibleComponents = [
          BATTLE_VIEW_ALIASES.BR_SELECT_RESPAWN]
-        if ARENA_BONUS_TYPE_CAPS.checkAny(BigWorld.player().arena.bonusType, ARENA_BONUS_TYPE_CAPS.SQUADS):
+        if BigWorld.player().hasBonusCap(ARENA_BONUS_TYPE_CAPS.SQUADS):
             visibleComponents.extend([
              BATTLE_VIEW_ALIASES.BATTLE_TEAM_PANEL,
              BATTLE_VIEW_ALIASES.BATTLE_MESSENGER])
@@ -501,5 +501,5 @@ class BattleRoyalePage(BattleRoyalePageMeta, ISpawnListener):
         arenaDP = self.sessionProvider.getArenaDP()
         arenaInfo = BigWorld.player().arena.arenaInfo
         if arenaInfo:
-            return arenaInfo.abilityNotifierComponent.isRespawnTimeFinished and not arenaDP.getVehicleInfo().isAlive()
+            return arenaInfo.arenaInfoBRComponent.isRespawnTimeFinished and not arenaDP.getVehicleInfo().isAlive()
         return False

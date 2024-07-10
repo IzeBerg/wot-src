@@ -105,35 +105,45 @@ package net.wg.gui.battle.views.damagePanel.components.tankman
          return new <DisplayObject>[this._critical,this._normal,this._stunIndicator,this._buffIndicator];
       }
       
+      public function hideStatus(param1:int, param2:Boolean) : void
+      {
+         this.clearStunAnimationTimeout();
+         if(param1 != STUN_STATUS_ID)
+         {
+            this._isOtherStatusActive = false;
+         }
+         if(param1 == STUN_STATUS_ID)
+         {
+            this._stunIndicator.hideStun(param2);
+            if(this._isOtherStatusActive)
+            {
+               this._buffIndicator.showStatus(false);
+               this._activeStatusID = BUFF_STATUS_ID;
+            }
+            else
+            {
+               this._activeStatusID = Values.DEFAULT_INT;
+            }
+         }
+         else
+         {
+            this._buffIndicator.hideStatus();
+            this._activeStatusID = Values.DEFAULT_INT;
+         }
+         this._animInProgress = false;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._isDisposed;
+      }
+      
       public function showDestroyed() : void
       {
          this._critical.visible = true;
          this._normal.visible = false;
          this._stunIndicator.visible = false;
          this._buffIndicator.visible = false;
-      }
-      
-      public function get state() : String
-      {
-         return this._state;
-      }
-      
-      public function set state(param1:String) : void
-      {
-         this._state = param1;
-         var _loc2_:Boolean = this.state == BATTLE_ITEM_STATES.NORMAL;
-         this._normal.visible = _loc2_;
-         this._critical.visible = !_loc2_;
-      }
-      
-      public function get name() : String
-      {
-         return this._name;
-      }
-      
-      public function get mouseEventHitElement() : DamagePanelItemClickArea
-      {
-         return this._tankmanHit;
       }
       
       public function showStatus(param1:int, param2:Boolean, param3:int = 0) : void
@@ -178,34 +188,6 @@ package net.wg.gui.battle.views.damagePanel.components.tankman
          }
       }
       
-      public function hideStatus(param1:int, param2:Boolean) : void
-      {
-         this.clearStunAnimationTimeout();
-         if(param1 != STUN_STATUS_ID)
-         {
-            this._isOtherStatusActive = false;
-         }
-         if(param1 == STUN_STATUS_ID)
-         {
-            this._stunIndicator.hideStun(param2);
-            if(this._isOtherStatusActive)
-            {
-               this._buffIndicator.showStatus(false);
-               this._activeStatusID = BUFF_STATUS_ID;
-            }
-            else
-            {
-               this._activeStatusID = Values.DEFAULT_INT;
-            }
-         }
-         else
-         {
-            this._buffIndicator.hideStatus();
-            this._activeStatusID = Values.DEFAULT_INT;
-         }
-         this._animInProgress = false;
-      }
-      
       private function clearStunAnimationTimeout() : void
       {
          if(this._statusAnimationTimeoutID != Values.DEFAULT_INT)
@@ -215,9 +197,27 @@ package net.wg.gui.battle.views.damagePanel.components.tankman
          }
       }
       
-      public function isDisposed() : Boolean
+      public function get state() : String
       {
-         return this._isDisposed;
+         return this._state;
+      }
+      
+      public function set state(param1:String) : void
+      {
+         this._state = param1;
+         var _loc2_:Boolean = this.state == BATTLE_ITEM_STATES.NORMAL;
+         this._normal.visible = _loc2_;
+         this._critical.visible = !_loc2_;
+      }
+      
+      public function get name() : String
+      {
+         return this._name;
+      }
+      
+      public function get mouseEventHitElement() : DamagePanelItemClickArea
+      {
+         return this._tankmanHit;
       }
    }
 }

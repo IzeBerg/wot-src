@@ -28,11 +28,9 @@ package net.wg.gui.components.tooltips.inblocks.blocks
       
       private static const PADDING_BOTTOM:int = 7;
       
-      private static const COUNTER_OFFSET_X:int = -14;
+      private static const COUNTER_OFFSET_X:int = -19;
       
       private static const COUNTER_OFFSET_Y:int = -9;
-      
-      private static const DOUBLE_LINE_BLOCK_HEIGHT_THRESHOLD:int = 30;
        
       
       public var background:Sprite;
@@ -161,14 +159,11 @@ package net.wg.gui.components.tooltips.inblocks.blocks
       
       private function highlightBlock() : void
       {
-         var _loc1_:DisplayObject = null;
-         var _loc2_:String = null;
-         var _loc3_:ICounterProps = null;
-         for each(_loc1_ in this._highlightedBlocks)
+         var _loc2_:DisplayObject = null;
+         var _loc1_:ICounterProps = new CounterProps(COUNTER_OFFSET_X,COUNTER_OFFSET_Y,TextFormatAlign.LEFT,true,Linkages.COUNTER_LINE_BIG_UI);
+         for each(_loc2_ in this._highlightedBlocks)
          {
-            _loc2_ = _loc1_.height > DOUBLE_LINE_BLOCK_HEIGHT_THRESHOLD ? Linkages.COUNTER_DOUBLE_LINE_BIG_UI : Linkages.COUNTER_LINE_BIG_UI;
-            _loc3_ = new CounterProps(COUNTER_OFFSET_X,COUNTER_OFFSET_Y,TextFormatAlign.LEFT,true,_loc2_);
-            this._counterManager.setCounter(_loc1_,CounterManager.COUNTER_EMPTY,null,_loc3_);
+            this._counterManager.setCounter(_loc2_,CounterManager.COUNTER_EMPTY,null,_loc1_);
          }
       }
       

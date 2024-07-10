@@ -107,6 +107,10 @@
 			<offset>0 0 0 0</offset>
 		</transform>
 	</oliveTransform>
+	<greenStatusMarkerColor>
+		<alias_color>green</alias_color>
+		<rgba>221 255 153 255</rgba>
+	</greenStatusMarkerColor>
 	<redStatusMarkerColor>
 		<alias_color>red</alias_color>
 		<rgba>255 221 156 255</rgba>
@@ -357,6 +361,24 @@
 			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
 		</color_blind>
 	</vm_stun_br_enemy_schema>
+	<vm_buff_br_ally_schema>
+		<default>
+			<schemeGroup>greenStatusMarkerColor</schemeGroup>
+		</default>
+	</vm_buff_br_ally_schema>
+	<vm_buff_br_squadman_schema>
+		<default>
+			<schemeGroup>greenStatusMarkerColor</schemeGroup>
+		</default>
+	</vm_buff_br_squadman_schema>
+	<vm_buff_br_enemy_schema>
+		<default>
+			<schemeGroup>redStatusMarkerColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
+		</color_blind>
+	</vm_buff_br_enemy_schema>
 	<yellow_tank_color>
 		<alias_color>green</alias_color>
 		<rgba>52 118 12 255</rgba>
@@ -882,6 +904,14 @@
 			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
 		</color_blind>
 	</vm_stun_br_team1_schema>
+	<vm_buff_br_team1_schema>
+		<default>
+			<schemeGroup>redStatusMarkerColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
+		</color_blind>
+	</vm_buff_br_team1_schema>
 	<vm_team2>
 		<default>
 			<alias_color>white</alias_color>
@@ -916,13 +946,21 @@
 			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
 		</color_blind>
 	</vm_stun_br_team2_schema>
+	<vm_buff_br_team2_schema>
+		<default>
+			<schemeGroup>redStatusMarkerColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
+		</color_blind>
+	</vm_buff_br_team2_schema>
 	<vm_team3>
 		<default>
 			<alias_color>white</alias_color>
 			<rgba>255 255 255 255</rgba>
 			<transform>
 				<mult>
-					1.00 0.65 0.49 1
+					0.83 0.43 0.38 1
 					<!--BW_String-->
 				</mult>
 				<offset>0 0 0 0</offset>
@@ -935,7 +973,7 @@
 			<rgba>255 39 23 255</rgba>
 			<transform>
 				<mult>
-					0.33 0.22 0.16 0.8
+					0.28 0.14 0.13 0.8
 					<!--BW_String-->
 				</mult>
 				<offset>0 0 0 0</offset>
@@ -950,13 +988,21 @@
 			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
 		</color_blind>
 	</vm_stun_br_team3_schema>
+	<vm_buff_br_team3_schema>
+		<default>
+			<schemeGroup>redStatusMarkerColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
+		</color_blind>
+	</vm_buff_br_team3_schema>
 	<vm_team4>
 		<default>
 			<alias_color>white</alias_color>
 			<rgba>255 255 255 255</rgba>
 			<transform>
 				<mult>
-					0.83 0.43 0.38 1
+					0.86 0.22 0.64 1
 					<!--BW_String-->
 				</mult>
 				<offset>0 0 0 0</offset>
@@ -969,7 +1015,7 @@
 			<rgba>255 39 23 255</rgba>
 			<transform>
 				<mult>
-					0.28 0.14 0.13 0.8
+					0.29 0.07 0.21 0.8
 					<!--BW_String-->
 				</mult>
 				<offset>0 0 0 0</offset>
@@ -984,13 +1030,21 @@
 			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
 		</color_blind>
 	</vm_stun_br_team4_schema>
+	<vm_buff_br_team4_schema>
+		<default>
+			<schemeGroup>redStatusMarkerColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
+		</color_blind>
+	</vm_buff_br_team4_schema>
 	<vm_team5>
 		<default>
 			<alias_color>white</alias_color>
 			<rgba>255 255 255 255</rgba>
 			<transform>
 				<mult>
-					0.86 0.22 0.64 1
+					0.64 0.11 0.00 1
 					<!--BW_String-->
 				</mult>
 				<offset>0 0 0 0</offset>
@@ -1003,7 +1057,7 @@
 			<rgba>255 39 23 255</rgba>
 			<transform>
 				<mult>
-					0.29 0.07 0.21 0.8
+					0.21 0.04 0.00 0.8
 					<!--BW_String-->
 				</mult>
 				<offset>0 0 0 0</offset>
@@ -1018,13 +1072,21 @@
 			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
 		</color_blind>
 	</vm_stun_br_team5_schema>
+	<vm_buff_br_team5_schema>
+		<default>
+			<schemeGroup>redStatusMarkerColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
+		</color_blind>
+	</vm_buff_br_team5_schema>
 	<vm_team6>
 		<default>
 			<alias_color>white</alias_color>
 			<rgba>255 255 255 255</rgba>
 			<transform>
 				<mult>
-					0.53 0.18 0.41 1
+					0.87 0.09 0.00 1
 					<!--BW_String-->
 				</mult>
 				<offset>0 0 0 0</offset>
@@ -1037,7 +1099,7 @@
 			<rgba>255 39 23 255</rgba>
 			<transform>
 				<mult>
-					0.18 0.06 0.14 0.8
+					0.29 0.03 0.00 0.8
 					<!--BW_String-->
 				</mult>
 				<offset>0 0 0 0</offset>
@@ -1052,13 +1114,21 @@
 			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
 		</color_blind>
 	</vm_stun_br_team6_schema>
+	<vm_buff_br_team6_schema>
+		<default>
+			<schemeGroup>redStatusMarkerColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
+		</color_blind>
+	</vm_buff_br_team6_schema>
 	<vm_team7>
 		<default>
 			<alias_color>white</alias_color>
 			<rgba>255 255 255 255</rgba>
 			<transform>
 				<mult>
-					0.64 0.11 0.00 1
+					0.00 0.72 0.78 1
 					<!--BW_String-->
 				</mult>
 				<offset>0 0 0 0</offset>
@@ -1071,7 +1141,7 @@
 			<rgba>255 39 23 255</rgba>
 			<transform>
 				<mult>
-					0.21 0.04 0.00 0.8
+					0.00 0.24 0.26 0.8
 					<!--BW_String-->
 				</mult>
 				<offset>0 0 0 0</offset>
@@ -1086,13 +1156,21 @@
 			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
 		</color_blind>
 	</vm_stun_br_team7_schema>
+	<vm_buff_br_team7_schema>
+		<default>
+			<schemeGroup>redStatusMarkerColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
+		</color_blind>
+	</vm_buff_br_team7_schema>
 	<vm_team8>
 		<default>
 			<alias_color>white</alias_color>
 			<rgba>255 255 255 255</rgba>
 			<transform>
 				<mult>
-					0.87 0.09 0.00 1
+					0.60 0.43 0.88 1
 					<!--BW_String-->
 				</mult>
 				<offset>0 0 0 0</offset>
@@ -1105,7 +1183,7 @@
 			<rgba>255 39 23 255</rgba>
 			<transform>
 				<mult>
-					0.29 0.03 0.00 0.8
+					0.20 0.14 0.29 0.8
 					<!--BW_String-->
 				</mult>
 				<offset>0 0 0 0</offset>
@@ -1120,13 +1198,21 @@
 			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
 		</color_blind>
 	</vm_stun_br_team8_schema>
+	<vm_buff_br_team8_schema>
+		<default>
+			<schemeGroup>redStatusMarkerColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
+		</color_blind>
+	</vm_buff_br_team8_schema>
 	<vm_team9>
 		<default>
 			<alias_color>white</alias_color>
 			<rgba>255 255 255 255</rgba>
 			<transform>
 				<mult>
-					0.00 0.72 0.78 1
+					0.10 0.24 0.95 1
 					<!--BW_String-->
 				</mult>
 				<offset>0 0 0 0</offset>
@@ -1139,7 +1225,7 @@
 			<rgba>255 39 23 255</rgba>
 			<transform>
 				<mult>
-					0.00 0.24 0.26 0.8
+					0.03 0.08 0.32 0.8
 					<!--BW_String-->
 				</mult>
 				<offset>0 0 0 0</offset>
@@ -1154,13 +1240,21 @@
 			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
 		</color_blind>
 	</vm_stun_br_team9_schema>
+	<vm_buff_br_team9_schema>
+		<default>
+			<schemeGroup>redStatusMarkerColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
+		</color_blind>
+	</vm_buff_br_team9_schema>
 	<vm_team10>
 		<default>
 			<alias_color>white</alias_color>
 			<rgba>255 255 255 255</rgba>
 			<transform>
 				<mult>
-					0.10 0.46 0.75 1
+					0.16 0.74 0.39 1
 					<!--BW_String-->
 				</mult>
 				<offset>0 0 0 0</offset>
@@ -1173,7 +1267,7 @@
 			<rgba>255 39 23 255</rgba>
 			<transform>
 				<mult>
-					0.03 0.15 0.25 0.8
+					0.05 0.25 0.13 0.8
 					<!--BW_String-->
 				</mult>
 				<offset>0 0 0 0</offset>
@@ -1188,13 +1282,21 @@
 			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
 		</color_blind>
 	</vm_stun_br_team10_schema>
+	<vm_buff_br_team10_schema>
+		<default>
+			<schemeGroup>redStatusMarkerColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
+		</color_blind>
+	</vm_buff_br_team10_schema>
 	<vm_team11>
 		<default>
 			<alias_color>white</alias_color>
 			<rgba>255 255 255 255</rgba>
 			<transform>
 				<mult>
-					0.60 0.43 0.88 1
+					1.00 0.65 0.49 1
 					<!--BW_String-->
 				</mult>
 				<offset>0 0 0 0</offset>
@@ -1207,7 +1309,7 @@
 			<rgba>255 39 23 255</rgba>
 			<transform>
 				<mult>
-					0.20 0.14 0.29 0.8
+					0.33 0.22 0.16 0.8
 					<!--BW_String-->
 				</mult>
 				<offset>0 0 0 0</offset>
@@ -1222,13 +1324,21 @@
 			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
 		</color_blind>
 	</vm_stun_br_team11_schema>
+	<vm_buff_br_team11_schema>
+		<default>
+			<schemeGroup>redStatusMarkerColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
+		</color_blind>
+	</vm_buff_br_team11_schema>
 	<vm_team12>
 		<default>
 			<alias_color>white</alias_color>
 			<rgba>255 255 255 255</rgba>
 			<transform>
 				<mult>
-					0.42 0.27 0.65 1
+					0.53 0.18 0.41 1
 					<!--BW_String-->
 				</mult>
 				<offset>0 0 0 0</offset>
@@ -1241,7 +1351,7 @@
 			<rgba>255 39 23 255</rgba>
 			<transform>
 				<mult>
-					0.14 0.09 0.22 0.8
+					0.18 0.06 0.14 0.8
 					<!--BW_String-->
 				</mult>
 				<offset>0 0 0 0</offset>
@@ -1256,13 +1366,21 @@
 			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
 		</color_blind>
 	</vm_stun_br_team12_schema>
+	<vm_buff_br_team12_schema>
+		<default>
+			<schemeGroup>redStatusMarkerColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
+		</color_blind>
+	</vm_buff_br_team12_schema>
 	<vm_team13>
 		<default>
 			<alias_color>white</alias_color>
 			<rgba>255 255 255 255</rgba>
 			<transform>
 				<mult>
-					0.10 0.24 0.95 1
+					0.10 0.46 0.75 1
 					<!--BW_String-->
 				</mult>
 				<offset>0 0 0 0</offset>
@@ -1275,7 +1393,7 @@
 			<rgba>255 39 23 255</rgba>
 			<transform>
 				<mult>
-					0.03 0.08 0.32 0.8
+					0.03 0.15 0.25 0.8
 					<!--BW_String-->
 				</mult>
 				<offset>0 0 0 0</offset>
@@ -1290,13 +1408,21 @@
 			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
 		</color_blind>
 	</vm_stun_br_team13_schema>
+	<vm_buff_br_team13_schema>
+		<default>
+			<schemeGroup>redStatusMarkerColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
+		</color_blind>
+	</vm_buff_br_team13_schema>
 	<vm_team14>
 		<default>
 			<alias_color>white</alias_color>
 			<rgba>255 255 255 255</rgba>
 			<transform>
 				<mult>
-					0.16 0.74 0.39 1
+					0.42 0.27 0.65 1
 					<!--BW_String-->
 				</mult>
 				<offset>0 0 0 0</offset>
@@ -1309,7 +1435,7 @@
 			<rgba>255 39 23 255</rgba>
 			<transform>
 				<mult>
-					0.05 0.25 0.13 0.8
+					0.14 0.09 0.22 0.8
 					<!--BW_String-->
 				</mult>
 				<offset>0 0 0 0</offset>
@@ -1324,6 +1450,14 @@
 			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
 		</color_blind>
 	</vm_stun_br_team14_schema>
+	<vm_buff_br_team14_schema>
+		<default>
+			<schemeGroup>redStatusMarkerColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
+		</color_blind>
+	</vm_buff_br_team14_schema>
 	<vm_team15>
 		<default>
 			<alias_color>white</alias_color>
@@ -1358,6 +1492,14 @@
 			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
 		</color_blind>
 	</vm_stun_br_team15_schema>
+	<vm_buff_br_team15_schema>
+		<default>
+			<schemeGroup>redStatusMarkerColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
+		</color_blind>
+	</vm_buff_br_team15_schema>
 	<vm_team16>
 		<default>
 			<alias_color>white</alias_color>
@@ -1392,6 +1534,14 @@
 			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
 		</color_blind>
 	</vm_stun_br_team16_schema>
+	<vm_buff_br_team16_schema>
+		<default>
+			<schemeGroup>redStatusMarkerColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
+		</color_blind>
+	</vm_buff_br_team16_schema>
 	<vm_team17>
 		<default>
 			<alias_color>white</alias_color>
@@ -1426,6 +1576,14 @@
 			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
 		</color_blind>
 	</vm_stun_br_team17_schema>
+	<vm_buff_br_team17_schema>
+		<default>
+			<schemeGroup>redStatusMarkerColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
+		</color_blind>
+	</vm_buff_br_team17_schema>
 	<vm_team18>
 		<default>
 			<alias_color>white</alias_color>
@@ -1460,6 +1618,14 @@
 			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
 		</color_blind>
 	</vm_stun_br_team18_schema>
+	<vm_buff_br_team18_schema>
+		<default>
+			<schemeGroup>redStatusMarkerColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
+		</color_blind>
+	</vm_buff_br_team18_schema>
 	<vm_team19>
 		<default>
 			<alias_color>white</alias_color>
@@ -1494,6 +1660,14 @@
 			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
 		</color_blind>
 	</vm_stun_br_team19_schema>
+	<vm_buff_br_team19_schema>
+		<default>
+			<schemeGroup>redStatusMarkerColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
+		</color_blind>
+	</vm_buff_br_team19_schema>
 	<vm_team20>
 		<default>
 			<alias_color>white</alias_color>
@@ -1528,6 +1702,14 @@
 			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
 		</color_blind>
 	</vm_stun_br_team20_schema>
+	<vm_buff_br_team20_schema>
+		<default>
+			<schemeGroup>redStatusMarkerColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleStatusMarkerColor</schemeGroup>
+		</color_blind>
+	</vm_buff_br_team20_schema>
 	<vm_teamKiller>
 		<schemeGroup>blueColor</schemeGroup>
 		<transform>

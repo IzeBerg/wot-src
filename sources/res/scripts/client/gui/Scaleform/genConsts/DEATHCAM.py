@@ -7,6 +7,7 @@ class DEATHCAM(object):
     IGNITION = 'ignition'
     LEGACY_HE = 'legacyHE'
     MODERN_HE = 'modernHE'
+    NON_PENETRATION_DAMAGE = 'nonPenetrationDamage'
     PENETRATION = 'penetration'
     SHELL = 'shell'
     SHELL_CALIBER = 'shellCaliber'

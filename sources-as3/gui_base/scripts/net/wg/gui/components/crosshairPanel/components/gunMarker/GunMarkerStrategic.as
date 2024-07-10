@@ -148,5 +148,13 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
       public function setIsSecondary(param1:Boolean) : void
       {
       }
+      
+      public function setAimDamageStage(param1:String) : void
+      {
+      }
+      
+      public function setZoomFactor(param1:Number) : void
+      {
+      }
    }
 }

@@ -34,6 +34,7 @@ RECORD_CONFIGS = {'medalKay': (1, 10, 100, 1000),
    'sentinelMedal': 1000, 
    'infiltratorMedal': 1000, 
    'battleTested': (10, 100, 250, 500), 
+   'lumberjack': 65535, 
    'citadel': (
              (5, None), (6, (4, 5)), (6, (6, 8)), (10, (8, 10))), 
    'conqueror': (100, 500, 1500, 3000), 

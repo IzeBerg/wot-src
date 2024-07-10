@@ -109,7 +109,7 @@ class BattlePassProgressionsView(ViewImpl):
     def deactivate(self):
         if not self.__exitSoundsIsPlayed:
             self.__stopSounds()
-        self.__startCommonSound()
+            self.__startCommonSound()
         self._unsubscribe()
 
     def onViewSwitch(self):

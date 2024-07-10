@@ -205,13 +205,17 @@ package
       
       public static const MEMBERS_FOOTER_INVALIDVEHICLELEVEL:String = "#platoon:members/footer/invalidVehicleLevel";
       
-      public static const MEMBERS_FOOTER_SCOUTFORBIDDEN:String = "#platoon:members/footer/scoutForbidden";
-      
       public static const MEMBERS_FOOTER_SCOUTFULL:String = "#platoon:members/footer/scoutFull";
       
-      public static const MEMBERS_FOOTER_SPGFORBIDDEN:String = "#platoon:members/footer/spgForbidden";
-      
       public static const MEMBERS_FOOTER_SPGFULL:String = "#platoon:members/footer/spgFull";
+      
+      public static const MEMBERS_FOOTER_WHEELEDFULL:String = "#platoon:members/footer/wheeledFull";
+      
+      public static const MEMBERS_FOOTER_MEDIUMTANKFULL:String = "#platoon:members/footer/mediumTankFull";
+      
+      public static const MEMBERS_FOOTER_HEAVYTANKFULL:String = "#platoon:members/footer/heavyTankFull";
+      
+      public static const MEMBERS_FOOTER_AT_SPG_FULL:String = "#platoon:members/footer/AT_SPG_Full";
       
       public static const MEMBERS_FOOTER_VEHICLES_DIFFERENTLEVELS:String = "#platoon:members/footer/vehicles/differentLevels";
       

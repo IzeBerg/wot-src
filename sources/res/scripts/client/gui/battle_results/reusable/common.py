@@ -1,5 +1,8 @@
 from collections import defaultdict
-import logging, typing, ArenaType
+import logging, typing
+from arena_bonus_type_caps import ARENA_BONUS_TYPE_CAPS as _CAPS
+import ArenaType
+from battle_modifiers_common import BattleModifiers
 from gui.battle_results.reusable.players import PlayerInfo
 from constants import ARENA_GUI_TYPE, ARENA_BONUS_TYPE, FINISH_REASON
 from gui.battle_control import arena_visitor
@@ -9,9 +12,10 @@ _logger = logging.getLogger(__name__)
 
 class CommonInfo(shared.UnpackedInfo):
     __slots__ = ('__arenaTypeID', '__winnerTeam', '__finishReason', '__finishAllPlayersLeft',
-                 '__arenaVisitor', '__bots', '__numDefended')
+                 '__arenaVisitor', '__bots', '__numDefended', '__bonusCapsOverrides',
+                 '__battleModifiers')
 
-    def __init__(self, arenaTypeID=0, guiType=ARENA_GUI_TYPE.UNKNOWN, bonusType=ARENA_BONUS_TYPE.UNKNOWN, winnerTeam=0, finishReason=FINISH_REASON.UNKNOWN, bots=None, finishAllPlayersLeft=False, **kwargs):
+    def __init__(self, arenaTypeID=0, guiType=ARENA_GUI_TYPE.UNKNOWN, bonusType=ARENA_BONUS_TYPE.UNKNOWN, winnerTeam=0, finishReason=FINISH_REASON.UNKNOWN, bots=None, finishAllPlayersLeft=False, bonusCapsOverrides=None, battleModifiersDescr=None, **kwargs):
         super(CommonInfo, self).__init__()
         self.__arenaTypeID = arenaTypeID
         self.__winnerTeam = winnerTeam
@@ -19,6 +23,8 @@ class CommonInfo(shared.UnpackedInfo):
         self.__bots = defaultdict()
         self.__finishAllPlayersLeft = finishAllPlayersLeft
         self.__numDefended = kwargs.get('commonNumDefended', 0)
+        self.__bonusCapsOverrides = bonusCapsOverrides
+        self.__battleModifiers = BattleModifiers(battleModifiersDescr)
         if bots is not None:
             allActiveVehicles = kwargs.get('vehicles', {})
             for info in bots.iteritems():
@@ -63,6 +69,10 @@ class CommonInfo(shared.UnpackedInfo):
         return self.__arenaVisitor.type
 
     @property
+    def battleModifiers(self):
+        return self.__battleModifiers
+
+    @property
     def winnerTeam(self):
         return self.__winnerTeam
 
@@ -84,12 +94,6 @@ class CommonInfo(shared.UnpackedInfo):
     def canTakeSquadXP(self):
         return self.__arenaVisitor.bonus.canTakeSquadXP()
 
-    def canTakeSquadCredits(self):
-        return self.__arenaVisitor.bonus.canTakeSquadCredits()
-
-    def canTakeAnySquadBonus(self):
-        return self.__arenaVisitor.bonus.canTakeAnySquadBonus()
-
     def getArenaIcon(self, iconKey):
         return self.__arenaVisitor.getArenaIcon(iconKey)
 
@@ -101,3 +105,6 @@ class CommonInfo(shared.UnpackedInfo):
 
     def getBots(self):
         return self.__bots
+
+    def checkBonusCaps(self, *bonusCaps):
+        return _CAPS.checkAny(self.arenaBonusType, specificOverrides=self.__bonusCapsOverrides, *bonusCaps)

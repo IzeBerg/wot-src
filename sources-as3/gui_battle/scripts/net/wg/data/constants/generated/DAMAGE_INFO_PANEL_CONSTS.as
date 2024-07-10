@@ -73,6 +73,8 @@ package net.wg.data.constants.generated
       
       public static const SHOW_HIT_FIRE:int = 2;
       
+      public static const INIT_SIXTH_SENSE:int = 1;
+      
       public static const SHOW_SIXTH_SENSE:int = 2;
       
       public static const HIDE_SIXTH_SENSE:int = 21;

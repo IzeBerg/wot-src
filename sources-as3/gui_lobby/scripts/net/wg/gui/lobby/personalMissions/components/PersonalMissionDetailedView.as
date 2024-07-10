@@ -72,35 +72,35 @@ package net.wg.gui.lobby.personalMissions.components
       
       private static const TABLE_HEADERS_Y_POS_SHORT:int = 60;
       
-      private static const TABLE_HEADERS_Y_POS_WIDE:int = 100;
+      private static const TABLE_HEADERS_Y_POS_WIDE:int = 66;
       
       private static const PAGE_SCROLL_SIZE:int = 5;
       
       private static const HEADERS_PROGRESS_Y_POS_SHORT:int = 104;
       
-      private static const HEADERS_PROGRESS_Y_POS_WIDE:int = 144;
+      private static const HEADERS_PROGRESS_Y_POS_WIDE:int = 110;
       
       private static const TABLE_Y_POS_SHORT:int = 171;
       
-      private static const TABLE_Y_POS_WIDE:int = 211;
+      private static const TABLE_Y_POS_WIDE:int = 177;
       
-      private static const TABLE_HEIGHT_SHORT:int = 214;
+      private static const TABLE_HEIGHT_SHORT:int = 218;
       
-      private static const TABLE_HEIGHT_WIDE:int = 224;
+      private static const TABLE_HEIGHT_WIDE:int = 258;
       
-      private static const TABLE_AWARDS_BG_Y_POS_SHORT:int = 389;
+      private static const TABLE_AWARDS_BG_Y_POS_SHORT:int = 393;
       
       private static const TABLE_AWARDS_BG_Y_POS_WIDE:int = 439;
       
-      private static const TABLE_BOTTOM_BUTTONS_Y_POS_SHORT:int = 520;
+      private static const TABLE_BOTTOM_BUTTONS_Y_POS_SHORT:int = 524;
       
       private static const TABLE_BOTTOM_BUTTONS_Y_POS_WIDE:int = 580;
       
-      private static const TABLE_BOTTOM_STATUS_Y_POS_SHORT:int = 521;
+      private static const TABLE_BOTTOM_STATUS_Y_POS_SHORT:int = 525;
       
       private static const TABLE_BOTTOM_STATUS_Y_POS_WIDE:int = 581;
       
-      private static const TABLE_BOTTOM_STATUS2_Y_POS_SHORT:int = 563;
+      private static const TABLE_BOTTOM_STATUS2_Y_POS_SHORT:int = 567;
       
       private static const TABLE_BOTTOM_STATUS2_Y_POS_WIDE:int = 623;
       
@@ -197,7 +197,7 @@ package net.wg.gui.lobby.personalMissions.components
       
       private var _containerStartYPosition:int = 171;
       
-      private var _containerHeightPosition:int = 214;
+      private var _containerHeightPosition:int = 218;
       
       private var _hasLockedItem:Boolean = false;
       

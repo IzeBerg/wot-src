@@ -111,8 +111,6 @@ package net.wg.data.constants.generated
       
       public static const BATTLE_TANK_CAROUSEL:String = "battleTankCarousel";
       
-      public static const BATTLE_TANK_CAROUSEL_FILTER_POPOVER:String = "battleTankCarouselFilterPopover";
-      
       public static const EPIC_CAROUSEL_FILTER_POPOVER:String = "epicCarouselFilterPopoverView";
       
       public static const QUEST_PROGRESS_TOP_VIEW:String = "questProgressTopView";

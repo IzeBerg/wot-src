@@ -88,18 +88,20 @@ package net.wg.gui.components.damageIndicator
          this._items[param1].setYaw(param2);
       }
       
-      public function as_showExtended(param1:int, param2:String, param3:String, param4:int, param5:String, param6:String, param7:String, param8:Boolean) : void
+      public function as_showExtended(param1:int, param2:String, param3:String, param4:int, param5:String, param6:String, param7:String, param8:Boolean, param9:uint) : void
       {
-         var _loc9_:DamageIndicatorItem = this._items[param1];
-         _loc9_.showExtended(param2,param3,param4,param5,param6,param7,param8);
-         setChildIndex(_loc9_,numChildren - 1);
+         var _loc10_:DamageIndicatorItem = this._items[param1];
+         _loc10_.showExtended(param2,param3,param4,param5,param6,param7,param8);
+         _loc10_.priority = param9;
+         this.setItemChildIndexByPriority(_loc10_);
       }
       
-      public function as_showStandard(param1:int, param2:String, param3:int) : void
+      public function as_showStandard(param1:int, param2:String, param3:int, param4:uint) : void
       {
-         var _loc4_:DamageIndicatorItem = this._items[param1];
-         _loc4_.showStandard(param2,param3);
-         setChildIndex(_loc4_,numChildren - 1);
+         var _loc5_:DamageIndicatorItem = this._items[param1];
+         _loc5_.showStandard(param2,param3);
+         _loc5_.priority = param4;
+         this.setItemChildIndexByPriority(_loc5_);
       }
       
       public function as_updateSettings(param1:Boolean, param2:Boolean, param3:Boolean, param4:Boolean) : void
@@ -197,6 +199,21 @@ package net.wg.gui.components.damageIndicator
             _loc2_.scaleX = _loc2_.scaleY = this._guiScale;
             _loc2_.setYOffset(_loc1_);
          }
+      }
+      
+      private function setItemChildIndexByPriority(param1:DamageIndicatorItem) : void
+      {
+         var _loc4_:DamageIndicatorItem = null;
+         var _loc2_:uint = param1.priority;
+         var _loc3_:uint = numChildren - 1;
+         for each(_loc4_ in this._items)
+         {
+            if(_loc4_.priority > _loc2_)
+            {
+               _loc3_--;
+            }
+         }
+         setChildIndex(param1,_loc3_);
       }
       
       public function set rotateInfo(param1:Boolean) : void

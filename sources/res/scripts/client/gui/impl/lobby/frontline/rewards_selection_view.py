@@ -1,8 +1,8 @@
 from functools import partial
 from AccountCommands import RES_SUCCESS
+from epic_constants import EPIC_OFFER_TYPES
 from frameworks.wulf import WindowFlags
 from gui import SystemMessages
-from gui.battle_pass.rewards_sort import getRewardTypesComparator, getRewardsComparator
 from gui.impl import backport
 from gui.impl.gen import R
 from gui.impl.gen.view_models.views.lobby.frontline.rewards_selection_view_model import RewardsSelectionViewModel
@@ -72,11 +72,29 @@ class RewardsSelectionView(SelectableRewardBase):
             self.destroyWindow()
             showHangar()
 
+    @staticmethod
+    def _compareRewardsByArtifactName(first, second):
+        artefacts = R.strings.artefacts
+
+        def _safeExtract(path):
+            folder = artefacts.dyn(path)
+            if folder:
+                return backport.text(folder.name())
+            return ''
+
+        return cmp(_safeExtract(first[0]), _safeExtract(second[0]))
+
+    @staticmethod
+    def _defaultComparator(first, second):
+        return cmp(first[0], second[0])
+
     def _getTypesComparator(self):
-        return getRewardTypesComparator()
+        return self._defaultComparator
 
     def _getItemsComparator(self, tabName):
-        return getRewardsComparator(tabName)
+        if tabName in EPIC_OFFER_TYPES:
+            return self._compareRewardsByArtifactName
+        return self._defaultComparator
 
     def _processReceivedRewards(self, result):
         if result.success and result.auxData:
@@ -85,7 +103,7 @@ class RewardsSelectionView(SelectableRewardBase):
                 rewardsGenerator = ({group: rewards} for group, rewards in successRewards.iteritems())
                 self.__safeCall(self.__onRewardsReceivedCallback, rewardsGenerator)
         else:
-            SystemMessages.pushI18nMessage(backport.text(R.strings.system_messages.battlePass.rewardChoice.error()), type=SystemMessages.SM_TYPE.Error)
+            SystemMessages.pushI18nMessage(backport.text(R.strings.system_messages.epicBattles.rewardChoice.error()), type=SystemMessages.SM_TYPE.Error)
         if self.__isAutoDestroyWindowsOnReceivedRewards:
             self.destroyWindow()
 

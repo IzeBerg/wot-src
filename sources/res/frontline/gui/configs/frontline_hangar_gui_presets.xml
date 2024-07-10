@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<presets>
+		<preset>
+			<name>frontline</name>
+			<basePreset>random</basePreset>
+			<components>
+				<component>
+					<name>alertMessage</name>
+					<visible>True</visible>
+				</component>
+				<component>
+					<name>ammunitionInject</name>
+					<visible>True</visible>
+					<isChangeable>True</isChangeable>
+					<type>FrontlineAmmunitionPanelView</type>
+				</component>
+				<component>
+					<name>carousel</name>
+					<visible>True</visible>
+					<type>epicBattleTankCarousel</type>
+					<layout>TankCarouselUI</layout>
+				</component>
+				<component>
+					<name>header</name>
+					<visible>True</visible>
+				</component>
+				<component>
+					<name>headerWidget</name>
+					<visible>True</visible>
+					<type>epicWdgt</type>
+				</component>
+			</components>
+		</preset>
+	</presets>
+	<queueTypePresets>
+		<item>
+			<queueType>19</queueType>
+			<presetName>frontline</presetName>
+		</item>
+	</queueTypePresets>
+</root>

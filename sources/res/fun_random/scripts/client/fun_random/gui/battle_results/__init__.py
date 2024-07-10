@@ -1,1 +1,4 @@
-pass
+from constants import ARENA_BONUS_TYPE
+from account_helpers.AccountSettings import STATS_FUN_RANDOM_SORTING
+from gui.shared.system_factory import registerBattleResultsStatsSorting
+registerBattleResultsStatsSorting(ARENA_BONUS_TYPE.FUN_RANDOM, STATS_FUN_RANDOM_SORTING)

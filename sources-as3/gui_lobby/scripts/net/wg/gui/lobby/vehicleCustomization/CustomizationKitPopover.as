@@ -79,8 +79,9 @@ package net.wg.gui.lobby.vehicleCustomization
       
       override protected function configUI() : void
       {
+         var _loc1_:Sprite = null;
          super.configUI();
-         var _loc1_:Sprite = new Sprite();
+         _loc1_ = new Sprite();
          this.topShadow.hitArea = _loc1_;
          this.bottomShadow.hitArea = _loc1_;
          addChild(_loc1_);

@@ -45,12 +45,12 @@ package net.wg.gui.battle.views.vehicleMarkers
             "enemy":new VehicleMarkerSettings(),
             "dead":new VehicleMarkerSettings()
          };
+         this._atlasManager = RootSWFAtlasManager.instance;
+         this._markersCallback = [];
          super();
          sInstance = this;
-         this._atlasManager = RootSWFAtlasManager.instance;
          this._atlasManager.addEventListener(AtlasEvent.ATLAS_INITIALIZED,this.onAtlasManagerAtlasInitializedHandler);
          this._atlasManager.initAtlas(ATLAS_CONSTANTS.VEHICLE_MARKER_ATLAS);
-         this._markersCallback = [];
       }
       
       public static function getInstance() : VehicleMarkersManager

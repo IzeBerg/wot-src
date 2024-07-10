@@ -1,4 +1,5 @@
 ROYALE_POSTBATTLE_REWARDS_COUNT = 8
+BR_AMMO_PANEL_TYPE = 'BattleRoyaleAmmunitionPanelView'
 
 class BattleRoyaleEquipments(object):
     LARGE_REPAIRKIT = 'large_repairkit_battle_royale'

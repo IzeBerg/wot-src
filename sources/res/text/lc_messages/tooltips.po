@@ -493,11 +493,23 @@ msgstr ""
 "The penetration power of Armor-Piercing Composite Rigid shells decreases "
 "with distance traveled."
 
+msgid "advanced/ARMOR_PIERCING_CR_NOT_PIERCING_DAMAGE"
+msgstr ""
+"In addition to the basic advantages and disadvantages of its type, this "
+"shell has a higher chance of causing damage even without penetrating enemy "
+"armor."
+
 msgid "advanced/ARMOR_PIERCING_CR_TRAY"
 msgstr ""
 "Star tray shells have both advantages and drawbacks, but the damage they "
 "cause depends on the distance to the target. These shells cause maximum "
 "damage to targets at distances up to 50 meters."
+
+msgid "advanced/ARMOR_PIERCING_NOT_PIERCING_DAMAGE"
+msgstr ""
+"In addition to the basic advantages and disadvantages of its type, this "
+"shell has a higher chance of causing damage even without penetrating enemy "
+"armor."
 
 msgid "advanced/ARMOR_PIERCING_TRAY"
 msgstr ""
@@ -955,7 +967,7 @@ msgid "awardItem/battleToken/description"
 msgstr "Unlocks several missions."
 
 msgid "awardItem/battleToken/one/body"
-msgstr "Unlocks the \"%(name)s\" mission."
+msgstr "Unlocks the %(name)s mission."
 
 msgid "awardItem/battleToken/one/header"
 msgstr "Mission Available"
@@ -967,7 +979,7 @@ msgid "awardItem/battleToken/several/header"
 msgstr "Missions Available"
 
 msgid "awardItem/battleToken/several/line"
-msgstr "%(num)s. \"%(name)s\"."
+msgstr "%(num)s. %(name)s."
 
 msgid "awardItem/battle_bonuses/body"
 msgstr ""
@@ -2194,6 +2206,10 @@ msgstr ""
 msgid "battle_royale/hangar/perf/medium_risk/header"
 msgstr "Possible Reduced Performance"
 
+msgid "battle_royale/hangar/tankSetupPanel/ability/cooldownTime"
+msgstr ""
+"{whiteSpanish_Open}%(cooldown)s{whiteSpanish_Close}s Cooldown time (s)"
+
 msgid "battle_royale/hangar/vehicle/description/china"
 msgstr ""
 "The Chinese boast a fine-tuned ring of agents that helps them adopt the "
@@ -2919,7 +2935,7 @@ msgstr ""
 msgid "commanderBonus/description"
 msgstr ""
 "Each other crew member receives "
-"+{greenBright_Start}%(commBonus)s%%{greenBright_End} to their crew "
+"{greenBright_Start}+%(commBonus)s%%{greenBright_End} to their crew "
 "efficiency bonus."
 
 msgid "commanderBonus/name"
@@ -5619,10 +5635,10 @@ msgstr ""
 msgid "hangar/status/toRent"
 msgstr "Extend the rental period"
 
-msgid "hangar/tankCarusel/wrongSquadSPGVehicle/body"
+msgid "hangar/tankCarusel/wrongSquadTypeVehicle/body"
 msgstr "Select other vehicle type to confirm your readiness"
 
-msgid "hangar/tankCarusel/wrongSquadSPGVehicle/header"
+msgid "hangar/tankCarusel/wrongSquadTypeVehicle/header"
 msgstr "Unavailable"
 
 msgid "hangar/tankCarusel/wrongSquadVehicle/body"
@@ -7592,7 +7608,7 @@ msgstr "An Elite Recruit"
 msgid "notrecruitedtankman/commander_tolmeron/desc"
 msgstr ""
 "A Primaris Space Marine, Lieutenant Tolmeron is not as venerable as some "
-"veterans of his famed Сhapter, but he already has their respect. He is "
+"veterans of his famed Chapter, but he already has their respect. He is "
 "considered to be a bellicose exemplar of justice with unwavering loyalty to "
 "his battle brothers. The humility with which he accepts promotions and "
 "decorations—and, most of all, the ease with which he earns them—is notable. "
@@ -10396,6 +10412,9 @@ msgstr "And %(count)s more"
 msgid "quests/awards/additional/header"
 msgstr "Rewards:"
 
+msgid "quests/awards/nearest/header"
+msgstr "Next Rewards:"
+
 msgid "quests/awards/vehicleRent/bottom"
 msgstr "And %(count)s more"
 
@@ -11711,31 +11730,25 @@ msgstr ""
 "When playing in a Platoon, you can receive additional credits and "
 "experience."
 
+msgid "squadBonus/comp7/noExpDescription"
+msgstr "You can receive additional credits by playing in a Platoon."
+
 msgid "squadBonus/complex/body"
 msgstr ""
-"Receive an additional %(bonus)s to Combat XP after each battle when playing in a Platoon with other players.\n"
+"Receive an additional {brown_Open}%(value)s{brown_Close} to Combat XP after each battle when playing in a Platoon with other players.\n"
 "\n"
 "This bonus is only available for Permanent Tactical Units and is not available for Dynamic Platoons."
-
-msgid "squadBonus/complex/bonusPercent"
-msgstr "%(value)s%%"
-
-msgid "squadBonus/complex/comp7/body"
-msgstr ""
-"You will receive additional credits and experience when playing in a "
-"Platoon."
-
-msgid "squadBonus/complex/comp7/header"
-msgstr "Bonuses for Platoon Play"
 
 msgid "squadBonus/complex/header"
 msgstr "Bonus for Platoon Playing"
 
 msgid "squadBonus/credits/bonusWithPremium"
-msgstr "+{value}, if you have WoT Premium Account."
+msgstr "{brown_Open}+%(value)s{brown_Close}, if you have WoT Premium Account."
 
 msgid "squadBonus/credits/bonusWithoutPremium"
-msgstr "+{value}, if your Platoon member has WoT Premium Account."
+msgstr ""
+"{brown_Open}+%(value)s{brown_Close}, if your Platoon member has WoT Premium "
+"Account."
 
 msgid "squadBonus/credits/header"
 msgstr "Additional Credits"
@@ -11745,13 +11758,18 @@ msgstr ""
 "You can receive additional credits and experience by playing in a Platoon. "
 "The bonus is unavailable for Dynamic Platoons."
 
-msgid "squadBonus/experience/bonus"
+msgid "squadBonus/experience/body"
 msgstr ""
-"+{value} for playing in a Platoon, regardless of vehicle Tier, battle "
-"results, or Premium Account."
+"{brown_Open}+%(value)s{brown_Close} for playing in a Platoon, regardless of "
+"vehicle Tier, battle results, or Premium Account."
 
 msgid "squadBonus/experience/header"
 msgstr "Additional Experience"
+
+msgid "squadBonus/noExpDescription"
+msgstr ""
+"You can receive additional credits by playing in a Platoon. The bonus is "
+"unavailable for Dynamic Platoons."
 
 msgid "squadBonus/title"
 msgstr "Bonuses for Platoon Playing"
@@ -12029,6 +12047,11 @@ msgstr ""
 "The improved autoreloading system reduces the standard time for "
 "autoreloading shells."
 
+msgid "tank_params/desc/autoShootClipFireRate"
+msgstr ""
+"Time between firing the last shell in the magazine (or both guns) and "
+"loading the new magazine. / Number of guns or shells in the magazine."
+
 msgid "tank_params/desc/avgDamage"
 msgstr ""
 "Average damage caused by a standard shell after an armor-penetrating hit. "
@@ -12038,6 +12061,11 @@ msgid "tank_params/desc/avgDamagePerMinute"
 msgstr ""
 "Amount of damage potentially caused to an enemy vehicle in 1 minute if all "
 "hits penetrate the armor."
+
+msgid "tank_params/desc/avgDamagePerSecond"
+msgstr ""
+"Amount of damage potentially caused to an enemy vehicle in 1 second when "
+"firing continuously if all hits penetrate the armor."
 
 msgid "tank_params/desc/avgPiercingPower"
 msgstr ""
@@ -12078,6 +12106,9 @@ msgstr ""
 "loading the new magazine. / Time between firing a shell and loading the next"
 " shell in the magazine, gun, or container. / Number of guns or shells in the"
 " magazine."
+
+msgid "tank_params/desc/continuousShotsPerMinute"
+msgstr "Number of rounds per minute not including reload time."
 
 msgid "tank_params/desc/damage"
 msgstr "Damage caused by a standard shell upon penetrating enemy armor."
@@ -12799,9 +12830,6 @@ msgstr "Crew (%d%%)"
 msgid "vehicle/dailyXPFactor"
 msgstr "Experience for the first victory each day"
 
-msgid "vehicle/damage"
-msgstr "<h1>Damage</h1> <h2>(hp)</h2>"
-
 msgid "vehicle/deal/epic/main"
 msgstr "A vehicle for the Frontline mode"
 
@@ -12879,9 +12907,6 @@ msgstr "Rental From"
 msgid "vehicle/multiplied_xp"
 msgstr "Combat Experience"
 
-msgid "vehicle/radioDistance"
-msgstr "<h1>Signal Range</h1> <h2>(km)</h2>"
-
 msgid "vehicle/rankedBonusBattle"
 msgstr "Bonus Battle available"
 
@@ -12939,9 +12964,6 @@ msgstr "Recovery"
 msgid "vehicle/sell_price"
 msgstr "Sale"
 
-msgid "vehicle/speedLimits"
-msgstr "<h1>Top Speed</h1> <h2>(km/h)</h2>"
-
 msgid "vehicle/telecomRental/remainingTime/days"
 msgstr "Rented for: %(time)s days left"
 
@@ -12956,9 +12978,6 @@ msgstr "or"
 
 msgid "vehicle/trade"
 msgstr "This vehicle is eligible for trade-in"
-
-msgid "vehicle/turretRotationSpeed"
-msgstr "<h1>Gun Traverse Speed</h1> <h2>(deg/s)</h2>"
 
 msgid "vehicle/unlock_price"
 msgstr "Research"

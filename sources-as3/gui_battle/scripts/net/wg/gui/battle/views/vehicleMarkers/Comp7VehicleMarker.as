@@ -79,7 +79,7 @@ package net.wg.gui.battle.views.vehicleMarkers
       override protected function configUI() : void
       {
          super.configUI();
-         hitLabel.addEventListener(HealthBarAnimatedPart.HIDE,this.onHitLabelHideHandler);
+         otherHitLabel.addEventListener(HealthBarAnimatedPart.HIDE,this.onHitLabelHideHandler);
          marker.vehicleTypeIcon.addChild(this.roleIcon);
          this.roleIcon.visible = false;
          this.roleSkillLevel.visible = false;
@@ -104,7 +104,7 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       override protected function onDispose() : void
       {
-         hitLabel.removeEventListener(HealthBarAnimatedPart.HIDE,this.onHitLabelHideHandler);
+         otherHitLabel.removeEventListener(HealthBarAnimatedPart.HIDE,this.onHitLabelHideHandler);
          this.roleIcon = null;
          this.roleSkillLevel = null;
          super.onDispose();
@@ -144,11 +144,11 @@ package net.wg.gui.battle.views.vehicleMarkers
          return _loc1_;
       }
       
-      override protected function prepareCrossOffsets() : Array
+      override protected function prepareCrossOffsets() : Vector.<CrossOffset>
       {
-         var _loc1_:Array = null;
+         var _loc1_:Vector.<CrossOffset> = null;
          _loc1_ = super.prepareCrossOffsets();
-         _loc1_.unshift(null);
+         _loc1_.unshift(new CrossOffset());
          var _loc2_:CrossOffset = _loc1_[HP_LABEL_IDX] as CrossOffset;
          if(_loc2_)
          {
@@ -186,24 +186,33 @@ package net.wg.gui.battle.views.vehicleMarkers
          return super.getStartY() + (!!this.getRoleSkillVisible() ? ROLE_SKILL_TO_MARKER_OFFSET_Y : 0);
       }
       
-      override protected function showHitLabelAnim(param1:int, param2:String) : void
+      override protected function showHitLabelAnim(param1:int, param2:String, param3:Boolean) : void
       {
          if(!this._isRoleSkillDamage)
          {
-            this._isRoleSkillDamage = damageType == VehicleMarkerFlags.DAMAGE_NONE;
+            this._isRoleSkillDamage = !param3 && damageType == VehicleMarkerFlags.DAMAGE_NONE;
          }
-         var _loc3_:Boolean = this._isRoleSkillDamage && damageType != VehicleMarkerFlags.DAMAGE_NONE;
-         if(this._isRoleSkillDamage && _loc3_)
+         var _loc4_:Boolean = this._isRoleSkillDamage && !param3 && damageType != VehicleMarkerFlags.DAMAGE_NONE;
+         if(_loc4_)
          {
             this._prevDamageValue += param1;
             param1 = this._prevDamageValue;
          }
-         else
+         else if(!param3)
          {
             this._prevDamageValue = 0;
          }
-         hitLabel.damage(param1,param2,_loc3_);
-         hitLabel.playShowTween();
+         if(param3)
+         {
+            playerHitLabel.damage(param1,param2);
+            playerHitLabel.playShowTween();
+         }
+         else
+         {
+            otherHitLabel.damage(param1,param2,_loc4_);
+            otherHitLabel.playShowTween();
+         }
+         otherHitLabel.y = !!playerHitLabel.isActive() ? Number(OTHER_HIT_LABEL_Y) : Number(playerHitLabel.y);
       }
       
       public function setIsPlayerLoaded(param1:Boolean) : void

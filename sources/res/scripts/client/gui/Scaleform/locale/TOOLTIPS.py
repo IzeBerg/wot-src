@@ -639,8 +639,8 @@ class TOOLTIPS(object):
     HANGAR_STARTBTN_BATTLEROYALE_WOTPLUSEXCLUSIVEUNAVAILABLE_BODY = '#tooltips:hangar/startBtn/battleRoyale/wotPlusExclusiveUnavailable/body'
     HANGAR_TANKCARUSEL_WRONGSQUADVEHICLE_HEADER = '#tooltips:hangar/tankCarusel/wrongSquadVehicle/header'
     HANGAR_TANKCARUSEL_WRONGSQUADVEHICLE_BODY = '#tooltips:hangar/tankCarusel/wrongSquadVehicle/body'
-    HANGAR_TANKCARUSEL_WRONGSQUADSPGVEHICLE_HEADER = '#tooltips:hangar/tankCarusel/wrongSquadSPGVehicle/header'
-    HANGAR_TANKCARUSEL_WRONGSQUADSPGVEHICLE_BODY = '#tooltips:hangar/tankCarusel/wrongSquadSPGVehicle/body'
+    HANGAR_TANKCARUSEL_WRONGSQUADTYPEVEHICLE_HEADER = '#tooltips:hangar/tankCarusel/wrongSquadTypeVehicle/header'
+    HANGAR_TANKCARUSEL_WRONGSQUADTYPEVEHICLE_BODY = '#tooltips:hangar/tankCarusel/wrongSquadTypeVehicle/body'
     ACHIEVEMENT_HISTORYDESCRIPTIONHEADER = '#tooltips:achievement/historyDescriptionHeader'
     ACHIEVEMENT_CURRENTDEGREE = '#tooltips:achievement/currentDegree'
     ACHIEVEMENT_MARKSONGUNCOUNT = '#tooltips:achievement/marksOnGunCount'
@@ -1121,10 +1121,6 @@ class TOOLTIPS(object):
     VEHICLE_FAVORITE = '#tooltips:vehicle/favorite'
     VEHICLE_DAILYXPFACTOR = '#tooltips:vehicle/dailyXPFactor'
     VEHICLE_RANKEDBONUSBATTLE = '#tooltips:vehicle/rankedBonusBattle'
-    VEHICLE_SPEEDLIMITS = '#tooltips:vehicle/speedLimits'
-    VEHICLE_DAMAGE = '#tooltips:vehicle/damage'
-    VEHICLE_TURRETROTATIONSPEED = '#tooltips:vehicle/turretRotationSpeed'
-    VEHICLE_RADIODISTANCE = '#tooltips:vehicle/radioDistance'
     VEHICLE_TEXTDELIMITER_OR = '#tooltips:vehicle/textDelimiter/or'
     VEHICLE_RENTLEFT_DAYS = '#tooltips:vehicle/rentLeft/days'
     VEHICLE_RENTLEFT_HOURS = '#tooltips:vehicle/rentLeft/hours'
@@ -2097,6 +2093,7 @@ class TOOLTIPS(object):
     TANK_PARAMS_DESC_HULLARMOR = '#tooltips:tank_params/desc/hullArmor'
     TANK_PARAMS_DESC_TURRETARMOR = '#tooltips:tank_params/desc/turretArmor'
     TANK_PARAMS_DESC_RELOADTIME = '#tooltips:tank_params/desc/reloadTime'
+    TANK_PARAMS_DESC_CONTINUOUSSHOTSPERMINUTE = '#tooltips:tank_params/desc/continuousShotsPerMinute'
     TANK_PARAMS_DESC_AUTORELOADTIME = '#tooltips:tank_params/desc/autoReloadTime'
     TANK_PARAMS_DESC_AUTORELOADTIME_BOOST = '#tooltips:tank_params/desc/autoReloadTime/boost'
     TANK_PARAMS_DESC_AUTORELOADTIME_BOOST_DESCRIPTION = '#tooltips:tank_params/desc/autoReloadTime/boost/description'
@@ -2106,6 +2103,7 @@ class TOOLTIPS(object):
     TANK_PARAMS_DESC_AVGPIERCINGPOWER = '#tooltips:tank_params/desc/avgPiercingPower'
     TANK_PARAMS_DESC_DAMAGE = '#tooltips:tank_params/desc/damage'
     TANK_PARAMS_DESC_AVGDAMAGE = '#tooltips:tank_params/desc/avgDamage'
+    TANK_PARAMS_DESC_AVGDAMAGEPERSECOND = '#tooltips:tank_params/desc/avgDamagePerSecond'
     TANK_PARAMS_DESC_CHASSISREPAIRTIME = '#tooltips:tank_params/desc/chassisRepairTime'
     TANK_PARAMS_DESC_CHASSISREPAIRTIMEYOH = '#tooltips:tank_params/desc/chassisRepairTimeYoh'
     TANK_PARAMS_AVGPARAMCOMMENT_DAMAGE = '#tooltips:tank_params/avgParamComment/damage'
@@ -2122,6 +2120,7 @@ class TOOLTIPS(object):
     TANK_PARAMS_DESC_PITCHLIMITS = '#tooltips:tank_params/desc/pitchLimits'
     TANK_PARAMS_DESC_GUNYAWLIMITS = '#tooltips:tank_params/desc/gunYawLimits'
     TANK_PARAMS_DESC_CLIPFIRERATE = '#tooltips:tank_params/desc/clipFireRate'
+    TANK_PARAMS_DESC_AUTOSHOOTCLIPFIRERATE = '#tooltips:tank_params/desc/autoShootClipFireRate'
     TANK_PARAMS_DESC_BURSTFIRERATE = '#tooltips:tank_params/desc/burstFireRate'
     TANK_PARAMS_DESC_TURBOSHAFTBURSTFIRERATE = '#tooltips:tank_params/desc/turboshaftBurstFireRate'
     TANK_PARAMS_DESC_RELATIVEPOWER = '#tooltips:tank_params/desc/relativePower'
@@ -2418,6 +2417,7 @@ class TOOLTIPS(object):
     HANGAR_HEADER_WGMONEYTOOLTIP_EARNEDVALUE = '#tooltips:hangar/header/wgmoneyTooltip/earnedValue'
     HANGAR_HEADER_WGMONEYTOOLTIP_TOTALVALUE = '#tooltips:hangar/header/wgmoneyTooltip/totalValue'
     QUESTS_AWARDS_ADDITIONAL_HEADER = '#tooltips:quests/awards/additional/header'
+    QUESTS_AWARDS_NEAREST_HEADER = '#tooltips:quests/awards/nearest/header'
     QUESTS_AWARDS_ADDITIONAL_BOTTOM = '#tooltips:quests/awards/additional/bottom'
     QUESTS_VEHICLES_HEADER = '#tooltips:quests/vehicles/header'
     QUESTS_VEHICLES_DESCRIPTION = '#tooltips:quests/vehicles/description'
@@ -2429,6 +2429,8 @@ class TOOLTIPS(object):
     ADVANCED_HIGH_EXPLOSIVE_MODERN = '#tooltips:advanced/HIGH_EXPLOSIVE_MODERN'
     ADVANCED_ARMOR_PIERCING = '#tooltips:advanced/ARMOR_PIERCING'
     ADVANCED_ARMOR_PIERCING_CR = '#tooltips:advanced/ARMOR_PIERCING_CR'
+    ADVANCED_ARMOR_PIERCING_NOT_PIERCING_DAMAGE = '#tooltips:advanced/ARMOR_PIERCING_NOT_PIERCING_DAMAGE'
+    ADVANCED_ARMOR_PIERCING_CR_NOT_PIERCING_DAMAGE = '#tooltips:advanced/ARMOR_PIERCING_CR_NOT_PIERCING_DAMAGE'
     ADVANCED_ARMOR_PIERCING_TRAY = '#tooltips:advanced/ARMOR_PIERCING_TRAY'
     ADVANCED_ARMOR_PIERCING_CR_TRAY = '#tooltips:advanced/ARMOR_PIERCING_CR_TRAY'
     ADVANCED_LARGEREPAIRKIT = '#tooltips:advanced/largeRepairkit'
@@ -3166,17 +3168,16 @@ class TOOLTIPS(object):
     FRONTLINERANK_EXPBONUS = '#tooltips:frontlineRank/expBonus'
     SQUADBONUS_TITLE = '#tooltips:squadBonus/title'
     SQUADBONUS_DESCRIPTION = '#tooltips:squadBonus/description'
+    SQUADBONUS_NOEXPDESCRIPTION = '#tooltips:squadBonus/noExpDescription'
     SQUADBONUS_COMP7_DESCRIPTION = '#tooltips:squadBonus/comp7/description'
+    SQUADBONUS_COMP7_NOEXPDESCRIPTION = '#tooltips:squadBonus/comp7/noExpDescription'
     SQUADBONUS_CREDITS_HEADER = '#tooltips:squadBonus/credits/header'
     SQUADBONUS_CREDITS_BONUSWITHPREMIUM = '#tooltips:squadBonus/credits/bonusWithPremium'
     SQUADBONUS_CREDITS_BONUSWITHOUTPREMIUM = '#tooltips:squadBonus/credits/bonusWithoutPremium'
     SQUADBONUS_EXPERIENCE_HEADER = '#tooltips:squadBonus/experience/header'
-    SQUADBONUS_EXPERIENCE_BONUS = '#tooltips:squadBonus/experience/bonus'
+    SQUADBONUS_EXPERIENCE_BODY = '#tooltips:squadBonus/experience/body'
     SQUADBONUS_COMPLEX_HEADER = '#tooltips:squadBonus/complex/header'
     SQUADBONUS_COMPLEX_BODY = '#tooltips:squadBonus/complex/body'
-    SQUADBONUS_COMPLEX_COMP7_HEADER = '#tooltips:squadBonus/complex/comp7/header'
-    SQUADBONUS_COMPLEX_COMP7_BODY = '#tooltips:squadBonus/complex/comp7/body'
-    SQUADBONUS_COMPLEX_BONUSPERCENT = '#tooltips:squadBonus/complex/bonusPercent'
     PREM_DASHBOARD_HEADER_BADGESLOT = '#tooltips:prem/dashboard/header/badgeSlot'
     PREM_PIGGYBANK_GHOSTBTN_BODY = '#tooltips:prem/piggyBank/ghostBtn/body'
     CREWBOOKS_STORAGE_FILTERS_BROCHURE_TITLE = '#tooltips:crewBooks/storage/filters/brochure/title'
@@ -3253,6 +3254,7 @@ class TOOLTIPS(object):
     BATTLE_ROYALE_HANGAR_MAINBTN_PERF_HEADER = '#tooltips:battle_royale/hangar/mainBtn/perf/header'
     BATTLE_ROYALE_HANGAR_MAINBTN_PERF_EVENTDESCRIPTION = '#tooltips:battle_royale/hangar/mainBtn/perf/eventDescription'
     BATTLE_ROYALE_HANGAR_MAINBTN_PERF_PROBLEMDESCRIPTION = '#tooltips:battle_royale/hangar/mainBtn/perf/problemDescription'
+    BATTLE_ROYALE_HANGAR_TANKSETUPPANEL_ABILITY_COOLDOWNTIME = '#tooltips:battle_royale/hangar/tankSetupPanel/ability/cooldownTime'
     BATTLE_ROYALE_PROGRESSPAGE_EVENTNAME = '#tooltips:battle_royale/progressPage/eventName'
     BATTLE_ROYALE_PROGRESSPAGE_STATS_TOP1COUNT_HEADER = '#tooltips:battle_royale/progressPage/stats/top1Count/header'
     BATTLE_ROYALE_PROGRESSPAGE_STATS_TOP1COUNT_BODY = '#tooltips:battle_royale/progressPage/stats/top1Count/body'
@@ -3924,6 +3926,7 @@ class TOOLTIPS(object):
      TANK_PARAMS_DESC_HULLARMOR,
      TANK_PARAMS_DESC_TURRETARMOR,
      TANK_PARAMS_DESC_RELOADTIME,
+     TANK_PARAMS_DESC_CONTINUOUSSHOTSPERMINUTE,
      TANK_PARAMS_DESC_AUTORELOADTIME,
      TANK_PARAMS_DESC_AUTORELOADTIME_BOOST,
      TANK_PARAMS_DESC_AUTORELOADTIME_BOOST_DESCRIPTION,
@@ -3933,6 +3936,7 @@ class TOOLTIPS(object):
      TANK_PARAMS_DESC_AVGPIERCINGPOWER,
      TANK_PARAMS_DESC_DAMAGE,
      TANK_PARAMS_DESC_AVGDAMAGE,
+     TANK_PARAMS_DESC_AVGDAMAGEPERSECOND,
      TANK_PARAMS_DESC_CHASSISREPAIRTIME,
      TANK_PARAMS_DESC_CHASSISREPAIRTIMEYOH,
      TANK_PARAMS_DESC_AVGDAMAGEPERMINUTE,
@@ -3943,6 +3947,7 @@ class TOOLTIPS(object):
      TANK_PARAMS_DESC_PITCHLIMITS,
      TANK_PARAMS_DESC_GUNYAWLIMITS,
      TANK_PARAMS_DESC_CLIPFIRERATE,
+     TANK_PARAMS_DESC_AUTOSHOOTCLIPFIRERATE,
      TANK_PARAMS_DESC_BURSTFIRERATE,
      TANK_PARAMS_DESC_TURBOSHAFTBURSTFIRERATE,
      TANK_PARAMS_DESC_RELATIVEPOWER,
@@ -4302,6 +4307,8 @@ class TOOLTIPS(object):
      ADVANCED_HIGH_EXPLOSIVE_MODERN,
      ADVANCED_ARMOR_PIERCING,
      ADVANCED_ARMOR_PIERCING_CR,
+     ADVANCED_ARMOR_PIERCING_NOT_PIERCING_DAMAGE,
+     ADVANCED_ARMOR_PIERCING_CR_NOT_PIERCING_DAMAGE,
      ADVANCED_ARMOR_PIERCING_TRAY,
      ADVANCED_ARMOR_PIERCING_CR_TRAY,
      ADVANCED_LARGEREPAIRKIT,

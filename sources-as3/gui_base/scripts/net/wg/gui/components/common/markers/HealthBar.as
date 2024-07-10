@@ -7,9 +7,9 @@ package net.wg.gui.components.common.markers
    public class HealthBar extends UIComponentEx
    {
       
-      private static const ORIGINAL_SPLASH_WIDTH:Number = 26;
+      private static const ORIGINAL_SPLASH_WIDTH:int = 26;
       
-      private static const HEALTH_BAR_WIDTH:Number = 70;
+      private static const HEALTH_BAR_WIDTH:int = 70;
       
       private static const INVALIDATE_COLOR:String = "invalidateColor";
       
@@ -33,6 +33,60 @@ package net.wg.gui.components.common.markers
       public function HealthBar()
       {
          super();
+      }
+      
+      override protected function configUI() : void
+      {
+         this.hitSplash.addEventListener(HealthBarAnimatedPart.SHOW,this.onHitSplashShowHandler);
+         this.hitSplash.addEventListener(HealthBarAnimatedPart.HIDE,this.onHitSplashHideHandler);
+      }
+      
+      override protected function draw() : void
+      {
+         var _loc1_:Number = NaN;
+         var _loc2_:Number = NaN;
+         super.draw();
+         if(isInvalid(INVALIDATE_COLOR))
+         {
+            gotoAndStop(this._color);
+         }
+         if(!isNaN(this.maxHealth) && !isNaN(this.curHealth) && isInvalid(INVALIDATE_BAR))
+         {
+            _loc1_ = this.curHealth / this.maxHealth;
+            _loc2_ = Math.ceil(_loc1_ * (this.healthBar.totalFrames - 1)) + 1;
+            this.healthBar.gotoAndStop(_loc2_);
+         }
+      }
+      
+      public function updateHealth(param1:Number, param2:String) : void
+      {
+         if(this.maxHealth == 0)
+         {
+            return;
+         }
+         this.hitSplash.setAnimationType(param2);
+         if(!this.isSplashRunning)
+         {
+            this.beforeLastHit = this.curHealth;
+         }
+         this.curHealth = param1;
+         this._isSplashRunning = true;
+         this.hitSplash.x = this.getXForHealth(this.curHealth,true);
+         var _loc3_:int = this.getXForHealth(this.beforeLastHit,false) - this.hitSplash.x;
+         this.hitSplash.scaleX = _loc3_ / ORIGINAL_SPLASH_WIDTH;
+         this.hitSplash.playShowTween();
+      }
+      
+      private function getXForHealth(param1:Number, param2:Boolean) : Number
+      {
+         var _loc4_:Number = NaN;
+         var _loc3_:Number = 0;
+         if(!isNaN(this.maxHealth) && this.maxHealth != 0)
+         {
+            _loc4_ = HEALTH_BAR_WIDTH * (param1 / this.maxHealth);
+            _loc3_ = !!param2 ? Number(Math.floor(_loc4_)) : Number(Math.round(_loc4_));
+         }
+         return _loc3_ > 0 ? Number(_loc3_) : Number(0);
       }
       
       public function get color() : String
@@ -78,71 +132,14 @@ package net.wg.gui.components.common.markers
          return this._isSplashRunning;
       }
       
-      public function updateHealth(param1:Number, param2:String) : void
-      {
-         if(this.maxHealth == 0)
-         {
-            return;
-         }
-         this.hitSplash.setAnimationType(param2);
-         if(!this.isSplashRunning)
-         {
-            this.beforeLastHit = this.curHealth;
-         }
-         this.curHealth = param1;
-         this._isSplashRunning = true;
-         this.hitSplash.x = this.getXforHealth(this.curHealth,true);
-         var _loc3_:Number = this.getXforHealth(this.beforeLastHit,false) - this.hitSplash.x;
-         this.hitSplash.scaleX = _loc3_ / ORIGINAL_SPLASH_WIDTH;
-         this.hitSplash.playShowTween();
-      }
-      
-      override protected function configUI() : void
-      {
-         this.hitSplash.addEventListener(HealthBarAnimatedPart.SHOW,this.onSplashVisible);
-         this.hitSplash.addEventListener(HealthBarAnimatedPart.HIDE,this.onSplashHidden);
-      }
-      
-      override protected function draw() : void
-      {
-         var _loc1_:Number = NaN;
-         var _loc2_:Number = NaN;
-         super.draw();
-         if(isInvalid(INVALIDATE_COLOR))
-         {
-            gotoAndStop(this._color);
-         }
-         if(isInvalid(INVALIDATE_BAR))
-         {
-            if(!isNaN(this.maxHealth) && !isNaN(this.curHealth))
-            {
-               _loc1_ = this.curHealth / this.maxHealth;
-               _loc2_ = Math.ceil(_loc1_ * (this.healthBar.totalFrames - 1)) + 1;
-               this.healthBar.gotoAndStop(_loc2_);
-            }
-         }
-      }
-      
-      private function onSplashVisible(param1:Event) : void
+      private function onHitSplashShowHandler(param1:Event) : void
       {
          invalidate(INVALIDATE_BAR);
       }
       
-      private function onSplashHidden(param1:Event) : void
+      private function onHitSplashHideHandler(param1:Event) : void
       {
          this._isSplashRunning = false;
-      }
-      
-      private function getXforHealth(param1:Number, param2:Boolean) : Number
-      {
-         var _loc4_:Number = NaN;
-         var _loc3_:Number = 0;
-         if(!isNaN(this.maxHealth) && this.maxHealth != 0)
-         {
-            _loc4_ = HEALTH_BAR_WIDTH * (param1 / this.maxHealth);
-            _loc3_ = !!param2 ? Number(Math.floor(_loc4_)) : Number(Math.round(_loc4_));
-         }
-         return _loc3_ > 0 ? Number(_loc3_) : Number(0);
       }
    }
 }

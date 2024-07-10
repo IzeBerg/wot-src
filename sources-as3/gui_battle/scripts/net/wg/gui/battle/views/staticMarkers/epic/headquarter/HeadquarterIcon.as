@@ -12,8 +12,6 @@ package net.wg.gui.battle.views.staticMarkers.epic.headquarter
       
       private static const LABEL_DEAD:String = "death";
       
-      private static const LABEL_HIT:String = "hit";
-      
       private static const LABEL_HIT_PIERCED:String = "hit_pierced";
       
       private static const ALLY:String = "ally";
@@ -39,18 +37,41 @@ package net.wg.gui.battle.views.staticMarkers.epic.headquarter
       
       private var _isPlayerTeam:Boolean = false;
       
-      private var _vmManager:VehicleMarkersManager = null;
-      
       private var _isHudElement:Boolean;
+      
+      private var _vmManager:VehicleMarkersManager;
       
       public function HeadquarterIcon()
       {
+         this._vmManager = VehicleMarkersManager.getInstance();
          super();
          this.hover.visible = false;
          this.targetHighlight.visible = false;
          this.hqId.visible = true;
          this.bgAnimation.visible = true;
-         this._vmManager = VehicleMarkersManager.getInstance();
+      }
+      
+      override protected function onDispose() : void
+      {
+         if(this._isHudElement)
+         {
+            App.colorSchemeMgr.removeEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemasUpdatedHandler);
+         }
+         this.hqId.stop();
+         this.hqId = null;
+         this.targetHighlight.stop();
+         this.targetHighlight = null;
+         this.hover.stop();
+         this.hover = null;
+         this.bgAnimation.dispose();
+         this.bgAnimation = null;
+         this._vmManager = null;
+         super.onDispose();
+      }
+      
+      public function activateHover(param1:Boolean) : void
+      {
+         this.hover.visible = param1;
       }
       
       public function setColor() : void
@@ -77,18 +98,6 @@ package net.wg.gui.battle.views.staticMarkers.epic.headquarter
          this.hover.gotoAndStop(_loc3_);
       }
       
-      public function setOwningTeam(param1:Boolean) : void
-      {
-         showItem(this.bgAnimation);
-         this._isPlayerTeam = param1;
-         this.setColor();
-      }
-      
-      public function activateHover(param1:Boolean) : void
-      {
-         this.hover.visible = param1;
-      }
-      
       public function setDead(param1:Boolean) : void
       {
          if(!param1)
@@ -106,27 +115,16 @@ package net.wg.gui.battle.views.staticMarkers.epic.headquarter
          this.hqId.gotoAndStop(param1);
       }
       
-      override protected function onDispose() : void
+      public function setHit() : void
       {
-         if(this._isHudElement)
-         {
-            App.colorSchemeMgr.removeEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemasUpdatedHandler);
-         }
-         this.hqId.stop();
-         this.hqId = null;
-         this.targetHighlight.stop();
-         this.targetHighlight = null;
-         this.hover.stop();
-         this.hover = null;
-         this.bgAnimation.dispose();
-         this.bgAnimation = null;
-         this._vmManager = null;
-         super.onDispose();
+         this.bgAnimation.gotoAndPlayAnimation(LABEL_HIT_PIERCED);
       }
       
-      public function setHit(param1:Boolean) : void
+      public function setOwningTeam(param1:Boolean) : void
       {
-         this.bgAnimation.gotoAndPlayAnimation(!!param1 ? LABEL_HIT_PIERCED : LABEL_HIT);
+         showItem(this.bgAnimation);
+         this._isPlayerTeam = param1;
+         this.setColor();
       }
       
       public function set isHudElement(param1:Boolean) : void

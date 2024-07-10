@@ -8,6 +8,7 @@ package net.wg.gui.components.carousels.filters
    import net.wg.gui.components.controls.ButtonIconNormal;
    import net.wg.gui.components.controls.SimpleTileList;
    import net.wg.gui.components.controls.ToggleRenderer;
+   import net.wg.gui.components.controls.VO.SimpleRendererVO;
    import net.wg.infrastructure.base.UIComponentEx;
    import net.wg.infrastructure.interfaces.IPopOverCaller;
    import net.wg.infrastructure.managers.IPopoverManager;
@@ -103,67 +104,81 @@ package net.wg.gui.components.carousels.filters
       override protected function draw() : void
       {
          var _loc1_:IListItemRenderer = null;
-         var _loc4_:int = 0;
+         var _loc4_:Boolean = false;
          var _loc5_:int = 0;
          var _loc6_:int = 0;
          var _loc7_:int = 0;
-         var _loc8_:Vector.<Boolean> = null;
+         var _loc8_:int = 0;
          var _loc9_:int = 0;
-         var _loc10_:int = 0;
+         var _loc10_:Vector.<Boolean> = null;
          var _loc11_:int = 0;
          var _loc12_:ToggleRenderer = null;
+         var _loc13_:SimpleRendererVO = null;
+         var _loc14_:int = 0;
          super.draw();
          var _loc2_:Boolean = this._initVO != null;
          var _loc3_:Boolean = this.listHotFilter != null;
-         if(isInvalid(INIT_INVALID) && _loc2_)
+         if(_loc2_)
          {
-            this.paramsFilter.iconSource = this._initVO.mainBtn.value;
-            this.paramsFilter.tooltip = this._initVO.mainBtn.tooltip;
-            this.listHotFilter.dataProvider = this._initVO.hotFilters;
-         }
-         if(isInvalid(InvalidationType.SIZE) && _loc3_ && _loc2_)
-         {
-            _loc4_ = this.getHorizontalGap();
-            _loc5_ = HOT_FILTER_TILE_HEIGHT + _loc4_;
-            _loc6_ = Math.round((height - this.listHotFilter.y + _loc4_) / _loc5_) * _loc5_ - _loc4_;
-            _loc7_ = _loc5_ * this._initVO.hotFilters.length - _loc4_;
-            this.listHotFilter.height = Math.min(_loc6_,_loc7_);
-            _height = this.listHotFilter.y + this.listHotFilter.height;
-            dispatchEvent(new Event(Event.RESIZE));
-         }
-         if(this._selectedVO != null && isInvalid(SELECTED_INVALID) && _loc3_)
-         {
-            this.listHotFilter.validateNow();
-            if(this._selectedVO != null)
+            if(isInvalid(INIT_INVALID))
             {
-               _loc8_ = this._selectedVO.hotFilters;
-               _loc9_ = this.listHotFilter.length;
-               _loc10_ = 0;
-               while(_loc10_ < _loc9_)
+               this.paramsFilter.iconSource = this._initVO.mainBtn.value;
+               this.paramsFilter.tooltip = this._initVO.mainBtn.tooltip;
+               _loc4_ = this.listHotFilter.dataProvider != null && this.listHotFilter.dataProvider.length != this._initVO.hotFilters.length;
+               this.listHotFilter.dataProvider = this._initVO.hotFilters;
+               if(_loc4_)
                {
-                  _loc1_ = this.listHotFilter.getRendererAt(_loc10_);
-                  _loc1_.validateNow();
-                  _loc1_.selectable = _loc10_ < _loc8_.length ? Boolean(_loc8_[_loc10_]) : Boolean(false);
-                  _loc10_++;
+                  invalidateSize();
                }
             }
-         }
-         if(!this._enableStateInitialized && _loc3_)
-         {
-            _loc9_ = this.listHotFilter.length;
-            if(_loc9_ > 0)
+            if(_loc3_ && isInvalid(InvalidationType.SIZE))
             {
-               _loc11_ = 0;
-               while(_loc11_ < _loc9_)
+               _loc5_ = this.getHorizontalGap();
+               _loc6_ = HOT_FILTER_TILE_HEIGHT + _loc5_;
+               _loc7_ = ((height - this.listHotFilter.y + _loc5_) / _loc6_ >> 0) * _loc6_ - _loc5_;
+               _loc8_ = _loc6_ * this._initVO.hotFilters.length - _loc5_;
+               this.listHotFilter.height = Math.min(_loc7_,_loc8_);
+               _height = this.listHotFilter.y + this.listHotFilter.height;
+               dispatchEvent(new Event(Event.RESIZE));
+            }
+         }
+         if(_loc3_)
+         {
+            if(this._selectedVO != null && isInvalid(SELECTED_INVALID))
+            {
+               this.listHotFilter.validateNow();
+               if(this._selectedVO != null)
                {
-                  _loc12_ = this.listHotFilter.getRendererAt(_loc11_) as ToggleRenderer;
-                  if(_loc12_ && this._initVO.hotFilters[_loc11_])
+                  _loc9_ = this.listHotFilter.length;
+                  _loc10_ = this._selectedVO.hotFilters;
+                  _loc11_ = 0;
+                  while(_loc11_ < _loc9_)
                   {
-                     _loc12_.btn.enabled = this._initVO.hotFilters[_loc11_].enabled;
+                     _loc1_ = this.listHotFilter.getRendererAt(_loc11_);
+                     _loc1_.validateNow();
+                     _loc1_.selectable = _loc11_ < _loc10_.length ? Boolean(_loc10_[_loc11_]) : Boolean(false);
+                     _loc11_++;
                   }
-                  _loc11_++;
                }
-               this._enableStateInitialized = true;
+            }
+            if(!this._enableStateInitialized)
+            {
+               _loc9_ = this.listHotFilter.length;
+               if(_loc9_ > 0)
+               {
+                  _loc14_ = 0;
+                  while(_loc14_ < _loc9_)
+                  {
+                     _loc12_ = this.listHotFilter.getRendererAt(_loc14_) as ToggleRenderer;
+                     _loc13_ = this._initVO.hotFilters[_loc14_];
+                     if(_loc12_ && _loc13_)
+                     {
+                        _loc12_.btn.enabled = _loc13_.enabled;
+                     }
+                     _loc14_++;
+                  }
+                  this._enableStateInitialized = true;
+               }
             }
          }
       }
@@ -216,6 +231,22 @@ package net.wg.gui.components.carousels.filters
          return HOT_FILTERS_GAP + this._gapOffset;
       }
       
+      private function onParamsFilterClickHandler(param1:ButtonEvent) : void
+      {
+         if(visible)
+         {
+            this.showPopup();
+         }
+      }
+      
+      private function onHideHandler(param1:ComponentEvent) : void
+      {
+         if(this.popoverMgr.popoverCaller == this)
+         {
+            this.popoverMgr.hide();
+         }
+      }
+      
       public function set updateHotFilterSelectedFromData(param1:Boolean) : void
       {
          if(this._updateHotFilterSelectedFromData == param1)
@@ -259,22 +290,6 @@ package net.wg.gui.components.carousels.filters
       public function set popoverData(param1:Object) : void
       {
          this._popoverData = param1;
-      }
-      
-      private function onParamsFilterClickHandler(param1:ButtonEvent) : void
-      {
-         if(visible)
-         {
-            this.showPopup();
-         }
-      }
-      
-      private function onHideHandler(param1:ComponentEvent) : void
-      {
-         if(this.popoverMgr.popoverCaller == this)
-         {
-            this.popoverMgr.hide();
-         }
       }
    }
 }

@@ -30,7 +30,7 @@ package net.wg.gui.battle.views.vehicleMarkers.statusMarkers
       override public function updateAssets() : void
       {
          super.updateAssets();
-         this.iconContainer.setIconName(VMAtlasItemName.getStatusMarkerIcon(altasIconAlias,color));
+         this.iconContainer.setIconName(VMAtlasItemName.getStatusMarkerIcon(atlasIconAlias,color));
          this.glowContainer.setIconName(VMAtlasItemName.getStatusMarkerGlow(color));
       }
       

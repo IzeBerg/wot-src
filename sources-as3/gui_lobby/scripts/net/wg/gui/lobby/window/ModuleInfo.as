@@ -29,6 +29,8 @@ package net.wg.gui.lobby.window
       
       private static const ADDITIONAL_RIGHT_PADDING:int = 10;
       
+      private static const ADDITIONAL_LEFT_PADDING:int = -6;
+      
       private static const MIDDLE_PADDING:uint = 5;
       
       private static const BLOCKS_NAME:String = "blocks";
@@ -68,6 +70,7 @@ package net.wg.gui.lobby.window
          var _loc1_:Padding = window.contentPadding as Padding;
          App.utils.asserter.assertNotNull(_loc1_,Errors.CANT_NULL);
          _loc1_.right += ADDITIONAL_RIGHT_PADDING;
+         _loc1_.left += ADDITIONAL_LEFT_PADDING;
          window.contentPadding = _loc1_;
          App.gameInputMgr.setKeyHandler(Keyboard.ESCAPE,KeyboardEvent.KEY_DOWN,this.onEscapeKeyDownHandler,true);
       }

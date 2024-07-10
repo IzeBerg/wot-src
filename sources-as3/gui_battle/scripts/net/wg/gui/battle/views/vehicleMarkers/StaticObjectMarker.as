@@ -7,6 +7,7 @@ package net.wg.gui.battle.views.vehicleMarkers
    import flash.text.TextField;
    import flash.utils.getDefinitionByName;
    import net.wg.data.constants.Errors;
+   import net.wg.data.constants.Values;
    import net.wg.gui.battle.components.BattleUIComponent;
    import scaleform.clik.motion.Tween;
    import scaleform.gfx.TextFieldEx;
@@ -41,11 +42,11 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       private var _shapeName:String = "arrow";
       
-      private var _minDistance:Number = 0;
+      private var _minDistance:int = 0;
       
       private var _alphaZone:Number = 0;
       
-      private var _distance:Number = 120;
+      private var _distance:int = 120;
       
       private var _isShow:Boolean = false;
       
@@ -119,7 +120,7 @@ package net.wg.gui.battle.views.vehicleMarkers
          this._shapeName = param1;
          this._minDistance = param2;
          this._alphaZone = param3 - param2;
-         this._distance = !isNaN(param4) ? Number(Math.round(param4)) : Number(-1);
+         this._distance = !isNaN(param4) ? int(Math.round(param4)) : int(-1);
          switch(param6)
          {
             case COLOR_GREEN:
@@ -181,7 +182,7 @@ package net.wg.gui.battle.views.vehicleMarkers
          }
          else
          {
-            this._distanceTF.text = "";
+            this._distanceTF.text = Values.EMPTY_STR;
          }
       }
       

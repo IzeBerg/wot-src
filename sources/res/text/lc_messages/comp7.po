@@ -15,7 +15,7 @@ msgid "#PluralForms"
 msgstr "nplurals=2; plural=(n != 1);"
 
 msgid "alertMessage/afterSeason/first"
-msgstr "Season of the Azure Pegasus has ended"
+msgstr "Onslaught Light has ended"
 
 msgid "alertMessage/afterSeason/second"
 msgstr "Season of the Crimson Pegasus has ended"
@@ -27,7 +27,7 @@ msgid "alertMessage/allNotAvailable"
 msgstr "Battles on servers will be available in %(primeDelta)s"
 
 msgid "alertMessage/allNotAvailableEnd/first"
-msgstr "Season of the Azure Pegasus has ended"
+msgstr "Onslaught Light has ended"
 
 msgid "alertMessage/allNotAvailableEnd/second"
 msgstr "Season of the Crimson Pegasus has ended"
@@ -39,7 +39,7 @@ msgid "alertMessage/allNotSet"
 msgstr "This mode is unavailable on all servers"
 
 msgid "alertMessage/betweenSeasons/first"
-msgstr "Season of the Azure Pegasus has ended"
+msgstr "Onslaught Light has ended"
 
 msgid "alertMessage/betweenSeasons/second"
 msgstr "Season of the Crimson Pegasus has ended"
@@ -69,7 +69,7 @@ msgid "alertMessage/standaloneNotAvailable"
 msgstr "Battles on this server will be available in %(primeDelta)s"
 
 msgid "alertMessage/standaloneNotAvailableEnd/first"
-msgstr "Season of the Azure Pegasus has ended"
+msgstr "Onslaught Light has ended"
 
 msgid "alertMessage/standaloneNotAvailableEnd/second"
 msgstr "Season of the Crimson Pegasus has ended"
@@ -100,43 +100,31 @@ msgid "alertMessage/undefined"
 msgstr "?empty?"
 
 msgid "alertMessage/unsuitableVehicles"
-msgstr "No suitable Tier %(levels)s vehicles in the Garage"
+msgstr "No suitable vehicles in your Garage"
 
 msgid "banner/info/disabled"
 msgstr "Ceasefire"
 
-msgid "banner/info/seasonEnd/first"
-msgstr "The Season of the Azure Pegasus has ended"
-
-msgid "banner/info/seasonEnd/second"
-msgstr "The Season of the Crimson Pegasus has ended"
-
-msgid "banner/info/seasonEnd/third"
-msgstr "The Season of the Jade Pegasus has ended"
+msgid "banner/info/seasonEnd"
+msgstr "The Season has ended"
 
 msgid "banner/info/seasonEndSoon"
-msgstr "Last chance to show off your skills!"
+msgstr "Don't miss Tier VIII action!"
 
 msgid "banner/info/seasonJustStarted"
-msgstr "Show what you can do!"
+msgstr "Enter the Tier VIII fray!"
+
+msgid "banner/info/seasonNotStarted"
+msgstr "Tier VIII action awaits!"
 
 msgid "banner/infoSmall/disabled"
 msgstr "Wait for Prime Time"
 
-msgid "banner/season/first"
-msgstr "Azure Pegasus"
-
-msgid "banner/season/second"
-msgstr "Crimson Pegasus"
-
-msgid "banner/season/third"
-msgstr "Jade Pegasus"
-
 msgid "banner/seasonDate/seasonLasts"
-msgstr "%(season)s, until %(month)s %(day)s"
+msgstr "Until %(month)s %(day)s"
 
 msgid "banner/seasonDate/seasonNotStarted"
-msgstr "%(season)s, from %(month)s %(day)s"
+msgstr "From %(month)s %(day)s"
 
 msgid "banner/seasonDateSmall/seasonLasts"
 msgstr "Until %(month)s %(day)s"
@@ -145,13 +133,13 @@ msgid "banner/seasonDateSmall/seasonNotStarted"
 msgstr "From %(month)s %(day)s"
 
 msgid "banner/timeLeft/hours"
-msgstr "Prime Time: %(hour)s h %(min)s min"
+msgstr "%(hour)s h %(min)s min"
 
 msgid "banner/timeLeft/min"
-msgstr "Prime Time: %(min)s min"
+msgstr "%(min)s min"
 
 msgid "banner/title"
-msgstr "ONSLAUGHT"
+msgstr "ONSLAUGHT LIGHT"
 
 msgid "battleCarousel/filterButtonTooltip/body"
 msgstr "Configure the vehicle display by type, role, and nation."
@@ -229,7 +217,7 @@ msgid "battlePage/statusNotificationTimers/sureShot"
 msgstr "Vehicle characteristics improved"
 
 msgid "battleResult/header/deserter"
-msgstr "You have received a disciplinary penalty: Penalty to Rating Points"
+msgstr "You have received a disciplinary penalty"
 
 msgid "battleResult/header/deserterQualification"
 msgstr ""
@@ -240,9 +228,7 @@ msgid "battleResult/label/deserter"
 msgstr "Desertion"
 
 msgid "battleResult/message/deserter"
-msgstr ""
-"You have received a disciplinary penalty.\n"
-"Rating Points lost: %(penalty)s"
+msgstr "You have received a penalty: Temporary Block."
 
 msgid "battleResult/message/deserterQualification"
 msgstr ""
@@ -320,9 +306,7 @@ msgid "battleResult/subTask/title/raise"
 msgstr "You have been promoted to %(division)s. %(rank)s!"
 
 msgid "battleResult/team/prestigePoints/body"
-msgstr ""
-"Sort by Prestige Points. Prestige Points affect the number of Rating Points "
-"earned and lost in a battle."
+msgstr "Sort by Prestige Points."
 
 msgid "battleResult/team/prestigePoints/header"
 msgstr "Prestige Points"
@@ -334,10 +318,10 @@ msgid "calendarDay/time"
 msgstr "%(start)s–%(end)s"
 
 msgid "calendarDay/timeLeft/first"
-msgid_plural "plural/calendarDay/timeLeft/first"
-msgstr[0] "Season of the Azure Pegasus will last for %(days)d day"
-msgstr[1] "Season of the Azure Pegasus will last for %(days)d days"
-msgstr[2] "Season of the Azure Pegasus will last for %(days)d days"
+msgid_plural "plural/calendarDay/timeLeft"
+msgstr[0] "Onslaught Light will last for %(days)d day"
+msgstr[1] "Onslaught Light will last for %(days)d days"
+msgstr[2] "Onslaught Light will last for %(days)d days"
 
 msgid "calendarDay/timeLeft/second"
 msgid_plural "plural/calendarDay/timeLeft/second"
@@ -380,7 +364,7 @@ msgid "dataError/title"
 msgstr "Error Loading Data"
 
 msgid "detailsHelp/mainTitle"
-msgstr "Hints for Onslaught Mode"
+msgstr "Hints for Onslaught Light Mode"
 
 msgid "detailsHelp/poi"
 msgstr ""
@@ -414,12 +398,12 @@ msgstr "Prestige Points"
 
 msgid "detailsHelp/seasonModifiers"
 msgstr ""
-"The mode has modifiers that change certain parameters of the vehicle, such "
-"as vehicle durability, consumable cooldown time, time remaining visible, and"
-" more."
+"The mode has modifiers that changes certain parameters of the vehicle, such "
+"as vehicle hit points, consumables cooldown time, time remaining visible, "
+"and more."
 
 msgid "detailsHelp/seasonModifiers/title"
-msgstr "ONSLAUGHT MODIFIERS"
+msgstr "Onslaught Modifiers"
 
 msgid "division/A"
 msgstr "A"
@@ -452,10 +436,10 @@ msgid "divisionTooltip/heading"
 msgstr "Division %(divisionName)s"
 
 msgid "featureName"
-msgstr "ONSLAUGHT"
+msgstr "ONSLAUGHT LIGHT"
 
 msgid "featureNameCapitalized"
-msgstr "ONSLAUGHT"
+msgstr "ONSLAUGHT LIGHT"
 
 msgid "fifthRankTooltip/description"
 msgstr ""
@@ -499,11 +483,16 @@ msgstr "ABOUT THE EVENT"
 msgid "intro/confirmButton"
 msgstr "Affirmative!"
 
+msgid "intro/description/noRankedSystem"
+msgstr ""
+"Enjoy the gameplay of the original Onslaught mode without Qualification, "
+"Ranks, or any Service Records."
+
 msgid "intro/description/onslaughtModifiers"
 msgstr ""
 "The mode has modifiers that change certain parameters of the vehicle, such "
-"as vehicle durability, consumable cooldown time, time remaining visible, and"
-" more."
+"as vehicle hit points, consumables cooldown time, time remaining visible, "
+"and more."
 
 msgid "intro/description/pointsOfInterest"
 msgstr ""
@@ -513,27 +502,6 @@ msgstr ""
 "position, and the Comms Center will spot all enemy vehicles. Depending on "
 "the map, the presence and location of these Points of Interest can change."
 
-msgid "intro/description/qualification"
-msgid_plural "plural/intro/description/qualification"
-msgstr[0] ""
-"Fight %(count)s Qualification battle to determine your skill level and rank. Upon completion, you will receive rewards for the rank you achieved and all previous ranks.\n"
-"\n"
-"Desertion or a draw in Qualification will be considered as a defeat."
-msgstr[1] ""
-"Fight %(count)s Qualification battles to determine your skill level and rank. Upon completion, you will receive rewards for the rank you achieved and all previous ranks.\n"
-"\n"
-"Desertion or a draw in Qualification will be considered as a defeat."
-msgstr[2] ""
-"Fight %(count)s Qualification battles to determine your skill level and rank. Upon completion, you will receive rewards for the rank you achieved and all previous ranks.\n"
-"\n"
-"Desertion or a draw in Qualification will be considered as a defeat."
-
-msgid "intro/description/ranks"
-msgstr ""
-"A system that reflects the player's skill. Progress through the ranks from "
-"Iron to Legend and earn valuable prizes. Fight throughout the Year of the "
-"Pegasus to receive unique Annual Rewards."
-
 msgid "intro/description/roleSkills"
 msgstr ""
 "Depending on the role, each vehicle has a special skill with three charge levels. The higher the charge level when the skill is activated, the stronger the effect will be. The charge level will depend on the number of Prestige Points that can be earned for impressive performance in battle, capturing Points of Interest, using Tactical Skills, etc.\n"
@@ -542,23 +510,20 @@ msgstr ""
 
 msgid "intro/description/vehiclesOnMap"
 msgstr ""
-"You can enter battle in Tier X Researchable or Collectors' vehicles (except "
-"for SPGs). Prepare your vehicles in the Garage, then choose the best one "
-"based on the features of the given map once you get into battle. When "
-"selecting your vehicle, also consider which vehicles your allies have "
+"Only Tier VIII vehicles can be used in the mode (SPGs and some other tanks "
+"are not available). Prepare your vehicles in the Garage, then choose the "
+"best one based on the features of the given map once you get into battle. "
+"When selecting your vehicle, also consider which vehicles your allies have "
 "chosen."
+
+msgid "intro/title/noRankedSystem"
+msgstr "CHILL OUT, COMMANDER"
 
 msgid "intro/title/onslaughtModifiers"
 msgstr "ONSLAUGHT MODIFIERS"
 
 msgid "intro/title/pointsOfInterest"
 msgstr "POINTS OF INTEREST"
-
-msgid "intro/title/qualification"
-msgstr "QUALIFICATION"
-
-msgid "intro/title/ranks"
-msgstr "RANKED SYSTEM"
 
 msgid "intro/title/roleSkills"
 msgstr "ROLE SKILLS"
@@ -677,6 +642,26 @@ msgstr ""
 "%(battleIcon)s{cream_Open}%(battlesCount)s{cream_Close} / "
 "%(maxBattlesCount)s"
 
+msgid "mainWidgetTooltip/column/0"
+msgstr " "
+
+msgid "mainWidgetTooltip/column/1"
+msgstr "Victory"
+
+msgid "mainWidgetTooltip/column/2"
+msgstr "Defeat/Draw"
+
+msgid "mainWidgetTooltip/description/completed"
+msgstr "Solid work, Commander, keep it up!"
+
+msgid "mainWidgetTooltip/description/inProgress"
+msgstr ""
+"Complete missions and reach top positions in Onslaught Light battles to "
+"increase your Progression level."
+
+msgid "mainWidgetTooltip/descriptionHeader"
+msgstr "Main Progression Complete"
+
 msgid "mainWidgetTooltip/division"
 msgstr "Division: %(divisionName)s"
 
@@ -684,6 +669,12 @@ msgid "mainWidgetTooltip/divisionDescription"
 msgstr ""
 "This Division is for the players with {whiteSpanish_Open}%(fromScore) to "
 "%(toScore){whiteSpanish_Close} Rating Points."
+
+msgid "mainWidgetTooltip/eventEnds"
+msgstr "The event ends in %(value)s"
+
+msgid "mainWidgetTooltip/featureName"
+msgstr "Onslaught Light"
 
 msgid "mainWidgetTooltip/info/fifth"
 msgstr ""
@@ -713,6 +704,15 @@ msgstr "Qualification"
 msgid "mainWidgetTooltip/ratingScore"
 msgstr "Rating Points"
 
+msgid "mainWidgetTooltip/top/0"
+msgstr "Top 2 by Prestige Points"
+
+msgid "mainWidgetTooltip/top/1"
+msgstr "Top 5 by Prestige Points"
+
+msgid "mainWidgetTooltip/top/2"
+msgstr "Top 7 by Prestige Points"
+
 msgid "membersWindow/memberCountDropdown/description"
 msgstr "Players in the Platoon"
 
@@ -730,18 +730,18 @@ msgstr "What is the fastest way to get Tier %(levels)s vehicles?"
 
 msgid "noVehicles/text/vehicleAvailableForBuy"
 msgstr ""
-"To participate in Onslaught, you need to have at least one Tier %(levels)s vehicle in the Garage that is suitable for the mode.\n"
+"To participate in Onslaught Light, you need to have at least one Tier %(levels)s vehicle in the Garage that is suitable for the mode.\n"
 "You have a researched Tier %(levels)s vehicle that has not been obtained."
 
 msgid "noVehicles/text/vehicleAvailableForRestore"
 msgstr ""
-"To participate in Onslaught, you need to have at least one Tier %(levels)s vehicle in the Garage that is suitable for the mode.\n"
+"To participate in Onslaught Light, you need to have at least one Tier %(levels)s vehicle in the Garage that is suitable for the mode.\n"
 "You have a Tier %(levels)s vehicle available for recovery."
 
 msgid "noVehicles/text/vehicleUnavailable"
 msgstr ""
-"To participate in Onslaught, you need to have at least one Tier %(levels)s "
-"vehicle in the Garage that is suitable for the mode."
+"To participate in Onslaught Light, you need to have at least one Tier "
+"%(levels)s vehicle in the Garage that is suitable for the mode."
 
 msgid "page/heading/leaderboard"
 msgstr "LEADERBOARD"
@@ -857,7 +857,7 @@ msgid "primeTimeView/status/primeWillBeAvailable"
 msgstr "Battles will start on the %(server)s server in %(time)s"
 
 msgid "primeTimeView/status/seasonDisabled/first"
-msgstr "Season of the Azure Pegasus has ended on the %(server)s server."
+msgstr "Onslaught Light has ended on the %(server)s server."
 
 msgid "primeTimeView/status/seasonDisabled/second"
 msgstr "Season of the Crimson Pegasus has ended on the %(server)s server."
@@ -870,7 +870,7 @@ msgstr ""
 "Battles will not be available until %(startTime)s on the %(server)s server"
 
 msgid "primeTimeView/title"
-msgstr "ONSLAUGHT"
+msgstr "Onslaught Light"
 
 msgid "products/actions/buy"
 msgstr "Purchase"
@@ -1295,13 +1295,13 @@ msgid "rewardsScreen/subtitle/tokensRewards"
 msgid_plural "plural/rewardsScreen/subtitle/tokensRewards"
 msgstr[0] ""
 "Rewards received for collecting {cream_Open}%(tokensCount)s{cream_Close} "
-"Lucky Сhip"
+"Lucky Chip"
 msgstr[1] ""
 "Rewards received for collecting {cream_Open}%(tokensCount)s{cream_Close} "
-"Lucky Сhips"
+"Lucky Chips"
 msgstr[2] ""
 "Rewards received for collecting {cream_Open}%(tokensCount)s{cream_Close} "
-"Lucky Сhips"
+"Lucky Chips"
 
 msgid "rewardsScreen/title/division"
 msgstr "DIVISION %(division)s REACHED"
@@ -1349,9 +1349,6 @@ msgstr "Ends in %(hours)s h"
 
 msgid "season/minutesLeft"
 msgstr "Ends in %(minutes)s min"
-
-msgid "season/over"
-msgstr "%(seasonName)s has finished"
 
 msgid "season/range"
 msgstr "%(startDate)s–%(endDate)s"
@@ -1548,10 +1545,10 @@ msgid "seasonalBattleSelector/timeTable/tomorrow"
 msgstr "Tomorrow"
 
 msgid "selectorTooltip/desc"
-msgstr "Competitive mode. 7v7 | Tier X"
+msgstr "Unranked mode: 7v7 | Tier VIII"
 
 msgid "selectorTooltip/title"
-msgstr "Onslaught"
+msgstr "Onslaught Light"
 
 msgid "selectorTooltip/unavailable/finished"
 msgstr ""
@@ -1642,13 +1639,14 @@ msgid "system_messages/periodicReward/title"
 msgstr "Daily Reward"
 
 msgid "system_messages/primeTime/end/body"
-msgstr "Ceasefire in effect. Onslaught battles are temporarily unavailable."
+msgstr ""
+"Ceasefire in effect. Onslaught Light battles are temporarily unavailable."
 
 msgid "system_messages/primeTime/end/title"
 msgstr "Ceasefire"
 
 msgid "system_messages/primeTime/start/body"
-msgstr "Ceasefire over. Onslaught battles are available again."
+msgstr "Ceasefire over. Onslaught Light battles are available again."
 
 msgid "system_messages/primeTime/start/title"
 msgstr "Ceasefire"
@@ -1690,7 +1688,8 @@ msgstr "Payment error. Please try again later."
 
 msgid "system_messages/temporaryBan/end/body"
 msgstr ""
-"Your temporary block has been removed. You can play in Onslaught mode again."
+"Your temporary block has been removed. You can play in Onslaught Light mode "
+"again."
 
 msgid "system_messages/temporaryBan/end/title"
 msgstr "End of Block"
@@ -1921,7 +1920,7 @@ msgid "yearlyRewards/rewardsState/notAvailable"
 msgstr "Reward not received"
 
 msgid "yearlyRewards/rewardsState/possible"
-msgstr "Potential reward"
+msgstr "Potential rewards"
 
 msgid "yearlyRewards/rewardsState/tooltip/guaranteed"
 msgstr "You are guaranteed to receive this reward at the end of the year."

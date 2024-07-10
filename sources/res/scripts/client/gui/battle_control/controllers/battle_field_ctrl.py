@@ -120,6 +120,7 @@ class BattleFieldCtrl(IBattleFieldController, IVehiclesAndPositionsController, V
             vehicleID = vInfoVO.vehicleID
             if vehicleID in self._aliveEnemies or vehicleID in self._aliveAllies:
                 self.__changeMaxVehicleHealth(vehicleID, vInfoVO.vehicleType.maxHealth)
+                self.__updateVehicleHealth(vehicleID)
             else:
                 self.addVehicleInfo(vInfoVO, arenaDP)
 

@@ -597,7 +597,7 @@ package
       
       public static const SERVICECHANNELMESSAGES_BATTLERESULTS_EQUIPCOIN:String = "#messenger:serviceChannelMessages/battleResults/equipCoin";
       
-      public static const SERVICECHANNELMESSAGES_BATTLERESULTS_RATINGPOINTS:String = "#messenger:serviceChannelMessages/battleResults/ratingPoints";
+      public static const SERVICECHANNELMESSAGES_BATTLERESULTS_COMP7LIGHTPROGRESSIONPOINTS:String = "#messenger:serviceChannelMessages/battleResults/comp7LightProgressionPoints";
       
       public static const SERVICECHANNELMESSAGES_BATTLERESULTS_DOUBLEXPFACTOR:String = "#messenger:serviceChannelMessages/battleResults/doubleXpFactor";
       

@@ -21,5 +21,9 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
       function setIsSecondary(param1:Boolean) : void;
       
       function setDualAccActive(param1:Boolean) : void;
+      
+      function setAimDamageStage(param1:String) : void;
+      
+      function setZoomFactor(param1:Number) : void;
    }
 }

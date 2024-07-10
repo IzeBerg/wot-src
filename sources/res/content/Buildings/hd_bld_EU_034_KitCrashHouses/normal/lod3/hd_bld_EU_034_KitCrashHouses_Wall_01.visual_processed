@@ -19,9 +19,18 @@
 			<primitiveGroup>
 				0
 				<material>
+					<identifier>s_wall_0</identifier>
+					<collisionFlags>131</collisionFlags>
+					<materialKind>0</materialKind>
+				</material>
+				<groupOrigin>3.271486 4.466105 0.000000</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
 					<identifier>s_nd0</identifier>
 					<collisionFlags>0</collisionFlags>
-					<materialKind>108</materialKind>
+					<materialKind>111</materialKind>
 					<fx>shaders/std_effects/PBS_ext.fx</fx>
 					<property>
 						alphaReference
@@ -32,16 +41,8 @@
 						<Bool>true</Bool>
 					</property>
 					<property>
-						g_enableTerrainBlending
-						<Bool>false</Bool>
-					</property>
-					<property>
 						alphaTestEnable
 						<Bool>true</Bool>
-					</property>
-					<property>
-						g_vertexColorMode
-						<Int>0</Int>
 					</property>
 					<property>
 						diffuseMap
@@ -58,19 +59,10 @@
 				</material>
 				<groupOrigin>3.340172 2.964288 0.152441</groupOrigin>
 			</primitiveGroup>
-			<primitiveGroup>
-				1
-				<material>
-					<identifier>s_wall_0</identifier>
-					<collisionFlags>131</collisionFlags>
-					<materialKind>0</materialKind>
-				</material>
-				<groupOrigin>3.271486 4.466105 0.000000</groupOrigin>
-			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<boundingBox>
-		<min>-0.147490 -0.432412 -5.681303</min>
+		<min>-0.147490 -0.432413 -5.681303</min>
 		<max>6.690463 9.346532 5.986185</max>
 	</boundingBox>
 	<customBsp>true</customBsp>

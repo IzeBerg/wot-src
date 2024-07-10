@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<version>3</version>
+	<GameObjects>
+		<GameObject>
+			<name>fire_ring_static_decal</name>
+			<UUID>9b9f86e8-ae7a-4a46-b0b4-61d4932b2cdd</UUID>
+			<flags>0</flags>
+		</GameObject>
+	</GameObjects>
+	<components>
+		<ComponentPool>
+			<type>Transform</type>
+			<version>1</version>
+			<component>
+				<objectIndex>0</objectIndex>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>0 0 0</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>-0 0 0</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>StaticDecalComponent</type>
+			<version>1</version>
+			<component>
+				<objectIndex>0</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Size</name>
+						<value>1 1</value>
+					</property>
+					<property>
+						<name>Extent</name>
+						<value>
+							1.5
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>DiffuseTexture</name>
+						<isAsset>true</isAsset>
+						<value>maps/fx/PBS_ASH_01_AM.dds</value>
+					</property>
+					<property>
+						<name>NormalTexture</name>
+						<isAsset>true</isAsset>
+						<value>maps/fx/PBS_ASH_01_NM.dds</value>
+					</property>
+					<property>
+						<name>SpecularTexture</name>
+						<isAsset>true</isAsset>
+						<value>maps/fx/PBS_ASH_01_GMM.dds</value>
+					</property>
+					<property>
+						<name>Lifetime</name>
+						<value>30</value>
+					</property>
+					<property>
+						<name>Placement Delay</name>
+						<value>0</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+	</components>
+</root>

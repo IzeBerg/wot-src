@@ -33,6 +33,8 @@ package net.wg.gui.components.damageIndicator
       
       private var _disposed:Boolean = false;
       
+      private var _priority:uint = 0;
+      
       public function DamageIndicatorItem()
       {
          super();
@@ -165,6 +167,16 @@ package net.wg.gui.components.damageIndicator
       public function isDisposed() : Boolean
       {
          return this._disposed;
+      }
+      
+      public function get priority() : uint
+      {
+         return this._priority;
+      }
+      
+      public function set priority(param1:uint) : void
+      {
+         this._priority = param1;
       }
    }
 }

@@ -194,6 +194,8 @@ class HierarchyManager(pybind11_object):
 	def __sizeof__(*args, **kwargs): pass
 	def __str__(*args, **kwargs): pass
 	def __subclasshook__(*args, **kwargs): pass
+	def changeParent(self, *args, **kwargs): pass
+	def findComponentInParent(self, *args, **kwargs): pass
 	def findComponentsInHierarchy(self, *args, **kwargs): pass
 	def findFirstNode(self, *args, **kwargs): pass
 	def findNodes(self, *args, **kwargs): pass
@@ -376,7 +378,6 @@ def addNetworkEntity(*args, **kwargs): pass
 def cacheGameObjects(*args, **kwargs): pass
 def calcTotalComponents(*args, **kwargs): pass
 def calcTotalGameObjects(*args, **kwargs): pass
-def changeHierarchy(*args, **kwargs): pass
 def clearGameObjectsCache(*args, **kwargs): pass
 def createDebugWorld(*args, **kwargs): pass
 def createManager(*args, **kwargs): pass

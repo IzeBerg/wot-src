@@ -614,8 +614,8 @@
 				</slots>
 			</block>
 			<block>
-				<class>OnPlayerVehicleShoot</class>
-				<id>OnPlayerVehicleShoot_1</id>
+				<class>OnPlayerVehicleDiscreteShoot</class>
+				<id>OnPlayerVehicleDiscreteShoot_1</id>
 				<params/>
 				<slots/>
 			</block>
@@ -1061,10 +1061,10 @@
 				<output>vehicle</output>
 			</connection>
 			<connection>
-				<from>OnPlayerVehicleShoot_1</from>
+				<from>OnPlayerVehicleDiscreteShoot_1</from>
 				<input>input</input>
 				<to>SetVariable_12</to>
-				<output>onShoot</output>
+				<output>onDiscreteShoot</output>
 			</connection>
 			<connection>
 				<from>GetVehicleGameObject_3</from>

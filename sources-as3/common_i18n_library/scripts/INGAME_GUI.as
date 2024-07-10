@@ -85,6 +85,8 @@ package
       
       public static const PLAYER_ERRORS_CANT_SHOOT_GUN_LOCKED:String = "#ingame_gui:player_errors/cant_shoot/gun_locked";
       
+      public static const PLAYER_ERRORS_CANT_SHOOT_GUN_OVERHEATED:String = "#ingame_gui:player_errors/cant_shoot/gun_overheated";
+      
       public static const PLAYER_ERRORS_CANT_SWITCH_ENGINE_DESTROYED:String = "#ingame_gui:player_errors/cant_switch/engine_destroyed";
       
       public static const PLAYER_ERRORS_EQUIPMENT_ALREADYACTIVATED:String = "#ingame_gui:player_errors/equipment/alreadyActivated";
@@ -480,6 +482,8 @@ package
       public static const SHELLS_KINDS_ARMOR_PIERCING_CR:String = "#ingame_gui:shells_kinds/ARMOR_PIERCING_CR";
       
       public static const SHELLS_KINDS_PARAMS_DAMAGE:String = "#ingame_gui:shells_kinds/params/damage";
+      
+      public static const SHELLS_KINDS_PARAMS_DAMAGEPERSECOND:String = "#ingame_gui:shells_kinds/params/damagePerSecond";
       
       public static const SHELLS_KINDS_PARAMS_PIERCINGPOWER:String = "#ingame_gui:shells_kinds/params/piercingPower";
       

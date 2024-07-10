@@ -1,6 +1,18 @@
 from enum import unique, IntEnum
+from gui.shared import EVENT_BUS_SCOPE, g_eventBus
 from gui.shared.events import HasCtxEvent
 from gui.shared.event_bus import SharedEvent
+
+class EventBridge(object):
+    __slots__ = ('__event', '__scope')
+
+    def __init__(self, event, scope=EVENT_BUS_SCOPE.DEFAULT):
+        self.__event = event
+        self.__scope = scope
+
+    def __call__(self, *_, **__):
+        g_eventBus.handleEvent(self.__event, scope=self.__scope)
+
 
 class FunSelectionEvent(SharedEvent):
 

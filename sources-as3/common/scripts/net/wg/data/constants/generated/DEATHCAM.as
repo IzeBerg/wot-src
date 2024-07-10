@@ -15,6 +15,8 @@ package net.wg.data.constants.generated
       
       public static const MODERN_HE:String = "modernHE";
       
+      public static const NON_PENETRATION_DAMAGE:String = "nonPenetrationDamage";
+      
       public static const PENETRATION:String = "penetration";
       
       public static const SHELL:String = "shell";

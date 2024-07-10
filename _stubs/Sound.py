@@ -46,6 +46,34 @@ class PyComponentWrapperBase(pybind11_object):
 	def valid(self, *args, **kwargs): pass
 
 
+class RTPCComponent(PyComponentWrapperBase):
+	def __cmp__(self, *args, **kwargs): pass
+	def __delattr__(*args, **kwargs): pass
+	__doc__ = None
+	def __format__(*args, **kwargs): pass
+	def __getattribute__(self, *args, **kwargs): pass
+	def __hash__(*args, **kwargs): pass
+	def __init__(*args, **kwargs): pass
+	__module__ = 'Sound'
+	def __new__(*args, **kwargs): pass
+	__qualname__ = 'RTPCComponent'
+	def __reduce__(*args, **kwargs): pass
+	def __reduce_ex__(*args, **kwargs): pass
+	def __repr__(*args, **kwargs): pass
+	def __setattr__(*args, **kwargs): pass
+	def __sizeof__(*args, **kwargs): pass
+	def __str__(*args, **kwargs): pass
+	def __subclasshook__(*args, **kwargs): pass
+	def clear(self, *args, **kwargs): pass
+	def destroy(self, *args, **kwargs): pass
+	def getRTPCs(self, *args, **kwargs): pass
+	def id(self, *args, **kwargs): pass
+	def setRTPC(self, *args, **kwargs): pass
+	def setRTPCsBySourceType(self, *args, **kwargs): pass
+	def trySetRTPC(self, *args, **kwargs): pass
+	def valid(self, *args, **kwargs): pass
+
+
 class Sound2DComponent(PyComponentWrapperBase):
 	def __cmp__(self, *args, **kwargs): pass
 	def __delattr__(*args, **kwargs): pass
@@ -97,6 +125,33 @@ class Sound3DComponent(PyComponentWrapperBase):
 	def isPlaying(self, *args, **kwargs): pass
 	def objectName(self, *args, **kwargs): pass
 	def play(self, *args, **kwargs): pass
+	def stop(self, *args, **kwargs): pass
+	def valid(self, *args, **kwargs): pass
+
+
+class SoundObject3DComponent(PyComponentWrapperBase):
+	def __cmp__(self, *args, **kwargs): pass
+	def __delattr__(*args, **kwargs): pass
+	__doc__ = None
+	def __format__(*args, **kwargs): pass
+	def __getattribute__(self, *args, **kwargs): pass
+	def __hash__(*args, **kwargs): pass
+	def __init__(self, *args, **kwargs): pass
+	__module__ = 'Sound'
+	def __new__(*args, **kwargs): pass
+	__qualname__ = 'SoundObject3DComponent'
+	def __reduce__(*args, **kwargs): pass
+	def __reduce_ex__(*args, **kwargs): pass
+	def __repr__(*args, **kwargs): pass
+	def __setattr__(*args, **kwargs): pass
+	def __sizeof__(*args, **kwargs): pass
+	def __str__(*args, **kwargs): pass
+	def __subclasshook__(*args, **kwargs): pass
+	def clear(self, *args, **kwargs): pass
+	def destroy(self, *args, **kwargs): pass
+	def id(self, *args, **kwargs): pass
+	def play(self, *args, **kwargs): pass
+	def setRTPC(self, *args, **kwargs): pass
 	def stop(self, *args, **kwargs): pass
 	def valid(self, *args, **kwargs): pass
 

@@ -35,6 +35,10 @@ package net.wg.data.constants
       
       public static const BUTTON_BLACK:String = "ButtonBlack";
       
+      public static const GHOST_BUTTON:String = "GhostButtonUI";
+      
+      public static const GHOST_BUTTON_SLIM:String = "GhostButtonSlimUI";
+      
       public static const SCROLL_BAR:String = "ScrollBar";
       
       public static const CLR_CSS:String = "net.wg.data.VO.ColorScheme";
@@ -645,8 +649,6 @@ package net.wg.data.constants
       
       public static const COUNTER_LINE_UI:String = "NewCounterLineUI";
       
-      public static const COUNTER_DOUBLE_LINE_BIG_UI:String = "NewCounterDoubleLineBigUI";
-      
       public static const COUNTER_LINE_BIG_UI:String = "NewCounterLineBigUI";
       
       public static const COUNTER_LINE_KEY_UI:String = "newCounterLineKeyUI";
@@ -744,6 +746,8 @@ package net.wg.data.constants
       public static const SPEEDOMETER_BG_UI:String = "SpeedometerBgUI";
       
       public static const ARTY_SHOT_INDICATOR_RENDERER:String = "ArtyShotIndicatorUI";
+      
+      public static const OVERHEAT_WIDGET:String = "OverheatWidgetUI";
       
       public static const EQUIPMENT_OVERLAY:String = "ListOverlayUI";
       
