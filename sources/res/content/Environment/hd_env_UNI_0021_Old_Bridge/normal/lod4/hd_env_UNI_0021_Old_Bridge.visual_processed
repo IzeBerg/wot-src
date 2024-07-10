@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>111</materialKind>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_UNI_0021_Old_Bridge/hd_env_UNI_0021_Old_Bridge_BAM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env_UNI_0021_Old_Bridge/hd_env_UNI_0021_Old_Bridge_1_BGMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_UNI_0021_Old_Bridge/hd_env_UNI_0021_Old_Bridge_1_BANM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaReference
+						<Int>64</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>0.015492 4.628830 0.000000</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-8.392348 -0.887657 -33.653072</min>
+		<max>8.392938 10.191212 33.653072</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>11480</geometrySize>
+	<minUVDensity>0.000111</minUVDensity>
+</root>

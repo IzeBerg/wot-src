@@ -4291,6 +4291,8 @@ package
       
       public static const EMBLEM_GROUP22_SPECIAL_80:String = "#vehicle_customization:emblem/group22/special_80";
       
+      public static const EMBLEM_GROUP19_SPECIAL_60:String = "#vehicle_customization:emblem/group19/special_60";
+      
       public static const EMBLEM_GROUP22_SPECIAL_81:String = "#vehicle_customization:emblem/group22/special_81";
       
       public static const EMBLEM_GROUP23_SPECIAL_90:String = "#vehicle_customization:emblem/group23/special_90";
@@ -9336,6 +9338,8 @@ package
       public static const SPECIAL_STYLE_JACKS_LAMP_DESC_LONG:String = "#vehicle_customization:special_style/jacks_lamp_desc/long";
       
       public static const SPECIAL_STYLE_CZECH_STYLE:String = "#vehicle_customization:special_style/czech_style";
+      
+      public static const SPECIAL_STYLE_CZECH_STYLE_DESC:String = "#vehicle_customization:special_style/czech_style_desc";
       
       public static const SPECIAL_STYLE_ARMISTICE:String = "#vehicle_customization:special_style/Armistice";
       
@@ -18558,6 +18562,308 @@ package
       public static const RUSHSTONEWOLF_INSCRIPTION_08_2024_MT_NAME:String = "#vehicle_customization:RushStoneWolf_Inscription_08_2024_MT/name";
       
       public static const RUSHSTONEWOLF_INSCRIPTION_08_2024_MT_DESCRIPTION:String = "#vehicle_customization:RushStoneWolf_Inscription_08_2024_MT/description";
+      
+      public static const A157_M_VII_Y_3DST_MT_NAME:String = "#vehicle_customization:A157_M_VII_Y_3Dst_MT/name";
+      
+      public static const MT_BDAY_2024_CAMO_01_NAME:String = "#vehicle_customization:MT_Bday_2024_Camo_01/name";
+      
+      public static const MT_BDAY_2024_CAMO_01_DESCRIPTION:String = "#vehicle_customization:MT_Bday_2024_Camo_01/description";
+      
+      public static const MT_BDAY_2024_DECAL_01_NAME:String = "#vehicle_customization:MT_Bday_2024_Decal_01/name";
+      
+      public static const MT_BDAY_2024_DECAL_01_DESCRIPTION:String = "#vehicle_customization:MT_Bday_2024_Decal_01/description";
+      
+      public static const MT_BDAY_2024_DECAL_02_NAME:String = "#vehicle_customization:MT_Bday_2024_Decal_02/name";
+      
+      public static const MT_BDAY_2024_DECAL_02_DESCRIPTION:String = "#vehicle_customization:MT_Bday_2024_Decal_02/description";
+      
+      public static const MT_BDAY_2024_PAINT_01_NAME:String = "#vehicle_customization:MT_Bday_2024_Paint_01/name";
+      
+      public static const MT_BDAY_2024_PAINT_01_DESCRIPTION:String = "#vehicle_customization:MT_Bday_2024_Paint_01/description";
+      
+      public static const MT_BDAY_2024_PAINT_02_NAME:String = "#vehicle_customization:MT_Bday_2024_Paint_02/name";
+      
+      public static const MT_BDAY_2024_PAINT_02_DESCRIPTION:String = "#vehicle_customization:MT_Bday_2024_Paint_02/description";
+      
+      public static const MT_BDAY_2024_STYLE_01_NAME:String = "#vehicle_customization:MT_Bday_2024_Style_01/name";
+      
+      public static const MT_BDAY_2024_STYLE_01_DESCRIPTION:String = "#vehicle_customization:MT_Bday_2024_Style_01/description";
+      
+      public static const MT_BDAY_2024_STYLE_01_LONGDESCRIPTION:String = "#vehicle_customization:MT_Bday_2024_Style_01/longDescription";
+      
+      public static const MT_BDAY_2024_CAMO_02_NAME:String = "#vehicle_customization:MT_Bday_2024_Camo_02/name";
+      
+      public static const MT_BDAY_2024_CAMO_02_DESCRIPTION:String = "#vehicle_customization:MT_Bday_2024_Camo_02/description";
+      
+      public static const MT_BDAY_2024_PAINT_03_NAME:String = "#vehicle_customization:MT_Bday_2024_Paint_03/name";
+      
+      public static const MT_BDAY_2024_PAINT_03_DESCRIPTION:String = "#vehicle_customization:MT_Bday_2024_Paint_03/description";
+      
+      public static const MT_BDAY_2024_STYLE_02_NAME:String = "#vehicle_customization:MT_Bday_2024_Style_02/name";
+      
+      public static const MT_BDAY_2024_STYLE_02_DESCRIPTION:String = "#vehicle_customization:MT_Bday_2024_Style_02/description";
+      
+      public static const MT_BDAY_2024_STYLE_02_LONGDESCRIPTION:String = "#vehicle_customization:MT_Bday_2024_Style_02/longDescription";
+      
+      public static const MT_BDAY_2024_CAMO_03_NAME:String = "#vehicle_customization:MT_Bday_2024_Camo_03/name";
+      
+      public static const MT_BDAY_2024_CAMO_03_DESCRIPTION:String = "#vehicle_customization:MT_Bday_2024_Camo_03/description";
+      
+      public static const MT_BDAY_2024_DECAL_03_NAME:String = "#vehicle_customization:MT_Bday_2024_Decal_03/name";
+      
+      public static const MT_BDAY_2024_DECAL_03_DESCRIPTION:String = "#vehicle_customization:MT_Bday_2024_Decal_03/description";
+      
+      public static const MT_BDAY_2024_DECAL_04_NAME:String = "#vehicle_customization:MT_Bday_2024_Decal_04/name";
+      
+      public static const MT_BDAY_2024_DECAL_04_DESCRIPTION:String = "#vehicle_customization:MT_Bday_2024_Decal_04/description";
+      
+      public static const MT_BDAY_2024_PAINT_04_NAME:String = "#vehicle_customization:MT_Bday_2024_Paint_04/name";
+      
+      public static const MT_BDAY_2024_PAINT_04_DESCRIPTION:String = "#vehicle_customization:MT_Bday_2024_Paint_04/description";
+      
+      public static const MT_BDAY_2024_STYLE_03_NAME:String = "#vehicle_customization:MT_Bday_2024_Style_03/name";
+      
+      public static const MT_BDAY_2024_STYLE_03_DESCRIPTION:String = "#vehicle_customization:MT_Bday_2024_Style_03/description";
+      
+      public static const MT_BDAY_2024_STYLE_03_LONGDESCRIPTION:String = "#vehicle_customization:MT_Bday_2024_Style_03/longDescription";
+      
+      public static const MT_BDAY_2024_DECAL_05_NAME:String = "#vehicle_customization:MT_Bday_2024_Decal_05/name";
+      
+      public static const MT_BDAY_2024_DECAL_05_DESCRIPTION:String = "#vehicle_customization:MT_Bday_2024_Decal_05/description";
+      
+      public static const MT_BDAY_2024_DECAL_06_NAME:String = "#vehicle_customization:MT_Bday_2024_Decal_06/name";
+      
+      public static const MT_BDAY_2024_DECAL_06_DESCRIPTION:String = "#vehicle_customization:MT_Bday_2024_Decal_06/description";
+      
+      public static const MT_BDAY_2024_DECAL_07_NAME:String = "#vehicle_customization:MT_Bday_2024_Decal_07/name";
+      
+      public static const MT_BDAY_2024_DECAL_07_DESCRIPTION:String = "#vehicle_customization:MT_Bday_2024_Decal_07/description";
+      
+      public static const MT_BDAY_2024_PAINT_05_NAME:String = "#vehicle_customization:MT_Bday_2024_Paint_05/name";
+      
+      public static const MT_BDAY_2024_PAINT_05_DESCRIPTION:String = "#vehicle_customization:MT_Bday_2024_Paint_05/description";
+      
+      public static const MT_BDAY_2024_PAINT_06_NAME:String = "#vehicle_customization:MT_Bday_2024_Paint_06/name";
+      
+      public static const MT_BDAY_2024_PAINT_06_DESCRIPTION:String = "#vehicle_customization:MT_Bday_2024_Paint_06/description";
+      
+      public static const MT_BDAY_2024_PAINT_07_NAME:String = "#vehicle_customization:MT_Bday_2024_Paint_07/name";
+      
+      public static const MT_BDAY_2024_PAINT_07_DESCRIPTION:String = "#vehicle_customization:MT_Bday_2024_Paint_07/description";
+      
+      public static const MT_BDAY_2024_STYLE_04_NAME:String = "#vehicle_customization:MT_Bday_2024_Style_04/name";
+      
+      public static const MT_BDAY_2024_STYLE_04_DESCRIPTION:String = "#vehicle_customization:MT_Bday_2024_Style_04/description";
+      
+      public static const MT_BDAY_2024_STYLE_04_LONGDESCRIPTION:String = "#vehicle_customization:MT_Bday_2024_Style_04/longDescription";
+      
+      public static const MT_BDAY_2024_DECAL_08_NAME:String = "#vehicle_customization:MT_Bday_2024_Decal_08/name";
+      
+      public static const MT_BDAY_2024_DECAL_08_DESCRIPTION:String = "#vehicle_customization:MT_Bday_2024_Decal_08/description";
+      
+      public static const MT_BDAY_2024_DECAL_09_NAME:String = "#vehicle_customization:MT_Bday_2024_Decal_09/name";
+      
+      public static const MT_BDAY_2024_DECAL_09_DESCRIPTION:String = "#vehicle_customization:MT_Bday_2024_Decal_09/description";
+      
+      public static const MT_BDAY_2024_DECAL_10_NAME:String = "#vehicle_customization:MT_Bday_2024_Decal_10/name";
+      
+      public static const MT_BDAY_2024_DECAL_10_DESCRIPTION:String = "#vehicle_customization:MT_Bday_2024_Decal_10/description";
+      
+      public static const MT_BDAY_2024_DECAL_11_NAME:String = "#vehicle_customization:MT_Bday_2024_Decal_11/name";
+      
+      public static const MT_BDAY_2024_DECAL_11_DESCRIPTION:String = "#vehicle_customization:MT_Bday_2024_Decal_11/description";
+      
+      public static const MT_BDAY_2024_DECAL_12_NAME:String = "#vehicle_customization:MT_Bday_2024_Decal_12/name";
+      
+      public static const MT_BDAY_2024_DECAL_12_DESCRIPTION:String = "#vehicle_customization:MT_Bday_2024_Decal_12/description";
+      
+      public static const MT_BDAY_2024_INSCRIPTION_01_NAME:String = "#vehicle_customization:MT_Bday_2024_Inscription_01/name";
+      
+      public static const MT_BDAY_2024_INSCRIPTION_01_DESCRIPTION:String = "#vehicle_customization:MT_Bday_2024_Inscription_01/description";
+      
+      public static const MT_BDAY_2024_INSCRIPTION_02_NAME:String = "#vehicle_customization:MT_Bday_2024_Inscription_02/name";
+      
+      public static const MT_BDAY_2024_INSCRIPTION_02_DESCRIPTION:String = "#vehicle_customization:MT_Bday_2024_Inscription_02/description";
+      
+      public static const MT_BDAY_2024_INSCRIPTION_03_NAME:String = "#vehicle_customization:MT_Bday_2024_Inscription_03/name";
+      
+      public static const MT_BDAY_2024_INSCRIPTION_03_DESCRIPTION:String = "#vehicle_customization:MT_Bday_2024_Inscription_03/description";
+      
+      public static const MT_BDAY_2024_INSCRIPTION_04_NAME:String = "#vehicle_customization:MT_Bday_2024_Inscription_04/name";
+      
+      public static const MT_BDAY_2024_INSCRIPTION_04_DESCRIPTION:String = "#vehicle_customization:MT_Bday_2024_Inscription_04/description";
+      
+      public static const MT_BDAY_2024_INSCRIPTION_05_NAME:String = "#vehicle_customization:MT_Bday_2024_Inscription_05/name";
+      
+      public static const MT_BDAY_2024_INSCRIPTION_05_DESCRIPTION:String = "#vehicle_customization:MT_Bday_2024_Inscription_05/description";
+      
+      public static const MT_BDAY_2024_CAMO_04_NAME:String = "#vehicle_customization:MT_Bday_2024_Camo_04/name";
+      
+      public static const MT_BDAY_2024_CAMO_04_DESCRIPTION:String = "#vehicle_customization:MT_Bday_2024_Camo_04/description";
+      
+      public static const MT_BDAY_2024_CAMO_05_NAME:String = "#vehicle_customization:MT_Bday_2024_Camo_05/name";
+      
+      public static const MT_BDAY_2024_CAMO_05_DESCRIPTION:String = "#vehicle_customization:MT_Bday_2024_Camo_05/description";
+      
+      public static const MT_BDAY_2024_DECAL_13_NAME:String = "#vehicle_customization:MT_Bday_2024_Decal_13/name";
+      
+      public static const MT_BDAY_2024_DECAL_13_DESCRIPTION:String = "#vehicle_customization:MT_Bday_2024_Decal_13/description";
+      
+      public static const MT_BDAY_2024_DECAL_14_NAME:String = "#vehicle_customization:MT_Bday_2024_Decal_14/name";
+      
+      public static const MT_BDAY_2024_DECAL_14_DESCRIPTION:String = "#vehicle_customization:MT_Bday_2024_Decal_14/description";
+      
+      public static const MT_BDAY_2024_DECAL_15_NAME:String = "#vehicle_customization:MT_Bday_2024_Decal_15/name";
+      
+      public static const MT_BDAY_2024_DECAL_15_DESCRIPTION:String = "#vehicle_customization:MT_Bday_2024_Decal_15/description";
+      
+      public static const MT_BDAY_2024_PAINT_08_NAME:String = "#vehicle_customization:MT_Bday_2024_Paint_08/name";
+      
+      public static const MT_BDAY_2024_PAINT_08_DESCRIPTION:String = "#vehicle_customization:MT_Bday_2024_Paint_08/description";
+      
+      public static const MT_BDAY_2024_STYLE_05_NAME:String = "#vehicle_customization:MT_Bday_2024_Style_05/name";
+      
+      public static const MT_BDAY_2024_STYLE_05_DESCRIPTION:String = "#vehicle_customization:MT_Bday_2024_Style_05/description";
+      
+      public static const MT_BDAY_2024_STYLE_05_LONGDESCRIPTION:String = "#vehicle_customization:MT_Bday_2024_Style_05/longDescription";
+      
+      public static const BP14ADD_INSCRIPTION_01_2024_MT_NAME:String = "#vehicle_customization:BP14ADD_Inscription_01_2024_MT/name";
+      
+      public static const BP14ADD_INSCRIPTION_01_2024_MT_DESCRIPTION:String = "#vehicle_customization:BP14ADD_Inscription_01_2024_MT/description";
+      
+      public static const BP14ADD_INSCRIPTION_02_2024_MT_NAME:String = "#vehicle_customization:BP14ADD_Inscription_02_2024_MT/name";
+      
+      public static const BP14ADD_INSCRIPTION_02_2024_MT_DESCRIPTION:String = "#vehicle_customization:BP14ADD_Inscription_02_2024_MT/description";
+      
+      public static const BP14ADD_INSCRIPTION_03_2024_MT_NAME:String = "#vehicle_customization:BP14ADD_Inscription_03_2024_MT/name";
+      
+      public static const BP14ADD_INSCRIPTION_03_2024_MT_DESCRIPTION:String = "#vehicle_customization:BP14ADD_Inscription_03_2024_MT/description";
+      
+      public static const BP14ADD_DECAL_01_2024_MT_NAME:String = "#vehicle_customization:BP14ADD_Decal_01_2024_MT/name";
+      
+      public static const BP14ADD_DECAL_01_2024_MT_DESCRIPTION:String = "#vehicle_customization:BP14ADD_Decal_01_2024_MT/description";
+      
+      public static const BP14ADD_DECAL_02_2024_MT_NAME:String = "#vehicle_customization:BP14ADD_Decal_02_2024_MT/name";
+      
+      public static const BP14ADD_DECAL_02_2024_MT_DESCRIPTION:String = "#vehicle_customization:BP14ADD_Decal_02_2024_MT/description";
+      
+      public static const BP14ADD_DECAL_03_2024_MT_NAME:String = "#vehicle_customization:BP14ADD_Decal_03_2024_MT/name";
+      
+      public static const BP14ADD_DECAL_03_2024_MT_DESCRIPTION:String = "#vehicle_customization:BP14ADD_Decal_03_2024_MT/description";
+      
+      public static const BP14ADD_DECAL_04_2024_MT_NAME:String = "#vehicle_customization:BP14ADD_Decal_04_2024_MT/name";
+      
+      public static const BP14ADD_DECAL_04_2024_MT_DESCRIPTION:String = "#vehicle_customization:BP14ADD_Decal_04_2024_MT/description";
+      
+      public static const BP14ADD_DECAL_05_2024_MT_NAME:String = "#vehicle_customization:BP14ADD_Decal_05_2024_MT/name";
+      
+      public static const BP14ADD_DECAL_05_2024_MT_DESCRIPTION:String = "#vehicle_customization:BP14ADD_Decal_05_2024_MT/description";
+      
+      public static const BP14ADD_01_STYLE_01_2024_MT_NAME:String = "#vehicle_customization:BP14ADD_01_Style_01_2024_MT/name";
+      
+      public static const BP14ADD_01_STYLE_01_2024_MT_DESCRIPTION:String = "#vehicle_customization:BP14ADD_01_Style_01_2024_MT/description";
+      
+      public static const BP14ADD_01_STYLE_01_2024_MT_LONGDESCRIPTION:String = "#vehicle_customization:BP14ADD_01_Style_01_2024_MT/longDescription";
+      
+      public static const BP14ADD_01_DECAL_01_2024_MT_NAME:String = "#vehicle_customization:BP14ADD_01_Decal_01_2024_MT/name";
+      
+      public static const BP14ADD_01_DECAL_01_2024_MT_DESCRIPTION:String = "#vehicle_customization:BP14ADD_01_Decal_01_2024_MT/description";
+      
+      public static const BP14ADD_01_DECAL_02_2024_MT_NAME:String = "#vehicle_customization:BP14ADD_01_Decal_02_2024_MT/name";
+      
+      public static const BP14ADD_01_DECAL_02_2024_MT_DESCRIPTION:String = "#vehicle_customization:BP14ADD_01_Decal_02_2024_MT/description";
+      
+      public static const BP14ADD_01_DECAL_03_2024_MT_NAME:String = "#vehicle_customization:BP14ADD_01_Decal_03_2024_MT/name";
+      
+      public static const BP14ADD_01_DECAL_03_2024_MT_DESCRIPTION:String = "#vehicle_customization:BP14ADD_01_Decal_03_2024_MT/description";
+      
+      public static const BP14ADD_01_CAMO_01_2024_MT_NAME:String = "#vehicle_customization:BP14ADD_01_Camo_01_2024_MT/name";
+      
+      public static const BP14ADD_01_CAMO_01_2024_MT_DESCRIPTION:String = "#vehicle_customization:BP14ADD_01_Camo_01_2024_MT/description";
+      
+      public static const BP14ADD_01_PAINT_2024_MT_NAME:String = "#vehicle_customization:BP14ADD_01_Paint_2024_MT/name";
+      
+      public static const BP14ADD_01_PAINT_2024_MT_DESCRIPTION:String = "#vehicle_customization:BP14ADD_01_Paint_2024_MT/description";
+      
+      public static const BP14ADD_02_CAMO_01_2024_MT_NAME:String = "#vehicle_customization:BP14ADD_02_Camo_01_2024_MT/name";
+      
+      public static const BP14ADD_02_CAMO_01_2024_MT_DESCRIPTION:String = "#vehicle_customization:BP14ADD_02_Camo_01_2024_MT/description";
+      
+      public static const BP14ADD_02_STYLE_01_2024_MT_NAME:String = "#vehicle_customization:BP14ADD_02_Style_01_2024_MT/name";
+      
+      public static const BP14ADD_02_STYLE_01_2024_MT_DESCRIPTION:String = "#vehicle_customization:BP14ADD_02_Style_01_2024_MT/description";
+      
+      public static const BP14ADD_02_STYLE_01_2024_MT_LONGDESCRIPTION:String = "#vehicle_customization:BP14ADD_02_Style_01_2024_MT/longDescription";
+      
+      public static const BP14ADD_02_PAINT_2024_MT_NAME:String = "#vehicle_customization:BP14ADD_02_Paint_2024_MT/name";
+      
+      public static const BP14ADD_02_PAINT_2024_MT_DESCRIPTION:String = "#vehicle_customization:BP14ADD_02_Paint_2024_MT/description";
+      
+      public static const BP14ADD_03_DECAL_01_2024_MT_NAME:String = "#vehicle_customization:BP14ADD_03_Decal_01_2024_MT/name";
+      
+      public static const BP14ADD_03_DECAL_01_2024_MT_DESCRIPTION:String = "#vehicle_customization:BP14ADD_03_Decal_01_2024_MT/description";
+      
+      public static const BP14ADD_03_STYLE_01_2024_MT_NAME:String = "#vehicle_customization:BP14ADD_03_Style_01_2024_MT/name";
+      
+      public static const BP14ADD_03_STYLE_01_2024_MT_DESCRIPTION:String = "#vehicle_customization:BP14ADD_03_Style_01_2024_MT/description";
+      
+      public static const BP14ADD_03_STYLE_01_2024_MT_LONGDESCRIPTION:String = "#vehicle_customization:BP14ADD_03_Style_01_2024_MT/longDescription";
+      
+      public static const BP14ADD_03_PAINT_01_2024_MT_NAME:String = "#vehicle_customization:BP14ADD_03_Paint_01_2024_MT/name";
+      
+      public static const BP14ADD_03_PAINT_01_2024_MT_DESCRIPTION:String = "#vehicle_customization:BP14ADD_03_Paint_01_2024_MT/description";
+      
+      public static const BP14ADD_03_PAINT_02_2024_MT_NAME:String = "#vehicle_customization:BP14ADD_03_Paint_02_2024_MT/name";
+      
+      public static const BP14ADD_03_PAINT_02_2024_MT_DESCRIPTION:String = "#vehicle_customization:BP14ADD_03_Paint_02_2024_MT/description";
+      
+      public static const BP14ADD_03_PAINT_03_2024_MT_NAME:String = "#vehicle_customization:BP14ADD_03_Paint_03_2024_MT/name";
+      
+      public static const BP14ADD_03_PAINT_03_2024_MT_DESCRIPTION:String = "#vehicle_customization:BP14ADD_03_Paint_03_2024_MT/description";
+      
+      public static const BP14ADD_03_CAMO_01_2024_MT_NAME:String = "#vehicle_customization:BP14ADD_03_Camo_01_2024_MT/name";
+      
+      public static const BP14ADD_03_CAMO_01_2024_MT_DESCRIPTION:String = "#vehicle_customization:BP14ADD_03_Camo_01_2024_MT/description";
+      
+      public static const BP14ADD_03_CAMO_02_2024_MT_NAME:String = "#vehicle_customization:BP14ADD_03_Camo_02_2024_MT/name";
+      
+      public static const BP14ADD_03_CAMO_02_2024_MT_DESCRIPTION:String = "#vehicle_customization:BP14ADD_03_Camo_02_2024_MT/description";
+      
+      public static const BP14ADD_03_CAMO_03_2024_MT_NAME:String = "#vehicle_customization:BP14ADD_03_Camo_03_2024_MT/name";
+      
+      public static const BP14ADD_03_CAMO_03_2024_MT_DESCRIPTION:String = "#vehicle_customization:BP14ADD_03_Camo_03_2024_MT/description";
+      
+      public static const BP14ADD_03_CAMO_04_2024_MT_NAME:String = "#vehicle_customization:BP14ADD_03_Camo_04_2024_MT/name";
+      
+      public static const BP14ADD_03_CAMO_04_2024_MT_DESCRIPTION:String = "#vehicle_customization:BP14ADD_03_Camo_04_2024_MT/description";
+      
+      public static const BP14ADD_03_CAMO_05_2024_MT_NAME:String = "#vehicle_customization:BP14ADD_03_Camo_05_2024_MT/name";
+      
+      public static const BP14ADD_03_CAMO_05_2024_MT_DESCRIPTION:String = "#vehicle_customization:BP14ADD_03_Camo_05_2024_MT/description";
+      
+      public static const BP14ADD_03_CAMO_06_2024_MT_NAME:String = "#vehicle_customization:BP14ADD_03_Camo_06_2024_MT/name";
+      
+      public static const BP14ADD_03_CAMO_06_2024_MT_DESCRIPTION:String = "#vehicle_customization:BP14ADD_03_Camo_06_2024_MT/description";
+      
+      public static const A157_M_VII_Y_3DST_MT_LONGDESCRIPTION:String = "#vehicle_customization:A157_M_VII_Y_3Dst_MT/longDescription";
+      
+      public static const TANKDAY_PAINT_2024_MT_NAME:String = "#vehicle_customization:TankDay_Paint_2024_MT/name";
+      
+      public static const TANKDAY_PAINT_2024_MT_DESCRIPTION:String = "#vehicle_customization:TankDay_Paint_2024_MT/description";
+      
+      public static const TANKDAY_INSCRIPTION_2024_MT_NAME:String = "#vehicle_customization:TankDay_Inscription_2024_MT/name";
+      
+      public static const TANKDAY_INSCRIPTION_2024_MT_DESCRIPTION:String = "#vehicle_customization:TankDay_Inscription_2024_MT/description";
+      
+      public static const TANKDAY_CAMO_2024_MT_NAME:String = "#vehicle_customization:TankDay_Camo_2024_MT/name";
+      
+      public static const TANKDAY_CAMO_2024_MT_DESCRIPTION:String = "#vehicle_customization:TankDay_Camo_2024_MT/description";
+      
+      public static const TANKDAY_STYLE_2024_MT_NAME:String = "#vehicle_customization:TankDay_Style_2024_MT/name";
+      
+      public static const TANKDAY_STYLE_2024_MT_DESCRIPTION:String = "#vehicle_customization:TankDay_Style_2024_MT/description";
+      
+      public static const TANKDAY_STYLE_2024_MT_LONGDESCRIPTION:String = "#vehicle_customization:TankDay_Style_2024_MT/longDescription";
        
       
       public function VEHICLE_CUSTOMIZATION()

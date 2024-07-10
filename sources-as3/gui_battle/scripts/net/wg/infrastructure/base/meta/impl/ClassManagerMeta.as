@@ -405,6 +405,12 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.mapsTraining.views.prebattleTimer.MapsTrainingPrebattleTimer;
    import net.wg.gui.battle.mapsTraining.views.prebattleTimer.MapsTrainingPrebattleTimerBg;
    import net.wg.gui.battle.mapsTraining.views.prebattleTimer.MapsTrainingTextFieldContainer;
+   import net.wg.gui.battle.races.RacesBattlePage;
+   import net.wg.gui.battle.races.components.RacesDigitsChain;
+   import net.wg.gui.battle.races.components.RacesPreBattleTimer;
+   import net.wg.gui.battle.races.components.RacesTimerAnim;
+   import net.wg.gui.battle.races.views.RacesBattleLoading;
+   import net.wg.gui.battle.races.views.RacesHud;
    import net.wg.gui.battle.random.battleloading.renderers.RandomPlayerItemRenderer;
    import net.wg.gui.battle.random.battleloading.renderers.RandomRendererContainer;
    import net.wg.gui.battle.random.views.BattlePage;
@@ -722,11 +728,12 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.minimap.components.entries.interfaces.IMinimapEntryWithNonScaleContent;
    import net.wg.gui.battle.views.minimap.components.entries.interfaces.IVehicleMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.personal.AnimationMinimapEntry;
-   import net.wg.gui.battle.views.minimap.components.entries.personal.ArcadeCameraMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.personal.DeadPointMinimapEntry;
+   import net.wg.gui.battle.views.minimap.components.entries.personal.DirectionMinimapEntry;
+   import net.wg.gui.battle.views.minimap.components.entries.personal.DistanceDrawer;
    import net.wg.gui.battle.views.minimap.components.entries.personal.PingFlashMinimapEntry;
+   import net.wg.gui.battle.views.minimap.components.entries.personal.RectangleAreaMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.personal.SimpleAttentionToFlashMinimapEntry;
-   import net.wg.gui.battle.views.minimap.components.entries.personal.StrategicCameraMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.personal.VideoCameraMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.personal.ViewPointMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.personal.ViewRangeCirclesMinimapEntry;
@@ -1793,6 +1800,18 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_MAPSTRAINING_VIEWS_PREBATTLETIMER_MAPSTRAININGTEXTFIELDCONTAINER:Class = MapsTrainingTextFieldContainer;
       
+      public static const NET_WG_GUI_BATTLE_RACES_RACESBATTLEPAGE:Class = RacesBattlePage;
+      
+      public static const NET_WG_GUI_BATTLE_RACES_COMPONENTS_RACESDIGITSCHAIN:Class = RacesDigitsChain;
+      
+      public static const NET_WG_GUI_BATTLE_RACES_COMPONENTS_RACESPREBATTLETIMER:Class = RacesPreBattleTimer;
+      
+      public static const NET_WG_GUI_BATTLE_RACES_COMPONENTS_RACESTIMERANIM:Class = RacesTimerAnim;
+      
+      public static const NET_WG_GUI_BATTLE_RACES_VIEWS_RACESBATTLELOADING:Class = RacesBattleLoading;
+      
+      public static const NET_WG_GUI_BATTLE_RACES_VIEWS_RACESHUD:Class = RacesHud;
+      
       public static const NET_WG_GUI_BATTLE_RANDOM_BATTLELOADING_RENDERERS_RANDOMPLAYERITEMRENDERER:Class = RandomPlayerItemRenderer;
       
       public static const NET_WG_GUI_BATTLE_RANDOM_BATTLELOADING_RENDERERS_RANDOMRENDERERCONTAINER:Class = RandomRendererContainer;
@@ -2427,15 +2446,17 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_PERSONAL_ANIMATIONMINIMAPENTRY:Class = AnimationMinimapEntry;
       
-      public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_PERSONAL_ARCADECAMERAMINIMAPENTRY:Class = ArcadeCameraMinimapEntry;
-      
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_PERSONAL_DEADPOINTMINIMAPENTRY:Class = DeadPointMinimapEntry;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_PERSONAL_DIRECTIONMINIMAPENTRY:Class = DirectionMinimapEntry;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_PERSONAL_DISTANCEDRAWER:Class = DistanceDrawer;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_PERSONAL_PINGFLASHMINIMAPENTRY:Class = PingFlashMinimapEntry;
       
-      public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_PERSONAL_SIMPLEATTENTIONTOFLASHMINIMAPENTRY:Class = SimpleAttentionToFlashMinimapEntry;
+      public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_PERSONAL_RECTANGLEAREAMINIMAPENTRY:Class = RectangleAreaMinimapEntry;
       
-      public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_PERSONAL_STRATEGICCAMERAMINIMAPENTRY:Class = StrategicCameraMinimapEntry;
+      public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_PERSONAL_SIMPLEATTENTIONTOFLASHMINIMAPENTRY:Class = SimpleAttentionToFlashMinimapEntry;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_PERSONAL_VIDEOCAMERAMINIMAPENTRY:Class = VideoCameraMinimapEntry;
       

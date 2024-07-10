@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>2.000000</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Hull_hexagon</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/tank_customization/A157_M_VII_Y_3Dst/A157_M_VII_Y_3Dst_hull_hexagon.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>s_nd0</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.000000 0.000000 0.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 1.666667</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 1.666667</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.600000</startTime>
+				<value>1.000000 0.000000 0.000000 1.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 0.188935</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>1.000000 0.000000 0.000000 1.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -0.167074</outTangent>
+				<tangentMode>66305</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.000000</startTime>
+				<value>1.000000 0.000000 0.000000 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.126240</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 -0.857143</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property vector4</name>
+			<type>vector4</type>
+			<identifier>s_nd0</identifier>
+			<property>diffuseUVSpeedAlphaOffset</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 0.000000 0.000000</value>
+				<inTangent>0.000000 -0.600000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 -0.600000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.666667</startTime>
+				<value>0.000000 -1.000000 0.000000 0.000000</value>
+				<inTangent>-0.000000 -0.600000 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.000000 -0.600000 -0.000000 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

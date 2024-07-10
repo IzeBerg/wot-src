@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<params/>
+	<node>
+		<name>Start</name>
+		<type>sleep</type>
+		<time>1.000000 1.000000</time>
+		<transition>
+			<to>Sequence</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>0.010000</exitOffset>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>0.000000 -84.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>Sequence</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/A157_M_VII_Y_3Dst/A157_M_VII_Y_3Dst_turret_hexagon.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<transition>
+			<to>Sleep</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>1.000000</exitOffset>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>4.500000 37.500000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>Sleep</name>
+		<type>sleep</type>
+		<time>28.000000 28.000000</time>
+		<transition>
+			<to>Start</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>1.000000</exitOffset>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-202.500000 -23.000000 0.000000</uiPosition>
+	</node>
+</root>

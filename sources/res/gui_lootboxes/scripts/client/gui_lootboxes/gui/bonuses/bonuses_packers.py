@@ -413,6 +413,8 @@ class LootBoxTokensBonusUIPacker(TokenBonusUIPacker):
                 result.append(R.views.gui_lootboxes.lobby.gui_lootboxes.tooltips.CompensationTooltip())
             elif tokenID.startswith(constants.LOOTBOX_TOKEN_PREFIX):
                 result.append(R.views.gui_lootboxes.lobby.gui_lootboxes.tooltips.LootboxTooltip())
+            elif tokenID.startswith(constants.LOOTBOX_KEY_PREFIX):
+                result.append(R.views.gui_lootboxes.lobby.gui_lootboxes.tooltips.LootboxKeyTooltip())
             else:
                 result.append(BACKPORT_TOOLTIP_CONTENT_ID)
 

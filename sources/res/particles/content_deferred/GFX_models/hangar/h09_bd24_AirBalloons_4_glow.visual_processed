@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>lambert1</identifier>
+					<fx>shaders/custom/glow_animated.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						destBlend
+						<Int>2</Int>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h09_mt_bday_2024/Environment/hd_h20_081_AirBalloon_02_Ident_02_AM.dds</Texture>
+					</property>
+					<property>
+						g_columnLightingParamsPacked
+						<Vector4>0.490000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_distortionAmountPacked
+						<Vector4>0.000000 0.000000 34.630001 84.809998</Vector4>
+					</property>
+					<property>
+						g_distortionMapTexture
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/aurora_distortion.dds</Texture>
+					</property>
+					<property>
+						g_distortionUVScalePacked
+						<Vector4>10.000000 10.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_distortionUVSpeedPacked
+						<Vector4>5.000000 5.000000 -0.200000 0.200000</Vector4>
+					</property>
+					<property>
+						g_freshnelParamsPacked
+						<Vector4>1.000000 1.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_glowColorMasked
+						<Vector4>0.847059 0.462745 0.000000 0.100000</Vector4>
+					</property>
+					<property>
+						g_glowColorProcedural
+						<Vector4>1.000000 0.866667 0.223529 1.000000</Vector4>
+					</property>
+					<property>
+						g_glowMask1Texture
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Masks/gradient_mask.dds</Texture>
+					</property>
+					<property>
+						g_glowMask2Texture
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Masks/Lighting_mask_02.dds</Texture>
+					</property>
+					<property>
+						g_lightCenterOffsetAndMult
+						<Vector4>0.000000 5.000000 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_lightMultipliersPacked
+						<Vector4>3.000000 40.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_linZOffset
+						<Float>0.500000</Float>
+					</property>
+					<property>
+						g_pointLightingParamsPacked
+						<Vector4>2.000000 3.000000 15.200000 10.000000</Vector4>
+					</property>
+					<property>
+						g_uvSpeedPacked
+						<Vector4>0.000000 0.000000 0.600000 0.000000</Vector4>
+					</property>
+					<property>
+						g_uvStretchPacked
+						<Vector4>0.000000 0.000000 -15.900000 -25.799999</Vector4>
+					</property>
+					<property>
+						g_useTimeForMask2
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_useDistortionForMask1
+						<Bool>false</Bool>
+					</property>
+				</material>
+				<groupOrigin>-0.000000 11.367578 0.000003</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-7.767432 2.728056 -7.767429</min>
+		<max>7.767431 20.007099 7.767434</max>
+	</boundingBox>
+	<geometrySize>33160</geometrySize>
+	<minUVDensity>0.001257</minUVDensity>
+</root>

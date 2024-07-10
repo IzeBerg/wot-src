@@ -249,6 +249,10 @@ package net.wg.data.constants.generated
       
       public static const DYNAMIC:String = "dynamic";
       
+      public static const FRANCE_F00_AMD_PANHARD_178_B_02:String = "france-F00_AMD_Panhard_178B_02";
+      
+      public static const FRANCE_F00_AMD_PANHARD_178_B_03:String = "france-F00_AMD_Panhard_178B_03";
+      
       public static const FRANCE_F01_RENAULT_FT:String = "france-F01_RenaultFT";
       
       public static const FRANCE_F02_D1:String = "france-F02_D1";
@@ -1109,6 +1113,16 @@ package net.wg.data.constants.generated
       
       public static const POLAND_PL25_CS_52_C:String = "poland-Pl25_CS_52_C";
       
+      public static const POLAND_PL27_SDP_WZ_66_T:String = "poland-Pl27_SDP_Wz_66T";
+      
+      public static const POLAND_PL29_NC_WZ_70_T_T:String = "poland-Pl29_NC_Wz_70T_T";
+      
+      public static const POLAND_PL30_SDP_WZ58_T_T:String = "poland-Pl30_SDP_Wz58T_T";
+      
+      public static const POLAND_PL32_SDP_WZ_44_T:String = "poland-Pl32_SDP_Wz_44_T";
+      
+      public static const POLAND_PL34_CS_63_02:String = "poland-Pl34_CS_63_02";
+      
       public static const PURPLE_AT_SPG:String = "purple_AT-SPG";
       
       public static const PURPLE_AT_SPG_HUNTED:String = "purple_AT-SPG_hunted";
@@ -1498,6 +1512,10 @@ package net.wg.data.constants.generated
       public static const SWEDEN_S33_LATT_STRIDSFORDON_120:String = "sweden-S33_Latt_Stridsfordon_120";
       
       public static const SWEDEN_S34_LAGO_M38:String = "sweden-S34_Lago_M38";
+      
+      public static const UK_GB00_AEC_ARMOURED_CAR_02:String = "uk-GB00_AEC_Armoured_Car_02";
+      
+      public static const UK_GB00_AEC_ARMOURED_CAR_03:String = "uk-GB00_AEC_Armoured_Car_03";
       
       public static const UK_GB01_MEDIUM_MARK_I:String = "uk-GB01_Medium_Mark_I";
       
@@ -2310,6 +2328,8 @@ package net.wg.data.constants.generated
       public static const USSR_R211_OBJECT_261_4:String = "ussr-R211_Object_261_4";
       
       public static const USSR_R211_OBJECT_261_5:String = "ussr-R211_Object_261_5";
+      
+      public static const USSR_R218_PANTHER_N_518:String = "ussr-R218_Panther_N_518";
       
       public static const USSR_R219_WAFFENTRAGER_E100_GOLD:String = "ussr-R219_Waffentrager_E100_Gold";
       

@@ -1185,6 +1185,8 @@ package
       
       public static const MOUSE_SENSITIVITY_SNIPER:String = "#settings:mouse/sensitivity/sniper";
       
+      public static const MOUSE_SENSITIVITY_ASSAULT:String = "#settings:mouse/sensitivity/assault";
+      
       public static const MOUSE_SENSITIVITY_ART:String = "#settings:mouse/sensitivity/art";
       
       public static const MOUSE_SENSITIVITY_ART2:String = "#settings:mouse/sensitivity/art2";

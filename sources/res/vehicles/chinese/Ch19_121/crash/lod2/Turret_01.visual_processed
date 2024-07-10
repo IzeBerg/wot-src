@@ -22,7 +22,7 @@
 					<row0>1.000000 0.000000 0.000000</row0>
 					<row1>0.000000 1.000000 0.000000</row1>
 					<row2>0.000000 0.000000 1.000000</row2>
-					<row3>0.032249 0.267913 1.129181</row3>
+					<row3>0.030086 0.267913 1.129181</row3>
 				</transform>
 			</node>
 		</node>
@@ -44,14 +44,6 @@
 						<Texture>vehicles/chinese/Ch19_121/121_turret_01_AM.dds</Texture>
 					</property>
 					<property>
-						alphaReference
-						<Int>0</Int>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>false</Bool>
-					</property>
-					<property>
 						excludeMaskAndAOMap
 						<Texture>vehicles/chinese/Ch19_121/121_turret_01_AO.dds</Texture>
 					</property>
@@ -65,18 +57,7 @@
 					</property>
 					<property>
 						g_crashUVTiling
-						<Vector4>
-							2 2 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
-					</property>
-					<property>
-						doubleSided
-						<Bool>false</Bool>
-					</property>
-					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
+						<Vector4>2.000000 2.000000 0.000000 0.000000</Vector4>
 					</property>
 					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
 					<property>
@@ -88,14 +69,14 @@
 						<Texture>vehicles/chinese/Ch19_121/121_turret_01_ANM.dds</Texture>
 					</property>
 				</material>
-				<groupOrigin>-0.011020 0.657708 0.054667</groupOrigin>
+				<groupOrigin>-0.002525 1.129984 0.013622</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<boundingBox>
-		<min>-1.325509 -0.038250 -1.425005</min>
-		<max>1.303468 1.353667 1.534339</max>
+		<min>-1.322363 -0.038561 -1.414463</min>
+		<max>1.317313 2.298528 1.441706</max>
 	</boundingBox>
-	<geometrySize>143346</geometrySize>
-	<minUVDensity>0.009071</minUVDensity>
+	<geometrySize>106788</geometrySize>
+	<minUVDensity>0.002116</minUVDensity>
 </root>

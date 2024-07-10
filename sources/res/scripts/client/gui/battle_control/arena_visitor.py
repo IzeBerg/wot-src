@@ -63,6 +63,7 @@ class _ClientArenaSkeleton(object):
     extraData = {}
     viewPoints = []
     isFogOfWarEnabled = False
+    arenaInfo = None
 
 
 class _ArenaTypeSkeleton(object):
@@ -720,3 +721,7 @@ class _ClientArenaVisitor(IClientArenaVisitor):
     @catch_attribute_exception(default=_ClientArenaSkeleton.componentSystem)
     def getComponentSystem(self):
         return self._arena.componentSystem
+
+    @catch_attribute_exception(default=_ClientArenaSkeleton.arenaInfo)
+    def getArenaInfo(self):
+        return self._arena.arenaInfo

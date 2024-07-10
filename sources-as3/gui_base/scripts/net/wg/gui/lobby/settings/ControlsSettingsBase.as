@@ -28,7 +28,11 @@ package net.wg.gui.lobby.settings
       
       public var mouseSniperSensLabel:TextField = null;
       
+      public var mouseAssaultSensLabel:TextField = null;
+      
       public var mouseSniperSensSlider:Slider = null;
+      
+      public var mouseAssaultSensSlider:Slider = null;
       
       public var mouseStrategicSensLabel:TextField = null;
       
@@ -66,8 +70,11 @@ package net.wg.gui.lobby.settings
          this.mouseArcadeSensSlider.dispose();
          this.mouseArcadeSensSlider = null;
          this.mouseSniperSensLabel = null;
+         this.mouseAssaultSensLabel = null;
          this.mouseSniperSensSlider.dispose();
          this.mouseSniperSensSlider = null;
+         this.mouseAssaultSensSlider.dispose();
+         this.mouseAssaultSensSlider = null;
          this.mouseStrategicSensLabel = null;
          this.mouseStrategicSensSlider.dispose();
          this.mouseStrategicSensSlider = null;
@@ -92,6 +99,7 @@ package net.wg.gui.lobby.settings
          this.mouseSensitivityLabel.text = SETTINGS.MOUSE_SENSITIVITY_HEADER;
          this.mouseArcadeSensLabel.text = SETTINGS.MOUSE_SENSITIVITY_MAIN;
          this.mouseSniperSensLabel.text = SETTINGS.MOUSE_SENSITIVITY_SNIPER;
+         this.mouseAssaultSensLabel.text = SETTINGS.MOUSE_SENSITIVITY_ASSAULT;
          this.mouseStrategicSensLabel.text = SETTINGS.MOUSE_SENSITIVITY_ART;
          this.mouseAssistAimSensLabel.text = SETTINGS.MOUSE_SENSITIVITY_ART2;
          this.mouseHorzInvertCheckbox.label = SETTINGS.MOUSE_SENSITIVITY_INVERTATIONHOR;

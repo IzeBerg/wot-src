@@ -12,6 +12,7 @@ from gui.impl.gen.view_models.common.missions.bonuses.bonus_model import BonusMo
 from gui.impl.gen.view_models.common.missions.bonuses.icon_bonus_model import IconBonusModel
 from gui.impl.gen.view_models.common.missions.bonuses.item_bonus_model import ItemBonusModel
 from gui.impl.gen.view_models.common.missions.bonuses.token_bonus_model import TokenBonusModel
+from gui.impl.lobby.loot_box.loot_box_helper import getLootBoxIDFromToken, getLootBoxKeyIDFromToken, getKeyByTokenID
 from gui.ranked_battles.constants import YEAR_POINTS_TOKEN
 from gui.server_events.awards_formatters import AWARDS_SIZES, BATTLE_BONUS_X5_TOKEN, GOLD_MISSION, ItemsBonusFormatter, TOKEN_SIZES, TokenBonusFormatter, formatCountLabel, CREW_BONUS_X3_TOKEN
 from gui.server_events.bonuses import formatBlueprint
@@ -230,6 +231,12 @@ class TokenBonusUIPacker(BaseBonusUIPacker):
                     result.append(lootBoxRes())
                 else:
                     result.append(BACKPORT_TOOLTIP_CONTENT_ID)
+            elif token.startswith(constants.LOOTBOX_KEY_PREFIX):
+                lootboxKeyRes = R.views.dyn('gui_lootboxes').dyn('lobby').dyn('gui_lootboxes').dyn('tooltips').dyn('LootboxKeyTooltip')
+                if lootboxKeyRes.exists():
+                    result.append(lootboxKeyRes())
+                else:
+                    result.append(BACKPORT_TOOLTIP_CONTENT_ID)
             else:
                 result.append(BACKPORT_TOOLTIP_CONTENT_ID)
 
@@ -242,7 +249,8 @@ class TokenBonusUIPacker(BaseBonusUIPacker):
            COMPLEX_TOKEN: cls.__packComplexToken, 
            YEAR_POINTS_TOKEN: cls.__packRankedToken, 
            GOLD_MISSION: cls.__packGoldMissionToken, 
-           constants.LOOTBOX_TOKEN_PREFIX: cls.__packLootboxToken}
+           constants.LOOTBOX_TOKEN_PREFIX: cls.__packLootboxToken, 
+           constants.LOOTBOX_KEY_PREFIX: cls.__packLootBoxKeyToken}
 
     @classmethod
     def _packToken(cls, bonusPacker, bonus, *args):
@@ -264,6 +272,8 @@ class TokenBonusUIPacker(BaseBonusUIPacker):
             return GOLD_MISSION
         if tokenID.startswith(constants.LOOTBOX_TOKEN_PREFIX):
             return constants.LOOTBOX_TOKEN_PREFIX
+        if tokenID.startswith(constants.LOOTBOX_KEY_PREFIX):
+            return constants.LOOTBOX_KEY_PREFIX
         return ''
 
     @classmethod
@@ -273,7 +283,8 @@ class TokenBonusUIPacker(BaseBonusUIPacker):
            COMPLEX_TOKEN: cls.__getComplexToolTip, 
            YEAR_POINTS_TOKEN: cls.__getRankedPointToolTip, 
            GOLD_MISSION: cls.__getGoldMissionTooltip, 
-           constants.LOOTBOX_TOKEN_PREFIX: cls.__packLootboxToolTip}
+           constants.LOOTBOX_TOKEN_PREFIX: cls.__packLootboxToolTip, 
+           constants.LOOTBOX_KEY_PREFIX: cls.__packLootboxKeyToolTip}
 
     @classmethod
     def __packComplexToken(cls, model, bonus, complexToken, token):
@@ -335,6 +346,26 @@ class TokenBonusUIPacker(BaseBonusUIPacker):
             model.setIcon(name)
             return model
 
+    @classmethod
+    def __packLootBoxKeyToken(cls, model, bonus, complexToken, token):
+        count = bonus.getCount()
+        lootBoxKeyRes = R.views.dyn('gui_lootboxes').dyn('lobby').dyn('gui_lootboxes').dyn('tooltips').dyn('LootboxKeyTooltip')
+        if count < 0 or not lootBoxKeyRes.exists():
+            return
+        lootBoxKey = getKeyByTokenID(token.id)
+        if lootBoxKey is None:
+            return
+        else:
+            name = lootBoxKey.iconName
+            model.setName(bonus.getName())
+            model.setTooltipContentId(str(lootBoxKeyRes()))
+            model.setIconSmall(backport.image(R.images.gui.maps.icons.quests.bonuses.dyn(AWARDS_SIZES.SMALL).dyn(name, default=R.invalid)()))
+            model.setIconBig(backport.image(R.images.gui.maps.icons.quests.bonuses.dyn(AWARDS_SIZES.BIG).dyn(name, default=R.invalid)()))
+            model.setValue(str(count))
+            model.setLabel(backport.text(R.strings.lootboxes.userName.dyn(name)()))
+            model.setIcon(name)
+            return model
+
     @staticmethod
     def __getBonusFactorTooltip(name):
 
@@ -364,7 +395,11 @@ class TokenBonusUIPacker(BaseBonusUIPacker):
 
     @classmethod
     def __packLootboxToolTip(cls, complexToken, token):
-        return {'lootBoxID': int(token.id.rsplit(':', 1)[(-1)])}
+        return {'lootBoxID': int(getLootBoxIDFromToken(token.id))}
+
+    @classmethod
+    def __packLootboxKeyToolTip(cls, complexToken, token):
+        return {'lootBoxKeyID': int(getLootBoxKeyIDFromToken(token.id))}
 
 
 class ItemBonusUIPacker(BaseBonusUIPacker):

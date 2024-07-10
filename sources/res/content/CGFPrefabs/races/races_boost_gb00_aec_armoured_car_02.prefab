@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<version>3</version>
+	<GameObjects>
+		<GameObject>
+			<name>races_boost_GB00_AEC_Armoured_Car_02</name>
+			<UUID>f5f7df43-52db-48b8-a7d3-8e6ef1fd3f91</UUID>
+			<flags>0</flags>
+		</GameObject>
+		<GameObject>
+			<name>nullModel_boost</name>
+			<UUID>6b8dff48-6b4a-4115-b1fe-ef07a4326601</UUID>
+			<flags>0</flags>
+		</GameObject>
+	</GameObjects>
+	<components>
+		<ComponentPool>
+			<type>Hierarchy</type>
+			<version>2</version>
+			<component>
+				<objectIndex>1</objectIndex>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Parent</name>
+						<link>f5f7df43-52db-48b8-a7d3-8e6ef1fd3f91</link>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>Transform</type>
+			<version>1</version>
+			<component>
+				<objectIndex>0</objectIndex>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>0 0 0</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>-0 0 0</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>1</objectIndex>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>0 0 0</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>0 0 0</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>Animator</type>
+			<version>2</version>
+			<component>
+				<objectIndex>1</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Auto Start</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Layers</name>
+						<collection>
+							<item>
+								<object>
+									<property>
+										<name>Path</name>
+										<isAsset>true</isAsset>
+										<value>particles/eff_sequence/102_race_2024/102_race_ability_boost_GB00_Car_02.seq</value>
+									</property>
+									<property>
+										<name>Properties</name>
+										<object>
+											<property>
+												<name>delay</name>
+												<value>0</value>
+											</property>
+											<property>
+												<name>speed</name>
+												<value>1</value>
+											</property>
+											<property>
+												<name>loop</name>
+												<value>0</value>
+											</property>
+											<property>
+												<name>loopCount</name>
+												<value>-1</value>
+											</property>
+										</object>
+									</property>
+									<property>
+										<name>Clip</name>
+										<value>&lt;Default Clip&gt;</value>
+									</property>
+									<property>
+										<name>LayerName</name>
+										<value>0</value>
+									</property>
+									<property>
+										<name>Weight</name>
+										<value>1</value>
+									</property>
+									<property>
+										<name>LOD Scale</name>
+										<value>1</value>
+									</property>
+									<property>
+										<name>Auto Start</name>
+										<value>1</value>
+									</property>
+									<property>
+										<name>Graphics preset</name>
+										<value>2</value>
+									</property>
+								</object>
+							</item>
+						</collection>
+					</property>
+					<property>
+						<name>Path</name>
+						<isAsset>true</isAsset>
+						<value>particles/eff_sequence/102_race_2024/102_race_ability_boost_GB00_Car_02.seq</value>
+					</property>
+					<property>
+						<name>Delay</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Speed</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Loop</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Loop Count</name>
+						<value>-1</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+	</components>
+</root>

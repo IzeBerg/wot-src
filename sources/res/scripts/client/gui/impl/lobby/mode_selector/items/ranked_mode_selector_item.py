@@ -48,17 +48,11 @@ class RankedModeSelectorItem(ModeSelectorLegacyItem):
         statusNotActive = self.__getRankedNotActiveStatus()
         timeLeft = self.__getTimeLeft()
         with self.viewModel.transaction() as (vm):
-            vm.setEventName(self.__getRankedName())
+            vm.setEventName('')
             vm.setStatusNotActive(statusNotActive)
             vm.setTimeLeft(str(timeLeft))
             self.__fillRankedWidget(vm.widget)
         setBattlePassState(self.viewModel)
-
-    def __getRankedName(self):
-        currentSeason = self.__rankedBattleController.getCurrentSeason()
-        if currentSeason:
-            return self.__getRankedBattlesSeasonName(currentSeason)
-        return ''
 
     def __getRankedNotActiveStatus(self):
         msR = R.strings.mode_selector.event
@@ -73,7 +67,7 @@ class RankedModeSelectorItem(ModeSelectorLegacyItem):
                 prevSeason = self.__rankedBattleController.getPreviousSeason()
                 if prevSeason is not None:
                     name = self.__getRankedBattlesSeasonName(prevSeason)
-                    return backport.text(msR.finished(), eventName=name)
+                    return backport.text(msR.finished())
         return ''
 
     def __getTimeLeft(self):

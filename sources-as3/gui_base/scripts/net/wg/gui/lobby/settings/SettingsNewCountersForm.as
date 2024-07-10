@@ -273,9 +273,9 @@ package net.wg.gui.lobby.settings
          {
             return new CounterProps(COUNTER_KEY_INPUT_OFFSET_X,COUNTER_KEY_INPUT_OFFSET_Y,TextFormatAlign.LEFT,true,Linkages.COUNTER_LINE_KEY_UI);
          }
-         if(param1 == SettingsConfigHelper.TYPE_STEP_SLIDER)
+         if(param1 == SettingsConfigHelper.TYPE_STEP_SLIDER || param1 == SettingsConfigHelper.TYPE_SLIDER)
          {
-            return new CounterProps(COUNTER_STEP_SLIDER_OFFSET_X,COUNTER_STEP_SLIDER_OFFSET_Y,TextFormatAlign.LEFT,true,Linkages.COUNTER_LINE_UI);
+            return new CounterProps(COUNTER_STEP_SLIDER_OFFSET_X,COUNTER_STEP_SLIDER_OFFSET_Y,TextFormatAlign.LEFT,false,Linkages.COUNTER_LINE_UI);
          }
          if(param1 == SettingsConfigHelper.TYPE_BUTTON)
          {

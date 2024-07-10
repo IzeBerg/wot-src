@@ -78,7 +78,7 @@ from messenger.formatters.service_channel_helpers import EOL, MessageData, getCu
 from nations import NAMES
 from shared_utils import BoundMethodWeakref, first
 from skeletons.gui.battle_matters import IBattleMattersController
-from skeletons.gui.game_control import IBattlePassController, IBattleRoyaleController, ICollectionsSystemController, IEpicBattleMetaGameController, IFunRandomController, IMapboxController, IRankedBattlesController, IResourceWellController, IWinbackController, IWotPlusController, IBRProgressionOnTokensController, IEarlyAccessController
+from skeletons.gui.game_control import IBattlePassController, IBattleRoyaleController, ICollectionsSystemController, IEpicBattleMetaGameController, IFunRandomController, IMapboxController, IRankedBattlesController, IResourceWellController, IWinbackController, IWotPlusController, IBRProgressionOnTokensController, IEarlyAccessController, IGuiLootBoxesController
 from skeletons.gui.goodies import IGoodiesCache
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.offers import IOffersDataProvider
@@ -333,6 +333,17 @@ def _processOfferToken(tokenName, count):
         return g_settings.htmlTemplates.format(template, {b'offer': offerName})
     else:
         return
+
+
+@dependency.replace_none_kwargs(collections=IGuiLootBoxesController)
+def _processLootBoxKeyToken(tokenName, amount, collections=None):
+    if tokenName.startswith(constants.LOOTBOX_KEY_PREFIX) and amount > 0:
+        tokenId = collections.getKeyByTokenID(tokenName)
+        if tokenId:
+            template = b'lbKeysAccruedInvoiceReceived'
+            return g_settings.htmlTemplates.format(template, {b'lootbox_key': backport.text(R.strings.lootboxes.userName.dyn(tokenId.userName)()), 
+               b'amount': amount})
+    return
 
 
 @dependency.replace_none_kwargs(collections=ICollectionsSystemController)
@@ -1163,6 +1174,7 @@ class AchievementFormatter(ServiceChannelFormatter):
 
 
 class CurrencyUpdateFormatter(ServiceChannelFormatter):
+    WOTRP_EMITTER_ID = 1033
     _EMITTER_ID_TO_TITLE = {2525: R.strings.messenger.serviceChannelMessages.currencyUpdate.integratedAuction(), 
        2524: R.strings.messenger.serviceChannelMessages.currencyUpdate.battlepass()}
     _DEFAULT_TITLE = R.strings.messenger.serviceChannelMessages.currencyUpdate.financial_transaction()
@@ -1177,16 +1189,31 @@ class CurrencyUpdateFormatter(ServiceChannelFormatter):
         transactionTime = data[b'date']
         emitterID = data.get(b'emitterID')
         if currencyCode and amountDelta and transactionTime:
-            xmlKey = b'currencyUpdate'
-            formatted = g_settings.msgTemplates.format(xmlKey, ctx={b'title': backport.text(self._EMITTER_ID_TO_TITLE.get(emitterID, self._DEFAULT_TITLE)), 
-               b'date': TimeFormatter.getLongDatetimeFormat(transactionTime), 
-               b'currency': self.__getCurrencyString(currencyCode, amountDelta), 
-               b'amount': self.__getCurrencyStyle(currencyCode)(getBWFormatter(currencyCode)(abs(amountDelta)))}, data={b'icon': self.__CURRENCY_ICONS.get(currencyCode, currencyCode.title() + b'Icon')})
-            return [
-             MessageData(formatted, self._getGuiSettings(message, xmlKey))]
+            formatter = self._getFormatter(emitterID)
+            messages = formatter(message, currencyCode, amountDelta, transactionTime, emitterID)
+            return messages
         else:
             return [
              MessageData(None, None)]
+
+    def _getFormatter(self, emitterID):
+        formatters = {self.WOTRP_EMITTER_ID: self._wotrpFormatter}
+        return formatters.get(emitterID, self._defaultFormatter)
+
+    def _defaultFormatter(self, message, currencyCode, amountDelta, transactionTime, emitterID):
+        formatted = g_settings.msgTemplates.format(b'currencyUpdate', ctx={b'title': backport.text(self._EMITTER_ID_TO_TITLE.get(emitterID, self._DEFAULT_TITLE)), 
+           b'date': TimeFormatter.getLongDatetimeFormat(transactionTime), 
+           b'currency': self.__getCurrencyString(currencyCode, amountDelta), 
+           b'amount': self.__getCurrencyStyle(currencyCode)(getBWFormatter(currencyCode)(abs(amountDelta)))}, data={b'icon': self.__CURRENCY_ICONS.get(currencyCode, currencyCode.title() + b'Icon')})
+        return [
+         MessageData(formatted, self._getGuiSettings(message, b'currencyUpdate'))]
+
+    def _wotrpFormatter(self, message, currencyCode, amountDelta, transactionTime, emitterID):
+        if currencyCode == Currency.GOLD:
+            formatted = g_settings.msgTemplates.format(b'WOTRPCachbackInvoiceReceived', ctx={b'amount': amountDelta})
+            return [
+             MessageData(formatted, self._getGuiSettings(message, b'WOTRPCachbackInvoiceReceived'))]
+        return self._defaultFormatter(message, currencyCode, amountDelta, transactionTime, emitterID)
 
     def __ifPlatformCurrency(self, currencyCode):
         return currencyCode not in Currency.ALL + (CURRENCIES_CONSTANTS.FREE_XP,)
@@ -1281,8 +1308,7 @@ class GiftReceivedFormatter(ServiceChannelFormatter):
 
 class InvoiceReceivedFormatter(WaitItemsSyncFormatter):
     __purchaseCache = dependency.descriptor(IPurchaseCache)
-    __emitterAssetHandlers = {constants.INVOICE_EMITTER.WOTRP_CASHBACK: {INVOICE_ASSET.GOLD: b'_formatWOTRPCashbackGold', 
-                                                  INVOICE_ASSET.DATA: b'_formatWOTRPCashbackData'}}
+    __emitterAssetHandlers = {}
     __assetHandlers = {INVOICE_ASSET.GOLD: b'_formatAmount', 
        INVOICE_ASSET.CREDITS: b'_formatAmount', 
        INVOICE_ASSET.CRYSTAL: b'_formatAmount', 
@@ -1317,8 +1343,7 @@ class InvoiceReceivedFormatter(WaitItemsSyncFormatter):
     __blueprintsTemplateKeys = {BlueprintTypes.VEHICLE: ('vehicleBlueprintsAccruedInvoiceReceived', 'vehicleBlueprintsDebitedInvoiceReceived'), 
        BlueprintTypes.NATIONAL: ('nationalBlueprintsAccruedInvoiceReceived', 'nationalBlueprintsDebitedInvoiceReceived'), 
        BlueprintTypes.INTELLIGENCE_DATA: ('intelligenceBlueprintsAccruedInvoiceReceived', 'intelligenceBlueprintsDebitedInvoiceReceived')}
-    __emitterMessageTemplateKeys = {constants.INVOICE_EMITTER.WOTRP_CASHBACK: {INVOICE_ASSET.GOLD: b'WOTRPCachbackInvoiceReceived', 
-                                                  INVOICE_ASSET.DATA: b'WOTRPCachbackInvoiceReceived'}}
+    __emitterMessageTemplateKeys = {}
     __messageTemplateKeys = {INVOICE_ASSET.GOLD: b'goldInvoiceReceived', 
        INVOICE_ASSET.CREDITS: b'creditsInvoiceReceived', 
        INVOICE_ASSET.CRYSTAL: b'crystalInvoiceReceived', 
@@ -1730,17 +1755,6 @@ class InvoiceReceivedFormatter(WaitItemsSyncFormatter):
             ctx[b'subtitle'] = subtitle
             return g_settings.msgTemplates.format(self._getMessageTemplateKey(emitterID, assetType), ctx=ctx, data=templateData)
 
-    def _formatWOTRPCashbackGold(self, emitterID, assetType, data):
-        ctx = {b'amount': data.get(b'amount', 0)}
-        return g_settings.msgTemplates.format(self._getMessageTemplateKey(emitterID, assetType), ctx=ctx)
-
-    def _formatWOTRPCashbackData(self, emitterID, assetType, data):
-        gold = data.get(b'data', {}).get(b'gold', 0)
-        if gold == 0:
-            return self._formatData(emitterID, assetType, data)
-        ctx = {b'amount': gold}
-        return g_settings.msgTemplates.format(self._getMessageTemplateKey(emitterID, assetType), ctx=ctx)
-
     def _getMessageTemplateKey(self, emitterID, assetType):
         return self.__emitterMessageTemplateKeys.get(emitterID, {}).get(assetType) or self.__messageTemplateKeys[assetType]
 
@@ -2041,6 +2055,9 @@ class InvoiceReceivedFormatter(WaitItemsSyncFormatter):
                 offerTokenResult = _processOfferToken(tokenName, count)
                 if offerTokenResult:
                     tokenStrings.append(offerTokenResult)
+            lbTokenResult = _processLootBoxKeyToken(tokenName, count)
+            if lbTokenResult:
+                tokenStrings.append(lbTokenResult)
             if tokenName == constants.PERSONAL_MISSION_FREE_TOKEN_NAME:
                 awardListcount += count
             else:
@@ -2837,6 +2854,7 @@ class QuestAchievesFormatter(object):
     __lobbyContext = dependency.descriptor(ILobbyContext)
     __goodiesCache = dependency.descriptor(IGoodiesCache)
     __itemsCache = dependency.descriptor(IItemsCache)
+    __guiLootbox = dependency.descriptor(IGuiLootBoxesController)
 
     @classmethod
     def formatQuestAchieves(cls, data, asBattleFormatter, processCustomizations=True, processTokens=True):
@@ -2950,12 +2968,17 @@ class QuestAchievesFormatter(object):
                     itemsNames.append(backport.text(R.strings.messenger.serviceChannelMessages.battleResults.quests.items.name(), name=backport.text(R.strings.quests.bonusName.crew_bonus_x3()), count=count))
                 elif tokenID == COMP7_TOKEN_WEEKLY_REWARD_ID:
                     itemsNames.append(backport.text(R.strings.messenger.serviceChannelMessages.battleResults.quests.items.name(), name=backport.text(R.strings.comp7.system_messages.weeklyReward.tokens()), count=count))
-                elif tokenID.startswith(constants.LOOTBOX_TOKEN_PREFIX):
+                elif tokenID.startswith(constants.LOOTBOX_TOKEN_PREFIX) and int(count) > 0:
                     lootBox = cls.__itemsCache.items.tokens.getLootBoxByTokenID(tokenID)
                     if lootBox:
                         itemsNames.append(makeHtmlString(b'html_templates:lobby/quests/bonuses', b'rawLootBox', {b'name': lootBox.getUserName(), b'count': int(count)}))
                 elif tokenID.startswith(EARLY_ACCESS_PREFIX):
                     itemsNames.append(EarlyAccessQuestsTokensFormatter.format(data))
+                elif tokenID.startswith(constants.LOOTBOX_KEY_PREFIX) and int(count) > 0:
+                    key = cls.__guiLootbox.getKeyByTokenID(tokenID)
+                    text = backport.text(R.strings.lootboxes.userName.dyn(key.userName)())
+                    if key:
+                        itemsNames.append(makeHtmlString(b'html_templates:lobby/quests/bonuses', b'lootBoxKey', {b'name': text, b'count': int(count)}))
 
         entitlementsList = [ (eID, eData.get(b'count', 0)) for eID, eData in data.get(b'entitlements', {}).iteritems() ]
         entitlementsStr = InvoiceReceivedFormatter.getEntitlementsString(entitlementsList)

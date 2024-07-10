@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd1</identifier>
+					<fx>shaders/std_effects/glow.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						destBlend
+						<Int>5</Int>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h09_mt_bday_2024/Environment/hd_h09_BD24_0005_WorkingLamp_AM.dds</Texture>
+					</property>
+					<property>
+						selfIllumination
+						<Float>7.000000</Float>
+					</property>
+					<property>
+						srcBlend
+						<Int>3</Int>
+					</property>
+					<property>
+						g_tintColor
+						<Vector4>1.000000 0.898039 0.749020 1.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>3.154581 17.822548 -8.694974</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h09_mt_bday_2024/Environment/hd_h09_BD24_0005_WorkingLamp_AM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Hangars/h09_mt_bday_2024/Environment/hd_h09_BD24_0005_WorkingLamp_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Hangars/h09_mt_bday_2024/Environment/hd_h09_BD24_0005_WorkingLamp_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>2.618224 9.388856 -1.915817</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.824272 -0.394922 -12.370341</min>
+		<max>5.522763 19.520966 8.992867</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>81374</geometrySize>
+	<minUVDensity>0.000938</minUVDensity>
+</root>

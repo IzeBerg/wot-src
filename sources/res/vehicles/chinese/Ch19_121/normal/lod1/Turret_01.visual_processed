@@ -22,7 +22,7 @@
 					<row0>1.000000 0.000000 0.000000</row0>
 					<row1>0.000000 1.000000 0.000000</row1>
 					<row2>0.000000 0.000000 1.000000</row2>
-					<row3>0.032249 0.267913 1.129181</row3>
+					<row3>0.030086 0.267913 1.129181</row3>
 				</transform>
 			</node>
 		</node>
@@ -51,28 +51,12 @@
 						<Texture>vehicles/chinese/Ch19_121/121_turret_01_AM.dds</Texture>
 					</property>
 					<property>
-						alphaReference
-						<Int>0</Int>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>false</Bool>
-					</property>
-					<property>
 						excludeMaskAndAOMap
 						<Texture>vehicles/chinese/Ch19_121/121_turret_01_AO.dds</Texture>
 					</property>
 					<property>
 						colorIdMap
 						<Texture>vehicles/russian/common/common_ID.dds</Texture>
-					</property>
-					<property>
-						doubleSided
-						<Bool>false</Bool>
-					</property>
-					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
 					</property>
 					<fx>shaders/std_effects/PBS_tank.fx</fx>
 					<property>
@@ -99,10 +83,7 @@
 					</property>
 					<property>
 						g_detailUVTiling
-						<Vector4>
-							3.50685 3.50685 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>3.506850 3.506850 0.000000 0.000000</Vector4>
 					</property>
 					<property>
 						g_detailPower
@@ -117,14 +98,14 @@
 						<Bool>true</Bool>
 					</property>
 				</material>
-				<groupOrigin>-0.011039 0.707883 0.050627</groupOrigin>
+				<groupOrigin>-0.012613 1.566943 0.005419</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<boundingBox>
-		<min>-1.325528 -0.000000 -1.433411</min>
-		<max>1.303449 1.415766 1.534666</max>
+		<min>-1.322363 -0.000000 -1.431916</min>
+		<max>1.297136 3.133886 1.442754</max>
 	</boundingBox>
-	<geometrySize>273640</geometrySize>
-	<minUVDensity>0.007014</minUVDensity>
+	<geometrySize>159844</geometrySize>
+	<minUVDensity>0.002212</minUVDensity>
 </root>

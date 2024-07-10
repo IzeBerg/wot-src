@@ -4,7 +4,6 @@ from cgf_demo_client.test_hierarchy_modificator import ModelSwapperManager
 from cgf_demo_client.test_state_machine_trigger import StateMachineActivatorManager
 from cgf_demo_client.test_triggers import EntranceModifierManager, TestHealthMonitoringManager
 from cgf_script.managers_registrator import Rule, registerManager, registerRule
-from cgf_demo_client.test_physical_debris_spawner import EntranceSpawnerManager
 from constants import IS_CLIENT
 if IS_CLIENT:
     from TestReplicableComponent import DisplayReplicableValuesManager
@@ -33,10 +32,6 @@ class TestClientDemoRules(Rule):
 
     @registerManager(DisplayReplicableValuesManager, domain=CGF.DomainOption.DomainClient)
     def registerDisplayReplicable(self):
-        return
-
-    @registerManager(EntranceSpawnerManager)
-    def registerEntranceSpawner(self):
         return
 
     @registerManager(TestHealthMonitoringManager)

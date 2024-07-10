@@ -144,6 +144,17 @@ def _turboshaftEnginePower(vehicleDescr, engineName):
         return
 
 
+def _rawTurboshaftEnginePower(vehicleDescr, engineName):
+    result = None
+    try:
+        engines = vehicleDescr.siegeVehicleDescr.type.xphysics['engines']
+        result = engines[engineName]['smplEnginePower']
+    except KeyError:
+        pass
+
+    return result
+
+
 def _rocketAccelerationEnginePower(vehicleDescr, value):
     if vehicleDescr.hasRocketAcceleration:
         return value * getRocketAccelerationKpiFactors(vehicleDescr).getCoeff(KPI.Name.VEHICLE_ENGINE_POWER)
@@ -217,8 +228,7 @@ class EngineParams(WeightedParam):
 
     @property
     def turboshaftEnginePower(self):
-        power = _turboshaftEnginePower(self._vehicleDescr, self._itemDescr.name)
-        return power and int(round(power / component_constants.HP_TO_WATTS))
+        return _rawTurboshaftEnginePower(self._vehicleDescr, self._itemDescr.name)
 
     @property
     def rocketAccelerationEnginePower(self):

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_guns</identifier>
+					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						colorIdMap
+						<Texture>vehicles/american/A157_M_VII_Y/M_VII_Y_guns_ID.dds</Texture>
+					</property>
+					<property>
+						crashTileMap
+						<Texture>vehicles/russian/Tank_detail/crash_tile.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/american/A157_M_VII_Y/_skins/A157_M_VII_Y_3Dst/M_VII_Y_3Dst_guns_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/american/A157_M_VII_Y/_skins/A157_M_VII_Y_3Dst/M_VII_Y_3Dst_guns_AO.dds</Texture>
+					</property>
+					<property>
+						g_crashUVTiling
+						<Vector4>2.000000 1.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/american/A157_M_VII_Y/_skins/A157_M_VII_Y_3Dst/M_VII_Y_3Dst_guns_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/american/A157_M_VII_Y/_skins/A157_M_VII_Y_3Dst/M_VII_Y_3Dst_guns_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.014050 0.033612 1.769683</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.391587 -0.339203 -1.685045</min>
+		<max>0.363487 0.406428 5.224412</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>61918</geometrySize>
+	<minUVDensity>0.034344</minUVDensity>
+</root>

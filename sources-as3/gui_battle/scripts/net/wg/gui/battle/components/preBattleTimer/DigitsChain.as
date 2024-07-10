@@ -31,6 +31,7 @@ package net.wg.gui.battle.components.preBattleTimer
       
       public final function dispose() : void
       {
+         this.onDispose();
          this._disposed = true;
          var _loc1_:int = 0;
          while(_loc1_ < this._chainLen)
@@ -42,6 +43,10 @@ package net.wg.gui.battle.components.preBattleTimer
          }
          this._chain.splice(0,this._chainLen);
          this._chain = null;
+      }
+      
+      protected function onDispose() : void
+      {
       }
       
       public function hideDigit(param1:Boolean) : void
@@ -121,6 +126,7 @@ package net.wg.gui.battle.components.preBattleTimer
       
       private function onDigitsShownHandler(param1:PreBattleTimerEvent) : void
       {
+         this.applyDigitsShownCallback(param1.digitID);
          if(this._nextDigit == param1.digitID)
          {
             this._chain[this._activeDigit].hold();
@@ -140,6 +146,7 @@ package net.wg.gui.battle.components.preBattleTimer
       
       private function onDigitsHiddenHandler(param1:PreBattleTimerEvent) : void
       {
+         this.applyDigitsHiddenCallback(param1.digitID);
          if(this._nextDigit == Values.DEFAULT_INT)
          {
             this._isAnimInProgress = false;
@@ -150,6 +157,14 @@ package net.wg.gui.battle.components.preBattleTimer
       public function isDisposed() : Boolean
       {
          return this._disposed;
+      }
+      
+      protected function applyDigitsShownCallback(param1:int) : void
+      {
+      }
+      
+      protected function applyDigitsHiddenCallback(param1:int) : void
+      {
       }
    }
 }

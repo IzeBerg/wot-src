@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>0.833333</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>trail</name>
+		<type>particle</type>
+		<resource>particles/tank/rocket_accelerator/102_race_2024_boost_trail_01_f00_car_02.eff</resource>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000</value>
+				<inTangent>37.499996</inTangent>
+				<outTangent>37.499996</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.133333</startTime>
+				<value>5.000000</value>
+				<inTangent>15.178570</inTangent>
+				<outTangent>15.178570</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.833333</startTime>
+				<value>0.000000</value>
+				<inTangent>-7.142857</inTangent>
+				<outTangent>-7.142857</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>burst</name>
+		<type>particle</type>
+		<resource>particles/Environment/interior/102_race_2024_boost_smoke_burst_01.eff</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.000000 0.500000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-60.000000 180.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.000000</value>
+				<inTangent>-29.999998</inTangent>
+				<outTangent>-29.999998</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>0.000000</value>
+				<inTangent>-29.999998</inTangent>
+				<outTangent>-29.999998</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>burst_2</name>
+		<type>particle</type>
+		<resource>particles/Environment/interior/102_race_2024_boost_smoke_burst_01.eff</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-1.000000 0.500000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-60.000000 180.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.000000</value>
+				<inTangent>-29.999998</inTangent>
+				<outTangent>-29.999998</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>0.000000</value>
+				<inTangent>-29.999998</inTangent>
+				<outTangent>-29.999998</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

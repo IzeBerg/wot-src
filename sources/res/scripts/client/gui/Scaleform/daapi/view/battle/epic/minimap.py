@@ -221,7 +221,7 @@ class RespawningPersonalEntriesPlugin(PersonalEntriesPlugin):
             self._parentObj.setEntryParameters(self._getAnimationID(), doClip=False)
         for cam in self._getCameraIDs():
             if self._getCameraIDs()[cam] >= 0:
-                if cam not in [_S_NAME.STRATEGIC_CAMERA]:
+                if cam not in [_S_NAME.RECTANGLE_AREA]:
                     self._parentObj.setEntryParameters(self._getCameraIDs()[cam], doClip=False)
                 else:
                     self._parentObj.setEntryParameters(self._getCameraIDs()[cam], doClip=False, scaleType=MINIMAP_SCALE_TYPES.REAL_SCALE)
@@ -284,7 +284,7 @@ class CenteredPersonalEntriesPlugin(RespawningPersonalEntriesPlugin):
             newEntryID = self._getPostmortemCenterEntry()
             self.__mode = CTRL_MODE_NAME.POSTMORTEM
         elif self._isInStrategicMode():
-            newEntryID = self._getCameraIDs()[_S_NAME.STRATEGIC_CAMERA]
+            newEntryID = self._getCameraIDs()[_S_NAME.RECTANGLE_AREA]
             self.__mode = CTRL_MODE_NAME.STRATEGIC
         elif self._isInArcadeMode():
             newEntryID = self._getViewPointID()

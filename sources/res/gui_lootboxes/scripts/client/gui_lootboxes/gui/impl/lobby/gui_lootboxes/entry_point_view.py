@@ -1,4 +1,4 @@
-from account_helpers.AccountSettings import LOOT_BOXES_VIEWED_COUNT
+from account_helpers.AccountSettings import LOOT_BOXES_VIEWED_COUNT, LOOT_BOXES_KEY_VIEWED_COUNT, LOOT_BOXES_VIEWED_HAS_INFINITE
 from constants import PREBATTLE_TYPE, QUEUE_TYPE
 from frameworks.wulf import ViewSettings
 from frameworks.wulf.gui_constants import ViewFlags
@@ -34,7 +34,7 @@ class LootBoxesEntryPointWidget(ViewImpl, ICarouselEventEntry):
     def _onLoading(self, *args, **kwargs):
         super(LootBoxesEntryPointWidget, self)._onLoading(*args, **kwargs)
         self.viewModel.setIsLootBoxesEnabled(self.__guiLootBoxes.isLootBoxesAvailable())
-        self.__updateBoxesCount(self.__guiLootBoxes.getBoxesCount())
+        self.__updateModel(self.__guiLootBoxes.getBoxesCount())
 
     def _getEvents(self):
         return (
@@ -43,19 +43,35 @@ class LootBoxesEntryPointWidget(ViewImpl, ICarouselEventEntry):
          (
           self.__guiLootBoxes.onAvailabilityChange, self.__onAvailabilityChange),
          (
-          self.viewModel.onOpenStorage, self.__onOpenStorage))
+          self.viewModel.onOpenStorage, self.__onOpenStorage),
+         (
+          self.__guiLootBoxes.onKeysUpdate, self.__onKeysUpdate))
 
     def __onOpenStorage(self):
         if self.__guiLootBoxes.isLootBoxesAvailable():
             showStorageView()
             self.viewModel.setHasNew(False)
             self.__guiLootBoxes.setSetting(LOOT_BOXES_VIEWED_COUNT, self.__guiLootBoxes.getBoxesCount())
+            self.__guiLootBoxes.setSetting(LOOT_BOXES_KEY_VIEWED_COUNT, self.__guiLootBoxes.getBoxKeysCount())
+            self.__guiLootBoxes.setSetting(LOOT_BOXES_VIEWED_HAS_INFINITE, self.__guiLootBoxes.hasInfiniteLootboxes())
 
     def __updateBoxesCount(self, count, *_):
-        lastViewed = self.__guiLootBoxes.getSetting(LOOT_BOXES_VIEWED_COUNT)
+        self.__updateModel(count)
+
+    def __onKeysUpdate(self, *_):
+        self.__updateModel(self.__guiLootBoxes.getBoxesCount())
+
+    def __updateModel(self, boxCount):
+        lastBoxesViewed = self.__guiLootBoxes.getSetting(LOOT_BOXES_VIEWED_COUNT)
+        lastKeysViewed = self.__guiLootBoxes.getSetting(LOOT_BOXES_KEY_VIEWED_COUNT)
+        isViewedHasInfinite = self.__guiLootBoxes.getSetting(LOOT_BOXES_VIEWED_HAS_INFINITE)
+        keyCount = self.__guiLootBoxes.getBoxKeysCount()
+        hasInfinite = self.__guiLootBoxes.hasInfiniteLootboxes()
+        hasNew = boxCount > lastBoxesViewed or keyCount > lastKeysViewed or hasInfinite and hasInfinite != isViewedHasInfinite
         with self.viewModel.transaction() as (model):
-            model.setBoxesCount(count)
-            model.setHasNew(count > lastViewed)
+            model.setBoxesCount(boxCount)
+            model.setHasNew(hasNew)
+            model.setHasInfinite(hasInfinite)
 
     def __onAvailabilityChange(self, *_):
         self.viewModel.setIsLootBoxesEnabled(self.__guiLootBoxes.isLootBoxesAvailable())

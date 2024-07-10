@@ -1,5 +1,6 @@
 from frameworks.wulf.view.array import fillStringsArray, fillIntsArray
 from gui_lootboxes.gui.impl.gen.view_models.views.lobby.gui_lootboxes.lootbox_view_model import LootboxViewModel
+from gui_lootboxes.gui.impl.gen.view_models.views.lobby.gui_lootboxes.lootbox_key_view_model import LootboxKeyViewModel
 from gui.impl.lobby.loot_box.loot_box_helper import isAllVehiclesObtainedInSlot
 from shared_utils import findFirst
 
@@ -16,6 +17,8 @@ def getLootBoxViewModel(lootBox, attemptsAfterGuaranteedReward):
     lbModel.setDescriptionKey(lootBox.getDesrciption())
     lbModel.setVideoRes(lootBox.getVideoRes())
     lbModel.setCategory(lootBox.getCategory())
+    lbModel.setIsInfinite(lootBox.isHiddenCount())
+    fillIntsArray(lootBox.getUnlockKeyIDs(), lbModel.getUnlockKeyIDs())
     rotationStage = lootBox.getRotationStage()
     if lootBox.hasLootLists():
         rotationStage = lootBox.getRotationStage()
@@ -30,3 +33,14 @@ def getLootBoxViewModel(lootBox, attemptsAfterGuaranteedReward):
         fillIntsArray(lootBox.getGuaranteedVehicleLevelsRange(), lbModel.guaranteedReward.getLevelsRange())
         lbModel.guaranteedReward.setBoxesUntilGuaranteedReward(lootBox.getGuaranteedFrequency() - attemptsAfterGuaranteedReward)
     return lbModel
+
+
+def getLootBoxKeyViewModel(lootBoxKey):
+    lbKeyModel = LootboxKeyViewModel()
+    lbKeyModel.setKeyID(lootBoxKey.keyID)
+    lbKeyModel.setCount(lootBoxKey.count)
+    lbKeyModel.keyType.setValue(lootBoxKey.keyType)
+    lbKeyModel.setIconName(lootBoxKey.iconName)
+    lbKeyModel.setUserName(lootBoxKey.userName)
+    lbKeyModel.setOpenProbability(lootBoxKey.openProbability)
+    return lbKeyModel

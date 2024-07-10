@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/han02_tmday_2015/Building/han02_tmday_2015_kpp/han02_tmday_2015_KPP_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Hangars/han02_tmday_2015/Building/han02_tmday_2015_kpp/han02_tmday_2015_KPP_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Hangars/han02_tmday_2015/Building/han02_tmday_2015_kpp/han02_tmday_2015_KPP_GMM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-3.443742 0.898766 -0.035383</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-8.481200 -0.584839 -0.985013</min>
+		<max>1.593716 2.382371 0.914248</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>25130</geometrySize>
+	<minUVDensity>0.010555</minUVDensity>
+</root>

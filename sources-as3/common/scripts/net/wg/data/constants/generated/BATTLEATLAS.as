@@ -297,6 +297,38 @@ package net.wg.data.constants.generated
       
       public static const BADGE_31018:String = "badge_31018";
       
+      public static const BADGE_31019:String = "badge_31019";
+      
+      public static const BADGE_31020:String = "badge_31020";
+      
+      public static const BADGE_31021:String = "badge_31021";
+      
+      public static const BADGE_31022:String = "badge_31022";
+      
+      public static const BADGE_31023:String = "badge_31023";
+      
+      public static const BADGE_31024:String = "badge_31024";
+      
+      public static const BADGE_31025:String = "badge_31025";
+      
+      public static const BADGE_31026:String = "badge_31026";
+      
+      public static const BADGE_31027:String = "badge_31027";
+      
+      public static const BADGE_31028:String = "badge_31028";
+      
+      public static const BADGE_31029:String = "badge_31029";
+      
+      public static const BADGE_31030:String = "badge_31030";
+      
+      public static const BADGE_31031:String = "badge_31031";
+      
+      public static const BADGE_31032:String = "badge_31032";
+      
+      public static const BADGE_31033:String = "badge_31033";
+      
+      public static const BADGE_31034:String = "badge_31034";
+      
       public static const BADGE_32:String = "badge_32";
       
       public static const BADGE_33:String = "badge_33";
@@ -1060,6 +1092,10 @@ package net.wg.data.constants.generated
       public static const FORT_ARTILLERY_ENEMY_CRITS_BLIND:String = "fortArtilleryEnemyCritsBlind";
       
       public static const FRAG_CORELATION_BG:String = "fragCorelation_bg";
+      
+      public static const FRANCE_F00_AMD_PANHARD_178_B_02:String = "france-F00_AMD_Panhard_178B_02";
+      
+      public static const FRANCE_F00_AMD_PANHARD_178_B_03:String = "france-F00_AMD_Panhard_178B_03";
       
       public static const FRANCE_F01_RENAULT_FT:String = "france-F01_RenaultFT";
       
@@ -2305,6 +2341,16 @@ package net.wg.data.constants.generated
       
       public static const POLAND_PL25_CS_52_C:String = "poland-Pl25_CS_52_C";
       
+      public static const POLAND_PL27_SDP_WZ_66_T:String = "poland-Pl27_SDP_Wz_66T";
+      
+      public static const POLAND_PL29_NC_WZ_70_T_T:String = "poland-Pl29_NC_Wz_70T_T";
+      
+      public static const POLAND_PL30_SDP_WZ58_T_T:String = "poland-Pl30_SDP_Wz58T_T";
+      
+      public static const POLAND_PL32_SDP_WZ_44_T:String = "poland-Pl32_SDP_Wz_44_T";
+      
+      public static const POLAND_PL34_CS_63_02:String = "poland-Pl34_CS_63_02";
+      
       public static const POSTMORTEM_BG:String = "postmortem_bg";
       
       public static const POSTMORTEM_DEAD_REASON_BG:String = "postmortem_dead_reason_bg";
@@ -2914,6 +2960,10 @@ package net.wg.data.constants.generated
       public static const TURRET_ROTATOR_ORANGE:String = "turretRotator_orange";
       
       public static const TURRET_ROTATOR_RED:String = "turretRotator_red";
+      
+      public static const UK_GB00_AEC_ARMOURED_CAR_02:String = "uk-GB00_AEC_Armoured_Car_02";
+      
+      public static const UK_GB00_AEC_ARMOURED_CAR_03:String = "uk-GB00_AEC_Armoured_Car_03";
       
       public static const UK_GB01_MEDIUM_MARK_I:String = "uk-GB01_Medium_Mark_I";
       
@@ -3730,6 +3780,8 @@ package net.wg.data.constants.generated
       public static const USSR_R211_OBJECT_261_4:String = "ussr-R211_Object_261_4";
       
       public static const USSR_R211_OBJECT_261_5:String = "ussr-R211_Object_261_5";
+      
+      public static const USSR_R218_PANTHER_N_518:String = "ussr-R218_Panther_N_518";
       
       public static const USSR_R219_WAFFENTRAGER_E100_GOLD:String = "ussr-R219_Waffentrager_E100_Gold";
       

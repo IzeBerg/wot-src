@@ -4147,6 +4147,14 @@ package
       
       public static const RANKEDBATTLEVIEW_STATS_QUALIFICATIONSTEPS_BODY:String = "#tooltips:rankedBattleView/stats/qualificationSteps/body";
       
+      public static const RANKEDBATTLEVIEW_STATS_TOTALSTAGES_HEADER:String = "#tooltips:rankedBattleView/stats/totalStages/header";
+      
+      public static const RANKEDBATTLEVIEW_STATS_TOTALSTAGES_BODY:String = "#tooltips:rankedBattleView/stats/totalStages/body";
+      
+      public static const RANKEDBATTLEVIEW_STATS_TOTALBATTLES_HEADER:String = "#tooltips:rankedBattleView/stats/totalBattles/header";
+      
+      public static const RANKEDBATTLEVIEW_STATS_TOTALBATTLES_BODY:String = "#tooltips:rankedBattleView/stats/totalBattles/body";
+      
       public static const RANKEDBATTLESVIEW_RANKS_HEADER:String = "#tooltips:rankedBattlesView/ranks/header";
       
       public static const RANKEDBATTLESVIEW_RANKS_BODY:String = "#tooltips:rankedBattlesView/ranks/body";
@@ -7584,6 +7592,46 @@ package
       public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_5_DESC:String = "#tooltips:notrecruitedtankman/tankmen_BP14_5/desc";
       
       public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_5_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_BP14_5/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_2024_RACER_1_DESC:String = "#tooltips:notrecruitedtankman/tankmen_2024_racer_1/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_2024_RACER_1_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_2024_racer_1/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_2024_RACER_2_DESC:String = "#tooltips:notrecruitedtankman/tankmen_2024_racer_2/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_2024_RACER_2_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_2024_racer_2/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_2024_RACER_3_DESC:String = "#tooltips:notrecruitedtankman/tankmen_2024_racer_3/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_2024_RACER_3_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_2024_racer_3/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_2024_RACER_4_DESC:String = "#tooltips:notrecruitedtankman/tankmen_2024_racer_4/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_2024_RACER_4_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_2024_racer_4/label";
+      
+      public static const QUESTS_BONUSES_TOKEN_LOCKPICK_HEADER:String = "#tooltips:quests/bonuses/token/lockpick/header";
+      
+      public static const QUESTS_BONUSES_TOKEN_LOCKPICK_BODY:String = "#tooltips:quests/bonuses/token/lockpick/body";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_AC_1_DESC:String = "#tooltips:notrecruitedtankman/tankmen_BP14_AC_1/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_AC_1_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_BP14_AC_1/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_AC_2_DESC:String = "#tooltips:notrecruitedtankman/tankmen_BP14_AC_2/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_AC_2_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_BP14_AC_2/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_AC_3_DESC:String = "#tooltips:notrecruitedtankman/tankmen_BP14_AC_3/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_AC_3_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_BP14_AC_3/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_AC_4_DESC:String = "#tooltips:notrecruitedtankman/tankmen_BP14_AC_4/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_AC_4_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_BP14_AC_4/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_AC_5_DESC:String = "#tooltips:notrecruitedtankman/tankmen_BP14_AC_5/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_AC_5_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_BP14_AC_5/label";
       
       public static const ELEN_SUMMARY_RANK_ENUM:Array = [ELEN_SUMMARY_RANK_1,ELEN_SUMMARY_RANK_2,ELEN_SUMMARY_RANK_3,ELEN_SUMMARY_RANK_4,ELEN_SUMMARY_RANK_NORANK];
       

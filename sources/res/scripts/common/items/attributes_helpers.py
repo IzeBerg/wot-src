@@ -59,7 +59,9 @@ ALLOWED_STATIC_ATTRS = {
  'turretRotatorHealthFactor',
  'vehicleByChassisDamageFactor',
  'moduleDamageFactor',
- 'engineAndFuelTanksDamageFactor'}
+ 'engineAndFuelTanksDamageFactor',
+ 'gun/burst/count',
+ 'gun/clip/count'}
 ALLOWED_DYNAMIC_ATTRS = {
  'additiveShotDispersionFactor',
  'chassis/shotDispersionFactors/movement',
@@ -95,7 +97,9 @@ ALLOWED_DYNAMIC_ATTRS = {
  'vehicle/bkMaxSpeedBonus',
  'vehicle/fwMaxSpeedBonus',
  'moduleDamageFactor',
- 'engineAndFuelTanksDamageFactor'}
+ 'engineAndFuelTanksDamageFactor',
+ 'gun/burst/count',
+ 'gun/clip/count'}
 ALLOWED_ATTRS = {STATIC_ATTR_PREFIX: ALLOWED_STATIC_ATTRS, 
    DYNAMIC_ATTR_PREFIX: ALLOWED_DYNAMIC_ATTRS}
 ALLOWED_ATTR_PREFIXES = set(ALLOWED_ATTRS.keys())

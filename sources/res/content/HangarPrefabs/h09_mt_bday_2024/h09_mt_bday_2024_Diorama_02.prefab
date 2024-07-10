@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<version>3</version>
+	<GameObjects>
+		<GameObject>
+			<name>h09_mt_bday_2024_Diorama_02</name>
+			<UUID>1313b257-cd77-4dae-8a01-d2f9d18abb3d</UUID>
+			<flags>0</flags>
+		</GameObject>
+		<GameObject>
+			<name>hd_h09_BD24_0002_Diorama_02</name>
+			<UUID>36d264ff-acdb-43c8-9adc-a35dc1ecd29b</UUID>
+			<flags>0</flags>
+		</GameObject>
+		<GameObject>
+			<name/>
+			<UUID>4bd71aa4-b3b2-4388-818e-3eb409b8c9cd</UUID>
+			<flags>0</flags>
+		</GameObject>
+		<GameObject>
+			<name/>
+			<UUID>61304acb-c31c-3136-b566-25152ccbe0f2</UUID>
+			<flags>0</flags>
+		</GameObject>
+	</GameObjects>
+	<components>
+		<ComponentPool>
+			<type>Hierarchy</type>
+			<version>2</version>
+			<component>
+				<objectIndex>1</objectIndex>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Parent</name>
+						<link>1313b257-cd77-4dae-8a01-d2f9d18abb3d</link>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>2</objectIndex>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Parent</name>
+						<link>1313b257-cd77-4dae-8a01-d2f9d18abb3d</link>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>3</objectIndex>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Parent</name>
+						<link>1313b257-cd77-4dae-8a01-d2f9d18abb3d</link>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>Transform</type>
+			<version>1</version>
+			<component>
+				<objectIndex>0</objectIndex>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>0 0 0</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>-0 0 0</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>1</objectIndex>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>0 0 0</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>
+							1.4 1.4 1.4
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>
+							-0 0.191986 0
+							<!--BW_String-->
+						</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>2</objectIndex>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>
+							-5.03257 0.834581 10.9144
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>
+							1.5 1.5 1.5
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>
+							5.46346e-08 -0.619408 3.94e-08
+							<!--BW_String-->
+						</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>3</objectIndex>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>
+							-6.86605 0.834581 8.75695
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>
+							1.5 1.5 1.5
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>
+							-2.16521e-08 -1.11714 1.60775e-07
+							<!--BW_String-->
+						</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>DynamicModel</type>
+			<version>1</version>
+			<component>
+				<objectIndex>1</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Model name</name>
+						<isAsset>true</isAsset>
+						<value>content/Hangars/h09_mt_bday_2024/Environment/normal/lod0/hd_h09_BD24_0002_Diorama_02.model</value>
+					</property>
+					<property>
+						<name>Cast Shadows</name>
+						<value>1</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>2</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Model name</name>
+						<isAsset>true</isAsset>
+						<value>content/Hangars/h09_mt_bday_2024/Environment/normal/lod0/hd_h09_BD24_0002_ArrowRace.model</value>
+					</property>
+					<property>
+						<name>Cast Shadows</name>
+						<value>1</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>3</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Model name</name>
+						<isAsset>true</isAsset>
+						<value>content/Hangars/h09_mt_bday_2024/Environment/normal/lod0/hd_h09_BD24_0002_ArrowRace.model</value>
+					</property>
+					<property>
+						<name>Cast Shadows</name>
+						<value>1</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+	</components>
+</root>

@@ -119,7 +119,7 @@ class BattleRoyalePersonalEntriesPlugin(CenteredPersonalEntriesPlugin):
             self._invoke(circleID, settings.VIEW_RANGE_CIRCLES_AS3_DESCR.AS_UPDATE_DYN_CIRCLE, self._getViewRangeRadius())
 
     def __updateViewSector(self):
-        isVisible = self._isAlive() and self._getSelectedCameraID() == self._getCameraIDs().get(_S_NAME.ARCADE_CAMERA)
+        isVisible = self._isAlive() and self._getCameraIDs().get(_S_NAME.DIRECTION_ENTRY) in self._getSelectedCameraIDs()
         if self.__viewRangeEntityID:
             self._setActive(self.__viewRangeEntityID, isVisible)
         else:
@@ -171,8 +171,8 @@ class BattleRoyalePersonalEntriesPlugin(CenteredPersonalEntriesPlugin):
 
     def __getDirectionLineEntryID(self):
         cameraIDs = self._getCameraIDs()
-        if _S_NAME.ARCADE_CAMERA in cameraIDs:
-            return cameraIDs[_S_NAME.ARCADE_CAMERA]
+        if _S_NAME.DIRECTION_ENTRY in cameraIDs:
+            return cameraIDs[_S_NAME.DIRECTION_ENTRY]
         else:
             return
 

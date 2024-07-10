@@ -70,6 +70,7 @@ else:
         from items.components.supply_slots_components import SupplySlotsCache, SupplySlot
         from helpers.EntityExtra import EntityExtra
     VEHICLE_CLASS_TAGS = frozenset(('lightTank', 'mediumTank', 'heavyTank', 'SPG', 'AT-SPG'))
+    VEHICLE_CLASS_TAGS_INDICES = {classTag:index for index, classTag in enumerate(VEHICLE_CLASS_TAGS)}
     VEHICLE_LEVEL_EARN_CRYSTAL = 10
     MODES_WITHOUT_CRYSTAL_EARNINGS = set(('bob', 'fallout', 'event_battles', 'battle_royale', 'clanWarsBattles'))
     EXTENDED_VEHICLE_TYPE_ID_FLAG = 2
@@ -227,6 +228,8 @@ def vehicleAttributeFactors():
        'gun/aimingTime': 1.0, 
        'gun/piercing': 1.0, 
        'gun/clipTimeBetweenShots': 1.0, 
+       'gun/burst/count': 1, 
+       'gun/clip/count': 1, 
        'gun/canShoot': True, 
        'engine/fireStartingChance': 1.0, 
        'healthBurnPerSecLossFraction': 0.57, 
@@ -427,7 +430,6 @@ class VehicleDescriptor(object):
     hasHydraulicChassis = property(lambda self: self.type.hasHydraulicChassis)
     hasCharge = property(lambda self: self.type.hasCharge)
     hasRocketAcceleration = property(lambda self: self.type.hasRocketAcceleration)
-    hasShellCasingsEjection = property(lambda self: self.type.hasShellCasingsEjection)
     hasBurst = property(lambda self: self.gun.burst != component_constants.DEFAULT_GUN_BURST)
     role = property(lambda self: self.type.role)
     isPitchHullAimingAvailable = property(lambda self: self.type.hullAimingParams['pitch']['isAvailable'])
@@ -1493,7 +1495,9 @@ class VehicleDescriptor(object):
            'ammoBayReduceFineFactor': 1.0, 
            'engineReduceFineFactor': 1.0, 
            'moduleDamageFactor': 1.0, 
-           'engineAndFuelTanksDamageFactor': 1.0}
+           'engineAndFuelTanksDamageFactor': 1.0, 
+           'gun/burst/count': 1, 
+           'gun/clip/count': 1}
         if IS_CELLAPP or IS_CLIENT or IS_UE_EDITOR or IS_WEB or IS_BOT or onAnyApp:
             trackCenterOffset = chassis.topRightCarryingPoint[0]
             self.physics = {'weight': weight, 
@@ -1753,8 +1757,8 @@ class VehicleType(object):
     currentReadingVeh = None
     __metaclass__ = ReflectionMetaclass
     __slots__ = (
-     'name', 'id', 'compactDescr', 'mode', 'tags', 'level', 'hasSiegeMode', 'hasAutoSiegeMode', 'isWheeledVehicle',
-     'isWheeledVehicleWithoutFeatures',
+     'name', 'id', 'compactDescr', 'mode', 'xmlPath', 'tags', 'level', 'hasSiegeMode',
+     'hasAutoSiegeMode', 'isWheeledVehicle', 'isWheeledVehicleWithoutFeatures',
      'isFlamethrower', 'isAssaultSPG', 'isDualgunVehicleType', 'hasCustomDefaultCamouflage',
      'customizationNationID', 'baseColorID',
      'speedLimits', 'repairCost', 'crewXpFactor', 'premiumVehicleXPFactor', 'xpFactor',
@@ -1771,13 +1775,15 @@ class VehicleType(object):
      'nationChangeGroupId', 'isCollectorVehicle', 'isPremium', 'hasTurboshaftEngine', 'hasHydraulicChassis',
      'hasSpeedometer', 'supplySlots', 'optDevsOverrides', 'postProgressionTree', 'postProgressionPricesOverrides',
      'customRoleSlotOptions', 'hasRocketAcceleration', 'rocketAccelerationParams', 'classTag', 'armorMaxHealth',
-     'hasShellCasingsEjection', 'shellCasingsEjectionPrefab', '__weakref__')
+     'prefabAttachments', '__weakref__')
 
     def __init__(self, nationID, basicInfo, xmlPath, vehMode=VEHICLE_MODE.DEFAULT):
         self.name = basicInfo.name
         self.id = (nationID, basicInfo.id)
         self.compactDescr = basicInfo.compactDescr
         self.mode = vehMode
+        if IS_UE_EDITOR:
+            self.xmlPath = xmlPath
         self.nationChangeGroupId = nation_change.findVehicleNationGroupId(self.name)
         section = ResMgr.openSection(xmlPath)
         if section is None:
@@ -1800,7 +1806,6 @@ class VehicleType(object):
         self.hasCharge = 'charger' in self.tags
         self.builtins = {t.split('_user')[0] for t in self.tags if t.startswith('builtin') if t.startswith('builtin')}
         self.hasRocketAcceleration = 'rocketAcceleration' in self.tags
-        self.hasShellCasingsEjection = 'shellCasingsEjection' in self.tags
         self.isCollectorVehicle = CollectorVehicleConsts.COLLECTOR_VEHICLES_TAG in self.tags
         self.isPremium = 'premium' in self.tags
         self.role = self.__getRoleFromTags() if self.level in ROLE_LEVELS else ROLE_TYPE.NOT_DEFINED
@@ -1950,10 +1955,7 @@ class VehicleType(object):
             self.rocketAccelerationParams = _readRocketAccelerationParams(xmlCtx, section)
         else:
             self.rocketAccelerationParams = None
-        if self.hasShellCasingsEjection:
-            self.shellCasingsEjectionPrefab = _readShellCasingsEjectionPrefab(xmlCtx, section)
-        else:
-            self.shellCasingsEjectionPrefab = None
+        self.prefabAttachments = _readPrefabAttachments(xmlCtx, section)
         if IS_CELLAPP:
             overmatchVer = _xml.readIntOrNone(xmlCtx, section, 'overmatchMechanicsVer')
             if overmatchVer is None:
@@ -2897,9 +2899,17 @@ def getVehicleClass(compactDescr):
     return getVehicleClassFromVehicleType(getVehicleType(compactDescr))
 
 
+def getVehicleRole(compactDescr):
+    return getVehicleRoleFromVehicleType(getVehicleType(compactDescr))
+
+
 def getVehicleClassFromVehicleType(vehicleType):
     for vehClass in VEHICLE_CLASS_TAGS & vehicleType.tags:
         return vehClass
+
+
+def getVehicleRoleFromVehicleType(vehicleType):
+    return ROLE_TYPE_TO_LABEL.get(vehicleType.role)
 
 
 def makeCompactDescrBy(*args, **kwargs):
@@ -6754,13 +6764,15 @@ def _readRocketAccelerationParams(xmlCtx, section):
     return shared_components.RocketAccelerationParams(deployTime=_xml.readNonNegativeFloat(rocketCtx, rocketSection, 'deployTime'), reloadTime=_xml.readNonNegativeFloat(rocketCtx, rocketSection, 'reloadTime'), reuseCount=_xml.readInt(rocketCtx, rocketSection, 'reuseCount', minVal=-1), duration=_xml.readNonNegativeFloat(rocketCtx, rocketSection, 'duration'), impulse=impulse, modifiers=modifiers, kpi=kpi, effectsPrefab=effectsPrefab)
 
 
-def _readShellCasingsEjectionPrefab(xmlCtx, section):
+def _readPrefabAttachments(xmlCtx, section):
+    prefabAttachments = []
     if IS_CLIENT or IS_UE_EDITOR:
-        effectsCtx, effectsSection = _xml.getSubSectionWithContext(xmlCtx, section, 'effects')
-        effectsPrefab = _xml.readStringOrEmpty(effectsCtx, effectsSection, 'shellCasingsEjectionPrefab')
-    else:
-        effectsPrefab = None
-    return effectsPrefab
+        if section.has_key('prefabAttachments'):
+            for name, subSec in _xml.getChildren(xmlCtx, section, 'prefabAttachments'):
+                attachmentId = _xml.readInt(xmlCtx, subSec, 'attachmentId')
+                prefabAttachments.append(g_cache.customization20().attachments[attachmentId])
+
+    return prefabAttachments
 
 
 def _readGunDualGunParams(xmlCtx, section):

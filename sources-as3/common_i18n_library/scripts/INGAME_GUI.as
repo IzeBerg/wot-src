@@ -89,6 +89,8 @@ package
       
       public static const PLAYER_ERRORS_CANT_SWITCH_ENGINE_DESTROYED:String = "#ingame_gui:player_errors/cant_switch/engine_destroyed";
       
+      public static const PLAYER_ERRORS_CANT_SWITCH_ASSAULT_SPG_CAMERA_CAN_NOT_SPAWN:String = "#ingame_gui:player_errors/cant_switch/assault_spg/camera_can_not_spawn";
+      
       public static const PLAYER_ERRORS_EQUIPMENT_ALREADYACTIVATED:String = "#ingame_gui:player_errors/equipment/alreadyActivated";
       
       public static const PLAYER_ERRORS_EQUIPMENT_ISINCOOLDOWN:String = "#ingame_gui:player_errors/equipment/isInCooldown";
