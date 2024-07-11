@@ -23,7 +23,7 @@ class RacesBattleResultsFormatter(BattleResultsFormatter):
 
     def _prepareFormatData(self, message):
         _, ctx = super(RacesBattleResultsFormatter, self)._prepareFormatData(message)
-        mapDescr = backport.text(R.strings.arenas.c_102_race_2024.description())
+        mapDescr = backport.text(R.strings.races_messenger.serviceChannelMessages.racesEventName())
         ctx['gameMode'] = mapDescr
         if checkIfViolator(message.data):
             noResult = '--'
@@ -34,11 +34,15 @@ class RacesBattleResultsFormatter(BattleResultsFormatter):
         ctx['questsMsg'] = self.__makeDailyQuestsString(message)
         ctx['racesTotalScore'] = backport.getIntegralFormat(message.data.get('racesTotalScore', 0))
         finishedPlace = message.data.get('position', 0)
+        if _FIRST_PLACE <= finishedPlace <= _THIRD_PLACE:
+            temptale = 'racesBattleResult'
+        else:
+            temptale = 'racesBattleResultDefeat'
         ctx['racesTitle'] = self.__makeTitleString(finishedPlace)
         ctx['finishedPlace'] = self.__makeFinishedPlaceString(finishedPlace)
         ctx['racesFirstWinAchievement'] = self.__makeAchievementString(message)
         return (
-         'racesBattleResult', ctx)
+         temptale, ctx)
 
     def __makeTitleString(self, finishedPlace):
         if _FIRST_PLACE <= finishedPlace <= _THIRD_PLACE:

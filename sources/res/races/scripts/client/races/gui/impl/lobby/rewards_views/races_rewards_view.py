@@ -1,6 +1,4 @@
-import logging
-from enum import IntEnum
-import typing, constants
+import logging, typing
 from gui.server_events.bonuses import mergeBonuses
 from gui_lootboxes.gui.impl.lobby.gui_lootboxes.tooltips.lootbox_key_tooltip import LootboxKeyTooltip
 from gui_lootboxes.gui.impl.lobby.gui_lootboxes.tooltips.lootbox_tooltip import LootboxTooltip
@@ -8,6 +6,7 @@ from races.gui.game_control.progression_controller import RacesProgressionContro
 from races.gui.impl.gen.view_models.views.lobby.reward_view.reward_view_model import RewardViewModel
 from races.gui.impl.lobby.races_lobby_view.races_progression_view import getRacesBonusPacker
 from races.skeletons.progression_controller import IRacesProgressionController
+from races.gui.shared.bonus_helpers import sortBonuses, getMergeRacesBonusFunction
 from frameworks.wulf import ViewFlags, ViewSettings, WindowFlags, WindowLayer
 from gui.impl.backport import BackportTooltipWindow
 from gui.impl.backport.backport_tooltip import DecoratedTooltipWindow
@@ -17,10 +16,9 @@ from gui.impl.lobby.loot_box.loot_box_helper import getKeyByID
 from gui.impl.lobby.tooltips.additional_rewards_tooltip import AdditionalRewardsTooltip
 from gui.impl.pub import ViewImpl
 from gui.impl.pub.lobby_window import LobbyNotificationWindow
-from gui.shared.bonuses_sorter import getBonusesSortKeyFunc, BonusesSortWeights, tokensBonusKeyFunc
 from helpers import dependency
 from skeletons.gui.shared import IItemsCache
-from shared_utils import findFirst, first
+from shared_utils import findFirst
 if typing.TYPE_CHECKING:
     from typing import TypeVar, List, Optional
     from frameworks.wulf import Array
@@ -36,24 +34,8 @@ MAIN_BONUSES = [
 _TWO_STAGES_REWARDS_COUNT = 2
 _PEDESTAL_REWARDS_COUNT = 3
 
-class RacesBonusesSortWeights(IntEnum):
-    TANKMAN = 19
-    MEDAL = 20
-
-
-def racesTokensBonusKeyFunc(bonus):
-    tokenId = first(bonus.getTokens().iterkeys())
-    if tokenId.startswith(constants.LOOTBOX_KEY_PREFIX):
-        return (-BonusesSortWeights.LOOTBOX, 0)
-    return tokensBonusKeyFunc(bonus)
-
-
 def splitMainAdditionalBonuses(bonuses, quests):
-    bonuses = sorted(mergeBonuses(bonuses), key=getBonusesSortKeyFunc({'dossier': lambda b: (
-                 -RacesBonusesSortWeights.MEDAL, 0), 
-       'tmanToken': lambda b: (
-                   -RacesBonusesSortWeights.TANKMAN, 0), 
-       'battleToken': racesTokensBonusKeyFunc}))
+    bonuses = sortBonuses(mergeBonuses(bonuses, getMergeFunc=getMergeRacesBonusFunction))
     mainBonuses = []
     additionalBonuses = []
     if len(quests) == 1:

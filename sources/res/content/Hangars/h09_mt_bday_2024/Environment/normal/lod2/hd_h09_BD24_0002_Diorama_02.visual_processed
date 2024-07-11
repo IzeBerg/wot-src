@@ -8,49 +8,22 @@
 			<row2>0.000000 0.000000 1.000000</row2>
 			<row3>0.000000 0.000000 0.000000</row3>
 		</transform>
-		<node>
-			<identifier>hd_h09_BD24_0002_Diorama_02</identifier>
-			<transform>
-				<row0>1.000000 0.000000 0.000000</row0>
-				<row1>0.000000 1.000000 0.000000</row1>
-				<row2>0.000000 0.000000 1.000000</row2>
-				<row3>0.000000 0.000000 0.000000</row3>
-			</transform>
-			<node>
-				<identifier>lod2</identifier>
-				<transform>
-					<row0>1.000000 0.000000 0.000000</row0>
-					<row1>0.000000 1.000000 0.000000</row1>
-					<row2>0.000000 0.000000 1.000000</row2>
-					<row3>0.000000 0.000000 0.000000</row3>
-				</transform>
-				<node>
-					<identifier>s0</identifier>
-					<transform>
-						<row0>1.000000 0.000000 0.000000</row0>
-						<row1>0.000000 1.000000 0.000000</row1>
-						<row2>0.000000 0.000000 1.000000</row2>
-						<row3>0.000000 0.000000 0.000000</row3>
-					</transform>
-				</node>
-			</node>
-		</node>
 	</node>
 	<renderSet>
 		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
-		<node>s0</node>
+		<node>Scene Root</node>
 		<geometry>
-			<vertices>s0Shape.vertices</vertices>
-			<stream>s0Shape.uv2</stream>
-			<stream>s0Shape.colour</stream>
-			<primitive>s0Shape.indices</primitive>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
 			<primitiveGroup>
 				0
 				<material>
 					<identifier>s_nd0</identifier>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
-					<materialKind>105</materialKind>
 					<collisionFlags>0</collisionFlags>
+					<materialKind>105</materialKind>
 					<property>
 						albedoHeightTile0
 						<Texture>content/Hangars/h09_mt_bday_2024/Environment/00_Tiles/Asphalt_Fine_02_512_AM.dds</Texture>
@@ -65,7 +38,7 @@
 					</property>
 					<property>
 						blendMask
-						<Texture>content/Hangars/h09_mt_bday_2024/Environment/hd_h09_BD24_0002_Diorama_02_blend.png</Texture>
+						<Texture>content/Hangars/h09_mt_bday_2024/Environment/hd_h09_BD24_0002_Diorama_02_blend.dds</Texture>
 					</property>
 					<property>
 						colorTex
@@ -120,11 +93,11 @@
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
-	<constraints/>
 	<boundingBox>
 		<min>-6.918231 0.116120 -8.008940</min>
 		<max>6.924998 1.863147 8.168521</max>
 	</boundingBox>
+	<customBsp>true</customBsp>
 	<geometrySize>1180</geometrySize>
 	<minUVDensity>0.101468</minUVDensity>
 </root>

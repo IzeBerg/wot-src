@@ -3233,28 +3233,6 @@ def _getItemTooltip(name):
     return ''
 
 
-def mergeBonuses(bonuses):
-    merged = copy.deepcopy(bonuses)
-    if len(merged) > 1:
-        i = 0
-        while i < len(merged) - 1:
-            j = i + 1
-            while j < len(merged):
-                mergFunc = getMergeBonusFunction(merged[i], merged[j])
-                if mergFunc and merged[i].getName() == merged[j].getName():
-                    merged[i], needPop = mergFunc(merged[i], merged[j])
-                    if needPop:
-                        merged.pop(j)
-                    else:
-                        j += 1
-                else:
-                    j += 1
-
-            i += 1
-
-    return merged
-
-
 def getMergeBonusFunction(lhv, rhv):
 
     def hasOneBaseClass(l, r, cls):
@@ -3277,6 +3255,28 @@ def getMergeBonusFunction(lhv, rhv):
         if ofSameClassWithBase(lhv, lhv, SimpleBonus):
             return mergeSimpleBonuses
         return
+
+
+def mergeBonuses(bonuses, getMergeFunc=getMergeBonusFunction):
+    merged = copy.deepcopy(bonuses)
+    if len(merged) > 1:
+        i = 0
+        while i < len(merged) - 1:
+            j = i + 1
+            while j < len(merged):
+                mergFunc = getMergeFunc(merged[i], merged[j])
+                if mergFunc and merged[i].getName() == merged[j].getName():
+                    merged[i], needPop = mergFunc(merged[i], merged[j])
+                    if needPop:
+                        merged.pop(j)
+                    else:
+                        j += 1
+                else:
+                    j += 1
+
+            i += 1
+
+    return merged
 
 
 def mergeItemsBonuses(lhv, rhv):

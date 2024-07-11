@@ -7,7 +7,6 @@ from gui.battle_control.controllers.consumables.equipment_ctrl import Equipments
 from gui.shared.system_factory import registerEquipmentItem
 from items import vehicles, EQUIPMENT_TYPES
 from shared_utils import findFirst
-_BINDINGS_START = 2
 _logger = logging.getLogger(__name__)
 if TYPE_CHECKING:
     from typing import Optional, Dict
@@ -149,9 +148,8 @@ class RacesEquipmentsController(EquipmentsController):
         CommandMapping.g_instance.onMappingChanged()
         return
 
-    def pressAbility(self, bwKey):
-        lastPressedAbilityKey = bwKey - _BINDINGS_START
-        abilityToUse = self.__abilitiesSlots[lastPressedAbilityKey]
+    def pressAbility(self, slotIdx):
+        abilityToUse = self.__abilitiesSlots[slotIdx]
         if not abilityToUse:
             return False
         abilityDescr = abilityToUse.getDescriptor().compactDescr
@@ -162,7 +160,7 @@ class RacesEquipmentsController(EquipmentsController):
         return True
 
     def getOrderedEquipmentsLayout(self):
-        return [ (slotIndex, self.__abilitiesSlots[slotIndex]) for slotIndex in self.__abilitiesSlots ]
+        return self.__abilitiesSlots.items()
 
     def getEquipment(self, slotIndex):
         try:

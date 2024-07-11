@@ -23,4 +23,4 @@ class RacesEventBattleStatsComposer(StatsComposer):
 
     @staticmethod
     def onResultsPosted(arenaUniqueID):
-        event_dispatcher.showRacesBattleResult(arenaUniqueID)
+        event_dispatcher.showRacesBattleResultView(arenaUniqueID)

@@ -143,7 +143,6 @@ class ARENAS(object):
     C_83_KHARKIV_DESCRIPTION = '#arenas:83_kharkiv/description'
     C_209_WG_EPIC_SUBURBIA_NAME = '#arenas:209_wg_epic_suburbia/name'
     C_209_WG_EPIC_SUBURBIA_DESCRIPTION = '#arenas:209_wg_epic_suburbia/description'
-    C_102_RACE_NAME = '#arenas:102_race/name'
     C_102_RACE_2024_NAME = '#arenas:102_race_2024/name'
     C_102_RACE_2024_DESCRIPTION = '#arenas:102_race_2024/description'
     C_105_GERMANY_NAME = '#arenas:105_germany/name'
@@ -326,7 +325,6 @@ class ARENAS(object):
      C_83_KHARKIV_DESCRIPTION,
      C_209_WG_EPIC_SUBURBIA_NAME,
      C_209_WG_EPIC_SUBURBIA_DESCRIPTION,
-     C_102_RACE_NAME,
      C_102_RACE_2024_NAME,
      C_102_RACE_2024_DESCRIPTION,
      C_105_GERMANY_NAME,

@@ -8,57 +8,22 @@
 			<row2>0.000000 0.000000 1.000000</row2>
 			<row3>0.000000 0.000000 0.000000</row3>
 		</transform>
-		<node>
-			<identifier>hd_h09_BD24_0002_Diorama_01</identifier>
-			<transform>
-				<row0>1.000000 0.000000 0.000000</row0>
-				<row1>0.000000 1.000000 0.000000</row1>
-				<row2>0.000000 0.000000 1.000000</row2>
-				<row3>0.000000 0.000000 0.000000</row3>
-			</transform>
-			<node>
-				<identifier>lod2</identifier>
-				<transform>
-					<row0>1.000000 0.000000 0.000000</row0>
-					<row1>0.000000 1.000000 0.000000</row1>
-					<row2>0.000000 0.000000 1.000000</row2>
-					<row3>0.000000 0.000000 0.000000</row3>
-				</transform>
-				<node>
-					<identifier>s0</identifier>
-					<transform>
-						<row0>1.000000 0.000000 0.000000</row0>
-						<row1>0.000000 1.000000 0.000000</row1>
-						<row2>0.000000 0.000000 1.000000</row2>
-						<row3>0.000000 0.000000 0.000000</row3>
-					</transform>
-				</node>
-				<node>
-					<identifier>s6</identifier>
-					<transform>
-						<row0>1.000000 0.000000 0.000000</row0>
-						<row1>0.000000 1.000000 0.000000</row1>
-						<row2>0.000000 0.000000 1.000000</row2>
-						<row3>0.000000 0.000000 0.000000</row3>
-					</transform>
-				</node>
-			</node>
-		</node>
 	</node>
 	<renderSet>
 		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
-		<node>s6</node>
+		<node>Scene Root</node>
 		<geometry>
-			<vertices>s6Shape.vertices</vertices>
-			<stream>s6Shape.uv2</stream>
-			<primitive>s6Shape.indices</primitive>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
 			<primitiveGroup>
 				0
 				<material>
 					<identifier>s_nd6</identifier>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
-					<materialKind>105</materialKind>
 					<collisionFlags>0</collisionFlags>
+					<materialKind>105</materialKind>
 					<property>
 						albedoHeightTile0
 						<Texture>content/Hangars/h09_mt_bday_2024/Environment/00_Tiles/Stone_Pavers_04_512_AM.dds</Texture>
@@ -73,7 +38,7 @@
 					</property>
 					<property>
 						blendMask
-						<Texture>content/Hangars/h09_mt_bday_2024/Environment/hd_h09_BD24_0002_Diorama_01_blend.png</Texture>
+						<Texture>content/Hangars/h09_mt_bday_2024/Environment/hd_h09_BD24_0002_Diorama_01_blend.dds</Texture>
 					</property>
 					<property>
 						colorTex
@@ -122,23 +87,13 @@
 				</material>
 				<groupOrigin>0.065277 1.560892 -2.988751</groupOrigin>
 			</primitiveGroup>
-		</geometry>
-	</renderSet>
-	<renderSet>
-		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
-		<node>s0</node>
-		<geometry>
-			<vertices>s0Shape.vertices</vertices>
-			<stream>s0Shape.uv2</stream>
-			<stream>s0Shape.colour</stream>
-			<primitive>s0Shape.indices</primitive>
 			<primitiveGroup>
-				0
+				1
 				<material>
 					<identifier>s_nd0</identifier>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
-					<materialKind>105</materialKind>
 					<collisionFlags>255</collisionFlags>
+					<materialKind>105</materialKind>
 					<property>
 						albedoHeightTile0
 						<Texture>content/Hangars/h09_mt_bday_2024/Environment/00_Tiles/Sand_Rough_01_AM.dds</Texture>
@@ -153,7 +108,7 @@
 					</property>
 					<property>
 						blendMask
-						<Texture>content/Hangars/h09_mt_bday_2024/Environment/hd_h09_BD24_0002_Diorama_01_blend.png</Texture>
+						<Texture>content/Hangars/h09_mt_bday_2024/Environment/hd_h09_BD24_0002_Diorama_01_blend.dds</Texture>
 					</property>
 					<property>
 						colorTex
@@ -208,11 +163,11 @@
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
-	<constraints/>
 	<boundingBox>
 		<min>-6.918231 0.555490 -8.008939</min>
-		<max>6.913390 1.850050 8.168520</max>
+		<max>6.913391 1.850050 8.168520</max>
 	</boundingBox>
-	<geometrySize>2788</geometrySize>
+	<customBsp>true</customBsp>
+	<geometrySize>2904</geometrySize>
 	<minUVDensity>0.079492</minUVDensity>
 </root>

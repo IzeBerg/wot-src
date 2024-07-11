@@ -228,8 +228,6 @@ def vehicleAttributeFactors():
        'gun/aimingTime': 1.0, 
        'gun/piercing': 1.0, 
        'gun/clipTimeBetweenShots': 1.0, 
-       'gun/burst/count': 1, 
-       'gun/clip/count': 1, 
        'gun/canShoot': True, 
        'engine/fireStartingChance': 1.0, 
        'healthBurnPerSecLossFraction': 0.57, 
@@ -1495,9 +1493,7 @@ class VehicleDescriptor(object):
            'ammoBayReduceFineFactor': 1.0, 
            'engineReduceFineFactor': 1.0, 
            'moduleDamageFactor': 1.0, 
-           'engineAndFuelTanksDamageFactor': 1.0, 
-           'gun/burst/count': 1, 
-           'gun/clip/count': 1}
+           'engineAndFuelTanksDamageFactor': 1.0}
         if IS_CELLAPP or IS_CLIENT or IS_UE_EDITOR or IS_WEB or IS_BOT or onAnyApp:
             trackCenterOffset = chassis.topRightCarryingPoint[0]
             self.physics = {'weight': weight, 

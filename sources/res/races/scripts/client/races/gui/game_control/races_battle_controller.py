@@ -118,6 +118,9 @@ class RacesBattleController(IRacesBattleController, SeasonProvider, Notifiable, 
     def isBattleAvailable(self):
         return self.getModeSettings().isBattleEnabled
 
+    def isInQueue(self):
+        return self.prbEntity and self.prbEntity.isInQueue()
+
     def isTemporaryUnavailable(self):
         return self.getCurrentSeason() is not None and (not self.isEnabled or not self.isBattleAvailable())
 
@@ -314,6 +317,10 @@ class RacesBattleController(IRacesBattleController, SeasonProvider, Notifiable, 
         self.__timerUpdate()
         self.__timerTick()
 
+    def __updateHangar(self):
+        if not (self.isAvailable() and self.isBattleAvailable()) and self.isRacesPrbActive:
+            self.selectRandomBattle()
+
     def __timerUpdate(self):
         status, _, isPrimeTime = self.getPrimeTimeStatus()
         if isPrimeTime and self.__isPrimeTime:
@@ -322,6 +329,7 @@ class RacesBattleController(IRacesBattleController, SeasonProvider, Notifiable, 
         elif isPrimeTime is not self.__isPrimeTime:
             self.__isPrimeTime = isPrimeTime
             self.__triggerSeasonStateNotification()
+        self.__updateHangar()
         self.onPrimeTimeStatusUpdated(status)
 
     def __timerTick(self):

@@ -8,6 +8,7 @@ from races.gui.impl.lobby.races_lobby_view.races_progression_view import getRace
 from races.gui.impl.lobby.vehicles_carousel.tank_tooltip import TankTooltip
 from races.gui.shared.event_dispatcher import showRacesProgressionView, showRacesIntro
 from races.skeletons.progression_controller import IRacesProgressionController
+from races.gui.shared.bonus_helpers import sortBonuses
 from CurrentVehicle import g_currentVehicle
 from account_helpers.AccountSettings import LOOT_BOXES_VIEWED_COUNT, LOOT_BOXES_KEY_VIEWED_COUNT, LOOT_BOXES_VIEWED_HAS_INFINITE, RACES_INTRO_SCREEN_SHOWN
 from frameworks.wulf import ViewFlags, ViewSettings, WindowLayer
@@ -37,6 +38,7 @@ if typing.TYPE_CHECKING:
     from frameworks.wulf.view.view_event import ViewEvent
 _logger = logging.getLogger(__name__)
 MAX_STAGE_PROGRESSION = 9
+_PEDESTAL_REWARDS_COUNT = 3
 
 class RacesLobbyView(ViewImpl, LobbyHeaderVisibility):
     __slots__ = ('__selectedRacesTank', )
@@ -230,7 +232,9 @@ class RacesLobbyView(ViewImpl, LobbyHeaderVisibility):
         packerFactory = getRacesBonusPacker()
         currentStage = self.__progressionCtrl.getCurrentStage()
         currentStage = min(currentStage, MAX_STAGE_PROGRESSION)
-        currentBonuses = self.__progressionCtrl.getBonuses()[currentStage][1]
+        currentBonuses = sortBonuses(self.__progressionCtrl.getBonuses()[currentStage][1])
+        if len(currentBonuses) == _PEDESTAL_REWARDS_COUNT:
+            currentBonuses[0], currentBonuses[1] = currentBonuses[1], currentBonuses[0]
         rewardsList = model.getCurrentLevelRewards()
         packBonusModelAndTooltipData(currentBonuses, rewardsList, {}, packerFactory)
         rewardsList.invalidate()

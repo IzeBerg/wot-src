@@ -1,6 +1,6 @@
 from typing import Optional
 import BigWorld, CGF, Math, races_prefabs
-from debug_utils import LOG_DEBUG_DEV, LOG_ERROR
+from debug_utils import LOG_ERROR
 from helpers import dependency
 from skeletons.gui.battle_session import IBattleSessionProvider
 
@@ -31,11 +31,9 @@ class RacesPlacement(BigWorld.Entity):
 
     def onEnterWorld(self, *args):
         self.__handler = LootHandler()
-        LOG_DEBUG_DEV(('[Placement] type={} onEnterWorld').format(self.typeID), BigWorld.time())
         self.__handler.onCreated(self)
         CGF.loadGameObjectIntoHierarchy(self.PLACEMENT_PREFAB_PATH, self.entityGameObject, Math.Vector3(0, 0, 0))
 
     def onLeaveWorld(self):
-        LOG_DEBUG_DEV(('[Placement] type={} onLeaveWorld').format(self.typeID), BigWorld.time())
         self.__handler = None
         return

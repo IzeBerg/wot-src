@@ -1,783 +1,589 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
+	TYPE_ENCRYPTED_BLOB is (yet) unsupported!
 	<forward>
-		<name>default</name>
-		<preload>
-			<shader>\data\shaders\ps.fx</shader>
-			<texture>particles/content_forward/PFX_textures/lightning_02.dds</texture>
-		</preload>
-		<preload>
-			<shader>\data\shaders\ps.fx</shader>
-			<texture>particles/content_forward/PFX_textures/eff_tex_h20_wot_bday.dds</texture>
-		</preload>
-		<preload>
-			<shader>\data\shaders\ps.fx</shader>
-			<texture>particles/content_forward/PFX_textures/eff_fireworks.dds</texture>
-		</preload>
-		<preload>
-			<shader>\data\shaders\ps_solid.fx</shader>
-			<texture>particles/content_forward/PFX_textures/eff_tex.dds</texture>
-		</preload>
-		<preload>
-			<shader>\data\shaders\ps_water.fx</shader>
-			<texture>particles/content_forward/PFX_textures/eff_tex_water.dds</texture>
-		</preload>
-		<preload>
-			<shader>\data\shaders\ps_water.fx</shader>
-			<texture>particles/content_forward/PFX_textures/eff_tex.dds</texture>
-		</preload>
-		<preload>
-			<shader>\data\shaders\ps.fx</shader>
-			<texture>particles/content_forward/PFX_textures/eff_leaves.dds</texture>
-		</preload>
-		<preload>
-			<shader>\data\shaders\ps_long.fx</shader>
-			<texture>particles/content_forward/PFX_textures/eff_tex.dds</texture>
-		</preload>
-		<preload>
-			<shader>\data\shaders\ps_long.fx</shader>
-			<texture>particles/content_forward/PFX_textures/eff_tex_long.dds</texture>
-		</preload>
-		<preload>
-			<shader>\data\shaders\ps.fx</shader>
-			<texture>particles/content_forward/PFX_textures/eff_tex.dds</texture>
-		</preload>
-		<preload>
-			<shader>\data\shaders\ps_long.fx</shader>
-			<texture>particles/content_forward/PFX_textures/electric_engine.dds</texture>
-		</preload>
-		<preload>
-			<shader>\data\shaders\ps.fx</shader>
-			<texture>particles/content_forward/PFX_textures/electric_engine.dds</texture>
-		</preload>
-		<preload>
-			<shader>\data\shaders\ps_long.fx</shader>
-			<texture>particles/content_forward/PFX_textures/tracers.dds</texture>
-		</preload>
-		<preload>
-			<shader>\data\shaders\ps_water.fx</shader>
-			<texture>particles/content_forward/PFX_textures/tracers.dds</texture>
-		</preload>
-		<fn_effect_bin>particles/environment/buildings/hd_bld_as_003_vhousestone2floor_06_firework.eff</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/environment/interior/102_race_fireworks_1.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/environment/interior/102_race_falling_stones_02.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/environment/interior/102_race_falling_stones_03.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/environment/interior/102_race_finish_light_01.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/environment/interior/102_race_forest_bird_1.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/environment/interior/102_race_forest_bird_2.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/environment/interior/102_race_road_dust_1.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/environment/interior/102_race_road_dust_2.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/environment/interior/102_race_road_dust_3.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/environment/interior/102_race_road_dust_4.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/environment/interior/102_race_skyscraper_welding_1.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/environment/interior/102_race_steam_manhole_medium.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/environment/interior/102_race_steam_pipe_large_01.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/environment/interior/102_race_steam_pipe_large_02.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/environment/interior/102_race_steam_pipe_largexl.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/environment/interior/102_race_steam_pipe_medium_01.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/environment/interior/102_race_steam_pipe_medium_03.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/environment/interior/102_race_tube_big_smoke_01.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/environment/interior/102_race__tube_smoke.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/environment/interior/102_race__tube_smoke_02.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/environment/interior/102_race__tube_smoke_03.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/environment/interior/102_race__tube_smoke_04.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/environment/interior/102_race_tube_water.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/environment/interior/102_race_tube_water_small.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/environment/interior/102_race_welding_2.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/environment/interior/102_race_welding_3.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/environment/interior/102_race_welding_5_ricochet.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/environment/interior/102_race_welding_light_1.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/environment/interior/102_race_welding_smoke_1.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/102_race_fire.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/102_race_fire_green.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/102_race_fire_red.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/102_race_fire_white.vfx</fn_effect_bin>
-		<preloadVisual>particles/mesh_particles/environment/vfx_m_newspapers_01.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/environment/vfx_m_newspapers_02.visual</preloadVisual>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Buildings/hd_env_AM_067_GasStation_01_h1.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Buildings/inf_bld_AM_029_Office.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Buildings/inf_bldAM_024_TownShop_03.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Buildings/inf_bldSU_001_Outhouse_04.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/102_race__tube_smoke.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/102_race__tube_smoke_02.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/102_race__tube_smoke_03.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/102_race__tube_smoke_04.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/102_race_factory_sparks_02_emitter.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/102_race_factory_sparks_04.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/102_race_falling_stones_02.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/102_race_falling_stones_02_e.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/102_race_falling_stones_03.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/102_race_finish_light_01.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/102_race_forest_bird_1.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/102_race_forest_bird_2.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/102_race_road_dust_1.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/102_race_road_dust_2.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/102_race_road_dust_3.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/102_race_road_dust_4.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/102_race_skyscraper_welding_1.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/102_race_steam_manhole_medium.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/102_race_steam_manhole_medium_02.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/102_race_steam_manhole_medium_03.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/102_race_steam_pipe_large_01.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/102_race_steam_pipe_large_02.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/102_race_steam_pipe_largeXL.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/102_race_steam_pipe_medium_01.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/102_race_steam_pipe_medium_03.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/102_race_steam_spray_large.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/102_race_steam_spray_medium.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/102_race_steam_spray_small.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/102_race_tube_big_smoke_01.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/102_race_tube_water.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/102_race_tube_water_small.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/102_race_welding_1.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/102_race_welding_2.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/102_race_welding_3.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/102_race_welding_4_close.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/102_race_welding_5_ricochet.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/102_race_welding_6.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/102_race_welding_light_1.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/102_race_welding_smoke_1.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/fuel_barrel_explosion_race.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/hd_bld_UNI_010_WorkshopIndoor_FireStairs_02.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/hd_env_112_11_AdvertisingCloset_03.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/hd_env_AM_015_AdvertisingPosters_02.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/hd_env_AM_015_AdvertisingPosters_05.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/hd_env_AM_066_RoadSigns_01_fracture.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/hd_env_AM_066_RoadSigns_01_touchdown.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/hd_env_AM_069_WaterTower.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/hd_env_AM_070_TrafficLight_03.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/hd_env_AM_071_RoadLighting_fall.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/hd_env_AM_071_RoadLighting_touchdown.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/hd_env_AM_072_PhoneBooth.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/hd_env_AM_074_Bumper_1.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/hd_env_AM_074_Bumper_2.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/hd_env_AM_075_TrashCan.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/hd_env_SU_028_GasBottle.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/hd_envAF_006_BarellFuel3.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/hd_gaf_AM_007_Fence_Tile_01.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_env005_Barrel.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_env403_fracture.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_env403_touchdown.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_env406_Flowerbed1.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_env417_Bicycle.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_env601_BunchLogs3.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_env601_BunchLogs5.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_env601_BunchLogs_1.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_env_114_14_JunctionBox_04.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_env_114_14_JunctionBox_06.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_env_19_24_WaterPump.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_envAF_006_BarrelFuel_01.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_envAF_009_tent.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_envAM_003_Dustbin_01.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_envAM_004_WaterTower_Big.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_envAM_010_Cars_01.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_envAM_010_Cars_02.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_envAM_010_Cars_03.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_envAM_010_Cars_04.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_envAM_011_Truck_02.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_envAM_011_Truck_03.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_envAM_032_ConcreteRings_01_04.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_envAM_032_ConcreteRings_02_03.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_envAM_064_BlocksBrick_01_02.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_fuel_env418_OldGMercedes.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_fuel_envAM_011_Truck_01.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_fuel_mle008_Canisters1.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_gaf003_RabitzFence_End.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_gaf023_ForgedFence_corner.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_gaf024_ParkFence_tile_big_01.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_gafF_001_FactoryFence_gate_01.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_gafF_001_FactoryFence_gate_02.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_mle019_GerBoxes1.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_mle019_GerBoxes4.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_mle025_Bobbin.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_mle044_Barrel.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_rw004_Carriage1.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_rw004_Carriage4.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_rw004_Carriage5.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_rw007_Tupik.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_rw011_Transformator.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_rw_UNI_012_RailwaySection_Arrow.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_rwAM_002_AmericanLocomotive.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_rwAM_003_AmericanFreightCar.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_streetlamp_fracture.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_streetlamp_touchdown.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/inf_tree_birch_dry_fall_big.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/inf_tree_birch_dry_touchdown_big.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/inf_tree_bush_dry_fall.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/inf_tree_bush_dry_fall_big.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/inf_tree_bush_dry_fall_small.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/inf_tree_bush_dry_touchdown.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/inf_tree_bush_dry_touchdown_big.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/inf_tree_bush_dry_touchdown_small.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/tree_Maple_25m_fall.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/tree_Maple_25m_touchdown.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/tree_Maple_33m_fall.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/tree_Maple_33m_touchdown.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/tree_Maple_5m_fall.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/tree_Maple_5m_touchdown.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/tree_Maple_9m_fall.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/tree_Maple_9m_touchdown.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/tree_Olive_03_fall.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/tree_Olive_03_touchdown.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Sparks/sparks_env_med.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Sparks/sparks_env_sml.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/buildings/hd_env_AM_067_GasStation_01_h1.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/buildings/inf_bld_AM_029_Office.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/buildings/inf_bldAM_024_TownShop_03.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/buildings/inf_bldSU_001_Outhouse_04.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_factory_sparks_04.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_falling_stones_02.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_falling_stones_03.eff</fn_effect_bin>
-		<fn_effect_bin>particles/environment/interior/102_race_finish_light_01.eff</fn_effect_bin>
-		<fn_effect_bin>particles/environment/interior/102_race_fire.eff</fn_effect_bin>
-		<fn_effect_bin>particles/environment/interior/102_race_fire_green.eff</fn_effect_bin>
-		<fn_effect_bin>particles/environment/interior/102_race_fire_red.eff</fn_effect_bin>
-		<fn_effect_bin>particles/environment/interior/102_race_fire_white.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_forest_birds_1.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_forest_birds_2.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_road_dust_1.eff</fn_effect_bin>
-		<fn_effect_bin>particles/environment/interior/102_race_road_dust_1.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_road_dust_2.eff</fn_effect_bin>
-		<fn_effect_bin>particles/environment/interior/102_race_road_dust_2.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_road_dust_3.eff</fn_effect_bin>
-		<fn_effect_bin>particles/environment/interior/102_race_road_dust_4.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_road_dust_4.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_skyscraper_welding_1.eff</fn_effect_bin>
-		<fn_effect_bin>particles/environment/interior/102_race_skyscraper_welding_1.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_steam_manhole_medium.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_steam_manhole_medium_02.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_steam_manhole_medium_03.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_steam_pipe_large_01.eff</fn_effect_bin>
-		<fn_effect_bin>particles/environment/interior/102_race_steam_pipe_large_01.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_steam_pipe_large_02.eff</fn_effect_bin>
-		<fn_effect_bin>particles/environment/interior/102_race_steam_pipe_large_02.eff</fn_effect_bin>
-		<fn_effect_bin>particles/environment/interior/102_race_steam_pipe_largexl.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_steam_pipe_medium_01.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_steam_pipe_medium_03.eff</fn_effect_bin>
-		<fn_effect_bin>particles/environment/interior/102_race_steam_pipe_medium_03.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_steam_spray_large.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_steam_spray_medium.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_steam_spray_small.eff</fn_effect_bin>
-		<fn_effect_bin>particles/environment/interior/102_race_tube_big_smoke_01.eff</fn_effect_bin>
-		<fn_effect_bin>particles/environment/interior/102_race_tube_smoke.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_tube_smoke_02.eff</fn_effect_bin>
-		<fn_effect_bin>particles/environment/interior/102_race_tube_smoke_02.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_tube_smoke_03.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_tube_smoke_04.eff</fn_effect_bin>
-		<fn_effect_bin>particles/environment/interior/102_race_tube_water.eff</fn_effect_bin>
-		<fn_effect_bin>particles/environment/interior/102_race_tube_water_small.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_welding_1.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_welding_2.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_welding_3.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_welding_4_close.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_welding_5_ricochet.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_welding_6.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_welding_light_1.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_welding_smoke_1.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/fuel_barrel_explosion_race.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/hd_bld_UNI_010_WorkshopIndoor_FireStairs_02.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/hd_env_112_11_AdvertisingCloset_03.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/hd_env_AM_015_AdvertisingPosters_02.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/hd_env_AM_015_AdvertisingPosters_05.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/hd_env_AM_066_RoadSigns_01_fracture.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/hd_env_AM_066_RoadSigns_01_touchdown.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/hd_env_AM_069_WaterTower.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/hd_env_AM_070_TrafficLight_03.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/hd_env_AM_071_RoadLighting_fall.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/hd_env_AM_071_RoadLighting_touchdown.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/hd_env_AM_072_PhoneBooth.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/hd_env_AM_074_Bumper_1.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/hd_env_AM_074_Bumper_2.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/hd_env_AM_075_TrashCan.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/hd_env_SU_028_GasBottle.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/hd_envAF_006_BarellFuel3.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/hd_gaf_AM_007_Fence_Tile_01.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_env005_Barrel.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_env403_fracture.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_env403_touchdown.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_env406_Flowerbed1.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_env417_Bicycle.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_env601_BunchLogs3.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_env601_BunchLogs5.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_env601_BunchLogs_1.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_env_114_14_JunctionBox_04.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_env_114_14_JunctionBox_06.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_env_19_24_WaterPump.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_envAF_006_BarrelFuel_01.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_envAF_009_tent.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_envAM_003_Dustbin_01.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_envAM_004_WaterTower_Big.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_envAM_010_Cars_01.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_envAM_010_Cars_02.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_envAM_010_Cars_03.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_envAM_010_Cars_04.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_envAM_011_Truck_02.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_envAM_011_Truck_03.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_envAM_032_ConcreteRings_01_04.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_envAM_032_ConcreteRings_02_03.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_envAM_064_BlocksBrick_01_02.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_fuel_env418_OldGMercedes2.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_fuel_envAM_011_Truck_01.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_fuel_mle008_Canisters1.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_gaf003_RabitzFence_End.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_gaf023_ForgedFence_corner.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_gaf024_ParkFence_tile_big_01.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_gafF_001_FactoryFence_gate_01.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_gafF_001_FactoryFence_gate_02.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_mle019_GerBoxes1.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_mle019_GerBoxes4.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_mle025_Bobbin.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_mle044_Barrel.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_rw004_Carriage1.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_rw004_Carriage4.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_rw004_Carriage5.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_rw007_Tupik.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_rw011_Transformator.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_rw_UNI_012_RailwaySection_Arrow.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_rwAM_002_AmericanLocomotive.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_rwAM_003_AmericanFreightCar.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_streetlamp_fracture.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_streetlamp_touchdown.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_birch_dry_fall_big.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_birch_dry_touchdown_big.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_bush_dry_fall.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_bush_dry_fall_big.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_bush_dry_fall_small.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_bush_dry_touchdown.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_bush_dry_touchdown_big.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_bush_dry_touchdown_small.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/trees/Broadleaves/tree_Maple_25m_fall.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/trees/Broadleaves/tree_Maple_25m_touchdown.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/trees/Broadleaves/tree_Maple_33m_fall.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/trees/Broadleaves/tree_Maple_33m_touchdown.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/trees/Broadleaves/tree_Maple_5m_fall.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/trees/Broadleaves/tree_Maple_5m_touchdown.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/trees/Broadleaves/tree_Maple_9m_fall.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/trees/Broadleaves/tree_Maple_9m_touchdown.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/trees/Broadleaves/tree_Olive_03_fall.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/trees/Broadleaves/tree_Olive_03_touchdown.eff</fn_effect_bin>
-		<preloadVisual>particles/mesh_particles/metal_barrel.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/metal_stick.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/metal_tube_01.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/metal_tube_02.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/stone_brick_01.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/stone_brick_02.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/stone_brick_03.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/stone_concrete_01.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/stone_concrete_02.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/stone_concrete_03.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/stone_ground.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/tree_twig_01.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/wood_board_04.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/wood_board_square_01.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/wood_broken_01.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/wood_log_01.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/wood_log_02.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/wood_stick_01.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/wood_stick_02.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/wood_stick_03.visual</preloadVisual>
+		TYPE_ENCRYPTED_BLOB is (yet) unsupported!
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<preloadVisual>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</preloadVisual>
+		<preloadVisual>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</preloadVisual>
+		<preloadVisual>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</preloadVisual>
+		<preloadVisual>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</preloadVisual>
+		<preloadVisual>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</preloadVisual>
+		<preloadVisual>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</preloadVisual>
+		<preloadVisual>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</preloadVisual>
+		<preloadVisual>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</preloadVisual>
+		<preloadVisual>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</preloadVisual>
+		<preloadVisual>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</preloadVisual>
+		<preloadVisual>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</preloadVisual>
+		<preloadVisual>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</preloadVisual>
+		<preloadVisual>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</preloadVisual>
+		<preloadVisual>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</preloadVisual>
+		<preloadVisual>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</preloadVisual>
+		<preloadVisual>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</preloadVisual>
+		<preloadVisual>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</preloadVisual>
+		<preloadVisual>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</preloadVisual>
+		<preloadVisual>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</preloadVisual>
+		<preloadVisual>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</preloadVisual>
+		<preloadVisual>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</preloadVisual>
+		<preloadVisual>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</preloadVisual>
 	</forward>
 	<deferred>
-		<name>default</name>
-		<preload>
-			<shader>\data\shaders\ps.fx</shader>
-			<texture>particles/content_deferred/PFX_textures/lightning_02.dds</texture>
-		</preload>
-		<preload>
-			<shader>\data\shaders\ps.fx</shader>
-			<texture>particles/content_deferred/PFX_textures/eff_tex_102_race_bird.dds</texture>
-		</preload>
-		<preload>
-			<shader>\data\shaders\ps.fx</shader>
-			<texture>particles/content_deferred/PFX_textures/eff_tex_long.dds</texture>
-		</preload>
-		<preload>
-			<shader>\data\shaders\ps.fx</shader>
-			<texture>particles/content_deferred/PFX_textures/eff_tex_h20_wot_bday.dds</texture>
-		</preload>
-		<preload>
-			<shader>\data\shaders\ps_solid.fx</shader>
-			<texture>particles/content_deferred/PFX_textures/eff_tex.dds</texture>
-		</preload>
-		<preload>
-			<shader>\data\shaders\ps_water.fx</shader>
-			<texture>particles/content_deferred/PFX_textures/eff_tex.dds</texture>
-		</preload>
-		<preload>
-			<shader>\data\shaders\ps_water_displacement.fx</shader>
-			<texture>particles/content_deferred/PFX_textures/eff_tex_water.dds</texture>
-		</preload>
-		<preload>
-			<shader>\data\shaders\ps_foam.fx</shader>
-			<texture>particles/content_deferred/PFX_textures/eff_tex_water.dds</texture>
-		</preload>
-		<preload>
-			<shader>\data\shaders\ps_under_water.fx</shader>
-			<texture>particles/content_deferred/PFX_textures/eff_tex.dds</texture>
-		</preload>
-		<preload>
-			<shader>\data\shaders\ps.fx</shader>
-			<texture>particles/content_deferred/PFX_textures/eff_leaves.dds</texture>
-		</preload>
-		<preload>
-			<shader>\data\shaders\ps_long.fx</shader>
-			<texture>particles/content_deferred/PFX_textures/eff_tex.dds</texture>
-		</preload>
-		<preload>
-			<shader>\data\shaders\ps_long.fx</shader>
-			<texture>particles/content_deferred/PFX_textures/eff_tex_long.dds</texture>
-		</preload>
-		<preload>
-			<shader>\data\shaders\ps.fx</shader>
-			<texture>particles/content_deferred/PFX_textures/eff_tex.dds</texture>
-		</preload>
-		<preload>
-			<shader>\data\shaders\ps_long.fx</shader>
-			<texture>particles/content_deferred/PFX_textures/electric_engine.dds</texture>
-		</preload>
-		<preload>
-			<shader>\data\shaders\ps.fx</shader>
-			<texture>particles/content_deferred/PFX_textures/electric_engine.dds</texture>
-		</preload>
-		<preload>
-			<shader>\data\shaders\ps_long.fx</shader>
-			<texture>particles/content_deferred/PFX_textures/tracers.dds</texture>
-		</preload>
-		<preload>
-			<shader>\data\shaders\ps_water.fx</shader>
-			<texture>particles/content_deferred/PFX_textures/tracers.dds</texture>
-		</preload>
-		<preload>
-			<shader>\data\shaders\ps_force_fields.fx</shader>
-			<texture>particles/content_deferred/PFX_textures/eff_tex_force_field.dds</texture>
-		</preload>
-		<preload>
-			<shader>\data\shaders\ps_shimmer.fx</shader>
-			<texture>particles/content_deferred/PFX_textures/eff_tex_distortion.dds</texture>
-		</preload>
-		<fn_effect_bin>particles/environment/buildings/hd_bld_as_003_vhousestone2floor_06_firework.eff</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/environment/interior/102_race_fireworks_1.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/environment/interior/102_race_falling_stones_02.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/environment/interior/102_race_falling_stones_03.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/environment/interior/102_race_finish_light_01.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/environment/interior/102_race_forest_bird_1.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/environment/interior/102_race_forest_birds_sub_1.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/environment/interior/102_race_forest_bird_2.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/environment/interior/102_race_forest_birds_sub_2.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/environment/interior/102_race_road_dust_1.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/environment/interior/102_race_road_dust_2.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/environment/interior/102_race_road_dust_3.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/environment/interior/102_race_road_dust_4.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/environment/interior/102_race_skyscraper_welding_1.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/environment/interior/102_race_steam_manhole_medium.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/environment/interior/102_race_steam_pipe_large_01.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/environment/interior/102_race_steam_pipe_large_02.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/environment/interior/102_race_steam_pipe_largexl.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/environment/interior/102_race_steam_pipe_medium_01.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/environment/interior/102_race_steam_pipe_medium_03.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/environment/interior/102_race_tube_big_smoke_01.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/environment/interior/102_race_tube_smoke.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/environment/interior/102_race_tube_smoke_02.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/environment/interior/102_race_tube_smoke_03.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/environment/interior/102_race_tube_smoke_04.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/environment/interior/102_race_tube_water.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/environment/interior/102_race_tube_water_small.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/environment/interior/102_race_welding_2.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/environment/interior/102_race_welding_3.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/environment/interior/102_race_welding_5_ricochet.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/environment/interior/102_race_welding_light_1.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/environment/interior/102_race_welding_smoke_1.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/environment/objects/fuel_explosion_slave.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_fire.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_fire_green.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_fire_red.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_fire_white.vfx</fn_effect_bin>
-		<preloadVisual>particles/mesh_particles/environment/vfx_m_newspapers_01.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/environment/vfx_m_newspapers_02.visual</preloadVisual>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Buildings/hd_env_AM_067_GasStation_01_h1.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Buildings/inf_bld_AM_029_Office.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Buildings/inf_bldAM_024_TownShop_03.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Buildings/inf_bldSU_001_Outhouse_04.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_factory_sparks_02_emitter.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_factory_sparks_04.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_falling_stones_02.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_falling_stones_02_e.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_falling_stones_03.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_finish_light_01.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_forest_bird_1.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_forest_bird_2.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_forest_birds_sub_1.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_forest_birds_sub_2.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_road_dust_1.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_road_dust_2.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_road_dust_3.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_road_dust_4.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_skyscraper_welding_1.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_skyscraper_welding_emitter.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_steam_manhole_medium.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_steam_manhole_medium_02.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_steam_manhole_medium_03.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_steam_pipe_large_01.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_steam_pipe_large_02.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_steam_pipe_largeXL.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_steam_pipe_medium_01.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_steam_pipe_medium_03.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_steam_spray_large.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_steam_spray_medium.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_steam_spray_small.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_tube_big_smoke_01.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_tube_smoke.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_tube_smoke_02.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_tube_smoke_03.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_tube_smoke_04.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_tube_water.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_tube_water_small.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_welding_1.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_welding_2.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_welding_3.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_welding_4_close.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_welding_5_ricochet.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_welding_6.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_welding_light_1.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/102_race_welding_smoke_1.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/fuel_barrel_explosion_race.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/fuel_explosion_slave.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/hd_bld_UNI_010_WorkshopIndoor_FireStairs_02.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/hd_env_112_11_AdvertisingCloset_03.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/hd_env_AM_015_AdvertisingPosters_02.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/hd_env_AM_015_AdvertisingPosters_05.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/hd_env_AM_066_RoadSigns_01_fracture.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/hd_env_AM_066_RoadSigns_01_touchdown.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/hd_env_AM_069_WaterTower.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/hd_env_AM_070_TrafficLight_03.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/hd_env_AM_071_RoadLighting_fall.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/hd_env_AM_071_RoadLighting_touchdown.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/hd_env_AM_072_PhoneBooth.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/hd_env_AM_074_Bumper_1.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/hd_env_AM_074_Bumper_2.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/hd_env_AM_075_TrashCan.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/hd_env_SU_028_GasBottle.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/hd_envAF_006_BarellFuel3.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/hd_gaf_AM_007_Fence_Tile_01.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_env005_Barrel.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_env403_fracture.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_env403_touchdown.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_env406_Flowerbed1.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_env417_Bicycle.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_env601_BunchLogs3.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_env601_BunchLogs5.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_env601_BunchLogs_1.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_env_114_14_JunctionBox_04.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_env_114_14_JunctionBox_06.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_env_19_24_WaterPump.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_envAF_006_BarrelFuel_01.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_envAF_009_tent.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_envAM_003_Dustbin_01.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_envAM_004_WaterTower_Big.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_envAM_010_Cars_01.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_envAM_010_Cars_02.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_envAM_010_Cars_03.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_envAM_010_Cars_04.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_envAM_011_Truck_02.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_envAM_011_Truck_03.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_envAM_032_ConcreteRings_01_04.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_envAM_032_ConcreteRings_02_03.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_envAM_064_BlocksBrick_01_02.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_fuel_env418_OldGMercedes.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_fuel_envAM_011_Truck_01.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_fuel_mle008_Canisters1.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_gaf003_RabitzFence_End.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_gaf023_ForgedFence_corner.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_gaf024_ParkFence_tile_big_01.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_gafF_001_FactoryFence_gate_01.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_gafF_001_FactoryFence_gate_02.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_mle019_GerBoxes1.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_mle019_GerBoxes4.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_mle025_Bobbin.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_mle044_Barrel.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_rw004_Carriage1.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_rw004_Carriage4.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_rw004_Carriage5.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_rw007_Tupik.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_rw011_Transformator.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_rw_UNI_012_RailwaySection_Arrow.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_rwAM_002_AmericanLocomotive.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_rwAM_003_AmericanFreightCar.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_streetlamp_fracture.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_streetlamp_touchdown.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/inf_tree_birch_dry_fall_big.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/inf_tree_birch_dry_touchdown_big.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/inf_tree_bush_dry_fall.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/inf_tree_bush_dry_fall_big.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/inf_tree_bush_dry_fall_small.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/inf_tree_bush_dry_touchdown.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/inf_tree_bush_dry_touchdown_big.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/inf_tree_bush_dry_touchdown_small.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/tree_Maple_25m_fall.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/tree_Maple_25m_touchdown.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/tree_Maple_33m_fall.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/tree_Maple_33m_touchdown.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/tree_Maple_5m_fall.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/tree_Maple_5m_touchdown.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/tree_Maple_9m_fall.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/tree_Maple_9m_touchdown.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/tree_Olive_03_fall.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/tree_Olive_03_touchdown.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Sparks/sparks_env_med.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Sparks/sparks_env_sml.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/buildings/hd_env_AM_067_GasStation_01_h1.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/buildings/inf_bld_AM_029_Office.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/buildings/inf_bldAM_024_TownShop_03.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/buildings/inf_bldSU_001_Outhouse_04.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_factory_sparks_04.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_falling_stones_02.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_falling_stones_03.eff</fn_effect_bin>
-		<fn_effect_bin>particles/environment/interior/102_race_finish_light_01.eff</fn_effect_bin>
-		<fn_effect_bin>particles/environment/interior/102_race_fire.eff</fn_effect_bin>
-		<fn_effect_bin>particles/environment/interior/102_race_fire_green.eff</fn_effect_bin>
-		<fn_effect_bin>particles/environment/interior/102_race_fire_red.eff</fn_effect_bin>
-		<fn_effect_bin>particles/environment/interior/102_race_fire_white.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_forest_birds_1.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_forest_birds_2.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_road_dust_1.eff</fn_effect_bin>
-		<fn_effect_bin>particles/environment/interior/102_race_road_dust_1.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_road_dust_2.eff</fn_effect_bin>
-		<fn_effect_bin>particles/environment/interior/102_race_road_dust_2.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_road_dust_3.eff</fn_effect_bin>
-		<fn_effect_bin>particles/environment/interior/102_race_road_dust_4.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_road_dust_4.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_skyscraper_welding_1.eff</fn_effect_bin>
-		<fn_effect_bin>particles/environment/interior/102_race_skyscraper_welding_1.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_steam_manhole_medium.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_steam_manhole_medium_02.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_steam_manhole_medium_03.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_steam_pipe_large_01.eff</fn_effect_bin>
-		<fn_effect_bin>particles/environment/interior/102_race_steam_pipe_large_01.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_steam_pipe_large_02.eff</fn_effect_bin>
-		<fn_effect_bin>particles/environment/interior/102_race_steam_pipe_large_02.eff</fn_effect_bin>
-		<fn_effect_bin>particles/environment/interior/102_race_steam_pipe_largexl.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_steam_pipe_medium_01.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_steam_pipe_medium_03.eff</fn_effect_bin>
-		<fn_effect_bin>particles/environment/interior/102_race_steam_pipe_medium_03.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_steam_spray_large.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_steam_spray_medium.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_steam_spray_small.eff</fn_effect_bin>
-		<fn_effect_bin>particles/environment/interior/102_race_tube_big_smoke_01.eff</fn_effect_bin>
-		<fn_effect_bin>particles/environment/interior/102_race_tube_smoke.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_tube_smoke_02.eff</fn_effect_bin>
-		<fn_effect_bin>particles/environment/interior/102_race_tube_smoke_02.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_tube_smoke_03.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_tube_smoke_04.eff</fn_effect_bin>
-		<fn_effect_bin>particles/environment/interior/102_race_tube_water.eff</fn_effect_bin>
-		<fn_effect_bin>particles/environment/interior/102_race_tube_water_small.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_welding_1.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_welding_2.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_welding_3.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_welding_4_close.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_welding_5_ricochet.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_welding_6.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_welding_light_1.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/102_race_welding_smoke_1.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/fuel_barrel_explosion_race.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/hd_bld_UNI_010_WorkshopIndoor_FireStairs_02.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/hd_env_112_11_AdvertisingCloset_03.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/hd_env_AM_015_AdvertisingPosters_02.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/hd_env_AM_015_AdvertisingPosters_05.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/hd_env_AM_066_RoadSigns_01_fracture.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/hd_env_AM_066_RoadSigns_01_touchdown.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/hd_env_AM_069_WaterTower.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/hd_env_AM_070_TrafficLight_03.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/hd_env_AM_071_RoadLighting_fall.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/hd_env_AM_071_RoadLighting_touchdown.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/hd_env_AM_072_PhoneBooth.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/hd_env_AM_074_Bumper_1.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/hd_env_AM_074_Bumper_2.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/hd_env_AM_075_TrashCan.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/hd_env_SU_028_GasBottle.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/hd_envAF_006_BarellFuel3.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/hd_gaf_AM_007_Fence_Tile_01.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_env005_Barrel.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_env403_fracture.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_env403_touchdown.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_env406_Flowerbed1.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_env417_Bicycle.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_env601_BunchLogs3.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_env601_BunchLogs5.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_env601_BunchLogs_1.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_env_114_14_JunctionBox_04.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_env_114_14_JunctionBox_06.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_env_19_24_WaterPump.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_envAF_006_BarrelFuel_01.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_envAF_009_tent.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_envAM_003_Dustbin_01.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_envAM_004_WaterTower_Big.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_envAM_010_Cars_01.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_envAM_010_Cars_02.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_envAM_010_Cars_03.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_envAM_010_Cars_04.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_envAM_011_Truck_02.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_envAM_011_Truck_03.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_envAM_032_ConcreteRings_01_04.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_envAM_032_ConcreteRings_02_03.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_envAM_064_BlocksBrick_01_02.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_fuel_env418_OldGMercedes2.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_fuel_envAM_011_Truck_01.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_fuel_mle008_Canisters1.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_gaf003_RabitzFence_End.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_gaf023_ForgedFence_corner.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_gaf024_ParkFence_tile_big_01.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_gafF_001_FactoryFence_gate_01.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_gafF_001_FactoryFence_gate_02.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_mle019_GerBoxes1.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_mle019_GerBoxes4.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_mle025_Bobbin.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_mle044_Barrel.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_rw004_Carriage1.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_rw004_Carriage4.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_rw004_Carriage5.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_rw007_Tupik.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_rw011_Transformator.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_rw_UNI_012_RailwaySection_Arrow.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_rwAM_002_AmericanLocomotive.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_rwAM_003_AmericanFreightCar.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_streetlamp_fracture.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_streetlamp_touchdown.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_birch_dry_fall_big.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_birch_dry_touchdown_big.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_bush_dry_fall.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_bush_dry_fall_big.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_bush_dry_fall_small.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_bush_dry_touchdown.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_bush_dry_touchdown_big.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_bush_dry_touchdown_small.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/trees/Broadleaves/tree_Maple_25m_fall.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/trees/Broadleaves/tree_Maple_25m_touchdown.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/trees/Broadleaves/tree_Maple_33m_fall.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/trees/Broadleaves/tree_Maple_33m_touchdown.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/trees/Broadleaves/tree_Maple_5m_fall.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/trees/Broadleaves/tree_Maple_5m_touchdown.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/trees/Broadleaves/tree_Maple_9m_fall.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/trees/Broadleaves/tree_Maple_9m_touchdown.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/trees/Broadleaves/tree_Olive_03_fall.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/trees/Broadleaves/tree_Olive_03_touchdown.eff</fn_effect_bin>
-		<preloadVisual>particles/mesh_particles/metal_barrel.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/metal_stick.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/metal_tube_01.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/metal_tube_02.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/stone_brick_01.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/stone_brick_02.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/stone_brick_03.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/stone_concrete_01.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/stone_concrete_02.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/stone_concrete_03.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/stone_ground.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/tree_twig_01.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/wood_board_04.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/wood_board_square_01.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/wood_broken_01.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/wood_log_01.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/wood_log_02.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/wood_stick_01.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/wood_stick_03.visual</preloadVisual>
+		TYPE_ENCRYPTED_BLOB is (yet) unsupported!
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<fn_effect_bin>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</fn_effect_bin>
+		<preloadVisual>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</preloadVisual>
+		<preloadVisual>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</preloadVisual>
+		<preloadVisual>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</preloadVisual>
+		<preloadVisual>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</preloadVisual>
+		<preloadVisual>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</preloadVisual>
+		<preloadVisual>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</preloadVisual>
+		<preloadVisual>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</preloadVisual>
+		<preloadVisual>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</preloadVisual>
+		<preloadVisual>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</preloadVisual>
+		<preloadVisual>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</preloadVisual>
+		<preloadVisual>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</preloadVisual>
+		<preloadVisual>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</preloadVisual>
+		<preloadVisual>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</preloadVisual>
+		<preloadVisual>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</preloadVisual>
+		<preloadVisual>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</preloadVisual>
+		<preloadVisual>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</preloadVisual>
+		<preloadVisual>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</preloadVisual>
+		<preloadVisual>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</preloadVisual>
+		<preloadVisual>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</preloadVisual>
+		<preloadVisual>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</preloadVisual>
+		<preloadVisual>TYPE_ENCRYPTED_BLOB is (yet) unsupported!</preloadVisual>
 	</deferred>
 </root>

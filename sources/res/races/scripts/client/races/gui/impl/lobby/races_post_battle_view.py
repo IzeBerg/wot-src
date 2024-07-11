@@ -97,7 +97,6 @@ class RacesPostBattleView(ViewImpl, LobbyHeaderVisibility):
         _logger.debug('[RacesPostBattleView] close button clicked')
         self.destroyWindow()
         self.__racesBattleCtrl.selectRaces()
-        self.__racesBattleCtrl.openEventLobby()
 
     def __compareVehicles(self, veh1, veh2):
         disqvl1 = self.__getIsDisqualification(veh1['accountDBID'])

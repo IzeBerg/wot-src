@@ -8,47 +8,29 @@
 			<row2>0.000000 0.000000 1.000000</row2>
 			<row3>0.000000 0.000000 0.000000</row3>
 		</transform>
-		<node>
-			<identifier>hd_h09_BD24_0002_Diorama_Collider</identifier>
-			<transform>
-				<row0>1.000000 0.000000 0.000000</row0>
-				<row1>0.000000 1.000000 0.000000</row1>
-				<row2>0.000000 0.000000 1.000000</row2>
-				<row3>0.000000 0.000000 0.000000</row3>
-			</transform>
-			<node>
-				<identifier>lod0</identifier>
-				<transform>
-					<row0>1.000000 0.000000 0.000000</row0>
-					<row1>0.000000 1.000000 0.000000</row1>
-					<row2>0.000000 0.000000 1.000000</row2>
-					<row3>0.000000 0.000000 0.000000</row3>
-				</transform>
-				<node>
-					<identifier>s0</identifier>
-					<transform>
-						<row0>1.000000 0.000000 0.000000</row0>
-						<row1>0.000000 1.000000 0.000000</row1>
-						<row2>0.000000 0.000000 1.000000</row2>
-						<row3>0.000000 0.000000 0.000000</row3>
-					</transform>
-				</node>
-			</node>
-		</node>
 	</node>
 	<renderSet>
 		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
-		<node>s0</node>
+		<node>Scene Root</node>
 		<geometry>
-			<vertices>s0Shape.vertices</vertices>
-			<primitive>s0Shape.indices</primitive>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
 			<primitiveGroup>
 				0
 				<material>
-					<identifier>s_nd0</identifier>
+					<identifier>s_nd6</identifier>
 					<fx>shaders/std_effects/PBS_ext.fx</fx>
-					<materialKind>108</materialKind>
 					<collisionFlags>0</collisionFlags>
+					<materialKind>108</materialKind>
+					<property>
+						alphaReference
+						<Int>255</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
 					<property>
 						diffuseMap
 						<Texture>content/Hangars/h09_mt_bday_2024/Environment/hd_h09_BD24_0011_Table_03_AM.dds</Texture>
@@ -65,29 +47,16 @@
 						normalMap
 						<Texture>content/Hangars/h09_mt_bday_2024/Environment/hd_h09_BD24_0011_Table_03_ANM.dds</Texture>
 					</property>
-					<property>
-						alphaReference
-						<Int>255</Int>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>true</Bool>
-					</property>
 				</material>
-				<groupOrigin>0.071852 1.558656 -2.756540</groupOrigin>
+				<groupOrigin>0.075485 1.199871 0.326387</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
-	<constraints/>
 	<boundingBox>
-		<min>-2.652203 1.154942 -7.063297</min>
-		<max>2.795907 1.793176 1.550216</max>
+		<min>-6.774451 0.364153 -7.519691</min>
+		<max>6.925422 2.035588 8.172465</max>
 	</boundingBox>
-	<missingBspMaterial>
-		<material>
-			<identifier>s_nd1</identifier>
-		</material>
-	</missingBspMaterial>
-	<geometrySize>140</geometrySize>
-	<minUVDensity>0.012588</minUVDensity>
+	<customBsp>true</customBsp>
+	<geometrySize>88414</geometrySize>
+	<minUVDensity>0.024471</minUVDensity>
 </root>

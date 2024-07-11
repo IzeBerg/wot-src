@@ -65,9 +65,7 @@ class BasePerksController(object):
      'radioHealthFactor',
      'explosiveDamageResistanceFactor',
      'trackRammingDamageFactor',
-     'turretRotatorCritPenaltyReduce',
-     'gun/burst/count',
-     'gun/clip/count'}
+     'turretRotatorCritPenaltyReduce'}
     _additiveDynamicFactors = {
      'criticalHitChanceBoost',
      'damageDistributionLowerBound',

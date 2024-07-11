@@ -6,11 +6,13 @@ from script_component.DynamicScriptComponent import DynamicScriptComponent
 from gui.shared import g_eventBus, EVENT_BUS_SCOPE
 from races.gui.shared.event import RacesEvent
 _logger = logging.getLogger(__name__)
+_logger.setLevel(logging.DEBUG)
 
 class RaceVehicleComponent(DynamicScriptComponent):
 
     def __init__(self, *_, **__):
         super(RaceVehicleComponent, self).__init__(*_, **__)
+        self._prevActiveTurretIdx = None
         self.pathProjectData = None
         self.currentDistanceToFinish = float('inf')
         self.__areaTriggerGO = None
@@ -50,3 +52,23 @@ class RaceVehicleComponent(DynamicScriptComponent):
                 go.createComponent(CylinderAreaComponent, PATH_DETECTOR_RADIUS, PATH_DETECTOR_HEIGHT)
             self.__areaTriggerGO = CGF.ComponentLink(go, AreaTriggerComponent)
             return
+
+    def set_gunProperties(self, _):
+        descr = self.entity.typeDescriptor
+        properties = self.gunProperties
+        if not properties:
+            if self._prevActiveTurretIdx is not None:
+                descr.activeTurretPosition = self._prevActiveTurretIdx
+                _logger.debug('[RaceVehicleComponent] - removed temporary gun')
+                self._prevActiveTurretIdx = None
+            return
+        self._prevActiveTurretIdx = descr.activeTurretPosition
+        newGun = descr.gun.copy()
+        newGun.clip = (properties['clip'], properties['clipInterval'])
+        newGun.burst = (properties['burst'], properties['burstInterval'])
+        newGun.tags = set()
+        if properties['clip'] > 1:
+            newGun.tags.add('clip')
+        descr.gun = newGun
+        _logger.debug('[RaceVehicleComponent] - added new temporary gun')
+        return

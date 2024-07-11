@@ -3735,6 +3735,9 @@ class IRacesBattleController(IGameController, ISeasonProvider):
     def isBattleAvailable(self):
         raise NotImplementedError
 
+    def isInQueue(self):
+        raise NotImplementedError
+
     def selectRandomBattle(self):
         raise NotImplementedError
 

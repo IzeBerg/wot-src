@@ -18,6 +18,12 @@
 			<Type>STRING</Type>
 			<Flags>CELL_PUBLIC</Flags>
 		</patrolNodeID>
+		<gunProperties>
+			<Type>PYTHON</Type>
+			<Flags>ALL_CLIENTS</Flags>
+			<AllowUnsafeData>true</AllowUnsafeData>
+			<Default>{}</Default>
+		</gunProperties>
 	</Properties>
 	<ofEntity>
 		<Vehicle/>

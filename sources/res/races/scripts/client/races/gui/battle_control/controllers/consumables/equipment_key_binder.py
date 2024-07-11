@@ -49,7 +49,7 @@ class EquipmentKeyBinder(object):
             if intCD is None:
                 _logger.warning('KeyBinder: cannot find bwKey=%s in keyBinding=%s', str(self._keyBindings), bwKey)
                 return
-            abilityAllowedToUse = equipmentCtrl.pressAbility(bwKey)
+            abilityAllowedToUse = equipmentCtrl.pressAbility(intCD)
             if abilityAllowedToUse:
                 _logger.debug('KeyBinder: activate ability with intCD %s', intCD)
                 equipmentCtrl.changeSetting(intCD)
@@ -72,7 +72,7 @@ class EquipmentKeyBinder(object):
     def _onEquipmentRemoved(self, intCD, item):
         bwKey = next((k for k, v in self._keyBindings.iteritems() if v == intCD), None)
         if bwKey:
-            _logger.warning('KeyBinder: removing keybinding for the bwKey %s and %s', bwKey, intCD)
+            _logger.debug('KeyBinder: removing keybinding for the bwKey %s and %s', bwKey, intCD)
             self._keyBindings.pop(bwKey)
         return
 
