@@ -56,30 +56,29 @@ class RacesBattleResultsFormatter(BattleResultsFormatter):
 
     def __makeDailyQuestsString(self, message):
         completedQuestIDs = message.data.get('completedQuestIDs', None)
-        if not completedQuestIDs:
+        if not completedQuestIDs or self.__racesProgression.isProgressionFinished():
             return ''
-        else:
-            result = ''
-            quests = self.__racesProgression.getDailyQuests()
-            for questID, quest in quests.iteritems():
-                if questID in completedQuestIDs:
-                    bonuses = quest.getBonuses()
-                    for bonus in bonuses:
-                        if isinstance(bonus, TokensBonus):
-                            tokens = bonus.getTokens()
-                            progressionToken = tokens.get('races:progression_token', None)
-                            if not progressionToken:
-                                continue
-                            header = backport.text(R.strings.races_messenger.serviceChannelMessages.racesBattleResults.dailyQuest.header())
-                            result += header
-                            poFile = R.strings.races_messenger
-                            dailyQuestBody = poFile.serviceChannelMessages.racesBattleResults.dailyQuest.body()
-                            resultingText = backport.text(dailyQuestBody, dailyQuestPoints=progressionToken.count)
-                            formattedBody = text_styles.stats(resultingText)
-                            result += formattedBody + '\n'
-                            break
+        result = ''
+        quests = self.__racesProgression.getDailyQuests()
+        for questID, quest in quests.iteritems():
+            if questID in completedQuestIDs:
+                bonuses = quest.getBonuses()
+                for bonus in bonuses:
+                    if isinstance(bonus, TokensBonus):
+                        tokens = bonus.getTokens()
+                        progressionToken = tokens.get('races:progression_token', None)
+                        if not progressionToken:
+                            continue
+                        header = backport.text(R.strings.races_messenger.serviceChannelMessages.racesBattleResults.dailyQuest.header())
+                        result += header
+                        poFile = R.strings.races_messenger
+                        dailyQuestBody = poFile.serviceChannelMessages.racesBattleResults.dailyQuest.body()
+                        resultingText = backport.text(dailyQuestBody, dailyQuestPoints=progressionToken.count)
+                        formattedBody = text_styles.stats(resultingText)
+                        result += formattedBody + '\n'
+                        break
 
-            return result
+        return result
 
     def __makeAchievementString(self, message):
         result = ''

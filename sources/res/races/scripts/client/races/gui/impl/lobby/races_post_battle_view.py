@@ -1,8 +1,9 @@
-import logging, BigWorld, typing, SoundGroups
+import logging, BigWorld, typing
 from races.gui.impl.gen.view_models.views.lobby.races_post_battle_view_model import RacesPostBattleViewModel, QuestsState
 from races.gui.impl.lobby.races_lobby_view.ui_packers import fillQuestsModel
 from races.skeletons.progression_controller import IRacesProgressionController
 from races_common.races_common import checkIfViolator, RacesScoreEvents
+import SoundGroups
 from frameworks.wulf import ViewFlags, ViewSettings
 from gui.impl.backport.backport_tooltip import createTooltipData
 from gui.impl.lobby.common.view_mixins import LobbyHeaderVisibility
@@ -13,6 +14,7 @@ from helpers import dependency
 from helpers import time_utils
 from shared_utils import findFirst, first
 from skeletons.gui.battle_results import IBattleResultsService
+from skeletons.gui.battle_session import IBattleSessionProvider
 from skeletons.gui.game_control import IRacesBattleController
 from skeletons.gui.impl import INotificationWindowController
 from skeletons.gui.shared import IItemsCache
@@ -35,6 +37,7 @@ class RacesPostBattleView(ViewImpl, LobbyHeaderVisibility):
     __progressionCtrl = dependency.descriptor(IRacesProgressionController)
     __racesBattleCtrl = dependency.descriptor(IRacesBattleController)
     _notificationMgr = dependency.descriptor(INotificationWindowController)
+    __sessionProvider = dependency.descriptor(IBattleSessionProvider)
 
     def __init__(self, layoutID, *args, **kwargs):
         self.__tooltipData = {}
@@ -67,7 +70,9 @@ class RacesPostBattleView(ViewImpl, LobbyHeaderVisibility):
         _logger.debug('[RacesPostBattleView] onLoading')
         super(RacesPostBattleView, self)._onLoading(*args, **kwargs)
         if self.__battleResults is not None and self._battleResultsData:
-            self.__playSound()
+            lastWinStatus = self.__sessionProvider.getCtx().extractLastArenaWinStatus()
+            if lastWinStatus is not None:
+                self.__playSound()
             with self.viewModel.transaction() as (model):
                 playerId = BigWorld.player().databaseID
                 model.setPlayerId(playerId)
@@ -173,6 +178,9 @@ class RacesPostBattleView(ViewImpl, LobbyHeaderVisibility):
             model.setQuestsState(QuestsState.NOPOINTS)
             return
         vehDescr = self._battleResultsData.results['common']['accountCompDescr'][BigWorld.player().databaseID][0][0]
+        if self.__progressionCtrl.isProgressionFinished():
+            model.setQuestsState(QuestsState.ALLQUESTSCOMPLETED)
+            return
         questsProgress = self._battleResultsData.results['personal'][vehDescr]['questsProgress']
         filteredQuestsProgress = {k:v for k, v in questsProgress.iteritems() if self.__progressionCtrl.isRacesProgressionQuest(k)}
         if not len(filteredQuestsProgress):
