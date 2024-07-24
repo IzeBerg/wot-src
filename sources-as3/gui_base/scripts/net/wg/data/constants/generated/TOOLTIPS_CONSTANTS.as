@@ -781,6 +781,8 @@ package net.wg.data.constants.generated
       
       public static const LOOT_BOX_TOOLTIP:String = "lootBoxTooltip";
       
+      public static const LOOT_BOX_KEY_TOOLTIP:String = "lootBoxKeyTooltip";
+      
       public static const LOOT_BOX_GUARANTEED_REWARD_TOOLTIP:String = "lootBoxGuaranteedRewardTooltip";
       
       public static const ARMORY_YARD_AWARD_VEHICLE:String = "armoryYardAwardVehicle";
@@ -873,7 +875,7 @@ package net.wg.data.constants.generated
       
       public static const COMP7_BATTLE_SET:Array = [COMP7_ROLE_SKILL_BATTLE_TOOLTIP,VEHICLE_ROLES];
       
-      public static const LB_LOBBY_SET:Array = [LOOT_BOXES_VEHICLE_BLUEPRINT_FRAGMENT,LOOT_BOX_TOOLTIP,LOOT_BOX_GUARANTEED_REWARD_TOOLTIP];
+      public static const LB_LOBBY_SET:Array = [LOOT_BOXES_VEHICLE_BLUEPRINT_FRAGMENT,LOOT_BOX_TOOLTIP,LOOT_BOX_KEY_TOOLTIP,LOOT_BOX_GUARANTEED_REWARD_TOOLTIP];
       
       public static const ARMORY_YARD_LOBBY_SET:Array = [ARMORY_YARD_AWARD_VEHICLE];
       

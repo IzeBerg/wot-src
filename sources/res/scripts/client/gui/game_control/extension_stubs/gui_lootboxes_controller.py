@@ -5,30 +5,18 @@ class GuiLootBoxesControllerStub(IGuiLootBoxesController):
     onStatusChange = Event.Event()
     onAvailabilityChange = Event.Event()
     onBoxesCountChange = Event.Event()
+    onKeysUpdate = Event.Event()
     onWelcomeScreenClosed = Event.Event()
-
-    @property
-    def boxCountToGuaranteedBonus(self):
-        return 0
 
     @property
     def isConsumesEntitlements(self):
         return False
-
-    def getGuaranteedBonusLimit(self, boxType):
-        return 0
 
     def getSetting(self, setting):
         return
 
     def setSetting(self, setting, value):
         pass
-
-    def getBoxInfo(self, boxType):
-        return {}
-
-    def getVehicleLevels(self, boxType):
-        return set()
 
     def isEnabled(self):
         return False
@@ -69,8 +57,14 @@ class GuiLootBoxesControllerStub(IGuiLootBoxesController):
     def getBoxesCount(self):
         return 0
 
-    def getBoxesInfo(self):
-        return {}
+    def getBoxKeysCount(self):
+        return 0
+
+    def getKeyByID(self, keyID):
+        return
+
+    def getKeyByTokenID(self, keyID):
+        return
 
     def getBonusesOrder(self, category=None):
         return tuple()
@@ -80,3 +74,15 @@ class GuiLootBoxesControllerStub(IGuiLootBoxesController):
 
     def addShopWindowHandler(self, keyHandler, handler):
         pass
+
+    def hasLootboxKey(self):
+        return False
+
+    def hasInfiniteLootboxes(self):
+        return False
+
+    def getGuiLootBoxes(self):
+        return []
+
+    def getGuiLootBoxByTokenID(self, tokenID):
+        return

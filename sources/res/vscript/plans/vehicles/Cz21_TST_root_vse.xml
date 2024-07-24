@@ -118,7 +118,7 @@
 				<slots>
 					<slot>
 						<name>Path</name>
-						<const>\vscript/plans/vehicles/Cz21_TST_battle_vse.xml\</const>
+						<const>\vscript/plans/vehicles/Sleeve_Ejection_vse.xml\</const>
 					</slot>
 					<slot>
 						<name>AutoStart</name>
@@ -359,23 +359,6 @@
 						<slots/>
 					</block>
 					<block>
-						<class>Concatenate</class>
-						<id>Concatenate_2</id>
-						<params>
-							<param>
-								3
-								<name>Input Count</name>
-								<type>IntT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>i1</name>
-								<const>\: \</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
 						<class>PrintToGameLogs</class>
 						<id>PrintToGameLogs_1</id>
 						<params>
@@ -392,6 +375,23 @@
 						<id>StopPlan_1</id>
 						<params/>
 						<slots/>
+					</block>
+					<block>
+						<class>Concatenate</class>
+						<id>Concatenate_2</id>
+						<params>
+							<param>
+								3
+								<name>Input Count</name>
+								<type>IntT</type>
+							</param>
+						</params>
+						<slots>
+							<slot>
+								<name>i1</name>
+								<const>\: \</const>
+							</slot>
+						</slots>
 					</block>
 					<block>
 						<class>MacroInput</class>
@@ -458,18 +458,6 @@
 						<output>true</output>
 					</connection>
 					<connection>
-						<from>MacroInput_3</from>
-						<input>i0</input>
-						<to>Concatenate_2</to>
-						<output>GO_name</output>
-					</connection>
-					<connection>
-						<from>MacroInput_4</from>
-						<input>i2</input>
-						<to>Concatenate_2</to>
-						<output>message</output>
-					</connection>
-					<connection>
 						<from>If_2</from>
 						<input>input</input>
 						<to>PrintToGameLogs_1</to>
@@ -486,6 +474,18 @@
 						<input>input</input>
 						<to>StopPlan_1</to>
 						<output>out</output>
+					</connection>
+					<connection>
+						<from>MacroInput_3</from>
+						<input>i0</input>
+						<to>Concatenate_2</to>
+						<output>GO_name</output>
+					</connection>
+					<connection>
+						<from>MacroInput_4</from>
+						<input>i2</input>
+						<to>Concatenate_2</to>
+						<output>message</output>
 					</connection>
 				</connections>
 			</macro>

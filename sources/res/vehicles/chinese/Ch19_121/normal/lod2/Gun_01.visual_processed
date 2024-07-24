@@ -38,7 +38,7 @@
 							<row0>1.000000 0.000000 0.000000</row0>
 							<row1>0.000000 1.000000 0.000000</row1>
 							<row2>0.000000 0.000000 1.000000</row2>
-							<row3>-0.002163 -0.000040 2.560457</row3>
+							<row3>-0.000000 -0.000040 2.209587</row3>
 						</transform>
 					</node>
 					<node>
@@ -65,11 +65,11 @@
 	</node>
 	<renderSet>
 		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
-		<node>Gun_BlendBone</node>
 		<node>G_BlendBone</node>
+		<node>Gun_BlendBone</node>
 		<geometry>
-			<vertices>gun_01Shape13.vertices</vertices>
-			<primitive>gun_01Shape13.indices</primitive>
+			<vertices>gun_01_Shape.vertices</vertices>
+			<primitive>gun_01_Shape.indices</primitive>
 			<primitiveGroup>
 				0
 				<material>
@@ -88,20 +88,12 @@
 						<Texture>vehicles/chinese/Ch19_121/121_guns_AM.dds</Texture>
 					</property>
 					<property>
-						alphaTestEnable
-						<Bool>false</Bool>
-					</property>
-					<property>
 						excludeMaskAndAOMap
 						<Texture>vehicles/chinese/Ch19_121/121_guns_AO.dds</Texture>
 					</property>
 					<property>
 						colorIdMap
 						<Texture>vehicles/chinese/Ch19_121/121_guns_ID.dds</Texture>
-					</property>
-					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
 					</property>
 					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
 					<property>
@@ -128,10 +120,7 @@
 					</property>
 					<property>
 						g_detailUVTiling
-						<Vector4>
-							3.50685 1.75342 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>3.506850 1.753420 0.000000 0.000000</Vector4>
 					</property>
 					<property>
 						g_detailPower
@@ -142,15 +131,15 @@
 						<Texture>vehicles/chinese/Ch19_121/121_guns_ANM.dds</Texture>
 					</property>
 				</material>
-				<groupOrigin>-0.000617 0.111308 -2.699220</groupOrigin>
+				<groupOrigin>0.076676 0.112697 -2.699938</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<constraints/>
 	<boundingBox>
-		<min>-0.235679 -0.196118 -0.162017</min>
-		<max>0.234444 0.418733 5.560457</max>
+		<min>-0.233390 -0.193339 -0.162017</min>
+		<max>0.386743 0.418733 5.561894</max>
 	</boundingBox>
-	<geometrySize>24580</geometrySize>
-	<minUVDensity>0.019351</minUVDensity>
+	<geometrySize>20754</geometrySize>
+	<minUVDensity>0.026164</minUVDensity>
 </root>

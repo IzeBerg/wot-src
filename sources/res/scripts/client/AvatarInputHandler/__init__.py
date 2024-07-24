@@ -399,8 +399,8 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
             return
         return self.__curCtrl.updateShootingStatus(canShoot)
 
-    def getDesiredShotPoint(self, ignoreAimingMode=False):
-        if self.__isDetached:
+    def getDesiredShotPoint(self, ignoreAimingMode=False, ignoreDetached=False):
+        if not ignoreDetached and self.__isDetached:
             return None
         else:
             return self.__curCtrl.getDesiredShotPoint(ignoreAimingMode)

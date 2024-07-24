@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>lambert1</identifier>
+					<fx>shaders/custom/shield_shimmer.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>0.000000 0.100000 1.000000 0.100000</Vector4>
+					</property>
+					<property>
+						distortionAmount
+						<Float>0.100000</Float>
+					</property>
+					<property>
+						distortionFrames
+						<Vector4>0.000000 0.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/cosmic_overcharge_nm.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						phaseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/114_czech_vel_smoke_fire.dds</Texture>
+					</property>
+					<property>
+						rampFresnelMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Gradients/Gradient_transparentEdge_02.dds</Texture>
+					</property>
+					<property>
+						distortion_UV_Scale
+						<Vector4>1.000000 6.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						distortionNormalAmount
+						<Float>1.000000</Float>
+					</property>
+					<property>
+						alphaFresnelEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						fresnelPower
+						<UInt>3</UInt>
+					</property>
+				</material>
+				<groupOrigin>0.000001 0.086443 -0.000001</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.999999 -0.382684 -1.000000</min>
+		<max>1.000000 0.555570 0.999999</max>
+	</boundingBox>
+	<geometrySize>11804</geometrySize>
+	<minUVDensity>0.050826</minUVDensity>
+</root>

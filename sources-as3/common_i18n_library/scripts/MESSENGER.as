@@ -975,6 +975,8 @@ package
       
       public static const SERVICECHANNELMESSAGES_OFFERTOKENBONUS_TITLE:String = "#messenger:serviceChannelMessages/offerTokenBonus/title";
       
+      public static const SERVICECHANNELMESSAGES_INVOICERECEIVED_LBKEYSACCRUED:String = "#messenger:serviceChannelMessages/invoiceReceived/lbKeysAccrued";
+      
       public static const SERVICECHANNELMESSAGES_DURATIONOFPREMIUMACCOUNTEXPIRES:String = "#messenger:serviceChannelMessages/durationOfPremiumAccountExpires";
       
       public static const SERVICECHANNELMESSAGES_PREMIUMBOUGHT:String = "#messenger:serviceChannelMessages/premiumBought";

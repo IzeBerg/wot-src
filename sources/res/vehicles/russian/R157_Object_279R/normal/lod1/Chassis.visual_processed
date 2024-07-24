@@ -22,7 +22,7 @@
 					<row0>1.000000 0.000000 0.000000</row0>
 					<row1>0.000000 0.993847 -0.110758</row1>
 					<row2>0.000000 0.110758 0.993847</row2>
-					<row3>-0.898706 0.000000 1.987652</row3>
+					<row3>-1.408000 0.000000 1.987652</row3>
 				</transform>
 			</node>
 			<node>
@@ -30,8 +30,8 @@
 				<transform>
 					<row0>-1.000000 0.000000 0.000000</row0>
 					<row1>0.000000 0.994751 0.102324</row1>
-					<row2>-0.000000 0.102324 -0.994751</row2>
-					<row3>-0.898706 0.000000 -1.987646</row3>
+					<row2>-0.000000 0.102324 -0.994750</row2>
+					<row3>-1.408000 0.000000 -1.987646</row3>
 				</transform>
 			</node>
 			<node>
@@ -1661,17 +1661,10 @@
 			<primitiveGroup>
 				0
 				<material>
-					<property>
-						doubleSided
-						<Bool>false</Bool>
-					</property>
 					<identifier>tank_chassis_01_skinned</identifier>
 					<property>
 						g_detailUVTiling
-						<Vector4>
-							4.20822 4.20822 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>4.208220 4.208220 0.000000 0.000000</Vector4>
 					</property>
 					<property>
 						metallicDetailMap
@@ -1711,10 +1704,6 @@
 					<property>
 						alphaTestEnable
 						<Bool>true</Bool>
-					</property>
-					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
 					</property>
 				</material>
 				<groupOrigin>-0.607110 0.423194 0.022809</groupOrigin>
@@ -1744,17 +1733,10 @@
 			<primitiveGroup>
 				0
 				<material>
-					<property>
-						doubleSided
-						<Bool>false</Bool>
-					</property>
 					<identifier>tank_chassis_01_skinned</identifier>
 					<property>
 						g_detailUVTiling
-						<Vector4>
-							4.20822 4.20822 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>4.208220 4.208220 0.000000 0.000000</Vector4>
 					</property>
 					<property>
 						metallicDetailMap
@@ -1794,10 +1776,6 @@
 					<property>
 						alphaTestEnable
 						<Bool>true</Bool>
-					</property>
-					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
 					</property>
 				</material>
 				<groupOrigin>0.606354 0.423194 0.022820</groupOrigin>
@@ -1827,17 +1805,10 @@
 			<primitiveGroup>
 				0
 				<material>
-					<property>
-						doubleSided
-						<Bool>false</Bool>
-					</property>
 					<identifier>tank_chassis_01_skinned</identifier>
 					<property>
 						g_detailUVTiling
-						<Vector4>
-							4.20822 4.20822 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>4.208220 4.208220 0.000000 0.000000</Vector4>
 					</property>
 					<property>
 						metallicDetailMap
@@ -1877,10 +1848,6 @@
 					<property>
 						alphaTestEnable
 						<Bool>true</Bool>
-					</property>
-					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
 					</property>
 				</material>
 				<groupOrigin>-1.189882 0.422570 0.022322</groupOrigin>
@@ -1910,17 +1877,10 @@
 			<primitiveGroup>
 				0
 				<material>
-					<property>
-						doubleSided
-						<Bool>false</Bool>
-					</property>
 					<identifier>tank_chassis_01_skinned</identifier>
 					<property>
 						g_detailUVTiling
-						<Vector4>
-							4.20822 4.20822 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>4.208220 4.208220 0.000000 0.000000</Vector4>
 					</property>
 					<property>
 						metallicDetailMap
@@ -1961,10 +1921,6 @@
 						alphaTestEnable
 						<Bool>true</Bool>
 					</property>
-					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
-					</property>
 				</material>
 				<groupOrigin>1.189882 0.422764 0.022821</groupOrigin>
 			</primitiveGroup>
@@ -1988,10 +1944,7 @@
 					<identifier>track_mat_L_skinned</identifier>
 					<property>
 						g_detailUVTiling
-						<Vector4>
-							4.20822 1.05205 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>4.208220 1.052050 0.000000 0.000000</Vector4>
 					</property>
 					<property>
 						metallicDetailMap
@@ -2027,10 +1980,6 @@
 					<property>
 						doubleSided
 						<Bool>true</Bool>
-					</property>
-					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
 					</property>
 				</material>
 				<groupOrigin>-1.388566 0.711486 1.796100</groupOrigin>
@@ -2073,10 +2022,7 @@
 					<identifier>track_mat_L_skinned</identifier>
 					<property>
 						g_detailUVTiling
-						<Vector4>
-							4.20822 1.05205 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>4.208220 1.052050 0.000000 0.000000</Vector4>
 					</property>
 					<property>
 						metallicDetailMap
@@ -2113,10 +2059,6 @@
 						doubleSided
 						<Bool>true</Bool>
 					</property>
-					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
-					</property>
 				</material>
 				<groupOrigin>-0.898706 0.419181 -0.000572</groupOrigin>
 			</primitiveGroup>
@@ -2146,15 +2088,8 @@
 						<Int>64</Int>
 					</property>
 					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
-					</property>
-					<property>
 						g_detailUVTiling
-						<Vector4>
-							4.20822 1.05205 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>4.208220 1.052050 0.000000 0.000000</Vector4>
 					</property>
 					<property>
 						doubleSided
@@ -2231,15 +2166,8 @@
 						<Int>64</Int>
 					</property>
 					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
-					</property>
-					<property>
 						g_detailUVTiling
-						<Vector4>
-							4.20822 1.05205 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>4.208220 1.052050 0.000000 0.000000</Vector4>
 					</property>
 					<property>
 						doubleSided

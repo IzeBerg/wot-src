@@ -43,6 +43,42 @@
 					<row3>-1.525565 0.243671 -0.346255</row3>
 				</transform>
 				<node>
+					<identifier>L_6_1</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.135836 -0.016910 -1.591681</row3>
+					</transform>
+					<node>
+						<identifier>L_6_1_BlendBone</identifier>
+						<transform>
+							<row0>1.000000 0.000000 0.000000</row0>
+							<row1>0.000000 1.000000 0.000000</row1>
+							<row2>0.000000 0.000000 -1.000000</row2>
+							<row3>1.389729 -0.226761 1.937936</row3>
+						</transform>
+					</node>
+				</node>
+				<node>
+					<identifier>L_6_2</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.216372 -0.039675 -1.273786</row3>
+					</transform>
+					<node>
+						<identifier>L_6_2_BlendBone</identifier>
+						<transform>
+							<row0>1.000000 0.000000 0.000000</row0>
+							<row1>0.000000 1.000000 0.000000</row1>
+							<row2>0.000000 0.000000 -1.000000</row2>
+							<row3>1.309193 -0.203996 1.620041</row3>
+						</transform>
+					</node>
+				</node>
+				<node>
 					<identifier>L_6_BlendBone</identifier>
 					<transform>
 						<row0>1.000000 0.000000 0.000000</row0>
@@ -97,6 +133,42 @@
 					<row3>1.525570 0.243670 -0.346255</row3>
 				</transform>
 				<node>
+					<identifier>R_6_1</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 -1.000000 -0.000000</row1>
+						<row2>0.000000 0.000000 -1.000000</row2>
+						<row3>-0.135841 0.016909 1.591681</row3>
+					</transform>
+					<node>
+						<identifier>R_6_1_BlendBone</identifier>
+						<transform>
+							<row0>1.000000 0.000000 0.000000</row0>
+							<row1>0.000000 1.000000 0.000000</row1>
+							<row2>0.000000 0.000000 -1.000000</row2>
+							<row3>-1.389729 -0.226761 1.937936</row3>
+						</transform>
+					</node>
+				</node>
+				<node>
+					<identifier>R_6_2</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 -1.000000 -0.000000</row1>
+						<row2>0.000000 0.000000 -1.000000</row2>
+						<row3>-0.216377 0.039674 1.273785</row3>
+					</transform>
+					<node>
+						<identifier>R_6_2_BlendBone</identifier>
+						<transform>
+							<row0>1.000000 0.000000 0.000000</row0>
+							<row1>0.000000 1.000000 0.000000</row1>
+							<row2>0.000000 0.000000 -1.000000</row2>
+							<row3>-1.309193 -0.203996 1.620041</row3>
+						</transform>
+					</node>
+				</node>
+				<node>
 					<identifier>R_6_BlendBone</identifier>
 					<transform>
 						<row0>1.000000 0.000000 0.000000</row0>
@@ -124,28 +196,15 @@
 					</transform>
 				</node>
 			</node>
-			<node>
-				<identifier>Hull_Root_BlendBone</identifier>
-				<transform>
-					<row0>1.000000 0.000000 0.000000</row0>
-					<row1>0.000000 1.000000 0.000000</row1>
-					<row2>0.000000 0.000000 -1.000000</row2>
-					<row3>0.000000 0.000000 0.000000</row3>
-				</transform>
-			</node>
 		</node>
 	</node>
 	<renderSet>
 		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
-		<node>L_7_BlendBone</node>
-		<node>L_6_BlendBone</node>
-		<node>R_6_BlendBone</node>
-		<node>R_7_BlendBone</node>
-		<node>R_5_BlendBone</node>
 		<node>L_5_BlendBone</node>
+		<node>R_5_BlendBone</node>
 		<geometry>
-			<vertices>hull_anim_Shape.vertices</vertices>
-			<primitive>hull_anim_Shape.indices</primitive>
+			<vertices>hull_anim_2_Shape.vertices</vertices>
+			<primitive>hull_anim_2_Shape.indices</primitive>
 			<primitiveGroup>
 				0
 				<material>
@@ -170,7 +229,81 @@
 						<Texture>vehicles/american/A143_M_V_Y/_skins/A143_M_V_Y_3DSt/M_V_Y_3DSt_hull_01_ANM.dds</Texture>
 					</property>
 				</material>
-				<groupOrigin>0.001050 0.295559 0.545646</groupOrigin>
+				<groupOrigin>-0.000002 0.305349 2.125057</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>L_6_1_BlendBone</node>
+		<node>L_6_2_BlendBone</node>
+		<node>L_6_BlendBone</node>
+		<node>R_6_BlendBone</node>
+		<node>R_6_2_BlendBone</node>
+		<node>R_6_1_BlendBone</node>
+		<geometry>
+			<vertices>hull_anim_3_Shape.vertices</vertices>
+			<primitive>hull_anim_3_Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_hull_01_skinned</identifier>
+					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>vehicles/american/A143_M_V_Y/_skins/A143_M_V_Y_3DSt/M_V_Y_3DSt_hull_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/american/A143_M_V_Y/_skins/A143_M_V_Y_3DSt/M_V_Y_3DSt_hull_01_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/american/A143_M_V_Y/_skins/A143_M_V_Y_3DSt/M_V_Y_3DSt_hull_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/american/A143_M_V_Y/_skins/A143_M_V_Y_3DSt/M_V_Y_3DSt_hull_01_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.000099 0.218378 1.755295</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>L_7_BlendBone</node>
+		<node>R_7_BlendBone</node>
+		<geometry>
+			<vertices>hull_anim_1_Shape.vertices</vertices>
+			<primitive>hull_anim_1_Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_hull_01_skinned</identifier>
+					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>vehicles/american/A143_M_V_Y/_skins/A143_M_V_Y_3DSt/M_V_Y_3DSt_hull_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/american/A143_M_V_Y/_skins/A143_M_V_Y_3DSt/M_V_Y_3DSt_hull_01_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/american/A143_M_V_Y/_skins/A143_M_V_Y_3DSt/M_V_Y_3DSt_hull_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/american/A143_M_V_Y/_skins/A143_M_V_Y_3DSt/M_V_Y_3DSt_hull_01_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.001050 0.251296 -1.738786</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
@@ -179,6 +312,6 @@
 		<min>-1.965044 0.153709 -3.210349</min>
 		<max>1.967145 0.437409 2.119057</max>
 	</boundingBox>
-	<geometrySize>9968</geometrySize>
+	<geometrySize>10472</geometrySize>
 	<minUVDensity>0.004064</minUVDensity>
 </root>

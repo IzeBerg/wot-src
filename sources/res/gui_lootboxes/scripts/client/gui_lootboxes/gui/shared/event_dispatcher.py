@@ -8,9 +8,9 @@ from shared_utils import findFirst
 from skeletons.gui.shared import IItemsCache
 _logger = logging.getLogger(__name__)
 
-def showLootBoxesWelcomeScreen(parent=None):
+def showLootBoxesWelcomeScreen(layoutID=None, closeCallback=None, parent=None):
     from gui_lootboxes.gui.impl.lobby.gui_lootboxes.welcome_screen import LootBoxesWelcomeScreenWindow
-    window = LootBoxesWelcomeScreenWindow(parent=parent)
+    window = LootBoxesWelcomeScreenWindow(layoutID=layoutID, closeCallback=closeCallback, parent=parent)
     window.load()
 
 
@@ -60,9 +60,13 @@ def showBonusProbabilitiesWindow(lootBox, parent=None):
     window.load()
 
 
-def showRewardScreenWindow(rewards, lootBox=None, parent=None):
+def showRewardScreenWindow(rewards, lootBox=None, clientData=None, parent=None):
     from gui_lootboxes.gui.impl.lobby.gui_lootboxes.reward_screen import LootBoxesRewardScreenWindow
-    window = LootBoxesRewardScreenWindow(rewards=rewards, lootBox=lootBox, parent=parent)
+    from gui_lootboxes.gui.impl.lobby.gui_lootboxes.loot_boxes_lose_reward_screen import LootBoxesLoseRewardScreenWindow
+    if clientData.get('countOfOpened', 0) == 0:
+        window = LootBoxesLoseRewardScreenWindow(rewards=rewards, lootBox=lootBox, clientData=clientData, parent=parent)
+    else:
+        window = LootBoxesRewardScreenWindow(rewards=rewards, lootBox=lootBox, clientData=clientData, parent=parent)
     window.load()
 
 

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<htmlTemplates>
+		<racesBattleResult>
+			<type>battleResult</type>
+			<icon>RacesResultIcon</icon>
+			<bgIcon>BgRacesResultIcon</bgIcon>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#messenger:serviceChannelMessages/battleResults/button)</label>
+					<action>showBattleResults</action>
+				</button>
+			</buttonsLayout>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(racesTitle)s&lt;/font&gt;
+&lt;font color=&apos;#929290&apos;&gt;_(#races.races_messenger:serviceChannelMessages/racesBattleResults/mode): %(gameMode)s&lt;/font&gt;&lt;br&gt;&lt;font color=&apos;#929290&apos;&gt;_(#races.races_messenger:serviceChannelMessages/racesBattleResults/vehicle): %(vehicleNames)s&lt;/font&gt;&lt;br&gt;&lt;font color=&apos;#929290&apos;&gt;_(#races.races_messenger:serviceChannelMessages/racesBattleResults/finishedPlace): &lt;font color=&apos;#E9E2BF&apos;&gt;%(finishedPlace)s&lt;/font&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&apos;#929290&apos;&gt;_(#races.races_messenger:serviceChannelMessages/racesBattleResults/totalScore): &lt;font color=&apos;#E9E2BF&apos;&gt;%(racesTotalScore)s&lt;/font&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&apos;#929290&apos;&gt;%(questsMsg)s&lt;/font&gt;&lt;font color=&apos;#929290&apos;&gt;%(racesFirstWinAchievement)s&lt;/font&gt;</message>
+		</racesBattleResult>
+		<racesBattleResultDefeat>
+			<type>battleResult</type>
+			<icon>RacesResultIcon</icon>
+			<bgIcon>BgRacesResultIcon2</bgIcon>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#messenger:serviceChannelMessages/battleResults/button)</label>
+					<action>showBattleResults</action>
+				</button>
+			</buttonsLayout>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(racesTitle)s&lt;/font&gt;
+&lt;font color=&apos;#929290&apos;&gt;_(#races.races_messenger:serviceChannelMessages/racesBattleResults/mode): %(gameMode)s&lt;/font&gt;&lt;br&gt;&lt;font color=&apos;#929290&apos;&gt;_(#races.races_messenger:serviceChannelMessages/racesBattleResults/vehicle): %(vehicleNames)s&lt;/font&gt;&lt;br&gt;&lt;font color=&apos;#929290&apos;&gt;_(#races.races_messenger:serviceChannelMessages/racesBattleResults/finishedPlace): &lt;font color=&apos;#E9E2BF&apos;&gt;%(finishedPlace)s&lt;/font&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&apos;#929290&apos;&gt;_(#races.races_messenger:serviceChannelMessages/racesBattleResults/totalScore): &lt;font color=&apos;#E9E2BF&apos;&gt;%(racesTotalScore)s&lt;/font&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&apos;#929290&apos;&gt;%(questsMsg)s&lt;/font&gt;&lt;font color=&apos;#929290&apos;&gt;%(racesFirstWinAchievement)s&lt;/font&gt;</message>
+		</racesBattleResultDefeat>
+		<disqualification>
+			<type>battleResult</type>
+			<icon>RacesResultIcon</icon>
+			<bgIcon>BgRacesResultIcon3</bgIcon>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#messenger:serviceChannelMessages/battleResults/button)</label>
+					<action>showBattleResults</action>
+				</button>
+			</buttonsLayout>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#races.races_messenger:serviceChannelMessages/racesBattleResults/disqualification)&lt;/font&gt;
+&lt;font color=&apos;#929290&apos;&gt;_(#races.races_messenger:serviceChannelMessages/racesBattleResults/mode): %(gameMode)s&lt;/font&gt;&lt;br&gt;&lt;font color=&apos;#929290&apos;&gt;_(#races.races_messenger:serviceChannelMessages/racesBattleResults/vehicle): %(vehicleNames)s&lt;/font&gt;&lt;br&gt;&lt;font color=&apos;#929290&apos;&gt;_(#races.races_messenger:serviceChannelMessages/racesBattleResults/finishedPlace): %(finishedPlace)s&lt;/font&gt;&lt;br&gt;&lt;font color=&apos;#929290&apos;&gt;_(#races.races_messenger:serviceChannelMessages/racesBattleResults/totalScore): &lt;font color=&apos;#E9E2BF&apos;&gt;%(racesTotalScore)s&lt;/font&gt;&lt;/font&gt;</message>
+		</disqualification>
+		<RacesSuspendedMessage>
+			<priority>medium</priority>
+			<type>grey</type>
+			<icon>ErrorIcon</icon>
+			<filters>
+				<filter>
+					<name>glow</name>
+					<color>EA5200</color>
+				</filter>
+				<filter>
+					<name>dropshadow</name>
+					<color>
+						000000
+						<!--BW_String-->
+					</color>
+				</filter>
+			</filters>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#races.races_messenger:serviceChannelMessages/racesEventName)&lt;/font&gt;
+&lt;font color=&apos;#929290&apos;&gt;_(#races.races_messenger:serviceChannelMessages/racesSuspendedMessage/body)
+&lt;/font&gt;</message>
+		</RacesSuspendedMessage>
+		<RacesResumedMessage>
+			<priority>medium</priority>
+			<type>grey</type>
+			<icon>InformationIcon</icon>
+			<filters>
+				<filter>
+					<name>glow</name>
+					<color>EA5200</color>
+				</filter>
+				<filter>
+					<name>dropshadow</name>
+					<color>
+						000000
+						<!--BW_String-->
+					</color>
+				</filter>
+			</filters>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#races.races_messenger:serviceChannelMessages/racesEventName)&lt;/font&gt;
+&lt;font color=&apos;#929290&apos;&gt;_(#races.races_messenger:serviceChannelMessages/racesResumedMessage/body)&lt;/font&gt;</message>
+		</RacesResumedMessage>
+		<RacesStartedMessage>
+			<priority>medium</priority>
+			<type>grey</type>
+			<icon>InformationIcon</icon>
+			<filters>
+				<filter>
+					<name>glow</name>
+					<color>EA5200</color>
+				</filter>
+				<filter>
+					<name>dropshadow</name>
+					<color>
+						000000
+						<!--BW_String-->
+					</color>
+				</filter>
+			</filters>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#races.races_messenger:serviceChannelMessages/racesStartedMessage/button)</label>
+					<action>racesOpenAction</action>
+				</button>
+			</buttonsLayout>
+			<message>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#races.races_messenger:serviceChannelMessages/racesStartedMessage/body)&lt;/font&gt;</message>
+		</RacesStartedMessage>
+		<RacesEndedMessage>
+			<priority>medium</priority>
+			<type>grey</type>
+			<icon>InformationIcon</icon>
+			<filters>
+				<filter>
+					<name>glow</name>
+					<color>EA5200</color>
+				</filter>
+				<filter>
+					<name>dropshadow</name>
+					<color>
+						000000
+						<!--BW_String-->
+					</color>
+				</filter>
+			</filters>
+			<message>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#races.races_messenger:serviceChannelMessages/racesEndedMessage/body)&lt;/font&gt;</message>
+		</RacesEndedMessage>
+		<RacesLootBoxesAccrual>
+			<type>grey</type>
+			<icon>InformationIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#races.races_messenger:serviceChannelMessages/racesLootBoxesAccrual/header)&lt;/font&gt;&lt;br/&gt;&lt;font face=&quot;$FieldFont&quot; size=&quot;14&quot; color=&apos;#8C8C7E&apos;&gt;&lt;br/&gt;_(#races.races_messenger:serviceChannelMessages/racesLootBoxesAccrual/body)&lt;/font&gt;</message>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#messenger:serviceChannelMessages/lootBoxes/button)</label>
+					<action>racesOpenLootBoxesStorage</action>
+					<width>120</width>
+				</button>
+			</buttonsLayout>
+		</RacesLootBoxesAccrual>
+		<RacesProgressionMessage>
+			<priority>medium</priority>
+			<type>grey</type>
+			<icon>InformationIcon</icon>
+			<filters>
+				<filter>
+					<name>glow</name>
+					<color>EA5200</color>
+				</filter>
+				<filter>
+					<name>dropshadow</name>
+					<color>
+						000000
+						<!--BW_String-->
+					</color>
+				</filter>
+			</filters>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#races.races_messenger:serviceChannelMessages/racesProgressionMessage/header)&lt;/font&gt;
+&lt;font color=&apos;#8C8C7E&apos;&gt;_(#races.races_messenger:serviceChannelMessages/racesProgressionMessage/body)&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(racesRewards)s&lt;/font&gt;</message>
+		</RacesProgressionMessage>
+	</htmlTemplates>
+</root>

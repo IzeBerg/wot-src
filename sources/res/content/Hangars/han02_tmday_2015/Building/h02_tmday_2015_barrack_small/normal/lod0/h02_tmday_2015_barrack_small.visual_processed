@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd1</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>111</materialKind>
+					<fx>shaders/std_effects/PBS_ext_dual.fx</fx>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						g_useNormalPackDXT1
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/han02_tmday_2015/Building/h02_tmday_2015_administration_house/h02_tmday_2015_administration_house_details_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Hangars/han02_tmday_2015/Building/h02_tmday_2015_administration_house/h02_tmday_2015_administration_house_details_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Hangars/han02_tmday_2015/Building/h02_tmday_2015_administration_house/h02_tmday_2015_administration_house_details_GMM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap2
+						<Texture>content/Hangars/han02_tmday_2015/Building/h02_tmday_2015_canteen/han02_tmday_2015_canteen_AM2.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.015420 5.263715 -1.383845</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd0</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>111</materialKind>
+					<fx>shaders/std_effects/PBS_ext_dual.fx</fx>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						g_useNormalPackDXT1
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/han02_tmday_2015/Building/h02_tmday_2015_administration_house/h02_tmday_2015_administration_house_tile_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Hangars/han02_tmday_2015/Building/h02_tmday_2015_administration_house/h02_tmday_2015_administration_house_tile_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Hangars/han02_tmday_2015/Building/h02_tmday_2015_administration_house/h02_tmday_2015_administration_house_tile_GMM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap2
+						<Texture>content/Hangars/han02_tmday_2015/Building/h02_tmday_2015_canteen/han02_tmday_2015_canteen_AM2.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.016571 6.450790 -0.034830</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-17.799335 -0.573666 -9.747391</min>
+		<max>17.766193 11.615632 7.062548</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>131836</geometrySize>
+	<minUVDensity>0.001701</minUVDensity>
+</root>

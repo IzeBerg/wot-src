@@ -8,7 +8,7 @@ package net.wg.gui.components.controls
    public class MainMenuButtonHighlight extends UIComponentEx
    {
       
-      private static const IMAGE_SMALL_POSTFIX = "_small";
+      private static const IMAGE_SMALL_POSTFIX:String = "_small";
       
       private static const PNG_EXT:String = ".png";
        

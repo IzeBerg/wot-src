@@ -8,22 +8,22 @@
 			<flags>0</flags>
 		</GameObject>
 		<GameObject>
-			<name>TurretAnim_go</name>
+			<name>SleeveSpawner</name>
 			<UUID>41c8f220-aa9d-4320-920d-93b25eb02371</UUID>
 			<flags>0</flags>
 		</GameObject>
 		<GameObject>
-			<name/>
+			<name>EditorTurret</name>
 			<UUID>998be9f4-4604-41c9-96c7-b1711bd9eb13</UUID>
 			<flags>0</flags>
 		</GameObject>
 		<GameObject>
-			<name>SleeveEjection_go</name>
+			<name>AnimationBeforeSpawn</name>
 			<UUID>3e4d3177-4f44-49d9-b0ca-03b4b8549680</UUID>
 			<flags>0</flags>
 		</GameObject>
 		<GameObject>
-			<name>debrisSpawner</name>
+			<name>SleeveSpawnPosition</name>
 			<UUID>15c8b57a-1fc7-41d9-905e-ae55a6c31b26</UUID>
 			<flags>0</flags>
 		</GameObject>
@@ -115,7 +115,10 @@
 				<config>
 					<property>
 						<name>Position</name>
-						<value>0 0 0</value>
+						<value>
+							0 -1.90735e-06 7.62939e-06
+							<!--BW_String-->
+						</value>
 					</property>
 					<property>
 						<name>Scale</name>
@@ -127,7 +130,7 @@
 					<property>
 						<name>Rotation</name>
 						<value>
-							-0 -1.5708 -0.417433
+							1.49012e-08 -1.5708 -0.417433
 							<!--BW_String-->
 						</value>
 					</property>
@@ -237,9 +240,66 @@
 						<value>4</value>
 					</property>
 					<property>
+						<name>Stuck Body Timeout</name>
+						<value>20</value>
+					</property>
+					<property>
+						<name>Lifetime</name>
+						<value>20</value>
+					</property>
+					<property>
+						<name>Maximum number of spawned debris</name>
+						<value>10</value>
+					</property>
+					<property>
 						<name>Direction</name>
 						<value>
 							-0 0 1.56994
+							<!--BW_String-->
+						</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>PhysicalDebrisParams</type>
+			<version>1</version>
+			<component>
+				<objectIndex>1</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>sleeveEjection</name>
+						<link>3e4d3177-4f44-49d9-b0ca-03b4b8549680</link>
+					</property>
+					<property>
+						<name>debrisSpawner</name>
+						<link>41c8f220-aa9d-4320-920d-93b25eb02371</link>
+					</property>
+					<property>
+						<name>spawnSound</name>
+						<value>TST_shell_extraction</value>
+					</property>
+					<property>
+						<name>debrisAnimationSequence</name>
+						<isAsset>true</isAsset>
+						<value/>
+					</property>
+					<property>
+						<name>spawnDelay</name>
+						<value>
+							2.4
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>spawnStartAnimationSequenceDelay</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>spawnStopAnimationSequenceDelay</name>
+						<value>
+							2.4
 							<!--BW_String-->
 						</value>
 					</property>
@@ -251,7 +311,7 @@
 			<version>1</version>
 			<component>
 				<objectIndex>3</objectIndex>
-				<flags>35</flags>
+				<flags>3</flags>
 				<config>
 					<property>
 						<name>Visible in ARCADE MODE</name>
@@ -313,7 +373,7 @@
 					</property>
 					<property>
 						<name>isAnimated</name>
-						<value>0</value>
+						<value>1</value>
 					</property>
 				</config>
 			</component>
@@ -483,7 +543,7 @@
 			<version>1</version>
 			<component>
 				<objectIndex>0</objectIndex>
-				<flags>1</flags>
+				<flags>3</flags>
 				<config>
 					<property>
 						<name>Path</name>

@@ -461,6 +461,8 @@ class SettingsCore(ISettingsCore):
           CONTROLS.MOUSE_ASSIST_AIM_SENS,
           options.MouseSensitivitySetting('arty', masterSwitch='spgAlternativeAimingCameraEnabled')),
          (
+          CONTROLS.MOUSE_ASSAULT_SENS, options.MouseSensitivitySetting('assaultSPG')),
+         (
           CONTROLS.MOUSE_HORZ_INVERSION,
           options.MouseInversionSetting(CONTROLS.MOUSE_HORZ_INVERSION, 'horzInvert', storage=CONTROLS_SETTINGS_STORAGE)),
          (

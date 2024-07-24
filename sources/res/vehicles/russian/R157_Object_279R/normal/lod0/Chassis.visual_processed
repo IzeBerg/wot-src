@@ -22,7 +22,7 @@
 					<row0>1.000000 0.000000 0.000000</row0>
 					<row1>0.000000 0.993847 -0.110758</row1>
 					<row2>0.000000 0.110758 0.993847</row2>
-					<row3>-0.898706 0.000000 1.987652</row3>
+					<row3>-1.408000 0.000000 1.987652</row3>
 				</transform>
 			</node>
 			<node>
@@ -30,8 +30,8 @@
 				<transform>
 					<row0>-1.000000 0.000000 0.000000</row0>
 					<row1>0.000000 0.994751 0.102324</row1>
-					<row2>-0.000000 0.102324 -0.994751</row2>
-					<row3>-0.898706 0.000000 -1.987646</row3>
+					<row2>-0.000000 0.102324 -0.994750</row2>
+					<row3>-1.408000 0.000000 -1.987646</row3>
 				</transform>
 			</node>
 			<node>
@@ -1664,10 +1664,7 @@
 					<identifier>tank_chassis_01_skinned</identifier>
 					<property>
 						g_detailUVTiling
-						<Vector4>
-							4.20822 4.20822 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>4.208220 4.208220 0.000000 0.000000</Vector4>
 					</property>
 					<property>
 						g_detailPowerGloss
@@ -1732,10 +1729,6 @@
 					<property>
 						alphaTestEnable
 						<Bool>true</Bool>
-					</property>
-					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
 					</property>
 				</material>
 				<groupOrigin>-0.595396 0.423425 0.022809</groupOrigin>
@@ -1768,10 +1761,7 @@
 					<identifier>tank_chassis_01_skinned</identifier>
 					<property>
 						g_detailUVTiling
-						<Vector4>
-							4.20822 4.20822 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>4.208220 4.208220 0.000000 0.000000</Vector4>
 					</property>
 					<property>
 						g_detailPowerGloss
@@ -1836,10 +1826,6 @@
 					<property>
 						alphaTestEnable
 						<Bool>true</Bool>
-					</property>
-					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
 					</property>
 				</material>
 				<groupOrigin>0.594640 0.423425 0.022820</groupOrigin>
@@ -1872,10 +1858,7 @@
 					<identifier>tank_chassis_01_skinned</identifier>
 					<property>
 						g_detailUVTiling
-						<Vector4>
-							4.20822 4.20822 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>4.208220 4.208220 0.000000 0.000000</Vector4>
 					</property>
 					<property>
 						g_detailPowerGloss
@@ -1940,10 +1923,6 @@
 					<property>
 						alphaTestEnable
 						<Bool>true</Bool>
-					</property>
-					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
 					</property>
 				</material>
 				<groupOrigin>-1.206412 0.422887 0.022810</groupOrigin>
@@ -1976,10 +1955,7 @@
 					<identifier>tank_chassis_01_skinned</identifier>
 					<property>
 						g_detailUVTiling
-						<Vector4>
-							4.20822 4.20822 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>4.208220 4.208220 0.000000 0.000000</Vector4>
 					</property>
 					<property>
 						g_detailPowerGloss
@@ -2045,10 +2021,6 @@
 						alphaTestEnable
 						<Bool>true</Bool>
 					</property>
-					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
-					</property>
 				</material>
 				<groupOrigin>1.201702 0.422982 0.022821</groupOrigin>
 			</primitiveGroup>
@@ -2072,10 +2044,7 @@
 					<identifier>track_mat_L_skinned</identifier>
 					<property>
 						g_detailUVTiling
-						<Vector4>
-							4.20822 1.05205 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>4.208220 1.052050 0.000000 0.000000</Vector4>
 					</property>
 					<property>
 						g_detailPowerGloss
@@ -2136,10 +2105,6 @@
 					<property>
 						doubleSided
 						<Bool>true</Bool>
-					</property>
-					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
 					</property>
 				</material>
 				<groupOrigin>-1.388566 0.711486 1.796100</groupOrigin>
@@ -2182,10 +2147,7 @@
 					<identifier>track_mat_L_skinned</identifier>
 					<property>
 						g_detailUVTiling
-						<Vector4>
-							4.20822 1.05205 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>4.208220 1.052050 0.000000 0.000000</Vector4>
 					</property>
 					<property>
 						g_detailPowerGloss
@@ -2247,10 +2209,6 @@
 						doubleSided
 						<Bool>true</Bool>
 					</property>
-					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
-					</property>
 				</material>
 				<groupOrigin>-0.898706 0.419181 -0.000242</groupOrigin>
 			</primitiveGroup>
@@ -2280,15 +2238,8 @@
 						<Int>64</Int>
 					</property>
 					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
-					</property>
-					<property>
 						g_detailUVTiling
-						<Vector4>
-							4.20822 1.05205 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>4.208220 1.052050 0.000000 0.000000</Vector4>
 					</property>
 					<property>
 						doubleSided
@@ -2365,15 +2316,8 @@
 						<Int>64</Int>
 					</property>
 					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
-					</property>
-					<property>
 						g_detailUVTiling
-						<Vector4>
-							4.20822 1.05205 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>4.208220 1.052050 0.000000 0.000000</Vector4>
 					</property>
 					<property>
 						doubleSided

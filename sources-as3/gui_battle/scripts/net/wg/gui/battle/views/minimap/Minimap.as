@@ -210,7 +210,7 @@ package net.wg.gui.battle.views.minimap
          if(initialized && (this._currentSizeIndex != param1 || this._updateSizeIndexForce))
          {
             this._currentSizeIndex = param1;
-            dispatchEvent(new MinimapEvent(MinimapEvent.SIZE_CHANGED));
+            dispatchEvent(new MinimapEvent(MinimapEvent.SIZE_CHANGED,true,false,param1));
             this.updateContent();
             dispatchEvent(new LifeCycleEvent(LifeCycleEvent.ON_GRAPHICS_RECTANGLES_UPDATE));
             applyNewSizeS(param1);

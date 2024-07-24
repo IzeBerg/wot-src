@@ -160,6 +160,8 @@ package net.wg.data.constants.generated
       public static const CAROUSEL_EVENT_ENTRY_HOLDER:String = "carouselEventEntryHolder";
       
       public static const COLLECTION_ENTRY_POINT:String = "CollectionEntryPoint";
+      
+      public static const RACES_BANNER_ENTRY_POINT:String = "RacesBannerEntryPoint";
        
       
       public function HANGAR_ALIASES()

@@ -22,7 +22,7 @@
 					<row0>1.000000 0.000000 0.000000</row0>
 					<row1>0.000000 0.993847 -0.110758</row1>
 					<row2>0.000000 0.110758 0.993847</row2>
-					<row3>-0.898706 0.000000 1.987652</row3>
+					<row3>-1.408000 0.000000 1.987652</row3>
 				</transform>
 			</node>
 			<node>
@@ -30,8 +30,8 @@
 				<transform>
 					<row0>-1.000000 0.000000 0.000000</row0>
 					<row1>0.000000 0.994751 0.102324</row1>
-					<row2>-0.000000 0.102324 -0.994751</row2>
-					<row3>-0.898706 0.000000 -1.987646</row3>
+					<row2>-0.000000 0.102324 -0.994750</row2>
+					<row3>-1.408000 0.000000 -1.987646</row3>
 				</transform>
 			</node>
 			<node>
@@ -1662,7 +1662,6 @@
 				0
 				<material>
 					<identifier>tank_chassis_01_skinned</identifier>
-					<mfm>materials/template_mfms/lightonly_skinned.mfm</mfm>
 					<collisionFlags>0</collisionFlags>
 					<materialKind>0</materialKind>
 					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
@@ -1693,10 +1692,6 @@
 					<property>
 						alphaTestEnable
 						<Bool>true</Bool>
-					</property>
-					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
 					</property>
 				</material>
 				<groupOrigin>-0.620313 0.422088 0.022392</groupOrigin>
@@ -1727,7 +1722,6 @@
 				0
 				<material>
 					<identifier>tank_chassis_01_skinned</identifier>
-					<mfm>materials/template_mfms/lightonly_skinned.mfm</mfm>
 					<collisionFlags>0</collisionFlags>
 					<materialKind>0</materialKind>
 					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
@@ -1758,10 +1752,6 @@
 					<property>
 						alphaTestEnable
 						<Bool>true</Bool>
-					</property>
-					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
 					</property>
 				</material>
 				<groupOrigin>0.619561 0.422088 0.022751</groupOrigin>
@@ -1792,7 +1782,6 @@
 				0
 				<material>
 					<identifier>tank_chassis_01_skinned</identifier>
-					<mfm>materials/template_mfms/lightonly_skinned.mfm</mfm>
 					<collisionFlags>0</collisionFlags>
 					<materialKind>0</materialKind>
 					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
@@ -1823,10 +1812,6 @@
 					<property>
 						alphaTestEnable
 						<Bool>true</Bool>
-					</property>
-					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
 					</property>
 				</material>
 				<groupOrigin>-1.176334 0.420473 0.021020</groupOrigin>
@@ -1857,7 +1842,6 @@
 				0
 				<material>
 					<identifier>tank_chassis_01_skinned</identifier>
-					<mfm>materials/template_mfms/lightonly_skinned.mfm</mfm>
 					<collisionFlags>0</collisionFlags>
 					<materialKind>0</materialKind>
 					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
@@ -1889,10 +1873,6 @@
 						alphaTestEnable
 						<Bool>true</Bool>
 					</property>
-					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
-					</property>
 				</material>
 				<groupOrigin>1.176338 0.420595 0.022547</groupOrigin>
 			</primitiveGroup>
@@ -1914,7 +1894,6 @@
 				0
 				<material>
 					<identifier>track_mat_L_skinned</identifier>
-					<mfm>materials/template_mfms/lightonly_skinned.mfm</mfm>
 					<collisionFlags>0</collisionFlags>
 					<materialKind>0</materialKind>
 					<fx>shaders/std_effects/PBS_tank_uvtransform_skinned_ao.fx</fx>
@@ -1941,10 +1920,6 @@
 					<property>
 						doubleSided
 						<Bool>true</Bool>
-					</property>
-					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
 					</property>
 				</material>
 				<groupOrigin>-1.388566 0.711486 1.796100</groupOrigin>
@@ -1985,7 +1960,6 @@
 				0
 				<material>
 					<identifier>track_mat_L_skinned</identifier>
-					<mfm>materials/template_mfms/lightonly_skinned.mfm</mfm>
 					<collisionFlags>0</collisionFlags>
 					<materialKind>0</materialKind>
 					<fx>shaders/std_effects/PBS_tank_uvtransform_skinned_ao.fx</fx>
@@ -2012,10 +1986,6 @@
 					<property>
 						doubleSided
 						<Bool>true</Bool>
-					</property>
-					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
 					</property>
 				</material>
 				<groupOrigin>-0.898706 0.419181 -0.000572</groupOrigin>
@@ -2044,10 +2014,6 @@
 					<property>
 						alphaReference
 						<Int>64</Int>
-					</property>
-					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
 					</property>
 					<property>
 						doubleSided
@@ -2114,10 +2080,6 @@
 					<property>
 						alphaReference
 						<Int>64</Int>
-					</property>
-					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
 					</property>
 					<property>
 						doubleSided

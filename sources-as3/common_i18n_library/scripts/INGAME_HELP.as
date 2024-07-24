@@ -209,6 +209,10 @@ package
       
       public static const DETAILSHELP_ASSAULTTANK_PROSCONS:String = "#ingame_help:detailsHelp/assaultTank/prosCons";
       
+      public static const DETAILSHELP_ASSAULTTANK_AIMING_TITLE:String = "#ingame_help:detailsHelp/assaultTank/aiming/title";
+      
+      public static const DETAILSHELP_ASSAULTTANK_AIMING:String = "#ingame_help:detailsHelp/assaultTank/aiming";
+      
       public static const DETAILSHELP_BATTLEROYALE_RADAR_TITLE:String = "#ingame_help:detailsHelp/battleRoyale/radar/title";
       
       public static const DETAILSHELP_BATTLEROYALE_RADAR_DESCRIPTION:String = "#ingame_help:detailsHelp/battleRoyale/radar/description";

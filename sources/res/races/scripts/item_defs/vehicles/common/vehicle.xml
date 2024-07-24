@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<extras>
+		<races_shield>NoneExtra : VisualScriptEquipmentExtra</races_shield>
+		<races_rapidshelling>NoneExtra : VisualScriptEquipmentExtra</races_rapidshelling>
+		<races_rocket_booster>NoneExtra : VisualScriptEquipmentExtra</races_rocket_booster>
+		<races_power_impulse>NoneExtra : VisualScriptEquipmentExtra</races_power_impulse>
+		<races_overturn>
+			NoneExtra : races_cell.races_vehicle_extras.OverturnRaces
+			<isOnboardShotAllowed>true</isOnboardShotAllowed>
+			<liftOverTimeout>
+				0.5
+				<!--BW_String-->
+			</liftOverTimeout>
+			<gameplayFactors/>
+		</races_overturn>
+		<races_ramming>
+			NoneExtra : races_cell.races_vehicle_extras.RammingRaces
+			<minSpeedDiff>
+				20.0
+				<!--BW_String-->
+			</minSpeedDiff>
+		</races_ramming>
+	</extras>
+</root>

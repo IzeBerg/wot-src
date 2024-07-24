@@ -8,6 +8,14 @@ BATTLE_RESULTS = [
  (
   'battleXPTotal', int, 0, None, 'sum', ENTRY_TYPE.SERVER),
  (
+  'brDeathChunk', int, 0, None, 'skip', ENTRY_TYPE.SERVER),
+ (
+  'brDeathChunkXP', int, 0, None, 'skip', ENTRY_TYPE.SERVER),
+ (
+  'brDeathChunkDamageDealt', int, 0, None, 'skip', ENTRY_TYPE.SERVER),
+ (
+  'brDeathChunkKills', int, 0, None, 'skip', ENTRY_TYPE.SERVER),
+ (
   'modulesDescriptors', list, [], None, 'extend', ENTRY_TYPE.SERVER),
  (
   'achivedLevel', int, 1, None, 'skip', ENTRY_TYPE.VEHICLE_ALL),

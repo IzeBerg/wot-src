@@ -1459,11 +1459,6 @@
 				<name>extraInfoPage</name>
 				<type>url</type>
 			</item>
-			<item>
-				/$LANGUAGE_CODE/promocontent/14BPExtraChapter/
-				<name>extraIntroVideo</name>
-				<type>url</type>
-			</item>
 		</value>
 	</setting>
 	<setting>
@@ -2150,6 +2145,23 @@
 		</value>
 	</setting>
 	<setting>
+		<name>infoPageRaces</name>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
+			<item>
+				https://webbrg.tanki.su/ru/promocontent/race_birthday/
+				<name>default</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.tanki.su/ru/promocontent/race_birthday/
+				<name>CT</name>
+				<type>url</type>
+			</item>
+		</value>
+	</setting>
+	<setting>
 		<name>vehicleDisclaimerURLs</name>
 		<type>macros</type>
 		<macros>CURRENT_REALM</macros>
@@ -2255,6 +2267,24 @@
 				https://webbrg.tanki.su/$LANGUAGE_CODE/promocontent/Cosm24/
 				<name>default</name>
 				<type>url</type>
+			</item>
+		</value>
+	</setting>
+	<setting>
+		<name>lootBoxInfoPageURL</name>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
+			<item>
+				<name>default</name>
+				<type>dict</type>
+				<value>
+					<item>
+						https://webbrg.tanki.su/ru/promocontent/race_birthday/
+						<name>tanks_birthday_2024</name>
+						<type>url</type>
+					</item>
+				</value>
 			</item>
 		</value>
 	</setting>

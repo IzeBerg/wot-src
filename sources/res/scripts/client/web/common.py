@@ -9,13 +9,16 @@ from skeletons.gui.shared.utils.requesters import IStatsRequester
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.shared import IItemsCache
 from helpers.time_utils import getServerUTCTime
+from battle_pass_common import BattlePassChapterType
 if typing.TYPE_CHECKING:
     from typing import Dict
-_BATTLE_PASS_CHAPTER_STATE_NAME = {ChapterState.NOT_STARTED: 'not_started', 
-   ChapterState.PAUSED: 'paused', 
+_BATTLE_PASS_CHAPTER_STATE_NAME = {ChapterState.NOT_STARTED: 'not_started', ChapterState.PAUSED: 'paused', 
    ChapterState.ACTIVE: 'active', 
    ChapterState.COMPLETED: 'completed', 
    ChapterState.DISABLED: 'disabled'}
+_BATTLEPASS_CHAPTER_TYPE_NAME = {BattlePassChapterType.DEFAULT: 'default', 
+   BattlePassChapterType.MARATHON: 'marathon', 
+   BattlePassChapterType.RESOURCE: 'resource'}
 
 def formatBalance(stats):
     actualMoney = stats.actualMoney.toDict()
@@ -36,7 +39,7 @@ def formatBattlePassInfo(battlePass=None):
     return {'isActive': not battlePass.isPaused() and battlePass.isVisible(), 
        'season': {'num': battlePass.getSeasonNum(), 
                   'leftTime': battlePass.getFinalOfferTime()}, 
-       'chapters': {chapterID:{'isBought': battlePass.isBought(chapterID=chapterID), 'state': _BATTLE_PASS_CHAPTER_STATE_NAME[battlePass.getChapterState(chapterID)]} for chapterID in battlePass.getRegularChapterIds()}}
+       'chapters': {chapterID:{'isBought': battlePass.isBought(chapterID=chapterID), 'state': _BATTLE_PASS_CHAPTER_STATE_NAME[battlePass.getChapterState(chapterID)], 'chapterType': _BATTLEPASS_CHAPTER_TYPE_NAME[BattlePassChapterType(battlePass.getChapterType(chapterID))]} for chapterID in battlePass.getChapterIDs() if not battlePass.isMarathonChapter(chapterID)}}
 
 
 @dependency.replace_none_kwargs(lobbyContext=ILobbyContext, itemsCache=IItemsCache)

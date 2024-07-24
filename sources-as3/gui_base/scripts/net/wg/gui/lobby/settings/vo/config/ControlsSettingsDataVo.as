@@ -22,6 +22,8 @@ package net.wg.gui.lobby.settings.vo.config
       
       public var mouseSniperSens:SettingsControlProp = null;
       
+      public var mouseAssaultSens:SettingsControlProp = null;
+      
       public var mouseStrategicSens:SettingsControlProp = null;
       
       public var mouseAssistAimSens:SettingsControlProp = null;
@@ -37,6 +39,7 @@ package net.wg.gui.lobby.settings.vo.config
             "mouseArcadeSens":createControl(ControlsFactory.TYPE_SLIDER).build(),
             "mouseVertInvert":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "mouseSniperSens":createControl(ControlsFactory.TYPE_SLIDER).build(),
+            "mouseAssaultSens":createControl(ControlsFactory.TYPE_SLIDER).build(),
             "mouseStrategicSens":createControl(ControlsFactory.TYPE_SLIDER).build(),
             "mouseAssistAimSens":createControl(ControlsFactory.TYPE_SLIDER).build(),
             "backDraftInvert":createControl(ControlsFactory.TYPE_CHECKBOX).build()
@@ -56,6 +59,7 @@ package net.wg.gui.lobby.settings.vo.config
          this.mouseArcadeSens = null;
          this.mouseVertInvert = null;
          this.mouseSniperSens = null;
+         this.mouseAssaultSens = null;
          this.mouseStrategicSens = null;
          this.mouseAssistAimSens = null;
          this.backDraftInvert = null;

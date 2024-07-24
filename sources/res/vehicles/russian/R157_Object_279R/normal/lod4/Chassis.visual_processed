@@ -22,7 +22,7 @@
 					<row0>1.000000 0.000000 0.000000</row0>
 					<row1>0.000000 0.993847 -0.110758</row1>
 					<row2>0.000000 0.110758 0.993847</row2>
-					<row3>-0.898706 0.000000 1.987652</row3>
+					<row3>-1.408000 0.000000 1.987652</row3>
 				</transform>
 			</node>
 			<node>
@@ -30,8 +30,8 @@
 				<transform>
 					<row0>-1.000000 0.000000 0.000000</row0>
 					<row1>0.000000 0.994751 0.102324</row1>
-					<row2>-0.000000 0.102324 -0.994751</row2>
-					<row3>-0.898706 0.000000 -1.987646</row3>
+					<row2>-0.000000 0.102324 -0.994750</row2>
+					<row3>-1.408000 0.000000 -1.987646</row3>
 				</transform>
 			</node>
 			<node>
@@ -1652,22 +1652,6 @@
 					<materialKind>0</materialKind>
 					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
 					<property>
-						alphaReference
-						<Int>0</Int>
-					</property>
-					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
-					</property>
-					<property>
-						doubleSided
-						<Bool>false</Bool>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>false</Bool>
-					</property>
-					<property>
 						diffuseMap
 						<Texture>vehicles/russian/R157_Object_279R/Object_279R_proxy_AM.dds</Texture>
 					</property>
@@ -1705,22 +1689,6 @@
 					<collisionFlags>0</collisionFlags>
 					<materialKind>0</materialKind>
 					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
-					<property>
-						alphaReference
-						<Int>0</Int>
-					</property>
-					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
-					</property>
-					<property>
-						doubleSided
-						<Bool>false</Bool>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>false</Bool>
-					</property>
 					<property>
 						diffuseMap
 						<Texture>vehicles/russian/R157_Object_279R/Object_279R_proxy_AM.dds</Texture>

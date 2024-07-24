@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd1</identifier>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>112</materialKind>
+					<fx>shaders/std_effects/glow.fx</fx>
+					<property>
+						selfIllumination
+						<Float>20.000000</Float>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h09_mt_bday_2024/Environment/hd_h20_013_FerrisWheelGarlands_AM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.000000 37.921700 -5.003948</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd0</identifier>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>112</materialKind>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<property>
+						alphaReference
+						<Int>128</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h09_mt_bday_2024/Environment/hd_h20_013_FerrisWheel_night_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Hangars/h09_mt_bday_2024/Environment/hd_h20_013_FerrisWheel_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Hangars/h09_mt_bday_2024/Environment/hd_h20_013_FerrisWheel_GMM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.000000 18.848982 -0.000791</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-15.259872 -2.083311 -13.959238</min>
+		<max>15.259872 39.781273 13.957656</max>
+	</boundingBox>
+	<geometrySize>30900</geometrySize>
+	<minUVDensity>0.000050</minUVDensity>
+</root>

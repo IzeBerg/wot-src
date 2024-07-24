@@ -22,7 +22,7 @@
 					<row0>1.000000 0.000000 0.000000</row0>
 					<row1>0.000000 1.000000 0.000000</row1>
 					<row2>0.000000 0.000000 1.000000</row2>
-					<row3>0.000000 0.090739 -2.393076</row3>
+					<row3>0.000000 0.002846 -1.797373</row3>
 				</transform>
 			</node>
 			<node>
@@ -31,7 +31,7 @@
 					<row0>1.000000 0.000000 0.000000</row0>
 					<row1>0.000000 1.000000 0.000000</row1>
 					<row2>0.000000 0.000000 1.000000</row2>
-					<row3>-0.541344 0.005168 1.701504</row3>
+					<row3>0.000000 0.002846 0.133159</row3>
 				</transform>
 			</node>
 			<node>
@@ -55,18 +55,6 @@
 				0
 				<material>
 					<identifier>tank_mat_inside</identifier>
-					<property>
-						alphaReference
-						<Int>0</Int>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>false</Bool>
-					</property>
-					<property>
-						doubleSided
-						<Bool>false</Bool>
-					</property>
 					<collisionFlags>0</collisionFlags>
 					<materialKind>0</materialKind>
 					<fx>shaders/std_effects/PBS_tank.fx</fx>
@@ -91,7 +79,7 @@
 						<Bool>true</Bool>
 					</property>
 				</material>
-				<groupOrigin>-0.020842 0.214723 -0.597422</groupOrigin>
+				<groupOrigin>-0.114665 0.075514 -0.105669</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
 				1
@@ -102,14 +90,6 @@
 					<property>
 						diffuseMap
 						<Texture>vehicles/chinese/Ch19_121/121_hull_01_AM.dds</Texture>
-					</property>
-					<property>
-						alphaReference
-						<Int>0</Int>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>false</Bool>
 					</property>
 					<property>
 						excludeMaskAndAOMap
@@ -125,18 +105,7 @@
 					</property>
 					<property>
 						g_crashUVTiling
-						<Vector4>
-							4 4 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
-					</property>
-					<property>
-						doubleSided
-						<Bool>false</Bool>
-					</property>
-					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
+						<Vector4>4.000000 4.000000 0.000000 0.000000</Vector4>
 					</property>
 					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
 					<property>
@@ -148,7 +117,7 @@
 						<Texture>vehicles/chinese/Ch19_121/121_hull_01_ANM.dds</Texture>
 					</property>
 				</material>
-				<groupOrigin>0.000115 0.005696 -0.104488</groupOrigin>
+				<groupOrigin>0.006258 0.060003 -0.173527</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
 				2
@@ -182,18 +151,7 @@
 					</property>
 					<property>
 						g_crashUVTiling
-						<Vector4>
-							2 2 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
-					</property>
-					<property>
-						doubleSided
-						<Bool>false</Bool>
-					</property>
-					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
+						<Vector4>2.000000 2.000000 0.000000 0.000000</Vector4>
 					</property>
 					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
 					<property>
@@ -205,14 +163,14 @@
 						<Texture>vehicles/chinese/Ch19_121/121_chassis_01_ANM.dds</Texture>
 					</property>
 				</material>
-				<groupOrigin>0.000000 -0.351586 -0.019422</groupOrigin>
+				<groupOrigin>0.000000 -0.383098 0.035427</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<boundingBox>
-		<min>-1.676239 -0.858626 -3.412752</min>
-		<max>1.676469 0.626040 3.203776</max>
+		<min>-1.634125 -0.882698 -3.543508</min>
+		<max>1.646641 0.701207 3.196454</max>
 	</boundingBox>
-	<geometrySize>190884</geometrySize>
-	<minUVDensity>0.001266</minUVDensity>
+	<geometrySize>182614</geometrySize>
+	<minUVDensity>0.000408</minUVDensity>
 </root>

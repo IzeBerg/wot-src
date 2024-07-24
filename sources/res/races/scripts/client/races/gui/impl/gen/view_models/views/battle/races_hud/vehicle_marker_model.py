@@ -1,0 +1,17 @@
+from races.gui.impl.gen.view_models.views.battle.races_hud.marker_model import MarkerModel
+
+class VehicleMarkerModel(MarkerModel):
+    __slots__ = ()
+
+    def __init__(self, properties=5, commands=0):
+        super(VehicleMarkerModel, self).__init__(properties=properties, commands=commands)
+
+    def getPlayerName(self):
+        return self._getString(4)
+
+    def setPlayerName(self, value):
+        self._setString(4, value)
+
+    def _initialize(self):
+        super(VehicleMarkerModel, self)._initialize()
+        self._addStringProperty('playerName', '')

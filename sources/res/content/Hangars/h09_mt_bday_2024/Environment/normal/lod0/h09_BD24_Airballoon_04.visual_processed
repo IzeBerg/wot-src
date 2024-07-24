@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>h02_mt_bday_01_Airballoon</identifier>
+			<transform>
+				<row0>0.998180 0.000000 0.060307</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>-0.060307 0.000000 0.998180</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>lod0</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+				<node>
+					<identifier>s0</identifier>
+					<transform>
+						<row0>96.441093 0.000000 -5.826639</row0>
+						<row1>0.000000 96.616943 0.000000</row1>
+						<row2>5.826639 0.000000 96.441093</row2>
+						<row3>0.008030 0.000000 0.132905</row3>
+					</transform>
+				</node>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>s0</node>
+		<geometry>
+			<vertices>s0Shape.vertices</vertices>
+			<primitive>s0Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h09_mt_bday_2024/Environment/hd_h20_081_AirBalloon_02_Ident_01_AM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Hangars/h09_mt_bday_2024/Environment/h02_mt_bday_01_Airballoon_Logo_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Hangars/h09_mt_bday_2024/Environment/h02_mt_bday_01_Airballoon_02_Logo_ANM.dds</Texture>
+					</property>
+					<property>
+						alphaReference
+						<Int>54</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>0.000000 0.099794 0.000000</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<constraints/>
+	<boundingBox>
+		<min>-7.456631 0.001547 -7.323483</min>
+		<max>7.456631 19.281977 7.589777</max>
+	</boundingBox>
+	<geometrySize>181652</geometrySize>
+	<minUVDensity>13.051927</minUVDensity>
+</root>

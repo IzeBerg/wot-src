@@ -113,6 +113,14 @@
 					<materialKind>0</materialKind>
 					<collisionFlags>0</collisionFlags>
 					<property>
+						alphaReference
+						<Int>80</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
 						colorIdMap
 						<Texture>vehicles/russian/common/common_ID.dds</Texture>
 					</property>
@@ -144,14 +152,6 @@
 						normalMap
 						<Texture>vehicles/chinese/Ch72_GPT_68/GPT_68_hull_01_ANM.dds</Texture>
 					</property>
-					<property>
-						alphaReference
-						<Int>80</Int>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>true</Bool>
-					</property>
 				</material>
 				<groupOrigin>0.048915 -0.002032 0.126909</groupOrigin>
 			</primitiveGroup>
@@ -161,6 +161,6 @@
 		<min>-1.856010 -0.615515 -3.567513</min>
 		<max>1.953840 0.611452 3.821331</max>
 	</boundingBox>
-	<geometrySize>313908</geometrySize>
+	<geometrySize>314414</geometrySize>
 	<minUVDensity>0.002832</minUVDensity>
 </root>

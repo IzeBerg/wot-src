@@ -78,7 +78,7 @@ from messenger.formatters.service_channel_helpers import EOL, MessageData, getCu
 from nations import NAMES
 from shared_utils import BoundMethodWeakref, first
 from skeletons.gui.battle_matters import IBattleMattersController
-from skeletons.gui.game_control import IBattlePassController, IBattleRoyaleController, ICollectionsSystemController, IEpicBattleMetaGameController, IFunRandomController, IMapboxController, IRankedBattlesController, IResourceWellController, IWinbackController, IWotPlusController, IBRProgressionOnTokensController, IEarlyAccessController
+from skeletons.gui.game_control import IBattlePassController, IBattleRoyaleController, ICollectionsSystemController, IEpicBattleMetaGameController, IFunRandomController, IMapboxController, IRankedBattlesController, IResourceWellController, IWinbackController, IWotPlusController, IBRProgressionOnTokensController, IEarlyAccessController, IGuiLootBoxesController
 from skeletons.gui.goodies import IGoodiesCache
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.offers import IOffersDataProvider
@@ -333,6 +333,17 @@ def _processOfferToken(tokenName, count):
         return g_settings.htmlTemplates.format(template, {b'offer': offerName})
     else:
         return
+
+
+@dependency.replace_none_kwargs(collections=IGuiLootBoxesController)
+def _processLootBoxKeyToken(tokenName, amount, collections=None):
+    if tokenName.startswith(constants.LOOTBOX_KEY_PREFIX) and amount > 0:
+        tokenId = collections.getKeyByTokenID(tokenName)
+        if tokenId:
+            template = b'lbKeysAccruedInvoiceReceived'
+            return g_settings.htmlTemplates.format(template, {b'lootbox_key': backport.text(R.strings.lootboxes.userName.dyn(tokenId.userName)()), 
+               b'amount': amount})
+    return
 
 
 @dependency.replace_none_kwargs(collections=ICollectionsSystemController)
@@ -2044,6 +2055,9 @@ class InvoiceReceivedFormatter(WaitItemsSyncFormatter):
                 offerTokenResult = _processOfferToken(tokenName, count)
                 if offerTokenResult:
                     tokenStrings.append(offerTokenResult)
+            lbTokenResult = _processLootBoxKeyToken(tokenName, count)
+            if lbTokenResult:
+                tokenStrings.append(lbTokenResult)
             if tokenName == constants.PERSONAL_MISSION_FREE_TOKEN_NAME:
                 awardListcount += count
             else:
@@ -2840,6 +2854,7 @@ class QuestAchievesFormatter(object):
     __lobbyContext = dependency.descriptor(ILobbyContext)
     __goodiesCache = dependency.descriptor(IGoodiesCache)
     __itemsCache = dependency.descriptor(IItemsCache)
+    __guiLootbox = dependency.descriptor(IGuiLootBoxesController)
 
     @classmethod
     def formatQuestAchieves(cls, data, asBattleFormatter, processCustomizations=True, processTokens=True):
@@ -2953,12 +2968,17 @@ class QuestAchievesFormatter(object):
                     itemsNames.append(backport.text(R.strings.messenger.serviceChannelMessages.battleResults.quests.items.name(), name=backport.text(R.strings.quests.bonusName.crew_bonus_x3()), count=count))
                 elif tokenID == COMP7_TOKEN_WEEKLY_REWARD_ID:
                     itemsNames.append(backport.text(R.strings.messenger.serviceChannelMessages.battleResults.quests.items.name(), name=backport.text(R.strings.comp7.system_messages.weeklyReward.tokens()), count=count))
-                elif tokenID.startswith(constants.LOOTBOX_TOKEN_PREFIX):
+                elif tokenID.startswith(constants.LOOTBOX_TOKEN_PREFIX) and int(count) > 0:
                     lootBox = cls.__itemsCache.items.tokens.getLootBoxByTokenID(tokenID)
                     if lootBox:
                         itemsNames.append(makeHtmlString(b'html_templates:lobby/quests/bonuses', b'rawLootBox', {b'name': lootBox.getUserName(), b'count': int(count)}))
                 elif tokenID.startswith(EARLY_ACCESS_PREFIX):
                     itemsNames.append(EarlyAccessQuestsTokensFormatter.format(data))
+                elif tokenID.startswith(constants.LOOTBOX_KEY_PREFIX) and int(count) > 0:
+                    key = cls.__guiLootbox.getKeyByTokenID(tokenID)
+                    text = backport.text(R.strings.lootboxes.userName.dyn(key.userName)())
+                    if key:
+                        itemsNames.append(makeHtmlString(b'html_templates:lobby/quests/bonuses', b'lootBoxKey', {b'name': text, b'count': int(count)}))
 
         entitlementsList = [ (eID, eData.get(b'count', 0)) for eID, eData in data.get(b'entitlements', {}).iteritems() ]
         entitlementsStr = InvoiceReceivedFormatter.getEntitlementsString(entitlementsList)

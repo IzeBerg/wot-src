@@ -60,6 +60,8 @@ package net.wg.gui.lobby.profile.pages.technique
          super();
          this.techniqueList.addEventListener(TechniqueList.SELECTED_INDEX_CHANGE,this.onTechniqueListSelectedIndexChangeHandler);
          this.techniqueList.addEventListener(SortableScrollingList.DATA_INVALIDATED,this.onTechniqueListDataInvalidatedHandler);
+         this.sortableButtonBar.addEventListener(SortingEvent.SORT_DIRECTION_CHANGED,this.onSortableButtonBarSortDirectionChangedHandler,false,0,true);
+         this.lowerShadow.mouseEnabled = this.upperShadow.mouseEnabled = false;
       }
       
       override public function setSize(param1:Number, param2:Number) : void
@@ -146,7 +148,7 @@ package net.wg.gui.lobby.profile.pages.technique
          }
          if(this.sortableButtonBar)
          {
-            this.sortableButtonBar.removeEventListener(SortingEvent.SORT_DIRECTION_CHANGED,this.onSortableButtonBarSortDirectionChangedHandler);
+            this.sortableButtonBar.removeEventListener(SortingEvent.SORT_DIRECTION_CHANGED,this.onSortableButtonBarSortDirectionChangedHandler,false);
             this.sortableButtonBar.dispose();
             this.sortableButtonBar = null;
          }
@@ -215,10 +217,12 @@ package net.wg.gui.lobby.profile.pages.technique
       
       public function set headerDataProvider(param1:IDataProvider) : void
       {
+         if(this.sortableButtonBar.container)
+         {
+            this.sortableButtonBar.removeAllRenderers();
+         }
          this.sortableButtonBar.dataProvider = param1;
-         this.lowerShadow.mouseEnabled = this.upperShadow.mouseEnabled = false;
-         this.sortableButtonBar.addEventListener(SortingEvent.SORT_DIRECTION_CHANGED,this.onSortableButtonBarSortDirectionChangedHandler,false,0,true);
-         this.techniqueList.columnsData = this.sortableButtonBar.dataProvider;
+         this.techniqueList.columnsData = param1;
          this.techniqueList.smartScrollBar = true;
          this.sortableButtonBar.updateButtonsEnabledState(true);
       }

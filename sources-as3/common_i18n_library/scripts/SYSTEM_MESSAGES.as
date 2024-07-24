@@ -2477,9 +2477,9 @@ package
       
       public static const BATTLEPASS_MARATHONFINISH_BODY:String = "#system_messages:battlePass/marathonFinish/body";
       
-      public static const BATTLEPASS_EXTRAWILLENDSOON_HEADER:String = "#system_messages:battlePass/extraWillEndSoon/header";
+      public static const BATTLEPASS_MARATHONWILLENDSOON_HEADER:String = "#system_messages:battlePass/marathonWillEndSoon/header";
       
-      public static const BATTLEPASS_EXTRAWILLENDSOON_BODY:String = "#system_messages:battlePass/extraWillEndSoon/body";
+      public static const BATTLEPASS_MARATHONWILLENDSOON_BODY:String = "#system_messages:battlePass/marathonWillEndSoon/body";
       
       public static const BATTLEPASS_GAMEMODEENABLED_HEADER:String = "#system_messages:battlePass/gameModeEnabled/header";
       

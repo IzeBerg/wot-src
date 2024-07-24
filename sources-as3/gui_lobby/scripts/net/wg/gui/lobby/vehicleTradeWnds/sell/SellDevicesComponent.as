@@ -114,7 +114,7 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
       public function updateDevice(param1:SellOnVehicleOptionalDeviceVo) : void
       {
          var _loc2_:SellDialogElementVO = this.getElementVo(param1);
-         var _loc3_:* = this.getRenderer(_loc2_);
+         var _loc3_:ISaleItemBlockRenderer = this.getRenderer(_loc2_);
          if(_loc3_)
          {
             _loc3_.setData(_loc2_);

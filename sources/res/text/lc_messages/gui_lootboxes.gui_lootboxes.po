@@ -41,6 +41,12 @@ msgstr "Кредиты"
 msgid "compensationTooltip/title/gold"
 msgstr "Золото"
 
+msgid "entryPointWidget/count"
+msgstr "%(mult)s%(count)s"
+
+msgid "entryPointWidget/countHasInfinite"
+msgstr "%(mult)s%(count)s / %(infin)s"
+
 msgid "entryPointWidget/disabledTooltip/body"
 msgstr ""
 "В настоящий момент покупка и открытие контейнеров недоступны по техническим "
@@ -49,11 +55,23 @@ msgstr ""
 msgid "entryPointWidget/disabledTooltip/header"
 msgstr "Покупка и открытие временно недоступны"
 
+msgid "entryPointWidget/hasInfiniteOnly"
+msgstr "%(mult)s%(infin)s"
+
+msgid "entryPointWidget/infin"
+msgstr "∞"
+
 msgid "entryPointWidget/maxBoxesCount"
 msgstr "999+"
 
+msgid "entryPointWidget/maxCount"
+msgstr "%(count)s+"
+
+msgid "entryPointWidget/maxCountHasInfinite"
+msgstr "%(count)s+ / %(infin)s"
+
 msgid "entryPointWidget/mult"
-msgstr "×%(count)s"
+msgstr "×"
 
 msgid "error/text"
 msgstr "Что-то пошло не так, попробуйте повторить попытку позже."
@@ -129,6 +147,35 @@ msgstr ""
 msgid "guaranteedRewardTooltip/block3/title"
 msgstr "Когда вся техника уже получена:"
 
+msgid "keyWelcomeScreen/content/first/description"
+msgstr ""
+"Со стартом события «Гонки: рестарт» на ваш аккаунт начисляется бесконечное "
+"количество контейнеров нового типа. Их можно открыть только с помощью ключей"
+" или&nbsp;отмычек на&nbsp;протяжении всего празднования Дня&nbsp;рождения "
+"игры."
+
+msgid "keyWelcomeScreen/content/first/title"
+msgstr "Новый тип контейнеров"
+
+msgid "keyWelcomeScreen/content/second/description"
+msgstr ""
+"Ключи всегда открывают контейнер, а отмычка может сломаться во&nbsp;время "
+"открытия. Ключи и&nbsp;отмычки одноразовые."
+
+msgid "keyWelcomeScreen/content/second/title"
+msgstr "Ключи и отмычки"
+
+msgid "keyWelcomeScreen/content/third/description"
+msgstr ""
+"Ключи и отмычки можно получить разными способами на&nbsp;всём протяжении "
+"празднования Дня рождения. Также ключи можно приобрести в Магазине."
+
+msgid "keyWelcomeScreen/content/third/title"
+msgstr "Как получить ключи и отмычки?"
+
+msgid "keyWelcomeScreen/header/titleMain"
+msgstr "Контейнер «День рождения 2024»"
+
 msgid "lootboxRotationTooltip/caption"
 msgstr "Вы можете получить одну из наград текущего этапа"
 
@@ -149,6 +196,40 @@ msgstr "Этап"
 
 msgid "lootboxRotationTooltip/title"
 msgstr "Списки содержимого"
+
+msgid "lootboxesWithKeys/about"
+msgstr "О контейнерах с ключами"
+
+msgid "lootboxesWithKeys/availableLockpicks"
+msgstr "Доступно отмычек для контейнеров: %(icon) %(count)"
+
+msgid "lootboxesWithKeys/lbOpenCount"
+msgid_plural "plural/lootboxesWithKeys/lbOpenCount"
+msgstr[0] "Контейнер успешно открыт"
+msgstr[1] "Успешно открыто %(count)s контейнера"
+msgstr[2] "Успешно открыто %(count)s контейнеров"
+
+msgid "lootboxesWithKeys/lockpickBrokeButton"
+msgstr "Так точно!"
+
+msgid "lootboxesWithKeys/lockpickBrokeDesc"
+msgstr ""
+"Контейнер {cream_Open}«%(lootboxName)s»{cream_Close} открыть не удалось."
+
+msgid "lootboxesWithKeys/lockpickBrokeTitle"
+msgstr "ОТМЫЧКА СЛОМАЛАСЬ"
+
+msgid "lootboxesWithKeys/openAll"
+msgstr "Открыть все"
+
+msgid "lootboxesWithKeys/openLast"
+msgstr "Открыть последний"
+
+msgid "lootboxesWithKeys/openMore"
+msgstr "Открыть ещё х%(count)"
+
+msgid "lootboxesWithKeys/openOne"
+msgstr "Открыть ещё 1"
 
 msgid "notification/lootBoxInvoiceReceived"
 msgstr "Начислено"
@@ -190,6 +271,9 @@ msgstr ""
 msgid "optional/buy"
 msgstr "Докупить"
 
+msgid "optional/buyBox"
+msgstr "Докупить"
+
 msgid "optional/count"
 msgstr "Количество: %(count)s шт."
 
@@ -199,14 +283,14 @@ msgstr "Открыть"
 msgid "optional/openCount/all"
 msgstr "Все"
 
-msgid "optional/openCount/maxCount"
-msgstr "10 шт."
+msgid "optional/openCount/numberCount"
+msgstr "%(count) шт."
 
 msgid "optional/openCount/one"
 msgstr "1 шт."
 
 msgid "optional/openProbabilityOverlay"
-msgstr "ВЕРОЯТНОСТЬ"
+msgstr "Вероятность выпадения"
 
 msgid "optional/possibleRewardsTitle"
 msgstr "ВОЗМОЖНЫЕ НАГРАДЫ"
@@ -345,6 +429,57 @@ msgstr[0] "И ещё %(count)s возможная награда"
 msgstr[1] "И ещё %(count)s возможные награды"
 msgstr[2] "И ещё %(count)s возможных наград"
 
+msgid "tooltips/currencyKey/descriptionPart1/tanks_birthday_2024_key"
+msgstr ""
+"Ключ открывает контейнер «%(lootboxName)s» с вероятностью "
+"{cream_Open}100%{cream_Close}."
+
+msgid "tooltips/currencyKey/descriptionPart1/tanks_birthday_2024_lockpick"
+msgstr ""
+"Отмычка открывает контейнер «%(lootboxName)s» с вероятностью "
+"{cream_Open}%(count)s%{cream_Close}."
+
+msgid "tooltips/currencyKey/descriptionPart2/tanks_birthday_2024_key"
+msgstr "Ключи можно получить:"
+
+msgid "tooltips/currencyKey/descriptionPart2/tanks_birthday_2024_lockpick"
+msgstr "Отмычки можно получить:"
+
+msgid "tooltips/currencyKey/descriptionPart3/tanks_birthday_2024_key"
+msgstr ""
+"• во {cream_Open}внутриигровом{cream_Close} или {cream_Open}Премиум{cream_Close} магазинах;\n"
+"• за {cream_Open}завершение этапов{cream_Close} события «Гонки: рестарт»."
+
+msgid "tooltips/currencyKey/descriptionPart3/tanks_birthday_2024_lockpick"
+msgstr ""
+"• за выполнение {cream_Open}боевых задач{cream_Close};\n"
+"• из {cream_Open}контейнеров{cream_Close} «День рождения 2024»;\n"
+"• за {cream_Open}завершение этапов{cream_Close} события «Гонки: рестарт»."
+
+msgid "tooltips/currencyKey/footer/tanks_birthday_2024_key"
+msgstr "В наличии:"
+
+msgid "tooltips/currencyKey/footer/tanks_birthday_2024_lockpick"
+msgstr "В наличии:"
+
+msgid "tooltips/currencyKey/title_v1/tanks_birthday_2024_key"
+msgstr "Ключ от контейнера «День рождения 2024»."
+
+msgid "tooltips/currencyKey/title_v1/tanks_birthday_2024_lockpick"
+msgstr "Отмычка для контейнера «День рождения 2024»."
+
+msgid "tooltips/currencyKey/title_v2/tanks_birthday_2024_key"
+msgstr "Открыть ключом"
+
+msgid "tooltips/currencyKey/title_v2/tanks_birthday_2024_lockpick"
+msgstr "Открыть отмычкой"
+
+msgid "tooltips/currencyKey/title_v2_noKey/tanks_birthday_2024_key"
+msgstr "Ключей нет в наличии"
+
+msgid "tooltips/currencyKey/title_v2_noKey/tanks_birthday_2024_lockpick"
+msgstr "Отмычек нет в наличии"
+
 msgid "tooltips/infoType/premVehicle/body"
 msgstr ""
 "Премиум техника не требует исследования и зарабатывает больше кредитов, а "
@@ -388,6 +523,19 @@ msgstr "Шанс выпадения предмета из указанной г�
 
 msgid "tooltips/probability/header"
 msgstr "Вероятность"
+
+msgid "tooltips/probabilityButton/description"
+msgstr ""
+"Все награды контейнера разбиты на {cream_Open}категории{cream_Close}. Каждая"
+" категория имеет свою {cream_Open}вероятность{cream_Close} выпадения "
+"{cream_Open}одной{cream_Close} из её наград. При открытии контейнера есть "
+"шанс получить награды из каждой категории одновременно."
+
+msgid "tooltips/probabilityButton/title"
+msgstr "Вероятность выпадения"
+
+msgid "triggerHint/title"
+msgstr "Имеющиеся ключи и отмычки от контейнеров «День рождения 2024»"
 
 msgid "videoreward/button/title"
 msgstr "Продолжить"

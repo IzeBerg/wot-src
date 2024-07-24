@@ -189,10 +189,10 @@
 			</preceding>
 		</filter>
 		<filter>
-			<id>only_assaultSPG_first_5_times</id>
+			<id>only_assaultSPG_first_10_times</id>
 			<tags>assaultSPG</tags>
 			<preceding>
-				<showTimes>5</showTimes>
+				<showTimes>10</showTimes>
 			</preceding>
 		</filter>
 	</filters>
@@ -970,7 +970,13 @@
 			<id>tip31008</id>
 			<status>assaultSPGVehicles</status>
 			<group>assaultSPG</group>
-			<filter>only_assaultSPG_first_5_times</filter>
+			<filter>only_assaultSPG_first_10_times</filter>
+		</tip>
+		<tip>
+			<id>tip31009</id>
+			<status>assaultSPGVehiclesTerrain</status>
+			<group>terrainAssaultSPG</group>
+			<filter>only_assaultSPG_first_10_times</filter>
 		</tip>
 		<tip>
 			<id>epicTip1</id>
@@ -1100,8 +1106,16 @@
 			<status>rankedStatus3</status>
 		</tip>
 		<tip>
+			<id>ranked5</id>
+			<status>rankedStatus5</status>
+		</tip>
+		<tip>
 			<id>ranked9</id>
 			<status>rankedStatus9</status>
+		</tip>
+		<tip>
+			<id>ranked13</id>
+			<status>rankedStatus13</status>
 		</tip>
 		<tip>
 			<id>battleRoyale0</id>

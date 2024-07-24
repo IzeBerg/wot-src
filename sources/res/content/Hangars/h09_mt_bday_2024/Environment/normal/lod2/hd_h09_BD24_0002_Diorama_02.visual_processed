@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_tiled.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>105</materialKind>
+					<property>
+						albedoHeightTile0
+						<Texture>content/Hangars/h09_mt_bday_2024/Environment/00_Tiles/Asphalt_Fine_02_512_AM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile1
+						<Texture>content/Hangars/h09_mt_bday_2024/Environment/00_Tiles/Asphalt_Damaged_56_512_AM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile2
+						<Texture>content/Hangars/h09_mt_bday_2024/Environment/00_Tiles/Sand_Rough_01_AM.dds</Texture>
+					</property>
+					<property>
+						blendMask
+						<Texture>content/Hangars/h09_mt_bday_2024/Environment/hd_h09_BD24_0002_Diorama_02_blend.dds</Texture>
+					</property>
+					<property>
+						colorTex
+						<Texture>content/Hangars/h09_mt_bday_2024/Environment/hd_h09_BD24_0002_Diorama_02_GCM.dds</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Buildings/00_Tiles/Dirt_Desert_02_DM.dds</Texture>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.470000 0.430000 0.380000 0.400000</Vector4>
+					</property>
+					<property>
+						g_dirtColorParams
+						<Vector4>0.100000 0.900000 0.900000 0.900000</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>0.901961 0.901961 0.901961 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>0.901961 0.901961 0.901961 1.000000</Vector4>
+					</property>
+					<property>
+						metallicAOTile0
+						<Texture>content/Hangars/h09_mt_bday_2024/Environment/00_Tiles/Asphalt_Fine_02_512_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile1
+						<Texture>content/Hangars/h09_mt_bday_2024/Environment/00_Tiles/Asphalt_Damaged_56_512_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile2
+						<Texture>content/Hangars/h09_mt_bday_2024/Environment/00_Tiles/Sand_Rough_01_MAO.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile0
+						<Texture>content/Hangars/h09_mt_bday_2024/Environment/00_Tiles/Asphalt_Fine_02_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile1
+						<Texture>content/Hangars/h09_mt_bday_2024/Environment/00_Tiles/Asphalt_Damaged_56_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile2
+						<Texture>content/Hangars/h09_mt_bday_2024/Environment/00_Tiles/Sand_Rough_01_GBMT.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.003384 0.721164 0.079791</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-6.918231 0.116120 -8.008940</min>
+		<max>6.924998 1.863147 8.168521</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>1180</geometrySize>
+	<minUVDensity>0.101468</minUVDensity>
+</root>

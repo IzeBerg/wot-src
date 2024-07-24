@@ -22,7 +22,7 @@
 					<row0>1.000000 0.000000 0.000000</row0>
 					<row1>0.000000 1.000000 0.000000</row1>
 					<row2>0.000000 0.000000 1.000000</row2>
-					<row3>0.000000 0.090739 -2.393076</row3>
+					<row3>0.000000 0.002846 -1.797373</row3>
 				</transform>
 			</node>
 			<node>
@@ -31,7 +31,7 @@
 					<row0>1.000000 0.000000 0.000000</row0>
 					<row1>0.000000 1.000000 0.000000</row1>
 					<row2>0.000000 0.000000 1.000000</row2>
-					<row3>-0.541344 0.005168 1.701504</row3>
+					<row3>0.000000 0.002846 0.133159</row3>
 				</transform>
 			</node>
 			<node>
@@ -40,7 +40,7 @@
 					<row0>1.000000 0.000000 0.000000</row0>
 					<row1>0.000000 0.978148 0.207912</row1>
 					<row2>0.000000 -0.207912 0.978148</row2>
-					<row3>-1.322326 0.158058 2.928854</row3>
+					<row3>-1.322326 0.158052 2.928854</row3>
 				</transform>
 			</node>
 			<node>
@@ -49,7 +49,7 @@
 					<row0>-1.000000 0.000000 0.000000</row0>
 					<row1>0.000000 0.990268 -0.139173</row1>
 					<row2>-0.000000 -0.139173 -0.990268</row2>
-					<row3>-1.322326 0.131387 -2.913399</row3>
+					<row3>-1.322326 0.130733 -2.905824</row3>
 				</transform>
 			</node>
 			<node>
@@ -58,7 +58,7 @@
 					<row0>1.000000 0.000000 0.000000</row0>
 					<row1>0.000000 0.978148 0.207912</row1>
 					<row2>0.000000 -0.207912 0.978148</row2>
-					<row3>1.322326 0.159169 2.928855</row3>
+					<row3>1.322326 0.159178 2.928855</row3>
 				</transform>
 			</node>
 			<node>
@@ -67,16 +67,16 @@
 					<row0>-1.000000 0.000000 0.000000</row0>
 					<row1>0.000000 0.990268 -0.139173</row1>
 					<row2>-0.000000 -0.139173 -0.990268</row2>
-					<row3>1.322326 0.131390 -2.913399</row3>
+					<row3>1.322326 0.131482 -2.905709</row3>
 				</transform>
 			</node>
 			<node>
 				<identifier>HP_Track_Exhaus_1</identifier>
 				<transform>
-					<row0>0.000000 0.000000 1.000000</row0>
-					<row1>0.000000 1.000000 0.000000</row1>
-					<row2>-1.000000 0.000000 0.000000</row2>
-					<row3>-1.635000 0.330876 -1.680941</row3>
+					<row0>-0.000000 1.000000 0.000000</row0>
+					<row1>0.000000 0.000000 -1.000000</row1>
+					<row2>-1.000000 -0.000000 -0.000000</row2>
+					<row3>-1.635000 0.358422 -1.680941</row3>
 				</transform>
 			</node>
 			<node>
@@ -114,28 +114,12 @@
 						<Texture>vehicles/chinese/Ch19_121/121_hull_01_AM.dds</Texture>
 					</property>
 					<property>
-						alphaReference
-						<Int>0</Int>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>false</Bool>
-					</property>
-					<property>
 						excludeMaskAndAOMap
 						<Texture>vehicles/chinese/Ch19_121/121_hull_01_AO.dds</Texture>
 					</property>
 					<property>
 						colorIdMap
 						<Texture>vehicles/russian/common/common_ID.dds</Texture>
-					</property>
-					<property>
-						doubleSided
-						<Bool>false</Bool>
-					</property>
-					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
 					</property>
 					<fx>shaders/std_effects/PBS_tank.fx</fx>
 					<property>
@@ -162,10 +146,7 @@
 					</property>
 					<property>
 						g_detailUVTiling
-						<Vector4>
-							7.0137 7.0137 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>7.013700 7.013700 0.000000 0.000000</Vector4>
 					</property>
 					<property>
 						g_detailPower
@@ -176,14 +157,14 @@
 						<Texture>vehicles/chinese/Ch19_121/121_hull_01_ANM.dds</Texture>
 					</property>
 				</material>
-				<groupOrigin>-0.003216 0.000982 -0.215744</groupOrigin>
+				<groupOrigin>-0.000000 0.003773 -0.238250</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<boundingBox>
-		<min>-1.641432 -0.614648 -3.837146</min>
-		<max>1.635000 0.616612 3.405658</max>
+		<min>-1.646746 -0.615188 -3.861092</min>
+		<max>1.646746 0.622734 3.384592</max>
 	</boundingBox>
-	<geometrySize>132312</geometrySize>
-	<minUVDensity>0.004327</minUVDensity>
+	<geometrySize>141070</geometrySize>
+	<minUVDensity>0.004500</minUVDensity>
 </root>

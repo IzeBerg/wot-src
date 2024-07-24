@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
 	<Parent>TriggerVehicleArea</Parent>
+	<NonChunk>True</NonChunk>
 	<Properties>
 		<Shape>
 			<Type>STRING</Type>
@@ -30,6 +31,11 @@
 			<Editable>True</Editable>
 			<Default>0</Default>
 		</ActivationsCount>
+		<hasEventLimit>
+			<Type>BOOL</Type>
+			<Editable>True</Editable>
+			<Default>1</Default>
+		</hasEventLimit>
 		<Cooldown>
 			<Type>FLOAT</Type>
 			<Editable>True</Editable>

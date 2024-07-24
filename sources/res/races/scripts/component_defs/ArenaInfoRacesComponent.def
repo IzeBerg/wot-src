@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<ofEntity>
+		<ArenaInfo/>
+	</ofEntity>
+	<Properties>
+		<raceEndTime>
+			<Type>FLOAT</Type>
+			<Flags>ALL_CLIENTS</Flags>
+			<Default>
+				0.0
+				<!--BW_String-->
+			</Default>
+		</raceEndTime>
+		<rankList>
+			<Type>
+				ARRAY
+				<of>RACE_ITEM</of>
+			</Type>
+			<Flags>ALL_CLIENTS</Flags>
+		</rankList>
+	</Properties>
+	<DefaultKeyName>arenaInfoRacesComponent</DefaultKeyName>
+</root>

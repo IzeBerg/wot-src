@@ -77,7 +77,7 @@
 			<hull2>
 				<chassis>Chassis_VK4502A_SH</chassis>
 				<weight>36300</weight>
-				<maxHealth>1600</maxHealth>
+				<maxHealth>2000</maxHealth>
 				<ammoBayHealth>
 					<maxHealth>103</maxHealth>
 					<maxRegenHealth>65</maxRegenHealth>
@@ -200,7 +200,7 @@
 			<hull3>
 				<chassis>Chassis_E-100_SH</chassis>
 				<weight>48800</weight>
-				<maxHealth>1200</maxHealth>
+				<maxHealth>1500</maxHealth>
 				<ammoBayHealth>
 					<maxHealth>103</maxHealth>
 					<maxRegenHealth>65</maxRegenHealth>
@@ -354,7 +354,7 @@
 			</hull3>
 		</variants>
 		<weight>18800</weight>
-		<maxHealth>800</maxHealth>
+		<maxHealth>1000</maxHealth>
 		<ammoBayHealth>
 			<maxHealth>103</maxHealth>
 			<maxRegenHealth>65</maxRegenHealth>
@@ -5610,7 +5610,7 @@
 				</turret>
 			</unlocks>
 			<weight>11280</weight>
-			<maxHealth>500</maxHealth>
+			<maxHealth>600</maxHealth>
 			<rotationSpeed>30</rotationSpeed>
 			<turretRotatorHealth>
 				<maxHealth>103</maxHealth>
@@ -5679,7 +5679,10 @@
 							<!--BW_String-->
 						</maxPitch>
 					</pitchLimits>
-					<reloadTime>7</reloadTime>
+					<reloadTime>
+						6.4
+						<!--BW_String-->
+					</reloadTime>
 					<maxAmmo>50</maxAmmo>
 					<shotDispersionRadius>
 						0.4
@@ -5801,7 +5804,10 @@
 						0.238
 						<!--BW_String-->
 					</invisibilityFactorAtShot>
-					<reloadTime>7</reloadTime>
+					<reloadTime>
+						6.5
+						<!--BW_String-->
+					</reloadTime>
 					<unlocks>
 						<chassis>
 							Chassis_VK4502A_SH
@@ -5932,7 +5938,7 @@
 				<_128mm_L50_SH>
 					shared
 					<maxAmmo>43</maxAmmo>
-					<reloadTime>10</reloadTime>
+					<reloadTime>9</reloadTime>
 					<unlocks>
 						<chassis>
 							Chassis_VK4502A_SH
@@ -6136,7 +6142,7 @@
 				</gun>
 			</unlocks>
 			<weight>21780</weight>
-			<maxHealth>1000</maxHealth>
+			<maxHealth>1500</maxHealth>
 			<rotationSpeed>44</rotationSpeed>
 			<turretRotatorHealth>
 				<maxHealth>103</maxHealth>
@@ -6216,7 +6222,10 @@
 						0.238
 						<!--BW_String-->
 					</invisibilityFactorAtShot>
-					<reloadTime>7</reloadTime>
+					<reloadTime>
+						6.5
+						<!--BW_String-->
+					</reloadTime>
 					<shotDispersionRadius>
 						0.36
 						<!--BW_String-->
@@ -6349,7 +6358,7 @@
 				<_128mm_L50_SH>
 					shared
 					<maxAmmo>43</maxAmmo>
-					<reloadTime>10</reloadTime>
+					<reloadTime>9</reloadTime>
 					<pitchLimits>
 						<minPitch>0 -20 1 -20</minPitch>
 						<maxPitch>
@@ -6500,7 +6509,7 @@
 					</invisibilityFactorAtShot>
 					<clip>
 						<count>4</count>
-						<rate>24</rate>
+						<rate>22</rate>
 					</clip>
 					<pitchLimits>
 						<minPitch>0 -20 1 -20</minPitch>
@@ -6835,7 +6844,7 @@
 				</gun>
 			</unlocks>
 			<weight>29280</weight>
-			<maxHealth>800</maxHealth>
+			<maxHealth>1200</maxHealth>
 			<rotationSpeed>35</rotationSpeed>
 			<turretRotatorHealth>
 				<maxHealth>103</maxHealth>
@@ -6911,7 +6920,10 @@
 						0.238
 						<!--BW_String-->
 					</invisibilityFactorAtShot>
-					<reloadTime>7</reloadTime>
+					<reloadTime>
+						6.5
+						<!--BW_String-->
+					</reloadTime>
 					<shotDispersionRadius>
 						0.36
 						<!--BW_String-->
@@ -7052,7 +7064,7 @@
 				<_128mm_L50_SH>
 					shared
 					<maxAmmo>43</maxAmmo>
-					<reloadTime>10</reloadTime>
+					<reloadTime>9</reloadTime>
 					<pitchLimits>
 						<minPitch>0 -20 1 -20</minPitch>
 						<maxPitch>
@@ -7356,7 +7368,10 @@
 						0.4
 						<!--BW_String-->
 					</shotDispersionRadius>
-					<reloadTime>12</reloadTime>
+					<reloadTime>
+						11.5
+						<!--BW_String-->
+					</reloadTime>
 					<invisibilityFactorAtShot>
 						0.209
 						<!--BW_String-->

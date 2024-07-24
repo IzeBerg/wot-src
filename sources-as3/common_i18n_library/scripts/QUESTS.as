@@ -111,6 +111,10 @@ package
       
       public static const BONUSES_ITEM_LOOTBOXES:String = "#quests:bonuses/item/lootBoxes";
       
+      public static const BONUSES_ITEM_LOCKPICK:String = "#quests:bonuses/item/lockpick";
+      
+      public static const BONUSES_ITEM_LOOTBOXKEY:String = "#quests:bonuses/item/lootBoxKey";
+      
       public static const BONUSES_ITEM_EARLYACCESSTOKEN:String = "#quests:bonuses/item/earlyAccessToken";
       
       public static const BONUSNAME_BLUEPRINTS_ANY:String = "#quests:bonusName/blueprints/any";
