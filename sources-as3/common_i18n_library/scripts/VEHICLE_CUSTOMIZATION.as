@@ -18751,10 +18751,6 @@ package
       
       public static const BP14ADD_DECAL_03_2024_MT_DESCRIPTION:String = "#vehicle_customization:BP14ADD_Decal_03_2024_MT/description";
       
-      public static const BP14ADD_DECAL_04_2024_MT_NAME:String = "#vehicle_customization:BP14ADD_Decal_04_2024_MT/name";
-      
-      public static const BP14ADD_DECAL_04_2024_MT_DESCRIPTION:String = "#vehicle_customization:BP14ADD_Decal_04_2024_MT/description";
-      
       public static const BP14ADD_DECAL_05_2024_MT_NAME:String = "#vehicle_customization:BP14ADD_Decal_05_2024_MT/name";
       
       public static const BP14ADD_DECAL_05_2024_MT_DESCRIPTION:String = "#vehicle_customization:BP14ADD_Decal_05_2024_MT/description";

@@ -1347,7 +1347,7 @@ def tokensFactory(name, value, isCompensation=False, ctx=None):
     for tID, tValue in value.iteritems():
         if tID.startswith(LOOTBOX_TOKEN_PREFIX):
             result.append(LootBoxTokensBonus({tID: tValue}, isCompensation, ctx))
-        if tID.startswith(LOOTBOX_KEY_PREFIX):
+        elif tID.startswith(LOOTBOX_KEY_PREFIX):
             result.append(LootBoxKeyTokensBonus({tID: tValue}, isCompensation, ctx))
         elif tID.startswith(RECRUIT_TMAN_TOKEN_PREFIX):
             result.append(TmanTemplateTokensBonus({tID: tValue}, isCompensation, ctx))

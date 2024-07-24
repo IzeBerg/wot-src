@@ -2365,8 +2365,6 @@ package
       
       public static const MAPS_ICONS_BATTLEPASS_REWARDS_CUSTOMIZATIONS_S232X174_PROJECTIONDECAL_7977340:String = "../maps/icons/battlePass/rewards/customizations/s232x174/projectionDecal_7977340.png";
       
-      public static const MAPS_ICONS_BATTLEPASS_REWARDS_CUSTOMIZATIONS_S232X174_PROJECTIONDECAL_7977596:String = "../maps/icons/battlePass/rewards/customizations/s232x174/projectionDecal_7977596.png";
-      
       public static const MAPS_ICONS_BATTLEPASS_REWARDS_CUSTOMIZATIONS_S232X174_PROJECTIONDECAL_7977852:String = "../maps/icons/battlePass/rewards/customizations/s232x174/projectionDecal_7977852.png";
       
       public static const MAPS_ICONS_BATTLEPASS_REWARDS_CUSTOMIZATIONS_S232X174_STYLE:String = "../maps/icons/battlePass/rewards/customizations/s232x174/style.png";
@@ -2600,8 +2598,6 @@ package
       public static const MAPS_ICONS_BATTLEPASS_REWARDS_CUSTOMIZATIONS_S296X222_PROJECTIONDECAL_7977084:String = "../maps/icons/battlePass/rewards/customizations/s296x222/projectionDecal_7977084.png";
       
       public static const MAPS_ICONS_BATTLEPASS_REWARDS_CUSTOMIZATIONS_S296X222_PROJECTIONDECAL_7977340:String = "../maps/icons/battlePass/rewards/customizations/s296x222/projectionDecal_7977340.png";
-      
-      public static const MAPS_ICONS_BATTLEPASS_REWARDS_CUSTOMIZATIONS_S296X222_PROJECTIONDECAL_7977596:String = "../maps/icons/battlePass/rewards/customizations/s296x222/projectionDecal_7977596.png";
       
       public static const MAPS_ICONS_BATTLEPASS_REWARDS_CUSTOMIZATIONS_S296X222_PROJECTIONDECAL_7977852:String = "../maps/icons/battlePass/rewards/customizations/s296x222/projectionDecal_7977852.png";
       
@@ -2837,8 +2833,6 @@ package
       
       public static const MAPS_ICONS_BATTLEPASS_REWARDS_CUSTOMIZATIONS_S400X300_PROJECTIONDECAL_7977340:String = "../maps/icons/battlePass/rewards/customizations/s400x300/projectionDecal_7977340.png";
       
-      public static const MAPS_ICONS_BATTLEPASS_REWARDS_CUSTOMIZATIONS_S400X300_PROJECTIONDECAL_7977596:String = "../maps/icons/battlePass/rewards/customizations/s400x300/projectionDecal_7977596.png";
-      
       public static const MAPS_ICONS_BATTLEPASS_REWARDS_CUSTOMIZATIONS_S400X300_PROJECTIONDECAL_7977852:String = "../maps/icons/battlePass/rewards/customizations/s400x300/projectionDecal_7977852.png";
       
       public static const MAPS_ICONS_BATTLEPASS_REWARDS_CUSTOMIZATIONS_S400X300_STYLE:String = "../maps/icons/battlePass/rewards/customizations/s400x300/style.png";
@@ -3072,8 +3066,6 @@ package
       public static const MAPS_ICONS_BATTLEPASS_REWARDS_CUSTOMIZATIONS_S600X450_PROJECTIONDECAL_7977084:String = "../maps/icons/battlePass/rewards/customizations/s600x450/projectionDecal_7977084.png";
       
       public static const MAPS_ICONS_BATTLEPASS_REWARDS_CUSTOMIZATIONS_S600X450_PROJECTIONDECAL_7977340:String = "../maps/icons/battlePass/rewards/customizations/s600x450/projectionDecal_7977340.png";
-      
-      public static const MAPS_ICONS_BATTLEPASS_REWARDS_CUSTOMIZATIONS_S600X450_PROJECTIONDECAL_7977596:String = "../maps/icons/battlePass/rewards/customizations/s600x450/projectionDecal_7977596.png";
       
       public static const MAPS_ICONS_BATTLEPASS_REWARDS_CUSTOMIZATIONS_S600X450_PROJECTIONDECAL_7977852:String = "../maps/icons/battlePass/rewards/customizations/s600x450/projectionDecal_7977852.png";
       
