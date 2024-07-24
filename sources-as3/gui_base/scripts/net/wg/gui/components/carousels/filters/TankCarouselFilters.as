@@ -135,7 +135,7 @@ package net.wg.gui.components.carousels.filters
             {
                _loc5_ = this.getHorizontalGap();
                _loc6_ = HOT_FILTER_TILE_HEIGHT + _loc5_;
-               _loc7_ = ((height - this.listHotFilter.y + _loc5_) / _loc6_ >> 0) * _loc6_ - _loc5_;
+               _loc7_ = Math.round((height - this.listHotFilter.y + _loc5_) / _loc6_) * _loc6_ - _loc5_;
                _loc8_ = _loc6_ * this._initVO.hotFilters.length - _loc5_;
                this.listHotFilter.height = Math.min(_loc7_,_loc8_);
                _height = this.listHotFilter.y + this.listHotFilter.height;
