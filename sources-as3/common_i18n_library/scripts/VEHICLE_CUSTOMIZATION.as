@@ -3823,6 +3823,10 @@ package
       
       public static const CAMOUFLAGE_BOVINGTON_DESCRIPTION:String = "#vehicle_customization:camouflage/bovington/description";
       
+      public static const CAMOUFLAGE_GB114_VICKERS_MBT_MK3_RW5_3DST_LABEL:String = "#vehicle_customization:camouflage/GB114_Vickers_MBT_Mk3_RW5_3Dst/label";
+      
+      public static const CAMOUFLAGE_GB114_VICKERS_MBT_MK3_RW5_3DST_DESCRIPTION:String = "#vehicle_customization:camouflage/GB114_Vickers_MBT_Mk3_RW5_3Dst/description";
+      
       public static const EMBLEM:String = "#vehicle_customization:emblem";
       
       public static const EMBLEM_CLAN_CONTENT:String = "#vehicle_customization:emblem/clan_content";
@@ -13314,6 +13318,10 @@ package
       public static const SPECIAL_STYLE_ONSLAUGHT_LIGHT:String = "#vehicle_customization:special_style/onslaught_light";
       
       public static const SPECIAL_STYLE_ONSLAUGHT_LIGHT_DESC_LONG:String = "#vehicle_customization:special_style/onslaught_light_desc/long";
+      
+      public static const SPECIAL_STYLE_GB114_VICKERS_MBT_MK3_RW5_3DST:String = "#vehicle_customization:special_style/GB114_Vickers_MBT_Mk3_RW5_3Dst";
+      
+      public static const SPECIAL_STYLE_GB114_VICKERS_MBT_MK3_RW5_3DST_DESC_LONG:String = "#vehicle_customization:special_style/GB114_Vickers_MBT_Mk3_RW5_3Dst_desc/long";
       
       public static const SPECIAL_STYLE_BOVINGTON:String = "#vehicle_customization:special_style/bovington";
       
