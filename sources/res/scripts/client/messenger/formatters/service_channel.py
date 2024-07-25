@@ -823,6 +823,7 @@ class BattleResultsFormatter(WaitItemsSyncFormatter):
             battleResultKeys = self.__FLResultsKeys
         elif guiType == ARENA_GUI_TYPE.TOURNAMENT_COMP7:
             battleResultKeys = self.__COMP7SeasonResultsKeys
+            ctx[b'progressionPointsStr'] = b''
         else:
             battleResultKeys = self._battleResultKeys
         templateName = battleResultKeys[battleResKey]
