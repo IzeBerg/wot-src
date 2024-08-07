@@ -1569,6 +1569,8 @@ package net.wg.data.constants.generated
       
       public static const GERMANY_G173_BT42_DIT:String = "germany-G173_BT42_DIT";
       
+      public static const GERMANY_G179_STRAUSSLER_V4:String = "germany-G179_Straussler_V4";
+      
       public static const GERMANY_G18_JAGD_PANTHER:String = "germany-G18_JagdPanther";
       
       public static const GERMANY_G19_WESPE:String = "germany-G19_Wespe";

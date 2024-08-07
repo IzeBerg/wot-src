@@ -146,7 +146,8 @@ package net.wg.gui.lobby.vehiclePreview.bottomPanel
       
       private function getNewSetBlock() : SetItemsBlock
       {
-         var _loc1_:SetItemsBlock = SetItemsBlock(App.utils.classFactory.getObject(Linkages.SET_ITEMS_BLOCK_UI));
+         var _loc1_:SetItemsBlock = null;
+         _loc1_ = SetItemsBlock(App.utils.classFactory.getObject(Linkages.SET_ITEMS_BLOCK_UI));
          _loc1_.name = "setBlock_" + this._blocks.push(_loc1_);
          addChild(_loc1_);
          return _loc1_;

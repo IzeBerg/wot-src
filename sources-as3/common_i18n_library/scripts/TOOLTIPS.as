@@ -7477,6 +7477,30 @@ package
       
       public static const NOTRECRUITEDTANKMAN_COSM02_SCOTTY_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/cosm02_Scotty/howToGetInfo";
       
+      public static const NOTRECRUITEDTANKMAN_BIRTHDAY14_DEER_LABEL:String = "#tooltips:notrecruitedtankman/birthday14_deer/label";
+      
+      public static const NOTRECRUITEDTANKMAN_BIRTHDAY14_DEER_DESC:String = "#tooltips:notrecruitedtankman/birthday14_deer/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_BIRTHDAY14_DEER_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/birthday14_deer/howToGetInfo";
+      
+      public static const NOTRECRUITEDTANKMAN_BIRTHDAY14_CAT_LABEL:String = "#tooltips:notrecruitedtankman/birthday14_cat/label";
+      
+      public static const NOTRECRUITEDTANKMAN_BIRTHDAY14_CAT_DESC:String = "#tooltips:notrecruitedtankman/birthday14_cat/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_BIRTHDAY14_CAT_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/birthday14_cat/howToGetInfo";
+      
+      public static const NOTRECRUITEDTANKMAN_BIRTHDAY14_MOUSE_LABEL:String = "#tooltips:notrecruitedtankman/birthday14_mouse/label";
+      
+      public static const NOTRECRUITEDTANKMAN_BIRTHDAY14_MOUSE_DESC:String = "#tooltips:notrecruitedtankman/birthday14_mouse/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_BIRTHDAY14_MOUSE_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/birthday14_mouse/howToGetInfo";
+      
+      public static const NOTRECRUITEDTANKMAN_MARTY_VOLE_LABEL:String = "#tooltips:notrecruitedtankman/Marty_Vole/label";
+      
+      public static const NOTRECRUITEDTANKMAN_MARTY_VOLE_DESC:String = "#tooltips:notrecruitedtankman/Marty_Vole/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_MARTY_VOLE_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/Marty_Vole/howToGetInfo";
+      
       public static const COMMANDERBONUS_NAME:String = "#tooltips:commanderBonus/name";
       
       public static const COMMANDERBONUS_DESCRIPTION:String = "#tooltips:commanderBonus/description";
