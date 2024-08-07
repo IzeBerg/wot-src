@@ -1098,6 +1098,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.hangar.CrewDropDownEvent;
    import net.wg.gui.lobby.hangar.CrewPanelInject;
    import net.wg.gui.lobby.hangar.DailyQuestWidget;
+   import net.wg.gui.lobby.hangar.EventEntrancePointWidget;
    import net.wg.gui.lobby.hangar.EventTournamentBannerInject;
    import net.wg.gui.lobby.hangar.Hangar;
    import net.wg.gui.lobby.hangar.HangarAmunitionSwitchAnimator;
@@ -2802,6 +2803,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.messenger.windows.LobbyChannelWindow;
    import net.wg.gui.messenger.windows.PMWarningPanel;
    import net.wg.gui.notification.AdvancedAchievementEarningView;
+   import net.wg.gui.notification.AnniversaryMissionsMessageContent;
    import net.wg.gui.notification.AuctionMessageContent;
    import net.wg.gui.notification.BondEquipmentChoosingMessageContent;
    import net.wg.gui.notification.GoToNewsWidget;
@@ -5164,6 +5166,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_HANGAR_CREWPANELINJECT:Class = CrewPanelInject;
       
       public static const NET_WG_GUI_LOBBY_HANGAR_DAILYQUESTWIDGET:Class = DailyQuestWidget;
+      
+      public static const NET_WG_GUI_LOBBY_HANGAR_EVENTENTRANCEPOINTWIDGET:Class = EventEntrancePointWidget;
       
       public static const NET_WG_GUI_LOBBY_HANGAR_EVENTTOURNAMENTBANNERINJECT:Class = EventTournamentBannerInject;
       
@@ -8572,6 +8576,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_MESSENGER_WINDOWS_PMWARNINGPANEL:Class = PMWarningPanel;
       
       public static const NET_WG_GUI_NOTIFICATION_ADVANCEDACHIEVEMENTEARNINGVIEW:Class = AdvancedAchievementEarningView;
+      
+      public static const NET_WG_GUI_NOTIFICATION_ANNIVERSARYMISSIONSMESSAGECONTENT:Class = AnniversaryMissionsMessageContent;
       
       public static const NET_WG_GUI_NOTIFICATION_AUCTIONMESSAGECONTENT:Class = AuctionMessageContent;
       

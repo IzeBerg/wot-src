@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>120.000000</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+		<track>
+			<name>animation</name>
+			<type>animation</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>100.000000</duration>
+				<resourceID>content/Hangars/CharacterAnimations/animation/FotoZone_Shot/FZ_SmallBoy_Idle01.fbx</resourceID>
+				<clipName/>
+				<speed>1.000000</speed>
+				<layer>0</layer>
+				<blendIn>constant</blendIn>
+				<blendOut>constant</blendOut>
+				<blendInTime>0.000000</blendInTime>
+				<blendOutTime>0.000000</blendOutTime>
+			</frame>
+			<frame>
+				<startTime>100.000000</startTime>
+				<duration>20.000000</duration>
+				<resourceID>content/Hangars/CharacterAnimations/animation/FotoZone_Shot/FZ_SmallBoy_Action01.fbx</resourceID>
+				<clipName/>
+				<speed>1.000000</speed>
+				<layer>0</layer>
+				<blendIn>constant</blendIn>
+				<blendOut>constant</blendOut>
+				<blendInTime>0.000000</blendInTime>
+				<blendOutTime>0.000000</blendOutTime>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Model Object 0</name>
+		<type>model</type>
+		<resource>content/Hangars/CharacterAnimations/Civil_Objects/normal/lod0/boy_cap01.model</resource>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>120.000000</duration>
+				<value>Root|Head</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

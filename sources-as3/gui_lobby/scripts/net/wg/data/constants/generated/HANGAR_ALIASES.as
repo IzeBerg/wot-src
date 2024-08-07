@@ -75,6 +75,8 @@ package net.wg.data.constants.generated
       
       public static const PRESTIGE_PROGRESS_WIDGET:String = "prestigeProgressWidget";
       
+      public static const EVENT_ENTRANCE_POINT:String = "eventEntrancePoint";
+      
       public static const DAILY_QUEST_WIDGET:String = "dqWidget";
       
       public static const BATTLE_PASSS_ENTRY_POINT:String = "battlePassEntryPoint";

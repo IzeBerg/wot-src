@@ -3500,5 +3500,34 @@ _(#lootboxes:notification/lootBoxesAutoOpen/boxes)&lt;br/&gt;%(rewards)s</messag
 				</button>
 			</buttonsLayout>
 		</FairplayViolationSysMessage>
+		<WotAnniversaryReminderMessage>
+			<priority>medium</priority>
+			<type>lightGrey</type>
+			<linkage>AnniversaryMissionsMessage</linkage>
+			<message>&lt;P ALIGN=&quot;center&quot;&gt;&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#F2F2F7&quot;&gt;_(#messenger:serviceChannelMessages/wotAnniversary/title)&lt;/font&gt;&lt;br/&gt;&lt;font color=&quot;#FEFEEC&quot;&gt;_(#messenger:serviceChannelMessages/wotAnniversary/text)&lt;/font&gt;&lt;/P&gt;</message>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#messenger:serviceChannelMessages/wotAnniversary/button)</label>
+					<action>openEvent</action>
+				</button>
+			</buttonsLayout>
+		</WotAnniversaryReminderMessage>
+		<WotAnniversaryQuestMessage>
+			<priority>medium</priority>
+			<type>grey</type>
+			<icon>InformationIcon</icon>
+			<bgIcon>bg_anniversary_token_quest</bgIcon>
+			<bgIconSizeAuto>true</bgIconSizeAuto>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&apos;&gt;_(#messenger:serviceChannelMessages/wotAnniversary/quest/title)&lt;/font&gt;&lt;br/&gt;%(text)s</message>
+		</WotAnniversaryQuestMessage>
+		<WotAnniversaryStartedMessageSysMessage>
+			<type>grey</type>
+			<icon>InformationIcon</icon>
+			<priority>high</priority>
+			<bgIcon>bg_anniversary_token_quest</bgIcon>
+			<bgIconSizeAuto>true</bgIconSizeAuto>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+		</WotAnniversaryStartedMessageSysMessage>
 	</htmlTemplates>
 </root>

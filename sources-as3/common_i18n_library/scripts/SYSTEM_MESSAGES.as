@@ -2754,6 +2754,22 @@ package
       public static const UNIT_ERROR_WGSHEVENT_ACCOUNTVEHICLEDOESNOTEXIST:String = "#system_messages:unit/error/wgshEvent/AccountVehicleDoesNotExist";
       
       public static const UNIT_ERROR_WGSHEVENT_COMMON:String = "#system_messages:unit/error/wgshEvent/common";
+      
+      public static const WOTANNIVERSARY_SWITCH_STARTED_TITLE:String = "#system_messages:wotAnniversary/switch_started/title";
+      
+      public static const WOTANNIVERSARY_SWITCH_STARTED_BODY:String = "#system_messages:wotAnniversary/switch_started/body";
+      
+      public static const WOTANNIVERSARY_SWITCH_PAUSE_BODY:String = "#system_messages:wotAnniversary/switch_pause/body";
+      
+      public static const WOTANNIVERSARY_SWITCH_ENABLED_BODY:String = "#system_messages:wotAnniversary/switch_enabled/body";
+      
+      public static const WOTANNIVERSARY_SWITCH_DISABLE_BODY:String = "#system_messages:wotAnniversary/switch_disable/body";
+      
+      public static const WOTANNIVERSARY_EVENTWILLENDSOON_HEADER:String = "#system_messages:wotAnniversary/eventWillEndSoon/header";
+      
+      public static const WOTANNIVERSARY_EVENTWILLENDSOON_BODY:String = "#system_messages:wotAnniversary/eventWillEndSoon/body";
+      
+      public static const WOTANNIVERSARY_EVENTFINISHED_BODY:String = "#system_messages:wotAnniversary/eventFinished/body";
        
       
       public function SYSTEM_MESSAGES()
