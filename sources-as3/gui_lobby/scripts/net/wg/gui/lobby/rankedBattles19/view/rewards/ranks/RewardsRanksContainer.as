@@ -22,7 +22,7 @@ package net.wg.gui.lobby.rankedBattles19.view.rewards.ranks
       
       private var _rewardsData:Vector.<RewardsRankRendererVO>;
       
-      private var _rendererWidth:int;
+      private var _rendererWidth:int = 72;
       
       private var _rendererHeight:int = 0;
       
@@ -34,7 +34,6 @@ package net.wg.gui.lobby.rankedBattles19.view.rewards.ranks
       
       public function RewardsRanksContainer()
       {
-         this._rendererWidth = RewardsRankRenderer.RENDERER_WIDTH_NARROW;
          super();
       }
       

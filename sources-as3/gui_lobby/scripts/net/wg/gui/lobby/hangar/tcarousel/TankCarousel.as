@@ -431,6 +431,11 @@ package net.wg.gui.lobby.hangar.tcarousel
          return this._rowCount > 1 && (this._stageHeight < THRESHOLD || this._smallDoubleCarouselEnable);
       }
       
+      public function get isCompact() : Boolean
+      {
+         return this._helper is SmallTankCarouselHelper || this._rowCount < 2;
+      }
+      
       public function get helper() : ITankCarouselHelper
       {
          return this._helper;

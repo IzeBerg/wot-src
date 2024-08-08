@@ -29,6 +29,8 @@ package
       
       public static const MISSIONS_TAB_LIVE_OPS_WEB_EVENTS:String = "#quests:missions/tab/live_ops_web_events";
       
+      public static const MISSIONS_TAB_WOT_ANNIVERSARY:String = "#quests:missions/tab/wot_anniversary";
+      
       public static const MISSIONS_FILTERCOUNTER_CLOSEBUTTON:String = "#quests:missions/filterCounter/closeButton";
       
       public static const MISSIONS_FILTER_FILTERBUTTON:String = "#quests:missions/filter/filterButton";
@@ -2131,6 +2133,10 @@ package
       
       public static const MISSIONS_TAB_BATTLEMATTERS_BODY:String = "#quests:missions/tab/battleMatters/body";
       
+      public static const MISSIONS_TAB_WOT_ANNIVERSARY_HEADER:String = "#quests:missions/tab/wot_anniversary/header";
+      
+      public static const MISSIONS_TAB_WOT_ANNIVERSARY_BODY:String = "#quests:missions/tab/wot_anniversary/body";
+      
       public static const MISSIONS_TAB_LABEL_CURRENTVEHICLE:String = "#quests:missions/tab/label/currentVehicle";
       
       public static const MISSIONS_TAB_CURRENTVEHICLE_HEADER:String = "#quests:missions/tab/currentVehicle/header";
@@ -2406,6 +2412,8 @@ package
       public static const BONUSNAME_CRYSTAL:String = "#quests:bonusName/crystal";
       
       public static const BONUSNAME_EVENTCOIN:String = "#quests:bonusName/eventCoin";
+      
+      public static const BONUSNAME_EVENTCOIN_PREVIEW:String = "#quests:bonusName/eventCoin/preview";
       
       public static const BONUSNAME_BPCOIN:String = "#quests:bonusName/bpcoin";
       

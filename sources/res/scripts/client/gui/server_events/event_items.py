@@ -22,6 +22,7 @@ from gui.shared.gui_items.Vehicle import VEHICLE_TYPES_ORDER
 from gui.shared.system_factory import registerQuestBuilders
 from gui.shared.utils import ValidationResult
 from gui.shared.utils.requesters.QuestsProgressRequester import PersonalMissionsProgressRequester
+from gui.wot_anniversary.wot_anniversary_constants import WOT_ANNIVERSARY_LOGIN_QUESTS_PREFIX, WOT_ANNIVERSARY_ALL_MASCOT_REWARD_QUEST
 from helpers import dependency, getLocalizedData, i18n, time_utils
 from personal_missions import PM_BRANCH, PM_BRANCH_TO_FINAL_PAWN_COST, PM_FLAG, PM_STATE as _PMS
 from personal_missions_config import getQuestConfig
@@ -532,6 +533,10 @@ class TokenQuest(Quest):
 
     def _checkConditions(self):
         return self.accountReqs.isAvailable()
+
+
+class WotAnniversaryTokenQuest(Quest):
+    pass
 
 
 class BattleMattersQuest(Quest):
@@ -1519,6 +1524,17 @@ class BattleMattersQuestBuilder(IQuestBuilder):
         return BattleMattersQuest(qID, data, progress)
 
 
+class WotAnniversaryTokenQuestBuilder(IQuestBuilder):
+
+    @classmethod
+    def isSuitableQuest(cls, questType, qID):
+        return qID.startswith(WOT_ANNIVERSARY_LOGIN_QUESTS_PREFIX) or qID.startswith(WOT_ANNIVERSARY_ALL_MASCOT_REWARD_QUEST)
+
+    @classmethod
+    def buildQuest(cls, questType, qID, data, progress=None, expiryTime=None):
+        return WotAnniversaryTokenQuest(qID, data, progress)
+
+
 class PremiumQuestBuilder(IQuestBuilder):
 
     @classmethod
@@ -1554,8 +1570,8 @@ class MapsTrainingQuestBuilder(IQuestBuilder):
 
 registerQuestBuilders((
  PersonalQuestBuilder, GroupQuestBuilder, MotiveQuestBuilder, RankedQuestBuilder, BattleMattersTokenQuestBuilder,
- DailyTokenQuestBuilder, TokenQuestBuilder, BattleMattersQuestBuilder, PremiumQuestBuilder, DailyQuestBuilder,
- MapsTrainingQuestBuilder))
+ DailyTokenQuestBuilder, WotAnniversaryTokenQuestBuilder, TokenQuestBuilder, BattleMattersQuestBuilder,
+ PremiumQuestBuilder, DailyQuestBuilder, MapsTrainingQuestBuilder))
 
 def createQuest(builders, questType, qID, data, progress=None, expiryTime=None):
     for builder in builders:

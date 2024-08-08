@@ -37,7 +37,7 @@ from gui.shared.event_dispatcher import showHangar
 from gui.shared.events import MissionsEvent
 from gui.shared.formatters import text_styles
 from gui.shared.gui_items import GUI_ITEM_TYPE
-from gui.sounds.ambients import BattlePassSoundEnv, LobbySubViewEnv, MarathonPageSoundEnv, MissionsCategoriesSoundEnv, MissionsEventsSoundEnv, MissionsPremiumSoundEnv, BattleMattersSoundEnv
+from gui.sounds.ambients import BattlePassSoundEnv, LobbySubViewEnv, MarathonPageSoundEnv, MissionsCategoriesSoundEnv, MissionsEventsSoundEnv, MissionsPremiumSoundEnv, BattleMattersSoundEnv, WotAnniversaryEventsSoundEnv
 from helpers import dependency
 from helpers.i18n import makeString as _ms
 from items import getTypeOfCompactDescr
@@ -47,11 +47,13 @@ from skeletons.gui.app_loader import IAppLoader, GuiGlobalSpaceID
 from skeletons.gui.battle_matters import IBattleMattersController
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.server_events import IEventsCache
+from skeletons.gui.wot_anniversary import IWotAnniversaryController
 if typing.TYPE_CHECKING:
     from typing import List, Union
     from gui.server_events.event_items import DailyEpicTokenQuest, DailyQuest, PremiumQuest
 TabData = namedtuple('TabData', ('alias', 'linkage', 'tooltip', 'tooltipDisabled', 'label', 'prefix'))
 TABS_DATA_ORDERED = [
+ TabData(QUESTS_ALIASES.WOT_ANNIVERSARY_VIEW_PY_ALIAS, QUESTS_ALIASES.WOT_ANNIVERSARY_VIEW_LINKAGE, QUESTS.MISSIONS_TAB_WOT_ANNIVERSARY, QUESTS.MISSIONS_TAB_WOT_ANNIVERSARY, backport.text(R.strings.wot_anniversary.main.tab()), None),
  TabData(QUESTS_ALIASES.MISSIONS_EVENT_BOARDS_VIEW_PY_ALIAS, QUESTS_ALIASES.MISSIONS_EVENT_BOARDS_VIEW_LINKAGE, QUESTS.MISSIONS_TAB_EVENTBOARDS, QUESTS.MISSIONS_TAB_EVENTBOARDS_DISABLED, _ms(QUESTS.MISSIONS_TAB_LABEL_EVENTBOARDS), None),
  TabData(QUESTS_ALIASES.MISSIONS_GROUPED_VIEW_PY_ALIAS, QUESTS_ALIASES.MISSIONS_GROUPED_VIEW_LINKAGE, QUESTS.MISSIONS_TAB_MARATHONS, QUESTS.MISSIONS_TAB_MARATHONS, _ms(QUESTS.MISSIONS_TAB_LABEL_MARATHON), None),
  TabData(QUESTS_ALIASES.LIVE_OPS_WEB_EVENTS_VIEW_PY_ALIAS, QUESTS_ALIASES.LIVE_OPS_WEB_EVENTS_VIEW_LINKAGE, QUESTS.MISSIONS_TAB_LIVE_OPS_WEB_EVENTS, QUESTS.MISSIONS_TAB_LIVE_OPS_WEB_EVENTS, _ms(QUESTS.MISSIONS_TAB_LABEL_MARATHON), None),
@@ -64,7 +66,8 @@ MARATHONS_START_TAB_INDEX = 1
 NON_FLASH_TABS = (
  QUESTS_ALIASES.MISSIONS_MARATHON_VIEW_PY_ALIAS, QUESTS_ALIASES.LIVE_OPS_WEB_EVENTS_VIEW_PY_ALIAS,
  QUESTS_ALIASES.MISSIONS_PREMIUM_VIEW_PY_ALIAS, QUESTS_ALIASES.BATTLE_PASS_MISSIONS_VIEW_PY_ALIAS,
- QUESTS_ALIASES.MAPBOX_VIEW_PY_ALIAS, QUESTS_ALIASES.BATTLE_MATTERS_VIEW_PY_ALIAS)
+ QUESTS_ALIASES.MAPBOX_VIEW_PY_ALIAS, QUESTS_ALIASES.BATTLE_MATTERS_VIEW_PY_ALIAS,
+ QUESTS_ALIASES.WOT_ANNIVERSARY_VIEW_PY_ALIAS)
 TABS_WITHOUT_COMMON_MUSIC = (
  QUESTS_ALIASES.MISSIONS_MARATHON_VIEW_PY_ALIAS,)
 for marathonIndex, marathon in enumerate(getMarathons(), MARATHONS_START_TAB_INDEX):
@@ -96,6 +99,7 @@ class MissionsPage(LobbySubView, MissionsPageMeta):
     __battleMattersController = dependency.descriptor(IBattleMattersController)
     __limitedUIController = dependency.descriptor(ILimitedUIController)
     __winbackController = dependency.descriptor(IWinbackController)
+    __wotAnniversaryCtrl = dependency.descriptor(IWotAnniversaryController)
 
     def __init__(self, ctx):
         super(MissionsPage, self).__init__(ctx)
@@ -188,6 +192,8 @@ class MissionsPage(LobbySubView, MissionsPageMeta):
             return MissionsEventsSoundEnv
         if self.__currentTabAlias == QUESTS_ALIASES.BATTLE_MATTERS_VIEW_PY_ALIAS:
             return BattleMattersSoundEnv
+        if self.__currentTabAlias == QUESTS_ALIASES.WOT_ANNIVERSARY_VIEW_PY_ALIAS:
+            return WotAnniversaryEventsSoundEnv
         return self.__sound_env__
 
     def _populate(self):
@@ -209,6 +215,8 @@ class MissionsPage(LobbySubView, MissionsPageMeta):
         self.battlePass.onBattlePassSettingsChange += self.__updateBattlePassTab
         self.__liveOpsWebEventsController.onSettingsChanged += self.__updateLiveOpsWebEventsTab
         self.__liveOpsWebEventsController.onEventStateChanged += self.__updateLiveOpsWebEventsTab
+        self.__wotAnniversaryCtrl.onSettingsChanged += self.__updateWotAnniversaryTab
+        self.__wotAnniversaryCtrl.onEventActivePhaseEnded += self.__updateWotAnniversaryTab
         self.marathonsCtrl.onVehicleReceived += self.__onMarathonVehicleReceived
         Windowing.addWindowAccessibilitynHandler(self.__onWindowAccessibilityChanged)
         if self.marathonsCtrl.isAnyActive():
@@ -238,6 +246,8 @@ class MissionsPage(LobbySubView, MissionsPageMeta):
                 self.soundManager.playSound(exitEvent)
         Windowing.removeWindowAccessibilityHandler(self.__onWindowAccessibilityChanged)
         self.marathonsCtrl.onVehicleReceived -= self.__onMarathonVehicleReceived
+        self.__wotAnniversaryCtrl.onEventActivePhaseEnded -= self.__updateWotAnniversaryTab
+        self.__wotAnniversaryCtrl.onSettingsChanged -= self.__updateWotAnniversaryTab
         self.__liveOpsWebEventsController.onEventStateChanged -= self.__updateLiveOpsWebEventsTab
         self.__liveOpsWebEventsController.onSettingsChanged -= self.__updateLiveOpsWebEventsTab
         g_currentVehicle.onChanged -= self.__updateHeader
@@ -277,7 +287,7 @@ class MissionsPage(LobbySubView, MissionsPageMeta):
             self.__currentTabAlias = requestedTab
         else:
             self.__currentTabAlias = caches.getNavInfo().getMissionsTab()
-            if self.__currentTabAlias == QUESTS_ALIASES.MISSIONS_EVENT_BOARDS_VIEW_PY_ALIAS and not self.__elenHasDisplayableEvents():
+            if self.__currentTabAlias == QUESTS_ALIASES.MISSIONS_EVENT_BOARDS_VIEW_PY_ALIAS and not self.__elenHasDisplayableEvents() or self.__currentTabAlias == QUESTS_ALIASES.WOT_ANNIVERSARY_VIEW_PY_ALIAS and not self.__wotAnniversaryCtrl.isAvailableAndActivePhase():
                 self.__currentTabAlias = None
             if not self.__currentTabAlias:
                 self.__currentTabAlias = QUESTS_ALIASES.MISSIONS_CATEGORIES_VIEW_PY_ALIAS
@@ -390,6 +400,12 @@ class MissionsPage(LobbySubView, MissionsPageMeta):
         else:
             self.__updateHeader()
 
+    def __updateWotAnniversaryTab(self, *_):
+        if not self.__wotAnniversaryCtrl.isAvailableAndActivePhase():
+            self.__eventStatusUpdated(self.__currentTabAlias == QUESTS_ALIASES.WOT_ANNIVERSARY_VIEW_PY_ALIAS)
+        elif self.__currentTabAlias == QUESTS_ALIASES.MISSIONS_GROUPED_VIEW_PY_ALIAS:
+            self.__eventStatusUpdated()
+
     def __changeSoundSpace(self):
         newSoundSpace = HOLIDAY_TASKS_SOUND_SPACE if self.battlePass.isHoliday() and self.battlePass.isActive() else TASKS_SOUND_SPACE
         if self.__soundSpace != newSoundSpace:
@@ -425,7 +441,7 @@ class MissionsPage(LobbySubView, MissionsPageMeta):
             marathonEvent = self.marathonsCtrl.getMarathon(tabData.prefix)
             tab['prefix'] = tabData.prefix
             headerTab['prefix'] = tabData.prefix
-        if (alias == QUESTS_ALIASES.MISSIONS_EVENT_BOARDS_VIEW_PY_ALIAS and not self.__elenHasDisplayableEvents() or alias == QUESTS_ALIASES.MISSIONS_MARATHON_VIEW_PY_ALIAS and not (marathonEvent and marathonEvent.isEnabled()) or alias == QUESTS_ALIASES.MISSIONS_GROUPED_VIEW_PY_ALIAS and (self.marathonsCtrl.doesShowAnyMissionsTab() or self.__liveOpsWebEventsController.canShowEventsTab() or self.__mapboxCtrl.isEnabled() and self.__mapboxCtrl.getCurrentCycleID() is not None) or alias == QUESTS_ALIASES.BATTLE_PASS_MISSIONS_VIEW_PY_ALIAS and self.battlePass.isDisabled() or alias == QUESTS_ALIASES.MAPBOX_VIEW_PY_ALIAS and (not self.__mapboxCtrl.isEnabled() or self.__mapboxCtrl.getCurrentCycleID() is None) or alias == QUESTS_ALIASES.BATTLE_MATTERS_VIEW_PY_ALIAS and not self.__battleMattersTabIsEnabled() or alias == QUESTS_ALIASES.LIVE_OPS_WEB_EVENTS_VIEW_PY_ALIAS and (not self.__liveOpsWebEventsController.canShowEventsTab() or self.marathonsCtrl.doesShowAnyMissionsTab())) and alias == self.__currentTabAlias and marathonEvent and marathonEvent.prefix == self.__marathonPrefix:
+        if (alias == QUESTS_ALIASES.MISSIONS_EVENT_BOARDS_VIEW_PY_ALIAS and not self.__elenHasDisplayableEvents() or alias == QUESTS_ALIASES.MISSIONS_MARATHON_VIEW_PY_ALIAS and not (marathonEvent and marathonEvent.isEnabled()) or alias == QUESTS_ALIASES.MISSIONS_GROUPED_VIEW_PY_ALIAS and (self.marathonsCtrl.doesShowAnyMissionsTab() or self.__liveOpsWebEventsController.canShowEventsTab() or self.__mapboxCtrl.isEnabled() and self.__mapboxCtrl.getCurrentCycleID() is not None or self.__wotAnniversaryCtrl.isAvailableAndActivePhase()) or alias == QUESTS_ALIASES.BATTLE_PASS_MISSIONS_VIEW_PY_ALIAS and self.battlePass.isDisabled() or alias == QUESTS_ALIASES.MAPBOX_VIEW_PY_ALIAS and (not self.__mapboxCtrl.isEnabled() or self.__mapboxCtrl.getCurrentCycleID() is None) or alias == QUESTS_ALIASES.BATTLE_MATTERS_VIEW_PY_ALIAS and not self.__battleMattersTabIsEnabled() or alias == QUESTS_ALIASES.LIVE_OPS_WEB_EVENTS_VIEW_PY_ALIAS and (not self.__liveOpsWebEventsController.canShowEventsTab() or self.marathonsCtrl.doesShowAnyMissionsTab()) or alias == QUESTS_ALIASES.WOT_ANNIVERSARY_VIEW_PY_ALIAS and not self.__wotAnniversaryCtrl.isAvailableAndActivePhase()) and alias == self.__currentTabAlias and marathonEvent and marathonEvent.prefix == self.__marathonPrefix:
             self.__currentTabAlias = QUESTS_ALIASES.MISSIONS_CATEGORIES_VIEW_PY_ALIAS
         else:
             if self.__currentTabAlias == QUESTS_ALIASES.BATTLE_PASS_MISSIONS_VIEW_PY_ALIAS and self.battlePass.isDisabled():
@@ -525,7 +541,8 @@ class MissionsPage(LobbySubView, MissionsPageMeta):
          QUESTS_ALIASES.MISSIONS_PREMIUM_VIEW_PY_ALIAS,
          QUESTS_ALIASES.MAPBOX_VIEW_PY_ALIAS,
          QUESTS_ALIASES.BATTLE_MATTERS_VIEW_PY_ALIAS,
-         QUESTS_ALIASES.LIVE_OPS_WEB_EVENTS_VIEW_PY_ALIAS), self.__currentTabAlias not in NON_FLASH_TABS)
+         QUESTS_ALIASES.LIVE_OPS_WEB_EVENTS_VIEW_PY_ALIAS,
+         QUESTS_ALIASES.WOT_ANNIVERSARY_VIEW_PY_ALIAS), self.__currentTabAlias not in NON_FLASH_TABS)
 
 
 class MissionViewBase(MissionsListViewBaseMeta):
