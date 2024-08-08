@@ -159,6 +159,7 @@ class _VehicleInventoryUpdater(object):
         self.__isActive = False
         self.__inventoryVehicles = None
         self.__criteria = REQ_CRITERIA.INVENTORY
+        self.__criteria |= ~REQ_CRITERIA.VEHICLE.RENT
         self.__criteria |= ~REQ_CRITERIA.SECRET
         self.__criteria |= ~REQ_CRITERIA.VEHICLE.HAS_ANY_TAG(BATTLE_MODE_VEHICLE_TAGS)
         self.onValueUpdated = Event.Event()
@@ -294,14 +295,6 @@ class _MinVehicleLevel(_VehicleInventoryCondition):
     def _makeCriteria(self, level):
         criteria = super(_MinVehicleLevel, self)._makeCriteria(level)
         criteria |= REQ_CRITERIA.INVENTORY
-        return criteria
-
-
-class _MinVehicleLevelInventoryPolicy(_VehicleInventoryCondition):
-    __slots__ = ()
-
-    def _makeCriteria(self, level):
-        criteria = REQ_CRITERIA.VEHICLE.LEVELS(range(level, MAX_VEHICLE_LEVEL + 1))
         return criteria
 
 
@@ -447,7 +440,7 @@ class _AdvancedAchievementsCount(LimitedUICondition):
           self.__advAchmntCtrl.onNewAchievementsEarned, self._update),)
 
 
-_VEHICLE_LEVEL_TOKENS = tuple(tokenInfo for tokenInfo in chain.from_iterable((LimitedUITokenInfo(('minVehicleLevel_{}').format(vehLevel), _MinVehicleLevel, (vehLevel,)), LimitedUITokenInfo(('minVehicleLevelInventoryPolicy_{}').format(vehLevel), _MinVehicleLevelInventoryPolicy, (vehLevel,)), LimitedUITokenInfo(('minNonPremiumVehicleLevel_{}').format(vehLevel), _MinNonPremiumVehicleLevel, (vehLevel,)), LimitedUITokenInfo(('minUnlockedVehicleLevel_{}').format(vehLevel), _MinUnlockedVehicleLevel, (vehLevel,))) for vehLevel in range(MIN_VEHICLE_LEVEL, MAX_VEHICLE_LEVEL + 1)))
+_VEHICLE_LEVEL_TOKENS = tuple(tokenInfo for tokenInfo in chain.from_iterable((LimitedUITokenInfo(('minVehicleLevel_{}').format(vehLevel), _MinVehicleLevel, (vehLevel,)), LimitedUITokenInfo(('minNonPremiumVehicleLevel_{}').format(vehLevel), _MinNonPremiumVehicleLevel, (vehLevel,)), LimitedUITokenInfo(('minUnlockedVehicleLevel_{}').format(vehLevel), _MinUnlockedVehicleLevel, (vehLevel,))) for vehLevel in range(MIN_VEHICLE_LEVEL, MAX_VEHICLE_LEVEL + 1)))
 _REGISTER_TOKENS = (
  LimitedUITokenInfo('permanentTrue', _PermanentTrue, None),
  LimitedUITokenInfo('permanentFalse', _PermanentFalse, None),

@@ -86,6 +86,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.data.constants.generated.MISSIONS_CONSTANTS;
    import net.wg.data.constants.generated.NODE_STATE_FLAGS;
    import net.wg.data.constants.generated.NOTIFICATIONS_CONSTANTS;
+   import net.wg.data.constants.generated.PERSONAL_EXCHANGE_RATES;
    import net.wg.data.constants.generated.PERSONAL_MISSIONS_ALIASES;
    import net.wg.data.constants.generated.PERSONAL_MISSIONS_BUTTONS;
    import net.wg.data.constants.generated.POSTPROGRESSION_CONSTS;
@@ -844,9 +845,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.components.ServerSlotButton;
    import net.wg.gui.lobby.components.SideBar;
    import net.wg.gui.lobby.components.SideBarRenderer;
-   import net.wg.gui.lobby.components.SmallSkillGroupIcons;
-   import net.wg.gui.lobby.components.SmallSkillItemRenderer;
-   import net.wg.gui.lobby.components.SmallSkillsList;
    import net.wg.gui.lobby.components.StatisticsBodyContainer;
    import net.wg.gui.lobby.components.StatisticsDashLineTextItemIRenderer;
    import net.wg.gui.lobby.components.StoppableAnimationLoader;
@@ -859,7 +857,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.components.data.AwardItemRendererExVO;
    import net.wg.gui.lobby.components.data.BaseMissionDetailedViewVO;
    import net.wg.gui.lobby.components.data.BaseMissionDetailsContainerVO;
-   import net.wg.gui.lobby.components.data.BaseTankmanVO;
    import net.wg.gui.lobby.components.data.BoosterSlotVO;
    import net.wg.gui.lobby.components.data.BrowserVO;
    import net.wg.gui.lobby.components.data.ButtonFiltersItemVO;
@@ -871,7 +868,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.components.data.PrimeTimeServerVO;
    import net.wg.gui.lobby.components.data.PrimeTimeVO;
    import net.wg.gui.lobby.components.data.RibbonAwardsVO;
-   import net.wg.gui.lobby.components.data.SkillsVO;
    import net.wg.gui.lobby.components.data.StatisticsBodyVO;
    import net.wg.gui.lobby.components.data.StatisticsLabelDataVO;
    import net.wg.gui.lobby.components.data.StatisticsLabelLinkageDataVO;
@@ -1105,7 +1101,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.hangar.HangarHeader;
    import net.wg.gui.lobby.hangar.PrestigeProgressInject;
    import net.wg.gui.lobby.hangar.ResearchPanel;
-   import net.wg.gui.lobby.hangar.StrengthsWeaknessesPanelInject;
    import net.wg.gui.lobby.hangar.SwitchModePanel;
    import net.wg.gui.lobby.hangar.VehPostProgressionBtn;
    import net.wg.gui.lobby.hangar.VehicleParameters;
@@ -2249,14 +2244,17 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.testView.generated.views.TestViewBase;
    import net.wg.gui.lobby.tradeIn.TradeOffWidget;
    import net.wg.gui.lobby.tradeIn.vo.TradeOffWidgetVO;
-   import net.wg.gui.lobby.training.AlertMessage;
+   import net.wg.gui.lobby.training.AdditionalInfo;
+   import net.wg.gui.lobby.training.AdditionalInfoContent;
    import net.wg.gui.lobby.training.ArenaVoipSettings;
+   import net.wg.gui.lobby.training.Comp7Conditions;
    import net.wg.gui.lobby.training.DragPlayerElement;
    import net.wg.gui.lobby.training.DragPlayerElementBase;
    import net.wg.gui.lobby.training.DragPlayerElementEpic;
    import net.wg.gui.lobby.training.DropList;
    import net.wg.gui.lobby.training.DropTileList;
    import net.wg.gui.lobby.training.EpicBattleTrainingRoom;
+   import net.wg.gui.lobby.training.MapsListItemRenderer;
    import net.wg.gui.lobby.training.ObserverButtonComponent;
    import net.wg.gui.lobby.training.TooltipViewer;
    import net.wg.gui.lobby.training.TrainingConstants;
@@ -2294,12 +2292,10 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.vehicleCompare.VehicleModulesView;
    import net.wg.gui.lobby.vehicleCompare.configurator.CamouflageCheckBoxButton;
    import net.wg.gui.lobby.vehicleCompare.configurator.ClosableEquipmentSlot;
-   import net.wg.gui.lobby.vehicleCompare.configurator.ConfSkillsLayout;
    import net.wg.gui.lobby.vehicleCompare.configurator.EquipmentWidget;
    import net.wg.gui.lobby.vehicleCompare.configurator.ModificationsWidget;
+   import net.wg.gui.lobby.vehicleCompare.configurator.SkillsWidget;
    import net.wg.gui.lobby.vehicleCompare.configurator.VehConfBottomPanel;
-   import net.wg.gui.lobby.vehicleCompare.configurator.VehConfCrew;
-   import net.wg.gui.lobby.vehicleCompare.configurator.VehConfCrewSkillSlot;
    import net.wg.gui.lobby.vehicleCompare.configurator.VehConfModuleSlot;
    import net.wg.gui.lobby.vehicleCompare.configurator.VehConfModules;
    import net.wg.gui.lobby.vehicleCompare.configurator.VehConfModulesButton;
@@ -2331,7 +2327,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.vehicleCompare.data.VehCompareParamsDeltaVO;
    import net.wg.gui.lobby.vehicleCompare.data.VehCompareStaticDataVO;
    import net.wg.gui.lobby.vehicleCompare.data.VehCompareVehicleVO;
-   import net.wg.gui.lobby.vehicleCompare.data.VehConfSkillVO;
    import net.wg.gui.lobby.vehicleCompare.data.VehParamsDataVO;
    import net.wg.gui.lobby.vehicleCompare.data.VehicleCompareAddVehiclePopoverVO;
    import net.wg.gui.lobby.vehicleCompare.data.VehicleCompareAnimVO;
@@ -2348,7 +2343,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.vehicleCompare.events.VehCompareVehicleRendererEvent;
    import net.wg.gui.lobby.vehicleCompare.events.VehConfEvent;
    import net.wg.gui.lobby.vehicleCompare.events.VehConfShellSlotEvent;
-   import net.wg.gui.lobby.vehicleCompare.events.VehConfSkillEvent;
    import net.wg.gui.lobby.vehicleCompare.events.VehicleCompareCartEvent;
    import net.wg.gui.lobby.vehicleCompare.events.VehicleModuleItemEvent;
    import net.wg.gui.lobby.vehicleCompare.interfaces.IMainPanel;
@@ -2595,13 +2589,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.vehiclePreview.infoPanel.browse.VPBrowseTab;
    import net.wg.gui.lobby.vehiclePreview.infoPanel.browse.VPCollectibleInfo;
    import net.wg.gui.lobby.vehiclePreview.infoPanel.browse.VPKPIItemRenderer;
-   import net.wg.gui.lobby.vehiclePreview.infoPanel.crew.CommonSkillRenderer;
-   import net.wg.gui.lobby.vehiclePreview.infoPanel.crew.TankmanRoleVO;
-   import net.wg.gui.lobby.vehiclePreview.infoPanel.crew.TankmanVO;
-   import net.wg.gui.lobby.vehiclePreview.infoPanel.crew.VPCrewRenderer;
-   import net.wg.gui.lobby.vehiclePreview.infoPanel.crew.VPCrewRendererVO;
-   import net.wg.gui.lobby.vehiclePreview.infoPanel.crew.VPCrewTab;
-   import net.wg.gui.lobby.vehiclePreview.infoPanel.crew.VPCrewTabVO;
+   import net.wg.gui.lobby.vehiclePreview.infoPanel.crew.VPCrewTabInject;
    import net.wg.gui.lobby.vehiclePreview.infoPanel.modules.VPModulesPanel;
    import net.wg.gui.lobby.vehiclePreview.infoPanel.modules.VPModulesTab;
    import net.wg.gui.lobby.vehiclePreview.packItemsPopover.PackItemRenderer;
@@ -2656,31 +2644,23 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.wgnc.WGNCDialog;
    import net.wg.gui.lobby.wgnc.WGNCPollWindow;
    import net.wg.gui.lobby.window.AwardWindow;
-   import net.wg.gui.lobby.window.BaseExchangeWindow;
-   import net.wg.gui.lobby.window.BaseExchangeWindowRateVO;
    import net.wg.gui.lobby.window.BattlePassBadgesDemoWindow;
    import net.wg.gui.lobby.window.BoosterInfo;
    import net.wg.gui.lobby.window.BrowserWindow;
    import net.wg.gui.lobby.window.Comp7PrimeTime;
    import net.wg.gui.lobby.window.ConfirmExchangeBlock;
+   import net.wg.gui.lobby.window.ConfirmExchangeBlockNotification;
    import net.wg.gui.lobby.window.ConfirmExchangeDialog;
    import net.wg.gui.lobby.window.ConfirmItemWindow;
    import net.wg.gui.lobby.window.ConfirmItemWindowBaseVO;
    import net.wg.gui.lobby.window.ConfirmItemWindowVO;
    import net.wg.gui.lobby.window.EpicPrimeTime;
-   import net.wg.gui.lobby.window.ExchangeCurrencyWindow;
    import net.wg.gui.lobby.window.ExchangeHeader;
    import net.wg.gui.lobby.window.ExchangeHeaderVO;
    import net.wg.gui.lobby.window.ExchangeUtils;
-   import net.wg.gui.lobby.window.ExchangeWindow;
-   import net.wg.gui.lobby.window.ExchangeXPFromVehicleIR;
-   import net.wg.gui.lobby.window.ExchangeXPList;
-   import net.wg.gui.lobby.window.ExchangeXPVehicleVO;
-   import net.wg.gui.lobby.window.ExchangeXPWarningScreen;
-   import net.wg.gui.lobby.window.ExchangeXPWindow;
-   import net.wg.gui.lobby.window.ExchangeXPWindowVO;
    import net.wg.gui.lobby.window.GoodieInfo;
    import net.wg.gui.lobby.window.IExchangeHeader;
+   import net.wg.gui.lobby.window.InfoWarningBtn;
    import net.wg.gui.lobby.window.MissionAwardWindow;
    import net.wg.gui.lobby.window.ModuleInfo;
    import net.wg.gui.lobby.window.PrimeTime;
@@ -2809,6 +2789,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.notification.NotificationPopUpViewer;
    import net.wg.gui.notification.NotificationTimeComponent;
    import net.wg.gui.notification.NotificationsList;
+   import net.wg.gui.notification.PostProgressionStyleMessageContent;
    import net.wg.gui.notification.PrestigeStyleMessageContent;
    import net.wg.gui.notification.ProgressiveStyleMessageContent;
    import net.wg.gui.notification.ServiceMessageBase;
@@ -2819,6 +2800,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.notification.constants.ButtonState;
    import net.wg.gui.notification.constants.ButtonType;
    import net.wg.gui.notification.constants.MessageMetrics;
+   import net.wg.gui.notification.custom.ExchangeRatePersonalDiscount;
    import net.wg.gui.notification.custom.NotificationAchievements;
    import net.wg.gui.notification.custom.NotificationAchievementsFirstEntry;
    import net.wg.gui.notification.custom.NotificationAchievementsFirstEntryWithoutWTR;
@@ -2840,6 +2822,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.notification.custom.WotPlusAttendanceSmall;
    import net.wg.gui.notification.custom.vo.SMBattleMattersTaskReminderVO;
    import net.wg.gui.notification.custom.vo.SMCustomSeniorityAwardsTokensVO;
+   import net.wg.gui.notification.custom.vo.SMExchangeRatePersonalDiscountVO;
    import net.wg.gui.notification.custom.vo.SMFunRandomRewardVO;
    import net.wg.gui.notification.custom.vo.WotPlusAttendanceVO;
    import net.wg.gui.notification.events.NewsWidgetEvent;
@@ -3084,6 +3067,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_DATA_CONSTANTS_GENERATED_NODE_STATE_FLAGS:Class = NODE_STATE_FLAGS;
       
       public static const NET_WG_DATA_CONSTANTS_GENERATED_NOTIFICATIONS_CONSTANTS:Class = NOTIFICATIONS_CONSTANTS;
+      
+      public static const NET_WG_DATA_CONSTANTS_GENERATED_PERSONAL_EXCHANGE_RATES:Class = PERSONAL_EXCHANGE_RATES;
       
       public static const NET_WG_DATA_CONSTANTS_GENERATED_PERSONAL_MISSIONS_ALIASES:Class = PERSONAL_MISSIONS_ALIASES;
       
@@ -4657,12 +4642,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_COMPONENTS_SIDEBARRENDERER:Class = SideBarRenderer;
       
-      public static const NET_WG_GUI_LOBBY_COMPONENTS_SMALLSKILLGROUPICONS:Class = SmallSkillGroupIcons;
-      
-      public static const NET_WG_GUI_LOBBY_COMPONENTS_SMALLSKILLITEMRENDERER:Class = SmallSkillItemRenderer;
-      
-      public static const NET_WG_GUI_LOBBY_COMPONENTS_SMALLSKILLSLIST:Class = SmallSkillsList;
-      
       public static const NET_WG_GUI_LOBBY_COMPONENTS_STATISTICSBODYCONTAINER:Class = StatisticsBodyContainer;
       
       public static const NET_WG_GUI_LOBBY_COMPONENTS_STATISTICSDASHLINETEXTITEMIRENDERER:Class = StatisticsDashLineTextItemIRenderer;
@@ -4687,8 +4666,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_COMPONENTS_DATA_BASEMISSIONDETAILSCONTAINERVO:Class = BaseMissionDetailsContainerVO;
       
-      public static const NET_WG_GUI_LOBBY_COMPONENTS_DATA_BASETANKMANVO:Class = BaseTankmanVO;
-      
       public static const NET_WG_GUI_LOBBY_COMPONENTS_DATA_BOOSTERSLOTVO:Class = BoosterSlotVO;
       
       public static const NET_WG_GUI_LOBBY_COMPONENTS_DATA_BROWSERVO:Class = BrowserVO;
@@ -4710,8 +4687,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_COMPONENTS_DATA_PRIMETIMEVO:Class = PrimeTimeVO;
       
       public static const NET_WG_GUI_LOBBY_COMPONENTS_DATA_RIBBONAWARDSVO:Class = RibbonAwardsVO;
-      
-      public static const NET_WG_GUI_LOBBY_COMPONENTS_DATA_SKILLSVO:Class = SkillsVO;
       
       public static const NET_WG_GUI_LOBBY_COMPONENTS_DATA_STATISTICSBODYVO:Class = StatisticsBodyVO;
       
@@ -5178,8 +5153,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_HANGAR_PRESTIGEPROGRESSINJECT:Class = PrestigeProgressInject;
       
       public static const NET_WG_GUI_LOBBY_HANGAR_RESEARCHPANEL:Class = ResearchPanel;
-      
-      public static const NET_WG_GUI_LOBBY_HANGAR_STRENGTHSWEAKNESSESPANELINJECT:Class = StrengthsWeaknessesPanelInject;
       
       public static const NET_WG_GUI_LOBBY_HANGAR_SWITCHMODEPANEL:Class = SwitchModePanel;
       
@@ -7467,9 +7440,13 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_TRADEIN_VO_TRADEOFFWIDGETVO:Class = TradeOffWidgetVO;
       
-      public static const NET_WG_GUI_LOBBY_TRAINING_ALERTMESSAGE:Class = AlertMessage;
+      public static const NET_WG_GUI_LOBBY_TRAINING_ADDITIONALINFO:Class = AdditionalInfo;
+      
+      public static const NET_WG_GUI_LOBBY_TRAINING_ADDITIONALINFOCONTENT:Class = AdditionalInfoContent;
       
       public static const NET_WG_GUI_LOBBY_TRAINING_ARENAVOIPSETTINGS:Class = ArenaVoipSettings;
+      
+      public static const NET_WG_GUI_LOBBY_TRAINING_COMP7CONDITIONS:Class = Comp7Conditions;
       
       public static const NET_WG_GUI_LOBBY_TRAINING_DRAGPLAYERELEMENT:Class = DragPlayerElement;
       
@@ -7482,6 +7459,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_TRAINING_DROPTILELIST:Class = DropTileList;
       
       public static const NET_WG_GUI_LOBBY_TRAINING_EPICBATTLETRAININGROOM:Class = EpicBattleTrainingRoom;
+      
+      public static const NET_WG_GUI_LOBBY_TRAINING_MAPSLISTITEMRENDERER:Class = MapsListItemRenderer;
       
       public static const NET_WG_GUI_LOBBY_TRAINING_OBSERVERBUTTONCOMPONENT:Class = ObserverButtonComponent;
       
@@ -7533,17 +7512,13 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_VEHICLECOMPARE_CONFIGURATOR_CLOSABLEEQUIPMENTSLOT:Class = ClosableEquipmentSlot;
       
-      public static const NET_WG_GUI_LOBBY_VEHICLECOMPARE_CONFIGURATOR_CONFSKILLSLAYOUT:Class = ConfSkillsLayout;
-      
       public static const NET_WG_GUI_LOBBY_VEHICLECOMPARE_CONFIGURATOR_EQUIPMENTWIDGET:Class = EquipmentWidget;
       
       public static const NET_WG_GUI_LOBBY_VEHICLECOMPARE_CONFIGURATOR_MODIFICATIONSWIDGET:Class = ModificationsWidget;
       
+      public static const NET_WG_GUI_LOBBY_VEHICLECOMPARE_CONFIGURATOR_SKILLSWIDGET:Class = SkillsWidget;
+      
       public static const NET_WG_GUI_LOBBY_VEHICLECOMPARE_CONFIGURATOR_VEHCONFBOTTOMPANEL:Class = VehConfBottomPanel;
-      
-      public static const NET_WG_GUI_LOBBY_VEHICLECOMPARE_CONFIGURATOR_VEHCONFCREW:Class = VehConfCrew;
-      
-      public static const NET_WG_GUI_LOBBY_VEHICLECOMPARE_CONFIGURATOR_VEHCONFCREWSKILLSLOT:Class = VehConfCrewSkillSlot;
       
       public static const NET_WG_GUI_LOBBY_VEHICLECOMPARE_CONFIGURATOR_VEHCONFMODULES:Class = VehConfModules;
       
@@ -7607,8 +7582,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_VEHICLECOMPARE_DATA_VEHCOMPAREVEHICLEVO:Class = VehCompareVehicleVO;
       
-      public static const NET_WG_GUI_LOBBY_VEHICLECOMPARE_DATA_VEHCONFSKILLVO:Class = VehConfSkillVO;
-      
       public static const NET_WG_GUI_LOBBY_VEHICLECOMPARE_DATA_VEHICLECOMPAREADDVEHICLEPOPOVERVO:Class = VehicleCompareAddVehiclePopoverVO;
       
       public static const NET_WG_GUI_LOBBY_VEHICLECOMPARE_DATA_VEHICLECOMPAREANIMVO:Class = VehicleCompareAnimVO;
@@ -7640,8 +7613,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_VEHICLECOMPARE_EVENTS_VEHCONFEVENT:Class = VehConfEvent;
       
       public static const NET_WG_GUI_LOBBY_VEHICLECOMPARE_EVENTS_VEHCONFSHELLSLOTEVENT:Class = VehConfShellSlotEvent;
-      
-      public static const NET_WG_GUI_LOBBY_VEHICLECOMPARE_EVENTS_VEHCONFSKILLEVENT:Class = VehConfSkillEvent;
       
       public static const NET_WG_GUI_LOBBY_VEHICLECOMPARE_EVENTS_VEHICLECOMPARECARTEVENT:Class = VehicleCompareCartEvent;
       
@@ -8135,19 +8106,7 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_VEHICLEPREVIEW_INFOPANEL_BROWSE_VPKPIITEMRENDERER:Class = VPKPIItemRenderer;
       
-      public static const NET_WG_GUI_LOBBY_VEHICLEPREVIEW_INFOPANEL_CREW_COMMONSKILLRENDERER:Class = CommonSkillRenderer;
-      
-      public static const NET_WG_GUI_LOBBY_VEHICLEPREVIEW_INFOPANEL_CREW_TANKMANROLEVO:Class = TankmanRoleVO;
-      
-      public static const NET_WG_GUI_LOBBY_VEHICLEPREVIEW_INFOPANEL_CREW_TANKMANVO:Class = TankmanVO;
-      
-      public static const NET_WG_GUI_LOBBY_VEHICLEPREVIEW_INFOPANEL_CREW_VPCREWRENDERER:Class = VPCrewRenderer;
-      
-      public static const NET_WG_GUI_LOBBY_VEHICLEPREVIEW_INFOPANEL_CREW_VPCREWRENDERERVO:Class = VPCrewRendererVO;
-      
-      public static const NET_WG_GUI_LOBBY_VEHICLEPREVIEW_INFOPANEL_CREW_VPCREWTAB:Class = VPCrewTab;
-      
-      public static const NET_WG_GUI_LOBBY_VEHICLEPREVIEW_INFOPANEL_CREW_VPCREWTABVO:Class = VPCrewTabVO;
+      public static const NET_WG_GUI_LOBBY_VEHICLEPREVIEW_INFOPANEL_CREW_VPCREWTABINJECT:Class = VPCrewTabInject;
       
       public static const NET_WG_GUI_LOBBY_VEHICLEPREVIEW_INFOPANEL_MODULES_VPMODULESPANEL:Class = VPModulesPanel;
       
@@ -8281,10 +8240,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_WINDOW_AWARDWINDOW:Class = AwardWindow;
       
-      public static const NET_WG_GUI_LOBBY_WINDOW_BASEEXCHANGEWINDOW:Class = BaseExchangeWindow;
-      
-      public static const NET_WG_GUI_LOBBY_WINDOW_BASEEXCHANGEWINDOWRATEVO:Class = BaseExchangeWindowRateVO;
-      
       public static const NET_WG_GUI_LOBBY_WINDOW_BATTLEPASSBADGESDEMOWINDOW:Class = BattlePassBadgesDemoWindow;
       
       public static const NET_WG_GUI_LOBBY_WINDOW_BOOSTERINFO:Class = BoosterInfo;
@@ -8294,6 +8249,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_WINDOW_COMP7PRIMETIME:Class = Comp7PrimeTime;
       
       public static const NET_WG_GUI_LOBBY_WINDOW_CONFIRMEXCHANGEBLOCK:Class = ConfirmExchangeBlock;
+      
+      public static const NET_WG_GUI_LOBBY_WINDOW_CONFIRMEXCHANGEBLOCKNOTIFICATION:Class = ConfirmExchangeBlockNotification;
       
       public static const NET_WG_GUI_LOBBY_WINDOW_CONFIRMEXCHANGEDIALOG:Class = ConfirmExchangeDialog;
       
@@ -8305,31 +8262,17 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_WINDOW_EPICPRIMETIME:Class = EpicPrimeTime;
       
-      public static const NET_WG_GUI_LOBBY_WINDOW_EXCHANGECURRENCYWINDOW:Class = ExchangeCurrencyWindow;
-      
       public static const NET_WG_GUI_LOBBY_WINDOW_EXCHANGEHEADER:Class = ExchangeHeader;
       
       public static const NET_WG_GUI_LOBBY_WINDOW_EXCHANGEHEADERVO:Class = ExchangeHeaderVO;
       
       public static const NET_WG_GUI_LOBBY_WINDOW_EXCHANGEUTILS:Class = ExchangeUtils;
       
-      public static const NET_WG_GUI_LOBBY_WINDOW_EXCHANGEWINDOW:Class = ExchangeWindow;
-      
-      public static const NET_WG_GUI_LOBBY_WINDOW_EXCHANGEXPFROMVEHICLEIR:Class = ExchangeXPFromVehicleIR;
-      
-      public static const NET_WG_GUI_LOBBY_WINDOW_EXCHANGEXPLIST:Class = ExchangeXPList;
-      
-      public static const NET_WG_GUI_LOBBY_WINDOW_EXCHANGEXPVEHICLEVO:Class = ExchangeXPVehicleVO;
-      
-      public static const NET_WG_GUI_LOBBY_WINDOW_EXCHANGEXPWARNINGSCREEN:Class = ExchangeXPWarningScreen;
-      
-      public static const NET_WG_GUI_LOBBY_WINDOW_EXCHANGEXPWINDOW:Class = ExchangeXPWindow;
-      
-      public static const NET_WG_GUI_LOBBY_WINDOW_EXCHANGEXPWINDOWVO:Class = ExchangeXPWindowVO;
-      
       public static const NET_WG_GUI_LOBBY_WINDOW_GOODIEINFO:Class = GoodieInfo;
       
       public static const NET_WG_GUI_LOBBY_WINDOW_IEXCHANGEHEADER:Class = IExchangeHeader;
+      
+      public static const NET_WG_GUI_LOBBY_WINDOW_INFOWARNINGBTN:Class = InfoWarningBtn;
       
       public static const NET_WG_GUI_LOBBY_WINDOW_MISSIONAWARDWINDOW:Class = MissionAwardWindow;
       
@@ -8587,6 +8530,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_NOTIFICATION_NOTIFICATIONTIMECOMPONENT:Class = NotificationTimeComponent;
       
+      public static const NET_WG_GUI_NOTIFICATION_POSTPROGRESSIONSTYLEMESSAGECONTENT:Class = PostProgressionStyleMessageContent;
+      
       public static const NET_WG_GUI_NOTIFICATION_PRESTIGESTYLEMESSAGECONTENT:Class = PrestigeStyleMessageContent;
       
       public static const NET_WG_GUI_NOTIFICATION_PROGRESSIVESTYLEMESSAGECONTENT:Class = ProgressiveStyleMessageContent;
@@ -8606,6 +8551,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_NOTIFICATION_CONSTANTS_BUTTONTYPE:Class = ButtonType;
       
       public static const NET_WG_GUI_NOTIFICATION_CONSTANTS_MESSAGEMETRICS:Class = MessageMetrics;
+      
+      public static const NET_WG_GUI_NOTIFICATION_CUSTOM_EXCHANGERATEPERSONALDISCOUNT:Class = ExchangeRatePersonalDiscount;
       
       public static const NET_WG_GUI_NOTIFICATION_CUSTOM_NOTIFICATIONACHIEVEMENTS:Class = NotificationAchievements;
       
@@ -8648,6 +8595,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_NOTIFICATION_CUSTOM_VO_SMBATTLEMATTERSTASKREMINDERVO:Class = SMBattleMattersTaskReminderVO;
       
       public static const NET_WG_GUI_NOTIFICATION_CUSTOM_VO_SMCUSTOMSENIORITYAWARDSTOKENSVO:Class = SMCustomSeniorityAwardsTokensVO;
+      
+      public static const NET_WG_GUI_NOTIFICATION_CUSTOM_VO_SMEXCHANGERATEPERSONALDISCOUNTVO:Class = SMExchangeRatePersonalDiscountVO;
       
       public static const NET_WG_GUI_NOTIFICATION_CUSTOM_VO_SMFUNRANDOMREWARDVO:Class = SMFunRandomRewardVO;
       

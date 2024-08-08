@@ -22,11 +22,8 @@ package net.wg.app.impl
    import net.wg.gui.components.questProgress.data.metrics.QPMetricsSimpleValueVO;
    import net.wg.gui.components.questProgress.data.metrics.QPMetricsTimerVO;
    import net.wg.gui.components.questProgress.data.metrics.QPMetricsVehicleVO;
-   import net.wg.gui.lobby.components.data.SkillsVO;
    import net.wg.gui.lobby.components.maintenance.data.ModuleVO;
    import net.wg.gui.lobby.fortifications.data.base.BuildingBaseVO;
-   import net.wg.gui.lobby.vehiclePreview.infoPanel.crew.TankmanRoleVO;
-   import net.wg.gui.lobby.vehiclePreview.infoPanel.crew.TankmanVO;
    import net.wg.infrastructure.interfaces.ICursorManager;
    import net.wg.infrastructure.managers.GlobalVarsManager;
    import net.wg.infrastructure.managers.ICacheManager;
@@ -142,9 +139,6 @@ package net.wg.app.impl
          super.registerAliases();
          registerClassAlias("net.wg.gui.components.controls.VO.ActionPriceVO",ActionPriceVO);
          registerClassAlias("net.wg.gui.lobby.components.maintenance.data.ModuleVO",ModuleVO);
-         registerClassAlias("net.wg.gui.lobby.vehiclePreview.infoPanel.crew.TankmanVO",TankmanVO);
-         registerClassAlias("net.wg.gui.lobby.vehiclePreview.infoPanel.crew.TankmanRoleVO",TankmanRoleVO);
-         registerClassAlias("net.wg.gui.lobby.components.data.SkillsVO",SkillsVO);
          registerClassAlias("net.wg.gui.lobby.fortifications.data.base.BuildingBaseVO",BuildingBaseVO);
          registerClassAlias("net.wg.gui.battle.views.questProgress.data.QPProgressVO",QPProgressVO);
          registerClassAlias("net.wg.gui.battle.views.questProgress.data.metrics.QPMetricsRangeVO",QPMetricsRangeVO);

@@ -102,10 +102,16 @@ package net.wg.gui.lobby.components
          this.img.removeEventListener(Event.CHANGE,this.onImgChangeHandler);
          this.img.dispose();
          this.img = null;
-         this.overlayImg.dispose();
-         this.overlayImg = null;
-         this.highlightImg.dispose();
-         this.highlightImg = null;
+         if(this.overlayImg)
+         {
+            this.overlayImg.dispose();
+            this.overlayImg = null;
+         }
+         if(this.highlightImg)
+         {
+            this.highlightImg.dispose();
+            this.highlightImg = null;
+         }
          this.overlay = null;
          this.highlight = null;
          this.glowAnim = null;
@@ -193,10 +199,13 @@ package net.wg.gui.lobby.components
                {
                   this.overlay.gotoAndStop(_loc2_);
                }
-               this.overlayImg.visible = !_loc3_ && StringUtils.isNotEmpty(this._data.overlayIcon);
-               if(this.overlayImg.visible)
+               if(this.overlayImg)
                {
-                  this.overlayImg.source = this._data.overlayIcon;
+                  this.overlayImg.visible = !_loc3_ && StringUtils.isNotEmpty(this._data.overlayIcon);
+                  if(this.overlayImg.visible)
+                  {
+                     this.overlayImg.source = this._data.overlayIcon;
+                  }
                }
                _loc4_ = this._data.highlightType;
                _loc5_ = StringUtils.isNotEmpty(_loc4_);
@@ -205,10 +214,13 @@ package net.wg.gui.lobby.components
                {
                   this.highlight.gotoAndStop(_loc4_);
                }
-               this.highlightImg.visible = !_loc5_ && StringUtils.isNotEmpty(this._data.highlightIcon);
-               if(this.highlightImg.visible)
+               if(this.highlightImg)
                {
-                  this.highlightImg.source = this._data.highlightIcon;
+                  this.highlightImg.visible = !_loc5_ && StringUtils.isNotEmpty(this._data.highlightIcon);
+                  if(this.highlightImg.visible)
+                  {
+                     this.highlightImg.source = this._data.highlightIcon;
+                  }
                }
                this._gap = this._data.gap;
                this.updateTextFieldLayout();
@@ -235,7 +247,7 @@ package net.wg.gui.lobby.components
          {
             if(this._hasSize)
             {
-               if(this.img.width > this._rendererWidth || this.img.height > this._rendererHeight || this._allowRescaleUpward && (this.img.width != this._rendererWidth || this.img.height != this._rendererHeight))
+               if(this.img.bitmapWidth >= this._rendererWidth || this.img.bitmapHeight >= this._rendererHeight || this._allowRescaleUpward && (this.img.bitmapWidth != this._rendererWidth || this.img.bitmapHeight != this._rendererHeight))
                {
                   _loc8_ = this._rendererWidth / this.img.bitmapWidth;
                   _loc9_ = this._rendererHeight / this.img.bitmapHeight;
@@ -245,10 +257,21 @@ package net.wg.gui.lobby.components
                this.img.y = this._rendererHeight - this.img.height >> 1;
                this.highlight.x = this.overlay.x = this.img.x + EFFECTS_OFFSET_X;
                this.highlight.y = this.overlay.y = this.img.y + EFFECTS_OFFSET_Y;
-               this.overlayImg.x = this._rendererWidth - this.overlayImg.width >> 1;
-               this.overlayImg.y = this._rendererHeight - this.overlayImg.height >> 1;
-               hitArea.width = this.highlightImg.width = this._rendererWidth;
-               hitArea.height = this.highlightImg.height = this._rendererHeight;
+               if(this.overlayImg)
+               {
+                  this.overlayImg.x = this._rendererWidth - this.overlayImg.width >> 1;
+                  this.overlayImg.y = this._rendererHeight - this.overlayImg.height >> 1;
+               }
+               if(this.highlightImg)
+               {
+                  this.highlightImg.width = this._rendererWidth;
+                  this.highlightImg.height = this._rendererHeight;
+               }
+               if(hitArea)
+               {
+                  hitArea.width = this._rendererWidth;
+                  hitArea.height = this._rendererHeight;
+               }
                this.starIcon.x = this.width - this.starIcon.width + ICONS_OFFSET ^ 0;
                this.awardObtainedIcon.x = this._rendererWidth - this.awardObtainedIcon.width >> 1;
                this.awardObtainedIcon.y = this.img.y + this.img.height - (this.awardObtainedIcon.height >> 1) + this._data.obtainedImageOffset ^ 0;

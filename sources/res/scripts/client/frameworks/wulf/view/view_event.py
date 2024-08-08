@@ -79,3 +79,7 @@ class ViewEvent(object):
         if self.hasArgument(name):
             return self.__core.getArgument(name)
         return default
+
+    @property
+    def targetViewID(self):
+        return self.__core.targetViewID

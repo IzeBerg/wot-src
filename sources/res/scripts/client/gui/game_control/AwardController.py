@@ -49,7 +49,7 @@ from gui.impl.lobby.comp7.comp7_quest_helpers import isComp7VisibleQuest, getCom
 from gui.impl.lobby.mapbox.map_box_awards_view import MapBoxAwardsViewWindow
 from gui.impl.lobby.winback.winback_reward_view import WinbackRewardWindow
 from gui.impl.pub.notification_commands import WindowNotificationCommand
-from gui.limited_ui.lui_rules_storage import LuiRules
+from gui.limited_ui.lui_rules_storage import LUI_RULES
 from gui.prb_control.entities.listener import IGlobalListener
 from gui.prestige.prestige_helpers import hasVehiclePrestige, showPrestigeRewardWindow, needShowPrestigeRewardWindow
 from gui.ranked_battles import ranked_helpers
@@ -1264,7 +1264,7 @@ class ProgressiveItemsRewardHandler(ServiceChannelHandler):
 
     def __show(self):
         self._hangarSpace.onSpaceCreate -= self.__show
-        if not self.__limitedUIController.isRuleCompleted(LuiRules.PROGRESSIVE_ITEMS_REWARD):
+        if not self.__limitedUIController.isRuleCompleted(LUI_RULES.ProgressiveItemsReward):
             return
         for vehicleCD, items in self.__message.data.iteritems():
             newItemsCDs = items.keys()
@@ -1791,18 +1791,30 @@ class Comp7InvoiceRewardHandler(ServiceChannelHandler):
 
     def __init__(self, awardCtrl):
         super(Comp7InvoiceRewardHandler, self).__init__(SYS_MESSAGE_TYPE.invoiceReceived.index(), awardCtrl)
+        self.__bonuses = None
+        return
 
-    @adisp_process
     def _showAward(self, ctx):
         _, message = ctx
         invoiceData = message.data
         if invoiceData.get('assetType', 0) == INVOICE_ASSET.PURCHASE:
             bonuses = invoiceData.get('data', {})
             if COMP7_YEARLY_REWARD_TOKEN in bonuses.get('tokens', ()):
-                areEntitlemenetsUpdated = yield self.__comp7Ctrl.updateEntitlementsCache(True, self.__RETRY_TIMES)
-                if not areEntitlemenetsUpdated:
-                    _logger.warning('Could not show season results due to unsuccessful entitlements request')
-                showComp7YearlyRewardsScreen(bonuses, showSeasonResults=areEntitlemenetsUpdated)
+                self.__bonuses = bonuses
+                self.__comp7Ctrl.onEntitlementsUpdated += self.__onEntitlementsUpdated
+                self.__comp7Ctrl.onEntitlementsUpdateFailed += self.__onEntitlementsUpdateFailed
+                self.__comp7Ctrl.updateEntitlementsCache(True, self.__RETRY_TIMES)
+
+    def __onEntitlementsUpdated(self):
+        self.__comp7Ctrl.onEntitlementsUpdated -= self.__onEntitlementsUpdated
+        self.__comp7Ctrl.onEntitlementsUpdateFailed -= self.__onEntitlementsUpdateFailed
+        showComp7YearlyRewardsScreen(self.__bonuses)
+
+    def __onEntitlementsUpdateFailed(self):
+        self.__comp7Ctrl.onEntitlementsUpdated -= self.__onEntitlementsUpdated
+        self.__comp7Ctrl.onEntitlementsUpdateFailed -= self.__onEntitlementsUpdateFailed
+        _logger.warning('Could not show season results due to unsuccessful entitlements request')
+        showComp7YearlyRewardsScreen(self.__bonuses, showSeasonResults=False)
 
 
 class DailyQuestHandlerBase(MultiTypeServiceChannelHandler):

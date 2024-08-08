@@ -501,7 +501,7 @@
 		<type>battleBoosters</type>
 		<tags>notForSale crewSkillBattleBooster armor</tags>
 		<script>
-			FactorSkillBattleBooster
+			SkillEquipment
 			<skillName>fireFighting</skillName>
 			<efficiencyFactor>
 				1.5
@@ -601,7 +601,7 @@
 			SkillEquipment
 			<skillName>loader_pedant</skillName>
 			<perkLevelMultiplier>
-				4.0
+				3.0
 				<!--BW_String-->
 			</perkLevelMultiplier>
 		</script>
@@ -614,7 +614,7 @@
 				<mul>
 					<name>vehicleAmmoBayStrength</name>
 					<value>
-						4.0
+						3.0
 						<!--BW_String-->
 					</value>
 				</mul>
@@ -631,7 +631,8 @@
 		<icon>radioman_lastEffort</icon>
 		<price>10000</price>
 		<type>battleBoosters</type>
-		<tags>notForSale crewSkillBattleBooster reconnaissance</tags>
+		<tags>notForSale crewSkillBattleBooster notBuyWhenAutoEquip hideIfNotInShop reconnaissance</tags>
+		<notInShop>true</notInShop>
 		<script>
 			LastEffortBattleBooster
 			<skillName>radioman_lastEffort</skillName>
@@ -843,4 +844,74 @@
 			</mul>
 		</kpi>
 	</additInvisibilityDeviceBattleBooster>
+	<practicalityBattleBooster>
+		<id>205</id>
+		<userString>#artefacts:practicalityBattleBooster/name</userString>
+		<description>#artefacts:crewBattleBooster/descr</description>
+		<shortDescriptionSpecial>#artefacts:practicalityBattleBooster/short_special</shortDescriptionSpecial>
+		<longDescriptionSpecial>#artefacts:practicalityBattleBooster/long_special</longDescriptionSpecial>
+		<icon>commander_practical</icon>
+		<price>20000</price>
+		<type>battleBoosters</type>
+		<tags>notForSale crewSkillBattleBooster</tags>
+		<script>
+			SkillEquipment
+			<skillName>commander_practical</skillName>
+			<perkLevelMultiplier>
+				2.0
+				<!--BW_String-->
+			</perkLevelMultiplier>
+		</script>
+		<kpi>
+			<oneOf>
+				<boostSkill>
+					<name>crewSkillPractical</name>
+					<value>1</value>
+				</boostSkill>
+				<mul>
+					<name>crewSkillPractical</name>
+					<value>
+						2.0
+						<!--BW_String-->
+					</value>
+				</mul>
+			</oneOf>
+		</kpi>
+		<tooltipSection>skills</tooltipSection>
+	</practicalityBattleBooster>
+	<enemyShotPredictorBattleBooster>
+		<id>206</id>
+		<userString>#artefacts:enemyShotPredictorBattleBooster/name</userString>
+		<description>#artefacts:crewBattleBooster/descr</description>
+		<shortDescriptionSpecial>#artefacts:enemyShotPredictorBattleBooster/short_special</shortDescriptionSpecial>
+		<longDescriptionSpecial>#artefacts:enemyShotPredictorBattleBooster/long_special</longDescriptionSpecial>
+		<icon>commander_enemyShotPredictor</icon>
+		<price>10000</price>
+		<type>battleBoosters</type>
+		<tags>notForSale crewSkillBattleBooster</tags>
+		<script>
+			SkillEquipment
+			<skillName>commander_enemyShotPredictor</skillName>
+			<perkLevelMultiplier>
+				1.5
+				<!--BW_String-->
+			</perkLevelMultiplier>
+		</script>
+		<kpi>
+			<oneOf>
+				<boostSkill>
+					<name>crewSkillStunResistance</name>
+					<value>1</value>
+				</boostSkill>
+				<mul>
+					<name>crewSkillStunResistance</name>
+					<value>
+						1.5
+						<!--BW_String-->
+					</value>
+				</mul>
+			</oneOf>
+		</kpi>
+		<tooltipSection>skills</tooltipSection>
+	</enemyShotPredictorBattleBooster>
 </root>

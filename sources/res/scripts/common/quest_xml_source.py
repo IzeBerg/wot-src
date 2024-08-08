@@ -376,6 +376,7 @@ class Source(object):
            'isWinbackQuestsEnabled': self.__readCondition_bool, 
            'isDailyQuestsEnabled': self.__readCondition_bool, 
            'isSteamAllowed': self.__readCondition_bool, 
+           'isFirstLogin': self.__readCondition_bool, 
            'totalBattles': self.__readBattleResultsConditionList, 
            'lastLogout': self.__readBattleResultsConditionList, 
            'noviceType': self.__readBattleResultsConditionList, 

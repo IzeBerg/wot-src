@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>osci_back</identifier>
+					<fx>shaders/custom/vector_animation_2.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						destBlend
+						<Int>3</Int>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>particles/Tank/customization/GB120_Concept_No_5_3Dst_BPXV/oscilloscope.dds</Texture>
+					</property>
+					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>0.000000 0.000000 2.000000 0.000000</Vector4>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>15.000000 15.000000 0.005000 0.010000</Vector4>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/waterfall_IGR_dist.dds</Texture>
+					</property>
+					<property>
+						enableLighting
+						<Bool>true</Bool>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>2.000000 0.000000 0.050000 0.000000</Vector4>
+					</property>
+					<property>
+						opacity_UV_Distortion_Amount
+						<Vector4>0.000000 0.000000 25.000000 25.000000</Vector4>
+					</property>
+					<property>
+						phaseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/SandDrift_01.dds</Texture>
+					</property>
+					<property>
+						selfIllumLight
+						<Vector3>0.956863 0.976471 1.000000</Vector3>
+					</property>
+					<property>
+						srcBlend
+						<Int>3</Int>
+					</property>
+					<property>
+						TintlColor
+						<Vector4>0.450980 0.388235 0.388235 1.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>0.000000 0.000000 0.000000</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>osci_front</identifier>
+					<fx>shaders/custom/vector_animation.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>particles/Tank/customization/GB120_Concept_No_5_3Dst_BPXV/oscilloscope.dds</Texture>
+					</property>
+					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>0.700000 0.000000 3.000000 0.000000</Vector4>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>1.000000 1.000000 0.014000 0.022000</Vector4>
+					</property>
+					<property>
+						distortionFrequency
+						<Float>15.000000</Float>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/114_czech_vel_smoke_fire.dds</Texture>
+					</property>
+					<property>
+						enableLighting
+						<Bool>true</Bool>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>3.000000 0.010000 0.100000 0.000000</Vector4>
+					</property>
+					<property>
+						opacity_UV_Speed_Scale
+						<Vector4>0.000000 0.000000 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						opacityMap
+						<Texture>particles/Tank/customization/GB120_Concept_No_5_3Dst_BPXV/oscilloscope.dds</Texture>
+					</property>
+					<property>
+						phase_UV_Speed_Scale
+						<Vector4>5.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						selfIllumLight
+						<Vector3>0.003922 0.988235 0.003922</Vector3>
+					</property>
+					<property>
+						srcBlend
+						<Int>3</Int>
+					</property>
+					<property>
+						TintlColor
+						<Vector4>0.572549 1.000000 0.568627 1.000000</Vector4>
+					</property>
+					<property>
+						softFactor
+						<Float>2.000000</Float>
+					</property>
+				</material>
+				<groupOrigin>0.000000 0.001176 0.000000</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.241114 0.000000 -0.241993</min>
+		<max>0.241114 0.001176 0.241993</max>
+	</boundingBox>
+	<geometrySize>648</geometrySize>
+	<minUVDensity>1.995578</minUVDensity>
+</root>

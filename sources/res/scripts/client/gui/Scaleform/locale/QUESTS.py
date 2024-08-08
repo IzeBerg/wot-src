@@ -78,6 +78,8 @@ class QUESTS(object):
     BONUSES_ITEM_TANKMEN_NO_SKILLS = '#quests:bonuses/item/tankmen/no_skills'
     BONUSES_ITEM_TANKMEN_WITH_SKILLS = '#quests:bonuses/item/tankmen/with_skills'
     BONUSES_NOTAVAILABLE = '#quests:bonuses/notAvailable'
+    BONUSES_GOLDPERSONALRATE = '#quests:bonuses/goldPersonalRate'
+    BONUSES_FREEXPPERSONALRATE = '#quests:bonuses/freeXpPersonalRate'
     QUESTS_TITLE = '#quests:quests/title'
     QUESTS_TITLE_MANEUVERSQUESTS = '#quests:quests/title/maneuversQuests'
     QUESTS_TITLE_CURRENTLYAVAILABLE = '#quests:quests/title/currentlyAvailable'
@@ -1196,7 +1198,6 @@ class QUESTS(object):
     TOKEN_DEFAULT_BOX = '#quests:token/default/box'
     TOKEN_DEFAULT_TANKREWARDS = '#quests:token/default/tankrewards'
     TOKEN_DEFAULT_BATTLE_ROYALE = '#quests:token/default/battle_royale'
-    TOKEN_DEFAULT_COMP7_LIGHT = '#quests:token/default/comp7_light'
     BONUSNAME_CREDITS = '#quests:bonusName/credits'
     BONUSNAME_GOLD = '#quests:bonusName/gold'
     BONUSNAME_CRYSTAL = '#quests:bonusName/crystal'
@@ -1281,6 +1282,7 @@ class QUESTS(object):
     BONUSNAME_BATTLE_BONUSES = '#quests:bonusName/battle_bonuses'
     BONUSNAME_BADGES = '#quests:bonusName/badges'
     BONUSNAME_ADDITIONAL_BONUSES = '#quests:bonusName/additional_bonuses'
+    BONUSNAME_OPTIONAL_DEVICES_ASSISTANT = '#quests:bonusName/optional_devices_assistant'
     ACTION_AUTO_CALENDAR = '#quests:action/auto/calendar'
     ACTION_FULL_CALENDAR = '#quests:action/full/calendar'
     ACTION_HERO_FULL_CALENDAR = '#quests:action/hero/full/calendar'
@@ -1751,8 +1753,7 @@ class QUESTS(object):
      TOKEN_DEFAULT_WHEEL,
      TOKEN_DEFAULT_BOX,
      TOKEN_DEFAULT_TANKREWARDS,
-     TOKEN_DEFAULT_BATTLE_ROYALE,
-     TOKEN_DEFAULT_COMP7_LIGHT)
+     TOKEN_DEFAULT_BATTLE_ROYALE)
     BONUSNAME_ENUM = (
      BONUSNAME_BLUEPRINTS_ANY,
      BONUSNAME_BLUEPRINTS_VEHICLE,
@@ -1843,7 +1844,8 @@ class QUESTS(object):
      BONUSNAME_INDUSTRIALRESOURCE,
      BONUSNAME_BATTLE_BONUSES,
      BONUSNAME_BADGES,
-     BONUSNAME_ADDITIONAL_BONUSES)
+     BONUSNAME_ADDITIONAL_BONUSES,
+     BONUSNAME_OPTIONAL_DEVICES_ASSISTANT)
     ACTION_ENUM = (
      ACTION_AUTO_CALENDAR,
      ACTION_FULL_CALENDAR,

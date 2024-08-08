@@ -85,7 +85,6 @@ package net.wg.gui.lobby.header.headerButtonBar
       {
          var _loc2_:Boolean = false;
          var _loc3_:Number = NaN;
-         var _loc4_:Number = NaN;
          var _loc1_:Boolean = this.highlight.visible;
          if(data)
          {
@@ -107,7 +106,7 @@ package net.wg.gui.lobby.header.headerButtonBar
                }
                if(availableWidth > 0)
                {
-                  _loc3_ = availableWidth - (TEXT_FIELD_MARGIN + ARROW_MARGIN + this.textField.x + this.arrow.width);
+                  _loc3_ = availableWidth - (ARROW_MARGIN + this.textField.x + this.arrow.width);
                }
                this.textField.width = _loc3_;
                if(this.isNeedUpdateFont())
@@ -115,19 +114,14 @@ package net.wg.gui.lobby.header.headerButtonBar
                   updateFontSize(this.textField,useFontSize);
                   needUpdateFontSize = false;
                }
-               App.utils.commons.formatPlayerName(this.textField,App.utils.commons.getUserProps(this._battleTypeVo.battleTypeName));
+               App.utils.commons.truncateTextFieldText(this.textField,this._battleTypeVo.battleTypeName);
                this.textField.width = this.textField.textWidth + TEXT_FIELD_MARGIN;
                this.arrow.x = this.textField.x + this.textField.width + ARROW_MARGIN ^ 0;
                this._counterProps = new CounterProps(10,-3,TextFormatAlign.LEFT,true,Linkages.COUNTER_UI,CounterProps.DEFAULT_TF_PADDING,false,Counter.EMPTY_STATE);
             }
             else
             {
-               _loc4_ = this.getMinArrowPositionX();
-               if(availableWidth - this.arrow.width > _loc4_)
-               {
-                  _loc4_ = availableWidth - this.arrow.width;
-               }
-               this.arrow.x = _loc4_;
+               this.arrow.x = this.getMinArrowPositionX() | 0;
                this._counterProps = new CounterProps(5,-3,TextFormatAlign.LEFT,true,Linkages.COUNTER_UI,CounterProps.DEFAULT_TF_PADDING,false,Counter.EMPTY_STATE);
             }
             if(StringUtils.isNotEmpty(this._battleTypeVo.eventBgLinkage))

@@ -89,6 +89,10 @@ package net.wg.gui.components.controls
       
       private var _currentTextColorId:String;
       
+      private var _valueOffset:int = 0;
+      
+      private var _stepSizeUnbindedToValue:Boolean = false;
+      
       public function NumericStepper()
       {
          this._textFilter = [];
@@ -291,6 +295,25 @@ package net.wg.gui.components.controls
          return this._currentTextColorId;
       }
       
+      public function setMaximumWithoutValidation(param1:Number) : void
+      {
+         _maximum = param1;
+         this.calcDigitsCount();
+      }
+      
+      public function setValueWithoutValidation(param1:Number) : void
+      {
+         if(param1 == _value)
+         {
+            this._playLimitSnd = false;
+            this.updateEnabledState();
+            return;
+         }
+         textField.text = param1.toString();
+         _value = param1;
+         this.updateEnabledState();
+      }
+      
       protected function normalizeValue() : void
       {
          if(!isNaN(this._manualValue))
@@ -422,22 +445,20 @@ package net.wg.gui.components.controls
                param1 = maximum;
             }
          }
-         return Number(Math.max(_minimum,Math.min(_maximum,stepSize * Math.round(param1 / stepSize))));
+         var _loc2_:Number = this._valueOffset + stepSize * Math.round((param1 - this._valueOffset) / stepSize);
+         var _loc3_:Number = Math.max(_minimum,Math.min(_maximum,_loc2_));
+         if(this._stepSizeUnbindedToValue)
+         {
+            _loc3_ = Math.max(_minimum,Math.min(_maximum,param1));
+         }
+         return _loc3_;
       }
       
       private function updateEnabledState() : void
       {
          nextBtn.enabled = nextBtn.mouseEnabled = this.getEnabledForBtn(nextBtn);
          prevBtn.enabled = prevBtn.mouseEnabled = this.getEnabledForBtn(prevBtn);
-         if(this._playLimitSnd && (!nextBtn.enabled || !prevBtn.enabled))
-         {
-            this.playLimitValueSnd();
-         }
          this._playLimitSnd = false;
-      }
-      
-      private function playLimitValueSnd() : void
-      {
       }
       
       private function getEnabledForBtn(param1:Button) : Boolean
@@ -653,6 +674,21 @@ package net.wg.gui.components.controls
       public function get isSkipValue() : Boolean
       {
          return this._skipValues && this._skipValues.indexOf(_value) != -1;
+      }
+      
+      public function set valueOffset(param1:int) : void
+      {
+         this._valueOffset = param1;
+      }
+      
+      public function set stepSizeUnbindedToValue(param1:Boolean) : void
+      {
+         this._stepSizeUnbindedToValue = param1;
+      }
+      
+      public function get manualValue() : Number
+      {
+         return this._manualValue;
       }
       
       override public function handleInput(param1:InputEvent) : void

@@ -139,6 +139,10 @@ package
       
       public static const LOADINGDATA:String = "#waiting:loadingData";
       
+      public static const FILLINGALLTANKMENSKILLS:String = "#waiting:fillingAllTankmenSkills";
+      
+      public static const RESETTINGALLTANKMENSKILLS:String = "#waiting:resettingAllTankmenSkills";
+      
       public static const TUTORIAL_CHAPTER_LOADING:String = "#waiting:tutorial-chapter-loading";
       
       public static const TUTORIAL_UPDATE_SCENE:String = "#waiting:tutorial-update-scene";

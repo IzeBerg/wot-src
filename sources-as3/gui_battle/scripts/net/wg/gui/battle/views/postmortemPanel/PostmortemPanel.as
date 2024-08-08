@@ -119,7 +119,7 @@ package net.wg.gui.battle.views.postmortemPanel
          }
          if(param1)
          {
-            this.showPostmortemPanel(param1);
+            this.showPostmortemInfoPanel(param1);
          }
       }
       
@@ -127,7 +127,7 @@ package net.wg.gui.battle.views.postmortemPanel
       {
          this.updateKillerBackground();
          this.createPostmortemPanelElements();
-         this.showPostmortemPanel(false);
+         this.showPostmortemInfoPanel(false);
          TextFieldEx.setVerticalAutoSize(deadReasonTF,TextFieldEx.VALIGN_BOTTOM);
          setComponentsVisibility(false);
          this.updatePlayerInfoPosition();
@@ -191,7 +191,7 @@ package net.wg.gui.battle.views.postmortemPanel
          }
          if(isInvalid(INVALID_VEHICLE_PANEL))
          {
-            this.showPostmortemPanel(true);
+            this.showPostmortemInfoPanel(true);
             if(_userName && _userName.userVO && _userName.userVO.userName != Values.EMPTY_STR)
             {
                this.showPanel();
@@ -199,7 +199,7 @@ package net.wg.gui.battle.views.postmortemPanel
          }
          if(isInvalid(INVALID_HIDE_COMPONENTS))
          {
-            this.showPostmortemPanel(false);
+            this.showPostmortemInfoPanel(false);
             setComponentsVisibility(false);
          }
       }
@@ -297,10 +297,6 @@ package net.wg.gui.battle.views.postmortemPanel
       
       public function as_resetPostmortemPosition() : void
       {
-         if(this._dogTagKiller)
-         {
-            this._dogTagKiller.animateHide();
-         }
          this.y = App.appHeight | 0;
          this.alpha = 1;
       }
@@ -317,7 +313,10 @@ package net.wg.gui.battle.views.postmortemPanel
       
       public function as_togglePostmortemInfoPanel(param1:Boolean) : void
       {
-         this.postmortemInfoPanel.visible = param1;
+         if(this.postmortemInfoPanel)
+         {
+            this.postmortemInfoPanel.visible = param1;
+         }
       }
       
       protected function createPostmortemPanelElements() : void
@@ -336,7 +335,7 @@ package net.wg.gui.battle.views.postmortemPanel
          }
       }
       
-      protected function showPostmortemPanel(param1:Boolean) : void
+      protected function showPostmortemInfoPanel(param1:Boolean) : void
       {
          if(!param1 || !this._isReplay && this._isEnabledPostmortemPanel && param1)
          {

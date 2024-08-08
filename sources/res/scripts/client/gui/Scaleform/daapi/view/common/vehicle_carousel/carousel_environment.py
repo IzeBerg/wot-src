@@ -17,7 +17,7 @@ from gui.shared.utils.requesters.ItemsRequester import REQ_CRITERIA
 from helpers import dependency, i18n
 from skeletons.account_helpers.settings_core import ISettingsCore
 from skeletons.gui.battle_session import IBattleSessionProvider
-from skeletons.gui.game_control import IRentalsController, IIGRController, IClanLockController, IEpicBattleMetaGameController, IRankedBattlesController, IWotPlusController
+from skeletons.gui.game_control import IRentalsController, IIGRController, IClanLockController, IEpicBattleMetaGameController, IRankedBattlesController
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.shared import IItemsCache
 
@@ -72,7 +72,6 @@ class CarouselEnvironment(CarouselEnvironmentMeta, IGlobalListener, ICarouselEnv
     epicController = dependency.descriptor(IEpicBattleMetaGameController)
     rankedController = dependency.descriptor(IRankedBattlesController)
     lobbyContext = dependency.descriptor(ILobbyContext)
-    wotPlusController = dependency.descriptor(IWotPlusController)
     __battleSession = dependency.descriptor(IBattleSessionProvider)
     _DISABLED_FILTERS = []
     _CAROUSEL_FILTERS = ('bonus', 'favorite', 'elite', 'premium') + (('igr', ) if IS_KOREA else ())
@@ -192,7 +191,6 @@ class CarouselEnvironment(CarouselEnvironmentMeta, IGlobalListener, ICarouselEnv
         self._currentVehicle.onChanged += self.__onCurrentVehicleChanged
         self.epicController.onUpdated += self.__updateEpicSeasonRent
         self.rankedController.onUpdated += self.__updateRankedBonusBattles
-        self.wotPlusController.onDataChanged += self.__onWotPlusChanged
         self.settingsCore.onSettingsChanged += self._onCarouselSettingsChange
         self.lobbyContext.getServerSettings().onServerSettingsChange += self._onServerSettingChanged
         g_playerEvents.onVehicleBecomeElite += self.__onVehicleBecomeElite
@@ -210,7 +208,6 @@ class CarouselEnvironment(CarouselEnvironmentMeta, IGlobalListener, ICarouselEnv
         self._currentVehicle.onChanged -= self.__onCurrentVehicleChanged
         self.epicController.onUpdated -= self.__updateEpicSeasonRent
         self.rankedController.onUpdated -= self.__updateRankedBonusBattles
-        self.wotPlusController.onDataChanged -= self.__onWotPlusChanged
         self.lobbyContext.getServerSettings().onServerSettingsChange -= self._onServerSettingChanged
         self.settingsCore.onSettingsChanged -= self._onCarouselSettingsChange
         g_playerEvents.onVehicleBecomeElite -= self.__onVehicleBecomeElite
@@ -303,8 +300,3 @@ class CarouselEnvironment(CarouselEnvironmentMeta, IGlobalListener, ICarouselEnv
 
     def __onVehicleClientStateChanged(self, vehicles):
         self.updateVehicles(vehicles)
-
-    def __onWotPlusChanged(self, diff):
-        if 'isEnabled' in diff:
-            self.updateVehicles()
-            self.updateAvailability()

@@ -393,16 +393,15 @@ class SYSTEM_MESSAGES(object):
     RETRAINING_CREW_INVALID_OPERATION = '#system_messages:retraining_crew/invalid_operation'
     RETRAINING_CREW_FORBIDDEN = '#system_messages:retraining_crew/FORBIDDEN'
     RESTORE_TANKMAN_ERROR = '#system_messages:restore_tankman/error'
+    ADD_TANKMAN_SKILLS_SUCCESS = '#system_messages:add_tankman_skills/success'
+    ADD_TANKMAN_SKILLS_SERVER_ERROR = '#system_messages:add_tankman_skills/server_error'
     ADD_TANKMAN_SKILL_SUCCESS = '#system_messages:add_tankman_skill/success'
     ADD_TANKMAN_SKILL_SERVER_ERROR = '#system_messages:add_tankman_skill/server_error'
     ADD_TANKMAN_SKILL_INVALID_VEHICLE = '#system_messages:add_tankman_skill/invalid_vehicle'
     ADD_TANKMAN_SKILL_VEHICLE_NEED_REPAIR = '#system_messages:add_tankman_skill/vehicle_need_repair'
     ADD_TANKMAN_SKILL_VEHICLE_LOCKED = '#system_messages:add_tankman_skill/vehicle_locked'
-    LEARN_TANKMAN_FREE_SKILL_SUCCESS = '#system_messages:learn_tankman_free_skill/success'
-    LEARN_TANKMAN_FREE_SKILL_SERVER_ERROR = '#system_messages:learn_tankman_free_skill/server_error'
-    LEARN_TANKMAN_FREE_SKILL_INVALID_VEHICLE = '#system_messages:learn_tankman_free_skill/invalid_vehicle'
-    LEARN_TANKMAN_FREE_SKILL_VEHICLE_NEED_REPAIR = '#system_messages:learn_tankman_free_skill/vehicle_need_repair'
-    LEARN_TANKMAN_FREE_SKILL_VEHICLE_LOCKED = '#system_messages:learn_tankman_free_skill/vehicle_locked'
+    FILLING_UNTRAINED_PERKS_SUCCESS = '#system_messages:filling_untrained_perks/success'
+    FILLING_UNTRAINED_PERKS_SERVER_ERROR = '#system_messages:filling_untrained_perks/server_error'
     DROP_TANKMAN_SKILL_SUCCESS = '#system_messages:drop_tankman_skill/success'
     DROP_TANKMAN_SKILL_FINANCE_SUCCESS_CREDITS = '#system_messages:drop_tankman_skill/finance_success_credits'
     DROP_TANKMAN_SKILL_FINANCE_SUCCESS_GOLD = '#system_messages:drop_tankman_skill/finance_success_gold'
@@ -433,6 +432,8 @@ class SYSTEM_MESSAGES(object):
     REPLACE_TANKMAN_VEHICLE_LOCKED = '#system_messages:replace_tankman/vehicle_locked'
     REPLACE_TANKMAN_NOT_ENOUGH_MONEY = '#system_messages:replace_tankman/not_enough_money'
     REPLACE_TANKMAN_FORBIDDEN = '#system_messages:replace_tankman/FORBIDDEN'
+    RESET_ALL_TANKMEN_SKILLS_SUCCESS = '#system_messages:reset_all_tankmen_skills/success'
+    RESET_ALL_TANKMEN_SKILLS_SERVER_ERROR = '#system_messages:reset_all_tankmen_skills/server_error'
     VEHICLE_BUY_SUCCESS = '#system_messages:vehicle_buy/success'
     VEHICLE_BUY_SERVER_ERROR = '#system_messages:vehicle_buy/server_error'
     VEHICLE_BUY_INVALID_VEHICLE = '#system_messages:vehicle_buy/invalid_vehicle'
@@ -800,11 +801,10 @@ class SYSTEM_MESSAGES(object):
     CLANS_NOTIFICATIONS_PERSONAL_APPDECLINED = '#system_messages:clans/notifications/personal/appDeclined'
     CLANS_NOTIFICATIONS_INVITEACCEPTED = '#system_messages:clans/notifications/inviteAccepted'
     CLANS_NOTIFICATIONS_INVITEDECLINED = '#system_messages:clans/notifications/inviteDeclined'
-    EXCHANGE_SUCCESS = '#system_messages:exchange/success'
+    EXCHANGE_SUCCESS_INFORMATION = '#system_messages:exchange/success/information'
     EXCHANGE_NOT_ENOUGH_GOLD = '#system_messages:exchange/not_enough_gold'
     EXCHANGE_WALLET_NOT_AVAILABLE = '#system_messages:exchange/wallet_not_available'
     EXCHANGE_SERVER_ERROR = '#system_messages:exchange/server_error'
-    EXCHANGEXP_SUCCESS = '#system_messages:exchangeXP/success'
     EXCHANGEXP_NOT_ENOUGH_GOLD = '#system_messages:exchangeXP/not_enough_gold'
     EXCHANGEXP_WALLET_NOT_AVAILABLE = '#system_messages:exchangeXP/wallet_not_available'
     EXCHANGEXP_SERVER_ERROR = '#system_messages:exchangeXP/server_error'
@@ -1218,6 +1218,9 @@ class SYSTEM_MESSAGES(object):
     NATION_CHANGE_FAILED = '#system_messages:nation_change/FAILED'
     NATION_CHANGE_WRONG_ARG_VALUE = '#system_messages:nation_change/WRONG_ARG_VALUE'
     NATION_CHANGE_ERROR = '#system_messages:nation_change/error'
+    POST_PROGRESSION_SUCCESS = '#system_messages:post_progression/success'
+    POST_PROGRESSION_SUCCESS_TITLE = '#system_messages:post_progression/success/title'
+    POST_PROGRESSION_SERVER_ERROR = '#system_messages:post_progression/server_error'
     DEMOUNTKIT_RESTORED_SWITCHEDON = '#system_messages:demountKit_restored/switchedOn'
     DEMOUNTKIT_FAILED_SWITCHEDOFF = '#system_messages:demountKit_failed/switchedOff'
     DAILY_QUESTS_SWITCH_OFF_TITLE = '#system_messages:daily_quests/switch_off/title'
@@ -1370,6 +1373,7 @@ class SYSTEM_MESSAGES(object):
     CONVERSION_HEADER = '#system_messages:conversion/header'
     CONVERSION_ERROR = '#system_messages:conversion/error'
     CONVERSION_SUCCESS = '#system_messages:conversion/success'
+    CONVERSIONPERKS_HEADER = '#system_messages:conversionPerks/header'
     UNIT_WARNINGS_WGSHEVENT_VEHICLEUNFROZEN = '#system_messages:unit/warnings/wgshEvent/vehicleUnfrozen'
     UNIT_ERROR_WGSHEVENT_ACCOUNTNOTINCLAN = '#system_messages:unit/error/wgshEvent/AccountNotInClan'
     UNIT_ERROR_WGSHEVENT_ACCOUNTDOESNOTHAVEPERMISSIONS = '#system_messages:unit/error/wgshEvent/AccountDoesNotHavePermissions'
@@ -1377,6 +1381,9 @@ class SYSTEM_MESSAGES(object):
     UNIT_ERROR_WGSHEVENT_UNFREEZEVEHICLEPRICEMISMATCH = '#system_messages:unit/error/wgshEvent/UnfreezeVehiclePriceMismatch'
     UNIT_ERROR_WGSHEVENT_ACCOUNTVEHICLEDOESNOTEXIST = '#system_messages:unit/error/wgshEvent/AccountVehicleDoesNotExist'
     UNIT_ERROR_WGSHEVENT_COMMON = '#system_messages:unit/error/wgshEvent/common'
+    SKILLSCREWBOOSTERSCONVERSION_TITLE = '#system_messages:skillsCrewBoostersConversion/title'
+    SKILLSCREWBOOSTERSCONVERSION_TEXT = '#system_messages:skillsCrewBoostersConversion/text'
+    SKILLSCREWBOOSTERSCONVERSION_ITEM = '#system_messages:skillsCrewBoostersConversion/item'
     UNIT_NOTIFICATION_DIVISIONTYPE_ENUM = (
      UNIT_NOTIFICATION_DIVISIONTYPE_MIDDLE,
      UNIT_NOTIFICATION_DIVISIONTYPE_CHAMPION,
@@ -1907,16 +1914,15 @@ class SYSTEM_MESSAGES(object):
      RETRAINING_CREW_INVALID_OPERATION,
      RETRAINING_CREW_FORBIDDEN,
      RESTORE_TANKMAN_ERROR,
+     ADD_TANKMAN_SKILLS_SUCCESS,
+     ADD_TANKMAN_SKILLS_SERVER_ERROR,
      ADD_TANKMAN_SKILL_SUCCESS,
      ADD_TANKMAN_SKILL_SERVER_ERROR,
      ADD_TANKMAN_SKILL_INVALID_VEHICLE,
      ADD_TANKMAN_SKILL_VEHICLE_NEED_REPAIR,
      ADD_TANKMAN_SKILL_VEHICLE_LOCKED,
-     LEARN_TANKMAN_FREE_SKILL_SUCCESS,
-     LEARN_TANKMAN_FREE_SKILL_SERVER_ERROR,
-     LEARN_TANKMAN_FREE_SKILL_INVALID_VEHICLE,
-     LEARN_TANKMAN_FREE_SKILL_VEHICLE_NEED_REPAIR,
-     LEARN_TANKMAN_FREE_SKILL_VEHICLE_LOCKED,
+     FILLING_UNTRAINED_PERKS_SUCCESS,
+     FILLING_UNTRAINED_PERKS_SERVER_ERROR,
      DROP_TANKMAN_SKILL_SUCCESS,
      DROP_TANKMAN_SKILL_FINANCE_SUCCESS_CREDITS,
      DROP_TANKMAN_SKILL_FINANCE_SUCCESS_GOLD,
@@ -1947,6 +1953,8 @@ class SYSTEM_MESSAGES(object):
      REPLACE_TANKMAN_VEHICLE_LOCKED,
      REPLACE_TANKMAN_NOT_ENOUGH_MONEY,
      REPLACE_TANKMAN_FORBIDDEN,
+     RESET_ALL_TANKMEN_SKILLS_SUCCESS,
+     RESET_ALL_TANKMEN_SKILLS_SERVER_ERROR,
      VEHICLE_BUY_SUCCESS,
      VEHICLE_BUY_SERVER_ERROR,
      VEHICLE_BUY_INVALID_VEHICLE,
@@ -2314,11 +2322,10 @@ class SYSTEM_MESSAGES(object):
      CLANS_NOTIFICATIONS_PERSONAL_APPDECLINED,
      CLANS_NOTIFICATIONS_INVITEACCEPTED,
      CLANS_NOTIFICATIONS_INVITEDECLINED,
-     EXCHANGE_SUCCESS,
+     EXCHANGE_SUCCESS_INFORMATION,
      EXCHANGE_NOT_ENOUGH_GOLD,
      EXCHANGE_WALLET_NOT_AVAILABLE,
      EXCHANGE_SERVER_ERROR,
-     EXCHANGEXP_SUCCESS,
      EXCHANGEXP_NOT_ENOUGH_GOLD,
      EXCHANGEXP_WALLET_NOT_AVAILABLE,
      EXCHANGEXP_SERVER_ERROR,
@@ -2732,6 +2739,9 @@ class SYSTEM_MESSAGES(object):
      NATION_CHANGE_FAILED,
      NATION_CHANGE_WRONG_ARG_VALUE,
      NATION_CHANGE_ERROR,
+     POST_PROGRESSION_SUCCESS,
+     POST_PROGRESSION_SUCCESS_TITLE,
+     POST_PROGRESSION_SERVER_ERROR,
      DEMOUNTKIT_RESTORED_SWITCHEDON,
      DEMOUNTKIT_FAILED_SWITCHEDOFF,
      DAILY_QUESTS_SWITCH_OFF_TITLE,
@@ -2884,13 +2894,17 @@ class SYSTEM_MESSAGES(object):
      CONVERSION_HEADER,
      CONVERSION_ERROR,
      CONVERSION_SUCCESS,
+     CONVERSIONPERKS_HEADER,
      UNIT_WARNINGS_WGSHEVENT_VEHICLEUNFROZEN,
      UNIT_ERROR_WGSHEVENT_ACCOUNTNOTINCLAN,
      UNIT_ERROR_WGSHEVENT_ACCOUNTDOESNOTHAVEPERMISSIONS,
      UNIT_ERROR_WGSHEVENT_NOTENOUGHSPAREPARTS,
      UNIT_ERROR_WGSHEVENT_UNFREEZEVEHICLEPRICEMISMATCH,
      UNIT_ERROR_WGSHEVENT_ACCOUNTVEHICLEDOESNOTEXIST,
-     UNIT_ERROR_WGSHEVENT_COMMON)
+     UNIT_ERROR_WGSHEVENT_COMMON,
+     SKILLSCREWBOOSTERSCONVERSION_TITLE,
+     SKILLSCREWBOOSTERSCONVERSION_TEXT,
+     SKILLSCREWBOOSTERSCONVERSION_ITEM)
 
     @classmethod
     def unit_notification_divisiontype(cls, key0):

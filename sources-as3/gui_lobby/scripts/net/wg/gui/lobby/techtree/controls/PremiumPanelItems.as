@@ -179,6 +179,7 @@ package net.wg.gui.lobby.techtree.controls
       public function initPremiumPanelWithDots() : void
       {
          var _loc5_:DisplayObject = null;
+         var _loc7_:Boolean = false;
          var _loc9_:int = 0;
          if(this._panelSettings == null || !this._panelSettings.isFilled())
          {
@@ -193,7 +194,7 @@ package net.wg.gui.lobby.techtree.controls
          var _loc3_:int = this._panelSettings.start.y + (this._nodeHeight >> 1);
          var _loc4_:int = this.points.numChildren;
          var _loc6_:int = 0;
-         var _loc7_:Boolean = true;
+         _loc7_ = true;
          var _loc8_:int = 0;
          while(_loc8_ < this._panelSettings.columns)
          {

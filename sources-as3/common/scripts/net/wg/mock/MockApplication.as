@@ -98,7 +98,7 @@ package net.wg.mock
          this._imageMgr = new MockImageManager();
       }
       
-      public function as_blurBackgroundViews(param1:int, param2:Number) : void
+      public function as_blurBackgroundViews(param1:int, param2:Number, param3:Number) : void
       {
       }
       

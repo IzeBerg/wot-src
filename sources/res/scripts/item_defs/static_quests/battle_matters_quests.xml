@@ -1936,6 +1936,11 @@
 						<!--BW_String-->
 					</expires>
 				</token>
+				<dossier>
+					<name>steamAchievements:steamBriefingMedal</name>
+					<value>1</value>
+					<type>set</type>
+				</dossier>
 			</bonus>
 		</tokenQuest>
 		<tokenQuest>
@@ -2058,6 +2063,36 @@
 					</expires>
 					<count>6</count>
 				</token>
+			</bonus>
+		</tokenQuest>
+		<tokenQuest>
+			<enabled>true</enabled>
+			<hidden>true</hidden>
+			<id>consumables_add_equipment_skip_notification</id>
+			<serverOnly>true</serverOnly>
+			<conditions>
+				<preBattle>
+					<account>
+						<isFirstLogin>true</isFirstLogin>
+					</account>
+				</preBattle>
+				<common>
+					<bonusLimit>1</bonusLimit>
+				</common>
+			</conditions>
+			<bonus>
+				<item>
+					1275
+					<count>25</count>
+				</item>
+				<item>
+					763
+					<count>25</count>
+				</item>
+				<item>
+					251
+					<count>25</count>
+				</item>
 			</bonus>
 		</tokenQuest>
 	</quests>

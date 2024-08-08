@@ -19,8 +19,6 @@ package net.wg.data.constants.generated
       
       public static const FUN_RANDOM_TANK_CAROUSEL:String = "funRandomTankCarousel";
       
-      public static const FUN_RANDOM_QFG_TANK_CAROUSEL:String = "funRandomQFGTankCarousel";
-      
       public static const COMP7_TANK_CAROUSEL:String = "comp7TankCarousel";
       
       public static const AMMUNITION_PANEL:String = "ammunitionPanel";
@@ -132,8 +130,6 @@ package net.wg.data.constants.generated
       public static const FUN_RANDOM_ENTRY_POINT:String = "FunRandomEntryPoint";
       
       public static const FUN_RANDOM_HANGAR_WIDGET:String = "FunRandomHangarWidget";
-      
-      public static const STRENGTHS_WEAKNESSES_PANEL:String = "StrengthsWeaknessesPanel";
       
       public static const EVENT_CREW_HEALING_COMPONENT:String = "eventCrewHealingComponent";
       

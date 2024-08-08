@@ -7,9 +7,9 @@ package net.wg.gui.lobby.window
    {
        
       
-      function setData(param1:ExchangeHeaderVO) : void;
+      function setData(param1:ExchangeHeaderVO, param2:String, param3:Boolean) : void;
       
-      function setRates(param1:int, param2:int) : void;
+      function setRates(param1:int, param2:int, param3:Boolean, param4:int) : void;
       
       function set useBackDecor(param1:Boolean) : void;
       

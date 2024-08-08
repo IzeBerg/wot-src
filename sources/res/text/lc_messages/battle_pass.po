@@ -356,11 +356,20 @@ msgstr "Стоимость покупки:"
 msgid "battlePassBuyView/priceDivider"
 msgstr "или"
 
-msgid "battlePassBuyView/reward/backBtn"
-msgstr "Назад"
-
 msgid "battlePassBuyView/reward/chapter"
 msgstr "ГЛАВА «%(chapterName)s»"
+
+msgid "battlePassBuyView/reward/descriptionFutureRewards"
+msgstr "Эти награды будут начислены по завершении следующих этапов."
+
+msgid "battlePassBuyView/reward/descriptionNowRewards"
+msgstr "Сейчас будут начислены следующие награды за этапы %(steps)s"
+
+msgid "battlePassBuyView/reward/descriptionNowRewardsCheckbox"
+msgstr "Вы сразу же получите следующие награды"
+
+msgid "battlePassBuyView/reward/descriptionNowRewardsSingle"
+msgstr "Сейчас будут начислены следующие награды за этап %(steps)s"
 
 msgid "battlePassBuyView/reward/subtitle"
 msgid_plural "plural/battlePassBuyView/reward/subtitle"
@@ -372,19 +381,13 @@ msgid "battlePassBuyView/reward/titleBattlePass"
 msgstr "НАГРАДЫ УЛУЧШЕННОГО БОЕВОГО ПРОПУСКА"
 
 msgid "battlePassBuyView/reward/titleFutureRewards"
-msgstr "Эти награды будут начислены по завершении следующих этапов."
+msgstr "БУДУТ ОТКРЫТЫ"
 
 msgid "battlePassBuyView/reward/titleLevels"
 msgstr "НАГРАДЫ ЗА %(levels)s ЕД. ЭТАПОВ"
 
 msgid "battlePassBuyView/reward/titleNowRewards"
-msgstr "Сейчас будут начислены следующие награды за этапы %(steps)s"
-
-msgid "battlePassBuyView/reward/titleNowRewardsCheckbox"
-msgstr "Вы сразу же получите следующие награды"
-
-msgid "battlePassBuyView/reward/titleNowRewardsSingle"
-msgstr "Сейчас будут начислены следующие награды за этап %(steps)s"
+msgstr "БУДУТ ПОЛУЧЕНЫ СРАЗУ"
 
 msgid "battlePassBuyView/subTitle"
 msgstr ""
@@ -418,14 +421,14 @@ msgstr "Песнь о зубре"
 msgid "chapter/fullName/1114"
 msgstr "Песнь о зубре"
 
-msgid "chapter/fullName/141"
-msgstr "Сохраняйте спокойствие"
+msgid "chapter/fullName/151"
+msgstr "Тёмный горизонт"
 
-msgid "chapter/fullName/142"
-msgstr "Пусть справедливость восторжествует"
+msgid "chapter/fullName/152"
+msgstr "Неведомая сила"
 
-msgid "chapter/fullName/143"
-msgstr "Освобождение"
+msgid "chapter/fullName/153"
+msgstr "Мимолётная надежда"
 
 msgid "chapter/fullNameUppercased/10021"
 msgstr "ПЕСНЬ О ЗУБРЕ"
@@ -433,14 +436,14 @@ msgstr "ПЕСНЬ О ЗУБРЕ"
 msgid "chapter/fullNameUppercased/1114"
 msgstr "ПЕСНЬ О ЗУБРЕ"
 
-msgid "chapter/fullNameUppercased/141"
-msgstr "СОХРАНЯЙТЕ СПОКОЙСТВИЕ"
+msgid "chapter/fullNameUppercased/151"
+msgstr "ТЁМНЫЙ ГОРИЗОНТ"
 
-msgid "chapter/fullNameUppercased/142"
-msgstr "ПУСТЬ СПРАВЕДЛИВОСТЬ ВОСТОРЖЕСТВУЕТ"
+msgid "chapter/fullNameUppercased/152"
+msgstr "НЕВЕДОМАЯ СИЛА"
 
-msgid "chapter/fullNameUppercased/143"
-msgstr "ОСВОБОЖДЕНИЕ"
+msgid "chapter/fullNameUppercased/153"
+msgstr "МИМОЛЁТНАЯ НАДЕЖДА"
 
 msgid "chapter/title"
 msgstr "ГЛАВА «%(chapter)s»"
@@ -534,6 +537,9 @@ msgstr "Все члены экипажа соответствуют опреде
 
 msgid "chapterChoice/title"
 msgstr "ВЫБЕРИТЕ ГЛАВУ"
+
+msgid "chapterChoice/vehicleInHangar/tooltip/text"
+msgstr "В Ангаре"
 
 msgid "chosenBonuses/bonus/battle_booster_gift"
 msgstr "Предбоевые инструкции к оборудованию на выбор"
@@ -785,62 +791,15 @@ msgstr "Так точно!"
 
 msgid "intro/seasonDescription/text"
 msgstr ""
-"Этот сезон Боевого пропуска приурочен к 80-й годовщине высадки в Нормандии, "
-"известной во многих странах как «День Д». Главные награды за прохождение "
-"пропуска — три премиум машины VI уровня, у каждой из которых уникальный "
-"внешний вид, вдохновлённый техникой союзников того "
-"времени:&nbsp;Churchill&nbsp;Crocodile,&nbsp;M4A3(76)W&nbsp;Sherman&nbsp;и&nbsp;Char&nbsp;de&nbsp;transition."
+"В XV сезоне Боевого пропуска вы сможете получить уникальные 3D-стили в "
+"тематике Ваффентрагера для ключевой техники сезона: K-91, Concept No. 5 и "
+"Pz.Kpfw. VII."
 
 msgid "intro/seasonDescription/title"
-msgstr "ТРИ ПРЕМИУМ МАШИНЫ В НАГРАДУ"
+msgstr "НОВЫЕ ТЕМАТИЧЕСКИЕ 3D-СТИЛИ"
 
 msgid "intro/title"
-msgstr "XIV СЕЗОН: «ДЕНЬ Д»"
-
-msgid "offSeason/alertTooltip"
-msgstr "Результаты голосования временно недоступны. Попробуйте зайти позже."
-
-msgid "offSeason/finished"
-msgstr "ЗАВЕРШЁН"
-
-msgid "offSeason/footerLose"
-msgstr ""
-"После окончания текущего сезона Боевого пропуска вам начислена многоразовая боевая задача на\n"
-"удвоенный опыт экипажа для техники IV–X уровней."
-
-msgid "offSeason/footerWin"
-msgstr ""
-"После окончания текущего сезона Боевого пропуска вам начислена многоразовая боевая задача на\n"
-"удвоенный боевой опыт для техники IV–X уровней."
-
-msgid "offSeason/levelReached"
-msgstr ""
-"В рамках сезона вы остановились на\n"
-"{level}-м этапе прогрессии."
-
-msgid "offSeason/levelReachedPost"
-msgstr ""
-"В рамках сезона вы остановились на {level}-м этапе\n"
-"элитной прогрессии."
-
-msgid "offSeason/noProgress"
-msgstr ""
-"Вы не провели ни одного боя в рамках\n"
-"Боевого пропуска."
-
-msgid "offSeason/postPassed"
-msgstr ""
-"Поздравляем! В рамках сезона вы полностью прошли\n"
-"элитную часть прогрессии!"
-
-msgid "offSeason/sideChosen"
-msgstr "Выбрали сторону {vehicle}"
-
-msgid "offSeason/startsSoon"
-msgstr "Следующий сезон скоро начнётся!"
-
-msgid "offSeason/title"
-msgstr "СЕЗОН %(season)s"
+msgstr "СЕЗОН XV: ИСТОКИ НАСЛЕДИЯ"
 
 msgid "points/top"
 msgstr "%(vehicle): %(bonus) за попадание в %(top) по опыту."
@@ -1013,8 +972,17 @@ msgstr "Член экипажа с озвучкой"
 msgid "progression/extraChapterWidget/commanderVoices"
 msgstr "К остальным"
 
+msgid "progression/extraChapterWidget/forLabel"
+msgstr "Для %(vehicleName)s"
+
+msgid "progression/extraChapterWidget/inHangarTooltip"
+msgstr "В Ангаре"
+
 msgid "progression/extraChapterWidget/labelWithBP"
 msgstr "С Улучшенным пропуском"
+
+msgid "progression/extraChapterWidget/style3DTitle"
+msgstr "3D-стиль"
 
 msgid "progression/extraChapterWidget/styleName"
 msgstr "«%(styleName)s»"
@@ -1026,7 +994,7 @@ msgid "progression/extraChapterWidget/styleSubTitle"
 msgstr "и боевая задача для %(vehicleName)s"
 
 msgid "progression/extraChapterWidget/styleTitle"
-msgstr "3D-стиль"
+msgstr "Стиль"
 
 msgid "progression/extraChapterWidget/tank"
 msgstr "Премиум техника"
@@ -1045,14 +1013,14 @@ msgstr "Член экипажа"
 msgid "progression/extraChapterWidget/timer"
 msgstr "Осталось времени до окончания главы Боевого пропуска"
 
-msgid "progression/extraChapterWidget/tooltip"
-msgstr "Нажмите, чтобы прослушать голос члена экипажа."
-
 msgid "progression/extraChapterWidget/vehicleCaption"
 msgstr "Премиум машина"
 
 msgid "progression/extraChapterWidget/vehicleSubTitle"
 msgstr "и 3D-стиль «%(styleName)s»"
+
+msgid "progression/extraChapterWidget/voiceoverTooltip"
+msgstr "Нажмите, чтобы прослушать голос члена экипажа."
 
 msgid "progression/footer/freePointsDescr"
 msgstr "Нераспределённых очков Боевого пропуска: "
@@ -1205,14 +1173,14 @@ msgstr "БОЕВОЙ ПРОПУСК. ГЛАВА «%(chapter)s», ЭТАП %(leve
 msgid "season/fullName/1002"
 msgstr "Песнь о зубре"
 
-msgid "season/fullName/14"
-msgstr "День Д"
+msgid "season/fullName/15"
+msgstr "Истоки наследия"
 
 msgid "season/fullNameUppercased/1002"
 msgstr "ПЕСНЬ О ЗУБРЕ"
 
-msgid "season/fullNameUppercased/14"
-msgstr "ДЕНЬ Д"
+msgid "season/fullNameUppercased/15"
+msgstr "ИСТОКИ НАСЛЕДИЯ"
 
 msgid "selectBonus/battle_booster_gift"
 msgstr "Предбоевые инструкции к оборудованию на выбор"
@@ -1535,8 +1503,8 @@ msgstr "Текущий этап"
 
 msgid "tooltips/inProgress/playGame/comp7"
 msgstr ""
-"Правила начисления очков в режиме %(bond_Open)s«Натиск Лайт»%(bond_Close)s "
-"на технике VIII уровня."
+"Правила начисления очков в режиме %(bond_Open)s«Натиск»%(bond_Close)s на "
+"технике X уровня."
 
 msgid "tooltips/inProgress/playGame/mapbox"
 msgstr ""

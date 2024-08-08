@@ -12,22 +12,10 @@ package net.wg.gui.lobby.battleResults.progressReport
    public class BattleResultUnlockItem extends UIComponentEx implements ISubtaskComponent
    {
       
-      private static const SKILLS_Y_INITIAL:int = 4;
-      
-      private static const SKILLS_Y_SHIFT:int = 24;
-      
-      private static const TEXTS_Y_SHIFT:int = 22;
-      
-      private static const LINE_Y_SHIFT:int = 52;
-      
-      private static const DOUBLE_SKILLS_HEIGHT:int = 81;
-      
       private static const SKILL_LINK_TYPE:String = "NEW_SKILL_LINK_TYPE";
        
       
       public var newSkill:NewSkillInfo;
-      
-      public var newFreeSkill:NewSkillInfo;
       
       public var newUnlock:NewSkillInfo;
       
@@ -67,8 +55,6 @@ package net.wg.gui.lobby.battleResults.progressReport
          this._itemData = null;
          this.newSkill.dispose();
          this.newSkill = null;
-         this.newFreeSkill.dispose();
-         this.newFreeSkill = null;
          this.newUnlock.dispose();
          this.newUnlock = null;
          this.fittingIcon.dispose();
@@ -94,7 +80,6 @@ package net.wg.gui.lobby.battleResults.progressReport
       public function setData(param1:Object) : void
       {
          var _loc4_:Boolean = false;
-         var _loc5_:Boolean = false;
          this._itemData = new BattleResultUnlockItemVO(param1);
          this.fittingIcon.visible = this._itemData.fittingType.length > 0;
          if(this.fittingIcon.visible)
@@ -104,32 +89,19 @@ package net.wg.gui.lobby.battleResults.progressReport
          this.initIcon(this.vehicleIcon,this._itemData.vehicleIcon);
          this.initIcon(this.tankmenIcon,this._itemData.tankmenIcon);
          this.initIcon(this.lvlIcon,this._itemData.lvlIcon);
-         var _loc2_:Boolean = this._itemData.freeSkillsLinkEvent.length > 0;
-         var _loc3_:Boolean = this._itemData.linkEvent.length > 0;
-         _loc4_ = _loc3_ && this._itemData.linkEvent == SKILL_LINK_TYPE;
-         _loc5_ = _loc3_ && this._itemData.linkEvent != SKILL_LINK_TYPE;
-         if(_loc2_)
+         var _loc2_:Boolean = this._itemData.linkEvent.length > 0;
+         var _loc3_:Boolean = _loc2_ && this._itemData.linkEvent == SKILL_LINK_TYPE;
+         _loc4_ = _loc2_ && this._itemData.linkEvent != SKILL_LINK_TYPE;
+         if(_loc3_)
          {
-            this.newFreeSkill.setData(this._itemData,true);
+            this.newSkill.setData(this._itemData);
          }
          if(_loc4_)
          {
-            this.newSkill.setData(this._itemData);
-            if(_loc2_)
-            {
-               this.newSkill.y = SKILLS_Y_INITIAL + SKILLS_Y_SHIFT;
-               this.description.y = this.prediction.y = this.newSkill.y + TEXTS_Y_SHIFT;
-               this.lineMC.y = this.newSkill.y + LINE_Y_SHIFT;
-               this.height = DOUBLE_SKILLS_HEIGHT;
-            }
-         }
-         if(_loc5_)
-         {
             this.newUnlock.setData(this._itemData);
          }
-         this.newFreeSkill.visible = _loc2_;
-         this.newSkill.visible = _loc4_;
-         this.newUnlock.visible = _loc5_;
+         this.newSkill.visible = _loc3_;
+         this.newUnlock.visible = _loc4_;
          this.description.htmlText = this._itemData.description;
          this.prediction.text = this._itemData.prediction;
          if(this._itemData.price)

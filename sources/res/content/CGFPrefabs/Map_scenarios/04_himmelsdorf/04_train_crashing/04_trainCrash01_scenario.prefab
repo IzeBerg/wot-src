@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-	<version>3</version>
+	<version>4</version>
 	<GameObjects>
 		<GameObject>
 			<name>04_trainCrash01_scenario</name>
@@ -33,7 +33,7 @@
 			<type>Hierarchy</type>
 			<version>2</version>
 			<component>
-				<objectIndex>1</objectIndex>
+				<UUID>9e9c511a-15c2-4a50-9939-dc432f76a616</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -43,7 +43,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>2</objectIndex>
+				<UUID>7142db9d-c76f-4ebb-a7a6-65ff26fa6897</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -53,7 +53,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>3</objectIndex>
+				<UUID>006be44b-fe38-4e27-ab62-0cced4b2af83</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -63,7 +63,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>4</objectIndex>
+				<UUID>d8d648e0-4fac-438c-9858-92c2b1d706ff</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -77,7 +77,7 @@
 			<type>Transform</type>
 			<version>1</version>
 			<component>
-				<objectIndex>0</objectIndex>
+				<UUID>bf472463-f452-4e18-b99f-e684bf60a902</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -95,7 +95,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>1</objectIndex>
+				<UUID>9e9c511a-15c2-4a50-9939-dc432f76a616</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -116,7 +116,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>2</objectIndex>
+				<UUID>7142db9d-c76f-4ebb-a7a6-65ff26fa6897</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -134,7 +134,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>3</objectIndex>
+				<UUID>006be44b-fe38-4e27-ab62-0cced4b2af83</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -152,7 +152,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>4</objectIndex>
+				<UUID>d8d648e0-4fac-438c-9858-92c2b1d706ff</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -174,7 +174,7 @@
 			<type>SequenceComponent</type>
 			<version>3</version>
 			<component>
-				<objectIndex>0</objectIndex>
+				<UUID>bf472463-f452-4e18-b99f-e684bf60a902</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -356,64 +356,52 @@
 		</ComponentPool>
 		<ComponentPool>
 			<type>Prefab</type>
-			<version>1</version>
+			<version>2</version>
 			<component>
-				<objectIndex>1</objectIndex>
+				<UUID>9e9c511a-15c2-4a50-9939-dc432f76a616</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
-						<name>resource</name>
-						<isAsset>true</isAsset>
-						<value>content/CGFPrefabs/Map_scenarios/04_himmelsdorf/04_train_crashing/04_trainCrash01_train_complete.prefab</value>
-					</property>
-					<property>
-						<name>overridesData</name>
-						<value/>
+						<name>content</name>
+						<section>
+							<resource>content/CGFPrefabs/Map_scenarios/04_himmelsdorf/04_train_crashing/04_trainCrash01_train_complete.prefab</resource>
+						</section>
 					</property>
 				</config>
 			</component>
 			<component>
-				<objectIndex>2</objectIndex>
+				<UUID>7142db9d-c76f-4ebb-a7a6-65ff26fa6897</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
-						<name>resource</name>
-						<isAsset>true</isAsset>
-						<value>content/CGFPrefabs/Map_scenarios/04_himmelsdorf/04_train_crashing/04_trainCrash01_bombs.prefab</value>
-					</property>
-					<property>
-						<name>overridesData</name>
-						<value/>
+						<name>content</name>
+						<section>
+							<resource>content/CGFPrefabs/Map_scenarios/04_himmelsdorf/04_train_crashing/04_trainCrash01_bombs.prefab</resource>
+						</section>
 					</property>
 				</config>
 			</component>
 			<component>
-				<objectIndex>3</objectIndex>
+				<UUID>006be44b-fe38-4e27-ab62-0cced4b2af83</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
-						<name>resource</name>
-						<isAsset>true</isAsset>
-						<value>content/CGFPrefabs/Map_scenarios/04_himmelsdorf/04_train_crashing/04_trainCrash01_bombersFlight.prefab</value>
-					</property>
-					<property>
-						<name>overridesData</name>
-						<value/>
+						<name>content</name>
+						<section>
+							<resource>content/CGFPrefabs/Map_scenarios/04_himmelsdorf/04_train_crashing/04_trainCrash01_bombersFlight.prefab</resource>
+						</section>
 					</property>
 				</config>
 			</component>
 			<component>
-				<objectIndex>4</objectIndex>
+				<UUID>d8d648e0-4fac-438c-9858-92c2b1d706ff</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
-						<name>resource</name>
-						<isAsset>true</isAsset>
-						<value>content/CGFPrefabs/Map_scenarios/04_himmelsdorf/04_train_crashing/04_trainCrash01_danger_zone_minimap.prefab</value>
-					</property>
-					<property>
-						<name>overridesData</name>
-						<value/>
+						<name>content</name>
+						<section>
+							<resource>content/CGFPrefabs/Map_scenarios/04_himmelsdorf/04_train_crashing/04_trainCrash01_danger_zone_minimap.prefab</resource>
+						</section>
 					</property>
 				</config>
 			</component>
@@ -422,7 +410,7 @@
 			<type>NetworkComponent</type>
 			<version>1</version>
 			<component>
-				<objectIndex>0</objectIndex>
+				<UUID>bf472463-f452-4e18-b99f-e684bf60a902</UUID>
 				<flags>33</flags>
 			</component>
 		</ComponentPool>
@@ -430,7 +418,7 @@
 			<type>NetworkEntity</type>
 			<version>1</version>
 			<component>
-				<objectIndex>0</objectIndex>
+				<UUID>bf472463-f452-4e18-b99f-e684bf60a902</UUID>
 				<flags>33</flags>
 			</component>
 		</ComponentPool>
@@ -438,7 +426,7 @@
 			<type>NetworkTransformComponent</type>
 			<version>1</version>
 			<component>
-				<objectIndex>0</objectIndex>
+				<UUID>bf472463-f452-4e18-b99f-e684bf60a902</UUID>
 				<flags>33</flags>
 				<config>
 					<property>
@@ -464,7 +452,7 @@
 			<type>VSEComponent</type>
 			<version>1</version>
 			<component>
-				<objectIndex>0</objectIndex>
+				<UUID>bf472463-f452-4e18-b99f-e684bf60a902</UUID>
 				<flags>32</flags>
 				<config>
 					<property>
@@ -483,7 +471,7 @@
 			<type>VSEParameterComponent</type>
 			<version>1</version>
 			<component>
-				<objectIndex>0</objectIndex>
+				<UUID>bf472463-f452-4e18-b99f-e684bf60a902</UUID>
 				<flags>32</flags>
 				<config>
 					<property>
@@ -497,7 +485,7 @@
 			<type>SequenceNetworkSync</type>
 			<version>1</version>
 			<component>
-				<objectIndex>0</objectIndex>
+				<UUID>bf472463-f452-4e18-b99f-e684bf60a902</UUID>
 				<flags>35</flags>
 			</component>
 		</ComponentPool>

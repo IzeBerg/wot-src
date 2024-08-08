@@ -200,6 +200,8 @@ package net.wg.data.constants.generated
       public static const COMP7_TANK_CAROUSEL:String = "comp7BattleTankCarousel";
       
       public static const COMP7_TANK_CAROUSEL_FILTER_POPOVER:String = "comp7TankCarouselFilterPopover";
+      
+      public static const COMP7_RECON_FLIGHT:String = "comp7ReconFlight";
        
       
       public function BATTLE_VIEW_ALIASES()

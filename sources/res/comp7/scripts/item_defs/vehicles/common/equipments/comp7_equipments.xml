@@ -29,7 +29,7 @@
 				<exports>vse tooltip</exports>
 			</radius>
 			<heal>
-				12 17 23
+				13 21 30
 				<exports>vse</exports>
 			</heal>
 			<secondaryHealDebuff>
@@ -68,7 +68,7 @@
 				<exports>vse tooltip</exports>
 			</duration>
 			<crewBuff>
-				5 8 12
+				4 7 10
 				<exports>vse tooltip</exports>
 			</crewBuff>
 		</script>
@@ -101,11 +101,11 @@
 				<exports>vse tooltip</exports>
 			</duration>
 			<heal>
-				4 5 7
+				5 7 10
 				<exports>vse</exports>
 			</heal>
 			<gunReloadTimeBuff>
-				3
+				2
 				<exports>vse tooltip</exports>
 			</gunReloadTimeBuff>
 			<tickInterval>
@@ -258,7 +258,7 @@
 				<exports>vse tooltip</exports>
 			</radius>
 			<damage>
-				50 95 150
+				70 135 225
 				<exports>vse tooltip</exports>
 			</damage>
 			<stunDuration>
@@ -313,7 +313,7 @@
 				<exports>vse</exports>
 			</cooldownSeconds>
 			<gunReloadTimeBuff>
-				0.7 0.6 0.45
+				0.7 0.55 0.4
 				<!--BW_String-->
 				<exports>vse</exports>
 			</gunReloadTimeBuff>
@@ -343,25 +343,34 @@
 				12 15 20
 				<exports>vse tooltip</exports>
 			</duration>
+			<dmgAbsorb>
+				0.85 0.775 0.70
+				<!--BW_String-->
+				<exports>vse</exports>
+			</dmgAbsorb>
 			<enginePowerFactor>
 				1.35
 				<!--BW_String-->
 				<exports>vse</exports>
 			</enginePowerFactor>
-			<stunDurationFactor>
-				0.4
+			<fwMaxSpeedBonus>
+				10
+				<exports>vse tooltip</exports>
+			</fwMaxSpeedBonus>
+			<bkMaxSpeedBonus>
+				10
+				<exports>vse tooltip</exports>
+			</bkMaxSpeedBonus>
+			<rammingDamageBonus>
+				1.30
+				<!--BW_String-->
+				<exports>vse tooltip</exports>
+			</rammingDamageBonus>
+			<vehicleRotationSpeedFactor>
+				0.75
 				<!--BW_String-->
 				<exports>vse</exports>
-			</stunDurationFactor>
-			<repairBuff>
-				30
-				<exports>vse tooltip</exports>
-			</repairBuff>
-			<gunReloadBoost>
-				3.0
-				<!--BW_String-->
-				<exports>vse tooltip</exports>
-			</gunReloadBoost>
+			</vehicleRotationSpeedFactor>
 		</script>
 	</comp7_juggernaut>
 	<comp7_sure_shot>
@@ -439,7 +448,7 @@
 				<exports>vse tooltip</exports>
 			</damageDistance>
 			<damageFactors>
-				1.15 1.25 1.35
+				1.25 1.35 1.45
 				<!--BW_String-->
 				<exports>vse tooltip</exports>
 			</damageFactors>
@@ -474,7 +483,7 @@
 				<exports>vse tooltip</exports>
 			</healDuration>
 			<baseHeal>
-				60
+				100
 				<exports>vse tooltip</exports>
 			</baseHeal>
 			<extraHealFactor>
@@ -524,6 +533,10 @@
 				2
 				<exports>vse tooltip</exports>
 			</delay>
+			<startupDelay>
+				3
+				<exports>vse tooltip</exports>
+			</startupDelay>
 			<radius>
 				45 55 60
 				<exports>vse tooltip</exports>

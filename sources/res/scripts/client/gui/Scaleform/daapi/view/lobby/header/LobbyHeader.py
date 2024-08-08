@@ -13,6 +13,7 @@ from SoundGroups import g_instance as SoundGroupsInstance
 from adisp import adisp_async, adisp_process
 from constants import EPlatoonButtonState, PREBATTLE_TYPE, PREMIUM_TYPE
 from debug_utils import LOG_ERROR
+from exchange.personal_discounts_constants import EXCHANGE_RATE_GOLD_NAME, EXCHANGE_RATE_FREE_XP_NAME
 from frameworks.wulf import ViewFlags, WindowLayer
 from gui import makeHtmlString
 from gui.ClientUpdateManager import g_clientUpdateManager
@@ -42,8 +43,10 @@ from gui.game_control.wallet import WalletController
 from gui.gold_fish import isGoldFishActionActive, isTimeToShowGoldFishPromo
 from gui.impl import backport
 from gui.impl.gen import R
+from gui.impl.lobby.comp7.intro_screen import IntroScreenWindow
 from gui.impl.lobby.comp7.no_vehicles_screen import NoVehiclesScreenWindow
-from gui.limited_ui.lui_rules_storage import LuiRules
+from gui.impl.lobby.exchange.exchange_rates_helper import isGoldExchangeRateDiscountViewed, isExperienceTranslationRateDiscountViewed, setDiscountViewed
+from gui.limited_ui.lui_rules_storage import LUI_RULES
 from gui.platform.base.statuses.constants import StatusTypes
 from gui.prb_control import prb_getters
 from gui.prb_control.ctrl_events import g_prbCtrlEvents
@@ -72,7 +75,7 @@ from shared_utils import CONST_CONTAINER, BitmaskHelper, first
 from skeletons.account_helpers.settings_core import ISettingsCore
 from skeletons.connection_mgr import IConnectionManager
 from skeletons.gui.battle_matters import IBattleMattersController
-from skeletons.gui.game_control import IAnonymizerController, IBadgesController, IBattleRoyaleController, IBoostersController, IChinaController, IClanNotificationController, IComp7Controller, IEpicBattleMetaGameController, IGameSessionController, IIGRController, ILimitedUIController, IMapboxController, IMapsTrainingController, IPlatoonController, IRankedBattlesController, IServerStatsController, ISteamCompletionController, IWalletController, IAchievements20Controller, IAchievementsController, IHangarGuiController
+from skeletons.gui.game_control import IAnonymizerController, IBadgesController, IBattleRoyaleController, IBoostersController, IChinaController, IClanNotificationController, IComp7Controller, IEpicBattleMetaGameController, IGameSessionController, IIGRController, ILimitedUIController, IMapboxController, IMapsTrainingController, IPlatoonController, IRankedBattlesController, IServerStatsController, ISteamCompletionController, IWalletController, IAchievements20Controller, IAchievementsController, IHangarGuiController, IExchangeRatesWithDiscountsProvider
 from skeletons.gui.game_control import IWotPlusController
 from skeletons.gui.goodies import IGoodiesCache
 from skeletons.gui.impl import IGuiLoader
@@ -255,11 +258,11 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
      R.views.lobby.maps_training.MapsTrainingPage())
     _WULF_TO_TAB = {R.views.lobby.crew.BarracksView(): TABS.BARRACKS, 
        R.views.lobby.clan_supply.ClanSupply(): TABS.STRONGHOLD}
-    _TAB_ALIAS_TO_RULE_ID = {TABS.STORE: LuiRules.LOBBY_HEADER_COUNTERS_STORE, 
-       TABS.MISSIONS: LuiRules.LOBBY_HEADER_COUNTERS_MISSIONS, 
-       TABS.PROFILE: LuiRules.LOBBY_HEADER_COUNTERS_PROFILE, 
-       TABS.PERSONAL_MISSIONS: LuiRules.LOBBY_HEADER_COUNTERS_PM_OPERATIONS, 
-       TABS.STORAGE: LuiRules.LOBBY_HEADER_COUNTERS_STORAGE}
+    _TAB_ALIAS_TO_RULE_ID = {TABS.STORE: LUI_RULES.store, 
+       TABS.MISSIONS: LUI_RULES.missions, 
+       TABS.PROFILE: LUI_RULES.profile, 
+       TABS.PERSONAL_MISSIONS: LUI_RULES.PersonalMissionOperations, 
+       TABS.STORAGE: LUI_RULES.storage}
     anonymizerController = dependency.descriptor(IAnonymizerController)
     badgesController = dependency.descriptor(IBadgesController)
     boosters = dependency.descriptor(IBoostersController)
@@ -296,6 +299,7 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
     __limitedUICtrl = dependency.descriptor(ILimitedUIController)
     __advAchmntCtrl = dependency.descriptor(IAchievementsController)
     __hangarGuiCtrl = dependency.descriptor(IHangarGuiController)
+    __exchangeRatesProvider = dependency.descriptor(IExchangeRatesWithDiscountsProvider)
     __SELECTOR_TOOLTIP_TYPE = TOOLTIPS.HEADER_BATTLETYPE
     __MODE_SELECTOR_ORANGE_LINKAGE = 'BGAnimOrangeUI'
 
@@ -504,7 +508,7 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
             buttonsToExclude.append(self.BUTTONS.PREMSHOP)
         if not self._canShowWotPlus():
             buttonsToExclude.append(self.BUTTONS.WOT_PLUS)
-        if not self.__limitedUICtrl.isRuleCompleted(LuiRules.PR_HANGAR_BUTTON):
+        if not self.__limitedUICtrl.isRuleCompleted(LUI_RULES.PersonalReservesHangarButton):
             buttonsToExclude.append(self.BUTTONS.PERSONAL_RESERVES_WIDGET)
         if not self.__battleRoyaleController.isSquadButtonEnabled():
             buttonsToExclude.append(self.BUTTONS.SQUAD)
@@ -601,6 +605,8 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
         self.__achievements20Controller.onUpdate += self.__onProfileVisited
         JunkTankmanHelper().onShowNoveltyUpdated += self.__onShowNoveltyUpdated
         self.__advAchmntCtrl.onUnseenAchievementsUpdate += self.__updateUnseenAchievementsCounter
+        self.__exchangeRatesProvider.goldToCredits.onUpdated += self.__onGoldRatesDiscountChanged
+        self.__exchangeRatesProvider.freeXpTranslation.onUpdated += self.__onFreeXpDiscountChanged
         g_playerEvents.onEnqueued += self._updatePrebattleControls
         g_playerEvents.onDequeued += self._updatePrebattleControls
         g_playerEvents.onArenaCreated += self._updatePrebattleControls
@@ -615,6 +621,7 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
         self.addListener(events.BubbleTooltipEvent.SHOW, self.__showBubbleTooltip, scope=EVENT_BUS_SCOPE.LOBBY)
         self.addListener(events.CloseWindowEvent.GOLD_FISH_CLOSED, self.__onGoldFishWindowClosed, scope=EVENT_BUS_SCOPE.LOBBY)
         self.addListener(HEADER_BUTTONS_COUNTERS_CHANGED_EVENT, self.__onCounterChanged, scope=EVENT_BUS_SCOPE.DEFAULT)
+        self.addListener(events.ExchangeRatesDiscountsEvent.ON_PERSONAL_DISCOUNT_VIEWED, self.__onPersonalDiscountViewed, scope=EVENT_BUS_SCOPE.LOBBY)
         g_clientUpdateManager.addCurrencyCallback(Currency.CREDITS, self.__setCredits)
         g_clientUpdateManager.addCurrencyCallback(Currency.GOLD, self.__setGold)
         g_clientUpdateManager.addCurrencyCallback(Currency.CRYSTAL, self.__setCrystal)
@@ -659,14 +666,14 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
         self.__limitedUICtrl.startObserves(rulesIDs, self.__onLuiRuleCompleted)
 
     def __getLuiRulesUpdaters(self):
-        return {LuiRules.PR_HANGAR_BUTTON: self._populateButtons, 
-           LuiRules.MODE_SELECTOR_WIDGET_BTN_HINT: self._updatePrebattleControls, 
-           LuiRules.LOBBY_HEADER_COUNTERS_STORE: self.__updateShopTabCounter, 
-           LuiRules.LOBBY_HEADER_COUNTERS_MISSIONS: self.__onEventsVisited, 
-           LuiRules.LOBBY_HEADER_COUNTERS_PROFILE: self.__updateProfileTabCounter, 
-           LuiRules.LOBBY_HEADER_COUNTERS_PM_OPERATIONS: self.__updateMissionsTabCounter, 
-           LuiRules.LOBBY_HEADER_COUNTERS_STORAGE: self.__updateStorageTabCounter, 
-           LuiRules.ADVANCED_ACHIEVEMENTS: self.__updateProfileTabCounter}
+        return {LUI_RULES.PersonalReservesHangarButton: self._populateButtons, 
+           LUI_RULES.ModeSelectorWidgetsBtnHint: self._updatePrebattleControls, 
+           LUI_RULES.store: self.__updateShopTabCounter, 
+           LUI_RULES.missions: self.__onEventsVisited, 
+           LUI_RULES.profile: self.__updateProfileTabCounter, 
+           LUI_RULES.PersonalMissionOperations: self.__updateMissionsTabCounter, 
+           LUI_RULES.storage: self.__updateStorageTabCounter, 
+           LUI_RULES.AdvancedAchievements: self.__updateProfileTabCounter}
 
     def __onLuiRuleCompleted(self, ruleID, *_):
         updater = self.__luiRulesUpdaters.get(ruleID)
@@ -683,6 +690,7 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
         self.removeListener(events.BubbleTooltipEvent.SHOW, self.__showBubbleTooltip, scope=EVENT_BUS_SCOPE.LOBBY)
         self.removeListener(events.CloseWindowEvent.GOLD_FISH_CLOSED, self.__onGoldFishWindowClosed, scope=EVENT_BUS_SCOPE.LOBBY)
         self.removeListener(HEADER_BUTTONS_COUNTERS_CHANGED_EVENT, self.__onCounterChanged, scope=EVENT_BUS_SCOPE.DEFAULT)
+        self.removeListener(events.ExchangeRatesDiscountsEvent.ON_PERSONAL_DISCOUNT_VIEWED, self.__onPersonalDiscountViewed, scope=EVENT_BUS_SCOPE.LOBBY)
         self.anonymizerController.onStateChanged -= self.__updateAnonymizedState
         self.gameSession.onPremiumNotify -= self.__onPremiumTimeChanged
         self.gameSession.onPremiumTypeChanged -= self._onPremiumTypeChanged
@@ -714,6 +722,8 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
         self.__comp7Controller.onQualificationStateUpdated -= self.__updateComp7
         self.__achievements20Controller.onUpdate -= self.__onProfileVisited
         self.__advAchmntCtrl.onUnseenAchievementsUpdate -= self.__updateUnseenAchievementsCounter
+        self.__exchangeRatesProvider.goldToCredits.onUpdated -= self.__onGoldRatesDiscountChanged
+        self.__exchangeRatesProvider.freeXpTranslation.onUpdated -= self.__onFreeXpDiscountChanged
         self.clanNotificationCtrl.onClanNotificationUpdated -= self.__updateStrongholdCounter
         JunkTankmanHelper().onShowNoveltyUpdated -= self.__onShowNoveltyUpdated
         g_playerEvents.onEnqueued -= self._updatePrebattleControls
@@ -796,7 +806,7 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
 
     @staticmethod
     def __hideLobbySubViews():
-        for window in (NoVehiclesScreenWindow,):
+        for window in (NoVehiclesScreenWindow, IntroScreenWindow):
             instances = window.getInstances()
             if instances:
                 first(instances).destroy()
@@ -890,8 +900,9 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
 
     def __setCredits(self, accCredits):
         btnType = LobbyHeader.BUTTONS.CREDITS
-        isActionActive = self.itemsCache.items.shop.isCreditsConversionActionActive
-        btnData = self._getWalletBtnData(btnType, accCredits, getBWFormatter(Currency.CREDITS), isActionActive)
+        isActionActive = self.__exchangeRatesProvider.goldToCredits.isDiscountAvailable()
+        isAnimationRequired = not isGoldExchangeRateDiscountViewed()
+        btnData = self._getWalletBtnData(btnType, accCredits, getBWFormatter(Currency.CREDITS), isActionActive, isAnimationRequired=isAnimationRequired)
         self.as_updateWalletBtnS(btnType, btnData)
 
     def __setGold(self, gold):
@@ -906,11 +917,12 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
 
     def __setFreeXP(self, freeXP):
         btnType = LobbyHeader.BUTTONS.FREE_XP
-        isActionActive = self.itemsCache.items.shop.isXPConversionActionActive
-        btnData = self._getWalletBtnData(btnType, freeXP, backport.getIntegralFormat, isActionActive)
+        isActionActive = self.__exchangeRatesProvider.freeXpTranslation.isDiscountAvailable()
+        isAnimationRequired = not isExperienceTranslationRateDiscountViewed()
+        btnData = self._getWalletBtnData(btnType, freeXP, backport.getIntegralFormat, isActionActive, isAnimationRequired=isAnimationRequired)
         self.as_updateWalletBtnS(btnType, btnData)
 
-    def _getWalletBtnData(self, btnType, value, formatter, isHasAction=False, isDiscountEnabled=False, isNew=False):
+    def _getWalletBtnData(self, btnType, value, formatter, isHasAction=False, isDiscountEnabled=False, isNew=False, isAnimationRequired=False):
         tooltip, tooltipType = self.__getWalletTooltipSettings(btnType)
         return {'money': formatter(value), 
            'btnDoText': self._getWalletBtnDoText(btnType), 
@@ -919,6 +931,7 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
            'icon': btnType, 
            'isHasAction': isHasAction, 
            'isDiscountEnabled': isDiscountEnabled, 
+           'isAnimationRequired': isAnimationRequired, 
            'isNew': isNew, 
            'shortMoneyValue': _getShortCurrencyValue(value, formatter)}
 
@@ -1129,7 +1142,7 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
                 self.as_doDisableHeaderButtonS(button, isNavigationEnabled)
 
             pInfo = prbDispatcher.getPlayerInfo()
-            isNewbie = not self.__limitedUICtrl.isRuleCompleted(LuiRules.MODE_SELECTOR_WIDGET_BTN_HINT)
+            isNewbie = not self.__limitedUICtrl.isRuleCompleted(LUI_RULES.ModeSelectorWidgetsBtnHint)
             selectedItem = self.__updateModeControls(pFuncState, isNewbie)
             isInSquad = self.__updateSquadControls(controlsHelper, pFuncState, pValidation, isNewbie)
             self.__updateFightControls(controlsHelper, pFuncState, pValidation, selectedItem, isInSquad, isNewbie, pInfo)
@@ -1219,7 +1232,7 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
 
     def __onMissionVisited(self, counter):
         if counter:
-            if not self.__limitedUICtrl.isRuleCompleted(LuiRules.LOBBY_HEADER_COUNTERS_MISSIONS):
+            if not self.__limitedUICtrl.isRuleCompleted(LUI_RULES.missions):
                 return
             self.__setCounter(self.TABS.MISSIONS, counter)
         else:
@@ -1261,6 +1274,16 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
 
     def __updatePlatoon(self, *_):
         self._updatePrebattleControls()
+
+    def __onGoldRatesDiscountChanged(self):
+        self.__setCredits(self.itemsCache.items.stats.actualCredits)
+        if not isGoldExchangeRateDiscountViewed():
+            setDiscountViewed(EXCHANGE_RATE_GOLD_NAME)
+
+    def __onFreeXpDiscountChanged(self):
+        self.__setFreeXP(self.itemsCache.items.stats.actualFreeXP)
+        if not isExperienceTranslationRateDiscountViewed():
+            setDiscountViewed(EXCHANGE_RATE_FREE_XP_NAME)
 
     def _updateStrongholdsSelector(self):
         strongholdEnabled = isStrongholdsEnabled()
@@ -1405,11 +1428,11 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
             self.__closeBattleTypeSelectPopover()
 
     def __updateProfileTabCounter(self):
-        if self.__limitedUICtrl.isRuleCompleted(LuiRules.LOBBY_HEADER_COUNTERS_PROFILE):
+        if self.__limitedUICtrl.isRuleCompleted(LUI_RULES.profile):
             hofCounters = 0
             unseenAchievements = 0
             ach20Counters = self.__achievements20Controller.getAchievementsTabCounter()
-            if self.__limitedUICtrl.isRuleCompleted(LuiRules.ADVANCED_ACHIEVEMENTS):
+            if self.__limitedUICtrl.isRuleCompleted(LUI_RULES.AdvancedAchievements):
                 unseenAchievements = self.__advAchmntCtrl.getTotalUnseenAdvancedAchievementsCount()
             if self.lobbyContext.getServerSettings().isHofEnabled():
                 hofCounters = getTabCounter()
@@ -1427,7 +1450,7 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
         if alias not in counters:
             counters[alias] = True
             AccountSettings.setCounters(NEW_LOBBY_TAB_COUNTER, counters)
-        isShowPMCounters = self.__limitedUICtrl.isRuleCompleted(LuiRules.LOBBY_HEADER_COUNTERS_PM_OPERATIONS)
+        isShowPMCounters = self.__limitedUICtrl.isRuleCompleted(LUI_RULES.PersonalMissionOperations)
         if counters[alias] and isShowPMCounters:
             self.__setCounter(alias, 1)
         else:
@@ -1446,7 +1469,7 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
             self.__hideCounter(alias)
 
     def __updateShopTabCounter(self):
-        if not self.__limitedUICtrl.isRuleCompleted(LuiRules.LOBBY_HEADER_COUNTERS_STORE):
+        if not self.__limitedUICtrl.isRuleCompleted(LUI_RULES.store):
             return
         actionCounterAlias, actionCounterValue = self.eventsCache.getLobbyHeaderTabCounter()
         lastActionValue = AccountSettings.getSessionSettings(LAST_SHOP_ACTION_COUNTER_MODIFICATION)
@@ -1514,6 +1537,12 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
         self.__shownCounters.add(alias)
         counter = counter or i18n.makeString(MENU.HEADER_NOTIFICATIONSIGN)
         self.as_setButtonCounterS(alias, text_styles.counterLabelText(counter))
+
+    def __onPersonalDiscountViewed(self, event):
+        if event.ctx.get('type') == EXCHANGE_RATE_GOLD_NAME:
+            self.__onGoldRatesDiscountChanged()
+        else:
+            self.__onFreeXpDiscountChanged()
 
     def __hideCounter(self, alias):
         if alias in self.__shownCounters:

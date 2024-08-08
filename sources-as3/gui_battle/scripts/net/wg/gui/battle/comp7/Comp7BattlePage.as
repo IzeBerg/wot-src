@@ -1,6 +1,7 @@
 package net.wg.gui.battle.comp7
 {
    import flash.display.InteractiveObject;
+   import flash.events.Event;
    import flash.events.MouseEvent;
    import net.wg.data.constants.Cursors;
    import net.wg.data.constants.DragType;
@@ -8,6 +9,7 @@ package net.wg.gui.battle.comp7
    import net.wg.data.constants.generated.BATTLE_VIEW_ALIASES;
    import net.wg.gui.battle.comp7.infrastructure.Comp7StatisticsDataController;
    import net.wg.gui.battle.comp7.views.battleTankCarousel.BattleTankCarousel;
+   import net.wg.gui.battle.comp7.views.comp7ReconFlight.Comp7ReconFlight;
    import net.wg.gui.battle.components.StatusNotificationsPanel;
    import net.wg.gui.battle.components.pointsOfInterestNotificationPanel.PointsOfInterestNotificationPanel;
    import net.wg.gui.battle.views.battleMessenger.BattleMessage;
@@ -69,6 +71,8 @@ package net.wg.gui.battle.comp7
       
       public var vehicleHitArea:VehicleHitAreaComponent = null;
       
+      public var reconFlight:Comp7ReconFlight = null;
+      
       private var _state:int = 0;
       
       private var _isDragRegister:Boolean = false;
@@ -117,6 +121,8 @@ package net.wg.gui.battle.comp7
          super.updateStage(param1,param2);
          this.pointsOfInterestNotificationPanel.updateStage(param1,param2);
          this.statusNotificationsPanel.updateStage(param1,param2);
+         this.reconFlight.x = param1 >> 1;
+         this.reconFlight.y = param2 >> 2;
          invalidateLayout();
       }
       
@@ -135,6 +141,7 @@ package net.wg.gui.battle.comp7
          this.vehicleHitArea.addEventListener(MouseEvent.ROLL_OVER,this.onVehicleHitAreaRollOverHandler);
          this.vehicleHitArea.addEventListener(MouseEvent.ROLL_OUT,this.onVehicleHitAreaRollOutHandler);
          addChildAt(this.vehicleHitArea,getChildIndex(hitTestFix) + 1);
+         this.reconFlight.addEventListener(Event.CHANGE,this.onReconFlightChangeHandler);
          this.registerDraging();
       }
       
@@ -201,6 +208,7 @@ package net.wg.gui.battle.comp7
          registerComponent(this.pointsOfInterestNotificationPanel,BATTLE_VIEW_ALIASES.POINT_OF_INTEREST_NOTIFICATIONS_PANEL);
          registerComponent(this.statusNotificationsPanel,BATTLE_VIEW_ALIASES.STATUS_NOTIFICATIONS_PANEL);
          registerComponent(this.carousel,BATTLE_VIEW_ALIASES.COMP7_TANK_CAROUSEL);
+         registerComponent(this.reconFlight,BATTLE_VIEW_ALIASES.COMP7_RECON_FLIGHT);
          this.carousel.addEventListener(LifeCycleEvent.ON_BEFORE_DISPOSE,this.onCarouselOnBeforeDisposeHandler);
          this.helpButton.addEventListener(MouseEvent.CLICK,this.onHelpButtonClickHandler);
          super.onPopulate();
@@ -234,6 +242,8 @@ package net.wg.gui.battle.comp7
          this.helpButton = null;
          this.vehicleStatus.dispose();
          this.vehicleStatus = null;
+         this.reconFlight.removeEventListener(Event.CHANGE,this.onReconFlightChangeHandler);
+         this.reconFlight = null;
          super.onDispose();
       }
       
@@ -472,6 +482,14 @@ package net.wg.gui.battle.comp7
       private function onMinimapTryInitPrebattleSizeHandler(param1:MinimapEvent) : void
       {
          minimap.setAllowedSizeIndex(this.getAllowedMinimapSizeIndex(getPrebattleSize(param1.sizeIndex)));
+      }
+      
+      private function onReconFlightChangeHandler(param1:Event) : void
+      {
+         if(!this.reconFlight.isHidden && !sixthSense.isHidden)
+         {
+            sixthSense.as_hide(true);
+         }
       }
    }
 }

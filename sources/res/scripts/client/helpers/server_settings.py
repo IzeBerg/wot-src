@@ -11,7 +11,7 @@ from battle_pass_common import BATTLE_PASS_CONFIG_NAME, BattlePassConfig
 from collections_common import CollectionsConfig
 from collector_vehicle import CollectorVehicleConsts
 from comp7_ranks_common import Comp7Division
-from constants import BATTLE_NOTIFIER_CONFIG, ClansConfig, Configs, DAILY_QUESTS_CONFIG, DOG_TAGS_CONFIG, MAGNETIC_AUTO_AIM_CONFIG, MISC_GUI_SETTINGS, PremiumConfigs, RENEWABLE_SUBSCRIPTION_CONFIG, PLAYER_SUBSCRIPTIONS_CONFIG, TOURNAMENT_CONFIG
+from constants import BATTLE_NOTIFIER_CONFIG, ClansConfig, Configs, DAILY_QUESTS_CONFIG, DOG_TAGS_CONFIG, MAGNETIC_AUTO_AIM_CONFIG, MISC_GUI_SETTINGS, PremiumConfigs, RENEWABLE_SUBSCRIPTION_CONFIG, PLAYER_SUBSCRIPTIONS_CONFIG, TOURNAMENT_CONFIG, OPTIONAL_DEVICES_USAGE_CONFIG
 from debug_utils import LOG_DEBUG, LOG_NOTE
 from gifts.gifts_common import ClientReqStrategy, GiftEventID, GiftEventState
 from gui import GUI_SETTINGS, SystemMessages
@@ -1072,13 +1072,14 @@ class Comp7Config(settingsBlock('Comp7Config', (
  'qualification',
  'maps',
  'tournaments',
- 'progression',
- 'remainingOfferTokensNotifications'))):
+ 'remainingOfferTokensNotifications',
+ 'clientEntitlementsCache',
+ 'participantTokens'))):
     __slots__ = ()
 
     @classmethod
     def defaults(cls):
-        return dict(isEnabled=False, isShopEnabled=False, isTrainingEnabled=False, peripheryIDs={}, primeTimes={}, seasons={}, battleModifiersDescr=(), cycleTimes={}, roleEquipments={}, numPlayers=7, levels=[], forbiddenClassTags=set(), forbiddenVehTypes=set(), squadRatingRestriction={}, squadSizes=[], createVivoxTeamChannels=False, qualification=makeTupleByDict(_Comp7QualificationConfig, {}), maps=set(), tournaments={}, progression={}, remainingOfferTokensNotifications=[])
+        return dict(isEnabled=False, isShopEnabled=False, isTrainingEnabled=False, peripheryIDs={}, primeTimes={}, seasons={}, battleModifiersDescr=(), cycleTimes={}, roleEquipments={}, numPlayers=7, levels=[], forbiddenClassTags=set(), forbiddenVehTypes=set(), squadRatingRestriction={}, squadSizes=[], createVivoxTeamChannels=False, qualification=makeTupleByDict(_Comp7QualificationConfig, {}), maps=set(), tournaments={}, remainingOfferTokensNotifications=[], clientEntitlementsCache={}, participantTokens=())
 
     @classmethod
     def _preprocessData(cls, data):
@@ -1116,8 +1117,8 @@ class Comp7RanksConfig(settingsBlock('Comp7RanksConfig', (
     @classmethod
     def __dictDivisionsToComp7Divisions(cls, divisionsList):
         divs = []
-        for dvsnDict in divisionsList:
-            comp7Division = Comp7Division(dvsnDict)
+        for serialIdx, dvsnDict in enumerate(divisionsList):
+            comp7Division = Comp7Division(serialIdx, dvsnDict)
             divs.append(comp7Division)
 
         return tuple(divs)
@@ -1363,6 +1364,24 @@ class _AdvancedAchievementsConfig(namedtuple('_AdvancedAchievementsConfig', (
         return cls()
 
 
+class _ExchangeRatesConfig(namedtuple('_ExchangeRatesConfig', ('isGoldExchangePesronalDiscountsAvailable',
+ 'isExperienceExchangePesronalDiscountsAvailable'))):
+    __slots__ = ()
+
+    def __new__(cls, **kwargs):
+        defaults = dict(isGoldExchangePesronalDiscountsAvailable=False, isExperienceExchangePesronalDiscountsAvailable=False)
+        defaults.update(kwargs)
+        return super(_ExchangeRatesConfig, cls).__new__(cls, **defaults)
+
+    def asDict(self):
+        return self._asdict()
+
+    def replace(self, data):
+        allowedFields = self._fields
+        dataToUpdate = dict((k, v) for k, v in data.iteritems() if k in allowedFields)
+        return self._replace(**dataToUpdate)
+
+
 class ServerSettings(object):
 
     def __init__(self, serverSettings):
@@ -1418,6 +1437,7 @@ class ServerSettings(object):
         self.__liveOpsWebEventsConfig = LiveOpsWebEventsConfig()
         self.__advancedAchievementsConfig = _AdvancedAchievementsConfig()
         self.__schemaManager = getSchemaManager()
+        self.__exchangeRatesConfig = _ExchangeRatesConfig()
         self.set(serverSettings)
 
     def set(self, serverSettings):
@@ -1485,6 +1505,10 @@ class ServerSettings(object):
             self.__seniorityAwardsConfig = makeTupleByDict(SeniorityAwardsConfig, self.__serverSettings['seniority_awards_config'])
         else:
             self.__seniorityAwardsConfig = SeniorityAwardsConfig()
+        if 'exchange_rates_config' in self.__serverSettings:
+            self.__exchangeRatesConfig = makeTupleByDict(_ExchangeRatesConfig, self.__serverSettings['exchange_rates_config'])
+        else:
+            self.__exchangeRatesConfig = _ExchangeRatesConfig()
         if BATTLE_PASS_CONFIG_NAME in self.__serverSettings:
             self.__battlePassConfig = BattlePassConfig(self.__serverSettings.get(BATTLE_PASS_CONFIG_NAME, {}))
         else:
@@ -1603,6 +1627,12 @@ class ServerSettings(object):
             self.__updateUILogging(serverSettingsDiff)
         if 'eula_config' in serverSettingsDiff:
             self.__updateEULA(serverSettingsDiff)
+        if 'exchange_rates_config' in serverSettingsDiff:
+            self.__updateExchangeRates(serverSettingsDiff)
+            self.__serverSettings['exchange_rates_config'] = serverSettingsDiff['exchange_rates_config']
+        if 'advent_calendar_config' in serverSettingsDiff:
+            self.__updateAdventCalendar(serverSettingsDiff)
+            self.__serverSettings['advent_calendar_config'] = serverSettingsDiff['advent_calendar_config']
         if 'epic_config' in serverSettingsDiff:
             self.__updateEpic(serverSettingsDiff)
             self.__serverSettings['epic_config'] = serverSettingsDiff['epic_config']
@@ -1779,6 +1809,10 @@ class ServerSettings(object):
     @property
     def adventCalendar(self):
         return self.__adventCalendar
+
+    @property
+    def exchangeRates(self):
+        return self.__exchangeRatesConfig
 
     @property
     def epicMetaGame(self):
@@ -2047,6 +2081,9 @@ class ServerSettings(object):
     def isFreeEquipmentDemountingEnabled(self):
         return self.isRenewableSubEnabled() and self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('enableFreeEquipmentDemounting', False)
 
+    def isOptionalDevicesAssistantEnabled(self):
+        return self.isRenewableSubEnabled() and self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('enableOptionalDevicesAssistant', False)
+
     def isFreeDeluxeEquipmentDemountingEnabled(self):
         return self.isFreeEquipmentDemountingEnabled() and self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('enableFreeDeluxeEquipmentDemounting', False)
 
@@ -2087,6 +2124,9 @@ class ServerSettings(object):
 
     def getAdditionalWoTPlusXPCount(self):
         return self.isRenewableSubEnabled() and self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get(ADDITIONAL_BONUS_SECTION, {}).get(ADDITIONAL_BONUS_APPLY_COUNT, 0) or 0
+
+    def getOptionalDevicesUsageConfig(self):
+        return self.isRenewableSubEnabled() and self.__getGlobalSetting(OPTIONAL_DEVICES_USAGE_CONFIG, {})
 
     def isTelecomRentalsEnabled(self):
         return self.__getGlobalSetting(TELECOM_RENTALS_CONFIG, {}).get('enabled', True)
@@ -2203,6 +2243,12 @@ class ServerSettings(object):
     def isJunkCrewConversionEnabled(self):
         return self.__getGlobalSetting('isJunkCrewConversionEnabled', False)
 
+    def xppToConvert(self):
+        return self.__getGlobalSetting('XppToConvert', 0)
+
+    def rewardBookId(self):
+        return self.__getGlobalSetting('rewardBookId', 0)
+
     def isTrophyDevicesEnabled(self):
         return self.__getGlobalSetting('isTrophyDevicesEnabled', False)
 
@@ -2276,6 +2322,9 @@ class ServerSettings(object):
     def __updateEULA(self, targetSettings):
         cProfile = targetSettings['eula_config']
         self.__eula = _EULA(cProfile.get('enabled', False), cProfile.get('demoAccEnabled', False), cProfile.get('steamAccEnabled', False))
+
+    def __updateExchangeRates(self, targetSettings):
+        self.__exchangeRatesConfig = self.__exchangeRatesConfig.replace(targetSettings['exchange_rates_config'])
 
     def __updateRanked(self, targetSettings):
         self.__rankedBattlesSettings = self.__rankedBattlesSettings.replace(targetSettings['ranked_config'])

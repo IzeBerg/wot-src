@@ -106,7 +106,7 @@ class _ClientCommandProxy(object):
 
     def perform(self, commandName, *args):
         if self.__commandGateway is None:
-            raise SoftException('Cliend command proxy is not ready')
+            raise SoftException('Client command proxy is not ready')
         callback = args[(-1)]
         commandArgs = args[:-1]
         for commandType, signatureCheck in self._COMMAND_SIGNATURES:
@@ -1158,7 +1158,8 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
 
                 for vehInvID, lockReason in diff.get('cache', {}).get('vehsLock', {}).iteritems():
                     if lockReason is None:
-                        lockReason = AccountCommands.LOCK_REASON.NONE
+                        lockReason = (
+                         AccountCommands.LOCK_REASON.NONE, 0)
                     events.onVehicleLockChanged(vehInvID, lockReason)
 
             return True

@@ -166,14 +166,8 @@ class _EquipmentItem(object):
     def getTags(self):
         return self._tags
 
-    def isEntityRequired(self):
-        return False
-
     def getEntitiesIterator(self, avatar=None):
         raise SoftException('Invokes getEntitiesIterator, than it is not required')
-
-    def getGuiIterator(self, avatar=None):
-        raise SoftException('Invokes getGuiIterator, than it is not required')
 
     @property
     def isAvailableToUse(self):
@@ -254,7 +248,7 @@ class _EquipmentItem(object):
     def becomeReady(self):
         return self.isReady and self._serverPrevStage in (
          EQUIPMENT_STAGES.DEPLOYING, EQUIPMENT_STAGES.UNAVAILABLE,
-         EQUIPMENT_STAGES.COOLDOWN, EQUIPMENT_STAGES.SHARED_COOLDOWN,
+         EQUIPMENT_STAGES.COOLDOWN, EQUIPMENT_STAGES.SHARED_COOLDOWN, EQUIPMENT_STAGES.STARTUP_COOLDOWN,
          EQUIPMENT_STAGES.EXHAUSTED, EQUIPMENT_STAGES.NOT_RUNNING)
 
     @property
@@ -393,9 +387,6 @@ class _TriggerItem(_EquipmentItem):
 
 class _ExpandedItem(_EquipmentItem):
 
-    def isEntityRequired(self):
-        return not self._descriptor.repairAll
-
     def canActivate(self, entityName=None, avatar=None):
         result, error = super(_ExpandedItem, self).canActivate(entityName, avatar)
         if not result:
@@ -403,17 +394,7 @@ class _ExpandedItem(_EquipmentItem):
         return self._canActivate(entityName, avatar)
 
     def getActivationCode(self, entityName=None, avatar=None):
-        if not self.isEntityRequired():
-            return 65536 + self._descriptor.id[1]
-        else:
-            extrasDict = avatar_getter.getVehicleExtrasDict(avatar)
-            if entityName is None:
-                return
-            extraName = makeExtraName(entityName)
-            if extraName not in extrasDict:
-                return
-            return (extrasDict[extraName].index << 16) + self._descriptor.id[1]
-            return
+        return self._descriptor.id[1]
 
     def _getEntitiesAreSafeKey(self):
         return ''
@@ -438,11 +419,9 @@ class _ExpandedItem(_EquipmentItem):
             if entityName is None:
                 for item in self.getEntitiesIterator():
                     if item[0] in deviceStates:
-                        isEntityNotRequired = not self.isEntityRequired()
-                        return (isEntityNotRequired, None if isEntityNotRequired else NeedEntitySelection('', None))
+                        return (True, None)
 
-                return (
-                 False, _ActivationError(self._getEntitiesAreSafeKey(), None))
+                return (False, _ActivationError(self._getEntitiesAreSafeKey(), None))
             return self._canApplyForEntity(entityName, deviceStates)
 
     def _canApplyForEntity(self, entityName, deviceStates):
@@ -468,25 +447,13 @@ class _ExtinguisherItem(_RefillEquipmentItem, _EquipmentItem):
              True, None)
 
     def getActivationCode(self, entityName=None, avatar=None):
-        return 65536 + self._descriptor.id[1]
+        return self._descriptor.id[1]
 
 
 class _MedKitItem(_RefillEquipmentItem, _ExpandedItem):
 
-    def getActivationCode(self, entityName=None, avatar=None):
-        activationCode = super(_MedKitItem, self).getActivationCode(entityName, avatar)
-        if activationCode is None and avatar_getter.isVehicleStunned() and self.isReusable:
-            extrasDict = avatar_getter.getVehicleExtrasDict(avatar)
-            activationCode = (extrasDict[makeExtraName('commander')].index << 16) + self._descriptor.id[1]
-        return activationCode
-
     def getEntitiesIterator(self, avatar=None):
         return vehicle_getter.TankmenStatesIterator(avatar_getter.getVehicleDeviceStates(avatar), avatar_getter.getVehicleTypeDescriptor(avatar))
-
-    def getGuiIterator(self, avatar=None):
-        for name, state in self.getEntitiesIterator(avatar):
-            yield (
-             name, name, state)
 
     def _canActivate(self, entityName=None, avatar=None):
         result, error = super(_MedKitItem, self)._canActivate(entityName, avatar)
@@ -519,9 +486,6 @@ class _RepairKitItem(_RefillEquipmentItem, _ExpandedItem):
     def getEntitiesIterator(self, avatar=None):
         return vehicle_getter.VehicleDeviceStatesIterator(avatar_getter.getVehicleDeviceStates(avatar), avatar_getter.getVehicleTypeDescriptor(avatar))
 
-    def getGuiIterator(self, avatar=None):
-        return vehicle_getter.VehicleGUIItemStatesIterator(avatar_getter.getVehicleDeviceStates(avatar), avatar_getter.getVehicleTypeDescriptor(avatar))
-
     def _getEntitiesAreSafeKey(self):
         return 'repairkitAllDevicesAreNotDamaged'
 
@@ -549,9 +513,6 @@ class _RepairCrewAndModules(_ExpandedItem):
 
     def _getEntitiesAreSafeKey(self):
         return 'crewAndDevicesAreOk'
-
-    def _getEntityIsSafeKey(self):
-        return ''
 
     def _getEntityUserString(self, entityName, avatar=None):
         if entityName in VEHICLE_COMPLEX_ITEMS:
@@ -921,7 +882,7 @@ class _RegenerationKitItem(_EquipmentItem):
              True, None)
 
     def getActivationCode(self, entityName=None, avatar=None):
-        return 65536 + self._descriptor.id[1]
+        return self._descriptor.id[1]
 
     def getAnimationType(self):
         if self._stage == EQUIPMENT_STAGES.ACTIVE:
@@ -940,9 +901,6 @@ class DynComponentsGroupItem(_TriggerItem):
             self._totalTime = self._descriptor.durationSeconds
 
     def getEntitiesIterator(self, avatar=None):
-        return []
-
-    def getGuiIterator(self, avatar=None):
         return []
 
 
@@ -987,9 +945,6 @@ class _VisualScriptItem(_TriggerItem):
         return super(_VisualScriptItem, self).canDeactivate() and self.__canDeactivate
 
     def getEntitiesIterator(self, avatar=None):
-        return []
-
-    def getGuiIterator(self, avatar=None):
         return []
 
     def updateMapCase(self, stage=None):
@@ -1037,7 +992,7 @@ class _VisualScriptItem(_TriggerItem):
         if not avatar:
             avatar = BigWorld.player()
         vehicle = avatar.getVehicleAttached()
-        if vehicle is not None:
+        if vehicle is not None and self._descriptor is not None:
             return vehicle.dynamicComponents.get(self._descriptor.name)
         else:
             return
@@ -1079,6 +1034,9 @@ class _PoiArtilleryItem(_ArtilleryItem):
 
 
 class _RoleSkillVSItem(_VisualScriptItem):
+    __FORBIDDEN_STAGES_TO_ACTIVATE = (
+     EQUIPMENT_STAGES.COOLDOWN, EQUIPMENT_STAGES.ACTIVE,
+     EQUIPMENT_STAGES.UNAVAILABLE, EQUIPMENT_STAGES.STARTUP_COOLDOWN)
 
     def update(self, quantity, stage, timeRemaining, totalTime):
         prevQuantity = self._prevQuantity
@@ -1091,7 +1049,7 @@ class _RoleSkillVSItem(_VisualScriptItem):
             return Comp7RoleSkillUnavailable(self._descriptor.userString)
         if self._stage == EQUIPMENT_STAGES.ACTIVE:
             return Comp7RoleSkillAlreadyActivated(self._descriptor.userString)
-        if self._stage == EQUIPMENT_STAGES.COOLDOWN:
+        if self._stage in (EQUIPMENT_STAGES.COOLDOWN, EQUIPMENT_STAGES.STARTUP_COOLDOWN):
             return Comp7RoleSkillCooldown(self._descriptor.userString)
         return super(_RoleSkillVSItem, self)._getErrorMsg()
 
@@ -1104,7 +1062,7 @@ class _RoleSkillVSItem(_VisualScriptItem):
             return int(available)
 
     def canActivate(self, entityName=None, avatar=None):
-        if self._stage in (EQUIPMENT_STAGES.COOLDOWN, EQUIPMENT_STAGES.ACTIVE, EQUIPMENT_STAGES.UNAVAILABLE):
+        if self._stage in self.__FORBIDDEN_STAGES_TO_ACTIVATE:
             return (False, self._getErrorMsg())
         return super(_RoleSkillVSItem, self).canActivate(entityName, avatar)
 
@@ -1409,7 +1367,7 @@ class EquipmentsController(MethodsRules, IBattleController):
     def setEquipment(self, intCD, quantity, stage, timeRemaining, totalTime, index=0):
         _logger.debug('Equipment added: intCD=%d, quantity=%d, stage=%s, timeRemaining=%d, totalTime=%d', intCD, quantity, stage, timeRemaining, totalTime)
         index -= 1
-        slot = self._equipmentsIdxSlot.get(index, None)
+        slot = self._equipmentsIdxSlot.get(index, ())
         equipmentItem = slot[0] if slot and slot[1] == intCD else None
         slotIdx = len(self._equipmentsIdxSlot)
         if not intCD:
@@ -1447,7 +1405,7 @@ class EquipmentsController(MethodsRules, IBattleController):
             return
         else:
             index -= 1
-            slot = self._equipmentsIdxSlot.get(index, None)
+            slot = self._equipmentsIdxSlot.get(index, ())
             equipmentItem = slot if slot else None
             if oldIntCD in self._equipments:
                 del self._equipments[oldIntCD]
@@ -1558,9 +1516,6 @@ class _ReplayItem(_EquipmentItem):
         self.__cooldownTime = BigWorld.serverTime() + timeRemaining
 
     def getEntitiesIterator(self, avatar=None):
-        return []
-
-    def getGuiIterator(self, avatar=None):
         return []
 
     def canActivate(self, entityName=None, avatar=None):

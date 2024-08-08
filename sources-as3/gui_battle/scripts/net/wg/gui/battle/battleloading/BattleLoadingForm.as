@@ -121,6 +121,7 @@ package net.wg.gui.battle.battleloading
       
       override public function setFormDisplayData(param1:VisualTipInfoVO) : void
       {
+         var _loc2_:IBattleLoadingRenderer = null;
          if(param1.showTableBackground)
          {
             this.formBackgroundTable.imageName = BATTLEATLAS.BATTLE_LOADING_FORM_BG_TABLE;
@@ -138,6 +139,16 @@ package net.wg.gui.battle.battleloading
             this.showMap(param1.arenaTypeID,param1.minimapTeam);
          }
          this.configureTip(param1.tipTitleTop,param1.tipBodyTop,param1.tipIcon);
+         for each(_loc2_ in this._allyRenderers)
+         {
+            _loc2_.dispose();
+         }
+         this._allyRenderers.length = 0;
+         for each(_loc2_ in this._enemyRenderers)
+         {
+            _loc2_.dispose();
+         }
+         this._enemyRenderers.length = 0;
          if(this._renderersContainer)
          {
             this._renderersContainer.dispose();
@@ -149,14 +160,14 @@ package net.wg.gui.battle.battleloading
          this._renderersContainer.mouseChildren = false;
          this._renderersContainer.x = RENDERER_CONTAINER_LEFT_OFFSET;
          this._renderersContainer.y = RENDERER_CONTAINER_TOP_OFFSET;
-         var _loc2_:Class = this.getRendererClass(param1);
-         var _loc3_:int = this.getRenderersCount();
-         var _loc4_:int = 0;
-         while(_loc4_ < _loc3_)
+         var _loc3_:Class = this.getRendererClass(param1);
+         var _loc4_:int = this.getRenderersCount();
+         var _loc5_:int = 0;
+         while(_loc5_ < _loc4_)
          {
-            this._allyRenderers.push(new _loc2_(this._renderersContainer,_loc4_,false));
-            this._enemyRenderers.push(new _loc2_(this._renderersContainer,_loc4_,true));
-            _loc4_++;
+            this._allyRenderers.push(new _loc3_(this._renderersContainer,_loc5_,false));
+            this._enemyRenderers.push(new _loc3_(this._renderersContainer,_loc5_,true));
+            _loc5_++;
          }
          addChild(this._renderersContainer);
          if(param1.showTipsBackground)
@@ -395,8 +406,7 @@ package net.wg.gui.battle.battleloading
       
       private function configureTip(param1:int, param2:int, param3:String = null) : void
       {
-         var _loc4_:Boolean = false;
-         _loc4_ = StringUtils.isNotEmpty(param3);
+         var _loc4_:Boolean = StringUtils.isNotEmpty(param3);
          this.tipBackground.visible = this.tipImage.visible = _loc4_;
          if(_loc4_)
          {

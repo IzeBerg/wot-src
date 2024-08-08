@@ -58,9 +58,9 @@ class TrainingRoomBaseMeta(View):
         if self._isDAAPIInited():
             return self.flashObject.as_updateComment(commentStr)
 
-    def as_updateMapS(self, arenaTypeID, maxPlayersCount, arenaName, title, arenaSubType, descriptionStr, battleTypeIco, alertText, isObserverModeEnabled):
+    def as_updateMapS(self, arenaTypeID, maxPlayersCount, arenaName, title, arenaSubType, descriptionStr, battleTypeIco, additionalInfo, isObserverModeEnabled):
         if self._isDAAPIInited():
-            return self.flashObject.as_updateMap(arenaTypeID, maxPlayersCount, arenaName, title, arenaSubType, descriptionStr, battleTypeIco, alertText, isObserverModeEnabled)
+            return self.flashObject.as_updateMap(arenaTypeID, maxPlayersCount, arenaName, title, arenaSubType, descriptionStr, battleTypeIco, additionalInfo, isObserverModeEnabled)
 
     def as_updateTimeoutS(self, roundLenString):
         if self._isDAAPIInited():

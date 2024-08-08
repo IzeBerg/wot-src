@@ -27,6 +27,8 @@
 				<blendOut>constant</blendOut>
 				<blendInTime>0.000000</blendInTime>
 				<blendOutTime>0.000000</blendOutTime>
+				<clipStartTime>0.000000</clipStartTime>
+				<clipEndTime>0.266667</clipEndTime>
 			</frame>
 		</track>
 		<track>
@@ -210,6 +212,8 @@
 				<blendOut>constant</blendOut>
 				<blendInTime>0.000000</blendInTime>
 				<blendOutTime>0.000000</blendOutTime>
+				<clipStartTime>0.000000</clipStartTime>
+				<clipEndTime>0.266667</clipEndTime>
 			</frame>
 		</track>
 		<track>
@@ -393,6 +397,8 @@
 				<blendOut>constant</blendOut>
 				<blendInTime>0.000000</blendInTime>
 				<blendOutTime>0.000000</blendOutTime>
+				<clipStartTime>0.000000</clipStartTime>
+				<clipEndTime>0.266667</clipEndTime>
 			</frame>
 		</track>
 		<track>
@@ -576,6 +582,8 @@
 				<blendOut>constant</blendOut>
 				<blendInTime>0.000000</blendInTime>
 				<blendOutTime>0.000000</blendOutTime>
+				<clipStartTime>0.000000</clipStartTime>
+				<clipEndTime>0.266667</clipEndTime>
 			</frame>
 		</track>
 		<track>
@@ -759,6 +767,8 @@
 				<blendOut>constant</blendOut>
 				<blendInTime>0.000000</blendInTime>
 				<blendOutTime>0.000000</blendOutTime>
+				<clipStartTime>0.000000</clipStartTime>
+				<clipEndTime>0.266667</clipEndTime>
 			</frame>
 		</track>
 		<track>
@@ -942,6 +952,8 @@
 				<blendOut>constant</blendOut>
 				<blendInTime>0.000000</blendInTime>
 				<blendOutTime>0.000000</blendOutTime>
+				<clipStartTime>0.000000</clipStartTime>
+				<clipEndTime>0.266667</clipEndTime>
 			</frame>
 		</track>
 		<track>
@@ -1125,6 +1137,8 @@
 				<blendOut>constant</blendOut>
 				<blendInTime>0.000000</blendInTime>
 				<blendOutTime>0.000000</blendOutTime>
+				<clipStartTime>0.000000</clipStartTime>
+				<clipEndTime>0.266667</clipEndTime>
 			</frame>
 		</track>
 		<track>
@@ -1308,6 +1322,8 @@
 				<blendOut>constant</blendOut>
 				<blendInTime>0.000000</blendInTime>
 				<blendOutTime>0.000000</blendOutTime>
+				<clipStartTime>0.000000</clipStartTime>
+				<clipEndTime>0.266667</clipEndTime>
 			</frame>
 		</track>
 		<track>
@@ -1446,15 +1462,15 @@
 			<frame>
 				<startTime>65.332611</startTime>
 				<value>-4.277431 -96.508087 -22.982388</value>
-				<inTangent>0.052225 0.936741 0.439161</inTangent>
-				<outTangent>-0.052461 -0.931295 -0.436831</outTangent>
+				<inTangent>-0.165964 -0.934493 -0.417755</inTangent>
+				<outTangent>-0.165964 -0.934493 -0.417755</outTangent>
 				<tangentMode>0</tangentMode>
 			</frame>
 			<frame>
 				<startTime>76.000000</startTime>
 				<value>-4.503958 -91.894547 -21.250511</value>
-				<inTangent>0.014800 -0.433154 -0.163674</inTangent>
-				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<inTangent>-0.021235 0.432490 0.162352</inTangent>
+				<outTangent>-0.021235 0.432490 0.162352</outTangent>
 				<tangentMode>0</tangentMode>
 			</frame>
 		</track>
@@ -1491,6 +1507,8 @@
 				<blendOut>constant</blendOut>
 				<blendInTime>0.000000</blendInTime>
 				<blendOutTime>0.000000</blendOutTime>
+				<clipStartTime>0.000000</clipStartTime>
+				<clipEndTime>0.266667</clipEndTime>
 			</frame>
 		</track>
 		<track>
@@ -1643,6 +1661,30 @@
 				<inTangent>0.000000 0.000000 0.000000</inTangent>
 				<outTangent>0.000000 0.000000 0.000000</outTangent>
 				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>last_frontier_pigeons_sfx</name>
+		<type>sound</type>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>75.000000</duration>
+				<value>01|Chest_M</value>
+			</frame>
+		</track>
+		<track>
+			<name>Sound</name>
+			<type>sound</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>75.000000</duration>
+				<sequenceSound>amb_map_128_last_frontier_pigeons</sequenceSound>
+				<type>play_till_end</type>
+				<fade>0.000000</fade>
 			</frame>
 		</track>
 	</sequenceObject>

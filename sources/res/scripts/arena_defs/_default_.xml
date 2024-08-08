@@ -195,12 +195,6 @@
 			<runDelay>30</runDelay>
 			<runDelayDev>15</runDelayDev>
 		</BATTLE_ROYALE_TRN_SQUAD>
-		<FUN_RANDOM>
-			<estimatedLoad>
-				0.8
-				<!--BW_String-->
-			</estimatedLoad>
-		</FUN_RANDOM>
 	</bonusTypeOverrides>
 	<gameplayTypes>
 		<ctf>
@@ -433,21 +427,5 @@
 				</loadBanks>
 			</soundRemapping>
 		</comp7>
-		<fep_auto_shoot_guns>
-			<soundRemapping>
-				<events>
-					<event>
-						<name>wpn_auto_shoot_50_75_PC_start</name>
-						<mod>wpn_auto_shoot_50_75_PC_start</mod>
-						<modAUX>overheat_auto_shoot_PC</modAUX>
-					</event>
-					<event>
-						<name>wpn_auto_shoot_20_49_PC_start</name>
-						<mod>wpn_auto_shoot_20_49_PC_start</mod>
-						<modAUX>overheat_auto_shoot_PC</modAUX>
-					</event>
-				</events>
-			</soundRemapping>
-		</fep_auto_shoot_guns>
 	</extraSoundRemapping>
 </root>

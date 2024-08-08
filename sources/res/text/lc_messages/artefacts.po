@@ -97,9 +97,7 @@ msgid "additional_armor_plates_2/name"
 msgstr "Дополнительные бронепластины (Тип 2)"
 
 msgid "afterburning/descr"
-msgstr ""
-"На короткое время даёт существенную прибавку к скорости.\n"
-"Перезарядка: 20 сек."
+msgstr "На некоторое время даёт существенную прибавку к скорости."
 
 msgid "afterburning/name"
 msgstr "Турбонагнетатель"
@@ -763,14 +761,19 @@ msgstr "Охотник за головами"
 
 msgid "comp7_juggernaut/descr/active"
 msgstr ""
-"На следующие {colorTagOpen}%(duration_1)d/%(duration_2)d/%(duration_3)d с{colorTagClose} мощность двигателя повышается на {colorTagOpen}%(enginePowerBuff)d%%{colorTagClose}, скорость ремонта модулей увеличивается на {colorTagOpen}%(repairBuff)d%%{colorTagClose}, а время оглушения снижается на {colorTagOpen}%(stunDurationResist)d%%{colorTagClose}.\n"
+"На следующие {colorTagOpen}%(duration_1)d/%(duration_2)d/%(duration_3)d с{colorTagClose}:\n"
+"• получаемый урон снижен на {colorTagOpen}%(dmgAbsorbBuff_1)d/%(dmgAbsorbBuff_2)d/%(dmgAbsorbBuff_3)d%%{colorTagClose};\n"
+"• максимальная скорость вперёд увеличена на {colorTagOpen}%(fwMaxSpeedBonus)d км/ч{colorTagClose};\n"
+"• максимальная скорость назад увеличена на {colorTagOpen}%(bkMaxSpeedBonus)dкм/ч{colorTagClose};\n"
+"• удельная мощность увеличена на {colorTagOpen}%(enginePowerBuff)d%%{colorTagClose};\n"
+"• урон тараном по машинам противника увеличен на {colorTagOpen}%(rammingDamageBuff)d%%{colorTagClose}.\n"
 "\n"
-"Попадание снаряда противника в вашу машину в течение действия навыка сокращает оставшееся время перезарядки орудия на {colorTagOpen}%(gunReloadBoost)d с{colorTagClose}.\n"
+"Во время работы этого ролевого навыка ваши гусеницы будут сбиты за один выстрел.\n"
 "\n"
-"В начале боя уровень заряда ролевого навыка равен 1."
+"В начале боя уровень заряда навыка равен 1."
 
 msgid "comp7_juggernaut/name"
-msgstr "Напролом"
+msgstr "Джаггернаут"
 
 msgid "comp7_march/descr/active"
 msgstr ""
@@ -786,9 +789,11 @@ msgstr "Марш-бросок"
 
 msgid "comp7_recon/descr/active"
 msgstr ""
-"Через {colorTagOpen}%(delay)d с{colorTagClose} над выбранной вами областью пролетит самолёт-разведчик. Замеченная в радиусе {colorTagOpen}%(radius_1)d/%(radius_2)d/%(radius_3)d м{colorTagClose} техника противника будет оставаться обнаруженной в течение {colorTagOpen}%(duration_1)d/%(duration_2)d/%(duration_3)d&nbsp;с{colorTagClose}.\n"
+"Через {colorTagOpen}%(delay)d с{colorTagClose} над выбранной вами областью пролетит самолёт-разведчик. Замеченная в радиусе {colorTagOpen}%(radius_1)d/%(radius_2)d/%(radius_3)d м{colorTagClose} техника противника будет оставаться обнаруженной в течение {colorTagOpen}%(duration_1)d/%(duration_2)d/%(duration_3)d&nbsp;с{colorTagClose}. Обнаруженный этим навыком игрок увидит отдельную иконку с задержкой в {colorTagOpen}%(lampDelay)d с{colorTagClose}.\n"
 "\n"
-"В начале боя уровень заряда навыка равен 1."
+"Этот навык доступен к использованию через {colorTagOpen}%(startupDelay)d с{colorTagClose} после начала боя.\n"
+"\n"
+"В начале боя уровень заряда навыка равен {colorTagOpen}%(startLevel)d{colorTagClose}."
 
 msgid "comp7_recon/name"
 msgstr "Самолёт-разведчик"
@@ -949,6 +954,19 @@ msgstr ""
 msgid "deluxRammer/name"
 msgstr "Экспериментальная система заряжания"
 
+msgid "deluxeAdditionalInvisibilityDevice/long_special"
+msgstr ""
+"Усовершенствованная версия Малошумной системы выхлопа с улучшенными характеристиками: снижает заметность подвижной и неподвижной машины. Полезна для активной разведки, а также для пассивного наблюдения с более рискованных позиций.\n"
+"Подходит ко всем нациям и типам техники, но эффективность зависит от типа машины. Может быть демонтирована только за боны."
+
+msgid "deluxeAdditionalInvisibilityDevice/name"
+msgstr "Скрытая выхлопная система"
+
+msgid "deluxeAdditionalInvisibilityDevice/short_special"
+msgstr ""
+"Снижает заметность подвижной и неподвижной машины на "
+"{colorTagOpen}6{colorTagClose}/{colorTagOpen}8{colorTagClose}/{colorTagOpen}10%{colorTagClose}"
+
 msgid "deluxeExtraHealthReserve/additional_descr"
 msgstr "Полностью восстанавливает прочность ходовой после ремонта."
 
@@ -1069,6 +1087,25 @@ msgstr "Слот"
 msgid "empty_slot/short_descr"
 msgstr "Слот боевого резерва использован."
 
+msgid "enemyShotPredictorBattleBooster/action/boost"
+msgstr ""
+"Добавляет к текущему уровню навыка «Звуковая разведка» дополнительные 50%"
+
+msgid "enemyShotPredictorBattleBooster/action/perk"
+msgstr "Даёт 100%-й навык «Звуковая разведка»"
+
+msgid "enemyShotPredictorBattleBooster/long_special"
+msgstr ""
+"Навык «Звуковая разведка» предупреждает о выстреле САУ противника и снижает "
+"негативный эффект от оглушения. Инструкция даёт полностью изученный навык "
+"или повышает его эффективность."
+
+msgid "enemyShotPredictorBattleBooster/name"
+msgstr "Повышенная бдительность"
+
+msgid "enemyShotPredictorBattleBooster/short_special"
+msgstr "Даёт навык «Звуковая разведка» или повышает его эффективность"
+
 msgid "enhancedAimDrives/long_special"
 msgstr ""
 "Ускорение сведения уменьшает время, затрачиваемое на прицеливание, а значит "
@@ -1145,6 +1182,36 @@ msgstr "Тестовая абилка на Visual Script"
 msgid "exampleAbility/name"
 msgstr "Тестовая абилка"
 
+msgid "excellentFuel/always"
+msgstr ""
+"%(vehicleEnginePower)s к мощности двигателя и к скорости вращения башни. "
+"Расходуется за один бой."
+
+msgid "excellentFuel/descr"
+msgstr ""
+"{colorTagOpen}+10%{colorTagClose} к мощности двигателя и к скорости вращения"
+" башни."
+
+msgid "excellentFuel/long_special"
+msgstr ""
+"Добавляет {colorTagOpen}10%{colorTagClose} к мощности двигателя и скорости "
+"вращения башни. Расходуется за один бой. Автоматически активируется после "
+"начала сражения и действует до его окончания."
+
+msgid "excellentFuel/name"
+msgstr "Отличное топливо"
+
+msgid "excellentFuel/onUse"
+msgstr "?empty?"
+
+msgid "excellentFuel/restriction"
+msgstr "?empty?"
+
+msgid "excellentFuel/short_special"
+msgstr ""
+"Добавляет {colorTagOpen}10%{colorTagClose} к мощности двигателя и к скорости"
+" вращения башни"
+
 msgid "extraHealthReserve/additional_descr"
 msgstr "Полностью восстанавливает прочность ходовой после ремонта."
 
@@ -1205,7 +1272,7 @@ msgid "fireFightingBattleBooster/action/boost"
 msgstr "Добавляет к текущему уровню навыка «Пожаротушение» дополнительные 50%"
 
 msgid "fireFightingBattleBooster/action/perk"
-msgstr "Даёт 100%-й навык «Пожаротушение» всему экипажу"
+msgstr "Даёт 100%-й навык «Пожаротушение»"
 
 msgid "fireFightingBattleBooster/long_special"
 msgstr ""
@@ -1248,72 +1315,6 @@ msgstr ""
 
 msgid "fuel_system_revision_1/name"
 msgstr "Ревизия топливной системы (Тип 1)"
-
-msgid "gasoline100/always"
-msgstr ""
-"%(vehicleEnginePower)s к мощности двигателя и к скорости вращения башни. "
-"Расходуется за один бой."
-
-msgid "gasoline100/descr"
-msgstr ""
-"{colorTagOpen}+5%{colorTagClose} к мощности двигателя и к скорости вращения "
-"башни."
-
-msgid "gasoline100/long_special"
-msgstr ""
-"Добавляет {colorTagOpen}5%{colorTagClose} к мощности двигателя и скорости "
-"вращения башни на один бой. Расходуется за один бой. Автоматически "
-"активируется после начала боя и действует на всём его протяжении. Подходит "
-"для техники с бензиновыми двигателями."
-
-msgid "gasoline100/name"
-msgstr "100-октановый бензин"
-
-msgid "gasoline100/onUse"
-msgstr "?empty?"
-
-msgid "gasoline100/restriction"
-msgstr ""
-"Только для бензиновых двигателей Германии, США, Великобритании, Франции, "
-"Чехословакии, Швеции, Италии и Польши."
-
-msgid "gasoline100/short_special"
-msgstr ""
-"Добавляет {colorTagOpen}5%{colorTagClose} к мощности двигателя и к скорости "
-"вращения башни"
-
-msgid "gasoline105/always"
-msgstr ""
-"%(vehicleEnginePower)s к мощности двигателя и к скорости вращения башни. "
-"Расходуется за один бой."
-
-msgid "gasoline105/descr"
-msgstr ""
-"{colorTagOpen}+10%{colorTagClose} к мощности двигателя и к скорости вращения"
-" башни."
-
-msgid "gasoline105/long_special"
-msgstr ""
-"Добавляет {colorTagOpen}10%{colorTagClose} к мощности двигателя и скорости "
-"вращения башни на один бой. Расходуется за один бой. Автоматически "
-"активируется после начала боя и действует на всём его протяжении. Подходит "
-"для техники с бензиновыми двигателями."
-
-msgid "gasoline105/name"
-msgstr "105-октановый бензин"
-
-msgid "gasoline105/onUse"
-msgstr "?empty?"
-
-msgid "gasoline105/restriction"
-msgstr ""
-"Только для бензиновых двигателей Германии, США, Великобритании, Франции, "
-"Чехословакии, Швеции, Италии и Польши."
-
-msgid "gasoline105/short_special"
-msgstr ""
-"Добавляет {colorTagOpen}10%{colorTagClose} к мощности двигателя и к скорости"
-" вращения башни"
 
 msgid "grousers/long_special"
 msgstr ""
@@ -1690,9 +1691,6 @@ msgstr "?empty?"
 msgid "largeMedkit/short_special"
 msgstr "Лечит всех раненых членов экипажа и снимает оглушение"
 
-msgid "largeMedkit/stunDisabled/descr"
-msgstr "Лечение всех раненых членов экипажа."
-
 msgid "largeRepairkit/always"
 msgstr "%(vehicleRepairSpeed)s к скорости ремонта модулей"
 
@@ -1739,30 +1737,6 @@ msgstr "Долг превыше всего"
 
 msgid "lastEffortBattleBooster/short_special"
 msgstr "Даёт навык «Из последних сил» или усиливает его"
-
-msgid "lendLeaseOil/always"
-msgstr "%(vehicleEnginePower)s к мощности двигателя. Расходуется за один бой."
-
-msgid "lendLeaseOil/descr"
-msgstr "{colorTagOpen}+5%{colorTagClose} к мощности двигателя."
-
-msgid "lendLeaseOil/long_special"
-msgstr ""
-"Добавляет {colorTagOpen}5%{colorTagClose} к мощности двигателя на один бой. "
-"Автоматически активируется после начала боя и действует на всём его "
-"протяжении. Подходит только для советской техники."
-
-msgid "lendLeaseOil/name"
-msgstr "Ленд-лизовское масло"
-
-msgid "lendLeaseOil/onUse"
-msgstr "?empty?"
-
-msgid "lendLeaseOil/restriction"
-msgstr "Только для техники СССР."
-
-msgid "lendLeaseOil/short_special"
-msgstr "Добавляет {colorTagOpen}5%{colorTagClose} к мощности двигателя"
 
 msgid "mediumCaliberHowitzerRammer/name"
 msgstr "Гаубичный досылатель среднего калибра"
@@ -1905,7 +1879,7 @@ msgstr "Не для САУ"
 msgid "pedantBattleBooster/action/boost"
 msgstr ""
 "Добавляет к текущему уровню навыка «Бесконтактная боеукладка» дополнительные"
-" 300%"
+" 200%"
 
 msgid "pedantBattleBooster/action/perk"
 msgstr "Даёт 100%-й навык «Бесконтактная боеукладка»"
@@ -1927,7 +1901,7 @@ msgid "poi_artillery_aoe/descr"
 msgstr ""
 "Через {colorTagOpen}3 с{colorTagClose} по выбранной вами области будет "
 "нанесён Артиллерийский удар. Поражённые цели в радиусе 25 м получают "
-"{colorTagOpen}230{colorTagClose} ед. урона и оглушаются на "
+"{colorTagOpen}350{colorTagClose} ед. урона и оглушаются на "
 "{colorTagOpen}10 с{colorTagClose}."
 
 msgid "poi_artillery_aoe/name"
@@ -1941,29 +1915,53 @@ msgstr ""
 msgid "poi_radar/name"
 msgstr "Запрос разведданных"
 
-msgid "qualityOil/always"
-msgstr "%(vehicleEnginePower)s к мощности двигателя. Расходуется за один бой."
+msgid "practicalityBattleBooster/action/boost"
+msgstr "Удваивает эффект от навыка «Практичность»"
 
-msgid "qualityOil/descr"
-msgstr "{colorTagOpen}+5%{colorTagClose} к мощности двигателя."
+msgid "practicalityBattleBooster/action/perk"
+msgstr "Даёт 100%-й навык «Практичность»"
 
-msgid "qualityOil/long_special"
+msgid "practicalityBattleBooster/long_special"
 msgstr ""
-"Добавляет {colorTagOpen}5%{colorTagClose} к мощности двигателя на один бой. "
-"Автоматически активируется после начала боя и действует на всём "
-"его протяжении. Подходит только для техники Китая и Японии."
+"Навык «Практичность» снижает время подготовки снаряжения. Расходуется за "
+"один бой. Инструкция даёт полностью изученный навык или повышает его "
+"эффективность."
 
-msgid "qualityOil/name"
-msgstr "Качественное масло"
+msgid "practicalityBattleBooster/name"
+msgstr "Тщательная подготовка"
 
-msgid "qualityOil/onUse"
+msgid "practicalityBattleBooster/short_special"
+msgstr "Даёт навык «Практичность» или повышает его эффективность"
+
+msgid "qualityFuel/always"
+msgstr ""
+"%(vehicleEnginePower)s к мощности двигателя и к скорости вращения башни. "
+"Расходуется за один бой."
+
+msgid "qualityFuel/descr"
+msgstr ""
+"{colorTagOpen}+5%{colorTagClose} к мощности двигателя и к скорости вращения "
+"башни."
+
+msgid "qualityFuel/long_special"
+msgstr ""
+"Добавляет {colorTagOpen}5%{colorTagClose} к мощности двигателя и скорости "
+"вращения башни. Расходуется за один бой. Автоматически активируется после "
+"начала сражения и действует до его окончания."
+
+msgid "qualityFuel/name"
+msgstr "Качественное топливо"
+
+msgid "qualityFuel/onUse"
 msgstr "?empty?"
 
-msgid "qualityOil/restriction"
-msgstr "Только для техники Китая и Японии."
+msgid "qualityFuel/restriction"
+msgstr "?empty?"
 
-msgid "qualityOil/short_special"
-msgstr "Добавляет {colorTagOpen}5%{colorTagClose} к мощности двигателя"
+msgid "qualityFuel/short_special"
+msgstr ""
+"Добавляет {colorTagOpen}5%{colorTagClose} к мощности двигателя и к скорости "
+"вращения башни"
 
 msgid "radar/descr"
 msgstr "Позволяет обнаружить противника и добычу на мини-карте."
@@ -3078,11 +3076,11 @@ msgid "smallMedkit/always"
 msgstr "?empty?"
 
 msgid "smallMedkit/descr"
-msgstr "Лечение раненого члена экипажа и снятие эффекта оглушения."
+msgstr "Лечение всех раненых членов экипажа и снятие эффекта оглушения."
 
 msgid "smallMedkit/long_special"
 msgstr ""
-"Позволяет вернуть в строй одного раненого члена экипажа и снять эффект "
+"Позволяет вернуть в строй всех раненых членов экипажа и снять эффект "
 "оглушения. Требует ручной активации. Подходит для всех типов техники любой "
 "нации. Списывается по окончании боя, если была применена."
 
@@ -3090,53 +3088,42 @@ msgid "smallMedkit/name"
 msgstr "Малая аптечка"
 
 msgid "smallMedkit/onUse"
-msgstr ""
-"Лечение раненого члена экипажа и снятие эффекта оглушения. Используется "
-"многократно за бой. Снаряжение списывается после боя, если было хоть раз "
-"применено."
+msgstr "Лечение всех раненых членов экипажа и снятие эффекта оглушения."
 
 msgid "smallMedkit/removingStun/onUse"
-msgstr ""
-"Лечение раненого члена экипажа и снятие эффекта оглушения. Используется "
-"многократно за бой. Снаряжение списывается после боя, если было хоть раз "
-"применено."
+msgstr "Лечение всех раненых членов экипажа и снятие эффекта оглушения."
 
 msgid "smallMedkit/restriction"
 msgstr "?empty?"
 
 msgid "smallMedkit/short_special"
-msgstr "Лечит одного члена экипажа и снимает оглушение"
-
-msgid "smallMedkit/stunDisabled/descr"
-msgstr "Лечение раненого члена экипажа и снятие эффекта оглушения."
+msgstr "Лечит всех раненых членов экипажа и снимает оглушение."
 
 msgid "smallRepairkit/always"
 msgstr "?empty?"
 
 msgid "smallRepairkit/descr"
-msgstr "Починка одного повреждённого модуля или ходовой любого типа."
+msgstr "Ремонт всех повреждённых модулей."
 
 msgid "smallRepairkit/long_special"
 msgstr ""
-"Позволяет отремонтировать один повреждённый модуль (например, орудие или "
-"двигатель) или ходовую любого типа. Требует ручной активации. Подходит для "
-"всех типов техники любой нации. Списывается по окончании боя, если был "
-"применён."
+"Позволяет отремонтировать все повреждённые модули. Требует ручной активации."
+" Подходит для всех типов техники любой нации. Списывается по окончании боя, "
+"если был применён."
 
 msgid "smallRepairkit/name"
 msgstr "Малый ремкомплект"
 
 msgid "smallRepairkit/onUse"
 msgstr ""
-"Починка одного повреждённого модуля или всех повреждённых гусениц. "
-"Используется многократно за бой. Снаряжение списывается после боя, если было"
-" хоть раз применено."
+"Ремонт всех повреждённых модулей. Подходит для всех типов техники любой "
+"нации. Списывается по окончании боя, если был применён."
 
 msgid "smallRepairkit/restriction"
 msgstr "?empty?"
 
 msgid "smallRepairkit/short_special"
-msgstr "Ремонтирует один модуль"
+msgstr "Ремонтирует все повреждённые модули."
 
 msgid "smoke/longDescr"
 msgstr ""

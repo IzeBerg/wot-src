@@ -383,14 +383,16 @@ class BattleRoyaleRadarPlugin(RadarPlugin):
             return vEntryId
 
     def _addLootEntry(self, lootId, lootInfo):
-        lEntry = self.__getLootEntryOnMinimap(lootId)
-        if lEntry is not None:
-            self.__updateLootEntryTimer(lEntry)
-            return lEntry
+        typeId, _ = lootInfo
+        if typeId == LOOT_TYPE.AIRDROP:
+            return
         else:
+            lEntry = self.__getLootEntryOnMinimap(lootId)
+            if lEntry is not None:
+                self.__updateLootEntryTimer(lEntry)
+                return lEntry
             lEntry = super(BattleRoyaleRadarPlugin, self)._addLootEntry(lootId, lootInfo)
             if lEntry.entryId is not None:
-                typeId, _ = lootInfo
                 self.__showEntryByEntryID(lEntry.entryId, typeId)
             return lEntry
 
@@ -447,7 +449,7 @@ class BattleRoyaleRadarPlugin(RadarPlugin):
 
     def __onLootsDetected(self, loots):
         for loot in loots:
-            if self.__canAddLootEntry(loot):
+            if not BigWorld.player().isObserver() or BigWorld.player().isObserverFPV:
                 lEntry = self._addLootEntry(loot.id, (loot.typeID, (loot.position[0], loot.position[2])))
                 if lEntry and lEntry.entryId:
                     self.__updateLootEntryTimer(lEntry, detected=True, isDying=False)
@@ -472,14 +474,6 @@ class BattleRoyaleRadarPlugin(RadarPlugin):
                 self.__lootDetector.stop()
         elif not self.__lootDetector.active:
             self.__lootDetector.start()
-
-    @staticmethod
-    def __canAddLootEntry(loot):
-        if BigWorld.player().isObserver() and not BigWorld.player().isObserverFPV:
-            return False
-        if loot.typeID == LOOT_TYPE.AIRDROP:
-            return False
-        return True
 
 
 class AirDropPlugin(EntriesPlugin):

@@ -19,8 +19,6 @@ package
       
       public static const MAPS_ICONS_BATTLEMATTERS_ENTRYPOINT_BG:String = "../maps/icons/battleMatters/entryPoint/bg.png";
       
-      public static const MAPS_ICONS_BATTLEPASS_OFF_SEASON_BG:String = "../maps/icons/battlePass/off_season/bg.png";
-      
       public static const MAPS_ICONS_BATTLEPASS_POST_PROGRESSION_BG:String = "../maps/icons/battlePass/post_progression/bg.png";
       
       public static const MAPS_ICONS_BATTLEPASS_PROGRESSION_BG:String = "../maps/icons/battlePass/progression/bg.png";
@@ -55,13 +53,13 @@ package
       
       public static const MAPS_ICONS_MARATHON_REWARDWINDOW_BG:String = "../maps/icons/marathon/rewardWindow/bg.png";
       
+      public static const MAPS_ICONS_PERSONALEXCHANGERATES_ALLPERSONALEXCHANGES_BG:String = "../maps/icons/personalExchangeRates/allPersonalExchanges/bg.png";
+      
       public static const MAPS_ICONS_PRESTIGE_VEHICLESTATISTICSVIEW_BG:String = "../maps/icons/prestige/vehicleStatisticsView/bg.png";
       
       public static const MAPS_ICONS_RANKEDBATTLES_AWARDS_BG:String = "../maps/icons/rankedBattles/awards/bg.png";
       
       public static const MAPS_ICONS_RESOURCEWELL_INTRO_BG:String = "../maps/icons/resourceWell/intro/bg.png";
-      
-      public static const MAPS_ICONS_TANKMEN_ICONS_SMALL_USSR_DOG_1:String = "../maps/icons/tankmen/icons/small/ussr-dog-1.png";
       
       public static const MAPS_ICONS_TANKMEN_ROLES_BIG_DOG:String = "../maps/icons/tankmen/roles/big/dog.png";
       

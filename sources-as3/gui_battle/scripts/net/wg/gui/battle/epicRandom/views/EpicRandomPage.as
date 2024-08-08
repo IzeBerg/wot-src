@@ -45,8 +45,6 @@ package net.wg.gui.battle.epicRandom.views
       
       private static const BATTLE_DAMAGE_LOG_Y_PADDING:int = 3;
       
-      private static const CONSUMABLES_POPUP_OFFSET:int = 60;
-      
       private static const MINIMAP_MARGIN_HEIGHT:int = 6;
       
       private static const MINIMAP_MARGIN_WIDTH:int = 0;
@@ -154,9 +152,7 @@ package net.wg.gui.battle.epicRandom.views
       {
          this.battleMessenger.addEventListener(MouseEvent.ROLL_OVER,this.onBattleMessengerRollOverHandler);
          this.battleMessenger.addEventListener(MouseEvent.ROLL_OUT,this.onBattleMessengerRollOutHandler);
-         this.consumablesPanel.addEventListener(ConsumablesPanelEvent.SWITCH_POPUP,this.onConsumablesPanelSwitchPopupHandler);
          this.consumablesPanel.addEventListener(ConsumablesPanelEvent.UPDATE_POSITION,this.onConsumablesPanelUpdatePositionHandler);
-         this.consumablesPanel.addEventListener(ConsumablesPanelEvent.SWITCH_POPUP,this.onConsumablesPanelSwitchPopupHandler);
          this.battleMessenger.addEventListener(FocusRequestEvent.REQUEST_FOCUS,this.onBattleMessengerRequestFocusHandler);
          this.battleMessenger.addEventListener(BattleMessenger.REMOVE_FOCUS,this.onBattleMessengerRemoveFocusHandler);
          this.epicRandomPlayersPanel.addEventListener(PlayersPanelSwitchEvent.STATE_REQUESTED,this.onPlayersPanelStateRequestedHandler);
@@ -210,7 +206,6 @@ package net.wg.gui.battle.epicRandom.views
          this.epicRandomPlayersPanel.removeEventListener(PlayersPanelSwitchEvent.STATE_REQUESTED,this.onPlayersPanelStateRequestedHandler);
          this.epicRandomPlayersPanel.removeEventListener(PlayersPanelEvent.ON_ITEMS_COUNT_CHANGE,this.onEpicRandomPlayersPanelOnItemsCountChangeHandler);
          this.consumablesPanel.removeEventListener(ConsumablesPanelEvent.UPDATE_POSITION,this.onConsumablesPanelUpdatePositionHandler);
-         this.consumablesPanel.removeEventListener(ConsumablesPanelEvent.SWITCH_POPUP,this.onConsumablesPanelSwitchPopupHandler);
          this.battleMessenger.removeEventListener(FocusRequestEvent.REQUEST_FOCUS,this.onBattleMessengerRequestFocusHandler);
          this.battleMessenger.removeEventListener(BattleMessenger.REMOVE_FOCUS,this.onBattleMessengerRemoveFocusHandler);
          this.battleMessenger = null;
@@ -459,16 +454,6 @@ package net.wg.gui.battle.epicRandom.views
             this.updateBattleDamageLogPanelPosition();
          }
          minimap.updateSizeIndex(false);
-      }
-      
-      private function onConsumablesPanelSwitchPopupHandler(param1:ConsumablesPanelEvent) : void
-      {
-         var _loc2_:int = 0;
-         if(!postmortemPanelUI || !postmortemPanelUI.visible)
-         {
-            _loc2_ = !!this.consumablesPanel.isExpand ? int(CONSUMABLES_POPUP_OFFSET) : int(0);
-            vehicleMessageList.setLocation(_originalWidth - VEHICLE_MESSAGES_LIST_OFFSET.x >> 1,_originalHeight - VEHICLE_MESSAGES_LIST_OFFSET.y - _loc2_ | 0);
-         }
       }
    }
 }

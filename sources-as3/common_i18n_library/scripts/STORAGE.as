@@ -228,6 +228,10 @@ package
       public static const OFFERS_NOITEMS_TITLE:String = "#storage:offers/noItems/title";
       
       public static const OPTDEVICE_HOVER_EFFECT:String = "#storage:optDevice/hover/effect";
+      
+      public static const EQUIPMENT_COOLDOWN:String = "#storage:equipment/cooldown";
+      
+      public static const EQUIPMENT_EXTENDEDDESCRIPTION:String = "#storage:equipment/extendedDescription";
        
       
       public function STORAGE()

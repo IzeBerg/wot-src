@@ -573,15 +573,18 @@ msgstr "Отменить"
 
 msgid "comp7/deserter/message"
 msgstr ""
-"Вы нужны команде! Выход из боя до уничтожения собственной машины "
-"расценивается как дезертирство и может повлечь применение дисциплинарного "
-"взыскания."
+"Сражение ещё не завершено. Выходя из боя до его завершения, вы подставляете команду.\n"
+"К вам будет {brown_open}применено дисциплинарное взыскание.{brown_close}\n"
+"Вы уверены, что хотите покинуть бой?"
+
+msgid "comp7/deserter/msgTitle"
+msgstr "Вы потеряете очки рейтинга!"
 
 msgid "comp7/deserter/submit"
 msgstr "Бежать"
 
 msgid "comp7/deserter/title"
-msgstr "Бежать с поля боя?"
+msgstr "Бегство с поля боя"
 
 msgid "confirmBattleBoosterBuyAndInstall/cancel"
 msgstr "Отменить"
@@ -1326,6 +1329,29 @@ msgstr "Нет боевого опыта для перевода"
 msgid "exchangeXpWindow/error/noVehiclesWithXp"
 msgstr "Нет боевого опыта для перевода"
 
+msgid "fillAllPerks/button/cancel"
+msgstr "Отменить"
+
+msgid "fillAllPerks/button/fill"
+msgstr "Автоопределить"
+
+msgid "fillAllPerks/checkbox"
+msgstr "Распределить навыки для экипажей в Казарме"
+
+msgid "fillAllPerks/description"
+msgstr ""
+"В зависимости от специальности члена экипажа с доступными для изучения "
+"навыками, алгоритм выбирает первый навык из таблицы ниже. Если у танкиста "
+"уже изучен первый навык, алгоритм выбирает второй и так далее, пока все "
+"пустые слоты навыков не будут заполнены. Операция может занять некоторое "
+"время."
+
+msgid "fillAllPerks/subTitle"
+msgstr "Навыки будут распределены только для членов экипажа в технике."
+
+msgid "fillAllPerks/title"
+msgstr "Распределить неизученные навыки для всех членов экипажа?"
+
 msgid "finance_dialog/cancelBtn"
 msgstr "Отменить"
 
@@ -1420,8 +1446,8 @@ msgstr "Подтверждение"
 
 msgid "freeSkillsLearning/message"
 msgstr ""
-"%(iconWarning) {orange_Open}После подтверждения сменить «нулевой» навык будет невозможно.{orange_Close}\n"
-"«Нулевой» навык не требует затрат опыта экипажа и не может быть изменён игроком. Он обеспечивает преимущество за счёт значительного уменьшения количества опыта, необходимого для дальнейшего обучения члена экипажа."
+"Для изучения «нулевого» навыка опыт не требуется. Таким образом, снижается "
+"количество опыта, необходимое для последующих навыков."
 
 msgid "freeSkillsLearning/title/learning"
 msgstr "Выбрать «%(skillName)s» в качестве «нулевого» навыка?"
@@ -2054,10 +2080,24 @@ msgstr "До сброса:"
 msgid "perksReset/cancel"
 msgstr "Отменить"
 
+msgid "perksReset/discountTooltip/body"
+msgstr ""
+"Опция недоступна, так как у вас уже есть 100%-я скидка на сброс навыков в "
+"танковой академии."
+
+msgid "perksReset/discountTooltip/header"
+msgstr "Недоступно"
+
 msgid "perksReset/free/description"
 msgstr ""
 "Навыки, уровень изучения которых не превышает {yellow_Open}1%{yellow_Close},"
 " можно сбросить бесплатно."
+
+msgid "perksReset/freeFirstResetLabel"
+msgstr "Для этого члена экипажа доступен бесплатный первый сброс навыков"
+
+msgid "perksReset/graceLabel"
+msgstr "Бесплатный сброс навыков доступен в течение:"
 
 msgid "perksReset/lostSkill/tooltip/description"
 msgstr ""
@@ -2096,7 +2136,7 @@ msgid "perksReset/submit"
 msgstr "Сбросить"
 
 msgid "perksReset/title"
-msgstr "Сбросить все %(tankmanRole)s?"
+msgstr "Сбросить все навыки?"
 
 msgid "postmortem/cancel"
 msgstr "Выйти"
@@ -2174,7 +2214,7 @@ msgstr ""
 msgid "punishmentWindow/message/ban/comp7"
 msgstr ""
 "Вы нарушили игровые правила на карте {whiteSpanish_Open}%(arenaName)s{whiteSpanish_Close} в {whiteSpanish_Open}%(time)s{whiteSpanish_Close}.\n"
-"Доступ к боям режима {whiteSpanish_Open}«Натиск Лайт»{whiteSpanish_Close} временно заблокирован."
+"Вы оштрафованы на {whiteSpanish_Open}%(penalty)s{whiteSpanish_Close} очков рейтинга, доступ к боям режима {whiteSpanish_Open}«Натиск»{whiteSpanish_Close} временно заблокирован."
 
 msgid "punishmentWindow/message/ban/comp7/qualification"
 msgstr ""
@@ -2485,6 +2525,11 @@ msgstr ""
 "Членов экипажа не нужно рекрутировать на премиум технику. Вы можете "
 "пересадить экипаж на премиум машину того же типа без штрафов."
 
+msgid "recruitConversionConfirm/warning"
+msgstr ""
+"У члена экипажа изучены устаревшие навыки, которые будут автоматически "
+"сброшены без потери опыта."
+
 msgid "recruitDialog/name/title"
 msgstr "Рекрутировать новобранца (%(name)s)?"
 
@@ -2653,6 +2698,20 @@ msgstr "Продолжить"
 msgid "reportBug/title"
 msgstr "Переход на сайт Центра поддержки WoT"
 
+msgid "resetAllPerks/cancel"
+msgstr "Отменить"
+
+msgid "resetAllPerks/submit"
+msgstr "Сбросить"
+
+msgid "resetAllPerks/title"
+msgstr "Сбросить все навыки у всех членов экипажа?"
+
+msgid "resetAllPerks/warning"
+msgstr ""
+"{orangeStart}Сброс всех навыков у всех членов экипажа на аккаунте.{orangeEnd}\n"
+"{orangeStart}Операцию невозможно отменить.{orangeEnd}"
+
 msgid "resetGraphics/cancel"
 msgstr "Продолжить"
 
@@ -2708,10 +2767,26 @@ msgstr "Отменить"
 msgid "retrain/changeRole"
 msgstr "Сменить специальность"
 
+msgid "retrain/discountLabel"
+msgstr "Доступна скидка: первый навык не изучен на 100%."
+
+msgid "retrain/discountTooltip/body"
+msgstr ""
+"Опция недоступна: у вас уже есть 100%-я скидка на переобучение в танковой "
+"академии."
+
+msgid "retrain/discountTooltip/header"
+msgstr "Недоступно"
+
 msgid "retrain/massive/tankmenCount"
 msgstr ""
 "Будет переобучено членов экипажа: "
 "{whiteSpanish_Open}%(count)s{whiteSpanish_Close}"
+
+msgid "retrain/premium/description"
+msgstr ""
+"Членов экипажа не нужно обучать на премиум технику.\n"
+"Вы можете пересадить экипаж на премиум машину того же типа без штрафов."
 
 msgid "retrain/price"
 msgstr "Стоимость:"
@@ -2828,6 +2903,15 @@ msgstr "Обновите клиент. В случае повторной оши
 
 msgid "shopSyncError/title"
 msgstr "Рассинхронизация"
+
+msgid "skillsTrainingConfirm/cancel"
+msgstr "Отменить"
+
+msgid "skillsTrainingConfirm/message"
+msgstr "Изучить навык(и)?"
+
+msgid "skillsTrainingConfirm/submit"
+msgstr "Изучить"
 
 msgid "skinApplyDialog/button/submit"
 msgstr "Применить"

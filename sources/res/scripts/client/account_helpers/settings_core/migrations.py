@@ -897,7 +897,6 @@ def _migrateTo96(core, data, initialized):
        'role_LT_universal': False, 
        'role_LT_wheeled': False, 
        'role_SPG': False}
-    data['guiStartBehavior']['isComp7IntroShown'] = False
 
 
 def _migrateTo97(core, data, initialized):
@@ -929,8 +928,7 @@ def _migrateTo100(core, data, initialized):
 
 
 def _migrateTo101(core, data, initialized):
-    from account_helpers.settings_core.ServerSettingsManager import GUI_START_BEHAVIOR
-    data[GUI_START_BEHAVIOR][GuiSettingsBehavior.COMP7_INTRO_SHOWN] = False
+    pass
 
 
 def _migrateTo102(core, data, initialized):
@@ -986,8 +984,7 @@ def _migrateTo107(core, data, initialized):
 
 
 def _migrateTo108(core, data, initialized):
-    from account_helpers.settings_core.ServerSettingsManager import GUI_START_BEHAVIOR
-    data[GUI_START_BEHAVIOR][GuiSettingsBehavior.COMP7_WHATS_NEW_SHOWN] = False
+    pass
 
 
 def _migrateTo109(core, data, initialized):
@@ -1201,8 +1198,7 @@ def _migrateTo118(core, data, initialized):
 
 
 def _migrateTo119(core, data, initialized):
-    from account_helpers.settings_core.ServerSettingsManager import GUI_START_BEHAVIOR
-    data[GUI_START_BEHAVIOR][GuiSettingsBehavior.COMP7_WHATS_NEW_SHOWN] = False
+    pass
 
 
 def _migrateTo120(core, data, initialized):
@@ -1250,7 +1246,6 @@ def _migrateTo123(core, data, initialized):
 
 def _migrateTo124(core, data, initialized):
     from account_helpers.settings_core.ServerSettingsManager import GUI_START_BEHAVIOR
-    data[GUI_START_BEHAVIOR][GuiSettingsBehavior.COMP7_WHATS_NEW_SHOWN] = False
     data[GUI_START_BEHAVIOR][GuiSettingsBehavior.COMP7_SEASON_STATISTICS_SHOWN] = False
 
 
@@ -1278,6 +1273,28 @@ def _migrateTo128(core, data, initialized):
     from account_helpers.settings_core.ServerSettingsManager import UI_STORAGE_KEYS, SETTINGS_SECTIONS
     data[SETTINGS_SECTIONS.UI_STORAGE_2][UI_STORAGE_KEYS.AUTO_SHOOT_HIGHLIGHTS_COUNTER] = 0
     data[SETTINGS_SECTIONS.UI_STORAGE_2][UI_STORAGE_KEYS.AUTO_SHOT_NPD_SHELLS_MARK_IS_SHOWN] = False
+
+
+def _migrateTo129(core, data, initialized):
+    pass
+
+
+def _migrateTo130(core, data, initialized):
+    from account_helpers.settings_core.ServerSettingsManager import GUI_START_BEHAVIOR
+    from account_helpers.AccountSettings import AccountSettings, COMP7_UI_SECTION, COMP7_SHOP_SEEN_PRODUCTS, COMP7_LAST_SEASON
+    data[GUI_START_BEHAVIOR][GuiSettingsBehavior.COMP7_SEASON_STATISTICS_SHOWN] = False
+    data[GUI_START_BEHAVIOR][GuiSettingsBehavior.COMP7_YEARLY_ANIMATION_SEEN] = False
+    settings = AccountSettings.getUIFlag(COMP7_UI_SECTION)
+    settings[COMP7_SHOP_SEEN_PRODUCTS] = set(settings.get(COMP7_SHOP_SEEN_PRODUCTS, ()))
+    settings[COMP7_LAST_SEASON] = None
+    AccountSettings.setUIFlag(COMP7_UI_SECTION, settings)
+    return
+
+
+def _migrateTo131(core, data, initialized):
+    from account_helpers.settings_core.ServerSettingsManager import GUI_START_BEHAVIOR
+    data[GUI_START_BEHAVIOR][GuiSettingsBehavior.CREW_NPS_INTRO_SHOWN] = False
+    data[GUI_START_BEHAVIOR][GuiSettingsBehavior.CREW_NPS_WELCOME_SHOWN] = False
 
 
 _versions = (
@@ -1534,7 +1551,13 @@ _versions = (
  (
   127, _migrateTo127, False, False),
  (
-  128, _migrateTo128, False, False))
+  128, _migrateTo128, False, False),
+ (
+  129, _migrateTo129, False, False),
+ (
+  130, _migrateTo130, False, False),
+ (
+  131, _migrateTo131, False, False))
 
 @adisp_async
 @adisp_process

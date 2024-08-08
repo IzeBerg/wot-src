@@ -36,6 +36,8 @@ package net.wg.data.VO
       
       public var cancelBtnText:String = "";
       
+      public var needItemsType:String = "";
+      
       public function ConfirmExchangeDialogVO(param1:Object)
       {
          super(param1);

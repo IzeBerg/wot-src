@@ -1165,3 +1165,15 @@ class SteamCompletionFormatter(AsyncTokenQuestsSubFormatter):
             return MessageData(formatted, settings)
         else:
             return
+
+
+class SkipNotificationFormatter(ServiceChannelFormatter, TokenQuestsSubFormatter):
+    __NOTIFICATION_QUEST_POSTFIX = '_skip_notification'
+
+    def format(self, message, *args):
+        return [
+         MessageData(None, None)]
+
+    @classmethod
+    def _isQuestOfThisGroup(cls, questID):
+        return questID.endswith(cls.__NOTIFICATION_QUEST_POSTFIX)

@@ -8,6 +8,7 @@ from skeletons.gui.battle_session import IBattleSessionProvider
 
 class PerksSounds(CONST_CONTAINER):
     PERK = 'detachment_perk'
+    PERK_STOP = 'detachment_perk_stop'
 
 
 class PerksPanel(PerksPanelMeta):
@@ -36,6 +37,8 @@ class PerksPanel(PerksPanelMeta):
             if state == PerkState.ACTIVE:
                 if perkID not in prevPerks or prevPerks[perkID]['state'] != PerkState.ACTIVE:
                     WWISE.WW_eventGlobal(PerksSounds.PERK)
+            elif perkID in prevPerks and prevPerks[perkID]['state'] == PerkState.ACTIVE:
+                WWISE.WW_eventGlobal(PerksSounds.PERK_STOP)
 
     def clearHUD(self):
         self.as_clearPanelS()

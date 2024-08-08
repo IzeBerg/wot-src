@@ -4,9 +4,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.controls.VO.ShellButtonVO;
    import net.wg.gui.lobby.components.data.DeviceSlotVO;
    import net.wg.gui.lobby.vehicleCompare.VehicleCompareConfiguratorBaseView;
-   import net.wg.gui.lobby.vehicleCompare.data.VehConfSkillVO;
    import net.wg.infrastructure.exceptions.AbstractException;
-   import scaleform.clik.data.DataProvider;
    
    public class VehicleCompareConfiguratorViewMeta extends VehicleCompareConfiguratorBaseView
    {
@@ -22,13 +20,9 @@ package net.wg.infrastructure.base.meta.impl
       
       public var toggleTopModules:Function;
       
-      public var skillSelect:Function;
-      
       private var _vectorDeviceSlotVO:Vector.<DeviceSlotVO>;
       
       private var _vectorShellButtonVO:Vector.<ShellButtonVO>;
-      
-      private var _dataProviderVehConfSkillVO:DataProvider;
       
       public function VehicleCompareConfiguratorViewMeta()
       {
@@ -39,7 +33,6 @@ package net.wg.infrastructure.base.meta.impl
       {
          var _loc1_:DeviceSlotVO = null;
          var _loc2_:ShellButtonVO = null;
-         var _loc3_:VehConfSkillVO = null;
          if(this._vectorDeviceSlotVO)
          {
             for each(_loc1_ in this._vectorDeviceSlotVO)
@@ -57,15 +50,6 @@ package net.wg.infrastructure.base.meta.impl
             }
             this._vectorShellButtonVO.splice(0,this._vectorShellButtonVO.length);
             this._vectorShellButtonVO = null;
-         }
-         if(this._dataProviderVehConfSkillVO)
-         {
-            for each(_loc3_ in this._dataProviderVehConfSkillVO)
-            {
-               _loc3_.dispose();
-            }
-            this._dataProviderVehConfSkillVO.cleanUp();
-            this._dataProviderVehConfSkillVO = null;
          }
          super.onDispose();
       }
@@ -98,12 +82,6 @@ package net.wg.infrastructure.base.meta.impl
       {
          App.utils.asserter.assertNotNull(this.toggleTopModules,"toggleTopModules" + Errors.CANT_NULL);
          this.toggleTopModules(param1);
-      }
-      
-      public function skillSelectS(param1:String, param2:int, param3:Boolean) : void
-      {
-         App.utils.asserter.assertNotNull(this.skillSelect,"skillSelect" + Errors.CANT_NULL);
-         this.skillSelect(param1,param2,param3);
       }
       
       public final function as_setDevicesData(param1:Array) : void
@@ -152,29 +130,6 @@ package net.wg.infrastructure.base.meta.impl
          }
       }
       
-      public final function as_setSkills(param1:Array) : void
-      {
-         var _loc5_:VehConfSkillVO = null;
-         var _loc2_:DataProvider = this._dataProviderVehConfSkillVO;
-         this._dataProviderVehConfSkillVO = new DataProvider();
-         var _loc3_:uint = param1.length;
-         var _loc4_:int = 0;
-         while(_loc4_ < _loc3_)
-         {
-            this._dataProviderVehConfSkillVO[_loc4_] = new VehConfSkillVO(param1[_loc4_]);
-            _loc4_++;
-         }
-         this.setSkills(this._dataProviderVehConfSkillVO);
-         if(_loc2_)
-         {
-            for each(_loc5_ in _loc2_)
-            {
-               _loc5_.dispose();
-            }
-            _loc2_.cleanUp();
-         }
-      }
-      
       protected function setDevicesData(param1:Vector.<DeviceSlotVO>) : void
       {
          var _loc2_:String = "as_setDevicesData" + Errors.ABSTRACT_INVOKE;
@@ -185,13 +140,6 @@ package net.wg.infrastructure.base.meta.impl
       protected function setAmmo(param1:Vector.<ShellButtonVO>) : void
       {
          var _loc2_:String = "as_setAmmo" + Errors.ABSTRACT_INVOKE;
-         DebugUtils.LOG_ERROR(_loc2_);
-         throw new AbstractException(_loc2_);
-      }
-      
-      protected function setSkills(param1:DataProvider) : void
-      {
-         var _loc2_:String = "as_setSkills" + Errors.ABSTRACT_INVOKE;
          DebugUtils.LOG_ERROR(_loc2_);
          throw new AbstractException(_loc2_);
       }

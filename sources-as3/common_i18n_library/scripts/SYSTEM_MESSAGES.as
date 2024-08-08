@@ -787,6 +787,10 @@ package
       
       public static const RESTORE_TANKMAN_ERROR:String = "#system_messages:restore_tankman/error";
       
+      public static const ADD_TANKMAN_SKILLS_SUCCESS:String = "#system_messages:add_tankman_skills/success";
+      
+      public static const ADD_TANKMAN_SKILLS_SERVER_ERROR:String = "#system_messages:add_tankman_skills/server_error";
+      
       public static const ADD_TANKMAN_SKILL_SUCCESS:String = "#system_messages:add_tankman_skill/success";
       
       public static const ADD_TANKMAN_SKILL_SERVER_ERROR:String = "#system_messages:add_tankman_skill/server_error";
@@ -797,15 +801,9 @@ package
       
       public static const ADD_TANKMAN_SKILL_VEHICLE_LOCKED:String = "#system_messages:add_tankman_skill/vehicle_locked";
       
-      public static const LEARN_TANKMAN_FREE_SKILL_SUCCESS:String = "#system_messages:learn_tankman_free_skill/success";
+      public static const FILLING_UNTRAINED_PERKS_SUCCESS:String = "#system_messages:filling_untrained_perks/success";
       
-      public static const LEARN_TANKMAN_FREE_SKILL_SERVER_ERROR:String = "#system_messages:learn_tankman_free_skill/server_error";
-      
-      public static const LEARN_TANKMAN_FREE_SKILL_INVALID_VEHICLE:String = "#system_messages:learn_tankman_free_skill/invalid_vehicle";
-      
-      public static const LEARN_TANKMAN_FREE_SKILL_VEHICLE_NEED_REPAIR:String = "#system_messages:learn_tankman_free_skill/vehicle_need_repair";
-      
-      public static const LEARN_TANKMAN_FREE_SKILL_VEHICLE_LOCKED:String = "#system_messages:learn_tankman_free_skill/vehicle_locked";
+      public static const FILLING_UNTRAINED_PERKS_SERVER_ERROR:String = "#system_messages:filling_untrained_perks/server_error";
       
       public static const DROP_TANKMAN_SKILL_SUCCESS:String = "#system_messages:drop_tankman_skill/success";
       
@@ -866,6 +864,10 @@ package
       public static const REPLACE_TANKMAN_NOT_ENOUGH_MONEY:String = "#system_messages:replace_tankman/not_enough_money";
       
       public static const REPLACE_TANKMAN_FORBIDDEN:String = "#system_messages:replace_tankman/FORBIDDEN";
+      
+      public static const RESET_ALL_TANKMEN_SKILLS_SUCCESS:String = "#system_messages:reset_all_tankmen_skills/success";
+      
+      public static const RESET_ALL_TANKMEN_SKILLS_SERVER_ERROR:String = "#system_messages:reset_all_tankmen_skills/server_error";
       
       public static const VEHICLE_BUY_SUCCESS:String = "#system_messages:vehicle_buy/success";
       
@@ -1601,15 +1603,13 @@ package
       
       public static const CLANS_NOTIFICATIONS_INVITEDECLINED:String = "#system_messages:clans/notifications/inviteDeclined";
       
-      public static const EXCHANGE_SUCCESS:String = "#system_messages:exchange/success";
+      public static const EXCHANGE_SUCCESS_INFORMATION:String = "#system_messages:exchange/success/information";
       
       public static const EXCHANGE_NOT_ENOUGH_GOLD:String = "#system_messages:exchange/not_enough_gold";
       
       public static const EXCHANGE_WALLET_NOT_AVAILABLE:String = "#system_messages:exchange/wallet_not_available";
       
       public static const EXCHANGE_SERVER_ERROR:String = "#system_messages:exchange/server_error";
-      
-      public static const EXCHANGEXP_SUCCESS:String = "#system_messages:exchangeXP/success";
       
       public static const EXCHANGEXP_NOT_ENOUGH_GOLD:String = "#system_messages:exchangeXP/not_enough_gold";
       
@@ -2437,6 +2437,12 @@ package
       
       public static const NATION_CHANGE_ERROR:String = "#system_messages:nation_change/error";
       
+      public static const POST_PROGRESSION_SUCCESS:String = "#system_messages:post_progression/success";
+      
+      public static const POST_PROGRESSION_SUCCESS_TITLE:String = "#system_messages:post_progression/success/title";
+      
+      public static const POST_PROGRESSION_SERVER_ERROR:String = "#system_messages:post_progression/server_error";
+      
       public static const DEMOUNTKIT_RESTORED_SWITCHEDON:String = "#system_messages:demountKit_restored/switchedOn";
       
       public static const DEMOUNTKIT_FAILED_SWITCHEDOFF:String = "#system_messages:demountKit_failed/switchedOff";
@@ -2741,6 +2747,8 @@ package
       
       public static const CONVERSION_SUCCESS:String = "#system_messages:conversion/success";
       
+      public static const CONVERSIONPERKS_HEADER:String = "#system_messages:conversionPerks/header";
+      
       public static const UNIT_WARNINGS_WGSHEVENT_VEHICLEUNFROZEN:String = "#system_messages:unit/warnings/wgshEvent/vehicleUnfrozen";
       
       public static const UNIT_ERROR_WGSHEVENT_ACCOUNTNOTINCLAN:String = "#system_messages:unit/error/wgshEvent/AccountNotInClan";
@@ -2754,6 +2762,12 @@ package
       public static const UNIT_ERROR_WGSHEVENT_ACCOUNTVEHICLEDOESNOTEXIST:String = "#system_messages:unit/error/wgshEvent/AccountVehicleDoesNotExist";
       
       public static const UNIT_ERROR_WGSHEVENT_COMMON:String = "#system_messages:unit/error/wgshEvent/common";
+      
+      public static const SKILLSCREWBOOSTERSCONVERSION_TITLE:String = "#system_messages:skillsCrewBoostersConversion/title";
+      
+      public static const SKILLSCREWBOOSTERSCONVERSION_TEXT:String = "#system_messages:skillsCrewBoostersConversion/text";
+      
+      public static const SKILLSCREWBOOSTERSCONVERSION_ITEM:String = "#system_messages:skillsCrewBoostersConversion/item";
        
       
       public function SYSTEM_MESSAGES()

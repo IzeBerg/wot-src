@@ -25,6 +25,20 @@ package
       
       public static const COMMANDER_SIXTHSENSE_ALT_INFO:String = "#crew_perks:commander_sixthSense/alt/info";
       
+      public static const COMMANDER_EMERGENCY_NAME:String = "#crew_perks:commander_emergency/name";
+      
+      public static const COMMANDER_EMERGENCY_SHORTDESCRIPTION:String = "#crew_perks:commander_emergency/shortDescription";
+      
+      public static const COMMANDER_EMERGENCY_HUDDESCRIPTION:String = "#crew_perks:commander_emergency/hudDescription";
+      
+      public static const COMMANDER_EMERGENCY_MAXLVLDESCRIPTION:String = "#crew_perks:commander_emergency/maxLvlDescription";
+      
+      public static const COMMANDER_EMERGENCY_CURRENTLVLDESCRIPTION:String = "#crew_perks:commander_emergency/currentLvlDescription";
+      
+      public static const COMMANDER_EMERGENCY_ALT_DESCRIPTION:String = "#crew_perks:commander_emergency/alt/description";
+      
+      public static const COMMANDER_EMERGENCY_ALT_INFO:String = "#crew_perks:commander_emergency/alt/info";
+      
       public static const BROTHERHOOD_NAME:String = "#crew_perks:brotherhood/name";
       
       public static const BROTHERHOOD_SABATON_NAME:String = "#crew_perks:brotherhood_sabaton/name";
@@ -101,6 +115,8 @@ package
       
       public static const COMMANDER_TUTOR_SHORTDESCRIPTION:String = "#crew_perks:commander_tutor/shortDescription";
       
+      public static const COMMANDER_TUTOR_HUDDESCRIPTION:String = "#crew_perks:commander_tutor/hudDescription";
+      
       public static const COMMANDER_TUTOR_MAXLVLDESCRIPTION:String = "#crew_perks:commander_tutor/maxLvlDescription";
       
       public static const COMMANDER_TUTOR_CURRENTLVLDESCRIPTION:String = "#crew_perks:commander_tutor/currentLvlDescription";
@@ -109,17 +125,19 @@ package
       
       public static const COMMANDER_TUTOR_ALT_INFO:String = "#crew_perks:commander_tutor/alt/info";
       
-      public static const COMMANDER_EXPERT_NAME:String = "#crew_perks:commander_expert/name";
+      public static const COMMANDER_COORDINATION_NAME:String = "#crew_perks:commander_coordination/name";
       
-      public static const COMMANDER_EXPERT_SHORTDESCRIPTION:String = "#crew_perks:commander_expert/shortDescription";
+      public static const COMMANDER_COORDINATION_SHORTDESCRIPTION:String = "#crew_perks:commander_coordination/shortDescription";
       
-      public static const COMMANDER_EXPERT_MAXLVLDESCRIPTION:String = "#crew_perks:commander_expert/maxLvlDescription";
+      public static const COMMANDER_COORDINATION_HUDDESCRIPTION:String = "#crew_perks:commander_coordination/hudDescription";
       
-      public static const COMMANDER_EXPERT_CURRENTLVLDESCRIPTION:String = "#crew_perks:commander_expert/currentLvlDescription";
+      public static const COMMANDER_COORDINATION_MAXLVLDESCRIPTION:String = "#crew_perks:commander_coordination/maxLvlDescription";
       
-      public static const COMMANDER_EXPERT_ALT_DESCRIPTION:String = "#crew_perks:commander_expert/alt/description";
+      public static const COMMANDER_COORDINATION_CURRENTLVLDESCRIPTION:String = "#crew_perks:commander_coordination/currentLvlDescription";
       
-      public static const COMMANDER_EXPERT_ALT_INFO:String = "#crew_perks:commander_expert/alt/info";
+      public static const COMMANDER_COORDINATION_ALT_DESCRIPTION:String = "#crew_perks:commander_coordination/alt/description";
+      
+      public static const COMMANDER_COORDINATION_ALT_INFO:String = "#crew_perks:commander_coordination/alt/info";
       
       public static const COMMANDER_ENEMYSHOTPREDICTOR_NAME:String = "#crew_perks:commander_enemyShotPredictor/name";
       
@@ -159,8 +177,6 @@ package
       
       public static const GUNNER_SNIPER_NAME:String = "#crew_perks:gunner_sniper/name";
       
-      public static const GUNNER_SNIPER_SHORTDESCRIPTION:String = "#crew_perks:gunner_sniper/shortDescription";
-      
       public static const GUNNER_SNIPER_MAXLVLDESCRIPTION:String = "#crew_perks:gunner_sniper/maxLvlDescription";
       
       public static const GUNNER_SNIPER_CURRENTLVLDESCRIPTION:String = "#crew_perks:gunner_sniper/currentLvlDescription";
@@ -195,19 +211,15 @@ package
       
       public static const GUNNER_FOCUS_ALT_INFO:String = "#crew_perks:gunner_focus/alt/info";
       
-      public static const GUNNER_GUNSMITH_NAME:String = "#crew_perks:gunner_gunsmith/name";
+      public static const GUNNER_ARMORER_NAME:String = "#crew_perks:gunner_armorer/name";
       
-      public static const GUNNER_GUNSMITH_SHORTDESCRIPTION:String = "#crew_perks:gunner_gunsmith/shortDescription";
+      public static const GUNNER_ARMORER_MAXLVLDESCRIPTION:String = "#crew_perks:gunner_armorer/maxLvlDescription";
       
-      public static const GUNNER_GUNSMITH_HUDDESCRIPTION:String = "#crew_perks:gunner_gunsmith/hudDescription";
+      public static const GUNNER_ARMORER_CURRENTLVLDESCRIPTION:String = "#crew_perks:gunner_armorer/currentLvlDescription";
       
-      public static const GUNNER_GUNSMITH_MAXLVLDESCRIPTION:String = "#crew_perks:gunner_gunsmith/maxLvlDescription";
+      public static const GUNNER_ARMORER_ALT_DESCRIPTION:String = "#crew_perks:gunner_armorer/alt/description";
       
-      public static const GUNNER_GUNSMITH_CURRENTLVLDESCRIPTION:String = "#crew_perks:gunner_gunsmith/currentLvlDescription";
-      
-      public static const GUNNER_GUNSMITH_ALT_DESCRIPTION:String = "#crew_perks:gunner_gunsmith/alt/description";
-      
-      public static const GUNNER_GUNSMITH_ALT_INFO:String = "#crew_perks:gunner_gunsmith/alt/info";
+      public static const GUNNER_ARMORER_ALT_INFO:String = "#crew_perks:gunner_armorer/alt/info";
       
       public static const GUNNER_QUICKAIMING_NAME:String = "#crew_perks:gunner_quickAiming/name";
       
@@ -247,8 +259,6 @@ package
       
       public static const DRIVER_BADROADSKING_NAME:String = "#crew_perks:driver_badRoadsKing/name";
       
-      public static const DRIVER_BADROADSKING_SHORTDESCRIPTION:String = "#crew_perks:driver_badRoadsKing/shortDescription";
-      
       public static const DRIVER_BADROADSKING_MAXLVLDESCRIPTION:String = "#crew_perks:driver_badRoadsKing/maxLvlDescription";
       
       public static const DRIVER_BADROADSKING_CURRENTLVLDESCRIPTION:String = "#crew_perks:driver_badRoadsKing/currentLvlDescription";
@@ -256,6 +266,16 @@ package
       public static const DRIVER_BADROADSKING_ALT_DESCRIPTION:String = "#crew_perks:driver_badRoadsKing/alt/description";
       
       public static const DRIVER_BADROADSKING_ALT_INFO:String = "#crew_perks:driver_badRoadsKing/alt/info";
+      
+      public static const DRIVER_RELIABLEPLACEMENT_NAME:String = "#crew_perks:driver_reliablePlacement/name";
+      
+      public static const DRIVER_RELIABLEPLACEMENT_MAXLVLDESCRIPTION:String = "#crew_perks:driver_reliablePlacement/maxLvlDescription";
+      
+      public static const DRIVER_RELIABLEPLACEMENT_CURRENTLVLDESCRIPTION:String = "#crew_perks:driver_reliablePlacement/currentLvlDescription";
+      
+      public static const DRIVER_RELIABLEPLACEMENT_ALT_DESCRIPTION:String = "#crew_perks:driver_reliablePlacement/alt/description";
+      
+      public static const DRIVER_RELIABLEPLACEMENT_ALT_INFO:String = "#crew_perks:driver_reliablePlacement/alt/info";
       
       public static const DRIVER_TIDYPERSON_NAME:String = "#crew_perks:driver_tidyPerson/name";
       
@@ -284,6 +304,8 @@ package
       public static const DRIVER_MOTOREXPERT_NAME:String = "#crew_perks:driver_motorExpert/name";
       
       public static const DRIVER_MOTOREXPERT_SHORTDESCRIPTION:String = "#crew_perks:driver_motorExpert/shortDescription";
+      
+      public static const DRIVER_MOTOREXPERT_HUDDESCRIPTION:String = "#crew_perks:driver_motorExpert/hudDescription";
       
       public static const DRIVER_MOTOREXPERT_MAXLVLDESCRIPTION:String = "#crew_perks:driver_motorExpert/maxLvlDescription";
       
@@ -333,17 +355,15 @@ package
       
       public static const LOADER_INTUITION_ALT_INFO:String = "#crew_perks:loader_intuition/alt/info";
       
-      public static const LOADER_AMBUSHMASTER_NAME:String = "#crew_perks:loader_ambushMaster/name";
+      public static const LOADER_PERFECTCHARGE_NAME:String = "#crew_perks:loader_perfectCharge/name";
       
-      public static const LOADER_AMBUSHMASTER_SHORTDESCRIPTION:String = "#crew_perks:loader_ambushMaster/shortDescription";
+      public static const LOADER_PERFECTCHARGE_MAXLVLDESCRIPTION:String = "#crew_perks:loader_perfectCharge/maxLvlDescription";
       
-      public static const LOADER_AMBUSHMASTER_MAXLVLDESCRIPTION:String = "#crew_perks:loader_ambushMaster/maxLvlDescription";
+      public static const LOADER_PERFECTCHARGE_CURRENTLVLDESCRIPTION:String = "#crew_perks:loader_perfectCharge/currentLvlDescription";
       
-      public static const LOADER_AMBUSHMASTER_CURRENTLVLDESCRIPTION:String = "#crew_perks:loader_ambushMaster/currentLvlDescription";
+      public static const LOADER_PERFECTCHARGE_ALT_DESCRIPTION:String = "#crew_perks:loader_perfectCharge/alt/description";
       
-      public static const LOADER_AMBUSHMASTER_ALT_DESCRIPTION:String = "#crew_perks:loader_ambushMaster/alt/description";
-      
-      public static const LOADER_AMBUSHMASTER_ALT_INFO:String = "#crew_perks:loader_ambushMaster/alt/info";
+      public static const LOADER_PERFECTCHARGE_ALT_INFO:String = "#crew_perks:loader_perfectCharge/alt/info";
       
       public static const LOADER_MELEE_NAME:String = "#crew_perks:loader_melee/name";
       
@@ -383,19 +403,19 @@ package
       
       public static const RADIOMAN_FINDER_ALT_INFO:String = "#crew_perks:radioman_finder/alt/info";
       
-      public static const RADIOMAN_RETRANSMITTER_NAME:String = "#crew_perks:radioman_retransmitter/name";
+      public static const RADIOMAN_SIDEBYSIDE_NAME:String = "#crew_perks:radioman_sideBySide/name";
       
-      public static const RADIOMAN_RETRANSMITTER_SHORTDESCRIPTION:String = "#crew_perks:radioman_retransmitter/shortDescription";
+      public static const RADIOMAN_SIDEBYSIDE_SHORTDESCRIPTION:String = "#crew_perks:radioman_sideBySide/shortDescription";
       
-      public static const RADIOMAN_RETRANSMITTER_HUDDESCRIPTION:String = "#crew_perks:radioman_retransmitter/hudDescription";
+      public static const RADIOMAN_SIDEBYSIDE_HUDDESCRIPTION:String = "#crew_perks:radioman_sideBySide/hudDescription";
       
-      public static const RADIOMAN_RETRANSMITTER_MAXLVLDESCRIPTION:String = "#crew_perks:radioman_retransmitter/maxLvlDescription";
+      public static const RADIOMAN_SIDEBYSIDE_MAXLVLDESCRIPTION:String = "#crew_perks:radioman_sideBySide/maxLvlDescription";
       
-      public static const RADIOMAN_RETRANSMITTER_CURRENTLVLDESCRIPTION:String = "#crew_perks:radioman_retransmitter/currentLvlDescription";
+      public static const RADIOMAN_SIDEBYSIDE_CURRENTLVLDESCRIPTION:String = "#crew_perks:radioman_sideBySide/currentLvlDescription";
       
-      public static const RADIOMAN_RETRANSMITTER_ALT_DESCRIPTION:String = "#crew_perks:radioman_retransmitter/alt/description";
+      public static const RADIOMAN_SIDEBYSIDE_ALT_DESCRIPTION:String = "#crew_perks:radioman_sideBySide/alt/description";
       
-      public static const RADIOMAN_RETRANSMITTER_ALT_INFO:String = "#crew_perks:radioman_retransmitter/alt/info";
+      public static const RADIOMAN_SIDEBYSIDE_ALT_INFO:String = "#crew_perks:radioman_sideBySide/alt/info";
       
       public static const RADIOMAN_INTERFERENCE_NAME:String = "#crew_perks:radioman_interference/name";
       
@@ -423,19 +443,29 @@ package
       
       public static const RADIOMAN_LASTEFFORT_ALT_INFO:String = "#crew_perks:radioman_lastEffort/alt/info";
       
-      public static const RADIOMAN_INVENTOR_NAME:String = "#crew_perks:radioman_inventor/name";
+      public static const RADIOMAN_EXPERT_NAME:String = "#crew_perks:radioman_expert/name";
       
-      public static const RADIOMAN_INVENTOR_SHORTDESCRIPTION:String = "#crew_perks:radioman_inventor/shortDescription";
+      public static const RADIOMAN_EXPERT_SHORTDESCRIPTION:String = "#crew_perks:radioman_expert/shortDescription";
       
-      public static const RADIOMAN_INVENTOR_HUDDESCRIPTION:String = "#crew_perks:radioman_inventor/hudDescription";
+      public static const RADIOMAN_EXPERT_HUDDESCRIPTION:String = "#crew_perks:radioman_expert/hudDescription";
       
-      public static const RADIOMAN_INVENTOR_MAXLVLDESCRIPTION:String = "#crew_perks:radioman_inventor/maxLvlDescription";
+      public static const RADIOMAN_EXPERT_MAXLVLDESCRIPTION:String = "#crew_perks:radioman_expert/maxLvlDescription";
       
-      public static const RADIOMAN_INVENTOR_CURRENTLVLDESCRIPTION:String = "#crew_perks:radioman_inventor/currentLvlDescription";
+      public static const RADIOMAN_EXPERT_CURRENTLVLDESCRIPTION:String = "#crew_perks:radioman_expert/currentLvlDescription";
       
-      public static const RADIOMAN_INVENTOR_ALT_DESCRIPTION:String = "#crew_perks:radioman_inventor/alt/description";
+      public static const RADIOMAN_EXPERT_ALT_DESCRIPTION:String = "#crew_perks:radioman_expert/alt/description";
       
-      public static const RADIOMAN_INVENTOR_ALT_INFO:String = "#crew_perks:radioman_inventor/alt/info";
+      public static const RADIOMAN_EXPERT_ALT_INFO:String = "#crew_perks:radioman_expert/alt/info";
+      
+      public static const RADIOMAN_SIGNALINTERCEPTION_NAME:String = "#crew_perks:radioman_signalInterception/name";
+      
+      public static const RADIOMAN_SIGNALINTERCEPTION_MAXLVLDESCRIPTION:String = "#crew_perks:radioman_signalInterception/maxLvlDescription";
+      
+      public static const RADIOMAN_SIGNALINTERCEPTION_CURRENTLVLDESCRIPTION:String = "#crew_perks:radioman_signalInterception/currentLvlDescription";
+      
+      public static const RADIOMAN_SIGNALINTERCEPTION_ALT_DESCRIPTION:String = "#crew_perks:radioman_signalInterception/alt/description";
+      
+      public static const RADIOMAN_SIGNALINTERCEPTION_ALT_INFO:String = "#crew_perks:radioman_signalInterception/alt/info";
       
       public static const FIREFIGHTING_NAME:String = "#crew_perks:fireFighting/name";
       
@@ -461,9 +491,9 @@ package
       
       public static const PERKROLE_LOADER:String = "#crew_perks:perkRole/loader";
       
-      public static const ALL_NAME_ENUM:Array = [COMMANDER_SIXTHSENSE_NAME,BROTHERHOOD_NAME,BROTHERHOOD_SABATON_NAME,BROTHERHOOD_OFFSPRING_NAME,BROTHERHOOD_YHA_NAME,BROTHERHOOD_WITCHES_NAME,REPAIR_NAME,CAMOUFLAGE_NAME,COMMANDER_EAGLEEYE_NAME,COMMANDER_UNIVERSALIST_NAME,COMMANDER_TUTOR_NAME,COMMANDER_EXPERT_NAME,COMMANDER_ENEMYSHOTPREDICTOR_NAME,COMMANDER_PRACTICAL_NAME,GUNNER_SMOOTHTURRET_NAME,GUNNER_SNIPER_NAME,GUNNER_RANCOROUS_NAME,GUNNER_FOCUS_NAME,GUNNER_GUNSMITH_NAME,GUNNER_QUICKAIMING_NAME,DRIVER_VIRTUOSO_NAME,DRIVER_SMOOTHDRIVING_NAME,DRIVER_BADROADSKING_NAME,DRIVER_TIDYPERSON_NAME,DRIVER_RAMMINGMASTER_NAME,DRIVER_MOTOREXPERT_NAME,LOADER_DESPERADO_NAME,LOADER_PEDANT_NAME,LOADER_INTUITION_NAME,LOADER_AMBUSHMASTER_NAME,LOADER_MELEE_NAME,LOADER_AMMUNITIONIMPROVE_NAME,RADIOMAN_FINDER_NAME,RADIOMAN_RETRANSMITTER_NAME,RADIOMAN_INTERFERENCE_NAME,RADIOMAN_LASTEFFORT_NAME,RADIOMAN_INVENTOR_NAME,FIREFIGHTING_NAME];
+      public static const ALL_NAME_ENUM:Array = [COMMANDER_SIXTHSENSE_NAME,COMMANDER_EMERGENCY_NAME,BROTHERHOOD_NAME,BROTHERHOOD_SABATON_NAME,BROTHERHOOD_OFFSPRING_NAME,BROTHERHOOD_YHA_NAME,BROTHERHOOD_WITCHES_NAME,REPAIR_NAME,CAMOUFLAGE_NAME,COMMANDER_EAGLEEYE_NAME,COMMANDER_UNIVERSALIST_NAME,COMMANDER_TUTOR_NAME,COMMANDER_COORDINATION_NAME,COMMANDER_ENEMYSHOTPREDICTOR_NAME,COMMANDER_PRACTICAL_NAME,GUNNER_SMOOTHTURRET_NAME,GUNNER_SNIPER_NAME,GUNNER_RANCOROUS_NAME,GUNNER_FOCUS_NAME,GUNNER_ARMORER_NAME,GUNNER_QUICKAIMING_NAME,DRIVER_VIRTUOSO_NAME,DRIVER_SMOOTHDRIVING_NAME,DRIVER_BADROADSKING_NAME,DRIVER_RELIABLEPLACEMENT_NAME,DRIVER_TIDYPERSON_NAME,DRIVER_RAMMINGMASTER_NAME,DRIVER_MOTOREXPERT_NAME,LOADER_DESPERADO_NAME,LOADER_PEDANT_NAME,LOADER_INTUITION_NAME,LOADER_PERFECTCHARGE_NAME,LOADER_MELEE_NAME,LOADER_AMMUNITIONIMPROVE_NAME,RADIOMAN_FINDER_NAME,RADIOMAN_SIDEBYSIDE_NAME,RADIOMAN_INTERFERENCE_NAME,RADIOMAN_LASTEFFORT_NAME,RADIOMAN_EXPERT_NAME,RADIOMAN_SIGNALINTERCEPTION_NAME,FIREFIGHTING_NAME];
       
-      public static const ALL_HUDDESCRIPTION_ENUM:Array = [COMMANDER_EAGLEEYE_HUDDESCRIPTION,COMMANDER_UNIVERSALIST_HUDDESCRIPTION,GUNNER_FOCUS_HUDDESCRIPTION,GUNNER_GUNSMITH_HUDDESCRIPTION,LOADER_DESPERADO_HUDDESCRIPTION,LOADER_INTUITION_HUDDESCRIPTION,LOADER_MELEE_HUDDESCRIPTION,RADIOMAN_RETRANSMITTER_HUDDESCRIPTION,RADIOMAN_LASTEFFORT_HUDDESCRIPTION,RADIOMAN_INVENTOR_HUDDESCRIPTION];
+      public static const ALL_HUDDESCRIPTION_ENUM:Array = [COMMANDER_EMERGENCY_HUDDESCRIPTION,COMMANDER_EAGLEEYE_HUDDESCRIPTION,COMMANDER_UNIVERSALIST_HUDDESCRIPTION,COMMANDER_TUTOR_HUDDESCRIPTION,COMMANDER_COORDINATION_HUDDESCRIPTION,GUNNER_FOCUS_HUDDESCRIPTION,DRIVER_MOTOREXPERT_HUDDESCRIPTION,LOADER_DESPERADO_HUDDESCRIPTION,LOADER_INTUITION_HUDDESCRIPTION,LOADER_MELEE_HUDDESCRIPTION,RADIOMAN_SIDEBYSIDE_HUDDESCRIPTION,RADIOMAN_LASTEFFORT_HUDDESCRIPTION,RADIOMAN_EXPERT_HUDDESCRIPTION];
        
       
       public function CREW_PERKS()

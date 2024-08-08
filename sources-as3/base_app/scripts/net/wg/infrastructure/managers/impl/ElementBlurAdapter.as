@@ -29,81 +29,81 @@ package net.wg.infrastructure.managers.impl
          super();
       }
       
-      public function blurElements(param1:int, param2:int) : void
+      public function blurElements(param1:int, param2:int, param3:int) : void
       {
-         var _loc4_:ISimpleManagedContainer = null;
          var _loc5_:ISimpleManagedContainer = null;
-         var _loc8_:IManagedContainer = null;
-         var _loc9_:int = 0;
-         var _loc10_:uint = 0;
-         var _loc11_:IView = null;
-         var _loc12_:Array = null;
-         var _loc13_:ISimpleManagedContainer = null;
-         var _loc14_:DisplayObject = null;
-         var _loc3_:Vector.<DisplayObject> = new Vector.<DisplayObject>(0);
-         for each(_loc5_ in this._containers)
+         var _loc6_:ISimpleManagedContainer = null;
+         var _loc9_:IManagedContainer = null;
+         var _loc10_:int = 0;
+         var _loc11_:uint = 0;
+         var _loc12_:IView = null;
+         var _loc13_:Array = null;
+         var _loc14_:ISimpleManagedContainer = null;
+         var _loc15_:DisplayObject = null;
+         var _loc4_:Vector.<DisplayObject> = new Vector.<DisplayObject>(0);
+         for each(_loc6_ in this._containers)
          {
-            if(_loc5_.layer < param1)
+            if(_loc6_.layer < param1)
             {
-               if(_loc5_.layer != VIEW_LAYER || param1 > TOPSUBVIEW_LAYER)
+               if(_loc6_.layer != VIEW_LAYER || param1 > TOPSUBVIEW_LAYER)
                {
-                  _loc3_.push(_loc5_);
+                  _loc4_.push(_loc6_);
                }
                else
                {
-                  _loc8_ = IManagedContainer(_loc5_);
-                  _loc9_ = _loc8_.numChildren;
-                  _loc10_ = 0;
-                  while(_loc10_ < _loc9_)
+                  _loc9_ = IManagedContainer(_loc6_);
+                  _loc10_ = _loc9_.numChildren;
+                  _loc11_ = 0;
+                  while(_loc11_ < _loc10_)
                   {
-                     _loc11_ = _loc8_.getChildAt(_loc10_) as IView;
-                     if(_loc11_)
+                     _loc12_ = _loc9_.getChildAt(_loc11_) as IView;
+                     if(_loc12_)
                      {
-                        _loc12_ = _loc11_.getSubContainers();
-                        for each(_loc13_ in _loc12_)
+                        _loc13_ = _loc12_.getSubContainers();
+                        for each(_loc14_ in _loc13_)
                         {
-                           if(_loc13_.layer < param1)
+                           if(_loc14_.layer < param1)
                            {
-                              _loc3_.push(_loc13_);
+                              _loc4_.push(_loc14_);
                            }
                            else
                            {
-                              _loc4_ = _loc13_;
+                              _loc5_ = _loc14_;
                            }
                         }
                      }
-                     _loc10_++;
+                     _loc11_++;
                   }
                }
             }
-            else if(_loc5_.layer == param1)
+            else if(_loc6_.layer == param1)
             {
-               _loc4_ = _loc5_;
+               _loc5_ = _loc6_;
             }
          }
          if(this._bluredElements && this._bluredElements.length)
          {
-            for each(_loc14_ in this._bluredElements)
+            for each(_loc15_ in this._bluredElements)
             {
-               if(_loc3_.indexOf(_loc14_) == -1)
+               if(_loc4_.indexOf(_loc15_) == -1)
                {
-                  _loc14_.filters = null;
+                  _loc15_.filters = null;
                }
             }
          }
-         var _loc6_:int = _loc4_.numChildren;
-         var _loc7_:int = 0;
-         while(_loc7_ < _loc6_)
+         var _loc7_:int = _loc5_.numChildren;
+         var _loc8_:int = 0;
+         while(_loc8_ < _loc7_)
          {
-            _loc3_.push(_loc4_.getChildAt(_loc7_));
-            _loc7_++;
+            _loc4_.push(_loc5_.getChildAt(_loc8_));
+            _loc8_++;
          }
-         this._bluredElements = _loc3_;
+         this._bluredElements = _loc4_;
          if(this._blurHelper)
          {
             this._blurHelper.dispose();
          }
-         this._blurHelper = new BlurHelper(param2);
+         this._blurHelper = new BlurHelper(param2,param3);
          this._blurHelper.blurElements(this._bluredElements);
       }
       

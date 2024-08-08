@@ -19,6 +19,15 @@ msgstr "Отменить"
 msgid "buttons/learn"
 msgstr "Применить"
 
+msgid "buttons/postProgression/claim"
+msgstr "ЗАБРАТЬ"
+
+msgid "buttons/postProgression/hint"
+msgstr "К ПОСТПРОГРЕССИИ"
+
+msgid "buttons/postProgression/howTo"
+msgstr "КАК ПОЛУЧИТЬ"
+
 msgid "card/freeExp/additionalText"
 msgstr "{whiteSpanish_Start}Курс обмена:{whiteSpanish_End} %(freeXp) = %(xp)"
 
@@ -41,7 +50,7 @@ msgstr ""
 msgid "card/nationBook/mainText"
 msgstr ""
 "Применяется ко всему экипажу.\n"
-"Изучение даёт %(xp) опыта каждому члену экипажа."
+"Изучение даёт %(xp) каждому члену экипажа."
 
 msgid "card/nationBook/title/brochure"
 msgstr "УЧЕБНАЯ БРОШЮРА (&zwnbsp;%(nation)&zwnbsp;)"
@@ -58,7 +67,7 @@ msgstr "Применяется без ограничений."
 msgid "card/personalBook/mainText"
 msgstr ""
 "Применяется к выбранному члену экипажа.\n"
-"Изучение даёт ему %(xp) опыта."
+"Изучение даёт ему %(xp)"
 
 msgid "card/personalBook/title"
 msgstr "ПЕРСОНАЛЬНОЕ УЧЕБНОЕ ПОСОБИЕ"
@@ -71,7 +80,7 @@ msgstr ""
 msgid "card/universalBook/mainText"
 msgstr ""
 "Применяется ко всему экипажу.\n"
-"Изучение даёт %(xp) опыта каждому члену экипажа."
+"Изучение даёт %(xp) каждому члену экипажа."
 
 msgid "card/universalBook/title/universalBook"
 msgstr "УНИВЕРСАЛЬНОЕ ПОСОБИЕ"
@@ -93,6 +102,9 @@ msgstr "%(memberName) получит дополнительно %(xpValue)"
 
 msgid "confirm/personalLabel"
 msgstr "%(memberName) получит %(xpValue)"
+
+msgid "confirm/postProgressionLabel"
+msgstr "Некоторые члены экипажа получат %(xpValue)"
 
 msgid "items/brochure/Name"
 msgstr "Учебная брошюра (%(nation)s)"
@@ -160,6 +172,13 @@ msgstr "Учебные материалы отсутствуют"
 msgid "tooltip/outOfStockCanBuy"
 msgstr "Учебные материалы отсутствуют. Вы можете купить их в Магазине"
 
+msgid "tooltip/personalBook/mainText"
+msgstr ""
+"Применяется к выбранному члену экипажа. Изучение даёт ему %(xp)s опыта."
+
+msgid "tooltip/postProgression"
+msgstr "К постпрогрессии"
+
 msgid "tooltip/sale/header"
 msgstr "Выгодный курс обмена"
 
@@ -178,3 +197,13 @@ msgid "tooltip/stepper/perkUpdate"
 msgstr ""
 "Нажмите %(pgupImg)/%(pgdownImg), чтобы увеличить уровень изучения навыка "
 "до&nbsp;100% / вернуться к&nbsp;предыдущему навыку."
+
+msgid "tooltip/universalBook/mainText"
+msgstr ""
+"Применяется ко всему экипажу. Изучение даёт %(xp)s опыта каждому члену "
+"экипажа."
+
+msgid "tooltip/universalGuide/mainText"
+msgstr ""
+"Применяется ко всему экипажу. Изучение даёт %(xp)s опыта каждому члену "
+"экипажа."

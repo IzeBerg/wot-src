@@ -358,8 +358,6 @@ class Quest(ServerEventAbstract):
     def shouldBeShown(self):
         if events_helpers.isMapsTraining(self.getGroupID()):
             return self.isAvailable().isValid and self.lobbyContext.getServerSettings().isMapsTrainingEnabled()
-        if events_helpers.isComp7Light(self.getGroupID()):
-            return self.isAvailable().isValid and self.lobbyContext.getServerSettings().comp7Config.isEnabled
         return True
 
     def getGroupType(self):

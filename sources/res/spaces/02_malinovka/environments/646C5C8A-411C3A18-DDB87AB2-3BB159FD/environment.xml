@@ -168,7 +168,7 @@
 		<sunAngleOffset>0.000000</sunAngleOffset>
 		<layer0>
 			<texture>maps/fx/cloud_5.dds</texture>
-			<windDir>-0.777804 0.628507</windDir>
+			<windDir>0.809017 0.587785</windDir>
 			<windStrength>4.000000</windStrength>
 			<angle>136.000000</angle>
 			<offset>0.000000 0.000000</offset>
@@ -177,7 +177,7 @@
 		</layer0>
 		<layer1>
 			<texture>maps/fx/cloud_12.dds</texture>
-			<windDir>-0.999533 -0.030538</windDir>
+			<windDir>0.809017 0.587785</windDir>
 			<windStrength>7.000000</windStrength>
 			<angle>160.000000</angle>
 			<offset>0.000000 200.000000</offset>
@@ -187,7 +187,11 @@
 	</cloudsShadow>
 	<PBS>
 		<ForwardSHMultiplier>1.000000</ForwardSHMultiplier>
+		<flakesEnabled>false</flakesEnabled>
 		<flakesDensityThreshold>0.800000</flakesDensityThreshold>
+		<flakesUvScale>0.800000</flakesUvScale>
+		<flakesGloss>0.890000</flakesGloss>
+		<flakesSurfNormalNoiseWeight>0.100000</flakesSurfNormalNoiseWeight>
 	</PBS>
 	<Weather>
 		<wind>

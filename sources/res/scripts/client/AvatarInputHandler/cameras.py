@@ -50,14 +50,11 @@ class ICamera(object):
         return ()
 
 
-class FreeCamera(object):
+class FreeCamera(ICamera):
     camera = property(lambda self: self.__cam)
 
     def __init__(self):
         self.__cam = BigWorld.FreeCamera()
-
-    def create(self):
-        pass
 
     def destroy(self):
         self.__cam = None
@@ -92,9 +89,6 @@ class FreeCamera(object):
 
     def set(self, matrix):
         self.__cam.set(matrix)
-
-    def getReasonsAffectCameraDirectly(self):
-        return ()
 
 
 def readBool(dataSec, name, defaultVal):

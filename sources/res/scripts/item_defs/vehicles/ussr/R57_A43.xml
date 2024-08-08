@@ -57,6 +57,12 @@
 				<!--BW_String-->
 			</invisibilityBonus>
 		</trophyUpgradedAdditionalInvisibilityDevice>
+		<deluxeAdditionalInvisibilityDevice>
+			<invisibilityBonus>
+				0.1
+				<!--BW_String-->
+			</invisibilityBonus>
+		</deluxeAdditionalInvisibilityDevice>
 	</optDevsOverrides>
 	<repairCost>
 		6.232
@@ -4741,7 +4747,7 @@
 				<armor_8>0</armor_8>
 			</armor>
 			<primaryArmor>armor_1 armor_3 armor_4</primaryArmor>
-			<weight>3750</weight>
+			<weight>3730</weight>
 			<maxHealth>124</maxHealth>
 			<rotationSpeed>48</rotationSpeed>
 			<turretRotatorHealth>
@@ -4771,7 +4777,7 @@
 							<cost>2200</cost>
 						</gun>
 						<gun>
-							_76mm_S-54
+							_76mm_S_54A
 							<cost>4300</cost>
 						</gun>
 					</unlocks>
@@ -4795,11 +4801,11 @@
 						<gun>20</gun>
 					</armor>
 					<shotDispersionRadius>
-						0.46
+						0.4
 						<!--BW_String-->
 					</shotDispersionRadius>
 					<reloadTime>
-						3.6
+						3.3
 						<!--BW_String-->
 					</reloadTime>
 					<shotDispersionFactors>
@@ -4816,10 +4822,7 @@
 							<!--BW_String-->
 						</whileGunDamaged>
 					</shotDispersionFactors>
-					<aimingTime>
-						2.3
-						<!--BW_String-->
-					</aimingTime>
+					<aimingTime>2</aimingTime>
 					<pitchLimits>
 						<minPitch>0 -25 1 -25</minPitch>
 						<maxPitch>0 5 1 5</maxPitch>
@@ -5134,7 +5137,7 @@
 						<aoTextureSize>512 512</aoTextureSize>
 					</camouflage>
 				</_57mm_ZiS-4>
-				<_76mm_S-54>
+				<_76mm_S_54A>
 					shared
 					<maxAmmo>120</maxAmmo>
 					<unlocks>
@@ -5163,11 +5166,11 @@
 						<gun>20</gun>
 					</armor>
 					<shotDispersionRadius>
-						0.41
+						0.39
 						<!--BW_String-->
 					</shotDispersionRadius>
 					<reloadTime>
-						3.6
+						3.4
 						<!--BW_String-->
 					</reloadTime>
 					<shotDispersionFactors>
@@ -5184,10 +5187,7 @@
 							<!--BW_String-->
 						</whileGunDamaged>
 					</shotDispersionFactors>
-					<aimingTime>
-						2.3
-						<!--BW_String-->
-					</aimingTime>
+					<aimingTime>2</aimingTime>
 					<pitchLimits>
 						<minPitch>0 -25 1 -25</minPitch>
 						<maxPitch>0 5 1 5</maxPitch>
@@ -5323,7 +5323,7 @@
 						</density>
 						<aoTextureSize>512 512</aoTextureSize>
 					</camouflage>
-				</_76mm_S-54>
+				</_76mm_S_54A>
 			</guns>
 			<models>
 				<undamaged>vehicles/russian/R57_A43/normal/lod0/Turret_01.model</undamaged>
@@ -6260,7 +6260,7 @@
 						<gun>20</gun>
 					</armor>
 					<shotDispersionRadius>
-						0.46
+						0.38
 						<!--BW_String-->
 					</shotDispersionRadius>
 					<reloadTime>
@@ -6602,7 +6602,7 @@
 						<aoTextureSize>512 512</aoTextureSize>
 					</camouflage>
 				</_57mm_ZiS-4>
-				<_76mm_S-54>
+				<_76mm_S_54A>
 					shared
 					<maxAmmo>120</maxAmmo>
 					<armor>
@@ -6625,7 +6625,7 @@
 						<gun>20</gun>
 					</armor>
 					<shotDispersionRadius>
-						0.41
+						0.38
 						<!--BW_String-->
 					</shotDispersionRadius>
 					<reloadTime>
@@ -6782,7 +6782,7 @@
 						</density>
 						<aoTextureSize>512 512</aoTextureSize>
 					</camouflage>
-				</_76mm_S-54>
+				</_76mm_S_54A>
 			</guns>
 			<models>
 				<undamaged>vehicles/russian/R57_A43/normal/lod0/Turret_02.model</undamaged>
@@ -7684,7 +7684,7 @@
 		</Turret_2_A43>
 	</turrets0>
 	<engines>
-		<V-2-34>
+		<V_2_34_43>
 			shared
 			<unlocks>
 				<engine>
@@ -7692,39 +7692,24 @@
 					<cost>5500</cost>
 				</engine>
 			</unlocks>
-		</V-2-34>
+		</V_2_34_43>
 		<V-5>shared</V-5>
 	</engines>
 	<fuelTanks>
 		<Average>shared</Average>
 	</fuelTanks>
 	<radios>
-		<_9R>
-			shared
-			<unlocks>
-				<radio>
-					_9RM
-					<cost>4040</cost>
-				</radio>
-			</unlocks>
-		</_9R>
 		<_9RM>shared</_9RM>
 	</radios>
 	<physics>
 		<detailed>
 			<engines>
-				<V-2-34>
-					<smplEnginePower>
-						528.6406
-						<!--BW_String-->
-					</smplEnginePower>
+				<V_2_34_43>
+					<smplEnginePower>580</smplEnginePower>
 					<smplFwMaxSpeed>55</smplFwMaxSpeed>
-				</V-2-34>
+				</V_2_34_43>
 				<V-5>
-					<smplEnginePower>
-						634.3687
-						<!--BW_String-->
-					</smplEnginePower>
+					<smplEnginePower>640</smplEnginePower>
 					<smplFwMaxSpeed>55</smplFwMaxSpeed>
 				</V-5>
 			</engines>

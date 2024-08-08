@@ -31,7 +31,7 @@ package net.wg.data.constants.generated
       
       public static const MODULES_LINKAGE:String = "VPModulesUI";
       
-      public static const CREW_LINKAGE:String = "VPCrewTabUI";
+      public static const CREW_TAB_INJECT:String = "VPCrewTabInjectUI";
       
       public static const CREW_INFO_DATA_CLASS_NAME:String = "net.wg.gui.lobby.vehiclePreview.data.VehPreviewCrewInfoVO";
       

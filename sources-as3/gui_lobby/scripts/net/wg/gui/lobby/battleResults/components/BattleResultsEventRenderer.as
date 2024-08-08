@@ -238,8 +238,7 @@ package net.wg.gui.lobby.battleResults.components
       
       private function checkAlertMsg(param1:int) : int
       {
-         var _loc2_:String = null;
-         _loc2_ = this._data.alertMsg;
+         var _loc2_:String = this._data.alertMsg;
          this.alert.visible = Boolean(_loc2_);
          this.alert.msgTF.text = _loc2_;
          this.alert.y = param1;

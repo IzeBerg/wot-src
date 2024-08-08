@@ -2,8 +2,7 @@
 <root>
 	<xmlns:xmlref>http://bwt/xmlref</xmlns:xmlref>
 	<crew>
-		<commander>radioman
-			loader</commander>
+		<commander>radioman</commander>
 		<gunner>loader</gunner>
 		<driver/>
 	</crew>
@@ -56,6 +55,12 @@
 				<!--BW_String-->
 			</invisibilityBonus>
 		</trophyUpgradedAdditionalInvisibilityDevice>
+		<deluxeAdditionalInvisibilityDevice>
+			<invisibilityBonus>
+				0.1
+				<!--BW_String-->
+			</invisibilityBonus>
+		</deluxeAdditionalInvisibilityDevice>
 	</optDevsOverrides>
 	<repairCost>
 		8.1
@@ -5660,7 +5665,7 @@
 			<guns>
 				<_75mm_SA49_L48>
 					shared
-					<maxAmmo>44</maxAmmo>
+					<maxAmmo>48</maxAmmo>
 					<unlocks>
 						<gun>
 							_75mm_SA50
@@ -5690,7 +5695,7 @@
 						<gun>20</gun>
 					</armor>
 					<shotDispersionRadius>
-						0.42
+						0.38
 						<!--BW_String-->
 					</shotDispersionRadius>
 					<reloadTime>12</reloadTime>
@@ -5712,10 +5717,7 @@
 							<!--BW_String-->
 						</whileGunDamaged>
 					</shotDispersionFactors>
-					<aimingTime>
-						2.3
-						<!--BW_String-->
-					</aimingTime>
+					<aimingTime>2</aimingTime>
 					<invisibilityFactorAtShot>
 						0.247
 						<!--BW_String-->
@@ -6667,7 +6669,13 @@
 				</_75mm_SA49_L48>
 				<_75mm_SA50>
 					shared
-					<maxAmmo>36</maxAmmo>
+					<maxAmmo>48</maxAmmo>
+					<unlocks>
+						<vehicle>
+							F87_Batignolles-Chatillon_12t
+							<cost>107000</cost>
+						</vehicle>
+					</unlocks>
 					<pitchLimits>
 						<minPitch>
 							0 -9 0.255783 -9 0.319444 -6 0.680556 -6 0.744218 -9 1 -9
@@ -7774,36 +7782,19 @@
 				</engine>
 			</unlocks>
 		</_6F11SRYT>
-		<Detroit_Diesel_6V53T>
-			shared
-			<unlocks>
-				<vehicle>
-					F87_Batignolles-Chatillon_12t
-					<cost>107000</cost>
-				</vehicle>
-			</unlocks>
-		</Detroit_Diesel_6V53T>
+		<Detroit_Diesel_6V53T>shared</Detroit_Diesel_6V53T>
 	</engines>
 	<fuelTanks>
 		<Average>shared</Average>
 	</fuelTanks>
 	<radios>
-		<SCR_508>
-			shared
-			<unlocks>
-				<radio>
-					SCR_528
-					<cost>9000</cost>
-				</radio>
-			</unlocks>
-		</SCR_508>
 		<SCR_528>shared</SCR_528>
 	</radios>
 	<physics>
 		<detailed>
 			<engines>
 				<_6F11SRYT>
-					<smplEnginePower>300</smplEnginePower>
+					<smplEnginePower>350</smplEnginePower>
 					<smplFwMaxSpeed>61</smplFwMaxSpeed>
 				</_6F11SRYT>
 				<Detroit_Diesel_6V53T>

@@ -14,6 +14,8 @@ package net.wg.gui.lobby.vehiclePreview.data
       
       public var icon:String = "";
       
+      public var title:String = "";
+      
       public var description:String = "";
       
       public var hasCompensation:Boolean;

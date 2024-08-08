@@ -161,6 +161,10 @@ package
       
       public static const BONUSES_NOTAVAILABLE:String = "#quests:bonuses/notAvailable";
       
+      public static const BONUSES_GOLDPERSONALRATE:String = "#quests:bonuses/goldPersonalRate";
+      
+      public static const BONUSES_FREEXPPERSONALRATE:String = "#quests:bonuses/freeXpPersonalRate";
+      
       public static const QUESTS_TITLE:String = "#quests:quests/title";
       
       public static const QUESTS_TITLE_MANEUVERSQUESTS:String = "#quests:quests/title/maneuversQuests";
@@ -2397,8 +2401,6 @@ package
       
       public static const TOKEN_DEFAULT_BATTLE_ROYALE:String = "#quests:token/default/battle_royale";
       
-      public static const TOKEN_DEFAULT_COMP7_LIGHT:String = "#quests:token/default/comp7_light";
-      
       public static const BONUSNAME_CREDITS:String = "#quests:bonusName/credits";
       
       public static const BONUSNAME_GOLD:String = "#quests:bonusName/gold";
@@ -2566,6 +2568,8 @@ package
       public static const BONUSNAME_BADGES:String = "#quests:bonusName/badges";
       
       public static const BONUSNAME_ADDITIONAL_BONUSES:String = "#quests:bonusName/additional_bonuses";
+      
+      public static const BONUSNAME_OPTIONAL_DEVICES_ASSISTANT:String = "#quests:bonusName/optional_devices_assistant";
       
       public static const ACTION_AUTO_CALENDAR:String = "#quests:action/auto/calendar";
       

@@ -19,7 +19,7 @@ package net.wg.gui.lobby.vehiclePreview.packItemsPopover
       
       public var valueTF:TextField = null;
       
-      public var descriptionTF:TextField = null;
+      public var infoTF:TextField = null;
       
       public var checkIcon:MovieClip = null;
       
@@ -37,10 +37,10 @@ package net.wg.gui.lobby.vehiclePreview.packItemsPopover
       override protected function configUI() : void
       {
          super.configUI();
-         this.descriptionTF.autoSize = TextFieldAutoSize.LEFT;
-         this.descriptionTF.wordWrap = true;
-         this.descriptionTF.multiline = true;
-         this.descriptionTF.mouseWheelEnabled = this.descriptionTF.mouseEnabled = false;
+         this.infoTF.autoSize = TextFieldAutoSize.LEFT;
+         this.infoTF.wordWrap = true;
+         this.infoTF.multiline = true;
+         this.infoTF.mouseWheelEnabled = this.infoTF.mouseEnabled = false;
          this.valueTF.mouseWheelEnabled = this.valueTF.mouseEnabled = false;
          this.checkIcon.mouseEnabled = this.checkIcon.mouseChildren = false;
          this.overlayType.mouseEnabled = this.overlayType.mouseChildren = false;
@@ -69,7 +69,7 @@ package net.wg.gui.lobby.vehiclePreview.packItemsPopover
             {
                this.valueTF.visible = false;
             }
-            this.descriptionTF.htmlText = this._itemData.description;
+            this.infoTF.htmlText = this._itemData.title;
             this.icon.source = this._itemData.icon;
             this.icon.alpha = !!this._itemData.hasCompensation ? Number(0.5) : Number(1);
             this.checkIcon.visible = this._itemData.hasCompensation;
@@ -86,13 +86,13 @@ package net.wg.gui.lobby.vehiclePreview.packItemsPopover
             {
                this.checkIcon.x = width - this.checkIcon.width - CHECK_ICON_OFFSET;
                this.checkIcon.y = rendererBg.height - this.checkIcon.height >> 1;
-               this.descriptionTF.width = this.checkIcon.x - this.descriptionTF.x;
+               this.infoTF.width = this.checkIcon.x - this.infoTF.x;
             }
             else
             {
-               this.descriptionTF.width = width - this.descriptionTF.x - CHECK_ICON_OFFSET;
+               this.infoTF.width = width - this.infoTF.x - CHECK_ICON_OFFSET;
             }
-            this.descriptionTF.y = rendererBg.height - this.descriptionTF.height >> 1;
+            this.infoTF.y = rendererBg.height - this.infoTF.height >> 1;
          }
       }
       
@@ -108,7 +108,7 @@ package net.wg.gui.lobby.vehiclePreview.packItemsPopover
          this.icon.addEventListener(MouseEvent.ROLL_OVER,this.onRollOverHandler);
          this.icon.addEventListener(MouseEvent.ROLL_OUT,this.onRollOutHandler);
          this.valueTF = null;
-         this.descriptionTF = null;
+         this.infoTF = null;
          this.checkIcon = null;
          this.icon.dispose();
          this.icon = null;

@@ -38,6 +38,7 @@ from gui.shared.items_cache import CACHE_SYNC_REASON
 from gui.shared.view_helpers.blur_manager import CachedBlur
 from helpers import dependency
 from items import customizations
+from skeletons.gui.app_loader import IAppLoader
 from skeletons.gui.customization import ICustomizationService
 from skeletons.gui.game_control import IComp7Controller, IComp7ShopController, IVehicleComparisonBasket
 from skeletons.gui.lobby_context import ILobbyContext
@@ -46,10 +47,12 @@ from skeletons.gui.shared.gui_items import IGuiItemsFactory
 from skeletons.gui.shared.utils import IHangarSpace
 _logger = logging.getLogger(__name__)
 _PRODUCT_TYPE_ORDER = [ProductTypes.VEHICLE, ProductTypes.STYLE3D, ProductTypes.REWARD]
+_SHOP_BACKGROUND_ALPHA = 0.0
 if typing.TYPE_CHECKING:
     from typing import Dict
     from helpers.server_settings import Comp7RanksConfig
     from gui.game_control.comp7_shop_controller import ShopPageProductInfo
+    from gui.Scaleform.framework.application import AppEntry
 
 @dependency.replace_none_kwargs(service=ICustomizationService, hangarSpace=IHangarSpace)
 def _onCustomizationLoadedCallback(styleCD, service=None, hangarSpace=None):
@@ -88,6 +91,7 @@ class ShopPage(PageSubModelPresenter):
                  '__rotationHelper', '__requestStatus', '__products', '__productItems',
                  '__productCdToCode', '__switchCameraToDefault', '__switchVehicleToDefault',
                  '__hangarVehId')
+    __appLoader = dependency.descriptor(IAppLoader)
     __comp7Controller = dependency.descriptor(IComp7Controller)
     __comp7ShopController = dependency.descriptor(IComp7ShopController)
     __hangarSpace = dependency.descriptor(IHangarSpace)
@@ -133,7 +137,7 @@ class ShopPage(PageSubModelPresenter):
             tooltipData = None
             if tooltipId in (
              TOOLTIPS_CONSTANTS.SHOP_VEHICLE,
-             TOOLTIPS_CONSTANTS.AWARD_MODULE,
+             TOOLTIPS_CONSTANTS.SHOP_MODULE,
              TOOLTIPS_CONSTANTS.SHOP_CUSTOMIZATION_ITEM):
                 tooltipData = TooltipData(tooltip=tooltipId, isSpecial=True, specialAlias=tooltipId, specialArgs=[
                  itemCD])
@@ -166,6 +170,7 @@ class ShopPage(PageSubModelPresenter):
         self.__switchCameraToDefault = True
         self.__switchVehicleToDefault = True
         self.__rotationHelper.switchCamera(Comp7Cameras.SHOP.value, False)
+        self.__disableBackgroundAlpha()
         super(ShopPage, self).initialize(*args, **kwargs)
         self.__productSelectorMethods = {GUI_ITEM_TYPE.VEHICLE: self.__selectVehicle, 
            GUI_ITEM_TYPE.STYLE: self.__selectStyle, 
@@ -223,6 +228,10 @@ class ShopPage(PageSubModelPresenter):
          (
           self.__comparisonBasket.onChange, self.__switchComparisonBacketState)])
         return events
+
+    def __disableBackgroundAlpha(self):
+        app = self.__appLoader.getApp()
+        app.setBackgroundAlpha(_SHOP_BACKGROUND_ALPHA)
 
     def __updateData(self, *_, **__):
         self.viewModel.setShopState(ShopState.INITIAL)
@@ -365,7 +374,7 @@ class ShopPage(PageSubModelPresenter):
     def __openPurchaseView(self):
         self.__switchVehicleToDefault = False
         productCode = self.__productCdToCode[self.__currentItemCD]
-        showComp7PurchaseDialog(productCode)
+        showComp7PurchaseDialog(productCode, self.getParentWindow())
 
     def __openRestoreView(self):
         showStorage(STORAGE_CONSTANTS.IN_HANGAR, STORAGE_CONSTANTS.VEHICLES_TAB_RESTORE)
@@ -379,10 +388,11 @@ class ShopPage(PageSubModelPresenter):
 
     @args2params(int)
     def __onProductSeen(self, cd):
-        addSeenProduct(cd)
         productModel = findFirst(lambda model: model.getId() == cd, self.viewModel.getProducts())
-        productModel.setIsNew(False)
-        self.parentView.updateTabNotifications()
+        if productModel.getIsNew():
+            addSeenProduct(cd)
+            productModel.setIsNew(False)
+            self.parentView.updateTabNotifications()
 
     def __onAddToVehicleCompare(self):
         self.__comparisonBasket.addVehicle(self.__currentItemCD)

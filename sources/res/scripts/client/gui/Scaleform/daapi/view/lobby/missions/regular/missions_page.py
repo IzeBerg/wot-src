@@ -5,7 +5,7 @@ from CurrentVehicle import g_currentVehicle
 from account_helpers import AccountSettings
 from account_helpers.AccountSettings import MISSIONS_PAGE
 from adisp import adisp_async as adispasync, adisp_process
-from gui.limited_ui.lui_rules_storage import LuiRules
+from gui.limited_ui.lui_rules_storage import LUI_RULES
 from wg_async import wg_async, wg_await
 from gui.ClientUpdateManager import g_clientUpdateManager
 from gui.Scaleform.daapi import LobbySubView
@@ -285,7 +285,7 @@ class MissionsPage(LobbySubView, MissionsPageMeta):
                     self.__currentTabAlias = QUESTS_ALIASES.MISSIONS_EVENT_BOARDS_VIEW_PY_ALIAS
                 elif self.marathonsCtrl.doesShowAnyMissionsTab():
                     enabledMarathon = self.marathonsCtrl.getFirstEnabledMarathon()
-                    if enabledMarathon is not None and self.__limitedUIController.isRuleCompleted(LuiRules.MISSIONS_MARATHON_VIEW):
+                    if enabledMarathon is not None and self.__limitedUIController.isRuleCompleted(LUI_RULES.MissionsMarathonView):
                         self.__currentTabAlias = QUESTS_ALIASES.MISSIONS_MARATHON_VIEW_PY_ALIAS
                         self.__marathonPrefix = enabledMarathon.prefix
         self._eventID = ctx.get('eventID')
