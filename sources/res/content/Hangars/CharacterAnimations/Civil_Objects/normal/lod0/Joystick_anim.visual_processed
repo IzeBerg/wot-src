@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>Root_Joystick</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>Joystick_Bone</identifier>
+				<transform>
+					<row0>-0.995998 0.018309 0.087484</row0>
+					<row1>0.058365 0.874529 0.481449</row1>
+					<row2>-0.067692 0.484628 -0.872097</row2>
+					<row3>0.051081 0.762708 0.575640</row3>
+				</transform>
+				<node>
+					<identifier>Joystick_Bone_BlendBone</identifier>
+					<transform>
+						<row0>-0.995998 0.058365 -0.067692</row0>
+						<row1>0.018309 0.874529 0.484628</row1>
+						<row2>-0.087484 -0.481449 0.872097</row2>
+						<row3>-0.013447 -0.947133 0.135842</row3>
+					</transform>
+				</node>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>Joystick_Bone_BlendBone</node>
+		<geometry>
+			<vertices>s0Shape.vertices</vertices>
+			<primitive>s0Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0_skinned</identifier>
+					<fx>shaders/std_effects/PBS_ext_skinned.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/CharacterAnimations/Civil_Objects/RC_AM.dds</Texture>
+					</property>
+					<property>
+						dynamicObject
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Hangars/CharacterAnimations/Civil_Objects/RC_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Hangars/CharacterAnimations/Civil_Objects/RC_ANM.dds</Texture>
+					</property>
+					<property>
+						g_enableTransmission
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>0.052920 0.821066 -0.541228</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<constraints/>
+	<boundingBox>
+		<min>-0.073655 0.714985 0.384027</min>
+		<max>0.179496 0.927147 0.698429</max>
+	</boundingBox>
+	<geometrySize>29828</geometrySize>
+	<minUVDensity>2.916379</minUVDensity>
+</root>

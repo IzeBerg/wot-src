@@ -1226,6 +1226,7 @@ class CompletionTokensBonus(TokensBonus):
 
 
 class C11nProgressTokenBonus(TokensBonus):
+    __c11n = dependency.descriptor(ICustomizationService)
     BONUS_NAME = 'styleProgress'
 
     def __init__(self, value, isCompensation=False, ctx=None):
@@ -1248,6 +1249,11 @@ class C11nProgressTokenBonus(TokensBonus):
 
     def getProgressLevel(self):
         return self.__progressData.level
+
+    def getC11nItem(self):
+        itemTypeID = GUI_ITEM_TYPE.STYLE
+        c11nItem = self.__c11n.getItemByID(itemTypeID, self.getStyleID())
+        return c11nItem
 
 
 class ItemsBonus(SimpleBonus):

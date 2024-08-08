@@ -2465,6 +2465,16 @@ package
       
       public static const SERVICECHANNELMESSAGES_FAIRPLAYVIOLATION_BANDUEDATE:String = "#messenger:serviceChannelMessages/fairplayViolation/banDueDate";
       
+      public static const SERVICECHANNELMESSAGES_WOTANNIVERSARY_TITLE:String = "#messenger:serviceChannelMessages/wotAnniversary/title";
+      
+      public static const SERVICECHANNELMESSAGES_WOTANNIVERSARY_TEXT:String = "#messenger:serviceChannelMessages/wotAnniversary/text";
+      
+      public static const SERVICECHANNELMESSAGES_WOTANNIVERSARY_BUTTON:String = "#messenger:serviceChannelMessages/wotAnniversary/button";
+      
+      public static const SERVICECHANNELMESSAGES_WOTANNIVERSARY_QUEST_TITLE:String = "#messenger:serviceChannelMessages/wotAnniversary/quest/title";
+      
+      public static const SERVICECHANNELMESSAGES_WOTANNIVERSARY_BATTLEQUEST_DESCRIPTION:String = "#messenger:serviceChannelMessages/wotAnniversary/battleQuest/description";
+      
       public static const DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_ENUM:Array = [DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_OFFLINE,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_NOTREADY,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_READY,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_INBATTLE,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_AFK];
        
       
