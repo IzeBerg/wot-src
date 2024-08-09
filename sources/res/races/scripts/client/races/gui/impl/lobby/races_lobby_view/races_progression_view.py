@@ -21,7 +21,8 @@ from gui.impl.lobby.loot_box.loot_box_helper import getKeyByID
 from gui.impl.gen import R
 from gui_lootboxes.gui.impl.lobby.gui_lootboxes.tooltips.lootbox_key_tooltip import LootboxKeyTooltip
 if typing.TYPE_CHECKING:
-    from typing import Dict, Callable, TypeVar, Optional
+    from typing import Dict, Callable, TypeVar, Tuple
+    from Event import Event
     from gui.server_events.bonuses import TokensBonus
     TokenBonusType = TypeVar('TokenBonusType', bound=TokensBonus)
 _logger = logging.getLogger(__name__)
@@ -140,5 +141,5 @@ class RacesProgressionView(ViewImpl, LobbyHeaderVisibility):
             serverUTC = time_utils.getServerUTCTime()
             isLastDay = endSeasonDateSeconds - serverUTC < time_utils.ONE_DAY
             model.quests.setIsLastSeasonDay(isLastDay)
-            model.quests.setExpirationTime(quests.values()[0].getProgressExpiryTime() - serverUTC if len(quests) else 0)
+            model.quests.setExpirationTime(quests.values()[0].getFinishTime() - serverUTC if len(quests) else 0)
             fillQuestsModel(model.quests.getMissions(), quests, self.__tooltipData)

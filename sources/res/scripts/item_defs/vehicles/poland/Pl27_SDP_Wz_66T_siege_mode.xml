@@ -89,9 +89,9 @@
 			<armor_4>40</armor_4>
 			<armor_5>40</armor_5>
 			<armor_6>30</armor_6>
-			<armor_7>150</armor_7>
+			<armor_7>160</armor_7>
 			<armor_8>0</armor_8>
-			<armor_9>200</armor_9>
+			<armor_9>220</armor_9>
 			<armor_10>90</armor_10>
 			<armor_11>75</armor_11>
 			<armor_12>60</armor_12>
@@ -3386,7 +3386,7 @@
 					<maxAmmo>64</maxAmmo>
 					<armor>
 						<armor_1>
-							210
+							250
 							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_1>
 						<armor_2>
@@ -3424,12 +3424,9 @@
 						0.48
 						<!--BW_String-->
 					</shotDispersionRadius>
-					<reloadTime>
-						8.2
-						<!--BW_String-->
-					</reloadTime>
+					<reloadTime>12</reloadTime>
 					<aimingTime>
-						3.1
+						2.9
 						<!--BW_String-->
 					</aimingTime>
 					<invisibilityFactorAtShot>
@@ -3450,16 +3447,6 @@
 							<!--BW_String-->
 						</whileGunDamaged>
 					</shotDispersionFactors>
-					<shootImpulse>
-						<magnitude>40</magnitude>
-						<applicationPoint>shootPoint</applicationPoint>
-						<isStillSafe>True</isStillSafe>
-					</shootImpulse>
-					<shootImpulse>
-						<magnitude>120</magnitude>
-						<applicationPoint>vehicleCOM</applicationPoint>
-						<isStillSafe>True</isStillSafe>
-					</shootImpulse>
 					<customizationSlots>
 						<slot>
 							<slotType>paint</slotType>
@@ -3605,8 +3592,8 @@
 		</detailed>
 	</physics>
 	<siege_mode>
-		<switchOnTime>2</switchOnTime>
-		<switchOffTime>2</switchOffTime>
+		<switchOnTime>3</switchOnTime>
+		<switchOffTime>3</switchOffTime>
 		<engineDamageCoeff>1</engineDamageCoeff>
 		<soundStateChange>
 			<on>turbine_polish_start_PC</on>
