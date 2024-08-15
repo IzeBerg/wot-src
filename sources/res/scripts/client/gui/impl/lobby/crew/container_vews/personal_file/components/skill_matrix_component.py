@@ -85,10 +85,10 @@ class SkillMatrixComponent(ComponentBase):
         currentAnimationType = tankmanSkillModel.getAnimationType()
         if currentAnimationType == AnimationType.SELECTED or currentAnimationType == AnimationType.UNLOCKED:
             return
-        crewAccountComponent = BigWorld.player().CrewAccountComponent
         skillName = tankmanSkillModel.getSkillId()
-        unlockIndexBefore = crewAccountComponent.indexSkillsUnlockAnimation(self.context.tankman.invID)
-        hasLearnedSkillAnimation = crewAccountComponent.hasLearnedSkillAnimation(self.context.tankman.invID, skillName)
+        crewAccountController = BigWorld.player().crewAccountController
+        unlockIndexBefore = crewAccountController.indexSkillsUnlockAnimation(self.context.tankman.invID)
+        hasLearnedSkillAnimation = crewAccountController.hasLearnedSkillAnimation(self.context.tankman.invID, skillName)
         if skillName and hasLearnedSkillAnimation:
             animationType = AnimationType.SELECTED
         elif unlockIndexBefore is not None:

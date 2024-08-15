@@ -1,27 +1,16 @@
-from BaseAccountExtensionComponent import BaseAccountExtensionComponent
-from helpers.events_handler import EventsHandler
-from helpers import dependency
 from skeletons.gui.shared import IItemsCache
+from helpers import dependency
 from gui.shared.gui_items import GUI_ITEM_TYPE
 
-class CrewAccountComponent(BaseAccountExtensionComponent, EventsHandler):
+class CrewAccountController(object):
     __itemsCache = dependency.descriptor(IItemsCache)
 
-    def __init__(self):
-        self._subscribe()
+    def __init__(self, inventory):
+        self.__inventory = inventory
         self.tankmanIdxSkillsUnlockAnimation = {}
         self.tankmanLearnedSkillsAnimanion = {}
         self.tankmanVeteranAnimanion = {}
-
-    def getSkillsCrewBooksConversion(self):
-        crewBooks = {}
-        for book in self.skillsCrewBooksConversion:
-            crewBooks.update({book['compDescr']: book['count']})
-
-        return crewBooks
-
-    def getSkillsCrewBoostersReplacement(self):
-        return self.skillsCrewBoostersReplacement
+        self.__inventory.onStartSynchronize += self.__onStartSynchronizeInventory
 
     def clearTankmanAnimanions(self, tankmaninvID):
         if tankmaninvID in self.tankmanVeteranAnimanion:
@@ -48,11 +37,8 @@ class CrewAccountComponent(BaseAccountExtensionComponent, EventsHandler):
     def indexSkillsUnlockAnimation(self, tankmaninvID):
         return self.tankmanIdxSkillsUnlockAnimation.get(tankmaninvID)
 
-    def _getEvents(self):
-        onStartSynchronize = ((self.account.inventory.onStartSynchronize, self.__onStartSynchronizeInventory),) if hasattr(self.account, 'inventory') else ()
-        return (
-         (
-          self.account.connectionMgr.onDisconnected, self.__destroy),) + onStartSynchronize
+    def clear(self):
+        self.__inventory.onStartSynchronize -= self.__onStartSynchronizeInventory
 
     def __onStartSynchronizeInventory(self, isFullSync, diff):
         if isFullSync:
@@ -65,6 +51,3 @@ class CrewAccountComponent(BaseAccountExtensionComponent, EventsHandler):
                 self.tankmanIdxSkillsUnlockAnimation[invID], _ = tankman.descriptor.getTotalSkillsProgress(True)
                 self.tankmanVeteranAnimanion.setdefault(invID, False)
                 self.tankmanVeteranAnimanion[invID] = not bool(tankman.descriptor.needXpForVeteran)
-
-    def __destroy(self):
-        self._unsubscribe()

@@ -95,7 +95,8 @@ class SkillsTrainingView(ContainerBase, ViewImpl):
         return
 
     def _onWidgetSlotClick(self, tankmanInvID, slotIdx):
-        self.interactionCtrl.onChangeTankman(tankmanInvID, slotIdx)
+        if tankmanInvID != self.context.tankmanID:
+            self.interactionCtrl.onChangeTankman(tankmanInvID, slotIdx)
 
     def __onClose(self):
         self.interactionCtrl.eventsProvider.onClose()

@@ -11,5 +11,7 @@ package net.wg.infrastructure.base.meta
       function as_updatePerk(param1:String, param2:int, param3:Number, param4:Number) : void;
       
       function as_clearPanel() : void;
+      
+      function as_replayPause(param1:Boolean) : void;
    }
 }

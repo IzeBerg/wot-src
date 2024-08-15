@@ -21,14 +21,14 @@ if typing.TYPE_CHECKING:
     from gui.impl.lobby.container_views.base.components import ComponentBase
 
 class PersonalFileView(ContainerBase, IPersonalTab, BasePersonalCaseView):
-    __slots__ = ('__viewKey', '__inFocus', '__hasPendingRefresh')
+    __slots__ = ('__viewKey', '__isAnimationShowing', '__hasPendingRefresh')
     TITLE = backport.text(R.strings.crew.tankmanContainer.tab.personalFile())
     itemsCache = dependency.descriptor(IItemsCache)
     __appLoader = dependency.descriptor(IAppLoader)
 
     def __init__(self, layoutID=R.views.lobby.crew.personal_case.PersonalFileView(), **kwargs):
         self.__viewKey = CrewViewKeys.PERSONAL_FILE
-        self.__inFocus = True
+        self.__isAnimationShowing = True
         self.__hasPendingRefresh = False
         settings = ViewSettings(layoutID, ViewFlags.LOBBY_TOP_SUB_VIEW, PersonalFileViewModel())
         super(PersonalFileView, self).__init__(settings, **kwargs)
@@ -58,20 +58,18 @@ class PersonalFileView(ContainerBase, IPersonalTab, BasePersonalCaseView):
     def showContent(self):
         self.getParentView().toggleContentVisibility(True)
 
+    def updateAnimationShowing(self, isShowing):
+        self.__isAnimationShowing = isShowing
+        if isShowing and self.__hasPendingRefresh:
+            self.__hasPendingRefresh = False
+            self.refresh()
+
     def refresh(self):
-        if not self.__inFocus:
+        if not self.__isAnimationShowing:
             self.__hasPendingRefresh = True
             return
         super(PersonalFileView, self).refresh()
-        crewAccountComponent = BigWorld.player().CrewAccountComponent
-        crewAccountComponent.clearTankmanAnimanions(self.context.tankman.invID)
-
-    def _onFocus(self, focused):
-        super(PersonalFileView, self)._onFocus(focused)
-        self.__inFocus = focused
-        if focused and self.__hasPendingRefresh:
-            self.__hasPendingRefresh = False
-            self.refresh()
+        BigWorld.player().crewAccountController.clearTankmanAnimanions(self.context.tankman.invID)
 
     def _getComponents(self):
         return [
@@ -92,5 +90,5 @@ class PersonalFileView(ContainerBase, IPersonalTab, BasePersonalCaseView):
         hasPostProgression = self.context.tankman.descriptor.isMaxSkillXp()
         vm.setHasPostProgression(hasPostProgression)
         if hasPostProgression:
-            vm.setIsPostProgressionAnimated(BigWorld.player().CrewAccountComponent.getTankmanVeteranAnimanion(self.context.tankman.invID))
+            vm.setIsPostProgressionAnimated(BigWorld.player().crewAccountController.getTankmanVeteranAnimanion(self.context.tankman.invID))
         return

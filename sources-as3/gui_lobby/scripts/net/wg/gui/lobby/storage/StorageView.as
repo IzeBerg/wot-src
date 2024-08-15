@@ -134,6 +134,7 @@ package net.wg.gui.lobby.storage
             this.noItemsView.width = width;
             this.noItemsView.validateNow();
             this.noItemsView.y = height - this.noItemsView.actualHeight >> 1;
+            this.noItemsView.updateVisibility();
             invalidate(MENU_SIZE_FLAG);
          }
          if(isInvalid(SIDE_BAR_COUNTER))
@@ -232,11 +233,6 @@ package net.wg.gui.lobby.storage
                DebugUtils.LOG_WARNING(WARNING_SIDEBAR_INDEX_NOT_FOUND + _loc4_ + Errors.WASNT_FOUND);
             }
          }
-      }
-      
-      private function onNoItemsViewResizeHandler() : void
-      {
-         invalidateSize();
       }
       
       private function onContentViewChangedHandler(param1:ViewStackEvent) : void

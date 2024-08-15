@@ -56,6 +56,7 @@ class HangarWindowsWebApiMixin(object):
             yield {'completed': isOk}
         else:
             shared_events.showExchangeCurrencyWindow()
+            yield
         return
 
     @w2c(W2CSchema, 'show_xp_exchange_window')

@@ -17701,6 +17701,10 @@ package
       
       public static const MAPS_ICONS_CREWBOOKS_BOOKS_SMALL_UNIVERSALBOOK:String = "../maps/icons/crewBooks/books/small/universalBook.png";
       
+      public static const MAPS_ICONS_CREWBOOKS_BOOKS_SMALL_UNIVERSALBROCHURE:String = "../maps/icons/crewBooks/books/small/universalBrochure.png";
+      
+      public static const MAPS_ICONS_CREWBOOKS_BOOKS_SMALL_UNIVERSALGUIDE:String = "../maps/icons/crewBooks/books/small/universalGuide.png";
+      
       public static const MAPS_ICONS_CREWBOOKS_FLAGS_CHINA:String = "../maps/icons/crewBooks/flags/china.png";
       
       public static const MAPS_ICONS_CREWBOOKS_FLAGS_CZECH:String = "../maps/icons/crewBooks/flags/czech.png";

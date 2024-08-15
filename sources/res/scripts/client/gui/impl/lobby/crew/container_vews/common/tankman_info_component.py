@@ -54,7 +54,7 @@ class TankmanInfoComponent(ComponentBase):
         vm.setIsFemale(self.context.tankman.isFemale)
         vm.setIsCrewLocked(self.context.tankmanCurrentVehicle and self.context.tankmanCurrentVehicle.isCrewLocked)
         vm.setHasPostProgression(not bool(self.context.tankman.descriptor.needXpForVeteran))
-        vm.setIsPostProgressionAnimated(BigWorld.player().CrewAccountComponent.getTankmanVeteranAnimanion(self.context.tankman.invID))
+        vm.setIsPostProgressionAnimated(BigWorld.player().crewAccountController.getTankmanVeteranAnimanion(self.context.tankman.invID))
         vm.setHasUniqueSound(self.context.voiceoverParams is not None)
         vm.setHasRetrainDiscount(self.context.retrainPrice.isActionPrice())
         return

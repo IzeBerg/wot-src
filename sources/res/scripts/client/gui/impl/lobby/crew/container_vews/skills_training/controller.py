@@ -105,7 +105,7 @@ class SkillsTrainingInteractionController(InteractionController):
 
     def __train(self):
         factory.doAction(factory.ADD_SKILLS_TANKMAN, self.context.tankman.invID, skills_constants.SkillUtilization.MAJOR_SKILL if self.context.isMajorQualification else skills_constants.SkillUtilization.BONUS_SKILL, self.context.selectedSkills)
-        BigWorld.player().CrewAccountComponent.setLearnedSkillsAnimanion(self.context.tankman.invID, self.context.selectedSkills)
+        BigWorld.player().crewAccountController.setLearnedSkillsAnimanion(self.context.tankman.invID, self.context.selectedSkills)
         self.__clearSelection()
 
     def __clearSelection(self):
