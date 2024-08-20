@@ -4,6 +4,7 @@ if typing.TYPE_CHECKING:
     from collections import OrderedDict
     from gui.shared.gui_items.dossier.achievements.abstract import RegularAchievement
     from gui.shared.gui_items.gui_item_economics import ItemPrice
+    from gui.shared.gui_items.loot_box import LootBox
     from gui.shared.money import Money, DynamicMoney
     from gui.shared.utils.requesters import InventoryRequester
     from gui.shared.utils.requesters.ShopRequester import DefaultShopRequester
@@ -983,6 +984,9 @@ class ITokensRequester(IRequester):
         raise NotImplementedError
 
     def getAttemptsAfterGuaranteedRewards(self, box):
+        raise NotImplementedError
+
+    def getLootBoxesStats(self):
         raise NotImplementedError
 
     def getLootBoxes(self):

@@ -3943,6 +3943,8 @@ package
       
       public static const BOOSTER_BONUS_BOOSTER_XP:String = "#menu:booster/bonus/booster_xp";
       
+      public static const BOOSTER_LABEL_BOOSTER_XP:String = "#menu:booster/label/booster_xp";
+      
       public static const BOOSTER_USERNAME_BOOSTER_FREE_XP:String = "#menu:booster/userName/booster_free_xp";
       
       public static const BOOSTER_INFLUENCE_BOOSTER_FREE_XP:String = "#menu:booster/influence/booster_free_xp";
@@ -3952,6 +3954,8 @@ package
       public static const BOOSTER_DESCRIPTION_BONUSVALUETIME_BOOSTER_FREE_XP:String = "#menu:booster/description/bonusValueTime/booster_free_xp";
       
       public static const BOOSTER_BONUS_BOOSTER_FREE_XP:String = "#menu:booster/bonus/booster_free_xp";
+      
+      public static const BOOSTER_LABEL_BOOSTER_FREE_XP:String = "#menu:booster/label/booster_free_xp";
       
       public static const BOOSTER_USERNAME_BOOSTER_CREW_XP:String = "#menu:booster/userName/booster_crew_xp";
       
@@ -3963,6 +3967,8 @@ package
       
       public static const BOOSTER_BONUS_BOOSTER_CREW_XP:String = "#menu:booster/bonus/booster_crew_xp";
       
+      public static const BOOSTER_LABEL_BOOSTER_CREW_XP:String = "#menu:booster/label/booster_crew_xp";
+      
       public static const BOOSTER_USERNAME_BOOSTER_FREE_XP_AND_CREW_XP:String = "#menu:booster/userName/booster_free_xp_and_crew_xp";
       
       public static const BOOSTER_INFLUENCE_BOOSTER_FREE_XP_AND_CREW_XP:String = "#menu:booster/influence/booster_free_xp_and_crew_xp";
@@ -3973,6 +3979,8 @@ package
       
       public static const BOOSTER_BONUS_BOOSTER_FREE_XP_AND_CREW_XP:String = "#menu:booster/bonus/booster_free_xp_and_crew_xp";
       
+      public static const BOOSTER_LABEL_BOOSTER_FREE_XP_AND_CREW_XP:String = "#menu:booster/label/booster_free_xp_and_crew_xp";
+      
       public static const BOOSTER_USERNAME_BOOSTER_CREDITS:String = "#menu:booster/userName/booster_credits";
       
       public static const BOOSTER_INFLUENCE_BOOSTER_CREDITS:String = "#menu:booster/influence/booster_credits";
@@ -3982,6 +3990,8 @@ package
       public static const BOOSTER_DESCRIPTION_BONUSVALUETIME_BOOSTER_CREDITS:String = "#menu:booster/description/bonusValueTime/booster_credits";
       
       public static const BOOSTER_BONUS_BOOSTER_CREDITS:String = "#menu:booster/bonus/booster_credits";
+      
+      public static const BOOSTER_LABEL_BOOSTER_CREDITS:String = "#menu:booster/label/booster_credits";
       
       public static const BOOSTER_USERNAME_BOOSTER_REPAIR:String = "#menu:booster/userName/booster_repair";
       

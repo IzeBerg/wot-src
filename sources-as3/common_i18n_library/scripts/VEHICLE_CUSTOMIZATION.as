@@ -13201,6 +13201,10 @@ package
       
       public static const SPECIAL_STYLE_GB133_CHARIOTEER_MKVII_HBP_3DST_DESC_LONG:String = "#vehicle_customization:special_style/GB133_Charioteer_MkVII_HBP_3DSt_desc/long";
       
+      public static const SPECIAL_STYLE_CZ20_SHPTK_TVP_100_MM_CO_3DST:String = "#vehicle_customization:special_style/Cz20_ShPTK_TVP_100_mm_CO_3DSt";
+      
+      public static const SPECIAL_STYLE_CZ20_SHPTK_TVP_100_MM_CO_3DST_DESC_LONG:String = "#vehicle_customization:special_style/Cz20_ShPTK_TVP_100_mm_CO_3DSt_desc/long";
+      
       public static const SPECIAL_STYLE_ONSLAUGHT_BLACK_SEASON_PROGRESSION:String = "#vehicle_customization:special_style/onslaught_black_season_progression";
       
       public static const SPECIAL_STYLE_FORT:String = "#vehicle_customization:special_style/fort";
@@ -13362,6 +13366,14 @@ package
       public static const SPECIAL_STYLE_14TH_ANNIVERSARY_03:String = "#vehicle_customization:special_style/14th_anniversary_03";
       
       public static const SPECIAL_STYLE_14TH_ANNIVERSARY_04:String = "#vehicle_customization:special_style/14th_anniversary_04";
+      
+      public static const SPECIAL_STYLE_IT36_PROGETTO_C45_MOD_71_M:String = "#vehicle_customization:special_style/It36_Progetto_C45_mod_71_M";
+      
+      public static const SPECIAL_STYLE_IT36_PROGETTO_C45_MOD_71_M_DESC_LONG:String = "#vehicle_customization:special_style/It36_Progetto_C45_mod_71_M_desc/long";
+      
+      public static const SPECIAL_STYLE_CH62_BZ_75_M:String = "#vehicle_customization:special_style/Ch62_BZ_75_M";
+      
+      public static const SPECIAL_STYLE_CH62_BZ_75_M_DESC_LONG:String = "#vehicle_customization:special_style/Ch62_BZ_75_M_desc/long";
       
       public static const CUSTOMIZATION_POPOVER_STYLE_SUMMER:String = "#vehicle_customization:customization/popover/style/summer";
       

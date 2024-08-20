@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>2.000000</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>hull_scales</name>
+		<type>model</type>
+		<resource>particles/Tank/customization/Ch62_BZ_75_M/hull_dragon_scales.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 -0.869460 0.002000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>m_hull_scales</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.000000 1.000000 1.000000 1.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 1.199998</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 1.199998</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.166667</startTime>
+				<value>1.000000 1.000000 1.000000 1.200000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.545453</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.545453</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.000000</startTime>
+				<value>1.000000 1.000000 1.000000 1.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.109091</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 -0.109091</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property vector4</name>
+			<type>vector4</type>
+			<identifier>m_hull_scales</identifier>
+			<property>lightMultipliers</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>25.000000 0.000000 0.000000 0.000000</value>
+				<inTangent>676.475647 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>676.475647 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.166667</startTime>
+				<value>25.000000 0.000000 0.000000 0.000000</value>
+				<inTangent>143.176224 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>143.176224 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.000000</startTime>
+				<value>25.000000 0.000000 0.000000 0.000000</value>
+				<inTangent>5.292665 -0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>5.292665 -0.000000 -0.000000 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Particle 0</name>
+		<type>particle</type>
+		<resource>particles/Tank/customization/Ch62_BZ_75_M/Ch62_hull_hit.eff</resource>
+	</sequenceObject>
+	<events/>
+</root>

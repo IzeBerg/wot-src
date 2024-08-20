@@ -1,7 +1,7 @@
 import typing
 from constants import ARENA_BONUS_TYPE
 if typing.TYPE_CHECKING:
-    from typing import Callable, Dict, Iterable, Iterator, List, Optional, Set, Tuple, Union, Sequence
+    from typing import Any, Callable, Dict, Iterable, Iterator, List, Optional, Set, Tuple, Union, Sequence
     from battle_modifiers_common import BattleModifiers
     from collections_common import Collection, CollectionItem
     from Event import Event
@@ -2395,6 +2395,85 @@ class IEventLootBoxesController(IGameController, IEntitlementsConsumer):
         raise NotImplementedError
 
     def getVehicleLevels(self, boxType):
+        raise NotImplementedError
+
+
+class ILootBoxSystemController(IGameController, IEntitlementsConsumer):
+    onBoxesAvailabilityChanged = None
+    onStatusChanged = None
+    onBoxesCountChanged = None
+    onBoxesInfoUpdated = None
+    onBoxesUpdated = None
+
+    @property
+    def eventName(self):
+        raise NotImplementedError
+
+    @property
+    def isConsumesEntitlements(self):
+        raise NotImplementedError
+
+    @property
+    def isAvailable(self):
+        raise NotImplementedError
+
+    @property
+    def isActive(self):
+        raise NotImplementedError
+
+    @property
+    def isEnabled(self):
+        raise NotImplementedError
+
+    @property
+    def boxesPriority(self):
+        raise NotImplementedError
+
+    @property
+    def isLootBoxesAvailable(self):
+        raise NotImplementedError
+
+    @property
+    def useStats(self):
+        raise NotImplementedError
+
+    def getStatistics(self, boxID=None):
+        raise NotImplementedError
+
+    def resetStatistics(self, boxIDs):
+        raise NotImplementedError
+
+    def getSetting(self, setting):
+        raise NotImplementedError
+
+    def setSetting(self, setting, value):
+        raise NotImplementedError
+
+    def getActiveTime(self):
+        raise NotImplementedError
+
+    def getBoxesCountToGuaranteed(self, category):
+        raise NotImplementedError
+
+    def getBoxesCount(self, category=None):
+        raise NotImplementedError
+
+    def getBoxesIDs(self, boxType):
+        raise NotImplementedError
+
+    def getActiveBoxes(self, criteria=None):
+        raise NotImplementedError
+
+    def getBoxes(self, criteria=None):
+        raise NotImplementedError
+
+    def getBoxInfo(self, boxID):
+        raise NotImplementedError
+
+    def getBoxInfoByCategory(self, category):
+        raise NotImplementedError
+
+    def getBoxesInfo(self):
         raise NotImplementedError
 
 

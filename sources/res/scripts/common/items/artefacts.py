@@ -341,6 +341,10 @@ class OptionalDevice(Artefact):
     def isUpgraded(self):
         return self._isUpgraded
 
+    @property
+    def isRegular(self):
+        return not (self.isDeluxe or self.isTrophy or self.isModernized)
+
     def defineActiveLevel(self, vehicleDescr):
         supplySlot = vehicleDescr.getOptDevSupplySlot(self.compactDescr)
         if supplySlot is None:

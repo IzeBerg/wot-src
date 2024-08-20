@@ -37,6 +37,7 @@ def getViewSettings():
     from gui.impl.lobby.battle_pass.battle_pass_browser_view import BattlePassBrowserView
     from gui.impl.lobby.battle_pass.battle_pass_video_browser_view import BattlePassVideoBrowserView
     from gui.impl.lobby.blueprints.blueprints_exchange_view import BlueprintsExchangeView
+    from gui.impl.lobby.lootbox_system.intro_browser_view import LootBoxSystemIntroBrowserView
     from gui.impl.lobby.resource_well.resource_well_browser_view import ResourceWellBrowserView
     from gui.Scaleform.daapi.view.battle_results_window import BattleResultsWindow
     from gui.Scaleform.daapi.view.dialogs.CheckBoxDialog import CheckBoxDialog
@@ -113,6 +114,7 @@ def getViewSettings():
      ViewSettings(VIEW_ALIAS.MAP_BOX_INFO_OVERLAY, MapBoxInfoOverlay, 'browserScreen.swf', WindowLayer.FULLSCREEN_WINDOW, VIEW_ALIAS.MAP_BOX_INFO_OVERLAY, ScopeTemplates.LOBBY_SUB_SCOPE),
      ViewSettings(VIEW_ALIAS.BATTLE_PASS_BROWSER_VIEW, BattlePassBrowserView, 'browserScreen.swf', WindowLayer.TOP_SUB_VIEW, VIEW_ALIAS.BATTLE_PASS_BROWSER_VIEW, ScopeTemplates.LOBBY_SUB_SCOPE),
      ViewSettings(VIEW_ALIAS.BATTLE_PASS_VIDEO_BROWSER_VIEW, BattlePassVideoBrowserView, 'browserScreen.swf', WindowLayer.FULLSCREEN_WINDOW, VIEW_ALIAS.BATTLE_PASS_VIDEO_BROWSER_VIEW, ScopeTemplates.LOBBY_SUB_SCOPE),
+     ViewSettings(VIEW_ALIAS.LOOT_BOXES_INTRO_BROWSER_VIEW, LootBoxSystemIntroBrowserView, 'browserScreen.swf', WindowLayer.TOP_WINDOW, VIEW_ALIAS.LOOT_BOXES_INTRO_BROWSER_VIEW, ScopeTemplates.LOBBY_SUB_SCOPE),
      ViewSettings(VIEW_ALIAS.WOT_PLUS_INFO_VIEW, WotPlusInfoView, 'browserScreen.swf', WindowLayer.FULLSCREEN_WINDOW, VIEW_ALIAS.WOT_PLUS_INFO_VIEW, ScopeTemplates.LOBBY_SUB_SCOPE),
      ViewSettings(VIEW_ALIAS.TELECOM_RENTAL_VIEW, VehicleTelecomRentalView, 'browserScreen.swf', WindowLayer.TOP_SUB_VIEW, VIEW_ALIAS.TELECOM_RENTAL_VIEW, ScopeTemplates.LOBBY_SUB_SCOPE),
      ViewSettings(VIEW_ALIAS.BLUEPRINTS_EXCHANGE_VIEW, BlueprintsExchangeView, 'browserScreen.swf', WindowLayer.TOP_SUB_VIEW, VIEW_ALIAS.BLUEPRINTS_EXCHANGE_VIEW, ScopeTemplates.LOBBY_SUB_SCOPE),
@@ -192,6 +194,8 @@ class LobbyPackageBusinessHandler(PackageBusinessHandler):
           VIEW_ALIAS.BATTLE_PASS_BROWSER_VIEW, self.loadViewByCtxEvent),
          (
           VIEW_ALIAS.BATTLE_PASS_VIDEO_BROWSER_VIEW, self.loadViewByCtxEvent),
+         (
+          VIEW_ALIAS.LOOT_BOXES_INTRO_BROWSER_VIEW, self.loadViewByCtxEvent),
          (
           VIEW_ALIAS.DEMONSTRATOR_WINDOW, self.loadViewByCtxEvent),
          (

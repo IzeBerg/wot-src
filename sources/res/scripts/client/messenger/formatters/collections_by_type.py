@@ -11,7 +11,8 @@ registerLootBoxAutoOpenSubFormatters((
  auto_boxes_subformatters.EventLootBoxesFormatter(),
  auto_boxes_subformatters.NYPostEventBoxesFormatter(),
  auto_boxes_subformatters.NYGiftSystemSurpriseFormatter(),
- auto_boxes_subformatters.LunarNYEnvelopeAutoOpenFormatter()))
+ auto_boxes_subformatters.LunarNYEnvelopeAutoOpenFormatter(),
+ auto_boxes_subformatters.LootBoxSystemAutoOpenFormatter()))
 registerTokenQuestsSubFormatters((
  token_quest_subformatters.LootBoxTokenQuestFormatter(),
  token_quest_subformatters.RecruitQuestsFormatter(),

@@ -685,6 +685,7 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 		<creditsRentCompensationReceived>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/rentCompensation/creditsReceived): &lt;font color=&apos;#8C8C7E&apos;&gt;&lt;b&gt;%(credits)s&lt;/b&gt;&lt;/font&gt;&lt;/font&gt;</creditsRentCompensationReceived>
 		<rentDays>_(#messenger:serviceChannelMessages/invoiceReceived/rentDays) %(value)s</rentDays>
 		<postBattleSharingLink>&lt;font color=&quot;#CBAC77&quot;&gt;_(#messenger:chat/postBattleSharing/label): %(arena)s, %(vehicle)s, %(xp)s&lt;/font&gt;&lt;a href=&quot;event:%(linkCode)s&quot;&gt; %(arrowButton)s &lt;/a&gt; &lt;font color=&quot;#CBAC77&quot;&gt;</postBattleSharingLink>
+		<systemBoxesReceived>&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s: &lt;font color=&apos;#D6D7D4&apos;&gt;&lt;b&gt;%(count)s&lt;/b&gt;&lt;/font&gt;&lt;/font&gt;</systemBoxesReceived>
 		<badgeAchievement>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/badgeAchievement): &lt;font color=&apos;#D6D7D4&apos;&gt;%(badges)s&lt;/font&gt;&lt;/font&gt;</badgeAchievement>
 		<removedBadgeAchievement>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/removedBadgeAchievement): &lt;font color=&apos;#D6D7D4&apos;&gt;%(badges)s&lt;/font&gt;&lt;/font&gt;</removedBadgeAchievement>
 		<rankedFinalYearCompensation>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/rankedFinaleAwardsNotification/compensation)&lt;/font&gt;</rankedFinalYearCompensation>
@@ -1099,6 +1100,11 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 			<icon>ErrorIcon</icon>
 			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#messenger:serviceChannelMessages/sysMsg/titles/error)&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
 		</ErrorSysMessage>
+		<BoxErrorSysMessage>
+			<type>red</type>
+			<icon>ErrorIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#messenger:serviceChannelMessages/sysMsg/titles/error)&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+		</BoxErrorSysMessage>
 		<ErrorHeaderSysMessage>
 			<type>red</type>
 			<icon>ErrorIcon</icon>
@@ -2180,6 +2186,63 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 			<icon>InformationIcon</icon>
 			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#messenger:serviceChannelMessages/lunarBoxesAutoOpen/header)&lt;/font&gt;&lt;br/&gt;_(#messenger:serviceChannelMessages/lunarBoxesAutoOpen/body)&lt;br/&gt;%(rewards)s</message>
 		</LunarBoxesAutoOpenMessage>
+		<LootBoxSystemStartSysMessage>
+			<type>grey</type>
+			<priority>medium</priority>
+			<icon>InformationIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#lootbox_system:serviceChannelMessages/start/button)</label>
+					<action>openLootBoxSystem</action>
+				</button>
+			</buttonsLayout>
+		</LootBoxSystemStartSysMessage>
+		<LootBoxSystemFinishSysMessage>
+			<type>grey</type>
+			<priority>medium</priority>
+			<icon>InformationIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+		</LootBoxSystemFinishSysMessage>
+		<LootBoxSystemEnabledSysMessage>
+			<type>grey</type>
+			<priority>high</priority>
+			<icon>InformationIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+		</LootBoxSystemEnabledSysMessage>
+		<LootBoxSystemDisabledSysMessage>
+			<type>grey</type>
+			<priority>high</priority>
+			<icon>WarningIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+		</LootBoxSystemDisabledSysMessage>
+		<LootBoxSystemRewardsSysMessage>
+			<type>grey</type>
+			<priority>low</priority>
+			<icon>GiftIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;%(text)s</message>
+		</LootBoxSystemRewardsSysMessage>
+		<LootBoxSystemAutoOpenMessage>
+			<priority>high</priority>
+			<type>grey</type>
+			<icon>GiftIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;&lt;font face=&quot;$FieldFont&quot; size=&quot;14&quot; color=&apos;#8C8C7E&apos;&gt;%(description)s&lt;/font&gt;%(count)s</message>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#lootbox_system:serviceChannelMessages/lootBoxesAutoOpen/button)</label>
+					<action>lootBoxSystemAutoOpen</action>
+					<width>120</width>
+				</button>
+			</buttonsLayout>
+		</LootBoxSystemAutoOpenMessage>
+		<LootBoxSystemResetStatsErrorSysMessage>
+			<type>grey</type>
+			<priority>medium</priority>
+			<icon>ErrorIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#lootbox_system:serviceChannelMessages/statisticReset/server_error/header)&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;%(text)s</message>
+		</LootBoxSystemResetStatsErrorSysMessage>
 		<OfferGiftBonusesSysMessage>
 			<type>grey</type>
 			<priority>low</priority>

@@ -1,9 +1,8 @@
 import logging
 from functools import partial
-import BigWorld, typing
-from shared_utils import nextTick
+import typing, BigWorld
 from ClientSelectableCameraObject import ClientSelectableCameraObject
-from CurrentVehicle import g_currentVehicle, g_currentPreviewVehicle
+from CurrentVehicle import g_currentPreviewVehicle, g_currentVehicle
 from HeroTank import HeroTank
 from PlayerEvents import g_playerEvents
 from account_helpers import AccountSettings
@@ -11,7 +10,7 @@ from account_helpers.AccountSettings import NATION_CHANGE_VIEWED
 from account_helpers.settings_core.ServerSettingsManager import SETTINGS_SECTIONS
 from battle_pass_common import BATTLE_PASS_CONFIG_NAME
 from constants import Configs, DOG_TAGS_CONFIG, RENEWABLE_SUBSCRIPTION_CONFIG, QUEUE_TYPE
-from frameworks.wulf import WindowFlags, WindowLayer, WindowStatus, ViewStatus
+from frameworks.wulf import ViewStatus, WindowFlags, WindowLayer, WindowStatus
 from gui.ClientUpdateManager import g_clientUpdateManager
 from gui.Scaleform.Waiting import Waiting
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
@@ -51,9 +50,10 @@ from helpers.i18n import makeString as _ms
 from helpers.statistics import HANGAR_LOADING_STATE
 from helpers.time_utils import ONE_MINUTE
 from nation_change_helpers.client_nation_change_helper import getChangeNationTooltip
+from shared_utils import nextTick
 from skeletons.account_helpers.settings_core import ISettingsCore
 from skeletons.connection_mgr import IConnectionManager
-from skeletons.gui.game_control import IWotPlusController, IBattlePassController, IBattleRoyaleController, IComp7Controller, IEpicBattleMetaGameController, IEventLootBoxesController, IIGRController, IMapboxController, IMarathonEventsController, IPromoController, IRankedBattlesController, IHangarGuiController
+from skeletons.gui.game_control import IBattlePassController, IBattleRoyaleController, IComp7Controller, IEpicBattleMetaGameController, IEventLootBoxesController, IHangarGuiController, IIGRController, ILootBoxSystemController, IMapboxController, IMarathonEventsController, IPromoController, IRankedBattlesController, IWotPlusController
 from skeletons.gui.impl import IGuiLoader
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.offers import IOffersBannerController
@@ -108,6 +108,7 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
     __eventLootBoxes = dependency.descriptor(IEventLootBoxesController)
     __hangarGuiCtrl = dependency.descriptor(IHangarGuiController)
     __wotAnniversaryCtrl = dependency.descriptor(IWotAnniversaryController)
+    __lootBoxes = dependency.descriptor(ILootBoxSystemController)
 
     def __init__(self, _=None):
         LobbySelectableView.__init__(self, 0)
@@ -242,7 +243,8 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         self.__comp7Controller.onTournamentBannerStateChanged += self.__updateComp7TournamentWidget
         self.__wotAnniversaryCtrl.onEventActivePhaseEnded += self.__updateWotAnniversaryWidget
         self.hangarSpace.setVehicleSelectable(True)
-        self.__eventLootBoxes.onStatusChange += self.__onLootBoxesEventStatusChange
+        self.__lootBoxes.onStatusChanged += self.__onLootBoxesStatusChanged
+        self.__eventLootBoxes.onStatusChange += self.__onLootBoxesStatusChanged
         g_prbCtrlEvents.onVehicleClientStateChanged += self.__onVehicleClientStateChanged
         g_playerEvents.onPrebattleInvitationAccepted += self.__onPrebattleInvitationAccepted
         unitMgr = prb_getters.getClientUnitMgr()
@@ -279,7 +281,8 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         self.removeListener(AmmunitionPanelViewEvent.SECTION_SELECTED, self.__onOptDeviceClick, scope=EVENT_BUS_SCOPE.LOBBY)
         self.removeListener(AmmunitionPanelViewEvent.CLOSE_VIEW, self.__oAmmunitionPanelViewClose, scope=EVENT_BUS_SCOPE.LOBBY)
         self.itemsCache.onSyncCompleted -= self.onCacheResync
-        self.__eventLootBoxes.onStatusChange -= self.__onLootBoxesEventStatusChange
+        self.__eventLootBoxes.onStatusChange -= self.__onLootBoxesStatusChanged
+        self.__lootBoxes.onStatusChanged -= self.__onLootBoxesStatusChanged
         g_currentVehicle.onChanged -= self.__onCurrentVehicleChanged
         self.hangarSpace.onVehicleChangeStarted -= self.__onVehicleLoading
         self.hangarSpace.onVehicleChanged -= self.__onVehicleLoaded
@@ -607,7 +610,7 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
     def __onResetUnitJoiningProgress(self):
         self.__isUnitJoiningInProgress = False
 
-    def __onLootBoxesEventStatusChange(self):
+    def __onLootBoxesStatusChanged(self):
         self.__updateCarouselEventEntryState()
 
     def __updateCarouselEventEntryState(self):

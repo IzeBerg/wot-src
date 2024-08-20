@@ -2586,6 +2586,11 @@
 				<type>url</type>
 			</item>
 			<item>
+				$PARAMS(/lootboxes-overlay)
+				<name>lootBoxSystem</name>
+				<type>url</type>
+			</item>
+			<item>
 				$PARAMS(/sh_category/sh_category)
 				<name>shProducts</name>
 				<type>url</type>
@@ -2771,6 +2776,66 @@
 			</item>
 		</value>
 	</battlePassIntroSlides>
+	<lootboxSystem>
+		<type>dict</type>
+		<value>
+			<item>
+				<name>intro</name>
+				<type>dict</type>
+				<value>
+					<item>
+						/$LANGUAGE_CODE/promocontent/lootBoxIntro/
+						<name>lootBoxSystem</name>
+						<type>url</type>
+					</item>
+					<item>
+						/$LANGUAGE_CODE/promocontent/lootBoxIntro/
+						<name>anniversaryCN</name>
+						<type>url</type>
+					</item>
+				</value>
+			</item>
+			<item>
+				<name>infoPage</name>
+				<type>dict</type>
+				<value>
+					<item>
+						<name>isVideoVisible</name>
+						<type>dict</type>
+						<value>
+							<item>
+								<name>default</name>
+								<type>bool</type>
+								<value>True</value>
+							</item>
+						</value>
+					</item>
+					<item>
+						<name>isShopVisible</name>
+						<type>dict</type>
+						<value>
+							<item>
+								<name>default</name>
+								<type>bool</type>
+								<value>True</value>
+							</item>
+						</value>
+					</item>
+				</value>
+			</item>
+		</value>
+	</lootboxSystem>
+	<lootBoxesListURL>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
+			<item>
+				https://worldoftanks.asia/$LANGUAGE_CODE/news/announcements/update-1-25-ct2/
+				<name>default</name>
+				<type>url</type>
+			</item>
+		</value>
+	</lootBoxesListURL>
 	<crew>
 		<type>dict</type>
 		<value>

@@ -237,11 +237,15 @@ FUN_RANDOM_NOTIFICATIONS_PROGRESSIONS = 'funRandomNotificationsProgressions'
 FUN_RANDOM_NOTIFICATIONS_SUB_MODES = 'funRandomNotificationsSubModes'
 LOOT_BOXES = 'lootBoxes'
 EVENT_LOOT_BOXES = 'eventLootBoxes'
+LOOTBOX_SYSTEM = 'lootBoxSystem'
 LOOT_BOXES_WAS_STARTED = 'lootBoxesWasStarted'
 LOOT_BOXES_WAS_FINISHED = 'lootBoxesWasFinished'
 LOOT_BOXES_OPEN_ANIMATION_ENABLED = 'lootBoxesOpenAnimationEnabled'
 LOOT_BOXES_VIEWED_COUNT = 'lootBoxesViewedCount'
+LOOT_BOXES_HAS_NEW = 'lootBoxesHasNew'
 LOOT_BOXES_EVENT_UNIQUE_ID = 'lootBoxesEventUniqueID'
+LOOT_BOXES_UNIQUE_ID = 'lootBoxesUniqueID'
+LOOT_BOXES_INTRO_VIDEO_SHOWN = 'lootBoxesIntroVideoShown'
 COLLECTIONS_SECTION = 'collections'
 COLLECTIONS_INTRO_SHOWN = 'collectionsIntroShown'
 COLLECTION_SHOWN_NEW_REWARDS = 'collectionsNewRewards'
@@ -1075,6 +1079,12 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                                                   LOOT_BOXES_OPEN_ANIMATION_ENABLED: True, 
                                                   LOOT_BOXES_VIEWED_COUNT: 0, 
                                                   LOOT_BOXES_EVENT_UNIQUE_ID: 0}}, 
+                  LOOTBOX_SYSTEM: {LOOT_BOXES_UNIQUE_ID: 0, 
+                                   LOOT_BOXES_WAS_STARTED: False, 
+                                   LOOT_BOXES_WAS_FINISHED: False, 
+                                   LOOT_BOXES_INTRO_VIDEO_SHOWN: False, 
+                                   LOOT_BOXES_HAS_NEW: False, 
+                                   LOOT_BOXES_OPEN_ANIMATION_ENABLED: True}, 
                   Winback.WINBACK_SETTINGS: {Winback.COMPLETED_STARTING_QUEST_COUNT: 0, 
                                              Winback.INTRO_SHOWN: False, 
                                              Winback.BATTLE_SELECTOR_SETTINGS_BULLET_SHOWN: False}, 

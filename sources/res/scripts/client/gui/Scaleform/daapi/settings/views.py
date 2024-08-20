@@ -25,6 +25,7 @@ class VIEW_ALIAS(COMMON_VIEW_ALIAS):
     MAP_BOX_INFO_OVERLAY = 'mapboxInfoOverlay'
     BATTLE_PASS_BROWSER_VIEW = 'battlePassBrowserView'
     BATTLE_PASS_VIDEO_BROWSER_VIEW = 'battlePassVideoBrowserView'
+    LOOT_BOXES_INTRO_BROWSER_VIEW = 'lootBoxSystemIntroBrowserView'
     MANUAL_BROWSER_VIEW = 'ManualBrowserView'
     WEB_VIEW_TRANSPARENT = 'webViewTransparent'
     BLUEPRINTS_EXCHANGE_VIEW = 'blueprintsExchangeView'

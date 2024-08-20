@@ -4,6 +4,7 @@ from web.web_client_api.battle_pass import BattlePassWebApi
 from web.web_client_api.blueprints_convert_sale import BlueprintsConvertSaleWebApi
 from web.web_client_api.clans import ClansWebApi
 from web.web_client_api.frontline import FrontLineWebApi
+from web.web_client_api.loot_boxes_system import LootBoxSystemWebApi
 from web.web_client_api.mapbox import MapboxWebApi
 from web.web_client_api.platform import PlatformWebApi
 from web.web_client_api.quests import QuestsWebApi
@@ -41,7 +42,8 @@ _DEFAULT_WEB_API_COLLECTION = (CloseWindowWebApi,
  ClansWebApi,
  RankedBattlesWebApi,
  BattleRoyaleWebApi,
- UILoggingWebApi)
+ UILoggingWebApi,
+ LootBoxSystemWebApi)
 
 def createWebHandlers(replaces=None):
     handlers = webApiCollection(*_DEFAULT_WEB_API_COLLECTION)

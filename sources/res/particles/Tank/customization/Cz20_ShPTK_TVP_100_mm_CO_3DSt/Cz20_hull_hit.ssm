@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<params>
+		<param>
+			<name>Hit</name>
+			<type>trigger</type>
+		</param>
+	</params>
+	<node>
+		<name>Sleep Node</name>
+		<type>sleep</type>
+		<time>0.100000 0.100000</time>
+		<transition>
+			<to>hull_hit</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>trigger</type>
+					<name>Hit</name>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-120.000000 57.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>hull_hit</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/Cz20_ShPTK_TVP_100_mm_CO_3DSt/Cz20_hull_hit.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<transition>
+			<to>Sleep Node</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions/>
+		</transition>
+		<uiPosition>-107.000000 -52.000000 0.000000</uiPosition>
+	</node>
+</root>

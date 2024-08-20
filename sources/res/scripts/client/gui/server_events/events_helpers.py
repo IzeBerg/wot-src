@@ -405,7 +405,7 @@ def getIdxFromQuestID(questID):
 def getLootboxesFromBonuses(bonuses, itemsCache=None):
     lootboxes = {}
     for bonus in bonuses:
-        if bonus.getName() == 'battleToken':
+        if bonus.getName() == 'lootBox':
             tokens = bonus.getTokens()
             boxes = itemsCache.items.tokens.getLootBoxes()
             for token in tokens.values():
