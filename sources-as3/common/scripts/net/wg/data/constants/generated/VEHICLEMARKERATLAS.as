@@ -173,6 +173,8 @@ package net.wg.data.constants.generated
       
       public static const CHINA_CH61_DZT_159:String = "china-Ch61_DZT_159";
       
+      public static const CHINA_CH62_BZ_75_M:String = "china-Ch62_BZ_75_M";
+      
       public static const CZECH_CZ01_SKODA_T40:String = "czech-Cz01_Skoda_T40";
       
       public static const CZECH_CZ02_TVP_T50:String = "czech-Cz02_TVP_T50";
@@ -212,6 +214,8 @@ package net.wg.data.constants.generated
       public static const CZECH_CZ19_VZ_44_1:String = "czech-Cz19_Vz_44_1";
       
       public static const CZECH_CZ20_SH_PTK_TVP_100_MM:String = "czech-Cz20_ShPTK_TVP_100_mm";
+      
+      public static const CZECH_CZ20_SH_PTK_TVP_100_MM_CO:String = "czech-Cz20_ShPTK_TVP_100_mm_CO";
       
       public static const CZECH_CZ23_SKODA_T_17:String = "czech-Cz23_Skoda_T_17";
       
@@ -978,6 +982,8 @@ package net.wg.data.constants.generated
       public static const ITALY_IT34_TORO:String = "italy-It34_Toro";
       
       public static const ITALY_IT35_FELICE:String = "italy-It35_Felice";
+      
+      public static const ITALY_IT36_PROGETTO_C45_MOD_71_M:String = "italy-It36_Progetto_C45_mod_71_M";
       
       public static const JAPAN_J01_NC27:String = "japan-J01_NC27";
       

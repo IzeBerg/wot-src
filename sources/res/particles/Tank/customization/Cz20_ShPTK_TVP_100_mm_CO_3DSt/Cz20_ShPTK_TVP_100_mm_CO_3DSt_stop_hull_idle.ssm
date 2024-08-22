@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<params>
+		<param>
+			<name>Move</name>
+			<type>trigger</type>
+		</param>
+		<param>
+			<name>Stop</name>
+			<type>trigger</type>
+		</param>
+		<param>
+			<name>isDeferred</name>
+			<type>bool</type>
+		</param>
+	</params>
+	<node>
+		<name>vfx_hull_idle</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/Cz20_ShPTK_TVP_100_mm_CO_3DSt/Cz20_ShPTK_TVP_100_mm_CO_3DSt_stop_hull_idle.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>-1</loop>
+		<transition>
+			<to>waiting and check stop</to>
+			<blendDuration>1.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>trigger</type>
+					<name>Move</name>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-167.000000 -143.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>check_deferred</name>
+		<type>sleep</type>
+		<time>1.000000 1.000000</time>
+		<transition>
+			<to>vfx_hull_idle</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>bool</type>
+					<name>isDeferred</name>
+					<checked>false</checked>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-170.000000 -28.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>waiting and check stop</name>
+		<type>sleep</type>
+		<time>1.000000 1.000000</time>
+		<transition>
+			<to>vfx_hull_idle</to>
+			<blendDuration>2.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>trigger</type>
+					<name>Stop</name>
+				</condition>
+			</conditions>
+		</transition>
+		<transition>
+			<to>waiting and check stop</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>trigger</type>
+					<name>Move</name>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-163.000000 -293.000000 0.000000</uiPosition>
+	</node>
+</root>

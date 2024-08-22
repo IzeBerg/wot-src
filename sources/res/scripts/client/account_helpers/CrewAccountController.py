@@ -17,6 +17,8 @@ class CrewAccountController(object):
             del self.tankmanVeteranAnimanion[tankmaninvID]
         if tankmaninvID in self.tankmanIdxSkillsUnlockAnimation:
             del self.tankmanIdxSkillsUnlockAnimation[tankmaninvID]
+        if tankmaninvID in self.tankmanLearnedSkillsAnimanion:
+            del self.tankmanLearnedSkillsAnimanion[tankmaninvID]
 
     def getTankmanVeteranAnimanion(self, tankmaninvID):
         tankman = self.__itemsCache.items.getTankman(tankmaninvID)
@@ -29,10 +31,7 @@ class CrewAccountController(object):
         skills += learnedSkills
 
     def hasLearnedSkillAnimation(self, tankmaninvID, skillName):
-        skills = self.tankmanLearnedSkillsAnimanion.get(tankmaninvID, [])
-        if skillName in skills:
-            skills.remove(skillName)
-            return True
+        return skillName in self.tankmanLearnedSkillsAnimanion.get(tankmaninvID, [])
 
     def indexSkillsUnlockAnimation(self, tankmaninvID):
         return self.tankmanIdxSkillsUnlockAnimation.get(tankmaninvID)

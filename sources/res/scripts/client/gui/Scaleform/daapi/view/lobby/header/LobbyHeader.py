@@ -596,6 +596,7 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
         self.__mapsTrainingController.onUpdated += self.__updateMapsTraining
         self.platoonCtrl.onMembersUpdate += self.__updatePlatoon
         self.badgesController.onUpdated += self.__updateBadge
+        self.boosters.onBoostersDataUpdate += self.__updateBoosters
         self.anonymizerController.onStateChanged += self.__updateAnonymizedState
         self.clanNotificationCtrl.onClanNotificationUpdated += self.__updateStrongholdCounter
         self.__mapboxCtrl.onPrimeTimeStatusUpdated += self.__updateMapbox
@@ -716,6 +717,7 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
         self.__mapsTrainingController.onUpdated -= self.__updateMapsTraining
         self.platoonCtrl.onMembersUpdate -= self.__updatePlatoon
         self.badgesController.onUpdated -= self.__updateBadge
+        self.boosters.onBoostersDataUpdate -= self.__updateBoosters
         self.__mapboxCtrl.onPrimeTimeStatusUpdated -= self.__updateMapbox
         self.__comp7Controller.onBanUpdated -= self.__updateComp7
         self.__comp7Controller.onOfflineStatusUpdated -= self.__updateComp7
@@ -877,6 +879,9 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
             data = badge.getBadgeVO(ICONS_SIZES.X48)
         self.as_setBadgeS(data, selected)
         return
+
+    def __updateBoosters(self):
+        self.as_updateReservesS()
 
     def __onPremiumExpireTimeChanged(self, _):
         self.__updateAccountAttrs()

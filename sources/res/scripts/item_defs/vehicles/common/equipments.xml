@@ -5004,7 +5004,7 @@
 		<icon>commander_practical</icon>
 		<price>20000</price>
 		<type>battleBoosters</type>
-		<tags>notForSale crewSkillBattleBooster</tags>
+		<tags>notForSale crewSkillBattleBooster armor</tags>
 		<script>
 			SkillEquipment
 			<skillName>commander_practical</skillName>
@@ -5039,7 +5039,7 @@
 		<icon>commander_enemyShotPredictor</icon>
 		<price>10000</price>
 		<type>battleBoosters</type>
-		<tags>notForSale crewSkillBattleBooster</tags>
+		<tags>notForSale crewSkillBattleBooster armor</tags>
 		<script>
 			SkillEquipment
 			<skillName>commander_enemyShotPredictor</skillName>
@@ -10148,7 +10148,7 @@
 					<type>DamageVehicleWithDispersion</type>
 					<applyTo>enemy_team</applyTo>
 					<args>
-						<damage>350</damage>
+						<damage>400</damage>
 						<damageDispersionPercent>0</damageDispersionPercent>
 					</args>
 				</action>
@@ -10570,7 +10570,7 @@
 				<exports>vse</exports>
 			</shotDispersionFactors>
 			<clipReloadTimeBoost>
-				0.45 0.6 0.75
+				0.6 0.75 0.9
 				<!--BW_String-->
 				<exports>vse tooltip</exports>
 			</clipReloadTimeBoost>
@@ -10641,7 +10641,7 @@
 				<exports>vse tooltip</exports>
 			</duration>
 			<crewBuff>
-				17.5 30 42.5
+				20 32.5 45
 				<!--BW_String-->
 				<exports>vse tooltip</exports>
 			</crewBuff>
@@ -10678,7 +10678,7 @@
 				<exports>vse tooltip</exports>
 			</radius>
 			<damage>
-				70 135 225
+				90 150 250
 				<exports>vse tooltip</exports>
 			</damage>
 			<stunDuration>
@@ -10756,7 +10756,7 @@
 				</server>
 			</visualScript>
 			<cooldownSeconds>
-				5
+				8
 				<exports>vse</exports>
 			</cooldownSeconds>
 			<duration>
@@ -10907,7 +10907,7 @@
 				<exports>vse tooltip</exports>
 			</baseHeal>
 			<extraHealFactor>
-				0.35 0.6 0.85
+				0.35 0.55 0.75
 				<!--BW_String-->
 				<exports>vse</exports>
 			</extraHealFactor>

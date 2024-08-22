@@ -13239,6 +13239,10 @@ package
       
       public static const SPECIAL_STYLE_CZ04_T50_51_BXI_3DST_DESC_LONG:String = "#vehicle_customization:special_style/Cz04_T50_51_BXI_3DSt_desc/long";
       
+      public static const SPECIAL_STYLE_CZ20_SHPTK_TVP_100_MM_CO_3DST:String = "#vehicle_customization:special_style/Cz20_ShPTK_TVP_100_mm_CO_3DSt";
+      
+      public static const SPECIAL_STYLE_CZ20_SHPTK_TVP_100_MM_CO_3DST_DESC_LONG:String = "#vehicle_customization:special_style/Cz20_ShPTK_TVP_100_mm_CO_3DSt_desc/long";
+      
       public static const SPECIAL_STYLE_GB133_CHARIOTEER_MKVII_HBP_3DST:String = "#vehicle_customization:special_style/GB133_Charioteer_MkVII_HBP_3DSt";
       
       public static const SPECIAL_STYLE_GB133_CHARIOTEER_MKVII_HBP_3DST_DESC_LONG:String = "#vehicle_customization:special_style/GB133_Charioteer_MkVII_HBP_3DSt_desc/long";
@@ -13377,6 +13381,10 @@ package
       
       public static const SPECIAL_STYLE_G134_PZKPFW_VII_3DST_BPXV_DESC_LONG:String = "#vehicle_customization:special_style/G134_PzKpfw_VII_3Dst_BPXV_desc/long";
       
+      public static const SPECIAL_STYLE_IT36_PROGETTO_C45_MOD_71_M:String = "#vehicle_customization:special_style/It36_Progetto_C45_mod_71_M";
+      
+      public static const SPECIAL_STYLE_IT36_PROGETTO_C45_MOD_71_M_DESC_LONG:String = "#vehicle_customization:special_style/It36_Progetto_C45_mod_71_M_desc/long";
+      
       public static const SPECIAL_STYLE_SOLO_DDAY_2024_US:String = "#vehicle_customization:special_style/solo_dday_2024_us";
       
       public static const SPECIAL_STYLE_SOLO_DDAY_2024_US_DESC:String = "#vehicle_customization:special_style/solo_dday_2024_us_desc";
@@ -13406,6 +13414,10 @@ package
       public static const SPECIAL_STYLE_GB114_VICKERS_MBT_MK3_RW5_3DST:String = "#vehicle_customization:special_style/GB114_Vickers_MBT_Mk3_RW5_3Dst";
       
       public static const SPECIAL_STYLE_GB114_VICKERS_MBT_MK3_RW5_3DST_DESC_LONG:String = "#vehicle_customization:special_style/GB114_Vickers_MBT_Mk3_RW5_3Dst_desc/long";
+      
+      public static const SPECIAL_STYLE_CH62_BZ_75_M:String = "#vehicle_customization:special_style/Ch62_BZ_75_M";
+      
+      public static const SPECIAL_STYLE_CH62_BZ_75_M_DESC_LONG:String = "#vehicle_customization:special_style/Ch62_BZ_75_M_desc/long";
       
       public static const SPECIAL_STYLE_BOVINGTON:String = "#vehicle_customization:special_style/bovington";
       

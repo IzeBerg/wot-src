@@ -89,5 +89,14 @@ package net.wg.gui.lobby.training
          this.content.dispose();
          this.content = null;
       }
+      
+      override public function get width() : Number
+      {
+         if(this.content)
+         {
+            return this.content.width;
+         }
+         return super.width;
+      }
    }
 }

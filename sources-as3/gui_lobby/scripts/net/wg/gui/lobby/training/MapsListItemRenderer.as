@@ -1,5 +1,6 @@
 package net.wg.gui.lobby.training
 {
+   import net.wg.utils.ICommons;
    import scaleform.clik.controls.ListItemRenderer;
    
    public class MapsListItemRenderer extends ListItemRenderer
@@ -7,13 +8,18 @@ package net.wg.gui.lobby.training
       
       private static const MAX_WIDTH:uint = 239;
       
+      private static const DOTS:String = "...";
+      
       private static const CONDITIONS_INFO_OFFSET_X:uint = 13;
        
       
       public var additionalInfo:AdditionalInfo = null;
       
+      private var _commons:ICommons;
+      
       public function MapsListItemRenderer()
       {
+         this._commons = App.utils.commons;
          super();
       }
       
@@ -39,22 +45,28 @@ package net.wg.gui.lobby.training
       {
          this.additionalInfo.dispose();
          this.additionalInfo = null;
+         this._commons = null;
          super.onDispose();
       }
       
       override protected function updateText() : void
       {
+         var _loc1_:Number = NaN;
+         var _loc2_:Number = NaN;
          super.updateText();
          if(textField != null)
          {
-            if(textField.width > MAX_WIDTH)
+            _loc1_ = this.additionalInfo.width;
+            _loc2_ = MAX_WIDTH - _loc1_ | 0;
+            if(textField.width > _loc2_)
             {
-               textField.width = MAX_WIDTH;
+               textField.width = _loc2_;
+               this._commons.truncateTextFieldText(textField,textField.text,true,false,DOTS);
             }
             this.additionalInfo.x = textField.textWidth + CONDITIONS_INFO_OFFSET_X | 0;
-            if(this.additionalInfo.x > width - this.additionalInfo.width)
+            if(this.additionalInfo.x > width - _loc1_)
             {
-               this.additionalInfo.x = width - this.additionalInfo.width;
+               this.additionalInfo.x = width - _loc1_;
             }
          }
       }
