@@ -2,7 +2,7 @@ import BigWorld, copy, items, itertools, nation_change, nations, os, string, str
 from Math import Vector2, Vector3
 from backports.functools_lru_cache import lru_cache
 from collections import namedtuple
-from constants import ACTION_LABEL_TO_TYPE, SHELL_TYPES_LIST, ROLE_LABEL_TO_TYPE, ROLE_TYPE, DamageAbsorptionLabelToType, ROLE_LEVELS, ROLE_TYPE_TO_LABEL, VEHICLE_HEALTH_DECIMALS, CHANCE_TO_HIT_SUFFIX_FACTOR, IGR_TYPE, IS_RENTALS_ENABLED, IS_CELLAPP, IS_BASEAPP, IS_CLIENT, IS_UE_EDITOR, IS_BOT, IS_WEB, IS_PROCESS_REPLAY, ITEM_DEFS_PATH, SHELL_TYPES, VEHICLE_SIEGE_STATE, VEHICLE_MODE, VEHICLE_CLASSES, ShootImpulseApplicationPoint, AVAILABLE_STUN_TYPES_NAMES, StunTypes, HAS_EXPLOSION_EFFECT, HAS_EXPLOSION
+from constants import ACTION_LABEL_TO_TYPE, SHELL_TYPES_LIST, ROLE_LABEL_TO_TYPE, ROLE_TYPE, DamageAbsorptionLabelToType, ROLE_LEVELS, ROLE_TYPE_TO_LABEL, VEHICLE_HEALTH_DECIMALS, CHANCE_TO_HIT_SUFFIX_FACTOR, IGR_TYPE, IS_RENTALS_ENABLED, IS_CELLAPP, IS_BASEAPP, IS_CLIENT, IS_UE_EDITOR, IS_BOT, IS_WEB, IS_PROCESS_REPLAY, ITEM_DEFS_PATH, SHELL_TYPES, VEHICLE_SIEGE_STATE, VEHICLE_MODE, VEHICLE_CLASSES, ShootImpulseApplicationPoint, AVAILABLE_STUN_TYPES_NAMES, StunTypes, HAS_EXPLOSION_EFFECT, HAS_EXPLOSION, MIN_VEHICLE_LEVEL, MAX_VEHICLE_LEVEL
 from debug_utils import LOG_WARNING, LOG_ERROR, LOG_CURRENT_EXCEPTION
 from functools import partial
 from items import ItemsPrices
@@ -34,7 +34,7 @@ from post_progression_common import POST_PROGRESSION_ALL_PRICES, ALLOWED_CURRENC
 from soft_exception import SoftException
 from string import upper
 from typing import List, Optional, Tuple, Dict, Any, TYPE_CHECKING, Union, Generator, Set, FrozenSet
-from constants import SHELL_MECHANICS_TYPE, TrackBreakMode, HighExplosiveImpact
+from constants import SHELL_MECHANICS_TYPE, HighExplosiveImpact
 from wrapped_reflection_framework import ReflectionMetaclass
 from collector_vehicle import CollectorVehicleConsts
 from material_kinds import IDS_BY_NAMES
@@ -458,6 +458,20 @@ class VehicleDescriptor(object):
     @property
     def isTrackWithinTrack(self):
         return self.chassis.isTrackWithinTrack
+
+    @property
+    def isMultiTrack(self):
+        return self.chassis.isMultiTrack
+
+    @property
+    def chassisType(self):
+        return self.chassis.chassisType
+
+    @property
+    def trackPairsCount(self):
+        if self.isWheeledVehicle:
+            return 1
+        return len(self.chassis.trackPairs)
 
     def __getIsHullAimingAvailable(self):
         hap = self.type.hullAimingParams
@@ -1470,7 +1484,8 @@ class VehicleDescriptor(object):
            'onMoveRotationSpeedFactor': 1.0, 
            'fireStartingChanceFactor': 1.0, 
            'multShotDispersionFactor': 1.0, 
-           'chassisHealthAfterHysteresisFactor': 1.0, 
+           'chassisHealthAfterHysteresisFactor': [
+                                                1.0] * self.trackPairsCount, 
            'ammoBayHealthFactor': 1.0, 
            'engineHealthFactor': 1.0, 
            'chassisHealthFactor': 1.0, 
@@ -1677,7 +1692,7 @@ class VehicleSelector(NoneVehicleSelector):
 
     def __init__(self, ns=(), levels=(), vehClasses=(), vehTags=(), excludedVehTags=()):
         self.__nations = {str(n) for n in ns if str(n) in nations.NAMES if str(n) in nations.NAMES} if ns else nations.NAMES
-        self.__levels = {int(l) for l in levels} if levels else set(range(1, 11))
+        self.__levels = {int(l) for l in levels} if levels else set(range(MIN_VEHICLE_LEVEL, MAX_VEHICLE_LEVEL + 1))
         self.__tags = {str(vc) for vc in vehClasses if vc in VEHICLE_CLASS_TAGS if vc in VEHICLE_CLASS_TAGS} if vehClasses else VEHICLE_CLASS_TAGS
         vtags = set(items.getTypeInfoByName('vehicle')['tags']) - VEHICLE_CLASS_TAGS
         self.__tags |= {str(vt) for vt in vehTags if vt in vtags}
@@ -1722,7 +1737,7 @@ class VehicleSelector(NoneVehicleSelector):
         try:
             nset, levels, ctags, tags = itertools.islice(itertools.chain(string.split(vstr, ':', 3), iter(str, -1)), 4)
             nset = VehicleSelector.predicateAsSet(nset, nations.NAMES, str)
-            levels = VehicleSelector.predicateAsSet(levels, range(1, 11), int)
+            levels = VehicleSelector.predicateAsSet(levels, range(MIN_VEHICLE_LEVEL, MAX_VEHICLE_LEVEL + 1), int)
             vehClasses = VehicleSelector.predicateAsSet(ctags, VEHICLE_CLASS_TAGS, str)
             tags = tags.split('&')
             vehTags = {t for t in tags if not (t in VEHICLE_CLASS_TAGS or t.startswith('~')) if not t in VEHICLE_CLASS_TAGS or t.startswith('~')}
@@ -2680,7 +2695,7 @@ class VehicleList(object):
     def __init__(self):
         self.__ids = {}
         self.__categories = {}
-        typeCompDescrsByLevel = {level:[] for level in range(1, 11)}
+        typeCompDescrsByLevel = {level:[] for level in range(MIN_VEHICLE_LEVEL, MAX_VEHICLE_LEVEL + 1)}
         list = []
         for nation in nations.NAMES:
             if nation not in nations.AVAILABLE_NAMES:
@@ -3233,7 +3248,7 @@ def _writeMultiGun(item, section):
 
 def _readLevel(xmlCtx, section):
     level = section.readInt('level', 1)
-    if not 1 <= level <= 10:
+    if not MIN_VEHICLE_LEVEL <= level <= MAX_VEHICLE_LEVEL:
         _xml.raiseWrongSection(xmlCtx, 'level')
     return level
 
@@ -3757,7 +3772,7 @@ def _writeChassis(item, section, sharedSections, materialData, *args, **kwargs):
     _xml.rewriteFloat(section, 'rotationSpeed', degrees(item.rotationSpeed))
     _writeCamouflageSettings(section, 'camouflage', item.camouflage)
     chassisMatData = materialData.get('chassis', None) if materialData is not None else None
-    if len(item.trackPairs) != 2:
+    if len(item.trackPairs) == 1:
         _writeArmor(item.materials, section, chassisMatData.get(item.name, None) if chassisMatData is not None else None)
     else:
         trackPairMatData = materialData.get('trackPair1', None) if materialData is not None else None
@@ -3781,9 +3796,8 @@ def _writeChassis(item, section, sharedSections, materialData, *args, **kwargs):
     shared_writers.writeModelsSets(item.modelsSets, section['models'])
     chassis_writers.writeTraces(item.traces, section, g_cache)
     chassis_writers.writeTrackBasicParams(item.tracks, section, g_cache)
-    chassis_writers.writeTrackSplineParams(item.trackSplineParams, section)
-    chassis_writers.writeTrackNodes(item.trackNodes.nodes, section)
-    chassis_writers.writeGroundNodes(item.groundNodes.groups, section)
+    chassis_writers.writeTrackNodesAndSplineParams(item.trackNodes.nodes, item.trackSplineParams, section)
+    chassis_writers.writeGroundNodes(item.groundNodes.nodes, section)
     sound_writers.writeHullAimingSound(item.hullAimingSound, section, g_cache)
     shared_writers.writeLodDist(item.effects['lodDist'], section, 'effects/lodDist', g_cache)
     chassis_writers.writeMudEffect(item.customEffects[0], g_cache, section, 'effects/mud')
@@ -3852,7 +3866,7 @@ def _readChassisLocals(xmlCtx, section, sharedItem, unlocksDescrs, _=None):
 def _readTrackPairs(xmlCtx, section):
     if not section.has_key('trackPairParams'):
         return tuple([
-         chassis_components.TrackPair(hitTesterManager=_readHitTester(xmlCtx, section, 'hitTester'), materials=_readArmor(xmlCtx, section, 'armor', index=component_constants.MAIN_TRACK_PAIR_IDX), healthParams=shared_readers.readDeviceHealthParams(xmlCtx, section), breakMode=_readTrackBreakMode(xmlCtx, section))])
+         chassis_components.TrackPair(hitTesterManager=_readHitTester(xmlCtx, section, 'hitTester'), materials=_readArmor(xmlCtx, section, 'armor', index=component_constants.MAIN_TRACK_PAIR_IDX), healthParams=shared_readers.readDeviceHealthParams(xmlCtx, section))])
     else:
         needHitTesters = not (IS_BASEAPP or IS_WEB)
         hitTesters = {}
@@ -3868,8 +3882,7 @@ def _readTrackPairs(xmlCtx, section):
                  xmlCtx, sname)
                 idx = subsection.readInt('trackPairIdx')
                 trackPairsParams[idx] = {'materials': _readArmor(ctx, subsection, 'armor', index=idx), 
-                   'healthParams': shared_readers.readDeviceHealthParams(ctx, subsection), 
-                   'breakMode': _readTrackBreakMode(ctx, subsection)}
+                   'healthParams': shared_readers.readDeviceHealthParams(ctx, subsection)}
 
         trackPairsCount = len(trackPairsParams)
         if needHitTesters and len(hitTesters) != trackPairsCount:
@@ -3878,15 +3891,9 @@ def _readTrackPairs(xmlCtx, section):
             _xml.raiseWrongXml(xmlCtx, '', msg)
         trackPairs = [None] * trackPairsCount
         for idx, params in trackPairsParams.items():
-            trackPairs[idx] = chassis_components.TrackPair(hitTesterManager=hitTesters[idx] if needHitTesters else None, materials=params['materials'], healthParams=params['healthParams'], breakMode=params['breakMode'])
+            trackPairs[idx] = chassis_components.TrackPair(hitTesterManager=hitTesters[idx] if needHitTesters else None, materials=params['materials'], healthParams=params['healthParams'])
 
         return tuple(trackPairs)
-
-
-def _readTrackBreakMode(xmlCtx, section):
-    defaultLabel = TrackBreakMode(TrackBreakMode.STOP).name
-    breakModeLabel = intern(_xml.readStringWithDefaultValue(xmlCtx, section, 'breakMode', defaultLabel))
-    return TrackBreakMode[breakModeLabel]
 
 
 def _readExtrasProtection(vehType, xmlCtx, section):
@@ -4379,6 +4386,8 @@ def _readExtraLocals(vehType, xmlCtx, section):
         oldExtra = vehExtrasDict.get(extraName)
         if oldExtra:
             extra.index = oldExtra.index
+            if hasattr(extra, 'typeName'):
+                extra.typeName = oldExtra.typeName
             vehExtras[oldExtra.index] = extra
         else:
             extra.index = len(vehExtras)
@@ -5178,7 +5187,33 @@ def _readShell(xmlCtx, section, name, nationID, shellTypeID, icons):
         shell.hitCrewChanceMultiplier = _xml.readNonNegativeFloat(xmlCtx, section, 'hitCrewChanceMultiplier')
     if section.has_key('hitDeviceChanceMultiplier'):
         shell.hitDeviceChanceMultiplier = _xml.readNonNegativeFloat(xmlCtx, section, 'hitDeviceChanceMultiplier')
+    if section.has_key('maxDistanceInsideVehicle'):
+        shell.maxDistanceInsideVehicle = _xml.readNonNegativeInt(xmlCtx, section, 'maxDistanceInsideVehicle')
+    if section.has_key('damagedDevicesLimit'):
+        shell.damagedDevicesLimit = _xml.readNonNegativeInt(xmlCtx, section, 'damagedDevicesLimit')
+    if section.has_key('engineFireFactor'):
+        shell.engineFireFactor = _xml.readNonNegativeFloat(xmlCtx, section, 'engineFireFactor')
+    if section.has_key('distanceDamage'):
+        isEnabled = _xml.readBool(xmlCtx, section, 'distanceDamage/isEnabled')
+        if isEnabled:
+            shell.distanceDmg = DistanceDamageParams(xmlCtx, section)
     return shell
+
+
+class DistanceDamageParams(object):
+    __slots__ = ('damage', 'distance', 'ignoreModules')
+    MinMax = namedtuple('MinMax', ('min', 'max'))
+
+    def __init__(self, xmlCtx, section):
+        subXmlCtx, subsection = _xml.getSubSectionWithContext(xmlCtx, section, 'distanceDamage')
+        self.damage = self.MinMax(_xml.readNonNegativeInt(subXmlCtx, subsection, 'damage/min'), _xml.readNonNegativeInt(subXmlCtx, subsection, 'damage/max'))
+        self.distance = self.MinMax(_xml.readNonNegativeFloat(subXmlCtx, subsection, 'distance/min', 0.0), _xml.readNonNegativeFloat(subXmlCtx, subsection, 'distance/max', 0.0))
+        self.ignoreModules = _xml.readBool(subXmlCtx, subsection, 'ignoreModules', False)
+
+    @property
+    def avgDamage(self):
+        avgDamage = (self.damage.min + self.damage.max) / 2.0
+        return int(round(avgDamage))
 
 
 def readProtectedModules(xmlCtx, section, subsection):
@@ -6924,7 +6959,7 @@ def _validateBrokenTrackLosses(xmlCtx, vehType):
         chassisPhysics = vehType.xphysics['detailed']['chassis']
         ctx = (xmlCtx, 'physics/detailed/chassis')
         for chassis in vehType.chassis:
-            maxLossesCount = sum(2 for trackPair in chassis.trackPairs if trackPair.breakMode == TrackBreakMode.SLOW)
+            maxLossesCount = 2 * (len(chassis.trackPairs) - 1)
             brokenTrackLosses = chassisPhysics[chassis.name]['brokenTrackLosses']
             chassisCtx = (
              ctx, chassis.name)

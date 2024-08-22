@@ -114,6 +114,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.data.constants.generated.VEHICLE_COMPARE_CONSTANTS;
    import net.wg.data.constants.generated.VEHICLE_SELECTOR_CONSTANTS;
    import net.wg.data.constants.generated.VEHPREVIEW_CONSTANTS;
+   import net.wg.data.constants.generated.WINBACK_ALIASES;
    import net.wg.data.generated.models.DemoSubModel;
    import net.wg.data.generated.models.DemoViewModel;
    import net.wg.data.generated.models.TestViewModel;
@@ -194,7 +195,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.advanced.CooldownSlot;
    import net.wg.gui.components.advanced.CounterEx;
    import net.wg.gui.components.advanced.DashLineTextItem;
-   import net.wg.gui.components.advanced.DoubleProgressBar;
    import net.wg.gui.components.advanced.Dummy;
    import net.wg.gui.components.advanced.ExtraModuleIcon;
    import net.wg.gui.components.advanced.HelpLayoutControl;
@@ -289,6 +289,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.common.ArrowButtonWithNumber;
    import net.wg.gui.components.common.ConfirmComponent;
    import net.wg.gui.components.common.ConfirmItemComponent;
+   import net.wg.gui.components.common.DeprecatedLibraryItem;
    import net.wg.gui.components.common.containers.AutoResizableTiledLayout;
    import net.wg.gui.components.common.containers.CenterAlignedGroupLayout;
    import net.wg.gui.components.common.containers.EqualGapsHorizontalLayout;
@@ -1196,7 +1197,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.FunRandomEntryPoint;
    import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.MapBoxEntryPoint;
    import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.MarathonEntryPoint;
-   import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.RacesBannerEntryPoint;
    import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.RankedEntryPoint;
    import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.ResizableEntryPoint;
    import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.ShopSalesEntryPoint;
@@ -1233,6 +1233,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.hangar.quests.ResourceWellEntryPoint;
    import net.wg.gui.lobby.hangar.quests.SecondaryEntryPoint;
    import net.wg.gui.lobby.hangar.quests.SecondaryEntryPointContent;
+   import net.wg.gui.lobby.hangar.quests.WinbackWidget;
    import net.wg.gui.lobby.hangar.tcarousel.BaseTankIcon;
    import net.wg.gui.lobby.hangar.tcarousel.CarouselProgressionPoints;
    import net.wg.gui.lobby.hangar.tcarousel.ClanLockUI;
@@ -1291,7 +1292,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.header.itemSelectorPopover.ItemSelectorRendererVO;
    import net.wg.gui.lobby.header.itemSelectorPopover.ItemSelectorTooltipDataVO;
    import net.wg.gui.lobby.header.mainMenuButtonBar.MainMenuButtonBar;
-   import net.wg.gui.lobby.header.rankedBattles.SparkAnim;
+   import net.wg.gui.lobby.header.rankedBattles.SparkAnimLoader;
    import net.wg.gui.lobby.header.vo.AccountBoosterVO;
    import net.wg.gui.lobby.header.vo.AccountDataVo;
    import net.wg.gui.lobby.header.vo.ExtendedSquadInfoVo;
@@ -2204,13 +2205,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.stronghold.StrongholdView;
    import net.wg.gui.lobby.tank_setup.AmmunitionSetupView;
    import net.wg.gui.lobby.tank_setup.AmmunitionSetupViewInject;
-   import net.wg.gui.lobby.tankman.DropSkillsCost;
-   import net.wg.gui.lobby.tankman.SkillDropForFreeModel;
-   import net.wg.gui.lobby.tankman.SkillDropForFreeWindow;
-   import net.wg.gui.lobby.tankman.SkillItemViewMini;
-   import net.wg.gui.lobby.tankman.TankmanSkillsInfoBlock;
    import net.wg.gui.lobby.tankman.vo.RetrainButtonVO;
-   import net.wg.gui.lobby.tankman.vo.TankmanSkillsInfoBlockVO;
    import net.wg.gui.lobby.techtree.ResearchPage;
    import net.wg.gui.lobby.techtree.TechTreeEvent;
    import net.wg.gui.lobby.techtree.TechTreePage;
@@ -3225,6 +3220,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_DATA_CONSTANTS_GENERATED_VEHPREVIEW_CONSTANTS:Class = VEHPREVIEW_CONSTANTS;
       
+      public static const NET_WG_DATA_CONSTANTS_GENERATED_WINBACK_ALIASES:Class = WINBACK_ALIASES;
+      
       public static const NET_WG_DATA_GENERATED_MODELS_DEMOSUBMODEL:Class = DemoSubModel;
       
       public static const NET_WG_DATA_GENERATED_MODELS_DEMOVIEWMODEL:Class = DemoViewModel;
@@ -3441,8 +3438,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_COMPONENTS_ADVANCED_DASHLINETEXTITEM:Class = DashLineTextItem;
       
-      public static const NET_WG_GUI_COMPONENTS_ADVANCED_DOUBLEPROGRESSBAR:Class = DoubleProgressBar;
-      
       public static const NET_WG_GUI_COMPONENTS_ADVANCED_DUMMY:Class = Dummy;
       
       public static const NET_WG_GUI_COMPONENTS_ADVANCED_EXTRAMODULEICON:Class = ExtraModuleIcon;
@@ -3630,6 +3625,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_COMPONENTS_COMMON_CONFIRMCOMPONENT:Class = ConfirmComponent;
       
       public static const NET_WG_GUI_COMPONENTS_COMMON_CONFIRMITEMCOMPONENT:Class = ConfirmItemComponent;
+      
+      public static const NET_WG_GUI_COMPONENTS_COMMON_DEPRECATEDLIBRARYITEM:Class = DeprecatedLibraryItem;
       
       public static const NET_WG_GUI_COMPONENTS_COMMON_CONTAINERS_AUTORESIZABLETILEDLAYOUT:Class = AutoResizableTiledLayout;
       
@@ -5445,8 +5442,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_HANGAR_EVENTENTRYPOINT_GFWRAPPER_MARATHONENTRYPOINT:Class = MarathonEntryPoint;
       
-      public static const NET_WG_GUI_LOBBY_HANGAR_EVENTENTRYPOINT_GFWRAPPER_RACESBANNERENTRYPOINT:Class = RacesBannerEntryPoint;
-      
       public static const NET_WG_GUI_LOBBY_HANGAR_EVENTENTRYPOINT_GFWRAPPER_RANKEDENTRYPOINT:Class = RankedEntryPoint;
       
       public static const NET_WG_GUI_LOBBY_HANGAR_EVENTENTRYPOINT_GFWRAPPER_RESIZABLEENTRYPOINT:Class = ResizableEntryPoint;
@@ -5518,6 +5513,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_HANGAR_QUESTS_SECONDARYENTRYPOINT:Class = SecondaryEntryPoint;
       
       public static const NET_WG_GUI_LOBBY_HANGAR_QUESTS_SECONDARYENTRYPOINTCONTENT:Class = SecondaryEntryPointContent;
+      
+      public static const NET_WG_GUI_LOBBY_HANGAR_QUESTS_WINBACKWIDGET:Class = WinbackWidget;
       
       public static const NET_WG_GUI_LOBBY_HANGAR_TCAROUSEL_BASETANKICON:Class = BaseTankIcon;
       
@@ -5635,7 +5632,7 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_HEADER_MAINMENUBUTTONBAR_MAINMENUBUTTONBAR:Class = MainMenuButtonBar;
       
-      public static const NET_WG_GUI_LOBBY_HEADER_RANKEDBATTLES_SPARKANIM:Class = SparkAnim;
+      public static const NET_WG_GUI_LOBBY_HEADER_RANKEDBATTLES_SPARKANIMLOADER:Class = SparkAnimLoader;
       
       public static const NET_WG_GUI_LOBBY_HEADER_VO_ACCOUNTBOOSTERVO:Class = AccountBoosterVO;
       
@@ -7457,19 +7454,7 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_STRONGHOLD_STRONGHOLDVIEW:Class = StrongholdView;
       
-      public static const NET_WG_GUI_LOBBY_TANKMAN_DROPSKILLSCOST:Class = DropSkillsCost;
-      
-      public static const NET_WG_GUI_LOBBY_TANKMAN_SKILLDROPFORFREEMODEL:Class = SkillDropForFreeModel;
-      
-      public static const NET_WG_GUI_LOBBY_TANKMAN_SKILLDROPFORFREEWINDOW:Class = SkillDropForFreeWindow;
-      
-      public static const NET_WG_GUI_LOBBY_TANKMAN_SKILLITEMVIEWMINI:Class = SkillItemViewMini;
-      
-      public static const NET_WG_GUI_LOBBY_TANKMAN_TANKMANSKILLSINFOBLOCK:Class = TankmanSkillsInfoBlock;
-      
       public static const NET_WG_GUI_LOBBY_TANKMAN_VO_RETRAINBUTTONVO:Class = RetrainButtonVO;
-      
-      public static const NET_WG_GUI_LOBBY_TANKMAN_VO_TANKMANSKILLSINFOBLOCKVO:Class = TankmanSkillsInfoBlockVO;
       
       public static const NET_WG_GUI_LOBBY_TANK_SETUP_AMMUNITIONSETUPVIEW:Class = AmmunitionSetupView;
       

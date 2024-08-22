@@ -1388,11 +1388,14 @@ msgstr "БОНЫ ЗА СОБЫТИЯ"
 
 msgid "crystals/info/tab/earn/level/description"
 msgstr ""
-"Боны зарабатываются на технике %(level10) и премиум технике %(level9)\n"
-"с активным индикатором заработка бон в следующих режимах:"
+"Боны зарабатываются на технике %(level10) и %(level11), а также на премиум технике %(level9)\n"
+" с активным индикатором заработка бон в следующих режимах:"
 
 msgid "crystals/info/tab/earn/level/descriptionContent/level10"
-msgstr "Х уровня"
+msgstr "Х"
+
+msgid "crystals/info/tab/earn/level/descriptionContent/level11"
+msgstr "ХI уровней"
 
 msgid "crystals/info/tab/earn/level/descriptionContent/level9"
 msgstr "IX уровня"
@@ -1728,6 +1731,9 @@ msgstr "Серверное ограничение"
 
 msgid "currentVehicleStatus/subscription_suspended"
 msgstr "Подписка отменена"
+
+msgid "currentVehicleStatus/tempUnavailable"
+msgstr "Временно недоступно"
 
 msgid "currentVehicleStatus/undamaged"
 msgstr "К бою готов!"
@@ -2195,7 +2201,7 @@ msgid "extraParams/name/enemyModulesCrewCritChance"
 msgstr ""
 "Параметр, отвечающий за изменение шанса нанести критические повреждения "
 "экипажу и внутренним модулям противника. Работает только для бронебойных, "
-"кумулятивных и подкалиберных снарядов."
+"подкалиберных, бронебойных оперённых подкалиберных и кумулятивных снарядов."
 
 msgid "extraParams/name/equipmentPreparationTime"
 msgstr ""
@@ -2707,6 +2713,9 @@ msgstr "I"
 
 msgid "header/level/10"
 msgstr "X"
+
+msgid "header/level/11"
+msgstr "XI"
 
 msgid "header/level/2"
 msgstr "II"
@@ -3639,6 +3648,9 @@ msgstr "Бронебойные"
 msgid "inventory/menu/shell/kinds/ARMOR_PIERCING_CR/name"
 msgstr "Подкалиберные"
 
+msgid "inventory/menu/shell/kinds/ARMOR_PIERCING_FSDS/name"
+msgstr "Бронебойные оперённые подкалиберные"
+
 msgid "inventory/menu/shell/kinds/ARMOR_PIERCING_HE/name"
 msgstr "Бронебойные каморные"
 
@@ -3714,6 +3726,9 @@ msgstr "I уровень"
 msgid "levels/10"
 msgstr "X уровень"
 
+msgid "levels/11"
+msgstr "XI уровень"
+
 msgid "levels/2"
 msgstr "II уровень"
 
@@ -3746,6 +3761,9 @@ msgstr "I уровень"
 
 msgid "levels/roman/10"
 msgstr "X уровень"
+
+msgid "levels/roman/11"
+msgstr "XI уровень"
 
 msgid "levels/roman/2"
 msgstr "II уровень"
@@ -4436,6 +4454,12 @@ msgstr ""
 "Гидропневматический привод телескопического типа: позволяет изменять "
 "положение дополнительных колёс."
 
+msgid "moduleInfo/multiTrackChassisLabel"
+msgstr ""
+"Дополнительная гусеница: позволяет частично сохранить мобильность при выходе"
+" из строя одной из бортовых гусениц. При разрушении всех гусениц на одном из"
+" бортов движение невозможно."
+
 msgid "moduleInfo/parametersClipGunLabel"
 msgstr ""
 "<img src='%s' vspace='-4'/> Для орудия с магазинной системой заряжания:"
@@ -4529,6 +4553,11 @@ msgstr "Урон"
 
 msgid "moduleInfo/params/dispertionRadius"
 msgstr "Разброс на 100 м"
+
+msgid "moduleInfo/params/distanceDamage"
+msgstr ""
+"* зависит от пройденного расстояния внутри цели:\n"
+"%(minDmg)s - %(maxDmg)s метров"
 
 msgid "moduleInfo/params/drivingControl"
 msgstr "К управляемости на скорости"
@@ -4929,10 +4958,15 @@ msgstr "Время ожидания:"
 msgid "prebattle/title"
 msgstr "Стандартный бой"
 
+msgid "prebattle/waitingTime11LevelWarning"
+msgstr ""
+"Ожидание боя для техники ХI уровня может занять продолжительное время. "
+"Пожалуйста, подождите."
+
 msgid "prebattle/waitingTimeWarning"
 msgstr ""
-"*Ожидание боя для САУ занимает больше времени, чем для других типов техники."
-" Пожалуйста, подождите."
+"Ожидание боя для САУ занимает больше времени, чем для других типов техники. "
+"Пожалуйста, подождите."
 
 msgid "premium/bonus"
 msgstr ""
@@ -5834,6 +5868,9 @@ msgstr "Бронебойные"
 msgid "shop/menu/shell/kinds/ARMOR_PIERCING_CR/name"
 msgstr "Подкалиберные"
 
+msgid "shop/menu/shell/kinds/ARMOR_PIERCING_FSDS/name"
+msgstr "Бронебойные оперённые подкалиберные"
+
 msgid "shop/menu/shell/kinds/ARMOR_PIERCING_HE/name"
 msgstr "Бронебойные каморные"
 
@@ -5947,28 +5984,6 @@ msgstr "Скидка"
 
 msgid "shop/table/notForSale"
 msgstr "Нельзя продать"
-
-msgid "skillDropForFreeWindow/actionTime/description"
-msgstr "До окончания льготного периода:"
-
-msgid "skillDropForFreeWindow/actionTime/title"
-msgstr "Льготный период"
-
-msgid "skillDropForFreeWindow/days"
-msgstr "%(value)s д"
-
-msgid "skillDropForFreeWindow/hours"
-msgstr "%(value)s ч"
-
-msgid "skillDropForFreeWindow/minutes"
-msgstr "%(value)s мин"
-
-msgid "skillDropForFreeWindow/seconds"
-msgstr "%(value)s с"
-
-msgid "skillDropForFreeWindow/timer/tooltip"
-msgstr ""
-"Сброс навыков без потери опыта бесплатен до завершения льготного периода."
 
 msgid "specPrebetles/listTitle"
 msgstr "Список командных комнат"
@@ -6245,6 +6260,9 @@ msgid "tankCarousel/vehicleStates/subscription_suspended"
 msgstr ""
 "Подписка\n"
 "отменена"
+
+msgid "tankCarousel/vehicleStates/tempUnavailable"
+msgstr "Временно недоступно"
 
 msgid "tankCarousel/vehicleStates/unavailable"
 msgstr "Недоступно"

@@ -530,13 +530,13 @@ package net.wg.gui.lobby.hangar.quests
          var _loc1_:int = this.entryPointWidth + this.entryPointMarginRight + this.entryPointMarginLeft;
          var _loc2_:int = _loc1_ + 2 * QUESTS_GROUP_OFFSET;
          var _loc3_:int = Boolean(this._entryPoint) ? int(-(_loc1_ >> 1)) : int(0);
-         var _loc4_:Point = null;
+         var _loc4_:int = 0;
          for each(_loc5_ in this._questsGroupsContainers)
          {
-            _loc4_ = _loc5_.position;
-            if(_loc4_.x < _loc3_)
+            _loc4_ = _loc5_.getMinX();
+            if(_loc4_ < _loc3_)
             {
-               _loc3_ = _loc4_.x;
+               _loc3_ = _loc4_;
             }
             _loc2_ += _loc5_.cmptWidth;
          }
@@ -550,6 +550,7 @@ package net.wg.gui.lobby.hangar.quests
          param1.addEventListener(HeaderQuestsEvent.HEADER_QUEST_CLICK,this.onBtnHeaderQuestClickHandler);
          param1.addEventListener(HeaderQuestsEvent.HEADER_QUEST_OVER,this.onBtnHeaderQuestOverHandler);
          param1.addEventListener(HeaderQuestsEvent.ANIM_START,this.onPMItemsAnimStartHandler);
+         param1.addEventListener(HeaderQuestsEvent.ANIM_END,this.onPMItemsAnimEndHandler);
       }
       
       private function removeListenersFromQuestsContainer(param1:IHeaderQuestsContainer) : void
@@ -557,6 +558,7 @@ package net.wg.gui.lobby.hangar.quests
          param1.removeEventListener(HeaderQuestsEvent.HEADER_QUEST_CLICK,this.onBtnHeaderQuestClickHandler);
          param1.removeEventListener(HeaderQuestsEvent.HEADER_QUEST_OVER,this.onBtnHeaderQuestOverHandler);
          param1.removeEventListener(HeaderQuestsEvent.ANIM_START,this.onPMItemsAnimStartHandler);
+         param1.removeEventListener(HeaderQuestsEvent.ANIM_END,this.onPMItemsAnimEndHandler);
       }
       
       private function onDisableTweenComplete() : void
@@ -819,6 +821,11 @@ package net.wg.gui.lobby.hangar.quests
       }
       
       private function onPMItemsAnimStartHandler(param1:HeaderQuestsEvent) : void
+      {
+         this.updateHitArea();
+      }
+      
+      private function onPMItemsAnimEndHandler(param1:HeaderQuestsEvent) : void
       {
          this.updateHitArea();
       }

@@ -62,8 +62,19 @@ class Comp7StatisticsDataController(Comp7BattleStatisticDataControllerMeta):
          vehicle.TotalStatsComposer(),)))
         return exchangeBroker
 
+    def _getArenaWinText(self):
+        return self._getComp7Description('description')
+
     def _getArenaWinTextShort(self):
-        return backport.text(R.strings.arenas.type.comp7.short_description())
+        return self._getComp7Description('short_description')
+
+    def _getComp7Description(self, key):
+        arenaDescription = self._battleCtx.getArenaDP().getPersonalDescription()
+        hasControlPoint = arenaDescription.isControlPointExists()
+        hasBase = arenaDescription.isBaseExists()
+        if hasControlPoint:
+            return backport.text(R.strings.arenas.type.comp7.dyn(key)())
+        return backport.text(R.strings.arenas.type.dyn(('comp7_{}').format(1 if hasBase else 2)).dyn(key)())
 
     def startControl(self, battleCtx, arenaVisitor):
         super(Comp7StatisticsDataController, self).startControl(battleCtx, arenaVisitor)

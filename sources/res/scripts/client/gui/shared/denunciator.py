@@ -33,10 +33,10 @@ class Denunciator(object):
     def playerCtx(self):
         return
 
-    def makeAppeal(self, violatorID, userName, topic, arenaUniqueID):
+    def makeAppeal(self, violatorID, userName, topic, arenaUniqueID, ctx=None):
         topicID = DENUNCIATIONS_MAP.get(topic)
         player = BigWorld.player()
-        violatorKind = self._getViolatorKind(player, violatorID)
+        violatorKind = self._getViolatorKind(player, violatorID, ctx)
         denunciationsLeft = self.getDenunciationsLeft()
         try:
             player.makeDenunciation(violatorID, topicID, violatorKind, arenaUniqueID)
@@ -64,7 +64,7 @@ class Denunciator(object):
     def _shouldSaveInLocalStorage(self):
         return True
 
-    def _getViolatorKind(self, player, violatorID):
+    def _getViolatorKind(self, player, violatorID, ctx=None):
         raise NotImplementedError()
 
     def _formSystemMessage(self, userName, topicID, _):
@@ -83,8 +83,13 @@ class LobbyDenunciator(Denunciator):
     def getDenunciationsLeft(self):
         return self.itemsCache.items.stats.battleDenunciationsLeft
 
-    def _getViolatorKind(self, player, violatorID):
-        return constants.VIOLATOR_KIND.UNKNOWN
+    def _getViolatorKind(self, player, violatorID, ctx=None):
+        if ctx is None:
+            return constants.VIOLATOR_KIND.UNKNOWN
+        else:
+            if ctx.children.get('isAlly'):
+                return constants.VIOLATOR_KIND.ALLY
+            return constants.VIOLATOR_KIND.ENEMY
 
     def _makeNotification(self, message):
         SystemMessages.pushMessage(message, type=SystemMessages.SM_TYPE.Information)
@@ -100,7 +105,7 @@ class BattleDenunciator(Denunciator):
     def getArenaUniqueID(cls):
         return BigWorld.player().arenaUniqueID
 
-    def _getViolatorKind(self, player, violatorID):
+    def _getViolatorKind(self, player, violatorID, ctx=None):
         arenaDP = self.sessionProvider.getArenaDP()
         vehicleID = arenaDP.getVehIDBySessionID(str(violatorID))
         violator = arenaDP.getVehicleInfo(vehicleID)
@@ -128,7 +133,7 @@ class LobbyChatDenunciator(LobbyDenunciator):
         violatorTopicIDs = hangarDenunciations.get(violatorID, set())
         return topicID not in violatorTopicIDs
 
-    def _getViolatorKind(self, player, violatorID):
+    def _getViolatorKind(self, player, violatorID, ctx=None):
         return constants.VIOLATOR_KIND.HANGAR_CHAT_MEMBER
 
     def _shouldSaveInLocalStorage(self):

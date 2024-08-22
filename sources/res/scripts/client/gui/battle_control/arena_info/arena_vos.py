@@ -216,7 +216,7 @@ class VehicleTypeInfoVO(object):
                  'isObserver', 'isPremiumIGR', 'isDualGunVehicle', 'isFlamethrowerVehicle',
                  'isAssaultVehicle', 'hasDualAccuracy', 'guiName', 'shortNameWithPrefix',
                  'classTag', 'nationID', 'turretYawLimits', 'maxHealth', 'strCompactDescr',
-                 'isOnlyForBattleRoyaleBattles', 'tags', 'chassisType', 'role')
+                 'isOnlyForBattleRoyaleBattles', 'tags', 'chassisType', 'role', 'isMultiTrack')
 
     def __init__(self, vehicleType=None, maxHealth=None, **kwargs):
         super(VehicleTypeInfoVO, self).__init__()
@@ -262,6 +262,7 @@ class VehicleTypeInfoVO(object):
             self.isAssaultVehicle = vehicleDescr.isAssaultSPG
             self.hasDualAccuracy = vehicleDescr.hasDualAccuracy
             self.chassisType = vehicleDescr.chassis.chassisType
+            self.isMultiTrack = vehicleDescr.isMultiTrack
             self.shortName = vehicleType.shortUserString
             self.name = Vehicle.getUserName(vehicleType=vehicleType, textPrefix=True)
             self.shortNameWithPrefix = Vehicle.getShortUserName(vehicleType=vehicleType, textPrefix=True)
@@ -288,7 +289,8 @@ class VehicleTypeInfoVO(object):
             self.isFlamethrowerVehicle = False
             self.isAssaultVehicle = False
             self.hasDualAccuracy = False
-            self.chassisType = 0
+            self.chassisType = None
+            self.isMultiTrack = False
             self.name = vehicleName
             self.guiName = vehicleName
             self.shortNameWithPrefix = vehicleName

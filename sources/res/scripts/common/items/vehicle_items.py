@@ -20,8 +20,17 @@ class VEHICLE_ITEM_STATUS(object):
 
 class CHASSIS_ITEM_TYPE(object):
     MONOLITHIC = 0
-    SEPARATE = 1
-    TRACK_WITHIN_TRACK = 2
+    TRACK_WITHIN_TRACK = 1
+    MULTITRACK_SEQUENT = 2
+    MULTITRACK_PARALLEL = 3
+    MONOLITHIC_TAG = 'monolithic'
+    TRACK_WITHIN_TRACK_TAG = 'trackWithinTrack'
+    MULTITRACK_SEQUENT_TAG = 'multiTrackSequent'
+    MULTITRACK_PARALLEL_TAG = 'multiTrackParallel'
+    TRACK_TYPE_MAP = {MONOLITHIC: MONOLITHIC_TAG, 
+       TRACK_WITHIN_TRACK: TRACK_WITHIN_TRACK_TAG, 
+       MULTITRACK_SEQUENT: MULTITRACK_SEQUENT_TAG, 
+       MULTITRACK_PARALLEL: MULTITRACK_PARALLEL_TAG}
 
 
 class _ShallowCopyWrapper(object):
@@ -200,23 +209,23 @@ class Chassis(InstallableItem):
         if self._chassisType is not None:
             return self._chassisType
         else:
-            if self.generalWheelsAnimatorConfig is not None and self.generalWheelsAnimatorConfig.getHasTrackWithinTrack():
+            if CHASSIS_ITEM_TYPE.TRACK_WITHIN_TRACK_TAG in self.tags:
                 self._chassisType = CHASSIS_ITEM_TYPE.TRACK_WITHIN_TRACK
+            elif CHASSIS_ITEM_TYPE.MULTITRACK_SEQUENT_TAG in self.tags:
+                self._chassisType = CHASSIS_ITEM_TYPE.MULTITRACK_SEQUENT
+            elif CHASSIS_ITEM_TYPE.MULTITRACK_PARALLEL_TAG in self.tags:
+                self._chassisType = CHASSIS_ITEM_TYPE.MULTITRACK_PARALLEL
             else:
-                prevLeftMatParam = ''
-                if self.tracks is not None:
-                    for trackPair in self.tracks.trackPairs.itervalues():
-                        if prevLeftMatParam and trackPair.leftMaterial != prevLeftMatParam:
-                            self._chassisType = CHASSIS_ITEM_TYPE.SEPARATE
-                            return self._chassisType
-                        prevLeftMatParam = trackPair.leftMaterial
-
                 self._chassisType = CHASSIS_ITEM_TYPE.MONOLITHIC
             return self._chassisType
 
     @property
     def isTrackWithinTrack(self):
         return self.chassisType == CHASSIS_ITEM_TYPE.TRACK_WITHIN_TRACK
+
+    @property
+    def isMultiTrack(self):
+        return self.chassisType in (CHASSIS_ITEM_TYPE.MULTITRACK_PARALLEL, CHASSIS_ITEM_TYPE.MULTITRACK_SEQUENT)
 
     @property
     def totalBBox(self):
@@ -391,7 +400,8 @@ class Shell(BasicItem):
     __slots__ = ('caliber', 'isTracer', 'isForceTracer', 'damage', 'damageRandomization',
                  'piercingPowerRandomization', 'icon', 'iconName', 'isGold', 'type',
                  'stun', 'effectsIndex', 'tags', 'secondaryAttackReason', 'useAltDamageRandomization',
-                 'hitDeviceChanceMultiplier', 'hitCrewChanceMultiplier')
+                 'hitDeviceChanceMultiplier', 'hitCrewChanceMultiplier', 'maxDistanceInsideVehicle',
+                 'damagedDevicesLimit', 'engineFireFactor', 'distanceDmg')
 
     def __init__(self, typeID, componentID, componentName, compactDescr):
         super(Shell, self).__init__(typeID, componentID, componentName, compactDescr)
@@ -411,6 +421,10 @@ class Shell(BasicItem):
         self.useAltDamageRandomization = False
         self.hitDeviceChanceMultiplier = component_constants.DEFAULT_SHELL_HIT_EXTRAS_CHANCE_MULTIPLIER
         self.hitCrewChanceMultiplier = component_constants.DEFAULT_SHELL_HIT_EXTRAS_CHANCE_MULTIPLIER
+        self.maxDistanceInsideVehicle = None
+        self.damagedDevicesLimit = None
+        self.engineFireFactor = None
+        self.distanceDmg = None
         return
 
     def __repr__(self):
@@ -422,6 +436,33 @@ class Shell(BasicItem):
         return self.type.name
 
     @property
+    def avgDamage(self):
+        if self.distanceDmg is not None:
+            return self.distanceDmg.avgDamage
+        else:
+            return self.damage[0]
+
+    @property
+    def dmgLimits(self):
+        if self.distanceDmg is not None:
+            dmg = self.distanceDmg.damage
+            minDamage = dmg.min
+            maxDamage = dmg.max
+        else:
+            damage = self.damage[0]
+            minDamage = damage
+            maxDamage = damage
+        return (minDamage, maxDamage)
+
+    @property
+    def randomizationDmgLimits(self):
+        minDamage, maxDamage = self.dmgLimits
+        minDamageRand = minDamage * (1.0 - self.damageRandomization)
+        maxDamageRand = maxDamage * (1.0 + self.damageRandomization)
+        return (
+         minDamageRand, maxDamageRand)
+
+    @property
     def hasStun(self):
         return self.stun is not None
 
@@ -430,7 +471,8 @@ class Shell(BasicItem):
         return self.kind in (
          SHELL_TYPES.ARMOR_PIERCING,
          SHELL_TYPES.ARMOR_PIERCING_HE,
-         SHELL_TYPES.ARMOR_PIERCING_CR)
+         SHELL_TYPES.ARMOR_PIERCING_CR,
+         SHELL_TYPES.ARMOR_PIERCING_FSDS)
 
 
 _TYPE_ID_TO_CLASS = {ITEM_TYPES.vehicleChassis: Chassis, 

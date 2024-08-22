@@ -28,5 +28,7 @@ package net.wg.gui.lobby.hangar.interfaces
       function get position() : Point;
       
       function set position(param1:Point) : void;
+      
+      function getMinX() : int;
    }
 }

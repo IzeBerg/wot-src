@@ -488,13 +488,16 @@ class StyleItem(BaseCustomizationItem):
 class InsigniaItem(BaseCustomizationItem):
     __metaclass__ = ReflectionMetaclass
     itemType = CustomizationType.INSIGNIA
-    __slots__ = ('atlas', 'alphabet', 'canBeMirrored')
+    __slots__ = ('atlas', 'alphabet', 'canBeMirrored', 'emissionSettings')
     allSlots = BaseCustomizationItem.__slots__ + __slots__
 
     def __init__(self, parentGroup=None):
         self.atlas = ''
         self.alphabet = ''
         self.canBeMirrored = False
+        self.emissionSettings = {'emissionMap': '', 'emissionPatternMap': '', 'forwardEmissionBrightness': DEFAULT_FORWARD_EMISSION, 
+           'deferredEmissionBrightness': DEFAULT_DEFERRED_EMISSION, 
+           'emissionAnimationSpeed': DEFAULT_EMISSION_ANIMATION_SPEED}
         super(InsigniaItem, self).__init__(parentGroup)
 
 

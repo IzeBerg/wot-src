@@ -33,8 +33,7 @@ _CHAPTER_STATES = {ChapterState.ACTIVE: ChapterStates.ACTIVE,
    ChapterState.NOT_STARTED: ChapterStates.NOTSTARTED, 
    ChapterState.DISABLED: ChapterStates.DISABLED}
 _CURRENCY_PRIORITY = (
- Currency.GOLD,
- Currency.FREE_XP)
+ Currency.GOLD,)
 
 class BattlePassBuyViewStates(object):
 

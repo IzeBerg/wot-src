@@ -8,19 +8,19 @@
 		<driver/>
 	</crew>
 	<supplySlots>5 1 1 6 6 6 7 8 8 8</supplySlots>
-	<postProgressionTree>role_HT_assault</postProgressionTree>
+	<postProgressionTree>role_XI_279</postProgressionTree>
 	<customRoleSlotOptions>2 4</customRoleSlotOptions>
 	<speedLimits>
-		<forward>35</forward>
-		<backward>15</backward>
+		<forward>55</forward>
+		<backward>20</backward>
 	</speedLimits>
 	<invisibility>
 		<moving>
-			0.157
+			0.069
 			<!--BW_String-->
 		</moving>
 		<still>
-			0.315
+			0.138
 			<!--BW_String-->
 		</still>
 		<camouflageBonus>
@@ -28,7 +28,7 @@
 			<!--BW_String-->
 		</camouflageBonus>
 		<firePenalty>
-			0.473
+			0.207
 			<!--BW_String-->
 		</firePenalty>
 	</invisibility>
@@ -72,7 +72,7 @@
 	</crewXpFactor>
 	<camouflage>
 		<priceFactor>
-			2.0
+			2.2
 			<!--BW_String-->
 		</priceFactor>
 		<density>
@@ -83,10 +83,10 @@
 	<hull>
 		<primaryArmor>armor_1 armor_3 armor_4</primaryArmor>
 		<weight>23300</weight>
-		<maxHealth>1840</maxHealth>
+		<maxHealth>2000</maxHealth>
 		<ammoBayHealth>
-			<maxHealth>210</maxHealth>
-			<maxRegenHealth>140</maxRegenHealth>
+			<maxHealth>310</maxHealth>
+			<maxRegenHealth>210</maxRegenHealth>
 			<repairCost>
 				1.0
 				<!--BW_String-->
@@ -94,14 +94,14 @@
 		</ammoBayHealth>
 		<armor>
 			<armor_1>120</armor_1>
-			<armor_2>210</armor_2>
+			<armor_2>220</armor_2>
 			<armor_3>70</armor_3>
 			<armor_4>50</armor_4>
 			<armor_5>35</armor_5>
 			<armor_6>30</armor_6>
-			<armor_7>90</armor_7>
+			<armor_7>120</armor_7>
 			<armor_8>0</armor_8>
-			<armor_9>100</armor_9>
+			<armor_9>120</armor_9>
 			<armor_10>70</armor_10>
 			<armor_11>50</armor_11>
 			<armor_12>35</armor_12>
@@ -111,6 +111,10 @@
 			<armor_16>60</armor_16>
 			<armor_17>35</armor_17>
 			<armor_18>35</armor_18>
+			<armor_20>
+				25
+				<vehicleDamageFactor>0</vehicleDamageFactor>
+			</armor_20>
 		</armor>
 		<models>
 			<undamaged>vehicles/russian/R196_Object_452K/normal/lod0/Hull.model</undamaged>
@@ -1202,9 +1206,9 @@
 		<Chassis_R196_Object_452K>
 			<userString>#ussr_vehicles:Chassis_R196_Object_452K</userString>
 			<tags/>
-			<level>10</level>
+			<level>11</level>
 			<notInShop>true</notInShop>
-			<price>82500</price>
+			<price>112500</price>
 			<weight>11000</weight>
 			<terrainResistance>
 				1.3 1.7 2.5
@@ -1215,11 +1219,11 @@
 			<rotationSpeed>30</rotationSpeed>
 			<shotDispersionFactors>
 				<vehicleMovement>
-					0.2
+					0.14
 					<!--BW_String-->
 				</vehicleMovement>
 				<vehicleRotation>
-					0.2
+					0.14
 					<!--BW_String-->
 				</vehicleRotation>
 			</shotDispersionFactors>
@@ -1227,8 +1231,8 @@
 				3.0
 				<!--BW_String-->
 			</bulkHealthFactor>
-			<maxHealth>250</maxHealth>
-			<maxRegenHealth>190</maxRegenHealth>
+			<maxHealth>350</maxHealth>
+			<maxRegenHealth>260</maxRegenHealth>
 			<repairCost>
 				5.0
 				<!--BW_String-->
@@ -2214,7 +2218,7 @@
 				</right>
 			</physicalTracks>
 			<repairTime>
-				6.85714293
+				6.85892439
 				<!--BW_String-->
 			</repairTime>
 		</Chassis_R196_Object_452K>
@@ -2223,25 +2227,25 @@
 		<Turret_1_R196_Object_452K>
 			<userString>#ussr_vehicles:Turret_1_R196_Object_452K</userString>
 			<tags/>
-			<level>10</level>
+			<level>11</level>
 			<notInShop>true</notInShop>
 			<price>66000</price>
 			<primaryArmor>armor_2 armor_3 armor_4</primaryArmor>
 			<weight>15000</weight>
-			<maxHealth>460</maxHealth>
-			<rotationSpeed>20</rotationSpeed>
+			<maxHealth>700</maxHealth>
+			<rotationSpeed>24</rotationSpeed>
 			<turretRotatorHealth>
-				<maxHealth>170</maxHealth>
-				<maxRegenHealth>85</maxRegenHealth>
+				<maxHealth>220</maxHealth>
+				<maxRegenHealth>110</maxRegenHealth>
 				<repairCost>
 					1.0
 					<!--BW_String-->
 				</repairCost>
 			</turretRotatorHealth>
-			<circularVisionRadius>390</circularVisionRadius>
+			<circularVisionRadius>410</circularVisionRadius>
 			<armor>
 				<armor_1>300</armor_1>
-				<armor_2>120</armor_2>
+				<armor_2>140</armor_2>
 				<armor_3>100</armor_3>
 				<armor_4>60</armor_4>
 				<armor_5>40</armor_5>
@@ -2255,19 +2259,25 @@
 				<armor_16>250</armor_16>
 				<armor_17>150</armor_17>
 				<armor_19>75</armor_19>
+				<armor_20>138</armor_20>
+				<armor_21>138</armor_21>
+				<armor_22>136</armor_22>
+				<armor_23>140</armor_23>
+				<armor_24>138</armor_24>
+				<armor_25>136</armor_25>
 			</armor>
 			<surveyingDeviceHealth>
-				<maxHealth>120</maxHealth>
-				<maxRegenHealth>60</maxRegenHealth>
+				<maxHealth>160</maxHealth>
+				<maxRegenHealth>80</maxRegenHealth>
 				<repairCost>
 					1.0
 					<!--BW_String-->
 				</repairCost>
 			</surveyingDeviceHealth>
 			<guns>
-				<_130mm_M_65K>
+				<_130mm_M_65K_452>
 					shared
-					<maxAmmo>30</maxAmmo>
+					<maxAmmo>36</maxAmmo>
 					<pitchLimits>
 						<minPitch>0 -20 1 -20</minPitch>
 						<maxPitch>
@@ -2276,10 +2286,13 @@
 						</maxPitch>
 					</pitchLimits>
 					<shotDispersionRadius>
-						0.4
+						0.36
 						<!--BW_String-->
 					</shotDispersionRadius>
-					<reloadTime>15</reloadTime>
+					<reloadTime>
+						12.3
+						<!--BW_String-->
+					</reloadTime>
 					<shotDispersionFactors>
 						<turretRotation>
 							0.14
@@ -2292,7 +2305,7 @@
 						</whileGunDamaged>
 					</shotDispersionFactors>
 					<aimingTime>
-						2.5
+						2.2
 						<!--BW_String-->
 					</aimingTime>
 					<invisibilityFactorAtShot>
@@ -2302,11 +2315,11 @@
 					<turretYawLimits>-180 180</turretYawLimits>
 					<armor>
 						<armor_1>
-							300
+							350
 							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_1>
 						<armor_2>
-							250
+							300
 							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_2>
 						<armor_3>
@@ -2318,7 +2331,7 @@
 							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_4>
 						<armor_6>40</armor_6>
-						<gun>50</gun>
+						<gun>60</gun>
 					</armor>
 					<customizationSlots>
 						<slot>
@@ -2358,11 +2371,11 @@
 							<slotType>insigniaOnGun</slotType>
 							<slotId>49000</slotId>
 							<rayStart>
-								0 -0.03 2.23
+								0 -0.03 1.69
 								<!--BW_String-->
 							</rayStart>
 							<rayEnd>
-								0 -0.03 2.83
+								0 -0.03 2.29
 								<!--BW_String-->
 							</rayEnd>
 							<rayUp>
@@ -2421,11 +2434,13 @@
 						-0 -0.023218 0
 						<!--BW_String-->
 					</shotOffset>
+					<effects>shot_large_APFSDS_mb</effects>
+					<reloadEffect>reload115_152</reloadEffect>
 					<camouflage>
 						<density>106.389343 106.808311</density>
 						<aoTextureSize>512 512</aoTextureSize>
 					</camouflage>
-				</_130mm_M_65K>
+				</_130mm_M_65K_452>
 			</guns>
 			<models>
 				<undamaged>vehicles/russian/R196_Object_452K/normal/lod0/Turret_01.model</undamaged>
@@ -3209,7 +3224,7 @@
 			</customization>
 			<wwturretRotatorSoundManual>tur_mech_trav</wwturretRotatorSoundManual>
 			<physicsShape>
-				1.007 0.044 1.005 0.008 0.465 0.179 0.505 0.177 0.458 0.5 0.277 0.483 0.13 0 0
+				1.007 0.044 1.04 -0.041 0.742 -0.113 0.505 0.177 0.458 0.519 0.283 0.516 0.15 0 0
 				<!--BW_String-->
 			</physicsShape>
 			<camouflage>
@@ -3219,22 +3234,22 @@
 		</Turret_1_R196_Object_452K>
 	</turrets0>
 	<engines>
-		<V_46_4>shared</V_46_4>
+		<V_46_4_452>shared</V_46_4_452>
 	</engines>
 	<fuelTanks>
 		<Large>shared</Large>
 	</fuelTanks>
 	<radios>
-		<R113K>shared</R113K>
+		<R113K_452>shared</R113K_452>
 	</radios>
 	<clientAdjustmentFactors/>
 	<physics>
 		<detailed>
 			<engines>
-				<V_46_4>
-					<smplEnginePower>750</smplEnginePower>
-					<smplFwMaxSpeed>35</smplFwMaxSpeed>
-				</V_46_4>
+				<V_46_4_452>
+					<smplEnginePower>1000</smplEnginePower>
+					<smplFwMaxSpeed>55</smplFwMaxSpeed>
+				</V_46_4_452>
 			</engines>
 			<chassis>
 				<Chassis_R196_Object_452K>

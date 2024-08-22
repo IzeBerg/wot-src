@@ -72,28 +72,28 @@ package net.wg.infrastructure.base.meta.impl
          return this.getTooltipData(param1,param2);
       }
       
-      public final function as_setup(param1:String, param2:int, param3:String, param4:Array, param5:Array, param6:Boolean, param7:Boolean, param8:Boolean, param9:Boolean) : void
+      public final function as_setup(param1:String, param2:int, param3:String, param4:Array, param5:Array, param6:Boolean, param7:Boolean) : void
       {
-         var _loc10_:Array = this._array;
+         var _loc8_:Array = this._array;
          this._array = param4;
-         var _loc11_:Array = this._array1;
+         var _loc9_:Array = this._array1;
          this._array1 = param5;
-         this.setup(param1,param2,param3,this._array,this._array1,param6,param7,param8,param9);
-         if(_loc10_)
+         this.setup(param1,param2,param3,this._array,this._array1,param6,param7);
+         if(_loc8_)
          {
-            _loc10_.splice(0,_loc10_.length);
+            _loc8_.splice(0,_loc8_.length);
          }
-         if(_loc11_)
+         if(_loc9_)
          {
-            _loc11_.splice(0,_loc11_.length);
+            _loc9_.splice(0,_loc9_.length);
          }
       }
       
-      protected function setup(param1:String, param2:int, param3:String, param4:Array, param5:Array, param6:Boolean, param7:Boolean, param8:Boolean, param9:Boolean) : void
+      protected function setup(param1:String, param2:int, param3:String, param4:Array, param5:Array, param6:Boolean, param7:Boolean) : void
       {
-         var _loc10_:String = "as_setup" + Errors.ABSTRACT_INVOKE;
-         DebugUtils.LOG_ERROR(_loc10_);
-         throw new AbstractException(_loc10_);
+         var _loc8_:String = "as_setup" + Errors.ABSTRACT_INVOKE;
+         DebugUtils.LOG_ERROR(_loc8_);
+         throw new AbstractException(_loc8_);
       }
    }
 }

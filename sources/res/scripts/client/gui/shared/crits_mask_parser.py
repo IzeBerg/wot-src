@@ -9,7 +9,6 @@ class CRIT_MASK_SUB_TYPES(CONST_CONTAINER):
 
 
 def critsParserGenerator(mask):
-    mask = mask & -257
     maskMap = {CRIT_MASK_SUB_TYPES.DESTROYED_DEVICES: (
                                              mask >> 12 & 4095, VEHICLE_DEVICE_TYPE_NAMES), 
        CRIT_MASK_SUB_TYPES.CRITICAL_DEVICES: (

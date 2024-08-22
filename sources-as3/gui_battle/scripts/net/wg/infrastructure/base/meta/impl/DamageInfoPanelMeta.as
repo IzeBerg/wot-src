@@ -25,22 +25,22 @@ package net.wg.infrastructure.base.meta.impl
          super.onDispose();
       }
       
-      public final function as_show(param1:Array, param2:int) : void
+      public final function as_show(param1:Array, param2:int, param3:Boolean) : void
       {
-         var _loc3_:Array = this._array;
+         var _loc4_:Array = this._array;
          this._array = param1;
-         this.show(this._array,param2);
-         if(_loc3_)
+         this.show(this._array,param2,param3);
+         if(_loc4_)
          {
-            _loc3_.splice(0,_loc3_.length);
+            _loc4_.splice(0,_loc4_.length);
          }
       }
       
-      protected function show(param1:Array, param2:int) : void
+      protected function show(param1:Array, param2:int, param3:Boolean) : void
       {
-         var _loc3_:String = "as_show" + Errors.ABSTRACT_INVOKE;
-         DebugUtils.LOG_ERROR(_loc3_);
-         throw new AbstractException(_loc3_);
+         var _loc4_:String = "as_show" + Errors.ABSTRACT_INVOKE;
+         DebugUtils.LOG_ERROR(_loc4_);
+         throw new AbstractException(_loc4_);
       }
    }
 }

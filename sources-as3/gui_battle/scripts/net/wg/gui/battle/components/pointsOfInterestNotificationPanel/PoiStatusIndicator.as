@@ -18,6 +18,10 @@ package net.wg.gui.battle.components.pointsOfInterestNotificationPanel
       
       private static const ICON_PREFIX_RECON:String = "recon";
       
+      private static const ICON_PREFIX_SMOKE:String = "smoke";
+      
+      private static const ICON_PREFIX_MINEFIELD:String = "minefield";
+      
       private static const HIGHLIGHT_PREFIX_PROGRESS:String = "progress";
       
       private static const HIGHLIGHT_PREFIX_COMPLETE:String = "complete";
@@ -181,11 +185,28 @@ package net.wg.gui.battle.components.pointsOfInterestNotificationPanel
       
       private function updateIconHighlight() : void
       {
+         var _loc1_:String = null;
          if(!this._data)
          {
             return;
          }
-         var _loc1_:String = this._data.type == POI_CONSTS.POI_TYPE_ARTILLERY ? ICON_PREFIX_ARTILLERY : ICON_PREFIX_RECON;
+         switch(this._data.type)
+         {
+            case POI_CONSTS.POI_TYPE_ARTILLERY:
+               _loc1_ = ICON_PREFIX_ARTILLERY;
+               break;
+            case POI_CONSTS.POI_TYPE_RECON:
+               _loc1_ = ICON_PREFIX_RECON;
+               break;
+            case POI_CONSTS.POI_TYPE_SMOKE:
+               _loc1_ = ICON_PREFIX_SMOKE;
+               break;
+            case POI_CONSTS.POI_TYPE_MINEFIELD:
+               _loc1_ = ICON_PREFIX_MINEFIELD;
+               break;
+            default:
+               _loc1_ = ICON_PREFIX_RECON;
+         }
          var _loc2_:String = HIGHLIGHT_PREFIX_PROGRESS;
          var _loc3_:uint = this._data.status;
          if(_loc3_ == POI_CONSTS.POI_STATUS_COOLDOWN)

@@ -57,8 +57,6 @@ package net.wg.data.constants
       
       public static const SPARKS_MGR:String = "net.wg.gui.components.common.SparksManager";
       
-      public static const SKILL_ITEM_VIEW_MINI:String = "SkillItemViewMiniUI";
-      
       public static const PROGRESS_ELEMENT:String = "ProgressElement_UI";
       
       public static const BOOSTER_SLOT:String = "BoosterSlotUI";
@@ -529,6 +527,18 @@ package net.wg.data.constants
       
       public static const TANK_YOH_HULL_UI:String = "TankYohHullUI";
       
+      public static const TANK_MULTITRACK_HULL_UI:String = "TankMultitrackHullUI";
+      
+      public static const TANK_MULTITRACK_PARALLEL_HULL_UI:String = "TankMultitrackParallelHullUI";
+      
+      public static const ATSPG_MULTITRACK_HULL_UI:String = "ATSPGMultitrackHullUI";
+      
+      public static const ATSPG_MULTITRACK_PARALLEL_HULL_UI:String = "ATSPGMultitrackParallelHullUI";
+      
+      public static const SPG_MULTITRACK_HULL_UI:String = "SPGMultitrackHullUI";
+      
+      public static const SPG_MULTITRACK_PARALLEL_HULL_UI:String = "SPGMultitrackParallelHullUI";
+      
       public static const SIEGE_MODE_ANIMATION_UI:String = "SiegeModeAnimationUI";
       
       public static const TURBO_SIEGE_MODE_ANIMATION_UI:String = "TurboSiegeModeAnimationUI";
@@ -578,6 +588,8 @@ package net.wg.data.constants
       public static const DIP_RADIO_DAMAGED:String = "DipRadioDamagedUI";
       
       public static const DIP_RADIO_DESTROYED:String = "DipRadioDestroyedUI";
+      
+      public static const DIP_TRACKS_NORMAL:String = "DipTracksNormalUI";
       
       public static const DIP_TRACKS_DAMAGED:String = "DipTracksDamagedUI";
       
@@ -1058,6 +1070,8 @@ package net.wg.data.constants
       public static const ARMORY_YARD_WIDGET:String = "ArmoryYardCarouselWidgetUI";
       
       public static const EARLY_ACCESS_ENTRY_POINT:String = "EarlyAccessEntryPointUI";
+      
+      public static const WINBACK_WIDGET:String = "WinbackWidget";
        
       
       public function Linkages()

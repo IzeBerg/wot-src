@@ -1234,6 +1234,18 @@ class IArmoryYardRequester(IRequester):
     def data(self):
         raise NotImplementedError
 
+    @property
+    def progressionLevel(self):
+        raise NotImplementedError
+
+    @property
+    def shopLastSeasonCompleted(self):
+        raise NotImplementedError
+
+    @property
+    def shopProductLimits(self):
+        raise NotImplementedError
+
 
 class IReferralProgramRequester(IRequester):
 

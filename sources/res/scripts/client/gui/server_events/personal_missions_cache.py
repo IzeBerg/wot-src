@@ -21,12 +21,13 @@ _EVENTS_CACHE_UPDATED = 2
 _ALL_SYNCED = _SETTINGS_SYNCED | _EVENTS_CACHE_UPDATED
 
 def vehicleRequirementsCheck(quest, invVehicles, vehGetter):
-    level = quest.getVehMinLevel()
+    minLevel = quest.getVehMinLevel()
+    maxLevel = quest.getVehMaxLevel()
     classifier = quest.getQuestClassifier()
     for vehCD in invVehicles:
         _, nationID, vehicleTypeID = vehicles.parseIntCompactDescr(vehCD)
         vehType = vehicles.g_cache.vehicle(nationID, vehicleTypeID)
-        if vehType.level >= level and classifier.matchVehicle(vehType) and not checkForTags(vehType.tags, BATTLE_MODE_VEHICLE_TAGS):
+        if minLevel <= vehType.level <= maxLevel and classifier.matchVehicle(vehType) and not checkForTags(vehType.tags, BATTLE_MODE_VEHICLE_TAGS):
             if vehGetter(vehCD).activeInNationGroup:
                 return True
 

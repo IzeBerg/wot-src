@@ -5,6 +5,7 @@ package net.wg.gui.battle.views.damagePanel.components.tankIndicator
    import net.wg.data.constants.Errors;
    import net.wg.data.constants.Values;
    import net.wg.data.constants.VehicleModules;
+   import net.wg.data.constants.VehicleTypes;
    import net.wg.data.constants.generated.BATTLE_ITEM_STATES;
    import net.wg.gui.battle.views.damagePanel.components.DamagePanelItemFrameStates;
    
@@ -42,7 +43,7 @@ package net.wg.gui.battle.views.damagePanel.components.tankIndicator
       
       public var ammoBay:DamagePanelItemFrameStates;
       
-      private var _hasYoh:Boolean = false;
+      private var _hasMultitrack:Boolean = false;
       
       private var _mainleftTrackState:String = "normal";
       
@@ -59,9 +60,9 @@ package net.wg.gui.battle.views.damagePanel.components.tankIndicator
       
       override public function setModuleState(param1:String, param2:String) : void
       {
-         if(this._hasYoh)
+         if(this._hasMultitrack)
          {
-            param2 = this.calculateYohModuleState(param1,param2);
+            param2 = this.calculateMultitrackModuleState(param1,param2);
          }
          if(VehicleModules.isLeftTrack(param1))
          {
@@ -157,20 +158,20 @@ package net.wg.gui.battle.views.damagePanel.components.tankIndicator
          this.yawChangeColor(this.rightGunConstraint,YAW_ORANGE_COLOR);
       }
       
-      public function set hasYoh(param1:Boolean) : void
+      public function setIndicatorType(param1:String) : void
       {
-         this._hasYoh = param1;
+         this._hasMultitrack = VehicleTypes.hasMultitrack(param1);
          if(this.leftTrack)
          {
-            this.leftTrack.alwaysVisible = this._hasYoh;
+            this.leftTrack.alwaysVisible = this._hasMultitrack;
          }
          if(this.rightTrack)
          {
-            this.rightTrack.alwaysVisible = this._hasYoh;
+            this.rightTrack.alwaysVisible = this._hasMultitrack;
          }
       }
       
-      private function calculateYohModuleState(param1:String, param2:String) : String
+      private function calculateMultitrackModuleState(param1:String, param2:String) : String
       {
          var _loc3_:String = Values.EMPTY_STR;
          var _loc4_:String = VehicleModules.TRACK_MAIN;

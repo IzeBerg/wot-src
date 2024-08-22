@@ -61,6 +61,7 @@ class DebutBoxesController(IDebutBoxesController):
     def onAccountBecomeNonPlayer(self):
         self.__eventsSubscriber.unsubscribeFromAllEvents()
         self.__notifier.stopNotification()
+        self.__quests = {}
 
     def fini(self):
         self.__eventsSubscriber.unsubscribeFromAllEvents()

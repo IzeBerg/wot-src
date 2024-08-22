@@ -109,21 +109,9 @@
 				0
 				<material>
 					<identifier>tank_hull_01</identifier>
-					<property>
-						selfIllumination
-						<Float>0.000000</Float>
-					</property>
-					<collisionFlags>0</collisionFlags>
 					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
 					<fx>shaders/std_effects/PBS_tank.fx</fx>
-					<property>
-						metallicGlossMap
-						<Texture>vehicles/russian/R196_Object_452K/Object_452K_proxy_GMM.dds</Texture>
-					</property>
-					<property>
-						normalMap
-						<Texture>vehicles/russian/R196_Object_452K/Object_452K_proxy_ANM.dds</Texture>
-					</property>
 					<property>
 						diffuseMap
 						<Texture>vehicles/russian/R196_Object_452K/Object_452K_proxy_AM.dds</Texture>
@@ -131,6 +119,14 @@
 					<property>
 						excludeMaskAndAOMap
 						<Texture>vehicles/russian/R196_Object_452K/Object_452K_proxy_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/russian/R196_Object_452K/Object_452K_proxy_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/russian/R196_Object_452K/Object_452K_proxy_ANM.dds</Texture>
 					</property>
 					<property>
 						colorIdMap

@@ -669,7 +669,7 @@ msgid "comp7_concentration/descr/active"
 msgstr ""
 "На следующие {colorTagOpen}%(duration)d с{colorTagClose} уменьшает разброс орудия при движении, поворотах ходовой, вращении башни и после выстрела на {colorTagOpen}%(shotDispersionFactorsBuff_1).0f/%(shotDispersionFactorsBuff_2).0f/%(shotDispersionFactorsBuff_3).0f%%{colorTagClose}.\n"
 "\n"
-"Для магазинной системы заряжания в течение действия навыка время перезарядки между выстрелами сокращается на {colorTagOpen}%(clipReloadTimeBoost_1).1f/%(clipReloadTimeBoost_2).1f/%(clipReloadTimeBoost_3).1f с{colorTagClose}."
+"Для магазинной системы заряжания в течение действия навыка время перезарядки между выстрелами сокращается на {colorTagOpen}%(clipReloadTimeBoost_1).2f/%(clipReloadTimeBoost_2).2f/%(clipReloadTimeBoost_3).2f с{colorTagClose}."
 
 msgid "comp7_concentration/name"
 msgstr "Концентрация на цели"
@@ -705,7 +705,7 @@ msgstr "Охотник за головами"
 
 msgid "comp7_juggernaut/descr/active"
 msgstr ""
-"На следующие {colorTagOpen}%(duration_1)d/%(duration_2)d/%(duration_3)d с{colorTagClose} мощность двигателя повышается на {colorTagOpen}%(enginePowerBuff)d%%{colorTagClose}, скорость ремонта модулей увеличивается на {colorTagOpen}%(repairBuff)d%%{colorTagClose}, а время оглушения снижается на {colorTagOpen}%(stunDurationResist)d%%{colorTagClose}.\n"
+"На следующие {colorTagOpen}%(duration_1)d/%(duration_2)d/%(duration_3)d с{colorTagClose} мощность двигателя повышается на {colorTagOpen}%(enginePowerBuff).0f%%{colorTagClose}, скорость ремонта модулей увеличивается на {colorTagOpen}%(repairBuff)d%%{colorTagClose}, а время оглушения снижается на {colorTagOpen}%(stunDurationResist)d%%{colorTagClose}.\n"
 "\n"
 "Попадание снаряда противника в вашу машину в течение действия навыка сокращает оставшееся время перезарядки орудия на {colorTagOpen}%(gunReloadBoost)d с{colorTagClose}."
 
@@ -739,7 +739,7 @@ msgid "comp7_redline/descr/active"
 msgstr ""
 "Через {colorTagOpen}%(delay)d с{colorTagClose} по выбранной вами области будет нанесён артудар.\n"
 "\n"
-"Поражённые цели в радиусе {colorTagOpen}%(radius_1).1f/%(radius_2).1f/%(radius_3).1f м{colorTagClose} получают {colorTagOpen}%(damage_1)d/%(damage_2)d/%(damage_3)d{colorTagClose} ед. урона и оглушаются на {colorTagOpen}%(stunDuration_1)d/%(stunDuration_2)d/%(stunDuration_3)d с{colorTagClose}."
+"Поражённые цели в радиусе {colorTagOpen}%(radius_1).0f/%(radius_2).0f/%(radius_3).0f м{colorTagClose} получают {colorTagOpen}%(damage_1)d/%(damage_2)d/%(damage_3)d{colorTagClose} ед. урона и оглушаются на {colorTagOpen}%(stunDuration_1)d/%(stunDuration_2)d/%(stunDuration_3)d с{colorTagClose}."
 
 msgid "comp7_redline/name"
 msgstr "Огневая поддержка"
@@ -759,9 +759,9 @@ msgstr "Второе дыхание"
 
 msgid "comp7_sniper/descr/active"
 msgstr ""
-"На следующие {colorTagOpen}%(duration_1)d/%(duration_2)d/%(duration_3)d с{colorTagClose} параметр орудия «Разброс на 100 м» становится равен {colorTagOpen}%(dispersionFactor).2f м{colorTagClose}.\n"
+"На следующие {colorTagOpen}%(duration_1)d/%(duration_2)d/%(duration_3)d с{colorTagClose} параметр орудия «Разброс на 100 м» становится равен {colorTagOpen}%(dispersionFactor).3f м{colorTagClose}.\n"
 "\n"
-"Если ваша машина не была обнаружена в момент выстрела, нанесённый снарядом урон увеличится на {colorTagOpen}%(damageFactors_1).0f/%(damageFactors_2).0f/%(damageFactors_3).0f%%{colorTagClose}.\n"
+"Если ваша машина не была обнаружена в момент выстрела, нанесённый снарядом урон изменится на {colorTagOpen}%(damageFactors_1).0f/%(damageFactors_2).0f/%(damageFactors_3).0f%%{colorTagClose}.\n"
 "\n"
 "Нанесение урона выстрелом с дистанции более {colorTagOpen}%(damageDistance)d м{colorTagClose} обновляет время действия навыка."
 
@@ -915,6 +915,18 @@ msgid "deluxeImprovedRotationMechanism/short_special"
 msgstr ""
 "Увеличивает скорость поворота и уменьшает разброс орудия при движении и "
 "поворотах"
+
+msgid "deluxeImprovedSights/long_special"
+msgstr ""
+"Уменьшение размера круга сведения увеличивает точность как полностью "
+"сведённого орудия, так и в процессе сведения, что позволит чаще попадать в "
+"цель."
+
+msgid "deluxeImprovedSights/name"
+msgstr "Усовершенствованный прицел"
+
+msgid "deluxeImprovedSights/short_special"
+msgstr "Уменьшает разброс орудия"
 
 msgid "deluxeTurbocharger/long_special"
 msgstr ""
@@ -1441,7 +1453,8 @@ msgstr "Уменьшает разброс орудия"
 msgid "improvedSightsBattleBooster/descr"
 msgstr ""
 "%s от размера круга сведения при установленном оборудовании «Улучшенный "
-"прицел» (любого класса) или «Трофейный прицел»."
+"прицел» (любого класса), «Трофейный прицел» или «Усовершенствованный "
+"прицел»."
 
 msgid "improvedSightsBattleBooster/gain/deluxe"
 msgstr "-2%"
@@ -1810,9 +1823,9 @@ msgstr "Даёт навык «Бесконтактная боеукладка» 
 
 msgid "poi_artillery_aoe/descr"
 msgstr ""
-"Через {colorTagOpen}3 с{colorTagClose} по выбранной вами области будет "
-"нанесён Артиллерийский удар. Поражённые цели в радиусе 25 м получают "
-"{colorTagOpen}400{colorTagClose} ед. урона и оглушаются на {colorTagOpen}10 "
+"Через {colorTagOpen}2 с{colorTagClose} по выбранной вами области будет "
+"нанесён Артиллерийский удар. Поражённые цели в радиусе 35 м получают "
+"{colorTagOpen}375{colorTagClose} ед. урона и оглушаются на {colorTagOpen}10 "
 "с{colorTagClose}."
 
 msgid "poi_artillery_aoe/longDescr"
@@ -1824,6 +1837,20 @@ msgstr "Артиллерийский удар"
 msgid "poi_artillery_aoe/shortDescr"
 msgstr "?empty?"
 
+msgid "poi_minefield/descr"
+msgstr ""
+"На следующие 25 секунд в указанной области будут размещены мины, которые при"
+" детонации повреждают технику противника и оглушают экипаж."
+
+msgid "poi_minefield/long_descr"
+msgstr "?empty?"
+
+msgid "poi_minefield/name"
+msgstr "Минное поле"
+
+msgid "poi_minefield/short_descr"
+msgstr "?empty?"
+
 msgid "poi_radar/descr"
 msgstr ""
 "При активации вся техника противника будет оставаться обнаруженной в течение"
@@ -1831,6 +1858,20 @@ msgstr ""
 
 msgid "poi_radar/name"
 msgstr "Запрос разведданных"
+
+msgid "poi_smoke/descr"
+msgstr ""
+"При активации будет создано дымовое облако на {colorTagOpen}%(duration)d "
+"с{colorTagClose}."
+
+msgid "poi_smoke/longDescr"
+msgstr "?empty?"
+
+msgid "poi_smoke/name"
+msgstr "Дымовая завеса"
+
+msgid "poi_smoke/shortDescr"
+msgstr "?empty?"
 
 msgid "qualityOil/always"
 msgstr "%(vehicleEnginePower)s к мощности двигателя. Расходуется за один бой."
@@ -2770,6 +2811,141 @@ msgid "role_SPG_pair_5_2/splitName"
 msgstr ""
 "Облегчение\n"
 "конструкции"
+
+msgid "role_XI_279_pair_4_1/name"
+msgstr "Многоосевой балансир"
+
+msgid "role_XI_279_pair_4_1/splitName"
+msgstr ""
+"Многоосевой\n"
+"балансир"
+
+msgid "role_XI_279_pair_4_2/name"
+msgstr "Двухплоскостной стабилизатор"
+
+msgid "role_XI_279_pair_4_2/splitName"
+msgstr ""
+"Двухплоскостной\n"
+"стабилизатор"
+
+msgid "role_XI_279_pair_5_1/name"
+msgstr "Единоузловой механизм заряжания"
+
+msgid "role_XI_279_pair_5_1/splitName"
+msgstr ""
+"Единоузловой\n"
+"механизм заряжания"
+
+msgid "role_XI_279_pair_5_2/name"
+msgstr "Стереоскопическая схема дальномера"
+
+msgid "role_XI_279_pair_5_2/splitName"
+msgstr ""
+"Стереоскопическая\n"
+"схема дальномера"
+
+msgid "role_XI_BZT_70_pair_4_1/name"
+msgstr "Композитный подбой"
+
+msgid "role_XI_BZT_70_pair_4_1/splitName"
+msgstr "Композитный подбой"
+
+msgid "role_XI_BZT_70_pair_4_2/name"
+msgstr "Легкосплавные агрегаты"
+
+msgid "role_XI_BZT_70_pair_4_2/splitName"
+msgstr ""
+"Легкосплавные\n"
+"агрегаты"
+
+msgid "role_XI_BZT_70_pair_5_1/name"
+msgstr "Электропривод наведения"
+
+msgid "role_XI_BZT_70_pair_5_1/splitName"
+msgstr ""
+"Электропривод\n"
+"наведения"
+
+msgid "role_XI_BZT_70_pair_5_2/name"
+msgstr "Поляризованная оптика"
+
+msgid "role_XI_BZT_70_pair_5_2/splitName"
+msgstr ""
+"Поляризованная\n"
+"оптика"
+
+msgid "role_XI_MBT_B_pair_4_1/name"
+msgstr "Повышение давления топлива"
+
+msgid "role_XI_MBT_B_pair_4_1/splitName"
+msgstr ""
+"Повышение давления\n"
+"топлива"
+
+msgid "role_XI_MBT_B_pair_4_2/name"
+msgstr "Продвинутая шумоизоляция"
+
+msgid "role_XI_MBT_B_pair_4_2/splitName"
+msgstr ""
+"Продвинутая\n"
+"шумоизоляция"
+
+msgid "role_XI_MBT_B_pair_5_1/name"
+msgstr "Улучшенная подвеска"
+
+msgid "role_XI_MBT_B_pair_5_1/splitName"
+msgstr "Улучшенная подвеска"
+
+msgid "role_XI_MBT_B_pair_5_2/name"
+msgstr "Оптико-гироскопический прибор"
+
+msgid "role_XI_MBT_B_pair_5_2/splitName"
+msgstr ""
+"Оптико-\n"
+"гироскопический\n"
+"прибор"
+
+msgid "role_XI_pair_1_1/name"
+msgstr "Траки из новых сплавов"
+
+msgid "role_XI_pair_1_1/splitName"
+msgstr ""
+"Траки из новых\n"
+"сплавов"
+
+msgid "role_XI_pair_1_2/name"
+msgstr "Гидротрансформатор"
+
+msgid "role_XI_pair_1_2/splitName"
+msgstr "Гидротрансформатор"
+
+msgid "role_XI_pair_2_1/name"
+msgstr "Эргономика боевого отделения"
+
+msgid "role_XI_pair_2_1/splitName"
+msgstr ""
+"Эргономика боевого\n"
+"отделения"
+
+msgid "role_XI_pair_2_2/name"
+msgstr "Взрывостойкая обшивка"
+
+msgid "role_XI_pair_2_2/splitName"
+msgstr "Взрывостойкая обшивка"
+
+msgid "role_XI_pair_3_1/name"
+msgstr "Пневмодосылатель"
+
+msgid "role_XI_pair_3_1/splitName"
+msgstr "Пневмодосылатель"
+
+msgid "role_XI_pair_3_2/name"
+msgstr "Электропривод наводки орудия"
+
+msgid "role_XI_pair_3_2/splitName"
+msgstr ""
+"Электропривод\n"
+"наводки орудия"
 
 msgid "role_heavyTank_pair_1_1/name"
 msgstr "Вездеходная ходовая"

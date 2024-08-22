@@ -21,6 +21,10 @@ package net.wg.data.constants.generated
       
       public static const QUEST_TYPE_MAPBOX:String = "mapboxProgression";
       
+      public static const QUEST_TYPE_EARLY_ACCESS:String = "earlyAccess";
+      
+      public static const QUEST_TYPE_ARMORY_YARD:String = "armoryYard";
+      
       public static const QUEST_GROUP_COMMON:String = "commonQuestsGroup";
       
       public static const QUEST_GROUP_MARATHON:String = "marathonQuestsGroup";

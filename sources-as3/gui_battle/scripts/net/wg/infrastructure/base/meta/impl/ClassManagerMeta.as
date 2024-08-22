@@ -405,12 +405,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.mapsTraining.views.prebattleTimer.MapsTrainingPrebattleTimer;
    import net.wg.gui.battle.mapsTraining.views.prebattleTimer.MapsTrainingPrebattleTimerBg;
    import net.wg.gui.battle.mapsTraining.views.prebattleTimer.MapsTrainingTextFieldContainer;
-   import net.wg.gui.battle.races.RacesBattlePage;
-   import net.wg.gui.battle.races.components.RacesDigitsChain;
-   import net.wg.gui.battle.races.components.RacesPreBattleTimer;
-   import net.wg.gui.battle.races.components.RacesTimerAnim;
-   import net.wg.gui.battle.races.views.RacesBattleLoading;
-   import net.wg.gui.battle.races.views.RacesHud;
    import net.wg.gui.battle.random.battleloading.renderers.RandomPlayerItemRenderer;
    import net.wg.gui.battle.random.battleloading.renderers.RandomRendererContainer;
    import net.wg.gui.battle.random.views.BattlePage;
@@ -543,6 +537,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.damageInfoPanel.DamageInfoPanel;
    import net.wg.gui.battle.views.damageInfoPanel.components.DamageItem;
    import net.wg.gui.battle.views.damageInfoPanel.components.Fire;
+   import net.wg.gui.battle.views.damageInfoPanel.components.TrackDamageItem;
    import net.wg.gui.battle.views.damagePanel.DamagePanel;
    import net.wg.gui.battle.views.damagePanel.VO.DamagePanelTooltipVO;
    import net.wg.gui.battle.views.damagePanel.VO.ItemStates;
@@ -556,6 +551,9 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.damagePanel.components.modules.ModuleRepairAnim;
    import net.wg.gui.battle.views.damagePanel.components.modules.ModuleWarningAnim;
    import net.wg.gui.battle.views.damagePanel.components.modules.ModulesCtrl;
+   import net.wg.gui.battle.views.damagePanel.components.modules.chassis.MultitrackChassisState;
+   import net.wg.gui.battle.views.damagePanel.components.modules.chassis.PartState;
+   import net.wg.gui.battle.views.damagePanel.components.modules.chassis.YohChassisState;
    import net.wg.gui.battle.views.damagePanel.components.statusIndicator.StatusArrow;
    import net.wg.gui.battle.views.damagePanel.components.stunIndicator.StunArrow;
    import net.wg.gui.battle.views.damagePanel.components.stunIndicator.StunCounter;
@@ -747,6 +745,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.minimap.components.entries.teambase.ControlPointMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.teambase.EnemyTeamBaseMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.teambase.EnemyTeamSpawnMinimapEntry;
+   import net.wg.gui.battle.views.minimap.components.entries.teambase.MinimapProgressCircle;
    import net.wg.gui.battle.views.minimap.components.entries.vehicle.MarkerTopAnimation;
    import net.wg.gui.battle.views.minimap.components.entries.vehicle.MinimapEntryLabelHelper;
    import net.wg.gui.battle.views.minimap.components.entries.vehicle.VehicleAnimationMinimapEntry;
@@ -1800,18 +1799,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_MAPSTRAINING_VIEWS_PREBATTLETIMER_MAPSTRAININGTEXTFIELDCONTAINER:Class = MapsTrainingTextFieldContainer;
       
-      public static const NET_WG_GUI_BATTLE_RACES_RACESBATTLEPAGE:Class = RacesBattlePage;
-      
-      public static const NET_WG_GUI_BATTLE_RACES_COMPONENTS_RACESDIGITSCHAIN:Class = RacesDigitsChain;
-      
-      public static const NET_WG_GUI_BATTLE_RACES_COMPONENTS_RACESPREBATTLETIMER:Class = RacesPreBattleTimer;
-      
-      public static const NET_WG_GUI_BATTLE_RACES_COMPONENTS_RACESTIMERANIM:Class = RacesTimerAnim;
-      
-      public static const NET_WG_GUI_BATTLE_RACES_VIEWS_RACESBATTLELOADING:Class = RacesBattleLoading;
-      
-      public static const NET_WG_GUI_BATTLE_RACES_VIEWS_RACESHUD:Class = RacesHud;
-      
       public static const NET_WG_GUI_BATTLE_RANDOM_BATTLELOADING_RENDERERS_RANDOMPLAYERITEMRENDERER:Class = RandomPlayerItemRenderer;
       
       public static const NET_WG_GUI_BATTLE_RANDOM_BATTLELOADING_RENDERERS_RANDOMRENDERERCONTAINER:Class = RandomRendererContainer;
@@ -2076,6 +2063,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_VIEWS_DAMAGEINFOPANEL_COMPONENTS_FIRE:Class = Fire;
       
+      public static const NET_WG_GUI_BATTLE_VIEWS_DAMAGEINFOPANEL_COMPONENTS_TRACKDAMAGEITEM:Class = TrackDamageItem;
+      
       public static const NET_WG_GUI_BATTLE_VIEWS_DAMAGEPANEL_DAMAGEPANEL:Class = DamagePanel;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_DAMAGEPANEL_COMPONENTS_DAMAGEPANELITEMCLICKAREA:Class = DamagePanelItemClickArea;
@@ -2093,6 +2082,12 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_VIEWS_DAMAGEPANEL_COMPONENTS_MODULES_MODULESCTRL:Class = ModulesCtrl;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_DAMAGEPANEL_COMPONENTS_MODULES_MODULEWARNINGANIM:Class = ModuleWarningAnim;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_DAMAGEPANEL_COMPONENTS_MODULES_CHASSIS_MULTITRACKCHASSISSTATE:Class = MultitrackChassisState;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_DAMAGEPANEL_COMPONENTS_MODULES_CHASSIS_PARTSTATE:Class = PartState;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_DAMAGEPANEL_COMPONENTS_MODULES_CHASSIS_YOHCHASSISSTATE:Class = YohChassisState;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_DAMAGEPANEL_COMPONENTS_STATUSINDICATOR_STATUSARROW:Class = StatusArrow;
       
@@ -2483,6 +2478,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_TEAMBASE_ENEMYTEAMBASEMINIMAPENTRY:Class = EnemyTeamBaseMinimapEntry;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_TEAMBASE_ENEMYTEAMSPAWNMINIMAPENTRY:Class = EnemyTeamSpawnMinimapEntry;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_TEAMBASE_MINIMAPPROGRESSCIRCLE:Class = MinimapProgressCircle;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_VEHICLE_MARKERTOPANIMATION:Class = MarkerTopAnimation;
       

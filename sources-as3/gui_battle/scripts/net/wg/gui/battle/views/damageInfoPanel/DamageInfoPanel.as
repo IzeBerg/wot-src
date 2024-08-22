@@ -5,6 +5,7 @@ package net.wg.gui.battle.views.damageInfoPanel
    import net.wg.data.constants.generated.DAMAGE_INFO_PANEL_CONSTS;
    import net.wg.gui.battle.views.damageInfoPanel.components.DamageItem;
    import net.wg.gui.battle.views.damageInfoPanel.components.Fire;
+   import net.wg.gui.battle.views.damageInfoPanel.components.TrackDamageItem;
    import net.wg.infrastructure.base.meta.IDamageInfoPanelMeta;
    import net.wg.infrastructure.base.meta.impl.DamageInfoPanelMeta;
    import net.wg.utils.IScheduler;
@@ -21,6 +22,8 @@ package net.wg.gui.battle.views.damageInfoPanel
       private static const HIDDING_STATE_ID:int = 2;
       
       private static const ITEM_WIDTH:int = 32;
+      
+      private static const MULTITRACK_ITEM_OFFSET:int = 12;
        
       
       public var fire:Fire = null;
@@ -33,9 +36,13 @@ package net.wg.gui.battle.views.damageInfoPanel
       
       public var radio:DamageItem = null;
       
-      public var leftTrack:DamageItem = null;
+      public var leftTrack:TrackDamageItem = null;
       
-      public var rightTrack:DamageItem = null;
+      public var secondLeftTrack:TrackDamageItem = null;
+      
+      public var rightTrack:TrackDamageItem = null;
+      
+      public var secondRightTrack:TrackDamageItem = null;
       
       public var gun:DamageItem = null;
       
@@ -67,11 +74,13 @@ package net.wg.gui.battle.views.damageInfoPanel
       
       private var _stateID:int = -1;
       
+      private var _hasMultitrack:Boolean = false;
+      
       public function DamageInfoPanel()
       {
          this._scheduler = App.utils.scheduler;
          super();
-         this._items = new <DamageItem>[this.gun,this.turretRotator,this.surveyingDevice,this.engine,this.fuelTank,this.radio,this.ammoBay,this.leftTrack,this.rightTrack,this.wheel,this.driver,this.firstLoader,this.secondLoader,this.firstGunner,this.secondGunner,this.firstRadioman,this.secondRadioman,this.commander];
+         this._items = new <DamageItem>[this.gun,this.turretRotator,this.surveyingDevice,this.engine,this.fuelTank,this.radio,this.ammoBay,this.leftTrack,this.secondLeftTrack,this.rightTrack,this.secondRightTrack,this.wheel,this.driver,this.firstLoader,this.secondLoader,this.firstGunner,this.secondGunner,this.firstRadioman,this.secondRadioman,this.commander];
       }
       
       override protected function configUI() : void
@@ -83,8 +92,14 @@ package net.wg.gui.battle.views.damageInfoPanel
          this.ammoBay.setBitmapData(Linkages.DIP_AMMO_BAY_DAMAGED,Linkages.DIP_AMMO_BAY_DESTROYED);
          this.fuelTank.setBitmapData(Linkages.DIP_FUEL_TANK_DAMAGED,Linkages.DIP_FUEL_TANK_DESTROYED);
          this.radio.setBitmapData(Linkages.DIP_RADIO_DAMAGED,Linkages.DIP_RADIO_DESTROYED);
+         this.leftTrack.setNormalBitmapData(Linkages.DIP_TRACKS_NORMAL);
          this.leftTrack.setBitmapData(Linkages.DIP_TRACKS_DAMAGED,Linkages.DIP_TRACKS_DESTROYED);
+         this.secondLeftTrack.setNormalBitmapData(Linkages.DIP_TRACKS_NORMAL);
+         this.secondLeftTrack.setBitmapData(Linkages.DIP_TRACKS_DAMAGED,Linkages.DIP_TRACKS_DESTROYED);
+         this.rightTrack.setNormalBitmapData(Linkages.DIP_TRACKS_NORMAL);
          this.rightTrack.setBitmapData(Linkages.DIP_TRACKS_DAMAGED,Linkages.DIP_TRACKS_DESTROYED);
+         this.secondRightTrack.setNormalBitmapData(Linkages.DIP_TRACKS_NORMAL);
+         this.secondRightTrack.setBitmapData(Linkages.DIP_TRACKS_DAMAGED,Linkages.DIP_TRACKS_DESTROYED);
          this.gun.setBitmapData(Linkages.DIP_GUN_DAMAGED,Linkages.DIP_GUN_DESTROYED);
          this.turretRotator.setBitmapData(Linkages.DIP_TURRET_ROTATOR_DAMAGED,Linkages.DIP_TURRET_ROTATOR_DESTROYED);
          this.surveyingDevice.setBitmapData(Linkages.DIP_SURVEYING_DEVICE_DAMAGED,Linkages.DIP_SURVEYING_DEVICE_DESTROYED);
@@ -133,8 +148,12 @@ package net.wg.gui.battle.views.damageInfoPanel
          this.radio = null;
          this.leftTrack.dispose();
          this.leftTrack = null;
+         this.secondLeftTrack.dispose();
+         this.secondLeftTrack = null;
          this.rightTrack.dispose();
          this.rightTrack = null;
+         this.secondRightTrack.dispose();
+         this.secondRightTrack = null;
          this.gun.dispose();
          this.gun = null;
          this.turretRotator.dispose();
@@ -164,20 +183,37 @@ package net.wg.gui.battle.views.damageInfoPanel
          super.onDispose();
       }
       
-      override protected function show(param1:Array, param2:int) : void
+      override protected function show(param1:Array, param2:int, param3:Boolean) : void
       {
-         var _loc3_:Array = null;
-         var _loc4_:DamageItem = null;
-         var _loc5_:int = 0;
+         var _loc4_:Array = null;
+         var _loc5_:DamageItem = null;
+         var _loc6_:int = 0;
+         this._hasMultitrack = param3;
          this.setActiveState();
          this.hideItems();
-         for each(_loc3_ in param1)
+         for each(_loc4_ in param1)
          {
-            _loc4_ = this._items[_loc3_[DAMAGE_INFO_PANEL_CONSTS.ITEM_ID]];
-            _loc5_ = _loc3_[DAMAGE_INFO_PANEL_CONSTS.STATE_ID];
-            if(_loc4_ != this.wheel || _loc5_ != DAMAGE_INFO_PANEL_CONSTS.DAMAGED)
+            _loc5_ = this._items[_loc4_[DAMAGE_INFO_PANEL_CONSTS.ITEM_ID]];
+            _loc6_ = _loc4_[DAMAGE_INFO_PANEL_CONSTS.STATE_ID];
+            if(_loc5_ != this.wheel || _loc6_ != DAMAGE_INFO_PANEL_CONSTS.DAMAGED)
             {
-               _loc4_.updateItem(_loc5_,false);
+               _loc5_.updateItem(_loc6_,false);
+            }
+            if(_loc5_ == this.leftTrack)
+            {
+               this.secondLeftTrack.hasForcedNormalDisplay = this._hasMultitrack;
+            }
+            if(_loc5_ == this.secondLeftTrack)
+            {
+               this.leftTrack.hasForcedNormalDisplay = this._hasMultitrack;
+            }
+            if(_loc5_ == this.rightTrack)
+            {
+               this.secondRightTrack.hasForcedNormalDisplay = this._hasMultitrack;
+            }
+            if(_loc5_ == this.secondRightTrack)
+            {
+               this.rightTrack.hasForcedNormalDisplay = this._hasMultitrack;
             }
          }
          if(param2 == DAMAGE_INFO_PANEL_CONSTS.HIDE_FIRE)
@@ -254,7 +290,14 @@ package net.wg.gui.battle.views.damageInfoPanel
       
       public function as_hideLeftTrack() : void
       {
+         this.secondLeftTrack.hasForcedNormalDisplay = false;
          this.hideItem(this.leftTrack,true);
+      }
+      
+      public function as_hideSecondLeftTrack() : void
+      {
+         this.leftTrack.hasForcedNormalDisplay = false;
+         this.hideItem(this.secondLeftTrack,true);
       }
       
       public function as_hideRadio() : void
@@ -264,7 +307,14 @@ package net.wg.gui.battle.views.damageInfoPanel
       
       public function as_hideRightTrack() : void
       {
+         this.secondRightTrack.hasForcedNormalDisplay = false;
          this.hideItem(this.rightTrack,true);
+      }
+      
+      public function as_hideSecondRightTrack() : void
+      {
+         this.rightTrack.hasForcedNormalDisplay = false;
+         this.hideItem(this.secondRightTrack,true);
       }
       
       public function as_hideSecondGunner() : void
@@ -368,8 +418,17 @@ package net.wg.gui.battle.views.damageInfoPanel
       
       public function as_updateLeftTrack(param1:int, param2:Boolean) : void
       {
+         this.secondLeftTrack.hasForcedNormalDisplay = this._hasMultitrack;
          this.setActiveState();
          this.leftTrack.updateItem(param1,param2);
+         this.updateDevicesPosition();
+      }
+      
+      public function as_updateSecondLeftTrack(param1:int, param2:Boolean) : void
+      {
+         this.leftTrack.hasForcedNormalDisplay = this._hasMultitrack;
+         this.setActiveState();
+         this.secondLeftTrack.updateItem(param1,param2);
          this.updateDevicesPosition();
       }
       
@@ -382,8 +441,17 @@ package net.wg.gui.battle.views.damageInfoPanel
       
       public function as_updateRightTrack(param1:int, param2:Boolean) : void
       {
+         this.secondRightTrack.hasForcedNormalDisplay = this._hasMultitrack;
          this.setActiveState();
          this.rightTrack.updateItem(param1,param2);
+         this.updateDevicesPosition();
+      }
+      
+      public function as_updateSecondRightTrack(param1:int, param2:Boolean) : void
+      {
+         this.rightTrack.hasForcedNormalDisplay = this._hasMultitrack;
+         this.setActiveState();
+         this.secondRightTrack.updateItem(param1,param2);
          this.updateDevicesPosition();
       }
       
@@ -495,15 +563,23 @@ package net.wg.gui.battle.views.damageInfoPanel
             _loc1_ -= ITEM_WIDTH;
             this.ammoBay.updateXPos(_loc1_);
          }
-         if(this.leftTrack.stateId)
+         if(this.leftTrack.stateId || this.leftTrack.hasForcedNormalDisplay)
          {
-            _loc1_ -= ITEM_WIDTH;
+            _loc1_ -= !!this._hasMultitrack ? ITEM_WIDTH + MULTITRACK_ITEM_OFFSET : ITEM_WIDTH;
             this.leftTrack.updateXPos(_loc1_);
          }
-         if(this.rightTrack.stateId)
+         if(this.secondLeftTrack.stateId || this.secondLeftTrack.hasForcedNormalDisplay)
+         {
+            this.secondLeftTrack.updateXPos(_loc1_ + MULTITRACK_ITEM_OFFSET);
+         }
+         if(this.rightTrack.stateId || this.rightTrack.hasForcedNormalDisplay)
          {
             _loc1_ -= ITEM_WIDTH;
             this.rightTrack.updateXPos(_loc1_);
+         }
+         if(this.secondRightTrack.stateId || this.secondRightTrack.hasForcedNormalDisplay)
+         {
+            this.secondRightTrack.updateXPos(_loc1_ - MULTITRACK_ITEM_OFFSET);
          }
       }
       
@@ -559,7 +635,13 @@ package net.wg.gui.battle.views.damageInfoPanel
          this.surveyingDevice.updateItem(DAMAGE_INFO_PANEL_CONSTS.NORMAL,false);
          this.wheel.updateItem(DAMAGE_INFO_PANEL_CONSTS.NORMAL,false);
          this.leftTrack.updateItem(DAMAGE_INFO_PANEL_CONSTS.NORMAL,false);
+         this.leftTrack.hasForcedNormalDisplay = false;
+         this.secondLeftTrack.updateItem(DAMAGE_INFO_PANEL_CONSTS.NORMAL,false);
+         this.secondLeftTrack.hasForcedNormalDisplay = false;
          this.rightTrack.updateItem(DAMAGE_INFO_PANEL_CONSTS.NORMAL,false);
+         this.rightTrack.hasForcedNormalDisplay = false;
+         this.secondRightTrack.updateItem(DAMAGE_INFO_PANEL_CONSTS.NORMAL,false);
+         this.secondRightTrack.hasForcedNormalDisplay = false;
          this.gun.updateItem(DAMAGE_INFO_PANEL_CONSTS.NORMAL,false);
          this.fuelTank.updateItem(DAMAGE_INFO_PANEL_CONSTS.NORMAL,false);
          this.radio.updateItem(DAMAGE_INFO_PANEL_CONSTS.NORMAL,false);

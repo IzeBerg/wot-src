@@ -192,6 +192,9 @@ msgstr "Нажмите, чтобы перейти к предпросмотру 
 msgid "closeBtn/label"
 msgstr "ЗАКРЫТЬ"
 
+msgid "currency/postProgression/titleCongrats"
+msgstr "Жетон Сборочного цеха"
+
 msgid "entryPoint/tooltips/active/announce"
 msgstr "C %(day)d %(month)s %(year)d г. %(time)s."
 
@@ -315,6 +318,21 @@ msgstr "Докупить этапы"
 msgid "mainView/banner/description"
 msgstr "Докупив этапы, вы мгновенно получите награды за них."
 
+msgid "mainView/banner/freeCoins/button"
+msgstr "Докупить"
+
+msgid "mainView/banner/freeCoins/description"
+msgstr "Докупив жетоны, вы сможете их обменять на уникальные товары."
+
+msgid "mainView/banner/freeCoins/title"
+msgstr "Покупка жетонов"
+
+msgid "mainView/banner/freeCoins/tooltip/body"
+msgstr "Докупив жетоны, вы сможете их обменять на уникальные товары."
+
+msgid "mainView/banner/freeCoins/tooltip/header"
+msgstr "Покупка жетонов"
+
 msgid "mainView/banner/title"
 msgstr "Этапы строительства"
 
@@ -412,28 +430,31 @@ msgid "mainView/quest/progress"
 msgstr "%(current)s %(par_open)s/ %(total)s%(par_close)s"
 
 msgid "mainView/quest/vehicleType/AT-SPG"
-msgstr "ПТ-САУ VI-X уровней"
+msgstr "ПТ-САУ VI-XI уровней"
 
 msgid "mainView/quest/vehicleType/SPG"
-msgstr "САУ VI-X уровней"
+msgstr "САУ VI-XI уровней"
 
 msgid "mainView/quest/vehicleType/any"
-msgstr "любой технике VI-X уровней"
+msgstr "любой технике VI-XI уровней"
 
 msgid "mainView/quest/vehicleType/heavyTank"
-msgstr "тяжёлых танках VI-X уровней"
+msgstr "тяжёлых танках VI-XI уровней"
 
 msgid "mainView/quest/vehicleType/label"
 msgstr "Выполняется на"
 
 msgid "mainView/quest/vehicleType/lightTank"
-msgstr "лёгких танках VI-X уровней"
+msgstr "лёгких танках VI-XI уровней"
 
 msgid "mainView/quest/vehicleType/mediumTank"
-msgstr "средних танках VI-X уровней"
+msgstr "средних танках VI-XI уровней"
 
 msgid "mainView/quests/title"
 msgstr "ЗАДАЧИ СБОРОЧНОГО ЦЕХА"
+
+msgid "mainView/shop/title"
+msgstr "МАГАЗИН СБОРОЧНОГО ЦЕХА"
 
 msgid "mainView/state/postProgression"
 msgstr "ЭТАП ДОКУПКИ"
@@ -572,6 +593,12 @@ msgstr "Списано золота: %(price)s"
 msgid "notifications/payed/single"
 msgstr "Жетон строительства (%(count)d шт.) успешно приобретён."
 
+msgid "notifications/postPayed/multiple"
+msgstr "Свободные жетоны (%(count)d шт.) успешно приобретены."
+
+msgid "notifications/postPayed/single"
+msgstr "Свободный жетон (%(count)d шт.) успешно приобретён."
+
 msgid "notifications/postProgression"
 msgstr ""
 "Задачи события больше не доступны. Недостающие этапы можно докупить на "
@@ -597,6 +624,26 @@ msgstr ""
 
 msgid "notifications/title"
 msgstr "Сборочный цех"
+
+msgid "postprogression/buyTokens/description/body"
+msgstr ""
+"Свободные жетоны используются в магазине Сборочного цеха и не участвуют в "
+"прогрессии строительства следующих сезонов."
+
+msgid "postprogression/buyTokens/description/title"
+msgstr "ОПИСАНИЕ"
+
+msgid "postprogression/buyTokens/footer/availableTokens"
+msgstr "Доступно жетонов: %(tokens)s"
+
+msgid "postprogression/buyTokens/footer/buy"
+msgstr "Купить"
+
+msgid "postprogression/buyTokens/header/available"
+msgstr "В наличии:"
+
+msgid "postprogression/buyTokens/header/title"
+msgstr "Свободный жетон"
 
 msgid "prevView/body"
 msgstr ""
@@ -634,11 +681,41 @@ msgstr "ЭТАП ПРОЙДЕН!"
 msgid "rewardsView/title/style"
 msgstr "ПОЗДРАВЛЯЕМ!"
 
+msgid "rewardsView/vehicle/button"
+msgstr "Посмотреть в Ангаре"
+
+msgid "rewardsView/vehicle/subTitle"
+msgid_plural "plural/rewardsView/subTitle"
+msgstr[0] ""
+"Вы получили премиум машину %(level) %(typeIcon) %(name) и награды за "
+"%(stages)s этап строительства."
+msgstr[1] ""
+"Вы получили премиум машину %(level) %(typeIcon) %(name) и награды за "
+"%(stages)s этапа строительства."
+msgstr[2] ""
+"Вы получили премиум машину %(level) %(typeIcon) %(name) и награды за "
+"%(stages)s этапа строительства."
+
+msgid "rewardsView/vehicle/title"
+msgstr "Спасибо за покупку!"
+
+msgid "shopRewardsView/button"
+msgstr "Так точно!"
+
+msgid "shopRewardsView/subTitle"
+msgstr "%(description): %(count)"
+
+msgid "shopRewardsView/title"
+msgstr "Спасибо за покупку"
+
 msgid "tabs/label/0"
 msgstr "Цех"
 
 msgid "tabs/label/1"
 msgstr "Задачи"
+
+msgid "tabs/label/2"
+msgstr "Магазин"
 
 msgid "tooltip/chapter/disabled/doFuture/note"
 msgstr "Станет доступна: %(startText)s"
@@ -665,21 +742,53 @@ msgstr ""
 
 msgid "tooltip/currency/description"
 msgstr ""
-"Особая валюта, доступная во время проведения события "
+"Особый ресурс, доступный во время проведения события "
 "%(whiteSpanish_open)s«Сборочный цех»%(whiteSpanish_close)s. Используется для"
 " прохождения этапов строительства."
 
+msgid "tooltip/currency/gain/currency"
+msgstr "жетоны строительства"
+
 msgid "tooltip/currency/gain/description"
 msgstr ""
-"Выполняйте задачи в главах, чтобы получать %(yellow_open)sжетоны "
-"строительства%(yellow_close)s. Учтите, что количество жетонов в каждой главе"
-" ограничено."
+"Выполняйте задачи в главах, чтобы получать "
+"%(yellow_open)s%(token)s%(yellow_close)s. Учтите, что количество жетонов в "
+"каждой главе ограничено."
 
 msgid "tooltip/currency/gain/title"
 msgstr "Как получить"
 
 msgid "tooltip/currency/info"
-msgstr "Автоматически продвигает вас по шкале прогрессии."
+msgstr "Автоматически добавляется к прогрессии."
+
+msgid "tooltip/currency/postProgression/availabilityPeriod"
+msgstr ""
+"Главы доступны: %(brown_open)sс %(startDay)d %(startMonth)s %(startYear)d г."
+" %(startTime)s до %(endDay)d %(endMonth)s %(endYear)d г. "
+"%(endTime)s%(brown_close)s"
+
+msgid "tooltip/currency/postProgression/availabilityPeriodShort"
+msgstr ""
+"Главы доступны: %(brown_open)sс %(startDay)d %(startMonth)s %(startTime)s до"
+" %(endDay)d %(endMonth)s %(endYear)d г. %(endTime)s%(brown_close)s"
+
+msgid "tooltip/currency/postProgression/description"
+msgstr ""
+"Особый ресурс, доступный во время проведения события "
+"%(whiteSpanish_open)s«Сборочный цех»%(whiteSpanish_close)s. Используется в "
+"магазине Сборочного цеха."
+
+msgid "tooltip/currency/postProgression/gain/currency"
+msgstr "свободные жетоны"
+
+msgid "tooltip/currency/postProgression/info"
+msgstr "Автоматически добавляется в Магазин."
+
+msgid "tooltip/currency/postProgression/progress"
+msgstr "%(cream_open)s%(received)s%(cream_close)s"
+
+msgid "tooltip/currency/postProgression/title"
+msgstr "Свободный жетон"
 
 msgid "tooltip/currency/progress"
 msgstr "%(cream_open)s%(received)s%(cream_close)s / %(total)s"
@@ -707,6 +816,12 @@ msgstr "Доступны: %(periodText)s"
 
 msgid "tooltip/tab/quests/noteDate"
 msgstr "%(color_open)sс %(startDate)s до %(endDate)s%(color_close)s"
+
+msgid "tooltip/tab/shop/body"
+msgstr "Используй свободные жетоны для покупки уникальных товаров."
+
+msgid "tooltip/tab/shop/header"
+msgstr "Магазин Сборочного цеха"
 
 msgid "videoRewardView/back"
 msgstr "Назад"

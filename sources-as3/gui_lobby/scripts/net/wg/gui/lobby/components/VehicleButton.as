@@ -3,12 +3,14 @@ package net.wg.gui.lobby.components
    import flash.display.MovieClip;
    import flash.display.Sprite;
    import flash.events.MouseEvent;
+   import flash.geom.ColorTransform;
    import net.wg.gui.components.controls.SoundButtonEx;
    import net.wg.gui.interfaces.ISoundButtonEx;
    import net.wg.gui.lobby.components.data.VehicleButtonVO;
    import net.wg.gui.lobby.techtree.TechTreeEvent;
    import net.wg.gui.lobby.techtree.constants.NodeEntityType;
    import net.wg.infrastructure.interfaces.IImage;
+   import net.wg.utils.ICommons;
    import scaleform.clik.constants.InvalidationType;
    import scaleform.clik.events.ButtonEvent;
    
@@ -22,6 +24,10 @@ package net.wg.gui.lobby.components
       private static const SOUND_TYPE:String = "vehicleButton";
       
       private static const ICON_BUTTON_SOUND_TYPE:String = "researchIcon";
+      
+      private static const PREMIUM_CT:ColorTransform = new ColorTransform(1,0.6,0.25);
+      
+      private static const EARLY_ACCESS_CT:ColorTransform = new ColorTransform(0.65);
       
       public static const MEDIUM_SIZE:String = "medium_";
       
@@ -42,7 +48,7 @@ package net.wg.gui.lobby.components
       
       public var premiumAnimation:MovieClip = null;
       
-      public var premiumBg:Sprite = null;
+      public var premiumBg:MovieClip = null;
       
       public var vehicleOverlay:IImage = null;
       
@@ -54,9 +60,12 @@ package net.wg.gui.lobby.components
       
       private var _hitMc:Sprite;
       
+      private var _commons:ICommons;
+      
       public function VehicleButton()
       {
          this._hitMc = new Sprite();
+         this._commons = App.utils.commons;
          super();
       }
       
@@ -110,11 +119,13 @@ package net.wg.gui.lobby.components
          this._vehData = null;
          hitArea = null;
          this._hitMc = null;
+         this._commons = null;
          super.onDispose();
       }
       
       override protected function draw() : void
       {
+         var _loc1_:ColorTransform = null;
          super.draw();
          if(_baseDisposed)
          {
@@ -126,33 +137,45 @@ package net.wg.gui.lobby.components
             this.goToVehicleViewBtn.focusable = false;
             this.goToVehicleViewBtn.addEventListener(ButtonEvent.CLICK,this.onGoToVehicleBtnClickHandler,false,0,true);
          }
-         if(this._vehData && isInvalid(InvalidationType.DATA))
+         if(this._vehData)
          {
-            this.vehicleImage.source = this._vehData.shopIconPath;
-            this._hitMc.graphics.clear();
-            this._hitMc.graphics.beginFill(16777215,0);
-            this._hitMc.graphics.drawRect(0,0,this.contentWidth,this.contentHeight);
-            this._hitMc.graphics.endFill();
-            this._hitMc.x = this.vehicleImage.x;
-            this._hitMc.y = this.vehicleImage.y;
-            this.subButtonsMode = !!this._vehData.isInInventory ? VehicleButton.COMPARE_ONLY_MODE : VehicleButton.NORMAL_MODE;
-            this.addToComparisonBtn.visible = this._vehData.compareBtnVisible;
-            if(this._vehData.compareBtnVisible)
+            if(isInvalid(InvalidationType.DATA))
             {
-               this.addToComparisonBtn.enabled = this._vehData.compareBtnEnabled;
-               this.addToComparisonBtn.label = this._vehData.compareBtnLabel;
-               this.addToComparisonBtn.tooltip = this._vehData.compareBtnTooltip;
-            }
-            if(this.goToVehicleViewBtn != null)
-            {
-               this.goToVehicleViewBtn.visible = this._vehData.goToVehicleViewBtnVisible;
-               this.goToVehicleViewBtn.enabled = this._vehData.previewBtnEnabled;
-               this.goToVehicleViewBtn.label = this._vehData.previewBtnLabel;
-            }
-            this.premiumBg.visible = this.premiumAnimation.visible = this.vehicleOverlay.visible = this._vehData.isPremium;
-            if(this.vehicleOverlay.visible)
-            {
-               this.vehicleOverlay.source = this._vehData.shopIconPath;
+               this.vehicleImage.source = this._vehData.shopIconPath;
+               this._hitMc.graphics.clear();
+               this._hitMc.graphics.beginFill(16777215,0);
+               this._hitMc.graphics.drawRect(0,0,this.contentWidth,this.contentHeight);
+               this._hitMc.graphics.endFill();
+               this._hitMc.x = this.vehicleImage.x;
+               this._hitMc.y = this.vehicleImage.y;
+               this.subButtonsMode = !!this._vehData.isInInventory ? VehicleButton.COMPARE_ONLY_MODE : VehicleButton.NORMAL_MODE;
+               this.addToComparisonBtn.visible = this._vehData.compareBtnVisible;
+               if(this._vehData.compareBtnVisible)
+               {
+                  this.addToComparisonBtn.enabled = this._vehData.compareBtnEnabled;
+                  this.addToComparisonBtn.label = this._vehData.compareBtnLabel;
+                  this.addToComparisonBtn.tooltip = this._vehData.compareBtnTooltip;
+               }
+               if(this.goToVehicleViewBtn != null)
+               {
+                  this.goToVehicleViewBtn.visible = this._vehData.goToVehicleViewBtnVisible;
+                  this.goToVehicleViewBtn.enabled = this._vehData.previewBtnEnabled;
+                  this.goToVehicleViewBtn.label = this._vehData.previewBtnLabel;
+               }
+               this.premiumBg.visible = this.premiumAnimation.visible = this.vehicleOverlay.visible = this._vehData.isPremium || this._vehData.isEarlyAccess;
+               _loc1_ = !!this._vehData.isEarlyAccess ? EARLY_ACCESS_CT : PREMIUM_CT;
+               if(this.premiumAnimation.visible)
+               {
+                  this.premiumAnimation.transform.colorTransform = _loc1_;
+               }
+               if(this.premiumBg.visible)
+               {
+                  this.premiumBg.transform.colorTransform = _loc1_;
+               }
+               if(this.vehicleOverlay.visible)
+               {
+                  this.vehicleOverlay.source = this._vehData.shopIconPath;
+               }
             }
          }
       }
@@ -214,6 +237,8 @@ package net.wg.gui.lobby.components
             return;
          }
          this._sizePrefix = param1;
+         this.premiumAnimation.gotoAndPlay(this._sizePrefix);
+         this.premiumBg.gotoAndPlay(this._sizePrefix);
          this.updatePrefixes();
       }
       
@@ -229,7 +254,7 @@ package net.wg.gui.lobby.components
       
       private function onMouseClickHandler(param1:MouseEvent) : void
       {
-         if(App.utils.commons.isRightButton(param1))
+         if(this._commons.isRightButton(param1))
          {
             this.showContextMenu();
          }
@@ -241,7 +266,7 @@ package net.wg.gui.lobby.components
       
       private function onVehicleClickHandler(param1:MouseEvent) : void
       {
-         if(App.utils.commons.isLeftButton(param1))
+         if(this._commons.isLeftButton(param1))
          {
             dispatchEvent(new TechTreeEvent(TechTreeEvent.GO_TO_VEHICLE_VIEW,null,0,NodeEntityType.RESEARCH_ROOT));
          }

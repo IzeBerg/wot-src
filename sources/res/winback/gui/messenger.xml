@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<htmlTemplatesSimple>
+		<winbackTankman>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#winback.winback:serviceChannelMessages/awards/tankman/header)&lt;/font&gt;&lt;font color=&apos;#D6D7D4&apos;&gt;_(#winback.winback:serviceChannelMessages/awards/tankman)&lt;/font&gt;</winbackTankman>
+		<winbackBoostersInvoiceReceived>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/invoiceReceived/boosters): &lt;font color=&apos;#D6D7D4&apos;&gt;%(boosters)s&lt;/font&gt;&lt;/font&gt;</winbackBoostersInvoiceReceived>
+		<winbackselectableVehicleForGift>&lt;font color=&apos;#D6D7D4&apos;&gt;_(#winback.winback:serviceChannelMessages/awards/vehicle)&lt;/font&gt;</winbackselectableVehicleForGift>
+		<winbackselectableVehicleDiscount>&lt;font color=&apos;#D6D7D4&apos;&gt;_(#winback.winback:serviceChannelMessages/awards/discount)&lt;/font&gt;</winbackselectableVehicleDiscount>
+		<winbackselectableVehicleForGiftCompensation>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#winback.winback:serviceChannelMessages/awards/compensation/header)&lt;br/&gt;_(#winback.winback:serviceChannelMessages/awards/compensation/vehicle)&lt;/font&gt;&lt;font color=&apos;#D6D7D4&apos;&gt;%(value)s&lt;/font&gt;</winbackselectableVehicleForGiftCompensation>
+		<winbackselectableVehicleDiscountCompensation>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#winback.winback:serviceChannelMessages/awards/compensation/header)&lt;br/&gt;_(#winback.winback:serviceChannelMessages/awards/compensation/discount)&lt;/font&gt;&lt;font color=&apos;#D6D7D4&apos;&gt;%(value)s&lt;/font&gt;</winbackselectableVehicleDiscountCompensation>
+		<winbackProgressionSystemMessage>&lt;font&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;font&gt;%(body)s&lt;/font&gt;&lt;br/&gt;%(awards)s</winbackProgressionSystemMessage>
+	</htmlTemplatesSimple>
+	<htmlTemplates>
+		<WinbackSelectableRewardReminder>
+			<type>gray</type>
+			<icon>polygonWinbackProgressionMessenger</icon>
+			<groupID>offer</groupID>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#winback.winback:serviceChannelMessages/selectableRewardReminder/header)&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;_(#winback.winback:serviceChannelMessages/selectableRewardReminder/body)&lt;/font&gt;</message>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#winback.winback:serviceChannelMessages/selectableRewardReminder/button)</label>
+					<action>openWinbackSelectableRewardView</action>
+				</button>
+			</buttonsLayout>
+		</WinbackSelectableRewardReminder>
+		<WinbackSelectedAward>
+			<priority>low</priority>
+			<type>grey</type>
+			<icon>polygonWinbackProgressionMessenger</icon>
+			<message>&lt;font&gt;_(#winback.winback:serviceChannelMessages/header)&lt;/font&gt;&lt;br/&gt;%(achieves)s</message>
+		</WinbackSelectedAward>
+		<VersusAIregularProgressionSystemMessageProgressionButton>
+			<type>grey</type>
+			<icon>polygonRegularProgressionMessenger</icon>
+			<priority>medium</priority>
+			<message>%(message)s</message>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#winback.winback:serviceChannelMessages/progressionButton)</label>
+					<action>showWinbackProgression</action>
+				</button>
+			</buttonsLayout>
+		</VersusAIregularProgressionSystemMessageProgressionButton>
+		<VersusAIwinbackProgressionSystemMessageProgressionButton>
+			<type>grey</type>
+			<icon>polygonWinbackProgressionMessenger</icon>
+			<priority>medium</priority>
+			<message>%(message)s</message>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#winback.winback:serviceChannelMessages/progressionButton)</label>
+					<action>showWinbackProgression</action>
+				</button>
+			</buttonsLayout>
+		</VersusAIwinbackProgressionSystemMessageProgressionButton>
+		<VersusAIwinbackProgressionSystemMessageSelectRewardButton>
+			<type>grey</type>
+			<icon>polygonWinbackProgressionMessenger</icon>
+			<priority>medium</priority>
+			<message>%(message)s</message>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#winback.winback:serviceChannelMessages/selectRewardButton)</label>
+					<action>openWinbackSelectableRewardView</action>
+				</button>
+			</buttonsLayout>
+		</VersusAIwinbackProgressionSystemMessageSelectRewardButton>
+	</htmlTemplates>
+</root>

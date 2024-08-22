@@ -316,6 +316,12 @@ package
       public static const DETAILSHELP_TRACKWITHINTRACK_TITLE:String = "#ingame_help:detailsHelp/trackWithinTrack/title";
       
       public static const DETAILSHELP_TRACKWITHINTRACK_DESCRIPTION:String = "#ingame_help:detailsHelp/trackWithinTrack/description";
+      
+      public static const DETAILSHELP_MULTITRACK_HEADERTITLE:String = "#ingame_help:detailsHelp/multiTrack/headerTitle";
+      
+      public static const DETAILSHELP_MULTITRACK_TITLE:String = "#ingame_help:detailsHelp/multiTrack/title";
+      
+      public static const DETAILSHELP_MULTITRACK_DESCRIPTION:String = "#ingame_help:detailsHelp/multiTrack/description";
        
       
       public function INGAME_HELP()

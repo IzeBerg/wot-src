@@ -18,7 +18,7 @@ package net.wg.infrastructure.base.meta
       
       function as_setPlayerInfo(param1:String, param2:String, param3:String, param4:String) : void;
       
-      function as_setup(param1:String, param2:int, param3:String, param4:Array, param5:Array, param6:Boolean, param7:Boolean, param8:Boolean, param9:Boolean) : void;
+      function as_setup(param1:String, param2:int, param3:String, param4:Array, param5:Array, param6:Boolean, param7:Boolean) : void;
       
       function as_setupWheeled(param1:int) : void;
       

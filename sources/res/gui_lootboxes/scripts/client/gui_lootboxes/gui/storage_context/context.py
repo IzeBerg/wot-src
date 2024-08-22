@@ -33,7 +33,6 @@ class ReturnPlaces(IntEnum):
     TO_NY_CUSTOMIZATION = 2
     TO_SHARDS = 3
     TO_REFERRAL = 4
-    TO_CUSTOM = 5
 
 
 def _handlerOnOpenClick(eventData):

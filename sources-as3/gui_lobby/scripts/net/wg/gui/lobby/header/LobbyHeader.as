@@ -24,7 +24,7 @@ package net.wg.gui.lobby.header
    import net.wg.gui.lobby.header.headerButtonBar.HeaderButtonsHelper;
    import net.wg.gui.lobby.header.interfaces.ILobbyHeader;
    import net.wg.gui.lobby.header.mainMenuButtonBar.MainMenuButtonBar;
-   import net.wg.gui.lobby.header.rankedBattles.SparkAnim;
+   import net.wg.gui.lobby.header.rankedBattles.SparkAnimLoader;
    import net.wg.gui.lobby.header.vo.AccountDataVo;
    import net.wg.gui.lobby.header.vo.ExtendedSquadInfoVo;
    import net.wg.gui.lobby.header.vo.HBC_AccountDataVo;
@@ -96,7 +96,7 @@ package net.wg.gui.lobby.header
       
       public var resizeBg:Sprite = null;
       
-      public var sparks:SparkAnim = null;
+      public var sparks:SparkAnimLoader = null;
       
       public var mainMenuGradient:TutorialClip = null;
       
@@ -211,7 +211,11 @@ package net.wg.gui.lobby.header
       override protected function onDispose() : void
       {
          App.stageSizeMgr.unregister(this);
-         this.sparks = null;
+         if(this.sparks)
+         {
+            this.sparks.dispose();
+            this.sparks = null;
+         }
          this._scheduler.cancelTask(this.stopReadyCoolDown);
          var _loc1_:int = this.mainMenuButtonBar.dataProvider.length;
          var _loc2_:MainMenuButton = null;
@@ -599,13 +603,16 @@ package net.wg.gui.lobby.header
             _loc11_.hasNew = param10;
             if(param8)
             {
-               this.sparks.play();
+               if(!this.sparks)
+               {
+                  this.sparks = new SparkAnimLoader();
+                  addChildAt(this.sparks,getChildIndex(this.fightBtn));
+               }
             }
-            else
+            if(this.sparks)
             {
-               this.sparks.stop();
+               this.sparks.visible = param8;
             }
-            this.sparks.visible = param8;
             this._headerButtonsHelper.invalidateDataById(HeaderButtonsHelper.ITEM_ID_BATTLE_SELECTOR);
             this.as_doDisableHeaderButton(HeaderButtonsHelper.ITEM_ID_BATTLE_SELECTOR,param3);
          }
@@ -693,8 +700,11 @@ package net.wg.gui.lobby.header
             _loc2_ = Math.min((_loc4_ - NARROW_SCREEN_SIZE) / (WIDE_SCREEN_SIZE - NARROW_SCREEN_SIZE),1);
          }
          this.headerButtonBar.updateScreen(_loc1_,_loc4_,_loc2_,_loc3_);
-         this.sparks.x = this.fightBtn.x + SPARKS_OFFSET_X;
-         this.sparks.y = this.fightBtn.y + SPARKS_OFFSET_Y;
+         if(this.sparks)
+         {
+            this.sparks.x = this.fightBtn.x + SPARKS_OFFSET_X;
+            this.sparks.y = this.fightBtn.y + SPARKS_OFFSET_Y;
+         }
          movePlatoonPopoverS(this.getSquadButtonMiddleXPosition(this._headerButtonsHelper.searchButtonById(HeaderButtonsHelper.ITEM_ID_SQUAD)));
          dispatchEvent(new LifeCycleEvent(LifeCycleEvent.ON_GRAPHICS_RECTANGLES_UPDATE));
       }

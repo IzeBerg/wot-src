@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>Cooler_Root</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>Fan_1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.562315 0.868514 -4.274897</row3>
+				</transform>
+				<node>
+					<identifier>Fan_1_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 -1.000000</row2>
+						<row3>-0.562315 -0.868514 4.274897</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>Fan_2</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.562315 0.868514 -3.840314</row3>
+				</transform>
+				<node>
+					<identifier>Fan_2_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 -1.000000</row2>
+						<row3>-0.562315 -0.868514 3.840314</row3>
+					</transform>
+				</node>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>Fan_2_BlendBone</node>
+		<node>Fan_1_BlendBone</node>
+		<geometry>
+			<vertices>hull_anim_01_Shape.vertices</vertices>
+			<primitive>hull_anim_01_Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_equipment_01_skinned</identifier>
+					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>vehicles/japan/J40_Type_71/_skins/J40_Type_71_3dst_Magnus/Type_71_3dst_Magnus_equipment_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/japan/J40_Type_71/_skins/J40_Type_71_3dst_Magnus/Type_71_3dst_Magnus_equipment_01_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/japan/J40_Type_71/_skins/J40_Type_71_3dst_Magnus/Type_71_3dst_Magnus_equipment_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/japan/J40_Type_71/_skins/J40_Type_71_3dst_Magnus/Type_71_3dst_Magnus_equipment_01_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.562315 0.877634 4.057605</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<constraints/>
+	<boundingBox>
+		<min>0.409050 0.863577 -4.429359</min>
+		<max>0.715580 0.891690 -3.685851</max>
+	</boundingBox>
+	<geometrySize>12600</geometrySize>
+	<minUVDensity>0.033812</minUVDensity>
+</root>

@@ -33,6 +33,8 @@ package
       
       public static const SEASON_NAME:String = "#comp7:season/name";
       
+      public static const SEASON_SHORTNAME:String = "#comp7:season/shortName";
+      
       public static const SEASON_RANGE:String = "#comp7:season/range";
       
       public static const SEASON_DAYSLEFT:String = "#comp7:season/daysLeft";
@@ -603,6 +605,8 @@ package
       
       public static const REWARDS_BONUS_STYLE_PROGRESS:String = "#comp7:rewards/bonus/style_progress";
       
+      public static const REWARDS_SHOPBUTTON:String = "#comp7:rewards/shopButton";
+      
       public static const MEMBERSWINDOW_MEMBERCOUNTDROPDOWN_DESCRIPTION:String = "#comp7:membersWindow/memberCountDropdown/description";
       
       public static const PLAYER_MESSAGES_EQUIPMENT_ROLESKILL_READY:String = "#comp7:player_messages/equipment/roleSkill/ready";
@@ -692,6 +696,12 @@ package
       public static const ALERTMESSAGE_TEMPORARYBAN:String = "#comp7:alertMessage/temporaryBan";
       
       public static const ALERTMESSAGE_MODEOFFLINE:String = "#comp7:alertMessage/modeOffline";
+      
+      public static const BATTLEPAGE_STATUSNOTIFICATIONTIMERS_SMOKE_ALLY:String = "#comp7:battlePage/statusNotificationTimers/smoke/ally";
+      
+      public static const BATTLEPAGE_STATUSNOTIFICATIONTIMERS_SMOKE_ENEMY:String = "#comp7:battlePage/statusNotificationTimers/smoke/enemy";
+      
+      public static const BATTLEPAGE_STATUSNOTIFICATIONTIMERS_SMOKE_ENEMYPOSTEFFECT:String = "#comp7:battlePage/statusNotificationTimers/smoke/enemyPostEffect";
       
       public static const BATTLEPAGE_STATUSNOTIFICATIONTIMERS_AOEINSPIRE_INSPIRING:String = "#comp7:battlePage/statusNotificationTimers/aoeInspire/inspiring";
       
@@ -923,9 +933,9 @@ package
       
       public static const WHATSNEWVIEW_DEPRECATEDMAPS:String = "#comp7:whatsNewView/deprecatedMaps";
       
-      public static const WHATSNEWVIEW_SLIDES_TITLE_CRIMSONSEASON:String = "#comp7:whatsNewView/slides/title/crimsonSeason";
+      public static const WHATSNEWVIEW_SLIDES_TITLE_NEWSEASON:String = "#comp7:whatsNewView/slides/title/newSeason";
       
-      public static const WHATSNEWVIEW_SLIDES_DESCRIPTION_CRIMSONSEASON:String = "#comp7:whatsNewView/slides/description/crimsonSeason";
+      public static const WHATSNEWVIEW_SLIDES_DESCRIPTION_NEWSEASON:String = "#comp7:whatsNewView/slides/description/newSeason";
       
       public static const WHATSNEWVIEW_SLIDES_TITLE_VEHICLESONMAP:String = "#comp7:whatsNewView/slides/title/vehiclesOnMap";
       

@@ -3468,6 +3468,8 @@ RECORDS = (
  (
   'singleAchievements', 'BattlePassCommonPr_14', 'p', 'B', 1),
  (
+  'singleAchievements', 'BattlePassCommonPr_15', 'p', 'B', 1),
+ (
   'singleAchievements', 'comp7_3_4', 'p', 'B', 1),
  (
   'singleAchievements', 'comp7_3_4_champion', 'p', 'B', 1),
@@ -3478,7 +3480,13 @@ RECORDS = (
  (
   'singleAchievements', 'races24FirstPlace', 'p', 'B', 1),
  (
-  'singleAchievements', 'races24Progression', 'p', 'B', 1))
+  'singleAchievements', 'races24Progression', 'p', 'B', 1),
+ (
+  'singleAchievements', 'comp7_4_1', 'p', 'B', 1),
+ (
+  'singleAchievements', 'comp7_4_1_champion', 'p', 'B', 1),
+ (
+  'singleAchievements', 'comp7_4_1_legend', 'p', 'B', 1))
 RECORD_INDICES = dict((rec[:2], idx) for idx, rec in enumerate(RECORDS))
 RECORD_DB_IDS = {('total', 'creationTime'): 68, 
    ('total', 'lastBattleTime'): 7, 
@@ -5219,7 +5227,11 @@ RECORD_DB_IDS = {('total', 'creationTime'): 68,
    ('singleAchievements', 'comp7_3_4_legend'): 31099, 
    ('singleAchievements', 'BattlePassCommonPr_14_Marathon'): 31100, 
    ('singleAchievements', 'races24FirstPlace'): 31101, 
-   ('singleAchievements', 'races24Progression'): 31102}
+   ('singleAchievements', 'races24Progression'): 31102, 
+   ('singleAchievements', 'comp7_4_1'): 31103, 
+   ('singleAchievements', 'comp7_4_1_champion'): 31104, 
+   ('singleAchievements', 'comp7_4_1_legend'): 31105, 
+   ('singleAchievements', 'BattlePassCommonPr_15'): 31106}
 DB_ID_TO_RECORD = dict([ (value, key) for key, value in RECORD_DB_IDS.iteritems() ])
 RECORD_DB_IDS.update({('vehTypeFrags', ''): 863, 
    ('a15x15Cut', ''): 864, 

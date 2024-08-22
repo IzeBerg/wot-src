@@ -162,7 +162,7 @@
 		</filter>
 		<filter>
 			<id>only_trackWithinTrack_first_5_times</id>
-			<chassisType>2</chassisType>
+			<vehProperty>isTrackWithinTrack</vehProperty>
 			<preceding>
 				<showTimes>5</showTimes>
 			</preceding>
@@ -191,6 +191,13 @@
 		<filter>
 			<id>only_assaultSPG_first_10_times</id>
 			<tags>assaultSPG</tags>
+			<preceding>
+				<showTimes>10</showTimes>
+			</preceding>
+		</filter>
+		<filter>
+			<id>only_multiTrack_first_10_times</id>
+			<vehProperty>isMultiTrack</vehProperty>
 			<preceding>
 				<showTimes>10</showTimes>
 			</preceding>
@@ -979,6 +986,12 @@
 			<filter>only_assaultSPG_first_10_times</filter>
 		</tip>
 		<tip>
+			<id>tip31010</id>
+			<status>multiTrackVehicles</status>
+			<group>multitrack</group>
+			<filter>only_multiTrack_first_10_times</filter>
+		</tip>
+		<tip>
 			<id>epicTip1</id>
 			<status>epicModeIntroduction</status>
 			<filter>max_15_battles</filter>
@@ -1202,10 +1215,6 @@
 			<status>comp715Status</status>
 		</tip>
 		<tip>
-			<id>comp716</id>
-			<status>comp716Status</status>
-		</tip>
-		<tip>
 			<id>comp717</id>
 			<status>comp717Status</status>
 		</tip>
@@ -1292,8 +1301,12 @@
 			<status>comp737Status</status>
 		</tip>
 		<tip>
-			<id>winback1</id>
-			<status>winback1Status</status>
+			<id>comp738</id>
+			<status>comp738Status</status>
+		</tip>
+		<tip>
+			<id>comp739</id>
+			<status>comp739Status</status>
 		</tip>
 		<tip>
 			<id>mapbox0</id>

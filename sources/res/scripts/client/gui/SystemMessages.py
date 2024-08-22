@@ -17,6 +17,8 @@ SM_TYPE = Enumeration('System message type', [
  'FinancialTransactionWithGold',
  'FinancialTransactionWithGoldHeader',
  'FinancialTransactionWithCredits',
+ 'FinancialTransactionWithArmoryCoinsHeader',
+ 'FinancialTransactionWithGoldAndArmoryCoinsHeader',
  'FortificationStartUp',
  'PurchaseForGold',
  'DismantlingForGold',
@@ -101,7 +103,9 @@ SM_TYPE = Enumeration('System message type', [
  'Comp7CouponReceived',
  'EarlyAccessStartEvent',
  'EarlyAccessStartChapter',
- 'EarlyAccessCommon'])
+ 'EarlyAccessCommon',
+ 'SurveyNotification',
+ 'ApplicationFormNotification'])
 CURRENCY_TO_SM_TYPE = {Currency.CREDITS: SM_TYPE.PurchaseForCredits, 
    Currency.GOLD: SM_TYPE.PurchaseForGold, 
    Currency.CRYSTAL: SM_TYPE.PurchaseForCrystal, 

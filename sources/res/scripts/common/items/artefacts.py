@@ -588,8 +588,11 @@ class ExtraHealthReserve(StaticOptionalDevice):
 
     def updateVehicleDescrAttrs(self, vehicleDescr):
         super(ExtraHealthReserve, self).updateVehicleDescrAttrs(vehicleDescr)
-        descr = vehicleDescr.chassis
-        vehicleDescr.miscAttrs['chassisHealthAfterHysteresisFactor'] = float(descr.maxHealth) / descr.maxRegenHealth
+        if not vehicleDescr.isWheeledVehicle:
+            chassisFactor = vehicleDescr.miscAttrs['chassisHealthAfterHysteresisFactor']
+            for idx, trackPair in enumerate(vehicleDescr.chassis.trackPairs):
+                healthParams = trackPair.healthParams
+                chassisFactor[idx] = float(healthParams.maxHealth) / healthParams.maxRegenHealth
 
 
 class Grousers(StaticOptionalDevice):
@@ -2351,12 +2354,12 @@ class Minefield(Equipment, TooltipConfigReader, ArcadeEquipmentConfigReader, Cou
             self.longDescription = i18n.makeString(self.longDescription, duration=int(self.mineParams.lifetime))
 
 
-class FrontLineMinefield(Equipment, TooltipConfigReader, SharedCooldownConsumableConfigReader, ArcadeEquipmentConfigReader, CooldownConsumableConfigReader):
+class _CommonMinefieldEquipment(Equipment, TooltipConfigReader, SharedCooldownConsumableConfigReader, ArcadeEquipmentConfigReader, CooldownConsumableConfigReader):
     __slots__ = ('bombsPattern', 'mineParams', 'noOwner', 'areaLength', 'areaWidth',
                  'areaVisual', 'areaColor', 'areaMarker', 'bombsNumber')
 
     def __init__(self):
-        super(FrontLineMinefield, self).__init__()
+        super(_CommonMinefieldEquipment, self).__init__()
         self.initTooltipInformation()
         self.initSharedCooldownConsumableSlots()
         self.initArcadeInformation()
@@ -2386,6 +2389,10 @@ class FrontLineMinefield(Equipment, TooltipConfigReader, SharedCooldownConsumabl
         self.readTooltipInformation(xmlCtx, section)
         self.readSharedCooldownConsumableConfig(xmlCtx, section)
         self.readArcadeInformation(xmlCtx, section)
+
+
+class FrontLineMinefield(_CommonMinefieldEquipment):
+    pass
 
 
 class ConsumableSpawnBot(Equipment, TooltipConfigReader, CountableConsumableConfigReader, AreaMarkerConfigReader, ArcadeEquipmentConfigReader):
@@ -2793,6 +2800,24 @@ class PoiArtilleryEquipment(AreaOfEffectEquipment):
             maxCount = 1
         self.maxCount = maxCount
         self.requireAssists = section.readBool('requireAssists', False)
+
+
+class PoiSmokeEquipment(ConsumableSmoke):
+    __slots__ = ('duration', )
+
+    def _readConfig(self, xmlCtx, section):
+        super(PoiSmokeEquipment, self)._readConfig(xmlCtx, section)
+        self.duration = section.readFloat('totalDuration')
+
+    @property
+    def tooltipParams(self):
+        params = super(PoiSmokeEquipment, self).tooltipParams
+        params['duration'] = self.duration
+        return params
+
+
+class PoiMineFieldEquipment(_CommonMinefieldEquipment):
+    pass
 
 
 _readTags = vehicles._readTags

@@ -322,6 +322,7 @@ UnitFullData.__new__.__defaults__ = (
                                                                                                                                                                        'maxLegionariesCount'))
 class UnitRosterSettings(object):
     TOTAL_SLOTS = 15
+    _lobbyContext = dependency.descriptor(ILobbyContext)
     __slots__ = ('_minLevel', '_maxLevel', '_maxSlots', '_maxClosedSlots', '_maxEmptySlots',
                  '_minTotalLevel', '_maxTotalLevel', '_maxLegionariesCount', '__weakref__')
 
@@ -349,8 +350,9 @@ class UnitRosterSettings(object):
         return self._maxTotalLevel
 
     def getLevelsRange(self, minLevel=-1, maxLevel=-1):
+        possibleSquadsVehicleLevels = self._lobbyContext.getServerSettings().getPossibleSquadsVehicleLevels()
         if minLevel == -1 and maxLevel == -1:
-            return range(self._minLevel, self._maxLevel + 1)
+            return list(set(possibleSquadsVehicleLevels) & set(range(self._minLevel, self._maxLevel + 1)))
         return range(minLevel, maxLevel + 1)
 
     def getAllSlotsRange(self):

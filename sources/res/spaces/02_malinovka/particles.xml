@@ -94,6 +94,7 @@
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_mleAF_002_Radiolocator.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_mleSU_83_02_OpelBlitz_1.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_smallpole.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/inf_tree_apple_fall_med.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/inf_tree_birch_fall_big.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/inf_tree_birch_fall_med.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/inf_tree_birch_touchdown_big.vfx</fn_effect_bin>
@@ -105,8 +106,6 @@
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/inf_tree_bush_dry_touchdown_big.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/inf_tree_bush_dry_touchdown_small.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/inf_tree_bush_fall_small.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/tree_Apple_8m_Classic_fall.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/tree_Apple_8m_Classic_touchdown.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/tree_Birch_Colored_bush_single_01_fall.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/tree_BrokenTree_Burned_02_fall.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/tree_BrokenTree_Burned_02_touchdown.vfx</fn_effect_bin>
@@ -126,6 +125,7 @@
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Conifers/tree_Spruce_24m_touchdown.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Conifers/tree_Spruce_8m_fall.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Conifers/tree_Spruce_8m_touchdown.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/inf_appletree_touchdown.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Sparks/sparks_env_med.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/buildings/hd_bld_SU_206_Cellar.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/buildings/hd_bld_UNI_712_LittleWoodShed.eff</fn_effect_bin>
@@ -220,6 +220,7 @@
 		<fn_effect_bin>particles/Environment/objects/inf_mleAF_002_Radiolocator.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_mleSU_83_02_OpelBlitz_1.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_smallpole.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/trees/broadleaves/inf_tree_apple_fall_med.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_birch_fall_big.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_birch_fall_med.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_birch_touchdown_big.eff</fn_effect_bin>
@@ -231,8 +232,6 @@
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_bush_dry_touchdown_big.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_bush_dry_touchdown_small.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_bush_fall_small.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/trees/Broadleaves/tree_Apple_8m_Classic_fall.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/trees/Broadleaves/tree_Apple_8m_Classic_touchdown.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/tree_Birch_Colored_bush_single_01_fall.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/tree_BrokenTree_Burned_02_fall.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/tree_BrokenTree_Burned_02_touchdown.eff</fn_effect_bin>
@@ -252,6 +251,7 @@
 		<fn_effect_bin>particles/Environment/trees/Conifers/tree_Spruce_24m_touchdown.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Conifers/tree_Spruce_8m_fall.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Conifers/tree_Spruce_8m_touchdown.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/trees/inf_appletree_touchdown.eff</fn_effect_bin>
 		<preloadVisual>particles/mesh_particles/tree_twig_01.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/tree_twig_02.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/wood_bamboo_01.visual</preloadVisual>
@@ -359,6 +359,7 @@
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_mleAF_002_Radiolocator.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_mleSU_83_02_OpelBlitz_1.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_smallpole.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/inf_tree_apple_fall_med.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/inf_tree_birch_fall_big.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/inf_tree_birch_fall_med.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/inf_tree_birch_touchdown_big.vfx</fn_effect_bin>
@@ -370,8 +371,6 @@
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/inf_tree_bush_dry_touchdown_big.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/inf_tree_bush_dry_touchdown_small.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/inf_tree_bush_fall_small.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/tree_Apple_8m_Classic_fall.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/tree_Apple_8m_Classic_touchdown.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/tree_Birch_Colored_bush_single_01_fall.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/tree_BrokenTree_Burned_02_fall.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/tree_BrokenTree_Burned_02_touchdown.vfx</fn_effect_bin>
@@ -391,6 +390,7 @@
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Conifers/tree_Spruce_24m_touchdown.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Conifers/tree_Spruce_8m_fall.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Conifers/tree_Spruce_8m_touchdown.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/inf_appletree_touchdown.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Sparks/sparks_env_med.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/buildings/hd_bld_SU_206_Cellar.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/buildings/hd_bld_UNI_712_LittleWoodShed.eff</fn_effect_bin>
@@ -485,6 +485,7 @@
 		<fn_effect_bin>particles/Environment/objects/inf_mleAF_002_Radiolocator.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_mleSU_83_02_OpelBlitz_1.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_smallpole.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/trees/broadleaves/inf_tree_apple_fall_med.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_birch_fall_big.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_birch_fall_med.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_birch_touchdown_big.eff</fn_effect_bin>
@@ -496,8 +497,6 @@
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_bush_dry_touchdown_big.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_bush_dry_touchdown_small.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_bush_fall_small.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/trees/Broadleaves/tree_Apple_8m_Classic_fall.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/trees/Broadleaves/tree_Apple_8m_Classic_touchdown.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/tree_Birch_Colored_bush_single_01_fall.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/tree_BrokenTree_Burned_02_fall.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/tree_BrokenTree_Burned_02_touchdown.eff</fn_effect_bin>
@@ -517,6 +516,7 @@
 		<fn_effect_bin>particles/Environment/trees/Conifers/tree_Spruce_24m_touchdown.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Conifers/tree_Spruce_8m_fall.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Conifers/tree_Spruce_8m_touchdown.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/trees/inf_appletree_touchdown.eff</fn_effect_bin>
 		<preloadVisual>particles/mesh_particles/tree_twig_01.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/tree_twig_02.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/wood_bamboo_01.visual</preloadVisual>

@@ -1949,6 +1949,8 @@ package
       
       public static const SERVICECHANNELMESSAGES_BATTLEPASSREWARD_BATTLE_CHAPTERFINAL_TEXT:String = "#messenger:serviceChannelMessages/battlePassReward/battle/chapterFinal/text";
       
+      public static const SERVICECHANNELMESSAGES_BATTLEPASSREWARD_BATTLE_CHAPTERFINALNOTFIND_TEXT:String = "#messenger:serviceChannelMessages/battlePassReward/battle/chapterFinalNotFind/text";
+      
       public static const SERVICECHANNELMESSAGES_BATTLEPASSREWARD_BATTLE_FINAL_ADDITIONALTEXT:String = "#messenger:serviceChannelMessages/battlePassReward/battle/final/additionalText";
       
       public static const SERVICECHANNELMESSAGES_BATTLEPASSREWARD_ACTIVATECHAPTER_TEXT:String = "#messenger:serviceChannelMessages/battlePassReward/activateChapter/text";
@@ -2393,29 +2395,7 @@ package
       
       public static const SERVICECHANNELMESSAGES_WOTPLUSINTRONOTIFICATION_BODY:String = "#messenger:serviceChannelMessages/WotPlusIntroNotification/body";
       
-      public static const SERVICECHANNELMESSAGES_WINBACKSELECTABLEREWARDENTRY_HEADER:String = "#messenger:serviceChannelMessages/winbackSelectableRewardEntry/header";
-      
-      public static const SERVICECHANNELMESSAGES_WINBACKSELECTABLEREWARDENTRY_BODY:String = "#messenger:serviceChannelMessages/winbackSelectableRewardEntry/body";
-      
-      public static const SERVICECHANNELMESSAGES_WINBACKSELECTABLEREWARDENTRY_BUTTON:String = "#messenger:serviceChannelMessages/winbackSelectableRewardEntry/button";
-      
-      public static const SERVICECHANNELMESSAGES_WINBACK_AWARDS_HEADER:String = "#messenger:serviceChannelMessages/winback/awards/header";
-      
-      public static const SERVICECHANNELMESSAGES_WINBACK_AWARDS_BODY:String = "#messenger:serviceChannelMessages/winback/awards/body";
-      
-      public static const SERVICECHANNELMESSAGES_WINBACK_AWARDS_BUTTON:String = "#messenger:serviceChannelMessages/winback/awards/button";
-      
       public static const SERVICECHANNELMESSAGES_INVOICERECEIVED_UNLOCKEDMODULES:String = "#messenger:serviceChannelMessages/invoiceReceived/unlockedModules";
-      
-      public static const SERVICECHANNELMESSAGES_WINBACK_AWARDS_VEHICLE:String = "#messenger:serviceChannelMessages/winback/awards/vehicle";
-      
-      public static const SERVICECHANNELMESSAGES_WINBACK_AWARDS_DISCOUNT:String = "#messenger:serviceChannelMessages/winback/awards/discount";
-      
-      public static const SERVICECHANNELMESSAGES_WINBACK_AWARDS_BLUEPRINTS:String = "#messenger:serviceChannelMessages/winback/awards/blueprints";
-      
-      public static const SERVICECHANNELMESSAGES_WINBACK_AWARDS_DISCOUNTCONCRETE:String = "#messenger:serviceChannelMessages/winback/awards/discountConcrete";
-      
-      public static const SERVICECHANNELMESSAGES_WINBACK_AWARDS_DISCOUNTHEADER:String = "#messenger:serviceChannelMessages/winback/awards/discountHeader";
       
       public static const SERVICECHANNELMESSAGES_FINANCIAL_ADD:String = "#messenger:serviceChannelMessages/Financial/add";
       

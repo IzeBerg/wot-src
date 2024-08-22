@@ -72,7 +72,7 @@ package net.wg.gui.components.crosshairPanel.components
                removeChild(this._currBar);
                this._currBar = null;
             }
-            if(this._clipCapacity > 1)
+            if(this._clipCapacity > 1 && this._burst != this._clipCapacity)
             {
                viewType = TYPE_LIGHT;
                mode = CrosshairClipQuantityBar.MODE_PERCENT;

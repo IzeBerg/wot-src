@@ -5,7 +5,6 @@ from gui.shared.system_factory import registerQueueEntity, collectQueueEntity
 from gui.shared.system_factory import registerEntryPoint, collectEntryPoint
 from gui.prb_control.entities.maps_training.pre_queue.entity import MapsTrainingEntryPoint, MapsTrainingEntity
 from gui.prb_control.factories.ControlFactory import ControlFactory
-from gui.prb_control.entities.winback.pre_queue.entity import WinbackEntryPoint, WinbackEntity
 from gui.prb_control.entities.base.pre_queue.entity import PreQueueEntity
 from gui.prb_control.entities.base.pre_queue.ctx import LeavePreQueueCtx
 from gui.prb_control.entities.random.pre_queue.entity import RandomEntity, RandomEntryPoint
@@ -28,7 +27,6 @@ registerQueueEntity(QUEUE_TYPE.MAPBOX, MapboxEntity)
 registerQueueEntity(QUEUE_TYPE.MAPS_TRAINING, MapsTrainingEntity)
 registerQueueEntity(QUEUE_TYPE.EVENT_BATTLES, EventBattleEntity)
 registerQueueEntity(QUEUE_TYPE.COMP7, Comp7Entity)
-registerQueueEntity(QUEUE_TYPE.WINBACK, WinbackEntity)
 registerEntryPoint(PREBATTLE_ACTION_NAME.RANDOM, RandomEntryPoint)
 registerEntryPoint(PREBATTLE_ACTION_NAME.RANKED, RankedEntryPoint)
 registerEntryPoint(PREBATTLE_ACTION_NAME.BOOTCAMP, BootcampEntryPoint)
@@ -37,8 +35,7 @@ registerEntryPoint(PREBATTLE_ACTION_NAME.MAPBOX, MapboxEntryPoint)
 registerEntryPoint(PREBATTLE_ACTION_NAME.MAPS_TRAINING, MapsTrainingEntryPoint)
 registerEntryPoint(PREBATTLE_ACTION_NAME.EVENT_BATTLE, EventBattleEntryPoint)
 registerEntryPoint(PREBATTLE_ACTION_NAME.COMP7, Comp7EntryPoint)
-registerEntryPoint(PREBATTLE_ACTION_NAME.WINBACK, WinbackEntryPoint)
-DEFAULT_QUEUE_TYPE_PRIORITIES = {QUEUE_TYPE.WINBACK: 1}
+DEFAULT_QUEUE_TYPE_PRIORITIES = {}
 
 class PreQueueFactory(ControlFactory):
 
@@ -53,7 +50,6 @@ class PreQueueFactory(ControlFactory):
         self.comp7Storage = prequeue_storage_getter(QUEUE_TYPE.COMP7)()
         self.versusAIStorage = prequeue_storage_getter(QUEUE_TYPE.VERSUS_AI)()
         self.recentPrbStorage = storage_getter(RECENT_PRB_STORAGE)()
-        self.winbackStorage = prequeue_storage_getter(QUEUE_TYPE.WINBACK)()
         self.__defaultEntityHandler = DefaultEntityHandler()
 
     def createEntry(self, ctx):

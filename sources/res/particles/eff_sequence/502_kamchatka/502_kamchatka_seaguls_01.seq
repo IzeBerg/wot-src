@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>32.000000</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>seaguls</name>
+		<type>particle</type>
+		<resource>particles/Environment/interior/502_kamchatka_seagulls_01.eff</resource>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.000000</value>
+				<inTangent>0.967742</inTangent>
+				<outTangent>0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>32.000000</startTime>
+				<value>1.000000</value>
+				<inTangent>-0.000000</inTangent>
+				<outTangent>-7.500021</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Seagulls_seq_01</name>
+		<type>sound</type>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>32.000000</duration>
+				<value>Root|</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.066667</startTime>
+				<value>3.108887 10.906224 -7.701508</value>
+				<inTangent>0.959216 -0.000001 0.526951</inTangent>
+				<outTangent>0.959216 -0.000001 0.526951</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>8.000000</startTime>
+				<value>10.718670 10.906216 -3.521027</value>
+				<inTangent>0.164895 -0.000002 0.815466</inTangent>
+				<outTangent>0.164895 -0.000002 0.815466</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>16.000000</startTime>
+				<value>5.683258 10.906188 5.310822</value>
+				<inTangent>-0.835962 -0.000002 0.341573</inTangent>
+				<outTangent>-0.835962 -0.000002 0.341573</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>23.933334</startTime>
+				<value>-2.587219 10.906187 1.972198</value>
+				<inTangent>-0.232477 0.000000 -0.819200</inTangent>
+				<outTangent>-0.232477 0.000000 -0.819200</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>32.000000</startTime>
+				<value>2.071625 10.906190 -7.849487</value>
+				<inTangent>0.577543 0.000000 -1.217564</inTangent>
+				<outTangent>0.577543 0.000000 -1.217564</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>Sound</name>
+			<type>sound</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>32.000000</duration>
+				<sequenceSound>amb_map_502_kamchatka_seagulls</sequenceSound>
+				<type>play_till_end</type>
+				<fade>0.000000</fade>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

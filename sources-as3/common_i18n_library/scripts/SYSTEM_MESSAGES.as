@@ -167,6 +167,8 @@ package
       
       public static const PREBATTLE_VEHICLEINVALID_EPICONLY:String = "#system_messages:prebattle/vehicleInvalid/epicOnly";
       
+      public static const PREBATTLE_VEHICLEINVALID_NOTSUPPORTFOR11LVL:String = "#system_messages:prebattle/vehicleInvalid/notSupportFor11lvl";
+      
       public static const PREBATTLE_VEHICLEINVALID_WILLBEUNLOCKEDINBATTLE:String = "#system_messages:prebattle/vehicleInvalid/willBeUnlockedInBattle";
       
       public static const PREBATTLE_VEHICLEINVALID_NOTSETREADYSTATUS:String = "#system_messages:prebattle/vehicleInvalid/notSetReadyStatus";
@@ -2106,6 +2108,10 @@ package
       public static const FORTIFICATION_ERRORS_DISCONNECTED_FROM_CENTER:String = "#system_messages:fortification/errors/DISCONNECTED_FROM_CENTER";
       
       public static const BUTTONS_GOTOPOLL:String = "#system_messages:buttons/goToPoll";
+      
+      public static const BUTTONS_GOTOSURVEY:String = "#system_messages:buttons/goToSurvey";
+      
+      public static const BUTTONS_GOTOAPPLICATIONFORM:String = "#system_messages:buttons/goToApplicationForm";
       
       public static const INVITE_STATUS_WRONG_CLAN:String = "#system_messages:invite/status/WRONG_CLAN";
       

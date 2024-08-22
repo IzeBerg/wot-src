@@ -592,7 +592,6 @@ class BubbleTooltipEvent(LobbySimpleEvent):
 
 class WGNCShowItemEvent(SharedEvent):
     SHOW_BASIC_WINDOW = 'wgnc/basicWindow/show'
-    SHOW_POLL_WINDOW = 'wgnc/pollWindow/show'
     CLOSE_POLL_WINDOW = 'wgnc/pollWindow/close'
 
     def __init__(self, notID, target, alias=None):
@@ -819,6 +818,7 @@ class ArmoryYardEvent(HasCtxEvent):
     STAGE_UNMUTE_SOUND = 'ayStageUnmuteSound'
     DESTROY_ARMORY_YARD_MAIN_VIEW = 'armoryYardEvents/destroyMainView'
     SHOW_ARMORY_YARD_BUY_VIEW = 'armoryYardEvents/showBuyView'
+    SHOW_ARMORY_YARD_SHOP_BUY_VIEW = 'armoryYardEvents/shopBuyView'
     POI_ACTIVATED = 'ayPoiActivated'
 
 
@@ -839,3 +839,7 @@ class HangarCrewWidgetViewEvent(HasCtxEvent):
 
 class CosmicEvent(SharedEvent):
     OPEN_COSMIC = 'openCosmic'
+
+
+class SurveyEvent(SharedEvent):
+    SURVEY_FINISHED = 'onSurveyFinished'
