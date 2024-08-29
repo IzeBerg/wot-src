@@ -23,7 +23,7 @@
 					<identifier>s_nd8</identifier>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
 					<materialKind>111</materialKind>
-					<collisionFlags>0</collisionFlags>
+					<collisionFlags>255</collisionFlags>
 					<property>
 						albedoHeightTile0
 						<Texture>content/Buildings/00_Tiles/dds/Concrete_08_Normal_03_512_AM.dds</Texture>
@@ -105,7 +105,7 @@
 					<identifier>s_nd7</identifier>
 					<fx>shaders/custom/interior_mapping.fx</fx>
 					<materialKind>111</materialKind>
-					<collisionFlags>0</collisionFlags>
+					<collisionFlags>255</collisionFlags>
 					<property>
 						g_albedoMap
 						<Texture>content/Buildings/00_Interiors/Interiors_RuinedCity_01_AM.dds</Texture>
@@ -139,7 +139,7 @@
 					<identifier>s_nd6</identifier>
 					<fx>shaders/std_effects/PBS_ext.fx</fx>
 					<materialKind>111</materialKind>
-					<collisionFlags>0</collisionFlags>
+					<collisionFlags>255</collisionFlags>
 					<property>
 						diffuseMap
 						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_Kamchatka_01_AM.dds</Texture>
@@ -173,7 +173,7 @@
 					<identifier>s_nd5</identifier>
 					<fx>shaders/std_effects/PBS_glass.fx</fx>
 					<materialKind>108</materialKind>
-					<collisionFlags>0</collisionFlags>
+					<collisionFlags>255</collisionFlags>
 					<property>
 						dirtAlbedoMap
 						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_Glass_03_AM.dds</Texture>
@@ -223,10 +223,6 @@
 					<property>
 						g_dirtColor
 						<Vector4>0.800000 0.430000 0.380000 0.250000</Vector4>
-					</property>
-					<property>
-						g_fakeShadowsAndDetailParams
-						<Vector4>0.080000 0.370000 1.000000 0.000000</Vector4>
 					</property>
 					<property>
 						g_tile0Tint
@@ -305,10 +301,6 @@
 					<property>
 						g_dirtColorParams
 						<Vector4>0.100000 0.340000 0.670000 0.000000</Vector4>
-					</property>
-					<property>
-						g_enableTerrainBlending
-						<Bool>true</Bool>
 					</property>
 					<property>
 						metallicAOTile0
@@ -459,10 +451,6 @@
 						<Vector4>0.100000 0.840000 1.000000 0.460000</Vector4>
 					</property>
 					<property>
-						g_fakeShadowsAndDetailParams
-						<Vector4>0.080000 0.370000 1.000000 0.000000</Vector4>
-					</property>
-					<property>
 						g_tile0Tint
 						<Vector4>0.749020 0.698039 0.607843 1.000000</Vector4>
 					</property>
@@ -511,7 +499,7 @@
 					<identifier>s_nd9</identifier>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
 					<materialKind>111</materialKind>
-					<collisionFlags>0</collisionFlags>
+					<collisionFlags>255</collisionFlags>
 					<property>
 						albedoHeightTile0
 						<Texture>content/Buildings/00_Tiles/dds/Concrete_07_512_AM.dds</Texture>

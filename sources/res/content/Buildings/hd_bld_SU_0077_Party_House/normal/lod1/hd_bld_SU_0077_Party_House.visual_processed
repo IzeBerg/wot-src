@@ -23,7 +23,7 @@
 					<identifier>s_nd8</identifier>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
 					<materialKind>111</materialKind>
-					<collisionFlags>0</collisionFlags>
+					<collisionFlags>255</collisionFlags>
 					<property>
 						albedoHeightTile0
 						<Texture>content/Buildings/00_Tiles/dds/Concrete_08_Normal_03_512_AM.dds</Texture>
@@ -105,7 +105,7 @@
 					<identifier>s_nd7</identifier>
 					<fx>shaders/custom/interior_mapping.fx</fx>
 					<materialKind>111</materialKind>
-					<collisionFlags>0</collisionFlags>
+					<collisionFlags>255</collisionFlags>
 					<property>
 						g_albedoMap
 						<Texture>content/Buildings/00_Interiors/Interiors_RuinedCity_01_AM.dds</Texture>
@@ -139,10 +139,10 @@
 					<identifier>s_nd6</identifier>
 					<fx>shaders/std_effects/PBS_ext.fx</fx>
 					<materialKind>111</materialKind>
-					<collisionFlags>0</collisionFlags>
+					<collisionFlags>255</collisionFlags>
 					<property>
 						alphaReference
-						<Int>100</Int>
+						<Int>86</Int>
 					</property>
 					<property>
 						alphaTestEnable
@@ -173,7 +173,7 @@
 					<identifier>s_nd5</identifier>
 					<fx>shaders/std_effects/PBS_glass.fx</fx>
 					<materialKind>108</materialKind>
-					<collisionFlags>0</collisionFlags>
+					<collisionFlags>255</collisionFlags>
 					<property>
 						dirtAlbedoMap
 						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_Glass_03_AM.dds</Texture>
@@ -195,7 +195,7 @@
 					<identifier>s_nd4</identifier>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
 					<materialKind>108</materialKind>
-					<collisionFlags>0</collisionFlags>
+					<collisionFlags>255</collisionFlags>
 					<property>
 						albedoHeightTile0
 						<Texture>content/Buildings/00_Tiles/dds/Wood_14_planks_painted_512_AM.dds</Texture>
@@ -223,10 +223,6 @@
 					<property>
 						g_dirtColor
 						<Vector4>0.800000 0.430000 0.380000 0.250000</Vector4>
-					</property>
-					<property>
-						g_fakeShadowsAndDetailParams
-						<Vector4>0.080000 0.370000 1.000000 0.000000</Vector4>
 					</property>
 					<property>
 						g_tile0Tint
@@ -273,7 +269,7 @@
 					<identifier>s_nd3</identifier>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
 					<materialKind>111</materialKind>
-					<collisionFlags>0</collisionFlags>
+					<collisionFlags>255</collisionFlags>
 					<property>
 						albedoHeightTile0
 						<Texture>content/Buildings/00_Tiles/dds/Borders_30_512_AM.dds</Texture>
@@ -305,10 +301,6 @@
 					<property>
 						g_dirtColorParams
 						<Vector4>0.100000 0.340000 0.670000 0.000000</Vector4>
-					</property>
-					<property>
-						g_enableTerrainBlending
-						<Bool>true</Bool>
 					</property>
 					<property>
 						g_tile0Tint
@@ -417,15 +409,15 @@
 						<Texture>content/Buildings/00_Tiles/dds/Plaster_10_crash_512_GBMT.dds</Texture>
 					</property>
 				</material>
-				<groupOrigin>3.321190 9.710275 0.000000</groupOrigin>
+				<groupOrigin>3.303813 9.710275 0.000000</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
 				7
 				<material>
 					<identifier>s_nd2</identifier>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
-					<materialKind>111</materialKind>
-					<collisionFlags>0</collisionFlags>
+					<materialKind>108</materialKind>
+					<collisionFlags>255</collisionFlags>
 					<property>
 						albedoHeightTile0
 						<Texture>content/Buildings/00_Tiles/dds/Blocks_13_01_512_AM.dds</Texture>
@@ -461,10 +453,6 @@
 					<property>
 						g_enableTerrainBlending
 						<Bool>true</Bool>
-					</property>
-					<property>
-						g_fakeShadowsAndDetailParams
-						<Vector4>0.080000 0.370000 1.000000 0.000000</Vector4>
 					</property>
 					<property>
 						g_tile0Tint
@@ -511,7 +499,7 @@
 					<identifier>s_nd9</identifier>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
 					<materialKind>111</materialKind>
-					<collisionFlags>0</collisionFlags>
+					<collisionFlags>255</collisionFlags>
 					<property>
 						albedoHeightTile0
 						<Texture>content/Buildings/00_Tiles/dds/Concrete_07_512_AM.dds</Texture>
@@ -660,6 +648,6 @@
 		<max>21.543953 22.756245 32.555550</max>
 	</boundingBox>
 	<customBsp>true</customBsp>
-	<geometrySize>1568480</geometrySize>
+	<geometrySize>1349416</geometrySize>
 	<minUVDensity>0.000004</minUVDensity>
 </root>

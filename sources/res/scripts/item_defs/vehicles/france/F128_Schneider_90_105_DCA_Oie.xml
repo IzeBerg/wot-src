@@ -25,13 +25,9 @@
 			<!--BW_String-->
 		</still>
 		<camouflageBonus>
-			0.03
+			0.04
 			<!--BW_String-->
 		</camouflageBonus>
-		<camouflageNetBonus>
-			0.1
-			<!--BW_String-->
-		</camouflageNetBonus>
 		<firePenalty>
 			0.420
 			<!--BW_String-->
@@ -83,6 +79,10 @@
 		<density>1.008801 1.008801</density>
 	</camouflage>
 	<hull>
+		<fakeTurrets>
+			<lobby>0</lobby>
+			<battle/>
+		</fakeTurrets>
 		<armor>
 			<armor_1>30</armor_1>
 			<armor_2>40</armor_2>
@@ -94,7 +94,7 @@
 			<armor_9>15</armor_9>
 			<armor_10>18</armor_10>
 			<armor_11>
-				30
+				20
 				<vehicleDamageFactor>0</vehicleDamageFactor>
 			</armor_11>
 			<armor_12>35</armor_12>
@@ -2601,6 +2601,7 @@
 				<armor_5>15</armor_5>
 				<armor_6>20</armor_6>
 				<armor_7>50</armor_7>
+				<armor_8>0</armor_8>
 				<armor_10>20</armor_10>
 				<armor_11>30</armor_11>
 				<armor_12>30</armor_12>
@@ -2644,7 +2645,7 @@
 							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_1>
 						<armor_2>
-							40
+							30
 							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_2>
 						<gun>55</gun>
@@ -2994,6 +2995,7 @@
 							</slaves>
 						</master>
 					</drivenJoints>
+					<edgeByVisualModel>false</edgeByVisualModel>
 					<camouflage>
 						<density>
 							99.065628 102.1623
@@ -4088,7 +4090,7 @@
 				</gun>
 			</multiGun>
 			<physicsShape>
-				0.906 -0.163 1.179 0 0.977 -0.046 0 0.453 0 0.472 0 0.5 0 0.1 0
+				0.906 -0.163 1.179 0 0.977 -0.027 0 0.453 0 0.472 0 0.5 0 0.1 0
 				<!--BW_String-->
 			</physicsShape>
 			<camouflage>

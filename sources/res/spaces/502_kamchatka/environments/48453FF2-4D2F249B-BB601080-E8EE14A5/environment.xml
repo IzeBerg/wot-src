@@ -4,24 +4,24 @@
 	<Fog>
 		<version>2.000000</version>
 		<enable>true</enable>
-		<innerBB>-500.000000 -400.000000 400.000000 500.000000</innerBB>
-		<outerBB>-620.000000 -645.000000 860.000000 650.000000</outerBB>
+		<innerBB>-500.000000 -400.000000 500.000000 500.000000</innerBB>
+		<outerBB>-695.000000 -645.000000 750.000000 650.000000</outerBB>
 		<deferred>
 			<useEdgeFog>false</useEdgeFog>
-			<color>0.380392 0.439216 0.611765 3.070000</color>
+			<color>0.517647 0.600000 0.639216 3.070000</color>
 			<density>0.002000</density>
 			<height>70.260002</height>
 			<heightFalloff>0.007000</heightFalloff>
 			<startDistance>190.000000</startDistance>
 			<scatterStart>377.119995</scatterStart>
 			<scatterExponent>2.000000</scatterExponent>
-			<scatterColor>0.909804 0.878431 0.709804 3.070000</scatterColor>
+			<scatterColor>0.784314 0.878431 0.921569 3.070000</scatterColor>
 			<skyLow>0.030000</skyLow>
 			<skyHigh>0.360000</skyHigh>
 		</deferred>
 		<forward>
 			<useEdgeFog>true</useEdgeFog>
-			<color>0.423529 0.450980 0.529412 0.000000</color>
+			<color>0.478431 0.552941 0.588235 3.070000</color>
 			<density>0.023300</density>
 			<height>-20.000000</height>
 			<heightFalloff>0.035000</heightFalloff>
@@ -37,9 +37,9 @@
 		<bloom>
 			<enable>true</enable>
 			<threshold>0.300000</threshold>
-			<amount>0.670000</amount>
+			<amount>0.100000</amount>
 			<tint>1.000000 1.000000 1.000000</tint>
-			<dirtAmount>0.870000</dirtAmount>
+			<dirtAmount>0.950000</dirtAmount>
 		</bloom>
 		<environment>
 			<sunlightLumMultiplier>30.000000</sunlightLumMultiplier>

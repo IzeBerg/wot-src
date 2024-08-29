@@ -9330,7 +9330,7 @@
 				<!--BW_String-->
 			</startRadius>
 			<expandedRadius>
-				20.
+				37.5
 				<!--BW_String-->
 			</expandedRadius>
 			<startHeight>
@@ -9384,11 +9384,15 @@
 				3.0
 				<!--BW_String-->
 			</expireDelay>
-			<areaLength>100</areaLength>
-			<areaWidth>50</areaWidth>
+			<areaLength>75</areaLength>
+			<areaWidth>75</areaWidth>
+			<areaRadius>
+				37.5
+				<!--BW_String-->
+			</areaRadius>
 			<projectilesNumber>7</projectilesNumber>
 			<shellCompactDescr>64538</shellCompactDescr>
-			<areaVisual>content/Interface/TargetPoint/SmokeScreen.visual</areaVisual>
+			<areaVisual>content/Interface/TargetPoint/TargetPoint.visual</areaVisual>
 			<noOwner>false</noOwner>
 			<shotSoundPreDelay>2</shotSoundPreDelay>
 			<wwsoundShot>eb_ability_smoke_firing</wwsoundShot>
@@ -11272,7 +11276,7 @@
 				<exports>vse</exports>
 			</cooldownSeconds>
 			<gunReloadTimeBuff>
-				0.7 0.55 0.35
+				0.7 0.5 0.3
 				<!--BW_String-->
 				<exports>vse</exports>
 			</gunReloadTimeBuff>

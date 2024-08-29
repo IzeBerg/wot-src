@@ -2803,11 +2803,12 @@ class PoiArtilleryEquipment(AreaOfEffectEquipment):
 
 
 class PoiSmokeEquipment(ConsumableSmoke):
-    __slots__ = ('duration', )
+    __slots__ = ('duration', 'areaRadius')
 
     def _readConfig(self, xmlCtx, section):
         super(PoiSmokeEquipment, self)._readConfig(xmlCtx, section)
         self.duration = section.readFloat('totalDuration')
+        self.areaRadius = section.readFloat('areaRadius')
 
     @property
     def tooltipParams(self):

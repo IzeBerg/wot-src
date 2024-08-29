@@ -10,7 +10,7 @@
 	<supplySlots>1 1 1 6 6 6 7 8 8 8</supplySlots>
 	<speedLimits>
 		<forward>30</forward>
-		<backward>12</backward>
+		<backward>14</backward>
 	</speedLimits>
 	<invisibility>
 		<moving>
@@ -1837,7 +1837,7 @@
 			</terrainResistance>
 			<brakeForce>45500</brakeForce>
 			<rotationIsAroundCenter>true</rotationIsAroundCenter>
-			<rotationSpeed>33</rotationSpeed>
+			<rotationSpeed>25</rotationSpeed>
 			<shotDispersionFactors>
 				<vehicleMovement>
 					0.26
@@ -3649,7 +3649,7 @@
 			</terrainResistance>
 			<brakeForce>45500</brakeForce>
 			<rotationIsAroundCenter>true</rotationIsAroundCenter>
-			<rotationSpeed>35</rotationSpeed>
+			<rotationSpeed>30</rotationSpeed>
 			<shotDispersionFactors>
 				<vehicleMovement>
 					0.24
@@ -5456,7 +5456,7 @@
 			<primaryArmor>armor_1 armor_3 armor_4</primaryArmor>
 			<weight>100</weight>
 			<maxHealth>100</maxHealth>
-			<rotationSpeed>44</rotationSpeed>
+			<rotationSpeed>26</rotationSpeed>
 			<turretRotatorHealth>
 				<maxHealth>100</maxHealth>
 				<maxRegenHealth>50</maxRegenHealth>
@@ -5465,7 +5465,7 @@
 					<!--BW_String-->
 				</repairCost>
 			</turretRotatorHealth>
-			<circularVisionRadius>350</circularVisionRadius>
+			<circularVisionRadius>320</circularVisionRadius>
 			<surveyingDeviceHealth>
 				<maxHealth>70</maxHealth>
 				<maxRegenHealth>35</maxRegenHealth>
@@ -5507,7 +5507,7 @@
 						<!--BW_String-->
 					</shotDispersionRadius>
 					<reloadTime>
-						4.3
+						4.7
 						<!--BW_String-->
 					</reloadTime>
 					<shotDispersionFactors>
@@ -5525,7 +5525,7 @@
 						</whileGunDamaged>
 					</shotDispersionFactors>
 					<aimingTime>
-						2.1
+						2.3
 						<!--BW_String-->
 					</aimingTime>
 					<invisibilityFactorAtShot>
@@ -5645,7 +5645,10 @@
 						0.36
 						<!--BW_String-->
 					</shotDispersionRadius>
-					<reloadTime>5</reloadTime>
+					<reloadTime>
+						5.5
+						<!--BW_String-->
+					</reloadTime>
 					<shotDispersionFactors>
 						<turretRotation>
 							0.06
@@ -5661,7 +5664,7 @@
 						</whileGunDamaged>
 					</shotDispersionFactors>
 					<aimingTime>
-						2.1
+						2.3
 						<!--BW_String-->
 					</aimingTime>
 					<invisibilityFactorAtShot>

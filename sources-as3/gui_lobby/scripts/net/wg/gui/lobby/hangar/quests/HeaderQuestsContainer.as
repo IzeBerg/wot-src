@@ -250,7 +250,7 @@ package net.wg.gui.lobby.hangar.quests
                _loc6_ = param1[_loc7_];
                _loc3_.name = _loc6_.questType;
                _loc3_.setData(_loc6_,this._isRightSide);
-               this.initQuestFlag(_loc3_,_loc7_,(_loc5_ - _loc7_) * GROUPED_FLAG_START_Y);
+               this.initQuestFlag(_loc3_,_loc7_,(_loc5_ - _loc7_) * GROUPED_FLAG_START_Y,_loc7_ == _loc5_);
                this._questsMap[_loc6_.questType] = _loc3_;
                addChild(DisplayObject(_loc3_));
                this._isAllQuestsItemsDisabled = this._isAllQuestsItemsDisabled && !_loc6_.enable;
@@ -289,40 +289,65 @@ package net.wg.gui.lobby.hangar.quests
          }
       }
       
-      private function initQuestFlag(param1:IQuestInformerButton, param2:int, param3:int = 0) : void
+      private function initQuestFlag(param1:IQuestInformerButton, param2:int, param3:int = 0, param4:Boolean = false) : void
       {
-         var _loc4_:int = 0;
          var _loc5_:int = 0;
+         var _loc6_:int = 0;
          param1.addEventListener(ButtonEvent.CLICK,this.onQuestFlagClickHandler);
          param1.addEventListener(MouseEvent.ROLL_OVER,this.onQuestFlagRollOverHandler);
          this._questsInformers.push(param1);
          if(this._isSingle)
          {
-            _loc4_ = Values.ZERO;
-            _loc5_ = Values.ZERO;
+            if(this._isRightSide)
+            {
+               _loc5_ = _loc6_ = Values.ZERO;
+            }
+            else
+            {
+               _loc5_ = _loc6_ = -HEADER_QUESTS_CONSTANTS.QUEST_BUTTONS_STEP;
+            }
          }
          else
          {
-            _loc4_ = param2 * HEADER_QUESTS_CONSTANTS.QUEST_BUTTONS_GROUP_STEP * (!!this._isRightSide ? 1 : -1);
             if(this._isRightSide)
             {
-               _loc4_ -= HEADER_QUESTS_CONSTANTS.QUEST_BUTTONS_GROUP_STEP;
+               _loc5_ = param2 * HEADER_QUESTS_CONSTANTS.QUEST_BUTTONS_GROUP_STEP;
             }
-            _loc5_ = param2 * HEADER_QUESTS_CONSTANTS.QUEST_BUTTONS_STEP * (!!this._isRightSide ? 1 : -1);
-            if(!this._isRightSide)
+            else
             {
-               _loc5_ += HEADER_QUESTS_CONSTANTS.QUEST_BUTTONS_STEP - HEADER_QUESTS_CONSTANTS.QUEST_BUTTONS_GROUP_STEP * 2;
+               _loc5_ = -HEADER_QUESTS_CONSTANTS.QUEST_BUTTONS_STEP - param2 * HEADER_QUESTS_CONSTANTS.QUEST_BUTTONS_GROUP_STEP;
+            }
+            _loc6_ = (param2 + (!!this._isRightSide ? 0 : 1)) * HEADER_QUESTS_CONSTANTS.QUEST_BUTTONS_STEP * (!!this._isRightSide ? 1 : -1);
+            if(!param4)
+            {
+               this.addMask(param1,_loc5_);
             }
             param1.hideContent(true,0);
          }
-         param1.x = _loc4_;
+         param1.x = _loc5_;
          param1.y = param3;
-         param1.setCollapsePoint(_loc4_,param3);
-         param1.setExpandPoint(_loc5_,Values.ZERO);
-         if(this._minContainerX > _loc5_)
+         param1.setCollapsePoint(_loc5_,param3);
+         param1.setExpandPoint(_loc6_,Values.ZERO);
+         if(this._minContainerX > _loc6_)
          {
-            this._minContainerX = _loc5_;
+            this._minContainerX = _loc6_;
          }
+      }
+      
+      private function addMask(param1:IQuestInformerButton, param2:int) : void
+      {
+         this._maskMc = App.utils.classFactory.getComponent(Aliases.HEADER_QUEST_FLAG_MASK,Sprite);
+         this._maskMc.x = param2;
+         if(this._isRightSide)
+         {
+            this._maskMc.x += HEADER_QUESTS_CONSTANTS.QUEST_BUTTONS_GROUP_STEP - this._maskMc.width;
+         }
+         else
+         {
+            this._maskMc.x += HEADER_QUESTS_CONSTANTS.QUEST_BUTTONS_MASK_X_SHIFT_COLLAPSE;
+         }
+         addChild(this._maskMc);
+         param1.mask = this._maskMc;
       }
       
       private function getQuestInformerByType(param1:String) : IQuestInformerButton

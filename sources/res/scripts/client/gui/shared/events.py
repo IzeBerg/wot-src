@@ -700,6 +700,7 @@ class BattlePassEvent(HasCtxEvent):
     ON_PURCHASE_LEVELS = 'onPurchaseLevels'
     ON_PREVIEW_PROGRESSION_STYLE_CLOSE = 'onPreviewProgressionStyleClose'
     VIDEO_SHOWN = 'videoShown'
+    SHOW_BATTLE_PASS_AWARDS_VIDEO = 'showBattlePassAwardsVideo'
 
 
 class ItemRemovalByDemountKitEvent(HasCtxEvent):

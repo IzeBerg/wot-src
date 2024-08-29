@@ -5929,30 +5929,23 @@
 		<imgName>improvedSelfRepairingTracks</imgName>
 		<modifiers>
 			<mul>
-				<name>miscAttrs/chassisHealthFactor</name>
-				<value>
-					1.2
-					<!--BW_String-->
-				</value>
-			</mul>
-			<mul>
 				<name>miscAttrs/ammoBayHealthFactor</name>
 				<value>
-					1.35
+					1.3
 					<!--BW_String-->
 				</value>
 			</mul>
 			<mul>
 				<name>miscAttrs/fuelTankHealthFactor</name>
 				<value>
-					1.35
+					1.3
 					<!--BW_String-->
 				</value>
 			</mul>
 			<mul>
 				<name>miscAttrs/engineHealthFactor</name>
 				<value>
-					1.35
+					1.3
 					<!--BW_String-->
 				</value>
 			</mul>
@@ -5964,32 +5957,25 @@
 				</value>
 			</mul>
 			<mul>
-				<name>miscAttrs/rollingFrictionFactor</name>
+				<name>miscAttrs/gun/shotDispersionFactors/turretRotation</name>
 				<value>
-					1.176
+					1.12
 					<!--BW_String-->
 				</value>
 			</mul>
 			<mul>
-				<name>miscAttrs/enginePowerFactor</name>
+				<name>miscAttrs/turretRotationSpeed</name>
 				<value>
-					0.9
+					0.88
 					<!--BW_String-->
 				</value>
 			</mul>
 		</modifiers>
 		<kpi>
 			<mul>
-				<name>vehicleChassisStrength</name>
-				<value>
-					1.2
-					<!--BW_String-->
-				</value>
-			</mul>
-			<mul>
 				<name>vehicleAmmoBayEngineFuelStrength</name>
 				<value>
-					1.35
+					1.3
 					<!--BW_String-->
 				</value>
 			</mul>
@@ -6001,16 +5987,16 @@
 				</value>
 			</mul>
 			<mul>
-				<name>vehicleSpeedGain</name>
+				<name>vehicleGunShotDispersionTurretRotation</name>
 				<value>
-					0.85
+					1.12
 					<!--BW_String-->
 				</value>
 			</mul>
 			<mul>
-				<name>vehicleEnginePower</name>
+				<name>vehicleTurretOrCuttingRotationSpeed</name>
 				<value>
-					0.9
+					0.88
 					<!--BW_String-->
 				</value>
 			</mul>
@@ -6021,44 +6007,37 @@
 		<imgName>improvedEnginePower</imgName>
 		<modifiers>
 			<mul>
-				<name>miscAttrs/rollingFrictionFactor</name>
+				<name>miscAttrs/gun/shotDispersionFactors/turretRotation</name>
 				<value>
-					0.87
+					0.88
 					<!--BW_String-->
 				</value>
 			</mul>
 			<mul>
-				<name>miscAttrs/enginePowerFactor</name>
+				<name>miscAttrs/turretRotationSpeed</name>
 				<value>
-					1.10
-					<!--BW_String-->
-				</value>
-			</mul>
-			<mul>
-				<name>miscAttrs/chassisHealthFactor</name>
-				<value>
-					0.8
+					1.12
 					<!--BW_String-->
 				</value>
 			</mul>
 			<mul>
 				<name>miscAttrs/ammoBayHealthFactor</name>
 				<value>
-					0.65
+					0.7
 					<!--BW_String-->
 				</value>
 			</mul>
 			<mul>
 				<name>miscAttrs/fuelTankHealthFactor</name>
 				<value>
-					0.65
+					0.7
 					<!--BW_String-->
 				</value>
 			</mul>
 			<mul>
 				<name>miscAttrs/engineHealthFactor</name>
 				<value>
-					0.65
+					0.7
 					<!--BW_String-->
 				</value>
 			</mul>
@@ -6072,30 +6051,23 @@
 		</modifiers>
 		<kpi>
 			<mul>
-				<name>vehicleSpeedGain</name>
+				<name>vehicleGunShotDispersionTurretRotation</name>
 				<value>
-					1.15
+					0.88
 					<!--BW_String-->
 				</value>
 			</mul>
 			<mul>
-				<name>vehicleEnginePower</name>
+				<name>vehicleTurretOrCuttingRotationSpeed</name>
 				<value>
-					1.10
-					<!--BW_String-->
-				</value>
-			</mul>
-			<mul>
-				<name>vehicleChassisStrength</name>
-				<value>
-					0.8
+					1.12
 					<!--BW_String-->
 				</value>
 			</mul>
 			<mul>
 				<name>vehicleAmmoBayEngineFuelStrength</name>
 				<value>
-					0.65
+					0.7
 					<!--BW_String-->
 				</value>
 			</mul>
@@ -6112,30 +6084,54 @@
 		<id>7021</id>
 		<imgName>improvedSpallingResistance</imgName>
 		<modifiers>
-			<add>
-				<name>miscAttrs/crewLevelIncrease</name>
-				<value>5</value>
-			</add>
 			<mul>
-				<name>miscAttrs/healthFactor</name>
+				<name>miscAttrs/chassisHealthFactor</name>
 				<value>
-					0.92
+					1.25
+					<!--BW_String-->
+				</value>
+			</mul>
+			<mul>
+				<name>miscAttrs/onStillRotationSpeedFactor</name>
+				<value>
+					1.12
+					<!--BW_String-->
+				</value>
+			</mul>
+			<mul>
+				<name>miscAttrs/onMoveRotationSpeedFactor</name>
+				<value>
+					1.12
+					<!--BW_String-->
+				</value>
+			</mul>
+			<mul>
+				<name>miscAttrs/gunAimingTimeFactor</name>
+				<value>
+					1.15
 					<!--BW_String-->
 				</value>
 			</mul>
 		</modifiers>
 		<kpi>
 			<mul>
-				<name>crewLevel</name>
+				<name>vehicleChassisStrength</name>
 				<value>
-					1.05
+					1.25
 					<!--BW_String-->
 				</value>
 			</mul>
 			<mul>
-				<name>vehicleStrength</name>
+				<name>vehicleAllGroundRotationSpeed</name>
 				<value>
-					0.92
+					1.12
+					<!--BW_String-->
+				</value>
+			</mul>
+			<mul>
+				<name>vehicleGunAimSpeed</name>
+				<value>
+					0.85
 					<!--BW_String-->
 				</value>
 			</mul>
@@ -6146,29 +6142,53 @@
 		<imgName>increasedThickness</imgName>
 		<modifiers>
 			<mul>
-				<name>miscAttrs/healthFactor</name>
+				<name>miscAttrs/gunAimingTimeFactor</name>
 				<value>
-					1.08
+					0.85
 					<!--BW_String-->
 				</value>
 			</mul>
-			<add>
-				<name>miscAttrs/crewLevelIncrease</name>
-				<value>-5</value>
-			</add>
+			<mul>
+				<name>miscAttrs/chassisHealthFactor</name>
+				<value>
+					0.75
+					<!--BW_String-->
+				</value>
+			</mul>
+			<mul>
+				<name>miscAttrs/onStillRotationSpeedFactor</name>
+				<value>
+					0.88
+					<!--BW_String-->
+				</value>
+			</mul>
+			<mul>
+				<name>miscAttrs/onMoveRotationSpeedFactor</name>
+				<value>
+					0.88
+					<!--BW_String-->
+				</value>
+			</mul>
 		</modifiers>
 		<kpi>
 			<mul>
-				<name>vehicleStrength</name>
+				<name>vehicleGunAimSpeed</name>
 				<value>
-					1.08
+					1.15
 					<!--BW_String-->
 				</value>
 			</mul>
 			<mul>
-				<name>crewLevel</name>
+				<name>vehicleChassisStrength</name>
 				<value>
-					0.95
+					0.75
+					<!--BW_String-->
+				</value>
+			</mul>
+			<mul>
+				<name>vehicleAllGroundRotationSpeed</name>
+				<value>
+					0.88
 					<!--BW_String-->
 				</value>
 			</mul>
@@ -6179,21 +6199,21 @@
 		<imgName>improvedGunBreech</imgName>
 		<modifiers>
 			<mul>
-				<name>miscAttrs/gunReloadTimeFactor</name>
+				<name>miscAttrs/healthFactor</name>
 				<value>
-					0.94
+					1.09
 					<!--BW_String-->
 				</value>
 			</mul>
 			<mul>
-				<name>miscAttrs/circularVisionRadiusBaseFactor</name>
+				<name>miscAttrs/chassis/shotDispersionFactors/movement</name>
 				<value>
-					0.95
+					1.15
 					<!--BW_String-->
 				</value>
 			</mul>
 			<mul>
-				<name>miscAttrs/gun/shotDispersionFactors/turretRotation</name>
+				<name>miscAttrs/chassis/shotDispersionFactors/rotation</name>
 				<value>
 					1.15
 					<!--BW_String-->
@@ -6202,21 +6222,21 @@
 		</modifiers>
 		<kpi>
 			<mul>
-				<name>vehicleGunReloadTime</name>
+				<name>vehicleStrength</name>
 				<value>
-					0.94
+					1.09
 					<!--BW_String-->
 				</value>
 			</mul>
 			<mul>
-				<name>vehicleCircularVisionRadius</name>
+				<name>vehicleGunShotDispersionChassisMovement</name>
 				<value>
-					0.95
+					1.15
 					<!--BW_String-->
 				</value>
 			</mul>
 			<mul>
-				<name>vehicleGunShotDispersionTurretRotation</name>
+				<name>vehicleGunShotDispersionChassisRotation</name>
 				<value>
 					1.15
 					<!--BW_String-->
@@ -6229,6 +6249,106 @@
 		<imgName>improvedTurretRingStability</imgName>
 		<modifiers>
 			<mul>
+				<name>miscAttrs/chassis/shotDispersionFactors/movement</name>
+				<value>
+					0.85
+					<!--BW_String-->
+				</value>
+			</mul>
+			<mul>
+				<name>miscAttrs/chassis/shotDispersionFactors/rotation</name>
+				<value>
+					0.85
+					<!--BW_String-->
+				</value>
+			</mul>
+			<mul>
+				<name>miscAttrs/healthFactor</name>
+				<value>
+					0.91
+					<!--BW_String-->
+				</value>
+			</mul>
+		</modifiers>
+		<kpi>
+			<mul>
+				<name>vehicleGunShotDispersionChassisMovement</name>
+				<value>
+					0.85
+					<!--BW_String-->
+				</value>
+			</mul>
+			<mul>
+				<name>vehicleGunShotDispersionChassisRotation</name>
+				<value>
+					0.85
+					<!--BW_String-->
+				</value>
+			</mul>
+			<mul>
+				<name>vehicleStrength</name>
+				<value>
+					0.91
+					<!--BW_String-->
+				</value>
+			</mul>
+		</kpi>
+	</role_XI_pair_3_2>
+	<role_XI_279_pair_4_1>
+		<id>7141</id>
+		<imgName>improvedAimingHandling</imgName>
+		<modifiers>
+			<mul>
+				<name>miscAttrs/antifragmentationLiningFactor</name>
+				<value>
+					1.25
+					<!--BW_String-->
+				</value>
+			</mul>
+			<mul>
+				<name>miscAttrs/crewChanceToHitFactor</name>
+				<value>
+					0.75
+					<!--BW_String-->
+				</value>
+			</mul>
+			<mul>
+				<name>miscAttrs/circularVisionRadiusBaseFactor</name>
+				<value>
+					0.95
+					<!--BW_String-->
+				</value>
+			</mul>
+		</modifiers>
+		<kpi>
+			<mul>
+				<name>vehicleRamOrExplosionDamageResistance</name>
+				<value>
+					0.75
+					<!--BW_String-->
+				</value>
+			</mul>
+			<mul>
+				<name>crewHitChance</name>
+				<value>
+					1.25
+					<!--BW_String-->
+				</value>
+			</mul>
+			<mul>
+				<name>vehicleCircularVisionRadius</name>
+				<value>
+					0.95
+					<!--BW_String-->
+				</value>
+			</mul>
+		</kpi>
+	</role_XI_279_pair_4_1>
+	<role_XI_279_pair_4_2>
+		<id>7142</id>
+		<imgName>improvedChassisStability</imgName>
+		<modifiers>
+			<mul>
 				<name>miscAttrs/circularVisionRadiusBaseFactor</name>
 				<value>
 					1.05
@@ -6236,16 +6356,16 @@
 				</value>
 			</mul>
 			<mul>
-				<name>miscAttrs/gun/shotDispersionFactors/turretRotation</name>
+				<name>miscAttrs/antifragmentationLiningFactor</name>
 				<value>
-					0.85
+					0.75
 					<!--BW_String-->
 				</value>
 			</mul>
 			<mul>
-				<name>miscAttrs/gunReloadTimeFactor</name>
+				<name>miscAttrs/crewChanceToHitFactor</name>
 				<value>
-					1.06
+					1.25
 					<!--BW_String-->
 				</value>
 			</mul>
@@ -6259,116 +6379,16 @@
 				</value>
 			</mul>
 			<mul>
-				<name>vehicleGunShotDispersionTurretRotation</name>
+				<name>vehicleRamOrExplosionDamageResistance</name>
 				<value>
-					0.85
+					1.25
 					<!--BW_String-->
 				</value>
 			</mul>
 			<mul>
-				<name>vehicleGunReloadTime</name>
+				<name>crewHitChance</name>
 				<value>
-					1.06
-					<!--BW_String-->
-				</value>
-			</mul>
-		</kpi>
-	</role_XI_pair_3_2>
-	<role_XI_279_pair_4_1>
-		<id>7141</id>
-		<imgName>improvedAimingHandling</imgName>
-		<modifiers>
-			<mul>
-				<name>miscAttrs/gunAimingTimeFactor</name>
-				<value>
-					0.8
-					<!--BW_String-->
-				</value>
-			</mul>
-			<mul>
-				<name>miscAttrs/chassis/shotDispersionFactors/movement</name>
-				<value>
-					1.2
-					<!--BW_String-->
-				</value>
-			</mul>
-			<mul>
-				<name>miscAttrs/chassis/shotDispersionFactors/rotation</name>
-				<value>
-					1.2
-					<!--BW_String-->
-				</value>
-			</mul>
-		</modifiers>
-		<kpi>
-			<mul>
-				<name>vehicleGunAimSpeed</name>
-				<value>
-					1.2
-					<!--BW_String-->
-				</value>
-			</mul>
-			<mul>
-				<name>vehicleGunShotDispersionChassisMovement</name>
-				<value>
-					1.2
-					<!--BW_String-->
-				</value>
-			</mul>
-			<mul>
-				<name>vehicleGunShotDispersionChassisRotation</name>
-				<value>
-					1.2
-					<!--BW_String-->
-				</value>
-			</mul>
-		</kpi>
-	</role_XI_279_pair_4_1>
-	<role_XI_279_pair_4_2>
-		<id>7142</id>
-		<imgName>improvedChassisStability</imgName>
-		<modifiers>
-			<mul>
-				<name>miscAttrs/chassis/shotDispersionFactors/movement</name>
-				<value>
-					0.8
-					<!--BW_String-->
-				</value>
-			</mul>
-			<mul>
-				<name>miscAttrs/chassis/shotDispersionFactors/rotation</name>
-				<value>
-					0.8
-					<!--BW_String-->
-				</value>
-			</mul>
-			<mul>
-				<name>miscAttrs/gunAimingTimeFactor</name>
-				<value>
-					1.2
-					<!--BW_String-->
-				</value>
-			</mul>
-		</modifiers>
-		<kpi>
-			<mul>
-				<name>vehicleGunShotDispersionChassisMovement</name>
-				<value>
-					0.8
-					<!--BW_String-->
-				</value>
-			</mul>
-			<mul>
-				<name>vehicleGunShotDispersionChassisRotation</name>
-				<value>
-					0.8
-					<!--BW_String-->
-				</value>
-			</mul>
-			<mul>
-				<name>vehicleGunAimSpeed</name>
-				<value>
-					0.8
+					0.75
 					<!--BW_String-->
 				</value>
 			</mul>
@@ -6381,14 +6401,14 @@
 			<mul>
 				<name>miscAttrs/gunReloadTimeFactor</name>
 				<value>
-					0.9
+					0.94
 					<!--BW_String-->
 				</value>
 			</mul>
 			<mul>
 				<name>miscAttrs/multShotDispersionFactor</name>
 				<value>
-					1.12
+					1.1
 					<!--BW_String-->
 				</value>
 			</mul>
@@ -6397,14 +6417,14 @@
 			<mul>
 				<name>vehicleGunReloadTime</name>
 				<value>
-					0.9
+					0.94
 					<!--BW_String-->
 				</value>
 			</mul>
 			<mul>
 				<name>vehicleGunShotFullDispersion</name>
 				<value>
-					1.12
+					1.1
 					<!--BW_String-->
 				</value>
 			</mul>
@@ -6417,14 +6437,14 @@
 			<mul>
 				<name>miscAttrs/multShotDispersionFactor</name>
 				<value>
-					0.88
+					0.9
 					<!--BW_String-->
 				</value>
 			</mul>
 			<mul>
 				<name>miscAttrs/gunReloadTimeFactor</name>
 				<value>
-					1.1
+					1.06
 					<!--BW_String-->
 				</value>
 			</mul>
@@ -6433,14 +6453,14 @@
 			<mul>
 				<name>vehicleGunShotFullDispersion</name>
 				<value>
-					0.88
+					0.9
 					<!--BW_String-->
 				</value>
 			</mul>
 			<mul>
 				<name>vehicleGunReloadTime</name>
 				<value>
-					1.1
+					1.06
 					<!--BW_String-->
 				</value>
 			</mul>
@@ -6451,67 +6471,25 @@
 		<imgName>increasedThickness</imgName>
 		<modifiers>
 			<mul>
-				<name>miscAttrs/healthFactor</name>
-				<value>
-					1.10
-					<!--BW_String-->
-				</value>
-			</mul>
-			<mul>
 				<name>miscAttrs/antifragmentationLiningFactor</name>
 				<value>
 					1.25
 					<!--BW_String-->
 				</value>
 			</mul>
-			<add>
-				<name>miscAttrs/stunResistanceDuration</name>
-				<value>
-					0.15
-					<!--BW_String-->
-				</value>
-			</add>
 			<mul>
 				<name>miscAttrs/crewChanceToHitFactor</name>
 				<value>
-					0.7
+					0.75
 					<!--BW_String-->
 				</value>
 			</mul>
 			<add>
-				<name>miscAttrs/forwardMaxSpeedKMHTerm</name>
-				<value>-5</value>
+				<name>miscAttrs/backwardMaxSpeedKMHTerm</name>
+				<value>-4</value>
 			</add>
-			<mul>
-				<name>miscAttrs/turretRotationSpeed</name>
-				<value>
-					0.85
-					<!--BW_String-->
-				</value>
-			</mul>
-			<mul>
-				<name>miscAttrs/onStillRotationSpeedFactor</name>
-				<value>
-					0.85
-					<!--BW_String-->
-				</value>
-			</mul>
-			<mul>
-				<name>miscAttrs/onMoveRotationSpeedFactor</name>
-				<value>
-					0.85
-					<!--BW_String-->
-				</value>
-			</mul>
 		</modifiers>
 		<kpi>
-			<mul>
-				<name>vehicleStrength</name>
-				<value>
-					1.10
-					<!--BW_String-->
-				</value>
-			</mul>
 			<mul>
 				<name>vehicleRamOrExplosionDamageResistance</name>
 				<value>
@@ -6520,37 +6498,16 @@
 				</value>
 			</mul>
 			<mul>
-				<name>crewStunDuration</name>
-				<value>
-					0.85
-					<!--BW_String-->
-				</value>
-			</mul>
-			<mul>
 				<name>crewHitChance</name>
 				<value>
-					1.3
+					1.25
 					<!--BW_String-->
 				</value>
 			</mul>
 			<add>
-				<name>vehicleForwardMaxSpeed</name>
-				<value>-5</value>
+				<name>vehicleBackwardMaxSpeed</name>
+				<value>-4</value>
 			</add>
-			<mul>
-				<name>vehicleAllGroundRotationSpeed</name>
-				<value>
-					0.85
-					<!--BW_String-->
-				</value>
-			</mul>
-			<mul>
-				<name>vehicleTurretOrCuttingRotationSpeed</name>
-				<value>
-					0.85
-					<!--BW_String-->
-				</value>
-			</mul>
 		</kpi>
 	</role_XI_BZT_70_pair_4_1>
 	<role_XI_BZT_70_pair_4_2>
@@ -6558,37 +6515,9 @@
 		<imgName>betterFriction</imgName>
 		<modifiers>
 			<add>
-				<name>miscAttrs/forwardMaxSpeedKMHTerm</name>
-				<value>5</value>
+				<name>miscAttrs/backwardMaxSpeedKMHTerm</name>
+				<value>4</value>
 			</add>
-			<mul>
-				<name>miscAttrs/turretRotationSpeed</name>
-				<value>
-					1.15
-					<!--BW_String-->
-				</value>
-			</mul>
-			<mul>
-				<name>miscAttrs/onStillRotationSpeedFactor</name>
-				<value>
-					1.15
-					<!--BW_String-->
-				</value>
-			</mul>
-			<mul>
-				<name>miscAttrs/onMoveRotationSpeedFactor</name>
-				<value>
-					1.15
-					<!--BW_String-->
-				</value>
-			</mul>
-			<mul>
-				<name>miscAttrs/healthFactor</name>
-				<value>
-					0.9
-					<!--BW_String-->
-				</value>
-			</mul>
 			<mul>
 				<name>miscAttrs/antifragmentationLiningFactor</name>
 				<value>
@@ -6596,47 +6525,19 @@
 					<!--BW_String-->
 				</value>
 			</mul>
-			<add>
-				<name>miscAttrs/stunResistanceDuration</name>
-				<value>
-					-0.15
-					<!--BW_String-->
-				</value>
-			</add>
 			<mul>
 				<name>miscAttrs/crewChanceToHitFactor</name>
 				<value>
-					1.3
+					1.25
 					<!--BW_String-->
 				</value>
 			</mul>
 		</modifiers>
 		<kpi>
 			<add>
-				<name>vehicleForwardMaxSpeed</name>
-				<value>5</value>
+				<name>vehicleBackwardMaxSpeed</name>
+				<value>4</value>
 			</add>
-			<mul>
-				<name>vehicleTurretOrCuttingRotationSpeed</name>
-				<value>
-					1.15
-					<!--BW_String-->
-				</value>
-			</mul>
-			<mul>
-				<name>vehicleAllGroundRotationSpeed</name>
-				<value>
-					1.15
-					<!--BW_String-->
-				</value>
-			</mul>
-			<mul>
-				<name>vehicleStrength</name>
-				<value>
-					0.9
-					<!--BW_String-->
-				</value>
-			</mul>
 			<mul>
 				<name>vehicleRamOrExplosionDamageResistance</name>
 				<value>
@@ -6645,16 +6546,9 @@
 				</value>
 			</mul>
 			<mul>
-				<name>crewStunDuration</name>
-				<value>
-					1.15
-					<!--BW_String-->
-				</value>
-			</mul>
-			<mul>
 				<name>crewHitChance</name>
 				<value>
-					0.7
+					0.75
 					<!--BW_String-->
 				</value>
 			</mul>
@@ -6665,9 +6559,9 @@
 		<imgName>improvedAimingHandling</imgName>
 		<modifiers>
 			<mul>
-				<name>miscAttrs/gunAimingTimeFactor</name>
+				<name>miscAttrs/enginePowerFactor</name>
 				<value>
-					0.8
+					1.15
 					<!--BW_String-->
 				</value>
 			</mul>
@@ -6681,9 +6575,9 @@
 		</modifiers>
 		<kpi>
 			<mul>
-				<name>vehicleGunAimSpeed</name>
+				<name>vehicleEnginePower</name>
 				<value>
-					1.2
+					1.15
 					<!--BW_String-->
 				</value>
 			</mul>
@@ -6708,9 +6602,9 @@
 				</value>
 			</mul>
 			<mul>
-				<name>miscAttrs/gunAimingTimeFactor</name>
+				<name>miscAttrs/enginePowerFactor</name>
 				<value>
-					1.2
+					0.85
 					<!--BW_String-->
 				</value>
 			</mul>
@@ -6724,9 +6618,9 @@
 				</value>
 			</mul>
 			<mul>
-				<name>vehicleGunAimSpeed</name>
+				<name>vehicleEnginePower</name>
 				<value>
-					0.8
+					0.85
 					<!--BW_String-->
 				</value>
 			</mul>
@@ -6740,42 +6634,23 @@
 				<name>miscAttrs/forwardMaxSpeedKMHTerm</name>
 				<value>6</value>
 			</add>
-			<add>
-				<name>miscAttrs/backwardMaxSpeedKMHTerm</name>
-				<value>3</value>
-			</add>
 			<mul>
-				<name>miscAttrs/enginePowerFactor</name>
+				<name>miscAttrs/multShotDispersionFactor</name>
 				<value>
-					1.15
+					1.1
 					<!--BW_String-->
 				</value>
 			</mul>
-			<add>
-				<name>miscAttrs/crewLevelIncrease</name>
-				<value>-12</value>
-			</add>
 		</modifiers>
 		<kpi>
 			<add>
 				<name>vehicleForwardMaxSpeed</name>
 				<value>6</value>
 			</add>
-			<add>
-				<name>vehicleBackwardMaxSpeed</name>
-				<value>3</value>
-			</add>
 			<mul>
-				<name>vehicleEnginePower</name>
+				<name>vehicleGunShotFullDispersion</name>
 				<value>
-					1.15
-					<!--BW_String-->
-				</value>
-			</mul>
-			<mul>
-				<name>crewLevel</name>
-				<value>
-					0.88
+					1.1
 					<!--BW_String-->
 				</value>
 			</mul>
@@ -6785,31 +6660,23 @@
 		<id>7342</id>
 		<imgName>improvedSpallingResistance</imgName>
 		<modifiers>
-			<add>
-				<name>miscAttrs/crewLevelIncrease</name>
-				<value>12</value>
-			</add>
+			<mul>
+				<name>miscAttrs/multShotDispersionFactor</name>
+				<value>
+					0.9
+					<!--BW_String-->
+				</value>
+			</mul>
 			<add>
 				<name>miscAttrs/forwardMaxSpeedKMHTerm</name>
 				<value>-6</value>
 			</add>
-			<add>
-				<name>miscAttrs/backwardMaxSpeedKMHTerm</name>
-				<value>-3</value>
-			</add>
-			<mul>
-				<name>miscAttrs/enginePowerFactor</name>
-				<value>
-					0.85
-					<!--BW_String-->
-				</value>
-			</mul>
 		</modifiers>
 		<kpi>
 			<mul>
-				<name>crewLevel</name>
+				<name>vehicleGunShotFullDispersion</name>
 				<value>
-					1.12
+					0.9
 					<!--BW_String-->
 				</value>
 			</mul>
@@ -6817,17 +6684,6 @@
 				<name>vehicleForwardMaxSpeed</name>
 				<value>-6</value>
 			</add>
-			<add>
-				<name>vehicleBackwardMaxSpeed</name>
-				<value>-3</value>
-			</add>
-			<mul>
-				<name>vehicleEnginePower</name>
-				<value>
-					0.85
-					<!--BW_String-->
-				</value>
-			</mul>
 		</kpi>
 	</role_XI_MBT_B_pair_4_2>
 	<role_XI_MBT_B_pair_5_1>
@@ -6835,60 +6691,32 @@
 		<imgName>improvedChassisStability</imgName>
 		<modifiers>
 			<mul>
-				<name>miscAttrs/chassis/shotDispersionFactors/movement</name>
+				<name>miscAttrs/circularVisionRadiusBaseFactor</name>
 				<value>
-					0.76
+					1.05
 					<!--BW_String-->
 				</value>
 			</mul>
 			<mul>
-				<name>miscAttrs/chassis/shotDispersionFactors/rotation</name>
+				<name>miscAttrs/gun/shotDispersionFactors/afterShot</name>
 				<value>
-					0.76
-					<!--BW_String-->
-				</value>
-			</mul>
-			<mul>
-				<name>miscAttrs/multShotDispersionFactor</name>
-				<value>
-					1.06
-					<!--BW_String-->
-				</value>
-			</mul>
-			<mul>
-				<name>miscAttrs/gunAimingTimeFactor</name>
-				<value>
-					1.12
+					1.25
 					<!--BW_String-->
 				</value>
 			</mul>
 		</modifiers>
 		<kpi>
 			<mul>
-				<name>vehicleGunShotDispersionChassisMovement</name>
+				<name>vehicleCircularVisionRadius</name>
 				<value>
-					0.76
+					1.05
 					<!--BW_String-->
 				</value>
 			</mul>
 			<mul>
-				<name>vehicleGunShotDispersionChassisRotation</name>
+				<name>vehicleGunShotDispersionAfterShot</name>
 				<value>
-					0.76
-					<!--BW_String-->
-				</value>
-			</mul>
-			<mul>
-				<name>vehicleGunShotFullDispersion</name>
-				<value>
-					1.06
-					<!--BW_String-->
-				</value>
-			</mul>
-			<mul>
-				<name>vehicleGunAimSpeed</name>
-				<value>
-					0.88
+					1.25
 					<!--BW_String-->
 				</value>
 			</mul>
@@ -6899,60 +6727,32 @@
 		<imgName>improvedScope</imgName>
 		<modifiers>
 			<mul>
-				<name>miscAttrs/multShotDispersionFactor</name>
+				<name>miscAttrs/gun/shotDispersionFactors/afterShot</name>
 				<value>
-					0.94
+					0.75
 					<!--BW_String-->
 				</value>
 			</mul>
 			<mul>
-				<name>miscAttrs/gunAimingTimeFactor</name>
+				<name>miscAttrs/circularVisionRadiusBaseFactor</name>
 				<value>
-					0.88
-					<!--BW_String-->
-				</value>
-			</mul>
-			<mul>
-				<name>miscAttrs/chassis/shotDispersionFactors/movement</name>
-				<value>
-					1.24
-					<!--BW_String-->
-				</value>
-			</mul>
-			<mul>
-				<name>miscAttrs/chassis/shotDispersionFactors/rotation</name>
-				<value>
-					1.24
+					0.95
 					<!--BW_String-->
 				</value>
 			</mul>
 		</modifiers>
 		<kpi>
 			<mul>
-				<name>vehicleGunShotFullDispersion</name>
+				<name>vehicleGunShotDispersionAfterShot</name>
 				<value>
-					0.94
+					0.75
 					<!--BW_String-->
 				</value>
 			</mul>
 			<mul>
-				<name>vehicleGunAimSpeed</name>
+				<name>vehicleCircularVisionRadius</name>
 				<value>
-					1.12
-					<!--BW_String-->
-				</value>
-			</mul>
-			<mul>
-				<name>vehicleGunShotDispersionChassisMovement</name>
-				<value>
-					1.24
-					<!--BW_String-->
-				</value>
-			</mul>
-			<mul>
-				<name>vehicleGunShotDispersionChassisRotation</name>
-				<value>
-					1.24
+					0.95
 					<!--BW_String-->
 				</value>
 			</mul>

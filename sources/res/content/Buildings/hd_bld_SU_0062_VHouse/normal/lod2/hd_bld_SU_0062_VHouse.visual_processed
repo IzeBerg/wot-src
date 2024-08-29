@@ -19,6 +19,15 @@
 			<primitiveGroup>
 				0
 				<material>
+					<identifier>s_ramp_0</identifier>
+					<materialKind>0</materialKind>
+					<collisionFlags>131</collisionFlags>
+				</material>
+				<groupOrigin>-1.399366 -0.070633 -1.793238</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
 					<identifier>s_nd7</identifier>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
 					<materialKind>111</materialKind>
@@ -95,7 +104,7 @@
 				<groupOrigin>1.122992 5.469042 0.017747</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
-				1
+				2
 				<material>
 					<identifier>s_nd6</identifier>
 					<fx>shaders/custom/interior_mapping.fx</fx>
@@ -117,7 +126,7 @@
 				<groupOrigin>1.110575 1.770548 0.005044</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
-				2
+				3
 				<material>
 					<identifier>s_nd5</identifier>
 					<fx>shaders/std_effects/PBS_ext.fx</fx>
@@ -143,7 +152,7 @@
 				<groupOrigin>-0.388939 1.432074 -0.758135</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
-				3
+				4
 				<material>
 					<identifier>s_nd4</identifier>
 					<fx>shaders/std_effects/PBS_glass.fx</fx>
@@ -165,7 +174,7 @@
 				<groupOrigin>1.129929 1.741079 0.053941</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
-				4
+				5
 				<material>
 					<identifier>s_nd3</identifier>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
@@ -247,7 +256,7 @@
 				<groupOrigin>0.886003 0.784254 -0.232893</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
-				5
+				6
 				<material>
 					<identifier>s_nd2</identifier>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
@@ -309,7 +318,7 @@
 				<groupOrigin>1.122694 2.064622 -0.004972</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
-				6
+				7
 				<material>
 					<identifier>s_nd1</identifier>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
@@ -391,7 +400,7 @@
 				<groupOrigin>1.122992 5.396523 0.017747</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
-				7
+				8
 				<material>
 					<identifier>s_nd0</identifier>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
@@ -468,15 +477,6 @@
 				</material>
 				<groupOrigin>1.129751 3.875044 -0.002982</groupOrigin>
 			</primitiveGroup>
-			<primitiveGroup>
-				8
-				<material>
-					<identifier>s_ramp_0</identifier>
-					<materialKind>0</materialKind>
-					<collisionFlags>131</collisionFlags>
-				</material>
-				<groupOrigin>-1.399366 -0.070633 -1.793238</groupOrigin>
-			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<boundingBox>
@@ -484,6 +484,6 @@
 		<max>9.714194 7.406933 5.757089</max>
 	</boundingBox>
 	<customBsp>true</customBsp>
-	<geometrySize>128064</geometrySize>
+	<geometrySize>128580</geometrySize>
 	<minUVDensity>0.002279</minUVDensity>
 </root>

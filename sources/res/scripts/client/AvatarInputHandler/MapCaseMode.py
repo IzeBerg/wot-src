@@ -740,8 +740,8 @@ _STRIKE_SELECTORS = {artefacts.RageArtillery: _ArtilleryStrikeSelector,
    artefacts.Comp7ReconEquipment: _Comp7ArenaBoundPlaneStrikeSelector, 
    artefacts.Comp7RedlineEquipment: _Comp7ArenaBoundArtilleryStrikeSelector, 
    artefacts.PoiArtilleryEquipment: _ArenaBoundArtilleryStrikeSelector, 
-   artefacts.PoiSmokeEquipment: _SmokeStrikeSelector, 
-   artefacts.PoiMineFieldEquipment: _Comp7MineFieldStrikeSelector}
+   artefacts.PoiSmokeEquipment: _ArenaBoundArtilleryStrikeSelector, 
+   artefacts.PoiMineFieldEquipment: _ArcadeFLMinesSelector}
 
 class MapCaseControlModeBase(IControlMode, CallbackDelayer):
     guiSessionProvider = dependency.descriptor(IBattleSessionProvider)

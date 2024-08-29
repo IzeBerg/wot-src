@@ -98,11 +98,7 @@
 		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/502_kamchatka_geyser_smoke_flow.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/502_kamchatka_seagulls_01.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/502_kamchatka_seagulls_02.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/502_kamchatka_water_foam.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/502_kamchatka_water_splash.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/502_kamchatka_water_splash_small.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/502_kamchatka_wave.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/502_kamchatka_wave_longtime.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/hd_bld_SU_0112_GeoPowerStation_02.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/hd_bld_su_0112_geopowerstation_03.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/hd_bld_SU_126_BoxHouse.vfx</fn_effect_bin>
@@ -192,6 +188,7 @@
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_mle019_GerBoxes4.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_mle046_Bag1.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_mleSU_05_01_Zis3.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_mleSU_05_01_Zis3_hit.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_shells_detonation_medium.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/inf_tree_apple_fall_med.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/inf_tree_bush_dry_fall.vfx</fn_effect_bin>
@@ -336,6 +333,7 @@
 		<fn_effect_bin>particles/Environment/objects/inf_mle019_GerBoxes4.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_mle046_Bag1.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_mleSU_05_01_Zis3.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/objects/inf_mleSU_05_01_Zis3_hit.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_shells_detonation_medium.eff</fn_effect_bin>
 		<fn_effect_bin>particles/environment/trees/broadleaves/inf_tree_apple_fall_med.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_bush_dry_fall.eff</fn_effect_bin>
@@ -521,8 +519,7 @@
 			<shader>\data\shaders\ps_long.fx</shader>
 			<texture>particles/content_deferred/PFX_textures/eff_assaultSPG.dds</texture>
 		</preload>
-		<fn_effect_bin>particles/environment/interior/502_kamchatka_rain_circle.eff</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/pfx/environment/interior/502_kamchatka_rain_circle.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/environment/interior/502_kamchatka_lightning.eff</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/pfx/environment/interior/502_kamchatka_lightning_s.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Buildings/hd_bld_SU_0064_VHouse_01.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Buildings/hd_bld_SU_0064_VHouse_02.vfx</fn_effect_bin>
@@ -644,6 +641,7 @@
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_mle019_GerBoxes4.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_mle046_Bag1.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_mleSU_05_01_Zis3.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_mleSU_05_01_Zis3_hit.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_shells_detonation_medium.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/inf_tree_apple_fall_med.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/inf_tree_bush_dry_fall.vfx</fn_effect_bin>
@@ -690,7 +688,6 @@
 		<fn_effect_bin>particles/environment/interior/502_kamchatka_geyser_bubbles_medium.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/interior/502_kamchatka_geyser_bubbles_medium.eff</fn_effect_bin>
 		<fn_effect_bin>particles/environment/interior/502_kamchatka_geyser_smoke_flow.eff</fn_effect_bin>
-		<fn_effect_bin>particles/environment/interior/502_kamchatka_lightning.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/interior/502_kamchatka_seagulls_01.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/interior/502_kamchatka_seagulls_02.eff</fn_effect_bin>
 		<fn_effect_bin>particles/environment/interior/502_kamchatka_ship_waves.eff</fn_effect_bin>
@@ -788,6 +785,7 @@
 		<fn_effect_bin>particles/Environment/objects/inf_mle019_GerBoxes4.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_mle046_Bag1.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_mleSU_05_01_Zis3.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/objects/inf_mleSU_05_01_Zis3_hit.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_shells_detonation_medium.eff</fn_effect_bin>
 		<fn_effect_bin>particles/environment/trees/broadleaves/inf_tree_apple_fall_med.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_bush_dry_fall.eff</fn_effect_bin>
