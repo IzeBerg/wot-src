@@ -16,7 +16,6 @@ if TYPE_CHECKING:
     from Vehicular import GeneralWheelsAnimatorConfig
     from items import vehicles
     from items.components.shared_components import CustomizationSlotDescription
-    from items.components.component_constants import MultiGunState
 
 class VEHICLE_ITEM_STATUS(object):
     UNDEFINED = 0
@@ -269,7 +268,7 @@ class Turret(InstallableItem):
                  'surveyingDeviceHealth', 'invisibilityFactor', 'primaryArmor', 'ceilless',
                  'showEmblemsOnGun', 'guns', 'turretRotatorSoundManual', 'turretRotatorSoundGear',
                  'AODecals', 'turretDetachmentEffects', 'physicsShape', 'circularVisionRadius',
-                 'customizableVehicleAreas', 'multiGun', 'prefabs', 'multiGunState')
+                 'customizableVehicleAreas', 'multiGun', 'prefabs')
 
     def __init__(self, typeID, componentID, componentName, compactDescr, level=1):
         super(Turret, self).__init__(typeID, componentID, componentName, compactDescr, level)
@@ -292,7 +291,6 @@ class Turret(InstallableItem):
         self.turretDetachmentEffects = None
         self.customizableVehicleAreas = None
         self.prefabs = None
-        self.multiGunState = component_constants.DEFAULT_TURRET_MULTI_GUN_STATE
         return
 
     @property
@@ -310,7 +308,7 @@ class Gun(InstallableItem):
                  'clip', 'shots', 'autoreload', 'autoreloadHasBoost', 'drivenJoints',
                  'customizableVehicleAreas', 'dualGun', 'edgeByVisualModel', 'prefabs',
                  'shootImpulses', 'dualAccuracy', 'isDamageMutable', 'forcedReloadTime',
-                 'autoShoot', 'spin', 'temperature', '__weakref__')
+                 'autoShoot', '__weakref__')
 
     def __init__(self, typeID, componentID, componentName, compactDescr, level=1):
         super(Gun, self).__init__(typeID, componentID, componentName, compactDescr, level)
@@ -335,7 +333,6 @@ class Gun(InstallableItem):
         self.dualGun = component_constants.DEFAULT_GUN_DUALGUN
         self.dualAccuracy = component_constants.DEFAULT_GUN_DUAL_ACCURACY
         self.autoShoot = component_constants.DEFAULT_GUN_AUTOSHOOT
-        self.spin = component_constants.DEFAULT_SPIN_GUN
         self.drivenJoints = None
         self.effects = None
         self.reloadEffect = None
@@ -345,7 +342,6 @@ class Gun(InstallableItem):
         self.customizableVehicleAreas = None
         self.edgeByVisualModel = True
         self.prefabs = None
-        self.temperature = None
         self.shootImpulses = component_constants.EMPTY_TUPLE
         self.isDamageMutable = False
         return

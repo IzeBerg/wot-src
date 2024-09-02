@@ -36,10 +36,6 @@ package net.wg.gui.battle.views.consumablesPanel.interfaces
       
       function setTimerSnapshot(param1:int, param2:Boolean) : void;
       
-      function get showConsumableBorder() : Boolean;
-      
-      function set showConsumableBorder(param1:Boolean) : void;
-      
       function set isReplay(param1:Boolean) : void;
    }
 }

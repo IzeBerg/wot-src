@@ -87,24 +87,6 @@ msgstr "CONVERSION SUCCESSFUL"
 msgid "conversionAwards/underTitle"
 msgstr "The following items have been added to your account."
 
-msgid "conversionBanner/button/label"
-msgstr "Conversion"
-
-msgid "conversionBanner/button/tooltip/disabled/body"
-msgstr ""
-"If you have undertrained crew members in the Barracks, they will be removed "
-"from your account and their XP will be compensated with Crew Books of the "
-"corresponding type and nation."
-
-msgid "conversionBanner/button/tooltip/disabled/title"
-msgstr "No Undertrained Crew Members"
-
-msgid "conversionBanner/button/tooltip/enabled/body"
-msgstr "Go to Conversion"
-
-msgid "conversionBanner/infoText"
-msgstr "Conversion of undertrained crew members will be available for"
-
 msgid "conversionConfirm/button/cancel/label"
 msgstr "Cancel"
 
@@ -271,6 +253,133 @@ msgstr "The approach to crew training has been changed"
 
 msgid "crew5075Welcome/4/title"
 msgstr "Crew Training"
+
+msgid "crewBanner/button/fill/label"
+msgstr "Autoselect Perks"
+
+msgid "crewBanner/button/fill/tooltip/disable/body"
+msgstr "There are no crew members with untrained perks."
+
+msgid "crewBanner/button/fill/tooltip/disable/header"
+msgstr "Unable to Autoselect Perks"
+
+msgid "crewBanner/button/fill/tooltip/enable/body"
+msgstr ""
+"All untrained perks marked with plus signs will be replaced by perks "
+"automatically selected with special logic for all crews."
+
+msgid "crewBanner/button/fill/tooltip/enable/header"
+msgstr "Autoselect Untrained Perks for All"
+
+msgid "crewBanner/button/reset/label"
+msgstr "Reset Perks for All"
+
+msgid "crewBanner/button/reset/tooltip/disable/body"
+msgstr "There are no crew members with trained perks."
+
+msgid "crewBanner/button/reset/tooltip/disable/header"
+msgstr "Unable to Reset Perks"
+
+msgid "crewBanner/button/reset/tooltip/enable/body"
+msgstr ""
+"All perks will be reset for all crew members on your account. This operation"
+" cannot be undone."
+
+msgid "crewBanner/button/reset/tooltip/enable/header"
+msgstr "Reset Perks for All"
+
+msgid "crewBanner/infoText"
+msgstr ""
+"Free perk reset or autoselection of untrained perks for all crew members on "
+"your account"
+
+msgid "crewNpsWelcome/1/block/1/description"
+msgstr ""
+"Each qualification now contains six unique perks, some of which are brand "
+"new."
+
+msgid "crewNpsWelcome/1/block/2/description"
+msgstr ""
+"On top of them, you can also train three group perks: Brother in Arms, "
+"Concealment, and Repairs. Firefighting is now only available to the Radio "
+"Operator."
+
+msgid "crewNpsWelcome/1/block/3/description"
+msgstr ""
+"Some less-used perks have been replaced by new ones, while others have been "
+"improved to make them more competitive."
+
+msgid "crewNpsWelcome/1/subtitle"
+msgstr ""
+"New perks have been added, and some old ones have been replaced or improved"
+
+msgid "crewNpsWelcome/1/title"
+msgstr "Updated Crew Perks"
+
+msgid "crewNpsWelcome/2/block/1/description"
+msgstr ""
+"Crew members can no longer train more than six perks in their major "
+"qualification. Any XP earned over this limit is compensated with Crew Books."
+
+msgid "crewNpsWelcome/2/block/2/description"
+msgstr ""
+"This limit means experienced crews can no longer train all available perks, "
+"making for a fairer game. Choose your perks wisely!"
+
+msgid "crewNpsWelcome/2/block/3/description"
+msgstr ""
+"After reaching the six-perk limit, crew members will continue to earn XP, "
+"which will be compensated by Universal Guides for use on other crews."
+
+msgid "crewNpsWelcome/2/subtitle"
+msgstr "Number of trained perks now limited"
+
+msgid "crewNpsWelcome/2/title"
+msgstr "Limits to Crew Efficiency"
+
+msgid "crewNpsWelcome/3/block/1/description"
+msgstr ""
+"If several crew members have the same qualification, the effects of all "
+"their perks are averaged. For a perk to work at 100%, it must be fully "
+"trained by all crew members with the same qualification."
+
+msgid "crewNpsWelcome/3/block/2/description"
+msgstr ""
+"Crew members with multiple qualifications can train bonus perks from their "
+"additional qualifications. These bonus perks do not contain XP and do not "
+"count toward the perk limit."
+
+msgid "crewNpsWelcome/3/block/3/description"
+msgstr ""
+"The perk reset operation now also resets zero perks, but their benefits "
+"still remain."
+
+msgid "crewNpsWelcome/3/subtitle"
+msgstr "Bonus perks, duplicate perks, and zero perk reset"
+
+msgid "crewNpsWelcome/3/title"
+msgstr "Other Changes to the Perk System"
+
+msgid "crewNpsWelcome/4/block/1/description"
+msgstr ""
+"You will have a grace period in which you can make unlimited free perk "
+"resets."
+
+msgid "crewNpsWelcome/4/block/2/description"
+msgstr ""
+"The grace period begins today and will last 30 days. Try different perk "
+"combinations and stick with what suits your play style best."
+
+msgid "crewNpsWelcome/4/block/3/description"
+msgstr ""
+"After the grace period ends, the first perk reset you make for each existing"
+" or new crew member will be free."
+
+msgid "crewNpsWelcome/4/subtitle"
+msgstr "Grace period and free first perk reset"
+
+msgid "crewNpsWelcome/4/title"
+msgstr "Time to Experiment!"
 
 msgid "filter/group/details/title"
 msgstr "Details"
@@ -444,8 +553,40 @@ msgstr ""
 msgid "junkTankmen/title"
 msgstr "Crew Member Conversion"
 
+msgid "matrix/bonusTooltip/description"
+msgstr ""
+"There is a limit of {whiteSpanish_Open}three{whiteSpanish_Close} perks for "
+"each additional qualification. Access to a new bonus perk will open after "
+"reaching the {whiteSpanish_Open}first{whiteSpanish_Close}, "
+"{whiteSpanish_Open}third{whiteSpanish_Close}, and "
+"{whiteSpanish_Open}fifth{whiteSpanish_Close} major qualification perks."
+
+msgid "matrix/bonusTooltip/header"
+msgstr "Bonus Perks"
+
+msgid "matrix/bonusTooltip/list/retrain"
+msgstr ""
+"When retraining a crew member for another vehicle with a different set of "
+"qualifications, you will be able to choose the perks for their new "
+"additional qualification again."
+
+msgid "matrix/bonusTooltip/list/trainSpeed"
+msgstr "Bonus perks are trained twice as slowly as major qualification perks."
+
+msgid "matrix/bonusTooltip/list/xp"
+msgstr "XP is not required to train bonus perks."
+
+msgid "matrix/freeResetButton"
+msgstr "Reset for Free"
+
 msgid "matrix/increaseButton"
-msgstr "Train"
+msgstr "Accelerate Training"
+
+msgid "matrix/increaseTooltip/disable/body"
+msgstr "The crew member has reached the training limit."
+
+msgid "matrix/increaseTooltip/disable/header"
+msgstr "Unable to accelerate training"
 
 msgid "matrix/increaseTooltip/enable/body"
 msgstr "Train perks using Free XP and Crew Books."
@@ -492,8 +633,22 @@ msgstr "Fourth qualification unavailable for this vehicle"
 msgid "matrix/qualification/unavailable/5"
 msgstr "Fifth qualification unavailable for this vehicle"
 
+msgid "matrix/qualificationTooltip/bonusDescription"
+msgstr ""
+"There is a limit of {whiteSpanish_Open}three{whiteSpanish_Close} bonus perks"
+" for each additional qualification. Only perks specific to this "
+"qualification can be selected as bonus perks."
+
+msgid "matrix/qualificationTooltip/majorDescription"
+msgstr ""
+"There is a limit of {whiteSpanish_Open}six{whiteSpanish_Close} major "
+"qualification perks (including zero perks)."
+
 msgid "matrix/resetButton"
 msgstr "Reset"
+
+msgid "matrix/resetButtonHint"
+msgstr "CLICK TO RESET PERKS"
 
 msgid "matrix/resetTooltip/disable/body"
 msgstr "You have no trained perks."
@@ -507,17 +662,75 @@ msgstr "Click to reset perks."
 msgid "matrix/resetTooltip/enable/header"
 msgstr "Reset Perks"
 
+msgid "matrix/skillTooltip/bonus/available/header"
+msgstr "Bonus Perk Available for Training"
+
+msgid "matrix/skillTooltip/bonus/available/text"
+msgstr "Crew XP is not required to train bonus perks."
+
+msgid "matrix/skillTooltip/bonus/unavailable/header"
+msgstr "Unavailable"
+
+msgid "matrix/skillTooltip/bonus/unavailable/text/2"
+msgstr ""
+"Unlocked when training the third major qualification perk. Does not require "
+"XP."
+
+msgid "matrix/skillTooltip/bonus/unavailable/text/3"
+msgstr ""
+"Unlocked when training the fifth major qualification perk. Does not require "
+"XP."
+
+msgid "matrix/skillTooltip/main/available/discountLabel/1"
+msgstr ""
+"The total amount of XP required is discounted because the crew member has "
+"one zero perk."
+
+msgid "matrix/skillTooltip/main/available/discountLabel/2"
+msgstr ""
+"The total amount of XP required is discounted because the crew member has "
+"two zero perks."
+
+msgid "matrix/skillTooltip/main/available/header"
+msgstr "Perk Available for Training"
+
+msgid "matrix/skillTooltip/main/unavailable/header"
+msgstr "Unavailable"
+
+msgid "matrix/skillTooltip/main/unavailable/text"
+msgstr "The previous perk must be trained to 100%."
+
+msgid "matrix/skillTooltip/zero/header"
+msgstr "Zero Perk Available for Training"
+
+msgid "matrix/skillTooltip/zero/text"
+msgstr ""
+"Zero perks are always trained first, even if several perks are selected at "
+"once. Crew XP is not required to train them."
+
 msgid "matrix/skills/allSkills"
 msgstr "All additional perks trained for this vehicle"
 
 msgid "matrix/skills/available"
 msgstr "Perks available for training:"
 
+msgid "matrix/skills/bonus"
+msgstr "Bonus Perks"
+
+msgid "matrix/skills/counters"
+msgstr "{currentCount} / {totalCount}"
+
 msgid "matrix/skills/disabled"
 msgstr "Perks are not available"
 
 msgid "matrix/skills/locked"
 msgstr "Perks are not available"
+
+msgid "matrix/skills/main/disabled"
+msgstr "All perks are disabled for this vehicle"
+
+msgid "matrix/skills/main/enabled"
+msgstr "Major Qualification Perks"
 
 msgid "matrix/skills/reduced"
 msgstr "Perk efficiency reduced"
@@ -566,6 +779,30 @@ msgstr "{discountAmount}% DISCOUNT ON QUALIFICATION CHANGE DISCOUNT"
 
 msgid "memberChange/title"
 msgstr "SELECT {role}: {vehicle} "
+
+msgid "npsIntro/compensation/additional"
+msgstr "Additional compensation:"
+
+msgid "npsIntro/compensation/description"
+msgstr ""
+"These items have been added to your account as a result of conversion:"
+
+msgid "npsIntro/compensation/title"
+msgstr "COMPENSATION SUCCESSFUL"
+
+msgid "npsIntro/intro/description"
+msgstr ""
+"Changes to the perk system, new and updated perks, and a grace period for "
+"free perk reset."
+
+msgid "npsIntro/intro/title"
+msgstr "UPDATES TO CREW"
+
+msgid "npsIntro/skipButton/title"
+msgstr "Skip"
+
+msgid "npsIntro/viewButton/title"
+msgstr "View Changes"
 
 msgid "personalData/card/remove"
 msgstr "Remove"
@@ -657,6 +894,50 @@ msgstr "Click to listen to this Commander's voiceover sample."
 msgid "personalFile/voiceTooltip/header"
 msgstr "Unique Voiceover"
 
+msgid "postProgression/button/claim"
+msgstr "Claim Reward"
+
+msgid "postProgression/description"
+msgstr ""
+"All crew members who have all six major qualification perks trained get "
+"access to the joint Post-Progression. For every 100,000 XP earned in the "
+"Post-Progression, you will receive a Universal Guide that can be used to "
+"train other crews."
+
+msgid "postProgression/progress"
+msgstr ""
+"{bond_Open}%(currentValue)s{bond_Close} {par_Open}/ "
+"%(maxValue)s{par_Close}%(icon)s"
+
+msgid "postProgression/tips/1"
+msgstr ""
+"The Post-Progression consists of a unified scale for all crew members with "
+"six fully trained major qualification perks on a player's account."
+
+msgid "postProgression/tips/2"
+msgstr ""
+"Only Combat XP counts toward the Post-Progression. Half of the Combat XP "
+"earned in battle by a crew member is divided by the total number of crew "
+"members in the vehicle and added to the Post-Progression scale."
+
+msgid "postProgression/tips/3"
+msgstr ""
+"Losing XP from perks or efficiency pools does not affect the Post-"
+"Progression."
+
+msgid "postProgression/title"
+msgstr "CREW POST-PROGRESSION"
+
+msgid "postProgression/warning/lowEfficiency"
+msgstr ""
+"All crew members who had access to the Post-Progression have low perk "
+"efficiency."
+
+msgid "postProgression/warning/retire"
+msgstr ""
+"All crew members who had access to the Post-Progression have been retired or"
+" lost XP from their last perk(s)."
+
 msgid "premiumVehType/plural/lowerCase/AT-SPG"
 msgstr "All Premium tanks destroyers"
 
@@ -699,6 +980,32 @@ msgstr ""
 
 msgid "serviceRecord/tooltip/rank/header"
 msgstr "Rank"
+
+msgid "skillsTraining/availableSkillsTitle/allSkillsLearned"
+msgstr "Crew member has trained all perks for this vehicle"
+
+msgid "skillsTraining/availableSkillsTitle/available"
+msgstr "Perks available for training:"
+
+msgid "skillsTraining/availableSkillsTitle/disabled"
+msgstr "All perks disabled for this vehicle"
+
+msgid "skillsTraining/bonusQualification/description"
+msgstr ""
+"XP is not needed to train additional qualification perks, which are trained "
+"twice as slowly as major qualification perks."
+
+msgid "skillsTraining/btnCancel/label"
+msgstr "Cancel"
+
+msgid "skillsTraining/btnTrain/label"
+msgstr "Train"
+
+msgid "skillsTraining/title/bonusQualification"
+msgstr "BONUS QUALIFICATION"
+
+msgid "skillsTraining/title/majorQualification"
+msgstr "MAJOR QUALIFICATION"
 
 msgid "tankChange/title"
 msgstr "TRAIN FOR VEHICLE"

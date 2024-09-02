@@ -126,8 +126,6 @@ TRACK_WITHIN_TRACK_DEVICES = ('engine', 'ammoBay', 'gun', 'turretRotator', 'left
                               'radio', 'fuelTank')
 VEHICLE_GUI_ITEMS = ('engine', 'ammoBay', 'gun', 'turretRotator', 'chassis', 'surveyingDevice',
                      'radio', 'fuelTank')
-WHEELED_VEHICLE_GUI_ITEMS = ('engine', 'ammoBay', 'gun', 'turretRotator', 'wheel',
-                             'surveyingDevice', 'radio', 'fuelTank')
 ALL_VEHICLE_GUI_ITEMS = ('engine', 'ammoBay', 'gun', 'turretRotator', 'chassis', 'wheel',
                          'surveyingDevice', 'radio', 'fuelTank')
 VEHICLE_DEVICE_IN_COMPLEX_ITEM = {'leftTrack0': 'chassis', 

@@ -9,31 +9,40 @@
 			<row3>0.000000 0.000000 0.000000</row3>
 		</transform>
 		<node>
-			<identifier>HP_Fire_1</identifier>
+			<identifier>nodes_01</identifier>
 			<transform>
 				<row0>1.000000 0.000000 0.000000</row0>
 				<row1>0.000000 1.000000 0.000000</row1>
 				<row2>0.000000 0.000000 1.000000</row2>
-				<row3>0.630685 -0.049998 -2.879100</row3>
+				<row3>0.000000 0.000000 0.000000</row3>
 			</transform>
-		</node>
-		<node>
-			<identifier>HP_Fire_2</identifier>
-			<transform>
-				<row0>1.000000 0.000000 0.000000</row0>
-				<row1>0.000000 1.000000 0.000000</row1>
-				<row2>0.000000 0.000000 1.000000</row2>
-				<row3>-0.139262 -0.028661 2.287360</row3>
-			</transform>
-		</node>
-		<node>
-			<identifier>HP_turretJoint</identifier>
-			<transform>
-				<row0>1.000000 0.000000 0.000000</row0>
-				<row1>0.000000 1.000000 0.000000</row1>
-				<row2>0.000000 0.000000 1.000000</row2>
-				<row3>0.000876 0.525742 0.462057</row3>
-			</transform>
+			<node>
+				<identifier>HP_Fire_1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.630685 -0.049994 -2.879098</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Fire_2</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>-0.139262 -0.028656 2.147236</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_turretJoint</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000876 0.525747 0.462057</row3>
+				</transform>
+			</node>
 		</node>
 	</node>
 	<renderSet>
@@ -45,50 +54,37 @@
 			<primitiveGroup>
 				0
 				<material>
-					<identifier>tank_mat_inside</identifier>
-					<fx>shaders/std_effects/PBS_tank.fx</fx>
-					<collisionFlags>0</collisionFlags>
-					<materialKind>0</materialKind>
-					<property>
-						g_useNormalPackDXT1
-						<Bool>true</Bool>
-					</property>
-					<property>
-						excludeMaskAndAOMap
-						<Texture>vehicles/american/crash_inside/crash_inside_AO.dds</Texture>
-					</property>
-					<property>
-						metallicGlossMap
-						<Texture>vehicles/american/crash_inside/crash_inside_GMM.dds</Texture>
-					</property>
-					<property>
-						normalMap
-						<Texture>vehicles/american/crash_inside/crash_inside_NM.dds</Texture>
-					</property>
-					<property>
-						diffuseMap
-						<Texture>vehicles/american/crash_inside/crash_inside_AM.dds</Texture>
-					</property>
-				</material>
-				<groupOrigin>0.045392 0.043942 0.027956</groupOrigin>
-			</primitiveGroup>
-			<primitiveGroup>
-				1
-				<material>
 					<identifier>tank_hull_01</identifier>
 					<collisionFlags>0</collisionFlags>
 					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
 					<property>
 						diffuseMap
 						<Texture>vehicles/british/GB84_Chieftain_Mk6/Chieftain_Mk6_hull_01_AM.dds</Texture>
 					</property>
 					<property>
-						alphaReference
-						<Int>105</Int>
+						normalMap
+						<Texture>vehicles/british/GB84_Chieftain_Mk6/Chieftain_Mk6_hull_01_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/british/GB84_Chieftain_Mk6/Chieftain_Mk6_hull_01_GMM.dds</Texture>
 					</property>
 					<property>
 						alphaTestEnable
 						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaReference
+						<Int>64</Int>
+					</property>
+					<property>
+						crash_coefficient
+						<Float>0.300000</Float>
+					</property>
+					<property>
+						crashTileMap
+						<Texture>vehicles/russian/Tank_detail/crash_tile.dds</Texture>
 					</property>
 					<property>
 						excludeMaskAndAOMap
@@ -98,50 +94,47 @@
 						colorIdMap
 						<Texture>vehicles/russian/common/common_ID.dds</Texture>
 					</property>
-					<property>
-						crashTileMap
-						<Texture>vehicles/russian/Tank_detail/crash_tile.dds</Texture>
-					</property>
-					<property>
-						g_crashUVTiling
-						<Vector4>
-							4 4 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
-					</property>
-					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
-					</property>
-					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
-					<property>
-						metallicGlossMap
-						<Texture>vehicles/british/GB84_Chieftain_Mk6/Chieftain_Mk6_hull_01_GMM.dds</Texture>
-					</property>
-					<property>
-						normalMap
-						<Texture>vehicles/british/GB84_Chieftain_Mk6/Chieftain_Mk6_hull_01_ANM.dds</Texture>
-					</property>
 				</material>
-				<groupOrigin>0.002615 0.086984 -0.029787</groupOrigin>
+				<groupOrigin>0.000000 0.077675 -0.026260</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
-				2
+				1
 				<material>
 					<identifier>tank_chassis_01</identifier>
 					<collisionFlags>0</collisionFlags>
 					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
 					<property>
 						diffuseMap
 						<Texture>vehicles/british/GB84_Chieftain_Mk6/Chieftain_Mk6_chassis_01_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/british/GB84_Chieftain_Mk6/Chieftain_Mk6_chassis_01_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/british/GB84_Chieftain_Mk6/Chieftain_Mk6_chassis_01_GMM.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
 					</property>
 					<property>
 						alphaReference
 						<Int>64</Int>
 					</property>
 					<property>
-						alphaTestEnable
-						<Bool>true</Bool>
+						crash_coefficient
+						<Float>0.300000</Float>
+					</property>
+					<property>
+						crashTileMap
+						<Texture>vehicles/russian/Tank_detail/crash_tile.dds</Texture>
 					</property>
 					<property>
 						excludeMaskAndAOMap
@@ -151,43 +144,15 @@
 						colorIdMap
 						<Texture>vehicles/russian/common/common_ID.dds</Texture>
 					</property>
-					<property>
-						crashTileMap
-						<Texture>vehicles/russian/Tank_detail/crash_tile.dds</Texture>
-					</property>
-					<property>
-						g_crashUVTiling
-						<Vector4>
-							2 2 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
-					</property>
-					<property>
-						doubleSided
-						<Bool>false</Bool>
-					</property>
-					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
-					</property>
-					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
-					<property>
-						metallicGlossMap
-						<Texture>vehicles/british/GB84_Chieftain_Mk6/Chieftain_Mk6_chassis_01_GMM.dds</Texture>
-					</property>
-					<property>
-						normalMap
-						<Texture>vehicles/british/GB84_Chieftain_Mk6/Chieftain_Mk6_chassis_01_ANM.dds</Texture>
-					</property>
 				</material>
 				<groupOrigin>0.000000 -0.438300 0.034538</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<boundingBox>
-		<min>-1.713601 -0.978628 -3.782719</min>
-		<max>1.718831 0.742434 3.723145</max>
+		<min>-1.713512 -0.978623 -3.772733</min>
+		<max>1.713512 0.724309 3.720213</max>
 	</boundingBox>
-	<geometrySize>220572</geometrySize>
-	<minUVDensity>0.000873</minUVDensity>
+	<geometrySize>182644</geometrySize>
+	<minUVDensity>0.001314</minUVDensity>
 </root>

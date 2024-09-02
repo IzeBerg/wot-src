@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-	<version>3</version>
+	<version>4</version>
 	<GameObjects>
 		<GameObject>
 			<name>05_planesCrash01_plane_02_complete</name>
@@ -28,7 +28,7 @@
 			<type>Hierarchy</type>
 			<version>2</version>
 			<component>
-				<objectIndex>1</objectIndex>
+				<UUID>55a8d344-2ecb-4c46-a49a-74d274fd18e3</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -38,7 +38,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>2</objectIndex>
+				<UUID>f8e98783-bf53-48e2-ae5a-79ce1cc94942</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -48,7 +48,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>3</objectIndex>
+				<UUID>bb637fea-ce32-4b49-8296-b14f0380b99c</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -62,7 +62,7 @@
 			<type>Transform</type>
 			<version>1</version>
 			<component>
-				<objectIndex>0</objectIndex>
+				<UUID>f8388543-5a66-4066-b7cd-9ae06bbdcf53</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -80,7 +80,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>1</objectIndex>
+				<UUID>55a8d344-2ecb-4c46-a49a-74d274fd18e3</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -98,7 +98,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>2</objectIndex>
+				<UUID>f8e98783-bf53-48e2-ae5a-79ce1cc94942</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -119,7 +119,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>3</objectIndex>
+				<UUID>bb637fea-ce32-4b49-8296-b14f0380b99c</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -144,7 +144,7 @@
 			<type>SequenceComponent</type>
 			<version>3</version>
 			<component>
-				<objectIndex>0</objectIndex>
+				<UUID>f8388543-5a66-4066-b7cd-9ae06bbdcf53</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -246,49 +246,40 @@
 		</ComponentPool>
 		<ComponentPool>
 			<type>Prefab</type>
-			<version>1</version>
+			<version>2</version>
 			<component>
-				<objectIndex>1</objectIndex>
+				<UUID>55a8d344-2ecb-4c46-a49a-74d274fd18e3</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
-						<name>resource</name>
-						<isAsset>true</isAsset>
-						<value>content/CGFPrefabs/Map_scenarios/05_prohorovka/05_planes_crashing_01_in_alley/05_planesCrash01_plane_02_normal.prefab</value>
-					</property>
-					<property>
-						<name>overridesData</name>
-						<value/>
+						<name>content</name>
+						<section>
+							<resource>content/CGFPrefabs/Map_scenarios/05_prohorovka/05_planes_crashing_01_in_alley/05_planesCrash01_plane_02_normal.prefab</resource>
+						</section>
 					</property>
 				</config>
 			</component>
 			<component>
-				<objectIndex>2</objectIndex>
+				<UUID>f8e98783-bf53-48e2-ae5a-79ce1cc94942</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
-						<name>resource</name>
-						<isAsset>true</isAsset>
-						<value>content/CGFPrefabs/Map_scenarios/05_prohorovka/05_planes_crashing_01_in_alley/05_planesCrash01_plane_02_transition.prefab</value>
-					</property>
-					<property>
-						<name>overridesData</name>
-						<value/>
+						<name>content</name>
+						<section>
+							<resource>content/CGFPrefabs/Map_scenarios/05_prohorovka/05_planes_crashing_01_in_alley/05_planesCrash01_plane_02_transition.prefab</resource>
+						</section>
 					</property>
 				</config>
 			</component>
 			<component>
-				<objectIndex>3</objectIndex>
+				<UUID>bb637fea-ce32-4b49-8296-b14f0380b99c</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
-						<name>resource</name>
-						<isAsset>true</isAsset>
-						<value>content/CGFPrefabs/Map_scenarios/05_prohorovka/05_planes_crashing_01_in_alley/05_planesCrash01_plane_02_destroyed.prefab</value>
-					</property>
-					<property>
-						<name>overridesData</name>
-						<value/>
+						<name>content</name>
+						<section>
+							<resource>content/CGFPrefabs/Map_scenarios/05_prohorovka/05_planes_crashing_01_in_alley/05_planesCrash01_plane_02_destroyed.prefab</resource>
+						</section>
 					</property>
 				</config>
 			</component>

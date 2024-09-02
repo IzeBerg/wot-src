@@ -368,9 +368,6 @@ class BattlePassController(IBattlePassController, EventsHandler):
     def getState(self):
         return self.__itemsCache.items.battlePass.getState()
 
-    def getSeasonsHistory(self):
-        return {}
-
     def getLevelPoints(self, chapterID, level):
         levelsConfig = self.getLevelsConfig(chapterID)
         if level <= 0:

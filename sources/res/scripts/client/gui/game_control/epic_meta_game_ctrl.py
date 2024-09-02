@@ -1,7 +1,7 @@
 import logging
 from bisect import insort_right
 from operator import itemgetter
-import typing, BigWorld, Event, WWISE, adisp
+import typing, BigWorld, Event, WWISE, adisp, nations
 from CurrentVehicle import g_currentVehicle
 from account_helpers.AccountSettings import AccountSettings, GUI_START_BEHAVIOR, EPIC_LAST_CYCLE_ID
 from account_helpers.client_epic_meta_game import skipResponse
@@ -13,7 +13,7 @@ from frontline.frontline_account_settings import isWelcomeScreenViewed, setWelco
 from frontline.gui.impl.gen.view_models.views.lobby.views.info_page_scroll_to_section import InfoPageScrollToSection
 from gui import DialogsInterface
 from gui.ClientUpdateManager import g_clientUpdateManager
-from gui.limited_ui.lui_rules_storage import LuiRules
+from gui.limited_ui.lui_rules_storage import LUI_RULES
 from gui.prb_control.dispatcher import g_prbLoader
 from gui.prb_control.entities.base.ctx import PrbAction
 from gui.prb_control.entities.listener import IGlobalListener
@@ -285,7 +285,7 @@ class EpicBattleMetaGameController(Notifiable, SeasonProvider, IEpicBattleMetaGa
         return (self.isEnabled(), alertData, alertData.packCallbacks(showEpicBattlesPrimeTimeWindow, blockCallback))
 
     def getDailyBattleQuests(self):
-        if not self.isEnabled() or not self.__limitedUIController.isRuleCompleted(LuiRules.BATTLE_MISSIONS):
+        if not self.isEnabled() or not self.__limitedUIController.isRuleCompleted(LUI_RULES.BattleMissions):
             return None
         quests = [ q for q in self.__questController.getQuestForVehicle(g_currentVehicle.item) if isDailyEpic(q.getGroupID()) ]
         return quests
@@ -759,7 +759,7 @@ class EpicBattleMetaGameController(Notifiable, SeasonProvider, IEpicBattleMetaGa
             return
 
     def __invalidateBattleAbilityItems(self):
-        data = self.__itemsCache.items.getItems(GUI_ITEM_TYPE.BATTLE_ABILITY, REQ_CRITERIA.EMPTY)
+        data = self.__itemsCache.items.getItems(GUI_ITEM_TYPE.BATTLE_ABILITY, REQ_CRITERIA.EMPTY, nationID=nations.NONE_INDEX)
         vehicle = g_currentVehicle.item
         for item in data.values():
             if self.__isInValidPrebattle():

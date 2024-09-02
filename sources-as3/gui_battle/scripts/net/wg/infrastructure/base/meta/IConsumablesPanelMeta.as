@@ -8,8 +8,6 @@ package net.wg.infrastructure.base.meta
       
       function onClickedToSlotS(param1:Number, param2:int) : void;
       
-      function onPopUpClosedS() : void;
-      
       function onPanelShownS() : void;
       
       function onPanelHiddenS() : void;
@@ -36,10 +34,6 @@ package net.wg.infrastructure.base.meta
       
       function as_showEquipmentSlots(param1:Boolean) : void;
       
-      function as_expandEquipmentSlot(param1:int, param2:Array) : void;
-      
-      function as_collapseEquipmentSlot() : void;
-      
       function as_updateTooltip(param1:int, param2:String) : void;
       
       function as_addOptionalDeviceSlot(param1:int, param2:Number, param3:String, param4:String, param5:Boolean, param6:int, param7:Boolean) : void;
@@ -61,8 +55,6 @@ package net.wg.infrastructure.base.meta
       function as_isVisible() : Boolean;
       
       function as_reset(param1:Array) : void;
-      
-      function as_updateEntityState(param1:String, param2:String) : int;
       
       function as_setPanelSettings(param1:int) : void;
       

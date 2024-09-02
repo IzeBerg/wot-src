@@ -280,6 +280,11 @@ class KillCamera(ArcadeCamera):
             self.__onKillerVisionFinished()
             return
 
+    def setCollisionsOnlyAtPos(self, enable, cameraCollisionScaleMult=4.0):
+        if self.aimingSystem:
+            self.aimingSystem.cursorShouldCheckCollisions(not enable)
+        self.camera.setCollisionCheckOnlyAtPos(enable, cameraCollisionScaleMult)
+
     def calculatePhaseDurations(self, isSpotted):
         if isSpotted:
             phase1Duration = self.__totalSpinDuration + self.__spottedPhase1MarkerFadeOut
@@ -306,7 +311,7 @@ class KillCamera(ArcadeCamera):
     def isCameraRotationInverted(self, forInitialSpin=False):
         if self.__isRicochet and forInitialSpin and len(self.__trajectoryPoints) > 2:
             firstLeg = self.__trajectoryPoints[1] - self.__trajectoryPoints[0]
-            secondLeg = self.__trajectoryPoints[2] - self.__trajectoryPoints[1]
+            secondLeg = self.__trajectoryPoints[(-1)] - self.__trajectoryPoints[(-2)]
             firstLeg.normalise()
             secondLeg.normalise()
             return (firstLeg * secondLeg).y > 0
@@ -327,7 +332,10 @@ class KillCamera(ArcadeCamera):
         triNormNorm = Vector3(self.__projectileTriNorm)
         hitVector90DegreeRotated2D = Vector2(triNormNorm.z, -triNormNorm.x)
         hitVector90DegreeRotated2D.normalise()
-        return hitVector2D.dot(hitVector90DegreeRotated2D) > 0
+        result = hitVector2D.dot(hitVector90DegreeRotated2D) > 0
+        if self.__isRicochet:
+            return not result
+        return result
 
     def setCameraToLookTowards(self, sourceVehicleID, targetVehicleID=None, mode=None, firstPoint=None, lastPoint=None, isInstant=True, isInverted=False, originatesFromVehicle=True):
         if not targetVehicleID and not sourceVehicleID:
@@ -496,8 +504,10 @@ class KillCamera(ArcadeCamera):
         self.__currentState = state
         self.__setCursorCollision()
         self.__enableTreeHiding(self.__shouldHideBushes(self.__currentState))
-        ctx = {'configMovementDuration': self.__configMovementDuration}
-        self.__guiSessionProvider.shared.killCamCtrl.changeCameraState(state, ctx)
+        killCamCtrl = self.__guiSessionProvider.shared.killCamCtrl
+        if killCamCtrl:
+            ctx = {'configMovementDuration': self.__configMovementDuration}
+            self.__guiSessionProvider.shared.killCamCtrl.changeCameraState(state, ctx)
 
     def __enableTreeHiding(self, isHidden):
         BigWorld.wg_enableTreeHiding(isHidden)

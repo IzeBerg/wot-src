@@ -2,8 +2,7 @@
 <root>
 	<xmlns:xmlref>http://bwt/xmlref</xmlns:xmlref>
 	<crew>
-		<commander>radioman
-			loader</commander>
+		<commander>radioman</commander>
 		<driver/>
 		<gunner>loader</gunner>
 	</crew>
@@ -57,6 +56,12 @@
 				<!--BW_String-->
 			</invisibilityBonus>
 		</trophyUpgradedAdditionalInvisibilityDevice>
+		<deluxeAdditionalInvisibilityDevice>
+			<invisibilityBonus>
+				0.1
+				<!--BW_String-->
+			</invisibilityBonus>
+		</deluxeAdditionalInvisibilityDevice>
 	</optDevsOverrides>
 	<repairCost>
 		9.0
@@ -5833,7 +5838,7 @@
 						</minPitch>
 						<maxPitch>0 6 1 6</maxPitch>
 					</pitchLimits>
-					<reloadTime>24</reloadTime>
+					<reloadTime>21</reloadTime>
 					<invisibilityFactorAtShot>
 						0.234
 						<!--BW_String-->
@@ -5848,7 +5853,7 @@
 					</shotDispersionRadius>
 					<shotDispersionFactors>
 						<turretRotation>
-							0.12
+							0.1
 							<!--BW_String-->
 						</turretRotation>
 						<afterShot>
@@ -5860,10 +5865,7 @@
 							<!--BW_String-->
 						</whileGunDamaged>
 					</shotDispersionFactors>
-					<aimingTime>
-						2.3
-						<!--BW_String-->
-					</aimingTime>
+					<aimingTime>2</aimingTime>
 					<models>
 						<undamaged>vehicles/french/F87_Batignolles-Chatillon_12t/normal/lod0/Gun_02.model</undamaged>
 						<destroyed>vehicles/french/F87_Batignolles-Chatillon_12t/crash/lod0/Gun_02.model</destroyed>
@@ -6660,7 +6662,7 @@
 						</minPitch>
 						<maxPitch>0 6 1 6</maxPitch>
 					</pitchLimits>
-					<reloadTime>20</reloadTime>
+					<reloadTime>17</reloadTime>
 					<invisibilityFactorAtShot>
 						0.234
 						<!--BW_String-->
@@ -6675,7 +6677,7 @@
 					</shotDispersionRadius>
 					<shotDispersionFactors>
 						<turretRotation>
-							0.12
+							0.1
 							<!--BW_String-->
 						</turretRotation>
 						<afterShot>
@@ -6687,10 +6689,7 @@
 							<!--BW_String-->
 						</whileGunDamaged>
 					</shotDispersionFactors>
-					<aimingTime>
-						2.3
-						<!--BW_String-->
-					</aimingTime>
+					<aimingTime>2</aimingTime>
 					<models>
 						<undamaged>vehicles/french/F87_Batignolles-Chatillon_12t/normal/lod0/Gun_03.model</undamaged>
 						<destroyed>vehicles/french/F87_Batignolles-Chatillon_12t/crash/lod0/Gun_03.model</destroyed>
@@ -7867,15 +7866,6 @@
 		<Heavy>shared</Heavy>
 	</fuelTanks>
 	<radios>
-		<SCR_508>
-			shared
-			<unlocks>
-				<radio>
-					SCR_528
-					<cost>9000</cost>
-				</radio>
-			</unlocks>
-		</SCR_508>
 		<SCR_528>shared</SCR_528>
 	</radios>
 	<clientAdjustmentFactors/>
@@ -7883,7 +7873,7 @@
 		<detailed>
 			<engines>
 				<Mathis_210>
-					<smplEnginePower>320</smplEnginePower>
+					<smplEnginePower>350</smplEnginePower>
 					<smplFwMaxSpeed>68</smplFwMaxSpeed>
 				</Mathis_210>
 				<Mathis_300>

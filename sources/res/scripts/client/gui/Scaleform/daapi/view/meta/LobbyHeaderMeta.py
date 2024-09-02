@@ -118,6 +118,10 @@ class LobbyHeaderMeta(BaseDAAPIComponent):
         if self._isDAAPIInited():
             return self.flashObject.as_updateAnonymizedState(isAnonymized)
 
+    def as_updateReservesS(self):
+        if self._isDAAPIInited():
+            return self.flashObject.as_updateReserves()
+
     def as_setWalletStatusS(self, walletStatus):
         if self._isDAAPIInited():
             return self.flashObject.as_setWalletStatus(walletStatus)

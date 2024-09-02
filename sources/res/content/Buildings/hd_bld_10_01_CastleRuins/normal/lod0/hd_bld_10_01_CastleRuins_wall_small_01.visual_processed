@@ -40,7 +40,7 @@
 						<Texture>content/Buildings/hd_bld_10_01_CastleRuins/hd_bld_10_01_CastleRuins_Stones_GMM.dds</Texture>
 					</property>
 				</material>
-				<groupOrigin>-0.025826 6.965913 -3.782435</groupOrigin>
+				<groupOrigin>-0.022254 6.959052 -3.780328</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
 				1
@@ -49,10 +49,6 @@
 					<collisionFlags>0</collisionFlags>
 					<materialKind>111</materialKind>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
-					<property>
-						alphaReference
-						<Int>0</Int>
-					</property>
 					<property>
 						g_fakeShadowsAndDetailParams
 						<Vector4>0.000000 0.500000 1.000000 0.000000</Vector4>
@@ -64,14 +60,6 @@
 					<property>
 						g_enableTerrainBlending
 						<Bool>true</Bool>
-					</property>
-					<property>
-						doubleSided
-						<Bool>false</Bool>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>false</Bool>
 					</property>
 					<property>
 						blendMask
@@ -132,10 +120,6 @@
 					<materialKind>111</materialKind>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
 					<property>
-						alphaReference
-						<Int>0</Int>
-					</property>
-					<property>
 						g_fakeShadowsAndDetailParams
 						<Vector4>0.000000 0.500000 1.000000 0.000000</Vector4>
 					</property>
@@ -146,14 +130,6 @@
 					<property>
 						g_enableTerrainBlending
 						<Bool>true</Bool>
-					</property>
-					<property>
-						doubleSided
-						<Bool>false</Bool>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>false</Bool>
 					</property>
 					<property>
 						blendMask
@@ -209,10 +185,10 @@
 		</geometry>
 	</renderSet>
 	<boundingBox>
-		<min>-1.678383 -0.001318 -8.582469</min>
-		<max>1.642737 13.320401 1.017598</max>
+		<min>-1.678383 -0.001318 -8.577872</min>
+		<max>1.642737 13.316865 1.017217</max>
 	</boundingBox>
 	<customBsp>true</customBsp>
-	<geometrySize>331138</geometrySize>
+	<geometrySize>415608</geometrySize>
 	<minUVDensity>0.017065</minUVDensity>
 </root>

@@ -2,8 +2,6 @@ package net.wg.gui.battle.views.consumablesPanel
 {
    import fl.motion.easing.Circular;
    import flash.display.DisplayObject;
-   import flash.events.MouseEvent;
-   import flash.geom.ColorTransform;
    import net.wg.data.constants.InvalidationType;
    import net.wg.data.constants.Linkages;
    import net.wg.data.constants.Values;
@@ -12,7 +10,6 @@ package net.wg.gui.battle.views.consumablesPanel
    import net.wg.gui.battle.comp7.views.consumablesPanel.Comp7ConsumableButton;
    import net.wg.gui.battle.components.buttons.BattleButton;
    import net.wg.gui.battle.views.consumablesPanel.VO.ConsumablesVO;
-   import net.wg.gui.battle.views.consumablesPanel.constants.COLOR_STATES;
    import net.wg.gui.battle.views.consumablesPanel.events.ConsumablesPanelEvent;
    import net.wg.gui.battle.views.consumablesPanel.interfaces.IBattleOptionalDeviceButton;
    import net.wg.gui.battle.views.consumablesPanel.interfaces.IBattleShellButton;
@@ -23,7 +20,6 @@ package net.wg.gui.battle.views.consumablesPanel
    import net.wg.utils.IStageSizeDependComponent;
    import net.wg.utils.StageSizeBoundaries;
    import scaleform.clik.motion.Tween;
-   import scaleform.gfx.MouseEventEx;
    
    public class ConsumablesPanel extends ConsumablesPanelMeta implements IConsumablesPanel, IStageSizeDependComponent
    {
@@ -33,8 +29,6 @@ package net.wg.gui.battle.views.consumablesPanel
       private static const ITEM_WIDTH_PADDING:int = 57;
       
       private static const ITEM_WIDTH_SHORT_PADDING:int = 49;
-      
-      private static const POPUP_Y_OFFSET:int = -6;
       
       private static const DATA_SLOT_IDX:int = 0;
       
@@ -70,12 +64,6 @@ package net.wg.gui.battle.views.consumablesPanel
       private var _shellCurrentIdx:int = -1;
       
       private var _shellNextIdx:int = -1;
-      
-      private var _expandedIdx:int = -1;
-      
-      private var _popUp:EntitiesStatePopup;
-      
-      private var _isExpand:Boolean = false;
       
       private var _isReplay:Boolean = false;
       
@@ -123,22 +111,10 @@ package net.wg.gui.battle.views.consumablesPanel
          return param1 < StageSizeBoundaries.WIDTH_1280 ? int(ITEM_WIDTH_SHORT_PADDING) : int(ITEM_WIDTH_PADDING);
       }
       
-      override protected function configUI() : void
-      {
-         super.configUI();
-         App.stage.addEventListener(MouseEvent.MOUSE_DOWN,this.onStageMouseDownHandler);
-      }
-      
       override protected function onDispose() : void
       {
          var _loc1_:BattleButton = null;
          var _loc2_:ConsumablesPanelSettings = null;
-         App.stage.removeEventListener(MouseEvent.MOUSE_DOWN,this.onStageMouseDownHandler);
-         if(this._popUp)
-         {
-            this._popUp.dispose();
-            this._popUp = null;
-         }
          for each(_loc1_ in this._renderers)
          {
             if(_loc1_ != null)
@@ -175,12 +151,6 @@ package net.wg.gui.battle.views.consumablesPanel
          }
       }
       
-      override protected function expandEquipmentSlot(param1:int, param2:Array) : void
-      {
-         this.collapsePopup();
-         this.expandPopup(param1,param2);
-      }
-      
       override protected function setKeysToSlots(param1:Array) : void
       {
          var _loc2_:IConsumablesButton = null;
@@ -204,7 +174,6 @@ package net.wg.gui.battle.views.consumablesPanel
          var _loc6_:int = 0;
          this._shellCurrentIdx = -1;
          this._shellNextIdx = -1;
-         this.collapsePopup();
          var _loc2_:int = Boolean(param1) ? int(param1.length) : int(0);
          if(_loc2_ == 0)
          {
@@ -346,11 +315,6 @@ package net.wg.gui.battle.views.consumablesPanel
             _loc10_.addClickCallBack(this);
          }
          invalidate(INVALIDATE_DRAW_LAYOUT);
-      }
-      
-      public function as_collapseEquipmentSlot() : void
-      {
-         this.collapsePopup();
       }
       
       public function as_handleAsObserver() : void
@@ -596,17 +560,6 @@ package net.wg.gui.battle.views.consumablesPanel
          }
       }
       
-      public function as_updateEntityState(param1:String, param2:String) : int
-      {
-         var _loc3_:int = -1;
-         if(this._isExpand)
-         {
-            this._popUp.updateData(param1,param2);
-            _loc3_ = this._expandedIdx;
-         }
-         return _loc3_;
-      }
-      
       public function as_updateTooltip(param1:int, param2:String) : void
       {
          var _loc3_:IConsumablesButton = this.getRendererBySlotIdx(param1);
@@ -794,89 +747,6 @@ package net.wg.gui.battle.views.consumablesPanel
          _loc10_.quantity = param4;
       }
       
-      private function expandPopup(param1:int, param2:Array) : void
-      {
-         this._expandedIdx = param1;
-         if(this._popUp)
-         {
-            this._popUp.setData(param2);
-         }
-         else
-         {
-            this._popUp = this._classFactory.getComponent(Linkages.ENTITIES_POPUP,EntitiesStatePopup);
-            addChild(this._popUp);
-            this._popUp.addClickHandler(this);
-            this._popUp.createPopup(param2);
-         }
-         this._popUp.visible = true;
-         this._popUp.x = this._basePanelWidth - this._popUp.width >> 1;
-         this._popUp.y = -CONSUMABLES_PANEL_Y_OFFSET - POPUP_Y_OFFSET ^ 0;
-         this._isExpand = true;
-         this.getRendererBySlotIdx(this._expandedIdx).showConsumableBorder = true;
-         dispatchEvent(new ConsumablesPanelEvent(ConsumablesPanelEvent.SWITCH_POPUP));
-         this.setColorTransformForRenderers();
-      }
-      
-      private function collapsePopup() : void
-      {
-         if(!this._isExpand)
-         {
-            return;
-         }
-         this.getRendererBySlotIdx(this._expandedIdx).showConsumableBorder = false;
-         onPopUpClosedS();
-         this._expandedIdx = -1;
-         this._isExpand = false;
-         if(!this._popUp)
-         {
-            return;
-         }
-         this._popUp.visible = false;
-         dispatchEvent(new ConsumablesPanelEvent(ConsumablesPanelEvent.SWITCH_POPUP));
-         this.clearColorTransformForRenderers();
-      }
-      
-      private function setColorTransformForRenderers() : void
-      {
-         var _loc2_:IConsumablesButton = null;
-         var _loc1_:ColorTransform = COLOR_STATES.DARK_COLOR_TRANSFORM;
-         var _loc3_:int = this._renderers.length;
-         var _loc4_:uint = 0;
-         while(_loc4_ < _loc3_)
-         {
-            if(_loc4_ != this._expandedIdx)
-            {
-               _loc2_ = this.getRenderer(_loc4_);
-               if(_loc2_)
-               {
-                  _loc2_.setColorTransform(_loc1_);
-               }
-            }
-            _loc4_++;
-         }
-      }
-      
-      private function clearColorTransformForRenderers() : void
-      {
-         var _loc1_:IConsumablesButton = null;
-         var _loc2_:int = this._renderers.length;
-         var _loc3_:uint = 0;
-         while(_loc3_ < _loc2_)
-         {
-            _loc1_ = this.getRenderer(_loc3_);
-            if(_loc1_)
-            {
-               _loc1_.clearColorTransform();
-            }
-            _loc3_++;
-         }
-      }
-      
-      public function get isExpand() : Boolean
-      {
-         return this._isExpand;
-      }
-      
       public function get isReplay() : Boolean
       {
          return this._isReplay;
@@ -885,20 +755,6 @@ package net.wg.gui.battle.views.consumablesPanel
       public function get panelWidth() : Number
       {
          return this.x + this._basePanelWidth;
-      }
-      
-      private function onStageMouseDownHandler(param1:MouseEvent) : void
-      {
-         var _loc2_:MouseEventEx = param1 as MouseEventEx;
-         var _loc3_:uint = _loc2_ == null ? uint(0) : uint(_loc2_.buttonIdx);
-         if(_loc3_ != 0)
-         {
-            return;
-         }
-         if(this._isExpand && !(param1.target is EntityStateButton))
-         {
-            this.collapsePopup();
-         }
       }
    }
 }

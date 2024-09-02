@@ -2,11 +2,12 @@ from gui.ClientUpdateManager import g_clientUpdateManager
 from gui.impl.lobby.crew.dialogs.base_crew_dialog_template_view import BaseCrewDialogTemplateView
 from gui.impl.lobby.crew.dialogs.recruit_window.recruit_content import NO_DATA_VALUE, RecruitContent
 from gui.impl.gen.view_models.views.lobby.crew.dialogs.recruit_window.recruit_dialog_template_view_model import RecruitDialogTemplateViewModel
-from gui.server_events import recruit_helper
+from gui.shared.event_dispatcher import showRecruitConfirmIrrelevantConversionDialog
 from gui.shared.gui_items import GUI_ITEM_TYPE
 from gui.shared.gui_items.processors.quests import PMGetTankwomanReward
 from items import vehicles
-from gui.impl.lobby.crew.dialogs.recruit_window.recruit_dialog_utils import getIcon, getTitle, getIconBackground, getIconName
+from gui.impl.lobby.crew.dialogs.recruit_window.recruit_dialog_utils import getIcon, getTitle, getIconBackground, getIconName, getTitleFromTokenData
+from gui.impl.lobby.crew.crew_sounds import SOUNDS as CREW_SOUNDS
 from gui.impl.dialogs.dialog_template_button import CancelButton, ConfirmButton
 from gui.impl.pub.dialog_window import DialogButtons
 from gui.impl.gen.resources import R
@@ -63,7 +64,7 @@ class TokenRecruitDialog(BaseRecruitDialog):
     __slots__ = ('__tokenName', '__tokenData', '__vehicleSlotToUnpack', '__vehicle')
     _itemsCache = dependency.descriptor(IItemsCache)
     _specialSounds = dependency.descriptor(ISpecialSoundCtrl)
-    __SOUND_SETTINGS = CommonSoundSpaceSettings(name='hangar', entranceStates={SOUNDS.STATE_PLACE: SOUNDS.STATE_PLACE_GARAGE, StatesGroup.HANGAR_FILTERED: States.HANGAR_FILTERED_OFF}, exitStates={}, persistentSounds=(), stoppableSounds=(), priorities=(), autoStart=True, enterEvent=SOUNDS.WOMAN_AWARD_WINDOW, exitEvent='')
+    __SOUND_SETTINGS = CommonSoundSpaceSettings(name='hangar', entranceStates={SOUNDS.STATE_PLACE: CREW_SOUNDS.STATE_PLACE_BARRAKS, StatesGroup.HANGAR_FILTERED: States.HANGAR_FILTERED_OFF}, exitStates={}, persistentSounds=(), stoppableSounds=(), priorities=(), autoStart=True, enterEvent=SOUNDS.WOMAN_AWARD_WINDOW, exitEvent='')
     _COMMON_SOUND_SPACE = __SOUND_SETTINGS
 
     def __init__(self, ctx=None, **kwargs):
@@ -76,10 +77,7 @@ class TokenRecruitDialog(BaseRecruitDialog):
     def _onLoading(self, *args, **kwargs):
         super(TokenRecruitDialog, self)._onLoading(*args, **kwargs)
         self.setBackgroundImagePath(R.images.gui.maps.icons.windows.background())
-        name = self.__tokenData.getFullUserNameByNation().strip()
-        if self.__tokenData.getSmallIcon() in (recruit_helper._TANKWOMAN_ICON, recruit_helper._TANKMAN_ICON):
-            name = None
-        self.viewModel.setText(getTitle(name))
+        self.viewModel.setText(getTitleFromTokenData(self.__tokenData))
         self.viewModel.setHasVoiceover(bool(self.__tokenData.getSpecialVoiceTag(self._specialSounds)))
         self._addButtons()
         predefinedData = {'predefinedNations': self.__tokenData.getNations(), 
@@ -95,7 +93,6 @@ class TokenRecruitDialog(BaseRecruitDialog):
         self.viewModel.iconModel.icon.setPath(iconID)
         if not hasBackground:
             self.viewModel.iconModel.bgIcon.setPath(getIconBackground(self.__tokenData.getSourceID(), self.__tokenData.getSmallIcon()))
-        return
 
     def _finalize(self):
         super(TokenRecruitDialog, self)._finalize()
@@ -104,14 +101,29 @@ class TokenRecruitDialog(BaseRecruitDialog):
             self._recruitContent.unsubscribe()
         return
 
+    def _hasIrrelevantSkils(self, vehicle):
+        tman = self.__tokenData.getFakeTankmanInVehicle(vehicle, self._selectedSpecialization)
+        return any(skill for skill in tman.descriptor.irrelevantSkills)
+
+    @wg_async
     def _setResult(self, result):
         if result == DialogButtons.SUBMIT:
-            tankmen = self.__vehicle.getTankmanIDBySlotIdx(self.__vehicleSlotToUnpack) if self.__vehicle else NO_TANKMAN
-            if tankmen != NO_TANKMAN:
-                self._unloadOldTankman()
-            else:
-                self._unpackTokenRecruit()
+            vehicle = self._itemsCache.items.getItemByCD(int(self._selectedVehicle))
+            if vehicle and self._hasIrrelevantSkils(vehicle):
+                confirmResult = yield wg_await(showRecruitConfirmIrrelevantConversionDialog({'tokenData': self.__tokenData, 
+                   'selectedRole': self._selectedSpecialization, 
+                   'selectedVehicle': vehicle}))
+                if not confirmResult.result or not confirmResult.result[0]:
+                    return
+            self._submit()
         super(TokenRecruitDialog, self)._setResult(result)
+
+    def _submit(self):
+        tankmen = self.__vehicle.getTankmanIDBySlotIdx(self.__vehicleSlotToUnpack) if self.__vehicle else NO_TANKMAN
+        if tankmen != NO_TANKMAN:
+            self._unloadOldTankman()
+        else:
+            self._unpackTokenRecruit()
 
     @decorators.adisp_process('updating')
     def _unpackTokenRecruit(self):

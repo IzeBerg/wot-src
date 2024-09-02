@@ -5,9 +5,6 @@ class ConsumablesPanelMeta(BaseDAAPIComponent):
     def onClickedToSlot(self, keyCode, idx):
         self._printOverrideError('onClickedToSlot')
 
-    def onPopUpClosed(self):
-        self._printOverrideError('onPopUpClosed')
-
     def onPanelShown(self):
         self._printOverrideError('onPanelShown')
 
@@ -58,14 +55,6 @@ class ConsumablesPanelMeta(BaseDAAPIComponent):
         if self._isDAAPIInited():
             return self.flashObject.as_showEquipmentSlots(show)
 
-    def as_expandEquipmentSlotS(self, idx, slots):
-        if self._isDAAPIInited():
-            return self.flashObject.as_expandEquipmentSlot(idx, slots)
-
-    def as_collapseEquipmentSlotS(self):
-        if self._isDAAPIInited():
-            return self.flashObject.as_collapseEquipmentSlot()
-
     def as_updateTooltipS(self, idx, tooltipStr):
         if self._isDAAPIInited():
             return self.flashObject.as_updateTooltip(idx, tooltipStr)
@@ -109,10 +98,6 @@ class ConsumablesPanelMeta(BaseDAAPIComponent):
     def as_resetS(self, slots=None):
         if self._isDAAPIInited():
             return self.flashObject.as_reset(slots)
-
-    def as_updateEntityStateS(self, entityName, entityState):
-        if self._isDAAPIInited():
-            return self.flashObject.as_updateEntityState(entityName, entityState)
 
     def as_setPanelSettingsS(self, settingsId):
         if self._isDAAPIInited():

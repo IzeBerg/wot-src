@@ -9,13 +9,22 @@
 			<row3>0.000000 0.000000 0.000000</row3>
 		</transform>
 		<node>
-			<identifier>HP_gunJoint</identifier>
+			<identifier>nodes_01</identifier>
 			<transform>
 				<row0>1.000000 0.000000 0.000000</row0>
 				<row1>0.000000 1.000000 0.000000</row1>
 				<row2>0.000000 0.000000 1.000000</row2>
-				<row3>-0.000884 0.301326 1.279290</row3>
+				<row3>0.000000 0.000000 0.000000</row3>
 			</transform>
+			<node>
+				<identifier>HP_gunJoint</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>-0.000884 0.301326 1.279289</row3>
+				</transform>
+			</node>
 		</node>
 	</node>
 	<renderSet>
@@ -30,17 +39,30 @@
 					<identifier>tank_turret_01</identifier>
 					<collisionFlags>0</collisionFlags>
 					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
 					<property>
 						diffuseMap
 						<Texture>vehicles/british/GB84_Chieftain_Mk6/Chieftain_Mk6_turret_01_AM.dds</Texture>
 					</property>
 					<property>
-						alphaReference
-						<Int>115</Int>
+						normalMap
+						<Texture>vehicles/british/GB84_Chieftain_Mk6/Chieftain_Mk6_turret_01_ANM.dds</Texture>
 					</property>
 					<property>
-						alphaTestEnable
-						<Bool>true</Bool>
+						metallicGlossMap
+						<Texture>vehicles/british/GB84_Chieftain_Mk6/Chieftain_Mk6_turret_01_GMM.dds</Texture>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/british/GB84_Chieftain_Mk6/Chieftain_Mk6_turret_01_AO.dds</Texture>
+					</property>
+					<property>
+						crash_coefficient
+						<Float>0.300000</Float>
+					</property>
+					<property>
+						crashTileMap
+						<Texture>vehicles/russian/Tank_detail/crash_tile.dds</Texture>
 					</property>
 					<property>
 						excludeMaskAndAOMap
@@ -50,39 +72,49 @@
 						colorIdMap
 						<Texture>vehicles/russian/common/common_ID.dds</Texture>
 					</property>
+				</material>
+				<groupOrigin>-0.156836 0.588711 -0.535474</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>tank_equipment_01</identifier>
+					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
 					<property>
 						crashTileMap
 						<Texture>vehicles/russian/Tank_detail/crash_tile.dds</Texture>
 					</property>
 					<property>
-						g_crashUVTiling
-						<Vector4>
-							4 4 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
+						diffuseMap
+						<Texture>vehicles/british/GB84_Chieftain_Mk6/Chieftain_Mk6_equipment_01_AM.dds</Texture>
 					</property>
 					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
+						excludeMaskAndAOMap
+						<Texture>vehicles/british/GB84_Chieftain_Mk6/Chieftain_Mk6_equipment_01_AO.dds</Texture>
 					</property>
-					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
 					<property>
 						metallicGlossMap
-						<Texture>vehicles/british/GB84_Chieftain_Mk6/Chieftain_Mk6_turret_01_GMM.dds</Texture>
+						<Texture>vehicles/british/GB84_Chieftain_Mk6/Chieftain_Mk6_equipment_01_GMM.dds</Texture>
 					</property>
 					<property>
 						normalMap
-						<Texture>vehicles/british/GB84_Chieftain_Mk6/Chieftain_Mk6_turret_01_ANM.dds</Texture>
+						<Texture>vehicles/british/GB84_Chieftain_Mk6/Chieftain_Mk6_equipment_01_ANM.dds</Texture>
 					</property>
 				</material>
-				<groupOrigin>-0.148520 0.588702 -0.545831</groupOrigin>
+				<groupOrigin>0.330723 1.102696 -0.651325</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<boundingBox>
-		<min>-1.873916 -0.097894 -2.735574</min>
-		<max>1.576875 1.275299 1.643912</max>
+		<min>-1.873575 -0.097894 -2.714859</min>
+		<max>1.559902 1.275316 1.643912</max>
 	</boundingBox>
-	<geometrySize>391106</geometrySize>
-	<minUVDensity>0.000608</minUVDensity>
+	<geometrySize>310928</geometrySize>
+	<minUVDensity>0.003700</minUVDensity>
 </root>

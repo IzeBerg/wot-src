@@ -20,7 +20,7 @@
 				0
 				<material>
 					<identifier>s_nd2</identifier>
-					<collisionFlags>0</collisionFlags>
+					<collisionFlags>255</collisionFlags>
 					<materialKind>111</materialKind>
 					<fx>shaders/std_effects/PBS_ext.fx</fx>
 					<property>
@@ -46,13 +46,9 @@
 				1
 				<material>
 					<identifier>s_nd1</identifier>
-					<collisionFlags>0</collisionFlags>
+					<collisionFlags>255</collisionFlags>
 					<materialKind>111</materialKind>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
-					<property>
-						alphaReference
-						<Int>0</Int>
-					</property>
 					<property>
 						g_fakeShadowsAndDetailParams
 						<Vector4>0.000000 0.500000 1.000000 0.000000</Vector4>
@@ -64,14 +60,6 @@
 					<property>
 						g_enableTerrainBlending
 						<Bool>true</Bool>
-					</property>
-					<property>
-						doubleSided
-						<Bool>false</Bool>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>false</Bool>
 					</property>
 					<property>
 						blendMask
@@ -132,16 +120,8 @@
 					<materialKind>111</materialKind>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
 					<property>
-						alphaReference
-						<Int>0</Int>
-					</property>
-					<property>
 						g_fakeShadowsAndDetailParams
 						<Vector4>0.000000 0.500000 1.000000 0.000000</Vector4>
-					</property>
-					<property>
-						g_tile0Tint
-						<Vector4>1.000000 1.000000 1.000000 1.000000</Vector4>
 					</property>
 					<property>
 						g_dirtColor
@@ -154,14 +134,6 @@
 					<property>
 						g_enableTerrainBlending
 						<Bool>true</Bool>
-					</property>
-					<property>
-						doubleSided
-						<Bool>false</Bool>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>false</Bool>
 					</property>
 					<property>
 						blendMask

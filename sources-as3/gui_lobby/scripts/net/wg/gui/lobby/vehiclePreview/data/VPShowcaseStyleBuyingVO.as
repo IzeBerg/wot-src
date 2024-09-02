@@ -15,6 +15,7 @@ package net.wg.gui.lobby.vehiclePreview.data
          CURRENCY_TO_ICON_TYPES_MAP[CURRENCIES_CONSTANTS.CREDITS] = IconsTypes.CREDITS_BIG;
          CURRENCY_TO_ICON_TYPES_MAP[CURRENCIES_CONSTANTS.CRYSTAL] = IconsTypes.CRYSTAL;
          CURRENCY_TO_ICON_TYPES_MAP[CURRENCIES_CONSTANTS.WDR_COIN] = IconsTypes.WDR_COIN;
+         CURRENCY_TO_ICON_TYPES_MAP[CURRENCIES_CONSTANTS.BPBIT] = IconsTypes.BPBIT;
       }
       
       public var originalPrice:int = 0;
@@ -37,10 +38,11 @@ package net.wg.gui.lobby.vehiclePreview.data
       
       public var actionBtnLabel:String = "";
       
-      private var _priceType:String = "goldBig";
+      private var _priceType:String;
       
       public function VPShowcaseStyleBuyingVO(param1:Object)
       {
+         this._priceType = IconsTypes.GOLD_BIG;
          super(param1);
          if(this.discountPercent > 0 && !this.actionPrice)
          {

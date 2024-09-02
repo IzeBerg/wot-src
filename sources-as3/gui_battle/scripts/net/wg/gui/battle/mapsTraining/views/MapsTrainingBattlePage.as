@@ -30,8 +30,6 @@ package net.wg.gui.battle.mapsTraining.views
       
       private static const BATTLE_DAMAGE_LOG_Y_PADDING:int = 3;
       
-      private static const CONSUMABLES_POPUP_OFFSET:int = 60;
-      
       private static const HINT_PANEL_Y_SHIFT_MULTIPLIER:Number = 1.5;
       
       private static const VEHICLE_MESSAGES_LIST_OFFSET_Y:int = 106;
@@ -111,7 +109,6 @@ package net.wg.gui.battle.mapsTraining.views
       
       override protected function configUI() : void
       {
-         this.consumablesPanel.addEventListener(ConsumablesPanelEvent.SWITCH_POPUP,this.onConsumablesPanelSwitchPopupHandler);
          this.consumablesPanel.addEventListener(ConsumablesPanelEvent.UPDATE_POSITION,this.onConsumablesPanelUpdatePositionHandler);
          this.battleMessenger.addEventListener(FocusRequestEvent.REQUEST_FOCUS,this.onBattleMessengerRequestFocusHandler);
          this.battleMessenger.addEventListener(BattleMessenger.REMOVE_FOCUS,this.onBattleMessengerRemoveFocusHandler);
@@ -139,7 +136,6 @@ package net.wg.gui.battle.mapsTraining.views
       override protected function onBeforeDispose() : void
       {
          this.consumablesPanel.removeEventListener(ConsumablesPanelEvent.UPDATE_POSITION,this.onConsumablesPanelUpdatePositionHandler);
-         this.consumablesPanel.removeEventListener(ConsumablesPanelEvent.SWITCH_POPUP,this.onConsumablesPanelSwitchPopupHandler);
          this.consumablesPanel = null;
          this.battleMessenger.removeEventListener(FocusRequestEvent.REQUEST_FOCUS,this.onBattleMessengerRequestFocusHandler);
          this.battleMessenger.removeEventListener(BattleMessenger.REMOVE_FOCUS,this.onBattleMessengerRemoveFocusHandler);
@@ -228,16 +224,6 @@ package net.wg.gui.battle.mapsTraining.views
             this.updateBattleDamageLogPanelPosition();
          }
          minimap.updateSizeIndex(false);
-      }
-      
-      private function onConsumablesPanelSwitchPopupHandler(param1:ConsumablesPanelEvent) : void
-      {
-         var _loc2_:int = 0;
-         if(!postmortemPanelUI || !postmortemPanelUI.visible)
-         {
-            _loc2_ = !!this.consumablesPanel.isExpand ? int(CONSUMABLES_POPUP_OFFSET) : int(0);
-            vehicleMessageList.setLocation(_originalWidth - VEHICLE_MESSAGES_LIST_OFFSET.x >> 1,_originalHeight - VEHICLE_MESSAGES_LIST_OFFSET.y - _loc2_ | 0);
-         }
       }
       
       private function onHintPanelResizeHandler(param1:Event) : void

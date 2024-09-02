@@ -6,27 +6,42 @@ package net.wg.gui.events
    {
       
       public static const VALUE_CHANGED:String = "valueChanged";
-       
       
-      private var _isEnough:Boolean;
+      public static const ON_INFO_WARNING_BTN:String = "onInfoWarningBtn";
+       
       
       private var _isNull:Boolean;
       
-      public function ConfirmExchangeBlockEvent(param1:String, param2:Boolean = false, param3:Boolean = true, param4:Boolean = false, param5:Boolean = false)
+      private var _goldValue:int;
+      
+      private var _needItemsValue:int;
+      
+      public function ConfirmExchangeBlockEvent(param1:String, param2:Boolean = true, param3:int = 0, param4:int = 0, param5:Boolean = false, param6:Boolean = false)
       {
-         super(param1,param4,param5);
-         this._isEnough = param2;
-         this._isNull = param3;
+         super(param1,param5,param6);
+         this._isNull = param2;
+         this._goldValue = param3;
+         this._needItemsValue = param4;
       }
       
-      public function get isEnough() : Boolean
+      override public function clone() : Event
       {
-         return this._isEnough;
+         return new ConfirmExchangeBlockEvent(type,this._isNull,this._goldValue,this._needItemsValue);
       }
       
       public function get isNull() : Boolean
       {
          return this._isNull;
+      }
+      
+      public function get goldValue() : int
+      {
+         return this._goldValue;
+      }
+      
+      public function get needItemsValue() : int
+      {
+         return this._needItemsValue;
       }
    }
 }

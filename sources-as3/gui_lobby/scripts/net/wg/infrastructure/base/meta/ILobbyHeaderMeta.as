@@ -72,6 +72,8 @@ package net.wg.infrastructure.base.meta
       
       function as_updateAnonymizedState(param1:Boolean) : void;
       
+      function as_updateReserves() : void;
+      
       function as_setWalletStatus(param1:Object) : void;
       
       function as_disableFightButton(param1:Boolean) : void;

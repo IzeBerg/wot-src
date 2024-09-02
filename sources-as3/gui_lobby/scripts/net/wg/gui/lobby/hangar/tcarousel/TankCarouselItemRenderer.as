@@ -215,10 +215,6 @@ package net.wg.gui.lobby.hangar.tcarousel
          {
             this._toolTipMgr.showComplex(this._dataVO.tooltip);
          }
-         else if(this._dataVO.isWulfTooltip)
-         {
-            this._toolTipMgr.showWulfTooltip(this._dataVO.tooltip,this._dataVO.intCD);
-         }
          else
          {
             this._toolTipMgr.showSpecial(this._dataVO.tooltip,null,this._dataVO.intCD);

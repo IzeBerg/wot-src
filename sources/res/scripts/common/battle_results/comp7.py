@@ -11,7 +11,7 @@ BATTLE_RESULTS = [
  (
   'comp7Rating', int, 0, None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
  (
-  'comp7Rank', tuple, (0, 0), None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
+  'comp7Rank', tuple, (0, 0, 0), None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
  (
   'comp7RatingDelta', int, 0, None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
  (

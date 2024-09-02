@@ -1380,6 +1380,9 @@ class Comp7RoleSkillBattleContext(ToolTipContext):
     def buildItem(self, roleName):
         return self.__comp7Controller.getRoleEquipment(roleName)
 
+    def getStartLevel(self, roleName):
+        return self.__comp7Controller.getEquipmentStartLevel(roleName)
+
 
 class Comp7RoleSkillLobbyContext(ToolTipContext):
 

@@ -1,6 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
 	<forward>
+		<name>default</name>
+		<preload>
+			<shader>\data\shaders\ps_solid.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_tex.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_water.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_tex.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_water.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_dirt.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_leaves.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_long.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_tex.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_long.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_tex_long.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_dirt.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_long.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_dirt.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_water.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_tex.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_tex.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_long.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_tex.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_water.fx</shader>
+			<texture>particles/content_forward/PFX_textures/tracers.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_long.fx</shader>
+			<texture>particles/content_forward/PFX_textures/tracers.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_rocket_accelerator.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_long.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_rocket_accelerator.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps.fx</shader>
+			<texture>particles/content_forward/PFX_textures/lightning_02.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_tex_83_kharkiv_fire.dds</texture>
+		</preload>
+		<fn_effect_bin>particles/content_forward/PFX/Environment/random_events/02_malinovka_antiaircraft_explosions_SE.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Buildings/hd_bld_SU_206_Cellar.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Buildings/hd_bld_UNI_712_LittleWoodShed.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Buildings/inf_bld002_MiddleWoodShed.vfx</fn_effect_bin>
@@ -141,10 +211,8 @@
 		<fn_effect_bin>particles/Environment/buildings/inf_bld_UNI_000_Base_05.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/buildings/inf_building_fire_01.eff</fn_effect_bin>
 		<fn_effect_bin>particles/environment/butterfly_red.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/butterfly_red.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/butterfly_white.eff</fn_effect_bin>
 		<fn_effect_bin>particles/environment/butterfly_white.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/02_malinovka_fire_small.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/interior/02_malinovka_fire_small.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/hd_env007_SnagHeap3.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/hd_gaf010_FenceTile1.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_env002_Logs.eff</fn_effect_bin>
@@ -262,6 +330,88 @@
 		<preloadVisual>particles/mesh_particles/wood_stick_03.visual</preloadVisual>
 	</forward>
 	<deferred>
+		<name>default</name>
+		<preload>
+			<shader>\data\shaders\ps_solid.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_tex.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_water.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_tex.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_water.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_dirt.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_water_displacement.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_tex_water.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_foam.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_tex_water.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_under_water.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_tex.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_leaves.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_long.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_tex.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_long.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_tex_long.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_dirt.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_long.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_dirt.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_tex.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_long.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/tracers.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_water.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/tracers.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_force_fields.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_tex_force_field.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_shimmer.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_tex_distortion.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_rocket_accelerator.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_long.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_rocket_accelerator.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps.fx</shader>
+			<texture>particles/content_deferred/GFX_models/GFX_textures/lightning_02.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_tex_83_kharkiv_fire.dds</texture>
+		</preload>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/random_events/02_malinovka_antiaircraft_explosions_SE.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Buildings/hd_bld_SU_206_Cellar.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Buildings/hd_bld_UNI_712_LittleWoodShed.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Buildings/inf_bld002_MiddleWoodShed.vfx</fn_effect_bin>
@@ -280,6 +430,8 @@
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Buildings/inf_building_fire_01.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/butterfly_red.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/butterfly_white.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/CameraEffects/02_malinovka_leaves.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/CameraEffects/02_malinovka_spruce.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/02_malinovka_fire_small.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/hd_env007_SnagHeap3.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/hd_gaf010_FenceTile1.vfx</fn_effect_bin>
@@ -402,10 +554,8 @@
 		<fn_effect_bin>particles/Environment/buildings/inf_bld_UNI_000_Base_05.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/buildings/inf_building_fire_01.eff</fn_effect_bin>
 		<fn_effect_bin>particles/environment/butterfly_red.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/butterfly_red.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/butterfly_white.eff</fn_effect_bin>
 		<fn_effect_bin>particles/environment/butterfly_white.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/02_malinovka_fire_small.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/interior/02_malinovka_fire_small.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/hd_env007_SnagHeap3.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/hd_gaf010_FenceTile1.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_env002_Logs.eff</fn_effect_bin>

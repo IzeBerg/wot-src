@@ -183,8 +183,6 @@ package
       
       public static const TANKMAN_SKILL_NOT_BE_USED:String = "#item_types:tankman/Skill_not_be_used";
       
-      public static const TANKMAN_SKILLS_PERMANENT_DESCR:String = "#item_types:tankman/skills/permanent_descr";
-      
       public static const TANKMAN_SKILLS_TYPE_SKILL:String = "#item_types:tankman/skills/type/skill";
       
       public static const TANKMAN_SKILLS_TYPE_SKILL_SHORT:String = "#item_types:tankman/skills/type/skill_short";

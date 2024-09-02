@@ -1957,9 +1957,6 @@ msgstr "Tokens received"
 msgid "serviceChannelMessages/battleResults/button"
 msgstr "Details"
 
-msgid "serviceChannelMessages/battleResults/comp7LightProgressionPoints"
-msgstr "Progression Points received"
-
 msgid "serviceChannelMessages/battleResults/contributionForDamageAllies"
 msgstr "compensation for damage caused by allies: %s"
 
@@ -2209,6 +2206,9 @@ msgid "serviceChannelMessages/battleResults/rankedState/stepsEarned"
 msgstr ""
 " \n"
 "Chevrons received"
+
+msgid "serviceChannelMessages/battleResults/ratingPoints"
+msgstr "Rating Points"
 
 msgid "serviceChannelMessages/battleResults/seniorityRewardBody"
 msgstr "You received the following rewards for your years of service"
@@ -3111,6 +3111,12 @@ msgstr "Crew members removed: %(count)s"
 msgid "serviceChannelMessages/offerTokenBonus/title"
 msgstr "Homefront Supplies"
 
+msgid "serviceChannelMessages/optionalDevicesAssistant/available/title"
+msgstr "Equipment Assistant is available"
+
+msgid "serviceChannelMessages/optionalDevicesAssistant/unavailable/title"
+msgstr "Equipment Assistant is unavailable"
+
 msgid "serviceChannelMessages/personalReservesRelease/description"
 msgstr "You have new Reserves: "
 
@@ -3139,6 +3145,21 @@ msgstr "Credit accumulation in Credit Reserve has been suspended."
 
 msgid "serviceChannelMessages/piggyBank/title"
 msgstr "Credit Reserve Opened!"
+
+msgid "serviceChannelMessages/postProgression/completed/button"
+msgstr "Claim Reward"
+
+msgid "serviceChannelMessages/postProgression/completed/header"
+msgstr "Post-Progression Complete!"
+
+msgid "serviceChannelMessages/postProgression/unlocked/button"
+msgstr "To Progression"
+
+msgid "serviceChannelMessages/postProgression/unlocked/header"
+msgstr "Post-Progression"
+
+msgid "serviceChannelMessages/postProgression/unlocked/text"
+msgstr "You have gained access to a special reward."
 
 msgid "serviceChannelMessages/prebattle/battleType/clan"
 msgstr "Clan Battle"
@@ -3508,6 +3529,45 @@ msgstr "Reward received for confirming email:"
 msgid "serviceChannelMessages/steamEmailCompletion/header"
 msgstr "Congratulations!"
 
+msgid "serviceChannelMessages/sysMsg/consumables/credits/accrued"
+msgstr "Credits added:"
+
+msgid "serviceChannelMessages/sysMsg/consumables/replacedItems/accrued"
+msgstr "Consumables added:"
+
+msgid "serviceChannelMessages/sysMsg/consumables/replacedItems/date"
+msgstr "Date"
+
+msgid "serviceChannelMessages/sysMsg/consumables/replacedItems/debit"
+msgstr "Consumables removed:"
+
+msgid "serviceChannelMessages/sysMsg/consumables/replacedItems/item/many"
+msgstr ""
+" \n"
+"&nbsp;&nbsp;• %(name)s (x%(count)d)"
+
+msgid "serviceChannelMessages/sysMsg/consumables/replacedItems/item/one"
+msgstr " %(name)s (x%(count)d)"
+
+msgid ""
+"serviceChannelMessages/sysMsg/consumables/replacedItems/items/gasoline100"
+msgstr "100-octane Gasoline"
+
+msgid ""
+"serviceChannelMessages/sysMsg/consumables/replacedItems/items/gasoline105"
+msgstr "105-octane Gasoline"
+
+msgid ""
+"serviceChannelMessages/sysMsg/consumables/replacedItems/items/lendLeaseOil"
+msgstr "Lend-Lease Oil"
+
+msgid ""
+"serviceChannelMessages/sysMsg/consumables/replacedItems/items/qualityOil"
+msgstr "Quality Oil"
+
+msgid "serviceChannelMessages/sysMsg/consumables/replacedItems/title"
+msgstr "Receipt"
+
 msgid "serviceChannelMessages/sysMsg/converter/blueprintsReceived"
 msgstr ""
 "Compensation received for blueprint fragments of already researched "
@@ -3827,21 +3887,6 @@ msgstr "Select"
 msgid "serviceChannelMessages/winbackSelectableRewardEntry/header"
 msgstr "Rewards Received!"
 
-msgid "serviceChannelMessages/wotAnniversary/battleQuest/description"
-msgstr "Mission of the day completed!"
-
-msgid "serviceChannelMessages/wotAnniversary/button"
-msgstr "To Event"
-
-msgid "serviceChannelMessages/wotAnniversary/quest/title"
-msgstr "Congratulations!"
-
-msgid "serviceChannelMessages/wotAnniversary/text"
-msgstr "You can claim your reward"
-
-msgid "serviceChannelMessages/wotAnniversary/title"
-msgstr "Anniversary Mission completed!"
-
 msgid ""
 "serviceChannelMessages/wotPlus/dailyAttendanceRewarded/big/cycleEnded/endText"
 msgstr "Continue logging in to the game to get more rewards!"
@@ -3918,6 +3963,11 @@ msgid "serviceChannelMessages/wotPlus/nextDateOfRenewal"
 msgstr ""
 "Now, all benefits are available.\n"
 "Next extension: <font color='#E9E2BF'>%(time)s</font>"
+
+msgid "serviceChannelMessages/wotPlus/passiveXP/allCrewAreVeterans/text"
+msgstr ""
+"Intensive Crew Regimen has stopped working for the <font "
+"color='#E9E2BF'>%(vehicleName)s</font>. Check the vehicle's crew."
 
 msgid "serviceChannelMessages/wotPlus/passiveXP/incompatibleCrew/text"
 msgstr ""

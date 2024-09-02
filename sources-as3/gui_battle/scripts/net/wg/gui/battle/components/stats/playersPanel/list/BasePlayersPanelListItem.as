@@ -932,6 +932,10 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       
       protected function onMouseClick(param1:MouseEvent) : void
       {
+         if(this.dynamicSquad.hitTestPoint(param1.stageX,param1.stageY))
+         {
+            return;
+         }
          var _loc2_:PlayersPanelItemEvent = new PlayersPanelItemEvent(PlayersPanelItemEvent.ON_ITEM_CLICK,this,this.holderItemID,param1);
          dispatchEvent(_loc2_);
       }

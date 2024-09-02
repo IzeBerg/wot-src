@@ -4844,6 +4844,12 @@
 						<output>out</output>
 					</connection>
 					<connection>
+						<from>Macro_4</from>
+						<input>in</input>
+						<to>Macro_2</to>
+						<output>out</output>
+					</connection>
+					<connection>
 						<from>If_3</from>
 						<input>in</input>
 						<to>Macro_2</to>
@@ -4851,12 +4857,6 @@
 					</connection>
 					<connection>
 						<from>Macro_5</from>
-						<input>in</input>
-						<to>Macro_2</to>
-						<output>out</output>
-					</connection>
-					<connection>
-						<from>Macro_4</from>
 						<input>in</input>
 						<to>Macro_2</to>
 						<output>out</output>
@@ -5156,26 +5156,28 @@
 						<slots/>
 					</block>
 					<block>
-						<class>ContextPropertyGet</class>
-						<id>ContextPropertyGet_3</id>
+						<class>AddInteger</class>
+						<id>AddInteger_1</id>
 						<params>
 							<param>
-								CGFGameObjectContext
-								<name>Context Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								getArena
-								<name>Member Name</name>
-								<type>StringT</type>
+								2
+								<name>Input Count</name>
+								<type>IntT</type>
 							</param>
 						</params>
 						<slots/>
 					</block>
 					<block>
-						<class>GetTimeOnArena</class>
-						<id>GetTimeOnArena_1</id>
-						<params/>
+						<class>GetVariable</class>
+						<id>GetVariable_20</id>
+						<buddy>Variable_6</buddy>
+						<params>
+							<param>
+								IntT
+								<name>Variable Type</name>
+								<type>TypeT</type>
+							</param>
+						</params>
 						<slots/>
 					</block>
 				</blocks>
@@ -5247,10 +5249,10 @@
 						<output>out</output>
 					</connection>
 					<connection>
-						<from>GetTimeOnArena_1</from>
+						<from>AddInteger_1</from>
 						<input>value</input>
 						<to>SetVariable_17</to>
-						<output>timeOnArena</output>
+						<output>res</output>
 					</connection>
 					<connection>
 						<from>If_1</from>
@@ -5271,9 +5273,15 @@
 						<output>duration</output>
 					</connection>
 					<connection>
-						<from>ContextPropertyGet_3</from>
-						<input>arena</input>
-						<to>GetTimeOnArena_1</to>
+						<from>GetComponentProperty_2</from>
+						<input>i0</input>
+						<to>AddInteger_1</to>
+						<output>duration</output>
+					</connection>
+					<connection>
+						<from>GetVariable_20</from>
+						<input>i1</input>
+						<to>AddInteger_1</to>
 						<output>value</output>
 					</connection>
 				</connections>

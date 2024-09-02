@@ -239,5 +239,14 @@ package net.wg.gui.battle.views.perksPanel
          param1.stopPropagation();
          this.removePerk(PerkItem(param1.target));
       }
+      
+      public function as_replayPause(param1:Boolean) : void
+      {
+         var _loc2_:PerkItem = null;
+         for each(_loc2_ in this._perksList)
+         {
+            _loc2_.pause(param1);
+         }
+      }
    }
 }

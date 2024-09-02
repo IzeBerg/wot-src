@@ -197,6 +197,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.comp7.views.battleTankCarousel.renderers.BattleTankCarouselItemRenderer;
    import net.wg.gui.battle.comp7.views.battleTankCarousel.renderers.SmallBattleTankCarouselItemRenderer;
    import net.wg.gui.battle.comp7.views.battleTankCarousel.renderers.SmallBattleTankIcon;
+   import net.wg.gui.battle.comp7.views.comp7ReconFlight.Comp7ReconFlight;
    import net.wg.gui.battle.comp7.views.consumablesPanel.Comp7ConsumableButton;
    import net.wg.gui.battle.comp7.views.consumablesPanel.Comp7ConsumableButtonGlow;
    import net.wg.gui.battle.comp7.views.consumablesPanel.Comp7Counter;
@@ -595,8 +596,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.consumablesPanel.BattleOptionalDeviceButton;
    import net.wg.gui.battle.views.consumablesPanel.BattleShellButton;
    import net.wg.gui.battle.views.consumablesPanel.ConsumablesPanel;
-   import net.wg.gui.battle.views.consumablesPanel.EntitiesStatePopup;
-   import net.wg.gui.battle.views.consumablesPanel.EntityStateButton;
    import net.wg.gui.battle.views.consumablesPanel.VO.ConsumablesVO;
    import net.wg.gui.battle.views.consumablesPanel.constants.COLOR_STATES;
    import net.wg.gui.battle.views.consumablesPanel.events.ConsumablesButtonEvent;
@@ -606,7 +605,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.consumablesPanel.interfaces.IBattleShellButton;
    import net.wg.gui.battle.views.consumablesPanel.interfaces.IConsumablesButton;
    import net.wg.gui.battle.views.consumablesPanel.interfaces.IConsumablesPanel;
-   import net.wg.gui.battle.views.consumablesPanel.interfaces.IEntityStateButton;
    import net.wg.gui.battle.views.damageIndicator.DamageIndicator;
    import net.wg.gui.battle.views.damageInfoPanel.DamageInfoPanel;
    import net.wg.gui.battle.views.damageInfoPanel.components.DamageItem;
@@ -1441,6 +1439,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_COMP7_VIEWS_BATTLETANKCAROUSEL_RENDERERS_SMALLBATTLETANKICON:Class = SmallBattleTankIcon;
       
+      public static const NET_WG_GUI_BATTLE_COMP7_VIEWS_COMP7RECONFLIGHT_COMP7RECONFLIGHT:Class = Comp7ReconFlight;
+      
       public static const NET_WG_GUI_BATTLE_COMP7_VIEWS_CONSUMABLESPANEL_COMP7CONSUMABLEBUTTON:Class = Comp7ConsumableButton;
       
       public static const NET_WG_GUI_BATTLE_COMP7_VIEWS_CONSUMABLESPANEL_COMP7CONSUMABLEBUTTONGLOW:Class = Comp7ConsumableButtonGlow;
@@ -2247,10 +2247,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_VIEWS_CONSUMABLESPANEL_CONSUMABLESPANEL:Class = ConsumablesPanel;
       
-      public static const NET_WG_GUI_BATTLE_VIEWS_CONSUMABLESPANEL_ENTITIESSTATEPOPUP:Class = EntitiesStatePopup;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_CONSUMABLESPANEL_ENTITYSTATEBUTTON:Class = EntityStateButton;
-      
       public static const NET_WG_GUI_BATTLE_VIEWS_CONSUMABLESPANEL_CONSTANTS_COLOR_STATES:Class = COLOR_STATES;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_CONSUMABLESPANEL_EVENTS_CONSUMABLESBUTTONEVENT:Class = ConsumablesButtonEvent;
@@ -2266,8 +2262,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_VIEWS_CONSUMABLESPANEL_INTERFACES_ICONSUMABLESBUTTON:Class = IConsumablesButton;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_CONSUMABLESPANEL_INTERFACES_ICONSUMABLESPANEL:Class = IConsumablesPanel;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_CONSUMABLESPANEL_INTERFACES_IENTITYSTATEBUTTON:Class = IEntityStateButton;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_CONSUMABLESPANEL_VO_CONSUMABLESVO:Class = ConsumablesVO;
       

@@ -31,7 +31,33 @@ package net.wg.gui.lobby.training
       
       private static const SLASH:String = "/";
       
-      private static const ALERT_TEXT_OFFSET_X:int = 12;
+      private static const LAYOUT_WITH_LONG_DESC:uint = 0;
+      
+      private static const LAYOUT_WITH_AVERAGE_DESC:uint = 1;
+      
+      private static const LAYOUT_WITH_SHORT_DESC:uint = 2;
+      
+      private static const MAX_PLAYER_TITLE_TF_Y:uint = 65;
+      
+      private static const MAX_PLAYERS_Y:uint = 85;
+      
+      private static const BATTLE_TIMER_TITLE_TF_Y:uint = 121;
+      
+      private static const BATTLE_TIME_Y:uint = 141;
+      
+      private static const TIMER_INFO_ICON_Y:uint = 151;
+      
+      private static const IS_PRIVATE_CHECKBOX_Y:uint = 185;
+      
+      private static const DESCR_TITLE_Y:uint = 213;
+      
+      private static const DESCRIPTION_Y:uint = 238;
+      
+      private static const DESCRIPTION_HEIGHT:uint = 132;
+      
+      private static const LAYOUT_WITH_AVERAGE_DESC_OFFSET_Y:uint = 16;
+      
+      private static const LAYOUT_WITH_SHORT_DESC_OFFSET_Y:uint = 37;
        
       
       public var mapSelectorTitleTF:TextField = null;
@@ -64,13 +90,15 @@ package net.wg.gui.lobby.training
       
       public var minimap:MinimapPresentation;
       
-      public var alertText:AlertMessage;
+      public var additionalInfo:AdditionalInfo = null;
       
       private var _mapsData:DataProvider;
       
       private var _paramsVO:TrainingWindowVO;
       
       private var _dataWasSetted:Boolean = false;
+      
+      private var _layoutType:uint = 0;
       
       public function TrainingWindow()
       {
@@ -104,6 +132,8 @@ package net.wg.gui.lobby.training
          this.description.text = Values.EMPTY_STR;
          this.timerInfoIcon.tooltip = MENU.TRAINING_CREATE_BATTLETIME_DISABLED;
          this.timerInfoIcon.visible = false;
+         this.additionalInfo.visible = false;
+         this.additionalInfo.setContentLayout(AdditionalInfoContent.LAYOUT_SMALL_WITH_TEXT_AND_SEPARATOR);
       }
       
       override protected function onInitModalFocus(param1:InteractiveObject) : void
@@ -153,8 +183,8 @@ package net.wg.gui.lobby.training
          this.createButon = null;
          this.closeButon.dispose();
          this.closeButon = null;
-         this.alertText.dispose();
-         this.alertText = null;
+         this.additionalInfo.dispose();
+         this.additionalInfo = null;
          this._mapsData = null;
          this._paramsVO = null;
          this.minimap = null;
@@ -165,6 +195,7 @@ package net.wg.gui.lobby.training
       {
          var _loc1_:uint = 0;
          var _loc2_:uint = 0;
+         var _loc3_:uint = 0;
          super.draw();
          if(this._paramsVO != null && this._mapsData != null && isInvalid(InvalidationType.DATA))
          {
@@ -204,6 +235,27 @@ package net.wg.gui.lobby.training
                }
             }
          }
+         if(isInvalid(InvalidationType.LAYOUT))
+         {
+            _loc3_ = 0;
+            if(this._layoutType == LAYOUT_WITH_AVERAGE_DESC)
+            {
+               _loc3_ = LAYOUT_WITH_AVERAGE_DESC_OFFSET_Y;
+            }
+            else if(this._layoutType == LAYOUT_WITH_SHORT_DESC)
+            {
+               _loc3_ = LAYOUT_WITH_SHORT_DESC_OFFSET_Y;
+            }
+            this.maxPlayerTitleTF.y = MAX_PLAYER_TITLE_TF_Y + _loc3_;
+            this.maxPlayers.y = MAX_PLAYERS_Y + _loc3_;
+            this.battleTimerTitleTF.y = BATTLE_TIMER_TITLE_TF_Y + _loc3_;
+            this.battleTime.y = BATTLE_TIME_Y + _loc3_;
+            this.timerInfoIcon.y = TIMER_INFO_ICON_Y + _loc3_;
+            this.isPrivate.y = IS_PRIVATE_CHECKBOX_Y + _loc3_;
+            this.descrTitleTF.y = DESCR_TITLE_Y + _loc3_;
+            this.description.y = DESCRIPTION_Y + _loc3_;
+            this.description.height = DESCRIPTION_HEIGHT - _loc3_;
+         }
       }
       
       override protected function setData(param1:TrainingWindowVO, param2:DataProvider) : void
@@ -235,21 +287,26 @@ package net.wg.gui.lobby.training
             _loc2_ = param1.itemData;
             this.mapName.text = _loc2_.name;
             this.battleType.text = _loc2_.arenaType;
-            this.alertText.visible = StringUtils.isNotEmpty(_loc2_.alertText);
-            if(this.alertText.visible)
-            {
-               this.alertText.setMessage(_loc2_.alertText);
-               this.alertText.x = this.battleType.x;
-               if(StringUtils.isNotEmpty(_loc2_.arenaType))
-               {
-                  this.alertText.x += this.battleType.textWidth + ALERT_TEXT_OFFSET_X | 0;
-               }
-            }
+            this.additionalInfo.visible = _loc2_.additionalInfo;
+            this.additionalInfo.setType(_loc2_.additionalInfo);
             this.maxPlayers.text = _loc2_.size + SLASH + _loc2_.size;
             this.battleTime.value = _loc2_.time;
             this.battleTime.enabled = _loc2_.canChangeArenaTime;
             this.timerInfoIcon.visible = !_loc2_.canChangeArenaTime;
             this.minimap.setMapS(_loc2_.key);
+            if(StringUtils.isEmpty(this.battleType.text))
+            {
+               this._layoutType = LAYOUT_WITH_LONG_DESC;
+            }
+            else if(_loc2_.additionalInfo)
+            {
+               this._layoutType = LAYOUT_WITH_SHORT_DESC;
+            }
+            else
+            {
+               this._layoutType = LAYOUT_WITH_AVERAGE_DESC;
+            }
+            invalidateLayout();
          }
          if(this._dataWasSetted && this._paramsVO)
          {

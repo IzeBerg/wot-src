@@ -61,9 +61,10 @@ class OfferGiftVehiclePreview(VehiclePreview):
                     itemsData.insert(0, self.__getCrewItemPackEntry(item))
 
             viewPy.setData(itemsPack=self.__itemsPack, panelDataVO=self._getBuyingPanelData(), packedItemsVO={'items': itemsData}, confirmCallback=self._confirmCallback)
-        elif alias == VEHPREVIEW_CONSTANTS.CREW_LINKAGE:
-            viewPy.setVehicleCrews((
+        elif alias == VEHPREVIEW_CONSTANTS.CREW_TAB_INJECT:
+            viewPy.updateInjectData(None, (
              ItemPackEntry(id=g_currentPreviewVehicle.item.intCD, groupID=1),), [ item for item in self.__itemsPack if item.type in ItemPackTypeGroup.CREW ])
+        return
 
     def _getPreviewDescription(self):
         tankName = self._gift.bonus.displayedItem.shortUserName

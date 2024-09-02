@@ -111,11 +111,5 @@ package net.wg.infrastructure.base.meta
       function as_setDualAccActive(param1:Boolean) : void;
       
       function as_setAimDamageStage(param1:String) : void;
-      
-      function as_setOverheatProgress(param1:Number, param2:Boolean) : void;
-      
-      function as_addOverheat(param1:Number) : void;
-      
-      function as_removeOverheat() : void;
    }
 }

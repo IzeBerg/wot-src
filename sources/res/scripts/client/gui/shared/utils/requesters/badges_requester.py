@@ -1,4 +1,4 @@
-import BigWorld
+import typing, BigWorld
 from adisp import adisp_async
 from gui.doc_loaders.badges_loader import getAvailableBadges
 from gui.shared.utils.requesters.abstract import AbstractSyncDataRequester

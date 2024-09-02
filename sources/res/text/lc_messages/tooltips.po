@@ -621,16 +621,16 @@ msgstr ""
 msgid "advanced/enhancedAimDrives"
 msgstr "Reduces the aiming time of the reticle."
 
-msgid "advanced/enhancedOil"
-msgstr ""
-"Increases the engine power, improving the dynamics of your vehicle for the "
-"course of the battle."
-
 msgid "advanced/equipment"
 msgstr ""
 "Equipment significantly improves your vehicle characteristics. It can be "
 "demounted using the Demount Kit or in-game currency and mounted on other "
 "vehicles."
+
+msgid "advanced/excellentFuel"
+msgstr ""
+"Increases the engine power and turret traverse speed for the course of the "
+"battle."
 
 msgid "advanced/extraHealthReserve"
 msgstr ""
@@ -653,16 +653,6 @@ msgstr "Battle between pre-made peer teams."
 
 msgid "advanced/gamemodeTraining"
 msgstr "Battle with manual matching of allies and enemies."
-
-msgid "advanced/gasoline100"
-msgstr ""
-"Increases the engine power and turret traverse speed for the course of the "
-"battle."
-
-msgid "advanced/gasoline105"
-msgstr ""
-"Increases the engine power and turret traverse speed for the course of the "
-"battle."
 
 msgid "advanced/grousers"
 msgstr ""
@@ -755,6 +745,11 @@ msgstr ""
 "firing, turret traverse, or vehicle movement, and increases turret and hull "
 "traverse speeds."
 
+msgid "advanced/qualityFuel"
+msgstr ""
+"Increases the engine power and turret traverse speed for the course of the "
+"battle."
+
 msgid "advanced/radioman"
 msgstr "Affects the signal range."
 
@@ -811,10 +806,10 @@ msgstr ""
 
 msgid "advanced/smallMedkit"
 msgstr ""
-"Prompt treatment of an injured crew member and removes the stun effect."
+"Prompt treatment of all injured crew members and removal of the stun effect."
 
 msgid "advanced/smallRepairkit"
-msgstr "Prompt repair of one selected damaged module upon activation."
+msgstr "Prompt repair of all damaged modules."
 
 msgid "advanced/stereoscope"
 msgstr ""
@@ -1284,8 +1279,9 @@ msgstr "Components"
 
 msgid "awardItem/eventCoin/body"
 msgstr ""
-"Awarded for completing Anniversary Missions in the World of Tanks 14th "
-"Anniversary event."
+"Awarded for completing Anniversary Missions during the Active Phase and "
+"Breather of the 10th Anniversary event. Also granted for purchasing "
+"Anniversary bundles in the Store as well."
 
 msgid "awardItem/eventCoin/header"
 msgstr "Anniversary Coins"
@@ -1360,6 +1356,17 @@ msgstr "?empty?"
 msgid "awardItem/industrialResource/header"
 msgstr "Industrial Resource"
 
+msgid "awardItem/modernizedDevice/body"
+msgstr ""
+"You can select one piece of Experimental Equipment from the list below:\n"
+"\n"
+"• Fire-Control System T3\n"
+"• Survival Improvement Suite T3\n"
+"• Mobility Improvement System T3"
+
+msgid "awardItem/modernizedDevice/header"
+msgstr "Experimental Equipment"
+
 msgid "awardItem/oneof/body"
 msgstr ""
 "The number of rewards and their quality depend on the Leaderboard position."
@@ -1385,6 +1392,15 @@ msgstr "Crate with Rewards"
 
 msgid "awardItem/oneof/rankedSeason/previewStyle/body"
 msgstr "Click to view the style"
+
+msgid "awardItem/optional_devices_assistant/body"
+msgstr ""
+"This exclusive WoT Plus feature provides a report on the most commonly used "
+"loadouts for a vehicle, helping you understand current game trends and "
+"common practices among your fellow tankers."
+
+msgid "awardItem/optional_devices_assistant/header"
+msgstr "Equipment Assistant"
 
 msgid "awardItem/premium/body"
 msgstr ""
@@ -1740,6 +1756,12 @@ msgstr "Damage to Enemy Vehicles Stunned by You"
 
 msgid "battleResults/efficiencyHeader/value"
 msgstr "%(value)d"
+
+msgid "battleResults/newSkillUnlock/bonus/body"
+msgstr "XP is not required to train this perk."
+
+msgid "battleResults/newSkillUnlock/bonus/header"
+msgstr "Perk Available for Training"
 
 msgid "battleResults/premiumBonus/tankStateChanged/body"
 msgstr ""
@@ -3060,6 +3082,12 @@ msgstr "Comes in the Pretty Fly bundle"
 msgid "crewCustom/body"
 msgstr "Vehicle comes with a unique crew"
 
+msgid "crewSkillBattleBooster/useless/body"
+msgstr ""
+"The directive will not work because you have exceeded the 6-perk limit per "
+"major qualification or 3-perk limit per bonus qualification for each crew "
+"member in this vehicle."
+
 msgid "crewSkins/inUse"
 msgstr "Used on:"
 
@@ -3820,8 +3848,8 @@ msgstr ""
 
 msgid "dismissedToggle/body"
 msgstr ""
-"Only crew members with enough experience to train at least two perks to 100%"
-" are included here after they are retired."
+"Only crew members with enough XP to train at least two perks to 100% are "
+"included here after they are retired."
 
 msgid "dismissedToggle/footer/body"
 msgstr "Holds up to %(quantity)s crew members who can be recovered later."
@@ -5844,7 +5872,7 @@ msgid "hangarTutorial/personalCase/additional/trainingTitle"
 msgstr "Training"
 
 msgid "hangarTutorial/personalCase/freeSkills/headerDescription"
-msgstr "Crew member's zero perks are displayed here. They cannot be changed."
+msgstr "The crew member's zero perks are displayed here."
 
 msgid "hangarTutorial/personalCase/freeSkills/newPerkDescription"
 msgstr "Click to select a zero perk for training."
@@ -6288,10 +6316,9 @@ msgstr "Currently active on:"
 
 msgid "idle_crew_tooltip/description"
 msgstr ""
-"The crew of the selected vehicle receives a constant Crew XP bonus. The "
-"bonus is the same for each crew member, regardless of the number of crew "
-"members. Note: The bonus is not applied to special vehicles and unsuitable "
-"crew members."
+"The bonus is the same for each crew member, regardless of the number of crew members.\n"
+"\n"
+"Note: The bonus is not applied to special vehicles, unsuitable crew members, and crew members in the Post-Progression."
 
 msgid "idle_crew_tooltip/every5minutes"
 msgstr "/ every 5 minutes"
@@ -6316,6 +6343,10 @@ msgstr "Inactive"
 
 msgid "idle_crew_tooltip/status/unavailable/description/incompatibleVehicle"
 msgstr "Incompatible Vehicle"
+
+msgid ""
+"idle_crew_tooltip/status/unavailable/description/postProgressionReached"
+msgstr "All crew members have reached the Post-Progression"
 
 msgid ""
 "idle_crew_tooltip/status/unavailable/description/subscriptionIsRequired"
@@ -6999,6 +7030,15 @@ msgid "moduleFits/useless_battle_booster/text"
 msgstr ""
 "The directive will only work if you have the corresponding equipment "
 "mounted."
+
+msgid "moduleFits/useless_crew_skill_battle_booster/header"
+msgstr "Directive Has No Effect"
+
+msgid "moduleFits/useless_crew_skill_battle_booster/text"
+msgstr ""
+"The directive will not work because you have exceeded the 6-perk limit per "
+"major qualification or 3-perk limit per bonus qualification for each crew "
+"member in this vehicle."
 
 msgid "moduleFits/wrong_slot/body"
 msgstr "The module is already in another slot."
@@ -9008,6 +9048,71 @@ msgstr "?empty?"
 msgid "notrecruitedtankman/tankmen_bp14_6/label"
 msgstr "Tankfest Special"
 
+msgid "notrecruitedtankman/tankmen_bp15_1/desc"
+msgstr ""
+"When he was young, Tommy would always be tinkering with something, taking "
+"apart family radios and other gadgets just to see what was inside—often to "
+"the dismay of his parents. His penchant for experimentation proved more than"
+" just child's play, eventually attracting the attention of the Alliance, who"
+" tasked him with developing advanced tank shield systems. There, Tommy's "
+"scientific flair, combined with his meticulous planning and surgical "
+"precision, won him the respect of a certain colleague by the name of Max von"
+" Krieger."
+
+msgid "notrecruitedtankman/tankmen_bp15_1/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp15_1/label"
+msgstr "Battle Pass Season XV"
+
+msgid "notrecruitedtankman/tankmen_bp15_2/desc"
+msgstr ""
+"Marion was raised with the firm belief that the collective is more important"
+" than the individual—and she always wanted to be part of something with "
+"truly global significance. When the Alliance came calling and she "
+"encountered the boundless ambition of Max von Krieger, she knew she was in "
+"the right place. While extremely methodical and rational in her work on EMP "
+"technology—which she understands could have far-reaching, even devastating "
+"consequences—Marion is always willing to put aside personal concerns to "
+"serve the greater good."
+
+msgid "notrecruitedtankman/tankmen_bp15_2/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp15_2/label"
+msgstr "Battle Pass Season XV"
+
+msgid "notrecruitedtankman/tankmen_bp15_3/desc"
+msgstr ""
+"Andrey is a man of few words and advocate of decisive action over idle chit-"
+"chat. If he has received an order from above, he won't rest until it's "
+"carried out—and to the very highest standard at that. His relentless focus "
+"on the task at hand can be jarring to those who don't know him, but Andrey "
+"isn't interested in proving anything to anyone. He's a model professional "
+"whose unparalleled railgun expertise has proven invaluable to the Alliance."
+
+msgid "notrecruitedtankman/tankmen_bp15_3/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp15_3/label"
+msgstr "Battle Pass Season XV"
+
+msgid "notrecruitedtankman/tankmen_bp15_4/desc"
+msgstr ""
+"If there's one thing Xing believes in, it's the power of science to change "
+"the world for the better. Guided by a strong sense of discipline and a "
+"resolute belief that what she is doing is right, she is an energy systems "
+"expert of the highest order, always seeking ways to harness the technology "
+"she believes can be a force for good. Having left her home to contribute to "
+"the mission of the Alliance, her diligent approach and innovative thinking "
+"have greatly advanced the organisation's research capabilities."
+
+msgid "notrecruitedtankman/tankmen_bp15_4/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp15_4/label"
+msgstr "Battle Pass Season XV"
+
 msgid "notrecruitedtankman/tankmen_bp2_1/desc"
 msgstr ""
 "People are always asking if I know Jack Reed. Before I answer, I usually "
@@ -9448,6 +9553,96 @@ msgstr "?empty?"
 msgid "notrecruitedtankman/tankmen_bph_4/label"
 msgstr "Battle Pass: Judgment Day"
 
+msgid "notrecruitedtankman/tankmen_mtlb1_1/desc"
+msgstr ""
+"The leader of Shu Han's Five Tiger Generals. A red-faced warrior with a "
+"dignified air who stands at a height of nine chi, Guan Yu was widely known "
+"for his loyalty, righteousness, benevolence, and bravery. Having sworn to "
+"face all hardship with his sworn brothers, he valued his lord over any fame "
+"or wealth. Both a brave fighter and a cultured scholar, he would be hailed "
+"by later generations for his many virtues."
+
+msgid "notrecruitedtankman/tankmen_mtlb1_1/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_mtlb1_1/label"
+msgstr "Unique Commander"
+
+msgid "notrecruitedtankman/tankmen_mtlb1_2/desc"
+msgstr ""
+"Guan Yu's eldest son. Brave and strong since childhood, he inherited his "
+"father's qualities of loyalty and righteousness, becoming a patriot who "
+"would risk his life to defend his state. Following his father into battle, "
+"he performed numerous heroic deeds and intimidated enemies with his valor. "
+"Later generations respectfully call him \"Lord Guan's Son\" and worship both"
+" him and his father, passing down their legends."
+
+msgid "notrecruitedtankman/tankmen_mtlb1_2/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_mtlb1_2/label"
+msgstr "Unique crew member"
+
+msgid "notrecruitedtankman/tankmen_mtlb1_3/desc"
+msgstr ""
+"Guan Yu's second son. Discovered at the age of 20 by the Prime Minister, he "
+"held the high-ranking positions of Palace Attendant and Middle Military "
+"Inspector. Just like his father, he was brave and skillrful in wars, and "
+"became one of the leading generals in late Shu Han. He made significant "
+"contributions to various northward expeditions and, though his life was cut "
+"short at a young age, his reputation as a loyal and brave warrior has "
+"endured through the ages."
+
+msgid "notrecruitedtankman/tankmen_mtlb1_3/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_mtlb1_3/label"
+msgstr "Unique crew member"
+
+msgid "notrecruitedtankman/tankmen_mtlb1_4/desc"
+msgstr ""
+"Legend says he was a son of Guan Yu. Stationed in Yunnan, Guan So became "
+"widely known for his heroism."
+
+msgid "notrecruitedtankman/tankmen_mtlb1_4/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_mtlb1_4/label"
+msgstr "Unique crew member"
+
+msgid "notrecruitedtankman/tankmen_mtlb1_5/desc"
+msgstr ""
+"With his remarkable strength and giant build, Zhou Cang was first a "
+"subordinate of the Yellow Turban rebel leader Zhang Bao before he became "
+"Guan Yu's bodyguard. When Guan Yu attended a meeting armed with only a "
+"blade, Zhou Cang accompanied him and carried his blade. Brave and strong, he"
+" caught Pang De in the water. Forever loyal to Guan Yu, he took his own life"
+" after learning his lord was no more. He would later be honored as General "
+"Weining and the Marquis of Wulie, and worshipped alongside Guan Yu."
+
+msgid "notrecruitedtankman/tankmen_mtlb1_5/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_mtlb1_5/label"
+msgstr "Unique crew member"
+
+msgid "notrecruitedtankman/tankmen_mtlb1_6/desc"
+msgstr ""
+"Guan Yu's daughter. Born in an era of great unrest, Guan YinPing learned the"
+" essence of martial arts from her father at a young age, and by 18 was a "
+"superb fighter. When Jingzhou fell, she returned to Chengdu and joined Liu "
+"Bei's forces before accompanying the Prime Minister on his southward "
+"expedition. She married Li Wei, the son of Shu general Li Hui, and settled "
+"in Yuyuan, bringing prosperity to the area. Though her life story was mostly"
+" passed down through folklore, Guan YinPing's image as a woman of valor "
+"means she has been revered throughout the centuries."
+
+msgid "notrecruitedtankman/tankmen_mtlb1_6/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_mtlb1_6/label"
+msgstr "Unique crew member"
+
 msgid "notrecruitedtankman/tankwoman/desc"
 msgstr ""
 "Awarded during particular game events. Female crew members have the Brothers"
@@ -9678,6 +9873,18 @@ msgstr ""
 msgid "notrecruitedtankman/yha_radioman/label"
 msgstr "Unique Crew Member"
 
+msgid "npsCompensation/body"
+msgstr "You have received Crew Books as compensation."
+
+msgid "npsCompensation/directives"
+msgstr ""
+"The {whiteSpanish_Start}{oldDirective} (x{amount}){whiteSpanish_End} "
+"directive has been converted to {whiteSpanish_Start}{newDirective} "
+"(x{amount}){whiteSpanish_End} as compensation."
+
+msgid "npsCompensation/header"
+msgstr "Received"
+
 msgid "only10Mode/attention"
 msgstr "Active only when a Tier X vehicle is selected"
 
@@ -9708,11 +9915,6 @@ msgstr "(Partially)"
 
 msgid "perkAvailable/zeroPerk"
 msgstr "Zero perks"
-
-msgid "perkType/info/common"
-msgstr ""
-"Trained by all qualifications {brown_Start}(effective level is averaged "
-"across the entire crew){brown__End}."
 
 msgid "perkType/info/situational"
 msgstr ""
@@ -9745,24 +9947,31 @@ msgstr ""
 "The perk is not available, because this crew member is not trained for this "
 "vehicle."
 
-msgid "perks/fullGroupSkillTitle"
-msgstr ""
-"When the perk is fully trained by all crew members (100%) and perk "
-"efficiency is 100%:"
-
-msgid "perks/fullGroupSkillWithLowEfficiencyTitle"
-msgstr ""
-"When the perk is fully trained by all crew members (100%) and perk "
-"efficiency is 100%:"
-
-msgid "perks/fullSkillTitle"
-msgstr "When the perk is fully trained (100%) and perk efficiency is 100%:"
-
-msgid "perks/fullSkillWithLowEfficiencyTitle"
-msgstr "When the perk is fully trained (100%) and perk efficiency is 100%:"
-
 msgid "perks/fullWithDirective"
 msgstr "Directive used. The perk now has an additional bonus."
+
+msgid "perks/info/group/both"
+msgstr ""
+"When the perk is trained to 100% by all crew members who have it available "
+"and perk efficiency is at 100%:"
+
+msgid "perks/info/group/lowEfficiency"
+msgstr ""
+"When perk efficiency for all crew members who have this perk available is at"
+" 100%:"
+
+msgid "perks/info/group/lowLevel"
+msgstr ""
+"When the perk is trained to 100% by all crew members who have it available:"
+
+msgid "perks/info/single/both"
+msgstr "When the perk is trained to 100% and perk efficiency is at 100%:"
+
+msgid "perks/info/single/lowEfficiency"
+msgstr "When perk efficiency is at 100%:"
+
+msgid "perks/info/single/lowLevel"
+msgstr "When the perk is trained to 100%:"
 
 msgid "perks/infoText"
 msgstr ""
@@ -9777,9 +9986,7 @@ msgid "perks/notFullWithDirective"
 msgstr "Directive used. The perk training level is now 100%."
 
 msgid "perks/zeroPerkInfo"
-msgstr ""
-"A zero perk that does not require spending experience and cannot be changed "
-"by a player."
+msgstr "A zero perk that does not need to be trained with XP."
 
 msgid "personalMissions/awards/camouflage/alliance/body"
 msgstr ""
@@ -10147,6 +10354,38 @@ msgstr ""
 msgid "personalMissions/tankgirlsBlock/header"
 msgstr "Non-Recruited Female Crew Members"
 
+msgid "postProgression/description/bottom"
+msgstr ""
+"Half of the Combat XP earned in battle by a crew member who has reached the "
+"Post-Progression stage is divided by the total number of crew members in the"
+" vehicle and added to the Post-Progression scale."
+
+msgid "postProgression/description/top"
+msgstr ""
+"All crew members who have all six major qualification perks trained get "
+"access to the joint Post-Progression. For every 100,000 XP earned in the "
+"Post-Progression, you will receive a {whiteSpanish_Open}Universal "
+"Guide{whiteSpanish_Close} that can be used to train other crews."
+
+msgid "postProgression/tips/1"
+msgstr ""
+"The Post-Progression consists of a unified scale for all crew members on a "
+"player's account."
+
+msgid "postProgression/tips/2"
+msgstr "Only Combat XP counts toward the Post-Progression."
+
+msgid "postProgression/tips/3"
+msgstr ""
+"Losing XP from perks or efficiency pools does not affect the Post-"
+"Progression."
+
+msgid "postProgression/title"
+msgstr "Post-Progression"
+
+msgid "postProgression/warning"
+msgstr "Post-Progression paused. The crew member has low perk efficiency."
+
 msgid "postmortemMode/body"
 msgstr ""
 "The changes will take effect from the next battle. In some cases, it is not "
@@ -10512,6 +10751,12 @@ msgstr "Get a ×3 bonus to Crew XP earned in battle in any vehicle."
 msgid "quests/bonuses/token/crew_bonus_x3/header"
 msgstr "Mission for ×3 Crew XP Earned in Battle"
 
+msgid "quests/bonuses/token/exchangeRate/experience_translation/header"
+msgstr "Combat XP Conversion Bonus"
+
+msgid "quests/bonuses/token/exchangeRate/gold_exchange/header"
+msgstr "Gold Conversion Bonus"
+
 msgid "quests/bonuses/token/header"
 msgstr "%(userName)s Token"
 
@@ -10750,6 +10995,21 @@ msgstr "Awards"
 msgid "quests/vehiclesBonus/vehiclesLeft"
 msgstr "%(count)s more vehicles..."
 
+msgid "quickTraining/AllFullTrained"
+msgstr ""
+"{cream_Open}Accelerate Training Is Unavailable.{cream_Close}\n"
+"All crew members have trained all perks."
+
+msgid "quickTraining/FullTrainedFewMembers"
+msgstr ""
+"Some crew members have reached the perk limit. All XP over the limit will be"
+" lost."
+
+msgid "quickTraining/FullTrainedPersonal"
+msgstr ""
+"{cream_Open}%(tankman)s{cream_Close} has reached the perk limit. All XP over"
+" the limit will be lost."
+
 msgid "quickTraining/LowPECrew"
 msgstr ""
 "The crew does not meet the requirements for training: some crew members have"
@@ -10780,18 +11040,33 @@ msgstr ""
 " first go toward reaching 100%% perk efficiency, then toward perks "
 "themselves."
 
+msgid "quickTraining/WillFullTrainedCrew"
+msgstr ""
+"After studying this Crew Book, {cream_Open}all crew members{cream_Close} "
+"will reach the perk limit and all XP over the limit will be lost."
+
+msgid "quickTraining/WillFullTrainedFewMembers"
+msgstr ""
+"After studying this Crew Book, some crew members will reach the perk limit "
+"and all XP over the limit will be lost."
+
+msgid "quickTraining/WillFullTrainedPersonal"
+msgstr ""
+"After studying this Crew Book, {cream_Open}%(tankman)s{cream_Close} will "
+"reach the perk limit and all XP over the limit will be lost."
+
 msgid "quickTraining/chooseAnyCrewMember"
 msgstr ""
 "You can select a crew member to accelerate their perk training using Free XP"
 " or Crew Books."
 
-msgid "quickTraining/enoughExperience"
+msgid "quickTraining/lostXpTooltip/body"
 msgstr ""
-"This crew member has already trained all available perks. Select a different"
-" crew member."
+"Some crew members have reached the perk limit. All XP over the limit will be"
+" lost after they study this Crew Book."
 
-msgid "quickTraining/maxedCrewMembers"
-msgstr "Some of your crew members have already trained all available perks."
+msgid "quickTraining/lostXpTooltip/header"
+msgstr "Extra XP will be lost"
 
 msgid "quickTraining/notFullAndNotTrainedCrew"
 msgstr ""
@@ -10809,6 +11084,17 @@ msgstr ""
 "The crew does not meet the requirements for training: some crew members are "
 "not trained for this vehicle.{newLine}Train them via their "
 "{cream_Open}Profiles{cream_Close}."
+
+msgid "quickTraining/unavailableTooltip/body"
+msgstr "All crew members have trained all perks."
+
+msgid "quickTraining/unavailableTooltip/header"
+msgstr "Accelerate Training Is Unavailable"
+
+msgid "quickTraining/xpEnoughforPostProgression"
+msgstr ""
+"Enough XP to start the Post-Progression\n"
+"for all crew members."
 
 msgid "rallyInfo/profileBtn/body"
 msgstr "Click to view the profile of the selected team."
@@ -12845,8 +13131,9 @@ msgstr "General Principle"
 
 msgid "vehCmpSkillsTooltip/info/text"
 msgstr ""
-"Technical characteristics are calculated for perks trained to "
-"%(percentage)s."
+"The configuration screen shows how a perk affects the corresponding "
+"characteristics when trained to {cream_Start}100%{cream_End} and when perk "
+"efficiency is at {cream_Start}100%{cream_End}."
 
 msgid "vehPostProgressionView/button/compare/disabled/body"
 msgstr ""
@@ -13215,7 +13502,7 @@ msgid "vehiclePreview/boxTooltip/camouflage/header"
 msgstr "Camouflage %(value)s"
 
 msgid "vehiclePreview/boxTooltip/emblem/header"
-msgstr "Emblem %(value)s"
+msgstr "Emblem \"%(value)s\""
 
 msgid "vehiclePreview/boxTooltip/equipment/header"
 msgstr "Consumable %(value)s"
@@ -13427,7 +13714,7 @@ msgstr "This bundle includes:"
 
 msgid "vehiclePreview/tankman/newPerk/header"
 msgstr ""
-"One additional perk\n"
+"%(quantity)s additional major perk(s)\n"
 "of your choice"
 
 msgid "vehiclePreview/tankman/skillsTitle"
@@ -13435,12 +13722,6 @@ msgstr "Trained Perks"
 
 msgid "vehiclePreview/vehiclePanel/info/header/crew/AnySkills"
 msgstr "Vehicle comes with a crew with unique perks."
-
-msgid "vehiclePreview/vehiclePanel/info/header/crew/isAbillity"
-msgstr "perk"
-
-msgid "vehiclePreview/vehiclePanel/info/header/crew/isPerk"
-msgstr "perk"
 
 msgid "vehiclePreview/vehiclePanel/info/header/crew/newSkill/forAll"
 msgstr "Vehicle comes with a crew with an additional perk of your choice."
@@ -13451,12 +13732,14 @@ msgstr ""
 "choice."
 
 msgid "vehiclePreview/vehiclePanel/info/header/crew/oneSkill/forAll"
-msgstr "Vehicle comes with a crew with the %(skillName)s %(skillType)s."
+msgstr ""
+"Vehicle comes with a crew with the {yellow_Start}%(skillName)s{yellow_End} "
+"perk."
 
 msgid "vehiclePreview/vehiclePanel/info/header/crew/oneSkill/forOne"
 msgstr ""
-"Vehicle comes with a crew and a %(role)s with the %(skillName)s "
-"%(skillType)s."
+"Vehicle comes with a crew and a %(role)s with the "
+"{yellow_Start}%(skillName)s{yellow_End} perk."
 
 msgid "vehiclePreview/vehiclePanel/info/header/noCrew"
 msgstr "Vehicle is provided without a crew"

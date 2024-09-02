@@ -307,6 +307,7 @@ class PyObjectViewEvent(pybind11_object):
 	def hasArgument(self, *args, **kwargs): pass
 	isOn = property(lambda self: None)
 	mouse = property(lambda self: None)
+	targetViewID = property(lambda self: None)
 
 
 class PyObjectViewModel(PyObjectEntity):
@@ -452,6 +453,7 @@ class PyObjectWindowSettings(pybind11_object):
 	flags = property(lambda self: None)
 	layer = property(lambda self: None)
 	name = property(lambda self: None)
+	ownerViewID = property(lambda self: None)
 	parent = property(lambda self: None)
 
 

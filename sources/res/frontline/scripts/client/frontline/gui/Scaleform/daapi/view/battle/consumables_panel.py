@@ -72,18 +72,18 @@ class EpicBattleConsumablesPanel(EpicBattleConsumablesPanelMeta, ConsumablesPane
                 return self._cds.index(intCD)
         return
 
-    def _getKeyHandler(self, intCD, isEntityRequired, idx=0):
-        if self._ORDERS_START_IDX <= idx <= self._ORDERS_END_IDX and not isEntityRequired:
+    def _getEquipmentKeyHandler(self, intCD, idx=0):
+        if self._ORDERS_START_IDX <= idx <= self._ORDERS_END_IDX:
             return partial(self._handleEquipmentPressedStack, intCD, idx)
-        return super(EpicBattleConsumablesPanel, self)._getKeyHandler(intCD, isEntityRequired, idx)
+        return super(EpicBattleConsumablesPanel, self)._getEquipmentKeyHandler(intCD, idx)
 
-    def _setKeyHandler(self, item, bwKey, idx):
+    def _setEquipmentKeyHandler(self, item, bwKey, idx):
         if item.getQuantity() > 0 and bwKey not in self._keys:
             if self._ORDERS_START_IDX <= idx <= self._ORDERS_END_IDX:
                 handler = partial(self._handleEquipmentPressedStack, self._cds[idx], idx)
                 self._keys[bwKey] = handler
             else:
-                super(EpicBattleConsumablesPanel, self)._setKeyHandler(item, bwKey, idx)
+                super(EpicBattleConsumablesPanel, self)._setEquipmentKeyHandler(item, bwKey, idx)
 
     def _handleEquipmentPressedStack(self, intCD, idx):
         serverIdx = idx - self._ORDERS_START_IDX
@@ -139,7 +139,7 @@ class EpicBattleConsumablesPanel(EpicBattleConsumablesPanelMeta, ConsumablesPane
             tags = item.getTags()
             if tags:
                 bwKey, sfKey = self._genKey(idx)
-                handler = self._getKeyHandler(intCD, item.isEntityRequired(), idx)
+                handler = self._getEquipmentKeyHandler(intCD, idx)
                 if item.getQuantity() > 0:
                     self._extraKeys[idx] = self._keys[bwKey] = handler
             else:

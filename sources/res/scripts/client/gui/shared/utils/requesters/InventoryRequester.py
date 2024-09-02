@@ -397,7 +397,7 @@ class InventoryRequester(AbstractSyncDataRequester, IInventoryRequester):
         if invID not in vehItemsData['compDescr'].keys():
             return
         else:
-            result = dict()
+            result = {}
             for key, values in vehItemsData.iteritems():
                 value = values.get(invID)
                 if value is not None:

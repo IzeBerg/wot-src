@@ -57,8 +57,6 @@ package net.wg.gui.battle.views.consumablesPanel
       
       public var hit:MovieClip = null;
       
-      public var consumableBackground:MovieClip = null;
-      
       public var glow:IBattleEquipmentButtonGlow = null;
       
       public var cooldownTimerTf:TextField = null;
@@ -131,7 +129,6 @@ package net.wg.gui.battle.views.consumablesPanel
          super.configUI();
          this.hit.mouseEnabled = false;
          hitArea = this.hit;
-         this.consumableBackground.visible = false;
       }
       
       override protected function draw() : void
@@ -157,7 +154,6 @@ package net.wg.gui.battle.views.consumablesPanel
          this.counterBg = null;
          this.cooldownMc = null;
          this.greenGlowMc = null;
-         this.consumableBackground = null;
          this.hit = null;
          this._consumablesVO = null;
          this._coolDownTimer.dispose();
@@ -601,16 +597,6 @@ package net.wg.gui.battle.views.consumablesPanel
          }
       }
       
-      public function get showConsumableBorder() : Boolean
-      {
-         return this.consumableBackground.visible;
-      }
-      
-      public function set showConsumableBorder(param1:Boolean) : void
-      {
-         this.consumableBackground.visible = param1;
-      }
-      
       public function set isReplay(param1:Boolean) : void
       {
          this._isReplay = param1;
@@ -619,11 +605,6 @@ package net.wg.gui.battle.views.consumablesPanel
       protected function get isReloading() : Boolean
       {
          return this._isReloading;
-      }
-      
-      protected function get cooldownTimer() : CoolDownTimer
-      {
-         return this._coolDownTimer;
       }
    }
 }

@@ -28,9 +28,27 @@ package net.wg.data.VO
       
       public var maxGoldValue:Number = -1;
       
+      public var maxNeedItemsValue:int = -1;
+      
       public var goldTextColorId:String = "";
       
       public var itemsTextColorId:String = "";
+      
+      public var discountLimit:int = -1;
+      
+      public var isDiscountLimited:Boolean = false;
+      
+      public var discountLimitText:String = "";
+      
+      public var discountLimitOverExceededText:String = "";
+      
+      public var discountsAmountLimitExceed:Boolean = false;
+      
+      public var limitRestrictionsBtnText:String = "";
+      
+      public var isDiscountAvailable:Boolean = false;
+      
+      public var maxDiscountsAppliedForMoreInfo:uint = 5;
       
       public var exchangeHeaderData:ExchangeHeaderVO = null;
       

@@ -15,6 +15,7 @@ package net.wg.gui.lobby.header.headerButtonBar
    import net.wg.infrastructure.interfaces.ITweenAnimatorHandler;
    import net.wg.infrastructure.interfaces.IUIComponentEx;
    import net.wg.infrastructure.interfaces.IWalletStatusVO;
+   import net.wg.utils.IScheduler;
    
    public class HBC_Finance extends HBC_ActionItem implements ITweenAnimatorHandler
    {
@@ -42,6 +43,10 @@ package net.wg.gui.lobby.header.headerButtonBar
       private static const MONEY_TOP_Y:int = 9;
       
       private static const MONEY_CENTER_Y:int = 16;
+      
+      private static const SHIFT_ANIMATION_OFFSET:int = 4;
+      
+      private static const GLOW_ANIMATION_DURATION:int = 60000;
        
       
       public var moneyIconText:IconText = null;
@@ -49,6 +54,10 @@ package net.wg.gui.lobby.header.headerButtonBar
       public var wallet:WalletResourcesStatus = null;
       
       public var discountAnimation:MovieClip = null;
+      
+      public var glowAnimation:MovieClip = null;
+      
+      private var _scheduler:IScheduler;
       
       private var _newIndicatorIsInited:Boolean = false;
       
@@ -58,6 +67,7 @@ package net.wg.gui.lobby.header.headerButtonBar
       
       public function HBC_Finance()
       {
+         this._scheduler = App.utils.scheduler;
          super();
          minScreenPadding.left = MIN_SCREEN_PADDING;
          minScreenPadding.right = MIN_SCREEN_PADDING;
@@ -66,6 +76,7 @@ package net.wg.gui.lobby.header.headerButtonBar
          maxFontSize = MAX_FONT_SIZE;
          narrowFontSize = NARROW_FONT_SIZE;
          this.moneyIconText.textAlign = TextFormatAlign.LEFT;
+         this.glowAnimation.y = 0;
       }
       
       override public function updateButtonBounds(param1:Rectangle) : void
@@ -75,12 +86,18 @@ package net.wg.gui.lobby.header.headerButtonBar
             this.discountAnimation.x = param1.x + (param1.width >> 1);
             this.discountAnimation.y = param1.height;
          }
+         this.glowAnimation.x = (param1.width - this.glowAnimation.width >> 1) - SHIFT_ANIMATION_OFFSET;
          super.updateButtonBounds(param1);
+      }
+      
+      override protected function configUI() : void
+      {
+         this.glowAnimation.visible = false;
+         this.glowAnimation.stop();
       }
       
       override protected function updateSize() : void
       {
-         var _loc5_:Boolean = false;
          updateFontSize(this.moneyIconText.textField,useFontSize);
          var _loc1_:IUIComponentEx = !!this.moneyIconText.visible ? this.moneyIconText : this.wallet;
          var _loc2_:Number = doItTextField.textWidth;
@@ -88,7 +105,7 @@ package net.wg.gui.lobby.header.headerButtonBar
          var _loc4_:Number = Math.max(_loc3_,_loc2_) + RIGHT_PADDING;
          _loc1_.x = (_loc4_ - _loc3_ >> 1) + LEFT_PADDING;
          bounds.width = _loc4_;
-         _loc5_ = _loc2_ > 0;
+         var _loc5_:Boolean = _loc2_ > 0;
          doItTextField.x = _loc4_ - _loc2_ >> 1;
          this.moneyIconText.y = !!_loc5_ ? Number(MONEY_TOP_Y) : Number(MONEY_CENTER_Y);
          this.wallet.y = !!_loc5_ ? Number(WALLET_TOP_Y) : Number(WALLET_CENTER_Y);
@@ -140,6 +157,20 @@ package net.wg.gui.lobby.header.headerButtonBar
                }
                this._newIndicator.visible = this._financeVo.isNew;
             }
+            if(this._financeVo.isAnimationRequired)
+            {
+               if(!this.glowAnimation.visible)
+               {
+                  this.glowAnimation.visible = true;
+                  this.glowAnimation.play();
+                  this._scheduler.scheduleTask(this.stopGlowAnimation,GLOW_ANIMATION_DURATION);
+               }
+            }
+            else
+            {
+               this._scheduler.cancelTask(this.stopGlowAnimation);
+               this.stopGlowAnimation();
+            }
          }
          super.updateData();
          this.updateDiscountAnimationState();
@@ -171,6 +202,10 @@ package net.wg.gui.lobby.header.headerButtonBar
             removeChild(this.discountAnimation);
          }
          this.discountAnimation = null;
+         this._scheduler.cancelTask(this.stopGlowAnimation);
+         this._scheduler = null;
+         this.glowAnimation.stop();
+         this.glowAnimation = null;
          super.onDispose();
       }
       
@@ -189,6 +224,13 @@ package net.wg.gui.lobby.header.headerButtonBar
             }
             this.discountAnimation = null;
          }
+      }
+      
+      private function stopGlowAnimation() : void
+      {
+         this.glowAnimation.gotoAndStop(1);
+         this.glowAnimation.visible = false;
+         this._financeVo.isAnimationRequired = false;
       }
       
       private function updateDiscountAnimationState() : void

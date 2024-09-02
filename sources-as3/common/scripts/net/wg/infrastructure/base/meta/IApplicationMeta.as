@@ -77,7 +77,7 @@ package net.wg.infrastructure.base.meta
       
       function as_updateStage(param1:Number, param2:Number, param3:Number) : void;
       
-      function as_blurBackgroundViews(param1:int, param2:Number) : void;
+      function as_blurBackgroundViews(param1:int, param2:Number, param3:Number) : void;
       
       function as_unblurBackgroundViews() : void;
       

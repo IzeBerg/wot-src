@@ -356,11 +356,21 @@ msgstr "Purchase price:"
 msgid "battlePassBuyView/priceDivider"
 msgstr "or"
 
-msgid "battlePassBuyView/reward/backBtn"
-msgstr "Back"
-
 msgid "battlePassBuyView/reward/chapter"
 msgstr "CHAPTER %(chapterName)s"
+
+msgid "battlePassBuyView/reward/descriptionFutureRewards"
+msgstr ""
+"These rewards will be granted to you after completing the upcoming Stages."
+
+msgid "battlePassBuyView/reward/descriptionNowRewards"
+msgstr "The following rewards will be granted to you for Stages %(steps)s"
+
+msgid "battlePassBuyView/reward/descriptionNowRewardsCheckbox"
+msgstr "You will receive the following rewards immediately"
+
+msgid "battlePassBuyView/reward/descriptionNowRewardsSingle"
+msgstr "The following rewards will be granted to you for Stage %(steps)s"
 
 msgid "battlePassBuyView/reward/subtitle"
 msgid_plural "plural/battlePassBuyView/reward/subtitle"
@@ -372,20 +382,13 @@ msgid "battlePassBuyView/reward/titleBattlePass"
 msgstr "IMPROVED PASS REWARDS"
 
 msgid "battlePassBuyView/reward/titleFutureRewards"
-msgstr ""
-"These rewards will be granted to you after completing the upcoming Stages."
+msgstr "WILL BE UNLOCKED"
 
 msgid "battlePassBuyView/reward/titleLevels"
 msgstr "REWARDS FOR %(levels)s STAGE(S)"
 
 msgid "battlePassBuyView/reward/titleNowRewards"
-msgstr "The following rewards will be granted to you for Stages %(steps)s"
-
-msgid "battlePassBuyView/reward/titleNowRewardsCheckbox"
-msgstr "You will receive the following rewards immediately"
-
-msgid "battlePassBuyView/reward/titleNowRewardsSingle"
-msgstr "The following rewards will be granted to you for Stage %(steps)s"
+msgstr "WILL BE RECEIVED IMMEDIATELY"
 
 msgid "battlePassBuyView/subTitle"
 msgstr ""
@@ -419,14 +422,14 @@ msgstr "Carmen de Bisonte"
 msgid "chapter/fullName/1114"
 msgstr "Carmen de Bisonte"
 
-msgid "chapter/fullName/141"
-msgstr "Keep Calm"
+msgid "chapter/fullName/151"
+msgstr "Dark Horizon"
 
-msgid "chapter/fullName/142"
-msgstr "Let Justice Arise"
+msgid "chapter/fullName/152"
+msgstr "Unknowable Power"
 
-msgid "chapter/fullName/143"
-msgstr "Libération"
+msgid "chapter/fullName/153"
+msgstr "Ephemeral Hope"
 
 msgid "chapter/fullNameUppercased/10021"
 msgstr "CARMEN DE BISONTE"
@@ -434,14 +437,14 @@ msgstr "CARMEN DE BISONTE"
 msgid "chapter/fullNameUppercased/1114"
 msgstr "CARMEN DE BISONTE"
 
-msgid "chapter/fullNameUppercased/141"
-msgstr "KEEP CALM"
+msgid "chapter/fullNameUppercased/151"
+msgstr "DARK HORIZON"
 
-msgid "chapter/fullNameUppercased/142"
-msgstr "LET JUSTICE ARISE"
+msgid "chapter/fullNameUppercased/152"
+msgstr "UNKNOWABLE POWER"
 
-msgid "chapter/fullNameUppercased/143"
-msgstr "LIBÉRATION"
+msgid "chapter/fullNameUppercased/153"
+msgstr "EPHEMERAL HOPE"
 
 msgid "chapter/title"
 msgstr "CHAPTER %(chapter)s"
@@ -536,6 +539,9 @@ msgstr "All crew members correspond to certain Chapters."
 
 msgid "chapterChoice/title"
 msgstr "SELECT CHAPTER"
+
+msgid "chapterChoice/vehicleInHangar/tooltip/text"
+msgstr "In Garage"
 
 msgid "chosenBonuses/bonus/battle_booster_gift"
 msgstr "Equipment directives to select from"
@@ -783,62 +789,15 @@ msgstr "Affirmative!"
 
 msgid "intro/seasonDescription/text"
 msgstr ""
-"This Season of Battle Pass honors the 80th anniversary of the Normandy "
-"landings, known in many countries as D-Day. The main rewards for completing "
-"it will be three Premium Tier VI vehicles, each with a special look inspired"
-" by Allied vehicles of the time: "
-"the&nbsp;Churchill&nbsp;Crocodile,&nbsp;M4A3(76)W&nbsp;Sherman,&nbsp;and&nbsp;Char&nbsp;de&nbsp;transition."
+"In Battle Pass Season XV, you will have the chance to receive exclusive "
+"Waffenträger-themed 3D styles for the Season's Core Vehicles: the K-91, "
+"Concept No. 5, and Pz.Kpfw. VII."
 
 msgid "intro/seasonDescription/title"
-msgstr "THREE PREMIUM VEHICLES AS A REWARD"
+msgstr "NEW THEMED 3D STYLES"
 
 msgid "intro/title"
-msgstr "SEASON XIV: D-DAY"
-
-msgid "offSeason/alertTooltip"
-msgstr "Voting results are currently unavailable. Try checking back later."
-
-msgid "offSeason/finished"
-msgstr "FINISHED"
-
-msgid "offSeason/footerLose"
-msgstr ""
-"After the end of the current Battle Pass Season, you will receive a mission for x2 Crew Experience\n"
-"for Tier IV–X vehicles that can be completed multiple times."
-
-msgid "offSeason/footerWin"
-msgstr ""
-"After the end of the current Battle Pass Season, you will receive a mission for x2 Combat Experience\n"
-"for Tier IV–X vehicles that can be completed multiple times."
-
-msgid "offSeason/levelReached"
-msgstr ""
-"During the Season, you reached\n"
-"Main Progression Stage {level}."
-
-msgid "offSeason/levelReachedPost"
-msgstr ""
-"During the Season, you reached\n"
-"Elite Progression Stage {level}."
-
-msgid "offSeason/noProgress"
-msgstr ""
-"You did not fight a battle during\n"
-"the Battle Pass Season."
-
-msgid "offSeason/postPassed"
-msgstr ""
-"Congratulations! You completed the Elite Progression\n"
-"during the Season!"
-
-msgid "offSeason/sideChosen"
-msgstr "Voted for the {vehicle}"
-
-msgid "offSeason/startsSoon"
-msgstr "The next Season is on the way!"
-
-msgid "offSeason/title"
-msgstr "SEASON %(season)s"
+msgstr "SEASON XV: A LEGACY'S BEGINNINGS"
 
 msgid "points/top"
 msgstr "%(vehicle): %(bonus) for %(top) by XP."
@@ -1015,8 +974,17 @@ msgstr "Crew member with a voiceover"
 msgid "progression/extraChapterWidget/commanderVoices"
 msgstr "To Others"
 
+msgid "progression/extraChapterWidget/forLabel"
+msgstr "For the %(vehicleName)s"
+
+msgid "progression/extraChapterWidget/inHangarTooltip"
+msgstr "In Garage"
+
 msgid "progression/extraChapterWidget/labelWithBP"
 msgstr "With the Improved Pass"
+
+msgid "progression/extraChapterWidget/style3DTitle"
+msgstr "3D Style"
 
 msgid "progression/extraChapterWidget/styleName"
 msgstr "%(styleName)s"
@@ -1028,7 +996,7 @@ msgid "progression/extraChapterWidget/styleSubTitle"
 msgstr "and mission for the %(vehicleName)s"
 
 msgid "progression/extraChapterWidget/styleTitle"
-msgstr "3D Style"
+msgstr "Style"
 
 msgid "progression/extraChapterWidget/tank"
 msgstr "Premium Vehicle"
@@ -1047,14 +1015,14 @@ msgstr "Crew member"
 msgid "progression/extraChapterWidget/timer"
 msgstr "Time left before the end of the Battle Pass Chapter"
 
-msgid "progression/extraChapterWidget/tooltip"
-msgstr "Click to listen to the crew member voiceover."
-
 msgid "progression/extraChapterWidget/vehicleCaption"
 msgstr "Premium Vehicle"
 
 msgid "progression/extraChapterWidget/vehicleSubTitle"
 msgstr "and the %(styleName)s 3D style"
+
+msgid "progression/extraChapterWidget/voiceoverTooltip"
+msgstr "Click to listen to the crew member voiceover."
 
 msgid "progression/footer/freePointsDescr"
 msgstr "Unspent Battle Pass Points: "
@@ -1208,14 +1176,14 @@ msgstr "BATTLE PASS: %(chapter)s CHAPTER, STAGE %(level)s"
 msgid "season/fullName/1002"
 msgstr "Carmen de Bisonte"
 
-msgid "season/fullName/14"
-msgstr "D-Day"
+msgid "season/fullName/15"
+msgstr "A Legacy's Beginnings"
 
 msgid "season/fullNameUppercased/1002"
 msgstr "CARMEN DE BISONTE"
 
-msgid "season/fullNameUppercased/14"
-msgstr "D-DAY"
+msgid "season/fullNameUppercased/15"
+msgstr "A LEGACY'S BEGINNINGS"
 
 msgid "selectBonus/battle_booster_gift"
 msgstr "Equipment directives to select from"
@@ -1536,8 +1504,8 @@ msgstr "Current Stage"
 
 msgid "tooltips/inProgress/playGame/comp7"
 msgstr ""
-"Rules for earning Points in Tier VIII vehicles in %(bond_Open)sOnslaught "
-"Light%(bond_Close)s."
+"Rules for earning Points in Tier X vehicles in "
+"%(bond_Open)sOnslaught%(bond_Close)s."
 
 msgid "tooltips/inProgress/playGame/mapbox"
 msgstr "Rules of earning Points in Recon Mission in Tier VIII–X vehicles."

@@ -111,7 +111,7 @@ class PurchaseDialog(ViewImpl):
          (
           self.viewModel.onConfirm, self.__onConfirm),
          (
-          self.__itemsCache.onSyncCompleted, self.__onItemsCatcheSync),
+          self.__itemsCache.onSyncCompleted, self.__onItemsCacheSync),
          (
           self.__comp7ShopController.onDataUpdated, self.__updateData),
          (
@@ -132,7 +132,7 @@ class PurchaseDialog(ViewImpl):
             self.__blur.enable()
         self.viewModel.setIsPurchaseProcessing(False)
 
-    def __onItemsCatcheSync(self, reason, *_):
+    def __onItemsCacheSync(self, reason, *_):
         if reason == CACHE_SYNC_REASON.CLIENT_UPDATE:
             self.__updateData()
 

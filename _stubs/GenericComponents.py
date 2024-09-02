@@ -832,3 +832,4 @@ class VSEParameterComponent(PyComponentWrapperBase):
 __doc__ = None
 __name__ = 'GenericComponents'
 __package__ = None
+def setSpaceItemsVisibilityMask(*args, **kwargs): pass

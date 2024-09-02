@@ -26,16 +26,26 @@ msgid "add_tankman_skill/invalid_vehicle"
 msgstr "Error training for a perk. Wrong vehicle."
 
 msgid "add_tankman_skill/server_error"
-msgstr "Unable to train a crew member for a new perk. Try again later."
+msgstr ""
+"Unable to train new perk.\n"
+"Server unavailable. Try again later."
 
 msgid "add_tankman_skill/success"
-msgstr "New perk trained: %(skill)s."
+msgstr "New perk trained: %(skill)s"
 
 msgid "add_tankman_skill/vehicle_locked"
 msgstr "Error training for a perk. The vehicle is locked."
 
 msgid "add_tankman_skill/vehicle_need_repair"
 msgstr "Error training for a perk. Repair your vehicle."
+
+msgid "add_tankman_skills/server_error"
+msgstr ""
+"Unable to train new perks.\n"
+"Server unavailable. Try again later."
+
+msgid "add_tankman_skills/success"
+msgstr "New perks trained: %(skill)s"
 
 msgid "another_periphery"
 msgstr "You are still logged in on another server."
@@ -1118,6 +1128,11 @@ msgstr ""
 msgid "conversion/title"
 msgstr "Receipt"
 
+msgid "conversionPerks/header"
+msgstr ""
+"Date: %(at)s\n"
+"Converting XP from crew perks over the limit. Received: "
+
 msgid "crewBooks/failed"
 msgstr ""
 "Unable to train this crew.\n"
@@ -1528,7 +1543,7 @@ msgstr "Experimental Equipment received: %(name)s"
 
 msgid "epicBattles/seasonEnd/text"
 msgstr ""
-"Frontline Season has ended.<br>All rewards that you did not choose during "
+"Frontline Season has ended.<br/>All rewards that you did not choose during "
 "the Season have been awarded to you by default:"
 
 msgid "epicBattles/seasonEnd/title"
@@ -1566,8 +1581,8 @@ msgstr "Not enough gold for exchange."
 msgid "exchange/server_error"
 msgstr "Error exchanging %(gold)s gold. Try again later."
 
-msgid "exchange/success"
-msgstr "%(gold)s gold successfully exchanged. Received %(credits)s."
+msgid "exchange/success/information"
+msgstr "%(information)s"
 
 msgid "exchange/wallet_not_available"
 msgstr ""
@@ -1580,14 +1595,18 @@ msgstr "Not enough gold for %(xp)s XP conversion."
 msgid "exchangeXP/server_error"
 msgstr "Error converting %(xp)s XP. Try again later."
 
-msgid "exchangeXP/success"
-msgstr ""
-"%(xp)s XP successfully converted to Free Experience. Gold spent %(gold)s."
-
 msgid "exchangeXP/wallet_not_available"
 msgstr ""
 "Operation unavailable. All your gold will be available after WG Wallet "
 "operability is restored automatically."
+
+msgid "filling_untrained_perks/server_error"
+msgstr ""
+"Unable to train new perks.\n"
+"Server unavailable. Try again later."
+
+msgid "filling_untrained_perks/success"
+msgstr "New perks trained for all crew members."
 
 msgid "fortification/addOrder"
 msgstr "Preparation of %(count)s Reserve(s) started. Time left: %(time)s."
@@ -2204,21 +2223,6 @@ msgstr ""
 "Operation unavailable. All your gold will be available after WG Wallet "
 "operability is restored automatically."
 
-msgid "learn_tankman_free_skill/invalid_vehicle"
-msgstr "Unable to train a zero perk. Incompatible vehicle."
-
-msgid "learn_tankman_free_skill/server_error"
-msgstr "Unable to train a zero perk. Try again later."
-
-msgid "learn_tankman_free_skill/success"
-msgstr "Zero perk successfully trained"
-
-msgid "learn_tankman_free_skill/vehicle_locked"
-msgstr "Unable to train a zero perk. The vehicle is locked."
-
-msgid "learn_tankman_free_skill/vehicle_need_repair"
-msgstr "Unable to train a zero perk. The vehicle requires repairs."
-
 msgid "limitedUI/switchOff"
 msgstr ""
 "Gradual appearance of hidden interface elements is temporarily disabled."
@@ -2776,6 +2780,20 @@ msgstr ""
 msgid "player_subscriptions/switch_on/title"
 msgstr "Player Subscriptions are now available"
 
+msgid "post_progression/server_error"
+msgstr ""
+"Reward for crew Post-Progression\n"
+"has already been received"
+
+msgid "post_progression/success"
+msgstr ""
+"Date: %(at)s\n"
+"Added to Depot: %(book_name)s (x%(amount)s).\n"
+"Post-Progression XP exchanged."
+
+msgid "post_progression/success/title"
+msgstr "Receipt"
+
 msgid "prebattle/hasLockedState"
 msgstr ""
 "Unable to accept the invitation as you are already awaiting a battle. Exit "
@@ -3279,6 +3297,16 @@ msgstr "Error replacing Personal Data. Repair the vehicle."
 msgid "request/isInCoolDown"
 msgstr "Operation \"%(request)s\" is suspended for %(coolDown)s s."
 
+msgid "reset_all_tankmen_skills/server_error"
+msgstr ""
+"Unable to reset perks.\n"
+"Server unavailable. Try again later."
+
+msgid "reset_all_tankmen_skills/success"
+msgstr ""
+"All perks for all crew members have\n"
+"been reset for free."
+
 msgid "resourceWell/resourcesLoadingError"
 msgstr "Error spending resources. Please try again."
 
@@ -3632,6 +3660,19 @@ msgstr "%(userString)s was not found in the Store. Please try again later."
 
 msgid "shop_resync"
 msgstr "Interface updated on %(date)s at %(time)s due to server changes."
+
+msgid "skillsCrewBoostersConversion/item"
+msgstr ""
+"<font color='#E9E2BF'>\"{oldName}\"</font> ({amount}) was converted to <font"
+" color='#E9E2BF'>\"{newName}\"</font> ({amount})"
+
+msgid "skillsCrewBoostersConversion/text"
+msgstr ""
+"Date: %(date)s\n"
+"Directives converted: %(items)s."
+
+msgid "skillsCrewBoostersConversion/title"
+msgstr "Receipt"
 
 msgid "squad/createError"
 msgstr "Only users with Premium Accounts can create Platoons."
@@ -4858,39 +4899,6 @@ msgstr "Unable to exit Warm-Up. Please try again later."
 
 msgid "window/buttons/close"
 msgstr "Close"
-
-msgid "wotAnniversary/eventFinished/body"
-msgstr "All Anniversary Coins have been removed."
-
-msgid "wotAnniversary/eventWillEndSoon/body"
-msgstr "After the event is over, all Anniversary Coins will be removed."
-
-msgid "wotAnniversary/eventWillEndSoon/header"
-msgstr "Attention!"
-
-msgid "wotAnniversary/switch_disable/body"
-msgstr ""
-"The World of Tanks 14th Anniversary event is coming to an end. Thank you for participating!\n"
-"You can spend Anniversary Coins in the Store until %(day)s %(month)s."
-
-msgid "wotAnniversary/switch_enabled/body"
-msgstr ""
-"The World of Tanks 14th Anniversary event has been resumed. We apologize for"
-" the inconvenience."
-
-msgid "wotAnniversary/switch_pause/body"
-msgstr ""
-"The World of Tanks 14th Anniversary event is temporarily suspended due to "
-"maintenance."
-
-msgid "wotAnniversary/switch_started/body"
-msgstr ""
-"World of Tanks' 14th Anniversary will take place from %(startDay)s "
-"%(startMonth)s to %(endDay)s %(endMonth)s. Let's celebrate this special "
-"occasion with our favorite characters!"
-
-msgid "wotAnniversary/switch_started/title"
-msgstr "It's time to celebrate!"
 
 msgid "wrong_slot"
 msgstr "%s \"%s\" does not match slot %s."

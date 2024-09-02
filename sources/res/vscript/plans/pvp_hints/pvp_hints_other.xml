@@ -396,6 +396,23 @@
 				</slots>
 			</block>
 			<block>
+				<class>Constant</class>
+				<id>Constant_1</id>
+				<params>
+					<param>
+						BoolT
+						<name>Value Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>value</name>
+						<const>\false\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
 				<class>GetVariable</class>
 				<id>GetVariable_87</id>
 				<buddy>Variable_50</buddy>
@@ -1351,7 +1368,7 @@
 				<output>id</output>
 			</connection>
 			<connection>
-				<from>Or_4</from>
+				<from>Constant_1</from>
 				<input>active</input>
 				<to>OnPlayerControlModeChange_1</to>
 				<output>res</output>
@@ -1471,7 +1488,7 @@
 				<output>res</output>
 			</connection>
 			<connection>
-				<from>Or_4</from>
+				<from>Constant_1</from>
 				<input>active</input>
 				<to>OnAnyVehicleDestroyed_4</to>
 				<output>res</output>
