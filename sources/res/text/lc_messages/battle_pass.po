@@ -318,11 +318,20 @@ msgstr "购买价格："
 msgid "battlePassBuyView/priceDivider"
 msgstr "或"
 
-msgid "battlePassBuyView/reward/backBtn"
-msgstr "返回"
-
 msgid "battlePassBuyView/reward/chapter"
 msgstr "章节: %(chapterName)s"
+
+msgid "battlePassBuyView/reward/descriptionFutureRewards"
+msgstr "您在完成接下来的阶段后，即可获得这些奖励。"
+
+msgid "battlePassBuyView/reward/descriptionNowRewards"
+msgstr "阶段%(steps)s的以下奖励将发放给您"
+
+msgid "battlePassBuyView/reward/descriptionNowRewardsCheckbox"
+msgstr "您将立即获得下列奖励"
+
+msgid "battlePassBuyView/reward/descriptionNowRewardsSingle"
+msgstr "阶段%(steps)s的以下奖励将发放给您"
 
 msgid "battlePassBuyView/reward/subtitle"
 msgid_plural "plural/battlePassBuyView/reward/subtitle"
@@ -334,19 +343,13 @@ msgid "battlePassBuyView/reward/titleBattlePass"
 msgstr "高级通行证奖励"
 
 msgid "battlePassBuyView/reward/titleFutureRewards"
-msgstr "您在完成接下来的阶段后，即可获得这些奖励。"
+msgstr "将解锁"
 
 msgid "battlePassBuyView/reward/titleLevels"
 msgstr "%(levels)s个阶段的奖励"
 
 msgid "battlePassBuyView/reward/titleNowRewards"
-msgstr "阶段%(steps)s的以下奖励将发放给您"
-
-msgid "battlePassBuyView/reward/titleNowRewardsCheckbox"
-msgstr "您将立即获得下列奖励"
-
-msgid "battlePassBuyView/reward/titleNowRewardsSingle"
-msgstr "阶段%(steps)s的以下奖励将发放给您"
+msgstr "将立即获得"
 
 msgid "battlePassBuyView/subTitle"
 msgstr "您可以通过高级通行证获得第二奖励轨道的奖励。"
@@ -378,14 +381,14 @@ msgstr "猎牛之歌"
 msgid "chapter/fullName/1114"
 msgstr "猎牛之歌"
 
-msgid "chapter/fullName/141"
-msgstr "保持冷静"
+msgid "chapter/fullName/151"
+msgstr "黑暗笼罩"
 
-msgid "chapter/fullName/142"
-msgstr "匡扶正义"
+msgid "chapter/fullName/152"
+msgstr "未知力量"
 
-msgid "chapter/fullName/143"
-msgstr "拥抱自由"
+msgid "chapter/fullName/153"
+msgstr "短暂希望"
 
 msgid "chapter/fullNameUppercased/10021"
 msgstr "猎牛之歌"
@@ -393,14 +396,14 @@ msgstr "猎牛之歌"
 msgid "chapter/fullNameUppercased/1114"
 msgstr "猎牛之歌"
 
-msgid "chapter/fullNameUppercased/141"
-msgstr "保持冷静"
+msgid "chapter/fullNameUppercased/151"
+msgstr "黑暗笼罩"
 
-msgid "chapter/fullNameUppercased/142"
-msgstr "匡扶正义"
+msgid "chapter/fullNameUppercased/152"
+msgstr "未知力量"
 
-msgid "chapter/fullNameUppercased/143"
-msgstr "拥抱自由"
+msgid "chapter/fullNameUppercased/153"
+msgstr "短暂希望"
 
 msgid "chapter/title"
 msgstr "章节%(chapter)s"
@@ -490,6 +493,9 @@ msgstr "所有乘员都对应特定章节。"
 
 msgid "chapterChoice/title"
 msgstr "选择章节"
+
+msgid "chapterChoice/vehicleInHangar/tooltip/text"
+msgstr "在车库中"
 
 msgid "chosenBonuses/bonus/battle_booster_gift"
 msgstr "自选配件指令"
@@ -719,61 +725,13 @@ msgid "intro/button"
 msgstr "收到！"
 
 msgid "intro/seasonDescription/text"
-msgstr ""
-"本战斗通行证赛季专为纪念诺曼底登陆80周年而推出，在很多地区，该行动又称D-"
-"Day(诺曼底行动)。完成本赛季的主要奖励是3辆VI级金币坦克，每一辆都拥有灵感源于当时盟军坦克的特殊外观: "
-"丘吉尔\"鳄鱼\"、M4A3(76)W&nbsp;\"谢尔曼\"、CDT。"
+msgstr "在战斗通行证赛季XV中，您将有机会获得专属的最终兵器主题3D风格，这些风格适用于本赛季的核心坦克: K-91、5号概念车、VII号坦克。"
 
 msgid "intro/seasonDescription/title"
-msgstr "3辆金币坦克奖励"
+msgstr "全新主题3D风格"
 
 msgid "intro/title"
-msgstr "赛季XIV: 诺曼底行动"
-
-msgid "offSeason/alertTooltip"
-msgstr "投票结果暂不可用。请稍后再次查看。"
-
-msgid "offSeason/finished"
-msgstr "已结束"
-
-msgid "offSeason/footerLose"
-msgstr ""
-"在当前战斗通行证赛季结束后，您将收到一个给予2倍乘员经验的任务。\n"
-"该任务需使用IV–X级坦克完成，并且可多次完成。"
-
-msgid "offSeason/footerWin"
-msgstr ""
-"在当前战斗通行证赛季结束后，您将收到一个给予2倍战斗经验的任务。\n"
-"该任务需使用IV–X级坦克完成，并且可多次完成。"
-
-msgid "offSeason/levelReached"
-msgstr ""
-"赛季期间，您达到了\n"
-"主线进度阶段{level}。"
-
-msgid "offSeason/levelReachedPost"
-msgstr ""
-"赛季期间，您达到了\n"
-"精英进度阶段{level}。"
-
-msgid "offSeason/noProgress"
-msgstr ""
-"您在战斗通行证赛季中\n"
-"未进行过战斗。"
-
-msgid "offSeason/postPassed"
-msgstr ""
-"恭喜！您完成了本赛季的\n"
-"精英进度！"
-
-msgid "offSeason/sideChosen"
-msgstr "投票给{vehicle}"
-
-msgid "offSeason/startsSoon"
-msgstr "下个赛季马上来临！"
-
-msgid "offSeason/title"
-msgstr "第%(season)s赛季"
+msgstr "赛季XV: 传承起源"
 
 msgid "points/top"
 msgstr "%(vehicle):所获经验排名%(top)时%(bonus)。"
@@ -930,8 +888,17 @@ msgstr "带有专属语音的乘员"
 msgid "progression/extraChapterWidget/commanderVoices"
 msgstr "试听其他语音"
 
+msgid "progression/extraChapterWidget/forLabel"
+msgstr "适用于%(vehicleName)s"
+
+msgid "progression/extraChapterWidget/inHangarTooltip"
+msgstr "在车库中"
+
 msgid "progression/extraChapterWidget/labelWithBP"
 msgstr "需要高级通行证"
+
+msgid "progression/extraChapterWidget/style3DTitle"
+msgstr "3D风格"
 
 msgid "progression/extraChapterWidget/styleName"
 msgstr "%(styleName)s"
@@ -943,7 +910,7 @@ msgid "progression/extraChapterWidget/styleSubTitle"
 msgstr "和%(vehicleName)s的任务"
 
 msgid "progression/extraChapterWidget/styleTitle"
-msgstr "3D风格"
+msgstr "风格"
 
 msgid "progression/extraChapterWidget/tank"
 msgstr "金币坦克"
@@ -962,14 +929,14 @@ msgstr "乘员"
 msgid "progression/extraChapterWidget/timer"
 msgstr "距战斗通行证章节结束还有"
 
-msgid "progression/extraChapterWidget/tooltip"
-msgstr "点击试听乘员的专属语音。"
-
 msgid "progression/extraChapterWidget/vehicleCaption"
 msgstr "金币坦克"
 
 msgid "progression/extraChapterWidget/vehicleSubTitle"
 msgstr "和%(styleName)s3D风格"
+
+msgid "progression/extraChapterWidget/voiceoverTooltip"
+msgstr "点击试听乘员的专属语音。"
 
 msgid "progression/footer/freePointsDescr"
 msgstr "未分配的战斗通行证点数: "
@@ -1121,14 +1088,14 @@ msgstr "战斗通行证: \"%(chapter)s\"章节，阶段%(level)s"
 msgid "season/fullName/1002"
 msgstr "猎牛之歌"
 
-msgid "season/fullName/14"
-msgstr "诺曼底行动"
+msgid "season/fullName/15"
+msgstr "传承起源"
 
 msgid "season/fullNameUppercased/1002"
 msgstr "猎牛之歌"
 
-msgid "season/fullNameUppercased/14"
-msgstr "诺曼底行动"
+msgid "season/fullNameUppercased/15"
+msgstr "传承起源"
 
 msgid "selectBonus/battle_booster_gift"
 msgstr "自选配件指令"
@@ -1410,7 +1377,7 @@ msgid "tooltips/inProgress/level"
 msgstr "当前阶段"
 
 msgid "tooltips/inProgress/playGame/comp7"
-msgstr "使用VIII级坦克在%(bond_Open)s轻量级天梯战%(bond_Close)s中获取点数的规则。"
+msgstr "使用X级坦克在%(bond_Open)s天梯战%(bond_Close)s中获取点数的规则。"
 
 msgid "tooltips/inProgress/playGame/mapbox"
 msgstr "驾驶VIII-X级坦克在侦察任务中获得点数的规则。"

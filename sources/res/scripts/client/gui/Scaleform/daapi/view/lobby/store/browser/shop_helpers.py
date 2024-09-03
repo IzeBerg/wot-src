@@ -142,10 +142,6 @@ def getEventLootBoxesUrl():
     return _getUrl('eventLootboxes')
 
 
-def getLootBoxSystemShopUrl():
-    return _getUrl('lootBoxSystem')
-
-
 def getShowcaseUrl():
     return _getUrl('showcase')
 

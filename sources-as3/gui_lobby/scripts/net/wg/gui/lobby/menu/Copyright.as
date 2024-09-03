@@ -14,16 +14,12 @@ package net.wg.gui.lobby.menu
    public class Copyright extends UIComponentEx
    {
       
-      private static const LINK_MARGIN:int = 4;
-      
-      private static const LINK_BTN_Y_SHIFT:int = 2;
+      private static const LINK_BTN_Y_SHIFT:uint = 10;
       
       private static const TEXT_ALPHA:Number = 0.52;
        
       
       public var textField:TextField = null;
-      
-      public var copyrightText:TextField = null;
       
       public var legalLink:SoundButtonEx = null;
       
@@ -49,14 +45,13 @@ package net.wg.gui.lobby.menu
       {
          super.initialize();
          this._defaultTextFieldW = this.textField.width;
-         this._defaultCopyrightW = this.copyrightText.width;
+         this._defaultCopyrightW = this.legalLink.width;
          this._defaultTextFieldH = this.textField.height;
       }
       
       override protected function configUI() : void
       {
          super.configUI();
-         this.copyrightText.alpha = TEXT_ALPHA;
          this.textField.alpha = TEXT_ALPHA;
          this.legalLink.addEventListener(MouseEvent.ROLL_OVER,this.onLegalLinkRollOverHandler);
          this.legalLink.addEventListener(MouseEvent.ROLL_OUT,this.onLegalLinkRollOutHandler);
@@ -81,16 +76,14 @@ package net.wg.gui.lobby.menu
                   this.textField.height = this._defaultTextFieldH;
                }
                this.legalLink.visible = !_loc1_;
-               this.copyrightText.text = this._legalInfo;
+               this.legalLink.label = this._legalInfo;
                this.textField.text = this._copyright;
                invalidateLayout();
             }
             if(isInvalid(InvalidationType.LAYOUT))
             {
-               this.copyrightText.width = this._defaultCopyrightW - this.legalLink.width - LINK_MARGIN;
-               this.textField.y = !!_loc1_ ? Number(this.copyrightText.y) : Number(this.copyrightText.y + this.copyrightText.height);
-               this.legalLink.x = this.copyrightText.x + (this.copyrightText.textWidth + this.copyrightText.width >> 1) + LINK_MARGIN;
-               this.legalLink.y = this.copyrightText.y + LINK_BTN_Y_SHIFT;
+               this.textField.y = !!_loc1_ ? Number(this.legalLink.y) : Number(this.legalLink.y + this.legalLink.height + LINK_BTN_Y_SHIFT);
+               this.legalLink.x = this.textField.width - this.legalLink.width >> 1;
                dispatchEvent(new Event(Event.CHANGE));
             }
          }
@@ -104,19 +97,18 @@ package net.wg.gui.lobby.menu
          this.legalLink.dispose();
          this.legalLink = null;
          this.textField = null;
-         this.copyrightText = null;
          this._tooltipMgr = null;
          super.onDispose();
       }
       
       public function getWidth() : int
       {
-         return Math.max(this.textField.width,this.copyrightText.width + LINK_MARGIN + this.legalLink.width);
+         return Math.max(this.textField.width,this.legalLink.width);
       }
       
       public function getHeight() : int
       {
-         return this.textField.height + this.copyrightText.height;
+         return !!this.legalLink.visible ? int(this.textField.height + this.legalLink.height + LINK_BTN_Y_SHIFT) : int(this.textField.height);
       }
       
       public function updateLabel(param1:String, param2:String = "") : void

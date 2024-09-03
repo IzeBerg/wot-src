@@ -120,7 +120,6 @@ package net.wg.gui.lobby.rankedBattles19.view.intro
       {
          var _loc1_:Boolean = false;
          var _loc2_:Boolean = false;
-         var _loc3_:Boolean = false;
          var _loc4_:int = 0;
          var _loc5_:int = 0;
          var _loc6_:int = 0;
@@ -131,7 +130,7 @@ package net.wg.gui.lobby.rankedBattles19.view.intro
          }
          _loc1_ = this._data.state == RANKEDBATTLES_CONSTS.INTRO_STATE_DISABLED;
          _loc2_ = this._data.state == RANKEDBATTLES_CONSTS.INTRO_STATE_BEFORE_SEASON;
-         _loc3_ = !_loc1_ && !_loc2_ && this._data.hasURL;
+         var _loc3_:Boolean = !_loc1_ && !_loc2_ && this._data.hasURL;
          if(isInvalid(InvalidationType.DATA))
          {
             this.header.setData(this._data.headerData);

@@ -11,7 +11,7 @@
 	<postProgressionTree>role_MT_universal</postProgressionTree>
 	<customRoleSlotOptions>3 5</customRoleSlotOptions>
 	<speedLimits>
-		<forward>45</forward>
+		<forward>48</forward>
 		<backward>20</backward>
 	</speedLimits>
 	<invisibility>
@@ -57,6 +57,12 @@
 				<!--BW_String-->
 			</invisibilityBonus>
 		</trophyUpgradedAdditionalInvisibilityDevice>
+		<deluxeAdditionalInvisibilityDevice>
+			<invisibilityBonus>
+				0.1
+				<!--BW_String-->
+			</invisibilityBonus>
+		</deluxeAdditionalInvisibilityDevice>
 	</optDevsOverrides>
 	<repairCost>
 		12.94
@@ -4824,7 +4830,7 @@
 						<gun>45</gun>
 					</armor>
 					<shotDispersionRadius>
-						0.36
+						0.35
 						<!--BW_String-->
 					</shotDispersionRadius>
 					<reloadTime>
@@ -4832,7 +4838,7 @@
 						<!--BW_String-->
 					</reloadTime>
 					<aimingTime>
-						1.9
+						1.8
 						<!--BW_String-->
 					</aimingTime>
 					<shotDispersionFactors>
@@ -5843,7 +5849,7 @@
 		</Turret_1_A120_M48A5>
 	</turrets0>
 	<engines>
-		<Continental_AV-1790-7B>shared</Continental_AV-1790-7B>
+		<Continental_AVDS_1790_2D>shared</Continental_AVDS_1790_2D>
 	</engines>
 	<fuelTanks>
 		<Large>shared</Large>
@@ -5854,13 +5860,10 @@
 	<physics>
 		<detailed>
 			<engines>
-				<Continental_AV-1790-7B>
-					<smplEnginePower>
-						856.3977
-						<!--BW_String-->
-					</smplEnginePower>
-					<smplFwMaxSpeed>45</smplFwMaxSpeed>
-				</Continental_AV-1790-7B>
+				<Continental_AVDS_1790_2D>
+					<smplEnginePower>960</smplEnginePower>
+					<smplFwMaxSpeed>48</smplFwMaxSpeed>
+				</Continental_AVDS_1790_2D>
 			</engines>
 			<chassis>
 				<Chassis_A120_M48A5>

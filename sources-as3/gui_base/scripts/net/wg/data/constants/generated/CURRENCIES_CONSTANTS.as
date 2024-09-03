@@ -25,6 +25,8 @@ package net.wg.data.constants.generated
       
       public static const WDR_COIN:String = "wdrcoin";
       
+      public static const BPBIT:String = "bpbit";
+      
       public static const SINGAPORE_ALTERNATIVE_CURRENCIES_SET:Array = [GOLD,CREDITS];
       
       public static const GOLD_COLOR:int = 16761699;

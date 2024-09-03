@@ -85,21 +85,6 @@ msgstr "转换成功"
 msgid "conversionAwards/underTitle"
 msgstr "下列物品已添加至您的账号。"
 
-msgid "conversionBanner/button/label"
-msgstr "转换"
-
-msgid "conversionBanner/button/tooltip/disabled/body"
-msgstr "如果兵营中存在训练不足的乘员，系统会将其从账号中移除，并对其经验予以补偿，补偿方式为相应类型和系别的乘员手册。"
-
-msgid "conversionBanner/button/tooltip/disabled/title"
-msgstr "无训练不足的乘员"
-
-msgid "conversionBanner/button/tooltip/enabled/body"
-msgstr "前往转换"
-
-msgid "conversionBanner/infoText"
-msgstr "转换训练不足的乘员还将开放"
-
 msgid "conversionConfirm/button/cancel/label"
 msgstr "取消"
 
@@ -230,6 +215,100 @@ msgstr "更改了乘员训练的操作"
 
 msgid "crew5075Welcome/4/title"
 msgstr "乘员训练"
+
+msgid "crewBanner/button/fill/label"
+msgstr "自动选择特长"
+
+msgid "crewBanner/button/fill/tooltip/disable/body"
+msgstr "没有未训练特长的乘员。"
+
+msgid "crewBanner/button/fill/tooltip/disable/header"
+msgstr "无法自动选择特长"
+
+msgid "crewBanner/button/fill/tooltip/enable/body"
+msgstr "全部乘员标有\"加号\"的未训练特长，都将替换为按特殊机制自动选择的特长。"
+
+msgid "crewBanner/button/fill/tooltip/enable/header"
+msgstr "自动选择全部乘员的未训练特长"
+
+msgid "crewBanner/button/reset/label"
+msgstr "重置全部乘员的特长"
+
+msgid "crewBanner/button/reset/tooltip/disable/body"
+msgstr "没有已训练特长的乘员。"
+
+msgid "crewBanner/button/reset/tooltip/disable/header"
+msgstr "无法重置特长"
+
+msgid "crewBanner/button/reset/tooltip/enable/body"
+msgstr "您账号中全部乘员的所有特长都将被重置。该操作无法撤消。"
+
+msgid "crewBanner/button/reset/tooltip/enable/header"
+msgstr "重置全部乘员的特长"
+
+msgid "crewBanner/infoText"
+msgstr "免费为您账号中的全部乘员重置特长，或自动选择未训练的特长"
+
+msgid "crewNpsWelcome/1/block/1/description"
+msgstr "现在每个主要专业可选择6项独特特长，其中一些为全新特长。"
+
+msgid "crewNpsWelcome/1/block/2/description"
+msgstr "除此以外，您还可以训练3项团体特长: 兄弟连、隐蔽和修复。灭火现在是通信兵的单人特长。"
+
+msgid "crewNpsWelcome/1/block/3/description"
+msgstr "一些不常用的特长已替换为新特长，而其他一些特长则得到了改进，更具竞争力。"
+
+msgid "crewNpsWelcome/1/subtitle"
+msgstr "添加了新特长，替换或改进了一些旧特长"
+
+msgid "crewNpsWelcome/1/title"
+msgstr "乘员特长更新"
+
+msgid "crewNpsWelcome/2/block/1/description"
+msgstr "乘员的主要专业现在最多只能训练6项特长。乘员获得的超出该上限的所有经验将按照特定公式转换为乘员手册作为补偿。"
+
+msgid "crewNpsWelcome/2/block/2/description"
+msgstr "该上限意味着经验丰富的乘员不能再训练所有可用的特长，从而使游戏更加公平。请明智选择特长！"
+
+msgid "crewNpsWelcome/2/block/3/description"
+msgstr "达到6项特长上限后，乘员仍可继续获取战斗经验，这些经验将转换为通用指南作为补偿，用于训练其他乘员。"
+
+msgid "crewNpsWelcome/2/subtitle"
+msgstr "特长训练数量现已设置上限"
+
+msgid "crewNpsWelcome/2/title"
+msgstr "乘员效率上限"
+
+msgid "crewNpsWelcome/3/block/1/description"
+msgstr ""
+"如果数名乘员拥有相同专业，那么他们全部特长的效果都将平均计算。只有拥有相同专业的所有乘员都将一个特长训练完毕后，此特长才能发挥100%的效果。"
+
+msgid "crewNpsWelcome/3/block/2/description"
+msgstr "拥有数个专业的乘员，可为其额外专业训练附加特长。这些附加特长无需花费经验来训练，也不会计入特长上限。"
+
+msgid "crewNpsWelcome/3/block/3/description"
+msgstr "特长重置操作现在也会重置零历练特长，但零历练特长的优势保持不变。"
+
+msgid "crewNpsWelcome/3/subtitle"
+msgstr "附加特长、共有特长、零历练特长重置"
+
+msgid "crewNpsWelcome/3/title"
+msgstr "特长系统的其他改动"
+
+msgid "crewNpsWelcome/4/block/1/description"
+msgstr "系统会设置一个过渡期，在此期间，您可免费重置特长，没有次数限制。"
+
+msgid "crewNpsWelcome/4/block/2/description"
+msgstr "过渡期从今天开始，持续30天。您可尽情尝试，选出最适合自己玩法风格的特长组合。"
+
+msgid "crewNpsWelcome/4/block/3/description"
+msgstr "过渡期结束后，无论是为现有乘员，还是为新乘员，第一次重置特长均免费。"
+
+msgid "crewNpsWelcome/4/subtitle"
+msgstr "过渡期和免费首次特长重置"
+
+msgid "crewNpsWelcome/4/title"
+msgstr "开始尝试吧！"
 
 msgid "filter/group/details/title"
 msgstr "详情"
@@ -401,8 +480,33 @@ msgstr ""
 msgid "junkTankmen/title"
 msgstr "乘员转换"
 
+msgid "matrix/bonusTooltip/description"
+msgstr ""
+"每个额外专业的特长上限为{whiteSpanish_Open}3{whiteSpanish_Close}项。开始训练第{whiteSpanish_Open}1{whiteSpanish_Close}、{whiteSpanish_Open}3{whiteSpanish_Close}、{whiteSpanish_Open}5{whiteSpanish_Close}项主要专业特长时，新的附加特长就会解锁。"
+
+msgid "matrix/bonusTooltip/header"
+msgstr "附加特长"
+
+msgid "matrix/bonusTooltip/list/retrain"
+msgstr "为另一辆坦克再训练乘员时，如果专业设置不同，您可再次为乘员的新额外专业选择特长。"
+
+msgid "matrix/bonusTooltip/list/trainSpeed"
+msgstr "附加特长的训练速度是主要专业特长的1/2。"
+
+msgid "matrix/bonusTooltip/list/xp"
+msgstr "训练附加特长无需花费经验。"
+
+msgid "matrix/freeResetButton"
+msgstr "免费重置"
+
 msgid "matrix/increaseButton"
-msgstr "训练"
+msgstr "快速训练"
+
+msgid "matrix/increaseTooltip/disable/body"
+msgstr "乘员已达到训练上限。"
+
+msgid "matrix/increaseTooltip/disable/header"
+msgstr "无法快速训练"
 
 msgid "matrix/increaseTooltip/enable/body"
 msgstr "使用全局经验和乘员手册训练特长。"
@@ -449,8 +553,18 @@ msgstr "第四专业在该坦克上无效"
 msgid "matrix/qualification/unavailable/5"
 msgstr "第五专业在该坦克上无效"
 
+msgid "matrix/qualificationTooltip/bonusDescription"
+msgstr ""
+"每个额外专业的特长上限为{whiteSpanish_Open}3{whiteSpanish_Close}项。只有与该专业相关的特长才能被选为附加特长。"
+
+msgid "matrix/qualificationTooltip/majorDescription"
+msgstr "主要专业的特长上限为{whiteSpanish_Open}6{whiteSpanish_Close}项(包括零历练特长)。"
+
 msgid "matrix/resetButton"
 msgstr "重置"
+
+msgid "matrix/resetButtonHint"
+msgstr "点击重置特长"
 
 msgid "matrix/resetTooltip/disable/body"
 msgstr "您没有训练完成的特长。"
@@ -464,17 +578,65 @@ msgstr "点击重置特长。"
 msgid "matrix/resetTooltip/enable/header"
 msgstr "重置特长"
 
+msgid "matrix/skillTooltip/bonus/available/header"
+msgstr "可训练的附加特长"
+
+msgid "matrix/skillTooltip/bonus/available/text"
+msgstr "训练附加特长无需花费乘员经验。"
+
+msgid "matrix/skillTooltip/bonus/unavailable/header"
+msgstr "不可用"
+
+msgid "matrix/skillTooltip/bonus/unavailable/text/2"
+msgstr "训练第3项主要专业特长时解锁。无需花费经验。"
+
+msgid "matrix/skillTooltip/bonus/unavailable/text/3"
+msgstr "训练第5项主要专业特长时解锁。无需花费经验。"
+
+msgid "matrix/skillTooltip/main/available/discountLabel/1"
+msgstr "所需的经验总量已获得折扣，因为该乘员拥有1项零历练特长。"
+
+msgid "matrix/skillTooltip/main/available/discountLabel/2"
+msgstr "所需的经验总量已获得折扣，因为该乘员拥有2项零历练特长。"
+
+msgid "matrix/skillTooltip/main/available/header"
+msgstr "可训练的特长"
+
+msgid "matrix/skillTooltip/main/unavailable/header"
+msgstr "不可用"
+
+msgid "matrix/skillTooltip/main/unavailable/text"
+msgstr "前一项特长必须训练至100%。"
+
+msgid "matrix/skillTooltip/zero/header"
+msgstr "可训练的零历练特长"
+
+msgid "matrix/skillTooltip/zero/text"
+msgstr "即使同时选择了数项特长，系统也总是会先训练零历练特长。训练零历练特长无需花费乘员经验。"
+
 msgid "matrix/skills/allSkills"
 msgstr "已训练了该坦克的所有额外特长"
 
 msgid "matrix/skills/available"
 msgstr "可训练的特长:"
 
+msgid "matrix/skills/bonus"
+msgstr "附加特长"
+
+msgid "matrix/skills/counters"
+msgstr "{currentCount}/{totalCount}"
+
 msgid "matrix/skills/disabled"
 msgstr "特长不可用"
 
 msgid "matrix/skills/locked"
 msgstr "特长不可用"
+
+msgid "matrix/skills/main/disabled"
+msgstr "该乘员的所有特长在该坦克上无法生效"
+
+msgid "matrix/skills/main/enabled"
+msgstr "主要专业特长"
 
 msgid "matrix/skills/reduced"
 msgstr "特长效率已降低"
@@ -523,6 +685,27 @@ msgstr "{discountAmount}%的更改专业折扣"
 
 msgid "memberChange/title"
 msgstr "选择{role}: {vehicle}"
+
+msgid "npsIntro/compensation/additional"
+msgstr "额外补偿:"
+
+msgid "npsIntro/compensation/description"
+msgstr "这些物品已在转换后添加至您的账号:"
+
+msgid "npsIntro/compensation/title"
+msgstr "补偿成功"
+
+msgid "npsIntro/intro/description"
+msgstr "特长系统改动、全新特长和更新后的特长、可免费重置特长的过渡期。"
+
+msgid "npsIntro/intro/title"
+msgstr "乘员系统更新"
+
+msgid "npsIntro/skipButton/title"
+msgstr "跳过"
+
+msgid "npsIntro/viewButton/title"
+msgstr "查看改动"
 
 msgid "personalData/card/remove"
 msgstr "移除"
@@ -614,6 +797,35 @@ msgstr "点击试听该指挥官的专属语音示例。"
 msgid "personalFile/voiceTooltip/header"
 msgstr "专属语音"
 
+msgid "postProgression/button/claim"
+msgstr "领取奖励"
+
+msgid "postProgression/description"
+msgstr ""
+"将所有6项主要专业特长训练完毕的全部乘员，均会解锁著书立传。在著书立传阶段每获得100000点经验，您即可获得1本通用指南，用来训练其他乘员。"
+
+msgid "postProgression/progress"
+msgstr ""
+"{bond_Open}%(currentValue)s{bond_Close}{par_Open}/%(maxValue)s{par_Close}%(icon)s"
+
+msgid "postProgression/tips/1"
+msgstr "著书立传由一个统一的进度条构成，适用于玩家账号内已训练完6项主要专业特长的所有乘员。"
+
+msgid "postProgression/tips/2"
+msgstr "只有战斗经验才会计入著书立传。乘员在战斗中所获战斗经验的50%除以坦克乘员总数后，将填充至著书立传进度条。"
+
+msgid "postProgression/tips/3"
+msgstr "失去特长或特长效率经验池的经验不会影响著书立传。"
+
+msgid "postProgression/title"
+msgstr "乘员著书立传"
+
+msgid "postProgression/warning/lowEfficiency"
+msgstr "解锁著书立传的所有乘员拥有较低的特长效率。"
+
+msgid "postProgression/warning/retire"
+msgstr "解锁著书立传的所有乘员已被解雇，或他们最后训练的特长失去了经验。"
+
 msgid "premiumVehType/plural/lowerCase/AT-SPG"
 msgstr "全部金币自行反坦克炮"
 
@@ -652,6 +864,30 @@ msgstr "乘员的军衔取决于其经验和训练的特长数量。"
 
 msgid "serviceRecord/tooltip/rank/header"
 msgstr "军衔"
+
+msgid "skillsTraining/availableSkillsTitle/allSkillsLearned"
+msgstr "乘员此专业的特长数量已达上限"
+
+msgid "skillsTraining/availableSkillsTitle/available"
+msgstr "可训练的特长:"
+
+msgid "skillsTraining/availableSkillsTitle/disabled"
+msgstr "该乘员的所有特长在该坦克上无法生效"
+
+msgid "skillsTraining/bonusQualification/description"
+msgstr "训练额外专业特长无需花费经验，其训练速度是主要专业特长的1/2。"
+
+msgid "skillsTraining/btnCancel/label"
+msgstr "取消"
+
+msgid "skillsTraining/btnTrain/label"
+msgstr "训练"
+
+msgid "skillsTraining/title/bonusQualification"
+msgstr "额外专业"
+
+msgid "skillsTraining/title/majorQualification"
+msgstr "主要专业"
 
 msgid "tankChange/title"
 msgstr "更改坦克专精"

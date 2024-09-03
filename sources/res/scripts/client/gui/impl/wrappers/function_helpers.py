@@ -1,10 +1,13 @@
-from functools import wraps
+import functools
 
 def replaceNoneKwargsModel(func):
 
-    @wraps(func)
+    @functools.wraps(func)
     def wrapper(self, *args, **kwargs):
-        actual = kwargs['model'] if 'model' in kwargs else None
+        if 'model' not in kwargs:
+            actual = None
+        else:
+            actual = kwargs['model']
         if actual is None:
             with self.getViewModel().transaction() as (model):
                 kwargs['model'] = model

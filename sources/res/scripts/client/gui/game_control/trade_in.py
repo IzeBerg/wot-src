@@ -357,8 +357,8 @@ class TradeInController(ITradeInController):
 
     def getVehiclesToSell(self, respectSelectedVehicleToBuy):
         if respectSelectedVehicleToBuy and self._vehicleToBuyInfo.isSelected():
-            return self.itemsCache.items.getVehicles(REQ_CRITERIA.VEHICLE.CAN_TRADE_OFF | REQ_CRITERIA.VEHICLE.SPECIFIC_BY_CD(self._vehicleToBuyInfo.possibleVehiclesToTradeInCDs) | REQ_CRITERIA.VEHICLE.ACTIVE_IN_NATION_GROUP)
-        return self.itemsCache.items.getVehicles(REQ_CRITERIA.VEHICLE.CAN_TRADE_OFF | REQ_CRITERIA.VEHICLE.ACTIVE_IN_NATION_GROUP)
+            return self.itemsCache.items.getVehicles(REQ_CRITERIA.INVENTORY | REQ_CRITERIA.VEHICLE.CAN_TRADE_OFF | REQ_CRITERIA.VEHICLE.SPECIFIC_BY_CD(self._vehicleToBuyInfo.possibleVehiclesToTradeInCDs) | REQ_CRITERIA.VEHICLE.ACTIVE_IN_NATION_GROUP)
+        return self.itemsCache.items.getVehicles(REQ_CRITERIA.INVENTORY | REQ_CRITERIA.VEHICLE.CAN_TRADE_OFF | REQ_CRITERIA.VEHICLE.ACTIVE_IN_NATION_GROUP)
 
     def getVehiclesToBuy(self, respectSelectedVehicleToSell):
         if respectSelectedVehicleToSell and self._vehicleToSellInfo.isSelected():

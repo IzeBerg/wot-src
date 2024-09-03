@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-	<version>3</version>
+	<version>4</version>
 	<GameObjects>
 		<GameObject>
 			<name>04_airshipCrash01_scenario</name>
@@ -33,7 +33,7 @@
 			<type>Hierarchy</type>
 			<version>2</version>
 			<component>
-				<objectIndex>1</objectIndex>
+				<UUID>d4fb7687-d5b0-4b03-8393-8a2d5ad6c704</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -43,7 +43,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>2</objectIndex>
+				<UUID>56d7579a-803f-4bb6-b638-bbe6b8c8c259</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -53,7 +53,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>3</objectIndex>
+				<UUID>7ca9ee0a-b96f-4b63-b569-4f605b56464e</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -63,7 +63,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>4</objectIndex>
+				<UUID>2259f859-577b-4c7e-af5b-c34cfc86ef17</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -77,7 +77,7 @@
 			<type>Transform</type>
 			<version>1</version>
 			<component>
-				<objectIndex>0</objectIndex>
+				<UUID>81d8354e-5e0a-47a9-9eef-37b760da316c</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -95,7 +95,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>1</objectIndex>
+				<UUID>d4fb7687-d5b0-4b03-8393-8a2d5ad6c704</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -113,7 +113,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>2</objectIndex>
+				<UUID>56d7579a-803f-4bb6-b638-bbe6b8c8c259</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -131,7 +131,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>3</objectIndex>
+				<UUID>7ca9ee0a-b96f-4b63-b569-4f605b56464e</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -149,7 +149,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>4</objectIndex>
+				<UUID>2259f859-577b-4c7e-af5b-c34cfc86ef17</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -171,7 +171,7 @@
 			<type>SequenceComponent</type>
 			<version>3</version>
 			<component>
-				<objectIndex>0</objectIndex>
+				<UUID>81d8354e-5e0a-47a9-9eef-37b760da316c</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -464,64 +464,52 @@
 		</ComponentPool>
 		<ComponentPool>
 			<type>Prefab</type>
-			<version>1</version>
+			<version>2</version>
 			<component>
-				<objectIndex>1</objectIndex>
+				<UUID>d4fb7687-d5b0-4b03-8393-8a2d5ad6c704</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
-						<name>resource</name>
-						<isAsset>true</isAsset>
-						<value>content/CGFPrefabs/Map_scenarios/04_himmelsdorf/04_airship_crashing/04_airshipCrash01_airship_complete.prefab</value>
-					</property>
-					<property>
-						<name>overridesData</name>
-						<value/>
+						<name>content</name>
+						<section>
+							<resource>content/CGFPrefabs/Map_scenarios/04_himmelsdorf/04_airship_crashing/04_airshipCrash01_airship_complete.prefab</resource>
+						</section>
 					</property>
 				</config>
 			</component>
 			<component>
-				<objectIndex>2</objectIndex>
+				<UUID>56d7579a-803f-4bb6-b638-bbe6b8c8c259</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
-						<name>resource</name>
-						<isAsset>true</isAsset>
-						<value>content/CGFPrefabs/Map_scenarios/04_himmelsdorf/04_airship_crashing/04_airshipCrash01_crashingBuilding_01_complete.prefab</value>
-					</property>
-					<property>
-						<name>overridesData</name>
-						<value/>
+						<name>content</name>
+						<section>
+							<resource>content/CGFPrefabs/Map_scenarios/04_himmelsdorf/04_airship_crashing/04_airshipCrash01_crashingBuilding_01_complete.prefab</resource>
+						</section>
 					</property>
 				</config>
 			</component>
 			<component>
-				<objectIndex>3</objectIndex>
+				<UUID>7ca9ee0a-b96f-4b63-b569-4f605b56464e</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
-						<name>resource</name>
-						<isAsset>true</isAsset>
-						<value>content/CGFPrefabs/Map_scenarios/04_himmelsdorf/04_airship_crashing/04_airshipCrash01_crashingWall_01_complete.prefab</value>
-					</property>
-					<property>
-						<name>overridesData</name>
-						<value/>
+						<name>content</name>
+						<section>
+							<resource>content/CGFPrefabs/Map_scenarios/04_himmelsdorf/04_airship_crashing/04_airshipCrash01_crashingWall_01_complete.prefab</resource>
+						</section>
 					</property>
 				</config>
 			</component>
 			<component>
-				<objectIndex>4</objectIndex>
+				<UUID>2259f859-577b-4c7e-af5b-c34cfc86ef17</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
-						<name>resource</name>
-						<isAsset>true</isAsset>
-						<value>content/CGFPrefabs/Map_scenarios/04_himmelsdorf/04_airship_crashing/04_airshipCrash01_danger_zone_minimap.prefab</value>
-					</property>
-					<property>
-						<name>overridesData</name>
-						<value/>
+						<name>content</name>
+						<section>
+							<resource>content/CGFPrefabs/Map_scenarios/04_himmelsdorf/04_airship_crashing/04_airshipCrash01_danger_zone_minimap.prefab</resource>
+						</section>
 					</property>
 				</config>
 			</component>
@@ -530,7 +518,7 @@
 			<type>NetworkComponent</type>
 			<version>1</version>
 			<component>
-				<objectIndex>0</objectIndex>
+				<UUID>81d8354e-5e0a-47a9-9eef-37b760da316c</UUID>
 				<flags>33</flags>
 			</component>
 		</ComponentPool>
@@ -538,7 +526,7 @@
 			<type>NetworkEntity</type>
 			<version>1</version>
 			<component>
-				<objectIndex>0</objectIndex>
+				<UUID>81d8354e-5e0a-47a9-9eef-37b760da316c</UUID>
 				<flags>33</flags>
 			</component>
 		</ComponentPool>
@@ -546,7 +534,7 @@
 			<type>NetworkTransformComponent</type>
 			<version>1</version>
 			<component>
-				<objectIndex>0</objectIndex>
+				<UUID>81d8354e-5e0a-47a9-9eef-37b760da316c</UUID>
 				<flags>33</flags>
 				<config>
 					<property>
@@ -572,7 +560,7 @@
 			<type>VSEComponent</type>
 			<version>1</version>
 			<component>
-				<objectIndex>0</objectIndex>
+				<UUID>81d8354e-5e0a-47a9-9eef-37b760da316c</UUID>
 				<flags>32</flags>
 				<config>
 					<property>
@@ -591,7 +579,7 @@
 			<type>VSEParameterComponent</type>
 			<version>1</version>
 			<component>
-				<objectIndex>0</objectIndex>
+				<UUID>81d8354e-5e0a-47a9-9eef-37b760da316c</UUID>
 				<flags>32</flags>
 				<config>
 					<property>
@@ -605,7 +593,7 @@
 			<type>SequenceNetworkSync</type>
 			<version>1</version>
 			<component>
-				<objectIndex>0</objectIndex>
+				<UUID>81d8354e-5e0a-47a9-9eef-37b760da316c</UUID>
 				<flags>35</flags>
 			</component>
 		</ComponentPool>

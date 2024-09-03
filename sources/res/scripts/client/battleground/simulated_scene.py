@@ -17,8 +17,8 @@ ANIMATION_DURATION_BEFORE_SHOT = 3.0
 ANIMATION_REAL_TIME_DURATION = 1.0
 DATA_POINTS_AMOUNT = 5
 _GAMEPLAY_ENTITIES_TO_HIDE = [
- 'Vehicle', 'DetachedTurret', 'BasicMine',
- 'AreaOfEffect', 'AttackArtilleryFort', 'AttackBomber', 'PersonalDeathZone']
+ 'Vehicle', 'DetachedTurret', 'BasicMine', 'AreaOfEffect', 'AttackArtilleryFort', 'AttackBomber',
+ 'PersonalDeathZone', 'ApplicationPoint']
 PostEffectSettings = namedtuple('PostEffectSettings', 'contrast, saturation, vignette')
 _logger = logging.getLogger(__name__)
 
@@ -195,10 +195,8 @@ class SimulatedScene(object):
     def saveKillSnapshot(self):
         self.__movementTracker.saveSnapshot(isKill=True)
 
-    def setPendingShotID(self, shotID, stopTracking=False):
+    def setPendingShotID(self, shotID):
         self.__movementTracker.setPendingShotID(shotID)
-        if stopTracking:
-            self.__movementTracker.stop()
 
     def getMovementData(self, shotID):
         return self.__movementTracker.getData(shotID)

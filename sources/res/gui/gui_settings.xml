@@ -1461,6 +1461,10 @@
 		<type>int</type>
 		<value>2000</value>
 	</sixthSenseDuration>
+	<reconFlightDuration>
+		<type>int</type>
+		<value>2000</value>
+	</reconFlightDuration>
 	<minimapDeathDuration>
 		<type>int</type>
 		<value>2200</value>
@@ -2586,11 +2590,6 @@
 				<type>url</type>
 			</item>
 			<item>
-				$PARAMS(/lootboxes-overlay)
-				<name>lootBoxSystem</name>
-				<type>url</type>
-			</item>
-			<item>
 				$PARAMS(/sh_category/sh_category)
 				<name>shProducts</name>
 				<type>url</type>
@@ -2691,7 +2690,7 @@
 		<type>dict</type>
 		<value>
 			<item>
-				/$LANGUAGE_CODE/promocontent/14BPContentPage/
+				/$LANGUAGE_CODE/promocontent/15BPContentPage/
 				<name>infoPage</name>
 				<type>url</type>
 			</item>
@@ -2701,7 +2700,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				/$LANGUAGE_CODE/promocontent/14BPIntroVideo/
+				/$LANGUAGE_CODE/promocontent/15BPIntroVideo/
 				<name>introVideo</name>
 				<type>url</type>
 			</item>
@@ -2740,17 +2739,17 @@
 						<type>dict</type>
 						<value>
 							<item>
-								<name>141</name>
+								<name>151</name>
 								<type>bool</type>
 								<value>False</value>
 							</item>
 							<item>
-								<name>142</name>
+								<name>152</name>
 								<type>bool</type>
 								<value>False</value>
 							</item>
 							<item>
-								<name>143</name>
+								<name>153</name>
 								<type>bool</type>
 								<value>False</value>
 							</item>
@@ -2776,66 +2775,6 @@
 			</item>
 		</value>
 	</battlePassIntroSlides>
-	<lootboxSystem>
-		<type>dict</type>
-		<value>
-			<item>
-				<name>intro</name>
-				<type>dict</type>
-				<value>
-					<item>
-						/$LANGUAGE_CODE/promocontent/lootBoxIntro/
-						<name>lootBoxSystem</name>
-						<type>url</type>
-					</item>
-					<item>
-						/$LANGUAGE_CODE/promocontent/lootBoxIntro/
-						<name>anniversaryCN</name>
-						<type>url</type>
-					</item>
-				</value>
-			</item>
-			<item>
-				<name>infoPage</name>
-				<type>dict</type>
-				<value>
-					<item>
-						<name>isVideoVisible</name>
-						<type>dict</type>
-						<value>
-							<item>
-								<name>default</name>
-								<type>bool</type>
-								<value>True</value>
-							</item>
-						</value>
-					</item>
-					<item>
-						<name>isShopVisible</name>
-						<type>dict</type>
-						<value>
-							<item>
-								<name>default</name>
-								<type>bool</type>
-								<value>True</value>
-							</item>
-						</value>
-					</item>
-				</value>
-			</item>
-		</value>
-	</lootboxSystem>
-	<lootBoxesListURL>
-		<type>macros</type>
-		<macros>AUTH_REALM</macros>
-		<value>
-			<item>
-				https://worldoftanks.asia/$LANGUAGE_CODE/news/announcements/update-1-25-ct2/
-				<name>default</name>
-				<type>url</type>
-			</item>
-		</value>
-	</lootBoxesListURL>
 	<crew>
 		<type>dict</type>
 		<value>
@@ -2855,6 +2794,28 @@
 					</item>
 					<item>
 						<name>crew5075Welcome</name>
+						<type>list</type>
+						<value>
+							<item>
+								<type>int</type>
+								<value>3</value>
+							</item>
+							<item>
+								<type>int</type>
+								<value>3</value>
+							</item>
+							<item>
+								<type>int</type>
+								<value>3</value>
+							</item>
+							<item>
+								<type>int</type>
+								<value>3</value>
+							</item>
+						</value>
+					</item>
+					<item>
+						<name>crewNpsWelcome</name>
 						<type>list</type>
 						<value>
 							<item>
@@ -3312,32 +3273,32 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/wot-plus-september/
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/wot-plus-september-2024/
 				<name>EU</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/wot-plus-september/
+				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/wot-plus-september-2024/
 				<name>ASIA</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/wot-plus-september/
+				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/wot-plus-september-2024/
 				<name>NA</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/wot-plus-april/
+				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/wot-plus-september-2024/
 				<name>CN</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/wot_plus/
+				https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/wot-plus-september-2024/
 				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/wot-plus-september/
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/wot-plus-september-2024/
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -3384,32 +3345,32 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/onslaught-light/
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/onslaught-season-of-manticore-episode-1/
 				<name>EU</name>
 				<type>url</type>
 			</item>
 			<item>
-				 https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/onslaught-light/ 
+				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/onslaught-season-of-manticore-episode-1/
 				<name>ASIA</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/onslaught-light/ 
+				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/onslaught-season-of-manticore-episode-1/
 				<name>NA</name>
 				<type>url</type>
 			</item>
 			<item>
-				 https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/onslaught-light/ 
+				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/onslaught-season-of-manticore-episode-1/
 				<name>CN</name>
 				<type>url</type>
 			</item>
 			<item>
-				 https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/onslaught-light/ 
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/onslaught-season-of-manticore-episode-1/
 				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/onslaught-light/
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/onslaught-season-of-manticore-episode-1/
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -3456,32 +3417,32 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/onslaught-season-of-the-pegasus-episode3Video/
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/onslaught-season-of-manticore-episode-1Video/
 				<name>EU</name>
 				<type>url</type>
 			</item>
 			<item>
-				 https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/onslaught-season-of-the-pegasus-episode3Video/ 
+				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/onslaught-season-of-manticore-episode-1Video/
 				<name>ASIA</name>
 				<type>url</type>
 			</item>
 			<item>
-				 https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/onslaught-season-of-the-pegasus-episode3Video/ 
+				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/onslaught-season-of-manticore-episode-1Video/
 				<name>NA</name>
 				<type>url</type>
 			</item>
 			<item>
-				 https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/onslaught-season-of-the-pegasus-episode3Video/ 
+				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/onslaught-season-of-manticore-episode-1Video/
 				<name>CN</name>
 				<type>url</type>
 			</item>
 			<item>
-				 https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/onslaught-season-of-the-pegasus-episode3Video/ 
+				https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/onslaught-season-of-manticore-episode-1Video/
 				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/onslaught-season-of-the-pegasus-episode3Video/
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/onslaught-season-of-manticore-episode-1Video/
 				<name>default</name>
 				<type>url</type>
 			</item>

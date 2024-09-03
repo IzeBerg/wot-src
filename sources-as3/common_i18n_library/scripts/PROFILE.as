@@ -1101,6 +1101,8 @@ package
       
       public static const PROFILE_DROPDOWN_LABELS_COMP7_ARCHIVE_GRIFFIN:String = "#profile:profile/dropdown/labels/comp7_archive_Griffin";
       
+      public static const PROFILE_DROPDOWN_LABELS_COMP7_ARCHIVE_PEGASUS:String = "#profile:profile/dropdown/labels/comp7_archive_Pegasus";
+      
       public static const PROFILE_DROPDOWN_LABELS_COMP7_SEASON_1:String = "#profile:profile/dropdown/labels/comp7_season_1";
       
       public static const PROFILE_DROPDOWN_LABELS_COMP7_SEASON_2:String = "#profile:profile/dropdown/labels/comp7_season_2";
@@ -1208,6 +1210,8 @@ package
       public static const PROFILE_PARAMS_TOOLTIP_MAXHEALTHREPAIR_BODY:String = "#profile:profile/params/tooltip/maxHealthRepair/body";
       
       public static const SEASONS_DROPDOWN_LABEL:String = "#profile:seasons/dropdown_label";
+      
+      public static const SEASONS_COMP7_DROPDOWN_LABEL:String = "#profile:seasons/comp7_dropdown_label";
       
       public static const SECTION_ADVANCEDACHIEVEMENTS_TITLE:String = "#profile:section/advancedAchievements/title";
        

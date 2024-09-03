@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-	<version>3</version>
+	<version>4</version>
 	<GameObjects>
 		<GameObject>
 			<name>05_planeCrash01_danger_zone_minimap</name>
@@ -33,16 +33,6 @@
 			<flags>10</flags>
 		</GameObject>
 		<GameObject>
-			<name>05_planeCrash01_danger_zone_smoke_01.prefab</name>
-			<UUID>d61c1958-531d-4a58-be47-b0948f328905</UUID>
-			<flags>10</flags>
-		</GameObject>
-		<GameObject>
-			<name>05_planeCrash01_danger_zone_smoke_02.prefab</name>
-			<UUID>66ea0c73-5f45-44e9-a4c6-1491e1ca7a05</UUID>
-			<flags>10</flags>
-		</GameObject>
-		<GameObject>
 			<name>05_planeCrash01_death_marker</name>
 			<UUID>237c92ad-a69a-3756-8bae-bd712cfb3d1a</UUID>
 			<flags>10</flags>
@@ -52,13 +42,23 @@
 			<UUID>3ecfecc9-9286-47c3-81f1-0ba51084be07</UUID>
 			<flags>10</flags>
 		</GameObject>
+		<GameObject>
+			<name>05_planeCrash01_danger_zone_smoke_01.prefab</name>
+			<UUID>ae2285d3-68b3-476f-bc53-f3ef86b02486</UUID>
+			<flags>10</flags>
+		</GameObject>
+		<GameObject>
+			<name>05_planeCrash01_danger_zone_smoke_02.prefab</name>
+			<UUID>d0873524-cecb-4b9f-9f6e-478d62241890</UUID>
+			<flags>10</flags>
+		</GameObject>
 	</GameObjects>
 	<components>
 		<ComponentPool>
 			<type>Hierarchy</type>
 			<version>2</version>
 			<component>
-				<objectIndex>1</objectIndex>
+				<UUID>c27cb134-5f80-40ec-9045-ebe59a6025a4</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -68,7 +68,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>2</objectIndex>
+				<UUID>409845a0-5437-3d25-ace7-413a579d506e</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -78,7 +78,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>3</objectIndex>
+				<UUID>5b768659-c5f6-3bdd-8236-023f5ff62d50</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -88,7 +88,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>4</objectIndex>
+				<UUID>742f585d-346d-4f08-8646-20f43dd618a9</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -98,7 +98,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>5</objectIndex>
+				<UUID>732a23a6-5052-3e49-b428-ee7371c42d14</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -108,42 +108,42 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>6</objectIndex>
+				<UUID>237c92ad-a69a-3756-8bae-bd712cfb3d1a</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
 						<name>Parent</name>
-						<link>409845a0-5437-3d25-ace7-413a579d506e</link>
+						<link>68669904-7644-455b-b6ba-d2a051194198</link>
 					</property>
 				</config>
 			</component>
 			<component>
-				<objectIndex>7</objectIndex>
+				<UUID>3ecfecc9-9286-47c3-81f1-0ba51084be07</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
 						<name>Parent</name>
-						<link>409845a0-5437-3d25-ace7-413a579d506e</link>
+						<link>68669904-7644-455b-b6ba-d2a051194198</link>
 					</property>
 				</config>
 			</component>
 			<component>
-				<objectIndex>8</objectIndex>
+				<UUID>ae2285d3-68b3-476f-bc53-f3ef86b02486</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
 						<name>Parent</name>
-						<link>409845a0-5437-3d25-ace7-413a579d506e</link>
+						<link>68669904-7644-455b-b6ba-d2a051194198</link>
 					</property>
 				</config>
 			</component>
 			<component>
-				<objectIndex>9</objectIndex>
+				<UUID>d0873524-cecb-4b9f-9f6e-478d62241890</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
 						<name>Parent</name>
-						<link>409845a0-5437-3d25-ace7-413a579d506e</link>
+						<link>68669904-7644-455b-b6ba-d2a051194198</link>
 					</property>
 				</config>
 			</component>
@@ -152,7 +152,7 @@
 			<type>Transform</type>
 			<version>1</version>
 			<component>
-				<objectIndex>0</objectIndex>
+				<UUID>68669904-7644-455b-b6ba-d2a051194198</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -170,7 +170,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>1</objectIndex>
+				<UUID>c27cb134-5f80-40ec-9045-ebe59a6025a4</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -191,7 +191,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>2</objectIndex>
+				<UUID>409845a0-5437-3d25-ace7-413a579d506e</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -212,7 +212,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>3</objectIndex>
+				<UUID>5b768659-c5f6-3bdd-8236-023f5ff62d50</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -233,7 +233,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>4</objectIndex>
+				<UUID>742f585d-346d-4f08-8646-20f43dd618a9</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -246,12 +246,12 @@
 					</property>
 					<property>
 						<name>Rotation</name>
-						<value>0 0 0</value>
+						<value>-0 0 0</value>
 					</property>
 				</config>
 			</component>
 			<component>
-				<objectIndex>5</objectIndex>
+				<UUID>732a23a6-5052-3e49-b428-ee7371c42d14</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -264,18 +264,18 @@
 					</property>
 					<property>
 						<name>Rotation</name>
-						<value>0 0 0</value>
+						<value>-0 0 0</value>
 					</property>
 				</config>
 			</component>
 			<component>
-				<objectIndex>6</objectIndex>
+				<UUID>237c92ad-a69a-3756-8bae-bd712cfb3d1a</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
 						<name>Position</name>
 						<value>
-							30.5276 1.60936 33.9294
+							-28.6301 -2.12836 26.7853
 							<!--BW_String-->
 						</value>
 					</property>
@@ -290,13 +290,13 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>7</objectIndex>
+				<UUID>3ecfecc9-9286-47c3-81f1-0ba51084be07</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
 						<name>Position</name>
 						<value>
-							12.732 4.06739 -96.685
+							-28.6301 -2.12836 26.7853
 							<!--BW_String-->
 						</value>
 					</property>
@@ -311,12 +311,15 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>8</objectIndex>
+				<UUID>ae2285d3-68b3-476f-bc53-f3ef86b02486</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
 						<name>Position</name>
-						<value>0 0 0</value>
+						<value>
+							1.89749 -0.519 60.7147
+							<!--BW_String-->
+						</value>
 					</property>
 					<property>
 						<name>Scale</name>
@@ -329,12 +332,15 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>9</objectIndex>
+				<UUID>d0873524-cecb-4b9f-9f6e-478d62241890</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
 						<name>Position</name>
-						<value>0 0 0</value>
+						<value>
+							-15.8981 1.93903 -69.8997
+							<!--BW_String-->
+						</value>
 					</property>
 					<property>
 						<name>Scale</name>
@@ -342,7 +348,7 @@
 					</property>
 					<property>
 						<name>Rotation</name>
-						<value>0 0 0</value>
+						<value>-0 0 0</value>
 					</property>
 				</config>
 			</component>
@@ -351,7 +357,7 @@
 			<type>SequenceComponent</type>
 			<version>3</version>
 			<component>
-				<objectIndex>0</objectIndex>
+				<UUID>68669904-7644-455b-b6ba-d2a051194198</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -473,46 +479,6 @@
 								<object>
 									<property>
 										<name>object</name>
-										<link>d61c1958-531d-4a58-be47-b0948f328905</link>
-									</property>
-									<property>
-										<name>start</name>
-										<value>7</value>
-									</property>
-									<property>
-										<name>end</name>
-										<value>28</value>
-									</property>
-									<property>
-										<name>parameters</name>
-										<collection/>
-									</property>
-								</object>
-							</item>
-							<item>
-								<object>
-									<property>
-										<name>object</name>
-										<link>66ea0c73-5f45-44e9-a4c6-1491e1ca7a05</link>
-									</property>
-									<property>
-										<name>start</name>
-										<value>7</value>
-									</property>
-									<property>
-										<name>end</name>
-										<value>28</value>
-									</property>
-									<property>
-										<name>parameters</name>
-										<collection/>
-									</property>
-								</object>
-							</item>
-							<item>
-								<object>
-									<property>
-										<name>object</name>
 										<link>c27cb134-5f80-40ec-9045-ebe59a6025a4</link>
 									</property>
 									<property>
@@ -578,6 +544,46 @@
 									</property>
 								</object>
 							</item>
+							<item>
+								<object>
+									<property>
+										<name>object</name>
+										<link>ae2285d3-68b3-476f-bc53-f3ef86b02486</link>
+									</property>
+									<property>
+										<name>start</name>
+										<value>0</value>
+									</property>
+									<property>
+										<name>end</name>
+										<value>28</value>
+									</property>
+									<property>
+										<name>parameters</name>
+										<collection/>
+									</property>
+								</object>
+							</item>
+							<item>
+								<object>
+									<property>
+										<name>object</name>
+										<link>d0873524-cecb-4b9f-9f6e-478d62241890</link>
+									</property>
+									<property>
+										<name>start</name>
+										<value>0</value>
+									</property>
+									<property>
+										<name>end</name>
+										<value>28</value>
+									</property>
+									<property>
+										<name>parameters</name>
+										<collection/>
+									</property>
+								</object>
+							</item>
 						</collection>
 					</property>
 				</config>
@@ -585,34 +591,28 @@
 		</ComponentPool>
 		<ComponentPool>
 			<type>Prefab</type>
-			<version>1</version>
+			<version>2</version>
 			<component>
-				<objectIndex>6</objectIndex>
+				<UUID>ae2285d3-68b3-476f-bc53-f3ef86b02486</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
-						<name>resource</name>
-						<isAsset>true</isAsset>
-						<value>content/CGFPrefabs/Map_scenarios/notification/re_notification_smoke.prefab</value>
-					</property>
-					<property>
-						<name>overridesData</name>
-						<value/>
+						<name>content</name>
+						<section>
+							<resource>content/CGFPrefabs/Map_scenarios/notification/re_notification_smoke.prefab</resource>
+						</section>
 					</property>
 				</config>
 			</component>
 			<component>
-				<objectIndex>7</objectIndex>
+				<UUID>d0873524-cecb-4b9f-9f6e-478d62241890</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
-						<name>resource</name>
-						<isAsset>true</isAsset>
-						<value>content/CGFPrefabs/Map_scenarios/notification/re_notification_smoke.prefab</value>
-					</property>
-					<property>
-						<name>overridesData</name>
-						<value/>
+						<name>content</name>
+						<section>
+							<resource>content/CGFPrefabs/Map_scenarios/notification/re_notification_smoke.prefab</resource>
+						</section>
 					</property>
 				</config>
 			</component>
@@ -621,7 +621,7 @@
 			<type>PrismArea</type>
 			<version>1</version>
 			<component>
-				<objectIndex>2</objectIndex>
+				<UUID>409845a0-5437-3d25-ace7-413a579d506e</UUID>
 				<flags>3</flags>
 				<config>
 					<property>
@@ -696,7 +696,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>3</objectIndex>
+				<UUID>5b768659-c5f6-3bdd-8236-023f5ff62d50</UUID>
 				<flags>3</flags>
 				<config>
 					<property>
@@ -772,11 +772,11 @@
 			<type>Area trigger</type>
 			<version>1</version>
 			<component>
-				<objectIndex>2</objectIndex>
+				<UUID>409845a0-5437-3d25-ace7-413a579d506e</UUID>
 				<flags>3</flags>
 			</component>
 			<component>
-				<objectIndex>3</objectIndex>
+				<UUID>5b768659-c5f6-3bdd-8236-023f5ff62d50</UUID>
 				<flags>3</flags>
 			</component>
 		</ComponentPool>
@@ -784,7 +784,7 @@
 			<type>MinimapChangerComponent</type>
 			<version>1</version>
 			<component>
-				<objectIndex>4</objectIndex>
+				<UUID>742f585d-346d-4f08-8646-20f43dd618a9</UUID>
 				<flags>3</flags>
 				<config>
 					<property>
@@ -794,7 +794,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>5</objectIndex>
+				<UUID>732a23a6-5052-3e49-b428-ee7371c42d14</UUID>
 				<flags>3</flags>
 				<config>
 					<property>
@@ -808,7 +808,7 @@
 			<type>ZoneMarker</type>
 			<version>1</version>
 			<component>
-				<objectIndex>1</objectIndex>
+				<UUID>c27cb134-5f80-40ec-9045-ebe59a6025a4</UUID>
 				<flags>3</flags>
 				<config>
 					<property>
@@ -833,7 +833,7 @@
 			<type>ZoneUINotification</type>
 			<version>1</version>
 			<component>
-				<objectIndex>3</objectIndex>
+				<UUID>5b768659-c5f6-3bdd-8236-023f5ff62d50</UUID>
 				<flags>3</flags>
 				<config>
 					<property>
@@ -847,7 +847,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>8</objectIndex>
+				<UUID>237c92ad-a69a-3756-8bae-bd712cfb3d1a</UUID>
 				<flags>3</flags>
 				<config>
 					<property>
@@ -861,7 +861,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>9</objectIndex>
+				<UUID>3ecfecc9-9286-47c3-81f1-0ba51084be07</UUID>
 				<flags>3</flags>
 				<config>
 					<property>

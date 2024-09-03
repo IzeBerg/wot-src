@@ -107,6 +107,13 @@ def getStorageItemDescr(item):
             return OptDeviceBonusesDescriptionBuilder().getEffectDescription(item)
         template = g_htmlTemplates['html_templates:lobby/popovers']['equipment']
         desc = item.formattedShortDescription(template.source)
+        if itemType == GUI_ITEM_TYPE.EQUIPMENT:
+            cooldownSeconds = item.descriptor.cooldownSeconds
+            if cooldownSeconds > 0:
+                tpl = g_htmlTemplates['html_templates:lobby/popovers/equipment']
+                cooldown = tpl.format('whiteSpanish', ctx={'message': cooldownSeconds})
+                extendedDescr = backport.text(R.strings.storage.equipment.cooldown(), cooldown=cooldown)
+                desc = backport.text(R.strings.storage.equipment.extendedDescription(), descr=desc, extendedDescr=extendedDescr)
         return text_styles.main(desc)
 
 
@@ -258,7 +265,7 @@ def dummyFormatter(label, btnLabel='', btnTooltip=''):
 def enoughCreditsForRestore(restoreCreditsPrice, itemsCache):
     currentMoney = itemsCache.items.stats.money
     currentCredits = currentMoney.credits
-    liquidityCredits = currentCredits + currentMoney.gold * itemsCache.items.shop.exchangeRate
+    liquidityCredits = currentCredits + currentMoney.gold * itemsCache.items.shop.defaults.exchangeRate
     return (restoreCreditsPrice <= liquidityCredits, restoreCreditsPrice > currentCredits)
 
 
@@ -411,7 +418,8 @@ class OptDeviceBonusesDescriptionBuilder(object):
 
     def getDescriptionByKpiStrings(self, item):
         if any(kpi.type == KPI.Type.AGGREGATE_MUL for kpi in item.getKpi()):
-            return [item.shortDescriptionSpecial]
+            return [
+             item.shortDescriptionSpecial.format(colorTagOpen=self.KPI_HTML_TEMPLATE.source['colorTagOpen'], colorTagClose=self.KPI_HTML_TEMPLATE.source['colorTagClose'])]
         return [ self.__createKpiString(kpi) for kpi in item.getKpi() ]
 
     def getEffectDescription(self, item):

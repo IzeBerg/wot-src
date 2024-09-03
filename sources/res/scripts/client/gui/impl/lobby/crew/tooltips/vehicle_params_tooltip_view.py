@@ -13,12 +13,12 @@ from gui.impl.gen.view_models.views.lobby.crew.tooltips.vehicle_params_tooltip_v
 from gui.impl.pub import ViewImpl
 from gui.shared.gui_items import KPI
 from gui.shared.items_parameters import formatters as param_formatter
-from gui.shared.items_parameters.bonus_helper import isSituationalBonus, CREW_MASTERY_BONUSES
+from gui.shared.items_parameters.bonus_helper import isSituationalBonus
 from gui.shared.items_parameters.comparator import PARAM_STATE
 from gui.shared.items_parameters.formatters import isRelativeParameter
 from gui.shared.items_parameters.param_name_helper import getVehicleParameterText
 from gui.shared.items_parameters.params import PIERCING_DISTANCES
-from gui.shared.utils import CHASSIS_REPAIR_TIME, SHOT_DISPERSION_ANGLE, DUAL_ACCURACY_COOLING_DELAY, AUTO_SHOOT_CLIP_FIRE_RATE, isRomanNumberForbidden
+from gui.shared.utils import CHASSIS_REPAIR_TIME, SHOT_DISPERSION_ANGLE, DUAL_ACCURACY_COOLING_DELAY, ROCKET_ACCELERATION_ENGINE_POWER, RELOAD_TIME_SECS_PROP_NAME, RELOAD_TIME_PROP_NAME, TURBOSHAFT_ENGINE_POWER, TURBOSHAFT_INVISIBILITY_MOVING_FACTOR, TURBOSHAFT_INVISIBILITY_STILL_FACTOR, DUAL_GUN_CHARGE_TIME, AUTO_RELOAD_PROP_NAME, AIMING_TIME_PROP_NAME, AUTO_SHOOT_CLIP_FIRE_RATE, isRomanNumberForbidden
 from helpers import i18n
 from items import perks, vehicles, tankmen, parseIntCompactDescr
 from post_progression_common import ACTION_TYPES
@@ -38,20 +38,55 @@ _BONUS_TYPES_ORDER = {constants.BonusTypes.EXTRA: 6, constants.BonusTypes.SKILL:
 _CREW_TYPES = (
  constants.BonusTypes.PERK, constants.BonusTypes.SKILL)
 _MULTI_KPI_PARAMS = frozenset([
- 'vehicleRepairSpeed', 'vehicleRamOrExplosionDamageResistance', 'vehicleGunShotDispersion',
- 'crewHitChance', 'crewRepeatedStunDuration', 'vehicleChassisStrength', 'vehicleChassisFallDamage',
- 'vehicleChassisRepairSpeed', 'vehicleAmmoBayEngineFuelStrength', 'vehicleFireChance',
- 'demaskFoliageFactor', 'demaskMovingFactor', 'crewStunDuration', 'damageEnemiesByRamming',
- 'vehPenaltyForDamageEngineAndCombat', 'vehicleGunShotDispersionAfterShot',
- 'vehicleGunShotDispersionChassisMovement', 'vehicleGunShotDispersionChassisRotation',
- 'vehicleGunShotDispersionTurretRotation', 'vehicleGunShotDispersionWhileGunDamaged',
- 'vehicleRamDamageResistance', 'vehicleSpeedGain', 'aimingTime', 'autoReloadTime', 'avgDamagePerMinute',
- 'avgPiercingPower', 'chargeTime', 'chassisRepairTime', 'chassisRotationSpeed', 'circularVisionRadius',
- 'clipFireRate', 'enginePower', 'enginePowerPerTon', 'invisibilityMovingFactor', 'invisibilityStillFactor',
- 'maxHealth', 'radioDistance', 'reloadTime', 'reloadTimeSecs', 'shotDispersionAngle', 'turboshaftEnginePower',
- 'turboshaftInvisibilityMovingFactor', 'turboshaftInvisibilityStillFactor', 'turretRotationSpeed',
- 'rocketAccelerationEnginePower', 'vehicleEnemySpottingTime', DUAL_ACCURACY_COOLING_DELAY,
- AUTO_SHOOT_CLIP_FIRE_RATE])
+ KPI.Name.VEHICLE_REPAIR_SPEED,
+ KPI.Name.VEHICLE_GUN_SHOT_DISPERSION,
+ KPI.Name.VEHICLE_GUN_SHOT_DISPERSION_AFTER_SHOT,
+ KPI.Name.CREW_HIT_CHANCE,
+ KPI.Name.CREW_REPEATED_STUN_DURATION,
+ KPI.Name.VEHICLE_CHASSIS_STRENGTH,
+ KPI.Name.VEHICLE_CHASSIS_FALL_DAMAGE,
+ KPI.Name.VEHICLE_CHASSIS_REPAIR_SPEED,
+ KPI.Name.VEHICLE_AMMO_BAY_ENGINE_FUEL_STRENGTH,
+ KPI.Name.VEHICLE_FIRE_CHANCE,
+ KPI.Name.DEMASK_FOLIAGE_FACTOR,
+ KPI.Name.DEMASK_MOVING_FACTOR,
+ KPI.Name.CREW_STUN_DURATION,
+ KPI.Name.VEHICLE_DAMAGE_ENEMIES_BY_RAMMING,
+ KPI.Name.VEHICLE_GUN_SHOT_DISPERSION_CHASSIS_MOVEMENT,
+ KPI.Name.VEHICLE_GUN_SHOT_DISPERSION_CHASSIS_ROTATION,
+ KPI.Name.VEHICLE_GUN_SHOT_DISPERSION_TURRET_ROTATION,
+ KPI.Name.VEHICLE_GUN_SHOT_DISPERSION_WHILE_GUN_DAMAGED,
+ KPI.Name.VEHICLE_RAM_DAMAGE_RESISTANCE,
+ KPI.Name.VEHICLE_SPEED_GAIN,
+ KPI.Name.VEHICLE_ENEMY_SPOTTING_TIME,
+ KPI.Name.VEHICLE_HE_SHELL_DAMAGE_RESISTANCE,
+ KPI.Name.VEHICLE_PENALTY_FOR_DAMAGED_ENGINE,
+ KPI.Name.VEHICLE_PENALTY_FOR_DAMAGED_AMMORACK,
+ DUAL_ACCURACY_COOLING_DELAY,
+ AUTO_SHOOT_CLIP_FIRE_RATE,
+ ROCKET_ACCELERATION_ENGINE_POWER,
+ SHOT_DISPERSION_ANGLE,
+ AIMING_TIME_PROP_NAME,
+ AUTO_RELOAD_PROP_NAME,
+ DUAL_GUN_CHARGE_TIME,
+ CHASSIS_REPAIR_TIME,
+ RELOAD_TIME_PROP_NAME,
+ RELOAD_TIME_SECS_PROP_NAME,
+ TURBOSHAFT_ENGINE_POWER,
+ TURBOSHAFT_INVISIBILITY_MOVING_FACTOR,
+ TURBOSHAFT_INVISIBILITY_STILL_FACTOR,
+ 'avgDamagePerMinute',
+ 'avgPiercingPower',
+ 'chassisRotationSpeed',
+ 'circularVisionRadius',
+ 'clipFireRate',
+ 'enginePower',
+ 'enginePowerPerTon',
+ 'invisibilityMovingFactor',
+ 'invisibilityStillFactor',
+ 'maxHealth',
+ 'radioDistance',
+ 'turretRotationSpeed'])
 AUTORELOAD_TIME = 'autoReloadTime'
 _PARAMS_WITH_AGGREGATED_PENALTIES = {
  DUAL_ACCURACY_COOLING_DELAY}
@@ -293,7 +328,7 @@ class VehicleAdvancedParamsTooltipView(BaseVehicleAdvancedParamsTooltipView):
         vehicle = self.vehicle
         situationalScheme = (
          partial(self._formatValueText, ValueStyleEnum.RED),
-         partial(self._formatValueText, ValueStyleEnum.WHITEORANGE),
+         partial(self._formatValueText, ValueStyleEnum.YELLOW),
          partial(self._formatValueText, ValueStyleEnum.YELLOW))
         extractedBonusScheme = (
          partial(self._formatValueText, ValueStyleEnum.RED),
@@ -306,7 +341,6 @@ class VehicleAdvancedParamsTooltipView(BaseVehicleAdvancedParamsTooltipView):
         appliedOptDeviceBonuses = []
         installedArchetypes = set()
         for bnsType, bnsId, pInfo in bonusExtractor.getBonusInfo():
-            diff = pInfo.getParamDiff()
             tooltipSection, archetype = self._getTooltipGroupingForBonus(bnsType, bnsId)
             if archetype is not None:
                 installedArchetypes.add(archetype)
@@ -314,9 +348,6 @@ class VehicleAdvancedParamsTooltipView(BaseVehicleAdvancedParamsTooltipView):
             isSituational = isSituationalBonus(formattedBnsID, bnsType, pInfo.name)
             scheme = situationalScheme if isSituational else extractedBonusScheme
             valueStr = param_formatter.formatParameterDelta(pInfo, scheme)
-            if isSituational and bnsId in CREW_MASTERY_BONUSES:
-                if diff == 0.0 or isinstance(diff, (list, tuple)) and not filter(None, diff):
-                    valueStr = ''
             if valueStr is not None:
                 hasSituational = hasSituational or isSituational
                 bonusName = _getBonusName(bnsType, formattedBnsID)

@@ -679,7 +679,7 @@ class Shop(object):
         sellForGold = result.get('vehiclesToSellForGold', {})
         return (
          self.__getCacheRevision(),
-         cache.get('exchangeRate', 0),
+         cache.get('defaults', {}).get('exchangeRate', 0),
          cache.get('exchangeRateForShellsAndEqs', 0),
          sellPriceModif,
          sellPriceFactors.get(typeCompDescr, sellPriceModif),

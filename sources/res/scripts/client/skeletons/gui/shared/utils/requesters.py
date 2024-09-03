@@ -4,7 +4,6 @@ if typing.TYPE_CHECKING:
     from collections import OrderedDict
     from gui.shared.gui_items.dossier.achievements.abstract import RegularAchievement
     from gui.shared.gui_items.gui_item_economics import ItemPrice
-    from gui.shared.gui_items.loot_box import LootBox
     from gui.shared.money import Money, DynamicMoney
     from gui.shared.utils.requesters import InventoryRequester
     from gui.shared.utils.requesters.ShopRequester import DefaultShopRequester
@@ -163,6 +162,10 @@ class IStatsRequester(IRequester):
 
     @property
     def equipCoin(self):
+        raise NotImplementedError
+
+    @property
+    def postProgressionXP(self):
         raise NotImplementedError
 
     @property
@@ -676,6 +679,7 @@ class IShopCommonStats(object):
 
 
 class IShopRequester(IShopCommonStats, IRequester):
+    defaults = None
 
     def __init__(self):
         super(IShopRequester, self).__init__()
@@ -692,22 +696,6 @@ class IShopRequester(IShopCommonStats, IRequester):
         raise NotImplementedError
 
     @property
-    def freeXPConversionLimit(self):
-        raise NotImplementedError
-
-    @property
-    def freeXPConversionWithDiscount(self):
-        raise NotImplementedError
-
-    @property
-    def isXPConversionActionActive(self):
-        raise NotImplementedError
-
-    @property
-    def isCreditsConversionActionActive(self):
-        raise NotImplementedError
-
-    @property
     def personalPremiumPacketsDiscounts(self):
         raise NotImplementedError
 
@@ -717,10 +705,6 @@ class IShopRequester(IShopCommonStats, IRequester):
 
     @property
     def personalTankmanDiscounts(self):
-        raise NotImplementedError
-
-    @property
-    def personalXPExchangeDiscounts(self):
         raise NotImplementedError
 
     @property
@@ -984,9 +968,6 @@ class ITokensRequester(IRequester):
         raise NotImplementedError
 
     def getAttemptsAfterGuaranteedRewards(self, box):
-        raise NotImplementedError
-
-    def getLootBoxesStats(self):
         raise NotImplementedError
 
     def getLootBoxes(self):

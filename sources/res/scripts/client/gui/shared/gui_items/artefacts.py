@@ -100,7 +100,7 @@ class Equipment(VehicleArtefact):
 
     def _getAltPrice(self, buyPrice, proxy):
         if Currency.GOLD in buyPrice:
-            return buyPrice.exchange(Currency.GOLD, Currency.CREDITS, proxy.exchangeRateForShellsAndEqs)
+            return buyPrice.exchange(Currency.GOLD, Currency.CREDITS, proxy.exchangeRateForShellsAndEqs, useDiscounts=False)
         return super(Equipment, self)._getAltPrice(buyPrice, proxy)
 
     @property
@@ -253,8 +253,15 @@ class BattleBooster(Equipment):
         return False
 
     def isAffectsOnVehicle(self, vehicle, setupIdx=None):
+
+        def getValidator(tankman):
+            if tankman is not None:
+                return tankman.descriptor.validateSkillEquipment
+            else:
+                return tankmen.iterAffectedRolesByEquipment
+
         if self.isCrewBooster():
-            return True
+            return any(getValidator(tankman)(vehicle.descriptor, idxInCrew, self.descriptor) for idxInCrew, tankman in vehicle.crew)
         else:
             if setupIdx is not None:
                 for device in vehicle.optDevices.setupLayouts.setups[setupIdx]:
@@ -297,14 +304,6 @@ class BattleBooster(Equipment):
 
     def getBonusIcon(self, size='small'):
         return RES_ICONS.getBonusIcon(size, self.name.split('_')[0])
-
-    def getGUIEmblemID(self):
-        return self.descriptor.iconName
-
-    def getOverlayType(self, vehicle=None):
-        if self.isCrewBooster():
-            return 'battleBoosterReplace'
-        return 'battleBooster'
 
     def isOptionalDeviceCompatible(self, optionalDevice):
         return not self.isCrewBooster() and optionalDevice is not None and self.descriptor.getLevelParamsForDevice(optionalDevice.descriptor) is not None
@@ -589,9 +588,6 @@ class OptionalDevice(RemovableDevice):
             result = RES_ICONS.getBonusIcon(size, self.name.split('_')[0])
         return result
 
-    def getBonusOverlay(self, size='small'):
-        return RES_ICONS.getBonusOverlay(size, self.getOverlayType())
-
     def isInstalled(self, vehicle, slotIdx=None):
         for idx, op in enumerate(vehicle.optDevices.installed):
             if op is not None and self.intCD == op.intCD:
@@ -686,7 +682,7 @@ class OptionalDevice(RemovableDevice):
         money = proxy.stats.money
         if not money.isSet(Currency.GOLD):
             return False
-        money = money.exchange(Currency.GOLD, Currency.CREDITS, proxy.shop.exchangeRate, default=0)
+        money = money.exchange(Currency.GOLD, Currency.CREDITS, proxy.shop.exchangeRate, default=0, useDiscounts=True)
         canBuy, _ = self._isEnoughMoney(self.getUpgradePrice(proxy).price, money)
         return canBuy
 

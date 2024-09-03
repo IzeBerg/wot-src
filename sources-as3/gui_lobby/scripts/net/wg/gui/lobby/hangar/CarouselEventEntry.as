@@ -5,9 +5,9 @@ package net.wg.gui.lobby.hangar
    public class CarouselEventEntry extends CarouselEventEntryMeta
    {
       
-      public static const WIDTH:int = 220;
+      public static const WIDTH:int = 252;
       
-      public static const HEIGHT:int = 220;
+      public static const HEIGHT:int = 252;
        
       
       public function CarouselEventEntry()

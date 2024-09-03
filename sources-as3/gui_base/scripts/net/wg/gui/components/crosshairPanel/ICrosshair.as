@@ -71,14 +71,6 @@ package net.wg.gui.components.crosshairPanel
       
       function blinkReloadTime(param1:int) : void;
       
-      function addOverheat(param1:Number) : void;
-      
-      function removeOverheat() : void;
-      
-      function setOverheatProgress(param1:Number, param2:Boolean) : void;
-      
-      function updateOverheatColorBlind(param1:Boolean) : void;
-      
       function get autoloaderBoostParams() : BoostIndicatorStateParamsVO;
       
       function set isUseFrameAnimation(param1:Boolean) : void;

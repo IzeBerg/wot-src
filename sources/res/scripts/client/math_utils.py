@@ -62,10 +62,6 @@ def clampVectorLength(minLength, maxLength, vector):
     return vector * 1.0
 
 
-def clampIndex(items, value):
-    return clamp(0, len(items) - 1, value)
-
-
 def matrixScale(vector, scaleCoeff):
     return Math.matrixScale(vector, scaleCoeff)
 
@@ -400,20 +396,4 @@ class VectorConstant(object):
     Vector4One = Math.Vector4(1.0, 1.0, 1.0, 1.0)
     Vector4I = Math.Vector4(1.0, 0.0, 0.0, 0.0)
     Vector4J = Math.Vector4(0.0, 1.0, 0.0, 0.0)
-    Vector4L = Math.Vector4(0.0, 0.0, 0.0, 1.0)
-
-
-def normalizeAngle(angle):
-    return angle - 2 * math.pi * math.floor(angle / (2 * math.pi))
-
-
-def isNearlyEqualFloat(a, b, epsilon=1e-05):
-    return abs(a - b) < epsilon
-
-
-def isNearlyZeroFloat(a, epsilon=1e-05):
-    return isNearlyEqualFloat(a, 0.0, epsilon)
-
-
-def rotateVector3(vec, angles, axis):
-    return vec * math.cos(angles) + vec * axis * math.sin(angles) + axis * vec.dot(axis) * (1 - math.cos(angles))# Decompile failed :(
+    Vector4L = Math.Vector4(0.0, 0.0, 0.0, 1.0)# Decompile failed :(

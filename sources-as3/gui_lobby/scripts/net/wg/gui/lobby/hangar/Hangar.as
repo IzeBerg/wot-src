@@ -73,7 +73,7 @@ package net.wg.gui.lobby.hangar
       
       private static const CAROUSEL_NAME:String = "carousel";
       
-      private static const CAROUSEL_EVENT_ENTRY_NAME:String = "carouselEventEntryContainer";
+      private static const CAROUSEL_EVENT_ENTRY_NAME:String = "eventLootBoxesContainer";
       
       private static const PARAMS_TOP_MARGIN:int = 3;
       
@@ -143,9 +143,7 @@ package net.wg.gui.lobby.hangar
       
       private static const EVENT_TOURNAMENT_BANNER_OFFSET_Y:int = -12;
       
-      private static const SMALL_SCREEN_WIDTH_THRESHOLD:int = 1280;
-      
-      private static const PARAMS_SMALL_SCREEN_BOTTOM_MARGIN:int = 36;
+      private static const PARAMS_SMALL_SCREEN_BOTTOM_MARGIN:int = 98;
       
       private static const AMMUNITION_PANEL_OFFSET_Y:int = 4;
       
@@ -157,11 +155,11 @@ package net.wg.gui.lobby.hangar
       
       private static const AMMUNITION_PANEL_INJECT_FACTOR_X2:int = 2;
       
-      private static const WIDGETS_OFFSET_Y:int = 64;
+      private static const WIDGETS_OFFSET_Y:int = 84;
       
-      private static const CAROUSEL_EVENT_ENTRY_X_OFFSET:int = 0;
+      private static const CAROUSEL_EVENT_ENTRY_X_OFFSET:int = -65;
       
-      private static const CAROUSEL_EVENT_ENTRY_Y_OFFSET:int = 110;
+      private static const CAROUSEL_EVENT_ENTRY_Y_OFFSET:int = 127;
       
       private static const HELP_LAYOUT_ADDITIONAL_WIDTH:int = -30;
        
@@ -234,8 +232,6 @@ package net.wg.gui.lobby.hangar
       
       private var _eventTournamentBanner:EventTournamentBannerInject = null;
       
-      private var _strengthsWeaknessesPanelInject:StrengthsWeaknessesPanelInject;
-      
       private var _appStage:Stage;
       
       private var _topMargin:int = 0;
@@ -272,6 +268,7 @@ package net.wg.gui.lobby.hangar
          super();
          _deferredDispose = true;
          this.switchModePanel.visible = false;
+         this.params.snapHeightToRenderers = false;
          this._hangarContentHelper = new HangarContentHelper(this);
          this.setupWidgetSizes();
          this._eventsEntryContainer = new HangarEventEntriesContainer();
@@ -324,10 +321,6 @@ package net.wg.gui.lobby.hangar
             this.vehResearchPanel.x = param1;
             _loc3_ = this.vehResearchBG.getBounds(this.vehResearchBG);
             this.vehResearchBG.x = param1 - _loc3_.x - _loc3_.width - RIGHT_MARGIN >> 0;
-         }
-         if(this._strengthsWeaknessesPanelInject != null)
-         {
-            this._strengthsWeaknessesPanelInject.x = param1 - this._strengthsWeaknessesPanelInject.width >> 0;
          }
          this._helpLayout.hide();
          invalidate(ENTRY_CONT_POSITION_INVALID);
@@ -390,7 +383,6 @@ package net.wg.gui.lobby.hangar
          this.tryRemoveBattleRoyaleContainer();
          this.removeComp7ModifiersPanel();
          this.removePrestigeWidgetPanel();
-         this.removeStrengthsWeaknessesPanel();
          this.bottomBg.dispose();
          this.bottomBg = null;
          this.teaser.dispose();
@@ -536,7 +528,7 @@ package net.wg.gui.lobby.hangar
             {
                this.carousel.setRightMargin(!!this._carouselEventEntryVisible ? int(CarouselEventEntry.WIDTH + CAROUSEL_EVENT_ENTRY_X_OFFSET) : int(0));
             }
-            this.updateCarouselEventEntryWidgetPosition();
+            this.updateEventLootBoxWidgetPosition();
          }
          if(isInvalid(INVALIDATE_EVENT_TOURNAMENT_BANNER_VISIBILITY))
          {
@@ -676,19 +668,6 @@ package net.wg.gui.lobby.hangar
          }
       }
       
-      public function addStrengthsWeaknessesPanel() : void
-      {
-         if(!this._strengthsWeaknessesPanelInject)
-         {
-            this._strengthsWeaknessesPanelInject = new StrengthsWeaknessesPanelInject();
-            this._strengthsWeaknessesPanelInject.setManageSize(true);
-            this._strengthsWeaknessesPanelInject.x = _originalWidth - this._strengthsWeaknessesPanelInject.width >> 0;
-            this._strengthsWeaknessesPanelInject.y = StrengthsWeaknessesPanelInject.STRENGTHS_WEAKNESSES_PANEL_INJECT_OFFSET_Y;
-            addChild(this._strengthsWeaknessesPanelInject);
-            registerFlashComponentS(this._strengthsWeaknessesPanelInject,HANGAR_ALIASES.STRENGTHS_WEAKNESSES_PANEL);
-         }
-      }
-      
       public function as_closeHelpLayout() : void
       {
          this._helpLayout.hide();
@@ -793,10 +772,6 @@ package net.wg.gui.lobby.hangar
          {
             this.removePrestigeWidget();
          }
-      }
-      
-      public function as_setEventEntryPointVisible(param1:Boolean) : void
-      {
       }
       
       public function as_setTeaserTimer(param1:String) : void
@@ -944,19 +919,6 @@ package net.wg.gui.lobby.hangar
       {
          this.removePrestigeWidgetPanel();
          invalidate(INVALIDATE_PRESTIGE_WIDGET_VISIBILITY);
-      }
-      
-      public function removeStrengthsWeaknessesPanel() : void
-      {
-         if(this._strengthsWeaknessesPanelInject != null)
-         {
-            removeChild(this._strengthsWeaknessesPanelInject);
-            if(!_baseDisposed && isFlashComponentRegisteredS(HANGAR_ALIASES.STRENGTHS_WEAKNESSES_PANEL))
-            {
-               unregisterFlashComponentS(HANGAR_ALIASES.STRENGTHS_WEAKNESSES_PANEL);
-            }
-            this._strengthsWeaknessesPanelInject = null;
-         }
       }
       
       public function setAnimatorVisibility(param1:Boolean) : void
@@ -1225,7 +1187,7 @@ package net.wg.gui.lobby.hangar
          }
          this.params.x = _originalWidth - this.params.width - RIGHT_MARGIN ^ 0;
          this.params.y = _loc1_;
-         var _loc2_:int = _originalWidth <= SMALL_SCREEN_WIDTH_THRESHOLD ? int(PARAMS_SMALL_SCREEN_BOTTOM_MARGIN) : int(0);
+         var _loc2_:int = _originalWidth <= StageSizeBoundaries.WIDTH_1280 ? int(PARAMS_SMALL_SCREEN_BOTTOM_MARGIN) : int(0);
          var _loc3_:int = this.ammunitionPanel.y - this.params.y + PARAMS_BOTTOM_MARGIN - _loc2_;
          if(this._eventsEntryContainer && this._eventsEntryContainer.isActive && this._eventsEntryContainer.height > 0)
          {
@@ -1251,7 +1213,7 @@ package net.wg.gui.lobby.hangar
       {
          this._carousel.updateCarouselPosition(_height - this._carousel.getBottom() ^ 0);
          this.updateEventTournamentBannerSizeAndPosition();
-         this.updateCarouselEventEntryWidgetPosition();
+         this.updateEventLootBoxWidgetPosition();
          this.updateAmmunitionPanelPosition();
          if(this._hangarViewSwitchAnimator)
          {
@@ -1268,15 +1230,14 @@ package net.wg.gui.lobby.hangar
          }
       }
       
-      private function updateCarouselEventEntryWidgetPosition() : void
+      private function updateEventLootBoxWidgetPosition() : void
       {
          var _loc1_:int = 0;
          var _loc2_:int = 0;
          if(this.carouselEventEntry && this._carousel)
          {
-            _loc1_ = this.carousel.x + this._carousel.rightArrow.x;
+            _loc1_ = this.carousel.x + this._carousel.rightArrow.x + this._carousel.rightArrow.width + CAROUSEL_EVENT_ENTRY_X_OFFSET;
             _loc2_ = this._carousel.y + this._carousel.leftArrow.y + (this._carousel.leftArrow.height >> 1);
-            _loc1_ += CAROUSEL_EVENT_ENTRY_X_OFFSET;
             _loc2_ -= CAROUSEL_EVENT_ENTRY_Y_OFFSET;
             this.carouselEventEntry.x = _loc1_;
             this.carouselEventEntry.y = _loc2_;

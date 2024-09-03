@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-	<version>3</version>
+	<version>4</version>
 	<GameObjects>
 		<GameObject>
 			<name>08_bigCityBombing_crashingWall_03_complete</name>
@@ -28,7 +28,7 @@
 			<type>Hierarchy</type>
 			<version>2</version>
 			<component>
-				<objectIndex>1</objectIndex>
+				<UUID>1a3fc741-3300-4d5c-8ed3-da4682807481</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -38,7 +38,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>2</objectIndex>
+				<UUID>0a02560e-26c6-4b86-aa98-0f5220929359</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -48,7 +48,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>3</objectIndex>
+				<UUID>8f1a2e9f-6a0e-47f4-9e73-cc295b299db5</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -62,7 +62,7 @@
 			<type>Transform</type>
 			<version>1</version>
 			<component>
-				<objectIndex>0</objectIndex>
+				<UUID>167450ea-52fe-4b59-ba28-cf5c863ebb8a</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -80,7 +80,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>1</objectIndex>
+				<UUID>1a3fc741-3300-4d5c-8ed3-da4682807481</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -98,7 +98,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>2</objectIndex>
+				<UUID>0a02560e-26c6-4b86-aa98-0f5220929359</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -116,7 +116,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>3</objectIndex>
+				<UUID>8f1a2e9f-6a0e-47f4-9e73-cc295b299db5</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -138,7 +138,7 @@
 			<type>SequenceComponent</type>
 			<version>3</version>
 			<component>
-				<objectIndex>0</objectIndex>
+				<UUID>167450ea-52fe-4b59-ba28-cf5c863ebb8a</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -297,49 +297,40 @@
 		</ComponentPool>
 		<ComponentPool>
 			<type>Prefab</type>
-			<version>1</version>
+			<version>2</version>
 			<component>
-				<objectIndex>1</objectIndex>
+				<UUID>1a3fc741-3300-4d5c-8ed3-da4682807481</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
-						<name>resource</name>
-						<isAsset>true</isAsset>
-						<value>content/CGFPrefabs/Map_scenarios/08_ruinberg/08_big_city_bombing/08_bigCityBombing_crashingWall_03_transition.prefab</value>
-					</property>
-					<property>
-						<name>overridesData</name>
-						<value/>
+						<name>content</name>
+						<section>
+							<resource>content/CGFPrefabs/Map_scenarios/08_ruinberg/08_big_city_bombing/08_bigCityBombing_crashingWall_03_transition.prefab</resource>
+						</section>
 					</property>
 				</config>
 			</component>
 			<component>
-				<objectIndex>2</objectIndex>
+				<UUID>0a02560e-26c6-4b86-aa98-0f5220929359</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
-						<name>resource</name>
-						<isAsset>true</isAsset>
-						<value>content/CGFPrefabs/Map_scenarios/08_ruinberg/08_big_city_bombing/08_bigCityBombing_crashingWall_03_normal.prefab</value>
-					</property>
-					<property>
-						<name>overridesData</name>
-						<value/>
+						<name>content</name>
+						<section>
+							<resource>content/CGFPrefabs/Map_scenarios/08_ruinberg/08_big_city_bombing/08_bigCityBombing_crashingWall_03_normal.prefab</resource>
+						</section>
 					</property>
 				</config>
 			</component>
 			<component>
-				<objectIndex>3</objectIndex>
+				<UUID>8f1a2e9f-6a0e-47f4-9e73-cc295b299db5</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
-						<name>resource</name>
-						<isAsset>true</isAsset>
-						<value>content/CGFPrefabs/Map_scenarios/08_ruinberg/08_big_city_bombing/08_bigCityBombing_crashingWall_03_destroyed.prefab</value>
-					</property>
-					<property>
-						<name>overridesData</name>
-						<value/>
+						<name>content</name>
+						<section>
+							<resource>content/CGFPrefabs/Map_scenarios/08_ruinberg/08_big_city_bombing/08_bigCityBombing_crashingWall_03_destroyed.prefab</resource>
+						</section>
 					</property>
 				</config>
 			</component>

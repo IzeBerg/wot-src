@@ -2,7 +2,6 @@ import copy, random, time, typing
 from itertools import izip
 from account_shared import getCustomizationItem
 from battle_pass_common import NON_VEH_CD
-from constants import LOOTBOX_TOKEN_PREFIX
 from dog_tags_common.components_config import componentConfigAdapter
 from soft_exception import SoftException
 if typing.TYPE_CHECKING:
@@ -269,7 +268,6 @@ ITEM_INVENTORY_CHECKERS = {'vehicles': lambda account, key: account._inventory.g
    'customizations': lambda account, key: account._customizations20.getItems((key,), 0)[key] > 0, 
    'tokens': lambda account, key: account._quests.hasToken(key)}
 RENT_ITEM_INVENTORY_CHECKERS = {'vehicles': lambda account, key: account._rent.isVehicleRented(account._inventory.getVehicleInvID(key))}
-SKIP_INVENTORY_CHANGE_CHECKERS = {'tokens': lambda key: key.startswith(LOOTBOX_TOKEN_PREFIX)}
 
 class BonusItemsCache(object):
 
@@ -320,10 +318,7 @@ class BonusItemsCache(object):
     def isInventoryChanged(account, itemsCache):
         for bonus, checks in itemsCache.iteritems():
             checker = ITEM_INVENTORY_CHECKERS[bonus]
-            skipChecker = SKIP_INVENTORY_CHANGE_CHECKERS.get(bonus)
             for key, keyData in checks.iteritems():
-                if skipChecker and skipChecker(key):
-                    continue
                 if False in keyData and checker(account, key) != keyData[False][0]:
                     return True
 

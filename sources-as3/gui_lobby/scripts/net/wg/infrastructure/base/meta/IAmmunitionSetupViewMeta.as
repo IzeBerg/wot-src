@@ -10,7 +10,7 @@ package net.wg.infrastructure.base.meta
       
       function onEscapePressS() : void;
       
-      function as_gfSizeUpdated(param1:int, param2:int) : void;
+      function as_gfSizeUpdated(param1:int, param2:int, param3:int) : void;
       
       function as_showCloseAnim() : void;
       

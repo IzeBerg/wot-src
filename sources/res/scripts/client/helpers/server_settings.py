@@ -11,7 +11,7 @@ from battle_pass_common import BATTLE_PASS_CONFIG_NAME, BattlePassConfig
 from collections_common import CollectionsConfig
 from collector_vehicle import CollectorVehicleConsts
 from comp7_ranks_common import Comp7Division
-from constants import BATTLE_NOTIFIER_CONFIG, ClansConfig, Configs, DAILY_QUESTS_CONFIG, DOG_TAGS_CONFIG, MAGNETIC_AUTO_AIM_CONFIG, MISC_GUI_SETTINGS, PremiumConfigs, RENEWABLE_SUBSCRIPTION_CONFIG, PLAYER_SUBSCRIPTIONS_CONFIG, TOURNAMENT_CONFIG
+from constants import BATTLE_NOTIFIER_CONFIG, ClansConfig, Configs, DAILY_QUESTS_CONFIG, DOG_TAGS_CONFIG, MAGNETIC_AUTO_AIM_CONFIG, MISC_GUI_SETTINGS, PremiumConfigs, RENEWABLE_SUBSCRIPTION_CONFIG, PLAYER_SUBSCRIPTIONS_CONFIG, TOURNAMENT_CONFIG, OPTIONAL_DEVICES_USAGE_CONFIG
 from debug_utils import LOG_DEBUG, LOG_NOTE
 from gifts.gifts_common import ClientReqStrategy, GiftEventID, GiftEventState
 from gui import GUI_SETTINGS, SystemMessages
@@ -32,7 +32,6 @@ from soft_exception import SoftException
 from telecom_rentals_common import TELECOM_RENTALS_CONFIG
 from trade_in_common.constants_types import CONFIG_NAME as TRADE_IN_CONFIG_NAME
 from achievements20.Achievements20GeneralConfig import Achievements20GeneralConfig
-from wot_anniversary_common import WOT_ANNIVERSARY_CONFIG_NAME
 if typing.TYPE_CHECKING:
     from typing import Callable, Dict, List, Sequence, Set
     from dict2model.schemas import SchemaModelType
@@ -1073,13 +1072,14 @@ class Comp7Config(settingsBlock('Comp7Config', (
  'qualification',
  'maps',
  'tournaments',
- 'progression',
- 'remainingOfferTokensNotifications'))):
+ 'remainingOfferTokensNotifications',
+ 'clientEntitlementsCache',
+ 'participantTokens'))):
     __slots__ = ()
 
     @classmethod
     def defaults(cls):
-        return dict(isEnabled=False, isShopEnabled=False, isTrainingEnabled=False, peripheryIDs={}, primeTimes={}, seasons={}, battleModifiersDescr=(), cycleTimes={}, roleEquipments={}, numPlayers=7, levels=[], forbiddenClassTags=set(), forbiddenVehTypes=set(), squadRatingRestriction={}, squadSizes=[], createVivoxTeamChannels=False, qualification=makeTupleByDict(_Comp7QualificationConfig, {}), maps=set(), tournaments={}, progression={}, remainingOfferTokensNotifications=[])
+        return dict(isEnabled=False, isShopEnabled=False, isTrainingEnabled=False, peripheryIDs={}, primeTimes={}, seasons={}, battleModifiersDescr=(), cycleTimes={}, roleEquipments={}, numPlayers=7, levels=[], forbiddenClassTags=set(), forbiddenVehTypes=set(), squadRatingRestriction={}, squadSizes=[], createVivoxTeamChannels=False, qualification=makeTupleByDict(_Comp7QualificationConfig, {}), maps=set(), tournaments={}, remainingOfferTokensNotifications=[], clientEntitlementsCache={}, participantTokens=())
 
     @classmethod
     def _preprocessData(cls, data):
@@ -1117,8 +1117,8 @@ class Comp7RanksConfig(settingsBlock('Comp7RanksConfig', (
     @classmethod
     def __dictDivisionsToComp7Divisions(cls, divisionsList):
         divs = []
-        for dvsnDict in divisionsList:
-            comp7Division = Comp7Division(dvsnDict)
+        for serialIdx, dvsnDict in enumerate(divisionsList):
+            comp7Division = Comp7Division(serialIdx, dvsnDict)
             divs.append(comp7Division)
 
         return tuple(divs)
@@ -1229,42 +1229,6 @@ class _EventLootBoxesConfig(object):
     def getEventActiveTime(self):
         return (
          self.__startDateInUTC, self.__finishDateInUTC)
-
-
-LOOTBOX_SYSTEM_CONFIG = 'lootbox_system_config'
-
-class _LootBoxSystemConfig(object):
-    __slots__ = ('__isEnabled', '__eventName', '__boxesPriority', '__start', '__finish',
-                 '__dailyPurchaseLimit')
-
-    def __init__(self, **kwargs):
-        super(_LootBoxSystemConfig, self).__init__()
-        self.__eventName = kwargs.get('eventName', '')
-        self.__boxesPriority = kwargs.get('boxesPriority', tuple())
-        self.__isEnabled = kwargs.get('enabled', False)
-        self.__start = kwargs.get('start', 0)
-        self.__finish = kwargs.get('finish', 0)
-        self.__dailyPurchaseLimit = kwargs.get('dailyPurchaseLimit', 0)
-
-    @property
-    def isEnabled(self):
-        return self.__isEnabled
-
-    @property
-    def eventName(self):
-        return self.__eventName
-
-    @property
-    def boxesPriority(self):
-        return self.__boxesPriority
-
-    @property
-    def dailyPurchaseLimit(self):
-        return self.__dailyPurchaseLimit
-
-    def getActiveTime(self):
-        return (
-         self.__start, self.__finish)
 
 
 class _LimitedUIConfig(namedtuple('_LimitedUIConfig', ('enabled', 'rules', 'version'))):
@@ -1400,20 +1364,14 @@ class _AdvancedAchievementsConfig(namedtuple('_AdvancedAchievementsConfig', (
         return cls()
 
 
-class WotAnniversaryConfig(namedtuple('WotAnniversaryConfig', (
- 'isEnabled',
- 'isActive',
- 'startTime',
- 'activePhaseEndTime',
- 'eventCategoryEndTime',
- 'anniversaryUrls',
- 'rewardScreenRequiredQuests'))):
+class _ExchangeRatesConfig(namedtuple('_ExchangeRatesConfig', ('isGoldExchangePesronalDiscountsAvailable',
+ 'isExperienceExchangePesronalDiscountsAvailable'))):
     __slots__ = ()
 
     def __new__(cls, **kwargs):
-        defaults = dict(isEnabled=False, isActive=False, startTime=0, activePhaseEndTime=0, eventCategoryEndTime=0, anniversaryUrls={}, rewardScreenRequiredQuests=())
+        defaults = dict(isGoldExchangePesronalDiscountsAvailable=False, isExperienceExchangePesronalDiscountsAvailable=False)
         defaults.update(kwargs)
-        return super(WotAnniversaryConfig, cls).__new__(cls, **defaults)
+        return super(_ExchangeRatesConfig, cls).__new__(cls, **defaults)
 
     def asDict(self):
         return self._asdict()
@@ -1422,10 +1380,6 @@ class WotAnniversaryConfig(namedtuple('WotAnniversaryConfig', (
         allowedFields = self._fields
         dataToUpdate = dict((k, v) for k, v in data.iteritems() if k in allowedFields)
         return self._replace(**dataToUpdate)
-
-    @classmethod
-    def defaults(cls):
-        return cls()
 
 
 class ServerSettings(object):
@@ -1473,7 +1427,6 @@ class ServerSettings(object):
         self.__playLimitsConfig = PlayLimitsConfig()
         self.__preModerationConfig = PreModerationConfig()
         self.__eventLootBoxesConfig = _EventLootBoxesConfig()
-        self.__lootBoxSystemConfig = _LootBoxSystemConfig()
         self.__collectionsConfig = CollectionsConfig()
         self.__winbackConfig = WinbackConfig()
         self.__limitedUIConfig = _LimitedUIConfig()
@@ -1483,8 +1436,8 @@ class ServerSettings(object):
         self.__referralProgramConfig = ReferralProgramConfig()
         self.__liveOpsWebEventsConfig = LiveOpsWebEventsConfig()
         self.__advancedAchievementsConfig = _AdvancedAchievementsConfig()
-        self.__wotAnniversaryConfig = WotAnniversaryConfig()
         self.__schemaManager = getSchemaManager()
+        self.__exchangeRatesConfig = _ExchangeRatesConfig()
         self.set(serverSettings)
 
     def set(self, serverSettings):
@@ -1552,6 +1505,10 @@ class ServerSettings(object):
             self.__seniorityAwardsConfig = makeTupleByDict(SeniorityAwardsConfig, self.__serverSettings['seniority_awards_config'])
         else:
             self.__seniorityAwardsConfig = SeniorityAwardsConfig()
+        if 'exchange_rates_config' in self.__serverSettings:
+            self.__exchangeRatesConfig = makeTupleByDict(_ExchangeRatesConfig, self.__serverSettings['exchange_rates_config'])
+        else:
+            self.__exchangeRatesConfig = _ExchangeRatesConfig()
         if BATTLE_PASS_CONFIG_NAME in self.__serverSettings:
             self.__battlePassConfig = BattlePassConfig(self.__serverSettings.get(BATTLE_PASS_CONFIG_NAME, {}))
         else:
@@ -1560,7 +1517,6 @@ class ServerSettings(object):
             self.__crystalRewardsConfig = makeTupleByDict(_crystalRewardsConfig, self.__serverSettings[_crystalRewardsConfig.CONFIG_NAME])
         self.__updateReactiveCommunicationConfig(self.__serverSettings)
         self.__updateEventLootBoxesConfig(self.__serverSettings)
-        self.__updateLootBoxSystemConfig(self.__serverSettings)
         if BonusCapsConst.CONFIG_NAME in self.__serverSettings:
             BONUS_CAPS.OVERRIDE_BONUS_CAPS = self.__serverSettings[BonusCapsConst.CONFIG_NAME]
         else:
@@ -1651,10 +1607,6 @@ class ServerSettings(object):
             self.__liveOpsWebEventsConfig = makeTupleByDict(LiveOpsWebEventsConfig, self.__serverSettings[Configs.LIVE_OPS_EVENTS_CONFIG.value])
         else:
             self.__liveOpsWebEventsConfig = LiveOpsWebEventsConfig.defaults()
-        if WOT_ANNIVERSARY_CONFIG_NAME in self.__serverSettings:
-            self.__wotAnniversaryConfig = makeTupleByDict(WotAnniversaryConfig, self.__serverSettings[WOT_ANNIVERSARY_CONFIG_NAME])
-        else:
-            self.__wotAnniversaryConfig = WotAnniversaryConfig.defaults()
         self.onServerSettingsChange(serverSettings)
 
     def update(self, serverSettingsDiff):
@@ -1675,6 +1627,12 @@ class ServerSettings(object):
             self.__updateUILogging(serverSettingsDiff)
         if 'eula_config' in serverSettingsDiff:
             self.__updateEULA(serverSettingsDiff)
+        if 'exchange_rates_config' in serverSettingsDiff:
+            self.__updateExchangeRates(serverSettingsDiff)
+            self.__serverSettings['exchange_rates_config'] = serverSettingsDiff['exchange_rates_config']
+        if 'advent_calendar_config' in serverSettingsDiff:
+            self.__updateAdventCalendar(serverSettingsDiff)
+            self.__serverSettings['advent_calendar_config'] = serverSettingsDiff['advent_calendar_config']
         if 'epic_config' in serverSettingsDiff:
             self.__updateEpic(serverSettingsDiff)
             self.__serverSettings['epic_config'] = serverSettingsDiff['epic_config']
@@ -1760,8 +1718,6 @@ class ServerSettings(object):
             self.__updateWinbackConfig(serverSettingsDiff)
         self.__updatePersonalReserves(serverSettingsDiff)
         self.__updateEventLootBoxesConfig(serverSettingsDiff)
-        self.__updateLootBoxSystemConfig(serverSettingsDiff)
-        self.__updateLootBoxesTooltipConfig(serverSettingsDiff)
         if Configs.COLLECTIONS_CONFIG.value in serverSettingsDiff:
             self.__updateCollectionsConfig(serverSettingsDiff)
         self.__updateLimitedUIConfig(serverSettingsDiff)
@@ -1775,8 +1731,6 @@ class ServerSettings(object):
             self.__updateReferralProgramConfig(serverSettingsDiff)
         if Configs.LIVE_OPS_EVENTS_CONFIG.value in serverSettingsDiff:
             self.__updateLiveOpsWebEventsConfig(serverSettingsDiff)
-        if WOT_ANNIVERSARY_CONFIG_NAME in serverSettingsDiff:
-            self.__updateWotAnniversaryConfig(serverSettingsDiff)
         self.onServerSettingsChange(serverSettingsDiff)
 
     def clear(self):
@@ -1855,6 +1809,10 @@ class ServerSettings(object):
     @property
     def adventCalendar(self):
         return self.__adventCalendar
+
+    @property
+    def exchangeRates(self):
+        return self.__exchangeRatesConfig
 
     @property
     def epicMetaGame(self):
@@ -1971,10 +1929,6 @@ class ServerSettings(object):
     @property
     def advancedAchievementsConfig(self):
         return self.__advancedAchievementsConfig
-
-    @property
-    def wotAnniversaryConfig(self):
-        return self.__wotAnniversaryConfig
 
     def isEpicBattleEnabled(self):
         return self.epicBattles.isEnabled
@@ -2127,6 +2081,9 @@ class ServerSettings(object):
     def isFreeEquipmentDemountingEnabled(self):
         return self.isRenewableSubEnabled() and self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('enableFreeEquipmentDemounting', False)
 
+    def isOptionalDevicesAssistantEnabled(self):
+        return self.isRenewableSubEnabled() and self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('enableOptionalDevicesAssistant', False)
+
     def isFreeDeluxeEquipmentDemountingEnabled(self):
         return self.isFreeEquipmentDemountingEnabled() and self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('enableFreeDeluxeEquipmentDemounting', False)
 
@@ -2167,6 +2124,9 @@ class ServerSettings(object):
 
     def getAdditionalWoTPlusXPCount(self):
         return self.isRenewableSubEnabled() and self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get(ADDITIONAL_BONUS_SECTION, {}).get(ADDITIONAL_BONUS_APPLY_COUNT, 0) or 0
+
+    def getOptionalDevicesUsageConfig(self):
+        return self.isRenewableSubEnabled() and self.__getGlobalSetting(OPTIONAL_DEVICES_USAGE_CONFIG, {})
 
     def isTelecomRentalsEnabled(self):
         return self.__getGlobalSetting(TELECOM_RENTALS_CONFIG, {}).get('enabled', True)
@@ -2283,6 +2243,12 @@ class ServerSettings(object):
     def isJunkCrewConversionEnabled(self):
         return self.__getGlobalSetting('isJunkCrewConversionEnabled', False)
 
+    def xppToConvert(self):
+        return self.__getGlobalSetting('XppToConvert', 0)
+
+    def rewardBookId(self):
+        return self.__getGlobalSetting('rewardBookId', 0)
+
     def isTrophyDevicesEnabled(self):
         return self.__getGlobalSetting('isTrophyDevicesEnabled', False)
 
@@ -2328,9 +2294,6 @@ class ServerSettings(object):
     def getEventLootBoxesConfig(self):
         return self.__eventLootBoxesConfig
 
-    def getLootBoxSystemConfig(self):
-        return self.__lootBoxSystemConfig
-
     def getAchievements20GeneralConfig(self):
         return Achievements20GeneralConfig(self.__getGlobalSetting(Configs.ACHIEVEMENTS20_CONFIG.value, {}))
 
@@ -2359,6 +2322,9 @@ class ServerSettings(object):
     def __updateEULA(self, targetSettings):
         cProfile = targetSettings['eula_config']
         self.__eula = _EULA(cProfile.get('enabled', False), cProfile.get('demoAccEnabled', False), cProfile.get('steamAccEnabled', False))
+
+    def __updateExchangeRates(self, targetSettings):
+        self.__exchangeRatesConfig = self.__exchangeRatesConfig.replace(targetSettings['exchange_rates_config'])
 
     def __updateRanked(self, targetSettings):
         self.__rankedBattlesSettings = self.__rankedBattlesSettings.replace(targetSettings['ranked_config'])
@@ -2470,14 +2436,6 @@ class ServerSettings(object):
                 self.__eventLootBoxesConfig = _EventLootBoxesConfig()
         return
 
-    def __updateLootBoxSystemConfig(self, settings):
-        if LOOTBOX_SYSTEM_CONFIG in settings:
-            self.__lootBoxSystemConfig = _LootBoxSystemConfig(**settings[LOOTBOX_SYSTEM_CONFIG])
-
-    def __updateLootBoxesTooltipConfig(self, settings):
-        if Configs.LOOTBOXES_TOOLTIP_CONFIG.value in settings:
-            self.__serverSettings[Configs.LOOTBOXES_TOOLTIP_CONFIG.value] = settings[Configs.LOOTBOXES_TOOLTIP_CONFIG.value]
-
     def __updateCollectionsConfig(self, diff):
         self.__collectionsConfig = self.__collectionsConfig.replace(diff[Configs.COLLECTIONS_CONFIG.value])
 
@@ -2501,9 +2459,6 @@ class ServerSettings(object):
 
     def __updateLiveOpsWebEventsConfig(self, serverSettingsDiff):
         self.__liveOpsWebEventsConfig = self.__liveOpsWebEventsConfig.replace(serverSettingsDiff[Configs.LIVE_OPS_EVENTS_CONFIG.value])
-
-    def __updateWotAnniversaryConfig(self, serverSettingsDiff):
-        self.__wotAnniversaryConfig = self.__wotAnniversaryConfig.replace(serverSettingsDiff[WOT_ANNIVERSARY_CONFIG_NAME])
 
     def __updateAdvancedAchievementsConfig(self, serverSettingsDiff):
         if Configs.ADVANCED_ACHIEVEMENTS_CONFIG.value in serverSettingsDiff:

@@ -1,4 +1,4 @@
-import re
+import re, typing
 from account_helpers import AccountSettings
 from account_helpers.AccountSettings import LAST_BADGES_VISIT
 from dossiers2.ui.achievements import BADGES_BLOCK
@@ -10,6 +10,9 @@ from gui.shared.gui_items.gui_item import GUIItem
 from helpers import i18n, dependency
 from shared_utils import CONST_CONTAINER
 from skeletons.gui.game_control import IRTSBattlesController
+if typing.TYPE_CHECKING:
+    from typing import Dict, Optional
+    from skeletons.gui.shared import IItemsRequester
 CUSTOM_LOGIC_KEY = 'customLogicImpl'
 
 class BadgeTypes(CONST_CONTAINER):
@@ -26,7 +29,7 @@ class Badge(GUIItem):
     __slots__ = ('badgeID', 'data', 'isSelected', 'isAchieved', 'achievedAt', 'group',
                  'isAchievable', 'isTemporary', 'showCongratsView')
 
-    def __init__(self, data, proxy=None):
+    def __init__(self, data, proxy=None, receivedBadges=None):
         super(Badge, self).__init__(proxy)
         self.badgeID = data['id']
         self.data = data
@@ -39,7 +42,8 @@ class Badge(GUIItem):
         self.achievedAt = None
         if proxy is not None and proxy.dossiers.isSynced() and proxy.badges.isSynced():
             self.isSelected = self.badgeID in proxy.badges.selected
-            receivedBadges = proxy.getAccountDossier().getDossierDescr()[BADGES_BLOCK]
+            if receivedBadges is None:
+                receivedBadges = proxy.getAccountDossier().getDossierDescr()[BADGES_BLOCK]
             self.isAchieved = self.badgeID in receivedBadges
             if self.isAchieved:
                 self.achievedAt = receivedBadges[self.badgeID]
@@ -194,8 +198,8 @@ class Badge(GUIItem):
 class RTSBadge(Badge):
     _rtsController = dependency.descriptor(IRTSBattlesController)
 
-    def __init__(self, data, proxy=None, extraData=None):
-        super(RTSBadge, self).__init__(data, proxy)
+    def __init__(self, data, proxy=None, receivedBadges=None, extraData=None):
+        super(RTSBadge, self).__init__(data, proxy, receivedBadges=receivedBadges)
 
     def isVisibleAsAchievable(self):
         return self.isAchievable and self._rtsController.isVisible()

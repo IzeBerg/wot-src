@@ -538,13 +538,19 @@ msgid "comp7/deserter/cancel"
 msgstr "取消"
 
 msgid "comp7/deserter/message"
-msgstr "您的团队需要您！在战斗结束或您的坦克被击毁前退出战斗将被视为中途退场。您可能会因为违规而受到处罚。"
+msgstr ""
+"本场战斗尚未结束。如果中途离场，您将令队友失望。\n"
+"{brown_open}您将因违规受到处罚。{brown_close}\n"
+"您确定要离开战斗？"
+
+msgid "comp7/deserter/msgTitle"
+msgstr "您将失去您的评级点数！"
 
 msgid "comp7/deserter/submit"
 msgstr "确认"
 
 msgid "comp7/deserter/title"
-msgstr "您确定要中途离场？"
+msgstr "中途离场"
 
 msgid "confirmBattleBoosterBuyAndInstall/cancel"
 msgstr "取消"
@@ -1228,6 +1234,25 @@ msgstr "没有足够的战斗经验兑换"
 msgid "exchangeXpWindow/error/noVehiclesWithXp"
 msgstr "没有足够的战斗经验兑换"
 
+msgid "fillAllPerks/button/cancel"
+msgstr "取消"
+
+msgid "fillAllPerks/button/fill"
+msgstr "确认"
+
+msgid "fillAllPerks/checkbox"
+msgstr "为兵营中的乘员自动选择特长"
+
+msgid "fillAllPerks/description"
+msgstr ""
+"根据乘员的专业和空闲特长栏位，算法会从下表中选择第一项特长。如果乘员已拥有第一项特长，那么算法就会选择第二项特长，直到所有特长栏位都被填满为止。该操作可能需要一些时间。"
+
+msgid "fillAllPerks/subTitle"
+msgstr "只有已经分配到坦克上的乘员才能自动选择特长。"
+
+msgid "fillAllPerks/title"
+msgstr "为全部乘员自动选择未训练特长？"
+
 msgid "finance_dialog/cancelBtn"
 msgstr "取消"
 
@@ -1315,9 +1340,7 @@ msgid "freeObtainConfirmation/title"
 msgstr "确认"
 
 msgid "freeSkillsLearning/message"
-msgstr ""
-"%(iconWarning){orange_Open}确定选择后，玩家即无法更换零历练特长。{orange_Close}\n"
-"零历练特长无需花费经验训练，玩家也无法更换。它可显著减少进一步训练乘员所需的经验，并以此赋予玩家优势。"
+msgstr "零历练特长无需花费经验来训练。其优势是能大幅减少乘员训练后续特长所需的经验数量。"
 
 msgid "freeSkillsLearning/title/learning"
 msgstr "选择%(skillName)s作为零历练特长？"
@@ -1911,8 +1934,20 @@ msgstr "重置前:"
 msgid "perksReset/cancel"
 msgstr "取消"
 
+msgid "perksReset/discountTooltip/body"
+msgstr "由于您在坦克学院重置特长时已享受100%折扣，该选项不可用。"
+
+msgid "perksReset/discountTooltip/header"
+msgstr "不可用"
+
 msgid "perksReset/free/description"
 msgstr "熟练度低于{yellow_Open}1%{yellow_Close}的特长可免费重置。"
+
+msgid "perksReset/freeFirstResetLabel"
+msgstr "为该乘员首次重置特长免费"
+
+msgid "perksReset/graceLabel"
+msgstr "免费特长重置将开放:"
 
 msgid "perksReset/lostSkill/tooltip/description"
 msgstr "特长经验总数将降低。可训练的特长将减少。"
@@ -1947,7 +1982,7 @@ msgid "perksReset/submit"
 msgstr "重置"
 
 msgid "perksReset/title"
-msgstr "重置全部的%(tankmanRole)s？"
+msgstr "重置乘员的全部特长？"
 
 msgid "postmortem/cancel"
 msgstr "取消"
@@ -2025,7 +2060,7 @@ msgstr ""
 msgid "punishmentWindow/message/ban/comp7"
 msgstr ""
 "您于{whiteSpanish_Open}%(time)s{whiteSpanish_Close}在{whiteSpanish_Open}%(arenaName)s{whiteSpanish_Close}地图上违反了游戏规则。\n"
-"您已被暂时封禁，无法参加{whiteSpanish_Open}轻量级天梯战{whiteSpanish_Close}模式中的战斗。"
+"{whiteSpanish_Open}%(penalty)s{whiteSpanish_Close}评级点数已被扣除，同时，您已被暂时封禁，无法参加{whiteSpanish_Open}天梯战{whiteSpanish_Close}模式中的战斗。"
 
 msgid "punishmentWindow/message/ban/comp7/qualification"
 msgstr ""
@@ -2321,6 +2356,9 @@ msgstr "只有被指派为车长专业的乘员才能播放专属语音。"
 msgid "recruit/warning/premiumVehicle"
 msgstr "金币坦克无需招募乘员。您可以将乘员转移到相同类型的金币坦克上，没有处罚。"
 
+msgid "recruitConversionConfirm/warning"
+msgstr "该乘员拥有过时的特长，这些特长将被自动重置，不会损失经验。"
+
 msgid "recruitDialog/name/title"
 msgstr "招募新乘员(%(name)s)？"
 
@@ -2477,6 +2515,20 @@ msgstr "继续"
 msgid "reportBug/title"
 msgstr "前往客服中心"
 
+msgid "resetAllPerks/cancel"
+msgstr "取消"
+
+msgid "resetAllPerks/submit"
+msgstr "重置"
+
+msgid "resetAllPerks/title"
+msgstr "为全部乘员重置所有特长？"
+
+msgid "resetAllPerks/warning"
+msgstr ""
+"{orangeStart}您账号中全部乘员的所有特长都将被重置。{orangeEnd}\n"
+"{orangeStart}该操作无法撤消。{orangeEnd}"
+
 msgid "resetGraphics/cancel"
 msgstr "取消"
 
@@ -2530,8 +2582,22 @@ msgstr "取消"
 msgid "retrain/changeRole"
 msgstr "更改专业"
 
+msgid "retrain/discountLabel"
+msgstr "第一项特长未训练至100%，因此您可享受该折扣。"
+
+msgid "retrain/discountTooltip/body"
+msgstr "由于您在坦克学院再训练乘员时已享受100%折扣，该选项不可用。"
+
+msgid "retrain/discountTooltip/header"
+msgstr "不可用"
+
 msgid "retrain/massive/tankmenCount"
 msgstr "需要再训练的乘员: {whiteSpanish_Open}%(count)s{whiteSpanish_Close}"
+
+msgid "retrain/premium/description"
+msgstr ""
+"乘员无需为金币坦克训练。\n"
+"您可以将乘员转移到相同类型的金币坦克上，没有处罚。"
 
 msgid "retrain/price"
 msgstr "价格:"
@@ -2637,6 +2703,15 @@ msgstr "升级应用程序。如果重复提示错误，需更新服务器。"
 
 msgid "shopSyncError/title"
 msgstr "非同步"
+
+msgid "skillsTrainingConfirm/cancel"
+msgstr "取消"
+
+msgid "skillsTrainingConfirm/message"
+msgstr "训练所选特长？"
+
+msgid "skillsTrainingConfirm/submit"
+msgstr "训练"
 
 msgid "skinApplyDialog/button/submit"
 msgstr "应用"

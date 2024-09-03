@@ -217,8 +217,7 @@ package net.wg.gui.battle.views
          }
          if(this.deathCamHud)
          {
-            this.deathCamHud.width = param1;
-            this.deathCamHud.height = param2;
+            this.deathCamHud.updateStage(param1,param2);
          }
          if(this.spectatorViewUI)
          {
@@ -236,7 +235,6 @@ package net.wg.gui.battle.views
          this.gameMessagesPanel.addEventListener(GameMessagesPanelEvent.MESSAGES_STARTED_PLAYING,this.onMessagesStartedPlayingHandler);
          this.gameMessagesPanel.addEventListener(GameMessagesPanelEvent.MESSAGES_ENDED_PLAYING,this.onMessagesEndedPlayingHandler);
          this.gameMessagesPanel.addEventListener(GameMessagesPanelEvent.ALL_MESSAGES_ENDED_PLAYING,this.onAllMessagesEndedPlayingHandler);
-         this.addDeathCamHud();
       }
       
       override protected function configUI() : void
@@ -306,15 +304,14 @@ package net.wg.gui.battle.views
          {
             DebugUtils.LOG_DEBUG("rocketAcceleratorPanel component doesn\'t configured for this Battle Page");
          }
-         this.createSpectatorViewComponent();
          this.createPostmortemPanelComponent();
+         if(this.spectatorViewUI)
+         {
+            this.registerComponent(this.spectatorViewUI,BATTLE_VIEW_ALIASES.SPECTATOR_VIEW);
+         }
          if(this.deathCamHud)
          {
             this.registerComponent(this.deathCamHud,BATTLE_VIEW_ALIASES.DEATH_CAM_HUD);
-         }
-         else
-         {
-            DebugUtils.LOG_WARNING("deathCamHud component is not configured for this Battle Page");
          }
          if(this.ribbonsPanel)
          {
@@ -515,18 +512,6 @@ package net.wg.gui.battle.views
          else
          {
             DebugUtils.LOG_WARNING("postmortemPanelUI component is not configured for this Battle Page");
-         }
-      }
-      
-      protected function createSpectatorViewComponent() : void
-      {
-         if(this.spectatorViewUI)
-         {
-            this.registerComponent(this.spectatorViewUI,BATTLE_VIEW_ALIASES.SPECTATOR_VIEW);
-         }
-         else
-         {
-            DebugUtils.LOG_WARNING("spectatorViewUI component doesn\'t configured for this Battle Page");
          }
       }
       
@@ -819,20 +804,6 @@ package net.wg.gui.battle.views
                _loc1_ = null;
             }
             this._tweens.length = 0;
-         }
-      }
-      
-      private function addDeathCamHud() : void
-      {
-         if(!this.deathCamHud)
-         {
-            this.deathCamHud = new DeathCamHud();
-            this.deathCamHud.setManageSize(true);
-            this.deathCamHud.setSize(this.parent.width,this.parent.height);
-            this.deathCamHud.x = 0;
-            this.deathCamHud.y = 0;
-            this.deathCamHud.visible = false;
-            addChild(this.deathCamHud);
          }
       }
    }

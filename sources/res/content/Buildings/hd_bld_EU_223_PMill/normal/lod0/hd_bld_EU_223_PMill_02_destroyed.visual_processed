@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_wall_0</identifier>
+					<materialKind>108</materialKind>
+					<collisionFlags>128</collisionFlags>
+				</material>
+				<groupOrigin>-0.048384 2.105467 0.023247</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd1</identifier>
+					<fx>shaders/custom/emissive.fx</fx>
+					<materialKind>108</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						emissiveTexture
+						<Texture>content/Buildings/hd_bld_EU_223_PMill/hd_bld_EU_223_PMill_02_destroyed_Mask.dds</Texture>
+					</property>
+					<property>
+						g_coldColor
+						<Vector4>0.246000 0.000000 0.012300 1.000000</Vector4>
+					</property>
+					<property>
+						g_emissiveParams
+						<Vector4>8.000000 2.500000 0.200000 0.550000</Vector4>
+					</property>
+					<property>
+						g_hotColor
+						<Vector4>0.996000 0.132800 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_maskFromTex
+						<Bool>true</Bool>
+					</property>
+					<property>
+						phaseTexture
+						<Texture>content/Buildings/hd_bld_EU_223_PMill/noise.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.136329 3.248188 -0.176992</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>s_nd2</identifier>
+					<fx>shaders/std_effects/PBS_ext_detail.fx</fx>
+					<materialKind>108</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/Buildings/hd_bld_EU_223_PMill/hd_bld_EU_223_PMill_02_destroyed_AM.dds</Texture>
+					</property>
+					<property>
+						g_detailMap
+						<Texture>content/Detail_tex/Detail_tile_wood.dds</Texture>
+					</property>
+					<property>
+						g_detailRejectTiling
+						<Vector4>5.000000 1.000000 16.000000 16.000000</Vector4>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Buildings/hd_bld_EU_223_PMill/hd_bld_EU_223_PMill_02_destroyed_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Buildings/hd_bld_EU_223_PMill/hd_bld_EU_223_PMill_02_destroyed_ANM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>0.018278 2.986842 0.873302</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-4.502892 -1.413613 -4.401742</min>
+		<max>4.539448 6.489054 6.148345</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>318650</geometrySize>
+	<minUVDensity>0.000031</minUVDensity>
+</root>

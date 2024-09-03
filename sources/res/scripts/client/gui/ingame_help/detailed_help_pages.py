@@ -446,5 +446,5 @@ class DevMapsPagesBuilder(DetailedHelpPagesBuilder):
 registerIngameHelpPagesBuilders((
  SiegeModePagesBuilder, BurnOutPagesBuilder, WheeledPagesBuilder, TrackWithinTrackPagesBuilder,
  DualGunPagesBuilder, BattleRoyalePagesBuilder, TurboshaftEnginePagesBuilder, RoleTypePagesBuilder,
- RocketAccelerationPagesBuilder, Comp7PagesBuilder, MapboxPagesBuilder,
+ RocketAccelerationPagesBuilder, Comp7PagesBuilder, MapboxPagesBuilder, AutoShootGunPagesBuilder,
  DualAccuracyPagesBuilder, DevMapsPagesBuilder))

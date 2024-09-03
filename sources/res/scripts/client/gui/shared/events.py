@@ -210,7 +210,6 @@ class ShowDialogEvent(SharedEvent):
     SHOW_CONFIRM_ORDER_DIALOG = 'showConfirmOrderDialog'
     SHOW_EXCHANGE_DIALOG = 'showExchangeDialog'
     SHOW_EXCHANGE_DIALOG_MODAL = 'showExchangeDialogModal'
-    SHOW_DETAILED_EXCHANGE_XP_DIALOG = 'showDetailedExchangeXPDialog'
     SHOW_CHECK_BOX_DIALOG = 'showCheckBoxDialog'
     SHOW_USE_AWARD_SHEET_DIALOG = 'useAwardSheetDialog'
     SHOW_CONFIRM_C11N_BUY_DIALOG = 'showConfirmC11nBuyDialog'
@@ -530,7 +529,6 @@ class OpenLinkEvent(SharedEvent):
     WOT_PLUS_STEAM_SHOP = 'wotPlusSteamURL'
     WOT_PLUS_SHOP = 'wotPlusShopURL'
     STEAM_SUBSCRIPTION_MANAGEMENT = 'steamSubscriptionManagementURL'
-    LOOT_BOXES_LIST = 'lootBoxesList'
 
     def __init__(self, eventType, url='', title='', params=None):
         super(OpenLinkEvent, self).__init__(eventType)
@@ -677,11 +675,6 @@ class BattlePassEvent(HasCtxEvent):
     ON_PREVIEW_PROGRESSION_STYLE_CLOSE = 'onPreviewProgressionStyleClose'
     ON_FINISH_BATTLE_PASS_PURCHASE = 'onFinishBattlePassPurchase'
     VIDEO_SHOWN = 'videoShown'
-
-
-class LootBoxSystemEvent(HasCtxEvent):
-    ON_STATISTICS_RESET = 'onStatisticsReset'
-    OPENING_ERROR = 'openingError'
 
 
 class ItemRemovalByDemountKitEvent(HasCtxEvent):
@@ -876,3 +869,8 @@ class HangarEvent(SharedEvent):
 
 class GameSessionEvent(SharedEvent):
     UPDATE_KICK_NOTIFICATION = 'gameSession/updateKickNotification'
+
+
+class ExchangeRatesDiscountsEvent(HasCtxEvent):
+    ON_SELECTED_AMOUNT_CHANGED = 'onSelectedAmountChanged'
+    ON_PERSONAL_DISCOUNT_VIEWED = 'onPersonalDiscountViewed'

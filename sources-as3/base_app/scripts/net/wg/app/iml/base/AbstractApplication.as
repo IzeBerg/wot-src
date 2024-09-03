@@ -141,9 +141,9 @@ package net.wg.app.iml.base
          super.onDispose();
       }
       
-      public function as_blurBackgroundViews(param1:int, param2:Number) : void
+      public function as_blurBackgroundViews(param1:int, param2:Number, param3:Number) : void
       {
-         this._utils.blurAdapter.blurElements(param1,param2);
+         this._utils.blurAdapter.blurElements(param1,param2,param3);
       }
       
       public final function as_dispose() : void

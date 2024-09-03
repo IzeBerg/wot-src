@@ -26,16 +26,26 @@ msgid "add_tankman_skill/invalid_vehicle"
 msgstr "训练特长错误，坦克错误。"
 
 msgid "add_tankman_skill/server_error"
-msgstr "无法为乘员训练新特长。请稍后再试。"
+msgstr ""
+"无法训练新特长。\n"
+"服务器不可用。请稍后再试。"
 
 msgid "add_tankman_skill/success"
-msgstr "已训练新特长: %(skill)s。"
+msgstr "已训练新特长: %(skill)s"
 
 msgid "add_tankman_skill/vehicle_locked"
 msgstr "训练特长错误。坦克正处在锁定状态。"
 
 msgid "add_tankman_skill/vehicle_need_repair"
 msgstr "训练特长错误。请先维修坦克。"
+
+msgid "add_tankman_skills/server_error"
+msgstr ""
+"无法训练新特长。\n"
+"服务器不可用。请稍后再试。"
+
+msgid "add_tankman_skills/success"
+msgstr "已训练新特长: %(skill)s"
 
 msgid "another_periphery"
 msgstr "您当前账号还登录在另外一个服务器上。"
@@ -985,6 +995,11 @@ msgstr ""
 msgid "conversion/title"
 msgstr "收到"
 
+msgid "conversionPerks/header"
+msgstr ""
+"日期: %(at)s\n"
+"转换超出上限乘员特长的经验。已获得:"
+
 msgid "crewBooks/failed"
 msgstr ""
 "无法训练此乘员。\n"
@@ -1380,7 +1395,7 @@ msgid "epicBattles/seasonEnd/rewards/optionalDevice"
 msgstr "已获得试验型配件: %(name)s"
 
 msgid "epicBattles/seasonEnd/text"
-msgstr "前线模式已结束。<br>全部未经选择的奖励都已自动发放至您的账号。"
+msgstr "前线模式已结束。<br/>您在活动期间未选择的所有奖励已按默认选择发放:"
 
 msgid "epicBattles/seasonEnd/title"
 msgstr "前线模式"
@@ -1412,8 +1427,8 @@ msgstr "没有足够的金币兑换。"
 msgid "exchange/server_error"
 msgstr "兑换%(gold)s金币错误。请稍后再试。"
 
-msgid "exchange/success"
-msgstr "%(gold)s金币已经被成功兑换。收到%(credits)s银币。"
+msgid "exchange/success/information"
+msgstr "%(information)s"
 
 msgid "exchange/wallet_not_available"
 msgstr "操作失败。您的所有金币将在资产同步完成后可用。"
@@ -1424,11 +1439,16 @@ msgstr "没有足够金币兑换%(xp)s经验。"
 msgid "exchangeXP/server_error"
 msgstr "兑换%(xp)s经验值失败。请稍候再试。"
 
-msgid "exchangeXP/success"
-msgstr "成功兑换经验%(xp)s。花费%(gold)s金币。"
-
 msgid "exchangeXP/wallet_not_available"
 msgstr "操作失败。您的所有金币将在资产同步完成后可用。"
+
+msgid "filling_untrained_perks/server_error"
+msgstr ""
+"无法训练新特长。\n"
+"服务器不可用。请稍后再试。"
+
+msgid "filling_untrained_perks/success"
+msgstr "已为全部乘员训练新特长。"
 
 msgid "fortification/addOrder"
 msgstr "已开始制备%(count)s个储备。剩余时间:%(time)s。"
@@ -1985,21 +2005,6 @@ msgstr "%(vehName)s'服务器错误。该坦克被锁定。"
 msgid "layout_apply/wallet_not_available"
 msgstr "操作失败。您的所有金币将在资产同步完成后可用。"
 
-msgid "learn_tankman_free_skill/invalid_vehicle"
-msgstr "无法训练零历练特长。坦克不符。"
-
-msgid "learn_tankman_free_skill/server_error"
-msgstr "无法训练零历练特长。请稍后再试。"
-
-msgid "learn_tankman_free_skill/success"
-msgstr "已成功训练零历练特长"
-
-msgid "learn_tankman_free_skill/vehicle_locked"
-msgstr "无法训练零历练特长。该坦克被锁定。"
-
-msgid "learn_tankman_free_skill/vehicle_need_repair"
-msgstr "无法训练零历练特长。该坦克需要维修。"
-
 msgid "limitedUI/switchOff"
 msgstr "隐藏界面元素的逐步显示暂时关闭。"
 
@@ -2475,6 +2480,20 @@ msgstr "技术问题已修复。非常抱歉为您带来不便。"
 msgid "player_subscriptions/switch_on/title"
 msgstr "玩家订阅现在已开放"
 
+msgid "post_progression/server_error"
+msgstr ""
+"已获得\n"
+"乘员著书立传的奖励"
+
+msgid "post_progression/success"
+msgstr ""
+"日期: %(at)s\n"
+"已添加至仓库: %(book_name)s(x%(amount)s)。\n"
+"已兑换著书立传经验。"
+
+msgid "post_progression/success/title"
+msgstr "收到"
+
 msgid "prebattle/hasLockedState"
 msgstr "等待进入战场，无法接受邀请。退出准备或结束战斗，然后再试一次。"
 
@@ -2933,6 +2952,16 @@ msgstr "未能成更改证件信息，请先维修坦克。"
 msgid "request/isInCoolDown"
 msgstr "行动\"%(request)s\" 因%(coolDown)s s被冻结。"
 
+msgid "reset_all_tankmen_skills/server_error"
+msgstr ""
+"无法重置特长。\n"
+"服务器不可用。请稍后再试。"
+
+msgid "reset_all_tankmen_skills/success"
+msgstr ""
+"已免费重置全部乘员的\n"
+"所有特长。"
+
 msgid "resourceWell/resourcesLoadingError"
 msgstr "花费资源错误。请再试一次。"
 
@@ -3237,6 +3266,19 @@ msgstr "坦克%(userString)s在仓库中未找到。请稍后重试。"
 msgid "shop_resync"
 msgstr "由于服务器配置变更，用户界面已经于%(date)s %(time)s 更新。"
 
+msgid "skillsCrewBoostersConversion/item"
+msgstr ""
+"<font color='#E9E2BF'>\"{oldName}\"</font>({amount})被转换成<font "
+"color='#E9E2BF'>\"{newName}\"</font>({amount})"
+
+msgid "skillsCrewBoostersConversion/text"
+msgstr ""
+"日期: %(date)s\n"
+"已转换指令: %(items)s。"
+
+msgid "skillsCrewBoostersConversion/title"
+msgstr "收到"
+
 msgid "squad/createError"
 msgstr "只有高级账号的用户才可以创建战队。"
 
@@ -3308,7 +3350,7 @@ msgid "techtree/action/text"
 msgstr "特惠结束于 "
 
 msgid "techtree/action/text/closest"
-msgstr "下次特惠结束于： "
+msgstr "特惠结束于: "
 
 msgid "telecom/notifications/vehicleBlocked/comment/default"
 msgstr "%(vehicles)s"
@@ -4294,33 +4336,6 @@ msgstr "无法退出热身模式。请稍后再试。"
 
 msgid "window/buttons/close"
 msgstr "关闭"
-
-msgid "wotAnniversary/eventFinished/body"
-msgstr "全部周年纪念币都已被移除。"
-
-msgid "wotAnniversary/eventWillEndSoon/body"
-msgstr "活动结束后，全部周年纪念币都将被移除。"
-
-msgid "wotAnniversary/eventWillEndSoon/header"
-msgstr "注意！"
-
-msgid "wotAnniversary/switch_disable/body"
-msgstr ""
-"《坦克世界》14周年纪念活动即将结束。感谢您的参与！\n"
-"您可在商店中花费周年纪念币，有效期至%(month)s%(day)s日。"
-
-msgid "wotAnniversary/switch_enabled/body"
-msgstr "《坦克世界》14周年纪念活动现已恢复。我们对造成的不便深表歉意。"
-
-msgid "wotAnniversary/switch_pause/body"
-msgstr "由于系统维护，《坦克世界》14周年纪念活动暂不开放。"
-
-msgid "wotAnniversary/switch_started/body"
-msgstr ""
-"《坦克世界》14周年纪念活动将从%(startMonth)s%(startDay)s日持续至%(endMonth)s%(endDay)s日。让我们与备受喜爱的嘉宾们共庆这一特殊时刻！"
-
-msgid "wotAnniversary/switch_started/title"
-msgstr "是时候庆祝了！"
 
 msgid "wrong_slot"
 msgstr "装备%s'%s'与%s的位置不匹配。"

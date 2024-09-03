@@ -613,6 +613,7 @@ package net.wg.gui.lobby.techtree.nodes
          else if(!param2 && param1 != null)
          {
             param1.removeEventListener(ButtonEvent.CLICK,this.onExtraButtonClickHandler);
+            App.utils.focusHandler.setFocus(this.actionButton);
             this.removeChild(param1);
             param1.dispose();
             param1 = null;

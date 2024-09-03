@@ -16,8 +16,6 @@ package net.wg.infrastructure.base.meta
       
       function toggleTopModulesS(param1:Boolean) : void;
       
-      function skillSelectS(param1:String, param2:int, param3:Boolean) : void;
-      
       function as_setDevicesData(param1:Array) : void;
       
       function as_setAmmo(param1:Array) : void;
@@ -27,8 +25,6 @@ package net.wg.infrastructure.base.meta
       function as_setCamo(param1:Boolean) : void;
       
       function as_disableCamo() : void;
-      
-      function as_setSkills(param1:Array) : void;
       
       function as_setTopModulesSelected(param1:Boolean) : void;
       

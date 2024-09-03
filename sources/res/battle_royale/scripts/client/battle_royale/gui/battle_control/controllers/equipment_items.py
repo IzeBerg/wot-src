@@ -64,7 +64,7 @@ class _RegenerationKitBattleRoyaleItem(_EquipmentItem):
              True, None)
 
     def getActivationCode(self, entityName=None, avatar=None):
-        return 65536 + self._descriptor.id[1]
+        return self._descriptor.id[1]
 
     def getAnimationType(self):
         if self._stage == EQUIPMENT_STAGES.ACTIVE:

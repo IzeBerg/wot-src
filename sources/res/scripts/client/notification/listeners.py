@@ -1,20 +1,24 @@
 import json, logging, time, weakref
+from abc import ABCMeta
 from collections import defaultdict
 from functools import partial
-from typing import TYPE_CHECKING
 import WWISE
+from adisp import adisp_process
+from shared_utils import first, findFirst
+from typing import TYPE_CHECKING
 from PlayerEvents import g_playerEvents
 from account_helpers import AccountSettings
-from account_helpers.AccountSettings import BattleMatters, COMP7_BOND_EQUIPMENT_REMINDER_SHOWN_TIMESTAMP, COMP7_YEARLY_REWARD_SEEN, INTEGRATED_AUCTION_NOTIFICATIONS, IS_BATTLE_PASS_EXTRA_STARTED, LOOT_BOXES_WAS_FINISHED, LOOT_BOXES_WAS_STARTED, PROGRESSIVE_REWARD_VISITED, RESOURCE_WELL_END_SHOWN, RESOURCE_WELL_NOTIFICATIONS, RESOURCE_WELL_START_SHOWN, SENIORITY_AWARDS_COINS_REMINDER_SHOWN_TIMESTAMP
-from account_helpers.settings_core.settings_constants import SeniorityAwardsStorageKeys, WotAnniversaryStorageKeys
-from adisp import adisp_process
+from account_helpers.AccountSettings import INTEGRATED_AUCTION_NOTIFICATIONS, IS_BATTLE_PASS_EXTRA_STARTED, LOOT_BOXES_WAS_FINISHED, PROGRESSIVE_REWARD_VISITED, RESOURCE_WELL_END_SHOWN, RESOURCE_WELL_NOTIFICATIONS, RESOURCE_WELL_START_SHOWN, SENIORITY_AWARDS_COINS_REMINDER_SHOWN_TIMESTAMP, BattleMatters, COMP7_BOND_EQUIPMENT_REMINDER_SHOWN_TIMESTAMP, COMP7_YEARLY_REWARD_SEEN
+from account_helpers.settings_core.settings_constants import SeniorityAwardsStorageKeys
 from chat_shared import SYS_MESSAGE_TYPE
 from collector_vehicle import CollectorVehicleConsts
 from constants import ARENA_BONUS_TYPE, AUTO_MAINTENANCE_RESULT, DAILY_QUESTS_CONFIG, DOG_TAGS_CONFIG, MAPS_TRAINING_ENABLED_KEY, PLAYER_SUBSCRIPTIONS_CONFIG, PremiumConfigs, SwitchState
 from debug_utils import LOG_DEBUG, LOG_ERROR
+from exchange.personal_discounts_constants import EXCHANGE_RATE_GOLD_NAME, EXCHANGE_RATE_FREE_XP_NAME, ExchangeRateShowFormat
 from frameworks.wulf import ViewStatus
 from gui import SystemMessages
 from gui.ClientUpdateManager import g_clientUpdateManager
+from gui.Scaleform.genConsts.PERSONAL_EXCHANGE_RATES import PERSONAL_EXCHANGE_RATES
 from gui.Scaleform.locale.CLANS import CLANS
 from gui.SystemMessages import SM_TYPE
 from gui.clans.clan_account_profile import SYNC_KEYS
@@ -30,13 +34,11 @@ from gui.impl.lobby.comp7.yearly_rewards_selection_screen import YearlyRewardsSe
 from gui.impl.lobby.premacc.premacc_helpers import PiggyBankConstants, getDeltaTimeHelper
 from gui.impl.lobby.seniority_awards.seniority_awards_helper import isSeniorityAwardsSystemNotificationShowed, setSeniorityAwardEventStateSetting
 from gui.integrated_auction.constants import AUCTION_FINISH_EVENT_TYPE, AUCTION_FINISH_STAGE_SEEN, AUCTION_STAGE_START_SEEN, AUCTION_START_EVENT_TYPE
-from gui.limited_ui.lui_rules_storage import LuiRules
-from gui.lootbox_system.common import NotificationPathPart, getTextResource
-from gui.lootbox_system.views_loaders import findActiveWindow
+from gui.limited_ui.lui_rules_storage import LUI_RULES
 from gui.platform.base.statuses.constants import StatusTypes
 from gui.prb_control import prbInvitesProperty
 from gui.prb_control.entities.listener import IGlobalListener
-from gui.prestige.prestige_helpers import MAX_GRADE_ID, isFirstEntryNotificationShown, mapGradeIDToUI, setFirstEntryNotificationShown
+from gui.prestige.prestige_helpers import mapGradeIDToUI, MAX_GRADE_ID, isFirstEntryNotificationShown, setFirstEntryNotificationShown
 from gui.server_events.recruit_helper import getAllRecruitsInfo
 from gui.shared import events, g_eventBus
 from gui.shared.formatters import text_styles, time_formatters
@@ -49,7 +51,6 @@ from gui.shared.view_helpers.UsersInfoHelper import UsersInfoHelper
 from gui.wgcg.clan.contexts import GetClanInfoCtx
 from gui.wgnc import g_wgncEvents, g_wgncProvider, wgnc_settings
 from gui.wgnc.settings import WGNC_DATA_PROXY_TYPE
-from gui.wot_anniversary.utils import isMascotQuestRewardAvailable, isAnniversaryNotificationShowed, setAnniversaryServerSetting
 from helpers import dependency, i18n, time_utils
 from helpers.events_handler import EventsHandler
 from helpers.time_utils import getTimestampByStrDate
@@ -59,22 +60,21 @@ from messenger.m_constants import PROTO_TYPE, SCH_CLIENT_MSG_TYPE, USER_ACTION_I
 from messenger.proto import proto_getter
 from messenger.proto.events import g_messengerEvents
 from messenger.proto.xmpp.xmpp_constants import XMPP_ITEM_TYPE
-from notification.decorators import BattleMattersReminderDecorator, BattlePassLockButtonDecorator, BattlePassSwitchChapterReminderDecorator, C11nMessageDecorator, C11nProgressiveItemDecorator, C2DProgressionStyleDecorator, ClanAppActionDecorator, ClanAppsDecorator, ClanInvitesActionDecorator, ClanInvitesDecorator, ClanSingleAppDecorator, ClanSingleInviteDecorator, CollectionCustomMessageDecorator, CollectionsLockButtonDecorator, Comp7BondEquipmentDecorator, EmailConfirmationReminderMessageDecorator, EventLootBoxesDecorator, FriendshipRequestDecorator, IntegratedAuctionStageFinishDecorator, IntegratedAuctionStageStartDecorator, LockButtonMessageDecorator, LootBoxSystemDecorator, LowPriorityDecorator, MapboxButtonDecorator, MessageDecorator, MissingEventsDecorator, PrbInviteDecorator, PrestigeFirstEntryDecorator, PrestigeLvlUpDecorator, ProgressiveRewardDecorator, RecruitReminderMessageDecorator, ResourceWellLockButtonDecorator, ResourceWellStartDecorator, SeniorityAwardsDecorator, WGNCPopUpDecorator, WinbackSelectableRewardReminderDecorator, WotAnniversaryReminderDecorator
+from notification.decorators import BattlePassLockButtonDecorator, BattlePassSwitchChapterReminderDecorator, C11nMessageDecorator, C2DProgressionStyleDecorator, ClanAppActionDecorator, ClanAppsDecorator, ClanInvitesActionDecorator, ClanInvitesDecorator, ClanSingleAppDecorator, ClanSingleInviteDecorator, CollectionsLockButtonDecorator, EmailConfirmationReminderMessageDecorator, EventLootBoxesDecorator, FriendshipRequestDecorator, IntegratedAuctionStageFinishDecorator, IntegratedAuctionStageStartDecorator, LockButtonMessageDecorator, MapboxButtonDecorator, MessageDecorator, MissingEventsDecorator, PrbInviteDecorator, ProgressiveRewardDecorator, RecruitReminderMessageDecorator, ResourceWellLockButtonDecorator, ResourceWellStartDecorator, SeniorityAwardsDecorator, WGNCPopUpDecorator, WinbackSelectableRewardReminderDecorator, BattleMattersReminderDecorator, C11nProgressiveItemDecorator, PrestigeFirstEntryDecorator, PrestigeLvlUpDecorator, CollectionCustomMessageDecorator, Comp7BondEquipmentDecorator, ExchangeRateDiscountDecorator, PostProgressionDecorator
 from notification.settings import NOTIFICATION_TYPE, NotificationData
-from shared_utils import findFirst, first
 from skeletons.gui.battle_matters import IBattleMattersController
-from skeletons.gui.game_control import IBattlePassController, ICollectionsSystemController, IComp7Controller, IEventLootBoxesController, IEventsNotificationsController, IGameSessionController, ILimitedUIController, ILootBoxSystemController, IResourceWellController, ISeniorityAwardsController, ISteamCompletionController, IWinbackController
+from skeletons.gui.game_control import IBattlePassController, ICollectionsSystemController, IEventLootBoxesController, IEventsNotificationsController, IGameSessionController, ILimitedUIController, IResourceWellController, ISeniorityAwardsController, ISteamCompletionController, IWinbackController, IComp7Controller, IExchangeRatesWithDiscountsProvider
 from skeletons.gui.goodies import IGoodiesCache
-from skeletons.gui.impl import IGuiLoader, INotificationWindowController
+from skeletons.gui.impl import IGuiLoader
+from skeletons.gui.impl import INotificationWindowController
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.login_manager import ILoginManager
 from skeletons.gui.platform.wgnp_controllers import IWGNPSteamAccRequestController
 from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
-from skeletons.gui.wot_anniversary import IWotAnniversaryController
 from tutorial.control.game_vars import getVehicleByIntCD
 from uilogging.seniority_awards.constants import SeniorityAwardsLogSpaces
-from uilogging.seniority_awards.loggers import CoinsNotificationLogger, RewardNotificationLogger, VehicleSelectionNotificationLogger
+from uilogging.seniority_awards.loggers import VehicleSelectionNotificationLogger, CoinsNotificationLogger, RewardNotificationLogger
 from wg_async import wg_async, wg_await
 if TYPE_CHECKING:
     from typing import List, Dict, Optional, Any, Type
@@ -306,13 +306,6 @@ class ServiceChannelListener(_NotificationListener):
         else:
             return
 
-    def __needToLowerPriority(self, messageType):
-        excludedTypes = (
-         SYS_MESSAGE_TYPE.premiumBought.index(),
-         SYS_MESSAGE_TYPE.premiumExtended.index(),
-         SYS_MESSAGE_TYPE.bonusExcludedMap.index())
-        return messageType in excludedTypes and findActiveWindow(R.views.lobby.lootbox_system.MainView()) is not None
-
     def __getMessageDecorator(self, settings, messageType, messageSubtype):
         if settings.decorator is not None:
             return settings.decorator
@@ -320,27 +313,29 @@ class ServiceChannelListener(_NotificationListener):
             if messageType == SYS_MESSAGE_TYPE.autoMaintenance.index():
                 if messageSubtype in (AUTO_MAINTENANCE_RESULT.RENT_IS_OVER, AUTO_MAINTENANCE_RESULT.RENT_IS_ALMOST_OVER):
                     return C11nMessageDecorator
-            if messageType == SYS_MESSAGE_TYPE.customizationChanged.index():
-                return C11nMessageDecorator
-            if messageType == SYS_MESSAGE_TYPE.customizationProgress.index():
-                return C11nProgressiveItemDecorator
-            if messageType == SYS_MESSAGE_TYPE.personalMissionFailed.index():
-                return LockButtonMessageDecorator
-            if messageType == SYS_MESSAGE_TYPE.prestigeLevelChanged.index():
-                return PrestigeLvlUpDecorator
-            if messageType == SYS_MESSAGE_TYPE.battlePassReward.index():
-                return BattlePassLockButtonDecorator
-            if messageSubtype in (
-             SCH_CLIENT_MSG_TYPE.MAPBOX_PROGRESSION_REWARD, SCH_CLIENT_MSG_TYPE.MAPBOX_SURVEY_AVAILABLE):
-                return MapboxButtonDecorator
-            if messageType == SYS_MESSAGE_TYPE.resourceWellNoVehicles.index():
-                return ResourceWellLockButtonDecorator
-            if messageType == SYS_MESSAGE_TYPE.customization2dProgressionChanged.index():
-                return C2DProgressionStyleDecorator
-            if self.__isCollectionsSysMessageTypes(messageType) or self.__isCollectionsSMType(settings):
-                return CollectionsLockButtonDecorator
-            if self.__needToLowerPriority(messageType):
-                return LowPriorityDecorator
+            else:
+                if messageType == SYS_MESSAGE_TYPE.customizationChanged.index():
+                    return C11nMessageDecorator
+                if messageType == SYS_MESSAGE_TYPE.customizationProgress.index():
+                    return C11nProgressiveItemDecorator
+                if messageType == SYS_MESSAGE_TYPE.personalMissionFailed.index():
+                    return LockButtonMessageDecorator
+                if messageType in {SYS_MESSAGE_TYPE.postProgressionUnlocked.index(),
+                 SYS_MESSAGE_TYPE.postProgressionCompleted.index()}:
+                    return PostProgressionDecorator
+                if messageType == SYS_MESSAGE_TYPE.prestigeLevelChanged.index():
+                    return PrestigeLvlUpDecorator
+                if messageType == SYS_MESSAGE_TYPE.battlePassReward.index():
+                    return BattlePassLockButtonDecorator
+                if messageSubtype in (
+                 SCH_CLIENT_MSG_TYPE.MAPBOX_PROGRESSION_REWARD, SCH_CLIENT_MSG_TYPE.MAPBOX_SURVEY_AVAILABLE):
+                    return MapboxButtonDecorator
+                if messageType == SYS_MESSAGE_TYPE.resourceWellNoVehicles.index():
+                    return ResourceWellLockButtonDecorator
+                if messageType == SYS_MESSAGE_TYPE.customization2dProgressionChanged.index():
+                    return C2DProgressionStyleDecorator
+                if self.__isCollectionsSysMessageTypes(messageType) or self.__isCollectionsSMType(settings):
+                    return CollectionsLockButtonDecorator
             return MessageDecorator
 
 
@@ -1205,14 +1200,14 @@ class BattlePassListener(_NotificationListener):
         SystemMessages.pushMessage(text=text, type=SystemMessages.SM_TYPE.BattlePassGameModeEnabled, messageData={'header': header})
 
     def __notifyStartExtra(self, chapterID):
-        if not self.__luiController.isRuleCompleted(LuiRules.SYS_MSG_COLLECTION_START_BP):
+        if not self.__luiController.isRuleCompleted(LUI_RULES.sysMsgCollectionStartBattlePass):
             return
         header = backport.text(R.strings.system_messages.battlePass.extraStarted.header())
         chapterName = backport.text(R.strings.battle_pass.chapter.fullName.num(chapterID)())
         SystemMessages.pushMessage(text=backport.text(R.strings.system_messages.battlePass.extraStarted.body(), name=chapterName), priority=NotificationPriorityLevel.HIGH, type=SM_TYPE.BattlePassExtraStart, messageData={'header': header})
 
     def __notifyFinishExtra(self, chapterID):
-        if not self.__luiController.isRuleCompleted(LuiRules.SYS_MSG_COLLECTION_START_BP):
+        if not self.__luiController.isRuleCompleted(LUI_RULES.sysMsgCollectionStartBattlePass):
             return
         chapterID = int(chapterID)
         textRes = R.strings.battle_pass.chapter.fullName.num(chapterID)
@@ -1225,7 +1220,7 @@ class BattlePassListener(_NotificationListener):
         SystemMessages.pushMessage(text=text, type=SM_TYPE.BattlePassExtraFinish, messageData={'header': header})
 
     def __notifyExtraWillEndSoon(self, chapterID):
-        if not self.__luiController.isRuleCompleted(LuiRules.SYS_MSG_COLLECTION_START_BP):
+        if not self.__luiController.isRuleCompleted(LUI_RULES.sysMsgCollectionStartBattlePass):
             return
         chapterID = int(chapterID)
         textRes = R.strings.battle_pass.chapter.fullName.num(chapterID)
@@ -1243,7 +1238,7 @@ class BattlePassListener(_NotificationListener):
             oldValue = self.__arenaBonusTypesEnabledState.get(arenaBonusType, False)
             newValue = self.__battlePass.isGameModeEnabled(arenaBonusType)
             self.__arenaBonusTypesEnabledState[arenaBonusType] = newValue
-            if oldValue != newValue and self.__luiController.isRuleCompleted(LuiRules.SYS_MSG_COLLECTION_START_BP):
+            if oldValue != newValue and self.__luiController.isRuleCompleted(LUI_RULES.sysMsgCollectionStartBattlePass):
                 self.__pushEnableChangedForArenaBonusType(arenaBonusType, newValue)
 
     def __checkAndNotify(self, oldMode=None, newMode=None):
@@ -1251,7 +1246,7 @@ class BattlePassListener(_NotificationListener):
         isFinished = self.__battlePass.isSeasonFinished()
         isModeChanged = oldMode is not None and newMode is not None and oldMode != newMode
         isReactivated = newMode == 'enabled' and oldMode == 'paused'
-        isEnabledByLUI = self.__luiController.isRuleCompleted(LuiRules.SYS_MSG_COLLECTION_START_BP)
+        isEnabledByLUI = self.__luiController.isRuleCompleted(LUI_RULES.sysMsgCollectionStartBattlePass)
         needToPushStarted = self.__isStarted != isStarted and isStarted and not isReactivated
         if isEnabledByLUI:
             if needToPushStarted:
@@ -1371,17 +1366,17 @@ class BattlePassSwitchChapterReminder(BaseReminderListener):
         self.__battlePassController.onChapterChanged += self.__tryNotify
         self.__battlePassController.onBattlePassSettingsChange += self.__tryNotify
         self.__battlePassController.onPointsUpdated += self.__tryNotify
-        self.__luiController.startObserve(LuiRules.BP_ENTRY, self.__updateBattlePassEntryVisibility)
+        self.__luiController.startObserve(LUI_RULES.BattlePassEntry, self.__updateBattlePassEntryVisibility)
 
     def __removeListeners(self):
         self.__battlePassController.onChapterChanged -= self.__tryNotify
         self.__battlePassController.onBattlePassSettingsChange -= self.__tryNotify
         self.__battlePassController.onPointsUpdated -= self.__tryNotify
-        self.__luiController.stopObserve(LuiRules.BP_ENTRY, self.__updateBattlePassEntryVisibility)
+        self.__luiController.stopObserve(LUI_RULES.BattlePassEntry, self.__updateBattlePassEntryVisibility)
 
     def __tryNotify(self, *_):
         isAdding = not (self.__battlePassController.hasActiveChapter() or self.__battlePassController.isCompleted() or self.__battlePassController.isDisabled() or self.__battlePassController.isPaused())
-        isAdding &= self.__luiController.isRuleCompleted(LuiRules.BP_ENTRY)
+        isAdding &= self.__luiController.isRuleCompleted(LUI_RULES.BattlePassEntry)
         self._notifyOrRemove(isAdding)
 
     def __updateBattlePassEntryVisibility(self, *_):
@@ -1670,13 +1665,13 @@ class SeniorityAwardsQuestListener(_NotificationListener):
     def start(self, model):
         result = super(SeniorityAwardsQuestListener, self).start(model)
         self.__seniorityAwardCtrl.onUpdated += self.__tryNotify
-        self.__limitedUIController.startObserve(LuiRules.WDR_NEWBIE_REWARD, self.__NotifyHandler)
+        self.__limitedUIController.startObserve(LUI_RULES.WDRNewbieReward, self.__NotifyHandler)
         self.__tryNotify()
         return result
 
     def stop(self):
         self.__seniorityAwardCtrl.onUpdated -= self.__tryNotify
-        self.__limitedUIController.stopObserve(LuiRules.WDR_NEWBIE_REWARD, self.__NotifyHandler)
+        self.__limitedUIController.stopObserve(LUI_RULES.WDRNewbieReward, self.__NotifyHandler)
         super(SeniorityAwardsQuestListener, self).stop()
 
     def __NotifyHandler(self, *_):
@@ -1688,7 +1683,7 @@ class SeniorityAwardsQuestListener(_NotificationListener):
             return
         else:
             if self.__seniorityAwardCtrl.isNeedToShowRewardNotification:
-                limitedUIRuleCompleted = self.__limitedUIController.isRuleCompleted(LuiRules.WDR_NEWBIE_REWARD)
+                limitedUIRuleCompleted = self.__limitedUIController.isRuleCompleted(LUI_RULES.WDRNewbieReward)
                 showRewardNotification = self.__seniorityAwardCtrl.showRewardHangarNotification
                 isHangarNotification = showRewardNotification and limitedUIRuleCompleted
                 priority = NotificationPriorityLevel.MEDIUM if isHangarNotification else NotificationPriorityLevel.LOW
@@ -2054,7 +2049,7 @@ class CollectionsListener(_NotificationListener, EventsHandler):
     __eventNotifications = dependency.descriptor(IEventsNotificationsController)
     __limitedUIController = dependency.descriptor(ILimitedUIController)
     __NOTIFICATIONS = R.strings.collections.notifications
-    __FEATURE_NAME_TO_LUI_ID = {'battle_pass_': LuiRules.SYS_MSG_COLLECTION_START_BP}
+    __FEATURE_NAME_TO_LUI_ID = {'battle_pass_': LUI_RULES.sysMsgCollectionStartBattlePass}
     __COLLECTION_ENTRY_ENTITY_ID = 0
 
     def __init__(self):
@@ -2078,10 +2073,10 @@ class CollectionsListener(_NotificationListener, EventsHandler):
 
     def _subscribe(self):
         super(CollectionsListener, self)._subscribe()
-        self.__limitedUIController.startObserve(LuiRules.SYS_MSG_COLLECTION_START_BP, self.__onLuiRuleCompleted)
+        self.__limitedUIController.startObserve(LUI_RULES.sysMsgCollectionStartBattlePass, self.__onLuiRuleCompleted)
 
     def _unsubscribe(self):
-        self.__limitedUIController.stopObserve(LuiRules.SYS_MSG_COLLECTION_START_BP, self.__onLuiRuleCompleted)
+        self.__limitedUIController.stopObserve(LUI_RULES.sysMsgCollectionStartBattlePass, self.__onLuiRuleCompleted)
         super(CollectionsListener, self)._unsubscribe()
 
     def _getEvents(self):
@@ -2137,7 +2132,7 @@ class CollectionsListener(_NotificationListener, EventsHandler):
             setCollectionStartedSeen(collectionID)
 
     def __onCollectionsUpdatedEntryEvent(self, notification):
-        luiRuleID = LuiRules.SYS_MSG_COLLECTIONS_UPDATED_ENTRY
+        luiRuleID = LUI_RULES.sysMsgCollectionsUpdatedEntry
         if not self.__isLuiApplicable(luiRuleID):
             self.__postponeNotification(notification)
             return
@@ -2159,7 +2154,7 @@ class CollectionsListener(_NotificationListener, EventsHandler):
         return
 
     def __isLuiApplicable(self, luiRuleID):
-        return self.__limitedUIController.isInited and not (luiRuleID and luiRuleID in LuiRules and not self.__limitedUIController.isRuleCompleted(luiRuleID))
+        return self.__limitedUIController.isInited and not (luiRuleID and luiRuleID in LUI_RULES.all() and not self.__limitedUIController.isRuleCompleted(luiRuleID))
 
     def __postponeNotification(self, notification):
         if notification not in self.__postponedNotifications:
@@ -2440,216 +2435,95 @@ class Comp7OfferTokenListener(BaseReminderListener, Notifiable):
         AccountSettings.setNotifications(COMP7_BOND_EQUIPMENT_REMINDER_SHOWN_TIMESTAMP, currentTimestamp)
 
 
-class WotAnniversaryReminderListener(BaseReminderListener, EventsHandler):
-    __wotAnniversaryCtrl = dependency.descriptor(IWotAnniversaryController)
-    __TYPE = NOTIFICATION_TYPE.WOT_ANNIVERSARY_REMINDER
+class BaseExchangeRateWithDiscountsListener(BaseReminderListener):
+    __metaclass__ = ABCMeta
+    __TEMPLATE = 'ExchangeRatePersonalDiscount'
     __ENTITY_ID = 0
+    __PRIORITY_LEVEL = NotificationPriorityLevel.LOW
+    _TYPE = None
+    _EXCHANGE_TYPE = None
+    __NOTIFICATION_FORMAT_MAPPING = {ExchangeRateShowFormat.COEFFICIENT: PERSONAL_EXCHANGE_RATES.NOTIFICATION_TYPE_FACTOR, 
+       ExchangeRateShowFormat.INTEGER: PERSONAL_EXCHANGE_RATES.NOTIFICATION_TYPE_INT, 
+       ExchangeRateShowFormat.TEMPORARY: PERSONAL_EXCHANGE_RATES.NOTIFICATION_TYPE_TEMP, 
+       ExchangeRateShowFormat.LIMITED: PERSONAL_EXCHANGE_RATES.NOTIFICATION_TYPE_FACTOR}
+    __exchangeRatesProvider = dependency.descriptor(IExchangeRatesWithDiscountsProvider)
 
     def __init__(self):
-        super(WotAnniversaryReminderListener, self).__init__(self.__TYPE, self.__ENTITY_ID)
+        self.__discount = None
+        super(BaseExchangeRateWithDiscountsListener, self).__init__(self._TYPE, self.__ENTITY_ID)
+        return
 
     def start(self, model):
-        result = super(WotAnniversaryReminderListener, self).start(model)
-        if result:
-            self._subscribe()
-            self.__tryNotify()
+        result = super(BaseExchangeRateWithDiscountsListener, self).start(model)
+        self._exchangeRate.onUpdated += self._onUpdate
+        self.__tryNotify()
         return result
 
     def stop(self):
-        self._unsubscribe()
-        super(WotAnniversaryReminderListener, self).stop()
+        self._exchangeRate.onUpdated -= self._onUpdate
+        super(BaseExchangeRateWithDiscountsListener, self).stop()
 
-    def _getEvents(self):
-        return (
-         (
-          self.__wotAnniversaryCtrl.onSettingsChanged, self.__tryNotify),)
+    @property
+    def _exchangeRate(self):
+        return self.__exchangeRatesProvider.get(self._EXCHANGE_TYPE)
 
-    def _getCallbacks(self):
-        return (
-         (
-          'tokens', self.__onTokensUpdate),)
+    @property
+    def _discountTypeName(self):
+        raise NotImplementedError
 
-    def _createDecorator(self, _):
-        return WotAnniversaryReminderDecorator(self._getNotificationId())
+    @property
+    def _discountPercent(self):
+        return self._exchangeRate.exchangeDiscountPercent
 
-    def __onTokensUpdate(self, _):
+    def _createNotificationData(self, priority, **ctx):
+        data = {'type': self._discountTypeName, 
+           'format': self.__discountShowFormat, 
+           'endTime': self.__discountEndTime, 
+           'discountPercent': self._discountPercent}
+        return NotificationData(self._getNotificationId(), data, priority, None)
+
+    def _createDecorator(self, data):
+        decorator = ExchangeRateDiscountDecorator(data.entityID, self._getNotificationType(), data.savedData, self._model(), self.__TEMPLATE, data.priorityLevel)
+        return decorator
+
+    def _onUpdate(self):
         self.__tryNotify()
 
-    def __tryNotify(self):
-        if not self.__wotAnniversaryCtrl.isAvailableAndActivePhase():
-            self._removeNotification()
-            return
-        needToShow = False
-        rewardQuests = self.__wotAnniversaryCtrl.getMascotRewardQuests().values()
-        for quest in rewardQuests:
-            if quest.getID() == self.__wotAnniversaryCtrl.lastShownMascotReminderNotification:
-                continue
-            if isMascotQuestRewardAvailable(quest):
-                self.__wotAnniversaryCtrl.lastShownMascotReminderNotification = quest.getID()
-                needToShow = True
+    @property
+    def __discountInformation(self):
+        return self._exchangeRate.discountInfo
 
-        if needToShow:
-            self._notify(isStateChanged=True)
+    @property
+    def __discountShowFormat(self):
+        return self.__NOTIFICATION_FORMAT_MAPPING.get(self.__discountInformation.showFormat, ExchangeRateShowFormat.COEFFICIENT)
 
-
-class WotAnniversaryListener(_NotificationListener):
-    __wotAnniversaryCtrl = dependency.descriptor(IWotAnniversaryController)
-
-    def start(self, model):
-        result = super(WotAnniversaryListener, self).start(model)
-        if result:
-            self.__wotAnniversaryCtrl.onEventWillEndSoon += self.__notifyEventWillEndSoon
-            self.__wotAnniversaryCtrl.onEventActivePhaseEnded += self.__notifyActivePhaseFinished
-            self.__wotAnniversaryCtrl.onSettingsChanged += self.__onSettingsChanged
-            self.__updateLastEventState(onLoading=True)
-        return result
-
-    def stop(self):
-        self.__wotAnniversaryCtrl.onEventWillEndSoon -= self.__notifyEventWillEndSoon
-        self.__wotAnniversaryCtrl.onEventActivePhaseEnded -= self.__notifyActivePhaseFinished
-        self.__wotAnniversaryCtrl.onSettingsChanged -= self.__onSettingsChanged
-        super(WotAnniversaryListener, self).stop()
-
-    def __onSettingsChanged(self):
-        self.__updateLastEventState()
-
-    def __updateLastEventState(self, onLoading=False):
-        isEnabled = self.__wotAnniversaryCtrl.isEnabled()
-        isAvailable = self.__wotAnniversaryCtrl.isActive()
-        if isEnabled and self.__wotAnniversaryCtrl.isInActivePhase():
-            showedOnPause = isAnniversaryNotificationShowed(WotAnniversaryStorageKeys.WOT_ANNIVERSARY_ON_PAUSE_NOTIFICATION_SHOWED)
-            if isAvailable and onLoading and not isAnniversaryNotificationShowed(WotAnniversaryStorageKeys.WOT_ANNIVERSARY_STARTED_NOTIFICATION_SHOWED):
-                self.__pushStarted()
-            if not isAvailable and not showedOnPause:
-                self.__pushPause()
-            elif isAvailable and showedOnPause:
-                self.__pushEnabled()
-        if isAvailable and self.__wotAnniversaryCtrl.isInPostActivePhase():
-            if not isAnniversaryNotificationShowed(WotAnniversaryStorageKeys.WOT_ANNIVERSARY_ACTIVE_PHASE_ENDED_NOTIFICATION_SHOWED):
-                self.__pushActivePhaseFinished()
-            if self.__wotAnniversaryCtrl.isEventWillEndSoonDaysNow() and not isAnniversaryNotificationShowed(WotAnniversaryStorageKeys.WOT_ANNIVERSARY_EVENT_WILL_END_SOON_NOTIFICATION_SHOWED):
-                self.__pushEventWillEndSoon()
-        if not isEnabled and isAnniversaryNotificationShowed(WotAnniversaryStorageKeys.WOT_ANNIVERSARY_STARTED_NOTIFICATION_SHOWED) and not isAnniversaryNotificationShowed(WotAnniversaryStorageKeys.WOT_ANNIVERSARY_FINISHED_NOTIFICATION_SHOWED):
-            self.__pushFinished()
-
-    def __notifyEventWillEndSoon(self):
-        self.__pushEventWillEndSoon()
-
-    def __notifyActivePhaseFinished(self):
-        if not isAnniversaryNotificationShowed(WotAnniversaryStorageKeys.WOT_ANNIVERSARY_ACTIVE_PHASE_ENDED_NOTIFICATION_SHOWED):
-            self.__pushActivePhaseFinished()
-
-    def __pushStarted(self):
-        config = self.__wotAnniversaryCtrl.getConfig()
-        sday, smonth = self.__getParsedDate(config.startTime)
-        eday, emonth = self.__getParsedDate(config.activePhaseEndTime)
-        SystemMessages.pushMessage(text=backport.text(R.strings.system_messages.wotAnniversary.switch_started.body(), startDay=sday, startMonth=smonth, endDay=eday, endMonth=emonth), type=SystemMessages.SM_TYPE.WotAnniversaryStartedMessage, priority=NotificationPriorityLevel.HIGH, messageData={'header': backport.text(R.strings.system_messages.wotAnniversary.switch_started.title())})
-        setAnniversaryServerSetting({WotAnniversaryStorageKeys.WOT_ANNIVERSARY_STARTED_NOTIFICATION_SHOWED: True})
-
-    def __pushPause(self):
-        SystemMessages.pushMessage(text=backport.text(R.strings.system_messages.wotAnniversary.switch_pause.body()), type=SystemMessages.SM_TYPE.ErrorSimple, priority=NotificationPriorityLevel.HIGH)
-        setAnniversaryServerSetting({WotAnniversaryStorageKeys.WOT_ANNIVERSARY_ON_PAUSE_NOTIFICATION_SHOWED: True})
-
-    def __pushEnabled(self):
-        text = backport.text(R.strings.system_messages.wotAnniversary.switch_enabled.body())
-        SystemMessages.pushMessage(text=text, type=SystemMessages.SM_TYPE.Warning, priority=NotificationPriorityLevel.HIGH)
-        setAnniversaryServerSetting({WotAnniversaryStorageKeys.WOT_ANNIVERSARY_ON_PAUSE_NOTIFICATION_SHOWED: False})
-
-    def __pushActivePhaseFinished(self):
-        config = self.__wotAnniversaryCtrl.getConfig()
-        day, month = self.__getParsedDate(config.eventCategoryEndTime)
-        SystemMessages.pushMessage(text=backport.text(R.strings.system_messages.wotAnniversary.switch_disable.body(), day=day, month=month), type=SystemMessages.SM_TYPE.Information, priority=NotificationPriorityLevel.HIGH)
-        setAnniversaryServerSetting({WotAnniversaryStorageKeys.WOT_ANNIVERSARY_ACTIVE_PHASE_ENDED_NOTIFICATION_SHOWED: True})
-
-    def __pushEventWillEndSoon(self):
-        SystemMessages.pushMessage(text=backport.text(R.strings.system_messages.wotAnniversary.eventWillEndSoon.body()), type=SystemMessages.SM_TYPE.WarningHeader, priority=NotificationPriorityLevel.MEDIUM, messageData={'header': backport.text(R.strings.system_messages.wotAnniversary.eventWillEndSoon.header())})
-        setAnniversaryServerSetting({WotAnniversaryStorageKeys.WOT_ANNIVERSARY_EVENT_WILL_END_SOON_NOTIFICATION_SHOWED: True})
-
-    def __pushFinished(self):
-        SystemMessages.pushMessage(text=backport.text(R.strings.system_messages.wotAnniversary.eventFinished.body()), type=SystemMessages.SM_TYPE.WarningHeader, priority=NotificationPriorityLevel.MEDIUM, messageData={'header': backport.text(R.strings.system_messages.wotAnniversary.eventWillEndSoon.header())})
-        setAnniversaryServerSetting({WotAnniversaryStorageKeys.WOT_ANNIVERSARY_FINISHED_NOTIFICATION_SHOWED: True})
-
-    @staticmethod
-    def __getParsedDate(timeStamp):
-        timeStruct = time_utils.getTimeStructInLocal(timeStamp)
-        return (str(timeStruct.tm_mday), backport.text(R.strings.menu.dateTime.months.num(timeStruct.tm_mon)()))
-
-
-class LootBoxSystemListener(_NotificationListener):
-    __slots__ = ('__isActive', '__isLootBoxesWasStarted')
-    __lootBoxes = dependency.descriptor(ILootBoxSystemController)
-    __nameRes = ('eventName/lowerCase').split('/')
-    __START_ENTITY_ID = 0
-
-    def __init__(self):
-        super(LootBoxSystemListener, self).__init__()
-        self.__isAvailable = None
-        return
-
-    def start(self, model):
-        result = super(LootBoxSystemListener, self).start(model)
-        self.__lootBoxes.onStatusChanged += self.__onStatusChanged
-        self.__lootBoxes.onBoxesAvailabilityChanged += self.__onAvailabilityChanged
-        if result:
-            self.__tryNotify()
-        return True
-
-    def stop(self):
-        self.__lootBoxes.onStatusChanged -= self.__onStatusChanged
-        self.__lootBoxes.onBoxesAvailabilityChanged -= self.__onAvailabilityChanged
-        super(LootBoxSystemListener, self).stop()
+    @property
+    def __discountEndTime(self):
+        return self.__discountInformation.discountLifetime
 
     def __tryNotify(self):
-        self.__onStatusChanged()
-        self.__onAvailabilityChanged()
-
-    def __onStatusChanged(self):
-        isActive = self.__lootBoxes.isActive
-        isLootBoxesWasStarted = self.__lootBoxes.getSetting(LOOT_BOXES_WAS_STARTED)
-        isLootBoxesWasFinished = self.__lootBoxes.getSetting(LOOT_BOXES_WAS_FINISHED)
-        if isActive and not isLootBoxesWasStarted:
-            self.__pushStarted()
-        if isLootBoxesWasStarted and not isActive and not isLootBoxesWasFinished:
-            self.__pushFinished(self.__lootBoxes.getBoxesCount())
-
-    def __onAvailabilityChanged(self):
-        if self.__lootBoxes.isActive and self.__isAvailable is not None and self.__isAvailable != self.__lootBoxes.isLootBoxesAvailable:
-            if self.__lootBoxes.isLootBoxesAvailable:
-                self.__pushLootBoxesEnabled()
-            else:
-                self.__pushLootBoxesDisabled()
-        self.__isAvailable = self.__lootBoxes.isLootBoxesAvailable
+        if self.__discount is None or self.__discountInformation is None or self.__discount != self.__discountInformation.tokenName:
+            self.__discount = self.__discountInformation.tokenName if self.__discountInformation is not None else None
+            self._notifyOrRemove(self._exchangeRate.isDiscountAvailable(), isStateChanged=True, priority=self.__PRIORITY_LEVEL)
         return
 
-    def __pushStarted(self):
-        res = ('serviceChannelMessages/start').split('/')
-        model = self._model()
-        if model is not None:
-            _, finish = self.__lootBoxes.getActiveTime()
-            localFinishTime = time_utils.makeLocalServerTime(finish)
-            eventName = backport.text(getTextResource(self.__nameRes)())
-            messageData = {'header': backport.text(getTextResource(res + [NotificationPathPart.HEADER])(), eventName=eventName), 
-               'text': backport.text(getTextResource(res + [NotificationPathPart.TEXT])(), date=TimeFormatter.getShortDateFormat(localFinishTime))}
-            model.addNotification(LootBoxSystemDecorator(message=messageData, entityID=self.__START_ENTITY_ID, model=model))
-            self.__lootBoxes.setSetting(LOOT_BOXES_WAS_STARTED, True)
-        return
 
-    @dependency.replace_none_kwargs(ctrl=IEventLootBoxesController)
-    def __pushFinished(self, boxesCount, ctrl=None):
-        res = ('serviceChannelMessages/finish').split('/')
-        eventName = backport.text(getTextResource(self.__nameRes)())
-        SystemMessages.pushMessage(text=backport.text(R.strings.lootbox_system.helpers.doubleBreakLine()) + backport.text(getTextResource(res + [NotificationPathPart.TEXT])()) if boxesCount > 0 else '', priority=NotificationPriorityLevel.MEDIUM, type=SystemMessages.SM_TYPE.LootBoxSystemFinish, messageData={'header': backport.text(getTextResource(res + [NotificationPathPart.HEADER])(), eventName=eventName)})
-        self.__lootBoxes.setSetting(LOOT_BOXES_WAS_FINISHED, True)
+class GoldExchangeRatesDiscountsListener(BaseExchangeRateWithDiscountsListener):
+    _TYPE = NOTIFICATION_TYPE.EXCHANGE_RATE_GOLD_DISCOUNT
+    _EXCHANGE_TYPE = EXCHANGE_RATE_GOLD_NAME
 
-    @staticmethod
-    def __pushLootBoxesEnabled():
-        res = ('serviceChannelMessages/lootBoxesEnabled').split('/')
-        SystemMessages.pushMessage(text=backport.text(getTextResource(res + [NotificationPathPart.TEXT])()), priority=NotificationPriorityLevel.HIGH, type=SystemMessages.SM_TYPE.LootBoxSystemEnabled, messageData={'header': backport.text(getTextResource(res + [NotificationPathPart.HEADER])())})
+    @property
+    def _discountTypeName(self):
+        return PERSONAL_EXCHANGE_RATES.EXCHANGE_TYPE_GOLD
 
-    @staticmethod
-    def __pushLootBoxesDisabled():
-        res = ('serviceChannelMessages/lootBoxesDisabled').split('/')
-        SystemMessages.pushMessage(text=backport.text(getTextResource(res + [NotificationPathPart.TEXT])()), priority=NotificationPriorityLevel.HIGH, type=SystemMessages.SM_TYPE.LootBoxSystemDisabled, messageData={'header': backport.text(getTextResource(res + [NotificationPathPart.HEADER])())})
+
+class XpTranslationRatesDiscountsListener(BaseExchangeRateWithDiscountsListener):
+    _TYPE = NOTIFICATION_TYPE.EXCHANGE_RATE_XP_DISCOUNT
+    _EXCHANGE_TYPE = EXCHANGE_RATE_FREE_XP_NAME
+
+    @property
+    def _discountTypeName(self):
+        return PERSONAL_EXCHANGE_RATES.EXCHANGE_TYPE_EXP
 
 
 registerNotificationsListeners((
@@ -2661,7 +2535,7 @@ registerNotificationsListeners((
  SeniorityAwardsQuestListener, SeniorityAwardsTokenListener, EventLootBoxesListener, CollectionsListener,
  WinbackSelectableRewardReminder, BattleMattersTaskReminderListener,
  PrestigeListener, SeniorityAwardsVehicleSelectionListener, NDQSwitcherListener,
- Comp7OfferTokenListener, WotAnniversaryReminderListener, WotAnniversaryListener, LootBoxSystemListener))
+ Comp7OfferTokenListener, XpTranslationRatesDiscountsListener, GoldExchangeRatesDiscountsListener))
 
 class NotificationsListeners(_NotificationListener):
 

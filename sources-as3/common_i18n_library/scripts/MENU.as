@@ -1199,7 +1199,9 @@ package
       
       public static const EXTRAPARAMS_NAME_VEHICLEOWNSPOTTINGTIME:String = "#menu:extraParams/name/vehicleOwnSpottingTime";
       
-      public static const EXTRAPARAMS_NAME_VEHICLERAMOREXPLOSIONDAMAGERESISTANCE:String = "#menu:extraParams/name/vehicleRamOrExplosionDamageResistance";
+      public static const EXTRAPARAMS_NAME_VEHICLEHESHELLDAMAGERESISTANCE:String = "#menu:extraParams/name/vehicleHEShellDamageResistance";
+      
+      public static const EXTRAPARAMS_NAME_VEHICLEFALLINGDAMAGERESISTANCE:String = "#menu:extraParams/name/vehicleFallingDamageResistance";
       
       public static const EXTRAPARAMS_NAME_CREWHITCHANCE:String = "#menu:extraParams/name/crewHitChance";
       
@@ -1217,23 +1219,23 @@ package
       
       public static const EXTRAPARAMS_NAME_VEHICLEAMMOBAYENGINEFUELSTRENGTH:String = "#menu:extraParams/name/vehicleAmmoBayEngineFuelStrength";
       
-      public static const EXTRAPARAMS_NAME_VEHPENALTYFORDAMAGEENGINEANDCOMBAT:String = "#menu:extraParams/name/vehPenaltyForDamageEngineAndCombat";
+      public static const EXTRAPARAMS_NAME_VEHPENALTYFORDAMAGEDENGINE:String = "#menu:extraParams/name/vehPenaltyForDamagedEngine";
+      
+      public static const EXTRAPARAMS_NAME_VEHPENALTYFORDAMAGEDAMMORACK:String = "#menu:extraParams/name/vehPenaltyForDamagedAmmorack";
       
       public static const EXTRAPARAMS_NAME_VEHICLEFIRECHANCE:String = "#menu:extraParams/name/vehicleFireChance";
       
       public static const EXTRAPARAMS_NAME_VEHICLESPEEDGAIN:String = "#menu:extraParams/name/vehicleSpeedGain";
       
-      public static const EXTRAPARAMS_NAME_VEHICLEAVERAGESOILRESISTANCE:String = "#menu:extraParams/name/vehicleAverageSoilResistance";
+      public static const EXTRAPARAMS_NAME_MEDIUMGROUNDFACTOR:String = "#menu:extraParams/name/mediumGroundFactor";
       
-      public static const EXTRAPARAMS_NAME_VEHICLEWEAKSOILRESISTANCE:String = "#menu:extraParams/name/vehicleWeakSoilResistance";
+      public static const EXTRAPARAMS_NAME_SOFTGROUNDFACTOR:String = "#menu:extraParams/name/softGroundFactor";
       
       public static const EXTRAPARAMS_NAME_VEHICLEENEMYSPOTTINGTIME:String = "#menu:extraParams/name/vehicleEnemySpottingTime";
       
-      public static const EXTRAPARAMS_NAME_CIRCULARVISIONRADIUSWHILESURVEYINGDEVICEDAMAGED:String = "#menu:extraParams/name/circularVisionRadiusWhileSurveyingDeviceDamaged";
+      public static const EXTRAPARAMS_NAME_PENALTYTODAMAGEDSURVEYINGDEVICE:String = "#menu:extraParams/name/penaltyToDamagedSurveyingDevice";
       
       public static const EXTRAPARAMS_NAME_DAMAGEDMODULESDETECTIONTIME:String = "#menu:extraParams/name/damagedModulesDetectionTime";
-      
-      public static const EXTRAPARAMS_NAME_VEHICLEALLYRADIODISTANCE:String = "#menu:extraParams/name/vehicleAllyRadioDistance";
       
       public static const EXTRAPARAMS_NAME_ARTNOTIFICATIONDELAYFACTOR:String = "#menu:extraParams/name/artNotificationDelayFactor";
       
@@ -1274,6 +1276,10 @@ package
       public static const EXTRAPARAMS_NAME_DAMAGEANDPIERCINGDISTRIBUTIONUPPERBOUND:String = "#menu:extraParams/name/damageAndPiercingDistributionUpperBound";
       
       public static const EXTRAPARAMS_NAME_ENEMYMODULESCREWCRITCHANCE:String = "#menu:extraParams/name/enemyModulesCrewCritChance";
+      
+      public static const EXTRAPARAMS_NAME_SHELLVELOCITY:String = "#menu:extraParams/name/shellVelocity";
+      
+      public static const EXTRAPARAMS_NAME_COMMANDERLAMPDELAY:String = "#menu:extraParams/name/commanderLampDelay";
       
       public static const DESCRIPTIONS_VEHICLE:String = "#menu:descriptions/vehicle";
       
@@ -2327,6 +2333,8 @@ package
       
       public static const MODULEINFO_PARAMS_NOPIERCINGDISTANCE_FOOTNOTE_MAXDISTANCE:String = "#menu:moduleInfo/params/noPiercingDistance/footnote/maxDistance";
       
+      public static const MODULEINFO_PARAMS_GUARANTEEDDAMAGE_FOOTNOTE:String = "#menu:moduleInfo/params/guaranteedDamage/footnote";
+      
       public static const MODULEINFO_PARAMS_STUNMAXDURATION:String = "#menu:moduleInfo/params/stunMaxDuration";
       
       public static const MODULEINFO_PARAMS_STUNMINDURATION:String = "#menu:moduleInfo/params/stunMinDuration";
@@ -2999,7 +3007,11 @@ package
       
       public static const TRAINING_INVITATIONS_TITLE:String = "#menu:training/invitations/title";
       
-      public static const TRAINING_ALERTTEXT_ONLYTIERX:String = "#menu:training/alertText/onlyTierX";
+      public static const TRAINING_NOTIFICATIONTEXT_ONLYTIERX:String = "#menu:training/notificationText/onlyTierX";
+      
+      public static const TRAINING_NOTIFICATIONTEXT_FREESUPPLIES:String = "#menu:training/notificationText/freeSupplies";
+      
+      public static const TRAINING_ADDITIONALINFO_FREESUPPLIESCOMP7:String = "#menu:training/additionalInfo/freeSuppliesComp7";
       
       public static const TANKMANRETRAININGBTN_FREE:String = "#menu:tankmanRetrainingBtn/free";
       
@@ -3943,8 +3955,6 @@ package
       
       public static const BOOSTER_BONUS_BOOSTER_XP:String = "#menu:booster/bonus/booster_xp";
       
-      public static const BOOSTER_LABEL_BOOSTER_XP:String = "#menu:booster/label/booster_xp";
-      
       public static const BOOSTER_USERNAME_BOOSTER_FREE_XP:String = "#menu:booster/userName/booster_free_xp";
       
       public static const BOOSTER_INFLUENCE_BOOSTER_FREE_XP:String = "#menu:booster/influence/booster_free_xp";
@@ -3954,8 +3964,6 @@ package
       public static const BOOSTER_DESCRIPTION_BONUSVALUETIME_BOOSTER_FREE_XP:String = "#menu:booster/description/bonusValueTime/booster_free_xp";
       
       public static const BOOSTER_BONUS_BOOSTER_FREE_XP:String = "#menu:booster/bonus/booster_free_xp";
-      
-      public static const BOOSTER_LABEL_BOOSTER_FREE_XP:String = "#menu:booster/label/booster_free_xp";
       
       public static const BOOSTER_USERNAME_BOOSTER_CREW_XP:String = "#menu:booster/userName/booster_crew_xp";
       
@@ -3967,8 +3975,6 @@ package
       
       public static const BOOSTER_BONUS_BOOSTER_CREW_XP:String = "#menu:booster/bonus/booster_crew_xp";
       
-      public static const BOOSTER_LABEL_BOOSTER_CREW_XP:String = "#menu:booster/label/booster_crew_xp";
-      
       public static const BOOSTER_USERNAME_BOOSTER_FREE_XP_AND_CREW_XP:String = "#menu:booster/userName/booster_free_xp_and_crew_xp";
       
       public static const BOOSTER_INFLUENCE_BOOSTER_FREE_XP_AND_CREW_XP:String = "#menu:booster/influence/booster_free_xp_and_crew_xp";
@@ -3979,8 +3985,6 @@ package
       
       public static const BOOSTER_BONUS_BOOSTER_FREE_XP_AND_CREW_XP:String = "#menu:booster/bonus/booster_free_xp_and_crew_xp";
       
-      public static const BOOSTER_LABEL_BOOSTER_FREE_XP_AND_CREW_XP:String = "#menu:booster/label/booster_free_xp_and_crew_xp";
-      
       public static const BOOSTER_USERNAME_BOOSTER_CREDITS:String = "#menu:booster/userName/booster_credits";
       
       public static const BOOSTER_INFLUENCE_BOOSTER_CREDITS:String = "#menu:booster/influence/booster_credits";
@@ -3990,8 +3994,6 @@ package
       public static const BOOSTER_DESCRIPTION_BONUSVALUETIME_BOOSTER_CREDITS:String = "#menu:booster/description/bonusValueTime/booster_credits";
       
       public static const BOOSTER_BONUS_BOOSTER_CREDITS:String = "#menu:booster/bonus/booster_credits";
-      
-      public static const BOOSTER_LABEL_BOOSTER_CREDITS:String = "#menu:booster/label/booster_credits";
       
       public static const BOOSTER_USERNAME_BOOSTER_REPAIR:String = "#menu:booster/userName/booster_repair";
       

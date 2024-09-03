@@ -10,8 +10,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public var onClickedToSlot:Function;
       
-      public var onPopUpClosed:Function;
-      
       public var onPanelShown:Function;
       
       public var onPanelHidden:Function;
@@ -19,8 +17,6 @@ package net.wg.infrastructure.base.meta.impl
       private var _array:Array;
       
       private var _array1:Array;
-      
-      private var _array2:Array;
       
       public function ConsumablesPanelMeta()
       {
@@ -39,11 +35,6 @@ package net.wg.infrastructure.base.meta.impl
             this._array1.splice(0,this._array1.length);
             this._array1 = null;
          }
-         if(this._array2)
-         {
-            this._array2.splice(0,this._array2.length);
-            this._array2 = null;
-         }
          super.onDispose();
       }
       
@@ -51,12 +42,6 @@ package net.wg.infrastructure.base.meta.impl
       {
          App.utils.asserter.assertNotNull(this.onClickedToSlot,"onClickedToSlot" + Errors.CANT_NULL);
          this.onClickedToSlot(param1,param2);
-      }
-      
-      public function onPopUpClosedS() : void
-      {
-         App.utils.asserter.assertNotNull(this.onPopUpClosed,"onPopUpClosed" + Errors.CANT_NULL);
-         this.onPopUpClosed();
       }
       
       public function onPanelShownS() : void
@@ -82,22 +67,11 @@ package net.wg.infrastructure.base.meta.impl
          }
       }
       
-      public final function as_expandEquipmentSlot(param1:int, param2:Array) : void
-      {
-         var _loc3_:Array = this._array1;
-         this._array1 = param2;
-         this.expandEquipmentSlot(param1,this._array1);
-         if(_loc3_)
-         {
-            _loc3_.splice(0,_loc3_.length);
-         }
-      }
-      
       public final function as_reset(param1:Array) : void
       {
-         var _loc2_:Array = this._array2;
-         this._array2 = param1;
-         this.reset(this._array2);
+         var _loc2_:Array = this._array1;
+         this._array1 = param1;
+         this.reset(this._array1);
          if(_loc2_)
          {
             _loc2_.splice(0,_loc2_.length);
@@ -109,13 +83,6 @@ package net.wg.infrastructure.base.meta.impl
          var _loc2_:String = "as_setKeysToSlots" + Errors.ABSTRACT_INVOKE;
          DebugUtils.LOG_ERROR(_loc2_);
          throw new AbstractException(_loc2_);
-      }
-      
-      protected function expandEquipmentSlot(param1:int, param2:Array) : void
-      {
-         var _loc3_:String = "as_expandEquipmentSlot" + Errors.ABSTRACT_INVOKE;
-         DebugUtils.LOG_ERROR(_loc3_);
-         throw new AbstractException(_loc3_);
       }
       
       protected function reset(param1:Array) : void

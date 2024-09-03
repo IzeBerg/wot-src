@@ -1,6 +1,9 @@
 package net.wg.gui.lobby.training
 {
+   import flash.display.DisplayObject;
    import flash.display.InteractiveObject;
+   import flash.utils.Dictionary;
+   import net.wg.data.VO.TrainingRoomInfoVO;
    import net.wg.data.VO.TrainingRoomTeamBaseVO;
    import net.wg.data.VO.TrainingRoomTeamVO;
    import net.wg.data.constants.UniversalBtnStylesConst;
@@ -13,6 +16,10 @@ package net.wg.gui.lobby.training
    
    public class TrainingRoom extends TrainingRoomBase
    {
+      
+      private static const COMMENT_OFFSET_Y:uint = 8;
+      
+      private static const CONTENT_OFFSET_Y:uint = 21;
        
       
       public var swapButton:UniversalBtn;
@@ -21,14 +28,44 @@ package net.wg.gui.lobby.training
       
       public var team2:DropList;
       
+      public var additionalInfo:AdditionalInfo = null;
+      
+      private var _originYDict:Dictionary = null;
+      
       public function TrainingRoom()
       {
          super();
       }
       
+      override public function as_updateMap(param1:Number, param2:Number, param3:String, param4:String, param5:String, param6:String, param7:String, param8:String, param9:Boolean) : void
+      {
+         super.as_updateMap(param1,param2,param3,param4,param5,param6,param7,param8,param9);
+         this.updateAdditionalInfo(param8);
+      }
+      
       override protected function getSwapBtns() : Vector.<UIComponent>
       {
          return Vector.<UIComponent>([this.swapButton]);
+      }
+      
+      override protected function initialize() : void
+      {
+         super.initialize();
+         this.updateAdditionalInfo(null);
+         this.additionalInfo.setContentLayout(AdditionalInfoContent.LAYOUT_BIG);
+         this._originYDict = new Dictionary();
+         this._originYDict[comment] = comment.y;
+         this._originYDict[team1Label] = team1Label.y;
+         this._originYDict[team2Label] = team2Label.y;
+         this._originYDict[this.team1] = this.team1.y;
+         this._originYDict[this.team2] = this.team2.y;
+         this._originYDict[this.swapButton] = this.swapButton.y;
+         this._originYDict[otherLabel] = otherLabel.y;
+         this._originYDict[inviteButton] = inviteButton.y;
+         this._originYDict[other] = other.y;
+         this._originYDict[minimap] = minimap.y;
+         this._originYDict[map] = map.y;
+         this._originYDict[description] = description.y;
       }
       
       override protected function configUI() : void
@@ -46,15 +83,47 @@ package net.wg.gui.lobby.training
          this.team1 = null;
          this.team2.dispose();
          this.team2 = null;
+         this.additionalInfo.dispose();
+         this.additionalInfo = null;
+         App.utils.data.cleanupDynamicObject(this._originYDict);
+         this._originYDict = null;
          super.onDispose();
       }
       
       override protected function draw() : void
       {
+         var _loc1_:* = null;
+         var _loc2_:int = 0;
          super.draw();
          if(isInvalid(InvalidationType.STATE))
          {
             this.swapButton.visible = canChangePlayerTeamS();
+         }
+         if(isInvalid(InvalidationType.LAYOUT))
+         {
+            for(_loc1_ in this._originYDict)
+            {
+               (_loc1_ as DisplayObject).y = this._originYDict[_loc1_];
+            }
+            if(this.additionalInfo.visible)
+            {
+               comment.y = this._originYDict[comment] + this.additionalInfo.height + COMMENT_OFFSET_Y;
+               _loc2_ = comment.textHeight - CONTENT_OFFSET_Y;
+               if(_loc2_ > 0)
+               {
+                  team1Label.y += _loc2_;
+                  team2Label.y += _loc2_;
+                  this.team1.y += _loc2_;
+                  this.team2.y += _loc2_;
+                  this.swapButton.y += _loc2_;
+                  otherLabel.y += _loc2_;
+                  inviteButton.y += _loc2_;
+                  other.y += _loc2_;
+                  minimap.y += _loc2_;
+                  map.y += _loc2_;
+                  description.y += _loc2_;
+               }
+            }
          }
       }
       
@@ -158,6 +227,26 @@ package net.wg.gui.lobby.training
       override protected function getTrainingRoomTeamBaseVOForData(param1:Object) : TrainingRoomTeamBaseVO
       {
          return new TrainingRoomTeamVO(param1);
+      }
+      
+      override protected function setInfo(param1:TrainingRoomInfoVO) : void
+      {
+         super.setInfo(param1);
+         this.updateAdditionalInfo(param1.additionalInfo);
+      }
+      
+      private function updateAdditionalInfo(param1:String) : void
+      {
+         if(param1)
+         {
+            this.additionalInfo.visible = true;
+            this.additionalInfo.setType(param1);
+         }
+         else
+         {
+            this.additionalInfo.visible = false;
+         }
+         invalidateLayout();
       }
       
       private function onSwapButtonClickHandler(param1:ButtonEvent) : void

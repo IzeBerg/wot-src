@@ -476,7 +476,7 @@ class Shell(FittingItem):
 
     def _getAltPrice(self, buyPrice, proxy):
         if Currency.GOLD in buyPrice:
-            return buyPrice.exchange(Currency.GOLD, Currency.CREDITS, proxy.exchangeRateForShellsAndEqs)
+            return buyPrice.exchange(Currency.GOLD, Currency.CREDITS, proxy.exchangeRateForShellsAndEqs, useDiscounts=False)
         return super(Shell, self)._getAltPrice(buyPrice, proxy)
 
     def _getFormatLongUserName(self, kind):

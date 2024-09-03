@@ -57,17 +57,19 @@ package
       
       public static const SEASON_SECONDSLEFT:String = "#comp7:season/secondsLeft";
       
+      public static const SEASON_OVER:String = "#comp7:season/over";
+      
       public static const CALENDARDAY_TITLE:String = "#comp7:calendarDay/title";
       
       public static const CALENDARDAY_SERVERNAME:String = "#comp7:calendarDay/serverName";
       
       public static const CALENDARDAY_TIME:String = "#comp7:calendarDay/time";
       
+      public static const CALENDARDAY_TIMELEFT_FIRST:String = "#comp7:calendarDay/timeLeft/first";
+      
       public static const CALENDARDAY_TIMELEFT_SECOND:String = "#comp7:calendarDay/timeLeft/second";
       
       public static const CALENDARDAY_TIMELEFT_THIRD:String = "#comp7:calendarDay/timeLeft/third";
-      
-      public static const CALENDARDAY_TIMELEFT_FIRST:String = "#comp7:calendarDay/timeLeft/first";
       
       public static const SHORTSEASONNAME_FIRST:String = "#comp7:shortSeasonName/first";
       
@@ -80,24 +82,6 @@ package
       public static const SEASONNAME_SECOND:String = "#comp7:seasonName/second";
       
       public static const SEASONNAME_THIRD:String = "#comp7:seasonName/third";
-      
-      public static const SEASONNAMEWITHNUMBER_FIRST:String = "#comp7:seasonNameWithNumber/first";
-      
-      public static const SEASONNAMEWITHNUMBER_SECOND:String = "#comp7:seasonNameWithNumber/second";
-      
-      public static const SEASONNAMEWITHNUMBER_THIRD:String = "#comp7:seasonNameWithNumber/third";
-      
-      public static const SEASONNAMEUPPER_FIRST:String = "#comp7:seasonNameUpper/first";
-      
-      public static const SEASONNAMEUPPER_SECOND:String = "#comp7:seasonNameUpper/second";
-      
-      public static const SEASONNAMEUPPER_THIRD:String = "#comp7:seasonNameUpper/third";
-      
-      public static const SEASONNAMEWITHNUMBERUPPER_FIRST:String = "#comp7:seasonNameWithNumberUpper/first";
-      
-      public static const SEASONNAMEWITHNUMBERUPPER_SECOND:String = "#comp7:seasonNameWithNumberUpper/second";
-      
-      public static const SEASONNAMEWITHNUMBERUPPER_THIRD:String = "#comp7:seasonNameWithNumberUpper/third";
       
       public static const RANK_TEXT:String = "#comp7:rank/text";
       
@@ -407,9 +391,13 @@ package
       
       public static const WEEKLYQUESTS_TOKENPROGRESS_DESCRIPTION_DONE:String = "#comp7:weeklyQuests/tokenProgress/description/done";
       
-      public static const YEARLYREWARDS_TITLE_WITHVEHICLE:String = "#comp7:yearlyRewards/title/withVehicle";
+      public static const YEARLYREWARDS_PREVIEW_STYLE2D:String = "#comp7:yearlyRewards/preview/style2d";
       
-      public static const YEARLYREWARDS_SUBTITLE_STYLEPROGRESS:String = "#comp7:yearlyRewards/subtitle/styleProgress";
+      public static const YEARLYREWARDS_PREVIEW_STYLE3D:String = "#comp7:yearlyRewards/preview/style3d";
+      
+      public static const YEARLYREWARDS_MAINYEARLYREWARDTITLE:String = "#comp7:yearlyRewards/mainYearlyRewardTitle";
+      
+      public static const YEARLYREWARDS_STAGEDESCRIPTION_ACTIVE:String = "#comp7:yearlyRewards/stageDescription/active";
       
       public static const YEARLYREWARDS_REWARDSSTATE_GUARANTEED:String = "#comp7:yearlyRewards/rewardsState/guaranteed";
       
@@ -442,6 +430,8 @@ package
       public static const YEARLYREWARDS_DESCRIPTION_CURRENT:String = "#comp7:yearlyRewards/description/current";
       
       public static const YEARLYREWARDS_DESCRIPTION_ACHIEVED:String = "#comp7:yearlyRewards/description/achieved";
+      
+      public static const YEARLYREWARDS_REWARDS_CREW:String = "#comp7:yearlyRewards/rewards/crew";
       
       public static const YEARLYSTATISTICS_SEASONNAME_0:String = "#comp7:yearlyStatistics/seasonName/0";
       
@@ -541,7 +531,9 @@ package
       
       public static const INTRO_TITLE_ROLESKILLS:String = "#comp7:intro/title/roleSkills";
       
-      public static const INTRO_TITLE_NORANKEDSYSTEM:String = "#comp7:intro/title/noRankedSystem";
+      public static const INTRO_TITLE_QUALIFICATION:String = "#comp7:intro/title/qualification";
+      
+      public static const INTRO_TITLE_RANKS:String = "#comp7:intro/title/ranks";
       
       public static const INTRO_DESCRIPTION_ONSLAUGHTMODIFIERS:String = "#comp7:intro/description/onslaughtModifiers";
       
@@ -551,7 +543,9 @@ package
       
       public static const INTRO_DESCRIPTION_ROLESKILLS:String = "#comp7:intro/description/roleSkills";
       
-      public static const INTRO_DESCRIPTION_NORANKEDSYSTEM:String = "#comp7:intro/description/noRankedSystem";
+      public static const INTRO_DESCRIPTION_QUALIFICATION:String = "#comp7:intro/description/qualification";
+      
+      public static const INTRO_DESCRIPTION_RANKS:String = "#comp7:intro/description/ranks";
       
       public static const INTRO_CONFIRMBUTTON:String = "#comp7:intro/confirmButton";
       
@@ -617,29 +611,7 @@ package
       
       public static const MAINWIDGETTOOLTIP_QUALIFICATION_CONDITION:String = "#comp7:mainWidgetTooltip/qualification/condition";
       
-      public static const MAINWIDGETTOOLTIP_FEATURENAME:String = "#comp7:mainWidgetTooltip/featureName";
-      
       public static const MAINWIDGETTOOLTIP_BATTLESCOUNTER:String = "#comp7:mainWidgetTooltip/battlesCounter";
-      
-      public static const MAINWIDGETTOOLTIP_DESCRIPTION_INPROGRESS:String = "#comp7:mainWidgetTooltip/description/inProgress";
-      
-      public static const MAINWIDGETTOOLTIP_DESCRIPTIONHEADER:String = "#comp7:mainWidgetTooltip/descriptionHeader";
-      
-      public static const MAINWIDGETTOOLTIP_DESCRIPTION_COMPLETED:String = "#comp7:mainWidgetTooltip/description/completed";
-      
-      public static const MAINWIDGETTOOLTIP_EVENTENDS:String = "#comp7:mainWidgetTooltip/eventEnds";
-      
-      public static const MAINWIDGETTOOLTIP_COLUMN_0:String = "#comp7:mainWidgetTooltip/column/0";
-      
-      public static const MAINWIDGETTOOLTIP_COLUMN_1:String = "#comp7:mainWidgetTooltip/column/1";
-      
-      public static const MAINWIDGETTOOLTIP_COLUMN_2:String = "#comp7:mainWidgetTooltip/column/2";
-      
-      public static const MAINWIDGETTOOLTIP_TOP_0:String = "#comp7:mainWidgetTooltip/top/0";
-      
-      public static const MAINWIDGETTOOLTIP_TOP_1:String = "#comp7:mainWidgetTooltip/top/1";
-      
-      public static const MAINWIDGETTOOLTIP_TOP_2:String = "#comp7:mainWidgetTooltip/top/2";
       
       public static const WAITINGSPINNER_MESSAGE:String = "#comp7:waitingSpinner/message";
       
@@ -827,29 +799,29 @@ package
       
       public static const ALERTMESSAGE_NOTAVAILABLEEND:String = "#comp7:alertMessage/notAvailableEnd";
       
+      public static const ALERTMESSAGE_ALLNOTAVAILABLEEND_FIRST:String = "#comp7:alertMessage/allNotAvailableEnd/first";
+      
       public static const ALERTMESSAGE_ALLNOTAVAILABLEEND_SECOND:String = "#comp7:alertMessage/allNotAvailableEnd/second";
       
       public static const ALERTMESSAGE_ALLNOTAVAILABLEEND_THIRD:String = "#comp7:alertMessage/allNotAvailableEnd/third";
       
-      public static const ALERTMESSAGE_ALLNOTAVAILABLEEND_FIRST:String = "#comp7:alertMessage/allNotAvailableEnd/first";
+      public static const ALERTMESSAGE_STANDALONENOTAVAILABLEEND_FIRST:String = "#comp7:alertMessage/standaloneNotAvailableEnd/first";
       
       public static const ALERTMESSAGE_STANDALONENOTAVAILABLEEND_SECOND:String = "#comp7:alertMessage/standaloneNotAvailableEnd/second";
       
       public static const ALERTMESSAGE_STANDALONENOTAVAILABLEEND_THIRD:String = "#comp7:alertMessage/standaloneNotAvailableEnd/third";
       
-      public static const ALERTMESSAGE_STANDALONENOTAVAILABLEEND_FIRST:String = "#comp7:alertMessage/standaloneNotAvailableEnd/first";
+      public static const ALERTMESSAGE_AFTERSEASON_FIRST:String = "#comp7:alertMessage/afterSeason/first";
       
       public static const ALERTMESSAGE_AFTERSEASON_SECOND:String = "#comp7:alertMessage/afterSeason/second";
       
       public static const ALERTMESSAGE_AFTERSEASON_THIRD:String = "#comp7:alertMessage/afterSeason/third";
       
-      public static const ALERTMESSAGE_AFTERSEASON_FIRST:String = "#comp7:alertMessage/afterSeason/first";
+      public static const ALERTMESSAGE_BETWEENSEASONS_FIRST:String = "#comp7:alertMessage/betweenSeasons/first";
       
       public static const ALERTMESSAGE_BETWEENSEASONS_SECOND:String = "#comp7:alertMessage/betweenSeasons/second";
       
       public static const ALERTMESSAGE_BETWEENSEASONS_THIRD:String = "#comp7:alertMessage/betweenSeasons/third";
-      
-      public static const ALERTMESSAGE_BETWEENSEASONS_FIRST:String = "#comp7:alertMessage/betweenSeasons/first";
       
       public static const ALERTMESSAGE_BUTTON_CHANGESERVER:String = "#comp7:alertMessage/button/changeServer";
       
@@ -931,11 +903,11 @@ package
       
       public static const PRIMETIMEVIEW_TITLE:String = "#comp7:primeTimeView/title";
       
+      public static const PRIMETIMEVIEW_STATUS_SEASONDISABLED_FIRST:String = "#comp7:primeTimeView/status/seasonDisabled/first";
+      
       public static const PRIMETIMEVIEW_STATUS_SEASONDISABLED_SECOND:String = "#comp7:primeTimeView/status/seasonDisabled/second";
       
       public static const PRIMETIMEVIEW_STATUS_SEASONDISABLED_THIRD:String = "#comp7:primeTimeView/status/seasonDisabled/third";
-      
-      public static const PRIMETIMEVIEW_STATUS_SEASONDISABLED_FIRST:String = "#comp7:primeTimeView/status/seasonDisabled/first";
       
       public static const PRIMETIMEVIEW_STATUS_ALLSERVERSDISABLED:String = "#comp7:primeTimeView/status/allServersDisabled";
       
@@ -1015,15 +987,25 @@ package
       
       public static const BANNER_TITLE:String = "#comp7:banner/title";
       
+      public static const BANNER_SEASON_FIRST:String = "#comp7:banner/season/first";
+      
+      public static const BANNER_SEASON_SECOND:String = "#comp7:banner/season/second";
+      
+      public static const BANNER_SEASON_THIRD:String = "#comp7:banner/season/third";
+      
       public static const BANNER_INFO_SEASONJUSTSTARTED:String = "#comp7:banner/info/seasonJustStarted";
       
       public static const BANNER_INFO_SEASONENDSOON:String = "#comp7:banner/info/seasonEndSoon";
       
-      public static const BANNER_INFO_SEASONEND:String = "#comp7:banner/info/seasonEnd";
+      public static const BANNER_INFOSMALL_SEASONENDSOON:String = "#comp7:banner/infoSmall/seasonEndSoon";
+      
+      public static const BANNER_INFO_SEASONEND_FIRST:String = "#comp7:banner/info/seasonEnd/first";
+      
+      public static const BANNER_INFO_SEASONEND_SECOND:String = "#comp7:banner/info/seasonEnd/second";
+      
+      public static const BANNER_INFO_SEASONEND_THIRD:String = "#comp7:banner/info/seasonEnd/third";
       
       public static const BANNER_INFO_DISABLED:String = "#comp7:banner/info/disabled";
-      
-      public static const BANNER_INFO_SEASONNOTSTARTED:String = "#comp7:banner/info/seasonNotStarted";
       
       public static const BANNER_INFOSMALL_DISABLED:String = "#comp7:banner/infoSmall/disabled";
       
@@ -1087,6 +1069,18 @@ package
       
       public static const WHATSNEWVIEW_SECTIONDESCRIPTION_SHOPUPDATES:String = "#comp7:whatsNewView/sectionDescription/shopUpdates";
       
+      public static const WHATSNEWVIEW_SECTIONHEADING_RATINGUPDATE:String = "#comp7:whatsNewView/sectionHeading/ratingUpdate";
+      
+      public static const WHATSNEWVIEW_SECTIONDESCRIPTION_RATINGUPDATE:String = "#comp7:whatsNewView/sectionDescription/ratingUpdate";
+      
+      public static const WHATSNEWVIEW_SECTIONHEADING_ASSAULTTANKDESTROYER:String = "#comp7:whatsNewView/sectionHeading/assaultTankDestroyer";
+      
+      public static const WHATSNEWVIEW_SECTIONDESCRIPTION_ASSAULTTANKDESTROYER:String = "#comp7:whatsNewView/sectionDescription/assaultTankDestroyer";
+      
+      public static const WHATSNEWVIEW_SECTIONHEADING_RECONFLIGHT:String = "#comp7:whatsNewView/sectionHeading/reconFlight";
+      
+      public static const WHATSNEWVIEW_SECTIONDESCRIPTION_RECONFLIGHT:String = "#comp7:whatsNewView/sectionDescription/reconFlight";
+      
       public static const WHATSNEWVIEW_SECTIONHEADING_TRAININGROOM:String = "#comp7:whatsNewView/sectionHeading/trainingRoom";
       
       public static const WHATSNEWVIEW_SECTIONDESCRIPTION_TRAININGROOM:String = "#comp7:whatsNewView/sectionDescription/trainingRoom";
@@ -1099,7 +1093,45 @@ package
       
       public static const WHATSNEWVIEW_VEHICLESFORRENT_HEADING:String = "#comp7:whatsNewView/vehiclesForRent/heading";
       
+      public static const WHATSNEWVIEW_NEWVEHICLES_HEADING:String = "#comp7:whatsNewView/newVehicles/heading";
+      
       public static const WHATSNEWVIEW_BUTTON_OK:String = "#comp7:whatsNewView/button/ok";
+      
+      public static const WHATSNEWVIEW_MODIFIERS_HEADING:String = "#comp7:whatsNewView/modifiers/heading";
+      
+      public static const WHATSNEWVIEW_MODIFIERS_RANDOM:String = "#comp7:whatsNewView/modifiers/random";
+      
+      public static const WHATSNEWVIEW_MODIFIERS_PREVIOUSSEASON:String = "#comp7:whatsNewView/modifiers/previousSeason";
+      
+      public static const WHATSNEWVIEW_MODIFIERS_CURRENTSEASON:String = "#comp7:whatsNewView/modifiers/currentSeason";
+      
+      public static const WHATSNEWVIEW_MODIFIERS_DESCRIPTION:String = "#comp7:whatsNewView/modifiers/description";
+      
+      public static const WHATSNEWVIEW_MODIFIERS_CHANGED:String = "#comp7:whatsNewView/modifiers/changed";
+      
+      public static const WHATSNEWVIEW_MODIFIERS_ADDED:String = "#comp7:whatsNewView/modifiers/added";
+      
+      public static const MODIFIER_NAME_VEHICLEDURABILITY:String = "#comp7:modifier/name/vehicleDurability";
+      
+      public static const MODIFIER_NAME_TIMEREMAININGVISIBLE:String = "#comp7:modifier/name/timeRemainingVisible";
+      
+      public static const MODIFIER_NAME_RANGEOFPOTENTIALDAMAGE:String = "#comp7:modifier/name/rangeOfPotentialDamage";
+      
+      public static const MODIFIER_NAME_INNERMODULEDAMAGEREDUCTION:String = "#comp7:modifier/name/innerModuleDamageReduction";
+      
+      public static const MODIFIER_NAME_ENGINEFIRECHANCE:String = "#comp7:modifier/name/engineFireChance";
+      
+      public static const WHATSNEWVIEW_MODIFIERS_NA:String = "#comp7:whatsNewView/modifiers/NA";
+      
+      public static const MODIFIER_VALUETYPE_PERCENTAGE:String = "#comp7:modifier/valueType/percentage";
+      
+      public static const MODIFIER_VALUETYPE_SECONDS:String = "#comp7:modifier/valueType/seconds";
+      
+      public static const MODIFIER_VALUETYPE_DEVIATION:String = "#comp7:modifier/valueType/deviation";
+      
+      public static const MODIFIER_VALUETYPE_METERS:String = "#comp7:modifier/valueType/meters";
+      
+      public static const MODIFIER_VALUETYPE_HP:String = "#comp7:modifier/valueType/HP";
       
       public static const TOURNAMENTSWIDGET_HEADING:String = "#comp7:tournamentsWidget/heading";
       
@@ -1110,6 +1142,36 @@ package
       public static const YEARREWARDS_TOOLTIP_SELECTABLEREWARD_TITLE:String = "#comp7:yearRewards/tooltip/selectableReward/title";
       
       public static const YEARREWARDS_TOOLTIP_SELECTABLEREWARD_LIST:String = "#comp7:yearRewards/tooltip/selectableReward/list";
+      
+      public static const STYLE3DTOOLTIP_954:String = "#comp7:style3dTooltip/954";
+      
+      public static const STYLE3DTOOLTIP_955:String = "#comp7:style3dTooltip/955";
+      
+      public static const STYLE3DTOOLTIP_956:String = "#comp7:style3dTooltip/956";
+      
+      public static const STYLE3DTOOLTIP_957:String = "#comp7:style3dTooltip/957";
+      
+      public static const STYLE3DTOOLTIP_DESCRIPTION:String = "#comp7:style3dTooltip/description";
+      
+      public static const STYLE3DTOOLTIP_HOWTORECEIVE:String = "#comp7:style3dTooltip/howToReceive";
+      
+      public static const STYLE3DTOOLTIP_SECONDARYDESCRIPTION_954:String = "#comp7:style3dTooltip/secondaryDescription/954";
+      
+      public static const STYLE3DTOOLTIP_SECONDARYDESCRIPTION_955:String = "#comp7:style3dTooltip/secondaryDescription/955";
+      
+      public static const STYLE3DTOOLTIP_SECONDARYDESCRIPTION_956:String = "#comp7:style3dTooltip/secondaryDescription/956";
+      
+      public static const STYLE3DTOOLTIP_SECONDARYDESCRIPTION_957:String = "#comp7:style3dTooltip/secondaryDescription/957";
+      
+      public static const STYLE3DTOOLTIP_SUITABLEVEHICLES:String = "#comp7:style3dTooltip/suitableVehicles";
+      
+      public static const CREWMEMBERSTOOLTIP_SUBHEADING:String = "#comp7:crewMembersTooltip/subHeading";
+      
+      public static const CREWMEMBERSTOOLTIP_DESCRIPTION:String = "#comp7:crewMembersTooltip/description";
+      
+      public static const CREWMEMBERSTOOLTIP_ZEROPERKS:String = "#comp7:crewMembersTooltip/zeroPerks";
+      
+      public static const CREWMEMBERSTOOLTIP_PERKS:String = "#comp7:crewMembersTooltip/perks";
        
       
       public function COMP7()

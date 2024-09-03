@@ -285,8 +285,6 @@ package
       
       public static const VEHCONF_TOOLTIPS_CAMOTITLE:String = "#veh_compare:vehConf/tooltips/camoTitle";
       
-      public static const VEHCONF_CREWTITLE:String = "#veh_compare:vehConf/crewTitle";
-      
       public static const VEHCONF_TOOLTIPS_CAMOINFO:String = "#veh_compare:vehConf/tooltips/camoInfo";
       
       public static const VEHCONF_TOOLTIPS_DEFCAMOINFO:String = "#veh_compare:vehConf/tooltips/defCamoInfo";
@@ -326,6 +324,36 @@ package
       public static const VEHCONF_TOOLTIPS_MODIFICATIONS_DESCRIPTION:String = "#veh_compare:vehConf/tooltips/modifications/description";
       
       public static const VEHCONF_TOOLTIPS_MODIFICATIONS_REMOVE:String = "#veh_compare:vehConf/tooltips/modifications/remove";
+      
+      public static const SKILLSCONF_HEADER:String = "#veh_compare:skillsConf/header";
+      
+      public static const SKILLSCONF_EMPTY:String = "#veh_compare:skillsConf/empty";
+      
+      public static const SKILLSCONF_EMPTYTOOLTIP_HEADER:String = "#veh_compare:skillsConf/emptyTooltip/header";
+      
+      public static const SKILLSCONF_EMPTYTOOLTIP_BODY:String = "#veh_compare:skillsConf/emptyTooltip/body";
+      
+      public static const SKILLSELECT_TOOLTIP_HEADING:String = "#veh_compare:skillSelect/tooltip/heading";
+      
+      public static const SKILLSELECT_TOOLTIP_ROLES:String = "#veh_compare:skillSelect/tooltip/roles";
+      
+      public static const SKILLSELECT_TOOLTIP_ADDITIONALROLES:String = "#veh_compare:skillSelect/tooltip/additionalRoles";
+      
+      public static const SKILLSELECT_TOOLTIP_GENERALPRINCIPLE:String = "#veh_compare:skillSelect/tooltip/generalPrinciple";
+      
+      public static const SKILLSELECT_TOOLTIP_GENERALPRINCIPLEDESCRIPTION:String = "#veh_compare:skillSelect/tooltip/generalPrincipleDescription";
+      
+      public static const SKILLSELECT_MAJORSKILLS:String = "#veh_compare:skillSelect/majorSkills";
+      
+      public static const SKILLSELECT_BONUSSKILLS:String = "#veh_compare:skillSelect/bonusSkills";
+      
+      public static const SKILLSELECT_BUTTON_RESTORE:String = "#veh_compare:skillSelect/button/restore";
+      
+      public static const SKILLSELECT_BUTTON_CANCEL:String = "#veh_compare:skillSelect/button/cancel";
+      
+      public static const SKILLSELECT_BUTTON_ADDTOCOMPARE:String = "#veh_compare:skillSelect/button/addToCompare";
+      
+      public static const SKILLSELECT_TOOLTIPHINT:String = "#veh_compare:skillSelect/tooltipHint";
        
       
       public function VEH_COMPARE()

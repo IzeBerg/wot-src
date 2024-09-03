@@ -1,16 +1,17 @@
 import logging
 from functools import partial
-import typing, BigWorld
+import BigWorld, typing
+from shared_utils import nextTick
 from ClientSelectableCameraObject import ClientSelectableCameraObject
-from CurrentVehicle import g_currentPreviewVehicle, g_currentVehicle
+from CurrentVehicle import g_currentVehicle, g_currentPreviewVehicle
 from HeroTank import HeroTank
 from PlayerEvents import g_playerEvents
 from account_helpers import AccountSettings
 from account_helpers.AccountSettings import NATION_CHANGE_VIEWED
 from account_helpers.settings_core.ServerSettingsManager import SETTINGS_SECTIONS
 from battle_pass_common import BATTLE_PASS_CONFIG_NAME
-from constants import Configs, DOG_TAGS_CONFIG, RENEWABLE_SUBSCRIPTION_CONFIG, QUEUE_TYPE
-from frameworks.wulf import ViewStatus, WindowFlags, WindowLayer, WindowStatus
+from constants import Configs, DOG_TAGS_CONFIG, RENEWABLE_SUBSCRIPTION_CONFIG
+from frameworks.wulf import WindowFlags, WindowLayer, WindowStatus, ViewStatus
 from gui.ClientUpdateManager import g_clientUpdateManager
 from gui.Scaleform.Waiting import Waiting
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
@@ -50,20 +51,17 @@ from helpers.i18n import makeString as _ms
 from helpers.statistics import HANGAR_LOADING_STATE
 from helpers.time_utils import ONE_MINUTE
 from nation_change_helpers.client_nation_change_helper import getChangeNationTooltip
-from shared_utils import nextTick
 from skeletons.account_helpers.settings_core import ISettingsCore
 from skeletons.connection_mgr import IConnectionManager
-from skeletons.gui.game_control import IBattlePassController, IBattleRoyaleController, IComp7Controller, IEpicBattleMetaGameController, IEventLootBoxesController, IHangarGuiController, IIGRController, ILootBoxSystemController, IMapboxController, IMarathonEventsController, IPromoController, IRankedBattlesController, IWotPlusController
+from skeletons.gui.game_control import IWotPlusController, IBattlePassController, IBattleRoyaleController, IComp7Controller, IEpicBattleMetaGameController, IEventLootBoxesController, IIGRController, IMapboxController, IMarathonEventsController, IPromoController, IRankedBattlesController, IHangarGuiController
 from skeletons.gui.impl import IGuiLoader
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.offers import IOffersBannerController
 from skeletons.gui.shared import IItemsCache
 from skeletons.gui.shared.utils import IHangarSpace
-from skeletons.gui.wot_anniversary import IWotAnniversaryController
 from skeletons.helpers.statistics import IStatisticsCollector
 from sound_gui_manager import CommonSoundSpaceSettings
 from tutorial.control.context import GLOBAL_FLAG
-from wot_anniversary_common import WOT_ANNIVERSARY_CONFIG_NAME
 if typing.TYPE_CHECKING:
     from frameworks.wulf import Window, View
 _logger = logging.getLogger(__name__)
@@ -107,8 +105,6 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
     __comp7Controller = dependency.descriptor(IComp7Controller)
     __eventLootBoxes = dependency.descriptor(IEventLootBoxesController)
     __hangarGuiCtrl = dependency.descriptor(IHangarGuiController)
-    __wotAnniversaryCtrl = dependency.descriptor(IWotAnniversaryController)
-    __lootBoxes = dependency.descriptor(ILootBoxSystemController)
 
     def __init__(self, _=None):
         LobbySelectableView.__init__(self, 0)
@@ -241,10 +237,8 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         self.__comp7Controller.onBanUpdated += self.__updateAlertMessage
         self.__comp7Controller.onOfflineStatusUpdated += self.__updateAlertMessage
         self.__comp7Controller.onTournamentBannerStateChanged += self.__updateComp7TournamentWidget
-        self.__wotAnniversaryCtrl.onEventActivePhaseEnded += self.__updateWotAnniversaryWidget
         self.hangarSpace.setVehicleSelectable(True)
-        self.__lootBoxes.onStatusChanged += self.__onLootBoxesStatusChanged
-        self.__eventLootBoxes.onStatusChange += self.__onLootBoxesStatusChanged
+        self.__eventLootBoxes.onStatusChange += self.__onLootBoxesEventStatusChange
         g_prbCtrlEvents.onVehicleClientStateChanged += self.__onVehicleClientStateChanged
         g_playerEvents.onPrebattleInvitationAccepted += self.__onPrebattleInvitationAccepted
         unitMgr = prb_getters.getClientUnitMgr()
@@ -281,8 +275,7 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         self.removeListener(AmmunitionPanelViewEvent.SECTION_SELECTED, self.__onOptDeviceClick, scope=EVENT_BUS_SCOPE.LOBBY)
         self.removeListener(AmmunitionPanelViewEvent.CLOSE_VIEW, self.__oAmmunitionPanelViewClose, scope=EVENT_BUS_SCOPE.LOBBY)
         self.itemsCache.onSyncCompleted -= self.onCacheResync
-        self.__eventLootBoxes.onStatusChange -= self.__onLootBoxesStatusChanged
-        self.__lootBoxes.onStatusChanged -= self.__onLootBoxesStatusChanged
+        self.__eventLootBoxes.onStatusChange -= self.__onLootBoxesEventStatusChange
         g_currentVehicle.onChanged -= self.__onCurrentVehicleChanged
         self.hangarSpace.onVehicleChangeStarted -= self.__onVehicleLoading
         self.hangarSpace.onVehicleChanged -= self.__onVehicleLoaded
@@ -304,7 +297,6 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         self.__comp7Controller.onBanUpdated -= self.__updateAlertMessage
         self.__comp7Controller.onOfflineStatusUpdated -= self.__updateAlertMessage
         self.__comp7Controller.onTournamentBannerStateChanged -= self.__updateComp7TournamentWidget
-        self.__wotAnniversaryCtrl.onEventActivePhaseEnded -= self.__updateWotAnniversaryWidget
         if self.__teaser is not None:
             self.__teaser.stop()
             self.__teaser = None
@@ -459,7 +451,6 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         self.__updateComp7TournamentWidget()
         self.__updateAlertMessage()
         self.__updateBattleRoyaleTournamentBanner()
-        self.__updateWotAnniversaryWidget()
         Waiting.hide('updateVehicle')
 
     def __onCurrentVehicleChanged(self):
@@ -538,7 +529,6 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         self.__updateComp7TournamentWidget()
         self.__updateAlertMessage()
         self.__updateBattleRoyaleTournamentBanner()
-        self.__updateWotAnniversaryWidget()
 
     def __onEntityUpdated(self, *_):
         self.__onEntityChanged()
@@ -570,8 +560,6 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
             self.__updateState()
         if Configs.PRESTIGE_CONFIG.value in diff:
             self.__updatePrestigeProgressWidget()
-        if WOT_ANNIVERSARY_CONFIG_NAME in diff:
-            self.__updateWotAnniversaryWidget()
 
     def __onSettingsChanged(self, diff):
         if SETTINGS_SECTIONS.UI_STORAGE in diff:
@@ -610,7 +598,7 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
     def __onResetUnitJoiningProgress(self):
         self.__isUnitJoiningInProgress = False
 
-    def __onLootBoxesStatusChanged(self):
+    def __onLootBoxesEventStatusChange(self):
         self.__updateCarouselEventEntryState()
 
     def __updateCarouselEventEntryState(self):
@@ -657,19 +645,3 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
             return min(self.__comp7Controller.banDuration, ONE_MINUTE)
         else:
             return
-
-    def __updateWotAnniversaryWidget(self):
-        wotAnniversaryWidget = self.getComponent(HANGAR_ALIASES.EVENT_ENTRANCE_POINT)
-        if wotAnniversaryWidget is not None:
-            showInHangar = any(self.__isQueueSelected(queueType) for queueType in (
-             QUEUE_TYPE.RANDOMS, QUEUE_TYPE.FUN_RANDOM, QUEUE_TYPE.STRONGHOLD_UNITS,
-             QUEUE_TYPE.WINBACK, QUEUE_TYPE.RANDOM_NP2))
-            visible = self.__wotAnniversaryCtrl.isAvailableAndActivePhase()
-            self.as_setEventEntryPointVisibleS(showInHangar and visible)
-        return
-
-    def __isQueueSelected(self, queueType):
-        if self.prbDispatcher is not None:
-            return self.prbDispatcher.getFunctionalState().isQueueSelected(queueType)
-        else:
-            return False

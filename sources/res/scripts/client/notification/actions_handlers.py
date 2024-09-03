@@ -17,19 +17,20 @@ from gui.clans.clan_helpers import showAcceptClanInviteDialog
 from gui.collection.collections_helpers import loadHangarFromCollections
 from gui.customization.constants import CustomizationModeSource, CustomizationModes
 from gui.impl import backport
+from gui.impl.auxiliary.crew_books_helper import crewBooksViewedCache
 from gui.impl.gen import R
 from gui.impl.gen.view_models.views.lobby.comp7.meta_view.root_view_model import MetaRootViews
 from gui.impl.lobby.achievements.profile_utils import createAdvancedAchievementsCatalogInitAchievementIDs
-from gui.lootbox_system.common import ViewID, Views
 from gui.platform.base.statuses.constants import StatusTypes
 from gui.prb_control import prbDispatcherProperty, prbInvitesProperty
 from gui.prb_control.entities.comp7 import comp7_prb_helpers
 from gui.prestige.prestige_helpers import showPrestigeOnboardingWindow, showPrestigeVehicleStats
 from gui.ranked_battles import ranked_helpers
-from gui.server_events.events_dispatcher import showMissionsBattlePass, showMissionsMapboxProgression, showPersonalMission, showComp7BanWindow, showBanWindow, showPenaltyWindow, showWarningWindow, showComp7YearlyRewardsSelectionWindow, showMissionsWotAnniversary
+from gui.server_events.events_dispatcher import showMissionsBattlePass, showMissionsMapboxProgression, showPersonalMission, showComp7BanWindow, showBanWindow, showPenaltyWindow, showWarningWindow, showComp7YearlyRewardsSelectionWindow
 from gui.shared import EVENT_BUS_SCOPE, actions, event_dispatcher as shared_events, events, g_eventBus
-from gui.shared.event_dispatcher import hideWebBrowserOverlay, showBlueprintsSalePage, showCollectionAwardsWindow, showCollectionWindow, showCollectionsMainPage, showDelayedReward, showEpicBattlesAfterBattleWindow, showProgressiveRewardWindow, showRankedYearAwardWindow, showResourceWellProgressionWindow, showShop, showSteamConfirmEmailOverlay, showWinbackSelectRewardView, showWotPlusIntroView, showBarracks, showSeniorityRewardVehiclesWindow, showComp7MetaRootView, showAdvancedAchievementsView, showTrophiesView, showAdvancedAchievementsCatalogView
+from gui.shared.event_dispatcher import hideWebBrowserOverlay, showBlueprintsSalePage, showCollectionAwardsWindow, showCollectionWindow, showCollectionsMainPage, showDelayedReward, showEpicBattlesAfterBattleWindow, showProgressiveRewardWindow, showRankedYearAwardWindow, showResourceWellProgressionWindow, showShop, showSteamConfirmEmailOverlay, showWinbackSelectRewardView, showWotPlusIntroView, showBarracks, showSeniorityRewardVehiclesWindow, showComp7MetaRootView, showAdvancedAchievementsView, showTrophiesView, showAdvancedAchievementsCatalogView, showExchangeGoldWindow, showExchangeFreeXPWindow, showCrewPostProgressionView
 from gui.shared.gui_items import GUI_ITEM_TYPE
+from gui.shared.gui_items.processors.common import ClaimRewardForPostProgression
 from gui.shared.notifications import NotificationPriorityLevel
 from gui.shared.system_factory import collectAllNotificationsActionsHandlers, registerNotificationsActionsHandlers
 from gui.shared.utils import decorators
@@ -926,38 +927,6 @@ class _LootBoxesAutoOpenHandler(NavigationDisabledActionHandler):
         return
 
 
-class _OpenLootBoxSystemHandler(NavigationDisabledActionHandler):
-
-    @classmethod
-    def getNotType(cls):
-        return NOTIFICATION_TYPE.MESSAGE
-
-    @classmethod
-    def getActions(cls):
-        return ('openLootBoxSystem', )
-
-    def doAction(self, model, entityID, action):
-        Views.load(ViewID.MAIN)
-
-
-class _LootBoxSystemAutoOpenHandler(NavigationDisabledActionHandler):
-
-    @classmethod
-    def getNotType(cls):
-        return NOTIFICATION_TYPE.MESSAGE
-
-    @classmethod
-    def getActions(cls):
-        return ('lootBoxSystemAutoOpen', )
-
-    def doAction(self, model, entityID, action):
-        notification = model.getNotification(self.getNotType(), entityID)
-        savedData = notification.getSavedData()
-        if savedData is not None and 'rewards' in savedData:
-            Views.load(ViewID.AUTOOPEN, savedData['eventName'], savedData['rewards'], savedData['boxIDs'])
-        return
-
-
 class _OpenProgressiveRewardView(NavigationDisabledActionHandler):
 
     @classmethod
@@ -1484,6 +1453,44 @@ class _OpenPrestigeVehicleStats(NavigationDisabledActionHandler):
         showPrestigeVehicleStats(savedData['vehCD'])
 
 
+class _OpenCrewPostProgression(NavigationDisabledActionHandler):
+    __lobbyContext = dependency.descriptor(ILobbyContext)
+
+    @classmethod
+    def getNotType(cls):
+        return NOTIFICATION_TYPE.MESSAGE
+
+    @classmethod
+    def getActions(cls):
+        return ('showPostProgress', )
+
+    def doAction(self, model, entityID, action):
+        showCrewPostProgressionView()
+
+
+class _ClaimRewardPostProgression(NavigationDisabledActionHandler):
+    __lobbyContext = dependency.descriptor(ILobbyContext)
+
+    @classmethod
+    def getNotType(cls):
+        return NOTIFICATION_TYPE.MESSAGE
+
+    @classmethod
+    def getActions(cls):
+        return ('claimRewardPostProgress', )
+
+    @decorators.adisp_process('updating')
+    def doAction(self, model, entityID, action):
+        processor = ClaimRewardForPostProgression(crewBooksViewedCache().xppToConvert())
+        result = yield processor.request()
+        if result.userMsg:
+
+            def showMessage():
+                SystemMessages.pushI18nMessage(result.userMsg, type=result.sysMsgType, messageData=result.auxData)
+
+            BigWorld.callback(0, showMessage)
+
+
 class _OpenPrestigeOnboardingWindow(NavigationDisabledActionHandler):
 
     @classmethod
@@ -1525,18 +1532,34 @@ class _OpenPunishmentWindowHandler(ActionHandler):
         return
 
 
-class _OpenWotAnniversaryWindow(NavigationDisabledActionHandler):
+class _OpenGoldExchangeWindow(NavigationDisabledActionHandler):
+    __seniorityAwardCtrl = dependency.descriptor(ISeniorityAwardsController)
 
     @classmethod
     def getNotType(cls):
-        return NOTIFICATION_TYPE.WOT_ANNIVERSARY_REMINDER
+        return NOTIFICATION_TYPE.EXCHANGE_RATE_GOLD_DISCOUNT
 
     @classmethod
     def getActions(cls):
-        return ('openEvent', )
+        return ('openExchangeRateWindow', )
 
     def doAction(self, model, entityID, action):
-        showMissionsWotAnniversary()
+        showExchangeGoldWindow()
+
+
+class _OpenXpExchangeWindow(NavigationDisabledActionHandler):
+    __seniorityAwardCtrl = dependency.descriptor(ISeniorityAwardsController)
+
+    @classmethod
+    def getNotType(cls):
+        return NOTIFICATION_TYPE.EXCHANGE_RATE_XP_DISCOUNT
+
+    @classmethod
+    def getActions(cls):
+        return ('openExchangeRateWindow', )
+
+    def doAction(self, model, entityID, action):
+        showExchangeFreeXPWindow()
 
 
 _AVAILABLE_HANDLERS = (
@@ -1571,8 +1594,6 @@ _AVAILABLE_HANDLERS = (
  OpenPersonalMissionHandler,
  _OpenLootBoxesHandler,
  _LootBoxesAutoOpenHandler,
- _OpenLootBoxSystemHandler,
- _LootBoxSystemAutoOpenHandler,
  _OpenProgressiveRewardView,
  ProlongStyleRent,
  _OpenBattlePassProgressionView,
@@ -1616,7 +1637,10 @@ _AVAILABLE_HANDLERS = (
  _OpenSeniorityAwardsPersonalVehicleSelection,
  _OpenPunishmentWindowHandler,
  _OpenBondEquipmentSelection,
- _OpenWotAnniversaryWindow)
+ _OpenXpExchangeWindow,
+ _OpenGoldExchangeWindow,
+ _OpenCrewPostProgression,
+ _ClaimRewardPostProgression)
 registerNotificationsActionsHandlers(_AVAILABLE_HANDLERS)
 
 class NotificationsActionsHandlers(object):

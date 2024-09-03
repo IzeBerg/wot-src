@@ -1,7 +1,7 @@
 import typing
 from constants import ARENA_BONUS_TYPE
 if typing.TYPE_CHECKING:
-    from typing import Any, Callable, Dict, Iterable, Iterator, List, Optional, Set, Tuple, Union, Sequence
+    from typing import Callable, Dict, Iterable, Iterator, List, Optional, Set, Tuple, Union, Sequence
     from battle_modifiers_common import BattleModifiers
     from collections_common import Collection, CollectionItem
     from Event import Event
@@ -24,7 +24,7 @@ if typing.TYPE_CHECKING:
     from gui.gift_system.hubs.base.hub_core import IGiftEventHub
     from gui.hangar_presets.hangar_gui_config import HangarGuiPreset
     from gui.impl.lobby.winback.winback_helpers import WinbackQuestTypes
-    from gui.limited_ui.lui_rules_storage import LuiRules
+    from enumerations import EnumItem
     from gui.mapbox.mapbox_survey_manager import MapboxSurveyManager
     from gui.periodic_battles.models import AlertData, PeriodInfo, PrimeTime
     from gui.prb_control.items import ValidationResult
@@ -39,11 +39,12 @@ if typing.TYPE_CHECKING:
     from gui.shared.event_bus import SharedEvent
     from gui.shared.gui_items import Tankman, Vehicle, ItemsCollection
     from gui.shared.gui_items.artefacts import OptionalDevice
+    from gui.shared.gui_items.badge import Badge
     from gui.shared.gui_items.fitting_item import RentalInfoProvider
     from gui.shared.gui_items.gui_item_economics import ItemPrice
     from gui.shared.gui_items.loot_box import LootBox, EventLootBoxes
     from gui.shared.gui_items.Tankman import TankmanSkill
-    from gui.shared.money import Money
+    from gui.shared.money import Money, CURRENCY_TYPE
     from gui.shared.utils.requesters.EpicMetaGameRequester import EpicMetaGameRequester
     from helpers.server_settings import BattleRoyaleConfig, EpicGameConfig, GiftSystemConfig, RankedBattlesConfig, VehiclePostProgressionConfig, _MapboxConfig, Comp7Config, WinbackConfig, LiveOpsWebEventsConfig
     from items.vehicles import VehicleType
@@ -55,6 +56,9 @@ if typing.TYPE_CHECKING:
     from gui.server_events.event_items import Quest
     from advanced_achievements_client.items import _BaseGuiAchievement
     from gui.Scaleform.daapi.view.lobby.header.helpers.controls_helpers import ILobbyHeaderControlsHelper
+    from gui.impl.gen.view_models.views.lobby.tank_setup.sub_views.optional_devices_assistant_item import OptionalDevicesAssistantItem
+    from gui.impl.gen.view_models.views.lobby.tank_setup.sub_views.optional_devices_assistant_model import OptionalDevicesAssistantType
+    from exchange.personal_discounts_constants import ExchangeDiscountInfo, ExchangeRate
     BattlePassBonusOpts = Optional[(TokensBonus, BattlePassSelectTokensBonus)]
 
 class IGameController(object):
@@ -1901,9 +1905,6 @@ class IBattlePassController(IGameController):
     def getFinalOfferTime(self):
         raise NotImplementedError
 
-    def getSeasonsHistory(self):
-        raise NotImplementedError
-
     def getStylesConfig(self):
         raise NotImplementedError
 
@@ -2278,6 +2279,13 @@ class IWotPlusController(IGameController):
         raise NotImplementedError
 
 
+class IOptionalDevicesAssistantController(IGameController):
+    onConfigChanged = None
+
+    def getPopularOptDevicesList(self, vehicle):
+        raise NotImplementedError
+
+
 class IEntitlementsConsumer(object):
 
     @property
@@ -2395,85 +2403,6 @@ class IEventLootBoxesController(IGameController, IEntitlementsConsumer):
         raise NotImplementedError
 
     def getVehicleLevels(self, boxType):
-        raise NotImplementedError
-
-
-class ILootBoxSystemController(IGameController, IEntitlementsConsumer):
-    onBoxesAvailabilityChanged = None
-    onStatusChanged = None
-    onBoxesCountChanged = None
-    onBoxesInfoUpdated = None
-    onBoxesUpdated = None
-
-    @property
-    def eventName(self):
-        raise NotImplementedError
-
-    @property
-    def isConsumesEntitlements(self):
-        raise NotImplementedError
-
-    @property
-    def isAvailable(self):
-        raise NotImplementedError
-
-    @property
-    def isActive(self):
-        raise NotImplementedError
-
-    @property
-    def isEnabled(self):
-        raise NotImplementedError
-
-    @property
-    def boxesPriority(self):
-        raise NotImplementedError
-
-    @property
-    def isLootBoxesAvailable(self):
-        raise NotImplementedError
-
-    @property
-    def useStats(self):
-        raise NotImplementedError
-
-    def getStatistics(self, boxID=None):
-        raise NotImplementedError
-
-    def resetStatistics(self, boxIDs):
-        raise NotImplementedError
-
-    def getSetting(self, setting):
-        raise NotImplementedError
-
-    def setSetting(self, setting, value):
-        raise NotImplementedError
-
-    def getActiveTime(self):
-        raise NotImplementedError
-
-    def getBoxesCountToGuaranteed(self, category):
-        raise NotImplementedError
-
-    def getBoxesCount(self, category=None):
-        raise NotImplementedError
-
-    def getBoxesIDs(self, boxType):
-        raise NotImplementedError
-
-    def getActiveBoxes(self, criteria=None):
-        raise NotImplementedError
-
-    def getBoxes(self, criteria=None):
-        raise NotImplementedError
-
-    def getBoxInfo(self, boxID):
-        raise NotImplementedError
-
-    def getBoxInfoByCategory(self, category):
-        raise NotImplementedError
-
-    def getBoxesInfo(self):
         raise NotImplementedError
 
 
@@ -2929,6 +2858,7 @@ class IComp7Controller(IGameController, ISeasonProvider):
     onComp7RewardsConfigChanged = None
     onHighestRankAchieved = None
     onEntitlementsUpdated = None
+    onEntitlementsUpdateFailed = None
     onTournamentBannerStateChanged = None
 
     @property
@@ -3013,9 +2943,6 @@ class IComp7Controller(IGameController, ISeasonProvider):
     def isQualificationSquadAllowed(self):
         raise NotImplementedError
 
-    def isYearlyRewardsAnimationSeen(self):
-        raise NotImplementedError
-
     def getRoleEquipment(self, roleName):
         raise NotImplementedError
 
@@ -3040,9 +2967,6 @@ class IComp7Controller(IGameController, ISeasonProvider):
     def hasPlayableVehicle(self):
         raise NotImplementedError
 
-    def isComp7LightProgressionActive(self):
-        raise NotImplementedError
-
     def isComp7PrbActive(self):
         raise NotImplementedError
 
@@ -3065,9 +2989,6 @@ class IComp7Controller(IGameController, ISeasonProvider):
         raise NotImplementedError
 
     def getYearlyRewards(self):
-        raise NotImplementedError
-
-    def setYearlyRewardsAnimationSeen(self):
         raise NotImplementedError
 
     def isQualificationPassedInSeason(self, seasonNumber):
@@ -3658,4 +3579,93 @@ class IAchievementsController(IGameController):
         raise NotImplementedError
 
     def setShowHint(self, value):
+        raise NotImplementedError
+
+
+class IExchangeRateWithDiscountsOperations(object):
+
+    def calculateExchange(self, goldAmount):
+        raise NotImplementedError
+
+    def calculateGoldToExchange(self, resourceAmount):
+        raise NotImplementedError
+
+    def calculateResourceToExchange(self, resourceAmount):
+        raise NotImplementedError
+
+
+class IExchangeRate(object):
+    onUpdated = None
+
+    @property
+    def getExchangeRateName(self):
+        raise NotImplementedError
+
+    @property
+    def defaultRate(self):
+        raise NotImplementedError
+
+    @property
+    def unlimitedDiscountInfo(self):
+        raise NotImplementedError
+
+    @property
+    def allPersonalLimitedDiscounts(self):
+        raise NotImplementedError
+
+
+class IExchangeRateWithDiscounts(IExchangeRate, IExchangeRateWithDiscountsOperations):
+
+    def init(self):
+        raise NotImplementedError
+
+    def fini(self):
+        raise NotImplementedError
+
+    @property
+    def unlimitedRateAfterMainDiscount(self):
+        raise NotImplementedError
+
+    @property
+    def unlimitedDiscountRate(self):
+        raise NotImplementedError
+
+    @property
+    def bestPersonalDiscount(self):
+        raise NotImplementedError
+
+    @property
+    def commonServerDiscountRate(self):
+        raise NotImplementedError
+
+    @property
+    def discountRate(self):
+        raise NotImplementedError
+
+    @property
+    def discountInfo(self):
+        raise NotImplementedError
+
+    @property
+    def exchangeDiscountPercent(self):
+        raise NotImplementedError
+
+    def isDiscountAvailable(self):
+        raise NotImplementedError
+
+
+class IExchangeRatesWithDiscountsProvider(IGameController):
+
+    def get(self, rateType):
+        raise NotImplementedError
+
+    @property
+    def goldToCredits(self):
+        raise NotImplementedError
+
+    @property
+    def freeXpTranslation(self):
+        raise NotImplementedError
+
+    def exchange(self, currency, toCurrency, amount):
         raise NotImplementedError

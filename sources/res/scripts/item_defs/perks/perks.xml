@@ -3,19 +3,24 @@
 	<xmlns:xsi>http://www.w3.org/2001/XMLSchema-instance</xmlns:xsi>
 	<xsi:noNamespaceSchemaLocation>../../development/xml_schema/items/perks.xsd</xsi:noNamespaceSchemaLocation>
 	<perk>
-		<id>104</id>
+		<id>102</id>
 		<defaultBlockSettings>
 			<arg>
-				<argId>enemyModulesCrewDamageProbability</argId>
+				<argId>crewLevelIncrease</argId>
 				<value>
-					0.0
+					0.05
 					<!--BW_String-->
 				</value>
 			</arg>
+		</defaultBlockSettings>
+	</perk>
+	<perk>
+		<id>104</id>
+		<defaultBlockSettings>
 			<arg>
-				<argId>damageMonitoringDelay</argId>
+				<argId>vehicleGunAimSpeed</argId>
 				<value>
-					-0.04
+					-0.00125
 					<!--BW_String-->
 				</value>
 			</arg>
@@ -25,16 +30,16 @@
 		<id>101</id>
 		<defaultBlockSettings>
 			<arg>
-				<argId>circularVisionRadius</argId>
+				<argId>increaseCircularVisionRadius</argId>
 				<value>
 					0.0002
 					<!--BW_String-->
 				</value>
 			</arg>
 			<arg>
-				<argId>circularVisionRadiusWhileSurveyingDeviceDamaged</argId>
+				<argId>penaltyToDamagedSurveyingDevice</argId>
 				<value>
-					0.002
+					-0.002
 					<!--BW_String-->
 				</value>
 			</arg>
@@ -46,7 +51,7 @@
 			<arg>
 				<argId>stunResistanceEffectFactor</argId>
 				<value>
-					0.0
+					0.001
 					<!--BW_String-->
 				</value>
 			</arg>
@@ -65,7 +70,7 @@
 			<arg>
 				<argId>equipmentPreparationTime</argId>
 				<value>
-					-0.0015
+					-0.001
 					<!--BW_String-->
 				</value>
 			</arg>
@@ -105,6 +110,13 @@
 					<!--BW_String-->
 				</value>
 			</arg>
+			<arg>
+				<argId>damageMonitoringDelay</argId>
+				<value>
+					-0.04
+					<!--BW_String-->
+				</value>
+			</arg>
 		</defaultBlockSettings>
 	</perk>
 	<perk>
@@ -113,7 +125,7 @@
 			<arg>
 				<argId>aimingDispersion</argId>
 				<value>
-					-0.00025
+					-0.00035
 					<!--BW_String-->
 				</value>
 			</arg>
@@ -123,16 +135,16 @@
 		<id>205</id>
 		<defaultBlockSettings>
 			<arg>
-				<argId>rngMod</argId>
+				<argId>vehicleGunAimSpeed</argId>
 				<value>
-					0.0
+					-0.00025
 					<!--BW_String-->
 				</value>
 			</arg>
 			<arg>
-				<argId>damagedGunPrecisionPenaltyReduction</argId>
+				<argId>turretRotationSpeed</argId>
 				<value>
-					0.002
+					0.00025
 					<!--BW_String-->
 				</value>
 			</arg>
@@ -142,9 +154,16 @@
 		<id>206</id>
 		<defaultBlockSettings>
 			<arg>
-				<argId>vehicleGunAimSpeed</argId>
+				<argId>rngMod</argId>
 				<value>
-					-0.00025
+					0.0005
+					<!--BW_String-->
+				</value>
+			</arg>
+			<arg>
+				<argId>aimingDispersion</argId>
+				<value>
+					-0.00015
 					<!--BW_String-->
 				</value>
 			</arg>
@@ -180,14 +199,7 @@
 			<arg>
 				<argId>mediumGroundFactor</argId>
 				<value>
-					-0.00025
-					<!--BW_String-->
-				</value>
-			</arg>
-			<arg>
-				<argId>softGroundFactor</argId>
-				<value>
-					-0.001
+					-0.0005
 					<!--BW_String-->
 				</value>
 			</arg>
@@ -197,16 +209,16 @@
 		<id>304</id>
 		<defaultBlockSettings>
 			<arg>
-				<argId>fuelTanksDevicesHitChanceProbability</argId>
+				<argId>antifragmentationLining</argId>
 				<value>
-					0.0
+					0.0010
 					<!--BW_String-->
 				</value>
 			</arg>
 			<arg>
-				<argId>engineFireStartingChance</argId>
+				<argId>vehicleFallingDamageResistance</argId>
 				<value>
-					-0.0025
+					0.0030
 					<!--BW_String-->
 				</value>
 			</arg>
@@ -218,21 +230,21 @@
 			<arg>
 				<argId>damageEnemiesByRamming</argId>
 				<value>
-					0.0015
+					0.002
 					<!--BW_String-->
 				</value>
 			</arg>
 			<arg>
 				<argId>vehicleRamDamageResistance</argId>
 				<value>
-					0.0015
+					0.0025
 					<!--BW_String-->
 				</value>
 			</arg>
 			<arg>
 				<argId>trackRamDamageResist</argId>
 				<value>
-					0.0
+					-0.005
 					<!--BW_String-->
 				</value>
 			</arg>
@@ -256,9 +268,9 @@
 				</value>
 			</arg>
 			<arg>
-				<argId>enginePower</argId>
+				<argId>engineReduceFineFactor</argId>
 				<value>
-					0.0005
+					-0.002
 					<!--BW_String-->
 				</value>
 			</arg>
@@ -290,7 +302,7 @@
 			<arg>
 				<argId>gunReloadSpeed</argId>
 				<value>
-					-0.0009
+					-0.0005
 					<!--BW_String-->
 				</value>
 			</arg>
@@ -302,7 +314,7 @@
 			<arg>
 				<argId>vehicleAmmoBayStrength</argId>
 				<value>
-					0.00125
+					0.0025
 					<!--BW_String-->
 				</value>
 			</arg>
@@ -324,16 +336,9 @@
 		<id>404</id>
 		<defaultBlockSettings>
 			<arg>
-				<argId>shotDemaskFactor</argId>
+				<argId>shellVelocity</argId>
 				<value>
 					0.001
-					<!--BW_String-->
-				</value>
-			</arg>
-			<arg>
-				<argId>foliageMaskingFactor</argId>
-				<value>
-					0.0002
 					<!--BW_String-->
 				</value>
 			</arg>
@@ -388,14 +393,7 @@
 			<arg>
 				<argId>crewLevelIncrease</argId>
 				<value>
-					0.0
-					<!--BW_String-->
-				</value>
-			</arg>
-			<arg>
-				<argId>teamRadioBonusFactor</argId>
-				<value>
-					0.001
+					0.025
 					<!--BW_String-->
 				</value>
 			</arg>
@@ -414,19 +412,24 @@
 		</defaultBlockSettings>
 	</perk>
 	<perk>
-		<id>505</id>
+		<id>504</id>
 		<defaultBlockSettings>
 			<arg>
-				<argId>radioDistance</argId>
+				<argId>commanderLampDelay</argId>
 				<value>
-					0.002
+					0.0075
 					<!--BW_String-->
 				</value>
 			</arg>
+		</defaultBlockSettings>
+	</perk>
+	<perk>
+		<id>505</id>
+		<defaultBlockSettings>
 			<arg>
 				<argId>crewLevelIncrease</argId>
 				<value>
-					0.0
+					0.025
 					<!--BW_String-->
 				</value>
 			</arg>

@@ -8,6 +8,8 @@ package net.wg.gui.battle.views.sixthSense
    {
        
       
+      private var _isHidden:Boolean = true;
+      
       public function SixthSense()
       {
          super();
@@ -17,12 +19,23 @@ package net.wg.gui.battle.views.sixthSense
       
       public function as_hide(param1:Boolean) : void
       {
+         if(this._isHidden && !param1)
+         {
+            return;
+         }
          gotoAndPlay(!!param1 ? DAMAGE_INFO_PANEL_CONSTS.INIT_SIXTH_SENSE : DAMAGE_INFO_PANEL_CONSTS.HIDE_SIXTH_SENSE);
+         this._isHidden = true;
       }
       
       public function as_show() : void
       {
          gotoAndPlay(DAMAGE_INFO_PANEL_CONSTS.SHOW_SIXTH_SENSE);
+         this._isHidden = false;
+      }
+      
+      public function get isHidden() : Boolean
+      {
+         return this._isHidden;
       }
    }
 }

@@ -1,7 +1,6 @@
 import typing
 PERKS_XML_FILE = 'perks.xml'
 PERK_BONUS_VALUE_PRECISION = 5
-AVG_LVL_PERKS = ('loader_intuition', )
 SKIP_SE_PERKS = ('commander_sixthSense', )
 
 class PerkState(object):
@@ -23,5 +22,5 @@ class PerkMasks(object):
 
 
 class StubPerkIDs(object):
-    COMMANDER_UNIVERSALIST = 102
     RADIOMAN_LAST_EFFORT = 504
+    COMMANDER_TUTOR = 103

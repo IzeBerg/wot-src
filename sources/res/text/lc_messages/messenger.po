@@ -1861,9 +1861,6 @@ msgstr "已获得令牌"
 msgid "serviceChannelMessages/battleResults/button"
 msgstr "详细"
 
-msgid "serviceChannelMessages/battleResults/comp7LightProgressionPoints"
-msgstr "已获得进度点数"
-
 msgid "serviceChannelMessages/battleResults/contributionForDamageAllies"
 msgstr "含因被盟友误伤获得的补偿:%s"
 
@@ -2113,6 +2110,9 @@ msgid "serviceChannelMessages/battleResults/rankedState/stepsEarned"
 msgstr ""
 " \n"
 "获得臂章"
+
+msgid "serviceChannelMessages/battleResults/ratingPoints"
+msgstr "评级点数"
 
 msgid "serviceChannelMessages/battleResults/seniorityRewardBody"
 msgstr "您获得了下列服役资历奖励"
@@ -2864,7 +2864,7 @@ msgid "serviceChannelMessages/itemReceivedAsGift"
 msgstr "您已经获得:%(typeName)s \"%(itemName)s\" - %(amount)d 个。"
 
 msgid "serviceChannelMessages/lootBoxes/button"
-msgstr "前往补给箱"
+msgstr "前往补给品"
 
 msgid "serviceChannelMessages/lootBoxes/footer"
 msgstr "点击按钮查看内容。"
@@ -2902,7 +2902,7 @@ msgid "serviceChannelMessages/lootBoxesAutoOpen/header"
 msgstr "已获得奖励"
 
 msgid "serviceChannelMessages/lootBoxesAutoOpen/text"
-msgstr "我们开启了您全部的补给箱，并把假日行动的奖励添加至您的账号"
+msgstr "我们开启了您全部的补给品，并把假日行动的奖励添加至您的账号"
 
 msgid "serviceChannelMessages/lunarBoxesAutoOpen/body"
 msgstr "我们为您开启了春节寄福活动中的所有红包。"
@@ -2970,6 +2970,12 @@ msgstr "移除乘员: %(count)s"
 msgid "serviceChannelMessages/offerTokenBonus/title"
 msgstr "国土防线补给"
 
+msgid "serviceChannelMessages/optionalDevicesAssistant/available/title"
+msgstr "配件助手已开放"
+
+msgid "serviceChannelMessages/optionalDevicesAssistant/unavailable/title"
+msgstr "配件助手不可用"
+
 msgid "serviceChannelMessages/personalReservesRelease/description"
 msgstr "您有新储备:"
 
@@ -2996,6 +3002,21 @@ msgstr "银币储备库已停用。"
 
 msgid "serviceChannelMessages/piggyBank/title"
 msgstr "银币储备库已开启！"
+
+msgid "serviceChannelMessages/postProgression/completed/button"
+msgstr "领取奖励"
+
+msgid "serviceChannelMessages/postProgression/completed/header"
+msgstr "已完成额外进度！"
+
+msgid "serviceChannelMessages/postProgression/unlocked/button"
+msgstr "前往进度"
+
+msgid "serviceChannelMessages/postProgression/unlocked/header"
+msgstr "额外进度"
+
+msgid "serviceChannelMessages/postProgression/unlocked/text"
+msgstr "您已解锁特殊奖励。"
 
 msgid "serviceChannelMessages/prebattle/battleType/clan"
 msgstr "军团战斗"
@@ -3351,6 +3372,45 @@ msgstr "验证邮箱的奖励:"
 msgid "serviceChannelMessages/steamEmailCompletion/header"
 msgstr "恭喜！"
 
+msgid "serviceChannelMessages/sysMsg/consumables/credits/accrued"
+msgstr "收到银币:"
+
+msgid "serviceChannelMessages/sysMsg/consumables/replacedItems/accrued"
+msgstr "收到给养:"
+
+msgid "serviceChannelMessages/sysMsg/consumables/replacedItems/date"
+msgstr "日期"
+
+msgid "serviceChannelMessages/sysMsg/consumables/replacedItems/debit"
+msgstr "已移除给养:"
+
+msgid "serviceChannelMessages/sysMsg/consumables/replacedItems/item/many"
+msgstr ""
+" \n"
+"&nbsp;&nbsp;• %(name)s(x%(count)d)"
+
+msgid "serviceChannelMessages/sysMsg/consumables/replacedItems/item/one"
+msgstr "%(name)s(x%(count)d)"
+
+msgid ""
+"serviceChannelMessages/sysMsg/consumables/replacedItems/items/gasoline100"
+msgstr "100号汽油"
+
+msgid ""
+"serviceChannelMessages/sysMsg/consumables/replacedItems/items/gasoline105"
+msgstr "105号汽油"
+
+msgid ""
+"serviceChannelMessages/sysMsg/consumables/replacedItems/items/lendLeaseOil"
+msgstr "租借燃油"
+
+msgid ""
+"serviceChannelMessages/sysMsg/consumables/replacedItems/items/qualityOil"
+msgstr "高质量燃油"
+
+msgid "serviceChannelMessages/sysMsg/consumables/replacedItems/title"
+msgstr "收到"
+
 msgid "serviceChannelMessages/sysMsg/converter/blueprintsReceived"
 msgstr "已获得已研发坦克补偿的蓝图碎片："
 
@@ -3656,21 +3716,6 @@ msgstr "选择"
 msgid "serviceChannelMessages/winbackSelectableRewardEntry/header"
 msgstr "已获得奖励！"
 
-msgid "serviceChannelMessages/wotAnniversary/battleQuest/description"
-msgstr "已完成当日任务！"
-
-msgid "serviceChannelMessages/wotAnniversary/button"
-msgstr "前往活动"
-
-msgid "serviceChannelMessages/wotAnniversary/quest/title"
-msgstr "恭喜！"
-
-msgid "serviceChannelMessages/wotAnniversary/text"
-msgstr "您可以领取奖励了"
-
-msgid "serviceChannelMessages/wotAnniversary/title"
-msgstr "已完成周年纪念任务！"
-
 msgid ""
 "serviceChannelMessages/wotPlus/dailyAttendanceRewarded/big/cycleEnded/endText"
 msgstr "持续登录游戏以获得更多奖励！"
@@ -3744,6 +3789,9 @@ msgid "serviceChannelMessages/wotPlus/nextDateOfRenewal"
 msgstr ""
 "福利现已全部开放。\n"
 "下次续订: <font color='#E9E2BF'>%(time)s</font>"
+
+msgid "serviceChannelMessages/wotPlus/passiveXP/allCrewAreVeterans/text"
+msgstr "<font color='#E9E2BF'>%(vehicleName)s</font>的高强度乘员训练已停止工作。请检查该坦克的乘员。"
 
 msgid "serviceChannelMessages/wotPlus/passiveXP/incompatibleCrew/text"
 msgstr ""

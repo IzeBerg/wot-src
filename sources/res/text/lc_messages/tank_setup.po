@@ -600,6 +600,12 @@ msgstr "效果"
 msgid "effects/template"
 msgstr "%(icon)s %(title)s: %(descr)s"
 
+msgid "equipment/cooldown"
+msgstr "冷却时间为%(cooldown)s秒。"
+
+msgid "equipment/extendedDescription"
+msgstr "%(descr)s%(extendedDescr)s"
+
 msgid "experimentalEquipCoinBlock/name"
 msgstr "获取合金元件"
 
@@ -747,14 +753,23 @@ msgstr "您没有合适的试验型配件"
 msgid "introduction/title/withoutEquipments/trophy"
 msgstr "您没有合适的赏金配件"
 
+msgid "kpi/bonus/longDescr/negative/commanderLampDelay"
+msgstr "车长识别自身坦克是否被敌方点亮前的延迟"
+
 msgid "kpi/bonus/longDescr/negative/crewRepeatedStunDuration"
 msgstr "处于弹震影响下的坦克再次受到弹震的额外时间"
 
 msgid "kpi/bonus/longDescr/negative/demaskFoliageFactor"
 msgstr "植被后的敌方坦克隐蔽(移动和静止时)"
 
-msgid "kpi/bonus/longDescr/negative/vehPenaltyForDamageEngineAndCombat"
-msgstr "模块损坏后的装填速度和发动机功率惩罚"
+msgid "kpi/bonus/longDescr/negative/shellVelocity"
+msgstr "全部炮弹类型的炮弹速度"
+
+msgid "kpi/bonus/longDescr/negative/vehPenaltyForDamagedAmmorack"
+msgstr "模块受损时的装填速度惩罚"
+
+msgid "kpi/bonus/longDescr/negative/vehPenaltyForDamagedEngine"
+msgstr "模块受损时的发动机功率惩罚"
 
 msgid "kpi/bonus/longDescr/negative/vehicleCamouflage"
 msgstr "静止和移动时坦克的隐蔽值"
@@ -771,14 +786,17 @@ msgstr "悬挂装置承载能力"
 msgid "kpi/bonus/longDescr/negative/vehicleCircularVisionRadius"
 msgstr "观察范围(不超过445米)。445米以上的观察范围有助于更有效地发现敌方坦克。"
 
+msgid "kpi/bonus/longDescr/negative/vehicleFallingDamageResistance"
+msgstr "坠落时受到的损伤"
+
 msgid "kpi/bonus/longDescr/negative/vehicleGunShotDispersion"
 msgstr "坦克移动、转向、火炮旋转以及射击后的炮弹散布范围"
 
+msgid "kpi/bonus/longDescr/negative/vehicleHEShellDamageResistance"
+msgstr "由装甲吸收的HE炮弹损伤"
+
 msgid "kpi/bonus/longDescr/negative/vehicleOwnSpottingTime"
 msgstr "自身坦克的可见时长"
-
-msgid "kpi/bonus/longDescr/negative/vehicleRamOrExplosionDamageResistance"
-msgstr "由装甲吸收的高爆弹和撞击损伤"
 
 msgid "kpi/bonus/longDescr/negative/vehicleSpeedGain"
 msgstr ""
@@ -800,14 +818,23 @@ msgstr "坦克生命值(向上取整)"
 msgid "kpi/bonus/longDescr/negative/vehicleTurretOrCuttingRotationSpeed"
 msgstr "炮塔旋转速度，或无炮塔坦克的火炮旋转速度"
 
+msgid "kpi/bonus/longDescr/positive/commanderLampDelay"
+msgstr "车长识别自身坦克是否被敌方点亮前的延迟"
+
 msgid "kpi/bonus/longDescr/positive/crewRepeatedStunDuration"
 msgstr "处于弹震影响下的坦克再次受到弹震的额外时间"
 
 msgid "kpi/bonus/longDescr/positive/demaskFoliageFactor"
 msgstr "植被后的敌方坦克移动和静止时的隐蔽值"
 
-msgid "kpi/bonus/longDescr/positive/vehPenaltyForDamageEngineAndCombat"
-msgstr "模块受损时的装填速度和发动机功率下降"
+msgid "kpi/bonus/longDescr/positive/shellVelocity"
+msgstr "全部炮弹类型的炮弹速度"
+
+msgid "kpi/bonus/longDescr/positive/vehPenaltyForDamagedAmmorack"
+msgstr "模块受损时的装填速度惩罚"
+
+msgid "kpi/bonus/longDescr/positive/vehPenaltyForDamagedEngine"
+msgstr "模块受损时的发动机功率惩罚"
 
 msgid "kpi/bonus/longDescr/positive/vehicleCamouflage"
 msgstr "静止和移动坦克的隐蔽"
@@ -824,14 +851,17 @@ msgstr "悬挂装置承载能力"
 msgid "kpi/bonus/longDescr/positive/vehicleCircularVisionRadius"
 msgstr "观察范围(不超过445米)。445米以上的观察范围有助于更有效地发现敌方坦克。"
 
+msgid "kpi/bonus/longDescr/positive/vehicleFallingDamageResistance"
+msgstr "坠落时受到的损伤"
+
 msgid "kpi/bonus/longDescr/positive/vehicleGunShotDispersion"
 msgstr "坦克移动、转向、火炮旋转以及射击后的炮弹散布范围"
 
+msgid "kpi/bonus/longDescr/positive/vehicleHEShellDamageResistance"
+msgstr "由装甲吸收的HE炮弹损伤"
+
 msgid "kpi/bonus/longDescr/positive/vehicleOwnSpottingTime"
 msgstr "自身坦克的可见时长"
-
-msgid "kpi/bonus/longDescr/positive/vehicleRamOrExplosionDamageResistance"
-msgstr "由装甲吸收的HE弹和撞击损伤"
 
 msgid "kpi/bonus/longDescr/positive/vehicleSpeedGain"
 msgstr ""
@@ -858,15 +888,13 @@ msgstr ""
 "声波探测激活的\n"
 "延迟时间"
 
-msgid "kpi/bonus/negative/circularVisionRadiusWhileSurveyingDeviceDamaged"
-msgstr ""
-"观察设备受损时的\n"
-"观察范围"
-
 msgid "kpi/bonus/negative/commanderHitChance"
 msgstr ""
 "保护车长\n"
 "免于受伤的几率"
+
+msgid "kpi/bonus/negative/commanderLampDelay"
+msgstr "收到被点亮通知前的延迟"
 
 msgid "kpi/bonus/negative/crewHitChance"
 msgstr "保护乘员免于受伤"
@@ -918,6 +946,16 @@ msgstr "灭火速度"
 msgid "kpi/bonus/negative/foliageMaskingFactor"
 msgstr "在植被后方的隐蔽系数"
 
+msgid "kpi/bonus/negative/mediumGroundFactor"
+msgstr ""
+"在中度松软地形上\n"
+"维持速度的能力"
+
+msgid "kpi/bonus/negative/penaltyToDamagedSurveyingDevice"
+msgstr ""
+"观察设备受损时的\n"
+"观察范围惩罚"
+
 msgid "kpi/bonus/negative/radiomanActivityTimeAfterVehicleDestroy"
 msgstr ""
 "被击毁后\n"
@@ -929,32 +967,33 @@ msgstr ""
 "保护通信兵\n"
 "免于受伤的几率"
 
+msgid "kpi/bonus/negative/shellVelocity"
+msgstr "炮弹速度"
+
+msgid "kpi/bonus/negative/softGroundFactor"
+msgstr ""
+"在松软地形上\n"
+"维持速度的能力"
+
 msgid "kpi/bonus/negative/stunResistanceEffectFactor"
 msgstr ""
 "乘员受伤的\n"
 "负面效果"
 
-msgid "kpi/bonus/negative/vehPenaltyForDamageEngineAndCombat"
-msgstr "弹药架受损和发动机受损导致的性能下降"
+msgid "kpi/bonus/negative/vehPenaltyForDamagedAmmorack"
+msgstr "装填速度惩罚"
+
+msgid "kpi/bonus/negative/vehPenaltyForDamagedEngine"
+msgstr "受损发动机的惩罚"
 
 msgid "kpi/bonus/negative/vehicleAllGroundRotationSpeed"
 msgstr "车体转向速度"
-
-msgid "kpi/bonus/negative/vehicleAllyRadioDistance"
-msgstr ""
-"坦克信号覆盖范围内\n"
-"盟友的通信距离"
 
 msgid "kpi/bonus/negative/vehicleAmmoBayEngineFuelStrength"
 msgstr "内部模块耐久度"
 
 msgid "kpi/bonus/negative/vehicleAmmoBayStrength"
 msgstr "弹药架耐久度"
-
-msgid "kpi/bonus/negative/vehicleAverageSoilResistance"
-msgstr ""
-"在中度松软地形上\n"
-"维持速度的能力"
 
 msgid "kpi/bonus/negative/vehicleBackwardMaxSpeed"
 msgstr "最大倒车速度"
@@ -987,6 +1026,9 @@ msgstr ""
 
 msgid "kpi/bonus/negative/vehicleEnginePower"
 msgstr "发动机功率"
+
+msgid "kpi/bonus/negative/vehicleFallingDamageResistance"
+msgstr "撞击损伤"
 
 msgid "kpi/bonus/negative/vehicleFireChance"
 msgstr "发动机起火概率"
@@ -1026,6 +1068,9 @@ msgstr "火炮受损时的炮弹散布范围"
 msgid "kpi/bonus/negative/vehicleGunShotFullDispersion"
 msgstr "瞄准圈大小"
 
+msgid "kpi/bonus/negative/vehicleHEShellDamageResistance"
+msgstr "HE炮弹损伤"
+
 msgid "kpi/bonus/negative/vehicleInvisibilityAfterShot"
 msgstr "射击后的隐蔽值"
 
@@ -1039,9 +1084,6 @@ msgstr ""
 
 msgid "kpi/bonus/negative/vehicleRamDamageResistance"
 msgstr "撞击时承受的损伤"
-
-msgid "kpi/bonus/negative/vehicleRamOrExplosionDamageResistance"
-msgstr "HE弹和撞击损伤"
 
 msgid "kpi/bonus/negative/vehicleReloadTimeAfterShellChange"
 msgstr ""
@@ -1072,11 +1114,6 @@ msgstr "炮塔旋转速度，或无炮塔坦克的火炮旋转速度"
 msgid "kpi/bonus/negative/vehicleTurretRotationSpeed"
 msgstr "炮塔旋转速度"
 
-msgid "kpi/bonus/negative/vehicleWeakSoilResistance"
-msgstr ""
-"在松软地形上\n"
-"维持速度的能力"
-
 msgid "kpi/bonus/negative/wheelsRotationSpeed"
 msgstr "车轮转向速度"
 
@@ -1105,15 +1142,13 @@ msgstr ""
 "声波探测激活的\n"
 "延迟时间"
 
-msgid "kpi/bonus/positive/circularVisionRadiusWhileSurveyingDeviceDamaged"
-msgstr ""
-"观察设备受损时的\n"
-"观察范围"
-
 msgid "kpi/bonus/positive/commanderHitChance"
 msgstr ""
 "保护车长\n"
 "免于受伤的几率"
+
+msgid "kpi/bonus/positive/commanderLampDelay"
+msgstr "收到被点亮通知前的延迟"
 
 msgid "kpi/bonus/positive/crewHitChance"
 msgstr "保护乘员免于受伤"
@@ -1165,6 +1200,16 @@ msgstr "灭火速度"
 msgid "kpi/bonus/positive/foliageMaskingFactor"
 msgstr "在植被后方的隐蔽系数"
 
+msgid "kpi/bonus/positive/mediumGroundFactor"
+msgstr ""
+"在中度松软地形上\n"
+"维持速度的能力"
+
+msgid "kpi/bonus/positive/penaltyToDamagedSurveyingDevice"
+msgstr ""
+"观察设备受损时的\n"
+"观察范围惩罚"
+
 msgid "kpi/bonus/positive/radiomanActivityTimeAfterVehicleDestroy"
 msgstr ""
 "被击毁后\n"
@@ -1176,30 +1221,31 @@ msgstr ""
 "保护通信兵\n"
 "免于受伤的几率"
 
+msgid "kpi/bonus/positive/shellVelocity"
+msgstr "炮弹速度"
+
+msgid "kpi/bonus/positive/softGroundFactor"
+msgstr ""
+"在松软地形上\n"
+"维持速度的能力"
+
 msgid "kpi/bonus/positive/stunResistanceEffectFactor"
 msgstr "弹震减益效果"
 
-msgid "kpi/bonus/positive/vehPenaltyForDamageEngineAndCombat"
-msgstr "弹药架受损和发动机受损导致的性能下降"
+msgid "kpi/bonus/positive/vehPenaltyForDamagedAmmorack"
+msgstr "装填速度惩罚"
+
+msgid "kpi/bonus/positive/vehPenaltyForDamagedEngine"
+msgstr "受损发动机的惩罚"
 
 msgid "kpi/bonus/positive/vehicleAllGroundRotationSpeed"
 msgstr "车体转向速度"
-
-msgid "kpi/bonus/positive/vehicleAllyRadioDistance"
-msgstr ""
-"坦克信号覆盖范围内\n"
-"盟友的通信距离"
 
 msgid "kpi/bonus/positive/vehicleAmmoBayEngineFuelStrength"
 msgstr "内部模块耐久度"
 
 msgid "kpi/bonus/positive/vehicleAmmoBayStrength"
 msgstr "弹药架耐久度"
-
-msgid "kpi/bonus/positive/vehicleAverageSoilResistance"
-msgstr ""
-"在中度松软地形上\n"
-"维持速度的能力"
 
 msgid "kpi/bonus/positive/vehicleBackwardMaxSpeed"
 msgstr "最大倒车速度"
@@ -1232,6 +1278,9 @@ msgstr ""
 
 msgid "kpi/bonus/positive/vehicleEnginePower"
 msgstr "发动机功率"
+
+msgid "kpi/bonus/positive/vehicleFallingDamageResistance"
+msgstr "撞击损伤"
 
 msgid "kpi/bonus/positive/vehicleFireChance"
 msgstr "发动机起火概率"
@@ -1271,6 +1320,9 @@ msgstr "火炮受损时的炮弹散布范围"
 msgid "kpi/bonus/positive/vehicleGunShotFullDispersion"
 msgstr "瞄准圈大小"
 
+msgid "kpi/bonus/positive/vehicleHEShellDamageResistance"
+msgstr "HE炮弹损伤"
+
 msgid "kpi/bonus/positive/vehicleInvisibilityAfterShot"
 msgstr "射击后的隐蔽值"
 
@@ -1284,9 +1336,6 @@ msgstr ""
 
 msgid "kpi/bonus/positive/vehicleRamDamageResistance"
 msgstr "撞击时承受的损伤"
-
-msgid "kpi/bonus/positive/vehicleRamOrExplosionDamageResistance"
-msgstr "HE弹和撞击损伤"
 
 msgid "kpi/bonus/positive/vehicleReloadTimeAfterShellChange"
 msgstr ""
@@ -1317,11 +1366,6 @@ msgstr "炮塔旋转速度或无炮塔坦克的火炮旋转速度"
 msgid "kpi/bonus/positive/vehicleTurretRotationSpeed"
 msgstr "炮塔旋转速度"
 
-msgid "kpi/bonus/positive/vehicleWeakSoilResistance"
-msgstr ""
-"在松软地形上\n"
-"维持速度的能力"
-
 msgid "kpi/bonus/positive/wheelsRotationSpeed"
 msgstr "车轮转向速度"
 
@@ -1329,6 +1373,9 @@ msgid "kpi/bonus/positive/woundedCrewEfficiency"
 msgstr ""
 "乘员受伤时的惩罚，\n"
 "车长除外"
+
+msgid "kpi/bonus/ttc/negative/commanderLampDelay"
+msgstr "收到被点亮通知前的延迟"
 
 msgid "kpi/bonus/ttc/negative/crewHitChance"
 msgstr ""
@@ -1365,16 +1412,17 @@ msgstr ""
 msgid "kpi/bonus/ttc/negative/radiomanChanceToHitPerLevel"
 msgstr "保护通信兵免于受伤的几率"
 
+msgid "kpi/bonus/ttc/negative/shellVelocity"
+msgstr "全部炮弹类型的炮弹速度"
+
 msgid "kpi/bonus/ttc/negative/shotDispersionAngle"
-msgstr "坦克静止时的炮弹散布范围"
+msgstr "炮弹散布范围"
 
 msgid "kpi/bonus/ttc/negative/turretAimingDispersion"
 msgstr "火炮旋转时的炮弹散布范围"
 
-msgid "kpi/bonus/ttc/negative/vehPenaltyForDamageEngineAndCombat"
-msgstr ""
-"弹药架受损\n"
-"和发动机受损导致的性能下降"
+msgid "kpi/bonus/ttc/negative/vehPenaltyForDamagedAmmorack"
+msgstr "装填速度惩罚"
 
 msgid "kpi/bonus/ttc/negative/vehPenaltyForDamagedEngine"
 msgstr ""
@@ -1419,6 +1467,9 @@ msgstr ""
 msgid "kpi/bonus/ttc/negative/vehicleEnginePower"
 msgstr "发动机功率"
 
+msgid "kpi/bonus/ttc/negative/vehicleFallingDamageResistance"
+msgstr "撞击损伤"
+
 msgid "kpi/bonus/ttc/negative/vehicleFireChance"
 msgstr "发动机起火概率"
 
@@ -1456,6 +1507,9 @@ msgstr "火炮受损时的炮弹散布范围"
 msgid "kpi/bonus/ttc/negative/vehicleGunShotFullDispersion"
 msgstr "瞄准圈大小"
 
+msgid "kpi/bonus/ttc/negative/vehicleHEShellDamageResistance"
+msgstr "HE炮弹损伤"
+
 msgid "kpi/bonus/ttc/negative/vehicleInvisibilityAfterShot"
 msgstr "射击后的隐蔽值"
 
@@ -1464,9 +1518,6 @@ msgstr "您的坦克的可见时长"
 
 msgid "kpi/bonus/ttc/negative/vehicleRamDamageResistance"
 msgstr "撞击时承受的损伤"
-
-msgid "kpi/bonus/ttc/negative/vehicleRamOrExplosionDamageResistance"
-msgstr "HE弹和撞击损伤"
 
 msgid "kpi/bonus/ttc/negative/vehicleReloadTimeAfterShellChange"
 msgstr "炮弹类型的切换速度"
@@ -1495,12 +1546,17 @@ msgid "kpi/bonus/ttc/negative/vehicleTurretRotationSpeed"
 msgstr "炮塔旋转速度"
 
 msgid "kpi/bonus/ttc/negative/woundedCrewEfficiency"
-msgstr "乘员受伤时的惩罚，车长除外"
+msgstr ""
+"乘员受伤时的惩罚，\n"
+"车长除外"
 
 msgid "kpi/bonus/ttc/positive/commanderHitChance"
 msgstr ""
 "保护车长\n"
 "免于受伤的几率"
+
+msgid "kpi/bonus/ttc/positive/commanderLampDelay"
+msgstr "收到被点亮通知前的延迟"
 
 msgid "kpi/bonus/ttc/positive/crewHitChance"
 msgstr ""
@@ -1548,19 +1604,30 @@ msgstr "灭火速度"
 msgid "kpi/bonus/ttc/positive/maskingFactor"
 msgstr "坦克隐蔽系数"
 
+msgid "kpi/bonus/ttc/positive/mediumGroundFactor"
+msgstr ""
+"在中度松软地形上\n"
+"维持速度的能力"
+
 msgid "kpi/bonus/ttc/positive/radioDistance"
 msgstr "无线电台通信距离"
 
 msgid "kpi/bonus/ttc/positive/radiomanChanceToHitPerLevel"
 msgstr "保护通信兵免于受伤的几率"
 
+msgid "kpi/bonus/ttc/positive/shellVelocity"
+msgstr "全部炮弹类型的炮弹速度"
+
+msgid "kpi/bonus/ttc/positive/softGroundFactor"
+msgstr ""
+"在松软地形上\n"
+"维持速度的能力"
+
 msgid "kpi/bonus/ttc/positive/teamRadioBonusFactor"
 msgstr "坦克信号覆盖范围内盟友的通信距离"
 
-msgid "kpi/bonus/ttc/positive/vehPenaltyForDamageEngineAndCombat"
-msgstr ""
-"弹药架受损\n"
-"和发动机受损导致的性能下降"
+msgid "kpi/bonus/ttc/positive/vehPenaltyForDamagedAmmorack"
+msgstr "装填速度惩罚"
 
 msgid "kpi/bonus/ttc/positive/vehPenaltyForDamagedEngine"
 msgstr ""
@@ -1575,11 +1642,6 @@ msgstr "内部模块耐久度"
 
 msgid "kpi/bonus/ttc/positive/vehicleAmmoBayStrength"
 msgstr "弹药架耐久度"
-
-msgid "kpi/bonus/ttc/positive/vehicleAverageSoilResistance"
-msgstr ""
-"在中度松软地形上\n"
-"维持速度的能力"
 
 msgid "kpi/bonus/ttc/positive/vehicleBackwardMaxSpeed"
 msgstr "最大倒车速度"
@@ -1611,6 +1673,9 @@ msgstr ""
 
 msgid "kpi/bonus/ttc/positive/vehicleEnginePower"
 msgstr "发动机功率"
+
+msgid "kpi/bonus/ttc/positive/vehicleFallingDamageResistance"
+msgstr "撞击损伤"
 
 msgid "kpi/bonus/ttc/positive/vehicleFireChance"
 msgstr "发动机起火概率"
@@ -1651,6 +1716,9 @@ msgstr "火炮受损时的炮弹散布范围"
 msgid "kpi/bonus/ttc/positive/vehicleGunShotFullDispersion"
 msgstr "瞄准圈大小"
 
+msgid "kpi/bonus/ttc/positive/vehicleHEShellDamageResistance"
+msgstr "HE炮弹损伤"
+
 msgid "kpi/bonus/ttc/positive/vehicleInvisibilityAfterShot"
 msgstr "射击后的隐蔽值"
 
@@ -1659,9 +1727,6 @@ msgstr "您的坦克的可见时长"
 
 msgid "kpi/bonus/ttc/positive/vehicleRamDamageResistance"
 msgstr "撞击时承受的损伤"
-
-msgid "kpi/bonus/ttc/positive/vehicleRamOrExplosionDamageResistance"
-msgstr "HE弹和撞击损伤"
 
 msgid "kpi/bonus/ttc/positive/vehicleReloadTimeAfterShellChange"
 msgstr "炮弹类型的切换速度"
@@ -1689,11 +1754,6 @@ msgstr "火炮旋转速度"
 msgid "kpi/bonus/ttc/positive/vehicleTurretRotationSpeed"
 msgstr "炮塔旋转速度"
 
-msgid "kpi/bonus/ttc/positive/vehicleWeakSoilResistance"
-msgstr ""
-"在松软地形上\n"
-"维持速度的能力"
-
 msgid "kpi/bonus/ttc/positive/xpBonusFactorPerLevel"
 msgstr "战斗中获得的乘员经验"
 
@@ -1702,6 +1762,9 @@ msgstr "秒"
 
 msgid "kpi/bonus/valueTypes/brackets"
 msgstr "(%(value)s)"
+
+msgid "kpi/bonus/valueTypes/commanderLampDelay"
+msgstr "秒"
 
 msgid "kpi/bonus/valueTypes/damagedModulesDetectionTime"
 msgstr "秒"
@@ -1723,6 +1786,42 @@ msgstr "千米/小时"
 
 msgid "kpi/bonus/valueTypes/vehicleOwnSpottingTime"
 msgstr "秒"
+
+msgid "popularLoadouts/noData"
+msgstr "数据不可用"
+
+msgid "popularLoadouts/place/first"
+msgstr "第1"
+
+msgid "popularLoadouts/place/second"
+msgstr "第2"
+
+msgid "popularLoadouts/place/third"
+msgstr "第3"
+
+msgid "popularLoadouts/title"
+msgstr "常用武装"
+
+msgid "popularLoadouts/tooltip/genericEquipment"
+msgstr "汇总了标准配件、赏金配件和改进型配件的数据"
+
+msgid "popularLoadouts/tooltip/headerDescription"
+msgstr "这是坦克世界Plus专属功能，可为您展示特定坦克使用率最高的配件配置情报，帮助您了解游戏中当前的主流战术，以及其他坦克手惯用的配置。"
+
+msgid "popularLoadouts/tooltip/headerTitle"
+msgstr "常用武装"
+
+msgid "popularLoadouts/tooltip/notEnoughData/alternative"
+msgstr "数据取自:"
+
+msgid "popularLoadouts/tooltip/notEnoughData/headerDescription"
+msgstr "所选坦克的武装数据不可用。显示下方玩法类似的坦克的数据。"
+
+msgid "popularLoadouts/tooltip/notEnoughData/headerTitle"
+msgstr "数据不可用"
+
+msgid "popularLoadouts/tooltip/randomBattleCalculation"
+msgstr "数据基于标准模式"
 
 msgid "section/battleAbilities"
 msgstr "战斗储备"

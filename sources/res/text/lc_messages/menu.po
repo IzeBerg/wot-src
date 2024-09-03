@@ -662,21 +662,6 @@ msgstr "战斗中获得的全局和乘员经验"
 msgid "booster/influence/booster_xp"
 msgstr "在战斗中获得的战斗经验"
 
-msgid "booster/label/booster_credits"
-msgstr "%(effectValue)s银币加成"
-
-msgid "booster/label/booster_crew_xp"
-msgstr "%(effectValue)s乘员经验加成"
-
-msgid "booster/label/booster_free_xp"
-msgstr "%(effectValue)s全局经验加成"
-
-msgid "booster/label/booster_free_xp_and_crew_xp"
-msgstr "%(effectValue)s全局和乘员经验加成"
-
-msgid "booster/label/booster_xp"
-msgstr "%(effectValue)s战斗经验加成"
-
 msgid "booster/limit/booster_fl_xp"
 msgstr "关于前线模式"
 
@@ -927,7 +912,7 @@ msgid "contextMenu/assignPrivate"
 msgstr "降级"
 
 msgid "contextMenu/bot"
-msgstr "无行动/挂机"
+msgstr "使用外挂"
 
 msgid "contextMenu/botNoActions"
 msgstr "没有可用的行动"
@@ -1020,7 +1005,7 @@ msgid "contextMenu/excludedFromSquad"
 msgstr "从小队中踢出"
 
 msgid "contextMenu/forbiddenNick"
-msgstr "TK队友"
+msgstr "昵称或军团名称违规"
 
 msgid "contextMenu/giveArtilleryEquipmentCommander"
 msgstr "分发火炮支援"
@@ -1848,10 +1833,10 @@ msgid "denunciation/1"
 msgstr "消极战斗"
 
 msgid "denunciation/2"
-msgstr "TK队友"
+msgstr "昵称或军团名称违规"
 
 msgid "denunciation/3"
-msgstr "无行动/挂机"
+msgstr "使用外挂"
 
 msgid "denunciation/7"
 msgstr "聊天中的违规行为"
@@ -2038,11 +2023,11 @@ msgstr "总计加成以乘法叠加计算得出，可能与所显示的数值有
 msgid "extraParams/name/artNotificationDelayFactor"
 msgstr "该参数表示从自行火炮开火到收到警告的时间。"
 
-msgid "extraParams/name/circularVisionRadiusWhileSurveyingDeviceDamaged"
-msgstr "该参数表示观察设备被击毁后的最大观察范围。数值越高越好。"
-
 msgid "extraParams/name/commanderHitChance"
 msgstr "该参数表示车长免于受伤的几率。"
+
+msgid "extraParams/name/commanderLampDelay"
+msgstr "该参数表示车长在识别坦克是否被敌方点亮前的延迟时间。数值减少得越多，延迟越短。"
 
 msgid "extraParams/name/crewHitChance"
 msgstr "该参数表示车组乘员免于受伤的几率。"
@@ -2072,7 +2057,7 @@ msgid "extraParams/name/demaskMovingFactor"
 msgstr "该参数表示敌方坦克在移动时的暴露系数。此数值越高，点亮敌人的几率也就越高。"
 
 msgid "extraParams/name/enemyModulesCrewCritChance"
-msgstr "该参数表示击伤敌方乘员和严重损伤敌方内部模块的几率变化。仅适用于AP、APCR和HEAT炮弹。"
+msgstr "该参数表示击伤敌方乘员和严重损伤敌方坦克模块的几率变化。适用于所有类型的炮弹。"
 
 msgid "extraParams/name/equipmentPreparationTime"
 msgstr "该参数表示给养的冷却时间。"
@@ -2083,29 +2068,38 @@ msgstr "该参数决定减少起火持续时间及起火造成损伤的能力。
 msgid "extraParams/name/foliageMaskingFactor"
 msgstr "该参数表示在植被后方的隐蔽效果。"
 
+msgid "extraParams/name/mediumGroundFactor"
+msgstr "该参数表示悬挂装置在中度松软地形上的越野能力。数值越高，达到最高速度的时间越短。"
+
+msgid "extraParams/name/penaltyToDamagedSurveyingDevice"
+msgstr "该参数降低观察设备被击毁导致的最大观察范围惩罚。数值减少得越多，观察范围越大。"
+
 msgid "extraParams/name/radiomanActivityTimeAfterVehicleDestroy"
 msgstr "该参数表示坦克被击毁后敌方位置的额外报告时间。"
 
 msgid "extraParams/name/radiomanHitChance"
 msgstr "该参数表示通信兵免于受伤的几率。"
 
+msgid "extraParams/name/shellVelocity"
+msgstr "该参数表示所有炮弹类型炮弹速度的提高幅度。数值越高，炮弹速度就越高。"
+
+msgid "extraParams/name/softGroundFactor"
+msgstr "该参数表示悬挂装置在松软地形上的越野能力。数值越高，达到最高速度的时间越短。"
+
 msgid "extraParams/name/stunResistanceEffectFactor"
 msgstr "该参数表示乘员受弹震影响时的减益程度。"
 
-msgid "extraParams/name/vehPenaltyForDamageEngineAndCombat"
-msgstr "该参数表示损坏弹药架对装填时间的影响，以及损坏发动机对机动性的影响(默认x2)"
+msgid "extraParams/name/vehPenaltyForDamagedAmmorack"
+msgstr "该参数降低弹药架受损导致的装填时间惩罚。数值减少得越多，装填时间越短。"
 
-msgid "extraParams/name/vehicleAllyRadioDistance"
-msgstr "该参数表示与盟友分享小地图上所有坦克位置信息的范围。"
+msgid "extraParams/name/vehPenaltyForDamagedEngine"
+msgstr "该参数降低发动机受损导致的功率损失。数值减少得越多，发动机损失的功率越少。"
 
 msgid "extraParams/name/vehicleAmmoBayEngineFuelStrength"
 msgstr "该参数表示弹药架、油箱、发动机的耐久度。数值越高，这些模块的耐久度也就越高"
 
 msgid "extraParams/name/vehicleAmmoBayStrength"
 msgstr "该参数表示弹药架的耐久度。数值越高，其耐久度也就越高。"
-
-msgid "extraParams/name/vehicleAverageSoilResistance"
-msgstr "该参数表示悬挂装置在中度松软地形上的越野能力。数值越高，达到最高速度的时间越短。"
 
 msgid "extraParams/name/vehicleChassisFallDamage"
 msgstr "该参数表示悬挂装置造成的坠落损伤。它不会影响坠落时对炮塔侧面或顶部造成的损伤。"
@@ -2118,6 +2112,9 @@ msgstr "该参数表示悬挂装置的耐久度。数值越高，悬挂装置对
 
 msgid "extraParams/name/vehicleEnemySpottingTime"
 msgstr "该参数表示敌方坦克在离开您的可视范围后的可见时长。默认值为10秒。"
+
+msgid "extraParams/name/vehicleFallingDamageResistance"
+msgstr "该参数表示坦克坠落时受到损伤的降低幅度。数值越高，受到的损伤就越低。"
 
 msgid "extraParams/name/vehicleFireChance"
 msgstr "该参数表示发动机受损时的起火几率。"
@@ -2143,6 +2140,9 @@ msgstr "此参数代表火炮旋转时的炮弹散布范围。"
 msgid "extraParams/name/vehicleGunShotDispersionWhileGunDamaged"
 msgstr "该参数表示受损火炮的炮弹散布范围。数值越高，炮弹散布范围越低。"
 
+msgid "extraParams/name/vehicleHEShellDamageResistance"
+msgstr "该参数表示受到的HE炮弹损伤。落点区域的装甲越厚，减伤效果越好。"
+
 msgid "extraParams/name/vehicleInvisibilityAfterShot"
 msgstr "此参数代表射击后的隐蔽值。"
 
@@ -2155,9 +2155,6 @@ msgstr "该参数表示悬挂装置受到的撞击损伤。坦克相撞时，系
 msgid "extraParams/name/vehicleRamDamageResistance"
 msgstr "该参数表示坦克受到的撞击损伤。坦克相撞时，系统会考虑撞击处双方的装甲厚度、坦克重量之差及速度。"
 
-msgid "extraParams/name/vehicleRamOrExplosionDamageResistance"
-msgstr "该参数表示因高爆弹和撞击受到的损伤。发生冲击的装甲位置越高，减伤效果越好。"
-
 msgid "extraParams/name/vehicleReloadTimeAfterShellChange"
 msgstr "该参数表示已装填炮弹类型的切换速度。"
 
@@ -2166,9 +2163,6 @@ msgstr "该参数表示内外部模块从\"红色\"状态维修至\"黄色\"状�
 
 msgid "extraParams/name/vehicleSpeedGain"
 msgstr "该参数表示悬挂装置的越野能力。数值越高，抵达最高速度的时间也就越短。"
-
-msgid "extraParams/name/vehicleWeakSoilResistance"
-msgstr "该参数表示悬挂装置在松软地形上的越野能力。数值越高，达到最高速度的时间越短。"
 
 msgid "extraParams/name/wheelsRotationSpeed"
 msgstr "该参数表示轮式战车的转弯速度。"
@@ -2717,7 +2711,7 @@ msgid "headerButtons/battle/types/battleRoyaleSquad/description"
 msgstr "创建一个2人小队"
 
 msgid "headerButtons/battle/types/comp7"
-msgstr "轻量级天梯战"
+msgstr "天梯战"
 
 msgid "headerButtons/battle/types/comp7/descr"
 msgstr "?empty?"
@@ -3630,13 +3624,13 @@ msgid "loading/battleTypes/29"
 msgstr "%(modeName)s"
 
 msgid "loading/battleTypes/30"
-msgstr "轻量级天梯战"
+msgstr "天梯战"
 
 msgid "loading/battleTypes/31"
 msgstr "热身模式"
 
 msgid "loading/battleTypes/33"
-msgstr "轻量级天梯战"
+msgstr "天梯战"
 
 msgid "loading/battleTypes/34"
 msgstr "天梯战训练"
@@ -4339,6 +4333,9 @@ msgstr "飞行时间"
 
 msgid "moduleInfo/params/forwardMaxSpeed"
 msgstr "最大速度"
+
+msgid "moduleInfo/params/guaranteedDamage/footnote"
+msgstr "如果未击穿装甲，炮弹仅能造成较小比例的损伤。"
 
 msgid "moduleInfo/params/hullAndChassisWeight"
 msgstr "重量"
@@ -6431,8 +6428,8 @@ msgstr "{min}分"
 msgid "trade/in"
 msgstr "可用于折价置换"
 
-msgid "training/alertText/onlyTierX"
-msgstr "仅限X级坦克"
+msgid "training/additionalInfo/freeSuppliesComp7"
+msgstr "现在可在天梯战地图上免费使用弹药、给养和指令"
 
 msgid "training/create/battleTime"
 msgstr "战斗持续时间:"
@@ -6565,6 +6562,12 @@ msgstr "退出该模式"
 
 msgid "training/listTitle"
 msgstr "训练房间"
+
+msgid "training/notificationText/freeSupplies"
+msgstr "免费给养"
+
+msgid "training/notificationText/onlyTierX"
+msgstr "仅限X级坦克"
 
 msgid "training/ownerTitle"
 msgstr "房主"
