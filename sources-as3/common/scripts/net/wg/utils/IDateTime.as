@@ -51,5 +51,9 @@ package net.wg.utils
       function getAmPmPrefix(param1:int) : String;
       
       function formatSecondsToString(param1:int) : String;
+      
+      function formatSecondsToDDHHMMSS(param1:int, param2:String = " ", param3:String = ":") : String;
+      
+      function formatSecondsToHHMMSS(param1:int, param2:String = ":") : String;
    }
 }

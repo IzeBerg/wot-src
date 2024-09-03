@@ -40,8 +40,6 @@ package net.wg.data.constants.generated
       public static const HEADER_WIDGET:String = "headerWidget";
       
       public static const HEADER_QUEST_FLAGS:String = "headerQuestFlags";
-      
-      public static const STRENGTHS_WEAKNESSES:String = "StrengthsWeaknesses";
        
       
       public function HANGAR_CONSTS()

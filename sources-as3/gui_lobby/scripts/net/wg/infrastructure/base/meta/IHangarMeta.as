@@ -57,7 +57,5 @@ package net.wg.infrastructure.base.meta
       function as_updateHangarComponents(param1:Array, param2:Array) : void;
       
       function as_setBattleRoyaleSpaceLoaded(param1:Boolean) : void;
-      
-      function as_setEventEntryPointVisible(param1:Boolean) : void;
    }
 }

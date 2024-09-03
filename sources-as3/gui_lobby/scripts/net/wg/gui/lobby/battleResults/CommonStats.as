@@ -366,6 +366,10 @@ package net.wg.gui.lobby.battleResults
          this._progressBlocksData = this._statsUtilsManager.mergeArrays(this._progressBlocksData,_loc6_);
          this._hasPrestigePoints = _loc2_.prestigePoints && _loc2_.prestigePoints.isVisible;
          this.prestigePoints.visible = this._hasPrestigePoints;
+         if(this._hasPrestigePoints)
+         {
+            this.prestigePoints.setData(_loc2_.prestigePoints);
+         }
          this.initCounters(_loc2_.creditsStr,_loc2_.xpStr);
          this.efficiencyTitle.text = this._data.efficiencyTitle;
          this.initResultText(_loc3_);

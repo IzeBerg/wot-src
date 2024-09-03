@@ -17,7 +17,7 @@ package net.wg.gui.lobby.window
    public class ConfirmExchangeDialog extends ConfirmExchangeDialogMeta implements IConfirmExchangeDialogMeta
    {
       
-      private static const VEHICLE_TEXTS_OFFSET:Number = -11;
+      private static const VEHICLE_TEXTS_OFFSET:int = -11;
       
       private static const PLATFORM_PACK_TEXTS_OFFSET:int = -60;
        
@@ -40,6 +40,8 @@ package net.wg.gui.lobby.window
       
       public var cancelBtn:SoundButtonEx;
       
+      private var _needGoldValue:Number;
+      
       private var _isBlinking:Boolean = false;
       
       private var _originalPos:Dictionary;
@@ -59,6 +61,7 @@ package net.wg.gui.lobby.window
          this.exchangeBtn.addEventListener(ButtonEvent.PRESS,this.onExchangeBtnPressHandler);
          this.cancelBtn.addEventListener(ButtonEvent.PRESS,this.onCancelBtnPressHandler);
          this.exchangeBlock.addEventListener(ConfirmExchangeBlockEvent.VALUE_CHANGED,this.onExchangeBlockValueChangedHandler);
+         this.exchangeBlock.addEventListener(ConfirmExchangeBlockEvent.ON_INFO_WARNING_BTN,this.onInfoWarningBtnHandler);
       }
       
       override protected function onPopulate() : void
@@ -110,8 +113,9 @@ package net.wg.gui.lobby.window
          this.exchangeBtn.enabled = _loc2_;
          if(_loc2_)
          {
-            this.exchangeBlock.setData(param1.exchangeBlockData);
+            this.exchangeBlock.setData(param1.exchangeBlockData,param1.needItemsType);
             this.needGoldTf.htmlText = param1.needGoldText;
+            this._needGoldValue = param1.exchangeBlockData.defaultGoldValue;
          }
          else
          {
@@ -126,6 +130,7 @@ package net.wg.gui.lobby.window
          this.exchangeBtn.removeEventListener(ButtonEvent.PRESS,this.onExchangeBtnPressHandler);
          this.cancelBtn.removeEventListener(ButtonEvent.PRESS,this.onCancelBtnPressHandler);
          this.exchangeBlock.removeEventListener(ConfirmExchangeBlockEvent.VALUE_CHANGED,this.onExchangeBlockValueChangedHandler);
+         this.exchangeBlock.removeEventListener(ConfirmExchangeBlockEvent.ON_INFO_WARNING_BTN,this.onInfoWarningBtnHandler);
          this.vehicleIcon.dispose();
          this.moduleIcon.dispose();
          this.exchangeBlock.dispose();
@@ -145,7 +150,18 @@ package net.wg.gui.lobby.window
          super.onDispose();
       }
       
-      private function layout(param1:Number = 0.0) : void
+      public function as_setExchangeValues(param1:Number, param2:Number, param3:int) : void
+      {
+         var _loc4_:Boolean = false;
+         this.exchangeBlock.setExchangeValue(param1,param2,param3);
+         if(this.exchangeBlock.visible)
+         {
+            _loc4_ = param1 >= this._needGoldValue;
+            this.setBlinking(!_loc4_);
+         }
+      }
+      
+      private function layout(param1:int = 0) : void
       {
          var _loc2_:DisplayObject = null;
          var _loc3_:* = undefined;
@@ -191,7 +207,12 @@ package net.wg.gui.lobby.window
       private function onExchangeBlockValueChangedHandler(param1:ConfirmExchangeBlockEvent) : void
       {
          this.exchangeBtn.enabled = !param1.isNull;
-         this.setBlinking(!param1.isEnough);
+         onSelectedAmountChangedS(param1.goldValue,param1.needItemsValue);
+      }
+      
+      private function onInfoWarningBtnHandler(param1:ConfirmExchangeBlockEvent) : void
+      {
+         openDiscountInfoPageS();
       }
    }
 }

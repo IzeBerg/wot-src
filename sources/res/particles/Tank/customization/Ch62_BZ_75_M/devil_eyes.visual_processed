@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>m_devil_eyes</identifier>
+					<fx>shaders/custom/vector_animation_2.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>particles/Tank/customization/Ch62_BZ_75_M/mesh_eyes_feathers.dds</Texture>
+					</property>
+					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>0.000000 0.000000 2.500000 0.000000</Vector4>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>1000.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						selfIllumLight
+						<Vector3>0.000000 1.000000 0.658824</Vector3>
+					</property>
+					<property>
+						TintlColor
+						<Vector4>0.137255 1.000000 0.388235 1.000000</Vector4>
+					</property>
+					<property>
+						alphaFadeAmountSoft
+						<Vector4>1.000000 1.000000 0.010000 0.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>0.000000 1.102144 -3.292647</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.127736 1.080518 -3.302708</min>
+		<max>0.127736 1.123770 -3.282586</max>
+	</boundingBox>
+	<geometrySize>1656</geometrySize>
+	<minUVDensity>8.087205</minUVDensity>
+</root>

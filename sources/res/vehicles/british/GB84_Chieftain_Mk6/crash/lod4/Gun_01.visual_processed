@@ -21,60 +21,44 @@
 					<identifier>tank_guns</identifier>
 					<collisionFlags>0</collisionFlags>
 					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
 					<property>
 						diffuseMap
-						<Texture>vehicles/british/GB84_Chieftain_Mk6/Chieftain_Mk6_guns_AM.dds</Texture>
+						<Texture>vehicles/british/GB84_Chieftain_Mk6/Chieftain_Mk6_proxy_AM.dds</Texture>
 					</property>
 					<property>
-						alphaReference
-						<Int>64</Int>
+						normalMap
+						<Texture>vehicles/british/GB84_Chieftain_Mk6/Chieftain_Mk6_proxy_ANM.dds</Texture>
 					</property>
 					<property>
-						alphaTestEnable
-						<Bool>true</Bool>
+						metallicGlossMap
+						<Texture>vehicles/british/GB84_Chieftain_Mk6/Chieftain_Mk6_proxy_GMM.dds</Texture>
 					</property>
 					<property>
-						excludeMaskAndAOMap
-						<Texture>vehicles/british/GB84_Chieftain_Mk6/Chieftain_Mk6_guns_AO.dds</Texture>
-					</property>
-					<property>
-						colorIdMap
-						<Texture>vehicles/british/GB84_Chieftain_Mk6/Chieftain_Mk6_guns_ID.dds</Texture>
+						crash_coefficient
+						<Float>0.300000</Float>
 					</property>
 					<property>
 						crashTileMap
 						<Texture>vehicles/russian/Tank_detail/crash_tile.dds</Texture>
 					</property>
 					<property>
-						g_crashUVTiling
-						<Vector4>
-							2 2 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
+						excludeMaskAndAOMap
+						<Texture>vehicles/british/GB84_Chieftain_Mk6/Chieftain_Mk6_proxy_AO.dds</Texture>
 					</property>
 					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
-					</property>
-					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
-					<property>
-						metallicGlossMap
-						<Texture>vehicles/british/GB84_Chieftain_Mk6/Chieftain_Mk6_guns_GMM.dds</Texture>
-					</property>
-					<property>
-						normalMap
-						<Texture>vehicles/british/GB84_Chieftain_Mk6/Chieftain_Mk6_guns_ANM.dds</Texture>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
 					</property>
 				</material>
-				<groupOrigin>0.000262 -0.000048 2.587634</groupOrigin>
+				<groupOrigin>0.054651 0.054805 2.579757</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<boundingBox>
-		<min>-0.113991 -0.114302 -0.072199</min>
-		<max>0.114515 0.114206 5.247468</max>
+		<min>-0.200667 -0.147835 -0.088349</min>
+		<max>0.309969 0.257445 5.247864</max>
 	</boundingBox>
-	<customBsp>true</customBsp>
-	<geometrySize>508</geometrySize>
-	<minUVDensity>0.026602</minUVDensity>
+	<geometrySize>762</geometrySize>
+	<minUVDensity>0.004556</minUVDensity>
 </root>

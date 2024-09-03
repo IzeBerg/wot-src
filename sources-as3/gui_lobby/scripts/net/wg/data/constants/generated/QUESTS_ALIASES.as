@@ -97,10 +97,6 @@ package net.wg.data.constants.generated
       
       public static const BATTLE_MATTERS_VIEW_LINKAGE:String = "BattleMattersMissionsViewUI";
       
-      public static const WOT_ANNIVERSARY_VIEW_PY_ALIAS:String = "WotAnniversaryMissionsView";
-      
-      public static const WOT_ANNIVERSARY_VIEW_LINKAGE:String = "WotAnniversaryMissionsViewUI";
-      
       public static const MISSIONS_VIEW_PY_ALIASES:Array = [MISSIONS_MARATHON_VIEW_PY_ALIAS,MISSIONS_GROUPED_VIEW_PY_ALIAS,MISSIONS_EVENT_BOARDS_VIEW_PY_ALIAS,MISSIONS_CATEGORIES_VIEW_PY_ALIAS,CURRENT_VEHICLE_MISSIONS_VIEW_PY_ALIAS];
        
       

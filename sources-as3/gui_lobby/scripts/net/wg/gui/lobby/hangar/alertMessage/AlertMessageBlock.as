@@ -143,7 +143,6 @@ package net.wg.gui.lobby.hangar.alertMessage
                      {
                         this.popoverIconButton.width = this._originalBtnW;
                      }
-                     this.popoverIconButton.validateNow();
                   }
                   if(StringUtils.isNotEmpty(this._data.alertIcon))
                   {

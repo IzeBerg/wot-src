@@ -99,7 +99,18 @@
 				</specValue>
 			</mul>
 			<mul>
-				<name>vehPenaltyForDamageEngineAndCombat</name>
+				<name>vehPenaltyForDamagedEngine</name>
+				<value>
+					0.5
+					<!--BW_String-->
+				</value>
+				<specValue>
+					0.35
+					<!--BW_String-->
+				</specValue>
+			</mul>
+			<mul>
+				<name>vehPenaltyForDamagedAmmorack</name>
 				<value>
 					0.5
 					<!--BW_String-->
@@ -223,7 +234,18 @@
 				</specValue>
 			</mul>
 			<mul>
-				<name>vehPenaltyForDamageEngineAndCombat</name>
+				<name>vehPenaltyForDamagedEngine</name>
+				<value>
+					0.5
+					<!--BW_String-->
+				</value>
+				<specValue>
+					0.35
+					<!--BW_String-->
+				</specValue>
+			</mul>
+			<mul>
+				<name>vehPenaltyForDamagedAmmorack</name>
 				<value>
 					0.5
 					<!--BW_String-->
@@ -308,7 +330,18 @@
 		</script>
 		<kpi>
 			<mul>
-				<name>vehicleRamOrExplosionDamageResistance</name>
+				<name>vehicleHEShellDamageResistance</name>
+				<value>
+					0.5
+					<!--BW_String-->
+				</value>
+				<specValue>
+					0.4
+					<!--BW_String-->
+				</specValue>
+			</mul>
+			<mul>
+				<name>vehicleRamDamageResistance</name>
 				<value>
 					0.5
 					<!--BW_String-->
@@ -415,7 +448,18 @@
 		</script>
 		<kpi>
 			<mul>
-				<name>vehicleRamOrExplosionDamageResistance</name>
+				<name>vehicleHEShellDamageResistance</name>
+				<value>
+					0.5
+					<!--BW_String-->
+				</value>
+				<specValue>
+					0.4
+					<!--BW_String-->
+				</specValue>
+			</mul>
+			<mul>
+				<name>vehicleRamDamageResistance</name>
 				<value>
 					0.5
 					<!--BW_String-->
@@ -522,7 +566,18 @@
 		</script>
 		<kpi>
 			<mul>
-				<name>vehicleRamOrExplosionDamageResistance</name>
+				<name>vehicleHEShellDamageResistance</name>
+				<value>
+					0.5
+					<!--BW_String-->
+				</value>
+				<specValue>
+					0.4
+					<!--BW_String-->
+				</specValue>
+			</mul>
+			<mul>
+				<name>vehicleRamDamageResistance</name>
 				<value>
 					0.5
 					<!--BW_String-->
@@ -629,7 +684,18 @@
 		</script>
 		<kpi>
 			<mul>
-				<name>vehicleRamOrExplosionDamageResistance</name>
+				<name>vehicleHEShellDamageResistance</name>
+				<value>
+					0.5
+					<!--BW_String-->
+				</value>
+				<specValue>
+					0.4
+					<!--BW_String-->
+				</specValue>
+			</mul>
+			<mul>
+				<name>vehicleRamDamageResistance</name>
 				<value>
 					0.5
 					<!--BW_String-->
@@ -2423,7 +2489,7 @@
 		<longDescriptionSpecial>#artefacts:improvedRadioCommunication/long_special</longDescriptionSpecial>
 		<icon>improvedRadioCommunication</icon>
 		<price>600000</price>
-		<tags/>
+		<tags>radioCommunication</tags>
 		<categories>stealth</categories>
 		<vehicleFilter>
 			<include>
@@ -2915,7 +2981,7 @@
 		<longDescriptionSpecial>#artefacts:commandersView/long_special</longDescriptionSpecial>
 		<icon>commandersView</icon>
 		<price>600000</price>
-		<tags/>
+		<tags>commandersView</tags>
 		<categories>stealth</categories>
 		<vehicleFilter>
 			<include>

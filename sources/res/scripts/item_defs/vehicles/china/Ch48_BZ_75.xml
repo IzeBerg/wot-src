@@ -57,6 +57,12 @@
 				<!--BW_String-->
 			</invisibilityBonus>
 		</trophyUpgradedAdditionalInvisibilityDevice>
+		<deluxeAdditionalInvisibilityDevice>
+			<invisibilityBonus>
+				0.06
+				<!--BW_String-->
+			</invisibilityBonus>
+		</deluxeAdditionalInvisibilityDevice>
 	</optDevsOverrides>
 	<repairCost>
 		11.0
@@ -2495,11 +2501,17 @@
 					<radiusOverrides>
 						<wheel>
 							<name>WD_L7</name>
-							<radius>0.255277</radius>
+							<radius>
+								0.275
+								<!--BW_String-->
+							</radius>
 						</wheel>
 						<wheel>
 							<name>WD_L0</name>
-							<radius>0.267424</radius>
+							<radius>
+								0.285
+								<!--BW_String-->
+							</radius>
 						</wheel>
 					</radiusOverrides>
 					<teethSyncs>
@@ -3119,11 +3131,17 @@
 					<radiusOverrides>
 						<wheel>
 							<name>WD_R7</name>
-							<radius>0.253506</radius>
+							<radius>
+								0.275
+								<!--BW_String-->
+							</radius>
 						</wheel>
 						<wheel>
 							<name>WD_R0</name>
-							<radius>0.267454</radius>
+							<radius>
+								0.285
+								<!--BW_String-->
+							</radius>
 						</wheel>
 					</radiusOverrides>
 					<teethSyncs>
@@ -3132,7 +3150,7 @@
 						<sync>
 							<name>WD_R7</name>
 							<startAngle>
-								-3.06147
+								-1.85
 								<!--BW_String-->
 							</startAngle>
 							<teethCount>13</teethCount>

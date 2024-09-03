@@ -103,8 +103,6 @@ package net.wg.gui.components.carousels.data
       
       public var tooltip:String = "";
       
-      public var isWulfTooltip:Boolean = false;
-      
       public var lockedTooltip:String = "";
       
       public var progressionPoints:ProgressionPointsVO = null;

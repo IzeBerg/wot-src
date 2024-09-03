@@ -34,8 +34,6 @@ package net.wg.gui.battle.eventBattle.views
       
       private static const BATTLE_DAMAGE_LOG_Y_PADDING:int = 3;
       
-      private static const CONSUMABLES_POPUP_OFFSET:int = 60;
-      
       private static const HINT_PANEL_Y_SHIFT_MULTIPLIER:Number = 1.5;
       
       private static const POINT_COUNTER_HEIGHT:int = 160;
@@ -128,9 +126,7 @@ package net.wg.gui.battle.eventBattle.views
       {
          this.battleMessenger.addEventListener(MouseEvent.ROLL_OVER,this.onBattleMessengerRollOverHandler);
          this.battleMessenger.addEventListener(MouseEvent.ROLL_OUT,this.onBattleMessengerRollOutHandler);
-         this.consumablesPanel.addEventListener(ConsumablesPanelEvent.SWITCH_POPUP,this.onConsumablesPanelSwitchPopupHandler);
          this.consumablesPanel.addEventListener(ConsumablesPanelEvent.UPDATE_POSITION,this.onConsumablesPanelUpdatePositionHandler);
-         this.consumablesPanel.addEventListener(ConsumablesPanelEvent.SWITCH_POPUP,this.onConsumablesPanelSwitchPopupHandler);
          this.battleMessenger.addEventListener(FocusRequestEvent.REQUEST_FOCUS,this.onBattleMessengerRequestFocusHandler);
          this.battleMessenger.addEventListener(BattleMessenger.REMOVE_FOCUS,this.onBattleMessengerRemoveFocusHandler);
          this.hintPanel.addEventListener(Event.RESIZE,this.onHintPanelResizeHandler);
@@ -161,7 +157,6 @@ package net.wg.gui.battle.eventBattle.views
       override protected function onDispose() : void
       {
          this.consumablesPanel.removeEventListener(ConsumablesPanelEvent.UPDATE_POSITION,this.onConsumablesPanelUpdatePositionHandler);
-         this.consumablesPanel.removeEventListener(ConsumablesPanelEvent.SWITCH_POPUP,this.onConsumablesPanelSwitchPopupHandler);
          this.consumablesPanel = null;
          this.battleMessenger.removeEventListener(MouseEvent.ROLL_OVER,this.onBattleMessengerRollOverHandler);
          this.battleMessenger.removeEventListener(MouseEvent.ROLL_OUT,this.onBattleMessengerRollOutHandler);
@@ -277,16 +272,6 @@ package net.wg.gui.battle.eventBattle.views
             this.updateBattleDamageLogPanelPosition();
          }
          minimap.updateSizeIndex(false);
-      }
-      
-      private function onConsumablesPanelSwitchPopupHandler(param1:ConsumablesPanelEvent) : void
-      {
-         var _loc2_:int = 0;
-         if(!postmortemPanelUI || !postmortemPanelUI.visible)
-         {
-            _loc2_ = !!this.consumablesPanel.isExpand ? int(CONSUMABLES_POPUP_OFFSET) : int(0);
-            vehicleMessageList.setLocation(_originalWidth - VEHICLE_MESSAGES_LIST_OFFSET.x >> 1,_originalHeight - VEHICLE_MESSAGES_LIST_OFFSET.y - _loc2_ | 0);
-         }
       }
       
       private function onHintPanelResizeHandler(param1:Event) : void

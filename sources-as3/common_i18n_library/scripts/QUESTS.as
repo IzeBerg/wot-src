@@ -29,8 +29,6 @@ package
       
       public static const MISSIONS_TAB_LIVE_OPS_WEB_EVENTS:String = "#quests:missions/tab/live_ops_web_events";
       
-      public static const MISSIONS_TAB_WOT_ANNIVERSARY:String = "#quests:missions/tab/wot_anniversary";
-      
       public static const MISSIONS_FILTERCOUNTER_CLOSEBUTTON:String = "#quests:missions/filterCounter/closeButton";
       
       public static const MISSIONS_FILTER_FILTERBUTTON:String = "#quests:missions/filter/filterButton";
@@ -162,6 +160,10 @@ package
       public static const BONUSES_ITEM_TANKMEN_WITH_SKILLS:String = "#quests:bonuses/item/tankmen/with_skills";
       
       public static const BONUSES_NOTAVAILABLE:String = "#quests:bonuses/notAvailable";
+      
+      public static const BONUSES_GOLDPERSONALRATE:String = "#quests:bonuses/goldPersonalRate";
+      
+      public static const BONUSES_FREEXPPERSONALRATE:String = "#quests:bonuses/freeXpPersonalRate";
       
       public static const QUESTS_TITLE:String = "#quests:quests/title";
       
@@ -2133,10 +2135,6 @@ package
       
       public static const MISSIONS_TAB_BATTLEMATTERS_BODY:String = "#quests:missions/tab/battleMatters/body";
       
-      public static const MISSIONS_TAB_WOT_ANNIVERSARY_HEADER:String = "#quests:missions/tab/wot_anniversary/header";
-      
-      public static const MISSIONS_TAB_WOT_ANNIVERSARY_BODY:String = "#quests:missions/tab/wot_anniversary/body";
-      
       public static const MISSIONS_TAB_LABEL_CURRENTVEHICLE:String = "#quests:missions/tab/label/currentVehicle";
       
       public static const MISSIONS_TAB_CURRENTVEHICLE_HEADER:String = "#quests:missions/tab/currentVehicle/header";
@@ -2403,8 +2401,6 @@ package
       
       public static const TOKEN_DEFAULT_BATTLE_ROYALE:String = "#quests:token/default/battle_royale";
       
-      public static const TOKEN_DEFAULT_COMP7_LIGHT:String = "#quests:token/default/comp7_light";
-      
       public static const BONUSNAME_CREDITS:String = "#quests:bonusName/credits";
       
       public static const BONUSNAME_GOLD:String = "#quests:bonusName/gold";
@@ -2412,8 +2408,6 @@ package
       public static const BONUSNAME_CRYSTAL:String = "#quests:bonusName/crystal";
       
       public static const BONUSNAME_EVENTCOIN:String = "#quests:bonusName/eventCoin";
-      
-      public static const BONUSNAME_EVENTCOIN_PREVIEW:String = "#quests:bonusName/eventCoin/preview";
       
       public static const BONUSNAME_BPCOIN:String = "#quests:bonusName/bpcoin";
       
@@ -2574,6 +2568,8 @@ package
       public static const BONUSNAME_BADGES:String = "#quests:bonusName/badges";
       
       public static const BONUSNAME_ADDITIONAL_BONUSES:String = "#quests:bonusName/additional_bonuses";
+      
+      public static const BONUSNAME_OPTIONAL_DEVICES_ASSISTANT:String = "#quests:bonusName/optional_devices_assistant";
       
       public static const ACTION_AUTO_CALENDAR:String = "#quests:action/auto/calendar";
       

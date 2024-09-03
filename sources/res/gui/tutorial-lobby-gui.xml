@@ -1236,46 +1236,6 @@
 			</value>
 		</item>
 		<item>
-			<name>FreeXpExchangeSubmitButton</name>
-			<type>dict</type>
-			<value>
-				<item>
-					<name>view</name>
-					<value>exchangeXPWindow</value>
-				</item>
-				<item>
-					<name>path</name>
-					<value>submitBtn</value>
-				</item>
-				<item>
-					<name>padding</name>
-					<type>dict</type>
-					<value>
-						<item>
-							<name>left</name>
-							<type>float</type>
-							<value>0</value>
-						</item>
-						<item>
-							<name>top</name>
-							<type>float</type>
-							<value>0</value>
-						</item>
-						<item>
-							<name>right</name>
-							<type>float</type>
-							<value>0</value>
-						</item>
-						<item>
-							<name>bottom</name>
-							<type>float</type>
-							<value>0</value>
-						</item>
-					</value>
-				</item>
-			</value>
-		</item>
-		<item>
 			<name>SimpleDialogSecondButton</name>
 			<type>dict</type>
 			<value>
@@ -3076,6 +3036,20 @@
 							<value>0</value>
 						</item>
 					</value>
+				</item>
+			</value>
+		</item>
+		<item>
+			<name>CrewBooksPostProgressionBtn</name>
+			<type>dict</type>
+			<value>
+				<item>
+					<name>view</name>
+					<value>R.views.lobby.crew.QuickTrainingView</value>
+				</item>
+				<item>
+					<name>path</name>
+					<value>div[id=crew_books_post_progression_btn]</value>
 				</item>
 			</value>
 		</item>

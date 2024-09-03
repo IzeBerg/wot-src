@@ -55,9 +55,9 @@ class BadgesCollector(object):
                 self.__suffixBadges.append(badge)
             elif badge.isCollapsible():
                 cache[badge.group].append(badge)
-            elif self.__isNotReceivedPrefixBadges(badge):
+            elif self.__isNotReceivedPrefixBadges(badge) and badge.isVisibleAsAchievable():
                 self.__notReceivedBadges.append(badge)
-            elif self.__isNotReceivedSuffixBadge(badge):
+            elif self.__isNotReceivedSuffixBadge(badge) and badge.isVisibleAsAchievable():
                 self.__notReceivedSuffixBadges.append(badge)
             elif self.__isReceivedPrefixBadges(badge):
                 self.__receivedBadges.append(badge)
@@ -65,7 +65,7 @@ class BadgesCollector(object):
         for cachedBadges in cache.itervalues():
             byClass = sorted(cachedBadges, key=operator.methodcaller('getBadgeClass'), reverse=True)
             for cachedBadge in byClass:
-                if self.__isNotReceivedPrefixBadges(cachedBadge):
+                if self.__isNotReceivedPrefixBadges(cachedBadge) and cachedBadge.isVisibleAsAchievable():
                     self.__notReceivedBadges.append(cachedBadge)
                 elif self.__isReceivedPrefixBadges(cachedBadge):
                     self.__receivedBadges.append(cachedBadge)

@@ -547,9 +547,7 @@ class GunEffectsController(PyComponentWrapperBase):
 	shotsPerSec = property(lambda self: None)
 	def singleShot(self, *args, **kwargs): pass
 	def startContinuousBurst(self, *args, **kwargs): pass
-	def startSpin(self, *args, **kwargs): pass
 	def stopContinuousBurst(self, *args, **kwargs): pass
-	def stopSpin(self, *args, **kwargs): pass
 	def valid(self, *args, **kwargs): pass
 
 
@@ -712,30 +710,6 @@ class LodCalculator(PyComponentWrapperBase):
 	priority = property(lambda self: None)
 	def priority_gen(*args, **kwargs): pass
 	def setupPosition(self, *args, **kwargs): pass
-	def valid(self, *args, **kwargs): pass
-
-
-class OverheatValueGetter(PyComponentWrapperBase):
-	def __cmp__(self, *args, **kwargs): pass
-	def __delattr__(*args, **kwargs): pass
-	__doc__ = None
-	def __format__(*args, **kwargs): pass
-	def __getattribute__(self, *args, **kwargs): pass
-	def __hash__(*args, **kwargs): pass
-	def __init__(*args, **kwargs): pass
-	__module__ = 'Vehicular'
-	def __new__(*args, **kwargs): pass
-	__qualname__ = 'OverheatValueGetter'
-	def __reduce__(*args, **kwargs): pass
-	def __reduce_ex__(*args, **kwargs): pass
-	def __repr__(*args, **kwargs): pass
-	def __setattr__(*args, **kwargs): pass
-	def __sizeof__(*args, **kwargs): pass
-	def __str__(*args, **kwargs): pass
-	def __subclasshook__(*args, **kwargs): pass
-	def clear(self, *args, **kwargs): pass
-	def destroy(self, *args, **kwargs): pass
-	def id(self, *args, **kwargs): pass
 	def valid(self, *args, **kwargs): pass
 
 

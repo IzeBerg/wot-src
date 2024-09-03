@@ -260,10 +260,6 @@ package net.wg.gui.battle.battleRoyale
          super.createPostmortemPanelComponent();
       }
       
-      override protected function createSpectatorViewComponent() : void
-      {
-      }
-      
       override protected function createStatisticsController() : BattleStatisticDataController
       {
          return new BattleStatisticDataController(this);

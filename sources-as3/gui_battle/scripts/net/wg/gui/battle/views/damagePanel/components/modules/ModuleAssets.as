@@ -384,7 +384,7 @@ class ModuleStateAdapter
             {
                _loc3_ = STATE_DESTROYED_TO_CRITICAL;
             }
-            else if(this._prevRawState == BATTLE_ITEM_STATES.CRITICAL)
+            else if(this._prevRawState == BATTLE_ITEM_STATES.CRITICAL || this._prevRawState == BATTLE_ITEM_STATES.REPAIRED)
             {
                _loc3_ = STATE_CRITICAL;
             }

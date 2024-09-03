@@ -471,12 +471,6 @@ class AdvancedChatComponent(ClientArenaComponent):
                 vehicleInfo = arenaDP.getVehicleInfo(vehicleID)
                 if vehicleInfo.isAlive() and not vehicleInfo.isObserver() or allowDeadVehInfo:
                     isValidVehicle = True
-            commandName = _ACTIONS.battleChatCommandFromActionID(cmd.getID()).name
-            if not isValidVehicle and commandName not in (
-             BATTLE_CHAT_COMMAND_NAMES.ATTENTION_TO_POSITION,
-             BATTLE_CHAT_COMMAND_NAMES.ATTACK_BASE,
-             BATTLE_CHAT_COMMAND_NAMES.DEFEND_BASE):
-                _logger.warning('_getCommandCreatorVehID: Vehicle state is invalid - using senderID')
             if isValidVehicle:
                 return vehicleID
             return 0

@@ -9,7 +9,11 @@ package net.wg.data.constants
       
       public static const MINUTES_IN_HOUR:uint = 60;
       
+      public static const SECONDS_IN_HOUR:uint = SECONDS_IN_MINUTE * MINUTES_IN_HOUR;
+      
       public static const HOURS_IN_DAY:uint = 24;
+      
+      public static const SECONDS_IN_DAY:uint = SECONDS_IN_HOUR * HOURS_IN_DAY;
       
       public static const DAYS_IN_WEEK:uint = 7;
       

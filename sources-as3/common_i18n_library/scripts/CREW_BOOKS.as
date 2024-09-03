@@ -47,6 +47,12 @@ package
       
       public static const BUTTONS_BUY:String = "#crew_books:buttons/buy";
       
+      public static const BUTTONS_POSTPROGRESSION_HOWTO:String = "#crew_books:buttons/postProgression/howTo";
+      
+      public static const BUTTONS_POSTPROGRESSION_CLAIM:String = "#crew_books:buttons/postProgression/claim";
+      
+      public static const BUTTONS_POSTPROGRESSION_HINT:String = "#crew_books:buttons/postProgression/hint";
+      
       public static const CARD_FREEEXP_TITLE:String = "#crew_books:card/freeExp/title";
       
       public static const CARD_FREEEXP_MAINTEXT:String = "#crew_books:card/freeExp/mainText";
@@ -89,11 +95,15 @@ package
       
       public static const CONFIRM_PERSONALEXTRALABEL:String = "#crew_books:confirm/personalExtraLabel";
       
+      public static const CONFIRM_POSTPROGRESSIONLABEL:String = "#crew_books:confirm/postProgressionLabel";
+      
       public static const TOOLTIP_OUTOFSTOCK:String = "#crew_books:tooltip/outOfStock";
       
       public static const TOOLTIP_OUTOFSTOCKCANBUY:String = "#crew_books:tooltip/outOfStockCanBuy";
       
       public static const TOOLTIP_BUYMANUAL:String = "#crew_books:tooltip/buyManual";
+      
+      public static const TOOLTIP_POSTPROGRESSION:String = "#crew_books:tooltip/postProgression";
       
       public static const TOOLTIP_SALE_HEADER:String = "#crew_books:tooltip/sale/header";
       
@@ -104,6 +114,12 @@ package
       public static const TOOLTIP_STEPPER_LEVELUPDATE:String = "#crew_books:tooltip/stepper/levelUpdate";
       
       public static const TOOLTIP_STEPPER_PERKUPDATE:String = "#crew_books:tooltip/stepper/perkUpdate";
+      
+      public static const TOOLTIP_PERSONALBOOK_MAINTEXT:String = "#crew_books:tooltip/personalBook/mainText";
+      
+      public static const TOOLTIP_UNIVERSALBOOK_MAINTEXT:String = "#crew_books:tooltip/universalBook/mainText";
+      
+      public static const TOOLTIP_UNIVERSALGUIDE_MAINTEXT:String = "#crew_books:tooltip/universalGuide/mainText";
        
       
       public function CREW_BOOKS()

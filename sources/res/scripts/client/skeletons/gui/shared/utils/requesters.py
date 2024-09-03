@@ -165,6 +165,10 @@ class IStatsRequester(IRequester):
         raise NotImplementedError
 
     @property
+    def postProgressionXP(self):
+        raise NotImplementedError
+
+    @property
     def bpcoin(self):
         raise NotImplementedError
 
@@ -675,6 +679,7 @@ class IShopCommonStats(object):
 
 
 class IShopRequester(IShopCommonStats, IRequester):
+    defaults = None
 
     def __init__(self):
         super(IShopRequester, self).__init__()
@@ -691,22 +696,6 @@ class IShopRequester(IShopCommonStats, IRequester):
         raise NotImplementedError
 
     @property
-    def freeXPConversionLimit(self):
-        raise NotImplementedError
-
-    @property
-    def freeXPConversionWithDiscount(self):
-        raise NotImplementedError
-
-    @property
-    def isXPConversionActionActive(self):
-        raise NotImplementedError
-
-    @property
-    def isCreditsConversionActionActive(self):
-        raise NotImplementedError
-
-    @property
     def personalPremiumPacketsDiscounts(self):
         raise NotImplementedError
 
@@ -716,10 +705,6 @@ class IShopRequester(IShopCommonStats, IRequester):
 
     @property
     def personalTankmanDiscounts(self):
-        raise NotImplementedError
-
-    @property
-    def personalXPExchangeDiscounts(self):
         raise NotImplementedError
 
     @property

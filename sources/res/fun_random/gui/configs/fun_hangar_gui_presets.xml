@@ -26,92 +26,12 @@
 				</component>
 			</components>
 		</preset>
-		<preset>
-			<name>autoguns</name>
-			<components>
-				<component>
-					<name>header</name>
-					<visible>True</visible>
-				</component>
-				<component>
-					<name>headerWidget</name>
-					<visible>True</visible>
-					<type>FunRandomHangarWidget</type>
-				</component>
-				<component>
-					<name>crewBG</name>
-					<visible>False</visible>
-				</component>
-				<component>
-					<name>crew</name>
-					<visible>False</visible>
-				</component>
-				<component>
-					<name>crewOperationBtn</name>
-					<visible>False</visible>
-				</component>
-				<component>
-					<name>tankMenXP</name>
-					<visible>False</visible>
-				</component>
-				<component>
-					<name>crewXP</name>
-					<visible>False</visible>
-				</component>
-				<component>
-					<name>ammunition</name>
-					<visible>True</visible>
-					<isChangeable>True</isChangeable>
-				</component>
-				<component>
-					<name>ammunitionInject</name>
-					<visible>True</visible>
-					<isChangeable>True</isChangeable>
-					<type>FunRandomQuickFireGunsAmmunitionPanelView</type>
-				</component>
-				<component>
-					<name>carousel</name>
-					<visible>True</visible>
-					<type>funRandomQFGTankCarousel</type>
-					<layout>TankCarouselUI</layout>
-				</component>
-				<component>
-					<name>vehicleParameters</name>
-					<visible>False</visible>
-				</component>
-				<component>
-					<name>vehicleResearch</name>
-					<visible>False</visible>
-				</component>
-				<component>
-					<name>dailyQuest</name>
-					<visible>False</visible>
-				</component>
-				<component>
-					<name>comp7Modifiers</name>
-					<visible>False</visible>
-				</component>
-				<component>
-					<name>battleRoyalePanels</name>
-					<visible>False</visible>
-				</component>
-				<component>
-					<name>StrengthsWeaknesses</name>
-					<visible>True</visible>
-				</component>
-			</components>
-		</preset>
 	</presets>
 	<queueTypePresets>
 		<item>
 			<queueType>28</queueType>
 			<subTypes>0 1</subTypes>
 			<presetName>standard</presetName>
-		</item>
-		<item>
-			<queueType>28</queueType>
-			<subTypes>2</subTypes>
-			<presetName>autoguns</presetName>
 		</item>
 	</queueTypePresets>
 </root>

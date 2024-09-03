@@ -62,5 +62,10 @@ package net.wg.gui.components.ribbon.data
       {
          this._icon = param1;
       }
+      
+      public function set colorBlindIcon(param1:String) : void
+      {
+         this._blindIcon = param1;
+      }
    }
 }

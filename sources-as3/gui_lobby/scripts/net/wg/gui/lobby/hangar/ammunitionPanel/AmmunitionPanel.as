@@ -19,11 +19,16 @@ package net.wg.gui.lobby.hangar.ammunitionPanel
    import net.wg.infrastructure.managers.counter.CounterProps;
    import net.wg.utils.ICounterManager;
    import net.wg.utils.IUtils;
+   import net.wg.utils.StageSizeBoundaries;
    import net.wg.utils.helpLayout.HelpLayoutVO;
    import scaleform.clik.events.ButtonEvent;
    
    public class AmmunitionPanel extends AmmunitionPanelMeta implements IAmmunitionPanel
    {
+      
+      private static const DEFAULT_BUTTON_WIDTH:int = 131;
+      
+      private static const REDUCED_BUTTON_WIDTH:int = 35;
       
       public static const SLOTS_HEIGHT_AND_OFFSET:int = 30;
       
@@ -38,6 +43,8 @@ package net.wg.gui.lobby.hangar.ammunitionPanel
       private static const INV_TUNING_BUTTON_STATE:String = "InvTuningState";
       
       private static const INV_NATION_CHANGE_BUTTON_STATE:String = "invNationChangeState";
+      
+      private static const INV_NATION_CHANGE_BUTTON_RESIZE:String = "invNationChangeResize";
       
       private static const OFFSET_BTN_TO_RENT:int = 3;
       
@@ -227,7 +234,7 @@ package net.wg.gui.lobby.hangar.ammunitionPanel
          super.configUI();
          this.configButton(this.maintenanceBtn,MENU.HANGAR_AMMUNITIONPANEL_MAITENANCEBTN,this.onMaintenanceBtnClickHandler,SOUND_MAINTENANCE_BTN);
          this.configButton(this.tuningBtn,MENU.HANGAR_AMMUNITIONPANEL_TUNINGBTN,this.onTuningBtnClickHandler,SOUND_TUNING_BTN);
-         this.configButton(this.changeNationBtn,MENU.HANGAR_AMMUNITIONPANEL_NATIONCHANGEBTN,this.onChangeNationBtnClickHandler,SOUND_TUNING_BTN);
+         this.configButton(this.changeNationBtn,MENU.HANGAR_AMMUNITIONPANEL_NATIONCHANGEBTN,this.onChangeNationBtnClickHandler,SOUND_TUNING_BTN,true);
          this.toRent.addEventListener(MouseEvent.ROLL_OVER,this.onBtnRollOverHandler);
          this.toRent.addEventListener(MouseEvent.ROLL_OUT,this.onBtnRollOutHandler);
          this.toRent.addEventListener(ButtonEvent.CLICK,this.onToRentClickHandler);
@@ -290,6 +297,7 @@ package net.wg.gui.lobby.hangar.ammunitionPanel
       public function updateStage(param1:Number, param2:Number) : void
       {
          this._screenWidth = param1;
+         this.resizeChangeNationButton(this.changeNationBtn);
          this.centerPanel();
       }
       
@@ -340,20 +348,48 @@ package net.wg.gui.lobby.hangar.ammunitionPanel
          this.vehicleStatus.y = this.maintenanceBtn.y - this.vehicleStatus.height + _loc2_ | 0;
       }
       
-      private function configButton(param1:UniversalBtn, param2:String, param3:Function, param4:String) : void
+      private function configButton(param1:UniversalBtn, param2:String, param3:Function, param4:String, param5:Boolean = false) : void
       {
-         param1.label = param2;
          param1.mouseEnabledOnDisabled = true;
          param1.soundType = SOUND_BTN_TYPE;
          param1.soundId = param4;
          param1.changeSizeOnlyUpwards = true;
-         param1.width = this._buttonWidth;
          param1.paddingHorizontal = BTN_TEXT_FIELD_PADDING;
+         if(param5)
+         {
+            this.resizeChangeNationButton(param1,param2);
+         }
+         else
+         {
+            param1.width = this._buttonWidth;
+            param1.label = param2;
+         }
          param1.addEventListener(ButtonEvent.CLICK,param3);
          param1.addEventListener(MouseEvent.ROLL_OVER,this.onBtnRollOverHandler);
          param1.addEventListener(MouseEvent.ROLL_OUT,this.onBtnRollOutHandler);
          param1.addEventListener(Event.RESIZE,this.onResizeHandler);
          App.utils.universalBtnStyles.setStyle(param1,UniversalBtnStylesConst.STYLE_SLIM_GREEN);
+      }
+      
+      private function resizeChangeNationButton(param1:UniversalBtn, param2:String = "#menu:hangar/ammunitionPanel/nationChangeBtn") : void
+      {
+         var _loc3_:int = param1.width;
+         if(this._screenWidth < StageSizeBoundaries.WIDTH_1366)
+         {
+            param1.width = REDUCED_BUTTON_WIDTH;
+            param1.iconSource = RES_ICONS.MAPS_ICONS_BUTTONS_NC_ICON_19X22;
+            param1.label = "";
+         }
+         else
+         {
+            param1.width = this._buttonWidth;
+            param1.iconSource = "";
+            param1.label = param2;
+         }
+         if(_loc3_ != param1.width)
+         {
+            invalidate(INV_NATION_CHANGE_BUTTON_RESIZE);
+         }
       }
       
       private function setVehicleStatus() : void
@@ -445,33 +481,38 @@ package net.wg.gui.lobby.hangar.ammunitionPanel
       
       private function onResizeHandler(param1:Event) : void
       {
-         var _loc2_:IUniversalBtn = null;
-         var _loc3_:int = 0;
          var _loc4_:int = 0;
-         if(param1.currentTarget.width > this._buttonWidth)
+         var _loc5_:IUniversalBtn = null;
+         var _loc2_:int = this._buttonsList.length;
+         var _loc3_:int = param1.currentTarget.width;
+         if(_loc3_ > this._buttonWidth)
          {
-            this._buttonWidth = param1.currentTarget.width;
-            _loc3_ = this._buttonsList.length;
             _loc4_ = 0;
-            while(_loc4_ < _loc3_)
+            while(_loc4_ < _loc2_)
             {
-               _loc2_ = this._buttonsList[_loc4_];
-               if(_loc2_.width != this._buttonWidth)
+               _loc5_ = this._buttonsList[_loc4_];
+               this._buttonWidth = _loc3_;
+               if(!(this._screenWidth < StageSizeBoundaries.WIDTH_1366 && _loc5_ == this.changeNationBtn))
                {
-                  _loc2_.setSize(this._buttonWidth,_loc2_.height);
+                  if(_loc5_.width != _loc3_)
+                  {
+                     _loc5_.setSize(_loc3_,_loc5_.height);
+                  }
                }
                _loc4_++;
             }
-            this.centerPanel();
          }
+         this.centerPanel();
       }
       
       override public function get width() : Number
       {
+         var _loc2_:int = 0;
          var _loc1_:int = 2 * this._buttonWidth + INDENT_BETWEEN_BUTTONS;
          if(this._changeNationBtnVisible)
          {
-            _loc1_ += this._buttonWidth + INDENT_BETWEEN_BUTTONS;
+            _loc2_ = this._screenWidth < StageSizeBoundaries.WIDTH_1366 ? int(REDUCED_BUTTON_WIDTH) : int(this._buttonWidth);
+            _loc1_ += _loc2_ + INDENT_BETWEEN_BUTTONS;
          }
          return _loc1_;
       }

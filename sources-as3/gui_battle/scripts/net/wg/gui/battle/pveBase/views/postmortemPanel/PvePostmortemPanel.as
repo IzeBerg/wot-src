@@ -128,6 +128,11 @@ package net.wg.gui.battle.pveBase.views.postmortemPanel
          super.onDispose();
       }
       
+      override public function as_togglePostmortemInfoPanel(param1:Boolean) : void
+      {
+         this.showPostmortemInfoPanel(param1);
+      }
+      
       override protected function setDeadReasonInfo(param1:String, param2:Boolean, param3:String, param4:String, param5:String, param6:String, param7:UserVO) : void
       {
          super.setDeadReasonInfo(param1,param2,param3,param4,param5,param6,null);
@@ -201,7 +206,7 @@ package net.wg.gui.battle.pveBase.views.postmortemPanel
          deadReasonBG.visible = false;
       }
       
-      override protected function showPostmortemPanel(param1:Boolean) : void
+      override protected function showPostmortemInfoPanel(param1:Boolean) : void
       {
          if(this._hideHintPanel)
          {

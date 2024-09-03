@@ -7,7 +7,7 @@ from gui.Scaleform.framework.managers.loaders import SFViewLoadParams
 from gui.Scaleform.genConsts.PROFILE_CONSTANTS import PROFILE_CONSTANTS
 from gui.Scaleform.locale.PROFILE import PROFILE
 from gui.collection.account_settings import getCollectionsTabCounter
-from gui.limited_ui.lui_rules_storage import LuiRules
+from gui.limited_ui.lui_rules_storage import LUI_RULES
 from gui.shared import events, g_eventBus
 from gui.shared.event_bus import EVENT_BUS_SCOPE
 from gui.ClientUpdateManager import g_clientUpdateManager
@@ -20,7 +20,7 @@ from gui.Scaleform.daapi.view.lobby.hof.web_handlers import createHofWebHandlers
 from gui.Scaleform.daapi.view.lobby.hof.hof_helpers import getHofDisabledKeys, onServerSettingsChange
 from gui.shared.events import ProfilePageEvent, CollectionsEvent
 _LUI_RULES = (
- LuiRules.PROFILE_HOF, VIEW_ALIAS.PROFILE_TECHNIQUE_PAGE)
+ LUI_RULES.profileHof, LUI_RULES.profileTechniquePage)
 _logger = logging.getLogger(__name__)
 
 class ProfilePage(LobbySubView, ProfileMeta):
@@ -203,9 +203,9 @@ class ProfilePage(LobbySubView, ProfileMeta):
             counters.append({'componentId': VIEW_ALIAS.PROFILE_ACHIEVEMENTS_PAGE, 'count': str(advancedAchievementsCount)})
         if self.__isHofEnabled:
             hofCounter = getHofTabCounter()
-            if hofCounter and self._limitedUIController.isRuleCompleted(LuiRules.PROFILE_HOF):
+            if hofCounter and self._limitedUIController.isRuleCompleted(LUI_RULES.profileHof):
                 counters.append({'componentId': VIEW_ALIAS.PROFILE_HOF, 'count': str(hofCounter)})
-            if isHofButtonNew(PROFILE_CONSTANTS.HOF_VIEW_RATING_BUTTON) and self._limitedUIController.isRuleCompleted(LuiRules.PROFILE_TECHNIQUE_PAGE):
+            if isHofButtonNew(PROFILE_CONSTANTS.HOF_VIEW_RATING_BUTTON) and self._limitedUIController.isRuleCompleted(LUI_RULES.profileTechniquePage):
                 counters.append({'componentId': VIEW_ALIAS.PROFILE_TECHNIQUE_PAGE, 'count': '1'})
         if self.__collectionsSystem.isEnabled() and getCollectionsTabCounter(collectionsSystem=self.__collectionsSystem):
             counters.append({'componentId': VIEW_ALIAS.PROFILE_COLLECTIONS_PAGE, 'count': ' '})

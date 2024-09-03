@@ -426,7 +426,7 @@ package net.wg.gui.lobby.menu
       
       private function updateCopyrightPos() : void
       {
-         this.copyright.y = this.background.y + this.background.height - (BACKGROUND_SIZE_FIX >> 1) - COPYRIGHT_MIN_BOTTOM_MARGIN - this.copyright.height | 0;
+         this.copyright.y = this.background.y + this.background.height - (BACKGROUND_SIZE_FIX >> 1) - COPYRIGHT_MIN_BOTTOM_MARGIN - this.copyright.getHeight() | 0;
          this.copyright.x = this.background.x + (this.background.width - this.copyright.getWidth() >> 1) | 0;
       }
    }

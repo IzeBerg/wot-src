@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>7.000000</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>birds</name>
+		<type>model</type>
+		<resource>content/Environment/env_birds/SparrowsTakeoff.model</resource>
+		<track>
+			<name>animation</name>
+			<type>animation</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>7.000000</duration>
+				<resourceID>content/Environment/env_birds/SparrowsFlock.fbx</resourceID>
+				<clipName/>
+				<speed>1.000000</speed>
+				<layer>0</layer>
+				<blendIn>constant</blendIn>
+				<blendOut>constant</blendOut>
+				<blendInTime>0.000000</blendInTime>
+				<blendOutTime>0.000000</blendOutTime>
+				<clipStartTime>0.000000</clipStartTime>
+				<clipEndTime>4.966667</clipEndTime>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.938080 0.271283 -2.553497</value>
+				<inTangent>4.431304 3.696011 -5.129751</inTangent>
+				<outTangent>4.431304 3.696011 -5.129751</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.600000</startTime>
+				<value>3.596863 2.488890 -5.631348</value>
+				<inTangent>4.303908 2.697451 -5.178499</inTangent>
+				<outTangent>4.303908 2.697451 -5.178499</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.333333</startTime>
+				<value>6.659637 3.734742 -9.464661</value>
+				<inTangent>2.722934 1.571158 -4.468963</inTangent>
+				<outTangent>2.722934 1.571158 -4.468963</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>4.000000</startTime>
+				<value>10.044586 7.583879 -19.359802</value>
+				<inTangent>0.612731 2.000578 -4.392708</inTangent>
+				<outTangent>0.612731 2.000578 -4.392708</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>7.000000</startTime>
+				<value>9.912903 15.257071 -34.584015</value>
+				<inTangent>-0.043894 2.557730 -5.074737</inTangent>
+				<outTangent>-0.043894 2.557730 -5.074737</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-33.573513 140.377869 0.002196</value>
+				<inTangent>11.895799 6.815404 -5.074747</inTangent>
+				<outTangent>11.895799 6.815404 -5.074747</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.333333</startTime>
+				<value>-17.712452 149.465073 -6.764132</value>
+				<inTangent>4.851850 9.259263 -6.239340</inTangent>
+				<outTangent>4.851850 9.259263 -6.239340</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>4.000000</startTime>
+				<value>-23.558048 180.673401 -26.507952</value>
+				<inTangent>-2.192098 11.703122 -7.403932</inTangent>
+				<outTangent>-2.192098 11.703122 -7.403932</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>6.000000</startTime>
+				<value>1.000000 1.000000 1.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>-1.000000 -1.000000 -1.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>7.000000</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>-1.000000 -1.000000 -1.000000</inTangent>
+				<outTangent>-1.000000 -1.000000 -1.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Sound 0</name>
+		<type>sound</type>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>7.000000</duration>
+				<value>birds|Birds01</value>
+			</frame>
+		</track>
+		<track>
+			<name>Sound</name>
+			<type>sound</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>7.000000</duration>
+				<sequenceSound>style_cust_ShPTK_scared_birds_hit</sequenceSound>
+				<type>play_till_end</type>
+				<fade>0.000000</fade>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

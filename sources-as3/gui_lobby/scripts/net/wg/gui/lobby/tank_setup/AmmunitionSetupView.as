@@ -20,8 +20,6 @@ package net.wg.gui.lobby.tank_setup
    public class AmmunitionSetupView extends AmmunitionSetupViewMeta implements IAmmunitionSetupViewMeta
    {
       
-      private static const PARAMS_MARGIN_BOTTOM:int = 178;
-      
       private static const BOTTOM_PANEL_HEIGHT:int = 35;
       
       private static const PARAMS_ANIM_OFFSET_Y:int = 70;
@@ -32,13 +30,13 @@ package net.wg.gui.lobby.tank_setup
       
       private static const PARAMS_RIGHT_EMPTY_AREA:int = 19;
       
-      private static const PARAMS_Y_LARGE:int = 152;
+      private static const PARAMS_Y_LARGE:int = 160;
       
       private static const PARAMS_Y_MEDIUM:int = 143;
       
-      private static const PARAMS_Y_SMALL:int = 125;
+      private static const PARAMS_Y_SMALL:int = 131;
       
-      private static const PARAMS_Y_TINY:int = 165;
+      private static const PARAMS_Y_TINY:int = 131;
       
       private static const SM_THRESHOLD_X:Number = 1360;
       
@@ -58,6 +56,8 @@ package net.wg.gui.lobby.tank_setup
       private var _paramsPositionInited:Boolean = false;
       
       private var _appStage:Stage;
+      
+      private var _bottomMargin:int = 178;
       
       public function AmmunitionSetupView()
       {
@@ -129,9 +129,11 @@ package net.wg.gui.lobby.tank_setup
          super.onDispose();
       }
       
-      public function as_gfSizeUpdated(param1:int, param2:int) : void
+      public function as_gfSizeUpdated(param1:int, param2:int, param3:int) : void
       {
+         this._bottomMargin = param3;
          this.params.x = param1 + param2 + PARAMS_RIGHT_EMPTY_AREA - this.params.width >> 0;
+         this.updateParamsVertLayout();
          if(!this._paramsPositionInited)
          {
             this._paramsPositionInited = true;
@@ -200,7 +202,12 @@ package net.wg.gui.lobby.tank_setup
             _loc1_ = PARAMS_Y_MEDIUM;
          }
          this.params.y = _loc1_;
-         this.params.height = _originalHeight - this.params.y - PARAMS_MARGIN_BOTTOM ^ 0;
+         this.params.height = _originalHeight;
+         var _loc2_:* = _originalHeight - this.params.y - this._bottomMargin ^ 0;
+         if(_loc2_ >= 0)
+         {
+            this.params.height = _loc2_;
+         }
       }
       
       private function showView() : void

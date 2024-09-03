@@ -212,15 +212,3 @@ class CrosshairPanelContainerMeta(DAAPISimpleContainerMeta):
     def as_setAimDamageStageS(self, value):
         if self._isDAAPIInited():
             return self.flashObject.as_setAimDamageStage(value)
-
-    def as_setOverheatProgressS(self, value, isOverheated):
-        if self._isDAAPIInited():
-            return self.flashObject.as_setOverheatProgress(value, isOverheated)
-
-    def as_addOverheatS(self, overheatMark):
-        if self._isDAAPIInited():
-            return self.flashObject.as_addOverheat(overheatMark)
-
-    def as_removeOverheatS(self):
-        if self._isDAAPIInited():
-            return self.flashObject.as_removeOverheat()

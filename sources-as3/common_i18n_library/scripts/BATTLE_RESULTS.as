@@ -179,8 +179,6 @@ package
       
       public static const COMMON_NEWSKILLPREDICTION:String = "#battle_results:common/newSkillPrediction";
       
-      public static const COMMON_CREWMEMBER_NEWFREESKILL:String = "#battle_results:common/crewMember/newFreeSkill";
-      
       public static const COMMON_CREWMEMBER_NEWSKILL:String = "#battle_results:common/crewMember/newSkill";
       
       public static const COMMON_CREWMEMBER_DESCRIPTION:String = "#battle_results:common/crewMember/description";

@@ -27,6 +27,8 @@ package
       
       public static const MULTIPLIER:String = "#common:multiplier";
       
+      public static const XVALUE:String = "#common:xValue";
+      
       public static const PERCENTVALUE:String = "#common:percentValue";
       
       public static const PLUSVALUE:String = "#common:plusValue";
@@ -60,6 +62,10 @@ package
       public static const RELATIVEDATETIME_TODAY:String = "#common:relativeDateTime/today";
       
       public static const RELATIVEDATETIME_YESTERDAY:String = "#common:relativeDateTime/yesterday";
+      
+      public static const PROGRESS:String = "#common:progress";
+      
+      public static const CLOSE:String = "#common:close";
        
       
       public function COMMON()

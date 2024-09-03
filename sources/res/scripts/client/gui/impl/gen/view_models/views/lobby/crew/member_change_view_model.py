@@ -1,7 +1,7 @@
 from frameworks.wulf import Array
 from gui.impl.gen.view_models.common.vehicle_info_model import VehicleInfoModel
 from gui.impl.gen.view_models.views.lobby.crew.common.base_crew_view_model import BaseCrewViewModel
-from gui.impl.gen.view_models.views.lobby.crew.tankman_model import TankmanModel
+from gui.impl.gen.view_models.views.lobby.crew.member_change_tankman_model import MemberChangeTankmanModel
 
 class MemberChangeViewModel(BaseCrewViewModel):
     __slots__ = ('onResetFilters', 'onTankmanSelected', 'onRecruitSelected', 'onRecruitNewTankman',
@@ -74,7 +74,7 @@ class MemberChangeViewModel(BaseCrewViewModel):
 
     @staticmethod
     def getTankmanListType():
-        return TankmanModel
+        return MemberChangeTankmanModel
 
     def getIsRecruitDisabled(self):
         return self._getBool(12)

@@ -65,6 +65,8 @@ package net.wg.data.constants
       
       public static const REWARD_SHEET:String = ICON_TEXT_FRAMES.REWARD_SHEET;
       
+      public static const BPBIT:String = ICON_TEXT_FRAMES.BPBIT;
+      
       public static const CREDITS_COLOR:int = 13556185;
       
       public static const GOLD_COLOR:int = 16761699;

@@ -91,9 +91,13 @@
 		</brotherhood>
 		<commander_tutor>
 			<xpBonusFactorPerLevel>
-				0.001
+				0.002
 				<!--BW_String-->
 			</xpBonusFactorPerLevel>
+			<efficiency>
+				0.65
+				<!--BW_String-->
+			</efficiency>
 			<UISettings>
 				<tooltipSection>skills</tooltipSection>
 				<descr>
@@ -102,14 +106,33 @@
 						<paramName>xpBonusFactorPerLevel</paramName>
 						<measureType>percents</measureType>
 						<value>
-							0.001
+							0.002
+							<!--BW_String-->
+						</value>
+					</arg>
+					<arg>
+						<situationalParam>false</situationalParam>
+						<paramName>woundedCrewEfficiency</paramName>
+						<measureType>percents</measureType>
+						<sign>minus</sign>
+						<value>
+							0.0065
 							<!--BW_String-->
 						</value>
 					</arg>
 				</descr>
+				<kpi>
+					<mul>
+						<name>woundedCrewEfficiency</name>
+						<value>
+							0.35
+							<!--BW_String-->
+						</value>
+					</mul>
+				</kpi>
 			</UISettings>
 		</commander_tutor>
-		<commander_expert>
+		<commander_coordination>
 			<vsePerk>104</vsePerk>
 			<UISettings>
 				<tooltipSection>skills</tooltipSection>
@@ -117,34 +140,26 @@
 				<descr>
 					<arg>
 						<situationalParam>true</situationalParam>
-						<paramName>damageMonitoringDelay</paramName>
-						<sign>signLess</sign>
-						<measureType>seconds</measureType>
+						<paramName>vehicleGunAimSpeed</paramName>
+						<measureType>percents</measureType>
 						<value>
-							-0.04
+							-0.00125
 							<!--BW_String-->
 						</value>
 					</arg>
 				</descr>
 				<params>
 					<param>
-						<name>damageMonitoringDelay</name>
+						<name>aimingTime</name>
 						<situationalParam>true</situationalParam>
 						<value>
-							-0.04
+							-0.00125
 							<!--BW_String-->
 						</value>
 					</param>
 				</params>
-				<kpi>
-					<add>
-						<name>damagedModulesDetectionTime</name>
-						<situationalKpi>true</situationalKpi>
-						<value>-4</value>
-					</add>
-				</kpi>
 			</UISettings>
-		</commander_expert>
+		</commander_coordination>
 		<commander_enemyShotPredictor>
 			<targetRadius>
 				30.0
@@ -177,6 +192,16 @@
 							<!--BW_String-->
 						</value>
 					</arg>
+					<arg>
+						<situationalParam>false</situationalParam>
+						<paramName>stunResistanceEffectFactor</paramName>
+						<measureType>percents</measureType>
+						<sign>minus</sign>
+						<value>
+							0.001
+							<!--BW_String-->
+						</value>
+					</arg>
 				</descr>
 				<kpi>
 					<add>
@@ -184,40 +209,16 @@
 						<situationalKpi>true</situationalKpi>
 						<value>-2</value>
 					</add>
-				</kpi>
-			</UISettings>
-		</commander_enemyShotPredictor>
-		<commander_universalist>
-			<efficiency>
-				0.5
-				<!--BW_String-->
-			</efficiency>
-			<chanceToHitPerLevel>0</chanceToHitPerLevel>
-			<UISettings>
-				<tooltipSection>skills</tooltipSection>
-				<descr>
-					<arg>
-						<situationalParam>false</situationalParam>
-						<paramName>woundedCrewEfficiency</paramName>
-						<measureType>percents</measureType>
-						<sign>minus</sign>
-						<value>
-							0.005
-							<!--BW_String-->
-						</value>
-					</arg>
-				</descr>
-				<kpi>
 					<mul>
-						<name>woundedCrewEfficiency</name>
+						<name>stunResistanceEffectFactor</name>
 						<value>
-							0.5
+							0.9
 							<!--BW_String-->
 						</value>
 					</mul>
 				</kpi>
 			</UISettings>
-		</commander_universalist>
+		</commander_enemyShotPredictor>
 		<commander_sixthSense>
 			<delay>
 				3.0
@@ -256,19 +257,19 @@
 					</arg>
 					<arg>
 						<situationalParam>false</situationalParam>
-						<paramName>circularVisionRadiusWhileSurveyingDeviceDamaged</paramName>
+						<paramName>penaltyToDamagedSurveyingDevice</paramName>
 						<measureType>percents</measureType>
 						<value>
-							0.002
+							-0.002
 							<!--BW_String-->
 						</value>
 					</arg>
 				</descr>
 				<kpi>
 					<mul>
-						<name>circularVisionRadiusWhileSurveyingDeviceDamaged</name>
+						<name>penaltyToDamagedSurveyingDevice</name>
 						<value>
-							1.2
+							0.8
 							<!--BW_String-->
 						</value>
 					</mul>
@@ -285,6 +286,25 @@
 				</params>
 			</UISettings>
 		</commander_eagleEye>
+		<commander_emergency>
+			<crewLevelIncrease>5</crewLevelIncrease>
+			<vsePerk>102</vsePerk>
+			<UISettings>
+				<tooltipSection>skills</tooltipSection>
+				<typeName>situational</typeName>
+				<descr>
+					<arg>
+						<situationalParam>true</situationalParam>
+						<paramName>crewLevelIncrease</paramName>
+						<measureType>percents</measureType>
+						<value>
+							0.0005
+							<!--BW_String-->
+						</value>
+					</arg>
+				</descr>
+			</UISettings>
+		</commander_emergency>
 		<commander_practical>
 			<vsePerk>106</vsePerk>
 			<UISettings>
@@ -295,7 +315,7 @@
 						<paramName>equipmentPreparationTime</paramName>
 						<measureType>percents</measureType>
 						<value>
-							-0.0015
+							-0.001
 							<!--BW_String-->
 						</value>
 					</arg>
@@ -304,7 +324,7 @@
 					<mul>
 						<name>equipmentPreparationTime</name>
 						<value>
-							0.85
+							0.9
 							<!--BW_String-->
 						</value>
 					</mul>
@@ -312,7 +332,6 @@
 			</UISettings>
 		</commander_practical>
 		<driver_tidyPerson>
-			<vsePerk>304</vsePerk>
 			<UISettings>
 				<tooltipSection>skills</tooltipSection>
 				<descr>
@@ -406,37 +425,52 @@
 				<descr>
 					<arg>
 						<situationalParam>false</situationalParam>
-						<paramName>vehicleWeakSoilResistance</paramName>
+						<paramName>mediumGroundFactor</paramName>
 						<measureType>percents</measureType>
 						<value>
-							0.001
+							0.0005
 							<!--BW_String-->
 						</value>
 					</arg>
 					<arg>
 						<situationalParam>false</situationalParam>
-						<paramName>vehicleAverageSoilResistance</paramName>
+						<paramName>softGroundFactor</paramName>
 						<measureType>percents</measureType>
 						<value>
-							0.00025
+							0.01
 							<!--BW_String-->
 						</value>
 					</arg>
 				</descr>
+				<params>
+					<param>
+						<name>mediumGroundFactor</name>
+						<value>
+							0.0005
+							<!--BW_String-->
+						</value>
+						<situationalParam>false</situationalParam>
+					</param>
+					<param>
+						<name>softGroundFactor</name>
+						<value>
+							0.01
+							<!--BW_String-->
+						</value>
+						<situationalParam>false</situationalParam>
+					</param>
+				</params>
 				<kpi>
 					<mul>
-						<name>vehicleWeakSoilResistance</name>
+						<name>mediumGroundFactor</name>
 						<value>
-							1.1
+							1.05
 							<!--BW_String-->
 						</value>
 					</mul>
 					<mul>
-						<name>vehicleAverageSoilResistance</name>
-						<value>
-							1.025
-							<!--BW_String-->
-						</value>
+						<name>softGroundFactor</name>
+						<value>2</value>
 					</mul>
 				</kpi>
 			</UISettings>
@@ -451,7 +485,7 @@
 						<paramName>damageEnemiesByRamming</paramName>
 						<measureType>percents</measureType>
 						<value>
-							0.0015
+							0.002
 							<!--BW_String-->
 						</value>
 					</arg>
@@ -461,7 +495,17 @@
 						<measureType>percents</measureType>
 						<sign>minus</sign>
 						<value>
-							0.0015
+							0.0025
+							<!--BW_String-->
+						</value>
+					</arg>
+					<arg>
+						<situationalParam>false</situationalParam>
+						<paramName>vehicleRamChassisDamageResistance</paramName>
+						<measureType>percents</measureType>
+						<sign>minus</sign>
+						<value>
+							0.005
 							<!--BW_String-->
 						</value>
 					</arg>
@@ -470,14 +514,21 @@
 					<mul>
 						<name>damageEnemiesByRamming</name>
 						<value>
-							1.15
+							1.2
 							<!--BW_String-->
 						</value>
 					</mul>
 					<mul>
 						<name>vehicleRamDamageResistance</name>
 						<value>
-							0.85
+							0.75
+							<!--BW_String-->
+						</value>
+					</mul>
+					<mul>
+						<name>vehicleRamChassisDamageResistance</name>
+						<value>
+							0.5
 							<!--BW_String-->
 						</value>
 					</mul>
@@ -491,10 +542,10 @@
 				<descr>
 					<arg>
 						<situationalParam>false</situationalParam>
-						<paramName>vehicleEnginePower</paramName>
+						<paramName>vehPenaltyForDamagedEngine</paramName>
 						<measureType>percents</measureType>
 						<value>
-							0.0005
+							-0.002
 							<!--BW_String-->
 						</value>
 					</arg>
@@ -519,9 +570,9 @@
 				</descr>
 				<params>
 					<param>
-						<name>enginePower</name>
+						<name>engineReduceFineFactor</name>
 						<value>
-							0.0005
+							-0.002
 							<!--BW_String-->
 						</value>
 						<situationalParam>false</situationalParam>
@@ -545,9 +596,9 @@
 				</params>
 				<kpi>
 					<mul>
-						<name>vehicleEnginePower</name>
+						<name>vehPenaltyForDamagedEngine</name>
 						<value>
-							1.05
+							0.8
 							<!--BW_String-->
 						</value>
 					</mul>
@@ -562,6 +613,49 @@
 				</kpi>
 			</UISettings>
 		</driver_motorExpert>
+		<driver_reliablePlacement>
+			<vsePerk>304</vsePerk>
+			<UISettings>
+				<tooltipSection>skills</tooltipSection>
+				<descr>
+					<arg>
+						<situationalParam>false</situationalParam>
+						<paramName>vehicleHEShellDamageResistance</paramName>
+						<measureType>percents</measureType>
+						<value>
+							-0.0010
+							<!--BW_String-->
+						</value>
+					</arg>
+					<arg>
+						<situationalParam>false</situationalParam>
+						<paramName>vehicleFallingDamageResistance</paramName>
+						<measureType>percents</measureType>
+						<sign>minus</sign>
+						<value>
+							0.0030
+							<!--BW_String-->
+						</value>
+					</arg>
+				</descr>
+				<kpi>
+					<mul>
+						<name>vehicleHEShellDamageResistance</name>
+						<value>
+							0.9
+							<!--BW_String-->
+						</value>
+					</mul>
+					<mul>
+						<name>vehicleFallingDamageResistance</name>
+						<value>
+							0.70
+							<!--BW_String-->
+						</value>
+					</mul>
+				</kpi>
+			</UISettings>
+		</driver_reliablePlacement>
 		<gunner_smoothTurret>
 			<vsePerk>201</vsePerk>
 			<UISettings>
@@ -598,32 +692,67 @@
 				</params>
 			</UISettings>
 		</gunner_smoothTurret>
-		<gunner_gunsmith>
-			<vsePerk>205</vsePerk>
+		<gunner_armorer>
+			<vsePerk>206</vsePerk>
 			<UISettings>
 				<tooltipSection>skills</tooltipSection>
 				<descr>
 					<arg>
 						<situationalParam>false</situationalParam>
-						<paramName>vehicleGunShotDispersionWhileGunDamaged</paramName>
+						<paramName>damageAndPiercingDistributionLowerBound</paramName>
 						<measureType>percents</measureType>
 						<value>
-							-0.002
+							0.0005
+							<!--BW_String-->
+						</value>
+					</arg>
+					<arg>
+						<situationalParam>false</situationalParam>
+						<paramName>damageAndPiercingDistributionUpperBound</paramName>
+						<measureType>percents</measureType>
+						<value>
+							-0.0005
+							<!--BW_String-->
+						</value>
+					</arg>
+					<arg>
+						<situationalParam>false</situationalParam>
+						<paramName>shotDispersionAngle</paramName>
+						<measureType>percents</measureType>
+						<value>
+							-0.00015
 							<!--BW_String-->
 						</value>
 					</arg>
 				</descr>
+				<params>
+					<param>
+						<name>shotDispersionAngle</name>
+						<situationalParam>false</situationalParam>
+						<value>
+							-0.00015
+							<!--BW_String-->
+						</value>
+					</param>
+				</params>
 				<kpi>
 					<mul>
-						<name>vehicleGunShotDispersionWhileGunDamaged</name>
+						<name>damageAndPiercingDistributionLowerBound</name>
 						<value>
-							0.80
+							1.05
+							<!--BW_String-->
+						</value>
+					</mul>
+					<mul>
+						<name>damageAndPiercingDistributionUpperBound</name>
+						<value>
+							0.95
 							<!--BW_String-->
 						</value>
 					</mul>
 				</kpi>
 			</UISettings>
-		</gunner_gunsmith>
+		</gunner_armorer>
 		<gunner_sniper>
 			<vsePerk>202</vsePerk>
 			<UISettings>
@@ -654,6 +783,7 @@
 			<vsePerk>203</vsePerk>
 			<UISettings>
 				<tooltipSection>skills</tooltipSection>
+				<typeName>situational</typeName>
 				<descr>
 					<arg>
 						<situationalParam>false</situationalParam>
@@ -664,11 +794,36 @@
 							<!--BW_String-->
 						</value>
 					</arg>
+					<arg>
+						<situationalParam>true</situationalParam>
+						<paramName>damageMonitoringDelay</paramName>
+						<sign>signLess</sign>
+						<measureType>seconds</measureType>
+						<value>
+							-0.04
+							<!--BW_String-->
+						</value>
+					</arg>
 				</descr>
+				<params>
+					<param>
+						<name>damageMonitoringDelay</name>
+						<situationalParam>true</situationalParam>
+						<value>
+							-0.04
+							<!--BW_String-->
+						</value>
+					</param>
+				</params>
 				<kpi>
 					<add>
 						<name>vehicleEnemySpottingTime</name>
 						<value>2</value>
+					</add>
+					<add>
+						<name>damagedModulesDetectionTime</name>
+						<situationalKpi>true</situationalKpi>
+						<value>-4</value>
 					</add>
 				</kpi>
 			</UISettings>
@@ -684,7 +839,7 @@
 						<paramName>shotDispersionAngle</paramName>
 						<measureType>percents</measureType>
 						<value>
-							-0.00025
+							-0.00035
 							<!--BW_String-->
 						</value>
 					</arg>
@@ -694,7 +849,7 @@
 						<name>shotDispersionAngle</name>
 						<situationalParam>true</situationalParam>
 						<value>
-							-0.00025
+							-0.00035
 							<!--BW_String-->
 						</value>
 					</param>
@@ -702,7 +857,7 @@
 			</UISettings>
 		</gunner_focus>
 		<gunner_quickAiming>
-			<vsePerk>206</vsePerk>
+			<vsePerk>205</vsePerk>
 			<UISettings>
 				<tooltipSection>skills</tooltipSection>
 				<descr>
@@ -715,22 +870,30 @@
 							<!--BW_String-->
 						</value>
 					</arg>
-				</descr>
-				<kpi>
-					<mul>
-						<name>vehicleGunAimSpeed</name>
+					<arg>
+						<situationalParam>false</situationalParam>
+						<paramName>vehicleTurretRotationSpeed</paramName>
+						<measureType>percents</measureType>
 						<value>
-							1.025
+							0.00025
 							<!--BW_String-->
 						</value>
-					</mul>
-				</kpi>
+					</arg>
+				</descr>
 				<params>
 					<param>
-						<name>vehicleGunAimSpeed</name>
+						<name>aimingTime</name>
 						<situationalParam>false</situationalParam>
 						<value>
 							-0.00025
+							<!--BW_String-->
+						</value>
+					</param>
+					<param>
+						<name>turretRotationSpeed</name>
+						<situationalParam>false</situationalParam>
+						<value>
+							0.00025
 							<!--BW_String-->
 						</value>
 					</param>
@@ -747,7 +910,7 @@
 						<paramName>vehicleAmmoBayStrength</paramName>
 						<measureType>percents</measureType>
 						<value>
-							0.00125
+							0.0025
 							<!--BW_String-->
 						</value>
 					</arg>
@@ -756,7 +919,7 @@
 					<mul>
 						<name>vehicleAmmoBayStrength</name>
 						<value>
-							1.125
+							1.25
 							<!--BW_String-->
 						</value>
 					</mul>
@@ -774,7 +937,7 @@
 						<paramName>vehicleGunReloadTime</paramName>
 						<measureType>percents</measureType>
 						<value>
-							-0.0009
+							-0.0005
 							<!--BW_String-->
 						</value>
 					</arg>
@@ -784,7 +947,7 @@
 						<name>gunReloadSpeed</name>
 						<situationalParam>true</situationalParam>
 						<value>
-							-0.0009
+							-0.0005
 							<!--BW_String-->
 						</value>
 					</param>
@@ -792,7 +955,7 @@
 						<name>reloadTime</name>
 						<situationalParam>true</situationalParam>
 						<value>
-							-0.0009
+							-0.0005
 							<!--BW_String-->
 						</value>
 					</param>
@@ -800,7 +963,7 @@
 						<name>reloadTimeSecs</name>
 						<situationalParam>true</situationalParam>
 						<value>
-							-0.0009
+							-0.0005
 							<!--BW_String-->
 						</value>
 					</param>
@@ -808,7 +971,7 @@
 						<name>avgDamagePerMinute</name>
 						<situationalParam>true</situationalParam>
 						<value>
-							-0.0009
+							-0.0005
 							<!--BW_String-->
 						</value>
 					</param>
@@ -816,7 +979,7 @@
 						<name>autoReloadTime</name>
 						<situationalParam>true</situationalParam>
 						<value>
-							-0.0009
+							-0.0005
 							<!--BW_String-->
 						</value>
 					</param>
@@ -824,7 +987,15 @@
 						<name>clipFireRate</name>
 						<situationalParam>true</situationalParam>
 						<value>
-							-0.0009
+							-0.0005
+							<!--BW_String-->
+						</value>
+					</param>
+					<param>
+						<name>autoShootClipFireRate</name>
+						<situationalParam>true</situationalParam>
+						<value>
+							-0.0005
 							<!--BW_String-->
 						</value>
 					</param>
@@ -857,51 +1028,32 @@
 				</kpi>
 			</UISettings>
 		</loader_intuition>
-		<loader_ambushMaster>
+		<loader_perfectCharge>
 			<vsePerk>404</vsePerk>
 			<UISettings>
 				<tooltipSection>skills</tooltipSection>
 				<descr>
 					<arg>
 						<situationalParam>false</situationalParam>
-						<paramName>shotDemaskFactor</paramName>
+						<paramName>shellVelocity</paramName>
 						<measureType>percents</measureType>
 						<value>
 							0.001
-							<!--BW_String-->
-						</value>
-					</arg>
-					<arg>
-						<situationalParam>false</situationalParam>
-						<paramName>foliageMaskingFactor</paramName>
-						<measureType>percents</measureType>
-						<value>
-							0.0002
 							<!--BW_String-->
 						</value>
 					</arg>
 				</descr>
 				<kpi>
 					<mul>
-						<name>foliageMaskingFactor</name>
+						<name>shellVelocity</name>
 						<value>
-							1.02
+							1.1
 							<!--BW_String-->
 						</value>
 					</mul>
 				</kpi>
-				<params>
-					<param>
-						<name>shotDemaskFactor</name>
-						<situationalParam>false</situationalParam>
-						<value>
-							0.001
-							<!--BW_String-->
-						</value>
-					</param>
-				</params>
 			</UISettings>
-		</loader_ambushMaster>
+		</loader_perfectCharge>
 		<loader_melee>
 			<vsePerk>405</vsePerk>
 			<UISettings>
@@ -967,6 +1119,14 @@
 							<!--BW_String-->
 						</value>
 					</param>
+					<param>
+						<name>autoShootClipFireRate</name>
+						<situationalParam>true</situationalParam>
+						<value>
+							-0.00025
+							<!--BW_String-->
+						</value>
+					</param>
 				</params>
 			</UISettings>
 		</loader_melee>
@@ -1023,37 +1183,28 @@
 				</params>
 			</UISettings>
 		</radioman_finder>
-		<radioman_inventor>
+		<radioman_expert>
 			<crewLevelIncrease>
-				0.0
+				2.5
 				<!--BW_String-->
 			</crewLevelIncrease>
 			<vsePerk>505</vsePerk>
 			<UISettings>
 				<tooltipSection>skills</tooltipSection>
+				<typeName>situational</typeName>
 				<descr>
 					<arg>
-						<situationalParam>false</situationalParam>
-						<paramName>radioDistance</paramName>
+						<situationalParam>true</situationalParam>
+						<paramName>crewLevelIncrease</paramName>
 						<measureType>percents</measureType>
 						<value>
-							0.002
+							0.00025
 							<!--BW_String-->
 						</value>
 					</arg>
 				</descr>
-				<params>
-					<param>
-						<name>radioDistance</name>
-						<situationalParam>false</situationalParam>
-						<value>
-							0.002
-							<!--BW_String-->
-						</value>
-					</param>
-				</params>
 			</UISettings>
-		</radioman_inventor>
+		</radioman_expert>
 		<radioman_lastEffort>
 			<durationPerLevel>
 				0.02
@@ -1087,44 +1238,32 @@
 				</kpi>
 			</UISettings>
 		</radioman_lastEffort>
-		<radioman_retransmitter>
+		<radioman_sideBySide>
 			<crewLevelIncrease>
-				0.0
+				2.5
 				<!--BW_String-->
 			</crewLevelIncrease>
-			<teamRadioBonusFactorPerLevel>
-				0.001
-				<!--BW_String-->
-			</teamRadioBonusFactorPerLevel>
 			<vsePerk>502</vsePerk>
 			<UISettings>
 				<tooltipSection>skills</tooltipSection>
+				<typeName>situational</typeName>
 				<descr>
 					<arg>
-						<situationalParam>false</situationalParam>
-						<paramName>teamRadioBonusFactor</paramName>
+						<situationalParam>true</situationalParam>
+						<paramName>crewLevelIncrease</paramName>
 						<measureType>percents</measureType>
 						<value>
-							0.001
+							0.00025
 							<!--BW_String-->
 						</value>
 					</arg>
 				</descr>
-				<kpi>
-					<mul>
-						<name>vehicleAllyRadioDistance</name>
-						<value>
-							1.1
-							<!--BW_String-->
-						</value>
-					</mul>
-				</kpi>
 			</UISettings>
-		</radioman_retransmitter>
+		</radioman_sideBySide>
 		<fireFighting>
+			<vsePerk>506</vsePerk>
 			<UISettings>
 				<tooltipSection>skills</tooltipSection>
-				<typeName>common</typeName>
 				<descr>
 					<arg>
 						<situationalParam>false</situationalParam>
@@ -1136,6 +1275,16 @@
 						</value>
 					</arg>
 				</descr>
+				<params>
+					<param>
+						<name>fireExtinguishingRate</name>
+						<situationalParam>false</situationalParam>
+						<value>
+							0.0043
+							<!--BW_String-->
+						</value>
+					</param>
+				</params>
 				<kpi>
 					<add>
 						<name>fireExtinguishingRate</name>
@@ -1167,5 +1316,31 @@
 				</kpi>
 			</UISettings>
 		</radioman_interference>
+		<radioman_signalInterception>
+			<vsePerk>504</vsePerk>
+			<UISettings>
+				<tooltipSection>skills</tooltipSection>
+				<descr>
+					<arg>
+						<situationalParam>false</situationalParam>
+						<paramName>commanderLampDelay</paramName>
+						<measureType>seconds</measureType>
+						<value>
+							-0.0075
+							<!--BW_String-->
+						</value>
+					</arg>
+				</descr>
+				<kpi>
+					<add>
+						<name>commanderLampDelay</name>
+						<value>
+							-0.75
+							<!--BW_String-->
+						</value>
+					</add>
+				</kpi>
+			</UISettings>
+		</radioman_signalInterception>
 	</skills>
 </root>

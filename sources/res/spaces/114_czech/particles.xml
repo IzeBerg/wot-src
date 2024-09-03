@@ -1,6 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
 	<forward>
+		<name>default</name>
+		<preload>
+			<shader>\data\shaders\ps_solid.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_tex.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_water.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_tex.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_water.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_dirt.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_leaves.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_long.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_tex.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_long.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_tex_long.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_dirt.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_long.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_dirt.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_water.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_tex.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_tex.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_long.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_tex.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_water.fx</shader>
+			<texture>particles/content_forward/PFX_textures/tracers.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_long.fx</shader>
+			<texture>particles/content_forward/PFX_textures/tracers.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_rocket_accelerator.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_long.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_rocket_accelerator.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps.fx</shader>
+			<texture>particles/content_forward/PFX_textures/lightning_02.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_tex_83_kharkiv_fire.dds</texture>
+		</preload>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Buildings/hd_bld_UNI_008_WorkshopNew_Doors_Big_01_1.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Buildings/hd_bld_UNI_008_WorkshopNew_Doors_Big_01_3.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Buildings/hd_bld_UNI_008_WorkshopNew_Wall_01.vfx</fn_effect_bin>
@@ -15,6 +84,7 @@
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Buildings/inf_bldSU_001_Outhouse_04.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Buildings/inf_env_UNI_633_WaterPump_01.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Buildings/inf_env_UNI_633_WaterPump_02.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Environment/fire_small_2.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/05_prohorovka_fire_big_all_2.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/05_prohorovka_fire_small_2.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/05_prohorovka_smoke_3.vfx</fn_effect_bin>
@@ -100,6 +170,8 @@
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_rw_UNI_012_RailwaySection_Arrow.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_rw_UNI_613_RailwayBarrier_01.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_shells_detonation_medium.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Environment/random_events/114_czech_firesmoke_outland.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Environment/random_events/114_czech_firesmoke_thick.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/inf_tree_birch_fall_big.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/inf_tree_birch_fall_med.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/inf_tree_birch_touchdown_big.vfx</fn_effect_bin>
@@ -161,6 +233,7 @@
 		<fn_effect_bin>particles/environment/interior/114_czech_gas_combustion.eff</fn_effect_bin>
 		<fn_effect_bin>particles/environment/interior/114_czech_gasolin_fire_big.eff</fn_effect_bin>
 		<fn_effect_bin>particles/environment/interior/114_czech_gasolin_fire_small.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/interior/19_monastery_fire_small_2.eff</fn_effect_bin>
 		<fn_effect_bin>particles/environment/interior/63_tundra_firesmoke_thick.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/hd_bld_UNI_008_WorkshopNew_Doors_Big_02_Left.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/hd_bld_UNI_010_WorkshopIndoor_02.eff</fn_effect_bin>
@@ -238,6 +311,8 @@
 		<fn_effect_bin>particles/Environment/objects/inf_rw_UNI_012_RailwaySection_Arrow.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_rw_UNI_613_RailwayBarrier_01.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_shells_detonation_medium.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/random_events/114_czech_firesmoke_outland.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/random_events/114_czech_firesmoke_thick.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_birch_fall_big.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_birch_fall_med.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_birch_touchdown_big.eff</fn_effect_bin>
@@ -294,6 +369,87 @@
 		<preloadVisual>particles/mesh_particles/wood_stick_03.visual</preloadVisual>
 	</forward>
 	<deferred>
+		<name>default</name>
+		<preload>
+			<shader>\data\shaders\ps_solid.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_tex.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_water.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_tex.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_water.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_dirt.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_water_displacement.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_tex_water.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_foam.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_tex_water.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_under_water.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_tex.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_leaves.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_long.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_tex.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_long.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_tex_long.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_dirt.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_long.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_dirt.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_tex.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_long.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/tracers.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_water.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/tracers.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_force_fields.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_tex_force_field.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_shimmer.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_tex_distortion.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_rocket_accelerator.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_long.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_rocket_accelerator.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps.fx</shader>
+			<texture>particles/content_deferred/GFX_models/GFX_textures/lightning_02.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_tex_83_kharkiv_fire.dds</texture>
+		</preload>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Buildings/hd_bld_UNI_008_WorkshopNew_Doors_Big_01_1.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Buildings/hd_bld_UNI_008_WorkshopNew_Doors_Big_01_3.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Buildings/hd_bld_UNI_008_WorkshopNew_Wall_01.vfx</fn_effect_bin>
@@ -309,6 +465,7 @@
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Buildings/inf_env_UNI_633_WaterPump_01.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Buildings/inf_env_UNI_633_WaterPump_02.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/CameraEffects/sky_ash.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/fire_small_2.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/05_prohorovka_fire_big_all_2.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/05_prohorovka_fire_small_2.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/05_prohorovka_smoke_3.vfx</fn_effect_bin>
@@ -398,6 +555,8 @@
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_rw_UNI_012_RailwaySection_Arrow.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_rw_UNI_613_RailwayBarrier_01.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_shells_detonation_medium.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/random_events/114_czech_firesmoke_outland.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/random_events/114_czech_firesmoke_thick.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/inf_tree_birch_fall_big.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/inf_tree_birch_fall_med.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/inf_tree_birch_touchdown_big.vfx</fn_effect_bin>
@@ -459,6 +618,7 @@
 		<fn_effect_bin>particles/environment/interior/114_czech_gas_combustion.eff</fn_effect_bin>
 		<fn_effect_bin>particles/environment/interior/114_czech_gasolin_fire_big.eff</fn_effect_bin>
 		<fn_effect_bin>particles/environment/interior/114_czech_gasolin_fire_small.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/interior/19_monastery_fire_small_2.eff</fn_effect_bin>
 		<fn_effect_bin>particles/environment/interior/63_tundra_firesmoke_thick.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/hd_bld_UNI_008_WorkshopNew_Doors_Big_02_Left.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/hd_bld_UNI_010_WorkshopIndoor_02.eff</fn_effect_bin>
@@ -536,6 +696,8 @@
 		<fn_effect_bin>particles/Environment/objects/inf_rw_UNI_012_RailwaySection_Arrow.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_rw_UNI_613_RailwayBarrier_01.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_shells_detonation_medium.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/random_events/114_czech_firesmoke_outland.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/random_events/114_czech_firesmoke_thick.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_birch_fall_big.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_birch_fall_med.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_birch_touchdown_big.eff</fn_effect_bin>

@@ -1,5 +1,6 @@
 from collections import namedtuple
 from web.web_client_api import webApiCollection
+from web.web_client_api.exchange import PersonalExchangeRatesDiscountsWebApi
 from web.web_client_api.request import RequestWebApi
 from web.web_client_api.sound import SoundWebApi, SoundStateWebApi, HangarSoundWebApi
 from web.web_client_api.ui import NotificationWebApi, OpenWindowWebApi
@@ -19,7 +20,7 @@ BattleRoyaleSeasonAchievements = namedtuple('BattleRoyaleSeasonAchievements', ('
                                                                                'top1'))
 
 def createBattleRoyaleWebHanlders():
-    return webApiCollection(FrontLineWebApi, BattleRoyaleWebApi, VehiclesWebApi, RequestWebApi, ShopWebApi, OpenWindowWebApi, CloseWindowWebApi, OpenTabWebApi, NotificationWebApi, ContextMenuWebApi, UtilWebApi, SoundWebApi, SoundStateWebApi, HangarSoundWebApi, QuestsWebApi)
+    return webApiCollection(FrontLineWebApi, BattleRoyaleWebApi, VehiclesWebApi, RequestWebApi, ShopWebApi, OpenWindowWebApi, CloseWindowWebApi, OpenTabWebApi, NotificationWebApi, ContextMenuWebApi, UtilWebApi, SoundWebApi, SoundStateWebApi, HangarSoundWebApi, QuestsWebApi, PersonalExchangeRatesDiscountsWebApi)
 
 
 @w2capi(name='battle_royale', key='action')

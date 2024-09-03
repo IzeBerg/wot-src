@@ -127,6 +127,7 @@ package net.wg.gui.components.ribbon.data
       {
          this._ribbonText = param2;
          this._ribbonSettingsByType.icon = param1;
+         this._ribbonSettingsByType.colorBlindIcon = param1;
       }
       
       public function getRibbonType() : String

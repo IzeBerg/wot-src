@@ -1,9 +1,9 @@
-import typing
 from copy import copy
-from gui.impl import backport
+import typing
 from gui.Scaleform.daapi.view.lobby.vehicle_compare import cmp_helpers
 from gui.Scaleform.locale.VEH_COMPARE import VEH_COMPARE
 from gui.game_control.veh_comparison_basket import CONFIGURATION_TYPES
+from gui.impl import backport
 from gui.shared.formatters import text_styles
 from gui.shared.gui_items import vehicle_adjusters
 from gui.shared.gui_items.Tankman import CrewTypes
@@ -12,7 +12,7 @@ from gui.shared.items_parameters import formatters
 from gui.shared.items_parameters.comparator import rateParameterState, PARAM_STATE, VehiclesComparator, getParamExtendedData, PARAMS_NORMALIZATION_MAP
 from gui.shared.items_parameters.formatters import FORMAT_SETTINGS, clipFireRatePreprocessor, shotDispersionAnglePreprocessor
 from gui.shared.items_parameters.params import VehicleParams
-from gui.shared.items_parameters.params_helper import VehParamsBaseGenerator, isValidEmptyValue
+from gui.shared.items_parameters.params_helper import VehParamsBaseGenerator, isValidEmptyValue, updateCrewBonus
 from gui.shared.utils import SHOT_DISPERSION_ANGLE, AUTO_SHOOT_CLIP_FIRE_RATE
 from helpers import dependency
 from post_progression_common import VehicleState
@@ -152,7 +152,7 @@ class _VehCompareParametersData(object):
     def __init__(self, cache, vehCompareData):
         super(_VehCompareParametersData, self).__init__()
         self.__crewLvl = None
-        self.__skills = None
+        self.__skillsByTankman = None
         self.__configurationType = None
         self.__isInInventory = None
         self.__currentVehParams = None
@@ -178,17 +178,11 @@ class _VehCompareParametersData(object):
         self.__parameters = self.__initParameters(vehCompareData.getVehicleCD(), self.__vehicle)
         return
 
-    def setCrewData(self, crewLvl, skills):
-        if self.__crewLvl != crewLvl or self.__skills != skills:
+    def setCrewData(self, crewLvl, skillsByTankman):
+        if self.__crewLvl != crewLvl or self.__skillsByTankman != skillsByTankman:
             self.__crewLvl = crewLvl
-            self.__skills = skills
-            skillsDict = {}
-            skillsByRoles = cmp_helpers.getVehicleCrewSkills(self.__vehicle)
-            for idx, (_, skillsSet) in enumerate(skillsByRoles):
-                sameSkills = skillsSet.intersection(self.__skills)
-                if sameSkills:
-                    skillsDict[idx] = sameSkills
-
+            self.__skillsByTankman = skillsByTankman
+            skillsDict = {idx:list(skills) for idx, (_, skills) in self.__skillsByTankman.items()}
             if crewLvl == CrewTypes.CURRENT:
                 levelsByIndexes, nativeVehiclesByIndexes = cmp_helpers.getVehCrewInfo(self.__vehicle.intCD)
                 defRoleLevel = None
@@ -197,6 +191,7 @@ class _VehCompareParametersData(object):
                 defRoleLevel = self.__crewLvl
                 nativeVehiclesByIndexes = None
             self.__vehicle.crew = self.__vehicle.getCrewBySkillLevels(defRoleLevel, skillsDict, levelsByIndexes, nativeVehiclesByIndexes, activateBrotherhood=True)
+            updateCrewBonus(self.__vehicle)
             self.__isCrewInvalid = True
             self.__isCurrVehParamsInvalid = True
         return self.__isCrewInvalid
@@ -270,7 +265,7 @@ class _VehCompareParametersData(object):
         return self.__isInInvInvalid
 
     def dispose(self):
-        self.__skills = None
+        self.__skillsByTankman = None
         self.__vehicleStrCD = None
         self.__equipment = None
         self.__cache = None

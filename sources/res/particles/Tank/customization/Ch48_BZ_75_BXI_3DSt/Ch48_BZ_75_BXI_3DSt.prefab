@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-	<version>3</version>
+	<version>4</version>
 	<GameObjects>
 		<GameObject>
 			<name>Ch48_BZ_75_BXI_3DSt</name>
@@ -38,7 +38,7 @@
 			<type>Hierarchy</type>
 			<version>2</version>
 			<component>
-				<objectIndex>1</objectIndex>
+				<UUID>6e902c6b-63a0-4a41-a04f-133279a32f2e</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -48,7 +48,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>2</objectIndex>
+				<UUID>d04a347a-d80c-4029-aa26-9bc0f21ef875</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -58,7 +58,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>3</objectIndex>
+				<UUID>e8e32a60-cdf2-4ee1-8a4d-21c15a81cbb8</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -68,7 +68,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>4</objectIndex>
+				<UUID>bb27db65-cff5-4597-9183-8725795109b4</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -78,7 +78,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>5</objectIndex>
+				<UUID>2c81bc7f-5fb2-4b6d-b01c-1f37e818e9d3</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -92,7 +92,7 @@
 			<type>Transform</type>
 			<version>1</version>
 			<component>
-				<objectIndex>0</objectIndex>
+				<UUID>64509327-c4dc-49e1-9bc6-5b9ba3c36079</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -110,7 +110,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>1</objectIndex>
+				<UUID>6e902c6b-63a0-4a41-a04f-133279a32f2e</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -128,7 +128,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>2</objectIndex>
+				<UUID>d04a347a-d80c-4029-aa26-9bc0f21ef875</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -146,7 +146,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>3</objectIndex>
+				<UUID>e8e32a60-cdf2-4ee1-8a4d-21c15a81cbb8</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -164,7 +164,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>4</objectIndex>
+				<UUID>bb27db65-cff5-4597-9183-8725795109b4</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -185,7 +185,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>5</objectIndex>
+				<UUID>2c81bc7f-5fb2-4b6d-b01c-1f37e818e9d3</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -205,19 +205,16 @@
 		</ComponentPool>
 		<ComponentPool>
 			<type>Prefab</type>
-			<version>1</version>
+			<version>2</version>
 			<component>
-				<objectIndex>5</objectIndex>
+				<UUID>2c81bc7f-5fb2-4b6d-b01c-1f37e818e9d3</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
-						<name>resource</name>
-						<isAsset>true</isAsset>
-						<value>particles/Tank/customization/Ch48_BZ_75_BXI_3DSt/Ch48_BZ_75_BXI_3DSt_Rocket_green.prefab</value>
-					</property>
-					<property>
-						<name>overridesData</name>
-						<value/>
+						<name>content</name>
+						<section>
+							<resource>particles/Tank/customization/Ch48_BZ_75_BXI_3DSt/Ch48_BZ_75_BXI_3DSt_Rocket_green.prefab</resource>
+						</section>
 					</property>
 				</config>
 			</component>
@@ -226,7 +223,7 @@
 			<type>ProjectileHitsReceivedAnimatorTriggerComponent</type>
 			<version>1</version>
 			<component>
-				<objectIndex>0</objectIndex>
+				<UUID>64509327-c4dc-49e1-9bc6-5b9ba3c36079</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -251,7 +248,7 @@
 			<type>ComponentsVisibilityController</type>
 			<version>1</version>
 			<component>
-				<objectIndex>1</objectIndex>
+				<UUID>6e902c6b-63a0-4a41-a04f-133279a32f2e</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -301,7 +298,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>2</objectIndex>
+				<UUID>d04a347a-d80c-4029-aa26-9bc0f21ef875</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -351,7 +348,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>3</objectIndex>
+				<UUID>e8e32a60-cdf2-4ee1-8a4d-21c15a81cbb8</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -405,7 +402,7 @@
 			<type>DynamicModel</type>
 			<version>1</version>
 			<component>
-				<objectIndex>0</objectIndex>
+				<UUID>64509327-c4dc-49e1-9bc6-5b9ba3c36079</UUID>
 				<flags>2</flags>
 				<config>
 					<property>
@@ -424,7 +421,7 @@
 			<type>NodeFollower</type>
 			<version>1</version>
 			<component>
-				<objectIndex>1</objectIndex>
+				<UUID>6e902c6b-63a0-4a41-a04f-133279a32f2e</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -438,7 +435,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>2</objectIndex>
+				<UUID>d04a347a-d80c-4029-aa26-9bc0f21ef875</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -452,7 +449,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>3</objectIndex>
+				<UUID>e8e32a60-cdf2-4ee1-8a4d-21c15a81cbb8</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -470,7 +467,7 @@
 			<type>Animator</type>
 			<version>2</version>
 			<component>
-				<objectIndex>0</objectIndex>
+				<UUID>64509327-c4dc-49e1-9bc6-5b9ba3c36079</UUID>
 				<flags>3</flags>
 				<config>
 					<property>
@@ -560,7 +557,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>1</objectIndex>
+				<UUID>6e902c6b-63a0-4a41-a04f-133279a32f2e</UUID>
 				<flags>3</flags>
 				<config>
 					<property>
@@ -650,7 +647,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>2</objectIndex>
+				<UUID>d04a347a-d80c-4029-aa26-9bc0f21ef875</UUID>
 				<flags>3</flags>
 				<config>
 					<property>
@@ -740,7 +737,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>3</objectIndex>
+				<UUID>e8e32a60-cdf2-4ee1-8a4d-21c15a81cbb8</UUID>
 				<flags>3</flags>
 				<config>
 					<property>
@@ -834,7 +831,7 @@
 			<type>VehicleCustomEffectsSettings</type>
 			<version>1</version>
 			<component>
-				<objectIndex>0</objectIndex>
+				<UUID>64509327-c4dc-49e1-9bc6-5b9ba3c36079</UUID>
 				<flags>1</flags>
 				<config>
 					<property>

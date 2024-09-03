@@ -1,11 +1,11 @@
-import sys, weakref
+import sys, time, weakref
 from collections import deque
 from soft_exception import SoftException
 import BigWorld
 from BWUtil import AsyncReturn
 from functools import wraps, partial
 from constants import IS_DEVELOPMENT, IS_CLIENT, IS_BOT
-from debug_utils import LOG_CURRENT_EXCEPTION, LOG_WARNING, LOG_DEBUG, LOG_DEBUG_DEV
+from debug_utils import LOG_CURRENT_EXCEPTION, LOG_WARNING, LOG_DEBUG, LOG_DEBUG_DEV, LOG_DEBUG_DEV_NICE
 
 def wg_async(func):
 
@@ -160,6 +160,26 @@ def distributeLoopOverTicks(loopIterator, minPerTick=None, maxPerTick=None, logI
 
     if logID is not None:
         LOG_DEBUG('distributeLoopOverTicks logID/numStatements/delayedCount', logID, numStatements, delayedCount)
+    return
+
+
+@wg_async
+def distributeLoopOverTicks2(loopOperator, maxRuntime=0.01, logID=None, tickLength=0.1):
+    delays = 0
+    while BigWorld.isNextTickPending():
+        delays += 1
+        yield wg_await(delay(tickLength))
+
+    time0 = time.time()
+    for _ in loopOperator:
+        time1 = time.time()
+        while time1 - time0 > maxRuntime or BigWorld.isNextTickPending():
+            delays += 1
+            yield wg_await(delay(tickLength))
+            time0 = time.time()
+
+    if logID is not None:
+        LOG_DEBUG_DEV_NICE('distributeLoopOverTicks2. logID=', logID, '; delays=', delays)
     return
 
 

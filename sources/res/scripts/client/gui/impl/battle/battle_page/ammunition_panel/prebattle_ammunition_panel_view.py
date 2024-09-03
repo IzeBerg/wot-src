@@ -158,7 +158,8 @@ class Comp7PrebattleAmmunitionPanelView(PrebattleAmmunitionPanelView):
         if roleSkill is None:
             return
         else:
-            header, body = getRoleEquipmentTooltipParts(roleSkill)
+            startLevel = self.__getVehicleRoleSkillStartLevel(vehicle)
+            header, body = getRoleEquipmentTooltipParts(roleSkill, startLevel)
             with self.viewModel.transaction() as (tx):
                 tx.roleSkillSlot.setRoleSkill(roleSkill.name)
                 tx.roleSkillSlot.setTooltipHeader(header)
@@ -168,3 +169,7 @@ class Comp7PrebattleAmmunitionPanelView(PrebattleAmmunitionPanelView):
     def __getVehicleRoleSkill(self, vehicle):
         roleName = ROLE_TYPE_TO_LABEL.get(vehicle.descriptor.role)
         return self.__comp7Controller.getRoleEquipment(roleName)
+
+    def __getVehicleRoleSkillStartLevel(self, vehicle):
+        roleName = ROLE_TYPE_TO_LABEL.get(vehicle.descriptor.role)
+        return self.__comp7Controller.getEquipmentStartLevel(roleName)

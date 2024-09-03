@@ -165,6 +165,7 @@ class BattleRoyaleTournamentController(IBattleRoyaleTournamentController):
             g_eventDispatcher.notifySpecialBattleWindow()
 
     def __onCollectPrebattleInvites(self, autoInvites):
+        savedPreviousIsAvailable = self.__isAvailable
         self.__isAvailable = False
         for key, invite in autoInvites.items():
             if invite['type'] == PREBATTLE_TYPE.BATTLE_ROYALE_TOURNAMENT:
@@ -202,7 +203,7 @@ class BattleRoyaleTournamentController(IBattleRoyaleTournamentController):
                'addInfo': tokenData.data}
             self.__isAvailable = True
 
-        if not self.__isAvailable:
+        if savedPreviousIsAvailable and not self.__isAvailable:
             self.leaveBattleRoyaleTournament()
             self.__clearInternalData()
             g_playerEvents.onUpdateSpecBattlesWindow()

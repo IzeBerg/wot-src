@@ -24,10 +24,6 @@
 					<materialKind>111</materialKind>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
 					<property>
-						alphaReference
-						<Int>0</Int>
-					</property>
-					<property>
 						g_fakeShadowsAndDetailParams
 						<Vector4>0.000000 0.500000 1.000000 0.000000</Vector4>
 					</property>
@@ -44,24 +40,12 @@
 						<Vector4>0.180000 0.168800 0.154800 0.620000</Vector4>
 					</property>
 					<property>
-						g_dirtColorParams
-						<Vector4>0.100000 0.000000 0.000000 0.000000</Vector4>
-					</property>
-					<property>
 						g_atlasSizes
 						<Vector4>3.000000 2.000000 2.000000 2.000000</Vector4>
 					</property>
 					<property>
 						g_enableTerrainBlending
 						<Bool>true</Bool>
-					</property>
-					<property>
-						doubleSided
-						<Bool>false</Bool>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>false</Bool>
 					</property>
 					<property>
 						blendMask
@@ -122,10 +106,6 @@
 					<materialKind>111</materialKind>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
 					<property>
-						alphaReference
-						<Int>0</Int>
-					</property>
-					<property>
 						g_fakeShadowsAndDetailParams
 						<Vector4>0.000000 0.500000 1.000000 0.000000</Vector4>
 					</property>
@@ -134,24 +114,12 @@
 						<Vector4>0.180000 0.168800 0.154800 0.620000</Vector4>
 					</property>
 					<property>
-						g_dirtColorParams
-						<Vector4>0.100000 0.000000 0.000000 0.000000</Vector4>
-					</property>
-					<property>
 						g_atlasSizes
 						<Vector4>3.000000 2.000000 2.000000 2.000000</Vector4>
 					</property>
 					<property>
 						g_enableTerrainBlending
 						<Bool>true</Bool>
-					</property>
-					<property>
-						doubleSided
-						<Bool>false</Bool>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>false</Bool>
 					</property>
 					<property>
 						blendMask
@@ -207,8 +175,8 @@
 		</geometry>
 	</renderSet>
 	<boundingBox>
-		<min>-1.640018 -0.001318 -8.497254</min>
-		<max>2.331489 13.296781 0.950303</max>
+		<min>-1.640018 -0.001318 -8.579272</min>
+		<max>2.377888 13.296781 1.121162</max>
 	</boundingBox>
 	<customBsp>true</customBsp>
 	<geometrySize>34730</geometrySize>

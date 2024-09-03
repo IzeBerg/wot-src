@@ -587,7 +587,7 @@ class VehicleMarkerPlugin(MarkerPlugin, ChatCommunicationComponent, IArenaVehicl
     def __isVehicleFocusAllowed(self, focusedMarker):
         if avatar_getter.getInputHandler().ctrlModeName == CTRL_MODE_NAME.DEATH_FREE_CAM:
             return True
-        return avatar_getter.isVehicleAlive() or not focusedMarker.getIsPlayerTeam() and not focusedMarker.getIsActionMarkerActive()
+        return avatar_getter.isVehicleAlive() or focusedMarker.getIsPlayerTeam() or not focusedMarker.getIsActionMarkerActive()
 
     def __onVehicleInFocus(self, vehicleID, entityInFocusData):
         if entityInFocusData.entityTypeInFocus != ENTITY_IN_FOCUS_TYPE.VEHICLE:
