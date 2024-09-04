@@ -15,37 +15,37 @@ msgid "#PluralForms"
 msgstr "nplurals=2; plural=(n != 1);"
 
 msgid "alertMessage/afterSeason/first"
-msgstr "Onslaught Light has ended"
+msgstr "Season of the Azure Manticore has ended"
 
 msgid "alertMessage/afterSeason/second"
-msgstr "Season of the Crimson Pegasus has ended"
+msgstr "Season of the Crimson Manticore has ended"
 
 msgid "alertMessage/afterSeason/third"
-msgstr "Season of the Jade Pegasus has ended"
+msgstr "Season of the Jade Manticore has ended"
 
 msgid "alertMessage/allNotAvailable"
 msgstr "Battles on servers will be available in %(primeDelta)s"
 
 msgid "alertMessage/allNotAvailableEnd/first"
-msgstr "Onslaught Light has ended"
+msgstr "Season of the Azure Manticore has ended"
 
 msgid "alertMessage/allNotAvailableEnd/second"
-msgstr "Season of the Crimson Pegasus has ended"
+msgstr "Season of the Crimson Manticore has ended"
 
 msgid "alertMessage/allNotAvailableEnd/third"
-msgstr "Season of the Jade Pegasus has ended"
+msgstr "Season of the Jade Manticore has ended"
 
 msgid "alertMessage/allNotSet"
 msgstr "This mode is unavailable on all servers"
 
 msgid "alertMessage/betweenSeasons/first"
-msgstr "Onslaught Light has ended"
+msgstr "Season of the Azure Manticore has ended"
 
 msgid "alertMessage/betweenSeasons/second"
-msgstr "Season of the Crimson Pegasus has ended"
+msgstr "Season of the Crimson Manticore has ended"
 
 msgid "alertMessage/betweenSeasons/third"
-msgstr "Season of the Jade Pegasus has ended"
+msgstr "Season of the Jade Manticore has ended"
 
 msgid "alertMessage/button/changeServer"
 msgstr "Select Another Server"
@@ -69,13 +69,13 @@ msgid "alertMessage/standaloneNotAvailable"
 msgstr "Battles on this server will be available in %(primeDelta)s"
 
 msgid "alertMessage/standaloneNotAvailableEnd/first"
-msgstr "Onslaught Light has ended"
+msgstr "Season of the Azure Manticore has ended"
 
 msgid "alertMessage/standaloneNotAvailableEnd/second"
-msgstr "Season of the Crimson Pegasus has ended"
+msgstr "Season of the Crimson Manticore has ended"
 
 msgid "alertMessage/standaloneNotAvailableEnd/third"
-msgstr "Season of the Jade Pegasus has ended"
+msgstr "Season of the Jade Manticore has ended"
 
 msgid "alertMessage/standaloneNotSet"
 msgstr "This mode is not available on the %(serverName)s server"
@@ -100,31 +100,46 @@ msgid "alertMessage/undefined"
 msgstr "?empty?"
 
 msgid "alertMessage/unsuitableVehicles"
-msgstr "No suitable vehicles in your Garage"
+msgstr "No suitable Tier %(levels)s vehicles in the Garage"
 
 msgid "banner/info/disabled"
-msgstr "Ceasefire"
-
-msgid "banner/info/seasonEnd"
-msgstr "The Season has ended"
-
-msgid "banner/info/seasonEndSoon"
-msgstr "Don't miss Tier VIII action!"
-
-msgid "banner/info/seasonJustStarted"
-msgstr "Enter the Tier VIII fray!"
-
-msgid "banner/info/seasonNotStarted"
-msgstr "Tier VIII action awaits!"
-
-msgid "banner/infoSmall/disabled"
 msgstr "Wait for Prime Time"
 
+msgid "banner/info/seasonEnd/first"
+msgstr "The Season of the Azure Manticore has ended"
+
+msgid "banner/info/seasonEnd/second"
+msgstr "The Season of the Crimson Manticore has ended"
+
+msgid "banner/info/seasonEnd/third"
+msgstr "The Season of the Jade Manticore has ended"
+
+msgid "banner/info/seasonEndSoon"
+msgstr "Last chance to show off your skills!"
+
+msgid "banner/info/seasonJustStarted"
+msgstr "Show what you can do!"
+
+msgid "banner/infoSmall/disabled"
+msgstr "Ceasefire"
+
+msgid "banner/infoSmall/seasonEndSoon"
+msgstr "Last chance to shine!"
+
+msgid "banner/season/first"
+msgstr "Azure Manticore"
+
+msgid "banner/season/second"
+msgstr "Crimson Manticore"
+
+msgid "banner/season/third"
+msgstr "Jade Manticore"
+
 msgid "banner/seasonDate/seasonLasts"
-msgstr "Until %(month)s %(day)s"
+msgstr "%(season)s, until %(month)s %(day)s"
 
 msgid "banner/seasonDate/seasonNotStarted"
-msgstr "From %(month)s %(day)s"
+msgstr "%(season)s, from %(month)s %(day)s"
 
 msgid "banner/seasonDateSmall/seasonLasts"
 msgstr "Until %(month)s %(day)s"
@@ -133,13 +148,13 @@ msgid "banner/seasonDateSmall/seasonNotStarted"
 msgstr "From %(month)s %(day)s"
 
 msgid "banner/timeLeft/hours"
-msgstr "%(hour)s h %(min)s min"
+msgstr "Prime Time: %(hour)s h %(min)s min"
 
 msgid "banner/timeLeft/min"
-msgstr "%(min)s min"
+msgstr "Prime Time: %(min)s min"
 
 msgid "banner/title"
-msgstr "ONSLAUGHT LIGHT"
+msgstr "ONSLAUGHT"
 
 msgid "battleCarousel/filterButtonTooltip/body"
 msgstr "Configure the vehicle display by type, role, and nation."
@@ -217,7 +232,7 @@ msgid "battlePage/statusNotificationTimers/sureShot"
 msgstr "Vehicle characteristics improved"
 
 msgid "battleResult/header/deserter"
-msgstr "You have received a disciplinary penalty"
+msgstr "You have received a disciplinary penalty: Penalty to Rating Points"
 
 msgid "battleResult/header/deserterQualification"
 msgstr ""
@@ -228,7 +243,9 @@ msgid "battleResult/label/deserter"
 msgstr "Desertion"
 
 msgid "battleResult/message/deserter"
-msgstr "You have received a penalty: Temporary Block."
+msgstr ""
+"You have received a disciplinary penalty.\n"
+"Rating Points lost: %(penalty)s"
 
 msgid "battleResult/message/deserterQualification"
 msgstr ""
@@ -306,7 +323,9 @@ msgid "battleResult/subTask/title/raise"
 msgstr "You have been promoted to %(division)s. %(rank)s!"
 
 msgid "battleResult/team/prestigePoints/body"
-msgstr "Sort by Prestige Points."
+msgstr ""
+"Sort by Prestige Points. Prestige Points affect the number of Rating Points "
+"earned and lost in a battle."
 
 msgid "battleResult/team/prestigePoints/header"
 msgstr "Prestige Points"
@@ -318,22 +337,22 @@ msgid "calendarDay/time"
 msgstr "%(start)s–%(end)s"
 
 msgid "calendarDay/timeLeft/first"
-msgid_plural "plural/calendarDay/timeLeft"
-msgstr[0] "Onslaught Light will last for %(days)d day"
-msgstr[1] "Onslaught Light will last for %(days)d days"
-msgstr[2] "Onslaught Light will last for %(days)d days"
+msgid_plural "plural/calendarDay/timeLeft/first"
+msgstr[0] "Season of the Azure Manticore will last for %(days)d day"
+msgstr[1] "Season of the Azure Manticore will last for %(days)d days"
+msgstr[2] "Season of the Azure Manticore will last for %(days)d days"
 
 msgid "calendarDay/timeLeft/second"
 msgid_plural "plural/calendarDay/timeLeft/second"
-msgstr[0] "Season of the Crimson Pegasus will last for %(days)d day"
-msgstr[1] "Season of the Crimson Pegasus will last for %(days)d days"
-msgstr[2] "Season of the Crimson Pegasus will last for %(days)d days"
+msgstr[0] "Season of the Crimson Manticore will last for %(days)d day"
+msgstr[1] "Season of the Crimson Manticore will last for %(days)d days"
+msgstr[2] "Season of the Crimson Manticore will last for %(days)d days"
 
 msgid "calendarDay/timeLeft/third"
 msgid_plural "plural/calendarDay/timeLeft/third"
-msgstr[0] "Season of the Jade Pegasus will last for %(days)d day"
-msgstr[1] "Season of the Jade Pegasus will last for %(days)d days"
-msgstr[2] "Season of the Jade Pegasus will last for %(days)d days"
+msgstr[0] "Season of the Jade Manticore will last for %(days)d day"
+msgstr[1] "Season of the Jade Manticore will last for %(days)d days"
+msgstr[2] "Season of the Jade Manticore will last for %(days)d days"
 
 msgid "calendarDay/title"
 msgstr "Schedule"
@@ -352,6 +371,23 @@ msgstr ""
 "Event starts in:\n"
 "%(timeLeft)s"
 
+msgid "crewMembersTooltip/description"
+msgstr ""
+"This special crew comprises tankers from around the world, united under the "
+"leadership of their Commander. All of them have Brothers in Arms as a zero "
+"perk and enough Crew XP to train two more perks, allowing them to improve "
+"the vehicle's performance—as well as bring their own personal flair to the "
+"battlefield."
+
+msgid "crewMembersTooltip/perks"
+msgstr "Perks"
+
+msgid "crewMembersTooltip/subHeading"
+msgstr "Onslaught. Year of the Manticore"
+
+msgid "crewMembersTooltip/zeroPerks"
+msgstr "Zero perks"
+
 msgid "dash"
 msgstr "—"
 
@@ -364,7 +400,7 @@ msgid "dataError/title"
 msgstr "Error Loading Data"
 
 msgid "detailsHelp/mainTitle"
-msgstr "Hints for Onslaught Light Mode"
+msgstr "Hints for Onslaught Mode"
 
 msgid "detailsHelp/poi"
 msgstr ""
@@ -398,12 +434,12 @@ msgstr "Prestige Points"
 
 msgid "detailsHelp/seasonModifiers"
 msgstr ""
-"The mode has modifiers that changes certain parameters of the vehicle, such "
-"as vehicle hit points, consumables cooldown time, time remaining visible, "
-"and more."
+"The mode has modifiers that change certain parameters of the vehicle, such "
+"as vehicle durability, consumable cooldown time, time remaining visible, and"
+" more."
 
 msgid "detailsHelp/seasonModifiers/title"
-msgstr "Onslaught Modifiers"
+msgstr "ONSLAUGHT MODIFIERS"
 
 msgid "division/A"
 msgstr "A"
@@ -436,10 +472,10 @@ msgid "divisionTooltip/heading"
 msgstr "Division %(divisionName)s"
 
 msgid "featureName"
-msgstr "ONSLAUGHT LIGHT"
+msgstr "ONSLAUGHT"
 
 msgid "featureNameCapitalized"
-msgstr "ONSLAUGHT LIGHT"
+msgstr "ONSLAUGHT"
 
 msgid "fifthRankTooltip/description"
 msgstr ""
@@ -483,16 +519,11 @@ msgstr "ABOUT THE EVENT"
 msgid "intro/confirmButton"
 msgstr "Affirmative!"
 
-msgid "intro/description/noRankedSystem"
-msgstr ""
-"Enjoy the gameplay of the original Onslaught mode without Qualification, "
-"Ranks, or any Service Records."
-
 msgid "intro/description/onslaughtModifiers"
 msgstr ""
 "The mode has modifiers that change certain parameters of the vehicle, such "
-"as vehicle hit points, consumables cooldown time, time remaining visible, "
-"and more."
+"as vehicle durability, consumable cooldown time, time remaining visible, and"
+" more."
 
 msgid "intro/description/pointsOfInterest"
 msgstr ""
@@ -502,6 +533,27 @@ msgstr ""
 "position, and the Comms Center will spot all enemy vehicles. Depending on "
 "the map, the presence and location of these Points of Interest can change."
 
+msgid "intro/description/qualification"
+msgid_plural "plural/intro/description/qualification"
+msgstr[0] ""
+"Fight %(count)s Qualification battle to determine your skill level and rank. Upon completion, you will receive rewards for the rank you achieved and all previous ranks.\n"
+"\n"
+"Desertion or a draw in Qualification will be considered as a defeat."
+msgstr[1] ""
+"Fight %(count)s Qualification battles to determine your skill level and rank. Upon completion, you will receive rewards for the rank you achieved and all previous ranks.\n"
+"\n"
+"Desertion or a draw in Qualification will be considered as a defeat."
+msgstr[2] ""
+"Fight %(count)s Qualification battles to determine your skill level and rank. Upon completion, you will receive rewards for the rank you achieved and all previous ranks.\n"
+"\n"
+"Desertion or a draw in Qualification will be considered as a defeat."
+
+msgid "intro/description/ranks"
+msgstr ""
+"A system that reflects the player's skill. Progress through the ranks from "
+"Iron to Legend and earn valuable prizes. Fight throughout the Year of the "
+"Manticore to receive unique Annual Rewards."
+
 msgid "intro/description/roleSkills"
 msgstr ""
 "Depending on the role, each vehicle has a special skill with three charge levels. The higher the charge level when the skill is activated, the stronger the effect will be. The charge level will depend on the number of Prestige Points that can be earned for impressive performance in battle, capturing Points of Interest, using Tactical Skills, etc.\n"
@@ -510,20 +562,23 @@ msgstr ""
 
 msgid "intro/description/vehiclesOnMap"
 msgstr ""
-"Only Tier VIII vehicles can be used in the mode (SPGs and some other tanks "
-"are not available). Prepare your vehicles in the Garage, then choose the "
-"best one based on the features of the given map once you get into battle. "
-"When selecting your vehicle, also consider which vehicles your allies have "
-"chosen."
-
-msgid "intro/title/noRankedSystem"
-msgstr "CHILL OUT, COMMANDER"
+"You can enter battle in Tier X researchable vehicles (excluding SPGs), as "
+"well as Collectors' and some special vehicles. Prepare your vehicles in the "
+"Garage, then choose the best one based on the features of the given map once"
+" you get into battle. When selecting your vehicle, also consider which "
+"vehicles your allies have chosen."
 
 msgid "intro/title/onslaughtModifiers"
 msgstr "ONSLAUGHT MODIFIERS"
 
 msgid "intro/title/pointsOfInterest"
 msgstr "POINTS OF INTEREST"
+
+msgid "intro/title/qualification"
+msgstr "QUALIFICATION"
+
+msgid "intro/title/ranks"
+msgstr "RANKED SYSTEM"
 
 msgid "intro/title/roleSkills"
 msgstr "ROLE SKILLS"
@@ -642,26 +697,6 @@ msgstr ""
 "%(battleIcon)s{cream_Open}%(battlesCount)s{cream_Close} / "
 "%(maxBattlesCount)s"
 
-msgid "mainWidgetTooltip/column/0"
-msgstr " "
-
-msgid "mainWidgetTooltip/column/1"
-msgstr "Victory"
-
-msgid "mainWidgetTooltip/column/2"
-msgstr "Defeat/Draw"
-
-msgid "mainWidgetTooltip/description/completed"
-msgstr "Solid work, Commander, keep it up!"
-
-msgid "mainWidgetTooltip/description/inProgress"
-msgstr ""
-"Complete missions and reach top positions in Onslaught Light battles to "
-"increase your Progression level."
-
-msgid "mainWidgetTooltip/descriptionHeader"
-msgstr "Main Progression Complete"
-
 msgid "mainWidgetTooltip/division"
 msgstr "Division: %(divisionName)s"
 
@@ -669,12 +704,6 @@ msgid "mainWidgetTooltip/divisionDescription"
 msgstr ""
 "This Division is for the players with {whiteSpanish_Open}%(fromScore) to "
 "%(toScore){whiteSpanish_Close} Rating Points."
-
-msgid "mainWidgetTooltip/eventEnds"
-msgstr "The event ends in %(value)s"
-
-msgid "mainWidgetTooltip/featureName"
-msgstr "Onslaught Light"
 
 msgid "mainWidgetTooltip/info/fifth"
 msgstr ""
@@ -704,17 +733,38 @@ msgstr "Qualification"
 msgid "mainWidgetTooltip/ratingScore"
 msgstr "Rating Points"
 
-msgid "mainWidgetTooltip/top/0"
-msgstr "Top 2 by Prestige Points"
-
-msgid "mainWidgetTooltip/top/1"
-msgstr "Top 5 by Prestige Points"
-
-msgid "mainWidgetTooltip/top/2"
-msgstr "Top 7 by Prestige Points"
-
 msgid "membersWindow/memberCountDropdown/description"
 msgstr "Players in the Platoon"
+
+msgid "modifier/name/engineFireChance"
+msgstr "Engine fire chance"
+
+msgid "modifier/name/innerModuleDamageReduction"
+msgstr "Inner module damage reduction"
+
+msgid "modifier/name/rangeOfPotentialDamage"
+msgstr "Range of potential damage"
+
+msgid "modifier/name/timeRemainingVisible"
+msgstr "Time remaining visible"
+
+msgid "modifier/name/vehicleDurability"
+msgstr "Vehicle durability"
+
+msgid "modifier/valueType/HP"
+msgstr "%(hp)s HP"
+
+msgid "modifier/valueType/deviation"
+msgstr "+/-%(deviation)s%"
+
+msgid "modifier/valueType/meters"
+msgstr "%(meters)s m"
+
+msgid "modifier/valueType/percentage"
+msgstr "%(percentage)s%"
+
+msgid "modifier/valueType/seconds"
+msgstr "%(seconds)s s"
 
 msgid "noVehicles/howTo/premium"
 msgstr "Use WoT Premium Account"
@@ -730,18 +780,18 @@ msgstr "What is the fastest way to get Tier %(levels)s vehicles?"
 
 msgid "noVehicles/text/vehicleAvailableForBuy"
 msgstr ""
-"To participate in Onslaught Light, you need to have at least one Tier %(levels)s vehicle in the Garage that is suitable for the mode.\n"
+"To participate in Onslaught, you need to have at least one Tier %(levels)s vehicle in the Garage that is suitable for the mode.\n"
 "You have a researched Tier %(levels)s vehicle that has not been obtained."
 
 msgid "noVehicles/text/vehicleAvailableForRestore"
 msgstr ""
-"To participate in Onslaught Light, you need to have at least one Tier %(levels)s vehicle in the Garage that is suitable for the mode.\n"
+"To participate in Onslaught, you need to have at least one Tier %(levels)s vehicle in the Garage that is suitable for the mode.\n"
 "You have a Tier %(levels)s vehicle available for recovery."
 
 msgid "noVehicles/text/vehicleUnavailable"
 msgstr ""
-"To participate in Onslaught Light, you need to have at least one Tier "
-"%(levels)s vehicle in the Garage that is suitable for the mode."
+"To participate in Onslaught, you need to have at least one Tier %(levels)s "
+"vehicle in the Garage that is suitable for the mode."
 
 msgid "page/heading/leaderboard"
 msgstr "LEADERBOARD"
@@ -857,20 +907,20 @@ msgid "primeTimeView/status/primeWillBeAvailable"
 msgstr "Battles will start on the %(server)s server in %(time)s"
 
 msgid "primeTimeView/status/seasonDisabled/first"
-msgstr "Onslaught Light has ended on the %(server)s server."
+msgstr "Season of the Azure Manticore has ended on the %(server)s server."
 
 msgid "primeTimeView/status/seasonDisabled/second"
-msgstr "Season of the Crimson Pegasus has ended on the %(server)s server."
+msgstr "Season of the Crimson Manticore has ended on the %(server)s server."
 
 msgid "primeTimeView/status/seasonDisabled/third"
-msgstr "Season of the Jade Pegasus has ended on the %(server)s server."
+msgstr "Season of the Jade Manticore has ended on the %(server)s server."
 
 msgid "primeTimeView/status/untill"
 msgstr ""
 "Battles will not be available until %(startTime)s on the %(server)s server"
 
 msgid "primeTimeView/title"
-msgstr "Onslaught Light"
+msgstr "ONSLAUGHT"
 
 msgid "products/actions/buy"
 msgstr "Purchase"
@@ -1208,7 +1258,8 @@ msgstr ""
 "{whiteSpanish_Open}For Tier %(vehicleLevel)s vehicles{whiteSpanish_Close}"
 
 msgid "rewards/subtitle/styleProgress"
-msgstr "{whiteSpanish_Open}For the Heavenly Horse style{whiteSpanish_Close}"
+msgstr ""
+"{whiteSpanish_Open}For the Hybrid Beast (Azure) style{whiteSpanish_Close}"
 
 msgid "rewards/subtitle/vehicles_rent"
 msgstr "Tier %(vehicleLevel)s"
@@ -1232,16 +1283,16 @@ msgid "rewardsScreen/description/qualificationEnded"
 msgstr "ONSLAUGHT. QUALIFICATION COMPLETED"
 
 msgid "rewardsScreen/description/season/first"
-msgstr "ONSLAUGHT SEASON OF THE AZURE PEGASUS"
+msgstr "ONSLAUGHT SEASON OF THE AZURE MANTICORE"
 
 msgid "rewardsScreen/description/season/second"
-msgstr "ONSLAUGHT SEASON OF THE CRIMSON PEGASUS"
+msgstr "ONSLAUGHT SEASON OF THE CRIMSON MANTICORE"
 
 msgid "rewardsScreen/description/season/third"
-msgstr "ONSLAUGHT SEASON OF THE JADE PEGASUS"
+msgstr "ONSLAUGHT SEASON OF THE JADE MANTICORE"
 
 msgid "rewardsScreen/description/year"
-msgstr "ONSLAUGHT. YEAR OF PEGASUS"
+msgstr "ONSLAUGHT. YEAR OF THE MANTICORE"
 
 msgid "rewardsScreen/noSeasonResult"
 msgstr "No rank"
@@ -1256,7 +1307,7 @@ msgstr "Rank Inactivity"
 
 msgid "rewardsScreen/seasonPointsAmount"
 msgstr ""
-"Total Pegasus\n"
+"Total Onslaught\n"
 "Colors"
 
 msgid "rewardsScreen/shopInfo/header/discount"
@@ -1350,6 +1401,9 @@ msgstr "Ends in %(hours)s h"
 msgid "season/minutesLeft"
 msgstr "Ends in %(minutes)s min"
 
+msgid "season/over"
+msgstr "%(seasonName)s has finished"
+
 msgid "season/range"
 msgstr "%(startDate)s–%(endDate)s"
 
@@ -1360,43 +1414,16 @@ msgid "seasonModifier/title"
 msgstr "Onslaught Modifiers"
 
 msgid "seasonName/first"
-msgstr "Season of the Azure Pegasus"
+msgstr "Season of the Azure Manticore"
 
 msgid "seasonName/second"
-msgstr "Season of the Crimson Pegasus"
+msgstr "Season of the Crimson Manticore"
 
 msgid "seasonName/third"
-msgstr "Season of the Jade Pegasus"
-
-msgid "seasonNameUpper/first"
-msgstr "SEASON OF THE AZURE PEGASUS"
-
-msgid "seasonNameUpper/second"
-msgstr "SEASON OF THE CRIMSON PEGASUS"
-
-msgid "seasonNameUpper/third"
-msgstr "SEASON OF THE JADE PEGASUS"
-
-msgid "seasonNameWithNumber/first"
-msgstr "Season I: Azure Pegasus"
-
-msgid "seasonNameWithNumber/second"
-msgstr "Season II: Crimson Pegasus"
-
-msgid "seasonNameWithNumber/third"
-msgstr "Season III: Jade Pegasus"
-
-msgid "seasonNameWithNumberUpper/first"
-msgstr "SEASON I: AZURE PEGASUS"
-
-msgid "seasonNameWithNumberUpper/second"
-msgstr "SEASON II: CRIMSON PEGASUS"
-
-msgid "seasonNameWithNumberUpper/third"
-msgstr "SEASON III: JADE PEGASUS"
+msgstr "Season of the Jade Manticore"
 
 msgid "seasonPointTooltip/header"
-msgstr "Pegasus Colors"
+msgstr "Onslaught Colors"
 
 msgid "seasonPointTooltip/status/achieved"
 msgstr "Received"
@@ -1405,23 +1432,23 @@ msgid "seasonPointTooltip/status/notAchieved"
 msgstr "Not received"
 
 msgid "seasonPointTooltip/status/possible"
-msgstr "You are a contender to receive Pegasus Colors"
+msgstr "You are a contender to receive Onslaught Colors"
 
 msgid "seasonPointTooltip/text/compensate"
 msgstr ""
-"Unused Pegasus Colors are converted to bonds at this rate: {bond_Open}1 "
-"Pegasus Colors{bond_Close} to "
+"Unused Onslaught Colors are converted to bonds at this rate: {bond_Open}1 "
+"Onslaught Colors{bond_Close} to "
 "{bond_Open}%(seasonPointExchangeRate)s%(bondsIcon)s{bond_Close}"
 
 msgid "seasonPointTooltip/text/season"
 msgstr ""
-"At the end of each Season, you will receive Pegasus Colors according to your"
-" achieved rank."
+"At the end of each Season, you will receive Onslaught Colors according to "
+"your achieved rank."
 
 msgid "seasonPointTooltip/text/year"
 msgstr ""
-"Every 3 Pegasus Colors will improve the quality of the reward you receive at"
-" the end of the year."
+"Every 3 Onslaught Colors will improve the quality of the reward you receive "
+"at the end of the year."
 
 msgid "seasonStatistics/button/fifth"
 msgstr "Where is my trophy?!"
@@ -1452,18 +1479,18 @@ msgstr "ONSLAUGHT. %(seasonNameUpper)s"
 
 msgid "seasonStatistics/description/seasonPoint"
 msgid_plural "plural/seasonStatistics/description/seasonPoint"
-msgstr[0] "Received %(points)s Pegasus Colors"
-msgstr[1] "Received %(points)s Pegasus Colors"
-msgstr[2] "Received %(points)s Pegasus Colors"
+msgstr[0] "Received %(points)s Onslaught Colors"
+msgstr[1] "Received %(points)s Onslaught Colors"
+msgstr[2] "Received %(points)s Onslaught Colors"
 
 msgid "seasonStatistics/seasonNameUpper/first"
-msgstr "SEASON I: AZURE PEGASUS"
+msgstr "SEASON I: AZURE MANTICORE"
 
 msgid "seasonStatistics/seasonNameUpper/second"
-msgstr "SEASON II: CRIMSON PEGASUS"
+msgstr "SEASON II: CRIMSON MANTICORE"
 
 msgid "seasonStatistics/seasonNameUpper/third"
-msgstr "SEASON III: JADE PEGASUS"
+msgstr "SEASON III: JADE MANTICORE"
 
 msgid "seasonStatistics/section/statistics/battles/additional"
 msgstr "Victories: %(additional)s"
@@ -1545,10 +1572,10 @@ msgid "seasonalBattleSelector/timeTable/tomorrow"
 msgstr "Tomorrow"
 
 msgid "selectorTooltip/desc"
-msgstr "Unranked mode: 7v7 | Tier VIII"
+msgstr "Competitive mode. 7v7 | Tier X"
 
 msgid "selectorTooltip/title"
-msgstr "Onslaught Light"
+msgstr "Onslaught"
 
 msgid "selectorTooltip/unavailable/finished"
 msgstr ""
@@ -1562,13 +1589,13 @@ msgid "selectorTooltip/unavailable/nextSeason"
 msgstr "This mode will become available on %(time)s"
 
 msgid "shortSeasonName/first"
-msgstr "Azure Pegasus"
+msgstr "Azure Manticore"
 
 msgid "shortSeasonName/second"
-msgstr "Crimson Pegasus"
+msgstr "Crimson Manticore"
 
 msgid "shortSeasonName/third"
-msgstr "Jade Pegasus"
+msgstr "Jade Manticore"
 
 msgid "sidebar/tabs/tooltip/body/leaderboard"
 msgstr ""
@@ -1595,8 +1622,8 @@ msgstr ""
 
 msgid "sidebar/tabs/tooltip/body/yearlyRewards"
 msgstr ""
-"This section contains information about Annual Rewards for Pegasus Colors "
-"received."
+"This section contains details on the Annual Rewards you can receive by "
+"earning Onslaught Colors."
 
 msgid "sidebar/tabs/tooltip/body/yearlyStatistics"
 msgstr ""
@@ -1630,6 +1657,49 @@ msgstr ""
 "{whiteSpanish_Open}the top %(topPercentage)%{whiteSpanish_Close} of players "
 "on the Leaderboard by Rating Points."
 
+msgid "style3dTooltip/954"
+msgstr "Silver Spikes"
+
+msgid "style3dTooltip/955"
+msgstr "Golden Claws"
+
+msgid "style3dTooltip/956"
+msgstr "Champion's Wings"
+
+msgid "style3dTooltip/957"
+msgstr "Legendary Creature"
+
+msgid "style3dTooltip/description"
+msgstr ""
+"Strong as a lion, fierce as a dragon, and deadly as a scorpion, this beast "
+"is the incarnation in metal of a creature feared since ancient times."
+
+msgid "style3dTooltip/howToReceive"
+msgstr "How to Receive"
+
+msgid "style3dTooltip/secondaryDescription/954"
+msgstr ""
+"Awarded for collecting at least 9 Onslaught Colors in the Year of the "
+"Manticore in Onslaught mode."
+
+msgid "style3dTooltip/secondaryDescription/955"
+msgstr ""
+"Awarded for collecting at least 12 Onslaught Colors in the Year of the "
+"Manticore in Onslaught mode. Replaces the previous style."
+
+msgid "style3dTooltip/secondaryDescription/956"
+msgstr ""
+"Awarded for collecting at least 15 Onslaught Colors in the Year of the "
+"Manticore in Onslaught mode. Replaces the previous style."
+
+msgid "style3dTooltip/secondaryDescription/957"
+msgstr ""
+"Awarded for collecting at least 18 Onslaught Colors in the Year of the "
+"Manticore in Onslaught mode. Replaces the previous style."
+
+msgid "style3dTooltip/suitableVehicles"
+msgstr "Suitable for Vehicles"
+
 msgid "system_messages/periodicReward/body"
 msgstr ""
 "You have received your daily reward for maintaining the %(rank)s rank.\n"
@@ -1639,14 +1709,13 @@ msgid "system_messages/periodicReward/title"
 msgstr "Daily Reward"
 
 msgid "system_messages/primeTime/end/body"
-msgstr ""
-"Ceasefire in effect. Onslaught Light battles are temporarily unavailable."
+msgstr "Ceasefire in effect. Onslaught battles are temporarily unavailable."
 
 msgid "system_messages/primeTime/end/title"
 msgstr "Ceasefire"
 
 msgid "system_messages/primeTime/start/body"
-msgstr "Ceasefire over. Onslaught Light battles are available again."
+msgstr "Ceasefire over. Onslaught battles are available again."
 
 msgid "system_messages/primeTime/start/title"
 msgstr "Ceasefire"
@@ -1688,8 +1757,7 @@ msgstr "Payment error. Please try again later."
 
 msgid "system_messages/temporaryBan/end/body"
 msgstr ""
-"Your temporary block has been removed. You can play in Onslaught Light mode "
-"again."
+"Your temporary block has been removed. You can play in Onslaught mode again."
 
 msgid "system_messages/temporaryBan/end/title"
 msgstr "End of Block"
@@ -1792,43 +1860,103 @@ msgid "whatsNewButtonLabel"
 msgstr "SEASON UPDATES"
 
 msgid "whatsNewView/banner/title/large"
-msgstr "SEASON OF THE JADE PEGASUS"
+msgstr "SEASON OF THE AZURE MANTICORE"
 
 msgid "whatsNewView/banner/title/small"
 msgstr "ONSLAUGHT. WHAT'S NEW?"
 
 msgid "whatsNewView/button/ok"
-msgstr "Let's Rock!"
+msgstr "Let's Go!"
 
 msgid "whatsNewView/intro/description"
 msgstr ""
-"This season marks your last chance to claim valuable rewards, including the "
-"exclusive Hurricane Tier X medium tank and its fearless crew, improved "
-"equipment to select from, a progressive 2D style, and more. Don't miss out —"
-" your victory awaits on the battlefield!"
+"Fight in each of the three Seasons to earn valuable annual rewards, and now "
+"it's even easier to get your hands on a unique vehicle. The better your "
+"performance throughout the Year, the more exclusive the style you'll receive"
+" for it."
 
 msgid "whatsNewView/intro/heading"
-msgstr ""
-"Seize the final moments\n"
-"of the Year of the Pegasus!"
+msgstr "Welcome to the Year of the Manticore!"
 
 msgid "whatsNewView/mapChanges/heading"
 msgstr "Maps"
 
+msgid "whatsNewView/modifiers/NA"
+msgstr "N/A"
+
+msgid "whatsNewView/modifiers/added"
+msgstr "Added Modifiers"
+
+msgid "whatsNewView/modifiers/changed"
+msgstr "Changed Modifiers"
+
+msgid "whatsNewView/modifiers/currentSeason"
+msgstr "Current Season"
+
+msgid "whatsNewView/modifiers/description"
+msgstr ""
+"More mode-specific modifiers that change the parameters of the vehicle have "
+"been added."
+
+msgid "whatsNewView/modifiers/heading"
+msgstr "Onslaught Modifiers Update"
+
+msgid "whatsNewView/modifiers/previousSeason"
+msgstr "Previous Season"
+
+msgid "whatsNewView/modifiers/random"
+msgstr "Random"
+
+msgid "whatsNewView/newVehicles/heading"
+msgstr "New Vehicles Available in Onslaught"
+
+msgid "whatsNewView/sectionDescription/assaultTankDestroyer"
+msgstr ""
+"Upon activation, your vehicle will receive increased dynamics and cause "
+"increased ram damage to enemies while incoming damage will be reduced. You "
+"can learn more on the About the Event page and in the Role Skill description"
+" in the interface."
+
+msgid "whatsNewView/sectionDescription/ratingUpdate"
+msgstr ""
+"The number of Rating Points earned in the Iron, Bronze, and Silver ranks has"
+" been increased."
+
+msgid "whatsNewView/sectionDescription/reconFlight"
+msgid_plural "plural/whatsNewView/sectionDescription/reconFlight"
+msgstr[0] ""
+"Now, the skill becomes available %(seconds)s second after the battle starts."
+" A special icon is displayed for a player detected by the skill."
+msgstr[1] ""
+"Now, the skill becomes available %(seconds)s seconds after the battle "
+"starts. A special icon is displayed for a player detected by the skill."
+msgstr[2] ""
+"Now, the skill becomes available %(seconds)s seconds after the battle "
+"starts. A special icon is displayed for a player detected by the skill."
+
 msgid "whatsNewView/sectionDescription/shopUpdates"
 msgstr ""
-"A new item of improved equipment, Innovative Targeting, is available for "
-"purchase after you reach the Bronze rank"
+"A new item of improved equipment, Stealth Exhaust Unit, is available for "
+"purchase after you reach the Silver rank."
 
 msgid "whatsNewView/sectionDescription/tournaments"
 msgstr ""
-"Participate in season tournaments to achieve glory and earn valuable "
-"rewards."
+"Don't miss your chance to take part in the new mid-Season tournament, where "
+"every team has a chance to win!"
 
 msgid "whatsNewView/sectionDescription/trainingRoom"
 msgstr ""
-"Onslaught maps with corresponding game rules are now available in Training "
-"Rooms."
+"Ammo, consumables, and directives can now be used for free in Onslaught Team"
+" Training."
+
+msgid "whatsNewView/sectionHeading/assaultTankDestroyer"
+msgstr "Assault Tank Destroyer Role Skill Rework"
+
+msgid "whatsNewView/sectionHeading/ratingUpdate"
+msgstr "Ranked System Update"
+
+msgid "whatsNewView/sectionHeading/reconFlight"
+msgstr "Recon Flight Role Skill Update"
 
 msgid "whatsNewView/sectionHeading/shopUpdates"
 msgstr "Onslaught Shop Updates"
@@ -1868,6 +1996,9 @@ msgstr "Watch Video"
 
 msgid "yearRewards/tooltip/selectableReward/list"
 msgstr ""
+"You can select one piece of Improved Equipment from the list below:\n"
+"\n"
+"• Stealth Exhaust Unit\n"
 "• Innovative Targeting\n"
 "• Improved Final Drive\n"
 "• Improved Compressor\n"
@@ -1876,7 +2007,8 @@ msgstr ""
 "• Experimental Optics\n"
 "• Innovative Loading System\n"
 "• Venting System\n"
-"• Wear-Resistant Gun Laying Drive"
+"• Wear-Resistant Gun Laying Drive\n"
+"• Stabilizing Equipment System"
 
 msgid "yearRewards/tooltip/selectableReward/title"
 msgstr "Improved Equipment"
@@ -1891,24 +2023,39 @@ msgid "yearlyRewards/banner/rewardsReceived"
 msgstr "Annual Reward received. See you next year!"
 
 msgid "yearlyRewards/banner/rewardsSelectionAvailable"
-msgstr "You have improved equipment to select from"
+msgstr "You have rewards to select from"
 
 msgid "yearlyRewards/banner/selectButtonLabel"
 msgstr "Choose Reward"
 
 msgid "yearlyRewards/description/achieved"
 msgstr ""
-"You received 1%(seasonPointIcon)s for each rank at the end of the Season"
+"You received 1%(seasonPointIcon)s for each rank at the end of the Season."
 
 msgid "yearlyRewards/description/current"
 msgstr ""
-"You will receive 1%(seasonPointIcon)s for each rank at the end of the Season"
+"You will receive 1%(seasonPointIcon)s for each rank at the end of the "
+"Season."
+
+msgid "yearlyRewards/mainYearlyRewardTitle"
+msgstr ""
+"%(vehicle)s\n"
+"With unique 3D styles"
+
+msgid "yearlyRewards/preview/style2d"
+msgstr "Preview 2D style"
+
+msgid "yearlyRewards/preview/style3d"
+msgstr "Preview 3D style"
 
 msgid "yearlyRewards/rank/achieved"
 msgstr "Rank achieved: %(rank)s"
 
 msgid "yearlyRewards/rank/current"
 msgstr "Current rank: %(rank)s"
+
+msgid "yearlyRewards/rewards/crew"
+msgstr "Four Unique Crew Members"
 
 msgid "yearlyRewards/rewardsState/claimed"
 msgstr "Reward received"
@@ -1917,34 +2064,29 @@ msgid "yearlyRewards/rewardsState/guaranteed"
 msgstr "Reward guaranteed"
 
 msgid "yearlyRewards/rewardsState/notAvailable"
-msgstr "Reward not received"
+msgstr "Earn a total %(count)s Colors to receive stage rewards"
 
 msgid "yearlyRewards/rewardsState/possible"
-msgstr "Potential rewards"
+msgstr "Potential reward"
 
 msgid "yearlyRewards/rewardsState/tooltip/guaranteed"
 msgstr "You are guaranteed to receive this reward at the end of the year."
 
 msgid "yearlyRewards/rewardsState/tooltip/notAvailable"
 msgstr ""
-"Earn the required number of Pegasus Colors to receive your reward at the end"
-" of the year."
+"Earn the required number of Onslaught Colors to receive your reward at the "
+"end of the year."
 
 msgid "yearlyRewards/rewardsState/tooltip/possible"
 msgstr ""
-"You will receive this reward at the end of the year if you retain your "
+"You will receive this reward at the end of the year if you maintain your "
 "current rank or increase it before the end of the Season."
 
-msgid "yearlyRewards/subtitle/styleProgress"
-msgstr "For the Heavenly Horse style"
-
-msgid "yearlyRewards/title/withVehicle"
-msgstr ""
-"%(vehicle)s and\n"
-"%(camouflageName)s"
+msgid "yearlyRewards/stageDescription/active"
+msgstr "Active stage"
 
 msgid "yearlyRewardsSelectionScreen/description"
-msgstr "ONSLAUGHT. YEAR OF PEGASUS"
+msgstr "ONSLAUGHT. YEAR OF THE MANTICORE"
 
 msgid "yearlyRewardsSelectionScreen/title"
 msgid_plural "plural/yearlyRewardsSelectionScreen/title"
@@ -1971,25 +2113,25 @@ msgid "yearlyStatistics/rating"
 msgstr "Rating Points"
 
 msgid "yearlyStatistics/seasonDate/0"
-msgstr "Fall 2023"
+msgstr "Fall 2024"
 
 msgid "yearlyStatistics/seasonDate/1"
-msgstr "Winter 2024"
+msgstr "Winter 2025"
 
 msgid "yearlyStatistics/seasonDate/2"
-msgstr "Spring 2024"
+msgstr "Spring 2025"
 
 msgid "yearlyStatistics/seasonDateInterval"
 msgstr "%(start)s–%(end)s"
 
 msgid "yearlyStatistics/seasonName/0"
-msgstr "Season I. Azure Pegasus"
+msgstr "Season I. Azure Manticore"
 
 msgid "yearlyStatistics/seasonName/1"
-msgstr "Season II. Crimson Pegasus"
+msgstr "Season II. Crimson Manticore"
 
 msgid "yearlyStatistics/seasonName/2"
-msgstr "Season III. Jade Pegasus"
+msgstr "Season III. Jade Manticore"
 
 msgid "yearlyStatistics/seasonStatus/active"
 msgstr "Current"

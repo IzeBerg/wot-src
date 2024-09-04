@@ -447,15 +447,6 @@ package net.wg.gui.battle.battleRoyale.views.components
          this.iconLoader.source = param1;
       }
       
-      public function get showConsumableBorder() : Boolean
-      {
-         return false;
-      }
-      
-      public function set showConsumableBorder(param1:Boolean) : void
-      {
-      }
-      
       public function set isReplay(param1:Boolean) : void
       {
          this._isReplay = param1;

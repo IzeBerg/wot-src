@@ -1,5 +1,4 @@
 import constants, UnitBase
-from constants import IS_DEVELOPMENT
 from constants_utils import ConstInjector
 DEFAULT_ASSETS_PACK = 'undefined'
 DEFAULT_SETTINGS_KEY = 'undefined'
@@ -14,8 +13,7 @@ BATTLE_MODE_VEH_TAGS_EXCEPT_FUN = constants.BATTLE_MODE_VEHICLE_TAGS - {'fun_ran
 class FunSubModeImpl(object):
     DEV_TEST = 0
     DEFAULT = 1
-    QUICK_FIRE_GUNS = 2
-    ALL = (DEFAULT, QUICK_FIRE_GUNS) + ((DEV_TEST,) if IS_DEVELOPMENT else ())
+    ALL = (DEFAULT,) + ((DEV_TEST,) if constants.IS_DEVELOPMENT else ())
 
 
 class FunProgressionCondition(object):

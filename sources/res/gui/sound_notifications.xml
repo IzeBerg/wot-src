@@ -2048,35 +2048,6 @@
 		<queueClearAtStart>0</queueClearAtStart>
 	</event>
 	<event>
-		<name>enemy_hp_damaged_by_explosion_at_direct_hit_by_player</name>
-		<chance>100</chance>
-		<infEvent>vo_enemy_hp_damaged_by_explosion_at_direct_hit_by_player</infEvent>
-		<infChance>100</infChance>
-		<cooldownEvent>0</cooldownEvent>
-		<queue>1</queue>
-		<priority>50</priority>
-		<lifetime>3</lifetime>
-		<interrupt>1</interrupt>
-		<predelay>1</predelay>
-		<queueClearAtStart>0</queueClearAtStart>
-	</event>
-	<event>
-		<name>frequent_enemy_hp_damaged_by_explosion_at_direct_hit_by_player</name>
-		<chance>100</chance>
-		<infEvent>vo_enemy_hp_damaged_by_explosion_at_direct_hit_by_player</infEvent>
-		<infChance>100</infChance>
-		<cooldownEvent>
-			5.1
-			<!--BW_String-->
-		</cooldownEvent>
-		<queue>1</queue>
-		<priority>50</priority>
-		<lifetime>3</lifetime>
-		<interrupt>1</interrupt>
-		<predelay>1</predelay>
-		<queueClearAtStart>0</queueClearAtStart>
-	</event>
-	<event>
 		<name>enemy_hp_damaged_by_near_explosion_by_player</name>
 		<chance>100</chance>
 		<infEvent>vo_damage_by_near_explosion_by_player</infEvent>
@@ -3825,20 +3796,6 @@
 		<QueueClearAtEnd>1</QueueClearAtEnd>
 	</event>
 	<event>
-		<name>vo_pph_consumables_02</name>
-		<chance>100</chance>
-		<infEvent>vo_pph_consumables_02</infEvent>
-		<infChance>100</infChance>
-		<cooldownEvent>0</cooldownEvent>
-		<queue>1</queue>
-		<priority>90</priority>
-		<lifetime>8</lifetime>
-		<interrupt>2</interrupt>
-		<predelay>0</predelay>
-		<queueClearAtStart>1</queueClearAtStart>
-		<QueueClearAtEnd>1</QueueClearAtEnd>
-	</event>
-	<event>
 		<name>vo_pph_consumables_03</name>
 		<chance>100</chance>
 		<infEvent>vo_pph_consumables_03</infEvent>
@@ -3847,20 +3804,6 @@
 		<queue>1</queue>
 		<priority>90</priority>
 		<lifetime>7</lifetime>
-		<interrupt>2</interrupt>
-		<predelay>0</predelay>
-		<queueClearAtStart>1</queueClearAtStart>
-		<QueueClearAtEnd>1</QueueClearAtEnd>
-	</event>
-	<event>
-		<name>vo_pph_consumables_04</name>
-		<chance>100</chance>
-		<infEvent>vo_pph_consumables_04</infEvent>
-		<infChance>100</infChance>
-		<cooldownEvent>0</cooldownEvent>
-		<queue>1</queue>
-		<priority>90</priority>
-		<lifetime>9</lifetime>
 		<interrupt>2</interrupt>
 		<predelay>0</predelay>
 		<queueClearAtStart>1</queueClearAtStart>
@@ -4162,81 +4105,5 @@
 		<chance>100</chance>
 		<fxEvent>dc_fc_ui_stop_to_follow</fxEvent>
 		<cooldownFx>0</cooldownFx>
-	</event>
-	<event>
-		<name>fep_track_damaged</name>
-		<chance>100</chance>
-		<infEvent>vo_track_damaged</infEvent>
-		<infChance>37</infChance>
-		<cooldownEvent>
-			5.1
-			<!--BW_String-->
-		</cooldownEvent>
-		<queue>1</queue>
-		<priority>30</priority>
-		<lifetime>2</lifetime>
-		<interrupt>1</interrupt>
-		<predelay>
-			0.5
-			<!--BW_String-->
-		</predelay>
-		<queueClearAtStart>0</queueClearAtStart>
-	</event>
-	<event>
-		<name>fep_track_destroyed</name>
-		<chance>100</chance>
-		<infEvent>vo_track_destroyed</infEvent>
-		<infChance>100</infChance>
-		<cooldownEvent>
-			3.5
-			<!--BW_String-->
-		</cooldownEvent>
-		<queue>1</queue>
-		<priority>70</priority>
-		<lifetime>2</lifetime>
-		<interrupt>2</interrupt>
-		<predelay>
-			0.5
-			<!--BW_String-->
-		</predelay>
-		<queueClearAtStart>0</queueClearAtStart>
-	</event>
-	<event>
-		<name>fep_track_functional</name>
-		<chance>100</chance>
-		<infEvent>vo_track_functional</infEvent>
-		<infChance>25</infChance>
-		<cooldownEvent>
-			6.1
-			<!--BW_String-->
-		</cooldownEvent>
-		<queue>1</queue>
-		<priority>30</priority>
-		<lifetime>2</lifetime>
-		<interrupt>1</interrupt>
-		<predelay>
-			0.6
-			<!--BW_String-->
-		</predelay>
-		<queueClearAtStart>0</queueClearAtStart>
-	</event>
-	<event>
-		<name>fep_track_functional_can_move</name>
-		<chance>100</chance>
-		<infEvent>vo_track_functional_can_move</infEvent>
-		<infChance>100</infChance>
-		<cooldownEvent>
-			3.1
-			<!--BW_String-->
-		</cooldownEvent>
-		<queue>1</queue>
-		<priority>70</priority>
-		<lifetime>2</lifetime>
-		<interrupt>2</interrupt>
-		<predelay>
-			0.75
-			<!--BW_String-->
-		</predelay>
-		<queueClearAtStart>0</queueClearAtStart>
 	</event>
 </root>

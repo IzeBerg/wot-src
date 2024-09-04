@@ -17,7 +17,7 @@ _ADDITIONAL_XP_DATA_KEY = '_additionalXPCache'
 _ControllableXPData = namedtuple('_ControllableXPData', ('vehicleID', 'bonusType',
                                                          'extraXP', 'extraFreeXP',
                                                          'extraTmenXP', 'isXPToTMan',
-                                                         'premMask'))
+                                                         'premMask', 'dailyXPFactor'))
 
 class StatsRequester(AbstractSyncDataRequester, IStatsRequester):
     wallet = dependency.descriptor(IWalletController)
@@ -58,6 +58,10 @@ class StatsRequester(AbstractSyncDataRequester, IStatsRequester):
     @property
     def equipCoin(self):
         return max(self.actualEquipCoin, 0)
+
+    @property
+    def postProgressionXP(self):
+        return self.getCacheValue('XPpp', 0)
 
     @property
     def money(self):

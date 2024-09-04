@@ -1,6 +1,7 @@
 import itertools
 from collections import namedtuple, deque
 import BigWorld, logging
+from aih_constants import CTRL_MODE_NAME
 from constants import ARENA_PERIOD
 from gun_rotation_shared import decodeGunAngles
 from helpers import isPlayerAvatar
@@ -17,6 +18,7 @@ class SimulationMovementTracker(CallbackDelayer):
 
     def __init__(self, tickDelay, snapshotLength):
         CallbackDelayer.__init__(self)
+        self.__isTrackingActive = False
         self.__tickDelay = tickDelay
         self.__snapshotLength = snapshotLength
         self.__maxDataPoints = self.__MAX_TIME_TILL_DEATH / self.__tickDelay
@@ -39,6 +41,8 @@ class SimulationMovementTracker(CallbackDelayer):
         CallbackDelayer.destroy(self)
 
     def start(self):
+        if not BigWorld.player().isPostmortemFeatureEnabled(CTRL_MODE_NAME.KILL_CAM):
+            return
         if not self.__isStartRequested:
             self.__isStartRequested = True
             return
@@ -47,10 +51,12 @@ class SimulationMovementTracker(CallbackDelayer):
         self.stopCallback(self.__tick)
         self.__lastPointTime = BigWorld.serverTime()
         self.delayCallback(self.__tickDelay, self.__tick)
+        self.__isTrackingActive = True
         g_playerEvents.onTracerReceived += self.__onTracerReceived
 
     def stop(self):
         g_playerEvents.onTracerReceived -= self.__onTracerReceived
+        self.__isTrackingActive = False
         self.stopCallback(self.__tick)
 
     def getData(self, shotID):
@@ -76,6 +82,8 @@ class SimulationMovementTracker(CallbackDelayer):
              data[:], lastDuration)
 
     def saveSnapshot(self, shotID=0, isKill=False):
+        if not self.__isTrackingActive:
+            return
         dataLength = len(self.__data)
         if not dataLength:
             return
@@ -112,11 +120,13 @@ class SimulationMovementTracker(CallbackDelayer):
             return
 
     def setPendingShotID(self, shotID):
-        if not shotID:
-            _logger.error('setPendingShotID: Should always have shotID at this point!')
-            self.clearSnapshot(self.__PENDING_SHOT_ID)
+        if not self.__isTrackingActive:
             return
         else:
+            if not shotID:
+                _logger.error('setPendingShotID: Should always have shotID at this point!')
+                self.clearSnapshot(self.__PENDING_SHOT_ID)
+                return
             pendingID = self.__makeSnapshotID(self.__PENDING_SHOT_ID, isKill=True)
             shotData = self.__shotsMap.get(pendingID, None)
             if not shotData:

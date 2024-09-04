@@ -22,7 +22,7 @@
 					<row0>1.000000 0.000000 0.000000</row0>
 					<row1>0.000000 1.000000 0.000000</row1>
 					<row2>0.000000 0.000000 1.000000</row2>
-					<row3>0.000000 0.000000 0.000000</row3>
+					<row3>-0.000008 0.000000 0.000000</row3>
 				</transform>
 				<node>
 					<identifier>G</identifier>
@@ -47,7 +47,7 @@
 							<row0>1.000000 0.000000 0.000000</row0>
 							<row1>0.000000 1.000000 0.000000</row1>
 							<row2>0.000000 0.000000 -1.000000</row2>
-							<row3>0.000000 0.000000 -3.000000</row3>
+							<row3>0.000008 0.000000 -3.000000</row3>
 						</transform>
 					</node>
 				</node>
@@ -57,7 +57,7 @@
 						<row0>1.000000 0.000000 0.000000</row0>
 						<row1>0.000000 1.000000 0.000000</row1>
 						<row2>0.000000 0.000000 -1.000000</row2>
-						<row3>0.000000 0.000000 0.000000</row3>
+						<row3>0.000008 0.000000 0.000000</row3>
 					</transform>
 				</node>
 			</node>
@@ -83,9 +83,9 @@
 	</node>
 	<renderSet>
 		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>G_BlendBone</node>
 		<node>Gun_BlendBone</node>
 		<node>static_joint_BlendBone</node>
-		<node>G_BlendBone</node>
 		<geometry>
 			<vertices>gun_01_Shape.vertices</vertices>
 			<primitive>gun_01_Shape.indices</primitive>
@@ -93,26 +93,20 @@
 				0
 				<material>
 					<identifier>tank_guns_skinned</identifier>
+					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
 					<collisionFlags>0</collisionFlags>
 					<materialKind>0</materialKind>
 					<property>
-						g_detailPowerAlbedo
-						<Float>
-							0.11
-							<!--BW_String-->
-						</Float>
+						metallicGlossMap
+						<Texture>vehicles/british/GB84_Chieftain_Mk6/Chieftain_Mk6_guns_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/british/GB84_Chieftain_Mk6/Chieftain_Mk6_guns_ANM.dds</Texture>
 					</property>
 					<property>
 						diffuseMap
 						<Texture>vehicles/british/GB84_Chieftain_Mk6/Chieftain_Mk6_guns_AM.dds</Texture>
-					</property>
-					<property>
-						alphaReference
-						<Int>64</Int>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>true</Bool>
 					</property>
 					<property>
 						excludeMaskAndAOMap
@@ -122,58 +116,16 @@
 						colorIdMap
 						<Texture>vehicles/british/GB84_Chieftain_Mk6/Chieftain_Mk6_guns_ID.dds</Texture>
 					</property>
-					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
-					</property>
-					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
-					<property>
-						g_detailPowerGloss
-						<Float>
-							0.35
-							<!--BW_String-->
-						</Float>
-					</property>
-					<property>
-						g_maskBias
-						<Float>
-							0.22
-							<!--BW_String-->
-						</Float>
-					</property>
-					<property>
-						metallicGlossMap
-						<Texture>vehicles/british/GB84_Chieftain_Mk6/Chieftain_Mk6_guns_GMM.dds</Texture>
-					</property>
-					<property>
-						metallicDetailMap
-						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
-					</property>
-					<property>
-						g_detailUVTiling
-						<Vector4>
-							4.20822 4.20822 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
-					</property>
-					<property>
-						g_detailPower
-						<Float>5</Float>
-					</property>
-					<property>
-						normalMap
-						<Texture>vehicles/british/GB84_Chieftain_Mk6/Chieftain_Mk6_guns_ANM.dds</Texture>
-					</property>
 				</material>
-				<groupOrigin>-0.000975 0.060649 -2.543074</groupOrigin>
+				<groupOrigin>-0.005731 0.033304 -2.542923</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<constraints/>
 	<boundingBox>
-		<min>-0.197499 -0.177908 -0.161345</min>
-		<max>0.195548 0.299206 5.247493</max>
+		<min>-0.214672 -0.233317 -0.161614</min>
+		<max>0.203209 0.299925 5.247459</max>
 	</boundingBox>
-	<geometrySize>47860</geometrySize>
-	<minUVDensity>0.059711</minUVDensity>
+	<geometrySize>22938</geometrySize>
+	<minUVDensity>0.047197</minUVDensity>
 </root>

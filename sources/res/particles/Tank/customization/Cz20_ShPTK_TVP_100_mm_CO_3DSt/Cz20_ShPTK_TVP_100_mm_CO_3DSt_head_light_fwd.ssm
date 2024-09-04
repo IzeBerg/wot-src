@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<params>
+		<param>
+			<name>Hit</name>
+			<type>trigger</type>
+		</param>
+	</params>
+	<node>
+		<name>Sleep Node</name>
+		<type>sleep</type>
+		<time>0.100000 0.100000</time>
+		<transition>
+			<to>Head_light_def</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions/>
+		</transition>
+		<uiPosition>57.000000 -153.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>Head_light_def</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/Cz20_ShPTK_TVP_100_mm_CO_3DSt/Cz20_ShPTK_TVP_100_mm_CO_3DSt_head_light_fwd.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>-1</loop>
+		<transition>
+			<to>hit_delay</to>
+			<blendDuration>1.500000</blendDuration>
+			<conditions>
+				<condition>
+					<type>trigger</type>
+					<name>Hit</name>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>56.000000 -62.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>Head_light_hit_def</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/Cz20_ShPTK_TVP_100_mm_CO_3DSt/Cz20_ShPTK_TVP_100_mm_CO_3DSt_head_light_fwd_hit.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<transition>
+			<to>hitting</to>
+			<blendDuration>1.100000</blendDuration>
+			<conditions/>
+		</transition>
+		<uiPosition>47.000000 84.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>hitting</name>
+		<type>sleep</type>
+		<time>0.100000 0.100000</time>
+		<transition>
+			<to>Head_light_def</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions/>
+		</transition>
+		<uiPosition>233.000000 15.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>hit_delay</name>
+		<type>sleep</type>
+		<time>0.100000 0.100000</time>
+		<transition>
+			<to>Head_light_hit_def</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions/>
+		</transition>
+		<uiPosition>-87.000000 9.000000 0.000000</uiPosition>
+	</node>
+</root>

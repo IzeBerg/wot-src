@@ -1,21 +1,13 @@
-import logging, math, typing, Event
+import logging, typing
 from adisp import adisp_async, adisp_process
 from gui.shared.gui_items.processors.common import GoldToCreditsExchanger
 from gui.shared.money import Currency
 from helpers import dependency
+from skeletons.gui.game_control import IExchangeRatesWithDiscountsProvider
 from skeletons.gui.shared import IItemsCache
 _logger = logging.getLogger(__name__)
 
 class ExchangeSubmitterBase(object):
-
-    def __init__(self):
-        self.onUpdated = Event.Event()
-
-    def init(self):
-        pass
-
-    def fini(self):
-        self.onUpdated.clear()
 
     @adisp_async
     def submit(self, fromItemCount, toItemCount, callback=None):
@@ -27,34 +19,40 @@ class ExchangeSubmitterBase(object):
     def getDefaultRate(self):
         return 0
 
+    def calculateToItemCount(self, fromExchangeAmount):
+        return 0
+
+    def calculateFromItemCount(self, toExchangeAmount):
+        return 0
+
 
 class ExchangeCreditsSubmitter(ExchangeSubmitterBase):
     __itemsCache = dependency.descriptor(IItemsCache)
-
-    def init(self):
-        super(ExchangeCreditsSubmitter, self).init()
-        self.__itemsCache.onSyncCompleted += self.__update
-
-    def fini(self):
-        self.__itemsCache.onSyncCompleted -= self.__update
-        self.onUpdated.clear()
+    __exchangeRatesProvider = dependency.descriptor(IExchangeRatesWithDiscountsProvider)
 
     @adisp_async
     @adisp_process
-    def submit(self, fromItemCount, toItemCount, withConfirm=True, callback=None):
-        result = yield GoldToCreditsExchanger(fromItemCount, withConfirm=withConfirm).request()
+    def submit(self, goldToExchange, withConfirm=True, callback=None):
+        result = yield GoldToCreditsExchanger(goldToExchange, withConfirm=withConfirm).request()
         if callback is not None:
             callback(result)
         return
 
+    @property
+    def exchangeRate(self):
+        return self.__exchangeRatesProvider.goldToCredits
+
     def getCurrentRate(self):
-        return self.__itemsCache.items.shop.exchangeRate
+        return self.exchangeRate.discountRate.resourceRateValue
 
     def getDefaultRate(self):
-        return self.__itemsCache.items.shop.defaults.exchangeRate
+        return self.exchangeRate.unlimitedRateAfterMainDiscount.resourceRateValue
 
-    def __update(self, *args, **kwargs):
-        self.onUpdated()
+    def calculateToItemCount(self, fromExchangeAmount):
+        return self.exchangeRate.calculateExchange(fromExchangeAmount)
+
+    def calculateFromItemCount(self, toExchangeAmount):
+        return self.exchangeRate.calculateResourceToExchange(toExchangeAmount)
 
 
 _TYPE_TO_SUBMITTER_MAP = {(Currency.GOLD, Currency.CREDITS): ExchangeCreditsSubmitter()}
@@ -70,48 +68,24 @@ class Exchanger(object):
         self.__submitter = submitter
         self.__fromItemType = fromItemType
         self.__toItemType = toItemType
-        self.onUpdated = Event.Event()
         return
-
-    def init(self):
-        self.__submitter.init()
-        self.__submitter.onUpdated += self.__updateRate
-
-    def fini(self):
-        self.__submitter.onUpdated -= self.__updateRate
-        self.__submitter.fini()
 
     @adisp_async
     @adisp_process
     def tryExchange(self, fromItemCount, withConfirm=True, callback=None):
-        result = yield self.__submitter.submit(fromItemCount, self.calculateToItemCount(fromItemCount), withConfirm=withConfirm)
+        result = yield self.__submitter.submit(fromItemCount, withConfirm=withConfirm)
         if callback is not None:
             callback(result)
         return
 
     def calculateToItemCount(self, fromItemCount):
-        return fromItemCount * self.__submitter.getCurrentRate()
+        return self.__submitter.calculateToItemCount(fromItemCount)
 
     def calculateFromItemCount(self, toItemCount):
-        rate = self.__submitter.getCurrentRate()
-        if rate:
-            fromItemCount = int(math.ceil(float(toItemCount) / rate))
-            return (
-             fromItemCount, fromItemCount * rate)
-        return (0, 0)
+        return self.__submitter.calculateFromItemCount(toItemCount)
 
     def getCurrentRate(self):
         return self.__submitter.getCurrentRate()
 
     def getDefaultRate(self):
         return self.__submitter.getDefaultRate()
-
-    def getDiscount(self):
-        defRate = float(self.getDefaultRate())
-        rate = float(self.getCurrentRate())
-        if rate and defRate and rate <= defRate:
-            return int(math.floor((defRate - rate) / defRate * 100))
-        return 0
-
-    def __updateRate(self):
-        self.onUpdated()

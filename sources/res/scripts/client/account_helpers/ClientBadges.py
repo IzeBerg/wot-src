@@ -1,9 +1,10 @@
+import logging
 from functools import partial
 import AccountCommands
-from debug_utils import LOG_DEBUG_DEV
+_logger = logging.getLogger(__name__)
 
 def _skipResponse(resultID, errorCode):
-    LOG_DEBUG_DEV('_skipResponse', resultID, errorCode)
+    _logger.debug('_skipResponse: code=%r, error=%r', resultID, errorCode)
 
 
 class ClientBadges(object):

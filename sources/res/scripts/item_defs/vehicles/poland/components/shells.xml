@@ -20,6 +20,7 @@
 		<hc_premium>HOLLOW_CHARGE_PREMIUM.png 0 0</hc_premium>
 		<he_spg>HIGH_EXPLOSIVE_SPG.png 0 0</he_spg>
 		<he_spg_stun>HIGH_EXPLOSIVE_SPG_STUN.png 0 0</he_spg_stun>
+		<he_zero_splash>HIGH_EXPLOSIVE_ZERO_SPLASH.png 0 0</he_zero_splash>
 	</icons>
 	<_20mm_z_pociskiem_wybuchowo>
 		<id>0</id>
@@ -1903,10 +1904,10 @@
 		<kind>ARMOR_PIERCING_CR</kind>
 		<caliber>100</caliber>
 		<isTracer>true</isTracer>
-		<effects>mainAPCR</effects>
+		<effects>largeAPCR</effects>
 		<damage>
-			<armor>700 350</armor>
-			<devices>203 101</devices>
+			<armor>800 200</armor>
+			<devices>203 50</devices>
 		</damage>
 		<normalizationAngle>2</normalizationAngle>
 		<ricochetAngle>70</ricochetAngle>
@@ -1920,10 +1921,10 @@
 		<kind>ARMOR_PIERCING_CR</kind>
 		<caliber>100</caliber>
 		<isTracer>true</isTracer>
-		<effects>mainAPCR</effects>
+		<effects>largeAPCR</effects>
 		<damage>
-			<armor>700 350</armor>
-			<devices>203 101</devices>
+			<armor>800 200</armor>
+			<devices>203 50</devices>
 		</damage>
 		<normalizationAngle>2</normalizationAngle>
 		<ricochetAngle>70</ricochetAngle>
@@ -1941,9 +1942,9 @@
 			<!--BW_String-->
 		</explosionRadius>
 		<isTracer>true</isTracer>
-		<effects>mainHighExplosive</effects>
+		<effects>largeHighExplosive</effects>
 		<damage>
-			<armor>700</armor>
+			<armor>800</armor>
 			<devices>203</devices>
 		</damage>
 		<armorSpalls>

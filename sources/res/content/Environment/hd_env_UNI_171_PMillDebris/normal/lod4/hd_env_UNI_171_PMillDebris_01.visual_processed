@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>108</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_UNI_171_PMillDebris/hd_env_UNI_171_PMillDebris_AM.dds</Texture>
+					</property>
+					<property>
+						g_ditherCoeff
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env_UNI_171_PMillDebris/hd_env_UNI_171_PMillDebris_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_UNI_171_PMillDebris/hd_env_UNI_171_PMillDebris_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.294024 0.085689 -0.168927</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-3.103498 -0.047510 -4.006703</min>
+		<max>2.515451 0.592543 3.668850</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>980</geometrySize>
+	<minUVDensity>0.009550</minUVDensity>
+</root>

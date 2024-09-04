@@ -6,8 +6,6 @@ package net.wg.gui.battle.views.consumablesPanel.events
    {
       
       public static const UPDATE_POSITION:String = "updatePosition";
-      
-      public static const SWITCH_POPUP:String = "switchPopup";
        
       
       public function ConsumablesPanelEvent(param1:String, param2:Boolean = false, param3:Boolean = false)

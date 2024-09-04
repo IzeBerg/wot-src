@@ -644,6 +644,12 @@ msgstr "Effect"
 msgid "effects/template"
 msgstr "%(icon)s %(title)s: %(descr)s"
 
+msgid "equipment/cooldown"
+msgstr "Cooldown time is %(cooldown)s&nbsp;s."
+
+msgid "equipment/extendedDescription"
+msgstr "%(descr)s %(extendedDescr)s"
+
 msgid "experimentalEquipCoinBlock/name"
 msgstr "Get Components"
 
@@ -815,6 +821,11 @@ msgstr "You have no suitable Experimental Equipment"
 msgid "introduction/title/withoutEquipments/trophy"
 msgstr "You have no suitable Bounty Equipment"
 
+msgid "kpi/bonus/longDescr/negative/commanderLampDelay"
+msgstr ""
+"to the delay before the Commander identifies if your vehicle has been "
+"spotted by the enemy"
+
 msgid "kpi/bonus/longDescr/negative/crewRepeatedStunDuration"
 msgstr "to additional stun duration if the vehicle is already stunned"
 
@@ -822,10 +833,14 @@ msgid "kpi/bonus/longDescr/negative/demaskFoliageFactor"
 msgstr ""
 "to concealment of enemy vehicles behind foliage (both moving and stationary)"
 
-msgid "kpi/bonus/longDescr/negative/vehPenaltyForDamageEngineAndCombat"
-msgstr ""
-"to the loading speed penalty and loss of engine power upon the damaging of "
-"modules"
+msgid "kpi/bonus/longDescr/negative/shellVelocity"
+msgstr "to shell velocity for all shell types"
+
+msgid "kpi/bonus/longDescr/negative/vehPenaltyForDamagedAmmorack"
+msgstr "to the loading speed penalty when modules are damaged"
+
+msgid "kpi/bonus/longDescr/negative/vehPenaltyForDamagedEngine"
+msgstr "to the loss of engine power when modules are damaged"
 
 msgid "kpi/bonus/longDescr/negative/vehicleCamouflage"
 msgstr "to concealment of a stationary or moving vehicle"
@@ -846,16 +861,19 @@ msgstr ""
 "to view range (up to 445 m)—increasing the parameter over 445 m allows for "
 "more effective spotting of enemies"
 
+msgid "kpi/bonus/longDescr/negative/vehicleFallingDamageResistance"
+msgstr "to damage received upon impact"
+
 msgid "kpi/bonus/longDescr/negative/vehicleGunShotDispersion"
 msgstr ""
 "to dispersion during vehicle movement and traverse, as well as during gun "
 "traverse and after firing"
 
+msgid "kpi/bonus/longDescr/negative/vehicleHEShellDamageResistance"
+msgstr "to HE shell damage absorbed by armor"
+
 msgid "kpi/bonus/longDescr/negative/vehicleOwnSpottingTime"
 msgstr "to duration your vehicle is visible"
-
-msgid "kpi/bonus/longDescr/negative/vehicleRamOrExplosionDamageResistance"
-msgstr "to HE-shell damage absorbed by armor, as well as ramming damage"
 
 msgid "kpi/bonus/longDescr/negative/vehicleSpeedGain"
 msgstr ""
@@ -884,6 +902,11 @@ msgstr ""
 "to turret traverse speed or gun traverse speed for vehicles with stationary "
 "cabins"
 
+msgid "kpi/bonus/longDescr/positive/commanderLampDelay"
+msgstr ""
+"to the delay before the Commander identifies if your vehicle has been "
+"spotted by the enemy"
+
 msgid "kpi/bonus/longDescr/positive/crewRepeatedStunDuration"
 msgstr "to additional stun duration if the vehicle is already stunned"
 
@@ -891,10 +914,14 @@ msgid "kpi/bonus/longDescr/positive/demaskFoliageFactor"
 msgstr ""
 "to concealment of both moving and stationary enemy vehicles behind foliage"
 
-msgid "kpi/bonus/longDescr/positive/vehPenaltyForDamageEngineAndCombat"
-msgstr ""
-"to the loading speed penalty and loss of engine power when modules are "
-"damaged"
+msgid "kpi/bonus/longDescr/positive/shellVelocity"
+msgstr "to shell velocity for all shell types"
+
+msgid "kpi/bonus/longDescr/positive/vehPenaltyForDamagedAmmorack"
+msgstr "to the loading speed penalty when modules are damaged"
+
+msgid "kpi/bonus/longDescr/positive/vehPenaltyForDamagedEngine"
+msgstr "to the loss of engine power when modules are damaged"
 
 msgid "kpi/bonus/longDescr/positive/vehicleCamouflage"
 msgstr "to concealment of a stationary or moving vehicle"
@@ -915,16 +942,19 @@ msgstr ""
 "to view range (up to 445 m). Increasing the parameter over 445 m allows for "
 "more effective spotting of enemies."
 
+msgid "kpi/bonus/longDescr/positive/vehicleFallingDamageResistance"
+msgstr "to damage received upon impact"
+
 msgid "kpi/bonus/longDescr/positive/vehicleGunShotDispersion"
 msgstr ""
 "to dispersion during vehicle movement and traverse, as well as during gun "
 "traverse and after firing"
 
+msgid "kpi/bonus/longDescr/positive/vehicleHEShellDamageResistance"
+msgstr "to HE shell damage absorbed by armor"
+
 msgid "kpi/bonus/longDescr/positive/vehicleOwnSpottingTime"
 msgstr "to duration your vehicle is visible"
-
-msgid "kpi/bonus/longDescr/positive/vehicleRamOrExplosionDamageResistance"
-msgstr "to HE-shell damage absorbed by armor, as well as ramming damage"
 
 msgid "kpi/bonus/longDescr/positive/vehicleSpeedGain"
 msgstr ""
@@ -958,15 +988,13 @@ msgstr ""
 "delay before Sound Detection\n"
 "activation"
 
-msgid "kpi/bonus/negative/circularVisionRadiusWhileSurveyingDeviceDamaged"
-msgstr ""
-"to view range when\n"
-"observation devices are damaged"
-
 msgid "kpi/bonus/negative/commanderHitChance"
 msgstr ""
 "to protection of the Commander\n"
 "from injuries"
+
+msgid "kpi/bonus/negative/commanderLampDelay"
+msgstr "to delay before notification of being spotted"
 
 msgid "kpi/bonus/negative/crewHitChance"
 msgstr "to crew protection from injuries"
@@ -1018,6 +1046,16 @@ msgstr "to firefighting speed"
 msgid "kpi/bonus/negative/foliageMaskingFactor"
 msgstr "to concealment behind foliage"
 
+msgid "kpi/bonus/negative/mediumGroundFactor"
+msgstr ""
+"to maintaining speed\n"
+"on moderately soft terrain"
+
+msgid "kpi/bonus/negative/penaltyToDamagedSurveyingDevice"
+msgstr ""
+"to the penalty to view range when observation\n"
+"devices are disabled"
+
 msgid "kpi/bonus/negative/radiomanActivityTimeAfterVehicleDestroy"
 msgstr ""
 "to time of transmission of\n"
@@ -1029,32 +1067,33 @@ msgstr ""
 "to protection of the radio operator\n"
 "from injuries"
 
+msgid "kpi/bonus/negative/shellVelocity"
+msgstr "to shell velocity"
+
+msgid "kpi/bonus/negative/softGroundFactor"
+msgstr ""
+"to maintaining speed\n"
+"on soft terrain"
+
 msgid "kpi/bonus/negative/stunResistanceEffectFactor"
 msgstr ""
 "to negative effects\n"
 "from crew injuries"
 
-msgid "kpi/bonus/negative/vehPenaltyForDamageEngineAndCombat"
-msgstr "to the damaged ammo rack penalty and damaged engine penalty"
+msgid "kpi/bonus/negative/vehPenaltyForDamagedAmmorack"
+msgstr "to the loading speed penalty"
+
+msgid "kpi/bonus/negative/vehPenaltyForDamagedEngine"
+msgstr "to the damaged engine penalty"
 
 msgid "kpi/bonus/negative/vehicleAllGroundRotationSpeed"
 msgstr "to hull traverse speed"
-
-msgid "kpi/bonus/negative/vehicleAllyRadioDistance"
-msgstr ""
-"to signal range of allied comms\n"
-"within the vehicle's radio coverage"
 
 msgid "kpi/bonus/negative/vehicleAmmoBayEngineFuelStrength"
 msgstr "to internal module durability"
 
 msgid "kpi/bonus/negative/vehicleAmmoBayStrength"
 msgstr "to ammo rack durability"
-
-msgid "kpi/bonus/negative/vehicleAverageSoilResistance"
-msgstr ""
-"to maintaining speed\n"
-"on moderately soft terrain"
 
 msgid "kpi/bonus/negative/vehicleBackwardMaxSpeed"
 msgstr "to top reverse speed"
@@ -1087,6 +1126,9 @@ msgstr ""
 
 msgid "kpi/bonus/negative/vehicleEnginePower"
 msgstr "to engine power"
+
+msgid "kpi/bonus/negative/vehicleFallingDamageResistance"
+msgstr "to damage by impact"
 
 msgid "kpi/bonus/negative/vehicleFireChance"
 msgstr "to the chance of engine fire"
@@ -1126,6 +1168,9 @@ msgstr "to dispersion of a damaged gun"
 msgid "kpi/bonus/negative/vehicleGunShotFullDispersion"
 msgstr "to the aiming circle size"
 
+msgid "kpi/bonus/negative/vehicleHEShellDamageResistance"
+msgstr "to HE shell damage"
+
 msgid "kpi/bonus/negative/vehicleInvisibilityAfterShot"
 msgstr "to concealment after firing"
 
@@ -1139,9 +1184,6 @@ msgstr ""
 
 msgid "kpi/bonus/negative/vehicleRamDamageResistance"
 msgstr "to ramming damage received"
-
-msgid "kpi/bonus/negative/vehicleRamOrExplosionDamageResistance"
-msgstr "to HE-shell and ramming damage"
 
 msgid "kpi/bonus/negative/vehicleReloadTimeAfterShellChange"
 msgstr ""
@@ -1174,11 +1216,6 @@ msgstr ""
 msgid "kpi/bonus/negative/vehicleTurretRotationSpeed"
 msgstr "to turret traverse speed"
 
-msgid "kpi/bonus/negative/vehicleWeakSoilResistance"
-msgstr ""
-"to maintaining speed\n"
-"on soft terrain"
-
 msgid "kpi/bonus/negative/wheelsRotationSpeed"
 msgstr "to wheel turn speed"
 
@@ -1207,15 +1244,13 @@ msgstr ""
 "delay before Sound Detection\n"
 "activation"
 
-msgid "kpi/bonus/positive/circularVisionRadiusWhileSurveyingDeviceDamaged"
-msgstr ""
-"to view range when\n"
-"observation devices are damaged"
-
 msgid "kpi/bonus/positive/commanderHitChance"
 msgstr ""
 "to protection of the Commander\n"
 "from injuries"
+
+msgid "kpi/bonus/positive/commanderLampDelay"
+msgstr "to delay before notification of being spotted"
 
 msgid "kpi/bonus/positive/crewHitChance"
 msgstr "to crew protection from injuries"
@@ -1267,6 +1302,16 @@ msgstr "to firefighting speed"
 msgid "kpi/bonus/positive/foliageMaskingFactor"
 msgstr "to concealment behind foliage"
 
+msgid "kpi/bonus/positive/mediumGroundFactor"
+msgstr ""
+"to maintaining speed\n"
+"on moderately soft terrain"
+
+msgid "kpi/bonus/positive/penaltyToDamagedSurveyingDevice"
+msgstr ""
+"to the penalty to visibility when observation\n"
+"devices are disabled"
+
 msgid "kpi/bonus/positive/radiomanActivityTimeAfterVehicleDestroy"
 msgstr ""
 "to time of transmission of\n"
@@ -1278,30 +1323,31 @@ msgstr ""
 "to protection of the radio operator\n"
 "from injuries"
 
+msgid "kpi/bonus/positive/shellVelocity"
+msgstr "to shell velocity"
+
+msgid "kpi/bonus/positive/softGroundFactor"
+msgstr ""
+"to maintaining speed\n"
+"on soft terrain"
+
 msgid "kpi/bonus/positive/stunResistanceEffectFactor"
 msgstr "to negative stun effect"
 
-msgid "kpi/bonus/positive/vehPenaltyForDamageEngineAndCombat"
-msgstr "to the damaged ammo rack penalty and damaged engine penalty"
+msgid "kpi/bonus/positive/vehPenaltyForDamagedAmmorack"
+msgstr "to the loading speed penalty"
+
+msgid "kpi/bonus/positive/vehPenaltyForDamagedEngine"
+msgstr "to the damaged engine penalty"
 
 msgid "kpi/bonus/positive/vehicleAllGroundRotationSpeed"
 msgstr "to hull traverse speed"
-
-msgid "kpi/bonus/positive/vehicleAllyRadioDistance"
-msgstr ""
-"to signal range of allied comms\n"
-"within the vehicle's radio coverage"
 
 msgid "kpi/bonus/positive/vehicleAmmoBayEngineFuelStrength"
 msgstr "to internal module durability"
 
 msgid "kpi/bonus/positive/vehicleAmmoBayStrength"
 msgstr "to ammo rack durability"
-
-msgid "kpi/bonus/positive/vehicleAverageSoilResistance"
-msgstr ""
-"to maintaining speed\n"
-"on moderately soft terrain"
 
 msgid "kpi/bonus/positive/vehicleBackwardMaxSpeed"
 msgstr "to top reverse speed"
@@ -1334,6 +1380,9 @@ msgstr ""
 
 msgid "kpi/bonus/positive/vehicleEnginePower"
 msgstr "to engine power"
+
+msgid "kpi/bonus/positive/vehicleFallingDamageResistance"
+msgstr "to damage by impact"
 
 msgid "kpi/bonus/positive/vehicleFireChance"
 msgstr "to the chance of engine fire"
@@ -1373,6 +1422,9 @@ msgstr "to dispersion of a damaged gun"
 msgid "kpi/bonus/positive/vehicleGunShotFullDispersion"
 msgstr "to aiming circle size"
 
+msgid "kpi/bonus/positive/vehicleHEShellDamageResistance"
+msgstr "to HE shell damage"
+
 msgid "kpi/bonus/positive/vehicleInvisibilityAfterShot"
 msgstr "to concealment after firing"
 
@@ -1386,9 +1438,6 @@ msgstr ""
 
 msgid "kpi/bonus/positive/vehicleRamDamageResistance"
 msgstr "to ramming damage received"
-
-msgid "kpi/bonus/positive/vehicleRamOrExplosionDamageResistance"
-msgstr "to HE-shell and ramming damage"
 
 msgid "kpi/bonus/positive/vehicleReloadTimeAfterShellChange"
 msgstr ""
@@ -1421,11 +1470,6 @@ msgstr ""
 msgid "kpi/bonus/positive/vehicleTurretRotationSpeed"
 msgstr "to turret traverse speed"
 
-msgid "kpi/bonus/positive/vehicleWeakSoilResistance"
-msgstr ""
-"to maintaining speed\n"
-"on soft terrain"
-
 msgid "kpi/bonus/positive/wheelsRotationSpeed"
 msgstr "to wheel turn speed"
 
@@ -1433,6 +1477,9 @@ msgid "kpi/bonus/positive/woundedCrewEfficiency"
 msgstr ""
 "to penalty when a crew member is injured,\n"
 "except the Commander"
+
+msgid "kpi/bonus/ttc/negative/commanderLampDelay"
+msgstr "to delay before notification of being spotted"
 
 msgid "kpi/bonus/ttc/negative/crewHitChance"
 msgstr ""
@@ -1469,16 +1516,17 @@ msgstr ""
 msgid "kpi/bonus/ttc/negative/radiomanChanceToHitPerLevel"
 msgstr "to protection of the radio operator from injuries"
 
+msgid "kpi/bonus/ttc/negative/shellVelocity"
+msgstr "to shell velocity for all shell types"
+
 msgid "kpi/bonus/ttc/negative/shotDispersionAngle"
-msgstr "to dispersion of a stationary vehicle"
+msgstr "to gun dispersion"
 
 msgid "kpi/bonus/ttc/negative/turretAimingDispersion"
 msgstr "to dispersion during gun traverse"
 
-msgid "kpi/bonus/ttc/negative/vehPenaltyForDamageEngineAndCombat"
-msgstr ""
-"to the damaged ammo rack penalty\n"
-"and damaged engine penalty"
+msgid "kpi/bonus/ttc/negative/vehPenaltyForDamagedAmmorack"
+msgstr "to the loading speed penalty"
 
 msgid "kpi/bonus/ttc/negative/vehPenaltyForDamagedEngine"
 msgstr ""
@@ -1523,6 +1571,9 @@ msgstr ""
 msgid "kpi/bonus/ttc/negative/vehicleEnginePower"
 msgstr "to engine power"
 
+msgid "kpi/bonus/ttc/negative/vehicleFallingDamageResistance"
+msgstr "to damage by impact"
+
 msgid "kpi/bonus/ttc/negative/vehicleFireChance"
 msgstr "to the chance of engine fire"
 
@@ -1562,6 +1613,9 @@ msgstr "to dispersion of a damaged gun"
 msgid "kpi/bonus/ttc/negative/vehicleGunShotFullDispersion"
 msgstr "to the aiming circle size"
 
+msgid "kpi/bonus/ttc/negative/vehicleHEShellDamageResistance"
+msgstr "to HE shell damage"
+
 msgid "kpi/bonus/ttc/negative/vehicleInvisibilityAfterShot"
 msgstr "to concealment after firing"
 
@@ -1570,9 +1624,6 @@ msgstr "to the duration your vehicle is visible"
 
 msgid "kpi/bonus/ttc/negative/vehicleRamDamageResistance"
 msgstr "to ramming damage received"
-
-msgid "kpi/bonus/ttc/negative/vehicleRamOrExplosionDamageResistance"
-msgstr "to HE-shell and ramming damage"
 
 msgid "kpi/bonus/ttc/negative/vehicleReloadTimeAfterShellChange"
 msgstr "to speed of changing shell types"
@@ -1601,12 +1652,17 @@ msgid "kpi/bonus/ttc/negative/vehicleTurretRotationSpeed"
 msgstr "to turret traverse speed"
 
 msgid "kpi/bonus/ttc/negative/woundedCrewEfficiency"
-msgstr "to penalty when a crew member is injured, except the Commander"
+msgstr ""
+"to penalty when a crew member is injured,\n"
+"except the Commander"
 
 msgid "kpi/bonus/ttc/positive/commanderHitChance"
 msgstr ""
 "to protection of the Commander\n"
 "from injuries"
+
+msgid "kpi/bonus/ttc/positive/commanderLampDelay"
+msgstr "to delay before notification of being spotted"
 
 msgid "kpi/bonus/ttc/positive/crewHitChance"
 msgstr ""
@@ -1654,19 +1710,30 @@ msgstr "to firefighting speed"
 msgid "kpi/bonus/ttc/positive/maskingFactor"
 msgstr "to concealment of the vehicle"
 
+msgid "kpi/bonus/ttc/positive/mediumGroundFactor"
+msgstr ""
+"to maintaining speed\n"
+"on moderately soft terrain"
+
 msgid "kpi/bonus/ttc/positive/radioDistance"
 msgstr "to radio signal range"
 
 msgid "kpi/bonus/ttc/positive/radiomanChanceToHitPerLevel"
 msgstr "to protection of the radio operator from injuries"
 
+msgid "kpi/bonus/ttc/positive/shellVelocity"
+msgstr "to shell velocity for all shell types"
+
+msgid "kpi/bonus/ttc/positive/softGroundFactor"
+msgstr ""
+"to maintaining speed\n"
+"on soft terrain"
+
 msgid "kpi/bonus/ttc/positive/teamRadioBonusFactor"
 msgstr "to signal range of allied comms within the vehicle's radio coverage"
 
-msgid "kpi/bonus/ttc/positive/vehPenaltyForDamageEngineAndCombat"
-msgstr ""
-"to the damaged ammo rack penalty\n"
-"and damaged engine penalty"
+msgid "kpi/bonus/ttc/positive/vehPenaltyForDamagedAmmorack"
+msgstr "to the loading speed penalty"
 
 msgid "kpi/bonus/ttc/positive/vehPenaltyForDamagedEngine"
 msgstr ""
@@ -1681,11 +1748,6 @@ msgstr "to internal module durability"
 
 msgid "kpi/bonus/ttc/positive/vehicleAmmoBayStrength"
 msgstr "to ammo rack durability"
-
-msgid "kpi/bonus/ttc/positive/vehicleAverageSoilResistance"
-msgstr ""
-"to maintaining speed\n"
-"on moderately soft terrain"
 
 msgid "kpi/bonus/ttc/positive/vehicleBackwardMaxSpeed"
 msgstr "to top reverse speed"
@@ -1717,6 +1779,9 @@ msgstr ""
 
 msgid "kpi/bonus/ttc/positive/vehicleEnginePower"
 msgstr "to engine power"
+
+msgid "kpi/bonus/ttc/positive/vehicleFallingDamageResistance"
+msgstr "to damage by impact"
 
 msgid "kpi/bonus/ttc/positive/vehicleFireChance"
 msgstr "to the chance of engine fire"
@@ -1757,6 +1822,9 @@ msgstr "to dispersion of a damaged gun"
 msgid "kpi/bonus/ttc/positive/vehicleGunShotFullDispersion"
 msgstr "to aiming circle size"
 
+msgid "kpi/bonus/ttc/positive/vehicleHEShellDamageResistance"
+msgstr "to HE shell damage"
+
 msgid "kpi/bonus/ttc/positive/vehicleInvisibilityAfterShot"
 msgstr "to concealment after firing"
 
@@ -1765,9 +1833,6 @@ msgstr "to the duration your vehicle is visible"
 
 msgid "kpi/bonus/ttc/positive/vehicleRamDamageResistance"
 msgstr "to ramming damage received"
-
-msgid "kpi/bonus/ttc/positive/vehicleRamOrExplosionDamageResistance"
-msgstr "to HE-shell and ramming damage"
 
 msgid "kpi/bonus/ttc/positive/vehicleReloadTimeAfterShellChange"
 msgstr "to speed of changing shell types"
@@ -1795,11 +1860,6 @@ msgstr "to gun traverse speed"
 msgid "kpi/bonus/ttc/positive/vehicleTurretRotationSpeed"
 msgstr "to turret traverse speed"
 
-msgid "kpi/bonus/ttc/positive/vehicleWeakSoilResistance"
-msgstr ""
-"to maintaining speed\n"
-"on soft terrain"
-
 msgid "kpi/bonus/ttc/positive/xpBonusFactorPerLevel"
 msgstr "to Crew Experience earned in battle"
 
@@ -1808,6 +1868,9 @@ msgstr "s"
 
 msgid "kpi/bonus/valueTypes/brackets"
 msgstr "(%(value)s)"
+
+msgid "kpi/bonus/valueTypes/commanderLampDelay"
+msgstr "s"
 
 msgid "kpi/bonus/valueTypes/damagedModulesDetectionTime"
 msgstr "s"
@@ -1829,6 +1892,47 @@ msgstr "km/h"
 
 msgid "kpi/bonus/valueTypes/vehicleOwnSpottingTime"
 msgstr "s"
+
+msgid "popularLoadouts/noData"
+msgstr "Data unavailable"
+
+msgid "popularLoadouts/place/first"
+msgstr "1st"
+
+msgid "popularLoadouts/place/second"
+msgstr "2nd"
+
+msgid "popularLoadouts/place/third"
+msgstr "3rd"
+
+msgid "popularLoadouts/title"
+msgstr "Commonly Used Loadouts"
+
+msgid "popularLoadouts/tooltip/genericEquipment"
+msgstr "Standard, Bounty, and improved equipment is aggregated"
+
+msgid "popularLoadouts/tooltip/headerDescription"
+msgstr ""
+"This exclusive WoT Plus feature provides a report on the most commonly used "
+"loadouts for a vehicle, helping you understand current game trends and "
+"common practices among your fellow tankers."
+
+msgid "popularLoadouts/tooltip/headerTitle"
+msgstr "Commonly Used Loadouts"
+
+msgid "popularLoadouts/tooltip/notEnoughData/alternative"
+msgstr "Data taken from:"
+
+msgid "popularLoadouts/tooltip/notEnoughData/headerDescription"
+msgstr ""
+"Loadout data is not available for the selected vehicle. Data for the below "
+"vehicle with a similar playstyle is displayed."
+
+msgid "popularLoadouts/tooltip/notEnoughData/headerTitle"
+msgstr "Data Unavailable"
+
+msgid "popularLoadouts/tooltip/randomBattleCalculation"
+msgstr "Data is based on Random Battles"
 
 msgid "section/battleAbilities"
 msgstr "COMBAT RESERVES"

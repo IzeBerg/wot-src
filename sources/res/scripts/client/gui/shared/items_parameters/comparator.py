@@ -41,9 +41,7 @@ BACKWARD_QUALITY_PARAMS = frozenset([
  KPI.Name.VEHICLE_GUN_SHOT_DISPERSION_WHILE_GUN_DAMAGED,
  KPI.Name.VEHICLE_GUN_SHOT_FULL_DISPERSION,
  KPI.Name.VEHICLE_OWN_SPOTTING_TIME,
- KPI.Name.VEHICLE_PENALTY_FOR_DAMAGED_ENGINE_AND_COMBAT,
  KPI.Name.VEHICLE_RAM_DAMAGE_RESISTANCE,
- KPI.Name.VEHICLE_RAM_OR_EXPLOSION_DAMAGE_RESISTANCE,
  KPI.Name.VEHICLE_FUEL_TANK_LESION_CHANCE,
  WHEELED_SWITCH_OFF_TIME,
  WHEELED_SWITCH_ON_TIME,
@@ -53,11 +51,31 @@ BACKWARD_QUALITY_PARAMS = frozenset([
  DUAL_GUN_RATE_TIME,
  DUAL_ACCURACY_COOLING_DELAY,
  KPI.Name.ART_NOTIFICATION_DELAY_FACTOR,
- KPI.Name.DAMAGED_MODULES_DETECTION_TIME])
+ KPI.Name.DAMAGED_MODULES_DETECTION_TIME,
+ KPI.Name.PENALTY_TO_DAMAGED_SURVEYING_DEVICE,
+ KPI.Name.VEHICLE_HE_SHELL_DAMAGE_RESISTANCE,
+ KPI.Name.VEHICLE_FALLING_DAMAGE_RESISTANCE,
+ KPI.Name.VEHICLE_PENALTY_FOR_DAMAGED_ENGINE,
+ KPI.Name.VEHICLE_PENALTY_FOR_DAMAGED_AMMORACK,
+ KPI.Name.COMMANDER_LAMP_DELAY])
 NEGATIVE_PARAMS = [
  'switchOnTime', 'switchOffTime']
 PARAMS_WITH_IGNORED_EMPTY_VALUES = {
  'clipFireRate', SHOT_DISPERSION_ANGLE, DISPERSION_RADIUS}
+CREW_LEVEL_INCREASE_AFFECTING_PARAMS = frozenset([
+ 'reloadTime',
+ 'reloadTimeSecs',
+ 'clipFireRate',
+ 'autoReloadTime',
+ 'dualAccuracyCoolingDelay',
+ 'turretRotationSpeed',
+ 'aimingTime',
+ 'shotDispersionAngle',
+ 'avgDamagePerMinute',
+ 'chassisRotationSpeed',
+ 'circularVisionRadius',
+ 'radioDistance',
+ 'dualAccuracyAfterShotDispersionAngle'])
 
 def normalizeShotDispersionValue(value):
     if len(value) == 1:
@@ -91,13 +109,14 @@ class PARAM_STATE(object):
     WORSE = 'worse'
     NORMAL = 'normal'
     BETTER = 'better'
+    SITUATIONAL = 'situational'
     NOT_APPLICABLE = 'N/A'
 
 
 DEFAULT_AVG_VALUE = (
  sys.maxint, -1)
 
-def getParamExtendedData(paramName, value, otherValue, penalties=None, customQualityParams=None, isSituational=False, hasNormalization=False):
+def getParamExtendedData(paramName, value, otherValue, penalties=None, customQualityParams=None, isSituational=False, hasNormalization=False, highlightedBonuses=None):
     possibleBonuses, bonuses, inactive, penalties = penalties if penalties is not None else ([], [], [], [])
     if paramName not in NEGATIVE_PARAMS:
         if otherValue is None or otherValue == DEFAULT_AVG_VALUE:
@@ -106,7 +125,11 @@ def getParamExtendedData(paramName, value, otherValue, penalties=None, customQua
         func = PARAMS_NORMALIZATION_MAP[paramName]
         value = func(value)
         otherValue = func(otherValue)
-    return _ParameterInfo(paramName, value, rateParameterState(paramName, value, otherValue, customQualityParams=customQualityParams), possibleBonuses, inactive, bonuses, penalties, isSituational)
+    state = rateParameterState(paramName, value, otherValue, customQualityParams=customQualityParams, isSituational=isSituational)
+    mustHighlight = False
+    if highlightedBonuses:
+        mustHighlight = any(bnsId in highlightedBonuses for bnsId, _ in bonuses)
+    return _ParameterInfo(paramName, value, state, possibleBonuses, inactive, bonuses, penalties, isSituational, mustHighlight)
 
 
 class ItemsComparator(object):
@@ -137,14 +160,30 @@ class ItemsComparator(object):
 
 class VehiclesComparator(ItemsComparator):
 
-    def __init__(self, currentVehicleParams, otherVehicleParams, suitableArtefacts=None, bonuses=None, penalties=None):
+    def __init__(self, currentVehicleParams, otherVehicleParams, suitableArtefacts=None, bonuses=None, penalties=None, paramsThatCountAsSituational=None, situationalKPI=None, highlightedBonuses=None):
         super(VehiclesComparator, self).__init__(currentVehicleParams, otherVehicleParams)
         self.__suitableArtefacts = set(suitableArtefacts or set())
         self.__bonuses = bonuses or set()
         self.__penalties = penalties or dict()
+        self.__paramsThatCountAsSituational = paramsThatCountAsSituational
+        self.__situationalKPI = situationalKPI
+        self.__highlightedBonuses = highlightedBonuses
+        self.__situationalCrewLevelIncrease = False
+        if self.__paramsThatCountAsSituational:
+            self.__situationalCrewLevelIncrease = 'situationalCrewLevelIncrease' in self.__paramsThatCountAsSituational
 
     def hasBonusOfType(self, bnsType):
         return any(i == bnsType for _, i in self.__bonuses)
+
+    def getExtendedData(self, paramName, hasNormalization=False):
+        currentParamName = paramName
+        isSituational = False
+        if self.__paramsThatCountAsSituational and paramName in self.__paramsThatCountAsSituational:
+            currentParamName += 'Situational'
+            isSituational = True
+        elif self.__situationalCrewLevelIncrease and paramName in CREW_LEVEL_INCREASE_AFFECTING_PARAMS or self.__situationalKPI and paramName in self.__situationalKPI:
+            isSituational = True
+        return getParamExtendedData(paramName, self._currentParams.get(currentParamName), self._otherParams.get(currentParamName), self._getPenaltiesAndBonuses(paramName), isSituational=isSituational, hasNormalization=hasNormalization, highlightedBonuses=self.__highlightedBonuses)
 
     def getPenalties(self, paramName):
         return self.__penalties.get(paramName, [])
@@ -201,7 +240,7 @@ class VehiclesComparator(ItemsComparator):
 
 class _ParameterInfo(collections.namedtuple('_ParameterInfo', ('name', 'value', 'state', 'possibleBonuses',
                                           'inactiveBonuses', 'bonuses', 'penalties',
-                                          'isSituational'))):
+                                          'isSituational', 'mustHighlight'))):
 
     def getParamDiff(self):
         if isinstance(self.value, (tuple, list)):
@@ -458,7 +497,19 @@ CONDITIONAL_BONUSES = {('invisibilityMovingFactor', 'invisibilityStillFactor', T
                                                                                               'fireFighting', BonusTypes.SKILL),)}, 
    ('wheelsRotationSpeed', ): {(('virtuosoBattleBooster', BonusTypes.BATTLE_BOOSTER),): (
                                                                                        (
-                                                                                        'driver_virtuoso', BonusTypes.SKILL),)}}
+                                                                                        'driver_virtuoso', BonusTypes.SKILL),)}, 
+   ('damagedModulesDetectionTime', ): {(('rancorousBattleBooster', BonusTypes.BATTLE_BOOSTER),): (
+                                                                                                (
+                                                                                                 'gunner_rancorous', BonusTypes.SKILL),)}, 
+   ('stunResistanceEffectFactor', ): {(('enemyShotPredictorBattleBooster', BonusTypes.BATTLE_BOOSTER),): (
+                                                                                                        (
+                                                                                                         'commander_enemyShotPredictor', BonusTypes.SKILL),)}, 
+   ('artNotificationDelayFactor', ): {(('enemyShotPredictorBattleBooster', BonusTypes.BATTLE_BOOSTER),): (
+                                                                                                        (
+                                                                                                         'commander_enemyShotPredictor', BonusTypes.SKILL),)}, 
+   ('equipmentPreparationTime', ): {(('practicalityBattleBooster', BonusTypes.BATTLE_BOOSTER),): (
+                                                                                                (
+                                                                                                 'commander_practical', BonusTypes.SKILL),)}}
 CONDITIONAL_BONUSES = {k:{k1:v1 for keys1, v1 in values.iteritems() for k1 in keys1} for keys, values in CONDITIONAL_BONUSES.items() for k in keys}
 NOT_HARD_DEPENDENCY = {
  (
@@ -466,7 +517,13 @@ NOT_HARD_DEPENDENCY = {
  (
   'fireFightingBattleBooster', BonusTypes.BATTLE_BOOSTER),
  (
-  'virtuosoBattleBooster', BonusTypes.BATTLE_BOOSTER)}
+  'virtuosoBattleBooster', BonusTypes.BATTLE_BOOSTER),
+ (
+  'rancorousBattleBooster', BonusTypes.BATTLE_BOOSTER),
+ (
+  'enemyShotPredictorBattleBooster', BonusTypes.BATTLE_BOOSTER),
+ (
+  'practicalityBattleBooster', BonusTypes.BATTLE_BOOSTER)}
 
 def _getComparableValue(currentValue, comparableList, idx):
     if len(comparableList) > idx:
@@ -474,7 +531,7 @@ def _getComparableValue(currentValue, comparableList, idx):
     return currentValue
 
 
-def _getParamStateInfo(paramName, val1, val2, customReverted=False):
+def _getParamStateInfo(paramName, val1, val2, customReverted=False, isSituational=False):
     if val1 is None or val2 is None:
         hasNoParam = True
         diff = 0
@@ -489,13 +546,15 @@ def _getParamStateInfo(paramName, val1, val2, customReverted=False):
             if isinstance(val2, float):
                 val2 = round(val2, 4)
             diff = val1 - val2
-    if paramName in NEGATIVE_PARAMS and hasNoParam:
-        if val1 is None and val2 is None:
-            return (PARAM_STATE.NORMAL, diff)
-        if val1 is None:
-            return (PARAM_STATE.BETTER, diff)
-        return (PARAM_STATE.WORSE, diff)
+    if diff != 0 and isSituational:
+        return (PARAM_STATE.SITUATIONAL, diff)
     else:
+        if paramName in NEGATIVE_PARAMS and hasNoParam:
+            if val1 is None and val2 is None:
+                return (PARAM_STATE.NORMAL, diff)
+            if val1 is None:
+                return (PARAM_STATE.BETTER, diff)
+            return (PARAM_STATE.WORSE, diff)
         if diff == 0:
             if hasNoParam and paramName in PARAMS_WITH_IGNORED_EMPTY_VALUES:
                 return (PARAM_STATE.NOT_APPLICABLE, diff)
@@ -507,7 +566,7 @@ def _getParamStateInfo(paramName, val1, val2, customReverted=False):
          PARAM_STATE.BETTER, diff)
 
 
-def rateParameterState(paramName, val1, val2, customQualityParams=None):
+def rateParameterState(paramName, val1, val2, customQualityParams=None, isSituational=False):
     if isinstance(val1, (tuple, list)):
         if customQualityParams is None:
             customQualityParams = _CUSTOM_QUALITY_PARAMS.get(paramName)
@@ -527,8 +586,8 @@ def rateParameterState(paramName, val1, val2, customQualityParams=None):
                 customQuality = customQualityParams[min(i, customQualityLen - 1)]
             else:
                 customQuality = None
-            result.append(rateParameterState(paramName, val, val2ToCompare, customQuality))
+            result.append(rateParameterState(paramName, val, val2ToCompare, customQuality, isSituational))
 
         return tuple(result)
     else:
-        return _getParamStateInfo(paramName, val1, val2, customQualityParams)
+        return _getParamStateInfo(paramName, val1, val2, customQualityParams, isSituational)

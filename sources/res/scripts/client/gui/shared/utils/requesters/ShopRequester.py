@@ -184,9 +184,10 @@ class ShopCommonStats(IShopCommonStats):
             modifiers = sellPriceFactors[compDescr]
         else:
             modifiers = sellPriceModif
+        rate = self.defaults.exchangeRate if hasattr(self, 'defaults') else self.exchangeRate
         return (
          self.revision,
-         self.exchangeRate,
+         rate,
          self.exchangeRateForShellsAndEqs,
          sellPriceModif,
          modifiers,
@@ -457,31 +458,6 @@ class ShopRequester(AbstractSyncDataRequester, ShopCommonStats, IShopRequester):
         return prices
 
     @property
-    def freeXPConversionLimit(self):
-        goody = self.bestGoody(self.personalXPExchangeDiscounts)
-        if goody:
-            return goody.target.limit * self.defaults.freeXPConversion[0]
-        else:
-            return
-
-    @property
-    def freeXPConversionWithDiscount(self):
-        goody = self.bestGoody(self.personalXPExchangeDiscounts)
-        rate = self.freeXPConversion
-        if goody:
-            return (rate[0], getPriceWithDiscount(rate[1], goody.resource))
-        return rate
-
-    @property
-    def isXPConversionActionActive(self):
-        goody = self.bestGoody(self.personalXPExchangeDiscounts)
-        return self.freeXPConversion[0] > self.defaults.freeXPConversion[0] or goody is not None
-
-    @property
-    def isCreditsConversionActionActive(self):
-        return self.exchangeRate != self.defaults.exchangeRate
-
-    @property
     def personalPremiumPacketsDiscounts(self):
         return self.__personalDiscountsByTarget(GOODIE_TARGET_TYPE.ON_BUY_PREMIUM)
 
@@ -492,10 +468,6 @@ class ShopRequester(AbstractSyncDataRequester, ShopCommonStats, IShopRequester):
     @property
     def personalTankmanDiscounts(self):
         return self.__personalDiscountsByTarget(GOODIE_TARGET_TYPE.ON_BUY_GOLD_TANKMEN)
-
-    @property
-    def personalXPExchangeDiscounts(self):
-        return self.__personalDiscountsByTarget(GOODIE_TARGET_TYPE.ON_FREE_XP_CONVERSION)
 
     @property
     def personalVehicleDiscounts(self):

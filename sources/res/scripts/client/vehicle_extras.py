@@ -134,23 +134,19 @@ class ShowShootingMultiGun(ShowShooting):
             data['_gunIndex'] = range(0, len(gunDescr.effects))
             data['_gunSequence'] = [data['_gunIndex']] * burstCount
         else:
-            if currentGuns < 0:
-                data['_gunIndex'] = turretDescr.multiGunState.patterns[currentGuns].gunIndexes
-                data['_gunSequence'] = turretDescr.multiGunState.patterns[currentGuns].sequence
-            else:
-                data['_gunIndex'] = [
-                 currentGuns]
-                data['_gunSequence'] = [data['_gunIndex']] * burstCount
-            if vehicle.typeDescriptor.isDualgunVehicle:
-                positions = [
-                 None] * len(turretDescr.multiGun)
-            else:
-                positions = [ (multiGunInstance.gunFire,) for multiGunInstance in turretDescr.multiGun ]
-            data['entity_id'] = vehicle.id
-            effectPlayers = {}
-            for gunIndex in data['_gunIndex']:
-                stages, effects, _ = gunDescr.effects[gunIndex]
-                effectPlayers[gunIndex] = EffectsListPlayer(effects, stages, position=positions[gunIndex], **data)
+            data['_gunIndex'] = [
+             currentGuns]
+            data['_gunSequence'] = [data['_gunIndex']] * burstCount
+        if vehicle.typeDescriptor.isDualgunVehicle:
+            positions = [
+             None] * len(turretDescr.multiGun)
+        else:
+            positions = [ (multiGunInstance.gunFire,) for multiGunInstance in turretDescr.multiGun ]
+        data['entity_id'] = vehicle.id
+        effectPlayers = {}
+        for gunIndex in data['_gunIndex']:
+            stages, effects, _ = gunDescr.effects[gunIndex]
+            effectPlayers[gunIndex] = EffectsListPlayer(effects, stages, position=positions[gunIndex], **data)
 
         data['_effectsListPlayers'] = effectPlayers
         data['_burst'] = (

@@ -100,7 +100,3 @@ class HangarMeta(View):
     def as_setBattleRoyaleSpaceLoadedS(self, showAnimation):
         if self._isDAAPIInited():
             return self.flashObject.as_setBattleRoyaleSpaceLoaded(showAnimation)
-
-    def as_setEventEntryPointVisibleS(self, value):
-        if self._isDAAPIInited():
-            return self.flashObject.as_setEventEntryPointVisible(value)

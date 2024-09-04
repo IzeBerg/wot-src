@@ -1,5 +1,6 @@
 from frameworks.wulf import WindowLayer
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
+from gui.Scaleform.daapi.view.lobby.vehicle_preview.info.crew_tab_view import CrewTabInject
 from gui.Scaleform.framework import ComponentSettings
 from gui.Scaleform.framework.package_layout import PackageBusinessHandler
 from gui.app_loader import settings as app_settings
@@ -17,7 +18,6 @@ def getViewSettings():
     from gui.Scaleform.daapi.view.lobby.vehicle_preview.info.bottom_panel_offer_gift import VehiclePreviewBottomPanelOfferGift
     from gui.Scaleform.daapi.view.lobby.vehicle_preview.info.browse_tab import VehiclePreviewBrowseTab
     from gui.Scaleform.daapi.view.lobby.vehicle_preview.info.modules_tab import VehiclePreviewModulesTab, ModulesPanel
-    from gui.Scaleform.daapi.view.lobby.vehicle_preview.info.crew_tab import VehiclePreviewCrewTab
     from gui.Scaleform.daapi.view.lobby.vehicle_preview.pack_items_popover import PackItemsPopover
     from gui.Scaleform.daapi.view.lobby.trade_in.trade_off_widget import TradeOffWidget
     from gui.Scaleform.framework import ScopeTemplates, GroupedViewSettings
@@ -40,7 +40,7 @@ def getViewSettings():
      ComponentSettings(VEHPREVIEW_CONSTANTS.BROWSE_LINKAGE, VehiclePreviewBrowseTab, ScopeTemplates.DEFAULT_SCOPE),
      ComponentSettings(VEHPREVIEW_CONSTANTS.MODULES_LINKAGE, VehiclePreviewModulesTab, ScopeTemplates.DEFAULT_SCOPE),
      ComponentSettings(VEHPREVIEW_CONSTANTS.MODULES_PY_ALIAS, ModulesPanel, ScopeTemplates.DEFAULT_SCOPE),
-     ComponentSettings(VEHPREVIEW_CONSTANTS.CREW_LINKAGE, VehiclePreviewCrewTab, ScopeTemplates.DEFAULT_SCOPE),
+     ComponentSettings(VEHPREVIEW_CONSTANTS.CREW_TAB_INJECT, CrewTabInject, ScopeTemplates.DEFAULT_SCOPE),
      GroupedViewSettings(VIEW_ALIAS.PACK_ITEM_POPOVER, PackItemsPopover, 'packItemsPopover.swf', WindowLayer.WINDOW, VIEW_ALIAS.PACK_ITEM_POPOVER, VIEW_ALIAS.PACK_ITEM_POPOVER, ScopeTemplates.DEFAULT_SCOPE),
      ComponentSettings(VEHPREVIEW_CONSTANTS.TRADE_OFF_WIDGET_ALIAS, TradeOffWidget, ScopeTemplates.DEFAULT_SCOPE),
      ComponentSettings(VEHPREVIEW_CONSTANTS.BOTTOM_PANEL_WOT_PLUS_LINKAGE, VehiclePreviewBottomPanelRental, ScopeTemplates.DEFAULT_SCOPE))

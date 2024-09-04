@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-	<version>3</version>
+	<version>4</version>
 	<GameObjects>
 		<GameObject>
 			<name>sound_medium_ac</name>
@@ -22,23 +22,13 @@
 			<UUID>e3bd8e95-d558-3478-a065-0556ca47d354</UUID>
 			<flags>8</flags>
 		</GameObject>
-		<GameObject>
-			<name>start_spin_sound_event</name>
-			<UUID>6dda7a65-6823-3448-957d-33b4c680add4</UUID>
-			<flags>8</flags>
-		</GameObject>
-		<GameObject>
-			<name>stop_spin_sound_event</name>
-			<UUID>3fb05d21-b07a-34ac-b35e-1115e50c9af4</UUID>
-			<flags>8</flags>
-		</GameObject>
 	</GameObjects>
 	<components>
 		<ComponentPool>
 			<type>Hierarchy</type>
 			<version>2</version>
 			<component>
-				<objectIndex>1</objectIndex>
+				<UUID>e0cc6c29-cf4e-4c5d-bbc7-ec9b1a5c43ac</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -48,7 +38,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>2</objectIndex>
+				<UUID>aaa57a66-bebd-32c0-82f5-c3024e3b8d99</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -58,27 +48,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>3</objectIndex>
-				<flags>35</flags>
-				<config>
-					<property>
-						<name>Parent</name>
-						<link>fc03df65-dd1c-46bb-8f3c-f824dd1c2002</link>
-					</property>
-				</config>
-			</component>
-			<component>
-				<objectIndex>4</objectIndex>
-				<flags>35</flags>
-				<config>
-					<property>
-						<name>Parent</name>
-						<link>fc03df65-dd1c-46bb-8f3c-f824dd1c2002</link>
-					</property>
-				</config>
-			</component>
-			<component>
-				<objectIndex>5</objectIndex>
+				<UUID>e3bd8e95-d558-3478-a065-0556ca47d354</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -92,7 +62,7 @@
 			<type>Transform</type>
 			<version>1</version>
 			<component>
-				<objectIndex>0</objectIndex>
+				<UUID>fc03df65-dd1c-46bb-8f3c-f824dd1c2002</UUID>
 				<flags>3</flags>
 				<config>
 					<property>
@@ -110,7 +80,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>1</objectIndex>
+				<UUID>e0cc6c29-cf4e-4c5d-bbc7-ec9b1a5c43ac</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -128,7 +98,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>2</objectIndex>
+				<UUID>aaa57a66-bebd-32c0-82f5-c3024e3b8d99</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -146,43 +116,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>3</objectIndex>
-				<flags>35</flags>
-				<config>
-					<property>
-						<name>Position</name>
-						<value>0 0 0</value>
-					</property>
-					<property>
-						<name>Scale</name>
-						<value>1 1 1</value>
-					</property>
-					<property>
-						<name>Rotation</name>
-						<value>-0 0 0</value>
-					</property>
-				</config>
-			</component>
-			<component>
-				<objectIndex>4</objectIndex>
-				<flags>35</flags>
-				<config>
-					<property>
-						<name>Position</name>
-						<value>0 0 0</value>
-					</property>
-					<property>
-						<name>Scale</name>
-						<value>1 1 1</value>
-					</property>
-					<property>
-						<name>Rotation</name>
-						<value>-0 0 0</value>
-					</property>
-				</config>
-			</component>
-			<component>
-				<objectIndex>5</objectIndex>
+				<UUID>e3bd8e95-d558-3478-a065-0556ca47d354</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -204,7 +138,7 @@
 			<type>GunEffect</type>
 			<version>1</version>
 			<component>
-				<objectIndex>1</objectIndex>
+				<UUID>e0cc6c29-cf4e-4c5d-bbc7-ec9b1a5c43ac</UUID>
 				<flags>3</flags>
 				<config>
 					<property>
@@ -214,7 +148,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>2</objectIndex>
+				<UUID>aaa57a66-bebd-32c0-82f5-c3024e3b8d99</UUID>
 				<flags>3</flags>
 				<config>
 					<property>
@@ -224,7 +158,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>3</objectIndex>
+				<UUID>e3bd8e95-d558-3478-a065-0556ca47d354</UUID>
 				<flags>3</flags>
 				<config>
 					<property>
@@ -233,32 +167,12 @@
 					</property>
 				</config>
 			</component>
-			<component>
-				<objectIndex>4</objectIndex>
-				<flags>3</flags>
-				<config>
-					<property>
-						<name>effectMask</name>
-						<value>16</value>
-					</property>
-				</config>
-			</component>
-			<component>
-				<objectIndex>5</objectIndex>
-				<flags>3</flags>
-				<config>
-					<property>
-						<name>effectMask</name>
-						<value>32</value>
-					</property>
-				</config>
-			</component>
 		</ComponentPool>
 		<ComponentPool>
 			<type>GunAudition</type>
 			<version>1</version>
 			<component>
-				<objectIndex>1</objectIndex>
+				<UUID>e0cc6c29-cf4e-4c5d-bbc7-ec9b1a5c43ac</UUID>
 				<flags>3</flags>
 				<config>
 					<property>
@@ -288,7 +202,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>2</objectIndex>
+				<UUID>aaa57a66-bebd-32c0-82f5-c3024e3b8d99</UUID>
 				<flags>3</flags>
 				<config>
 					<property>
@@ -318,7 +232,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>3</objectIndex>
+				<UUID>e3bd8e95-d558-3478-a065-0556ca47d354</UUID>
 				<flags>3</flags>
 				<config>
 					<property>
@@ -347,72 +261,20 @@
 					</property>
 				</config>
 			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>KineticEnergyGetter</type>
+			<version>1</version>
 			<component>
-				<objectIndex>4</objectIndex>
+				<UUID>fc03df65-dd1c-46bb-8f3c-f824dd1c2002</UUID>
 				<flags>3</flags>
-				<config>
-					<property>
-						<name>isPlayer</name>
-						<value>0</value>
-					</property>
-					<property>
-						<name>autoStart</name>
-						<value>1</value>
-					</property>
-					<property>
-						<name>priority</name>
-						<value>1</value>
-					</property>
-					<property>
-						<name>wwSoundPC</name>
-						<value>spin_auto_shoot_start_PC</value>
-					</property>
-					<property>
-						<name>wwSoundNPC</name>
-						<value>spin_auto_shoot_start_NPC</value>
-					</property>
-					<property>
-						<name>audioOutput</name>
-						<link>fc03df65-dd1c-46bb-8f3c-f824dd1c2002</link>
-					</property>
-				</config>
-			</component>
-			<component>
-				<objectIndex>5</objectIndex>
-				<flags>3</flags>
-				<config>
-					<property>
-						<name>isPlayer</name>
-						<value>0</value>
-					</property>
-					<property>
-						<name>autoStart</name>
-						<value>1</value>
-					</property>
-					<property>
-						<name>priority</name>
-						<value>0</value>
-					</property>
-					<property>
-						<name>wwSoundPC</name>
-						<value>spin_auto_shoot_stop_PC</value>
-					</property>
-					<property>
-						<name>wwSoundNPC</name>
-						<value>spin_auto_shoot_stop_NPC</value>
-					</property>
-					<property>
-						<name>audioOutput</name>
-						<link>fc03df65-dd1c-46bb-8f3c-f824dd1c2002</link>
-					</property>
-				</config>
 			</component>
 		</ComponentPool>
 		<ComponentPool>
 			<type>IntervalBetweenShotsGetter</type>
 			<version>1</version>
 			<component>
-				<objectIndex>0</objectIndex>
+				<UUID>fc03df65-dd1c-46bb-8f3c-f824dd1c2002</UUID>
 				<flags>3</flags>
 			</component>
 		</ComponentPool>
@@ -420,15 +282,7 @@
 			<type>RemainingAmmoClipPercentGetter</type>
 			<version>1</version>
 			<component>
-				<objectIndex>0</objectIndex>
-				<flags>3</flags>
-			</component>
-		</ComponentPool>
-		<ComponentPool>
-			<type>OverheatValueGetter</type>
-			<version>1</version>
-			<component>
-				<objectIndex>0</objectIndex>
+				<UUID>fc03df65-dd1c-46bb-8f3c-f824dd1c2002</UUID>
 				<flags>3</flags>
 			</component>
 		</ComponentPool>
@@ -436,7 +290,7 @@
 			<type>SoundObject3D</type>
 			<version>1</version>
 			<component>
-				<objectIndex>0</objectIndex>
+				<UUID>fc03df65-dd1c-46bb-8f3c-f824dd1c2002</UUID>
 				<flags>3</flags>
 				<config>
 					<property>
@@ -450,7 +304,7 @@
 			<type>RTPC</type>
 			<version>1</version>
 			<component>
-				<objectIndex>0</objectIndex>
+				<UUID>fc03df65-dd1c-46bb-8f3c-f824dd1c2002</UUID>
 				<flags>3</flags>
 				<config>
 					<property>
@@ -460,14 +314,14 @@
 								<object>
 									<property>
 										<name>name</name>
-										<value>RTPC_ext_acann_overheat</value>
+										<value>RTPC_ext_weapon_energy</value>
 									</property>
 									<property>
 										<name>rtpc</name>
 										<object>
 											<property>
 												<name>type</name>
-												<value>4</value>
+												<value>1</value>
 											</property>
 											<property>
 												<name>value</name>

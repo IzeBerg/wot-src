@@ -27,6 +27,8 @@ package net.wg.data.constants.generated
       
       public static const EPIC_TRAINING_ROOM_VIEW_PY:String = "epicBattleRoom";
       
+      public static const TRAINING_ADDITIONAL_INFO_COMP7:String = "comp7Conditions";
+      
       public static const PYTHON_ALIASES:Array = [BATTLE_SESSION_LIST_WINDOW_PY,BATTLE_SESSION_ROOM_WINDOW_PY,TRAINING_SETTINGS_WINDOW_PY,SEND_INVITES_WINDOW_PY,AUTO_INVITE_WINDOW_PY,TRAINING_LIST_VIEW_PY,TRAINING_ROOM_VIEW_PY,EPICBATTLE_LIST_VIEW_PY,EPIC_TRAINING_ROOM_VIEW_PY];
        
       

@@ -20,13 +20,11 @@ package net.wg.gui.lobby.battleResults.progressReport
       
       public var title:String = "";
       
-      public var freeSkillsTitle:String = "";
-      
       public var description:String = "";
       
       public var linkEvent:String = "";
       
-      public var freeSkillsLinkEvent:String = "";
+      public var bonusSkillsAmount:int = -1;
       
       public var linkId:int = -1;
       

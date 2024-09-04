@@ -10,20 +10,22 @@ if typing.TYPE_CHECKING:
     from typing import Deque
     from _weakref import ReferenceType
 _DEFAULT_BLUR_ANIM_REPEAT_COUNT = 10
+_DEFAULT_UI_BLUR_RADIUS = 20
 _logger = logging.getLogger(__name__)
 _idsGenerator = Int32IDGenerator()
 
 class CachedBlur(object):
     __slots__ = ('_blurId', '_enabled', '_fadeTime', '_rectangles', '_ownLayer', '_blurAnimRepeatCount',
-                 '__weakref__', '_prevBlurRadius')
+                 '__weakref__', '_prevBlurRadius', '_uiBlurRadius')
 
-    def __init__(self, enabled=False, fadeTime=0, ownLayer=None, blurAnimRepeatCount=_DEFAULT_BLUR_ANIM_REPEAT_COUNT, blurRadius=None):
+    def __init__(self, enabled=False, fadeTime=0, ownLayer=None, blurAnimRepeatCount=_DEFAULT_BLUR_ANIM_REPEAT_COUNT, blurRadius=None, uiBlurRadius=_DEFAULT_UI_BLUR_RADIUS):
         self._blurId = next(_idsGenerator)
         self._rectangles = {}
         self._enabled = enabled
         self._fadeTime = fadeTime
         self._ownLayer = ownLayer
         self._blurAnimRepeatCount = blurAnimRepeatCount
+        self._uiBlurRadius = uiBlurRadius
         _manager.registerBlur(self)
         if blurRadius is not None:
             self._prevBlurRadius = _manager.getBlurRadius()
@@ -95,6 +97,10 @@ class CachedBlur(object):
     @property
     def blurAnimRepeatCount(self):
         return self._blurAnimRepeatCount
+
+    @property
+    def uiBlurRadius(self):
+        return self._uiBlurRadius
 
     def _switchEnabled(self, enabled):
         self._enabled = enabled
@@ -175,9 +181,9 @@ class _BlurManager(object):
 
     def _setLayerBlur(self, blur):
         if self._lobby is not None:
-            self._lobby.blurBackgroundViews(blur.ownLayer, blur.blurAnimRepeatCount)
+            self._lobby.blurBackgroundViews(blur.ownLayer, blur.blurAnimRepeatCount, blur.uiBlurRadius)
         elif self._battle is not None:
-            self._battle.blurBackgroundViews(blur.ownLayer, blur.blurAnimRepeatCount)
+            self._battle.blurBackgroundViews(blur.ownLayer, blur.blurAnimRepeatCount, blur.uiBlurRadius)
         return
 
     def _resetGlobalBlur(self):

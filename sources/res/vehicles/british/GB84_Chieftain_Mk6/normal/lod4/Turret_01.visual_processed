@@ -9,13 +9,22 @@
 			<row3>0.000000 0.000000 0.000000</row3>
 		</transform>
 		<node>
-			<identifier>HP_gunJoint</identifier>
+			<identifier>nodes_01</identifier>
 			<transform>
 				<row0>1.000000 0.000000 0.000000</row0>
 				<row1>0.000000 1.000000 0.000000</row1>
 				<row2>0.000000 0.000000 1.000000</row2>
-				<row3>-0.000884 0.301326 1.279290</row3>
+				<row3>0.000000 0.000000 0.000000</row3>
 			</transform>
+			<node>
+				<identifier>HP_gunJoint</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>-0.000884 0.301326 1.279289</row3>
+				</transform>
+			</node>
 		</node>
 	</node>
 	<renderSet>
@@ -27,87 +36,39 @@
 			<primitiveGroup>
 				0
 				<material>
-					<identifier>tank_turret_01</identifier>
+					<identifier>tank_proxy</identifier>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
 					<collisionFlags>0</collisionFlags>
 					<materialKind>0</materialKind>
 					<property>
-						g_detailPowerAlbedo
-						<Float>
-							0.11
-							<!--BW_String-->
-						</Float>
-					</property>
-					<property>
 						diffuseMap
-						<Texture>vehicles/british/GB84_Chieftain_Mk6/Chieftain_Mk6_turret_01_AM.dds</Texture>
-					</property>
-					<property>
-						alphaReference
-						<Int>115</Int>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>true</Bool>
+						<Texture>vehicles/british/GB84_Chieftain_Mk6/Chieftain_Mk6_proxy_AM.dds</Texture>
 					</property>
 					<property>
 						excludeMaskAndAOMap
-						<Texture>vehicles/british/GB84_Chieftain_Mk6/Chieftain_Mk6_turret_01_AO.dds</Texture>
+						<Texture>vehicles/british/GB84_Chieftain_Mk6/Chieftain_Mk6_proxy_AO.dds</Texture>
 					</property>
 					<property>
 						colorIdMap
 						<Texture>vehicles/russian/common/common_ID.dds</Texture>
 					</property>
 					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
-					</property>
-					<fx>shaders/std_effects/PBS_tank.fx</fx>
-					<property>
-						g_detailPowerGloss
-						<Float>
-							0.35
-							<!--BW_String-->
-						</Float>
-					</property>
-					<property>
-						g_maskBias
-						<Float>
-							0.22
-							<!--BW_String-->
-						</Float>
-					</property>
-					<property>
 						metallicGlossMap
-						<Texture>vehicles/british/GB84_Chieftain_Mk6/Chieftain_Mk6_turret_01_GMM.dds</Texture>
-					</property>
-					<property>
-						metallicDetailMap
-						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
-					</property>
-					<property>
-						g_detailUVTiling
-						<Vector4>
-							8.41644 8.41644 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
-					</property>
-					<property>
-						g_detailPower
-						<Float>5</Float>
+						<Texture>vehicles/british/GB84_Chieftain_Mk6/Chieftain_Mk6_proxy_GMM.dds</Texture>
 					</property>
 					<property>
 						normalMap
-						<Texture>vehicles/british/GB84_Chieftain_Mk6/Chieftain_Mk6_turret_01_ANM.dds</Texture>
+						<Texture>vehicles/british/GB84_Chieftain_Mk6/Chieftain_Mk6_proxy_ANM.dds</Texture>
 					</property>
 				</material>
-				<groupOrigin>-0.176204 0.564771 -0.561296</groupOrigin>
+				<groupOrigin>-0.176203 0.564771 -0.561296</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<boundingBox>
 		<min>-1.939408 -0.002547 -2.652787</min>
-		<max>1.587000 1.132089 1.530195</max>
+		<max>1.587001 1.132089 1.530196</max>
 	</boundingBox>
-	<geometrySize>8332</geometrySize>
-	<minUVDensity>0.002477</minUVDensity>
+	<geometrySize>7524</geometrySize>
+	<minUVDensity>0.001598</minUVDensity>
 </root>

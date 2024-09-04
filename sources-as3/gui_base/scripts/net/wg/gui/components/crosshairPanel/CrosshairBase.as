@@ -4,13 +4,10 @@ package net.wg.gui.components.crosshairPanel
    import flash.display.Sprite;
    import flash.external.ExternalInterface;
    import flash.text.TextField;
-   import flash.utils.getDefinitionByName;
-   import net.wg.data.constants.Linkages;
    import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.CROSSHAIR_CONSTANTS;
    import net.wg.gui.components.crosshairPanel.VO.GunMarkerIndicatorVO;
    import net.wg.gui.components.crosshairPanel.components.CrosshairClipQuantityBarContainer;
-   import net.wg.gui.components.crosshairPanel.components.OverheatBar;
    import net.wg.gui.components.crosshairPanel.components.autoloader.AutoloaderIndicator;
    import net.wg.gui.components.crosshairPanel.components.autoloader.BoostIndicatorStateParamsVO;
    import net.wg.gui.components.crosshairPanel.constants.CrosshairConsts;
@@ -75,8 +72,6 @@ package net.wg.gui.components.crosshairPanel
       
       protected var reloadingTimeFieldAlpha:Number = 1.0;
       
-      private var _overheatBar:OverheatBar = null;
-      
       private var _isAutoloader:Boolean = false;
       
       private var _currentTimerTextField:TextField = null;
@@ -110,21 +105,6 @@ package net.wg.gui.components.crosshairPanel
          this.updateQuickReloadingTimer();
          addEventListener(CrosshairPanelEvent.SOUND,this.onCrosshairPanelSoundHandler);
          this._reloadTimeBlinkYPos = this.getReloadTimeBlinkYPos();
-      }
-      
-      public function addOverheat(param1:Number) : void
-      {
-         var _loc2_:Class = null;
-         if(!this._overheatBar)
-         {
-            _loc2_ = Class(getDefinitionByName(Linkages.OVERHEAT_WIDGET));
-            this._overheatBar = OverheatBar(new _loc2_());
-            addChild(this._overheatBar);
-            this._overheatBar.x = OverheatBar.X_OFFSET;
-            this._overheatBar.y = OverheatBar.Y_OFFSET;
-         }
-         this._overheatBar.setOverheatMark(param1);
-         this._overheatBar.visible = true;
       }
       
       public function autoloaderBoostUpdate(param1:BoostIndicatorStateParamsVO, param2:Number, param3:Boolean = false) : void
@@ -181,14 +161,6 @@ package net.wg.gui.components.crosshairPanel
       public function isDisposed() : Boolean
       {
          return this._disposed;
-      }
-      
-      public function removeOverheat() : void
-      {
-         if(this._overheatBar)
-         {
-            this._overheatBar.visible = false;
-         }
       }
       
       public function setAmmoStock(param1:Number, param2:String, param3:Boolean = false) : void
@@ -309,14 +281,6 @@ package net.wg.gui.components.crosshairPanel
          }
       }
       
-      public function setOverheatProgress(param1:Number, param2:Boolean) : void
-      {
-         if(this._overheatBar)
-         {
-            this._overheatBar.updateInfo(param1,param2);
-         }
-      }
-      
       public function setQuickReloadingTime(param1:Boolean, param2:Number) : void
       {
          if(this._quickReloadingTimerActive != param1 || this._quickReloadingTime != param2)
@@ -433,14 +397,6 @@ package net.wg.gui.components.crosshairPanel
          }
       }
       
-      public function updateOverheatColorBlind(param1:Boolean) : void
-      {
-         if(this._overheatBar)
-         {
-            this._overheatBar.isColorBlind = param1;
-         }
-      }
-      
       public function updatePlayerInfo(param1:String) : void
       {
       }
@@ -474,11 +430,6 @@ package net.wg.gui.components.crosshairPanel
          this.distance = null;
          this.cassetteMC.dispose();
          this.cassetteMC = null;
-         if(this._overheatBar)
-         {
-            this._overheatBar.dispose();
-            this._overheatBar = null;
-         }
          if(this._reloadTimeBlinkYPos)
          {
             this._reloadTimeBlinkYPos.length = 0;

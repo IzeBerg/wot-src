@@ -127,6 +127,14 @@ package net.wg.gui.battle.views.perksPanel.components
          this.state = param1;
       }
       
+      public function pause(param1:Boolean) : void
+      {
+         if(this._progressTween)
+         {
+            this._progressTween.paused = param1;
+         }
+      }
+      
       private function hide() : void
       {
          var _loc1_:String = this._lifeTime != Values.DEFAULT_INT ? PROGRESS_DIS_FRAME : EVENT_DIS_FRAME;

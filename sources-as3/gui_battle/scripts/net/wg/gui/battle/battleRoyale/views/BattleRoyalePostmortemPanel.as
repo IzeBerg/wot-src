@@ -98,7 +98,7 @@ package net.wg.gui.battle.battleRoyale.views
       {
       }
       
-      override protected function showPostmortemPanel(param1:Boolean) : void
+      override protected function showPostmortemInfoPanel(param1:Boolean) : void
       {
          this.firstTipTitle.visible = this.secondTipTitle.visible = this.firstTipBody.visible = this.secondTipBody.visible = this.mouseIcon.visible = this.escIcon.visible = this.bg.visible = param1 && this._canShowPanelTips;
       }
@@ -106,7 +106,7 @@ package net.wg.gui.battle.battleRoyale.views
       public function as_setPostmortemPanelCanBeVisible(param1:Boolean) : void
       {
          this._canShowPanelTips = param1;
-         this.showPostmortemPanel(param1);
+         this.showPostmortemInfoPanel(param1);
       }
       
       public function setStateSizeBoundaries(param1:int, param2:int) : void

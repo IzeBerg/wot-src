@@ -94,9 +94,7 @@ msgid "additional_armor_plates_2/name"
 msgstr "Additional Armor Plating (Type 2)"
 
 msgid "afterburning/descr"
-msgstr ""
-"Boosts the speed and acceleration of your vehicle for a limited time.\n"
-"Cooldown: 20 s."
+msgstr "Boosts the speed and acceleration of your vehicle for a limited time."
 
 msgid "afterburning/name"
 msgstr "Turbocharger"
@@ -497,10 +495,10 @@ msgid "builtinRepairkit/restriction"
 msgstr "?empty?"
 
 msgid "camouflageBattleBooster/action/boost"
-msgstr "Additional 10% to vehicle concealment"
+msgstr "Grants an additional 10% to vehicle concealment"
 
 msgid "camouflageBattleBooster/action/perk"
-msgstr "Gives all crew members the Concealment perk trained to 100%"
+msgstr "Grants all crew members the Concealment perk trained to 100%"
 
 msgid "camouflageBattleBooster/long_special"
 msgstr ""
@@ -513,7 +511,7 @@ msgid "camouflageBattleBooster/name"
 msgstr "Natural Cover"
 
 msgid "camouflageBattleBooster/short_special"
-msgstr "Provides the Concealment perk trained to 100% or increases its effect"
+msgstr "Grants the Concealment perk trained to 100% or increases its effect"
 
 msgid "camouflageNet/battle_descr"
 msgstr "Increases the concealment of a stationary vehicle 3 s after it stops"
@@ -767,14 +765,19 @@ msgstr "Bounty Hunter"
 
 msgid "comp7_juggernaut/descr/active"
 msgstr ""
-"For {colorTagOpen}%(duration_1)d/%(duration_2)d/%(duration_3)d s{colorTagClose}, your vehicle's engine power will increase by {colorTagOpen}%(enginePowerBuff)d%%{colorTagClose}, the repair speed of damaged modules will increase by {colorTagOpen}%(repairBuff)d%%{colorTagClose}, and stun duration will decrease by {colorTagOpen}%(stunDurationResist)d%%{colorTagClose}.\n"
+"For {colorTagOpen}%(duration_1)d/%(duration_2)d/%(duration_3)d s{colorTagClose}:\n"
+"• Incoming damage is reduced by {colorTagOpen}%(dmgAbsorbBuff_1)d/%(dmgAbsorbBuff_2)d/%(dmgAbsorbBuff_3)d%%{colorTagClose}\n"
+"• Top forward speed is increased by {colorTagOpen}%(fwMaxSpeedBonus)d km/h{colorTagClose}\n"
+"• Top reverse speed is increased by {colorTagOpen}%(bkMaxSpeedBonus)d km/h{colorTagClose}\n"
+"• Engine power is increased by {colorTagOpen}%(enginePowerBuff)d%%{colorTagClose}\n"
+"• Damage from ramming to enemy vehicles is increased by {colorTagOpen}%(rammingDamageBuff)d%%{colorTagClose}\n"
 "\n"
-"When this skill is active, each enemy shell that hits your vehicle reduces the remaining reload time by {colorTagOpen}%(gunReloadBoost)d s{colorTagClose}.\n"
+"When this Role Skill is active, your tracks will be destroyed by a single shot.\n"
 "\n"
-"At the beginning of a battle, the charge level of the Role Skill is 1."
+"At the beginning of battle, the Role Skill's charge level is 1."
 
 msgid "comp7_juggernaut/name"
-msgstr "Straight Ahead"
+msgstr "Juggernaut"
 
 msgid "comp7_march/descr/active"
 msgstr ""
@@ -790,9 +793,11 @@ msgstr "Forced March"
 
 msgid "comp7_recon/descr/active"
 msgstr ""
-"A recon aircraft will fly over the selected area within {colorTagOpen}%(delay)d s{colorTagClose}. Enemy vehicles detected within a radius of {colorTagOpen}%(radius_1)d/%(radius_2)d/%(radius_3)d m{colorTagClose} remain spotted for {colorTagOpen}%(duration_1)d/%(duration_2)d/%(duration_3)d&nbsp;s{colorTagClose}.\n"
+"A recon aircraft will fly over the selected area within {colorTagOpen}%(delay)d s{colorTagClose}. Enemy vehicles detected within a radius of {colorTagOpen}%(radius_1)d/%(radius_2)d/%(radius_3)d m{colorTagClose} remain spotted for {colorTagOpen}%(duration_1)d/%(duration_2)d/%(duration_3)d&nbsp;s{colorTagClose}. A separate icon will be displayed for a player detected by this skill with a {colorTagOpen}%(lampDelay)d s{colorTagClose} delay.\n"
 "\n"
-"At the beginning of a battle, the charge level of the Role Skill is 1."
+"This skill becomes available for use {colorTagOpen}%(startupDelay)d s{colorTagClose} after the battle starts.\n"
+"\n"
+"At the beginning of a battle, the charge level of the Role Skill is{colorTagOpen} %(startLevel)d{colorTagClose}."
 
 msgid "comp7_recon/name"
 msgstr "Recon Flight"
@@ -957,6 +962,19 @@ msgstr ""
 msgid "deluxRammer/name"
 msgstr "Innovative Loading System"
 
+msgid "deluxeAdditionalInvisibilityDevice/long_special"
+msgstr ""
+"An enhanced version of Low Noise Exhaust System that provides a stronger effect: increases the concealment of a stationary or moving vehicle. Useful for active spotting, as well as for passive spotting from risky positions.\n"
+"This equipment is suitable for vehicles of all nations and types, but its effectiveness depends on the vehicle type. Can only be demounted using bonds."
+
+msgid "deluxeAdditionalInvisibilityDevice/name"
+msgstr "Stealth Exhaust Unit"
+
+msgid "deluxeAdditionalInvisibilityDevice/short_special"
+msgstr ""
+"Increases the concealment of a stationary or moving vehicle by "
+"{colorTagOpen}6{colorTagClose}/{colorTagOpen}8{colorTagClose}/{colorTagOpen}10%{colorTagClose}"
+
 msgid "deluxeExtraHealthReserve/additional_descr"
 msgstr "Fully restores suspension hit points after repairs."
 
@@ -1079,6 +1097,26 @@ msgstr "Garage slot"
 msgid "empty_slot/short_descr"
 msgstr "The Combat Reserve slot has been used."
 
+msgid "enemyShotPredictorBattleBooster/action/boost"
+msgstr "Increases the effect of the Sound Detection perk by 1.5 times"
+
+msgid "enemyShotPredictorBattleBooster/action/perk"
+msgstr "Grants the Sound Detection perk trained to 100%"
+
+msgid "enemyShotPredictorBattleBooster/long_special"
+msgstr ""
+"The Sound Detection perk issues an alert about enemy SPG fire and decreases "
+"the negative effect of stunning. If the perk is trained to 100%, the "
+"equipped directive increases its effect; if not, the directive provides your"
+" vehicle with the perk trained to 100%."
+
+msgid "enemyShotPredictorBattleBooster/name"
+msgstr "Heightened Vigilance"
+
+msgid "enemyShotPredictorBattleBooster/short_special"
+msgstr ""
+"Grants the Sound Detection perk trained to 100% or increases its effect"
+
 msgid "enhancedAimDrives/long_special"
 msgstr ""
 "Improved aiming reduces the aiming time. A vehicle that is equipped with "
@@ -1155,6 +1193,34 @@ msgstr "Test Skill for Visual Script"
 msgid "exampleAbility/name"
 msgstr "Test Skill"
 
+msgid "excellentFuel/always"
+msgstr ""
+"%(vehicleEnginePower)s to engine power and turret traverse speed for the "
+"course of the battle."
+
+msgid "excellentFuel/descr"
+msgstr ""
+"{colorTagOpen}+10%{colorTagClose} to engine power and turret traverse speed."
+
+msgid "excellentFuel/long_special"
+msgstr ""
+"Adds {colorTagOpen}10%{colorTagClose} to engine power and turret traverse "
+"speed for the course of the battle. Automatically activated at the beginning"
+" of the battle and effective for the course of the battle."
+
+msgid "excellentFuel/name"
+msgstr "Excellent Fuel"
+
+msgid "excellentFuel/onUse"
+msgstr "?empty?"
+
+msgid "excellentFuel/restriction"
+msgstr "?empty?"
+
+msgid "excellentFuel/short_special"
+msgstr ""
+"{colorTagOpen}+10%{colorTagClose} to engine power and turret traverse speed"
+
 msgid "extraHealthReserve/additional_descr"
 msgstr "Fully restores suspension hit points after repairs."
 
@@ -1212,10 +1278,10 @@ msgstr ""
 "{parSecondary_Open}*The fire circle's area of effect is stationary and will not follow your vehicle's movement.{parSecondary_Close}"
 
 msgid "fireFightingBattleBooster/action/boost"
-msgstr "Additional 50% to the Firefighting perk"
+msgstr "Increases the effect of the Firefighting perk by 1.5 times"
 
 msgid "fireFightingBattleBooster/action/perk"
-msgstr "Gives the Firefighting perk trained to 100% to the crew"
+msgstr "Grants the Firefighting perk trained to 100%"
 
 msgid "fireFightingBattleBooster/long_special"
 msgstr ""
@@ -1225,11 +1291,10 @@ msgstr ""
 "with the perk trained to 100%."
 
 msgid "fireFightingBattleBooster/name"
-msgstr "Experienced Firefighters"
+msgstr "Experienced Firefighter"
 
 msgid "fireFightingBattleBooster/short_special"
-msgstr ""
-"Provides the Firefighting perk trained to 100% or increases its effect"
+msgstr "Grants the Firefighting perk trained to 100% or increases its effect"
 
 msgid "fort_aoe_artillery/longDescr"
 msgstr ""
@@ -1259,68 +1324,6 @@ msgstr ""
 
 msgid "fuel_system_revision_1/name"
 msgstr "Fuel System Revision (Type 1)"
-
-msgid "gasoline100/always"
-msgstr ""
-"%(vehicleEnginePower)s to engine power and turret traverse speed for the "
-"course of the battle"
-
-msgid "gasoline100/descr"
-msgstr ""
-"{colorTagOpen}+5%{colorTagClose} to engine power and turret traverse speed."
-
-msgid "gasoline100/long_special"
-msgstr ""
-"Adds {colorTagOpen}5%{colorTagClose} to engine power and turret traverse "
-"speed for the course of the battle. Automatically activated at the beginning"
-" of the battle and effective for the course of the battle. Only suitable for"
-" vehicles with gasoline engines."
-
-msgid "gasoline100/name"
-msgstr "100-octane Gasoline"
-
-msgid "gasoline100/onUse"
-msgstr "?empty?"
-
-msgid "gasoline100/restriction"
-msgstr ""
-"Only for German, American, British, French, Czechoslovakian, Swedish, "
-"Italian, and Polish gasoline engines."
-
-msgid "gasoline100/short_special"
-msgstr ""
-"{colorTagOpen}+5%{colorTagClose} to engine power and turret traverse speed"
-
-msgid "gasoline105/always"
-msgstr ""
-"%(vehicleEnginePower)s to engine power and turret traverse speed for the "
-"course of the battle"
-
-msgid "gasoline105/descr"
-msgstr ""
-"{colorTagOpen}+10%{colorTagClose} to engine power and turret traverse speed."
-
-msgid "gasoline105/long_special"
-msgstr ""
-"Adds {colorTagOpen}10%{colorTagClose} to engine power and turret traverse "
-"speed for the course of the battle. Automatically activated at the beginning"
-" of the battle and effective for the course of the battle. Only suitable for"
-" vehicles with gasoline engines."
-
-msgid "gasoline105/name"
-msgstr "105-octane Gasoline"
-
-msgid "gasoline105/onUse"
-msgstr "?empty?"
-
-msgid "gasoline105/restriction"
-msgstr ""
-"Only for German, American, British, French, Czechoslovakian, Swedish, "
-"Italian, and Polish gasoline engines."
-
-msgid "gasoline105/short_special"
-msgstr ""
-"{colorTagOpen}+10%{colorTagClose} to engine power and turret traverse speed"
 
 msgid "grousers/long_special"
 msgstr ""
@@ -1697,9 +1700,6 @@ msgstr "?empty?"
 msgid "largeMedkit/short_special"
 msgstr "Treats all injured crew members and removes the stun effect"
 
-msgid "largeMedkit/stunDisabled/descr"
-msgstr "Treatment of all injured crew members."
-
 msgid "largeRepairkit/always"
 msgstr "%(vehicleRepairSpeed)s to module repair speed"
 
@@ -1746,30 +1746,6 @@ msgstr "Duty Comes First"
 msgid "lastEffortBattleBooster/short_special"
 msgstr ""
 "Provides the Call for Vengeance perk trained to 100% or increases its effect"
-
-msgid "lendLeaseOil/always"
-msgstr "%(vehicleEnginePower)s to engine power for the course of the battle"
-
-msgid "lendLeaseOil/descr"
-msgstr "{colorTagOpen}+5%{colorTagClose} to engine power."
-
-msgid "lendLeaseOil/long_special"
-msgstr ""
-"Adds {colorTagOpen}5%{colorTagClose} to engine power for the course of the "
-"battle. Automatically activated at the beginning of the battle and effective"
-" for the course of the battle. Only suitable for Soviet vehicles."
-
-msgid "lendLeaseOil/name"
-msgstr "Lend-Lease Oil"
-
-msgid "lendLeaseOil/onUse"
-msgstr "?empty?"
-
-msgid "lendLeaseOil/restriction"
-msgstr "Only suitable for Soviet vehicles."
-
-msgid "lendLeaseOil/short_special"
-msgstr "{colorTagOpen}+5%{colorTagClose} to engine power"
 
 msgid "mediumCaliberHowitzerRammer/name"
 msgstr "Medium-Caliber Artillery Shell Rammer"
@@ -1909,10 +1885,10 @@ msgid "passive_engineering/shortFilterAlert"
 msgstr "Not suitable for SPGs"
 
 msgid "pedantBattleBooster/action/boost"
-msgstr "Additional 300% to the Safe Stowage perk"
+msgstr "Triples the effect of the Safe Stowage perk"
 
 msgid "pedantBattleBooster/action/perk"
-msgstr "Gives the Safe Stowage perk trained to 100%"
+msgstr "Grants the Safe Stowage perk trained to 100%"
 
 msgid "pedantBattleBooster/long_special"
 msgstr ""
@@ -1925,14 +1901,13 @@ msgid "pedantBattleBooster/name"
 msgstr "Shell Organizer"
 
 msgid "pedantBattleBooster/short_special"
-msgstr ""
-"Provides the Safe Stowage perk trained to 100% or increases its effect"
+msgstr "Grants the Safe Stowage perk trained to 100% or increases its effect"
 
 msgid "poi_artillery_aoe/descr"
 msgstr ""
 "Within {colorTagOpen}3 s{colorTagClose}, the selected area will be attacked "
 "with Artillery Strike. Any targets damaged within a radius of 25 m will "
-"receive {colorTagOpen}350{colorTagClose} HP of damage and will be stunned "
+"receive {colorTagOpen}400{colorTagClose} HP of damage and will be stunned "
 "for {colorTagOpen}10 s{colorTagClose}."
 
 msgid "poi_artillery_aoe/name"
@@ -1946,30 +1921,52 @@ msgstr ""
 msgid "poi_radar/name"
 msgstr "Divisional Radar"
 
-msgid "qualityOil/always"
-msgstr "%(vehicleEnginePower)s to engine power for the course of the battle"
+msgid "practicalityBattleBooster/action/boost"
+msgstr "Doubles the effect of the Practicality perk"
 
-msgid "qualityOil/descr"
-msgstr "{colorTagOpen}+5%{colorTagClose} to engine power."
+msgid "practicalityBattleBooster/action/perk"
+msgstr "Grants the Practicality perk trained to 100%"
 
-msgid "qualityOil/long_special"
+msgid "practicalityBattleBooster/long_special"
 msgstr ""
-"Adds {colorTagOpen}5%{colorTagClose} to engine power for the course of the "
-"battle. Automatically activated at the beginning of the battle and effective"
-" for the course of the battle. Only suitable for Chinese and Japanese "
-"vehicles."
+"The Practicality perk decreases consumable cooldown time for the duration of"
+" the battle. If the perk is trained to 100%, the equipped directive "
+"increases its effect; if not, the directive provides your vehicle with the "
+"perk trained to 100%."
 
-msgid "qualityOil/name"
-msgstr "Quality Oil"
+msgid "practicalityBattleBooster/name"
+msgstr "Thorough Preparations"
 
-msgid "qualityOil/onUse"
+msgid "practicalityBattleBooster/short_special"
+msgstr "Grants the Practicality perk trained to 100% or increases its effect"
+
+msgid "qualityFuel/always"
+msgstr ""
+"%(vehicleEnginePower)s to engine power and turret traverse speed for the "
+"course of the battle."
+
+msgid "qualityFuel/descr"
+msgstr ""
+"{colorTagOpen}+5%{colorTagClose} to engine power and turret traverse speed."
+
+msgid "qualityFuel/long_special"
+msgstr ""
+"Adds {colorTagOpen}5%{colorTagClose} to engine power and turret traverse "
+"speed for the course of the battle. Automatically activated at the beginning"
+" of the battle and effective for the course of the battle."
+
+msgid "qualityFuel/name"
+msgstr "Quality Fuel"
+
+msgid "qualityFuel/onUse"
 msgstr "?empty?"
 
-msgid "qualityOil/restriction"
-msgstr "Only suitable for Chinese and Japanese vehicles."
+msgid "qualityFuel/restriction"
+msgstr "?empty?"
 
-msgid "qualityOil/short_special"
-msgstr "{colorTagOpen}+5%{colorTagClose} to engine power"
+msgid "qualityFuel/short_special"
+msgstr ""
+"{colorTagOpen}+5%{colorTagClose} to engine power and turret traverse speed"
 
 msgid "radar/descr"
 msgstr "Detects enemy vehicles and Spoils of War on the minimap."
@@ -2012,7 +2009,7 @@ msgid "rancorousBattleBooster/action/boost"
 msgstr "Doubles the effect of the Designated Target perk"
 
 msgid "rancorousBattleBooster/action/perk"
-msgstr "Gives the Designated Target perk trained to 100%"
+msgstr "Grants the Designated Target perk trained to 100%"
 
 msgid "rancorousBattleBooster/long_special"
 msgstr ""
@@ -2026,7 +2023,7 @@ msgstr "Focus on Target"
 
 msgid "rancorousBattleBooster/short_special"
 msgstr ""
-"Provides the Designated Target perk trained to 100% or increases its effect"
+"Grants the Designated Target perk trained to 100% or increases its effect"
 
 msgid "ration/always"
 msgstr "%(crewLevel)s to crew efficiency bonus for the course of the battle."
@@ -3086,64 +3083,54 @@ msgid "smallMedkit/always"
 msgstr "?empty?"
 
 msgid "smallMedkit/descr"
-msgstr "Treatment of an injured crew member and removing the stun effect."
+msgstr "Treatment of all injured crew members and removing the stun effect."
 
 msgid "smallMedkit/long_special"
 msgstr ""
-"Treats one injured crew member and removes the stun effect upon activation. "
-"Suitable for all vehicle types of any nation. The consumable is removed "
+"Treats all injured crew members and removes the stun effect upon activation."
+" Suitable for all vehicle types of any nation. The consumable is removed "
 "after battle if it was used at least once."
 
 msgid "smallMedkit/name"
 msgstr "Small First Aid Kit"
 
 msgid "smallMedkit/onUse"
-msgstr ""
-"Treatment of an injured crew member and removal of the stun effect. Can be "
-"used multiple times in a battle. The consumable is removed after battle if "
-"it was used at least once."
+msgstr "Treatment of all injured crew members and removing the stun effect."
 
 msgid "smallMedkit/removingStun/onUse"
-msgstr ""
-"Treatment of an injured crew member and removal of the stun effect. Can be "
-"used multiple times in a battle. The consumable is removed after battle if "
-"it was used at least once."
+msgstr "Treatment of all injured crew members and removing the stun effect."
 
 msgid "smallMedkit/restriction"
 msgstr "?empty?"
 
 msgid "smallMedkit/short_special"
-msgstr "Treats one injured crew member and removes the stun effect"
-
-msgid "smallMedkit/stunDisabled/descr"
-msgstr "Treatment of an injured crew member and removal of the stun effect."
+msgstr "Treats all injured crew members and removes the stun effect."
 
 msgid "smallRepairkit/always"
 msgstr "?empty?"
 
 msgid "smallRepairkit/descr"
-msgstr "Repair of a damaged module or any type of suspension."
+msgstr "Repair of all damaged modules."
 
 msgid "smallRepairkit/long_special"
 msgstr ""
-"Repairs one damaged module (e.g., gun or engine) or any type of suspension "
-"upon activation. Suitable for all vehicle types of any nation. The "
-"consumable is removed after battle if it was used at least once."
+"Repairs all damaged modules at once upon activation. Suitable for all "
+"vehicle types of any nation. The consumable is removed after battle if it "
+"was used at least once."
 
 msgid "smallRepairkit/name"
 msgstr "Small Repair Kit"
 
 msgid "smallRepairkit/onUse"
 msgstr ""
-"Repair of a damaged module or all damaged tracks. Can be used multiple times"
-" in a battle. The consumable is removed after a battle if it was used at "
-"least once."
+"Repair of all damaged modules. Suitable for all vehicle types of any nation."
+" The consumable is removed after battle if it was used at least once."
 
 msgid "smallRepairkit/restriction"
 msgstr "?empty?"
 
 msgid "smallRepairkit/short_special"
-msgstr "Repairs one damaged module"
+msgstr "Repairs all damaged modules."
 
 msgid "smoke/longDescr"
 msgstr ""
@@ -3163,7 +3150,7 @@ msgid "smoothDrivingBattleBooster/action/boost"
 msgstr "Doubles the effect of the Smooth Ride perk"
 
 msgid "smoothDrivingBattleBooster/action/perk"
-msgstr "Gives the Smooth Ride perk trained to 100%"
+msgstr "Grants the Smooth Ride perk trained to 100%"
 
 msgid "smoothDrivingBattleBooster/long_special"
 msgstr ""
@@ -3176,13 +3163,13 @@ msgid "smoothDrivingBattleBooster/name"
 msgstr "Gearbox Intricacy"
 
 msgid "smoothDrivingBattleBooster/short_special"
-msgstr "Provides the Smooth Ride perk trained to 100% or increases its effect"
+msgstr "Grants the Smooth Ride perk trained to 100% or increases its effect"
 
 msgid "smoothTurretBattleBooster/action/boost"
 msgstr "Doubles the effect of the Snap Shot perk"
 
 msgid "smoothTurretBattleBooster/action/perk"
-msgstr "Gives the Snap Shot perk trained to 100%"
+msgstr "Grants the Snap Shot perk trained to 100%"
 
 msgid "smoothTurretBattleBooster/long_special"
 msgstr ""
@@ -3195,7 +3182,7 @@ msgid "smoothTurretBattleBooster/name"
 msgstr "Steady Hand"
 
 msgid "smoothTurretBattleBooster/short_special"
-msgstr "Provides the Snap Shot perk trained to 100% or increases its effect"
+msgstr "Grants the Snap Shot perk trained to 100% or increases its effect"
 
 msgid "spawn_kamikaze/battleDescr"
 msgstr ""
@@ -3536,7 +3523,7 @@ msgid "virtuosoBattleBooster/action/boost"
 msgstr "Doubles the effect of the Clutch Braking perk"
 
 msgid "virtuosoBattleBooster/action/perk"
-msgstr "Gives the Clutch Braking perk trained to 100%"
+msgstr "Grants the Clutch Braking perk trained to 100%"
 
 msgid "virtuosoBattleBooster/long_special"
 msgstr ""
@@ -3550,4 +3537,4 @@ msgstr "Combat Course"
 
 msgid "virtuosoBattleBooster/short_special"
 msgstr ""
-"Provides the Clutch Braking perk trained to 100% or increases its effect"
+"Grants the Clutch Braking perk trained to 100% or increases its effect"

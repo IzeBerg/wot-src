@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-	<version>3</version>
+	<version>4</version>
 	<GameObjects>
 		<GameObject>
 			<name>04_airshipCrash01_airship_complete</name>
@@ -38,7 +38,7 @@
 			<type>Hierarchy</type>
 			<version>2</version>
 			<component>
-				<objectIndex>1</objectIndex>
+				<UUID>e9002ef7-b767-40f5-839a-359e174b5f60</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -48,7 +48,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>2</objectIndex>
+				<UUID>85205ffa-dd5e-4cd7-af49-270a1115a54a</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -58,7 +58,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>3</objectIndex>
+				<UUID>40396a15-e213-4a8b-b4b3-54f2e82a519e</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -68,7 +68,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>4</objectIndex>
+				<UUID>57842102-5b5b-4116-a325-75ba0d0e7822</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -78,7 +78,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>5</objectIndex>
+				<UUID>1a8001ca-ca6c-4551-8c06-89e6fe40e261</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -92,7 +92,7 @@
 			<type>Transform</type>
 			<version>1</version>
 			<component>
-				<objectIndex>0</objectIndex>
+				<UUID>d1380c46-b622-446b-a9c1-4c8d30a8aed1</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -110,7 +110,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>1</objectIndex>
+				<UUID>e9002ef7-b767-40f5-839a-359e174b5f60</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -128,7 +128,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>2</objectIndex>
+				<UUID>85205ffa-dd5e-4cd7-af49-270a1115a54a</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -146,7 +146,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>3</objectIndex>
+				<UUID>40396a15-e213-4a8b-b4b3-54f2e82a519e</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -164,7 +164,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>4</objectIndex>
+				<UUID>57842102-5b5b-4116-a325-75ba0d0e7822</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -185,7 +185,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>5</objectIndex>
+				<UUID>1a8001ca-ca6c-4551-8c06-89e6fe40e261</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -210,7 +210,7 @@
 			<type>SequenceComponent</type>
 			<version>3</version>
 			<component>
-				<objectIndex>0</objectIndex>
+				<UUID>d1380c46-b622-446b-a9c1-4c8d30a8aed1</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -409,79 +409,64 @@
 		</ComponentPool>
 		<ComponentPool>
 			<type>Prefab</type>
-			<version>1</version>
+			<version>2</version>
 			<component>
-				<objectIndex>1</objectIndex>
+				<UUID>e9002ef7-b767-40f5-839a-359e174b5f60</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
-						<name>resource</name>
-						<isAsset>true</isAsset>
-						<value>content/CGFPrefabs/Map_scenarios/04_himmelsdorf/04_airship_crashing/04_airshipCrash01_airship_normal.prefab</value>
-					</property>
-					<property>
-						<name>overridesData</name>
-						<value/>
+						<name>content</name>
+						<section>
+							<resource>content/CGFPrefabs/Map_scenarios/04_himmelsdorf/04_airship_crashing/04_airshipCrash01_airship_normal.prefab</resource>
+						</section>
 					</property>
 				</config>
 			</component>
 			<component>
-				<objectIndex>2</objectIndex>
+				<UUID>85205ffa-dd5e-4cd7-af49-270a1115a54a</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
-						<name>resource</name>
-						<isAsset>true</isAsset>
-						<value>content/CGFPrefabs/Map_scenarios/04_himmelsdorf/04_airship_crashing/04_airshipCrash01_airship_transition.prefab</value>
-					</property>
-					<property>
-						<name>overridesData</name>
-						<value/>
+						<name>content</name>
+						<section>
+							<resource>content/CGFPrefabs/Map_scenarios/04_himmelsdorf/04_airship_crashing/04_airshipCrash01_airship_transition.prefab</resource>
+						</section>
 					</property>
 				</config>
 			</component>
 			<component>
-				<objectIndex>3</objectIndex>
+				<UUID>40396a15-e213-4a8b-b4b3-54f2e82a519e</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
-						<name>resource</name>
-						<isAsset>true</isAsset>
-						<value>content/CGFPrefabs/Map_scenarios/04_himmelsdorf/04_airship_crashing/04_airshipCrash01_airship_destroyed.prefab</value>
-					</property>
-					<property>
-						<name>overridesData</name>
-						<value/>
+						<name>content</name>
+						<section>
+							<resource>content/CGFPrefabs/Map_scenarios/04_himmelsdorf/04_airship_crashing/04_airshipCrash01_airship_destroyed.prefab</resource>
+						</section>
 					</property>
 				</config>
 			</component>
 			<component>
-				<objectIndex>4</objectIndex>
+				<UUID>57842102-5b5b-4116-a325-75ba0d0e7822</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
-						<name>resource</name>
-						<isAsset>true</isAsset>
-						<value>content/CGFPrefabs/Map_scenarios/04_himmelsdorf/04_airship_crashing/04_airshipCrash01_airship_normal_part02_decals.prefab</value>
-					</property>
-					<property>
-						<name>overridesData</name>
-						<value/>
+						<name>content</name>
+						<section>
+							<resource>content/CGFPrefabs/Map_scenarios/04_himmelsdorf/04_airship_crashing/04_airshipCrash01_airship_normal_part02_decals.prefab</resource>
+						</section>
 					</property>
 				</config>
 			</component>
 			<component>
-				<objectIndex>5</objectIndex>
+				<UUID>1a8001ca-ca6c-4551-8c06-89e6fe40e261</UUID>
 				<flags>35</flags>
 				<config>
 					<property>
-						<name>resource</name>
-						<isAsset>true</isAsset>
-						<value>content/CGFPrefabs/Map_scenarios/04_himmelsdorf/04_airship_crashing/04_airshipCrash01_airship_normal_part02_models.prefab</value>
-					</property>
-					<property>
-						<name>overridesData</name>
-						<value/>
+						<name>content</name>
+						<section>
+							<resource>content/CGFPrefabs/Map_scenarios/04_himmelsdorf/04_airship_crashing/04_airshipCrash01_airship_normal_part02_models.prefab</resource>
+						</section>
 					</property>
 				</config>
 			</component>

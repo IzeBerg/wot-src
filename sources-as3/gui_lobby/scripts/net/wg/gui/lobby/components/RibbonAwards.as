@@ -222,6 +222,7 @@ package net.wg.gui.lobby.components
                _loc1_ = this._awardItemRenderers[_loc3_];
             }
             _loc1_.setRendererData(this._data.awards[_loc3_]);
+            _loc1_.setRendererSize(this._data.rendererWidth,this._data.rendererHeight);
             _loc3_++;
          }
          this._lastAwardItem = this._awardItemRenderers[this._awardsCount - 1];

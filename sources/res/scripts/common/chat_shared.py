@@ -1583,7 +1583,13 @@ SYS_MESSAGE_TYPE = Enumeration('systemMessageType', [
  'collectionEntitlementReceived',
  'prestigeLevelChanged',
  'goodiesExpired',
- 'prbVehicleKickFromSquad'])
+ 'replacedConsumables',
+ 'crewBooksConversion',
+ 'postProgressionUnlocked',
+ 'postProgressionCompleted',
+ 'passiveXPDeactivateDueToPostProgression',
+ 'prbVehicleKickFromSquad',
+ 'skillsCrewBoostersConversion'])
 SYS_MESSAGE_IMPORTANCE = Enumeration('systemMessageImportance', [
  'normal',
  'high'])

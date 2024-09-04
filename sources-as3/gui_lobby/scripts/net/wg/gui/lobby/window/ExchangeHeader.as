@@ -1,17 +1,20 @@
 package net.wg.gui.lobby.window
 {
+   import fl.transitions.easing.Strong;
    import flash.display.MovieClip;
    import flash.display.Sprite;
    import flash.events.MouseEvent;
    import flash.text.TextField;
    import flash.text.TextFieldAutoSize;
-   import net.wg.data.constants.IconsTypes;
    import net.wg.data.constants.generated.ACTION_PRICE_CONSTANTS;
+   import net.wg.data.constants.generated.TOOLTIPS_CONSTANTS;
    import net.wg.gui.components.controls.ActionPriceBg;
    import net.wg.gui.components.controls.IconText;
    import net.wg.infrastructure.base.UIComponentEx;
+   import net.wg.infrastructure.managers.ITooltipMgr;
    import net.wg.utils.ILocale;
    import scaleform.clik.constants.InvalidationType;
+   import scaleform.clik.motion.Tween;
    
    public class ExchangeHeader extends UIComponentEx implements IExchangeHeader
    {
@@ -35,6 +38,8 @@ package net.wg.gui.lobby.window
       private static const LAYOUT_INVALID:String = "layout_invalid";
       
       private static const USUAL_DECOR_INVALID:String = "usual_decor_invalid";
+      
+      private static const FADE_DURATION:uint = 250;
        
       
       public var rateFrom:IconText;
@@ -59,8 +64,6 @@ package net.wg.gui.lobby.window
       
       public var isActionMode:Boolean = false;
       
-      private var _actionPrc:Number = 0;
-      
       private var _rateLabelFunction:Function;
       
       private var _rate:int;
@@ -77,15 +80,31 @@ package net.wg.gui.lobby.window
       
       private var _useActionOffset:Boolean = true;
       
+      private var _tooltipMgr:ITooltipMgr;
+      
+      private var _needItemsType:String = null;
+      
+      private var _isDiscountLimited:Boolean = false;
+      
+      private var _goldValue:int = 0;
+      
+      private var _tween:Tween = null;
+      
+      private var _isFadeOut:Boolean = false;
+      
+      private var _isFadeIn:Boolean = false;
+      
       public function ExchangeHeader()
       {
          this._infoContainer = new Sprite();
          this._locale = Boolean(App.utils) ? App.utils.locale : null;
+         this._tooltipMgr = App.toolTipMgr;
          super();
       }
       
       override protected function onDispose() : void
       {
+         this.tryClearTween();
          this.actionHitMc.removeEventListener(MouseEvent.MOUSE_OVER,this.onActionHitMcMouseOverHandler);
          this.actionHitMc.removeEventListener(MouseEvent.MOUSE_OUT,this.onActionHitMcMouseOutHandler);
          this.actionHitMc.removeEventListener(MouseEvent.MOUSE_DOWN,this.onActionHitMcMouseDownHandler);
@@ -103,6 +122,7 @@ package net.wg.gui.lobby.window
          this._infoContainer = null;
          this._rateLabelFunction = null;
          this._locale = null;
+         this._tooltipMgr = null;
          super.onDispose();
       }
       
@@ -130,23 +150,19 @@ package net.wg.gui.lobby.window
       
       override protected function draw() : void
       {
-         var _loc2_:Number = NaN;
+         var _loc1_:Number = NaN;
          super.draw();
-         var _loc1_:Boolean = false;
          if(isInvalid(InvalidationType.DATA))
          {
-            _loc1_ = this._rate != this._actionRate;
-            this._actionPrc = !!_loc1_ ? Number(100 * (this._actionRate - this._rate) / this._rate) : Number(0);
-            this._actualRate = !!_loc1_ ? int(this._actionRate) : int(this._rate);
-            this.discountMc.visible = _loc1_ && this.isActionMode;
-            this.actionDecor.visible = _loc1_ && this.isActionMode;
-            this.signMc.gotoAndStop(!!_loc1_ ? SIGN_MC_STATE_ACTION : SIGN_MC_STATE_NORMAL);
+            this._actualRate = !!this.isActionMode ? int(this._actionRate) : int(this._rate);
+            this.discountMc.visible = this.isActionMode;
+            this.actionDecor.visible = this.isActionMode;
+            this.signMc.gotoAndStop(!!this.isActionMode ? SIGN_MC_STATE_ACTION : SIGN_MC_STATE_NORMAL);
             this.applyRateText();
-            this.actionHitMc.visible = _loc1_ && this.isActionMode;
          }
          if(isInvalid(USUAL_DECOR_INVALID))
          {
-            this.usualDecor.visible = this._useBackDecor && !_loc1_;
+            this.usualDecor.visible = this._useBackDecor && !this.isActionMode;
          }
          if(isInvalid(LAYOUT_INVALID))
          {
@@ -167,35 +183,93 @@ package net.wg.gui.lobby.window
                this.rateFrom.x = this.rateLabel.width + CENTER_PADDING ^ 0;
                this.signMc.x = this.rateFrom.x + this.rateFrom.actualWidth + EQUALS_SIGN_PADDING ^ 0;
                this.rateTo.x = this.signMc.x + this.signMc.width + EQUALS_SIGN_PADDING ^ 0;
-               _loc2_ = this.rateTo.x + this.rateTo.actualWidth;
-               this._infoContainer.x = width - _loc2_ >> 1;
-               if(_loc1_)
+               _loc1_ = this.rateTo.x + this.rateTo.actualWidth;
+               this._infoContainer.x = width - _loc1_ >> 1;
+               if(this.isActionMode)
                {
                   if(this._useActionOffset)
                   {
                      this._infoContainer.x += ACTION_CENTER_OFFSET;
                   }
-                  this.discountMc.x = this._infoContainer.x + _loc2_ + DISCOUNT_MC_PADDING;
+                  this.discountMc.x = this._infoContainer.x + _loc1_ + DISCOUNT_MC_PADDING;
                }
             }
          }
       }
       
-      public function setData(param1:ExchangeHeaderVO) : void
+      public function fadeIn(param1:Boolean, param2:uint = 0) : void
+      {
+         if(this._isFadeIn)
+         {
+            return;
+         }
+         if(this._isFadeOut)
+         {
+            this.tryClearTween();
+            this._isFadeOut = false;
+         }
+         visible = true;
+         if(!param1)
+         {
+            this._isFadeIn = true;
+            return;
+         }
+         alpha = 0;
+         this.tryClearTween();
+         this._isFadeIn = true;
+         this._tween = new Tween(FADE_DURATION,this,{"alpha":1},{
+            "delay":param2,
+            "paused":false,
+            "onComplete":this.onFadeInComplete,
+            "ease":Strong.easeInOut
+         });
+      }
+      
+      public function fadeOut(param1:Boolean, param2:uint = 0) : void
+      {
+         if(this._isFadeOut)
+         {
+            return;
+         }
+         if(this._isFadeIn)
+         {
+            this.tryClearTween();
+            this._isFadeIn = false;
+         }
+         if(!param1)
+         {
+            visible = false;
+            return;
+         }
+         alpha = 1;
+         this.tryClearTween();
+         this._isFadeOut = true;
+         this._tween = new Tween(FADE_DURATION,this,{"alpha":0},{
+            "delay":param2,
+            "paused":false,
+            "onComplete":this.onFadeOutComplete,
+            "ease":Strong.easeInOut
+         });
+      }
+      
+      public function setData(param1:ExchangeHeaderVO, param2:String, param3:Boolean) : void
       {
          this.rateLabel.htmlText = param1.labelText;
          this.rateFrom.textColor = param1.rateFromTextColor;
          this.rateTo.textColor = param1.rateToTextColor;
          this.rateFrom.icon = param1.rateFromIcon;
          this.rateTo.icon = param1.rateToIcon;
+         this._needItemsType = param2;
          this.setFilters();
          invalidate(InvalidationType.DATA,LAYOUT_INVALID,USUAL_DECOR_INVALID);
       }
       
-      public function setRates(param1:int, param2:int) : void
+      public function setRates(param1:int, param2:int, param3:Boolean, param4:int) : void
       {
          this._rate = param1;
          this._actionRate = param2;
+         this._isDiscountLimited = param3;
+         this._goldValue = param4;
          invalidate(InvalidationType.DATA,LAYOUT_INVALID,USUAL_DECOR_INVALID);
       }
       
@@ -206,39 +280,17 @@ package net.wg.gui.lobby.window
          this.rateTo.filters = ExchangeUtils.getGlow(this.rateTo.icon);
       }
       
-      private function hideTooltip() : void
-      {
-         App.toolTipMgr.hide();
-      }
-      
       private function showTooltip() : void
       {
-         var _loc4_:String = null;
-         var _loc5_:String = null;
-         var _loc6_:String = null;
-         var _loc7_:String = null;
-         var _loc8_:String = null;
-         var _loc9_:String = null;
-         var _loc1_:String = "";
-         var _loc2_:Number = this._rate;
-         var _loc3_:Number = this._actionRate;
-         if(this._actionPrc > 0 && _loc2_ != 0)
+         if(this.isActionMode)
          {
-            _loc4_ = this.rateFrom.icon;
-            _loc5_ = this.rateTo.icon;
-            _loc6_ = App.utils.icons.getIcon16StrPath(_loc4_);
-            _loc7_ = App.utils.icons.getIcon16StrPath(_loc5_);
-            _loc8_ = _loc5_ == IconsTypes.GOLD ? this._locale.gold(Math.abs(_loc3_)) : this._locale.integer(Math.abs(_loc3_));
-            _loc9_ = _loc5_ == IconsTypes.GOLD ? this._locale.gold(Math.abs(_loc2_)) : this._locale.integer(Math.abs(_loc2_));
-            _loc8_ = " 1" + _loc6_ + "= " + _loc8_ + " " + _loc7_;
-            _loc9_ = " 1" + _loc6_ + "= " + _loc9_ + " " + _loc7_;
-            _loc1_ = App.toolTipMgr.getNewFormatter().addHeader(this._locale.makeString(TOOLTIPS.ACTIONPRICE_EXCHANGE_HEADER,{})).addBody(this._locale.makeString(TOOLTIPS.ACTIONPRICE_EXCHANGE_BODY,{
-               "oldPrice":_loc9_,
-               "newPrice":_loc8_
-            })).make();
-            if(_loc1_.length > 0)
+            if(this._isDiscountLimited)
             {
-               App.toolTipMgr.showComplex(_loc1_);
+               this._tooltipMgr.showWulfTooltip(TOOLTIPS_CONSTANTS.EXCHANGE_RATE_LIMITED_DISCOUNT_INFO,this._needItemsType,this._goldValue);
+            }
+            else
+            {
+               this._tooltipMgr.showWulfTooltip(TOOLTIPS_CONSTANTS.EXCHANGE_RATE_DISCOUNT_INFO,this._needItemsType);
             }
          }
       }
@@ -254,6 +306,28 @@ package net.wg.gui.lobby.window
             this.rateTo.text = this._locale.gold(this._actualRate);
          }
          this.rateTo.validateNow();
+      }
+      
+      private function onFadeInComplete(param1:Tween) : void
+      {
+         this.tryClearTween();
+      }
+      
+      private function onFadeOutComplete(param1:Tween) : void
+      {
+         this.tryClearTween();
+         visible = false;
+         this._isFadeOut = false;
+      }
+      
+      private function tryClearTween() : void
+      {
+         if(this._tween)
+         {
+            this._tween.paused = true;
+            this._tween.dispose();
+            this._tween = null;
+         }
       }
       
       public function set useBackDecor(param1:Boolean) : void
@@ -275,12 +349,12 @@ package net.wg.gui.lobby.window
       
       private function onActionHitMcMouseOutHandler(param1:MouseEvent) : void
       {
-         this.hideTooltip();
+         this._tooltipMgr.hide();
       }
       
       private function onActionHitMcMouseDownHandler(param1:MouseEvent) : void
       {
-         this.hideTooltip();
+         this._tooltipMgr.hide();
       }
    }
 }

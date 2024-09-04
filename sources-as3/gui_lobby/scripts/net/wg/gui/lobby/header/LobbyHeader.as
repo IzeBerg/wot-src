@@ -390,6 +390,11 @@ package net.wg.gui.lobby.header
          this.mainMenuButtonBar.setDisableNav(true);
       }
       
+      public function as_updateReserves() : void
+      {
+         this._headerButtonsHelper.invalidateDataById(HeaderButtonsHelper.ITEM_ID_PERSONAL_RESERVES_WIDGET);
+      }
+      
       public function as_doSoftDisableHeaderButton(param1:String, param2:Boolean) : void
       {
          this._headerButtonsHelper.setButtonSoftDisable(param1,param2);

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_tiled_global.fx</fx>
+					<materialKind>107</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						albedoHeightTile0
+						<Texture>content/Environment/00_Tiles/Tundra_rocktiles/dds/Mossy_rock_02_AM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile1
+						<Texture>content/Environment/00_Tiles/Tundra_rocktiles/dds/Mossy_rock_04_AM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile2
+						<Texture>content/Environment/00_Tiles/Tundra_rocktiles/dds/Tundra_Rockmoss_01_AM.dds</Texture>
+					</property>
+					<property>
+						blendMask
+						<Texture>content/Environment/hd_env_EU_092_CrashTundraRock/hd_env_EU_092_CrashTundraRock_blend.png</Texture>
+					</property>
+					<property>
+						colorTex
+						<Texture>content/Environment/hd_env_EU_092_CrashTundraRock/hd_env_EU_092_CrashTundraRock_GCM.dds</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Environment/hd_env_EU_063_TundraRocks/hd_env_EU_063_TundraRocks_Dirt.dds</Texture>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.250000 0.430000 0.380000 0.050000</Vector4>
+					</property>
+					<property>
+						g_dirtColorParams
+						<Vector4>0.090000 0.590000 0.540000 0.340000</Vector4>
+					</property>
+					<property>
+						g_fakeShadowsAndDetailParams
+						<Vector4>0.500000 0.500000 1.000000 0.005000</Vector4>
+					</property>
+					<property>
+						g_tintParams
+						<Vector4>0.000000 0.670000 0.560000 0.720000</Vector4>
+					</property>
+					<property>
+						globalTex
+						<Texture>content/Environment/hd_env_EU_092_CrashTundraRock/hd_env_EU_092_CrashTundraRock_GNM.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile0
+						<Texture>content/Environment/00_Tiles/Tundra_rocktiles/dds/Mossy_rock_02_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile1
+						<Texture>content/Environment/00_Tiles/Tundra_rocktiles/dds/Mossy_rock_04_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile2
+						<Texture>content/Environment/00_Tiles/Tundra_rocktiles/dds/Tundra_Rockmoss_01_MAO.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile0
+						<Texture>content/Environment/00_Tiles/Tundra_rocktiles/dds/Mossy_rock_02_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile1
+						<Texture>content/Environment/00_Tiles/Tundra_rocktiles/dds/Mossy_rock_04_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile2
+						<Texture>content/Environment/00_Tiles/Tundra_rocktiles/dds/Tundra_Rockmoss_01_GBMT.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.763749 15.943942 -0.598942</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd1</identifier>
+					<fx>shaders/std_effects/PBS_tiled_global.fx</fx>
+					<materialKind>107</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						albedoHeightTile0
+						<Texture>content/Environment/00_Tiles/dds/Rock_Coastal_01_AM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile1
+						<Texture>content/Environment/00_Tiles/dds/Rock_Coastal_02_AM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile2
+						<Texture>content/Environment/00_Tiles/Tundra_rocktiles/dds/Mossy_rock_04_AM.dds</Texture>
+					</property>
+					<property>
+						blendMask
+						<Texture>content/Environment/hd_env_EU_092_CrashTundraRock/hd_env_EU_092_CrashTundraRock_Crash_blend.png</Texture>
+					</property>
+					<property>
+						colorTex
+						<Texture>content/Environment/hd_env_EU_092_CrashTundraRock/hd_env_EU_092_CrashTundraRock_Crash_GCM.dds</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Environment/00_Tiles/dds/Rock_Tundra_Granite_02_AM.dds</Texture>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.950000 0.430000 0.380000 0.000000</Vector4>
+					</property>
+					<property>
+						g_dirtColorParams
+						<Vector4>0.000000 0.790000 0.780000 0.630000</Vector4>
+					</property>
+					<property>
+						g_fakeShadowsAndDetailParams
+						<Vector4>0.500000 0.500000 1.000000 0.004300</Vector4>
+					</property>
+					<property>
+						g_tintParams
+						<Vector4>0.000000 0.280000 0.240000 0.260000</Vector4>
+					</property>
+					<property>
+						globalTex
+						<Texture>content/Environment/hd_env_EU_092_CrashTundraRock/hd_env_EU_092_CrashTundraRock_Crash_GNM.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile0
+						<Texture>content/Environment/00_Tiles/dds/Rock_Coastal_01_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile1
+						<Texture>content/Environment/00_Tiles/dds/Rock_Coastal_02_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile2
+						<Texture>content/Environment/00_Tiles/Tundra_rocktiles/dds/Mossy_rock_04_MAO.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile0
+						<Texture>content/Environment/00_Tiles/dds/Rock_Coastal_01_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile1
+						<Texture>content/Environment/00_Tiles/dds/Rock_Coastal_02_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile2
+						<Texture>content/Environment/00_Tiles/Tundra_rocktiles/dds/Mossy_rock_04_GBMT.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.375193 18.190138 -17.665243</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-31.796980 -1.906518 -35.456734</min>
+		<max>33.324478 33.794403 34.258850</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>130876</geometrySize>
+	<minUVDensity>0.000146</minUVDensity>
+</root>

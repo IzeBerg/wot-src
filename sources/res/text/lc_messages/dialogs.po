@@ -575,15 +575,18 @@ msgstr "Cancel"
 
 msgid "comp7/deserter/message"
 msgstr ""
-"Your team needs you! Leaving a battle before it ends or before your vehicle "
-"is destroyed is considered desertion. This may result in a disciplinary "
-"penalty."
+"This battle is not over yet. If you leave the battle before it ends, you will be letting down your team.\n"
+"{brown_open}You will be charged a disciplinary penalty.{brown_close}\n"
+"Are you sure you want to leave the battle?"
+
+msgid "comp7/deserter/msgTitle"
+msgstr "You will lose your Rating Points!"
 
 msgid "comp7/deserter/submit"
 msgstr "Desert"
 
 msgid "comp7/deserter/title"
-msgstr "Desert the battlefield?"
+msgstr "Desertion From Battlefield"
 
 msgid "confirmBattleBoosterBuyAndInstall/cancel"
 msgstr "Cancel"
@@ -1326,6 +1329,29 @@ msgstr "Not enough Combat Experience for conversion"
 msgid "exchangeXpWindow/error/noVehiclesWithXp"
 msgstr "Not enough Combat Experience for conversion"
 
+msgid "fillAllPerks/button/cancel"
+msgstr "Cancel"
+
+msgid "fillAllPerks/button/fill"
+msgstr "Autoselect"
+
+msgid "fillAllPerks/checkbox"
+msgstr "Autoselect perks for crews in the Barracks"
+
+msgid "fillAllPerks/description"
+msgstr ""
+"Depending on the qualification of the crew member with open perk slots, an "
+"algorithm selects the first perk from the table below. If the crew member "
+"already has the first perk, then the algorithm selects the second one "
+"instead, continuing until all empty perk slots are filled. The operation may"
+" take some time."
+
+msgid "fillAllPerks/subTitle"
+msgstr "Perks will only be autoselected for crew members in a vehicle."
+
+msgid "fillAllPerks/title"
+msgstr "Autoselect Untrained Perks for All Crew Members?"
+
 msgid "finance_dialog/cancelBtn"
 msgstr "Cancel"
 
@@ -1420,8 +1446,9 @@ msgstr "Confirm"
 
 msgid "freeSkillsLearning/message"
 msgstr ""
-"%(iconWarning) {orange_Open}After confirmation, a zero perk cannot be changed.{orange_Close}\n"
-"A zero perk does not require spending experience and cannot be changed by a player. It provides an advantage by significantly reducing the amount of experience required for further training of the crew member."
+"A zero perk does not need to be trained with XP. It provides an advantage by"
+" significantly reducing the amount of XP required for the crew member's "
+"further training."
 
 msgid "freeSkillsLearning/title/learning"
 msgstr "Select %(skillName)s as a zero perk?"
@@ -2050,8 +2077,22 @@ msgstr "Before reset:"
 msgid "perksReset/cancel"
 msgstr "Cancel"
 
+msgid "perksReset/discountTooltip/body"
+msgstr ""
+"This option is not available as you already have a 100% discount on perk "
+"reset in Tank Academy."
+
+msgid "perksReset/discountTooltip/header"
+msgstr "Unavailable"
+
 msgid "perksReset/free/description"
 msgstr "Perks up to {yellow_Open}1%{yellow_Close} can be reset for free."
+
+msgid "perksReset/freeFirstResetLabel"
+msgstr "This crew member has a free first perk reset"
+
+msgid "perksReset/graceLabel"
+msgstr "Free perk reset will be available for:"
 
 msgid "perksReset/lostSkill/tooltip/description"
 msgstr ""
@@ -2090,7 +2131,7 @@ msgid "perksReset/submit"
 msgstr "Reset"
 
 msgid "perksReset/title"
-msgstr "Reset all %(tankmanRole)s?"
+msgstr "Reset All Crew Member’s Perks?"
 
 msgid "postmortem/cancel"
 msgstr "Leave"
@@ -2169,7 +2210,7 @@ msgstr ""
 msgid "punishmentWindow/message/ban/comp7"
 msgstr ""
 "You violated Game Rules on the {whiteSpanish_Open}%(arenaName)s{whiteSpanish_Close} map at {whiteSpanish_Open}%(time)s{whiteSpanish_Close}.\n"
-"You have temporarily been blocked from battles in the {whiteSpanish_Open}Onslaught Light{whiteSpanish_Close} mode."
+"{whiteSpanish_Open}%(penalty)s{whiteSpanish_Close} Rating Points have been deducted and you have temporarily been blocked from battles in the {whiteSpanish_Open}Onslaught{whiteSpanish_Close} mode."
 
 msgid "punishmentWindow/message/ban/comp7/qualification"
 msgstr ""
@@ -2485,6 +2526,11 @@ msgstr ""
 "You do not need to recruit crew members for Premium vehicles. You can "
 "transfer crew to a Premium vehicle of the same type without penalty."
 
+msgid "recruitConversionConfirm/warning"
+msgstr ""
+"The crew member has obsolete perks that will be automatically reset without "
+"losing XP."
+
 msgid "recruitDialog/name/title"
 msgstr "Recruit new crew member (%(name)s)?"
 
@@ -2650,6 +2696,20 @@ msgstr "Continue"
 msgid "reportBug/title"
 msgstr "Go to Player Support"
 
+msgid "resetAllPerks/cancel"
+msgstr "Cancel"
+
+msgid "resetAllPerks/submit"
+msgstr "Reset"
+
+msgid "resetAllPerks/title"
+msgstr "Reset All Perks for All Crew Members?"
+
+msgid "resetAllPerks/warning"
+msgstr ""
+"{orangeStart}All perks will be reset for all crew members on your account.{orangeEnd}\n"
+"{orangeStart}This operation cannot be undone.{orangeEnd}"
+
 msgid "resetGraphics/cancel"
 msgstr "Continue"
 
@@ -2706,10 +2766,26 @@ msgstr "Cancel"
 msgid "retrain/changeRole"
 msgstr "Change qualification"
 
+msgid "retrain/discountLabel"
+msgstr "This discount is available as the first perk is not trained to 100%."
+
+msgid "retrain/discountTooltip/body"
+msgstr ""
+"This option is not available as you already have a 100% discount on "
+"retraining in Tank Academy."
+
+msgid "retrain/discountTooltip/header"
+msgstr "Unavailable"
+
 msgid "retrain/massive/tankmenCount"
 msgstr ""
 "Crew members for retraining: "
 "{whiteSpanish_Open}%(count)s{whiteSpanish_Close}"
+
+msgid "retrain/premium/description"
+msgstr ""
+"You do not need to train crew members for Premium vehicles.\n"
+"You can transfer crew to a Premium vehicle of the same type without penalty."
 
 msgid "retrain/price"
 msgstr "Price:"
@@ -2824,6 +2900,15 @@ msgstr "Update the application. If the error repeats, update the server."
 
 msgid "shopSyncError/title"
 msgstr "Unsynchronization"
+
+msgid "skillsTrainingConfirm/cancel"
+msgstr "Cancel"
+
+msgid "skillsTrainingConfirm/message"
+msgstr "Train Selected Perk(s)?"
+
+msgid "skillsTrainingConfirm/submit"
+msgstr "Train"
 
 msgid "skinApplyDialog/button/submit"
 msgstr "Apply"

@@ -22,7 +22,7 @@
 			<type>
 				<name>GBufferDecals</name>
 				<atlas>
-					<width>8192</width>
+					<width>3584</width>
 					<height>4096</height>
 					<format>DXT5</format>
 					<constrains>
@@ -34,7 +34,7 @@
 					</constrains>
 				</atlas>
 				<atlas>
-					<width>8192</width>
+					<width>3584</width>
 					<height>4096</height>
 					<format>DXT5</format>
 					<constrains>
@@ -46,7 +46,7 @@
 					</constrains>
 				</atlas>
 				<atlas>
-					<width>8192</width>
+					<width>3584</width>
 					<height>4096</height>
 					<format>DXT5</format>
 					<constrains>
@@ -76,45 +76,6 @@
 		</scene>
 		<road>
 			<anisotropy>4</anisotropy>
-			<type>
-				<name>GBufferDecals</name>
-				<atlas>
-					<width>4096</width>
-					<height>4096</height>
-					<format>DXT5</format>
-					<constrains>
-						<minWidth>64</minWidth>
-						<minHeight>64</minHeight>
-						<maxWidth>1024</maxWidth>
-						<maxHeight>1024</maxHeight>
-						<format>DXT5</format>
-					</constrains>
-				</atlas>
-				<atlas>
-					<width>4096</width>
-					<height>4096</height>
-					<format>DXT5</format>
-					<constrains>
-						<minWidth>64</minWidth>
-						<minHeight>64</minHeight>
-						<maxWidth>1024</maxWidth>
-						<maxHeight>1024</maxHeight>
-						<format>DXT5</format>
-					</constrains>
-				</atlas>
-				<atlas>
-					<width>4096</width>
-					<height>4096</height>
-					<format>DXT5</format>
-					<constrains>
-						<minWidth>64</minWidth>
-						<minHeight>64</minHeight>
-						<maxWidth>1024</maxWidth>
-						<maxHeight>1024</maxHeight>
-						<format>DXT5</format>
-					</constrains>
-				</atlas>
-			</type>
 			<quality>
 				<option>
 					MAX
@@ -145,6 +106,45 @@
 					<mip>-1</mip>
 				</option>
 			</quality>
+			<type>
+				<name>GBufferDecals</name>
+				<atlas>
+					<width>2304</width>
+					<height>1024</height>
+					<format>DXT5</format>
+					<constrains>
+						<minWidth>64</minWidth>
+						<minHeight>64</minHeight>
+						<maxWidth>1024</maxWidth>
+						<maxHeight>1024</maxHeight>
+						<format>DXT5</format>
+					</constrains>
+				</atlas>
+				<atlas>
+					<width>2304</width>
+					<height>1024</height>
+					<format>DXT5</format>
+					<constrains>
+						<minWidth>64</minWidth>
+						<minHeight>64</minHeight>
+						<maxWidth>1024</maxWidth>
+						<maxHeight>1024</maxHeight>
+						<format>DXT5</format>
+					</constrains>
+				</atlas>
+				<atlas>
+					<width>2304</width>
+					<height>1024</height>
+					<format>DXT5</format>
+					<constrains>
+						<minWidth>64</minWidth>
+						<minHeight>64</minHeight>
+						<maxWidth>1024</maxWidth>
+						<maxHeight>1024</maxHeight>
+						<format>DXT5</format>
+					</constrains>
+				</atlas>
+			</type>
 		</road>
 	</DecalsInfo>
 	<shadowBaker>

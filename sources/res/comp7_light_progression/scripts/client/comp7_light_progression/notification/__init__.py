@@ -1,5 +1,0 @@
-from comp7_light_progression.notification.actions_handlers import ShowComp7LightProgressionActionHandler
-from gui.shared.system_factory import registerNotificationsActionsHandlers
-
-def registerClientNotificationHandlers():
-    registerNotificationsActionsHandlers((ShowComp7LightProgressionActionHandler,))

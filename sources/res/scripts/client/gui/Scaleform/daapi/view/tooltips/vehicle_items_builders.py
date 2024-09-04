@@ -18,11 +18,7 @@ def _advancedBlockCondition(context):
 def _shellAdvancedBlockCondition(context):
 
     def advancedTooltipExist(intCD, *_):
-        item = context.buildItem(intCD)
-        icon = item.descriptor.icon[0]
-        if icon.startswith('AUTOCANNON'):
-            return False
-        return item.getAdvancedTooltipKey() in advanced.SHELL_MOVIES
+        return context.buildItem(intCD).getAdvancedTooltipKey() in advanced.SHELL_MOVIES
 
     return advancedTooltipExist
 

@@ -597,7 +597,7 @@ package
       
       public static const SERVICECHANNELMESSAGES_BATTLERESULTS_EQUIPCOIN:String = "#messenger:serviceChannelMessages/battleResults/equipCoin";
       
-      public static const SERVICECHANNELMESSAGES_BATTLERESULTS_COMP7LIGHTPROGRESSIONPOINTS:String = "#messenger:serviceChannelMessages/battleResults/comp7LightProgressionPoints";
+      public static const SERVICECHANNELMESSAGES_BATTLERESULTS_RATINGPOINTS:String = "#messenger:serviceChannelMessages/battleResults/ratingPoints";
       
       public static const SERVICECHANNELMESSAGES_BATTLERESULTS_DOUBLEXPFACTOR:String = "#messenger:serviceChannelMessages/battleResults/doubleXpFactor";
       
@@ -1232,6 +1232,28 @@ package
       public static const SERVICECHANNELMESSAGES_SYSMSG_CONVERTER_CUSTOMIZATIONS:String = "#messenger:serviceChannelMessages/sysMsg/converter/customizations";
       
       public static const SERVICECHANNELMESSAGES_SYSMSG_CONVERTER_PROJECTIONDECALSDEMOUNTED:String = "#messenger:serviceChannelMessages/sysMsg/converter/projectionDecalsDemounted";
+      
+      public static const SERVICECHANNELMESSAGES_SYSMSG_CONSUMABLES_REPLACEDITEMS_TITLE:String = "#messenger:serviceChannelMessages/sysMsg/consumables/replacedItems/title";
+      
+      public static const SERVICECHANNELMESSAGES_SYSMSG_CONSUMABLES_REPLACEDITEMS_DATE:String = "#messenger:serviceChannelMessages/sysMsg/consumables/replacedItems/date";
+      
+      public static const SERVICECHANNELMESSAGES_SYSMSG_CONSUMABLES_REPLACEDITEMS_DEBIT:String = "#messenger:serviceChannelMessages/sysMsg/consumables/replacedItems/debit";
+      
+      public static const SERVICECHANNELMESSAGES_SYSMSG_CONSUMABLES_REPLACEDITEMS_ACCRUED:String = "#messenger:serviceChannelMessages/sysMsg/consumables/replacedItems/accrued";
+      
+      public static const SERVICECHANNELMESSAGES_SYSMSG_CONSUMABLES_CREDITS_ACCRUED:String = "#messenger:serviceChannelMessages/sysMsg/consumables/credits/accrued";
+      
+      public static const SERVICECHANNELMESSAGES_SYSMSG_CONSUMABLES_REPLACEDITEMS_ITEM_ONE:String = "#messenger:serviceChannelMessages/sysMsg/consumables/replacedItems/item/one";
+      
+      public static const SERVICECHANNELMESSAGES_SYSMSG_CONSUMABLES_REPLACEDITEMS_ITEM_MANY:String = "#messenger:serviceChannelMessages/sysMsg/consumables/replacedItems/item/many";
+      
+      public static const SERVICECHANNELMESSAGES_SYSMSG_CONSUMABLES_REPLACEDITEMS_ITEMS_QUALITYOIL:String = "#messenger:serviceChannelMessages/sysMsg/consumables/replacedItems/items/qualityOil";
+      
+      public static const SERVICECHANNELMESSAGES_SYSMSG_CONSUMABLES_REPLACEDITEMS_ITEMS_LENDLEASEOIL:String = "#messenger:serviceChannelMessages/sysMsg/consumables/replacedItems/items/lendLeaseOil";
+      
+      public static const SERVICECHANNELMESSAGES_SYSMSG_CONSUMABLES_REPLACEDITEMS_ITEMS_GASOLINE100:String = "#messenger:serviceChannelMessages/sysMsg/consumables/replacedItems/items/gasoline100";
+      
+      public static const SERVICECHANNELMESSAGES_SYSMSG_CONSUMABLES_REPLACEDITEMS_ITEMS_GASOLINE105:String = "#messenger:serviceChannelMessages/sysMsg/consumables/replacedItems/items/gasoline105";
       
       public static const SERVICECHANNELMESSAGES_SYSMSG_REMOVECUSTOMIZATIONS:String = "#messenger:serviceChannelMessages/sysMsg/removeCustomizations";
       
@@ -2135,6 +2157,8 @@ package
       
       public static const SERVICECHANNELMESSAGES_WOTPLUS_PASSIVEXP_INCOMPATIBLECREW_TEXT:String = "#messenger:serviceChannelMessages/wotPlus/passiveXP/incompatibleCrew/text";
       
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_PASSIVEXP_ALLCREWAREVETERANS_TEXT:String = "#messenger:serviceChannelMessages/wotPlus/passiveXP/allCrewAreVeterans/text";
+      
       public static const SERVICECHANNELMESSAGES_WOTPLUS_PASSIVEXP_WASTING_TEXT:String = "#messenger:serviceChannelMessages/wotPlus/passiveXP/wasting/text";
       
       public static const SERVICECHANNELMESSAGES_WOTPLUS_RENTAL_NOTANK_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/rental/noTank/title";
@@ -2206,6 +2230,10 @@ package
       public static const SERVICECHANNELMESSAGES_ADDITIONALXP_AVAILABLE_TITLE:String = "#messenger:serviceChannelMessages/additionalXP/available/title";
       
       public static const SERVICECHANNELMESSAGES_ADDITIONALXP_UNAVAILABLE_TITLE:String = "#messenger:serviceChannelMessages/additionalXP/unavailable/title";
+      
+      public static const SERVICECHANNELMESSAGES_OPTIONALDEVICESASSISTANT_AVAILABLE_TITLE:String = "#messenger:serviceChannelMessages/optionalDevicesAssistant/available/title";
+      
+      public static const SERVICECHANNELMESSAGES_OPTIONALDEVICESASSISTANT_UNAVAILABLE_TITLE:String = "#messenger:serviceChannelMessages/optionalDevicesAssistant/unavailable/title";
       
       public static const SERVICECHANNELMESSAGES_VEHICLEPOSTPROGRESSION_DISCARDALLPAIRSMODIFICATION_BODY:String = "#messenger:serviceChannelMessages/vehiclePostProgression/discardAllPairsModification/body";
       
@@ -2449,6 +2477,16 @@ package
       
       public static const SERVICECHANNELMESSAGES_FAIRPLAYVIOLATION_TEXT_BANREMOVED:String = "#messenger:serviceChannelMessages/fairplayViolation/text/banRemoved";
       
+      public static const SERVICECHANNELMESSAGES_POSTPROGRESSION_UNLOCKED_HEADER:String = "#messenger:serviceChannelMessages/postProgression/unlocked/header";
+      
+      public static const SERVICECHANNELMESSAGES_POSTPROGRESSION_UNLOCKED_TEXT:String = "#messenger:serviceChannelMessages/postProgression/unlocked/text";
+      
+      public static const SERVICECHANNELMESSAGES_POSTPROGRESSION_UNLOCKED_BUTTON:String = "#messenger:serviceChannelMessages/postProgression/unlocked/button";
+      
+      public static const SERVICECHANNELMESSAGES_POSTPROGRESSION_COMPLETED_HEADER:String = "#messenger:serviceChannelMessages/postProgression/completed/header";
+      
+      public static const SERVICECHANNELMESSAGES_POSTPROGRESSION_COMPLETED_BUTTON:String = "#messenger:serviceChannelMessages/postProgression/completed/button";
+      
       public static const SERVICECHANNELMESSAGES_FAIRPLAYVIOLATION_BUTTON:String = "#messenger:serviceChannelMessages/fairplayViolation/button";
       
       public static const SERVICECHANNELMESSAGES_FAIRPLAYVIOLATION_TITLE_WARNING:String = "#messenger:serviceChannelMessages/fairplayViolation/title/warning";
@@ -2464,16 +2502,6 @@ package
       public static const SERVICECHANNELMESSAGES_FAIRPLAYVIOLATION_TEXT_BAN:String = "#messenger:serviceChannelMessages/fairplayViolation/text/ban";
       
       public static const SERVICECHANNELMESSAGES_FAIRPLAYVIOLATION_BANDUEDATE:String = "#messenger:serviceChannelMessages/fairplayViolation/banDueDate";
-      
-      public static const SERVICECHANNELMESSAGES_WOTANNIVERSARY_TITLE:String = "#messenger:serviceChannelMessages/wotAnniversary/title";
-      
-      public static const SERVICECHANNELMESSAGES_WOTANNIVERSARY_TEXT:String = "#messenger:serviceChannelMessages/wotAnniversary/text";
-      
-      public static const SERVICECHANNELMESSAGES_WOTANNIVERSARY_BUTTON:String = "#messenger:serviceChannelMessages/wotAnniversary/button";
-      
-      public static const SERVICECHANNELMESSAGES_WOTANNIVERSARY_QUEST_TITLE:String = "#messenger:serviceChannelMessages/wotAnniversary/quest/title";
-      
-      public static const SERVICECHANNELMESSAGES_WOTANNIVERSARY_BATTLEQUEST_DESCRIPTION:String = "#messenger:serviceChannelMessages/wotAnniversary/battleQuest/description";
       
       public static const DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_ENUM:Array = [DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_OFFLINE,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_NOTREADY,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_READY,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_INBATTLE,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_AFK];
        

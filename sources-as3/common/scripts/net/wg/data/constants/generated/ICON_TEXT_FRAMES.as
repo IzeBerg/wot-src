@@ -39,6 +39,8 @@ package net.wg.data.constants.generated
       
       public static const BPCOIN:String = "bpcoin";
       
+      public static const BPBIT:String = "bpbit";
+      
       public static const EQUIP_COIN:String = "equipCoin";
       
       public static const EQUIP_COIN_BIG:String = "equipCoinBig";

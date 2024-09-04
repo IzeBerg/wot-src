@@ -95,8 +95,6 @@ package net.wg.data.constants
       
       public static const INFO_ICON_UI:String = "InfoIconUI";
       
-      public static const SMALL_SKILL_GROUP_ICON:String = "SmallSkillGroupIconsUI";
-      
       public static const IMAGE:String = "Image";
       
       public static const CONTENT_TAB_RENDERER:String = "ContentTabRendererUI";
@@ -277,10 +275,6 @@ package net.wg.data.constants
       
       public static const EQUIPMENT_BUTTON:String = "EquipmentButtonUI";
       
-      public static const ENTITIES_POPUP:String = "EntitiesStatePopUpUI";
-      
-      public static const ENTITY_BUTTON:String = "EntityStateButtonUI";
-      
       public static const BATTLE_ROYALE_CONSUMABLE_BUTTON:String = "BattleRoyaleConsumableButtonUI";
       
       public static const MAPS_TRAINING_SHELL_BUTTON:String = "MapsTrainingShellButtonUI";
@@ -352,6 +346,8 @@ package net.wg.data.constants
       public static const PERSONAL_QUEST_LINK:String = "PersonalQuestSubTaskUI";
       
       public static const MAGAZINE_GUN_ICON:String = "MagazineGunIcon";
+      
+      public static const LINK_PLUS_BONUS:String = "LinkPlusBonusBtn_UI";
       
       public static const AUTOLOADED_GUN_ICON:String = "AutoLoaderGun";
       
@@ -747,8 +743,6 @@ package net.wg.data.constants
       
       public static const ARTY_SHOT_INDICATOR_RENDERER:String = "ArtyShotIndicatorUI";
       
-      public static const OVERHEAT_WIDGET:String = "OverheatWidgetUI";
-      
       public static const EQUIPMENT_OVERLAY:String = "ListOverlayUI";
       
       public static const NEW_INDICATOR_LINKAGE:String = "NewIndicator_UI";
@@ -1019,9 +1013,11 @@ package net.wg.data.constants
       
       public static const BADGE_SUFFIX_ITEM:String = "SuffixItemUI";
       
-      public static const VEH_CONF_CREW_SKILL_SLOT_UI:String = "VehConfCrewSkillSlotUI";
-      
       public static const BTN_FX_OVERLAY_CIRCLE:String = "BtnCircleAnimUI";
+      
+      public static const COMP7_CONDITIONS_SETTINGS_LINKAGE:String = "Comp7ConditionsUI";
+      
+      public static const COMP7_CONDITIONS_ROOM_LINKAGE:String = "Comp7ConditionsRoomUI";
        
       
       public function Linkages()

@@ -8,6 +8,8 @@ package net.wg.gui.lobby.components.interfaces
       
       function setRendererData(param1:Object) : void;
       
+      function setRendererSize(param1:int, param2:int) : void;
+      
       function blink(param1:Number = 0) : void;
       
       function fadeIn(param1:Number = 0) : void;

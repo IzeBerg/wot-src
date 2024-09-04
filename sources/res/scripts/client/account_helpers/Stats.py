@@ -25,7 +25,7 @@ _SIMPLE_VALUE_STATS = ('fortResource', 'slots', 'berths', 'freeXP', 'dossier', '
                        'vehicleSellsLeft', 'captchaTriesLeft', 'hasFinPassword',
                        'finPswdAttemptsLeft', 'tkillIsSuspected', 'denunciationsLeft',
                        'battlesTillCaptcha', 'dailyPlayHours', 'playLimits', 'applyAdditionalXPCount',
-                       'applyAdditionalWoTPlusXPCount') + Currency.ALL
+                       'applyAdditionalWoTPlusXPCount', 'XPpp') + Currency.ALL
 _DICT_STATS = ('vehTypeXP', 'vehTypeLocks', 'restrictions', 'globalVehicleLocks', 'dummySessionStats',
                'maxResearchedLevelByNation', 'weeklyVehicleCrystals')
 _GROWING_SET_STATS = ('unlocks', 'eliteVehicles', 'multipliedXPVehs', 'multipliedRankedBattlesVehs')
@@ -186,20 +186,20 @@ class Stats(object):
     def setCurrentVehicle(self, vehInvID, callback=None):
         LOG_WARNING('Deprecated. setCurrentVehicle')
 
-    def exchange(self, gold, callback=None):
+    def exchange(self, gold, credits, callback=None):
         if self.__ignore:
             if callback is not None:
                 callback(AccountCommands.RES_NON_PLAYER)
             return
-        self.__account.shop.getExchangeRate(partial(self.__exchange_onGetRate, gold, callback))
+        self.__account.shop.getExchangeRate(partial(self.__exchange_onGetRate, gold, credits, callback))
         return
 
-    def convertToFreeXP(self, vehTypeCompDescrs, xp, callback=None, useDiscount=0):
+    def convertToFreeXP(self, vehTypeCompDescrs, xp, gold, callback=None):
         if self.__ignore:
             if callback is not None:
                 callback(AccountCommands.RES_NON_PLAYER)
             return
-        self.__account.shop.getFreeXPConversion(partial(self.__convertToFreeXP_onGetParameters, vehTypeCompDescrs, xp, callback, useDiscount))
+        self.__account.shop.getFreeXPConversion(partial(self.__convertToFreeXP_onGetParameters, vehTypeCompDescrs, xp, gold, callback))
         return
 
     def upgradeToPremium(self, days, arenaUniqueID, callback=None):
@@ -296,6 +296,22 @@ class Stats(object):
         self.__account._doCmdStr(AccountCommands.CMD_DRAW_TOKENS, token, proxy)
         return
 
+    def updateEntitlementInTemporaryCache(self, entitlementCode, amount, expirationDate=0, callback=None):
+        if callback is not None:
+            proxy = lambda requestID, resultID, errorStr, ext={}: callback(resultID)
+        else:
+            proxy = None
+        self.__account._doCmdInt2Str(AccountCommands.CMD_UPDATE_ENTITLEMENT_IN_TEMPORARY_CACHE, amount, expirationDate, entitlementCode, proxy)
+        return
+
+    def grantEntitlement(self, entitlementCode, amount, expirationDate=0, callback=None):
+        if callback is not None:
+            proxy = lambda requestID, resultID, errorStr, ext={}: callback(resultID)
+        else:
+            proxy = None
+        self.__account._doCmdInt2Str(AccountCommands.CMD_GRANT_ENTITLEMENT, amount, expirationDate, entitlementCode, proxy)
+        return
+
     def unlockAll(self, callback=None):
         if self.__ignore:
             if callback is not None:
@@ -355,6 +371,18 @@ class Stats(object):
         else:
             proxy = None
         self.__account._doCmdIntArr(AccountCommands.CMD_DRAW_FREE_AWARD_LISTS, [count, season], proxy)
+        return
+
+    def addBattlePassPoints(self, vehTypeCD, points, callback=None):
+        if self.__ignore:
+            if callback is not None:
+                callback(AccountCommands.RES_NON_PLAYER)
+            return
+        if callback is not None:
+            proxy = lambda requestID, resultID, errorStr, ext={}: callback(resultID)
+        else:
+            proxy = None
+        self.__account._doCmdInt2(AccountCommands.CMD_ADD_BATTLE_PASS_POINTS, vehTypeCD, points, proxy)
         return
 
     def completePersonalMission(self, questID, withAdditional=False, callback=None):
@@ -499,7 +527,7 @@ class Stats(object):
             callback(resultID, self.__cache)
         return
 
-    def __exchange_onGetRate(self, gold, callback, resultID, exchRate, shopRev):
+    def __exchange_onGetRate(self, gold, credits, callback, resultID, exchRate, shopRev):
         if resultID < 0:
             if callback is not None:
                 callback(resultID, None)
@@ -513,10 +541,10 @@ class Stats(object):
             proxy = lambda requestID, resultID, errorStr, ext={}: callback(resultID)
         else:
             proxy = None
-        self.__account._doCmdInt3(AccountCommands.CMD_EXCHANGE, shopRev, gold, 0, proxy)
+        self.__account._doCmdInt4(AccountCommands.CMD_EXCHANGE, shopRev, gold, credits, 0, proxy)
         return
 
-    def __convertToFreeXP_onGetParameters(self, vehTypeCompDescrs, xp, callback, useDiscount, resultID, freeXPConversion, shopRev):
+    def __convertToFreeXP_onGetParameters(self, vehTypeCompDescrs, xp, gold, callback, resultID, freeXPConversion, shopRev):
         if resultID < 0:
             if callback is not None:
                 callback(resultID, None)
@@ -527,7 +555,7 @@ class Stats(object):
                 callback(AccountCommands.RES_FAILURE)
             return
         arr = [
-         shopRev, xp, useDiscount] + list(vehTypeCompDescrs)
+         shopRev, xp, gold] + list(vehTypeCompDescrs)
         if callback is not None:
             proxy = lambda requestID, resultID, errorStr, ext={}: callback(resultID)
         else:

@@ -185,7 +185,7 @@ class RetrainMassiveDialog(BaseCrewDialogTemplateView):
         else:
             if purchaseMoneyState is MoneyForPurchase.ENOUGH_WITH_EXCHANGE:
                 purchaseGold = getPurchaseGoldForCredits(money)
-                event_dispatcher.showExchangeCurrencyWindowModal(currencyValue=purchaseGold)
+                event_dispatcher.showExchangeCurrencyWindowModal(gold=purchaseGold, backgroundImage=R.images.gui.maps.icons.windows.background())
                 return False
             doActions = []
             for tankmanInvID in self._selectedTankmenIds:

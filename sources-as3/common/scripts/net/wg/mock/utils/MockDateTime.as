@@ -31,6 +31,21 @@ package net.wg.mock.utils
          return 0;
       }
       
+      public function formatSecondsToDDHHMMSS(param1:int, param2:String = " ", param3:String = ":") : String
+      {
+         return "";
+      }
+      
+      public function formatSecondsToHHMMSS(param1:int, param2:String = ":") : String
+      {
+         return "";
+      }
+      
+      public function formatSecondsToString(param1:int) : String
+      {
+         return "";
+      }
+      
       public function fromPyTimestamp(param1:Number) : Date
       {
          return null;
@@ -42,11 +57,6 @@ package net.wg.mock.utils
       }
       
       public function getAmPmPrefix(param1:int) : String
-      {
-         return "";
-      }
-      
-      public function formatSecondsToString(param1:int) : String
       {
          return "";
       }

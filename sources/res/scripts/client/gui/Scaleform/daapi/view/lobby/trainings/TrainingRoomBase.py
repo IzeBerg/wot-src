@@ -31,7 +31,6 @@ from gui.shared.formatters import text_styles
 from gui.sounds.ambients import LobbySubViewEnv
 from helpers import int2roman, i18n
 from gui.impl import backport
-from gui.impl.gen import R
 from messenger.ext import passCensor
 from messenger.m_constants import PROTO_TYPE
 from messenger.proto import proto_getter
@@ -137,7 +136,7 @@ class TrainingRoomBase(LobbySubView, TrainingRoomBaseMeta, ILegacyListener):
             else:
                 arenaTypeID = settings[PREBATTLE_SETTING_NAME.ARENA_TYPE_ID]
             arenaType = ArenaType.g_cache.get(arenaTypeID)
-            self.as_updateMapS(arenaTypeID, self.__getMaxPlayersInTeam() * 2, arenaType.name, formatters.getTrainingRoomTitle(arenaType), formatters.getArenaSubTypeString(arenaTypeID), arenaType.description, self.__battleTypeIcon(settings[PREBATTLE_SETTING_NAME.BATTLE_TYPE]), self.__getAlertText(), self._isObserverModeEnabled())
+            self.as_updateMapS(arenaTypeID, self.__getMaxPlayersInTeam() * 2, arenaType.name, formatters.getTrainingRoomTitle(arenaType), formatters.getArenaSubTypeString(arenaTypeID), arenaType.description, self.__battleTypeIcon(settings[PREBATTLE_SETTING_NAME.BATTLE_TYPE]), self.__getAdditionalInfo(), self._isObserverModeEnabled())
         elif settingName == PREBATTLE_SETTING_NAME.ROUND_LENGTH:
             self.as_updateTimeoutS(formatters.getRoundLenString(settingValue))
         elif settingName == PREBATTLE_SETTING_NAME.COMMENT:
@@ -415,7 +414,7 @@ class TrainingRoomBase(LobbySubView, TrainingRoomBaseMeta, ILegacyListener):
                'arenaTypeID': arenaTypeID, 
                'arenaSubType': formatters.getArenaSubTypeString(arenaTypeID), 
                'battleTypeIco': self.__battleTypeIcon(settings[PREBATTLE_SETTING_NAME.BATTLE_TYPE]), 
-               'alertText': self.__getAlertText(), 
+               'additionalInfo': self.__getAdditionalInfo(), 
                'description': arenaType.description, 
                'maxPlayersCount': self.__getMaxPlayersInTeam() * 2, 
                'roundLenString': formatters.getRoundLenString(settings['roundLength']), 
@@ -435,15 +434,15 @@ class TrainingRoomBase(LobbySubView, TrainingRoomBaseMeta, ILegacyListener):
 
         return
 
+    def __getAdditionalInfo(self):
+        if self.__isComp7Arena():
+            return PREBATTLE_ALIASES.TRAINING_ADDITIONAL_INFO_COMP7
+        return ''
+
     def __battleTypeIcon(self, prebattleType):
         if self.__isComp7Arena():
             return BATTLE_TYPES.COMP7
         return BATTLE_TYPES_ICONS.get(prebattleType, BATTLE_TYPES.TRAINING)
-
-    def __getAlertText(self):
-        if self.__isComp7Arena():
-            return backport.text(R.strings.menu.training.alertText.onlyTierX())
-        return ''
 
     def __getMaxPlayersInTeam(self):
         if self.__isComp7Arena():

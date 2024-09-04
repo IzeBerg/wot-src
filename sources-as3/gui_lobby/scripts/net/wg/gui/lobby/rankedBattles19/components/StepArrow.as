@@ -281,11 +281,12 @@ package net.wg.gui.lobby.rankedBattles19.components
       
       private function changeSteps() : void
       {
+         var _loc5_:Boolean = false;
          var _loc1_:Number = this.stepNormal.alpha;
          var _loc2_:int = this.stepNormal.currentFrame;
          var _loc3_:Boolean = this.stepShine.visible;
          var _loc4_:int = this.stepShine.currentFrame;
-         var _loc5_:Boolean = this.stepNormal.buttonMode;
+         _loc5_ = this.stepNormal.buttonMode;
          this.stepNormal.visible = false;
          this.stepShine.visible = false;
          gotoAndStop(this._stepSize);

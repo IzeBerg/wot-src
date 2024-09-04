@@ -118,6 +118,11 @@ package net.wg.gui.lobby.components
          this.ribbonAward.setData(this._data);
       }
       
+      public function setRendererSize(param1:int, param2:int) : void
+      {
+         this.ribbonAward.setSize(param1,param2);
+      }
+      
       private function resetY() : void
       {
          super.y = this._originY;
