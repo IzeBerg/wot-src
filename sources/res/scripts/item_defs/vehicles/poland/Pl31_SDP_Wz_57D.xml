@@ -1894,12 +1894,18 @@
 			</models>
 			<traces>
 				<lodDist>MEDIUM</lodDist>
-				<bufferPrefs>largeTank</bufferPrefs>
-				<textureSet>ussr_01</textureSet>
-				<size>
-					0.6 0.8
-					<!--BW_String-->
-				</size>
+				<activePostmortem>false</activePostmortem>
+				<tracesParams>
+					<trackPairIdx>0</trackPairIdx>
+					<bufferPrefs>largeTank</bufferPrefs>
+					<textureSet>ussr_01</textureSet>
+					<size>
+						0.6 0.8
+						<!--BW_String-->
+					</size>
+					<offset>0 0</offset>
+					<centerOffsetFactor>1 1</centerOffsetFactor>
+				</tracesParams>
 			</traces>
 			<tracks>
 				<lodDist>MEDIUM_TRACK</lodDist>
@@ -2189,224 +2195,238 @@
 				<!--BW_String-->
 			</navmeshGirth>
 			<trackNodes>
-				<enable>true</enable>
-				<linkBones>false</linkBones>
-				<maxAmplitude>
-					0.01
-					<!--BW_String-->
-				</maxAmplitude>
-				<maxOffset>
-					0.01
-					<!--BW_String-->
-				</maxOffset>
-				<gravity>
-					-9.8
-					<!--BW_String-->
-				</gravity>
-				<elasticity>1100</elasticity>
-				<damping>2</damping>
-				<node>
-					<isLeft>true</isLeft>
-					<name>Track_VD_L0</name>
-					<forwardElastK>
-						0.7
+				<trackPair>
+					<trackPairIdx>0</trackPairIdx>
+					<trackThickness>
+						-0.0339
 						<!--BW_String-->
-					</forwardElastK>
-					<backwardElastK>
-						1.2
+					</trackThickness>
+					<maxAmplitude>
+						0.01
 						<!--BW_String-->
-					</backwardElastK>
-					<offset>
-						-0.17
+					</maxAmplitude>
+					<maxOffset>
+						0.01
 						<!--BW_String-->
-					</offset>
-				</node>
-				<node>
-					<isLeft>true</isLeft>
-					<name>Track_VD_L1</name>
-					<forwardElastK>
-						1.2
+					</maxOffset>
+					<gravity>
+						-9.8
 						<!--BW_String-->
-					</forwardElastK>
-					<backwardElastK>
-						0.7
-						<!--BW_String-->
-					</backwardElastK>
-					<offset>
-						-0.14
-						<!--BW_String-->
-					</offset>
-				</node>
-				<node>
-					<isLeft>false</isLeft>
-					<name>Track_VD_R0</name>
-					<forwardElastK>
-						0.7
-						<!--BW_String-->
-					</forwardElastK>
-					<backwardElastK>
-						1.2
-						<!--BW_String-->
-					</backwardElastK>
-					<offset>
-						-0.17
-						<!--BW_String-->
-					</offset>
-				</node>
-				<node>
-					<isLeft>false</isLeft>
-					<name>Track_VD_R1</name>
-					<forwardElastK>
-						1.2
-						<!--BW_String-->
-					</forwardElastK>
-					<backwardElastK>
-						0.7
-						<!--BW_String-->
-					</backwardElastK>
-					<offset>
-						-0.14
-						<!--BW_String-->
-					</offset>
-				</node>
-				<node>
-					<isLeft>true</isLeft>
-					<name>Track_VT_L0</name>
-					<forwardElastK>
-						0.8
-						<!--BW_String-->
-					</forwardElastK>
-					<backwardElastK>
-						1.2
-						<!--BW_String-->
-					</backwardElastK>
-					<offset>
-						-0.09
-						<!--BW_String-->
-					</offset>
-				</node>
-				<node>
-					<isLeft>true</isLeft>
-					<name>Track_VT_L1</name>
-					<forwardElastK>
-						0.8
-						<!--BW_String-->
-					</forwardElastK>
-					<backwardElastK>
-						1.2
-						<!--BW_String-->
-					</backwardElastK>
-					<offset>
-						-0.09
-						<!--BW_String-->
-					</offset>
-				</node>
-				<node>
-					<isLeft>true</isLeft>
-					<name>Track_VT_L2</name>
-					<forwardElastK>
-						0.8
-						<!--BW_String-->
-					</forwardElastK>
-					<backwardElastK>
-						1.2
-						<!--BW_String-->
-					</backwardElastK>
-					<offset>
-						-0.08
-						<!--BW_String-->
-					</offset>
-				</node>
-				<node>
-					<isLeft>true</isLeft>
-					<name>Track_VT_L3</name>
-					<forwardElastK>
-						0.8
-						<!--BW_String-->
-					</forwardElastK>
-					<backwardElastK>
-						1.4
-						<!--BW_String-->
-					</backwardElastK>
-					<offset>
-						-0.02
-						<!--BW_String-->
-					</offset>
-				</node>
-				<node>
-					<isLeft>false</isLeft>
-					<name>Track_VT_R0</name>
-					<forwardElastK>
-						0.8
-						<!--BW_String-->
-					</forwardElastK>
-					<backwardElastK>
-						1.2
-						<!--BW_String-->
-					</backwardElastK>
-					<offset>
-						-0.09
-						<!--BW_String-->
-					</offset>
-				</node>
-				<node>
-					<isLeft>false</isLeft>
-					<name>Track_VT_R1</name>
-					<forwardElastK>
-						0.8
-						<!--BW_String-->
-					</forwardElastK>
-					<backwardElastK>
-						1.2
-						<!--BW_String-->
-					</backwardElastK>
-					<offset>
-						-0.09
-						<!--BW_String-->
-					</offset>
-				</node>
-				<node>
-					<isLeft>false</isLeft>
-					<name>Track_VT_R2</name>
-					<forwardElastK>
-						0.8
-						<!--BW_String-->
-					</forwardElastK>
-					<backwardElastK>
-						1.2
-						<!--BW_String-->
-					</backwardElastK>
-					<offset>
-						-0.08
-						<!--BW_String-->
-					</offset>
-				</node>
-				<node>
-					<isLeft>false</isLeft>
-					<name>Track_VT_R3</name>
-					<forwardElastK>
-						0.8
-						<!--BW_String-->
-					</forwardElastK>
-					<backwardElastK>
-						1.4
-						<!--BW_String-->
-					</backwardElastK>
-					<offset>
-						-0.02
-						<!--BW_String-->
-					</offset>
-				</node>
+					</gravity>
+					<damping>2</damping>
+					<enable>true</enable>
+					<linkBones>false</linkBones>
+					<elasticity>1100</elasticity>
+					<node>
+						<isLeft>true</isLeft>
+						<name>Track_VD_L0</name>
+						<forwardElastK>
+							0.7
+							<!--BW_String-->
+						</forwardElastK>
+						<backwardElastK>
+							1.2
+							<!--BW_String-->
+						</backwardElastK>
+						<offset>
+							-0.17
+							<!--BW_String-->
+						</offset>
+						<trackPairIdx>0</trackPairIdx>
+					</node>
+					<node>
+						<isLeft>true</isLeft>
+						<name>Track_VD_L1</name>
+						<forwardElastK>
+							1.2
+							<!--BW_String-->
+						</forwardElastK>
+						<backwardElastK>
+							0.7
+							<!--BW_String-->
+						</backwardElastK>
+						<offset>
+							-0.14
+							<!--BW_String-->
+						</offset>
+						<trackPairIdx>0</trackPairIdx>
+					</node>
+					<node>
+						<isLeft>false</isLeft>
+						<name>Track_VD_R0</name>
+						<forwardElastK>
+							0.7
+							<!--BW_String-->
+						</forwardElastK>
+						<backwardElastK>
+							1.2
+							<!--BW_String-->
+						</backwardElastK>
+						<offset>
+							-0.17
+							<!--BW_String-->
+						</offset>
+						<trackPairIdx>0</trackPairIdx>
+					</node>
+					<node>
+						<isLeft>false</isLeft>
+						<name>Track_VD_R1</name>
+						<forwardElastK>
+							1.2
+							<!--BW_String-->
+						</forwardElastK>
+						<backwardElastK>
+							0.7
+							<!--BW_String-->
+						</backwardElastK>
+						<offset>
+							-0.14
+							<!--BW_String-->
+						</offset>
+						<trackPairIdx>0</trackPairIdx>
+					</node>
+					<node>
+						<isLeft>true</isLeft>
+						<name>Track_VT_L0</name>
+						<forwardElastK>
+							0.8
+							<!--BW_String-->
+						</forwardElastK>
+						<backwardElastK>
+							1.2
+							<!--BW_String-->
+						</backwardElastK>
+						<offset>
+							-0.09
+							<!--BW_String-->
+						</offset>
+						<trackPairIdx>0</trackPairIdx>
+					</node>
+					<node>
+						<isLeft>true</isLeft>
+						<name>Track_VT_L1</name>
+						<forwardElastK>
+							0.8
+							<!--BW_String-->
+						</forwardElastK>
+						<backwardElastK>
+							1.2
+							<!--BW_String-->
+						</backwardElastK>
+						<offset>
+							-0.09
+							<!--BW_String-->
+						</offset>
+						<trackPairIdx>0</trackPairIdx>
+					</node>
+					<node>
+						<isLeft>true</isLeft>
+						<name>Track_VT_L2</name>
+						<forwardElastK>
+							0.8
+							<!--BW_String-->
+						</forwardElastK>
+						<backwardElastK>
+							1.2
+							<!--BW_String-->
+						</backwardElastK>
+						<offset>
+							-0.08
+							<!--BW_String-->
+						</offset>
+						<trackPairIdx>0</trackPairIdx>
+					</node>
+					<node>
+						<isLeft>true</isLeft>
+						<name>Track_VT_L3</name>
+						<forwardElastK>
+							0.8
+							<!--BW_String-->
+						</forwardElastK>
+						<backwardElastK>
+							1.4
+							<!--BW_String-->
+						</backwardElastK>
+						<offset>
+							-0.02
+							<!--BW_String-->
+						</offset>
+						<trackPairIdx>0</trackPairIdx>
+					</node>
+					<node>
+						<isLeft>false</isLeft>
+						<name>Track_VT_R0</name>
+						<forwardElastK>
+							0.8
+							<!--BW_String-->
+						</forwardElastK>
+						<backwardElastK>
+							1.2
+							<!--BW_String-->
+						</backwardElastK>
+						<offset>
+							-0.09
+							<!--BW_String-->
+						</offset>
+						<trackPairIdx>0</trackPairIdx>
+					</node>
+					<node>
+						<isLeft>false</isLeft>
+						<name>Track_VT_R1</name>
+						<forwardElastK>
+							0.8
+							<!--BW_String-->
+						</forwardElastK>
+						<backwardElastK>
+							1.2
+							<!--BW_String-->
+						</backwardElastK>
+						<offset>
+							-0.09
+							<!--BW_String-->
+						</offset>
+						<trackPairIdx>0</trackPairIdx>
+					</node>
+					<node>
+						<isLeft>false</isLeft>
+						<name>Track_VT_R2</name>
+						<forwardElastK>
+							0.8
+							<!--BW_String-->
+						</forwardElastK>
+						<backwardElastK>
+							1.2
+							<!--BW_String-->
+						</backwardElastK>
+						<offset>
+							-0.08
+							<!--BW_String-->
+						</offset>
+						<trackPairIdx>0</trackPairIdx>
+					</node>
+					<node>
+						<isLeft>false</isLeft>
+						<name>Track_VT_R3</name>
+						<forwardElastK>
+							0.8
+							<!--BW_String-->
+						</forwardElastK>
+						<backwardElastK>
+							1.4
+							<!--BW_String-->
+						</backwardElastK>
+						<offset>
+							-0.02
+							<!--BW_String-->
+						</offset>
+						<trackPairIdx>0</trackPairIdx>
+					</node>
+				</trackPair>
 			</trackNodes>
-			<trackThickness>
-				-0.01
-				<!--BW_String-->
-			</trackThickness>
 			<groundNodes>
-				<group>
-					<template>Track_L</template>
-					<startIndex>0</startIndex>
-					<count>6</count>
+				<node>
+					<name>Track_L0</name>
+					<collisionSamplesCount>1</collisionSamplesCount>
 					<isLeft>true</isLeft>
 					<minOffset>
 						-0.1
@@ -2416,11 +2436,81 @@
 						0.3
 						<!--BW_String-->
 					</maxOffset>
-				</group>
-				<group>
-					<template>Track_R</template>
-					<startIndex>0</startIndex>
-					<count>6</count>
+					<trackPairIdx>0</trackPairIdx>
+				</node>
+				<node>
+					<name>Track_L1</name>
+					<collisionSamplesCount>1</collisionSamplesCount>
+					<isLeft>true</isLeft>
+					<minOffset>
+						-0.1
+						<!--BW_String-->
+					</minOffset>
+					<maxOffset>
+						0.3
+						<!--BW_String-->
+					</maxOffset>
+					<trackPairIdx>0</trackPairIdx>
+				</node>
+				<node>
+					<name>Track_L2</name>
+					<collisionSamplesCount>1</collisionSamplesCount>
+					<isLeft>true</isLeft>
+					<minOffset>
+						-0.1
+						<!--BW_String-->
+					</minOffset>
+					<maxOffset>
+						0.3
+						<!--BW_String-->
+					</maxOffset>
+					<trackPairIdx>0</trackPairIdx>
+				</node>
+				<node>
+					<name>Track_L3</name>
+					<collisionSamplesCount>1</collisionSamplesCount>
+					<isLeft>true</isLeft>
+					<minOffset>
+						-0.1
+						<!--BW_String-->
+					</minOffset>
+					<maxOffset>
+						0.3
+						<!--BW_String-->
+					</maxOffset>
+					<trackPairIdx>0</trackPairIdx>
+				</node>
+				<node>
+					<name>Track_L4</name>
+					<collisionSamplesCount>1</collisionSamplesCount>
+					<isLeft>true</isLeft>
+					<minOffset>
+						-0.1
+						<!--BW_String-->
+					</minOffset>
+					<maxOffset>
+						0.3
+						<!--BW_String-->
+					</maxOffset>
+					<trackPairIdx>0</trackPairIdx>
+				</node>
+				<node>
+					<name>Track_L5</name>
+					<collisionSamplesCount>1</collisionSamplesCount>
+					<isLeft>true</isLeft>
+					<minOffset>
+						-0.1
+						<!--BW_String-->
+					</minOffset>
+					<maxOffset>
+						0.3
+						<!--BW_String-->
+					</maxOffset>
+					<trackPairIdx>0</trackPairIdx>
+				</node>
+				<node>
+					<name>Track_R0</name>
+					<collisionSamplesCount>1</collisionSamplesCount>
 					<isLeft>false</isLeft>
 					<minOffset>
 						-0.1
@@ -2430,7 +2520,78 @@
 						0.3
 						<!--BW_String-->
 					</maxOffset>
-				</group>
+					<trackPairIdx>0</trackPairIdx>
+				</node>
+				<node>
+					<name>Track_R1</name>
+					<collisionSamplesCount>1</collisionSamplesCount>
+					<isLeft>false</isLeft>
+					<minOffset>
+						-0.1
+						<!--BW_String-->
+					</minOffset>
+					<maxOffset>
+						0.3
+						<!--BW_String-->
+					</maxOffset>
+					<trackPairIdx>0</trackPairIdx>
+				</node>
+				<node>
+					<name>Track_R2</name>
+					<collisionSamplesCount>1</collisionSamplesCount>
+					<isLeft>false</isLeft>
+					<minOffset>
+						-0.1
+						<!--BW_String-->
+					</minOffset>
+					<maxOffset>
+						0.3
+						<!--BW_String-->
+					</maxOffset>
+					<trackPairIdx>0</trackPairIdx>
+				</node>
+				<node>
+					<name>Track_R3</name>
+					<collisionSamplesCount>1</collisionSamplesCount>
+					<isLeft>false</isLeft>
+					<minOffset>
+						-0.1
+						<!--BW_String-->
+					</minOffset>
+					<maxOffset>
+						0.3
+						<!--BW_String-->
+					</maxOffset>
+					<trackPairIdx>0</trackPairIdx>
+				</node>
+				<node>
+					<name>Track_R4</name>
+					<collisionSamplesCount>1</collisionSamplesCount>
+					<isLeft>false</isLeft>
+					<minOffset>
+						-0.1
+						<!--BW_String-->
+					</minOffset>
+					<maxOffset>
+						0.3
+						<!--BW_String-->
+					</maxOffset>
+					<trackPairIdx>0</trackPairIdx>
+				</node>
+				<node>
+					<name>Track_R5</name>
+					<collisionSamplesCount>1</collisionSamplesCount>
+					<isLeft>false</isLeft>
+					<minOffset>
+						-0.1
+						<!--BW_String-->
+					</minOffset>
+					<maxOffset>
+						0.3
+						<!--BW_String-->
+					</maxOffset>
+					<trackPairIdx>0</trackPairIdx>
+				</node>
 			</groundNodes>
 			<splineDesc>
 				<trackPair>
@@ -2471,13 +2632,19 @@
 					<springsLength>
 						<backwardMovement>
 							<back>0.128817</back>
-							<top>0.127414</top>
+							<top>
+								0.12
+								<!--BW_String-->
+							</top>
 							<front>0.124445</front>
 							<bottom>0.101533</bottom>
 						</backwardMovement>
 						<forwardMovement>
 							<back>0.123739</back>
-							<top>0.127414</top>
+							<top>
+								0.125
+								<!--BW_String-->
+							</top>
 							<front>0.129133</front>
 							<bottom>0.101533</bottom>
 						</forwardMovement>
@@ -2562,38 +2729,6 @@
 								</ySamples>
 							</part>
 						</top>
-						<bottom>
-							<part>
-								<xStart>-2.743167</xStart>
-								<xStep>
-									0.01
-									<!--BW_String-->
-								</xStep>
-								<ySamples>
-									0.484615 0.481601 0.478975 0.476728 0.474851 0.473335 0.472176
-									<!--BW_String-->
-								</ySamples>
-							</part>
-							<part>
-								<xStart>-2.683167</xStart>
-								<xStep>0.566199</xStep>
-								<ySamples>
-									0.472176 0.939027 0.739809 0.927879 0.938511 0.760214 0.910407 0.932049 1.04906 1.10253 0.449508
-									<!--BW_String-->
-								</ySamples>
-							</part>
-							<part>
-								<xStart>2.978827</xStart>
-								<xStep>
-									0.01
-									<!--BW_String-->
-								</xStep>
-								<ySamples>
-									0.449508 0.450743 0.452329 0.454272 0.456581 0.459262 0.462328
-									<!--BW_String-->
-								</ySamples>
-							</part>
-						</bottom>
 					</collisionHull>
 					<sourceCollisionHullPoints>
 						<top>
@@ -2807,7 +2942,10 @@
 					<springsLength>
 						<backwardMovement>
 							<back>0.129929</back>
-							<top>0.127573</top>
+							<top>
+								0.12
+								<!--BW_String-->
+							</top>
 							<front>0.123679</front>
 							<bottom>0.101659</bottom>
 						</backwardMovement>
@@ -2816,7 +2954,10 @@
 								0.12446
 								<!--BW_String-->
 							</back>
-							<top>0.127573</top>
+							<top>
+								0.125
+								<!--BW_String-->
+							</top>
 							<front>0.128366</front>
 							<bottom>0.101659</bottom>
 						</forwardMovement>
@@ -2898,38 +3039,6 @@
 								</ySamples>
 							</part>
 						</top>
-						<bottom>
-							<part>
-								<xStart>-2.755449</xStart>
-								<xStep>
-									0.01
-									<!--BW_String-->
-								</xStep>
-								<ySamples>
-									0.4891 0.485587 0.482479 0.479764 0.47743 0.475467 0.473868
-									<!--BW_String-->
-								</ySamples>
-							</part>
-							<part>
-								<xStart>-2.695449</xStart>
-								<xStep>0.570809</xStep>
-								<ySamples>
-									0.473868 0.945124 0.790315 0.930861 0.943999 0.929713 0.938178 0.923891 1.09176 1.10254 0.455099
-									<!--BW_String-->
-								</ySamples>
-							</part>
-							<part>
-								<xStart>3.012645</xStart>
-								<xStep>
-									0.01
-									<!--BW_String-->
-								</xStep>
-								<ySamples>
-									0.455099 0.457549 0.460376 0.463591 0.46721 0.471247 0.475723
-									<!--BW_String-->
-								</ySamples>
-							</part>
-						</bottom>
 					</collisionHull>
 					<sourceCollisionHullPoints>
 						<top>
@@ -3145,12 +3254,18 @@
 			</models>
 			<traces>
 				<lodDist>MEDIUM</lodDist>
-				<bufferPrefs>largeTank</bufferPrefs>
-				<textureSet>ussr_01</textureSet>
-				<size>
-					0.6 0.8
-					<!--BW_String-->
-				</size>
+				<activePostmortem>false</activePostmortem>
+				<tracesParams>
+					<trackPairIdx>0</trackPairIdx>
+					<bufferPrefs>largeTank</bufferPrefs>
+					<textureSet>ussr_01</textureSet>
+					<size>
+						0.6 0.8
+						<!--BW_String-->
+					</size>
+					<offset>0 0</offset>
+					<centerOffsetFactor>1 1</centerOffsetFactor>
+				</tracesParams>
 			</traces>
 			<tracks>
 				<lodDist>MEDIUM_TRACK</lodDist>
@@ -3440,224 +3555,238 @@
 				<!--BW_String-->
 			</navmeshGirth>
 			<trackNodes>
-				<enable>true</enable>
-				<linkBones>false</linkBones>
-				<maxAmplitude>
-					0.01
-					<!--BW_String-->
-				</maxAmplitude>
-				<maxOffset>
-					0.01
-					<!--BW_String-->
-				</maxOffset>
-				<gravity>
-					-9.8
-					<!--BW_String-->
-				</gravity>
-				<elasticity>1100</elasticity>
-				<damping>2</damping>
-				<node>
-					<isLeft>true</isLeft>
-					<name>Track_VD_L0</name>
-					<forwardElastK>
-						0.7
+				<trackPair>
+					<trackPairIdx>0</trackPairIdx>
+					<trackThickness>
+						-0.0339
 						<!--BW_String-->
-					</forwardElastK>
-					<backwardElastK>
-						1.2
+					</trackThickness>
+					<maxAmplitude>
+						0.01
 						<!--BW_String-->
-					</backwardElastK>
-					<offset>
-						-0.17
+					</maxAmplitude>
+					<maxOffset>
+						0.01
 						<!--BW_String-->
-					</offset>
-				</node>
-				<node>
-					<isLeft>true</isLeft>
-					<name>Track_VD_L1</name>
-					<forwardElastK>
-						1.2
+					</maxOffset>
+					<gravity>
+						-9.8
 						<!--BW_String-->
-					</forwardElastK>
-					<backwardElastK>
-						0.7
-						<!--BW_String-->
-					</backwardElastK>
-					<offset>
-						-0.14
-						<!--BW_String-->
-					</offset>
-				</node>
-				<node>
-					<isLeft>false</isLeft>
-					<name>Track_VD_R0</name>
-					<forwardElastK>
-						0.7
-						<!--BW_String-->
-					</forwardElastK>
-					<backwardElastK>
-						1.2
-						<!--BW_String-->
-					</backwardElastK>
-					<offset>
-						-0.17
-						<!--BW_String-->
-					</offset>
-				</node>
-				<node>
-					<isLeft>false</isLeft>
-					<name>Track_VD_R1</name>
-					<forwardElastK>
-						1.2
-						<!--BW_String-->
-					</forwardElastK>
-					<backwardElastK>
-						0.7
-						<!--BW_String-->
-					</backwardElastK>
-					<offset>
-						-0.14
-						<!--BW_String-->
-					</offset>
-				</node>
-				<node>
-					<isLeft>true</isLeft>
-					<name>Track_VT_L0</name>
-					<forwardElastK>
-						0.8
-						<!--BW_String-->
-					</forwardElastK>
-					<backwardElastK>
-						1.2
-						<!--BW_String-->
-					</backwardElastK>
-					<offset>
-						-0.09
-						<!--BW_String-->
-					</offset>
-				</node>
-				<node>
-					<isLeft>true</isLeft>
-					<name>Track_VT_L1</name>
-					<forwardElastK>
-						0.8
-						<!--BW_String-->
-					</forwardElastK>
-					<backwardElastK>
-						1.2
-						<!--BW_String-->
-					</backwardElastK>
-					<offset>
-						-0.09
-						<!--BW_String-->
-					</offset>
-				</node>
-				<node>
-					<isLeft>true</isLeft>
-					<name>Track_VT_L2</name>
-					<forwardElastK>
-						0.8
-						<!--BW_String-->
-					</forwardElastK>
-					<backwardElastK>
-						1.2
-						<!--BW_String-->
-					</backwardElastK>
-					<offset>
-						-0.08
-						<!--BW_String-->
-					</offset>
-				</node>
-				<node>
-					<isLeft>true</isLeft>
-					<name>Track_VT_L3</name>
-					<forwardElastK>
-						0.8
-						<!--BW_String-->
-					</forwardElastK>
-					<backwardElastK>
-						1.4
-						<!--BW_String-->
-					</backwardElastK>
-					<offset>
-						-0.02
-						<!--BW_String-->
-					</offset>
-				</node>
-				<node>
-					<isLeft>false</isLeft>
-					<name>Track_VT_R0</name>
-					<forwardElastK>
-						0.8
-						<!--BW_String-->
-					</forwardElastK>
-					<backwardElastK>
-						1.2
-						<!--BW_String-->
-					</backwardElastK>
-					<offset>
-						-0.09
-						<!--BW_String-->
-					</offset>
-				</node>
-				<node>
-					<isLeft>false</isLeft>
-					<name>Track_VT_R1</name>
-					<forwardElastK>
-						0.8
-						<!--BW_String-->
-					</forwardElastK>
-					<backwardElastK>
-						1.2
-						<!--BW_String-->
-					</backwardElastK>
-					<offset>
-						-0.09
-						<!--BW_String-->
-					</offset>
-				</node>
-				<node>
-					<isLeft>false</isLeft>
-					<name>Track_VT_R2</name>
-					<forwardElastK>
-						0.8
-						<!--BW_String-->
-					</forwardElastK>
-					<backwardElastK>
-						1.2
-						<!--BW_String-->
-					</backwardElastK>
-					<offset>
-						-0.08
-						<!--BW_String-->
-					</offset>
-				</node>
-				<node>
-					<isLeft>false</isLeft>
-					<name>Track_VT_R3</name>
-					<forwardElastK>
-						0.8
-						<!--BW_String-->
-					</forwardElastK>
-					<backwardElastK>
-						1.4
-						<!--BW_String-->
-					</backwardElastK>
-					<offset>
-						-0.02
-						<!--BW_String-->
-					</offset>
-				</node>
+					</gravity>
+					<damping>2</damping>
+					<enable>true</enable>
+					<linkBones>false</linkBones>
+					<elasticity>1100</elasticity>
+					<node>
+						<isLeft>true</isLeft>
+						<name>Track_VD_L0</name>
+						<forwardElastK>
+							0.7
+							<!--BW_String-->
+						</forwardElastK>
+						<backwardElastK>
+							1.2
+							<!--BW_String-->
+						</backwardElastK>
+						<offset>
+							-0.17
+							<!--BW_String-->
+						</offset>
+						<trackPairIdx>0</trackPairIdx>
+					</node>
+					<node>
+						<isLeft>true</isLeft>
+						<name>Track_VD_L1</name>
+						<forwardElastK>
+							1.2
+							<!--BW_String-->
+						</forwardElastK>
+						<backwardElastK>
+							0.7
+							<!--BW_String-->
+						</backwardElastK>
+						<offset>
+							-0.14
+							<!--BW_String-->
+						</offset>
+						<trackPairIdx>0</trackPairIdx>
+					</node>
+					<node>
+						<isLeft>false</isLeft>
+						<name>Track_VD_R0</name>
+						<forwardElastK>
+							0.7
+							<!--BW_String-->
+						</forwardElastK>
+						<backwardElastK>
+							1.2
+							<!--BW_String-->
+						</backwardElastK>
+						<offset>
+							-0.17
+							<!--BW_String-->
+						</offset>
+						<trackPairIdx>0</trackPairIdx>
+					</node>
+					<node>
+						<isLeft>false</isLeft>
+						<name>Track_VD_R1</name>
+						<forwardElastK>
+							1.2
+							<!--BW_String-->
+						</forwardElastK>
+						<backwardElastK>
+							0.7
+							<!--BW_String-->
+						</backwardElastK>
+						<offset>
+							-0.14
+							<!--BW_String-->
+						</offset>
+						<trackPairIdx>0</trackPairIdx>
+					</node>
+					<node>
+						<isLeft>true</isLeft>
+						<name>Track_VT_L0</name>
+						<forwardElastK>
+							0.8
+							<!--BW_String-->
+						</forwardElastK>
+						<backwardElastK>
+							1.2
+							<!--BW_String-->
+						</backwardElastK>
+						<offset>
+							-0.09
+							<!--BW_String-->
+						</offset>
+						<trackPairIdx>0</trackPairIdx>
+					</node>
+					<node>
+						<isLeft>true</isLeft>
+						<name>Track_VT_L1</name>
+						<forwardElastK>
+							0.8
+							<!--BW_String-->
+						</forwardElastK>
+						<backwardElastK>
+							1.2
+							<!--BW_String-->
+						</backwardElastK>
+						<offset>
+							-0.09
+							<!--BW_String-->
+						</offset>
+						<trackPairIdx>0</trackPairIdx>
+					</node>
+					<node>
+						<isLeft>true</isLeft>
+						<name>Track_VT_L2</name>
+						<forwardElastK>
+							0.8
+							<!--BW_String-->
+						</forwardElastK>
+						<backwardElastK>
+							1.2
+							<!--BW_String-->
+						</backwardElastK>
+						<offset>
+							-0.08
+							<!--BW_String-->
+						</offset>
+						<trackPairIdx>0</trackPairIdx>
+					</node>
+					<node>
+						<isLeft>true</isLeft>
+						<name>Track_VT_L3</name>
+						<forwardElastK>
+							0.8
+							<!--BW_String-->
+						</forwardElastK>
+						<backwardElastK>
+							1.4
+							<!--BW_String-->
+						</backwardElastK>
+						<offset>
+							-0.02
+							<!--BW_String-->
+						</offset>
+						<trackPairIdx>0</trackPairIdx>
+					</node>
+					<node>
+						<isLeft>false</isLeft>
+						<name>Track_VT_R0</name>
+						<forwardElastK>
+							0.8
+							<!--BW_String-->
+						</forwardElastK>
+						<backwardElastK>
+							1.2
+							<!--BW_String-->
+						</backwardElastK>
+						<offset>
+							-0.09
+							<!--BW_String-->
+						</offset>
+						<trackPairIdx>0</trackPairIdx>
+					</node>
+					<node>
+						<isLeft>false</isLeft>
+						<name>Track_VT_R1</name>
+						<forwardElastK>
+							0.8
+							<!--BW_String-->
+						</forwardElastK>
+						<backwardElastK>
+							1.2
+							<!--BW_String-->
+						</backwardElastK>
+						<offset>
+							-0.09
+							<!--BW_String-->
+						</offset>
+						<trackPairIdx>0</trackPairIdx>
+					</node>
+					<node>
+						<isLeft>false</isLeft>
+						<name>Track_VT_R2</name>
+						<forwardElastK>
+							0.8
+							<!--BW_String-->
+						</forwardElastK>
+						<backwardElastK>
+							1.2
+							<!--BW_String-->
+						</backwardElastK>
+						<offset>
+							-0.08
+							<!--BW_String-->
+						</offset>
+						<trackPairIdx>0</trackPairIdx>
+					</node>
+					<node>
+						<isLeft>false</isLeft>
+						<name>Track_VT_R3</name>
+						<forwardElastK>
+							0.8
+							<!--BW_String-->
+						</forwardElastK>
+						<backwardElastK>
+							1.4
+							<!--BW_String-->
+						</backwardElastK>
+						<offset>
+							-0.02
+							<!--BW_String-->
+						</offset>
+						<trackPairIdx>0</trackPairIdx>
+					</node>
+				</trackPair>
 			</trackNodes>
-			<trackThickness>
-				-0.01
-				<!--BW_String-->
-			</trackThickness>
 			<groundNodes>
-				<group>
-					<template>Track_L</template>
-					<startIndex>0</startIndex>
-					<count>6</count>
+				<node>
+					<name>Track_L0</name>
+					<collisionSamplesCount>1</collisionSamplesCount>
 					<isLeft>true</isLeft>
 					<minOffset>
 						-0.1
@@ -3667,11 +3796,81 @@
 						0.3
 						<!--BW_String-->
 					</maxOffset>
-				</group>
-				<group>
-					<template>Track_R</template>
-					<startIndex>0</startIndex>
-					<count>6</count>
+					<trackPairIdx>0</trackPairIdx>
+				</node>
+				<node>
+					<name>Track_L1</name>
+					<collisionSamplesCount>1</collisionSamplesCount>
+					<isLeft>true</isLeft>
+					<minOffset>
+						-0.1
+						<!--BW_String-->
+					</minOffset>
+					<maxOffset>
+						0.3
+						<!--BW_String-->
+					</maxOffset>
+					<trackPairIdx>0</trackPairIdx>
+				</node>
+				<node>
+					<name>Track_L2</name>
+					<collisionSamplesCount>1</collisionSamplesCount>
+					<isLeft>true</isLeft>
+					<minOffset>
+						-0.1
+						<!--BW_String-->
+					</minOffset>
+					<maxOffset>
+						0.3
+						<!--BW_String-->
+					</maxOffset>
+					<trackPairIdx>0</trackPairIdx>
+				</node>
+				<node>
+					<name>Track_L3</name>
+					<collisionSamplesCount>1</collisionSamplesCount>
+					<isLeft>true</isLeft>
+					<minOffset>
+						-0.1
+						<!--BW_String-->
+					</minOffset>
+					<maxOffset>
+						0.3
+						<!--BW_String-->
+					</maxOffset>
+					<trackPairIdx>0</trackPairIdx>
+				</node>
+				<node>
+					<name>Track_L4</name>
+					<collisionSamplesCount>1</collisionSamplesCount>
+					<isLeft>true</isLeft>
+					<minOffset>
+						-0.1
+						<!--BW_String-->
+					</minOffset>
+					<maxOffset>
+						0.3
+						<!--BW_String-->
+					</maxOffset>
+					<trackPairIdx>0</trackPairIdx>
+				</node>
+				<node>
+					<name>Track_L5</name>
+					<collisionSamplesCount>1</collisionSamplesCount>
+					<isLeft>true</isLeft>
+					<minOffset>
+						-0.1
+						<!--BW_String-->
+					</minOffset>
+					<maxOffset>
+						0.3
+						<!--BW_String-->
+					</maxOffset>
+					<trackPairIdx>0</trackPairIdx>
+				</node>
+				<node>
+					<name>Track_R0</name>
+					<collisionSamplesCount>1</collisionSamplesCount>
 					<isLeft>false</isLeft>
 					<minOffset>
 						-0.1
@@ -3681,7 +3880,78 @@
 						0.3
 						<!--BW_String-->
 					</maxOffset>
-				</group>
+					<trackPairIdx>0</trackPairIdx>
+				</node>
+				<node>
+					<name>Track_R1</name>
+					<collisionSamplesCount>1</collisionSamplesCount>
+					<isLeft>false</isLeft>
+					<minOffset>
+						-0.1
+						<!--BW_String-->
+					</minOffset>
+					<maxOffset>
+						0.3
+						<!--BW_String-->
+					</maxOffset>
+					<trackPairIdx>0</trackPairIdx>
+				</node>
+				<node>
+					<name>Track_R2</name>
+					<collisionSamplesCount>1</collisionSamplesCount>
+					<isLeft>false</isLeft>
+					<minOffset>
+						-0.1
+						<!--BW_String-->
+					</minOffset>
+					<maxOffset>
+						0.3
+						<!--BW_String-->
+					</maxOffset>
+					<trackPairIdx>0</trackPairIdx>
+				</node>
+				<node>
+					<name>Track_R3</name>
+					<collisionSamplesCount>1</collisionSamplesCount>
+					<isLeft>false</isLeft>
+					<minOffset>
+						-0.1
+						<!--BW_String-->
+					</minOffset>
+					<maxOffset>
+						0.3
+						<!--BW_String-->
+					</maxOffset>
+					<trackPairIdx>0</trackPairIdx>
+				</node>
+				<node>
+					<name>Track_R4</name>
+					<collisionSamplesCount>1</collisionSamplesCount>
+					<isLeft>false</isLeft>
+					<minOffset>
+						-0.1
+						<!--BW_String-->
+					</minOffset>
+					<maxOffset>
+						0.3
+						<!--BW_String-->
+					</maxOffset>
+					<trackPairIdx>0</trackPairIdx>
+				</node>
+				<node>
+					<name>Track_R5</name>
+					<collisionSamplesCount>1</collisionSamplesCount>
+					<isLeft>false</isLeft>
+					<minOffset>
+						-0.1
+						<!--BW_String-->
+					</minOffset>
+					<maxOffset>
+						0.3
+						<!--BW_String-->
+					</maxOffset>
+					<trackPairIdx>0</trackPairIdx>
+				</node>
 			</groundNodes>
 			<splineDesc>
 				<trackPair>
@@ -3722,13 +3992,19 @@
 					<springsLength>
 						<backwardMovement>
 							<back>0.128817</back>
-							<top>0.127413</top>
+							<top>
+								0.12
+								<!--BW_String-->
+							</top>
 							<front>0.124445</front>
 							<bottom>0.101532</bottom>
 						</backwardMovement>
 						<forwardMovement>
 							<back>0.123739</back>
-							<top>0.127413</top>
+							<top>
+								0.125
+								<!--BW_String-->
+							</top>
 							<front>0.129132</front>
 							<bottom>0.101532</bottom>
 						</forwardMovement>
@@ -3813,38 +4089,6 @@
 								</ySamples>
 							</part>
 						</top>
-						<bottom>
-							<part>
-								<xStart>-2.749145</xStart>
-								<xStep>
-									0.01
-									<!--BW_String-->
-								</xStep>
-								<ySamples>
-									0.486608 0.483355 0.480498 0.478027 0.475929 0.474198 0.472827
-									<!--BW_String-->
-								</ySamples>
-							</part>
-							<part>
-								<xStart>-2.689145</xStart>
-								<xStep>0.627972</xStep>
-								<ySamples>
-									0.472827 0.942454 0.780488 0.929436 0.941287 0.926973 0.935137 0.742295 1.10253 0.448242
-									<!--BW_String-->
-								</ySamples>
-							</part>
-							<part>
-								<xStart>2.962603</xStart>
-								<xStep>
-									0.01
-									<!--BW_String-->
-								</xStep>
-								<ySamples>
-									0.448242 0.448915 0.449933 0.4513 0.45302 0.455101 0.457549
-									<!--BW_String-->
-								</ySamples>
-							</part>
-						</bottom>
 					</collisionHull>
 					<sourceCollisionHullPoints>
 						<top>
@@ -4045,7 +4289,10 @@
 					<springsLength>
 						<backwardMovement>
 							<back>0.129929</back>
-							<top>0.127572</top>
+							<top>
+								0.12
+								<!--BW_String-->
+							</top>
 							<front>0.123679</front>
 							<bottom>0.101659</bottom>
 						</backwardMovement>
@@ -4054,7 +4301,10 @@
 								0.12446
 								<!--BW_String-->
 							</back>
-							<top>0.127572</top>
+							<top>
+								0.125
+								<!--BW_String-->
+							</top>
 							<front>0.128366</front>
 							<bottom>0.101659</bottom>
 						</forwardMovement>
@@ -4130,41 +4380,6 @@
 								</ySamples>
 							</part>
 						</top>
-						<bottom>
-							<part>
-								<xStart>-2.760895</xStart>
-								<xStep>
-									0.01
-									<!--BW_String-->
-								</xStep>
-								<ySamples>
-									0.49119 0.487449 0.484122 0.481195 0.478654 0.47649 0.474694
-									<!--BW_String-->
-								</ySamples>
-							</part>
-							<part>
-								<xStart>-2.700895</xStart>
-								<xStep>0.569865</xStep>
-								<ySamples>
-									0.474694 0.947426 0.783 0.932233 0.908361 0.932219 0.940944 0.926681 1.081 1.10254 0.452131
-									<!--BW_String-->
-								</ySamples>
-							</part>
-							<part>
-								<xStart>
-									2.99775
-									<!--BW_String-->
-								</xStart>
-								<xStep>
-									0.01
-									<!--BW_String-->
-								</xStep>
-								<ySamples>
-									0.452131 0.454035 0.456303 0.458944 0.461968 0.465388 0.469218
-									<!--BW_String-->
-								</ySamples>
-							</part>
-						</bottom>
 					</collisionHull>
 					<sourceCollisionHullPoints>
 						<top>

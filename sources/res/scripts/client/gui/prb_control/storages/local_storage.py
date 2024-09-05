@@ -82,6 +82,9 @@ class RecentPrbStorage(LocalStorage):
     def isModeSelected(self):
         return collectCanSelectPrbEntity(self._queueType)()
 
+    def clear(self):
+        self._queueType = QUEUE_TYPE.UNKNOWN
+
     def onAvatarBecomePlayer(self):
         arenaVisitor = createByAvatar()
         self._queueType = arenaVisitor.extra.queueType

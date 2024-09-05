@@ -110,7 +110,8 @@ class PreQueueFactory(ControlFactory):
             if not self.__defaultEntityHandler.isDefaultStillAvailable(lastBattleQueueType):
                 lastBattleQueueType = defaultQueueType
             if lastBattleQueueType == QUEUE_TYPE.STORY_MODE and defaultQueueType == QUEUE_TYPE.VERSUS_AI:
-                lastBattleQueueType = defaultQueueType
+                self.recentPrbStorage.clear()
+                return self.__createByQueueType(QUEUE_TYPE.VERSUS_AI)
             if lastBattleQueueType and self.recentPrbStorage.isModeSelected():
                 prbEntity = self.__createByQueueType(lastBattleQueueType)
                 if prbEntity:
