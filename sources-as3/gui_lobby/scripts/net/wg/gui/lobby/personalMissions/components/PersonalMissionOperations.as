@@ -114,7 +114,8 @@ package net.wg.gui.lobby.personalMissions.components
       
       private function updateSize() : void
       {
-         var _loc1_:String = calcPageHeightState(height);
+         var _loc1_:String = null;
+         _loc1_ = calcPageHeightState(height);
          if(this._pageHeightState != _loc1_)
          {
             this._pageHeightState = _loc1_;
