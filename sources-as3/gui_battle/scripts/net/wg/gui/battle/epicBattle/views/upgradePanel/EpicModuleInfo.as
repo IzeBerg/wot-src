@@ -167,9 +167,10 @@ package net.wg.gui.battle.epicBattle.views.upgradePanel
       
       private function updatePositions() : void
       {
+         var _loc3_:Rectangle = null;
          var _loc1_:Boolean = this._textOrientation == TEXT_ORIENTATION_LEFT;
          var _loc2_:Number = !!this._isBig ? Number(MODULE_BIG_OFFSET_X) : Number(MODULE_SMALL_OFFSET_X);
-         var _loc3_:Rectangle = this._module.getBounds(this._module);
+         _loc3_ = this._module.getBounds(this._module);
          var _loc4_:int = !!_loc1_ ? int(-_loc3_.width) : int(0);
          if(_loc1_)
          {
