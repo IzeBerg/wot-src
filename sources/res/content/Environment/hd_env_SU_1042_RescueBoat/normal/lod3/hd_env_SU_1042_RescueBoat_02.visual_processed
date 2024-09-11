@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd1</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						alphaReference
+						<Int>47</Int>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_SU_1042_RescueBoat/hd_env_su_1042_rescueboat_02_BAM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env_SU_1042_RescueBoat/hd_env_su_1042_rescueboat_02_BGMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_SU_1042_RescueBoat/hd_env_su_1042_rescueboat_02_BANM.dds</Texture>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>-0.276658 8.606958 6.378304</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-9.258259 -3.953470 -13.532442</min>
+		<max>8.752172 21.167387 26.288431</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>30368</geometrySize>
+	<minUVDensity>0.000138</minUVDensity>
+</root>

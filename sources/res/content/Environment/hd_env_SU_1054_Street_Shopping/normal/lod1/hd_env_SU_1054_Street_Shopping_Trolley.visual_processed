@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>hd_env_SU_1054_Street_Shopping_Trolley</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_module0</identifier>
+				<transform>
+					<row0>0.006251 0.012779 0.999899</row0>
+					<row1>0.053852 0.998463 -0.013097</row1>
+					<row2>-0.998529 0.053928 0.005553</row2>
+					<row3>0.000000 0.591650 0.000000</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>lod1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+				<node>
+					<identifier>n0</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>n1</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>d_metal0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>87</materialKind>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_SU_1054_Street_Shopping/hd_env_SU_1054_Street_Shopping_Trolley_AM.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env_SU_1054_Street_Shopping/hd_env_SU_1054_Street_Shopping_Trolley_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_SU_1054_Street_Shopping/hd_env_SU_1054_Street_Shopping_Trolley_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.015852 0.156590 -0.007340</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>n_metal0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>73</materialKind>
+					<collisionFlags>128</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_SU_1054_Street_Shopping/hd_env_SU_1054_Street_Shopping_Trolley_AM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env_SU_1054_Street_Shopping/hd_env_SU_1054_Street_Shopping_Trolley_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_SU_1054_Street_Shopping/hd_env_SU_1054_Street_Shopping_Trolley_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.131789 0.907886 0.000000</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>n_glass1</identifier>
+					<fx>shaders/std_effects/PBS_glass.fx</fx>
+					<materialKind>73</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						dirtAlbedoMap
+						<Texture>content/UniversalTextures/Universal_Glass_Forward_01_AM.dds</Texture>
+					</property>
+					<property>
+						g_filterColor
+						<Vector4>0.768627 0.768627 0.768627 1.000000</Vector4>
+					</property>
+					<property>
+						glassMap
+						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_Glass_03_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_Glass_03_ANM.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>0.006878 1.341688 0.000000</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.601904 -0.003157 -1.306779</min>
+		<max>0.793250 1.798764 1.306780</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>65922</geometrySize>
+	<minUVDensity>0.002337</minUVDensity>
+</root>

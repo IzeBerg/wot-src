@@ -72,8 +72,8 @@ from shared_utils import CONST_CONTAINER, BitmaskHelper
 from skeletons.account_helpers.settings_core import ISettingsCore
 from skeletons.connection_mgr import IConnectionManager
 from skeletons.gui.battle_matters import IBattleMattersController
-from skeletons.gui.game_control import IAnonymizerController, IBadgesController, IBattleRoyaleController, IBoostersController, IBootcampController, IChinaController, IClanNotificationController, IComp7Controller, IEpicBattleMetaGameController, IEventBattlesController, IFunRandomController, IGameSessionController, IIGRController, ILimitedUIController, IMapboxController, IMapsTrainingController, IPlatoonController, IRankedBattlesController, IServerStatsController, ISteamCompletionController, IWalletController, IWinbackController, IAchievements20Controller, IEarlyAccessController
-from skeletons.gui.game_control import IWotPlusController, IRacesBattleController
+from skeletons.gui.game_control import IAnonymizerController, IBadgesController, IBattleRoyaleController, IBoostersController, IBootcampController, IChinaController, IClanNotificationController, IComp7Controller, IEpicBattleMetaGameController, IEventBattlesController, IFunRandomController, IGameSessionController, IIGRController, ILimitedUIController, IMapboxController, IMapsTrainingController, IPlatoonController, IRankedBattlesController, IServerStatsController, ISteamCompletionController, IWalletController, IAchievements20Controller, IEarlyAccessController
+from skeletons.gui.game_control import IWotPlusController
 from skeletons.gui.goodies import IGoodiesCache
 from skeletons.gui.impl import IGuiLoader
 from skeletons.gui.lobby_context import ILobbyContext
@@ -248,9 +248,9 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
 
     ACCOUNT_SETTINGS_COUNTERS = (
      TABS.STORE,)
-    DESELECT_TAB_ALIASES = {
+    DESELECT_TAB_ALIASES = (
      VIEW_ALIAS.WIKI_VIEW,
-     R.views.lobby.maps_training.MapsTrainingPage()}
+     R.views.lobby.maps_training.MapsTrainingPage())
     _WULF_TO_TAB = {R.views.lobby.crew.BarracksView(): TABS.BARRACKS}
     _TAB_ALIAS_TO_RULE_ID = {TABS.STORE: LuiRules.LOBBY_HEADER_COUNTERS_STORE, 
        TABS.MISSIONS: LuiRules.LOBBY_HEADER_COUNTERS_MISSIONS, 
@@ -294,7 +294,6 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
     wgnpDemoAccCtrl = dependency.descriptor(IWGNPDemoAccRequestController)
     __comp7Controller = dependency.descriptor(IComp7Controller)
     _wotPlusCtrl = dependency.descriptor(IWotPlusController)
-    __winbackController = dependency.descriptor(IWinbackController)
     __achievements20Controller = dependency.descriptor(IAchievements20Controller)
     __limitedUIController = dependency.descriptor(ILimitedUIController)
     __earlyAccessController = dependency.descriptor(IEarlyAccessController)
@@ -1143,10 +1142,8 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
         isEventBattlesAvailable = self.__eventBattlesController.isEnabled()
         from cosmic_event.skeletons.battle_controller import ICosmicEventBattleController
         isCosmicEvtAvailable = dependency.instance(ICosmicEventBattleController).isEnabled
-        isRacesAvailable = dependency.instance(IRacesBattleController).isEnabled
         mapboxAvailable = self.__mapboxCtrl.isActive() and self.__mapboxCtrl.isInPrimeTime()
-        winbackAvailable = self.__winbackController.isModeAvailable()
-        return not self.bootcampController.isInBootcamp() and (self.rankedController.isAvailable() or self.__funRandomCtrl.subModesInfo.isAvailable() or isEpicBattleAvailabe or brAvailable or mapboxAvailable or isEventBattlesAvailable or winbackAvailable or isCosmicEvtAvailable or isRacesAvailable)
+        return not self.bootcampController.isInBootcamp() and (self.rankedController.isAvailable() or self.__funRandomCtrl.subModesInfo.isAvailable() or isEpicBattleAvailabe or brAvailable or mapboxAvailable or isEventBattlesAvailable or isCosmicEvtAvailable)
 
     def _updatePrebattleControls(self, *_):
         if self._isLobbyHeaderControlsDisabled:
@@ -1485,8 +1482,8 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
            'isTooltipSpecial': False, 
            'subValues': [
                        self.TABS.RESEARCH]}
-        if self.techTreeEventsListener.actions:
-            techTreeData['tooltip'] = TOOLTIPS_CONSTANTS.TECHTREE_DISCOUNT_INFO
+        if self.techTreeEventsListener.actions or self.__earlyAccessController.isQuestActive():
+            techTreeData['tooltip'] = TOOLTIPS_CONSTANTS.TECHTREE_EVENT_INFO
             techTreeData['isTooltipSpecial'] = True
             if self.techTreeEventsListener.getNations(unviewed=True):
                 techTreeData['actionIcon'] = backport.image(R.images.gui.maps.icons.library.discountIndicator())

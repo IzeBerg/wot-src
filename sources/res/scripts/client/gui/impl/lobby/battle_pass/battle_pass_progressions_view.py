@@ -185,7 +185,13 @@ class BattlePassProgressionsView(ViewImpl):
          (
           events.BattlePassEvent.BUYING_THINGS, self.__updateBuyButtonState, EVENT_BUS_SCOPE.LOBBY),
          (
-          events.CollectionsEvent.NEW_ITEM_SHOWN, self.__onCollectionsUpdated, EVENT_BUS_SCOPE.LOBBY))
+          events.CollectionsEvent.NEW_ITEM_SHOWN, self.__onCollectionsUpdated, EVENT_BUS_SCOPE.LOBBY),
+         (
+          events.BattlePassEvent.SHOW_BATTLE_PASS_AWARDS_VIDEO, self.__onShowBattlePassAwardsVideo,
+          EVENT_BUS_SCOPE.LOBBY))
+
+    def __onShowBattlePassAwardsVideo(self, *args):
+        self.destroy()
 
     def _getCallbacks(self):
         return (

@@ -80,15 +80,9 @@ package net.wg.gui.battle.components.preBattleTimer
          this._chainsVisibility = new Vector.<Boolean>(CHAINS_COUNT,true);
          this._chainsVisibility[0] = true;
          this._chainsVisibility[1] = true;
-         this._chains = this.createDigitChains();
-      }
-      
-      protected function createDigitChains() : Vector.<DigitsChain>
-      {
-         var _loc1_:Vector.<DigitsChain> = new Vector.<DigitsChain>(CHAINS_COUNT,true);
-         _loc1_[0] = new DigitsChain(new <DigitAnim>[this.secondUnit0,this.secondUnit1,this.secondUnit2,this.secondUnit3,this.secondUnit4,this.secondUnit5,this.secondUnit6,this.secondUnit7,this.secondUnit8,this.secondUnit9]);
-         _loc1_[1] = new DigitsChain(new <DigitAnim>[this.secondDecade0,this.secondDecade1,this.secondDecade2,this.secondDecade3,this.secondDecade4,this.secondDecade5,this.secondDecade6,this.secondDecade7,this.secondDecade8,this.secondDecade9]);
-         return _loc1_;
+         this._chains = new Vector.<DigitsChain>(CHAINS_COUNT,true);
+         this._chains[0] = new DigitsChain(new <DigitAnim>[this.secondUnit0,this.secondUnit1,this.secondUnit2,this.secondUnit3,this.secondUnit4,this.secondUnit5,this.secondUnit6,this.secondUnit7,this.secondUnit8,this.secondUnit9]);
+         this._chains[1] = new DigitsChain(new <DigitAnim>[this.secondDecade0,this.secondDecade1,this.secondDecade2,this.secondDecade3,this.secondDecade4,this.secondDecade5,this.secondDecade6,this.secondDecade7,this.secondDecade8,this.secondDecade9]);
       }
       
       override protected function onDispose() : void

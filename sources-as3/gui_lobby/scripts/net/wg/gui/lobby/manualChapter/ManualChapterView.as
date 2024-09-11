@@ -76,7 +76,7 @@ package net.wg.gui.lobby.manualChapter
       
       private static const OUT_LABEL:String = "out";
       
-      private static const MAX_PAGES:int = 20;
+      private static const MAX_PAGES:int = 21;
       
       private static const PAGES_GAP:int = -8;
        

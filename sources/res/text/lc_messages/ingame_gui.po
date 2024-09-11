@@ -26,6 +26,12 @@ msgstr ", чтобы отметить позицию или установить
 msgid "battleCommunication/hint/press"
 msgstr "Нажмите"
 
+msgid "battleEndWarning/comp7_1/text"
+msgstr "Защищайте обе базы! До конца боя:"
+
+msgid "battleEndWarning/comp7_2/text"
+msgstr "Захватите базу противника! До конца боя:"
+
 msgid "battleEndWarning/text"
 msgstr "До конца боя:"
 
@@ -360,6 +366,9 @@ msgstr "ББ"
 msgid "damageLog/shellType/ARMOR_PIERCING_CR"
 msgstr "БП"
 
+msgid "damageLog/shellType/ARMOR_PIERCING_FSDS"
+msgstr "БОПС"
+
 msgid "damageLog/shellType/ARMOR_PIERCING_HE"
 msgstr "ОФ"
 
@@ -561,14 +570,26 @@ msgstr "приборы наблюдения"
 msgid "devices/track"
 msgstr "%(type)s гусеница"
 
+msgid "devices/track/back"
+msgstr "задняя"
+
+msgid "devices/track/front"
+msgstr "передняя"
+
+msgid "devices/track/inner"
+msgstr "внутренняя"
+
 msgid "devices/track/left"
 msgstr "левая"
 
 msgid "devices/track/main"
-msgstr "резервная"
+msgstr "основная"
 
 msgid "devices/track/outer"
-msgstr "основная"
+msgstr "внешняя"
+
+msgid "devices/track/reserve"
+msgstr "резервная"
 
 msgid "devices/track/right"
 msgstr "правая"
@@ -1329,7 +1350,7 @@ msgid "player_messages/DEATH_FROM_SHOT_ALLY_ENEMY_COMP7"
 msgstr "%(attacker)s уничтожил %(target)s (Огневая поддержка)."
 
 msgid "player_messages/DEATH_FROM_SHOT_ALLY_ENEMY_POI"
-msgstr "%(attacker)s уничтожил %(target)s (Артудар)."
+msgstr "%(attacker)s уничтожил %(target)s (Минное поле)."
 
 msgid "player_messages/DEATH_FROM_SHOT_ALLY_SUICIDE"
 msgstr "Союзник %(target)s самоуничтожился."
@@ -1353,7 +1374,7 @@ msgid "player_messages/DEATH_FROM_SHOT_ENEMY_ALLY_COMP7"
 msgstr "%(attacker)s уничтожил %(target)s (Огневая поддержка)."
 
 msgid "player_messages/DEATH_FROM_SHOT_ENEMY_ALLY_POI"
-msgstr "%(attacker)s уничтожил %(target)s (Артудар)."
+msgstr "%(attacker)s уничтожил %(target)s (Минное поле)."
 
 msgid "player_messages/DEATH_FROM_SHOT_ENEMY_ENEMY"
 msgstr "Противник %(attacker)s уничтожил противника %(target)s."
@@ -2701,6 +2722,9 @@ msgstr "%(caliber)s мм бронебойный снаряд %(userString)s"
 
 msgid "shells_kinds/ARMOR_PIERCING_CR"
 msgstr "%(caliber)s мм бронебойный подкалиберный снаряд %(userString)s"
+
+msgid "shells_kinds/ARMOR_PIERCING_FSDS"
+msgstr "%(caliber)s мм БОПС %(userString)s"
 
 msgid "shells_kinds/ARMOR_PIERCING_HE"
 msgstr "%(caliber)s мм бронебойный каморный снаряд %(userString)s"

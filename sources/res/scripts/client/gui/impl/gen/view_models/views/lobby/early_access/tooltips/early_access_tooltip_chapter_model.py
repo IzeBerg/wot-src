@@ -12,7 +12,7 @@ class TooltipChapterState(Enum):
 class EarlyAccessTooltipChapterModel(ViewModel):
     __slots__ = ()
 
-    def __init__(self, properties=8, commands=0):
+    def __init__(self, properties=10, commands=0):
         super(EarlyAccessTooltipChapterModel, self).__init__(properties=properties, commands=commands)
 
     def getId(self):
@@ -63,6 +63,18 @@ class EarlyAccessTooltipChapterModel(ViewModel):
     def setMaxVehicleLvl(self, value):
         self._setNumber(7, value)
 
+    def getVehicleType(self):
+        return self._getString(8)
+
+    def setVehicleType(self, value):
+        self._setString(8, value)
+
+    def getNation(self):
+        return self._getString(9)
+
+    def setNation(self, value):
+        self._setString(9, value)
+
     def _initialize(self):
         super(EarlyAccessTooltipChapterModel, self)._initialize()
         self._addStringProperty('id', '')
@@ -73,3 +85,5 @@ class EarlyAccessTooltipChapterModel(ViewModel):
         self._addNumberProperty('lockedUntilQuestsComplete', 0)
         self._addNumberProperty('minVehicleLvl', 0)
         self._addNumberProperty('maxVehicleLvl', 10)
+        self._addStringProperty('vehicleType', '')
+        self._addStringProperty('nation', '')

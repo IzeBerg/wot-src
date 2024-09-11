@@ -1,11 +1,13 @@
-import weakref
-from typing import Union
+import typing, weakref
 from gui.server_events import formatters, conditions
 from gui.server_events.conditions import _Cumulativable, CumulativeResult, _ConditionsGroup
 from gui.shared.utils.requesters import REQ_CRITERIA
 from helpers import dependency
 from skeletons.gui.shared import IItemsCache
 from soft_exception import SoftException
+if typing.TYPE_CHECKING:
+    from typing import Optional, Tuple, Union
+    from gui.shared.gui_items.Vehicle import Vehicle
 
 class ConditionsParser(object):
     LOGICAL_OPS = {'and': conditions.AndGroup, 
@@ -113,6 +115,10 @@ class AccountRequirements(ConditionsParser):
             return conditions.VehiclesUnlocked(uniqueName, data)
         if name == 'vehiclesOwned':
             return conditions.VehiclesOwned(uniqueName, data)
+        if name == 'activeProgression':
+            return conditions.VersusAIProgression(uniqueName, data)
+        if name == 'quest':
+            return conditions.QuestCondition(uniqueName, data)
 
     def isAvailable(self):
         conds = self.getConditions()
@@ -175,7 +181,7 @@ class VehicleRequirements(ConditionsParser):
         if self._suitableVehicles is None:
             invVehs = self.itemsCache.items.getVehicles(REQ_CRITERIA.INVENTORY)
             isAvailable = self.isAvailable
-            self._suitableVehicles = [ vehicleItem for vehicleItem in invVehs.itervalues() if isAvailable(vehicleItem) ]
+            self._suitableVehicles = tuple([ vehicleItem.intCD for vehicleItem in invVehs.itervalues() if isAvailable(vehicleItem) ])
         return self._suitableVehicles
 
     def _handleCondition(self, name, data, uniqueName, group):

@@ -52,16 +52,27 @@ class VehiclePreviewModulesTab(VehiclePreviewModulesTabMeta):
             else:
                 makeTextData = (
                  textRes.Label, iconRes.info, text_styles.stats)
-            tooltip = TOOLTIPS.VEHICLEPREVIEW_MODULS
+            if cls.__isEarlyAccessVehicle():
+                tooltip = TOOLTIPS.VEHICLEPREVIEW_MODULS_EARLYACCESS
+            else:
+                tooltip = TOOLTIPS.VEHICLEPREVIEW_MODULS
         else:
             makeTextData = (
              textRes.noModulesOptions, iconRes.info, text_styles.stats)
-            tooltip = TOOLTIPS.VEHICLEPREVIEW_MODULSNOMODULES
+            tooltip = TOOLTIPS.VEHICLEPREVIEW_MODULS_NOMODULES
         return (
          _makeStatusText(*makeTextData),
          tooltip,
          g_currentPreviewVehicle.getVehiclePreviewType(),
          cls.__needToShowAnim())
+
+    @staticmethod
+    def __isEarlyAccessVehicle():
+        vehicle = g_currentPreviewVehicle.item
+        if vehicle is not None:
+            return vehicle.isEarlyAccess
+        else:
+            return False
 
     @staticmethod
     def __needToShowAnim():

@@ -139,6 +139,7 @@
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_shells_detonation_medium.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_town_bench_des.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/smoke_3.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/inf_tree_apple_fall_med.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/inf_tree_bush_dry_fall.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/inf_tree_bush_dry_fall_big.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/inf_tree_bush_dry_fall_small.vfx</fn_effect_bin>
@@ -154,8 +155,6 @@
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/inf_tree_chestnut_touchdown_med.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/inf_tree_oak_dry_fall_med.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/inf_tree_oak_dry_touchdown_med.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/tree_Apple_8m_Classic_fall.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/tree_Apple_8m_Classic_touchdown.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/tree_ivy_fall.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/tree_ivy_touchdown.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Conifers/inf_tree_scots_pine_fall_big.vfx</fn_effect_bin>
@@ -163,6 +162,7 @@
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Conifers/tree_Cypress_regular_6m_touchdown.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Conifers/tree_Spruce_24m_fall.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Conifers/tree_Spruce_24m_touchdown.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/inf_appletree_touchdown.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/inf_deadtree_fall.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/inf_deadtree_touchdown.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Sparks/sparks_env_med.vfx</fn_effect_bin>
@@ -263,6 +263,7 @@
 		<fn_effect_bin>particles/Environment/objects/inf_rw007_Tupik.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_shells_detonation_medium.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_town_bench_des.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/trees/broadleaves/inf_tree_apple_fall_med.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_bush_dry_fall.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_bush_dry_fall_big.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_bush_dry_fall_small.eff</fn_effect_bin>
@@ -278,8 +279,6 @@
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_chestnut_touchdown_med.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_oak_dry_fall_med.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_oak_dry_touchdown_med.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/trees/Broadleaves/tree_Apple_8m_Classic_fall.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/trees/Broadleaves/tree_Apple_8m_Classic_touchdown.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/tree_ivy_fall.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/tree_ivy_touchdown.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Conifers/inf_tree_scots_pine_fall_big.eff</fn_effect_bin>
@@ -287,9 +286,9 @@
 		<fn_effect_bin>particles/Environment/trees/Conifers/tree_Cypress_regular_6m_touchdown.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Conifers/tree_Spruce_24m_fall.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Conifers/tree_Spruce_24m_touchdown.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/trees/inf_appletree_touchdown.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/inf_deadtree_fall.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/inf_deadtree_touchdown.eff</fn_effect_bin>
-		<preloadVisual>particles/mesh_particles/stone_brick_01.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/stone_brick_03.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/stone_concrete_01.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/stone_concrete_03.visual</preloadVisual>
@@ -471,6 +470,7 @@
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_shells_detonation_medium.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_town_bench_des.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/smoke_3.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/inf_tree_apple_fall_med.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/inf_tree_bush_dry_fall.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/inf_tree_bush_dry_fall_big.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/inf_tree_bush_dry_fall_small.vfx</fn_effect_bin>
@@ -486,8 +486,6 @@
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/inf_tree_chestnut_touchdown_med.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/inf_tree_oak_dry_fall_med.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/inf_tree_oak_dry_touchdown_med.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/tree_Apple_8m_Classic_fall.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/tree_Apple_8m_Classic_touchdown.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/tree_ivy_fall.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/tree_ivy_touchdown.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Conifers/inf_tree_scots_pine_fall_big.vfx</fn_effect_bin>
@@ -495,6 +493,7 @@
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Conifers/tree_Cypress_regular_6m_touchdown.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Conifers/tree_Spruce_24m_fall.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Conifers/tree_Spruce_24m_touchdown.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/inf_appletree_touchdown.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/inf_deadtree_fall.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/inf_deadtree_touchdown.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Sparks/sparks_env_med.vfx</fn_effect_bin>
@@ -595,6 +594,7 @@
 		<fn_effect_bin>particles/Environment/objects/inf_rw007_Tupik.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_shells_detonation_medium.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_town_bench_des.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/trees/broadleaves/inf_tree_apple_fall_med.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_bush_dry_fall.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_bush_dry_fall_big.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_bush_dry_fall_small.eff</fn_effect_bin>
@@ -610,8 +610,6 @@
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_chestnut_touchdown_med.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_oak_dry_fall_med.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_oak_dry_touchdown_med.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/trees/Broadleaves/tree_Apple_8m_Classic_fall.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/trees/Broadleaves/tree_Apple_8m_Classic_touchdown.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/tree_ivy_fall.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/tree_ivy_touchdown.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Conifers/inf_tree_scots_pine_fall_big.eff</fn_effect_bin>
@@ -619,9 +617,9 @@
 		<fn_effect_bin>particles/Environment/trees/Conifers/tree_Cypress_regular_6m_touchdown.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Conifers/tree_Spruce_24m_fall.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Conifers/tree_Spruce_24m_touchdown.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/trees/inf_appletree_touchdown.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/inf_deadtree_fall.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/inf_deadtree_touchdown.eff</fn_effect_bin>
-		<preloadVisual>particles/mesh_particles/stone_brick_01.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/stone_brick_03.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/stone_concrete_01.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/stone_concrete_03.visual</preloadVisual>

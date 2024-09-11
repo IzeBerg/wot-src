@@ -195,6 +195,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.carousels.interfaces.IScrollerViewPort;
    import net.wg.gui.components.carousels.interfaces.IScrollerViewPortBase;
    import net.wg.gui.components.common.AlphaPropertyWrapper;
+   import net.wg.gui.components.common.ContentLoader;
    import net.wg.gui.components.common.Counter;
    import net.wg.gui.components.common.CounterBase;
    import net.wg.gui.components.common.CounterLabel;
@@ -1296,6 +1297,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_COMPONENTS_CAROUSELS_INTERFACES_ISCROLLERVIEWPORTBASE:Class = IScrollerViewPortBase;
       
       public static const NET_WG_GUI_COMPONENTS_COMMON_ALPHAPROPERTYWRAPPER:Class = AlphaPropertyWrapper;
+      
+      public static const NET_WG_GUI_COMPONENTS_COMMON_CONTENTLOADER:Class = ContentLoader;
       
       public static const NET_WG_GUI_COMPONENTS_COMMON_COUNTER:Class = Counter;
       

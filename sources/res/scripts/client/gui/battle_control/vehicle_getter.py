@@ -1,9 +1,11 @@
-from items.vehicles import VEHICLE_TAGS
+from items.vehicle_items import CHASSIS_ITEM_TYPE
+from items.vehicles import VEHICLE_TAGS, VehicleDescr
 from collections import defaultdict
 from gui import TANKMEN_ROLES_ORDER_DICT
 from gui.battle_control import avatar_getter
 from gui.shared.gui_items.Vehicle import VEHICLE_CLASS_NAME
-from gui.battle_control.battle_constants import VEHICLE_DEVICES, VEHICLE_GUI_ITEMS, VEHICLE_COMPLEX_ITEMS, VEHICLE_INDICATOR_TYPE, AUTO_ROTATION_FLAG, WHEELED_VEHICLE_DEVICES, WHEELED_VEHICLE_GUI_ITEMS, TRACK_WITHIN_TRACK_DEVICES
+from gui.battle_control.battle_constants import VEHICLE_DEVICES, VEHICLE_GUI_ITEMS, VEHICLE_COMPLEX_ITEMS, VEHICLE_INDICATOR_TYPE, AUTO_ROTATION_FLAG, WHEELED_VEHICLE_DEVICES, WHEELED_VEHICLE_GUI_ITEMS, TRACK_WITHIN_TRACK_DEVICES, VEHICLE_CHASSIS_INDICATOR_POSTFIX
+from debug_utils import LOG_WARNING
 _COATED_OPTICS_TAG = 'coatedOptics'
 
 def hasTurretRotator(vDesc):
@@ -28,6 +30,13 @@ def isTrackWithinTrackTech(vDesc):
         return vDesc.isTrackWithinTrack
 
 
+def isMultiTrackTech(vDesc):
+    if vDesc is None:
+        return False
+    else:
+        return vDesc.isMultiTrack
+
+
 def getYawLimits(vDesc):
     if vDesc is None:
         return
@@ -39,20 +48,32 @@ def hasYawLimits(vDesc):
     return getYawLimits(vDesc) is not None
 
 
+def getNoTurretRotatorIndicatorType(vDesc):
+    tags = vDesc.type.tags
+    if VEHICLE_TAGS.FLAMETHROWER in tags:
+        return VEHICLE_INDICATOR_TYPE.AT_SPG
+    if VEHICLE_CLASS_NAME.SPG in tags:
+        return VEHICLE_INDICATOR_TYPE.SPG
+    return VEHICLE_INDICATOR_TYPE.AT_SPG
+
+
+def getChassisIndicatorType(indicatorType, vDesc):
+    newIndicatorType = indicatorType + VEHICLE_CHASSIS_INDICATOR_POSTFIX.get(vDesc.chassisType, '')
+    if not VEHICLE_INDICATOR_TYPE.hasValue(newIndicatorType):
+        LOG_WARNING('Unknown indicatorType:', newIndicatorType)
+    else:
+        return newIndicatorType
+
+
 def getVehicleIndicatorType(vDesc):
     if vDesc is None:
         return VEHICLE_INDICATOR_TYPE.DEFAULT
     else:
-        iType = VEHICLE_INDICATOR_TYPE.DEFAULT
-        if not hasTurretRotator(vDesc):
-            tags = vDesc.type.tags
-            if VEHICLE_TAGS.FLAMETHROWER in tags:
-                iType = VEHICLE_INDICATOR_TYPE.AT_SPG
-            elif VEHICLE_CLASS_NAME.SPG in tags:
-                iType = VEHICLE_INDICATOR_TYPE.SPG
-            else:
-                iType = VEHICLE_INDICATOR_TYPE.AT_SPG
-        return iType
+        if vDesc.isWheeledVehicle:
+            return VEHICLE_INDICATOR_TYPE.WHEEL
+        indicatorType = (hasTurretRotator(vDesc) or getNoTurretRotatorIndicatorType)(vDesc) if 1 else VEHICLE_INDICATOR_TYPE.DEFAULT
+        indicatorType = getChassisIndicatorType(indicatorType, vDesc) if vDesc.chassisType != CHASSIS_ITEM_TYPE.MONOLITHIC else indicatorType
+        return indicatorType
 
 
 def getAutoRotationFlag(vDesc):
@@ -155,7 +176,7 @@ class VehicleDeviceStatesIterator(object):
         self._hasTurret = hasTurretRotator(vDesc)
         if isWheeledTech(vDesc):
             self._devices = list(devices or WHEELED_VEHICLE_DEVICES)
-        elif isTrackWithinTrackTech(vDesc):
+        elif isTrackWithinTrackTech(vDesc) or isMultiTrackTech(vDesc):
             self._devices = list(devices or TRACK_WITHIN_TRACK_DEVICES)
         else:
             self._devices = list(devices or VEHICLE_DEVICES)

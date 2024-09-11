@@ -73,6 +73,8 @@ package net.wg.gui.lobby.hangar.quests
       
       private var _isInited:Boolean = false;
       
+      private var _minContainerX:int = 0;
+      
       public function HeaderQuestsContainer()
       {
          this._questsMap = new Dictionary();
@@ -208,20 +210,9 @@ package net.wg.gui.lobby.hangar.quests
          this.doUpdates(param1.getQuests,param1.groupIcon);
       }
       
-      private function addMask(param1:IQuestInformerButton, param2:int) : void
+      public function getMinX() : int
       {
-         this._maskMc = App.utils.classFactory.getComponent(Aliases.HEADER_QUEST_FLAG_MASK,Sprite);
-         this._maskMc.x = param2;
-         if(this._isRightSide)
-         {
-            this._maskMc.x += HEADER_QUESTS_CONSTANTS.QUEST_BUTTONS_GROUP_STEP - this._maskMc.width;
-         }
-         else
-         {
-            this._maskMc.x += HEADER_QUESTS_CONSTANTS.QUEST_BUTTONS_MASK_X_SHIFT_COLLAPSE;
-         }
-         addChild(this._maskMc);
-         param1.mask = this._maskMc;
+         return this._minContainerX + x;
       }
       
       private function doUpdates(param1:Vector.<HeaderQuestsVO>, param2:String) : void
@@ -259,7 +250,7 @@ package net.wg.gui.lobby.hangar.quests
                _loc6_ = param1[_loc7_];
                _loc3_.name = _loc6_.questType;
                _loc3_.setData(_loc6_,this._isRightSide);
-               this.initQuestFlag(_loc3_,_loc7_,_loc7_ == _loc5_);
+               this.initQuestFlag(_loc3_,_loc7_,(_loc5_ - _loc7_) * GROUPED_FLAG_START_Y,_loc7_ == _loc5_);
                this._questsMap[_loc6_.questType] = _loc3_;
                addChild(DisplayObject(_loc3_));
                this._isAllQuestsItemsDisabled = this._isAllQuestsItemsDisabled && !_loc6_.enable;
@@ -298,9 +289,8 @@ package net.wg.gui.lobby.hangar.quests
          }
       }
       
-      private function initQuestFlag(param1:IQuestInformerButton, param2:int, param3:Boolean) : void
+      private function initQuestFlag(param1:IQuestInformerButton, param2:int, param3:int = 0, param4:Boolean = false) : void
       {
-         var _loc4_:int = 0;
          var _loc5_:int = 0;
          var _loc6_:int = 0;
          param1.addEventListener(ButtonEvent.CLICK,this.onQuestFlagClickHandler);
@@ -308,34 +298,66 @@ package net.wg.gui.lobby.hangar.quests
          this._questsInformers.push(param1);
          if(this._isSingle)
          {
-            _loc4_ = Values.ZERO;
-            _loc5_ = Values.ZERO;
-            _loc6_ = Values.ZERO;
+            if(this._isRightSide)
+            {
+               _loc5_ = _loc6_ = Values.ZERO;
+            }
+            else
+            {
+               _loc5_ = _loc6_ = -HEADER_QUESTS_CONSTANTS.QUEST_BUTTONS_STEP;
+            }
          }
          else
          {
-            _loc4_ = param2 * HEADER_QUESTS_CONSTANTS.QUEST_BUTTONS_GROUP_STEP * (!!this._isRightSide ? 1 : -1);
             if(this._isRightSide)
             {
-               _loc4_ -= HEADER_QUESTS_CONSTANTS.QUEST_BUTTONS_GROUP_STEP;
+               _loc5_ = param2 * HEADER_QUESTS_CONSTANTS.QUEST_BUTTONS_GROUP_STEP;
             }
-            _loc5_ = !param3 ? int(GROUPED_FLAG_START_Y) : int(0);
-            _loc6_ = param2 * HEADER_QUESTS_CONSTANTS.QUEST_BUTTONS_STEP * (!!this._isRightSide ? 1 : -1);
-            if(!param3)
+            else
             {
-               this.addMask(param1,_loc4_);
+               _loc5_ = -HEADER_QUESTS_CONSTANTS.QUEST_BUTTONS_STEP - param2 * HEADER_QUESTS_CONSTANTS.QUEST_BUTTONS_GROUP_STEP;
+            }
+            _loc6_ = (param2 + (!!this._isRightSide ? 0 : 1)) * HEADER_QUESTS_CONSTANTS.QUEST_BUTTONS_STEP * (!!this._isRightSide ? 1 : -1);
+            if(!param4)
+            {
+               this.addMask(param1,_loc5_);
             }
             param1.hideContent(true,0);
          }
-         param1.x = _loc4_;
-         param1.y = _loc5_;
-         param1.setCollapsePoint(_loc4_,_loc5_);
+         param1.x = _loc5_;
+         param1.y = param3;
+         param1.setCollapsePoint(_loc5_,param3);
          param1.setExpandPoint(_loc6_,Values.ZERO);
+         if(this._minContainerX > _loc6_)
+         {
+            this._minContainerX = _loc6_;
+         }
+      }
+      
+      private function addMask(param1:IQuestInformerButton, param2:int) : void
+      {
+         this._maskMc = App.utils.classFactory.getComponent(Aliases.HEADER_QUEST_FLAG_MASK,Sprite);
+         this._maskMc.x = param2;
+         if(this._isRightSide)
+         {
+            this._maskMc.x += HEADER_QUESTS_CONSTANTS.QUEST_BUTTONS_GROUP_STEP - this._maskMc.width;
+         }
+         else
+         {
+            this._maskMc.x += HEADER_QUESTS_CONSTANTS.QUEST_BUTTONS_MASK_X_SHIFT_COLLAPSE;
+         }
+         addChild(this._maskMc);
+         param1.mask = this._maskMc;
       }
       
       private function getQuestInformerByType(param1:String) : IQuestInformerButton
       {
          return param1 in this._questsMap ? this._questsMap[param1] : null;
+      }
+      
+      private function onLastItemAnimationComplete() : void
+      {
+         dispatchEvent(new HeaderQuestsEvent(HeaderQuestsEvent.ANIM_END,Values.EMPTY_STR,Values.EMPTY_STR,this._isAllQuestsItemsDisabled,this._isSingle));
       }
       
       private function onAnimQuests(param1:Vector.<IQuestInformerButton>, param2:Boolean) : void
@@ -363,7 +385,7 @@ package net.wg.gui.lobby.hangar.quests
                {
                   animFlagContent(_loc4_,param2,_loc8_);
                }
-               this.addAnimItem(_loc4_,_loc5_);
+               this.addAnimItem(_loc4_,_loc5_,_loc8_ == _loc7_ ? this.onLastItemAnimationComplete : null);
                if(_loc4_.mask)
                {
                   if(param2)
@@ -394,9 +416,9 @@ package net.wg.gui.lobby.hangar.quests
          }
       }
       
-      private function addAnimItem(param1:Object, param2:Point) : void
+      private function addAnimItem(param1:Object, param2:Point, param3:Function = null) : void
       {
-         var _loc3_:Tween = new Tween(TWEEN_DURATION,param1,{
+         var _loc4_:Tween = new Tween(TWEEN_DURATION,param1,{
             "x":param2.x,
             "y":param2.y
          },{
@@ -404,9 +426,9 @@ package net.wg.gui.lobby.hangar.quests
             "ease":Quartic.easeOut,
             "delay":0,
             "fastTransform":false,
-            "onComplete":null
+            "onComplete":param3
          });
-         this._itemsTween.push(_loc3_);
+         this._itemsTween.push(_loc4_);
       }
       
       private function clearTweens() : void

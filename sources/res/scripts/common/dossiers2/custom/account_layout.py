@@ -354,7 +354,8 @@ _SINGLE_ACHIEVEMENTS_VALUES = [
  'comp7_3_2', 'NY24_AtmsphrLevel', 'comp7_3_3', 'comp7_3_3_champion', 'comp7_3_3_legend',
  'BattlePassCommonPr_13', 'hb24Medal', 'BattlePassCommonPr_14', 'comp7_3_4',
  'comp7_3_4_champion', 'comp7_3_4_legend', 'BattlePassCommonPr_14_Marathon',
- 'races24FirstPlace', 'races24Progression']
+ 'races24FirstPlace', 'races24Progression', 'comp7_4_1', 'comp7_4_1_champion',
+ 'comp7_4_1_legend', 'BattlePassCommonPr_15']
 _singleAchievementsPopUps = [
  'titleSniper', 'invincible', 'diehard', 'handOfDeath',
  'armorPiercer', 'battleCitizen', 'WFC2014', 'tacticalBreakthrough', 'aimer',
@@ -413,7 +414,8 @@ _singleAchievementsPopUps = [
  'comp7_3_2', 'NY24_AtmsphrLevel', 'comp7_3_3', 'comp7_3_3_champion', 'comp7_3_3_legend',
  'BattlePassCommonPr_13', 'hb24Medal', 'BattlePassCommonPr_14', 'comp7_3_4',
  'comp7_3_4_champion', 'comp7_3_4_legend', 'BattlePassCommonPr_14_Marathon',
- 'races24FirstPlace', 'races24Progression']
+ 'races24FirstPlace', 'races24Progression', 'comp7_4_1', 'comp7_4_1_champion',
+ 'comp7_4_1_legend', 'BattlePassCommonPr_15']
 _singleAchievementsBlockBuilder = BinarySetDossierBlockBuilder('singleAchievements', _SINGLE_ACHIEVEMENTS_VALUES, SINGLE_ACHIEVEMENTS_DEPENDENCIES, _singleAchievementsPopUps)
 FORT_ACHIEVEMENTS_BLOCK_LAYOUT = [
  'conqueror', 'fireAndSword', 'crusher', 'counterblow', 'kampfer', 'soldierOfFortune']

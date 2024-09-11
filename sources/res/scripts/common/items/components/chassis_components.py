@@ -10,17 +10,17 @@ __all__ = ('Wheel', 'WheelGroup', 'TrackPair', 'TrackNode', 'TrackBasicVisualPar
            'SplineSegmentModelSet')
 Wheel = reflectedNamedTuple('Wheel', ('index', 'isLeft', 'radius', 'nodeName', 'isLeading',
                                       'leadingSyncAngle', 'hitTesterManager', 'materials',
-                                      'position'))
+                                      'position', 'trackPairIndex'))
 Wheel.hitTester = property(lambda self: self.hitTesterManager.activeHitTester)
 WheelGroup = reflectedNamedTuple('WheelGroup', ('isLeft', 'template', 'count', 'startIndex',
-                                                'radius'))
+                                                'radius', 'trackPairIndex'))
 WheelsConfig = reflectedNamedTuple('WheelsConfig', ('groups', 'wheels'))
-TrackPair = namedtuple('TrackPair', ('hitTesterManager', 'materials', 'healthParams',
-                                     'breakMode'))
+TrackPair = namedtuple('TrackPair', ('hitTesterManager', 'materials', 'healthParams'))
 TrackPair.hitTester = property(lambda self: self.hitTesterManager.activeHitTester)
 TrackNode = reflectedNamedTuple('TrackNode', ('name', 'isLeft', 'initialOffset', 'leftNodeName',
                                               'rightNodeName', 'damping', 'elasticity',
-                                              'forwardElasticityCoeff', 'backwardElasticityCoeff'))
+                                              'forwardElasticityCoeff', 'backwardElasticityCoeff',
+                                              'trackPairIndex'))
 TrackBasicVisualParams = reflectedNamedTuple('TrackBasicVisualParams', ('lodDist',
                                                                         'trackPairs'))
 TrackPairParams = reflectedNamedTuple('TrackPairParams', ('leftMaterial', 'rightMaterial',
@@ -29,16 +29,20 @@ TrackPairDebris = reflectedNamedTuple('TrackPairDebris', ('left', 'right'))
 TrackDebrisParams = reflectedNamedTuple('TrackDebrisParams', ('destructionEffect',
                                                               'physicalParams', 'destructionEffectData',
                                                               'nodesRemap'))
-TrackSplineParams = reflectedNamedTuple('TrackSplineParams', ('thickness', 'maxAmplitude',
-                                                              'maxOffset', 'gravity'))
-GroundNode = namedtuple('GroundNode', ('nodeName', 'affectedWheelName', 'isLeft', 'minOffset',
-                                       'maxOffset', 'collisionSamplesCount', 'hasLiftMode'))
+TrackSplineParams = reflectedNamedTuple('TrackSplineParams', ('trackPairIdx', 'thickness',
+                                                              'maxAmplitude', 'maxOffset',
+                                                              'gravity'))
+GroundNodesParams = reflectedNamedTuple('GroundNodesParams', ('groundNodes', ))
+GroundNode = reflectedNamedTuple('GroundNode', ('nodeName', 'affectedWheelName', 'isLeft',
+                                                'minOffset', 'maxOffset', 'collisionSamplesCount',
+                                                'hasLiftMode', 'trackPairIdx'))
 GroundNodeGroup = namedtuple('GroundNodeGroup', ('isLeft', 'minOffset', 'maxOffset',
                                                  'nodesTemplate', 'affectedWheelsTemplate',
                                                  'nodesCount', 'startIndex', 'collisionSamplesCount',
-                                                 'hasLiftMode'))
-Traces = reflectedNamedTuple('Traces', ('lodDist', 'bufferPrefs', 'textureSet', 'centerOffset',
-                                        'size', 'activePostmortem'))
+                                                 'hasLiftMode', 'trackPairIdx'))
+TracesConfig = reflectedNamedTuple('TracesConfig', ('tracesParams', 'lodDist', 'activePostmortem'))
+Traces = reflectedNamedTuple('Traces', ('bufferPrefs', 'textureSet', 'centerOffset',
+                                        'centerOffsetFactor', 'offset', 'size', 'trackPairIdx'))
 LeveredSuspensionConfig = reflectedNamedTuple('LeveredSuspensionConfig', ('levers',
                                                                           'interpolationSpeedMul',
                                                                           'lodSettings',

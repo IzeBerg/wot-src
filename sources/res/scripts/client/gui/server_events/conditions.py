@@ -1,5 +1,6 @@
 import logging, operator, typing, weakref
 from abc import ABCMeta, abstractmethod, abstractproperty
+from collections import namedtuple
 import constants
 from constants import ATTACK_REASON, ATTACK_REASONS
 from debug_utils import LOG_WARNING
@@ -13,12 +14,13 @@ from gui.shared.utils.requesters.ItemsRequester import RESEARCH_CRITERIA
 from helpers import i18n, dependency, getLocalizedData
 from items import vehicles
 from shared_utils import CONST_CONTAINER
-from skeletons.gui.game_control import IIGRController, IWotPlusController
+from skeletons.gui.game_control import IIGRController, IWotPlusController, IWinbackController
 from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
 from soft_exception import SoftException
 if typing.TYPE_CHECKING:
-    from typing import Optional
+    from typing import Any, Dict, Optional, List, Callable, Tuple
+    from gui.shared.utils.requesters.ItemsRequester import RequestCriteria
 _logger = logging.getLogger(__name__)
 _AVAILABLE_GUI_TYPES_LABELS = {constants.ARENA_BONUS_TYPE.REGULAR: constants.ARENA_GUI_TYPE.RANDOM, 
    constants.ARENA_BONUS_TYPE.TRAINING: constants.ARENA_GUI_TYPE.TRAINING, 
@@ -122,9 +124,19 @@ def _getCustomDescriptionValueFromConditionData(conditionData):
     return _getCustomTitleValueFromConditionData(conditionData)
 
 
-def _prepareVehData(vehsList, predicate=None):
+_VehicleData = namedtuple('_VehicleData', 'isAvailable, discountValue, discountType')
+
+def _prepareVehData(vehIntCDsList, predicate=None):
     predicate = predicate or (lambda *args: True)
-    return [ (v, (not v.isInInventory or predicate(v), None, None)) for v in vehsList ]
+    items = dependency.instance(IItemsCache).items
+    result = []
+    for vehIntCD in vehIntCDsList:
+        vehicle = items.getItemByCD(vehIntCD)
+        result.append((
+         vehicle,
+         _VehicleData(isAvailable=not vehicle.isInInventory or predicate(vehicle), discountValue=None, discountType=None)))
+
+    return result
 
 
 class _Typeable(object):
@@ -319,7 +331,7 @@ class _VehsListParser(object):
     itemsCache = dependency.descriptor(IItemsCache)
 
     def __init__(self):
-        self.__vehsCache = None
+        self.__vehIntCDs = None
         return
 
     def isAnyVehicleAcceptable(self):
@@ -343,7 +355,7 @@ class _VehsListParser(object):
         return self._postProcessCriteria(defaultCriteria, criteria)
 
     def _clearItemsCache(self):
-        self.__vehsCache = None
+        self.__vehIntCDs = None
         return
 
     def _postProcessCriteria(self, defaultCriteria, criteria):
@@ -355,13 +367,10 @@ class _VehsListParser(object):
     def _getDefaultCriteria(self):
         return REQ_CRITERIA.DISCLOSABLE
 
-    def _getVehiclesCache(self, data):
-        if self.__vehsCache is None:
-            self.__vehsCache = self.itemsCache.items.getVehicles(self.getFilterCriteria(data))
-        return self.__vehsCache
-
-    def _getVehiclesList(self, data):
-        return self._getVehiclesCache(data).values()
+    def _getVehIntCDs(self, data):
+        if self.__vehIntCDs is None:
+            self.__vehIntCDs = self.itemsCache.items.getVehicles(self.getFilterCriteria(data)).keys()
+        return self.__vehIntCDs
 
     def _parseFilters(self, data):
         types, nations, levels, classes, roles = (None, None, None, None, None)
@@ -406,7 +415,7 @@ class _VehsListCondition(_Condition, _VehsListParser):
         return self._isNegative
 
     def getVehiclesList(self):
-        return self._getVehiclesList(self._data)
+        return self._getVehIntCDs(self._data)
 
     def negate(self):
         if self._relation is not None:
@@ -450,13 +459,13 @@ class _VehsListRequirement(_VehsListCondition, _AvailabilityCheckable, _Negatabl
         return '%s<%s=%r>' % (self.__class__.__name__, self._relation, self._relationValue)
 
     def _isAvailable(self):
-        vehsList = self._getVehiclesList(self._data)
+        vehIntCDsList = self._getVehIntCDs(self._data)
         if self._relation is not None:
-            return _handleRelation(self._relation, len(filter(self._checkVehicle, vehsList)), self._relationValue)
+            return _handleRelation(self._relation, len(filter(self._checkVehicle, vehIntCDsList)), self._relationValue)
         else:
             return True
 
-    def _checkVehicle(self, vehicle):
+    def _checkVehicle(self, vehIntCD):
         return True
 
 
@@ -593,6 +602,26 @@ class WotPlus(_Requirement):
         return self.wotPlusController.isEnabled() == self._needValue
 
 
+class VersusAIProgression(_Requirement):
+
+    def __init__(self, path, data):
+        super(VersusAIProgression, self).__init__('versusAIProgression', dict(data), path)
+        self._value = self._data.get('value')
+        self._isNegate = False
+
+    def negate(self):
+        self._isNegate = not self._isNegate
+
+    def _isAvailable(self):
+        winbackController = dependency.getInstanceIfHas(IWinbackController)
+        if winbackController and winbackController.isEnabled() and winbackController.isProgressionEnabled():
+            isMatched = winbackController.progressionName == self._value
+            if self._isNegate:
+                return not isMatched
+            return isMatched
+        return False
+
+
 class InClan(_Requirement):
 
     def __init__(self, path, data):
@@ -674,6 +703,29 @@ class Token(_Requirement):
         return _handleRelation(self._relation, self.eventsCache.questsProgress.getTokenCount(self._id), self._relationValue)
 
 
+class QuestCondition(_Requirement):
+    eventsCache = dependency.descriptor(IEventsCache)
+
+    def __init__(self, path, data):
+        super(QuestCondition, self).__init__('quest', dict(data), path)
+        self._id = _getNodeValue(self._data, 'id')
+        self._relation = _findRelation(self._data.keys())
+        self._relationValue = int(_getNodeValue(self._data, self._relation, 0))
+
+    def getID(self):
+        return self._id
+
+    def negate(self):
+        self._relation = _RELATIONS.getOppositeRelation(self._relation)
+
+    def isQuestCompleted(self):
+        quest = self.eventsCache.getQuestByID(self._id)
+        return quest and quest.isCompleted()
+
+    def _isAvailable(self):
+        return True
+
+
 class TokenQuestToken(Token):
 
     def _isAvailable(self):
@@ -685,7 +737,8 @@ class VehiclesUnlocked(_VehsListRequirement):
     def __init__(self, path, data):
         super(VehiclesUnlocked, self).__init__('vehiclesUnlocked', dict(data), path)
 
-    def _checkVehicle(self, vehicle):
+    def _checkVehicle(self, vehicleIntCD):
+        vehicle = self.itemsCache.items.getItemByCD(vehicleIntCD)
         return vehicle.isUnlocked and not vehicle.isInitiallyUnlocked
 
     def _getDefaultCriteria(self):
@@ -697,7 +750,8 @@ class VehiclesOwned(_VehsListRequirement):
     def __init__(self, path, data):
         super(VehiclesOwned, self).__init__('vehiclesOwned', dict(data), path)
 
-    def _checkVehicle(self, vehicle):
+    def _checkVehicle(self, vehicleIntCD):
+        vehicle = self.itemsCache.items.getItemByCD(vehicleIntCD)
         return vehicle.isInInventory
 
 
@@ -832,7 +886,7 @@ class VehicleDescr(_VehicleRequirement, _VehsListParser, _Updatable):
         return False
 
     def getVehiclesList(self):
-        return self._getVehiclesList(self._data)
+        return self._getVehIntCDs(self._data)
 
     def _postProcessCriteria(self, defaultCriteria, criteria):
         if self._isNegative:
@@ -840,10 +894,19 @@ class VehicleDescr(_VehicleRequirement, _VehsListParser, _Updatable):
         return defaultCriteria | criteria | self._otherCriteria
 
     def _isAvailable(self, vehicle):
-        return vehicle.intCD in self._getVehiclesCache(self._data)
+        return vehicle.intCD in self._getVehIntCDs(self._data)
 
     def parseFilters(self):
         return self._parseFilters(self._data)
+
+
+class EarlyAccessVehicleDescr(VehicleDescr):
+
+    def __init__(self, data):
+        super(EarlyAccessVehicleDescr, self).__init__('', data)
+
+    def _getDefaultCriteria(self):
+        return REQ_CRITERIA.EMPTY
 
 
 class _DossierValue(_Requirement):
@@ -1446,7 +1509,7 @@ class VehicleKills(_VehsListCondition):
         super(VehicleKills, self).__init__('vehicleKills', dict(data), path)
 
     def getVehiclesData(self):
-        return _prepareVehData(self._getVehiclesList(self._data))
+        return _prepareVehData(self._getVehIntCDs(self._data))
 
     def getLabelKey(self):
         if self.getFireStarted() or self.getAttackReason() == ATTACK_REASON.FIRE:
@@ -1499,7 +1562,7 @@ class VehicleDamage(_CountOrTotalEventsCondition):
         return 'VehicleDamage<%s=%d>' % (self._relation, self._relationValue)
 
     def getVehiclesData(self):
-        return _prepareVehData(self._getVehiclesList(self._data))
+        return _prepareVehData(self._getVehIntCDs(self._data))
 
     def getLabelKey(self):
         if self.getFireStarted() or self.getAttackReason() == ATTACK_REASON.FIRE:
@@ -1547,7 +1610,7 @@ class VehicleStun(_CountOrTotalEventsCondition):
         return 'VehicleStun<%s=%d>' % (self._relation, self._relationValue)
 
     def getVehiclesData(self):
-        return _prepareVehData(self._getVehiclesList(self._data))
+        return _prepareVehData(self._getVehIntCDs(self._data))
 
     def getLabelKey(self):
         if self.isEventCount():

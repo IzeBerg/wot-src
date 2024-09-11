@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<params>
+		<param>
+			<name>New Random Float</name>
+			<type>random_float</type>
+		</param>
+	</params>
+	<node>
+		<name>Playing_Guitar_Pose_01</name>
+		<type>sequence</type>
+		<resource>content/Hangars/CharacterAnimations/hd_char_h_0007_Soldier_NoJacket/Sequence/Playing_Guitar_Pose_01.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<transition>
+			<to>Playing_Guitar_01</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>1.000000</exitOffset>
+				</condition>
+				<condition>
+					<type>random_float</type>
+					<name>New Random Float</name>
+					<rangeStart>0.000000</rangeStart>
+					<rangeEnd>33.330002</rangeEnd>
+				</condition>
+			</conditions>
+		</transition>
+		<transition>
+			<to>Playing_Guitar_02</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>1.000000</exitOffset>
+				</condition>
+				<condition>
+					<type>random_float</type>
+					<name>New Random Float</name>
+					<rangeStart>33.340000</rangeStart>
+					<rangeEnd>66.660004</rangeEnd>
+				</condition>
+			</conditions>
+		</transition>
+		<transition>
+			<to>Playing_Guitar_03</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>1.000000</exitOffset>
+				</condition>
+				<condition>
+					<type>random_float</type>
+					<name>New Random Float</name>
+					<rangeStart>66.669998</rangeStart>
+					<rangeEnd>100.000000</rangeEnd>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>202.000000 -129.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>Playing_Guitar_01</name>
+		<type>sequence</type>
+		<resource>content/Hangars/CharacterAnimations/hd_char_h_0007_Soldier_NoJacket/Sequence/Playing_Guitar_01.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<transition>
+			<to>Idle</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>1.000000</exitOffset>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-11.500000 -38.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>Idle</name>
+		<type>sequence</type>
+		<resource>content/Hangars/CharacterAnimations/hd_char_h_0007_Soldier_NoJacket/Sequence/Playing_Guitar_Idle_01.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>-1</loop>
+		<uiPosition>200.000000 110.500000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>Playing_Guitar_02</name>
+		<type>sequence</type>
+		<resource>content/Hangars/CharacterAnimations/hd_char_h_0007_Soldier_NoJacket/Sequence/Playing_Guitar_02.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<transition>
+			<to>Idle</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>1.000000</exitOffset>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>204.500000 -39.500000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>Playing_Guitar_03</name>
+		<type>sequence</type>
+		<resource>content/Hangars/CharacterAnimations/hd_char_h_0007_Soldier_NoJacket/Sequence/Playing_Guitar_03.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<transition>
+			<to>Idle</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>1.000000</exitOffset>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>435.500000 -38.000000 0.000000</uiPosition>
+	</node>
+</root>

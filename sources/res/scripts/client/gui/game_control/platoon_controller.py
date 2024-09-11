@@ -723,16 +723,18 @@ class PlatoonController(IPlatoonController, IGlobalListener, CallbackDelayer):
 
     def __showWindow(self, ePlatoonLayout, dropdownOffset=None):
         view = self.__getView(ePlatoonLayout)
-        if self.__isViewProperPrbType(view):
-            if view.getParentWindow().isHidden():
-                view.getParentWindow().show()
-            return
-        self.__destroy(hideOnly=False)
-        layout = self.currentPlatoonLayouts.get(ePlatoonLayout)
-        if layout is None:
-            _logger.error('Layout %s is missing.', ePlatoonLayout)
+        if self.prbEntity.getEntityType() == PREBATTLE_TYPE.STRONGHOLD:
             return
         else:
+            if self.__isViewProperPrbType(view):
+                if view.getParentWindow().isHidden():
+                    view.getParentWindow().show()
+                return
+            self.__destroy(hideOnly=False)
+            layout = self.currentPlatoonLayouts.get(ePlatoonLayout)
+            if layout is None:
+                _logger.error('Layout %s is missing.', ePlatoonLayout)
+                return
             position = self.__calculateDropdownMove(dropdownOffset)
             window = layout.windowClass(position)
             if window is None:

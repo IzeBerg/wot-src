@@ -378,8 +378,9 @@ class UnitAssemblerSearchFlags(object):
     VEH_TIER_8 = 256
     VEH_TIER_9 = 512
     VEH_TIER_10 = 1024
-    DESTROY_UNIT_ON_ABORT = 2048
-    ALL_VEH_TIERS = VEH_TIER_1 | VEH_TIER_2 | VEH_TIER_3 | VEH_TIER_4 | VEH_TIER_5 | VEH_TIER_6 | VEH_TIER_7 | VEH_TIER_8 | VEH_TIER_9 | VEH_TIER_10
+    VEH_TIER_11 = 2048
+    DESTROY_UNIT_ON_ABORT = 4096
+    ALL_VEH_TIERS = VEH_TIER_1 | VEH_TIER_2 | VEH_TIER_3 | VEH_TIER_4 | VEH_TIER_5 | VEH_TIER_6 | VEH_TIER_7 | VEH_TIER_8 | VEH_TIER_9 | VEH_TIER_10 | VEH_TIER_11
 
 
 class UnitAssemblerImplType(object):
@@ -563,7 +564,6 @@ class UnitPlayerDataKey(object):
     MATCHMAKER_STATS = 'matchmakerStats'
     MAP_BLACKLIST = 'mapBlackList'
     ACCOUNT_WTR = 'accountWTR'
-    HAS_WINBACK_TOKEN = 'hasWinbackToken'
     CSR_RATING = 'CSRRating'
     CLAN_DBID = 'clanDBID'
     CLAN_ABBREV = 'clanAbbrev'

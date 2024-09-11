@@ -15,9 +15,15 @@ package net.wg.gui.battle.views.minimap.components.entries.teambase
       private static const COLOR_BLIND_FRAME:int = 2;
       
       private static const NORMAL_COLOR_FRAME:int = 1;
+      
+      private static const DIVIDE_100:Number = 0.01;
+      
+      private static const CAPTURE_ALPHA:Number = 0.7;
        
       
       public var atlasPlaceholder:Sprite = null;
+      
+      public var marker:MinimapProgressCircle = null;
       
       private var _pointNumber:int = -1;
       
@@ -27,6 +33,8 @@ package net.wg.gui.battle.views.minimap.components.entries.teambase
       {
          this._atlasManager = App.atlasMgr;
          super();
+         this.marker.visible = false;
+         this.marker.setIsAlly(true);
          MinimapEntryController.instance.registerScalableEntry(this);
          this.checkForColorBlindMode();
       }
@@ -45,6 +53,8 @@ package net.wg.gui.battle.views.minimap.components.entries.teambase
          MinimapEntryController.instance.unregisterScalableEntry(this);
          this.atlasPlaceholder = null;
          this._atlasManager = null;
+         this.marker.dispose();
+         this.marker = null;
          App.colorSchemeMgr.removeEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemeMgrSchemasUpdatedHandler);
          super.onDispose();
       }
@@ -54,6 +64,13 @@ package net.wg.gui.battle.views.minimap.components.entries.teambase
          this._pointNumber = param1;
          this.drawEntry();
          App.colorSchemeMgr.addEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemeMgrSchemasUpdatedHandler);
+      }
+      
+      public function setProgress(param1:int) : void
+      {
+         this.atlasPlaceholder.alpha = param1 > 0 ? Number(CAPTURE_ALPHA) : Number(1);
+         this.marker.visible = param1 > 0;
+         this.marker.updateProgress(param1 * DIVIDE_100);
       }
       
       private function drawEntry() : void

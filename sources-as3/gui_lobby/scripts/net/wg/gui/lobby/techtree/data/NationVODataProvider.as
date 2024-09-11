@@ -19,7 +19,7 @@ package net.wg.gui.lobby.techtree.data
       
       private static const PROPERTY_PREMIUM_GRID_SETTINGS:String = "premiumSettings";
       
-      private static const MAX_LEVELS:int = 10;
+      private static const MAX_LEVELS:int = 11;
        
       
       protected var scrollIndex:Number = 0;

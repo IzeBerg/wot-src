@@ -298,10 +298,5 @@ package net.wg.gui.battle.views.prebattleTimer
       {
          this._isNeedWinChangePosition = param1;
       }
-      
-      public function get totalTime() : Number
-      {
-         return this._totalTime;
-      }
    }
 }

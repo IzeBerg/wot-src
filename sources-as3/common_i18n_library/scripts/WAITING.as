@@ -325,6 +325,8 @@ package
       
       public static const SWITCHCHAPTER:String = "#waiting:switchChapter";
       
+      public static const LOADBATTLEPASSAWARDVIDEO:String = "#waiting:loadBattlePassAwardVideo";
+      
       public static const BATTLEROYALE_HANGARLOADING:String = "#waiting:battleRoyale/hangarLoading";
       
       public static const GETRESOURCESBACK:String = "#waiting:getResourcesBack";

@@ -26,6 +26,8 @@ package net.wg.gui.battle.random.views.fragCorrelationBar.components
       private static const TIER_ROMAN_9:String = "IX";
       
       private static const TIER_ROMAN_10:String = "X";
+      
+      private static const TIER_ROMAN_11:String = "XI";
        
       
       public var mainTF:TextField = null;
@@ -37,7 +39,7 @@ package net.wg.gui.battle.random.views.fragCorrelationBar.components
       public function TierGroupingElement()
       {
          super();
-         this._int_2_roman = new <String>[TIER_ROMAN_1,TIER_ROMAN_2,TIER_ROMAN_3,TIER_ROMAN_4,TIER_ROMAN_5,TIER_ROMAN_6,TIER_ROMAN_7,TIER_ROMAN_8,TIER_ROMAN_9,TIER_ROMAN_10];
+         this._int_2_roman = new <String>[TIER_ROMAN_1,TIER_ROMAN_2,TIER_ROMAN_3,TIER_ROMAN_4,TIER_ROMAN_5,TIER_ROMAN_6,TIER_ROMAN_7,TIER_ROMAN_8,TIER_ROMAN_9,TIER_ROMAN_10,TIER_ROMAN_11];
       }
       
       public final function dispose() : void

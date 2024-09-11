@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_guns</identifier>
+					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						g_crashUVTiling
+						<Vector4>2.000000 2.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						crashTileMap
+						<Texture>vehicles/russian/Tank_detail/crash_tile.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/japan/J40_Type_71/_skins/J40_Type_71_3dst_Magnus/Type_71_3dst_Magnus_guns_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/japan/J40_Type_71/_skins/J40_Type_71_3dst_Magnus/Type_71_3dst_Magnus_guns_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/japan/J40_Type_71/_skins/J40_Type_71_3dst_Magnus/Type_71_3dst_Magnus_guns_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/japan/J40_Type_71/_skins/J40_Type_71_3dst_Magnus/Type_71_3dst_Magnus_guns_AO.dds</Texture>
+					</property>
+					<property>
+						colorIdMap
+						<Texture>vehicles/japan/J40_Type_71/Type_71_guns_ID.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.000000 -0.006129 2.038405</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.617991 -0.527704 -1.686010</min>
+		<max>0.617991 0.515445 5.762820</max>
+	</boundingBox>
+	<geometrySize>129638</geometrySize>
+	<minUVDensity>0.005702</minUVDensity>
+</root>

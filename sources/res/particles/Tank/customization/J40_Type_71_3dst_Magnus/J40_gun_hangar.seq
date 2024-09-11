@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>26.666668</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>ligthting</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/tank_customization/J40_Type_71_3dst_Magnus/J40_gun_lightning.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>light</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/tank_customization/J40_Type_71_3dst_Magnus/J40_gun_light.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>gun_glow</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/tank_customization/J40_Type_71_3dst_Magnus/J40_gun_glow.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>s_nd0</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.105882 0.674510 0.086275 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.100000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.100000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.000000</startTime>
+				<value>0.105882 0.674510 0.086275 0.300000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.050000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.050000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>24.500002</startTime>
+				<value>0.105882 0.674510 0.086275 0.300000</value>
+				<inTangent>0.000000 0.000000 0.000000 -0.069231</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -0.069231</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>26.666668</startTime>
+				<value>0.105882 0.674510 0.086275 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.138462</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 -0.138462</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>glow_01</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/tank_customization/J40_Type_71_3dst_Magnus/J40_glow.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 1.898376</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>s_nd0</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.105882 0.674510 0.086275 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.333333</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.333333</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.000000</startTime>
+				<value>0.105882 0.674510 0.086275 1.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 0.333333</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>24.500002</startTime>
+				<value>0.105882 0.674510 0.086275 1.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -0.323077</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>26.666668</startTime>
+				<value>0.105882 0.674510 0.086275 0.300000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.323077</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 -0.323077</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>glow_02</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/tank_customization/J40_Type_71_3dst_Magnus/J40_glow.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 2.215942</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>s_nd0</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.105882 0.674510 0.086275 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.333333</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.333333</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.000000</startTime>
+				<value>0.105882 0.674510 0.086275 1.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 0.333333</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>24.500002</startTime>
+				<value>0.105882 0.674510 0.086275 1.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -0.323077</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>26.666668</startTime>
+				<value>0.105882 0.674510 0.086275 0.300000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.323077</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 -0.323077</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>glow_03</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/tank_customization/J40_Type_71_3dst_Magnus/J40_glow.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 2.596771</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>s_nd0</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.105882 0.674510 0.086275 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.333333</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.333333</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.000000</startTime>
+				<value>0.105882 0.674510 0.086275 1.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 0.333333</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>24.500002</startTime>
+				<value>0.105882 0.674510 0.086275 1.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -0.323077</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>26.666668</startTime>
+				<value>0.105882 0.674510 0.086275 0.300000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.323077</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 -0.323077</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>glow_04</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/tank_customization/J40_Type_71_3dst_Magnus/J40_glow.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 2.929565</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>s_nd0</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.105882 0.674510 0.086275 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.333333</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.333333</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.000000</startTime>
+				<value>0.105882 0.674510 0.086275 1.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 0.333333</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>24.500002</startTime>
+				<value>0.105882 0.674510 0.086275 1.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -0.323077</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>26.666668</startTime>
+				<value>0.105882 0.674510 0.086275 0.300000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.323077</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 -0.323077</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>glow_05</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/tank_customization/J40_Type_71_3dst_Magnus/J40_glow.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 3.264420</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>s_nd0</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.105882 0.674510 0.086275 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.333333</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.333333</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.000000</startTime>
+				<value>0.105882 0.674510 0.086275 1.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 0.333333</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>24.500002</startTime>
+				<value>0.105882 0.674510 0.086275 1.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -0.323077</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>26.666668</startTime>
+				<value>0.105882 0.674510 0.086275 0.300000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.323077</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 -0.323077</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>glow_06</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/tank_customization/J40_Type_71_3dst_Magnus/J40_glow.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 3.651779</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>s_nd0</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.105882 0.674510 0.086275 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.333333</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.333333</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.000000</startTime>
+				<value>0.105882 0.674510 0.086275 1.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 0.333333</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>24.500002</startTime>
+				<value>0.105882 0.674510 0.086275 1.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -0.323077</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>26.666668</startTime>
+				<value>0.105882 0.674510 0.086275 0.300000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.323077</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 -0.323077</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Sound 0</name>
+		<type>sound</type>
+		<track>
+			<name>Sound</name>
+			<type>sound</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>26.633335</duration>
+				<sequenceSound>J40_Type_71_3dst_Magnus_gun_hangar</sequenceSound>
+				<type>play_till_end</type>
+				<fade>0.000000</fade>
+			</frame>
+		</track>
+		<track>
+			<name>volume</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.024000</value>
+				<inTangent>0.088997</inTangent>
+				<outTangent>0.088997</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>10.966667</startTime>
+				<value>1.000000</value>
+				<inTangent>0.088997</inTangent>
+				<outTangent>0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>26.566668</startTime>
+				<value>1.000000</value>
+				<inTangent>-0.000000</inTangent>
+				<outTangent>-0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

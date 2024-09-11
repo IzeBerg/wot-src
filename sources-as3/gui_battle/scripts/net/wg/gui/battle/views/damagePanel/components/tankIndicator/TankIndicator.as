@@ -20,9 +20,7 @@ package net.wg.gui.battle.views.damagePanel.components.tankIndicator
       
       public var isVehicleWithTurret:Boolean = false;
       
-      public var isVehicleWithWheel:Boolean = false;
-      
-      private var _hasYoh:Boolean = false;
+      private var _indicatorType:String = "";
       
       private var _hull:TankRotator;
       
@@ -41,6 +39,12 @@ package net.wg.gui.battle.views.damagePanel.components.tankIndicator
          this._indicators[VehicleTypes.TANK] = new TankIndicatorItem(Linkages.TANK_TURRET_UI,Linkages.TANK_HULL_UI);
          this._indicators[VehicleTypes.WHEEL] = new TankIndicatorItem(Linkages.WHEEL_TURRET_UI,Linkages.WHEEL_HULL_UI);
          this._indicators[VehicleTypes.TANK_YOH] = new TankIndicatorItem(Linkages.TANK_YOH_TURRET_UI,Linkages.TANK_YOH_HULL_UI);
+         this._indicators[VehicleTypes.TANK_MULTITRACK] = new TankIndicatorItem(Linkages.TANK_TURRET_UI,Linkages.TANK_MULTITRACK_HULL_UI);
+         this._indicators[VehicleTypes.TANK_MULTITRACK_PARALLEL] = new TankIndicatorItem(Linkages.TANK_TURRET_UI,Linkages.TANK_MULTITRACK_PARALLEL_HULL_UI);
+         this._indicators[VehicleTypes.AT_SPG_MULTITRACK] = new TankIndicatorItem(Linkages.ATSPG_TURRET_UI,Linkages.ATSPG_MULTITRACK_HULL_UI);
+         this._indicators[VehicleTypes.AT_SPG_MULTITRACK_PARALLEL] = new TankIndicatorItem(Linkages.ATSPG_TURRET_UI,Linkages.ATSPG_MULTITRACK_PARALLEL_HULL_UI);
+         this._indicators[VehicleTypes.SPG_MULTITRACK] = new TankIndicatorItem(Linkages.SPG_TURRET_UI,Linkages.SPG_MULTITRACK_HULL_UI);
+         this._indicators[VehicleTypes.SPG_MULTITRACK_PARALLEL] = new TankIndicatorItem(Linkages.SPG_TURRET_UI,Linkages.SPG_MULTITRACK_PARALLEL_HULL_UI);
       }
       
       override protected function onDispose() : void
@@ -99,7 +103,7 @@ package net.wg.gui.battle.views.damagePanel.components.tankIndicator
       public function setModuleState(param1:String, param2:String) : void
       {
          var _loc3_:Boolean = false;
-         if(this.isVehicleWithWheel)
+         if(this._indicatorType == VehicleTypes.WHEEL)
          {
             if(param1 == VehicleModules.GUN || param1 == VehicleModules.TURRET_ROTATOR)
             {
@@ -112,7 +116,7 @@ package net.wg.gui.battle.views.damagePanel.components.tankIndicator
          }
          else if(this.isVehicleWithTurret)
          {
-            if(param1 == VehicleModules.AMMO_BAY && this._hasYoh)
+            if(param1 == VehicleModules.AMMO_BAY && this._indicatorType == VehicleTypes.TANK_YOH)
             {
                this._hull.setModuleState(param1,param2);
             }
@@ -145,6 +149,7 @@ package net.wg.gui.battle.views.damagePanel.components.tankIndicator
          {
             App.utils.asserter.assert(this._indicators[param1] != null,param1 + Errors.WASNT_FOUND);
          }
+         this._indicatorType = param1;
          this.reset();
          if(this._hull != null)
          {
@@ -162,9 +167,8 @@ package net.wg.gui.battle.views.damagePanel.components.tankIndicator
             this._turretTank = null;
          }
          var _loc3_:TankIndicatorItem = this._indicators[param1];
-         if(this.isVehicleWithWheel)
+         if(this._indicatorType == VehicleTypes.WHEEL)
          {
-            _loc3_ = this._indicators[VehicleTypes.WHEEL];
             if(_loc3_.hull == null)
             {
                _loc3_.hull = App.utils.classFactory.getComponent(_loc3_.hullLinkage,WheelRotator);
@@ -207,7 +211,7 @@ package net.wg.gui.battle.views.damagePanel.components.tankIndicator
             this.turret.addChild(this._gunSPG);
          }
          this._hull = _loc3_.hull;
-         this._hull.hasYoh = this._hasYoh;
+         this._hull.setIndicatorType(param1);
          this._hull.setYawLimits(param2);
          this.hull.addChild(this._hull);
       }
@@ -238,15 +242,6 @@ package net.wg.gui.battle.views.damagePanel.components.tankIndicator
          if(this._gunSPG != null)
          {
             this._gunSPG.state = BATTLE_ITEM_STATES.DESTROYED;
-         }
-      }
-      
-      public function set hasYoh(param1:Boolean) : void
-      {
-         this._hasYoh = param1;
-         if(this._hull)
-         {
-            this._hull.hasYoh = param1;
          }
       }
       

@@ -14,7 +14,6 @@ from gui.impl.gen.view_models.views.lobby.early_access.early_access_quest_model 
 from gui.impl.gen.view_models.views.lobby.early_access.early_access_state_enum import State
 from gui.impl.gen.view_models.common.missions.event_model import EventStatus
 from gui.impl.lobby.common.view_wrappers import createBackportTooltipDecorator
-from gui.impl.lobby.early_access.shared.bonus_packers import getEarlyAccessBonusPacker
 from gui.impl.lobby.early_access.tooltips.early_access_currency_tooltip_view import EarlyAccessCurrencyTooltipView
 from gui.impl.lobby.early_access.tooltips.early_access_state_tooltip import EarlyAccessStateTooltipView
 from gui.impl.lobby.early_access.early_access_window_events import showEarlyAccessVehicleView, showEarlyAccessInfoPage
@@ -22,7 +21,7 @@ from gui.shared.missions.packers.events import BattleQuestUIDataPacker
 from gui.shared.event_dispatcher import showHangar
 from gui.server_events.bonuses import CreditsBonus
 from gui.shared.missions.packers.events import packQuestBonusModelAndTooltipData
-from gui.shared.missions.packers.bonus import SimpleBonusUIPacker
+from gui.shared.missions.packers.bonus import SimpleBonusUIPacker, BonusUIPacker, getDefaultBonusPackersMap
 from gui.shared.money import Currency
 from items.vehicles import getVehicleType, getVehicleClassFromVehicleType
 from helpers import dependency, time_utils
@@ -34,8 +33,8 @@ if typing.TYPE_CHECKING:
     from frameworks.wulf import ViewEvent, Window, Array
 
 class EarlyAccessQuestsView(ViewImpl):
-    __slots__ = ('__tooltipData', '__currQuestsInProgressID', '__isPostprActive', '__isHavePostprVehicle',
-                 '__remainTokensCount', '__receivedTokensForQuests')
+    __slots__ = ('__tooltipData', '__currQuestsInProgressID', '__isHavePostprVehicle',
+                 '__isFromTechTree', '__remainTokensCount', '__receivedTokensForQuests')
     __earlyAccessCtrl = dependency.descriptor(IEarlyAccessController)
     __itemsCache = dependency.descriptor(IItemsCache)
     _COMMON_SOUND_SPACE = TECHTREE_SOUND_SPACE
@@ -44,15 +43,15 @@ class EarlyAccessQuestsView(ViewImpl):
         POSTPROGRESSION = 0
         CYCLE = 1
 
-    def __init__(self, layoutID):
+    def __init__(self, layoutID, isFromTechTree=False):
         settings = ViewSettings(layoutID)
         settings.flags = ViewFlags.LOBBY_SUB_VIEW
         settings.model = EarlyAccessQuestsViewModel()
         super(EarlyAccessQuestsView, self).__init__(settings)
         self.__tooltipData = {}
         self.__currQuestsInProgressID = dict()
-        self.__isPostprActive = False
         self.__isHavePostprVehicle = False
+        self.__isFromTechTree = isFromTechTree
         self.__remainTokensCount = 0
         self.__receivedTokensForQuests = 0
 
@@ -120,7 +119,7 @@ class EarlyAccessQuestsView(ViewImpl):
     def __goToVehicle(self):
         self.__earlyAccessCtrl.hangarFeatureState.enter(R.views.lobby.early_access.EarlyAccessVehicleView(), activateVehicleState=True)
         self.destroy()
-        showEarlyAccessVehicleView()
+        showEarlyAccessVehicleView(isFromTechTree=self.__isFromTechTree)
 
     def __goToInfo(self):
         showEarlyAccessInfoPage()
@@ -143,7 +142,6 @@ class EarlyAccessQuestsView(ViewImpl):
     def __updateData(self, isNeedSettingsUpdate=True):
         ctrl = self.__earlyAccessCtrl
         earlyAccessState = ctrl.getState()
-        self.__isPostprActive = earlyAccessState == State.POSTPROGRESSION
         self.__isHavePostprVehicle = ctrl.hasPostprogressionVehicle()
         self.__calculateUserBuyQuestTokens()
         self.__receivedTokensForQuests = ctrl.getReceivedTokensForQuests()
@@ -179,6 +177,8 @@ class EarlyAccessQuestsView(ViewImpl):
     def __updateChapter(self, chaptersArray, questsArray, cycleID, startDate, isPrevChapterFinished, isNeedSettingsUpdate):
         chapter = EarlyAccessChapterModel()
         isChapterFinished = self.__updateQuests(questsArray, cycleID, chapter, startDate, isPrevChapterFinished, isNeedSettingsUpdate)
+        if not chapter.getTotalQuests():
+            return False
         chapter.setId(cycleID)
         chaptersArray.addViewModel(chapter)
         return isChapterFinished
@@ -186,31 +186,26 @@ class EarlyAccessQuestsView(ViewImpl):
     def __updateQuests(self, questsArray, cycleID, chapter, startDate, isPrevChapterFinished, isNeedSettingsUpdate):
         isShowTokens = cycleID != EARLY_ACCESS_POSTPR_KEY
         ctrl = self.__earlyAccessCtrl
-        nowTime = time_utils.getServerUTCTime()
         totalChapterTokens = self.__performChapterCalculations(self.__totalChapterTokensCounter, cycleID)
         completedQuests = self.__performChapterCalculations(self.__completedQuestsCounter, cycleID)
-        totalQuests = sum(1 for _ in ctrl.iterCycleProgressionQuests(cycleID))
+        totalQuests = sum((1 if quest else 0) for quest in ctrl.iterCycleProgressionQuests(cycleID))
         receivedChapterShowTokens = min(max(self.__receivedTokensForQuests - totalChapterTokens, self.__receivedTokensForQuests), totalChapterTokens)
         chapterLeftTokens = totalChapterTokens - receivedChapterShowTokens
         totalChapterShowTokens = totalChapterTokens
         if self.__remainTokensCount < chapterLeftTokens:
             totalChapterShowTokens = receivedChapterShowTokens + self.__remainTokensCount
-        isChapterFinished = False
-        if self.__isPostprogressionFlowStates(cycleID):
-            if completedQuests == totalQuests:
-                state = ChapterState.COMPLETED
-            else:
-                state = ChapterState.DISABLED
+        isChapterFinished = bool(completedQuests == totalQuests)
+        isChapterDisabled = self.__isChapterDisabled(cycleID, isPrevChapterFinished, startDate)
+        state = ChapterState.ACTIVE
+        if isChapterDisabled and not isChapterFinished:
+            state = ChapterState.DISABLED
         else:
-            isChapterFinished = bool(completedQuests == totalQuests)
-            isChapterDisabled = not isPrevChapterFinished or startDate > nowTime
-            state = ChapterState.ACTIVE
-            if isChapterDisabled:
-                state = ChapterState.DISABLED
-            elif isChapterFinished:
+            if isChapterFinished:
                 state = ChapterState.COMPLETED
             buf = totalChapterShowTokens
             for quest in ctrl.iterCycleProgressionQuests(cycleID):
+                if not quest:
+                    continue
                 tokensForQuest = ctrl.getTokensForQuest(quest.getID())
                 compensateTokensCount = max(tokensForQuest - buf, 0)
                 buf = max(buf - tokensForQuest, 0)
@@ -234,15 +229,19 @@ class EarlyAccessQuestsView(ViewImpl):
         return isChapterFinished
 
     def __completedQuestsCounter(self, quest):
-        return quest.isCompleted()
+        if quest:
+            return quest.isCompleted()
+        return 0
 
     def __totalChapterTokensCounter(self, quest):
         ctrl = self.__earlyAccessCtrl
-        return ctrl.getTokensForQuest(quest.getID())
+        if quest:
+            return ctrl.getTokensForQuest(quest.getID())
+        return 0
 
     def __recievedChapterTokensCounter(self, quest):
         ctrl = self.__earlyAccessCtrl
-        if quest.isCompleted():
+        if quest and quest.isCompleted():
             return ctrl.getTokensForQuest(quest.getID())
         return 0
 
@@ -250,10 +249,12 @@ class EarlyAccessQuestsView(ViewImpl):
         ctrl = self.__earlyAccessCtrl
         return sum(map(func, ctrl.iterCycleProgressionQuests(cycleID)))
 
-    def __isPostprogressionFlowStates(self, cycleID):
+    def __isChapterDisabled(self, cycleID, isPrevChapterFinished, startDate):
         nowTime = time_utils.getServerUTCTime()
         _, endProgressTime = self.__earlyAccessCtrl.getProgressionTimes()
-        return cycleID != EARLY_ACCESS_POSTPR_KEY and (self.__isPostprActive or nowTime > endProgressTime) or cycleID == EARLY_ACCESS_POSTPR_KEY and not self.__isHavePostprVehicle
+        if cycleID != EARLY_ACCESS_POSTPR_KEY and (nowTime > endProgressTime or not isPrevChapterFinished or startDate > nowTime) or cycleID == EARLY_ACCESS_POSTPR_KEY and (not self.__isHavePostprVehicle or self.__earlyAccessCtrl.isPostprogressionBlockedByQuestFinisher()):
+            return True
+        return False
 
     def __calculateUserBuyQuestTokens(self):
         ctrl = self.__earlyAccessCtrl
@@ -281,34 +282,35 @@ class EarlyAccessQuestsView(ViewImpl):
         questModel.setMinVehicleLvl(minLvl)
         questModel.setMaxVehicleLvl(maxLvl)
         if cycleID == EARLY_ACCESS_POSTPR_KEY:
-            self.__fillRequiredPostprogressionVehicles(questModel)
-        if self.__isPostprogressionFlowStates(cycleID):
-            if quest.isCompleted():
-                questModel.setStatus(EventStatus.DONE)
-            else:
-                questModel.setStatus(EventStatus.LOCKED)
-        else:
-            if not questsInProgress:
-                questsInProgress.add(quest.getID())
-            if quest.isCompleted() and quest.getID() in questsInProgress:
-                questModel.setStatus(EventStatus.DONE)
-                questsInProgress.remove(quest.getID())
-            if quest.getID() in questsInProgress and chapterState != ChapterState.DISABLED:
-                questModel.setStatus(EventStatus.ACTIVE)
-            elif not quest.isCompleted():
-                questModel.setStatus(EventStatus.LOCKED)
+            self.__fillRequiredPostprogressionVehicles(questModel, quest.getID())
+        if not questsInProgress:
+            questsInProgress.add(quest.getID())
+        if quest.isCompleted() and quest.getID() in questsInProgress:
+            questModel.setStatus(EventStatus.DONE)
+            questsInProgress.remove(quest.getID())
+        if quest.getID() in questsInProgress and chapterState != ChapterState.DISABLED:
+            questModel.setStatus(EventStatus.ACTIVE)
+        elif not quest.isCompleted():
+            questModel.setStatus(EventStatus.LOCKED)
         self.__tooltipData[quest.getID()] = packer.getTooltipData()
         questsArray.addViewModel(questModel)
 
-    def __fillRequiredPostprogressionVehicles(self, questModel):
+    def __fillRequiredPostprogressionVehicles(self, questModel, questID):
         requiredVehiclesArray = questModel.getRequiredVehicles()
-        for vehicleCD in self.__earlyAccessCtrl.getPostProgressionVehicles():
+
+        def sortedCriteria(cd):
+            item = self.__itemsCache.items.getItemByCD(cd)
+            return (item.level, not item.isPremium)
+
+        sortedVehicles = sorted(self.__earlyAccessCtrl.getPostProgressionVehiclesForQuest(questID), key=sortedCriteria)
+        for vehicleCD in sortedVehicles:
             vehicleModel = VehicleModel()
             vehicle = getVehicleType(vehicleCD)
             vName = vehicle.shortUserString
             vClass = getVehicleClassFromVehicleType(vehicle)
             vehicleModel.setName(vName)
             vehicleModel.setType(vClass)
+            vehicleModel.setIsPremium(vehicle.isPremium)
             requiredVehiclesArray.addViewModel(vehicleModel)
 
         requiredVehiclesArray.invalidate()
@@ -329,3 +331,7 @@ class EarlyAccessQuestsView(ViewImpl):
             return
         else:
             return quest.getStartTime()
+
+
+def getEarlyAccessBonusPacker():
+    return BonusUIPacker(getDefaultBonusPackersMap())

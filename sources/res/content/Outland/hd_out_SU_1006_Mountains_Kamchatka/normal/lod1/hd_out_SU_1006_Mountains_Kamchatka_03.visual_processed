@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_tiled_global.fx</fx>
+					<materialKind>111</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						albedoHeightTile0
+						<Texture>content/Environment/00_Tiles/dds/Rock_Kamchatka_03_1024_AM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile1
+						<Texture>content/Environment/00_Tiles/dds/Moss_Kamchatka_01_1024_AM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile2
+						<Texture>content/Environment/00_Tiles/dds/Rock_Kamchatka_02_1024_AM.dds</Texture>
+					</property>
+					<property>
+						blendMask
+						<Texture>content/Outland/hd_out_SU_1006_Mountains_Kamchatka/hd_out_SU_1006_Mountains_Kamchatka_03_blend.png</Texture>
+					</property>
+					<property>
+						colorTex
+						<Texture>content/Outland/hd_out_SU_1006_Mountains_Kamchatka/hd_out_SU_1006_Mountains_Kamchatka_03_GCM.dds</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Environment/00_Tiles/dds/Rock_Kamchatka_01_1024_DM.dds</Texture>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.000000 0.430000 0.380000 0.000000</Vector4>
+					</property>
+					<property>
+						g_dirtColorParams
+						<Vector4>0.000000 1.000000 0.630000 0.670000</Vector4>
+					</property>
+					<property>
+						g_fakeShadowsAndDetailParams
+						<Vector4>0.500000 0.500000 1.000000 0.010000</Vector4>
+					</property>
+					<property>
+						g_tileUVScale
+						<Vector4>10.000000 10.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_tintParams
+						<Vector4>0.000000 0.310000 0.100000 0.560000</Vector4>
+					</property>
+					<property>
+						globalTex
+						<Texture>content/Outland/hd_out_SU_1006_Mountains_Kamchatka/hd_out_SU_1006_Mountains_Kamchatka_03_GNM.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile0
+						<Texture>content/Environment/00_Tiles/dds/Rock_Kamchatka_01_1024_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile1
+						<Texture>content/Environment/00_Tiles/dds/Moss_Kamchatka_01_1024_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile2
+						<Texture>content/Environment/00_Tiles/dds/Rock_Kamchatka_02_1024_MAO.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile0
+						<Texture>content/Environment/00_Tiles/dds/Rock_Kamchatka_03_1024_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile1
+						<Texture>content/Environment/00_Tiles/dds/Moss_Kamchatka_01_1024_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile2
+						<Texture>content/Environment/00_Tiles/dds/Rock_Kamchatka_02_1024_GBMT.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.922787 34.948635 1.116791</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-65.269081 -5.547915 -62.378654</min>
+		<max>67.114655 69.897270 64.612236</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>129674</geometrySize>
+	<minUVDensity>0.000009</minUVDensity>
+</root>

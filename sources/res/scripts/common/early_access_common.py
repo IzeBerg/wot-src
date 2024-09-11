@@ -18,3 +18,7 @@ def getGroupName(groupName):
     if groupName == EARLY_ACCESS_POSTPR_KEY:
         return ('_').join((EARLY_ACCESS_PREFIX, ('{}').format(groupName)))
     return ('_').join((EARLY_ACCESS_PREFIX, ('cycle_{}').format(groupName)))
+
+
+def getQuestFinisherName(seasonID):
+    return ('_').join((EARLY_ACCESS_PREFIX, ('quests_finisher_season_{}').format(seasonID)))

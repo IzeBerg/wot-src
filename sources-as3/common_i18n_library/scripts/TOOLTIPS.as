@@ -25,10 +25,6 @@ package
       
       public static const TANKS_CAROUSEL_RESTORE_VEHICLE:String = "#tooltips:tanks_carousel/restore_vehicle";
       
-      public static const VEHICLEPREVIEW_MODULSNOMODULES:String = "#tooltips:vehiclePreview/modulsnoModules";
-      
-      public static const VEHICLEPREVIEW_MODULS:String = "#tooltips:vehiclePreview/moduls";
-      
       public static const PROGRESSIVEREWARD_WIDGET:String = "#tooltips:progressiveReward/widget";
       
       public static const BATTLERESULTS_PREMIUMBONUS_TANKSTATECHANGED:String = "#tooltips:battleResults/premiumBonus/tankStateChanged";
@@ -1237,6 +1233,10 @@ package
       
       public static const HANGAR_STARTBTN_PREVIEW_BODY:String = "#tooltips:hangar/startBtn/preview/body";
       
+      public static const HANGAR_STARTBTN_NOTSUPPORTFOR11LVL_HEADER:String = "#tooltips:hangar/startBtn/notSupportFor11lvl/header";
+      
+      public static const HANGAR_STARTBTN_NOTSUPPORTFOR11LVL_BODY:String = "#tooltips:hangar/startBtn/notSupportFor11lvl/body";
+      
       public static const HANGAR_STARTBTN_MAPSTRAINING_NOTREADY_HEADER:String = "#tooltips:hangar/startBtn/mapsTraining/notReady/header";
       
       public static const HANGAR_STARTBTN_MAPSTRAINING_NOTREADY_BODY:String = "#tooltips:hangar/startBtn/mapsTraining/notReady/body";
@@ -2245,6 +2245,8 @@ package
       
       public static const LEVEL_10:String = "#tooltips:level/10";
       
+      public static const LEVEL_11:String = "#tooltips:level/11";
+      
       public static const VEHICLE_INVENTORYCOUNT:String = "#tooltips:vehicle/inventoryCount";
       
       public static const BATTLEBOOSTER_INVENTORYCOUNT:String = "#tooltips:battleBooster/inventoryCount";
@@ -2551,6 +2553,8 @@ package
       
       public static const VEHICLESTATUS_UNSUITABLETOUNIT_HEADER:String = "#tooltips:vehicleStatus/unsuitableToUnit/header";
       
+      public static const VEHICLESTATUS_TEMPUNAVAILABLE_HEADER:String = "#tooltips:vehicleStatus/tempUnavailable/header";
+      
       public static const VEHICLESTATUS_ROTATIONGROUPUNLOCKED_HEADER:String = "#tooltips:vehicleStatus/rotationGroupUnlocked/header";
       
       public static const VEHICLESTATUS_FORBIDDENVEHICLE_BODY:String = "#tooltips:vehicleStatus/forbiddenVehicle/body";
@@ -2746,6 +2750,8 @@ package
       public static const TECHTREEPAGE_EVENT_NAME:String = "#tooltips:techTreePage/event/name";
       
       public static const TECHTREEPAGE_EVENT_TIME:String = "#tooltips:techTreePage/event/time";
+      
+      public static const TECHTREEPAGE_EVENTGENERAL_TIME:String = "#tooltips:techTreePage/eventGeneral/time";
       
       public static const TECHTREEPAGE_EVENT_TIMELEFT_DAYS:String = "#tooltips:techTreePage/event/timeLeft/days";
       
@@ -4299,6 +4305,10 @@ package
       
       public static const TANK_PARAMS_DESC_CHASSISREPAIRTIMEYOH:String = "#tooltips:tank_params/desc/chassisRepairTimeYoh";
       
+      public static const TANK_PARAMS_DESC_CHASSISREPAIRTIMEMULTITRACK_MULTITRACKPARALLEL:String = "#tooltips:tank_params/desc/chassisRepairTimeMultiTrack/multiTrackParallel";
+      
+      public static const TANK_PARAMS_DESC_CHASSISREPAIRTIMEMULTITRACK_MULTITRACKSEQUENT:String = "#tooltips:tank_params/desc/chassisRepairTimeMultiTrack/multiTrackSequent";
+      
       public static const TANK_PARAMS_AVGPARAMCOMMENT_DAMAGE:String = "#tooltips:tank_params/avgParamComment/damage";
       
       public static const TANK_PARAMS_AVGPARAMCOMMENT_PIERCINGPOWER:String = "#tooltips:tank_params/avgParamComment/piercingPower";
@@ -4553,9 +4563,13 @@ package
       
       public static const VEHICLEPREVIEW_MODULS_BODY:String = "#tooltips:vehiclePreview/moduls/body";
       
-      public static const VEHICLEPREVIEW_MODULSNOMODULES_HEADER:String = "#tooltips:vehiclePreview/modulsnoModules/header";
+      public static const VEHICLEPREVIEW_MODULS_NOMODULES_HEADER:String = "#tooltips:vehiclePreview/moduls/noModules/header";
       
-      public static const VEHICLEPREVIEW_MODULSNOMODULES_BODY:String = "#tooltips:vehiclePreview/modulsnoModules/body";
+      public static const VEHICLEPREVIEW_MODULS_NOMODULES_BODY:String = "#tooltips:vehiclePreview/moduls/noModules/body";
+      
+      public static const VEHICLEPREVIEW_MODULS_EARLYACCESS_HEADER:String = "#tooltips:vehiclePreview/moduls/earlyAccess/header";
+      
+      public static const VEHICLEPREVIEW_MODULS_EARLYACCESS_BODY:String = "#tooltips:vehiclePreview/moduls/earlyAccess/body";
       
       public static const VEHICLEPREVIEW_ELITEBONUS_CREW_HEADER:String = "#tooltips:vehiclePreview/eliteBonus/crew/header";
       
@@ -4895,6 +4909,10 @@ package
       
       public static const QUESTS_BONUSES_TOKEN_BATTLE_ROYALE_BODY:String = "#tooltips:quests/bonuses/token/battle_royale/body";
       
+      public static const QUESTS_BONUSES_TOKEN_VERSUS_AI_REGULAR_BODY:String = "#tooltips:quests/bonuses/token/versus_ai_regular/body";
+      
+      public static const QUESTS_BONUSES_TOKEN_VERSUS_AI_WINBACK_BODY:String = "#tooltips:quests/bonuses/token/versus_ai_winback/body";
+      
       public static const QUESTS_BONUSES_TOKEN_RESOURCE_CLAN_PROMORESOURCE_HEADER:String = "#tooltips:quests/bonuses/token/resource/clan_promoresource/header";
       
       public static const QUESTS_BONUSES_TOKEN_RESOURCE_CLAN_PROMORESOURCE_BODY:String = "#tooltips:quests/bonuses/token/resource/clan_promoresource/body";
@@ -4940,6 +4958,8 @@ package
       public static const ADVANCED_ARMOR_PIERCING:String = "#tooltips:advanced/ARMOR_PIERCING";
       
       public static const ADVANCED_ARMOR_PIERCING_CR:String = "#tooltips:advanced/ARMOR_PIERCING_CR";
+      
+      public static const ADVANCED_ARMOR_PIERCING_FSDS:String = "#tooltips:advanced/ARMOR_PIERCING_FSDS";
       
       public static const ADVANCED_FLAME:String = "#tooltips:advanced/FLAME";
       
@@ -4994,6 +5014,8 @@ package
       public static const ADVANCED_VEHICLECHASSIS:String = "#tooltips:advanced/vehicleChassis";
       
       public static const ADVANCED_VEHICLETRACKWITHINTRACKCHASSIS:String = "#tooltips:advanced/vehicleTrackWithinTrackChassis";
+      
+      public static const ADVANCED_VEHICLEMULTITRACKCHASSIS:String = "#tooltips:advanced/vehicleMultiTrackChassis";
       
       public static const ADVANCED_VEHICLEWHEELEDCHASSIS:String = "#tooltips:advanced/vehicleWheeledChassis";
       
@@ -5056,6 +5078,8 @@ package
       public static const ADVANCED_HEADER_SHELLTYPE_ARMOR_PIERCING:String = "#tooltips:advanced/header/shellType/ARMOR_PIERCING";
       
       public static const ADVANCED_HEADER_SHELLTYPE_ARMOR_PIERCING_CR:String = "#tooltips:advanced/header/shellType/ARMOR_PIERCING_CR";
+      
+      public static const ADVANCED_HEADER_SHELLTYPE_ARMOR_PIERCING_FSDS:String = "#tooltips:advanced/header/shellType/ARMOR_PIERCING_FSDS";
       
       public static const ADVANCED_HEADER_SHELLTYPE_FLAME:String = "#tooltips:advanced/header/shellType/FLAME";
       
@@ -5888,6 +5912,8 @@ package
       public static const STORAGE_FILTER_SHELLS_BTNS_TYPE_ARMOR_PIERCING:String = "#tooltips:storage/filter/shells/btns/type/armor_piercing";
       
       public static const STORAGE_FILTER_SHELLS_BTNS_TYPE_ARMOR_PIERCING_CR:String = "#tooltips:storage/filter/shells/btns/type/armor_piercing_cr";
+      
+      public static const STORAGE_FILTER_SHELLS_BTNS_TYPE_ARMOR_PIERCING_FSDS:String = "#tooltips:storage/filter/shells/btns/type/armor_piercing_fsds";
       
       public static const STORAGE_FILTER_SHELLS_BTNS_TYPE_HOLLOW_CHARGE:String = "#tooltips:storage/filter/shells/btns/type/hollow_charge";
       
@@ -7632,6 +7658,26 @@ package
       public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_AC_5_DESC:String = "#tooltips:notrecruitedtankman/tankmen_BP14_AC_5/desc";
       
       public static const NOTRECRUITEDTANKMAN_TANKMEN_BP14_AC_5_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_BP14_AC_5/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP15_1_DESC:String = "#tooltips:notrecruitedtankman/tankmen_BP15_1/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP15_1_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_BP15_1/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP15_2_DESC:String = "#tooltips:notrecruitedtankman/tankmen_BP15_2/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP15_2_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_BP15_2/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP15_3_DESC:String = "#tooltips:notrecruitedtankman/tankmen_BP15_3/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP15_3_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_BP15_3/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP15_4_DESC:String = "#tooltips:notrecruitedtankman/tankmen_BP15_4/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP15_4_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_BP15_4/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP15_5_DESC:String = "#tooltips:notrecruitedtankman/tankmen_BP15_5/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP15_5_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_BP15_5/label";
       
       public static const ELEN_SUMMARY_RANK_ENUM:Array = [ELEN_SUMMARY_RANK_1,ELEN_SUMMARY_RANK_2,ELEN_SUMMARY_RANK_3,ELEN_SUMMARY_RANK_4,ELEN_SUMMARY_RANK_NORANK];
       

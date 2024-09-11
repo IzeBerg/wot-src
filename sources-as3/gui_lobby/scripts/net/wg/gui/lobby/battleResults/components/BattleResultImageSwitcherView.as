@@ -51,7 +51,7 @@ import net.wg.data.constants.generated.STORE_CONSTANTS;
 class VehicleIconPreset
 {
    
-   private static const PRESETS:Vector.<VehicleIconPreset> = new <VehicleIconPreset>[new VehicleIconPreset(new <int>[1,2,3],STORE_CONSTANTS.ICON_SIZE_MEDIUM,700,30,1),new VehicleIconPreset(new <int>[4,5,6,7],STORE_CONSTANTS.ICON_SIZE_LARGE,610,0,0.65),new VehicleIconPreset(new <int>[8,9,10],STORE_CONSTANTS.ICON_SIZE_LARGE,570,-50,0.8)];
+   private static const PRESETS:Vector.<VehicleIconPreset> = new <VehicleIconPreset>[new VehicleIconPreset(new <int>[1,2,3],STORE_CONSTANTS.ICON_SIZE_MEDIUM,700,30,1),new VehicleIconPreset(new <int>[4,5,6,7],STORE_CONSTANTS.ICON_SIZE_LARGE,610,0,0.65),new VehicleIconPreset(new <int>[8,9,10,11],STORE_CONSTANTS.ICON_SIZE_LARGE,570,-50,0.8)];
     
    
    public var size:String = "";

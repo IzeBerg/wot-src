@@ -16,8 +16,9 @@ _MODULE_TYPES_ORDER = ('vehicleGun', 'vehicleTurret', 'vehicleEngine', 'vehicleC
                        'vehicleRadio', 'vehicleFuelTank')
 _MODULE_TYPES_ORDER_INDICES = dict((n, i) for i, n in enumerate(_MODULE_TYPES_ORDER))
 _SHELL_TYPES_ORDER = (
- SHELL_TYPES.ARMOR_PIERCING, SHELL_TYPES.ARMOR_PIERCING_CR,
- SHELL_TYPES.HOLLOW_CHARGE, SHELL_TYPES.HIGH_EXPLOSIVE, SHELL_TYPES.SMOKE,
+ SHELL_TYPES.ARMOR_PIERCING_FSDS, SHELL_TYPES.ARMOR_PIERCING,
+ SHELL_TYPES.ARMOR_PIERCING_CR, SHELL_TYPES.HOLLOW_CHARGE,
+ SHELL_TYPES.HIGH_EXPLOSIVE, SHELL_TYPES.SMOKE,
  SHELL_TYPES.ARMOR_PIERCING_HE, SHELL_TYPES.FLAME)
 _SHELL_TYPES_ORDER_INDICES = dict((n, i) for i, n in enumerate(_SHELL_TYPES_ORDER))
 _MAX_SHELL_TYPES_ORDER_INDEX = len(_SHELL_TYPES_ORDER_INDICES)
@@ -90,6 +91,12 @@ class VehicleChassis(VehicleModule):
     def isTrackWithinTrack(self):
         return g_paramsCache.isTrackWithinTrack(self.intCD)
 
+    def isMultiTrack(self):
+        return g_paramsCache.isMultiTrack(self.intCD)
+
+    def chassisType(self):
+        return g_paramsCache.chassisType(self.intCD)
+
     @property
     def icon(self):
         if self.isWheeledChassis():
@@ -110,6 +117,8 @@ class VehicleChassis(VehicleModule):
             return backport.image(R.images.gui.maps.icons.modules.hydraulicChassisIcon())
         else:
             if self.isTrackWithinTrack():
+                return backport.image(R.images.gui.maps.icons.modules.trackWithinTrack())
+            if self.isMultiTrack():
                 return backport.image(R.images.gui.maps.icons.modules.trackWithinTrack())
             return
 

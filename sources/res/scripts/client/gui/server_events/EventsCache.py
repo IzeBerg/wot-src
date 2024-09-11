@@ -9,7 +9,7 @@ from debug_utils import LOG_DEBUG
 from dossiers2.ui.achievements import ACHIEVEMENT_BLOCK
 from gui.server_events import caches as quests_caches
 from gui.server_events.event_items import MotiveQuest, Quest, ServerEventAbstract, createAction, createQuest
-from gui.server_events.events_helpers import getEventsData, getRerollTimeout, isBattleRoyale, isDailyEpic, isBattleMattersQuestID, isMapsTraining, isMarathon, isPremium, isRankedDaily, isRankedPlatform, isFunRandomQuest
+from gui.server_events.events_helpers import getEventsData, getRerollTimeout, isBattleRoyale, isDailyEpic, isBattleMattersQuestID, isMapsTraining, isMarathon, isPremium, isRankedDaily, isRankedPlatform, isFunRandomQuest, isVersusAIQuest
 from gui.server_events.formatters import getLinkedActionID
 from gui.server_events.modifiers import ACTION_MODIFIER_TYPE, ACTION_SECTION_TYPE, clearModifiersCache
 from gui.server_events.personal_missions_cache import PersonalMissionsCache
@@ -289,6 +289,8 @@ class EventsCache(IEventsCache):
                     quests = self.__battleRoyaleController.getQuests()
                     if qID not in quests:
                         return False
+                if isVersusAIQuest(qGroup):
+                    return q.isAvailable().isValid
                 if isMapsTraining(qGroup):
                     return q.shouldBeShown()
                 if isRankedSeasonOff and (isRankedDaily(qGroup) or isRankedPlatform(qGroup)):

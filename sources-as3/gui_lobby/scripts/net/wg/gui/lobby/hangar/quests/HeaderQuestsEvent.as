@@ -10,6 +10,8 @@ package net.wg.gui.lobby.hangar.quests
       public static const HEADER_QUEST_OVER:String = "onHeaderQuestOver";
       
       public static const ANIM_START:String = "onHeaderQuestAnimStart";
+      
+      public static const ANIM_END:String = "onHeaderQuestAnimEnd";
        
       
       public var questType:String = "";

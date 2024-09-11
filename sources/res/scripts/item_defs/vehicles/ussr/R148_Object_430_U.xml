@@ -117,6 +117,11 @@
 					<destroyed>vehicles/russian/R148_Object_430_U/_skins/R148_Object_430_U_BP8_3DSt/crash/lod0/Hull.model</destroyed>
 					<exploded>vehicles/russian/R148_Object_430_U/_skins/R148_Object_430_U_BP8_3DSt/crash/lod0/Hull.model</exploded>
 				</R148_Object_430_U_BP8_3DSt>
+				<R148_Object_430_U_3dst_Bastion>
+					<undamaged>vehicles/russian/R148_Object_430_U/_skins/R148_Object_430_U_3dst_Bastion/normal/lod0/Hull.model</undamaged>
+					<destroyed>vehicles/russian/R148_Object_430_U/_skins/R148_Object_430_U_3dst_Bastion/crash/lod0/Hull.model</destroyed>
+					<exploded>vehicles/russian/R148_Object_430_U/_skins/R148_Object_430_U_3dst_Bastion/crash/lod0/Hull.model</exploded>
+				</R148_Object_430_U_3dst_Bastion>
 			</sets>
 		</models>
 		<swinging>
@@ -154,16 +159,16 @@
 				<slotType>clan</slotType>
 				<slotId>10000</slotId>
 				<rayStart>
-					-0.36447 0.200979 2.89325
+					1.206322 0.54523 2.300794
 					<!--BW_String-->
 				</rayStart>
-				<rayEnd>
-					-0.36447 0.153806 2.86584
+				<rayEnd>1.206322 0.498057 2.273384</rayEnd>
+				<rayUp>
+					0 0.502399 -0.864636
 					<!--BW_String-->
-				</rayEnd>
-				<rayUp>0 0 -1</rayUp>
+				</rayUp>
 				<size>
-					0.19
+					0.17
 					<!--BW_String-->
 				</size>
 			</slot>
@@ -1586,6 +1591,122 @@
 				<clipAngle>0.372104</clipAngle>
 				<anchorShift>0.560578</anchorShift>
 			</slot>
+			<slot>
+				<slotType>projectionDecal</slotType>
+				<slotId>15065</slotId>
+				<tags>formfactor_square</tags>
+				<compatibleModels>R148_Object_430_U_3dst_Bastion</compatibleModels>
+				<position>0.376894 1.318171 2.415737</position>
+				<rotation>
+					0.535888 -0.000015 3.14156
+					<!--BW_String-->
+				</rotation>
+				<scale>
+					0.35 0.4 0.35
+					<!--BW_String-->
+				</scale>
+				<showOn>16</showOn>
+				<clipAngle>0.923494</clipAngle>
+			</slot>
+			<slot>
+				<slotType>projectionDecal</slotType>
+				<slotId>15066</slotId>
+				<tags>formfactor_square</tags>
+				<compatibleModels>R148_Object_430_U_3dst_Bastion</compatibleModels>
+				<position>-1.798577 0.693872 2.164063</position>
+				<rotation>1.570796 2.681682 1.123489</rotation>
+				<scale>
+					0.4 0.3 0.4
+					<!--BW_String-->
+				</scale>
+				<showOn>16</showOn>
+				<clipAngle>1.243001</clipAngle>
+			</slot>
+			<slot>
+				<slotType>projectionDecal</slotType>
+				<slotId>15067</slotId>
+				<tags>formfactor_square</tags>
+				<compatibleModels>R148_Object_430_U_3dst_Bastion</compatibleModels>
+				<position>
+					-1.78309 0.693871 0.909653
+					<!--BW_String-->
+				</position>
+				<rotation>
+					1.570796 0 -1.570796
+					<!--BW_String-->
+				</rotation>
+				<scale>
+					0.4 0.3 0.4
+					<!--BW_String-->
+				</scale>
+				<showOn>16</showOn>
+				<clipAngle>1.243001</clipAngle>
+			</slot>
+			<slot>
+				<slotType>projectionDecal</slotType>
+				<slotId>15068</slotId>
+				<tags>formfactor_square</tags>
+				<compatibleModels>R148_Object_430_U_3dst_Bastion</compatibleModels>
+				<position>-1.776992 0.693871 -0.350951</position>
+				<rotation>1.570796 0.080573 -1.507429</rotation>
+				<scale>
+					0.4 0.3 0.4
+					<!--BW_String-->
+				</scale>
+				<showOn>16</showOn>
+				<clipAngle>1.243001</clipAngle>
+			</slot>
+			<slot>
+				<slotType>projectionDecal</slotType>
+				<slotId>15069</slotId>
+				<tags>formfactor_square</tags>
+				<compatibleModels>R148_Object_430_U_3dst_Bastion</compatibleModels>
+				<position>1.798577 0.693872 2.164063</position>
+				<rotation>1.570796 -2.869423 -1.282946</rotation>
+				<scale>
+					0.4 0.3 0.4
+					<!--BW_String-->
+				</scale>
+				<showOn>16</showOn>
+				<clipAngle>1.243001</clipAngle>
+			</slot>
+			<slot>
+				<slotType>projectionDecal</slotType>
+				<slotId>15070</slotId>
+				<tags>formfactor_square</tags>
+				<compatibleModels>R148_Object_430_U_3dst_Bastion</compatibleModels>
+				<position>
+					1.78309 0.693871 0.909653
+					<!--BW_String-->
+				</position>
+				<rotation>1.570796 -0.239018 1.474116</rotation>
+				<scale>
+					0.4 0.3 0.4
+					<!--BW_String-->
+				</scale>
+				<showOn>16</showOn>
+				<clipAngle>1.243001</clipAngle>
+			</slot>
+			<slot>
+				<slotType>projectionDecal</slotType>
+				<slotId>15071</slotId>
+				<tags>formfactor_square</tags>
+				<compatibleModels>R148_Object_430_U_3dst_Bastion</compatibleModels>
+				<position>1.776992 0.693871 -0.350951</position>
+				<rotation>1.570796 -0.707059 0.908651</rotation>
+				<scale>
+					0.4 0.3 0.4
+					<!--BW_String-->
+				</scale>
+				<showOn>16</showOn>
+				<clipAngle>1.243001</clipAngle>
+			</slot>
+			<slot>
+				<slotType>attachment</slotType>
+				<slotId>18000</slotId>
+				<position>0 0 0</position>
+				<rotation>0 0 0</rotation>
+			</slot>
 		</customizationSlots>
 		<customization>
 			<customizableVehicleAreas>
@@ -1659,6 +1780,11 @@
 						<destroyed>vehicles/russian/R148_Object_430_U/_skins/R148_Object_430_U_BP8_3DSt/crash/lod0/Chassis.model</destroyed>
 						<exploded>vehicles/russian/R148_Object_430_U/_skins/R148_Object_430_U_BP8_3DSt/crash/lod0/Chassis.model</exploded>
 					</R148_Object_430_U_BP8_3DSt>
+					<R148_Object_430_U_3dst_Bastion>
+						<undamaged>vehicles/russian/R148_Object_430_U/_skins/R148_Object_430_U_3dst_Bastion/normal/lod0/Chassis.model</undamaged>
+						<destroyed>vehicles/russian/R148_Object_430_U/_skins/R148_Object_430_U_3dst_Bastion/crash/lod0/Chassis.model</destroyed>
+						<exploded>vehicles/russian/R148_Object_430_U/_skins/R148_Object_430_U_3dst_Bastion/crash/lod0/Chassis.model</exploded>
+					</R148_Object_430_U_3dst_Bastion>
 				</sets>
 			</models>
 			<traces>
@@ -1739,6 +1865,39 @@
 									<row1>-0.000000 0.200532 -0.223129</row1>
 									<row2>-0.000000 0.274108 0.246349</row2>
 									<row3>-0.000002 1.028807 -3.030316</row3>
+								</boxCollider>
+							</hullCollider>
+							<hullCollider>
+								<modelsSet>R148_Object_430_U_3dst_Bastion</modelsSet>
+								<boxCollider>
+									<row0>1.862810 0.000000 0.000000</row0>
+									<row1>0.000000 0.972838 0.000000</row1>
+									<row2>0.000000 0.000000 6.099010</row2>
+									<row3>0.000000 0.880750 0.078405</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>3.064700 0.000000 0.000000</row0>
+									<row1>0.000000 0.300000 0.000000</row1>
+									<row2>0.000000 0.000000 6.113660</row2>
+									<row3>0.000000 1.130960 0.039166</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>3.064700 -0.000000 -0.000001</row0>
+									<row1>0.000000 0.231394 0.190936</row1>
+									<row2>0.000000 -0.234560 0.284261</row2>
+									<row3>-0.000000 1.076100 3.081730</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>3.064700 0.000001 -0.000001</row0>
+									<row1>-0.000000 0.200532 -0.223129</row1>
+									<row2>-0.000000 0.274108 0.246349</row2>
+									<row3>-0.000002 1.028810 -3.030320</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>0.300000 0.000000 0.000000</row0>
+									<row1>0.000000 0.500000 0.000000</row1>
+									<row2>-0.000000 0.000000 6.500000</row2>
+									<row3>-1.699850 0.798649 0.000000</row3>
 								</boxCollider>
 							</hullCollider>
 							<hullCollider>
@@ -1835,6 +1994,39 @@
 									<row1>0.000000 0.200532 -0.223129</row1>
 									<row2>0.000000 0.274108 0.246349</row2>
 									<row3>0.000002 1.028807 -3.030316</row3>
+								</boxCollider>
+							</hullCollider>
+							<hullCollider>
+								<modelsSet>R148_Object_430_U_3dst_Bastion</modelsSet>
+								<boxCollider>
+									<row0>1.862810 0.000000 0.000000</row0>
+									<row1>0.000000 0.972838 0.000000</row1>
+									<row2>0.000000 0.000000 6.099010</row2>
+									<row3>-0.000000 0.880750 0.078405</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>3.064700 0.000000 -0.000000</row0>
+									<row1>0.000000 0.300000 -0.000000</row1>
+									<row2>-0.000000 0.000000 6.113660</row2>
+									<row3>0.146079 1.130958 0.039166</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>3.064700 0.000000 0.000001</row0>
+									<row1>0.000000 0.231394 0.190936</row1>
+									<row2>0.000000 -0.234560 0.284261</row2>
+									<row3>0.181007 1.076098 3.081730</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>3.064700 -0.000001 0.000001</row0>
+									<row1>0.000000 0.200532 -0.223129</row1>
+									<row2>0.000000 0.274108 0.246349</row2>
+									<row3>0.185273 1.028808 -3.030320</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>0.300000 0.000000 0.000000</row0>
+									<row1>0.000000 0.500000 0.000000</row1>
+									<row2>-0.000000 0.000000 6.500000</row2>
+									<row3>1.700000 0.798649 0.000000</row3>
 								</boxCollider>
 							</hullCollider>
 							<hullCollider>
@@ -3726,6 +3918,11 @@
 								<destroyed>vehicles/russian/R148_Object_430_U/_skins/R148_Object_430_U_BP8_3DSt/crash/lod0/Gun_01.model</destroyed>
 								<exploded>vehicles/russian/R148_Object_430_U/_skins/R148_Object_430_U_BP8_3DSt/crash/lod0/Gun_01.model</exploded>
 							</R148_Object_430_U_BP8_3DSt>
+							<R148_Object_430_U_3dst_Bastion>
+								<undamaged>vehicles/russian/R148_Object_430_U/_skins/R148_Object_430_U_3dst_Bastion/normal/lod0/Gun_01.model</undamaged>
+								<destroyed>vehicles/russian/R148_Object_430_U/_skins/R148_Object_430_U_3dst_Bastion/crash/lod0/Gun_01.model</destroyed>
+								<exploded>vehicles/russian/R148_Object_430_U/_skins/R148_Object_430_U_3dst_Bastion/crash/lod0/Gun_01.model</exploded>
+							</R148_Object_430_U_3dst_Bastion>
 						</sets>
 					</models>
 					<hitTester>
@@ -3846,6 +4043,28 @@
 								<!--BW_String-->
 							</size>
 						</slot>
+						<slot>
+							<slotType>insigniaOnGun</slotType>
+							<slotId>49001</slotId>
+							<rayStart>
+								0 0.034306 4.3
+								<!--BW_String-->
+							</rayStart>
+							<rayEnd>
+								0 0.034306 4.7
+								<!--BW_String-->
+							</rayEnd>
+							<rayUp>
+								0.09 0 0
+								<!--BW_String-->
+							</rayUp>
+							<applyToFabric>false</applyToFabric>
+							<compatibleModels>R148_Object_430_U_3dst_Bastion</compatibleModels>
+							<size>
+								0.39
+								<!--BW_String-->
+							</size>
+						</slot>
 					</customizationSlots>
 					<customization>
 						<customizableVehicleAreas>
@@ -3882,6 +4101,11 @@
 						<destroyed>vehicles/russian/R148_Object_430_U/_skins/R148_Object_430_U_BP8_3DSt/crash/lod0/Turret_01.model</destroyed>
 						<exploded>vehicles/russian/R148_Object_430_U/_skins/R148_Object_430_U_BP8_3DSt/crash/lod0/Turret_01.model</exploded>
 					</R148_Object_430_U_BP8_3DSt>
+					<R148_Object_430_U_3dst_Bastion>
+						<undamaged>vehicles/russian/R148_Object_430_U/_skins/R148_Object_430_U_3dst_Bastion/normal/lod0/Turret_01.model</undamaged>
+						<destroyed>vehicles/russian/R148_Object_430_U/_skins/R148_Object_430_U_3dst_Bastion/crash/lod0/Turret_01.model</destroyed>
+						<exploded>vehicles/russian/R148_Object_430_U/_skins/R148_Object_430_U_3dst_Bastion/crash/lod0/Turret_01.model</exploded>
+					</R148_Object_430_U_3dst_Bastion>
 				</sets>
 			</models>
 			<hitTester>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<params>
+		<param>
+			<name>New Float</name>
+			<type>float</type>
+		</param>
+	</params>
+	<node>
+		<name>AmmoSorting01</name>
+		<type>sequence</type>
+		<resource>content/Hangars/CharacterAnimations/hd_char_h_0007_Soldier_NoJacket/Sequence/AmmoSorting01.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<transition>
+			<to>Transition</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>1.000000</exitOffset>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-7.000000 -21.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>Transition</name>
+		<type>sequence</type>
+		<resource>content/Hangars/CharacterAnimations/hd_char_h_0007_Soldier_NoJacket/Sequence/AmmoSorting01_Trn.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<transition>
+			<to>Idle</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>1.000000</exitOffset>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-2.000000 106.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>Idle</name>
+		<type>sequence</type>
+		<resource>content/Hangars/CharacterAnimations/hd_char_h_0007_Soldier_NoJacket/Sequence/AmmoSorting01_Idle_01.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>-1</loop>
+		<uiPosition>0.000000 214.000000 0.000000</uiPosition>
+	</node>
+</root>

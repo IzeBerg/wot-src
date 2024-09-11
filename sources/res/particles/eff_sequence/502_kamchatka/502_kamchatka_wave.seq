@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>6.000000</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Water_splash</name>
+		<type>particle</type>
+		<resource>particles/environment/interior/502_kamchatka_water_splash.eff</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 1.400000</value>
+				<inTangent>0.054021 0.157895 -7.342052</inTangent>
+				<outTangent>0.000000 -0.184615 -5.630769</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>4.333333</startTime>
+				<value>0.000000 -0.800000 -23.000000</value>
+				<inTangent>-0.000000 -0.184615 -5.630769</inTangent>
+				<outTangent>0.132353 0.163510 -1.501182</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>1.533333</startTime>
+				<value>0.000000</value>
+				<inTangent>8.181837</inTangent>
+				<outTangent>19.999996</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.633333</startTime>
+				<value>2.000000</value>
+				<inTangent>19.999996</inTangent>
+				<outTangent>0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.600000</startTime>
+				<value>2.000000</value>
+				<inTangent>-0.000000</inTangent>
+				<outTangent>-19.999971</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.700000</startTime>
+				<value>0.000000</value>
+				<inTangent>-19.999971</inTangent>
+				<outTangent>-7.500021</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Foam</name>
+		<type>particle</type>
+		<resource>particles/environment/interior/502_kamchatka_water_foam.eff</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.065374 0.260870 -8.864999</inTangent>
+				<outTangent>0.065374 0.260870 -8.864999</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.300000</startTime>
+				<value>0.215733 0.860870 -29.254499</value>
+				<inTangent>0.065374 0.260870 -8.864999</inTangent>
+				<outTangent>0.065374 0.260870 -8.864999</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>1.633333</startTime>
+				<value>0.000000</value>
+				<inTangent>18.000004</inTangent>
+				<outTangent>18.000004</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.800000</startTime>
+				<value>3.000000</value>
+				<inTangent>18.000004</inTangent>
+				<outTangent>-0.491803</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>5.866667</startTime>
+				<value>1.000000</value>
+				<inTangent>-0.491803</inTangent>
+				<outTangent>-7.499980</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>6.000000</startTime>
+				<value>0.000000</value>
+				<inTangent>-7.499980</inTangent>
+				<outTangent>-7.499980</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Wave_disp</name>
+		<type>particle</type>
+		<resource>particles/environment/interior/502_kamchatka_wave.eff</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-0.009856 1.500000 1.415949</value>
+				<inTangent>0.054021 0.157895 -7.342052</inTangent>
+				<outTangent>0.059674 0.000000 -8.110410</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.866667</startTime>
+				<value>0.161209 1.500000 -21.833893</value>
+				<inTangent>0.059674 -0.000000 -8.110410</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.000000</startTime>
+				<value>0.161209 1.500000 -21.833893</value>
+				<inTangent>0.054021 -0.154603 -2.362328</inTangent>
+				<outTangent>0.010132 -0.000004 -1.852600</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+			<frame>
+				<startTime>5.000000</startTime>
+				<value>0.181473 1.499991 -25.539093</value>
+				<inTangent>0.010132 -0.000004 -1.852600</inTangent>
+				<outTangent>0.017877 -0.100000 -2.429713</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>1.466667</startTime>
+				<value>0.000000</value>
+				<inTangent>2.307693</inTangent>
+				<outTangent>7.500021</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.600000</startTime>
+				<value>1.000000</value>
+				<inTangent>7.500021</inTangent>
+				<outTangent>0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>4.500000</startTime>
+				<value>1.000000</value>
+				<inTangent>-0.000000</inTangent>
+				<outTangent>-4.306114</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>4.733334</startTime>
+				<value>-0.004763</value>
+				<inTangent>-4.306114</inTangent>
+				<outTangent>-4.306114</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Sound 0</name>
+		<type>sound</type>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>6.000000</duration>
+				<value>Root|</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-0.009890 -0.391710 1.415950</value>
+				<inTangent>0.044237 -0.070363 -6.012897</inTangent>
+				<outTangent>0.044237 -0.070363 -6.012897</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.866667</startTime>
+				<value>0.161160 -0.663780 -21.833920</value>
+				<inTangent>0.022119 -0.035181 -3.006449</inTangent>
+				<outTangent>0.022119 -0.035181 -3.006449</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>5.000000</startTime>
+				<value>0.161160 -0.663780 -21.833920</value>
+				<inTangent>-0.018130 0.000011 2.669065</inTangent>
+				<outTangent>-0.018130 0.000011 2.669065</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>6.000000</startTime>
+				<value>0.124901 -0.663757 -16.495789</value>
+				<inTangent>-0.036259 0.000023 5.338131</inTangent>
+				<outTangent>-0.036259 0.000023 5.338131</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>Sound</name>
+			<type>sound</type>
+			<frame>
+				<startTime>0.333333</startTime>
+				<duration>5.666667</duration>
+				<sequenceSound>amb_map_502_kamchatka_waves</sequenceSound>
+				<type>play_till_end</type>
+				<fade>0.000000</fade>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

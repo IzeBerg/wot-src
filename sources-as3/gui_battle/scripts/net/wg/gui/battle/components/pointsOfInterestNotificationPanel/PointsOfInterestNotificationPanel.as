@@ -25,9 +25,9 @@ package net.wg.gui.battle.components.pointsOfInterestNotificationPanel
       
       private static const POI_STATUS_INDICATORS_OFFSET_X:uint = POI_STATUS_INDICATOR_WIDTH + POI_STATUS_INDICATORS_GAP;
       
-      private static const SMALL_HEIGHT_Y_POS:int = 93;
+      private static const SMALL_HEIGHT_Y_POS:int = 127;
       
-      private static const DEFAULT_Y_POS:int = 115;
+      private static const DEFAULT_Y_POS:int = 149;
       
       private static const Y_POS_DIFF:int = DEFAULT_Y_POS - SMALL_HEIGHT_Y_POS;
       

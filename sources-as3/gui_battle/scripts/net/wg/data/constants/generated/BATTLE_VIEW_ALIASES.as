@@ -190,8 +190,6 @@ package net.wg.data.constants.generated
       public static const COMP7_TANK_CAROUSEL_FILTER_POPOVER:String = "comp7TankCarouselFilterPopover";
       
       public static const COSMIC_HUD:String = "cosmicHud";
-      
-      public static const RACES_HUD:String = "racesHud";
        
       
       public function BATTLE_VIEW_ALIASES()

@@ -33,7 +33,6 @@ from gui.game_control.blueprints_convert_sale_controller import BCSActionState
 from gui.impl import backport
 from gui.impl.backport import getNiceNumberFormat
 from gui.impl.gen import R
-from gui.impl.lobby.winback.winback_helpers import getLevelFromSelectableToken, getDiscountFromGoody, getDiscountFromBlueprint
 from gui.mapbox.mapbox_helpers import formatMapboxRewards
 from gui.prb_control.formatters import getPrebattleFullDescription
 from gui.ranked_battles.constants import YEAR_AWARD_SELECTABLE_OPT_DEVICE_PREFIX, YEAR_POINTS_TOKEN
@@ -42,7 +41,7 @@ from gui.ranked_battles.ranked_models import PostBattleRankInfo, RankChangeState
 from gui.resource_well.resource_well_constants import ServerResourceType
 from gui.achievements.achievements_constants import Achievements20SystemMessages
 from gui.server_events.awards_formatters import BATTLE_BONUS_X5_TOKEN, CompletionTokensBonusFormatter, CREW_BONUS_X3_TOKEN
-from gui.server_events.bonuses import DEFAULT_CREW_LVL, EntitlementBonus, MetaBonus, VehiclesBonus, SelectableBonus
+from gui.server_events.bonuses import DEFAULT_CREW_LVL, EntitlementBonus, MetaBonus, VehiclesBonus
 from gui.server_events.finders import PERSONAL_MISSION_TOKEN
 from gui.server_events.recruit_helper import getRecruitInfo
 from gui.shared import formatters as shared_fmts
@@ -3496,62 +3495,6 @@ class BattleMattersQuestAchievesFormatter(QuestAchievesFormatter):
             return isWithSelectableReward
 
 
-class WinbackQuestAchievesFormatter(QuestAchievesFormatter):
-    __winbackController = dependency.descriptor(IWinbackController)
-
-    @classmethod
-    def getSelectableRewards(cls, awardsDict):
-        if b'tokens' not in awardsDict:
-            return []
-        return [ SelectableBonus({tokenId: tokenData}) for tokenId, tokenData in awardsDict[b'tokens'].iteritems() if cls.__winbackController.isWinbackOfferToken(tokenId)
-               ]
-
-    @classmethod
-    def formatQuestAchieves(cls, data, asBattleFormatter, processCustomizations=True, processTokens=True):
-        rewards = deepcopy(data)
-        discounts = cls._formatDiscounts(rewards)
-        result = super(WinbackQuestAchievesFormatter, cls).formatQuestAchieves(rewards, asBattleFormatter, processCustomizations, processTokens)
-        if discounts is None:
-            return result
-        else:
-            if result is None:
-                return discounts
-            return cls._SEPARATOR.join((result, discounts))
-
-    @classmethod
-    def _formatDiscounts(cls, rewards):
-        from gui.impl.lobby.winback.winback_bonus_packer import handleWinbackDiscounts, cutVehDiscountsFromBonuses
-        descountsRes = R.strings.messenger.serviceChannelMessages.winback.awards
-        results = []
-        if b'blueprints' in rewards or b'goodies' in rewards:
-            rewards, winbackRewards = cutVehDiscountsFromBonuses(rewards)
-            winbackBonuses = handleWinbackDiscounts(winbackRewards)
-            for bonus in winbackBonuses:
-                for cd in bonus.getVehicleCDs():
-                    vehicle = bonus.getVehicle(cd)
-                    goodyID, blueprintCount = bonus.getResources(cd)
-                    results.append(text_styles.rewards(backport.text(descountsRes.discountConcrete(), name=vehicle.userName, creditDiscount=getDiscountFromGoody(goodyID)[0], expDiscount=int(getDiscountFromBlueprint(cd, blueprintCount)))))
-
-            if winbackBonuses:
-                return backport.text(descountsRes.discountHeader()) + (b', ').join(results)
-        return
-
-    @classmethod
-    def _processTokens(cls, tokens):
-        selectableBonuses = cls.getSelectableRewards(tokens)
-        selectablesList = [ (int(getLevelFromSelectableToken(first(bonus.getTokens()))), bonus.getType()) for bonus in selectableBonuses
-                          ]
-        if not selectablesList:
-            return b''
-        selectablesList = sorted(selectablesList, key=lambda item: item[0])
-        strs = []
-        for selectable in selectablesList:
-            level, selectableType = selectable
-            strs.append(backport.text(R.strings.messenger.serviceChannelMessages.winback.awards.dyn(selectableType)(), level=int2roman(level)))
-
-        return cls._SEPARATOR.join(strs)
-
-
 class Comp7QualificationRewardsFormatter(QuestAchievesFormatter):
     _BULLET = b'• '
     _SEPARATOR = b'<br/>' + _BULLET
@@ -4294,7 +4237,11 @@ class BattlePassRewardFormatter(WaitItemsSyncFormatter):
                             additionalText = backport.text(R.strings.messenger.serviceChannelMessages.battlePassReward.battle.final.additionalText())
                         elif self.__battlePass.isFinalLevel(chapterID, newLevel):
                             chapterName = backport.text(R.strings.battle_pass.chapter.fullName.quoted.num(chapterID)())
-                            description = backport.text(R.strings.messenger.serviceChannelMessages.battlePassReward.battle.chapterFinal.text(), chapter=text_styles.credits(chapterName))
+                            battleText = R.strings.messenger.serviceChannelMessages.battlePassReward.battle
+                            if self.__battlePass.isChapterExists(chapterID):
+                                description = backport.text(battleText.chapterFinal.text(), chapter=text_styles.credits(chapterName))
+                            else:
+                                description = backport.text(battleText.chapterFinalNotFind.text())
                             template = self.__PROGRESSION_BUTTON_TEMPLATE
                             savedData = {b'chapterID': chapterID}
                         else:
@@ -4333,8 +4280,10 @@ class BattlePassRewardFormatter(WaitItemsSyncFormatter):
             if not self.__battlePass.isFinalLevel(chapterID, newLevel):
                 description = backport.text(R.strings.messenger.serviceChannelMessages.battlePassReward.battle.newLevel.text(), newLevel=text_styles.credits(newLevel), chapter=text_styles.credits(chapterName))
                 priorityLevel = NotificationPriorityLevel.LOW
-            else:
+            elif self.__battlePass.isChapterExists(chapterID):
                 description = backport.text(R.strings.messenger.serviceChannelMessages.battlePassReward.battle.chapterFinal.text(), chapter=text_styles.credits(chapterName))
+            else:
+                description = backport.text(R.strings.messenger.serviceChannelMessages.battlePassReward.battle.chapterFinalNotFind.text())
             template = self.__PROGRESSION_BUTTON_TEMPLATE
             savedData = {b'chapterID': chapterID}
         else:
@@ -4355,8 +4304,10 @@ class BattlePassRewardFormatter(WaitItemsSyncFormatter):
         if self.__battlePass.isFinalLevel(chapterID, currentLevel):
             if self.__battlePass.isCompleted() and self.__battlePass.isResourceCompleted():
                 description = backport.text(R.strings.messenger.serviceChannelMessages.battlePassReward.battle.final.text(), season=self.__battlePass.getSeasonNum())
-            else:
+            elif self.__battlePass.isChapterExists(chapterID):
                 description = backport.text(R.strings.messenger.serviceChannelMessages.battlePassReward.battle.chapterFinal.text(), chapter=chapter)
+            else:
+                description = backport.text(R.strings.messenger.serviceChannelMessages.battlePassReward.battle.chapterFinalNotFind.text())
         else:
             level = currentLevel + 1
             chapter = text_styles.credits(backport.text(R.strings.battle_pass.chapter.fullName.num(chapterID)()))
@@ -5103,17 +5054,6 @@ class BattleMattersTokenAward(ServiceChannelFormatter):
 
     def format(self, message, *args):
         achievesFormatter = BattleMattersQuestAchievesFormatter()
-        achieves = achievesFormatter.formatQuestAchieves(message, asBattleFormatter=False)
-        formatted = g_settings.msgTemplates.format(self.__TEMPLATE, {b'achieves': achieves})
-        settings = self._getGuiSettings(message, self.__TEMPLATE)
-        return [MessageData(formatted, settings)]
-
-
-class WinbackSelectableAward(ServiceChannelFormatter):
-    __TEMPLATE = b'WinbackSelectedAward'
-
-    def format(self, message, *args):
-        achievesFormatter = WinbackQuestAchievesFormatter()
         achieves = achievesFormatter.formatQuestAchieves(message, asBattleFormatter=False)
         formatted = g_settings.msgTemplates.format(self.__TEMPLATE, {b'achieves': achieves})
         settings = self._getGuiSettings(message, self.__TEMPLATE)

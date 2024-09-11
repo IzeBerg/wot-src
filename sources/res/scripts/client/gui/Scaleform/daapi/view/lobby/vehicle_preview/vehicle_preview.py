@@ -249,6 +249,7 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
         if self._needToResetAppearance and not isMapsTrainingViewOpened:
             g_currentPreviewVehicle.selectNoVehicle()
             g_currentPreviewVehicle.resetAppearance()
+        g_currentPreviewVehicle.selectHeroTank(False)
         g_eventBus.handleEvent(events.LobbySimpleEvent(events.LobbySimpleEvent.VEHICLE_PREVIEW_HIDDEN), scope=EVENT_BUS_SCOPE.LOBBY)
         if self._backAlias == VIEW_ALIAS.VEHICLE_PREVIEW:
             g_currentVehicle.refreshModel()
@@ -550,6 +551,7 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
     def _onInventoryChanged(self, *_):
         if not BuyVehicleWindow.getInstances():
             g_currentPreviewVehicle.selectNoVehicle()
+            event_dispatcher.showHangar()
 
     def __onOfferChanged(self, event):
         self.__currentOffer = event.ctx.get('offer')

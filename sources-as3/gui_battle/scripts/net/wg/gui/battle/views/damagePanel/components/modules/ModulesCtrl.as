@@ -3,7 +3,11 @@ package net.wg.gui.battle.views.damagePanel.components.modules
    import net.wg.data.constants.Errors;
    import net.wg.data.constants.Values;
    import net.wg.data.constants.VehicleModules;
+   import net.wg.data.constants.VehicleTypes;
    import net.wg.data.constants.generated.BATTLE_ITEM_STATES;
+   import net.wg.gui.battle.views.damagePanel.components.modules.chassis.MultitrackChassisState;
+   import net.wg.gui.battle.views.damagePanel.components.modules.chassis.PartState;
+   import net.wg.gui.battle.views.damagePanel.components.modules.chassis.YohChassisState;
    import net.wg.gui.battle.views.damagePanel.interfaces.IAssetCreator;
    import net.wg.gui.battle.views.damagePanel.interfaces.IDamagePanelClickableItem;
    import net.wg.gui.battle.views.damagePanel.interfaces.IDamagePanelItemsCtrl;
@@ -49,9 +53,7 @@ package net.wg.gui.battle.views.damagePanel.components.modules
       
       private var _asserter:IAssertable;
       
-      private var _hasYoh:Boolean = false;
-      
-      private var _yohChassisState:YohChassisState = null;
+      private var _multitrackChassisState:MultitrackChassisState = null;
       
       private var _disposed:Boolean = false;
       
@@ -114,28 +116,34 @@ package net.wg.gui.battle.views.damagePanel.components.modules
             _loc2_++;
          }
          this._destroyedChassis.length = 0;
-         if(this._yohChassisState)
+         if(this._multitrackChassisState)
          {
-            this._yohChassisState.reset();
+            this._multitrackChassisState.reset();
          }
          this._isDestroyed = false;
       }
       
-      public function setChassis(param1:Boolean, param2:Boolean) : void
+      public function setChassis(param1:String) : void
       {
-         this._hasYoh = param2;
-         if(this._hasYoh)
+         if(VehicleTypes.hasMultitrack(param1))
          {
-            if(!this._yohChassisState)
+            if(!this._multitrackChassisState)
             {
-               this._yohChassisState = new YohChassisState();
+               switch(param1)
+               {
+                  case VehicleTypes.TANK_YOH:
+                     this._multitrackChassisState = new YohChassisState();
+                     break;
+                  default:
+                     this._multitrackChassisState = new MultitrackChassisState();
+               }
             }
          }
          else
          {
-            this._yohChassisState = null;
+            this._multitrackChassisState = null;
          }
-         if(param1)
+         if(param1 == VehicleTypes.WHEEL)
          {
             if(this._modules.indexOf(this._wheel) == -1)
             {
@@ -176,10 +184,10 @@ package net.wg.gui.battle.views.damagePanel.components.modules
             _loc5_ = ModuleAssets(this.getItemByName(param1));
             if(VehicleModules.isTrack(param1) || VehicleModules.isWheel(param1))
             {
-               if(this._hasYoh)
+               if(this._multitrackChassisState != null)
                {
-                  this._yohChassisState.updateRepairTime(param1,param3,param2);
-                  _loc6_ = this._yohChassisState.getHigherRepairTimePart();
+                  this._multitrackChassisState.updateRepairTime(param1,param3,param2);
+                  _loc6_ = this._multitrackChassisState.getRepairTimePart();
                   param2 = _loc6_ != null ? int(_loc6_.repairPercent) : int(0);
                   param3 = _loc6_ != null ? int(_loc6_.repairTime) : int(0);
                   _loc5_.setModuleRepairing(param2,param3,param4);
@@ -298,7 +306,7 @@ package net.wg.gui.battle.views.damagePanel.components.modules
          this._radio = null;
          this._fuelTank.dispose();
          this._fuelTank = null;
-         this._yohChassisState = null;
+         this._multitrackChassisState = null;
          if(this._chassis)
          {
             this._chassis.dispose();
@@ -320,10 +328,10 @@ package net.wg.gui.battle.views.damagePanel.components.modules
       {
          var _loc4_:String = null;
          var _loc5_:String = null;
-         if(this._hasYoh)
+         if(this._multitrackChassisState != null)
          {
-            this._yohChassisState.updateTrackState(param2,param3);
-            _loc4_ = this._yohChassisState.getChassisState();
+            this._multitrackChassisState.updateTrackState(param2,param3);
+            _loc4_ = this._multitrackChassisState.getChassisState();
             if(param3 == BATTLE_ITEM_STATES.DESTROYED || param3 == BATTLE_ITEM_STATES.CRITICAL || param3 == BATTLE_ITEM_STATES.REPAIRED)
             {
                this._lastBrokenChassisDevice = param2;
@@ -332,7 +340,7 @@ package net.wg.gui.battle.views.damagePanel.components.modules
             {
                this._lastBrokenChassisDevice = Values.EMPTY_STR;
             }
-            if(!this._yohChassisState.hasSameState())
+            if(!this._multitrackChassisState.hasSameState())
             {
                param1.state = _loc4_;
             }
@@ -463,180 +471,5 @@ package net.wg.gui.battle.views.damagePanel.components.modules
       {
          return this._disposed;
       }
-   }
-}
-
-import net.wg.data.constants.generated.BATTLE_ITEM_STATES;
-import net.wg.infrastructure.interfaces.entity.IDisposable;
-
-class YohChassisState implements IDisposable
-{
-    
-   
-   public var leftTrack0:PartState;
-   
-   public var rightTrack0:PartState;
-   
-   public var leftTrack1:PartState;
-   
-   public var rightTrack1:PartState;
-   
-   private var _prevState:String = "normal";
-   
-   private var _currentState:String = "normal";
-   
-   private var _disposed:Boolean = false;
-   
-   function YohChassisState()
-   {
-      this.leftTrack0 = new PartState();
-      this.rightTrack0 = new PartState();
-      this.leftTrack1 = new PartState();
-      this.rightTrack1 = new PartState();
-      super();
-   }
-   
-   public function updateTrackState(param1:String, param2:String) : void
-   {
-      this[param1].updateState(param2);
-   }
-   
-   public function updateRepairTime(param1:String, param2:int, param3:int) : void
-   {
-      this[param1].updateRepairTime(param2,param3);
-   }
-   
-   public function reset() : void
-   {
-      this.leftTrack0.reset();
-      this.leftTrack1.reset();
-      this.rightTrack1.reset();
-      this.rightTrack0.reset();
-      this._prevState = BATTLE_ITEM_STATES.NORMAL;
-      this._currentState = BATTLE_ITEM_STATES.NORMAL;
-   }
-   
-   public function getChassisState() : String
-   {
-      if(this.leftTrack0.state == BATTLE_ITEM_STATES.DESTROYED || this.rightTrack0.state == BATTLE_ITEM_STATES.DESTROYED)
-      {
-         return this.saveState(BATTLE_ITEM_STATES.DESTROYED);
-      }
-      if(this.leftTrack1.state == BATTLE_ITEM_STATES.DESTROYED || this.rightTrack1.state == BATTLE_ITEM_STATES.DESTROYED)
-      {
-         return this.saveState(BATTLE_ITEM_STATES.CRITICAL);
-      }
-      if(this.leftTrack0.state == BATTLE_ITEM_STATES.REPAIRED && this.leftTrack1.state == BATTLE_ITEM_STATES.DESTROYED || this.rightTrack0.state == BATTLE_ITEM_STATES.REPAIRED && this.rightTrack1.state == BATTLE_ITEM_STATES.DESTROYED)
-      {
-         return this.saveState(BATTLE_ITEM_STATES.REPAIRED);
-      }
-      if(this.leftTrack1.state == BATTLE_ITEM_STATES.REPAIRED && this.leftTrack1.prevState == BATTLE_ITEM_STATES.DESTROYED || this.rightTrack1.state == BATTLE_ITEM_STATES.REPAIRED && this.rightTrack1.prevState == BATTLE_ITEM_STATES.DESTROYED)
-      {
-         return this.saveState(BATTLE_ITEM_STATES.REPAIRED_FULL);
-      }
-      if(this.leftTrack0.state == BATTLE_ITEM_STATES.REPAIRED_FULL || this.rightTrack0.state == BATTLE_ITEM_STATES.REPAIRED_FULL)
-      {
-         return this.saveState(BATTLE_ITEM_STATES.REPAIRED_FULL);
-      }
-      return this.saveState(BATTLE_ITEM_STATES.NORMAL);
-   }
-   
-   public function getHigherRepairTimePart() : PartState
-   {
-      if(this.leftTrack0.repairTime > this.rightTrack0.repairTime)
-      {
-         if(this.leftTrack0.repairTime > 0)
-         {
-            return this.leftTrack0;
-         }
-      }
-      else if(this.rightTrack0.repairTime > 0)
-      {
-         return this.rightTrack0;
-      }
-      if(this.leftTrack1.repairTime > this.rightTrack1.repairTime)
-      {
-         if(this.leftTrack1.repairTime > 0)
-         {
-            return this.leftTrack1;
-         }
-      }
-      else if(this.rightTrack1.repairTime > 0)
-      {
-         return this.rightTrack1;
-      }
-      return null;
-   }
-   
-   public function dispose() : void
-   {
-      this._disposed = true;
-      this.leftTrack0 = null;
-      this.leftTrack1 = null;
-      this.rightTrack0 = null;
-      this.rightTrack1 = null;
-   }
-   
-   public function hasSameState() : Boolean
-   {
-      return this._currentState == this._prevState;
-   }
-   
-   private function saveState(param1:String) : String
-   {
-      this._prevState = this._currentState;
-      this._currentState = param1;
-      return param1;
-   }
-   
-   public function isDisposed() : Boolean
-   {
-      return this._disposed;
-   }
-}
-
-import net.wg.data.constants.Values;
-import net.wg.data.constants.generated.BATTLE_ITEM_STATES;
-
-class PartState
-{
-    
-   
-   public var state:String = "normal";
-   
-   public var repairTime:int = 0;
-   
-   public var repairPercent:int = 0;
-   
-   public var prevState:String = "normal";
-   
-   function PartState()
-   {
-      super();
-   }
-   
-   public function updateState(param1:String) : void
-   {
-      this.prevState = this.state;
-      this.state = param1;
-      if(this.state == BATTLE_ITEM_STATES.NORMAL || this.state == BATTLE_ITEM_STATES.REPAIRED || this.state == BATTLE_ITEM_STATES.REPAIRED_FULL)
-      {
-         this.repairTime = Values.ZERO;
-         this.repairPercent = Values.ZERO;
-      }
-   }
-   
-   public function updateRepairTime(param1:int, param2:int) : void
-   {
-      this.repairTime = param1;
-      this.repairPercent = param2;
-   }
-   
-   public function reset() : void
-   {
-      this.state = BATTLE_ITEM_STATES.NORMAL;
-      this.prevState = BATTLE_ITEM_STATES.NORMAL;
-      this.repairTime = Values.ZERO;
-      this.repairPercent = Values.ZERO;
    }
 }

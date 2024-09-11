@@ -354,6 +354,8 @@ CONDITIONAL_BONUSES = {('invisibilityMovingFactor', 'invisibilityStillFactor', T
                                                                                              (
                                                                                               'improvedSights_tier3', BonusTypes.OPTIONAL_DEVICE),
                                                                                              (
+                                                                                              'deluxeImprovedSights', BonusTypes.OPTIONAL_DEVICE),
+                                                                                             (
                                                                                               'trophyBasicImprovedSights', BonusTypes.OPTIONAL_DEVICE),
                                                                                              (
                                                                                               'trophyUpgradedImprovedSights', BonusTypes.OPTIONAL_DEVICE))}, 

@@ -24,6 +24,7 @@ package net.wg.gui.lobby.hangar
    import net.wg.gui.lobby.hangar.quests.IHeaderSecondaryWidget;
    import net.wg.gui.lobby.hangar.quests.ResourceWellEntryPoint;
    import net.wg.gui.lobby.hangar.quests.SecondaryEntryPoint;
+   import net.wg.gui.lobby.hangar.quests.WinbackWidget;
    import net.wg.gui.lobby.rankedBattles19.components.widget.RankedBattlesHangarWidget;
    import net.wg.infrastructure.base.meta.IHangarHeaderMeta;
    import net.wg.infrastructure.base.meta.impl.HangarHeaderMeta;
@@ -394,6 +395,8 @@ package net.wg.gui.lobby.hangar
       {
          switch(param1)
          {
+            case HANGAR_ALIASES.WINBACK_WIDGET:
+               return new WinbackWidget();
             case HANGAR_ALIASES.BATTLE_PASSS_ENTRY_POINT:
                return new BattlePassEntryPoint();
             case HANGAR_ALIASES.BATTLE_ROYALE_ENTRY_POINT:

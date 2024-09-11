@@ -74,6 +74,16 @@ class EarlyAccessBuyView(ViewImpl):
          (
           self.viewModel.onAboutEvent, showEarlyAccessInfoPage))
 
+    def _getCallbacks(self):
+        return (
+         (
+          'stats', self.__onStatsUpdated),)
+
+    def __onStatsUpdated(self, _):
+        goldBalance = self.__itemsCache.items.stats.money
+        with self.getViewModel().transaction() as (model):
+            model.setGoldBalance(goldBalance.gold)
+
     def __updateData(self):
         ctrl = self.__earlyAccessCtrl
         state = ctrl.getState()
@@ -109,7 +119,7 @@ class EarlyAccessBuyView(ViewImpl):
             state = EarlyAccessVehicleView.getVehicleState(veh, isNext2Unlock)
             vModel.setState(state)
             vModel.setPrice(self.__earlyAccessCtrl.getVehiclePrice(veh.compactDescr))
-            vModel.setIsPostProgression(veh.compactDescr in self.__earlyAccessCtrl.getPostProgressionVehicles())
+            vModel.setIsPostProgression(not self.__earlyAccessCtrl.isPostprogressionBlockedByQuestFinisher() and veh.compactDescr in self.__earlyAccessCtrl.getPostProgressionVehicles())
             vehicleModelArray.addViewModel(vModel)
 
         vehicleModelArray.invalidate()

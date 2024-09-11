@@ -800,6 +800,20 @@ package
       public static const BADGE_31034:String = "#badge:badge_31034";
       
       public static const BADGE_31034_DESCR:String = "#badge:badge_31034_descr";
+      
+      public static const BADGE_31035:String = "#badge:badge_31035";
+      
+      public static const BADGE_31035_DESCR:String = "#badge:badge_31035_descr";
+      
+      public static const BADGE_31036:String = "#badge:badge_31036";
+      
+      public static const BADGE_31036_DESCR:String = "#badge:badge_31036_descr";
+      
+      public static const BADGE_31037:String = "#badge:badge_31037";
+      
+      public static const BADGE_31037_DESCR:String = "#badge:badge_31037_descr";
+      
+      public static const SUFFIX_BADGE_31037:String = "#badge:suffix/badge_31037";
        
       
       public function BADGE()

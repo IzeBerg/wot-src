@@ -6,7 +6,7 @@ package net.wg.infrastructure.base.meta
    {
        
       
-      function as_show(param1:Array, param2:int) : void;
+      function as_show(param1:Array, param2:int, param3:Boolean) : void;
       
       function as_hide() : void;
       
@@ -28,11 +28,19 @@ package net.wg.infrastructure.base.meta
       
       function as_updateLeftTrack(param1:int, param2:Boolean) : void;
       
+      function as_updateSecondLeftTrack(param1:int, param2:Boolean) : void;
+      
       function as_hideLeftTrack() : void;
+      
+      function as_hideSecondLeftTrack() : void;
       
       function as_updateRightTrack(param1:int, param2:Boolean) : void;
       
+      function as_updateSecondRightTrack(param1:int, param2:Boolean) : void;
+      
       function as_hideRightTrack() : void;
+      
+      function as_hideSecondRightTrack() : void;
       
       function as_updateGun(param1:int, param2:Boolean) : void;
       

@@ -1342,7 +1342,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				$PARAMS(/featured/featured/items/platform_bp2024_14ep)
+				$PARAMS(/featured/featured/items/platform_bp2024_15ep)
 				<name>buyBattlePass</name>
 				<type>url</type>
 			</item>
@@ -1450,12 +1450,12 @@
 		<type>dict</type>
 		<value>
 			<item>
-				/$LANGUAGE_CODE/promocontent/14BPContentPage/
+				/$LANGUAGE_CODE/promocontent/15BPContentPage/
 				<name>infoPage</name>
 				<type>url</type>
 			</item>
 			<item>
-				/$LANGUAGE_CODE/promocontent/14BPContentPage/#bp14extrachapter
+				/$LANGUAGE_CODE/promocontent/15BPContentPage/#bp15extrachapter
 				<name>extraInfoPage</name>
 				<type>url</type>
 			</item>
@@ -1799,6 +1799,45 @@
 		</value>
 	</setting>
 	<setting>
+		<name>comp7DetailedHelpPages</name>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
+			<item>
+				<name>default</name>
+				<type>dict</type>
+				<value>
+					<item>
+						<name>pages</name>
+						<type>list</type>
+						<value>
+							<item>
+								<name>page</name>
+								<type>string</type>
+								<value>rules</value>
+							</item>
+							<item>
+								<name>page</name>
+								<type>string</type>
+								<value>poi</value>
+							</item>
+							<item>
+								<name>page</name>
+								<type>string</type>
+								<value>seasonModifiers</value>
+							</item>
+							<item>
+								<name>page</name>
+								<type>string</type>
+								<value>roleSkills</value>
+							</item>
+						</value>
+					</item>
+				</value>
+			</item>
+		</value>
+	</setting>
+	<setting>
 		<name>infoPageComp7</name>
 		<type>macros</type>
 		<macros>AUTH_REALM</macros>
@@ -1836,152 +1875,13 @@
 						<type>list</type>
 						<value>
 							<item>
-								<name>shop</name>
+								<name>newSeason</name>
 								<type>list</type>
 								<value>
 									<item>
 										<name>name</name>
 										<type>string</type>
-										<value>shop</value>
-									</item>
-									<item>
-										<name>type</name>
-										<type>string</type>
-										<value>page</value>
-									</item>
-								</value>
-							</item>
-							<item>
-								<name>maps</name>
-								<type>list</type>
-								<value>
-									<item>
-										<name>name</name>
-										<type>string</type>
-										<value>maps</value>
-									</item>
-									<item>
-										<name>type</name>
-										<type>string</type>
-										<value>maps</value>
-									</item>
-								</value>
-							</item>
-							<item>
-								<name>seasonVehicles</name>
-								<type>list</type>
-								<value>
-									<item>
-										<name>name</name>
-										<type>string</type>
-										<value>seasonVehicles</value>
-									</item>
-									<item>
-										<name>type</name>
-										<type>string</type>
-										<value>seasonVehicles</value>
-									</item>
-								</value>
-							</item>
-							<item>
-								<name>modificator</name>
-								<type>list</type>
-								<value>
-									<item>
-										<name>name</name>
-										<type>string</type>
-										<value>modificator</value>
-									</item>
-									<item>
-										<name>type</name>
-										<type>string</type>
-										<value>page</value>
-									</item>
-								</value>
-							</item>
-						</value>
-					</item>
-					<item>
-						<name>deprecatedMaps</name>
-						<type>list</type>
-						<value>
-							<item>
-								<type>string</type>
-								<value>04_himmelsdorf</value>
-							</item>
-							<item>
-								<type>string</type>
-								<value>115_sweden</value>
-							</item>
-							<item>
-								<type>string</type>
-								<value>31_airfield</value>
-							</item>
-							<item>
-								<type>string</type>
-								<value>08_ruinberg</value>
-							</item>
-						</value>
-					</item>
-					<item>
-						<name>seasonVehicles</name>
-						<type>list</type>
-						<value>
-							<item>
-								<type>int</type>
-								<value>61233</value>
-							</item>
-							<item>
-								<type>int</type>
-								<value>58385</value>
-							</item>
-							<item>
-								<type>int</type>
-								<value>9569</value>
-							</item>
-						</value>
-					</item>
-				</value>
-			</item>
-		</value>
-	</setting>
-	<setting>
-		<name>IntroPagesComp7Slides</name>
-		<type>macros</type>
-		<macros>AUTH_REALM</macros>
-		<value>
-			<item>
-				<name>default</name>
-				<type>dict</type>
-				<value>
-					<item>
-						<name>pages</name>
-						<type>list</type>
-						<value>
-							<item>
-								<name>crimsonSeason</name>
-								<type>list</type>
-								<value>
-									<item>
-										<name>name</name>
-										<type>string</type>
-										<value>crimsonSeason</value>
-									</item>
-									<item>
-										<name>type</name>
-										<type>string</type>
-										<value>page</value>
-									</item>
-								</value>
-							</item>
-							<item>
-								<name>vehiclesOnMap</name>
-								<type>list</type>
-								<value>
-									<item>
-										<name>name</name>
-										<type>string</type>
-										<value>vehiclesOnMap</value>
+										<value>newSeason</value>
 									</item>
 									<item>
 										<name>type</name>
@@ -2007,6 +1907,22 @@
 								</value>
 							</item>
 							<item>
+								<name>seasonVehicles</name>
+								<type>list</type>
+								<value>
+									<item>
+										<name>name</name>
+										<type>string</type>
+										<value>seasonVehicles</value>
+									</item>
+									<item>
+										<name>type</name>
+										<type>string</type>
+										<value>seasonVehicles</value>
+									</item>
+								</value>
+							</item>
+							<item>
 								<name>roleSkills</name>
 								<type>list</type>
 								<value>
@@ -2014,22 +1930,6 @@
 										<name>name</name>
 										<type>string</type>
 										<value>roleSkills</value>
-									</item>
-									<item>
-										<name>type</name>
-										<type>string</type>
-										<value>page</value>
-									</item>
-								</value>
-							</item>
-							<item>
-								<name>introQualification</name>
-								<type>list</type>
-								<value>
-									<item>
-										<name>name</name>
-										<type>string</type>
-										<value>introQualification</value>
 									</item>
 									<item>
 										<name>type</name>
@@ -2055,6 +1955,22 @@
 								</value>
 							</item>
 							<item>
+								<name>vehiclesOnMap</name>
+								<type>list</type>
+								<value>
+									<item>
+										<name>name</name>
+										<type>string</type>
+										<value>vehiclesOnMap</value>
+									</item>
+									<item>
+										<name>type</name>
+										<type>string</type>
+										<value>page</value>
+									</item>
+								</value>
+							</item>
+							<item>
 								<name>shop</name>
 								<type>list</type>
 								<value>
@@ -2062,6 +1978,75 @@
 										<name>name</name>
 										<type>string</type>
 										<value>shop</value>
+									</item>
+									<item>
+										<name>type</name>
+										<type>string</type>
+										<value>page</value>
+									</item>
+								</value>
+							</item>
+						</value>
+					</item>
+					<item>
+						<name>seasonVehicles</name>
+						<type>list</type>
+						<value>
+							<item>
+								<type>int</type>
+								<value>20817</value>
+							</item>
+							<item>
+								<type>int</type>
+								<value>58385</value>
+							</item>
+							<item>
+								<type>int</type>
+								<value>58161</value>
+							</item>
+						</value>
+					</item>
+				</value>
+			</item>
+		</value>
+	</setting>
+	<setting>
+		<name>IntroPagesComp7Slides</name>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
+			<item>
+				<name>default</name>
+				<type>dict</type>
+				<value>
+					<item>
+						<name>pages</name>
+						<type>list</type>
+						<value>
+							<item>
+								<name>newSeason</name>
+								<type>list</type>
+								<value>
+									<item>
+										<name>name</name>
+										<type>string</type>
+										<value>newSeason</value>
+									</item>
+									<item>
+										<name>type</name>
+										<type>string</type>
+										<value>page</value>
+									</item>
+								</value>
+							</item>
+							<item>
+								<name>pointsOfInterest</name>
+								<type>list</type>
+								<value>
+									<item>
+										<name>name</name>
+										<type>string</type>
+										<value>pointsOfInterest</value>
 									</item>
 									<item>
 										<name>type</name>
@@ -2086,6 +2071,70 @@
 									</item>
 								</value>
 							</item>
+							<item>
+								<name>roleSkills</name>
+								<type>list</type>
+								<value>
+									<item>
+										<name>name</name>
+										<type>string</type>
+										<value>roleSkills</value>
+									</item>
+									<item>
+										<name>type</name>
+										<type>string</type>
+										<value>page</value>
+									</item>
+								</value>
+							</item>
+							<item>
+								<name>ranks</name>
+								<type>list</type>
+								<value>
+									<item>
+										<name>name</name>
+										<type>string</type>
+										<value>ranks</value>
+									</item>
+									<item>
+										<name>type</name>
+										<type>string</type>
+										<value>page</value>
+									</item>
+								</value>
+							</item>
+							<item>
+								<name>vehiclesOnMap</name>
+								<type>list</type>
+								<value>
+									<item>
+										<name>name</name>
+										<type>string</type>
+										<value>vehiclesOnMap</value>
+									</item>
+									<item>
+										<name>type</name>
+										<type>string</type>
+										<value>page</value>
+									</item>
+								</value>
+							</item>
+							<item>
+								<name>shop</name>
+								<type>list</type>
+								<value>
+									<item>
+										<name>name</name>
+										<type>string</type>
+										<value>shop</value>
+									</item>
+									<item>
+										<name>type</name>
+										<type>string</type>
+										<value>page</value>
+									</item>
+								</value>
+							</item>
 						</value>
 					</item>
 					<item>
@@ -2094,7 +2143,7 @@
 						<value>
 							<item>
 								<type>int</type>
-								<value>61233</value>
+								<value>20817</value>
 							</item>
 							<item>
 								<type>int</type>
@@ -2102,7 +2151,7 @@
 							</item>
 							<item>
 								<type>int</type>
-								<value>9569</value>
+								<value>58161</value>
 							</item>
 						</value>
 					</item>
@@ -2139,23 +2188,6 @@
 			</item>
 			<item>
 				https://webbrg-rpt.tanki.su/$LANGUAGE_CODE/promocontent/polygon/
-				<name>CT</name>
-				<type>url</type>
-			</item>
-		</value>
-	</setting>
-	<setting>
-		<name>infoPageRaces</name>
-		<type>macros</type>
-		<macros>AUTH_REALM</macros>
-		<value>
-			<item>
-				https://webbrg.tanki.su/ru/promocontent/race_birthday/
-				<name>default</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.tanki.su/ru/promocontent/race_birthday/
 				<name>CT</name>
 				<type>url</type>
 			</item>

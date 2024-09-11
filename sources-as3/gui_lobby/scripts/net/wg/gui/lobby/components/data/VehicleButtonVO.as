@@ -24,6 +24,8 @@ package net.wg.gui.lobby.components.data
       
       public var isPremium:Boolean = false;
       
+      public var isEarlyAccess:Boolean = false;
+      
       public var vehicleId:uint = 0;
       
       public var vehicleState:uint = 0;

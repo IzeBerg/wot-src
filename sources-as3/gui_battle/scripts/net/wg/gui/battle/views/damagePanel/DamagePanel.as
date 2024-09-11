@@ -15,6 +15,7 @@ package net.wg.gui.battle.views.damagePanel
    import net.wg.data.constants.Time;
    import net.wg.data.constants.Values;
    import net.wg.data.constants.VehicleModules;
+   import net.wg.data.constants.VehicleTypes;
    import net.wg.data.constants.generated.ATLAS_CONSTANTS;
    import net.wg.data.constants.generated.BATTLEATLAS;
    import net.wg.data.constants.generated.BATTLE_ITEM_STATES;
@@ -74,8 +75,6 @@ package net.wg.gui.battle.views.damagePanel
       private static const LABEL_SIEGE_MODE_OFF:String = "off";
       
       private static const LABEL_SIEGE_MODE_ON:String = "on";
-      
-      private static const YOH_POSTFIX:String = "Yoh";
        
       
       public var playerTF:TextField;
@@ -308,9 +307,9 @@ package net.wg.gui.battle.views.damagePanel
          }
       }
       
-      override protected function setup(param1:String, param2:int, param3:String, param4:Array, param5:Array, param6:Boolean, param7:Boolean, param8:Boolean, param9:Boolean) : void
+      override protected function setup(param1:String, param2:int, param3:String, param4:Array, param5:Array, param6:Boolean, param7:Boolean) : void
       {
-         this._hasWheel = param7;
+         this._hasWheel = param3 == VehicleTypes.WHEEL;
          this.updateHealth(param1,param2);
          if(this._tankmenCtrl != null)
          {
@@ -318,25 +317,19 @@ package net.wg.gui.battle.views.damagePanel
             this.changeDisplayListForCtrl(this._tankmenCtrl,false);
             this._tankmenCtrl.dispose();
          }
-         if(!param8)
+         if(!param7)
          {
             this.initLockChassis();
-            this._lockChassis.visible = !param8;
+            this._lockChassis.visible = !param7;
          }
          this.tankIndicator.isVehicleWithTurret = param6;
-         this.tankIndicator.isVehicleWithWheel = this._hasWheel;
-         this.tankIndicator.hasYoh = param9;
+         this.tankIndicator.setRotatorType(param3,param5);
          this.speedModeIndicator.visible = this._hasWheel;
-         this._modulesCtrl.setChassis(this._hasWheel,param9);
+         this._modulesCtrl.setChassis(param3);
          this._modulesCtrl.hasTurretRotator = param6;
          this.changeDisplayListForCtrl(this._modulesCtrl,true);
          this.toggleClickableAreas(this._modulesCtrl.getItems(),true);
          this.updateModuleAssets();
-         if(param9)
-         {
-            param3 += YOH_POSTFIX;
-         }
-         this.tankIndicator.setRotatorType(param3,param5);
          this._tankmenCtrl = new TankmenCtrl(param4);
          this.changeDisplayListForCtrl(this._tankmenCtrl,true);
          this.toggleClickableAreas(this._tankmenCtrl.getItems(),true);
@@ -422,7 +415,7 @@ package net.wg.gui.battle.views.damagePanel
       
       public function as_setSpeedMode(param1:Boolean) : void
       {
-         if(this.tankIndicator.isVehicleWithWheel)
+         if(this._hasWheel)
          {
             this.tankIndicator.setSpeedMode(param1);
             this.speedModeIndicator.gotoAndStop(!!param1 ? LABEL_SIEGE_MODE_ON : LABEL_SIEGE_MODE_OFF);

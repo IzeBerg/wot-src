@@ -1921,6 +1921,8 @@ package
       
       public static const DETAILS_DOSSIER_43_BATTLESCOUNT:String = "#quests:details/dossier/43/battlesCount";
       
+      public static const DETAILS_DOSSIER_50_BATTLESCOUNT:String = "#quests:details/dossier/50/battlesCount";
+      
       public static const DETAILS_MODIFIERS_TITLE_DISCOUNT:String = "#quests:details/modifiers/title/discount";
       
       public static const DETAILS_MODIFIERS_TITLE_SELLING:String = "#quests:details/modifiers/title/selling";
@@ -2398,6 +2400,10 @@ package
       public static const TOKEN_DEFAULT_TANKREWARDS:String = "#quests:token/default/tankrewards";
       
       public static const TOKEN_DEFAULT_BATTLE_ROYALE:String = "#quests:token/default/battle_royale";
+      
+      public static const TOKEN_DEFAULT_VERSUS_AI_REGULAR:String = "#quests:token/default/versus_ai_regular";
+      
+      public static const TOKEN_DEFAULT_VERSUS_AI_WINBACK:String = "#quests:token/default/versus_ai_winback";
       
       public static const BONUSNAME_CREDITS:String = "#quests:bonusName/credits";
       

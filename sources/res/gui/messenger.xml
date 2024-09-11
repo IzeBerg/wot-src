@@ -1357,6 +1357,16 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 			<icon>GoldIcon</icon>
 			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
 		</FinancialTransactionWithGoldHeaderSysMessage>
+		<FinancialTransactionWithArmoryCoinsHeaderSysMessage>
+			<type>yellow</type>
+			<icon>ArmoryCoinIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+		</FinancialTransactionWithArmoryCoinsHeaderSysMessage>
+		<FinancialTransactionWithGoldAndArmoryCoinsHeaderSysMessage>
+			<type>yellow</type>
+			<icon>GoldIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+		</FinancialTransactionWithGoldAndArmoryCoinsHeaderSysMessage>
 		<FortificationStartUpSysMessage>
 			<type>yellow</type>
 			<icon>nut</icon>
@@ -1416,6 +1426,32 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 			<icon>MessageIcon</icon>
 			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
 		</MessageHeaderSysMessage>
+		<SurveyNotificationSysMessage>
+			<type>grey</type>
+			<icon>MessageIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+			<bgIcon>BgSurvey</bgIcon>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#system_messages:buttons/goToSurvey)</label>
+					<action>openPollBrowser</action>
+				</button>
+			</buttonsLayout>
+		</SurveyNotificationSysMessage>
+		<ApplicationFormNotificationSysMessage>
+			<type>grey</type>
+			<icon>MessageIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+			<bgIcon>BgApplicationNotification</bgIcon>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#system_messages:buttons/goToApplicationForm)</label>
+					<action>openPollBrowser</action>
+				</button>
+			</buttonsLayout>
+		</ApplicationFormNotificationSysMessage>
 		<AOGASNotify>
 			<priority>high</priority>
 			<type>yellow</type>
@@ -3344,54 +3380,6 @@ _(#lootboxes:notification/lootBoxesAutoOpen/boxes)&lt;br/&gt;%(rewards)s</messag
 			</buttonsLayout>
 			<buttonsAlign>center</buttonsAlign>
 		</CollectionsEntrySysMessage>
-		<WinbackSelectableRewardReminder>
-			<type>grey</type>
-			<icon>winback_discount</icon>
-			<groupID>offer</groupID>
-			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#messenger:serviceChannelMessages/winbackSelectableRewardEntry/header)&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/winbackSelectableRewardEntry/body)&lt;/font&gt;</message>
-			<buttonsLayout>
-				<button>
-					<type>submit</type>
-					<label>_(#messenger:serviceChannelMessages/winbackSelectableRewardEntry/button)</label>
-					<action>openWinbackSelectableRewardView</action>
-				</button>
-			</buttonsLayout>
-		</WinbackSelectableRewardReminder>
-		<WinbackSelectableTokenAward>
-			<priority>low</priority>
-			<type>grey</type>
-			<icon>winback_discount</icon>
-			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&apos;&gt;_(#messenger:serviceChannelMessages/winback/awards/header)&lt;/font&gt;
-&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/winback/awards/body)&lt;/font&gt;
-&lt;font color=&apos;#D6D7D4&apos;&gt;%(achieves)s&lt;/font&gt;&lt;br/&gt;</message>
-			<buttonsLayout>
-				<button>
-					<type>submit</type>
-					<label>_(#messenger:serviceChannelMessages/winback/awards/button)</label>
-					<action>openWinbackSelectableRewardView</action>
-				</button>
-			</buttonsLayout>
-		</WinbackSelectableTokenAward>
-		<WinbackQuestAward>
-			<priority>low</priority>
-			<type>grey</type>
-			<icon>winback_discount</icon>
-			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&apos;&gt;_(#messenger:serviceChannelMessages/winback/awards/header)&lt;/font&gt;
-&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/winback/awards/body)&lt;/font&gt;&lt;br/&gt;%(achieves)s</message>
-		</WinbackQuestAward>
-		<WinbackSelectedAward>
-			<priority>low</priority>
-			<type>grey</type>
-			<icon>winback_discount</icon>
-			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&apos;&gt;_(#messenger:serviceChannelMessages/winback/awards/header)&lt;/font&gt;
-%(achieves)s</message>
-		</WinbackSelectedAward>
-		<WinbackSimpleAward>
-			<type>grey</type>
-			<icon>InformationIcon</icon>
-			<priority>medium</priority>
-			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#messenger:serviceChannelMessages/progressiveReward/header)&lt;/font&gt;&lt;br/&gt;%(achieves)s</message>
-		</WinbackSimpleAward>
 		<ArmoryYardMainSysMessage>
 			<type>grey</type>
 			<icon>InformationIcon</icon>

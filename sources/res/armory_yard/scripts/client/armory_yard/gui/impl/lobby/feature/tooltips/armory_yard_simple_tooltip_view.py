@@ -11,6 +11,7 @@ from armory_yard.gui.impl.gen.view_models.views.lobby.feature.armory_yard_main_v
 class ArmoryYardSimpleTooltipView(ViewImpl):
     __slots__ = ('__state', '__id')
     _RES_ROOT = R.strings.armory_yard.tooltip
+    _RES_SHOP_ROOT = R.strings.armory_shop.tooltip
     __armoryYardCtrl = dependency.descriptor(IArmoryYardController)
 
     def __init__(self, state, id):
@@ -35,8 +36,9 @@ class ArmoryYardSimpleTooltipView(ViewImpl):
         if self.__state == SimpleTooltipStates.CHAPTER:
             return backport.text(self._RES_ROOT.chapter.disabled.header())
         if self.__state == SimpleTooltipStates.TAB:
-            tab = 'progression' if self.__id == TabId.PROGRESS else 'quests'
-            return backport.text(self._RES_ROOT.tab.dyn(tab).header())
+            return backport.text(self._RES_ROOT.tab.dyn(self.__getTabByTabID()).header())
+        if self.__state == SimpleTooltipStates.SHOPINFO:
+            return backport.text(self._RES_SHOP_ROOT.shop.info.header())
         return ''
 
     def __getBody(self):
@@ -52,10 +54,22 @@ class ArmoryYardSimpleTooltipView(ViewImpl):
                     return backport.text(self._RES_ROOT.chapter.disabled.doPrevious.body(), count=prevChapterTokens)
                 prevChapterTokens = ctrl.totalTokensInChapter(cycle.ID) - ctrl.receivedTokensInChapter(cycle.ID)
 
-        elif self.__state == SimpleTooltipStates.TAB:
-            tab = 'progression' if self.__id == TabId.PROGRESS else 'quests'
-            return backport.text(self._RES_ROOT.tab.dyn(tab).body())
+        else:
+            if self.__state == SimpleTooltipStates.TAB:
+                return backport.text(self._RES_ROOT.tab.dyn(self.__getTabByTabID()).body())
+            if self.__state == SimpleTooltipStates.SHOPINFO:
+                return backport.text(self._RES_SHOP_ROOT.shop.info.body())
         return ''
+
+    def __getTabByTabID(self):
+        defaultTab = 'progression'
+        if self.__id == TabId.PROGRESS:
+            return 'progression'
+        if self.__id == TabId.QUESTS:
+            return 'quests'
+        if self.__id == TabId.SHOP:
+            return 'shop'
+        return defaultTab
 
     def __getNote(self):
         if not self.__armoryYardCtrl.isEnabled():

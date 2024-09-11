@@ -2,7 +2,7 @@ from collections import defaultdict
 import typing, BigWorld
 from CurrentVehicle import g_currentVehicle
 from adisp import adisp_process
-from constants import PREBATTLE_TYPE, EventPhase
+from constants import EventPhase
 from debug_utils import LOG_DEBUG, LOG_ERROR
 from gui import DialogsInterface, SystemMessages, makeHtmlString
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
@@ -18,12 +18,13 @@ from gui.customization.constants import CustomizationModeSource, CustomizationMo
 from gui.impl import backport
 from gui.impl.gen import R
 from gui.impl.lobby.early_access.early_access_window_events import showEarlyAccessQuestsView, showEarlyAccessVehicleView
+from gui.impl.lobby.poll.poll_browser_action import PollBrowserButtonHandler
 from gui.platform.base.statuses.constants import StatusTypes
 from gui.prb_control import prbDispatcherProperty, prbInvitesProperty
 from gui.ranked_battles import ranked_helpers
 from gui.server_events.events_dispatcher import showMissionsBattlePass, showMissionsMapboxProgression, showPersonalMission
 from gui.shared import EVENT_BUS_SCOPE, actions, event_dispatcher as shared_events, events, g_eventBus
-from gui.shared.event_dispatcher import hideWebBrowserOverlay, showBlueprintsSalePage, showCollectionAwardsWindow, showCollectionWindow, showDelayedReward, showEpicBattlesAfterBattleWindow, showPersonalReservesConversion, showProgressiveRewardWindow, showRankedYearAwardWindow, showResourceWellProgressionWindow, showShop, showSteamConfirmEmailOverlay, showWinbackSelectRewardView, showWotPlusIntroView, showBarracks
+from gui.shared.event_dispatcher import hideWebBrowserOverlay, showBlueprintsSalePage, showCollectionAwardsWindow, showCollectionWindow, showDelayedReward, showEpicBattlesAfterBattleWindow, showPersonalReservesConversion, showProgressiveRewardWindow, showRankedYearAwardWindow, showResourceWellProgressionWindow, showShop, showSteamConfirmEmailOverlay, showWotPlusIntroView, showBarracks
 from gui.shared.notifications import NotificationPriorityLevel
 from gui.shared.system_factory import collectAllNotificationsActionsHandlers, registerNotificationsActionsHandlers
 from gui.shared.utils import decorators
@@ -36,7 +37,7 @@ from notification.settings import NOTIFICATION_BUTTON_STATE, NOTIFICATION_TYPE
 from predefined_hosts import g_preDefinedHosts
 from skeletons.gui.battle_results import IBattleResultsService
 from skeletons.gui.customization import ICustomizationService
-from skeletons.gui.game_control import IBattlePassController, IBattleRoyaleController, IBrowserController, IMapboxController, ICollectionsSystemController, IRankedBattlesController, ISeniorityAwardsController, IReferralProgramController, IWinbackController, IArmoryYardController, IShopSalesEventController
+from skeletons.gui.game_control import IBattlePassController, IBattleRoyaleController, IBrowserController, IMapboxController, ICollectionsSystemController, IRankedBattlesController, ISeniorityAwardsController, IReferralProgramController, IArmoryYardController, IShopSalesEventController, IEarlyAccessController
 from skeletons.gui.impl import INotificationWindowController
 from skeletons.gui.platform.wgnp_controllers import IWGNPSteamAccRequestController
 from skeletons.gui.web import IWebController
@@ -510,7 +511,6 @@ class OpenPollHandler(ActionHandler):
 
 
 class AcceptPrbInviteHandler(ActionHandler):
-    __winbackController = dependency.descriptor(IWinbackController)
 
     @prbDispatcherProperty
     def prbDispatcher(self):
@@ -537,8 +537,6 @@ class AcceptPrbInviteHandler(ActionHandler):
         state = self.prbDispatcher.getFunctionalState()
         if state.doLeaveToAcceptInvite(invite.type):
             postActions.append(actions.LeavePrbModalEntity())
-            if self.__winbackController.isModeAvailable() and invite.type == PREBATTLE_TYPE.SQUAD:
-                postActions.append(actions.LeaveWinbackModeEntity())
         if invite and invite.anotherPeriphery:
             success = True
             if g_preDefinedHosts.isRoamingPeriphery(invite.peripheryID):
@@ -1194,27 +1192,6 @@ class _OpenSeniorityAwards(NavigationDisabledActionHandler):
         self.__seniorityAwardCtrl.claimReward()
 
 
-class _OpenWinbackSelectableRewardView(NavigationDisabledActionHandler):
-
-    @classmethod
-    def getNotType(cls):
-        return NOTIFICATION_TYPE.WINBACK_SELECTABLE_REWARD_AVAILABLE
-
-    @classmethod
-    def getActions(cls):
-        return ('openWinbackSelectableRewardView', )
-
-    def doAction(self, model, entityID, action):
-        showWinbackSelectRewardView()
-
-
-class _OpenWinbackSelectableRewardViewFromQuest(_OpenWinbackSelectableRewardView):
-
-    @classmethod
-    def getNotType(cls):
-        return NOTIFICATION_TYPE.MESSAGE
-
-
 class _OpenAchievementsScreen(NavigationDisabledActionHandler):
 
     @classmethod
@@ -1332,7 +1309,7 @@ class _OpenArmoryYardBuyView(NavigationDisabledActionHandler):
         return ('openArmoryYardBuy', )
 
     def doAction(self, model, entityID, action):
-        self.__ctrl.goToArmoryYard(loadBuyView=True)
+        self.__ctrl.goToArmoryYard(ctx={'loadBuyView': True})
 
 
 class _OpenArmoryYardQuest(NavigationDisabledActionHandler):
@@ -1411,6 +1388,7 @@ class _OpenComp7ShopHandler(NavigationDisabledActionHandler):
 
 
 class _OpenEarlyAccessVehicleHandler(NavigationDisabledActionHandler):
+    __earlyAccessCtrl = dependency.descriptor(IEarlyAccessController)
 
     @classmethod
     def getNotType(cls):
@@ -1421,7 +1399,8 @@ class _OpenEarlyAccessVehicleHandler(NavigationDisabledActionHandler):
         return ('openEarlyAccessVehicle', )
 
     def doAction(self, model, entityID, action):
-        showEarlyAccessVehicleView()
+        if not self.__earlyAccessCtrl.hangarFeatureState.isInVehicleState():
+            showEarlyAccessVehicleView()
 
 
 class _OpenEarlyAccessQuestsHandler(NavigationDisabledActionHandler):
@@ -1436,6 +1415,25 @@ class _OpenEarlyAccessQuestsHandler(NavigationDisabledActionHandler):
 
     def doAction(self, model, entityID, action):
         showEarlyAccessQuestsView()
+
+
+class _OpenPollBrowserHandler(ActionHandler):
+
+    @classmethod
+    def getNotType(cls):
+        return NOTIFICATION_TYPE.MESSAGE
+
+    @classmethod
+    def getActions(cls):
+        return ('openPollBrowser', )
+
+    def handleAction(self, model, entityID, action):
+        super(_OpenPollBrowserHandler, self).handleAction(model, entityID, action)
+        savedData = model.getNotification(self.getNotType(), entityID).getSavedData()
+        if not savedData:
+            LOG_ERROR('savedData is not found', entityID)
+            return
+        PollBrowserButtonHandler.invoke(**savedData)
 
 
 _AVAILABLE_HANDLERS = (
@@ -1501,8 +1499,6 @@ _AVAILABLE_HANDLERS = (
  _OpenReferralProgramMainViewHandler,
  _OpenCollectionHandler,
  _OpenCollectionRewardHandler,
- _OpenWinbackSelectableRewardView,
- _OpenWinbackSelectableRewardViewFromQuest,
  _OpenArmoryYardMain,
  _OpenArmoryYardQuest,
  _OpenArmoryYardBuyView,
@@ -1511,7 +1507,8 @@ _AVAILABLE_HANDLERS = (
  _OpenPremShopHandler,
  _OpenComp7ShopHandler,
  _OpenEarlyAccessVehicleHandler,
- _OpenEarlyAccessQuestsHandler)
+ _OpenEarlyAccessQuestsHandler,
+ _OpenPollBrowserHandler)
 registerNotificationsActionsHandlers(_AVAILABLE_HANDLERS)
 
 class NotificationsActionsHandlers(object):

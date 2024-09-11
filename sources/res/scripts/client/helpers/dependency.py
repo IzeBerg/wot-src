@@ -30,10 +30,23 @@ def clear():
     return
 
 
+def hasInstance(class_):
+    if _g_manager is None:
+        raise DependencyError('Manager of dependencies is not created and configured')
+    return _g_manager.hasService(class_)
+
+
 def instance(class_):
     if _g_manager is None:
         raise DependencyError('Manager of dependencies is not created and configured')
     return _g_manager.getService(class_)
+
+
+def getInstanceIfHas(class_):
+    if hasInstance(class_):
+        return instance(class_)
+    else:
+        return
 
 
 def descriptor(class_):
@@ -82,6 +95,9 @@ class DependencyManager(object):
         super(DependencyManager, self).__init__()
         self.__services = {}
         self.__replacedServices = set()
+
+    def hasService(self, class_):
+        return class_ in self.__services
 
     def getService(self, class_):
         try:

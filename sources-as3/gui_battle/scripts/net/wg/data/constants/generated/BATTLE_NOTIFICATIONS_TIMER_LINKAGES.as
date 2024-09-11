@@ -111,6 +111,14 @@ package net.wg.data.constants.generated
       
       public static const POI_GREEN_RECON_SMALL_ICON:String = "PoIGreenReconSmallIconUI";
       
+      public static const POI_GREEN_SMOKE_ICON:String = "PoIGreenSmokeIconUI";
+      
+      public static const POI_GREEN_SMOKE_SMALL_ICON:String = "PoIGreenSmokeSmallIconUI";
+      
+      public static const POI_GREEN_MINEFIELD_ICON:String = "PoIGreenMineFieldIconUI";
+      
+      public static const POI_GREEN_MINEFIELD_SMALL_ICON:String = "PoIGreenMineFieldSmallIconUI";
+      
       public static const POI_ORANGE_ARTILLERY_ICON:String = "PoIOrangeArtilleryIconUI";
       
       public static const POI_ORANGE_ARTILLERY_SMALL_ICON:String = "PoIOrangeArtillerySmallIconUI";
@@ -118,6 +126,14 @@ package net.wg.data.constants.generated
       public static const POI_ORANGE_RECON_ICON:String = "PoIOrangeReconIconUI";
       
       public static const POI_ORANGE_RECON_SMALL_ICON:String = "PoIOrangeReconSmallIconUI";
+      
+      public static const POI_ORANGE_SMOKE_ICON:String = "PoIOrangeSmokeIconUI";
+      
+      public static const POI_ORANGE_SMOKE_SMALL_ICON:String = "PoIOrangeSmokeSmallIconUI";
+      
+      public static const POI_ORANGE_MINEFIELD_ICON:String = "PoIOrangeMineFieldIconUI";
+      
+      public static const POI_ORANGE_MINEFIELD_SMALL_ICON:String = "PoIOrangeMineFieldSmallIconUI";
       
       public static const POI_ORANGE_CROSS_ICON:String = "PoIOrangeCrossIconUI";
       

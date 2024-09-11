@@ -18,6 +18,7 @@ class Currency(CONST_CONTAINER):
     BRCOIN = 'brcoin'
     FREE_XP = 'freeXP'
     EQUIP_COIN = 'equipCoin'
+    AYCOIN = 'armory_coin'
     ALL = (
      CREDITS, GOLD, CRYSTAL, EVENT_COIN, BPCOIN, EQUIP_COIN)
     BY_WEIGHT = (

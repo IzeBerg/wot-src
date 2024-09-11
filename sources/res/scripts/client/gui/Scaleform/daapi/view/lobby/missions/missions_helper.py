@@ -21,7 +21,7 @@ from gui.server_events.cond_formatters.prebattle import MissionsPreBattleConditi
 from gui.server_events.cond_formatters.requirements import AccountRequirementsFormatter, TQAccountRequirementsFormatter
 from gui.server_events.conditions import GROUP_TYPE
 from gui.server_events.events_constants import BATTLE_ROYALE_GROUPS_ID, EPIC_BATTLE_GROUPS_ID, FUN_RANDOM_GROUP_ID
-from gui.server_events.events_helpers import MISSIONS_STATES, QuestInfoModel, AWARDS_PER_SINGLE_PAGE, isMarathon, AwardSheetPresenter, isPremium, isDebutBoxesQuest
+from gui.server_events.events_helpers import MISSIONS_STATES, QuestInfoModel, AWARDS_PER_SINGLE_PAGE, isMarathon, AwardSheetPresenter, isPremium, isDebutBoxesQuest, isVersusAIQuest
 from gui.server_events.formatters import DECORATION_SIZES
 from gui.server_events.personal_progress import formatters
 from gui.shared.formatters import text_styles, icons, time_formatters
@@ -516,6 +516,22 @@ class _BattleRoyaleDailyMissionInfo(_EventDailyMissionInfo):
         if not self._controller.isDailyQuestsRefreshAvailable():
             return R.strings.battle_royale.questsTooltip.timeLeft()
         return super(_BattleRoyaleDailyMissionInfo, self)._getCompleteKey()
+
+
+class _VersusAIMissionInfo(_MissionInfo):
+
+    def _getCompleteStatusFields(self, isLimited, bonusCount, bonusLimit):
+        if isLimited and bonusLimit > 1:
+            statusLabel = text_styles.bonusAppliedText(backport.text(R.strings.quests.missionDetails.missionsComplete(), count=text_styles.bonusAppliedText(bonusCount), total=text_styles.standard(bonusLimit)))
+            statusTooltipData = getCompletetBonusLimitTooltip()
+        else:
+            statusTooltipData = None
+            progressDesc = text_styles.bonusAppliedText(backport.text(R.strings.quests.quests.status.done()))
+            icon = icons.makeImageTag(backport.image(R.images.gui.maps.icons.library.okIcon()), 16, 16, -2, 8)
+            statusLabel = text_styles.concatStylesToSingleLine(icon, progressDesc)
+        return {'status': MISSIONS_STATES.COMPLETED, 
+           'statusLabel': statusLabel, 
+           'statusTooltipData': statusTooltipData}
 
 
 class _RankedMissionInfo(_MissionInfo):
@@ -1339,6 +1355,15 @@ class _DebutBoxesDetailedMissionInfo(_DetailedMissionInfo):
         return (criteria, extraConditions, isQuestForBattleRoyale)
 
 
+class _VersusAIDetailedMissionInfo(_DetailedMissionInfo):
+
+    def _getCompletedDateLabel(self):
+        return ''
+
+    def _getDailyResetStatusLabel(self):
+        return ''
+
+
 def getMissionInfoData(event):
     if event.getType() == constants.EVENT_TYPE.TOKEN_QUEST:
         return _TokenMissionInfo(event)
@@ -1358,6 +1383,8 @@ def getMissionInfoData(event):
             return _RankedMissionInfo(event)
         if isDebutBoxesQuest(event.getID()):
             return _DebutBoxesMissionInfo(event)
+        if isVersusAIQuest(event.getGroupID()):
+            return _VersusAIMissionInfo(event)
         if event.getType() in constants.EVENT_TYPE.LIKE_BATTLE_QUESTS:
             return _MissionInfo(event)
         return
@@ -1383,6 +1410,8 @@ def getDetailedMissionData(event):
             return _DebutBoxesDetailedMissionInfo(event)
         if event.getGroupID() == FUN_RANDOM_GROUP_ID:
             return _FunRandomDetailedMissionInfo(event)
+        if isVersusAIQuest(event.getGroupID()):
+            return _VersusAIDetailedMissionInfo(event)
         if event.getType() in constants.EVENT_TYPE.LIKE_BATTLE_QUESTS:
             return _DetailedMissionInfo(event)
         return

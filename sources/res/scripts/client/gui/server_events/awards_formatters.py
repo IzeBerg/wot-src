@@ -3,6 +3,7 @@ from collections import namedtuple
 from math import ceil
 from typing import TYPE_CHECKING
 from constants import LOOTBOX_TOKEN_PREFIX, PREMIUM_ENTITLEMENTS, RESOURCE_TOKEN_PREFIX, LOOTBOX_KEY_PREFIX
+from early_access_common import isEarlyAccessToken
 from gui.Scaleform.genConsts.SLOT_HIGHLIGHT_TYPES import SLOT_HIGHLIGHT_TYPES
 from gui.Scaleform.genConsts.TOOLTIPS_CONSTANTS import TOOLTIPS_CONSTANTS
 from gui.Scaleform.locale.QUESTS import QUESTS
@@ -92,6 +93,12 @@ AWARD_IMAGES = {AWARDS_SIZES.SMALL: {Currency.CREDITS: RES_ICONS.MAPS_ICONS_QUES
                       'xp': RES_ICONS.MAPS_ICONS_QUESTS_BONUSES_BIG_EXP, 
                       'xpFactor': RES_ICONS.MAPS_ICONS_QUESTS_BONUSES_BIG_EXP, 
                       'dailyXPFactor': RES_ICONS.MAPS_ICONS_QUESTS_BONUSES_BIG_FREEXP}}
+EARLY_ACCESS_TOKEN_IMAGES = {AWARDS_SIZES.SMALL: backport.image(R.images.gui.maps.icons.early_access.tokens.c_32x32()), 
+   AWARDS_SIZES.BIG: backport.image(R.images.gui.maps.icons.early_access.tokens.c_80x80())}
+EARLY_ACCESS_TOKEN_IMAGES_PADDINGS = {AWARDS_SIZES.SMALL: 8, 
+   AWARDS_SIZES.BIG: 0}
+EARLY_ACCESS_TOKEN_IMAGES_GAP = {AWARDS_SIZES.SMALL: 8, 
+   AWARDS_SIZES.BIG: 0}
 
 def getRecertificationFormImages():
     result = {AWARDS_SIZES.SMALL: backport.image(R.images.gui.maps.icons.recertification.common_48x48()), 
@@ -375,7 +382,7 @@ def formatTimeLabel(hours):
     return str(int(time)) + ' ' + timeMetric
 
 
-_PreformattedBonus = namedtuple('_PreformattedBonus', 'bonusName label userName images tooltip labelFormatter areTokensPawned specialArgs specialAlias isSpecial isCompensation align highlightType overlayType highlightIcon overlayIcon compensationReason postProcessTags isWulfTooltip')
+_PreformattedBonus = namedtuple('_PreformattedBonus', 'bonusName label userName images tooltip labelFormatter areTokensPawned specialArgs specialAlias isSpecial isCompensation align highlightType overlayType highlightIcon overlayIcon compensationReason postProcessTags isWulfTooltip padding gap ')
 
 class PostProcessTags(CONST_CONTAINER):
     IS_SUFFIX_BADGE = 'isSuffixBadge'
@@ -415,10 +422,18 @@ class PreformattedBonus(_PreformattedBonus):
         icons = self.overlayIcon
         return icons and icons.get(size, SLOT_HIGHLIGHT_TYPES.NO_HIGHLIGHT) or SLOT_HIGHLIGHT_TYPES.NO_HIGHLIGHT
 
+    def getGap(self, size):
+        gap = self.gap
+        return gap and gap.get(size, 0) or 0
+
+    def getPadding(self, size):
+        padding = self.padding
+        return padding and padding.get(size, 0) or 0
+
 
 PreformattedBonus.__new__.__defaults__ = (
  None, None, None, None, None, None, False, None, None, False, False,
- LABEL_ALIGN.CENTER, None, None, None, None, None, tuple(), False)
+ LABEL_ALIGN.CENTER, None, None, None, None, None, tuple(), False, 0, 0)
 
 class QuestsBonusComposer(object):
 
@@ -750,6 +765,8 @@ class TokenBonusFormatter(SimpleBonusFormatter):
                 formatted = self._formatBonusToken(CREW_BONUS_X3_TOKEN, token, bonus)
             elif tokenID.startswith(RESOURCE_TOKEN_PREFIX):
                 formatted = self._formatResource(token, bonus)
+            elif isEarlyAccessToken(tokenID):
+                formatted = self._formatEarlyAccessToken(token, bonus)
             return formatted
 
     def _formatBRComplexToken(self, complexToken, token, bonus):
@@ -821,6 +838,20 @@ class TokenBonusFormatter(SimpleBonusFormatter):
 
         return PreformattedBonus(label=self._formatBonusLabel(token.count), userName=backport.text(R.strings.lootboxes.userName.dyn(key.userName)()), labelFormatter=self._getLabelFormatter(bonus), images=images, tooltip=TOOLTIPS_CONSTANTS.LOOT_BOX_KEY_TOOLTIP, specialArgs=[
          key.keyID], isWulfTooltip=True, align=self._getLabelAlign(bonus), isCompensation=self._isCompensation(bonus))
+
+    def _formatEarlyAccessToken(self, token, bonus):
+        if token.count <= 0:
+            return None
+        else:
+            images = {}
+            padding = {}
+            gap = {}
+            for size in AWARDS_SIZES.ALL():
+                images[size] = EARLY_ACCESS_TOKEN_IMAGES[size]
+                padding[size] = EARLY_ACCESS_TOKEN_IMAGES_PADDINGS[size]
+                gap[size] = EARLY_ACCESS_TOKEN_IMAGES_GAP[size]
+
+            return PreformattedBonus(label=self._formatBonusLabel(token.count), userName=backport.text(R.strings.early_access.currencyToken()), labelFormatter=self._getLabelFormatter(bonus), images=images, align=LABEL_ALIGN.RIGHT, isCompensation=self._isCompensation(bonus), tooltip=TOOLTIPS_CONSTANTS.EARLY_ACCESS_CURRENCY, isWulfTooltip=True, padding=padding, gap=gap)
 
     def _formatBonusToken(self, name, token, bonus):
         if token.count <= 0:

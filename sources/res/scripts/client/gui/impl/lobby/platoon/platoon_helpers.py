@@ -1,5 +1,6 @@
 import logging
 from collections import namedtuple
+from constants import MAX_VEHICLE_LEVEL
 from helpers import i18n
 from UnitBase import BitfieldHelper
 from items import vehicles
@@ -48,7 +49,7 @@ def getNationFromTechName(string):
 def convertTierFilterToList(tierFilter):
     tierFilterArray = []
     unitFilter = BitfieldHelper(tierFilter)
-    for bit in range(1, 11):
+    for bit in range(1, MAX_VEHICLE_LEVEL + 1):
         if unitFilter.isSetBit(bit):
             tierFilterArray.append(bit)
 

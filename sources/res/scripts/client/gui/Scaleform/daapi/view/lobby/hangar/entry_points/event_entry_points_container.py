@@ -153,9 +153,7 @@ class EventEntryPointsContainer(EventEntryPointsContainerMeta, Notifiable, IGlob
         return
 
     def _isQueueEnabled(self):
-        enabledQueues = (
-         QUEUE_TYPE.RANDOMS, QUEUE_TYPE.WINBACK)
-        return any(self.__isQueueSelected(queueType) for queueType in enabledQueues)
+        return self.__isQueueSelected(QUEUE_TYPE.RANDOMS)
 
     def __isQueueSelected(self, queueType):
         if self.prbDispatcher is not None:

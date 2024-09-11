@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>6.666667</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+		<track>
+			<name>animation</name>
+			<type>animation</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>6.666667</duration>
+				<resourceID>content/Characters/hd_anml_m_0002_Orca/Animation/Orca_breath_01.fbx</resourceID>
+				<clipName/>
+				<speed>1.000000</speed>
+				<layer>0</layer>
+				<blendIn>constant</blendIn>
+				<blendOut>constant</blendOut>
+				<blendInTime>0.000000</blendInTime>
+				<blendOutTime>0.000000</blendOutTime>
+				<clipStartTime>0.000000</clipStartTime>
+				<clipEndTime>6.666667</clipEndTime>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>splashes_01</name>
+		<type>particle</type>
+		<resource>particles/environment/interior/502_kamchatka_water_splash_small.eff</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>1.033333</startTime>
+				<value>2.904114 -0.200000 0.000427</value>
+				<inTangent>0.145305 -0.704695 0.000006</inTangent>
+				<outTangent>0.145305 -0.704695 0.000006</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>4.166667</startTime>
+				<value>-7.542786 -0.200000 0.000336</value>
+				<inTangent>-3.832890 0.147437 -0.000015</inTangent>
+				<outTangent>-3.832890 0.147437 -0.000015</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000</value>
+				<inTangent>0.967742</inTangent>
+				<outTangent>0.967742</outTangent>
+				<tangentMode>512</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.033333</startTime>
+				<value>1.000000</value>
+				<inTangent>0.937500</inTangent>
+				<outTangent>0.937500</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.200000</startTime>
+				<value>0.000000</value>
+				<inTangent>0.784505</inTangent>
+				<outTangent>0.784505</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>4.166667</startTime>
+				<value>1.000000</value>
+				<inTangent>-0.377323</inTangent>
+				<outTangent>-0.377323</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>6.666667</startTime>
+				<value>0.000000</value>
+				<inTangent>-0.400000</inTangent>
+				<outTangent>-0.400000</outTangent>
+				<tangentMode>2</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

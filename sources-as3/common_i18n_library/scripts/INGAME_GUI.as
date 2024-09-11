@@ -37,9 +37,17 @@ package
       
       public static const DEVICES_TRACK_RIGHT:String = "#ingame_gui:devices/track/right";
       
+      public static const DEVICES_TRACK_RESERVE:String = "#ingame_gui:devices/track/reserve";
+      
       public static const DEVICES_TRACK_MAIN:String = "#ingame_gui:devices/track/main";
       
+      public static const DEVICES_TRACK_INNER:String = "#ingame_gui:devices/track/inner";
+      
       public static const DEVICES_TRACK_OUTER:String = "#ingame_gui:devices/track/outer";
+      
+      public static const DEVICES_TRACK_FRONT:String = "#ingame_gui:devices/track/front";
+      
+      public static const DEVICES_TRACK_BACK:String = "#ingame_gui:devices/track/back";
       
       public static const DEVICES_LEFT_TRACK:String = "#ingame_gui:devices/left_track";
       
@@ -480,6 +488,8 @@ package
       public static const SHELLS_KINDS_ARMOR_PIERCING_HE:String = "#ingame_gui:shells_kinds/ARMOR_PIERCING_HE";
       
       public static const SHELLS_KINDS_ARMOR_PIERCING_CR:String = "#ingame_gui:shells_kinds/ARMOR_PIERCING_CR";
+      
+      public static const SHELLS_KINDS_ARMOR_PIERCING_FSDS:String = "#ingame_gui:shells_kinds/ARMOR_PIERCING_FSDS";
       
       public static const SHELLS_KINDS_FLAME:String = "#ingame_gui:shells_kinds/FLAME";
       
@@ -1279,6 +1289,8 @@ package
       
       public static const DAMAGELOG_SHELLTYPE_ARMOR_PIERCING_CR:String = "#ingame_gui:damageLog/shellType/ARMOR_PIERCING_CR";
       
+      public static const DAMAGELOG_SHELLTYPE_ARMOR_PIERCING_FSDS:String = "#ingame_gui:damageLog/shellType/ARMOR_PIERCING_FSDS";
+      
       public static const DAMAGELOG_SHELLTYPE_HOLLOW_CHARGE:String = "#ingame_gui:damageLog/shellType/HOLLOW_CHARGE";
       
       public static const DAMAGELOG_MULTIPLIER:String = "#ingame_gui:damageLog/multiplier";
@@ -1370,6 +1382,10 @@ package
       public static const BATTLEENDWARNING_TEXT:String = "#ingame_gui:battleEndWarning/text";
       
       public static const DAMAGEINDICATOR_MULTIPLIER:String = "#ingame_gui:damageIndicator/multiplier";
+      
+      public static const BATTLEENDWARNING_COMP7_1_TEXT:String = "#ingame_gui:battleEndWarning/comp7_1/text";
+      
+      public static const BATTLEENDWARNING_COMP7_2_TEXT:String = "#ingame_gui:battleEndWarning/comp7_2/text";
       
       public static const VEHICLE_MESSAGES_DEATH_FROM_OVERTURN_SELF_SUICIDE:String = "#ingame_gui:vehicle_messages/DEATH_FROM_OVERTURN_SELF_SUICIDE";
       

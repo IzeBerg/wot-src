@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>water_02</identifier>
+					<fx>shaders/custom/volumetric_effect_vtx.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						alphaAdditiveEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaFadeAmountFresnel
+						<Vector4>1.000000 1.000000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/waterfall_parts_02.dds</Texture>
+					</property>
+					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>0.000000 -0.500000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						enableLighting
+						<Bool>true</Bool>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>0.800000 0.250000 0.500000 0.000000</Vector4>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>0.000000 -0.500000 0.000000 0.100000</Vector4>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Distortion01.dds</Texture>
+					</property>
+					<property>
+						alphaFreshnelEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						selfIllumLight
+						<Vector4>0.615686 0.615686 0.615686 0.000000</Vector4>
+						<Vector3>0.615686 0.615686 0.615686</Vector3>
+					</property>
+					<property>
+						softFactor
+						<Float>2.000000</Float>
+					</property>
+				</material>
+				<groupOrigin>-1.888248 -2.879608 -0.411544</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>water_fall_01</identifier>
+					<fx>shaders/custom/volumetric_effect_vtx.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						alphaFadeAmountFresnel
+						<Vector4>1.000000 0.800000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						alphaFreshnelEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/waterfall_parts_01_seamless.dds</Texture>
+					</property>
+					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>0.010000 -0.450000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>0.000000 -0.450000 0.000000 0.100000</Vector4>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Distortion01.dds</Texture>
+					</property>
+					<property>
+						enableLighting
+						<Bool>true</Bool>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>0.700000 0.250000 0.800000 0.000000</Vector4>
+					</property>
+					<property>
+						TintlColor
+						<Vector4>0.721569 0.721569 0.721569 1.000000</Vector4>
+					</property>
+					<property>
+						alphaAdditiveEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						selfIllumLight
+						<Vector4>0.603922 0.603922 0.603922 0.000000</Vector4>
+						<Vector3>0.603922 0.603922 0.603922</Vector3>
+					</property>
+					<property>
+						softFactor
+						<Float>2.000000</Float>
+					</property>
+				</material>
+				<groupOrigin>-1.836893 -2.925249 -0.435468</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-3.913446 -6.146153 -2.545995</min>
+		<max>0.188305 0.295655 1.675060</max>
+	</boundingBox>
+	<geometrySize>13840</geometrySize>
+	<minUVDensity>0.032331</minUVDensity>
+</root>

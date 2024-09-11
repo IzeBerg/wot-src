@@ -1,0 +1,691 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>hd_bld_SU_0112_GeoPowerStation_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>lod0</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+				<node>
+					<identifier>s3</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>s4</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>s5</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>s6</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>s7</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>s_wall0</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>s_wall1</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd7</identifier>
+					<fx>shaders/std_effects/PBS_tiled.fx</fx>
+					<materialKind>108</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						albedoHeightTile0
+						<Texture>content/Buildings/00_Tiles/dds/Wood_Universal_Crash_Vertical_0_512_AM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile1
+						<Texture>content/Buildings/00_Tiles/dds/Wood_10_planks_02_crashed_512_AM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile2
+						<Texture>content/Buildings/00_Tiles/dds/Wood_09_planks_painted_05_512_AM.dds</Texture>
+					</property>
+					<property>
+						blendMask
+						<Texture>content/Buildings/hd_bld_SU_0112_GeoPowerStation/hd_bld_SU_0112_GeoPowerStation_blend.png</Texture>
+					</property>
+					<property>
+						colorTex
+						<Texture>content/Buildings/hd_bld_SU_0112_GeoPowerStation/hd_bld_SU_0112_GeoPowerStation_GCM.dds</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Buildings/00_Tiles/Concrete_Dirty_03_DM.dds</Texture>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.000000 0.430000 0.380000 0.250000</Vector4>
+					</property>
+					<property>
+						g_dirtColorParams
+						<Vector4>0.100000 0.500000 0.600000 0.800000</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>0.517647 0.529412 0.560784 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>0.886275 0.901961 0.901961 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>0.470588 0.419608 0.411765 1.000000</Vector4>
+					</property>
+					<property>
+						metallicAOTile0
+						<Texture>content/Buildings/00_Tiles/dds/Wood_Universal_Crash_Vertical_0_512_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile1
+						<Texture>content/Buildings/00_Tiles/dds/Wood_10_planks_02_crashed_512_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile2
+						<Texture>content/Buildings/00_Tiles/dds/Wood_09_planks_512_MAO.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile0
+						<Texture>content/Buildings/00_Tiles/dds/Wood_Universal_Crash_Vertical_0_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile1
+						<Texture>content/Buildings/00_Tiles/dds/Wood_10_planks_02_crashed_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile2
+						<Texture>content/Buildings/00_Tiles/dds/Wood_09_planks_painted_06_512_GBMT.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>4.756002 19.488890 -0.003081</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd6</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>108</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						alphaReference
+						<Int>110</Int>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_Kamchatka_01_AM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_Kamchatka_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_Kamchatka_01_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>4.595846 20.144972 2.194895</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>s_nd5</identifier>
+					<fx>shaders/std_effects/PBS_tiled.fx</fx>
+					<materialKind>108</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						albedoHeightTile0
+						<Texture>content/Buildings/00_Tiles/dds/Wood_tree_bark_01_512_AM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile1
+						<Texture>content/Buildings/00_Tiles/dds/Wood_09_planks_03_512_AM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile2
+						<Texture>content/Buildings/00_Tiles/dds/Wood_Universal_Crash_Vertical_0_512_AM.dds</Texture>
+					</property>
+					<property>
+						blendMask
+						<Texture>content/Buildings/hd_bld_SU_0112_GeoPowerStation/hd_bld_SU_0112_GeoPowerStation_blend.png</Texture>
+					</property>
+					<property>
+						colorTex
+						<Texture>content/Buildings/hd_bld_SU_0112_GeoPowerStation/hd_bld_SU_0112_GeoPowerStation_GCM.dds</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Buildings/00_Tiles/Dirt_Leaks_07_512_DM.dds</Texture>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.000000 0.430000 0.380000 0.350000</Vector4>
+					</property>
+					<property>
+						g_dirtColorParams
+						<Vector4>0.100000 0.500000 0.600000 0.800000</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>0.800000 0.772549 0.737255 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>0.733333 0.768627 0.768627 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>0.709804 0.670588 0.639216 1.000000</Vector4>
+					</property>
+					<property>
+						metallicAOTile0
+						<Texture>content/Buildings/00_Tiles/dds/Wood_tree_bark_01_512_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile1
+						<Texture>content/Buildings/00_Tiles/dds/Wood_09_planks_03_512_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile2
+						<Texture>content/Buildings/00_Tiles/dds/Wood_Universal_Crash_Vertical_0_512_MAO.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile0
+						<Texture>content/Buildings/00_Tiles/dds/Wood_tree_bark_01_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile1
+						<Texture>content/Buildings/00_Tiles/dds/Wood_09_planks_03_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile2
+						<Texture>content/Buildings/00_Tiles/dds/Wood_Universal_Crash_Vertical_0_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>3.573320 2.399247 -0.013041</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				3
+				<material>
+					<identifier>s_nd4</identifier>
+					<fx>shaders/std_effects/PBS_tiled.fx</fx>
+					<materialKind>108</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						albedoHeightTile0
+						<Texture>content/Buildings/00_Tiles/dds/Wood_15_Logs_512_AM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile1
+						<Texture>content/Buildings/00_Tiles/dds/Wood_Universal_Crash_Horizontal_01_512_AM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile2
+						<Texture>content/Buildings/00_Tiles/dds/Wood_tree_end_01_512_AM.dds</Texture>
+					</property>
+					<property>
+						blendMask
+						<Texture>content/Buildings/hd_bld_SU_0112_GeoPowerStation/hd_bld_SU_0112_GeoPowerStation_blend.png</Texture>
+					</property>
+					<property>
+						colorTex
+						<Texture>content/Buildings/hd_bld_SU_0112_GeoPowerStation/hd_bld_SU_0112_GeoPowerStation_GCM.dds</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Buildings/00_Tiles/dds/Dirt_ClayWall_Painted01_DM.dds</Texture>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.000000 0.430000 0.380000 0.200000</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>0.850980 0.819608 0.749020 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>0.650980 0.627451 0.564706 1.000000</Vector4>
+					</property>
+					<property>
+						metallicAOTile0
+						<Texture>content/Buildings/00_Tiles/dds/Wood_15_Logs_512_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile1
+						<Texture>content/Buildings/00_Tiles/dds/Wood_Universal_Crash_Horizontal_01_512_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile2
+						<Texture>content/Buildings/00_Tiles/dds/Wood_tree_end_01_512_MAO.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile0
+						<Texture>content/Buildings/00_Tiles/dds/Wood_15_Logs_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile1
+						<Texture>content/Buildings/00_Tiles/dds/Wood_Universal_Crash_Horizontal_01_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile2
+						<Texture>content/Buildings/00_Tiles/dds/Wood_tree_end_01_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>3.566880 20.255886 -0.013041</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				4
+				<material>
+					<identifier>s_nd3</identifier>
+					<fx>shaders/std_effects/PBS_tiled.fx</fx>
+					<materialKind>108</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						albedoHeightTile0
+						<Texture>content/Buildings/00_Tiles/dds/RoofBitumen_02_AM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile1
+						<Texture>content/Buildings/00_Tiles/dds/RoofBitumen_01_AM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile2
+						<Texture>content/Buildings/00_Tiles/dds/Moss_Roof_03_512_AM.dds</Texture>
+					</property>
+					<property>
+						blendMask
+						<Texture>content/Buildings/hd_bld_SU_0112_GeoPowerStation/hd_bld_SU_0112_GeoPowerStation_blend.png</Texture>
+					</property>
+					<property>
+						colorTex
+						<Texture>content/Buildings/hd_bld_SU_0112_GeoPowerStation/hd_bld_SU_0112_GeoPowerStation_GCM.dds</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Buildings/00_Tiles/Concrete_Dirty_03_DM.dds</Texture>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.000000 0.430000 0.380000 0.000000</Vector4>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>0.600000 0.600000 0.600000 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>0.709804 0.690196 0.674510 1.000000</Vector4>
+					</property>
+					<property>
+						metallicAOTile0
+						<Texture>content/Buildings/00_Tiles/dds/RoofBitumen_02_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile1
+						<Texture>content/Buildings/00_Tiles/dds/RoofBitumen_01_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile2
+						<Texture>content/Buildings/00_Tiles/dds/Moss_Roof_03_512_MAO.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile0
+						<Texture>content/Buildings/00_Tiles/dds/RoofBitumen_02_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile1
+						<Texture>content/Buildings/00_Tiles/dds/RoofBitumen_01_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile2
+						<Texture>content/Buildings/00_Tiles/dds/Moss_Roof_03_512_GBMT.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>5.259500 15.484635 0.045638</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				5
+				<material>
+					<identifier>s_nd2</identifier>
+					<fx>shaders/std_effects/PBS_tiled.fx</fx>
+					<materialKind>111</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						albedoHeightTile0
+						<Texture>content/Buildings/00_Tiles/dds/Concrete_08_Crashed_512_AM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile1
+						<Texture>content/Buildings/00_Tiles/dds/Concrete_worn_01_AM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile2
+						<Texture>content/Buildings/00_Tiles/dds/Concrete_08_Normal_01_512_AM.dds</Texture>
+					</property>
+					<property>
+						blendMask
+						<Texture>content/Buildings/hd_bld_SU_0112_GeoPowerStation/hd_bld_SU_0112_GeoPowerStation_blend.png</Texture>
+					</property>
+					<property>
+						colorTex
+						<Texture>content/Buildings/hd_bld_SU_0112_GeoPowerStation/hd_bld_SU_0112_GeoPowerStation_GCM.dds</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Buildings/00_Tiles/Dirt_fountain_02_DM.dds</Texture>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.050000 0.430000 0.380000 0.650000</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>1.000000 0.968627 0.921569 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>1.000000 0.984314 0.968627 1.000000</Vector4>
+					</property>
+					<property>
+						metallicAOTile0
+						<Texture>content/Buildings/00_Tiles/dds/Concrete_08_Crashed_512_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile1
+						<Texture>content/Buildings/00_Tiles/dds/Concrete_worn_01_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile2
+						<Texture>content/Buildings/00_Tiles/dds/Concrete_08_Normal_01_512_MAO.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile0
+						<Texture>content/Buildings/00_Tiles/dds/Concrete_08_Crashed_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile1
+						<Texture>content/Buildings/00_Tiles/dds/Concrete_worn_01_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile2
+						<Texture>content/Buildings/00_Tiles/dds/Concrete_08_Normal_01_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>3.879956 1.138382 -0.101412</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				6
+				<material>
+					<identifier>s_nd1</identifier>
+					<fx>shaders/std_effects/PBS_tiled.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						albedoHeightTile0
+						<Texture>content/Buildings/00_Tiles/dds/Borders_05_Painted_512_AM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile1
+						<Texture>content/Buildings/00_Tiles/dds/Metal_Bare_02_512_AM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile2
+						<Texture>content/MilitaryEnvironment/00_Tiles/dds/floor_bared_AM.dds</Texture>
+					</property>
+					<property>
+						blendMask
+						<Texture>content/Buildings/hd_bld_SU_0112_GeoPowerStation/hd_bld_SU_0112_GeoPowerStation_blend.png</Texture>
+					</property>
+					<property>
+						colorTex
+						<Texture>content/Buildings/hd_bld_SU_0112_GeoPowerStation/hd_bld_SU_0112_GeoPowerStation_GCM.dds</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Buildings/00_Tiles/Dirt_Yelow_Plaster_04_DM.dds</Texture>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.100000 0.430000 0.380000 0.050000</Vector4>
+					</property>
+					<property>
+						g_dirtColorParams
+						<Vector4>0.100000 0.520000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>0.549020 0.513726 0.427451 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>0.541176 0.474510 0.384314 1.000000</Vector4>
+					</property>
+					<property>
+						metallicAOTile0
+						<Texture>content/Buildings/00_Tiles/dds/Borders_05_Painted_512_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile1
+						<Texture>content/Buildings/00_Tiles/dds/Metal_Bare_02_512_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile2
+						<Texture>content/MilitaryEnvironment/00_Tiles/dds/floor_bared_MAO.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile0
+						<Texture>content/Buildings/00_Tiles/dds/Borders_05_Painted_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile1
+						<Texture>content/Buildings/00_Tiles/dds/Metal_Bare_02_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile2
+						<Texture>content/MilitaryEnvironment/00_Tiles/dds/floor_bared_GBMT.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>3.648446 23.098671 -0.135039</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				7
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_tiled.fx</fx>
+					<materialKind>108</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						albedoHeightTile0
+						<Texture>content/Buildings/00_Tiles/dds/Wood_09_planks_02_512_AM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile1
+						<Texture>content/Buildings/00_Tiles/dds/Wood_Universal_Crash_Vertical_0_512_AM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile2
+						<Texture>content/Buildings/00_Tiles/dds/Wood_09_planks_02_512_AM.dds</Texture>
+					</property>
+					<property>
+						blendMask
+						<Texture>content/Buildings/hd_bld_SU_0112_GeoPowerStation/hd_bld_SU_0112_GeoPowerStation_blend.png</Texture>
+					</property>
+					<property>
+						colorTex
+						<Texture>content/Buildings/hd_bld_SU_0112_GeoPowerStation/hd_bld_SU_0112_GeoPowerStation_GCM.dds</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Buildings/00_Tiles/dds/Dirt_ClayWall_Painted01_DM.dds</Texture>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.000000 0.430000 0.380000 0.250000</Vector4>
+					</property>
+					<property>
+						g_dirtColorParams
+						<Vector4>0.100000 1.000000 0.690000 0.750000</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>0.737255 0.756863 0.800000 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>0.501961 0.501961 0.501961 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>0.623529 0.623529 0.623529 1.000000</Vector4>
+					</property>
+					<property>
+						metallicAOTile0
+						<Texture>content/Buildings/00_Tiles/dds/Wood_09_planks_02_512_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile1
+						<Texture>content/Buildings/00_Tiles/dds/Wood_Universal_Crash_Vertical_0_512_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile2
+						<Texture>content/Buildings/00_Tiles/dds/Wood_09_planks_02_512_MAO.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile0
+						<Texture>content/Buildings/00_Tiles/dds/Wood_09_planks_02_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile1
+						<Texture>content/Buildings/00_Tiles/dds/Wood_Universal_Crash_Vertical_0_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile2
+						<Texture>content/Buildings/00_Tiles/dds/Wood_09_planks_02_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>4.045433 20.168282 -0.098963</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				8
+				<material>
+					<identifier>s_wall_1</identifier>
+					<materialKind>0</materialKind>
+					<collisionFlags>144</collisionFlags>
+				</material>
+				<groupOrigin>0.000000 10.050961 0.000000</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				9
+				<material>
+					<identifier>s_wall_0</identifier>
+					<materialKind>0</materialKind>
+					<collisionFlags>128</collisionFlags>
+				</material>
+				<groupOrigin>0.594350 1.749584 0.199341</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-6.734249 -0.381802 -5.597659</min>
+		<max>14.803177 46.579144 5.399732</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>821348</geometrySize>
+	<minUVDensity>0.000553</minUVDensity>
+</root>

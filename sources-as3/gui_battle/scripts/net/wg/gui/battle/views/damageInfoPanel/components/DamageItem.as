@@ -17,17 +17,17 @@ package net.wg.gui.battle.views.damageInfoPanel.components
       
       public var stateId:int = 0;
       
+      protected var _damagedBitmapData:BitmapData = null;
+      
+      protected var _destroyedBitmapData:BitmapData = null;
+      
+      protected var _isHit:Boolean = false;
+      
       private var _switcherBitmap:Bitmap;
       
       private var _switcherEffectBitmap:Bitmap;
       
-      private var _damagedBitmapData:BitmapData = null;
-      
-      private var _destroyedBitmapData:BitmapData = null;
-      
       private var _newXPos:Number = 0;
-      
-      private var _isHit:Boolean = false;
       
       public function DamageItem()
       {
@@ -47,28 +47,7 @@ package net.wg.gui.battle.views.damageInfoPanel.components
          }
          if(isInvalid(InvalidationType.DATA))
          {
-            if(this.stateId == DAMAGE_INFO_PANEL_CONSTS.NORMAL)
-            {
-               visible = false;
-               return;
-            }
-            if(this.stateId == DAMAGE_INFO_PANEL_CONSTS.DAMAGED)
-            {
-               this.setBitmapDataToElement(this._damagedBitmapData);
-            }
-            else
-            {
-               this.setBitmapDataToElement(this._destroyedBitmapData);
-            }
-            visible = true;
-            if(this._isHit)
-            {
-               gotoAndPlay(DAMAGE_INFO_PANEL_CONSTS.HIT_FRAME);
-            }
-            else
-            {
-               gotoAndPlay(DAMAGE_INFO_PANEL_CONSTS.SHOW_FRAME);
-            }
+            this.updateData();
          }
       }
       
@@ -98,6 +77,37 @@ package net.wg.gui.battle.views.damageInfoPanel.components
          super.onDispose();
       }
       
+      protected function updateData() : void
+      {
+         if(this.stateId == DAMAGE_INFO_PANEL_CONSTS.NORMAL)
+         {
+            visible = false;
+            return;
+         }
+         if(this.stateId == DAMAGE_INFO_PANEL_CONSTS.DAMAGED)
+         {
+            this.setBitmapDataToElement(this._damagedBitmapData);
+         }
+         else
+         {
+            this.setBitmapDataToElement(this._destroyedBitmapData);
+         }
+         visible = true;
+         if(this._isHit)
+         {
+            gotoAndPlay(DAMAGE_INFO_PANEL_CONSTS.HIT_FRAME);
+         }
+         else
+         {
+            gotoAndPlay(DAMAGE_INFO_PANEL_CONSTS.SHOW_FRAME);
+         }
+      }
+      
+      protected function getBitmapData(param1:String) : BitmapData
+      {
+         return BitmapData(App.utils.classFactory.getObject(param1));
+      }
+      
       public function setBitmapData(param1:String, param2:String) : void
       {
          this._damagedBitmapData = this.getBitmapData(param1);
@@ -124,11 +134,6 @@ package net.wg.gui.battle.views.damageInfoPanel.components
             this._newXPos = param1;
             invalidate(InvalidationType.POSITION);
          }
-      }
-      
-      private function getBitmapData(param1:String) : BitmapData
-      {
-         return BitmapData(App.utils.classFactory.getObject(param1));
       }
    }
 }
