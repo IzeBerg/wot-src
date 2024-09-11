@@ -77,8 +77,9 @@ package net.wg.gui.lobby.rankedBattles19.view.rewards.year
       
       private function updateData() : void
       {
+         var _loc1_:String = null;
          var _loc2_:Boolean = false;
-         var _loc1_:String = this._rewardData.status;
+         _loc1_ = this._rewardData.status;
          selected = RANKEDBATTLES_CONSTS.YEAR_REWARD_SELECTED_STATUSES.indexOf(_loc1_) >= 0;
          if(!selected)
          {
