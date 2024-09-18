@@ -24,6 +24,12 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       public var white:TextField = null;
       
+      public var hunter:TextField = null;
+      
+      public var wt_red:TextField = null;
+      
+      public var plasmaDamage:TextField = null;
+      
       private var _currentTF:TextField = null;
       
       private var tfMap:Object;
@@ -42,6 +48,9 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.yellow.visible = false;
          this.purple.visible = false;
          this.white.visible = false;
+         this.hunter.visible = false;
+         this.wt_red.visible = false;
+         this.plasmaDamage.visible = false;
          TextFieldEx.setNoTranslate(this.green,true);
          TextFieldEx.setNoTranslate(this.red,true);
          TextFieldEx.setNoTranslate(this.gold,true);
@@ -49,6 +58,9 @@ package net.wg.gui.battle.views.vehicleMarkers
          TextFieldEx.setNoTranslate(this.yellow,true);
          TextFieldEx.setNoTranslate(this.purple,true);
          TextFieldEx.setNoTranslate(this.white,true);
+         TextFieldEx.setNoTranslate(this.hunter,true);
+         TextFieldEx.setNoTranslate(this.wt_red,true);
+         TextFieldEx.setNoTranslate(this.plasmaDamage,true);
          this.green.autoSize = TextFieldAutoSize.LEFT;
          this.red.autoSize = TextFieldAutoSize.LEFT;
          this.gold.autoSize = TextFieldAutoSize.LEFT;
@@ -56,6 +68,9 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.yellow.autoSize = TextFieldAutoSize.LEFT;
          this.purple.autoSize = TextFieldAutoSize.LEFT;
          this.white.autoSize = TextFieldAutoSize.LEFT;
+         this.hunter.autoSize = TextFieldAutoSize.LEFT;
+         this.wt_red.autoSize = TextFieldAutoSize.LEFT;
+         this.plasmaDamage.autoSize = TextFieldAutoSize.LEFT;
          this.tfMap["green"] = this.green;
          this.tfMap["red"] = this.red;
          this.tfMap["gold"] = this.gold;
@@ -63,6 +78,9 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.tfMap["yellow"] = this.yellow;
          this.tfMap["purple"] = this.purple;
          this.tfMap["white"] = this.white;
+         this.tfMap["hunter"] = this.hunter;
+         this.tfMap["wt_red"] = this.wt_red;
+         this.tfMap["plasmaDamage"] = this.plasmaDamage;
       }
       
       public final function dispose() : void
@@ -75,6 +93,7 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.yellow = null;
          this.purple = null;
          this.white = null;
+         this.hunter = null;
          this._currentTF = null;
          this.tfMap["green"] = null;
          this.tfMap["red"] = null;
@@ -83,6 +102,8 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.tfMap["yellow"] = null;
          this.tfMap["purple"] = null;
          this.tfMap["white"] = null;
+         this.tfMap["hunter"] = null;
+         this.tfMap["plasmaDamage"] = null;
          this.tfMap = null;
       }
       

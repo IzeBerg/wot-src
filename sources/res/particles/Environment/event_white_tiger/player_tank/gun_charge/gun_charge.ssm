@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<params>
+		<param>
+			<name>shoot</name>
+			<type>trigger</type>
+		</param>
+	</params>
+	<node>
+		<name>start</name>
+		<type>sequence</type>
+		<resource>particles/Environment/event_white_tiger/player_tank/gun_charge/Gun_charge_start.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<transition>
+			<to>idle</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>1.000000</exitOffset>
+				</condition>
+			</conditions>
+		</transition>
+		<transition>
+			<to>activation</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>trigger</type>
+					<name>shoot</name>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-267.000000 103.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>idle</name>
+		<type>sequence</type>
+		<resource>particles/Environment/event_white_tiger/player_tank/gun_charge/Gun_charge_idle.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>-1</loop>
+		<transition>
+			<to>activation</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>trigger</type>
+					<name>shoot</name>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-268.000000 5.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>activation</name>
+		<type>sequence</type>
+		<resource>particles/Environment/event_white_tiger/player_tank/gun_charge/Gun_charge_end_shoot.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<transition>
+			<to>null</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>1.000000</exitOffset>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>29.000000 6.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>null</name>
+		<type>sequence</type>
+		<resource>particles/eff_sequence/null_01s.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>-1</loop>
+		<uiPosition>29.000000 104.000000 0.000000</uiPosition>
+	</node>
+</root>

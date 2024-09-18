@@ -2599,6 +2599,11 @@
 				<name>showcase</name>
 				<type>url</type>
 			</item>
+			<item>
+				$PARAMS(/showcase/styles_2d)
+				<name>showcase</name>
+				<type>url</type>
+			</item>
 		</value>
 	</shop>
 	<easterEgg>
@@ -3061,6 +3066,62 @@
 			</item>
 		</value>
 	</infoPageRandom>
+	<infoPageEvent>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
+			<item>
+				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/WhiteTiger2024/
+				<name>NA</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/WhiteTiger2024/
+				<name>EU</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/WhiteTiger2024/
+				<name>ASIA</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/WhiteTiger2024/
+				<name>CN</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/WhiteTiger2024/
+				<name>default</name>
+				<type>url</type>
+			</item>
+		</value>
+	</infoPageEvent>
+	<setting>
+		<name>spgHitDirectionDelta</name>
+		<type>float</type>
+		<value>
+			11.0
+			<!--BW_String-->
+		</value>
+	</setting>
+	<setting>
+		<name>infoPageMapbox</name>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
+			<item>
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/mapbox/
+				<name>EU</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/mapbox/
+				<name>default</name>
+				<type>url</type>
+			</item>
+		</value>
+	</setting>
 	<infoPageStrongholdsBattlesList>
 		<type>macros</type>
 		<macros>AUTH_REALM</macros>
@@ -3692,6 +3753,68 @@
 			</item>
 		</value>
 	</clanSupply>
+	<wtEventIntroVideo>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
+			<item>
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/VideoWhiteTiger2024/
+				<name>EU</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/VideoWhiteTiger2024/
+				<name>ASIA</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/VideoWhiteTiger2024/
+				<name>NA</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/VideoWhiteTiger2024/
+				<name>CN</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/VideoWhiteTiger2024/
+				<name>default</name>
+				<type>url</type>
+			</item>
+		</value>
+	</wtEventIntroVideo>
+	<wtEventInfoPage>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
+			<item>
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/WhiteTiger2024/
+				<name>EU</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/WhiteTiger2024/
+				<name>ASIA</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/WhiteTiger2024/
+				<name>NA</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/WhiteTiger2024/
+				<name>CN</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/WhiteTiger2024/
+				<name>default</name>
+				<type>url</type>
+			</item>
+		</value>
+	</wtEventInfoPage>
 	<markerBgSettings>
 		40 100 100 3.0
 		<!--BW_String-->

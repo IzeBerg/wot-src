@@ -107,11 +107,15 @@ package
       
       public static const PLAYER_ERRORS_EQUIPMENT_POI_UNAVAILABLE:String = "#ingame_gui:player_errors/equipment/poi/unavailable";
       
+      public static const PLAYER_MESSAGES_EQUIPMENT_WTEVENT_HEALTHATFULLHP:String = "#ingame_gui:player_messages/equipment/wtEvent/healthAtFullHP";
+      
       public static const PLAYER_MESSAGES_DEVICE_CRITICAL_AT_SHOT:String = "#ingame_gui:player_messages/DEVICE_CRITICAL_AT_SHOT";
       
       public static const PLAYER_MESSAGES_DEVICE_DESTROYED_AT_SHOT:String = "#ingame_gui:player_messages/DEVICE_DESTROYED_AT_SHOT";
       
       public static const PLAYER_MESSAGES_DEVICE_STARTED_FIRE_AT_SHOT:String = "#ingame_gui:player_messages/DEVICE_STARTED_FIRE_AT_SHOT";
+      
+      public static const PLAYER_MESSAGES_DEVICE_STARTED_FIRE_AT_CIRCUIT_OVERLOAD:String = "#ingame_gui:player_messages/DEVICE_STARTED_FIRE_AT_CIRCUIT_OVERLOAD";
       
       public static const PLAYER_MESSAGES_TANKMAN_HIT_AT_SHOT:String = "#ingame_gui:player_messages/TANKMAN_HIT_AT_SHOT";
       
@@ -1300,6 +1304,8 @@ package
       public static const EFFICIENCYRIBBONS_DAMAGEBYBATTLESHIP:String = "#ingame_gui:efficiencyRibbons/damageByBattleship";
       
       public static const EFFICIENCYRIBBONS_DAMAGEBYDESTROYER:String = "#ingame_gui:efficiencyRibbons/damageByDestroyer";
+      
+      public static const EFFICIENCYRIBBONS_WTRECEIVEDCIRCUITOVERLOAD:String = "#ingame_gui:efficiencyRibbons/wtReceivedCircuitOverload";
       
       public static const DAMAGELOG_SHELLTYPE_ARMOR_PIERCING:String = "#ingame_gui:damageLog/shellType/ARMOR_PIERCING";
       

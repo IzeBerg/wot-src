@@ -56,3 +56,5 @@ class BATTLE_EFFICIENCY_TYPES(object):
     RECEIVED_BY_THUNDER_STRIKE = 'receivedByThunderStrike'
     DAMAGE_BY_BATTLESHIP = 'damageByBattleship'
     DAMAGE_BY_DESTROYER = 'damageByDestroyer'
+    RECEIVED_BY_CIRCUIT_OVERLOAD = 'wtReceivedCircuitOverload'
+    HYPERION = 'hyperion'

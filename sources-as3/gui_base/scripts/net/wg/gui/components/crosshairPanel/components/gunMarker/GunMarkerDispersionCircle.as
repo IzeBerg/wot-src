@@ -31,6 +31,8 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
       
       public var mixingType5:GunMarkerMixingWithoutProgress = null;
       
+      public var mixingTypeWt:GunMarkerMixingWithoutProgress = null;
+      
       public var invalidateCrosshair:Function = null;
       
       private var _type:Number = -1;
@@ -57,10 +59,10 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
             "type3":this.mixingType3,
             "type4":this.mixingType4,
             "type5":this.mixingType5,
-            "type6":this.mixingType5,
+            "type6":this.mixingTypeWt,
             "type7":this.mixingType5
          };
-         this.mixingType0.visible = this.mixingType1.visible = this.mixingType2.visible = this.mixingType3.visible = this.mixingType4.visible = this.mixingType5.visible = false;
+         this.mixingType0.visible = this.mixingType1.visible = this.mixingType2.visible = this.mixingType3.visible = this.mixingType4.visible = this.mixingType5.visible = this.mixingTypeWt.visible = false;
       }
       
       override protected function draw() : void
@@ -128,6 +130,8 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
          this.mixingType4 = null;
          this.mixingType5.dispose();
          this.mixingType5 = null;
+         this.mixingTypeWt.dispose();
+         this.mixingTypeWt = null;
          this._mixings = this.cleanupObject(this._mixings);
          super.onDispose();
       }

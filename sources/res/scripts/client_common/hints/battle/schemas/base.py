@@ -148,10 +148,12 @@ class ClientHintModel(CommonHintModel[(HMCPropsType, HMCContextType)], typing.Ge
             _logger.debug('[%s] missing visual.', self.uniqueName)
             return {}
         context = self.context.create(data) if self.context else {}
+        timer = self.lifecycle.showTime * 1000 if self.lifecycle else 0
         return {'message': message, 
            'messageHighlight': messageHighlight, 
            'iconSource': iconSource, 
-           'context': context}
+           'context': context, 
+           'timer': timer}
 
     def _formatMessage(self, message, data):
         try:

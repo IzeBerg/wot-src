@@ -2,7 +2,6 @@ package net.wg.gui.battle.eventBattle.views.loading
 {
    import fl.transitions.easing.Strong;
    import flash.display.MovieClip;
-   import net.wg.gui.battle.eventBattle.views.loading.containers.EventLogoContainer;
    import net.wg.gui.battle.eventBattle.views.loading.containers.LoadingContainer;
    import net.wg.gui.battle.eventBattle.views.loading.containers.LoadingPageContainer;
    import net.wg.gui.battle.eventBattle.views.loading.containers.StepperContainer;
@@ -11,6 +10,7 @@ package net.wg.gui.battle.eventBattle.views.loading
    import net.wg.infrastructure.base.meta.IEventLoadingMeta;
    import net.wg.infrastructure.base.meta.impl.EventLoadingMeta;
    import net.wg.utils.StageSizeBoundaries;
+   import scaleform.clik.constants.InvalidationType;
    import scaleform.clik.events.ButtonEvent;
    import scaleform.clik.motion.Tween;
    
@@ -18,8 +18,6 @@ package net.wg.gui.battle.eventBattle.views.loading
    {
       
       private static const INTRO_INFO_CHANGED:String = "infoChanged";
-      
-      private static const STAGE_RESIZED:String = "stageResized";
       
       private static const BTN_PADDING:Number = 50;
       
@@ -35,9 +33,9 @@ package net.wg.gui.battle.eventBattle.views.loading
       
       private static const BACK_WIDTH_SMALL:int = 2365;
       
-      private static const BACK_HEIGHT_SMALL:int = 1930;
+      private static const BACK_HEIGHT_BIG:int = 1930;
       
-      private static const BACK_HEIGHT_BIG:int = 1380;
+      private static const BACK_HEIGHT_SMALL:int = 1380;
        
       
       public var btnLeft:MovieClip = null;
@@ -48,15 +46,11 @@ package net.wg.gui.battle.eventBattle.views.loading
       
       public var backgroundVignette:MovieClip = null;
       
-      public var blackBG:MovieClip = null;
-      
       public var loadingProgress:LoadingContainer = null;
       
       public var blackOverlay:MovieClip = null;
       
       public var stepperBar:StepperContainer = null;
-      
-      public var logoContainer:EventLogoContainer;
       
       private var _inited:Boolean = false;
       
@@ -71,6 +65,10 @@ package net.wg.gui.battle.eventBattle.views.loading
       private var _useBigPictures:Boolean = false;
       
       private var _tweens:Vector.<Tween>;
+      
+      protected var customTextPaddingLeft:int = 125;
+      
+      protected var customTextPaddingBottom:int = 100;
       
       public function EventBattleLoading()
       {
@@ -88,6 +86,13 @@ package net.wg.gui.battle.eventBattle.views.loading
          this.loadingProgress.mouseChildren = this.loadingProgress.mouseEnabled = false;
          this.btnLeft.addEventListener(ButtonEvent.CLICK,this.onButtonsClickHandler);
          this.btnRight.addEventListener(ButtonEvent.CLICK,this.onButtonsClickHandler);
+         this.updateStage(App.appWidth,App.appHeight);
+      }
+      
+      override public function updateStage(param1:Number, param2:Number) : void
+      {
+         super.updateStage(param1,param2);
+         setSize(param1,param2);
       }
       
       override protected function draw() : void
@@ -98,12 +103,12 @@ package net.wg.gui.battle.eventBattle.views.loading
             if(isInvalid(INTRO_INFO_CHANGED))
             {
                this.btnLeft.visible = this.btnRight.visible = this._introData.navigationButtonsVisible;
-               invalidate(STAGE_RESIZED);
-            }
-            if(isInvalid(STAGE_RESIZED))
-            {
                this.updateUIPosition();
             }
+         }
+         if(isInvalid(InvalidationType.SIZE))
+         {
+            this.updateUIPosition();
          }
       }
       
@@ -133,7 +138,6 @@ package net.wg.gui.battle.eventBattle.views.loading
          this._tutorialPageList = null;
          this.backgroundContainer = null;
          this.backgroundVignette = null;
-         this.blackBG = null;
          this.blackOverlay = null;
          this.btnLeft = null;
          this.btnRight = null;
@@ -146,16 +150,13 @@ package net.wg.gui.battle.eventBattle.views.loading
          this._tweens = null;
          this.loadingProgress.dispose();
          this.loadingProgress = null;
-         this.logoContainer.dispose();
-         this.logoContainer = null;
          super.onDispose();
       }
       
       private function updateUIPosition() : void
       {
-         var _loc2_:int = 0;
          var _loc1_:int = App.appWidth;
-         _loc2_ = App.appHeight;
+         var _loc2_:int = App.appHeight;
          var _loc3_:Boolean = _loc1_ >= SMALL_SCREEN_WIDTH && _loc2_ >= SMALL_SCREEN_HEIGHT;
          if(this._introData)
          {
@@ -166,9 +167,9 @@ package net.wg.gui.battle.eventBattle.views.loading
                this.updateBackgroundRenderer();
             }
             this.backgroundContainer.x = -((!!this._useBigPictures ? BACK_WIDTH_BIG : BACK_WIDTH_SMALL) - _loc1_ >> 1);
-            this.backgroundContainer.y = -((!!this._useBigPictures ? BACK_HEIGHT_SMALL : BACK_HEIGHT_BIG) - _loc2_ >> 1);
+            this.backgroundContainer.y = -((!!this._useBigPictures ? BACK_HEIGHT_BIG : BACK_HEIGHT_SMALL) - _loc2_ >> 1);
+            this.updateTutorialPageLayout();
          }
-         this.logoContainer.setSize(_loc1_,_loc2_);
          this.backgroundVignette.width = _loc1_;
          this.backgroundVignette.height = _loc2_;
          this.backgroundVignette.x = 0;
@@ -261,7 +262,13 @@ package net.wg.gui.battle.eventBattle.views.loading
             this.backgroundContainer.removeChildAt(0);
          }
          this.backgroundContainer.addChild(this._tutorialPageList[this._picIndex]);
+         this.updateTutorialPageLayout();
          this.stepperBar.selectItem(this._picIndex);
+      }
+      
+      private function updateTutorialPageLayout() : void
+      {
+         this._tutorialPageList[this._picIndex].updateTextPosition(App.appWidth,!!this._useBigPictures ? int(BACK_HEIGHT_BIG) : int(BACK_HEIGHT_SMALL),-this.backgroundContainer.x,-this.backgroundContainer.y,this.customTextPaddingLeft,this.customTextPaddingBottom);
       }
    }
 }

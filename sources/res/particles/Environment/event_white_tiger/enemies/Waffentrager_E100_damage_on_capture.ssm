@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<params/>
+	<node>
+		<name>Start</name>
+		<type>sequence</type>
+		<resource>particles/Environment/event_white_tiger/enemies/Waffentrager_E100_damage_on_capture_start.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<transition>
+			<to>Loop</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>1.000000</exitOffset>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-285.000000 -36.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>Loop</name>
+		<type>sequence</type>
+		<resource>particles/Environment/event_white_tiger/enemies/Waffentrager_E100_damage_on_capture.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>-1</loop>
+		<uiPosition>-281.000000 -165.000000 0.000000</uiPosition>
+	</node>
+</root>

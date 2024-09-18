@@ -22,6 +22,7 @@ class RoyaleCarouselDataProvider(HangarCarouselDataProvider):
 
     def _setBaseCriteria(self):
         self._baseCriteria = REQ_CRITERIA.INVENTORY | REQ_CRITERIA.VEHICLE.BATTLE_ROYALE
+        self._baseCriteria |= ~REQ_CRITERIA.VEHICLE.EVENT_BATTLE
 
     @classmethod
     def _vehicleComparisonKey(cls, vehicle):

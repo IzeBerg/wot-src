@@ -69,6 +69,8 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.data.constants.generated.EPICBATTLES_ALIASES;
    import net.wg.data.constants.generated.EVENTBOARDS_ALIASES;
    import net.wg.data.constants.generated.EVENTPROGRESSION_ALIASES;
+   import net.wg.data.constants.generated.EVENT_BATTLES_ALIASES;
+   import net.wg.data.constants.generated.EVENT_BATTLES_CONSTS;
    import net.wg.data.constants.generated.FITTING_TYPES;
    import net.wg.data.constants.generated.FORTIFICATION_ALIASES;
    import net.wg.data.constants.generated.FUNRANDOM_ALIASES;
@@ -946,6 +948,18 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.epicBattles.events.AfterBattleFameBarEvent;
    import net.wg.gui.lobby.epicBattles.utils.EpicHelper;
    import net.wg.gui.lobby.epicBattles.views.EpicBattlesAfterBattleView;
+   import net.wg.gui.lobby.eventBattleQueue.EventBattleQueue;
+   import net.wg.gui.lobby.eventBattleQueue.components.QuickStartBossContent;
+   import net.wg.gui.lobby.eventBattleQueue.components.QuickStartContentBase;
+   import net.wg.gui.lobby.eventBattleQueue.components.QuickStartHunterContent;
+   import net.wg.gui.lobby.eventBattleQueue.components.QuickStartPanel;
+   import net.wg.gui.lobby.eventBattleQueue.components.QuickStartVehicleList;
+   import net.wg.gui.lobby.eventBattleQueue.components.QuickStartVehicleRenderer;
+   import net.wg.gui.lobby.eventBattleQueue.data.BossQuickStartPanelVO;
+   import net.wg.gui.lobby.eventBattleQueue.data.HunterQuickStartPanelVO;
+   import net.wg.gui.lobby.eventBattleQueue.data.QuickStartPanelHunterInfoVO;
+   import net.wg.gui.lobby.eventBattleQueue.data.QuickStartPanelVO;
+   import net.wg.gui.lobby.eventBattleQueue.events.QuickStartEvent;
    import net.wg.gui.lobby.eventBoards.EventBoardsDetailsContainerView;
    import net.wg.gui.lobby.eventBoards.EventBoardsTableView;
    import net.wg.gui.lobby.eventBoards.MissionsEventBoardsView;
@@ -1137,6 +1151,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.RankedEntryPoint;
    import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.ResizableEntryPoint;
    import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.StrongholdEntryPoint;
+   import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.WTEventEntryPoint;
    import net.wg.gui.lobby.hangar.interfaces.IHangar;
    import net.wg.gui.lobby.hangar.interfaces.IHangarHeader;
    import net.wg.gui.lobby.hangar.interfaces.IHeaderQuestsContainer;
@@ -1166,6 +1181,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.hangar.quests.ResourceWellEntryPoint;
    import net.wg.gui.lobby.hangar.quests.SecondaryEntryPoint;
    import net.wg.gui.lobby.hangar.quests.SecondaryEntryPointContent;
+   import net.wg.gui.lobby.hangar.quests.WhiteTigerWidget;
    import net.wg.gui.lobby.hangar.tcarousel.BaseTankIcon;
    import net.wg.gui.lobby.hangar.tcarousel.CarouselProgressionPoints;
    import net.wg.gui.lobby.hangar.tcarousel.ClanLockUI;
@@ -1187,6 +1203,11 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.hangar.tcarousel.helper.TankCarouselStatsFormatter;
    import net.wg.gui.lobby.hangar.vehicleParameters.components.VehParamRenderer;
    import net.wg.gui.lobby.hangar.vehicleParameters.components.VehParamRendererWithHighlight;
+   import net.wg.gui.lobby.hangar.wtEvent.WTEventBoxEntryPointWidget;
+   import net.wg.gui.lobby.hangar.wtEvent.WTEventCarouselWidget;
+   import net.wg.gui.lobby.hangar.wtEvent.WTEventCrewWidget;
+   import net.wg.gui.lobby.hangar.wtEvent.WTEventEntryPointTextInfo;
+   import net.wg.gui.lobby.hangar.wtEvent.WTEventParamsWidget;
    import net.wg.gui.lobby.header.BadgeSlot;
    import net.wg.gui.lobby.header.LobbyHeader;
    import net.wg.gui.lobby.header.OnlineCounter;
@@ -2670,6 +2691,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.window.RankedPrimeTime;
    import net.wg.gui.lobby.window.SwitchPeripheryWindow;
    import net.wg.gui.lobby.window.VcoinExchangeDataVO;
+   import net.wg.gui.lobby.window.WTEventPrimeTime;
    import net.wg.gui.login.EULA.EULADlg;
    import net.wg.gui.login.EULA.EULAFullDlg;
    import net.wg.gui.login.IFormBaseVo;
@@ -3033,6 +3055,10 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_DATA_CONSTANTS_GENERATED_EVENTBOARDS_ALIASES:Class = EVENTBOARDS_ALIASES;
       
       public static const NET_WG_DATA_CONSTANTS_GENERATED_EVENTPROGRESSION_ALIASES:Class = EVENTPROGRESSION_ALIASES;
+      
+      public static const NET_WG_DATA_CONSTANTS_GENERATED_EVENT_BATTLES_ALIASES:Class = EVENT_BATTLES_ALIASES;
+      
+      public static const NET_WG_DATA_CONSTANTS_GENERATED_EVENT_BATTLES_CONSTS:Class = EVENT_BATTLES_CONSTS;
       
       public static const NET_WG_DATA_CONSTANTS_GENERATED_FITTING_TYPES:Class = FITTING_TYPES;
       
@@ -4844,6 +4870,30 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_EPICBATTLES_VIEWS_EPICBATTLESAFTERBATTLEVIEW:Class = EpicBattlesAfterBattleView;
       
+      public static const NET_WG_GUI_LOBBY_EVENTBATTLEQUEUE_EVENTBATTLEQUEUE:Class = EventBattleQueue;
+      
+      public static const NET_WG_GUI_LOBBY_EVENTBATTLEQUEUE_COMPONENTS_QUICKSTARTBOSSCONTENT:Class = QuickStartBossContent;
+      
+      public static const NET_WG_GUI_LOBBY_EVENTBATTLEQUEUE_COMPONENTS_QUICKSTARTCONTENTBASE:Class = QuickStartContentBase;
+      
+      public static const NET_WG_GUI_LOBBY_EVENTBATTLEQUEUE_COMPONENTS_QUICKSTARTHUNTERCONTENT:Class = QuickStartHunterContent;
+      
+      public static const NET_WG_GUI_LOBBY_EVENTBATTLEQUEUE_COMPONENTS_QUICKSTARTPANEL:Class = QuickStartPanel;
+      
+      public static const NET_WG_GUI_LOBBY_EVENTBATTLEQUEUE_COMPONENTS_QUICKSTARTVEHICLELIST:Class = QuickStartVehicleList;
+      
+      public static const NET_WG_GUI_LOBBY_EVENTBATTLEQUEUE_COMPONENTS_QUICKSTARTVEHICLERENDERER:Class = QuickStartVehicleRenderer;
+      
+      public static const NET_WG_GUI_LOBBY_EVENTBATTLEQUEUE_DATA_BOSSQUICKSTARTPANELVO:Class = BossQuickStartPanelVO;
+      
+      public static const NET_WG_GUI_LOBBY_EVENTBATTLEQUEUE_DATA_HUNTERQUICKSTARTPANELVO:Class = HunterQuickStartPanelVO;
+      
+      public static const NET_WG_GUI_LOBBY_EVENTBATTLEQUEUE_DATA_QUICKSTARTPANELHUNTERINFOVO:Class = QuickStartPanelHunterInfoVO;
+      
+      public static const NET_WG_GUI_LOBBY_EVENTBATTLEQUEUE_DATA_QUICKSTARTPANELVO:Class = QuickStartPanelVO;
+      
+      public static const NET_WG_GUI_LOBBY_EVENTBATTLEQUEUE_EVENTS_QUICKSTARTEVENT:Class = QuickStartEvent;
+      
       public static const NET_WG_GUI_LOBBY_EVENTBOARDS_EVENTBOARDSDETAILSCONTAINERVIEW:Class = EventBoardsDetailsContainerView;
       
       public static const NET_WG_GUI_LOBBY_EVENTBOARDS_EVENTBOARDSTABLEVIEW:Class = EventBoardsTableView;
@@ -5226,6 +5276,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_HANGAR_EVENTENTRYPOINT_GFWRAPPER_STRONGHOLDENTRYPOINT:Class = StrongholdEntryPoint;
       
+      public static const NET_WG_GUI_LOBBY_HANGAR_EVENTENTRYPOINT_GFWRAPPER_WTEVENTENTRYPOINT:Class = WTEventEntryPoint;
+      
       public static const NET_WG_GUI_LOBBY_HANGAR_INTERFACES_IHANGAR:Class = IHangar;
       
       public static const NET_WG_GUI_LOBBY_HANGAR_INTERFACES_IHANGARHEADER:Class = IHangarHeader;
@@ -5284,6 +5336,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_HANGAR_QUESTS_SECONDARYENTRYPOINTCONTENT:Class = SecondaryEntryPointContent;
       
+      public static const NET_WG_GUI_LOBBY_HANGAR_QUESTS_WHITETIGERWIDGET:Class = WhiteTigerWidget;
+      
       public static const NET_WG_GUI_LOBBY_HANGAR_TCAROUSEL_BASETANKICON:Class = BaseTankIcon;
       
       public static const NET_WG_GUI_LOBBY_HANGAR_TCAROUSEL_CAROUSELPROGRESSIONPOINTS:Class = CarouselProgressionPoints;
@@ -5325,6 +5379,16 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_HANGAR_VEHICLEPARAMETERS_COMPONENTS_VEHPARAMRENDERER:Class = VehParamRenderer;
       
       public static const NET_WG_GUI_LOBBY_HANGAR_VEHICLEPARAMETERS_COMPONENTS_VEHPARAMRENDERERWITHHIGHLIGHT:Class = VehParamRendererWithHighlight;
+      
+      public static const NET_WG_GUI_LOBBY_HANGAR_WTEVENT_WTEVENTBOXENTRYPOINTWIDGET:Class = WTEventBoxEntryPointWidget;
+      
+      public static const NET_WG_GUI_LOBBY_HANGAR_WTEVENT_WTEVENTCAROUSELWIDGET:Class = WTEventCarouselWidget;
+      
+      public static const NET_WG_GUI_LOBBY_HANGAR_WTEVENT_WTEVENTCREWWIDGET:Class = WTEventCrewWidget;
+      
+      public static const NET_WG_GUI_LOBBY_HANGAR_WTEVENT_WTEVENTENTRYPOINTTEXTINFO:Class = WTEventEntryPointTextInfo;
+      
+      public static const NET_WG_GUI_LOBBY_HANGAR_WTEVENT_WTEVENTPARAMSWIDGET:Class = WTEventParamsWidget;
       
       public static const NET_WG_GUI_LOBBY_HEADER_BADGESLOT:Class = BadgeSlot;
       
@@ -8291,6 +8355,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_WINDOW_SWITCHPERIPHERYWINDOW:Class = SwitchPeripheryWindow;
       
       public static const NET_WG_GUI_LOBBY_WINDOW_VCOINEXCHANGEDATAVO:Class = VcoinExchangeDataVO;
+      
+      public static const NET_WG_GUI_LOBBY_WINDOW_WTEVENTPRIMETIME:Class = WTEventPrimeTime;
       
       public static const NET_WG_GUI_LOGIN_IFORMBASEVO:Class = IFormBaseVo;
       

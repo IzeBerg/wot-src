@@ -120,6 +120,7 @@ def WW_getSoundPos(*args, **kwargs): pass
 def WW_getSystemSpeakersConfig(*args, **kwargs): pass
 def WW_getUserSpeakersConfig(*args, **kwargs): pass
 def WW_isInitialised(*args, **kwargs): pass
+def WW_loadCustomSoundBanks(*args, **kwargs): pass
 def WW_onMemoryCritical(*args, **kwargs): pass
 def WW_playCameraOriented(*args, **kwargs): pass
 def WW_prepareMP3(*args, **kwargs): pass
@@ -138,6 +139,7 @@ def WW_setUserSpeakersConfig(*args, **kwargs): pass
 def WW_soundSystemInfo(*args, **kwargs): pass
 def WW_startProfilerCapture(*args, **kwargs): pass
 def WW_stopProfilerCapture(*args, **kwargs): pass
+def WW_unloadCustomSoundBanks(*args, **kwargs): pass
 def WWsetCameraShift(*args, **kwargs): pass
 __doc__ = None
 __name__ = '_WWISE'
