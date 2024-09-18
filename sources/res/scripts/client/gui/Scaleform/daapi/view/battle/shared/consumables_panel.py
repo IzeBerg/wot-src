@@ -14,8 +14,7 @@ from gui.Scaleform.genConsts.TOOLTIPS_CONSTANTS import TOOLTIPS_CONSTANTS
 from gui.battle_control.battle_constants import VEHICLE_DEVICE_IN_COMPLEX_ITEM, CROSSHAIR_VIEW_ID
 from gui.battle_control.battle_constants import VEHICLE_VIEW_STATE, DEVICE_STATE_DESTROYED
 from gui.battle_control.controllers.consumables.ammo_ctrl import IAmmoListener
-from gui.battle_control.controllers.consumables.equipment_ctrl import IgnoreEntitySelection
-from gui.battle_control.controllers.consumables.equipment_ctrl import NeedEntitySelection
+from gui.battle_control.controllers.consumables.equipment_ctrl import IgnoreEntitySelection, NeedEntitySelection, isWtEventItem, EquipmentSound
 from gui.impl import backport
 from gui.impl.gen import R
 from gui.shared import g_eventBus, EVENT_BUS_SCOPE
@@ -32,6 +31,7 @@ from shared_utils import forEach
 from items.utils import getVehicleShotSpeedByFactors
 from skeletons.gui.battle_session import IBattleSessionProvider
 from skeletons.gui.lobby_context import ILobbyContext
+from skeletons.gui.app_loader import IAppLoader
 if TYPE_CHECKING:
     from gui.battle_control.controllers.consumables.equipment_ctrl import _OrderItem, _EquipmentItem
 _logger = logging.getLogger(__name__)
@@ -82,6 +82,7 @@ class _PythonReloadTicker(PythonTimer):
 class ConsumablesPanel(IAmmoListener, ConsumablesPanelMeta, CallbackDelayer):
     sessionProvider = dependency.descriptor(IBattleSessionProvider)
     lobbyContext = dependency.descriptor(ILobbyContext)
+    appLoader = dependency.descriptor(IAppLoader)
     _PANEL_MAX_LENGTH = 12
     _AMMO_START_IDX = 0
     _AMMO_END_IDX = 2
@@ -127,6 +128,8 @@ class ConsumablesPanel(IAmmoListener, ConsumablesPanelMeta, CallbackDelayer):
 
     def onClickedToSlot(self, bwKey, idx):
         self.__handleBWKey(int(bwKey), idx)
+        app = self.appLoader.getDefBattleApp()
+        app.cursorMgr.resetMousePosition()
 
     def onPanelShown(self):
         self.__isViewActive = True
@@ -238,11 +241,12 @@ class ConsumablesPanel(IAmmoListener, ConsumablesPanelMeta, CallbackDelayer):
         self._cds[idx] = intCD
         if item is None:
             bwKey, sfKey = self._genKey(idx)
-            self.as_addEquipmentSlotS(idx=idx, keyCode=bwKey, sfKeyCode=sfKey, quantity=0, timeRemaining=0, reloadingTime=0, iconPath='', tooltipText=EMPTY_EQUIPMENT_TOOLTIP, animation=ANIMATION_TYPES.NONE)
+            self.as_addEquipmentSlotS(idx=idx, keyCode=bwKey, sfKeyCode=sfKey, tag=None, quantity=0, timeRemaining=0, reloadingTime=0, iconPath='', tooltipText=EMPTY_EQUIPMENT_TOOLTIP, animation=ANIMATION_TYPES.NONE, stage=EQUIPMENT_STAGES.NOT_RUNNING)
             snap = self._cds[self._EQUIPMENT_START_IDX:self._EQUIPMENT_END_IDX + 1]
             if snap == self._emptyEquipmentsSlice:
                 self.as_showEquipmentSlotsS(False)
         else:
+            tags = item.getTags()
             bwKey, sfKey = self._generateEquipmentKey(idx, item)
             if bwKey is not None:
                 handler = self._getEquipmentKeyHandler(intCD, idx)
@@ -254,7 +258,7 @@ class ConsumablesPanel(IAmmoListener, ConsumablesPanelMeta, CallbackDelayer):
             reloadingTime = item.getTotalTime()
             iconPath = self._getEquipmentIcon(idx, item, descriptor.icon[0])
             animationType = item.getAnimationType()
-            self.as_addEquipmentSlotS(idx=idx, keyCode=bwKey, sfKeyCode=sfKey, quantity=quantity, timeRemaining=timeRemaining, reloadingTime=reloadingTime, iconPath=iconPath, tooltipText=self._getToolTipEquipmentSlot(item), animation=animationType)
+            self.as_addEquipmentSlotS(idx=idx, keyCode=bwKey, sfKeyCode=sfKey, tag=next(iter(tags), None), quantity=quantity, timeRemaining=timeRemaining, reloadingTime=reloadingTime, iconPath=iconPath, tooltipText=self._getToolTipEquipmentSlot(item), animation=animationType, stage=item.getStage())
         return
 
     def _addOptionalDeviceSlot(self, idx, optDeviceInBattle):
@@ -276,7 +280,7 @@ class ConsumablesPanel(IAmmoListener, ConsumablesPanelMeta, CallbackDelayer):
         quantity = item.getQuantity()
         currentTime = item.getTimeRemaining()
         maxTime = item.getTotalTime()
-        self.as_setItemTimeQuantityInSlotS(idx, quantity, currentTime, maxTime, item.getAnimationType())
+        self.as_setItemTimeQuantityInSlotS(idx, quantity, currentTime, maxTime, item.getAnimationType(), item.getStage())
         bwKey, _ = self._genKey(idx)
         self._setEquipmentKeyHandler(item, bwKey, idx)
         self._updateEquipmentGlow(idx, item)
@@ -289,7 +293,7 @@ class ConsumablesPanel(IAmmoListener, ConsumablesPanelMeta, CallbackDelayer):
             isPermanentGlow = PERMANENT_GLOW_TAG in item.getTags()
             if self.__canApplyingGlowEquipment(item):
                 self._showEquipmentGlow(idx)
-            elif item.becomeReady:
+            elif item.becomeReady and not isWtEventItem(item):
                 self._showEquipmentGlow(idx, glowType, isPermanentGlow)
             elif isPermanentGlow and item.getStage() == EQUIPMENT_STAGES.COOLDOWN:
                 self.as_hideGlowS(idx)
@@ -638,6 +642,7 @@ class ConsumablesPanel(IAmmoListener, ConsumablesPanelMeta, CallbackDelayer):
             if not self.as_isVisibleS():
                 return
             result, error = ctrl.changeSetting(intCD, entityName=entityName, avatar=BigWorld.player(), idx=idx)
+            EquipmentSound.playPressed(ctrl.getEquipment(intCD), result)
             if not result and error:
                 ctrl = self.sessionProvider.shared.messages
                 if ctrl is not None:
@@ -770,6 +775,9 @@ class ConsumablesPanel(IAmmoListener, ConsumablesPanelMeta, CallbackDelayer):
                         if not equipment.getDescriptor().autoactivate:
                             self.__clearEquipmentGlow(self._cds.index(intCD))
 
+            elif state == VEHICLE_VIEW_STATE.WT_INSPIRE:
+                if value[0] == BigWorld.player().playerVehicleID:
+                    self.as_setInspiredS(value[1])
             return
 
     def __canApplyingGlowEquipment(self, equipment):
@@ -777,7 +785,7 @@ class ConsumablesPanel(IAmmoListener, ConsumablesPanelMeta, CallbackDelayer):
         if 'extinguisher' in equipmentTags or 'regenerationKit' in equipmentTags:
             correction = True
             entityName = None
-        elif equipment.isAvatar():
+        elif equipment.isAvatar() or isWtEventItem(equipment):
             correction = False
             entityName = None
         else:

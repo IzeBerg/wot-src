@@ -25,6 +25,7 @@ package net.wg.gui.lobby.hangar
    import net.wg.gui.lobby.hangar.quests.LiveOpsWebEventsEntryPoint;
    import net.wg.gui.lobby.hangar.quests.ResourceWellEntryPoint;
    import net.wg.gui.lobby.hangar.quests.SecondaryEntryPoint;
+   import net.wg.gui.lobby.hangar.quests.WhiteTigerWidget;
    import net.wg.gui.lobby.rankedBattles19.components.widget.RankedBattlesHangarWidget;
    import net.wg.infrastructure.base.meta.IHangarHeaderMeta;
    import net.wg.infrastructure.base.meta.impl.HangarHeaderMeta;
@@ -63,6 +64,8 @@ package net.wg.gui.lobby.hangar
       private var _widget:IHeaderEntryPoint = null;
       
       private var _data:HangarHeaderVO;
+      
+      private var _whiteTigerWidget:WhiteTigerWidget = null;
       
       private var _scheduler:IScheduler;
       
@@ -356,6 +359,8 @@ package net.wg.gui.lobby.hangar
                return new FunRandomHangarWidget();
             case HANGAR_ALIASES.RANKED_WIDGET:
                return App.instance.utils.classFactory.getComponent(Linkages.RANKED_BATTLES_WIDGET_UI,RankedBattlesHangarWidget);
+            case HANGAR_ALIASES.WHITE_TIGER_WIDGET:
+               return new WhiteTigerWidget();
             default:
                return null;
          }
@@ -399,6 +404,13 @@ package net.wg.gui.lobby.hangar
       {
          invalidateLayout();
          validateNow();
+      }
+      
+      private function createWhiteTiger() : void
+      {
+         this._whiteTigerWidget = new WhiteTigerWidget();
+         this.questsFlags.setEntryPoint(this._whiteTigerWidget);
+         registerFlashComponentS(this._whiteTigerWidget,HANGAR_ALIASES.WHITE_TIGER_WIDGET);
       }
       
       private function onBtnHeaderQuestClickHandler(param1:HeaderQuestsEvent) : void

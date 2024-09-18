@@ -60,7 +60,7 @@ package net.wg.gui.battle.views.postmortemPanel
       
       protected var _userName:UserNameField = null;
       
-      protected var _playerInfo:String = "";
+      private var _playerInfo:String = "";
       
       protected var _userVO:UserVO = null;
       

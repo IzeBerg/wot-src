@@ -40,7 +40,7 @@ class UnitVehiclesValidator(BaseActionsValidator):
                 return ValidationResult(False, UNIT_RESTRICTION.VEHICLE_NOT_SELECTED)
             vInfos = self._getVehiclesInfo()
             if not findFirst(lambda v: not v.isEmpty(), vInfos, False):
-                return ValidationResult(False, UNIT_RESTRICTION.VEHICLE_NOT_SELECTED)
+                return self._getVehicleIsNotSelectedResult()
             for vInfo in vInfos:
                 vehicle = vInfo.getVehicle()
                 if vehicle is not None:
@@ -73,6 +73,9 @@ class UnitVehiclesValidator(BaseActionsValidator):
             return ValidationResult(False, UNIT_RESTRICTION.VEHICLE_WRONG_MODE)
         else:
             return
+
+    def _getVehicleIsNotSelectedResult(self):
+        return ValidationResult(False, UNIT_RESTRICTION.VEHICLE_NOT_SELECTED)
 
     def _isCheckForRent(self):
         return True

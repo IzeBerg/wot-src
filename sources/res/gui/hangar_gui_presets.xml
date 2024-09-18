@@ -196,6 +196,24 @@
 				</component>
 			</components>
 		</preset>
+		<preset>
+			<name>event</name>
+			<basePreset>empty</basePreset>
+			<components>
+				<component>
+					<name>alertMessage</name>
+					<visible>True</visible>
+				</component>
+				<component>
+					<name>header</name>
+					<visible>True</visible>
+				</component>
+				<component>
+					<name>headerQuestFlags</name>
+					<visible>True</visible>
+				</component>
+			</components>
+		</preset>
 	</presets>
 	<queueTypePresets>
 		<item>
@@ -205,6 +223,10 @@
 		<item>
 			<queueType>7</queueType>
 			<presetName>random</presetName>
+		</item>
+		<item>
+			<queueType>7</queueType>
+			<presetName>event</presetName>
 		</item>
 		<item>
 			<queueType>17</queueType>

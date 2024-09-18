@@ -76,7 +76,10 @@ package net.wg.gui.battle.components
          this.listRight.addEventListener(PlayersPanelListEvent.ITEM_SELECTED,this.onListItemSelectedHandler);
          this.listRight.addEventListener(PlayersPanelListEvent.ITEMS_COUNT_CHANGE,this.onListItemsCountChangeHandler);
          this.listRight.addEventListener(PlayersPanelListEvent.ITEM_CONTEXT_MENU_OPEN,this.onListItemContextMenuOpenHandler);
-         this.panelSwitch.addEventListener(PlayersPanelSwitchEvent.STATE_REQUESTED,this.onPanelSwitchStateRequestedHandler);
+         if(this.panelSwitch)
+         {
+            this.panelSwitch.addEventListener(PlayersPanelSwitchEvent.STATE_REQUESTED,this.onPanelSwitchStateRequestedHandler);
+         }
          App.voiceChatMgr.addEventListener(VoiceChatEvent.START_SPEAKING,this.onVoiceChatStartSpeakingHandler);
          App.voiceChatMgr.addEventListener(VoiceChatEvent.STOP_SPEAKING,this.onVoiceChatStopSpeakingHandler);
          App.colorSchemeMgr.addEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemasUpdatedHandler);
@@ -95,7 +98,6 @@ package net.wg.gui.battle.components
          this.listRight.removeEventListener(PlayersPanelListEvent.ITEM_SELECTED,this.onListItemSelectedHandler);
          this.listRight.removeEventListener(PlayersPanelListEvent.ITEMS_COUNT_CHANGE,this.onListItemsCountChangeHandler);
          this.listRight.removeEventListener(PlayersPanelListEvent.ITEM_CONTEXT_MENU_OPEN,this.onListItemContextMenuOpenHandler);
-         this.panelSwitch.removeEventListener(PlayersPanelSwitchEvent.STATE_REQUESTED,this.onPanelSwitchStateRequestedHandler);
          App.voiceChatMgr.removeEventListener(VoiceChatEvent.START_SPEAKING,this.onVoiceChatStartSpeakingHandler);
          App.voiceChatMgr.removeEventListener(VoiceChatEvent.STOP_SPEAKING,this.onVoiceChatStopSpeakingHandler);
          App.colorSchemeMgr.removeEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemasUpdatedHandler);
@@ -109,7 +111,11 @@ package net.wg.gui.battle.components
       {
          this.listLeft.dispose();
          this.listRight.dispose();
-         this.panelSwitch.dispose();
+         if(this.panelSwitch)
+         {
+            this.panelSwitch.removeEventListener(PlayersPanelSwitchEvent.STATE_REQUESTED,this.onPanelSwitchStateRequestedHandler);
+            this.panelSwitch.dispose();
+         }
          this.listLeft = null;
          this.listRight = null;
          this.panelSwitch = null;
@@ -131,7 +137,10 @@ package net.wg.gui.battle.components
       
       public function as_setIsInteractive(param1:Boolean) : void
       {
-         this.panelSwitch.setIsInteractive(param1);
+         if(this.panelSwitch)
+         {
+            this.panelSwitch.setIsInteractive(param1);
+         }
          this.listLeft.setIsCursorVisible(param1);
          this.listRight.setIsCursorVisible(param1);
          if(!param1)
@@ -171,7 +180,10 @@ package net.wg.gui.battle.components
          {
             this.setListsState(param1);
          }
-         this.panelSwitch.setState(param1);
+         if(this.panelSwitch)
+         {
+            this.panelSwitch.setState(param1);
+         }
       }
       
       public function as_setPlayerHP(param1:Boolean, param2:int, param3:int) : void

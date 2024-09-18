@@ -112,6 +112,10 @@ package net.wg.data.constants.generated
       public static const DAMAGE_BY_BATTLESHIP:String = "damageByBattleship";
       
       public static const DAMAGE_BY_DESTROYER:String = "damageByDestroyer";
+      
+      public static const RECEIVED_BY_CIRCUIT_OVERLOAD:String = "wtReceivedCircuitOverload";
+      
+      public static const HYPERION:String = "hyperion";
        
       
       public function BATTLE_EFFICIENCY_TYPES()

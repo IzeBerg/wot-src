@@ -1589,7 +1589,8 @@ SYS_MESSAGE_TYPE = Enumeration('systemMessageType', [
  'postProgressionCompleted',
  'passiveXPDeactivateDueToPostProgression',
  'prbVehicleKickFromSquad',
- 'skillsCrewBoostersConversion'])
+ 'skillsCrewBoostersConversion',
+ 'wtEventTicketTokenWithdrawn'])
 SYS_MESSAGE_IMPORTANCE = Enumeration('systemMessageImportance', [
  'normal',
  'high'])

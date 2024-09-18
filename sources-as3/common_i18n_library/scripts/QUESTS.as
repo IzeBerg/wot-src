@@ -1489,6 +1489,18 @@ package
       
       public static const DETAILS_CONDITIONS_CUMULATIVE_XP_OTHER:String = "#quests:details/conditions/cumulative/xp/other";
       
+      public static const DETAILS_CONDITIONS_CUMULATIVE_WTBOSSVULNERABLEDAMAGE:String = "#quests:details/conditions/cumulative/wtBossVulnerableDamage";
+      
+      public static const DETAILS_CONDITIONS_CUMULATIVE_MAXWTPLASMABONUS:String = "#quests:details/conditions/cumulative/maxWtPlasmaBonus";
+      
+      public static const DETAILS_CONDITIONS_CUMULATIVE_WTGENERATORSCAPTURED:String = "#quests:details/conditions/cumulative/wtGeneratorsCaptured";
+      
+      public static const DETAILS_CONDITIONS_CUMULATIVE_WTDEATHCOUNT:String = "#quests:details/conditions/cumulative/wtDeathCount";
+      
+      public static const DETAILS_CONDITIONS_CUMULATIVE_WTMINIBOSSDESTROYED:String = "#quests:details/conditions/cumulative/wtMiniBossDestroyed";
+      
+      public static const DETAILS_CONDITIONS_CUMULATIVE_WTKILLEDBYHYPERIONCOUNT:String = "#quests:details/conditions/cumulative/wtKilledByHyperionCount";
+      
       public static const DETAILS_DOSSIER_SNIPERSERIES:String = "#quests:details/dossier/sniperSeries";
       
       public static const DETAILS_DOSSIER_MAXSNIPERSERIES:String = "#quests:details/dossier/maxSniperSeries";

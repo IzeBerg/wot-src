@@ -155,6 +155,16 @@ class _DamageExtra(object):
             return self.isAttackReason(ATTACK_REASON.FORT_ARTILLERY_EQ)
         return self.isSecondaryAttackReason(ATTACK_REASON.FORT_ARTILLERY_EQ)
 
+    def isCircuitOverload(self, primary=True):
+        if primary:
+            return self.isAttackReason(ATTACK_REASON.CIRCUIT_OVERLOAD)
+        return self.isSecondaryAttackReason(ATTACK_REASON.CIRCUIT_OVERLOAD)
+
+    def isDamageByHyperion(self, primary=True):
+        if primary:
+            return self.isAttackReason(ATTACK_REASON.HYPERION)
+        return self.isSecondaryAttackReason(ATTACK_REASON.HYPERION)
+
     def isBomberEq(self, primary=True):
         if primary:
             return self.isAttackReason(ATTACK_REASON.BOMBER_EQ)
@@ -309,6 +319,12 @@ class _CritsExtra(object):
 
     def isThunderStrike(self):
         return self.isAttackReason(ATTACK_REASON.THUNDER_STRIKE)
+
+    def isCircuitOverload(self):
+        return self.isAttackReason(ATTACK_REASON.CIRCUIT_OVERLOAD)
+
+    def isDamageByHyperion(self):
+        return self.isAttackReason(ATTACK_REASON.HYPERION)
 
     def isRam(self):
         return self.isAttackReason(ATTACK_REASON.RAM)

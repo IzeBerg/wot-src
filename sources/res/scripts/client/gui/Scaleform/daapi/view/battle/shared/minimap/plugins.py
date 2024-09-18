@@ -1057,6 +1057,9 @@ class ArenaVehiclesPlugin(common.EntriesPlugin, IVehiclesAndPositionsController)
     def __onTeamChanged(self, teamID):
         self.invalidateArenaInfo()
 
+    def hideMinimapHP(self):
+        self.__showMinimapHP(False)
+
     def __handleShowExtendedInfo(self, event):
         if self._parentObj.isModalViewShown():
             return
@@ -1290,6 +1293,10 @@ class MinimapPingPlugin(SimpleMinimapPingPlugin):
     def getHintSection(self):
         return dict(AccountSettings.getSettings(MINIMAP_IBC_HINT_SECTION))
 
+    def hideHintPanel(self, instantHide=False):
+        self.__isHintPanelEnabled = False
+        self.parentObj.as_disableHintPanelS(instantHide)
+
     def __handleKeyDownEvent(self, event):
         if event.key not in (Keys.KEY_LCONTROL, Keys.KEY_RCONTROL):
             return
@@ -1304,10 +1311,9 @@ class MinimapPingPlugin(SimpleMinimapPingPlugin):
     def __handleKeyUpEvent(self, event):
         if event.key not in (Keys.KEY_LCONTROL, Keys.KEY_RCONTROL):
             return
-        if not self.__isHintPanelEnabled:
+        if not self.__isHintPanelEnabled or self._parentObj.isModalViewShown():
             return
-        self.__isHintPanelEnabled = False
-        self.parentObj.as_disableHintPanelS()
+        self.hideHintPanel()
 
     def updateControlMode(self, crtlMode, vehicleID):
         super(MinimapPingPlugin, self).updateControlMode(crtlMode, vehicleID)

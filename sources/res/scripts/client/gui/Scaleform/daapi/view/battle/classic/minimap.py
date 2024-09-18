@@ -43,13 +43,13 @@ class ClassicMinimapComponent(component.MinimapComponent):
 
 
 class GlobalSettingsPlugin(common.SimplePlugin):
-    __slots__ = ('_currentSizeSettings', '__isVisible', '_sizeIndex', '__canChangeAlpha')
+    __slots__ = ('_currentSizeSettings', '_isVisible', '_sizeIndex', '__canChangeAlpha')
     _AccountSettingsClass = AccountSettings
 
     def __init__(self, parentObj):
         super(GlobalSettingsPlugin, self).__init__(parentObj)
         self._currentSizeSettings = 'minimapSize'
-        self.__isVisible = True
+        self._isVisible = True
         self._sizeIndex = 0
         self.__canChangeAlpha = parentObj.canChangeAlpha()
 
@@ -90,8 +90,8 @@ class GlobalSettingsPlugin(common.SimplePlugin):
         return previousSettings
 
     def _toogleVisible(self):
-        self.__isVisible = not self.__isVisible
-        self._parentObj.as_setVisibleS(self.__isVisible)
+        self._isVisible = not self._isVisible
+        self._parentObj.as_setVisibleS(self._isVisible)
 
     def _saveSettings(self):
         self._AccountSettingsClass.setSettings(self._currentSizeSettings, self._sizeIndex)

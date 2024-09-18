@@ -1,4 +1,5 @@
 from operator import itemgetter
+from collections import namedtuple
 from helpers.i18n import makeString as _ms
 import typing
 from blueprints.BlueprintTypes import BlueprintTypes
@@ -22,6 +23,7 @@ from gui.shared.utils.functions import stripHTMLTags
 from gui.shared.utils.requesters.blueprints_requester import getVehicleCDForIntelligence, getVehicleCDForNational
 from helpers import int2roman, dependency
 from skeletons.gui.customization import ICustomizationService
+from items.tankmen import RECRUIT_TMAN_TOKEN_PREFIX
 if typing.TYPE_CHECKING:
     from gui.shared.gui_items.Vehicle import Vehicle
     from typing import Optional
@@ -517,6 +519,29 @@ class TankmenOfferBonus(OfferBonusMixin, TankmenBonus):
         return backport.image(R.images.gui.maps.icons.quests.bonuses.s180x135.dyn(self.getName())())
 
 
+class WTTankmenOfferBonus(TankmenOfferBonus):
+    _TOKEN_RECORD = namedtuple('_TOKEN_RECORD', [
+     'id',
+     'expires',
+     'count',
+     'limit'])
+
+    def getName(self):
+        return 'tmanToken'
+
+    def getLightViewModelData(self):
+        return (
+         self._value.keys()[0].split(':')[3],)
+
+    def getTokens(self):
+        result = {}
+        for tID, d in self._value.iteritems():
+            expires = d.get('expires', {'at': None}) or {'at': None}
+            result[tID] = self._TOKEN_RECORD(tID, expires.values()[0], d.get('count', 0), d.get('limit'))
+
+        return result
+
+
 class TankwomanOfferBonus(TankmenOfferBonus, TankwomanBonus):
     pass
 
@@ -555,6 +580,8 @@ def tokensOfferFactory(name, value, isCompensation=False, ctx=None):
             result.append(X5BattleTokensOfferBonus({tID: tValue}, isCompensation, ctx))
         elif tID.startswith(CREW_BONUS_X3_TOKEN):
             result.append(X3CrewTokensOfferBonus({tID: tValue}, isCompensation, ctx))
+        elif tID.startswith(RECRUIT_TMAN_TOKEN_PREFIX) and 'wt_' in tID:
+            result.append(WTTankmenOfferBonus(name, {tID: tValue}, isCompensation, ctx))
         else:
             result.append(TokensOfferBonus(name, {tID: tValue}, isCompensation, ctx))
 

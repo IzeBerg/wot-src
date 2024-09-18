@@ -1345,22 +1345,26 @@ class PostMortemControlMode(IControlMode, CallbackDelayer):
             isRespawnEnabled = self.guiSessionProvider.dynamic.respawn is not None
             isDelayRequired = bool(args.get('bPostmortemDelay'))
             isDelayOrRespawnEnabled = isRespawnEnabled or self._isPostmortemDelayEnabled()
+            arenaGuiType = BigWorld.player().arenaGuiType
             if isDelayRequired and isDelayOrRespawnEnabled and not playerPostmortemViewPointDefined:
                 self.__startPostmortemDelay()
-            if isRespawnEnabled and self.__processRespawn():
-                return
-            if playerPostmortemViewPointDefined:
-                matrix = Math.Matrix(player.consistentMatrices.attachedVehicleMatrix)
-                self.__cam.setYawPitch(matrix.yaw, -matrix.pitch)
-            if self.__postmortemDelay is not None:
-                return
-            vehData = BigWorld.entities.get(self.__curVehicleID, None)
-            if vehData is not None:
-                self.__cam.vehicleMProv = vehData.matrix
-            if shouldSwitchToAlly:
-                self.guiSessionProvider.shared.viewPoints.updateAttachedVehicle(self.__curVehicleID)
-                self.__switch()
-                return
+            else:
+                if arenaGuiType == constants.ARENA_GUI_TYPE.EVENT_BATTLES:
+                    self._onPostmortemDelayStop()
+                if isRespawnEnabled and self.__processRespawn():
+                    return
+                if playerPostmortemViewPointDefined:
+                    matrix = Math.Matrix(player.consistentMatrices.attachedVehicleMatrix)
+                    self.__cam.setYawPitch(matrix.yaw, -matrix.pitch)
+                if self.__postmortemDelay is not None:
+                    return
+                vehData = BigWorld.entities.get(self.__curVehicleID, None)
+                if vehData is not None:
+                    self.__cam.vehicleMProv = vehData.matrix
+                if shouldSwitchToAlly:
+                    self.guiSessionProvider.shared.viewPoints.updateAttachedVehicle(self.__curVehicleID)
+                    self.__switch()
+                    return
             isAttachedOnVehicle = DeathFreeCamMode.isAttachedOnVehicle(self.__curVehicleID)
             self.__vehicleSwitchType = _PostmortemSwitchType.CONTROL_MODE_CHANGE
             self.selectPlayer(self.__curVehicleID)

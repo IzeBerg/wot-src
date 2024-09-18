@@ -669,6 +669,8 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 		<offersDebitedInvoiceReceived>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/invoiceReceived/offersDebited): &lt;font color=&apos;#8C8C7E&apos;&gt;%(offer)s&lt;/font&gt;</offersDebitedInvoiceReceived>
 		<vehiclePrestigeInvoiceReceived>&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</vehiclePrestigeInvoiceReceived>
 		<purchaseSubtitle>&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/invoiceReceived/purchase/received_from)&lt;/font&gt; &lt;font color=&apos;#F2F2F7&apos;&gt;_(#messenger:serviceChannelMessages/quotedTextTemplate)&lt;/font&gt;</purchaseSubtitle>
+		<lootboxesReceived>&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/event/lootboxes) &lt;font color=&apos;#8C8C7E&apos;&gt;%(amount)s&lt;/font&gt;</lootboxesReceived>
+		<ticketsReceived>&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/event/tickets) &lt;font color=&apos;#8C8C7E&apos;&gt;%(amount)s&lt;/font&gt;</ticketsReceived>
 		<prebattleOpponents>&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(first)s&lt;/font&gt; vs. &lt;font color=&apos;#8C8C7E&apos;&gt;%(second)s&lt;/font&gt;&lt;/font&gt;</prebattleOpponents>
 		<prebattleSubtotal>&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/prebattle/subtotal): &lt;font color=&apos;#8C8C7E&apos;&gt;%(first)d:%(second)d&lt;/font&gt;&lt;/font&gt;</prebattleSubtotal>
 		<prebattleTotal>&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/prebattle/total): &lt;font color=&apos;#8C8C7E&apos;&gt;%(result)s (%(first)d:%(second)d)&lt;/font&gt;&lt;/font&gt;</prebattleTotal>
@@ -3580,5 +3582,76 @@ _(#lootboxes:notification/lootBoxesAutoOpen/boxes)&lt;br/&gt;%(rewards)s</messag
 			<icon>InformationIcon</icon>
 			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#system_messages:skillsCrewBoostersConversion/title)&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
 		</SkillsCrewBoostersConversion>
+		<WTEventSwitchOnLootboxesSysMessage>
+			<priority>high</priority>
+			<icon>InformationIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#event:notifications/lootboxes/header)&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#event:notifications/lootboxes/switchOn/openBtnLabel)</label>
+					<action>openWTEventPortals</action>
+					<width>107</width>
+				</button>
+			</buttonsLayout>
+		</WTEventSwitchOnLootboxesSysMessage>
+		<WTEventProgressionSysMessage>
+			<icon>InformationIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#event:notifications/progression/header)&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#event:notifications/progression/openBtnLabel)</label>
+					<action>openWTEventCollection</action>
+					<width>107</width>
+				</button>
+			</buttonsLayout>
+		</WTEventProgressionSysMessage>
+		<WTEventStartSysMessage>
+			<icon>InformationIcon</icon>
+			<priority>medium</priority>
+			<message>&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#event:notifications/eventStart/openBtnLabel)</label>
+					<action>openWTEvent</action>
+					<width>107</width>
+				</button>
+			</buttonsLayout>
+		</WTEventStartSysMessage>
+		<WTEventTicketTokenWithdrawn>
+			<icon>InformationIcon</icon>
+			<priority>medium</priority>
+			<message>&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#event:notifications/ticketToken/withdrawn/openQuestsBtn)</label>
+					<action>openWTEventQuests</action>
+					<width>107</width>
+				</button>
+				<button>
+					<type>cancel</type>
+					<label>_(#event:notifications/ticketToken/withdrawn/openPurchasingBtn)</label>
+					<action>openWTEventTicketPurchasing</action>
+					<width>107</width>
+				</button>
+			</buttonsLayout>
+		</WTEventTicketTokenWithdrawn>
+		<WTEventBattleResult>
+			<icon>BattleResultIcon</icon>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#event:notifications/battleResults/buttonLabel)</label>
+					<action>showWTBattleResults</action>
+				</button>
+			</buttonsLayout>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(mainResultName)s&lt;/font&gt;
+&lt;font color=&apos;#8C8C7E&apos;&gt;_(#event:notifications/battleResults/event): %(eventName)s&lt;/font&gt;
+&lt;font color=&apos;#8C8C7E&apos;&gt;_(#event:notifications/battleResults/battle): %(arenaName)s&lt;/font&gt;
+&lt;font color=&apos;#8C8C7E&apos;&gt;_(#event:notifications/battleResults/team): &lt;font color=&apos;#C9C9B6&apos;&gt;%(teamName)s&lt;/font&gt;%(achieves)s%(quests)s%(stamps)s%(lootboxes)s</message>
+		</WTEventBattleResult>
 	</htmlTemplates>
 </root>

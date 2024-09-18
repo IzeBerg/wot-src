@@ -13,6 +13,7 @@ package net.wg.gui.battle.views
    import net.wg.gui.battle.interfaces.IPrebattleTimerBase;
    import net.wg.gui.battle.views.ammunitionPanel.PrbAmmunitionPanelEvent;
    import net.wg.gui.battle.views.ammunitionPanel.PrebattleAmmunitionPanelView;
+   import net.wg.gui.battle.views.battleTimer.BaseBattleTimer;
    import net.wg.gui.battle.views.calloutPanel.CalloutPanel;
    import net.wg.gui.battle.views.damagePanel.DamagePanel;
    import net.wg.gui.battle.views.deathCamHud.DeathCamHud;
@@ -33,7 +34,6 @@ package net.wg.gui.battle.views
    import net.wg.gui.lobby.settings.config.ControlsFactory;
    import net.wg.infrastructure.base.meta.IBattlePageMeta;
    import net.wg.infrastructure.base.meta.impl.BattlePageMeta;
-   import net.wg.infrastructure.base.meta.impl.BattleTimerMeta;
    import net.wg.infrastructure.events.LifeCycleEvent;
    import net.wg.infrastructure.helpers.statisticsDataController.BattleStatisticDataController;
    import net.wg.infrastructure.interfaces.IDAAPIModule;
@@ -84,7 +84,7 @@ package net.wg.gui.battle.views
       
       public var minimap:BaseMinimap = null;
       
-      public var battleTimer:BattleTimerMeta = null;
+      public var battleTimer:BaseBattleTimer = null;
       
       public var ribbonsPanel:RibbonsPanel = null;
       
@@ -165,6 +165,7 @@ package net.wg.gui.battle.views
          this.damagePanel.y = param2 - this.damagePanel.initedHeight;
          if(this.battleTimer)
          {
+            this.battleTimer.updateStage();
             this.battleTimer.x = param1 - this.battleTimer.initedWidth;
             this.battleTimer.y = 0;
          }
@@ -644,7 +645,7 @@ package net.wg.gui.battle.views
          return param1 && param1.visible && param1.parent != this && this.isElementVisible(param1.parent);
       }
       
-      private function showComponent(param1:String, param2:Boolean) : void
+      protected function showComponent(param1:String, param2:Boolean) : void
       {
          var _loc3_:IDisplayableComponent = null;
          _loc3_ = this._componentsStorage[param1];

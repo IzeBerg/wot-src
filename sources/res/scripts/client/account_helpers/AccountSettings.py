@@ -69,6 +69,8 @@ COMP7_ENTITLEMENTS_BALANCE = 'balance'
 ORDERS_FILTER = 'ORDERS_FILTER'
 CURRENT_VEHICLE = 'current'
 ROYALE_VEHICLE = 'ROYALE_VEHICLE'
+EVENT_VEHICLE = 'EVENT_VEHICLE'
+EVENT_SAVED_VEHICLE = 'EVENT_SAVED_VEHICLE'
 LOBBY_MENU_MANUAL_TRIGGER_SHOWN = 'lobby_menu_manual_trigger_shown'
 MANUAL_NEW_CONTENT = 'manual_new_content'
 GUI_START_BEHAVIOR = 'GUI_START_BEHAVIOR'
@@ -288,6 +290,10 @@ EXCHANGE_GOLD_RATE_DISCOUNT_ANIMATION_SHOWED = 'ExchangeGoldRateDiscountAnimatio
 EXCHANGE_XP_RATE_DISCOUNT_ANIMATION_SHOWED = 'ExchangeXpRateDiscountAnimationShowed'
 VIEWED_MODULES_SECTION = 'mua'
 LIMITED_UI_VERSIONED_RULES = 'luiVersioned'
+WT_BATTLES_DONE_HUNTER = 'wtBattlesDoneHunter'
+WT_BATTLES_DONE_BOSS = 'wtBattlesDoneBoss'
+WT_LOOTBOXES_SEEN_HUNTER = 'wtLootboxesSeenHunter'
+WT_LOOTBOXES_SEEN_BOSS = 'wtLootboxesSeenBoss'
 
 class BattleMatters(object):
     BATTLE_MATTERS_SETTINGS = 'battleMattersSettings'
@@ -304,6 +310,10 @@ class Winback(object):
     BATTLE_SELECTOR_SETTINGS_BULLET_SHOWN = 'battleSelectorSettingsBulletShown'
 
 
+EVENT_LAST_LEVEL_SEEN = 'eventLastLevelSeen'
+EVENT_LAST_STAMPS_SEEN = 'eventLastStampsSeen'
+WT_PROGRESSION_QUESTS_TAB = 'wtProgressionQuestsTab'
+IS_LAUNCH_ANIMATED = 'isLaunchAnimated'
 KNOWN_SELECTOR_BATTLES = 'knownSelectorBattles'
 MODE_SELECTOR_BATTLE_PASS_SHOWN = 'modeSelectorBattlePassShown'
 RANKED_LAST_CYCLE_ID = 'rankedLastCycleID'
@@ -764,6 +774,8 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                  UNIT_FILTER: {GAME.UNIT_FILTER: 2047}}, 
    KEY_FAVORITES: {CURRENT_VEHICLE: 0, 
                    ROYALE_VEHICLE: 0, 
+                   EVENT_VEHICLE: 0, 
+                   EVENT_SAVED_VEHICLE: None, 
                    FALLOUT_VEHICLES: {}}, 
    KEY_MANUAL: {LOBBY_MENU_MANUAL_TRIGGER_SHOWN: False, 
                 MANUAL_NEW_CONTENT: {}}, 
@@ -1054,6 +1066,10 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                   SUBTITLES: True, 
                   RANKED_YEAR_POSITION: None, 
                   TOP_OF_TREE_CONFIG: {}, BECOME_ELITE_VEHICLES_WATCHED: set(), 
+                  EVENT_LAST_STAMPS_SEEN: 0, 
+                  EVENT_LAST_LEVEL_SEEN: 1, 
+                  WT_PROGRESSION_QUESTS_TAB: 1, 
+                  IS_LAUNCH_ANIMATED: True, 
                   GAME.GAMEPLAY_ONLY_10_MODE: False, 
                   GAME.GAMEPLAY_DEV_MAPS: True, 
                   MAPBOX_PROGRESSION: {'previous_battles_played': 0, 
@@ -1083,6 +1099,10 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                                                   LOOT_BOXES_OPEN_ANIMATION_ENABLED: True, 
                                                   LOOT_BOXES_VIEWED_COUNT: 0, 
                                                   LOOT_BOXES_EVENT_UNIQUE_ID: 0}}, 
+                  WT_BATTLES_DONE_HUNTER: 0, 
+                  WT_BATTLES_DONE_BOSS: 0, 
+                  WT_LOOTBOXES_SEEN_HUNTER: 0, 
+                  WT_LOOTBOXES_SEEN_BOSS: 0, 
                   Winback.WINBACK_SETTINGS: {Winback.COMPLETED_STARTING_QUEST_COUNT: 0, 
                                              Winback.INTRO_SHOWN: False, 
                                              Winback.BATTLE_SELECTOR_SETTINGS_BULLET_SHOWN: False}, 
@@ -2336,5 +2356,5 @@ class AccountSettings(object):
     def __getPlayerName(cls):
         playerName = getattr(BigWorld.player(), 'name', '')
         if not playerName:
-            return Settings.g_instance.userPrefs[Settings.KEY_LOGIN_INFO].readString('user', playerName)
+            return Settings.g_instance.userPrefs[Settings.KEY_LOGIN_INFO].readString('user', str(playerName))
         return playerName

@@ -1,4 +1,4 @@
-import Math, copy, ResMgr
+import copy, Math, ResMgr
 from extension_utils import importClass
 from gui.Scaleform.daapi.view.battle.shared.component_marker.markers_components import ComponentBitMask as FLAG, COMPONENT_MARKER_TYPE_NAMES
 from gui.Scaleform.daapi.view.battle.shared.component_marker.markers import MarkerBase

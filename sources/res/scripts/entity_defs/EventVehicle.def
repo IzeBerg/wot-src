@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<Parent>ClientSelectableCameraVehicle</Parent>
+	<Properties>
+		<eventType>
+			<Type>STRING</Type>
+			<Flags>ALL_CLIENTS</Flags>
+			<Editable>true</Editable>
+		</eventType>
+		<vehicleGunPitch>
+			<Type>FLOAT32</Type>
+			<Flags>ALL_CLIENTS</Flags>
+			<Editable>true</Editable>
+			<Default>
+				0.0
+				<!--BW_String-->
+			</Default>
+		</vehicleGunPitch>
+		<vehicleTurretYaw>
+			<Type>FLOAT32</Type>
+			<Flags>ALL_CLIENTS</Flags>
+			<Editable>true</Editable>
+			<Default>
+				0.0
+				<!--BW_String-->
+			</Default>
+		</vehicleTurretYaw>
+	</Properties>
+</root>

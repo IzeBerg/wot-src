@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<params>
+		<param>
+			<name>stop</name>
+			<type>trigger</type>
+		</param>
+		<param>
+			<name>stage</name>
+			<type>float</type>
+		</param>
+	</params>
+	<node>
+		<name>start</name>
+		<type>sequence</type>
+		<resource>particles/Environment/event_white_tiger/enemies/Waffentrager_E100_shield/wt_shield_hit.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<transition>
+			<to>hit_large</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>float</type>
+					<name>stage</name>
+					<rangeStart>0.800000</rangeStart>
+					<rangeEnd>1.100000</rangeEnd>
+				</condition>
+			</conditions>
+		</transition>
+		<transition>
+			<to>hit_medium</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>float</type>
+					<name>stage</name>
+					<rangeStart>0.600000</rangeStart>
+					<rangeEnd>0.790000</rangeEnd>
+				</condition>
+			</conditions>
+		</transition>
+		<transition>
+			<to>hit_small</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>float</type>
+					<name>stage</name>
+					<rangeStart>0.100000</rangeStart>
+					<rangeEnd>0.550000</rangeEnd>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-123.000000 229.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>hit_large</name>
+		<type>sequence</type>
+		<resource>particles/Environment/event_white_tiger/enemies/Waffentrager_E100_shield/wt_shield_hit_stage_01.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<uiPosition>-319.000000 112.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>hit_medium</name>
+		<type>sequence</type>
+		<resource>particles/Environment/event_white_tiger/enemies/Waffentrager_E100_shield/wt_shield_hit_stage_02.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<uiPosition>-122.000000 -10.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>hit_small</name>
+		<type>sequence</type>
+		<resource>particles/Environment/event_white_tiger/enemies/Waffentrager_E100_shield/wt_shield_hit_stage_03.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<uiPosition>64.000000 113.000000 0.000000</uiPosition>
+	</node>
+</root>

@@ -22,11 +22,11 @@ package net.wg.gui.battle.views.consumablesPanel
    public class BattleEquipmentButton extends BattleToolTipButton implements IConsumablesButton, ICoolDownCompleteHandler
    {
       
-      private static const KEY_VALIDATION:uint = InvalidationType.SYSTEM_FLAGS_BORDER << 2;
+      protected static const KEY_VALIDATION:uint = InvalidationType.SYSTEM_FLAGS_BORDER << 2;
       
       private static const COOLDOWN_COUNTER_BG_RED:String = "red";
       
-      private static const COOLDOWN_COUNTER_BG_GREEN:String = "green";
+      protected static const COOLDOWN_COUNTER_BG_GREEN:String = "green";
       
       private static const COOLDOWN_COUNTER_BG_HIDE:String = "hide";
       
@@ -87,7 +87,7 @@ package net.wg.gui.battle.views.consumablesPanel
       
       private var _isReloading:Boolean = false;
       
-      private var _coolDownTimer:CoolDownTimer = null;
+      protected var coolDownTimer:CoolDownTimer = null;
       
       private var _currentIntervalTime:int;
       
@@ -103,13 +103,13 @@ package net.wg.gui.battle.views.consumablesPanel
       
       private var _currentPercent:Number = 0;
       
-      private var _currReloadingInPercent:Number = 0;
+      protected var _currReloadingInPercent:Number = 0;
       
       private var _curAnimReversed:Boolean = false;
       
       private var _useBigTimer:Boolean = false;
       
-      private var _isFillPartially:Boolean = false;
+      protected var _isFillPartially:Boolean = false;
       
       public function BattleEquipmentButton()
       {
@@ -117,8 +117,8 @@ package net.wg.gui.battle.views.consumablesPanel
          super();
          this.greenGlowMc.visible = false;
          this.cooldownMc.visible = false;
-         this._coolDownTimer = new CoolDownTimer(this.cooldownMc);
-         this._coolDownTimer.setFrames(COOLDOWN_START_FRAME,COOLDOWN_END_FRAME);
+         this.coolDownTimer = new CoolDownTimer(this.cooldownMc);
+         this.coolDownTimer.setFrames(COOLDOWN_START_FRAME,COOLDOWN_END_FRAME);
          isAllowedToShowToolTipOnDisabledState = true;
          hideToolTipOnClickActions = false;
          this._consumablesVO = new ConsumablesVO();
@@ -156,8 +156,8 @@ package net.wg.gui.battle.views.consumablesPanel
          this.greenGlowMc = null;
          this.hit = null;
          this._consumablesVO = null;
-         this._coolDownTimer.dispose();
-         this._coolDownTimer = null;
+         this.coolDownTimer.dispose();
+         this.coolDownTimer = null;
          this._delayColorTransform = null;
          super.onDispose();
       }
@@ -250,7 +250,7 @@ package net.wg.gui.battle.views.consumablesPanel
             {
                _loc2_ -= 100 * this._currReloadingInPercent;
             }
-            this._coolDownTimer.setPositionAsPercent(_loc2_);
+            this.coolDownTimer.setPositionAsPercent(_loc2_);
          }
          else if(!this._isReplay)
          {
@@ -284,24 +284,24 @@ package net.wg.gui.battle.views.consumablesPanel
             if((param4 & ANIMATION_TYPES.MOVE_GREEN_BAR_DOWN) > 0)
             {
                this.cooldownMc.transform.colorTransform = COLOR_STATES.GREEN_COOLDOWN_COLOR_TRANSFORM;
-               this._currReloadingInPercent = param1 / param2;
+               this.currReloadingInPercent = param1 / param2;
                this._curAnimReversed = true;
             }
             else if((param4 & ANIMATION_TYPES.MOVE_GREEN_BAR_UP) > 0)
             {
                this.cooldownMc.transform.colorTransform = COLOR_STATES.GREEN_COOLDOWN_COLOR_TRANSFORM;
-               this._currReloadingInPercent = param3 / param2;
+               this.currReloadingInPercent = param3 / param2;
             }
             else if((param4 & ANIMATION_TYPES.MOVE_ORANGE_BAR_DOWN) > 0)
             {
                this.cooldownMc.transform.colorTransform = COLOR_STATES.ORANGE_COOLDOWN_COLOR_TRANSFORM;
-               this._currReloadingInPercent = param1 / param2;
+               this.currReloadingInPercent = param1 / param2;
                this._curAnimReversed = true;
             }
             else if((param4 & ANIMATION_TYPES.MOVE_ORANGE_BAR_UP) > 0)
             {
                this.cooldownMc.transform.colorTransform = COLOR_STATES.ORANGE_COOLDOWN_COLOR_TRANSFORM;
-               this._currReloadingInPercent = param3 / param2;
+               this.currReloadingInPercent = param3 / param2;
             }
             this._isFillPartially = false;
             if((param4 & ANIMATION_TYPES.FILL_PARTIALLY) > 0)
@@ -448,6 +448,10 @@ package net.wg.gui.battle.views.consumablesPanel
          }
       }
       
+      public function setStage(param1:int) : void
+      {
+      }
+      
       protected function updateStateBeforeCooldown() : void
       {
       }
@@ -463,6 +467,11 @@ package net.wg.gui.battle.views.consumablesPanel
       protected function disableMouse() : void
       {
          buttonMode = false;
+      }
+      
+      private function set currReloadingInPercent(param1:Number) : void
+      {
+         this._currReloadingInPercent = Math.min(Math.max(0,param1),1);
       }
       
       private function intervalRun(param1:Boolean) : void
@@ -491,9 +500,9 @@ package net.wg.gui.battle.views.consumablesPanel
       
       private function endCooldownTimer() : void
       {
-         if(this._coolDownTimer)
+         if(this.coolDownTimer)
          {
-            this._coolDownTimer.end();
+            this.coolDownTimer.end();
          }
          if(this.cooldownMc)
          {
@@ -501,12 +510,12 @@ package net.wg.gui.battle.views.consumablesPanel
          }
       }
       
-      private function startCooldownTimer(param1:Number, param2:Number, param3:Boolean, param4:Boolean = false) : void
+      protected function startCooldownTimer(param1:Number, param2:Number, param3:Boolean, param4:Boolean = false) : void
       {
-         this._coolDownTimer.start(param1,this,Math.round(COOLDOWN_FRAME_COUNT * param2),DEFAULT_TIME_COEF,param3,param4);
+         this.coolDownTimer.start(param1,this,Math.round(COOLDOWN_FRAME_COUNT * param2),DEFAULT_TIME_COEF,param3,param4);
       }
       
-      private function clearCoolDownText() : void
+      protected function clearCoolDownText() : void
       {
          this.cooldownTimerTf.text = Values.EMPTY_STR;
          this.counterBg.gotoAndStop(COOLDOWN_COUNTER_BG_HIDE);

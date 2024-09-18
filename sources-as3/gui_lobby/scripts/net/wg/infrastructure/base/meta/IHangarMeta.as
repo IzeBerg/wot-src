@@ -18,6 +18,8 @@ package net.wg.infrastructure.base.meta
       
       function as_setCarouselEnabled(param1:Boolean) : void;
       
+      function as_setCarouselVisible(param1:Boolean) : void;
+      
       function as_setupAmmunitionPanel(param1:Object) : void;
       
       function as_setControlsVisible(param1:Boolean) : void;
@@ -57,5 +59,7 @@ package net.wg.infrastructure.base.meta
       function as_updateHangarComponents(param1:Array, param2:Array) : void;
       
       function as_setBattleRoyaleSpaceLoaded(param1:Boolean) : void;
+      
+      function as_toggleEventMode(param1:Boolean) : void;
    }
 }

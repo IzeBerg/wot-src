@@ -49,6 +49,16 @@ class RoleForbiddenSquadVehiclesValidator(BaseActionsValidator):
         return result
 
 
+class SpecialSquadRestrictedVehiclesValidator(BaseActionsValidator):
+
+    def _validate(self):
+        pInfo = self._entity.getPlayerInfo()
+        if not pInfo.isReady and g_currentVehicle.isPresent() and g_currentVehicle.item.isSquadRestricted:
+            if self._entity.getMaxSquadRestrictedCount() <= 0 or not self._entity.hasSlotForSquadRestricted():
+                return ValidationResult(False, UNIT_RESTRICTION.UNSUITABLE_VEHICLE)
+        return super(SpecialSquadRestrictedVehiclesValidator, self)._validate()
+
+
 class RandomSquadActionsValidator(SquadActionsValidator):
     pass
 
@@ -74,6 +84,7 @@ class VehTypeForbiddenSquadActionsValidator(RandomSquadActionsValidator):
         baseValidator = super(VehTypeForbiddenSquadActionsValidator, self)._createVehiclesValidator(entity)
         return ActionsValidatorComposite(entity, validators=[
          RoleForbiddenSquadVehiclesValidator(entity),
+         SpecialSquadRestrictedVehiclesValidator(entity),
          baseValidator])
 
 
@@ -83,4 +94,5 @@ class VehTypeForbiddenBalancedSquadActionsValidator(BalancedSquadActionsValidato
         baseValidator = super(VehTypeForbiddenBalancedSquadActionsValidator, self)._createVehiclesValidator(entity)
         return ActionsValidatorComposite(entity, validators=[
          baseValidator,
-         RoleForbiddenSquadVehiclesValidator(entity)])
+         RoleForbiddenSquadVehiclesValidator(entity),
+         SpecialSquadRestrictedVehiclesValidator(entity)])

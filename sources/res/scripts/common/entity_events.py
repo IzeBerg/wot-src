@@ -1,4 +1,4 @@
-from Event import Event, SafeEvent, EventManager, ContextEvent
+from Event import Event, SafeEvent, EventManager, ContextEvent, HoldBackEvent
 from synchronous_event import SynchronousEvent
 from events_debugger import EventsDebugger
 
@@ -12,6 +12,9 @@ class EntityEvents(object):
 
     def _createEvent(self):
         return SafeEvent(self._eventManager)
+
+    def _createHoldBackEvent(self):
+        return HoldBackEvent(self._eventManager)
 
     def _createSynchronousEvent(self):
         return SynchronousEvent(self._eventManager)
