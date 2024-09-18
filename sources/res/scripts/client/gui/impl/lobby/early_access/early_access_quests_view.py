@@ -252,7 +252,7 @@ class EarlyAccessQuestsView(ViewImpl):
     def __isChapterDisabled(self, cycleID, isPrevChapterFinished, startDate):
         nowTime = time_utils.getServerUTCTime()
         _, endProgressTime = self.__earlyAccessCtrl.getProgressionTimes()
-        if cycleID != EARLY_ACCESS_POSTPR_KEY and (nowTime > endProgressTime or not isPrevChapterFinished or startDate > nowTime) or cycleID == EARLY_ACCESS_POSTPR_KEY and (not self.__isHavePostprVehicle or self.__earlyAccessCtrl.isPostprogressionBlockedByQuestFinisher()):
+        if cycleID != EARLY_ACCESS_POSTPR_KEY and (nowTime > endProgressTime or not isPrevChapterFinished or startDate > nowTime) or cycleID == EARLY_ACCESS_POSTPR_KEY and not self.__isHavePostprVehicle:
             return True
         return False
 

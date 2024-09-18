@@ -5477,7 +5477,6 @@ class WGStickerModel(PyAttachment):
 	def __subclasshook__(*args, **kwargs): pass
 	def addCounterSticker(self, *args, **kwargs): pass
 	def addDamageSticker(self, *args, **kwargs): pass
-	def addGunSticker(self, *args, **kwargs): pass
 	def addSticker(self, *args, **kwargs): pass
 	attached = property(lambda self: None)
 	castsShadow = property(lambda self: None)

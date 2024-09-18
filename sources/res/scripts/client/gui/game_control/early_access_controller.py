@@ -4,7 +4,7 @@ from account_helpers import AccountSettings
 from account_helpers.AccountSettings import EarlyAccess
 from cgf_components.hangar_camera_manager import HangarCameraManager
 from constants import Configs, MIN_VEHICLE_LEVEL, MAX_VEHICLE_LEVEL, QUEUE_TYPE
-from early_access_common import makeEarlyAccessToken, getGroupName, getQuestFinisherName, EARLY_ACCESS_POSTPR_KEY, EARLY_ACCESS_PREFIX
+from early_access_common import makeEarlyAccessToken, getGroupName, EARLY_ACCESS_POSTPR_KEY, EARLY_ACCESS_PREFIX
 from Event import Event, EventManager
 from gui.ClientUpdateManager import g_clientUpdateManager
 from gui.game_control.season_provider import SeasonProvider
@@ -196,29 +196,19 @@ class EarlyAccessController(IEarlyAccessController, SeasonProvider, IGlobalListe
             yield (
              str(cycle.ID), cycle)
 
-    def isPostprogressionBlockedByQuestFinisher(self):
-        quest = self.__eventsCache.getQuestByID(getQuestFinisherName(self.getCurrentSeasonID()))
-        quesPostprtIter = self.iterCycleProgressionQuests(EARLY_ACCESS_POSTPR_KEY)
-        questPostpr = next(quesPostprtIter, None)
-        if not quest or not questPostpr:
-            return False
-        for item in questPostpr.accountReqs.getConditions().findAll('quest'):
-            if item.getID() == getQuestFinisherName(self.getCurrentSeasonID()):
-                return item.isQuestCompleted()
-
-        return False
-
     def isQuestActive(self):
         return self.isEnabled() and not self.isPaused()
 
     def getState(self):
+        if not self.isAnyQuestAvailable():
+            return State.BUY
         if self.__isCompletedState():
             return State.COMPLETED
         nowTime = time_utils.getServerUTCTime()
         _, endProgressionTime = self.getProgressionTimes()
         if nowTime < endProgressionTime:
             return State.ACTIVE
-        if self.__isAnyPostprogressionVehicleUnlocked() and not self.isPostprogressionBlockedByQuestFinisher():
+        if self.__isAnyPostprogressionVehicleUnlocked():
             return State.POSTPROGRESSION
         return State.BUY
 
@@ -233,6 +223,13 @@ class EarlyAccessController(IEarlyAccessController, SeasonProvider, IGlobalListe
 
         return (
          startProgressionTime, finishProgressionTime)
+
+    def getPostprogressionTimes(self):
+        postProgressionQuest = next(self.iterCycleProgressionQuests(EARLY_ACCESS_POSTPR_KEY), None)
+        if postProgressionQuest:
+            return (postProgressionQuest.getStartTime(), postProgressionQuest.getFinishTime())
+        else:
+            return (0, 0)
 
     def getCycleProgressionTimes(self, cycleID=None):
         currSeason = self.getCurrentSeason()
@@ -263,11 +260,6 @@ class EarlyAccessController(IEarlyAccessController, SeasonProvider, IGlobalListe
         if self.__postProgressionVehicles is None:
             self.__updatePostProgressionVehicles()
         return self.__postProgressionVehicles
-
-    def __updatePostProgressionVehicles(self):
-        self.__postProgressionVehicles = set()
-        for quest in self.iterCycleProgressionQuests(EARLY_ACCESS_POSTPR_KEY):
-            self.__postProgressionVehicles.update(self.getPostProgressionVehiclesForQuest(quest.getID()))
 
     def getRequiredVehicleTypeAndLevelsForQuest(self, questID):
         vehicleType = ''
@@ -325,6 +317,9 @@ class EarlyAccessController(IEarlyAccessController, SeasonProvider, IGlobalListe
             return lastQuest.isCompleted()
         return True
 
+    def isAnyQuestAvailable(self):
+        return self.__isQuestGroupExists(EARLY_ACCESS_POSTPR_KEY) or any(self.__isQuestGroupExists(cycleID) for cycleID, _ in self.iterAllCycles())
+
     def hasPostprogressionVehicle(self):
         return any(self.__itemsCache.items.getItemByCD(vehicleCD).isInInventory for vehicleCD in self.getPostProgressionVehicles())
 
@@ -375,6 +370,9 @@ class EarlyAccessController(IEarlyAccessController, SeasonProvider, IGlobalListe
 
         return True
 
+    def __isQuestGroupExists(self, groupName):
+        return getGroupName(groupName) in self.__eventsCache.getGroups()
+
     def __findVehicleWithMinLevel(self):
         affectedVehicles = self.getAffectedVehicles()
         if affectedVehicles:
@@ -392,6 +390,11 @@ class EarlyAccessController(IEarlyAccessController, SeasonProvider, IGlobalListe
     def __isAnyPostprogressionVehicleUnlocked(self):
         vehicles = self.getPostProgressionVehicles()
         return any(self.__itemsCache.items.getItemByCD(vehicleCD).isUnlocked for vehicleCD in vehicles)
+
+    def __updatePostProgressionVehicles(self):
+        self.__postProgressionVehicles = set()
+        for quest in self.iterCycleProgressionQuests(EARLY_ACCESS_POSTPR_KEY):
+            self.__postProgressionVehicles.update(self.getPostProgressionVehiclesForQuest(quest.getID()))
 
     def checkFeatureStateChanged(self):
         if self.isEnabled():
