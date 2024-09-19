@@ -4,6 +4,8 @@ from helpers import dependency
 from script_component.DynamicScriptComponent import DynamicScriptComponent
 from skeletons.gui.battle_session import IBattleSessionProvider
 from vehicle_systems.stricted_loading import makeCallbackWeak
+from PlayerEvents import g_playerEvents
+from constants import ARENA_PERIOD
 if not IS_VS_EDITOR:
     from gui.battle_control.battle_constants import VEHICLE_VIEW_STATE
     from shared_utils import nextTick
@@ -14,7 +16,13 @@ class VehicleRespawnComponent(DynamicScriptComponent):
     onSetSpawnTime = Event.Event()
     guiSessionProvider = dependency.descriptor(IBattleSessionProvider)
 
+    def _onAvatarReady(self):
+        BigWorld.player().inputHandler.onPostmortemKillerVisionExit += self.showSelector
+        g_playerEvents.onArenaPeriodChange += self.__onArenaPeriodChange
+
     def onDestroy(self):
+        g_playerEvents.onArenaPeriodChange -= self.__onArenaPeriodChange
+        BigWorld.player().inputHandler.onPostmortemKillerVisionExit -= self.showSelector
         super(VehicleRespawnComponent, self).onDestroy()
         if hasattr(self.entity, 'onAppearanceReady'):
             self.entity.onAppearanceReady -= self._onVehicleAppeared
@@ -75,3 +83,26 @@ class VehicleRespawnComponent(DynamicScriptComponent):
             return
         RespawnDestroyEffect.play(self.entity.id)
         return
+
+    def showSelector(self):
+        if not self.spawnTime:
+            return
+        if self.entity.id != BigWorld.player().playerVehicleID:
+            return
+        self.entity.guiSessionProvider.dynamic.teleport.showSpawnPoints(self.__createSpawnPoints(), self.groupName)
+
+    def updateSelector(self):
+        if self.entity.id != BigWorld.player().playerVehicleID:
+            return
+        if not self.spawnTime:
+            return
+        self.entity.guiSessionProvider.dynamic.teleport.updateSpawnPoints(self.__createSpawnPoints(), self.groupName)
+
+    def __createSpawnPoints(self):
+        points = [ {'guid': point['name'], 'position': (point['position'].x, point['position'].y)} for point in self.spawnGroups
+                 ]
+        return points
+
+    def __onArenaPeriodChange(self, period, *_):
+        if period == ARENA_PERIOD.AFTERBATTLE:
+            BigWorld.player().inputHandler.onPostmortemKillerVisionExit -= self.showSelector

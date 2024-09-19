@@ -74,7 +74,7 @@ package net.wg.gui.battle.views.vehicleMarkers
             {
                removeChild(this.healthBar);
             }
-            barColor = this._color != VehicleMarkersConstants.COLOR_RED && this._color != VehicleMarkersConstants.COLOR_PURPLE && this._color != VehicleMarkersConstants.COLOR_WHITE ? VehicleMarkersConstants.COLOR_GREEN : this._color;
+            barColor = this._color != VehicleMarkersConstants.COLOR_RED && this._color != VehicleMarkersConstants.COLOR_PURPLE && this._color != VehicleMarkersConstants.COLOR_WHITE && this._color != VehicleMarkersConstants.COLOR_HUNTER ? VehicleMarkersConstants.COLOR_GREEN : this._color;
             linkage = HEALTH_PROGRESS_BAR_PREFIX + barColor;
             try
             {

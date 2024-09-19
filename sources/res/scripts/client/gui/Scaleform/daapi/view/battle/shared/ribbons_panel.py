@@ -83,7 +83,9 @@ _BATTLE_EVENTS_SETTINGS_TO_BATTLE_EFFICIENCY_TYPES = {BATTLE_EVENTS.ENEMY_HP_DAM
    BATTLE_EVENTS.ENEMY_ASSIST_STUN: (
                                    _BET.ASSIST_STUN,), 
    BATTLE_EVENTS.CREW_PERKS: (
-                            _BET.PERK,)}
+                            _BET.PERK,), 
+   BATTLE_EVENTS.HEALTH_ADDED: (
+                              _BET.VEHICLE_HEALTH_ADDED,)}
 
 def _getVehicleData(arenaDP, vehArenaID):
     vInfo = arenaDP.getVehicleInfo(vehArenaID)
@@ -234,6 +236,8 @@ _RIBBONS_FMTS = {_BET.CAPTURE: _baseRibbonFormatter,
    _BET.DEALT_DMG_BY_THUNDER_STRIKE: _singleVehRibbonFormatter, 
    _BET.RECEIVED_BY_THUNDER_STRIKE: _singleVehRibbonFormatter, 
    _BET.VEHICLE_HEALTH_ADDED: _healthAddedFormatter, 
+   _BET.RECEIVED_BY_CIRCUIT_OVERLOAD: _singleVehRibbonFormatter, 
+   _BET.HYPERION: _singleVehRibbonFormatter, 
    _BET.PERK: _perkRibbonFormatter, 
    _BET.DAMAGE_BY_BATTLESHIP: _singleVehRibbonFormatter, 
    _BET.DAMAGE_BY_DESTROYER: _singleVehRibbonFormatter}
@@ -572,6 +576,12 @@ class BattleRibbonsPanel(RibbonsPanelMeta, IArenaVehiclesController):
          [
           _BET.DAMAGE_BY_DESTROYER,
           backport.text(R.strings.ingame_gui.efficiencyRibbons.damageByDestroyer())],
+         [
+          _BET.RECEIVED_BY_CIRCUIT_OVERLOAD,
+          backport.text(R.strings.ingame_gui.efficiencyRibbons.wtReceivedCircuitOverload())],
+         [
+          _BET.HYPERION,
+          backport.text(R.strings.ingame_gui.efficiencyRibbons.receivedDamage())],
          [
           _BET.PERK,
           '']]

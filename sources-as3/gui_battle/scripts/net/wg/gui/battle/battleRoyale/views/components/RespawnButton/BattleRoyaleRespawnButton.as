@@ -205,5 +205,9 @@ package net.wg.gui.battle.battleRoyale.views.components.RespawnButton
          this._statusMask = param1;
          invalidate(STATUS_VALIDATION_FLAG);
       }
+      
+      public function setStage(param1:int) : void
+      {
+      }
    }
 }

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>lambert3</identifier>
+					<fx>shaders/custom/vector_animation_2.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						destBlend
+						<Int>2</Int>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/headlamp_hangar.dds</Texture>
+					</property>
+					<property>
+						enableLighting
+						<Bool>true</Bool>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>5.000000 1.000000 130.000000 0.000000</Vector4>
+					</property>
+					<property>
+						TintlColor
+						<Vector4>0.894118 0.584314 0.164706 0.137255</Vector4>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaFadeAmountSoft
+						<Vector4>1.000000 1.000000 0.010000 0.500000</Vector4>
+					</property>
+					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>0.000000 0.000000 2.000000 0.000000</Vector4>
+					</property>
+					<property>
+						fogAdjustBlend
+						<Float>1.000000</Float>
+					</property>
+				</material>
+				<groupOrigin>0.000000 0.000000 0.007335</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>lambert2</identifier>
+					<fx>shaders/custom/vector_animation_2.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						alphaFadeAmountSoft
+						<Vector4>1.000000 0.500000 0.200000 0.100000</Vector4>
+					</property>
+					<property>
+						alphaFreshnelEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						destBlend
+						<Int>2</Int>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Rays_01.dds</Texture>
+					</property>
+					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>0.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						rampFreshnelMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Gradients/Head_light_front_rays.dds</Texture>
+					</property>
+					<property>
+						TintlColor
+						<Vector4>1.000000 0.960784 0.686275 1.000000</Vector4>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						fogAdjustBlend
+						<Float>1.000000</Float>
+					</property>
+					<property>
+						enableLighting
+						<Bool>true</Bool>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>1.000000 0.000000 1.000000 0.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>0.000000 0.000000 -0.207679</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.883219 -0.575205 -0.400327</min>
+		<max>0.883219 0.575205 0.018679</max>
+	</boundingBox>
+	<geometrySize>15516</geometrySize>
+	<minUVDensity>0.322096</minUVDensity>
+</root>

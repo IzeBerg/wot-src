@@ -73,7 +73,7 @@ class SimplePlugin(IPlugin):
 
     def _isInStrategicMode(self):
         return self._ctrlMode in (CTRL_MODE_NAME.STRATEGIC, CTRL_MODE_NAME.ARTY, CTRL_MODE_NAME.MAP_CASE,
-         CTRL_MODE_NAME.MAP_CASE_EPIC)
+         CTRL_MODE_NAME.MAP_CASE_EPIC, CTRL_MODE_NAME.MAP_CASE_HYPERION)
 
     def _isInArcadeMode(self):
         return self._ctrlMode in (CTRL_MODE_NAME.ARCADE, CTRL_MODE_NAME.SNIPER)

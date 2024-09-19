@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>texture_material7</identifier>
+					<fx>shaders/particles/wg_particles.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						diffuseMap
+						<Texture>particles/mesh_particles/tex/lgt_core.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.003622 -0.024597 -0.000782</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.009686 -0.050152 -0.012996</min>
+		<max>0.016929 0.000959 0.011432</max>
+	</boundingBox>
+	<geometrySize>136872</geometrySize>
+	<minUVDensity>10000.000000</minUVDensity>
+</root>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_1</identifier>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/Portal.fx</fx>
+					<property>
+						PortalMap
+						<Texture>content/Hangars/h33_hangar_v3_wt_2021/Environment/hd_h33_001_Portal_14_siegfried_line.dds</Texture>
+					</property>
+					<property>
+						g_clampThresholdGlowDepthSettings
+						<Vector4>0.900000 60.000000 4.000000 4.000000</Vector4>
+					</property>
+					<property>
+						g_clampXYLocalCoords
+						<Vector4>-6.500000 6.500000 -8.000000 8.000000</Vector4>
+					</property>
+					<property>
+						g_distortionParams
+						<Vector4>0.003000 2.000000 2.000000 3.000000</Vector4>
+					</property>
+					<property>
+						g_uvParams2
+						<Vector4>1.000000 0.330000 0.000000 0.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>-0.325694 5.091346 0.079357</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-8.319098 0.364662 0.000000</min>
+		<max>7.667709 9.818029 0.158714</max>
+	</boundingBox>
+	<primitivesName>content/Hangars/h33_hangar_v3_wt_2021/Environment/normal/lod0/hd_h33_001_PortalCore</primitivesName>
+	<geometrySize>1848</geometrySize>
+	<minUVDensity>0.003877</minUVDensity>
+</root>

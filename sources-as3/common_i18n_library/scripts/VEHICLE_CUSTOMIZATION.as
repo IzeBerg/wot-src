@@ -16397,6 +16397,68 @@ package
       
       public static const SPECIAL_STYLE_TWITCH_KLINGON_DESC_LONG:String = "#vehicle_customization:special_style/twitch_klingon_desc/long";
       
+      public static const SPECIAL_STYLE_G89_LEOPARD1_WT24_MINI_BOSS_3DST:String = "#vehicle_customization:special_style/G89_Leopard1_WT24_Mini_Boss_3Dst";
+      
+      public static const SPECIAL_STYLE_G89_LEOPARD1_WT24_MINI_BOSS_3DST_DESC_LONG:String = "#vehicle_customization:special_style/G89_Leopard1_WT24_Mini_Boss_3Dst_desc/long";
+      
+      public static const SPECIAL_STYLE_CZ14_SKODA_T_56_WT24_3DST:String = "#vehicle_customization:special_style/Cz14_Skoda_T-56_WT24_3Dst";
+      
+      public static const SPECIAL_STYLE_CZ14_SKODA_T_56_WT24_3DST_DESC_LONG:String = "#vehicle_customization:special_style/Cz14_Skoda_T-56_WT24_3Dst_desc/long";
+      
+      public static const INSCRIPTION_SPECIAL_SPECIAL_759:String = "#vehicle_customization:inscription/special/special_759";
+      
+      public static const EMBLEM_SPECIAL_STICKER_836:String = "#vehicle_customization:emblem/special/sticker_836";
+      
+      public static const EMBLEM_SPECIAL_STICKER_837:String = "#vehicle_customization:emblem/special/sticker_837";
+      
+      public static const EMBLEM_SPECIAL_STICKER_839:String = "#vehicle_customization:emblem/special/sticker_839";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_768:String = "#vehicle_customization:projection_decals/special/projection_decal_768";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_769:String = "#vehicle_customization:projection_decals/special/projection_decal_769";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_770:String = "#vehicle_customization:projection_decals/special/projection_decal_770";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_771:String = "#vehicle_customization:projection_decals/special/projection_decal_771";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_772:String = "#vehicle_customization:projection_decals/special/projection_decal_772";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_773:String = "#vehicle_customization:projection_decals/special/projection_decal_773";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_774:String = "#vehicle_customization:projection_decals/special/projection_decal_774";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_775:String = "#vehicle_customization:projection_decals/special/projection_decal_775";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_776:String = "#vehicle_customization:projection_decals/special/projection_decal_776";
+      
+      public static const CAMOUFLAGE_BADENERGY_LABEL:String = "#vehicle_customization:camouflage/BadEnergy/label";
+      
+      public static const CAMOUFLAGE_BADENERGY_DESCRIPTION:String = "#vehicle_customization:camouflage/BadEnergy/description";
+      
+      public static const CAMOUFLAGE_HYPERION_LABEL:String = "#vehicle_customization:camouflage/Hyperion/label";
+      
+      public static const CAMOUFLAGE_HYPERION_DESCRIPTION:String = "#vehicle_customization:camouflage/Hyperion/description";
+      
+      public static const SPECIAL_STYLE_ENGINEERSTOOLKIT:String = "#vehicle_customization:special_style/EngineersToolkit";
+      
+      public static const SPECIAL_STYLE_ENGINEERSTOOLKIT_DESC:String = "#vehicle_customization:special_style/EngineersToolkit_desc";
+      
+      public static const CAMOUFLAGE_ENGINEERSTOOLKIT_LABEL:String = "#vehicle_customization:camouflage/EngineersToolkit/label";
+      
+      public static const CAMOUFLAGE_ENGINEERSTOOLKIT_DESCRIPTION:String = "#vehicle_customization:camouflage/EngineersToolkit/description";
+      
+      public static const REPAINT_ENGINEERSTOOLKIT:String = "#vehicle_customization:repaint/EngineersToolkit";
+      
+      public static const SPECIAL_STYLE_WT24HOUND:String = "#vehicle_customization:special_style/Wt24HOUND";
+      
+      public static const SPECIAL_STYLE_WT24HOUND_DESC:String = "#vehicle_customization:special_style/Wt24HOUND_desc";
+      
+      public static const CAMOUFLAGE_WT24HOUND_LABEL:String = "#vehicle_customization:camouflage/Wt24HOUND/label";
+      
+      public static const CAMOUFLAGE_WT24HOUND_DESCRIPTION:String = "#vehicle_customization:camouflage/Wt24HOUND/description";
+      
+      public static const REPAINT_WT24HOUND:String = "#vehicle_customization:repaint/Wt24HOUND";
+      
       public static const CAMOUFLAGE_MEASUREMENTS_LABEL:String = "#vehicle_customization:camouflage/Measurements/label";
       
       public static const CAMOUFLAGE_MEASUREMENTS_DESCRIPTION:String = "#vehicle_customization:camouflage/Measurements/description";
@@ -17196,6 +17258,10 @@ package
       public static const CUSTOMIZATION_TOOLTIP_QUESTS_BR_SUMMER_STYLE_900_7_CONDITION:String = "#vehicle_customization:customization/tooltip/quests/br_summer_style_900_7/condition";
       
       public static const CUSTOMIZATION_TOOLTIP_QUESTS_BR_SUMMER_STYLE_900_8_CONDITION:String = "#vehicle_customization:customization/tooltip/quests/br_summer_style_900_8/condition";
+      
+      public static const CAMOUFLAGE_WAFFENTRAGER_E100_TLXXL_S_LABEL:String = "#vehicle_customization:camouflage/waffentrager_e100_tlxxl_s/label";
+      
+      public static const CAMOUFLAGE_WAFFENTRAGER_E100_TLXXL_S_DESCRIPTION:String = "#vehicle_customization:camouflage/waffentrager_e100_tlxxl_s/description";
        
       
       public function VEHICLE_CUSTOMIZATION()

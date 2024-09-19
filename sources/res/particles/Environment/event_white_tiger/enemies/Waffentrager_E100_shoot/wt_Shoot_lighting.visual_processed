@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>lighting_tube</identifier>
+					<fx>shaders/custom/vector_animation_2.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/wt_line_lighting_06.dds</Texture>
+					</property>
+					<property>
+						gradientMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Gradients/wt_lightning_01.dds</Texture>
+					</property>
+					<property>
+						gradientMapEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>4.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>0.100000 0.040000 2.000000 0.000000</Vector4>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>-0.200000 0.000000 0.050000 0.050000</Vector4>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/114_czech_vel_smoke_fire.dds</Texture>
+					</property>
+					<property>
+						distortionFrequency
+						<Float>8.000000</Float>
+					</property>
+					<property>
+						opacity_UV_Speed_Scale
+						<Vector4>10.000000 0.000000 0.200000 1.000000</Vector4>
+					</property>
+					<property>
+						opacityMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Masks/wt_mask_06.dds</Texture>
+					</property>
+					<property>
+						phaseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Masks/wt_animation_02.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						opacity_UV_Distortion_Amount
+						<Vector4>0.050000 0.050000 2.000000 2.000000</Vector4>
+					</property>
+					<property>
+						phase_UV_Speed_Scale
+						<Vector4>0.400000 0.220000 0.300000 0.300000</Vector4>
+					</property>
+					<property>
+						distortionFrames
+						<Vector4>0.100000 0.200000 0.300000 0.500000</Vector4>
+					</property>
+					<property>
+						destBlend
+						<Int>2</Int>
+					</property>
+				</material>
+				<groupOrigin>-0.114079 -0.091951 5.871944</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.828565 -1.217257 4.697704</min>
+		<max>0.600408 1.033354 7.046184</max>
+	</boundingBox>
+	<geometrySize>26244</geometrySize>
+	<minUVDensity>0.009807</minUVDensity>
+</root>

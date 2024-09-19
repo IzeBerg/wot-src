@@ -1,15 +1,47 @@
-import functools, operator
+from collections import namedtuple
+import functools, operator, typing
 from account_shared import getFairPlayViolationName
 from constants import DEATH_REASON_ALIVE
 from debug_utils import LOG_CURRENT_EXCEPTION
 from dossiers2.custom.records import DB_ID_TO_RECORD
 from dossiers2.ui import achievements, layouts
 from gui.battle_results.reusable import sort_keys
+from gui.battle_results.br_constants import MAX_TEAM_RANK
 from gui.shared.crits_mask_parser import CRIT_MASK_SUB_TYPES, critsParserGenerator
 from gui.shared.gui_items import Vehicle
 from gui.shared.gui_items.dossier import getAchievementFactory
 from items import vehicles as vehicles_core
 from shared_utils import findFirst
+from soft_exception import SoftException
+AchievementSimpleData = namedtuple('AchievementSimpleData', (
+ 'achievementID',
+ 'achievement',
+ 'isUnique',
+ 'isPersonal'))
+
+def makeAchievement(achievementID, results=None):
+    popUps = results.get('dossierPopUps', []) if results is not None else []
+    record = DB_ID_TO_RECORD[achievementID]
+    if record in layouts.IGNORED_BY_BATTLE_RESULTS or not layouts.isAchievementRegistered(record):
+        return
+    factory = getAchievementFactory(record)
+    if factory is None:
+        return
+    else:
+        popUpsValue = _findAchievementInDossier(achievementID, popUps) if popUps else 0
+        achievement = factory.create(value=popUpsValue)
+        if record == achievements.MARK_ON_GUN_RECORD:
+            if 'typeCompDescr' in results:
+                try:
+                    nationID = vehicles_core.parseIntCompactDescr(results['typeCompDescr'])[1]
+                    achievement.setVehicleNationID(nationID)
+                except SoftException:
+                    LOG_CURRENT_EXCEPTION()
+
+            if 'damageRating' in results:
+                achievement.setDamageRating(results['damageRating'])
+        return achievement
+
 
 def makeAchievementFromPersonal(results):
     popUps = results.get('dossierPopUps', [])
@@ -32,10 +64,10 @@ def makeAchievementFromPersonal(results):
                     achievement.setDamageRating(results['damageRating'])
             if achievement.getName() in achievements.BATTLE_ACHIEVES_RIGHT:
                 yield (
-                 1, achievement)
+                 1, achievement, achievementID)
             else:
                 yield (
-                 -1, achievement)
+                 -1, achievement, achievementID)
 
     return
 
@@ -65,6 +97,21 @@ def makeCritsInfo(value):
     return rv
 
 
+def getPlayerPlaceInTeam(reusableInfo, result, paramName, playerValue):
+    if playerValue == 0:
+        return MAX_TEAM_RANK
+    allies, _ = reusableInfo.getBiDirectionTeamsIterator(result['vehicles'])
+    winners = set()
+    for ally in allies:
+        allyValue = getattr(ally, paramName)
+        if allyValue > playerValue:
+            winners.add(allyValue)
+        if len(winners) >= MAX_TEAM_RANK:
+            return MAX_TEAM_RANK
+
+    return len(winners)
+
+
 def unionCritsInfo(destination, source):
     rv = {CRIT_MASK_SUB_TYPES.DESTROYED_DEVICES: [], CRIT_MASK_SUB_TYPES.CRITICAL_DEVICES: [], CRIT_MASK_SUB_TYPES.DESTROYED_TANKMENS: []}
     for subType in rv.iterkeys():
@@ -84,6 +131,11 @@ def unionCritsInfo(destination, source):
             destination['critsCount'] += source['critsCount']
         else:
             destination['critsCount'] = source['critsCount']
+
+
+def _findAchievementInDossier(achievementID, dossierPopUps):
+    achievementData = findFirst(lambda e: e[0] == achievementID, dossierPopUps)
+    return achievementData[1]
 
 
 class ItemInfo(object):
@@ -1050,7 +1102,7 @@ class VehicleSummarizeInfo(_VehicleInfo):
             if factory is not None and layouts.isAchievementRegistered(record):
                 achievement = factory.create(value=0)
                 if not achievement.isApproachable():
-                    result.append((achievement, True))
+                    result.append((achievement, True, achievementID))
 
         return sorted(result, key=sort_keys.AchievementSortKey)
 

@@ -202,6 +202,16 @@ package net.wg.data.constants.generated
       public static const COMP7_TANK_CAROUSEL_FILTER_POPOVER:String = "comp7TankCarouselFilterPopover";
       
       public static const COMP7_RECON_FLIGHT:String = "comp7ReconFlight";
+      
+      public static const EVENT_HUNTER_RESPAWN:String = "eventHunterRespawn";
+      
+      public static const EVENT_BOSS_TELEPORT:String = "eventBossTeleport";
+      
+      public static const EVENT_BOSS_WIDGET:String = "eventBossWidget";
+      
+      public static const EVENT_MINI_BOSS_WIDGET:String = "eventMiniBossWidget";
+      
+      public static const EVENT_OVERTIME:String = "eventOvertime";
        
       
       public function BATTLE_VIEW_ALIASES()

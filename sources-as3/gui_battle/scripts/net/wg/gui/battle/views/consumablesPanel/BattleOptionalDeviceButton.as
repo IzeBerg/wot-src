@@ -250,5 +250,21 @@ package net.wg.gui.battle.views.consumablesPanel
       {
          this.setColorTransform(COLOR_STATES.DARK_COLOR_TRANSFORM);
       }
+      
+      public function setStage(param1:int) : void
+      {
+      }
+      
+      public function setSelected(param1:Boolean) : void
+      {
+      }
+      
+      public function setHyperionProgress(param1:Number, param2:Boolean) : void
+      {
+      }
+      
+      public function setDebuffMode(param1:Boolean) : void
+      {
+      }
    }
 }
