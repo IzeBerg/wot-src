@@ -143,7 +143,7 @@ FREE_CAM_USES_COUNT = 'killCamBattlesCount'
 LAST_BATTLE_PASS_POINTS_SEEN = 'lastBattlePassPointsSeen'
 BR_PROGRESSION_POINTS_SEEN = 'brProgressionPointsSeen'
 COMP7_LIGHT_PROGRESSION_POINTS_SEEN = 'comp7LightProgressionPointsSeen'
-IS_BATTLE_PASS_EXTRA_STARTED = 'isBattlePassExtraStarted'
+IS_BATTLE_PASS_EXTRA_START_NOTIFICATION_SEEN = 'isBattlePassExtraStarted'
 IS_BATTLE_PASS_COLLECTION_SEEN = 'isCollectionSeen'
 CRYSTALS_INFO_SHOWN = 'crystalsInfoShown'
 IS_CUSTOMIZATION_INTRO_VIEWED = 'isCustomizationIntroViewed'
@@ -171,6 +171,7 @@ QUEST_PROGRESS_HINT_SECTION = 'questProgressHint'
 HELP_SCREEN_HINT_SECTION = 'helpScreenHint'
 IBC_HINT_SECTION = 'battleCommunicationHint'
 RESERVES_HINT_SECTION = 'reservesHintSection'
+TWIN_GUN_HINT_SECTION = 'twinGunHintSection'
 COMMANDER_CAM_HINT_SECTION = 'commanderCamHintSection'
 MINIMAP_IBC_HINT_SECTION = 'minimapHintSection'
 DEV_MAPS_HINT_SECTION = 'devMapsHintSection'
@@ -238,13 +239,18 @@ FUN_RANDOM_NOTIFICATIONS = 'funRandomNotifications'
 FUN_RANDOM_NOTIFICATIONS_FROZEN = 'funRandomNotificationsFrozen'
 FUN_RANDOM_NOTIFICATIONS_PROGRESSIONS = 'funRandomNotificationsProgressions'
 FUN_RANDOM_NOTIFICATIONS_SUB_MODES = 'funRandomNotificationsSubModes'
+IS_TECH_TREE_TRADE_IN_INTRO_VIEWED = 'isTechTreeTradeInIntroViewed'
 LOOT_BOXES = 'lootBoxes'
 EVENT_LOOT_BOXES = 'eventLootBoxes'
+LOOTBOX_SYSTEM = 'lootBoxSystem'
 LOOT_BOXES_WAS_STARTED = 'lootBoxesWasStarted'
 LOOT_BOXES_WAS_FINISHED = 'lootBoxesWasFinished'
 LOOT_BOXES_OPEN_ANIMATION_ENABLED = 'lootBoxesOpenAnimationEnabled'
 LOOT_BOXES_VIEWED_COUNT = 'lootBoxesViewedCount'
+LOOT_BOXES_HAS_NEW = 'lootBoxesHasNew'
 LOOT_BOXES_EVENT_UNIQUE_ID = 'lootBoxesEventUniqueID'
+LOOT_BOXES_UNIQUE_ID = 'lootBoxesUniqueID'
+LOOT_BOXES_INTRO_VIDEO_SHOWN = 'lootBoxesIntroVideoShown'
 COLLECTIONS_SECTION = 'collections'
 COLLECTIONS_INTRO_SHOWN = 'collectionsIntroShown'
 COLLECTION_SHOWN_NEW_REWARDS = 'collectionsNewRewards'
@@ -1033,6 +1039,9 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                   TURBO_SHAFT_ENGINE_MODE_HINT_SECTION: {HINTS_LEFT: 3, 
                                                          LAST_DISPLAY_DAY: 0, 
                                                          NUM_BATTLES: 0}, 
+                  TWIN_GUN_HINT_SECTION: {HINTS_LEFT: 3, 
+                                          LAST_DISPLAY_DAY: 0, 
+                                          NUM_BATTLES: 0}, 
                   ROCKET_ACCELERATION_MODE_HINT_SECTION: {HINTS_LEFT: 3, 
                                                           LAST_DISPLAY_DAY: 0, 
                                                           NUM_BATTLES: 0}, 
@@ -1048,7 +1057,7 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                   RANKED_AWARDS_BUBBLE_YEAR_REACHED: False, 
                   RANKED_CURRENT_AWARDS_BUBBLE_YEAR_REACHED: False, 
                   NATION_CHANGE_VIEWED: False, 
-                  LAST_BATTLE_PASS_POINTS_SEEN: {}, IS_BATTLE_PASS_EXTRA_STARTED: False, 
+                  LAST_BATTLE_PASS_POINTS_SEEN: {}, IS_BATTLE_PASS_EXTRA_START_NOTIFICATION_SEEN: False, 
                   IS_BATTLE_PASS_COLLECTION_SEEN: False, 
                   MODULES_ANIMATION_SHOWN: False, 
                   SUBTITLES: True, 
@@ -1075,6 +1084,7 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                                                           BattleMatters.REMINDER_LAST_DISPLAY_TIME: 0}, 
                   BR_PROGRESSION_POINTS_SEEN: 0, 
                   ROYALE_INTRO_VIDEO_SHOWN_FOR_SEASON: 0, 
+                  IS_TECH_TREE_TRADE_IN_INTRO_VIEWED: False, 
                   COMP7_LIGHT_PROGRESSION_POINTS_SEEN: 0, 
                   COMP7_LIGHT_INTRO_SHOWN: False, 
                   ROYALE_SQUAD_TIP_SHOWN_FOR_SEASON: 0, 
@@ -1083,6 +1093,12 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                                                   LOOT_BOXES_OPEN_ANIMATION_ENABLED: True, 
                                                   LOOT_BOXES_VIEWED_COUNT: 0, 
                                                   LOOT_BOXES_EVENT_UNIQUE_ID: 0}}, 
+                  LOOTBOX_SYSTEM: {LOOT_BOXES_UNIQUE_ID: 0, 
+                                   LOOT_BOXES_WAS_STARTED: False, 
+                                   LOOT_BOXES_WAS_FINISHED: False, 
+                                   LOOT_BOXES_INTRO_VIDEO_SHOWN: False, 
+                                   LOOT_BOXES_HAS_NEW: False, 
+                                   LOOT_BOXES_OPEN_ANIMATION_ENABLED: True}, 
                   Winback.WINBACK_SETTINGS: {Winback.COMPLETED_STARTING_QUEST_COUNT: 0, 
                                              Winback.INTRO_SHOWN: False, 
                                              Winback.BATTLE_SELECTOR_SETTINGS_BULLET_SHOWN: False}, 
@@ -1309,7 +1325,7 @@ def _recursiveStep(defaultDict, savedDict, finalDict):
 
 class AccountSettings(object):
     onSettingsChanging = Event.Event()
-    version = 78
+    version = 80
     settingsCore = dependency.descriptor(ISettingsCore)
     __cache = {'login': None, 'section': None}
     __sessionSettings = {'login': None, 'section': None}
@@ -1854,8 +1870,8 @@ class AccountSettings(object):
                     keySettings = AccountSettings._readSection(section, KEY_SETTINGS)
                     if LAST_BATTLE_PASS_POINTS_SEEN in keySettings.keys():
                         keySettings.write(LAST_BATTLE_PASS_POINTS_SEEN, _pack({}))
-                    if IS_BATTLE_PASS_EXTRA_STARTED in keySettings.keys():
-                        keySettings.write(IS_BATTLE_PASS_EXTRA_STARTED, _pack(False))
+                    if IS_BATTLE_PASS_EXTRA_START_NOTIFICATION_SEEN in keySettings.keys():
+                        keySettings.write(IS_BATTLE_PASS_EXTRA_START_NOTIFICATION_SEEN, _pack(False))
 
             if currVersion < 54:
                 for key, section in _filterAccountSection(ads):
@@ -2023,6 +2039,23 @@ class AccountSettings(object):
                     accSettings = AccountSettings._readSection(section, KEY_SETTINGS)
                     if ROYALE_INTRO_VIDEO_SHOWN in accSettings.keys():
                         accSettings.deleteSection(ROYALE_INTRO_VIDEO_SHOWN)
+
+            if currVersion < 79:
+                for key, section in _filterAccountSection(ads):
+                    keySettings = AccountSettings._readSection(section, KEY_SETTINGS)
+                    if MAPBOX_HINT_SECTION in keySettings.keys():
+                        keySettings.write(MAPBOX_HINT_SECTION, _pack({}))
+
+            if currVersion < 80:
+                for key, section in _filterAccountSection(ads):
+                    hintsSection = AccountSettings._readSection(section, KEY_BATTLE_HINTS)
+                    if 'lastDisplayTime' in hintsSection.keys():
+                        displayHistory = {'lastDisplayTime': {}, 'totalDisplayCount': {}}
+                        hintsDisplayTime = _unpack(hintsSection['lastDisplayTime'].asString)
+                        for hintID, lastDisplayTime in hintsDisplayTime.iteritems():
+                            displayHistory['lastDisplayTime'][hintID] = lastDisplayTime
+
+                        hintsSection.write('displayHistory', _pack(displayHistory))
 
             ads.writeInt('version', AccountSettings.version)
         return

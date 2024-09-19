@@ -99,6 +99,7 @@ class UI_STORAGE_KEYS(CONST_CONTAINER):
     MUTABLE_DAMAGE_SHELL_MARK_IS_SHOWN = 'mutable_damage_shell_mark_is_shown'
     AUTO_SHOOT_HIGHLIGHTS_COUNTER = 'auto_shoot_highlights_count'
     AUTO_SHOT_NPD_SHELLS_MARK_IS_SHOWN = 'auto_shot_npd_shells_mark_is_shown'
+    TWIN_GUN_HIGHLIGHTS_COUNTER = 'twin_gun_highlights_count'
 
 
 class ADVANCED_ACHIEVEMENTS_STORAGE_KEYS(CONST_CONTAINER):
@@ -609,7 +610,8 @@ class ServerSettingsManager(object):
                                         UI_STORAGE_KEYS.IS_CONFIRM_EMAIL_OVERLAY_ALLOWED: 10, 
                                         UI_STORAGE_KEYS.AUTO_SHOT_NPD_SHELLS_MARK_IS_SHOWN: 14}, offsets={UI_STORAGE_KEYS.ROCKET_ACCELERATION_HIGHLIGHTS_COUNTER: Offset(1, 14), 
                                         UI_STORAGE_KEYS.DUAL_ACCURACY_HIGHLIGHTS_COUNTER: Offset(5, 224), 
-                                        UI_STORAGE_KEYS.AUTO_SHOOT_HIGHLIGHTS_COUNTER: Offset(11, 14336)}), 
+                                        UI_STORAGE_KEYS.AUTO_SHOOT_HIGHLIGHTS_COUNTER: Offset(11, 14336), 
+                                        UI_STORAGE_KEYS.TWIN_GUN_HIGHLIGHTS_COUNTER: Offset(15, 229376)}), 
        SETTINGS_SECTIONS.BATTLE_MATTERS_QUESTS: Section(masks={}, offsets={BATTLE_MATTERS_KEYS.QUESTS_SHOWN: Offset(0, 255), 
                                                  BATTLE_MATTERS_KEYS.QUEST_PROGRESS: Offset(8, 4294967040)}), 
        SETTINGS_SECTIONS.QUESTS_PROGRESS: Section(masks={}, offsets={QUESTS_PROGRESS.VIEW_TYPE: Offset(0, 3), 
@@ -817,6 +819,7 @@ class ServerSettingsManager(object):
     _MAX_TURBOSHAFT_HIGHLIGHTS_COUNT = 5
     _MAX_ROCKET_ACCELERATION_HIGHLIGHTS_COUNT = 5
     _MAX_DUAL_ACCURACY_HIGHLIGHTS_COUNT = 5
+    _MAX_TWIN_GUN_HIGHLIGHTS_COUNTER = 5
 
     def __init__(self, core):
         self._core = weakref.proxy(core)
@@ -933,6 +936,9 @@ class ServerSettingsManager(object):
 
     def checkDualAccuracyHighlights(self, increase=False):
         return self.__checkUIHighlights(UI_STORAGE_KEYS.DUAL_ACCURACY_HIGHLIGHTS_COUNTER, self._MAX_DUAL_ACCURACY_HIGHLIGHTS_COUNT, increase)
+
+    def checkTwinGunHighlights(self, increase=False):
+        return self.__checkUIHighlights(UI_STORAGE_KEYS.TWIN_GUN_HIGHLIGHTS_COUNTER, self._MAX_TWIN_GUN_HIGHLIGHTS_COUNTER, increase)
 
     def updateUIStorageCounter(self, key, step=1):
         storageSection = self.getSection(SETTINGS_SECTIONS.UI_STORAGE)

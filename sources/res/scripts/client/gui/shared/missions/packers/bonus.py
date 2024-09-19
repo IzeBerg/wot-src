@@ -59,6 +59,7 @@ def getDefaultBonusPackersMap():
        'freeXPFactor': simpleBonusPacker, 
        'goodies': GoodiesBonusUIPacker(), 
        'items': ItemBonusUIPacker(), 
+       'lootBox': tokenBonusPacker, 
        'meta': simpleBonusPacker, 
        'slots': simpleBonusPacker, 
        'strBonus': simpleBonusPacker, 
@@ -345,12 +346,16 @@ class ItemBonusUIPacker(BaseBonusUIPacker):
     def _pack(cls, bonus):
         bonusItems = bonus.getItems()
         result = []
-        for item, count in sorted(bonusItems.iteritems(), key=lambda i: i[0]):
+        for item, count in sorted(bonusItems.iteritems(), key=cls._itemsSortFunction):
             if item is None or not count:
                 continue
             result.append(cls._packSingleBonus(bonus, item, count))
 
         return result
+
+    @staticmethod
+    def _itemsSortFunction(item):
+        return item[0]
 
     @classmethod
     def _packSingleBonus(cls, bonus, item, count):

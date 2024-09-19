@@ -115,6 +115,7 @@
 	<dummy>
 		<characterModel>helpers/props/standin.model</characterModel>
 		<cData>helpers/blank.cdata</cData>
+		<emptyEmissionTexture>helpers/maps/system/transparent_white_2x2.dds</emptyEmissionTexture>
 	</dummy>
 	<selectionfx>
 		<portal>resources/shaders/portal.fx</portal>
@@ -194,6 +195,8 @@
 			<module>client.cgf_components.auto_shoot_gun_components</module>
 			<module>client.cgf_components.gun_audition_component</module>
 			<module>client.cgf_components.rtpc_component_manager</module>
+			<module>client.cgf_components.twin_gun_components</module>
+			<module>client.cgf_components.on_player_in_zone_manager</module>
 			<module>common.cgf_components_common.shots_receiver</module>
 			<module>common.cgf_components_common.state_components</module>
 			<module>common.cgf_components_common.vehicle_components</module>
@@ -214,7 +217,8 @@
 			<module>cell.cgf_cell.bunkers</module>
 			<module>editor.cgf_editor.entity_follower</module>
 			<module>client.cgf_components.visual_effect_component_manager</module>
-			<module>client.cgf_components.sequence_components</module>
+			<module>cell.cgf_cell.partial_visibility_group</module>
+			<module>cell.cgf_cell.damage_zone</module>
 		</script>
 		<testScript>
 			<module>client.cgf_demo_client.test_client_component</module>
@@ -283,6 +287,7 @@
 			<path>content/CGFPrefabs/Vehicle/guns/czech/gun_50_mm_protiletadlovy_dvojkanon_ZK_500S.prefab</path>
 			<path>content/CGFPrefabs/Vehicle/guns/czech/gun_57_mm_automaticky_dvojkanon_535S.prefab</path>
 			<path>content/CGFPrefabs/Vehicle/guns/czech/gun_57_mm_automaticky_dvojkanon_535T.prefab</path>
+			<path>content/CGFPrefabs/Vehicle/guns/uk/gun_105_mm_L7S_DB.prefab</path>
 		</prefabs>
 	</cgf>
 </root>

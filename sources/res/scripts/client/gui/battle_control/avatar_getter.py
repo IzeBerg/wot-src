@@ -525,3 +525,11 @@ def getIsObserverFPV():
     if player:
         return player.isObserverFPV
     return False
+
+
+def getTargetID(undefinedTargetID=None):
+    player = BigWorld.player()
+    if player is not None and player.target is not None:
+        return player.target.id
+    else:
+        return undefinedTargetID

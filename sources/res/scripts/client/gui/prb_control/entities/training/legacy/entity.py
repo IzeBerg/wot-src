@@ -388,16 +388,16 @@ class TrainingEntity(LegacyEntity):
         else:
             g_eventDispatcher.loadHangar()
 
-    def __onSettingChanged(self, code, record='', callback=None):
+    def __onSettingChanged(self, code, record='', errorCode=None, callback=None):
         if code < 0:
-            LOG_ERROR('Server return error for training change', code, record)
+            LOG_ERROR('Server return error for training change', code, record, errorCode)
             if callback is not None:
-                callback(False)
+                callback(False, errorCode)
             return
         if record in self.__settingRecords:
             self.__settingRecords.remove(record)
         if not self.__settingRecords and callback is not None:
-            callback(True)
+            callback(True, '')
         return
 
     def __handleViewLoad(self, event):

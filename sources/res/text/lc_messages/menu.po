@@ -691,6 +691,21 @@ msgstr "к свободному опыту и опыту экипажа за б�
 msgid "booster/influence/booster_xp"
 msgstr "к опыту за бой"
 
+msgid "booster/label/booster_credits"
+msgstr "%(effectValue)s к кредитам"
+
+msgid "booster/label/booster_crew_xp"
+msgstr "%(effectValue)s к опыту экипажа"
+
+msgid "booster/label/booster_free_xp"
+msgstr "%(effectValue)s к свободному опыту"
+
+msgid "booster/label/booster_free_xp_and_crew_xp"
+msgstr "%(effectValue)s к свободному опыту и опыту экипажа"
+
+msgid "booster/label/booster_xp"
+msgstr "%(effectValue)s к боевому опыту"
+
 msgid "booster/limit/booster_fl_xp"
 msgstr "Для режима «Линия фронта»"
 
@@ -1929,6 +1944,11 @@ msgstr ""
 "Заряжание орудия: %(reloadTimeSecs)s с; Средний урон: %(avgDamageList)s\n"
 "Средняя пробиваемость: %(avgPiercingPower)s мм"
 
+msgid "descriptions/vehicleGun/twinGun"
+msgstr ""
+"Заряжание орудия: %(reloadTimeSingleGun)s/%(reloadTimeTwinGun)s с; Средний урон: %(avgDamageList)s\n"
+"Средняя бронепробиваемость: %(avgPiercingPower)s мм"
+
 msgid "descriptions/vehicleRadio"
 msgstr "Дальность связи: до %(radioDistance)s м"
 
@@ -2082,9 +2102,6 @@ msgid "extraParams/name/artNotificationDelayFactor"
 msgstr ""
 "Параметр, отвечающий за время, проходящее с момента выстрела САУ до момента "
 "получения предупреждения."
-
-msgid "extraParams/name/commanderHitChance"
-msgstr "Параметр, отвечающий за шанс избежать ранений командиром экипажа."
 
 msgid "extraParams/name/commanderLampDelay"
 msgstr ""
@@ -4625,6 +4642,12 @@ msgstr "Скорострельность"
 msgid "moduleInfo/params/reloadTimeSecs"
 msgstr "Заряжание орудия"
 
+msgid "moduleInfo/params/reloadTimeSingleGun"
+msgstr "Перезарядка орудия в одиночном режиме"
+
+msgid "moduleInfo/params/reloadTimeTwinGun"
+msgstr "Перезарядка орудия в залповом режиме"
+
 msgid "moduleInfo/params/rocketAccelerationEnginePower"
 msgstr "Мощность двигателя (с ускорит.)"
 
@@ -4682,6 +4705,9 @@ msgid "moduleInfo/turboshaftEngine"
 msgstr ""
 "Газотурбинный двигатель:\n"
 "позволяет развивать высокую скорость."
+
+msgid "moduleInfo/twinGunLabel"
+msgstr "Система выбора режима огня"
 
 msgid "nation_tree/blueprint_title/china"
 msgstr "Чертежи техники Китая"
@@ -6490,6 +6516,15 @@ msgstr "Скорость гориз. перевода прицела"
 msgid "tank_params/turretYawLimits"
 msgstr "Углы поворота башни"
 
+msgid "tank_params/twinGunReloadTime"
+msgstr "Заряжание орудия (одиночный / залповый режим огня)"
+
+msgid "tank_params/twinGunSwitchFireModeTime"
+msgstr "Время переключения режима огня"
+
+msgid "tank_params/twinGunTopSpeed"
+msgstr "Макс. скорость / задний ход (залповый режим)"
+
 msgid "tank_params/val"
 msgstr "(ед.)"
 
@@ -7101,6 +7136,15 @@ msgstr "Скорость горизонтального перевода при�
 
 msgid "vehicleInfo/params/turretYawLimits"
 msgstr "Углы поворота башни (град)"
+
+msgid "vehicleInfo/params/twinGunReloadTime"
+msgstr "Заряжание орудия (одиночный / залповый режим огня) (с)"
+
+msgid "vehicleInfo/params/twinGunSwitchFireModeTime"
+msgstr "Время переключения режима огня (с)"
+
+msgid "vehicleInfo/params/twinGunTopSpeed"
+msgstr "Макс. скорость / задний ход (одиночный / залповый режим) (км/ч)"
 
 msgid "vehicleInfo/params/vehicleWeight"
 msgstr "Масса/предельная масса машины (т)"

@@ -50,6 +50,7 @@ from gui.shared.money import Money, Currency, MONEY_UNDEFINED
 from gui.shared.tooltips import ToolTipBaseData, TOOLTIP_TYPE, ACTION_TOOLTIPS_TYPE, ToolTipParameterField, WulfTooltipData
 from gui.shared.tooltips import efficiency
 from gui.shared.tooltips import formatters
+from gui.shared.utils.functions import getArenaImage
 from gui.shared.view_helpers import UsersInfoHelper
 from helpers import dependency
 from helpers import i18n, time_utils, html, int2roman
@@ -496,10 +497,12 @@ class MapTooltipData(ToolTipBaseData):
 
     def getDisplayableData(self, arenaID):
         arenaType = ArenaType.g_cache[int(arenaID)]
-        return {'mapName': i18n.makeString('#arenas:%s/name' % arenaType.geometryName), 
+        geometryName = arenaType.geometryName
+        dynAccessor = R.strings.arenas.num(geometryName)
+        return {'mapName': backport.text(dynAccessor.name()) if dynAccessor.isValid() else geometryName, 
            'gameplayName': i18n.makeString('#arenas:type/%s/name' % arenaType.gameplayName), 
-           'imageURL': '../maps/icons/map/%s.png' % arenaType.geometryName, 
-           'description': i18n.makeString('#arenas:%s/description' % arenaType.geometryName)}
+           'imageURL': getArenaImage(geometryName), 
+           'description': backport.text(dynAccessor.description()) if dynAccessor.isValid() else geometryName}
 
 
 class SettingsControlTooltipData(ToolTipBaseData):

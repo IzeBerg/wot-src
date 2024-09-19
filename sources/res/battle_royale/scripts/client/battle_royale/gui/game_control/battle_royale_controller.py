@@ -132,7 +132,7 @@ class BattleRoyaleController(Notifiable, SeasonProvider, IBattleRoyaleController
         self.addNotificator(SimpleNotifier(self.__getTournamentBannerTimerDelta, self.__updateTournamentBannerState))
         self.addNotificator(SimpleNotifier(self.getTimer, self.__timerUpdate))
         self.addNotificator(PeriodicNotifier(self.getTimer, self.__timerTick))
-        self.addNotificator(TimerNotifier(self.getTimer, self.__updateEntryPointState))
+        self.addNotificator(TimerNotifier(self.getTimer, self.__timerNotifier))
         self.__spaceSwitchController.onCheckSceneChange += self.__onCheckSceneChange
 
     def fini(self):
@@ -634,16 +634,17 @@ class BattleRoyaleController(Notifiable, SeasonProvider, IBattleRoyaleController
 
     def __timerTick(self):
         self.onStatusTick()
+
+    def __timerNotifier(self):
+        self.onEntryPointUpdated()
         if self.isBattleRoyaleMode():
             self.onWidgetUpdate()
-
-    def __updateEntryPointState(self):
-        self.onEntryPointUpdated()
 
     def __resetTimer(self):
         self.startNotification()
         self.__timerUpdate()
         self.__timerTick()
+        self.__timerNotifier()
 
     def __onServerSettingsChanged(self, serverSettings):
         if self.__serverSettings is not None:

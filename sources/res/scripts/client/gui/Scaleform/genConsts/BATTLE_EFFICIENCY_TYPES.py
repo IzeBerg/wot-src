@@ -26,6 +26,8 @@ class BATTLE_EFFICIENCY_TYPES(object):
     STATIC_DEATH_ZONE = 'staticDeathZone'
     MINEFIELD_ZONE = 'minefieldZone'
     VEHICLE_HEALTH_ADDED = 'healthAdded'
+    WEATHER_ZONE = 'weatherZone'
+    FIRE_DAMAGE_ZONE = 'fireDamageZone'
     VEHICLE_RECOVERY = 'vehicleRecovery'
     ENEMY_SECTOR_CAPTURED = 'enemySectorCaptured'
     DESTRUCTIBLE_DAMAGED = 'destructibleDamaged'

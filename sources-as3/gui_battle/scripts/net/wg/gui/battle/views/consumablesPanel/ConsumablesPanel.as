@@ -55,11 +55,13 @@ package net.wg.gui.battle.views.consumablesPanel
       private static const OPTIONAL_DEVICE_BUTTON_EMPTY_MSG:String = "BattleOptionalDeviceButton empty at idx: ";
        
       
+      protected var renderers:Vector.<IConsumablesButton>;
+      
+      protected var settings:Vector.<ConsumablesPanelSettings>;
+      
       private var _stageWidth:int = 0;
       
       private var _stageHeight:int = 0;
-      
-      private var _renderers:Vector.<IConsumablesButton>;
       
       private var _shellCurrentIdx:int = -1;
       
@@ -68,8 +70,6 @@ package net.wg.gui.battle.views.consumablesPanel
       private var _isReplay:Boolean = false;
       
       private var _isObserver:Boolean = false;
-      
-      private var _settings:Vector.<ConsumablesPanelSettings>;
       
       private var _bottomPadding:int = 0;
       
@@ -93,17 +93,17 @@ package net.wg.gui.battle.views.consumablesPanel
       
       public function ConsumablesPanel()
       {
-         this._renderers = new <IConsumablesButton>[null,null,null,null,null,null,null,null,null,null,null,null];
-         this._settings = new Vector.<ConsumablesPanelSettings>();
+         this.renderers = new <IConsumablesButton>[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null];
+         this.settings = new Vector.<ConsumablesPanelSettings>();
          this._customIndexGap = new Vector.<uint>(0);
          this._classFactory = App.utils.classFactory;
          super();
          App.stageSizeMgr.register(this);
          var _loc1_:int = getItemWidthPadding(App.appWidth);
-         this._settings[CONSUMABLES_PANEL_SETTINGS.DEFAULT_SETTINGS_ID] = new ConsumablesPanelSettings(CONSUMABLES_PANEL_Y_OFFSET,_loc1_,Linkages.EQUIPMENT_BUTTON,Linkages.SHELL_BUTTON_BATTLE,0,null);
-         this._settings[CONSUMABLES_PANEL_SETTINGS.BATTLE_ROYALE_SETTINGS_ID] = new ConsumablesPanelSettings(CONSUMABLES_PANEL_Y_OFFSET,ITEM_WIDTH_PADDING,Linkages.BATTLE_ROYALE_CONSUMABLE_BUTTON,Linkages.SHELL_BUTTON_BATTLE,BATTLE_ROYALE_GROUP_GAP,BATTLE_ROYALE_GROUP_INDEXES);
-         this._settings[CONSUMABLES_PANEL_SETTINGS.MAPS_TRAINING_SETTINGS_ID] = new ConsumablesPanelSettings(CONSUMABLES_PANEL_Y_OFFSET,_loc1_,Linkages.EQUIPMENT_BUTTON,Linkages.MAPS_TRAINING_SHELL_BUTTON,0,null);
-         this._settings[CONSUMABLES_PANEL_SETTINGS.EPIC_BATTLE_SETTINGS_ID] = new ConsumablesPanelSettings(CONSUMABLES_PANEL_Y_OFFSET,_loc1_,Linkages.EPIC_BATTLE_CONSUMABLE_BUTTON,Linkages.SHELL_BUTTON_BATTLE,EPIC_BATTLE_GROUP_GAP,EPIC_BATTLE_GROUP_INDEXES);
+         this.settings[CONSUMABLES_PANEL_SETTINGS.DEFAULT_SETTINGS_ID] = new ConsumablesPanelSettings(CONSUMABLES_PANEL_Y_OFFSET,_loc1_,Linkages.EQUIPMENT_BUTTON,Linkages.SHELL_BUTTON_BATTLE,0,null);
+         this.settings[CONSUMABLES_PANEL_SETTINGS.BATTLE_ROYALE_SETTINGS_ID] = new ConsumablesPanelSettings(CONSUMABLES_PANEL_Y_OFFSET,ITEM_WIDTH_PADDING,Linkages.BATTLE_ROYALE_CONSUMABLE_BUTTON,Linkages.SHELL_BUTTON_BATTLE,BATTLE_ROYALE_GROUP_GAP,BATTLE_ROYALE_GROUP_INDEXES);
+         this.settings[CONSUMABLES_PANEL_SETTINGS.MAPS_TRAINING_SETTINGS_ID] = new ConsumablesPanelSettings(CONSUMABLES_PANEL_Y_OFFSET,_loc1_,Linkages.EQUIPMENT_BUTTON,Linkages.MAPS_TRAINING_SHELL_BUTTON,0,null);
+         this.settings[CONSUMABLES_PANEL_SETTINGS.EPIC_BATTLE_SETTINGS_ID] = new ConsumablesPanelSettings(CONSUMABLES_PANEL_Y_OFFSET,_loc1_,Linkages.EPIC_BATTLE_CONSUMABLE_BUTTON,Linkages.SHELL_BUTTON_BATTLE,EPIC_BATTLE_GROUP_GAP,EPIC_BATTLE_GROUP_INDEXES);
       }
       
       private static function getItemWidthPadding(param1:int) : int
@@ -115,21 +115,21 @@ package net.wg.gui.battle.views.consumablesPanel
       {
          var _loc1_:BattleButton = null;
          var _loc2_:ConsumablesPanelSettings = null;
-         for each(_loc1_ in this._renderers)
+         for each(_loc1_ in this.renderers)
          {
             if(_loc1_ != null)
             {
                _loc1_.dispose();
             }
          }
-         this._renderers.splice(0,this._renderers.length);
-         this._renderers = null;
-         for each(_loc2_ in this._settings)
+         this.renderers.splice(0,this.renderers.length);
+         this.renderers = null;
+         for each(_loc2_ in this.settings)
          {
             _loc2_.dispose();
          }
-         this._settings.splice(0,this._settings.length);
-         this._settings = null;
+         this.settings.splice(0,this.settings.length);
+         this.settings = null;
          this._customIndexGap.splice(0,this._customIndexGap.length);
          this._customIndexGap = null;
          this._classFactory = null;
@@ -177,7 +177,7 @@ package net.wg.gui.battle.views.consumablesPanel
          var _loc2_:int = Boolean(param1) ? int(param1.length) : int(0);
          if(_loc2_ == 0)
          {
-            for each(_loc3_ in this._renderers)
+            for each(_loc3_ in this.renderers)
             {
                if(_loc3_ != null)
                {
@@ -185,8 +185,8 @@ package net.wg.gui.battle.views.consumablesPanel
                   _loc3_.dispose();
                }
             }
-            this._renderers.splice(0,this._renderers.length);
-            this._renderers = new <IConsumablesButton>[null,null,null,null,null,null,null,null,null,null,null,null];
+            this.renderers.splice(0,this.renderers.length);
+            this.renderers = new <IConsumablesButton>[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null];
          }
          else
          {
@@ -201,7 +201,7 @@ package net.wg.gui.battle.views.consumablesPanel
                {
                   removeChild(DisplayObject(_loc5_));
                   _loc5_.dispose();
-                  this._renderers[_loc4_] = null;
+                  this.renderers[_loc4_] = null;
                }
                _loc6_++;
             }
@@ -223,7 +223,7 @@ package net.wg.gui.battle.views.consumablesPanel
       
       public function as_addEquipmentSlot(param1:int, param2:Number, param3:Number, param4:int, param5:Number, param6:Number, param7:String, param8:String, param9:int) : void
       {
-         this._equipmentButtonLinkage = this._settings[this._settingsId].equipmentButtonLinkage;
+         this._equipmentButtonLinkage = this.settings[this._settingsId].equipmentButtonLinkage;
          this.addEquipmentSlot(param1,param2,param3,param4,param5,param6,param7,param8,param9);
          invalidate(INVALIDATE_DRAW_LAYOUT);
       }
@@ -231,10 +231,10 @@ package net.wg.gui.battle.views.consumablesPanel
       public function as_addOptionalDeviceSlot(param1:int, param2:Number, param3:String, param4:String, param5:Boolean, param6:int, param7:Boolean) : void
       {
          var _loc8_:IBattleOptionalDeviceButton = null;
-         if(this._renderers[param1] == null)
+         if(this.renderers[param1] == null)
          {
             _loc8_ = this._classFactory.getComponent(Linkages.OPTIONAL_DEVICE_BUTTON,IBattleOptionalDeviceButton);
-            this._renderers[param1] = _loc8_;
+            this.renderers[param1] = _loc8_;
             addChild(DisplayObject(_loc8_));
          }
          else
@@ -254,10 +254,10 @@ package net.wg.gui.battle.views.consumablesPanel
       {
          var _loc8_:BattleRoyaleRespawnButton = null;
          var _loc9_:ConsumablesVO = null;
-         if(this._renderers[param1] == null)
+         if(this.renderers[param1] == null)
          {
             _loc8_ = this._classFactory.getComponent("BattleRoyaleRespawnButtonUI",BattleRoyaleRespawnButton);
-            this._renderers[param1] = _loc8_;
+            this.renderers[param1] = _loc8_;
             addChild(_loc8_);
          }
          else
@@ -290,30 +290,26 @@ package net.wg.gui.battle.views.consumablesPanel
       public function as_addShellSlot(param1:int, param2:Number, param3:Number, param4:int, param5:Number, param6:String, param7:String, param8:String, param9:Boolean) : void
       {
          var _loc10_:IBattleShellButton = null;
-         var _loc11_:ConsumablesVO = null;
-         if(this._renderers[param1] == null)
+         if(this.renderers[param1] == null)
          {
             _loc10_ = this.createShellButton();
-            this._renderers[param1] = _loc10_;
+            this.renderers[param1] = _loc10_;
             addChild(DisplayObject(_loc10_));
          }
          else
          {
-            _loc10_ = this.getRendererBySlotIdx(param1) as IBattleShellButton;
+            _loc10_ = IBattleShellButton(this.getRendererBySlotIdx(param1));
          }
-         if(_loc10_)
-         {
-            _loc11_ = _loc10_.consumablesVO;
-            _loc11_.shellIconPath = param6;
-            _loc11_.noShellIconPath = param7;
-            _loc11_.keyCode = param2;
-            _loc11_.idx = param1;
-            _loc10_.tooltipStr = param8;
-            _loc10_.setInfinity(param9);
-            _loc10_.setQuantity(param4,true);
-            _loc10_.key = param3;
-            _loc10_.addClickCallBack(this);
-         }
+         var _loc11_:ConsumablesVO = _loc10_.consumablesVO;
+         _loc11_.shellIconPath = param6;
+         _loc11_.noShellIconPath = param7;
+         _loc11_.keyCode = param2;
+         _loc11_.idx = param1;
+         _loc10_.tooltipStr = param8;
+         _loc10_.setInfinity(param9);
+         _loc10_.setQuantity(param4,true);
+         _loc10_.key = param3;
+         _loc10_.addClickCallBack(this);
          invalidate(INVALIDATE_DRAW_LAYOUT);
       }
       
@@ -489,7 +485,7 @@ package net.wg.gui.battle.views.consumablesPanel
             return;
          }
          this._settingsId = param1;
-         var _loc2_:ConsumablesPanelSettings = this._settings[this._settingsId];
+         var _loc2_:ConsumablesPanelSettings = this.settings[this._settingsId];
          this._bottomPadding = _loc2_.bottomPadding;
          this._itemsPadding = _loc2_.itemPadding;
          this._groupsGap = _loc2_.groupGap;
@@ -542,7 +538,7 @@ package net.wg.gui.battle.views.consumablesPanel
       {
          var _loc2_:Boolean = false;
          var _loc4_:IConsumablesButton = null;
-         var _loc3_:int = this._renderers.length;
+         var _loc3_:int = this.renderers.length;
          var _loc5_:uint = 0;
          while(_loc5_ < _loc3_)
          {
@@ -571,7 +567,7 @@ package net.wg.gui.battle.views.consumablesPanel
       
       public function getRendererBySlotIdx(param1:int) : IConsumablesButton
       {
-         return this._renderers[param1];
+         return this.renderers[param1];
       }
       
       public function hide(param1:Boolean) : void
@@ -600,10 +596,7 @@ package net.wg.gui.battle.views.consumablesPanel
       
       public function onButtonClick(param1:Object) : void
       {
-         if(!this._isObserver)
-         {
-            onClickedToSlotS(param1.consumablesVO.keyCode,param1.consumablesVO.idx);
-         }
+         onClickedToSlotS(param1.consumablesVO.keyCode,param1.consumablesVO.idx);
       }
       
       public function setStateSizeBoundaries(param1:int, param2:int) : void
@@ -611,7 +604,7 @@ package net.wg.gui.battle.views.consumablesPanel
          if(this._settingsId !== Values.DEFAULT_INT)
          {
             this._itemsPadding = getItemWidthPadding(param1);
-            this._settings[this._settingsId].itemPadding = this._itemsPadding;
+            this.settings[this._settingsId].itemPadding = this._itemsPadding;
             invalidate(INVALIDATE_DRAW_LAYOUT);
          }
       }
@@ -661,7 +654,7 @@ package net.wg.gui.battle.views.consumablesPanel
       protected function drawLayout() : void
       {
          var _loc3_:IConsumablesButton = null;
-         var _loc1_:int = this._renderers.length;
+         var _loc1_:int = this.renderers.length;
          var _loc2_:int = 0;
          var _loc4_:uint = 0;
          while(_loc4_ < _loc1_)
@@ -670,7 +663,7 @@ package net.wg.gui.battle.views.consumablesPanel
             {
                _loc2_ += this._groupsGap;
             }
-            if(this._renderers[_loc4_] != null)
+            if(this.renderers[_loc4_] != null)
             {
                _loc3_ = this.getRendererBySlotIdx(_loc4_);
                if(_loc3_ && _loc3_.visible)
@@ -686,7 +679,7 @@ package net.wg.gui.battle.views.consumablesPanel
       
       protected function getRenderer(param1:int) : IConsumablesButton
       {
-         return IConsumablesButton(this._renderers[param1]);
+         return IConsumablesButton(this.renderers[param1]);
       }
       
       protected function updatePosition() : void
@@ -725,10 +718,10 @@ package net.wg.gui.battle.views.consumablesPanel
       private function addEquipmentSlot(param1:int, param2:Number, param3:Number, param4:int, param5:Number, param6:Number, param7:String, param8:String, param9:int) : void
       {
          var _loc10_:IConsumablesButton = null;
-         if(this._renderers[param1] == null)
+         if(this.renderers[param1] == null)
          {
             _loc10_ = this.createEquipmentButton();
-            this._renderers[param1] = _loc10_;
+            this.renderers[param1] = _loc10_;
             addChild(DisplayObject(_loc10_));
          }
          else
@@ -755,6 +748,16 @@ package net.wg.gui.battle.views.consumablesPanel
       public function get panelWidth() : Number
       {
          return this.x + this._basePanelWidth;
+      }
+      
+      protected function get itemsPadding() : int
+      {
+         return this._itemsPadding;
+      }
+      
+      protected function set basePanelWidth(param1:Number) : void
+      {
+         this._basePanelWidth = param1;
       }
    }
 }

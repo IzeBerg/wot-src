@@ -31,7 +31,7 @@ EVENT_CONFIG = ComponentsConfig(config=(
  (
   BATTLE_CTRL_ID.MAPS, (BATTLE_VIEW_ALIASES.MINIMAP,)),
  (
-  BATTLE_CTRL_ID.PERKS, (BATTLE_VIEW_ALIASES.PERKS_PANEL,))), viewsConfig=())
+  BATTLE_CTRL_ID.PERKS, (BATTLE_VIEW_ALIASES.SITUATION_INDICATORS,))), viewsConfig=())
 _TUTORIAL_PAGES = ('eventHint1', 'eventHint2')
 _EVENT_EXTERNAL_COMPONENTS = (
  CrosshairPanelContainer, EventMarkersManager, KillCamMarkersManager)

@@ -15,9 +15,9 @@ package net.wg.gui.battle.views.postmortemPanel
    public class BasePostmortemPanel extends BasePostmortemPanelMeta implements IBasePostmortemPanelMeta
    {
       
-      private static const WHITE_TEXT_COLOR:uint = 16777215;
+      public static const VEHICLE_PANEL_OFFSET_Y:int = 120;
       
-      private static const EMPTY_STR:String = "";
+      protected static const WHITE_TEXT_COLOR:uint = 16777215;
       
       protected static const INVALID_PLAYER_INFO:uint = 1 << 7;
       
@@ -27,15 +27,13 @@ package net.wg.gui.battle.views.postmortemPanel
       
       protected static const INVALID_DEAD_REASON_ITEMS_VISIBILITY:uint = 1 << 10;
       
-      private static const INVALID_PLAYER_INFO_VISIBILITY:uint = 1 << 11;
+      protected static const INVALID_PLAYER_INFO_VISIBILITY:uint = 1 << 11;
       
-      private static const INVALID_PLAYER_VEH_PANEL_VISIBILITY:uint = 1 << 12;
+      protected static const INVALID_PLAYER_VEH_PANEL_VISIBILITY:uint = 1 << 12;
       
-      private static const INVALID_DEAD_REASON_VISIBILITY:uint = 1 << 13;
+      protected static const INVALID_DEAD_REASON_VISIBILITY:uint = 1 << 13;
       
-      private static const INVALID_KILLER_VISIBILITY:uint = 1 << 14;
-      
-      public static const VEHICLE_PANEL_OFFSET_Y:int = 120;
+      protected static const INVALID_KILLER_VISIBILITY:uint = 1 << 14;
       
       protected static const PLAYER_INFO_DELTA_Y:int = 250;
       
@@ -44,6 +42,8 @@ package net.wg.gui.battle.views.postmortemPanel
       protected static const GAP_USER_NAME_DEAD_REASON:int = 5;
       
       protected static const USER_NAME_FIELD_NAME:String = "userNameField";
+      
+      private static const EMPTY_STR:String = "";
        
       
       public var playerInfoTF:TextField = null;
@@ -60,7 +60,7 @@ package net.wg.gui.battle.views.postmortemPanel
       
       protected var _userName:UserNameField = null;
       
-      protected var _playerInfo:String = "";
+      private var _playerInfo:String = "";
       
       protected var _userVO:UserVO = null;
       
@@ -84,7 +84,7 @@ package net.wg.gui.battle.views.postmortemPanel
       
       private var _showNicknameKillerBg:Boolean = false;
       
-      private const INVALID_ALL_DEAD_RESAON_DEPENDENCY:uint = INVALID_PLAYER_INFO_VISIBILITY | INVALID_PLAYER_VEH_PANEL_VISIBILITY | INVALID_DEAD_REASON_VISIBILITY;
+      protected const INVALID_ALL_DEAD_RESAON_DEPENDENCY:uint = INVALID_PLAYER_INFO_VISIBILITY | INVALID_PLAYER_VEH_PANEL_VISIBILITY | INVALID_DEAD_REASON_VISIBILITY;
       
       public function BasePostmortemPanel()
       {

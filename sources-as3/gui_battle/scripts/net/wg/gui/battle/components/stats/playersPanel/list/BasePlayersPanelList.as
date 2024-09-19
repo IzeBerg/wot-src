@@ -74,6 +74,8 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       
       private var _disposed:Boolean = false;
       
+      private var _itemHeight:int;
+      
       public function BasePlayersPanelList()
       {
          this.panelListItems = new Vector.<IPlayersPanelListItem>();
@@ -89,6 +91,7 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          super();
          addChild(this.renderersContainer);
          this.initDogTag();
+         this.itemHeight = ITEM_HEIGHT;
       }
       
       public final function dispose() : void
@@ -420,7 +423,7 @@ package net.wg.gui.battle.components.stats.playersPanel.list
                _loc4_ = this.getItemByVehicleID(_loc3_);
                if(_loc4_)
                {
-                  _loc4_.y = ITEM_HEIGHT * _loc5_;
+                  _loc4_.y = this.itemHeight * _loc5_;
                   this._currOrder[_loc5_] = _loc3_;
                }
             }
@@ -493,6 +496,16 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          return _loc1_;
       }
       
+      protected function set itemHeight(param1:int) : void
+      {
+         this._itemHeight = param1;
+      }
+      
+      protected function get itemHeight() : int
+      {
+         return this._itemHeight;
+      }
+      
       private function initDogTag() : void
       {
          this._dogTag = App.utils.classFactory.getComponent(Linkages.DOGTAG,DogtagComponent);
@@ -509,7 +522,7 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          this.initializeListItem(_loc2_);
          _loc2_.setVehicleLevelVisible(this._isVehicleLevelVisible);
          _loc2_.setState(this._state);
-         _loc2_.y = _loc3_ * ITEM_HEIGHT;
+         _loc2_.y = _loc3_ * this.itemHeight;
          _loc2_.setIsRightAligned(this.isRightAligned);
          _loc2_.holderItemID = _loc3_;
          _loc2_.setChatCommandVisibility(this._isChatCommVisible);

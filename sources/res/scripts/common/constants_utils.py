@@ -1,6 +1,6 @@
 import types, arena_bonus_type_caps, constants
 from UnitBase import CMD_NAMES, ROSTER_TYPE, PREBATTLE_TYPE_BY_UNIT_MGR_ROSTER, PREBATTLE_TYPE_BY_UNIT_MGR_ROSTER_EXT, ROSTER_TYPE_TO_CLASS, UNIT_MGR_FLAGS_TO_PREBATTLE_TYPE, UNIT_MGR_FLAGS_TO_UNIT_MGR_ENTITY_NAME, UNIT_MGR_FLAGS_TO_INVITATION_TYPE, QUEUE_TYPE_BY_UNIT_MGR_ROSTER, UNIT_ERROR, VEHICLE_TAGS_GROUP_BY_UNIT_MGR_FLAGS
-from constants import ARENA_GUI_TYPE, ARENA_GUI_TYPE_LABEL, ARENA_BONUS_TYPE, ARENA_BONUS_TYPE_NAMES, ARENA_BONUS_TYPE_IDS, ARENA_BONUS_MASK, QUEUE_TYPE, QUEUE_TYPE_NAMES, PREBATTLE_TYPE, PREBATTLE_TYPE_NAMES, INVITATION_TYPE, BATTLE_MODE_VEHICLE_TAGS, SEASON_TYPE_BY_NAME, SEASON_NAME_BY_TYPE, QUEUE_TYPE_IDS, ARENA_BONUS_TYPE_TO_QUEUE_TYPE, ATTACK_REASONS, ATTACK_REASON_INDICES
+from constants import ARENA_GUI_TYPE, ARENA_GUI_TYPE_LABEL, ARENA_BONUS_TYPE, ARENA_BONUS_TYPE_NAMES, ARENA_BONUS_TYPE_IDS, ARENA_BONUS_MASK, QUEUE_TYPE, QUEUE_TYPE_NAMES, PREBATTLE_TYPE, PREBATTLE_TYPE_NAMES, INVITATION_TYPE, BATTLE_MODE_VEHICLE_TAGS, SEASON_TYPE_BY_NAME, SEASON_NAME_BY_TYPE, QUEUE_TYPE_IDS, ARENA_BONUS_TYPE_TO_QUEUE_TYPE, ATTACK_REASONS, ATTACK_REASON_INDICES, DAMAGE_INFO_CODES, DAMAGE_INFO_INDICES, DAMAGE_INFO_CODES_PER_ATTACK_REASON
 from BattleFeedbackCommon import BATTLE_EVENT_TYPE
 from debug_utils import LOG_DEBUG
 from soft_exception import SoftException
@@ -122,6 +122,20 @@ def addAttackReasonTypesFromExtension(extAttackReasonType, personality):
     extAttackReasonType.inject(personality)
     ATTACK_REASONS.extend(extraValues)
     ATTACK_REASON_INDICES.update(dict((value, index) for index, value in enumerate(ATTACK_REASONS)))
+
+
+def addDamageResistanceReasonsFromExtension(extDmgResistReasonType, personality):
+    extDmgResistReasonType.inject(personality)
+
+
+def addDamageInfoCodes(infoCodesPerAttackReason, personality):
+    for attackReason, damageInfoCode in infoCodesPerAttackReason.iteritems():
+        if damageInfoCode in DAMAGE_INFO_INDICES:
+            continue
+        DAMAGE_INFO_INDICES[damageInfoCode] = len(DAMAGE_INFO_CODES)
+        DAMAGE_INFO_CODES.append(damageInfoCode)
+
+    DAMAGE_INFO_CODES_PER_ATTACK_REASON.update(infoCodesPerAttackReason)
 
 
 def addPrbTypeByUnitMgrRoster(prbType, unitMgrFlag, personality):
@@ -260,6 +274,7 @@ class AbstractBattleMode(object):
     _SEASON_TYPE = None
     _SEASON_MANAGER_TYPE = None
     _SM_TYPE_BATTLE_RESULT = None
+    _SM_TYPE_AUTO_MAINTENANCE = None
     _SM_TYPES = []
     _CLIENT_SM_TYPES = []
     _FAIRPLAY_VEHICLE_BATTLE_STATS_COMPONENT = None
@@ -417,6 +432,10 @@ class AbstractBattleMode(object):
         return {}
 
     @property
+    def _client_equipmentTriggers(self):
+        return []
+
+    @property
     def _server_canCreateUnitMgr(self):
         return lambda *args, **kwargs: (UNIT_ERROR.OK, '')
 
@@ -464,6 +483,10 @@ class AbstractBattleMode(object):
     @property
     def _client_hangarPresetsGetter(self):
         return
+
+    @property
+    def _client_controlModes(self):
+        return {}
 
     def registerSquadTypes(self):
         addQueueTypeByUnitMgrRoster(self._QUEUE_TYPE, self._ROSTER_TYPE, self._personality)
@@ -638,18 +661,37 @@ class AbstractBattleMode(object):
         from gui.SystemMessages import SM_TYPE
         SM_TYPE.inject(self._CLIENT_SM_TYPES)
 
+    def registerClientEquipmentTriggers(self):
+        from gui.shared.system_factory import registerEquipmentTrigger
+        for prefix, _class, replayClass in self._client_equipmentTriggers:
+            registerEquipmentTrigger(prefix, _class, replayClass)
+
     def registerBattleResultSysMsgType(self):
-        from battle_results import ARENA_BONUS_TYPE_TO_SYS_MESSAGE_TYPE
+        from battle_results import ARENA_BONUS_TYPE_TO_SM_TYPE_BATTLE_RESULT
         from chat_shared import SYS_MESSAGE_TYPE
-        if self._ARENA_BONUS_TYPE in ARENA_BONUS_TYPE_TO_SYS_MESSAGE_TYPE:
-            raise SoftException(('ARENA_BONUS_TYPE_TO_SYS_MESSAGE_TYPE already has ARENA_BONUS_TYPE:{t}. Personality: {p}').format(t=self._ARENA_BONUS_TYPE, p=self._personality))
+        if self._ARENA_BONUS_TYPE in ARENA_BONUS_TYPE_TO_SM_TYPE_BATTLE_RESULT:
+            raise SoftException(('ARENA_BONUS_TYPE_TO_SM_TYPE_BATTLE_RESULT already has ARENA_BONUS_TYPE:{t}. Personality: {p}').format(t=self._ARENA_BONUS_TYPE, p=self._personality))
         try:
             msgTypeIndex = SYS_MESSAGE_TYPE.__getattr__(self._SM_TYPE_BATTLE_RESULT).index()
         except AttributeError:
             raise SoftException('No index for {attr} found. Use registerSystemMessagesTypes before')
 
-        ARENA_BONUS_TYPE_TO_SYS_MESSAGE_TYPE.update({self._ARENA_BONUS_TYPE: msgTypeIndex})
-        msg = ('ARENA_BONUS_TYPE:{type}->{sysMsg} was added to ARENA_BONUS_TYPE_TO_SYS_MESSAGE_TYPE. ' + 'Personality: {p}').format(type=self._ARENA_BONUS_TYPE, sysMsg=self._SM_TYPE_BATTLE_RESULT, p=self._personality)
+        ARENA_BONUS_TYPE_TO_SM_TYPE_BATTLE_RESULT.update({self._ARENA_BONUS_TYPE: msgTypeIndex})
+        msg = ('ARENA_BONUS_TYPE:{type}->{sysMsg} was added to ARENA_BONUS_TYPE_TO_SM_TYPE_BATTLE_RESULT. ' + 'Personality: {p}').format(type=self._ARENA_BONUS_TYPE, sysMsg=self._SM_TYPE_BATTLE_RESULT, p=self._personality)
+        LOG_DEBUG(msg)
+
+    def registerAutoMaintenanceSysMsgType(self):
+        from battle_results.battle_results_constants import ARENA_BONUS_TYPE_TO_SM_TYPE_AUTO_MAINTENANCE
+        from chat_shared import SYS_MESSAGE_TYPE
+        if self._ARENA_BONUS_TYPE in ARENA_BONUS_TYPE_TO_SM_TYPE_AUTO_MAINTENANCE:
+            raise SoftException(('ARENA_BONUS_TYPE_TO_SM_TYPE_AUTO_MAINTENANCE already has ARENA_BONUS_TYPE:{t}. Personality: {p}').format(t=self._ARENA_BONUS_TYPE, p=self._personality))
+        try:
+            msgTypeIndex = SYS_MESSAGE_TYPE.__getattr__(self._SM_TYPE_AUTO_MAINTENANCE).index()
+        except AttributeError:
+            raise SoftException('No index for {attr} found. Use registerSystemMessagesTypes before')
+
+        ARENA_BONUS_TYPE_TO_SM_TYPE_AUTO_MAINTENANCE.update({self._ARENA_BONUS_TYPE: msgTypeIndex})
+        msg = ('ARENA_BONUS_TYPE:{type}->{sysMsg} was added to ARENA_BONUS_TYPE_TO_SM_TYPE_AUTO_MAINTENANCE. ' + 'Personality: {p}').format(type=self._ARENA_BONUS_TYPE, sysMsg=self._SM_TYPE_AUTO_MAINTENANCE, p=self._personality)
         LOG_DEBUG(msg)
 
     def registerClientNotificationHandlers(self):
@@ -721,3 +763,7 @@ class AbstractBattleMode(object):
 
     def registerNonReplayMode(self):
         ARENA_BONUS_TYPE.REPLAY_DISABLE_RANGE.append(self._ARENA_BONUS_TYPE)
+
+    def registerControlModes(self):
+        from AvatarInputHandler import OVERWRITE_CTRLS_DESC_MAP
+        OVERWRITE_CTRLS_DESC_MAP[self._ARENA_BONUS_TYPE] = self._client_controlModes

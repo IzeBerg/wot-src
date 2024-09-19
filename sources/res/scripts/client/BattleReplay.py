@@ -42,7 +42,8 @@ _IGNORED_SWITCHING_CTRL_MODES = (
  CTRL_MODE_NAME.MAP_CASE,
  CTRL_MODE_NAME.MAP_CASE_ARCADE,
  CTRL_MODE_NAME.MAP_CASE_EPIC,
- CTRL_MODE_NAME.MAP_CASE_ARCADE_EPIC_MINEFIELD)
+ CTRL_MODE_NAME.MAP_CASE_ARCADE_EPIC_MINEFIELD,
+ CTRL_MODE_NAME.TWIN_GUN)
 registerReplayModeTag(ARENA_GUI_TYPE.COMP7, 'Onslaught')
 
 class CallbackDataNames(object):
@@ -666,7 +667,7 @@ class BattleReplay(object):
     def getGunPitch(self):
         return self.__replayCtrl.gunPitch
 
-    def setGunReloadTime(self, startTime, duration):
+    def setGunReloadTime(self, startTime, duration, clipTime=None):
         self.__replayCtrl.setGunReloadTime(startTime, duration)
 
     def resetArenaPeriod(self):

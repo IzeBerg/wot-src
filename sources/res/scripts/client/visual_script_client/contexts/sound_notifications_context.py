@@ -205,3 +205,15 @@ class SoundNotificationsContext(VScriptContext):
     def setCircumstanceGroupWeight(self, groupName, weight, hold):
         if self.__soundNotifications:
             self.__soundNotifications.setCircumstanceGroupWeight(groupName, weight, hold)
+
+    @vse_func_call(None, (SLOT_TYPE.STR,), display_name='OnNotificationBegins', description='Notifies manager when sound event is sent to wwise', aspects=[
+     ASPECT.CLIENT])
+    def onNotificationBegins(self, eventName):
+        if self.__soundNotifications:
+            self.__soundNotifications.onNotificationBegins(eventName)
+
+    @vse_func_call(None, (SLOT_TYPE.STR,), display_name='Log', description='Adds to log VO message', aspects=[
+     ASPECT.CLIENT])
+    def log(self, msg):
+        if self.__soundNotifications:
+            self.__soundNotifications.log(msg)

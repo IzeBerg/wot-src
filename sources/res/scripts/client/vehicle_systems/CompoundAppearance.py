@@ -16,6 +16,7 @@ from vehicle_systems.components.highlighter import Highlighter
 from helpers.CallbackDelayer import CallbackDelayer
 from helpers.EffectsList import SpecialKeyPointNames
 from vehicle_systems import camouflages
+from vehicle_systems import vehicle_composition
 from cgf_obsolete_script.script_game_object import ComponentDescriptor
 from vehicle_systems import model_assembler
 from VehicleEffects import DamageFromShotDecoder
@@ -334,6 +335,7 @@ class CompoundAppearance(CommonTankAppearance, CallbackDelayer):
         if self.damageState.effect is not None:
             self.playEffect(self.damageState.effect, SpecialKeyPointNames.STATIC)
         self.highlighter = Highlighter(self.isAlive, self.collisions)
+        vehicle_composition.createVehicleComposition(self.gameObject)
         self.__isConstructed = True
         return
 
@@ -582,6 +584,7 @@ class CompoundAppearance(CommonTankAppearance, CallbackDelayer):
             isRightSideFlying = self.isRightSideFlying
             isLeftSideFlying = self.isLeftSideFlying
             self._vehicle.filter = self.__originalFilter
+            self.filter.setFlyingInfo(None)
             self.filter.reset()
             self.shadowManager.reattachCompoundModel(self._vehicle, self.compoundModel, newCompoundModel)
             if self.__inSpeedTreeCollision:
@@ -605,6 +608,8 @@ class CompoundAppearance(CommonTankAppearance, CallbackDelayer):
             self._connectCollider()
             self.filter.syncGunAngles(prevTurretYaw, prevGunPitch)
             model_assembler.setupTurretRotations(self)
+            vehicle_composition.removeComposition(self.gameObject)
+            vehicle_composition.createVehicleComposition(self.gameObject)
             self.onModelChanged()
             return
 

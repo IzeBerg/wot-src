@@ -4696,18 +4696,6 @@
 			<skillName>commander_sixthSense</skillName>
 			<delay>2</delay>
 		</script>
-		<kpi>
-			<oneOf>
-				<boostSkill>
-					<name>crewSkillSixthSense</name>
-					<value>1</value>
-				</boostSkill>
-				<add>
-					<name>crewSkillSixthSenseDelay</name>
-					<value>-1</value>
-				</add>
-			</oneOf>
-		</kpi>
 	</sixthSenseBattleBooster>
 	<rancorousBattleBooster>
 		<id>115</id>
@@ -4800,19 +4788,6 @@
 				<!--BW_String-->
 			</perkLevelMultiplier>
 		</script>
-		<kpi>
-			<oneOf>
-				<boostSkill>
-					<name>crewSkillLastEffort</name>
-					<value>1</value>
-				</boostSkill>
-				<add>
-					<name>crewSkillLastEffortDuration</name>
-					<value>1</value>
-				</add>
-			</oneOf>
-		</kpi>
-		<tooltipSection>skills</tooltipSection>
 	</lastEffortBattleBooster>
 	<turbochargerBattleBooster>
 		<id>202</id>

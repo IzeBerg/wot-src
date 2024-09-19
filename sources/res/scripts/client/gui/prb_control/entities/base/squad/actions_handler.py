@@ -56,6 +56,7 @@ class SquadActionsHandler(AbstractActionsHandler):
                     showInvitesWindow = False
                     self.processInvites(accountsToInvite)
                 squadCtx = {'showInvitesWindow': showInvitesWindow}
+            self._updateSquadCtx(ctx, squadCtx)
         self._loadWindow(squadCtx)
         return initResult
 
@@ -149,6 +150,9 @@ class SquadActionsHandler(AbstractActionsHandler):
 
     def _onKickedFromQueue(self, _):
         SystemMessages.pushI18nMessage('#system_messages:arena_start_errors/prb/kick/timeout', type=SystemMessages.SM_TYPE.Warning)
+
+    def _updateSquadCtx(self, initCtx, squadCtx):
+        pass
 
     @staticmethod
     def _isSquadHavePlayersInBattle(slotPlayer, playerInfo):

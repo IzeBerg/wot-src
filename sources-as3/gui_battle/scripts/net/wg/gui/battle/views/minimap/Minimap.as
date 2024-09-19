@@ -166,7 +166,7 @@ package net.wg.gui.battle.views.minimap
       
       override public function getMessageCoordinate() : Number
       {
-         return initedHeight - this.currentTopLeftPoint.y;
+         return initedHeight - this.currentTopLeftPoint.y + messageCoordinateOffset;
       }
       
       override public function getMinimapRectBySizeIndex(param1:int) : Rectangle
@@ -277,7 +277,7 @@ package net.wg.gui.battle.views.minimap
       private function createScenarioLayer() : void
       {
          this._scenarioLayer = App.utils.classFactory.getComponent(Linkages.MINIMAP_SCENARIO_LAYOUT,ScenarioLayer);
-         addChildAt(this._scenarioLayer,getChildIndex(this.background) + 1);
+         addChildAt(this._scenarioLayer,getChildIndex(this.foreground0) + 1);
          this._scenarioLayer.x = this.background.x;
          this._scenarioLayer.y = this.background.y;
          this._scenarioLayer.updateSize(this.background.width,this.background.height);

@@ -106,6 +106,7 @@ class CommonTankAppearance(ScriptGameObject):
     crashedTracksController = ComponentDescriptor()
     customEffectManager = ComponentDescriptor()
     detailedEngineState = ComponentDescriptor()
+    detailedGunState = ComponentDescriptor()
     dirtComponent = ComponentDescriptor()
     engineAudition = ComponentDescriptor()
     flyingInfoProvider = ComponentDescriptor()
@@ -254,14 +255,17 @@ class CommonTankAppearance(ScriptGameObject):
         self.transform = self.createComponent(GenericComponents.TransformComponent, Math.Vector3(0, 0, 0))
         self.areaTriggerTarget = self.createComponent(Triggers.AreaTriggerTarget)
         self.__filter = model_assembler.createVehicleFilter(self.typeDescriptor)
-        self.__filter.setFlyingInfo(DataLinks.createBoolLink(self.flyingInfoProvider, 'isFlying'))
+        if self.modelsSetParams.state == 'undamaged':
+            self.__filter.setFlyingInfo(DataLinks.createBoolLink(self.flyingInfoProvider, 'isFlying'))
         compoundModel = self.compoundModel
         if self.isAlive:
             self.detailedEngineState, self.gearbox = model_assembler.assembleDrivetrain(self, isPlayer)
+            self.detailedGunState = self.createComponent(Vehicular.DetailedGunState)
             if not gEffectsDisabled():
                 self.customEffectManager = CustomEffectManager(self)
                 if self.typeDescriptor.hasSiegeMode:
-                    self.siegeEffects = SiegeEffectsController(self, isPlayer)
+                    shouldStopEngineOnSiegeSwitch = self.typeDescriptor.type.shouldStopEngineOnSiegeSwitch
+                    self.siegeEffects = SiegeEffectsController(self, isPlayer, shouldStopEngineOnSiegeSwitch)
                 model_assembler.assembleVehicleAudition(isPlayer, self)
                 if self.__useEngStartControlIdle:
                     engineSoundObject = self.engineAudition.getSoundObject(TankSoundObjectsIndexes.ENGINE)

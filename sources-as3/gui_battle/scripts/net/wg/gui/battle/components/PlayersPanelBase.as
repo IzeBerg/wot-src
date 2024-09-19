@@ -31,6 +31,7 @@ package net.wg.gui.battle.components
    import net.wg.infrastructure.helpers.statisticsDataController.intarfaces.IBattleComponentDataController;
    import net.wg.infrastructure.interfaces.IDAAPIDataClass;
    import net.wg.infrastructure.managers.IContextMenuManager;
+   import net.wg.infrastructure.uilogging.player_satisfaction_rating.PLAYER_SATISFACTION_RATING_CONSTANTS;
    
    public class PlayersPanelBase extends PlayersPanelMeta implements IBattleComponentDataController, IPlayersPanelMeta, IStatsBaseMeta
    {
@@ -538,7 +539,7 @@ package net.wg.gui.battle.components
       
       private function onDynamicSquadAddHandler(param1:DynamicSquadEvent) : void
       {
-         addToSquadS(param1.sessionID);
+         addToSquadS(param1.sessionID,PLAYER_SATISFACTION_RATING_CONSTANTS.IN_BATTLE_GUI);
       }
       
       private function onMouseClickHandler(param1:MouseEvent) : void

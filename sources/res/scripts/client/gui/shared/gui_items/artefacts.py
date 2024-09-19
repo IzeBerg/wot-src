@@ -305,6 +305,14 @@ class BattleBooster(Equipment):
     def getBonusIcon(self, size='small'):
         return RES_ICONS.getBonusIcon(size, self.name.split('_')[0])
 
+    def getGUIEmblemID(self):
+        return self.descriptor.iconName
+
+    def getOverlayType(self, vehicle=None):
+        if self.isCrewBooster():
+            return 'battleBoosterReplace'
+        return 'battleBooster'
+
     def isOptionalDeviceCompatible(self, optionalDevice):
         return not self.isCrewBooster() and optionalDevice is not None and self.descriptor.getLevelParamsForDevice(optionalDevice.descriptor) is not None
 
@@ -587,6 +595,9 @@ class OptionalDevice(RemovableDevice):
         if result is None:
             result = RES_ICONS.getBonusIcon(size, self.name.split('_')[0])
         return result
+
+    def getBonusOverlay(self, size='small'):
+        return RES_ICONS.getBonusOverlay(size, self.getOverlayType())
 
     def isInstalled(self, vehicle, slotIdx=None):
         for idx, op in enumerate(vehicle.optDevices.installed):

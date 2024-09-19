@@ -25,7 +25,7 @@ class BATTLE_VIEW_ALIASES(object):
     REPORT_BUG = 'reportBug'
     FULL_STATS = 'fullStats'
     RIBBONS_PANEL = 'ribbonsPanel'
-    PERKS_PANEL = 'perksPanel'
+    SITUATION_INDICATORS = 'situationIndicators'
     MINIMAP = 'minimap'
     RADIAL_MENU = 'radialMenu'
     PLAYERS_PANEL = 'playersPanel'

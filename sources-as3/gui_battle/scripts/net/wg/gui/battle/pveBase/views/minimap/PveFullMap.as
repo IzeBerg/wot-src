@@ -88,13 +88,12 @@ package net.wg.gui.battle.pveBase.views.minimap
       
       override protected function draw() : void
       {
-         var _loc1_:Number = NaN;
          var _loc2_:Number = NaN;
          var _loc3_:Number = NaN;
          var _loc4_:int = 0;
          var _loc5_:Number = NaN;
          super.draw();
-         _loc1_ = App.instance.appWidth;
+         var _loc1_:Number = App.instance.appWidth;
          _loc2_ = App.instance.appHeight;
          if(isInvalid(InvalidationType.SIZE))
          {
@@ -177,6 +176,21 @@ package net.wg.gui.battle.pveBase.views.minimap
       public function get dimmer() : Sprite
       {
          return this._dimmer;
+      }
+      
+      override public function as_setScenarioEvent(param1:String, param2:String, param3:String) : void
+      {
+         this.entriesContainer.scenarioLayer.setScenarioEvent(param1,param2,param3);
+      }
+      
+      override public function as_clearScenarioEvent(param1:String) : void
+      {
+         this.entriesContainer.scenarioLayer.clearScenarioEvent(param1);
+      }
+      
+      override public function as_setScenarioEventVisible(param1:String, param2:Boolean) : void
+      {
+         this.entriesContainer.scenarioLayer.setScenarioEventVisible(param1,param2);
       }
    }
 }

@@ -4,6 +4,7 @@ from battleground.simulated_scene import SimulatedScene, ANIMATION_DURATION_BEFO
 from constants import ATTACK_REASON, ATTACK_REASONS, ARENA_PERIOD, POSTMORTEM_MODIFIERS
 from gui.battle_control.arena_info.interfaces import IBattleFieldController
 from gui.shared.events import DeathCamEvent
+from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
 from wotdecorators import noexcept
 from AvatarInputHandler.DynamicCameras.ArcadeCamera import ArcadeCamera
 from AvatarInputHandler.DynamicCameras.kill_cam_camera import KillCamera, StartCamDirection, LOOK_AT_KILLER_DURATION
@@ -116,7 +117,6 @@ class KillModeBase(IControlMode, CallbackDelayer):
             _logger.error('Avatar is None, cannot enter %s.', self.__class__.__name__)
             return
         else:
-            self._aih.setForcedGuiControlMode(False)
             self._changeKillCamModeState(DeathCamEvent.State.NONE)
             self._victimVehicleID = avatar.playerVehicleID
             self._postmortemKwargs = kwargs
@@ -209,7 +209,7 @@ class KillModeBase(IControlMode, CallbackDelayer):
         vehicle = avatar.vehicle
         if vehicle is None:
             vehicle = BigWorld.entity(avatar.playerVehicleID)
-        if not self._canShowKillerVisionInPeriod() or not self._areBothTeamsAlive():
+        if not self._canShowKillerVisionInPeriod():
             _logger.info('The battle ends soon - shorten Look At Killer rotation or skip Killer Vision')
             return (
              SimulationAvailability.NOT_AVAILABLE_END_OF_BATTLE, None)
@@ -352,6 +352,8 @@ class KillCamMode(KillModeBase):
         self.__simulatedScene.onAllVehiclesLoaded += self.__onAllVehiclesLoaded
         self.__simulatedScene.onSimulatedSceneHasEnded += self.__simulatedSceneEnded
         self._changeKillCamModeState(DeathCamEvent.State.INACTIVE)
+        if not self._aih.appLoader.getApp().hasGuiControlModeConsumers(VIEW_ALIAS.INGAME_MENU):
+            self._aih.setForcedGuiControlMode(False)
         super(KillCamMode, self).enable(**kwargs)
         return
 
@@ -487,10 +489,13 @@ class KillCamMode(KillModeBase):
         vehicle = avatar.vehicle
         if vehicle is None:
             vehicle = BigWorld.entity(avatar.playerVehicleID)
-        availability, simulationData = super(KillCamMode, self)._checkSimulationAvailability()
-        if availability is not SimulationAvailability.AVAILABLE:
-            return (availability, None)
+        if not self._areBothTeamsAlive():
+            return (
+             SimulationAvailability.NOT_AVAILABLE_END_OF_BATTLE, None)
         else:
+            availability, simulationData = super(KillCamMode, self)._checkSimulationAvailability()
+            if availability is not SimulationAvailability.AVAILABLE:
+                return (availability, None)
             if avatar.arenaExtraData.get('isRandomEventsAllowed', False):
                 _logger.info('Skip DeathCam scene because Random Events are not supported')
                 return (
@@ -766,18 +771,22 @@ class LookAtKillerMode(KillModeBase):
         self.__startCameraRotation(availability)
 
     def __startCameraRotation(self, simAvailability):
-        suicide = self._killerVehicleID == self._victimVehicleID
-        enemySpottedInsideAOI = BigWorld.entity(self._killerVehicleID) is not None
-        waitTime = LOOK_AT_KILLER_DURATION - _PREPARE_KILLER_VISION_FADE_TIME if simAvailability == SimulationAvailability.AVAILABLE else _TIME_BEFORE_FOLLOW_TANK
+        isBattleEnding = simAvailability == SimulationAvailability.NOT_AVAILABLE_END_OF_BATTLE
+        haveEnoughTime = not isBattleEnding and self._areBothTeamsAlive()
+        if haveEnoughTime:
+            waitTime = LOOK_AT_KILLER_DURATION - _PREPARE_KILLER_VISION_FADE_TIME
+        else:
+            waitTime = _TIME_BEFORE_FOLLOW_TANK
         isFirstTenDeathWheeledTank = self._isFirstTenDeathsWheeledTank(self._victimVehicleID)
         if isFirstTenDeathWheeledTank and simAvailability != SimulationAvailability.AVAILABLE:
             self._tryDecrementWheeledDeathCounter(self._victimVehicleID)
             waitTime = _WHEELED_VEHICLE_POSTMORTEM_DELAY
+        suicide = self._killerVehicleID == self._victimVehicleID
         if not suicide:
             if (simAvailability == SimulationAvailability.NOT_KILLED_BY_SHOT or simAvailability == SimulationAvailability.NOT_AVAILABLE_MISSING_DATA) and not isFirstTenDeathWheeledTank:
                 waitTime = _LOOK_AT_KILLER_DURATION_LEGACY
-            self.__handleCameraRotation(enemySpottedInsideAOI=enemySpottedInsideAOI, killerIsSpotted=self._killerIsSpotted)
-        if suicide or simAvailability == SimulationAvailability.NOT_AVAILABLE_END_OF_BATTLE:
+            self.__handleCameraRotation(enemySpottedInsideAOI=BigWorld.entity(self._killerVehicleID) is not None, killerIsSpotted=self._killerIsSpotted)
+        if suicide or not haveEnoughTime:
             self._postmortemKwargs['bPostmortemDelay'] = False
         self.delayCallback(waitTime, self._leaveMode)
         return

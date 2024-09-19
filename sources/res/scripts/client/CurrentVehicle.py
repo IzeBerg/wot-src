@@ -387,7 +387,7 @@ class _CurrentVehicle(_CachedVehicle):
         self.__vehInvID = vehInvID
         if self.isOnlyForBattleRoyaleBattles():
             AccountSettings.setFavorites(ROYALE_VEHICLE, vehInvID)
-        else:
+        elif not self.isOnlyForEventBattles():
             AccountSettings.setFavorites(CURRENT_VEHICLE, vehInvID)
         self.refreshModel()
         self._setChangeCallback(callback)

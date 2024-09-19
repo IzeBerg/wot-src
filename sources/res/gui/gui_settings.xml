@@ -2590,6 +2590,11 @@
 				<type>url</type>
 			</item>
 			<item>
+				$PARAMS(/lootboxes-overlay)
+				<name>lootBoxSystem</name>
+				<type>url</type>
+			</item>
+			<item>
 				$PARAMS(/sh_category/sh_category)
 				<name>shProducts</name>
 				<type>url</type>
@@ -2775,6 +2780,66 @@
 			</item>
 		</value>
 	</battlePassIntroSlides>
+	<lootboxSystem>
+		<type>dict</type>
+		<value>
+			<item>
+				<name>intro</name>
+				<type>dict</type>
+				<value>
+					<item>
+						/$LANGUAGE_CODE/promocontent/lootBoxIntro/
+						<name>lootBoxSystem</name>
+						<type>url</type>
+					</item>
+					<item>
+						/$LANGUAGE_CODE/promocontent/lootBoxIntro/
+						<name>anniversaryCN</name>
+						<type>url</type>
+					</item>
+				</value>
+			</item>
+			<item>
+				<name>infoPage</name>
+				<type>dict</type>
+				<value>
+					<item>
+						<name>isVideoVisible</name>
+						<type>dict</type>
+						<value>
+							<item>
+								<name>default</name>
+								<type>bool</type>
+								<value>True</value>
+							</item>
+						</value>
+					</item>
+					<item>
+						<name>isShopVisible</name>
+						<type>dict</type>
+						<value>
+							<item>
+								<name>default</name>
+								<type>bool</type>
+								<value>True</value>
+							</item>
+						</value>
+					</item>
+				</value>
+			</item>
+		</value>
+	</lootboxSystem>
+	<lootBoxesListURL>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
+			<item>
+				https://worldoftanks.asia/$LANGUAGE_CODE/news/announcements/update-1-25-ct2/
+				<name>default</name>
+				<type>url</type>
+			</item>
+		</value>
+	</lootBoxesListURL>
 	<crew>
 		<type>dict</type>
 		<value>
@@ -2782,38 +2847,6 @@
 				<name>welcomeScreens</name>
 				<type>dict</type>
 				<value>
-					<item>
-						<name>crew22Welcome</name>
-						<type>list</type>
-						<value>
-							<item>
-								<type>int</type>
-								<value>3</value>
-							</item>
-						</value>
-					</item>
-					<item>
-						<name>crew5075Welcome</name>
-						<type>list</type>
-						<value>
-							<item>
-								<type>int</type>
-								<value>3</value>
-							</item>
-							<item>
-								<type>int</type>
-								<value>3</value>
-							</item>
-							<item>
-								<type>int</type>
-								<value>3</value>
-							</item>
-							<item>
-								<type>int</type>
-								<value>3</value>
-							</item>
-						</value>
-					</item>
 					<item>
 						<name>crewNpsWelcome</name>
 						<type>list</type>
@@ -3232,42 +3265,6 @@
 			<!--BW_String-->
 		</value>
 	</spgHitDirectionDelta>
-	<infoPageMapbox>
-		<type>macros</type>
-		<macros>AUTH_REALM</macros>
-		<value>
-			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/mapbox/
-				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/mapbox/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/mapbox/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/mapbox/
-				<name>CN</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/mapbox/
-				<name>CT</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/mapbox/
-				<name>default</name>
-				<type>url</type>
-			</item>
-		</value>
-	</infoPageMapbox>
 	<renewableSubscriptionInfoPage>
 		<type>macros</type>
 		<macros>AUTH_REALM</macros>
@@ -3381,32 +3378,32 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/stories-onboarding/
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/stories-onboarding-october-2024/
 				<name>EU</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/stories-onboarding/
+				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/stories-onboarding-october-2024/
 				<name>ASIA</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/stories-onboarding/
+				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/stories-onboarding-october-2024/
 				<name>NA</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/stories-onboarding/
+				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/stories-onboarding-october-2024/
 				<name>CN</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/stories-onboarding/
+				https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/stories-onboarding-october-2024/
 				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/stories-onboarding/
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/stories-onboarding-october-2024/
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -3692,6 +3689,142 @@
 			</item>
 		</value>
 	</clanSupply>
+	<comp7GrandTournamentBanner>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
+			<item>
+				<name>EU</name>
+				<type>dict</type>
+				<value>
+					<item>
+						https://webbrg.worldoftanks.eu/en/promocontent/onslaught_tournament_001_2024/
+						<name>countdown</name>
+						<type>url</type>
+					</item>
+					<item>
+						https://webbrg.worldoftanks.eu/en/promocontent/onslaught_tournament_001_2024/
+						<name>live</name>
+						<type>url</type>
+					</item>
+					<item>
+						https://webbrg.worldoftanks.eu/en/promocontent/onslaught_tournament_001_2024/
+						<name>dayIsOver</name>
+						<type>url</type>
+					</item>
+					<item>
+						https://webbrg.worldoftanks.eu/en/promocontent/onslaught_tournament_001_2024/
+						<name>finished</name>
+						<type>url</type>
+					</item>
+				</value>
+			</item>
+			<item>
+				<name>ASIA</name>
+				<type>dict</type>
+				<value>
+					<item>
+						https://webbrg.worldoftanks.asia/en/promocontent/onslaught_tournament_001_2024/
+						<name>countdown</name>
+						<type>url</type>
+					</item>
+					<item>
+						https://webbrg.worldoftanks.asia/en/promocontent/onslaught_tournament_001_2024/
+						<name>live</name>
+						<type>url</type>
+					</item>
+					<item>
+						https://webbrg.worldoftanks.asia/en/promocontent/onslaught_tournament_001_2024/
+						<name>dayIsOver</name>
+						<type>url</type>
+					</item>
+					<item>
+						https://webbrg.worldoftanks.asia/en/promocontent/onslaught_tournament_001_2024/
+						<name>finished</name>
+						<type>url</type>
+					</item>
+				</value>
+			</item>
+			<item>
+				<name>NA</name>
+				<type>dict</type>
+				<value>
+					<item>
+						https://webbrg.worldoftanks.com/en/promocontent/onslaught_tournament_001_2024/
+						<name>countdown</name>
+						<type>url</type>
+					</item>
+					<item>
+						https://webbrg.worldoftanks.com/en/promocontent/onslaught_tournament_001_2024/
+						<name>live</name>
+						<type>url</type>
+					</item>
+					<item>
+						https://webbrg.worldoftanks.com/en/promocontent/onslaught_tournament_001_2024/
+						<name>dayIsOver</name>
+						<type>url</type>
+					</item>
+					<item>
+						https://webbrg.worldoftanks.com/en/promocontent/onslaught_tournament_001_2024/
+						<name>finished</name>
+						<type>url</type>
+					</item>
+				</value>
+			</item>
+			<item>
+				<name>CN</name>
+				<type>dict</type>
+				<value>
+					<item>
+						https://webbrg-cn360.wotgame.cn/zh-cn/promocontent/wci2024_banner1_upcoming/
+						<name>countdown</name>
+						<type>url</type>
+					</item>
+					<item>
+						https://webbrg-cn360.wotgame.cn/zh-cn/promocontent/wci2024_banner2_live/
+						<name>live</name>
+						<type>url</type>
+					</item>
+					<item>
+						https://webbrg-cn360.wotgame.cn/zh-cn/promocontent/wci2024_banner1_upcoming/
+						<name>dayIsOver</name>
+						<type>url</type>
+					</item>
+					<item>
+						https://webbrg-cn360.wotgame.cn/zh-cn/promocontent/wci2024_banner3_end/
+						<name>finished</name>
+						<type>url</type>
+					</item>
+				</value>
+			</item>
+			<item>
+				<name>default</name>
+				<type>dict</type>
+				<value>
+					<item>
+						https://webbrg.worldoftanks.eu/en/promocontent/onslaught_tournament_001_2024/
+						<name>countdown</name>
+						<type>url</type>
+					</item>
+					<item>
+						https://webbrg.worldoftanks.eu/en/promocontent/onslaught_tournament_001_2024/
+						<name>live</name>
+						<type>url</type>
+					</item>
+					<item>
+						https://webbrg.worldoftanks.eu/en/promocontent/onslaught_tournament_001_2024/
+						<name>dayIsOver</name>
+						<type>url</type>
+					</item>
+					<item>
+						https://webbrg.worldoftanks.eu/en/promocontent/onslaught_tournament_001_2024/
+						<name>finished</name>
+						<type>url</type>
+					</item>
+				</value>
+			</item>
+		</value>
+	</comp7GrandTournamentBanner>
 	<reportBugLink>
 		https://eu.wargaming.net/support/en/products/wot/help/29775/29787/36153/
 		<type>url</type>

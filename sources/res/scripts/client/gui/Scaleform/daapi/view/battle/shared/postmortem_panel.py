@@ -21,9 +21,11 @@ from gui.battle_control.controllers.kill_cam_ctrl import KillCamInfoMarkerType
 from gui.doc_loaders import messages_panel_reader
 from gui.impl import backport
 from gui.impl.gen import R
+from gui.impl.gen_utils import INVALID_RES_ID
 from gui.shared.badges import buildBadge
 from gui.shared.events import DeathCamEvent
 from gui.shared.gui_items import Vehicle
+from gui.shared.gui_items.Vehicle import getSmallIconPath, getIconResourceName
 from gui.shared.view_helpers import UsersInfoHelper
 from helpers import dependency
 from helpers import int2roman
@@ -176,16 +178,19 @@ class _SummaryPostmortemPanel(_BasePostmortemPanel):
         self.__prepareMessageFromSummary(vehID, deathReasonID)
 
     def __prepareMessageFromSummary(self, vehID, deathReasonCode):
-        if deathReasonCode == ATTACK_REASON_INDICES['shot']:
-            if vehID != 0:
-                self._prepareMessage(_ATTACK_REASON_CODE_TO_MSG[deathReasonCode], killerVehID=vehID)
-        elif deathReasonCode == ATTACK_REASON_INDICES['fire']:
-            self._prepareMessage(_ATTACK_REASON_CODE_TO_MSG[deathReasonCode], killerVehID=None)
+        if deathReasonCode not in _ATTACK_REASON_CODE_TO_MSG:
+            return
         else:
-            msgCode = _ATTACK_REASON_CODE_TO_MSG[deathReasonCode]
-            msgCode += self.__getPostfixByKiller(vehID)
-            self._prepareMessage(msgCode, killerVehID=vehID)
-        return
+            if deathReasonCode == ATTACK_REASON_INDICES['shot']:
+                if vehID != 0:
+                    self._prepareMessage(_ATTACK_REASON_CODE_TO_MSG[deathReasonCode], killerVehID=vehID)
+            elif deathReasonCode == ATTACK_REASON_INDICES['fire']:
+                self._prepareMessage(_ATTACK_REASON_CODE_TO_MSG[deathReasonCode], killerVehID=None)
+            else:
+                msgCode = _ATTACK_REASON_CODE_TO_MSG[deathReasonCode]
+                msgCode += self.__getPostfixByKiller(vehID)
+                self._prepareMessage(msgCode, killerVehID=vehID)
+            return
 
     def __getPostfixByKiller(self, killerVehID):
         battleCtx = self.sessionProvider.getCtx()
@@ -329,7 +334,7 @@ class PostmortemPanel(_SummaryPostmortemPanel):
 
     def __onVehicleStateUpdated(self, state, value):
         if state == VEHICLE_VIEW_STATE.HEALTH:
-            if self._maxHealth != 0 and self._maxHealth > value:
+            if self._maxHealth != 0 and self._maxHealth >= value:
                 self._setHealthPercent(value)
                 self._updateVehicleInfo()
             if BattleReplay.g_replayCtrl.isPlaying and value > 0 and self._maxHealth != 0 and self._maxHealth >= value:
@@ -385,23 +390,30 @@ class PostmortemPanel(_SummaryPostmortemPanel):
                     vTypeInfoVO = vInfoVO.vehicleType
                     vehClass = Vehicle.getTypeVPanelIconPath(vInfoVO.getDisplayedClassTag())
                     if not vTypeInfoVO.isOnlyForBattleRoyaleBattles:
-                        vehImg = _VEHICLE_SMALL_ICON_RES_PATH.format(vTypeInfoVO.iconName)
+                        vehImg = getSmallIconPath(vTypeInfoVO.iconName)
                         vehLvl = int2roman(vTypeInfoVO.level)
                     else:
-                        vehImg = _BR_VEHICLE_SMALL_ICON_RES_PATH.format(vTypeInfoVO.iconName)
+                        iconResourceName = getIconResourceName(vTypeInfoVO.iconName)
+                        resID = R.images.gui.maps.icons.battleRoyale.vehicles.dyn(iconResourceName)()
+                        if resID == INVALID_RES_ID:
+                            resID = R.images.gui.maps.icons.vehicle.small.noImage()
+                        vehImg = backport.image(resID)
                         vehLvl = None
                     vehName = vInfoVO.getDisplayedName()
                     killerUserVO = self._makeKillerVO(vInfoVO)
                 else:
                     showVehicle = False
-                    vehLvl = vehImg = vehClass = vehName = None
+                    vInfoVO = vehLvl = vehImg = vehClass = vehName = None
                     killerUserVO = {}
                 reason = self._makeReasonInfo(deathInfo)
-                self.as_setDeadReasonInfoS(reason, showVehicle, vehLvl, vehImg, vehClass, vehName, killerUserVO)
+                self._setDeadReasonInfo(vInfoVO, reason, showVehicle, vehLvl, vehImg, vehClass, vehName, killerUserVO)
                 self._deathAlreadySet = True
             else:
                 self.as_setDeadReasonInfoS('', False, None, None, None, None, None)
         return
+
+    def _setDeadReasonInfo(self, vInfoVO, reason, showVehicle, vehLvl, vehImg, vehClass, vehName, killerUserVO):
+        self.as_setDeadReasonInfoS(reason, showVehicle, vehLvl, vehImg, vehClass, vehName, killerUserVO)
 
     def _makeKillerVO(self, vInfoVO):
         fullName = self.sessionProvider.getCtx().getPlayerFullNameParts(vInfoVO.vehicleID, showVehShortName=False)

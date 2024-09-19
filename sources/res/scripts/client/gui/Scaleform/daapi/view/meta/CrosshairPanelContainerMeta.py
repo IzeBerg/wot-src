@@ -177,9 +177,17 @@ class CrosshairPanelContainerMeta(DAAPISimpleContainerMeta):
         if self._isDAAPIInited():
             return self.flashObject.as_updateDualGunMarkerState(markerState)
 
-    def as_runCameraTransitionFxS(self, activeGunId, animationDuration):
+    def as_setTwinGunMarkerActiveS(self, value):
         if self._isDAAPIInited():
-            return self.flashObject.as_runCameraTransitionFx(activeGunId, animationDuration)
+            return self.flashObject.as_setTwinGunMarkerActive(value)
+
+    def as_setTwinGunMarkerStateS(self, value):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setTwinGunMarkerState(value)
+
+    def as_runCameraTransitionFxS(self, direction, duration):
+        if self._isDAAPIInited():
+            return self.flashObject.as_runCameraTransitionFx(direction, duration)
 
     def as_updateScaleWidgetS(self, positionValue):
         if self._isDAAPIInited():

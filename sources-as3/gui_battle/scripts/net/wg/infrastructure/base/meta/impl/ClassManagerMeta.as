@@ -827,10 +827,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.newbieHint.containers.HintContainer;
    import net.wg.gui.battle.views.newbieHint.containers.HintIconContainer;
    import net.wg.gui.battle.views.newbieHint.containers.HintTextContainer;
-   import net.wg.gui.battle.views.perksPanel.PerksPanel;
-   import net.wg.gui.battle.views.perksPanel.components.PerkItem;
-   import net.wg.gui.battle.views.perksPanel.data.PerkItemVO;
-   import net.wg.gui.battle.views.perksPanel.events.PerkItemEvent;
    import net.wg.gui.battle.views.personalReservesTab.PersonalReservesTab;
    import net.wg.gui.battle.views.piercingDebugPanel.PiercingDebugPanel;
    import net.wg.gui.battle.views.piercingDebugPanel.PiercingDebugRenderer;
@@ -914,7 +910,14 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.siegeModePanel.SiegeModeAnimation;
    import net.wg.gui.battle.views.siegeModePanel.SiegeModePanel;
    import net.wg.gui.battle.views.siegeModePanel.TurboSiegeModeAnimation;
+   import net.wg.gui.battle.views.siegeModePanel.TwinGunModeAnimation;
    import net.wg.gui.battle.views.siegeModePanel.YohChassisModeAnimation;
+   import net.wg.gui.battle.views.situationIndicators.SituationIndicatorsPanel;
+   import net.wg.gui.battle.views.situationIndicators.components.PerkItem;
+   import net.wg.gui.battle.views.situationIndicators.components.WeatherItem;
+   import net.wg.gui.battle.views.situationIndicators.data.PerkItemVO;
+   import net.wg.gui.battle.views.situationIndicators.data.WeatherItemVO;
+   import net.wg.gui.battle.views.situationIndicators.events.SituationIndicatorsPanelEvent;
    import net.wg.gui.battle.views.sixthSense.SixthSense;
    import net.wg.gui.battle.views.spectatorView.SpectatorView;
    import net.wg.gui.battle.views.staticMarkers.epic.ObjectiveIdReplyState;
@@ -2709,14 +2712,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_VIEWS_NEWBIEHINT_CONTAINERS_HINTTEXTCONTAINER:Class = HintTextContainer;
       
-      public static const NET_WG_GUI_BATTLE_VIEWS_PERKSPANEL_PERKSPANEL:Class = PerksPanel;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_PERKSPANEL_COMPONENTS_PERKITEM:Class = PerkItem;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_PERKSPANEL_DATA_PERKITEMVO:Class = PerkItemVO;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_PERKSPANEL_EVENTS_PERKITEMEVENT:Class = PerkItemEvent;
-      
       public static const NET_WG_GUI_BATTLE_VIEWS_PERSONALRESERVESTAB_PERSONALRESERVESTAB:Class = PersonalReservesTab;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_PIERCINGDEBUGPANEL_PIERCINGDEBUGPANEL:Class = PiercingDebugPanel;
@@ -2883,7 +2878,21 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_VIEWS_SIEGEMODEPANEL_TURBOSIEGEMODEANIMATION:Class = TurboSiegeModeAnimation;
       
+      public static const NET_WG_GUI_BATTLE_VIEWS_SIEGEMODEPANEL_TWINGUNMODEANIMATION:Class = TwinGunModeAnimation;
+      
       public static const NET_WG_GUI_BATTLE_VIEWS_SIEGEMODEPANEL_YOHCHASSISMODEANIMATION:Class = YohChassisModeAnimation;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_SITUATIONINDICATORS_SITUATIONINDICATORSPANEL:Class = SituationIndicatorsPanel;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_SITUATIONINDICATORS_COMPONENTS_PERKITEM:Class = PerkItem;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_SITUATIONINDICATORS_COMPONENTS_WEATHERITEM:Class = WeatherItem;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_SITUATIONINDICATORS_DATA_PERKITEMVO:Class = PerkItemVO;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_SITUATIONINDICATORS_DATA_WEATHERITEMVO:Class = WeatherItemVO;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_SITUATIONINDICATORS_EVENTS_SITUATIONINDICATORSPANELEVENT:Class = SituationIndicatorsPanelEvent;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_SIXTHSENSE_SIXTHSENSE:Class = SixthSense;
       

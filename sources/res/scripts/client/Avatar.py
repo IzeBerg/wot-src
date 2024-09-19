@@ -58,7 +58,7 @@ from messenger.m_constants import PROTO_TYPE
 from messenger.proto import proto_getter
 from physics_shared import computeBarrelLocalPoint
 from shared_utils.avatar_helpers import DualGun
-from math_utils import almostZero
+from math_utils import almostZero, clamp
 from skeletons.account_helpers.settings_core import ISettingsCore
 from skeletons.connection_mgr import IConnectionManager
 from skeletons.dynamic_objects_cache import IBattleDynamicObjectsCache
@@ -68,6 +68,7 @@ from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.helpers.statistics import IStatisticsCollector
 from soft_exception import SoftException
 from streamIDs import RangeStreamIDCallbacks, STREAM_ID_CHAT_MAX, STREAM_ID_CHAT_MIN, STREAM_ID_AVATAR_BATTLE_RESULS
+from TwinGunController import getVehicleTwinGunController
 from vehicle_systems.stricted_loading import makeCallbackWeak
 from messenger import MessengerEntry
 from battle_modifiers_common import BattleModifiers, BattleParams
@@ -305,6 +306,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
             self.onVehicleLeaveWorld = Event.Event()
             self.onGunShotChanged = Event.Event()
             self.onObserverVehicleChanged = Event.Event()
+            self.onAvatarVehicleChanged = Event.Event()
             self.invRotationOnBackMovement = False
             self.onSwitchingViewPoint = Event.Event()
             self.onGoodiesSnapshotUpdated = Event.Event()
@@ -551,6 +553,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
     def onVehicleChanged(self):
         _logger.info('Avatar vehicle has changed to %s', self.vehicle)
         AvatarObserver.onVehicleChanged(self)
+        self.onAvatarVehicleChanged()
         if self.vehicle is not None:
             self.__consistentMatrices.notifyVehicleChanged(self)
             ctrl = self.guiSessionProvider.shared.vehicleState
@@ -620,264 +623,270 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
     def handleKey(self, isDown, key, mods):
         if not self.userSeesWorld():
             return False
-        else:
-            time = BigWorld.time()
-            cmdMap = CommandMapping.g_instance
-            try:
-                isDoublePress = False
-                if isDown:
-                    if self.__lastTimeOfKeyDown == -1:
-                        self.__lastTimeOfKeyDown = 0
-                    if key == self.__lastKeyDown and time - self.__lastTimeOfKeyDown < 0.35:
-                        self.__numSimilarKeyDowns = self.__numSimilarKeyDowns + 1
-                        isDoublePress = True if self.__numSimilarKeyDowns == 2 else False
+        time = BigWorld.time()
+        cmdMap = CommandMapping.g_instance
+        try:
+            isDoublePress = False
+            if isDown:
+                if self.__lastTimeOfKeyDown == -1:
+                    self.__lastTimeOfKeyDown = 0
+                if key == self.__lastKeyDown and time - self.__lastTimeOfKeyDown < 0.35:
+                    self.__numSimilarKeyDowns = self.__numSimilarKeyDowns + 1
+                    isDoublePress = True if self.__numSimilarKeyDowns == 2 else False
+                else:
+                    self.__numSimilarKeyDowns = 1
+                self.__lastKeyDown = key
+                self.__lastTimeOfKeyDown = time
+            if BigWorld.isKeyDown(Keys.KEY_CAPSLOCK) and isDown and constants.HAS_DEV_RESOURCES:
+                if key == Keys.KEY_ESCAPE:
+                    gui_event_dispatcher.toggleGUIVisibility()
+                    return True
+                if key == Keys.KEY_1:
+                    self.base.setDevelopmentFeature(0, 'heal', 0, '')
+                    return True
+                if key == Keys.KEY_2:
+                    self.base.setDevelopmentFeature(0, 'reload_gun', 0, '')
+                    return True
+                if key == Keys.KEY_3:
+                    self.base.setDevelopmentFeature(0, 'start_fire', 0, '')
+                    return True
+                if key == Keys.KEY_4:
+                    self.base.setDevelopmentFeature(0, 'explode', 0, '')
+                    return True
+                if key == Keys.KEY_5:
+                    self.base.setDevelopmentFeature(0, 'break_left_track', 0, '')
+                    return True
+                if key == Keys.KEY_6:
+                    self.base.setDevelopmentFeature(0, 'break_right_track', 0, '')
+                    return True
+                if key == Keys.KEY_7:
+                    self.base.setDevelopmentFeature(0, 'destroy_self', 0, '')
+                    return True
+                if key == Keys.KEY_8:
+                    self.base.setDevelopmentFeature(0, 'kill_engine', 0, '')
+                    return True
+                if key == Keys.KEY_9:
+                    self.base.setDevelopmentFeature(0, 'damage_device', 500, 'ammoBayHealth')
+                    return True
+                if key == Keys.KEY_0:
+                    self.base.setDevelopmentFeature(0, 'damage_device', 500, 'fuelTankHealth')
+                    return True
+                if key == Keys.KEY_MINUS:
+                    self.base.setDevelopmentFeature(0, 'damage_device', 500, 'engineHealth')
+                    return True
+                if key == Keys.KEY_EQUALS:
+                    self.base.setDevelopmentFeature(0, 'damage_device', 500, 'gunHealth')
+                    return True
+                if key == Keys.KEY_F12:
+                    gui_event_dispatcher.togglePiercingDebugPanel()
+                    return True
+                if key == Keys.KEY_F9:
+                    self.__makeScreenShot()
+                    return True
+                if key == Keys.KEY_F:
+                    vehicle = BigWorld.entity(self.playerVehicleID)
+                    vehicle.filter.enableClientFilters = not vehicle.filter.enableClientFilters
+                    return True
+                if key == Keys.KEY_G:
+                    self.moveVehicle(1, True)
+                    return True
+                if key == Keys.KEY_R:
+                    if mods == 0:
+                        self.base.setDevelopmentFeature(0, 'pickup', 0, 'straight')
                     else:
-                        self.__numSimilarKeyDowns = 1
-                    self.__lastKeyDown = key
-                    self.__lastTimeOfKeyDown = time
-                if BigWorld.isKeyDown(Keys.KEY_CAPSLOCK) and isDown and constants.HAS_DEV_RESOURCES:
-                    if key == Keys.KEY_ESCAPE:
-                        gui_event_dispatcher.toggleGUIVisibility()
+                        if mods == 1:
+                            if CGF.hotReload(self.spaceID, None):
+                                self.base.setDevelopmentFeature(0, 'hot_reload', 0, '')
                         return True
-                    if key == Keys.KEY_1:
-                        self.base.setDevelopmentFeature(0, 'heal', 0, '')
+                    if key == Keys.KEY_T:
+                        self.base.setDevelopmentFeature(0, 'log_tkill_ratings', 0, '')
                         return True
-                    if key == Keys.KEY_2:
-                        self.base.setDevelopmentFeature(0, 'reload_gun', 0, '')
+                    if key == Keys.KEY_N:
+                        self.isTeleport = not self.isTeleport
                         return True
-                    if key == Keys.KEY_3:
-                        self.base.setDevelopmentFeature(0, 'start_fire', 0, '')
+                    if key == Keys.KEY_K:
+                        self.base.setDevelopmentFeature(0, 'respawn_vehicle', 0, '')
                         return True
-                    if key == Keys.KEY_4:
-                        self.base.setDevelopmentFeature(0, 'explode', 0, '')
+                    if key == Keys.KEY_O:
+                        self.base.setDevelopmentFeature(0, 'pickup', 0, 'roll')
                         return True
-                    if key == Keys.KEY_5:
-                        self.base.setDevelopmentFeature(0, 'break_left_track', 0, '')
+                    if key == Keys.KEY_P:
+                        self.base.setDevelopmentFeature(0, 'captureClosestBase', 0, '')
                         return True
-                    if key == Keys.KEY_6:
-                        self.base.setDevelopmentFeature(0, 'break_right_track', 0, '')
+                    if key == Keys.KEY_Q:
+                        self.base.setDevelopmentFeature(0, 'teleportToShotPoint', 0, '')
                         return True
-                    if key == Keys.KEY_7:
-                        self.base.setDevelopmentFeature(0, 'destroy_self', 0, '')
+                    if key == Keys.KEY_V:
+                        self.base.setDevelopmentFeature(0, 'setSignal', 3, '')
                         return True
-                    if key == Keys.KEY_8:
-                        self.base.setDevelopmentFeature(0, 'kill_engine', 0, '')
+                    if key == Keys.KEY_C:
+                        self.base.setDevelopmentFeature(0, 'navigateTo', 0, cPickle.dumps((tuple(self.inputHandler.getDesiredShotPoint()), None, None), -1))
                         return True
-                    if key == Keys.KEY_9:
-                        self.base.setDevelopmentFeature(0, 'damage_device', 500, 'ammoBayHealth')
+                    if key == Keys.KEY_PAUSE:
+                        self.base.setDevelopmentFeature(0, 'togglePauseAI', 0, '')
                         return True
-                    if key == Keys.KEY_0:
-                        self.base.setDevelopmentFeature(0, 'damage_device', 500, 'fuelTankHealth')
+                    if key == Keys.KEY_Y:
+                        ctrl = self.guiSessionProvider.shared.areaMarker
+                        if ctrl:
+                            matrix = Math.Matrix(self.vehicle.matrix)
+                            ctrl.addMarker(ctrl.createMarker(matrix, DEFAULT_MARKER))
                         return True
-                    if key == Keys.KEY_MINUS:
-                        self.base.setDevelopmentFeature(0, 'damage_device', 500, 'engineHealth')
+                    if key == Keys.KEY_U:
+                        ctrl = self.guiSessionProvider.shared.areaMarker
+                        if ctrl:
+                            ctrl.removeAllMarkers()
                         return True
-                    if key == Keys.KEY_F12:
-                        gui_event_dispatcher.togglePiercingDebugPanel()
+                    if key == Keys.KEY_H:
+                        ctrl = self.guiSessionProvider.shared.areaMarker
+                        if ctrl:
+                            vehicle = BigWorld.entity(self.playerVehicleID)
+                            ctrl.addMarker(ctrl.createMarker(vehicle.matrix, DEFAULT_MARKER))
                         return True
-                    if key == Keys.KEY_F9:
-                        self.__makeScreenShot()
+                    if key == Keys.KEY_BACKSLASH:
+                        self.base.setDevelopmentFeature(0, 'killEnemyTeam', 0, '')
                         return True
-                    if key == Keys.KEY_F:
-                        vehicle = BigWorld.entity(self.playerVehicleID)
-                        vehicle.filter.enableClientFilters = not vehicle.filter.enableClientFilters
+                    if key == Keys.KEY_J:
+                        self.base.setDevelopmentFeature(0, 'stun', 0, '')
                         return True
-                    if key == Keys.KEY_G:
-                        self.moveVehicle(1, True)
-                        return True
-                    if key == Keys.KEY_R:
-                        if mods == 0:
-                            self.base.setDevelopmentFeature(0, 'pickup', 0, 'straight')
-                        else:
-                            if mods == 1:
-                                if CGF.hotReload(self.spaceID, None):
-                                    self.base.setDevelopmentFeature(0, 'hot_reload', 0, '')
-                            return True
-                        if key == Keys.KEY_T:
-                            self.base.setDevelopmentFeature(0, 'log_tkill_ratings', 0, '')
-                            return True
-                        if key == Keys.KEY_N:
-                            self.isTeleport = not self.isTeleport
-                            return True
-                        if key == Keys.KEY_K:
-                            self.base.setDevelopmentFeature(0, 'respawn_vehicle', 0, '')
-                            return True
-                        if key == Keys.KEY_O:
-                            self.base.setDevelopmentFeature(0, 'pickup', 0, 'roll')
-                            return True
-                        if key == Keys.KEY_P:
-                            self.base.setDevelopmentFeature(0, 'captureClosestBase', 0, '')
-                            return True
-                        if key == Keys.KEY_Q:
-                            self.base.setDevelopmentFeature(0, 'teleportToShotPoint', 0, '')
-                            return True
-                        if key == Keys.KEY_V:
-                            self.base.setDevelopmentFeature(0, 'setSignal', 3, '')
-                            return True
-                        if key == Keys.KEY_C:
-                            self.base.setDevelopmentFeature(0, 'navigateTo', 0, cPickle.dumps((tuple(self.inputHandler.getDesiredShotPoint()), None, None), -1))
-                            return True
-                        if key == Keys.KEY_PAUSE:
-                            self.base.setDevelopmentFeature(0, 'togglePauseAI', 0, '')
-                            return True
-                        if key == Keys.KEY_Y:
-                            ctrl = self.guiSessionProvider.shared.areaMarker
-                            if ctrl:
-                                matrix = Math.Matrix(self.vehicle.matrix)
-                                ctrl.addMarker(ctrl.createMarker(matrix, DEFAULT_MARKER))
-                            return True
-                        if key == Keys.KEY_U:
-                            ctrl = self.guiSessionProvider.shared.areaMarker
-                            if ctrl:
-                                ctrl.removeAllMarkers()
-                            return True
-                        if key == Keys.KEY_H:
-                            ctrl = self.guiSessionProvider.shared.areaMarker
-                            if ctrl:
-                                vehicle = BigWorld.entity(self.playerVehicleID)
-                                ctrl.addMarker(ctrl.createMarker(vehicle.matrix, DEFAULT_MARKER))
-                            return True
-                        if key == Keys.KEY_BACKSLASH:
-                            self.base.setDevelopmentFeature(0, 'killEnemyTeam', 0, '')
-                            return True
-                        if key == Keys.KEY_J:
-                            self.base.setDevelopmentFeature(0, 'stun', 0, '')
-                            return True
-                    if constants.HAS_DEV_RESOURCES and cmdMap.isFired(CommandMapping.CMD_SWITCH_SERVER_MARKER, key) and isDown:
-                        self.gunRotator.showServerMarker = not self.gunRotator.showServerMarker
-                        return True
-                    isGuiEnabled = self.isForcedGuiControlMode()
-                    if cmdMap.isFired(CommandMapping.CMD_TOGGLE_GUI, key) and isDown and self.__couldToggleGUIVisibility():
-                        gui_event_dispatcher.toggleGUIVisibility()
-                    if cmdMap.isFired(CommandMapping.CMD_INCREMENT_CRUISE_MODE, key) and isDown and self.__isVehicleAlive and not self.__isGuiCtrlModeMovingDisabled():
-                        if self.__stopUntilFire:
-                            self.__stopUntilFire = False
-                            self.__cruiseControlMode = _CRUISE_CONTROL_MODE.NONE
-                        if isDoublePress:
-                            newMode = _CRUISE_CONTROL_MODE.FWD100
-                        else:
-                            newMode = self.__cruiseControlMode + 1
-                            newMode = min(newMode, _CRUISE_CONTROL_MODE.FWD100)
-                        if newMode != self.__cruiseControlMode:
-                            self.__cruiseControlMode = newMode
-                            if not cmdMap.isActiveList((CommandMapping.CMD_MOVE_FORWARD,
-                             CommandMapping.CMD_MOVE_FORWARD_SPEC,
-                             CommandMapping.CMD_MOVE_BACKWARD)):
-                                self.moveVehicle(self.makeVehicleMovementCommandByKeys(), isDown)
-                        self.__updateCruiseControlPanel()
-                        return True
-                    if cmdMap.isFired(CommandMapping.CMD_DECREMENT_CRUISE_MODE, key) and isDown and self.__isVehicleAlive and not self.__isGuiCtrlModeMovingDisabled():
-                        if self.__stopUntilFire:
-                            self.__stopUntilFire = False
-                            self.__cruiseControlMode = _CRUISE_CONTROL_MODE.NONE
-                        if isDoublePress:
-                            newMode = _CRUISE_CONTROL_MODE.BCKW100
-                        else:
-                            newMode = self.__cruiseControlMode - 1
-                            newMode = max(newMode, _CRUISE_CONTROL_MODE.BCKW100)
-                        if newMode != self.__cruiseControlMode:
-                            self.__cruiseControlMode = newMode
-                            if not cmdMap.isActiveList((CommandMapping.CMD_MOVE_FORWARD,
-                             CommandMapping.CMD_MOVE_FORWARD_SPEC,
-                             CommandMapping.CMD_MOVE_BACKWARD)):
-                                self.moveVehicle(self.makeVehicleMovementCommandByKeys(), isDown)
-                        self.__updateCruiseControlPanel()
-                        return True
-                    if cmdMap.isFiredList((CommandMapping.CMD_MOVE_FORWARD,
-                     CommandMapping.CMD_MOVE_FORWARD_SPEC,
-                     CommandMapping.CMD_MOVE_BACKWARD), key) and isDown:
+                if constants.HAS_DEV_RESOURCES and cmdMap.isFired(CommandMapping.CMD_SWITCH_SERVER_MARKER, key) and isDown:
+                    self.gunRotator.showServerMarker = not self.gunRotator.showServerMarker
+                    return True
+                isGuiEnabled = self.isForcedGuiControlMode()
+                if cmdMap.isFired(CommandMapping.CMD_TOGGLE_GUI, key) and isDown and self.__couldToggleGUIVisibility():
+                    gui_event_dispatcher.toggleGUIVisibility()
+                if cmdMap.isFired(CommandMapping.CMD_INCREMENT_CRUISE_MODE, key) and isDown and self.__isVehicleAlive and not self.__isGuiCtrlModeMovingDisabled():
+                    if self.__stopUntilFire:
+                        self.__stopUntilFire = False
                         self.__cruiseControlMode = _CRUISE_CONTROL_MODE.NONE
+                    if isDoublePress:
+                        newMode = _CRUISE_CONTROL_MODE.FWD100
+                    else:
+                        newMode = self.__cruiseControlMode + 1
+                        newMode = min(newMode, _CRUISE_CONTROL_MODE.FWD100)
+                    if newMode != self.__cruiseControlMode:
+                        self.__cruiseControlMode = newMode
+                        if not cmdMap.isActiveList((CommandMapping.CMD_MOVE_FORWARD,
+                         CommandMapping.CMD_MOVE_FORWARD_SPEC,
+                         CommandMapping.CMD_MOVE_BACKWARD)):
+                            self.moveVehicle(self.makeVehicleMovementCommandByKeys(), isDown)
+                    self.__updateCruiseControlPanel()
+                    return True
+                if cmdMap.isFired(CommandMapping.CMD_DECREMENT_CRUISE_MODE, key) and isDown and self.__isVehicleAlive and not self.__isGuiCtrlModeMovingDisabled():
+                    if self.__stopUntilFire:
+                        self.__stopUntilFire = False
+                        self.__cruiseControlMode = _CRUISE_CONTROL_MODE.NONE
+                    if isDoublePress:
+                        newMode = _CRUISE_CONTROL_MODE.BCKW100
+                    else:
+                        newMode = self.__cruiseControlMode - 1
+                        newMode = max(newMode, _CRUISE_CONTROL_MODE.BCKW100)
+                    if newMode != self.__cruiseControlMode:
+                        self.__cruiseControlMode = newMode
+                        if not cmdMap.isActiveList((CommandMapping.CMD_MOVE_FORWARD,
+                         CommandMapping.CMD_MOVE_FORWARD_SPEC,
+                         CommandMapping.CMD_MOVE_BACKWARD)):
+                            self.moveVehicle(self.makeVehicleMovementCommandByKeys(), isDown)
+                    self.__updateCruiseControlPanel()
+                    return True
+                if cmdMap.isFiredList((CommandMapping.CMD_MOVE_FORWARD,
+                 CommandMapping.CMD_MOVE_FORWARD_SPEC,
+                 CommandMapping.CMD_MOVE_BACKWARD), key) and isDown:
+                    self.__cruiseControlMode = _CRUISE_CONTROL_MODE.NONE
+                    self.__updateCruiseControlPanel()
+                if cmdMap.isFired(CommandMapping.CMD_STOP_UNTIL_FIRE, key) and isDown and not isGuiEnabled:
+                    if not self.__stopUntilFire:
+                        self.__stopUntilFire = True
+                        self.__stopUntilFireStartTime = time
+                    else:
+                        self.__stopUntilFire = False
+                    self.moveVehicle(self.makeVehicleMovementCommandByKeys(), isDown)
+                    self.__updateCruiseControlPanel()
+                handbrakeFired = cmdMap.isFired(CommandMapping.CMD_BLOCK_TRACKS, key)
+                if cmdMap.isFiredList((CommandMapping.CMD_MOVE_FORWARD,
+                 CommandMapping.CMD_MOVE_FORWARD_SPEC,
+                 CommandMapping.CMD_MOVE_BACKWARD,
+                 CommandMapping.CMD_ROTATE_LEFT,
+                 CommandMapping.CMD_ROTATE_RIGHT), key) or handbrakeFired:
+                    if self.__stopUntilFire and isDown and not isGuiEnabled:
+                        self.__stopUntilFire = False
                         self.__updateCruiseControlPanel()
-                    if cmdMap.isFired(CommandMapping.CMD_STOP_UNTIL_FIRE, key) and isDown and not isGuiEnabled:
-                        if not self.__stopUntilFire:
-                            self.__stopUntilFire = True
-                            self.__stopUntilFireStartTime = time
-                        else:
-                            self.__stopUntilFire = False
-                        self.moveVehicle(self.makeVehicleMovementCommandByKeys(), isDown)
-                        self.__updateCruiseControlPanel()
-                    handbrakeFired = cmdMap.isFired(CommandMapping.CMD_BLOCK_TRACKS, key)
-                    if cmdMap.isFiredList((CommandMapping.CMD_MOVE_FORWARD,
-                     CommandMapping.CMD_MOVE_FORWARD_SPEC,
-                     CommandMapping.CMD_MOVE_BACKWARD,
-                     CommandMapping.CMD_ROTATE_LEFT,
-                     CommandMapping.CMD_ROTATE_RIGHT), key) or handbrakeFired:
-                        if self.__stopUntilFire and isDown and not isGuiEnabled:
-                            self.__stopUntilFire = False
-                            self.__updateCruiseControlPanel()
-                        movementCommands = self.makeVehicleMovementCommandByKeys()
-                        self.moveVehicle(movementCommands, isDown, cmdMap.isActive(CommandMapping.CMD_BLOCK_TRACKS))
-                        TriggersManager.g_manager.fireTrigger(TRIGGER_TYPE.PLAYER_MOVE, moveCommands=movementCommands)
+                    movementCommands = self.makeVehicleMovementCommandByKeys()
+                    self.moveVehicle(movementCommands, isDown, cmdMap.isActive(CommandMapping.CMD_BLOCK_TRACKS))
+                    TriggersManager.g_manager.fireTrigger(TRIGGER_TYPE.PLAYER_MOVE, moveCommands=movementCommands)
+                    return True
+                isBR = self.hasBonusCap(_CAPS.BATTLEROYALE)
+                isEpicBattle = self.arenaBonusType in [
+                 constants.ARENA_BONUS_TYPE.EPIC_BATTLE, constants.ARENA_BONUS_TYPE.EPIC_BATTLE_TRAINING]
+                if cmdMap.isFired(CommandMapping.CMD_QUEST_PROGRESS_SHOW, key) and not isBR and not isEpicBattle and (mods != 2 or not isDown) and self.lobbyContext.getServerSettings().isPersonalMissionsEnabled():
+                    gui_event_dispatcher.toggleFullStatsQuestProgress(isDown)
+                    return True
+                supportsBoosters = self.hasBonusCap(_CAPS.BOOSTERS)
+                if cmdMap.isFired(CommandMapping.CMD_SHOW_PERSONAL_RESERVES, key) and not isEpicBattle and not BigWorld.isKeyDown(Keys.KEY_CAPSLOCK) and supportsBoosters and self.lobbyContext.getServerSettings().personalReservesConfig.isReservesInBattleActivationEnabled:
+                    gui_event_dispatcher.toggleFullStatsPersonalReserves(isDown)
+                    return True
+                if not isGuiEnabled and isDown and mods == 0:
+                    if keys_handlers.processAmmoSelection(key):
                         return True
-                    isBR = self.hasBonusCap(_CAPS.BATTLEROYALE)
-                    isEpicBattle = self.arenaBonusType in [
-                     constants.ARENA_BONUS_TYPE.EPIC_BATTLE, constants.ARENA_BONUS_TYPE.EPIC_BATTLE_TRAINING]
-                    if cmdMap.isFired(CommandMapping.CMD_QUEST_PROGRESS_SHOW, key) and not isBR and not isEpicBattle and (mods != 2 or not isDown) and self.lobbyContext.getServerSettings().isPersonalMissionsEnabled():
-                        gui_event_dispatcher.toggleFullStatsQuestProgress(isDown)
+                    if cmdMap.isFiredList(xrange(CommandMapping.CMD_AMMO_CHOICE_4, CommandMapping.CMD_AMMO_CHOICE_0 + 1), key):
+                        gui_event_dispatcher.choiceConsumable(key)
                         return True
-                    supportsBoosters = self.hasBonusCap(_CAPS.BOOSTERS)
-                    if cmdMap.isFired(CommandMapping.CMD_SHOW_PERSONAL_RESERVES, key) and not isEpicBattle and not BigWorld.isKeyDown(Keys.KEY_CAPSLOCK) and supportsBoosters and self.lobbyContext.getServerSettings().personalReservesConfig.isReservesInBattleActivationEnabled:
-                        gui_event_dispatcher.toggleFullStatsPersonalReserves(isDown)
-                        return True
-                    if not isGuiEnabled and isDown and mods == 0:
-                        if keys_handlers.processAmmoSelection(key):
-                            return True
-                        if cmdMap.isFiredList(xrange(CommandMapping.CMD_AMMO_CHOICE_4, CommandMapping.CMD_AMMO_CHOICE_0 + 1), key):
-                            gui_event_dispatcher.choiceConsumable(key)
-                            return True
-                    isComp7 = self.hasBonusCap(_CAPS.COMP7)
-                    if not isComp7 and not isBR and cmdMap.isFired(CommandMapping.CMD_VOICECHAT_ENABLE, key) and not isDown:
-                        if self.__isPlayerInSquad() and not BattleReplay.isPlaying():
-                            if VOIP.getVOIPManager().isVoiceSupported():
-                                gui_event_dispatcher.toggleVoipChannelEnabled(self.arenaBonusType)
-                        return True
-                    if cmdMap.isFired(CommandMapping.CMD_VEHICLE_MARKERS_SHOW_INFO, key):
-                        gui_event_dispatcher.showExtendedInfo(isDown)
-                        return True
-                    if cmdMap.isFired(CommandMapping.CMD_SHOW_HELP, key) and isDown and mods == 0 and self.sessionProvider.shared.ingameHelp.canShow() and not self.isSimulationSceneActive:
-                        return self.sessionProvider.shared.ingameHelp.showIngameHelp(self.getVehicleAttached())
-                if key == Keys.KEY_F12 and isDown and mods == 0 and constants.HAS_DEV_RESOURCES:
-                    self.__dumpVehicleState()
+                isComp7 = self.hasBonusCap(_CAPS.COMP7)
+                if not isComp7 and not isBR and cmdMap.isFired(CommandMapping.CMD_VOICECHAT_ENABLE, key) and not isDown:
+                    if self.__isPlayerInSquad() and not BattleReplay.isPlaying():
+                        if VOIP.getVOIPManager().isVoiceSupported():
+                            gui_event_dispatcher.toggleVoipChannelEnabled(self.arenaBonusType)
                     return True
-                if key == Keys.KEY_F12 and isDown and mods == 2 and constants.HAS_DEV_RESOURCES:
-                    self.__reportLag()
+                if cmdMap.isFired(CommandMapping.CMD_VEHICLE_MARKERS_SHOW_INFO, key):
+                    gui_event_dispatcher.showExtendedInfo(isDown)
                     return True
-                if key == Keys.KEY_O and isDown and mods == 2 and constants.HAS_DEV_RESOURCES:
-                    occlussionWatcher = 'Occlusion Culling/Enabled'
-                    BigWorld.setWatcher(occlussionWatcher, BigWorld.getWatcher(occlussionWatcher) == 'false')
-                    return True
-                if cmdMap.isFired(CommandMapping.CMD_VOICECHAT_MUTE, key):
-                    self.bwProto.voipController.setMicrophoneMute(not isDown)
-                    return True
-                if not isGuiEnabled and self.guiSessionProvider.shared.drrScale is not None and self.guiSessionProvider.shared.drrScale.handleKey(key, isDown):
-                    return True
-                if cmdMap.isFiredList((CommandMapping.CMD_MINIMAP_SIZE_DOWN,
-                 CommandMapping.CMD_MINIMAP_SIZE_UP,
-                 CommandMapping.CMD_MINIMAP_VISIBLE), key) and isDown:
-                    gui_event_dispatcher.setMinimapCmd(key)
-                    if cmdMap.isFired(CommandMapping.CMD_MINIMAP_VISIBLE, key):
-                        gui_event_dispatcher.setMinimapVisibleCmd(key, True)
-                    return True
-                if cmdMap.isFired(CommandMapping.CMD_MINIMAP_VISIBLE, key):
-                    gui_event_dispatcher.setMinimapVisibleCmd(key, isDown)
-                    return True
-                if cmdMap.isFired(CommandMapping.CMD_RELOAD_PARTIAL_CLIP, key) and isDown:
-                    self.guiSessionProvider.shared.ammo.reloadPartialClip(self)
-                    return True
-                if key == Keys.KEY_ESCAPE and isDown and mods == 0 and self.guiSessionProvider.shared.equipments.cancel():
-                    return True
-                if self.appLoader.handleKey(app_settings.APP_NAME_SPACE.SF_BATTLE, isDown, key, mods):
-                    return True
-                for comp in AVATAR_COMPONENTS:
-                    hasHandledKey = comp.handleKey(self, isDown, key, mods)
-                    if hasHandledKey:
-                        return True
-
-            except Exception:
-                LOG_CURRENT_EXCEPTION()
+                if cmdMap.isFired(CommandMapping.CMD_SHOW_HELP, key) and isDown and mods == 0 and self.sessionProvider.shared.ingameHelp.canShow() and not self.isSimulationSceneActive:
+                    return self.sessionProvider.shared.ingameHelp.showIngameHelp(self.getVehicleAttached())
+            if key == Keys.KEY_F12 and isDown and mods == 0 and constants.HAS_DEV_RESOURCES:
+                self.__dumpVehicleState()
                 return True
+            if key == Keys.KEY_F12 and isDown and mods == 2 and constants.HAS_DEV_RESOURCES:
+                self.__reportLag()
+                return True
+            if key == Keys.KEY_O and isDown and mods == 2 and constants.HAS_DEV_RESOURCES:
+                occlussionWatcher = 'Occlusion Culling/Enabled'
+                BigWorld.setWatcher(occlussionWatcher, BigWorld.getWatcher(occlussionWatcher) == 'false')
+                return True
+            if cmdMap.isFired(CommandMapping.CMD_VOICECHAT_MUTE, key):
+                self.bwProto.voipController.setMicrophoneMute(not isDown)
+                return True
+            if not isGuiEnabled and self.guiSessionProvider.shared.drrScale is not None and self.guiSessionProvider.shared.drrScale.handleKey(key, isDown):
+                return True
+            if cmdMap.isFiredList((CommandMapping.CMD_MINIMAP_SIZE_DOWN,
+             CommandMapping.CMD_MINIMAP_SIZE_UP,
+             CommandMapping.CMD_MINIMAP_VISIBLE), key) and isDown:
+                gui_event_dispatcher.setMinimapCmd(key)
+                if cmdMap.isFired(CommandMapping.CMD_MINIMAP_VISIBLE, key):
+                    gui_event_dispatcher.setMinimapVisibleCmd(key, True)
+                return True
+            if cmdMap.isFired(CommandMapping.CMD_MINIMAP_VISIBLE, key):
+                gui_event_dispatcher.setMinimapVisibleCmd(key, isDown)
+                return True
+            if cmdMap.isFired(CommandMapping.CMD_RELOAD_PARTIAL_CLIP, key) and isDown:
+                self.guiSessionProvider.shared.ammo.reloadPartialClip(self)
+                return True
+            if key == Keys.KEY_ESCAPE and isDown and mods == 0 and not self.isObserver() and self.guiSessionProvider.shared.equipments.cancel():
+                return True
+            if self.appLoader.handleKey(app_settings.APP_NAME_SPACE.SF_BATTLE, isDown, key, mods):
+                return True
+            for comp in self.dynamicComponents.values():
+                if hasattr(comp, 'handleKey') and comp.handleKey(isDown, key, mods):
+                    return True
 
-            return False
+            for comp in AVATAR_COMPONENTS:
+                hasHandledKey = comp.handleKey(self, isDown, key, mods)
+                if hasHandledKey:
+                    return True
+
+        except Exception:
+            LOG_CURRENT_EXCEPTION()
+            return True
+
+        return False
 
     def __couldToggleGUIVisibility(self):
         app = self.appLoader.getApp()
@@ -1045,6 +1054,8 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
         if self.__waitVehilceInfoForStartVisual(vehicle, resetControllers):
             return
         else:
+            if vehicle.isDestroyed or not hasattr(vehicle, 'isHidden'):
+                return
             vehicle.startVisual()
             if vehicle.isHidden:
                 vehicle.startGUIVisual()
@@ -1080,6 +1091,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
             return
 
     def vehicle_onLeaveWorld(self, vehicle):
+        self.__vehiclesWaitedInfo.pop(vehicle.id, None)
         if vehicle.id == self.playerVehicleID:
             LOG_DEBUG('[INIT_STEPS] Avatar.vehicle_onLeaveWorld', vehicle.id)
             self.__initProgress &= ~_INIT_STEPS.VEHICLE_ENTERED
@@ -1235,7 +1247,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
             self.guiSessionProvider.switchToPostmortem(noRespawnPossible, isRespawn)
         return
 
-    def updateVehicleGunReloadTime(self, vehicleID, timeLeft, baseTime):
+    def updateVehicleGunReloadTime(self, vehicleID, timeLeft, baseTime, clipTime=None):
         LOG_DEBUG_DEV(('updateVehicleGunReloadTime vehicleID={}, timeLeft={} baseTime={}').format(vehicleID, timeLeft, baseTime))
         if vehicleID != self.playerVehicleID and vehicleID != self.observedVehicleID:
             if not self.__isVehicleAlive and vehicleID == self.inputHandler.ctrl.curVehicleID:
@@ -1245,16 +1257,19 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
             self.__gunReloadCommandWaitEndTime = 0.0
         self.__prevGunReloadTimeLeft = timeLeft
         ammoCtrl = self.guiSessionProvider.shared.ammo
-        timeLeft, baseTime = ammoCtrl.preprocessGunReloadTime(timeLeft, baseTime)
-        ammoCtrl.setGunReloadTime(timeLeft, baseTime)
+        twinGun = getVehicleTwinGunController(BigWorld.entity(vehicleID))
+        shotsAmount = twinGun.getShotsCount() if twinGun is not None else -1
+        timeLeft, baseTime, shotsAmount = ammoCtrl.preprocessGunReloadTime(timeLeft, baseTime, shotsAmount)
+        ammoCtrl.setGunReloadTime(timeLeft, baseTime, shotsAmount=shotsAmount, clipTime=clipTime)
+        return
 
-    def updateVehicleClipReloadTime(self, vehicleID, timeLeft, baseTime, firstTime, stunned, isBoostApplicable):
-        self.guiSessionProvider.shared.ammo.setGunAutoReloadTime(timeLeft, baseTime, firstTime, stunned, isBoostApplicable)
+    def updateVehicleClipReloadTime(self, vehicleID, timeLeft, baseTime, firstTime, stunned, isBoostApplicable, clipTime=None):
+        self.guiSessionProvider.shared.ammo.setGunAutoReloadTime(timeLeft, baseTime, firstTime, stunned, isBoostApplicable, clipTime=clipTime)
 
     def updateDualGunState(self, vehicleID, activeGun, gunStates, cooldownTimes):
         vehicle = BigWorld.entity(vehicleID)
         if vehicle is not None and vehicle.typeDescriptor is not None and vehicle.typeDescriptor.isDualgunVehicle and vehicle.isStarted:
-            vehicle.onActiveGunChanged(activeGun, cooldownTimes[DUAL_GUN.COOLDOWNS.SWITCH])
+            vehicle.onActiveDualGunChanged(activeGun, cooldownTimes[DUAL_GUN.COOLDOWNS.SWITCH])
             self.guiSessionProvider.invalidateVehicleState(VEHICLE_VIEW_STATE.DUAL_GUN_STATE_UPDATED, (
              activeGun, cooldownTimes, gunStates))
         elif self.isObserver():
@@ -1344,9 +1359,8 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
         typeDescr = self.__updateVehicleStatus(vehicleID)
         if not typeDescr:
             return
-        if status in (constants.VEHICLE_SIEGE_STATE.SWITCHING_ON,
-         constants.VEHICLE_SIEGE_STATE.SWITCHING_OFF):
-            if 'autoSiege' not in typeDescr.type.tags:
+        if status in VEHICLE_SIEGE_STATE.SWITCHING:
+            if typeDescr.type.shouldStopEngineOnSiegeSwitch and not typeDescr.type.hasAutoSiegeMode:
                 self.__cruiseControlMode = _CRUISE_CONTROL_MODE.NONE
             self.__updateCruiseControlPanel()
             self.moveVehicleByCurrentKeys(False)
@@ -1373,14 +1387,15 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
             dualGunControl = self.inputHandler.dualGunControl
             if dualGunControl is not None:
                 dualGunControl.updateChargeState(status, times)
-            self.guiSessionProvider.invalidateVehicleState(VEHICLE_VIEW_STATE.DUAL_GUN_CHARGER, (status, times))
             if status == DUALGUN_CHARGER_STATUS.PREPARING:
                 _, timeLeft = times
                 self.__startWaitingForCharge(timeLeft)
+                self.updateMultiGunCollisions()
             elif status in (DUALGUN_CHARGER_STATUS.CANCELED, DUALGUN_CHARGER_STATUS.UNAVAILABLE):
                 self.__cancelWaitingForCharge()
             elif status == DUALGUN_CHARGER_STATUS.APPLIED:
                 self.dropStopUntilFireMode()
+            self.guiSessionProvider.invalidateVehicleState(VEHICLE_VIEW_STATE.DUAL_GUN_CHARGER, (status, times))
             return
 
     def updateBurnoutUnavailable(self, vehicleID, status):
@@ -1434,6 +1449,10 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
 
     def predictVehicleSetting(self, vehicleID, code, value):
         self.__updateVehicleSetting(vehicleID, code, value, fromServer=False)
+
+    def updateMultiGunCollisions(self):
+        if self.gunRotator:
+            self.gunRotator.updateMultiGunCollisionData()
 
     def updateTargetingInfo(self, entityId, turretYaw, gunPitch, maxTurretRotationSpeed, maxGunRotationSpeed, shotDispMultiplierFactor, gunShotDispersionFactorsTurretRotation, chassisShotDispersionFactorsMovement, chassisShotDispersionFactorsRotation, aimingTime):
         LOG_DEBUG_DEV('updateTargetingInfo', entityId, turretYaw, gunPitch, maxTurretRotationSpeed, maxGunRotationSpeed, shotDispMultiplierFactor, gunShotDispersionFactorsTurretRotation, chassisShotDispersionFactorsMovement, chassisShotDispersionFactorsRotation, aimingTime)
@@ -1993,12 +2012,17 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
                 return
             self.cell.vehicle_shoot()
             shotArgs = None
+            predictShooting = True
             vehicle = BigWorld.entity(self.playerVehicleID)
             if vehicle is not None and vehicle.isStarted:
-                if vehicle.activeGunIndex is not None:
+                typeDescriptor = vehicle.typeDescriptor
+                if typeDescriptor is not None:
+                    predictShooting = not typeDescriptor.isTwinGunVehicle
+                if vehicle.dualGunIndex is not None:
                     shotArgs = (
-                     vehicle.activeGunIndex, False)
-            self.__startWaitingForShot(error != CANT_SHOOT_ERROR.EMPTY_CLIP, shotArgs=shotArgs)
+                     vehicle.dualGunIndex, False)
+            if error != CANT_SHOOT_ERROR.EMPTY_CLIP:
+                self.__startWaitingForShot(predictShooting, shotArgs=shotArgs)
             TriggersManager.g_manager.activateTrigger(TRIGGER_TYPE.PLAYER_DISCRETE_SHOOT, aimingInfo=self.__aimingInfo)
             self.dropStopUntilFireMode()
             return
@@ -2584,6 +2608,10 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
     def showVehicleError(self, msgName, args=None):
         self.guiSessionProvider.shared.messages.showVehicleError(msgName, args)
 
+    def startWaitingForShot(self, shootingCooldown):
+        self.__startWaitingForShot(True, shotArgs=(0, False))
+        self.__gunReloadCommandWaitEndTime = BigWorld.time() + shootingCooldown
+
     def __showDamageIconAndPlaySound(self, damageCode, extra, vehicleID, ignoreMessages=False):
         deviceName = None
         deviceState = None
@@ -2716,23 +2744,21 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
             BigWorld.notifyBattleTime(self.spaceID, 0)
         self.__prevArenaPeriod = period
 
-    def __startWaitingForShot(self, makePrediction, simplifiedPrediction=False, shotArgs=None):
+    def __startWaitingForShot(self, predictShooting=True, shotArgs=None):
         if self.__shotWaitingTimerID is not None:
             BigWorld.cancelCallback(self.__shotWaitingTimerID)
             self.__shotWaitingTimerID = None
-        if makePrediction and not simplifiedPrediction:
-            timeout = BigWorld.LatencyInfo().value[3] * 0.5
-            timeout = min(_SHOT_WAITING_MAX_TIMEOUT, timeout)
-            timeout = max(_SHOT_WAITING_MIN_TIMEOUT, timeout)
+        timeout = BigWorld.LatencyInfo().value[3] * 0.5
+        timeout = clamp(_SHOT_WAITING_MIN_TIMEOUT, _SHOT_WAITING_MAX_TIMEOUT, timeout)
+        if predictShooting:
             self.__shotWaitingTimerID = BigWorld.callback(timeout, partial(self.__showTimedOutShooting, shotArgs))
-            self.__isWaitingForShot = True
-            self.inputHandler.setAimingMode(True, AIMING_MODE.SHOOTING)
-            if not self.inputHandler.getAimingMode(AIMING_MODE.USER_DISABLED):
-                self.gunRotator.targetLastShotPoint = True
             self.__gunReloadCommandWaitEndTime = BigWorld.time() + 2.0
-        elif makePrediction:
-            self.__shotWaitingTimerID = BigWorld.callback(1.0, self.__clearTimedOutShooting)
-            self.__isWaitingForShot = True
+        else:
+            self.__shotWaitingTimerID = BigWorld.callback(timeout, self.__clearTimedOutShooting)
+        self.inputHandler.setAimingMode(True, AIMING_MODE.SHOOTING)
+        if not self.inputHandler.getAimingMode(AIMING_MODE.USER_DISABLED):
+            self.gunRotator.targetLastShotPoint = True
+        self.__isWaitingForShot = True
         return
 
     def __startWaitingForCharge(self, timeLeft):
@@ -2741,7 +2767,8 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
 
     def __onTimedOutCharge(self):
         self.__chargeWaitingTimerID = None
-        self.__startWaitingForShot(self.__canMakeDualShot, shotArgs=(0, True))
+        if self.__canMakeDualShot:
+            self.__startWaitingForShot(shotArgs=(0, True))
         return
 
     def __cancelWaitingForCharge(self):
@@ -2752,8 +2779,6 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
 
     def __showTimedOutShooting(self, shotArgs):
         self.__clearTimedOutShooting()
-        self.inputHandler.setAimingMode(False, AIMING_MODE.SHOOTING)
-        self.gunRotator.targetLastShotPoint = False
         try:
             vehicle = BigWorld.entity(self.playerVehicleID)
             if vehicle is not None and vehicle.isStarted:
@@ -2780,7 +2805,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
 
     def __clearTimedOutShooting(self):
         self.__shotWaitingTimerID = None
-        self.__isWaitingForShot = False
+        self.cancelWaitingForShot()
         return
 
     def __controlAnotherVehicleWait(self, vehicleID, callback, waitCallsLeft):
@@ -2859,27 +2884,38 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
             mode = self.__cruiseControlMode
         self.guiSessionProvider.invalidateVehicleState(VEHICLE_VIEW_STATE.CRUISE_MODE, mode)
 
-    def __updateVehicleSetting(self, _, code, value, fromServer=True):
+    def __updateVehicleSetting(self, vehicleID, code, value, fromServer=True):
+        vehicle = BigWorld.entity(vehicleID)
+        isBeforeBattle = self.arena is not None and self.arena.period <= ARENA_PERIOD.PREBATTLE
+        isOwnMultiGun = vehicle is not None and vehicle.isMultiGun and 'ownVehicle' in vehicle.dynamicComponents
         if code == VEHICLE_SETTING.CURRENT_SHELLS:
             ammoCtrl = self.guiSessionProvider.shared.ammo
             if not ammoCtrl.shellInAmmo(value):
                 return
             ammoCtrl.setCurrentShellCD(value, not fromServer)
+            if not fromServer and isOwnMultiGun:
+                self.guiSessionProvider.shared.prebattleSetups.onCurrentShellUpdate(vehicleID)
+            isSelectionStarted = self.guiSessionProvider.shared.prebattleSetups.isSelectionStarted()
+            if fromServer and isBeforeBattle and not isSelectionStarted and isOwnMultiGun:
+                vehicle.dynamicComponents['ownVehicle'].resetGunReloadTime()
             shotIdx = ammoCtrl.getGunSettings().getShotIndex(value)
             if shotIdx > -1:
                 self.getVehicleDescriptor().activeGunShotIndex = shotIdx
-                vehicle = BigWorld.entity(self.playerVehicleID)
-                if vehicle is not None:
-                    vehicle.typeDescriptor.activeGunShotIndex = shotIdx
+                playerVehicle = BigWorld.entity(self.playerVehicleID)
+                if playerVehicle is not None:
+                    playerVehicle.typeDescriptor.activeGunShotIndex = shotIdx
                 self.onGunShotChanged()
             return
         if code == VEHICLE_SETTING.NEXT_SHELLS:
             self.guiSessionProvider.shared.ammo.setNextShellCD(value)
+            isSelectionStarted = self.guiSessionProvider.shared.prebattleSetups.isSelectionStarted()
+            if fromServer and not isBeforeBattle and not isSelectionStarted and isOwnMultiGun:
+                vehicle.dynamicComponents['ownVehicle'].resetGunReloadTime()
+            return
+        if code == VEHICLE_SETTING.AUTOROTATION_ENABLED:
+            self.guiSessionProvider.invalidateVehicleState(VEHICLE_VIEW_STATE.AUTO_ROTATION, value)
             return
         else:
-            if code == VEHICLE_SETTING.AUTOROTATION_ENABLED:
-                self.guiSessionProvider.invalidateVehicleState(VEHICLE_VIEW_STATE.AUTO_ROTATION, value)
-                return
             LOG_CODEPOINT_WARNING(code, value)
             return
 

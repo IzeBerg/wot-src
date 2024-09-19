@@ -146,13 +146,17 @@ class DefaultArenaGuiDescription(IArenaGuiDescription):
         return teamName
 
     def getSmallIcon(self):
-        return self._visitor.getArenaIcon(settings.SMALL_MAP_IMAGE_SF_PATH)
+        return self._visitor.getArenaIcon('battleLoading')
+
+    def _getScreenImg(self, subdir):
+        img = self._visitor.getArenaIcon(subdir)
+        return img.replace('img://', '') or settings.DEFAULT_SCREEN_MAP_IMAGE_RES_PATH
 
     def getScreenIcon(self):
-        return self._visitor.getArenaIcon(settings.SCREEN_MAP_IMAGE_RES_PATH)
+        return self._getScreenImg('screen')
 
     def getRespawnIcon(self):
-        return self._visitor.getArenaIcon(settings.RESPAWN_MAP_IMAGE_RES_PATH)
+        return self._getScreenImg('respawn')
 
     def getGuiEventType(self):
         return 'normal'

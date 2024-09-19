@@ -87,6 +87,10 @@ package
       
       public static const PLAYER_ERRORS_CANT_SWITCH_ENGINE_DESTROYED:String = "#ingame_gui:player_errors/cant_switch/engine_destroyed";
       
+      public static const PLAYER_ERRORS_CANT_SWITCH_GUN_DESTROYED:String = "#ingame_gui:player_errors/cant_switch/gun_destroyed";
+      
+      public static const PLAYER_ERRORS_CANT_SWITCH_ONE_SHELL_LEFT:String = "#ingame_gui:player_errors/cant_switch/one_shell_left";
+      
       public static const PLAYER_ERRORS_EQUIPMENT_ALREADYACTIVATED:String = "#ingame_gui:player_errors/equipment/alreadyActivated";
       
       public static const PLAYER_ERRORS_EQUIPMENT_ISINCOOLDOWN:String = "#ingame_gui:player_errors/equipment/isInCooldown";
@@ -1301,6 +1305,22 @@ package
       
       public static const EFFICIENCYRIBBONS_DAMAGEBYDESTROYER:String = "#ingame_gui:efficiencyRibbons/damageByDestroyer";
       
+      public static const EFFICIENCYRIBBONS_ZONEBLIZZARD:String = "#ingame_gui:efficiencyRibbons/zoneBlizzard";
+      
+      public static const EFFICIENCYRIBBONS_ZONEFIRE:String = "#ingame_gui:efficiencyRibbons/zoneFire";
+      
+      public static const EFFICIENCYRIBBONS_ZONEFOG:String = "#ingame_gui:efficiencyRibbons/zoneFog";
+      
+      public static const EFFICIENCYRIBBONS_ZONERAIN:String = "#ingame_gui:efficiencyRibbons/zoneRain";
+      
+      public static const EFFICIENCYRIBBONS_ZONESANDSTORM:String = "#ingame_gui:efficiencyRibbons/zoneSandstorm";
+      
+      public static const EFFICIENCYRIBBONS_ZONESMOKE:String = "#ingame_gui:efficiencyRibbons/zoneSmoke";
+      
+      public static const EFFICIENCYRIBBONS_ZONETORNADO:String = "#ingame_gui:efficiencyRibbons/zoneTornado";
+      
+      public static const EFFICIENCYRIBBONS_FIREDAMAGEZONE:String = "#ingame_gui:efficiencyRibbons/fireDamageZone";
+      
       public static const DAMAGELOG_SHELLTYPE_ARMOR_PIERCING:String = "#ingame_gui:damageLog/shellType/ARMOR_PIERCING";
       
       public static const DAMAGELOG_SHELLTYPE_HIGH_EXPLOSIVE:String = "#ingame_gui:damageLog/shellType/HIGH_EXPLOSIVE";
@@ -1442,6 +1462,8 @@ package
       public static const SIEGEMODE_HINT_TURBOSHAFTENGINE:String = "#ingame_gui:siegeMode/hint/turboshaftEngine";
       
       public static const SIEGEMODE_HINT_ROCKETACCELERATION:String = "#ingame_gui:siegeMode/hint/rocketAcceleration";
+      
+      public static const SIEGEMODE_HINT_TWINGUN:String = "#ingame_gui:siegeMode/hint/twinGun";
       
       public static const EFFICIENCYRIBBONS_ENEMYSECTORCAPTURED:String = "#ingame_gui:efficiencyRibbons/enemySectorCaptured";
       

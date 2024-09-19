@@ -1,8 +1,14 @@
 from enum import Enum
+from typing import TYPE_CHECKING
 from gui.impl import backport
 from gui.impl.gen import R
+from gui.lootbox_system.common import getTextResource
 from gui.shared.gui_items.gui_item import GUIItem
+from helpers import dependency
 from shared_utils import CONST_CONTAINER
+from skeletons.gui.game_control import ILootBoxSystemController
+if TYPE_CHECKING:
+    from typing import Dict, Optional
 
 class NewYearLootBoxes(CONST_CONTAINER):
     PREMIUM = 'newYear_premium'
@@ -53,8 +59,10 @@ CATEGORIES_GUI_ORDER_NY = (
  NewYearCategories.FAIRYTALE)
 
 class LootBox(GUIItem):
-    __slots__ = ('__id', '__invCount', '__type', '__category', '__historyName', '__guaranteedFrequency',
-                 '__guaranteedFrequencyName')
+    __slots__ = ('__id', '__invCount', '__isEnabled', '__type', '__category', '__bonus',
+                 '__historyName', '__statsName', '__guaranteedFrequency', '__guaranteedFrequencyName',
+                 '__probabilityBonusName', '__probabilityBonusLimit')
+    __lootBoxSystem = dependency.descriptor(ILootBoxSystemController)
 
     def __init__(self, lootBoxID, lootBoxConfig, invCount):
         super(LootBox, self).__init__()
@@ -78,10 +86,16 @@ class LootBox(GUIItem):
     def getInventoryCount(self):
         return self.__invCount
 
+    def isEnabled(self):
+        return self.__isEnabled
+
     def getID(self):
         return self.__id
 
     def getUserName(self):
+        if self.__lootBoxSystem.isEnabled and self.__lootBoxSystem.eventName == self.__type:
+            name = getTextResource(('common/boxCategory/lowerCase').split('/') + [self.__category])
+            return backport.text(name() if name.exists() else R.strings.lootbox_system.common.boxCategory.lowerCase.default())
         return backport.text(R.strings.lootboxes.type.dyn(self.__type)())
 
     def getType(self):
@@ -93,25 +107,53 @@ class LootBox(GUIItem):
     def isFree(self):
         return self.__type == NewYearLootBoxes.COMMON
 
+    def getBonusInfo(self):
+        return self.__bonus
+
     def getGuaranteedFrequency(self):
         return self.__guaranteedFrequency
 
     def getGuaranteedFrequencyName(self):
         return self.__guaranteedFrequencyName
 
+    def getProbabilityBonusLimit(self):
+        return self.__probabilityBonusLimit
+
+    def getProbabilityBonusLimitName(self):
+        return self.__probabilityBonusName
+
     def getHistoryName(self):
         return self.__historyName
 
+    def getStatsName(self):
+        return self.__statsName
+
+    def getUseStats(self):
+        return bool(self.__statsName)
+
     def __updateByConfig(self, lootBoxConfig):
+        self.__isEnabled = lootBoxConfig.get('enabled')
         self.__type = lootBoxConfig.get('type')
         self.__category = lootBoxConfig.get('category')
+        self.__bonus = lootBoxConfig.get('bonus', {})
+        self.__statsName = lootBoxConfig.get('statsInfo', '')
         self.__historyName = lootBoxConfig.get('historyName')
-        self.__guaranteedFrequencyName, self.__guaranteedFrequency = self.__readLimits(lootBoxConfig.get('limits', {}))
+        limitsConfig = lootBoxConfig.get('limits', {})
+        self.__guaranteedFrequencyName, self.__guaranteedFrequency = self.__readFrequencyLimit(limitsConfig)
+        self.__probabilityBonusName, self.__probabilityBonusLimit = self.__readProbabilityBonusLimit(limitsConfig)
 
     @staticmethod
-    def __readLimits(limitsCfg):
-        for limitName, limit in limitsCfg.iteritems():
+    def __readProbabilityBonusLimit(limitsCfg):
+        for probabilityBonusName, limit in limitsCfg.iteritems():
             if 'useBonusProbabilityAfter' in limit:
-                return (limitName, limit['useBonusProbabilityAfter'] + 1)
+                return (probabilityBonusName, limit['useBonusProbabilityAfter'] + 1)
+
+        return (None, 0)
+
+    @staticmethod
+    def __readFrequencyLimit(limitsCfg):
+        for limitName, limit in limitsCfg.iteritems():
+            if 'guaranteedFrequency' in limit:
+                return (limitName, limit['guaranteedFrequency'])
 
         return (None, 0)

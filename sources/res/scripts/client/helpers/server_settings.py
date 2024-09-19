@@ -756,11 +756,11 @@ class _BlueprintsConvertSaleConfig(namedtuple('_BlueprintsConvertSaleConfig', ('
 
 class _MapboxConfig(namedtuple('_MapboxConfig', (
  'isEnabled', 'progressionUpdateInterval', 'peripheryIDs', 'forbiddenClassTags', 'forbiddenVehTypes',
- 'primeTimes', 'seasons', 'cycleTimes', 'levels', 'geometryIDs', 'squadRestrictions'))):
+ 'primeTimes', 'seasons', 'cycleTimes', 'levels', 'geometryIDs', 'squadRestrictions', 'infoPageUrl'))):
     __slots__ = ()
 
     def __new__(cls, **kwargs):
-        defaults = dict(isEnabled=False, peripheryIDs={}, forbiddenClassTags=set(), forbiddenVehTypes=set(), primeTimes={}, seasons={}, cycleTimes={}, levels=[], geometryIDs={}, progressionUpdateInterval=time_utils.ONE_MINUTE * 2, squadRestrictions={})
+        defaults = dict(isEnabled=False, peripheryIDs={}, forbiddenClassTags=set(), forbiddenVehTypes=set(), primeTimes={}, seasons={}, cycleTimes={}, levels=[], geometryIDs={}, progressionUpdateInterval=time_utils.ONE_MINUTE * 2, squadRestrictions={}, infoPageUrl='')
         defaults.update(kwargs)
         return super(_MapboxConfig, cls).__new__(cls, **defaults)
 
@@ -1072,6 +1072,7 @@ class Comp7Config(settingsBlock('Comp7Config', (
  'qualification',
  'maps',
  'tournaments',
+ 'grandTournament',
  'remainingOfferTokensNotifications',
  'clientEntitlementsCache',
  'participantTokens'))):
@@ -1079,7 +1080,7 @@ class Comp7Config(settingsBlock('Comp7Config', (
 
     @classmethod
     def defaults(cls):
-        return dict(isEnabled=False, isShopEnabled=False, isTrainingEnabled=False, peripheryIDs={}, primeTimes={}, seasons={}, battleModifiersDescr=(), cycleTimes={}, roleEquipments={}, numPlayers=7, levels=[], forbiddenClassTags=set(), forbiddenVehTypes=set(), squadRatingRestriction={}, squadSizes=[], createVivoxTeamChannels=False, qualification=makeTupleByDict(_Comp7QualificationConfig, {}), maps=set(), tournaments={}, remainingOfferTokensNotifications=[], clientEntitlementsCache={}, participantTokens=())
+        return dict(isEnabled=False, isShopEnabled=False, isTrainingEnabled=False, peripheryIDs={}, primeTimes={}, seasons={}, battleModifiersDescr=(), cycleTimes={}, roleEquipments={}, numPlayers=7, levels=[], forbiddenClassTags=set(), forbiddenVehTypes=set(), squadRatingRestriction={}, squadSizes=[], createVivoxTeamChannels=False, qualification=makeTupleByDict(_Comp7QualificationConfig, {}), maps=set(), tournaments={}, grandTournament={}, remainingOfferTokensNotifications=[], clientEntitlementsCache={}, participantTokens=())
 
     @classmethod
     def _preprocessData(cls, data):
@@ -1231,6 +1232,42 @@ class _EventLootBoxesConfig(object):
          self.__startDateInUTC, self.__finishDateInUTC)
 
 
+LOOTBOX_SYSTEM_CONFIG = 'lootbox_system_config'
+
+class _LootBoxSystemConfig(object):
+    __slots__ = ('__isEnabled', '__eventName', '__boxesPriority', '__start', '__finish',
+                 '__dailyPurchaseLimit')
+
+    def __init__(self, **kwargs):
+        super(_LootBoxSystemConfig, self).__init__()
+        self.__eventName = kwargs.get('eventName', '')
+        self.__boxesPriority = kwargs.get('boxesPriority', tuple())
+        self.__isEnabled = kwargs.get('enabled', False)
+        self.__start = kwargs.get('start', 0)
+        self.__finish = kwargs.get('finish', 0)
+        self.__dailyPurchaseLimit = kwargs.get('dailyPurchaseLimit', 0)
+
+    @property
+    def isEnabled(self):
+        return self.__isEnabled
+
+    @property
+    def eventName(self):
+        return self.__eventName
+
+    @property
+    def boxesPriority(self):
+        return self.__boxesPriority
+
+    @property
+    def dailyPurchaseLimit(self):
+        return self.__dailyPurchaseLimit
+
+    def getActiveTime(self):
+        return (
+         self.__start, self.__finish)
+
+
 class _LimitedUIConfig(namedtuple('_LimitedUIConfig', ('enabled', 'rules', 'version'))):
     __slots__ = ()
 
@@ -1276,11 +1313,11 @@ class _SteamShadeConfig(namedtuple('_SteamShadeConfig', ('battlesPlayed', 'sessi
         return cls()
 
 
-class _ABFeatureTestConfig(namedtuple('_ABFeatureTestConfig', 'newbieHints')):
+class _ABFeatureTestConfig(namedtuple('_ABFeatureTestConfig', ('newbieHints', 'storyMode'))):
     __slots__ = ()
 
     def __new__(cls, **kwargs):
-        defaults = dict(newbieHints={})
+        defaults = dict(newbieHints={}, storyMode={})
         defaults.update(kwargs)
         return super(_ABFeatureTestConfig, cls).__new__(cls, **defaults)
 
@@ -1427,6 +1464,7 @@ class ServerSettings(object):
         self.__playLimitsConfig = PlayLimitsConfig()
         self.__preModerationConfig = PreModerationConfig()
         self.__eventLootBoxesConfig = _EventLootBoxesConfig()
+        self.__lootBoxSystemConfig = _LootBoxSystemConfig()
         self.__collectionsConfig = CollectionsConfig()
         self.__winbackConfig = WinbackConfig()
         self.__limitedUIConfig = _LimitedUIConfig()
@@ -1517,6 +1555,7 @@ class ServerSettings(object):
             self.__crystalRewardsConfig = makeTupleByDict(_crystalRewardsConfig, self.__serverSettings[_crystalRewardsConfig.CONFIG_NAME])
         self.__updateReactiveCommunicationConfig(self.__serverSettings)
         self.__updateEventLootBoxesConfig(self.__serverSettings)
+        self.__updateLootBoxSystemConfig(self.__serverSettings)
         if BonusCapsConst.CONFIG_NAME in self.__serverSettings:
             BONUS_CAPS.OVERRIDE_BONUS_CAPS = self.__serverSettings[BonusCapsConst.CONFIG_NAME]
         else:
@@ -1718,6 +1757,8 @@ class ServerSettings(object):
             self.__updateWinbackConfig(serverSettingsDiff)
         self.__updatePersonalReserves(serverSettingsDiff)
         self.__updateEventLootBoxesConfig(serverSettingsDiff)
+        self.__updateLootBoxSystemConfig(serverSettingsDiff)
+        self.__updateLootBoxesTooltipConfig(serverSettingsDiff)
         if Configs.COLLECTIONS_CONFIG.value in serverSettingsDiff:
             self.__updateCollectionsConfig(serverSettingsDiff)
         self.__updateLimitedUIConfig(serverSettingsDiff)
@@ -2294,6 +2335,9 @@ class ServerSettings(object):
     def getEventLootBoxesConfig(self):
         return self.__eventLootBoxesConfig
 
+    def getLootBoxSystemConfig(self):
+        return self.__lootBoxSystemConfig
+
     def getAchievements20GeneralConfig(self):
         return Achievements20GeneralConfig(self.__getGlobalSetting(Configs.ACHIEVEMENTS20_CONFIG.value, {}))
 
@@ -2435,6 +2479,14 @@ class ServerSettings(object):
                 _logger.error('Unexpected format of subscriptions service config: %r', config)
                 self.__eventLootBoxesConfig = _EventLootBoxesConfig()
         return
+
+    def __updateLootBoxSystemConfig(self, settings):
+        if LOOTBOX_SYSTEM_CONFIG in settings:
+            self.__lootBoxSystemConfig = _LootBoxSystemConfig(**settings[LOOTBOX_SYSTEM_CONFIG])
+
+    def __updateLootBoxesTooltipConfig(self, settings):
+        if Configs.LOOTBOXES_TOOLTIP_CONFIG.value in settings:
+            self.__serverSettings[Configs.LOOTBOXES_TOOLTIP_CONFIG.value] = settings[Configs.LOOTBOXES_TOOLTIP_CONFIG.value]
 
     def __updateCollectionsConfig(self, diff):
         self.__collectionsConfig = self.__collectionsConfig.replace(diff[Configs.COLLECTIONS_CONFIG.value])

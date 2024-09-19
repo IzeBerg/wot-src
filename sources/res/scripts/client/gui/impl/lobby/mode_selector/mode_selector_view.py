@@ -11,11 +11,13 @@ from gui.impl.auxiliary.tooltips.simple_tooltip import createSimpleTooltip
 from gui.impl.backport.backport_tooltip import createAndLoadBackportTooltipWindow
 from gui.impl.gen import R
 from gui.impl.gen.view_models.views.lobby.mode_selector.mode_selector_model import ModeSelectorModel
+from gui.impl.gen.view_models.views.lobby.common.tooltips.simple_icon_tooltip_model import HeaderType
 from gui.impl.gen.view_models.views.lobby.mode_selector.tooltips.mode_selector_tooltips_constants import ModeSelectorTooltipsConstants
 from gui.impl.lobby.battle_pass.tooltips.battle_pass_completed_tooltip_view import BattlePassCompletedTooltipView
 from gui.impl.lobby.battle_pass.tooltips.battle_pass_in_progress_tooltip_view import BattlePassInProgressTooltipView
 from gui.impl.lobby.battle_pass.tooltips.battle_pass_not_started_tooltip_view import BattlePassNotStartedTooltipView
 from gui.impl.lobby.common.view_mixins import LobbyHeaderVisibility
+from gui.impl.lobby.common.tooltips.simple_icon_tooltip_view import SimpleIconTooltipView
 from gui.impl.lobby.comp7.tooltips.main_widget_tooltip import MainWidgetTooltip
 from gui.impl.lobby.comp7.tooltips.rank_inactivity_tooltip import RankInactivityTooltip
 from gui.impl.lobby.mode_selector.battle_session_view import BattleSessionView
@@ -150,6 +152,8 @@ class ModeSelectorView(ViewImpl, LobbyHeaderVisibility):
                 if not header:
                     return
                 return SimplyFormatTooltipView(header, body)
+            if contentID == R.views.lobby.common.tooltips.SimpleIconTooltip():
+                return SimpleIconTooltipView(event.getArgument('header', ''), event.getArgument('body', ''), event.getArgument('icon', ''), event.getArgument('headerType', HeaderType.NORMAL))
             tooltipClass = self.__tooltipConstants.get(_CONTENT_TOOLTIPS_KEY, {}).get(contentID)
             if tooltipClass:
                 return tooltipClass()

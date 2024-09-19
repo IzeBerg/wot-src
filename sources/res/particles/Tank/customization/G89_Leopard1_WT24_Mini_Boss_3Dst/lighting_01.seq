@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>2.000000</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Ligthting_01</name>
+		<type>model</type>
+		<resource>particles/Tank/customization/G89_Leopard1_WT24_Mini_Boss_3Dst/Hero_lighting_01.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>Lightning</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.282353 0.207843 1.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.421011</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.421011</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>0.282353 0.207843 1.000000 1.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.014748</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.014748</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.166667</startTime>
+				<value>0.282353 0.207843 1.000000 1.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.013271</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.013271</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.333333</startTime>
+				<value>0.282353 0.207843 1.000000 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -6.000001</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 -6.000001</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property vector4</name>
+			<type>vector4</type>
+			<identifier>Lightning</identifier>
+			<property>phase_UV_Speed_Scale</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 0.700000 0.100000</value>
+				<inTangent>0.100000 0.157947 0.000000 0.235313</inTangent>
+				<outTangent>-0.611000 2.000000 0.000000 0.450000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.000000</startTime>
+				<value>-1.222000 4.000000 0.700000 1.000000</value>
+				<inTangent>-0.611000 2.000000 -0.000000 0.450000</inTangent>
+				<outTangent>0.100000 0.687457 -0.000000 0.271886</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property vector4</name>
+			<type>vector4</type>
+			<identifier>Lightning</identifier>
+			<property>distortion_UV_Speed_Amount</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 0.100000 0.120000</value>
+				<inTangent>0.500000 2.000000 0.000000 0.040000</inTangent>
+				<outTangent>0.500000 2.000000 0.000000 0.040000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.000000</startTime>
+				<value>1.000000 4.000000 0.100000 0.200000</value>
+				<inTangent>0.500000 2.000000 -0.000000 0.040000</inTangent>
+				<outTangent>0.500000 2.000000 -0.000000 0.040000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property vector4</name>
+			<type>vector4</type>
+			<identifier>Lightning</identifier>
+			<property>diffuseUVSpeedAlphaOffset</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 1.000000 0.000000</value>
+				<inTangent>0.281093 0.163127 0.000000 0.000000</inTangent>
+				<outTangent>0.444005 0.640898 0.000000 0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.000000</startTime>
+				<value>0.888009 1.281795 1.000000 0.000000</value>
+				<inTangent>0.444005 0.640898 -0.000000 -0.000000</inTangent>
+				<outTangent>0.180105 0.075674 -0.000000 -0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property vector4</name>
+			<type>vector4</type>
+			<identifier>Lightning</identifier>
+			<property>opacity_UV_Speed_Scale</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 2.000000 0.250000 0.251000</value>
+				<inTangent>0.000000 0.641000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.641000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.000000</startTime>
+				<value>0.000000 3.282000 0.250000 0.251000</value>
+				<inTangent>-0.000000 0.641000 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.000000 0.641000 -0.000000 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property vector4</name>
+			<type>vector4</type>
+			<identifier>Lightning</identifier>
+			<property>opacity_UV_Distortion_Amount</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.100000 0.120000 0.500000 0.140000</value>
+				<inTangent>0.000000 0.040000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.040000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.000000</startTime>
+				<value>0.100000 0.200000 0.500000 0.140000</value>
+				<inTangent>-0.000000 0.040000 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.000000 0.040000 -0.000000 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

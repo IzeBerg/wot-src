@@ -260,7 +260,7 @@ package net.wg.gui.battle.views.staticMarkers.targetPoint
          }
       }
       
-      private function setShape() : void
+      protected function setShape() : void
       {
          var shapeBitmapClass:Class = null;
          if(this._shapeBitmap != null)
@@ -286,7 +286,7 @@ package net.wg.gui.battle.views.staticMarkers.targetPoint
          }
       }
       
-      private function setAnimation() : void
+      protected function setAnimation() : void
       {
          this.clickAnimation = this.createMovieClip(this._shapeName + ANIMATION_MC,ANIMATION_POS_Y);
       }

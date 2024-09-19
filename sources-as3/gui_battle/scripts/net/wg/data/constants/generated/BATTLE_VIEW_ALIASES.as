@@ -51,7 +51,7 @@ package net.wg.data.constants.generated
       
       public static const RIBBONS_PANEL:String = "ribbonsPanel";
       
-      public static const PERKS_PANEL:String = "perksPanel";
+      public static const SITUATION_INDICATORS:String = "situationIndicators";
       
       public static const MINIMAP:String = "minimap";
       

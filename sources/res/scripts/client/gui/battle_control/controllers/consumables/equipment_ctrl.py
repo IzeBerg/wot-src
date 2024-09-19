@@ -10,7 +10,7 @@ from comp7_common import ROLE_EQUIPMENT_TAG
 from constants import VEHICLE_SETTING, EQUIPMENT_STAGES, ARENA_BONUS_TYPE
 from gui.impl import backport
 from gui.impl.gen import R
-from gui.shared.system_factory import collectEquipmentItem
+from gui.shared.system_factory import collectEquipmentItem, collectEquipmentTrigger
 from gui.Scaleform.genConsts.ANIMATION_TYPES import ANIMATION_TYPES
 from gui.Scaleform.genConsts.BATTLE_MARKERS_CONSTS import BATTLE_MARKERS_CONSTS
 from gui.battle_control import avatar_getter, vehicle_getter
@@ -579,7 +579,7 @@ class _OrderItem(_TriggerItem):
         inputHandler = avatar_getter.getInputHandler()
         arenaVisitor = self.__sessionProvider.arenaVisitor
         if inputHandler is not None and arenaVisitor is not None:
-            return not (inputHandler.ctrlModeName == CTRL_MODE_NAME.POSTMORTEM and arenaVisitor.getArenaBonusType() in ARENA_BONUS_TYPE.BATTLE_ROYALE_RANGE)
+            return not (inputHandler.ctrlModeName == CTRL_MODE_NAME.POSTMORTEM and not BigWorld.player().isObserverFPV and arenaVisitor.getArenaBonusType() in ARENA_BONUS_TYPE.BATTLE_ROYALE_RANGE)
         return True
 
 
@@ -590,6 +590,15 @@ class _ArtilleryItem(_OrderItem):
 
     def getMarkerColor(self):
         return BATTLE_MARKERS_CONSTS.COLOR_YELLOW
+
+
+class _EventArtilleryItem(_OrderItem):
+
+    def getMarker(self):
+        return 'EventDeathZoneUI'
+
+    def getMarkerColor(self):
+        return BATTLE_MARKERS_CONSTS.COLOR_RED
 
 
 class _ArtilleryAOEFort(_ArtilleryItem):
@@ -1139,6 +1148,9 @@ def _isBattleRoyaleBattle():
 
 
 def _triggerItemFactory(descriptor, quantity, stage, timeRemaining, totalTime, tags=None):
+    itemClass = collectEquipmentTrigger(descriptor.name, False)
+    if itemClass:
+        return itemClass(descriptor, quantity, stage, timeRemaining, totalTime, tags)
     if descriptor.name.startswith('arcade_artillery'):
         return _ArcadeArtilleryItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
     if descriptor.name.startswith('arcade_bomber'):
@@ -1253,6 +1265,7 @@ class EquipmentsController(MethodsRules, IBattleController):
         self.onEquipmentReset = Event.Event(self._eManager)
         self.onEquipmentsCleared = Event.Event(self._eManager)
         self.onEquipmentMarkerShown = Event.Event(self._eManager)
+        self.onEquipmentMarkerHide = Event.Event(self._eManager)
         self.onEquipmentAreaCreated = Event.Event(self._eManager)
         self.onEquipmentCooldownInPercent = Event.Event(self._eManager)
         self.onEquipmentCooldownTime = Event.Event(self._eManager)
@@ -1474,7 +1487,10 @@ class EquipmentsController(MethodsRules, IBattleController):
         if item is None:
             item = self.createItem(eq, 0, -1, 0, 0)
         self.onEquipmentMarkerShown(item, pos, direction, time, team)
-        return
+        return item
+
+    def hideMarker(self, item):
+        self.onEquipmentMarkerHide(item)
 
     def consumePreferredPosition(self):
         value = self.__preferredPosition
@@ -1890,6 +1906,9 @@ def _replayPoiItemFactory(descriptor, quantity, stage, timeRemaining, totalTime,
 
 
 def _replayTriggerItemFactory(descriptor, quantity, stage, timeRemaining, totalTime, tags=None):
+    itemClass = collectEquipmentTrigger(descriptor.name, True)
+    if itemClass:
+        return itemClass(descriptor, quantity, stage, timeRemaining, totalTime, tags)
     if descriptor.name.startswith('arcade_artillery'):
         return _ReplayArcadeArtilleryItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
     if descriptor.name.startswith('artillery_epic'):

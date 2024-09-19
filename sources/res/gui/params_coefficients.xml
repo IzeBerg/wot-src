@@ -2165,6 +2165,61 @@
 				</value>
 			</item>
 			<item>
+				<name>twinGunTopSpeed</name>
+				<type>dict</type>
+				<value>
+					<item>
+						<name>optionalDevice</name>
+						<type>list</type>
+						<value>
+							<item>turbocharger_tier1</item>
+							<item>turbocharger_tier2</item>
+							<item>turbocharger_tier3</item>
+							<item>deluxeTurbocharger</item>
+							<item>trophyBasicTurbocharger</item>
+							<item>trophyUpgradedTurbocharger</item>
+							<item>modernizedTurbochargerRotationMechanism1</item>
+							<item>modernizedTurbochargerRotationMechanism2</item>
+							<item>modernizedTurbochargerRotationMechanism3</item>
+						</value>
+					</item>
+					<item>
+						<name>postProgressionPairModifications</name>
+						<type>list</type>
+						<value>
+							<item>role_HT_assault_pair_4_1</item>
+							<item>role_HT_assault_pair_4_2</item>
+							<item>role_HT_break_pair_4_1</item>
+							<item>role_HT_break_pair_4_2</item>
+							<item>role_HT_universal_pair_4_1</item>
+							<item>role_HT_universal_pair_4_2</item>
+							<item>role_HT_support_pair_4_1</item>
+							<item>role_HT_support_pair_4_2</item>
+							<item>role_mediumTank_pair_3_1</item>
+							<item>role_mediumTank_pair_3_2</item>
+							<item>role_MT_universal_pair_4_1</item>
+							<item>role_MT_universal_pair_4_2</item>
+							<item>role_MT_support_pair_5_1</item>
+							<item>role_MT_support_pair_5_2</item>
+							<item>role_ATSPG_assault_pair_5_1</item>
+							<item>role_ATSPG_assault_pair_5_2</item>
+							<item>role_ATSPG_universal_pair_4_1</item>
+							<item>role_ATSPG_universal_pair_4_2</item>
+							<item>role_ATSPG_universal_pair_5_1</item>
+							<item>role_ATSPG_universal_pair_5_2</item>
+							<item>role_ATSPG_support_pair_5_1</item>
+							<item>role_ATSPG_support_pair_5_2</item>
+							<item>role_lightTank_pair_1_1</item>
+							<item>role_lightTank_pair_1_2</item>
+							<item>role_lightTank_pair_3_1</item>
+							<item>role_lightTank_pair_3_2</item>
+							<item>role_SPG_pair_2_1</item>
+							<item>role_SPG_pair_2_2</item>
+						</value>
+					</item>
+				</value>
+			</item>
+			<item>
 				<name>vehicleRepairSpeed</name>
 				<type>dict</type>
 				<value>
@@ -2690,13 +2745,6 @@
 							<item>trophyUpgradedImprovedConfiguration</item>
 						</value>
 					</item>
-					<item>
-						<name>skill</name>
-						<type>list</type>
-						<value>
-							<item>driver_tidyPerson</item>
-						</value>
-					</item>
 				</value>
 			</item>
 			<item>
@@ -3193,39 +3241,6 @@
 						<type>list</type>
 						<value>
 							<item>virtuosoBattleBooster</item>
-						</value>
-					</item>
-				</value>
-			</item>
-			<item>
-				<name>radiomanActivityTimeAfterVehicleDestroy</name>
-				<type>dict</type>
-				<value>
-					<item>
-						<name>skill</name>
-						<type>list</type>
-						<value>
-							<item>radioman_lastEffort</item>
-						</value>
-					</item>
-					<item>
-						<name>battleBooster</name>
-						<type>list</type>
-						<value>
-							<item>lastEffortBattleBooster</item>
-						</value>
-					</item>
-				</value>
-			</item>
-			<item>
-				<name>radiomanHitChance</name>
-				<type>dict</type>
-				<value>
-					<item>
-						<name>battleBooster</name>
-						<type>list</type>
-						<value>
-							<item>lastEffortBattleBooster</item>
 						</value>
 					</item>
 				</value>

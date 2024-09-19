@@ -461,12 +461,12 @@ class SharedControllersRepository(_ControllersRepository):
         return area_marker_ctrl.AreaMarkersController()
 
 
-class _ControllersRepositoryByBonuses(_ControllersRepository):
+class ControllersRepositoryByBonuses(_ControllersRepository):
     __slots__ = ()
 
     @classmethod
     def create(cls, setup):
-        repository = super(_ControllersRepositoryByBonuses, cls).create(setup)
+        repository = super(ControllersRepositoryByBonuses, cls).create(setup)
         arenaVisitor = setup.arenaVisitor
         if arenaVisitor.hasRespawns():
             repository.addViewController(respawn_ctrl.RespawnsController(setup), setup)
@@ -483,7 +483,7 @@ class _ControllersRepositoryByBonuses(_ControllersRepository):
         return repository
 
 
-class ClassicControllersRepository(_ControllersRepositoryByBonuses):
+class ClassicControllersRepository(ControllersRepositoryByBonuses):
     __slots__ = ()
 
     @classmethod
@@ -504,7 +504,7 @@ class ClassicControllersRepository(_ControllersRepositoryByBonuses):
         return DefaultAppearanceCacheController(setup)
 
 
-class EventControllerRepository(_ControllersRepositoryByBonuses):
+class EventControllerRepository(ControllersRepositoryByBonuses):
     __slots__ = ()
 
     @classmethod
@@ -521,7 +521,7 @@ class EventControllerRepository(_ControllersRepositoryByBonuses):
         return repository
 
 
-class MapsTrainingControllerRepository(_ControllersRepositoryByBonuses):
+class MapsTrainingControllerRepository(ControllersRepositoryByBonuses):
     __slots__ = ()
 
     @classmethod

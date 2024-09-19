@@ -362,7 +362,6 @@
 		<enableExternalRespawn>
 			<Type>BOOL</Type>
 			<Flags>ALL_CLIENTS</Flags>
-			<DetailLevel>MY_VEHICLE</DetailLevel>
 			<Default>0</Default>
 		</enableExternalRespawn>
 		<botDisplayStatus>
@@ -404,6 +403,7 @@
 			<Arg>INT16</Arg>
 			<Arg>OBJECT_ID</Arg>
 			<Arg>UINT8</Arg>
+			<Arg>INT8</Arg>
 		</onHealthChanged>
 		<showShooting>
 			<Arg>UINT8</Arg>
@@ -656,5 +656,9 @@
 		<logAimMetrics>
 			<Arg>PYTHON</Arg>
 		</logAimMetrics>
+		<receiveBotFinalStats>
+			<Arg>OBJECT_ID</Arg>
+			<Arg>STRING</Arg>
+		</receiveBotFinalStats>
 	</BaseMethods>
 </root>

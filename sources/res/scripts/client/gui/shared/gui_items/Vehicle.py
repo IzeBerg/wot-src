@@ -1030,6 +1030,10 @@ class Vehicle(FittingItem):
         return self._rentInfo.isTelecomRent
 
     @property
+    def isExternalRent(self):
+        return self._rentInfo.isExternalRent
+
+    @property
     def type(self):
         return set(vehicles.VEHICLE_CLASS_TAGS & self.tags).pop()
 
@@ -1061,7 +1065,11 @@ class Vehicle(FittingItem):
 
     @property
     def isAmmoFull(self):
-        return sum(itemData[1] or 0 for itemData in self.shells.installed.getStorage if itemData) >= self.ammoMinSize or self.isOnlyForBattleRoyaleBattles
+        return sum(itemData[1] for itemData in self.shells.installed.getStorage if itemData) >= self.ammoMinSize or self.isOnlyForBattleRoyaleBattles
+
+    @property
+    def isAmmoEmpty(self):
+        return sum(itemData[1] for itemData in self.shells.installed.getStorage if itemData) == 0 and not self.isOnlyForBattleRoyaleBattles
 
     @property
     def isAmmoNotFullInSetups(self):
@@ -1969,6 +1977,9 @@ class Vehicle(FittingItem):
 
     def getBuiltInEquipmentIDs(self):
         return vehicles.getBuiltinEqsForVehicle(self._descriptor.type)
+
+    def hasBonusCamo(self):
+        return self.isOutfitLocked and self.typeDescr.isRestoredWithStyle or bool(self.getBonusCamo())
 
     def getBonusCamo(self):
         for season in SeasonType.SEASONS:

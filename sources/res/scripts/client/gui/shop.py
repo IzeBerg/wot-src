@@ -181,10 +181,11 @@ def showBuyGoldForPersonalReserves(fullPrice):
     showBuyGoldWebOverlay(_getParams(_GoldPurchaseReason.PERSONAL_RESERVES, fullPrice))
 
 
-def showBuyGoldForBundle(fullPrice, params=None):
-    params = dict(params) or {}
+def showBuyGoldForBundle(fullPrice, params=None, parent=None):
+    params = dict(params) if params is not None else {}
     params.update(_getParams(_GoldPurchaseReason.BUNDLE, fullPrice))
-    showBuyGoldWebOverlay(params)
+    showBuyGoldWebOverlay(params, parent)
+    return
 
 
 def showBlueprintsExchangeOverlay(url=None, parent=None):

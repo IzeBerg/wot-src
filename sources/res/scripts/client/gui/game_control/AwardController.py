@@ -1587,7 +1587,7 @@ class MapboxProgressionRewardHandler(AwardHandler):
     def _showAward(self, ctx):
         _, message, __ = ctx
         bonuses = chain.from_iterable([ getServiceBonuses(name, value) for name, value in message['savedData'].get('rewards', {}).iteritems() ])
-        window = MapBoxAwardsViewWindow(message['savedData']['battles'], bonuses)
+        window = MapBoxAwardsViewWindow(message['savedData']['battles'], list(bonuses))
         self.__notificationMgr.append(WindowNotificationCommand(window))
         self.__eventsCache.onEventsVisited()
         yield wg_async.wg_await(self.__mapboxCtrl.forceUpdateProgressData())

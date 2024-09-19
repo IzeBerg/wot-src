@@ -22,7 +22,7 @@ import nations, CommandMapping
 from helpers import i18n
 from Event import Event
 from AvatarInputHandler import INPUT_HANDLER_CFG, AvatarInputHandler
-from AvatarInputHandler.DynamicCameras import ArcadeCamera, SniperCamera, StrategicCamera, ArtyCamera, DualGunCamera, kill_cam_camera, free_camera
+from AvatarInputHandler.DynamicCameras import ArcadeCamera, SniperCamera, StrategicCamera, ArtyCamera, DualGunCamera, kill_cam_camera, free_camera, twin_gun_camera
 from AvatarInputHandler.control_modes import SniperControlMode
 from debug_utils import LOG_NOTE, LOG_DEBUG, LOG_ERROR, LOG_CURRENT_EXCEPTION, LOG_WARNING
 from gui.Scaleform.managers.windows_stored_data import g_windowsStoredData
@@ -1853,12 +1853,14 @@ class MouseSetting(ControlSetting):
                              ArcadeCamera.getCameraAsSettingsHolder, 'arcadeMode/camera'), 
        CTRL_MODE_NAME.SNIPER: (
                              SniperCamera.getCameraAsSettingsHolder, 'sniperMode/camera'), 
+       CTRL_MODE_NAME.DUAL_GUN: (
+                               DualGunCamera.getCameraAsSettingsHolder, 'sniperMode/camera'), 
+       CTRL_MODE_NAME.TWIN_GUN: (
+                               twin_gun_camera.getCameraAsSettingsHolder, 'sniperMode/camera'), 
        CTRL_MODE_NAME.STRATEGIC: (
                                 StrategicCamera.getCameraAsSettingsHolder, 'strategicMode/camera'), 
        CTRL_MODE_NAME.ARTY: (
                            ArtyCamera.getCameraAsSettingsHolder, 'artyMode/camera'), 
-       CTRL_MODE_NAME.DUAL_GUN: (
-                               DualGunCamera.getCameraAsSettingsHolder, 'dualGunMode/camera'), 
        CTRL_MODE_NAME.KILL_CAM: (
                                kill_cam_camera.getCameraAsSettingsHolder, 'killCamMode/camera'), 
        CTRL_MODE_NAME.DEATH_FREE_CAM: (
@@ -3046,14 +3048,14 @@ class IncreasedZoomSetting(StorageAccountSetting, MouseAffectedSetting):
 
     def _getCameras(self):
         return (
-         CTRL_MODE_NAME.SNIPER, CTRL_MODE_NAME.DUAL_GUN)
+         CTRL_MODE_NAME.SNIPER, CTRL_MODE_NAME.DUAL_GUN, CTRL_MODE_NAME.TWIN_GUN)
 
 
 class SniperModeByShiftSetting(StorageAccountSetting, MouseAffectedSetting):
 
     def _getCameras(self):
         return (
-         CTRL_MODE_NAME.ARCADE, CTRL_MODE_NAME.SNIPER, CTRL_MODE_NAME.DUAL_GUN)
+         CTRL_MODE_NAME.ARCADE, CTRL_MODE_NAME.SNIPER, CTRL_MODE_NAME.DUAL_GUN, CTRL_MODE_NAME.TWIN_GUN)
 
 
 class GroupSetting(StorageDumpSetting):

@@ -532,6 +532,10 @@ class SoundGroups(object):
             traceback.print_stack()
         return WWISE.WW_eventGlobal(event)
 
+    def playSafeSound2D(self, event):
+        if event:
+            self.playSound2D(event)
+
     def playSoundPos(self, event, pos):
         if DEBUG_TRACE_SOUND is True:
             LOG_DEBUG('SOUND: playSoundPos', event, pos)

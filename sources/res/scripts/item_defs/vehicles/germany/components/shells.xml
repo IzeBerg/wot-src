@@ -3643,6 +3643,72 @@
 			</damage>
 		</armorSpalls>
 	</_120mm_SDRN1>
+	<_120mm_M827>
+		<id>385</id>
+		<userString>#germany_vehicles:_120mm_M827</userString>
+		<icon>ap_cr</icon>
+		<price>1115</price>
+		<kind>ARMOR_PIERCING_CR</kind>
+		<caliber>120</caliber>
+		<isTracer>true</isTracer>
+		<effects>largeAPCR</effects>
+		<damage>
+			<armor>400</armor>
+			<devices>165</devices>
+		</damage>
+		<normalizationAngle>2</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
+	</_120mm_M827>
+	<_120mm_M830>
+		<id>386</id>
+		<userString>#germany_vehicles:_120mm_M830</userString>
+		<icon>hc_premium</icon>
+		<price>4800</price>
+		<improved>true</improved>
+		<kind>HOLLOW_CHARGE</kind>
+		<caliber>120</caliber>
+		<isTracer>true</isTracer>
+		<effects>largeHollowCharge</effects>
+		<damage>
+			<armor>400</armor>
+			<devices>165</devices>
+		</damage>
+		<ricochetAngle>85</ricochetAngle>
+		<piercingPowerLossFactorByDistance>
+			0.05
+			<!--BW_String-->
+		</piercingPowerLossFactorByDistance>
+	</_120mm_M830>
+	<_120mm_M908>
+		<id>387</id>
+		<userString>#germany_vehicles:_120mm_M908</userString>
+		<icon>he_modern</icon>
+		<price>1290</price>
+		<kind>HIGH_EXPLOSIVE</kind>
+		<mechanics>MODERN</mechanics>
+		<caliber>120</caliber>
+		<explosionRadius>
+			2.42
+			<!--BW_String-->
+		</explosionRadius>
+		<isTracer>true</isTracer>
+		<effects>largeHighExplosive</effects>
+		<damage>
+			<armor>515</armor>
+			<devices>165</devices>
+		</damage>
+		<armorSpalls>
+			<impactRadius>
+				2.42
+				<!--BW_String-->
+			</impactRadius>
+			<coneAngle>90</coneAngle>
+			<damage>
+				<armor>260</armor>
+				<devices>85</devices>
+			</damage>
+		</armorSpalls>
+	</_120mm_M908>
 	<_120mm_VKL65G>
 		<id>379</id>
 		<userString>#germany_vehicles:_120mm_VKL65G</userString>
@@ -6744,4 +6810,21 @@
 		<notInShop>True</notInShop>
 		<ricochetAngle>70</ricochetAngle>
 	</_210mm_Gr.18Be_StoryMode>
+	<_20mm_Pzgr39_StoryMode>
+		<id>143</id>
+		<userString>#germany_vehicles:_20mm_Pzgr39</userString>
+		<icon>ap</icon>
+		<price>3</price>
+		<kind>ARMOR_PIERCING</kind>
+		<caliber>20</caliber>
+		<isTracer>true</isTracer>
+		<effects>smallArmorPiercing</effects>
+		<damage>
+			<armor>11</armor>
+			<devices>27</devices>
+		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
+		<notInShop>True</notInShop>
+	</_20mm_Pzgr39_StoryMode>
 </root>

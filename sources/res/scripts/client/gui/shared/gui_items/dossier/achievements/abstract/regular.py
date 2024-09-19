@@ -172,7 +172,10 @@ class RegularAchievement(GUIItem):
         return backport.text(resource())
 
     def getUserDescription(self):
-        return backport.text(dyn_or_num(R.strings.achievements, '%s_descr' % self._getActualName())())
+        textRes = dyn_or_num(R.strings.achievements, '%s_descr' % self._getActualName())
+        if textRes.exists():
+            return backport.text(textRes())
+        return ''
 
     def getUserWebDescription(self):
         return self.getUserDescription()

@@ -97,7 +97,11 @@ package net.wg.data.constants.generated
       
       public static const COMP7_TOURNAMENT_BANNER:String = "comp7TournamentBanner";
       
+      public static const COMP7_GRAND_TOURNAMENT_BANNER:String = "comp7GrandTournamentBanner";
+      
       public static const LIVE_OPS_WEB_EVENTS_ENTRY_POINT:String = "liveOpsWebEventsEntryPoint";
+      
+      public static const TECH_TREE_TRADE_IN_BANNER:String = "techTreeTradeInBanner";
       
       public static const AMMUNITION_SETUP_VIEW_VEHICLE_PARAMS:String = "ammunitionSetupViewVehicleParams";
       

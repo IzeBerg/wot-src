@@ -2,6 +2,7 @@ from __future__ import absolute_import
 import typing
 from gui.impl import backport
 from gui.impl.gen import R
+from gui.mapbox.mapbox_helpers import getMapboxBattlesStatus
 from gui.prb_control.formatters.tooltips import getAbsenceCrewList
 from gui.prb_control.settings import UNIT_RESTRICTION
 from gui.prb_control.settings import PRE_QUEUE_RESTRICTION, PREBATTLE_RESTRICTION
@@ -188,8 +189,13 @@ def getMapboxFightBtnTooltipData(result, isInSquad):
     strPath = R.strings.mapbox.headerButtons.fightBtn.tooltip
     restriction = result.restriction
     if restriction in (PRE_QUEUE_RESTRICTION.MODE_NOT_AVAILABLE, UNIT_RESTRICTION.CURFEW):
-        header = backport.text(strPath.disabled.header())
-        body = backport.text(strPath.disabled.text())
+        _, isBattleEnded = getMapboxBattlesStatus()
+        if isBattleEnded:
+            header = backport.text(strPath.battlesEnded.header())
+            body = backport.text(strPath.battlesEnded.text())
+        else:
+            header = backport.text(strPath.disabled.header())
+            body = backport.text(strPath.disabled.text())
     elif restriction == PRE_QUEUE_RESTRICTION.LIMIT_LEVEL:
         header = backport.text(strPath.mapboxVehLevel.header())
         levels = backport.text(strPath.mapboxVehLevel.levelSubStr(), levels=toRomanRangeString(result.ctx['levels']))

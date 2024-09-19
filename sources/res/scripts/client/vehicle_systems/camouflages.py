@@ -5,6 +5,7 @@ from string import lower
 import typing
 from backports.functools_lru_cache import lru_cache
 import BigWorld, Math, Vehicular, AnimationSequence
+from emission_params import getEmissionParams
 from helpers import dependency
 from items.customization_slot_tags_validator import getDirectionAndFormFactorTags
 from shared_utils import first
@@ -38,10 +39,11 @@ RepaintParams.__new__.__defaults__ = (
  False, 0, (0, 0, 0), Math.Vector4(0.0), Math.Vector4(0.0), 0.0, 0.0)
 CamoParams = namedtuple('CamoParams', ('mask', 'excludeMap', 'tiling', 'rotation',
                                        'weights', 'c0', 'c1', 'c2', 'c3', 'gloss',
-                                       'metallic', 'useGMTexture', 'glossMetallicMap'))
+                                       'metallic', 'useGMTexture', 'glossMetallicMap',
+                                       'emissionParams'))
 CamoParams.__new__.__defaults__ = (
  '', '', Math.Vector4(0.0), 0, Math.Vector4(0.0), 0, 0, 0, 0,
- Math.Vector4(DEFAULT_GLOSS), Math.Vector4(DEFAULT_METALLIC), False, '')
+ Math.Vector4(DEFAULT_GLOSS), Math.Vector4(DEFAULT_METALLIC), False, '', None)
 ProjectionDecalGenericParams = namedtuple('ProjectionDecalGenericParams', ('tintColor',
                                                                            'position',
                                                                            'rotation',
@@ -53,10 +55,11 @@ ProjectionDecalGenericParams = namedtuple('ProjectionDecalGenericParams', ('tint
                                                                            'mirroredHorizontally',
                                                                            'mirroredVertically',
                                                                            'doubleSided',
-                                                                           'scaleBySlotSize'))
+                                                                           'scaleBySlotSize',
+                                                                           'emissionParams'))
 ProjectionDecalGenericParams.__new__.__defaults__ = (
  Math.Vector4(0.0), Math.Vector3(0.0), Math.Vector3(0.0, 1.0, 0.0), 1.0, '', '', 0.0, 0.0, False, False,
- False, True)
+ False, True, None)
 ModelAnimatorParams = namedtuple('ModelAnimatorParams', ('transform', 'attachNode',
                                                          'animatorName'))
 ModelAnimatorParams.__new__.__defaults__ = (
@@ -76,8 +79,8 @@ def prepareFashions(isDamaged):
          None, None, None, None]
     else:
         fashions = [
-         BigWorld.WGVehicleFashion(), BigWorld.WGBaseFashion(),
-         BigWorld.WGBaseFashion(), BigWorld.WGBaseFashion()]
+         BigWorld.WGVehicleFashion(), BigWorld.WGVehicleFashion(),
+         BigWorld.WGVehicleFashion(), BigWorld.WGVehicleFashion()]
     return VehiclePartsTuple(*fashions)
 
 
@@ -356,8 +359,9 @@ def getCamo(appearance, outfit, containerId, vDesc, descId, isDamaged, default=N
             useGMTexture = bool(glossMetallicMap)
             gloss = camouflage.glossMetallicSettings['gloss']
             metallic = camouflage.glossMetallicSettings['metallic']
+            emissionParams = getEmissionParams(camouflage)
             camoAngle = camouflage.rotation[descId]
-            result = CamoParams(camouflage.texture, exclusionMap or '', tiling, camoAngle, weights, palette[0], palette[1], palette[2], palette[3], gloss, metallic, useGMTexture, glossMetallicMap)
+            result = CamoParams(camouflage.texture, exclusionMap or '', tiling, camoAngle, weights, palette[0], palette[1], palette[2], palette[3], gloss, metallic, useGMTexture, glossMetallicMap, emissionParams)
         return result
 
 
@@ -836,7 +840,7 @@ def __getFixedProjectionDecalParams(slotParams):
     tintColor = __getProjectionDecalTintColor()
     mirroredHorizontally = slotParams.options & Options.MIRRORED_HORIZONTALLY
     mirroredVertically = slotParams.options & Options.MIRRORED_VERTICALLY
-    params = ProjectionDecalGenericParams(tintColor=tintColor, position=Math.Vector3(slotParams.position), rotation=Math.Vector3(slotParams.rotation), scale=Math.Vector3(slotParams.scale), decalMap=item.texture, glossDecalMap=item.glossTexture, applyAreas=slotParams.showOn, clipAngle=slotParams.clipAngle, mirroredHorizontally=mirroredHorizontally, mirroredVertically=mirroredVertically, doubleSided=slotParams.doubleSided, scaleBySlotSize=True)
+    params = ProjectionDecalGenericParams(tintColor=tintColor, position=Math.Vector3(slotParams.position), rotation=Math.Vector3(slotParams.rotation), scale=Math.Vector3(slotParams.scale), decalMap=item.texture, glossDecalMap=item.glossTexture, applyAreas=slotParams.showOn, clipAngle=slotParams.clipAngle, mirroredHorizontally=mirroredHorizontally, mirroredVertically=mirroredVertically, doubleSided=slotParams.doubleSided, scaleBySlotSize=True, emissionParams=getEmissionParams(item))
     return params
 
 
@@ -862,7 +866,7 @@ def __getProjectionDecalParams(vehDesc, item, component, slotParams=None):
             applyAreas = slotParams.showOn
             clipAngle = slotParams.clipAngle
             doubleSided = slotParams.doubleSided
-        params = ProjectionDecalGenericParams(tintColor=tintColor, position=position, rotation=rotation, scale=scale, decalMap=texture, glossDecalMap=glossTexture, applyAreas=applyAreas, clipAngle=clipAngle, mirroredHorizontally=mirroredHorizontally, mirroredVertically=mirroredVertically, doubleSided=doubleSided, scaleBySlotSize=True)
+        params = ProjectionDecalGenericParams(tintColor=tintColor, position=position, rotation=rotation, scale=scale, decalMap=texture, glossDecalMap=glossTexture, applyAreas=applyAreas, clipAngle=clipAngle, mirroredHorizontally=mirroredHorizontally, mirroredVertically=mirroredVertically, doubleSided=doubleSided, scaleBySlotSize=True, emissionParams=getEmissionParams(item))
         return params
 
 

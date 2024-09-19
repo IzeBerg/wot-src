@@ -50,22 +50,26 @@ class TankSetupCloseConfirmatorsHelper(CloseConfirmatorsHelper):
 
 class BaseHangarAmmunitionSetupView(BaseAmmunitionSetupView):
     _lobbyContext = dependency.descriptor(ILobbyContext)
-    __slots__ = ('__blur', '__isClosed', '__closeConfirmatorHelper', 'onClose', 'onAnimationEnd',
+    _VIEW_FLAG = ViewFlags.VIEW
+    __slots__ = ('__blur', '_isClosed', '__closeConfirmatorHelper', 'onClose', 'onAnimationEnd',
                  '__moneyCache', '_previousSectionName')
 
     def __init__(self, layoutID=R.views.lobby.tanksetup.HangarAmmunitionSetup(), **kwargs):
         settings = ViewSettings(layoutID)
         settings.model = AmmunitionSetupViewModel()
-        settings.flags = ViewFlags.VIEW
+        settings.flags = self._VIEW_FLAG
         settings.kwargs = kwargs
         super(BaseHangarAmmunitionSetupView, self).__init__(settings)
-        self.__blur = CachedBlur()
-        self.__isClosed = False
+        self.__blur = self._createBlur()
+        self._isClosed = False
         self.__closeConfirmatorHelper = TankSetupCloseConfirmatorsHelper()
         self.__moneyCache = self._itemsCache.items.stats.money
         self._previousSectionName = kwargs.get('selectedSection')
         self.onClose = Event()
         self.onAnimationEnd = Event()
+
+    def _createBlur(self):
+        return CachedBlur()
 
     @prbDispatcherProperty
     def prbDispatcher(self):
@@ -185,9 +189,9 @@ class BaseHangarAmmunitionSetupView(BaseAmmunitionSetupView):
 
     def _addListeners(self):
         super(BaseHangarAmmunitionSetupView, self)._addListeners()
-        self.__closeConfirmatorHelper.start(self.__closeConfirmator)
-        self._vehItem.onAcceptComplete += self.__onAcceptComplete
-        self._itemsCache.onSyncCompleted += self.__onSyncCompleted
+        self.__closeConfirmatorHelper.start(self._closeConfirmator)
+        self._vehItem.onAcceptComplete += self._onAcceptComplete
+        self._itemsCache.onSyncCompleted += self._onSyncCompleted
         self.viewModel.onResized += self.__onResized
         self.viewModel.onViewRendered += self.__onViewRendered
         self.viewModel.onAnimationEnd += self.__onAnimationEnd
@@ -198,8 +202,8 @@ class BaseHangarAmmunitionSetupView(BaseAmmunitionSetupView):
     def _removeListeners(self):
         super(BaseHangarAmmunitionSetupView, self)._removeListeners()
         self.__closeConfirmatorHelper.stop()
-        self._vehItem.onAcceptComplete -= self.__onAcceptComplete
-        self._itemsCache.onSyncCompleted -= self.__onSyncCompleted
+        self._vehItem.onAcceptComplete -= self._onAcceptComplete
+        self._itemsCache.onSyncCompleted -= self._onSyncCompleted
         self.viewModel.onResized -= self.__onResized
         self.viewModel.onViewRendered -= self.__onViewRendered
         self.viewModel.onAnimationEnd -= self.__onAnimationEnd
@@ -264,7 +268,7 @@ class BaseHangarAmmunitionSetupView(BaseAmmunitionSetupView):
         self.onAnimationEnd()
         return
 
-    def __onAcceptComplete(self):
+    def _onAcceptComplete(self):
         self._closeWindow()
 
     def __onDragDropSwap(self, args):
@@ -278,7 +282,7 @@ class BaseHangarAmmunitionSetupView(BaseAmmunitionSetupView):
             actionArgs['currentSlotId'] = dropId
         self.sendSlotAction(actionArgs)
 
-    def __onSyncCompleted(self, _, diff):
+    def _onSyncCompleted(self, _, diff):
         if not diff and self._itemsCache.items.stats.money == self.__moneyCache:
             return
         else:
@@ -321,19 +325,19 @@ class BaseHangarAmmunitionSetupView(BaseAmmunitionSetupView):
             return
 
     def _closeWindow(self):
-        if not self.__isClosed:
+        if not self._isClosed:
             if self.__blur is not None:
                 self.__blur.fini()
                 self.__blur = None
-            self.__isClosed = True
+            self._isClosed = True
             self.onClose()
             self.viewModel.setShow(False)
             playExitTankSetupView()
         return
 
     @wg_async
-    def __closeConfirmator(self):
-        if self.__isClosed:
+    def _closeConfirmator(self):
+        if self._isClosed:
             raise AsyncReturn(True)
         result = yield wg_await(self._tankSetup.canQuit())
         if result:

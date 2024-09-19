@@ -201,6 +201,11 @@ package net.wg.gui.battle.views.ribbonsPanel
          return false;
       }
       
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
+      }
+      
       public function setSettings(param1:Boolean, param2:Boolean, param3:Boolean) : void
       {
          this._texts.setSettings(param1,param2,param3);
@@ -243,7 +248,7 @@ package net.wg.gui.battle.views.ribbonsPanel
          this._scheduler.scheduleTask(this.onLifetimeCooldown,LIFE_TIME);
          this.ribbonId = param1;
          this._isBonus = !StringUtils.isEmpty(param6);
-         if(this.ribbonType == BATTLE_EFFICIENCY_TYPES.PERK)
+         if(this.ribbonType == BATTLE_EFFICIENCY_TYPES.PERK || this.ribbonType == BATTLE_EFFICIENCY_TYPES.WEATHER_ZONE)
          {
             this.updatePerkRibbonProperties(param3,param5);
             this._texts.setData(Values.EMPTY_STR,param2,Values.EMPTY_STR,param4);
@@ -426,11 +431,6 @@ package net.wg.gui.battle.views.ribbonsPanel
       {
          this._icons.updateIcons();
          this._texts.updateTextFields();
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
       }
    }
 }

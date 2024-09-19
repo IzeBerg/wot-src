@@ -94,6 +94,10 @@ package net.wg.infrastructure.base.meta
       
       function as_updateDualGunMarkerState(param1:int) : void;
       
+      function as_setTwinGunMarkerActive(param1:Boolean) : void;
+      
+      function as_setTwinGunMarkerState(param1:uint) : void;
+      
       function as_runCameraTransitionFx(param1:int, param2:Number) : void;
       
       function as_updateScaleWidget(param1:Number) : void;

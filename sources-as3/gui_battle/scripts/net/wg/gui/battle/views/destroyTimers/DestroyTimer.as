@@ -66,7 +66,8 @@ package net.wg.gui.battle.views.destroyTimers
          "orange":16689972,
          "gray":15626240,
          "green":8041216,
-         "yellow":16689972
+         "yellow":16689972,
+         "orange_warning":16689972
       };
       
       private static const DESC_TEXT_FILTERS:Object = {
@@ -74,7 +75,8 @@ package net.wg.gui.battle.views.destroyTimers
          "orange":[],
          "gray":[],
          "green":[],
-         "yellow":[new DropShadowFilter(0,0,12783619,1,8,8)]
+         "yellow":[new DropShadowFilter(0,0,12783619,1,8,8)],
+         "orange_warning":[new DropShadowFilter(0,0,12783619,1,8,8)]
       };
        
       
@@ -477,6 +479,11 @@ package net.wg.gui.battle.views.destroyTimers
       protected function get moveIconSteps() : int
       {
          return MOVE_ICON_STEPS;
+      }
+      
+      protected function get timerViewTypeID() : String
+      {
+         return this._timerViewTypeID;
       }
    }
 }

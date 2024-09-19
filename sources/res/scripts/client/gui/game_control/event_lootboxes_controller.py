@@ -3,6 +3,7 @@ from account_helpers import AccountSettings
 from account_helpers.AccountSettings import EVENT_LOOT_BOXES, LOOT_BOXES, LOOT_BOXES_EVENT_UNIQUE_ID, LOOT_BOXES_WAS_FINISHED, LOOT_BOXES_WAS_STARTED
 from adisp import adisp_process
 from constants import IS_CHINA, LOOTBOX_TOKEN_PREFIX
+from debug_utils import deprecated
 from gui import GUI_SETTINGS
 from gui.ClientUpdateManager import g_clientUpdateManager
 from gui.Scaleform.daapi.view.lobby.store.browser.shop_helpers import getEventLootBoxesUrl
@@ -310,6 +311,7 @@ class EventLootBoxesController(IEventLootBoxesController):
 
     @nextTick
     @adisp_process
+    @deprecated
     def __updateBoxInfo(self):
         boxes = [ lb for lb in self.__itemsCache.items.tokens.getLootBoxes().values() if lb.getCategory() == EVENT_LOOT_BOXES_CATEGORY
                 ]

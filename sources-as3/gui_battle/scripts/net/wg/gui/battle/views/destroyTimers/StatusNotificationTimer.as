@@ -2,6 +2,7 @@ package net.wg.gui.battle.views.destroyTimers
 {
    import fl.motion.easing.Linear;
    import flash.display.Sprite;
+   import net.wg.data.constants.Values;
    import net.wg.gui.battle.components.BattleUIComponent;
    import net.wg.gui.battle.components.interfaces.IStatusNotification;
    import net.wg.gui.battle.components.interfaces.IStatusNotificationCallback;
@@ -80,7 +81,7 @@ package net.wg.gui.battle.views.destroyTimers
             {
                this._destroyTimerContainer.visible = false;
                this._secondaryTimerContainer.visible = true;
-               this._secondaryTimerContainer.alpha = 1;
+               this._secondaryTimerContainer.alpha = Values.DEFAULT_ALPHA;
             }
             else
             {
@@ -105,8 +106,8 @@ package net.wg.gui.battle.views.destroyTimers
             this._tweenXDelay = FADE_OUT_TWEEN_DURATION;
             if(this._isAppearing)
             {
-               this._destroyTimerContainer.alpha = 1;
                this._destroyTimerContainer.visible = true;
+               this._destroyTimerContainer.alpha = Values.DEFAULT_ALPHA;
                this._secondaryTimerContainer.visible = false;
             }
             else
@@ -229,11 +230,13 @@ package net.wg.gui.battle.views.destroyTimers
       {
          if(this._fadeOutTweenX)
          {
+            this._fadeOutTweenX.paused = true;
             this._fadeOutTweenX.dispose();
             this._fadeOutTweenX = null;
          }
          if(this._fadeInTween)
          {
+            this._fadeInTween.paused = true;
             this._fadeInTween.dispose();
             this._fadeInTween = null;
          }

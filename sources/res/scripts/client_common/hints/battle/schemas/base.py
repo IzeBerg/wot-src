@@ -1,19 +1,22 @@
-import typing, logging
+import logging, typing
+from constants import IS_DEVELOPMENT, IS_VS_EDITOR
+from dict2model import exceptions
+from dict2model import fields
 from dict2model import models
 from dict2model import schemas
-from dict2model import fields
 from dict2model import validate
-from dict2model import exceptions
-from constants import IS_DEVELOPMENT, IS_VS_EDITOR
-from hints_common.battle.schemas.base import CommonHintSchema, CommonHintModel, HMCPropsType, HMCContextType
-from hints.battle.schemas.const import HTML_TEMPLATE_PATH, MIN_SHOW_TIME_LOWER_LIMIT, MIN_SHOW_TIME_UPPER_LIMIT, DEFAULT_MIN_SHOW_TIME, DEFAULT_WAIT_TIME, DEFAULT_SHOW_TIME, DEFAULT_COOLDOWN_TIME
-from helpers import i18n, dependency
 from gui import makeHtmlString, g_htmlTemplates
+from helpers import i18n, dependency
+from hints.battle.schemas.const import HTML_TEMPLATE_PATH, MIN_SHOW_TIME_LOWER_LIMIT, MIN_SHOW_TIME_UPPER_LIMIT, DEFAULT_MIN_SHOW_TIME, DEFAULT_WAIT_TIME, DEFAULT_SHOW_TIME, DEFAULT_COOLDOWN_TIME
+from hints_common.battle.schemas.base import CommonHintSchema, CommonHintModel, HMCPropsType, HMCContextType
 from skeletons.gui.battle_session import IBattleSessionProvider
 if typing.TYPE_CHECKING:
+    from typing import Optional
     from dict2model.types import ValidatorsType
     from hints_common.battle.schemas.base import CommonHintPropsSchema
+    from gui.battle_control.controllers.battle_hints.history import BattleHintsHistory
 _logger = logging.getLogger(__name__)
+_DEFAULT_DISPLAY_COUNT = 0
 
 class ClientHintTextModel(models.Model):
     __slots__ = ('raw', 'key', 'template', 'highlight', '_message')
@@ -95,15 +98,17 @@ class ClientHintLifecycleModel(models.Model):
 
 
 class ClientHintHistoryModel(models.Model):
-    __slots__ = ('modifyPriority', 'cooldown')
+    __slots__ = ('modifyPriority', 'cooldown', 'totalDisplayCount', 'perBattleCount')
 
-    def __init__(self, modifyPriority, cooldown):
+    def __init__(self, modifyPriority, cooldown, totalDisplayCount, perBattleCount):
         super(ClientHintHistoryModel, self).__init__()
         self.modifyPriority = modifyPriority
         self.cooldown = cooldown
+        self.totalDisplayCount = totalDisplayCount
+        self.perBattleCount = perBattleCount
 
     def _reprArgs(self):
-        return ('modifyPriority={}, cooldown={}').format(self.modifyPriority, self.cooldown)
+        return ('modifyPriority={}, cooldown={}, totalDisplayCount={}, perBattleCount={}').format(self.modifyPriority, self.cooldown, self.totalDisplayCount, self.perBattleCount)
 
 
 CHMTextType = typing.TypeVar('CHMTextType', bound=ClientHintTextModel)
@@ -112,8 +117,8 @@ CHMSoundType = typing.TypeVar('CHMSoundType', bound=ClientHintSoundModel)
 CHMLifecycleType = typing.TypeVar('CHMLifecycleType', bound=ClientHintLifecycleModel)
 CHMHistoryType = typing.TypeVar('CHMHistoryType', bound=ClientHintHistoryModel)
 
-class ClientHintModel(CommonHintModel[(HMCPropsType, HMCContextType)], typing.Generic[(HMCPropsType, HMCContextType, CHMTextType, CHMVisualType, CHMSoundType, CHMLifecycleType,
- CHMHistoryType)]):
+class ClientHintModel(CommonHintModel[(HMCPropsType, HMCContextType)], typing.Generic[(
+ HMCPropsType, HMCContextType, CHMTextType, CHMVisualType, CHMSoundType, CHMLifecycleType, CHMHistoryType)]):
     __slots__ = ('text', 'visual', 'sound', 'lifecycle', 'history')
     _sessionProvider = dependency.descriptor(IBattleSessionProvider)
 
@@ -129,7 +134,18 @@ class ClientHintModel(CommonHintModel[(HMCPropsType, HMCContextType)], typing.Ge
         visitor = self._sessionProvider.arenaVisitor
         return super(ClientHintModel, self).validate(visitor.getArenaBonusType(), visitor.type.getGamePlayName(), *args, **kwargs)
 
-    def canBeShown(self):
+    def canBeShown(self, historyStorage=None):
+        if historyStorage is not None and self.history is not None:
+            if self.history.totalDisplayCount:
+                totalDisplayCount = historyStorage.getTotalDisplayCount(self.uniqueName)
+                if totalDisplayCount >= self.history.totalDisplayCount:
+                    _logger.debug('Can not show <%s>. Hint reached display limit.', self.uniqueName)
+                    return False
+            if self.history.perBattleCount:
+                perBattleCount = historyStorage.getPerBattleCount(self.uniqueName)
+                if perBattleCount >= self.history.perBattleCount:
+                    _logger.debug('Can not show <%s>. Hint reached per battle count limit.', self.uniqueName)
+                    return False
         return True
 
     def createVO(self, data=None):
@@ -231,7 +247,9 @@ class ClientHintHistorySchema(schemas.Schema[CHMHistoryType]):
 
     def __init__(self, modelClass=ClientHintHistoryModel, checkUnknown=True, serializedValidators=None, deserializedValidators=None):
         super(ClientHintHistorySchema, self).__init__(fields={'modifyPriority': fields.Boolean(required=False, default=False), 
-           'cooldown': fields.Float(required=False, default=DEFAULT_COOLDOWN_TIME, deserializedValidators=validate.Range(minValue=0))}, checkUnknown=checkUnknown, serializedValidators=serializedValidators, deserializedValidators=deserializedValidators, modelClass=modelClass)
+           'cooldown': fields.Float(required=False, default=DEFAULT_COOLDOWN_TIME, deserializedValidators=validate.Range(minValue=0)), 
+           'totalDisplayCount': fields.Integer(required=False, default=_DEFAULT_DISPLAY_COUNT, deserializedValidators=validate.Range(minValue=1)), 
+           'perBattleCount': fields.Integer(required=False, default=_DEFAULT_DISPLAY_COUNT, deserializedValidators=validate.Range(minValue=1))}, checkUnknown=checkUnknown, serializedValidators=serializedValidators, deserializedValidators=deserializedValidators, modelClass=modelClass)
 
 
 clientHintTextSchema = ClientHintTextSchema()

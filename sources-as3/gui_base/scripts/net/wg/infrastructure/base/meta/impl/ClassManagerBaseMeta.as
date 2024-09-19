@@ -434,11 +434,15 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.crosshairPanel.components.gunMarker.GunMarkerMixingDualGunSniper;
    import net.wg.gui.components.crosshairPanel.components.gunMarker.GunMarkerMixingSolid;
    import net.wg.gui.components.crosshairPanel.components.gunMarker.GunMarkerMixingStepPoints;
+   import net.wg.gui.components.crosshairPanel.components.gunMarker.GunMarkerMixingTwinGun;
    import net.wg.gui.components.crosshairPanel.components.gunMarker.GunMarkerMixingWithoutProgress;
    import net.wg.gui.components.crosshairPanel.components.gunMarker.GunMarkerStrategic;
    import net.wg.gui.components.crosshairPanel.components.gunMarker.GunMarkerTag;
    import net.wg.gui.components.crosshairPanel.components.gunMarker.IGunMarker;
    import net.wg.gui.components.crosshairPanel.components.gunMarker.IGunMarkerMixing;
+   import net.wg.gui.components.crosshairPanel.components.gunMarker.TwinGunMarker;
+   import net.wg.gui.components.crosshairPanel.components.gunMarker.TwinGunMarkerDebug;
+   import net.wg.gui.components.crosshairPanel.components.gunMarker.TwinGunMarkerDispersionCircle;
    import net.wg.gui.components.crosshairPanel.components.gunMarker.ZoomingAimDamage;
    import net.wg.gui.components.crosshairPanel.components.gunMarker.constants.GunMarkerConsts;
    import net.wg.gui.components.crosshairPanel.components.speedometer.Speedometer;
@@ -862,6 +866,8 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.infrastructure.uilogging.base.BaseLogger;
    import net.wg.infrastructure.uilogging.base.FlowLogger;
    import net.wg.infrastructure.uilogging.base.MetricsLogger;
+   import net.wg.infrastructure.uilogging.player_satisfaction_rating.PLAYER_SATISFACTION_RATING_CONSTANTS;
+   import net.wg.infrastructure.uilogging.player_satisfaction_rating.PostBattleTeamLogger;
    
    public class ClassManagerBaseMeta
    {
@@ -1728,6 +1734,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_COMPONENTS_GUNMARKER_GUNMARKERMIXINGSTEPPOINTS:Class = GunMarkerMixingStepPoints;
       
+      public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_COMPONENTS_GUNMARKER_GUNMARKERMIXINGTWINGUN:Class = GunMarkerMixingTwinGun;
+      
       public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_COMPONENTS_GUNMARKER_GUNMARKERMIXINGWITHOUTPROGRESS:Class = GunMarkerMixingWithoutProgress;
       
       public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_COMPONENTS_GUNMARKER_GUNMARKERSTRATEGIC:Class = GunMarkerStrategic;
@@ -1737,6 +1745,12 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_COMPONENTS_GUNMARKER_IGUNMARKER:Class = IGunMarker;
       
       public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_COMPONENTS_GUNMARKER_IGUNMARKERMIXING:Class = IGunMarkerMixing;
+      
+      public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_COMPONENTS_GUNMARKER_TWINGUNMARKER:Class = TwinGunMarker;
+      
+      public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_COMPONENTS_GUNMARKER_TWINGUNMARKERDEBUG:Class = TwinGunMarkerDebug;
+      
+      public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_COMPONENTS_GUNMARKER_TWINGUNMARKERDISPERSIONCIRCLE:Class = TwinGunMarkerDispersionCircle;
       
       public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_COMPONENTS_GUNMARKER_ZOOMINGAIMDAMAGE:Class = ZoomingAimDamage;
       
@@ -2591,6 +2605,10 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_INFRASTRUCTURE_UILOGGING_BASE_FLOWLOGGER:Class = FlowLogger;
       
       public static const NET_WG_INFRASTRUCTURE_UILOGGING_BASE_METRICSLOGGER:Class = MetricsLogger;
+      
+      public static const NET_WG_INFRASTRUCTURE_UILOGGING_PLAYER_SATISFACTION_RATING_PLAYER_SATISFACTION_RATING_CONSTANTS:Class = PLAYER_SATISFACTION_RATING_CONSTANTS;
+      
+      public static const NET_WG_INFRASTRUCTURE_UILOGGING_PLAYER_SATISFACTION_RATING_POSTBATTLETEAMLOGGER:Class = PostBattleTeamLogger;
        
       
       public function ClassManagerBaseMeta()

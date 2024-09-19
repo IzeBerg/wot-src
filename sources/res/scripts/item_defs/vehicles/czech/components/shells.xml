@@ -2236,6 +2236,72 @@
 			</damage>
 		</armorSpalls>
 	</_130mm_Narazovy_vz_55>
+	<_152mm_Prurazny_vz_20SM>
+		<id>116</id>
+		<userString>#czech_vehicles:_152mm_Prurazny_vz_20SM</userString>
+		<icon>ap</icon>
+		<price>1650</price>
+		<kind>ARMOR_PIERCING</kind>
+		<caliber>152</caliber>
+		<isTracer>true</isTracer>
+		<effects>largeArmorPiercing</effects>
+		<damage>
+			<armor>770</armor>
+			<devices>203</devices>
+		</damage>
+		<normalizationAngle>5</normalizationAngle>
+		<ricochetAngle>70</ricochetAngle>
+	</_152mm_Prurazny_vz_20SM>
+	<_152mm_Prupalny_vz_20SM>
+		<id>117</id>
+		<userString>#czech_vehicles:_152mm_Prupalny_vz_20SM</userString>
+		<icon>hc_premium</icon>
+		<price>6800</price>
+		<improved>true</improved>
+		<kind>HOLLOW_CHARGE</kind>
+		<caliber>152</caliber>
+		<isTracer>true</isTracer>
+		<effects>largeHollowCharge</effects>
+		<damage>
+			<armor>770</armor>
+			<devices>203</devices>
+		</damage>
+		<ricochetAngle>85</ricochetAngle>
+		<piercingPowerLossFactorByDistance>
+			0.05
+			<!--BW_String-->
+		</piercingPowerLossFactorByDistance>
+	</_152mm_Prupalny_vz_20SM>
+	<_152mm_Narazovy_vz_20SM>
+		<id>118</id>
+		<userString>#czech_vehicles:_152mm_Narazovy_vz_20SM</userString>
+		<icon>he_modern</icon>
+		<price>1120</price>
+		<kind>HIGH_EXPLOSIVE</kind>
+		<mechanics>MODERN</mechanics>
+		<caliber>152</caliber>
+		<explosionRadius>
+			3.66
+			<!--BW_String-->
+		</explosionRadius>
+		<isTracer>true</isTracer>
+		<effects>largeHighExplosive</effects>
+		<damage>
+			<armor>980</armor>
+			<devices>203</devices>
+		</damage>
+		<armorSpalls>
+			<impactRadius>
+				3.66
+				<!--BW_String-->
+			</impactRadius>
+			<coneAngle>90</coneAngle>
+			<damage>
+				<armor>420</armor>
+				<devices>100</devices>
+			</damage>
+		</armorSpalls>
+	</_152mm_Narazovy_vz_20SM>
 	<Development_Shell>
 		<id>65000</id>
 		<userString>Development_Shell</userString>

@@ -236,6 +236,40 @@
 		</directory>
 	</directory>
 	<directory>
+		<path>halloween</path>
+		<directory>
+			<path>vehicles</path>
+			<rule>
+				<format>A8R8G8B8</format>
+				<pattern>.*(\.tga)$</pattern>
+			</rule>
+			<rule>
+				<allowSplit>true</allowSplit>
+				<category>tanks</category>
+				<pattern>.*</pattern>
+			</rule>
+			<rule>
+				<allowSplit>false</allowSplit>
+				<pattern>.*_HangarShadowMap\.dds$</pattern>
+			</rule>
+			<rule>
+				<allowSplit>false</allowSplit>
+				<pattern>.*_ID\.dds$</pattern>
+			</rule>
+			<directory>
+				<path>russian</path>
+				<directory>
+					<path>Camouflage</path>
+					<rule>
+						<lodMode>0</lodMode>
+						<allowSplit>false</allowSplit>
+						<pattern>.*</pattern>
+					</rule>
+				</directory>
+			</directory>
+		</directory>
+	</directory>
+	<directory>
 		<path>maps</path>
 		<rule>
 			<allowSplit>false</allowSplit>

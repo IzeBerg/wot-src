@@ -37,3 +37,7 @@ class NotificationPopUpViewerMeta(BaseDAAPIComponent):
     def as_initInfoS(self, maxMessagessCount, padding):
         if self._isDAAPIInited():
             return self.flashObject.as_initInfo(maxMessagessCount, padding)
+
+    def as_setViewPaddingS(self, enabled, paddingX, paddingY):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setViewPadding(enabled, paddingX, paddingY)

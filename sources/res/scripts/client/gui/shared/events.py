@@ -529,6 +529,7 @@ class OpenLinkEvent(SharedEvent):
     WOT_PLUS_STEAM_SHOP = 'wotPlusSteamURL'
     WOT_PLUS_SHOP = 'wotPlusShopURL'
     STEAM_SUBSCRIPTION_MANAGEMENT = 'steamSubscriptionManagementURL'
+    LOOT_BOXES_LIST = 'lootBoxesList'
 
     def __init__(self, eventType, url='', title='', params=None):
         super(OpenLinkEvent, self).__init__(eventType)
@@ -675,6 +676,11 @@ class BattlePassEvent(HasCtxEvent):
     ON_PREVIEW_PROGRESSION_STYLE_CLOSE = 'onPreviewProgressionStyleClose'
     ON_FINISH_BATTLE_PASS_PURCHASE = 'onFinishBattlePassPurchase'
     VIDEO_SHOWN = 'videoShown'
+
+
+class LootBoxSystemEvent(HasCtxEvent):
+    ON_STATISTICS_RESET = 'onStatisticsReset'
+    OPENING_ERROR = 'openingError'
 
 
 class ItemRemovalByDemountKitEvent(HasCtxEvent):
@@ -874,3 +880,11 @@ class GameSessionEvent(SharedEvent):
 class ExchangeRatesDiscountsEvent(HasCtxEvent):
     ON_SELECTED_AMOUNT_CHANGED = 'onSelectedAmountChanged'
     ON_PERSONAL_DISCOUNT_VIEWED = 'onPersonalDiscountViewed'
+
+
+class ViewReadyEvent(SharedEvent):
+    VIEW_READY = 'ViewReadyEvent.VIEW_READY'
+
+    def __init__(self, viewID):
+        super(ViewReadyEvent, self).__init__(self.VIEW_READY)
+        self.viewID = viewID

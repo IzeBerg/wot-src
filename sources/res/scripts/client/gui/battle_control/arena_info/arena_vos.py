@@ -257,10 +257,10 @@ class PlayerInfoVO(object):
 
 class VehicleTypeInfoVO(object):
     __slots__ = ('compactDescr', 'shortName', 'name', 'level', 'iconName', 'iconPath',
-                 'isObserver', 'isPremiumIGR', 'isDualGunVehicle', 'hasDualAccuracy',
-                 'isAutoShootGunVehicle', 'guiName', 'shortNameWithPrefix', 'classTag',
-                 'nationID', 'turretYawLimits', 'maxHealth', 'strCompactDescr', 'isOnlyForBattleRoyaleBattles',
-                 'tags', 'chassisType', 'role')
+                 'isObserver', 'isPremiumIGR', 'isDualGunVehicle', 'isTwinGunVehicle',
+                 'hasDualAccuracy', 'isAutoShootGunVehicle', 'guiName', 'shortNameWithPrefix',
+                 'classTag', 'nationID', 'turretYawLimits', 'maxHealth', 'strCompactDescr',
+                 'isOnlyForBattleRoyaleBattles', 'tags', 'chassisType', 'role')
 
     def __init__(self, vehicleType=None, maxHealth=None, **kwargs):
         super(VehicleTypeInfoVO, self).__init__()
@@ -302,6 +302,7 @@ class VehicleTypeInfoVO(object):
             self.isPremiumIGR = isPremiumIGR(tags)
             self.turretYawLimits = vehicle_getter.getYawLimits(vehicleDescr)
             self.isDualGunVehicle = vehicleDescr.isDualgunVehicle
+            self.isTwinGunVehicle = vehicleDescr.isTwinGunVehicle
             self.hasDualAccuracy = vehicleDescr.hasDualAccuracy
             self.isAutoShootGunVehicle = vehicleDescr.isAutoShootGunVehicle
             self.chassisType = vehicleDescr.chassis.chassisType
@@ -328,8 +329,9 @@ class VehicleTypeInfoVO(object):
             self.turretYawLimits = None
             self.shortName = vehicleName
             self.isDualGunVehicle = False
-            self.isAutoShootGunVehicle = False
+            self.isTwinGunVehicle = False
             self.hasDualAccuracy = False
+            self.isAutoShootGunVehicle = False
             self.chassisType = 0
             self.name = vehicleName
             self.guiName = vehicleName
@@ -556,6 +558,9 @@ class VehicleArenaInfoVO(object):
 
     def isDualGunVehicle(self):
         return self.vehicleType.isDualGunVehicle
+
+    def isTwinGunVehicle(self):
+        return self.vehicleType.isTwinGunVehicle
 
     def isActionsDisabled(self):
         return not self.player.avatarSessionID

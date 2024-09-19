@@ -78,6 +78,7 @@ def getGameControllersConfig(manager):
     from gui.game_control.extension_stubs.fun_random_controller import FunRandomController
     from gui.game_control.hangar_switch_controller import HangarSpaceSwitchController
     from gui.game_control.event_lootboxes_controller import EventLootBoxesController
+    from gui.game_control.lootbox_system_controller import LootBoxSystemController
     from gui.entitlements.entitlements_controller import EntitlementsController
     from gui.game_control.winback_controller import WinbackController
     from gui.game_control.daily_quests_intro_presenter import DailyQuestsIntroPresenter
@@ -89,6 +90,7 @@ def getGameControllersConfig(manager):
     from gui.game_control.achievements_controller import AchievementsController
     from gui.game_control.achievements_earning_controller import Achievements20EarningController
     from gui.game_control.exchange_rates_with_discounts import ExchangeRatesWithDiscountsProvider
+    from gui.game_control.fading_controller import FadingController
     tracker = GameStateTracker()
     tracker.init()
     manager.addInstance(_interface.IGameStateTracker, tracker, finalizer='fini')
@@ -164,6 +166,7 @@ def getGameControllersConfig(manager):
     _config(_interface.IRTSBattlesController, RTSBattlesController())
     _config(_interface.IResourceWellController, ResourceWellController())
     _config(_interface.IEventLootBoxesController, EventLootBoxesController())
+    _config(_interface.ILootBoxSystemController, LootBoxSystemController())
     _config(_interface.IEntitlementsController, EntitlementsController())
     _config(_interface.ICollectionsSystemController, CollectionsSystemController())
     _config(_interface.IWinbackController, WinbackController())
@@ -176,4 +179,5 @@ def getGameControllersConfig(manager):
     _config(_interface.IAchievementsController, AchievementsController())
     _config(_interface.IAchievements20EarningController, Achievements20EarningController())
     _config(_interface.IExchangeRatesWithDiscountsProvider, ExchangeRatesWithDiscountsProvider())
+    _config(_interface.IFadingController, FadingController())
     collectGameControllers(_config)

@@ -229,8 +229,8 @@ class BattleFeedbackAdaptor(IBattleController):
     def invalidatePassiveEngineering(self, vehicleID, data):
         self.onVehicleFeedbackReceived(_FET.VEHICLE_PASSIVE_ENGINEERING, vehicleID, data)
 
-    def invalidateActiveGunChanges(self, vehicleID, data):
-        self.onVehicleFeedbackReceived(_FET.VEHICLE_ACTIVE_GUN_CHANGED, vehicleID, data)
+    def invalidateActiveGunChanges(self, vehicleID, activeGunIndexes, switchDelay):
+        self.onVehicleFeedbackReceived(_FET.VEHICLE_ACTIVE_GUN_CHANGED, vehicleID, (activeGunIndexes, switchDelay))
 
     def invalidateStealthRadar(self, vehicleID, data):
         self.onVehicleFeedbackReceived(_FET.VEHICLE_FRONTLINE_STEALTH_RADAR_ACTIVE, vehicleID, data)

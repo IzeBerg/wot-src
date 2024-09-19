@@ -1,9 +1,10 @@
-import BigWorld, BattleReplay, logging
+import BattleReplay, logging
 from AvatarInputHandler.control_modes import PostMortemControlMode
 from account_helpers.settings_core.settings_constants import GAME
 from aih_constants import CTRL_MODE_NAME
 from helpers import dependency
 from constants import POSTMORTEM_MODIFIERS, DEFAULT_POSTMORTEM_SETTINGS, ARENA_BONUS_TYPE
+from skeletons.gui.battle_session import IBattleSessionProvider
 from skeletons.gui.lobby_context import ILobbyContext
 _TRAJECTORY_PROGRESS_DELAY = 0.1
 _logger = logging.getLogger(__name__)
@@ -16,6 +17,7 @@ class SimulatedVehicleType(object):
 
 class AvatarPostmortemComponent(object):
     _lobbyContext = dependency.descriptor(ILobbyContext)
+    _guiSessionProvider = dependency.descriptor(IBattleSessionProvider)
 
     @property
     def deadOnReconnection(self):
@@ -76,7 +78,7 @@ class AvatarPostmortemComponent(object):
         currentControlMode = self.inputHandler.ctrlModeName
         isReplay = BattleReplay.g_replayCtrl.isTimeWarpInProgress
         if currentControlMode not in CTRL_MODE_NAME.POSTMORTEM_CONTROL_MODES:
-            if isReplay or self.deadOnReconnection:
+            if isReplay or self.deadOnReconnection or not self._guiSessionProvider.shared.killCamCtrl:
                 return CTRL_MODE_NAME.POSTMORTEM
             if self.isPostmortemFeatureEnabled(CTRL_MODE_NAME.LOOK_AT_KILLER):
                 return CTRL_MODE_NAME.LOOK_AT_KILLER
@@ -93,8 +95,13 @@ class AvatarPostmortemComponent(object):
         return self.__isSimpleDeathCam
 
     def __setGameMode(self):
-        self._currentGameModeSettings = BigWorld.player().arenaExtraData.get('postmortemSettings', DEFAULT_POSTMORTEM_SETTINGS)
+        postmortemSettings = self.arenaExtraData.get('postmortemSettings', None)
+        if postmortemSettings is None:
+            self._currentGameModeSettings = DEFAULT_POSTMORTEM_SETTINGS
+        else:
+            self._currentGameModeSettings = postmortemSettings.get('gamemode', {})
         self.__applyPostMortemSettings()
+        return
 
     def __applyPostMortemSettings(self):
         from account_helpers.settings_core.options import PostMortemModeSetting

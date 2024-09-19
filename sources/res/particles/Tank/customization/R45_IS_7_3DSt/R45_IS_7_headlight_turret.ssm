@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<params>
+		<param>
+			<name>isDeferred</name>
+			<type>bool</type>
+		</param>
+	</params>
+	<node>
+		<name>Sleep Node</name>
+		<type>sleep</type>
+		<time>1.000000 1.000000</time>
+		<transition>
+			<to>turret_fwd</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>bool</type>
+					<name>isDeferred</name>
+					<checked>false</checked>
+				</condition>
+			</conditions>
+		</transition>
+		<transition>
+			<to>turret</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>bool</type>
+					<name>isDeferred</name>
+					<checked>true</checked>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>3.000000 -43.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>turret_fwd</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/R45_IS_7_3DSt/R45_IS_7_headlight_turret_fwd.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>1</loop>
+		<uiPosition>-353.000000 -42.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>turret</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/R45_IS_7_3DSt/R45_IS_7_headlight_turret.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>1</loop>
+		<uiPosition>176.000000 104.000000 0.000000</uiPosition>
+	</node>
+</root>

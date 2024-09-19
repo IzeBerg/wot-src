@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<version>4</version>
+	<GameObjects>
+		<GameObject>
+			<name>128_ls_fog01_root</name>
+			<UUID>d460d8b0-d863-4fca-8ea9-d7684dcc51ec</UUID>
+			<flags>2</flags>
+		</GameObject>
+		<GameObject>
+			<name>128_ls_fog01_activezone</name>
+			<UUID>9ca5e0e8-f98a-43b9-b93b-82d49df611c9</UUID>
+			<flags>2</flags>
+		</GameObject>
+		<GameObject>
+			<name>128_ls01_activezone_fog_area</name>
+			<UUID>e39aa202-1f2b-4f89-a599-d927b2f55508</UUID>
+			<flags>2</flags>
+		</GameObject>
+	</GameObjects>
+	<components>
+		<ComponentPool>
+			<type>Hierarchy</type>
+			<version>2</version>
+			<component>
+				<UUID>9ca5e0e8-f98a-43b9-b93b-82d49df611c9</UUID>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Parent</name>
+						<link>d460d8b0-d863-4fca-8ea9-d7684dcc51ec</link>
+					</property>
+				</config>
+			</component>
+			<component>
+				<UUID>e39aa202-1f2b-4f89-a599-d927b2f55508</UUID>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Parent</name>
+						<link>9ca5e0e8-f98a-43b9-b93b-82d49df611c9</link>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>Transform</type>
+			<version>1</version>
+			<component>
+				<UUID>d460d8b0-d863-4fca-8ea9-d7684dcc51ec</UUID>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>0 0 0</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>-0 0 0</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<UUID>9ca5e0e8-f98a-43b9-b93b-82d49df611c9</UUID>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>0 0 0</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>-0 0 0</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<UUID>e39aa202-1f2b-4f89-a599-d927b2f55508</UUID>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>
+							0 -2.39371 0
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>-0 0 0</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>PrismArea</type>
+			<version>1</version>
+			<component>
+				<UUID>e39aa202-1f2b-4f89-a599-d927b2f55508</UUID>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Curvature</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Tesselation Step</name>
+						<value>20</value>
+					</property>
+					<property>
+						<name>Height</name>
+						<value>10</value>
+					</property>
+					<property>
+						<name>Points</name>
+						<collection>
+							<item>
+								<value>
+									105.897 117.477
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									133.886 62.6723
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									139.884 5.93106
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									122.941 -49.9502
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									98.3541 -86.9345
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									65.9745 -120.104
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									18.2779 -150.011
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-70.1336 -170.466
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-145.683 -172.556
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-213.205 -157.072
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-261.62 -129.374
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-291.835 -95.4745
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-312.578 -51.6105
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-329.094 19.642
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-328.472 49.6691
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-318.119 80.1546
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-243.181 168.792
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-121.881 239.246
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-82.3058 241.086
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-45.2237 231.947
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									23.4821 199.852
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									71.049 160.817
+									<!--BW_String-->
+								</value>
+							</item>
+						</collection>
+					</property>
+					<property>
+						<name>Douglas-Peucker Epsilon</name>
+						<value>
+							0.2
+							<!--BW_String-->
+						</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>Area trigger</type>
+			<version>1</version>
+			<component>
+				<UUID>e39aa202-1f2b-4f89-a599-d927b2f55508</UUID>
+				<flags>35</flags>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>VisibilityObstacle</type>
+			<version>1</version>
+			<component>
+				<UUID>e39aa202-1f2b-4f89-a599-d927b2f55508</UUID>
+				<flags>34</flags>
+				<config>
+					<property>
+						<name>Colliders</name>
+						<link>00000000-0000-0000-0000-000000000000</link>
+					</property>
+					<property>
+						<name>PrismArea</name>
+						<link>e39aa202-1f2b-4f89-a599-d927b2f55508</link>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>VisibilityGroup</type>
+			<version>1</version>
+			<component>
+				<UUID>e39aa202-1f2b-4f89-a599-d927b2f55508</UUID>
+				<flags>34</flags>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>SoundZone</type>
+			<version>1</version>
+			<component>
+				<UUID>e39aa202-1f2b-4f89-a599-d927b2f55508</UUID>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Zone Enter Event</name>
+						<value>map_box_128_last_frontier_fog_ZoneEnter</value>
+					</property>
+					<property>
+						<name>Zone Exit Event</name>
+						<value>map_box_128_last_frontier_fog_ZoneExit</value>
+					</property>
+					<property>
+						<name>Emitter Event</name>
+						<value/>
+					</property>
+					<property>
+						<name>Reverb</name>
+						<value/>
+					</property>
+					<property>
+						<name>Reverb Level</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Volume Deviation</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Color</name>
+						<value>
+							0 0 1 0.5
+							<!--BW_String-->
+						</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>OnPlayerInZoneComponent</type>
+			<version>1</version>
+			<component>
+				<UUID>e39aa202-1f2b-4f89-a599-d927b2f55508</UUID>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>prefabPath</name>
+						<isAsset>true</isAsset>
+						<value>content/CGFPrefabs/MapBox/128_last_frontier_v/128_ls_fog_post_effect.prefab</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>PolygonBorderVisualComponent</type>
+			<version>1</version>
+			<component>
+				<UUID>e39aa202-1f2b-4f89-a599-d927b2f55508</UUID>
+				<flags>2</flags>
+				<config>
+					<property>
+						<name>Attach to the ground</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Border Height</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Zone Visible</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Zone Fade</name>
+						<value>
+							1.3
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Zone Intensity</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Zone Offset</name>
+						<value>
+							0.1
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Tessellation Factor</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Zone Color</name>
+						<value>
+							0.521569 0.521569 0.521569 0
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Wall Visible</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Draw Wall Stripes</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Wall Height</name>
+						<value>
+							10.1
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Wall Color</name>
+						<value>
+							0.588235 0.588235 0.588235 0.3
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Dissolve height</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Dissolve power</name>
+						<value>6</value>
+					</property>
+					<property>
+						<name>Stripe width</name>
+						<value>4</value>
+					</property>
+					<property>
+						<name>Stripe fill ratio</name>
+						<value>
+							0.5
+							<!--BW_String-->
+						</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>VSEComponent</type>
+			<version>1</version>
+			<component>
+				<UUID>e39aa202-1f2b-4f89-a599-d927b2f55508</UUID>
+				<flags>32</flags>
+				<config>
+					<property>
+						<name>Path</name>
+						<isAsset>true</isAsset>
+						<value>vscript/plans/MapBox_2024/vse_ls_fog_area.xml</value>
+					</property>
+					<property>
+						<name>AutoStart</name>
+						<value>1</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>PartialVisibilityGroupComponent</type>
+			<version>1</version>
+			<component>
+				<UUID>e39aa202-1f2b-4f89-a599-d927b2f55508</UUID>
+				<flags>34</flags>
+				<config>
+					<property>
+						<name>delay</name>
+						<value>5</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>MinimapChangerComponent</type>
+			<version>1</version>
+			<component>
+				<UUID>e39aa202-1f2b-4f89-a599-d927b2f55508</UUID>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>LayerID</name>
+						<value>mmap_128_ls_fog01</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>WeatherZoneUINotification</type>
+			<version>1</version>
+			<component>
+				<UUID>e39aa202-1f2b-4f89-a599-d927b2f55508</UUID>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>trigger</name>
+						<link>e39aa202-1f2b-4f89-a599-d927b2f55508</link>
+					</property>
+					<property>
+						<name>zoneType</name>
+						<value>fogZone</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>ZoneHint</type>
+			<version>1</version>
+			<component>
+				<UUID>e39aa202-1f2b-4f89-a599-d927b2f55508</UUID>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>trigger</name>
+						<link>e39aa202-1f2b-4f89-a599-d927b2f55508</link>
+					</property>
+					<property>
+						<name>hintUniqName</name>
+						<value>local_story.LSH_FOG</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+	</components>
+</root>

@@ -28,6 +28,15 @@ msgstr "перейти к предыдущим сообщениям"
 msgid "battle/receivers/chatIsLocked"
 msgstr "%(open)sЧАТ ОТКЛЮЧЁН%(close)s"
 
+msgid "battle/receivers/chatIsLockedCountryControlToolTip"
+msgstr "Боевой чат недоступен игрокам в вашей стране."
+
+msgid "battle/receivers/chatIsLockedOtherControlToolTip"
+msgstr "Боевой чат недоступен для вашего аккаунта."
+
+msgid "battle/receivers/chatIsLockedParentalControlToolTip"
+msgstr "Боевой чат отключён в рамках родительского контроля."
+
 msgid "battle/receivers/chatIsLockedToolTip"
 msgstr "Включить боевой чат можно в настройках игры."
 
@@ -2480,6 +2489,27 @@ msgstr "Доступен дополнительный слот для исклю
 msgid "serviceChannelMessages/excludedMap/unavailable/title"
 msgstr "Исключение карты с подпиской WoT Plus недоступно"
 
+msgid "serviceChannelMessages/externalVehicleRent/expired/reason"
+msgstr "Причина"
+
+msgid "serviceChannelMessages/externalVehicleRent/expired/reason_boosteroid"
+msgstr "Подписка Boosteroid закончилась."
+
+msgid "serviceChannelMessages/externalVehicleRent/expired/reason_default"
+msgstr "Подписка закончилась."
+
+msgid "serviceChannelMessages/externalVehicleRent/expired/title"
+msgstr "Машина отключена"
+
+msgid "serviceChannelMessages/externalVehicleRent/expired/vehicle"
+msgstr "Машина"
+
+msgid "serviceChannelMessages/externalVehicleRent/started/title"
+msgstr "Машина доступна"
+
+msgid "serviceChannelMessages/externalVehicleRent/started/vehicle"
+msgstr "Машина"
+
 msgid "serviceChannelMessages/failedPersonalMission"
 msgstr "Прогресс сброшен"
 
@@ -3060,9 +3090,6 @@ msgstr "К опросу"
 msgid "serviceChannelMessages/mapbox/congrats/title"
 msgstr "Поздравляем!"
 
-msgid "serviceChannelMessages/mapbox/crewbookRequestError"
-msgstr "Произошла ошибка при выборе наград. Пожалуйста, попробуйте ещё раз."
-
 msgid "serviceChannelMessages/mapbox/eventEnded/text"
 msgstr ""
 "Событие «Разведка боем» завершено. Благодарим за ваш вклад в разработку "
@@ -3076,7 +3103,7 @@ msgstr ""
 
 msgid "serviceChannelMessages/mapbox/eventStarted"
 msgstr ""
-"Событие «Разведка боем» началось\n"
+"Событие «Разведка боем» началось.\n"
 "\n"
 "Играйте на разрабатываемых картах на технике VIII–X уровней, делитесь своим мнением в опросах и получайте награды!"
 
@@ -3096,7 +3123,7 @@ msgid "serviceChannelMessages/mapbox/surveyAvailable/header"
 msgstr "Доступен опрос"
 
 msgid "serviceChannelMessages/mapbox/surveyAvailable/singleMap"
-msgstr "Вы можете пройти опрос о карте %(mapName)s режима «Разведка боем»."
+msgstr "Вы можете пройти опрос о карте «%(mapName)s» режима «Разведка боем»."
 
 msgid "serviceChannelMessages/multiplier"
 msgstr " (x%(count)s)"

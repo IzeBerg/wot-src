@@ -186,6 +186,7 @@ package net.wg.gui.battle.views.consumablesPanel
             this._isSelectedIndicatorVisible = false;
             invalidate(SELECTED_INDICATOR_VISIBILITY);
             this._coolDownTimer.setPositionAsPercent(param1);
+            this._isReloading = true;
          }
          else
          {
@@ -197,7 +198,7 @@ package net.wg.gui.battle.views.consumablesPanel
       {
          var _loc5_:Number = NaN;
          this._isAfterCoolDown = false;
-         if(param1 >= 0 && param2 != -1)
+         if(param1 > 0 && param2 != -1)
          {
             this._isSelectedIndicatorVisible = false;
             invalidate(SELECTED_INDICATOR_VISIBILITY);
@@ -211,10 +212,10 @@ package net.wg.gui.battle.views.consumablesPanel
          }
          else
          {
-            this._isReloading = false;
             this._coolDownTimer.end();
-            if(param1 == 0)
+            if(param1 == 0 && this._isReloading)
             {
+               this._isReloading = false;
                this.state = BATTLE_ITEM_STATES.RELOADED;
                this._isAfterCoolDown = true;
             }
@@ -357,7 +358,7 @@ package net.wg.gui.battle.views.consumablesPanel
          }
       }
       
-      private function reloadingEnd() : void
+      protected function reloadingEnd() : void
       {
          this._isSelectedIndicatorVisible = this._quantity > 0;
          invalidate(SELECTED_INDICATOR_VISIBILITY);
@@ -430,6 +431,26 @@ package net.wg.gui.battle.views.consumablesPanel
       
       public function set isReplay(param1:Boolean) : void
       {
+      }
+      
+      protected function getQuantity() : int
+      {
+         return this._quantity;
+      }
+      
+      protected function get isCurrent() : Boolean
+      {
+         return this._isCurrent;
+      }
+      
+      protected function get isSelectedIndicatorVisible() : Boolean
+      {
+         return this._isSelectedIndicatorVisible;
+      }
+      
+      protected function getCoolDownTimer() : CoolDownTimer
+      {
+         return this._coolDownTimer;
       }
       
       private function onColorSchemasUpdatedHandler(param1:ColorSchemeEvent) : void

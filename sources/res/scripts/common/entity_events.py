@@ -3,10 +3,12 @@ from synchronous_event import SynchronousEvent
 from events_debugger import EventsDebugger
 
 class EntityEvents(object):
-    __slots__ = ('_eventManager', '_debugger')
+    __slots__ = ('_eventManager', '_debugger', 'onDynComponentGroupAdded', 'onDynComponentGroupRemoved')
 
     def __init__(self):
         self._eventManager = EventManager()
+        self.onDynComponentGroupAdded = self._createEvent()
+        self.onDynComponentGroupRemoved = self._createEvent()
         self._debugger = None
         return
 

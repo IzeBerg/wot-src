@@ -8,7 +8,7 @@ from gui.battle_control import avatar_getter
 from constants import VEHICLE_BUNKER_TURRET_TAG
 from gui.battle_control.arena_info.interfaces import IArenaVehiclesController
 from gui.battle_control.arena_info.settings import ARENA_LISTENER_SCOPE
-from gui.battle_control.battle_constants import BonusRibbonLabel as _BRL
+from gui.battle_control.battle_constants import BonusRibbonLabel as _BRL, VEHICLE_VIEW_STATE_ID_TO_WEATHER_ZONE_NAME
 from gui.impl import backport
 from gui.impl.gen import R
 from gui.shared import g_eventBus, EVENT_BUS_SCOPE
@@ -75,7 +75,10 @@ _BATTLE_EVENTS_SETTINGS_TO_BATTLE_EFFICIENCY_TYPES = {BATTLE_EVENTS.ENEMY_HP_DAM
                                  _BET.RECEIVED_BY_AIRSTRIKE,
                                  _BET.RECEIVED_BY_ARTILLERY,
                                  _BET.RECEIVED_BY_DEATH_ZONE,
-                                 _BET.MINEFIELD_ZONE), 
+                                 _BET.MINEFIELD_ZONE,
+                                 _BET.DEATH_ZONE,
+                                 _BET.STATIC_DEATH_ZONE,
+                                 _BET.FIRE_DAMAGE_ZONE), 
    BATTLE_EVENTS.RECEIVED_CRITS: (
                                 _BET.RECEIVED_CRITS,), 
    BATTLE_EVENTS.ENEMIES_STUN: (
@@ -110,6 +113,13 @@ def _perkRibbonFormatter(ribbon, arenaDP, updater):
     skillName = tankmen.getSkillsConfig().vsePerkToSkill.get(perkID)
     rightFieldStr = R.strings.crew_perks.dyn(skillName).name
     updater(ribbonID=ribbon.getID(), ribbonType=ribbon.getType(), vehName=skillName, rightFieldStr=backport.text(rightFieldStr()))
+
+
+def _weatherZoneRibbonFormatter(ribbon, arenaDP, updater):
+    zoneID = ribbon.getWeatherZoneID()
+    zoneName = VEHICLE_VIEW_STATE_ID_TO_WEATHER_ZONE_NAME[zoneID]
+    rightFieldStr = R.strings.ingame_gui.efficiencyRibbons.dyn(zoneName)
+    updater(ribbonID=ribbon.getID(), ribbonType=ribbon.getType(), vehName=zoneName, rightFieldStr=backport.text(rightFieldStr()))
 
 
 def _enemyDetectionRibbonFormatter(ribbon, arenaDP, updater):
@@ -236,7 +246,9 @@ _RIBBONS_FMTS = {_BET.CAPTURE: _baseRibbonFormatter,
    _BET.VEHICLE_HEALTH_ADDED: _healthAddedFormatter, 
    _BET.PERK: _perkRibbonFormatter, 
    _BET.DAMAGE_BY_BATTLESHIP: _singleVehRibbonFormatter, 
-   _BET.DAMAGE_BY_DESTROYER: _singleVehRibbonFormatter}
+   _BET.DAMAGE_BY_DESTROYER: _singleVehRibbonFormatter, 
+   _BET.WEATHER_ZONE: _weatherZoneRibbonFormatter, 
+   _BET.FIRE_DAMAGE_ZONE: _singleVehRibbonFormatter}
 _DISPLAY_PRECONDITIONS = {_BET.DETECTION: lambda dp, ribbon: dp.getVehicleInfo(ribbon.getVehIDs()[0]).vehicleType.compactDescr > 0}
 
 class BattleRibbonsPanel(RibbonsPanelMeta, IArenaVehiclesController):
@@ -574,7 +586,13 @@ class BattleRibbonsPanel(RibbonsPanelMeta, IArenaVehiclesController):
           backport.text(R.strings.ingame_gui.efficiencyRibbons.damageByDestroyer())],
          [
           _BET.PERK,
-          '']]
+          ''],
+         [
+          _BET.WEATHER_ZONE,
+          ''],
+         [
+          _BET.FIRE_DAMAGE_ZONE,
+          backport.text(R.strings.ingame_gui.efficiencyRibbons.fireDamageZone())]]
 
     def __setupView(self):
         ribbonsCfg = self._getRibbonsConfig()

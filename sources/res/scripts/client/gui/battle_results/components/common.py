@@ -13,7 +13,6 @@ from gui.battle_control.battle_constants import WinStatus
 _ARENA_TYPE_FORMAT = '#arenas:type/{0}/name'
 _ARENA_TYPE_EXT_FORMAT = '#menu:loading/battleTypes/{0}'
 _ARENA_FULL_NAME_FORMAT = '#battle_results:common/arena/fullName'
-_ARENA_ICON_PATH = '../maps/icons/map/stats/%s.png'
 
 def makeArenaFullName(arenaTypeName, i18nKey):
     arenaFullName = i18n.makeString(_ARENA_FULL_NAME_FORMAT)
@@ -76,7 +75,7 @@ class ArenaIconItem(base.StatsItem):
     __slots__ = ()
 
     def _convert(self, record, reusable):
-        return reusable.common.getArenaIcon(_ARENA_ICON_PATH)
+        return reusable.common.arenaVisitor.getArenaIcon('stats')
 
 
 class ArenaDurationItem(base.StatsItem):

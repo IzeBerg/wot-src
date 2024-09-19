@@ -473,6 +473,8 @@ class SettingsCore(ISettingsCore):
          (
           CONTROLS.MOUSE_SNIPER_SENS, options.MouseSensitivitySetting('dualgun')),
          (
+          CONTROLS.MOUSE_SNIPER_SENS, options.MouseSensitivitySetting('twinGun')),
+         (
           CONTROLS.MOUSE_STRATEGIC_SENS, options.MouseSensitivitySetting('strategic')),
          (
           CONTROLS.MOUSE_ASSIST_AIM_SENS,

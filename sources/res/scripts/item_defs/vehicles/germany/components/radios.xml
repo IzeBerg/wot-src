@@ -47,6 +47,7 @@
 		<FuG5_KW>257</FuG5_KW>
 		<SEM_25B>258</SEM_25B>
 		<Fu_8_SE_30_M>259</Fu_8_SE_30_M>
+		<SEM_25C>260</SEM_25C>
 		<R_5a_S>263</R_5a_S>
 		<FuG5_SH>314</FuG5_SH>
 		<FuG7_SH>315</FuG7_SH>
@@ -73,6 +74,7 @@
 		<_10WSc_StoryMode>64012</_10WSc_StoryMode>
 		<FuG12_StoryMode__1>64013</FuG12_StoryMode__1>
 		<FuG12_StoryMode_2>64014</FuG12_StoryMode_2>
+		<FuG5_StoryMode>64040</FuG5_StoryMode>
 	</ids>
 	<shared>
 		<FuG2>
@@ -635,6 +637,21 @@
 				<!--BW_String-->
 			</repairCost>
 		</SEM_25B>
+		<SEM_25C>
+			<userString>#germany_vehicles:SEM_25C</userString>
+			<tags/>
+			<level>10</level>
+			<price>55000</price>
+			<notInShop>true</notInShop>
+			<weight>50</weight>
+			<distance>750</distance>
+			<maxHealth>180</maxHealth>
+			<maxRegenHealth>108</maxRegenHealth>
+			<repairCost>
+				3.5
+				<!--BW_String-->
+			</repairCost>
+		</SEM_25C>
 		<SEM_25_funkgerat>
 			<userString>#germany_vehicles:SEM_25_funkgerat</userString>
 			<tags/>
@@ -1063,5 +1080,20 @@
 			<repairCost>3</repairCost>
 			<notInShop>True</notInShop>
 		</FuG12_StoryMode_2>
+		<FuG5_StoryMode>
+			<userString>#germany_vehicles:FuG5</userString>
+			<tags/>
+			<level>3</level>
+			<price>630</price>
+			<weight>50</weight>
+			<distance>310</distance>
+			<maxHealth>100</maxHealth>
+			<maxRegenHealth>49</maxRegenHealth>
+			<repairCost>
+				0.5
+				<!--BW_String-->
+			</repairCost>
+			<notInShop>True</notInShop>
+		</FuG5_StoryMode>
 	</shared>
 </root>

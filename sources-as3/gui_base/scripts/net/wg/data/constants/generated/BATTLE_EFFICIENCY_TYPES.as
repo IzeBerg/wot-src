@@ -53,6 +53,10 @@ package net.wg.data.constants.generated
       
       public static const VEHICLE_HEALTH_ADDED:String = "healthAdded";
       
+      public static const WEATHER_ZONE:String = "weatherZone";
+      
+      public static const FIRE_DAMAGE_ZONE:String = "fireDamageZone";
+      
       public static const VEHICLE_RECOVERY:String = "vehicleRecovery";
       
       public static const ENEMY_SECTOR_CAPTURED:String = "enemySectorCaptured";

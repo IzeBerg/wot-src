@@ -11,7 +11,8 @@ from constants import VEHICLE_HIT_EFFECT, VEHICLE_SIEGE_STATE, ATTACK_REASON_IND
 from debug_utils import LOG_DEBUG_DEV
 from shared_utils import nextTick
 from visual_script.misc import ASPECT
-from Event import Event
+from DamageComponents import DamageZoneType
+from Event import Event, SafeEvent
 from gui.battle_control import vehicle_getter, avatar_getter
 from gui.battle_control.avatar_getter import getSoundNotifications
 from gui.battle_control.battle_constants import FEEDBACK_EVENT_ID as _FET, VEHICLE_VIEW_STATE
@@ -30,6 +31,7 @@ from skeletons.vehicle_appearance_cache import IAppearanceCache
 from soft_exception import SoftException
 from vehicle_systems.components.shot_damage_components import ShotDamageComponent
 from vehicle_systems.entity_components.battle_abilities_component import BattleAbilitiesComponent
+from vehicle_systems.entity_components.vehicle_mechanic_component import getVehicleMechanic
 from vehicle_systems.components.vehicle_pickup_component import VehiclePickupComponent
 from vehicle_systems.model_assembler import collisionIdxToTrackPairIdx
 from vehicle_systems.tankStructure import TankPartNames, TankPartIndexes, TankSoundObjectsIndexes
@@ -90,7 +92,22 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
     __specialSounds = dependency.descriptor(ISpecialSoundCtrl)
     __appearanceCache = dependency.descriptor(IAppearanceCache)
     __settingsCore = dependency.descriptor(ISettingsCore)
-    activeGunIndex = property(lambda self: self.__activeGunIndex)
+
+    @property
+    def activeGunIndexes(self):
+        return self.twinGunIndexes or (self.dualGunIndex,)
+
+    @property
+    def dualGunIndex(self):
+        return self.__dualGunIndex
+
+    @property
+    def twinGunIndexes(self):
+        ctrl = self.getVehicleMechanic('twinGunController')
+        if ctrl is not None:
+            return ctrl.getActiveGunIndexes()
+        else:
+            return ()
 
     @property
     def speedInfo(self):
@@ -110,10 +127,11 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
 
     @property
     def isTrackWithinTrack(self):
-        if self.typeDescriptor is None:
-            return False
-        else:
-            return self.typeDescriptor.isTrackWithinTrack
+        return self.typeDescriptor is not None and self.typeDescriptor.isTrackWithinTrack
+
+    @property
+    def isMultiGun(self):
+        return self.typeDescriptor is not None and self.typeDescriptor.turret.multiGun
 
     @property
     def wheelsScrollSmoothed(self):
@@ -154,6 +172,10 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
     def isPostmortemViewPointDefined(self):
         return self.postmortemViewPointName is not None and self.postmortemViewPointName != ''
 
+    @property
+    def isPlayerTeam(self):
+        return self.guiSessionProvider.getCtx().isAlly(self.id)
+
     def getBounds(self, partIdx):
         if self.appearance is not None:
             return self.appearance.getBounds(partIdx)
@@ -176,7 +198,8 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
         self.extrasHitPoint = dict()
         self.typeDescriptor = None
         self.appearance = None
-        self.onAppearanceReady = Event()
+        self.onAppearanceReady = SafeEvent()
+        self.onDiscreteShotDone = SafeEvent()
         self.isPlayerVehicle = False
         self.isStarted = False
         self.__isEnteringWorld = False
@@ -192,13 +215,14 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
         self.__wheelsSteeringFilter = None
         self.isUpgrading = False
         self.isForceReloading = False
-        self.__activeGunIndex = None
+        self.__dualGunIndex = None
         self.refreshNationalVoice()
         self.__prevHealth = None
         self.__quickShellChangerIsActive = False
         self.__isInDebuff = False
         self.__cameraTargetMatrix = Math.WGAdaptiveMatrixProvider()
         self.set_postmortemViewPointName()
+        self.onShowDamageFromShot = Event()
         return
 
     def reload(self):
@@ -261,7 +285,7 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
             self.isCrewActive = True
             descr = vehicles.VehicleDescr(respawnCompactDescr, extData=self)
             self.__turretDetachmentConfirmed = False
-            if 'battle_royale' not in descr.type.tags:
+            if 'battle_royale' not in descr.type.tags and not self.enableExternalRespawn:
                 self.health = self.publicInfo.maxHealth
                 self.__prevHealth = self.publicInfo.maxHealth
             return descr
@@ -374,6 +398,7 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
         if not self.isStarted:
             return
         else:
+            self.onShowDamageFromShot(attackerID, points, effectsIndex, damageFactor, lastMaterialIsShield)
             invokeInstantStatusForVehicle(self, InstantStatuses.ProjectileHitsReceivedComponent)
             effectsDescr = vehicles.g_cache.shotEffects[effectsIndex]
             maxComponentIdx = self.calcMaxComponentIdx()
@@ -736,7 +761,7 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
             ctrl.notifyRibbonChanges(self.perksRibbonNotify)
         return
 
-    def onHealthChanged(self, newHealth, oldHealth, attackerID, attackReasonID):
+    def onHealthChanged(self, newHealth, oldHealth, attackerID, attackReasonID, attackReasonExtID):
         if newHealth > 0 and self.health <= 0:
             self.health = newHealth
             self.__prevHealth = newHealth
@@ -746,14 +771,14 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
             if not self.isStarted:
                 self.__prevHealth = newHealth
                 return
-            BigWorld.player().arena.onVehicleHealthChanged(self.id, attackerID, oldHealth - newHealth)
+            player = BigWorld.player()
+            attachedVehicle = player.getVehicleAttached()
+            player.arena.onVehicleHealthChanged(self.id, attackerID, oldHealth - newHealth)
             if not self.appearance.damageState.isCurrentModelDamaged:
                 self.appearance.onVehicleHealthChanged()
             if self.health <= 0:
                 if self.isCrewActive:
                     self.__onVehicleDeath()
-                player = BigWorld.player()
-                attachedVehicle = player.getVehicleAttached()
                 if player.isObserver() and player.isObserverFPV and self.id == attachedVehicle.id:
                     player.switchObserverFPV()
             if self.isPlayerVehicle:
@@ -765,6 +790,11 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
                     if effectsList is not None:
                         keyPoints, effects, _ = random.choice(effectsList)
                         self.appearance.boundEffects.addNewToNode(TankPartNames.HULL, None, effects, keyPoints, entity=self, damageFactor=damageFactor)
+            elif attackReasonID == ATTACK_REASON_INDICES[ATTACK_REASON.DAMAGE_ZONE] and attackReasonExtID == int(DamageZoneType.FIRE_DAMAGE_ZONE) and attachedVehicle:
+                soundObject = self.appearance.engineAudition.getSoundObject(TankSoundObjectsIndexes.ENGINE)
+                if soundObject is not None:
+                    soundEvent = 'fire_damage_PC' if self.id == attachedVehicle.id else 'fire_damage_NPC'
+                    soundObject.play(soundEvent, verbose=False)
             self.__prevHealth = newHealth
             return
 
@@ -870,9 +900,10 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
             if self.typeDescriptor is not None and self.typeDescriptor.hasSiegeMode:
                 self.typeDescriptor.onSiegeStateChanged(newState)
                 self.appearance.onSiegeStateChanged(newState, timeToNextMode)
-                dualAccuracy = self.dynamicComponents.get('dualAccuracy')
-                if dualAccuracy is not None:
-                    dualAccuracy.onSiegeStateUpdated(self.typeDescriptor)
+                siegeComponents = ('dualAccuracy', )
+                for mechanicComponent in filter(None, map(self.getVehicleMechanic, siegeComponents)):
+                    mechanicComponent.onSiegeStateUpdated(self.typeDescriptor)
+
                 if self.isPlayerVehicle or self.id == BigWorld.player().observedVehicleID:
                     inputHandler = BigWorld.player().inputHandler
                     if inputHandler.siegeModeControl:
@@ -881,6 +912,9 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
                 _logger.error('Wrong usage! Should be called only on vehicle with valid typeDescriptor and siege mode')
             return
 
+    def getVehicleMechanic(self, mechanicName):
+        return getVehicleMechanic(mechanicName, self)
+
     def getSiegeSwitchTimeLeft(self):
         ownVehicle = self.dynamicComponents.get('ownVehicle')
         if ownVehicle is None:
@@ -888,20 +922,20 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
         else:
             return ownVehicle.getSiegeStateTimeLeft()
 
-    def onActiveGunChanged(self, activeGun, switchTimes):
+    def onActiveDualGunChanged(self, dualGunIndex, switchTimes):
         if not self.isStarted:
             return
         else:
             if self.typeDescriptor is not None and self.typeDescriptor.isDualgunVehicle:
-                if self.__activeGunIndex == activeGun:
+                if self.__dualGunIndex == dualGunIndex:
                     return
-                self.__activeGunIndex = activeGun
+                self.__dualGunIndex = dualGunIndex
                 swElapsedTime = switchTimes[2] - switchTimes[1]
                 afterShotDelay = self.typeDescriptor.gun.dualGun.afterShotDelay
                 leftDelayTime = max(afterShotDelay - swElapsedTime, 0.0)
                 ctrl = self.guiSessionProvider.shared.feedback
                 if ctrl is not None:
-                    ctrl.invalidateActiveGunChanges(self.id, (activeGun, leftDelayTime))
+                    ctrl.invalidateActiveGunChanges(self.id, [dualGunIndex], leftDelayTime)
             else:
                 _logger.error('switch gun trouble: using with not valid vehicle')
             return
@@ -1211,6 +1245,9 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
             highlighter.highlight(True)
 
     def delModel(self, model):
+        if self.isDestroyed or not hasattr(self, 'appearance'):
+            _logger.warning('Vehicle::delModel called by %d after destroy', type(model))
+            return
         highlighter = self.appearance.highlighter
         hlOn = highlighter.isOn
         hlSimpleEdge = highlighter.isSimpleEdge

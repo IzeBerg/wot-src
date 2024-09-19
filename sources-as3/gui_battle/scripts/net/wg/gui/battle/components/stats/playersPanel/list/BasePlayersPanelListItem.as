@@ -143,6 +143,14 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       
       protected var isAlive:Boolean = true;
       
+      protected var isMute:Boolean = false;
+      
+      protected var isSelected:Boolean = false;
+      
+      protected var hasBadge:Boolean = false;
+      
+      protected var userProps:IUserProps = null;
+      
       private var _holderItemID:int = -1;
       
       private var _state:int = -1;
@@ -150,8 +158,6 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       private var _vehicleName:String = null;
       
       private var _frags:int = 0;
-      
-      private var _isMute:Boolean = false;
       
       private var _isSpeaking:Boolean = false;
       
@@ -165,8 +171,6 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       
       private var _vehicleLevel:int = 0;
       
-      private var _isSelected:Boolean = false;
-      
       private var _isCurrentPlayer:Boolean = false;
       
       private var _isRightAligned:Boolean = false;
@@ -175,11 +179,7 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       
       private var _badgeVO:BadgeVisualVO = null;
       
-      private var _hasBadge:Boolean = false;
-      
       private var _showDogTag:Boolean = false;
-      
-      private var _userProps:IUserProps = null;
       
       private var _commons:ICommons = null;
       
@@ -210,7 +210,7 @@ package net.wg.gui.battle.components.stats.playersPanel.list
             this.dynamicSquad.dispose();
             this.dynamicSquad = null;
          }
-         this._userProps = null;
+         this.userProps = null;
          this.fragsTF = null;
          this.chatCommandState.dispose();
          this.chatCommandState = null;
@@ -311,11 +311,11 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          }
          if(isInvalid(PlayersPanelInvalidationType.BADGE_CHANGED))
          {
-            if(this._hasBadge)
+            if(this.hasBadge)
             {
                this.badge.setData(this._badgeVO);
             }
-            this.badge.visible = this._hasBadge;
+            this.badge.visible = this.hasBadge;
          }
          if(isInvalid(PlayersPanelInvalidationType.VEHILCE_NAME))
          {
@@ -327,9 +327,9 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          }
          if(isInvalid(PlayersPanelInvalidationType.MUTE))
          {
-            this.mute.visible = this._isMute;
-            this.speakAnimation.mute = this._isMute;
-            if(!this._isMute && this._isSpeaking)
+            this.mute.visible = this.isMute;
+            this.speakAnimation.mute = this.isMute;
+            if(!this.isMute && this._isSpeaking)
             {
                this.speakAnimation.speaking = true;
             }
@@ -338,13 +338,13 @@ package net.wg.gui.battle.components.stats.playersPanel.list
                this.disableCommunication.visible = this._isIgnoredTmp;
             }
          }
-         if(!this._isMute && isInvalid(PlayersPanelInvalidationType.IS_SPEAKING))
+         if(!this.isMute && isInvalid(PlayersPanelInvalidationType.IS_SPEAKING))
          {
             this.speakAnimation.speaking = this._isSpeaking;
          }
          if(isInvalid(PlayersPanelInvalidationType.SELECTED))
          {
-            this.selfBg.visible = this._isSelected;
+            this.selfBg.visible = this.isSelected;
          }
          if(isInvalid(PlayersPanelInvalidationType.ALIVE))
          {
@@ -382,6 +382,11 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          return null;
       }
       
+      public function getIsIgnoredTmp() : Boolean
+      {
+         return this._isIgnoredTmp;
+      }
+      
       public function getPlayerNameFullWidth() : uint
       {
          return (this.playerNameFullTF.textWidth | 0) + PLAYER_NAME_MARGIN;
@@ -404,10 +409,10 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       
       public function setBadge(param1:BadgeVisualVO, param2:Boolean) : void
       {
-         if(this._badgeVO == null || !this._badgeVO.isEquals(param1) && this._hasBadge != param2)
+         if(this._badgeVO == null || !this._badgeVO.isEquals(param1) && this.hasBadge != param2)
          {
             this._badgeVO = param1;
-            this._hasBadge = param2;
+            this.hasBadge = param2;
             invalidate(PlayersPanelInvalidationType.BADGE_CHANGED);
          }
       }
@@ -472,11 +477,11 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       
       public function setIsMute(param1:Boolean) : void
       {
-         if(this._isMute == param1)
+         if(this.isMute == param1)
          {
             return;
          }
-         this._isMute = param1;
+         this.isMute = param1;
          invalidate(PlayersPanelInvalidationType.MUTE);
       }
       
@@ -504,11 +509,11 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       
       public function setIsSelected(param1:Boolean) : void
       {
-         if(this._isSelected == param1)
+         if(this.isSelected == param1)
          {
             return;
          }
-         this._isSelected = param1;
+         this.isSelected = param1;
          invalidate(PlayersPanelInvalidationType.SELECTED);
       }
       
@@ -553,19 +558,25 @@ package net.wg.gui.battle.components.stats.playersPanel.list
             return;
          }
          this.playerNameFullTF.width = param1;
-         if(this._userProps)
+         if(this.userProps)
          {
-            this._commons.truncateTextFieldText(this.playerNameCutTF,this._userProps.userName);
-            this._commons.formatPlayerName(this.playerNameFullTF,this._userProps,!this._isCurrentPlayer,this._isCurrentPlayer);
+            this._commons.truncateTextFieldText(this.playerNameCutTF,this.userProps.userName);
+            this._commons.formatPlayerName(this.playerNameFullTF,this.userProps,!this._isCurrentPlayer,this._isCurrentPlayer);
          }
          this.updatePositions();
       }
       
       public function setPlayerNameProps(param1:IUserProps) : void
       {
-         this._userProps = param1;
-         this._commons.truncateTextFieldText(this.playerNameCutTF,param1.userName);
-         this._commons.formatPlayerName(this.playerNameFullTF,this._userProps,!this._isCurrentPlayer,this._isCurrentPlayer);
+         this.userProps = param1;
+         this._commons.truncateTextFieldText(this.playerNameCutTF,this.userProps.userName);
+         this._commons.formatPlayerName(this.playerNameFullTF,this.userProps,!this._isCurrentPlayer,this._isCurrentPlayer);
+      }
+      
+      public function setPrestige(param1:int, param2:int) : void
+      {
+         this.prestigeLevel.markId = param1;
+         this.prestigeLevel.level = param2;
       }
       
       public function setSpottedStatus(param1:uint) : void
@@ -581,11 +592,6 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          }
          this._state = param1;
          this.applyState();
-      }
-      
-      protected function getState() : uint
-      {
-         return this._state;
       }
       
       public function setVehicleAction(param1:uint) : void
@@ -635,12 +641,6 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          invalidate(PlayersPanelInvalidationType.VEHILCE_NAME);
       }
       
-      public function setPrestige(param1:int, param2:int) : void
-      {
-         this.prestigeLevel.markId = param1;
-         this.prestigeLevel.level = param2;
-      }
-      
       public function showDogTag() : void
       {
          this._showDogTag = true;
@@ -655,6 +655,11 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       public function updateColorBlind() : void
       {
          invalidate(PlayersPanelInvalidationType.PLAYER_SCHEME);
+      }
+      
+      protected function getState() : uint
+      {
+         return this._state;
       }
       
       protected function updateDogTag() : void
@@ -830,6 +835,34 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          this.hpBarPlayersPanelListItem.setParentX(this.x);
       }
       
+      protected function updateColors() : void
+      {
+         var _loc4_:uint = 0;
+         var _loc1_:String = PlayerStatusSchemeName.getSchemeNameForVehicle(this._isCurrentPlayer,this.isSquadPersonal(),this._isTeamKiller,!this.isAlive,this._isOffline);
+         var _loc2_:IColorScheme = App.colorSchemeMgr.getScheme(_loc1_);
+         if(_loc2_)
+         {
+            this.vehicleIcon.transform.colorTransform = _loc2_.colorTransform;
+         }
+         this.prestigeLevel.alpha = !!this.isAlive ? Number(PRESTIGE_LEVEL_DEFAULT_ALPHA) : Number(PRESTIGE_LEVEL_DEAD_ALPHA);
+         _loc1_ = PlayerStatusSchemeName.getSchemeForVehicleLevel(!this.isAlive);
+         _loc2_ = App.colorSchemeMgr.getScheme(_loc1_);
+         if(_loc2_)
+         {
+            this.vehicleLevel.transform.colorTransform = _loc2_.colorTransform;
+         }
+         _loc1_ = PlayerStatusSchemeName.getSchemeNameForPlayer(this._isCurrentPlayer,this.isSquadPersonal(),this._isTeamKiller,!this.isAlive,this._isOffline);
+         _loc2_ = App.colorSchemeMgr.getScheme(_loc1_);
+         if(_loc2_)
+         {
+            _loc4_ = this._isHpBarsVisible && !this._isCurrentPlayer && !this.isSquadPersonal() && !this._isTeamKiller ? uint(ALT_TEXT_COLOR) : uint(_loc2_.rgb);
+            this.fragsTF.textColor = this.playerNameFullTF.textColor = this.playerNameCutTF.textColor = this.vehicleTF.textColor = _loc4_;
+         }
+         var _loc3_:Boolean = App.colorSchemeMgr.getIsColorBlindS();
+         this.chatCommandState.updateColors(_loc3_);
+         this.hpBarPlayersPanelListItem.updateBarColor(_loc3_);
+      }
+      
       private function applyState() : void
       {
          switch(this._state)
@@ -875,34 +908,6 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          invalidate();
       }
       
-      protected function updateColors() : void
-      {
-         var _loc4_:uint = 0;
-         var _loc1_:String = PlayerStatusSchemeName.getSchemeNameForVehicle(this._isCurrentPlayer,this.isSquadPersonal(),this._isTeamKiller,!this.isAlive,this._isOffline);
-         var _loc2_:IColorScheme = App.colorSchemeMgr.getScheme(_loc1_);
-         if(_loc2_)
-         {
-            this.vehicleIcon.transform.colorTransform = _loc2_.colorTransform;
-         }
-         this.prestigeLevel.alpha = !!this.isAlive ? Number(PRESTIGE_LEVEL_DEFAULT_ALPHA) : Number(PRESTIGE_LEVEL_DEAD_ALPHA);
-         _loc1_ = PlayerStatusSchemeName.getSchemeForVehicleLevel(!this.isAlive);
-         _loc2_ = App.colorSchemeMgr.getScheme(_loc1_);
-         if(_loc2_)
-         {
-            this.vehicleLevel.transform.colorTransform = _loc2_.colorTransform;
-         }
-         _loc1_ = PlayerStatusSchemeName.getSchemeNameForPlayer(this._isCurrentPlayer,this.isSquadPersonal(),this._isTeamKiller,!this.isAlive,this._isOffline);
-         _loc2_ = App.colorSchemeMgr.getScheme(_loc1_);
-         if(_loc2_)
-         {
-            _loc4_ = this._isHpBarsVisible && !this._isCurrentPlayer && !this.isSquadPersonal() && !this._isTeamKiller ? uint(ALT_TEXT_COLOR) : uint(_loc2_.rgb);
-            this.fragsTF.textColor = this.playerNameFullTF.textColor = this.playerNameCutTF.textColor = this.vehicleTF.textColor = _loc4_;
-         }
-         var _loc3_:Boolean = App.colorSchemeMgr.getIsColorBlindS();
-         this.chatCommandState.updateColors(_loc3_);
-         this.hpBarPlayersPanelListItem.updateBarColor(_loc3_);
-      }
-      
       public function get holderItemID() : uint
       {
          return this._holderItemID;
@@ -916,6 +921,11 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       public function get state() : int
       {
          return this._state;
+      }
+      
+      protected function get isOffline() : Boolean
+      {
+         return this._isOffline;
       }
       
       protected function onMouseOver(param1:MouseEvent) : void
@@ -932,7 +942,7 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       
       protected function onMouseClick(param1:MouseEvent) : void
       {
-         if(this.dynamicSquad.hitTestPoint(param1.stageX,param1.stageY))
+         if(this.dynamicSquad && this.dynamicSquad.hitTestPoint(param1.stageX,param1.stageY))
          {
             return;
          }

@@ -155,6 +155,7 @@
 		<M_17T_nestejaahdytteinen_bensiinimoottori>160</M_17T_nestejaahdytteinen_bensiinimoottori>
 		<G04>161</G04>
 		<Mercedes_Benz_MB_507>263</Mercedes_Benz_MB_507>
+		<_2x_Hanomag_Boxer>264</_2x_Hanomag_Boxer>
 		<Maybach_HL_230P30D>265</Maybach_HL_230P30D>
 		<W-54>266</W-54>
 		<Manfred_Weiss>269</Manfred_Weiss>
@@ -196,6 +197,7 @@
 		<MB507_StoryMode>64018</MB507_StoryMode>
 		<Porsche_Deutz_Typ180_2_StoryMode>64019</Porsche_Deutz_Typ180_2_StoryMode>
 		<Porsche_Deutz_Typ180_2_StoryMode_1>64020</Porsche_Deutz_Typ180_2_StoryMode_1>
+		<Maybach_HL62TR_StoryMode>64040</Maybach_HL62TR_StoryMode>
 	</ids>
 	<shared>
 		<SPA_19TB_mod_43_german>
@@ -1610,6 +1612,26 @@
 			<rpm_min>200</rpm_min>
 			<rpm_max>2600</rpm_max>
 		</Porsche_16_Cyl_Y2>
+		<_2x_Hanomag_Boxer>
+			<userString>#germany_vehicles:_2x_Hanomag_Boxer</userString>
+			<tags>diesel</tags>
+			<level>9</level>
+			<price>90000</price>
+			<notInShop>true</notInShop>
+			<wwsoundPC>eng_v55_pc</wwsoundPC>
+			<wwsoundNPC>eng_v55_npc</wwsoundNPC>
+			<power>1000</power>
+			<weight>2050</weight>
+			<maxHealth>255</maxHealth>
+			<maxRegenHealth>127</maxRegenHealth>
+			<repairCost>8</repairCost>
+			<fireStartingChance>
+				0.15
+				<!--BW_String-->
+			</fireStartingChance>
+			<rpm_min>253</rpm_min>
+			<rpm_max>2440</rpm_max>
+		</_2x_Hanomag_Boxer>
 		<Porsche_Typ_205_2>
 			<userString>#germany_vehicles:Porsche_Typ_205_2</userString>
 			<tags>diesel</tags>
@@ -4067,5 +4089,25 @@
 			<rpm_max>2312</rpm_max>
 			<notInShop>True</notInShop>
 		</Porsche_Deutz_Typ180_2_StoryMode_1>
+		<Maybach_HL62TR_StoryMode>
+			<userString>#germany_vehicles:Maybach_HL62TR</userString>
+			<tags>gasoline</tags>
+			<level>3</level>
+			<price>4220</price>
+			<wwsoundPC>eng_gaz_aa_pc</wwsoundPC>
+			<wwsoundNPC>eng_gaz_aa_npc</wwsoundNPC>
+			<power>140</power>
+			<weight>550</weight>
+			<maxHealth>55</maxHealth>
+			<maxRegenHealth>27</maxRegenHealth>
+			<repairCost>3</repairCost>
+			<fireStartingChance>
+				0.2
+				<!--BW_String-->
+			</fireStartingChance>
+			<rpm_min>324</rpm_min>
+			<rpm_max>2562</rpm_max>
+			<notInShop>True</notInShop>
+		</Maybach_HL62TR_StoryMode>
 	</shared>
 </root>

@@ -177,6 +177,7 @@ def getDefaultFormattersMap():
        'tokens': tokenBonusFormatter, 
        'tankwomanBonus': TankwomanBonusFormatter(), 
        'battleToken': tokenBonusFormatter, 
+       'lootBox': tokenBonusFormatter, 
        'tankmen': TankmenBonusFormatter(), 
        'customizations': CustomizationsBonusFormatter(), 
        'goodies': GoodiesBonusFormatter(), 
@@ -1004,9 +1005,12 @@ class CustomizationUnlockFormatter(TokenBonusFormatter):
 
 class VehiclesBonusFormatter(SimpleBonusFormatter):
 
+    def _getItems(self, bonus):
+        return bonus.getVehicles()
+
     def _format(self, bonus):
         result = []
-        result.extend(self._formatVehicle(bonus, bonus.getVehicles()))
+        result.extend(self._formatVehicle(bonus, self._getItems(bonus)))
         return result
 
     def _formatVehicle(self, bonus, vehicles):
@@ -1449,21 +1453,24 @@ class GoodiesEpicBattleBonusFormatter(SimpleBonusFormatter):
 
 class GoodiesBonusFormatter(SimpleBonusFormatter):
 
+    def _getBoosters(self, bonus):
+        return bonus.getBoosters().iteritems()
+
     def _format(self, bonus):
         result = []
-        for booster, count in bonus.getBoosters().iteritems():
+        for booster, count in self._getBoosters(bonus):
             if booster is not None:
-                result.append(PreformattedBonus(bonusName=bonus.getName(), images=self._getImages(booster), isSpecial=False, label=formatCountLabel(count), labelFormatter=self._getLabelFormatter(bonus), userName=self._getUserName(booster), specialArgs=[
+                result.append(PreformattedBonus(bonusName=bonus.getName(), images=self._getImages(booster), isSpecial=False, label=self._formatBonusLabel(count), labelFormatter=self._getLabelFormatter(bonus), userName=self._getUserName(booster), specialArgs=[
                  booster.boosterID], align=LABEL_ALIGN.RIGHT, isCompensation=self._isCompensation(bonus), tooltip=TOOLTIPS_CONSTANTS.SHOP_BOOSTER, isWulfTooltip=True))
 
         for demountKit, count in bonus.getDemountKits().iteritems():
             if demountKit is not None:
-                result.append(PreformattedBonus(bonusName=bonus.getName(), images=self._getDemountKitImages(demountKit), isSpecial=True, label=formatCountLabel(count), labelFormatter=self._getLabelFormatter(bonus), userName=demountKit.userName, specialAlias=TOOLTIPS_CONSTANTS.AWARD_DEMOUNT_KIT, specialArgs=[
+                result.append(PreformattedBonus(bonusName=bonus.getName(), images=self._getDemountKitImages(demountKit), isSpecial=True, label=self._formatBonusLabel(count), labelFormatter=self._getLabelFormatter(bonus), userName=demountKit.userName, specialAlias=TOOLTIPS_CONSTANTS.AWARD_DEMOUNT_KIT, specialArgs=[
                  demountKit.intCD], align=LABEL_ALIGN.RIGHT, isCompensation=self._isCompensation(bonus)))
 
         for form, count in bonus.getRecertificationForms().iteritems():
             if form is not None:
-                result.append(PreformattedBonus(bonusName=bonus.getName(), label=formatCountLabel(count), userName=form.userName, labelFormatter=self._getLabelFormatter(bonus), images=self._getImagesRecertificationForm(form), align=LABEL_ALIGN.RIGHT, isCompensation=self._isCompensation(bonus), isSpecial=True, specialAlias=TOOLTIPS_CONSTANTS.EPIC_BATTLE_RECERTIFICATION_FORM_TOOLTIP, specialArgs=[
+                result.append(PreformattedBonus(bonusName=bonus.getName(), label=self._formatBonusLabel(count), userName=form.userName, labelFormatter=self._getLabelFormatter(bonus), images=self._getImagesRecertificationForm(form), align=LABEL_ALIGN.RIGHT, isCompensation=self._isCompensation(bonus), isSpecial=True, specialAlias=TOOLTIPS_CONSTANTS.EPIC_BATTLE_RECERTIFICATION_FORM_TOOLTIP, specialArgs=[
                  form.goodieID]))
 
         return result
@@ -1490,6 +1497,10 @@ class GoodiesBonusFormatter(SimpleBonusFormatter):
     def _getUserName(cls, booster):
         return booster.userName
 
+    @classmethod
+    def _formatBonusLabel(cls, count):
+        return formatCountLabel(count)
+
 
 class GoodiesEpicBonusFormatter(GoodiesBonusFormatter):
 
@@ -1513,9 +1524,12 @@ class GoodiesEpicBonusFormatter(GoodiesBonusFormatter):
 
 class ItemsBonusFormatter(SimpleBonusFormatter):
 
+    def _getItems(self, bonus):
+        return sorted(bonus.getItems().items(), key=lambda i: i[0])
+
     def _format(self, bonus):
         result = []
-        for item, count in sorted(bonus.getItems().items(), key=lambda i: i[0]):
+        for item, count in self._getItems(bonus):
             if item is not None and count:
                 result.append(PreformattedBonus(bonusName=bonus.getName(), images=self._getImages(item), isSpecial=True, label=self._formatBonusLabel(count), labelFormatter=self._getLabelFormatter(bonus), userName=self._getUserName(item), specialAlias=self.getTooltip(item), specialArgs=[
                  item.intCD], align=LABEL_ALIGN.RIGHT, isCompensation=self._isCompensation(bonus), highlightType=self._getHighlightType(item), overlayType=self._getOverlayType(item), highlightIcon=self._getHighlightIcon(item), overlayIcon=self._getOverlayIcon(item)))
@@ -1533,7 +1547,8 @@ class ItemsBonusFormatter(SimpleBonusFormatter):
     def _getImages(cls, item):
         result = {}
         for size in AWARDS_SIZES.ALL():
-            result[size] = RES_ICONS.getBonusIcon(size, item.getGUIEmblemID())
+            iconAccessor = R.images.gui.maps.icons.quests.bonuses.dyn(size).dyn(item.getGUIEmblemID())
+            result[size] = backport.image(iconAccessor() if iconAccessor.isValid() else R.images.gui.maps.icons.quests.bonuses.dyn(size).default())
 
         return result
 
@@ -1734,9 +1749,12 @@ class CrewSkinsBonusFormatter(SimpleBonusFormatter):
 
 class CrewBooksBonusFormatter(SimpleBonusFormatter):
 
+    def _getItems(self, bonus):
+        return bonus.getItems()
+
     def _format(self, bonus):
         result = []
-        for item, count in bonus.getItems():
+        for item, count in self._getItems(bonus):
             if item is not None and count:
                 result.append(PreformattedBonus(bonusName=bonus.getName(), images=self._getImages(item), isSpecial=True, label=formatCountLabel(count), labelFormatter=self._getLabelFormatter(bonus), userName=self._getUserName(item), align=self._getLabelAlign(count), isCompensation=self._isCompensation(bonus), specialAlias=TOOLTIPS_CONSTANTS.CREW_BOOK, specialArgs=[
                  item.intCD, count]))

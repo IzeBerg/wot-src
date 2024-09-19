@@ -20,7 +20,8 @@ ICONS_MASK = '../maps/icons/%(type)s/%(subtype)s%(unicName)s.png'
 _RentalInfoProvider = namedtuple('RentalInfoProvider', ('rentExpiryTime', 'compensations',
                                                         'battlesLeft', 'winsLeft',
                                                         'seasonRent', 'isRented',
-                                                        'isTelecomRent', 'anyExpires'))
+                                                        'isTelecomRent', 'anyExpires',
+                                                        'isExternalRent'))
 SeasonRentInfo = namedtuple('SeasonRentInfo', ('seasonType', 'seasonID', 'duration',
                                                'expiryTime'))
 _BIG_HIGHLIGHT_TYPES_MAP = {SLOT_HIGHLIGHT_TYPES.BATTLE_BOOSTER_CREW_REPLACE: SLOT_HIGHLIGHT_TYPES.BATTLE_BOOSTER_CREW_REPLACE_BIG, 
@@ -59,7 +60,8 @@ class RentalInfoProvider(_RentalInfoProvider):
             compensations = MONEY_UNDEFINED
         isTelecomRent = TELECOM_RENTALS_RENT_KEY in additionalData
         useAnyExpiresRule = additionalData.get('anyExpires', False)
-        result = _RentalInfoProvider.__new__(cls, time, compensations, battles, wins, seasonRent, isRented, isTelecomRent, useAnyExpiresRule)
+        isExternalRent = 'external_rent_entitlement' in additionalData
+        result = _RentalInfoProvider.__new__(cls, time, compensations, battles, wins, seasonRent, isRented, isTelecomRent, useAnyExpiresRule, isExternalRent)
         return result
 
     def canRentRenewForSeason(self, seasonType):

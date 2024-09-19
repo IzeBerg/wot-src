@@ -9,12 +9,12 @@ from gui import GUI_SETTINGS
 from gui.shared.formatters import text_styles
 from gui.shared.gui_items import KPI
 from gui.shared.gui_items.Tankman import isSkillLearnt, crewMemberRealSkillLevel
-from gui.shared.items_parameters import calcGunParams, calcShellParams, getShotsPerMinute, getGunDescriptors, isAutoReloadGun, isDualGun, isDualAccuracy
+from gui.shared.items_parameters import calcGunParams, calcShellParams, getShotsPerMinute, getGunDescriptors, isAutoReloadGun, isDualGun, isDualAccuracy, isTwinGun
 from gui.shared.items_parameters import functions, getShellDescriptors, getOptionalDeviceWeight, NO_DATA
 from gui.shared.items_parameters.comparator import rateParameterState, PARAM_STATE
 from gui.shared.items_parameters.functions import getBasicShell, getRocketAccelerationKpiFactors
 from gui.shared.items_parameters.params_cache import g_paramsCache
-from gui.shared.utils import DAMAGE_PROP_NAME, PIERCING_POWER_PROP_NAME, AIMING_TIME_PROP_NAME, STUN_DURATION_PROP_NAME, GUARANTEED_STUN_DURATION_PROP_NAME, AUTO_RELOAD_PROP_NAME, GUN_AUTO_RELOAD, GUN_CAN_BE_AUTO_RELOAD, GUN_AUTO_SHOOT, GUN_CAN_BE_AUTO_SHOOT, MAX_STEERING_LOCK_ANGLE, WHEELED_SWITCH_OFF_TIME, WHEELED_SWITCH_ON_TIME, WHEELED_SWITCH_TIME, WHEELED_SPEED_MODE_SPEED, GUN_DUAL_GUN, GUN_CAN_BE_DUAL_GUN, RELOAD_TIME_SECS_PROP_NAME, DUAL_GUN_CHARGE_TIME, DUAL_GUN_RATE_TIME, TURBOSHAFT_ENGINE_POWER, TURBOSHAFT_SPEED_MODE_SPEED, TURBOSHAFT_INVISIBILITY_MOVING_FACTOR, TURBOSHAFT_INVISIBILITY_STILL_FACTOR, TURBOSHAFT_SWITCH_TIME, TURBOSHAFT_SWITCH_ON_TIME, TURBOSHAFT_SWITCH_OFF_TIME, CHASSIS_REPAIR_TIME, ROCKET_ACCELERATION_ENGINE_POWER, ROCKET_ACCELERATION_SPEED_LIMITS, ROCKET_ACCELERATION_REUSE_AND_DURATION, DUAL_ACCURACY_COOLING_DELAY, DUAL_ACCURACY_AFTER_SHOT_DISPERSION_ANGLE, BURST_FIRE_RATE, MAX_MUTABLE_DAMAGE_PROP_NAME, MIN_MUTABLE_DAMAGE_PROP_NAME, AUTO_SHOOT_CLIP_FIRE_RATE
+from gui.shared.utils import DAMAGE_PROP_NAME, PIERCING_POWER_PROP_NAME, AIMING_TIME_PROP_NAME, STUN_DURATION_PROP_NAME, GUARANTEED_STUN_DURATION_PROP_NAME, AUTO_RELOAD_PROP_NAME, GUN_AUTO_RELOAD, GUN_CAN_BE_AUTO_RELOAD, GUN_AUTO_SHOOT, GUN_CAN_BE_AUTO_SHOOT, MAX_STEERING_LOCK_ANGLE, WHEELED_SWITCH_OFF_TIME, WHEELED_SWITCH_ON_TIME, WHEELED_SWITCH_TIME, WHEELED_SPEED_MODE_SPEED, GUN_DUAL_GUN, GUN_CAN_BE_DUAL_GUN, RELOAD_TIME_SECS_PROP_NAME, DUAL_GUN_CHARGE_TIME, DUAL_GUN_RATE_TIME, TURBOSHAFT_ENGINE_POWER, TURBOSHAFT_SPEED_MODE_SPEED, TURBOSHAFT_INVISIBILITY_MOVING_FACTOR, TURBOSHAFT_INVISIBILITY_STILL_FACTOR, TURBOSHAFT_SWITCH_TIME, TURBOSHAFT_SWITCH_ON_TIME, TURBOSHAFT_SWITCH_OFF_TIME, CHASSIS_REPAIR_TIME, ROCKET_ACCELERATION_ENGINE_POWER, ROCKET_ACCELERATION_SPEED_LIMITS, ROCKET_ACCELERATION_REUSE_AND_DURATION, DUAL_ACCURACY_COOLING_DELAY, DUAL_ACCURACY_AFTER_SHOT_DISPERSION_ANGLE, BURST_FIRE_RATE, MAX_MUTABLE_DAMAGE_PROP_NAME, MIN_MUTABLE_DAMAGE_PROP_NAME, AUTO_SHOOT_CLIP_FIRE_RATE, TWIN_GUN_SWITCH_FIRE_MODE_TIME, TWIN_GUN_TOP_SPEED, GUN_CAN_BE_TWIN_GUN, GUN_TWIN_GUN
 from gui.shared.utils import DISPERSION_RADIUS_PROP_NAME, SHELLS_PROP_NAME, SHELLS_COUNT_PROP_NAME
 from gui.shared.utils import RELOAD_TIME_PROP_NAME, RELOAD_MAGAZINE_TIME_PROP_NAME, SHELL_RELOADING_TIME_PROP_NAME
 from helpers import time_utils, dependency
@@ -28,7 +28,8 @@ from skeletons.gui.shared import IItemsCache
 from soft_exception import SoftException
 from helpers_common import computePiercingPowerAtDist, computeDamageAtDist
 if typing.TYPE_CHECKING:
-    from items.vehicles import VehicleDescriptor, CompositeVehicleDescriptor
+    from items.vehicles import VehicleDescriptor, CompositeVehicleDescriptor, VehicleDescr
+    from gui.shared.gui_items.Vehicle import Vehicle
 _DO_TTC_LOG = False and IS_DEVELOPMENT
 MAX_VISION_RADIUS = 500
 MIN_VISION_RADIUS = 150
@@ -76,8 +77,7 @@ _AUTOCANNON_SHOT_DISTANCE = 400
 def _processExtraBonuses(vehicle):
     result = []
     withRareCamouflage = vehicle.intCD in g_paramsCache.getVehiclesWithoutCamouflage()
-    hasCamo = bool(vehicle.getBonusCamo())
-    if withRareCamouflage or hasCamo:
+    if withRareCamouflage or vehicle.hasBonusCamo():
         result.append((EXTRAS_CAMOUFLAGE, 'extra'))
     return result
 
@@ -548,7 +548,7 @@ class VehicleParams(_ParameterBase):
     def reloadTime(self):
         if _DO_TTC_LOG:
             LOG_DEBUG('TTC of reloadTime:')
-        if self.__hasAutoReload() or self.__hasDualGun():
+        if self.__hasAutoReload() or self.__hasDualGun() or self.__hasTwinGun():
             return None
         return min(self.__calcReloadTime())
 
@@ -556,7 +556,7 @@ class VehicleParams(_ParameterBase):
     def reloadTimeSituational(self):
         if _DO_TTC_LOG:
             LOG_DEBUG('TTC of reloadTimeSituational:')
-        if self.__hasAutoReload() or self.__hasDualGun():
+        if self.__hasAutoReload() or self.__hasDualGun() or self.__hasTwinGun():
             return None
         return min(self.__calcReloadTime(isSituational=True))
 
@@ -574,7 +574,7 @@ class VehicleParams(_ParameterBase):
         argName = 'turretRotationSpeed'
         factor = self.__getFactorValueFromSkill(skillName, argName)
         rotSpeedVal *= factor
-        if self.__hasUnsupportedSwitchMode():
+        if self.__hasUnsupportedSwitchMode() or self.__hasTwinGun():
             rotSpeedSiegeVal = items_utils.getTurretRotationSpeed(self._itemDescr.siegeVehicleDescr, self.__factors)
             rotSpeedSiegeVal *= factor
             return (
@@ -627,11 +627,11 @@ class VehicleParams(_ParameterBase):
             LOG_DEBUG('TTC of aimingTime: aimingTimeVal:%f * gunner_quickAimingFactor:%f' % (
              aimingTimeVal, gunnerQuickAimingFactor))
         aimingTimeVal *= gunnerQuickAimingFactor
-        if self._itemDescr.hasTurboshaftEngine:
+        if self._itemDescr.hasTurboshaftEngine or self.__hasTwinGun():
             siegeAimingTimeVal = items_utils.getGunAimingTime(self._itemDescr.siegeVehicleDescr, self.__factors)
             siegeAimingTimeVal *= gunnerQuickAimingFactor
-            return (
-             aimingTimeVal, siegeAimingTimeVal)
+            if aimingTimeVal != siegeAimingTimeVal:
+                return (aimingTimeVal, siegeAimingTimeVal)
         return (
          aimingTimeVal,)
 
@@ -642,16 +642,16 @@ class VehicleParams(_ParameterBase):
         argName = 'aimingTime'
         gunnerQuickAimingFactor = self.__getFactorValueFromSkill(skillName, argName)
         skillName = 'commander_coordination'
-        commanderExpertReloadFactor = self.__getFactorValueFromSkill(skillName, argName)
+        commanderCoordinationReloadFactor = self.__getFactorValueFromSkill(skillName, argName)
         if _DO_TTC_LOG:
             LOG_DEBUG('TTC of aimingTimeSituational: aimingTimeVal:%f * gunner_quickAimingFactor:%f * commander_coordinationFactor:%f' % (
-             aimingTimeVal, gunnerQuickAimingFactor, commanderExpertReloadFactor))
+             aimingTimeVal, gunnerQuickAimingFactor, commanderCoordinationReloadFactor))
         aimingTimeVal *= gunnerQuickAimingFactor
-        aimingTimeVal *= commanderExpertReloadFactor
+        aimingTimeVal *= commanderCoordinationReloadFactor
         if self._itemDescr.hasTurboshaftEngine:
             siegeAimingTimeVal = items_utils.getGunAimingTime(self._itemDescr.siegeVehicleDescr, self.__factors)
             siegeAimingTimeVal *= gunnerQuickAimingFactor
-            siegeAimingTimeVal *= commanderExpertReloadFactor
+            siegeAimingTimeVal *= commanderCoordinationReloadFactor
             return (
              aimingTimeVal, siegeAimingTimeVal)
         return (
@@ -663,16 +663,16 @@ class VehicleParams(_ParameterBase):
         focusFactorValue = 1
         skillName = 'gunner_armorer'
         argName = 'shotDispersionAngle'
-        gunsmithFactorValue = self.__getFactorValueFromSkill(skillName, argName)
+        armorerFactorValue = self.__getFactorValueFromSkill(skillName, argName)
         if isSituational:
             skillName = 'gunner_focus'
             focusFactorValue = self.__getFactorValueFromSkill(skillName, argName)
-        resShotDispersion = [ baseShotDispersion * gunsmithFactorValue * focusFactorValue for baseShotDispersion in baseShotDispersions
+        resShotDispersion = [ baseShotDispersion * armorerFactorValue * focusFactorValue for baseShotDispersion in baseShotDispersions
                             ]
         if _DO_TTC_LOG:
             for shotDispersion in resShotDispersion:
-                LOG_DEBUG('TTC of shotDispersionAngle: baseShotDispersion:%f * gunner_gunsmithFactor:%f * gunner_focusFactor:%f' % (
-                 shotDispersion, gunsmithFactorValue, focusFactorValue))
+                LOG_DEBUG('TTC of shotDispersionAngle: baseShotDispersion:%f * gunner_armorerFactor:%f * gunner_focusFactor:%f' % (
+                 shotDispersion, armorerFactorValue, focusFactorValue))
 
         return resShotDispersion
 
@@ -693,8 +693,9 @@ class VehicleParams(_ParameterBase):
         if self.__hasDualGun():
             return tuple(_timesToSecs(reloadTime) for reloadTime in self.__calcReloadTime())
         else:
-            return (
-             _timesToSecs(first(self.__calcReloadTime())),)
+            if self.__hasTwinGun():
+                return tuple(_timesToSecs(reloadTime) for reloadTime in reversed(self.__calcReloadTime()))
+            return (_timesToSecs(first(self.__calcReloadTime())),)
 
     @property
     def reloadTimeSecsSituational(self):
@@ -705,6 +706,9 @@ class VehicleParams(_ParameterBase):
         if self.__hasDualGun():
             return tuple(_timesToSecs(reloadTime) for reloadTime in self.__calcReloadTime(isSituational=True))
         else:
+            if self.__hasTwinGun():
+                isSituational = True
+                return tuple(_timesToSecs(reloadTime) for reloadTime in reversed(self.__calcReloadTime(isSituational)))
             _val = self.__calcReloadTime(isSituational=True)
             return (_timesToSecs(first(_val)),)
 
@@ -846,11 +850,7 @@ class VehicleParams(_ParameterBase):
 
     @property
     def invisibilityFactorAtShot(self):
-        shotDemaskFactor = self.__getFactorValueFromSkill('loader_ambushMaster', 'shotDemaskFactor')
-        if _DO_TTC_LOG:
-            LOG_DEBUG('TTC of invisibilityFactorAtShot: invisFactorAtShot:%f * loader_ambushMasterFactor:%f' % (
-             self._itemDescr.miscAttrs['invisibilityFactorAtShot'], shotDemaskFactor))
-        return self._itemDescr.miscAttrs['invisibilityFactorAtShot'] * shotDemaskFactor
+        return self._itemDescr.miscAttrs['invisibilityFactorAtShot']
 
     @property
     def clipFireRate(self):
@@ -1058,13 +1058,26 @@ class VehicleParams(_ParameterBase):
         return HIDDEN_PARAM_DEFAULTS[KPI.Name.ART_NOTIFICATION_DELAY_FACTOR] + realNotificationDelayTime
 
     @property
-    def radiomanActivityTimeAfterVehicleDestroySituational(self):
-        return self.__kpi.getFactor(KPI.Name.RADIOMAN_ACTIVITY_TIME_AFTER_VEHICLE_DESTROY)
-
-    @property
     def fireExtinguishingRate(self):
         skillName = 'fireFighting'
         return self.__getKpiValueFromSkillConfig(skillName, KPI.Name.FIRE_EXTINGUISHING_RATE, kpiType=KPI.Type.ADD)
+
+    @property
+    def twinGunSwitchFireModeTime(self):
+        if self.__hasTwinGun():
+            onTime, offTime = self.__getSwitchOnTime(), self.__getSwitchOffTime()
+            if onTime != offTime:
+                return (onTime, offTime)
+            return onTime
+        return
+
+    @property
+    def twinGunTopSpeed(self):
+        if self.__hasTwinGun():
+            return self.__speedLimits(self._itemDescr.siegeVehicleDescr.physics['speedLimits'], ('forwardMaxSpeedKMHTerm',
+                                                                                                 'backwardMaxSpeedKMHTerm'))
+        else:
+            return
 
     def getParamsDict(self, preload=False):
         conditionalParams = (
@@ -1076,7 +1089,8 @@ class VehicleParams(_ParameterBase):
          TURBOSHAFT_INVISIBILITY_STILL_FACTOR, TURBOSHAFT_SWITCH_TIME, TURBOSHAFT_SWITCH_ON_TIME,
          TURBOSHAFT_SWITCH_OFF_TIME, CHASSIS_REPAIR_TIME, ROCKET_ACCELERATION_ENGINE_POWER,
          ROCKET_ACCELERATION_SPEED_LIMITS, ROCKET_ACCELERATION_REUSE_AND_DURATION, 'chassisRotationSpeed',
-         'turboshaftBurstFireRate', DUAL_ACCURACY_COOLING_DELAY, AUTO_SHOOT_CLIP_FIRE_RATE)
+         'turboshaftBurstFireRate', DUAL_ACCURACY_COOLING_DELAY, AUTO_SHOOT_CLIP_FIRE_RATE,
+         TWIN_GUN_TOP_SPEED, TWIN_GUN_SWITCH_FIRE_MODE_TIME)
         stunConditionParams = ('stunMaxDuration', 'stunMinDuration')
         result = _ParamsDictProxy(self, preload, conditions=(
          (
@@ -1318,6 +1332,9 @@ class VehicleParams(_ParameterBase):
     def __hasDualGun(self):
         return isDualGun(self._itemDescr.gun)
 
+    def __hasTwinGun(self):
+        return isTwinGun(self._itemDescr.gun)
+
     def __calcReloadTime(self, isSituational=False):
         loaderMeleeReloadFactor = 1
         loaderDesperadoReloadFactor = 1
@@ -1341,6 +1358,8 @@ class VehicleParams(_ParameterBase):
             return getParams(items_utils.getClipReloadTime)
         if self.__hasDualGun():
             return getParams(items_utils.getDualGunReloadTime)
+        if self.__hasTwinGun():
+            return getParams(items_utils.geTwinGunReloadTime)
         reloadTime = items_utils.getReloadTime(self._itemDescr, self.__factors)
         if _DO_TTC_LOG:
             LOG_DEBUG('reloadTime:%f * loader_meleeFactor:%f * loader_desperadoFactor:%f' % (
@@ -1439,16 +1458,31 @@ class GunParams(WeightedParam):
 
     @property
     def reloadTime(self):
-        if self.getReloadingType() in (GUN_CAN_BE_AUTO_RELOAD, GUN_AUTO_RELOAD):
+        if self.getReloadingType() in (GUN_CAN_BE_AUTO_RELOAD, GUN_AUTO_RELOAD, GUN_CAN_BE_DUAL_GUN, GUN_DUAL_GUN,
+         GUN_CAN_BE_TWIN_GUN, GUN_TWIN_GUN):
             return None
         else:
-            if self.getReloadingType() in (GUN_CAN_BE_DUAL_GUN, GUN_DUAL_GUN):
-                return None
             return self._getRawParams()[RELOAD_TIME_PROP_NAME]
 
     @property
     def reloadTimeSecs(self):
         return self._getRawParams()[RELOAD_TIME_SECS_PROP_NAME]
+
+    @property
+    def reloadTimeSingleGun(self):
+        gun = self.__getVehicleGun()
+        if isTwinGun(gun):
+            return gun.reloadTime
+        else:
+            return
+
+    @property
+    def reloadTimeTwinGun(self):
+        gun = self.__getVehicleGun()
+        if isTwinGun(gun):
+            return self._vehicleDescr.gun.twinGun.twinGunReloadTime
+        else:
+            return
 
     @property
     def chargeTime(self):
@@ -1481,11 +1515,15 @@ class GunParams(WeightedParam):
         if isDualAccuracy(gun):
             return (math.tan(gun.dualAccuracy.afterShotDispersionAngle) * 100, disp)
         else:
-            return (
-             None, disp)
+            if isTwinGun(gun):
+                return (disp, math.tan(self._vehicleDescr.siegeVehicleDescr.gun.shotDispersionAngle) * 100)
+            return (None, disp)
 
     @property
     def aimingTime(self):
+        gun = self.__getVehicleGun()
+        if isTwinGun(gun):
+            return (self._getRawParams()[AIMING_TIME_PROP_NAME][1], self._vehicleDescr.siegeVehicleDescr.gun.aimingTime)
         return self._getRawParams()[AIMING_TIME_PROP_NAME]
 
     @property
@@ -1866,10 +1904,10 @@ class _ParamsDictProxy(object):
                 value = getattr(self.__paramsCalculator, item)
                 if inspect.ismethod(value) or not self.__checkConditions(item, value):
                     self.__filteredByConditions.add(item)
-                    raise KeyError
+                    raise KeyError(item)
                 self.__cachedParams[item] = value
             else:
-                raise KeyError
+                raise KeyError(item)
         return self.__cachedParams[item]
 
     def __iter__(self):

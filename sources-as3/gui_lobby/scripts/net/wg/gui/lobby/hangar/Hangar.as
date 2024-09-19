@@ -61,7 +61,7 @@ package net.wg.gui.lobby.hangar
       
       private static const INVALIDATE_COMP7_MODIFIERS_VISIBILITY:String = "invalidComp7Modifiers";
       
-      private static const INVALIDATE_EVENT_TOURNAMENT_BANNER_VISIBILITY:String = "invalidEventTournamentBanner";
+      private static const INVALIDATE_CAROUSEL_BANNER_VISIBILITY:String = "invalidCarouselBanner";
       
       private static const INVALIDATE_PRESTIGE_WIDGET_VISIBILITY:String = "invalidPrestigeProgress";
       
@@ -73,7 +73,7 @@ package net.wg.gui.lobby.hangar
       
       private static const CAROUSEL_NAME:String = "carousel";
       
-      private static const CAROUSEL_EVENT_ENTRY_NAME:String = "eventLootBoxesContainer";
+      private static const CAROUSEL_EVENT_ENTRY_NAME:String = "carouselEventEntryContainer";
       
       private static const PARAMS_TOP_MARGIN:int = 3;
       
@@ -139,9 +139,9 @@ package net.wg.gui.lobby.hangar
       
       private static const COMP7_MODIFIERS_PANEL_INJECT_OFFSET_X:int = 1;
       
-      private static const EVENT_TOURNAMENT_BANNER_OFFSET_X:int = -15;
+      private static const CAROUSEL_BANNER_OFFSET_X:int = -15;
       
-      private static const EVENT_TOURNAMENT_BANNER_OFFSET_Y:int = -12;
+      private static const CAROUSEL_BANNER_OFFSET_Y:int = -12;
       
       private static const PARAMS_SMALL_SCREEN_BOTTOM_MARGIN:int = 98;
       
@@ -157,9 +157,9 @@ package net.wg.gui.lobby.hangar
       
       private static const WIDGETS_OFFSET_Y:int = 84;
       
-      private static const CAROUSEL_EVENT_ENTRY_X_OFFSET:int = -65;
+      private static const CAROUSEL_EVENT_ENTRY_X_OFFSET:int = 0;
       
-      private static const CAROUSEL_EVENT_ENTRY_Y_OFFSET:int = 127;
+      private static const CAROUSEL_EVENT_ENTRY_Y_OFFSET:int = 110;
       
       private static const HELP_LAYOUT_ADDITIONAL_WIDTH:int = -30;
        
@@ -230,7 +230,7 @@ package net.wg.gui.lobby.hangar
       
       private var _comp7ModifiersPanelInject:GFInjectComponent = null;
       
-      private var _eventTournamentBanner:EventTournamentBannerInject = null;
+      private var _carouselBanner:CarouselBannerInject = null;
       
       private var _appStage:Stage;
       
@@ -528,11 +528,11 @@ package net.wg.gui.lobby.hangar
             {
                this.carousel.setRightMargin(!!this._carouselEventEntryVisible ? int(CarouselEventEntry.WIDTH + CAROUSEL_EVENT_ENTRY_X_OFFSET) : int(0));
             }
-            this.updateEventLootBoxWidgetPosition();
+            this.updateCarouselEventEntryWidgetPosition();
          }
-         if(isInvalid(INVALIDATE_EVENT_TOURNAMENT_BANNER_VISIBILITY))
+         if(isInvalid(INVALIDATE_CAROUSEL_BANNER_VISIBILITY))
          {
-            this.updateEventTournamentBannerSizeAndPosition();
+            this.updateCarouselBannerSizeAndPosition();
          }
          if(_loc1_)
          {
@@ -627,6 +627,25 @@ package net.wg.gui.lobby.hangar
          this.updateElementsPosition();
       }
       
+      public function addCarouselBanner(param1:String) : void
+      {
+         if(this._carouselBanner)
+         {
+            if(this._carouselBanner.alias == param1)
+            {
+               return;
+            }
+            this.removeCarouselBanner(this._carouselBanner.alias);
+         }
+         if(!this._carouselBanner)
+         {
+            this._carouselBanner = new CarouselBannerInject(param1);
+            addChild(this._carouselBanner);
+            registerFlashComponentS(this._carouselBanner,param1);
+         }
+         invalidate(INVALIDATE_CAROUSEL_BANNER_VISIBILITY);
+      }
+      
       public function addComp7Modifiers() : void
       {
          if(!this._comp7ModifiersPanelInject)
@@ -639,21 +658,6 @@ package net.wg.gui.lobby.hangar
             registerFlashComponentS(this._comp7ModifiersPanelInject,HANGAR_ALIASES.COMP7_MODIFIERS_PANEL);
             invalidate(INVALIDATE_COMP7_MODIFIERS_VISIBILITY);
          }
-      }
-      
-      public function addEventTournamentBanner(param1:String) : void
-      {
-         if(this._eventTournamentBanner && this._eventTournamentBanner.alias != param1)
-         {
-            this.removeEventTournamentBanner(this._eventTournamentBanner.alias);
-         }
-         if(!this._eventTournamentBanner)
-         {
-            this._eventTournamentBanner = new EventTournamentBannerInject(param1);
-            addChild(this._eventTournamentBanner);
-            registerFlashComponentS(this._eventTournamentBanner,param1);
-         }
-         invalidate(INVALIDATE_EVENT_TOURNAMENT_BANNER_VISIBILITY);
       }
       
       public function addPrestigeWidget() : void
@@ -707,9 +711,9 @@ package net.wg.gui.lobby.hangar
          {
             this.carousel.setRightMargin(CarouselEventEntry.WIDTH + CAROUSEL_EVENT_ENTRY_X_OFFSET);
          }
-         else if(this._eventTournamentBanner)
+         else if(this._carouselBanner)
          {
-            this.carousel.setRightMargin(this._eventTournamentBanner.width);
+            this.carousel.setRightMargin(this._carouselBanner.width);
          }
          this.carousel.addEventListener(Event.RESIZE,this.onCarouselResizeHandler);
          this.carousel.updateStage(_originalWidth,_originalHeight);
@@ -718,6 +722,18 @@ package net.wg.gui.lobby.hangar
          registerFlashComponentS(this.carousel,this._carouselAlias);
          this.carousel.validateNow();
          invalidate(INVALIDATE_CAROUSEL_SIZE);
+      }
+      
+      public function as_setCarouselBannerVisible(param1:String, param2:Boolean) : void
+      {
+         if(param2)
+         {
+            this.addCarouselBanner(param1);
+         }
+         if(!param2)
+         {
+            this.removeCarouselBanner(param1);
+         }
       }
       
       public function as_setCarouselEnabled(param1:Boolean) : void
@@ -748,18 +764,6 @@ package net.wg.gui.lobby.hangar
       public function as_setDQWidgetLayout(param1:int) : void
       {
          this._forcedWidgetLayout = param1;
-      }
-      
-      public function as_setEventTournamentBannerVisible(param1:String, param2:Boolean) : void
-      {
-         if(param2 && !this._eventTournamentBanner)
-         {
-            this.addEventTournamentBanner(param1);
-         }
-         if(!param2 && this._eventTournamentBanner)
-         {
-            this.removeEventTournamentBanner(param1);
-         }
       }
       
       public function as_setPrestigeWidgetVisible(param1:Boolean) : void
@@ -895,24 +899,24 @@ package net.wg.gui.lobby.hangar
          }
       }
       
+      public function removeCarouselBanner(param1:String) : void
+      {
+         if(this._carouselBanner != null && this._carouselBanner.alias == param1)
+         {
+            removeChild(this._carouselBanner);
+            if(!_baseDisposed && isFlashComponentRegisteredS(this._carouselBanner.alias))
+            {
+               unregisterFlashComponentS(this._carouselBanner.alias);
+            }
+            this._carouselBanner = null;
+            invalidate(INVALIDATE_CAROUSEL_BANNER_VISIBILITY);
+         }
+      }
+      
       public function removeComp7Modifiers() : void
       {
          this.removeComp7ModifiersPanel();
          invalidate(INVALIDATE_COMP7_MODIFIERS_VISIBILITY);
-      }
-      
-      public function removeEventTournamentBanner(param1:String) : void
-      {
-         if(this._eventTournamentBanner != null && this._eventTournamentBanner.alias == param1)
-         {
-            removeChild(this._eventTournamentBanner);
-            if(!_baseDisposed && isFlashComponentRegisteredS(this._eventTournamentBanner.alias))
-            {
-               unregisterFlashComponentS(this._eventTournamentBanner.alias);
-            }
-            this._eventTournamentBanner = null;
-            invalidate(INVALIDATE_EVENT_TOURNAMENT_BANNER_VISIBILITY);
-         }
       }
       
       public function removePrestigeWidget() : void
@@ -1212,8 +1216,8 @@ package net.wg.gui.lobby.hangar
       private function updateCarouselPosition() : void
       {
          this._carousel.updateCarouselPosition(_height - this._carousel.getBottom() ^ 0);
-         this.updateEventTournamentBannerSizeAndPosition();
-         this.updateEventLootBoxWidgetPosition();
+         this.updateCarouselBannerSizeAndPosition();
+         this.updateCarouselEventEntryWidgetPosition();
          this.updateAmmunitionPanelPosition();
          if(this._hangarViewSwitchAnimator)
          {
@@ -1230,32 +1234,33 @@ package net.wg.gui.lobby.hangar
          }
       }
       
-      private function updateEventLootBoxWidgetPosition() : void
+      private function updateCarouselEventEntryWidgetPosition() : void
       {
          var _loc1_:int = 0;
          var _loc2_:int = 0;
          if(this.carouselEventEntry && this._carousel)
          {
-            _loc1_ = this.carousel.x + this._carousel.rightArrow.x + this._carousel.rightArrow.width + CAROUSEL_EVENT_ENTRY_X_OFFSET;
+            _loc1_ = this.carousel.x + this._carousel.rightArrow.x;
             _loc2_ = this._carousel.y + this._carousel.leftArrow.y + (this._carousel.leftArrow.height >> 1);
+            _loc1_ += CAROUSEL_EVENT_ENTRY_X_OFFSET;
             _loc2_ -= CAROUSEL_EVENT_ENTRY_Y_OFFSET;
             this.carouselEventEntry.x = _loc1_;
             this.carouselEventEntry.y = _loc2_;
          }
       }
       
-      private function updateEventTournamentBannerSizeAndPosition() : void
+      private function updateCarouselBannerSizeAndPosition() : void
       {
          if(!this._carousel)
          {
             return;
          }
-         if(this._eventTournamentBanner)
+         if(this._carouselBanner)
          {
-            this._eventTournamentBanner.isExtended = this._carousel.isExtended || App.appHeight >= StageSizeBoundaries.HEIGHT_1080;
-            this._carousel.setRightMargin(this._eventTournamentBanner.width);
-            this._eventTournamentBanner.x = this._carousel.x + this._carousel.rightArrow.x + this._carousel.rightArrow.width + EVENT_TOURNAMENT_BANNER_OFFSET_X | 0;
-            this._eventTournamentBanner.y = this._carousel.y + this._carousel.getBottom() - this._eventTournamentBanner.height + EVENT_TOURNAMENT_BANNER_OFFSET_Y | 0;
+            this._carouselBanner.isExtended = this._carousel.isExtended && App.appHeight >= StageSizeBoundaries.HEIGHT_900;
+            this._carousel.setRightMargin(this._carouselBanner.width);
+            this._carouselBanner.x = this._carousel.x + this._carousel.rightArrow.x + this._carousel.rightArrow.width + CAROUSEL_BANNER_OFFSET_X | 0;
+            this._carouselBanner.y = this._carousel.y + this._carousel.getBottom() - this._carouselBanner.height + CAROUSEL_BANNER_OFFSET_Y | 0;
          }
          else if(!this._carouselEventEntryVisible)
          {

@@ -42,11 +42,6 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
          super.onDispose();
       }
       
-      public function setAlpha(param1:Number) : void
-      {
-         alpha = param1;
-      }
-      
       public function setReloadingAsPercent(param1:Number, param2:Boolean = false) : void
       {
       }

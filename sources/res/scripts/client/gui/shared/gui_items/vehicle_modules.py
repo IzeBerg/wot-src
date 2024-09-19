@@ -8,7 +8,7 @@ from gui.impl.gen import R
 from gui.shared.items_parameters.params_cache import g_paramsCache
 from gui.shared.utils.functions import replaceHyphenToUnderscore
 from gui.shared.gui_items.fitting_item import FittingItem, ICONS_MASK
-from gui.shared.utils import GUN_CLIP, GUN_CAN_BE_CLIP, GUN_AUTO_RELOAD, GUN_CAN_BE_AUTO_RELOAD, GUN_DUAL_GUN, GUN_CAN_BE_DUAL_GUN, GUN_AUTO_SHOOT, GUN_CAN_BE_AUTO_SHOOT
+from gui.shared.utils import GUN_CLIP, GUN_CAN_BE_CLIP, GUN_AUTO_RELOAD, GUN_CAN_BE_AUTO_RELOAD, GUN_DUAL_GUN, GUN_CAN_BE_DUAL_GUN, GUN_AUTO_SHOOT, GUN_CAN_BE_AUTO_SHOOT, GUN_CAN_BE_TWIN_GUN, GUN_TWIN_GUN
 from gui.shared.money import Currency
 import nations
 from items import vehicles as veh_core
@@ -207,6 +207,10 @@ class VehicleGun(VehicleModule):
         typeToCheck = GUN_DUAL_GUN if vehicleDescr is not None else GUN_CAN_BE_DUAL_GUN
         return self.getReloadingType(vehicleDescr) == typeToCheck
 
+    def isTwinGun(self, vehicleDescr=None):
+        typeToCheck = GUN_TWIN_GUN if vehicleDescr is not None else GUN_CAN_BE_TWIN_GUN
+        return self.getReloadingType(vehicleDescr) == typeToCheck
+
     def isDamageMutable(self):
         return self.descriptor.isDamageMutable
 
@@ -246,6 +250,8 @@ class VehicleGun(VehicleModule):
         userType = super(VehicleGun, self).userType
         if self.isDualGun():
             return backport.text(R.strings.item_types.dualGun.name())
+        if self.isTwinGun():
+            return backport.text(R.strings.item_types.twinGun.name())
         return userType
 
     def getExtraIconInfo(self, vehDescr=None):
@@ -267,6 +273,8 @@ class VehicleGun(VehicleModule):
                 return backport.image(R.images.gui.maps.icons.modules.dualAccuracy())
             if self.isDamageMutable():
                 return backport.image(R.images.gui.maps.icons.modules.damageMutable())
+            if self.isTwinGun(vehDescr):
+                return backport.image(R.images.gui.maps.icons.modules.twinGun())
             return
 
     def getGUIEmblemID(self):
@@ -293,6 +301,8 @@ class VehicleGun(VehicleModule):
             return ('/').join((key, 'autoShoot'))
         if self.isDualGun(vehicleDescr):
             return ('/').join((key, 'dualGun'))
+        if self.isTwinGun(vehicleDescr):
+            return ('/').join((key, 'twinGun'))
         return key
 
 

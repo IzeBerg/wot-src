@@ -1,5 +1,5 @@
 import functools, typing, Math, nations
-from constants import SHELL_TYPES, ATTACK_REASON, SHELL_MECHANICS_TYPE, INFINITE_SHELL_TAG, RandomizationType
+from constants import SHELL_TYPES, ATTACK_REASON, SHELL_MECHANICS_TYPE, INFINITE_SHELL_TAG, RandomizationType, FORCE_FINITE_SHELL_TAG
 from items import ITEM_TYPES, ITEM_TYPE_NAMES, makeIntCompactDescrByID
 from items.basic_item import BasicItem
 from items.components import chassis_components
@@ -308,7 +308,7 @@ class Gun(InstallableItem):
                  'clip', 'shots', 'autoreload', 'autoreloadHasBoost', 'drivenJoints',
                  'customizableVehicleAreas', 'dualGun', 'edgeByVisualModel', 'prefabs',
                  'shootImpulses', 'dualAccuracy', 'isDamageMutable', 'forcedReloadTime',
-                 'autoShoot', '__weakref__')
+                 'autoShoot', 'twinGun', '__weakref__')
 
     def __init__(self, typeID, componentID, componentName, compactDescr, level=1):
         super(Gun, self).__init__(typeID, componentID, componentName, compactDescr, level)
@@ -333,6 +333,7 @@ class Gun(InstallableItem):
         self.dualGun = component_constants.DEFAULT_GUN_DUALGUN
         self.dualAccuracy = component_constants.DEFAULT_GUN_DUAL_ACCURACY
         self.autoShoot = component_constants.DEFAULT_GUN_AUTOSHOOT
+        self.twinGun = component_constants.DEFAULT_GUN_TWINGUN
         self.drivenJoints = None
         self.effects = None
         self.reloadEffect = None
@@ -399,7 +400,8 @@ class Shell(BasicItem):
                  'damageRandomization', 'damageRandomizationType', 'piercingPowerRandomization',
                  'piercingPowerRandomizationType', 'icon', 'iconName', 'isGold',
                  'type', 'stun', 'effectsIndex', 'tags', 'secondaryAttackReason',
-                 'isDamageMutable', 'maxDistance', 'dynamicEffectsIndexes')
+                 'isDamageMutable', 'maxDistance', 'dynamicEffectsIndexes', 'obstaclesDamage',
+                 'obstaclesPowerReduction')
 
     def __init__(self, typeID, componentID, componentName, compactDescr):
         super(Shell, self).__init__(typeID, componentID, componentName, compactDescr)
@@ -421,6 +423,8 @@ class Shell(BasicItem):
         self.iconName = None
         self.secondaryAttackReason = ATTACK_REASON.NONE
         self.isDamageMutable = False
+        self.obstaclesDamage = None
+        self.obstaclesPowerReduction = None
         return
 
     def __repr__(self):
@@ -461,6 +465,10 @@ class Shell(BasicItem):
     @property
     def isInfinite(self):
         return INFINITE_SHELL_TAG in self.tags
+
+    @property
+    def isForceFinite(self):
+        return FORCE_FINITE_SHELL_TAG in self.tags
 
     @property
     def prereqEffectIndexes(self):

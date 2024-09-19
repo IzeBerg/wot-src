@@ -1,6 +1,6 @@
 from frameworks.wulf import Array
 from frameworks.wulf import ViewModel
-from gui.impl.gen.view_models.views.lobby.mapbox.reward_item_model import RewardItemModel
+from gui.impl.gen.view_models.common.missions.bonuses.icon_bonus_model import IconBonusModel
 
 class ProgressionRewardModel(ViewModel):
     __slots__ = ()
@@ -22,7 +22,7 @@ class ProgressionRewardModel(ViewModel):
 
     @staticmethod
     def getRewardsType():
-        return RewardItemModel
+        return IconBonusModel
 
     def _initialize(self):
         super(ProgressionRewardModel, self)._initialize()

@@ -1,0 +1,1526 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<version>4</version>
+	<GameObjects>
+		<GameObject>
+			<name>11_ls_forestfire01_root</name>
+			<UUID>3758ef19-2247-415a-9d72-cb8211cecddd</UUID>
+			<flags>2</flags>
+		</GameObject>
+		<GameObject>
+			<name>11_ls_forestfire01_activezone</name>
+			<UUID>5e0c4995-6fd2-4e03-a76e-f7edd4a5aab4</UUID>
+			<flags>2</flags>
+		</GameObject>
+		<GameObject>
+			<name>11_ls01_activezone_smoke_area</name>
+			<UUID>5963b2b4-83e5-35ed-b02b-37657a2cd52c</UUID>
+			<flags>2</flags>
+		</GameObject>
+		<GameObject>
+			<name>11_ls01_activezone_fire_area_01</name>
+			<UUID>5d45c5f9-905f-4d9a-8e60-53eb085b7c9c</UUID>
+			<flags>2</flags>
+		</GameObject>
+		<GameObject>
+			<name>11_ls01_activezone_fire_area_02</name>
+			<UUID>eb63f28b-0a61-3440-a779-31b3fc5ad1ec</UUID>
+			<flags>2</flags>
+		</GameObject>
+		<GameObject>
+			<name>11_ls01_activezone_fire_area_03</name>
+			<UUID>86b9dce4-adf6-3b1b-8a02-48bff6e7653a</UUID>
+			<flags>2</flags>
+		</GameObject>
+		<GameObject>
+			<name>11_ls01_activezone_fire</name>
+			<UUID>8a9f913d-ff75-4fc2-8a73-45e84448d96f</UUID>
+			<flags>2</flags>
+		</GameObject>
+	</GameObjects>
+	<components>
+		<ComponentPool>
+			<type>Hierarchy</type>
+			<version>2</version>
+			<component>
+				<UUID>5e0c4995-6fd2-4e03-a76e-f7edd4a5aab4</UUID>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Parent</name>
+						<link>3758ef19-2247-415a-9d72-cb8211cecddd</link>
+					</property>
+				</config>
+			</component>
+			<component>
+				<UUID>5963b2b4-83e5-35ed-b02b-37657a2cd52c</UUID>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Parent</name>
+						<link>5e0c4995-6fd2-4e03-a76e-f7edd4a5aab4</link>
+					</property>
+				</config>
+			</component>
+			<component>
+				<UUID>5d45c5f9-905f-4d9a-8e60-53eb085b7c9c</UUID>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Parent</name>
+						<link>8a9f913d-ff75-4fc2-8a73-45e84448d96f</link>
+					</property>
+				</config>
+			</component>
+			<component>
+				<UUID>eb63f28b-0a61-3440-a779-31b3fc5ad1ec</UUID>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Parent</name>
+						<link>8a9f913d-ff75-4fc2-8a73-45e84448d96f</link>
+					</property>
+				</config>
+			</component>
+			<component>
+				<UUID>86b9dce4-adf6-3b1b-8a02-48bff6e7653a</UUID>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Parent</name>
+						<link>8a9f913d-ff75-4fc2-8a73-45e84448d96f</link>
+					</property>
+				</config>
+			</component>
+			<component>
+				<UUID>8a9f913d-ff75-4fc2-8a73-45e84448d96f</UUID>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Parent</name>
+						<link>5e0c4995-6fd2-4e03-a76e-f7edd4a5aab4</link>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>Transform</type>
+			<version>1</version>
+			<component>
+				<UUID>3758ef19-2247-415a-9d72-cb8211cecddd</UUID>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>0 0 0</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>-0 0 0</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<UUID>5e0c4995-6fd2-4e03-a76e-f7edd4a5aab4</UUID>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>0 0 0</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>-0 0 0</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<UUID>5963b2b4-83e5-35ed-b02b-37657a2cd52c</UUID>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>
+							0 -11.1041 0
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>-0 0 0</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<UUID>5d45c5f9-905f-4d9a-8e60-53eb085b7c9c</UUID>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>
+							-151.188 -11.1041 9.72619
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>-0 0 0</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<UUID>eb63f28b-0a61-3440-a779-31b3fc5ad1ec</UUID>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>
+							-46.5933 -11.1041 196.312
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>-0 0 0</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<UUID>86b9dce4-adf6-3b1b-8a02-48bff6e7653a</UUID>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>
+							-0.406738 -11.1041 -114.68
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>-0 0 0</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<UUID>8a9f913d-ff75-4fc2-8a73-45e84448d96f</UUID>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>0 0 0</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>-0 0 0</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>PrismArea</type>
+			<version>1</version>
+			<component>
+				<UUID>5963b2b4-83e5-35ed-b02b-37657a2cd52c</UUID>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Curvature</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Tesselation Step</name>
+						<value>20</value>
+					</property>
+					<property>
+						<name>Height</name>
+						<value>70</value>
+					</property>
+					<property>
+						<name>Points</name>
+						<collection>
+							<item>
+								<value>
+									-207.161 153.853
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-176.604 187.234
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-132.54 208.64
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-77.4859 223.714
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-30.3235 229.879
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									25.882 229.658
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									60.8837 219.316
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									106.414 192.617
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									148.606 157.36
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									148.583 -71.8556
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									109.414 -109.303
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									64.2287 -141.282
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									15.9861 -164.713
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-31.8873 -175.815
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-71.6665 -175.523
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-111.228 -163.487
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-150.097 -137.966
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-172.351 -100.69
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-189.665 -32.6841
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-206.818 76.5371
+									<!--BW_String-->
+								</value>
+							</item>
+						</collection>
+					</property>
+					<property>
+						<name>Douglas-Peucker Epsilon</name>
+						<value>
+							0.2
+							<!--BW_String-->
+						</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<UUID>5d45c5f9-905f-4d9a-8e60-53eb085b7c9c</UUID>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Curvature</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Tesselation Step</name>
+						<value>20</value>
+					</property>
+					<property>
+						<name>Height</name>
+						<value>70</value>
+					</property>
+					<property>
+						<name>Points</name>
+						<collection>
+							<item>
+								<value>
+									-22.5007 60.1791
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-28.8777 114.402
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-42.1713 125.22
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-46.5014 136.055
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-37.7455 146.885
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									0.666748 152.572
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									23.2034 129.011
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									16.8105 99.4037
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									7.09853 86.5587
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									3.68311 40.275
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									7.46703 13.5754
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									13.3658 -6.1606
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									21.8805 -18.0255
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									21.3113 -37.3506
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									31.2659 -45.9391
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									26.1692 -60.8136
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									29.4605 -75.613
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									42.8771 -85.8346
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									56.9779 -105.039
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									53.357 -131.11
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									2.56972 -133.073
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									2.34096 -108.494
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-5.43619 -54.6445
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-14.2325 -14.6656
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-23.8338 20.9106
+									<!--BW_String-->
+								</value>
+							</item>
+						</collection>
+					</property>
+					<property>
+						<name>Douglas-Peucker Epsilon</name>
+						<value>
+							0.2
+							<!--BW_String-->
+						</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<UUID>eb63f28b-0a61-3440-a779-31b3fc5ad1ec</UUID>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Curvature</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Tesselation Step</name>
+						<value>20</value>
+					</property>
+					<property>
+						<name>Height</name>
+						<value>70</value>
+					</property>
+					<property>
+						<name>Points</name>
+						<collection>
+							<item>
+								<value>
+									-63.6868 -11.5976
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-25.0681 12.4614
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									39.6126 25.1681
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									69.109 25.1892
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									72.8091 13.5396
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									62.0995 -4.26617
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									43.9399 -14.2257
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-30.3085 -26.0851
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-42.7045 -40.3503
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-63.8277 -42.2279
+									<!--BW_String-->
+								</value>
+							</item>
+						</collection>
+					</property>
+					<property>
+						<name>Douglas-Peucker Epsilon</name>
+						<value>
+							0.2
+							<!--BW_String-->
+						</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<UUID>86b9dce4-adf6-3b1b-8a02-48bff6e7653a</UUID>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Curvature</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Tesselation Step</name>
+						<value>20</value>
+					</property>
+					<property>
+						<name>Height</name>
+						<value>70</value>
+					</property>
+					<property>
+						<name>Points</name>
+						<collection>
+							<item>
+								<value>
+									-48.8182 -23.6675
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-19.0327 6.26582
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									15.6729 27.8315
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									45.4164 28.6639
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									51.265 12.3922
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									36.6659 -8.90071
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									14.8427 -24.6168
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-38.4128 -45.8518
+									<!--BW_String-->
+								</value>
+							</item>
+						</collection>
+					</property>
+					<property>
+						<name>Douglas-Peucker Epsilon</name>
+						<value>
+							0.2
+							<!--BW_String-->
+						</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>Area trigger</type>
+			<version>1</version>
+			<component>
+				<UUID>5963b2b4-83e5-35ed-b02b-37657a2cd52c</UUID>
+				<flags>35</flags>
+			</component>
+			<component>
+				<UUID>5d45c5f9-905f-4d9a-8e60-53eb085b7c9c</UUID>
+				<flags>35</flags>
+			</component>
+			<component>
+				<UUID>eb63f28b-0a61-3440-a779-31b3fc5ad1ec</UUID>
+				<flags>35</flags>
+			</component>
+			<component>
+				<UUID>86b9dce4-adf6-3b1b-8a02-48bff6e7653a</UUID>
+				<flags>35</flags>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>VisibilityObstacle</type>
+			<version>1</version>
+			<component>
+				<UUID>5963b2b4-83e5-35ed-b02b-37657a2cd52c</UUID>
+				<flags>34</flags>
+				<config>
+					<property>
+						<name>Colliders</name>
+						<link>00000000-0000-0000-0000-000000000000</link>
+					</property>
+					<property>
+						<name>PrismArea</name>
+						<link>5963b2b4-83e5-35ed-b02b-37657a2cd52c</link>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>VisibilityGroup</type>
+			<version>1</version>
+			<component>
+				<UUID>5963b2b4-83e5-35ed-b02b-37657a2cd52c</UUID>
+				<flags>34</flags>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>SoundZone</type>
+			<version>1</version>
+			<component>
+				<UUID>5d45c5f9-905f-4d9a-8e60-53eb085b7c9c</UUID>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Zone Enter Event</name>
+						<value>map_box_11_murovanka_fire_ZoneEnter</value>
+					</property>
+					<property>
+						<name>Zone Exit Event</name>
+						<value>map_box_11_murovanka_fire_ZoneExit</value>
+					</property>
+					<property>
+						<name>Emitter Event</name>
+						<value>map_box_fire_forest</value>
+					</property>
+					<property>
+						<name>Reverb</name>
+						<value/>
+					</property>
+					<property>
+						<name>Reverb Level</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Volume Deviation</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Color</name>
+						<value>
+							0 0 1 0.5
+							<!--BW_String-->
+						</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<UUID>eb63f28b-0a61-3440-a779-31b3fc5ad1ec</UUID>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Zone Enter Event</name>
+						<value>map_box_11_murovanka_fire_ZoneEnter</value>
+					</property>
+					<property>
+						<name>Zone Exit Event</name>
+						<value>map_box_11_murovanka_fire_ZoneExit</value>
+					</property>
+					<property>
+						<name>Emitter Event</name>
+						<value>map_box_fire_forest</value>
+					</property>
+					<property>
+						<name>Reverb</name>
+						<value/>
+					</property>
+					<property>
+						<name>Reverb Level</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Volume Deviation</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Color</name>
+						<value>
+							0 0 1 0.5
+							<!--BW_String-->
+						</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<UUID>86b9dce4-adf6-3b1b-8a02-48bff6e7653a</UUID>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Zone Enter Event</name>
+						<value>map_box_11_murovanka_fire_ZoneEnter</value>
+					</property>
+					<property>
+						<name>Zone Exit Event</name>
+						<value>map_box_11_murovanka_fire_ZoneExit</value>
+					</property>
+					<property>
+						<name>Emitter Event</name>
+						<value>map_box_fire_forest</value>
+					</property>
+					<property>
+						<name>Reverb</name>
+						<value/>
+					</property>
+					<property>
+						<name>Reverb Level</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Volume Deviation</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Color</name>
+						<value>
+							0 0 1 0.5
+							<!--BW_String-->
+						</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>OnPlayerInZoneComponent</type>
+			<version>1</version>
+			<component>
+				<UUID>5963b2b4-83e5-35ed-b02b-37657a2cd52c</UUID>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>prefabPath</name>
+						<isAsset>true</isAsset>
+						<value>content/CGFPrefabs/MapBox/11_murovanka/11_ls_smoke_post_effect.prefab</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<UUID>5d45c5f9-905f-4d9a-8e60-53eb085b7c9c</UUID>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>prefabPath</name>
+						<isAsset>true</isAsset>
+						<value>content/CGFPrefabs/MapBox/11_murovanka/11_ls_fire_post_effect.prefab</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<UUID>eb63f28b-0a61-3440-a779-31b3fc5ad1ec</UUID>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>prefabPath</name>
+						<isAsset>true</isAsset>
+						<value>content/CGFPrefabs/MapBox/11_murovanka/11_ls_fire_post_effect.prefab</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<UUID>86b9dce4-adf6-3b1b-8a02-48bff6e7653a</UUID>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>prefabPath</name>
+						<isAsset>true</isAsset>
+						<value>content/CGFPrefabs/MapBox/11_murovanka/11_ls_fire_post_effect.prefab</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>PolygonBorderVisualComponent</type>
+			<version>1</version>
+			<component>
+				<UUID>5963b2b4-83e5-35ed-b02b-37657a2cd52c</UUID>
+				<flags>2</flags>
+				<config>
+					<property>
+						<name>Attach to the ground</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Border Height</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Zone Visible</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Zone Fade</name>
+						<value>
+							1.3
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Zone Intensity</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Zone Offset</name>
+						<value>
+							0.1
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Tessellation Factor</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Zone Color</name>
+						<value>
+							0.521569 0.521569 0.521569 0
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Wall Visible</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Draw Wall Stripes</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Wall Height</name>
+						<value>
+							70.1
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Wall Color</name>
+						<value>
+							0.588235 0.588235 0.588235 0.3
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Dissolve height</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Dissolve power</name>
+						<value>6</value>
+					</property>
+					<property>
+						<name>Stripe width</name>
+						<value>4</value>
+					</property>
+					<property>
+						<name>Stripe fill ratio</name>
+						<value>
+							0.5
+							<!--BW_String-->
+						</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<UUID>5d45c5f9-905f-4d9a-8e60-53eb085b7c9c</UUID>
+				<flags>2</flags>
+				<config>
+					<property>
+						<name>Attach to the ground</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Border Height</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Zone Visible</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Zone Fade</name>
+						<value>
+							1.3
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Zone Intensity</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Zone Offset</name>
+						<value>
+							0.1
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Tessellation Factor</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Zone Color</name>
+						<value>1 0 0 0</value>
+					</property>
+					<property>
+						<name>Wall Visible</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Draw Wall Stripes</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Wall Height</name>
+						<value>
+							70.1
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Wall Color</name>
+						<value>
+							0.52549 0 0 0.3
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Dissolve height</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Dissolve power</name>
+						<value>6</value>
+					</property>
+					<property>
+						<name>Stripe width</name>
+						<value>4</value>
+					</property>
+					<property>
+						<name>Stripe fill ratio</name>
+						<value>
+							0.5
+							<!--BW_String-->
+						</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<UUID>eb63f28b-0a61-3440-a779-31b3fc5ad1ec</UUID>
+				<flags>2</flags>
+				<config>
+					<property>
+						<name>Attach to the ground</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Border Height</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Zone Visible</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Zone Fade</name>
+						<value>
+							1.3
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Zone Intensity</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Zone Offset</name>
+						<value>
+							0.1
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Tessellation Factor</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Zone Color</name>
+						<value>1 0 0 0</value>
+					</property>
+					<property>
+						<name>Wall Visible</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Draw Wall Stripes</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Wall Height</name>
+						<value>
+							70.1
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Wall Color</name>
+						<value>
+							0.52549 0 0 0.3
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Dissolve height</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Dissolve power</name>
+						<value>6</value>
+					</property>
+					<property>
+						<name>Stripe width</name>
+						<value>4</value>
+					</property>
+					<property>
+						<name>Stripe fill ratio</name>
+						<value>
+							0.5
+							<!--BW_String-->
+						</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<UUID>86b9dce4-adf6-3b1b-8a02-48bff6e7653a</UUID>
+				<flags>2</flags>
+				<config>
+					<property>
+						<name>Attach to the ground</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Border Height</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Zone Visible</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Zone Fade</name>
+						<value>
+							1.3
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Zone Intensity</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Zone Offset</name>
+						<value>
+							0.1
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Tessellation Factor</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Zone Color</name>
+						<value>1 0 0 0</value>
+					</property>
+					<property>
+						<name>Wall Visible</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Draw Wall Stripes</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Wall Height</name>
+						<value>
+							70.1
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Wall Color</name>
+						<value>
+							0.52549 0 0 0.3
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Dissolve height</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Dissolve power</name>
+						<value>6</value>
+					</property>
+					<property>
+						<name>Stripe width</name>
+						<value>4</value>
+					</property>
+					<property>
+						<name>Stripe fill ratio</name>
+						<value>
+							0.5
+							<!--BW_String-->
+						</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>VSEComponent</type>
+			<version>1</version>
+			<component>
+				<UUID>5963b2b4-83e5-35ed-b02b-37657a2cd52c</UUID>
+				<flags>32</flags>
+				<config>
+					<property>
+						<name>Path</name>
+						<isAsset>true</isAsset>
+						<value>vscript/plans/MapBox_2024/vse_ls_smoke_area.xml</value>
+					</property>
+					<property>
+						<name>AutoStart</name>
+						<value>1</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>DamageZoneComponent</type>
+			<version>1</version>
+			<component>
+				<UUID>5d45c5f9-905f-4d9a-8e60-53eb085b7c9c</UUID>
+				<flags>34</flags>
+				<config>
+					<property>
+						<name>zoneType</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>damageType</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>absoluteDamageValue</name>
+						<value>4</value>
+					</property>
+					<property>
+						<name>percentDamageValue</name>
+						<value>4</value>
+					</property>
+					<property>
+						<name>damagePercentRandomization</name>
+						<value>20</value>
+					</property>
+					<property>
+						<name>period</name>
+						<value>1</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<UUID>eb63f28b-0a61-3440-a779-31b3fc5ad1ec</UUID>
+				<flags>34</flags>
+				<config>
+					<property>
+						<name>zoneType</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>damageType</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>absoluteDamageValue</name>
+						<value>4</value>
+					</property>
+					<property>
+						<name>percentDamageValue</name>
+						<value>4</value>
+					</property>
+					<property>
+						<name>damagePercentRandomization</name>
+						<value>20</value>
+					</property>
+					<property>
+						<name>period</name>
+						<value>1</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<UUID>86b9dce4-adf6-3b1b-8a02-48bff6e7653a</UUID>
+				<flags>34</flags>
+				<config>
+					<property>
+						<name>zoneType</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>damageType</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>absoluteDamageValue</name>
+						<value>4</value>
+					</property>
+					<property>
+						<name>percentDamageValue</name>
+						<value>4</value>
+					</property>
+					<property>
+						<name>damagePercentRandomization</name>
+						<value>20</value>
+					</property>
+					<property>
+						<name>period</name>
+						<value>1</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>PartialVisibilityGroupComponent</type>
+			<version>1</version>
+			<component>
+				<UUID>5963b2b4-83e5-35ed-b02b-37657a2cd52c</UUID>
+				<flags>34</flags>
+				<config>
+					<property>
+						<name>delay</name>
+						<value>5</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>MinimapChangerComponent</type>
+			<version>1</version>
+			<component>
+				<UUID>5963b2b4-83e5-35ed-b02b-37657a2cd52c</UUID>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>LayerID</name>
+						<value>mmap_11_ls_forestfire01</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>WeatherZoneUINotification</type>
+			<version>1</version>
+			<component>
+				<UUID>5963b2b4-83e5-35ed-b02b-37657a2cd52c</UUID>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>trigger</name>
+						<link>5963b2b4-83e5-35ed-b02b-37657a2cd52c</link>
+					</property>
+					<property>
+						<name>zoneType</name>
+						<value>smokeZone</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<UUID>5d45c5f9-905f-4d9a-8e60-53eb085b7c9c</UUID>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>trigger</name>
+						<link>5d45c5f9-905f-4d9a-8e60-53eb085b7c9c</link>
+					</property>
+					<property>
+						<name>zoneType</name>
+						<value>fireZone</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<UUID>eb63f28b-0a61-3440-a779-31b3fc5ad1ec</UUID>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>trigger</name>
+						<link>eb63f28b-0a61-3440-a779-31b3fc5ad1ec</link>
+					</property>
+					<property>
+						<name>zoneType</name>
+						<value>fireZone</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<UUID>86b9dce4-adf6-3b1b-8a02-48bff6e7653a</UUID>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>trigger</name>
+						<link>86b9dce4-adf6-3b1b-8a02-48bff6e7653a</link>
+					</property>
+					<property>
+						<name>zoneType</name>
+						<value>fireZone</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>ZoneHint</type>
+			<version>1</version>
+			<component>
+				<UUID>5963b2b4-83e5-35ed-b02b-37657a2cd52c</UUID>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>trigger</name>
+						<link>5963b2b4-83e5-35ed-b02b-37657a2cd52c</link>
+					</property>
+					<property>
+						<name>hintUniqName</name>
+						<value>local_story.LSH_SMOKEFIRE</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+	</components>
+</root>

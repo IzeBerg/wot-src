@@ -135,3 +135,17 @@ class ObjParam(SimpleParam):
             setattr(obj, paramName, paramReader.read(paramSection, paramName))
 
         return obj
+
+
+class EnumParam(StrParam):
+
+    def __init__(self, enum, default, name=None):
+        super(EnumParam, self).__init__(name=name)
+        self._enum = enum
+        self._defaultValue = default
+
+    def _read(self, section, name):
+        attrName = super(EnumParam, self)._read(section, name)
+        if not attrName:
+            return self._defaultValue
+        return getattr(self._enum, attrName)

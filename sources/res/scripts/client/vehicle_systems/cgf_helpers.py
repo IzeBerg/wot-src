@@ -12,6 +12,19 @@ def getVehicleEntityByGameObject(gameObject):
     return getVehicleEntityComponentByGameObject(gameObject, Vehicle)
 
 
+def getVehicleEntityByVehicleGameObject(vehicleGameObject):
+    return vehicleGameObject.findComponentByType(Vehicle)
+
+
+def getVehicleGameObjectByGameObject(gameObject):
+    hierarchy = CGF.HierarchyManager(gameObject.spaceID)
+    findResult = hierarchy.findComponentInParent(gameObject, Vehicle)
+    if findResult is not None:
+        return findResult[0]
+    else:
+        return
+
+
 def getVehicleEntityComponentByGameObject(gameObject, componentType):
     hierarchy = CGF.HierarchyManager(gameObject.spaceID)
     findResult = hierarchy.findComponentInParent(gameObject, componentType)

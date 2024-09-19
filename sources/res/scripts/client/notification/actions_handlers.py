@@ -21,6 +21,7 @@ from gui.impl.auxiliary.crew_books_helper import crewBooksViewedCache
 from gui.impl.gen import R
 from gui.impl.gen.view_models.views.lobby.comp7.meta_view.root_view_model import MetaRootViews
 from gui.impl.lobby.achievements.profile_utils import createAdvancedAchievementsCatalogInitAchievementIDs
+from gui.lootbox_system.common import ViewID, Views
 from gui.platform.base.statuses.constants import StatusTypes
 from gui.prb_control import prbDispatcherProperty, prbInvitesProperty
 from gui.prb_control.entities.comp7 import comp7_prb_helpers
@@ -927,6 +928,38 @@ class _LootBoxesAutoOpenHandler(NavigationDisabledActionHandler):
         return
 
 
+class _OpenLootBoxSystemHandler(NavigationDisabledActionHandler):
+
+    @classmethod
+    def getNotType(cls):
+        return NOTIFICATION_TYPE.MESSAGE
+
+    @classmethod
+    def getActions(cls):
+        return ('openLootBoxSystem', )
+
+    def doAction(self, model, entityID, action):
+        Views.load(ViewID.MAIN)
+
+
+class _LootBoxSystemAutoOpenHandler(NavigationDisabledActionHandler):
+
+    @classmethod
+    def getNotType(cls):
+        return NOTIFICATION_TYPE.MESSAGE
+
+    @classmethod
+    def getActions(cls):
+        return ('lootBoxSystemAutoOpen', )
+
+    def doAction(self, model, entityID, action):
+        notification = model.getNotification(self.getNotType(), entityID)
+        savedData = notification.getSavedData()
+        if savedData is not None and 'rewards' in savedData:
+            Views.load(ViewID.AUTOOPEN, savedData['eventName'], savedData['rewards'], savedData['boxIDs'])
+        return
+
+
 class _OpenProgressiveRewardView(NavigationDisabledActionHandler):
 
     @classmethod
@@ -1594,6 +1627,8 @@ _AVAILABLE_HANDLERS = (
  OpenPersonalMissionHandler,
  _OpenLootBoxesHandler,
  _LootBoxesAutoOpenHandler,
+ _OpenLootBoxSystemHandler,
+ _LootBoxSystemAutoOpenHandler,
  _OpenProgressiveRewardView,
  ProlongStyleRent,
  _OpenBattlePassProgressionView,

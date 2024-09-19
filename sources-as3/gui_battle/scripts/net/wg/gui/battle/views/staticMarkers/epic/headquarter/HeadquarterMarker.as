@@ -34,7 +34,7 @@ package net.wg.gui.battle.views.staticMarkers.epic.headquarter
       
       private static const HIT_LABEL_Y_OFFSET:int = 20;
       
-      private static const OTHER_HIT_LABEL_Y_OFFSET:int = 17;
+      private static const EXTRA_HIT_LABEL_Y_OFFSET:int = 17;
       
       private static const HP_FIELD_CONTAINER_Y_OFFSET:int = 25;
       
@@ -50,6 +50,8 @@ package net.wg.gui.battle.views.staticMarkers.epic.headquarter
       public var hpFieldContainer:HPFieldContainer = null;
       
       public var playerHitLabel:HealthBarAnimatedLabel = null;
+      
+      public var squadHitLabel:HealthBarAnimatedLabel = null;
       
       public var otherHitLabel:HealthBarAnimatedLabel = null;
       
@@ -100,6 +102,8 @@ package net.wg.gui.battle.views.staticMarkers.epic.headquarter
          this.hpFieldContainer = null;
          this.playerHitLabel.dispose();
          this.playerHitLabel = null;
+         this.squadHitLabel.dispose();
+         this.squadHitLabel = null;
          this.otherHitLabel.dispose();
          this.otherHitLabel = null;
          this.healthBar.dispose();
@@ -161,7 +165,7 @@ package net.wg.gui.battle.views.staticMarkers.epic.headquarter
          this.marker.setDead(this._headquarterDestroyed);
       }
       
-      public function setHealth(param1:Number, param2:Boolean = false, param3:Boolean = true) : void
+      public function setHealth(param1:Number, param2:uint = 0, param3:Boolean = true) : void
       {
          var _loc4_:int = 0;
          var _loc5_:String = null;
@@ -206,6 +210,7 @@ package net.wg.gui.battle.views.staticMarkers.epic.headquarter
             this.healthBarShadow.visible = !param1;
             this.hpFieldContainer.visible = !param1;
             this.playerHitLabel.visible = !param1;
+            this.squadHitLabel.visible = !param1;
             this.otherHitLabel.visible = !param1;
          }
       }
@@ -248,17 +253,22 @@ package net.wg.gui.battle.views.staticMarkers.epic.headquarter
          this.actionMarker.triggerClickAnimation();
       }
       
-      protected function showHitLabelAnim(param1:int, param2:String, param3:Boolean) : void
+      protected function showHitLabelAnim(param1:int, param2:String, param3:uint) : void
       {
-         if(param3)
+         switch(param3)
          {
-            this.playerHitLabel.damage(param1,param2);
-            this.playerHitLabel.playShowTween();
-         }
-         else
-         {
-            this.otherHitLabel.damage(param1,param2);
-            this.otherHitLabel.playShowTween();
+            case VehicleMarkerFlags.DAMAGE_FROM_PLAYER_FLAG:
+               this.playerHitLabel.damage(param1,param2);
+               this.playerHitLabel.playShowTween();
+               break;
+            case VehicleMarkerFlags.DAMAGE_FROM_SQUAD_FLAG:
+               this.squadHitLabel.damage(param1,param2);
+               this.squadHitLabel.playShowTween();
+               break;
+            case VehicleMarkerFlags.DAMAGE_FROM_OTHER_FLAG:
+            default:
+               this.otherHitLabel.damage(param1,param2);
+               this.otherHitLabel.playShowTween();
          }
          this.updateLayout();
       }
@@ -268,9 +278,9 @@ package net.wg.gui.battle.views.staticMarkers.epic.headquarter
          this.setHealthBarHeight(this._activateHover || this._activeMarkerState == ActionMarkerStates.REPLIED_ME || this._isHighlighted);
       }
       
-      private function getDamageColor(param1:Boolean) : String
+      private function getDamageColor(param1:uint) : String
       {
-         var _loc2_:Object = !!param1 ? VehicleMarkerFlags.PLAYER_DAMAGE_COLOR : VehicleMarkerFlags.OTHER_DAMAGE_COLOR;
+         var _loc2_:Object = VehicleMarkerFlags.DAMAGE_FROM_COLORS[param1];
          return _loc2_[this._markerColor];
       }
       
@@ -300,6 +310,7 @@ package net.wg.gui.battle.views.staticMarkers.epic.headquarter
       {
          this._healthBarVisible = param1;
          this.playerHitLabel.visible = param1;
+         this.squadHitLabel.visible = param1;
          this.otherHitLabel.visible = param1;
          this.hpFieldContainer.visible = param1;
          this.healthBar.visible = param1;
@@ -322,7 +333,8 @@ package net.wg.gui.battle.views.staticMarkers.epic.headquarter
             this.healthBar.y = HEALTH_BAR_Y_OFFSET;
             this.healthBarShadow.y = HEALTH_BAR_SHADOW_Y_OFFSET;
          }
-         this.otherHitLabel.y = !!this.playerHitLabel.isActive() ? Number(this.playerHitLabel.y + OTHER_HIT_LABEL_Y_OFFSET) : Number(this.playerHitLabel.y);
+         this.squadHitLabel.y = !!this.playerHitLabel.isActive() ? Number(this.playerHitLabel.y + EXTRA_HIT_LABEL_Y_OFFSET) : Number(this.playerHitLabel.y);
+         this.otherHitLabel.y = !!this.squadHitLabel.isActive() ? Number(this.squadHitLabel.y + EXTRA_HIT_LABEL_Y_OFFSET) : Number(this.squadHitLabel.y);
       }
       
       private function onUpdateColorsHandler(param1:VehicleMarkersManagerEvent) : void

@@ -645,14 +645,15 @@ def goToHeroTankOnScene(vehTypeCompDescr, previewAlias=VIEW_ALIAS.LOBBY_HANGAR, 
     return
 
 
-def showHeroTankPreview(vehTypeCompDescr, previewAlias=VIEW_ALIAS.LOBBY_HANGAR, previousBackAlias=None, previewBackCb=None, hangarVehicleCD=None):
+def showHeroTankPreview(vehTypeCompDescr, previewAlias=VIEW_ALIAS.LOBBY_HANGAR, previousBackAlias=None, previewBackCb=None, hangarVehicleCD=None, backOutfit=None):
     g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.HERO_VEHICLE_PREVIEW), ctx={'itemCD': vehTypeCompDescr, 
        'previewAlias': previewAlias, 
        'previewAppearance': HeroTankPreviewAppearance(), 
        'isHeroTank': True, 
        'previousBackAlias': previousBackAlias, 
        'previewBackCb': previewBackCb, 
-       'hangarVehicleCD': hangarVehicleCD}), scope=EVENT_BUS_SCOPE.LOBBY)
+       'hangarVehicleCD': hangarVehicleCD, 
+       'backOutfit': backOutfit}), scope=EVENT_BUS_SCOPE.LOBBY)
 
 
 def hideVehiclePreview(back=True, close=False):
@@ -1520,10 +1521,10 @@ def showFrontlineAwards(bonuses, onCloseCallback=None, onAnimationEndedCallback=
 
 
 @wg_async
-def showFrontlineConfirmDialog(skillIds, vehicleType='', applyForAllOfType=False, isBuy=True):
+def showFrontlineConfirmDialog(skillsInteractor, vehicleType='', isBuy=True):
     from frontline.gui.impl.lobby.dialogs.reserves_confirm_dialog import ReservesConfirmDialog
     from gui.impl.dialogs import dialogs
-    result = yield wg_await(dialogs.showSingleDialogWithResultData(wrappedViewClass=ReservesConfirmDialog, layoutID=ReservesConfirmDialog.LAYOUT_ID, skillIds=skillIds, vehicleType=vehicleType, applyForAllOfType=applyForAllOfType, isBuy=isBuy))
+    result = yield wg_await(dialogs.showSingleDialogWithResultData(wrappedViewClass=ReservesConfirmDialog, layoutID=ReservesConfirmDialog.LAYOUT_ID, skillsInteractor=skillsInteractor, vehicleType=vehicleType, isBuy=isBuy))
     raise AsyncReturn(result)
 
 
@@ -1684,12 +1685,6 @@ def showMapboxAward(numBattles, rewards):
     from gui.impl.lobby.mapbox.map_box_awards_view import MapBoxAwardsViewWindow
     if not MapBoxAwardsViewWindow.getInstances():
         MapBoxAwardsViewWindow(numBattles, rewards).load()
-
-
-def showMapboxRewardChoice(selectableCrewbook):
-    from gui.impl.lobby.mapbox.mapbox_reward_choice_view import MapboxRewardChoiceWindow
-    if not MapboxRewardChoiceWindow.getInstances():
-        MapboxRewardChoiceWindow(selectableCrewbook).load()
 
 
 @waitShowOverlay

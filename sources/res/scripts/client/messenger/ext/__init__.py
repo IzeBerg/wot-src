@@ -1,4 +1,4 @@
-import types, BigWorld
+import types, BigWorld, BattleReplay
 from helpers import i18n
 from gui.Scaleform.locale.MESSENGER import MESSENGER
 from external_strings_utils import isAccountNameValid
@@ -31,7 +31,8 @@ def passCensor(text):
 
 def isBattleChatEnabled(common=False):
     result = True
-    arena = getattr(BigWorld.player(), 'arena', None)
+    avatar = BigWorld.player()
+    arena = getattr(avatar, 'arena', None)
     if arena is None:
         LOG_ERROR('ClientArena not found')
         return result
@@ -40,7 +41,7 @@ def isBattleChatEnabled(common=False):
         if guiType is None:
             return result
         if guiType in constants.ARENA_GUI_TYPE.BATTLE_CHAT_SETTING_SUPPORTED:
-            result = not g_settings.userPrefs.disableBattleChat
+            result = not (g_settings.userPrefs.disableBattleChat or avatar.battleChatRestriction['isBattleChatDisabled'] and not BattleReplay.isPlaying())
         if result and common:
             result = arena.bonusType in (constants.ARENA_BONUS_TYPE.TRAINING,
              constants.ARENA_BONUS_TYPE.EPIC_RANDOM_TRAINING)

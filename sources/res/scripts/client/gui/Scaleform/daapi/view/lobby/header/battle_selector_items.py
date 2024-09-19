@@ -11,7 +11,7 @@ from account_helpers import isDemonstratorExpert
 from adisp import adisp_process
 from constants import PREBATTLE_TYPE, QUEUE_TYPE, ACCOUNT_ATTR
 from gui import GUI_SETTINGS
-from gui.Scaleform.daapi.view.lobby.mapbox import mapbox_helpers
+from gui.mapbox import mapbox_helpers
 from gui.Scaleform.locale.MENU import MENU
 from gui.clans.clan_helpers import isStrongholdsEnabled
 from gui.game_control.epic_meta_game_ctrl import EPIC_PERF_GROUP

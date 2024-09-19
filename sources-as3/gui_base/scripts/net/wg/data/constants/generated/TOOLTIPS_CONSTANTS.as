@@ -549,6 +549,8 @@ package net.wg.data.constants.generated
       
       public static const MAPBOX_CALENDAR:String = "mapboxCalendar";
       
+      public static const MAPBOX_CALENDAR_DAY:String = "mapboxCalendarDay";
+      
       public static const FUN_RANDOM_CALENDAR_DAY:String = "funRandomCalendarDay";
       
       public static const FUN_RANDOM_MODE_SELECTOR_CALENDAR_DAY:String = "funRandomModeSelectorCalendarDay";
@@ -751,10 +753,6 @@ package net.wg.data.constants.generated
       
       public static const BATTLE_ROYALE_COMPLETED_QUESTS_INFO:String = "BattleRoyaleQuestsTooltipData";
       
-      public static const SELECTABLE_CREWBOOK:String = "SelectableCrewbookTooltipData";
-      
-      public static const RANDOM_CREWBOOK:String = "RandomCrewbookTooltipData";
-      
       public static const ACCOUNT_COMPLETION:String = "AccountCompletion";
       
       public static const VEH_POST_PROGRESSION_ENTRY_POINT:String = "VehPostProgressionEntryPoint";
@@ -855,7 +853,7 @@ package net.wg.data.constants.generated
       
       public static const ROYALE_LOBBY_SET:Array = [BATTLE_ROYALE_VEHICLE,BATTLE_ROYALE_MODULES_HANGAR,BATTLE_ROYALE_BATTLE_PROGRESSION,BATTLE_ROYALE_EQUIPMENT,BATTLE_ROYALE_PERF_SIMPLE,BATTLE_ROYALE_PERF_ADVANCED,BATTLE_ROYALE_SELECTOR_INFO,BATTLE_ROYALE_COMPLETED_QUESTS_INFO,BATTLE_ROYALE_SELECTOR_CALENDAR_INFO,BATTLE_ROYALE_PROXY_CURRENCY];
       
-      public static const MAPBOX_LOBBY_SET:Array = [MAPBOX_SELECTOR_INFO,MAPBOX_PROGRESSION_PREVIEW,SELECTABLE_CREWBOOK,RANDOM_CREWBOOK,MAPBOX_CALENDAR];
+      public static const MAPBOX_LOBBY_SET:Array = [MAPBOX_SELECTOR_INFO,MAPBOX_PROGRESSION_PREVIEW,MAPBOX_CALENDAR,MAPBOX_CALENDAR_DAY];
       
       public static const ACCOUNT_COMPLETION_SET:Array = [ACCOUNT_COMPLETION];
       

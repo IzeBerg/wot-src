@@ -402,9 +402,7 @@ package net.wg.gui.components.crosshairPanel
       {
          if(this._currentCrosshair != null)
          {
-            this._sniperCameraTransitionFx.setCameraTransitionDuration(param2);
-            this._sniperCameraTransitionFx.setActiveGunId(param1);
-            this._sniperCameraTransitionFx.start();
+            this._sniperCameraTransitionFx.start(param1,param2);
          }
       }
       
@@ -719,6 +717,22 @@ package net.wg.gui.components.crosshairPanel
          {
             this._speedMode = param1;
             this._speedometer.changeState(param1);
+         }
+      }
+      
+      public function as_setTwinGunMarkerActive(param1:Boolean) : void
+      {
+         if(this._gunMarkersContainer != null)
+         {
+            this._gunMarkersContainer.setTwinGunActive(param1);
+         }
+      }
+      
+      public function as_setTwinGunMarkerState(param1:uint) : void
+      {
+         if(this._gunMarkersContainer != null)
+         {
+            this._gunMarkersContainer.setTwinGunMarkerState(param1);
          }
       }
       

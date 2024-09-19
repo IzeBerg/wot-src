@@ -72,10 +72,6 @@ def getCrewSkills(vehicle):
     return currentSkills
 
 
-def _isVehHasCamouflage(vehicle):
-    return bool(vehicle.getBonusCamo())
-
-
 def _removeVehicleCamouflages(vehicle):
     descr = vehicle.descriptor
     for i in xrange(len(descr.camouflages)):
@@ -468,7 +464,7 @@ class VehComparisonBasket(IVehicleComparisonBasket):
         isChanged = False
         copyVehicle = Vehicle(_makeStrCD(vehicle), proxy=self.itemsCache.items)
         copyVehicle.setOutfits(vehicle)
-        hasCamouflage = _isVehHasCamouflage(copyVehicle)
+        hasCamouflage = copyVehicle.hasBonusCamo()
         if hasCamouflage:
             _removeVehicleCamouflages(copyVehicle)
         vehCompareData.setHasCamouflage(hasCamouflage)
@@ -625,7 +621,7 @@ class VehComparisonBasket(IVehicleComparisonBasket):
         try:
             vehicle = self.itemsCache.items.getItemByCD(intCD)
             copyVehicle = Vehicle(_makeStrCD(vehicle), proxy=self.itemsCache.items)
-            hasCamouflage = _isVehHasCamouflage(copyVehicle)
+            hasCamouflage = copyVehicle.hasBonusCamo()
             if hasCamouflage:
                 _removeVehicleCamouflages(copyVehicle)
             stockVehicle = self.itemsCache.items.getStockVehicle(intCD)
@@ -788,7 +784,7 @@ class VehComparisonBasket(IVehicleComparisonBasket):
         isInInventory = vehicle.isInInventory
         vehCompareData.setIsInInventory(isInInventory)
         copyVehicle = Vehicle(_makeStrCD(vehicle), proxy=cls.itemsCache.items)
-        hasCamouflage = _isVehHasCamouflage(copyVehicle)
+        hasCamouflage = copyVehicle.hasBonusCamo()
         vehCompareData.setInvHasCamouflage(hasCamouflage)
         if hasCamouflage:
             _removeVehicleCamouflages(copyVehicle)
