@@ -114,7 +114,7 @@ class ModeSelectorItem(object):
 
     def handleInfoPageClick(self):
         url = self._urlProcessing(GUI_SETTINGS.lookup(getInfoPageKey(self.modeName)))
-        showBrowserOverlayView(url, VIEW_ALIAS.WEB_VIEW_TRANSPARENT, hiddenLayers=(
+        showBrowserOverlayView(url, VIEW_ALIAS.BROWSER_OVERLAY, hiddenLayers=(
          WindowLayer.MARKER, WindowLayer.VIEW, WindowLayer.WINDOW))
 
     def _onInitializing(self):

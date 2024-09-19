@@ -33,6 +33,8 @@ package net.wg.gui.battle.battleRoyale.views.components
       
       private var _disposed:Boolean = false;
       
+      private var _color:uint = 0;
+      
       public function BattleRoyaleTimerContainer()
       {
          super();
@@ -51,6 +53,7 @@ package net.wg.gui.battle.battleRoyale.views.components
          this.tf.visible = false;
          this.timeTF.x = TIME_TF_SMALL_X;
          this.timeTF.y = TIME_TF_SMALL_Y;
+         this.applyColor();
       }
       
       public final function dispose() : void
@@ -70,6 +73,7 @@ package net.wg.gui.battle.battleRoyale.views.components
          this.timeTF.autoSize = this._defaultAutoSize;
          this.timeTF.x = TIME_TF_X;
          this.timeTF.y = TIME_TF_Y;
+         this.applyColor();
       }
       
       public function setTime(param1:String) : void
@@ -102,6 +106,21 @@ package net.wg.gui.battle.battleRoyale.views.components
       public function isDisposed() : Boolean
       {
          return this._disposed;
+      }
+      
+      public function setColor(param1:uint) : void
+      {
+         this._color = param1;
+         this.applyColor();
+      }
+      
+      private function applyColor() : void
+      {
+         if(this._color > 0)
+         {
+            this.tf.textColor = this._color;
+            this.timeTF.textColor = this._color;
+         }
       }
    }
 }

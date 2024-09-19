@@ -181,6 +181,12 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       protected var offsets:Array;
       
+      protected var _markerSchemeName:String = "";
+      
+      protected var _debuffSchemeName:String = "";
+      
+      protected var _buffSchemeName:String = "";
+      
       private var _extInfoShow:Boolean = false;
       
       private var _lastActionState:String = null;
@@ -204,12 +210,6 @@ package net.wg.gui.battle.views.vehicleMarkers
       private var _markerSettingsOverride:Object = null;
       
       private var _maxHealthMult:Number = NaN;
-      
-      private var _markerSchemeName:String = "";
-      
-      private var _debuffSchemeName:String = "";
-      
-      private var _buffSchemeName:String = "";
       
       private var _isFlagShown:Boolean = false;
       
@@ -877,7 +877,7 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.otherHitLabel.y = !!this.playerHitLabel.isActive() ? Number(OTHER_HIT_LABEL_Y) : Number(this.playerHitLabel.y);
       }
       
-      private function updateEffectColor() : void
+      protected function updateEffectColor() : void
       {
          this.statusContainer.setBuffEffectColor(this.vmManager.getAliasColor(this._buffSchemeName),this.vmManager.getRGB(this._buffSchemeName));
          this.statusContainer.setDebuffEffectColor(this.vmManager.getAliasColor(this._debuffSchemeName),this.vmManager.getRGB(this._debuffSchemeName));
@@ -956,7 +956,7 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.hitExplosion.x = this.healthBar.x + EXPLOSION_HORIZONTAL_OFFSET | 0;
       }
       
-      private function updateCriticalLayout() : void
+      protected function updateCriticalLayout() : void
       {
          var _loc1_:HealthBarAnimatedLabel = null;
          if(this.playerHitLabel.visible && this.playerHitLabel.isActive())
@@ -1045,7 +1045,7 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.updateIconColor();
       }
       
-      private function applyColor() : void
+      protected function applyColor() : void
       {
          var _loc1_:ColorTransform = null;
          this.healthBar.color = this._markerColor;
@@ -1352,7 +1352,7 @@ package net.wg.gui.battle.views.vehicleMarkers
          return this._damageType;
       }
       
-      private function get isObserver() : Boolean
+      protected function get isObserver() : Boolean
       {
          return this._markerSchemeName.indexOf(OBSERVER_SCHEME_NAME) != -1;
       }

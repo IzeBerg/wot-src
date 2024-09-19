@@ -34,6 +34,7 @@ from skeletons.gui.game_control import IIGRController
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.prb_control import IPrbControlLoader
 from skeletons.gui.server_events import IEventsCache
+from skeletons.prebattle_vehicle import IPrebattleVehicle
 if typing.TYPE_CHECKING:
     from typing import Any
     from gui.prb_control.entities.base.ctx import PrbAction
@@ -46,6 +47,7 @@ class _PreBattleDispatcher(ListenersCollection):
     igrCtrl = dependency.descriptor(IIGRController)
     eventsCache = dependency.descriptor(IEventsCache)
     winbackCtrl = dependency.descriptor(IWinbackController)
+    prebattleVehicle = dependency.descriptor(IPrebattleVehicle)
 
     def __init__(self):
         super(_PreBattleDispatcher, self).__init__()
@@ -277,7 +279,7 @@ class _PreBattleDispatcher(ListenersCollection):
             return PlayerDecorator()
 
     def doAction(self, action=None):
-        if not (g_currentVehicle.isPresent() or g_currentPreviewVehicle.isPresent()):
+        if not (g_currentVehicle.isPresent() or g_currentPreviewVehicle.isPresent() or self.prebattleVehicle.isPresent()):
             SystemMessages.pushMessage(messages.getInvalidVehicleMessage(PREBATTLE_RESTRICTION.VEHICLE_NOT_PRESENT), type=SystemMessages.SM_TYPE.Error)
             return False
         LOG_DEBUG('Do GUI action', action)
@@ -689,6 +691,7 @@ class _PreBattleDispatcher(ListenersCollection):
         self.__requestCtx = PrbCtrlRequestCtx()
         currentCtx.stopProcessing(result=True)
         g_eventDispatcher.updateUI()
+        g_eventDispatcher.entityWasUpdated()
         return ctx.getFlags()
 
     @adisp_process

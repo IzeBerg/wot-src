@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>texture_material1</identifier>
+					<fx>shaders/particles/wg_particles.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						diffuseMap
+						<Texture>particles/mesh_particles/tex/lgt_core_thin.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.002921 -0.028977 0.002540</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>texture_material_ncl1_2</identifier>
+					<fx>shaders/particles/wg_particles.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						diffuseMap
+						<Texture>particles/mesh_particles/tex/lgt_core_thin.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.000612 -0.038010 -0.003139</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.010132 -0.060030 -0.013742</min>
+		<max>0.009249 0.000371 0.007463</max>
+	</boundingBox>
+	<geometrySize>59616</geometrySize>
+	<minUVDensity>10000.000000</minUVDensity>
+</root>

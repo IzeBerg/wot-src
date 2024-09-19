@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/glow.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h33_hangar_v3_wt_2024/Environment/hd_wt24_HangarHarvester/hd_wt24_harvester_04_RedGlow.dds</Texture>
+					</property>
+					<property>
+						selfIllumination
+						<Float>100.000000</Float>
+					</property>
+					<property>
+						g_tintColor
+						<Vector4>1.000000 0.192157 0.192157 1.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>0.030380 12.017764 0.000000</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd3</identifier>
+					<fx>shaders/std_effects/PBS_tiled.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						albedoHeightTile0
+						<Texture>content/Railway/00_Tiles/dds/Thin_Metal_02_512_AM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile1
+						<Texture>content/Railway/00_Tiles/dds/Gun_Metal_02_512_AM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile2
+						<Texture>content/Buildings/00_Tiles/dds/Oil_01_512_AM.dds</Texture>
+					</property>
+					<property>
+						blendMask
+						<Texture>content/Hangars/h33_hangar_v3_wt_2024/Environment/hd_wt24_HangarHarvester/hd_wt24_harvester_02_blend.png</Texture>
+					</property>
+					<property>
+						colorTex
+						<Texture>content/Buildings/00_Decals/Decals_00_Universal_AM.dds</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Buildings/00_Tiles/Dirt_CastleRuins_01_DM.dds</Texture>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.470000 0.430000 0.380000 0.000000</Vector4>
+					</property>
+					<property>
+						g_dirtColorParams
+						<Vector4>0.100000 1.000000 0.950000 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>0.215686 0.215686 0.215686 1.000000</Vector4>
+					</property>
+					<property>
+						metallicAOTile0
+						<Texture>content/Railway/00_Tiles/dds/Thin_Metal_02_512_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile1
+						<Texture>content/Railway/00_Tiles/dds/Gun_Metal_02_512_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile2
+						<Texture>content/Buildings/00_Tiles/dds/Oil_01_512_MAO.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile0
+						<Texture>content/Railway/00_Tiles/dds/Thin_Metal_02_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile1
+						<Texture>content/Railway/00_Tiles/dds/Gun_Metal_02_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile2
+						<Texture>content/Buildings/00_Tiles/dds/Oil_01_512_GBMT.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.000001 16.679296 -0.001555</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>s_nd1</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h33_hangar_v3_wt_2024/Environment/hd_wt24_HangarHarvester/hd_wt24_harvester_01_AM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Hangars/h33_hangar_v3_wt_2024/Environment/hd_wt24_HangarHarvester/hd_wt24_harvester_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Hangars/h33_hangar_v3_wt_2024/Environment/hd_wt24_HangarHarvester/hd_wt24_harvester_01_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.000001 12.568630 0.434982</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				3
+				<material>
+					<identifier>s_nd2</identifier>
+					<fx>shaders/std_effects/PBS_tiled.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						albedoHeightTile0
+						<Texture>content/MilitaryEnvironment/00_Tiles/dds/paint_01_512_AM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile1
+						<Texture>content/Railway/00_Tiles/dds/Thin_Metal_02_512_AM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile2
+						<Texture>content/Buildings/00_Tiles/dds/Oil_01_512_AM.dds</Texture>
+					</property>
+					<property>
+						blendMask
+						<Texture>content/Hangars/h33_hangar_v3_wt_2024/Environment/hd_wt24_HangarHarvester/hd_wt24_harvester_02_blend.png</Texture>
+					</property>
+					<property>
+						colorTex
+						<Texture>content/Buildings/00_Decals/Decals_00_Universal_AM.dds</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Buildings/00_Tiles/Dirt_Roof_01_DM.dds</Texture>
+					</property>
+					<property>
+						g_dirtColorParams
+						<Vector4>0.100000 1.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>0.917647 1.000000 0.827451 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>0.215686 0.215686 0.215686 1.000000</Vector4>
+					</property>
+					<property>
+						metallicAOTile0
+						<Texture>content/MilitaryEnvironment/00_Tiles/dds/paint_01_512_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile1
+						<Texture>content/Railway/00_Tiles/dds/Thin_Metal_02_512_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile2
+						<Texture>content/Buildings/00_Tiles/dds/Oil_01_512_MAO.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile0
+						<Texture>content/MilitaryEnvironment/00_Tiles/dds/paint_01_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile1
+						<Texture>content/Railway/00_Tiles/dds/Thin_Metal_02_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile2
+						<Texture>content/Buildings/00_Tiles/dds/Oil_01_512_GBMT.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.000012 11.608676 0.068408</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-11.184201 1.413664 -11.244961</min>
+		<max>11.244961 29.423195 11.244961</max>
+	</boundingBox>
+	<geometrySize>506608</geometrySize>
+	<minUVDensity>0.007162</minUVDensity>
+</root>

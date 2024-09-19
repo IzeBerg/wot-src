@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>hd_mle_UNI_040_EnergyAntenna</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>lod0</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+				<node>
+					<identifier>s1</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>s2</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>s3</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd3</identifier>
+					<fx>shaders/std_effects/PBS_tiled_atlas.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						atlasAlbedoHeight
+						<Texture>content/MilitaryEnvironment/00_Atlases/hd_mle_UNI_040_EnergyAntenna_atlas_AM.atlas</Texture>
+					</property>
+					<property>
+						atlasBlend
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_040_EnergyAntenna/hd_mle_UNI_040_EnergyAntenna_atlas_blend.png</Texture>
+					</property>
+					<property>
+						atlasMetallicAO
+						<Texture>content/MilitaryEnvironment/00_Atlases/hd_mle_UNI_040_EnergyAntenna_atlas_MAO.atlas</Texture>
+					</property>
+					<property>
+						atlasNormalGlossSpec
+						<Texture>content/MilitaryEnvironment/00_Atlases/hd_mle_UNI_040_EnergyAntenna_atlas_GBMT.atlas</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Buildings/00_Tiles/Shadows_DM.dds</Texture>
+					</property>
+					<property>
+						g_atlasIndexes
+						<Vector4>4.000000 0.000000 5.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_atlasSizes
+						<Vector4>4.000000 2.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.470000 0.430000 0.380000 0.000000</Vector4>
+					</property>
+					<property>
+						g_dirtParams
+						<Vector4>1.200000 100.000000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_fakeShadowsParams
+						<Vector4>0.500000 0.490000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>0.709804 0.588235 0.227451 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>1.000000 0.980392 0.866667 1.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>0.009503 3.101694 0.066972</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd2</identifier>
+					<fx>shaders/std_effects/PBS_tiled_atlas.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						atlasAlbedoHeight
+						<Texture>content/MilitaryEnvironment/00_Atlases/hd_mle_UNI_040_EnergyAntenna_atlas_AM.atlas</Texture>
+					</property>
+					<property>
+						atlasBlend
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_040_EnergyAntenna/hd_mle_UNI_040_EnergyAntenna_atlas_blend.png</Texture>
+					</property>
+					<property>
+						atlasMetallicAO
+						<Texture>content/MilitaryEnvironment/00_Atlases/hd_mle_UNI_040_EnergyAntenna_atlas_MAO.atlas</Texture>
+					</property>
+					<property>
+						atlasNormalGlossSpec
+						<Texture>content/MilitaryEnvironment/00_Atlases/hd_mle_UNI_040_EnergyAntenna_atlas_GBMT.atlas</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Buildings/00_Tiles/Dirt_Soot_06_DM.dds</Texture>
+					</property>
+					<property>
+						g_atlasIndexes
+						<Vector4>2.000000 6.000000 5.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_atlasSizes
+						<Vector4>4.000000 2.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.000000 0.000000 0.000000 0.100000</Vector4>
+					</property>
+					<property>
+						g_dirtParams
+						<Vector4>0.100000 100.000000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_fakeShadowsParams
+						<Vector4>0.500000 0.490000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>0.431373 0.431373 0.431373 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>0.901961 0.878431 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>0.874510 0.874510 0.874510 1.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>-0.054185 11.900451 0.538803</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>s_nd1</identifier>
+					<fx>shaders/std_effects/PBS_tiled_atlas.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						atlasAlbedoHeight
+						<Texture>content/MilitaryEnvironment/00_Atlases/hd_mle_UNI_040_EnergyAntenna_atlas_AM.atlas</Texture>
+					</property>
+					<property>
+						atlasBlend
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_040_EnergyAntenna/hd_mle_UNI_040_EnergyAntenna_atlas_blend.png</Texture>
+					</property>
+					<property>
+						atlasMetallicAO
+						<Texture>content/MilitaryEnvironment/00_Atlases/hd_mle_UNI_040_EnergyAntenna_atlas_MAO.atlas</Texture>
+					</property>
+					<property>
+						atlasNormalGlossSpec
+						<Texture>content/MilitaryEnvironment/00_Atlases/hd_mle_UNI_040_EnergyAntenna_atlas_GBMT.atlas</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Environment/00_Tiles/hd_env_EU_063_Cliffs_DM.dds</Texture>
+					</property>
+					<property>
+						g_atlasIndexes
+						<Vector4>1.000000 1.000000 3.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_atlasSizes
+						<Vector4>4.000000 2.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_dirtParams
+						<Vector4>1.000000 100.000000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_fakeShadowsParams
+						<Vector4>0.500000 0.490000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>0.250980 0.180392 0.172549 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>0.658824 0.658824 0.658824 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>0.219608 0.219608 0.219608 1.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>-0.068999 12.719965 1.054618</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				3
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_040_EnergyAntenna/hd_mle_UNI_040_EnergyAntenna_AM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_040_EnergyAntenna/hd_mle_UNI_040_EnergyAntenna_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_040_EnergyAntenna/hd_mle_UNI_040_EnergyAntenna_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.002924 11.331667 0.549196</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-4.117689 -0.050288 -4.248930</min>
+		<max>4.103593 23.937386 5.328792</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>1843678</geometrySize>
+	<minUVDensity>0.003142</minUVDensity>
+</root>

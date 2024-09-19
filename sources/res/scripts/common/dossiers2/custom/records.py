@@ -3434,7 +3434,13 @@ RECORDS = (
  (
   'maxComp7ArchivePegasus', 'maxWinSeries', 'p', 'H', 60001),
  (
-  'maxComp7ArchivePegasus', 'maxSquadWinSeries', 'p', 'H', 60001))
+  'maxComp7ArchivePegasus', 'maxSquadWinSeries', 'p', 'H', 60001),
+ (
+  'achievements', 'wt2024HunterWins', 'p', 'I', 4294967295),
+ (
+  'achievements', 'wt2024BossWins', 'p', 'I', 4294967295),
+ (
+  'achievements', 'wt2024HunterWinsEpic', 'p', 'I', 4294967295))
 RECORD_INDICES = dict((rec[:2], idx) for idx, rec in enumerate(RECORDS))
 RECORD_DB_IDS = {('total', 'creationTime'): 68, 
    ('total', 'lastBattleTime'): 7, 
@@ -5153,7 +5159,10 @@ RECORD_DB_IDS = {('total', 'creationTime'): 68,
    ('maxComp7ArchivePegasus', 'maxHealthRepair'): 1995, 
    ('maxComp7ArchivePegasus', 'maxHealthRepairVehicle'): 1996, 
    ('maxComp7ArchivePegasus', 'maxWinSeries'): 1997, 
-   ('maxComp7ArchivePegasus', 'maxSquadWinSeries'): 1998}
+   ('maxComp7ArchivePegasus', 'maxSquadWinSeries'): 1998, 
+   ('achievements', 'wt2024HunterWins'): 2000, 
+   ('achievements', 'wt2024BossWins'): 2001, 
+   ('achievements', 'wt2024HunterWinsEpic'): 2002}
 DB_ID_TO_RECORD = dict([ (value, key) for key, value in RECORD_DB_IDS.iteritems() ])
 RECORD_DB_IDS.update({('vehTypeFrags', ''): 863, 
    ('a15x15Cut', ''): 864, 

@@ -146,6 +146,20 @@ package net.wg.data.constants.generated
       public static const HE20_EVENT_ENTRY_POINT:String = "he20EventEntryPoint";
       
       public static const CAROUSEL_EVENT_ENTRY_HOLDER:String = "carouselEventEntryHolder";
+      
+      public static const LOOTBOXES_WIDGET:String = "eventBoxEntryWidget";
+      
+      public static const WHITE_TIGER_WIDGET:String = "whiteTigerWidget";
+      
+      public static const WT_EVENT_ENTRY_POINT:String = "WTEventEntryPoint";
+      
+      public static const WT_EVENT_PRIME_TIME:String = "wtEventPrimeTime.swf";
+      
+      public static const EVENT_CAROUSEL_WIDGET:String = "eventCarouselWidget";
+      
+      public static const EVENT_CREW_WIDGET:String = "eventCrewWidget";
+      
+      public static const EVENT_PARAMS_WIDGET:String = "eventParamsWidget";
        
       
       public function HANGAR_ALIASES()

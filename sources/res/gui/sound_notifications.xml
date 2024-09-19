@@ -93,12 +93,6 @@
 		<cooldownFx>0</cooldownFx>
 	</event>
 	<event>
-		<name>BF_regroup_prototype_2D</name>
-		<chance>100</chance>
-		<fxEvent>regroup_prototype_2D</fxEvent>
-		<cooldownFx>0</cooldownFx>
-	</event>
-	<event>
 		<name>br_ability</name>
 		<chance>100</chance>
 		<fxEvent>eb_ability_ready_to_use</fxEvent>
@@ -108,6 +102,12 @@
 		<name>comp_7_ability_ready</name>
 		<chance>100</chance>
 		<fxEvent>comp_7_ability_ready</fxEvent>
+		<cooldownFx>0</cooldownFx>
+	</event>
+	<event>
+		<name>wt_ability</name>
+		<chance>100</chance>
+		<fxEvent>ev_white_tiger_ability_button_ready</fxEvent>
 		<cooldownFx>0</cooldownFx>
 	</event>
 	<event>

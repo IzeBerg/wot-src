@@ -429,6 +429,7 @@ package net.wg.gui.lobby.battleResults
       {
          var _loc4_:IFormattedInt = null;
          var _loc5_:Boolean = false;
+         var _loc8_:Number = NaN;
          _loc4_ = this._locale.parseFormattedInteger(param3);
          _loc5_ = _loc4_.value > 0;
          var _loc6_:IFormattedInt = this._locale.parseFormattedInteger(param1);
@@ -437,7 +438,7 @@ package net.wg.gui.lobby.battleResults
          var _loc7_:IFormattedInt = this._locale.parseFormattedInteger(param2);
          this.xpCounter.init(_loc7_.value,this._locale.cutCharsBeforeNumber(param2),_loc7_.delimiter,this._xpCounterNumber != _loc7_.value);
          this._xpCounterNumber = _loc7_.value;
-         var _loc8_:Number = !!_loc5_ ? Number(COUNTERS_SCALE) : Number(COUNTERS_SCALE_NO_CRYSTALS);
+         _loc8_ = !!_loc5_ ? Number(COUNTERS_SCALE) : Number(COUNTERS_SCALE_NO_CRYSTALS);
          var _loc9_:int = !!_loc5_ ? int(COUNTER_LEFT_OFFSET) : int(COUNTER_LEFT_OFFSET_NO_CRYSTALS);
          if(_loc5_)
          {

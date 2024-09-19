@@ -4,6 +4,7 @@ from battleground.simulated_scene import SimulatedScene, ANIMATION_DURATION_BEFO
 from constants import ATTACK_REASON, ATTACK_REASONS, ARENA_PERIOD, POSTMORTEM_MODIFIERS
 from gui.battle_control.arena_info.interfaces import IBattleFieldController
 from gui.shared.events import DeathCamEvent
+from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
 from wotdecorators import noexcept
 from AvatarInputHandler.DynamicCameras.ArcadeCamera import ArcadeCamera
 from AvatarInputHandler.DynamicCameras.kill_cam_camera import KillCamera, StartCamDirection, LOOK_AT_KILLER_DURATION
@@ -116,7 +117,6 @@ class KillModeBase(IControlMode, CallbackDelayer):
             _logger.error('Avatar is None, cannot enter %s.', self.__class__.__name__)
             return
         else:
-            self._aih.setForcedGuiControlMode(False)
             self._changeKillCamModeState(DeathCamEvent.State.NONE)
             self._victimVehicleID = avatar.playerVehicleID
             self._postmortemKwargs = kwargs
@@ -352,6 +352,8 @@ class KillCamMode(KillModeBase):
         self.__simulatedScene.onAllVehiclesLoaded += self.__onAllVehiclesLoaded
         self.__simulatedScene.onSimulatedSceneHasEnded += self.__simulatedSceneEnded
         self._changeKillCamModeState(DeathCamEvent.State.INACTIVE)
+        if not self._aih.appLoader.getApp().hasGuiControlModeConsumers(VIEW_ALIAS.INGAME_MENU):
+            self._aih.setForcedGuiControlMode(False)
         super(KillCamMode, self).enable(**kwargs)
         return
 

@@ -10,9 +10,17 @@
 			</Type>
 			<Flags>ALL_CLIENTS</Flags>
 		</teamLives>
+		<respawnInfo>
+			<Type>
+				ARRAY
+				<of>RESPAWN_TIME_INFO</of>
+			</Type>
+			<Flags>ALL_CLIENTS</Flags>
+		</respawnInfo>
 	</Properties>
 	<ofEntity>
 		<TeamInfo/>
+		<ArenaInfo/>
 	</ofEntity>
 	<DefaultKeyName>teamLivesComponent</DefaultKeyName>
 </root>

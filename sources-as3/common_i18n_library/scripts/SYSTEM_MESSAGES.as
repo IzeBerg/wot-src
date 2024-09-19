@@ -803,6 +803,8 @@ package
       
       public static const FILLING_UNTRAINED_PERKS_SUCCESS:String = "#system_messages:filling_untrained_perks/success";
       
+      public static const ADD_TANKMAN_SKILL_CREW_SKILLS_LOCKED:String = "#system_messages:add_tankman_skill/crew_skills_locked";
+      
       public static const FILLING_UNTRAINED_PERKS_SERVER_ERROR:String = "#system_messages:filling_untrained_perks/server_error";
       
       public static const DROP_TANKMAN_SKILL_SUCCESS:String = "#system_messages:drop_tankman_skill/success";

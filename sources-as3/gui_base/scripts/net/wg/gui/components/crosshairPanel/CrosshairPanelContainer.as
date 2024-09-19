@@ -802,6 +802,26 @@ package net.wg.gui.components.crosshairPanel
          }
       }
       
+      public function as_showPlasmaIndicator(param1:Number, param2:Boolean, param3:String) : void
+      {
+         if(this._currentCrosshair != null)
+         {
+            this._currentCrosshair.showPlasmaIndicator(param1,param2,param3);
+         }
+      }
+      
+      public function as_showExplosiveShotIndicator(param1:Boolean) : void
+      {
+         if(this._gunMarkersContainer != null)
+         {
+            this._gunMarkersContainer.setExplosiveShotMarker(param1);
+         }
+         if(this._currentCrosshair != null)
+         {
+            this._currentCrosshair.setExplosiveShotVisible(param1);
+         }
+      }
+      
       public function as_startDualGunCharging(param1:Number, param2:Number) : void
       {
          if(this._gunMarkersContainer != null)

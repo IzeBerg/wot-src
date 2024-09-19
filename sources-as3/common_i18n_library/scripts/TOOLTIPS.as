@@ -325,6 +325,8 @@ package
       
       public static const SHOWPERSONALANIMATEDDOGTAG:String = "#tooltips:showPersonalAnimatedDogTag";
       
+      public static const SETTTINGSDISABLEDNOTIFICATION:String = "#tooltips:setttingsDisabledNotification";
+      
       public static const BADGEINFO_TITLE:String = "#tooltips:badgeinfo/title";
       
       public static const BADGEINFO_TEXT:String = "#tooltips:badgeinfo/text";
@@ -1242,6 +1244,14 @@ package
       public static const HANGAR_STARTBTN_SQUADNOTREADY_HEADER:String = "#tooltips:hangar/startBtn/squadNotReady/header";
       
       public static const HANGAR_STARTBTN_SQUADNOTREADY_BODY:String = "#tooltips:hangar/startBtn/squadNotReady/body";
+      
+      public static const HANGAR_STARTBTN_PRIMENOTAVAILABLE_HEADER:String = "#tooltips:hangar/startBtn/primeNotAvailable/header";
+      
+      public static const HANGAR_STARTBTN_PRIMENOTAVAILABLE_BODY:String = "#tooltips:hangar/startBtn/primeNotAvailable/body";
+      
+      public static const HANGAR_STARTBTN_NOTICKET_HEADER:String = "#tooltips:hangar/startBtn/noTicket/header";
+      
+      public static const HANGAR_STARTBTN_NOTICKET_BODY:String = "#tooltips:hangar/startBtn/noTicket/body";
       
       public static const HANGAR_STARTBTN_BATTLEROYALESQUADNOTREADY_WRONGVEHICLE_HEADER:String = "#tooltips:hangar/startBtn/battleRoyaleSquadNotReady/wrongVehicle/header";
       
@@ -2257,6 +2267,8 @@ package
       
       public static const VEHICLE_RENTLEFT_BATTLES:String = "#tooltips:vehicle/rentLeft/battles";
       
+      public static const VEHICLE_RENTLEFT_NOTIMELEFT:String = "#tooltips:vehicle/rentLeft/noTimeLeft";
+      
       public static const VEHICLE_RENTLEFT_WINS:String = "#tooltips:vehicle/rentLeft/wins";
       
       public static const VEHICLE_RENTLEFT_EPIC_BASE:String = "#tooltips:vehicle/rentLeft/epic/base";
@@ -2272,6 +2284,14 @@ package
       public static const VEHICLE_RENTLEFTFUTURE_HOURS:String = "#tooltips:vehicle/rentLeftFuture/hours";
       
       public static const VEHICLE_RENTLEFTFUTURE_BATTLES:String = "#tooltips:vehicle/rentLeftFuture/battles";
+      
+      public static const VEHICLE_RENTLEFTFUTURE_OBTAINEDBY:String = "#tooltips:vehicle/rentLeftFuture/obtainedBy";
+      
+      public static const VEHICLE_OVERVIEW_TITLE:String = "#tooltips:vehicle/overview/title";
+      
+      public static const VEHICLE_OVERVIEW_DESC:String = "#tooltips:vehicle/overview/desc";
+      
+      public static const VEHICLE_AFTEREVENTEND_TITLE:String = "#tooltips:vehicle/afterEventEnd/title";
       
       public static const VEHICLE_RENTLEFTFUTURE_WINS:String = "#tooltips:vehicle/rentLeftFuture/wins";
       
@@ -4891,6 +4911,10 @@ package
       
       public static const ADVANCED_LARGEMEDKIT:String = "#tooltips:advanced/largeMedkit";
       
+      public static const ADVANCED_WT_LARGEREPAIRKIT:String = "#tooltips:advanced/wt_largeRepairkit";
+      
+      public static const ADVANCED_WT_LARGEMEDKIT:String = "#tooltips:advanced/wt_largeMedkit";
+      
       public static const ADVANCED_RATION:String = "#tooltips:advanced/ration";
       
       public static const ADVANCED_AUTOEXTINGUISHERS:String = "#tooltips:advanced/autoExtinguishers";
@@ -5870,6 +5894,8 @@ package
       public static const STORAGE_MAINMENU_OFFERS_HEADER:String = "#tooltips:storage/mainMenu/offers/header";
       
       public static const STORAGE_MAINMENU_OFFERS_BODY:String = "#tooltips:storage/mainMenu/offers/body";
+      
+      public static const TANKMAN_SKILLSTITLE:String = "#tooltips:tankman/skillsTitle";
       
       public static const NOTRECRUITEDTANKMAN_HOWTOGET:String = "#tooltips:notrecruitedtankman/howToGet";
       
@@ -7293,6 +7319,10 @@ package
       
       public static const NOTRECRUITEDTANKMAN_WT2021_BOSS_LABEL:String = "#tooltips:notrecruitedtankman/wt2021_boss/label";
       
+      public static const SETTTINGSDISABLEDNOTIFICATION_HEADER:String = "#tooltips:setttingsDisabledNotification/header";
+      
+      public static const SETTTINGSDISABLEDNOTIFICATION_BODY:String = "#tooltips:setttingsDisabledNotification/body";
+      
       public static const NOTRECRUITEDTANKMAN_NY22MEN_A_LABEL:String = "#tooltips:notrecruitedtankman/ny22men_A/label";
       
       public static const NOTRECRUITEDTANKMAN_NY22MEN_A_DESC:String = "#tooltips:notrecruitedtankman/ny22men_A/desc";
@@ -7462,6 +7492,50 @@ package
       public static const NOTRECRUITEDTANKMAN_WT_2023_DRIVER_DESC:String = "#tooltips:notrecruitedtankman/wt_2023_driver/desc";
       
       public static const NOTRECRUITEDTANKMAN_WT_2023_DRIVER_LABEL:String = "#tooltips:notrecruitedtankman/wt_2023_driver/label";
+      
+      public static const NOTRECRUITEDTANKMAN_WT_2024_VONKRIEGER_DESC:String = "#tooltips:notrecruitedtankman/wt_2024_vonkrieger/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_WT_2024_VONKRIEGER_LABEL:String = "#tooltips:notrecruitedtankman/wt_2024_vonkrieger/label";
+      
+      public static const NOTRECRUITEDTANKMAN_WT_2024_ERMELINDA_DESC:String = "#tooltips:notrecruitedtankman/wt_2024_ermelinda/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_WT_2024_ERMELINDA_LABEL:String = "#tooltips:notrecruitedtankman/wt_2024_ermelinda/label";
+      
+      public static const NOTRECRUITEDTANKMAN_WT_2024_QUICKYBABY_DESC:String = "#tooltips:notrecruitedtankman/wt_2024_quickybaby/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_WT_2024_QUICKYBABY_LABEL:String = "#tooltips:notrecruitedtankman/wt_2024_quickybaby/label";
+      
+      public static const NOTRECRUITEDTANKMAN_WT_2024_DAKILLZOR_DESC:String = "#tooltips:notrecruitedtankman/wt_2024_dakillzor/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_WT_2024_DAKILLZOR_LABEL:String = "#tooltips:notrecruitedtankman/wt_2024_dakillzor/label";
+      
+      public static const NOTRECRUITEDTANKMAN_WT_2024_MOUZAKROBAT_DESC:String = "#tooltips:notrecruitedtankman/wt_2024_mouzakrobat/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_WT_2024_MOUZAKROBAT_LABEL:String = "#tooltips:notrecruitedtankman/wt_2024_mouzakrobat/label";
+      
+      public static const NOTRECRUITEDTANKMAN_WT_2024_SKILL4LTU_DESC:String = "#tooltips:notrecruitedtankman/wt_2024_skill4ltu/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_WT_2024_SKILL4LTU_LABEL:String = "#tooltips:notrecruitedtankman/wt_2024_skill4ltu/label";
+      
+      public static const NOTRECRUITEDTANKMAN_WT_CN2024_ZHONGPENGFEI_DESC:String = "#tooltips:notrecruitedtankman/wt_CN2024_zhongpengfei/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_WT_CN2024_ZHONGPENGFEI_LABEL:String = "#tooltips:notrecruitedtankman/wt_CN2024_zhongpengfei/label";
+      
+      public static const NOTRECRUITEDTANKMAN_WT_CN2024_BMENG_DESC:String = "#tooltips:notrecruitedtankman/wt_CN2024_bmeng/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_WT_CN2024_BMENG_LABEL:String = "#tooltips:notrecruitedtankman/wt_CN2024_bmeng/label";
+      
+      public static const NOTRECRUITEDTANKMAN_WT_CN2024_YITUANTUAN_DESC:String = "#tooltips:notrecruitedtankman/wt_CN2024_yituantuan/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_WT_CN2024_YITUANTUAN_LABEL:String = "#tooltips:notrecruitedtankman/wt_CN2024_yituantuan/label";
+      
+      public static const NOTRECRUITEDTANKMAN_WT_CN2024_SAONIAN_DESC:String = "#tooltips:notrecruitedtankman/wt_CN2024_saonian/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_WT_CN2024_SAONIAN_LABEL:String = "#tooltips:notrecruitedtankman/wt_CN2024_saonian/label";
+      
+      public static const EVENTOFFER_TITLE_TANKMEN_GIFT:String = "#tooltips:eventOffer/title/tankmen_gift";
+      
+      public static const EVENTOFFER_FOOTER_TANKMEN_GIFT:String = "#tooltips:eventOffer/footer/tankmen_gift";
       
       public static const NOTRECRUITEDTANKMAN_COSM02_KIRK_LABEL:String = "#tooltips:notrecruitedtankman/cosm02_Kirk/label";
       
