@@ -18,12 +18,11 @@ if typing.TYPE_CHECKING:
     from gui.impl.lobby.container_views.base.components import ComponentBase
 
 class SkillsTrainingView(ContainerBase, ViewImpl):
-    __slots__ = ('_crewWidget', '_paramsView', '_callback')
+    __slots__ = ('_crewWidget', '_paramsView')
 
     def __init__(self, **kwargs):
         self._crewWidget = None
         self._paramsView = None
-        self._callback = kwargs.get('callback')
         settings = ViewSettings(R.views.lobby.crew.SkillsTrainingView())
         settings.model = SkillsTrainingViewModel()
         super(SkillsTrainingView, self).__init__(settings, **kwargs)
@@ -40,10 +39,6 @@ class SkillsTrainingView(ContainerBase, ViewImpl):
     @property
     def viewModel(self):
         return super(SkillsTrainingView, self).getViewModel()
-
-    def destroyWindow(self):
-        self._callback(self.context.tankmanID)
-        super(SkillsTrainingView, self).destroyWindow()
 
     def _getComponents(self):
         return [
@@ -91,7 +86,6 @@ class SkillsTrainingView(ContainerBase, ViewImpl):
         super(SkillsTrainingView, self)._finalize()
         self._crewWidget = None
         self._paramsView = None
-        self._callback = None
         return
 
     def _onWidgetSlotClick(self, tankmanInvID, slotIdx):
@@ -106,10 +100,11 @@ class SkillsTrainingView(ContainerBase, ViewImpl):
 
 
 class SkillsTrainingWindow(WindowImpl):
-    __slots__ = ('_blur', )
+    __slots__ = ('_blur', '_callback')
 
     def __init__(self, **kwargs):
         self._blur = None
+        self._callback = kwargs.get('callback')
         super(SkillsTrainingWindow, self).__init__(WindowFlags.WINDOW | WindowFlags.WINDOW_FULLSCREEN, content=SkillsTrainingView(**kwargs), layer=WindowLayer.FULLSCREEN_WINDOW)
         return
 
@@ -118,6 +113,8 @@ class SkillsTrainingWindow(WindowImpl):
         self._blur = CachedBlur(enabled=True, ownLayer=self.layer - 1)
 
     def _finalize(self):
+        self._callback(self.content.context.tankmanID)
+        self._callback = None
         self._blur.fini()
         self._blur = None
         super(SkillsTrainingWindow, self)._finalize()

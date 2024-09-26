@@ -1,6 +1,6 @@
 import typing, BigWorld
 from auto_shoot_guns.auto_shoot_guns_common import AutoShootGunState
-from vehicle_systems.entity_components.vehicle_mechanic_component import getPlayerVehicleMechanic, checkStateStatus, VehicleMechanicGunPrefabComponent
+from vehicle_systems.entity_components.vehicle_mechanic_component import getPlayerVehicleMechanic, checkStateStatus, initOnce, VehicleMechanicGunPrefabComponent
 from vehicle_systems.auto_shoot_guns.shooting_events import AutoShootingEvents
 from vehicle_systems.auto_shoot_guns.custom_integrations import AutoShootCustomIntegrations
 if typing.TYPE_CHECKING:
@@ -12,6 +12,7 @@ def getPlayerVehicleAutoShootGunController():
 
 class AutoShootGunController(VehicleMechanicGunPrefabComponent):
 
+    @initOnce
     def __init__(self):
         super(AutoShootGunController, self).__init__()
         self.__gunsGroupSize = 0
