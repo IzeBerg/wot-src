@@ -206,6 +206,7 @@ _filters = {SoundFilters.FILTERED_HANGAR: _selectFilter(WWISEFilteredHangarFilte
    SoundFilters.HANGAR_PLACE_TASKS_MISSIONS: _selectFilter(WWISEHangarTasksMissionsFilter()), 
    SoundFilters.HANGAR_PLACE_TASKS_BATTLE_PASS: _selectFilter(WWISEHangarTasksBPFilter()), 
    SoundFilters.HANGAR_PLACE_TASKS_EVENTS: _selectFilter(WWISEEventPageFilter()), 
+   SoundFilters.MARATHON_FILTER: _selectFilter(WWISEMarathonPageFilter()), 
    SoundFilters.HANGAR_PLACE_TASKS_BATTLE_MATTERS: _selectFilter(WWISEBattleMattersFilter())}
 
 def _setState(stateGroup, stateName):

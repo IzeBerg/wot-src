@@ -20,7 +20,7 @@ msgid "entryPoint/chapterDateText"
 msgstr "章节%(chapter)s，%(date)s"
 
 msgid "entryPoint/chapterDoneText"
-msgstr "章节%(chapter)已完成"
+msgstr "已完成"
 
 msgid "entryPoint/chapterStageText"
 msgstr "章节%(chapter)s，阶段%(stage)s"
@@ -41,22 +41,13 @@ msgid "entryPoint/finalNoDiscountText/short"
 msgstr "%(vehicleLabel)%(name)%(icon)"
 
 msgid "entryPoint/finalSaleText"
-msgstr "开放购买的时间为%(time)"
-
-msgid "entryPoint/postProgression/finalDiscountText"
-msgstr "以%(discount)的折扣购买%(name)风格%(icon)"
-
-msgid "entryPoint/postProgression/finalNoDiscountText"
-msgstr "购买%(name)风格"
+msgstr "开放购买时间: %(time)"
 
 msgid "entryPoint/separatorText"
 msgstr "或"
 
 msgid "entryPoint/stageText"
 msgstr "第%(stage)阶段"
-
-msgid "entryPoint/styleName"
-msgstr "猛虎利爪"
 
 msgid "entryPoint/taskDoneText"
 msgstr "已完成任务"
@@ -74,7 +65,7 @@ msgid "entryPoint/time/period/minute"
 msgstr "{min}分"
 
 msgid "entryPoint/title"
-msgstr "卧虎山林"
+msgstr "雷霆万钧"
 
 msgid "entryPoint/untilEndText"
 msgstr "%(time)"
@@ -83,7 +74,7 @@ msgid "entryPoint/untilStartText"
 msgstr "距离开始还有: %(time)"
 
 msgid "entryPoint/vehicleName"
-msgstr "WZ114"
+msgstr "SDP wz 66 G"
 
 msgid "reward/confirm"
 msgstr "车库中查看"
@@ -95,10 +86,10 @@ msgid "reward/goToVehicleBtn"
 msgstr "车库中查看"
 
 msgid "reward/nameStyle"
-msgstr "猛虎利爪"
+msgstr "?empty?"
 
 msgid "reward/nameVehicle"
-msgstr "%(level)s %(type)s %(name)s。"
+msgstr "%(level)s%(type)s%(name)s"
 
 msgid "reward/rest"
 msgstr "还有%(count)s个"
@@ -110,44 +101,47 @@ msgid "reward/stage"
 msgstr "章节%(stage)s: %(text)s"
 
 msgid "reward/stageAllComplete"
-msgstr "已获得所有阶段的奖励。"
+msgstr "已获得所有阶段的奖励"
 
 msgid "reward/stageCompleteLast"
-msgstr "您已完成了最终阶段。"
+msgstr "您已完成所有阶段"
 
 msgid "reward/stageNotAllComplete"
-msgstr "您未完成的阶段的奖励。"
+msgstr "已获得所有未完成阶段的奖励"
 
 msgid "reward/stageStyle"
-msgstr "猛虎腾跃"
+msgstr "?empty?"
 
 msgid "reward/styleTitle"
-msgstr "已获得风格！"
+msgstr "?empty?"
 
 msgid "reward/title"
 msgstr "变节者挑战"
 
 msgid "reward/vehicleTitle"
-msgstr "已获得坦克！"
+msgstr "已获得坦克"
 
 msgid "reward/viewRewardsBtn"
 msgstr "查看奖励"
 
+msgid "rewardTooltip/tankmen/body"
+msgstr "SDP wz 66 G附带乘员。所有乘员均附带足以训练1项特长的经验。"
+
 msgid "rewardTooltip/tankmen/header"
-msgstr "完整车组乘员，带有训练至100%熟练度的\"零历练\"兄弟连特长"
+msgstr "完整车组"
 
 msgid "rewardTooltip/title"
 msgstr "奖励:"
 
 msgid "vehiclePreview/buyingPanel/buyBtn/label/buy"
-msgstr "前去购买坦克"
+msgstr "购买"
 
 msgid "vehiclePreview/buyingPanel/buyBtn/tooltip/active/body"
 msgstr "点击购买物品。"
 
 msgid "vehiclePreview/buyingPanel/buyBtn/tooltip/inactive/body"
 msgstr ""
-"此坦克将在%(event_name)s开始时开放购买。\n"
+"%(event_name)s活动开始后开放购买。\n"
 "%(addInfo)s"
 
 msgid "vehiclePreview/buyingPanel/buyBtn/tooltip/inactive/header"
@@ -173,16 +167,16 @@ msgid "vehiclePreview/title/tooltip/body/marathon/announce"
 msgstr "活动开始于%(marathonStartDate)s。"
 
 msgid "vehiclePreview/title/tooltip/body/marathon/inprogress"
-msgstr "购买C系IX级金币重型坦克WZ114后，您还将获得所有未完成阶段的活动奖励。"
+msgstr "购买B系VIII级金币自行反坦克炮SDP wz 66 G后，您还将获得所有未完成活动阶段的奖励。"
 
 msgid "vehiclePreview/title/tooltip/header"
 msgstr "%(event_name)s"
 
 msgid "vehiclePreview/title/tooltip/info/body/announce"
-msgstr "此坦克和相关奖励将在%(event_name)s期间开放购买。"
+msgstr "该坦克和随附奖励将作为%(event_name)s活动的一部分供您获取。"
 
 msgid "vehiclePreview/title/tooltip/info/body/progress"
-msgstr "此坦克和相关奖励在%(event_name)s期间开放购买%(addInfo)s"
+msgstr "可在活动中获取坦克及相关奖励，%(event_name)s开放%(addInfo)s"
 
 msgid "vehiclePreview/title/tooltip/info/body/progress/withDiscount"
 msgstr "此坦克和相关奖励在%(event_name)s期间开放%(addInfo)s"

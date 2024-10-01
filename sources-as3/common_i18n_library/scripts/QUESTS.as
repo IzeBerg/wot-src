@@ -3463,6 +3463,12 @@ package
       
       public static const DETAILS_CONDITIONS_CUMULATIVE_COMP7PRESTIGEPOINTS:String = "#quests:details/conditions/cumulative/comp7PrestigePoints";
       
+      public static const MISSIONS_TAB_AUTUMN_MARATHON:String = "#quests:missions/tab/autumn_marathon";
+      
+      public static const MISSIONS_TAB_AUTUMN_MARATHON_HEADER:String = "#quests:missions/tab/autumn_marathon/header";
+      
+      public static const MISSIONS_TAB_AUTUMN_MARATHON_BODY:String = "#quests:missions/tab/autumn_marathon/body";
+      
       public static const BATTLECONDITION_STATE_ENUM:Array = [BATTLECONDITION_STATE_COMPLETED,BATTLECONDITION_STATE_COMPLETED_PERFECTLY,BATTLECONDITION_STATE_IN_PROGRESS,BATTLECONDITION_STATE_FAILED];
       
       public static const QUEST_FLAG_STATUS_ENUM:Array = [QUEST_FLAG_STATUS_NOT_STARTED,QUEST_FLAG_STATUS_LOCKED,QUEST_FLAG_STATUS_FAILED,QUEST_FLAG_STATUS_COMPLETED,QUEST_FLAG_STATUS_IN_PROGRESS,QUEST_FLAG_STATUS_COMPLETED_PERFECTLY];
