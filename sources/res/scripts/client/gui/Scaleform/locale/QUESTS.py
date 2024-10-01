@@ -1729,6 +1729,9 @@ class QUESTS(object):
     DAILYQUESTS_CONDITION_BATTLE_SINGULAR = '#quests:dailyQuests/condition/battle_singular'
     DETAILS_CONDITIONS_CUMULATIVE_DAMAGEDHP = '#quests:details/conditions/cumulative/damagedHp'
     DETAILS_CONDITIONS_CUMULATIVE_COMP7PRESTIGEPOINTS = '#quests:details/conditions/cumulative/comp7PrestigePoints'
+    MISSIONS_TAB_AUTUMN_MARATHON = '#quests:missions/tab/autumn_marathon'
+    MISSIONS_TAB_AUTUMN_MARATHON_HEADER = '#quests:missions/tab/autumn_marathon/header'
+    MISSIONS_TAB_AUTUMN_MARATHON_BODY = '#quests:missions/tab/autumn_marathon/body'
     TOKEN_DEFAULT_ENUM = (
      TOKEN_DEFAULT_USSR,
      TOKEN_DEFAULT_GERMANY,

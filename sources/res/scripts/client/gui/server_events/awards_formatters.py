@@ -14,18 +14,18 @@ from gui.impl import backport
 from gui.impl.gen import R
 from gui.impl.gen_utils import INVALID_RES_ID
 from gui.ranked_battles.constants import YEAR_POINTS_TOKEN
-from gui.server_events.formatters import parseComplexToken, TOKEN_SIZES
+from gui.server_events.formatters import TOKEN_SIZES, parseComplexToken
 from gui.server_events.recruit_helper import getRecruitInfo
 from gui.shared.formatters import text_styles
 from gui.shared.gui_items import GUI_ITEM_TYPE, getItemIconName
 from gui.shared.gui_items.Tankman import getRoleUserName
 from gui.shared.gui_items.badge import Badge
-from gui.shared.gui_items.crew_skin import localizedFullName, Rarity
+from gui.shared.gui_items.crew_skin import Rarity, localizedFullName
 from gui.shared.gui_items.customization import CustomizationTooltipContext
 from gui.shared.money import Currency
 from gui.shared.utils.functions import makeTooltip
 from gui.shared.utils.requesters import REQ_CRITERIA
-from helpers import time_utils, i18n, dependency
+from helpers import dependency, i18n, time_utils
 from items.tankmen import RECRUIT_TMAN_TOKEN_PREFIX
 from personal_missions import PM_BRANCH
 from shared_utils import CONST_CONTAINER, findFirst
@@ -297,7 +297,7 @@ def getRoyaleFormatterMap():
        'dossier': DossierBonusFormatter()}
 
 
-def getMarathonRewardScrenFormatterMap():
+def getMarathonRewardScreenFormatterMap():
     mapping = getDefaultFormattersMap()
     mapping[PREMIUM_ENTITLEMENTS.BASIC] = PremiumDaysMarathonFormatter()
     mapping[PREMIUM_ENTITLEMENTS.PLUS] = PremiumDaysMarathonFormatter()
@@ -384,7 +384,7 @@ def getBattlePassAwardsPacker():
 
 
 def getMarathonRewardScreenPacker():
-    return AwardsPacker(getMarathonRewardScrenFormatterMap())
+    return AwardsPacker(getMarathonRewardScreenFormatterMap())
 
 
 def formatCountLabel(count, defaultStr=''):
@@ -683,7 +683,7 @@ class PremiumDaysBonusFormatter(SimpleBonusFormatter):
         for size in AWARDS_SIZES.ALL():
             imgPath = RES_ICONS.getPremiumDaysAwardIcon(size, bonus.getName(), bonus.getValue())
             if imgPath is None:
-                imgPath = RES_ICONS.getPremiumDaysAwardIcon(size, bonus.getName(), 'universal')
+                imgPath = RES_ICONS.getPremiumDaysAwardIcon(size, bonus.getName(), '1')
             result[size] = imgPath
 
         return result
@@ -699,7 +699,7 @@ class PremiumDaysMarathonFormatter(PremiumDaysBonusFormatter):
     def _getImages(cls, bonus):
         result = {}
         for size in AWARDS_SIZES.ALL():
-            imgPath = RES_ICONS.getPremiumDaysAwardIcon(size, bonus.getName(), 'universal')
+            imgPath = RES_ICONS.getPremiumDaysAwardIcon(size, bonus.getName(), '1')
             result[size] = imgPath
 
         return result
@@ -1309,13 +1309,16 @@ class TankmenMarathonRewardBonusFormatter(TankmenBonusFormatter):
 
     def _format(self, bonus):
         result = []
-        for group in bonus.getTankmenGroups().itervalues():
-            if group['skills']:
-                key = 'with_skills'
-            else:
-                key = 'no_skills'
-            label = '#quests:bonuses/item/tankmen/%s' % key
-            result.append(PreformattedBonus(bonusName=bonus.getName(), userName=self._getUserName(key), images=self._getImages(bonus), specialAlias=TOOLTIPS_CONSTANTS.TANKMAN, tooltip=makeTooltip(backport.text(R.strings.marathon.rewardTooltip.tankmen.header()), i18n.makeString(label, **group)), isCompensation=self._isCompensation(bonus)))
+        for _ in bonus.getTankmenGroups().itervalues():
+            result.append(PreformattedBonus(bonusName=bonus.getName(), userName=self._getUserName('no_skills'), images=self._getImages(bonus), specialAlias=TOOLTIPS_CONSTANTS.TANKMAN, tooltip=makeTooltip(backport.text(R.strings.marathon.rewardTooltip.tankmen.header()), backport.text(R.strings.marathon.rewardTooltip.tankmen.body())), isCompensation=self._isCompensation(bonus)))
+
+        return result
+
+    @classmethod
+    def _getImages(cls, bonus):
+        result = {}
+        for size in AWARDS_SIZES.ALL():
+            result[size] = RES_ICONS.getBonusIcon(size, ('{}_1perk').format(bonus.getName()))
 
         return result
 
