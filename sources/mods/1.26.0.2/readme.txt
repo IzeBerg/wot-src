@@ -1,0 +1,1 @@
+This folder is used for packaged World of Tanks modifiers (*.wotmods). 
