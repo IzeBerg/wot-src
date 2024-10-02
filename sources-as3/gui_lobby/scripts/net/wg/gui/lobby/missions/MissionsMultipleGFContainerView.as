@@ -56,6 +56,7 @@ package net.wg.gui.lobby.missions
          if(_hasBeenShownBefore)
          {
             super.handleShow();
+            as_setWaitingVisible(false);
          }
       }
       

@@ -279,7 +279,7 @@ class HangarHeader(HangarHeaderMeta, IGlobalListener, IEventBoardsListener):
             showMissionsCategories(missionID=questID)
         elif questType == HANGAR_HEADER_QUESTS.QUEST_GROUP_RANKED_DAILY:
             showMissionsCategories(groupID=RANKED_DAILY_GROUP_ID)
-        elif questType == HANGAR_HEADER_QUESTS.QUEST_TYPE_BATTLE_PASS:
+        elif questType == HANGAR_HEADER_QUESTS.QUEST_GROUP_BATTLE_PASS:
             showMissionsBattlePass()
         elif questType == HANGAR_HEADER_QUESTS.QUEST_TYPE_MAPBOX:
             showMissionsMapboxProgression()

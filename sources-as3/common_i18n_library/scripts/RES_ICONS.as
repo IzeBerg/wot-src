@@ -27347,14 +27347,6 @@ package
       
       public static const MAPS_ICONS_MARATHON_BANNER:String = "../maps/icons/marathon/banner.png";
       
-      public static const MAPS_ICONS_MARATHON_BANNER_POST:String = "../maps/icons/marathon/banner_post.png";
-      
-      public static const MAPS_ICONS_MARATHON_BANNER_POST_THIN_EXTRA_SMALL:String = "../maps/icons/marathon/banner_post_thin_extra_small.png";
-      
-      public static const MAPS_ICONS_MARATHON_BANNER_POST_THIN_SMALL:String = "../maps/icons/marathon/banner_post_thin_small.png";
-      
-      public static const MAPS_ICONS_MARATHON_BANNER_POST_WIDE_SMALL:String = "../maps/icons/marathon/banner_post_wide_small.png";
-      
       public static const MAPS_ICONS_MARATHON_BANNER_THIN_EXTRA_SMALL:String = "../maps/icons/marathon/banner_thin_extra_small.png";
       
       public static const MAPS_ICONS_MARATHON_BANNER_THIN_SMALL:String = "../maps/icons/marathon/banner_thin_small.png";
@@ -27385,6 +27377,8 @@ package
       
       public static const MAPS_ICONS_MARATHON_MISSION_DONE:String = "../maps/icons/marathon/mission_done.png";
       
+      public static const MAPS_ICONS_MARATHON_PT:String = "../maps/icons/marathon/pt.png";
+      
       public static const MAPS_ICONS_MARATHON_SHADOW:String = "../maps/icons/marathon/shadow.png";
       
       public static const MAPS_ICONS_MARATHON_SHADOW_BIG:String = "../maps/icons/marathon/shadow_big.png";
@@ -27398,8 +27392,6 @@ package
       public static const MAPS_ICONS_MARATHON_THINEXTRASMALL_STROKE:String = "../maps/icons/marathon/thinExtraSmall_stroke.png";
       
       public static const MAPS_ICONS_MARATHON_THINSMALL_STROKE:String = "../maps/icons/marathon/thinSmall_stroke.png";
-      
-      public static const MAPS_ICONS_MARATHON_TT:String = "../maps/icons/marathon/tt.png";
       
       public static const MAPS_ICONS_MARATHON_WIDESMALL_STROKE:String = "../maps/icons/marathon/wideSmall_stroke.png";
       
@@ -27441,17 +27433,15 @@ package
       
       public static const MAPS_ICONS_MARATHON_REWARDWINDOW_VEHICLE_IMAGE:String = "../maps/icons/marathon/rewardWindow/vehicle_image.png";
       
-      public static const MAPS_ICONS_MARATHON_REWARDWINDOW_VEHICLE_IMAGE_CN:String = "../maps/icons/marathon/rewardWindow/vehicle_image_cn.png";
+      public static const MAPS_ICONS_MARATHON_TANKTYPES_ATSPG:String = "../maps/icons/marathon/tankTypes/atspg.png";
       
-      public static const MAPS_ICONS_MARATHON_TANKTYPES_TYPE_TANK_BIG_AT_SPG:String = "../maps/icons/marathon/tankTypes/type_tank_big_at-spg.png";
+      public static const MAPS_ICONS_MARATHON_TANKTYPES_HEAVYTANK:String = "../maps/icons/marathon/tankTypes/heavytank.png";
       
-      public static const MAPS_ICONS_MARATHON_TANKTYPES_TYPE_TANK_BIG_HEAVYTANK:String = "../maps/icons/marathon/tankTypes/type_tank_big_heavytank.png";
+      public static const MAPS_ICONS_MARATHON_TANKTYPES_LIGHTTANK:String = "../maps/icons/marathon/tankTypes/lighttank.png";
       
-      public static const MAPS_ICONS_MARATHON_TANKTYPES_TYPE_TANK_BIG_LIGHTTANK:String = "../maps/icons/marathon/tankTypes/type_tank_big_lighttank.png";
+      public static const MAPS_ICONS_MARATHON_TANKTYPES_MEDIUMTANK:String = "../maps/icons/marathon/tankTypes/mediumtank.png";
       
-      public static const MAPS_ICONS_MARATHON_TANKTYPES_TYPE_TANK_BIG_MEDIUMTANK:String = "../maps/icons/marathon/tankTypes/type_tank_big_mediumtank.png";
-      
-      public static const MAPS_ICONS_MARATHON_TANKTYPES_TYPE_TANK_BIG_SPG:String = "../maps/icons/marathon/tankTypes/type_tank_big_spg.png";
+      public static const MAPS_ICONS_MARATHON_TANKTYPES_SPG:String = "../maps/icons/marathon/tankTypes/spg.png";
       
       public static const MAPS_ICONS_MATCHMAKER_10X10:String = "../maps/icons/matchmaker/10x10.png";
       
@@ -32333,6 +32323,8 @@ package
       
       public static const MAPS_ICONS_QUESTS_BONUSES_BIG_TANKMENXP:String = "../maps/icons/quests/bonuses/big/tankmenXP.png";
       
+      public static const MAPS_ICONS_QUESTS_BONUSES_BIG_TANKMEN_1PERK:String = "../maps/icons/quests/bonuses/big/tankmen_1perk.png";
+      
       public static const MAPS_ICONS_QUESTS_BONUSES_BIG_TANKMEN_GIFT:String = "../maps/icons/quests/bonuses/big/tankmen_gift.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_BIG_TANKWOMAN:String = "../maps/icons/quests/bonuses/big/tankwoman.png";
@@ -32894,6 +32886,8 @@ package
       public static const MAPS_ICONS_QUESTS_BONUSES_S232X174_TANKMAN:String = "../maps/icons/quests/bonuses/s232x174/tankman.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S232X174_TANKMEN:String = "../maps/icons/quests/bonuses/s232x174/tankmen.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_S232X174_TANKMEN_1PERK:String = "../maps/icons/quests/bonuses/s232x174/tankmen_1perk.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S232X174_TANKWOMAN:String = "../maps/icons/quests/bonuses/s232x174/tankwoman.png";
       
@@ -34526,6 +34520,8 @@ package
       public static const MAPS_ICONS_QUESTS_BONUSES_SMALL_TANKMEN:String = "../maps/icons/quests/bonuses/small/tankmen.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_SMALL_TANKMENXP:String = "../maps/icons/quests/bonuses/small/tankmenXP.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_SMALL_TANKMEN_1PERK:String = "../maps/icons/quests/bonuses/small/tankmen_1perk.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_SMALL_TANKMEN_GIFT:String = "../maps/icons/quests/bonuses/small/tankmen_gift.png";
       

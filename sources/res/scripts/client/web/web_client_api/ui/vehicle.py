@@ -466,6 +466,7 @@ class VehiclePreviewWebApiMixin(object):
         items = _parseItemsPack(cmd.items)
         vehiclesIDs = self.__getVehiclesIDs(items)
         if vehiclesIDs:
+            showHangar()
             event_dispatcher.showMarathonVehiclePreview(vehTypeCompDescr=vehiclesIDs[0], itemsPack=items, title=cmd.title, marathonPrefix=cmd.marathon_prefix)
         else:
             _pushInvalidPreviewMessage()
