@@ -12,7 +12,6 @@ from gui.shared.gui_items import GUI_ITEM_TYPE
 from gui.shared.gui_items.Vehicle import Vehicle
 from gui.shared.money import Currency
 from helpers import dependency
-from constants import IS_CHINA
 from ids_generators import SequenceIDGenerator
 from skeletons.gui.customization import ICustomizationService
 from skeletons.gui.game_control import IMarathonEventsController
@@ -119,7 +118,7 @@ class MarathonRewardWindowView(ViewImpl):
             model.setSupTitle(suptitle)
             model.setTitle(R.strings.marathon.reward.vehicleTitle())
             model.setSubTitle(R.strings.marathon.reward.nameVehicle())
-            model.setImage(_ICON_PATH.vehicle_image_cn() if IS_CHINA else _ICON_PATH.vehicle_image())
+            model.setImage(_ICON_PATH.vehicle_image())
             model.vehicle.setName(vehicle.userName)
             model.vehicle.setType(vehicle.type)
             model.vehicle.setLevel(vehicle.level)
@@ -128,7 +127,7 @@ class MarathonRewardWindowView(ViewImpl):
             model.setSupTitle(R.strings.marathon.reward.stageStyle())
             model.setTitle(R.strings.marathon.reward.styleTitle())
             model.setSubTitle(R.strings.marathon.reward.nameStyle())
-            model.setImage(_ICON_PATH.style_image_cn() if IS_CHINA else _ICON_PATH.style_image())
+            model.setImage(_ICON_PATH.style_image())
             model.setIconReward(_ICON_PATH.style_reward())
         model.setHasVehicle(isMainProgressionReward)
         model.setStage(stage)
