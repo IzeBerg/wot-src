@@ -84,7 +84,7 @@ package net.wg.gui.battle.views.postmortemPanel
       
       private var _showNicknameKillerBg:Boolean = false;
       
-      protected const INVALID_ALL_DEAD_RESAON_DEPENDENCY:uint = INVALID_PLAYER_INFO_VISIBILITY | INVALID_PLAYER_VEH_PANEL_VISIBILITY | INVALID_DEAD_REASON_VISIBILITY;
+      protected const INVALID_ALL_DEAD_REASON_DEPENDENCY:uint = INVALID_PLAYER_INFO_VISIBILITY | INVALID_PLAYER_VEH_PANEL_VISIBILITY | INVALID_DEAD_REASON_VISIBILITY;
       
       public function BasePostmortemPanel()
       {
@@ -197,7 +197,7 @@ package net.wg.gui.battle.views.postmortemPanel
       
       public function as_showDeadReason() : void
       {
-         this.invalidateDeadReasonItems(true,this.INVALID_ALL_DEAD_RESAON_DEPENDENCY);
+         this.invalidateDeadReasonItems(true,this.INVALID_ALL_DEAD_REASON_DEPENDENCY);
       }
       
       public function setPlayerInfo(param1:String) : void
@@ -281,7 +281,7 @@ package net.wg.gui.battle.views.postmortemPanel
       {
          this.playerInfoTF.visible = param1;
          this.invalidateKillerBgVisibility(param1);
-         this.invalidateDeadReasonItems(param1,this.INVALID_ALL_DEAD_RESAON_DEPENDENCY);
+         this.invalidateDeadReasonItems(param1,this.INVALID_ALL_DEAD_REASON_DEPENDENCY);
       }
       
       private function updateKillerUserNameVisibility() : void

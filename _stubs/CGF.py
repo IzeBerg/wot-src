@@ -168,6 +168,7 @@ class GameObject(pybind11_object):
 	id = property(lambda self: None)
 	index = property(lambda self: None)
 	def isActive(self, *args, **kwargs): pass
+	def isStatic(self, *args, **kwargs): pass
 	def isValid(self, *args, **kwargs): pass
 	name = property(lambda self: None)
 	def removeComponent(self, *args, **kwargs): pass
