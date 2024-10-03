@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/lightonly.fx</fx>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h00_armory_yard/environment/hd_h00_AY24_0001_Workshop_DetailSet_01_AM.dds</Texture>
+					</property>
+					<materialKind>111</materialKind>
+					<collisionFlags>255</collisionFlags>
+				</material>
+				<groupOrigin>-9.598011 7.902137 0.750117</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-31.383295 -0.500000 -15.206888</min>
+		<max>12.187274 14.776835 16.707123</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>10396</geometrySize>
+	<minUVDensity>0.000010</minUVDensity>
+</root>

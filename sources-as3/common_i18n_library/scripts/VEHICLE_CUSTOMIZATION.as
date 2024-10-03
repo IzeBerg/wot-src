@@ -19659,8 +19659,6 @@ package
       
       public static const ASHBERRY_DECAL_2024_MT_NAME:String = "#vehicle_customization:Ashberry_Decal_2024_MT/name";
       
-      public static const ASHBERRY_DECAL_2024_MT_DESCRIPTION:String = "#vehicle_customization:Ashberry_Decal_2024_MT/description";
-      
       public static const STORKS_2024_DECAL_01_NAME:String = "#vehicle_customization:Storks_2024_decal_01/name";
       
       public static const STORKS_2024_DECAL_01_DESCRIPTION:String = "#vehicle_customization:Storks_2024_decal_01/description";
@@ -19886,6 +19884,302 @@ package
       public static const LEVEL11_STYLE_2024_DESCRIPTION:String = "#vehicle_customization:Level11_Style_2024/description";
       
       public static const LEVEL11_STYLE_2024_LONGDESCRIPTION:String = "#vehicle_customization:Level11_Style_2024/longDescription";
+      
+      public static const ARMORYYARD_4_PAINT_2024_NAME:String = "#vehicle_customization:ArmoryYard_4_Paint_2024/name";
+      
+      public static const ARMORYYARD_4_PAINT_2024_DESCRIPTION:String = "#vehicle_customization:ArmoryYard_4_Paint_2024/description";
+      
+      public static const ARMORYYARD_4_CAMO_2024_NAME:String = "#vehicle_customization:ArmoryYard_4_Camo_2024/name";
+      
+      public static const ARMORYYARD_4_CAMO_2024_DESCRIPTION:String = "#vehicle_customization:ArmoryYard_4_Camo_2024/description";
+      
+      public static const ARMORYYARD_4_STYLE_2024_NAME:String = "#vehicle_customization:ArmoryYard_4_Style_2024/name";
+      
+      public static const ARMORYYARD_4_STYLE_2024_DESCRIPTION:String = "#vehicle_customization:ArmoryYard_4_Style_2024/description";
+      
+      public static const ARMORYYARD_4_STYLE_2024_LONGDESCRIPTION:String = "#vehicle_customization:ArmoryYard_4_Style_2024/longDescription";
+      
+      public static const ARMORYYARD_4_DECAL_01_2024_NAME:String = "#vehicle_customization:ArmoryYard_4_Decal_01_2024/name";
+      
+      public static const ARMORYYARD_4_DECAL_01_2024_DESCRIPTION:String = "#vehicle_customization:ArmoryYard_4_Decal_01_2024/description";
+      
+      public static const ARMORYYARD_4_DECAL_02_2024_NAME:String = "#vehicle_customization:ArmoryYard_4_Decal_02_2024/name";
+      
+      public static const ARMORYYARD_4_DECAL_02_2024_DESCRIPTION:String = "#vehicle_customization:ArmoryYard_4_Decal_02_2024/description";
+      
+      public static const WT_YOURTIMEISUP_INSCRIPTIONS_2024_NAME:String = "#vehicle_customization:WT_YourTimeIsUp_Inscriptions_2024/name";
+      
+      public static const WT_YOURTIMEISUP_INSCRIPTIONS_2024_DESCRIPTION:String = "#vehicle_customization:WT_YourTimeIsUp_Inscriptions_2024/description";
+      
+      public static const WDR_STYLE_2024_NAME:String = "#vehicle_customization:WDR_Style_2024/name";
+      
+      public static const WDR_STYLE_2024_DESCRIPTION:String = "#vehicle_customization:WDR_Style_2024/description";
+      
+      public static const WDR_STYLE_2024_LONGDESCRIPTION:String = "#vehicle_customization:WDR_Style_2024/longDescription";
+      
+      public static const WDR_INSCRIPTION_2024_NAME:String = "#vehicle_customization:WDR_Inscription_2024/name";
+      
+      public static const WDR_INSCRIPTION_2024_DESCRIPTION:String = "#vehicle_customization:WDR_Inscription_2024/description";
+      
+      public static const WT_BLOGGERS_CAMO_2024_NAME:String = "#vehicle_customization:WT_Bloggers_Camo_2024/name";
+      
+      public static const WT_BLOGGERS_CAMO_2024_DESCRIPTION:String = "#vehicle_customization:WT_Bloggers_Camo_2024/description";
+      
+      public static const WT_BLOGGERS_PAINT_2024_NAME:String = "#vehicle_customization:WT_Bloggers_Paint_2024/name";
+      
+      public static const WT_BLOGGERS_PAINT_2024_DESCRIPTION:String = "#vehicle_customization:WT_Bloggers_Paint_2024/description";
+      
+      public static const WT_BLOGGERS_STYLE_2024_NAME:String = "#vehicle_customization:WT_Bloggers_Style_2024/name";
+      
+      public static const WT_BLOGGERS_STYLE_2024_DESCRIPTION:String = "#vehicle_customization:WT_Bloggers_Style_2024/description";
+      
+      public static const WT_BLOGGERS_STYLE_2024_LONGDESCRIPTION:String = "#vehicle_customization:WT_Bloggers_Style_2024/longDescription";
+      
+      public static const WT_BLOGGERS_INSCRIPTIONS_2024_NAME:String = "#vehicle_customization:WT_Bloggers_Inscriptions_2024/name";
+      
+      public static const WT_BLOGGERS_INSCRIPTIONS_2024_DESCRIPTION:String = "#vehicle_customization:WT_Bloggers_Inscriptions_2024/description";
+      
+      public static const BLITZTECH_STYLE_NAME:String = "#vehicle_customization:Blitztech_Style/name";
+      
+      public static const BLITZTECH_STYLE_DESCRIPTION:String = "#vehicle_customization:Blitztech_Style/description";
+      
+      public static const BLITZTECH_STYLE_LONGDESCRIPTION:String = "#vehicle_customization:Blitztech_Style/longDescription";
+      
+      public static const BLITZTECH_CAMO_NAME:String = "#vehicle_customization:Blitztech_Camo/name";
+      
+      public static const BLITZTECH_CAMO_DESCRIPTION:String = "#vehicle_customization:Blitztech_Camo/description";
+      
+      public static const BLITZTECH_PAINT_NAME:String = "#vehicle_customization:Blitztech_Paint/name";
+      
+      public static const BLITZTECH_PAINT_DESCRIPTION:String = "#vehicle_customization:Blitztech_Paint/description";
+      
+      public static const MICROCHIP_STYLE_NAME:String = "#vehicle_customization:Microchip_Style/name";
+      
+      public static const MICROCHIP_STYLE_DESCRIPTION:String = "#vehicle_customization:Microchip_Style/description";
+      
+      public static const MICROCHIP_STYLE_LONGDESCRIPTION:String = "#vehicle_customization:Microchip_Style/longDescription";
+      
+      public static const MICROCHIP_CAMO_NAME:String = "#vehicle_customization:Microchip_Camo/name";
+      
+      public static const MICROCHIP_CAMO_DESCRIPTION:String = "#vehicle_customization:Microchip_Camo/description";
+      
+      public static const MICROCHIP_PAINT_NAME:String = "#vehicle_customization:Microchip_Paint/name";
+      
+      public static const MICROCHIP_PAINT_DESCRIPTION:String = "#vehicle_customization:Microchip_Paint/description";
+      
+      public static const CENTRALPROCESSINGUNIT_STYLE_NAME:String = "#vehicle_customization:CentralProcessingUnit_Style/name";
+      
+      public static const CENTRALPROCESSINGUNIT_STYLE_DESCRIPTION:String = "#vehicle_customization:CentralProcessingUnit_Style/description";
+      
+      public static const CENTRALPROCESSINGUNIT_STYLE_LONGDESCRIPTION:String = "#vehicle_customization:CentralProcessingUnit_Style/longDescription";
+      
+      public static const CENTRALPROCESSINGUNIT_CAMOUFLAGE_NAME:String = "#vehicle_customization:CentralProcessingUnit_Camouflage/name";
+      
+      public static const CENTRALPROCESSINGUNIT_CAMOUFLAGE_DESCRIPTION:String = "#vehicle_customization:CentralProcessingUnit_Camouflage/description";
+      
+      public static const CENTRALPROCESSINGUNIT_PAINT_NAME:String = "#vehicle_customization:CentralProcessingUnit_Paint/name";
+      
+      public static const CENTRALPROCESSINGUNIT_PAINT_DESCRIPTION:String = "#vehicle_customization:CentralProcessingUnit_Paint/description";
+      
+      public static const STICKER_765_EMBLEM_NAME:String = "#vehicle_customization:sticker_765_Emblem/name";
+      
+      public static const STICKER_765_EMBLEM_DESCRIPTION:String = "#vehicle_customization:sticker_765_Emblem/description";
+      
+      public static const TICKER_766_EMBLEM_NAME:String = "#vehicle_customization:ticker_766_Emblem/name";
+      
+      public static const TICKER_766_EMBLEM_DESCRIPTION:String = "#vehicle_customization:ticker_766_Emblem/description";
+      
+      public static const STICKER_767_NAME:String = "#vehicle_customization:sticker_767/name";
+      
+      public static const STICKER_767_DESCRIPTION:String = "#vehicle_customization:sticker_767/description";
+      
+      public static const MECHANIC_WAVES_CAMO_NAME:String = "#vehicle_customization:Mechanic_Waves_Camo/name";
+      
+      public static const MECHANIC_WAVES_CAMO_DESCRIPTION:String = "#vehicle_customization:Mechanic_Waves_Camo/description";
+      
+      public static const CRIMSON_SHOCK_CAMO_NAME:String = "#vehicle_customization:Crimson_Shock_Camo/name";
+      
+      public static const CRIMSON_SHOCK_CAMO_DESCRIPTION:String = "#vehicle_customization:Crimson_Shock_Camo/description";
+      
+      public static const HIGHVOLTAGEEQUIPMENT_STYLE_NAME:String = "#vehicle_customization:HighVoltageEquipment_Style/name";
+      
+      public static const HIGHVOLTAGEEQUIPMENT_STYLE_DESCRIPTION:String = "#vehicle_customization:HighVoltageEquipment_Style/description";
+      
+      public static const HIGHVOLTAGEEQUIPMENT_STYLE_LONGDESCRIPTION:String = "#vehicle_customization:HighVoltageEquipment_Style/longDescription";
+      
+      public static const HIGHVOLTAGEEQUIPMENT_CAMO_NAME:String = "#vehicle_customization:HighVoltageEquipment_Camo/name";
+      
+      public static const HIGHVOLTAGEEQUIPMENT_CAMO_DESCRIPTION:String = "#vehicle_customization:HighVoltageEquipment_Camo/description";
+      
+      public static const HIGHVOLTAGEEQUIPMENT_PAINT_NAME:String = "#vehicle_customization:HighVoltageEquipment_Paint/name";
+      
+      public static const HIGHVOLTAGEEQUIPMENT_PAINT_DESCRIPTION:String = "#vehicle_customization:HighVoltageEquipment_Paint/description";
+      
+      public static const WT_CAMO_FLASH_2023_NAME:String = "#vehicle_customization:WT_Camo_Flash_2023/name";
+      
+      public static const WT_CAMO_FLASH_2023_DESCRIPTION:String = "#vehicle_customization:WT_Camo_Flash_2023/description";
+      
+      public static const WT_CAMO_PLAN_2023_NAME:String = "#vehicle_customization:WT_Camo_Plan_2023/name";
+      
+      public static const WT_CAMO_PLAN_2023_DESCRIPTION:String = "#vehicle_customization:WT_Camo_Plan_2023/description";
+      
+      public static const MAIN_STYLE_A165_XM57_3DST_NAME:String = "#vehicle_customization:main_style/A165_XM57_3Dst/name";
+      
+      public static const WT_CAMO_SVORA_2023_NAME:String = "#vehicle_customization:WT_Camo_Svora_2023/name";
+      
+      public static const WT_CAMO_SVORA_2023_DESCRIPTION:String = "#vehicle_customization:WT_Camo_Svora_2023/description";
+      
+      public static const WT_PAINT_SVORA_2023_NAME:String = "#vehicle_customization:WT_Paint_Svora_2023/name";
+      
+      public static const WT_PAINT_SVORA_2023_DESCRIPTION:String = "#vehicle_customization:WT_Paint_Svora_2023/description";
+      
+      public static const WT_STYLE_SVORA_2023_NAME:String = "#vehicle_customization:WT_Style_Svora_2023/name";
+      
+      public static const WT_STYLE_SVORA_2023_DESCRIPTION:String = "#vehicle_customization:WT_Style_Svora_2023/description";
+      
+      public static const WT_STYLE_SVORA_2023_LONGDESCRIPTION:String = "#vehicle_customization:WT_Style_Svora_2023/longDescription";
+      
+      public static const WT_DECAL_01_2024_NAME:String = "#vehicle_customization:WT_Decal_01_2024/name";
+      
+      public static const WT_DECAL_01_2024_DESCRIPTION:String = "#vehicle_customization:WT_Decal_01_2024/description";
+      
+      public static const WT_DECAL_02_2024_NAME:String = "#vehicle_customization:WT_Decal_02_2024/name";
+      
+      public static const WT_DECAL_02_2024_DESCRIPTION:String = "#vehicle_customization:WT_Decal_02_2024/description";
+      
+      public static const WT_DECAL_03_2024_NAME:String = "#vehicle_customization:WT_Decal_03_2024/name";
+      
+      public static const WT_DECAL_03_2024_DESCRIPTION:String = "#vehicle_customization:WT_Decal_03_2024/description";
+      
+      public static const WT_DECAL_04_2024_NAME:String = "#vehicle_customization:WT_Decal_04_2024/name";
+      
+      public static const WT_DECAL_04_2024_DESCRIPTION:String = "#vehicle_customization:WT_Decal_04_2024/description";
+      
+      public static const WT01_PAINT_2024_NAME:String = "#vehicle_customization:WT01_Paint_2024/name";
+      
+      public static const WT01_PAINT_2024_DESCRIPTION:String = "#vehicle_customization:WT01_Paint_2024/description";
+      
+      public static const WT01_STYLE_2024_NAME:String = "#vehicle_customization:WT01_Style_2024/name";
+      
+      public static const WT01_STYLE_2024_DESCRIPTION:String = "#vehicle_customization:WT01_Style_2024/description";
+      
+      public static const WT01_STYLE_2024_LONGDESCRIPTION:String = "#vehicle_customization:WT01_Style_2024/longDescription";
+      
+      public static const WT01_CAMO_2024_NAME:String = "#vehicle_customization:WT01_Camo_2024/name";
+      
+      public static const WT01_CAMO_2024_DESCRIPTION:String = "#vehicle_customization:WT01_Camo_2024/description";
+      
+      public static const WT02_PAINT_2024_NAME:String = "#vehicle_customization:WT02_Paint_2024/name";
+      
+      public static const WT02_PAINT_2024_DESCRIPTION:String = "#vehicle_customization:WT02_Paint_2024/description";
+      
+      public static const WT02_CAMO_2024_NAME:String = "#vehicle_customization:WT02_Camo_2024/name";
+      
+      public static const WT02_CAMO_2024_DESCRIPTION:String = "#vehicle_customization:WT02_Camo_2024/description";
+      
+      public static const WT02_STYLE_2024_NAME:String = "#vehicle_customization:WT02_Style_2024/name";
+      
+      public static const WT02_STYLE_2024_DESCRIPTION:String = "#vehicle_customization:WT02_Style_2024/description";
+      
+      public static const WT02_STYLE_2024_LONGDESCRIPTION:String = "#vehicle_customization:WT02_Style_2024/longDescription";
+      
+      public static const PROJECTION_DECAL_600_NAME:String = "#vehicle_customization:projection_decal_600/name";
+      
+      public static const PROJECTION_DECAL_600_DESCRIPTION:String = "#vehicle_customization:projection_decal_600/description";
+      
+      public static const PROJECTION_DECAL_601_NAME:String = "#vehicle_customization:projection_decal_601/name";
+      
+      public static const PROJECTION_DECAL_601_DESCRIPTION:String = "#vehicle_customization:projection_decal_601/description";
+      
+      public static const PROJECTION_DECAL_602_NAME:String = "#vehicle_customization:projection_decal_602/name";
+      
+      public static const PROJECTION_DECAL_602_DESCRIPTION:String = "#vehicle_customization:projection_decal_602/description";
+      
+      public static const PROJECTION_DECAL_603_NAME:String = "#vehicle_customization:projection_decal_603/name";
+      
+      public static const PROJECTION_DECAL_603_DESCRIPTION:String = "#vehicle_customization:projection_decal_603/description";
+      
+      public static const PROJECTION_DECAL_604_NAME:String = "#vehicle_customization:projection_decal_604/name";
+      
+      public static const PROJECTION_DECAL_604_DESCRIPTION:String = "#vehicle_customization:projection_decal_604/description";
+      
+      public static const PROJECTION_DECAL_605_NAME:String = "#vehicle_customization:projection_decal_605/name";
+      
+      public static const PROJECTION_DECAL_605_DESCRIPTION:String = "#vehicle_customization:projection_decal_605/description";
+      
+      public static const PROJECTION_DECAL_606_NAME:String = "#vehicle_customization:projection_decal_606/name";
+      
+      public static const PROJECTION_DECAL_606_DESCRIPTION:String = "#vehicle_customization:projection_decal_606/description";
+      
+      public static const PROJECTION_DECAL_607_NAME:String = "#vehicle_customization:projection_decal_607/name";
+      
+      public static const PROJECTION_DECAL_607_DESCRIPTION:String = "#vehicle_customization:projection_decal_607/description";
+      
+      public static const PROJECTION_DECAL_608_NAME:String = "#vehicle_customization:projection_decal_608/name";
+      
+      public static const PROJECTION_DECAL_608_DESCRIPTION:String = "#vehicle_customization:projection_decal_608/description";
+      
+      public static const PROJECTION_DECAL_609_NAME:String = "#vehicle_customization:projection_decal_609/name";
+      
+      public static const PROJECTION_DECAL_609_DESCRIPTION:String = "#vehicle_customization:projection_decal_609/description";
+      
+      public static const PROJECTION_DECAL_610_NAME:String = "#vehicle_customization:projection_decal_610/name";
+      
+      public static const PROJECTION_DECAL_610_DESCRIPTION:String = "#vehicle_customization:projection_decal_610/description";
+      
+      public static const PROJECTION_DECAL_611_NAME:String = "#vehicle_customization:projection_decal_611/name";
+      
+      public static const PROJECTION_DECAL_611_DESCRIPTION:String = "#vehicle_customization:projection_decal_611/description";
+      
+      public static const RAM_PAINT_2024_NAME:String = "#vehicle_customization:RAM_Paint_2024/name";
+      
+      public static const RAM_PAINT_2024_DESCRIPTION:String = "#vehicle_customization:RAM_Paint_2024/description";
+      
+      public static const RAM_CAMO_2024_NAME:String = "#vehicle_customization:RAM_Camo_2024/name";
+      
+      public static const RAM_CAMO_2024_DESCRIPTION:String = "#vehicle_customization:RAM_Camo_2024/description";
+      
+      public static const RAM_STYLE_2024_NAME:String = "#vehicle_customization:RAM_Style_2024/name";
+      
+      public static const RAM_STYLE_2024_DESCRIPTION:String = "#vehicle_customization:RAM_Style_2024/description";
+      
+      public static const RAM_STYLE_2024_LONGDESCRIPTION:String = "#vehicle_customization:RAM_Style_2024/longDescription";
+      
+      public static const RAM_DECAL_01_2024_NAME:String = "#vehicle_customization:RAM_Decal_01_2024/name";
+      
+      public static const RAM_DECAL_01_2024_DESCRIPTION:String = "#vehicle_customization:RAM_Decal_01_2024/description";
+      
+      public static const RAM_DECAL_02_2024_NAME:String = "#vehicle_customization:RAM_Decal_02_2024/name";
+      
+      public static const RAM_DECAL_02_2024_DESCRIPTION:String = "#vehicle_customization:RAM_Decal_02_2024/description";
+      
+      public static const MAIN_STYLE_A165_XM57_3DST_DESC_LONG:String = "#vehicle_customization:main_style/A165_XM57_3Dst_desc/long";
+      
+      public static const MAIN_STYLE_A165_XM57_3DST_DESCRIPTION:String = "#vehicle_customization:main_style/A165_XM57_3Dst/description";
+      
+      public static const SPRINTCLAN_CAMO_2024_NAME:String = "#vehicle_customization:SprintClan_Camo_2024/name";
+      
+      public static const SPRINTCLAN_CAMO_2024_DESCRIPTION:String = "#vehicle_customization:SprintClan_Camo_2024/description";
+      
+      public static const SPRINTCLAN_STYLE_2024_NAME:String = "#vehicle_customization:SprintClan_Style_2024/name";
+      
+      public static const SPRINTCLAN_STYLE_2024_DESCRIPTION:String = "#vehicle_customization:SprintClan_Style_2024/description";
+      
+      public static const SPRINTCLAN_STYLE_2024_LONGDESCRIPTION:String = "#vehicle_customization:SprintClan_Style_2024/longDescription";
+      
+      public static const SPRINTCLAN_PAINT_2024_NAME:String = "#vehicle_customization:SprintClan_Paint_2024/name";
+      
+      public static const SPRINTCLAN_PAINT_2024_DESCRIPTION:String = "#vehicle_customization:SprintClan_Paint_2024/description";
+      
+      public static const SPECIAL_STYLE_CZ04_T50_51_WAF_3DST:String = "#vehicle_customization:special_style/Cz04_T50_51_Waf_3DSt";
+      
+      public static const SPECIAL_STYLE_CZ04_T50_51_WAF_3DST_DESC:String = "#vehicle_customization:special_style/Cz04_T50_51_Waf_3DSt_desc";
+      
+      public static const SPECIAL_STYLE_CZ04_T50_51_WAF_3DST_DESC_LONG:String = "#vehicle_customization:special_style/Cz04_T50_51_Waf_3DSt_desc/long";
+      
+      public static const CAMOUFLAGE_WAFFENTRAGER_E100_TLXXL_S_LABEL:String = "#vehicle_customization:camouflage/waffentrager_e100_tlxxl_s/label";
+      
+      public static const CAMOUFLAGE_WAFFENTRAGER_E100_TLXXL_S_DESCRIPTION:String = "#vehicle_customization:camouflage/waffentrager_e100_tlxxl_s/description";
        
       
       public function VEHICLE_CUSTOMIZATION()

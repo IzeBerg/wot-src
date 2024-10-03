@@ -213,6 +213,12 @@ package
       
       public static const DETAILSHELP_ASSAULTTANK_AIMING:String = "#ingame_help:detailsHelp/assaultTank/aiming";
       
+      public static const DETAILSHELP_TANKWITHABILITY_HEADER:String = "#ingame_help:detailsHelp/tankWithAbility/header";
+      
+      public static const DETAILSHELP_TANKWITHABILITY_TITLE:String = "#ingame_help:detailsHelp/tankWithAbility/title";
+      
+      public static const DETAILSHELP_TANKWITHABILITY_MODIFICATIONS:String = "#ingame_help:detailsHelp/tankWithAbility/modifications";
+      
       public static const DETAILSHELP_BATTLEROYALE_RADAR_TITLE:String = "#ingame_help:detailsHelp/battleRoyale/radar/title";
       
       public static const DETAILSHELP_BATTLEROYALE_RADAR_DESCRIPTION:String = "#ingame_help:detailsHelp/battleRoyale/radar/description";

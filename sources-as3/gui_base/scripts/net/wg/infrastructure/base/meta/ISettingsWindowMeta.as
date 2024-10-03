@@ -66,6 +66,8 @@ package net.wg.infrastructure.base.meta
       
       function as_setFeedbackDataProvider(param1:Array) : void;
       
+      function as_setTigerEvent(param1:Boolean) : void;
+      
       function as_setDisabledTabsOverlay(param1:Array, param2:String) : void;
    }
 }

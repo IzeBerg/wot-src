@@ -110,6 +110,11 @@
 					<destroyed>vehicles/czech/Cz04_T50_51/_skins/battlepass2020/crash/lod0/Hull.model</destroyed>
 					<exploded>vehicles/czech/Cz04_T50_51/_skins/battlepass2020/crash/lod0/Hull.model</exploded>
 				</battlepass2020>
+				<Cz04_T50_51_Waf_3DSt>
+					<undamaged>vehicles/czech/Cz04_T50_51/_skins/Cz04_T50_51_Waf_3DSt/normal/lod0/Hull.model</undamaged>
+					<destroyed>vehicles/czech/Cz04_T50_51/_skins/Cz04_T50_51_Waf_3DSt/crash/lod0/Hull.model</destroyed>
+					<exploded>vehicles/czech/Cz04_T50_51/_skins/Cz04_T50_51_Waf_3DSt/crash/lod0/Hull.model</exploded>
+				</Cz04_T50_51_Waf_3DSt>
 			</sets>
 		</models>
 		<swinging>
@@ -1574,6 +1579,38 @@
 				<clipAngle>0.828351</clipAngle>
 				<anchorShift>0.032717</anchorShift>
 			</slot>
+			<slot>
+				<slotType>projectionDecal</slotType>
+				<slotId>15063</slotId>
+				<tags>formfactor_square</tags>
+				<compatibleModels>Cz04_T50_51_Waf_3DSt</compatibleModels>
+				<position>
+					0.000023 1.25379 2.58352
+					<!--BW_String-->
+				</position>
+				<rotation>
+					0.430618 -0.000011 3.14157
+					<!--BW_String-->
+				</rotation>
+				<scale>
+					0.684262 0.0846684 0.684276
+					<!--BW_String-->
+				</scale>
+				<doubleSided>false</doubleSided>
+				<showOn>16</showOn>
+				<clipAngle>
+					1.50914
+					<!--BW_String-->
+				</clipAngle>
+				<anchorShift>0.049804</anchorShift>
+			</slot>
+			<slot>
+				<slotType>attachment</slotType>
+				<slotId>18000</slotId>
+				<position>0 0 0</position>
+				<rotation>0 0 0</rotation>
+				<compatibleModels>Cz04_T50_51_Waf_3DSt</compatibleModels>
+			</slot>
 		</customizationSlots>
 		<customization>
 			<customizableVehicleAreas>
@@ -1642,6 +1679,11 @@
 						<destroyed>vehicles/czech/Cz04_T50_51/_skins/battlepass2020/crash/lod0/Chassis.model</destroyed>
 						<exploded>vehicles/czech/Cz04_T50_51/_skins/battlepass2020/crash/lod0/Chassis.model</exploded>
 					</battlepass2020>
+					<Cz04_T50_51_Waf_3DSt>
+						<undamaged>vehicles/czech/Cz04_T50_51/_skins/Cz04_T50_51_Waf_3DSt/normal/lod0/Chassis.model</undamaged>
+						<destroyed>vehicles/czech/Cz04_T50_51/_skins/Cz04_T50_51_Waf_3DSt/crash/lod0/Chassis.model</destroyed>
+						<exploded>vehicles/czech/Cz04_T50_51/_skins/Cz04_T50_51_Waf_3DSt/crash/lod0/Chassis.model</exploded>
+					</Cz04_T50_51_Waf_3DSt>
 				</sets>
 			</models>
 			<traces>
@@ -2398,10 +2440,7 @@
 						</segmentSyncPivotOffset>
 						<sync>
 							<name>WD_L4</name>
-							<startAngle>
-								-22.9109
-								<!--BW_String-->
-							</startAngle>
+							<startAngle>-22.040001</startAngle>
 							<teethCount>18</teethCount>
 						</sync>
 						<sync>
@@ -3114,7 +3153,7 @@
 						</segmentSyncPivotOffset>
 						<sync>
 							<name>WD_R4</name>
-							<startAngle>-22.935499</startAngle>
+							<startAngle>-22.040001</startAngle>
 							<teethCount>18</teethCount>
 						</sync>
 						<sync>
@@ -3750,6 +3789,11 @@
 								<destroyed>vehicles/czech/Cz04_T50_51/_skins/battlepass2020/crash/lod0/Gun_01.model</destroyed>
 								<exploded>vehicles/czech/Cz04_T50_51/_skins/battlepass2020/crash/lod0/Gun_01.model</exploded>
 							</battlepass2020>
+							<Cz04_T50_51_Waf_3DSt>
+								<undamaged>vehicles/czech/Cz04_T50_51/_skins/Cz04_T50_51_Waf_3DSt/normal/lod0/Gun_01.model</undamaged>
+								<destroyed>vehicles/czech/Cz04_T50_51/_skins/Cz04_T50_51_Waf_3DSt/crash/lod0/Gun_01.model</destroyed>
+								<exploded>vehicles/czech/Cz04_T50_51/_skins/Cz04_T50_51_Waf_3DSt/crash/lod0/Gun_01.model</exploded>
+							</Cz04_T50_51_Waf_3DSt>
 						</sets>
 					</models>
 					<hitTester>
@@ -3849,6 +3893,28 @@
 								<!--BW_String-->
 							</size>
 						</slot>
+						<slot>
+							<slotType>insigniaOnGun</slotType>
+							<slotId>49001</slotId>
+							<rayStart>
+								0.093918 0 3.97
+								<!--BW_String-->
+							</rayStart>
+							<rayEnd>
+								0.093918 0 4.47
+								<!--BW_String-->
+							</rayEnd>
+							<rayUp>
+								0.102163 0 0
+								<!--BW_String-->
+							</rayUp>
+							<compatibleModels>Cz04_T50_51_Waf_3DSt</compatibleModels>
+							<size>
+								0.5
+								<!--BW_String-->
+							</size>
+							<isUVProportional>true</isUVProportional>
+						</slot>
 					</customizationSlots>
 					<customization>
 						<customizableVehicleAreas>
@@ -3880,6 +3946,11 @@
 						<destroyed>vehicles/czech/Cz04_T50_51/_skins/battlepass2020/crash/lod0/Turret_01.model</destroyed>
 						<exploded>vehicles/czech/Cz04_T50_51/_skins/battlepass2020/crash/lod0/Turret_01.model</exploded>
 					</battlepass2020>
+					<Cz04_T50_51_Waf_3DSt>
+						<undamaged>vehicles/czech/Cz04_T50_51/_skins/Cz04_T50_51_Waf_3DSt/normal/lod0/Turret_01.model</undamaged>
+						<destroyed>vehicles/czech/Cz04_T50_51/_skins/Cz04_T50_51_Waf_3DSt/crash/lod0/Turret_01.model</destroyed>
+						<exploded>vehicles/czech/Cz04_T50_51/_skins/Cz04_T50_51_Waf_3DSt/crash/lod0/Turret_01.model</exploded>
+					</Cz04_T50_51_Waf_3DSt>
 				</sets>
 			</models>
 			<hitTester>
@@ -4699,6 +4770,102 @@
 						0.23541
 						<!--BW_String-->
 					</anchorShift>
+				</slot>
+				<slot>
+					<slotType>projectionDecal</slotType>
+					<slotId>35036</slotId>
+					<compatibleModels>Cz04_T50_51_Waf_3DSt</compatibleModels>
+					<position>
+						-0.665798 1.95699 1.31151
+						<!--BW_String-->
+					</position>
+					<rotation>
+						1.16587 -0.640733 -3.0369
+						<!--BW_String-->
+					</rotation>
+					<attachNode>HP_FX_1</attachNode>
+					<tags>formfactor_square</tags>
+					<scale>0.407527 0.191507 0.407528</scale>
+					<doubleSided>false</doubleSided>
+					<showOn>256</showOn>
+					<clipAngle>0.000000</clipAngle>
+					<anchorShift>0.080001</anchorShift>
+				</slot>
+				<slot>
+					<slotType>projectionDecal</slotType>
+					<slotId>35037</slotId>
+					<tags>formfactor_square</tags>
+					<compatibleModels>Cz04_T50_51_Waf_3DSt</compatibleModels>
+					<position>
+						0.66937 1.94317 1.31625
+						<!--BW_String-->
+					</position>
+					<rotation>
+						1.16584 0.640679 3.03677
+						<!--BW_String-->
+					</rotation>
+					<scale>0.407528 0.191507 0.407528</scale>
+					<doubleSided>false</doubleSided>
+					<showOn>256</showOn>
+					<clipAngle>0.000000</clipAngle>
+					<anchorShift>0.080001</anchorShift>
+				</slot>
+				<slot>
+					<slotType>projectionDecal</slotType>
+					<slotId>35038</slotId>
+					<position>
+						-0.285362 2.38185 0.742112
+						<!--BW_String-->
+					</position>
+					<rotation>
+						0.0893567 0.00839743 -3.02742
+						<!--BW_String-->
+					</rotation>
+					<attachNode>HP_FX_1</attachNode>
+					<tags>formfactor_square</tags>
+					<compatibleModels>Cz04_T50_51_Waf_3DSt</compatibleModels>
+					<scale>0.496401 0.235662 0.496377</scale>
+					<doubleSided>false</doubleSided>
+					<showOn>256</showOn>
+					<clipAngle>
+						0.86274
+						<!--BW_String-->
+					</clipAngle>
+					<anchorShift>0.089302</anchorShift>
+				</slot>
+				<slot>
+					<slotType>projectionDecal</slotType>
+					<slotId>35039</slotId>
+					<position>
+						-0.000028 2.44506 -0.698474
+						<!--BW_String-->
+					</position>
+					<rotation>
+						2.93906 -0.000014 -0.000062
+						<!--BW_String-->
+					</rotation>
+					<attachNode>HP_FX_1</attachNode>
+					<tags>formfactor_square</tags>
+					<compatibleModels>Cz04_T50_51_Waf_3DSt</compatibleModels>
+					<scale>
+						0.50937 0.673502 0.509362
+						<!--BW_String-->
+					</scale>
+					<doubleSided>false</doubleSided>
+					<showOn>256</showOn>
+					<clipAngle>
+						0.00682413
+						<!--BW_String-->
+					</clipAngle>
+					<anchorShift>0.090847</anchorShift>
+				</slot>
+				<slot>
+					<slotType>sequence</slotType>
+					<slotId>38000</slotId>
+					<compatibleModels>Cz04_T50_51_Waf_3DSt</compatibleModels>
+					<position>0 0 0</position>
+					<rotation>0 0 0</rotation>
+					<attachNode>HP_FX_1</attachNode>
 				</slot>
 			</customizationSlots>
 			<customization>

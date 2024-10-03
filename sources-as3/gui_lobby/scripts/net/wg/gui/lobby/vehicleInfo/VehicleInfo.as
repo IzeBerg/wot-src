@@ -33,6 +33,8 @@ package net.wg.gui.lobby.vehicleInfo
       
       private static const VEHICLE_INFO_CREW:String = "VehicleInfoCrewUI";
       
+      private static const VEHICLE_INFO_ABILITY:String = "VehicleInfoAbilityUI";
+      
       private static const INV_COMPARE_DATA:String = "InvCompareData";
       
       private static const INV_CHANGE_NATION_DATA:String = "InvChangeNationData";
@@ -104,19 +106,6 @@ package net.wg.gui.lobby.vehicleInfo
       {
          super.configUI();
          this.view.addEventListener(ViewStackEvent.NEED_UPDATE,this.onViewNeedUpdateHandler);
-         this.tabs.dataProvider = new DataProvider([{
-            "label":MENU.VEHICLEINFO_TABS_PROPERTIES,
-            "linkage":VEHICLE_INFO_PROPS,
-            "viewId":VEHICLE_INFO_PROPS
-         },{
-            "label":MENU.VEHICLEINFO_TABS_BASE,
-            "linkage":VEHICLE_INFO_BASE,
-            "viewId":VEHICLE_INFO_BASE
-         },{
-            "label":MENU.VEHICLEINFO_TABS_CREW,
-            "linkage":VEHICLE_INFO_CREW,
-            "viewId":VEHICLE_INFO_CREW
-         }]);
          this.compareBtn.mouseEnabledOnDisabled = true;
          this.compareBtn.addEventListener(ButtonEvent.CLICK,this.onCompareBtnClickHandler);
          this.changeNationBtn.mouseEnabledOnDisabled = true;
@@ -128,17 +117,40 @@ package net.wg.gui.lobby.vehicleInfo
       
       override protected function draw() : void
       {
-         var _loc1_:Boolean = false;
-         var _loc2_:String = null;
+         var _loc1_:DataProvider = null;
+         var _loc2_:Boolean = false;
+         var _loc3_:String = null;
          super.draw();
          if(this._data && isInvalid(InvalidationType.DATA))
          {
-            _loc1_ = this._data.roleStr != Values.EMPTY_STR;
-            _loc2_ = this._data.vehicleName;
-            this.window.title = _loc2_;
-            this.moduleName.htmlText = _loc2_;
+            _loc1_ = new DataProvider([{
+               "label":MENU.VEHICLEINFO_TABS_PROPERTIES,
+               "linkage":VEHICLE_INFO_PROPS,
+               "viewId":VEHICLE_INFO_PROPS
+            },{
+               "label":MENU.VEHICLEINFO_TABS_BASE,
+               "linkage":VEHICLE_INFO_BASE,
+               "viewId":VEHICLE_INFO_BASE
+            },{
+               "label":MENU.VEHICLEINFO_TABS_CREW,
+               "linkage":VEHICLE_INFO_CREW,
+               "viewId":VEHICLE_INFO_CREW
+            }]);
+            if(this._data.abilityData)
+            {
+               _loc1_.push({
+                  "label":MENU.VEHICLEINFO_TABS_ABILITY,
+                  "linkage":VEHICLE_INFO_ABILITY,
+                  "viewId":VEHICLE_INFO_ABILITY
+               });
+            }
+            this.tabs.dataProvider = _loc1_;
+            _loc2_ = this._data.roleStr != Values.EMPTY_STR;
+            _loc3_ = this._data.vehicleName;
+            this.window.title = _loc3_;
+            this.moduleName.htmlText = _loc3_;
             this.descriptionField.text = this._data.vehicleDescription;
-            if(!_loc1_)
+            if(!_loc2_)
             {
                this.descriptionField.y = this.tankRoleTF.y;
                this.descriptionField.height = DESCRIPTION_MAX_HEIGHT;
@@ -147,7 +159,7 @@ package net.wg.gui.lobby.vehicleInfo
             {
                this.tankRoleTF.htmlText = this._data.roleStr;
             }
-            this.tankRoleTF.visible = _loc1_;
+            this.tankRoleTF.visible = _loc2_;
             this.vehicleIcon.image = this._data.vehicleImage;
             this.vehicleIcon.level = this._data.vehicleLevel;
             this.vehicleIcon.nation = this._data.vehicleNation;
@@ -249,6 +261,10 @@ package net.wg.gui.lobby.vehicleInfo
          else if(VEHICLE_INFO_BASE == _loc3_)
          {
             _loc2_.update(this._data.baseData);
+         }
+         else if(VEHICLE_INFO_ABILITY == _loc3_)
+         {
+            _loc2_.update(this._data.abilityData);
          }
          else
          {

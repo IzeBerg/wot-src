@@ -91,6 +91,8 @@ package
       
       public static const PLAYER_ERRORS_CANT_SHOOT_GUN_DAMAGED:String = "#ingame_gui:player_errors/cant_shoot/gun_damaged";
       
+      public static const PLAYER_ERRORS_CANT_SHOOT_GUN_OVERHEATED:String = "#ingame_gui:player_errors/cant_shoot/gun_overheated";
+      
       public static const PLAYER_ERRORS_CANT_SHOOT_GUN_RELOAD:String = "#ingame_gui:player_errors/cant_shoot/gun_reload";
       
       public static const PLAYER_ERRORS_CANT_SHOOT_GUN_LOCKED:String = "#ingame_gui:player_errors/cant_shoot/gun_locked";
@@ -118,6 +120,8 @@ package
       public static const PLAYER_ERRORS_EQUIPMENT_ORDER_NOTREADY:String = "#ingame_gui:player_errors/equipment/order/notReady";
       
       public static const PLAYER_ERRORS_EQUIPMENT_POI_UNAVAILABLE:String = "#ingame_gui:player_errors/equipment/poi/unavailable";
+      
+      public static const PLAYER_MESSAGES_EQUIPMENT_WTEVENT_HEALTHATFULLHP:String = "#ingame_gui:player_messages/equipment/wtEvent/healthAtFullHP";
       
       public static const PLAYER_MESSAGES_DEVICE_CRITICAL_AT_SHOT:String = "#ingame_gui:player_messages/DEVICE_CRITICAL_AT_SHOT";
       
@@ -494,6 +498,10 @@ package
       public static const SHELLS_KINDS_FLAME:String = "#ingame_gui:shells_kinds/FLAME";
       
       public static const SHELLS_KINDS_PARAMS_DAMAGE:String = "#ingame_gui:shells_kinds/params/damage";
+      
+      public static const SHELLS_KINDS_PARAMS_DAMAGERANGE:String = "#ingame_gui:shells_kinds/params/damageRange";
+      
+      public static const SHELLS_KINDS_PARAMS_DAMAGEPERSECOND:String = "#ingame_gui:shells_kinds/params/damagePerSecond";
       
       public static const SHELLS_KINDS_PARAMS_PIERCINGPOWER:String = "#ingame_gui:shells_kinds/params/piercingPower";
       
@@ -1279,6 +1287,10 @@ package
       
       public static const EFFICIENCYRIBBONS_ARTILLERYDMG:String = "#ingame_gui:efficiencyRibbons/ArtilleryDmg";
       
+      public static const EFFICIENCYRIBBONS_HEALTHADDED:String = "#ingame_gui:efficiencyRibbons/healthAdded";
+      
+      public static const EFFICIENCYRIBBONS_WTRECEIVEDCIRCUITOVERLOAD:String = "#ingame_gui:efficiencyRibbons/wtReceivedCircuitOverload";
+      
       public static const DAMAGELOG_SHELLTYPE_ARMOR_PIERCING:String = "#ingame_gui:damageLog/shellType/ARMOR_PIERCING";
       
       public static const DAMAGELOG_SHELLTYPE_HIGH_EXPLOSIVE:String = "#ingame_gui:damageLog/shellType/HIGH_EXPLOSIVE";
@@ -2056,6 +2068,12 @@ package
       public static const DEVMAPS_MAPINFO_TEXT:String = "#ingame_gui:devMaps/mapInfo/text";
       
       public static const DEVMAPS_MAPINFO_INFO:String = "#ingame_gui:devMaps/mapInfo/info";
+      
+      public static const PLAYER_ERRORS_EQUIPMENT_ABILITY_EXHAUSTED:String = "#ingame_gui:player_errors/equipment/ability/exhausted";
+      
+      public static const PLAYER_ERRORS_EQUIPMENT_ABILITY_COOLDOWN:String = "#ingame_gui:player_errors/equipment/ability/cooldown";
+      
+      public static const PLAYER_ERRORS_EQUIPMENT_ABILITY_ALREADYACTIVATED:String = "#ingame_gui:player_errors/equipment/ability/alreadyActivated";
        
       
       public function INGAME_GUI()

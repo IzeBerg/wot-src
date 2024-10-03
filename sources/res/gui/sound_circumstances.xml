@@ -90,4 +90,64 @@
 		<name>Конец боя</name>
 		<weight>60</weight>
 	</circumstance>
+	<circumstance>
+		<index>11_1</index>
+		<group>has_enought_time</group>
+		<name>В среднем остается достаточно времени для успешного исхода боя</name>
+		<weight>50</weight>
+	</circumstance>
+	<circumstance>
+		<index>11_2</index>
+		<group>has_enought_time</group>
+		<name>В среднем остается не достаточно времени для успешного исхода боя</name>
+		<weight>60</weight>
+	</circumstance>
+	<circumstance>
+		<index>12_1</index>
+		<group>destroyed_generators_count</group>
+		<name>Небыло уничтожено ни одного генератора</name>
+		<weight>40</weight>
+	</circumstance>
+	<circumstance>
+		<index>12_2</index>
+		<group>destroyed_generators_count</group>
+		<name>Был уничтожен один генератор</name>
+		<weight>40</weight>
+	</circumstance>
+	<circumstance>
+		<index>12_3</index>
+		<group>destroyed_generators_count</group>
+		<name>Было уничтожено 2 генератора</name>
+		<weight>30</weight>
+	</circumstance>
+	<circumstance>
+		<index>12_4</index>
+		<group>destroyed_generators_count</group>
+		<name>Было уничтожено 3 генератора</name>
+		<weight>50</weight>
+	</circumstance>
+	<circumstance>
+		<index>12_5</index>
+		<group>destroyed_generators_count</group>
+		<name>Было уничтожено 4 генератора</name>
+		<weight>70</weight>
+	</circumstance>
+	<circumstance>
+		<index>13_1</index>
+		<group>destroyed_generators_count</group>
+		<name>Было уничтожено 4 генератора</name>
+		<weight>70</weight>
+	</circumstance>
+	<circumstance>
+		<index>13_1</index>
+		<group>health_percent_boss</group>
+		<name>More than 3 percent</name>
+		<weight>70</weight>
+	</circumstance>
+	<circumstance>
+		<index>13_2</index>
+		<group>health_percent_boss</group>
+		<name>Less than 3 percent</name>
+		<weight>70</weight>
+	</circumstance>
 </root>

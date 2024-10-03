@@ -25,6 +25,33 @@
 					<row3>0.000000 0.337651 1.107271</row3>
 				</transform>
 			</node>
+			<node>
+				<identifier>HP_TurretCamera_01</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.709255 0.745745 0.605522</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_sleeveSpawnPoint</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_abillity_01</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+			</node>
 		</node>
 	</node>
 	<renderSet>
@@ -37,20 +64,12 @@
 				0
 				<material>
 					<identifier>tank_turret_01</identifier>
-					<property>
-						selfIllumination
-						<Float>0.000000</Float>
-					</property>
-					<collisionFlags>0</collisionFlags>
-					<materialKind>0</materialKind>
 					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
 					<property>
-						metallicGlossMap
-						<Texture>vehicles/american/A150_MBT_B/MBT_B_turret_01_GMM.dds</Texture>
-					</property>
-					<property>
-						normalMap
-						<Texture>vehicles/american/A150_MBT_B/MBT_B_turret_01_ANM.dds</Texture>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
 					</property>
 					<property>
 						diffuseMap
@@ -61,8 +80,8 @@
 						<Texture>vehicles/american/A150_MBT_B/MBT_B_turret_01_AO.dds</Texture>
 					</property>
 					<property>
-						colorIdMap
-						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+						g_detailUVTiling
+						<Vector4>8.416440 8.416440 0.000000 0.000000</Vector4>
 					</property>
 					<property>
 						g_useDetailMetallic
@@ -73,21 +92,22 @@
 						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
 					</property>
 					<property>
-						g_detailUVTiling
-						<Vector4>
-							8.41644 4.20822 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
+						metallicGlossMap
+						<Texture>vehicles/american/A150_MBT_B/MBT_B_turret_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/american/A150_MBT_B/MBT_B_turret_01_ANM.dds</Texture>
 					</property>
 				</material>
-				<groupOrigin>-0.019472 0.632080 -0.192999</groupOrigin>
+				<groupOrigin>-0.013868 0.434099 -0.734614</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<boundingBox>
-		<min>-1.609699 -0.000000 -2.993235</min>
-		<max>1.570755 1.264161 2.607238</max>
+		<min>-1.598491 -0.000001 -2.993235</min>
+		<max>1.570755 0.868198 1.524006</max>
 	</boundingBox>
-	<geometrySize>874984</geometrySize>
+	<geometrySize>773104</geometrySize>
 	<minUVDensity>0.001448</minUVDensity>
 </root>

@@ -54,7 +54,7 @@
 			<primitiveGroup>
 				0
 				<material>
-					<identifier>hull_inside1</identifier>
+					<identifier>tank_mat_inside</identifier>
 					<fx>shaders/std_effects/PBS_tank.fx</fx>
 					<materialKind>0</materialKind>
 					<collisionFlags>0</collisionFlags>
@@ -78,23 +78,27 @@
 						normalMap
 						<Texture>vehicles/russian/Crash_inside/crash_inside_NM.dds</Texture>
 					</property>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
 				</material>
-				<groupOrigin>-0.005014 0.000064 -0.027713</groupOrigin>
+				<groupOrigin>0.000161 0.000064 -0.027713</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
 				1
 				<material>
 					<identifier>tank_hull_01</identifier>
 					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
-					<materialKind>0</materialKind>
 					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
 					<property>
-						diffuseMap
-						<Texture>vehicles/poland/Pl34_CS_63_02/CS_63_02_hull_01_AM.dds</Texture>
+						g_crashUVTiling
+						<Vector4>4.000000 4.000000 0.000000 0.000000</Vector4>
 					</property>
 					<property>
-						excludeMaskAndAOMap
-						<Texture>vehicles/poland/Pl34_CS_63_02/CS_63_02_hull_01_AO.dds</Texture>
+						crashTileMap
+						<Texture>vehicles/russian/Tank_detail/crash_tile.dds</Texture>
 					</property>
 					<property>
 						metallicGlossMap
@@ -105,26 +109,34 @@
 						<Texture>vehicles/poland/Pl34_CS_63_02/CS_63_02_hull_01_ANM.dds</Texture>
 					</property>
 					<property>
-						crashTileMap
-						<Texture>vehicles/russian/Tank_detail/crash_tile.dds</Texture>
+						diffuseMap
+						<Texture>vehicles/poland/Pl34_CS_63_02/CS_63_02_hull_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/poland/Pl34_CS_63_02/CS_63_02_hull_01_AO.dds</Texture>
+					</property>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
 					</property>
 				</material>
-				<groupOrigin>-0.002072 -0.042411 -0.232990</groupOrigin>
+				<groupOrigin>-0.002072 -0.029733 -0.232990</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
 				2
 				<material>
 					<identifier>tank_chassis_01</identifier>
 					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
-					<materialKind>0</materialKind>
 					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
 					<property>
-						diffuseMap
-						<Texture>vehicles/poland/Pl34_CS_63_02/CS_63_02_chassis_01_AM.dds</Texture>
+						g_crashUVTiling
+						<Vector4>2.000000 1.000000 0.000000 0.000000</Vector4>
 					</property>
 					<property>
-						excludeMaskAndAOMap
-						<Texture>vehicles/poland/Pl34_CS_63_02/CS_63_02_chassis_01_AO.dds</Texture>
+						crashTileMap
+						<Texture>vehicles/russian/Tank_detail/crash_tile.dds</Texture>
 					</property>
 					<property>
 						metallicGlossMap
@@ -135,8 +147,16 @@
 						<Texture>vehicles/poland/Pl34_CS_63_02/CS_63_02_chassis_01_ANM.dds</Texture>
 					</property>
 					<property>
-						crashTileMap
-						<Texture>vehicles/russian/Tank_detail/crash_tile.dds</Texture>
+						diffuseMap
+						<Texture>vehicles/poland/Pl34_CS_63_02/CS_63_02_chassis_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/poland/Pl34_CS_63_02/CS_63_02_chassis_01_AO.dds</Texture>
+					</property>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
 					</property>
 				</material>
 				<groupOrigin>-0.004022 -0.432902 -0.025982</groupOrigin>
@@ -145,8 +165,8 @@
 	</renderSet>
 	<boundingBox>
 		<min>-1.640645 -0.959345 -3.497895</min>
-		<max>1.636501 0.552151 3.031914</max>
+		<max>1.636501 0.537655 3.031914</max>
 	</boundingBox>
-	<geometrySize>191534</geometrySize>
-	<minUVDensity>0.002328</minUVDensity>
+	<geometrySize>159308</geometrySize>
+	<minUVDensity>0.002726</minUVDensity>
 </root>

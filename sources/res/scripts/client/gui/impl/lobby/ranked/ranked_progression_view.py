@@ -108,13 +108,17 @@ class RankedProgressionView(ViewImpl):
          (
           self.__rankedController.onUpdated, self.__onUpdated),
          (
+          self.__rankedController.onSelectableRewardsChanged, self.__onUpdated),
+         (
           g_playerEvents.onEnqueued, self.__onDestroy),
          (
           self.viewModel.onClose, self.__onDestroy),
          (
           self.viewModel.onAbout, self.__onAbout),
          (
-          self.viewModel.onSelectDivision, self.__onSelectDivision))
+          self.viewModel.onSelectDivision, self.__onSelectDivision),
+         (
+          self.viewModel.onSelectReward, self.__onSelectReward))
 
     def _getListeners(self):
         return (
@@ -131,6 +135,11 @@ class RankedProgressionView(ViewImpl):
 
     @replaceNoneKwargsModel
     def __setViewData(self, model=None):
+        bonusBattles = 0
+        if self.__rankedController.getCurrentSeason():
+            bonusBattles = self.__rankedController.getClientBonusBattlesCount()
+        model.setBonusBattles(bonusBattles)
+        model.setHasRewardToSelect(self.__rankedController.hasAnyRewardToTake())
         divisions = self.__rankedController.getDivisions()
         self.__setSeasonInfo(model=model)
         self.__setStatisticsInfo(divisions=divisions, model=model)
@@ -213,10 +222,13 @@ class RankedProgressionView(ViewImpl):
         ranksModel.clearItems()
         isSingleReward = True
         for rankID in range(firstRank, lastRank + 1):
+            needTakeReward, canTakeReward = self.__rankedController.getCanTakeReward(rankID)
             rank = RankModel()
             rank.setRankID(rankID)
             rank.setStepsToRank(self.__rankedController.getStepsToEarnRank(rankID))
             rank.setIsUnburnable(self.__rankedController.isUnburnableRank(rankID))
+            rank.setNeedTakeReward(needTakeReward)
+            rank.setCanTakeReward(canTakeReward)
             self.__setRankBonuses(rank, rankID)
             ranksModel.addViewModel(rank)
             isSingleReward = isSingleReward and rank.rewards.getItemsLength() <= 1
@@ -228,7 +240,8 @@ class RankedProgressionView(ViewImpl):
         rankQuest = first(self.__rankedController.getQuestsForRank(rankID).values())
         rewards = model.rewards
         rewards.clearItems()
-        packBonusModelAndTooltipData(rankQuest.getBonuses(), rewards, self.__tooltipItems)
+        bonuses = self.__rankedController.replaceOfferByReward(rankQuest.getBonuses())
+        packBonusModelAndTooltipData(bonuses, rewards, self.__tooltipItems)
 
     @replaceNoneKwargsModel
     def __setStatisticsInfo(self, divisions, model=None):
@@ -246,6 +259,14 @@ class RankedProgressionView(ViewImpl):
             efficiencies.addString(getFloatPercentStrStat(efficiency))
 
         efficiencies.invalidate()
+
+    def __onSelectReward(self, args):
+        rank = args.get('rankID')
+        if rank is None:
+            return
+        else:
+            self.__rankedController.takeRewardForRank(rank)
+            return
 
 
 class RankedProgressionWindow(WindowImpl):

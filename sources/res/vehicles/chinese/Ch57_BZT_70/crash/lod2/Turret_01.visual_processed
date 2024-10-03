@@ -22,7 +22,7 @@
 					<row0>1.000000 0.000000 0.000000</row0>
 					<row1>0.000000 1.000000 0.000000</row1>
 					<row2>0.000000 0.000000 1.000000</row2>
-					<row3>0.000000 0.442043 1.203600</row3>
+					<row3>0.000000 0.485043 1.044558</row3>
 				</transform>
 			</node>
 		</node>
@@ -38,23 +38,15 @@
 				<material>
 					<identifier>tank_turret_01</identifier>
 					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
-					<materialKind>0</materialKind>
 					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						g_crashUVTiling
+						<Vector4>4.000000 4.000000 0.000000 0.000000</Vector4>
+					</property>
 					<property>
 						crashTileMap
 						<Texture>vehicles/russian/Tank_detail/crash_tile.dds</Texture>
-					</property>
-					<property>
-						diffuseMap
-						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_turret_01_AM.dds</Texture>
-					</property>
-					<property>
-						excludeMaskAndAOMap
-						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_turret_01_AO.dds</Texture>
-					</property>
-					<property>
-						colorIdMap
-						<Texture>vehicles/russian/common/common_ID.dds</Texture>
 					</property>
 					<property>
 						metallicGlossMap
@@ -64,14 +56,22 @@
 						normalMap
 						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_turret_01_ANM.dds</Texture>
 					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_turret_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_turret_01_AO.dds</Texture>
+					</property>
 				</material>
-				<groupOrigin>-0.001881 0.457444 -0.327258</groupOrigin>
+				<groupOrigin>-0.001881 0.500444 -0.486300</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<boundingBox>
-		<min>-1.529281 -0.229001 -2.472267</min>
-		<max>1.525518 1.143889 1.817750</max>
+		<min>-1.529281 -0.186001 -2.631309</min>
+		<max>1.525518 1.186889 1.658708</max>
 	</boundingBox>
 	<geometrySize>88844</geometrySize>
 	<minUVDensity>0.003395</minUVDensity>

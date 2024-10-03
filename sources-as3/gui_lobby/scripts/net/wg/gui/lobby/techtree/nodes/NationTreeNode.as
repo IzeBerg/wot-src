@@ -243,7 +243,7 @@ package net.wg.gui.lobby.techtree.nodes
          this.nameTF.text = getItemName();
          _loc1_ = isLocked();
          var _loc2_:Boolean = isNext2Unlock();
-         var _loc3_:String = hasAction && (_loc1_ || _loc2_) ? DISCOUNT_LABEL_BLUE : DISCOUNT_LABEL_RED;
+         var _loc3_:String = (_loc1_ || _loc2_) && getNodeData().blueprintProgress.valueOf() > 0 ? DISCOUNT_LABEL_BLUE : DISCOUNT_LABEL_RED;
          var _loc4_:Boolean = hasAction || hasTechTreeEvent;
          if(this.discountIcon)
          {

@@ -147,8 +147,17 @@ msgstr "Купить"
 msgid "buyView/cancelButton"
 msgstr "Назад"
 
+msgid "buyView/crystal"
+msgstr "за боны"
+
+msgid "buyView/gold"
+msgstr "за золото"
+
+msgid "buyView/or"
+msgstr "или"
+
 msgid "buyView/price"
-msgstr "Стоимость покупки: %(price)"
+msgstr "Стоимость покупки: %(price)s"
 
 msgid "buyView/reward/rest"
 msgstr "И ещё: %(count)s"
@@ -170,7 +179,7 @@ msgstr ""
 "{cream_open}%(completedSteps)s{cream_close}"
 
 msgid "buyView/selected"
-msgstr "Выбрано этапов: %(amount)"
+msgstr "Выбрано этапов: %(amount)s"
 
 msgid "buyView/title/h1"
 msgstr "СБОРОЧНЫЙ ЦЕХ"
@@ -180,8 +189,8 @@ msgstr "ПОКУПКА ЖЕТОНОВ СТРОИТЕЛЬСТВА"
 
 msgid "buyView/title/h3"
 msgstr ""
-"За золото вы можете продвинуться по прогрессии строительства машины, докупив"
-" этапы и получив за них все награды."
+"Вы можете продвинуться по прогрессии строительства машины, докупив этапы и "
+"получив за них все награды."
 
 msgid "buyView/vehiclePreview/label"
 msgstr "Предпросмотр"
@@ -193,7 +202,7 @@ msgid "closeBtn/label"
 msgstr "ЗАКРЫТЬ"
 
 msgid "currency/postProgression/titleCongrats"
-msgstr "Жетон Сборочного цеха"
+msgstr "Свободный жетон"
 
 msgid "entryPoint/tooltips/active/announce"
 msgstr "C %(day)d %(month)s %(year)d г. %(time)s."
@@ -214,13 +223,13 @@ msgid "entryPoint/tooltips/active/header"
 msgstr "Задачи Сборочного цеха"
 
 msgid "entryPoint/tooltips/active/justBeforeStart/hours"
-msgstr "Cтанет доступна через: %(hour)s ч %(min)s мин"
+msgstr "Станет доступна через %(hour)s ч %(min)s мин"
 
 msgid "entryPoint/tooltips/active/justBeforeStart/min"
-msgstr "Cтанет доступна через: %(min)s мин"
+msgstr "Станет доступна через %(min)s мин"
 
 msgid "entryPoint/tooltips/active/justBeforeStart/sec"
-msgstr "Cтанет доступна через: < 1 мин"
+msgstr "Станет доступна через < 1 мин"
 
 msgid "entryPoint/tooltips/active/locked"
 msgid_plural "plural/entryPoint/tooltips/active/locked"
@@ -246,7 +255,7 @@ msgstr ""
 "%(totalQuests)s%(par_Close)s"
 
 msgid "entryPoint/tooltips/active/tokensHeader"
-msgstr "Получено жетонов:"
+msgstr "Получено жетонов строительства:"
 
 msgid "entryPoint/tooltips/active/tokensValue"
 msgstr ""
@@ -255,7 +264,7 @@ msgstr ""
 
 msgid "entryPoint/tooltips/beforeProgression/body"
 msgstr ""
-"Здесь находятся все задачи события, разбитые на 4 главы. Блоки задач "
+"Здесь находятся все задачи события, разбитые на IV главы. Блоки задач "
 "открываются последовательно каждые семь дней."
 
 msgid "entryPoint/tooltips/beforeProgression/header"
@@ -322,13 +331,13 @@ msgid "mainView/banner/freeCoins/button"
 msgstr "Докупить"
 
 msgid "mainView/banner/freeCoins/description"
-msgstr "Докупив жетоны, вы сможете их обменять на уникальные товары."
+msgstr "Докупив жетоны, вы сможете обменять их на уникальные товары."
 
 msgid "mainView/banner/freeCoins/title"
 msgstr "Покупка жетонов"
 
 msgid "mainView/banner/freeCoins/tooltip/body"
-msgstr "Докупив жетоны, вы сможете их обменять на уникальные товары."
+msgstr "Докупив жетоны, вы сможете обменять их на уникальные товары."
 
 msgid "mainView/banner/freeCoins/tooltip/header"
 msgstr "Покупка жетонов"
@@ -417,6 +426,21 @@ msgstr "Этап строительства"
 msgid "mainView/progress/title"
 msgstr "СБОРОЧНЫЙ ЦЕХ"
 
+msgid "mainView/quest/all/label"
+msgstr "Выполняется:"
+
+msgid "mainView/quest/battleType/dot"
+msgstr "."
+
+msgid "mainView/quest/battleType/label"
+msgstr "В режимах:"
+
+msgid "mainView/quest/battleType/separator"
+msgstr ","
+
+msgid "mainView/quest/battleType/tooltip/header"
+msgstr "Доступные режимы:"
+
 msgid "mainView/quest/currencyToken/label"
 msgstr "Бонусная награда:"
 
@@ -436,19 +460,19 @@ msgid "mainView/quest/vehicleType/SPG"
 msgstr "САУ VI-XI уровней"
 
 msgid "mainView/quest/vehicleType/any"
-msgstr "любой технике VI-XI уровней"
+msgstr "VI-XI уровней"
 
 msgid "mainView/quest/vehicleType/heavyTank"
-msgstr "тяжёлых танках VI-XI уровней"
+msgstr "Тяжёлые танки VI-XI уровней"
 
 msgid "mainView/quest/vehicleType/label"
-msgstr "Выполняется на"
+msgstr "На технике:"
 
 msgid "mainView/quest/vehicleType/lightTank"
-msgstr "лёгких танках VI-XI уровней"
+msgstr "Лёгкие танки VI-XI уровней"
 
 msgid "mainView/quest/vehicleType/mediumTank"
-msgstr "средних танках VI-XI уровней"
+msgstr "Средние танки VI-XI уровней"
 
 msgid "mainView/quests/title"
 msgstr "ЗАДАЧИ СБОРОЧНОГО ЦЕХА"
@@ -481,22 +505,22 @@ msgid "mainView/title/step/1"
 msgstr "Знакомство с ТЗ"
 
 msgid "mainView/title/step/10"
-msgstr "Установка трансмиссии"
+msgstr "Установка двигателя"
 
 msgid "mainView/title/step/11"
 msgstr "Установка топливной системы"
 
 msgid "mainView/title/step/12"
-msgstr "Установка двигателя"
+msgstr "Установка воздушных фильтров и системы пожаротушения"
 
 msgid "mainView/title/step/13"
-msgstr "Установка вспомогательных систем"
+msgstr "Установка системы охлаждения"
 
 msgid "mainView/title/step/14"
-msgstr "Установка фильтровентиляционной системы"
+msgstr "Установка защитных кожухов и систем хранения"
 
 msgid "mainView/title/step/15"
-msgstr "Оформление боевого отделения"
+msgstr "Монтаж боевого отделения"
 
 msgid "mainView/title/step/16"
 msgstr "Доставка орудия"
@@ -514,7 +538,7 @@ msgid "mainView/title/step/2"
 msgstr "Габариты машины"
 
 msgid "mainView/title/step/20"
-msgstr "Установка балансиров"
+msgstr "Установка элементов подвески"
 
 msgid "mainView/title/step/21"
 msgstr "Монтаж катков"
@@ -526,7 +550,7 @@ msgid "mainView/title/step/23"
 msgstr "Покраска"
 
 msgid "mainView/title/step/24"
-msgstr "Размещение ЗИП"
+msgstr "Монтаж элементов внешней защиты"
 
 msgid "mainView/title/step/25"
 msgstr "Монтаж навесного оборудования"
@@ -553,7 +577,7 @@ msgid "mainView/title/step/8"
 msgstr "Закалка брони"
 
 msgid "mainView/title/step/9"
-msgstr "Монтаж основных магистралей"
+msgstr "Установка трансмиссии"
 
 msgid "mainView/title/step/final"
 msgstr "Строительство завершено"
@@ -569,8 +593,8 @@ msgstr "Глава %(count)d: %(chapter_name)s станет доступна %(s
 
 msgid "notifications/announcement/event"
 msgstr ""
-"Бойцы! У вас есть возможность построить уникальную машину — советскую "
-"премиум ПТ-САУ IX уровня. Событие начинается %(startDate)s."
+"Бойцы! У вас есть возможность построить уникальную машину — премиум ПТ-САУ "
+"IX уровня. Событие начинается %(startDate)s."
 
 msgid "notifications/bundleOutTime"
 msgstr ""
@@ -586,6 +610,9 @@ msgstr "Произошла ошибка при покупке этапов. По
 
 msgid "notifications/payed/multiple"
 msgstr "Жетоны строительства (%(count)d шт.) успешно приобретены."
+
+msgid "notifications/payed/priceCrystal"
+msgstr "Списано бон: %(price)s"
 
 msgid "notifications/payed/priceGold"
 msgstr "Списано золота: %(price)s"
@@ -761,17 +788,6 @@ msgstr "Как получить"
 msgid "tooltip/currency/info"
 msgstr "Автоматически добавляется к прогрессии."
 
-msgid "tooltip/currency/postProgression/availabilityPeriod"
-msgstr ""
-"Главы доступны: %(brown_open)sс %(startDay)d %(startMonth)s %(startYear)d г."
-" %(startTime)s до %(endDay)d %(endMonth)s %(endYear)d г. "
-"%(endTime)s%(brown_close)s"
-
-msgid "tooltip/currency/postProgression/availabilityPeriodShort"
-msgstr ""
-"Главы доступны: %(brown_open)sс %(startDay)d %(startMonth)s %(startTime)s до"
-" %(endDay)d %(endMonth)s %(endYear)d г. %(endTime)s%(brown_close)s"
-
 msgid "tooltip/currency/postProgression/description"
 msgstr ""
 "Особый ресурс, доступный во время проведения события "
@@ -818,7 +834,7 @@ msgid "tooltip/tab/quests/noteDate"
 msgstr "%(color_open)sс %(startDate)s до %(endDate)s%(color_close)s"
 
 msgid "tooltip/tab/shop/body"
-msgstr "Используй свободные жетоны для покупки уникальных товаров."
+msgstr "Используйте свободные жетоны для покупки уникальных товаров."
 
 msgid "tooltip/tab/shop/header"
 msgstr "Магазин Сборочного цеха"
@@ -860,10 +876,10 @@ msgid "widget/countdown/sec"
 msgstr "< 1 мин"
 
 msgid "widget/postProgression"
-msgstr "Покупка доступна ещё: %(countdown)s"
+msgstr "Покупка доступна ещё %(countdown)s"
 
 msgid "widget/postProgressionShort"
-msgstr "Доступно ещё: %(countdown)s"
+msgstr "Доступно ещё %(countdown)s"
 
 msgid "widget/title"
 msgstr "СБОРОЧНЫЙ ЦЕХ"

@@ -2118,6 +2118,8 @@ RECORDS = (
  (
   'singleAchievements', 'betaTester', 'p', 'B', 1),
  (
+  'singleAchievements', '14YearsOfService', 'p', 'B', 1),
+ (
   'singleAchievements', '13YearsOfService', 'p', 'B', 1),
  (
   'singleAchievements', '12YearsOfService', 'p', 'B', 1),
@@ -3481,6 +3483,12 @@ RECORDS = (
   'singleAchievements', 'races24FirstPlace', 'p', 'B', 1),
  (
   'singleAchievements', 'races24Progression', 'p', 'B', 1),
+ (
+  'achievements', 'wt2024HunterWins', 'p', 'I', 4294967295),
+ (
+  'achievements', 'wt2024BossWins', 'p', 'I', 4294967295),
+ (
+  'achievements', 'wt2024MaxPlasma', 'p', 'I', 4294967295),
  (
   'singleAchievements', 'comp7_4_1', 'p', 'B', 1),
  (
@@ -5231,7 +5239,11 @@ RECORD_DB_IDS = {('total', 'creationTime'): 68,
    ('singleAchievements', 'comp7_4_1'): 31103, 
    ('singleAchievements', 'comp7_4_1_champion'): 31104, 
    ('singleAchievements', 'comp7_4_1_legend'): 31105, 
-   ('singleAchievements', 'BattlePassCommonPr_15'): 31106}
+   ('singleAchievements', 'BattlePassCommonPr_15'): 31106, 
+   ('singleAchievements', '14YearsOfService'): 31107, 
+   ('achievements', 'wt2024HunterWins'): 31108, 
+   ('achievements', 'wt2024BossWins'): 31109, 
+   ('achievements', 'wt2024MaxPlasma'): 31110}
 DB_ID_TO_RECORD = dict([ (value, key) for key, value in RECORD_DB_IDS.iteritems() ])
 RECORD_DB_IDS.update({('vehTypeFrags', ''): 863, 
    ('a15x15Cut', ''): 864, 

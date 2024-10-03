@@ -1798,66 +1798,6 @@
 			</value>
 		</item>
 		<item>
-			<name>TechTreeItemNode</name>
-			<type>dict</type>
-			<value>
-				<item>
-					<name>view</name>
-					<value>techtree</value>
-				</item>
-				<item>
-					<name>path</name>
-					<value>nationTree:NationTreeNodeSkinned?%TechTreeItemNodeID%</value>
-				</item>
-				<item>
-					<name>bootcampHint</name>
-					<type>dict</type>
-					<value>
-						<item>
-							<name>hideBorder</name>
-							<type>bool</type>
-							<value>False</value>
-						</item>
-						<item>
-							<name>padding</name>
-							<type>dict</type>
-							<value>
-								<item>
-									<name>left</name>
-									<type>float</type>
-									<value>0</value>
-								</item>
-								<item>
-									<name>top</name>
-									<type>float</type>
-									<value>0</value>
-								</item>
-								<item>
-									<name>right</name>
-									<type>float</type>
-									<value>32</value>
-								</item>
-								<item>
-									<name>bottom</name>
-									<type>float</type>
-									<value>34</value>
-								</item>
-							</value>
-						</item>
-						<item>
-							<name>customLinkage</name>
-							<value>BCLobbyAttentionHintUI</value>
-						</item>
-						<item>
-							<name>addToParent</name>
-							<type>bool</type>
-							<value>True</value>
-						</item>
-					</value>
-				</item>
-			</value>
-		</item>
-		<item>
 			<name>ResearchHelpButton</name>
 			<type>dict</type>
 			<value>
@@ -4031,11 +3971,11 @@
 			<value>
 				<item>
 					<name>view</name>
-					<value>techtree</value>
+					<value>R.views.lobby.techtree.VehicleTechTree</value>
 				</item>
 				<item>
 					<name>path</name>
-					<value>blueprintsSwitchButton</value>
+					<value>div[id=blueprint-switcher]</value>
 				</item>
 				<item>
 					<name>padding</name>
@@ -4044,22 +3984,22 @@
 						<item>
 							<name>left</name>
 							<type>float</type>
-							<value>-35</value>
+							<value>0</value>
 						</item>
 						<item>
 							<name>top</name>
 							<type>float</type>
-							<value>-33</value>
+							<value>0</value>
 						</item>
 						<item>
 							<name>right</name>
 							<type>float</type>
-							<value>214</value>
+							<value>0</value>
 						</item>
 						<item>
 							<name>bottom</name>
 							<type>float</type>
-							<value>214</value>
+							<value>0</value>
 						</item>
 					</value>
 				</item>
@@ -4156,46 +4096,6 @@
 				<item>
 					<name>path</name>
 					<value>researchItems:ResearchItemNode.rootRenderer.blueprintBar.plus</value>
-				</item>
-				<item>
-					<name>padding</name>
-					<type>dict</type>
-					<value>
-						<item>
-							<name>left</name>
-							<type>float</type>
-							<value>-14</value>
-						</item>
-						<item>
-							<name>top</name>
-							<type>float</type>
-							<value>-14</value>
-						</item>
-						<item>
-							<name>right</name>
-							<type>float</type>
-							<value>-14</value>
-						</item>
-						<item>
-							<name>bottom</name>
-							<type>float</type>
-							<value>-14</value>
-						</item>
-					</value>
-				</item>
-			</value>
-		</item>
-		<item>
-			<name>BlueprintsTechtreeConvertButton</name>
-			<type>dict</type>
-			<value>
-				<item>
-					<name>view</name>
-					<value>techtree</value>
-				</item>
-				<item>
-					<name>path</name>
-					<value>nationTree:NationTreeNodeSkinned?blueprintCanConvert=true.blueprintPlus</value>
 				</item>
 				<item>
 					<name>padding</name>

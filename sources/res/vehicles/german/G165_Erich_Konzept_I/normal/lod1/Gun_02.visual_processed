@@ -68,30 +68,18 @@
 		<node>Gun_BlendBone</node>
 		<node>G_BlendBone</node>
 		<geometry>
-			<vertices>gun_02_Shape.vertices</vertices>
-			<primitive>gun_02_Shape.indices</primitive>
+			<vertices>gun_02Shape2.vertices</vertices>
+			<primitive>gun_02Shape2.indices</primitive>
 			<primitiveGroup>
 				0
 				<material>
 					<identifier>tank_guns_skinned</identifier>
-					<property>
-						doubleSided
-						<Bool>false</Bool>
-					</property>
-					<property>
-						alphaReference
-						<Int>0</Int>
-					</property>
-					<collisionFlags>0</collisionFlags>
-					<materialKind>0</materialKind>
 					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
 					<property>
-						metallicGlossMap
-						<Texture>vehicles/german/G165_Erich_Konzept_I/Erich_Konzept_I_guns_GMM.dds</Texture>
-					</property>
-					<property>
-						normalMap
-						<Texture>vehicles/german/G165_Erich_Konzept_I/Erich_Konzept_I_guns_ANM.dds</Texture>
+						colorIdMap
+						<Texture>vehicles/german/G165_Erich_Konzept_I/Erich_Konzept_I_guns_ID.dds</Texture>
 					</property>
 					<property>
 						diffuseMap
@@ -102,31 +90,41 @@
 						<Texture>vehicles/german/G165_Erich_Konzept_I/Erich_Konzept_I_guns_AO.dds</Texture>
 					</property>
 					<property>
-						colorIdMap
-						<Texture>vehicles/german/G165_Erich_Konzept_I/Erich_Konzept_I_guns_ID.dds</Texture>
+						metallicGlossMap
+						<Texture>vehicles/german/G165_Erich_Konzept_I/Erich_Konzept_I_guns_GMM.dds</Texture>
 					</property>
 					<property>
-						g_useDetailMetallic
-						<Bool>true</Bool>
-					</property>
-					<property>
-						metallicDetailMap
-						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
-					</property>
-					<property>
-						g_detailUVTiling
-						<Vector4>7.013699 3.506849 0.000000 0.000000</Vector4>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>false</Bool>
-					</property>
-					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
+						normalMap
+						<Texture>vehicles/german/G165_Erich_Konzept_I/Erich_Konzept_I_guns_ANM.dds</Texture>
 					</property>
 				</material>
 				<groupOrigin>-0.000001 1.594205 -1.733836</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>equipment_01_skinned</identifier>
+					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>vehicles/russian/R00_Badges/Paragon_2024/Paragon_2024_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/russian/R00_Badges/Paragon_2024/Paragon_2024_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/russian/R00_Badges/Paragon_2024/Paragon_2024_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/russian/R00_Badges/Paragon_2024/Paragon_2024_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.001617 -0.007762 0.000000</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
@@ -135,6 +133,6 @@
 		<min>-1.491041 -0.722073 -1.406986</min>
 		<max>1.491040 3.910482 4.874659</max>
 	</boundingBox>
-	<geometrySize>229430</geometrySize>
+	<geometrySize>231462</geometrySize>
 	<minUVDensity>0.009663</minUVDensity>
 </root>

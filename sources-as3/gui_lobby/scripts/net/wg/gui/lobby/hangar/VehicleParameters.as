@@ -311,7 +311,7 @@ package net.wg.gui.lobby.hangar
          var _loc12_:int = 0;
          var _loc2_:VehParamVO = VehParamVO(param1.itemData);
          var _loc3_:String = _loc2_.state;
-         if(_loc3_ == HANGAR_ALIASES.VEH_PARAM_RENDERER_STATE_SIMPLE_TOP || _loc3_ == HANGAR_ALIASES.VEH_PARAM_RENDERER_STATE_SIMPLE_BOTTOM)
+         if(_loc3_ == HANGAR_ALIASES.VEH_PARAM_RENDERER_STATE_SIMPLE_TOP || _loc3_ == HANGAR_ALIASES.VEH_PARAM_RENDERER_STATE_SIMPLE_BOTTOM || _loc3_ == HANGAR_ALIASES.VEH_PARAM_RENDERER_STATE_ABILITY)
          {
             _loc4_ = this.rendererBG.visible;
             _loc5_ = this.rendererBG.y;

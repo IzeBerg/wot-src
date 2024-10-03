@@ -11,6 +11,8 @@ package net.wg.gui.bootcamp.containers
    
    public class TutorialPageContainer extends Sprite implements IDisposable
    {
+      
+      private static const TEXT_Y_OFFSET:int = 14;
        
       
       public var txtHeader1:TextField;
@@ -20,6 +22,8 @@ package net.wg.gui.bootcamp.containers
       public var txtHeader3:TextField;
       
       public var txtHeader4:TextField;
+      
+      public var txtHeader5:TextField;
       
       public var txtDescription1:TextField;
       
@@ -48,6 +52,8 @@ package net.wg.gui.bootcamp.containers
       private var _loaderHeight:int = 0;
       
       private var _disposed:Boolean = false;
+      
+      private var _isAdaptable:Boolean = false;
       
       public function TutorialPageContainer()
       {
@@ -113,6 +119,11 @@ package net.wg.gui.bootcamp.containers
          {
             this.txtHeader4.text = param1.header4Text;
             this.txtHeader4.autoSize = param1.header4AutoSize;
+         }
+         if(this.txtHeader5)
+         {
+            this.txtHeader5.text = param1.header5Text;
+            this.txtHeader5.autoSize = param1.header5AutoSize;
          }
          if(this.txtDescription1)
          {
@@ -195,6 +206,10 @@ package net.wg.gui.bootcamp.containers
          {
             this.txtHeader4 = null;
          }
+         if(this.txtHeader5)
+         {
+            this.txtHeader5 = null;
+         }
          if(this.txtDescription1)
          {
             this.txtDescription1 = null;
@@ -239,9 +254,65 @@ package net.wg.gui.bootcamp.containers
          }
       }
       
+      public function updateTextPosition(param1:int, param2:int, param3:int, param4:int, param5:int, param6:int, param7:int = 14) : void
+      {
+         var _loc8_:int = 0;
+         var _loc9_:int = 0;
+         if(this._isAdaptable)
+         {
+            _loc8_ = param3 + param5;
+            _loc9_ = param1 - (param5 << 1);
+            if(this.txtHeader5)
+            {
+               this.txtHeader1.width = this.txtHeader2.width = this.txtHeader3.width = this.txtHeader4.width = this.txtHeader5.width = _loc9_;
+               this.txtHeader1.x = this.txtHeader2.x = this.txtHeader3.x = this.txtHeader4.x = this.txtHeader5.x = _loc8_;
+               this.txtHeader5.y = param2 - this.txtHeader5.height - param4 - param6 >> 0;
+               this.txtHeader4.y = this.txtHeader5.y - param7 - this.txtHeader4.height >> 0;
+               this.txtHeader3.y = this.txtHeader4.y - param7 - this.txtHeader3.height >> 0;
+               this.txtHeader2.y = this.txtHeader3.y - param7 - this.txtHeader2.height >> 0;
+               this.txtHeader1.y = this.txtHeader2.y - param7 - this.txtHeader1.height >> 0;
+            }
+            else if(this.txtHeader4)
+            {
+               this.txtHeader1.width = this.txtHeader2.width = this.txtHeader3.width = this.txtHeader4.width = _loc9_;
+               this.txtHeader1.x = this.txtHeader2.x = this.txtHeader3.x = this.txtHeader4.x = _loc8_;
+               this.txtHeader4.y = param2 - this.txtHeader4.height - param4 - param6 >> 0;
+               this.txtHeader3.y = this.txtHeader4.y - param7 - this.txtHeader3.height >> 0;
+               this.txtHeader2.y = this.txtHeader3.y - param7 - this.txtHeader2.height >> 0;
+               this.txtHeader1.y = this.txtHeader2.y - param7 - this.txtHeader1.height >> 0;
+            }
+            else if(this.txtHeader3)
+            {
+               this.txtHeader1.width = this.txtHeader2.width = this.txtHeader3.width = _loc9_;
+               this.txtHeader1.x = this.txtHeader2.x = this.txtHeader3.x = _loc8_;
+               this.txtHeader3.y = param2 - this.txtHeader3.height - param4 - param6 >> 0;
+               this.txtHeader2.y = this.txtHeader3.y - param7 - this.txtHeader2.height >> 0;
+               this.txtHeader1.y = this.txtHeader2.y - param7 - this.txtHeader1.height >> 0;
+            }
+            else if(this.txtHeader2)
+            {
+               this.txtHeader1.width = this.txtHeader2.width = _loc9_;
+               this.txtHeader1.x = this.txtHeader2.x = _loc8_;
+               this.txtHeader2.y = param2 - this.txtHeader2.height - param4 - param6 >> 0;
+               this.txtHeader1.y = this.txtHeader2.y - param7 - this.txtHeader1.height >> 0;
+            }
+            else if(this.txtHeader1)
+            {
+               this.txtHeader1.width = _loc9_;
+               this.txtHeader1.x = _loc8_;
+               this.txtHeader1.y = param2 - this.txtHeader1.height - param4 - param6 >> 0;
+            }
+         }
+      }
+      
       public function isDisposed() : Boolean
       {
          return this._disposed;
+      }
+      
+      public function set isAdaptable(param1:Boolean) : void
+      {
+         this._isAdaptable = param1;
       }
    }
 }

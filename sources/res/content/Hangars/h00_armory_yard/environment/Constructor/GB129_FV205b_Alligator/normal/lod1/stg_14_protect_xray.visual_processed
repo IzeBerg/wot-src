@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/custom/xray_inside.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						g_freshnelParamsPacked
+						<Vector4>10.000000 3.000000 1.000000 2.000000</Vector4>
+					</property>
+					<property>
+						g_glowColor
+						<Vector4>0.568627 0.568627 0.568627 1.000000</Vector4>
+					</property>
+					<property>
+						g_lightMultipliersPacked
+						<Vector4>0.300000 0.400000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_pervading
+						<Float>0.100000</Float>
+					</property>
+					<property>
+						g_spawnNoiseTexture
+						<Texture>content/Hangars/h00_armory_yard/environment/Constructor/SU_122_1956_interior/noise_alpha_mask.dds</Texture>
+					</property>
+					<property>
+						g_spawnTextureTransform
+						<Vector4>4.000000 2.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_transitionStage
+						<Float>1.000000</Float>
+					</property>
+					<property>
+						g_spawnHotHDRColor
+						<Vector4>0.901961 0.207843 0.000000 1.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>-0.106145 1.023844 0.660462</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.238991 -0.500000 -0.889727</min>
+		<max>1.026700 1.540941 2.210650</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>196614</geometrySize>
+	<minUVDensity>0.007301</minUVDensity>
+</root>

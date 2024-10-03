@@ -22,7 +22,7 @@
 					<row0>1.000000 0.000000 0.000000</row0>
 					<row1>0.000000 0.000000 -1.000000</row1>
 					<row2>0.000000 1.000000 0.000000</row2>
-					<row3>0.000000 4.525712 0.000000</row3>
+					<row3>0.000000 4.503552 0.000000</row3>
 				</transform>
 			</node>
 			<node>
@@ -39,7 +39,7 @@
 						<row0>1.000000 0.000000 0.000000</row0>
 						<row1>0.000000 1.000000 0.000000</row1>
 						<row2>0.000000 0.000000 1.000000</row2>
-						<row3>0.000000 0.515908 0.000000</row3>
+						<row3>0.000000 0.516124 0.000000</row3>
 					</transform>
 					<node>
 						<identifier>V_BlendBone</identifier>
@@ -47,7 +47,7 @@
 							<row0>1.000000 0.000000 0.000000</row0>
 							<row1>0.000000 1.000000 0.000000</row1>
 							<row2>0.000000 0.000000 -1.000000</row2>
-							<row3>0.000000 -1.015908 0.000000</row3>
+							<row3>0.000000 -1.016124 0.000000</row3>
 						</transform>
 					</node>
 				</node>
@@ -68,19 +68,19 @@
 		<node>Tank_BlendBone</node>
 		<node>V_BlendBone</node>
 		<geometry>
-			<vertices>track_R_Shape.vertices</vertices>
-			<stream>track_R_Shape.uv2</stream>
-			<primitive>track_R_Shape.indices</primitive>
+			<vertices>track_R0_Shape.vertices</vertices>
+			<stream>track_R0_Shape.uv2</stream>
+			<primitive>track_R0_Shape.indices</primitive>
 			<primitiveGroup>
 				0
 				<material>
-					<identifier>track_mat_R_skinned</identifier>
+					<identifier>track_mat_R1_skinned</identifier>
 					<fx>shaders/std_effects/PBS_tank_skinned_ao.fx</fx>
 					<materialKind>0</materialKind>
 					<collisionFlags>0</collisionFlags>
 					<property>
 						alphaReference
-						<Int>64</Int>
+						<Int>255</Int>
 					</property>
 					<property>
 						alphaTestEnable
@@ -100,7 +100,7 @@
 					</property>
 					<property>
 						g_detailUVTiling
-						<Vector4>3.507000 0.876750 0.000000 0.000000</Vector4>
+						<Vector4>3.506850 0.876712 0.000000 0.000000</Vector4>
 					</property>
 					<property>
 						g_useDetailMetallic
@@ -119,7 +119,7 @@
 						<Texture>vehicles/chinese/tracks/BZT_70_track_ANM.dds</Texture>
 					</property>
 				</material>
-				<groupOrigin>1.559513 0.597123 -0.032997</groupOrigin>
+				<groupOrigin>1.254196 0.597884 -0.063446</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
@@ -128,19 +128,19 @@
 		<node>Tank_BlendBone</node>
 		<node>V_BlendBone</node>
 		<geometry>
-			<vertices>track_L_Shape.vertices</vertices>
-			<stream>track_L_Shape.uv2</stream>
-			<primitive>track_L_Shape.indices</primitive>
+			<vertices>track_L1_Shape.vertices</vertices>
+			<stream>track_L1_Shape.uv2</stream>
+			<primitive>track_L1_Shape.indices</primitive>
 			<primitiveGroup>
 				0
 				<material>
-					<identifier>track_mat_L_skinned</identifier>
+					<identifier>track_mat_L0_skinned</identifier>
 					<fx>shaders/std_effects/PBS_tank_skinned_ao.fx</fx>
 					<materialKind>0</materialKind>
 					<collisionFlags>0</collisionFlags>
 					<property>
 						alphaReference
-						<Int>64</Int>
+						<Int>255</Int>
 					</property>
 					<property>
 						alphaTestEnable
@@ -160,7 +160,7 @@
 					</property>
 					<property>
 						g_detailUVTiling
-						<Vector4>3.507000 0.876750 0.000000 0.000000</Vector4>
+						<Vector4>3.506850 0.876712 0.000000 0.000000</Vector4>
 					</property>
 					<property>
 						g_useDetailMetallic
@@ -179,14 +179,134 @@
 						<Texture>vehicles/chinese/tracks/BZT_70_track_ANM.dds</Texture>
 					</property>
 				</material>
-				<groupOrigin>-1.559995 0.601310 -0.113042</groupOrigin>
+				<groupOrigin>-1.865924 0.597840 -0.101643</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>Tank_BlendBone</node>
+		<node>V_BlendBone</node>
+		<geometry>
+			<vertices>track_R1_Shape.vertices</vertices>
+			<stream>track_R1_Shape.uv2</stream>
+			<primitive>track_R1_Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>track_mat_R0_skinned</identifier>
+					<fx>shaders/std_effects/PBS_tank_skinned_ao.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						alphaReference
+						<Int>255</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						crash_coefficient
+						<Float>0.300000</Float>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/chinese/tracks/BZT_70_track_AM.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>3.506850 0.876712 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/chinese/tracks/BZT_70_track_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/chinese/tracks/BZT_70_track_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>1.864648 0.589566 -0.032997</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>Tank_BlendBone</node>
+		<node>V_BlendBone</node>
+		<geometry>
+			<vertices>track_L0_Shape.vertices</vertices>
+			<stream>track_L0_Shape.uv2</stream>
+			<primitive>track_L0_Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>track_mat_L1_skinned</identifier>
+					<fx>shaders/std_effects/PBS_tank_skinned_ao.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						alphaReference
+						<Int>255</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						crash_coefficient
+						<Float>0.300000</Float>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/chinese/tracks/BZT_70_track_AM.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>3.506850 0.876712 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/chinese/tracks/BZT_70_track_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/chinese/tracks/BZT_70_track_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-1.254326 0.601268 -0.125439</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<constraints/>
 	<boundingBox>
-		<min>-2.151734 -0.000940 -3.959012</min>
-		<max>2.150770 1.202785 4.025007</max>
+		<min>-2.151864 -0.000000 -3.959012</min>
+		<max>2.150770 1.202536 4.025007</max>
 	</boundingBox>
 	<geometrySize>155838</geometrySize>
 	<minUVDensity>0.438185</minUVDensity>

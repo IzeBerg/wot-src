@@ -4,19 +4,10 @@ package net.wg.infrastructure.tutorial.builders
    import flash.geom.Point;
    import net.wg.gui.components.controls.ContentTabRenderer;
    import net.wg.gui.lobby.header.headerButtonBar.HeaderButton;
-   import net.wg.gui.lobby.techtree.nodes.NationTreeNode;
    import net.wg.gui.lobby.techtree.nodes.ResearchRoot;
    
    public class TutorialCustomHintBuilder extends TutorialHintBuilder
    {
-      
-      private static const NATION_TREE_ADD_X:int = 164;
-      
-      private static const NATION_TREE_ADD_Y:int = -106;
-      
-      private static const NATION_TREE_ADD_WIDTH:int = 38;
-      
-      private static const NATION_TREE_ADD_HEIGHT:int = 71;
        
       
       public function TutorialCustomHintBuilder()
@@ -27,6 +18,7 @@ package net.wg.infrastructure.tutorial.builders
       override protected function layoutHint() : void
       {
          var _loc3_:int = 0;
+         var _loc5_:int = 0;
          var _loc6_:HeaderButton = null;
          var _loc7_:MovieClip = null;
          var _loc8_:ContentTabRenderer = null;
@@ -34,7 +26,7 @@ package net.wg.infrastructure.tutorial.builders
          var _loc2_:int = 0;
          _loc3_ = 0;
          var _loc4_:int = 0;
-         var _loc5_:int = 0;
+         _loc5_ = 0;
          if(component is HeaderButton)
          {
             _loc6_ = HeaderButton(component);
@@ -50,16 +42,6 @@ package net.wg.infrastructure.tutorial.builders
             _loc1_ = view.globalToLocal(_loc1_);
             _loc4_ = _loc7_.width;
             _loc5_ = _loc7_.height;
-         }
-         else if(component is NationTreeNode)
-         {
-            _loc7_ = NationTreeNode(component).hit;
-            _loc2_ = NATION_TREE_ADD_X;
-            _loc3_ = -model.padding.top + NATION_TREE_ADD_Y;
-            _loc4_ = _loc7_.width + NATION_TREE_ADD_WIDTH;
-            _loc5_ = _loc7_.height + NATION_TREE_ADD_HEIGHT;
-            _loc1_ = _loc7_.localToGlobal(new Point(0,0));
-            _loc1_ = view.globalToLocal(new Point(_loc1_.x,view.height - _loc5_ >> 1));
          }
          else if(component is ContentTabRenderer)
          {

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>material_prot</identifier>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/custom/volumetric_effect_vtx.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/protuberance_02.dds</Texture>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/vel_smoke_fire.dds</Texture>
+					</property>
+					<property>
+						selfIllumLight
+						<Vector4>0.698039 0.772549 1.000000 0.000000</Vector4>
+						<Vector3>0.698039 0.772549 1.000000</Vector3>
+					</property>
+					<property>
+						TintlColor
+						<Vector4>0.345098 0.549020 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>0.010000 0.030000 0.150000 0.150000</Vector4>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>10.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						alphaFadeAmountFresnel
+						<Vector4>1.000000 0.250000 1.000000 0.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>0.000610 0.003724 0.008046</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.146344 -0.009915 -0.082776</min>
+		<max>0.147565 0.017362 0.098869</max>
+	</boundingBox>
+	<geometrySize>1464</geometrySize>
+	<minUVDensity>13.101681</minUVDensity>
+</root>

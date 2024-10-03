@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>clouds</identifier>
+					<fx>shaders/environment/sky_box.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						diffuseMap
+						<Texture>maps/skyboxes/35_Steppes_sky/skydome/cloud_2_Forward.dds</Texture>
+					</property>
+					<property>
+						g_maskMap
+						<Texture>system/maps/clouds_mask.dds</Texture>
+					</property>
+					<property>
+						g_enableAnimatedSkybox
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_flip
+						<Float>1.000000</Float>
+					</property>
+					<property>
+						g_yBias
+						<Float>1.971000</Float>
+					</property>
+					<property>
+						g_xBias
+						<Float>-0.601000</Float>
+					</property>
+					<property>
+						g_frequency
+						<Float>0.090000</Float>
+					</property>
+					<property>
+						g_speed
+						<Float>0.500000</Float>
+					</property>
+					<property>
+						g_horizon
+						<Float>0.020000</Float>
+					</property>
+					<property>
+						g_direction
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						g_secondLDir
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						g_horizontalFlip
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						g_toneMapExposureForward
+						<Float>2.000000</Float>
+					</property>
+					<property>
+						g_toneMapBurnValueForward
+						<Float>1.000000</Float>
+					</property>
+				</material>
+				<groupOrigin>0.000000 0.000000 0.000000</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-19.980965 -20.000000 -19.980965</min>
+		<max>19.980965 20.000000 19.980965</max>
+	</boundingBox>
+	<geometrySize>12064</geometrySize>
+	<minUVDensity>0.000210</minUVDensity>
+</root>

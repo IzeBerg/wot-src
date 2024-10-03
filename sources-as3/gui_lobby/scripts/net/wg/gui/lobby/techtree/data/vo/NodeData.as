@@ -45,6 +45,8 @@ package net.wg.gui.lobby.techtree.data.vo
       private static const EARLY_ACCESS_CURRENT_TOKENS:String = "earlyAccessCurrentTokens";
       
       private static const EARLY_ACCESS_TOTAL_TOKENS:String = "earlyAccessTotalTokens";
+      
+      private static const IS_EARLY_ACCESS_CAN_BUY:String = "isEarlyAccessCanBuy";
        
       
       public var id:uint = 0;
@@ -82,6 +84,8 @@ package net.wg.gui.lobby.techtree.data.vo
       public var isEarlyAccessLocked:Boolean = false;
       
       public var isEarlyAccessPaused:Boolean = false;
+      
+      public var isEarlyAccessCanBuy:Boolean = false;
       
       public var earlyAccessCurrentTokens:int = 0;
       
@@ -240,6 +244,10 @@ package net.wg.gui.lobby.techtree.data.vo
          if(param1.hasOwnProperty(EARLY_ACCESS_TOTAL_TOKENS))
          {
             this.earlyAccessTotalTokens = param1[EARLY_ACCESS_TOTAL_TOKENS];
+         }
+         if(param1.hasOwnProperty(IS_EARLY_ACCESS_CAN_BUY))
+         {
+            this.isEarlyAccessCanBuy = param1[IS_EARLY_ACCESS_CAN_BUY];
          }
          this.dataIsReady = true;
       }

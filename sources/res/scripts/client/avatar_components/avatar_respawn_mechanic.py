@@ -9,7 +9,7 @@ class AvatarRespawnMechanic(object):
         self.__enabled = False
 
     def onBecomePlayer(self):
-        self.__enabled = BONUS_CAPS.checkAny(self.arenaBonusType, BONUS_CAPS.RESPAWN)
+        self.__enabled = BONUS_CAPS.checkAny(self.arenaBonusType, BONUS_CAPS.RESPAWN, BONUS_CAPS.RESPAWN_VSE)
         if not self.__enabled:
             return
 

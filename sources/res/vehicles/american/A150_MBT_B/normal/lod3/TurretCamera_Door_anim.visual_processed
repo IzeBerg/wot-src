@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>Root</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>Observation_dev_0</identifier>
+				<transform>
+					<row0>0.999855 0.000000 0.017003</row0>
+					<row1>0.007167 0.906831 -0.421434</row1>
+					<row2>-0.015419 0.421495 0.906700</row2>
+					<row3>0.087895 0.372157 0.122911</row3>
+				</transform>
+				<node>
+					<identifier>Observation_dev_0_BlendBone</identifier>
+					<transform>
+						<row0>0.999855 0.007167 -0.015419</row0>
+						<row1>0.000000 0.906831 0.421495</row1>
+						<row2>-0.017003 0.421434 -0.906700</row2>
+						<row3>-0.089972 -0.286315 -0.266950</row3>
+					</transform>
+				</node>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>Observation_dev_0_BlendBone</node>
+		<geometry>
+			<vertices>turret_anim_05_Shape.vertices</vertices>
+			<primitive>turret_anim_05_Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_turret_01_skinned</identifier>
+					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>vehicles/american/A150_MBT_B/MBT_B_turret_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/american/A150_MBT_B/MBT_B_turret_01_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/american/A150_MBT_B/MBT_B_turret_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/american/A150_MBT_B/MBT_B_turret_01_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.015329 0.376007 -0.141183</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<constraints/>
+	<boundingBox>
+		<min>-0.129973 0.267358 0.084017</min>
+		<max>0.099315 0.484655 0.198348</max>
+	</boundingBox>
+	<geometrySize>1032</geometrySize>
+	<minUVDensity>0.021610</minUVDensity>
+</root>

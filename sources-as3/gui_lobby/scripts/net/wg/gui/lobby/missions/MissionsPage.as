@@ -91,6 +91,7 @@ package net.wg.gui.lobby.missions
          this.viewStack.cache = true;
          this.viewStack.addEventListener(ViewStackEvent.VIEW_CHANGED,this.onViewStackViewChangedHandler);
          this.tabBar.selectedIndex = -1;
+         this.tabBar.enableOversize = true;
          this.tabBar.addEventListener(IndexEvent.INDEX_CHANGE,this.onTabBarIndexChangeHandler);
          this.tabBar.minRendererWidth = MIN_BTN_WIDTH;
          this.filter.addEventListener(FiltersEvent.RESET_ALL_FILTERS,this.onFilterResetAllFiltersHandler);

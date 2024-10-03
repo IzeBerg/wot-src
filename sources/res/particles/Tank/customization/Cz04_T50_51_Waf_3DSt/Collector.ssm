@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<params>
+		<param>
+			<name>stun</name>
+			<type>bool</type>
+		</param>
+	</params>
+	<node>
+		<name>idle_empty</name>
+		<type>sequence</type>
+		<resource>particles/content_deferred/GFX_models/tank_customization/WT_collector/Collector_Empty.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>-1</loop>
+		<transition>
+			<to>idle_empty_stun_start</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>bool</type>
+					<name>stun</name>
+					<checked>true</checked>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-311.000000 258.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>idle_empty_stun</name>
+		<type>sequence</type>
+		<resource>particles/content_deferred/GFX_models/tank_customization/WT_collector/Collector_Empty_Stun.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>-1</loop>
+		<transition>
+			<to>idle_empty_stun_stop</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>bool</type>
+					<name>stun</name>
+					<checked>false</checked>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>346.000000 260.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>idle_empty_stun_start</name>
+		<type>sequence</type>
+		<resource>particles/content_deferred/GFX_models/tank_customization/WT_collector/Collector_Empty_Stun_Start.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<transition>
+			<to>idle_empty_stun</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>1.000000</exitOffset>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>44.000000 234.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>idle_empty_stun_stop</name>
+		<type>sequence</type>
+		<resource>particles/content_deferred/GFX_models/tank_customization/WT_collector/Collector_Empty_Stun_Stop.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<transition>
+			<to>idle_empty</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>1.000000</exitOffset>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>49.000000 286.000000 0.000000</uiPosition>
+	</node>
+</root>

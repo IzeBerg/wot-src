@@ -22,7 +22,7 @@
 					<row0>1.000000 0.000000 0.000000</row0>
 					<row1>0.000000 1.000000 0.000000</row1>
 					<row2>0.000000 0.000000 1.000000</row2>
-					<row3>0.000000 0.442043 1.203600</row3>
+					<row3>0.000000 0.485043 1.044558</row3>
 				</transform>
 			</node>
 		</node>
@@ -36,42 +36,42 @@
 			<primitiveGroup>
 				0
 				<material>
-					<identifier>tank_proxy</identifier>
+					<identifier>tank_turret_01</identifier>
 					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
-					<materialKind>0</materialKind>
 					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
 					<property>
-						colorIdMap
-						<Texture>vehicles/russian/common/common_ID.dds</Texture>
-					</property>
-					<property>
-						diffuseMap
-						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_proxy_AM.dds</Texture>
-					</property>
-					<property>
-						excludeMaskAndAOMap
-						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_proxy_AO.dds</Texture>
-					</property>
-					<property>
-						metallicGlossMap
-						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_proxy_GMM.dds</Texture>
-					</property>
-					<property>
-						normalMap
-						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_proxy_ANM.dds</Texture>
+						g_crashUVTiling
+						<Vector4>4.000000 4.000000 0.000000 0.000000</Vector4>
 					</property>
 					<property>
 						crashTileMap
 						<Texture>vehicles/russian/Tank_detail/crash_tile.dds</Texture>
 					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_turret_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_turret_01_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_turret_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_turret_01_AO.dds</Texture>
+					</property>
 				</material>
-				<groupOrigin>-0.012881 0.681919 -0.324693</groupOrigin>
+				<groupOrigin>-0.012881 0.724919 -0.483735</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<boundingBox>
-		<min>-1.545190 -0.035539 -2.472609</min>
-		<max>1.519429 1.399378 1.823223</max>
+		<min>-1.545190 0.007461 -2.631651</min>
+		<max>1.519429 1.442378 1.664181</max>
 	</boundingBox>
 	<geometrySize>6926</geometrySize>
 	<minUVDensity>0.001404</minUVDensity>

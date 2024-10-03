@@ -39,7 +39,7 @@
 						<row0>1.000000 0.000000 0.000000</row0>
 						<row1>0.000000 1.000000 0.000000</row1>
 						<row2>0.000000 0.000000 1.000000</row2>
-						<row3>0.000000 0.313086 0.000000</row3>
+						<row3>0.000000 0.292559 0.000000</row3>
 					</transform>
 					<node>
 						<identifier>V_BlendBone</identifier>
@@ -47,7 +47,7 @@
 							<row0>1.000000 0.000000 0.000000</row0>
 							<row1>0.000000 1.000000 0.000000</row1>
 							<row2>0.000000 0.000000 -1.000000</row2>
-							<row3>0.000000 -0.813086 0.000000</row3>
+							<row3>0.000000 -0.792559 0.000000</row3>
 						</transform>
 					</node>
 				</node>
@@ -97,6 +97,14 @@
 						normalMap
 						<Texture>vehicles/russian/R124_Object_279/Object_279_proxy_ANM.dds</Texture>
 					</property>
+					<property>
+						alphaReference
+						<Int>255</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
 				</material>
 				<groupOrigin>-0.965872 0.472238 -0.177125</groupOrigin>
 			</primitiveGroup>
@@ -135,6 +143,14 @@
 					<property>
 						normalMap
 						<Texture>vehicles/russian/R124_Object_279/Object_279_proxy_ANM.dds</Texture>
+					</property>
+					<property>
+						alphaReference
+						<Int>255</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
 					</property>
 				</material>
 				<groupOrigin>0.965872 0.472238 -0.127640</groupOrigin>

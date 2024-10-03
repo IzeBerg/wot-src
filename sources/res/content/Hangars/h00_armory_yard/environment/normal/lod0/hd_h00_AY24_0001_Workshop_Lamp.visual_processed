@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h00_armory_yard/environment/hd_h00_AY24_0001_Workshop_DetailSet_01_AM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Hangars/h00_armory_yard/environment/hd_h00_AY24_0001_Workshop_DetailSet_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Hangars/h00_armory_yard/environment/hd_h00_AY24_0001_Workshop_DetailSet_01_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.001962 0.011433 -0.000024</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd1</identifier>
+					<fx>shaders/std_effects/glow_noalpha.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h00_armory_yard/environment/hd_h00_AY24_0001_Workshop_DetailSet_01_AM.dds</Texture>
+					</property>
+					<property>
+						g_tintColor
+						<Vector4>0.870588 0.764706 0.678431 1.000000</Vector4>
+					</property>
+					<property>
+						selfIllumination
+						<Float>10.000000</Float>
+					</property>
+				</material>
+				<groupOrigin>-0.001791 -0.043402 -0.004406</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.139853 -0.059045 -0.569048</min>
+		<max>0.135929 0.085165 0.569000</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>9664</geometrySize>
+	<minUVDensity>0.003553</minUVDensity>
+</root>

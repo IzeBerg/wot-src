@@ -1377,7 +1377,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				$PARAMS(/wdr2023/wdr2023_optional_devices)
+				$PARAMS(/seniorityAwards/seniorityAwards_optional_devices)
 				<name>seniorityAwardsProducts</name>
 				<type>url</type>
 			</item>
@@ -1404,6 +1404,11 @@
 			<item>
 				$PARAMS(/comp7_category/comp7_category)
 				<name>comp7Products</name>
+				<type>url</type>
+			</item>
+			<item>
+				$PARAMS(/white-tiger-overlay/wt2024_category)
+				<name>buyLootboxes</name>
 				<type>url</type>
 			</item>
 		</value>
@@ -1724,6 +1729,40 @@
 			<item>
 				https://webbrg.tanki.su/$LANGUAGE_CODE/promocontent/steel_hunter_2024/
 				<name>introVideo</name>
+				<type>url</type>
+			</item>
+		</value>
+	</setting>
+	<setting>
+		<name>infoPageWhiteTiger</name>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
+			<item>
+				https://webbrg.tanki.su/$LANGUAGE_CODE/promocontent/wt_2024/
+				<name>default</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg-rpt.tanki.su/$LANGUAGE_CODE/promocontent/wt_2024/
+				<name>CT</name>
+				<type>url</type>
+			</item>
+		</value>
+	</setting>
+	<setting>
+		<name>whiteTigerIntroVideoUrl</name>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
+			<item>
+				https://webbrg.tanki.su/$LANGUAGE_CODE/promocontent/wt_2024_intro/
+				<name>default</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg-rpt.tanki.su/$LANGUAGE_CODE/promocontent/wt_2024_intro/
+				<name>CT</name>
 				<type>url</type>
 			</item>
 		</value>

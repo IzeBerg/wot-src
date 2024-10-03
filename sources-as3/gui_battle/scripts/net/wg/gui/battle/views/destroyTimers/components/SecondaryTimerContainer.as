@@ -3,6 +3,8 @@ package net.wg.gui.battle.views.destroyTimers.components
    import flash.display.MovieClip;
    import flash.text.TextField;
    import flash.text.TextFieldAutoSize;
+   import flash.utils.Dictionary;
+   import net.wg.data.constants.generated.BATTLE_NOTIFICATIONS_TIMER_COLORS;
    import net.wg.gui.battle.views.destroyTimers.data.NotificationTimerSettingVO;
    import net.wg.gui.utils.FrameHelper;
    import scaleform.gfx.TextFieldEx;
@@ -19,7 +21,16 @@ package net.wg.gui.battle.views.destroyTimers.components
       private static const NOISE_LOOP_FIRST_FRAME:int = 1;
       
       private static const LABEL_ERROR_MSG:String = "Check that movieClip \'pulsingGlow\' in timersPanel.xml has labels called \'loop\', \'blink\' and \'blinkEnd\'";
-       
+      
+      private static const TEXT_COLOR:Dictionary = new Dictionary();
+      
+      {
+         TEXT_COLOR[BATTLE_NOTIFICATIONS_TIMER_COLORS.ORANGE] = 16757350;
+         TEXT_COLOR[BATTLE_NOTIFICATIONS_TIMER_COLORS.GREEN] = 12445501;
+         TEXT_COLOR[BATTLE_NOTIFICATIONS_TIMER_COLORS.RED] = 15626240;
+         TEXT_COLOR[BATTLE_NOTIFICATIONS_TIMER_COLORS.GREEN_DISABLED] = 12445501;
+         TEXT_COLOR[BATTLE_NOTIFICATIONS_TIMER_COLORS.YELLOW] = 16757350;
+      }
       
       public var pulse:MovieClip = null;
       
@@ -91,9 +102,10 @@ package net.wg.gui.battle.views.destroyTimers.components
       
       public function setTimerSettings(param1:NotificationTimerSettingVO) : void
       {
+         var _loc2_:Boolean = false;
          this.textFieldLabel.autoSize = TextFieldAutoSize.LEFT;
          this.textFieldLabel.text = param1.text;
-         var _loc2_:Boolean = param1.noiseVisible;
+         _loc2_ = param1.noiseVisible;
          this.noise.visible = _loc2_;
          if(_loc2_)
          {
@@ -105,6 +117,10 @@ package net.wg.gui.battle.views.destroyTimers.components
       public function updateColor(param1:String) : void
       {
          gotoAndStop(param1);
+         if(param1 in TEXT_COLOR)
+         {
+            this.textFieldLabel.textColor = TEXT_COLOR[param1];
+         }
       }
       
       private function applyPulseState() : void

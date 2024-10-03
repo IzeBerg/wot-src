@@ -269,7 +269,7 @@ package net.wg.gui.battle.windows
          this._pageController.setPositions(_loc1_);
       }
       
-      private function updatePageLayout() : void
+      protected function updatePageLayout() : void
       {
          App.utils.commons.updateTextFieldSize(this.description,false,true);
          var _loc1_:int = WINDOW_HEIGHT - FOOTER_HEIGHT - DESCRIPTION_PADDING_BOTTOM;

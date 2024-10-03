@@ -121,6 +121,8 @@ package net.wg.data.constants
       
       public static const GHOST_TOGGLE_RENDERER_UI:String = "GhostToggleRendererUI";
       
+      public static const ABILITY_BLOCK:String = "AbilityBlockUI";
+      
       public static const INVITES_FRIENDS:String = "FriendsListFromUI";
       
       public static const INVITES_CLAN:String = "ClanMembersListFromUI";
@@ -237,6 +239,8 @@ package net.wg.data.constants
       
       public static const STUN_ICON:String = "secondaryStunIconUI";
       
+      public static const WT_STUN_ICON:String = "secondaryWTStunIconUI";
+      
       public static const BLOCKED_ICON:String = "secondaryBlockedIconUI";
       
       public static const SMOKE_ICON:String = "secondarySmokeIconUI";
@@ -283,6 +287,8 @@ package net.wg.data.constants
       
       public static const EQUIPMENT_BUTTON:String = "EquipmentButtonUI";
       
+      public static const ABILITY_EQUIPMENT_BUTTON:String = "AbilityEquipmentButtonUI";
+      
       public static const ENTITIES_POPUP:String = "EntitiesStatePopUpUI";
       
       public static const ENTITY_BUTTON:String = "EntityStateButtonUI";
@@ -295,9 +301,9 @@ package net.wg.data.constants
       
       public static const COMP7_CONSUMABLE_BUTTON:String = "Comp7ConsumableButtonUI";
       
-      public static const EVENT_SHELL_BUTTON_BATTLE:String = "EventShellButtonBattleUI";
+      public static const EVENT_SHELL_BUTTON_BATTLE:String = "WTShellButtonBattleUI";
       
-      public static const EVENT_EQUIPMENT_BUTTON:String = "EventEquipmentButtonUI";
+      public static const EVENT_EQUIPMENT_BUTTON:String = "WTEquipmentButtonUI";
       
       public static const OPTIONAL_DEVICE_BUTTON:String = "OptionalDeviceButtonUI";
       
@@ -773,6 +779,10 @@ package net.wg.data.constants
       
       public static const ARTY_SHOT_INDICATOR_RENDERER:String = "ArtyShotIndicatorUI";
       
+      public static const OVERHEAT_WIDGET:String = "OverheatWidgetUI";
+      
+      public static const OVERHEAT_STATE_MARKER:String = "OverheatStateUI";
+      
       public static const EQUIPMENT_OVERLAY:String = "ListOverlayUI";
       
       public static const NEW_INDICATOR_LINKAGE:String = "NewIndicator_UI";
@@ -1072,6 +1082,18 @@ package net.wg.data.constants
       public static const EARLY_ACCESS_ENTRY_POINT:String = "EarlyAccessEntryPointUI";
       
       public static const WINBACK_WIDGET:String = "WinbackWidget";
+      
+      public static const WT_HYPERION_WARNING_ICON:String = "destroyTimerWtHyperionUI";
+      
+      public static const WT_EVENT_ENTRY_POINT_ANIM_UI:String = "WTEventEntryPointAnimUI";
+      
+      public static const WT_EVENT_ENTRY_POINT_STATIC_BG_UI:String = "WTEventEntryPointStaticUI";
+      
+      public static const WT_EVENT_ENTRY_TEXT_INFO_UI:String = "WTEventEntryTextInfoUI";
+      
+      public static const WT_ENERGY_SPAWN_ENTRY_UI:String = "WTEnergySpawnFlashEntry";
+      
+      public static const WT_CAPTURE_BAR_LINKAGE:String = "WTTeamCaptureBarUI";
        
       
       public function Linkages()

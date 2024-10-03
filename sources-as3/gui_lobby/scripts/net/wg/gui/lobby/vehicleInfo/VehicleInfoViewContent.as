@@ -14,8 +14,6 @@ package net.wg.gui.lobby.vehicleInfo
    public class VehicleInfoViewContent extends UIComponentEx implements IViewStackContent
    {
       
-      private static const OFFSET_Y:uint = 19;
-      
       private static const START_Y:uint = 6;
       
       private static const START_X:uint = 10;
@@ -70,28 +68,30 @@ package net.wg.gui.lobby.vehicleInfo
       
       public function update(param1:Object) : void
       {
-         var _loc4_:uint = 0;
-         var _loc5_:uint = 0;
-         var _loc6_:IVehicleInfoBlock = null;
+         var _loc5_:IVehicleInfoBlock = null;
+         var _loc6_:uint = 0;
+         var _loc7_:uint = 0;
          this.clearBlocks();
-         var _loc2_:Vector.<Object> = param1 as Vector.<Object>;
-         App.utils.asserter.assertNotNull(_loc2_,Errors.INVALID_TYPE + Vector);
+         var _loc2_:Vector.<Object> = Vector.<Object>(param1);
          var _loc3_:MovieClip = this.scrollPane.target as MovieClip;
+         var _loc4_:int = START_Y;
          if(_loc3_)
          {
-            _loc4_ = _loc2_.length;
-            _loc5_ = 0;
-            while(_loc5_ < _loc4_)
+            _loc6_ = _loc2_.length;
+            _loc7_ = 0;
+            while(_loc7_ < _loc6_)
             {
-               _loc6_ = new this._itemClass() as IVehicleInfoBlock;
-               App.utils.asserter.assertNotNull(_loc6_,Errors.INVALID_TYPE + IVehicleInfoBlock);
-               _loc6_.setData(_loc2_[_loc5_]);
-               _loc6_.x = START_X;
-               _loc6_.y = START_Y + OFFSET_Y * _loc5_;
-               _loc3_.addChild(DisplayObject(_loc6_));
-               _loc5_++;
+               _loc5_ = new this._itemClass() as IVehicleInfoBlock;
+               App.utils.asserter.assertNotNull(_loc5_,Errors.INVALID_TYPE + IVehicleInfoBlock);
+               _loc5_.setData(_loc2_[_loc7_]);
+               _loc5_.x = START_X;
+               _loc5_.y = _loc4_;
+               _loc4_ += Math.round(_loc5_.height);
+               _loc3_.addChild(DisplayObject(_loc5_));
+               this._blocks.push(_loc5_);
+               _loc7_++;
             }
-            _loc3_.bottomMC.y = _loc6_.y + OFFSET_Y;
+            _loc3_.bottomMC.y = _loc4_;
          }
       }
       

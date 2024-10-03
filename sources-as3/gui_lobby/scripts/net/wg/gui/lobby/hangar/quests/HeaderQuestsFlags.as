@@ -278,6 +278,10 @@ package net.wg.gui.lobby.hangar.quests
          }
       }
       
+      public function updateStage(param1:Number, param2:Number) : void
+      {
+      }
+      
       public function setData(param1:Vector.<HeaderQuestGroupVO>) : void
       {
          if(param1 != null && this._questsGroupsData != param1)

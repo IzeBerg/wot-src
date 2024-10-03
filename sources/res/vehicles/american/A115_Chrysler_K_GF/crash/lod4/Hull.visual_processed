@@ -67,23 +67,12 @@
 						<Texture>vehicles/american/A115_Chrysler_K_GF/Chrysler_K_GF_proxy_GMM.dds</Texture>
 					</property>
 					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
-					</property>
-					<property>
 						g_crashUVTiling
-						<Vector4>
-							0.5 0.5 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>0.500000 0.500000 0.000000 0.000000</Vector4>
 					</property>
 					<property>
 						excludeMaskAndAOMap
 						<Texture>vehicles/american/A115_Chrysler_K_GF/Chrysler_K_GF_proxy_AO.dds</Texture>
-					</property>
-					<property>
-						doubleSided
-						<Bool>false</Bool>
 					</property>
 					<property>
 						diffuseMap
@@ -92,14 +81,6 @@
 					<property>
 						crashTileMap
 						<Texture>vehicles/russian/Tank_detail/crash_tile.dds</Texture>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>false</Bool>
-					</property>
-					<property>
-						alphaReference
-						<Int>0</Int>
 					</property>
 				</material>
 				<groupOrigin>0.016807 0.182350 -0.000970</groupOrigin>

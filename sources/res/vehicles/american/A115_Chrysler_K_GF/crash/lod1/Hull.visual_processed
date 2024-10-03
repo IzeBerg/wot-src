@@ -54,6 +54,40 @@
 			<primitiveGroup>
 				0
 				<material>
+					<identifier>tank_hull_01</identifier>
+					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						normalMap
+						<Texture>vehicles/american/A115_Chrysler_K_GF/Chrysler_K_GF_hull_01_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/american/A115_Chrysler_K_GF/Chrysler_K_GF_hull_01_GMM.dds</Texture>
+					</property>
+					<property>
+						g_crashUVTiling
+						<Vector4>4.000000 4.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/american/A115_Chrysler_K_GF/Chrysler_K_GF_hull_01_AO.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/american/A115_Chrysler_K_GF/Chrysler_K_GF_hull_01_AM.dds</Texture>
+					</property>
+					<property>
+						crashTileMap
+						<Texture>vehicles/russian/Tank_detail/crash_tile.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.000696 0.227443 0.001594</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
 					<identifier>tank_mat_inside</identifier>
 					<fx>shaders/std_effects/PBS_tank.fx</fx>
 					<collisionFlags>0</collisionFlags>
@@ -75,76 +109,11 @@
 						<Texture>vehicles/american/crash_inside/crash_inside_AO.dds</Texture>
 					</property>
 					<property>
-						doubleSided
-						<Bool>false</Bool>
-					</property>
-					<property>
 						diffuseMap
 						<Texture>vehicles/american/crash_inside/crash_inside_AM.dds</Texture>
 					</property>
-					<property>
-						alphaTestEnable
-						<Bool>false</Bool>
-					</property>
-					<property>
-						alphaReference
-						<Int>0</Int>
-					</property>
 				</material>
 				<groupOrigin>-0.011471 0.142607 -0.021494</groupOrigin>
-			</primitiveGroup>
-			<primitiveGroup>
-				1
-				<material>
-					<identifier>tank_hull_01</identifier>
-					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
-					<collisionFlags>0</collisionFlags>
-					<materialKind>0</materialKind>
-					<property>
-						normalMap
-						<Texture>vehicles/american/A115_Chrysler_K_GF/Chrysler_K_GF_hull_01_ANM.dds</Texture>
-					</property>
-					<property>
-						metallicGlossMap
-						<Texture>vehicles/american/A115_Chrysler_K_GF/Chrysler_K_GF_hull_01_GMM.dds</Texture>
-					</property>
-					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
-					</property>
-					<property>
-						g_crashUVTiling
-						<Vector4>
-							4 4 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
-					</property>
-					<property>
-						excludeMaskAndAOMap
-						<Texture>vehicles/american/A115_Chrysler_K_GF/Chrysler_K_GF_hull_01_AO.dds</Texture>
-					</property>
-					<property>
-						doubleSided
-						<Bool>false</Bool>
-					</property>
-					<property>
-						diffuseMap
-						<Texture>vehicles/american/A115_Chrysler_K_GF/Chrysler_K_GF_hull_01_AM.dds</Texture>
-					</property>
-					<property>
-						crashTileMap
-						<Texture>vehicles/russian/Tank_detail/crash_tile.dds</Texture>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>false</Bool>
-					</property>
-					<property>
-						alphaReference
-						<Int>0</Int>
-					</property>
-				</material>
-				<groupOrigin>-0.000696 0.227443 0.001594</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
 				2
@@ -162,23 +131,12 @@
 						<Texture>vehicles/american/A115_Chrysler_K_GF/Chrysler_K_GF_hull_01_2_GMM.dds</Texture>
 					</property>
 					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
-					</property>
-					<property>
 						g_crashUVTiling
-						<Vector4>
-							1 1 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>1.000000 1.000000 0.000000 0.000000</Vector4>
 					</property>
 					<property>
 						excludeMaskAndAOMap
 						<Texture>vehicles/american/A115_Chrysler_K_GF/Chrysler_K_GF_hull_01_2_AO.dds</Texture>
-					</property>
-					<property>
-						doubleSided
-						<Bool>false</Bool>
 					</property>
 					<property>
 						diffuseMap
@@ -188,51 +146,16 @@
 						crashTileMap
 						<Texture>vehicles/russian/Tank_detail/crash_tile.dds</Texture>
 					</property>
-					<property>
-						alphaTestEnable
-						<Bool>false</Bool>
-					</property>
-					<property>
-						alphaReference
-						<Int>0</Int>
-					</property>
 				</material>
-				<groupOrigin>0.001862 0.600721 2.830639</groupOrigin>
+				<groupOrigin>0.000323 0.600721 2.830639</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
 				3
 				<material>
 					<identifier>tank_chassis_01</identifier>
 					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
-					<collisionFlags>0</collisionFlags>
 					<materialKind>0</materialKind>
-					<property>
-						normalMap
-						<Texture>vehicles/american/A115_Chrysler_K_GF/Chrysler_K_GF_chassis_01_ANM.dds</Texture>
-					</property>
-					<property>
-						metallicGlossMap
-						<Texture>vehicles/american/A115_Chrysler_K_GF/Chrysler_K_GF_chassis_01_GMM.dds</Texture>
-					</property>
-					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
-					</property>
-					<property>
-						g_crashUVTiling
-						<Vector4>
-							2 1 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
-					</property>
-					<property>
-						excludeMaskAndAOMap
-						<Texture>vehicles/american/A115_Chrysler_K_GF/Chrysler_K_GF_chassis_01_AO.dds</Texture>
-					</property>
-					<property>
-						doubleSided
-						<Bool>false</Bool>
-					</property>
+					<collisionFlags>0</collisionFlags>
 					<property>
 						diffuseMap
 						<Texture>vehicles/american/A115_Chrysler_K_GF/Chrysler_K_GF_chassis_01_AM.dds</Texture>
@@ -242,12 +165,20 @@
 						<Texture>vehicles/russian/Tank_detail/crash_tile.dds</Texture>
 					</property>
 					<property>
-						alphaTestEnable
-						<Bool>false</Bool>
+						excludeMaskAndAOMap
+						<Texture>vehicles/american/A115_Chrysler_K_GF/Chrysler_K_GF_chassis_01_AO.dds</Texture>
 					</property>
 					<property>
-						alphaReference
-						<Int>0</Int>
+						g_crashUVTiling
+						<Vector4>2.000000 1.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/american/A115_Chrysler_K_GF/Chrysler_K_GF_chassis_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/american/A115_Chrysler_K_GF/Chrysler_K_GF_chassis_01_ANM.dds</Texture>
 					</property>
 				</material>
 				<groupOrigin>-0.004029 -0.394964 0.128638</groupOrigin>
@@ -258,6 +189,6 @@
 		<min>-1.984532 -0.982207 -3.822637</min>
 		<max>1.983140 1.029075 3.825826</max>
 	</boundingBox>
-	<geometrySize>526594</geometrySize>
+	<geometrySize>484166</geometrySize>
 	<minUVDensity>0.003481</minUVDensity>
 </root>

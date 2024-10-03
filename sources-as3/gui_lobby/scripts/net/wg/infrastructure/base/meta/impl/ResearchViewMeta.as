@@ -22,7 +22,9 @@ package net.wg.infrastructure.base.meta.impl
       
       public var goToVehicleCollection:Function;
       
-      public var goToEarlyAccess:Function;
+      public var goToEarlyAccessQuestsView:Function;
+      
+      public var goToEarlyAccessBuyView:Function;
       
       private var _array:Array;
       
@@ -111,10 +113,16 @@ package net.wg.infrastructure.base.meta.impl
          this.goToVehicleCollection(param1);
       }
       
-      public function goToEarlyAccessS() : void
+      public function goToEarlyAccessQuestsViewS() : void
       {
-         App.utils.asserter.assertNotNull(this.goToEarlyAccess,"goToEarlyAccess" + Errors.CANT_NULL);
-         this.goToEarlyAccess();
+         App.utils.asserter.assertNotNull(this.goToEarlyAccessQuestsView,"goToEarlyAccessQuestsView" + Errors.CANT_NULL);
+         this.goToEarlyAccessQuestsView();
+      }
+      
+      public function goToEarlyAccessBuyViewS(param1:int) : void
+      {
+         App.utils.asserter.assertNotNull(this.goToEarlyAccessBuyView,"goToEarlyAccessBuyView" + Errors.CANT_NULL);
+         this.goToEarlyAccessBuyView(param1);
       }
       
       public final function as_setNodesStates(param1:Number, param2:Array, param3:Boolean) : void

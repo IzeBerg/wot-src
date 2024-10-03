@@ -1,6 +1,6 @@
 import types
 from CurrentVehicle import g_currentVehicle
-from gui.Scaleform.daapi.view.lobby.techtree.techtree_dp import g_techTreeDP
+from gui.techtree.techtree_dp import g_techTreeDP
 from gui.shared.gui_items import GUI_ITEM_TYPE
 from helpers import dependency
 from skeletons.gui.shared import IItemsCache

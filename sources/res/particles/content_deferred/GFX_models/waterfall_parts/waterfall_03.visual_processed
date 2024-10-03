@@ -24,19 +24,12 @@
 					<collisionFlags>255</collisionFlags>
 					<materialKind>0</materialKind>
 					<property>
-						doubleSided
-						<Bool>false</Bool>
-					</property>
-					<property>
 						diffuseMap
 						<Texture>particles/content_deferred/GFX_models/GFX_textures/waterfall_parts_01.dds</Texture>
 					</property>
 					<property>
 						lightMultipliers
-						<Vector4>
-							1 0.3 0.5 0.000000
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>1.000000 0.300000 0.500000 0.000000</Vector4>
 					</property>
 					<property>
 						enableLighting
@@ -48,17 +41,11 @@
 					</property>
 					<property>
 						alphaFadeAmountFresnel
-						<Vector4>
-							1 2 1 0.000000
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>1.000000 2.000000 1.000000 0.000000</Vector4>
 					</property>
 					<property>
 						distortion_UV_Speed_Amount
-						<Vector4>
-							0.6 -0.4 0.015 0.015
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>0.600000 -0.400000 0.015000 0.015000</Vector4>
 					</property>
 					<property>
 						distortionMap
@@ -66,14 +53,7 @@
 					</property>
 					<property>
 						diffuseUVSpeedAlphaOffset
-						<Vector4>
-							0.000000 -0.35 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
-					</property>
-					<property>
-						alphaFreshnelEnable
-						<Bool>false</Bool>
+						<Vector4>0.000000 -0.350000 0.000000 0.000000</Vector4>
 					</property>
 					<property>
 						selfIllumLight
@@ -81,6 +61,7 @@
 							0.765 0.765 0.765 0.000000
 							<!--BW_String-->
 						</Vector4>
+						<Vector3>0.765000 0.765000 0.765000</Vector3>
 					</property>
 				</material>
 				<groupOrigin>-0.276284 -0.165033 0.257991</groupOrigin>
@@ -90,33 +71,19 @@
 				<material>
 					<identifier>water_01</identifier>
 					<fx>shaders/custom/volumetric_effect_vtx.fx</fx>
-					<collisionFlags>0</collisionFlags>
+					<collisionFlags>255</collisionFlags>
 					<materialKind>0</materialKind>
-					<property>
-						doubleSided
-						<Bool>false</Bool>
-					</property>
 					<property>
 						diffuseMap
 						<Texture>particles/content_deferred/GFX_models/GFX_textures/waterfall_parts_02.dds</Texture>
 					</property>
 					<property>
 						alphaFadeAmountFresnel
-						<Vector4>
-							1 1.4 1 0.000000
-							<!--BW_String-->
-						</Vector4>
-					</property>
-					<property>
-						alphaAdditiveEnable
-						<Bool>false</Bool>
+						<Vector4>1.000000 1.400000 1.000000 0.000000</Vector4>
 					</property>
 					<property>
 						lightMultipliers
-						<Vector4>
-							1 0.35 0.5 0.000000
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>1.000000 0.350000 0.500000 0.000000</Vector4>
 					</property>
 					<property>
 						enableLighting
@@ -124,21 +91,11 @@
 					</property>
 					<property>
 						diffuseUVSpeedAlphaOffset
-						<Vector4>
-							0.000000 -0.26 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
-					</property>
-					<property>
-						alphaFreshnelEnable
-						<Bool>false</Bool>
+						<Vector4>0.000000 -0.260000 0.000000 0.000000</Vector4>
 					</property>
 					<property>
 						distortion_UV_Speed_Amount
-						<Vector4>
-							0.2 -0.02 0.03 0.03
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>0.200000 -0.020000 0.030000 0.030000</Vector4>
 					</property>
 					<property>
 						distortionMap
@@ -150,6 +107,7 @@
 							0.79 0.79 0.79 0.000000
 							<!--BW_String-->
 						</Vector4>
+						<Vector3>0.790000 0.790000 0.790000</Vector3>
 					</property>
 				</material>
 				<groupOrigin>-0.298934 -0.242686 0.290785</groupOrigin>

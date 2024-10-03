@@ -40,7 +40,16 @@
 					<row0>1.000000 0.000000 0.000000</row0>
 					<row1>0.000000 0.978148 0.207912</row1>
 					<row2>0.000000 -0.207912 0.978148</row2>
-					<row3>-1.341270 0.127234 3.275016</row3>
+					<row3>-1.341270 -0.160180 -0.342769</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_LFront1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.978148 0.207912</row1>
+					<row2>0.000000 -0.207912 0.978148</row2>
+					<row3>-1.341270 0.127232 3.275016</row3>
 				</transform>
 			</node>
 			<node>
@@ -53,12 +62,30 @@
 				</transform>
 			</node>
 			<node>
+				<identifier>HP_TrackUp_LRear1</identifier>
+				<transform>
+					<row0>-1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.990268 -0.139173</row1>
+					<row2>-0.000000 -0.139173 -0.990268</row2>
+					<row3>-1.341270 -0.160180 0.342769</row3>
+				</transform>
+			</node>
+			<node>
 				<identifier>HP_TrackUp_RFront</identifier>
 				<transform>
 					<row0>1.000000 0.000000 0.000000</row0>
 					<row1>0.000000 0.978148 0.207912</row1>
 					<row2>0.000000 -0.207912 0.978148</row2>
-					<row3>1.341270 0.127234 3.275016</row3>
+					<row3>1.341270 -0.160180 -0.342769</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_RFront1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.978148 0.207912</row1>
+					<row2>0.000000 -0.207912 0.978148</row2>
+					<row3>1.341270 0.127232 3.275016</row3>
 				</transform>
 			</node>
 			<node>
@@ -68,6 +95,15 @@
 					<row1>0.000000 0.990268 -0.139173</row1>
 					<row2>-0.000000 -0.139173 -0.990268</row2>
 					<row3>1.341270 0.127234 -3.275016</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_RRear1</identifier>
+				<transform>
+					<row0>-1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.990268 -0.139173</row1>
+					<row2>-0.000000 -0.139173 -0.990268</row2>
+					<row3>1.341270 -0.160180 0.342769</row3>
 				</transform>
 			</node>
 			<node>
@@ -151,7 +187,7 @@
 	</renderSet>
 	<boundingBox>
 		<min>-1.749396 -0.486452 -4.020850</min>
-		<max>1.749393 0.889786 3.716651</max>
+		<max>1.749393 0.876199 3.716651</max>
 	</boundingBox>
 	<geometrySize>98306</geometrySize>
 	<minUVDensity>0.002897</minUVDensity>

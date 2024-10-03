@@ -84,10 +84,7 @@
 			<battle>0</battle>
 		</fakeTurrets>
 		<armor>
-			<armor_1>
-				228.6
-				<!--BW_String-->
-			</armor_1>
+			<armor_1>254</armor_1>
 			<armor_2>
 				76.2
 				<!--BW_String-->
@@ -108,7 +105,10 @@
 				31.8
 				<!--BW_String-->
 			</armor_6>
-			<armor_7>127</armor_7>
+			<armor_7>
+				152.4
+				<!--BW_String-->
+			</armor_7>
 			<armor_9>
 				38.1
 				<!--BW_String-->
@@ -6381,8 +6381,7 @@
 			<notInShop>true</notInShop>
 			<armor>
 				<armor_1>
-					101.6
-					<!--BW_String-->
+					254
 					<vehicleDamageFactor>0</vehicleDamageFactor>
 				</armor_1>
 				<armor_2>
@@ -6432,10 +6431,6 @@
 						<gun>
 							_20pdr_AT_Gun_Type_A
 							<cost>16400</cost>
-						</gun>
-						<gun>
-							_32-pounder_AT_Gun_OQF
-							<cost>16200</cost>
 						</gun>
 					</unlocks>
 					<armor>
@@ -6550,7 +6545,7 @@
 					<unlocks>
 						<gun>
 							_20pdr_AT_Gun_Type_B
-							<cost>45000</cost>
+							<cost>24500</cost>
 						</gun>
 					</unlocks>
 					<armor>
@@ -6662,124 +6657,19 @@
 						<aoTextureSize>512 512</aoTextureSize>
 					</camouflage>
 				</_20pdr_AT_Gun_Type_A>
-				<_32-pounder_AT_Gun_OQF>
+				<_20pdr_AT_Gun_Type_B>
 					shared
-					<maxAmmo>50</maxAmmo>
+					<maxAmmo>60</maxAmmo>
 					<unlocks>
+						<gun>
+							_32-pounder_AT_Gun_OQF
+							<cost>36700</cost>
+						</gun>
 						<vehicle>
 							GB32_Tortoise
 							<cost>161000</cost>
 						</vehicle>
 					</unlocks>
-					<armor>
-						<gun>40</gun>
-					</armor>
-					<shotDispersionRadius>
-						0.33
-						<!--BW_String-->
-					</shotDispersionRadius>
-					<reloadTime>
-						6.6
-						<!--BW_String-->
-					</reloadTime>
-					<shotDispersionFactors>
-						<turretRotation>
-							0.1
-							<!--BW_String-->
-						</turretRotation>
-						<afterShot>3</afterShot>
-						<whileGunDamaged>
-							2.0
-							<!--BW_String-->
-						</whileGunDamaged>
-					</shotDispersionFactors>
-					<aimingTime>
-						2.1
-						<!--BW_String-->
-					</aimingTime>
-					<invisibilityFactorAtShot>
-						0.225
-						<!--BW_String-->
-					</invisibilityFactorAtShot>
-					<pitchLimits>
-						<minPitch>0 -10 1 -10</minPitch>
-						<maxPitch>0 10 1 10</maxPitch>
-					</pitchLimits>
-					<turretYawLimits>-25 25</turretYawLimits>
-					<models>
-						<undamaged>vehicles/british/GB72_AT15/normal/lod0/Gun_05.model</undamaged>
-						<destroyed>vehicles/british/GB72_AT15/crash/lod0/Gun_05.model</destroyed>
-						<exploded>vehicles/british/GB72_AT15/crash/lod0/Gun_05.model</exploded>
-					</models>
-					<hitTester>
-						<collisionModelServer>vehicles/british/GB72_AT15/collision/Gun_05.model</collisionModelServer>
-						<collisionModelClient>vehicles/british/GB72_AT15/collision_client/Gun_05.model</collisionModelClient>
-					</hitTester>
-					<effects>shot_main_mb</effects>
-					<reloadEffect>reload85_107</reloadEffect>
-					<customizationSlots>
-						<slot>
-							<slotType>paint</slotType>
-							<slotId>41000</slotId>
-							<anchorPosition>
-								-0.000399 0.005744 2.48251
-								<!--BW_String-->
-							</anchorPosition>
-							<anchorDirection>0 0 1</anchorDirection>
-							<applyTo>4096</applyTo>
-						</slot>
-						<slot>
-							<slotType>camouflage</slotType>
-							<slotId>42000</slotId>
-							<anchorPosition>
-								-0.000399 0.005744 2.48251
-								<!--BW_String-->
-							</anchorPosition>
-							<anchorDirection>0 0 1</anchorDirection>
-							<applyTo>4096</applyTo>
-						</slot>
-						<slot>
-							<slotType>insigniaOnGun</slotType>
-							<slotId>49000</slotId>
-							<rayStart>
-								0.000203 0.011988 2.95911
-								<!--BW_String-->
-							</rayStart>
-							<rayEnd>
-								0.000203 0.011988 3.65311
-								<!--BW_String-->
-							</rayEnd>
-							<rayUp>
-								0.085 0 0
-								<!--BW_String-->
-							</rayUp>
-							<size>
-								0.694
-								<!--BW_String-->
-							</size>
-						</slot>
-					</customizationSlots>
-					<customization>
-						<customizableVehicleAreas>
-							<paint>GUN</paint>
-							<camouflage>GUN</camouflage>
-						</customizableVehicleAreas>
-					</customization>
-					<camouflage>
-						<tiling>
-							0.58 0.58 0.000000 0.000000
-							<!--BW_String-->
-						</tiling>
-						<density>
-							119.762 119.727
-							<!--BW_String-->
-						</density>
-						<aoTextureSize>512 512</aoTextureSize>
-					</camouflage>
-				</_32-pounder_AT_Gun_OQF>
-				<_20pdr_AT_Gun_Type_B>
-					shared
-					<maxAmmo>60</maxAmmo>
 					<armor>
 						<gun>40</gun>
 					</armor>
@@ -6889,6 +6779,115 @@
 						<aoTextureSize>512 512</aoTextureSize>
 					</camouflage>
 				</_20pdr_AT_Gun_Type_B>
+				<_32-pounder_AT_Gun_OQF>
+					shared
+					<maxAmmo>50</maxAmmo>
+					<armor>
+						<gun>40</gun>
+					</armor>
+					<shotDispersionRadius>
+						0.31
+						<!--BW_String-->
+					</shotDispersionRadius>
+					<reloadTime>
+						6.0
+						<!--BW_String-->
+					</reloadTime>
+					<shotDispersionFactors>
+						<turretRotation>
+							0.1
+							<!--BW_String-->
+						</turretRotation>
+						<afterShot>3</afterShot>
+						<whileGunDamaged>
+							2.0
+							<!--BW_String-->
+						</whileGunDamaged>
+					</shotDispersionFactors>
+					<aimingTime>
+						1.7
+						<!--BW_String-->
+					</aimingTime>
+					<invisibilityFactorAtShot>
+						0.225
+						<!--BW_String-->
+					</invisibilityFactorAtShot>
+					<pitchLimits>
+						<minPitch>0 -10 1 -10</minPitch>
+						<maxPitch>0 10 1 10</maxPitch>
+					</pitchLimits>
+					<turretYawLimits>-25 25</turretYawLimits>
+					<models>
+						<undamaged>vehicles/british/GB72_AT15/normal/lod0/Gun_05.model</undamaged>
+						<destroyed>vehicles/british/GB72_AT15/crash/lod0/Gun_05.model</destroyed>
+						<exploded>vehicles/british/GB72_AT15/crash/lod0/Gun_05.model</exploded>
+					</models>
+					<hitTester>
+						<collisionModelServer>vehicles/british/GB72_AT15/collision/Gun_05.model</collisionModelServer>
+						<collisionModelClient>vehicles/british/GB72_AT15/collision_client/Gun_05.model</collisionModelClient>
+					</hitTester>
+					<effects>shot_main_mb</effects>
+					<reloadEffect>reload85_107</reloadEffect>
+					<customizationSlots>
+						<slot>
+							<slotType>paint</slotType>
+							<slotId>41000</slotId>
+							<anchorPosition>
+								-0.000399 0.005744 2.48251
+								<!--BW_String-->
+							</anchorPosition>
+							<anchorDirection>0 0 1</anchorDirection>
+							<applyTo>4096</applyTo>
+						</slot>
+						<slot>
+							<slotType>camouflage</slotType>
+							<slotId>42000</slotId>
+							<anchorPosition>
+								-0.000399 0.005744 2.48251
+								<!--BW_String-->
+							</anchorPosition>
+							<anchorDirection>0 0 1</anchorDirection>
+							<applyTo>4096</applyTo>
+						</slot>
+						<slot>
+							<slotType>insigniaOnGun</slotType>
+							<slotId>49000</slotId>
+							<rayStart>
+								0.000203 0.011988 2.95911
+								<!--BW_String-->
+							</rayStart>
+							<rayEnd>
+								0.000203 0.011988 3.65311
+								<!--BW_String-->
+							</rayEnd>
+							<rayUp>
+								0.085 0 0
+								<!--BW_String-->
+							</rayUp>
+							<size>
+								0.694
+								<!--BW_String-->
+							</size>
+						</slot>
+					</customizationSlots>
+					<customization>
+						<customizableVehicleAreas>
+							<paint>GUN</paint>
+							<camouflage>GUN</camouflage>
+						</customizableVehicleAreas>
+					</customization>
+					<camouflage>
+						<tiling>
+							0.58 0.58 0.000000 0.000000
+							<!--BW_String-->
+						</tiling>
+						<density>
+							119.762 119.727
+							<!--BW_String-->
+						</density>
+						<aoTextureSize>512 512</aoTextureSize>
+					</camouflage>
+				</_32-pounder_AT_Gun_OQF>
 			</guns>
 			<models>
 				<undamaged>vehicles/british/GB72_AT15/normal/lod0/Turret_01.model</undamaged>

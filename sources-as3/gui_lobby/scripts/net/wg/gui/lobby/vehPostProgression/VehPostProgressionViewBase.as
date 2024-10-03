@@ -68,9 +68,9 @@ package net.wg.gui.lobby.vehPostProgression
       
       public var title:VehicleTitle = null;
       
-      public var nationFlags:MovieClip;
+      public var nationFlags:MovieClip = null;
       
-      public var bgColor:Sprite;
+      public var bgColor:Sprite = null;
       
       protected var _vehicleBlock:VehicleBlock;
       
@@ -159,10 +159,6 @@ package net.wg.gui.lobby.vehPostProgression
       override protected function draw() : void
       {
          super.draw();
-         if(isInvalid(InvalidationType.SIZE))
-         {
-            this.updateComponentsLayout();
-         }
          if(this._vo && isInvalid(InvalidationType.DATA))
          {
             this._vehicleBlock.setButtonData(this._vo.vehicleButton);
@@ -174,6 +170,10 @@ package net.wg.gui.lobby.vehPostProgression
             {
                this.nationFlags.gotoAndStop(this._vo.nation);
             }
+         }
+         if(isInvalid(InvalidationType.SIZE))
+         {
+            this.updateComponentsLayout();
          }
       }
       
@@ -206,8 +206,10 @@ package net.wg.gui.lobby.vehPostProgression
       
       private function updateComponentsLayout() : void
       {
+         var _loc1_:SizeSetting = null;
+         var _loc5_:int = 0;
          var _loc9_:int = 0;
-         var _loc1_:SizeSetting = SizeSettings.extraExtraSmall;
+         _loc1_ = SizeSettings.extraExtraSmall;
          var _loc2_:int = height + VIEW_Y;
          if(width >= SizeSettings.extraLarge.breakPointX && _loc2_ >= SizeSettings.extraLarge.breakPointY)
          {
@@ -233,9 +235,10 @@ package net.wg.gui.lobby.vehPostProgression
          var _loc3_:uint = (height >> 1) + TITLE_CENTER_Y_OFFSET >> 1;
          this.title.y = _loc3_ > TITLE_MIN_Y_VALUE ? Number(_loc3_) : Number(TITLE_MIN_Y_VALUE);
          this.title.isSmallSized = _loc3_ < TITLE_SIZE_Y_FACTOR;
+         this.title.validateNow();
          this._vehicleBlock.size = _loc1_.sizePrefix;
          var _loc4_:int = _loc1_.injectCmpWidth;
-         var _loc5_:int = _loc1_.injectCmpHeight;
+         _loc5_ = _loc1_.injectCmpHeight;
          var _loc6_:Boolean = width < SizeSettings.extraSmall.breakPointX;
          this.vehParamsPanel.height = height;
          this.vehParamsPanel.allowHide = _loc6_;

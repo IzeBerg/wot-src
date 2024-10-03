@@ -70,6 +70,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.data.constants.generated.EPICBATTLES_ALIASES;
    import net.wg.data.constants.generated.EVENTBOARDS_ALIASES;
    import net.wg.data.constants.generated.EVENTPROGRESSION_ALIASES;
+   import net.wg.data.constants.generated.EVENT_BATTLES_ALIASES;
    import net.wg.data.constants.generated.FITTING_TYPES;
    import net.wg.data.constants.generated.FORTIFICATION_ALIASES;
    import net.wg.data.constants.generated.FUNRANDOM_ALIASES;
@@ -860,6 +861,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.clans.utils.ClanHelper;
    import net.wg.gui.lobby.comp7.battleResults.components.Comp7QualificationSubTask;
    import net.wg.gui.lobby.comp7.battleResults.components.Comp7RankSubTask;
+   import net.wg.gui.lobby.components.AbilityBlock;
    import net.wg.gui.lobby.components.AbstractPopoverComponentPanel;
    import net.wg.gui.lobby.components.AbstractPopoverWithScrollableComponentPanel;
    import net.wg.gui.lobby.components.ArrowDown;
@@ -914,6 +916,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.components.VehicleSelectorMultiFilter;
    import net.wg.gui.lobby.components.VehicleTitle;
    import net.wg.gui.lobby.components.base.ButtonFiltersBase;
+   import net.wg.gui.lobby.components.data.AbilityBlockVO;
    import net.wg.gui.lobby.components.data.AwardItemRendererExVO;
    import net.wg.gui.lobby.components.data.BaseMissionDetailedViewVO;
    import net.wg.gui.lobby.components.data.BaseMissionDetailsContainerVO;
@@ -1201,6 +1204,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.ResizableEntryPoint;
    import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.ShopSalesEntryPoint;
    import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.StrongholdEntryPoint;
+   import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.WTEventEntryPoint;
    import net.wg.gui.lobby.hangar.interfaces.IHangar;
    import net.wg.gui.lobby.hangar.interfaces.IHangarHeader;
    import net.wg.gui.lobby.hangar.interfaces.IHeaderQuestsContainer;
@@ -1233,6 +1237,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.hangar.quests.ResourceWellEntryPoint;
    import net.wg.gui.lobby.hangar.quests.SecondaryEntryPoint;
    import net.wg.gui.lobby.hangar.quests.SecondaryEntryPointContent;
+   import net.wg.gui.lobby.hangar.quests.WhiteTigerWidget;
    import net.wg.gui.lobby.hangar.quests.WinbackWidget;
    import net.wg.gui.lobby.hangar.tcarousel.BaseTankIcon;
    import net.wg.gui.lobby.hangar.tcarousel.CarouselProgressionPoints;
@@ -1255,8 +1260,13 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.hangar.tcarousel.event.SlotEvent;
    import net.wg.gui.lobby.hangar.tcarousel.helper.ITankCarouselHelper;
    import net.wg.gui.lobby.hangar.tcarousel.helper.TankCarouselStatsFormatter;
+   import net.wg.gui.lobby.hangar.vehicleParameters.components.VehParamAbility;
    import net.wg.gui.lobby.hangar.vehicleParameters.components.VehParamRenderer;
    import net.wg.gui.lobby.hangar.vehicleParameters.components.VehParamRendererWithHighlight;
+   import net.wg.gui.lobby.hangar.wtEvent.WTEventBoxEntryPointWidget;
+   import net.wg.gui.lobby.hangar.wtEvent.WTEventCarouselWidget;
+   import net.wg.gui.lobby.hangar.wtEvent.WTEventCrewWidget;
+   import net.wg.gui.lobby.hangar.wtEvent.WTEventParamsWidget;
    import net.wg.gui.lobby.header.BadgeSlot;
    import net.wg.gui.lobby.header.LobbyHeader;
    import net.wg.gui.lobby.header.OnlineCounter;
@@ -2208,7 +2218,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.tankman.vo.RetrainButtonVO;
    import net.wg.gui.lobby.techtree.ResearchPage;
    import net.wg.gui.lobby.techtree.TechTreeEvent;
-   import net.wg.gui.lobby.techtree.TechTreePage;
    import net.wg.gui.lobby.techtree.constants.ActionName;
    import net.wg.gui.lobby.techtree.constants.ColorIndex;
    import net.wg.gui.lobby.techtree.constants.LineStyle;
@@ -2243,10 +2252,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.techtree.controls.NationsButtonBar;
    import net.wg.gui.lobby.techtree.controls.NodeComponent;
    import net.wg.gui.lobby.techtree.controls.NodeLock;
-   import net.wg.gui.lobby.techtree.controls.PremiumPanelBackground;
-   import net.wg.gui.lobby.techtree.controls.PremiumPanelContainer;
-   import net.wg.gui.lobby.techtree.controls.PremiumPanelHitArea;
-   import net.wg.gui.lobby.techtree.controls.PremiumPanelItems;
    import net.wg.gui.lobby.techtree.controls.PremiumShopButton;
    import net.wg.gui.lobby.techtree.controls.ResearchRootExperience;
    import net.wg.gui.lobby.techtree.controls.TechTreeTitle;
@@ -2256,8 +2261,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.techtree.data.AbstractDataProvider;
    import net.wg.gui.lobby.techtree.data.BlueprintBalanceItemVO;
    import net.wg.gui.lobby.techtree.data.BlueprintBalanceVO;
-   import net.wg.gui.lobby.techtree.data.NationLevelInfoVO;
-   import net.wg.gui.lobby.techtree.data.NationVODataProvider;
    import net.wg.gui.lobby.techtree.data.ResearchPageVO;
    import net.wg.gui.lobby.techtree.data.ResearchRootVO;
    import net.wg.gui.lobby.techtree.data.ResearchVODataProvider;
@@ -2269,8 +2272,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.techtree.data.vo.BenefitRendererVO;
    import net.wg.gui.lobby.techtree.data.vo.ExtraInformation;
    import net.wg.gui.lobby.techtree.data.vo.NTDisplayInfo;
-   import net.wg.gui.lobby.techtree.data.vo.NationDisplaySettings;
-   import net.wg.gui.lobby.techtree.data.vo.NationGridDisplaySettings;
    import net.wg.gui.lobby.techtree.data.vo.NodeData;
    import net.wg.gui.lobby.techtree.data.vo.ResearchDisplayInfo;
    import net.wg.gui.lobby.techtree.data.vo.ResearchPostProgressionDataVO;
@@ -2281,21 +2282,17 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.techtree.helpers.LevelHeaderInfo;
    import net.wg.gui.lobby.techtree.helpers.LinesGraphics;
    import net.wg.gui.lobby.techtree.helpers.ModulesGraphics;
-   import net.wg.gui.lobby.techtree.helpers.NTGraphics;
-   import net.wg.gui.lobby.techtree.helpers.NationTreeActionsHelper;
    import net.wg.gui.lobby.techtree.helpers.NodeIndexFilter;
    import net.wg.gui.lobby.techtree.helpers.ResearchGraphics;
    import net.wg.gui.lobby.techtree.helpers.TweenWrapper;
    import net.wg.gui.lobby.techtree.interfaces.IBorderHighlighted;
    import net.wg.gui.lobby.techtree.interfaces.IHasRendererAsOwner;
-   import net.wg.gui.lobby.techtree.interfaces.INationTreeDataProvider;
    import net.wg.gui.lobby.techtree.interfaces.INodesContainer;
    import net.wg.gui.lobby.techtree.interfaces.INodesDataProvider;
    import net.wg.gui.lobby.techtree.interfaces.IRenderer;
    import net.wg.gui.lobby.techtree.interfaces.IResearchContainer;
    import net.wg.gui.lobby.techtree.interfaces.IResearchDataProvider;
    import net.wg.gui.lobby.techtree.interfaces.IResearchPage;
-   import net.wg.gui.lobby.techtree.interfaces.ITechTreePage;
    import net.wg.gui.lobby.techtree.interfaces.IValueObject;
    import net.wg.gui.lobby.techtree.math.ADG_ItemLevelsBuilder;
    import net.wg.gui.lobby.techtree.math.HungarianAlgorithm;
@@ -2309,7 +2306,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.techtree.postProgression.EntryPoint;
    import net.wg.gui.lobby.techtree.postProgression.NodeHighlightAnimation;
    import net.wg.gui.lobby.techtree.sub.ModulesTree;
-   import net.wg.gui.lobby.techtree.sub.NationTree;
    import net.wg.gui.lobby.techtree.sub.ResearchItems;
    import net.wg.gui.lobby.testView.TestView;
    import net.wg.gui.lobby.testView.generated.models.TestViewModel;
@@ -2601,16 +2597,19 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.vehicleCustomization.tooltips.inblocks.blocks.QuestProgressBlock;
    import net.wg.gui.lobby.vehicleCustomization.tooltips.inblocks.data.CustomizationImageBlockVO;
    import net.wg.gui.lobby.vehicleCustomization.tooltips.inblocks.data.QuestProgressBlockVO;
+   import net.wg.gui.lobby.vehicleInfo.AbilityBlock;
    import net.wg.gui.lobby.vehicleInfo.BaseBlock;
    import net.wg.gui.lobby.vehicleInfo.CrewBlock;
    import net.wg.gui.lobby.vehicleInfo.IVehicleInfoBlock;
    import net.wg.gui.lobby.vehicleInfo.PropBlock;
    import net.wg.gui.lobby.vehicleInfo.VehicleInfo;
+   import net.wg.gui.lobby.vehicleInfo.VehicleInfoAbility;
    import net.wg.gui.lobby.vehicleInfo.VehicleInfoBase;
    import net.wg.gui.lobby.vehicleInfo.VehicleInfoCrew;
    import net.wg.gui.lobby.vehicleInfo.VehicleInfoProps;
    import net.wg.gui.lobby.vehicleInfo.VehicleInfoViewContent;
    import net.wg.gui.lobby.vehicleInfo.data.VehCompareButtonDataVO;
+   import net.wg.gui.lobby.vehicleInfo.data.VehicleInfoAbilityBlockVO;
    import net.wg.gui.lobby.vehicleInfo.data.VehicleInfoButtonDataVO;
    import net.wg.gui.lobby.vehicleInfo.data.VehicleInfoCrewBlockVO;
    import net.wg.gui.lobby.vehicleInfo.data.VehicleInfoDataVO;
@@ -3131,6 +3130,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_DATA_CONSTANTS_GENERATED_EVENTBOARDS_ALIASES:Class = EVENTBOARDS_ALIASES;
       
       public static const NET_WG_DATA_CONSTANTS_GENERATED_EVENTPROGRESSION_ALIASES:Class = EVENTPROGRESSION_ALIASES;
+      
+      public static const NET_WG_DATA_CONSTANTS_GENERATED_EVENT_BATTLES_ALIASES:Class = EVENT_BATTLES_ALIASES;
       
       public static const NET_WG_DATA_CONSTANTS_GENERATED_FITTING_TYPES:Class = FITTING_TYPES;
       
@@ -4768,6 +4769,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_COMP7_BATTLERESULTS_COMPONENTS_COMP7RANKSUBTASK:Class = Comp7RankSubTask;
       
+      public static const NET_WG_GUI_LOBBY_COMPONENTS_ABILITYBLOCK:Class = AbilityBlock;
+      
       public static const NET_WG_GUI_LOBBY_COMPONENTS_ABSTRACTPOPOVERCOMPONENTPANEL:Class = AbstractPopoverComponentPanel;
       
       public static const NET_WG_GUI_LOBBY_COMPONENTS_ABSTRACTPOPOVERWITHSCROLLABLECOMPONENTPANEL:Class = AbstractPopoverWithScrollableComponentPanel;
@@ -4875,6 +4878,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_COMPONENTS_VEHICLETITLE:Class = VehicleTitle;
       
       public static const NET_WG_GUI_LOBBY_COMPONENTS_BASE_BUTTONFILTERSBASE:Class = ButtonFiltersBase;
+      
+      public static const NET_WG_GUI_LOBBY_COMPONENTS_DATA_ABILITYBLOCKVO:Class = AbilityBlockVO;
       
       public static const NET_WG_GUI_LOBBY_COMPONENTS_DATA_AWARDITEMRENDEREREXVO:Class = AwardItemRendererExVO;
       
@@ -5450,6 +5455,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_HANGAR_EVENTENTRYPOINT_GFWRAPPER_STRONGHOLDENTRYPOINT:Class = StrongholdEntryPoint;
       
+      public static const NET_WG_GUI_LOBBY_HANGAR_EVENTENTRYPOINT_GFWRAPPER_WTEVENTENTRYPOINT:Class = WTEventEntryPoint;
+      
       public static const NET_WG_GUI_LOBBY_HANGAR_INTERFACES_IHANGAR:Class = IHangar;
       
       public static const NET_WG_GUI_LOBBY_HANGAR_INTERFACES_IHANGARHEADER:Class = IHangarHeader;
@@ -5514,6 +5521,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_HANGAR_QUESTS_SECONDARYENTRYPOINTCONTENT:Class = SecondaryEntryPointContent;
       
+      public static const NET_WG_GUI_LOBBY_HANGAR_QUESTS_WHITETIGERWIDGET:Class = WhiteTigerWidget;
+      
       public static const NET_WG_GUI_LOBBY_HANGAR_QUESTS_WINBACKWIDGET:Class = WinbackWidget;
       
       public static const NET_WG_GUI_LOBBY_HANGAR_TCAROUSEL_BASETANKICON:Class = BaseTankIcon;
@@ -5558,9 +5567,19 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_HANGAR_TCAROUSEL_HELPER_TANKCAROUSELSTATSFORMATTER:Class = TankCarouselStatsFormatter;
       
+      public static const NET_WG_GUI_LOBBY_HANGAR_VEHICLEPARAMETERS_COMPONENTS_VEHPARAMABILITY:Class = VehParamAbility;
+      
       public static const NET_WG_GUI_LOBBY_HANGAR_VEHICLEPARAMETERS_COMPONENTS_VEHPARAMRENDERER:Class = VehParamRenderer;
       
       public static const NET_WG_GUI_LOBBY_HANGAR_VEHICLEPARAMETERS_COMPONENTS_VEHPARAMRENDERERWITHHIGHLIGHT:Class = VehParamRendererWithHighlight;
+      
+      public static const NET_WG_GUI_LOBBY_HANGAR_WTEVENT_WTEVENTBOXENTRYPOINTWIDGET:Class = WTEventBoxEntryPointWidget;
+      
+      public static const NET_WG_GUI_LOBBY_HANGAR_WTEVENT_WTEVENTCAROUSELWIDGET:Class = WTEventCarouselWidget;
+      
+      public static const NET_WG_GUI_LOBBY_HANGAR_WTEVENT_WTEVENTCREWWIDGET:Class = WTEventCrewWidget;
+      
+      public static const NET_WG_GUI_LOBBY_HANGAR_WTEVENT_WTEVENTPARAMSWIDGET:Class = WTEventParamsWidget;
       
       public static const NET_WG_GUI_LOBBY_HEADER_BADGESLOT:Class = BadgeSlot;
       
@@ -7464,8 +7483,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_TECHTREE_TECHTREEEVENT:Class = TechTreeEvent;
       
-      public static const NET_WG_GUI_LOBBY_TECHTREE_TECHTREEPAGE:Class = TechTreePage;
-      
       public static const NET_WG_GUI_LOBBY_TECHTREE_CONSTANTS_ACTIONNAME:Class = ActionName;
       
       public static const NET_WG_GUI_LOBBY_TECHTREE_CONSTANTS_COLORINDEX:Class = ColorIndex;
@@ -7534,14 +7551,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_TECHTREE_CONTROLS_NODELOCK:Class = NodeLock;
       
-      public static const NET_WG_GUI_LOBBY_TECHTREE_CONTROLS_PREMIUMPANELBACKGROUND:Class = PremiumPanelBackground;
-      
-      public static const NET_WG_GUI_LOBBY_TECHTREE_CONTROLS_PREMIUMPANELCONTAINER:Class = PremiumPanelContainer;
-      
-      public static const NET_WG_GUI_LOBBY_TECHTREE_CONTROLS_PREMIUMPANELHITAREA:Class = PremiumPanelHitArea;
-      
-      public static const NET_WG_GUI_LOBBY_TECHTREE_CONTROLS_PREMIUMPANELITEMS:Class = PremiumPanelItems;
-      
       public static const NET_WG_GUI_LOBBY_TECHTREE_CONTROLS_PREMIUMSHOPBUTTON:Class = PremiumShopButton;
       
       public static const NET_WG_GUI_LOBBY_TECHTREE_CONTROLS_RESEARCHROOTEXPERIENCE:Class = ResearchRootExperience;
@@ -7559,10 +7568,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_TECHTREE_DATA_BLUEPRINTBALANCEITEMVO:Class = BlueprintBalanceItemVO;
       
       public static const NET_WG_GUI_LOBBY_TECHTREE_DATA_BLUEPRINTBALANCEVO:Class = BlueprintBalanceVO;
-      
-      public static const NET_WG_GUI_LOBBY_TECHTREE_DATA_NATIONLEVELINFOVO:Class = NationLevelInfoVO;
-      
-      public static const NET_WG_GUI_LOBBY_TECHTREE_DATA_NATIONVODATAPROVIDER:Class = NationVODataProvider;
       
       public static const NET_WG_GUI_LOBBY_TECHTREE_DATA_RESEARCHPAGEVO:Class = ResearchPageVO;
       
@@ -7583,10 +7588,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_TECHTREE_DATA_VO_BENEFITRENDERERVO:Class = BenefitRendererVO;
       
       public static const NET_WG_GUI_LOBBY_TECHTREE_DATA_VO_EXTRAINFORMATION:Class = ExtraInformation;
-      
-      public static const NET_WG_GUI_LOBBY_TECHTREE_DATA_VO_NATIONDISPLAYSETTINGS:Class = NationDisplaySettings;
-      
-      public static const NET_WG_GUI_LOBBY_TECHTREE_DATA_VO_NATIONGRIDDISPLAYSETTINGS:Class = NationGridDisplaySettings;
       
       public static const NET_WG_GUI_LOBBY_TECHTREE_DATA_VO_NODEDATA:Class = NodeData;
       
@@ -7610,11 +7611,7 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_TECHTREE_HELPERS_MODULESGRAPHICS:Class = ModulesGraphics;
       
-      public static const NET_WG_GUI_LOBBY_TECHTREE_HELPERS_NATIONTREEACTIONSHELPER:Class = NationTreeActionsHelper;
-      
       public static const NET_WG_GUI_LOBBY_TECHTREE_HELPERS_NODEINDEXFILTER:Class = NodeIndexFilter;
-      
-      public static const NET_WG_GUI_LOBBY_TECHTREE_HELPERS_NTGRAPHICS:Class = NTGraphics;
       
       public static const NET_WG_GUI_LOBBY_TECHTREE_HELPERS_RESEARCHGRAPHICS:Class = ResearchGraphics;
       
@@ -7623,8 +7620,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_TECHTREE_INTERFACES_IBORDERHIGHLIGHTED:Class = IBorderHighlighted;
       
       public static const NET_WG_GUI_LOBBY_TECHTREE_INTERFACES_IHASRENDERERASOWNER:Class = IHasRendererAsOwner;
-      
-      public static const NET_WG_GUI_LOBBY_TECHTREE_INTERFACES_INATIONTREEDATAPROVIDER:Class = INationTreeDataProvider;
       
       public static const NET_WG_GUI_LOBBY_TECHTREE_INTERFACES_INODESCONTAINER:Class = INodesContainer;
       
@@ -7637,8 +7632,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_TECHTREE_INTERFACES_IRESEARCHDATAPROVIDER:Class = IResearchDataProvider;
       
       public static const NET_WG_GUI_LOBBY_TECHTREE_INTERFACES_IRESEARCHPAGE:Class = IResearchPage;
-      
-      public static const NET_WG_GUI_LOBBY_TECHTREE_INTERFACES_ITECHTREEPAGE:Class = ITechTreePage;
       
       public static const NET_WG_GUI_LOBBY_TECHTREE_INTERFACES_IVALUEOBJECT:Class = IValueObject;
       
@@ -7665,8 +7658,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_TECHTREE_POSTPROGRESSION_NODEHIGHLIGHTANIMATION:Class = NodeHighlightAnimation;
       
       public static const NET_WG_GUI_LOBBY_TECHTREE_SUB_MODULESTREE:Class = ModulesTree;
-      
-      public static const NET_WG_GUI_LOBBY_TECHTREE_SUB_NATIONTREE:Class = NationTree;
       
       public static const NET_WG_GUI_LOBBY_TECHTREE_SUB_RESEARCHITEMS:Class = ResearchItems;
       
@@ -8226,6 +8217,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_VEHICLECUSTOMIZATION_TOOLTIPS_INBLOCKS_DATA_QUESTPROGRESSBLOCKVO:Class = QuestProgressBlockVO;
       
+      public static const NET_WG_GUI_LOBBY_VEHICLEINFO_ABILITYBLOCK:Class = AbilityBlock;
+      
       public static const NET_WG_GUI_LOBBY_VEHICLEINFO_BASEBLOCK:Class = BaseBlock;
       
       public static const NET_WG_GUI_LOBBY_VEHICLEINFO_CREWBLOCK:Class = CrewBlock;
@@ -8236,6 +8229,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_VEHICLEINFO_VEHICLEINFO:Class = VehicleInfo;
       
+      public static const NET_WG_GUI_LOBBY_VEHICLEINFO_VEHICLEINFOABILITY:Class = VehicleInfoAbility;
+      
       public static const NET_WG_GUI_LOBBY_VEHICLEINFO_VEHICLEINFOBASE:Class = VehicleInfoBase;
       
       public static const NET_WG_GUI_LOBBY_VEHICLEINFO_VEHICLEINFOCREW:Class = VehicleInfoCrew;
@@ -8245,6 +8240,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_VEHICLEINFO_VEHICLEINFOVIEWCONTENT:Class = VehicleInfoViewContent;
       
       public static const NET_WG_GUI_LOBBY_VEHICLEINFO_DATA_VEHCOMPAREBUTTONDATAVO:Class = VehCompareButtonDataVO;
+      
+      public static const NET_WG_GUI_LOBBY_VEHICLEINFO_DATA_VEHICLEINFOABILITYBLOCKVO:Class = VehicleInfoAbilityBlockVO;
       
       public static const NET_WG_GUI_LOBBY_VEHICLEINFO_DATA_VEHICLEINFOBUTTONDATAVO:Class = VehicleInfoButtonDataVO;
       

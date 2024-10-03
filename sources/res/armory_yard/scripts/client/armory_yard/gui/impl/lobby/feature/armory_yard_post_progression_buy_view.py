@@ -63,7 +63,7 @@ class ArmoryYardPostProgressionBuyView(ViewImpl):
             if len(setCurrencies) == 1 and setCurrencies[0] == Currency.GOLD:
                 showBuyGoldForArmoryYard(price)
         else:
-            action = factory.getAction(BUY_POST_PROGRESSION_TOKENS, tokens)
+            action = factory.getAction(BUY_POST_PROGRESSION_TOKENS, tokens, Currency.GOLD)
             result = yield factory.asyncDoAction(action)
             if result:
                 self.__armoryYardCtrl.onPayed(True, tokens, price)

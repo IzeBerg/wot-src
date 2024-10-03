@@ -139,7 +139,8 @@ package net.wg.gui.lobby.techtree.sub
          param1.removeEventListener(TechTreeEvent.GO_TO_SHOP,this.onRendererGoToShopHandler);
          param1.removeEventListener(TechTreeEvent.GO_TO_CHANGE_NATION_VIEW,this.onGoToChangeNationViewHandler);
          param1.removeEventListener(TechTreeEvent.ON_MODULE_HOVER,this.onRendererOnModuleHoverHandler);
-         param1.removeEventListener(TechTreeEvent.GO_TO_EARLY_ACCESS,this.onRendererGoToEarlyAccessHandler);
+         param1.removeEventListener(TechTreeEvent.GO_TO_EARLY_ACCESS_QUESTS_VIEW,this.onRendererGoToEarlyAccessQuestsViewHandler);
+         param1.removeEventListener(TechTreeEvent.GO_TO_EARLY_ACCESS_BUY_VIEW,this.onRendererGoToEarlyAccessBuyViewHandler);
          super.removeItemRenderer(param1);
       }
       
@@ -280,7 +281,8 @@ package net.wg.gui.lobby.techtree.sub
          param1.addEventListener(TechTreeEvent.GO_TO_BLUEPRINT_VIEW,this.onGoToBlueprintViewHandler,false,0,true);
          param1.addEventListener(TechTreeEvent.CLICK_2_RENT,this.onRendererClick2RentHandler,false,0,true);
          param1.addEventListener(TechTreeEvent.GO_TO_SHOP,this.onRendererGoToShopHandler,false,0,true);
-         param1.addEventListener(TechTreeEvent.GO_TO_EARLY_ACCESS,this.onRendererGoToEarlyAccessHandler,false,0,true);
+         param1.addEventListener(TechTreeEvent.GO_TO_EARLY_ACCESS_QUESTS_VIEW,this.onRendererGoToEarlyAccessQuestsViewHandler,false,0,true);
+         param1.addEventListener(TechTreeEvent.GO_TO_EARLY_ACCESS_BUY_VIEW,this.onRendererGoToEarlyAccessBuyViewHandler,false,0,true);
          if(!param2)
          {
             param1.addEventListener(TechTreeEvent.CLICK_2_OPEN,this.onRendererClick2OpenHandler,false,0,true);
@@ -829,9 +831,15 @@ package net.wg.gui.lobby.techtree.sub
          this.selectRequiredModules(false);
       }
       
-      private function onRendererGoToEarlyAccessHandler(param1:TechTreeEvent) : void
+      private function onRendererGoToEarlyAccessQuestsViewHandler(param1:TechTreeEvent) : void
       {
-         this.view.goToEarlyAccessS();
+         this.view.goToEarlyAccessQuestsViewS();
+      }
+      
+      private function onRendererGoToEarlyAccessBuyViewHandler(param1:TechTreeEvent) : void
+      {
+         var _loc2_:int = dataProvider.getItemAt(param1.index).id;
+         this.view.goToEarlyAccessBuyViewS(_loc2_);
       }
    }
 }

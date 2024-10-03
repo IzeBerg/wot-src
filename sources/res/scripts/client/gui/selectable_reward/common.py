@@ -167,7 +167,8 @@ class RankedSelectableRewardManager(SelectableRewardManager):
     def getTabTooltipData(cls, selectableBonus):
         tokenID = selectableBonus.getValue().keys()[0]
         if cls.isFeatureReward(tokenID):
-            return TooltipData(tooltip=None, isSpecial=True, specialAlias=TOOLTIPS_CONSTANTS.RANKED_BATTLES_SELECTABLE_REWARD, specialArgs=[])
+            return TooltipData(tooltip=None, isSpecial=True, specialAlias=TOOLTIPS_CONSTANTS.BATTLE_PASS_GIFT_TOKEN, specialArgs=[
+             _getGiftTokenFromOffer(tokenID), True])
         else:
             return
 

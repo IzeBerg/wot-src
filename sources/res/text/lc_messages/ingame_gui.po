@@ -738,6 +738,9 @@ msgstr "Цель защищена"
 msgid "efficiencyRibbons/enemySectorCaptured"
 msgstr "Зона захвачена"
 
+msgid "efficiencyRibbons/healthAdded"
+msgstr "Машина отремонтирована"
+
 msgid "efficiencyRibbons/kill"
 msgstr "Уничтожил"
 
@@ -797,6 +800,9 @@ msgstr "Машина оставлена"
 
 msgid "efficiencyRibbons/worldCollision"
 msgstr "Урон от падения"
+
+msgid "efficiencyRibbons/wtReceivedCircuitOverload"
+msgstr "Урон электричеством"
 
 msgid "epic_players_panel/state/hidden/body"
 msgstr "Скрыть панели команд."
@@ -951,6 +957,9 @@ msgstr "Стрельба невозможна: повреждено орудие
 msgid "player_errors/cant_shoot/gun_locked"
 msgstr "Стрельба невозможна"
 
+msgid "player_errors/cant_shoot/gun_overheated"
+msgstr "Стрельба невозможна: орудие перегрето"
+
 msgid "player_errors/cant_shoot/gun_reload"
 msgstr "Орудие перезаряжается"
 
@@ -968,6 +977,15 @@ msgstr "Невозможно перейти в прицел в данной то
 
 msgid "player_errors/cant_switch/engine_destroyed"
 msgstr "Смена режима недоступна: двигатель выведен из строя."
+
+msgid "player_errors/equipment/ability/alreadyActivated"
+msgstr "Модификация «%(name)s» уже активирована."
+
+msgid "player_errors/equipment/ability/cooldown"
+msgstr "Модификация «%(name)s» недоступна: перезарядка."
+
+msgid "player_errors/equipment/ability/exhausted"
+msgstr "Модификация «%(name)s» недоступна."
 
 msgid "player_errors/equipment/alreadyActivated"
 msgstr "Уже активно в данный момент: [%(name)s]"
@@ -1537,6 +1555,9 @@ msgstr "База%s противника захвачена!"
 
 msgid "player_messages/enemy_team_name"
 msgstr "Противник"
+
+msgid "player_messages/equipment/wtEvent/healthAtFullHP"
+msgstr "[%(name)s] Ремонт не требуется: повреждений нет."
 
 msgid "player_messages/poi_equipment_used_by_ally"
 msgstr "Союзник %(name)s применил тактический навык «%(equipment)s»"
@@ -2740,6 +2761,12 @@ msgstr "%(caliber)s мм кумулятивный снаряд %(userString)s"
 
 msgid "shells_kinds/params/damage"
 msgstr "Средний урон: %(value)s ед."
+
+msgid "shells_kinds/params/damagePerSecond"
+msgstr "Урон в секунду: %(value)s ед."
+
+msgid "shells_kinds/params/damageRange"
+msgstr "Урон снаряда: %(value)s ед."
 
 msgid "shells_kinds/params/explosionRadius"
 msgstr "Радиус поражения: %(value)s м"

@@ -5,10 +5,8 @@ package net.wg.infrastructure.managers.impl.tutorial
    import net.wg.gui.components.carousels.ScrollerViewPort;
    import net.wg.gui.components.controls.SimpleTileList;
    import net.wg.gui.components.controls.SoundButtonEx;
-   import net.wg.gui.lobby.techtree.interfaces.INationTreeDataProvider;
    import net.wg.gui.lobby.techtree.interfaces.IRenderer;
    import net.wg.gui.lobby.techtree.interfaces.IResearchDataProvider;
-   import net.wg.gui.lobby.techtree.sub.NationTree;
    import net.wg.gui.lobby.techtree.sub.ResearchItems;
    import scaleform.clik.interfaces.IListItemRenderer;
    
@@ -25,13 +23,10 @@ package net.wg.infrastructure.managers.impl.tutorial
       {
          var _loc10_:ResearchItems = null;
          var _loc11_:IResearchDataProvider = null;
-         var _loc12_:NationTree = null;
-         var _loc13_:INationTreeDataProvider = null;
-         var _loc14_:int = 0;
-         var _loc15_:SimpleTileList = null;
-         var _loc16_:IListItemRenderer = null;
-         var _loc17_:DisplayObject = null;
-         var _loc18_:SoundButtonEx = null;
+         var _loc12_:SimpleTileList = null;
+         var _loc13_:IListItemRenderer = null;
+         var _loc14_:DisplayObject = null;
+         var _loc15_:SoundButtonEx = null;
          var _loc3_:DisplayObject = super.getObjectByParams(param1,param2);
          if(_loc3_ != null)
          {
@@ -68,47 +63,21 @@ package net.wg.infrastructure.managers.impl.tutorial
                _loc4_++;
             }
          }
-         if(param1 is NationTree)
-         {
-            _loc12_ = NationTree(param1);
-            _loc8_ = _loc12_.ntGraphics;
-            _loc13_ = _loc12_.dataProvider;
-            _loc14_ = _loc13_.length;
-            _loc6_ = _loc8_.numChildren;
-            _loc4_ = 0;
-            while(_loc4_ < _loc6_)
-            {
-               _loc7_ = _loc8_.getChildAt(_loc4_) as IRenderer;
-               if(_loc7_)
-               {
-                  _loc5_ = _loc7_.index;
-                  if(_loc5_ > -1 && _loc14_ > _loc5_)
-                  {
-                     _loc9_ = _loc13_.getItemAt(_loc5_);
-                     if(checkForParamsMatch(_loc9_,param2))
-                     {
-                        return DisplayObject(_loc7_);
-                     }
-                  }
-               }
-               _loc4_++;
-            }
-         }
          if(param1 is SimpleTileList)
          {
-            _loc15_ = SimpleTileList(param1);
-            if(_loc15_)
+            _loc12_ = SimpleTileList(param1);
+            if(_loc12_)
             {
-               _loc6_ = _loc15_.length;
-               _loc16_ = null;
+               _loc6_ = _loc12_.length;
+               _loc13_ = null;
                _loc4_ = 0;
                while(_loc4_ < _loc6_)
                {
-                  _loc16_ = _loc15_.getRendererAt(_loc4_);
-                  _loc9_ = _loc16_.getData();
+                  _loc13_ = _loc12_.getRendererAt(_loc4_);
+                  _loc9_ = _loc13_.getData();
                   if(checkForParamsMatch(_loc9_,param2))
                   {
-                     return DisplayObject(_loc16_);
+                     return DisplayObject(_loc13_);
                   }
                   _loc4_++;
                }
@@ -122,14 +91,14 @@ package net.wg.infrastructure.managers.impl.tutorial
                _loc6_ = _loc8_.numChildren;
                while(_loc4_ < _loc6_)
                {
-                  _loc17_ = _loc8_.getChildAt(_loc4_);
-                  if(_loc17_ is SoundButtonEx)
+                  _loc14_ = _loc8_.getChildAt(_loc4_);
+                  if(_loc14_ is SoundButtonEx)
                   {
-                     _loc18_ = SoundButtonEx(_loc17_);
-                     _loc9_ = _loc18_.data;
+                     _loc15_ = SoundButtonEx(_loc14_);
+                     _loc9_ = _loc15_.data;
                      if(checkForParamsMatch(_loc9_,param2))
                      {
-                        return DisplayObject(_loc18_);
+                        return DisplayObject(_loc15_);
                      }
                   }
                   _loc4_++;

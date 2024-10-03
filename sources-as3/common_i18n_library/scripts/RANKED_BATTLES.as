@@ -133,6 +133,10 @@ package
       
       public static const RANKEDBATTLEMAINVIEW_DIVISIONS_TAKERANK:String = "#ranked_battles:rankedBattleMainView/divisions/takeRank";
       
+      public static const RANKEDBATTLEMAINVIEW_BTNREWARDSUNAVAILABLE:String = "#ranked_battles:rankedBattleMainView/btnRewardsUnavailable";
+      
+      public static const RANKEDBATTLEMAINVIEW_TAKEREWARD:String = "#ranked_battles:rankedBattleMainView/takeReward";
+      
       public static const RANKEDBATTLEVIEW_TITLE:String = "#ranked_battles:rankedBattleView/title";
       
       public static const RANKEDBATTLEVIEW_AWARDBLOCK_POINTS_HEADER:String = "#ranked_battles:rankedBattleView/awardBlock/points/header";
@@ -262,6 +266,10 @@ package
       public static const RANKEDSEASONCOMPLETED_HEADER_TEXT:String = "#ranked_battles:rankedSeasonCompleted/header/text";
       
       public static const RANKEDSEASONCOMPLETED_HEADER_DESCRIPTION:String = "#ranked_battles:rankedSeasonCompleted/header/description";
+      
+      public static const RANKEDSEASONCOMPLETED_HEADERREWARD_TEXT:String = "#ranked_battles:rankedSeasonCompleted/headerReward/text";
+      
+      public static const RANKEDSEASONCOMPLETED_HEADERREWARD_DESCRIPTION:String = "#ranked_battles:rankedSeasonCompleted/headerReward/description";
       
       public static const RANKEDSEASONCOMPLETED_TOREWARDS:String = "#ranked_battles:rankedSeasonCompleted/toRewards";
       
@@ -1058,8 +1066,6 @@ package
       public static const SELECTABLEREWARD_TOOLTIP_EQUIPMENTCHOICE_TITLE:String = "#ranked_battles:selectableReward/tooltip/equipmentChoice/title";
       
       public static const SELECTABLEREWARD_TOOLTIP_EQUIPMENTCHOICE_LIST:String = "#ranked_battles:selectableReward/tooltip/equipmentChoice/list";
-      
-      public static const SELECTABLEREWARD_TOOLTIP_EQUIPMENTCHOICE_LIMIT:String = "#ranked_battles:selectableReward/tooltip/equipmentChoice/limit";
       
       public static const DIVISION_SUBTITLE:String = "#ranked_battles:division/subtitle";
       

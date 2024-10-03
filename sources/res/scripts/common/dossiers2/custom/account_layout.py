@@ -175,7 +175,8 @@ _ACHIEVEMENTS15X15_BLOCK_LAYOUT = [
  'whiteTiger2012', 'lunarNY2022Progression',
  'oowTankmanWins', 'oowStrategistWins', 'oowCompetetiveWin',
  'mapboxUniversal', 'wclTournamentParticipant', 'wclParticipant',
- 'wt2022HunterWins', 'wt2022BossWins', 'wt2022SpecBossDefeat']
+ 'wt2022HunterWins', 'wt2022BossWins', 'wt2022SpecBossDefeat',
+ 'wt2024HunterWins', 'wt2024BossWins', 'wt2024MaxPlasma']
 _achievements15x15PopUps = [
  'warrior', 'invader', 'sniper', 'defender', 'steelwall', 'supporter',
  'scout', 'medalKay', 'medalCarius', 'medalKnispel', 'medalPoppel', 'medalAbrams',
@@ -220,7 +221,8 @@ _achievements15x15PopUps = [
  'wtxHunterWins', 'wtxBossWins', 'wtxSpecBossDefeat', 'lunarNY2022Progression',
  'oowTankmanWins', 'oowStrategistWins', 'oowCompetetiveWin', 'mapboxUniversal',
  'wclTournamentParticipant', 'wclParticipant',
- 'wt2022HunterWins', 'wt2022BossWins', 'wt2022SpecBossDefeat']
+ 'wt2022HunterWins', 'wt2022BossWins', 'wt2022SpecBossDefeat',
+ 'wt2024HunterWins', 'wt2024BossWins', 'wt2024MaxPlasma']
 _achievements15x15BlockBuilder = StaticSizeBlockBuilder('achievements', _ACHIEVEMENTS15X15_BLOCK_LAYOUT, ACHIEVEMENT15X15_DEPENDENCIES, _achievements15x15PopUps)
 _STEAM_BLOCK_LAYOUT = [
  'steamBattleCredits', 'steamLittleSavingsMedal', 'steamMintedCoinMedal', 'steamKingMidasMedal',
@@ -355,7 +357,7 @@ _SINGLE_ACHIEVEMENTS_VALUES = [
  'BattlePassCommonPr_13', 'hb24Medal', 'BattlePassCommonPr_14', 'comp7_3_4',
  'comp7_3_4_champion', 'comp7_3_4_legend', 'BattlePassCommonPr_14_Marathon',
  'races24FirstPlace', 'races24Progression', 'comp7_4_1', 'comp7_4_1_champion',
- 'comp7_4_1_legend', 'BattlePassCommonPr_15']
+ 'comp7_4_1_legend', 'BattlePassCommonPr_15', '14YearsOfService']
 _singleAchievementsPopUps = [
  'titleSniper', 'invincible', 'diehard', 'handOfDeath',
  'armorPiercer', 'battleCitizen', 'WFC2014', 'tacticalBreakthrough', 'aimer',
@@ -415,7 +417,7 @@ _singleAchievementsPopUps = [
  'BattlePassCommonPr_13', 'hb24Medal', 'BattlePassCommonPr_14', 'comp7_3_4',
  'comp7_3_4_champion', 'comp7_3_4_legend', 'BattlePassCommonPr_14_Marathon',
  'races24FirstPlace', 'races24Progression', 'comp7_4_1', 'comp7_4_1_champion',
- 'comp7_4_1_legend', 'BattlePassCommonPr_15']
+ 'comp7_4_1_legend', 'BattlePassCommonPr_15', '14YearsOfService']
 _singleAchievementsBlockBuilder = BinarySetDossierBlockBuilder('singleAchievements', _SINGLE_ACHIEVEMENTS_VALUES, SINGLE_ACHIEVEMENTS_DEPENDENCIES, _singleAchievementsPopUps)
 FORT_ACHIEVEMENTS_BLOCK_LAYOUT = [
  'conqueror', 'fireAndSword', 'crusher', 'counterblow', 'kampfer', 'soldierOfFortune']

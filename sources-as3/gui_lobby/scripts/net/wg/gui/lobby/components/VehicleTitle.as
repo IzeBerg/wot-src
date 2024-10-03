@@ -3,6 +3,7 @@ package net.wg.gui.lobby.components
    import flash.display.Sprite;
    import flash.events.MouseEvent;
    import flash.text.TextField;
+   import net.wg.data.constants.Linkages;
    import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.TOOLTIPS_CONSTANTS;
    import net.wg.gui.components.controls.Image;
@@ -42,6 +43,8 @@ package net.wg.gui.lobby.components
       public var statusTF:TextField = null;
       
       public var hitMc:Sprite = null;
+      
+      private var _abilityBlock:AbilityBlock = null;
       
       private var _tankTierStr:String = "";
       
@@ -133,6 +136,11 @@ package net.wg.gui.lobby.components
          this.hitMc.removeEventListener(MouseEvent.ROLL_OUT,this.onInfoIconRollOutHandler);
          this.roleTF.removeEventListener(MouseEvent.ROLL_OVER,this.onRoleTFRollOverHandler);
          this.roleTF.removeEventListener(MouseEvent.ROLL_OUT,this.onRoleTFRollOutHandler);
+         if(this._abilityBlock)
+         {
+            this._abilityBlock.dispose();
+            this._abilityBlock = null;
+         }
          this.tankTier = null;
          this.tankName = null;
          this.tankType.dispose();
@@ -144,6 +152,20 @@ package net.wg.gui.lobby.components
          this._nodeData = null;
          this._tooltipMgr = null;
          super.onDispose();
+      }
+      
+      private function updateAbilityLayout() : void
+      {
+         var _loc1_:Boolean = false;
+         if(this._abilityBlock)
+         {
+            _loc1_ = this._abilityBlock.isAvailable();
+            this._abilityBlock.visible = _loc1_;
+            if(_loc1_)
+            {
+               this._abilityBlock.y = this.roleTF.y + this.roleTF.height;
+            }
+         }
       }
       
       public function setData(param1:VehicleTitleVO) : void
@@ -158,12 +180,26 @@ package net.wg.gui.lobby.components
          this._roleText = param1.roleText;
          this._intCD = param1.intCD;
          this._showInfoIcon = param1.showInfoIcon;
+         if(param1.ability)
+         {
+            this.createAbilityBlock();
+            this._abilityBlock.setData(param1.ability);
+         }
          invalidateData();
       }
       
       public function setNodeData(param1:NodeData) : void
       {
          this._nodeData = param1;
+      }
+      
+      private function createAbilityBlock() : void
+      {
+         if(!this._abilityBlock)
+         {
+            this._abilityBlock = App.utils.classFactory.getComponent(Linkages.ABILITY_BLOCK,AbilityBlock);
+            addChild(this._abilityBlock);
+         }
       }
       
       private function updateLayout() : void
@@ -197,6 +233,7 @@ package net.wg.gui.lobby.components
             this.roleTF.x = -this.roleTF.width >> 1;
             this.roleTF.y = this.tankName.y + this.tankName.textHeight + (!!this._isSmallSized ? ROLE_TF_Y_OFFSET_SMALL : ROLE_TF_Y_OFFSET_BIG) | 0;
          }
+         this.updateAbilityLayout();
       }
       
       public function get isSmallSized() : Boolean

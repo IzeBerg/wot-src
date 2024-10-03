@@ -71,8 +71,11 @@ package net.wg.gui.battle.views.minimap.components.entries.personal
          this.directionLinePlaceholder = null;
          this.directionPlaceholder = null;
          this._atlasManager = null;
-         this._distanceDrawer.dispose();
-         this._distanceDrawer = null;
+         if(this._distanceDrawer)
+         {
+            this._distanceDrawer.dispose();
+            this._distanceDrawer = null;
+         }
          super.onDispose();
       }
       

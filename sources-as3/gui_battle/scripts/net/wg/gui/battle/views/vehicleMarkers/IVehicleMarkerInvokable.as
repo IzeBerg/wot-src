@@ -8,6 +8,8 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       function hideStatusMarker(param1:int, param2:int, param3:Boolean = false, param4:Boolean = false) : void;
       
+      function hideSeparateMarker(param1:int, param2:Boolean = false) : void;
+      
       function setEntityName(param1:String) : void;
       
       function setHealth(param1:int) : void;
@@ -23,6 +25,8 @@ package net.wg.gui.battle.views.vehicleMarkers
       function showExInfo() : void;
       
       function showStatusMarker(param1:int, param2:int, param3:Boolean, param4:Number, param5:int, param6:int, param7:Boolean = true, param8:Boolean = true) : void;
+      
+      function showSeparateMarker(param1:int, param2:Boolean, param3:Number, param4:Boolean = true, param5:Boolean = true) : void;
       
       function update() : void;
       

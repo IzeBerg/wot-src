@@ -22,7 +22,7 @@ package net.wg.gui.battle.views.consumablesPanel
       
       private static const SHOW_GLOW_GREEN_UPGRADE_STATE:String = "greenUpgrade";
       
-      private static const SHOW_GLOW_ORANGE_STATE:String = "orange";
+      protected static const SHOW_GLOW_ORANGE_STATE:String = "orange";
       
       private static const SHOW_GLOW_GREEN_NO_HOT_KEY_STATE:String = "greenNoHotKey";
       
@@ -117,7 +117,7 @@ package net.wg.gui.battle.views.consumablesPanel
                gotoAndPlay(SHOW_GLOW_GREEN_UPGRADE_STATE);
                break;
             default:
-               this._textField.textColor = NORMAL_TEXT_COLOR;
+               this._textField.textColor = this.normalTextColor;
                gotoAndPlay(SHOW_GLOW_HIDE_STATE);
          }
       }
@@ -125,8 +125,18 @@ package net.wg.gui.battle.views.consumablesPanel
       private function goIdle() : void
       {
          stop();
-         this._textField.textColor = NORMAL_TEXT_COLOR;
+         this._textField.textColor = this.normalTextColor;
          dispatchEvent(new Event(ConsumablesButtonEvent.GLOW_ON_IDLE_STATE));
+      }
+      
+      protected function get bindKeyField() : TextField
+      {
+         return this._textField;
+      }
+      
+      protected function get normalTextColor() : uint
+      {
+         return NORMAL_TEXT_COLOR;
       }
    }
 }

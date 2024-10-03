@@ -282,6 +282,8 @@ class BATTLE_EVENTS(CONST_CONTAINER):
     RECEIVED_CRITS = 'battleEventsReceivedCrits'
     ENEMY_ASSIST_STUN = 'battleEventsEnemyAssistStun'
     ENEMIES_STUN = 'battleEventsEnemyStun'
+    CREW_PERKS = 'battleEventsCrewPerks'
+    HEALTH_ADDED = 'battleEventsHealthAdded'
 
 
 class BATTLE_BORDER_MAP(CONST_CONTAINER):
@@ -520,3 +522,8 @@ class NewYearStorageKeys(CONST_CONTAINER):
     DECORATIONS_POPOVER_BROKEN = 'decorationsPopoverBroken'
     BOOL_FLAGS = (
      HAS_TOYS_HINT_SHOWN, GLADE_INTRO_VISITED, DECORATIONS_POPOVER_VIEWED, DECORATIONS_POPOVER_BROKEN)
+
+
+class WTLootBoxesViewedKeys(CONST_CONTAINER):
+    HUNTER_LAST_VIEWED = 'hunterLastViewed'
+    BOSS_LAST_VIEWED = 'bossLastViewed'

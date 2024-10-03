@@ -197,7 +197,8 @@ package net.wg.gui.battle.views.epicRespawnView
       
       private function updateLayout() : void
       {
-         var _loc1_:int = this._originalWidth >> 1;
+         var _loc1_:int = 0;
+         _loc1_ = this._originalWidth >> 1;
          this.topBarBG.x = -_loc1_;
          this.topBarBG.y = 0;
          this.topBarBG.width = this._originalWidth;

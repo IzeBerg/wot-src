@@ -83,6 +83,7 @@ class VIEW_ALIAS(COMMON_VIEW_ALIAS):
     VEHICLE_RESTORE_WINDOW = 'vehicleRestoreWindow'
     BATTLE_QUEUE = 'battleQueue'
     BATTLE_STRONGHOLDS_QUEUE = 'battleStrongholdsQueue'
+    EVENT_BATTLE_QUEUE = 'eventBattleQueue'
     BATTLE_LOADING = 'battleLoading'
     LEGAL_INFO_WINDOW = 'legalInfoWindow'
     VEHICLE_INFO_WINDOW = 'vehicleInfoWindow'
@@ -144,6 +145,7 @@ class VIEW_ALIAS(COMMON_VIEW_ALIAS):
     UI_LOGGER_TEST_DIALOG = 'uiLoggerDialog'
     VEH_POST_PROGRESSION = 'vehPostProgression'
     VEH_POST_PROGRESSION_CMP = 'vehPostProgressionCmp'
+    ARMORY_YARD_VEH_POST_PROGRESSION = 'armoryYardVehPostProgression'
     MINIMAP_LOBBY = 'minimapLobby'
     MINIMAP_GRID = 'minimapGridLobby'
     MINIMAP_ON_BATTLE_LOADING = 'minimapOnBattleLoading'
@@ -237,6 +239,7 @@ class VIEW_ALIAS(COMMON_VIEW_ALIAS):
     FEEDBACK_BATTLE_BORDER_MAP = 'feedbackBattleBorderMap'
     FEEDBACK_QUESTS_PROGRESS = 'feedbackQuestsProgress'
     FEEDBACK_SIXTH_SENSE = 'feedbackSixthSense'
+    CONFIRM_EXCHANGE_BERTHS_DIALOG = 'confirmExchangeBerthsDialog'
     BATTLE_PAGES = (
      CLASSIC_BATTLE_PAGE, DEV_BATTLE_PAGE, EVENT_BATTLE_PAGE, RANKED_BATTLE_PAGE, BOOTCAMP_BATTLE_PAGE,
      EPIC_BATTLE_PAGE, BATTLE_ROYALE_PAGE)

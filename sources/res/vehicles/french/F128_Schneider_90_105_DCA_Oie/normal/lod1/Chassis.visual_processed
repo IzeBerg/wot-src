@@ -1171,7 +1171,7 @@
 					<collisionFlags>0</collisionFlags>
 					<property>
 						alphaReference
-						<Int>64</Int>
+						<Int>128</Int>
 					</property>
 					<property>
 						alphaTestEnable
@@ -1247,7 +1247,7 @@
 					<collisionFlags>0</collisionFlags>
 					<property>
 						alphaReference
-						<Int>64</Int>
+						<Int>128</Int>
 					</property>
 					<property>
 						alphaTestEnable
@@ -1313,7 +1313,7 @@
 					<collisionFlags>0</collisionFlags>
 					<property>
 						alphaReference
-						<Int>64</Int>
+						<Int>128</Int>
 					</property>
 					<property>
 						colorIdMap
@@ -1347,6 +1347,10 @@
 						g_useDetailMetallic
 						<Bool>true</Bool>
 					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
 				</material>
 				<groupOrigin>-1.270827 0.524853 -0.352353</groupOrigin>
 			</primitiveGroup>
@@ -1378,7 +1382,7 @@
 					<collisionFlags>0</collisionFlags>
 					<property>
 						alphaReference
-						<Int>64</Int>
+						<Int>128</Int>
 					</property>
 					<property>
 						colorIdMap
@@ -1410,6 +1414,10 @@
 					</property>
 					<property>
 						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaTestEnable
 						<Bool>true</Bool>
 					</property>
 				</material>

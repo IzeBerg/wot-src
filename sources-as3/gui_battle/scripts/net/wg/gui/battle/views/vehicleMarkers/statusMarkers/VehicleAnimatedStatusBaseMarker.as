@@ -145,7 +145,7 @@ package net.wg.gui.battle.views.vehicleMarkers.statusMarkers
       {
       }
       
-      public function updateEffectTimer(param1:int, param2:Boolean, param3:Boolean = false) : void
+      public function updateEffectTimer(param1:Number, param2:Boolean, param3:Boolean = false) : void
       {
          if(!param2)
          {

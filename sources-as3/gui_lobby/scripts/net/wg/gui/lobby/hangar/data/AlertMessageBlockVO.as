@@ -28,6 +28,8 @@ package net.wg.gui.lobby.hangar.data
       
       public var isSimpleTooltip:Boolean = false;
       
+      public var isWulfTooltip:Boolean = false;
+      
       public function AlertMessageBlockVO(param1:Object = null)
       {
          super(param1);

@@ -84,6 +84,9 @@ msgstr "%(sec)s с"
 msgid "Time/timeValueWithSecs/min"
 msgstr "%(min)s мин %(sec)s с"
 
+msgid "ability/title"
+msgstr "Модификация"
+
 msgid "account/profile/emptyBattleList"
 msgstr "В бою не был"
 
@@ -1099,7 +1102,7 @@ msgid "contextMenu/createContactNote"
 msgstr "Создать заметку"
 
 msgid "contextMenu/createEventSquad"
-msgstr "Создать ивентный взвод"
+msgstr "Создать взвод Гончих"
 
 msgid "contextMenu/createMapboxSquad"
 msgstr "Разведка боем: создать взвод"
@@ -1109,6 +1112,9 @@ msgstr "Отправить сообщение"
 
 msgid "contextMenu/createSquad"
 msgstr "Создать взвод"
+
+msgid "contextMenu/createWhiteTigerSquad"
+msgstr "Создать взвод Гончих"
 
 msgid "contextMenu/crewWidgetChangeCrewMember"
 msgstr "Сменить члена экипажа"
@@ -1366,7 +1372,7 @@ msgstr "Отозвать приглашение во взвод"
 
 msgid "copy"
 msgstr ""
-"© Lesta Games 2022-2024. Игра «Мир танков» основана на интеллектуальной "
+"© Леста Игры, 2022-2024. Игра «Мир танков» основана на интеллектуальной "
 "собственности третьих лиц. Все права на объекты прав третьих лиц принадлежат"
 " их законным правообладателям."
 
@@ -1717,6 +1723,9 @@ msgstr "Доступна аренда машины"
 msgid "currentVehicleStatus/rentableAgain"
 msgstr "Продлить аренду"
 
+msgid "currentVehicleStatus/rentalBattleIsOver"
+msgstr "Бои исчерпаны"
+
 msgid "currentVehicleStatus/rentalIsOver"
 msgstr "Аренда завершена"
 
@@ -1734,6 +1743,9 @@ msgstr "Подписка отменена"
 
 msgid "currentVehicleStatus/tempUnavailable"
 msgstr "Временно недоступно"
+
+msgid "currentVehicleStatus/ticketsShortage"
+msgstr "Нет ключа"
 
 msgid "currentVehicleStatus/undamaged"
 msgstr "К бою готов!"
@@ -2214,6 +2226,11 @@ msgstr ""
 msgid "extraParams/name/foliageMaskingFactor"
 msgstr "Параметр, отвечающий за силу эффекта маскировки от растительности."
 
+msgid "extraParams/name/minTimeBetweenReloadBoost"
+msgstr ""
+"Временная задержка после ускорения перезарядки, по истечении которой "
+"попадания по вам снова начнут ускорять перезарядку."
+
 msgid "extraParams/name/radiomanActivityTimeAfterVehicleDestroy"
 msgstr ""
 "Параметр, отвечающий за время остаточной передачи данных о позициях "
@@ -2221,6 +2238,11 @@ msgstr ""
 
 msgid "extraParams/name/radiomanHitChance"
 msgstr "Параметр, отвечающий за шанс избежать ранений радистом."
+
+msgid "extraParams/name/shotsLimitForGunBoost"
+msgstr ""
+"Параметр, отвечающий за количество учитываемых попаданий по вашей машине, "
+"которые определяют бонус к скорости перезарядки."
 
 msgid "extraParams/name/stunResistanceEffectFactor"
 msgstr ""
@@ -2273,6 +2295,16 @@ msgstr ""
 "Параметр, отвечающий за время поддержания противника видимым для команды "
 "после потери прямой видимости. Значение по умолчанию — 10 секунд."
 
+msgid "extraParams/name/vehicleEnginePower"
+msgstr ""
+"Параметр, отвечающий за бонус к максимальной скорости, динамике разгона и "
+"скорости поворота корпуса машины."
+
+msgid "extraParams/name/vehicleFinalDispersion"
+msgstr ""
+"Параметр, отвечающий за уменьшения круга сведения во время дейстия "
+"модификации."
+
 msgid "extraParams/name/vehicleFireChance"
 msgstr ""
 "Параметр, отвечающий за шанс возгорания двигателя при его повреждении."
@@ -2282,6 +2314,22 @@ msgstr ""
 "Параметр, отвечающий за защиту топливных баков от критического повреждения. "
 "Топливные баки, потерявшие все очки прочности, гарантированно вызывают "
 "пожар."
+
+msgid "extraParams/name/vehicleGunAndGunClipCooldown"
+msgstr ""
+"Время между полной разрядкой магазина (или орудий) и полным заряжанием. / "
+"Время между выстрелом и переходом к следующему заряженному снаряду, орудию "
+"или кассете."
+
+msgid "extraParams/name/vehicleGunKillReloadTime"
+msgstr ""
+"Параметр, отвечающий за перезарядку орудия после уничтожения противника во "
+"время действия боевого умения."
+
+msgid "extraParams/name/vehicleGunReloadTimeReceiveShot"
+msgstr ""
+"Параметр, отвечающий за перезарядку орудия после попадания по вам снарядами "
+"противника."
 
 msgid "extraParams/name/vehicleGunShotDispersion"
 msgstr ""
@@ -2524,6 +2572,9 @@ msgstr "Обслуживание"
 
 msgid "hangar/ammunitionPanel/tuningBtn"
 msgstr "Внешний вид"
+
+msgid "hangar/closeBtn"
+msgstr "ПОКИНУТЬ РЕЖИМ"
 
 msgid "hangar/crew/rody/dog/moreInfoLabel"
 msgstr "Подробнее"
@@ -2954,6 +3005,9 @@ msgstr "Тренировочный бой"
 
 msgid "headerButtons/battle/types/epicTraining/descr"
 msgstr "Линия фронта"
+
+msgid "headerButtons/battle/types/event"
+msgstr "Ваффентрагер: вызов"
 
 msgid "headerButtons/battle/types/eventSquad"
 msgstr "Ивентовый взвод"
@@ -4080,7 +4134,7 @@ msgstr "Сервер и пинг (мс):"
 
 msgid "login/social/status/SYSTEM_ERROR"
 msgstr ""
-"Ошибка авторизации через соц.сеть или Lesta ID. Попробуйте стандартный "
+"Ошибка авторизации через соц.сеть или Леста ID. Попробуйте стандартный "
 "способ входа, используя логин и пароль."
 
 msgid "login/social/status/WGC_ERROR"
@@ -4551,6 +4605,9 @@ msgstr "к основной специальности и навыкам эки�
 msgid "moduleInfo/params/damage"
 msgstr "Урон"
 
+msgid "moduleInfo/params/damagePerSecond"
+msgstr "Урон в секунду"
+
 msgid "moduleInfo/params/dispertionRadius"
 msgstr "Разброс на 100 м"
 
@@ -4616,14 +4673,11 @@ msgstr "Прочность"
 msgid "moduleInfo/params/maxShotDistance"
 msgstr "Дальность стрельбы"
 
-msgid "moduleInfo/params/maxShotDistance/footnote"
-msgstr "* максимальная дальность полета снарядов для данного орудия"
-
 msgid "moduleInfo/params/maxSteeringLockAngle"
 msgstr "Максимальный угол поворота колёс"
 
 msgid "moduleInfo/params/noPiercingDistance/footnote"
-msgstr "* для данного типа снарядов не зависит от расстояния"
+msgstr " Для данного типа снарядов не зависит от дистанции."
 
 msgid "moduleInfo/params/noPiercingDistance/footnote/maxDistance"
 msgstr ", максимальная дальность полёта - 400 м"
@@ -4635,7 +4689,7 @@ msgid "moduleInfo/params/piercingDistance"
 msgstr "%(dist)s м"
 
 msgid "moduleInfo/params/piercingDistance/footnote"
-msgstr "* зависит от расстояния: %(minDist)s - %(maxDist)s метров"
+msgstr " Для этих снарядов зависит от дистанции (%(minDist)s–%(maxDist)s м)."
 
 msgid "moduleInfo/params/piercingDistanceHeader"
 msgstr "Средняя бронепробиваемость (мм) — Расстояние"
@@ -5398,6 +5452,9 @@ msgstr "Показать в Ангаре"
 
 msgid "research/labels/button/toCollection"
 msgstr "К коллекции"
+
+msgid "research/labels/button/toEarlyAccessBuyButton"
+msgstr "КУПИТЬ ЖЕТОНЫ"
 
 msgid "research/labels/button/toEarlyAccessQuestsButton"
 msgstr "К ЗАДАЧАМ"
@@ -6238,6 +6295,9 @@ msgstr "Продлить аренду"
 msgid "tankCarousel/vehicleStates/rentableAgain/ranked"
 msgstr "Продлить аренду"
 
+msgid "tankCarousel/vehicleStates/rentalBattleIsOver"
+msgstr "Бои исчерпаны"
+
 msgid "tankCarousel/vehicleStates/rentalIsOver"
 msgstr "Аренда завершена"
 
@@ -6263,6 +6323,9 @@ msgstr ""
 
 msgid "tankCarousel/vehicleStates/tempUnavailable"
 msgstr "Временно недоступно"
+
+msgid "tankCarousel/vehicleStates/ticketsShortage"
+msgstr "Нет ключа"
 
 msgid "tankCarousel/vehicleStates/unavailable"
 msgstr "Недоступно"
@@ -6347,14 +6410,26 @@ msgstr "(полная/между/кол-во)"
 msgid "tank_params/cnt"
 msgstr "(шт.)"
 
+msgid "tank_params/cooldown"
+msgstr "Время перезарядки умения"
+
 msgid "tank_params/damage"
 msgstr "Урон базовым снарядом"
+
+msgid "tank_params/distanceDamage"
+msgstr "Урон снаряда"
 
 msgid "tank_params/dualAccuracyCoolingDelay"
 msgstr "Время остывания орудия"
 
 msgid "tank_params/dualAccuracyCoolingDelay/extendedTitle"
 msgstr "Время остывания орудия после выстрела"
+
+msgid "tank_params/duration"
+msgstr "Время действия умения"
+
+msgid "tank_params/empty"
+msgstr " "
 
 msgid "tank_params/enginePower"
 msgstr "Мощность двигателя"
@@ -6431,6 +6506,12 @@ msgstr "(км/ч)"
 msgid "tank_params/mps"
 msgstr "(м/с)"
 
+msgid "tank_params/multiTrackParallel_s_s"
+msgstr "(внешней/внутренней в с)"
+
+msgid "tank_params/multiTrackSequent_s_s"
+msgstr "(передней/задней в с)"
+
 msgid "tank_params/no_brackets/kg"
 msgstr "кг"
 
@@ -6470,6 +6551,9 @@ msgstr "Радиус обнаружения"
 msgid "tank_params/radioDistance"
 msgstr "Дальность связи"
 
+msgid "tank_params/relativeAbility"
+msgstr "Модификация"
+
 msgid "tank_params/relativeArmor"
 msgstr "Живучесть"
 
@@ -6490,6 +6574,12 @@ msgstr "Скорострельность орудия"
 
 msgid "tank_params/reloadTimeSecs"
 msgstr "Заряжание орудия"
+
+msgid "tank_params/reuseCount"
+msgstr "Применений за бой"
+
+msgid "tank_params/reuseCount/extendedTitle"
+msgstr "Количество применений боевого умения"
 
 msgid "tank_params/rocketAccelerationEnginePower"
 msgstr "Мощность двигателя (с ускорителями)"
@@ -6613,6 +6703,9 @@ msgstr "Масса"
 
 msgid "tank_params/vpm"
 msgstr "(ед./мин)"
+
+msgid "tank_params/vps"
+msgstr "(ед/с)"
 
 msgid "tank_params/wheeledSpeedModeSpeed"
 msgstr "Макс. скорость / задний ход (скоростной)"
@@ -6917,19 +7010,19 @@ msgid "validation/publicInfo/abbrev/invalid"
 msgstr ""
 "Введены неправильные символы или недопустимое их количество!\n"
 "Допустимые символы: латинские буквы, числа 0-9, знаки «-» и «_».\n"
-"Пример запроса: «[WG-A]»."
+"Пример запроса: «[LESTA]»."
 
 msgid "validation/publicInfo/abbrev/invalid/CN"
 msgstr ""
 "Введены неправильные символы или недопустимое их количество!\n"
 "Допустимые символы: латинские буквы, иероглифы, числа 0-9, знаки «-» и «_».\n"
-"Пример запроса: «[WG-A]»."
+"Пример запроса: «[LESTA]»."
 
 msgid "validation/publicInfo/abbrev/invalid/KR"
 msgstr ""
 "Введены неправильные символы или недопустимое их количество!\n"
 "Допустимые символы: латинские буквы, символы вашего алфавита, числа 0-9, знаки «-» и «_».\n"
-"Пример запроса: «[WG-A]»."
+"Пример запроса: «[LESTA]»."
 
 msgid "validation/publicInfo/abbrev/ours"
 msgstr "Вы ввели тег своего клана. "
@@ -6953,7 +7046,7 @@ msgid "vehicle/igrRentLeft/hours"
 msgstr "часов: %(hours)s"
 
 msgid "vehicle/rentLeft/battles"
-msgstr "Боёв доступно: %(battles)s"
+msgstr "Ещё боёв: %(battles)s"
 
 msgid "vehicle/rentLeft/days"
 msgstr "Дней аренды: %(days)s"
@@ -7040,6 +7133,12 @@ msgstr "Время залпа (с)"
 
 msgid "vehicleInfo/params/chassisRepairTime"
 msgstr "Время ремонта ходовой (с)"
+
+msgid "vehicleInfo/params/chassisRepairTimeMultiTrackParallel"
+msgstr "Время ремонта ходовой (внешней/внутренней в с)"
+
+msgid "vehicleInfo/params/chassisRepairTimeMultiTrackSequent"
+msgstr "Время ремонта ходовой (передней/задней в с)"
 
 msgid "vehicleInfo/params/chassisRepairTimeYoh"
 msgstr "Время ремонта ходовой (осн./рез. в с)"
@@ -7235,6 +7334,9 @@ msgstr "Побед"
 
 msgid "vehicleInfo/stats/xp"
 msgstr "Суммарный опыт"
+
+msgid "vehicleInfo/tabs/ability"
+msgstr "Модификация"
 
 msgid "vehicleInfo/tabs/base"
 msgstr "Комплектация"

@@ -22,7 +22,25 @@
 					<row0>1.000000 0.000000 0.000000</row0>
 					<row1>0.000000 1.000000 0.000000</row1>
 					<row2>0.000000 0.000000 1.000000</row2>
-					<row3>-0.000500 0.442068 1.044523</row3>
+					<row3>0.000000 0.485043 1.044558</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TurretCamera_01</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.440144 0.898587 0.146971</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_abillity</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
 				</transform>
 			</node>
 		</node>
@@ -38,23 +56,36 @@
 				<material>
 					<identifier>tank_turret_01</identifier>
 					<fx>shaders/std_effects/PBS_tank.fx</fx>
-					<materialKind>0</materialKind>
 					<collisionFlags>0</collisionFlags>
-					<property>
-						diffuseMap
-						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_turret_01_AM.dds</Texture>
-					</property>
-					<property>
-						excludeMaskAndAOMap
-						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_turret_01_AO.dds</Texture>
-					</property>
-					<property>
-						colorIdMap
-						<Texture>vehicles/russian/common/common_ID.dds</Texture>
-					</property>
+					<materialKind>0</materialKind>
 					<property>
 						g_detailUVTiling
-						<Vector4>7.000000 3.507000 0.000000 0.000000</Vector4>
+						<Vector4>3.506850 3.506850 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_detailPowerGloss
+						<Float>
+							0.35
+							<!--BW_String-->
+						</Float>
+					</property>
+					<property>
+						g_detailPowerAlbedo
+						<Float>
+							0.11
+							<!--BW_String-->
+						</Float>
+					</property>
+					<property>
+						g_maskBias
+						<Float>
+							0.18
+							<!--BW_String-->
+						</Float>
+					</property>
+					<property>
+						g_detailPower
+						<Float>5</Float>
 					</property>
 					<property>
 						metallicDetailMap
@@ -68,15 +99,23 @@
 						normalMap
 						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_turret_01_ANM.dds</Texture>
 					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_turret_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_turret_01_AO.dds</Texture>
+					</property>
 				</material>
-				<groupOrigin>0.002437 1.013496 -0.818574</groupOrigin>
+				<groupOrigin>-0.000634 0.523313 -0.489615</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<boundingBox>
-		<min>-1.532219 0.020917 -3.288936</min>
-		<max>1.537093 2.006075 1.651788</max>
+		<min>-1.525769 0.063919 -2.631017</min>
+		<max>1.524501 0.982708 1.651787</max>
 	</boundingBox>
-	<geometrySize>126804</geometrySize>
+	<geometrySize>42668</geometrySize>
 	<minUVDensity>0.001060</minUVDensity>
 </root>

@@ -31,6 +31,7 @@ package net.wg.gui.battle.components
          this._scheduler = App.utils.scheduler;
          super();
          this._context = param1;
+         this._context.stop();
       }
       
       public final function dispose() : void

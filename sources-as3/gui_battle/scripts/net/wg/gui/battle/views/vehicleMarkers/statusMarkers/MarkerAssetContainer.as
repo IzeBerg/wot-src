@@ -12,6 +12,8 @@ package net.wg.gui.battle.views.vehicleMarkers.statusMarkers
       
       public var markerMc:MovieClip = null;
       
+      public var isAtlasCenterDrawMode:Boolean = true;
+      
       private var _baseDisposed:Boolean = false;
       
       private var _iconName:String = "";
@@ -104,7 +106,14 @@ package net.wg.gui.battle.views.vehicleMarkers.statusMarkers
       {
          if(this._atlasSrcMode)
          {
-            this._vmManager.drawWithCenterAlign(this._iconName,this.markerMc.graphics,true,true);
+            if(this.isAtlasCenterDrawMode)
+            {
+               this._vmManager.drawWithCenterAlign(this._iconName,this.markerMc.graphics,true,true);
+            }
+            else
+            {
+               this._vmManager.drawGraphics(this._iconName,this.markerMc.graphics);
+            }
          }
       }
    }

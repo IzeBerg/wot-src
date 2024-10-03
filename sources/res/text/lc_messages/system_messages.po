@@ -763,24 +763,21 @@ msgstr ""
 "Вы израсходовали лимит на приобретение бесплатной техники. Попробуйте "
 "завтра."
 
-msgid "buy_tankmen_berths/not_enough_credits"
-msgstr "Ошибка расширения Казармы. Недостаточно кредитов."
+msgid "buy_tankmen_berths/buy_error"
+msgstr "Не удалось совершить покупку. Попробуйте позже."
 
-msgid "buy_tankmen_berths/not_enough_gold"
-msgstr "Ошибка расширения Казармы. Недостаточно золота."
+msgid "buy_tankmen_berths/credits/success"
+msgstr ""
+"Казарма расширена.\n"
+"Потрачено кредитов: %(money)s."
 
-msgid "buy_tankmen_berths/server_error"
-msgstr "Казарма не расширена. Попробуйте позже."
-
-msgid "buy_tankmen_berths/success"
+msgid "buy_tankmen_berths/gold/success"
 msgstr ""
 "Казарма расширена.\n"
 "Потрачено золота: %(money)s."
 
-msgid "buy_tankmen_berths/wallet_not_available"
-msgstr ""
-"Операция невозможна. Всё ваше золото станет доступно после автоматического "
-"восстановления работоспособности Единого кошелька."
+msgid "buy_tankmen_berths/server_error"
+msgstr "В данный момент операция невозможна. Попробуйте позже."
 
 msgid "buy_vehicle_slot_error"
 msgstr ""
@@ -2241,7 +2238,7 @@ msgstr ""
 
 msgid "login_to_other_game_unknown"
 msgstr ""
-"текущая игровая сессия прервана. Ваш Lesta&nbsp;ID был использован для входа"
+"текущая игровая сессия прервана. Ваш Леста&nbsp;ID был использован для входа"
 " в другую игру"
 
 msgid "login_to_other_game_web"
@@ -2250,27 +2247,27 @@ msgstr ""
 
 msgid "login_to_other_game_wot"
 msgstr ""
-"текущая игровая сессия прервана. Ваш Lesta&nbsp;ID был использован для входа"
+"текущая игровая сессия прервана. Ваш Леста&nbsp;ID был использован для входа"
 " в Мир&nbsp;танков"
 
 msgid "login_to_other_game_wotb"
 msgstr ""
-"текущая игровая сессия прервана. Ваш Lesta&nbsp;ID был использован для входа"
-" в Tanks&nbsp;Blitz"
+"текущая игровая сессия прервана. Ваш Леста&nbsp;ID был использован для входа"
+" в Tanks&nbsp;Blitz"
 
 msgid "login_to_other_game_wotg"
 msgstr ""
-"текущая игровая сессия прервана. Ваш Wargaming.net&nbsp;ID был использован "
-"для входа в World&nbsp;of&nbsp;Tanks&nbsp;Generals"
+"текущая игровая сессия прервана. Ваш Леста&nbsp;ID был использован для входа"
+" в другую игру"
 
 msgid "login_to_other_game_wowp"
 msgstr ""
-"текущая игровая сессия прервана. Ваш Wargaming.net&nbsp;ID был использован "
-"для входа в World&nbsp;of&nbsp;Warplanes"
+"текущая игровая сессия прервана. Ваш Леста&nbsp;ID был использован для входа"
+" в другую игру"
 
 msgid "login_to_other_game_wows"
 msgstr ""
-"текущая игровая сессия прервана. Ваш Lesta&nbsp;ID был использован для входа"
+"текущая игровая сессия прервана. Ваш Леста&nbsp;ID был использован для входа"
 " в Мир&nbsp;кораблей"
 
 msgid "lootboxes/open/server_error"
@@ -3068,16 +3065,14 @@ msgstr "Получено кредитов:"
 msgid "ranked/notifications/bonusName/crystal"
 msgstr "Получено бон:"
 
+msgid "ranked/notifications/bonusName/equipCoin"
+msgstr "Получено компонентов:"
+
 msgid "ranked/notifications/bonusName/eventCoin"
 msgstr "Получено юбилейных монет:"
 
 msgid "ranked/notifications/bonusName/gold"
 msgstr "Получено золота:"
-
-msgid "ranked/notifications/bonusName/selectableReward"
-msgstr ""
-"Добавлено усовершенствованное оборудование на выбор: "
-"%(selectableRewardCount)s"
 
 msgid "ranked/notifications/bonusName/style"
 msgstr "Получен стиль:"
@@ -3102,6 +3097,10 @@ msgstr "Дней Танкового премиум аккаунта (x%(daysCoun
 
 msgid "ranked/notifications/cycleResults"
 msgstr "Результаты этапа %(number)s"
+
+msgid "ranked/notifications/deluxe_gift"
+msgstr ""
+"Усовершенствованное оборудование на выбор (x%(selectableRewardCount)s)"
 
 msgid "ranked/notifications/league"
 msgstr "Лига: %(leagueName)s"
@@ -3510,7 +3509,7 @@ msgstr "Перезагрузка игрового сервера"
 
 msgid "session_tracker_kick"
 msgstr ""
-"Ваш Lesta&nbsp;ID использован для входа в другую игру, текущая игровая "
+"Ваш Леста&nbsp;ID использован для входа в другую игру, текущая игровая "
 "сессия прервана"
 
 msgid "shell_buy/invalid_module"
@@ -3678,8 +3677,8 @@ msgstr "Невозможно скачать реплей"
 msgid "steam_login_not_allowed"
 msgstr ""
 "Вы не можете использовать это приложение для игры: ваша учётная запись Steam"
-" уже привязана к учётной записи Lesta Games. Дополнительную информацию можно"
-" узнать в Центре поддержки пользователей."
+" уже привязана к учётной записи Леста. Дополнительную информацию можно "
+"узнать в Центре поддержки пользователей."
 
 msgid "techtree/action/expireTime"
 msgstr "%(days)s д"

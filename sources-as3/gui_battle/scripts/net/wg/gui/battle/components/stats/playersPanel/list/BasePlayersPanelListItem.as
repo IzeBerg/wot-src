@@ -251,15 +251,7 @@ package net.wg.gui.battle.components.stats.playersPanel.list
             this.disableCommunication.visible = false;
             this.disableCommunication.imageName = BATTLEATLAS.ICON_TOXIC_CHAT_OFF;
          }
-         this.bg.imageName = BATTLEATLAS.PLAYERS_PANEL_BG;
-         this.normAltBg.visible = false;
-         this.normAltBg.imageName = BATTLEATLAS.PLAYERS_PANEL_NORM_ALT_BG;
-         this.deadAltBg.visible = false;
-         this.deadAltBg.imageName = BATTLEATLAS.PLAYERS_PANEL_DEAD_ALT_BG;
-         this.selfBg.visible = false;
-         this.selfBg.imageName = BATTLEATLAS.PLAYERS_PANEL_SELF_BG;
-         this.deadBg.visible = false;
-         this.deadBg.imageName = BATTLEATLAS.PLAYERS_PANEL_DEAD_BG;
+         this.setupBackgrounds();
          this.selfBg.mouseEnabled = this.selfBg.mouseChildren = false;
          this.deadBg.mouseEnabled = this.deadBg.mouseChildren = false;
          this.bg.mouseEnabled = this.bg.mouseChildren = false;
@@ -314,15 +306,11 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          }
          if(isInvalid(PlayersPanelInvalidationType.SELECTED))
          {
-            this.selfBg.visible = this._isSelected;
+            this.updateSelfState();
          }
          if(isInvalid(PlayersPanelInvalidationType.ALIVE))
          {
-            this.bg.visible = this._isAlive && !this._isHpBarsVisible;
-            this.deadBg.visible = !this._isAlive && !this._isHpBarsVisible;
-            this.normAltBg.visible = this._isAlive && this._isHpBarsVisible;
-            this.deadAltBg.visible = !this._isAlive && this._isHpBarsVisible;
-            this.playerNameFullTF.alpha = this.fragsTF.alpha = this.playerNameCutTF.alpha = this.vehicleTF.alpha = !!this.deadAltBg.visible ? Number(DEAD_ALT_TEXT_ALPHA) : Number(this._originalTFAlpha);
+            this.updateBgState();
          }
          if(isInvalid(PlayersPanelInvalidationType.PLAYER_SCHEME))
          {
@@ -634,7 +622,27 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       {
       }
       
-      private function updatePositions() : void
+      protected function get isRightAligned() : Boolean
+      {
+         return this._isRightAligned;
+      }
+      
+      protected function get isAlive() : Boolean
+      {
+         return this._isAlive;
+      }
+      
+      protected function get isCurrentPlayer() : Boolean
+      {
+         return this._isCurrentPlayer;
+      }
+      
+      protected function get isOffline() : Boolean
+      {
+         return this._isOffline;
+      }
+      
+      protected function updatePositions() : void
       {
          var _loc1_:int = 0;
          var _loc3_:int = 0;
@@ -890,6 +898,33 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          this.hpBarPlayersPanelListItem.setVehicleIconX(this.vehicleIcon.x);
       }
       
+      protected function setupBackgrounds() : void
+      {
+         this.bg.imageName = BATTLEATLAS.PLAYERS_PANEL_BG;
+         this.normAltBg.visible = false;
+         this.normAltBg.imageName = BATTLEATLAS.PLAYERS_PANEL_NORM_ALT_BG;
+         this.deadAltBg.visible = false;
+         this.deadAltBg.imageName = BATTLEATLAS.PLAYERS_PANEL_DEAD_ALT_BG;
+         this.selfBg.visible = false;
+         this.selfBg.imageName = BATTLEATLAS.PLAYERS_PANEL_SELF_BG;
+         this.deadBg.visible = false;
+         this.deadBg.imageName = BATTLEATLAS.PLAYERS_PANEL_DEAD_BG;
+      }
+      
+      protected function updateSelfState() : void
+      {
+         this.selfBg.visible = this._isSelected;
+      }
+      
+      protected function updateBgState() : void
+      {
+         this.bg.visible = this._isAlive && !this._isHpBarsVisible;
+         this.deadBg.visible = !this._isAlive && !this._isHpBarsVisible;
+         this.normAltBg.visible = this._isAlive && this._isHpBarsVisible;
+         this.deadAltBg.visible = !this._isAlive && this._isHpBarsVisible;
+         this.playerNameFullTF.alpha = this.fragsTF.alpha = this.playerNameCutTF.alpha = this.vehicleTF.alpha = !!this.deadAltBg.visible ? Number(DEAD_ALT_TEXT_ALPHA) : Number(this._originalTFAlpha);
+      }
+      
       private function applyState() : void
       {
          switch(this._state)
@@ -967,7 +1002,7 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          invalidate();
       }
       
-      private function updateColors() : void
+      protected function updateColors() : void
       {
          var _loc4_:uint = 0;
          var _loc1_:String = PlayerStatusSchemeName.getSchemeNameForVehicle(this._isCurrentPlayer,this.isSquadPersonal(),this._isTeamKiller,!this._isAlive,this._isOffline);

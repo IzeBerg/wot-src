@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd1</identifier>
+					<fx>shaders/experimental/spawn_effect.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>112</materialKind>
+					<property>
+						alphaReference
+						<Int>1</Int>
+					</property>
+					<property>
+						finalParticlesColor
+						<Vector3>1.000000 0.337255 0.000000</Vector3>
+					</property>
+					<property>
+						initialParticlesColor
+						<Vector3>0.113725 0.015686 0.000000</Vector3>
+					</property>
+					<property>
+						particlesColorTransitionDistance
+						<Float>0.300000</Float>
+					</property>
+					<property>
+						particlesFar
+						<Float>5.000000</Float>
+					</property>
+					<property>
+						particleSizeMultiplier
+						<Float>1.500000</Float>
+					</property>
+					<property>
+						particlesMaxLinearDistance
+						<Vector3>0.200000 1.000000 0.200000</Vector3>
+					</property>
+					<property>
+						particlesTextureMap
+						<Texture>content/Hangars/h00_armory_yard/environment/Constructor/GB129_FV205b_Alligator/spark.dds</Texture>
+					</property>
+					<property>
+						preSpawnTextureMap
+						<Texture>content/Hangars/h00_armory_yard/environment/Constructor/GB129_FV205b_Alligator/noise_alpha_mask.dds</Texture>
+					</property>
+					<property>
+						selfIllumination
+						<Float>50.000000</Float>
+					</property>
+					<property>
+						spawnContourColor
+						<Vector3>1.000000 0.231373 0.000000</Vector3>
+					</property>
+					<property>
+						spawnContourThickness
+						<Float>0.020000</Float>
+					</property>
+					<property>
+						spawnProgeression
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						useParticles
+						<Bool>true</Bool>
+					</property>
+					<property>
+						useParticlesTexture
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>0.000000 1.477957 0.081767</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.997900 -0.500000 -3.777985</min>
+		<max>1.997900 2.422269 3.941520</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>382584</geometrySize>
+	<minUVDensity>0.000183</minUVDensity>
+</root>

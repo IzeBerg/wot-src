@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<version>3</version>
+	<GameObjects>
+		<GameObject>
+			<name>EventTankBoss</name>
+			<UUID>a193f770-5f89-4073-9667-8e1f968b1aad</UUID>
+			<flags>0</flags>
+		</GameObject>
+		<GameObject>
+			<name>CameraTarget</name>
+			<UUID>337fc197-6578-360a-b88b-a9307e1b5b3f</UUID>
+			<flags>0</flags>
+		</GameObject>
+		<GameObject>
+			<name>CameraSetup</name>
+			<UUID>37c3e4cc-f649-3f31-bc80-c5f06a55bbfc</UUID>
+			<flags>0</flags>
+		</GameObject>
+		<GameObject>
+			<name>Flight_from_Tank</name>
+			<UUID>383a4b53-af5e-49da-8710-22b6005f79f6</UUID>
+			<flags>0</flags>
+		</GameObject>
+		<GameObject>
+			<name>Flight_from_Hunter</name>
+			<UUID>63ab9054-d7e0-4457-add0-ce55b7bf7fd7</UUID>
+			<flags>0</flags>
+		</GameObject>
+	</GameObjects>
+	<components>
+		<ComponentPool>
+			<type>Hierarchy</type>
+			<version>2</version>
+			<component>
+				<objectIndex>1</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Parent</name>
+						<link>a193f770-5f89-4073-9667-8e1f968b1aad</link>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>2</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Parent</name>
+						<link>337fc197-6578-360a-b88b-a9307e1b5b3f</link>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>3</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Parent</name>
+						<link>37c3e4cc-f649-3f31-bc80-c5f06a55bbfc</link>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>4</objectIndex>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Parent</name>
+						<link>37c3e4cc-f649-3f31-bc80-c5f06a55bbfc</link>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>Transform</type>
+			<version>1</version>
+			<component>
+				<objectIndex>0</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>0 0 0</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>0 0 0</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>1</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>
+							0.24949 0.999997 3.32823
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>-0 0 0</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>2</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>
+							-3.01946 1.74965 8.29588
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>
+							0.195651 2.79253 -3.79775e-09
+							<!--BW_String-->
+						</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>3</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>
+							-0.352566 4.91559 2.17486
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>
+							0.999911 1.00003 1.00005
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>-0.206268 -0.917399 0.261388</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>4</objectIndex>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>0 0 0</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>0 0 0</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>CameraComponent</type>
+			<version>1</version>
+			<component>
+				<objectIndex>2</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Name</name>
+						<value>EventTankBoss</value>
+					</property>
+					<property>
+						<name>Rotation sensitivity</name>
+						<value>
+							0.005
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Zoom sensitivity</name>
+						<value>
+							0.003
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Fluency</name>
+						<value>
+							0.1
+							<!--BW_String-->
+						</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>CameraFlightComponent</type>
+			<version>1</version>
+			<component>
+				<objectIndex>3</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Camera name</name>
+						<value>Tank</value>
+					</property>
+					<property>
+						<name>Motion blur</name>
+						<value>
+							0.5
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Min duration</name>
+						<value>2</value>
+					</property>
+					<property>
+						<name>Max duration</name>
+						<value>3</value>
+					</property>
+					<property>
+						<name>Position Easing</name>
+						<value>2</value>
+					</property>
+					<property>
+						<name>Rotation Easing</name>
+						<value>2</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>4</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Camera name</name>
+						<value>EventTankHunter</value>
+					</property>
+					<property>
+						<name>Motion blur</name>
+						<value>
+							0.5
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Min duration</name>
+						<value>2</value>
+					</property>
+					<property>
+						<name>Max duration</name>
+						<value>3</value>
+					</property>
+					<property>
+						<name>Position Easing</name>
+						<value>3</value>
+					</property>
+					<property>
+						<name>Rotation Easing</name>
+						<value>3</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>RotatorAroundTargetComponent</type>
+			<version>1</version>
+			<component>
+				<objectIndex>2</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>_requestRecalc</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>YawLimits</name>
+						<value>-90 110</value>
+					</property>
+					<property>
+						<name>PitchLimits</name>
+						<value>
+							-80 -5.5
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>DistLimits</name>
+						<value>5 10</value>
+					</property>
+					<property>
+						<name>StartYaw</name>
+						<value>-20</value>
+					</property>
+					<property>
+						<name>StartPitch</name>
+						<value>
+							-11.2
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>StartDist</name>
+						<value>9</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>ParallaxComponent</type>
+			<version>1</version>
+			<component>
+				<objectIndex>2</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>DistDelta</name>
+						<value>0 0</value>
+					</property>
+					<property>
+						<name>AngelsDelta</name>
+						<value>
+							0.26 0.15
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Smoothing</name>
+						<value>5</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>CameraPreviewComponent</type>
+			<version>1</version>
+			<component>
+				<objectIndex>2</objectIndex>
+				<flags>2</flags>
+				<config>
+					<property>
+						<name>ChangeStartParams</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>DrawFrustrum</name>
+						<value>1</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+	</components>
+</root>

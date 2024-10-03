@@ -225,6 +225,10 @@ package net.wg.gui.lobby.hangar.alertMessage
             {
                this._tooltipMgr.showComplex(this._data.tooltip);
             }
+            if(this._data.isWulfTooltip)
+            {
+               this._tooltipMgr.showWulfTooltip(this._data.tooltip);
+            }
             else
             {
                this._tooltipMgr.showSpecial(this._data.tooltip,null,null);

@@ -88,15 +88,6 @@
 					<row3>0.000000 0.517878 0.447200</row3>
 				</transform>
 			</node>
-			<node>
-				<identifier>HP_hullAnim</identifier>
-				<transform>
-					<row0>1.000000 0.000000 0.000000</row0>
-					<row1>0.000000 1.000000 0.000000</row1>
-					<row2>0.000000 0.000000 1.000000</row2>
-					<row3>0.000000 0.000000 0.000000</row3>
-				</transform>
-			</node>
 		</node>
 	</node>
 	<renderSet>
@@ -148,6 +139,10 @@
 						normalMap
 						<Texture>vehicles/poland/Pl34_CS_63_02/CS_63_02_hull_01_ANM.dds</Texture>
 					</property>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
 				</material>
 				<groupOrigin>0.000000 -0.019026 -0.232990</groupOrigin>
 			</primitiveGroup>
@@ -157,6 +152,6 @@
 		<min>-1.640645 -0.636370 -3.497895</min>
 		<max>1.640645 0.598317 3.031914</max>
 	</boundingBox>
-	<geometrySize>519616</geometrySize>
+	<geometrySize>425594</geometrySize>
 	<minUVDensity>0.002328</minUVDensity>
 </root>

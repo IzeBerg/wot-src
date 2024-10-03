@@ -2,7 +2,6 @@ package net.wg.gui.bootcamp
 {
    import flash.display.DisplayObject;
    import net.wg.gui.lobby.techtree.interfaces.IRenderer;
-   import net.wg.gui.lobby.techtree.sub.NationTree;
    import net.wg.gui.lobby.techtree.sub.ResearchItems;
    import net.wg.infrastructure.base.meta.IBCHighlightsMeta;
    
@@ -24,7 +23,6 @@ package net.wg.gui.bootcamp
          var _loc9_:int = 0;
          var _loc10_:int = 0;
          var _loc11_:Object = null;
-         var _loc12_:NationTree = null;
          var _loc4_:DisplayObject = super.getContextRenderer(param1,param2,param3);
          if(_loc4_ != null)
          {
@@ -45,30 +43,6 @@ package net.wg.gui.bootcamp
                   if(_loc9_ > -1 && _loc10_ > _loc9_)
                   {
                      _loc11_ = _loc5_.dataProvider.getItemAt(_loc9_);
-                     if(checkForParamMatch(_loc11_,param2,param3))
-                     {
-                        return DisplayObject(_loc8_);
-                     }
-                  }
-               }
-               _loc6_++;
-            }
-         }
-         if(param1 is NationTree)
-         {
-            _loc12_ = NationTree(param1);
-            _loc6_ = 0;
-            _loc7_ = _loc12_.ntGraphics.numChildren;
-            while(_loc6_ < _loc7_)
-            {
-               if(_loc12_.ntGraphics.getChildAt(_loc6_) is IRenderer)
-               {
-                  _loc8_ = IRenderer(_loc12_.ntGraphics.getChildAt(_loc6_));
-                  _loc9_ = _loc8_.index;
-                  _loc10_ = _loc12_.dataProvider.length;
-                  if(_loc9_ > -1 && _loc10_ > _loc9_)
-                  {
-                     _loc11_ = _loc12_.dataProvider.getItemAt(_loc9_);
                      if(checkForParamMatch(_loc11_,param2,param3))
                      {
                         return DisplayObject(_loc8_);

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_tiled.fx</fx>
+					<materialKind>111</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						albedoHeightTile0
+						<Texture>content/Hangars/h00_armory_yard/environment/00_Tiles/RedBrick_07_01_512_AM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile1
+						<Texture>content/Hangars/h00_armory_yard/environment/00_Tiles/Plaster_03_01_painted_512_AM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile2
+						<Texture>content/Hangars/h00_armory_yard/environment/00_Tiles/RedBrick_07_02_512_AM.dds</Texture>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						blendMask
+						<Texture>content/Hangars/h00_armory_yard/environment/hd_h00_AY24_0001_Workshop_01_blend.png</Texture>
+					</property>
+					<property>
+						colorTex
+						<Texture>content/Hangars/h00_armory_yard/environment/hd_h00_AY24_0001_Workshop_01_GCM.dds</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Hangars/h00_armory_yard/environment/00_Tiles/bld_19_dirt_02_DM.dds</Texture>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>1.000000 0.430000 0.380000 0.350000</Vector4>
+					</property>
+					<property>
+						g_dirtColorParams
+						<Vector4>0.000000 0.400000 0.600000 0.800000</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>0.631373 0.631373 0.631373 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>0.807843 0.839216 0.858824 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>0.807843 0.807843 0.807843 1.000000</Vector4>
+					</property>
+					<property>
+						metallicAOTile0
+						<Texture>content/Hangars/h00_armory_yard/environment/00_Tiles/RedBrick_07_01_512_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile1
+						<Texture>content/Hangars/h00_armory_yard/environment/00_Tiles/Plaster_03_painted_512_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile2
+						<Texture>content/Hangars/h00_armory_yard/environment/00_Tiles/RedBrick_07_01_512_MAO.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile0
+						<Texture>content/Hangars/h00_armory_yard/environment/00_Tiles/RedBrick_07_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile1
+						<Texture>content/Hangars/h00_armory_yard/environment/00_Tiles/Plaster_03_01_painted_512_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile2
+						<Texture>content/Hangars/h00_armory_yard/environment/00_Tiles/RedBrick_07_512_GBMT.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.000000 2.500000 0.000000</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-12.061610 0.000000 -16.275005</min>
+		<max>11.660968 11.369215 13.464823</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>1032</geometrySize>
+	<minUVDensity>0.002500</minUVDensity>
+</root>

@@ -13,7 +13,7 @@ from gui.vehicle_view_states import createState4CurrentVehicle
 from helpers import dependency
 from items.vehicles import VehicleDescr
 from helpers import isPlayerAccount, i18n
-from account_helpers.AccountSettings import AccountSettings, BOOTCAMP_VEHICLE, CURRENT_VEHICLE, ROYALE_VEHICLE
+from account_helpers.AccountSettings import AccountSettings, BOOTCAMP_VEHICLE, CURRENT_VEHICLE, ROYALE_VEHICLE, EVENT_VEHICLE
 from gui.ClientUpdateManager import g_clientUpdateManager
 from gui.shared.utils.requesters import REQ_CRITERIA
 from gui.shared.formatters import icons
@@ -28,6 +28,7 @@ from skeletons.gui.game_control import IIGRController, IRentalsController, IBoot
 from skeletons.gui.shared import IItemsCache
 from skeletons.gui.shared.gui_items import IGuiItemsFactory
 from skeletons.gui.shared.utils import IHangarSpace
+from skeletons.gui.game_control import IWhiteTigerController
 _MODULES_NAMES = (
  'turret', 'chassis', 'engine', 'gun', 'radio')
 
@@ -133,6 +134,7 @@ class _CurrentVehicle(_CachedVehicle):
     battleRoyaleTounamentController = dependency.descriptor(IBattleRoyaleTournamentController)
     bootcampController = dependency.descriptor(IBootcampController)
     funRandomController = dependency.descriptor(IFunRandomController)
+    __wtController = dependency.descriptor(IWhiteTigerController)
 
     def __init__(self):
         super(_CurrentVehicle, self).__init__()
@@ -173,6 +175,8 @@ class _CurrentVehicle(_CachedVehicle):
             self.onChanged()
 
     def onLocksUpdate(self, locksDiff):
+        if self.__wtController.isEventPrbActive():
+            return
         if self.__vehInvID in locksDiff:
             self.refreshModel()
             self.onChanged()
@@ -278,6 +282,9 @@ class _CurrentVehicle(_CachedVehicle):
     def isOnlyForComp7Battles(self):
         return self.isPresent() and self.item.isOnlyForComp7Battles
 
+    def isOnlyForRandomBattles(self):
+        return self.isPresent() and self.item.isOnlyForRandomBattles
+
     def isOutfitLocked(self):
         return self.isPresent() and self.item.isOutfitLocked
 
@@ -303,10 +310,7 @@ class _CurrentVehicle(_CachedVehicle):
         return self.isPresent() and self.item.isReadyToFight
 
     def isUnsuitableToQueue(self):
-        if self.isPresent():
-            state, _ = self.item.getState()
-            return state == Vehicle.VEHICLE_STATE.UNSUITABLE_TO_QUEUE
-        return False
+        return self.isPresent() and self.item.isUnsuitableToQueue
 
     def isAutoLoadFull(self):
         return not self.isPresent() or self.item.isAutoLoadFull()
@@ -406,6 +410,8 @@ class _CurrentVehicle(_CachedVehicle):
             AccountSettings.setFavorites(ROYALE_VEHICLE, vehInvID)
         elif self.isInBootcamp():
             AccountSettings.setFavorites(BOOTCAMP_VEHICLE, vehInvID)
+        elif self.isEvent():
+            AccountSettings.setFavorites(EVENT_VEHICLE, vehInvID)
         else:
             AccountSettings.setFavorites(CURRENT_VEHICLE, vehInvID)
         self.refreshModel()
@@ -448,7 +454,9 @@ class _CurrentVehicle(_CachedVehicle):
         else:
             if vehicle.isModeHidden and vehicle.isOnlyForFunRandomBattles and not self.funRandomController.isEnabled():
                 return False
-            return not REQ_CRITERIA.VEHICLE.HIDDEN_IN_HANGAR(vehicle) and (not REQ_CRITERIA.VEHICLE.BATTLE_ROYALE(vehicle) or self.battleRoyaleController.isBattleRoyaleMode())
+            if vehicle.isModeHidden and vehicle.isOnlyForEventBattles:
+                return False
+            return not REQ_CRITERIA.VEHICLE.BATTLE_ROYALE(vehicle) or self.battleRoyaleController.isBattleRoyaleMode()
 
     def __checkPrebattleLockedVehicle(self):
         from gui.prb_control import prb_getters
@@ -543,6 +551,7 @@ class _CurrentPreviewVehicle(_CachedVehicle):
         self.onVehicleUnlocked = Event(self._eManager)
         self.onVehicleInventoryChanged = Event(self._eManager)
         self.onSelected = Event(self._eManager)
+        self.onSelectedNoVehicle = Event(self._eManager)
         self.onChanged = Event(self._eManager)
         return
 
@@ -569,6 +578,7 @@ class _CurrentPreviewVehicle(_CachedVehicle):
 
     def selectNoVehicle(self):
         self._selectVehicle(None)
+        self.onSelectedNoVehicle()
         self.onSelected()
         return
 

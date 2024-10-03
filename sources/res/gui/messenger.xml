@@ -559,7 +559,7 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 		<inviteToSpecialBattle>&lt;img src=&apos;img://gui/maps/icons/library/%(icon)s.png&apos; width=&apos;16&apos; height=&apos;16&apos; align=&apos;baseline&apos; vspace=&apos;-1&apos;/&gt;&amp;nbsp;&lt;font color=&apos;#FFFFFF&apos;&gt;%(text)s&lt;/font&gt;</inviteToSpecialBattle>
 		<battleResultAchieves>&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/achieves): &lt;font color=&apos;#D6D7D4&apos;&gt;%(achieves)s&lt;/font&gt;&lt;/font&gt;</battleResultAchieves>
 		<battleResultRankedProgress>&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/rankedProgress): &lt;font color=&apos;#D6D7D4&apos;&gt;%(rankedProgress)s&lt;/font&gt;&lt;/font&gt;</battleResultRankedProgress>
-		<battleResultRankedBonusBattles>&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/rankedBonusBattles): %(rankedBonusBattles)s&lt;/font&gt;</battleResultRankedBonusBattles>
+		<battleResultRankedBonusBattles>&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(rankedBonusBattles)s&lt;/font&gt;</battleResultRankedBonusBattles>
 		<battleResultBRProgression>&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(brProgressionTitle)s: &lt;font color=&apos;#D6D7D4&apos;&gt;%(brProgressionValue)s&lt;/font&gt;&lt;/font&gt;</battleResultBRProgression>
 		<battleResultCrystal>&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/crystal): &lt;font color=&apos;#D6D7D4&apos;&gt;%(crystal)s&lt;/font&gt;&lt;/font&gt;</battleResultCrystal>
 		<battleResultEventCoin>&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/eventCoin): &lt;font color=&apos;#D6D7D4&apos;&gt;%(eventCoin)s&lt;/font&gt;&lt;/font&gt;</battleResultEventCoin>
@@ -661,6 +661,8 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 		<rankedBonusBattlesAccruedInvoiceReceived>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/invoiceReceived/rankedBonusBattlesAccrued): &lt;font color=&apos;#8C8C7E&apos;&gt;%(bonusBattles)s&lt;/font&gt;</rankedBonusBattlesAccruedInvoiceReceived>
 		<rankedBonusBattlesDebitedInvoiceReceived>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/invoiceReceived/rankedBonusBattlesDebited): &lt;font color=&apos;#8C8C7E&apos;&gt;%(bonusBattles)s&lt;/font&gt;</rankedBonusBattlesDebitedInvoiceReceived>
 		<questTokenInvoiceReceived>&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</questTokenInvoiceReceived>
+		<lootboxesReceived>&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/event/lootboxes) &lt;font color=&apos;#8C8C7E&apos;&gt;%(amount)s&lt;/font&gt;</lootboxesReceived>
+		<ticketsReceived>&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/event/tickets) &lt;font color=&apos;#8C8C7E&apos;&gt;%(amount)s&lt;/font&gt;</ticketsReceived>
 		<offersAccruedInvoiceReceived>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/invoiceReceived/offersAccrued): &lt;font color=&apos;#8C8C7E&apos;&gt;%(offer)s&lt;/font&gt;</offersAccruedInvoiceReceived>
 		<offersDebitedInvoiceReceived>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/invoiceReceived/offersDebited): &lt;font color=&apos;#8C8C7E&apos;&gt;%(offer)s&lt;/font&gt;</offersDebitedInvoiceReceived>
 		<lbKeysAccruedInvoiceReceived>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/invoiceReceived/lbKeysAccrued): &lt;font color=&apos;#8C8C7E&apos;&gt;%(lootbox_key)s(x%(amount)s)&lt;/font&gt;</lbKeysAccruedInvoiceReceived>
@@ -1352,6 +1354,11 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 			<icon>GoldIcon</icon>
 			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#messenger:serviceChannelMessages/sysMsg/titles/financialTransaction)&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
 		</FinancialTransactionWithGoldSysMessage>
+		<FinancialTransactionWithCrystalSysMessage>
+			<type>yellow</type>
+			<icon>CrystalIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#messenger:serviceChannelMessages/sysMsg/titles/financialTransaction)&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+		</FinancialTransactionWithCrystalSysMessage>
 		<FinancialTransactionWithGoldHeaderSysMessage>
 			<type>yellow</type>
 			<icon>GoldIcon</icon>
@@ -2201,12 +2208,6 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 			<icon>InformationIcon</icon>
 			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#lootboxes:notification/header)&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;%(text)s</message>
 		</LootBoxRewardsSysMessage>
-		<WtEventLootBoxesAutoOpenMessage>
-			<priority>high</priority>
-			<type>yellow</type>
-			<icon>WarningIcon</icon>
-			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#messenger:serviceChannelMessages/lootBoxesAutoOpen/event/header)&lt;/font&gt;&lt;br/&gt;&lt;font face=&quot;$FieldFont&quot; size=&quot;14&quot; color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/lootBoxesAutoOpen/event/text)&lt;/font&gt;&lt;br/&gt;_(#messenger:serviceChannelMessages/lootBoxesAutoOpen/event/boxes)&lt;br/&gt;%(rewards)s</message>
-		</WtEventLootBoxesAutoOpenMessage>
 		<LunarBoxesAutoOpenMessage>
 			<priority>high</priority>
 			<type>yellow</type>

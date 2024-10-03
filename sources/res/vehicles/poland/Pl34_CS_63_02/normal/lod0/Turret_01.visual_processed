@@ -22,7 +22,7 @@
 					<row0>1.000000 0.000000 0.000000</row0>
 					<row1>0.000000 1.000000 0.000000</row1>
 					<row2>0.000000 0.000000 1.000000</row2>
-					<row3>-0.047849 0.259510 1.191813</row3>
+					<row3>-0.047869 0.259552 1.191849</row3>
 				</transform>
 			</node>
 		</node>
@@ -47,27 +47,44 @@
 				<material>
 					<identifier>tank_turret_01</identifier>
 					<fx>shaders/std_effects/PBS_tank.fx</fx>
-					<materialKind>0</materialKind>
 					<collisionFlags>0</collisionFlags>
-					<property>
-						diffuseMap
-						<Texture>vehicles/poland/Pl34_CS_63_02/CS_63_02_turret_01_AM.dds</Texture>
-					</property>
-					<property>
-						excludeMaskAndAOMap
-						<Texture>vehicles/poland/Pl34_CS_63_02/CS_63_02_turret_01_AO.dds</Texture>
-					</property>
+					<materialKind>0</materialKind>
 					<property>
 						g_detailUVTiling
 						<Vector4>3.506850 3.506850 0.000000 0.000000</Vector4>
 					</property>
 					<property>
-						g_useDetailMetallic
-						<Bool>true</Bool>
+						g_detailPowerGloss
+						<Float>
+							0.35
+							<!--BW_String-->
+						</Float>
+					</property>
+					<property>
+						g_detailPowerAlbedo
+						<Float>
+							0.11
+							<!--BW_String-->
+						</Float>
+					</property>
+					<property>
+						g_maskBias
+						<Float>
+							0.18
+							<!--BW_String-->
+						</Float>
+					</property>
+					<property>
+						g_detailPower
+						<Float>5</Float>
 					</property>
 					<property>
 						metallicDetailMap
 						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
 					</property>
 					<property>
 						metallicGlossMap
@@ -77,13 +94,25 @@
 						normalMap
 						<Texture>vehicles/poland/Pl34_CS_63_02/CS_63_02_turret_01_ANM.dds</Texture>
 					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/poland/Pl34_CS_63_02/CS_63_02_turret_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/poland/Pl34_CS_63_02/CS_63_02_turret_01_AO.dds</Texture>
+					</property>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
 				</material>
-				<groupOrigin>0.000116 0.481102 0.020074</groupOrigin>
+				<groupOrigin>0.000097 0.481144 0.020110</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
 				1
 				<material>
-					<identifier>turret_01_equipment</identifier>
+					<identifier>tank_equipment</identifier>
 					<fx>shaders/std_effects/PBS_tank.fx</fx>
 					<materialKind>0</materialKind>
 					<collisionFlags>0</collisionFlags>
@@ -115,14 +144,18 @@
 						normalMap
 						<Texture>vehicles/poland/Pl34_CS_63_02/CS_63_02_equipment_ANM.dds</Texture>
 					</property>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
 				</material>
-				<groupOrigin>-0.070707 0.380113 0.004005</groupOrigin>
+				<groupOrigin>-0.070728 0.380155 0.004041</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<boundingBox>
-		<min>-1.324688 -0.001101 -1.397824</min>
-		<max>1.324921 0.963305 1.437972</max>
+		<min>-1.324708 -0.001059 -1.397789</min>
+		<max>1.324901 0.963346 1.438008</max>
 	</boundingBox>
 	<geometrySize>368744</geometrySize>
 	<minUVDensity>0.014837</minUVDensity>

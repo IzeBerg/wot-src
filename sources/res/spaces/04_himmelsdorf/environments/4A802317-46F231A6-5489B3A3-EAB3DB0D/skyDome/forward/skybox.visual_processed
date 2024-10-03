@@ -27,20 +27,20 @@
 						<Texture>maps/skyboxes/04_Himmelsdorf_sky/skydome/04_Himmelsdorf_sky_forward_02.dds</Texture>
 					</property>
 					<property>
+						g_maskMap
+						<Texture>system/maps/clouds_mask.dds</Texture>
+					</property>
+					<property>
 						g_enableAnimatedSkybox
 						<Bool>true</Bool>
 					</property>
 					<property>
-						g_flip
-						<Float>1.000000</Float>
+						g_xBias
+						<Float>-0.250000</Float>
 					</property>
 					<property>
 						g_yBias
 						<Float>2.000000</Float>
-					</property>
-					<property>
-						g_xBias
-						<Float>-0.250000</Float>
 					</property>
 					<property>
 						g_frequency
@@ -59,16 +59,16 @@
 						<Float>297.000000</Float>
 					</property>
 					<property>
-						g_secondLDir
-						<Float>0.000000</Float>
+						g_flip
+						<Float>1.000000</Float>
 					</property>
 					<property>
 						g_horizontalFlip
 						<Float>0.000000</Float>
 					</property>
 					<property>
-						g_maskMap
-						<Texture>system/maps/clouds_mask.dds</Texture>
+						g_secondLDir
+						<Float>0.000000</Float>
 					</property>
 					<property>
 						g_toneMapExposureForward

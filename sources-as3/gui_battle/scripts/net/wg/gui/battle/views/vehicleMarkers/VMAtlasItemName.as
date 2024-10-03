@@ -29,6 +29,8 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       private static const STATUS_MARKER_GLOW_PREFIX:String = "sm_glow_";
       
+      private static const STATUS_MARKER_WAVE_PREFIX:String = "sm_wave_";
+      
       private static const EMPTY_STR:String = "";
       
       private static const UNDERSCORE_STR:String = "_";
@@ -91,6 +93,11 @@ package net.wg.gui.battle.views.vehicleMarkers
       public static function getStatusMarkerGlow(param1:String) : String
       {
          return STATUS_MARKER_GLOW_PREFIX + param1;
+      }
+      
+      public static function getStatusMarkerWave(param1:String) : String
+      {
+         return STATUS_MARKER_WAVE_PREFIX + param1;
       }
    }
 }

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<lobby>
+		<quests>
+			<bonuses>
+				<wtlootBox>&lt;img src=&apos;img://white_tiger/gui/maps/icons/rewards/s16x16/%(lootBoxType)s.png&apos; width=&apos;14&apos; height=&apos;14&apos; vspace=&apos;-3&apos;/&gt;&lt;font color=&apos;#FEFEEC&apos;&gt;(x%(count)d)&lt;/font&gt;</wtlootBox>
+				<wtCrystal> &lt;img src=&apos;img://gui/maps/icons/library/CrystalIcon-2.png&apos; width=&apos;16&apos; height=&apos;16&apos; vspace=&apos;-4&apos;/&gt;&lt;font color=&apos;#95907F&apos;&gt;%(value)s&lt;/font&gt;</wtCrystal>
+				<wtPremiumPlus>_(#white_tiger.quests.extend:bonuses/item/wt/premiumPlus) &lt;font color=&apos;#CED9D9&apos;&gt;%(value)s&lt;/font&gt;</wtPremiumPlus>
+				<mainPrizeDiscount>&lt;img src=&apos;img://white_tiger/gui/maps/icons/rewards/s16x16/main_prize_discount.png&apos; width=&apos;14&apos; height=&apos;14&apos; vspace=&apos;-3&apos;/&gt;&lt;font color=&apos;#FEFEEC&apos;&gt;(x%(value)d)&lt;/font&gt;</mainPrizeDiscount>
+				<ticket>&lt;img src=&apos;img://white_tiger/gui/maps/icons/rewards/s16x16/wtevent_ticket.png&apos; width=&apos;14&apos; height=&apos;14&apos; vspace=&apos;-3&apos;/&gt;&lt;font color=&apos;#FEFEEC&apos;&gt;(x%(value)s)&lt;/font&gt;</ticket>
+				<rentVehicle>&lt;font color=&apos;#8C8C7E&apos;&gt;&lt;b&gt;%(name)s&lt;/b&gt;&lt;/font&gt;</rentVehicle>
+				<customizations>
+					<wtEvent>
+						<camouflage>_(#white_tiger.quests.extend:bonuses/item/wt/camouflage) &lt;font color=&apos;#8C8C7E&apos;&gt;&quot;%(name)s&quot; (x%(value)s)&lt;/font&gt;</camouflage>
+						<emblem>_(#white_tiger.quests.extend:bonuses/item/wt/emblem) &lt;font color=&apos;#8C8C7E&apos;&gt;&quot;%(name)s&quot; (x%(value)s)&lt;/font&gt;</emblem>
+						<inscription>_(#white_tiger.quests.extend:bonuses/item/wt/inscription) &lt;font color=&apos;#8C8C7E&apos;&gt;&quot;%(name)s&quot; (x%(value)s)&lt;/font&gt;</inscription>
+						<projection_decal>_(#white_tiger.quests.extend:bonuses/item/wt/decal) &lt;font color=&apos;#8C8C7E&apos;&gt;&quot;%(name)s&quot; (x%(value)s)&lt;/font&gt;</projection_decal>
+						<decal>_(#white_tiger.quests.extend:bonuses/item/wt/decal) &lt;font color=&apos;#8C8C7E&apos;&gt;&quot;%(name)s&quot; (x%(value)s)&lt;/font&gt;</decal>
+						<paint>_(#white_tiger.quests.extend:bonuses/item/wt/paint) &lt;font color=&apos;#8C8C7E&apos;&gt;&quot;%(name)s&quot; (x%(value)s)&lt;/font&gt;</paint>
+						<style>_(#white_tiger.quests.extend:bonuses/item/wt/style) &lt;font color=&apos;#8C8C7E&apos;&gt;&quot;%(name)s&quot;&lt;/font&gt;</style>
+					</wtEvent>
+				</customizations>
+				<tankman>_(#white_tiger.quests.extend:bonuses/item/wt/tankman) &lt;font color=&apos;#E9E2BF&apos;&gt;%(crewName)s&lt;/font&gt;</tankman>
+			</bonuses>
+		</quests>
+	</lobby>
+	<battleHints>
+		<wtBattleStart_hunters>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#white_tiger.white_tiger:battleHints/wtBattleStart_hunters)&lt;/font&gt;</wtBattleStart_hunters>
+		<wtBattleStart_boss>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#white_tiger.white_tiger:battleHints/wtBattleStart_boss)&lt;/font&gt;</wtBattleStart_boss>
+		<wtCampKilled_hunters>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#white_tiger.white_tiger:battleHints/wtCampKilled_hunters)&lt;/font&gt;</wtCampKilled_hunters>
+		<wtCampKilled_boss>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#white_tiger.white_tiger:battleHints/wtCampKilled_boss)&lt;/font&gt;</wtCampKilled_boss>
+		<wtGeneratorCaptured_hunters>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#white_tiger.white_tiger:battleHints/wtGeneratorCaptured_hunters)&lt;/font&gt;</wtGeneratorCaptured_hunters>
+		<wtGeneratorCaptured_boss>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#white_tiger.white_tiger:battleHints/wtGeneratorCaptured_boss)&lt;/font&gt;</wtGeneratorCaptured_boss>
+		<wtBossInvincible>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#white_tiger.white_tiger:battleHints/wtBossInvincible)&lt;/font&gt;</wtBossInvincible>
+		<wtHunterIsDead>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#white_tiger.white_tiger:battleHints/wtHunterIsDead)&lt;/font&gt;</wtHunterIsDead>
+		<wtEndgameStart_hunters>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#white_tiger.white_tiger:battleHints/wtEndgameStart_hunters)&lt;/font&gt;</wtEndgameStart_hunters>
+		<wtEndgameStart_boss>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#white_tiger.white_tiger:battleHints/wtEndgameStart_boss)&lt;/font&gt;</wtEndgameStart_boss>
+		<wtEndgameStartNoHarm_boss>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#white_tiger.white_tiger:battleHints/wtEndgameStartNoHarm_boss)&lt;/font&gt;</wtEndgameStartNoHarm_boss>
+		<wtTimeRemaining_hunter>&lt;font color=&quot;#FFFFFF&quot;&gt;_(#white_tiger.white_tiger:battleHints/wtTimeRemaining_hunter)&lt;/font&gt;</wtTimeRemaining_hunter>
+		<wtTimeRemaining_boss>&lt;font color=&quot;#FFFFFF&quot;&gt;_(#white_tiger.white_tiger:battleHints/wtTimeRemaining_boss)&lt;/font&gt;</wtTimeRemaining_boss>
+		<wtOvertime_hunter>&lt;font size=&quot;24&quot; face=&apos;$TitleFont&apos; color=&quot;#FFFFFF&quot;&gt;_(#white_tiger.white_tiger:battleHints/wtOvertime_header)&lt;/font&gt;&lt;br&gt;&lt;font size=&quot;20&quot; face=&apos;$FieldFont&apos; color=&quot;#FFFFFF&quot; vspace=&quot;5&quot;/&gt;_(#white_tiger.white_tiger:battleHints/wtOvertime_hunters)&lt;/font&gt;</wtOvertime_hunter>
+		<wtOvertime_boss>&lt;font size=&quot;24&quot; face=&apos;$TitleFont&apos; color=&quot;#FFFFFF&quot;&gt;_(#white_tiger.white_tiger:battleHints/wtOvertime_header)&lt;/font&gt;&lt;br&gt;&lt;font size=&quot;20&quot; face=&apos;$FieldFont&apos; color=&quot;#FFFFFF&quot; vspace=&quot;5&quot;/&gt;_(#white_tiger.white_tiger:battleHints/wtOvertime_boss)&lt;/font&gt;</wtOvertime_boss>
+		<wtBossTeleport>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#white_tiger.white_tiger:battleHints/wtBossTeleport)&lt;/font&gt;</wtBossTeleport>
+		<wtBossHyperionReady>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#white_tiger.white_tiger:battleHints/wtBossHyperionReady)&lt;/font&gt;</wtBossHyperionReady>
+		<wtBossHyperionDeploy>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#white_tiger.white_tiger:battleHints/wtBossHyperionDeploy)&lt;/font&gt;</wtBossHyperionDeploy>
+		<wtGeneratorSpawned_hunters>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#white_tiger.white_tiger:battleHints/wtGeneratorSpawned_hunters)&lt;/font&gt;&lt;font size=&quot;24&quot; color=&quot;#E9E2BF&quot; vspace=&quot;15&quot;/&gt;_(#white_tiger.white_tiger:battleHints/wtGeneratorSpawned_time)&lt;/font&gt;</wtGeneratorSpawned_hunters>
+		<wtGeneratorSpawned_boss>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#white_tiger.white_tiger:battleHints/wtGeneratorSpawned_boss)&lt;/font&gt;&lt;font size=&quot;24&quot; color=&quot;#E9E2BF&quot;&gt;_(#white_tiger.white_tiger:battleHints/wtGeneratorSpawned_time)&lt;/font&gt;</wtGeneratorSpawned_boss>
+		<wtGeneratorActivated_hunters>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#white_tiger.white_tiger:battleHints/wtGeneratorActivated_hunters)&lt;/font&gt;</wtGeneratorActivated_hunters>
+		<wtGeneratorActivated_boss>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#white_tiger.white_tiger:battleHints/wtGeneratorActivated_boss)&lt;/font&gt;</wtGeneratorActivated_boss>
+		<wtCampsSpawned_hunters>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#white_tiger.white_tiger:battleHints/wtCampsSpawned_hunters)&lt;/font&gt;</wtCampsSpawned_hunters>
+		<wtCampsSpawned_boss>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#white_tiger.white_tiger:battleHints/wtCampsSpawned_boss)&lt;/font&gt;</wtCampsSpawned_boss>
+	</battleHints>
+</root>

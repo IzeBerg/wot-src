@@ -285,7 +285,11 @@ package net.wg.gui.lobby.components
       
       private function showToolTip() : void
       {
-         if(this._data.isSpecial)
+         if(this._data.isWulfTooltip)
+         {
+            this._toolTipMgr.showWulfTooltip.apply(this._toolTipMgr,[this._data.specialAlias].concat(this._data.specialArgs));
+         }
+         else if(this._data.isSpecial)
          {
             this._toolTipMgr.showSpecial.apply(this._toolTipMgr,[this._data.specialAlias,null].concat(this._data.specialArgs));
          }

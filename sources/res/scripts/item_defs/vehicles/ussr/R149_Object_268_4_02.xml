@@ -257,12 +257,21 @@
 			</models>
 			<traces>
 				<lodDist>MEDIUM</lodDist>
-				<bufferPrefs>mediumTank</bufferPrefs>
-				<textureSet>ussr_01</textureSet>
-				<size>
-					0.5 0.75
-					<!--BW_String-->
-				</size>
+				<activePostmortem>false</activePostmortem>
+				<tracesParams>
+					<trackPairIdx>0</trackPairIdx>
+					<bufferPrefs>mediumTank</bufferPrefs>
+					<textureSet>ussr_01</textureSet>
+					<size>
+						0.5 0.75
+						<!--BW_String-->
+					</size>
+					<offset>0 0</offset>
+					<centerOffsetFactor>
+						1.1 1
+						<!--BW_String-->
+					</centerOffsetFactor>
+				</tracesParams>
 			</traces>
 			<tracks>
 				<lodDist>MEDIUM_TRACK</lodDist>

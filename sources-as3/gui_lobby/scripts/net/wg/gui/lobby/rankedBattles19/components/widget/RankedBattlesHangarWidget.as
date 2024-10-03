@@ -165,8 +165,6 @@ package net.wg.gui.lobby.rankedBattles19.components.widget
       
       public var stepsContainer:WidgetStepsContainer = null;
       
-      public var shineAnim:MovieClip = null;
-      
       public var bonusBattles:WidgetBonusBattles = null;
       
       public var league:WidgetLeague = null;
@@ -216,7 +214,6 @@ package net.wg.gui.lobby.rankedBattles19.components.widget
          this._infoTF = this.infoText.infoTF;
          this._hitArea = new Sprite();
          addChild(this._hitArea);
-         this.shineAnim.gotoAndStop(1);
          this.backFlash.gotoAndStop(1);
          this.bg.gotoAndStop(1);
       }
@@ -235,8 +232,6 @@ package net.wg.gui.lobby.rankedBattles19.components.widget
          this.bg.hitArea = this._hitArea;
          this.bg.mouseEnabled = this.bg.mouseChildren = false;
          this.infoText.mouseEnabled = this.infoText.mouseChildren = false;
-         this.shineAnim.hitArea = this._hitArea;
-         this.shineAnim.mouseEnabled = this.shineAnim.mouseChildren = false;
          addEventListener(MouseEvent.CLICK,this.onClickHandler);
          App.soundMgr.addSoundsHdlrs(this);
          this.division.visible = false;
@@ -249,7 +244,6 @@ package net.wg.gui.lobby.rankedBattles19.components.widget
       
       override protected function onBeforeDispose() : void
       {
-         this.shineAnim.stop();
          this.backFlash.stop();
          this.bg.stop();
          this.rankLeft.stop();
@@ -284,7 +278,6 @@ package net.wg.gui.lobby.rankedBattles19.components.widget
          this.infoText = null;
          this.hit = null;
          this.backFlash = null;
-         this.shineAnim = null;
          this.bg = null;
          this._infoTF = null;
          this._model = null;
@@ -344,8 +337,6 @@ package net.wg.gui.lobby.rankedBattles19.components.widget
                   this.setFinalStateData(false);
                }
                this._infoTF.htmlText = this._model.infoText;
-               this.shineAnim.visible = false;
-               this.shineAnim.stop();
                if(this._model.divisionVO)
                {
                   this.division.update(this._model.divisionVO);
@@ -391,9 +382,7 @@ package net.wg.gui.lobby.rankedBattles19.components.widget
                this.bg.gotoAndStop(1);
                this.rankLeft.showReflection(false);
                this.rankRight.showReflection(false);
-               this.shineAnim.visible = false;
                this.backFlash.visible = false;
-               this.shineAnim.gotoAndStop(1);
                this.backFlash.gotoAndStop(1);
                if(this._model.divisionVO)
                {
@@ -411,8 +400,6 @@ package net.wg.gui.lobby.rankedBattles19.components.widget
                this.rankRight.update(this._model.rankRightVO);
                this.rankLeft.validateNow();
                this.rankRight.validateNow();
-               this.shineAnim.visible = false;
-               this.shineAnim.stop();
                _loc1_ = this._model.state;
                if(!this._model.isHuge && RANKEDBATTLES_ALIASES.RANK_ANIMATED_STATES.indexOf(_loc1_) == Values.DEFAULT_INT)
                {
@@ -656,10 +643,11 @@ package net.wg.gui.lobby.rankedBattles19.components.widget
       
       private function setFinalStateData(param1:Boolean = true) : void
       {
+         var _loc2_:RankedBattlesHangarWidgetVO = null;
          var _loc3_:Vector.<String> = null;
          var _loc4_:Boolean = false;
          var _loc5_:Boolean = false;
-         var _loc2_:RankedBattlesHangarWidgetVO = this._animationSteps[this._currentAnimationStep].finalState;
+         _loc2_ = this._animationSteps[this._currentAnimationStep].finalState;
          if(_loc2_)
          {
             _loc3_ = _loc2_.stepsContainerVO.steps;
@@ -734,9 +722,7 @@ package net.wg.gui.lobby.rankedBattles19.components.widget
          this.infoText.alpha = 1;
          this.rankLeft.update(null);
          this.rankRight.update(null);
-         this.shineAnim.visible = false;
          this.backFlash.visible = false;
-         this.shineAnim.gotoAndStop(1);
          this.backFlash.gotoAndStop(1);
       }
       
@@ -745,8 +731,6 @@ package net.wg.gui.lobby.rankedBattles19.components.widget
          var _loc1_:IRankIcon = RANKEDBATTLES_ALIASES.RANK_LEFT_BACK_FLASH_STATES.indexOf(this._model.state) != Values.DEFAULT_INT ? this.rankLeft : this.rankRight;
          this.backFlash.x = _loc1_.x + (_loc1_.width >> 1);
          this.backFlash.y = _loc1_.y + (_loc1_.height >> 1);
-         this.shineAnim.x = this.backFlash.x - (this.shineAnim.width >> 1);
-         this.shineAnim.y = this.backFlash.y - (this.shineAnim.height >> 1);
       }
       
       private function rebuildLayout() : void

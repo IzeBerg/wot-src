@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/glow_noalpha.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>112</materialKind>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h00_armory_yard/environment/dec_h21_ay43_reel_tape_recorder_AM.dds</Texture>
+					</property>
+					<property>
+						g_tintColor
+						<Vector4>0.905882 0.274510 0.274510 1.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>-0.082424 0.148554 -0.166947</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.092836 0.125404 -0.190097</min>
+		<max>-0.072012 0.171704 -0.143797</max>
+	</boundingBox>
+	<geometrySize>840</geometrySize>
+	<minUVDensity>10000.000000</minUVDensity>
+</root>

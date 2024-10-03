@@ -50,6 +50,7 @@ class PreQueueFactory(ControlFactory):
         self.comp7Storage = prequeue_storage_getter(QUEUE_TYPE.COMP7)()
         self.versusAIStorage = prequeue_storage_getter(QUEUE_TYPE.VERSUS_AI)()
         self.recentPrbStorage = storage_getter(RECENT_PRB_STORAGE)()
+        self.whiteTigerStorage = prequeue_storage_getter(QUEUE_TYPE.WHITE_TIGER)()
         self.__defaultEntityHandler = DefaultEntityHandler()
 
     def createEntry(self, ctx):
@@ -105,6 +106,8 @@ class PreQueueFactory(ControlFactory):
                 return Comp7Entity()
             if self.versusAIStorage is not None and self.versusAIStorage.isModeSelected():
                 return self.__createByQueueType(QUEUE_TYPE.VERSUS_AI)
+            if self.whiteTigerStorage is not None and self.whiteTigerStorage.isModeSelected():
+                return self.__createByQueueType(QUEUE_TYPE.WHITE_TIGER)
             defaultQueueType = self.__defaultEntityHandler.getDefaultQueueType()
             lastBattleQueueType = self.recentPrbStorage.queueType
             if not self.__defaultEntityHandler.isDefaultStillAvailable(lastBattleQueueType):

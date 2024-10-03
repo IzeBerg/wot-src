@@ -22,7 +22,7 @@
 					<row0>1.000000 0.000000 0.000000</row0>
 					<row1>0.000000 0.993847 -0.110758</row1>
 					<row2>0.000000 0.110758 0.993847</row2>
-					<row3>-1.341270 -0.003149 2.410431</row3>
+					<row3>-1.341270 -0.003149 -0.398397</row3>
 				</transform>
 			</node>
 			<node>
@@ -40,7 +40,7 @@
 					<row0>1.000000 0.000000 0.000000</row0>
 					<row1>0.000000 0.993847 -0.110758</row1>
 					<row2>0.000000 0.110758 0.993847</row2>
-					<row3>1.341270 -0.003149 2.410431</row3>
+					<row3>1.341270 -0.003149 -0.398397</row3>
 				</transform>
 			</node>
 			<node>
@@ -50,6 +50,42 @@
 					<row1>0.000000 0.994751 0.102324</row1>
 					<row2>-0.000000 0.102324 -0.994751</row2>
 					<row3>1.341270 -0.003149 -2.410431</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_LFront1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.993847 -0.110758</row1>
+					<row2>0.000000 0.110758 0.993847</row2>
+					<row3>-1.341000 -0.003149 2.378021</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_LRear1</identifier>
+				<transform>
+					<row0>-1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.994751 0.102324</row1>
+					<row2>0.000000 0.102324 -0.994751</row2>
+					<row3>-1.341270 -0.003149 0.375426</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_RFront1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.993847 -0.110758</row1>
+					<row2>0.000000 0.110758 0.993847</row2>
+					<row3>1.341270 -0.003149 2.378021</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_RRear1</identifier>
+				<transform>
+					<row0>-1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.994751 0.102324</row1>
+					<row2>0.000000 0.102324 -0.994751</row2>
+					<row3>1.341270 -0.003149 0.375426</row3>
 				</transform>
 			</node>
 			<node>
@@ -731,7 +767,7 @@
 							<row0>1.000000 0.000000 0.000000</row0>
 							<row1>0.000000 1.000000 0.000000</row1>
 							<row2>0.000000 0.000000 1.000000</row2>
-							<row3>-1.385512 0.166835 2.629853</row3>
+							<row3>-1.385512 0.169099 2.629850</row3>
 						</transform>
 						<node>
 							<identifier>Track_VT_L0_BlendBone</identifier>
@@ -739,7 +775,7 @@
 								<row0>1.000000 0.000000 0.000000</row0>
 								<row1>0.000000 1.000000 0.000000</row1>
 								<row2>0.000000 0.000000 -1.000000</row2>
-								<row3>1.385512 -1.011794 -2.629853</row3>
+								<row3>1.385512 -1.014058 -2.629850</row3>
 							</transform>
 						</node>
 					</node>
@@ -1244,77 +1280,6 @@
 	</node>
 	<renderSet>
 		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
-		<node>Track_R2_BlendBone</node>
-		<node>Track_R1_BlendBone</node>
-		<node>Track_R0_BlendBone</node>
-		<node>V_BlendBone</node>
-		<node>Track_VD_R0_BlendBone</node>
-		<node>Track_VT_R0_BlendBone</node>
-		<node>Track_VT_R1_BlendBone</node>
-		<node>Track_VT_R2_BlendBone</node>
-		<node>Track_R3_BlendBone</node>
-		<node>Track_R5_BlendBone</node>
-		<node>Track_R6_BlendBone</node>
-		<node>Track_R7_BlendBone</node>
-		<node>Track_VD_R1_BlendBone</node>
-		<node>Track_VT_R5_BlendBone</node>
-		<node>Track_VT_R4_BlendBone</node>
-		<node>Track_VT_R3_BlendBone</node>
-		<node>Track_R4_BlendBone</node>
-		<geometry>
-			<vertices>track_R_Shape.vertices</vertices>
-			<stream>track_R_Shape.uv2</stream>
-			<primitive>track_R_Shape.indices</primitive>
-			<primitiveGroup>
-				0
-				<material>
-					<identifier>track_mat_R_skinned</identifier>
-					<collisionFlags>0</collisionFlags>
-					<materialKind>0</materialKind>
-					<fx>shaders/std_effects/PBS_tank_uvtransform_skinned_ao.fx</fx>
-					<property>
-						metallicGlossMap
-						<Texture>vehicles/poland/tracks/Czolg_P_Wz_46_track_GMM.dds</Texture>
-					</property>
-					<property>
-						normalMap
-						<Texture>vehicles/poland/tracks/Czolg_P_Wz_46_track_ANM.dds</Texture>
-					</property>
-					<property>
-						diffuseMap
-						<Texture>vehicles/poland/tracks/Czolg_P_Wz_46_track_AM.dds</Texture>
-					</property>
-					<property>
-						alphaReference
-						<Int>64</Int>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>true</Bool>
-					</property>
-					<property>
-						doubleSided
-						<Bool>true</Bool>
-					</property>
-					<property>
-						g_useDetailMetallic
-						<Bool>true</Bool>
-					</property>
-					<property>
-						metallicDetailMap
-						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
-					</property>
-					<property>
-						g_detailUVTiling
-						<Vector4>3.506849 0.876712 0.000000 0.000000</Vector4>
-					</property>
-				</material>
-				<groupOrigin>1.341270 0.495460 0.000000</groupOrigin>
-			</primitiveGroup>
-		</geometry>
-	</renderSet>
-	<renderSet>
-		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
 		<node>Track_L2_BlendBone</node>
 		<node>Track_L1_BlendBone</node>
 		<node>Track_L0_BlendBone</node>
@@ -1324,25 +1289,45 @@
 		<node>Track_VT_L1_BlendBone</node>
 		<node>Track_VT_L2_BlendBone</node>
 		<node>Track_L3_BlendBone</node>
-		<node>Track_L5_BlendBone</node>
-		<node>Track_L6_BlendBone</node>
-		<node>Track_L7_BlendBone</node>
-		<node>Track_VD_L1_BlendBone</node>
-		<node>Track_VT_L5_BlendBone</node>
-		<node>Track_VT_L4_BlendBone</node>
-		<node>Track_VT_L3_BlendBone</node>
-		<node>Track_L4_BlendBone</node>
 		<geometry>
-			<vertices>track_L_Shape.vertices</vertices>
-			<stream>track_L_Shape.uv2</stream>
-			<primitive>track_L_Shape.indices</primitive>
+			<vertices>track_L1_Shape.vertices</vertices>
+			<stream>track_L1_Shape.uv2</stream>
+			<primitive>track_L1_Shape.indices</primitive>
 			<primitiveGroup>
 				0
 				<material>
-					<identifier>track_mat_L_skinned</identifier>
-					<collisionFlags>0</collisionFlags>
-					<materialKind>0</materialKind>
+					<identifier>track_mat_L1_skinned</identifier>
 					<fx>shaders/std_effects/PBS_tank_uvtransform_skinned_ao.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						alphaReference
+						<Int>128</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/poland/tracks/Czolg_P_Wz_46_track_AM.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>3.507000 0.876750 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
 					<property>
 						metallicGlossMap
 						<Texture>vehicles/poland/tracks/Czolg_P_Wz_46_track_GMM.dds</Texture>
@@ -1351,23 +1336,54 @@
 						normalMap
 						<Texture>vehicles/poland/tracks/Czolg_P_Wz_46_track_ANM.dds</Texture>
 					</property>
-					<property>
-						diffuseMap
-						<Texture>vehicles/poland/tracks/Czolg_P_Wz_46_track_AM.dds</Texture>
-					</property>
+				</material>
+				<groupOrigin>-1.341270 0.495460 -1.808892</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>Track_R2_BlendBone</node>
+		<node>Track_R1_BlendBone</node>
+		<node>Track_R0_BlendBone</node>
+		<node>V_BlendBone</node>
+		<node>Track_VD_R0_BlendBone</node>
+		<node>Track_VT_R0_BlendBone</node>
+		<node>Track_VT_R1_BlendBone</node>
+		<node>Track_VT_R2_BlendBone</node>
+		<node>Track_R3_BlendBone</node>
+		<geometry>
+			<vertices>track_R1_Shape.vertices</vertices>
+			<stream>track_R1_Shape.uv2</stream>
+			<primitive>track_R1_Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>track_mat_R1_skinned</identifier>
+					<fx>shaders/std_effects/PBS_tank_uvtransform_skinned_ao.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
 					<property>
 						alphaReference
-						<Int>64</Int>
+						<Int>128</Int>
 					</property>
 					<property>
 						alphaTestEnable
 						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/poland/tracks/Czolg_P_Wz_46_track_AM.dds</Texture>
 					</property>
 					<property>
 						doubleSided
 						<Bool>true</Bool>
 					</property>
 					<property>
+						g_detailUVTiling
+						<Vector4>3.507000 0.876750 0.000000 0.000000</Vector4>
+					</property>
+					<property>
 						g_useDetailMetallic
 						<Bool>true</Bool>
 					</property>
@@ -1376,70 +1392,141 @@
 						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
 					</property>
 					<property>
-						g_detailUVTiling
-						<Vector4>3.506849 0.876712 0.000000 0.000000</Vector4>
+						metallicGlossMap
+						<Texture>vehicles/poland/tracks/Czolg_P_Wz_46_track_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/poland/tracks/Czolg_P_Wz_46_track_ANM.dds</Texture>
 					</property>
 				</material>
-				<groupOrigin>-1.341270 0.495460 0.000000</groupOrigin>
+				<groupOrigin>1.341270 0.495460 -1.808892</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<renderSet>
 		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>Track_R5_BlendBone</node>
+		<node>Track_R6_BlendBone</node>
+		<node>Track_R7_BlendBone</node>
+		<node>Track_VD_R1_BlendBone</node>
 		<node>V_BlendBone</node>
-		<node>Track_L1_BlendBone</node>
+		<node>Track_VT_R5_BlendBone</node>
+		<node>Track_VT_R4_BlendBone</node>
+		<node>Track_VT_R3_BlendBone</node>
+		<node>Track_R4_BlendBone</node>
 		<geometry>
-			<vertices>exportChassL1_Shape1_split_1.vertices</vertices>
-			<primitive>exportChassL1_Shape1_split_1.indices</primitive>
+			<vertices>track_R0_Shape.vertices</vertices>
+			<stream>track_R0_Shape.uv2</stream>
+			<primitive>track_R0_Shape.indices</primitive>
 			<primitiveGroup>
 				0
 				<material>
-					<identifier>tank_chassis_01_skinned</identifier>
-					<collisionFlags>0</collisionFlags>
+					<identifier>track_mat_R0_skinned</identifier>
+					<fx>shaders/std_effects/PBS_tank_uvtransform_skinned_ao.fx</fx>
 					<materialKind>0</materialKind>
-					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
-					<property>
-						metallicGlossMap
-						<Texture>vehicles/poland/Pl26_Czolg_P_Wz_46/Czolg_P_Wz_46_chassis_01_GMM.dds</Texture>
-					</property>
-					<property>
-						normalMap
-						<Texture>vehicles/poland/Pl26_Czolg_P_Wz_46/Czolg_P_Wz_46_chassis_01_ANM.dds</Texture>
-					</property>
-					<property>
-						diffuseMap
-						<Texture>vehicles/poland/Pl26_Czolg_P_Wz_46/Czolg_P_Wz_46_chassis_01_AM.dds</Texture>
-					</property>
-					<property>
-						excludeMaskAndAOMap
-						<Texture>vehicles/poland/Pl26_Czolg_P_Wz_46/Czolg_P_Wz_46_chassis_01_AO.dds</Texture>
-					</property>
-					<property>
-						g_useDetailMetallic
-						<Bool>true</Bool>
-					</property>
-					<property>
-						metallicDetailMap
-						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
-					</property>
-					<property>
-						g_detailUVTiling
-						<Vector4>3.506849 3.506849 0.000000 0.000000</Vector4>
-					</property>
+					<collisionFlags>0</collisionFlags>
 					<property>
 						alphaReference
-						<Int>64</Int>
+						<Int>128</Int>
 					</property>
 					<property>
 						alphaTestEnable
 						<Bool>true</Bool>
 					</property>
 					<property>
-						colorIdMap
-						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+						diffuseMap
+						<Texture>vehicles/poland/tracks/Czolg_P_Wz_46_track_AM.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>3.507000 0.876750 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/poland/tracks/Czolg_P_Wz_46_track_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/poland/tracks/Czolg_P_Wz_46_track_ANM.dds</Texture>
 					</property>
 				</material>
-				<groupOrigin>-1.117402 0.367880 -1.846941</groupOrigin>
+				<groupOrigin>1.341270 0.495460 1.808892</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>Track_L5_BlendBone</node>
+		<node>Track_L6_BlendBone</node>
+		<node>Track_L7_BlendBone</node>
+		<node>Track_VD_L1_BlendBone</node>
+		<node>V_BlendBone</node>
+		<node>Track_VT_L5_BlendBone</node>
+		<node>Track_VT_L4_BlendBone</node>
+		<node>Track_VT_L3_BlendBone</node>
+		<node>Track_L4_BlendBone</node>
+		<geometry>
+			<vertices>track_L0_Shape.vertices</vertices>
+			<stream>track_L0_Shape.uv2</stream>
+			<primitive>track_L0_Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>track_mat_L0_skinned</identifier>
+					<fx>shaders/std_effects/PBS_tank_uvtransform_skinned_ao.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						alphaReference
+						<Int>128</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/poland/tracks/Czolg_P_Wz_46_track_AM.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>3.507000 0.876750 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/poland/tracks/Czolg_P_Wz_46_track_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/poland/tracks/Czolg_P_Wz_46_track_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-1.341270 0.495460 1.808892</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
@@ -1447,38 +1534,53 @@
 		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
 		<node>V_BlendBone</node>
 		<node>Track_L2_BlendBone</node>
-		<node>WD_L7_BlendBone</node>
-		<node>WD_L6_BlendBone</node>
-		<node>WD_L5_BlendBone</node>
-		<node>WD_L4_BlendBone</node>
-		<node>WD_L3_BlendBone</node>
-		<node>WD_L2_BlendBone</node>
-		<node>WD_L1_BlendBone</node>
-		<node>WD_L0_BlendBone</node>
-		<node>W_L7_BlendBone</node>
-		<node>W_L6_BlendBone</node>
-		<node>W_L5_BlendBone</node>
-		<node>W_L4_BlendBone</node>
-		<node>W_L3_BlendBone</node>
-		<node>W_L2_BlendBone</node>
-		<node>W_L1_BlendBone</node>
-		<node>W_L0_BlendBone</node>
-		<node>Track_L4_BlendBone</node>
-		<node>Track_L7_BlendBone</node>
-		<node>Track_L6_BlendBone</node>
-		<node>Track_L5_BlendBone</node>
-		<node>Track_L3_BlendBone</node>
-		<node>Track_L0_BlendBone</node>
 		<geometry>
-			<vertices>exportChassL1_Shape1_split_0.vertices</vertices>
-			<primitive>exportChassL1_Shape1_split_0.indices</primitive>
+			<vertices>chassis_L_Shape_split_1.vertices</vertices>
+			<primitive>chassis_L_Shape_split_1.indices</primitive>
 			<primitiveGroup>
 				0
 				<material>
 					<identifier>tank_chassis_01_skinned</identifier>
+					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
 					<collisionFlags>0</collisionFlags>
 					<materialKind>0</materialKind>
-					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<property>
+						g_detailUVTiling
+						<Vector4>3.506850 3.506850 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_detailPowerGloss
+						<Float>
+							0.35
+							<!--BW_String-->
+						</Float>
+					</property>
+					<property>
+						g_detailPowerAlbedo
+						<Float>
+							0.11
+							<!--BW_String-->
+						</Float>
+					</property>
+					<property>
+						g_maskBias
+						<Float>
+							0.18
+							<!--BW_String-->
+						</Float>
+					</property>
+					<property>
+						g_detailPower
+						<Float>5</Float>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
 					<property>
 						metallicGlossMap
 						<Texture>vehicles/poland/Pl26_Czolg_P_Wz_46/Czolg_P_Wz_46_chassis_01_GMM.dds</Texture>
@@ -1496,24 +1598,102 @@
 						<Texture>vehicles/poland/Pl26_Czolg_P_Wz_46/Czolg_P_Wz_46_chassis_01_AO.dds</Texture>
 					</property>
 					<property>
-						g_useDetailMetallic
-						<Bool>true</Bool>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-1.117402 0.367880 -1.181813</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>WD_L7_BlendBone</node>
+		<node>W_L0_BlendBone</node>
+		<node>W_L1_BlendBone</node>
+		<node>W_L2_BlendBone</node>
+		<node>W_L3_BlendBone</node>
+		<node>W_L4_BlendBone</node>
+		<node>W_L5_BlendBone</node>
+		<node>W_L6_BlendBone</node>
+		<node>W_L7_BlendBone</node>
+		<node>WD_L0_BlendBone</node>
+		<node>WD_L1_BlendBone</node>
+		<node>WD_L2_BlendBone</node>
+		<node>WD_L3_BlendBone</node>
+		<node>WD_L4_BlendBone</node>
+		<node>WD_L5_BlendBone</node>
+		<node>WD_L6_BlendBone</node>
+		<node>V_BlendBone</node>
+		<node>Track_L4_BlendBone</node>
+		<node>Track_L7_BlendBone</node>
+		<node>Track_L6_BlendBone</node>
+		<node>Track_L5_BlendBone</node>
+		<node>Track_L3_BlendBone</node>
+		<node>Track_L0_BlendBone</node>
+		<node>Track_L1_BlendBone</node>
+		<geometry>
+			<vertices>chassis_L_Shape_split_0.vertices</vertices>
+			<primitive>chassis_L_Shape_split_0.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_chassis_01_skinned</identifier>
+					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						g_detailUVTiling
+						<Vector4>3.506850 3.506850 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_detailPowerGloss
+						<Float>
+							0.35
+							<!--BW_String-->
+						</Float>
+					</property>
+					<property>
+						g_detailPowerAlbedo
+						<Float>
+							0.11
+							<!--BW_String-->
+						</Float>
+					</property>
+					<property>
+						g_maskBias
+						<Float>
+							0.18
+							<!--BW_String-->
+						</Float>
+					</property>
+					<property>
+						g_detailPower
+						<Float>5</Float>
 					</property>
 					<property>
 						metallicDetailMap
 						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
 					</property>
 					<property>
-						g_detailUVTiling
-						<Vector4>3.506849 3.506849 0.000000 0.000000</Vector4>
-					</property>
-					<property>
-						alphaReference
-						<Int>64</Int>
-					</property>
-					<property>
-						alphaTestEnable
+						g_useDetailMetallic
 						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/poland/Pl26_Czolg_P_Wz_46/Czolg_P_Wz_46_chassis_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/poland/Pl26_Czolg_P_Wz_46/Czolg_P_Wz_46_chassis_01_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/poland/Pl26_Czolg_P_Wz_46/Czolg_P_Wz_46_chassis_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/poland/Pl26_Czolg_P_Wz_46/Czolg_P_Wz_46_chassis_01_AO.dds</Texture>
 					</property>
 					<property>
 						colorIdMap
@@ -1527,17 +1707,54 @@
 	<renderSet>
 		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
 		<node>V_BlendBone</node>
-		<node>Track_R1_BlendBone</node>
+		<node>Track_R2_BlendBone</node>
 		<geometry>
-			<vertices>exportChassR1_Shape1_split_1.vertices</vertices>
-			<primitive>exportChassR1_Shape1_split_1.indices</primitive>
+			<vertices>chassis_R_Shape_split_1.vertices</vertices>
+			<primitive>chassis_R_Shape_split_1.indices</primitive>
 			<primitiveGroup>
 				0
 				<material>
 					<identifier>tank_chassis_01_skinned</identifier>
+					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
 					<collisionFlags>0</collisionFlags>
 					<materialKind>0</materialKind>
-					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<property>
+						g_detailUVTiling
+						<Vector4>3.506850 3.506850 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_detailPowerGloss
+						<Float>
+							0.35
+							<!--BW_String-->
+						</Float>
+					</property>
+					<property>
+						g_detailPowerAlbedo
+						<Float>
+							0.11
+							<!--BW_String-->
+						</Float>
+					</property>
+					<property>
+						g_maskBias
+						<Float>
+							0.18
+							<!--BW_String-->
+						</Float>
+					</property>
+					<property>
+						g_detailPower
+						<Float>5</Float>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
 					<property>
 						metallicGlossMap
 						<Texture>vehicles/poland/Pl26_Czolg_P_Wz_46/Czolg_P_Wz_46_chassis_01_GMM.dds</Texture>
@@ -1553,72 +1770,89 @@
 					<property>
 						excludeMaskAndAOMap
 						<Texture>vehicles/poland/Pl26_Czolg_P_Wz_46/Czolg_P_Wz_46_chassis_01_AO.dds</Texture>
-					</property>
-					<property>
-						g_useDetailMetallic
-						<Bool>true</Bool>
-					</property>
-					<property>
-						metallicDetailMap
-						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
-					</property>
-					<property>
-						g_detailUVTiling
-						<Vector4>3.506849 3.506849 0.000000 0.000000</Vector4>
-					</property>
-					<property>
-						alphaReference
-						<Int>64</Int>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>true</Bool>
 					</property>
 					<property>
 						colorIdMap
 						<Texture>vehicles/russian/common/common_ID.dds</Texture>
 					</property>
 				</material>
-				<groupOrigin>1.117402 0.367880 -1.846941</groupOrigin>
+				<groupOrigin>1.117402 0.367880 -1.181813</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<renderSet>
 		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
-		<node>V_BlendBone</node>
-		<node>Track_R2_BlendBone</node>
 		<node>WD_R7_BlendBone</node>
-		<node>WD_R6_BlendBone</node>
-		<node>WD_R5_BlendBone</node>
-		<node>WD_R4_BlendBone</node>
-		<node>WD_R3_BlendBone</node>
-		<node>WD_R2_BlendBone</node>
-		<node>WD_R1_BlendBone</node>
-		<node>WD_R0_BlendBone</node>
-		<node>W_R7_BlendBone</node>
-		<node>W_R6_BlendBone</node>
-		<node>W_R5_BlendBone</node>
-		<node>W_R4_BlendBone</node>
-		<node>W_R3_BlendBone</node>
-		<node>W_R2_BlendBone</node>
-		<node>W_R1_BlendBone</node>
 		<node>W_R0_BlendBone</node>
+		<node>W_R1_BlendBone</node>
+		<node>W_R2_BlendBone</node>
+		<node>W_R3_BlendBone</node>
+		<node>W_R4_BlendBone</node>
+		<node>W_R5_BlendBone</node>
+		<node>W_R6_BlendBone</node>
+		<node>W_R7_BlendBone</node>
+		<node>WD_R0_BlendBone</node>
+		<node>WD_R1_BlendBone</node>
+		<node>WD_R2_BlendBone</node>
+		<node>WD_R3_BlendBone</node>
+		<node>WD_R4_BlendBone</node>
+		<node>WD_R5_BlendBone</node>
+		<node>WD_R6_BlendBone</node>
+		<node>V_BlendBone</node>
 		<node>Track_R4_BlendBone</node>
 		<node>Track_R7_BlendBone</node>
 		<node>Track_R6_BlendBone</node>
 		<node>Track_R5_BlendBone</node>
 		<node>Track_R3_BlendBone</node>
 		<node>Track_R0_BlendBone</node>
+		<node>Track_R1_BlendBone</node>
 		<geometry>
-			<vertices>exportChassR1_Shape1_split_0.vertices</vertices>
-			<primitive>exportChassR1_Shape1_split_0.indices</primitive>
+			<vertices>chassis_R_Shape_split_0.vertices</vertices>
+			<primitive>chassis_R_Shape_split_0.indices</primitive>
 			<primitiveGroup>
 				0
 				<material>
 					<identifier>tank_chassis_01_skinned</identifier>
+					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
 					<collisionFlags>0</collisionFlags>
 					<materialKind>0</materialKind>
-					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<property>
+						g_detailUVTiling
+						<Vector4>3.506850 3.506850 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_detailPowerGloss
+						<Float>
+							0.35
+							<!--BW_String-->
+						</Float>
+					</property>
+					<property>
+						g_detailPowerAlbedo
+						<Float>
+							0.11
+							<!--BW_String-->
+						</Float>
+					</property>
+					<property>
+						g_maskBias
+						<Float>
+							0.18
+							<!--BW_String-->
+						</Float>
+					</property>
+					<property>
+						g_detailPower
+						<Float>5</Float>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
 					<property>
 						metallicGlossMap
 						<Texture>vehicles/poland/Pl26_Czolg_P_Wz_46/Czolg_P_Wz_46_chassis_01_GMM.dds</Texture>
@@ -1634,26 +1868,6 @@
 					<property>
 						excludeMaskAndAOMap
 						<Texture>vehicles/poland/Pl26_Czolg_P_Wz_46/Czolg_P_Wz_46_chassis_01_AO.dds</Texture>
-					</property>
-					<property>
-						g_useDetailMetallic
-						<Bool>true</Bool>
-					</property>
-					<property>
-						metallicDetailMap
-						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
-					</property>
-					<property>
-						g_detailUVTiling
-						<Vector4>3.506849 3.506849 0.000000 0.000000</Vector4>
-					</property>
-					<property>
-						alphaReference
-						<Int>64</Int>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>true</Bool>
 					</property>
 					<property>
 						colorIdMap

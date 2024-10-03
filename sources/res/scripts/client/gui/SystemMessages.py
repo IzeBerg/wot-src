@@ -15,6 +15,7 @@ SM_TYPE = Enumeration('System message type', [
  'GameGreeting',
  'PowerLevel',
  'FinancialTransactionWithGold',
+ 'FinancialTransactionWithCrystal',
  'FinancialTransactionWithGoldHeader',
  'FinancialTransactionWithCredits',
  'FinancialTransactionWithArmoryCoinsHeader',
@@ -105,7 +106,9 @@ SM_TYPE = Enumeration('System message type', [
  'EarlyAccessStartChapter',
  'EarlyAccessCommon',
  'SurveyNotification',
- 'ApplicationFormNotification'])
+ 'ApplicationFormNotification',
+ 'WTEventSwitchOnLootboxes',
+ 'WTEventProgression'])
 CURRENCY_TO_SM_TYPE = {Currency.CREDITS: SM_TYPE.PurchaseForCredits, 
    Currency.GOLD: SM_TYPE.PurchaseForGold, 
    Currency.CRYSTAL: SM_TYPE.PurchaseForCrystal, 

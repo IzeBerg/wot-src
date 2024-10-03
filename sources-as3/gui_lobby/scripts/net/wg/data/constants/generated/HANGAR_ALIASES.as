@@ -61,11 +61,15 @@ package net.wg.data.constants.generated
       
       public static const ARMORY_YARD_VEHICLE_PREVIEW:String = "armoryYardVehiclePreview";
       
+      public static const ARMORY_YARD_VEH_POST_PROGRESSION:String = "armoryYardVehPostProgression";
+      
       public static const EARLY_ACCESS_SECONDARY_ENTRY_POINT:String = "EarlyAccessSecondaryEntryPoint";
       
       public static const VEH_PARAM_RENDERER_STATE_SIMPLE_TOP:String = "simpleTop";
       
       public static const VEH_PARAM_RENDERER_STATE_SIMPLE_BOTTOM:String = "simpleBottom";
+      
+      public static const VEH_PARAM_RENDERER_STATE_ABILITY:String = "ability";
       
       public static const VEH_PARAM_RENDERER_STATE_ADVANCED:String = "advanced";
       
@@ -162,6 +166,18 @@ package net.wg.data.constants.generated
       public static const COLLECTION_ENTRY_POINT:String = "CollectionEntryPoint";
       
       public static const WINBACK_WIDGET:String = "WinbackWidget";
+      
+      public static const LOOTBOXES_WIDGET:String = "eventBoxEntryWidget";
+      
+      public static const WHITE_TIGER_WIDGET:String = "whiteTigerWidget";
+      
+      public static const WT_EVENT_ENTRY_POINT:String = "WTEventEntryPoint";
+      
+      public static const EVENT_CAROUSEL_WIDGET:String = "eventCarouselWidget";
+      
+      public static const EVENT_CREW_WIDGET:String = "eventCrewWidget";
+      
+      public static const EVENT_PARAMS_WIDGET:String = "eventParamsWidget";
        
       
       public function HANGAR_ALIASES()

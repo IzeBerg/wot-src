@@ -2308,11 +2308,11 @@
 			<rotationSpeed>21</rotationSpeed>
 			<shotDispersionFactors>
 				<vehicleMovement>
-					0.23
+					0.25
 					<!--BW_String-->
 				</vehicleMovement>
 				<vehicleRotation>
-					0.23
+					0.25
 					<!--BW_String-->
 				</vehicleRotation>
 			</shotDispersionFactors>
@@ -5011,11 +5011,11 @@
 			<rotationSpeed>25</rotationSpeed>
 			<shotDispersionFactors>
 				<vehicleMovement>
-					0.21
+					0.23
 					<!--BW_String-->
 				</vehicleMovement>
 				<vehicleRotation>
-					0.21
+					0.23
 					<!--BW_String-->
 				</vehicleRotation>
 			</shotDispersionFactors>
@@ -9430,7 +9430,10 @@
 							<!--BW_String-->
 						</maxPitch>
 					</pitchLimits>
-					<reloadTime>7</reloadTime>
+					<reloadTime>
+						8.0
+						<!--BW_String-->
+					</reloadTime>
 					<invisibilityFactorAtShot>
 						0.25
 						<!--BW_String-->
@@ -9439,10 +9442,24 @@
 						<gun>35</gun>
 					</armor>
 					<shotDispersionRadius>
-						0.38
+						0.42
 						<!--BW_String-->
 					</shotDispersionRadius>
 					<aimingTime>2</aimingTime>
+					<shotDispersionFactors>
+						<turretRotation>
+							0.16
+							<!--BW_String-->
+						</turretRotation>
+						<afterShot>
+							3.5
+							<!--BW_String-->
+						</afterShot>
+						<whileGunDamaged>
+							2.0
+							<!--BW_String-->
+						</whileGunDamaged>
+					</shotDispersionFactors>
 					<models>
 						<undamaged>vehicles/american/A10_M6/normal/lod0/Gun_09.model</undamaged>
 						<destroyed>vehicles/american/A10_M6/crash/lod0/Gun_09.model</destroyed>

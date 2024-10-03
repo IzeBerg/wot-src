@@ -1010,6 +1010,9 @@ msgstr "от скорости тушения пожара"
 msgid "kpi/bonus/negative/foliageMaskingFactor"
 msgstr "от эффекта маскировки от растительности"
 
+msgid "kpi/bonus/negative/minTimeBetweenReloadBoost"
+msgstr "задержка повторной активации"
+
 msgid "kpi/bonus/negative/radiomanActivityTimeAfterVehicleDestroy"
 msgstr ""
 "от времени передачи координат машин\n"
@@ -1017,6 +1020,9 @@ msgstr ""
 
 msgid "kpi/bonus/negative/radiomanHitChance"
 msgstr "к защите радиста от ранений"
+
+msgid "kpi/bonus/negative/shotsLimitForGunBoost"
+msgstr "количество учитываемых попаданий"
 
 msgid "kpi/bonus/negative/stunResistanceEffectFactor"
 msgstr ""
@@ -1074,6 +1080,9 @@ msgstr ""
 msgid "kpi/bonus/negative/vehicleEnginePower"
 msgstr "от мощности двигателя"
 
+msgid "kpi/bonus/negative/vehicleFinalDispersion"
+msgstr "от начального размера круга сведения"
+
 msgid "kpi/bonus/negative/vehicleFireChance"
 msgstr "от шанса возгорания двигателя"
 
@@ -1088,8 +1097,17 @@ msgstr ""
 msgid "kpi/bonus/negative/vehicleGunAimSpeed"
 msgstr "от скорости сведения"
 
+msgid "kpi/bonus/negative/vehicleGunAndGunClipCooldown"
+msgstr "от скорости перезарядки"
+
+msgid "kpi/bonus/negative/vehicleGunKillReloadTime"
+msgstr "от перезарядки орудия"
+
 msgid "kpi/bonus/negative/vehicleGunReloadTime"
 msgstr "от времени заряжания"
+
+msgid "kpi/bonus/negative/vehicleGunReloadTimeReceiveShot"
+msgstr "от перезарядки орудия"
 
 msgid "kpi/bonus/negative/vehicleGunShotDispersion"
 msgstr "от разброса при движении и поворотах"
@@ -1244,6 +1262,9 @@ msgstr "к скорости тушения пожара"
 msgid "kpi/bonus/positive/foliageMaskingFactor"
 msgstr "к эффекту маскировки от растительности"
 
+msgid "kpi/bonus/positive/minTimeBetweenReloadBoost"
+msgstr "задержка повторной активации"
+
 msgid "kpi/bonus/positive/radiomanActivityTimeAfterVehicleDestroy"
 msgstr ""
 "ко времени передачи координат машин\n"
@@ -1251,6 +1272,9 @@ msgstr ""
 
 msgid "kpi/bonus/positive/radiomanHitChance"
 msgstr "к защите радиста от ранений"
+
+msgid "kpi/bonus/positive/shotsLimitForGunBoost"
+msgstr "количество учитываемых попаданий"
 
 msgid "kpi/bonus/positive/stunResistanceEffectFactor"
 msgstr "к негативному эффекту оглушения"
@@ -1306,6 +1330,9 @@ msgstr ""
 msgid "kpi/bonus/positive/vehicleEnginePower"
 msgstr "к мощности двигателя"
 
+msgid "kpi/bonus/positive/vehicleFinalDispersion"
+msgstr "к итоговой точности орудия"
+
 msgid "kpi/bonus/positive/vehicleFireChance"
 msgstr "к шансу возгорания двигателя"
 
@@ -1320,8 +1347,17 @@ msgstr ""
 msgid "kpi/bonus/positive/vehicleGunAimSpeed"
 msgstr "к скорости сведения"
 
+msgid "kpi/bonus/positive/vehicleGunAndGunClipCooldown"
+msgstr "от скорости перезарядки"
+
+msgid "kpi/bonus/positive/vehicleGunKillReloadTime"
+msgstr "к перезарядке орудия"
+
 msgid "kpi/bonus/positive/vehicleGunReloadTime"
 msgstr "ко времени заряжания"
+
+msgid "kpi/bonus/positive/vehicleGunReloadTimeReceiveShot"
+msgstr "к перезарядке орудия"
 
 msgid "kpi/bonus/positive/vehicleGunShotDispersion"
 msgstr "к разбросу при движении и поворотах"
@@ -1404,6 +1440,9 @@ msgstr ""
 "к штрафу при ранении члена экипажа,\n"
 "кроме командира"
 
+msgid "kpi/bonus/specValueTypes/vehicleGunAndGunClipCooldown"
+msgstr "c"
+
 msgid "kpi/bonus/ttc/negative/crewHitChance"
 msgstr "от защиты экипажа от ранений"
 
@@ -1485,6 +1524,9 @@ msgstr ""
 
 msgid "kpi/bonus/ttc/negative/vehicleEnginePower"
 msgstr "от мощности двигателя"
+
+msgid "kpi/bonus/ttc/negative/vehicleFinalDispersion"
+msgstr "от начального размера круга сведения"
 
 msgid "kpi/bonus/ttc/negative/vehicleFireChance"
 msgstr "от шанса возгорания двигателя"
@@ -1672,6 +1714,9 @@ msgstr ""
 msgid "kpi/bonus/ttc/positive/vehicleEnginePower"
 msgstr "к мощности двигателя"
 
+msgid "kpi/bonus/ttc/positive/vehicleFinalDispersion"
+msgstr "к начальному размеру круга сведения"
+
 msgid "kpi/bonus/ttc/positive/vehicleFireChance"
 msgstr "к шансу возгорания двигателя"
 
@@ -1769,8 +1814,14 @@ msgstr "c"
 msgid "kpi/bonus/valueTypes/default"
 msgstr "%"
 
+msgid "kpi/bonus/valueTypes/minTimeBetweenReloadBoost"
+msgstr "c"
+
 msgid "kpi/bonus/valueTypes/radiomanActivityTimeAfterVehicleDestroy"
 msgstr "с"
+
+msgid "kpi/bonus/valueTypes/shotsLimitForGunBoost"
+msgstr " "
 
 msgid "kpi/bonus/valueTypes/vehicleBackwardMaxSpeed"
 msgstr "км/ч"
@@ -1781,8 +1832,29 @@ msgstr "c"
 msgid "kpi/bonus/valueTypes/vehicleForwardMaxSpeed"
 msgstr "км/ч"
 
+msgid "kpi/bonus/valueTypes/vehicleGunAndGunClipCooldownSpec"
+msgstr " "
+
+msgid "kpi/bonus/valueTypes/vehicleGunReloadTimeReceiveShot"
+msgstr "c"
+
 msgid "kpi/bonus/valueTypes/vehicleOwnSpottingTime"
 msgstr "c"
+
+msgid "kpi/title/minTimeBetweenReloadBoost"
+msgstr "Задержка повторной активации"
+
+msgid "kpi/title/shotsLimitForGunBoost"
+msgstr "Количество учитываемых попаданий"
+
+msgid "kpi/title/vehicleGunAndGunClipCooldown"
+msgstr "Бонус к перезарядке (полная/между)"
+
+msgid "kpi/title/vehicleGunKillReloadTime"
+msgstr "Бонус к перезарядке при уничтожении противника"
+
+msgid "kpi/title/vehicleGunReloadTimeReceiveShot"
+msgstr "Бонус к перезарядке при попадании по вам"
 
 msgid "section/battleAbilities"
 msgstr "БОЕВЫЕ РЕЗЕРВЫ"
@@ -1927,6 +1999,35 @@ msgstr ""
 
 msgid "tooltips/abilities/points/header"
 msgstr "Очки боевых резервов"
+
+msgid "tooltips/abilityAdditionalTooltip/description"
+msgstr ""
+"Особые активируемые возможности вашей машины, которые могут повысить её "
+"эффективность в бою."
+
+msgid "tooltips/abilityAdditionalTooltip/title"
+msgstr "Модификация"
+
+msgid "tooltips/abilitySlot/title"
+msgstr "МОДИФИКАЦИЯ"
+
+msgid "tooltips/abilityTooltip/abilityDescription/cooldown"
+msgstr "Время перезарядки умения"
+
+msgid "tooltips/abilityTooltip/abilityDescription/duration"
+msgstr "Время действия умения"
+
+msgid "tooltips/abilityTooltip/abilityDescription/reuseCount"
+msgstr "Применений за бой"
+
+msgid "tooltips/abilityTooltip/footer"
+msgstr "Дополнительная информация"
+
+msgid "tooltips/abilityTooltip/statsTitle"
+msgstr "При активации"
+
+msgid "tooltips/abilityTooltip/subtitle"
+msgstr "Модификация"
 
 msgid "tooltips/action/description/add_one"
 msgstr "Нажмите, чтобы докупить предметы в этом слоте."

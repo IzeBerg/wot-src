@@ -109,8 +109,10 @@ package net.wg.gui.battle.views.damagePanel.components.modules.chassis
       {
          var _loc3_:PartState = null;
          var _loc4_:PartState = null;
-         var _loc5_:PartState = null;
-         var _loc6_:PartState = null;
+         var _loc5_:Boolean = false;
+         var _loc6_:Boolean = false;
+         var _loc7_:PartState = null;
+         var _loc8_:PartState = null;
          var _loc1_:Boolean = this.leftTrack0.repairTime > 0 && this.leftTrack1.repairTime > 0;
          var _loc2_:Boolean = this.rightTrack0.repairTime > 0 && this.rightTrack1.repairTime > 0;
          if(_loc1_ || _loc2_)
@@ -133,17 +135,25 @@ package net.wg.gui.battle.views.damagePanel.components.modules.chassis
             }
             return _loc3_.repairTime > _loc4_.repairTime ? _loc3_ : _loc4_;
          }
-         _loc5_ = this.allTracks[0];
-         for each(_loc6_ in this.allTracks)
+         _loc5_ = this.leftTrack0.repairTime > 0 || this.leftTrack1.repairTime > 0;
+         _loc6_ = this.rightTrack0.repairTime > 0 || this.rightTrack1.repairTime > 0;
+         if(_loc5_ && _loc6_)
          {
-            if(_loc5_.repairTime < _loc6_.repairTime)
+            _loc3_ = this.leftTrack0.repairTime > this.leftTrack1.repairTime ? this.leftTrack0 : this.leftTrack1;
+            _loc4_ = this.rightTrack0.repairTime > this.rightTrack1.repairTime ? this.rightTrack0 : this.rightTrack1;
+            return _loc3_.repairTime < _loc4_.repairTime ? _loc3_ : _loc4_;
+         }
+         _loc7_ = this.allTracks[0];
+         for each(_loc8_ in this.allTracks)
+         {
+            if(_loc7_.repairTime < _loc8_.repairTime)
             {
-               _loc5_ = _loc6_;
+               _loc7_ = _loc8_;
             }
          }
-         if(_loc5_.repairTime > 0)
+         if(_loc7_.repairTime > 0)
          {
-            return _loc5_;
+            return _loc7_;
          }
          return null;
       }

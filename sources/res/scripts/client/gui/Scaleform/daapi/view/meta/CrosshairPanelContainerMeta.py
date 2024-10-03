@@ -204,3 +204,23 @@ class CrosshairPanelContainerMeta(DAAPISimpleContainerMeta):
     def as_setDualAccActiveS(self, value):
         if self._isDAAPIInited():
             return self.flashObject.as_setDualAccActive(value)
+
+    def as_setOverheatProgressS(self, value, isOverheated):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setOverheatProgress(value, isOverheated)
+
+    def as_addOverheatS(self, overheatMark):
+        if self._isDAAPIInited():
+            return self.flashObject.as_addOverheat(overheatMark)
+
+    def as_removeOverheatS(self):
+        if self._isDAAPIInited():
+            return self.flashObject.as_removeOverheat()
+
+    def as_showPlasmaIndicatorS(self, plasmaValue, isPlasmaChanged, plasmaMultiplicatorText):
+        if self._isDAAPIInited():
+            return self.flashObject.as_showPlasmaIndicator(plasmaValue, isPlasmaChanged, plasmaMultiplicatorText)
+
+    def as_showExplosiveShotIndicatorS(self, isActive):
+        if self._isDAAPIInited():
+            return self.flashObject.as_showExplosiveShotIndicator(isActive)

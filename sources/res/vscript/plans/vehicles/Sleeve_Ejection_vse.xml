@@ -111,6 +111,43 @@
 			</block>
 			<block>
 				<class>Variable</class>
+				<id>Variable_9</id>
+				<params>
+					<param>
+						renderPipeline
+						<name>Variable Name</name>
+						<type>StringT</type>
+					</param>
+					<param>
+						BoolT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+					<param>
+						false
+						<name>External Init</name>
+						<type>BoolT</type>
+					</param>
+					<param>
+						false
+						<name>Is Const</name>
+						<type>BoolT</type>
+					</param>
+					<param>
+						false
+						<name>Initial Value</name>
+						<type>BoolT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>default</name>
+						<const>\false\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>Variable</class>
 				<id>Variable_5</id>
 				<params>
 					<param>
@@ -326,6 +363,31 @@
 				<slots/>
 			</block>
 			<block>
+				<class>And</class>
+				<id>And_1</id>
+				<params>
+					<param>
+						2
+						<name>Input Count</name>
+						<type>IntT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>GetVariable</class>
+				<id>GetVariable_10</id>
+				<buddy>Variable_9</buddy>
+				<params>
+					<param>
+						BoolT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
 				<class>GetVehicleGameObject</class>
 				<id>GetVehicleGameObject_5</id>
 				<params/>
@@ -336,6 +398,24 @@
 				<id>StartScript_1</id>
 				<params/>
 				<slots/>
+			</block>
+			<block>
+				<class>SetVariable</class>
+				<id>SetVariable_5</id>
+				<buddy>Variable_9</buddy>
+				<params>
+					<param>
+						BoolT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>value</name>
+						<const>\true\</const>
+					</slot>
+				</slots>
 			</block>
 			<block>
 				<class>Macro</class>
@@ -361,6 +441,23 @@
 					</param>
 				</params>
 				<slots/>
+			</block>
+			<block>
+				<class>GetGameSetting</class>
+				<id>GetGameSetting_1</id>
+				<params>
+					<param>
+						int
+						<name>Game Setting Type</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>settingName</name>
+						<const>\RENDER_PIPELINE\</const>
+					</slot>
+				</slots>
 			</block>
 			<block>
 				<class>GetVariable</class>
@@ -431,6 +528,23 @@
 				<slots/>
 			</block>
 			<block>
+				<class>If</class>
+				<id>If_1</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>CompareIntegers</class>
+				<id>CompareIntegers_1</id>
+				<params/>
+				<slots>
+					<slot>
+						<name>b</name>
+						<const>\0\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
 				<class>Concatenate</class>
 				<id>Concatenate_3</id>
 				<params>
@@ -481,6 +595,18 @@
 					<param>
 						sleeveEjectionAnimation
 						<name>Event Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>ComponentMethod</class>
+				<id>ComponentMethod_7</id>
+				<params>
+					<param>
+						Animator.stop
+						<name>Component Type</name>
 						<type>StringT</type>
 					</param>
 				</params>
@@ -615,55 +741,6 @@
 				<slots/>
 			</block>
 			<block>
-				<class>ComponentMethod</class>
-				<id>ComponentMethod_7</id>
-				<params>
-					<param>
-						Animator.stop
-						<name>Component Type</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>FinishScript</class>
-				<id>FinishScript_1</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>If</class>
-				<id>If_4</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>RemoveGameObject</class>
-				<id>RemoveGameObject_2</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>IsValid</class>
-				<id>IsValid_1</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_4</id>
-				<buddy>Variable_1</buddy>
-				<params>
-					<param>
-						GameObjectT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
 				<class>ListenLocalEvent</class>
 				<id>ListenLocalEvent_2</id>
 				<params>
@@ -764,6 +841,18 @@
 				<slots/>
 			</block>
 			<block>
+				<class>CreateComponent</class>
+				<id>CreateComponent_4</id>
+				<params>
+					<param>
+						Debris
+						<name>Component Type</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
 				<class>GetVariable</class>
 				<id>GetVariable_3</id>
 				<buddy>Variable_6</buddy>
@@ -777,13 +866,38 @@
 				<slots/>
 			</block>
 			<block>
-				<class>CreateComponent</class>
-				<id>CreateComponent_4</id>
+				<class>FinishScript</class>
+				<id>FinishScript_1</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>If</class>
+				<id>If_4</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>RemoveGameObject</class>
+				<id>RemoveGameObject_2</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>IsValid</class>
+				<id>IsValid_1</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>GetVariable</class>
+				<id>GetVariable_4</id>
+				<buddy>Variable_1</buddy>
 				<params>
 					<param>
-						Debris
-						<name>Component Type</name>
-						<type>StringT</type>
+						GameObjectT
+						<name>Variable Type</name>
+						<type>TypeT</type>
 					</param>
 				</params>
 				<slots/>
@@ -844,7 +958,7 @@
 				<output>out</output>
 			</connection>
 			<connection>
-				<from>CompareVehicles_1</from>
+				<from>And_1</from>
 				<input>value</input>
 				<to>If_3</to>
 				<output>res</output>
@@ -880,16 +994,40 @@
 				<output>vehicleObject</output>
 			</connection>
 			<connection>
+				<from>CompareVehicles_1</from>
+				<input>i1</input>
+				<to>And_1</to>
+				<output>res</output>
+			</connection>
+			<connection>
+				<from>GetVariable_10</from>
+				<input>i2</input>
+				<to>And_1</to>
+				<output>value</output>
+			</connection>
+			<connection>
 				<from>ContextGetSelf_1</from>
 				<input>gameObject</input>
 				<to>GetVehicleGameObject_5</to>
 				<output>value</output>
 			</connection>
 			<connection>
-				<from>StartScript_1</from>
+				<from>If_1</from>
+				<input>input</input>
+				<to>SetVariable_5</to>
+				<output>true</output>
+			</connection>
+			<connection>
+				<from>SetVariable_5</from>
 				<input>in</input>
 				<to>Macro_1</to>
 				<output>out</output>
+			</connection>
+			<connection>
+				<from>If_1</from>
+				<input>in</input>
+				<to>Macro_1</to>
+				<output>false</output>
 			</connection>
 			<connection>
 				<from>ContextGetSelf_1</from>
@@ -946,6 +1084,24 @@
 				<output>vehicleObject</output>
 			</connection>
 			<connection>
+				<from>StartScript_1</from>
+				<input>input</input>
+				<to>If_1</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>CompareIntegers_1</from>
+				<input>value</input>
+				<to>If_1</to>
+				<output>equal</output>
+			</connection>
+			<connection>
+				<from>GetGameSetting_1</from>
+				<input>a</input>
+				<to>CompareIntegers_1</to>
+				<output>value</output>
+			</connection>
+			<connection>
 				<from>GetVariable_9</from>
 				<input>i0</input>
 				<to>Concatenate_3</to>
@@ -968,6 +1124,18 @@
 				<input>index</input>
 				<to>Select_1</to>
 				<output>res</output>
+			</connection>
+			<connection>
+				<from>Delay_4</from>
+				<input>in</input>
+				<to>ComponentMethod_7</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>GetVariable_7</from>
+				<input>gameObject</input>
+				<to>ComponentMethod_7</to>
+				<output>value</output>
 			</connection>
 			<connection>
 				<from>Delay_3</from>
@@ -1015,48 +1183,6 @@
 				<from>GetVariable_2</from>
 				<input>time</input>
 				<to>Delay_3</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>Delay_4</from>
-				<input>in</input>
-				<to>ComponentMethod_7</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>GetVariable_7</from>
-				<input>gameObject</input>
-				<to>ComponentMethod_7</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>FinishScript_1</from>
-				<input>input</input>
-				<to>If_4</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>IsValid_1</from>
-				<input>value</input>
-				<to>If_4</to>
-				<output>res</output>
-			</connection>
-			<connection>
-				<from>If_4</from>
-				<input>in</input>
-				<to>RemoveGameObject_2</to>
-				<output>true</output>
-			</connection>
-			<connection>
-				<from>GetVariable_4</from>
-				<input>gameObject</input>
-				<to>RemoveGameObject_2</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>GetVariable_4</from>
-				<input>gameObject</input>
-				<to>IsValid_1</to>
 				<output>value</output>
 			</connection>
 			<connection>
@@ -1160,6 +1286,36 @@
 				<input>moduleName</input>
 				<to>CreateComponent_4</to>
 				<output>getModuleName</output>
+			</connection>
+			<connection>
+				<from>FinishScript_1</from>
+				<input>input</input>
+				<to>If_4</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>IsValid_1</from>
+				<input>value</input>
+				<to>If_4</to>
+				<output>res</output>
+			</connection>
+			<connection>
+				<from>If_4</from>
+				<input>in</input>
+				<to>RemoveGameObject_2</to>
+				<output>true</output>
+			</connection>
+			<connection>
+				<from>GetVariable_4</from>
+				<input>gameObject</input>
+				<to>RemoveGameObject_2</to>
+				<output>value</output>
+			</connection>
+			<connection>
+				<from>GetVariable_4</from>
+				<input>gameObject</input>
+				<to>IsValid_1</to>
+				<output>value</output>
 			</connection>
 		</connections>
 		<macros>

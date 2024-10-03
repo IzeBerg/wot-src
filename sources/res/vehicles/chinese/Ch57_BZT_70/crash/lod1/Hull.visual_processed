@@ -40,16 +40,7 @@
 					<row0>1.000000 0.000000 0.000000</row0>
 					<row1>0.000000 1.000000 0.000000</row1>
 					<row2>0.000000 0.000000 1.000000</row2>
-					<row3>0.000000 0.503533 0.000000</row3>
-				</transform>
-			</node>
-			<node>
-				<identifier>HP_turretJoint1</identifier>
-				<transform>
-					<row0>1.000000 0.000000 0.000000</row0>
-					<row1>0.000000 1.000000 0.000000</row1>
-					<row2>0.000000 0.000000 1.000000</row2>
-					<row3>0.000000 0.503533 0.000000</row3>
+					<row3>0.000000 0.460533 0.146542</row3>
 				</transform>
 			</node>
 		</node>
@@ -65,27 +56,15 @@
 				<material>
 					<identifier>tank_hull_01</identifier>
 					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
-					<materialKind>0</materialKind>
 					<collisionFlags>0</collisionFlags>
-					<property>
-						crashTileMap
-						<Texture>vehicles/russian/Tank_detail/crash_tile.dds</Texture>
-					</property>
-					<property>
-						diffuseMap
-						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_hull_01_AM.dds</Texture>
-					</property>
-					<property>
-						excludeMaskAndAOMap
-						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_hull_01_AO.dds</Texture>
-					</property>
-					<property>
-						colorIdMap
-						<Texture>vehicles/russian/common/common_ID.dds</Texture>
-					</property>
+					<materialKind>0</materialKind>
 					<property>
 						g_crashUVTiling
 						<Vector4>4.000000 4.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						crashTileMap
+						<Texture>vehicles/russian/Tank_detail/crash_tile.dds</Texture>
 					</property>
 					<property>
 						metallicGlossMap
@@ -94,6 +73,14 @@
 					<property>
 						normalMap
 						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_hull_01_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_hull_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_hull_01_AO.dds</Texture>
 					</property>
 				</material>
 				<groupOrigin>-0.000882 -0.043583 0.113800</groupOrigin>
@@ -105,6 +92,10 @@
 					<fx>shaders/std_effects/PBS_tank.fx</fx>
 					<materialKind>0</materialKind>
 					<collisionFlags>0</collisionFlags>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
 					<property>
 						diffuseMap
 						<Texture>vehicles/russian/Crash_inside/crash_inside_AM.dds</Texture>
@@ -133,35 +124,31 @@
 				<material>
 					<identifier>tank_chassis_01</identifier>
 					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
-					<materialKind>0</materialKind>
 					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						g_crashUVTiling
+						<Vector4>4.000000 4.000000 0.000000 0.000000</Vector4>
+					</property>
 					<property>
 						crashTileMap
 						<Texture>vehicles/russian/Tank_detail/crash_tile.dds</Texture>
 					</property>
 					<property>
-						diffuseMap
-						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_chassis_01_AM.dds</Texture>
-					</property>
-					<property>
-						excludeMaskAndAOMap
-						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_chassis_01_AO.dds</Texture>
-					</property>
-					<property>
-						colorIdMap
-						<Texture>vehicles/russian/common/common_ID.dds</Texture>
-					</property>
-					<property>
-						g_crashUVTiling
-						<Vector4>2.000000 1.000000 0.000000 0.000000</Vector4>
-					</property>
-					<property>
 						metallicGlossMap
-						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_chassis_01_GMM.dds</Texture>
+						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_hull_01_GMM.dds</Texture>
 					</property>
 					<property>
 						normalMap
-						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_chassis_01_ANM.dds</Texture>
+						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_hull_01_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_hull_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_hull_01_AO.dds</Texture>
 					</property>
 				</material>
 				<groupOrigin>0.000000 -0.411514 0.062780</groupOrigin>

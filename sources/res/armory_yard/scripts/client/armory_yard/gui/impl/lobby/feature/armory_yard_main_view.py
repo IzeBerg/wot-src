@@ -5,7 +5,6 @@ from gui.shared.events import ArmoryYardEvent
 from helpers import dependency
 from shared_utils import first
 from gui.impl.gen import R
-from gui.shared import g_eventBus, EVENT_BUS_SCOPE, events
 from gui.shared.event_dispatcher import showHangar
 from armory_yard.gui.window_events import showArmoryYardShopWindow, showArmoryYardShopBuyWindow
 from gui.impl.pub import ViewImpl
@@ -18,7 +17,6 @@ from armory_yard.gui.impl.lobby.feature.armory_yard_quests_presenter import _Que
 from armory_yard.gui.impl.lobby.feature.armory_yard_progress_presenter import _ProgressionTabPresenter
 from skeletons.account_helpers.settings_core import ISettingsCore
 from skeletons.gui.shared import IItemsCache
-from gui.Scaleform.daapi.view.lobby.header.LobbyHeader import HeaderMenuVisibilityState
 from gui.Scaleform.framework.entities.View import ViewKeyDynamic
 from armory_yard.gui.Scaleform.daapi.view.lobby.hangar.sound_constants import ARMORY_YARD_SOUND_SPACE
 from gui.impl.lobby.common.view_wrappers import createBackportTooltipDecorator
@@ -57,7 +55,7 @@ class ArmoryYardMainView(ViewImpl, IGlobalListener):
 
     def _initialize(self, *args, **kwargs):
         super(ArmoryYardMainView, self)._initialize(*args, **kwargs)
-        self.__updateVisibilityHangarHeaderMenu()
+        self.__armoryYardCtrl.updateVisibilityHangarHeaderMenu()
         self.startGlobalListening()
 
     def _finalize(self):
@@ -68,16 +66,13 @@ class ArmoryYardMainView(ViewImpl, IGlobalListener):
         self.__stageManager.destroy()
         self.__stageManager = None
         self.__state = None
-        self.__updateVisibilityHangarHeaderMenu(isVisible=True)
+        self.__armoryYardCtrl.updateVisibilityHangarHeaderMenu(isVisible=True)
         if not self.__armoryYardCtrl.isVehiclePreview:
             self.__armoryYardCtrl.onLoadingHangar()
         self.stopGlobalListening()
         super(ArmoryYardMainView, self)._finalize()
         if self.__destroyCallback is not None:
             self.__destroyCallback()
-        if not self.__isClose and not self.__armoryYardCtrl.isVehiclePreview:
-            self.__armoryYardCtrl.disableVideoStreaming()
-            showHangar()
         return
 
     def _onLoading(self, *args, **kwargs):
@@ -177,9 +172,6 @@ class ArmoryYardMainView(ViewImpl, IGlobalListener):
     def __onServerSettingsUpdated(self):
         if not self.__armoryYardCtrl.isEnabled():
             self.destroyWindow()
-
-    def __updateVisibilityHangarHeaderMenu(self, isVisible=False):
-        g_eventBus.handleEvent(events.LobbyHeaderMenuEvent(events.LobbyHeaderMenuEvent.TOGGLE_VISIBILITY, ctx={'state': (isVisible or HeaderMenuVisibilityState).NOTHING if 1 else HeaderMenuVisibilityState.ALL}), EVENT_BUS_SCOPE.LOBBY)
 
     def __closeView(self, *args):
         if self.__isClose:

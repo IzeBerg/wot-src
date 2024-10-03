@@ -83,6 +83,10 @@ package net.wg.gui.battle.views.destroyTimers
       
       override public function fullSize() : Boolean
       {
+         if(StringUtils.isEmpty(this.container.textFieldLabel.text))
+         {
+            return this.cropSize();
+         }
          this.container.textFieldLabel.visible = true;
          this.container.textField.y = TEXT_FIELD_FULL_Y;
          return true;

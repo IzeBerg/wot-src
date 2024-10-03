@@ -10,6 +10,7 @@
 		<name>CollectorEmptyStun</name>
 		<type>model</type>
 		<resource>particles/content_deferred/GFX_models/tank_customization/WT_collector/Collector_Empty_Stun.model</resource>
+		<castsShadow>false</castsShadow>
 		<track>
 			<name>scale</name>
 			<type>vector3</type>
@@ -36,15 +37,8 @@
 			<frame>
 				<startTime>0.000000</startTime>
 				<value>0.094118 0.125490 0.600000 0.494118</value>
-				<inTangent>0.000000 -0.000000 0.000000 0.003921</inTangent>
-				<outTangent>0.000000 -0.000000 0.000000 0.003921</outTangent>
-				<tangentMode>0</tangentMode>
-			</frame>
-			<frame>
-				<startTime>1.000000</startTime>
-				<value>0.094118 0.125490 0.600000 0.498039</value>
-				<inTangent>0.000000 -0.000000 -0.000000 0.003921</inTangent>
-				<outTangent>0.000000 -0.000000 -0.000000 0.003921</outTangent>
+				<inTangent>0.000000 0.000000 0.000000 0.003921</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.003921</outTangent>
 				<tangentMode>0</tangentMode>
 			</frame>
 		</track>

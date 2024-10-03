@@ -40,16 +40,7 @@
 					<row0>1.000000 0.000000 0.000000</row0>
 					<row1>0.000000 1.000000 0.000000</row1>
 					<row2>0.000000 0.000000 1.000000</row2>
-					<row3>0.000000 0.503533 0.000000</row3>
-				</transform>
-			</node>
-			<node>
-				<identifier>HP_turretJoint1</identifier>
-				<transform>
-					<row0>1.000000 0.000000 0.000000</row0>
-					<row1>0.000000 1.000000 0.000000</row1>
-					<row2>0.000000 0.000000 1.000000</row2>
-					<row3>0.000000 0.503533 0.000000</row3>
+					<row3>0.000000 0.460533 0.146542</row3>
 				</transform>
 			</node>
 		</node>
@@ -68,6 +59,14 @@
 					<materialKind>0</materialKind>
 					<collisionFlags>0</collisionFlags>
 					<property>
+						alphaReference
+						<Int>64</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
 						colorIdMap
 						<Texture>vehicles/russian/common/common_ID.dds</Texture>
 					</property>
@@ -82,6 +81,10 @@
 					<property>
 						excludeMaskAndAOMap
 						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_proxy_AO.dds</Texture>
+					</property>
+					<property>
+						g_crashUVTiling
+						<Vector4>2.000000 1.000000 0.000000 0.000000</Vector4>
 					</property>
 					<property>
 						metallicGlossMap

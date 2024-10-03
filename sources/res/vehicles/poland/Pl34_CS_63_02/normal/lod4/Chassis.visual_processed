@@ -569,7 +569,7 @@
 							<row0>1.000000 0.000000 0.000000</row0>
 							<row1>0.000000 1.000000 0.000000</row1>
 							<row2>0.000000 0.000000 1.000000</row2>
-							<row3>1.290426 -0.702631 -2.328810</row3>
+							<row3>1.290426 -0.699198 -2.328810</row3>
 						</transform>
 						<node>
 							<identifier>Track_VD_R1_BlendBone</identifier>
@@ -577,7 +577,7 @@
 								<row0>1.000000 0.000000 0.000000</row0>
 								<row1>0.000000 1.000000 0.000000</row1>
 								<row2>0.000000 0.000000 -1.000000</row2>
-								<row3>-1.290426 -0.278491 2.328810</row3>
+								<row3>-1.290426 -0.281925 2.328810</row3>
 							</transform>
 						</node>
 					</node>
@@ -713,7 +713,7 @@
 							<row0>1.000000 0.000000 0.000000</row0>
 							<row1>0.000000 1.000000 0.000000</row1>
 							<row2>0.000000 0.000000 1.000000</row2>
-							<row3>1.290426 0.069031 -1.977867</row3>
+							<row3>1.290426 0.063172 -1.977867</row3>
 						</transform>
 						<node>
 							<identifier>Track_VT_R3_BlendBone</identifier>
@@ -721,7 +721,7 @@
 								<row0>1.000000 0.000000 0.000000</row0>
 								<row1>0.000000 1.000000 0.000000</row1>
 								<row2>0.000000 0.000000 -1.000000</row2>
-								<row3>-1.290426 -1.050154 1.977867</row3>
+								<row3>-1.290426 -1.044294 1.977867</row3>
 							</transform>
 						</node>
 					</node>
@@ -929,14 +929,7 @@
 	</node>
 	<renderSet>
 		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
-		<node>Tank_BlendBone</node>
-		<node>Track_L5_BlendBone</node>
 		<node>V_BlendBone</node>
-		<node>Track_L0_BlendBone</node>
-		<node>Track_VD_L0_BlendBone</node>
-		<node>Track_VT_L0_BlendBone</node>
-		<node>Track_VT_L3_BlendBone</node>
-		<node>Track_VD_L1_BlendBone</node>
 		<geometry>
 			<vertices>chassis_L_Shape.vertices</vertices>
 			<primitive>chassis_L_Shape.indices</primitive>
@@ -953,7 +946,7 @@
 					</property>
 					<property>
 						colorIdMap
-						<Texture>vehicles/poland/Pl21_CS_63/CS_63_proxy_ID.dds</Texture>
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
 					</property>
 					<property>
 						diffuseMap
@@ -978,14 +971,7 @@
 	</renderSet>
 	<renderSet>
 		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
-		<node>Tank_BlendBone</node>
-		<node>Track_R5_BlendBone</node>
 		<node>V_BlendBone</node>
-		<node>Track_R0_BlendBone</node>
-		<node>Track_VD_R0_BlendBone</node>
-		<node>Track_VT_R0_BlendBone</node>
-		<node>Track_VT_R3_BlendBone</node>
-		<node>Track_VD_R1_BlendBone</node>
 		<geometry>
 			<vertices>chassis_R_Shape.vertices</vertices>
 			<primitive>chassis_R_Shape.indices</primitive>
@@ -1002,7 +988,7 @@
 					</property>
 					<property>
 						colorIdMap
-						<Texture>vehicles/poland/Pl21_CS_63/CS_63_proxy_ID.dds</Texture>
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
 					</property>
 					<property>
 						diffuseMap
@@ -1027,7 +1013,7 @@
 	</renderSet>
 	<constraints/>
 	<boundingBox>
-		<min>-1.579669 -0.000082 -2.861022</min>
+		<min>-1.579668 -0.000082 -2.861022</min>
 		<max>1.579668 1.130850 2.864194</max>
 	</boundingBox>
 	<geometrySize>3216</geometrySize>

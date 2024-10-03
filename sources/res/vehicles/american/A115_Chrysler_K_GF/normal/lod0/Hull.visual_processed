@@ -125,10 +125,6 @@
 						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
 					</property>
 					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
-					</property>
-					<property>
 						g_useDetailMetallic
 						<Bool>true</Bool>
 					</property>
@@ -141,10 +137,7 @@
 					</property>
 					<property>
 						g_detailUVTiling
-						<Vector4>
-							8.41644 8.41644 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>8.416440 8.416440 0.000000 0.000000</Vector4>
 					</property>
 					<property>
 						g_detailPowerGloss
@@ -172,10 +165,6 @@
 						diffuseMap
 						<Texture>vehicles/american/A115_Chrysler_K_GF/Chrysler_K_GF_hull_01_AM.dds</Texture>
 					</property>
-					<property>
-						alphaTestEnable
-						<Bool>false</Bool>
-					</property>
 				</material>
 				<groupOrigin>-0.000658 0.225894 0.002669</groupOrigin>
 			</primitiveGroup>
@@ -199,10 +188,6 @@
 						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
 					</property>
 					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
-					</property>
-					<property>
 						g_useDetailMetallic
 						<Bool>true</Bool>
 					</property>
@@ -215,10 +200,7 @@
 					</property>
 					<property>
 						g_detailUVTiling
-						<Vector4>
-							2.10411 2.10411 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>2.104110 2.104110 0.000000 0.000000</Vector4>
 					</property>
 					<property>
 						g_detailPowerGloss
@@ -243,23 +225,11 @@
 						<Texture>vehicles/american/A115_Chrysler_K_GF/Chrysler_K_GF_hull_01_2_AO.dds</Texture>
 					</property>
 					<property>
-						doubleSided
-						<Bool>false</Bool>
-					</property>
-					<property>
 						diffuseMap
 						<Texture>vehicles/american/A115_Chrysler_K_GF/Chrysler_K_GF_hull_01_2_AM.dds</Texture>
 					</property>
-					<property>
-						alphaTestEnable
-						<Bool>false</Bool>
-					</property>
-					<property>
-						alphaReference
-						<Int>0</Int>
-					</property>
 				</material>
-				<groupOrigin>0.001862 0.600721 2.830639</groupOrigin>
+				<groupOrigin>0.000323 0.600721 2.830639</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
@@ -267,6 +237,6 @@
 		<min>-1.984268 -0.574656 -3.822490</min>
 		<max>1.982952 1.026444 3.827828</max>
 	</boundingBox>
-	<geometrySize>597108</geometrySize>
+	<geometrySize>554654</geometrySize>
 	<minUVDensity>0.003484</minUVDensity>
 </root>

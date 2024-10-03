@@ -443,8 +443,10 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.crosshairPanel.VO.CrosshairSettingsVO;
    import net.wg.gui.components.crosshairPanel.VO.GunMarkerIndicatorVO;
    import net.wg.gui.components.crosshairPanel.VO.ShotFlyTimeVO;
+   import net.wg.gui.components.crosshairPanel.WTCrosshairBase;
    import net.wg.gui.components.crosshairPanel.components.CrosshairClipQuantityBar;
    import net.wg.gui.components.crosshairPanel.components.CrosshairClipQuantityBarContainer;
+   import net.wg.gui.components.crosshairPanel.components.OverheatBar;
    import net.wg.gui.components.crosshairPanel.components.artyScale.ArtyIndicationScale;
    import net.wg.gui.components.crosshairPanel.components.artyShot.ArtyShotIndicator;
    import net.wg.gui.components.crosshairPanel.components.artyShot.ArtyShotIndicatorText;
@@ -476,6 +478,8 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.crosshairPanel.components.gunMarker.constants.GunMarkerConsts;
    import net.wg.gui.components.crosshairPanel.components.speedometer.Speedometer;
    import net.wg.gui.components.crosshairPanel.components.speedometer.SpeedometerWarningAnim;
+   import net.wg.gui.components.crosshairPanel.components.wt.PlasmaDamageTF;
+   import net.wg.gui.components.crosshairPanel.components.wt.PlasmaIndicator;
    import net.wg.gui.components.crosshairPanel.constants.CrosshairConsts;
    import net.wg.gui.components.damageIndicator.AnimationContainer;
    import net.wg.gui.components.damageIndicator.DamageIndicator;
@@ -762,6 +766,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.settings.SoundSettingsBase;
    import net.wg.gui.lobby.settings.SoundSpecialForm;
    import net.wg.gui.lobby.settings.SoundVivoxForm;
+   import net.wg.gui.lobby.settings.components.EventSettingLabel;
    import net.wg.gui.lobby.settings.components.KeyInput;
    import net.wg.gui.lobby.settings.components.KeysItemRenderer;
    import net.wg.gui.lobby.settings.components.KeysScrollingList;
@@ -1788,9 +1793,13 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_ICROSSHAIRPANELCONTAINER:Class = ICrosshairPanelContainer;
       
+      public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_WTCROSSHAIRBASE:Class = WTCrosshairBase;
+      
       public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_COMPONENTS_CROSSHAIRCLIPQUANTITYBAR:Class = CrosshairClipQuantityBar;
       
       public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_COMPONENTS_CROSSHAIRCLIPQUANTITYBARCONTAINER:Class = CrosshairClipQuantityBarContainer;
+      
+      public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_COMPONENTS_OVERHEATBAR:Class = OverheatBar;
       
       public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_COMPONENTS_ARTYSCALE_ARTYINDICATIONSCALE:Class = ArtyIndicationScale;
       
@@ -1853,6 +1862,10 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_COMPONENTS_SPEEDOMETER_SPEEDOMETER:Class = Speedometer;
       
       public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_COMPONENTS_SPEEDOMETER_SPEEDOMETERWARNINGANIM:Class = SpeedometerWarningAnim;
+      
+      public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_COMPONENTS_WT_PLASMADAMAGETF:Class = PlasmaDamageTF;
+      
+      public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_COMPONENTS_WT_PLASMAINDICATOR:Class = PlasmaIndicator;
       
       public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_CONSTANTS_CROSSHAIRCONSTS:Class = CrosshairConsts;
       
@@ -2431,6 +2444,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_SETTINGS_SOUNDSPECIALFORM:Class = SoundSpecialForm;
       
       public static const NET_WG_GUI_LOBBY_SETTINGS_SOUNDVIVOXFORM:Class = SoundVivoxForm;
+      
+      public static const NET_WG_GUI_LOBBY_SETTINGS_COMPONENTS_EVENTSETTINGLABEL:Class = EventSettingLabel;
       
       public static const NET_WG_GUI_LOBBY_SETTINGS_COMPONENTS_KEYINPUT:Class = KeyInput;
       

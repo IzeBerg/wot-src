@@ -40,6 +40,10 @@ package net.wg.gui.lobby.techtree
       public static const ON_END_HINT_ANIMATION:String = "endHintAnimation";
       
       public static const GO_TO_EARLY_ACCESS:String = "gotToEarlyAccess";
+      
+      public static const GO_TO_EARLY_ACCESS_QUESTS_VIEW:String = "gotToEarlyAccessQuestsView";
+      
+      public static const GO_TO_EARLY_ACCESS_BUY_VIEW:String = "gotToEarlyAccessBuyView";
        
       
       public var nodeState:String = "";

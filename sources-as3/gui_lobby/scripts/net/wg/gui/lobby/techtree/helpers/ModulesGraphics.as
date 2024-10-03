@@ -89,6 +89,10 @@ package net.wg.gui.lobby.techtree.helpers
                   return DEFAULT_LINE_THICKNESS;
                }
             }
+            if(param1.getNodeData() && param1.getNodeData().isEarlyAccess)
+            {
+               return DEFAULT_LINE_THICKNESS;
+            }
             return UNLOCKED_LINE_THICKNESS;
          }
          return DEFAULT_LINE_THICKNESS;

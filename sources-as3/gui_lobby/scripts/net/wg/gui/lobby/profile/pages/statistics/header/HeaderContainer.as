@@ -17,11 +17,15 @@ package net.wg.gui.lobby.profile.pages.statistics.header
       
       private static const GROUP_OFFSET2:int = 177;
       
+      private static const GROUP_OFFSET3:int = 263;
+      
       private static const GROUP_OFFSET_DEFAULT:int = 133;
       
       private static const OFFSET1_GROUP_COUNT:int = 4;
       
       private static const OFFSET2_GROUP_COUNT:int = 5;
+      
+      private static const OFFSET3_GROUP_COUNT:int = 3;
        
       
       public var icon:BattleTypeIcon = null;
@@ -83,6 +87,9 @@ package net.wg.gui.lobby.profile.pages.statistics.header
                break;
             case OFFSET2_GROUP_COUNT:
                this.group.x = GROUP_OFFSET2;
+               break;
+            case OFFSET3_GROUP_COUNT:
+               this.group.x = GROUP_OFFSET3;
                break;
             default:
                this.group.x = GROUP_OFFSET_DEFAULT;

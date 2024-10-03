@@ -25,6 +25,24 @@
 					<row3>0.055645 0.282583 1.389267</row3>
 				</transform>
 			</node>
+			<node>
+				<identifier>HP_TurretCamera_01</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>-0.584270 0.753806 -0.398012</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_turretAbillity</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+			</node>
 		</node>
 	</node>
 	<renderSet>
@@ -55,6 +73,10 @@
 					<property>
 						g_detailUVTiling
 						<Vector4>7.013700 3.506850 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
 					</property>
 					<property>
 						metallicDetailMap

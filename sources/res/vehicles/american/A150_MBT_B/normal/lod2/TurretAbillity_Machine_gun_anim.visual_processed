@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>Root</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>Machine_gun_0</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.279376 -0.960182</row1>
+					<row2>0.000000 0.960182 0.279376</row2>
+					<row3>-0.661416 0.380144 -0.261990</row3>
+				</transform>
+				<node>
+					<identifier>Machine_gun_1</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 0.279198 0.960234</row1>
+						<row2>0.000000 -0.960234 0.279198</row2>
+						<row3>-0.001084 0.198261 0.681776</row3>
+					</transform>
+					<node>
+						<identifier>Machine_gun_1_BlendBone</identifier>
+						<transform>
+							<row0>1.000000 0.000000 0.000000</row0>
+							<row1>0.000000 1.000000 -0.000185</row1>
+							<row2>0.000000 -0.000185 -1.000000</row2>
+							<row3>0.662500 -1.090113 0.262087</row3>
+						</transform>
+					</node>
+				</node>
+				<node>
+					<identifier>Machine_gun_0_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 0.279376 0.960182</row1>
+						<row2>0.000000 0.960182 -0.279376</row2>
+						<row3>0.661416 -0.357761 -0.291813</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>Observation_dev_1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.924797 0.398354 1.513680</row3>
+				</transform>
+				<node>
+					<identifier>Observation_dev_1_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 -1.000000</row2>
+						<row3>-0.924797 -0.398354 -1.513680</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>Observation_dev_2</identifier>
+				<transform>
+					<row0>0.652726 -0.368701 -0.661822</row0>
+					<row1>-0.000315 -0.873716 0.486436</row1>
+					<row2>-0.757594 -0.317301 -0.570413</row2>
+					<row3>-1.120394 0.451786 0.888339</row3>
+				</transform>
+				<node>
+					<identifier>Observation_dev_2_BlendBone</identifier>
+					<transform>
+						<row0>0.652726 -0.000315 -0.757594</row0>
+						<row1>-0.368701 -0.873716 -0.317301</row1>
+						<row2>0.661822 -0.486436 0.570413</row2>
+						<row3>1.485806 -0.037741 -0.198731</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>Observation_dev_3</identifier>
+				<transform>
+					<row0>-0.643087 -0.372313 -0.669195</row0>
+					<row1>0.765793 -0.312839 -0.561866</row1>
+					<row2>-0.000160 -0.873793 0.486297</row2>
+					<row3>-1.436402 0.377912 0.930381</row3>
+				</transform>
+				<node>
+					<identifier>Observation_dev_3_BlendBone</identifier>
+					<transform>
+						<row0>-0.643087 0.765793 -0.000160</row0>
+						<row1>-0.372313 -0.312839 -0.873793</row1>
+						<row2>0.669195 0.561866 -0.486297</row2>
+						<row3>-0.160424 1.740961 -0.122455</row3>
+					</transform>
+				</node>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>Machine_gun_1_BlendBone</node>
+		<node>Machine_gun_0_BlendBone</node>
+		<geometry>
+			<vertices>turret_anim_06_Shape.vertices</vertices>
+			<primitive>turret_anim_06_Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_turret_01_skinned</identifier>
+					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>vehicles/american/A150_MBT_B/MBT_B_turret_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/american/A150_MBT_B/MBT_B_turret_01_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/american/A150_MBT_B/MBT_B_turret_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/american/A150_MBT_B/MBT_B_turret_01_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.597216 0.867079 -0.608945</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>Observation_dev_2_BlendBone</node>
+		<geometry>
+			<vertices>turret_anim_04_Shape.vertices</vertices>
+			<primitive>turret_anim_04_Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_turret_01_skinned</identifier>
+					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>vehicles/american/A150_MBT_B/MBT_B_turret_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/american/A150_MBT_B/MBT_B_turret_01_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/american/A150_MBT_B/MBT_B_turret_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/american/A150_MBT_B/MBT_B_turret_01_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-1.178816 0.444822 -0.907619</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>Observation_dev_3_BlendBone</node>
+		<geometry>
+			<vertices>turret_anim_03_Shape.vertices</vertices>
+			<primitive>turret_anim_03_Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_turret_01_skinned</identifier>
+					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>vehicles/american/A150_MBT_B/MBT_B_turret_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/american/A150_MBT_B/MBT_B_turret_01_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/american/A150_MBT_B/MBT_B_turret_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/american/A150_MBT_B/MBT_B_turret_01_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-1.516206 0.381738 -0.944049</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>Observation_dev_1_BlendBone</node>
+		<geometry>
+			<vertices>turret_anim_01_Shape.vertices</vertices>
+			<primitive>turret_anim_01_Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_turret_01_skinned</identifier>
+					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>vehicles/american/A150_MBT_B/MBT_B_turret_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/american/A150_MBT_B/MBT_B_turret_01_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/american/A150_MBT_B/MBT_B_turret_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/american/A150_MBT_B/MBT_B_turret_01_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.918046 0.301768 -1.515022</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<constraints/>
+	<boundingBox>
+		<min>-1.605973 0.192503 -0.655262</min>
+		<max>1.069540 1.410333 1.873153</max>
+	</boundingBox>
+	<geometrySize>21158</geometrySize>
+	<minUVDensity>0.013610</minUVDensity>
+</root>

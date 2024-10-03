@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<version>3</version>
+	<GameObjects>
+		<GameObject>
+			<name/>
+			<UUID>9ccbd45a-10b2-45ab-9c62-5dd6a12a19a6</UUID>
+			<flags>0</flags>
+		</GameObject>
+	</GameObjects>
+	<components>
+		<ComponentPool>
+			<type>Transform</type>
+			<version>1</version>
+			<component>
+				<objectIndex>0</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>0 0 0</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>-0 0 0</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>SerialNumberSwitcher</type>
+			<version>1</version>
+			<component>
+				<objectIndex>0</objectIndex>
+				<flags>1</flags>
+				<config>
+					<property>
+						<name>lamp3digits</name>
+						<isAsset>true</isAsset>
+						<value>vehicles/american/A165_XM57/_skins/A165_XM57_3Dst/lamp_3.prefab</value>
+					</property>
+					<property>
+						<name>lamp4digits</name>
+						<isAsset>true</isAsset>
+						<value>vehicles/american/A165_XM57/_skins/A165_XM57_3Dst/lamp_4.prefab</value>
+					</property>
+					<property>
+						<name>lamp5digits</name>
+						<isAsset>true</isAsset>
+						<value>vehicles/american/A165_XM57/_skins/A165_XM57_3Dst/lamp_5.prefab</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+	</components>
+</root>

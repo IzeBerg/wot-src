@@ -4131,6 +4131,40 @@ class ScanDirProvider(MatrixProvider):
 
 Screener = PyScreener()
 
+class SequenceTransitionCamera(BaseCamera):
+	def __delattr__(*args, **kwargs): pass
+	__doc__ = None
+	def __format__(*args, **kwargs): pass
+	def __getattribute__(*args, **kwargs): pass
+	def __hash__(*args, **kwargs): pass
+	def __init__(self, *args, **kwargs): pass
+	__module__ = 'BigWorld'
+	def __new__(*args, **kwargs): pass
+	__qualname__ = 'SequenceTransitionCamera'
+	def __reduce__(*args, **kwargs): pass
+	def __reduce_ex__(*args, **kwargs): pass
+	def __repr__(*args, **kwargs): pass
+	def __setattr__(*args, **kwargs): pass
+	def __sizeof__(*args, **kwargs): pass
+	def __str__(*args, **kwargs): pass
+	def __subclasshook__(*args, **kwargs): pass
+	direction = property(lambda self: None)
+	def finish(self, *args, **kwargs): pass
+	def handleAxisEvent(self, *args, **kwargs): pass
+	def handleKeyEvent(self, *args, **kwargs): pass
+	def handleMouseEvent(self, *args, **kwargs): pass
+	invViewMatrix = property(lambda self: None)
+	def isInTransition(self, *args, **kwargs): pass
+	matrix = property(lambda self: None)
+	position = property(lambda self: None)
+	def render(self, *args, **kwargs): pass
+	def set(self, *args, **kwargs): pass
+	spaceID = property(lambda self: None)
+	def start(self, *args, **kwargs): pass
+	def unbind(self, *args, **kwargs): pass
+	def update(self, *args, **kwargs): pass
+
+
 class Server(pybind11_object):
 	def __delattr__(*args, **kwargs): pass
 	__doc__ = None

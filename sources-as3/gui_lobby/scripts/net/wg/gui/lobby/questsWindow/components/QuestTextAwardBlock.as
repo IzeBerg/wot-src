@@ -22,9 +22,13 @@ package net.wg.gui.lobby.questsWindow.components
       
       private var _wulfTooltipArg:String = "";
       
+      private var _typedTooltipArg:String = "";
+      
       private var _isTooltipComplex:Boolean = false;
       
       private var _isTooltipWulf:Boolean = false;
+      
+      private var _isTypedTooltip:Boolean = false;
       
       private var _linesLimit:int = -1;
       
@@ -76,6 +80,7 @@ package net.wg.gui.lobby.questsWindow.components
                this.textTf.addEventListener(MouseEvent.ROLL_OUT,this.onTextTfRollOutHandler);
                this._isTooltipComplex = StringUtils.isNotEmpty(_loc2_.complexTooltip);
                this._isTooltipWulf = StringUtils.isNotEmpty(_loc2_.wulfTooltip);
+               this._isTypedTooltip = StringUtils.isNotEmpty(_loc2_.typedTooltip);
                if(this._isTooltipWulf)
                {
                   this._tooltip = _loc2_.wulfTooltip;
@@ -84,6 +89,11 @@ package net.wg.gui.lobby.questsWindow.components
                else if(this._isTooltipComplex)
                {
                   this._tooltip = _loc2_.complexTooltip;
+               }
+               else if(this._isTypedTooltip)
+               {
+                  this._tooltip = _loc2_.typedTooltip;
+                  this._typedTooltipArg = _loc2_.typedTooltipArg;
                }
                else
                {
@@ -140,6 +150,10 @@ package net.wg.gui.lobby.questsWindow.components
             else if(this._isTooltipComplex)
             {
                App.toolTipMgr.showComplex(this._tooltip);
+            }
+            else if(this._isTypedTooltip)
+            {
+               App.toolTipMgr.showSpecial(this._tooltip,null,this._typedTooltipArg);
             }
             else
             {

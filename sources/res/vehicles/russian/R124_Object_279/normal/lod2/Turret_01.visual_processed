@@ -25,6 +25,24 @@
 					<row3>0.055645 0.282583 1.389267</row3>
 				</transform>
 			</node>
+			<node>
+				<identifier>HP_TurretCamera_01</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>-0.584270 0.753806 -0.398012</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_turretAbillity</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+			</node>
 		</node>
 	</node>
 	<renderSet>
@@ -38,27 +56,51 @@
 				<material>
 					<identifier>tank_turret_01</identifier>
 					<fx>shaders/std_effects/PBS_tank.fx</fx>
-					<materialKind>0</materialKind>
 					<collisionFlags>0</collisionFlags>
-					<property>
-						colorIdMap
-						<Texture>vehicles/russian/common/common_ID.dds</Texture>
-					</property>
-					<property>
-						diffuseMap
-						<Texture>vehicles/russian/R124_Object_279/Object_279_turret_01_AM.dds</Texture>
-					</property>
-					<property>
-						excludeMaskAndAOMap
-						<Texture>vehicles/russian/R124_Object_279/Object_279_turret_01_AO.dds</Texture>
-					</property>
+					<materialKind>0</materialKind>
 					<property>
 						g_detailUVTiling
-						<Vector4>7.013700 3.506850 0.000000 0.000000</Vector4>
+						<Vector4>
+							3.50685 3.50685 0.000000 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_detailPowerGloss
+						<Float>
+							0.35
+							<!--BW_String-->
+						</Float>
+					</property>
+					<property>
+						g_detailPowerAlbedo
+						<Float>
+							0.11
+							<!--BW_String-->
+						</Float>
+					</property>
+					<property>
+						g_maskBias
+						<Float>
+							0.18
+							<!--BW_String-->
+						</Float>
+					</property>
+					<property>
+						g_detailPower
+						<Float>5</Float>
 					</property>
 					<property>
 						metallicDetailMap
 						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_useNormalPackDXT1
+						<Bool>false</Bool>
 					</property>
 					<property>
 						metallicGlossMap
@@ -68,15 +110,23 @@
 						normalMap
 						<Texture>vehicles/russian/R124_Object_279/Object_279_turret_01_ANM.dds</Texture>
 					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/russian/R124_Object_279/Object_279_turret_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/russian/R124_Object_279/Object_279_turret_01_AO.dds</Texture>
+					</property>
 				</material>
-				<groupOrigin>-0.033420 1.415894 0.013708</groupOrigin>
+				<groupOrigin>-0.008955 1.415894 0.013708</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<boundingBox>
-		<min>-1.527338 0.047596 -1.613916</min>
+		<min>-1.478410 0.047596 -1.613916</min>
 		<max>1.460499 2.784192 1.641331</max>
 	</boundingBox>
-	<geometrySize>81506</geometrySize>
+	<geometrySize>43590</geometrySize>
 	<minUVDensity>0.005359</minUVDensity>
 </root>

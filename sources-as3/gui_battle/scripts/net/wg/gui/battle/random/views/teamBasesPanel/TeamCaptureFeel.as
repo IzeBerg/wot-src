@@ -43,6 +43,11 @@ package net.wg.gui.battle.random.views.teamBasesPanel
          this.onDispose();
       }
       
+      public function getBarWidth() : Number
+      {
+         return this._fillTarget.width;
+      }
+      
       public function onDispose() : void
       {
          this._colorType = null;
@@ -73,7 +78,6 @@ package net.wg.gui.battle.random.views.teamBasesPanel
       
       private function drawGraphic() : void
       {
-         var _loc3_:Graphics = null;
          if(this._bitmapSrcPrefix == Values.EMPTY_STR || this._colorType == Values.EMPTY_STR)
          {
             return;
@@ -84,15 +88,20 @@ package net.wg.gui.battle.random.views.teamBasesPanel
          {
             return;
          }
-         _loc3_ = this._fillTarget.graphics;
+         this.drawBitmap(this._fillTarget,_loc2_);
+         this.x = -this.getBarWidth() >> 1;
+      }
+      
+      protected function drawBitmap(param1:Sprite, param2:BitmapData) : void
+      {
+         var _loc3_:Graphics = param1.graphics;
          _loc3_.beginFill(13762560);
-         _loc3_.beginBitmapFill(_loc2_);
-         var _loc4_:Number = _loc2_.width;
-         var _loc5_:Number = _loc2_.height;
+         _loc3_.beginBitmapFill(param2);
+         var _loc4_:Number = param2.width;
+         var _loc5_:Number = param2.height;
          var _loc6_:Number = 0;
          var _loc7_:Number = 0;
-         this.x = -_loc4_ >> 1;
-         _loc3_.lineTo(_loc6_,_loc7_);
+         _loc3_.moveTo(_loc6_,_loc7_);
          _loc3_.lineTo(_loc6_ + _loc4_,_loc7_);
          _loc3_.lineTo(_loc6_ + _loc4_,_loc7_ + _loc5_);
          _loc3_.lineTo(_loc6_,_loc7_ + _loc5_);

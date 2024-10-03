@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<params>
+		<param>
+			<name>engine_start_trigger</name>
+			<type>trigger</type>
+		</param>
+	</params>
+	<node>
+		<name>idle</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/Cz04_T50_51_Waf_3DSt/empty.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>-1</loop>
+		<transition>
+			<to>Sleep Node</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>trigger</type>
+					<name>engine_start_trigger</name>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-392.000000 148.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>Antenna_On</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/Cz04_T50_51_Waf_3DSt/empty.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>-1</loop>
+		<uiPosition>-272.000000 -254.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>Sleep Node</name>
+		<type>sleep</type>
+		<time>10.000000 10.000000</time>
+		<transition>
+			<to>Antenna_open_seq</to>
+			<blendDuration>1.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>1.000000</exitOffset>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-253.000000 23.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>Antenna_open_seq</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/Cz04_T50_51_Waf_3DSt/Turret_Antenna_open.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<transition>
+			<to>Antenna_On</to>
+			<blendDuration>4.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>1.000000</exitOffset>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-24.000000 -107.000000 0.000000</uiPosition>
+	</node>
+</root>

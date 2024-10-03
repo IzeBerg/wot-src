@@ -42,15 +42,6 @@
 						</transform>
 					</node>
 					<node>
-						<identifier>HP_gunAnim</identifier>
-						<transform>
-							<row0>1.000000 0.000000 0.000000</row0>
-							<row1>0.000000 1.000000 0.000000</row1>
-							<row2>0.000000 0.000000 1.000000</row2>
-							<row3>0.000000 0.000000 -3.000000</row3>
-						</transform>
-					</node>
-					<node>
 						<identifier>G_BlendBone</identifier>
 						<transform>
 							<row0>1.000000 0.000000 0.000000</row0>
@@ -101,6 +92,10 @@
 					<property>
 						normalMap
 						<Texture>vehicles/poland/Pl34_CS_63_02/CS_63_02_proxy_ANM.dds</Texture>
+					</property>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
 					</property>
 				</material>
 				<groupOrigin>0.070448 0.035934 -2.529900</groupOrigin>

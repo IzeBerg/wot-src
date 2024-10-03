@@ -161,6 +161,10 @@ package net.wg.gui.components.crosshairPanel
       
       private var _engineCrush:String = "";
       
+      private var _overheatProgress:Number = 0.0;
+      
+      private var _isOverheated:Boolean = false;
+      
       private var _sniperCameraTransitionFx:CrosshairPanelSniperCameraTransitionFx = null;
       
       private var _fadeTween:Tween = null;
@@ -233,6 +237,15 @@ package net.wg.gui.components.crosshairPanel
          if(this._currentCrosshair is CrosshairStrategic)
          {
             (this._currentCrosshair as CrosshairStrategic).setShotFlyTimesData(param1);
+         }
+      }
+      
+      override protected function addOverheat(param1:Vector.<Number>) : void
+      {
+         var _loc2_:ICrosshair = null;
+         for each(_loc2_ in this._crosshairs)
+         {
+            _loc2_.addOverheat(param1);
          }
       }
       
@@ -372,6 +385,15 @@ package net.wg.gui.components.crosshairPanel
          {
             _loc3_.x = param1;
             _loc3_.y = param2;
+         }
+      }
+      
+      public function as_removeOverheat() : void
+      {
+         var _loc1_:ICrosshair = null;
+         for each(_loc1_ in this._crosshairs)
+         {
+            _loc1_.removeOverheat();
          }
       }
       
@@ -555,6 +577,13 @@ package net.wg.gui.components.crosshairPanel
          }
       }
       
+      public function as_setOverheatProgress(param1:Number, param2:Boolean) : void
+      {
+         this._overheatProgress = param1;
+         this._isOverheated = param2;
+         this._currentCrosshair.setOverheatProgress(param1,param2);
+      }
+      
       public function as_setReloading(param1:Number, param2:Number, param3:Number, param4:Boolean) : void
       {
          this.clearReloadingTimer();
@@ -718,6 +747,7 @@ package net.wg.gui.components.crosshairPanel
             this._currentCrosshair.visible = true;
             this._currentCrosshair.setVisibleNet(this._visibleNet);
             this._currentCrosshair.setNetSeparatorVisible(this._visibleNetSeparator);
+            this._currentCrosshair.setOverheatProgress(this._overheatProgress,this._isOverheated,true);
             if(_loc3_)
             {
                this._currentCrosshair.autoloaderBoostUpdate(_loc3_,0,true);
@@ -767,6 +797,26 @@ package net.wg.gui.components.crosshairPanel
          if(this._isAutoloader && this._currentCrosshair != null)
          {
             this._currentCrosshair.autoloaderShowShot();
+         }
+      }
+      
+      public function as_showPlasmaIndicator(param1:Number, param2:Boolean, param3:String) : void
+      {
+         if(this._currentCrosshair is WTCrosshairBase)
+         {
+            (this._currentCrosshair as WTCrosshairBase).showPlasmaIndicator(param1,param2,param3);
+         }
+      }
+      
+      public function as_showExplosiveShotIndicator(param1:Boolean) : void
+      {
+         if(this._gunMarkersContainer != null)
+         {
+            this._gunMarkersContainer.setExplosiveShotMarker(param1);
+         }
+         if(this._currentCrosshair is WTCrosshairBase)
+         {
+            (this._currentCrosshair as WTCrosshairBase).setExplosiveShotVisible(param1);
          }
       }
       
@@ -831,19 +881,19 @@ package net.wg.gui.components.crosshairPanel
          }
       }
       
-      public function as_updateScaleWidget(param1:Number) : void
-      {
-         if(this._currentCrosshair != null)
-         {
-            this._currentCrosshair.updateScaleWidget(param1);
-         }
-      }
-      
       public function as_updateScaleSteps(param1:int) : void
       {
          if(this._currentCrosshair != null)
          {
             this._currentCrosshair.updateScaleSteps(param1);
+         }
+      }
+      
+      public function as_updateScaleWidget(param1:Number) : void
+      {
+         if(this._currentCrosshair != null)
+         {
+            this._currentCrosshair.updateScaleWidget(param1);
          }
       }
       

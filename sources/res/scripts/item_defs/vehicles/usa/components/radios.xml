@@ -39,6 +39,7 @@
 		<AN_VRC_12>77</AN_VRC_12>
 		<SCR_210A2>78</SCR_210A2>
 		<AN_GRC_7A>80</AN_GRC_7A>
+		<AN-VRC-7_WT>1001</AN-VRC-7_WT>
 		<AN-ARC-27_IGR>60001</AN-ARC-27_IGR>
 		<SCR_619_IGR>60002</SCR_619_IGR>
 		<SCR_528A1_IGR>60003</SCR_528A1_IGR>
@@ -63,7 +64,10 @@
 		<AN_VRC-3_MBT>31007</AN_VRC-3_MBT>
 		<AN-VRC-7A>31005</AN-VRC-7A>
 		<AN_VRC-3_57>31008</AN_VRC-3_57>
+		<AN_VRC_3>31009</AN_VRC_3>
+		<AN_GRC_8A>31010</AN_GRC_8A>
 		<AN_VRC-3_T>31011</AN_VRC-3_T>
+		<AN_GRC_8A_T>31012</AN_GRC_8A_T>
 		<AN_GRC_8_T>31006</AN_GRC_8_T>
 	</ids>
 	<shared>
@@ -322,6 +326,21 @@
 				<!--BW_String-->
 			</repairCost>
 		</AN_VRC-3_T>
+		<AN_VRC_3>
+			<userString>#usa_vehicles:AN_VRC_3</userString>
+			<tags/>
+			<level>10</level>
+			<notInShop>true</notInShop>
+			<price>51600</price>
+			<weight>160</weight>
+			<distance>745</distance>
+			<maxHealth>250</maxHealth>
+			<maxRegenHealth>75</maxRegenHealth>
+			<repairCost>
+				3.5
+				<!--BW_String-->
+			</repairCost>
+		</AN_VRC_3>
 		<AN_VRC-3_57>
 			<userString>#usa_vehicles:AN_VRC-3</userString>
 			<tags/>
@@ -522,6 +541,30 @@
 			<maxRegenHealth>150</maxRegenHealth>
 			<repairCost>3</repairCost>
 		</AN_GRC_8E>
+		<AN_GRC_8A>
+			<userString>#usa_vehicles:AN_GRC_8A</userString>
+			<tags/>
+			<level>10</level>
+			<price>54000</price>
+			<notInShop>true</notInShop>
+			<weight>105</weight>
+			<distance>745</distance>
+			<maxHealth>200</maxHealth>
+			<maxRegenHealth>150</maxRegenHealth>
+			<repairCost>3</repairCost>
+		</AN_GRC_8A>
+		<AN_GRC_8A_T>
+			<userString>#usa_vehicles:AN_GRC_8A_T</userString>
+			<tags/>
+			<level>10</level>
+			<price>54000</price>
+			<notInShop>true</notInShop>
+			<weight>105</weight>
+			<distance>745</distance>
+			<maxHealth>200</maxHealth>
+			<maxRegenHealth>150</maxRegenHealth>
+			<repairCost>3</repairCost>
+		</AN_GRC_8A_T>
 		<AN-ARC-27>
 			<userString>#usa_vehicles:AN-ARC-27</userString>
 			<tags/>
@@ -723,6 +766,18 @@
 				<!--BW_String-->
 			</repairCost>
 		</T23radio>
+		<AN-VRC-7_WT>
+			<userString>#usa_vehicles:AN-VRC-7_WT</userString>
+			<tags/>
+			<level>10</level>
+			<price>54000</price>
+			<notInShop>true</notInShop>
+			<weight>100</weight>
+			<distance>945</distance>
+			<maxHealth>200</maxHealth>
+			<maxRegenHealth>150</maxRegenHealth>
+			<repairCost>3</repairCost>
+		</AN-VRC-7_WT>
 		<AN-ARC-27_IGR>
 			<userString>#igr_vehicles:AN-ARC-27_IGR</userString>
 			<tags/>

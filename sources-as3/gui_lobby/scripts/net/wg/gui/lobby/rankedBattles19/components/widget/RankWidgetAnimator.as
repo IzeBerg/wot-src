@@ -473,31 +473,19 @@ package net.wg.gui.lobby.rankedBattles19.components.widget
          this._tweens.push(new Tween(TWEEN_TIME,this._mainRank,{"y":this._widget.rightRankY},{
             "ease":Cubic.easeOut,
             "paused":false,
-            "onComplete":this.runFirstRankReceiveMainRankReady
+            "onComplete":null
          }));
-      }
-      
-      private function runFirstRankReceiveMainRankReady() : void
-      {
-         this._widget.shineAnim.x = this._mainRank.x + (this._mainRank.width - this._widget.shineAnim.width >> 1);
-         this._widget.shineAnim.y = this._mainRank.y + (this._mainRank.height - this._widget.shineAnim.height >> 1);
-         this._widget.shineAnim.visible = true;
-         this._widget.shineAnim.play();
       }
       
       private function hideFirstRankReceiveAnimation() : void
       {
          this._widget.bg.gotoAndStop(INIT_ANIM_LABEL);
-         this._widget.shineAnim.stop();
-         this._widget.shineAnim.visible = false;
          this.runFirstRankReachiveEnableAnimation();
       }
       
       private function hideRankReceiveAnimation() : void
       {
          this._widget.bg.gotoAndStop(INIT_ANIM_LABEL);
-         this._widget.shineAnim.stop();
-         this._widget.shineAnim.visible = false;
          this.runSwitchRanksAnimation();
       }
       
@@ -712,10 +700,6 @@ package net.wg.gui.lobby.rankedBattles19.components.widget
          this._widget.infoText.y = DEFAULT_INFO_TEXT_Y;
          if(this._animState == RANKEDBATTLES_ALIASES.RANK_RECEIVE_STATE)
          {
-            this._widget.shineAnim.x = this._secondaryRank.x + (this._secondaryRank.width - this._widget.shineAnim.width >> 1);
-            this._widget.shineAnim.y = this._secondaryRank.y + (this._secondaryRank.height - this._widget.shineAnim.height >> 1);
-            this._widget.shineAnim.visible = true;
-            this._widget.shineAnim.play();
             this._widget.bg.gotoAndPlay(SHOW_ANIM_LABEL);
             this._scheduler.scheduleTask(this.hideRankReceiveAnimation,SHOW_RANK_RECEIVE_TIME);
          }

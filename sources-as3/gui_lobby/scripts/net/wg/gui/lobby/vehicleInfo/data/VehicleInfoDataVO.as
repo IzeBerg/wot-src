@@ -12,6 +12,8 @@ package net.wg.gui.lobby.vehicleInfo.data
       private static const CREW_DATA:String = "crewData";
       
       private static const BASE_DATA:String = "baseData";
+      
+      private static const ABILITY_DATA:String = "abilityData";
        
       
       public var vehicleName:String = "";
@@ -36,6 +38,8 @@ package net.wg.gui.lobby.vehicleInfo.data
       
       private var _baseData:Vector.<Object>;
       
+      private var _abilityData:Vector.<Object>;
+      
       public function VehicleInfoDataVO(param1:Object)
       {
          this._propsData = new Vector.<Object>();
@@ -48,6 +52,7 @@ package net.wg.gui.lobby.vehicleInfo.data
       {
          var _loc1_:IDisposable = null;
          var _loc2_:IDisposable = null;
+         var _loc3_:IDisposable = null;
          for each(_loc1_ in this._propsData)
          {
             _loc1_.dispose();
@@ -62,6 +67,12 @@ package net.wg.gui.lobby.vehicleInfo.data
          this._crewData = null;
          this._baseData.splice(0,this._baseData.length);
          this._baseData = null;
+         for each(_loc3_ in this._abilityData)
+         {
+            _loc3_.dispose();
+         }
+         this._abilityData.splice(0,this._abilityData.length);
+         this._abilityData = null;
          super.onDispose();
       }
       
@@ -73,6 +84,8 @@ package net.wg.gui.lobby.vehicleInfo.data
          var _loc6_:Object = null;
          var _loc7_:Array = null;
          var _loc8_:Object = null;
+         var _loc9_:Array = null;
+         var _loc10_:Object = null;
          if(param1 == PROPS_DATA)
          {
             _loc3_ = param2 as Array;
@@ -103,6 +116,20 @@ package net.wg.gui.lobby.vehicleInfo.data
             }
             return false;
          }
+         if(param1 == ABILITY_DATA)
+         {
+            if(param2)
+            {
+               this._abilityData = new Vector.<Object>(0);
+               _loc9_ = param2 as Array;
+               App.utils.asserter.assertNotNull(_loc9_,ABILITY_DATA + Errors.CANT_NULL);
+               for each(_loc10_ in _loc9_)
+               {
+                  this._abilityData.push(new VehicleInfoAbilityBlockVO(_loc10_));
+               }
+            }
+            return false;
+         }
          return super.onDataWrite(param1,param2);
       }
       
@@ -119,6 +146,11 @@ package net.wg.gui.lobby.vehicleInfo.data
       public function get baseData() : Vector.<Object>
       {
          return this._baseData;
+      }
+      
+      public function get abilityData() : Vector.<Object>
+      {
+         return this._abilityData;
       }
    }
 }

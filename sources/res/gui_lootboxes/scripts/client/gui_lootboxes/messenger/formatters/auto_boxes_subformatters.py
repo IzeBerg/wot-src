@@ -5,7 +5,7 @@ from gui.impl import backport
 from gui.impl.gen import R
 from gui.server_events.bonuses import getMergedBonusesFromDicts
 from gui.shared.gui_items.dossier import getAchievementFactory
-from gui.shared.gui_items.loot_box import ALL_LUNAR_NY_LOOT_BOX_TYPES, EventLootBoxes, WTLootBoxes
+from gui.shared.gui_items.loot_box import ALL_LUNAR_NY_LOOT_BOX_TYPES, EventLootBoxes
 from helpers import dependency
 from messenger import g_settings
 from messenger.formatters.service_channel import LootBoxAchievesFormatter, QuestAchievesFormatter, ServiceChannelFormatter, WaitItemsSyncFormatter
@@ -76,11 +76,12 @@ class EventBoxesFormatter(AsyncAutoLootBoxSubFormatter):
 
     @classmethod
     def _isBoxOfThisGroup(cls, boxID):
-        return cls._isBoxOfRequiredTypes(boxID, WTLootBoxes.ALL())
+        from white_tiger.gui.impl.lobby.wt_event_constants import WhiteTigerLootBoxes
+        return cls._isBoxOfRequiredTypes(boxID, WhiteTigerLootBoxes.ALL())
 
     @staticmethod
     def _getMessageTemplate():
-        return 'EventLootBoxesAutoOpenMessage'
+        return 'WtEventLootBoxesAutoOpenMessage'
 
     @staticmethod
     def _getTextResPath():

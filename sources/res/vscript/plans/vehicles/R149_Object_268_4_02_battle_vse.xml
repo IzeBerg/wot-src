@@ -451,18 +451,6 @@
 				<slots/>
 			</block>
 			<block>
-				<class>GetVehicleGameObject</class>
-				<id>GetVehicleGameObject_2</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>GameObjectToVehicle</class>
-				<id>GameObjectToVehicle_1</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
 				<class>CompareFloats</class>
 				<id>CompareFloats_1</id>
 				<params/>
@@ -546,14 +534,14 @@
 				</slots>
 			</block>
 			<block>
-				<class>IsPlayerVehicle</class>
-				<id>IsPlayerVehicle_1</id>
+				<class>OnAnyVehicleShoot</class>
+				<id>OnAnyVehicleShoot_1</id>
 				<params/>
 				<slots/>
 			</block>
 			<block>
-				<class>OnPlayerVehicleShoot</class>
-				<id>OnPlayerVehicleShoot_1</id>
+				<class>If</class>
+				<id>If_2</id>
 				<params/>
 				<slots/>
 			</block>
@@ -634,9 +622,15 @@
 				<slots/>
 			</block>
 			<block>
+				<class>CompareVehicles</class>
+				<id>CompareVehicles_1</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
 				<class>GetVariable</class>
-				<id>GetVariable_10</id>
-				<buddy>Variable_3</buddy>
+				<id>GetVariable_11</id>
+				<buddy>Variable_4</buddy>
 				<params>
 					<param>
 						GameObjectT
@@ -673,8 +667,8 @@
 			</block>
 			<block>
 				<class>GetVariable</class>
-				<id>GetVariable_11</id>
-				<buddy>Variable_4</buddy>
+				<id>GetVariable_10</id>
+				<buddy>Variable_3</buddy>
 				<params>
 					<param>
 						GameObjectT
@@ -699,8 +693,8 @@
 			</block>
 			<block>
 				<class>GetVariable</class>
-				<id>GetVariable_15</id>
-				<buddy>Variable_6</buddy>
+				<id>GetVariable_14</id>
+				<buddy>Variable_5</buddy>
 				<params>
 					<param>
 						GameObjectT
@@ -708,6 +702,12 @@
 						<type>TypeT</type>
 					</param>
 				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>GameObjectToVehicle</class>
+				<id>GameObjectToVehicle_2</id>
+				<params/>
 				<slots/>
 			</block>
 			<block>
@@ -738,8 +738,8 @@
 			</block>
 			<block>
 				<class>GetVariable</class>
-				<id>GetVariable_14</id>
-				<buddy>Variable_5</buddy>
+				<id>GetVariable_15</id>
+				<buddy>Variable_6</buddy>
 				<params>
 					<param>
 						GameObjectT
@@ -760,6 +760,12 @@
 						<type>TypeT</type>
 					</param>
 				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>GetVehicleGameObject</class>
+				<id>GetVehicleGameObject_1</id>
+				<params/>
 				<slots/>
 			</block>
 		</blocks>
@@ -873,7 +879,7 @@
 				<output>o1</output>
 			</connection>
 			<connection>
-				<from>GameObjectToVehicle_1</from>
+				<from>GameObjectToVehicle_2</from>
 				<input>value</input>
 				<to>SetVariable_1</to>
 				<output>vehicle</output>
@@ -963,18 +969,6 @@
 				<output>res</output>
 			</connection>
 			<connection>
-				<from>ContextGetSelf_1</from>
-				<input>gameObject</input>
-				<to>GetVehicleGameObject_2</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>GetVehicleGameObject_2</from>
-				<input>gameObject</input>
-				<to>GameObjectToVehicle_1</to>
-				<output>vehicleObject</output>
-			</connection>
-			<connection>
 				<from>GetVariable_1</from>
 				<input>a</input>
 				<to>CompareFloats_1</to>
@@ -1017,15 +1011,15 @@
 				<output>value</output>
 			</connection>
 			<connection>
-				<from>GameObjectToVehicle_1</from>
-				<input>vehicle</input>
-				<to>IsPlayerVehicle_1</to>
-				<output>vehicle</output>
+				<from>OnAnyVehicleShoot_1</from>
+				<input>input</input>
+				<to>If_2</to>
+				<output>out</output>
 			</connection>
 			<connection>
-				<from>IsPlayerVehicle_1</from>
-				<input>active</input>
-				<to>OnPlayerVehicleShoot_1</to>
+				<from>CompareVehicles_1</from>
+				<input>value</input>
+				<to>If_2</to>
 				<output>res</output>
 			</connection>
 			<connection>
@@ -1059,10 +1053,10 @@
 				<output>out</output>
 			</connection>
 			<connection>
-				<from>OnPlayerVehicleShoot_1</from>
+				<from>If_2</from>
 				<input>macros_start</input>
 				<to>Macro_1</to>
-				<output>onShoot</output>
+				<output>true</output>
 			</connection>
 			<connection>
 				<from>GetVariable_8</from>
@@ -1087,6 +1081,18 @@
 				<input>hull_activate_GO</input>
 				<to>Macro_1</to>
 				<output>value</output>
+			</connection>
+			<connection>
+				<from>OnAnyVehicleShoot_1</from>
+				<input>a</input>
+				<to>CompareVehicles_1</to>
+				<output>vehicle</output>
+			</connection>
+			<connection>
+				<from>GameObjectToVehicle_2</from>
+				<input>b</input>
+				<to>CompareVehicles_1</to>
+				<output>vehicle</output>
 			</connection>
 			<connection>
 				<from>Timer_1</from>
@@ -1116,6 +1122,18 @@
 				<from>GetVariable_12</from>
 				<input>hull_activate_GO</input>
 				<to>Macro_2</to>
+				<output>value</output>
+			</connection>
+			<connection>
+				<from>GetVehicleGameObject_1</from>
+				<input>gameObject</input>
+				<to>GameObjectToVehicle_2</to>
+				<output>vehicleObject</output>
+			</connection>
+			<connection>
+				<from>ContextGetSelf_1</from>
+				<input>gameObject</input>
+				<to>GetVehicleGameObject_1</to>
 				<output>value</output>
 			</connection>
 		</connections>

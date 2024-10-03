@@ -60,7 +60,7 @@ package net.wg.gui.components.crosshairPanel.components
       {
          var viewType:String = null;
          var mode:String = null;
-         var clipTotalFrames:Number = NaN;
+         var clipTotalFrames:int = 0;
          var metric:Number = NaN;
          var viewClass:Class = null;
          super.draw();

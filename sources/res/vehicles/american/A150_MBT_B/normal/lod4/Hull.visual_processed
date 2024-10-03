@@ -88,6 +88,15 @@
 					<row3>-0.000000 0.637130 0.154614</row3>
 				</transform>
 			</node>
+			<node>
+				<identifier>HP_extinquishEffect</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 -1.190445</row3>
+				</transform>
+			</node>
 		</node>
 	</node>
 	<renderSet>
@@ -104,12 +113,24 @@
 					<materialKind>0</materialKind>
 					<collisionFlags>0</collisionFlags>
 					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+					<property>
 						diffuseMap
 						<Texture>vehicles/american/A150_MBT_B/MBT_B_proxy_AM.dds</Texture>
 					</property>
 					<property>
 						excludeMaskAndAOMap
 						<Texture>vehicles/american/A150_MBT_B/MBT_B_proxy_AO.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>8.416440 8.416440 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
 					</property>
 					<property>
 						metallicGlossMap
@@ -125,7 +146,7 @@
 		</geometry>
 	</renderSet>
 	<boundingBox>
-		<min>-1.598458 -0.546275 -3.776538</min>
+		<min>-1.598458 -0.546275 -3.776537</min>
 		<max>1.596175 0.684399 2.824040</max>
 	</boundingBox>
 	<geometrySize>2108</geometrySize>

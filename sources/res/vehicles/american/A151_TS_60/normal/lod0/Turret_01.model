@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-	<nodefullVisual>vehicles/american/A151_TS_60/normal/lod0/Turret_01</nodefullVisual>
 	<tank>true</tank>
 	<parent>vehicles/american/A151_TS_60/normal/lod1/Turret_01</parent>
-	<extent>32.000000</extent>
+	<extent>32</extent>
 	<visibilityBox>
-		<min>-1.597430 -0.065677 -1.727794</min>
-		<max>1.597430 1.875678 1.947691</max>
+		<min>
+			-1.59743 -0.065677 -1.727794
+			<!--BW_String-->
+		</min>
+		<max>
+			1.59743 1.875678 1.947691
+			<!--BW_String-->
+		</max>
 	</visibilityBox>
+	<nodefullVisual>vehicles/american/A151_TS_60/normal/lod0/Turret_01</nodefullVisual>
 </root>

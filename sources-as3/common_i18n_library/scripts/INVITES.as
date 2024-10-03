@@ -119,14 +119,6 @@ package
       
       public static const INVITES_NOTE_SERVER_CHANGE:String = "#invites:invites/note/server_change";
       
-      public static const INVITES_NOTE_CHANGE_AND_LEAVE_QUEUE_EVENT_BATTLES:String = "#invites:invites/note/change_and_leave/QUEUE_EVENT_BATTLES";
-      
-      public static const INVITES_NOTE_LEAVE_QUEUE_EVENT_BATTLES:String = "#invites:invites/note/leave/QUEUE_EVENT_BATTLES";
-      
-      public static const INVITES_NOTE_CHANGE_AND_LEAVE_PREBATTLE_EVENT:String = "#invites:invites/note/change_and_leave/PREBATTLE_EVENT";
-      
-      public static const INVITES_NOTE_LEAVE_PREBATTLE_EVENT:String = "#invites:invites/note/leave/PREBATTLE_EVENT";
-      
       public static const INVITES_NOTE_LEAVE_PREBATTLE_SQUAD:String = "#invites:invites/note/leave/PREBATTLE_SQUAD";
       
       public static const INVITES_NOTE_CHANGE_AND_LEAVE_PREBATTLE_SQUAD:String = "#invites:invites/note/change_and_leave/PREBATTLE_SQUAD";

@@ -434,5 +434,9 @@ package net.wg.gui.battle.views.consumablesPanel
          this._isColorBlindMode = this._colorSchemeMgr.getIsColorBlindS();
          this.setSpgShotResult(this._spgShotResult);
       }
+      
+      public function setStage(param1:int) : void
+      {
+      }
    }
 }

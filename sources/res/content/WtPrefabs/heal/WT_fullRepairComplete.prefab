@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<version>3</version>
+	<GameObjects>
+		<GameObject>
+			<name>WT_fullRepairComplete.prefab</name>
+			<UUID>372e2ebb-83c9-4be4-98e6-763b30f393f1</UUID>
+			<flags>0</flags>
+		</GameObject>
+	</GameObjects>
+	<components>
+		<ComponentPool>
+			<type>Transform</type>
+			<version>1</version>
+			<component>
+				<objectIndex>0</objectIndex>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>0 0 0</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>-0 0 0</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>VehicleSound</type>
+			<version>1</version>
+			<component>
+				<objectIndex>0</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>onEnterSound</name>
+						<value>ev_wt_gameplay_full_repair_complete</value>
+					</property>
+					<property>
+						<name>onExitSound</name>
+						<value/>
+					</property>
+					<property>
+						<name>conditions</name>
+						<value>only_for_player</value>
+					</property>
+					<property>
+						<name>onEnterSoundNPC</name>
+						<value/>
+					</property>
+					<property>
+						<name>onExitSoundNPC</name>
+						<value/>
+					</property>
+					<property>
+						<name>soundObjectName</name>
+						<value/>
+					</property>
+					<property>
+						<name>useNPCEvents</name>
+						<value>0</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+	</components>
+</root>

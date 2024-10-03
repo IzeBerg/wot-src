@@ -74,6 +74,9 @@ class PlayerInfo(shared.ItemInfo):
     def getRegionCode(self):
         return self.lobbyContext.getRegionCode(self.__dbID)
 
+    def isAnonymized(self):
+        return self.__realName != self.__fakeName
+
 
 class PlayersInfo(shared.UnpackedInfo):
     __slots__ = ('__players', )

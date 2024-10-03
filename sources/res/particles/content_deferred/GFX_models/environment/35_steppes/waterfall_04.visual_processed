@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>water_02</identifier>
+					<fx>shaders/custom/volumetric_effect_vtx.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/waterfall_parts_02.dds</Texture>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>3.000000 0.002000 0.100000 0.000000</Vector4>
+					</property>
+					<property>
+						enableLighting
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>0.010000 -0.550000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						alphaFadeAmountFresnel
+						<Vector4>1.000000 1.000000 0.500000 0.000000</Vector4>
+					</property>
+					<property>
+						alphaAdditiveEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaFreshnelEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						selfIllumLight
+						<Vector4>
+							0.78 0.78 0.78 0.000000
+							<!--BW_String-->
+						</Vector4>
+						<Vector3>0.780000 0.780000 0.780000</Vector3>
+					</property>
+					<property>
+						FreshnelColor
+						<Vector4>0.674510 1.000000 0.992157 1.000000</Vector4>
+					</property>
+					<property>
+						TintlColor
+						<Vector4>0.901961 0.996078 1.000000 1.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>1.836892 -2.925249 0.301940</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>water_fall_01</identifier>
+					<fx>shaders/custom/volumetric_effect_vtx.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/waterfall_parts_01.dds</Texture>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>3.000000 0.003000 0.100000 0.000000</Vector4>
+					</property>
+					<property>
+						enableLighting
+						<Bool>true</Bool>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>-0.050000 -0.050000 0.020000 0.020000</Vector4>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Distortion01.dds</Texture>
+					</property>
+					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>0.010000 -0.750000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						alphaFadeAmountFresnel
+						<Vector4>1.000000 1.300000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						alphaAdditiveEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaFreshnelEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						selfIllumLight
+						<Vector4>
+							0.785 0.785 0.785 0.000000
+							<!--BW_String-->
+						</Vector4>
+						<Vector3>0.785000 0.785000 0.785000</Vector3>
+					</property>
+					<property>
+						TintlColor
+						<Vector4>0.901961 0.996078 1.000000 1.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>1.888249 -2.879609 0.289288</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.068089 -6.004023 -1.543909</min>
+		<max>3.913447 0.295655 2.080861</max>
+	</boundingBox>
+	<geometrySize>8076</geometrySize>
+	<minUVDensity>0.049864</minUVDensity>
+</root>

@@ -21,16 +21,16 @@ msgid "Contact/resource/web"
 msgstr "Находится в web-чате."
 
 msgid "Contact/resource/wotb"
-msgstr "Находится в клиенте WoT Blitz."
+msgstr "Находится в игре «Tanks Blitz»."
 
 msgid "Contact/resource/wotg"
-msgstr "Находится в WoT Generals."
+msgstr "Находится в другой игре."
 
 msgid "Contact/resource/wowp"
-msgstr "Находится в клиенте WoWP."
+msgstr "Находится в другой игре."
 
 msgid "Contact/resource/wows"
-msgstr "Находится в клиенте WoWS."
+msgstr "Находится в игре «Мир кораблей»."
 
 msgid "Contact/status/inBattle/bootcamp"
 msgstr "В Боевом обучении"
@@ -145,7 +145,8 @@ msgstr "Награда за подтверждение почты"
 msgid "accountCompletionHangar/email/text"
 msgstr ""
 "На email %(email) отправлено письмо для активации аккаунта. Перейдите в свой"
-" почтовый ящик и в письме от Lesta Games найдите код активации."
+" почтовый ящик и в письме от группы компаний «Леста Игры» найдите код "
+"активации."
 
 msgid "accountCompletionHangar/email/title"
 msgstr "Ожидание подтверждения почты"
@@ -811,6 +812,11 @@ msgstr ""
 "Расходуемый предмет, который позволяет сбросить все навыки у любого "
 "выбранного члена экипажа."
 
+msgid "advanced/relativeAbility"
+msgstr ""
+"Особые активируемые возможности вашей машины, которые могут повысить её "
+"эффективность в бою."
+
 msgid "advanced/relativeArmor"
 msgstr "Комплекс параметров, отвечающих за выживаемость вашей машины в бою."
 
@@ -922,6 +928,14 @@ msgstr ""
 "Модуль, влияющий на манёвренность машины. Ходовая колёсной техники не "
 "позволяет развернуться на месте. Модуль также влияет на стабилизацию орудия "
 "(чем лучше стабилизация, тем меньше разброс при стрельбе)."
+
+msgid "advanced/wt_largeMedkit"
+msgstr ""
+"При использовании мгновенно лечит всех раненых членов экипажа и снимает "
+"оглушение."
+
+msgid "advanced/wt_largeRepairkit"
+msgstr "При использовании мгновенно чинит все повреждённые модули."
 
 msgid "ammo/auto/body"
 msgstr ""
@@ -1445,18 +1459,18 @@ msgstr "Случайная учебная брошюра"
 
 msgid "awardItem/rankedBonusBattles/body"
 msgstr ""
-"Удваивает количество полученных шевронов. Автоматически применяется к эффективному бою раз в сутки для каждой разрешённой к участию в режиме машины IX уровня. Не тратится, если по результатам боя вы не получили шевроны.\n"
-"• Расходуется в первую очередь.\n"
-"• Не переносится на следующий день."
+"Удваивает число полученных шевронов в случае победы. На каждой из машин, "
+"допущенных к участию в режиме, можно выходить в Призовой бой не чаще 1 раза "
+"в сутки."
 
 msgid "awardItem/rankedBonusBattles/header"
-msgstr "Стандартный призовой бой"
+msgstr "Призовой бой"
 
 msgid "awardItem/rankedDailyBattles/body"
 msgstr ""
-"Удваивает количество полученных шевронов. Автоматически применяется к эффективному бою раз в сутки для каждой разрешённой к участию в режиме машины IX уровня. Не тратится, если по результатам боя вы не получили шевроны.\n"
-"• Расходуется в первую очередь.\n"
-"• Не переносится на следующий день."
+"Удваивает число полученных шевронов в случае победы. На каждой из машин, "
+"допущенных к участию в режиме, можно выходить в Призовой бой не чаще 1 раза "
+"в сутки."
 
 msgid "awardItem/rankedDailyBattles/header"
 msgstr "Ежедневный призовой бой"
@@ -1711,6 +1725,11 @@ msgstr ""
 "По завершении этого этапа вы сможете забрать учебную брошюру выбранной "
 "нации, нажав на кнопку «Забрать награду» над этапом."
 
+msgid "battlePassOffer/footer/deluxe_gift"
+msgstr ""
+"По завершении этого этапа вы сможете выбрать и забрать себе одну единицу "
+"усовершенствованного оборудования, нажав на кнопку «Забрать награду»."
+
 msgid "battlePassOffer/footer/error"
 msgstr ""
 "По завершении этого этапа вы сможете выбрать и забрать себе награду, нажав "
@@ -1755,6 +1774,9 @@ msgstr "Учебное пособие на выбор"
 
 msgid "battlePassOffer/title/brochure_gift"
 msgstr "Учебная брошюра на выбор"
+
+msgid "battlePassOffer/title/deluxe_gift"
+msgstr "Усовершенствованное оборудование на выбор"
 
 msgid "battlePassOffer/title/expequipments_gift"
 msgstr "Экспериментальное оборудование на выбор"
@@ -2069,10 +2091,9 @@ msgstr "Ежедневный"
 
 msgid "battleTypes/ranked/bonusBattle/description"
 msgstr ""
-"Удваивает количество полученных шевронов. Автоматически применяется к "
-"эффективному бою раз в сутки для каждой разрешённой к участию в режиме "
-"машины IX уровня. Не тратится, если по результатам боя вы не получили "
-"шевроны."
+"Удваивает число полученных шевронов в случае победы. На каждой из машин, "
+"допущенных к участию в режиме, можно выходить в Призовой бой не чаще 1 раза "
+"в сутки."
 
 msgid "battleTypes/ranked/bonusBattle/persistent/title"
 msgstr "Стандартный"
@@ -4838,7 +4859,7 @@ msgid "equipment/restriction"
 msgstr "Ограничение:"
 
 msgid "event/squad/disable/body"
-msgstr "Для высадки на тёмной стороне Луны выберите %(tankName)s"
+msgstr "Выберите машину Гончих"
 
 msgid "event/squad/disable/header"
 msgstr "Внимание!"
@@ -5594,6 +5615,9 @@ msgstr "Выберите карту, чтобы выйти в бой."
 msgid "hangar/startBtn/mapsTraining/notReady/header"
 msgstr "Недоступно"
 
+msgid "hangar/startBtn/noTicket/body"
+msgstr "Для выхода в бой на Waffenträger нужен ключ."
+
 msgid "hangar/startBtn/notSupportFor11lvl/body"
 msgstr "Выбранная машина временно недоступна для выхода в бой"
 
@@ -5602,6 +5626,13 @@ msgstr "Выход в бой невозможен"
 
 msgid "hangar/startBtn/preview/body"
 msgstr "Чтобы выйти в бой, вернитесь в Ангар к выбору машины."
+
+msgid "hangar/startBtn/primeNotAvailable/body"
+msgstr ""
+"На этом сервере режим прекращения огня. Попробуйте перейти на другой сервер."
+
+msgid "hangar/startBtn/primeNotAvailable/header"
+msgstr "Выход в бой невозможен"
 
 msgid "hangar/startBtn/squadNotReady/body"
 msgstr "Для выхода в бой выберите машину и подтвердите готовность."
@@ -6519,10 +6550,10 @@ msgid "login/bySocial/header"
 msgstr "Вход через социальную сеть"
 
 msgid "login/bySocial/wgni/body"
-msgstr "Будет открыт браузер по умолчанию и страница авторизации в Lesta ID."
+msgstr "Будет открыт браузер по умолчанию и страница авторизации в Леста ID."
 
 msgid "login/bySocial/wgni/header"
-msgstr "Вход через Lesta ID"
+msgstr "Вход через Леста ID"
 
 msgid "login/changeAccount/body"
 msgstr "Нажмите, чтобы сменить аккаунт или способ входа."
@@ -6576,7 +6607,7 @@ msgid "login/social/vkontakte"
 msgstr "ВКонтакте"
 
 msgid "login/social/wgni"
-msgstr "Lesta Games"
+msgstr "«Леста Игры»"
 
 msgid "login/social/yahoo"
 msgstr "Yahoo!"
@@ -8436,7 +8467,7 @@ msgstr "Боевой пропуск, «Под напряжением»"
 msgid "notrecruitedtankman/tankmen_BP15_5/desc"
 msgstr ""
 "Начальница ОТК НПК «Вулкан». Молодая сотрудница, которая уже успела себя "
-"зарекомендовать, как совершенно бескомпромиссный специалист. Если что-то не "
+"зарекомендовать как совершенно бескомпромиссный специалист. Если что-то не "
 "соответствует указанным нормативам или допускам — это будет отдефектовано и "
 "исправлено, хотите вы этого или нет. Исключений ни для кого не "
 "предусмотрено."
@@ -8549,6 +8580,83 @@ msgstr ""
 
 msgid "notrecruitedtankman/tankmen_Razvedchik_3/label"
 msgstr "Событие «Время героев»"
+
+msgid "notrecruitedtankman/tankmen_WT2024_Elisa/desc"
+msgstr ""
+"Одна из отставных инструкторов, покинувшая «Эн-Кейв» уже после того, как тот"
+" из простой учебки был преобразован в полноценную военную академию — кузницу"
+" элитных кадров Альянса. Настоящее имя неизвестно; взятый псевдоним — дань "
+"уважения одной из Гончих, которая ранее была командиром танка «Thunderbolt» "
+"и не вернулась с очередного задания."
+
+msgid "notrecruitedtankman/tankmen_WT2024_Elisa/label"
+msgstr "Событие «Ваффентрагер: вызов»"
+
+msgid "notrecruitedtankman/tankmen_WT2024_L_Elisa/desc"
+msgstr ""
+"Одна из отставных инструкторов, покинувшая «Эн-Кейв» уже после того, как тот"
+" из простой учебки был преобразован в полноценную военную академию — кузницу"
+" элитных кадров Альянса. Настоящее имя неизвестно; взятый псевдоним — дань "
+"уважения одной из Гончих, которая ранее была командиром танка «Thunderbolt» "
+"и не вернулась с очередного задания."
+
+msgid "notrecruitedtankman/tankmen_WT2024_L_Elisa/label"
+msgstr "Событие «Ваффентрагер: вызов»"
+
+msgid "notrecruitedtankman/tankmen_WT2024_L_Krieger/desc"
+msgstr ""
+"«Опять Альянс отправляет своё лучшее железо на утилизацию, хоть часы по ним "
+"сверяй. И единственное, что меня беспокоит, — мой свежесваренный кофе "
+"наверняка остынет, когда эти выскочки в очередной раз испытают Ein Sturz in "
+"den Malstrom с известным и неизменным результатом. Ваши скудоумные заказчики"
+" забыли предупредить, что фон Кригер не даёт второго шанса»."
+
+msgid "notrecruitedtankman/tankmen_WT2024_L_Krieger/label"
+msgstr "Событие «Ваффентрагер: вызов»"
+
+msgid "notrecruitedtankman/tankmen_WT2024_L_Marat/desc"
+msgstr ""
+"Вожак стаи. В прошлом — простой наёмник, дослужившийся на «полевых работах» "
+"Альянса до командира подразделения. Уравновешенный и трезвомыслящий солдат, "
+"сохранивший понятия чести и достоинства. Балансируя между подчинением "
+"начальству и собственными понятиями, нередко задаёт себе вопрос, а туда ли "
+"вообще он когда-то свернул."
+
+msgid "notrecruitedtankman/tankmen_WT2024_L_Marat/label"
+msgstr "Событие «Ваффентрагер: вызов»"
+
+msgid "notrecruitedtankman/tankmen_WT2024_L_Milada/desc"
+msgstr ""
+"Молодая штабистка, направленная Альянсом в качестве сдерживающего фактора "
+"для остальных членов отряда, чтобы те в очередной раз не разнесли всю "
+"материальную часть до состояния металлолома. Ведёт подробный дневник "
+"операции и каталогизацию трофеев, постоянно напоминая всем, что это прежде "
+"всего разведывательная вылазка, а не генеральное сражение."
+
+msgid "notrecruitedtankman/tankmen_WT2024_L_Milada/label"
+msgstr "Событие «Ваффентрагер: вызов»"
+
+msgid "notrecruitedtankman/tankmen_WT2024_L_Paul/desc"
+msgstr ""
+"Идеальный патрон в обойме Альянса. Один из немногих, кто никогда не задаёт "
+"вопросов. Сначала выполнение приказа, а потом уже редкие размышления о его "
+"правильности, о морали, о смыслах и подтекстах, да и то разве что в "
+"свободные минуты, никогда не вынося на общее обсуждение. Убедил себя, что "
+"вся ответственность за решения всегда на командире."
+
+msgid "notrecruitedtankman/tankmen_WT2024_L_Paul/label"
+msgstr "Событие «Ваффентрагер: вызов»"
+
+msgid "notrecruitedtankman/tankmen_WT2024_Marat/desc"
+msgstr ""
+"Вожак стаи. В прошлом — простой наёмник, дослужившийся на «полевых работах» "
+"Альянса до командира подразделения. Уравновешенный и трезвомыслящий солдат, "
+"сохранивший понятия чести и достоинства. Балансируя между подчинением "
+"начальству и собственными понятиями, нередко задаёт себе вопрос, а туда ли "
+"вообще он когда-то свернул."
+
+msgid "notrecruitedtankman/tankmen_WT2024_Marat/label"
+msgstr "Событие «Ваффентрагер: вызов»"
 
 msgid "notrecruitedtankman/tankmen_auc_1/desc"
 msgstr ""
@@ -9350,7 +9458,7 @@ msgstr ""
 "изобретения не попали в руки Альянса."
 
 msgid "notrecruitedtankman/wt22_boss_commander/label"
-msgstr "Ваффентрагер: Наследие"
+msgstr "Ваффентрагер: вызов"
 
 msgid "notrecruitedtankman/wt22_hunter_commander/desc"
 msgstr ""
@@ -9361,7 +9469,7 @@ msgstr ""
 " из-под контроля."
 
 msgid "notrecruitedtankman/wt22_hunter_commander/label"
-msgstr "Ваффентрагер: Наследие"
+msgstr "Ваффентрагер: вызов"
 
 msgid "notrecruitedtankman/yandex_1/desc"
 msgstr ""
@@ -11375,6 +11483,13 @@ msgstr ""
 "Файлы выбранного голоса уведомлений\n"
 "повреждены или отсутствуют."
 
+msgid "setttingsDisabledNotification/body"
+msgstr ""
+"В этом игровом режиме часть настроек недоступна, выберите другой режим."
+
+msgid "setttingsDisabledNotification/header"
+msgstr "Недоступно"
+
 msgid "shell/basic"
 msgstr "Базовый"
 
@@ -11597,6 +11712,9 @@ msgstr "Радиостанции"
 
 msgid "storage/filter/modules/btns/type/towers"
 msgstr "Башни"
+
+msgid "storage/filter/noResultsBtn"
+msgstr "?empty?"
 
 msgid "storage/filter/noResultsBtn/body"
 msgstr "Нажмите, чтобы сбросить фильтр"
@@ -11882,6 +12000,10 @@ msgstr ""
 "Время между выстрелом и переходом к следующему заряженному снаряду, орудию "
 "или кассете. / Количество орудий или снарядов в магазине."
 
+msgid "tank_params/desc/cooldown"
+msgstr ""
+"Параметр, через которое умение будет готово к повторному использованию."
+
 msgid "tank_params/desc/damage"
 msgstr "Урон, наносимый базовым снарядом за один выстрел при пробитии брони."
 
@@ -11889,6 +12011,10 @@ msgid "tank_params/desc/dualAccuracyCoolingDelay"
 msgstr ""
 "Показывает, через какое время после выстрела орудие достаточно остынет для "
 "улучшения разброса."
+
+msgid "tank_params/desc/duration"
+msgstr ""
+"Параметр, отвечающий за время действия боевого умение с момента активации."
 
 msgid "tank_params/desc/enginePower"
 msgstr ""
@@ -11953,6 +12079,11 @@ msgstr ""
 "Наложение кругов союзных машин обеспечивает передачу информации на "
 "расстоянии."
 
+msgid "tank_params/desc/relativeAbility"
+msgstr ""
+"Комплекс параметров, изменяющихся у машины во время действия работы "
+"Модификации."
+
 msgid "tank_params/desc/relativeArmor"
 msgstr ""
 "Комплекс параметров, показывающий сопротивление машины наносимому урону."
@@ -11984,6 +12115,11 @@ msgid "tank_params/desc/reloadTimeSecs"
 msgstr ""
 "Время, за которое орудие (или оба орудия, если у машины спаренная орудийная "
 "установка) будет готово к очередному выстрелу."
+
+msgid "tank_params/desc/reuseCount"
+msgstr ""
+"Параметр, отвечающий за количество применений боевого умения в рамках одного"
+" боя."
 
 msgid "tank_params/desc/rocketAccelerationEnginePower"
 msgstr ""
@@ -12137,6 +12273,9 @@ msgstr "%(vehicleType)s (%(nation)s)"
 msgid "tankman/section/specialization"
 msgstr "Специализация:"
 
+msgid "tankman/skillsTitle"
+msgstr "Преимущества"
+
 msgid "tankman/status/inactiveSkills/header"
 msgstr "Неподходящие навыки"
 
@@ -12271,6 +12410,14 @@ msgstr ""
 
 msgid "techTreePage/blueprintsSwitchTooltipDisabled/header"
 msgstr "?empty?"
+
+msgid "techTreePage/earlyAccessBuyEntryPointTooltip/body"
+msgstr ""
+"Для получения машины вы можете купить жетоны раннего доступа на специальном "
+"экране покупки."
+
+msgid "techTreePage/earlyAccessBuyEntryPointTooltip/header"
+msgstr "Жетоны раннего доступа"
 
 msgid "techTreePage/earlyAccessEntryPointTooltip/body"
 msgstr ""
@@ -12591,7 +12738,7 @@ msgstr "Отключить чат с союзниками"
 msgid "useFreeXP/body"
 msgstr ""
 "Может использоваться на исследование любой\n"
-"техники и модулей во всех проектах Lesta Games."
+"техники и модулей во всех проектах «Леста Игры»."
 
 msgid "useFreeXP/header"
 msgstr "Свободный опыт"
@@ -12626,6 +12773,9 @@ msgstr "Скидка %(actionPrc)s, прежняя стоимость: %(oldPric
 
 msgid "vehicle/additional/header"
 msgstr "С машиной идёт:"
+
+msgid "vehicle/afterEventEnd/title"
+msgstr "Все бои проведены, машина недоступна"
 
 msgid "vehicle/allModules/header"
 msgstr "Все исследованные модули"
@@ -12730,6 +12880,9 @@ msgstr "Аренда от"
 msgid "vehicle/multiplied_xp"
 msgstr "Боевой опыт"
 
+msgid "vehicle/overview/title"
+msgstr "Общее:"
+
 msgid "vehicle/radioDistance"
 msgstr "<h1>Дальность связи</h1> <h2>(км)</h2>"
 
@@ -12740,10 +12893,10 @@ msgid "vehicle/rentAvailable"
 msgstr "Доступна аренда машины"
 
 msgid "vehicle/rentLeft/battles"
-msgstr "Осталось боёв до завершения аренды"
+msgstr "Доступные бои"
 
 msgid "vehicle/rentLeft/days"
-msgstr "Дней аренды осталось"
+msgstr "Машина доступна до %(date)s"
 
 msgid "vehicle/rentLeft/epic/base"
 msgstr "Аренда для Линии фронта"
@@ -12758,7 +12911,10 @@ msgid "vehicle/rentLeft/epic/minsLeft"
 msgstr "%(timeNum)s мин"
 
 msgid "vehicle/rentLeft/hours"
-msgstr "Часов аренды осталось"
+msgstr "Машина доступна до %(date)s"
+
+msgid "vehicle/rentLeft/noTimeLeft"
+msgstr "Все бои проведены, машина недоступна."
 
 msgid "vehicle/rentLeft/wins"
 msgstr "Осталось побед до завершения аренды"
@@ -13535,6 +13691,9 @@ msgstr "Нет в Ангаре"
 
 msgid "vehicleStatus/operationError/header"
 msgstr "Финансовая операция недоступна"
+
+msgid "vehicleStatus/rentalBattleIsOver/header"
+msgstr "Аренда завершена"
 
 msgid "vehicleStatus/rentalIsOver/header"
 msgstr "Аренда завершена"

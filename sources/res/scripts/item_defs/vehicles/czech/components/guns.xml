@@ -41,7 +41,9 @@
 		<_105mm_vz_40N_TST>31001</_105mm_vz_40N_TST>
 		<_47mm_Skoda_A9_T>31002</_47mm_Skoda_A9_T>
 		<_100mm_AK1_FL>31003</_100mm_AK1_FL>
+		<_122mm_vz_122_L52>31004</_122mm_vz_122_L52>
 		<_150mm_COSM>40000</_150mm_COSM>
+		<_100mm_AK1_WT>401</_100mm_AK1_WT>
 	</ids>
 	<shared>
 		<_37mm_Pechotni_delo_Skoda_L_27>
@@ -2949,6 +2951,86 @@
 				</_100mm_Narazovy_vz_50>
 			</shots>
 		</_100mm_AK1_FL>
+		<_100mm_AK1_WT>
+			<userString>#czech_vehicles:_100mm_AK1</userString>
+			<tags/>
+			<level>10</level>
+			<price>275000</price>
+			<notInShop>true</notInShop>
+			<impulse>
+				0.44
+				<!--BW_String-->
+			</impulse>
+			<recoil>
+				<lodDist>MEDIUM</lodDist>
+				<amplitude>
+					0.22
+					<!--BW_String-->
+				</amplitude>
+				<recoilEffect>main</recoilEffect>
+			</recoil>
+			<effects>shot_mainext_mb</effects>
+			<reloadEffect>reload85_107</reloadEffect>
+			<pitchLimits>
+				<minPitch>
+					0.0 -20.0 1.0 -20.0
+					<!--BW_String-->
+				</minPitch>
+				<maxPitch>
+					0.0 8.0 1.0 8.0
+					<!--BW_String-->
+				</maxPitch>
+			</pitchLimits>
+			<turretYawLimits>-180 180</turretYawLimits>
+			<rotationSpeed>33</rotationSpeed>
+			<reloadTime>
+				4.04
+				<!--BW_String-->
+			</reloadTime>
+			<maxAmmo>50</maxAmmo>
+			<aimingTime>
+				4.04
+				<!--BW_String-->
+			</aimingTime>
+			<weight>2600</weight>
+			<maxHealth>200</maxHealth>
+			<maxRegenHealth>100</maxRegenHealth>
+			<repairCost>10</repairCost>
+			<invisibilityFactorAtShot>
+				0.1
+				<!--BW_String-->
+			</invisibilityFactorAtShot>
+			<shotDispersionRadius>
+				0.4
+				<!--BW_String-->
+			</shotDispersionRadius>
+			<shotDispersionFactors>
+				<turretRotation>
+					0.16
+					<!--BW_String-->
+				</turretRotation>
+				<afterShot>
+					4.0
+					<!--BW_String-->
+				</afterShot>
+				<whileGunDamaged>
+					2.0
+					<!--BW_String-->
+				</whileGunDamaged>
+			</shotDispersionFactors>
+			<shots>
+				<_100mm_Prurazny_vz_50_WT>
+					<defaultPortion>1</defaultPortion>
+					<speed>1500</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>250 250</piercingPower>
+				</_100mm_Prurazny_vz_50_WT>
+			</shots>
+		</_100mm_AK1_WT>
 		<_100mm_BS_3>
 			<userString>#czech_vehicles:_100mm_BS_3</userString>
 			<tags/>
@@ -3695,6 +3777,115 @@
 				</_105mm_Narazovy_14_48>
 			</shots>
 		</_105mm_vz_39NP>
+		<_122mm_vz_122_L52>
+			<userString>#czech_vehicles:_122mm_vz_122_L52</userString>
+			<tags/>
+			<level>9</level>
+			<price>180000</price>
+			<notInShop>true</notInShop>
+			<impulse>
+				0.62
+				<!--BW_String-->
+			</impulse>
+			<recoil>
+				<lodDist>MEDIUM</lodDist>
+				<amplitude>
+					0.65
+					<!--BW_String-->
+				</amplitude>
+				<recoilEffect>large</recoilEffect>
+			</recoil>
+			<effects>shot_large_mb</effects>
+			<reloadEffect>reload115_152</reloadEffect>
+			<pitchLimits>
+				<minPitch>
+					0.0 -20.0 1.0 -20.0
+					<!--BW_String-->
+				</minPitch>
+				<maxPitch>
+					0.0 5.0 1.0 5.0
+					<!--BW_String-->
+				</maxPitch>
+			</pitchLimits>
+			<turretYawLimits>-180 180</turretYawLimits>
+			<rotationSpeed>20</rotationSpeed>
+			<reloadTime>
+				4.04
+				<!--BW_String-->
+			</reloadTime>
+			<maxAmmo>36</maxAmmo>
+			<aimingTime>
+				4.04
+				<!--BW_String-->
+			</aimingTime>
+			<weight>2900</weight>
+			<maxHealth>190</maxHealth>
+			<maxRegenHealth>95</maxRegenHealth>
+			<repairCost>8</repairCost>
+			<invisibilityFactorAtShot>
+				0.1
+				<!--BW_String-->
+			</invisibilityFactorAtShot>
+			<shotDispersionRadius>
+				0.39
+				<!--BW_String-->
+			</shotDispersionRadius>
+			<shotDispersionFactors>
+				<turretRotation>
+					0.08
+					<!--BW_String-->
+				</turretRotation>
+				<afterShot>
+					3.0
+					<!--BW_String-->
+				</afterShot>
+				<whileGunDamaged>
+					2.0
+					<!--BW_String-->
+				</whileGunDamaged>
+			</shotDispersionFactors>
+			<shots>
+				<_122mm_Prurazny_vz_47>
+					<defaultPortion>
+						0.95
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>850</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>246 233</piercingPower>
+				</_122mm_Prurazny_vz_47>
+				<_122mm_Prurazny_vz_49_s_oc_jadrem>
+					<defaultPortion>
+						0.0
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>1100</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>306 283</piercingPower>
+				</_122mm_Prurazny_vz_49_s_oc_jadrem>
+				<_122mm_Narazovy_vz_47>
+					<defaultPortion>
+						0.05
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>850</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>61 61</piercingPower>
+				</_122mm_Narazovy_vz_47>
+			</shots>
+		</_122mm_vz_122_L52>
 		<_122mm_vz_44_51>
 			<userString>#czech_vehicles:_122mm_vz_44_51</userString>
 			<tags/>

@@ -5,7 +5,8 @@ from helpers import i18n, time_utils
 from items import vehicles, artefacts
 from items.components import component_constants
 RELATIVE_PARAMS = ('relativePower', 'relativeArmor', 'relativeMobility', 'relativeCamouflage',
-                   'relativeVisibility')
+                   'relativeVisibility', 'relativeAbility')
+RELATIVE_PARAMS_WITHOUT_ABILITY = RELATIVE_PARAMS[:-1]
 MAX_RELATIVE_VALUE = 1000
 NO_DATA = 'no data'
 _AUTO_RELOAD_TAG = 'autoreload'
@@ -44,6 +45,13 @@ def isAutoReloadGun(gun):
 def isDualGun(gun):
     if gun is not None:
         return _DUAL_GUN_TAG in gun.tags
+    else:
+        return False
+
+
+def isAutoShootGun(gun):
+    if gun is not None:
+        return 'autoShoot' in gun.tags
     else:
         return False
 

@@ -22,7 +22,7 @@
 					<row0>1.000000 0.000000 0.000000</row0>
 					<row1>0.000000 1.000000 0.000000</row1>
 					<row2>0.000000 0.000000 1.000000</row2>
-					<row3>0.000000 0.442043 1.203600</row3>
+					<row3>0.000000 0.485043 1.044558</row3>
 				</transform>
 			</node>
 		</node>
@@ -37,34 +37,17 @@
 				0
 				<material>
 					<identifier>tank_turret_01</identifier>
-					<property>
-						g_detailPowerGloss
-						<Float>
-							0.35
-							<!--BW_String-->
-						</Float>
-					</property>
-					<property>
-						g_detailPowerAlbedo
-						<Float>
-							0.11
-							<!--BW_String-->
-						</Float>
-					</property>
-					<property>
-						g_maskBias
-						<Float>
-							0.18
-							<!--BW_String-->
-						</Float>
-					</property>
-					<property>
-						g_detailPower
-						<Float>5</Float>
-					</property>
+					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
 					<collisionFlags>0</collisionFlags>
 					<materialKind>0</materialKind>
-					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
+					<property>
+						g_crashUVTiling
+						<Vector4>4.000000 4.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						crashTileMap
+						<Texture>vehicles/russian/Tank_detail/crash_tile.dds</Texture>
+					</property>
 					<property>
 						metallicGlossMap
 						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_turret_01_GMM.dds</Texture>
@@ -81,22 +64,14 @@
 						excludeMaskAndAOMap
 						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_turret_01_AO.dds</Texture>
 					</property>
-					<property>
-						colorIdMap
-						<Texture>vehicles/russian/common/common_ID.dds</Texture>
-					</property>
-					<property>
-						crashTileMap
-						<Texture>vehicles/russian/Tank_detail/crash_tile.dds</Texture>
-					</property>
 				</material>
-				<groupOrigin>-0.000958 0.465694 -0.365569</groupOrigin>
+				<groupOrigin>-0.000958 0.508694 -0.524611</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<boundingBox>
-		<min>-1.526825 -0.229015 -2.535631</min>
-		<max>1.524909 1.160402 1.804493</max>
+		<min>-1.526825 -0.186015 -2.694673</min>
+		<max>1.524909 1.203402 1.645451</max>
 	</boundingBox>
 	<geometrySize>304068</geometrySize>
 	<minUVDensity>0.003980</minUVDensity>

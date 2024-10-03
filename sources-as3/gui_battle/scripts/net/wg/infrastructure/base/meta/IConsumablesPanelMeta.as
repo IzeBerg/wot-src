@@ -18,7 +18,7 @@ package net.wg.infrastructure.base.meta
       
       function as_setItemQuantityInSlot(param1:int, param2:int) : void;
       
-      function as_setItemTimeQuantityInSlot(param1:int, param2:int, param3:Number, param4:Number, param5:int) : void;
+      function as_setItemTimeQuantityInSlot(param1:int, param2:int, param3:Number, param4:Number, param5:int, param6:int) : void;
       
       function as_setCoolDownTime(param1:int, param2:Number, param3:Number, param4:Number) : void;
       
@@ -32,7 +32,7 @@ package net.wg.infrastructure.base.meta
       
       function as_setCurrentShell(param1:int) : void;
       
-      function as_addEquipmentSlot(param1:int, param2:Number, param3:Number, param4:int, param5:Number, param6:Number, param7:String, param8:String, param9:int) : void;
+      function as_addEquipmentSlot(param1:int, param2:Number, param3:Number, param4:int, param5:Number, param6:Number, param7:String, param8:String, param9:int, param10:String, param11:int) : void;
       
       function as_showEquipmentSlots(param1:Boolean) : void;
       
@@ -69,6 +69,8 @@ package net.wg.infrastructure.base.meta
       function as_setPanelSettings(param1:int) : void;
       
       function as_setSPGShotResult(param1:int, param2:int) : void;
+      
+      function as_addAbilityEquipmentSlot(param1:int, param2:Number, param3:Number, param4:int, param5:Number, param6:Number, param7:String, param8:String, param9:int) : void;
       
       function as_addRoleSkillSlot(param1:int, param2:Number, param3:Number, param4:int, param5:Number, param6:Number, param7:String, param8:String, param9:int) : void;
       

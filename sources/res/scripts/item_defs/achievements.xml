@@ -5865,7 +5865,8 @@
 					<name>section</name>
 				</item>
 				<item>
-					1
+					2.10
+					<!--BW_String-->
 					<name>weight</name>
 					<type>float</type>
 				</item>
@@ -5888,7 +5889,7 @@
 					<name>section</name>
 				</item>
 				<item>
-					1.0
+					2.11
 					<!--BW_String-->
 					<name>weight</name>
 					<type>float</type>
@@ -5924,6 +5925,30 @@
 			</value>
 		</achievement>
 		<achievement>
+			<name>singleAchievements:14YearsOfService</name>
+			<type>dict</type>
+			<value>
+				<item>
+					single
+					<name>type</name>
+				</item>
+				<item>
+					action
+					<name>section</name>
+				</item>
+				<item>
+					2.12
+					<!--BW_String-->
+					<name>weight</name>
+					<type>float</type>
+				</item>
+				<item>
+					all
+					<name>mode</name>
+				</item>
+			</value>
+		</achievement>
+		<achievement>
 			<name>singleAchievements:13YearsOfService</name>
 			<type>dict</type>
 			<value>
@@ -5936,7 +5961,7 @@
 					<name>section</name>
 				</item>
 				<item>
-					1.0
+					2.13
 					<!--BW_String-->
 					<name>weight</name>
 					<type>float</type>
@@ -5960,7 +5985,7 @@
 					<name>section</name>
 				</item>
 				<item>
-					1.0
+					2.14
 					<!--BW_String-->
 					<name>weight</name>
 					<type>float</type>
@@ -5984,7 +6009,7 @@
 					<name>section</name>
 				</item>
 				<item>
-					2.0
+					2.15
 					<!--BW_String-->
 					<name>weight</name>
 					<type>float</type>
@@ -6008,7 +6033,7 @@
 					<name>section</name>
 				</item>
 				<item>
-					3.0
+					2.16
 					<!--BW_String-->
 					<name>weight</name>
 					<type>float</type>
@@ -6032,7 +6057,7 @@
 					<name>section</name>
 				</item>
 				<item>
-					4.0
+					2.17
 					<!--BW_String-->
 					<name>weight</name>
 					<type>float</type>
@@ -6056,7 +6081,7 @@
 					<name>section</name>
 				</item>
 				<item>
-					5.0
+					2.18
 					<!--BW_String-->
 					<name>weight</name>
 					<type>float</type>
@@ -6080,7 +6105,7 @@
 					<name>section</name>
 				</item>
 				<item>
-					6.0
+					2.19
 					<!--BW_String-->
 					<name>weight</name>
 					<type>float</type>
@@ -6104,7 +6129,7 @@
 					<name>section</name>
 				</item>
 				<item>
-					7.0
+					2.20
 					<!--BW_String-->
 					<name>weight</name>
 					<type>float</type>
@@ -6128,7 +6153,7 @@
 					<name>section</name>
 				</item>
 				<item>
-					8.0
+					2.21
 					<!--BW_String-->
 					<name>weight</name>
 					<type>float</type>
@@ -6152,7 +6177,7 @@
 					<name>section</name>
 				</item>
 				<item>
-					9.0
+					2.22
 					<!--BW_String-->
 					<name>weight</name>
 					<type>float</type>
@@ -6176,7 +6201,7 @@
 					<name>section</name>
 				</item>
 				<item>
-					10.0
+					2.23
 					<!--BW_String-->
 					<name>weight</name>
 					<type>float</type>
@@ -6200,7 +6225,7 @@
 					<name>section</name>
 				</item>
 				<item>
-					11.0
+					2.24
 					<!--BW_String-->
 					<name>weight</name>
 					<type>float</type>
@@ -6224,7 +6249,7 @@
 					<name>section</name>
 				</item>
 				<item>
-					12.0
+					2.25
 					<!--BW_String-->
 					<name>weight</name>
 					<type>float</type>
@@ -10957,6 +10982,78 @@
 				</item>
 				<item>
 					all
+					<name>mode</name>
+				</item>
+			</value>
+		</achievement>
+		<achievement>
+			<name>achievements:wt2024HunterWins</name>
+			<type>dict</type>
+			<value>
+				<item>
+					repeatable
+					<name>type</name>
+				</item>
+				<item>
+					action
+					<name>section</name>
+				</item>
+				<item>
+					1447.3
+					<!--BW_String-->
+					<name>weight</name>
+					<type>float</type>
+				</item>
+				<item>
+					random
+					<name>mode</name>
+				</item>
+			</value>
+		</achievement>
+		<achievement>
+			<name>achievements:wt2024BossWins</name>
+			<type>dict</type>
+			<value>
+				<item>
+					single
+					<name>type</name>
+				</item>
+				<item>
+					action
+					<name>section</name>
+				</item>
+				<item>
+					1447.4
+					<!--BW_String-->
+					<name>weight</name>
+					<type>float</type>
+				</item>
+				<item>
+					random
+					<name>mode</name>
+				</item>
+			</value>
+		</achievement>
+		<achievement>
+			<name>achievements:wt2024MaxPlasma</name>
+			<type>dict</type>
+			<value>
+				<item>
+					single
+					<name>type</name>
+				</item>
+				<item>
+					action
+					<name>section</name>
+				</item>
+				<item>
+					1447.5
+					<!--BW_String-->
+					<name>weight</name>
+					<type>float</type>
+				</item>
+				<item>
+					random
 					<name>mode</name>
 				</item>
 			</value>

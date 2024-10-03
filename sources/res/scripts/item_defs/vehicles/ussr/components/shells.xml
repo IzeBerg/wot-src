@@ -5,6 +5,7 @@
 		<ap_premium>ARMOR_PIERCING_PREMIUM.png 0 0</ap_premium>
 		<ap_cr>ARMOR_PIERCING_CR.png 0 0</ap_cr>
 		<ap_cr_premium>ARMOR_PIERCING_CR_PREMIUM.png 0 0</ap_cr_premium>
+		<ap_wt>WT_ARMOR_PIERCING.png 0 0</ap_wt>
 		<ap_fsds_premium>ARMOR_PIERCING_FSDS_PREMIUM.png 0 0</ap_fsds_premium>
 		<he>HIGH_EXPLOSIVE.png 0 0</he>
 		<he_premium>HIGH_EXPLOSIVE_PREMIUM.png 0 0</he_premium>
@@ -1832,6 +1833,65 @@
 			<devices>135</devices>
 		</damage>
 	</_100mm_UBR-412PA>
+	<_100mm_UBR-412PA_T>
+		<id>31069</id>
+		<userString>#ussr_vehicles:_100mm_UBR-412PA_T</userString>
+		<icon>ap</icon>
+		<price>1010</price>
+		<kind>ARMOR_PIERCING</kind>
+		<caliber>100</caliber>
+		<isTracer>true</isTracer>
+		<effects>mainArmorPiercing</effects>
+		<damage>
+			<armor>320</armor>
+			<devices>135</devices>
+		</damage>
+	</_100mm_UBR-412PA_T>
+	<_100mm_UBR-412P_T>
+		<id>31070</id>
+		<userString>#ussr_vehicles:_100mm_UBR-412P_T</userString>
+		<icon>ap_cr_premium</icon>
+		<price>4000</price>
+		<improved>true</improved>
+		<kind>ARMOR_PIERCING_CR</kind>
+		<caliber>100</caliber>
+		<isTracer>true</isTracer>
+		<effects>mainAPCR</effects>
+		<damage>
+			<armor>320</armor>
+			<devices>135</devices>
+		</damage>
+	</_100mm_UBR-412P_T>
+	<_100mm_UOF-412_T>
+		<id>31071</id>
+		<userString>#ussr_vehicles:_100mm_UOF-412_T</userString>
+		<icon>he_modern</icon>
+		<price>650</price>
+		<kind>HIGH_EXPLOSIVE</kind>
+		<mechanics>MODERN</mechanics>
+		<caliber>100</caliber>
+		<explosionRadius>
+			1.76
+			<!--BW_String-->
+		</explosionRadius>
+		<isTracer>true</isTracer>
+		<effects>mainHighExplosive</effects>
+		<damage>
+			<armor>420</armor>
+			<devices>135</devices>
+		</damage>
+		<armorSpalls>
+			<impactRadius>
+				1.98
+				<!--BW_String-->
+			</impactRadius>
+			<coneAngle>90</coneAngle>
+			<damage>
+				<armor>210</armor>
+				<devices>70</devices>
+			</damage>
+		</armorSpalls>
+	</_100mm_UOF-412_T>
 	<_100mm_UOF-412>
 		<id>44</id>
 		<userString>#ussr_vehicles:_100mm_UOF-412</userString>
@@ -4722,6 +4782,10 @@
 			<devices>180</devices>
 		</damage>
 		<maxDistanceInsideVehicle>40</maxDistanceInsideVehicle>
+		<damageRandomization>
+			0.0
+			<!--BW_String-->
+		</damageRandomization>
 		<distanceDamage>
 			<isEnabled>true</isEnabled>
 			<damage>
@@ -4730,7 +4794,7 @@
 			</damage>
 			<distance>
 				<min>
-					1.5
+					1.0
 					<!--BW_String-->
 				</min>
 				<max>
@@ -4907,7 +4971,7 @@
 			</impactRadius>
 			<coneAngle>90</coneAngle>
 			<damage>
-				<armor>320</armor>
+				<armor>350</armor>
 				<devices>90</devices>
 			</damage>
 		</armorSpalls>
@@ -5343,7 +5407,7 @@
 		<kind>HOLLOW_CHARGE</kind>
 		<caliber>152</caliber>
 		<isTracer>true</isTracer>
-		<effects>largeSH</effects>
+		<effects>largeSCA</effects>
 		<damage>
 			<armor>450</armor>
 			<devices>120</devices>
@@ -5362,7 +5426,7 @@
 		<caliber>152</caliber>
 		<explosionRadius>13</explosionRadius>
 		<isTracer>true</isTracer>
-		<effects>largeSF</effects>
+		<effects>largeSFA</effects>
 		<damage>
 			<armor>620</armor>
 			<devices>50</devices>
@@ -5504,6 +5568,65 @@
 			<devices>203</devices>
 		</damage>
 	</_152mm_UBR551>
+	<_152mm_UBR551_02_B>
+		<id>31060</id>
+		<userString>#ussr_vehicles:_152mm_UBR551</userString>
+		<icon>ap</icon>
+		<price>1650</price>
+		<kind>ARMOR_PIERCING</kind>
+		<caliber>152</caliber>
+		<isTracer>true</isTracer>
+		<effects>largeArmorPiercing</effects>
+		<damage>
+			<armor>750</armor>
+			<devices>203</devices>
+		</damage>
+	</_152mm_UBR551_02_B>
+	<_152mm_UBR551P_02_B>
+		<id>31061</id>
+		<userString>#ussr_vehicles:_152mm_UBR551P</userString>
+		<icon>ap_cr_premium</icon>
+		<price>4800</price>
+		<improved>true</improved>
+		<kind>ARMOR_PIERCING_CR</kind>
+		<caliber>152</caliber>
+		<isTracer>true</isTracer>
+		<effects>largeAPCR</effects>
+		<damage>
+			<armor>750</armor>
+			<devices>203</devices>
+		</damage>
+	</_152mm_UBR551P_02_B>
+	<_152mm_53-OF-551_02_B>
+		<id>31062</id>
+		<userString>#ussr_vehicles:_152mm_53-OF-551</userString>
+		<icon>he_modern</icon>
+		<price>1120</price>
+		<kind>HIGH_EXPLOSIVE</kind>
+		<mechanics>MODERN</mechanics>
+		<caliber>152</caliber>
+		<explosionRadius>
+			3.66
+			<!--BW_String-->
+		</explosionRadius>
+		<isTracer>true</isTracer>
+		<effects>largeHighExplosive</effects>
+		<damage>
+			<armor>950</armor>
+			<devices>203</devices>
+		</damage>
+		<armorSpalls>
+			<impactRadius>
+				3.66
+				<!--BW_String-->
+			</impactRadius>
+			<coneAngle>90</coneAngle>
+			<damage>
+				<armor>475</armor>
+				<devices>100</devices>
+			</damage>
+		</armorSpalls>
+	</_152mm_53-OF-551_02_B>
 	<_152mm_UBR551M>
 		<id>102</id>
 		<userString>#ussr_vehicles:_152mm_UBR551M</userString>
@@ -6035,6 +6158,39 @@
 			<devices>17</devices>
 		</damage>
 	</Development_Shell>
+	<_100mm_UBR-412PB_WT>
+		<id>1001</id>
+		<userString>#ussr_vehicles:_100mm_UBR-412PB_WT</userString>
+		<description>#ussr_vehicles:_100mm_UBR-412PB_WT_descr</description>
+		<shortDescriptionSpecial>#ussr_vehicles:_100mm_UBR-412PB_WT_short_special</shortDescriptionSpecial>
+		<longDescriptionSpecial>#ussr_vehicles:_100mm_UBR-412PB_WT_long_special</longDescriptionSpecial>
+		<icon>ap_wt</icon>
+		<price>1100</price>
+		<notInShop>true</notInShop>
+		<kind>ARMOR_PIERCING_CR</kind>
+		<caliber>100</caliber>
+		<isTracer>true</isTracer>
+		<effects>mainAPCR</effects>
+		<damage>
+			<armor>300</armor>
+			<devices>130</devices>
+		</damage>
+	</_100mm_UBR-412PB_WT>
+	<_100mm_UBR-412PB_charged_shot_WT>
+		<id>1002</id>
+		<userString>#ussr_vehicles:_100mm_UBR-412PB_charged_shot_WT</userString>
+		<icon>ap_wt</icon>
+		<price>1100</price>
+		<notInShop>true</notInShop>
+		<kind>ARMOR_PIERCING_CR</kind>
+		<caliber>100</caliber>
+		<isTracer>true</isTracer>
+		<effects>mainAPCR</effects>
+		<damage>
+			<armor>650</armor>
+			<devices>450</devices>
+		</damage>
+	</_100mm_UBR-412PB_charged_shot_WT>
 	<_122mm_BP450SO_SH>
 		<id>277</id>
 		<userString>#ussr_vehicles:_122mm_BP450SO_SH</userString>
@@ -6346,7 +6502,7 @@
 		<mechanics>MODERN</mechanics>
 		<caliber>40</caliber>
 		<isTracer>true</isTracer>
-		<effects>smallFlame</effects>
+		<effects>smallFlame_Powder</effects>
 		<hasStun>true</hasStun>
 		<stunType>FLAME</stunType>
 		<stunInPoint>true</stunInPoint>

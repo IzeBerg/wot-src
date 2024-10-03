@@ -24,34 +24,15 @@
 					<fx>shaders/std_effects/PBS_ext_detail.fx</fx>
 					<property>
 						g_detailInfluences
-						<Vector4>
-							0.4 0.5 0.000000 1
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>0.400000 0.500000 0.000000 1.000000</Vector4>
 					</property>
 					<property>
 						g_detailRejectTiling
-						<Vector4>1 1 4 8</Vector4>
-					</property>
-					<property>
-						alphaReference
-						<Int>0</Int>
+						<Vector4>1.000000 1.000000 4.000000 8.000000</Vector4>
 					</property>
 					<property>
 						g_enableAO
 						<Bool>true</Bool>
-					</property>
-					<property>
-						g_enableTerrainBlending
-						<Bool>false</Bool>
-					</property>
-					<property>
-						doubleSided
-						<Bool>false</Bool>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>false</Bool>
 					</property>
 					<property>
 						g_detailMap

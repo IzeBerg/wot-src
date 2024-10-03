@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<version>3</version>
+	<GameObjects>
+		<GameObject>
+			<name>HyperionCanceled</name>
+			<UUID>d3b21ff9-303d-4ec7-a4fa-8b809d0c1d53</UUID>
+			<flags>0</flags>
+		</GameObject>
+	</GameObjects>
+	<components>
+		<ComponentPool>
+			<type>Transform</type>
+			<version>1</version>
+			<component>
+				<objectIndex>0</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>0 0 0</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>-0 0 0</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>Sound3D</type>
+			<version>1</version>
+			<component>
+				<objectIndex>0</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Object name</name>
+						<value>hyperionSoundObjectCanceled</value>
+					</property>
+					<property>
+						<name>Event name</name>
+						<value>ev_wt_gameplay_hyperion_start_up_interrupted</value>
+					</property>
+					<property>
+						<name>AutoStart</name>
+						<value>1</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>SoundNotification</type>
+			<version>1</version>
+			<component>
+				<objectIndex>0</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>onEnterNotification</name>
+						<value>wt23_both_vo_hyperion_canceled</value>
+					</property>
+					<property>
+						<name>onExitNotification</name>
+						<value/>
+					</property>
+					<property>
+						<name>conditions</name>
+						<value>boss_player</value>
+					</property>
+					<property>
+						<name>isUnique</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>onlyForPlayerVehicle</name>
+						<value>0</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+	</components>
+</root>

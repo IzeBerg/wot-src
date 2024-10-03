@@ -70,6 +70,8 @@ package net.wg.gui.lobby.hangar.vehicleParameters.components
       
       public var separator:Sprite = null;
       
+      public var ability:VehParamAbility = null;
+      
       protected var _model:VehParamVO = null;
       
       private var _tooltip:String = null;
@@ -140,6 +142,11 @@ package net.wg.gui.lobby.hangar.vehicleParameters.components
          this.arrow = null;
          this._tooltipMgr = null;
          this.separator = null;
+         if(this.ability)
+         {
+            this.ability.dispose();
+            this.ability = null;
+         }
          super.onDispose();
       }
       
@@ -159,7 +166,7 @@ package net.wg.gui.lobby.hangar.vehicleParameters.components
             {
                this.valueTF.htmlText = this._model.valueText;
             }
-            if(StringUtils.isNotEmpty(this._model.valueText))
+            if(StringUtils.isNotEmpty(this._model.titleText))
             {
                this.titleTF.htmlText = this._model.titleText;
             }
@@ -231,6 +238,11 @@ package net.wg.gui.lobby.hangar.vehicleParameters.components
             {
                mouseChildren = mouseEnabled = false;
             }
+            else if(this._model.state == HANGAR_ALIASES.VEH_PARAM_RENDERER_STATE_ABILITY && this.ability)
+            {
+               this.ability.updateData(this._model.iconSource,this._model.titleText);
+               this.ability.visible = true;
+            }
             if(this._model.state != HANGAR_ALIASES.VEH_PARAM_RENDERER_STATE_ADVANCED)
             {
                this.hitMC.x = this._simpleHitX;
@@ -264,6 +276,10 @@ package net.wg.gui.lobby.hangar.vehicleParameters.components
          if(this.separator)
          {
             this.separator.visible = false;
+         }
+         if(this.ability)
+         {
+            this.ability.visible = false;
          }
       }
       

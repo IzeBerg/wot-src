@@ -92,6 +92,8 @@ _LOBBY_TOOLTIPS_BUILDERS_PATHS = [
  (
   'gui.Scaleform.daapi.view.tooltips.badges_builders', _TOOLTIPS.BADGES_SET),
  (
+  'gui.Scaleform.daapi.view.tooltips.efficiency_builders', _TOOLTIPS.EFFICIENCY_SET),
+ (
   'gui.Scaleform.daapi.view.tooltips.battle_pass_builders', _TOOLTIPS.BATTLE_PASS_SET),
  (
   'gui.Scaleform.daapi.view.tooltips.mapbox_lobby_builders', _TOOLTIPS.MAPBOX_LOBBY_SET),

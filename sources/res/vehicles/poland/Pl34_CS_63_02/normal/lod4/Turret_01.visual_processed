@@ -22,18 +22,18 @@
 					<row0>1.000000 0.000000 0.000000</row0>
 					<row1>0.000000 1.000000 0.000000</row1>
 					<row2>0.000000 0.000000 1.000000</row2>
-					<row3>-0.047849 0.259510 1.191813</row3>
+					<row3>-0.047869 0.259552 1.191849</row3>
 				</transform>
 			</node>
-			<node>
-				<identifier>HP_turretAnim</identifier>
-				<transform>
-					<row0>1.000000 0.000000 0.000000</row0>
-					<row1>0.000000 1.000000 0.000000</row1>
-					<row2>0.000000 0.000000 1.000000</row2>
-					<row3>0.000000 0.000000 0.000000</row3>
-				</transform>
-			</node>
+		</node>
+		<node>
+			<identifier>HP_turretAnim</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
 		</node>
 	</node>
 	<renderSet>
@@ -55,11 +55,11 @@
 					<fx>shaders/std_effects/PBS_tank.fx</fx>
 					<property>
 						metallicGlossMap
-						<Texture>vehicles/poland/Pl21_CS_63/CS_63_proxy_GMM.dds</Texture>
+						<Texture>vehicles/poland/Pl34_CS_63_02/CS_63_02_proxy_GMM.dds</Texture>
 					</property>
 					<property>
 						normalMap
-						<Texture>vehicles/poland/Pl21_CS_63/CS_63_proxy_ANM.dds</Texture>
+						<Texture>vehicles/poland/Pl34_CS_63_02/CS_63_02_proxy_ANM.dds</Texture>
 					</property>
 					<property>
 						diffuseMap
@@ -74,13 +74,13 @@
 						<Texture>vehicles/russian/common/common_ID.dds</Texture>
 					</property>
 				</material>
-				<groupOrigin>0.000986 0.439473 0.035337</groupOrigin>
+				<groupOrigin>0.000966 0.457953 0.035373</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<boundingBox>
-		<min>-1.271551 -0.018365 -1.358480</min>
-		<max>1.273523 0.897310 1.429155</max>
+		<min>-1.271571 0.000115 -1.358444</min>
+		<max>1.273503 0.915790 1.429190</max>
 	</boundingBox>
 	<geometrySize>4084</geometrySize>
 	<minUVDensity>0.000819</minUVDensity>

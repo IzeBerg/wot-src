@@ -9,7 +9,7 @@
 			<row3>0.000000 0.000000 0.000000</row3>
 		</transform>
 		<node>
-			<identifier>group</identifier>
+			<identifier>nodes_01</identifier>
 			<transform>
 				<row0>1.000000 0.000000 0.000000</row0>
 				<row1>0.000000 1.000000 0.000000</row1>
@@ -17,40 +17,31 @@
 				<row3>0.000000 0.000000 0.000000</row3>
 			</transform>
 			<node>
-				<identifier>nodes_01</identifier>
+				<identifier>HP_Fire_1</identifier>
 				<transform>
 					<row0>1.000000 0.000000 0.000000</row0>
 					<row1>0.000000 1.000000 0.000000</row1>
 					<row2>0.000000 0.000000 1.000000</row2>
-					<row3>0.000000 0.000000 0.000000</row3>
+					<row3>0.000000 0.204942 -2.448299</row3>
 				</transform>
-				<node>
-					<identifier>HP_Fire_1</identifier>
-					<transform>
-						<row0>1.000000 0.000000 0.000000</row0>
-						<row1>0.000000 1.000000 0.000000</row1>
-						<row2>0.000000 0.000000 1.000000</row2>
-						<row3>0.000000 0.204940 -2.448299</row3>
-					</transform>
-				</node>
-				<node>
-					<identifier>HP_Fire_2</identifier>
-					<transform>
-						<row0>1.000000 0.000000 0.000000</row0>
-						<row1>0.000000 1.000000 0.000000</row1>
-						<row2>0.000000 0.000000 1.000000</row2>
-						<row3>0.000000 0.204940 0.085326</row3>
-					</transform>
-				</node>
-				<node>
-					<identifier>HP_turretJoint</identifier>
-					<transform>
-						<row0>1.000000 0.000000 0.000000</row0>
-						<row1>0.000000 1.000000 0.000000</row1>
-						<row2>0.000000 0.000000 1.000000</row2>
-						<row3>0.000004 0.855195 0.456918</row3>
-					</transform>
-				</node>
+			</node>
+			<node>
+				<identifier>HP_Fire_2</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.204942 0.085326</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_turretJoint</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000004 0.855196 0.456918</row3>
+				</transform>
 			</node>
 		</node>
 	</node>
@@ -64,13 +55,17 @@
 				0
 				<material>
 					<identifier>tank_hull_01</identifier>
-					<property>
-						selfIllumination
-						<Float>0.000000</Float>
-					</property>
+					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
 					<collisionFlags>0</collisionFlags>
 					<materialKind>0</materialKind>
-					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
+					<property>
+						g_crashUVTiling
+						<Vector4>4.000000 4.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						crashTileMap
+						<Texture>vehicles/russian/Tank_detail/crash_tile.dds</Texture>
+					</property>
 					<property>
 						metallicGlossMap
 						<Texture>vehicles/poland/Pl26_Czolg_P_Wz_46/Czolg_P_Wz_46_proxy_GMM.dds</Texture>
@@ -87,22 +82,14 @@
 						excludeMaskAndAOMap
 						<Texture>vehicles/poland/Pl26_Czolg_P_Wz_46/Czolg_P_Wz_46_proxy_AO.dds</Texture>
 					</property>
-					<property>
-						crashTileMap
-						<Texture>vehicles/russian/Tank_detail/crash_tile.dds</Texture>
-					</property>
-					<property>
-						colorIdMap
-						<Texture>vehicles/russian/common/common_ID.dds</Texture>
-					</property>
 				</material>
-				<groupOrigin>-0.017127 0.206658 -0.187556</groupOrigin>
+				<groupOrigin>-0.017127 0.206659 -0.187556</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<boundingBox>
-		<min>-1.743696 -0.490437 -4.053337</min>
-		<max>1.709442 0.903753 3.678226</max>
+		<min>-1.743696 -0.490436 -4.053337</min>
+		<max>1.709442 0.903754 3.678226</max>
 	</boundingBox>
 	<geometrySize>3000</geometrySize>
 	<minUVDensity>0.003181</minUVDensity>

@@ -175,6 +175,7 @@
 			<tooltip_counter_value_label>&lt;font color=&quot;#D3D3CA&quot; size=&quot;12&quot; face=&quot;$TextFont&quot;&gt;%(text)s&lt;/font&gt;</tooltip_counter_value_label>
 			<tooltip_params_style>&lt;font color=&quot;#4a4a3f&quot; size=&quot;12&quot; face=&quot;$FieldFont&quot;&gt;%(text)s&lt;/font&gt;</tooltip_params_style>
 			<tooltip_crit_label>&lt;IMG SRC=&quot;img://gui/maps/icons/library/crits/%(image)sSmall.png&quot; width=&quot;16&quot; height=&quot;16&quot; vspace=&quot;-5&quot;/&gt;&lt;font color=&quot;#7b7969&quot;&gt;%(value)s&lt;/font&gt;</tooltip_crit_label>
+			<tooltip_crit_label_with_count>&lt;IMG SRC=&quot;img://gui/maps/icons/library/crits/%(image)sSmall.png&quot; width=&quot;16&quot; height=&quot;16&quot; vspace=&quot;-5&quot;/&gt;&lt;font color=&quot;#7b7969&quot;&gt;%(value)s (x%(count)s)&lt;/font&gt;</tooltip_crit_label_with_count>
 			<tooltip_two_liner>%(line1)s&lt;br/&gt;%(line2)s</tooltip_two_liner>
 			<tooltip_three_liner>%(line1)s&lt;br/&gt;%(line2)s&lt;br/&gt;%(line3)s</tooltip_three_liner>
 			<tooltip_four_liner>%(line1)s&lt;br/&gt;%(line2)s&lt;br/&gt;%(line3)s&lt;br/&gt;%(line4)s</tooltip_four_liner>
@@ -750,6 +751,15 @@ _(#invites:invites/text/fort/defence) &lt;font color=&quot;#c9c9b6&quot;&gt;%(cl
 				<crewBook>&lt;img src=&apos;img://gui/maps/icons/crewBooks/books/small/%(type)s_%(nation)s.png&apos;/&gt; &lt;font color=&apos;#CED9D9&apos;&gt;x%(value)s&lt;/font&gt;</crewBook>
 				<anyBlueprints>_(#quests:bonusName/blueprints/any) &lt;font color=&apos;#CED9D9&apos;&gt;%(value)s&lt;/font&gt;</anyBlueprints>
 				<anyNationalBlueprints>_(#quests:bonusName/blueprints/nation/any) &lt;font color=&apos;#CED9D9&apos;&gt;%(value)s&lt;/font&gt;</anyNationalBlueprints>
+				<customizations>
+					<camouflage>_(#quests:bonusName/camouflage) &lt;font color=&apos;#CED9D9&apos;&gt;x%(value)s&lt;/font&gt;</camouflage>
+					<emblem>_(#quests:bonusName/emblem) &lt;font color=&apos;#CED9D9&apos;&gt;x%(value)s&lt;/font&gt;</emblem>
+					<inscription>_(#quests:bonusName/inscription) &lt;font color=&apos;#CED9D9&apos;&gt;x%(value)s&lt;/font&gt;</inscription>
+					<projection_decal>_(#quests:bonusName/projectionDecal) &lt;font color=&apos;#CED9D9&apos;&gt;x%(value)s&lt;/font&gt;</projection_decal>
+					<decal>_(#quests:bonusName/decal) &lt;font color=&apos;#CED9D9&apos;&gt;x%(value)s&lt;/font&gt;</decal>
+					<paint>_(#quests:bonusName/paint) &lt;font color=&apos;#CED9D9&apos;&gt;x%(value)s&lt;/font&gt;</paint>
+					<style>_(#quests:bonusName/style) &lt;font color=&apos;#CED9D9&apos;&gt;x%(value)s&lt;/font&gt;</style>
+				</customizations>
 				<crewSkinText>_(#quests:bonuses/crewSkin/text)</crewSkinText>
 				<crewBookText>_(#quests:bonuses/crewBook/text)</crewBookText>
 				<dossierAchive>_(#quests:bonuses/dossier/achive)</dossierAchive>
@@ -1000,6 +1010,7 @@ _(#invites:invites/text/fort/defence) &lt;font color=&quot;#c9c9b6&quot;&gt;%(cl
 			<order_in_progress>&lt;img src=&apos;img://gui/maps/icons/library/fortification/order_in_progress.png&apos; width=&apos;24&apos; height=&apos;24&apos; vspace=&apos;-7&apos; hspace=&apos;0&apos;/&gt;</order_in_progress>
 			<clock>&lt;img src=&apos;img://gui/maps/icons/library/fortification/clock.png&apos; width=&apos;16&apos; height=&apos;16&apos; vspace=&apos;-2&apos; hspace=&apos;0&apos;/&gt;</clock>
 			<clockGold>&lt;img src=&apos;img://gui/maps/icons/library/time_icon.png&apos; width=&apos;16&apos; height=&apos;16&apos; vspace=&apos;-3&apos; hspace=&apos;0&apos;/&gt;</clockGold>
+			<clockSh>&lt;img src=&apos;img://gui/maps/icons/library/clock_icon_s.png&apos; width=&apos;24&apos; height=&apos;24&apos; vspace=&apos;%(vspace)d&apos; hspace=&apos;0&apos;/&gt;</clockSh>
 			<notAvailable>&lt;img src=&apos;img://gui/maps/icons/buttons/tab_sort_button/notAvailable.png&apos; width=&apos;12&apos; height=&apos;12&apos; vspace=&apos;-1&apos; hspace=&apos;0&apos;/&gt;</notAvailable>
 			<notAvailableRed>&lt;img src=&apos;img://gui/maps/icons/library/redNotAvailable.png&apos; width=&apos;12&apos; height=&apos;12&apos; vspace=&apos;0&apos; hspace=&apos;0&apos;/&gt;</notAvailableRed>
 			<level5>&lt;img src=&apos;img://gui/maps/icons/levels/tank_level_5.png&apos; width=&apos;14&apos; height=&apos;16&apos; vspace=&apos;-4&apos; hspace=&apos;0&apos;/&gt;</level5>

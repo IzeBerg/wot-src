@@ -25,6 +25,24 @@
 					<row3>0.055645 0.282583 1.389267</row3>
 				</transform>
 			</node>
+			<node>
+				<identifier>HP_TurretCamera_01</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>-0.555280 0.803295 -0.352877</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_turretAbillity</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+			</node>
 		</node>
 	</node>
 	<renderSet>
@@ -78,6 +96,10 @@
 						<Bool>true</Bool>
 					</property>
 					<property>
+						g_useNormalPackDXT1
+						<Bool>false</Bool>
+					</property>
+					<property>
 						metallicGlossMap
 						<Texture>vehicles/russian/R124_Object_279/Object_279_turret_01_GMM.dds</Texture>
 					</property>
@@ -93,10 +115,6 @@
 						excludeMaskAndAOMap
 						<Texture>vehicles/russian/R124_Object_279/Object_279_turret_01_AO.dds</Texture>
 					</property>
-					<property>
-						colorIdMap
-						<Texture>vehicles/russian/common/common_ID.dds</Texture>
-					</property>
 				</material>
 				<groupOrigin>-0.035124 1.412342 0.019377</groupOrigin>
 			</primitiveGroup>
@@ -106,6 +124,6 @@
 		<min>-1.532387 0.040496 -1.613793</min>
 		<max>1.462139 2.784187 1.652547</max>
 	</boundingBox>
-	<geometrySize>534164</geometrySize>
+	<geometrySize>440224</geometrySize>
 	<minUVDensity>0.005945</minUVDensity>
 </root>

@@ -35,6 +35,10 @@ package net.wg.gui.lobby.hangar.tcarousel
       private static const CRYSTALS_FRAME:String = "Active";
       
       private static const CRYSTALS_LIMIT_REACH_FRAME:String = "Deactivated";
+      
+      private static const EVENT_FLAG_LABEL:String = "event";
+      
+      private static const EVENT_FLAG_SPECIAL_LABEL:String = "event_special";
        
       
       public var mcFlag:MovieClip = null;
@@ -270,6 +274,11 @@ package net.wg.gui.lobby.hangar.tcarousel
             this.updateBaseData(param1);
             this.setVisibleVehicleInfo(true);
             this.mcLevel.visible = param1.level != 0;
+            if(param1.isEventVehicleSpecial || param1.isEventVehicle)
+            {
+               this.mcFlag.gotoAndStop(!!param1.isEventVehicleSpecial ? EVENT_FLAG_SPECIAL_LABEL : EVENT_FLAG_LABEL);
+               this.mcTankType.visible = this.mcLevel.visible = false;
+            }
          }
          this.bpSpecialBorder.visible = param1.progressionPoints && param1.progressionPoints.isSpecialVehicle;
          this.updateLockBg();

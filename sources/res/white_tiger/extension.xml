@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<FeatureName>white_tiger</FeatureName>
+	<IsEnabled>true</IsEnabled>
+	<Personality>WhiteTigerPersonality</Personality>
+	<EditorPersonality>editor_white_tiger_personality</EditorPersonality>
+	<Entities>
+		<ClientServerEntities/>
+		<ServerOnlyEntities>
+			<WhiteTigerUnitMgr/>
+			<WhiteTigerBattlesMgr/>
+		</ServerOnlyEntities>
+	</Entities>
+	<Components>
+		<StaticComponents>
+			<AccountWhiteTigerComponent/>
+			<ArenaWhiteTigerComponent/>
+		</StaticComponents>
+		<DynamicComponents>
+			<EntityWTGeneratorComponent/>
+			<GeneratorDestroyedComponent/>
+			<TeamInfoWTPlasmaBonusComponentController/>
+			<VehicleWTGeneratorActivation/>
+			<VehicleWTStatCollectorHarrier/>
+			<VehicleWTStatTotalGeneratorsCaptured/>
+		</DynamicComponents>
+	</Components>
+	<ExternalComponents/>
+</root>

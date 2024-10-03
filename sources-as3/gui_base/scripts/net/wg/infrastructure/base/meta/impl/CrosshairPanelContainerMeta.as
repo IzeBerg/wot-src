@@ -16,6 +16,8 @@ package net.wg.infrastructure.base.meta.impl
       
       private var _vectorShotFlyTimeVO:Vector.<ShotFlyTimeVO>;
       
+      private var _vectorNumber:Vector.<Number>;
+      
       public function CrosshairPanelContainerMeta()
       {
          super();
@@ -42,6 +44,11 @@ package net.wg.infrastructure.base.meta.impl
             }
             this._vectorShotFlyTimeVO.splice(0,this._vectorShotFlyTimeVO.length);
             this._vectorShotFlyTimeVO = null;
+         }
+         if(this._vectorNumber)
+         {
+            this._vectorNumber.splice(0,this._vectorNumber.length);
+            this._vectorNumber = null;
          }
          super.onDispose();
       }
@@ -98,6 +105,24 @@ package net.wg.infrastructure.base.meta.impl
          }
       }
       
+      public final function as_addOverheat(param1:Array) : void
+      {
+         var _loc2_:Vector.<Number> = this._vectorNumber;
+         this._vectorNumber = new Vector.<Number>(0);
+         var _loc3_:uint = param1.length;
+         var _loc4_:int = 0;
+         while(_loc4_ < _loc3_)
+         {
+            this._vectorNumber[_loc4_] = param1[_loc4_];
+            _loc4_++;
+         }
+         this.addOverheat(this._vectorNumber);
+         if(_loc2_)
+         {
+            _loc2_.splice(0,_loc2_.length);
+         }
+      }
+      
       protected function setGunMarkersIndicators(param1:Vector.<GunMarkerIndicatorVO>) : void
       {
          var _loc2_:String = "as_setGunMarkersIndicators" + Errors.ABSTRACT_INVOKE;
@@ -108,6 +133,13 @@ package net.wg.infrastructure.base.meta.impl
       protected function setShotFlyTimes(param1:Vector.<ShotFlyTimeVO>) : void
       {
          var _loc2_:String = "as_setShotFlyTimes" + Errors.ABSTRACT_INVOKE;
+         DebugUtils.LOG_ERROR(_loc2_);
+         throw new AbstractException(_loc2_);
+      }
+      
+      protected function addOverheat(param1:Vector.<Number>) : void
+      {
+         var _loc2_:String = "as_addOverheat" + Errors.ABSTRACT_INVOKE;
          DebugUtils.LOG_ERROR(_loc2_);
          throw new AbstractException(_loc2_);
       }

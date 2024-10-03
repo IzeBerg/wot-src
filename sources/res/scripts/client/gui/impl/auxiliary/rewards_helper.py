@@ -727,6 +727,16 @@ def getLastCongratsIndex(bonuses, rewardType):
     return lastIndex
 
 
+def getCurrentStepState(probability, hasCompleted):
+    if hasCompleted:
+        return prConst.STATE_RECEIVED
+    if probability < _MIN_PROBABILITY:
+        return prConst.STATE_PROB_MIN
+    if probability >= _MAX_PROBABILITY:
+        return prConst.STATE_PROB_MAX
+    return prConst.STATE_PROB_MED
+
+
 def _getProgressiveSteps(currentStep, probability, maxSteps, hasCompleted=False):
     steps = []
     for step in xrange(maxSteps):
@@ -737,7 +747,7 @@ def _getProgressiveSteps(currentStep, probability, maxSteps, hasCompleted=False)
         if currentStep > step:
             steps.append((prConst.STATE_OPENED, rewardType))
         elif currentStep == step:
-            pState = prConst.STATE_RECEIVED if hasCompleted else prConst.STATE_PROB_MIN if probability < _MIN_PROBABILITY else prConst.STATE_PROB_MAX if probability >= _MAX_PROBABILITY else prConst.STATE_PROB_MED
+            pState = getCurrentStepState(probability, hasCompleted)
             steps.append((pState, rewardType))
         else:
             steps.append((prConst.STATE_NOT_RECEIVED, rewardType))

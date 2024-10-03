@@ -46,6 +46,30 @@ class PyComponentWrapperBase(pybind11_object):
 	def valid(self, *args, **kwargs): pass
 
 
+class AlwaysVisible(PyComponentWrapperBase):
+	def __cmp__(self, *args, **kwargs): pass
+	def __delattr__(*args, **kwargs): pass
+	__doc__ = None
+	def __format__(*args, **kwargs): pass
+	def __getattribute__(self, *args, **kwargs): pass
+	def __hash__(*args, **kwargs): pass
+	def __init__(self, *args, **kwargs): pass
+	__module__ = 'GenericComponents'
+	def __new__(*args, **kwargs): pass
+	__qualname__ = 'AlwaysVisible'
+	def __reduce__(*args, **kwargs): pass
+	def __reduce_ex__(*args, **kwargs): pass
+	def __repr__(*args, **kwargs): pass
+	def __setattr__(*args, **kwargs): pass
+	def __sizeof__(*args, **kwargs): pass
+	def __str__(*args, **kwargs): pass
+	def __subclasshook__(*args, **kwargs): pass
+	def clear(self, *args, **kwargs): pass
+	def destroy(self, *args, **kwargs): pass
+	def id(self, *args, **kwargs): pass
+	def valid(self, *args, **kwargs): pass
+
+
 class AnimationTimeSyncComponent(PyComponentWrapperBase):
 	def __cmp__(self, *args, **kwargs): pass
 	def __delattr__(*args, **kwargs): pass
@@ -99,6 +123,7 @@ class AnimatorComponent(PyComponentWrapperBase):
 	def id(self, *args, **kwargs): pass
 	def isPlaying(self, *args, **kwargs): pass
 	def isValid(self, *args, **kwargs): pass
+	def removeEventReaction(self, *args, **kwargs): pass
 	def reset(self, *args, **kwargs): pass
 	def setFloatParam(self, *args, **kwargs): pass
 	def setTrigger(self, *args, **kwargs): pass
@@ -139,6 +164,57 @@ class AttachToTerrain(PyComponentWrapperBase):
 	overTerrainHeight = property(lambda self: None)
 	def valid(self, *args, **kwargs): pass
 	yCutOffDistance = property(lambda self: None)
+
+
+class BattleStage(PyComponentWrapperBase):
+	def __cmp__(self, *args, **kwargs): pass
+	def __delattr__(*args, **kwargs): pass
+	__doc__ = None
+	def __format__(*args, **kwargs): pass
+	def __getattribute__(self, *args, **kwargs): pass
+	def __hash__(*args, **kwargs): pass
+	def __init__(self, *args, **kwargs): pass
+	__module__ = 'GenericComponents'
+	def __new__(*args, **kwargs): pass
+	__qualname__ = 'BattleStage'
+	def __reduce__(*args, **kwargs): pass
+	def __reduce_ex__(*args, **kwargs): pass
+	def __repr__(*args, **kwargs): pass
+	def __setattr__(*args, **kwargs): pass
+	def __sizeof__(*args, **kwargs): pass
+	def __str__(*args, **kwargs): pass
+	def __subclasshook__(*args, **kwargs): pass
+	def clear(self, *args, **kwargs): pass
+	current = property(lambda self: None)
+	def destroy(self, *args, **kwargs): pass
+	def id(self, *args, **kwargs): pass
+	maximum = property(lambda self: None)
+	def valid(self, *args, **kwargs): pass
+
+
+class CarryingLootComponent(PyComponentWrapperBase):
+	def __cmp__(self, *args, **kwargs): pass
+	def __delattr__(*args, **kwargs): pass
+	__doc__ = None
+	def __format__(*args, **kwargs): pass
+	def __getattribute__(self, *args, **kwargs): pass
+	def __hash__(*args, **kwargs): pass
+	def __init__(self, *args, **kwargs): pass
+	__module__ = 'GenericComponents'
+	def __new__(*args, **kwargs): pass
+	__qualname__ = 'CarryingLootComponent'
+	def __reduce__(*args, **kwargs): pass
+	def __reduce_ex__(*args, **kwargs): pass
+	def __repr__(*args, **kwargs): pass
+	def __setattr__(*args, **kwargs): pass
+	def __sizeof__(*args, **kwargs): pass
+	def __str__(*args, **kwargs): pass
+	def __subclasshook__(*args, **kwargs): pass
+	def clear(self, *args, **kwargs): pass
+	def destroy(self, *args, **kwargs): pass
+	def id(self, *args, **kwargs): pass
+	lootGO = property(lambda self: None)
+	def valid(self, *args, **kwargs): pass
 
 
 class ControlModeStatus(PyComponentWrapperBase):
@@ -328,6 +404,56 @@ class GameObjectFollowerComponent(PyComponentWrapperBase):
 	def valid(self, *args, **kwargs): pass
 
 
+class GeneratorAreaTargetComponent(PyComponentWrapperBase):
+	def __cmp__(self, *args, **kwargs): pass
+	def __delattr__(*args, **kwargs): pass
+	__doc__ = None
+	def __format__(*args, **kwargs): pass
+	def __getattribute__(self, *args, **kwargs): pass
+	def __hash__(*args, **kwargs): pass
+	def __init__(self, *args, **kwargs): pass
+	__module__ = 'GenericComponents'
+	def __new__(*args, **kwargs): pass
+	__qualname__ = 'GeneratorAreaTargetComponent'
+	def __reduce__(*args, **kwargs): pass
+	def __reduce_ex__(*args, **kwargs): pass
+	def __repr__(*args, **kwargs): pass
+	def __setattr__(*args, **kwargs): pass
+	def __sizeof__(*args, **kwargs): pass
+	def __str__(*args, **kwargs): pass
+	def __subclasshook__(*args, **kwargs): pass
+	def clear(self, *args, **kwargs): pass
+	def destroy(self, *args, **kwargs): pass
+	def id(self, *args, **kwargs): pass
+	def valid(self, *args, **kwargs): pass
+
+
+class GeneratorProgressComponent(PyComponentWrapperBase):
+	def __cmp__(self, *args, **kwargs): pass
+	def __delattr__(*args, **kwargs): pass
+	__doc__ = None
+	def __format__(*args, **kwargs): pass
+	def __getattribute__(self, *args, **kwargs): pass
+	def __hash__(*args, **kwargs): pass
+	def __init__(self, *args, **kwargs): pass
+	__module__ = 'GenericComponents'
+	def __new__(*args, **kwargs): pass
+	__qualname__ = 'GeneratorProgressComponent'
+	def __reduce__(*args, **kwargs): pass
+	def __reduce_ex__(*args, **kwargs): pass
+	def __repr__(*args, **kwargs): pass
+	def __setattr__(*args, **kwargs): pass
+	def __sizeof__(*args, **kwargs): pass
+	def __str__(*args, **kwargs): pass
+	def __subclasshook__(*args, **kwargs): pass
+	def clear(self, *args, **kwargs): pass
+	def destroy(self, *args, **kwargs): pass
+	def id(self, *args, **kwargs): pass
+	progress = property(lambda self: None)
+	timeLeft = property(lambda self: None)
+	def valid(self, *args, **kwargs): pass
+
+
 class HealthGradationComponent(PyComponentWrapperBase):
 	def __cmp__(self, *args, **kwargs): pass
 	def __delattr__(*args, **kwargs): pass
@@ -424,6 +550,33 @@ class ParticleComponent(PyComponentWrapperBase):
 	def clear(self, *args, **kwargs): pass
 	def destroy(self, *args, **kwargs): pass
 	def id(self, *args, **kwargs): pass
+	def setEmissionRate(self, *args, **kwargs): pass
+	def valid(self, *args, **kwargs): pass
+
+
+class ProjectileTarget(PyComponentWrapperBase):
+	def __cmp__(self, *args, **kwargs): pass
+	def __delattr__(*args, **kwargs): pass
+	__doc__ = None
+	def __format__(*args, **kwargs): pass
+	def __getattribute__(self, *args, **kwargs): pass
+	def __hash__(*args, **kwargs): pass
+	def __init__(self, *args, **kwargs): pass
+	__module__ = 'GenericComponents'
+	def __new__(*args, **kwargs): pass
+	__qualname__ = 'ProjectileTarget'
+	def __reduce__(*args, **kwargs): pass
+	def __reduce_ex__(*args, **kwargs): pass
+	def __repr__(*args, **kwargs): pass
+	def __setattr__(*args, **kwargs): pass
+	def __sizeof__(*args, **kwargs): pass
+	def __str__(*args, **kwargs): pass
+	def __subclasshook__(*args, **kwargs): pass
+	def clear(self, *args, **kwargs): pass
+	def destroy(self, *args, **kwargs): pass
+	def id(self, *args, **kwargs): pass
+	ownerID = property(lambda self: None)
+	resourceID = property(lambda self: None)
 	def valid(self, *args, **kwargs): pass
 
 
@@ -448,6 +601,7 @@ class RedirectorComponent(PyComponentWrapperBase):
 	def clear(self, *args, **kwargs): pass
 	def destroy(self, *args, **kwargs): pass
 	def id(self, *args, **kwargs): pass
+	redirectionTarget = property(lambda self: None)
 	def valid(self, *args, **kwargs): pass
 
 
@@ -744,6 +898,30 @@ class TransformManager(ComponentManager):
 	clock = property(lambda self: None)
 	def getManager(self, *args, **kwargs): pass
 	spaceID = property(lambda self: None)
+
+
+class TriggerComponent(PyComponentWrapperBase):
+	def __cmp__(self, *args, **kwargs): pass
+	def __delattr__(*args, **kwargs): pass
+	__doc__ = None
+	def __format__(*args, **kwargs): pass
+	def __getattribute__(self, *args, **kwargs): pass
+	def __hash__(*args, **kwargs): pass
+	def __init__(self, *args, **kwargs): pass
+	__module__ = 'GenericComponents'
+	def __new__(*args, **kwargs): pass
+	__qualname__ = 'TriggerComponent'
+	def __reduce__(*args, **kwargs): pass
+	def __reduce_ex__(*args, **kwargs): pass
+	def __repr__(*args, **kwargs): pass
+	def __setattr__(*args, **kwargs): pass
+	def __sizeof__(*args, **kwargs): pass
+	def __str__(*args, **kwargs): pass
+	def __subclasshook__(*args, **kwargs): pass
+	def clear(self, *args, **kwargs): pass
+	def destroy(self, *args, **kwargs): pass
+	def id(self, *args, **kwargs): pass
+	def valid(self, *args, **kwargs): pass
 
 
 class VSEComponent(PyComponentWrapperBase):

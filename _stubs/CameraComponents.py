@@ -101,6 +101,7 @@ class CameraFlightComponent(PyComponentWrapperBase):
 	motionBlur = property(lambda self: None)
 	positionEasing = property(lambda self: None)
 	rotationEasing = property(lambda self: None)
+	sequencePath = property(lambda self: None)
 	def valid(self, *args, **kwargs): pass
 
 

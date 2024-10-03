@@ -25,6 +25,10 @@ package net.wg.gui.lobby.questsWindow.data
       
       public var wulfTooltipArg:String = "";
       
+      public var typedTooltip:String = "";
+      
+      public var typedTooltipArg:String = "";
+      
       public var complexTooltip:String = "";
       
       public var linesLimit:int = -1;

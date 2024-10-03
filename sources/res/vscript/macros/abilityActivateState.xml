@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<info>
+		<name>abilityActivateState</name>
+		<isMacro>true</isMacro>
+		<version>0</version>
+		<aspect>
+			<compatibles>CLIENT</compatibles>
+		</aspect>
+		<blocks>
+			<block>
+				<class>ContextGetSelf</class>
+				<id>ContextGetSelf_2</id>
+				<params>
+					<param>
+						AbilityContextClient
+						<name>Context Name</name>
+						<type>StringT</type>
+					</param>
+					<param>
+						getSelf
+						<name>Member Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>MacroOutput</class>
+				<id>MacroOutput_1</id>
+				<params>
+					<param>
+						out
+						<name>Output Name</name>
+						<type>StringT</type>
+					</param>
+					<param>
+						EventT
+						<name>Output Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>If</class>
+				<id>If_1</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>ActivateGameObject</class>
+				<id>ActivateGameObject_1</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>MacroInput</class>
+				<id>MacroInput_1</id>
+				<params>
+					<param>
+						in
+						<name>Input Name</name>
+						<type>StringT</type>
+					</param>
+					<param>
+						EventT
+						<name>Input Type</name>
+						<type>TypeT</type>
+					</param>
+					<param>
+						<name>Input Editor</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>IsValid</class>
+				<id>IsValid_1</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>MacroInput</class>
+				<id>MacroInput_2</id>
+				<params>
+					<param>
+						gameObject
+						<name>Input Name</name>
+						<type>StringT</type>
+					</param>
+					<param>
+						GameObjectT
+						<name>Input Type</name>
+						<type>TypeT</type>
+					</param>
+					<param>
+						<name>Input Editor</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+		</blocks>
+		<connections>
+			<connection>
+				<from>ActivateGameObject_1</from>
+				<input>out</input>
+				<to>MacroOutput_1</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>MacroInput_1</from>
+				<input>input</input>
+				<to>If_1</to>
+				<output>in</output>
+			</connection>
+			<connection>
+				<from>IsValid_1</from>
+				<input>value</input>
+				<to>If_1</to>
+				<output>res</output>
+			</connection>
+			<connection>
+				<from>If_1</from>
+				<input>in</input>
+				<to>ActivateGameObject_1</to>
+				<output>true</output>
+			</connection>
+			<connection>
+				<from>MacroInput_2</from>
+				<input>gameObject</input>
+				<to>ActivateGameObject_1</to>
+				<output>gameObject</output>
+			</connection>
+			<connection>
+				<from>MacroInput_2</from>
+				<input>gameObject</input>
+				<to>IsValid_1</to>
+				<output>gameObject</output>
+			</connection>
+		</connections>
+		<macros/>
+		<curves/>
+	</info>
+</root>

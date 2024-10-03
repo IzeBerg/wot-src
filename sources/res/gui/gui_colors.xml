@@ -107,6 +107,9 @@
 			<offset>0 0 0 0</offset>
 		</transform>
 	</oliveTransform>
+	<eventPurpleColor>
+		<alias_color>eventPurple</alias_color>
+	</eventPurpleColor>
 	<selectedOrSquadDeadSchema>
 		<default>
 			<schemeGroup>brownColor</schemeGroup>
@@ -1543,6 +1546,16 @@
 			<rgba>67 61 134 255</rgba>
 		</color_blind>
 	</vm_dead_enemy_name>
+	<vm_hunter>
+		<default>
+			<alias_color>hunter</alias_color>
+			<rgba>255 255 255 255</rgba>
+			<transform>
+				<mult>0 0 0 1</mult>
+				<offset>148 210 255 0</offset>
+			</transform>
+		</default>
+	</vm_hunter>
 	<vm_enemyCapture>
 		<default>
 			<alias_color>enemyCapture</alias_color>
@@ -1651,6 +1664,9 @@
 	<capture_bar_gray>
 		<schemeGroup>grayColor</schemeGroup>
 	</capture_bar_gray>
+	<capture_bar_eventPurple>
+		<schemeGroup>eventPurpleColor</schemeGroup>
+	</capture_bar_eventPurple>
 	<flag_team_green>
 		<schemeGroup>allySchema</schemeGroup>
 		<default>

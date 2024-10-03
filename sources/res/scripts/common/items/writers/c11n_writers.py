@@ -751,7 +751,8 @@ class StyleXmlWriter(BaseCustomizationItemXmlWriter):
         defaultValuesDict = {'styleProgressionLevel': 0, 
            'slotId': 0, 
            'scaleFactorId': DEFAULT_SCALE_FACTOR_ID, 
-           'options': 0}
+           'options': 0, 
+           'overrideDefaultAttachments': 0}
         for projectionDecal in outfit.projection_decals:
             if projectionDecal.editorData.decalType == ProjectionDecalType.POSITION:
                 projectionDecal.tags = None

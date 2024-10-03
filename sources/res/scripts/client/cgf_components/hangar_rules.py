@@ -6,6 +6,7 @@ from cgf_script.managers_registrator import registerManager, Rule, registerRule
 from hover_component import HoverManager
 from highlight_component import HighlightManager
 from on_click_components import ClickManager
+from armory_yard_components import AssemblyStageIndexManager
 from hangar_camera_manager import HangarCameraManager
 
 @registerRule
@@ -27,6 +28,16 @@ class SelectionRule(Rule):
 
     @registerManager(TooltipManager)
     def reg4(self):
+        return
+
+
+@registerRule
+class ArmoryYardRule(Rule):
+    category = 'Hangar rules'
+    domain = CGF.DomainOption.DomainClient
+
+    @registerManager(AssemblyStageIndexManager)
+    def reg1(self):
         return
 
 

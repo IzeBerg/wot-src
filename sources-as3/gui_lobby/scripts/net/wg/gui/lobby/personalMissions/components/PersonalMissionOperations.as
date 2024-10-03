@@ -1,13 +1,19 @@
 package net.wg.gui.lobby.personalMissions.components
 {
+   import flash.display.Graphics;
+   import flash.display.MovieClip;
    import flash.display.Sprite;
+   import flash.events.MouseEvent;
    import net.wg.data.constants.LobbyMetrics;
+   import net.wg.data.constants.generated.TOOLTIPS_CONSTANTS;
    import net.wg.gui.lobby.personalMissions.components.operationsHeader.OperationTitleInfo;
    import net.wg.gui.lobby.personalMissions.data.OperationDataVO;
    import net.wg.gui.lobby.personalMissions.data.OperationTitleVO;
    import net.wg.gui.lobby.personalMissions.events.OperationEvent;
    import net.wg.infrastructure.base.meta.IPersonalMissionOperationsMeta;
    import net.wg.infrastructure.base.meta.impl.PersonalMissionOperationsMeta;
+   import net.wg.infrastructure.managers.ITooltipMgr;
+   import net.wg.utils.StageSizeBoundaries;
    import scaleform.clik.constants.InvalidationType;
    
    public class PersonalMissionOperations extends PersonalMissionOperationsMeta implements IPersonalMissionOperationsMeta
@@ -28,6 +34,26 @@ package net.wg.gui.lobby.personalMissions.components
       private static const PAGE_HEIGHT_STATE_TALL:String = "stateTall";
       
       private static const PAGE_HEIGHT_STATE_SHORT:String = "stateShort";
+      
+      private static const MENU_POSITION_X:int = 32;
+      
+      private static const MENU_POSITION_X_SMALL:int = 16;
+      
+      private static const FRAME_SMALL:int = 2;
+      
+      private static const FRAME_BIG:int = 1;
+      
+      private static const ITEM_WIDTH_SMALL:uint = 68;
+      
+      private static const ITEM_WIDTH:uint = 100;
+      
+      private static const ITEM_HEIGHT_SMALL:uint = 54;
+      
+      private static const ITEM_HEIGHT:uint = 80;
+      
+      private static const NEW_PM_OFFSET_Y_SMALL:int = -54;
+      
+      private static const NEW_PM_OFFSET_Y:int = -80;
        
       
       public var operationInfo:OperationTitleInfo = null;
@@ -36,14 +62,23 @@ package net.wg.gui.lobby.personalMissions.components
       
       public var bg:Sprite = null;
       
+      public var widget:MovieClip = null;
+      
       private var _titleVo:OperationTitleVO = null;
       
       private var _operations:Vector.<OperationDataVO> = null;
       
       private var _pageHeightState:String = "";
       
+      private var _newPM:Sprite = null;
+      
+      private var _oldPM:Sprite = null;
+      
+      private var _tooltipMgr:ITooltipMgr;
+      
       public function PersonalMissionOperations()
       {
+         this._tooltipMgr = App.toolTipMgr;
          super();
       }
       
@@ -57,12 +92,35 @@ package net.wg.gui.lobby.personalMissions.components
          super.configUI();
          this.content.addEventListener(OperationEvent.CLICK,this.onContentOperationClickHandler);
          this.operationInfo.addEventListener(OperationEvent.INFO_BTN_CLICK,this.onOperationInfoBtnClickHandler);
+         this.widget.mouseEnabled = false;
+         this._newPM = new Sprite();
+         this._oldPM = new Sprite();
+         this._newPM.mouseEnabled = this._oldPM.mouseEnabled = true;
+         this._newPM.addEventListener(MouseEvent.ROLL_OVER,this.onNewPMRollOverHandler);
+         this._newPM.addEventListener(MouseEvent.ROLL_OUT,this.onNewPMROllOutHandler);
+         this._oldPM.addEventListener(MouseEvent.ROLL_OVER,this.onOldPMRollOverHandler);
+         this._oldPM.addEventListener(MouseEvent.ROLL_OUT,this.onOldPMROllOutHandler);
+         var _loc1_:Graphics = this._newPM.graphics;
+         _loc1_.beginFill(4095,0);
+         _loc1_.drawRect(0,0,1,1);
+         _loc1_.endFill();
+         this.widget.addChild(this._newPM);
+         _loc1_ = this._oldPM.graphics;
+         _loc1_.beginFill(4095,0);
+         _loc1_.drawRect(0,0,1,1);
+         _loc1_.endFill();
+         this.widget.addChild(this._oldPM);
+         this.updateWidgetSizeAndPosition();
       }
       
       override protected function onBeforeDispose() : void
       {
          this.operationInfo.removeEventListener(OperationEvent.INFO_BTN_CLICK,this.onOperationInfoBtnClickHandler);
          this.content.removeEventListener(OperationEvent.CLICK,this.onContentOperationClickHandler);
+         this._newPM.removeEventListener(MouseEvent.ROLL_OVER,this.onNewPMRollOverHandler);
+         this._newPM.removeEventListener(MouseEvent.ROLL_OUT,this.onNewPMROllOutHandler);
+         this._oldPM.removeEventListener(MouseEvent.ROLL_OVER,this.onOldPMRollOverHandler);
+         this._oldPM.removeEventListener(MouseEvent.ROLL_OUT,this.onOldPMROllOutHandler);
          super.onBeforeDispose();
       }
       
@@ -73,8 +131,12 @@ package net.wg.gui.lobby.personalMissions.components
          this._operations = null;
          this.content.dispose();
          this.content = null;
+         this.widget = null;
          this.bg = null;
          this._titleVo = null;
+         this._oldPM = null;
+         this._newPM = null;
+         this._tooltipMgr = null;
          super.onDispose();
       }
       
@@ -114,8 +176,7 @@ package net.wg.gui.lobby.personalMissions.components
       
       private function updateSize() : void
       {
-         var _loc1_:String = null;
-         _loc1_ = calcPageHeightState(height);
+         var _loc1_:String = calcPageHeightState(height);
          if(this._pageHeightState != _loc1_)
          {
             this._pageHeightState = _loc1_;
@@ -129,6 +190,7 @@ package net.wg.gui.lobby.personalMissions.components
          this.operationInfo.y = Math.min(HEADER_TOP_POSITION_MIN + (App.appHeight - LobbyMetrics.MIN_STAGE_HEIGHT >> 1),HEADER_TOP_POSITION_MAX);
          this.bg.width = width;
          this.bg.height = height + LobbyMetrics.LOBBY_MESSENGER_HEIGHT;
+         this.updateWidgetSizeAndPosition();
       }
       
       private function updateDependentComponents(param1:String) : void
@@ -136,9 +198,49 @@ package net.wg.gui.lobby.personalMissions.components
          this.operationInfo.fontSize = param1 == PAGE_HEIGHT_STATE_TALL ? int(OperationTitleInfo.HEADER_FONT_BIG) : int(OperationTitleInfo.HEADER_FONT_SMALL);
       }
       
+      private function updateWidgetSizeAndPosition() : void
+      {
+         this.widget.y = height >> 1;
+         if(App.appWidth < StageSizeBoundaries.WIDTH_1600 || App.appHeight < StageSizeBoundaries.HEIGHT_900)
+         {
+            this.widget.gotoAndStop(FRAME_SMALL);
+            this._newPM.width = this._oldPM.width = ITEM_WIDTH_SMALL;
+            this._newPM.height = this._oldPM.height = ITEM_HEIGHT_SMALL;
+            this._newPM.y = NEW_PM_OFFSET_Y_SMALL;
+            this._newPM.x = this._oldPM.x = MENU_POSITION_X_SMALL;
+         }
+         else
+         {
+            this.widget.gotoAndStop(FRAME_BIG);
+            this._newPM.width = this._oldPM.width = ITEM_WIDTH;
+            this._newPM.height = this._oldPM.height = ITEM_HEIGHT;
+            this._newPM.y = NEW_PM_OFFSET_Y;
+            this._newPM.x = this._oldPM.x = MENU_POSITION_X;
+         }
+      }
+      
       override public function get isModal() : Boolean
       {
          return true;
+      }
+      
+      private function onOldPMROllOutHandler(param1:MouseEvent) : void
+      {
+         this._tooltipMgr.hide();
+      }
+      
+      private function onNewPMROllOutHandler(param1:MouseEvent) : void
+      {
+         this._tooltipMgr.hide();
+      }
+      
+      private function onOldPMRollOverHandler(param1:MouseEvent) : void
+      {
+      }
+      
+      private function onNewPMRollOverHandler(param1:MouseEvent) : void
+      {
+         this._tooltipMgr.showWulfTooltip(TOOLTIPS_CONSTANTS.PERSONAL_MISSIONS_ANNOUNCE);
       }
       
       private function onOperationInfoBtnClickHandler(param1:OperationEvent) : void

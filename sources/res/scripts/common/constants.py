@@ -820,6 +820,7 @@ class Configs(enum.Enum):
     EARLY_ACCESS_CONFIG = 'early_access_config'
     LOOTBOX_KEYS_CONFIG = 'lootBoxKeys_config'
     RANDOM_BATTLES_CONFIG = 'random_battles_config'
+    MODE_SELECTOR_CONFIG = 'mode_selector_config'
 
 
 INBATTLE_CONFIGS = [
@@ -1108,6 +1109,8 @@ class ATTACK_REASON(object):
     FORT_ARTILLERY_EQ = 'fort_artillery_eq'
     STATIC_DEATH_ZONE = 'static_deathzone'
     CGF_WORLD = 'cgf_world'
+    AUTOSHOOT = 'autoshoot'
+    CIRCUIT_OVERLOAD = 'circuitOverload'
     NONE = 'none'
 
     @classmethod
@@ -1126,8 +1129,8 @@ ATTACK_REASONS = (
  ATTACK_REASON.CORRODING_SHOT, ATTACK_REASON.ADAPTATION_HEALTH_RESTORE,
  ATTACK_REASON.THUNDER_STRIKE, ATTACK_REASON.FIRE_CIRCLE, ATTACK_REASON.CLING_BRANDER,
  ATTACK_REASON.CLING_BRANDER_RAM, ATTACK_REASON.BRANDER_RAM,
- ATTACK_REASON.FORT_ARTILLERY_EQ, ATTACK_REASON.STATIC_DEATH_ZONE,
- ATTACK_REASON.CGF_WORLD)
+ ATTACK_REASON.FORT_ARTILLERY_EQ, ATTACK_REASON.STATIC_DEATH_ZONE, ATTACK_REASON.AUTOSHOOT,
+ ATTACK_REASON.CIRCUIT_OVERLOAD, ATTACK_REASON.CGF_WORLD)
 ATTACK_REASON_INDICES = dict((value, index) for index, value in enumerate(ATTACK_REASONS))
 BOT_RAM_REASONS = (
  ATTACK_REASON.BRANDER_RAM, ATTACK_REASON.CLING_BRANDER_RAM)
@@ -1593,6 +1596,8 @@ class REQUEST_COOLDOWN:
     RUN_QUEST = 1.0
     PAWN_FREE_AWARD_LIST = 1.0
     LOOTBOX = 1.0
+    LOOTBOX_REROLL = 1.0
+    LOOTBOX_RECORDS = 1.0
     BADGES = 2.0
     CREW_SKINS = 0.3
     BPF_COMMAND = 1.0
@@ -2389,8 +2394,8 @@ class VISIBILITY:
     MIN_RADIUS = 50.0
 
 
-VEHICLE_ATTRS_TO_SYNC = frozenset(['circularVisionRadius', 'gun/piercing'])
-VEHICLE_ATTRS_TO_SYNC_ALIASES = {'gun/piercing': 'gunPiercing'}
+VEHICLE_ATTRS_TO_SYNC = frozenset(['circularVisionRadius', 'gun/piercing', 'gun/canShoot'])
+VEHICLE_ATTRS_TO_SYNC_ALIASES = {'gun/piercing': 'gunPiercing', 'gun/canShoot': 'gunCanShoot'}
 
 class OBSTACLE_KIND:
     CHUNK_DESTRUCTIBLE = 1
@@ -2435,6 +2440,7 @@ AVAILABLE_STUN_TYPES_NAMES = [ key for key, value in StunTypes.__members__.iteri
 class SHELL_MECHANICS_TYPE:
     LEGACY = 'LEGACY'
     MODERN = 'MODERN'
+    GUARANTEED_DAMAGE = 'GUARANTEED_DAMAGE'
 
 
 class BATTLE_LOG_SHELL_TYPES(enum.IntEnum):
@@ -2659,10 +2665,12 @@ class BotNamingType(object):
     CREW_MEMBER = 1
     VEHICLE_MODEL = 2
     CUSTOM = 3
+    LABEL = 4
     DEFAULT = CREW_MEMBER
     _parseDict = {'crew': CREW_MEMBER, 
        'vehicle': VEHICLE_MODEL, 
        'custom': CUSTOM, 
+       'label': LABEL, 
        'default': DEFAULT}
 
     @classmethod
@@ -3054,11 +3062,13 @@ class DamageAbsorptionTypes(object):
     FRAGMENTS = 0
     BLAST = 1
     SPALLS = 2
+    NONE = 3
 
 
 DamageAbsorptionLabelToType = {'FRAGMENTS': DamageAbsorptionTypes.FRAGMENTS, 
    'BLAST': DamageAbsorptionTypes.BLAST, 
-   'SPALLS': DamageAbsorptionTypes.SPALLS}
+   'SPALLS': DamageAbsorptionTypes.SPALLS, 
+   'NONE': DamageAbsorptionTypes.NONE}
 DamageAbsorptionTypeToLabel = dict((type, label) for label, type in DamageAbsorptionLabelToType.items())
 EQUIPMENT_COOLDOWN_MOD_SUFFIX = 'CooldownMod'
 CHANCE_TO_HIT_SUFFIX_FACTOR = 'ChanceToHitDeviceMod'
@@ -3100,12 +3110,15 @@ class GroupSkillProcessorArgs(object):
 
 
 class ReloadRestriction(object):
+    AUTOSHOOT_RELOAD = 0.1
     CYCLE_RELOAD = 1.0
     OTHER_RELOAD = 2.5
 
     @staticmethod
     def getBy(vehTypeDescr):
         if vehTypeDescr.gun.tags:
+            if 'lockedReloadTime' in vehTypeDescr.gun.tags:
+                return ReloadRestriction.AUTOSHOOT_RELOAD
             return ReloadRestriction.OTHER_RELOAD
         return ReloadRestriction.CYCLE_RELOAD
 
@@ -3156,7 +3169,8 @@ BATTLE_MODE_VEHICLE_TAGS = {
  'battle_royale',
  'clanWarsBattles',
  'fun_random',
- 'comp7'}
+ 'comp7',
+ 'random_only'}
 BATTLE_MODE_VEH_TAGS_EXCEPT_EVENT = BATTLE_MODE_VEHICLE_TAGS - {'event_battles'}
 BATTLE_MODE_VEH_TAGS_EXCEPT_EPIC = BATTLE_MODE_VEHICLE_TAGS - {'epic_battles'}
 BATTLE_MODE_VEH_TAGS_EXCEPT_CLAN = BATTLE_MODE_VEHICLE_TAGS - {'clanWarsBattles'}
@@ -3270,10 +3284,14 @@ class BuffDisplayedState(enum.IntEnum):
     CONCENTRATION = 12
     MARCH = 13
     AGGRESSIVE_DETECTION = 14
+    ABILITY_JUGGERNAUT = 15
+    ABILITY_CONCENTRATION = 16
+    ABILITY_SURE_SHOT = 17
 
 
 class EntityCaptured(object):
     POI_CAPTURABLE = 'poiCapturable'
+    WT_GENERATOR = 'captureGenerator'
 
 
 class VehicleSelectionPlayerStatus(object):
@@ -3339,6 +3357,8 @@ class MarkerItem(object):
     POLYGONAL_ZONE = 2
     STATIC_DEATH_ZONE = 3
     STATIC_DEATH_ZONE_PROXIMITY = 4
+    GEN_ON = 5
+    GEN_OFF = 6
 
 
 class DROP_SKILL_OPTIONS(object):
@@ -3401,3 +3421,37 @@ class VEHICLE_MOVEMENT_STATES(object):
     NORMAL = 'normal'
     SLOW = 'slow'
     STOP = 'stop'
+
+
+class WT_COMPONENT_NAMES(object):
+    SHIELD_DEBUFF_ARENA_TIMER = 'wtShieldDebuffDuration'
+    ACTIVATION_ARENA_TIMER = 'activationTimer'
+    GENERATORS_COUNTER = 'wtCapturesTillEndgame'
+    HYPERION_COUNTER = 'wtHyperionCharge'
+
+
+class WT_BATTLE_STAGE(object):
+    INVINCIBLE = 0
+    DEBUFF = 1
+    END_GAME = 2
+
+    @staticmethod
+    def getCurrent(arenaInfo):
+        if WT_COMPONENT_NAMES.SHIELD_DEBUFF_ARENA_TIMER in arenaInfo.dynamicComponents:
+            return WT_BATTLE_STAGE.DEBUFF
+        else:
+            generatorsCounterComponent = arenaInfo.dynamicComponents.get(WT_COMPONENT_NAMES.GENERATORS_COUNTER)
+            if generatorsCounterComponent is not None and generatorsCounterComponent.counter == 0:
+                return WT_BATTLE_STAGE.END_GAME
+            return WT_BATTLE_STAGE.INVINCIBLE
+
+
+class WT_TEAMS(object):
+    BOSS_TEAM = 1
+    HUNTERS_TEAM = 2
+
+
+class WT_TAGS(object):
+    BOSS = 'event_boss'
+    HUNTER = 'event_hunter'
+    PRIORITY_BOSS = 'special_event_boss'

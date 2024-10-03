@@ -63,6 +63,10 @@ package
       
       public static const MAPS_ICONS_MARATHON_REWARDWINDOW_BG:String = "../maps/icons/marathon/rewardWindow/bg.png";
       
+      public static const MAPS_ICONS_PM_ANNOUNCE_TOOLTIPS_NEW_BG:String = "../maps/icons/pm_announce/tooltips/new/bg.png";
+      
+      public static const MAPS_ICONS_PM_ANNOUNCE_TOOLTIPS_OLD_BG:String = "../maps/icons/pm_announce/tooltips/old/bg.png";
+      
       public static const MAPS_ICONS_RANKEDBATTLES_AWARDS_BG:String = "../maps/icons/rankedBattles/awards/bg.png";
       
       public static const MAPS_ICONS_RESOURCEWELL_INTRO_BG:String = "../maps/icons/resourceWell/intro/bg.png";

@@ -68,10 +68,11 @@ class _MouseMoveParams(object):
 
 
 class _FlightParams(object):
-    __slots__ = ('minDuration', 'maxDuration', 'positionEasing', 'rotationEasing',
+    __slots__ = ('sequencePath', 'minDuration', 'maxDuration', 'positionEasing', 'rotationEasing',
                  'motionBlur', 'route')
 
-    def __init__(self, minDuration=_MIN_DURATION_, maxDuration=_MAX_DURATION_, positionEasing=_EASE_SQUARE_INOUT, rotationEasing=_EASE_SQUARE_INOUT, motionBlur=_DEFAULT_MOTION_BLUR_, route=None):
+    def __init__(self, sequencePath='', minDuration=_MIN_DURATION_, maxDuration=_MAX_DURATION_, positionEasing=_EASE_SQUARE_INOUT, rotationEasing=_EASE_SQUARE_INOUT, motionBlur=_DEFAULT_MOTION_BLUR_, route=None):
+        self.sequencePath = sequencePath
         self.minDuration = minDuration
         self.maxDuration = maxDuration
         self.positionEasing = positionEasing
@@ -106,6 +107,7 @@ class HangarCameraManager(CGF.ComponentManager):
         self.__flightCam = None
         self.onCameraSwitched = None
         self.onCameraSwitchCancel = None
+        self.onStateChange = Event.Event()
         self.__isInSwitching = False
         self.__customizationHelper = None
         self.__yawCameraFilter = None
@@ -129,6 +131,18 @@ class HangarCameraManager(CGF.ComponentManager):
         self.__isPlatoon = False
         return
 
+    @property
+    def isActive(self):
+        return self.__isActive
+
+    @property
+    def camSpaceID(self):
+        return self.__cam.spaceID
+
+    @property
+    def isShifted(self):
+        return self.__isShifted
+
     def activate(self):
         if not self._hangarSpace.inited or self.__isActive:
             return
@@ -150,6 +164,7 @@ class HangarCameraManager(CGF.ComponentManager):
         self.onCameraSwitchCancel = Event.Event()
         self.__currentHorizontalFov = FovExtended.instance().horizontalFov
         self.__isActive = True
+        self.onStateChange(self.__isActive)
         _logger.info('HangarCameraManager::activate')
         return
 
@@ -175,6 +190,9 @@ class HangarCameraManager(CGF.ComponentManager):
             self.__cameraIdle.destroy()
             self.__cameraIdle = None
             self.__isActive = False
+            self.__destroyFlightCamera()
+            self.__flightCam = None
+            self.onStateChange(self.__isActive)
             return
 
     @onAddedQuery(CGF.GameObject, CameraComponent, TransformComponent, tickGroup='postHierarchyUpdate')
@@ -232,11 +250,15 @@ class HangarCameraManager(CGF.ComponentManager):
             return
         else:
             self.__cam.stop()
-            if instantly:
+            flightGO = self.__getCameraFlightGO(gameObject, prevCameraName)
+            cameraFlightComponent = flightGO.findComponentByType(CameraFlightComponent) if flightGO is not None else None
+            forceInstantlySwitch = cameraFlightComponent is not None and cameraFlightComponent.sequencePath and self.__flightCam is not None and self.__flightCam.isInTransition()
+            if instantly or forceInstantlySwitch:
                 self.__setupCamera(gameObject, resetTransform)
                 FovExtended.instance().setFovByAbsoluteValue(self.__currentHorizontalFov)
                 if self.__flightCam:
                     self.__flightCam.finish()
+                    self.__destroyFlightCamera()
                     self.__flightCam = None
                 BigWorld.camera(self.__cam)
                 self.__onCameraSwitched()
@@ -336,9 +358,13 @@ class HangarCameraManager(CGF.ComponentManager):
         return
 
     def __startFlight(self, prevMatrix, targetMatrix):
-        if self.__flightParams.route:
+        spaceID = self._hangarSpace.spaceID
+        if self.__flightParams.sequencePath:
+            self.__flightCam = BigWorld.SequenceTransitionCamera(self.__flightParams.sequencePath, spaceID)
+            self.__flightCam.start(prevMatrix)
+        elif self.__flightParams.route:
             self.__flightCam = BigWorld.RouteTransitionCamera()
-            self.__flightCam.spaceID = self._hangarSpace.spaceID
+            self.__flightCam.spaceID = spaceID
             route = []
             invertMatrix = prevMatrix
             invertMatrix.invert()
@@ -350,7 +376,7 @@ class HangarCameraManager(CGF.ComponentManager):
             self.__flightCam.startAlongRoute(route, self.__flightParams.minDuration, self.__flightParams.maxDuration, self.__flightParams.positionEasing)
         else:
             self.__flightCam = BigWorld.CollidableTransitionCamera()
-            self.__flightCam.spaceID = self._hangarSpace.spaceID
+            self.__flightCam.spaceID = spaceID
             self.__flightCam.start(prevMatrix, targetMatrix, self.__flightParams.minDuration, self.__flightParams.maxDuration, self.__flightParams.positionEasing, self.__flightParams.rotationEasing)
         BigWorld.camera(self.__flightCam)
 
@@ -500,22 +526,13 @@ class HangarCameraManager(CGF.ComponentManager):
         if not prevCameraName:
             return
         else:
-            hierarchy = CGF.HierarchyManager(self._hangarSpace.spaceID)
-            children = hierarchy.getChildren(gameObject)
-            if not children:
+            flightGO = self.__getCameraFlightGO(gameObject, prevCameraName)
+            if flightGO is None:
                 return
-            flightHolder = None
-            cameraFlightComponent = None
-            for child in children:
-                cameraFlightComponent = child.findComponentByType(CameraFlightComponent)
-                if cameraFlightComponent and cameraFlightComponent.cameraName and cameraFlightComponent.cameraName == prevCameraName:
-                    flightHolder = child
-                    break
-
-            if not flightHolder:
-                return
+            cameraFlightComponent = flightGO.findComponentByType(CameraFlightComponent)
             route = {}
-            points = hierarchy.getChildren(flightHolder)
+            hierarchy = CGF.HierarchyManager(self._hangarSpace.spaceID)
+            points = hierarchy.getChildren(flightGO)
             if points:
                 for p in points:
                     cameraComponent = p.findComponentByType(CameraComponent)
@@ -524,8 +541,12 @@ class HangarCameraManager(CGF.ComponentManager):
                         route[int(cameraComponent.name)] = transformComponent.worldTransform
 
             transforms = [ route[key] for key in sorted(route.keys()) ]
-            self.__flightParams = _FlightParams(cameraFlightComponent.minDuration, cameraFlightComponent.maxDuration, cameraFlightComponent.positionEasing, cameraFlightComponent.rotationEasing, cameraFlightComponent.motionBlur, transforms)
+            self.__flightParams = _FlightParams(cameraFlightComponent.sequencePath, cameraFlightComponent.minDuration, cameraFlightComponent.maxDuration, cameraFlightComponent.positionEasing, cameraFlightComponent.rotationEasing, cameraFlightComponent.motionBlur, transforms)
             return
+
+    def __destroyFlightCamera(self):
+        if self.__flightCam and self.__flightParams.sequencePath:
+            self.__flightCam.unbind()
 
     def __onSetFovSetting(self):
         if self.__customFov:
@@ -566,10 +587,15 @@ class HangarCameraManager(CGF.ComponentManager):
                 FovExtended.instance().setFovByAbsoluteValue(dynamicFov, 0.1)
             return
         if BigWorld.camera() != self.__cam and not self.__flightCam.isInTransition():
+            self.__destroyFlightCamera()
             self.__flightCam = None
             BigWorld.camera(self.__cam)
             self.__onCameraSwitched()
         elif self.__flightCam.isInTransition():
+            if self.__flightParams.sequencePath:
+                currentVerticalFov = math.degrees(BigWorld.projection().fov)
+                self.__currentHorizontalFov = math.degrees(FovExtended.instance().calculateHorizontalFov(currentVerticalFov))
+                return
             progress = self.__flightCam.positionEasingProgress()
             if self.__prevHorizontalFov != self.__currentHorizontalFov:
                 newFov = self.__prevHorizontalFov + progress * (self.__currentHorizontalFov - self.__prevHorizontalFov)
@@ -582,3 +608,18 @@ class HangarCameraManager(CGF.ComponentManager):
                 self.__customizationHelper.setDOFenabled(True)
                 self.__customizationHelper.setDOFparams(nearStart, nearDist, farStart, farDist)
         return
+
+    def __getCameraFlightGO(self, gameObject, prevCameraName):
+        if not prevCameraName:
+            return
+        else:
+            hierarchy = CGF.HierarchyManager(self._hangarSpace.spaceID)
+            children = hierarchy.getChildren(gameObject)
+            if not children:
+                return
+            for child in children:
+                cameraFlightComponent = child.findComponentByType(CameraFlightComponent)
+                if cameraFlightComponent and cameraFlightComponent.cameraName and cameraFlightComponent.cameraName == prevCameraName:
+                    return child
+
+            return

@@ -27,7 +27,7 @@ _logger = logging.getLogger(__name__)
 REG_EXP_QUEST_SUBTYPE = ':([Y, y]\\d*)|:([A,a,B,b][T,t])'
 _T50_2_STYLE_NAME = backport.text(R.strings.vehicle_customization.special_style.t50_2())
 _EXCLUDED_BONUSES = ('slots', )
-_BONUSES_ORDER = ({'getLabel': _T50_2_STYLE_NAME}, {'getName': 'crystal'}, {'getName': 'credits'}, {'getIcon': 'personalBook'}, {'getIcon': 'universalBook'}, {'getOverlayType': 'equipmentModernized'}, {'getName': 'premium_plus'}, {'getIconSmall': 'bonus_battle'}, {'getName': 'goodies', 'getIcon': 'credits'}, {'getName': 'goodies', 'getIcon': 'xp'}, {'getName': 'badge'}, {'getName': 'customizations', 'getIcon': 'style'}, {'getIcon': 'projectionDecal'}, {'getName': 'dossier_achievement'}, {'getName': 'customizations', 'getIcon': 'emblem'})
+_BONUSES_ORDER = ({'getLabel': _T50_2_STYLE_NAME}, {'getName': 'crystal'}, {'getName': 'credits'}, {'getName': 'premium_plus'}, {'getName': 'customizations', 'getIcon': 'style'}, {'getName': 'goodies', 'getIcon': 'credits'}, {'getName': 'goodies', 'getIcon': 'xp'}, {'getIcon': 'universalBook'}, {'getIcon': 'recertificationForm'}, {'getName': 'badge'}, {'getIcon': 'projectionDecal'}, {'getName': 'customizations', 'getIcon': 'emblem'}, {'getName': 'dossier_achievement'})
 
 def _keySortOrder(bonus, _):
     for index, criteria in enumerate(_BONUSES_ORDER):
@@ -40,7 +40,7 @@ def _keySortOrder(bonus, _):
     return len(_BONUSES_ORDER)
 
 
-_SENIORITY_VEHICLES_ORDER = ('ussr:R197_KV_1S_MZ', 'germany:G158_VK2801_105_SPXXI',
+_SENIORITY_VEHICLES_ORDER = ('germany:G15_VK3601H_C', 'ussr:R197_KV_1S_MZ', 'germany:G158_VK2801_105_SPXXI',
                              'usa:A134_M24E2_SuperChaffee', 'usa:A130_Super_Hellcat',
                              'ussr:R160_T_50_2')
 

@@ -5,6 +5,7 @@ from wrapped_reflection_framework import reflectedNamedTuple
 from wrapped_reflection_framework import ReflectionMetaclass
 RecoilEffect = reflectedNamedTuple('RecoilEffect', ('lodDist', 'amplitude', 'backoffTime',
                                                     'returnTime'))
+SpinEffect = namedtuple('SpinEffect', ('activationSound', 'deactivationSound'))
 
 class GunShot(legacy_stuff.LegacyStuff):
     __slots__ = ('shell', 'defaultPortion', 'piercingPower', 'speed', 'gravity', 'maxDistance',
@@ -26,3 +27,18 @@ class GunShot(legacy_stuff.LegacyStuff):
 
     def copy(self):
         raise SoftException('Operation "GunShot.copy" is not allowed')
+
+
+class TemperatureGunParams(object):
+    TemperatureGunState = namedtuple('TemperatureGunState', [
+     'temperature', 'modifiers', 'isOverheated', 'heatingPerShot', 'heatingPerSec', 'coolingPerSec',
+     'coolingOverheatPerSec', 'coolingDelay'])
+    __slots__ = ('states', 'thermalStateHysteresis', 'temperatureSegmentSize')
+
+    def __init__(self, states, thermalStateHysteresis, temperatureSegmentSize):
+        self.states = states
+        self.thermalStateHysteresis = thermalStateHysteresis
+        self.temperatureSegmentSize = temperatureSegmentSize
+
+    def __repr__(self):
+        return ('TemperatureGunParams(states = {}, thermalStateHysteresis = {}, temperatureSegmentSize = {}))').format(self.states, self.thermalStateHysteresis, self.temperatureSegmentSize)

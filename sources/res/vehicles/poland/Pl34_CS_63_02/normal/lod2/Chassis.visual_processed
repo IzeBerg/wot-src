@@ -569,7 +569,7 @@
 							<row0>1.000000 0.000000 0.000000</row0>
 							<row1>0.000000 1.000000 0.000000</row1>
 							<row2>0.000000 0.000000 1.000000</row2>
-							<row3>1.290426 -0.702631 -2.328810</row3>
+							<row3>1.290426 -0.699198 -2.328810</row3>
 						</transform>
 						<node>
 							<identifier>Track_VD_R1_BlendBone</identifier>
@@ -577,7 +577,7 @@
 								<row0>1.000000 0.000000 0.000000</row0>
 								<row1>0.000000 1.000000 0.000000</row1>
 								<row2>0.000000 0.000000 -1.000000</row2>
-								<row3>-1.290426 -0.278491 2.328810</row3>
+								<row3>-1.290426 -0.281925 2.328810</row3>
 							</transform>
 						</node>
 					</node>
@@ -713,7 +713,7 @@
 							<row0>1.000000 0.000000 0.000000</row0>
 							<row1>0.000000 1.000000 0.000000</row1>
 							<row2>0.000000 0.000000 1.000000</row2>
-							<row3>1.290426 0.069031 -1.977867</row3>
+							<row3>1.290426 0.063172 -1.977867</row3>
 						</transform>
 						<node>
 							<identifier>Track_VT_R3_BlendBone</identifier>
@@ -721,7 +721,7 @@
 								<row0>1.000000 0.000000 0.000000</row0>
 								<row1>0.000000 1.000000 0.000000</row1>
 								<row2>0.000000 0.000000 -1.000000</row2>
-								<row3>-1.290426 -1.050154 1.977867</row3>
+								<row3>-1.290426 -1.044294 1.977867</row3>
 							</transform>
 						</node>
 					</node>
@@ -931,12 +931,12 @@
 		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
 		<node>Track_R5_BlendBone</node>
 		<node>Tank_BlendBone</node>
+		<node>V_BlendBone</node>
 		<node>Track_R4_BlendBone</node>
 		<node>Track_R3_BlendBone</node>
 		<node>Track_R2_BlendBone</node>
 		<node>Track_R1_BlendBone</node>
 		<node>Track_R0_BlendBone</node>
-		<node>V_BlendBone</node>
 		<node>Track_VD_R0_BlendBone</node>
 		<node>Track_VT_R0_BlendBone</node>
 		<node>Track_VT_R1_BlendBone</node>
@@ -985,19 +985,20 @@
 	</renderSet>
 	<renderSet>
 		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
-		<node>Track_L0_BlendBone</node>
-		<node>Track_VD_L1_BlendBone</node>
-		<node>Track_L1_BlendBone</node>
-		<node>Track_L2_BlendBone</node>
-		<node>Track_L3_BlendBone</node>
-		<node>Track_L4_BlendBone</node>
 		<node>Track_L5_BlendBone</node>
+		<node>Tank_BlendBone</node>
 		<node>V_BlendBone</node>
+		<node>Track_L4_BlendBone</node>
+		<node>Track_L3_BlendBone</node>
+		<node>Track_L2_BlendBone</node>
+		<node>Track_L1_BlendBone</node>
+		<node>Track_L0_BlendBone</node>
 		<node>Track_VD_L0_BlendBone</node>
 		<node>Track_VT_L0_BlendBone</node>
 		<node>Track_VT_L1_BlendBone</node>
 		<node>Track_VT_L2_BlendBone</node>
 		<node>Track_VT_L3_BlendBone</node>
+		<node>Track_VD_L1_BlendBone</node>
 		<geometry>
 			<vertices>track_L_Shape.vertices</vertices>
 			<stream>track_L_Shape.uv2</stream>
@@ -1159,8 +1160,8 @@
 	<constraints/>
 	<boundingBox>
 		<min>-1.579672 -0.000519 -2.912127</min>
-		<max>1.578990 1.130848 2.864194</max>
+		<max>1.578990 1.130849 2.864194</max>
 	</boundingBox>
-	<geometrySize>272382</geometrySize>
+	<geometrySize>258290</geometrySize>
 	<minUVDensity>0.009832</minUVDensity>
 </root>

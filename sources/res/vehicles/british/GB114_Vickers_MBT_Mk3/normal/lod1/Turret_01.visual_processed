@@ -79,12 +79,50 @@
 				</material>
 				<groupOrigin>-0.002640 1.270629 -0.543069</groupOrigin>
 			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>equipment_01</identifier>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>vehicles/russian/R00_Badges/Paragon_2024/Paragon_2024_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/russian/R00_Badges/Paragon_2024/Paragon_2024_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/russian/R00_Badges/Paragon_2024/Paragon_2024_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/russian/R00_Badges/Paragon_2024/Paragon_2024_ANM.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>1.753425 1.753425 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.005323 0.686544 -0.106947</groupOrigin>
+			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<boundingBox>
 		<min>-1.520630 -0.000001 -2.294711</min>
 		<max>1.515350 2.541259 1.208573</max>
 	</boundingBox>
-	<geometrySize>174470</geometrySize>
+	<geometrySize>176134</geometrySize>
 	<minUVDensity>0.013889</minUVDensity>
 </root>

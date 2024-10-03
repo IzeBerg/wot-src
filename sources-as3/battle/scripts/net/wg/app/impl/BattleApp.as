@@ -11,6 +11,7 @@ package net.wg.app.impl
    import net.wg.data.constants.generated.LAYER_NAMES;
    import net.wg.gui.battle.comp7.VO.daapi.Comp7DAAPIVehicleInfoVO;
    import net.wg.gui.battle.epicRandom.VO.daapi.EpicRandomDAAPIVehicleInfoVO;
+   import net.wg.gui.battle.eventBattle.VO.DAAPIHunterVehicleInfoVO;
    import net.wg.gui.battle.ranked.VO.daapi.RankedDAAPIVehicleInfoVO;
    import net.wg.gui.components.containers.CursorManagedContainer;
    import net.wg.gui.components.containers.HiddenServiceManagedContainer;
@@ -133,6 +134,7 @@ package net.wg.app.impl
          registerClassAlias("net.wg.data.VO.daapi.DAAPIVehicleInfoVO",DAAPIVehicleInfoVO);
          registerClassAlias("net.wg.gui.battle.ranked.VO.daapi.RankedDAAPIVehicleInfoVO",RankedDAAPIVehicleInfoVO);
          registerClassAlias("net.wg.gui.battle.epicRandom.VO.daapi.EpicRandomDAAPIVehicleInfoVO",EpicRandomDAAPIVehicleInfoVO);
+         registerClassAlias("net.wg.gui.battle.eventBattle.VO.DAAPIHunterVehicleInfoVO",DAAPIHunterVehicleInfoVO);
          registerClassAlias("net.wg.gui.battle.views.questProgress.data.QPProgressVO",QPProgressVO);
          registerClassAlias("net.wg.gui.battle.views.questProgress.data.metrics.QPMetricsRangeVO",QPMetricsRangeVO);
          registerClassAlias("net.wg.gui.battle.views.questProgress.data.metrics.QPMetricsSimpleValueVO",QPMetricsSimpleValueVO);

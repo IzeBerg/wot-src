@@ -1,22 +1,22 @@
 import logging
 from operator import attrgetter
 from account_helpers.AccountSettings import ArmoryYard, AccountSettings
-from armory_yard.gui.impl.gen.view_models.views.lobby.feature.armory_yard_chapter_model import ArmoryYardChapterModel, ChapterState, ChapterTokenState
-from armory_yard.gui.impl.gen.view_models.views.lobby.feature.armory_yard_quest_model import ArmoryYardQuestModel
-from Event import SuspendableEventSubscriber
-from armory_yard.gui.window_events import showArmoryYardInfoPage
 from gui.impl.gen.view_models.common.missions.event_model import EventStatus
 from gui.shared.missions.packers.events import BattleQuestUIDataPacker
-from armory_yard.gui.shared.bonus_packers import getArmoryYardBonusPacker
+from gui.shared.view_helpers.blur_manager import CachedBlur
+from Event import SuspendableEventSubscriber
 from helpers import dependency, time_utils
 from skeletons.gui.game_control import IArmoryYardController
-from gui.shared.view_helpers.blur_manager import CachedBlur
+from armory_yard.gui.impl.gen.view_models.views.lobby.feature.armory_yard_chapter_model import ArmoryYardChapterModel, ChapterState, ChapterTokenState
+from armory_yard.gui.impl.gen.view_models.views.lobby.feature.armory_yard_quest_model import ArmoryYardQuestModel
+from armory_yard.gui.shared.bonus_packers import getArmoryYardBonusPacker
+from armory_yard.gui.window_events import showArmoryYardInfoPage
 _logger = logging.getLogger(__name__)
 VEHICLE_TYPE_INDEX = 3
 
 class _QuestsTabPresenter(object):
     __slots__ = ('__viewModel', '__tooltipData', '__closeCB', '__eventsSubscriber',
-                 '__blur', '__mainViewlayer', '__parent')
+                 '__blur', '__mainViewlayer', '__parent', '__isProgressCompleted')
     __armoryYardCtrl = dependency.descriptor(IArmoryYardController)
 
     def __init__(self, viewModel, closeCB, parentViewLayer):
@@ -27,6 +27,7 @@ class _QuestsTabPresenter(object):
         self.__mainViewlayer = parentViewLayer
         self.__parent = None
         self.__blur = CachedBlur(enabled=False, ownLayer=self.__mainViewlayer)
+        self.__isProgressCompleted = False
         return
 
     def init(self, parent):
@@ -34,7 +35,7 @@ class _QuestsTabPresenter(object):
         self.__eventsSubscriber.subscribeToEvents((
          self.__armoryYardCtrl.serverSettings.onUpdated, self.__updateData), (
          self.__armoryYardCtrl.serverSettings.seasonProvider.onUpdated, self.__updateData), (
-         self.__armoryYardCtrl.onProgressUpdated, self.__updateData), (
+         self.__armoryYardCtrl.onProgressUpdated, self.__progressUpdate), (
          self.__armoryYardCtrl.onQuestsUpdated, self.__updateData), (
          self.__viewModel.onAboutEvent, self.__onAboutEvent), (
          self.__armoryYardCtrl.onStatusChange, self.__updateData), (
@@ -45,6 +46,7 @@ class _QuestsTabPresenter(object):
         self.__blur.enable()
         self.__eventsSubscriber.resume()
         self.__updateData()
+        self.__isProgressCompleted = self.__armoryYardCtrl.isCompleted()
 
     def onUnload(self):
         self.__blur.disable()
@@ -57,7 +59,7 @@ class _QuestsTabPresenter(object):
         self.__parent = None
         return
 
-    def getTooltipData(self, key, type):
+    def getTooltipData(self, key, _):
         missionParams = key.rsplit(':', 1)
         if len(missionParams) != 2:
             return None
@@ -67,6 +69,15 @@ class _QuestsTabPresenter(object):
 
     def __closeView(self, *args):
         self.__closeCB(*args)
+
+    def __progressUpdate(self):
+        if not self.__armoryYardCtrl.isQuestActive():
+            self.__closeView()
+            return
+        progressIsCompleted = self.__armoryYardCtrl.isCompleted()
+        if self.__isProgressCompleted != progressIsCompleted:
+            self.__isProgressCompleted = progressIsCompleted
+            self.__updateData()
 
     def __updateData(self):
         if not self.__armoryYardCtrl.isQuestActive():
@@ -91,6 +102,7 @@ class _QuestsTabPresenter(object):
         isPrevChapterFinished = True
         nowTime = time_utils.getServerUTCTime()
         isPostProgression = ctrl.isPostProgressionActive()
+        subtrahendTokens = ctrl.subtrahendStageToken()
         for cycle in sorted(currentSeason.getAllCycles().values(), key=attrgetter('ID')):
             chapter = ArmoryYardChapterModel()
             chapter.setId(cycle.ID)
@@ -109,6 +121,14 @@ class _QuestsTabPresenter(object):
                 tokenState = ChapterTokenState.COINS if isPostProgression else ChapterTokenState.TOKENS
             else:
                 tokenState = ChapterTokenState.LOCK if state == ChapterState.DISABLED else ChapterTokenState.HIDDEN
+            if isPostProgression:
+                if subtrahendTokens > receivedTokens:
+                    subtrahendTokens -= receivedTokens
+                    tokenState = ChapterTokenState.HIDDEN
+                else:
+                    totalChapterTokens -= subtrahendTokens
+                    receivedTokens -= subtrahendTokens
+                    subtrahendTokens = 0
             chapter.setReceivedTokens(receivedTokens)
             chapter.setTotalTokens(totalChapterTokens)
             chapter.setTokenState(tokenState)
@@ -136,6 +156,14 @@ class _QuestsTabPresenter(object):
                 questModel.setVehicleType(vehicleTypes[0] if vehicleTypes else '')
             else:
                 questModel.setVehicleType('')
+            battleTypes = questModel.getBattleTypes()
+            battleTypes.clear()
+            battleConditions = quest.preBattleCond.getConditions().find('bonusTypes')
+            if battleConditions is not None:
+                for battleType in battleConditions.getValue():
+                    battleTypes.addNumber(battleType)
+
+            battleTypes.invalidate()
             self.__tooltipData[quest.getID()] = packer.getTooltipData()
             questsModel.addViewModel(questModel)
 
@@ -149,6 +177,7 @@ class _QuestsTabPresenter(object):
         chapter.setCompletedQuestsNew(previousCompletedQuests)
         chapter.setCompletedQuestsAll(completedQuests)
         chapter.setTotalQuests(totalQuests)
+        return
 
     def __onAboutEvent(self):
         self.__blur.disable()

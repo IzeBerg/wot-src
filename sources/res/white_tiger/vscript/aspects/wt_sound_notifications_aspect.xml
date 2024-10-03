@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<name>CLIENT</name>
+	<app_name>client</app_name>
+	<mask>1</mask>
+	<meta>
+		<display>Client</display>
+		<icon>:/vse/aspects/client</icon>
+	</meta>
+	<python>
+		<registrar>
+			<module>white_tiger.visual_script_ext</module>
+			<name>g_blockRegistrar</name>
+		</registrar>
+	</python>
+</root>

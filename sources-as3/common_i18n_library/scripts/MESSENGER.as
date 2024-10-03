@@ -977,6 +977,10 @@ package
       
       public static const SERVICECHANNELMESSAGES_INVOICERECEIVED_LBKEYSACCRUED:String = "#messenger:serviceChannelMessages/invoiceReceived/lbKeysAccrued";
       
+      public static const SERVICECHANNELMESSAGES_EVENT_LOOTBOXES:String = "#messenger:serviceChannelMessages/event/lootboxes";
+      
+      public static const SERVICECHANNELMESSAGES_EVENT_TICKETS:String = "#messenger:serviceChannelMessages/event/tickets";
+      
       public static const SERVICECHANNELMESSAGES_DURATIONOFPREMIUMACCOUNTEXPIRES:String = "#messenger:serviceChannelMessages/durationOfPremiumAccountExpires";
       
       public static const SERVICECHANNELMESSAGES_PREMIUMBOUGHT:String = "#messenger:serviceChannelMessages/premiumBought";

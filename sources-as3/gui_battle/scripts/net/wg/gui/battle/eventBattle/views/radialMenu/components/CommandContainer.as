@@ -47,10 +47,9 @@ package net.wg.gui.battle.eventBattle.views.radialMenu.components
       
       public function setTitleText(param1:String, param2:String) : void
       {
-         var _loc3_:Boolean = false;
          var _loc4_:Boolean = false;
          var _loc5_:Boolean = false;
-         _loc3_ = param2 == EventRadialMenu.DEFAULT_STATE;
+         var _loc3_:Boolean = param2 == EventRadialMenu.DEFAULT_STATE;
          _loc4_ = param2 == EventRadialMenu.ALLY_STATE;
          _loc5_ = param2 == EventRadialMenu.ENEMY_STATE;
          this.titleNormalTF.visible = _loc3_;

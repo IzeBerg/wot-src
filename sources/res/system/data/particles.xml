@@ -88,6 +88,10 @@
 		<fn_effect_bin>particles/tank/rocket_accelerator/start_smoke.eff</fn_effect_bin>
 		<fn_effect_bin>particles/tank/customization/f18_bat_chatillon25t_3dst_bp_mt/f18_bat_chatillon25t_distortion.eff</fn_effect_bin>
 		<fn_effect_bin>particles/tank/customization/A158_T832_BX_T_3DSt/A158_T832_BX_T_3DSt_eye_glow.eff</fn_effect_bin>
+		<fn_effect_bin>particles/tank/shots/shot_flame_start_auto.eff</fn_effect_bin>
+		<fn_effect_bin>particles/shells_eff/hit_flame_small_aep.eff</fn_effect_bin>
+		<fn_effect_bin>particles/shells_eff/trace_flame_small_aep_alt.eff</fn_effect_bin>
+		<fn_effect_bin>particles/shells_eff/trace_flame_small_aep.eff</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/pfx/tank/customization/s31_strv_k/soul_shimmer.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/pfx/tank/customization/s31_strv_k/holy_settling.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/pfx/tank/customization/s31_strv_k/holy_settling2.vfx</fn_effect_bin>
@@ -106,6 +110,10 @@
 		<fn_effect_bin>particles/content_forward/pfx/tank/customization/A158_T832_BX_T_3DSt/A158_T832_BX_T_3DSt_eye_glow.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/pfx/tank/customization/f18_bat_chatillon25t_3dst_bp_mt/f18_bat_chatillon25t_flame.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/tank/rocket_accelerator/cosmic_boost_trail_01.eff</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/pfx/shells_eff/trace_flame_small_aep.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/pfx/shells_eff/trace_flame_small_aep_alt.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/pfx/shells_eff/hit_flame_small_aep.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/pfx/tank/shots/shot_flame_start_auto.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Battle_Royal/CorrodedHit/CorrodedHit.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Battle_Royal/CorrodedHit/CorrodedHit_Fail.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Battle_Royal/CorrodedHit/CorrodedHit_Trace.vfx</fn_effect_bin>
@@ -261,6 +269,7 @@
 		<fn_effect_bin>particles/content_forward/PFX/Shells_Eff/hit_bright_flash_HE_3.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Shells_Eff/hit_bright_flash_HE_4.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Shells_Eff/hit_flame_small.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Shells_Eff/hit_flame_small_aep.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Shells_Eff/hit_flash_AP_1.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Shells_Eff/hit_flash_AP_1_1.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Shells_Eff/hit_flash_AP_3_1.vfx</fn_effect_bin>
@@ -470,6 +479,8 @@
 		<fn_effect_bin>particles/content_forward/PFX/Shells_Eff/trace_explose_SFA.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Shells_Eff/trace_explose_SFA_1.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Shells_Eff/trace_flame_small_1.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Shells_Eff/trace_flame_small_aep.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Shells_Eff/trace_flame_small_aep_ALT.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Shells_Eff/trace_ground_SFA.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Shells_Eff/trace_ground_SFA_1.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Shells_Eff/trace_hc_1.vfx</fn_effect_bin>
@@ -541,6 +552,15 @@
 		<fn_effect_bin>particles/content_forward/PFX/Shells_Eff/woodHit_SCA_1.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Shells_Eff/woodhit_SFA.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Shells_Eff/woodHit_SFA_1.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Shells_Eff/wt_regular_trace_ap_4.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Shells_Eff/wt_stun_armorHit_HE_4.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Shells_Eff/wt_stun_groundHit_HE_4.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Shells_Eff/wt_stun_sandHit_HE_4.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Shells_Eff/wt_stun_shellFall_HE_4.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Shells_Eff/wt_stun_snowHit_HE_4.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Shells_Eff/wt_stun_stoneHit_HE_4.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Shells_Eff/wt_stun_trace_HE_4.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Shells_Eff/wt_stun_woodHit_HE_4.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Sparks/sparks_lrg_1.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Sparks/sparks_lrg_1_slave.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Sparks/sparks_lrg_2.vfx</fn_effect_bin>
@@ -685,6 +705,8 @@
 		<fn_effect_bin>particles/content_forward/PFX/Tank/destruction/turret_touchdown_large.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Tank/destruction/turret_touchdown_medium.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Tank/destruction/turret_touchdown_small.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Tank/exhaust/forsage_electric/forsage_idle.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Tank/exhaust/forsage_electric/forsage_work_load.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Tank/exhaust/large_diesel/rpm01_Load02.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Tank/exhaust/large_diesel/rpm01_Load03.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Tank/exhaust/large_diesel/rpm01_Load04.vfx</fn_effect_bin>
@@ -1270,6 +1292,7 @@
 		<fn_effect_bin>particles/content_forward/PFX/Tank/shots/shot_small_01.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Tank/shots/shot_small_02.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Tank/shots/shotPneumatic_flame_small.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Tank/shots/wt_shot_large.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Tank/spark_big.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Tank/spark_big_2.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Tank/strv_change_hull_dirt.vfx</fn_effect_bin>
@@ -1327,8 +1350,8 @@
 		<preloadVisual>particles/mesh_particles/metal_plate_01.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/metal_plate_02.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/metal_plate_03.visual</preloadVisual>
+		<preloadVisual>particles/mesh_particles/Obturating_ring.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/oil/oil.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/stone_brick_01.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/stone_dark.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/stone_light.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/stone_tile_01.visual</preloadVisual>
@@ -1337,6 +1360,12 @@
 		<preloadVisual>particles/mesh_particles/wood_board_03.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/wood_broken_02.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/wood_plank_02.visual</preloadVisual>
+		<preloadVisual>particles/mesh_particles/wt_arcStraight_a.visual</preloadVisual>
+		<preloadVisual>particles/mesh_particles/wt_arcStraight_b.visual</preloadVisual>
+		<preloadVisual>particles/mesh_particles/wt_arcStraight_c.visual</preloadVisual>
+		<preloadVisual>particles/mesh_particles/wt_arcStraight_d.visual</preloadVisual>
+		<preloadVisual>particles/mesh_particles/wt_arcStraight_e.visual</preloadVisual>
+		<preloadVisual>particles/mesh_particles/wt_arcStraight_f.visual</preloadVisual>
 		<fn_effect_bin>particles/Shells_Eff/armorHit_AP_1.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Shells_Eff/armorHit_AP_2.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Shells_Eff/armorHit_AP_3.eff</fn_effect_bin>
@@ -1676,6 +1705,15 @@
 		<fn_effect_bin>particles/Shells_Eff/woodHit_SFA.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Shells_Eff/woodHit_SFA_1.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Shells_Eff/woodHit_SH_4.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Shells_Eff/wt_regular_trace_ap_4.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Shells_Eff/wt_stun_armorHit_HE_4.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Shells_Eff/wt_stun_groundHit_HE_4.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Shells_Eff/wt_stun_sandHit_HE_4.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Shells_Eff/wt_stun_shellFall_HE_4.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Shells_Eff/wt_stun_snowHit_HE_4.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Shells_Eff/wt_stun_stoneHit_HE_4.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Shells_Eff/wt_stun_trace_HE_4.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Shells_Eff/wt_stun_woodHit_HE_4.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Tank/cosmic_tank_collision_sand.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Tank/destruction/burnup_domination_large.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Tank/destruction/burnup_large.eff</fn_effect_bin>
@@ -1757,6 +1795,8 @@
 		<fn_effect_bin>particles/Tank/exhaust/cosmic_exhaust/rpm03_Load03.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Tank/exhaust/cosmic_exhaust/rpm03_Load04.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Tank/exhaust/cosmic_exhaust/start.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Tank/exhaust/forsage_electric/forsage_idle.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Tank/exhaust/forsage_electric/forsage_work_load.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Tank/exhaust/large_diesel/rpm01_Load01.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Tank/exhaust/large_diesel/rpm01_Load02.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Tank/exhaust/large_diesel/rpm01_Load03.eff</fn_effect_bin>
@@ -2469,6 +2509,7 @@
 		<fn_effect_bin>particles/Tank/shots/shot_small_01.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Tank/shots/shot_small_02.eff</fn_effect_bin>
 		<fn_effect_bin>particles/tank/shots/shotpneumatic_flame_small.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Tank/shots/wt_shot_large.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Tank/strv_change_hull_dirt.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Tank/strv_change_hull_ground.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Tank/strv_change_hull_oil.eff</fn_effect_bin>
@@ -2605,6 +2646,10 @@
 		<fn_effect_bin>particles/tank/rocket_accelerator/start_fire.eff</fn_effect_bin>
 		<fn_effect_bin>particles/tank/rocket_accelerator/end_fire.eff</fn_effect_bin>
 		<fn_effect_bin>particles/tank/rocket_accelerator/start_smoke.eff</fn_effect_bin>
+		<fn_effect_bin>particles/tank/shots/shot_flame_start_auto.eff</fn_effect_bin>
+		<fn_effect_bin>particles/shells_eff/hit_flame_small_aep.eff</fn_effect_bin>
+		<fn_effect_bin>particles/shells_eff/trace_flame_small_aep_alt.eff</fn_effect_bin>
+		<fn_effect_bin>particles/shells_eff/trace_flame_small_aep.eff</fn_effect_bin>
 		<fn_effect_bin>particles/tank/customization/A158_T832_BX_T_3DSt/A158_T832_BX_T_3DSt_eye_glow.eff</fn_effect_bin>
 		<fn_effect_bin>particles/tank/customization/f18_bat_chatillon25t_3dst_bp_mt/f18_bat_chatillon25t_distortion.eff</fn_effect_bin>
 		<fn_effect_bin>particles/tank/customization/f18_bat_chatillon25t_3dst_bp_mt/f18_bat_chatillon25t_flame.eff</fn_effect_bin>
@@ -2632,6 +2677,10 @@
 		<fn_effect_bin>particles/content_deferred/pfx/tank/customization/A158_T832_BX_T_3DSt/A158_T832_BX_T_3DSt_eye_glow.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/pfx/tank/customization/f18_bat_chatillon25t_3dst_bp_mt/f18_bat_chatillon25t_flame.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/pfx/tank/customization/f18_bat_chatillon25t_3dst_bp_mt/f18_bat_chatillon25t_distortion.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/pfx/tank/shots/shot_flame_start_auto.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/pfx/shells_eff/hit_flame_small_aep.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/pfx/shells_eff/trace_flame_small_aep_alt.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/pfx/shells_eff/trace_flame_small_aep.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/tank/rocket_accelerator/cosmic_boost_trail_01.eff</fn_effect_bin>
 		<fn_effect_bin>particles/tank/customization/a143_m_v_y_3dst/a143_m_v_y_3dst_distortion.eff</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/pfx/tank/customization/a143_m_v_y_3dst/a143_m_v_y_3dst_distortion.vfx</fn_effect_bin>
@@ -2800,6 +2849,7 @@
 		<fn_effect_bin>particles/content_deferred/PFX/Shells_Eff/hit_bright_flash_HE_3.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Shells_Eff/hit_bright_flash_HE_4.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Shells_Eff/hit_flame_small.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Shells_Eff/hit_flame_small_aep.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Shells_Eff/hit_flash_AP_1.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Shells_Eff/hit_flash_AP_1_1.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Shells_Eff/hit_flash_AP_3_1.vfx</fn_effect_bin>
@@ -3013,6 +3063,8 @@
 		<fn_effect_bin>particles/content_deferred/PFX/Shells_Eff/trace_explose_SFA.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Shells_Eff/trace_explose_SFA_1.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Shells_Eff/trace_flame_small_1.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Shells_Eff/trace_flame_small_aep.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Shells_Eff/trace_flame_small_aep_ALT.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Shells_Eff/trace_ground_SFA.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Shells_Eff/trace_ground_SFA_1.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Shells_Eff/trace_hc_1.vfx</fn_effect_bin>
@@ -3087,6 +3139,15 @@
 		<fn_effect_bin>particles/content_deferred/PFX/Shells_Eff/woodHit_SCA_1.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Shells_Eff/woodhit_SFA.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Shells_Eff/woodHit_SFA_1.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Shells_Eff/wt_regular_trace_ap_4.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Shells_Eff/wt_stun_armorHit_HE_4.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Shells_Eff/wt_stun_groundHit_HE_4.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Shells_Eff/wt_stun_sandHit_HE_4.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Shells_Eff/wt_stun_shellFall_HE_4.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Shells_Eff/wt_stun_snowHit_HE_4.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Shells_Eff/wt_stun_stoneHit_HE_4.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Shells_Eff/wt_stun_trace_HE_4.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Shells_Eff/wt_stun_woodHit_HE_4.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Sparks/sparks_lrg_1.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Sparks/sparks_lrg_1_slave.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Sparks/sparks_lrg_2.vfx</fn_effect_bin>
@@ -3274,6 +3335,8 @@
 		<fn_effect_bin>particles/content_deferred/PFX/Tank/exhaust/cosmic_exhaust/rpm03_Load03.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Tank/exhaust/cosmic_exhaust/rpm03_Load04.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Tank/exhaust/cosmic_exhaust/start.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Tank/exhaust/forsage_electric/forsage_idle.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Tank/exhaust/forsage_electric/forsage_work_load.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Tank/exhaust/large_diesel/rpm01_Load01.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Tank/exhaust/large_diesel/rpm01_Load02.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Tank/exhaust/large_diesel/rpm01_Load03.vfx</fn_effect_bin>
@@ -3943,6 +4006,7 @@
 		<fn_effect_bin>particles/content_deferred/PFX/Tank/shots/shot_small_02.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Tank/shots/shot_small_ForceField.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Tank/shots/shotPneumatic_flame_small.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Tank/shots/wt_shot_large.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Tank/spark_big.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Tank/spark_big_2.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Tank/strv_change_hull_dirt.vfx</fn_effect_bin>
@@ -4000,8 +4064,8 @@
 		<preloadVisual>particles/mesh_particles/metal_plate_01.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/metal_plate_02.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/metal_plate_03.visual</preloadVisual>
+		<preloadVisual>particles/mesh_particles/Obturating_ring.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/oil/oil.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/stone_brick_01.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/stone_dark.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/stone_light.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/stone_tile_01.visual</preloadVisual>
@@ -4011,6 +4075,12 @@
 		<preloadVisual>particles/mesh_particles/wood_broken_02.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/wood_plank_02.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/wood_stick_02.visual</preloadVisual>
+		<preloadVisual>particles/mesh_particles/wt_arcStraight_a.visual</preloadVisual>
+		<preloadVisual>particles/mesh_particles/wt_arcStraight_b.visual</preloadVisual>
+		<preloadVisual>particles/mesh_particles/wt_arcStraight_c.visual</preloadVisual>
+		<preloadVisual>particles/mesh_particles/wt_arcStraight_d.visual</preloadVisual>
+		<preloadVisual>particles/mesh_particles/wt_arcStraight_e.visual</preloadVisual>
+		<preloadVisual>particles/mesh_particles/wt_arcStraight_f.visual</preloadVisual>
 		<fn_effect_bin>particles/Shells_Eff/armorHit_AP_1.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Shells_Eff/armorHit_AP_2.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Shells_Eff/armorHit_AP_3.eff</fn_effect_bin>
@@ -4350,6 +4420,15 @@
 		<fn_effect_bin>particles/Shells_Eff/woodHit_SFA.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Shells_Eff/woodHit_SFA_1.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Shells_Eff/woodHit_SH_4.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Shells_Eff/wt_regular_trace_ap_4.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Shells_Eff/wt_stun_armorHit_HE_4.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Shells_Eff/wt_stun_groundHit_HE_4.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Shells_Eff/wt_stun_sandHit_HE_4.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Shells_Eff/wt_stun_shellFall_HE_4.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Shells_Eff/wt_stun_snowHit_HE_4.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Shells_Eff/wt_stun_stoneHit_HE_4.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Shells_Eff/wt_stun_trace_HE_4.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Shells_Eff/wt_stun_woodHit_HE_4.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Tank/cosmic_tank_collision_sand.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Tank/destruction/burnup_domination_large.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Tank/destruction/burnup_large.eff</fn_effect_bin>
@@ -4431,6 +4510,8 @@
 		<fn_effect_bin>particles/Tank/exhaust/cosmic_exhaust/rpm03_Load03.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Tank/exhaust/cosmic_exhaust/rpm03_Load04.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Tank/exhaust/cosmic_exhaust/start.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Tank/exhaust/forsage_electric/forsage_idle.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Tank/exhaust/forsage_electric/forsage_work_load.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Tank/exhaust/large_diesel/rpm01_Load01.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Tank/exhaust/large_diesel/rpm01_Load02.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Tank/exhaust/large_diesel/rpm01_Load03.eff</fn_effect_bin>
@@ -5143,6 +5224,7 @@
 		<fn_effect_bin>particles/Tank/shots/shot_small_01.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Tank/shots/shot_small_02.eff</fn_effect_bin>
 		<fn_effect_bin>particles/tank/shots/shotpneumatic_flame_small.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Tank/shots/wt_shot_large.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Tank/strv_change_hull_dirt.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Tank/strv_change_hull_ground.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Tank/strv_change_hull_oil.eff</fn_effect_bin>

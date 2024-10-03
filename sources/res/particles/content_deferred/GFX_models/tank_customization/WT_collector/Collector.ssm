@@ -15,26 +15,6 @@
 		</param>
 	</params>
 	<node>
-		<name>idle_empty</name>
-		<type>sequence</type>
-		<resource>particles/content_deferred/GFX_models/tank_customization/WT_collector/Collector_Empty.seq</resource>
-		<isLoop>true</isLoop>
-		<loop>-1</loop>
-		<transition>
-			<to>idle_empty_stun_start</to>
-			<blendDuration>0.000000</blendDuration>
-			<allowRootMotion>false</allowRootMotion>
-			<conditions>
-				<condition>
-					<type>bool</type>
-					<name>stun</name>
-					<checked>true</checked>
-				</condition>
-			</conditions>
-		</transition>
-		<uiPosition>-311.000000 258.000000 0.000000</uiPosition>
-	</node>
-	<node>
 		<name>idle_empty_stun</name>
 		<type>sequence</type>
 		<resource>particles/content_deferred/GFX_models/tank_customization/WT_collector/Collector_Empty_Stun.seq</resource>
@@ -43,7 +23,6 @@
 		<transition>
 			<to>idle_empty_stun_stop</to>
 			<blendDuration>0.000000</blendDuration>
-			<allowRootMotion>false</allowRootMotion>
 			<conditions>
 				<condition>
 					<type>bool</type>
@@ -52,7 +31,7 @@
 				</condition>
 			</conditions>
 		</transition>
-		<uiPosition>346.000000 260.000000 0.000000</uiPosition>
+		<uiPosition>294.500000 -80.500000 0.000000</uiPosition>
 	</node>
 	<node>
 		<name>idle_empty_stun_start</name>
@@ -63,7 +42,6 @@
 		<transition>
 			<to>idle_empty_stun</to>
 			<blendDuration>0.000000</blendDuration>
-			<allowRootMotion>false</allowRootMotion>
 			<conditions>
 				<condition>
 					<type>exit_time</type>
@@ -71,7 +49,7 @@
 				</condition>
 			</conditions>
 		</transition>
-		<uiPosition>44.000000 234.000000 0.000000</uiPosition>
+		<uiPosition>-3.000000 -98.000000 0.000000</uiPosition>
 	</node>
 	<node>
 		<name>idle_empty_stun_stop</name>
@@ -80,9 +58,8 @@
 		<isLoop>false</isLoop>
 		<loop>1</loop>
 		<transition>
-			<to>idle_empty</to>
+			<to>Sleep Node</to>
 			<blendDuration>0.000000</blendDuration>
-			<allowRootMotion>false</allowRootMotion>
 			<conditions>
 				<condition>
 					<type>exit_time</type>
@@ -90,6 +67,23 @@
 				</condition>
 			</conditions>
 		</transition>
-		<uiPosition>49.000000 286.000000 0.000000</uiPosition>
+		<uiPosition>4.000000 -22.500000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>Sleep Node</name>
+		<type>sleep</type>
+		<time>1.000000 1.000000</time>
+		<transition>
+			<to>idle_empty_stun_start</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>bool</type>
+					<name>stun</name>
+					<checked>true</checked>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-289.500000 -60.000000 0.000000</uiPosition>
 	</node>
 </root>

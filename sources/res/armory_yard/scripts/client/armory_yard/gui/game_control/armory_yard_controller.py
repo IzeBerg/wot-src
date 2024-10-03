@@ -3,7 +3,7 @@ from functools import partial
 from typing import Dict
 import adisp, BigWorld
 from account_helpers.AccountSettings import ArmoryYard, AccountSettings
-from armory_yard_constants import getCurrencyToken, getGroupName, getStageToken, getEndToken, getEndQuestID, getBundleBlockToken, getFinalEndQuestID, PROGRESSION_LEVEL_PDATA_KEY, State, CLAIMED_FINAL_REWARD, PDATA_KEY_ARMORY_YARD, INTRO_VIDEO, MAX_PAID_TOKENS, isArmoryYardStyleQuest, DAY_BEFORE_END_STYLE_QUEST, AY_VIDEOS, VEHICLE_NAME, getPostProgressionPaidEntitlement, ARMORY_YARD_COIN_NAME
+from armory_yard_constants import getCurrencyToken, getGroupName, getStageToken, getEndToken, getEndQuestID, getBundleBlockToken, getFinalEndQuestID, PROGRESSION_LEVEL_PDATA_KEY, State, CLAIMED_FINAL_REWARD, PDATA_KEY_ARMORY_YARD, INTRO_VIDEO, MAX_PAID_TOKENS, isArmoryYardStyleQuest, DAY_BEFORE_END_STYLE_QUEST, AY_VIDEOS, VEHICLE_NAME, getPostProgressionPaidEntitlement, getSubtrahendStageToken
 from armory_yard.gui.window_events import showArmoryYardIntroWindow, showArmoryYardWaiting, hideArmoryYardWaiting
 from armory_yard.gui.impl.lobby.feature.armory_yard_main_view import ArmoryYardMainView
 from armory_yard.gui.impl.gen.view_models.views.lobby.feature.armory_yard_main_view_model import TabId
@@ -38,6 +38,10 @@ from gui.impl.gen import R
 import ScaleformFileLoader
 from gui.doc_loaders.GuiDirReader import GuiDirReader
 from items import vehicles
+from gui.Scaleform.daapi.view.lobby.header.LobbyHeader import HeaderMenuVisibilityState
+from gui.impl import backport
+from gui.shared.utils.functions import makeTooltip
+from gui.Scaleform.genConsts.TOOLTIPS_CONSTANTS import TOOLTIPS_CONSTANTS
 AY_VIDEOS_FOLDER = ('/').join((GuiDirReader.SCALEFORM_STARTUP_VIDEO_PATH, 'armory_yard'))
 
 class BundleState(Enum):
@@ -194,7 +198,8 @@ class ArmoryYardController(IArmoryYardController):
         self.__bundlesNotifier.stopNotification()
 
     def __isCoinUpdate(self, diff):
-        if ARMORY_YARD_COIN_NAME in diff.get('dynamicCurrencies', {}):
+        currSeason = self.serverSettings.getCurrentSeason()
+        if currSeason and getPostProgressionPaidEntitlement(currSeason.getSeasonID()) in diff.get('entitlements', {}):
             self.onAYCoinsUpdate()
 
     def isActive(self):
@@ -308,23 +313,34 @@ class ArmoryYardController(IArmoryYardController):
             return self.__serverSettings.getModeSettings().rewards.get(currentSeason.getSeasonID(), {}).get('steps', {})
 
     def getFinalRewardVehicle(self):
-        stepCount = self.getTotalSteps()
-        vehicleBonus = self.getStepsRewards().get(stepCount, {}).get('vehicles', {})
+        vehicleBonus = self.getStepsRewards().get(self.getTotalSteps(), {}).get('vehicles', {})
         vehicleCD = next(iter(vehicleBonus.keys())) if vehicleBonus else None
         if vehicleCD is not None:
             return self.__itemsCache.items.getItemByCD(vehicleCD)
         else:
             return
 
-    def getCurrencyTokenCost(self):
+    def getTokenCurrencies(self):
+        currencies = self.__serverSettings.getModeSettings().tokenCost.keys()
+        sortCurrencies = []
         for currency in Currency.BY_WEIGHT:
-            if currency in self.__serverSettings.getModeSettings().tokenCost:
-                return Money.makeFrom(currency, self.__serverSettings.getModeSettings().tokenCost[currency])
+            if currency in currencies:
+                sortCurrencies.append(currency)
 
-        return ZERO_MONEY
+        return sortCurrencies
+
+    def getCurrencyTokenCost(self, currency=Currency.GOLD):
+        if currency is not None and currency in self.__serverSettings.getModeSettings().tokenCost:
+            return Money.makeFrom(currency, self.__serverSettings.getModeSettings().tokenCost[currency])
+        else:
+            return ZERO_MONEY
 
     def refreshBundle(self):
         self.__fillBundlesProducts()
+
+    @staticmethod
+    def updateVisibilityHangarHeaderMenu(isVisible=False):
+        g_eventBus.handleEvent(events.LobbyHeaderMenuEvent(events.LobbyHeaderMenuEvent.TOGGLE_VISIBILITY, ctx={'state': (isVisible or HeaderMenuVisibilityState).NOTHING if 1 else HeaderMenuVisibilityState.ALL}), EVENT_BUS_SCOPE.LOBBY)
 
     def __bundlesCheck(self, *_):
         if not self.__bundlesProducts:
@@ -384,6 +400,13 @@ class ArmoryYardController(IArmoryYardController):
 
     def receivedTokensInChapter(self, cycleID):
         return self.__eventsCache.questsProgress.getTokenCount(self.__serverSettings.getStageToken(cycleID))
+
+    def subtrahendStageToken(self):
+        season = self.serverSettings.getCurrentSeason()
+        if season is not None:
+            return self.__eventsCache.questsProgress.getTokenCount(getSubtrahendStageToken(season.getSeasonID()))
+        else:
+            return 0
 
     def getSeasonInterval(self):
         season = self.serverSettings.getCurrentSeason()
@@ -556,6 +579,45 @@ class ArmoryYardController(IArmoryYardController):
         for cycle in allCycles.values():
             if cycle.startDate > nowTime and cycle.startDate - nowTime <= announcementCountdown:
                 self.onAnnouncement(cycle.startDate, cycle)
+
+    def getHangarFlagData(self):
+        iconsPath = R.images.armory_yard.gui.maps.icons.entry_point
+        currentTime = time_utils.getServerUTCTime()
+        _, finishProgressionTime = self.getProgressionTimes()
+        deltaFinishProgressionTime = finishProgressionTime - currentTime
+        state = self.getState()
+        availableQuestsCount = self.getAvailableQuestsCount()
+        enabled = state == State.ACTIVE
+        if state == State.ACTIVE:
+            nextCycle = self.getNextCycle(currentTime)
+            if nextCycle is not None and nextCycle.startDate - currentTime <= time_utils.ONE_DAY:
+                state = State.ACTIVE
+            elif self.isQuestActive() and availableQuestsCount == 0:
+                state = State.COMPLETED
+        if state == State.ACTIVE and deltaFinishProgressionTime >= time_utils.ONE_DAY:
+            label = str(availableQuestsCount)
+            stateIcon = ''
+        else:
+            label = ''
+            imageRes = iconsPath.dyn(state.value)
+            stateIcon = backport.image(imageRes()) if imageRes.exists() else ''
+        return (enabled,
+         backport.image(iconsPath.flag_disabled()),
+         stateIcon,
+         backport.image(iconsPath.anchor() if enabled else iconsPath.anchor_disabled()),
+         self.__getFlagTooltip(state),
+         label,
+         state in (State.ACTIVE, State.COMPLETED, State.BEFOREPROGRESSION))
+
+    def __getFlagTooltip(self, state):
+        tooltipTexts = R.strings.armory_yard.entryPoint.tooltips
+        if state == State.BEFOREPROGRESSION:
+            return TOOLTIPS_CONSTANTS.ARMORY_YARD_ENTRY_POINT_BEFORE_PROGRESSION
+        if state == State.POSTPROGRESSION:
+            return makeTooltip(header=backport.text(tooltipTexts.postProgression.header()), body=backport.text(tooltipTexts.postProgression.body()))
+        if state == State.DISABLED:
+            return makeTooltip(header=backport.text(tooltipTexts.disabled.header()), body=backport.text(tooltipTexts.disabled.body()))
+        return TOOLTIPS_CONSTANTS.ARMORY_YARD_ENTRY_POINT_ACTIVE
 
     def __checkRewards(self):
         if self.getCollectableRewards() > int(self.isClaimedFinalReward()):

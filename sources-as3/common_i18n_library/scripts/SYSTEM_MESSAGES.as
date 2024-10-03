@@ -1045,15 +1045,13 @@ package
       
       public static const VEHICLE_REPAIR_SERVER_ERROR:String = "#system_messages:vehicle_repair/server_error";
       
-      public static const BUY_TANKMEN_BERTHS_SUCCESS:String = "#system_messages:buy_tankmen_berths/success";
+      public static const BUY_TANKMEN_BERTHS_GOLD_SUCCESS:String = "#system_messages:buy_tankmen_berths/gold/success";
+      
+      public static const BUY_TANKMEN_BERTHS_CREDITS_SUCCESS:String = "#system_messages:buy_tankmen_berths/credits/success";
       
       public static const BUY_TANKMEN_BERTHS_SERVER_ERROR:String = "#system_messages:buy_tankmen_berths/server_error";
       
-      public static const BUY_TANKMEN_BERTHS_NOT_ENOUGH_CREDITS:String = "#system_messages:buy_tankmen_berths/not_enough_credits";
-      
-      public static const BUY_TANKMEN_BERTHS_NOT_ENOUGH_GOLD:String = "#system_messages:buy_tankmen_berths/not_enough_gold";
-      
-      public static const BUY_TANKMEN_BERTHS_WALLET_NOT_AVAILABLE:String = "#system_messages:buy_tankmen_berths/wallet_not_available";
+      public static const BUY_TANKMEN_BERTHS_BUY_ERROR:String = "#system_messages:buy_tankmen_berths/buy_error";
       
       public static const RESTORE_TANKMAN_SUCCESS:String = "#system_messages:restore_tankman/success";
       
@@ -2177,7 +2175,7 @@ package
       
       public static const RANKED_NOTIFICATIONS_BONUSNAME_YEARPOINTS:String = "#system_messages:ranked/notifications/bonusName/yearPoints";
       
-      public static const RANKED_NOTIFICATIONS_BONUSNAME_SELECTABLEREWARD:String = "#system_messages:ranked/notifications/bonusName/selectableReward";
+      public static const RANKED_NOTIFICATIONS_DELUXE_GIFT:String = "#system_messages:ranked/notifications/deluxe_gift";
       
       public static const RANKED_NOTIFICATIONS_BONUSNAME_CRYSTAL:String = "#system_messages:ranked/notifications/bonusName/crystal";
       
@@ -2186,6 +2184,8 @@ package
       public static const RANKED_NOTIFICATIONS_BONUSNAME_CREDITS:String = "#system_messages:ranked/notifications/bonusName/credits";
       
       public static const RANKED_NOTIFICATIONS_BONUSNAME_GOLD:String = "#system_messages:ranked/notifications/bonusName/gold";
+      
+      public static const RANKED_NOTIFICATIONS_BONUSNAME_EQUIPCOIN:String = "#system_messages:ranked/notifications/bonusName/equipCoin";
       
       public static const RANKED_NOTIFICATIONS_BONUSVALUE_PREMIUMDAY:String = "#system_messages:ranked/notifications/bonusValue/premiumDay";
       

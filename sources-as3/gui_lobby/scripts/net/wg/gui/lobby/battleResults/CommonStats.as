@@ -320,10 +320,9 @@ package net.wg.gui.lobby.battleResults
       
       public function update(param1:Object) : void
       {
-         var _loc2_:PersonalDataVO = null;
          var _loc11_:String = null;
          this._data = BattleResultsVO(param1);
-         _loc2_ = this._data.personal;
+         var _loc2_:PersonalDataVO = this._data.personal;
          var _loc3_:CommonStatsVO = this._data.common;
          var _loc4_:Array = AwardExtractor.extract(this._data.quests);
          var _loc5_:Array = AwardExtractor.extract(this._data.battlePass);

@@ -22,7 +22,7 @@
 					<row0>1.000000 0.000000 0.000000</row0>
 					<row1>0.000000 0.993847 -0.110758</row1>
 					<row2>0.000000 0.110758 0.993847</row2>
-					<row3>-1.341270 -0.003149 2.410431</row3>
+					<row3>-1.341270 -0.003149 -0.398397</row3>
 				</transform>
 			</node>
 			<node>
@@ -40,7 +40,7 @@
 					<row0>1.000000 0.000000 0.000000</row0>
 					<row1>0.000000 0.993847 -0.110758</row1>
 					<row2>0.000000 0.110758 0.993847</row2>
-					<row3>1.341270 -0.003149 2.410431</row3>
+					<row3>1.341270 -0.003149 -0.398397</row3>
 				</transform>
 			</node>
 			<node>
@@ -50,6 +50,42 @@
 					<row1>0.000000 0.994751 0.102324</row1>
 					<row2>-0.000000 0.102324 -0.994751</row2>
 					<row3>1.341270 -0.003149 -2.410431</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_LFront1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.993847 -0.110758</row1>
+					<row2>0.000000 0.110758 0.993847</row2>
+					<row3>-1.341000 -0.003149 2.378021</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_LRear1</identifier>
+				<transform>
+					<row0>-1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.994751 0.102324</row1>
+					<row2>0.000000 0.102324 -0.994751</row2>
+					<row3>-1.341270 -0.003149 0.375426</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_RFront1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.993847 -0.110758</row1>
+					<row2>0.000000 0.110758 0.993847</row2>
+					<row3>1.341270 -0.003149 2.378021</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_RRear1</identifier>
+				<transform>
+					<row0>-1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.994751 0.102324</row1>
+					<row2>0.000000 0.102324 -0.994751</row2>
+					<row3>1.341270 -0.003149 0.375426</row3>
 				</transform>
 			</node>
 			<node>
@@ -731,7 +767,7 @@
 							<row0>1.000000 0.000000 0.000000</row0>
 							<row1>0.000000 1.000000 0.000000</row1>
 							<row2>0.000000 0.000000 1.000000</row2>
-							<row3>-1.385512 0.166835 2.629853</row3>
+							<row3>-1.385512 0.169099 2.629850</row3>
 						</transform>
 						<node>
 							<identifier>Track_VT_L0_BlendBone</identifier>
@@ -739,7 +775,7 @@
 								<row0>1.000000 0.000000 0.000000</row0>
 								<row1>0.000000 1.000000 0.000000</row1>
 								<row2>0.000000 0.000000 -1.000000</row2>
-								<row3>1.385512 -1.011794 -2.629853</row3>
+								<row3>1.385512 -1.014058 -2.629850</row3>
 							</transform>
 						</node>
 					</node>
@@ -1253,6 +1289,20 @@
 				<material>
 					<identifier>tank_proxy_skinned</identifier>
 					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						alphaReference
+						<Int>64</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
 					<property>
 						diffuseMap
 						<Texture>vehicles/poland/Pl26_Czolg_P_Wz_46/Czolg_P_Wz_46_proxy_AM.dds</Texture>
@@ -1262,18 +1312,20 @@
 						<Texture>vehicles/poland/Pl26_Czolg_P_Wz_46/Czolg_P_Wz_46_proxy_AO.dds</Texture>
 					</property>
 					<property>
+						g_detailUVTiling
+						<Vector4>3.506850 1.753430 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
 						metallicGlossMap
 						<Texture>vehicles/poland/Pl26_Czolg_P_Wz_46/Czolg_P_Wz_46_proxy_GMM.dds</Texture>
 					</property>
 					<property>
 						normalMap
 						<Texture>vehicles/poland/Pl26_Czolg_P_Wz_46/Czolg_P_Wz_46_proxy_ANM.dds</Texture>
-					</property>
-					<collisionFlags>0</collisionFlags>
-					<materialKind>0</materialKind>
-					<property>
-						colorIdMap
-						<Texture>vehicles/russian/common/common_ID.dds</Texture>
 					</property>
 				</material>
 				<groupOrigin>-1.345022 0.486962 0.012105</groupOrigin>
@@ -1291,6 +1343,20 @@
 				<material>
 					<identifier>tank_proxy_skinned</identifier>
 					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						alphaReference
+						<Int>64</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
 					<property>
 						diffuseMap
 						<Texture>vehicles/poland/Pl26_Czolg_P_Wz_46/Czolg_P_Wz_46_proxy_AM.dds</Texture>
@@ -1300,18 +1366,20 @@
 						<Texture>vehicles/poland/Pl26_Czolg_P_Wz_46/Czolg_P_Wz_46_proxy_AO.dds</Texture>
 					</property>
 					<property>
+						g_detailUVTiling
+						<Vector4>3.506850 1.753430 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
 						metallicGlossMap
 						<Texture>vehicles/poland/Pl26_Czolg_P_Wz_46/Czolg_P_Wz_46_proxy_GMM.dds</Texture>
 					</property>
 					<property>
 						normalMap
 						<Texture>vehicles/poland/Pl26_Czolg_P_Wz_46/Czolg_P_Wz_46_proxy_ANM.dds</Texture>
-					</property>
-					<collisionFlags>0</collisionFlags>
-					<materialKind>0</materialKind>
-					<property>
-						colorIdMap
-						<Texture>vehicles/russian/common/common_ID.dds</Texture>
 					</property>
 				</material>
 				<groupOrigin>1.342705 0.495163 -0.030402</groupOrigin>
