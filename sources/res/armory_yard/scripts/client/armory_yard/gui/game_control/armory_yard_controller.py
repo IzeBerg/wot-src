@@ -329,7 +329,7 @@ class ArmoryYardController(IArmoryYardController):
 
         return sortCurrencies
 
-    def getCurrencyTokenCost(self, currency=Currency.GOLD):
+    def getCurrencyTokenCost(self, currency):
         if currency is not None and currency in self.__serverSettings.getModeSettings().tokenCost:
             return Money.makeFrom(currency, self.__serverSettings.getModeSettings().tokenCost[currency])
         else:

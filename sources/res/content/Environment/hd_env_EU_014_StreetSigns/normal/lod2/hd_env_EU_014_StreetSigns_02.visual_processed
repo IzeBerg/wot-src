@@ -8,42 +8,6 @@
 			<row2>0.000000 0.000000 1.000000</row2>
 			<row3>0.000000 0.000000 0.000000</row3>
 		</transform>
-		<node>
-			<identifier>hd_env_EU_014_StreetSigns_02</identifier>
-			<transform>
-				<row0>1.000000 0.000000 0.000000</row0>
-				<row1>0.000000 1.000000 0.000000</row1>
-				<row2>0.000000 0.000000 1.000000</row2>
-				<row3>0.000000 0.000000 0.000000</row3>
-			</transform>
-			<node>
-				<identifier>HP_module0</identifier>
-				<transform>
-					<row0>1.000000 0.000000 0.000000</row0>
-					<row1>0.000000 1.000000 0.000000</row1>
-					<row2>0.000000 0.000000 1.000000</row2>
-					<row3>0.000000 0.000000 0.000000</row3>
-				</transform>
-			</node>
-			<node>
-				<identifier>lod2</identifier>
-				<transform>
-					<row0>1.000000 0.000000 0.000000</row0>
-					<row1>0.000000 1.000000 0.000000</row1>
-					<row2>0.000000 0.000000 1.000000</row2>
-					<row3>0.000000 0.000000 0.000000</row3>
-				</transform>
-				<node>
-					<identifier>n0</identifier>
-					<transform>
-						<row0>1.000000 0.000000 0.000000</row0>
-						<row1>0.000000 1.000000 0.000000</row1>
-						<row2>0.000000 0.000000 1.000000</row2>
-						<row3>0.000000 0.000000 0.000000</row3>
-					</transform>
-				</node>
-			</node>
-		</node>
 	</node>
 	<renderSet>
 		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
@@ -57,7 +21,7 @@
 					<identifier>d_wood0</identifier>
 					<fx>shaders/std_effects/PBS_ext.fx</fx>
 					<materialKind>87</materialKind>
-					<collisionFlags>0</collisionFlags>
+					<collisionFlags>255</collisionFlags>
 					<property>
 						diffuseMap
 						<Texture>content/Environment/hd_env_EU_014_StreetSigns/hd_env_EU_014_StreetSigns_boards_AM.dds</Texture>
@@ -102,26 +66,6 @@
 		<max>0.215501 0.994138 0.218022</max>
 	</boundingBox>
 	<customBsp>true</customBsp>
-	<missingBspMaterial>
-		<material>
-			<identifier>lambert1</identifier>
-		</material>
-	</missingBspMaterial>
-	<missingBspMaterial>
-		<material>
-			<identifier>lambert1</identifier>
-		</material>
-	</missingBspMaterial>
-	<missingBspMaterial>
-		<material>
-			<identifier>lambert1</identifier>
-		</material>
-	</missingBspMaterial>
-	<missingBspMaterial>
-		<material>
-			<identifier>lambert1</identifier>
-		</material>
-	</missingBspMaterial>
 	<geometrySize>1324</geometrySize>
 	<minUVDensity>0.042932</minUVDensity>
 </root>

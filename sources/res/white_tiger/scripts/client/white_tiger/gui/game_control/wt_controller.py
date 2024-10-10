@@ -178,7 +178,7 @@ class WhiteTigerController(IWhiteTigerController, Notifiable, SeasonProvider, IG
         else:
             self.__prebattleVehicle.selectNone()
             self.__selectRandomFavoriteVehicle()
-            self.onUpdated()
+        self.onUpdated()
         self.onEventPrbChanged(self.isEventPrbActive())
         self.__enterSound.update(self.isEventPrbActive())
         if not self.isEventPrbActive():

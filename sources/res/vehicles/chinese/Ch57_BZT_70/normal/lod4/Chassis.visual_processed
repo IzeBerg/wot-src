@@ -587,7 +587,7 @@
 							<row0>1.000000 0.000000 0.000000</row0>
 							<row1>0.000000 1.000000 0.000000</row1>
 							<row2>0.000000 0.000000 1.000000</row2>
-							<row3>-0.000000 0.345822 0.000000</row3>
+							<row3>-0.014640 0.346134 -0.005484</row3>
 						</transform>
 						<node>
 							<identifier>W_L7_BlendBone</identifier>
@@ -595,7 +595,7 @@
 								<row0>1.000000 0.000000 0.000000</row0>
 								<row1>0.000000 1.000000 0.000000</row1>
 								<row2>0.000000 0.000000 -1.000000</row2>
-								<row3>1.254196 -0.345822 2.872348</row3>
+								<row3>1.268836 -0.346134 2.877832</row3>
 							</transform>
 						</node>
 					</node>
@@ -911,7 +911,7 @@
 							<row0>1.000000 0.000000 0.000000</row0>
 							<row1>0.000000 1.000000 0.000000</row1>
 							<row2>0.000000 0.000000 1.000000</row2>
-							<row3>-0.000000 0.345822 0.000000</row3>
+							<row3>-0.000000 0.346000 0.000000</row3>
 						</transform>
 						<node>
 							<identifier>W_R14_BlendBone</identifier>
@@ -919,7 +919,7 @@
 								<row0>1.000000 0.000000 0.000000</row0>
 								<row1>0.000000 1.000000 0.000000</row1>
 								<row2>0.000000 0.000000 -1.000000</row2>
-								<row3>-1.918882 -0.345822 1.874036</row3>
+								<row3>-1.918882 -0.346000 1.874036</row3>
 							</transform>
 						</node>
 					</node>
@@ -939,14 +939,14 @@
 						<row0>1.000000 0.000000 0.000000</row0>
 						<row1>0.000000 1.000000 0.000000</row1>
 						<row2>0.000000 0.000000 1.000000</row2>
-						<row3>1.918882 -0.387916 -2.872348</row3>
+						<row3>1.918882 -0.500000 -2.872348</row3>
 					</transform>
 					<node>
 						<identifier>W_R15</identifier>
 						<transform>
 							<row0>1.000000 0.000000 0.000000</row0>
 							<row1>0.000000 1.000000 0.000000</row1>
-							<row2>-0.000000 -0.000000 1.000000</row2>
+							<row2>-0.000000 0.000000 1.000000</row2>
 							<row3>0.000000 0.345822 0.000000</row3>
 						</transform>
 						<node>
@@ -955,7 +955,7 @@
 								<row0>1.000000 0.000000 0.000000</row0>
 								<row1>0.000000 1.000000 0.000000</row1>
 								<row2>0.000000 0.000000 -1.000000</row2>
-								<row3>-1.918882 -0.457907 2.872348</row3>
+								<row3>-1.918882 -0.345822 2.872348</row3>
 							</transform>
 						</node>
 					</node>
@@ -965,7 +965,7 @@
 							<row0>1.000000 0.000000 0.000000</row0>
 							<row1>0.000000 1.000000 0.000000</row1>
 							<row2>0.000000 0.000000 -1.000000</row2>
-							<row3>-1.918882 -0.112084 2.872348</row3>
+							<row3>-1.918882 0.000000 2.872348</row3>
 						</transform>
 					</node>
 				</node>
@@ -1579,43 +1579,30 @@
 		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
 		<node>V_BlendBone</node>
 		<geometry>
-			<vertices>chassis_R0_Shape.vertices</vertices>
-			<primitive>chassis_R0_Shape.indices</primitive>
+			<vertices>chassis_RShape.vertices</vertices>
+			<primitive>chassis_RShape.indices</primitive>
 			<primitiveGroup>
 				0
 				<material>
-					<identifier>tank_chassis_01_skinned</identifier>
+					<identifier>tank_proxy_skinned</identifier>
 					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
-					<collisionFlags>0</collisionFlags>
 					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_proxy_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_proxy_AO.dds</Texture>
+					</property>
 					<property>
 						g_detailUVTiling
 						<Vector4>3.506850 3.506850 0.000000 0.000000</Vector4>
 					</property>
 					<property>
-						g_detailPowerGloss
-						<Float>
-							0.35
-							<!--BW_String-->
-						</Float>
-					</property>
-					<property>
-						g_detailPowerAlbedo
-						<Float>
-							0.11
-							<!--BW_String-->
-						</Float>
-					</property>
-					<property>
-						g_maskBias
-						<Float>
-							0.18
-							<!--BW_String-->
-						</Float>
-					</property>
-					<property>
-						g_detailPower
-						<Float>5</Float>
+						g_useDetailMetallic
+						<Bool>true</Bool>
 					</property>
 					<property>
 						metallicDetailMap
@@ -1629,16 +1616,8 @@
 						normalMap
 						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_proxy_ANM.dds</Texture>
 					</property>
-					<property>
-						diffuseMap
-						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_proxy_AM.dds</Texture>
-					</property>
-					<property>
-						excludeMaskAndAOMap
-						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_proxy_AO.dds</Texture>
-					</property>
 				</material>
-				<groupOrigin>1.255075 0.502081 -0.061565</groupOrigin>
+				<groupOrigin>1.560227 0.502081 -0.061565</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
@@ -1646,43 +1625,30 @@
 		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
 		<node>V_BlendBone</node>
 		<geometry>
-			<vertices>chassis_L0_Shape.vertices</vertices>
-			<primitive>chassis_L0_Shape.indices</primitive>
+			<vertices>chassis_LShape.vertices</vertices>
+			<primitive>chassis_LShape.indices</primitive>
 			<primitiveGroup>
 				0
 				<material>
-					<identifier>tank_chassis_01_skinned</identifier>
+					<identifier>tank_proxy_skinned</identifier>
 					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
-					<collisionFlags>0</collisionFlags>
 					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_proxy_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_proxy_AO.dds</Texture>
+					</property>
 					<property>
 						g_detailUVTiling
 						<Vector4>3.506850 3.506850 0.000000 0.000000</Vector4>
 					</property>
 					<property>
-						g_detailPowerGloss
-						<Float>
-							0.35
-							<!--BW_String-->
-						</Float>
-					</property>
-					<property>
-						g_detailPowerAlbedo
-						<Float>
-							0.11
-							<!--BW_String-->
-						</Float>
-					</property>
-					<property>
-						g_maskBias
-						<Float>
-							0.18
-							<!--BW_String-->
-						</Float>
-					</property>
-					<property>
-						g_detailPower
-						<Float>5</Float>
+						g_useDetailMetallic
+						<Bool>true</Bool>
 					</property>
 					<property>
 						metallicDetailMap
@@ -1696,150 +1662,8 @@
 						normalMap
 						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_proxy_ANM.dds</Texture>
 					</property>
-					<property>
-						diffuseMap
-						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_proxy_AM.dds</Texture>
-					</property>
-					<property>
-						excludeMaskAndAOMap
-						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_proxy_AO.dds</Texture>
-					</property>
 				</material>
-				<groupOrigin>-1.255075 0.502081 -0.061565</groupOrigin>
-			</primitiveGroup>
-		</geometry>
-	</renderSet>
-	<renderSet>
-		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
-		<node>V_BlendBone</node>
-		<geometry>
-			<vertices>chassis_R1_Shape.vertices</vertices>
-			<primitive>chassis_R1_Shape.indices</primitive>
-			<primitiveGroup>
-				0
-				<material>
-					<identifier>tank_chassis_01_skinned</identifier>
-					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
-					<collisionFlags>0</collisionFlags>
-					<materialKind>0</materialKind>
-					<property>
-						g_detailUVTiling
-						<Vector4>3.506850 3.506850 0.000000 0.000000</Vector4>
-					</property>
-					<property>
-						g_detailPowerGloss
-						<Float>
-							0.35
-							<!--BW_String-->
-						</Float>
-					</property>
-					<property>
-						g_detailPowerAlbedo
-						<Float>
-							0.11
-							<!--BW_String-->
-						</Float>
-					</property>
-					<property>
-						g_maskBias
-						<Float>
-							0.18
-							<!--BW_String-->
-						</Float>
-					</property>
-					<property>
-						g_detailPower
-						<Float>5</Float>
-					</property>
-					<property>
-						metallicDetailMap
-						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
-					</property>
-					<property>
-						metallicGlossMap
-						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_proxy_GMM.dds</Texture>
-					</property>
-					<property>
-						normalMap
-						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_proxy_ANM.dds</Texture>
-					</property>
-					<property>
-						diffuseMap
-						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_proxy_AM.dds</Texture>
-					</property>
-					<property>
-						excludeMaskAndAOMap
-						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_proxy_AO.dds</Texture>
-					</property>
-				</material>
-				<groupOrigin>1.839421 0.502081 -0.061565</groupOrigin>
-			</primitiveGroup>
-		</geometry>
-	</renderSet>
-	<renderSet>
-		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
-		<node>V_BlendBone</node>
-		<geometry>
-			<vertices>chassis_L1_Shape.vertices</vertices>
-			<primitive>chassis_L1_Shape.indices</primitive>
-			<primitiveGroup>
-				0
-				<material>
-					<identifier>tank_chassis_01_skinned</identifier>
-					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
-					<collisionFlags>0</collisionFlags>
-					<materialKind>0</materialKind>
-					<property>
-						g_detailUVTiling
-						<Vector4>3.506850 3.506850 0.000000 0.000000</Vector4>
-					</property>
-					<property>
-						g_detailPowerGloss
-						<Float>
-							0.35
-							<!--BW_String-->
-						</Float>
-					</property>
-					<property>
-						g_detailPowerAlbedo
-						<Float>
-							0.11
-							<!--BW_String-->
-						</Float>
-					</property>
-					<property>
-						g_maskBias
-						<Float>
-							0.18
-							<!--BW_String-->
-						</Float>
-					</property>
-					<property>
-						g_detailPower
-						<Float>5</Float>
-					</property>
-					<property>
-						metallicDetailMap
-						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
-					</property>
-					<property>
-						metallicGlossMap
-						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_proxy_GMM.dds</Texture>
-					</property>
-					<property>
-						normalMap
-						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_proxy_ANM.dds</Texture>
-					</property>
-					<property>
-						diffuseMap
-						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_proxy_AM.dds</Texture>
-					</property>
-					<property>
-						excludeMaskAndAOMap
-						<Texture>vehicles/chinese/Ch57_BZT_70/BZT_70_proxy_AO.dds</Texture>
-					</property>
-				</material>
-				<groupOrigin>-1.839421 0.502081 -0.061565</groupOrigin>
+				<groupOrigin>-1.560227 0.502081 -0.061565</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>

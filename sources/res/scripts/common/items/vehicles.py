@@ -449,6 +449,8 @@ class VehicleDescriptor(object):
     role = property(lambda self: self.type.role)
     isPitchHullAimingAvailable = property(lambda self: self.type.hullAimingParams['pitch']['isAvailable'])
     isYawHullAimingAvailable = property(lambda self: self.type.hullAimingParams['yaw']['isAvailable'])
+    isClipGun = property(lambda self: 'clip' in self.gun.tags)
+    isAutoReloadGun = property(lambda self: 'autoreload' in self.gun.tags)
 
     @property
     def circularVisionRadius(self):
@@ -1638,12 +1640,12 @@ class CompositeVehicleDescriptor(object):
     defaultVehicleDescr = property(lambda self: self.__vehicleDescr)
     siegeVehicleDescr = property(lambda self: self.__siegeDescr)
     vehicleMode = property(lambda self: self.__vehicleMode)
-    currentDescr = property(lambda self: self.__siegeDescr if self.__vehicleMode == VEHICLE_MODE.SIEGE else self.__vehicleDescr)
 
     def __init__(self, vehicleDescr, siegeDescr):
         self.__dict__['_CompositeVehicleDescriptor__vehicleDescr'] = vehicleDescr
         self.__dict__['_CompositeVehicleDescriptor__siegeDescr'] = siegeDescr
         self.__dict__['_CompositeVehicleDescriptor__vehicleMode'] = VEHICLE_MODE.DEFAULT
+        self.__dict__['currentDescr'] = vehicleDescr
         if IS_CLIENT:
             self.__siegeDescr.chassis.hitTesterManager = self.__vehicleDescr.chassis.hitTesterManager
             self.__siegeDescr.hull.hitTesterManager = self.__vehicleDescr.hull.hitTesterManager
@@ -1653,9 +1655,7 @@ class CompositeVehicleDescriptor(object):
             self.__siegeDescr.type.extrasDict = self.__vehicleDescr.type.extrasDict
 
     def __getattr__(self, item):
-        if self.__vehicleMode == VEHICLE_MODE.SIEGE:
-            return getattr(self.__siegeDescr, item)
-        return getattr(self.__vehicleDescr, item)
+        return getattr(self.currentDescr, item)
 
     def __setattr__(self, key, value):
         setattr(self.__siegeDescr, key, value)
@@ -1663,6 +1663,7 @@ class CompositeVehicleDescriptor(object):
 
     def onSiegeStateChanged(self, siegeState):
         self.__dict__['_CompositeVehicleDescriptor__vehicleMode'] = VEHICLE_SIEGE_STATE.getMode(siegeState)
+        self.__dict__['currentDescr'] = self.__siegeDescr if self.__vehicleMode == VEHICLE_MODE.SIEGE else self.__vehicleDescr
 
     def installComponent(self, compactDescr, positionIndex=0):
         self.__siegeDescr.installComponent(compactDescr, positionIndex)
@@ -7194,7 +7195,7 @@ def _readTemperatureMechanics(xmlCtx, section, paramName):
                 if subsection.has_key('coolingPerSec'):
                     stateCoolingPerSec = _xml.readPositiveInt(subXmlCtx, subsection, 'coolingPerSec')
                 if subsection.has_key('coolingOverheatPerSec'):
-                    stateCoolingOverheatPerSec = _xml.readNonNegativeFloat(subXmlCtx, subsection, 'coolingOverheatPerSec')
+                    stateCoolingOverheatPerSec = _xml.readPositiveInt(subXmlCtx, subsection, 'coolingOverheatPerSec')
                 state = gun_components.TemperatureGunParams.TemperatureGunState(temperature=maxTemperature, isOverheated=isOverheated, modifiers=modifiers, heatingPerShot=stateHeatingPerShot, heatingPerSec=stateHeatingPerSec, coolingPerSec=stateCoolingPerSec, coolingOverheatPerSec=stateCoolingOverheatPerSec, coolingDelay=stateCoolingDelay)
                 states.append(state)
 
@@ -7206,7 +7207,9 @@ def _readTemperatureMechanics(xmlCtx, section, paramName):
         temperatureRanges = [ state.temperature for state in states ]
         if len(temperatureRanges) != len(set(temperatureRanges)):
             _xml.raiseWrongXml(subXmlCtx, '', 'states with the same temperature range')
-        return gun_components.TemperatureGunParams(states=states, thermalStateHysteresis=thermalStateHysteresis, temperatureSegmentSize=temperatureSegmentSize)
+        temperatureThresholds = [ (minThreshold - thermalStateHysteresis, maxThreshold + thermalStateHysteresis) for minThreshold, maxThreshold in zip([0] + temperatureRanges[:-1], temperatureRanges)
+                                ]
+        return gun_components.TemperatureGunParams(states=states, temperatureThresholds=temperatureThresholds, temperatureSegmentSize=temperatureSegmentSize)
 
 
 def _readBrokenTrackLosses(xmlCtx, section):

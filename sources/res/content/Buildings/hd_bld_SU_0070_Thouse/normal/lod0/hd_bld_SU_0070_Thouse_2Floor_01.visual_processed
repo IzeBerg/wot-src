@@ -398,8 +398,8 @@
 				6
 				<material>
 					<identifier>s_nd1</identifier>
-					<collisionFlags>255</collisionFlags>
-					<materialKind>112</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>111</materialKind>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
 					<property>
 						g_fakeShadowsAndDetailParams
@@ -477,10 +477,6 @@
 						g_dirtColorParams
 						<Vector4>0.000000 0.770000 0.510000 0.380000</Vector4>
 					</property>
-					<property>
-						dynamicObject
-						<Bool>true</Bool>
-					</property>
 				</material>
 				<groupOrigin>0.025112 3.937527 0.180012</groupOrigin>
 			</primitiveGroup>
@@ -488,7 +484,7 @@
 				7
 				<material>
 					<identifier>s_nd0</identifier>
-					<collisionFlags>0</collisionFlags>
+					<collisionFlags>255</collisionFlags>
 					<materialKind>111</materialKind>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
 					<property>

@@ -44,6 +44,7 @@ from helpers import dependency, server_settings
 from helpers.CallbackDelayer import CallbackDelayer
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.shared import IItemsCache
+from frameworks.wulf.gui_constants import ShowingStatus
 _logger = logging.getLogger(__name__)
 
 class WtEventPortalAwards(WtEventBasePortalAwards, CallbackDelayer):
@@ -219,6 +220,7 @@ class WtEventPortalAwards(WtEventBasePortalAwards, CallbackDelayer):
         if not self._boxesCtrl.hasAccountEnoughMoneyForReRoll(self.__lootBoxType):
             shop.showBuyGoldForReroll(self.__rerollCost)
             return
+        Waiting.show('lootboxReroll')
         from gui.shared.money import Money
         dialogTitle = R.strings.dialogs.rerollReward.title()
         dialogContentDescription = R.strings.dialogs.rerollReward.message()
@@ -230,11 +232,17 @@ class WtEventPortalAwards(WtEventBasePortalAwards, CallbackDelayer):
         dialogTemplateView.addButton(ConfirmButton(R.strings.dialogs.rerollReward.confirm()))
         dialogTemplateView.addButton(CancelButton(R.strings.dialogs.rerollReward.cancel()))
         dialog = FullScreenDialogWindowWrapper(dialogTemplateView)
+        dialog.onShowingStatusChanged += self.__dialogShowingStatusChanged
         dialog.load()
         result = yield wg_await(dialog.wait())
+        dialog.onShowingStatusChanged -= self.__dialogShowingStatusChanged
         dialog.destroy()
         if result.result == DialogButtons.SUBMIT:
             self.__openMore(ReRollButton.REROLL)
+
+    def __dialogShowingStatusChanged(self, newStatus):
+        if newStatus == ShowingStatus.SHOWN:
+            Waiting.hide('lootboxReroll')
 
     def _claimReward(self):
         with self.viewModel.transaction() as (model):

@@ -338,6 +338,8 @@ package
       public static const DOWNLOAD_ACHIEVEMENTS20:String = "#waiting:download/achievements20";
       
       public static const LOOTBOXOPENINIG:String = "#waiting:lootboxOpeninig";
+      
+      public static const LOOTBOXREROLL:String = "#waiting:lootboxReroll";
        
       
       public function WAITING()

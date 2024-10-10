@@ -570,15 +570,6 @@
 									</transform>
 								</node>
 							</node>
-							<node>
-								<identifier>Lever_Joint_R0_BlendBone</identifier>
-								<transform>
-									<row0>1.000000 0.000000 0.000000</row0>
-									<row1>0.000000 1.000000 0.000000</row1>
-									<row2>0.000000 0.000000 -1.000000</row2>
-									<row3>-1.312238 -0.549018 -1.909978</row3>
-								</transform>
-							</node>
 						</node>
 						<node>
 							<identifier>Lever_Start_R0_BlendBone</identifier>
@@ -641,6 +632,15 @@
 										<row3>-1.420000 -0.549010 -0.859979</row3>
 									</transform>
 								</node>
+							</node>
+							<node>
+								<identifier>Lever_Joint_R1_BlendBone</identifier>
+								<transform>
+									<row0>1.000000 0.000000 0.000000</row0>
+									<row1>0.000000 1.000000 0.000000</row1>
+									<row2>0.000000 0.000000 -1.000000</row2>
+									<row3>-1.312238 -0.549010 -0.859979</row3>
+								</transform>
 							</node>
 						</node>
 						<node>
@@ -1061,8 +1061,8 @@
 		<node>Track_L2_BlendBone</node>
 		<node>Track_L1_BlendBone</node>
 		<node>Track_L0_BlendBone</node>
-		<node>V_BlendBone</node>
 		<node>Track_VT_L0_BlendBone</node>
+		<node>V_BlendBone</node>
 		<node>Track_VT_L1_BlendBone</node>
 		<geometry>
 			<vertices>track_L_Shape.vertices</vertices>
@@ -1124,8 +1124,8 @@
 		<node>Track_R2_BlendBone</node>
 		<node>Track_R1_BlendBone</node>
 		<node>Track_R0_BlendBone</node>
-		<node>V_BlendBone</node>
 		<node>Track_VT_R0_BlendBone</node>
+		<node>V_BlendBone</node>
 		<node>Track_VT_R1_BlendBone</node>
 		<geometry>
 			<vertices>track_R_Shape.vertices</vertices>
@@ -1182,50 +1182,67 @@
 	<renderSet>
 		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
 		<node>V_BlendBone</node>
-		<node>Lever_Joint_L0_BlendBone</node>
 		<node>Lever_Start_L0_BlendBone</node>
 		<node>Lever_Joint_L1_BlendBone</node>
 		<node>Lever_Joint_L2_BlendBone</node>
 		<node>Lever_Joint_L3_BlendBone</node>
 		<node>Lever_Joint_L4_BlendBone</node>
 		<node>Lever_Joint_L5_BlendBone</node>
-		<node>WD_L0_BlendBone</node>
+		<node>Lever_Joint_L0_BlendBone</node>
 		<node>W_L0_BlendBone</node>
 		<node>W_L1_BlendBone</node>
 		<node>W_L2_BlendBone</node>
 		<node>W_L3_BlendBone</node>
 		<node>W_L4_BlendBone</node>
 		<node>W_L5_BlendBone</node>
+		<node>WD_L0_BlendBone</node>
 		<node>WD_L1_BlendBone</node>
 		<geometry>
-			<vertices>exportChassL1_Shape.vertices</vertices>
-			<primitive>exportChassL1_Shape.indices</primitive>
+			<vertices>chassis_L_Shape.vertices</vertices>
+			<primitive>chassis_L_Shape.indices</primitive>
 			<primitiveGroup>
 				0
 				<material>
 					<identifier>tank_chassis_01_skinned</identifier>
 					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
-					<materialKind>0</materialKind>
 					<collisionFlags>0</collisionFlags>
-					<property>
-						diffuseMap
-						<Texture>vehicles/japan/J40_Type_71/_skins/J40_Type_71_3dst_Magnus/Type_71_3dst_Magnus_chassis_01_AM.dds</Texture>
-					</property>
-					<property>
-						excludeMaskAndAOMap
-						<Texture>vehicles/japan/J40_Type_71/_skins/J40_Type_71_3dst_Magnus/Type_71_3dst_Magnus_chassis_01_AO.dds</Texture>
-					</property>
+					<materialKind>0</materialKind>
 					<property>
 						g_detailUVTiling
-						<Vector4>4.208220 4.208220 0.000000 0.000000</Vector4>
+						<Vector4>3.506850 3.506850 0.000000 0.000000</Vector4>
 					</property>
 					<property>
-						g_useDetailMetallic
-						<Bool>true</Bool>
+						g_detailPowerGloss
+						<Float>
+							0.35
+							<!--BW_String-->
+						</Float>
+					</property>
+					<property>
+						g_detailPowerAlbedo
+						<Float>
+							0.11
+							<!--BW_String-->
+						</Float>
+					</property>
+					<property>
+						g_maskBias
+						<Float>
+							0.18
+							<!--BW_String-->
+						</Float>
+					</property>
+					<property>
+						g_detailPower
+						<Float>5</Float>
 					</property>
 					<property>
 						metallicDetailMap
 						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
 					</property>
 					<property>
 						metallicGlossMap
@@ -1234,6 +1251,14 @@
 					<property>
 						normalMap
 						<Texture>vehicles/japan/J40_Type_71/_skins/J40_Type_71_3dst_Magnus/Type_71_3dst_Magnus_chassis_01_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/japan/J40_Type_71/_skins/J40_Type_71_3dst_Magnus/Type_71_3dst_Magnus_chassis_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/japan/J40_Type_71/_skins/J40_Type_71_3dst_Magnus/Type_71_3dst_Magnus_chassis_01_AO.dds</Texture>
 					</property>
 				</material>
 				<groupOrigin>-1.309512 0.619309 0.718525</groupOrigin>
@@ -1243,50 +1268,66 @@
 	<renderSet>
 		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
 		<node>V_BlendBone</node>
-		<node>Lever_Joint_R0_BlendBone</node>
 		<node>Lever_Start_R0_BlendBone</node>
 		<node>Lever_Start_R1_BlendBone</node>
 		<node>Lever_Start_R2_BlendBone</node>
 		<node>Lever_Start_R3_BlendBone</node>
 		<node>Lever_Start_R4_BlendBone</node>
 		<node>Lever_Start_R5_BlendBone</node>
-		<node>WD_R0_BlendBone</node>
 		<node>W_R0_BlendBone</node>
 		<node>W_R1_BlendBone</node>
 		<node>W_R2_BlendBone</node>
 		<node>W_R3_BlendBone</node>
 		<node>W_R4_BlendBone</node>
 		<node>W_R5_BlendBone</node>
+		<node>WD_R0_BlendBone</node>
 		<node>WD_R1_BlendBone</node>
 		<geometry>
-			<vertices>exportChassR1_Shape.vertices</vertices>
-			<primitive>exportChassR1_Shape.indices</primitive>
+			<vertices>chassis_R_Shape.vertices</vertices>
+			<primitive>chassis_R_Shape.indices</primitive>
 			<primitiveGroup>
 				0
 				<material>
 					<identifier>tank_chassis_01_skinned</identifier>
 					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
-					<materialKind>0</materialKind>
 					<collisionFlags>0</collisionFlags>
-					<property>
-						diffuseMap
-						<Texture>vehicles/japan/J40_Type_71/_skins/J40_Type_71_3dst_Magnus/Type_71_3dst_Magnus_chassis_01_AM.dds</Texture>
-					</property>
-					<property>
-						excludeMaskAndAOMap
-						<Texture>vehicles/japan/J40_Type_71/_skins/J40_Type_71_3dst_Magnus/Type_71_3dst_Magnus_chassis_01_AO.dds</Texture>
-					</property>
+					<materialKind>0</materialKind>
 					<property>
 						g_detailUVTiling
-						<Vector4>4.208220 4.208220 0.000000 0.000000</Vector4>
+						<Vector4>3.506850 3.506850 0.000000 0.000000</Vector4>
 					</property>
 					<property>
-						g_useDetailMetallic
-						<Bool>true</Bool>
+						g_detailPowerGloss
+						<Float>
+							0.35
+							<!--BW_String-->
+						</Float>
+					</property>
+					<property>
+						g_detailPowerAlbedo
+						<Float>
+							0.11
+							<!--BW_String-->
+						</Float>
+					</property>
+					<property>
+						g_maskBias
+						<Float>
+							0.18
+							<!--BW_String-->
+						</Float>
+					</property>
+					<property>
+						g_detailPower
+						<Float>5</Float>
 					</property>
 					<property>
 						metallicDetailMap
 						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
 					</property>
 					<property>
 						metallicGlossMap
@@ -1295,6 +1336,14 @@
 					<property>
 						normalMap
 						<Texture>vehicles/japan/J40_Type_71/_skins/J40_Type_71_3dst_Magnus/Type_71_3dst_Magnus_chassis_01_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/japan/J40_Type_71/_skins/J40_Type_71_3dst_Magnus/Type_71_3dst_Magnus_chassis_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/japan/J40_Type_71/_skins/J40_Type_71_3dst_Magnus/Type_71_3dst_Magnus_chassis_01_AO.dds</Texture>
 					</property>
 				</material>
 				<groupOrigin>1.309512 0.619521 0.718511</groupOrigin>

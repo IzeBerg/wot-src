@@ -175,6 +175,7 @@ class ARENA_BONUS_TYPE_CAPS():
      lambda caps: (ARENA_BONUS_TYPE_CAPS.QUESTS in caps) != (ARENA_BONUS_TYPE_CAPS.AVATAR_QUESTS in caps) or ARENA_BONUS_TYPE_CAPS.QUESTS not in caps)
     _typeToCaps = {}
     OVERRIDE_BONUS_CAPS = None
+    defaultSet = frozenset()
 
     @staticmethod
     def init():
@@ -194,7 +195,7 @@ class ARENA_BONUS_TYPE_CAPS():
     @staticmethod
     def get(arenaBonusType, **kwargs):
         overrideCaps = kwargs.get('specificOverrides', ARENA_BONUS_TYPE_CAPS.OVERRIDE_BONUS_CAPS)
-        bonusCaps = ARENA_BONUS_TYPE_CAPS._typeToCaps.get(arenaBonusType, frozenset())
+        bonusCaps = ARENA_BONUS_TYPE_CAPS._typeToCaps.get(arenaBonusType, ARENA_BONUS_TYPE_CAPS.defaultSet)
         if not overrideCaps:
             return bonusCaps
         bonusCapsConfig = BonusCapsConfig(overrideCaps)

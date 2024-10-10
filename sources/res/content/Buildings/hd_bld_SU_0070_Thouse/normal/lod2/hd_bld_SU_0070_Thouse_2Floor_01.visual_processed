@@ -359,8 +359,8 @@
 				5
 				<material>
 					<identifier>s_nd1</identifier>
-					<collisionFlags>255</collisionFlags>
-					<materialKind>112</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>111</materialKind>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
 					<property>
 						g_fakeShadowsAndDetailParams
@@ -435,10 +435,6 @@
 						<Texture>content/Buildings/hd_bld_SU_0070_Thouse/hd_bld_SU_0070_Thouse_2Floor_01_GCM.dds</Texture>
 					</property>
 					<property>
-						dynamicObject
-						<Bool>true</Bool>
-					</property>
-					<property>
 						g_dirtColorParams
 						<Vector4>0.000000 0.770000 0.510000 0.380000</Vector4>
 					</property>
@@ -449,7 +445,7 @@
 				6
 				<material>
 					<identifier>s_nd0</identifier>
-					<collisionFlags>0</collisionFlags>
+					<collisionFlags>255</collisionFlags>
 					<materialKind>111</materialKind>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
 					<property>

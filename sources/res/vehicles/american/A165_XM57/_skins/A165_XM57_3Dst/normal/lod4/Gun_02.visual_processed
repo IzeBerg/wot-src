@@ -65,6 +65,7 @@
 	</node>
 	<renderSet>
 		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>G_BlendBone</node>
 		<node>Gun_BlendBone</node>
 		<geometry>
 			<vertices>gun_02_Shape.vertices</vertices>
@@ -73,10 +74,6 @@
 				0
 				<material>
 					<identifier>tank_proxy_skinned</identifier>
-					<property>
-						doubleSided
-						<Bool>false</Bool>
-					</property>
 					<collisionFlags>0</collisionFlags>
 					<materialKind>0</materialKind>
 					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
@@ -111,10 +108,6 @@
 					<property>
 						alphaTestEnable
 						<Bool>true</Bool>
-					</property>
-					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
 					</property>
 				</material>
 				<groupOrigin>-0.018907 -0.012530 -2.681901</groupOrigin>

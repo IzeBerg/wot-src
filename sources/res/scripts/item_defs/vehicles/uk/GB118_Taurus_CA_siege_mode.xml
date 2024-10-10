@@ -2193,12 +2193,18 @@
 			</models>
 			<traces>
 				<lodDist>MEDIUM</lodDist>
-				<bufferPrefs>mediumTank</bufferPrefs>
-				<textureSet>usa_03</textureSet>
-				<size>
-					0.55 0.67
-					<!--BW_String-->
-				</size>
+				<activePostmortem>false</activePostmortem>
+				<tracesParams>
+					<trackPairIdx>0</trackPairIdx>
+					<bufferPrefs>mediumTank</bufferPrefs>
+					<textureSet>usa_03</textureSet>
+					<size>
+						0.55 0.67
+						<!--BW_String-->
+					</size>
+					<offset>0 0</offset>
+					<centerOffsetFactor>1 1</centerOffsetFactor>
+				</tracesParams>
 			</traces>
 			<tracks>
 				<lodDist>MEDIUM_TRACK</lodDist>
@@ -2258,28 +2264,40 @@
 							</wheelGroups>
 							<hullCollider>
 								<boxCollider>
-									<row0>0.700000 0.000000 -0.000000</row0>
-									<row1>0.000000 0.300000 -0.000000</row1>
-									<row2>-0.000000 0.000000 6.323282</row2>
-									<row3>-1.389405 1.414497 0.005368</row3>
+									<row0>0.700000 0.000000 0.000000</row0>
+									<row1>0.000000 0.300000 0.000000</row1>
+									<row2>0.000000 0.000000 6.323282</row2>
+									<row3>-1.389405 1.400923 0.005368</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>0.300000 0.000000 0.000000</row0>
+									<row1>0.000000 1.100000 0.000000</row1>
+									<row2>0.000000 0.000000 6.500000</row2>
+									<row3>-1.810430 0.989244 0.018782</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>1.000000 0.000000 0.000000</row0>
+									<row1>0.000000 0.632852 -0.299162</row1>
+									<row2>0.000000 0.213687 0.452037</row2>
+									<row3>-1.244877 1.215869 3.364832</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>1.000000 0.000000 0.000000</row0>
+									<row1>-0.000000 -0.440855 -0.543734</row1>
+									<row2>0.000000 0.388381 -0.314896</row2>
+									<row3>-1.192452 1.456182 -3.105862</row3>
 								</boxCollider>
 								<boxCollider>
 									<row0>0.300000 0.000000 0.000000</row0>
 									<row1>0.000000 1.000000 0.000000</row1>
 									<row2>-0.000000 0.000000 6.323280</row2>
-									<row3>-1.810430 0.989244 0.018782</row3>
+									<row3>-0.940218 0.769922 0.018782</row3>
 								</boxCollider>
 								<boxCollider>
-									<row0>1.000000 -0.000000 -0.000000</row0>
-									<row1>0.000000 0.632852 -0.299162</row1>
-									<row2>0.000000 0.213687 0.452037</row2>
-									<row3>-1.189794 1.215868 3.368290</row3>
-								</boxCollider>
-								<boxCollider>
-									<row0>1.000000 -0.000000 0.000000</row0>
-									<row1>0.000000 -0.440855 -0.543734</row1>
-									<row2>0.000000 0.388381 -0.314896</row2>
-									<row3>-1.192452 1.456182 -3.139626</row3>
+									<row0>1.200000 0.000000 -0.000000</row0>
+									<row1>0.000000 1.000000 0.000000</row1>
+									<row2>0.000000 0.000000 7.000000</row2>
+									<row3>-0.211835 0.942020 0.000001</row3>
 								</boxCollider>
 							</hullCollider>
 						</physicalParams>
@@ -2335,12 +2353,6 @@
 							</wheelGroups>
 							<hullCollider>
 								<boxCollider>
-									<row0>2.100000 0.000000 -0.000000</row0>
-									<row1>0.000000 1.500000 -0.000000</row1>
-									<row2>-0.000000 0.000000 6.500000</row2>
-									<row3>-0.025645 1.240338 0.104659</row3>
-								</boxCollider>
-								<boxCollider>
 									<row0>0.700000 0.000000 -0.000000</row0>
 									<row1>0.000000 0.300000 -0.000000</row1>
 									<row2>-0.000000 0.000000 6.323282</row2>
@@ -2348,8 +2360,8 @@
 								</boxCollider>
 								<boxCollider>
 									<row0>0.300000 0.000000 0.000000</row0>
-									<row1>0.000000 1.000000 0.000000</row1>
-									<row2>-0.000000 0.000000 6.323280</row2>
+									<row1>0.000000 1.100000 0.000000</row1>
+									<row2>0.000000 0.000000 6.500000</row2>
 									<row3>1.784594 0.989245 0.018782</row3>
 								</boxCollider>
 								<boxCollider>
@@ -2359,10 +2371,22 @@
 									<row3>1.189794 1.215868 3.368290</row3>
 								</boxCollider>
 								<boxCollider>
-									<row0>1.000000 -0.000000 -0.000001</row0>
+									<row0>1.000000 0.000000 -0.000001</row0>
 									<row1>-0.000001 -0.440855 -0.543734</row1>
-									<row2>-0.000000 0.388381 -0.314896</row2>
-									<row3>1.192452 1.456182 -3.139626</row3>
+									<row2>0.000000 0.388381 -0.314896</row2>
+									<row3>1.192452 1.456182 -3.103820</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>0.300000 0.000000 -0.000000</row0>
+									<row1>0.000000 1.100000 0.000000</row1>
+									<row2>0.000000 0.000000 6.500000</row2>
+									<row3>0.929840 0.770000 0.018781</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>1.200000 0.000000 -0.000000</row0>
+									<row1>0.000000 1.000000 0.000000</row1>
+									<row2>0.000000 0.000000 7.000000</row2>
+									<row3>0.212000 0.942020 0.000001</row3>
 								</boxCollider>
 							</hullCollider>
 						</physicalParams>
@@ -2542,7 +2566,7 @@
 					<jointNode>Lever_Joint_L1</jointNode>
 					<trackNode>Track_L1</trackNode>
 					<limits>
-						199.0 155.0
+						205.0 140.0
 						<!--BW_String-->
 					</limits>
 				</lever>
@@ -2551,7 +2575,7 @@
 					<jointNode>Lever_Joint_R1</jointNode>
 					<trackNode>Track_R1</trackNode>
 					<limits>
-						199.0 155.0
+						205.0 140.0
 						<!--BW_String-->
 					</limits>
 				</lever>
@@ -2596,7 +2620,7 @@
 					<jointNode>Lever_Joint_L4</jointNode>
 					<trackNode>Track_L4</trackNode>
 					<limits>
-						199.0 155.0
+						205.0 140.0
 						<!--BW_String-->
 					</limits>
 				</lever>
@@ -2605,7 +2629,7 @@
 					<jointNode>Lever_Joint_R4</jointNode>
 					<trackNode>Track_R4</trackNode>
 					<limits>
-						199.0 155.0
+						205.0 140.0
 						<!--BW_String-->
 					</limits>
 				</lever>
@@ -2677,188 +2701,6 @@
 				6.0
 				<!--BW_String-->
 			</navmeshGirth>
-			<trackNodes>
-				<enable>true</enable>
-				<linkBones>false</linkBones>
-				<maxAmplitude>
-					0.1
-					<!--BW_String-->
-				</maxAmplitude>
-				<maxOffset>
-					0.1
-					<!--BW_String-->
-				</maxOffset>
-				<gravity>
-					-9.8
-					<!--BW_String-->
-				</gravity>
-				<elasticity>1300</elasticity>
-				<damping>2</damping>
-				<node>
-					<isLeft>true</isLeft>
-					<name>Track_VD_L0</name>
-					<forwardElastK>
-						0.5
-						<!--BW_String-->
-					</forwardElastK>
-				</node>
-				<node>
-					<isLeft>true</isLeft>
-					<name>Track_VD_L1</name>
-					<backwardElastK>
-						0.8
-						<!--BW_String-->
-					</backwardElastK>
-				</node>
-				<node>
-					<isLeft>false</isLeft>
-					<name>Track_VD_R0</name>
-					<forwardElastK>
-						0.5
-						<!--BW_String-->
-					</forwardElastK>
-				</node>
-				<node>
-					<isLeft>false</isLeft>
-					<name>Track_VD_R1</name>
-					<backwardElastK>
-						0.8
-						<!--BW_String-->
-					</backwardElastK>
-				</node>
-				<node>
-					<isLeft>true</isLeft>
-					<name>Track_VT_L0</name>
-					<forwardElastK>2</forwardElastK>
-					<backwardElastK>
-						0.8
-						<!--BW_String-->
-					</backwardElastK>
-				</node>
-				<node>
-					<isLeft>true</isLeft>
-					<name>Track_VT_L1</name>
-					<forwardElastK>2</forwardElastK>
-					<backwardElastK>
-						0.8
-						<!--BW_String-->
-					</backwardElastK>
-				</node>
-				<node>
-					<isLeft>true</isLeft>
-					<name>Track_VT_L2</name>
-					<forwardElastK>2</forwardElastK>
-					<backwardElastK>
-						0.8
-						<!--BW_String-->
-					</backwardElastK>
-				</node>
-				<node>
-					<isLeft>true</isLeft>
-					<name>Track_VT_L3</name>
-					<forwardElastK>2</forwardElastK>
-					<backwardElastK>
-						0.8
-						<!--BW_String-->
-					</backwardElastK>
-				</node>
-				<node>
-					<isLeft>false</isLeft>
-					<name>Track_VT_R0</name>
-					<forwardElastK>2</forwardElastK>
-					<backwardElastK>
-						0.8
-						<!--BW_String-->
-					</backwardElastK>
-				</node>
-				<node>
-					<isLeft>false</isLeft>
-					<name>Track_VT_R1</name>
-					<forwardElastK>2</forwardElastK>
-					<backwardElastK>
-						0.8
-						<!--BW_String-->
-					</backwardElastK>
-				</node>
-				<node>
-					<isLeft>false</isLeft>
-					<name>Track_VT_R2</name>
-					<forwardElastK>2</forwardElastK>
-					<backwardElastK>
-						0.8
-						<!--BW_String-->
-					</backwardElastK>
-				</node>
-				<node>
-					<isLeft>false</isLeft>
-					<name>Track_VT_R3</name>
-					<forwardElastK>2</forwardElastK>
-					<backwardElastK>
-						0.8
-						<!--BW_String-->
-					</backwardElastK>
-				</node>
-			</trackNodes>
-			<trackThickness>
-				0.001
-				<!--BW_String-->
-			</trackThickness>
-			<groundNodes>
-				<group>
-					<template>Track_L</template>
-					<startIndex>0</startIndex>
-					<count>6</count>
-					<isLeft>true</isLeft>
-					<minOffset>
-						-0.1
-						<!--BW_String-->
-					</minOffset>
-					<maxOffset>
-						0.3
-						<!--BW_String-->
-					</maxOffset>
-				</group>
-				<group>
-					<template>Track_R</template>
-					<startIndex>0</startIndex>
-					<count>6</count>
-					<isLeft>false</isLeft>
-					<minOffset>
-						-0.1
-						<!--BW_String-->
-					</minOffset>
-					<maxOffset>
-						0.3
-						<!--BW_String-->
-					</maxOffset>
-				</group>
-			</groundNodes>
-			<splineDesc>
-				<trackPair>
-					<trackPairIdx>0</trackPairIdx>
-					<segmentModelLeft>vehicles/british/GB118_Taurus_CA/track/segment_01.model</segmentModelLeft>
-					<segmentModelRight>vehicles/british/GB118_Taurus_CA/track/segment_01.model</segmentModelRight>
-					<left>vehicles/british/GB118_Taurus_CA/track/left.track</left>
-					<right>vehicles/british/GB118_Taurus_CA/track/right.track</right>
-					<segmentLength>
-						0.14
-						<!--BW_String-->
-					</segmentLength>
-					<segmentOffset>
-						0.08
-						<!--BW_String-->
-					</segmentOffset>
-					<segment2Offset>
-						0.1
-						<!--BW_String-->
-					</segment2Offset>
-					<atlas>
-						<UTiles>1</UTiles>
-						<VTiles>1</VTiles>
-					</atlas>
-				</trackPair>
-				<lodDist>SPLINE_TRACK</lodDist>
-			</splineDesc>
 			<physicalTracks>
 				<left>
 					<segmentsCount>96</segmentsCount>
@@ -2881,11 +2723,14 @@
 						<forwardMovement>
 							<back>0.117238</back>
 							<top>
-								0.12685
+								0.11
 								<!--BW_String-->
 							</top>
 							<front>0.143956</front>
-							<bottom>0.124277</bottom>
+							<bottom>
+								0.1
+								<!--BW_String-->
+							</bottom>
 						</forwardMovement>
 					</springsLength>
 					<mainSegment>
@@ -3134,13 +2979,16 @@
 						</backwardMovement>
 						<forwardMovement>
 							<back>0.130433</back>
-							<top>0.130697</top>
+							<top>
+								0.08
+								<!--BW_String-->
+							</top>
 							<front>
 								0.14399
 								<!--BW_String-->
 							</front>
 							<bottom>
-								0.1188
+								0.1
 								<!--BW_String-->
 							</bottom>
 						</forwardMovement>

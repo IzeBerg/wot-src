@@ -43,7 +43,7 @@ if typing.TYPE_CHECKING:
     from gui.shared.gui_items.gui_item_economics import ItemPrice
     from gui.shared.gui_items.loot_box import LootBox, LootBoxKey
     from gui.shared.gui_items.Tankman import TankmanSkill
-    from gui.shared.money import Money, DynamicMoney, CURRENCY_TYPE
+    from gui.shared.money import Currency, DynamicMoney, Money, CURRENCY_TYPE
     from gui.shared.utils.requesters.EpicMetaGameRequester import EpicMetaGameRequester
     from helpers.server_settings import BattleRoyaleConfig, EpicGameConfig, GiftSystemConfig, RankedBattlesConfig, VehiclePostProgressionConfig, _MapboxConfig, Comp7Config, WinbackConfig, EarlyAccessConfig, ModeSelectorConfig
     from items.vehicles import VehicleType
@@ -3217,7 +3217,7 @@ class IArmoryYardController(IGameController):
     def getFinalRewardVehicle(self):
         raise NotImplementedError
 
-    def getCurrencyTokenCost(self):
+    def getCurrencyTokenCost(self, currency):
         raise NotImplementedError
 
     def isActive(self):

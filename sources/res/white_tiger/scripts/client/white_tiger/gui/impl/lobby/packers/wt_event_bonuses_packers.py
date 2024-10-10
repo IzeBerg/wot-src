@@ -76,10 +76,9 @@ class WTCrewBookBonusUIPacker(CrewBookBonusUIPacker):
 
     @classmethod
     def _getToolTip(cls, bonus):
-        xp = bonus.getXP()
         bookType = bonus.getBookType()
         return [
-         createTooltipData(tooltip=makeTooltip(backport.text(R.strings.tooltips.crewBooks.storage.filters.dyn(bookType).title()), backport.text(R.strings.tooltips.selectableCrewbook.info(), exp=xp)))]
+         createTooltipData(tooltip=makeTooltip(backport.text(R.strings.tooltips.crewBooks.storage.filters.dyn(bookType).title()), backport.text(R.strings.tooltips.WTAnyCrewbook.info())))]
 
 
 class WTCrewSkinBonusUIPacker(CrewSkinBonusUIPacker):
@@ -346,7 +345,7 @@ class WtVehiclesBonusUIPacker(VehiclesBonusUIPacker):
 
     @classmethod
     def _getLabel(cls, vehicle):
-        return vehicle.shortUserName
+        return vehicle.userName
 
     @classmethod
     def _getCompensationPacker(cls):

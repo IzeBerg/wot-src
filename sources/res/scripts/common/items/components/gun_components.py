@@ -33,12 +33,12 @@ class TemperatureGunParams(object):
     TemperatureGunState = namedtuple('TemperatureGunState', [
      'temperature', 'modifiers', 'isOverheated', 'heatingPerShot', 'heatingPerSec', 'coolingPerSec',
      'coolingOverheatPerSec', 'coolingDelay'])
-    __slots__ = ('states', 'thermalStateHysteresis', 'temperatureSegmentSize')
+    __slots__ = ('states', 'temperatureThresholds', 'temperatureSegmentSize')
 
-    def __init__(self, states, thermalStateHysteresis, temperatureSegmentSize):
+    def __init__(self, states, temperatureThresholds, temperatureSegmentSize):
         self.states = states
-        self.thermalStateHysteresis = thermalStateHysteresis
+        self.temperatureThresholds = temperatureThresholds
         self.temperatureSegmentSize = temperatureSegmentSize
 
     def __repr__(self):
-        return ('TemperatureGunParams(states = {}, thermalStateHysteresis = {}, temperatureSegmentSize = {}))').format(self.states, self.thermalStateHysteresis, self.temperatureSegmentSize)
+        return ('TemperatureGunParams(states = {}, temperatureThresholds = {}, temperatureSegmentSize = {}))').format(self.states, self.temperatureThresholds, self.temperatureSegmentSize)

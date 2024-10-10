@@ -68,38 +68,108 @@
 		<node>Gun_BlendBone</node>
 		<node>G_BlendBone</node>
 		<geometry>
-			<vertices>gun_02_Shape.vertices</vertices>
-			<primitive>gun_02_Shape.indices</primitive>
+			<vertices>gun_02Shape.vertices</vertices>
+			<primitive>gun_02Shape.indices</primitive>
 			<primitiveGroup>
 				0
 				<material>
 					<identifier>tank_guns_skinned</identifier>
-					<property>
-						doubleSided
-						<Bool>false</Bool>
-					</property>
+					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
 					<collisionFlags>0</collisionFlags>
 					<materialKind>0</materialKind>
-					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<property>
+						g_detailUVTiling
+						<Vector4>
+							3.50685 3.50685 0.000000 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_detailPowerGloss
+						<Float>
+							0.35
+							<!--BW_String-->
+						</Float>
+					</property>
+					<property>
+						g_detailPowerAlbedo
+						<Float>
+							0.11
+							<!--BW_String-->
+						</Float>
+					</property>
+					<property>
+						g_maskBias
+						<Float>
+							0.18
+							<!--BW_String-->
+						</Float>
+					</property>
+					<property>
+						g_detailPower
+						<Float>5</Float>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_useNormalPackDXT1
+						<Bool>false</Bool>
+					</property>
 					<property>
 						metallicGlossMap
-						<Texture>vehicles/american/A165_XM57/_skins/A165_XM57_3Dst/XM57_3Dst_guns_GMM.dds</Texture>
+						<Texture>vehicles/american/A165_XM57/XM57_guns_GMM.dds</Texture>
 					</property>
 					<property>
 						normalMap
-						<Texture>vehicles/american/A165_XM57/_skins/A165_XM57_3Dst/XM57_3Dst_guns_ANM.dds</Texture>
+						<Texture>vehicles/american/A165_XM57/XM57_guns_ANM.dds</Texture>
 					</property>
 					<property>
 						diffuseMap
-						<Texture>vehicles/american/A165_XM57/_skins/A165_XM57_3Dst/XM57_3Dst_guns_AM.dds</Texture>
+						<Texture>vehicles/american/A165_XM57/XM57_guns_AM.dds</Texture>
 					</property>
 					<property>
 						excludeMaskAndAOMap
-						<Texture>vehicles/american/A165_XM57/_skins/A165_XM57_3Dst/XM57_3Dst_guns_AO.dds</Texture>
+						<Texture>vehicles/american/A165_XM57/XM57_guns_AO.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.012372 0.024068 -2.715747</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>tank_net_skinned</identifier>
+					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						alphaReference
+						<Int>64</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
 					</property>
 					<property>
 						colorIdMap
-						<Texture>vehicles/american/A165_XM57/_skins/A165_XM57_3Dst/XM57_3Dst_guns_ID.dds</Texture>
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/american/A165_XM57/_skins/A165_XM57_3Dst/XM57_3Dst_net_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/american/A165_XM57/_skins/A165_XM57_3Dst/XM57_3Dst_net_AO.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>0.876712 1.753430 0.000000 0.000000</Vector4>
 					</property>
 					<property>
 						g_useDetailMetallic
@@ -110,31 +180,27 @@
 						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
 					</property>
 					<property>
-						g_detailUVTiling
-						<Vector4>3.506849 3.506849 0.000000 0.000000</Vector4>
+						metallicGlossMap
+						<Texture>vehicles/american/A165_XM57/_skins/A165_XM57_3Dst/XM57_3Dst_net_GMM.dds</Texture>
 					</property>
 					<property>
-						alphaReference
-						<Int>64</Int>
+						normalMap
+						<Texture>vehicles/american/A165_XM57/_skins/A165_XM57_3Dst/XM57_3Dst_net_ANM.dds</Texture>
 					</property>
 					<property>
-						alphaTestEnable
+						doubleSided
 						<Bool>true</Bool>
 					</property>
-					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
-					</property>
 				</material>
-				<groupOrigin>-0.012372 0.024066 -2.715748</groupOrigin>
+				<groupOrigin>-0.041048 -0.001062 -2.756404</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<constraints/>
 	<boundingBox>
-		<min>-0.411654 -0.315434 -0.228515</min>
-		<max>0.386910 0.363565 5.660010</max>
+		<min>-0.411655 -0.340826 -0.228516</min>
+		<max>0.386910 0.363568 5.660010</max>
 	</boundingBox>
-	<geometrySize>164872</geometrySize>
+	<geometrySize>295700</geometrySize>
 	<minUVDensity>0.029966</minUVDensity>
 </root>

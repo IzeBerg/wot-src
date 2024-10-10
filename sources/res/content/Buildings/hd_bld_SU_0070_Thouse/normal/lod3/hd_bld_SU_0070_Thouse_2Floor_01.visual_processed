@@ -72,25 +72,25 @@
 			<primitiveGroup>
 				1
 				<material>
-					<identifier>s_nd0</identifier>
-					<collisionFlags>0</collisionFlags>
-					<materialKind>111</materialKind>
+					<identifier>s_nd1</identifier>
 					<fx>shaders/std_effects/PBS_ext.fx</fx>
-					<property>
-						g_enableAO
-						<Bool>true</Bool>
-					</property>
+					<materialKind>111</materialKind>
+					<collisionFlags>0</collisionFlags>
 					<property>
 						diffuseMap
 						<Texture>content/Buildings/hd_bld_SU_0070_Thouse/hd_bld_SU_0070_Thouse_2Floor_01_BAM.dds</Texture>
 					</property>
 					<property>
-						normalMap
-						<Texture>content/Buildings/hd_bld_SU_0070_Thouse/hd_bld_SU_0070_Thouse_2Floor_01_BANM.dds</Texture>
+						g_enableAO
+						<Bool>true</Bool>
 					</property>
 					<property>
 						metallicGlossMap
 						<Texture>content/Buildings/hd_bld_SU_0070_Thouse/hd_bld_SU_0070_Thouse_2Floor_01_BGMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Buildings/hd_bld_SU_0070_Thouse/hd_bld_SU_0070_Thouse_2Floor_01_BANM.dds</Texture>
 					</property>
 				</material>
 				<groupOrigin>0.003115 4.153954 0.264499</groupOrigin>
