@@ -173,12 +173,6 @@ class VEHICLE_TAGS(CONST_CONTAINER):
     COMP7_BATTLES = 'comp7'
     WOT_PLUS = constants.VEHICLE_WOT_PLUS_TAG
     NO_CREW_TRANSFER_PENALTY_TAG = constants.VEHICLE_NO_CREW_TRANSFER_PENALTY_TAG
-    EVENT_BOSS = 'event_boss'
-    EVENT_MINI_BOSS = 'event_mini_boss'
-    EVENT_HUNTER = 'event_hunter'
-    EVENT_BOT = 'event_bot'
-    EVENT_SPECIAL_BOSS = 'special_event_boss'
-    EVENT_VEHS = frozenset((EVENT_BOSS, EVENT_HUNTER))
 
 
 DISCLAIMER_TAGS = frozenset((VEHICLE_TAGS.T34_DISCLAIMER,))
@@ -204,18 +198,19 @@ EliteStatusProgress = typing.NamedTuple('EliteStatusProgress', (
 NO_VEHICLE_ID = -1
 
 class Vehicle(FittingItem):
-    __slots__ = ('__customState', '_inventoryID', '_xp', '_dailyXPFactor', '_isElite',
-                 '_isFullyElite', '_clanLock', '_isUnique', '_rentPackages', '_rentPackagesInfo',
-                 '_isDisabledForBuy', '_isSelected', '_restorePrice', '_tradeInAvailable',
-                 '_tradeOffAvailable', '_tradeOffPriceFactor', '_tradeOffPrice',
-                 '_searchableUserName', '_personalDiscountPrice', '_rotationGroupNum',
-                 '_rotationBattlesLeft', '_isRotationGroupLocked', '_isInfiniteRotationGroup',
-                 '_settings', '_lock', '_repairCost', '_health', '_gun', '_turret',
-                 '_engine', '_chassis', '_radio', '_fuelTank', '_equipment', '_bonuses',
-                 '_crewIndices', '_slotsIds', '_crew', '_lastCrew', '_hasModulesToSelect',
-                 '_outfitComponents', '_isStyleInstalled', '_slotsAnchors', '_unlockedBy',
-                 '_maxRentDuration', '_minRentDuration', '_slotsAnchorsById', '_hasNationGroup',
-                 '_extraSettings', '_groupIDs', '_postProgression', '_invData', '_proxy')
+    __slots__ = ('__customState', '__weakref__', '_inventoryID', '_xp', '_dailyXPFactor',
+                 '_isElite', '_isFullyElite', '_clanLock', '_isUnique', '_rentPackages',
+                 '_rentPackagesInfo', '_isDisabledForBuy', '_isSelected', '_restorePrice',
+                 '_tradeInAvailable', '_tradeOffAvailable', '_tradeOffPriceFactor',
+                 '_tradeOffPrice', '_searchableUserName', '_personalDiscountPrice',
+                 '_rotationGroupNum', '_rotationBattlesLeft', '_isRotationGroupLocked',
+                 '_isInfiniteRotationGroup', '_settings', '_lock', '_repairCost',
+                 '_health', '_gun', '_turret', '_engine', '_chassis', '_radio', '_fuelTank',
+                 '_equipment', '_bonuses', '_crewIndices', '_slotsIds', '_crew',
+                 '_lastCrew', '_hasModulesToSelect', '_outfitComponents', '_isStyleInstalled',
+                 '_slotsAnchors', '_unlockedBy', '_maxRentDuration', '_minRentDuration',
+                 '_slotsAnchorsById', '_hasNationGroup', '_extraSettings', '_groupIDs',
+                 '_postProgression', '_invData', '_proxy')
 
     class VEHICLE_STATE(object):
         DAMAGED = 'damaged'
@@ -230,7 +225,6 @@ class Vehicle(FittingItem):
         AMMO_NOT_FULL_EVENTS = 'ammoNotFullEvents'
         SERVER_RESTRICTION = 'serverRestriction'
         RENTAL_IS_OVER = 'rentalIsOver'
-        RENTAL_IS_OVER_BATTLE = 'rentalBattleIsOver'
         IGR_RENTAL_IS_OVER = 'igrRentalIsOver'
         IN_PREMIUM_IGR_ONLY = 'inPremiumIgrOnly'
         GROUP_IS_NOT_READY = 'group_is_not_ready'
@@ -239,9 +233,8 @@ class Vehicle(FittingItem):
         UNSUITABLE_TO_QUEUE = 'unsuitableToQueue'
         UNSUITABLE_TO_UNIT = 'unsuitableToUnit'
         WILL_BE_UNLOCKED_IN_BATTLE = 'willBeUnlockedInBattle'
-        TICKETS_SHORTAGE = 'ticketsShortage'
-        CUSTOM = (UNSUITABLE_TO_QUEUE, UNSUITABLE_TO_UNIT, WILL_BE_UNLOCKED_IN_BATTLE, TICKETS_SHORTAGE)
-        UNSUITABLE = (UNSUITABLE_TO_QUEUE, UNSUITABLE_TO_UNIT, TICKETS_SHORTAGE)
+        CUSTOM = (UNSUITABLE_TO_QUEUE, UNSUITABLE_TO_UNIT, WILL_BE_UNLOCKED_IN_BATTLE)
+        UNSUITABLE = (UNSUITABLE_TO_QUEUE, UNSUITABLE_TO_UNIT)
         DEAL_IS_OVER = 'dealIsOver'
         ROTATION_GROUP_UNLOCKED = 'rotationGroupUnlocked'
         ROTATION_GROUP_LOCKED = 'rotationGroupLocked'
@@ -1038,12 +1031,12 @@ class Vehicle(FittingItem):
         return self._rentInfo.isTelecomRent
 
     @property
-    def type(self):
-        return set(vehicles.VEHICLE_CLASS_TAGS & self.tags).pop()
+    def isExternalRent(self):
+        return self._rentInfo.isExternalRent
 
     @property
-    def eventType(self):
-        return set(VEHICLE_TAGS.EVENT_VEHS & self.tags).pop()
+    def type(self):
+        return set(vehicles.VEHICLE_CLASS_TAGS & self.tags).pop()
 
     @property
     def typeUserName(self):
@@ -1073,7 +1066,11 @@ class Vehicle(FittingItem):
 
     @property
     def isAmmoFull(self):
-        return sum(itemData[1] or 0 for itemData in self.shells.installed.getStorage if itemData) >= self.ammoMinSize or self.isOnlyForBattleRoyaleBattles
+        return sum(itemData[1] for itemData in self.shells.installed.getStorage if itemData) >= self.ammoMinSize or self.isOnlyForBattleRoyaleBattles
+
+    @property
+    def isAmmoEmpty(self):
+        return sum(itemData[1] for itemData in self.shells.installed.getStorage if itemData) == 0 and not self.isOnlyForBattleRoyaleBattles
 
     @property
     def isAmmoNotFullInSetups(self):
@@ -1118,14 +1115,6 @@ class Vehicle(FittingItem):
     @property
     def isScout(self):
         return checkForTags(self.tags, 'scout')
-
-    @property
-    def isSquadRestricted(self):
-        return checkForTags(self.tags, 'squad_restricted')
-
-    @property
-    def isOnlyForRandomBattles(self):
-        return checkForTags(self.tags, 'random_only')
 
     @property
     def isTrackWithinTrack(self):
@@ -1186,8 +1175,6 @@ class Vehicle(FittingItem):
             ms = Vehicle.VEHICLE_STATE.NOT_PRESENT
         if self.isInBattle:
             ms = Vehicle.VEHICLE_STATE.BATTLE
-        elif self.rentInfo.anyExpires and self.rentalIsOver and self.rentInfo.getTimeLeft() > 0:
-            ms = Vehicle.VEHICLE_STATE.RENTAL_IS_OVER_BATTLE
         elif self.rentalIsOver:
             ms = Vehicle.VEHICLE_STATE.RENTAL_IS_OVER
             if self.isPremiumIGR:
@@ -1266,7 +1253,6 @@ class Vehicle(FittingItem):
          Vehicle.VEHICLE_STATE.DESTROYED,
          Vehicle.VEHICLE_STATE.SERVER_RESTRICTION,
          Vehicle.VEHICLE_STATE.RENTAL_IS_OVER,
-         Vehicle.VEHICLE_STATE.RENTAL_IS_OVER_BATTLE,
          Vehicle.VEHICLE_STATE.IGR_RENTAL_IS_OVER,
          Vehicle.VEHICLE_STATE.TOO_HEAVY,
          Vehicle.VEHICLE_STATE.AMMO_NOT_FULL,
@@ -1276,8 +1262,7 @@ class Vehicle(FittingItem):
          Vehicle.VEHICLE_STATE.UNSUITABLE_TO_UNIT,
          Vehicle.VEHICLE_STATE.ROTATION_GROUP_LOCKED,
          Vehicle.VEHICLE_STATE.SUBSCRIPTION_SUSPENDED,
-         Vehicle.VEHICLE_STATE.WOT_PLUS_EXCLUSIVE_VEHICLE_DISABLED,
-         Vehicle.VEHICLE_STATE.TICKETS_SHORTAGE):
+         Vehicle.VEHICLE_STATE.WOT_PLUS_EXCLUSIVE_VEHICLE_DISABLED):
             return Vehicle.VEHICLE_STATE_LEVEL.CRITICAL
         if state in (Vehicle.VEHICLE_STATE.UNDAMAGED, Vehicle.VEHICLE_STATE.ROTATION_GROUP_UNLOCKED):
             return Vehicle.VEHICLE_STATE_LEVEL.INFO
@@ -1322,18 +1307,6 @@ class Vehicle(FittingItem):
     @property
     def isEvent(self):
         return self.isOnlyForEventBattles
-
-    @property
-    def isBoss(self):
-        return checkForTags(self.tags, VEHICLE_TAGS.EVENT_BOSS)
-
-    @property
-    def isSpecialBoss(self):
-        return checkForTags(self.tags, VEHICLE_TAGS.EVENT_SPECIAL_BOSS)
-
-    @property
-    def isHunterOrBoss(self):
-        return checkForTags(self.tags, VEHICLE_TAGS.EVENT_VEHS)
 
     @property
     def isDisabledInRoaming(self):
@@ -1574,11 +1547,6 @@ class Vehicle(FittingItem):
         if result:
             result = not self.isBroken and self.isCrewFull and not self.isTooHeavy and not self.isDisabledInPremIGR and not self.isInBattle and not self.isRotationGroupLocked and not self.isDisabled
         return result
-
-    @property
-    def isUnsuitableToQueue(self):
-        state, _ = self.getState()
-        return state == self.VEHICLE_STATE.UNSUITABLE_TO_QUEUE
 
     @property
     def isReadyToFight(self):
@@ -2011,6 +1979,9 @@ class Vehicle(FittingItem):
     def getBuiltInEquipmentIDs(self):
         return vehicles.getBuiltinEqsForVehicle(self._descriptor.type)
 
+    def hasBonusCamo(self):
+        return self.isOutfitLocked and self.typeDescr.isRestoredWithStyle or bool(self.getBonusCamo())
+
     def getBonusCamo(self):
         for season in SeasonType.SEASONS:
             outfit = self.getOutfit(season)
@@ -2323,10 +2294,6 @@ def getShortUserName(vehicleType, textPrefix=False):
     return _getActualName(vehicleType.shortUserString, vehicleType.tags, textPrefix)
 
 
-def getSimpleShortUserName(vehicleType):
-    return vehicleType.descriptor.type.shortUserString
-
-
 def _getActualName(name, tags, textPrefix=False):
     if checkForTags(tags, VEHICLE_TAGS.PREMIUM_IGR):
         if textPrefix:
@@ -2390,7 +2357,6 @@ _VEHICLE_STATE_TO_ICON = {Vehicle.VEHICLE_STATE.BATTLE: RES_ICONS.MAPS_ICONS_VEH
    Vehicle.VEHICLE_STATE.EXPLODED: RES_ICONS.MAPS_ICONS_VEHICLESTATES_DAMAGED, 
    Vehicle.VEHICLE_STATE.CREW_NOT_FULL: RES_ICONS.MAPS_ICONS_VEHICLESTATES_CREWNOTFULL, 
    Vehicle.VEHICLE_STATE.RENTAL_IS_OVER: RES_ICONS.MAPS_ICONS_VEHICLESTATES_RENTALISOVER, 
-   Vehicle.VEHICLE_STATE.RENTAL_IS_OVER_BATTLE: RES_ICONS.MAPS_ICONS_VEHICLESTATES_UNSUITABLETOUNIT, 
    Vehicle.VEHICLE_STATE.UNSUITABLE_TO_UNIT: RES_ICONS.MAPS_ICONS_VEHICLESTATES_UNSUITABLETOUNIT, 
    Vehicle.VEHICLE_STATE.UNSUITABLE_TO_QUEUE: RES_ICONS.MAPS_ICONS_VEHICLESTATES_UNSUITABLETOUNIT, 
    Vehicle.VEHICLE_STATE.GROUP_IS_NOT_READY: RES_ICONS.MAPS_ICONS_VEHICLESTATES_GROUP_IS_NOT_READY, 
@@ -2426,11 +2392,3 @@ def getBattlesLeft(vehicle):
 def getLowEfficiencyCrew(vehicle):
     return [ (slotID, tankman.invID) for slotID, tankman in vehicle.crew if tankman and not tankman.isMaxCurrentVehicleSkillsEfficiency
            ]
-
-
-def getCommander(vehicle):
-    for _, tman in vehicle.crew:
-        if tman.role == Tankman.ROLES.COMMANDER:
-            return tman
-
-    return

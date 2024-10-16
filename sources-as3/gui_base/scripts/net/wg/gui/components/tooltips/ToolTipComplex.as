@@ -139,11 +139,11 @@ package net.wg.gui.components.tooltips
       
       private function setContent() : void
       {
+         var _loc1_:String = null;
          var _loc2_:TextFormat = null;
-         var _loc3_:Number = NaN;
-         var _loc1_:String = _data.toString();
+         _loc1_ = _data.toString();
          _loc2_ = new TextFormat();
-         _loc3_ = 10;
+         var _loc3_:Number = 10;
          var _loc4_:Number = this._minWidth == 0 ? Number(500) : Number(this._minWidth);
          var _loc5_:TextField = App.textMgr.createTextField();
          _loc5_.x = contentMargin.left + bgShadowMargin.left;

@@ -1,11 +1,10 @@
-from gui.Scaleform.daapi.view.meta.MissionsViewBaseMeta import MissionsViewBaseMeta
+from gui.Scaleform.framework.entities.BaseDAAPIComponent import BaseDAAPIComponent
 
-class MissionsMarathonViewMeta(MissionsViewBaseMeta):
+class MissionsMarathonViewMeta(BaseDAAPIComponent):
 
-    def as_showViewS(self):
+    def viewSize(self, width, height):
+        self._printOverrideError('viewSize')
+
+    def as_loadBrowserS(self):
         if self._isDAAPIInited():
-            return self.flashObject.as_showView()
-
-    def as_setPlaceIdS(self, placeId):
-        if self._isDAAPIInited():
-            return self.flashObject.as_setPlaceId(placeId)
+            return self.flashObject.as_loadBrowser()

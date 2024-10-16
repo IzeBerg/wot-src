@@ -1153,9 +1153,9 @@ class WGAbstractGunMarkerDataProvider(pybind11_object):
 	def __str__(*args, **kwargs): pass
 	def __subclasshook__(*args, **kwargs): pass
 	positionMatrixProvider = property(lambda self: None)
-	def setStartSize(self, *args, **kwargs): pass
+	def setStartSizes(self, *args, **kwargs): pass
 	sizeConstraint = property(lambda self: None)
-	def updateSize(self, *args, **kwargs): pass
+	def updateSizes(self, *args, **kwargs): pass
 
 
 class WGAimFlash(Flash):
@@ -1483,9 +1483,9 @@ class WGGunMarkerDataProvider(WGAbstractGunMarkerDataProvider):
 	def __str__(*args, **kwargs): pass
 	def __subclasshook__(*args, **kwargs): pass
 	positionMatrixProvider = property(lambda self: None)
-	def setStartSize(self, *args, **kwargs): pass
+	def setStartSizes(self, *args, **kwargs): pass
 	sizeConstraint = property(lambda self: None)
-	def updateSize(self, *args, **kwargs): pass
+	def updateSizes(self, *args, **kwargs): pass
 
 
 class WGHangarVehicleMarker(pybind11_object):
@@ -2043,13 +2043,13 @@ class WGSPGGunMarkerDataProvider(WGAbstractGunMarkerDataProvider):
 	def reset(self, *args, **kwargs): pass
 	serverTickLength = property(lambda self: None)
 	def setRelaxTime(self, *args, **kwargs): pass
-	def setStartSize(self, *args, **kwargs): pass
+	def setStartSizes(self, *args, **kwargs): pass
 	def setupConicDispersion(self, *args, **kwargs): pass
 	def setupFlatRadialDispersion(self, *args, **kwargs): pass
 	sizeConstraint = property(lambda self: None)
 	sizeScaleRate = property(lambda self: None)
 	def update(self, *args, **kwargs): pass
-	def updateSize(self, *args, **kwargs): pass
+	def updateSizes(self, *args, **kwargs): pass
 
 
 class WGScrollingMinimapGUIComponentAS3(WGMinimapFlashAS3):
@@ -2761,6 +2761,8 @@ __name__ = 'GUI'
 __package__ = None
 def addRoot(*args, **kwargs): pass
 def delRoot(*args, **kwargs): pass
+def enableBackgroundBlurFeature(*args, **kwargs): pass
+def enableBlurDirection(*args, **kwargs): pass
 def enableMarkerDebugDraw(*args, **kwargs): pass
 def handleAxisEvent(*args, **kwargs): pass
 def handleKeyEvent(*args, **kwargs): pass
@@ -2771,7 +2773,19 @@ def printRoots(*args, **kwargs): pass
 def reSort(*args, **kwargs): pass
 def roots(*args, **kwargs): pass
 def screenResolution(*args, **kwargs): pass
+def setBackgroundBlurApplianceType(*args, **kwargs): pass
+def setBackgroundBlurType(*args, **kwargs): pass
+def setBlurAlphaParams(*args, **kwargs): pass
+def setBlurCenter(*args, **kwargs): pass
+def setBlurDispatches(*args, **kwargs): pass
+def setBlurIntensity(*args, **kwargs): pass
+def setBlurParams(*args, **kwargs): pass
 def setDragDistance(*args, **kwargs): pass
+def setHorizontalBlurAlphas(*args, **kwargs): pass
+def setHorizontalBlurParams(*args, **kwargs): pass
+def setRadialApplianceBlurRadius(*args, **kwargs): pass
 def setResolutionOverride(*args, **kwargs): pass
+def setVerticalBlurAlphas(*args, **kwargs): pass
+def setVerticalBlurParams(*args, **kwargs): pass
 def syncMousePosition(*args, **kwargs): pass
 def wg_setGlyphCacheParams(*args, **kwargs): pass

@@ -1,1 +1,1 @@
-from gui.marathon.autumn_marathon_2024 import AutumnMarathonEvent
+from gui.marathon.example_marathon import ExampleMarathon

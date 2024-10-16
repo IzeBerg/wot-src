@@ -1105,7 +1105,7 @@ class UnitBase(OpsUnpacker):
                 if vehs is None:
                     return UNIT_ERROR.VEHICLE_NOT_CHOSEN
                 vehList = [ (vehicle.vehInvID, vehicle.vehTypeCompDescr) for vehicle in vehs ]
-                if not self._canUseVehicles(vehList):
+                if not self._canUseVehicles(vehList, accountDBID=accountDBID):
                     return UNIT_ERROR.BAD_VEHICLES_SET
                 newReadyMask = prevReadyMask | 1 << slotIdx
             else:
@@ -1165,7 +1165,7 @@ class UnitBase(OpsUnpacker):
     def getAutoSearchFlagsOfAccount(self, accountDBID):
         return self._unitAssemblerSearchFlags.get(accountDBID, 0)
 
-    def _canUseVehicles(self, vehiclesList, isSet=False, isCommanderSet=False):
+    def _canUseVehicles(self, vehiclesList, isSet=False, isCommanderSet=False, accountDBID=0):
         return True
 
     def _setGameplaysMask(self, newGameplaysMask):

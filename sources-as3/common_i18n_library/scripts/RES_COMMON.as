@@ -65,8 +65,6 @@ package
       
       public static const MAPS_ICONS_TANKMEN_SKILLS_BIG_NEW_SKILL:String = "../maps/icons/tankmen/skills/big/new_skill.png";
       
-      public static const MAPS_ICONS_WTEVENT_POPOVER_BG:String = "../maps/icons/wtevent/popover/bg.png";
-      
       public static const MAPS_UIKIT_DIALOG_TEMPLATES_SELECT_OPTION_BG:String = "../maps/uiKit/dialog_templates/select_option/bg.png";
        
       

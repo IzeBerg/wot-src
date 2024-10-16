@@ -13,7 +13,6 @@ package net.wg.gui.battle.views
    import net.wg.gui.battle.interfaces.IPrebattleTimerBase;
    import net.wg.gui.battle.views.ammunitionPanel.PrbAmmunitionPanelEvent;
    import net.wg.gui.battle.views.ammunitionPanel.PrebattleAmmunitionPanelView;
-   import net.wg.gui.battle.views.battleTimer.BaseBattleTimer;
    import net.wg.gui.battle.views.calloutPanel.CalloutPanel;
    import net.wg.gui.battle.views.damagePanel.DamagePanel;
    import net.wg.gui.battle.views.deathCamHud.DeathCamHud;
@@ -24,16 +23,17 @@ package net.wg.gui.battle.views
    import net.wg.gui.battle.views.minimap.BaseMinimap;
    import net.wg.gui.battle.views.minimap.MinimapEntryController;
    import net.wg.gui.battle.views.minimap.events.MinimapEvent;
-   import net.wg.gui.battle.views.perksPanel.PerksPanel;
    import net.wg.gui.battle.views.piercingDebugPanel.PiercingDebugPanel;
    import net.wg.gui.battle.views.postmortemPanel.PostmortemPanel;
    import net.wg.gui.battle.views.ribbonsPanel.RibbonsPanel;
    import net.wg.gui.battle.views.rocketAcceleratorPanel.RocketAcceleratorPanel;
+   import net.wg.gui.battle.views.situationIndicators.SituationIndicatorsPanel;
    import net.wg.gui.battle.views.spectatorView.SpectatorView;
    import net.wg.gui.battle.views.vehicleMessages.VehicleMessages;
    import net.wg.gui.lobby.settings.config.ControlsFactory;
    import net.wg.infrastructure.base.meta.IBattlePageMeta;
    import net.wg.infrastructure.base.meta.impl.BattlePageMeta;
+   import net.wg.infrastructure.base.meta.impl.BattleTimerMeta;
    import net.wg.infrastructure.events.LifeCycleEvent;
    import net.wg.infrastructure.helpers.statisticsDataController.BattleStatisticDataController;
    import net.wg.infrastructure.interfaces.IDAAPIModule;
@@ -67,7 +67,7 @@ package net.wg.gui.battle.views
       
       private static const HIT_TEST_FIX_NAME:String = "HitTest Fix";
       
-      private static const PERKS_PANEL_OFFSET_Y:int = 115;
+      private static const SITUATION_INDICATORS_PANEL_OFFSET_Y:int = 115;
       
       private static const TWEEN_DURATION:uint = 300;
        
@@ -84,17 +84,23 @@ package net.wg.gui.battle.views
       
       public var minimap:BaseMinimap = null;
       
-      public var battleTimer:BaseBattleTimer = null;
+      public var battleTimer:BattleTimerMeta = null;
       
       public var ribbonsPanel:RibbonsPanel = null;
       
-      public var perksPanel:PerksPanel = null;
+      public var situationIndicatorsPanel:SituationIndicatorsPanel = null;
       
       public var gameMessagesPanel:GameMessagesPanel = null;
       
       public var calloutPanel:CalloutPanel = null;
       
       public var prebattleAmmunitionPanel:PrebattleAmmunitionPanelView = null;
+      
+      public var deathCamHud:DeathCamHud = null;
+      
+      public var spectatorViewUI:SpectatorView = null;
+      
+      public var postmortemPanelUI:PostmortemPanel = null;
       
       protected var vehicleMessageList:VehicleMessages;
       
@@ -107,12 +113,6 @@ package net.wg.gui.battle.views
       protected var piercingDebugPanel:PiercingDebugPanel = null;
       
       protected var isPostMortem:Boolean = false;
-      
-      public var deathCamHud:DeathCamHud = null;
-      
-      public var spectatorViewUI:SpectatorView = null;
-      
-      public var postmortemPanelUI:PostmortemPanel = null;
       
       protected var hitTestFix:Sprite;
       
@@ -165,7 +165,6 @@ package net.wg.gui.battle.views
          this.damagePanel.y = param2 - this.damagePanel.initedHeight;
          if(this.battleTimer)
          {
-            this.battleTimer.updateStage();
             this.battleTimer.x = param1 - this.battleTimer.initedWidth;
             this.battleTimer.y = 0;
          }
@@ -187,10 +186,10 @@ package net.wg.gui.battle.views
             _loc7_ = _loc4_ + (_loc6_ - this.ribbonsPanel.freeHeightForRenderers >> 1) + _loc5_;
             this.ribbonsPanel.y = _loc7_;
          }
-         if(this.perksPanel)
+         if(this.situationIndicatorsPanel)
          {
-            this.perksPanel.x = _loc3_;
-            this.perksPanel.y = param2 - PERKS_PANEL_OFFSET_Y;
+            this.situationIndicatorsPanel.x = _loc3_;
+            this.situationIndicatorsPanel.y = param2 - SITUATION_INDICATORS_PANEL_OFFSET_Y;
          }
          this.updateMinimapPosition();
          this.vehicleErrorMessageListPositionUpdate();
@@ -273,9 +272,9 @@ package net.wg.gui.battle.views
          {
             this.registerComponent(this.ribbonsPanel,BATTLE_VIEW_ALIASES.RIBBONS_PANEL);
          }
-         if(this.perksPanel)
+         if(this.situationIndicatorsPanel)
          {
-            this.registerComponent(this.perksPanel,BATTLE_VIEW_ALIASES.PERKS_PANEL);
+            this.registerComponent(this.situationIndicatorsPanel,BATTLE_VIEW_ALIASES.SITUATION_INDICATORS);
          }
          this.registerComponent(this.vehicleMessageList,BATTLE_VIEW_ALIASES.VEHICLE_MESSAGES);
          this.registerComponent(this.vehicleErrorMessageList,BATTLE_VIEW_ALIASES.VEHICLE_ERROR_MESSAGES);
@@ -352,7 +351,7 @@ package net.wg.gui.battle.views
          this.battleTimer = null;
          this.prebattleTimer = null;
          this.ribbonsPanel = null;
-         this.perksPanel = null;
+         this.situationIndicatorsPanel = null;
          this.dualGunPanel = null;
          this.rocketAcceleratorPanel = null;
          this.calloutPanel = null;
@@ -448,10 +447,6 @@ package net.wg.gui.battle.views
          return _loc2_.isCompVisible();
       }
       
-      public function as_setArtyShotIndicatorFlag(param1:Boolean) : void
-      {
-      }
-      
       public function as_onPostmortemActive(param1:Boolean) : void
       {
          if(this.postmortemPanelUI == null)
@@ -465,6 +460,10 @@ package net.wg.gui.battle.views
          {
             this.updateBattleDamageLogPosInPostmortem();
          }
+      }
+      
+      public function as_setArtyShotIndicatorFlag(param1:Boolean) : void
+      {
       }
       
       public function as_toggleCtrlPressFlag(param1:Boolean) : void
@@ -550,10 +549,13 @@ package net.wg.gui.battle.views
          this._messagesContainer = new Sprite();
          this._messagesContainer.name = MESSAGE_LISTS_CONTAINER_NAME;
          this._messagesContainer.mouseEnabled = this._messagesContainer.mouseChildren = false;
-         addChild(this._messagesContainer);
          if(this.battleLoading)
          {
-            swapChildren(this._messagesContainer,this.battleLoading);
+            addChildAt(this._messagesContainer,getChildIndex(this.battleLoading));
+         }
+         else
+         {
+            addChild(this._messagesContainer);
          }
          this.vehicleMessageList = new VehicleMessages(this._messagesContainer);
          this.vehicleErrorMessageList = new MessageListDAAPI(this._messagesContainer);
@@ -621,9 +623,11 @@ package net.wg.gui.battle.views
       
       protected function updateAmmunitionPanelY() : void
       {
+         var _loc1_:int = 0;
          if(this.prebattleAmmunitionPanel)
          {
-            this.prebattleAmmunitionPanel.setYPos(this.battleLoading && this.prebattleAmmunitionPanel.isInLoading ? int(this.battleLoading.getContentY() + this.getAmmunitionPanelYShift()) : int(_originalHeight - this.prebattleAmmunitionPanel.height + this.getLoadedPrebattleAmmoPanelYShift()));
+            _loc1_ = Boolean(this.battleLoading) ? int(this.battleLoading.getContentY()) : int(0);
+            this.prebattleAmmunitionPanel.setYPos(!!this.prebattleAmmunitionPanel.isInLoading ? int(_loc1_ + this.getAmmunitionPanelYShift()) : int(_originalHeight - this.prebattleAmmunitionPanel.height + this.getLoadedPrebattleAmmoPanelYShift()));
          }
       }
       
@@ -640,12 +644,17 @@ package net.wg.gui.battle.views
          return 0;
       }
       
+      protected function updateMinimapSizeIndex(param1:Number) : void
+      {
+         this.minimap.setAllowedSizeIndex(this.getAllowedMinimapSizeIndex(param1));
+      }
+      
       private function isElementVisible(param1:InteractiveObject) : Boolean
       {
          return param1 && param1.visible && param1.parent != this && this.isElementVisible(param1.parent);
       }
       
-      protected function showComponent(param1:String, param2:Boolean) : void
+      private function showComponent(param1:String, param2:Boolean) : void
       {
          var _loc3_:IDisplayableComponent = null;
          _loc3_ = this._componentsStorage[param1];
@@ -691,17 +700,48 @@ package net.wg.gui.battle.views
          }));
       }
       
-      protected function updateMinimapSizeIndex(param1:Number) : void
-      {
-         this.minimap.setAllowedSizeIndex(this.getAllowedMinimapSizeIndex(param1));
-      }
-      
       private function updatePostmortemUIPosition() : void
       {
          this.postmortemPanelUI.x = width >> 1;
          this.postmortemPanelUI.y = height;
          this.postmortemPanelUI.updateElementsPosition();
          this.anchorVictimDogTag();
+      }
+      
+      private function completeActiveTweens(param1:Object) : void
+      {
+         var _loc2_:int = 0;
+         var _loc3_:Tween = null;
+         if(this._tweens.length > 0)
+         {
+            _loc2_ = this._tweens.length - 1;
+            while(_loc2_ >= 0)
+            {
+               _loc3_ = this._tweens[_loc2_];
+               if(_loc3_.target == param1 && !_loc3_.paused)
+               {
+                  _loc3_.onComplete && _loc3_.onComplete();
+                  _loc3_.dispose();
+                  _loc3_ = null;
+                  this._tweens.splice(_loc2_,1);
+               }
+               _loc2_--;
+            }
+         }
+      }
+      
+      private function clearTweens() : void
+      {
+         var _loc1_:Tween = null;
+         if(this._tweens.length > 0)
+         {
+            for each(_loc1_ in this._tweens)
+            {
+               _loc1_.dispose();
+               _loc1_ = null;
+            }
+            this._tweens.length = 0;
+         }
       }
       
       protected function get prebattleAmmunitionPanelShown() : Boolean
@@ -769,42 +809,6 @@ package net.wg.gui.battle.views
                this.battleLoading.hasAmmunitionPanel(this.prebattleAmmunitionPanel.isInLoading);
             }
             this.updateAmmunitionPanelY();
-         }
-      }
-      
-      private function completeActiveTweens(param1:Object) : void
-      {
-         var _loc2_:int = 0;
-         var _loc3_:Tween = null;
-         if(this._tweens.length > 0)
-         {
-            _loc2_ = this._tweens.length - 1;
-            while(_loc2_ >= 0)
-            {
-               _loc3_ = this._tweens[_loc2_];
-               if(_loc3_.target == param1 && !_loc3_.paused)
-               {
-                  _loc3_.onComplete && _loc3_.onComplete();
-                  _loc3_.dispose();
-                  _loc3_ = null;
-                  this._tweens.splice(_loc2_,1);
-               }
-               _loc2_--;
-            }
-         }
-      }
-      
-      private function clearTweens() : void
-      {
-         var _loc1_:Tween = null;
-         if(this._tweens.length > 0)
-         {
-            for each(_loc1_ in this._tweens)
-            {
-               _loc1_.dispose();
-               _loc1_ = null;
-            }
-            this._tweens.length = 0;
          }
       }
    }

@@ -23,7 +23,6 @@ package net.wg.gui.lobby.settings
    import net.wg.gui.components.windows.WindowEvent;
    import net.wg.gui.events.ViewStackEvent;
    import net.wg.gui.interfaces.ISettingsBase;
-   import net.wg.gui.lobby.settings.components.EventSettingLabel;
    import net.wg.gui.lobby.settings.components.evnts.LimitedUIEvent;
    import net.wg.gui.lobby.settings.config.SettingsConfigHelper;
    import net.wg.gui.lobby.settings.events.AlternativeVoiceEvent;
@@ -116,8 +115,6 @@ package net.wg.gui.lobby.settings
       public var cancelBtn:SoundButtonEx = null;
       
       public var applyBtn:SoundButtonEx = null;
-      
-      public var eventDisableLabel:EventSettingLabel = null;
       
       private var _invalidTabs:Object;
       
@@ -240,8 +237,6 @@ package net.wg.gui.lobby.settings
          this.tabLine = null;
          this.applyBtn.dispose();
          this.applyBtn = null;
-         this.eventDisableLabel.dispose();
-         this.eventDisableLabel = null;
          if(this.view)
          {
             this.view.removeEventListener(ViewStackEvent.NEED_UPDATE,this.onViewNeedUpdateHandler);
@@ -465,11 +460,6 @@ package net.wg.gui.lobby.settings
       {
          this._limitedUISettingVisible = param1;
          invalidate(INV_LIMITED_UI_SETTING_VISIBLE);
-      }
-      
-      public function as_setIsEvent(param1:Boolean) : void
-      {
-         this.eventDisableLabel.visible = param1;
       }
       
       public function as_updateVideoSettings(param1:Object) : void

@@ -1,5 +1,4 @@
 import constants
-from adisp import adisp_process
 from battle_pass_common import BattlePassConsts
 from gui import SystemMessages
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
@@ -142,12 +141,10 @@ def showMissionsGrouped(missionID=None, groupID=None, anchor=None):
     showMissions(tab=QUESTS_ALIASES.MISSIONS_GROUPED_VIEW_PY_ALIAS, missionID=missionID, groupID=groupID, anchor=anchor)
 
 
-@adisp_process
 def showMissionsMarathon(marathonPrefix=None):
-    marathonController = dependency.instance(IMarathonEventsController)
-    marathonEvent = marathonController.getMarathon(marathonPrefix or '') or marathonController.getPrimaryMarathon()
-    url = yield marathonEvent.getUrl()
-    showMissions(tab=QUESTS_ALIASES.MISSIONS_MARATHON_VIEW_PY_ALIAS, marathonPrefix=marathonEvent.prefix, url=url)
+    if not marathonPrefix:
+        marathonPrefix = dependency.instance(IMarathonEventsController).getPrimaryMarathon()
+    showMissions(tab=QUESTS_ALIASES.MISSIONS_MARATHON_VIEW_PY_ALIAS, marathonPrefix=marathonPrefix)
 
 
 def showMissionsCategories(missionID=None, groupID=None, anchor=None):
@@ -204,15 +201,14 @@ def showMissionsLiveOpsWebEvents():
     _showMissions(tab=QUESTS_ALIASES.LIVE_OPS_WEB_EVENTS_VIEW_PY_ALIAS)
 
 
-def showMissions(tab=None, missionID=None, groupID=None, marathonPrefix=None, anchor=None, showDetails=True, subTab=None, url=None):
+def showMissions(tab=None, missionID=None, groupID=None, marathonPrefix=None, anchor=None, showDetails=True, subTab=None):
     _showMissions(**{'tab': tab, 
        'subTab': subTab, 
        'eventID': missionID, 
        'groupID': groupID, 
        'marathonPrefix': marathonPrefix, 
        'anchor': anchor, 
-       'showMissionDetails': showDetails, 
-       'url': url})
+       'showMissionDetails': showDetails})
 
 
 def showMissionDetails(missionID, groupID):

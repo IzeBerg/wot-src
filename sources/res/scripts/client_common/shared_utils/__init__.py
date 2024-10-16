@@ -76,6 +76,22 @@ def safeIndexOf(item, collection, default=None):
     return default
 
 
+def notImplementedCall(taskID, onNotImplementedCall=None):
+
+    def decorator(call):
+
+        @wraps(call)
+        def wrapper(*args, **kwargs):
+            if callable(onNotImplementedCall):
+                onNotImplementedCall(call.__name__, taskID)
+            _logger.error('"%s" is not implemented, will done in "%s"', call.__name__, taskID)
+            return call(*args, **kwargs)
+
+        return wrapper
+
+    return decorator
+
+
 def collapseIntervals(sequence):
     result = []
     prevElement = []

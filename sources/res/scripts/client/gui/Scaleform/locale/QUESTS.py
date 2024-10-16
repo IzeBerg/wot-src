@@ -742,12 +742,6 @@ class QUESTS(object):
     DETAILS_CONDITIONS_CUMULATIVE_AGGREGATED = '#quests:details/conditions/cumulative/aggregated'
     DETAILS_CONDITIONS_CUMULATIVE_RANKCHANGE = '#quests:details/conditions/cumulative/rankChange'
     DETAILS_CONDITIONS_CUMULATIVE_XP_OTHER = '#quests:details/conditions/cumulative/xp/other'
-    DETAILS_CONDITIONS_CUMULATIVE_WTBOSSVULNERABLEDAMAGE = '#quests:details/conditions/cumulative/wtBossVulnerableDamage'
-    DETAILS_CONDITIONS_CUMULATIVE_MAXWTPLASMABONUS = '#quests:details/conditions/cumulative/maxWtPlasmaBonus'
-    DETAILS_CONDITIONS_CUMULATIVE_WTGENERATORSCAPTURED = '#quests:details/conditions/cumulative/wtGeneratorsCaptured'
-    DETAILS_CONDITIONS_CUMULATIVE_WTDEATHCOUNT = '#quests:details/conditions/cumulative/wtDeathCount'
-    DETAILS_CONDITIONS_CUMULATIVE_WTMINIBOSSDESTROYED = '#quests:details/conditions/cumulative/wtMiniBossDestroyed'
-    DETAILS_CONDITIONS_CUMULATIVE_WTKILLEDBYHYPERIONCOUNT = '#quests:details/conditions/cumulative/wtKilledByHyperionCount'
     DETAILS_DOSSIER_SNIPERSERIES = '#quests:details/dossier/sniperSeries'
     DETAILS_DOSSIER_MAXSNIPERSERIES = '#quests:details/dossier/maxSniperSeries'
     DETAILS_DOSSIER_INVINCIBLESERIES = '#quests:details/dossier/invincibleSeries'
@@ -1729,9 +1723,6 @@ class QUESTS(object):
     DAILYQUESTS_CONDITION_BATTLE_SINGULAR = '#quests:dailyQuests/condition/battle_singular'
     DETAILS_CONDITIONS_CUMULATIVE_DAMAGEDHP = '#quests:details/conditions/cumulative/damagedHp'
     DETAILS_CONDITIONS_CUMULATIVE_COMP7PRESTIGEPOINTS = '#quests:details/conditions/cumulative/comp7PrestigePoints'
-    MISSIONS_TAB_AUTUMN_MARATHON = '#quests:missions/tab/autumn_marathon'
-    MISSIONS_TAB_AUTUMN_MARATHON_HEADER = '#quests:missions/tab/autumn_marathon/header'
-    MISSIONS_TAB_AUTUMN_MARATHON_BODY = '#quests:missions/tab/autumn_marathon/body'
     TOKEN_DEFAULT_ENUM = (
      TOKEN_DEFAULT_USSR,
      TOKEN_DEFAULT_GERMANY,

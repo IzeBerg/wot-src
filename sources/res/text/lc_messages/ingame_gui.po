@@ -722,6 +722,9 @@ msgstr "Objective Defended"
 msgid "efficiencyRibbons/enemySectorCaptured"
 msgstr "Zone Captured"
 
+msgid "efficiencyRibbons/fireDamageZone"
+msgstr "Damage from fire zone"
+
 msgid "efficiencyRibbons/healthAdded"
 msgstr "Vehicle repaired"
 
@@ -788,8 +791,26 @@ msgstr "Vehicle Abandoned"
 msgid "efficiencyRibbons/worldCollision"
 msgstr "Damage by Impact"
 
-msgid "efficiencyRibbons/wtReceivedCircuitOverload"
-msgstr "Damage by Short Circuit"
+msgid "efficiencyRibbons/zoneBlizzard"
+msgstr "Snowstorm"
+
+msgid "efficiencyRibbons/zoneFire"
+msgstr "Fire"
+
+msgid "efficiencyRibbons/zoneFog"
+msgstr "Fog"
+
+msgid "efficiencyRibbons/zoneRain"
+msgstr "Heavy rain"
+
+msgid "efficiencyRibbons/zoneSandstorm"
+msgstr "Sandstorm"
+
+msgid "efficiencyRibbons/zoneSmoke"
+msgstr "Smoke"
+
+msgid "efficiencyRibbons/zoneTornado"
+msgstr "Tornado"
 
 msgid "epic_players_panel/state/hidden/body"
 msgstr "Hide team panels"
@@ -963,6 +984,12 @@ msgstr "Unable to fire: vehicle destroyed."
 
 msgid "player_errors/cant_switch/engine_destroyed"
 msgstr "Switching unavailable: the engine is destroyed."
+
+msgid "player_errors/cant_switch/gun_destroyed"
+msgstr "Switching unavailable: gun destroyed"
+
+msgid "player_errors/cant_switch/one_shell_left"
+msgstr "Switching unavailable: only one shell left"
 
 msgid "player_errors/equipment/alreadyActivated"
 msgstr "[%(name)s] is already active."
@@ -1483,9 +1510,6 @@ msgstr "Device [%(device)s] repaired."
 msgid "player_messages/DEVICE_REPAIRED_TO_CRITICAL"
 msgstr "Device [%(device)s] is operational."
 
-msgid "player_messages/DEVICE_STARTED_FIRE_AT_CIRCUIT_OVERLOAD"
-msgstr "Vehicle was damaged by a short-circuit!"
-
 msgid "player_messages/DEVICE_STARTED_FIRE_AT_SHOT"
 msgstr "Device [%(device)s] was set on fire by a shot from %(entity)s."
 
@@ -1540,9 +1564,6 @@ msgstr "Enemy base%s captured!"
 
 msgid "player_messages/enemy_team_name"
 msgstr "Enemy Team"
-
-msgid "player_messages/equipment/wtEvent/healthAtFullHP"
-msgstr "[%(name)s] Unable to repair. The vehicle is intact."
 
 msgid "player_messages/poi_equipment_used_by_ally"
 msgstr "Your ally %(name)s used the %(equipment)s Tactical Skill"
@@ -2817,6 +2838,9 @@ msgstr "to activate jet boosters"
 
 msgid "siegeMode/hint/turboshaftEngine"
 msgstr "to switch engine modes"
+
+msgid "siegeMode/hint/twinGun"
+msgstr "to change fire mode"
 
 msgid "siegeMode/hint/wheeled"
 msgstr "to switch the movement mode"

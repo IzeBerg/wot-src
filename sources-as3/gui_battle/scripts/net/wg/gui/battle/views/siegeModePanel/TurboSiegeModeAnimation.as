@@ -67,7 +67,7 @@ package net.wg.gui.battle.views.siegeModePanel
       
       override protected function drawSiegeStatusIcon() : void
       {
-         var _loc1_:String = ICON_NAME_PREFIX + DELIMITER + engineState + DELIMITER + states[siegeState];
+         var _loc1_:String = ICON_NAME_PREFIX + DELIMITER + moduleState + DELIMITER + states[siegeState];
          atlasManager.drawGraphics(ATLAS_CONSTANTS.BATTLE_ATLAS,_loc1_,statusSiegeIcon.turboStatusSiegeIconGraphics.graphics,Values.EMPTY_STR,true,false,true);
          switchIndicator.stop();
          if(this.isSiegeState)
@@ -82,13 +82,13 @@ package net.wg.gui.battle.views.siegeModePanel
       
       override protected function drawSwitchIndicator() : void
       {
-         var _loc1_:String = ICON_NAME_PREFIX + DELIMITER + STATE_SWITCHING_NAME + DELIMITER + engineState + DELIMITER + states[siegeState];
+         var _loc1_:String = ICON_NAME_PREFIX + DELIMITER + STATE_SWITCHING_NAME + DELIMITER + moduleState + DELIMITER + states[siegeState];
          atlasManager.drawGraphics(ATLAS_CONSTANTS.BATTLE_ATLAS,_loc1_,switchIndicator.turboSwitchIndicatorGraphics.graphics,Values.EMPTY_STR,true,false,true);
       }
       
       override protected function onSwitchIndicatorAnimation(param1:Number) : void
       {
-         if(engineState != BATTLE_ITEM_STATES.DESTROYED)
+         if(moduleState != BATTLE_ITEM_STATES.DESTROYED)
          {
             switchIndicator.play();
          }

@@ -7,6 +7,7 @@ package net.wg.gui.battle.random.views.stats.components.fullStats
    import net.wg.gui.battle.views.stats.fullStats.StatsTableControllerBase;
    import net.wg.gui.battle.views.stats.fullStats.StatsTableItemHolderBase;
    import net.wg.infrastructure.base.meta.impl.StatsBaseMeta;
+   import net.wg.infrastructure.uilogging.player_satisfaction_rating.PLAYER_SATISFACTION_RATING_CONSTANTS;
    
    public class FullStatsTableCtrl extends StatsTableControllerBase implements ISquadHandler
    {
@@ -121,7 +122,7 @@ package net.wg.gui.battle.random.views.stats.components.fullStats
       
       public function onAddToSquad(param1:DynamicSquadCtrl) : void
       {
-         this._squadHandler.addToSquadS(param1.sessionID);
+         this._squadHandler.addToSquadS(param1.sessionID,PLAYER_SATISFACTION_RATING_CONSTANTS.FULL_STATS_VIEW);
       }
       
       public function onSquadBtVisibleChange(param1:DynamicSquadCtrl) : void

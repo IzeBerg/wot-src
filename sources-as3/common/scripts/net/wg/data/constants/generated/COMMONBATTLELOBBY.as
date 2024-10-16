@@ -73,6 +73,8 @@ package net.wg.data.constants.generated
       
       public static const DAMAGE_LOG_DAMAGE_TOTAL:String = "damageLog_damage_total";
       
+      public static const DAMAGE_LOG_DEATH_ZONE_16X16:String = "damageLog_death_zone_16x16";
+      
       public static const DAMAGE_LOG_DESTROYER_16X16:String = "damageLog_destroyer_16x16";
       
       public static const DAMAGE_LOG_DETAIL_NO_BORDER:String = "damageLog_detailNoBorder";

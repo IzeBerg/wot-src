@@ -97,7 +97,11 @@ package net.wg.data.constants.generated
       
       public static const COMP7_TOURNAMENT_BANNER:String = "comp7TournamentBanner";
       
+      public static const COMP7_GRAND_TOURNAMENT_BANNER:String = "comp7GrandTournamentBanner";
+      
       public static const LIVE_OPS_WEB_EVENTS_ENTRY_POINT:String = "liveOpsWebEventsEntryPoint";
+      
+      public static const TECH_TREE_TRADE_IN_BANNER:String = "techTreeTradeInBanner";
       
       public static const AMMUNITION_SETUP_VIEW_VEHICLE_PARAMS:String = "ammunitionSetupViewVehicleParams";
       
@@ -146,20 +150,6 @@ package net.wg.data.constants.generated
       public static const HE20_EVENT_ENTRY_POINT:String = "he20EventEntryPoint";
       
       public static const CAROUSEL_EVENT_ENTRY_HOLDER:String = "carouselEventEntryHolder";
-      
-      public static const LOOTBOXES_WIDGET:String = "eventBoxEntryWidget";
-      
-      public static const WHITE_TIGER_WIDGET:String = "whiteTigerWidget";
-      
-      public static const WT_EVENT_ENTRY_POINT:String = "WTEventEntryPoint";
-      
-      public static const WT_EVENT_PRIME_TIME:String = "wtEventPrimeTime.swf";
-      
-      public static const EVENT_CAROUSEL_WIDGET:String = "eventCarouselWidget";
-      
-      public static const EVENT_CREW_WIDGET:String = "eventCrewWidget";
-      
-      public static const EVENT_PARAMS_WIDGET:String = "eventParamsWidget";
        
       
       public function HANGAR_ALIASES()

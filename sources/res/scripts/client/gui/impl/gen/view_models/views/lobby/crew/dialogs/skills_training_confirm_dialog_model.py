@@ -1,6 +1,6 @@
 from frameworks.wulf import Array
 from gui.impl.gen.view_models.views.dialogs.dialog_template_view_model import DialogTemplateViewModel
-from gui.impl.gen.view_models.views.lobby.crew.dialogs.skill_model import SkillModel
+from gui.impl.gen.view_models.views.lobby.crew.common.skill.skill_model import SkillModel
 
 class SkillsTrainingConfirmDialogModel(DialogTemplateViewModel):
     __slots__ = ()

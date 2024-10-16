@@ -29,6 +29,8 @@ package net.wg.data.constants.generated
       
       public static const COMP7_TOURNAMENT_BANNER:String = "comp7TournamentBanner";
       
+      public static const COMP7_GRAND_TOURNAMENT_BANNER:String = "comp7GrandTournamentBanner";
+      
       public static const MINI_CLIENT:String = "miniClient";
       
       public static const BR_PANELS:String = "battleRoyalePanels";
@@ -40,6 +42,8 @@ package net.wg.data.constants.generated
       public static const HEADER_WIDGET:String = "headerWidget";
       
       public static const HEADER_QUEST_FLAGS:String = "headerQuestFlags";
+      
+      public static const TECH_TREE_TRADE_IN_BANNER:String = "techTreeTradeInBanner";
        
       
       public function HANGAR_CONSTS()

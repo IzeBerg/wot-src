@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Halloween/Environment/hd_env_UNI_601_MegaHarvester/hd_env_UNI_601_MegaHarvester_03_BAM.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Halloween/Environment/hd_env_UNI_601_MegaHarvester/hd_env_UNI_601_MegaHarvester_03_BGMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Halloween/Environment/hd_env_UNI_601_MegaHarvester/hd_env_UNI_601_MegaHarvester_03_BANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>75.599792 1.779727 -11.974766</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>73.880928 -0.367246 -15.013587</min>
+		<max>77.346626 3.743418 -8.945978</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>11008</geometrySize>
+	<minUVDensity>0.002013</minUVDensity>
+</root>

@@ -59,6 +59,7 @@ def getDefaultBonusPackersMap():
        'freeXPFactor': simpleBonusPacker, 
        'goodies': GoodiesBonusUIPacker(), 
        'items': ItemBonusUIPacker(), 
+       'lootBox': tokenBonusPacker, 
        'meta': simpleBonusPacker, 
        'slots': simpleBonusPacker, 
        'strBonus': simpleBonusPacker, 
@@ -345,12 +346,16 @@ class ItemBonusUIPacker(BaseBonusUIPacker):
     def _pack(cls, bonus):
         bonusItems = bonus.getItems()
         result = []
-        for item, count in sorted(bonusItems.iteritems(), key=lambda i: i[0]):
+        for item, count in sorted(bonusItems.iteritems(), key=cls._itemsSortFunction):
             if item is None or not count:
                 continue
             result.append(cls._packSingleBonus(bonus, item, count))
 
         return result
+
+    @staticmethod
+    def _itemsSortFunction(item):
+        return item[0]
 
     @classmethod
     def _packSingleBonus(cls, bonus, item, count):
@@ -774,7 +779,7 @@ class VehiclesBonusUIPacker(BaseBonusUIPacker):
         for vehicle, vehInfo in vehicles:
             compensation = cls._getCompensation(vehicle, bonus)
             if compensation:
-                packer = cls._getCompensationPacker()
+                packer = SimpleBonusUIPacker()
                 for bonusComp in compensation:
                     packedVehicles.extend(packer.pack(bonusComp))
 
@@ -813,10 +818,6 @@ class VehiclesBonusUIPacker(BaseBonusUIPacker):
 
     @classmethod
     def _packTooltip(cls, bonus, vehicle, vehInfo):
-        return TooltipData(tooltip=None, isSpecial=True, specialAlias=cls._getTooltipAlias(), specialArgs=cls._getTooltipArgs(bonus, vehicle, vehInfo))
-
-    @classmethod
-    def _getTooltipArgs(cls, bonus, vehicle, vehInfo):
         tmanRoleLevel = bonus.getTmanRoleLevel(vehInfo)
         rentDays = bonus.getRentDays(vehInfo)
         rentBattles = bonus.getRentBattles(vehInfo)
@@ -825,13 +826,8 @@ class VehiclesBonusUIPacker(BaseBonusUIPacker):
         rentCycle = bonus.getRentCycle(vehInfo)
         rentExpiryTime = cls._getRentExpiryTime(rentDays)
         isSeniority = False
-        anyExpires = 'anyExpires' if 'rent' in vehInfo and 'anyExpires' in vehInfo['rent'] else ''
-        return [vehicle.intCD, tmanRoleLevel, rentExpiryTime, rentBattles, rentWins, rentSeason, rentCycle,
-         isSeniority, anyExpires]
-
-    @classmethod
-    def _getTooltipAlias(cls):
-        return TOOLTIPS_CONSTANTS.AWARD_VEHICLE
+        return TooltipData(tooltip=None, isSpecial=True, specialAlias=cls._SPECIAL_ALIAS, specialArgs=[
+         vehicle.intCD, tmanRoleLevel, rentExpiryTime, rentBattles, rentWins, rentSeason, rentCycle, isSeniority])
 
     @staticmethod
     def _getRentExpiryTime(rentDays):
@@ -859,10 +855,6 @@ class VehiclesBonusUIPacker(BaseBonusUIPacker):
         if isRent:
             return bonus.getName() + VEHICLE_RENT_ICON_POSTFIX
         return bonus.getName()
-
-    @classmethod
-    def _getCompensationPacker(cls):
-        return SimpleBonusUIPacker()
 
     @classmethod
     def _getLabel(cls, vehicle):
@@ -1065,8 +1057,8 @@ def getDailyMissionsMapping():
     return mapping
 
 
-def packMissionsBonusModelAndTooltipData(bonuses, packer, model, tooltipData=None, sort=None, iterator=0):
-    bonusIndexTotal = iterator
+def packMissionsBonusModelAndTooltipData(bonuses, packer, model, tooltipData=None, sort=None):
+    bonusIndexTotal = 0
     if tooltipData is not None:
         bonusIndexTotal = len(tooltipData)
     bonusTooltipList = []
@@ -1096,4 +1088,4 @@ def packMissionsBonusModelAndTooltipData(bonuses, packer, model, tooltipData=Non
                     tooltipData[tooltipIdx] = bonusTooltipList[bonusIndex]
                 bonusIndexTotal += 1
 
-    return bonusIndexTotal
+    return

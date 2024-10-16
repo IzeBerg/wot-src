@@ -2,28 +2,73 @@
 <root>
 	<mission>
 		<id>1</id>
-		<music>ob_music_int_00</music>
+		<music>
+			<start>ob_music_int_00</start>
+		</music>
 		<vo>vo_ob_char01_screen01_01</vo>
 		<battleMusic>ob_music_int_01</battleMusic>
 	</mission>
 	<mission>
 		<id>2</id>
-		<music>ob_music_int_00</music>
+		<music>
+			<start>ob_music_int_00</start>
+		</music>
 		<vo>vo_ob_char02_screen02_01</vo>
 		<battleMusic>ob_music_int_01</battleMusic>
+	</mission>
+	<mission>
+		<id>3</id>
+		<music>
+			<start>ob_music_int_00</start>
+		</music>
+		<vo>vo_sm_char02_m03_stg43_01</vo>
+		<battleMusic>ob_music_int_01</battleMusic>
+	</mission>
+	<mission>
+		<id>4</id>
+		<music>
+			<start>ob_music_int_00</start>
+		</music>
+		<vo>vo_sm_char02_m04_stg57_01</vo>
+		<battleMusic>ob_music_int_01</battleMusic>
+	</mission>
+	<mission>
+		<id>5</id>
+		<vo>vo_sm_char06_m05_stg70_01</vo>
+		<battleMusic>sm_gp_dday_music_01_intro</battleMusic>
+		<music>
+			<start>sm_lobby_dday_enter</start>
+			<stop>sm_lobby_dday_exit</stop>
+			<group>STATE_sm_dday_music</group>
+			<state>STATE_sm_dday_music_00_lobby_hard</state>
+		</music>
 	</mission>
 	<mission>
 		<id>1000</id>
 		<vo>vo_sm_char06_m05_stg70_01</vo>
 		<battleMusic>sm_gp_dday_music_01_intro</battleMusic>
+		<music>
+			<start>sm_lobby_dday_enter</start>
+			<stop>sm_lobby_dday_exit</stop>
+			<group>STATE_sm_dday_music</group>
+			<state>STATE_sm_dday_music_00_lobby_hard</state>
+		</music>
 	</mission>
 	<mission>
 		<id>1001</id>
 		<vo>vo_sm_char06_m05_stg70_01</vo>
 		<battleMusic>sm_gp_dday_music_01_intro</battleMusic>
+		<music>
+			<start>sm_lobby_dday_enter</start>
+			<stop>sm_lobby_dday_exit</stop>
+			<group>STATE_sm_dday_music</group>
+			<state>STATE_sm_dday_music_00_lobby_hard</state>
+		</music>
 	</mission>
 	<epilogue>
-		<music>ob_music_int_00</music>
+		<music>
+			<start>ob_music_int_00</start>
+		</music>
 		<vo>vo_ob_char02_screen03_01</vo>
 	</epilogue>
 </root>

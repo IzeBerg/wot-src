@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<htmlTemplatesSimple/>
+	<htmlTemplates>
+		<TechTreeTradeInCompleted>
+			<priority>high</priority>
+			<type>grey</type>
+			<icon>GoldIcon</icon>
+			<bgIcon>BgTTTIcon</bgIcon>
+			<bgIconSizeAuto>true</bgIconSizeAuto>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#tech_tree_trade_in.tech_tree_trade_in_messenger:serviceChannelMessages/techTreeTradeInComplete/title)&lt;/font&gt;&lt;br/&gt;&lt;font size=&apos;9&apos;&gt; &lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;_(#tech_tree_trade_in.tech_tree_trade_in_messenger:serviceChannelMessages/techTreeTradeInComplete/unlockedVehicles)&lt;/font&gt;&lt;br/&gt;&lt;font size=&quot;6&quot;&gt; &lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(unlockedVehicles)s&lt;/font&gt;&lt;br/&gt;&lt;font size=&apos;9&apos;&gt; &lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;_(#tech_tree_trade_in.tech_tree_trade_in_messenger:serviceChannelMessages/techTreeTradeInComplete/lockedVehicles)&lt;/font&gt;&lt;br/&gt;&lt;font size=&quot;6&quot;&gt; &lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(lockedVehicles)s&lt;/font&gt;&lt;br/&gt;&lt;font size=&apos;9&apos;&gt; &lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;_(#tech_tree_trade_in.tech_tree_trade_in_messenger:serviceChannelMessages/techTreeTradeInComplete/spentResources)&lt;/font&gt;&lt;br/&gt;&lt;font size=&quot;6&quot;&gt; &lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(resources)s&lt;/font&gt;</message>
+		</TechTreeTradeInCompleted>
+		<TechTreeTradeInDetails>
+			<priority>high</priority>
+			<type>grey</type>
+			<icon>WarningIcon</icon>
+			<bgIcon>BgTTTIcon</bgIcon>
+			<bgIconSizeAuto>true</bgIconSizeAuto>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#tech_tree_trade_in.tech_tree_trade_in_messenger:serviceChannelMessages/techTreeTradeInDetails/title)&lt;/font&gt;&lt;br/&gt;&lt;font size=&apos;9&apos;&gt; &lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(details)s&lt;/font&gt;&lt;br/&gt;&lt;font size=&apos;9&apos;&gt; &lt;/font&gt;&lt;br/&gt;&lt;font face=&apos;$FieldFont&apos; color=&apos;#595950&apos;&gt;_(#tech_tree_trade_in.tech_tree_trade_in_messenger:serviceChannelMessages/techTreeTradeInDetails/paragraph)&lt;/font&gt;</message>
+		</TechTreeTradeInDetails>
+	</htmlTemplates>
+</root>

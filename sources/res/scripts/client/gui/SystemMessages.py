@@ -42,6 +42,11 @@ SM_TYPE = Enumeration('System message type', [
  'RecruitGift',
  'LootBoxes',
  'LootBoxRewards',
+ 'LootBoxSystemRewards',
+ 'LootBoxSystemFinish',
+ 'LootBoxSystemEnabled',
+ 'LootBoxSystemDisabled',
+ 'LootBoxSystemResetStatsError',
  'SkinCompensation',
  'FeatureSwitcherOn',
  'FeatureSwitcherOff',
@@ -90,10 +95,7 @@ SM_TYPE = Enumeration('System message type', [
  'CollectionsEnabled',
  'SimpleGift',
  'NotEnoughBerthError',
- 'FairplayViolation',
- 'WTEventSwitchOnLootboxes',
- 'WTEventProgression',
- 'WTEventStart'])
+ 'FairplayViolation'])
 CURRENCY_TO_SM_TYPE = {Currency.CREDITS: SM_TYPE.PurchaseForCredits, 
    Currency.GOLD: SM_TYPE.PurchaseForGold, 
    Currency.CRYSTAL: SM_TYPE.PurchaseForCrystal, 

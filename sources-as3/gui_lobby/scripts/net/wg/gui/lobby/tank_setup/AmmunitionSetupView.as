@@ -203,7 +203,7 @@ package net.wg.gui.lobby.tank_setup
          }
          this.params.y = _loc1_;
          this.params.height = _originalHeight;
-         var _loc2_:* = _originalHeight - this.params.y - this._bottomMargin ^ 0;
+         var _loc2_:int = _originalHeight - this.params.y - this._bottomMargin ^ 0;
          if(_loc2_ >= 0)
          {
             this.params.height = _loc2_;

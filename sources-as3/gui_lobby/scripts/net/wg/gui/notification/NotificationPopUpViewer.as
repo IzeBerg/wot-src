@@ -68,6 +68,8 @@ package net.wg.gui.notification
       
       private var _countViewsWithExternalPadding:int = 0;
       
+      private var _useViewPadding:Boolean = false;
+      
       private var _earningView:AdvancedAchievementEarningView = null;
       
       private var _earningViewDisplayObject:DisplayObject = null;
@@ -250,6 +252,16 @@ package net.wg.gui.notification
       public function as_hasPopUpIndex(param1:uint, param2:Number) : Boolean
       {
          return this.getPopUpDisplayingIndex(param1,param2) > -1 || this.getPopUpPendingIndex(param1,param2) > -1;
+      }
+      
+      public function as_setViewPadding(param1:Boolean, param2:Number, param3:Number) : void
+      {
+         this._useViewPadding = param1;
+         if(param1)
+         {
+            this._externalPadding = new Point(param2,param3);
+         }
+         this.updatePadding();
       }
       
       public function as_initInfo(param1:Number, param2:Number) : void
@@ -445,7 +457,7 @@ package net.wg.gui.notification
       
       private function updatePadding() : void
       {
-         var _loc1_:Boolean = this._countViewsWithExternalPadding > 0 && this._countOverlayViews == 0 && this._externalPadding;
+         var _loc1_:Boolean = (this._countViewsWithExternalPadding > 0 || this._useViewPadding) && this._countOverlayViews == 0 && this._externalPadding;
          var _loc2_:Point = !!_loc1_ ? this._externalPadding : DEFAULT_PADDING;
          this.setPadding(_loc2_);
       }
@@ -528,11 +540,11 @@ package net.wg.gui.notification
          }
          else if(param1.type == ContainerManagerEvent.VIEW_REMOVED)
          {
-            if(_loc3_)
+            if(_loc3_ && this._countViewsWithExternalPadding > 0)
             {
                --this._countViewsWithExternalPadding;
             }
-            if(_loc4_)
+            if(_loc4_ && this._countOverlayViews > 0)
             {
                --this._countOverlayViews;
             }

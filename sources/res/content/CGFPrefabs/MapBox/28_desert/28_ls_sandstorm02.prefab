@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<version>4</version>
+	<GameObjects>
+		<GameObject>
+			<name>28_ls_sandstorm02_root</name>
+			<UUID>d460d8b0-d863-4fca-8ea9-d7684dcc51ec</UUID>
+			<flags>2</flags>
+		</GameObject>
+		<GameObject>
+			<name>28_ls_sandstorm02_activezone</name>
+			<UUID>9ca5e0e8-f98a-43b9-b93b-82d49df611c9</UUID>
+			<flags>2</flags>
+		</GameObject>
+		<GameObject>
+			<name>28_ls02_activezone_sandstorm_area</name>
+			<UUID>e39aa202-1f2b-4f89-a599-d927b2f55508</UUID>
+			<flags>2</flags>
+		</GameObject>
+	</GameObjects>
+	<components>
+		<ComponentPool>
+			<type>Hierarchy</type>
+			<version>2</version>
+			<component>
+				<UUID>9ca5e0e8-f98a-43b9-b93b-82d49df611c9</UUID>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Parent</name>
+						<link>d460d8b0-d863-4fca-8ea9-d7684dcc51ec</link>
+					</property>
+				</config>
+			</component>
+			<component>
+				<UUID>e39aa202-1f2b-4f89-a599-d927b2f55508</UUID>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Parent</name>
+						<link>9ca5e0e8-f98a-43b9-b93b-82d49df611c9</link>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>Transform</type>
+			<version>1</version>
+			<component>
+				<UUID>d460d8b0-d863-4fca-8ea9-d7684dcc51ec</UUID>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>0 0 0</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>-0 0 0</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<UUID>9ca5e0e8-f98a-43b9-b93b-82d49df611c9</UUID>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>0 0 0</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>-0 0 0</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<UUID>e39aa202-1f2b-4f89-a599-d927b2f55508</UUID>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>
+							0 -7.71801 0
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>-0 0 0</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>PrismArea</type>
+			<version>1</version>
+			<component>
+				<UUID>e39aa202-1f2b-4f89-a599-d927b2f55508</UUID>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Curvature</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Tesselation Step</name>
+						<value>20</value>
+					</property>
+					<property>
+						<name>Height</name>
+						<value>70</value>
+					</property>
+					<property>
+						<name>Points</name>
+						<collection>
+							<item>
+								<value>
+									47.5632 178.227
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									72.9619 163.962
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									96.5163 134.672
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									117.454 99.0312
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									147.273 14.382
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									153.019 -33.131
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									151.644 -79.2852
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									135.934 -119.472
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									111.385 -145.37
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									70.2561 -163.655
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									9.03765 -161.731
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-30.1238 -145.007
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-67.2803 -112.552
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-95.2082 -63.1538
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-109.487 -13.3753
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-109.764 41.6253
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-96.55 85.265
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-68.081 124.481
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-30.7269 158.498
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									14.159 177.474
+									<!--BW_String-->
+								</value>
+							</item>
+						</collection>
+					</property>
+					<property>
+						<name>Douglas-Peucker Epsilon</name>
+						<value>
+							0.2
+							<!--BW_String-->
+						</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>Area trigger</type>
+			<version>1</version>
+			<component>
+				<UUID>e39aa202-1f2b-4f89-a599-d927b2f55508</UUID>
+				<flags>35</flags>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>VisibilityObstacle</type>
+			<version>1</version>
+			<component>
+				<UUID>e39aa202-1f2b-4f89-a599-d927b2f55508</UUID>
+				<flags>34</flags>
+				<config>
+					<property>
+						<name>Colliders</name>
+						<link>00000000-0000-0000-0000-000000000000</link>
+					</property>
+					<property>
+						<name>PrismArea</name>
+						<link>e39aa202-1f2b-4f89-a599-d927b2f55508</link>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>VisibilityGroup</type>
+			<version>1</version>
+			<component>
+				<UUID>e39aa202-1f2b-4f89-a599-d927b2f55508</UUID>
+				<flags>34</flags>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>SoundZone</type>
+			<version>1</version>
+			<component>
+				<UUID>e39aa202-1f2b-4f89-a599-d927b2f55508</UUID>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Zone Enter Event</name>
+						<value>map_box_28_desrt_sand_ZoneEnter</value>
+					</property>
+					<property>
+						<name>Zone Exit Event</name>
+						<value>map_box_28_desrt_sand_ZoneExit</value>
+					</property>
+					<property>
+						<name>Emitter Event</name>
+						<value>map_box_sandstorm</value>
+					</property>
+					<property>
+						<name>Reverb</name>
+						<value/>
+					</property>
+					<property>
+						<name>Reverb Level</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Volume Deviation</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Color</name>
+						<value>
+							0 0 1 0.5
+							<!--BW_String-->
+						</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>OnPlayerInZoneComponent</type>
+			<version>1</version>
+			<component>
+				<UUID>e39aa202-1f2b-4f89-a599-d927b2f55508</UUID>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>prefabPath</name>
+						<isAsset>true</isAsset>
+						<value>content/CGFPrefabs/MapBox/28_desert/28_ls_sandstorm_post_effect.prefab</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>PolygonBorderVisualComponent</type>
+			<version>1</version>
+			<component>
+				<UUID>e39aa202-1f2b-4f89-a599-d927b2f55508</UUID>
+				<flags>2</flags>
+				<config>
+					<property>
+						<name>Attach to the ground</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Border Height</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Zone Visible</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Zone Fade</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Zone Intensity</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Zone Offset</name>
+						<value>
+							0.2
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Tessellation Factor</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Zone Color</name>
+						<value>
+							0.521569 0.521569 0.521569 0
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Wall Visible</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Draw Wall Stripes</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Wall Height</name>
+						<value>
+							70.1
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Wall Color</name>
+						<value>0.823529 0.517647 0.101961 0.298039</value>
+					</property>
+					<property>
+						<name>Dissolve height</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Dissolve power</name>
+						<value>6</value>
+					</property>
+					<property>
+						<name>Stripe width</name>
+						<value>4</value>
+					</property>
+					<property>
+						<name>Stripe fill ratio</name>
+						<value>
+							0.5
+							<!--BW_String-->
+						</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>VSEComponent</type>
+			<version>1</version>
+			<component>
+				<UUID>e39aa202-1f2b-4f89-a599-d927b2f55508</UUID>
+				<flags>32</flags>
+				<config>
+					<property>
+						<name>Path</name>
+						<isAsset>true</isAsset>
+						<value>vscript/plans/MapBox_2024/vse_ls_sandstorm_area.xml</value>
+					</property>
+					<property>
+						<name>AutoStart</name>
+						<value>1</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>PartialVisibilityGroupComponent</type>
+			<version>1</version>
+			<component>
+				<UUID>e39aa202-1f2b-4f89-a599-d927b2f55508</UUID>
+				<flags>34</flags>
+				<config>
+					<property>
+						<name>delay</name>
+						<value>5</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>MinimapChangerComponent</type>
+			<version>1</version>
+			<component>
+				<UUID>e39aa202-1f2b-4f89-a599-d927b2f55508</UUID>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>LayerID</name>
+						<value>mmap_28_ls_sandstorm02</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>WeatherZoneUINotification</type>
+			<version>1</version>
+			<component>
+				<UUID>e39aa202-1f2b-4f89-a599-d927b2f55508</UUID>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>trigger</name>
+						<link>e39aa202-1f2b-4f89-a599-d927b2f55508</link>
+					</property>
+					<property>
+						<name>zoneType</name>
+						<value>sandstormZone</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>ZoneHint</type>
+			<version>1</version>
+			<component>
+				<UUID>e39aa202-1f2b-4f89-a599-d927b2f55508</UUID>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>trigger</name>
+						<link>e39aa202-1f2b-4f89-a599-d927b2f55508</link>
+					</property>
+					<property>
+						<name>hintUniqName</name>
+						<value>local_story.LSH_SANDSTORM</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+	</components>
+</root>

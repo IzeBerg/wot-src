@@ -37,5 +37,10 @@ package net.wg.data.constants
       {
          return (param1 & IS_PLAYER_SELECTED) > 0;
       }
+      
+      public static function isSquadPersonal(param1:uint) : Boolean
+      {
+         return (param1 & PlayerStatus.IS_SQUAD_PERSONAL) > 0;
+      }
    }
 }

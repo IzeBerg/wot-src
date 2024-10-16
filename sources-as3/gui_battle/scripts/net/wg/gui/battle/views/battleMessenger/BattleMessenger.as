@@ -379,10 +379,6 @@ package net.wg.gui.battle.views.battleMessenger
       public function as_enterPressed(param1:int) : void
       {
          var _loc2_:String = null;
-         if(!this.visible)
-         {
-            return;
-         }
          if(this._isCtrlButtonPressed)
          {
             return;

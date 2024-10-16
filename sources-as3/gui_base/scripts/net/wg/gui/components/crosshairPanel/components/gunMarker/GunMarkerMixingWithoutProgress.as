@@ -10,7 +10,7 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
       private static const STATE_VALIDATION:String = "state";
        
       
-      public var dotsMc:MovieClip = null;
+      public var dotsMc:MovieClip;
       
       private var _isInProgress:Boolean = false;
       
@@ -40,11 +40,6 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
       {
          this.dotsMc = null;
          super.onDispose();
-      }
-      
-      public function setAlpha(param1:Number) : void
-      {
-         alpha = param1;
       }
       
       public function setReloadingAsPercent(param1:Number, param2:Boolean = false) : void

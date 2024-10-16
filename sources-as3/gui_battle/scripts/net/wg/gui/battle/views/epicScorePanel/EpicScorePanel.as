@@ -176,7 +176,7 @@ package net.wg.gui.battle.views.epicScorePanel
          this._headquartersMCList = new <HeadquarterEntryAnimated>[this.headquarters.headquarters_0,this.headquarters.headquarters_1,this.headquarters.headquarters_2,this.headquarters.headquarters_3,this.headquarters.headquarters_4];
          this._basesProgress = new <Number>[0,0,0,0,0,0];
          this._headquartersStates = new <Number>[0,0,0,0,0];
-         this.initScorePanelElementsStates();
+         this.updateScorePanelElementsStates();
          this.checkState();
       }
       
@@ -324,7 +324,7 @@ package net.wg.gui.battle.views.epicScorePanel
          if(param1.isAttacker != this._isAttacker)
          {
             this._isAttacker = param1.isAttacker;
-            this.initScorePanelElementsStates();
+            this.updateScorePanelElementsStates(false);
             _loc2_ = true;
          }
          if(param1.lane != this._currentLane)
@@ -353,24 +353,31 @@ package net.wg.gui.battle.views.epicScorePanel
          this.shadowStretch.x = 0;
       }
       
-      private function initScorePanelElementsStates() : void
+      private function updateScorePanelElementsStates(param1:Boolean = true) : void
       {
-         var _loc1_:int = 0;
-         var _loc2_:int = this._basesMCList.length;
-         _loc1_ = 0;
-         while(_loc1_ < _loc2_)
+         var _loc2_:int = 0;
+         var _loc3_:int = this._basesMCList.length;
+         _loc2_ = 0;
+         while(_loc2_ < _loc3_)
          {
-            this._basesMCList[_loc1_].init(_loc1_ + 1,!this._isAttacker);
-            this._basesMCList[_loc1_].setBaseState(this._isAttacker,this._basesProgress[_loc1_] >= 1);
-            _loc1_++;
+            this._basesMCList[_loc2_].init(_loc2_ + 1,!this._isAttacker);
+            this._basesMCList[_loc2_].setBaseState(this._isAttacker,this._basesProgress[_loc2_] >= 1);
+            _loc2_++;
          }
-         _loc2_ = this._headquartersMCList.length;
-         _loc1_ = 0;
-         while(_loc1_ < _loc2_)
+         _loc3_ = this._headquartersMCList.length;
+         _loc2_ = 0;
+         while(_loc2_ < _loc3_)
          {
-            this._headquartersMCList[_loc1_].init(_loc1_ + 1,this._isAttacker);
-            this._headquartersMCList[_loc1_].setHealth(this._headquartersStates[_loc1_]);
-            _loc1_++;
+            if(param1)
+            {
+               this._headquartersMCList[_loc2_].init(_loc2_ + 1,this._isAttacker);
+               this._headquartersMCList[_loc2_].setHealth(this._headquartersStates[_loc2_]);
+            }
+            else
+            {
+               this._headquartersMCList[_loc2_].isAttacker(this._isAttacker);
+            }
+            _loc2_++;
          }
       }
       

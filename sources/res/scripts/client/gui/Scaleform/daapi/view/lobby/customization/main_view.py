@@ -60,7 +60,6 @@ from skeletons.gui.impl import IGuiLoader
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.shared import IItemsCache
 from skeletons.gui.shared.utils import IHangarSpace
-from skeletons.gui.game_control import IEventBattlesController
 from vehicle_outfit.outfit import Area
 from constants import NC_MESSAGE_PRIORITY
 if typing.TYPE_CHECKING:
@@ -207,7 +206,6 @@ class MainView(LobbySubView, CustomizationMainViewMeta, LobbyHeaderVisibility):
     appLoader = dependency.descriptor(IAppLoader)
     guiLoader = dependency.descriptor(IGuiLoader)
     settingsCore = dependency.descriptor(ISettingsCore)
-    gameEventController = dependency.descriptor(IEventBattlesController)
 
     def __init__(self, ctx=None):
         super(MainView, self).__init__()
@@ -226,6 +224,7 @@ class MainView(LobbySubView, CustomizationMainViewMeta, LobbyHeaderVisibility):
         self.__billPopoverButtonsCallbacks = {BillPopoverButtons.CUSTOMIZATION_CLEAR: self.__onCustomizationClear, 
            BillPopoverButtons.CUSTOMIZATION_CLEAR_LOCKED: self.__onCustomizationClearLocked}
         self.__dontPlayTabChangeSound = False
+        self.__resetCameraDistance = False
         self.__itemsGrabMode = False
         self.__finishGrabModeCallback = None
         self.__closeConfirmatorHelper = _CustomizationCloseConfirmatorsHelper()
@@ -426,6 +425,7 @@ class MainView(LobbySubView, CustomizationMainViewMeta, LobbyHeaderVisibility):
     def __onModeChanged(self, modeId, prevModeId):
         self.soundManager.playInstantSound(SOUNDS.TAB_SWITCH)
         self.__dontPlayTabChangeSound = True
+        self.__resetCameraDistance = True
         if modeId == CustomizationModes.EDITABLE_STYLE:
             self.soundManager.playInstantSound(SOUNDS.EDIT_MODE_SWITCH_ON)
         elif prevModeId == CustomizationModes.EDITABLE_STYLE:
@@ -443,7 +443,11 @@ class MainView(LobbySubView, CustomizationMainViewMeta, LobbyHeaderVisibility):
             modeId = self.__ctx.modeId
             highlightingMode = chooseMode(slotType, modeId, g_currentVehicle.item)
             self.service.startHighlighter(highlightingMode)
-        self.__resetCustomizationCamera(False, False)
+        if self.__resetCameraDistance:
+            self.__resetCameraDistance = False
+            self.__resetCustomizationCamera(False)
+        else:
+            self.__resetCustomizationCamera(False, False)
         self.__setAnchorsInitData()
         self.__updateAnchorsData()
         self.__updateDnd()
@@ -840,7 +844,7 @@ class MainView(LobbySubView, CustomizationMainViewMeta, LobbyHeaderVisibility):
         self.hangarSpace.onSpaceDestroy -= self.__onSpaceDestroyHandler
         self.hangarSpace.onSpaceRefresh -= self.__onSpaceRefreshHandler
         self.service.onRegionHighlighted -= self.__onRegionHighlighted
-        if g_currentVehicle.isPresent() and not self.gameEventController.isEventPrbActive():
+        if g_currentVehicle.isPresent():
             g_tankActiveCamouflage[g_currentVehicle.item.intCD] = self.__ctx.season
             g_currentVehicle.refreshModel()
         self.__propertiesSheet = None

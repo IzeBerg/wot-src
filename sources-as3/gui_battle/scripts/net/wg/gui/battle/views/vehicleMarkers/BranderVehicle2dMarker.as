@@ -88,6 +88,8 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       public var playerHitLabel:HealthBarAnimatedLabel = null;
       
+      public var squadHitLabel:HealthBarAnimatedLabel = null;
+      
       public var otherHitLabel:HealthBarAnimatedLabel = null;
       
       public var criticalHitLabel:HealthBarAnimatedLabel = null;
@@ -192,45 +194,50 @@ package net.wg.gui.battle.views.vehicleMarkers
          if(this.actionMarker != null)
          {
             this.actionMarker.dispose();
+            this.actionMarker = null;
          }
-         this.actionMarker = null;
          if(this.playerHitLabel != null)
          {
             this.playerHitLabel.dispose();
+            this.playerHitLabel = null;
          }
-         this.playerHitLabel = null;
+         if(this.squadHitLabel != null)
+         {
+            this.squadHitLabel.dispose();
+            this.squadHitLabel = null;
+         }
          if(this.otherHitLabel != null)
          {
             this.otherHitLabel.dispose();
+            this.otherHitLabel = null;
          }
-         this.otherHitLabel = null;
          if(this.hitExplosion != null)
          {
             this.hitExplosion.dispose();
+            this.hitExplosion = null;
          }
-         this.hitExplosion = null;
          if(this.criticalHit != null)
          {
             this.criticalHit.dispose();
+            this.criticalHit = null;
          }
-         this.criticalHit = null;
          if(this.healthBar != null)
          {
             this.healthBar.dispose();
+            this.healthBar = null;
          }
-         this.healthBar = null;
          this.bgShadow = null;
          this.squadIcon = null;
          if(this.criticalHitLabel != null)
          {
             this.criticalHitLabel.dispose();
+            this.criticalHitLabel = null;
          }
-         this.criticalHitLabel = null;
          if(this.statusContainer != null)
          {
             this.statusContainer.dispose();
+            this.statusContainer = null;
          }
-         this.statusContainer = null;
          this.marker = null;
          this._model = null;
          this._vmManager = null;
@@ -394,7 +401,7 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.updateMarkerSettings();
       }
       
-      public function updateHealth(param1:int, param2:Boolean, param3:String) : void
+      public function updateHealth(param1:int, param2:uint, param3:String) : void
       {
          var _loc5_:String = null;
          if(param1 < 0)
@@ -415,17 +422,23 @@ package net.wg.gui.battle.views.vehicleMarkers
             {
                if(_loc4_ > 0)
                {
-                  if(param2)
+                  switch(param2)
                   {
-                     this.playerHitLabel.damage(_loc4_,_loc5_);
-                     this.playerHitLabel.playShowTween();
+                     case VehicleMarkerFlags.DAMAGE_FROM_PLAYER_FLAG:
+                        this.playerHitLabel.damage(_loc4_,_loc5_);
+                        this.playerHitLabel.playShowTween();
+                        break;
+                     case VehicleMarkerFlags.DAMAGE_FROM_SQUAD_FLAG:
+                        this.squadHitLabel.damage(_loc4_,_loc5_);
+                        this.squadHitLabel.playShowTween();
+                        break;
+                     case VehicleMarkerFlags.DAMAGE_FROM_OTHER_FLAG:
+                     default:
+                        this.otherHitLabel.damage(_loc4_,_loc5_);
+                        this.otherHitLabel.playShowTween();
                   }
-                  else
-                  {
-                     this.otherHitLabel.damage(_loc4_,_loc5_);
-                     this.otherHitLabel.playShowTween();
-                  }
-                  this.otherHitLabel.y = !!this.playerHitLabel.isActive() ? Number(VehicleMarker.OTHER_HIT_LABEL_Y) : Number(this.playerHitLabel.y);
+                  this.squadHitLabel.y = !!this.playerHitLabel.isActive() ? Number(this.playerHitLabel.y + VehicleMarker.EXTRA_HIT_LABEL_OFFSET_Y) : Number(this.playerHitLabel.y);
+                  this.otherHitLabel.y = !!this.squadHitLabel.isActive() ? Number(this.squadHitLabel.y + VehicleMarker.EXTRA_HIT_LABEL_OFFSET_Y) : Number(this.squadHitLabel.y);
                }
                if(VehicleMarkerFlags.checkAllowedDamages(param3))
                {
@@ -486,10 +499,21 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       private function updateCriticalLayout() : void
       {
-         var _loc1_:Boolean = false;
-         _loc1_ = this.playerHitLabel.visible && this.playerHitLabel.isActive() || this.otherHitLabel.visible && this.otherHitLabel.isActive();
-         var _loc2_:int = !!_loc1_ ? int(this.playerHitLabel.damageLabel.textWidth) : int(0);
-         var _loc3_:int = !!_loc1_ ? int(BLOCK_HORIZONTAL_OFFSET) : int(START_HORIZONTAL_OFFSET);
+         var _loc1_:HealthBarAnimatedLabel = null;
+         if(this.playerHitLabel.visible && this.playerHitLabel.isActive())
+         {
+            _loc1_ = this.playerHitLabel;
+         }
+         else if(this.squadHitLabel.visible && this.squadHitLabel.isActive())
+         {
+            _loc1_ = this.squadHitLabel;
+         }
+         else if(this.otherHitLabel.visible && this.otherHitLabel.isActive())
+         {
+            _loc1_ = this.otherHitLabel;
+         }
+         var _loc2_:int = Boolean(_loc1_) ? int(_loc1_.damageLabel.textWidth) : int(0);
+         var _loc3_:int = Boolean(_loc1_) ? int(BLOCK_HORIZONTAL_OFFSET) : int(START_HORIZONTAL_OFFSET);
          this.criticalHit.x = this.playerHitLabel.x + _loc2_ + _loc3_ | 0;
          this.criticalHitLabel.x = this.criticalHit.x + EXPLOSION_SIZE | 0;
       }
@@ -502,10 +526,11 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       private function updateMarkerSettings() : void
       {
-         var _loc3_:Boolean = false;
-         var _loc1_:Boolean = this.getIsPartVisible(HEALTH_BAR);
-         var _loc2_:Boolean = this.getIsPartVisible(HEALTH_LBL);
-         _loc3_ = this.getIsPartVisible(DAMAGE_PANEL);
+         var _loc1_:Boolean = false;
+         var _loc2_:Boolean = false;
+         _loc1_ = this.getIsPartVisible(HEALTH_BAR);
+         _loc2_ = this.getIsPartVisible(HEALTH_LBL);
+         var _loc3_:Boolean = this.getIsPartVisible(DAMAGE_PANEL);
          if(_loc1_)
          {
             this.healthBar.currHealth = this._model.currHealth;
@@ -518,6 +543,7 @@ package net.wg.gui.battle.views.vehicleMarkers
          }
          this.setHealthText();
          this.playerHitLabel.visible = _loc3_;
+         this.squadHitLabel.visible = _loc3_;
          this.otherHitLabel.visible = _loc3_;
          this.hitExplosion.visible = _loc3_;
          if(_loc2_ && !_loc1_)
@@ -625,6 +651,7 @@ package net.wg.gui.battle.views.vehicleMarkers
                   {
                      _loc2_ = this._vmManager.getTransform(this._markerSchemeName);
                      this.playerHitLabel.transform.colorTransform = _loc2_;
+                     this.squadHitLabel.transform.colorTransform = _loc2_;
                      this.otherHitLabel.transform.colorTransform = _loc2_;
                   }
                }
@@ -654,9 +681,9 @@ package net.wg.gui.battle.views.vehicleMarkers
          return _loc2_;
       }
       
-      private function getDamageColor(param1:Boolean) : String
+      private function getDamageColor(param1:uint) : String
       {
-         var _loc2_:Object = !!param1 ? VehicleMarkerFlags.PLAYER_DAMAGE_COLOR : VehicleMarkerFlags.OTHER_DAMAGE_COLOR;
+         var _loc2_:Object = VehicleMarkerFlags.DAMAGE_FROM_COLORS[param1];
          if(this.isObserver)
          {
             return _loc2_[DEFAULT_DAMAGE_COLOR];

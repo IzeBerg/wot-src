@@ -2,7 +2,7 @@ from typing import Optional
 import BigWorld
 from constants import CustomizationInvData
 from gui.SystemMessages import pushMessagesFromResult
-from items.components.c11n_constants import SeasonType
+from items.components.c11n_constants import SeasonType, ItemTags
 from Event import Event, EventManager
 from adisp import adisp_process
 from gui import g_tankActiveCamouflage
@@ -13,7 +13,7 @@ from gui.vehicle_view_states import createState4CurrentVehicle
 from helpers import dependency
 from items.vehicles import VehicleDescr
 from helpers import isPlayerAccount, i18n
-from account_helpers.AccountSettings import AccountSettings, CURRENT_VEHICLE, ROYALE_VEHICLE, EVENT_VEHICLE
+from account_helpers.AccountSettings import AccountSettings, CURRENT_VEHICLE, ROYALE_VEHICLE
 from gui.ClientUpdateManager import g_clientUpdateManager
 from gui.shared.utils.requesters import REQ_CRITERIA
 from gui.shared.formatters import icons
@@ -24,12 +24,14 @@ from gui.Scaleform.Waiting import Waiting
 from gui.Scaleform.genConsts.VEHPREVIEW_CONSTANTS import VEHPREVIEW_CONSTANTS
 from shared_utils import first
 from skeletons.gui.customization import ICustomizationService
-from skeletons.gui.game_control import IIGRController, IRentalsController, IBattleRoyaleController, IBattleRoyaleTournamentController, IFunRandomController, IEventBattlesController
+from skeletons.gui.game_control import IIGRController, IRentalsController, IBattleRoyaleController, IBattleRoyaleTournamentController, IFunRandomController
 from skeletons.gui.shared import IItemsCache
 from skeletons.gui.shared.gui_items import IGuiItemsFactory
 from skeletons.gui.shared.utils import IHangarSpace
 _MODULES_NAMES = (
  'turret', 'chassis', 'engine', 'gun', 'radio')
+RESTORE_WITH_STYLE = 'restoreWithStyle'
+LOCKED_OUTFIT = 'lockedOutfit'
 
 class _CachedVehicle(object):
     itemsCache = dependency.descriptor(IItemsCache)
@@ -129,7 +131,6 @@ class _CurrentVehicle(_CachedVehicle):
     battleRoyaleController = dependency.descriptor(IBattleRoyaleController)
     battleRoyaleTounamentController = dependency.descriptor(IBattleRoyaleTournamentController)
     funRandomController = dependency.descriptor(IFunRandomController)
-    __gameEvent = dependency.descriptor(IEventBattlesController)
 
     def __init__(self):
         super(_CurrentVehicle, self).__init__()
@@ -170,8 +171,6 @@ class _CurrentVehicle(_CachedVehicle):
             self.onChanged()
 
     def onLocksUpdate(self, locksDiff):
-        if self.__gameEvent.isEventPrbActive():
-            return
         if self.__vehInvID in locksDiff:
             self.refreshModel()
             self.onChanged()
@@ -277,9 +276,6 @@ class _CurrentVehicle(_CachedVehicle):
     def isOnlyForComp7Battles(self):
         return self.isPresent() and self.item.isOnlyForComp7Battles
 
-    def isOnlyForRandomBattles(self):
-        return self.isPresent() and self.item.isOnlyForRandomBattles
-
     def isOutfitLocked(self):
         return self.isPresent() and self.item.isOutfitLocked
 
@@ -302,7 +298,10 @@ class _CurrentVehicle(_CachedVehicle):
         return self.isPresent() and self.item.isReadyToFight
 
     def isUnsuitableToQueue(self):
-        return self.isPresent() and self.item.isUnsuitableToQueue
+        if self.isPresent():
+            state, _ = self.item.getState()
+            return state == Vehicle.VEHICLE_STATE.UNSUITABLE_TO_QUEUE
+        return False
 
     def isAutoLoadFull(self):
         return not self.isPresent() or self.item.isAutoLoadFull()
@@ -390,9 +389,7 @@ class _CurrentVehicle(_CachedVehicle):
         self.__vehInvID = vehInvID
         if self.isOnlyForBattleRoyaleBattles():
             AccountSettings.setFavorites(ROYALE_VEHICLE, vehInvID)
-        elif self.isEvent():
-            AccountSettings.setFavorites(EVENT_VEHICLE, vehInvID)
-        else:
+        elif not self.isOnlyForEventBattles():
             AccountSettings.setFavorites(CURRENT_VEHICLE, vehInvID)
         self.refreshModel()
         self._setChangeCallback(callback)
@@ -433,8 +430,6 @@ class _CurrentVehicle(_CachedVehicle):
             return False
         else:
             if vehicle.isModeHidden and vehicle.isOnlyForFunRandomBattles and not self.funRandomController.isEnabled():
-                return False
-            if vehicle.isModeHidden and vehicle.isOnlyForEventBattles:
                 return False
             return not REQ_CRITERIA.VEHICLE.BATTLE_ROYALE(vehicle) or self.battleRoyaleController.isBattleRoyaleMode()
 
@@ -682,6 +677,10 @@ class _CurrentPreviewVehicle(_CachedVehicle):
                 self.__item = self.__makePreviewVehicleFromStrCD(vehicleCD, vehicleStrCD)
             else:
                 self.__item = self.__getPreviewVehicle(vehicleCD)
+            if self.__item is not None and outfit is None and style is None and (RESTORE_WITH_STYLE in self.__item.tags or LOCKED_OUTFIT in self.__item.tags):
+                criteria = REQ_CRITERIA.CUSTOMIZATION.FOR_VEHICLE(self.__item)
+                criteria |= REQ_CRITERIA.CUSTOMIZATION.HAS_TAGS([ItemTags.LOCKED_ON_VEHICLE])
+                style = first(self.itemsCache.items.getStyles(criteria).values())
             if style is not None and outfit is None:
                 outfit = self.__getPreviewOutfitByStyle(style)
             if self.__vehAppearance is not None:

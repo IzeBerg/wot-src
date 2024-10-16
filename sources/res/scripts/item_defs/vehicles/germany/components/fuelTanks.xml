@@ -6,7 +6,6 @@
 		<Average>203</Average>
 		<Heavy>204</Heavy>
 		<Large>205</Large>
-		<Large_Inv>206</Large_Inv>
 		<Large_SH>207</Large_SH>
 		<Average_MapsTraining_Dummy_HT_1>1</Average_MapsTraining_Dummy_HT_1>
 		<Medium_MapsTraining_Dummy_ATSPG_1>2</Medium_MapsTraining_Dummy_ATSPG_1>
@@ -21,6 +20,7 @@
 		<Large_StoryMode>35</Large_StoryMode>
 		<Large_StoryMode__1>36</Large_StoryMode__1>
 		<Large_StoryMode__2>37</Large_StoryMode__2>
+		<Medium_StoryMode>40</Medium_StoryMode>
 	</ids>
 	<shared>
 		<Small>
@@ -78,18 +78,6 @@
 				<!--BW_String-->
 			</repairCost>
 		</Large>
-		<Large_Inv>
-			<tags/>
-			<price>100</price>
-			<weight>300</weight>
-			<maxHealth>200</maxHealth>
-			<maxRegenHealth>70</maxRegenHealth>
-			<repairCost>
-				1.0
-				<!--BW_String-->
-			</repairCost>
-			<invulnerable>True</invulnerable>
-		</Large_Inv>
 		<Large_SH>
 			<tags/>
 			<price>0</price>
@@ -256,5 +244,17 @@
 			</repairCost>
 			<notInShop>True</notInShop>
 		</Large_StoryMode__2>
+		<Medium_StoryMode>
+			<tags/>
+			<price>100</price>
+			<weight>250</weight>
+			<maxHealth>125</maxHealth>
+			<maxRegenHealth>50</maxRegenHealth>
+			<repairCost>
+				1.0
+				<!--BW_String-->
+			</repairCost>
+			<notInShop>True</notInShop>
+		</Medium_StoryMode>
 	</shared>
 </root>

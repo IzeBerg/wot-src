@@ -331,10 +331,7 @@ package net.wg.gui.lobby.congrats
          if(!_baseDisposed)
          {
             param1.onChange = null;
-            if(this.vehicleHighlight)
-            {
-               this.vehicleHighlight.visible = true;
-            }
+            this.vehicleHighlight.visible = true;
          }
       }
       
@@ -347,16 +344,6 @@ package net.wg.gui.lobby.congrats
             _loc1_.dispose();
          }
          this._tweens.length = 0;
-      }
-      
-      private function repositionItems() : void
-      {
-         if(!this._isCollectible)
-         {
-            this.vehicleLevelTF.y -= COLLECTIBLE_OFFSET;
-            this._vehicleType.y -= COLLECTIBLE_OFFSET;
-            this.vehicleNameTF.y -= COLLECTIBLE_OFFSET;
-         }
       }
       
       private function onImageCompleteHandler(param1:UILoaderEvent) : void
@@ -374,6 +361,16 @@ package net.wg.gui.lobby.congrats
       private function onBackButtonClickHandler(param1:ButtonEvent) : void
       {
          dispatchEvent(new Event(BACK_EVENT_TYPE));
+      }
+      
+      private function repositionItems() : void
+      {
+         if(!this._isCollectible)
+         {
+            this.vehicleLevelTF.y -= COLLECTIBLE_OFFSET;
+            this._vehicleType.y -= COLLECTIBLE_OFFSET;
+            this.vehicleNameTF.y -= COLLECTIBLE_OFFSET;
+         }
       }
    }
 }

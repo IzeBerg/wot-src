@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<version>4</version>
+	<GameObjects>
+		<GameObject>
+			<name>HWEntryPointRules</name>
+			<UUID>039086db-eab2-4645-9c78-e281a9cc043e</UUID>
+			<flags>0</flags>
+		</GameObject>
+	</GameObjects>
+	<components>
+		<ComponentPool>
+			<type>Transform</type>
+			<version>1</version>
+			<component>
+				<UUID>039086db-eab2-4645-9c78-e281a9cc043e</UUID>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>0 0 0</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>-0 0 0</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>SelectionRule</type>
+			<version>1</version>
+			<component>
+				<UUID>039086db-eab2-4645-9c78-e281a9cc043e</UUID>
+				<flags>1</flags>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>HWShowEventRule</type>
+			<version>1</version>
+			<component>
+				<UUID>039086db-eab2-4645-9c78-e281a9cc043e</UUID>
+				<flags>1</flags>
+			</component>
+		</ComponentPool>
+	</components>
+</root>

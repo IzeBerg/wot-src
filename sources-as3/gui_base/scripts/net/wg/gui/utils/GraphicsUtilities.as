@@ -30,7 +30,7 @@ package net.wg.gui.utils
             param1.drawCircle(param2,param3,param6);
             return;
          }
-         _loc11_ = Math.ceil(Math.abs(param5) / (Math.PI / 4));
+         _loc11_ = Math.ceil(Math.abs(param5) / (Math.PI / 6));
          _loc7_ = param5 / _loc11_;
          _loc8_ = -_loc7_;
          _loc9_ = -param4;

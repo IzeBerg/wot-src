@@ -33,6 +33,7 @@
 		<N22_N>44</N22_N>
 		<N19Mk3_BPXIV>45</N19Mk3_BPXIV>
 		<WS_No.22_CT>46</WS_No.22_CT>
+		<WS_No_22_Mk_3>51</WS_No_22_Mk_3>
 		<C42_FL>501</C42_FL>
 		<C45_7x7>502</C45_7x7>
 		<C42_IGR>60001</C42_IGR>
@@ -46,6 +47,7 @@
 		<N19Mk3_MapsTraining_Dummy_MT_2>3</N19Mk3_MapsTraining_Dummy_MT_2>
 		<N9_NewOnBoarding>64001</N9_NewOnBoarding>
 		<N19Mk3_NewOnBoarding>64002</N19Mk3_NewOnBoarding>
+		<N22_HW>5003</N22_HW>
 	</ids>
 	<shared>
 		<N14>
@@ -450,6 +452,21 @@
 				<!--BW_String-->
 			</repairCost>
 		</C45A>
+		<WS_No_22_Mk_3>
+			<userString>#gb_vehicles:WS_No_22_Mk_3</userString>
+			<tags/>
+			<level>10</level>
+			<price>54000</price>
+			<notInShop>true</notInShop>
+			<weight>50</weight>
+			<distance>750</distance>
+			<maxHealth>180</maxHealth>
+			<maxRegenHealth>108</maxRegenHealth>
+			<repairCost>
+				3.5
+				<!--BW_String-->
+			</repairCost>
+		</WS_No_22_Mk_3>
 		<WS_No.22_CT>
 			<userString>#gb_vehicles:WS_No.22_CT</userString>
 			<tags/>
@@ -683,5 +700,17 @@
 			<invulnerable>True</invulnerable>
 			<notInShop>True</notInShop>
 		</N19Mk3_NewOnBoarding>
+		<N22_HW>
+			<userString>#gb_vehicles:N22</userString>
+			<tags/>
+			<level>8</level>
+			<price>25000</price>
+			<notInShop>true</notInShop>
+			<weight>40</weight>
+			<distance>700</distance>
+			<maxHealth>140</maxHealth>
+			<maxRegenHealth>84</maxRegenHealth>
+			<repairCost>3</repairCost>
+		</N22_HW>
 	</shared>
 </root>

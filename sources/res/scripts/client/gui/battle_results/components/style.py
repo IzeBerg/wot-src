@@ -18,7 +18,6 @@ _VEHICLE_STATE_PREFIX = '{0} ('
 _VEHICLE_STATE_SUFFIX = ')'
 _DIFF_FORMAT = '+ {}'
 _LINE_FEED = '\n'
-_DEFAULT_COUNT = 0
 
 def getUnknownPlayerName(isEnemy=False):
     if isEnemy:
@@ -29,8 +28,8 @@ def getUnknownPlayerName(isEnemy=False):
 I18nDeathReason = namedtuple('I18nDeathReason', 'i18nString prefix suffix')
 
 def makeI18nDeathReason(deathReason):
-    i18nString = i18n.makeString(BATTLE_RESULTS.getVehicleDeadState(intType=deathReason))
-    return I18nDeathReason(i18nString, _VEHICLE_STATE_PREFIX.format(i18nString), _VEHICLE_STATE_SUFFIX)
+    state = backport.text(R.strings.battle_results.common.vehicleState.dyn(('dead{}').format(deathReason), R.invalid)())
+    return I18nDeathReason(state, _VEHICLE_STATE_PREFIX.format(state), _VEHICLE_STATE_SUFFIX)
 
 
 def markValueAsError(value):
@@ -66,19 +65,22 @@ def getTooltipParamsStyle(paramKey=None):
     return makeHtmlString('html_templates:lobby/battle_results', 'tooltip_params_style', {'text': i18n.makeString(paramKey)})
 
 
-def makeCriticalModuleTooltipLabel(module, count=_DEFAULT_COUNT):
-    return _makeModuleTooltipLabel(module, 'Critical', count)
+def _makeModuleTooltipLabel(module, suffix):
+    return makeHtmlString('html_templates:lobby/battle_results', 'tooltip_crit_label', {'image': ('{0}{1}').format(module, suffix), 
+       'value': backport.text(R.strings.item_types.dyn(module).name())})
 
 
-def makeDestroyedModuleTooltipLabel(module, count=_DEFAULT_COUNT):
-    return _makeModuleTooltipLabel(module, 'Destroyed', count)
+def makeCriticalModuleTooltipLabel(module):
+    return _makeModuleTooltipLabel(module, 'Critical')
 
 
-def makeTankmenTooltipLabel(role, count=_DEFAULT_COUNT):
-    args = {'image': ('{0}Destroyed').format(role), 
-       'value': backport.text(R.strings.item_types.tankman.roles.dyn(role)())}
-    template, args = _getTemplateAndArgs(args, count)
-    return makeHtmlString('html_templates:lobby/battle_results', template, args)
+def makeDestroyedModuleTooltipLabel(module):
+    return _makeModuleTooltipLabel(module, 'Destroyed')
+
+
+def makeTankmenTooltipLabel(role):
+    return makeHtmlString('html_templates:lobby/battle_results', 'tooltip_crit_label', {'image': ('{0}Destroyed').format(role), 
+       'value': backport.text(R.strings.item_types.tankman.roles.dyn(role)())})
 
 
 class StatRow(base.StatsItem):
@@ -413,20 +415,3 @@ class XpStatsItem(base.StatsItem):
         if not value:
             converted = markValueAsEmpty(converted)
         return converted
-
-
-def _makeModuleTooltipLabel(module, suffix, count=_DEFAULT_COUNT):
-    args = {'image': ('{0}{1}').format(module, suffix), 
-       'value': backport.text(R.strings.item_types.dyn(module).name())}
-    template, args = _getTemplateAndArgs(args, count)
-    return makeHtmlString('html_templates:lobby/battle_results', template, args)
-
-
-def _getTemplateAndArgs(args, count):
-    if count == _DEFAULT_COUNT:
-        template = 'tooltip_crit_label'
-    else:
-        template = 'tooltip_crit_label_with_count'
-        args.update({'count': count})
-    return (
-     template, args)

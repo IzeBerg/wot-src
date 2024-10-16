@@ -869,12 +869,6 @@ msgstr ""
 "The module that affects the vehicle's maneuverability and load capacity. The"
 " suspension of a wheeled vehicle does not allow it to turn on the spot."
 
-msgid "advanced/wt_largeMedkit"
-msgstr "Treatment of all injured crew members and removing the stun effect."
-
-msgid "advanced/wt_largeRepairkit"
-msgstr "Repair of all damaged modules."
-
 msgid "ammo/auto/body"
 msgstr ""
 "Ammunition will be resupplied automatically, if necessary,\n"
@@ -1335,6 +1329,9 @@ msgstr ""
 "A valuable in-game currency. You can use it to purchase WoT Premium Account,"
 " vehicles, or convert experience, etc."
 
+msgid "awardItem/gold/compensation"
+msgstr "The reward given as compensation for a vehicle you already own."
+
 msgid "awardItem/gold/header"
 msgstr "Gold"
 
@@ -1349,6 +1346,9 @@ msgstr "An additional reward."
 
 msgid "awardItem/groups/header"
 msgstr "Reward"
+
+msgid "awardItem/highlighted"
+msgstr "+%(xp)s Crew XP"
 
 msgid "awardItem/idle_crew_xp/body"
 msgstr "A constant bonus to Crew XP."
@@ -1432,6 +1432,41 @@ msgstr ""
 
 msgid "awardItem/randomBooklet/header"
 msgstr "Random Training Booklet"
+
+msgid "awardItem/randomNationalBlueprint/body"
+msgstr ""
+"Used to create blueprint fragments for any researchable vehicle of a random "
+"nation."
+
+msgid "awardItem/randomNationalBlueprint/header"
+msgstr "Blueprint fragment (random nation)"
+
+msgid "awardItem/randomNationalBrochure/body"
+msgstr "%(highlighted)s to each crew member for a vehicle of a random nation."
+
+msgid "awardItem/randomNationalBrochure/header"
+msgstr "Training Booklet (random nation)"
+
+msgid "awardItem/randomNationalBrochure/highlighted"
+msgstr "+%(xp)s Crew XP"
+
+msgid "awardItem/randomNationalCrewBook/body"
+msgstr "%(highlighted)s to each crew member for a vehicle of a random nation."
+
+msgid "awardItem/randomNationalCrewBook/header"
+msgstr "Training Manual (random nation)"
+
+msgid "awardItem/randomNationalCrewBook/highlighted"
+msgstr "+%(xp)s Crew XP"
+
+msgid "awardItem/randomNationalGuide/body"
+msgstr "%(highlighted)s to each crew member for a vehicle of a random nation."
+
+msgid "awardItem/randomNationalGuide/header"
+msgstr "Training Guide (random nation)"
+
+msgid "awardItem/randomNationalGuide/highlighted"
+msgstr "+%(xp)s Crew XP"
 
 msgid "awardItem/rankedBonusBattles/body"
 msgstr ""
@@ -4881,18 +4916,10 @@ msgid "equipment/restriction"
 msgstr "Restriction:"
 
 msgid "event/squad/disable/body"
-msgstr "Select Harrier vehicle"
+msgstr "To join the event, select the %(tankName)s"
 
 msgid "event/squad/disable/header"
 msgstr "Attention!"
-
-msgid "eventOffer/footer/tankmen_gift"
-msgstr ""
-"You can receive one of the special Waffenträger crew by clicking the Claim "
-"button."
-
-msgid "eventOffer/title/tankmen_gift"
-msgstr "Event crew to select from"
 
 msgid "falloutBattleSelectorWindow/btnDisabled/body"
 msgstr "You are queued for battle."
@@ -5659,20 +5686,8 @@ msgstr "Select a map to enter a battle."
 msgid "hangar/startBtn/mapsTraining/notReady/header"
 msgstr "Unavailable"
 
-msgid "hangar/startBtn/noTicket/body"
-msgstr "You need a Key to enter battle in the Blitzträger auf E110"
-
-msgid "hangar/startBtn/noTicket/header"
-msgstr "Unable to Enter Battle"
-
 msgid "hangar/startBtn/preview/body"
 msgstr "Go back to the Garage to select a vehicle and enter a battle."
-
-msgid "hangar/startBtn/primeNotAvailable/body"
-msgstr "Ceasefire is in effect on this server. Please select another server."
-
-msgid "hangar/startBtn/primeNotAvailable/header"
-msgstr "Unable to Enter Battle"
 
 msgid "hangar/startBtn/squadNotReady/body"
 msgstr "To join the battle, select a vehicle and confirm that you are ready."
@@ -6673,27 +6688,29 @@ msgstr "Display Server Selection Upon Game Launch"
 msgid "marathon/body"
 msgstr ""
 "Fulfill the conditions of each Stage. Missions for mastery are available "
-"only for Tier IX–X vehicles, while missions for commitment are for Tiers "
-"VI–X. You will receive special rewards for completing each of the 10 Stages "
-"and the unique Tier VIII Premium Polish Grom tank destroyer for free at the "
-"end of all the Stages."
+"only for Tier IX and X vehicles, while missions for commitment are available"
+" for Tier VI–X. You will receive special rewards for completing each of the "
+"10 Stages, as well as the Tier IX Premium Chinese WZ-114 heavy tank for free"
+" at the end of all the Stages!"
 
 msgid "marathon/body/extra_smart"
 msgstr ""
 "Fulfill the conditions of each Stage. Missions for mastery are available "
-"only for Tier IX–X vehicles, while missions for commitment are for Tiers "
-"VI–X. You will receive special rewards for completing each of the 10 Stages "
-"and the unique Tier VIII Premium Polish Grom tank destroyer for free at the "
-"end of all the Stages."
+"only for Tier IX and X vehicles, while missions for commitment are available"
+" for Tier VI–X. You will receive special rewards for completing each of the "
+"10 Stages, as well as the Tier IX Premium Chinese WZ-114 heavy tank for free"
+" at the end of all the Stages!"
 
 msgid "marathon/body/extra_style"
-msgstr "Event ended. Vehicle received."
+msgstr ""
+"Event ended. Vehicle received. Now you can complete additional event "
+"missions."
 
 msgid "marathon/body/extra_vehicle"
 msgstr ""
-"Event ends in %(hours)s. However, the Tier VIII Premium Polish Grom tank "
-"destroyer will be temporarily available for purchase with a personal "
-"discount in the Premium Shop."
+"Hidden Tiger ends in %(hours)s. The Tier&nbsp;IX Premium Chinese WZ-114 "
+"heavy tank is temporarily available for purchase with a personal discount in"
+" the Premium Shop."
 
 msgid "marathon/date"
 msgstr "%(day)s %(month)s %(hour)s:%(minutes)s"
@@ -6708,16 +6725,17 @@ msgid "marathon/extra_state/completed"
 msgstr "Vehicle received"
 
 msgid "marathon/extra_state/discount"
-msgstr "Your discount: %(discount)s%%"
+msgstr "Your discount is %(discount)s%%"
 
 msgid "marathon/extra_state/steps"
-msgstr "Completed Stages: %(currentStep)s / %(allStep)s"
+msgstr "Stages completed: %(currentStep)s / %(allStep)s"
 
 msgid "marathon/header"
-msgstr "Rolling Thunder"
+msgstr "Hidden Tiger"
 
 msgid "marathon/off/body"
-msgstr "The event is unavailable for technical reasons. Try again later."
+msgstr ""
+"The event is currently unavailable for technical issues. Try again later."
 
 msgid "marathon/off/header"
 msgstr "Event Unavailable"
@@ -7097,6 +7115,20 @@ msgstr "Invitations to tactical units and friend requests."
 
 msgid "notificationsView/tab/offers/body"
 msgstr "Personal Notifications"
+
+msgid "notrecruitedtankman/Lumberjack/desc"
+msgstr ""
+"Commander Jack \"Lumberjack\" Thompson, a rugged lumberman from the American"
+" Pacific Northwest, is known for his sharp ax. He transitioned from felling "
+"trees to commanding tanks, applying his strategic thinking on how to knock "
+"things down to the battlefield. His strength and understanding of terrain "
+"and machinery make him a formidable opponent in World of Tanks."
+
+msgid "notrecruitedtankman/Lumberjack/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/Lumberjack/label"
+msgstr "?empty?"
 
 msgid "notrecruitedtankman/Marty_Vole/desc"
 msgstr ""
@@ -8004,6 +8036,46 @@ msgstr ""
 
 msgid "notrecruitedtankman/hw22_witch_sibilla/label"
 msgstr "Pumpkin Bash"
+
+msgid "notrecruitedtankman/hw24_commander1/desc"
+msgstr ""
+"Norman was never exactly known for his conversation skills, and prolonged "
+"exposure to Mirium made him even more taciturn. Nevertheless, his dedication"
+" to his duty is unwavering, and he's helped his Squad out of tough "
+"situations on more than one occasion."
+
+msgid "notrecruitedtankman/hw24_commander1/label"
+msgstr "Babylon Project"
+
+msgid "notrecruitedtankman/hw24_commander2/desc"
+msgstr ""
+"Robert is a seasoned veteran whose entire existence has become intertwined "
+"with exploration of the Mirium subspace. Despite the clear risks the matter "
+"poses to his and his Squad's health, he can no longer imagine life without "
+"regular forays into ever-deeper phases."
+
+msgid "notrecruitedtankman/hw24_commander2/label"
+msgstr "Babylon Project"
+
+msgid "notrecruitedtankman/hw24_commander4/desc"
+msgstr ""
+"Despite the Mirium-induced horrors he has witnessed as part of the Recon "
+"Squad, Pyotr remains a calming influence and a father figure for younger "
+"troops. Extensive contact with the matter may have forced him to recuperate "
+"for a while, but it didn't dampen his spirit and his good nature."
+
+msgid "notrecruitedtankman/hw24_commander4/label"
+msgstr "Babylon Project"
+
+msgid "notrecruitedtankman/hw24_commander5/desc"
+msgstr ""
+"Elias' normally sharp wit and quick thinking may have been blunted somewhat "
+"after spending too long in the Mirium subspace, but after a rehabilitation "
+"period he's ready to venture back into its depths—and his vast experience "
+"and calmness under pressure mean he remains invaluable to his Squad."
+
+msgid "notrecruitedtankman/hw24_commander5/label"
+msgstr "Babylon Project"
 
 msgid "notrecruitedtankman/ny19men/desc"
 msgstr ""
@@ -9988,18 +10060,6 @@ msgstr "A special daily reward given to players on the Leaderboard."
 msgid "periodicReward/header"
 msgstr "Daily Reward"
 
-msgid "perkAvailable/header"
-msgstr "Perks Available for Training"
-
-msgid "perkAvailable/multiple"
-msgstr "x%(amount)"
-
-msgid "perkAvailable/partly"
-msgstr "(Partially)"
-
-msgid "perkAvailable/zeroPerk"
-msgstr "Zero perks"
-
 msgid "perkType/info/situational"
 msgstr ""
 "Situational effects trigger when certain conditions are met in battle."
@@ -10817,11 +10877,14 @@ msgstr "victories within the rental period: %(count)s"
 
 msgid "quests/bonuses/token/battle_bonus_x5/body"
 msgstr ""
-"The option to earn x5 experience, starting from the second battle of the day"
-" in any vehicle."
+"The option to earn x5 XP, starting from the second victory of the day in any"
+" vehicle."
 
 msgid "quests/bonuses/token/battle_bonus_x5/header"
 msgstr "A mission for x5 to experience earned in battle"
+
+msgid "quests/bonuses/token/battle_bonus_x5/label"
+msgstr "Mission for x5 XP per Battle"
 
 msgid "quests/bonuses/token/battle_royale/body"
 msgstr "Awarded during Steel Hunter. Required to complete missions."
@@ -10830,10 +10893,13 @@ msgid "quests/bonuses/token/body"
 msgstr "This token is a reward item used for completion of a certain mission."
 
 msgid "quests/bonuses/token/crew_bonus_x3/body"
-msgstr "Get a ×3 bonus to Crew XP earned in battle in any vehicle."
+msgstr "Get a x3 bonus to Crew XP earned in battle in any vehicle."
 
 msgid "quests/bonuses/token/crew_bonus_x3/header"
-msgstr "Mission for ×3 Crew XP Earned in Battle"
+msgstr "Mission for x3 Crew XP Earned in Battle"
+
+msgid "quests/bonuses/token/crew_bonus_x3/label"
+msgstr "Mission for x3 Crew XP"
 
 msgid "quests/bonuses/token/exchangeRate/experience_translation/header"
 msgstr "Combat XP Conversion Bonus"
@@ -11943,14 +12009,6 @@ msgstr ""
 "Files of the selected notification voice\n"
 "are damaged or missing."
 
-msgid "setttingsDisabledNotification/body"
-msgstr ""
-"Some settings are not available in this game mode. Please select another "
-"mode."
-
-msgid "setttingsDisabledNotification/header"
-msgstr "Not Available"
-
 msgid "shell/basic"
 msgstr "Default"
 
@@ -12646,6 +12704,10 @@ msgstr ""
 "Time to reload the gun (or both guns on vehicles with the double-barreled "
 "gun system) after firing."
 
+msgid "tank_params/desc/reloadTimeSecs/twinGun"
+msgstr ""
+"Time to reload the gun after firing (single fire mode/salvo fire mode)."
+
 msgid "tank_params/desc/rocketAccelerationEnginePower"
 msgstr ""
 "This parameter affects vehicle acceleration, top speed, and hull traverse "
@@ -12663,6 +12725,11 @@ msgid "tank_params/desc/shotDispersionAngle"
 msgstr ""
 "Gun dispersion characterized by the maximum shell deviation from the aiming "
 "point at a distance of 100 m."
+
+msgid "tank_params/desc/shotDispersionAngle/twinGun"
+msgstr ""
+"Gun dispersion characterized by the maximum shell deviation from the aiming "
+"point at a distance of 100 m (standard/special mode)."
 
 msgid "tank_params/desc/shotDispersionAngle/withDualAccuracy"
 msgstr ""
@@ -12753,6 +12820,13 @@ msgstr ""
 "Maximum turret traverse angles relative to the longitudinal axis of a "
 "vehicle when the hull is stationary."
 
+msgid "tank_params/desc/twinGunSwitchFireModeTime"
+msgstr ""
+"Time to switch from single fire mode to salvo fire mode and vice versa."
+
+msgid "tank_params/desc/twinGunTopSpeed"
+msgstr "Nominal vehicle speed in salvo fire mode."
+
 msgid "tank_params/desc/vehicleWeight"
 msgstr ""
 "This parameter determines the load limit of the vehicle, where the load "
@@ -12838,9 +12912,6 @@ msgstr "%(vehicleType)s (%(nation)s)"
 
 msgid "tankman/section/specialization"
 msgstr "Specialization:"
-
-msgid "tankman/skillsTitle"
-msgstr "Advantages"
 
 msgid "tankman/voiceover/role"
 msgstr ""
@@ -13250,9 +13321,6 @@ msgstr "Discount %(actionPrc)s, previous cost: %(oldPrice)s"
 msgid "vehicle/additional/header"
 msgstr "Vehicle comes with:"
 
-msgid "vehicle/afterEventEnd/title"
-msgstr "All battles fought, vehicle unavailable."
-
 msgid "vehicle/allModules/header"
 msgstr "All Researched Modules"
 
@@ -13351,16 +13419,6 @@ msgstr "Rental From"
 msgid "vehicle/multiplied_xp"
 msgstr "Combat Experience"
 
-msgid "vehicle/overview/desc"
-msgstr ""
-"• This is a real nightmare for any enemy, featuring a commander with a unique voiceover.\n"
-"• No Platoons: just you and this wild beast.\n"
-"• This vehicle is only available for Random Battles until October 14.\n"
-"• Play it quickly! The vehicle and its crew will be removed after the rental period."
-
-msgid "vehicle/overview/title"
-msgstr "Overview:"
-
 msgid "vehicle/rankedBonusBattle"
 msgstr "Bonus Battle available"
 
@@ -13388,9 +13446,6 @@ msgstr "%(timeNum)s min"
 msgid "vehicle/rentLeft/hours"
 msgstr "Hours of rent left"
 
-msgid "vehicle/rentLeft/noTimeLeft"
-msgstr "All battles fought, vehicle unavailable."
-
 msgid "vehicle/rentLeft/wins"
 msgstr "Victories left before the end of the rental period"
 
@@ -13405,11 +13460,6 @@ msgstr "Rental for Frontline"
 
 msgid "vehicle/rentLeftFuture/hours"
 msgstr "Hours of rent"
-
-msgid "vehicle/rentLeftFuture/obtainedBy"
-msgstr ""
-"Rented crew!\n"
-"The crew has fixed XP and perks and cannot be modified. It will be removed together with the vehicle after the rental period."
 
 msgid "vehicle/rentLeftFuture/wins"
 msgstr "victories within the rental period"
@@ -13566,24 +13616,6 @@ msgstr "Hull Armor (front/sides/rear, mm)"
 msgid "vehicleParams/maxSteeringLockAngle"
 msgstr "Maximum Wheel Turning Angle (deg)"
 
-msgid "vehicleParams/penalties/title"
-msgstr "Current Penalties:"
-
-msgid "vehicleParams/penalty/crewDifferentVehicle"
-msgstr "Crew is not trained for this vehicle"
-
-msgid "vehicleParams/penalty/crewLevel"
-msgstr "Crew is trained to less than 100%"
-
-msgid "vehicleParams/penalty/crewNotFull/template"
-msgstr "Crew incomplete"
-
-msgid "vehicleParams/penalty/tankmanDifferentVehicle/template"
-msgstr "%(tankmanType)s is not trained for this vehicle"
-
-msgid "vehicleParams/penalty/tankmanLevel/template"
-msgstr "%(tankmanType)s is trained to less than 100%%"
-
 msgid "vehicleParams/piercingPower"
 msgstr "Average Penetration (mm)"
 
@@ -13612,7 +13644,7 @@ msgid "vehiclePreview/boxTooltip/battleBooster/header"
 msgstr "%(value)s"
 
 msgid "vehiclePreview/boxTooltip/body"
-msgstr "Click for information about the items included in the bundle."
+msgstr "Click to view information about this bundle's items."
 
 msgid "vehiclePreview/boxTooltip/camouflage/header"
 msgstr "Camouflage %(value)s"
@@ -13624,7 +13656,7 @@ msgid "vehiclePreview/boxTooltip/equipment/header"
 msgstr "Consumable %(value)s"
 
 msgid "vehiclePreview/boxTooltip/header"
-msgstr "Additional rewards"
+msgstr "Related Rewards"
 
 msgid "vehiclePreview/boxTooltip/inscription/header"
 msgstr "Inscription %(value)s"
@@ -14158,6 +14190,54 @@ msgstr ""
 
 msgid "wallet/not_available_gold/header"
 msgstr "Data Acquisition"
+
+msgid "weather/zoneBlizzard/body"
+msgstr ""
+"Makes it difficult to spot vehicles, as well as transmit and receive "
+"intelligence data."
+
+msgid "weather/zoneBlizzard/header"
+msgstr "Snowstorm"
+
+msgid "weather/zoneFire/body"
+msgstr "Fire causes damage to vehicles. It cannot be extinguished."
+
+msgid "weather/zoneFire/header"
+msgstr "Fire"
+
+msgid "weather/zoneFog/body"
+msgstr ""
+"Complicates spotting enemy vehicles and communicating their positions."
+
+msgid "weather/zoneFog/header"
+msgstr "Fog"
+
+msgid "weather/zoneRain/body"
+msgstr ""
+"Complicates spotting enemy vehicles and communicating their positions."
+
+msgid "weather/zoneRain/header"
+msgstr "Heavy rain"
+
+msgid "weather/zoneSandstorm/body"
+msgstr ""
+"Complicates spotting enemy vehicles and communicating their positions."
+
+msgid "weather/zoneSandstorm/header"
+msgstr "Sandstorm"
+
+msgid "weather/zoneSmoke/body"
+msgstr ""
+"Complicates spotting enemy vehicles and communicating their positions."
+
+msgid "weather/zoneSmoke/header"
+msgstr "Smoke"
+
+msgid "weather/zoneTornado/body"
+msgstr "Damages vehicles' external modules."
+
+msgid "weather/zoneTornado/header"
+msgstr "Tornado"
 
 msgid "windowHelp/body"
 msgstr "Hover the icon to get additional information about the element."

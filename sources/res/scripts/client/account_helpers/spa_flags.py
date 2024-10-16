@@ -9,6 +9,7 @@ class SPAFlags(object):
         self.__account = None
         self.__syncData = syncData
         self.__cache = {}
+        self.__country = ''
         self.__ignore = True
         return
 
@@ -29,6 +30,8 @@ class SPAFlags(object):
             for key in SPA_ATTRS.toClientAttrs():
                 value = spaCache.get(key, None)
                 if value:
+                    if key == SPA_ATTRS.USER_COUNTRY:
+                        self.__country = value
                     try:
                         itemDiff[key] = strtobool(value)
                     except InvalidStringValueException:
@@ -42,3 +45,6 @@ class SPAFlags(object):
             return self.__cache['spaFlags'].get(flagName, None)
         else:
             return
+
+    def getCountry(self):
+        return self.__country

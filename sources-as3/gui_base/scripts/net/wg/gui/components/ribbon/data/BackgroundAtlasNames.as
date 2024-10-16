@@ -58,6 +58,11 @@ package net.wg.gui.components.ribbon.data
                this._small = COMMONBATTLELOBBY.RIBBONS_BG_PERK_SMALL;
                this._medium = COMMONBATTLELOBBY.RIBBONS_BG_PERK_MEDIUM;
                this._large = COMMONBATTLELOBBY.RIBBONS_BG_PERK_LARGE;
+               break;
+            case RibbonColors.WEATHER_ZONE:
+               this._small = BATTLEATLAS.RIBBONS_BG_WEATHER_ZONE_SMALL;
+               this._medium = BATTLEATLAS.RIBBONS_BG_WEATHER_ZONE_MEDIUM;
+               this._large = BATTLEATLAS.RIBBONS_BG_WEATHER_ZONE_LARGE;
          }
       }
       

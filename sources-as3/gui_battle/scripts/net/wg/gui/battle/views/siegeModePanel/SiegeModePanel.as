@@ -63,6 +63,10 @@ package net.wg.gui.battle.views.siegeModePanel
                _loc2_ = Linkages.YOH_CHASSIS_MODE_ANIMATION_UI;
                _loc3_ = YohChassisModeAnimation;
                break;
+            case SIEGE_MODE_CONSTS.TWIN_GUN_TYPE:
+               _loc2_ = Linkages.TWIN_GUN_MODE_ANIMATION_UI;
+               _loc3_ = TwinGunModeAnimation;
+               break;
             default:
                _loc2_ = Linkages.SIEGE_MODE_ANIMATION_UI;
                _loc3_ = SiegeModeAnimation;

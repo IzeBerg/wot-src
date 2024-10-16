@@ -47,12 +47,6 @@
 				</slots>
 			</block>
 			<block>
-				<class>If</class>
-				<id>If_2</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
 				<class>Timer</class>
 				<id>Timer_1</id>
 				<params>
@@ -65,7 +59,7 @@
 				<slots>
 					<slot>
 						<name>time0</name>
-						<const>\1.500000\</const>
+						<const>\5.000000\</const>
 					</slot>
 				</slots>
 			</block>
@@ -76,22 +70,15 @@
 				<slots/>
 			</block>
 			<block>
-				<class>If</class>
-				<id>If_1</id>
+				<class>TriggerExternal</class>
+				<id>TriggerExternal_12</id>
 				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>OnAnyVehicleDestroyed</class>
-				<id>OnAnyVehicleDestroyed_1</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>IsVehicleValid</class>
-				<id>IsVehicleValid_1</id>
-				<params/>
-				<slots/>
+				<slots>
+					<slot>
+						<name>eventID</name>
+						<const>\DDAY_firstTanksEscape\</const>
+					</slot>
+				</slots>
 			</block>
 			<block>
 				<class>ContextGetSelf</class>
@@ -111,27 +98,6 @@
 				<slots/>
 			</block>
 			<block>
-				<class>GetVehicleLabel</class>
-				<id>GetVehicleLabel_1</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>CompareString</class>
-				<id>CompareString_1</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>b</name>
-						<const>\Bunker2_turret\</const>
-					</slot>
-					<slot>
-						<name>no_case</name>
-						<const>\true\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
 				<class>FindFirstNode</class>
 				<id>FindFirstNode_2</id>
 				<params/>
@@ -149,22 +115,10 @@
 		</blocks>
 		<connections>
 			<connection>
-				<from>If_1</from>
-				<input>input</input>
-				<to>If_2</to>
-				<output>true</output>
-			</connection>
-			<connection>
-				<from>CompareString_1</from>
-				<input>value</input>
-				<to>If_2</to>
-				<output>equal</output>
-			</connection>
-			<connection>
-				<from>If_2</from>
+				<from>TriggerExternal_12</from>
 				<input>windup</input>
 				<to>Timer_1</to>
-				<output>true</output>
+				<output>out</output>
 			</connection>
 			<connection>
 				<from>Timer_1</from>
@@ -177,36 +131,6 @@
 				<input>gameObject</input>
 				<to>DeactivateGameObject_2</to>
 				<output>node</output>
-			</connection>
-			<connection>
-				<from>OnAnyVehicleDestroyed_1</from>
-				<input>input</input>
-				<to>If_1</to>
-				<output>onDestroyed</output>
-			</connection>
-			<connection>
-				<from>IsVehicleValid_1</from>
-				<input>value</input>
-				<to>If_1</to>
-				<output>res</output>
-			</connection>
-			<connection>
-				<from>OnAnyVehicleDestroyed_1</from>
-				<input>vehicle</input>
-				<to>IsVehicleValid_1</to>
-				<output>target</output>
-			</connection>
-			<connection>
-				<from>OnAnyVehicleDestroyed_1</from>
-				<input>vehicle</input>
-				<to>GetVehicleLabel_1</to>
-				<output>target</output>
-			</connection>
-			<connection>
-				<from>GetVehicleLabel_1</from>
-				<input>a</input>
-				<to>CompareString_1</to>
-				<output>label</output>
 			</connection>
 			<connection>
 				<from>ContextGetSelf_1</from>

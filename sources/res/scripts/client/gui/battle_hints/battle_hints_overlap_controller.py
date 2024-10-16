@@ -17,6 +17,7 @@ _logger = getLogger(__name__)
 class HintScope(str, Enum):
     NEWBIE = 'newbie'
     STORY_MODE = 'story_mode'
+    LOCAL_STORY = 'local_story'
 
 
 NEWBIE_SETTINGS = {
@@ -26,9 +27,11 @@ NEWBIE_SETTINGS = {
  BATTLE_VIEW_ALIASES.QUEST_PROGRESS_TOP_VIEW,
  BATTLE_VIEW_ALIASES.BATTLE_TIMER,
  BATTLE_VIEW_ALIASES.DEBUG_PANEL}
-OVERLAP_SETTINGS = {ARENA_BONUS_TYPE.REGULAR: {HintScope.NEWBIE.value: NEWBIE_SETTINGS}, 
+OVERLAP_SETTINGS = {ARENA_BONUS_TYPE.REGULAR: {HintScope.NEWBIE.value: NEWBIE_SETTINGS, 
+                              HintScope.LOCAL_STORY.value: NEWBIE_SETTINGS}, 
    ARENA_BONUS_TYPE.WINBACK: {HintScope.NEWBIE.value: NEWBIE_SETTINGS}, 
-   ARENA_BONUS_TYPE.RANDOM_NP2: {HintScope.NEWBIE.value: NEWBIE_SETTINGS}}
+   ARENA_BONUS_TYPE.RANDOM_NP2: {HintScope.NEWBIE.value: NEWBIE_SETTINGS}, 
+   ARENA_BONUS_TYPE.MAPBOX: {HintScope.LOCAL_STORY.value: NEWBIE_SETTINGS}}
 
 def addSettings(arenaBonusType, hintScope, views):
     if arenaBonusType not in OVERLAP_SETTINGS:

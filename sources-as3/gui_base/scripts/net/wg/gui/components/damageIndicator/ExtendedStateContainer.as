@@ -163,7 +163,7 @@ package net.wg.gui.components.damageIndicator
          this.damageTF = this.damage.textField;
          this._damageTFdefaultY = this.damageTF.y;
          this._damageTFfriendlyFireY = this._damageTFdefaultY + DAMAGE_TF_FRIENDLY_FIRE_Y_OFFSET;
-         this._tankTypeIconsMap = createItemsFromAtlas(TANK_TYPE_ICONS,this.tankIcon,null);
+         this._tankTypeIconsMap = createItemsFromAtlas(this.getTankTypeIconsVector(),this.tankIcon,null);
          this._circlesMap = createItemsFromAtlas(BASE_CIRCLES,this.damage,null);
          this._circlesMap = createItemsFromAtlas(CRITS_ITEMS_CIRCLES,this.damage,this._circlesMap);
          this._circleCritMap = createItemsFromAtlas(CRIT_CIRCLES,this.damage,null);
@@ -311,6 +311,11 @@ package net.wg.gui.components.damageIndicator
       override protected function get stateNames() : Vector.<String>
       {
          return new <String>[DAMAGEINDICATOR.DAMAGE_SMALL,DAMAGEINDICATOR.DAMAGE_MEDIUM,DAMAGEINDICATOR.DAMAGE_BIG,DAMAGEINDICATOR.DAMAGE_SMALL_BLIND,DAMAGEINDICATOR.DAMAGE_MEDIUM_BLIND,DAMAGEINDICATOR.DAMAGE_BIG_BLIND,DAMAGEINDICATOR.BLOCKED_SMALL,DAMAGEINDICATOR.BLOCKED_MEDIUM,DAMAGEINDICATOR.BLOCKED_BIG,DAMAGEINDICATOR.CRIT,DAMAGEINDICATOR.CRIT_BLIND];
+      }
+      
+      protected function getTankTypeIconsVector() : Vector.<String>
+      {
+         return TANK_TYPE_ICONS;
       }
    }
 }

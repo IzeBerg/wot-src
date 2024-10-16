@@ -193,6 +193,14 @@ package
       
       public static const DETAILSHELP_AUTOSHOOTGUN_MECHANICS:String = "#ingame_help:detailsHelp/autoShootGun/mechanics";
       
+      public static const DETAILSHELP_TWINGUN_MECHANICS_PAGE1_TITLE:String = "#ingame_help:detailsHelp/twinGun/mechanics/page1/title";
+      
+      public static const DETAILSHELP_TWINGUN_MECHANICS_PAGE1:String = "#ingame_help:detailsHelp/twinGun/mechanics/page1";
+      
+      public static const DETAILSHELP_TWINGUN_MECHANICS_PAGE2_TITLE:String = "#ingame_help:detailsHelp/twinGun/mechanics/page2/title";
+      
+      public static const DETAILSHELP_TWINGUN_MECHANICS_PAGE2:String = "#ingame_help:detailsHelp/twinGun/mechanics/page2";
+      
       public static const DETAILSHELP_NOKEYSWARNING:String = "#ingame_help:detailsHelp/noKeysWarning";
       
       public static const DETAILSHELP_BATTLEROYALE_RADAR_TITLE:String = "#ingame_help:detailsHelp/battleRoyale/radar/title";
@@ -229,17 +237,9 @@ package
       
       public static const DETAILSHELP_MAPBOX_HEADERTITLE:String = "#ingame_help:detailsHelp/mapbox/headerTitle";
       
-      public static const DETAILSHELP_MAPBOX_MARKERS_TITLE:String = "#ingame_help:detailsHelp/mapbox/markers/title";
+      public static const DETAILSHELP_MAPBOX_LOCALWEATHER_TITLE:String = "#ingame_help:detailsHelp/mapbox/localWeather/title";
       
-      public static const DETAILSHELP_MAPBOX_MARKERS_DESCRIPTION:String = "#ingame_help:detailsHelp/mapbox/markers/description";
-      
-      public static const DETAILSHELP_MAPBOX_ENVIRONMENT_TITLE:String = "#ingame_help:detailsHelp/mapbox/environment/title";
-      
-      public static const DETAILSHELP_MAPBOX_ENVIRONMENT_DESCRIPTION:String = "#ingame_help:detailsHelp/mapbox/environment/description";
-      
-      public static const DETAILSHELP_MAPBOX_ARTEFACTS_TITLE:String = "#ingame_help:detailsHelp/mapbox/artefacts/title";
-      
-      public static const DETAILSHELP_MAPBOX_ARTEFACTS_DESCRIPTION:String = "#ingame_help:detailsHelp/mapbox/artefacts/description";
+      public static const DETAILSHELP_MAPBOX_LOCALWEATHER_DESCRIPTION:String = "#ingame_help:detailsHelp/mapbox/localWeather/description";
       
       public static const DETAILSHELP_DEVMAPS_HEADERTITLE:String = "#ingame_help:detailsHelp/devMaps/headerTitle";
       

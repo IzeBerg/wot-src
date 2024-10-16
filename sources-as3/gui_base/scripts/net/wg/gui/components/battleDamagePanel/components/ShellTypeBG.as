@@ -32,7 +32,7 @@ package net.wg.gui.components.battleDamagePanel.components
       
       private var _edgeWidth:int = 0;
       
-      private var _currentState:String;
+      private var _currentState:String = "white";
       
       private var _isEmpty:Boolean = false;
       
@@ -50,7 +50,6 @@ package net.wg.gui.components.battleDamagePanel.components
          this._emptyShellBG = new Sprite();
          this._compositeBGContainer = new Sprite();
          this._atlasMgr = App.atlasMgr;
-         this._currentState = DAMAGE_LOG_SHELL_BG_TYPES.DEFAULT;
          super();
          this._atlasName = param1;
          this._compositeBGContainer.addChild(this._leftEdge);

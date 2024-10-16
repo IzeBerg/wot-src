@@ -15,6 +15,8 @@ package net.wg.gui.battle.views.vehicleMarkers
    public class FortConsumablesMarker extends BattleUIComponent
    {
       
+      protected static const RED_DROPSHADOW_FILTERS:Array = [new DropShadowFilter(0,45,8992034,1,4,4,3.7)];
+      
       private static const MARKER_X:int = -52;
       
       private static const MARKER_Y:int = -58;
@@ -22,8 +24,6 @@ package net.wg.gui.battle.views.vehicleMarkers
       private static const GREEN_DROPSHADOW_FILTERS:Array = [new DropShadowFilter(0,45,1536315,1,4,4,3.7)];
       
       private static const YELLOW_DROPSHADOW_FILTERS:Array = [new DropShadowFilter(0,45,13328640,1,4,4,3.7)];
-      
-      private static const RED_DROPSHADOW_FILTERS:Array = [new DropShadowFilter(0,45,8992034,1,4,4,3.7)];
       
       private static const PURPLE_DROPSHADOW_FILTERS:Array = [new DropShadowFilter(0,45,4730494,1,4,4,3.7)];
       
@@ -40,11 +40,11 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       public var defaultTF:TextField = null;
       
+      protected var vmManager:VehicleMarkersManager = null;
+      
       private var _timer:String = "";
       
       private var _markerBitmap:Bitmap = null;
-      
-      private var _vmManager:VehicleMarkersManager = null;
       
       private var _markerType:String = "";
       
@@ -55,14 +55,14 @@ package net.wg.gui.battle.views.vehicleMarkers
          super();
          TextFieldEx.setNoTranslate(this.timerTF,true);
          TextFieldEx.setNoTranslate(this.defaultTF,true);
-         this._vmManager = VehicleMarkersManager.getInstance();
-         this._vmManager.addEventListener(VehicleMarkersManagerEvent.UPDATE_COLORS,this.onUpdateColorsHandler);
+         this.vmManager = VehicleMarkersManager.getInstance();
+         this.vmManager.addEventListener(VehicleMarkersManagerEvent.UPDATE_COLORS,this.onUpdateColorsHandler);
       }
       
       override protected function onDispose() : void
       {
-         this._vmManager.removeEventListener(VehicleMarkersManagerEvent.UPDATE_COLORS,this.onUpdateColorsHandler);
-         this._vmManager = null;
+         this.vmManager.removeEventListener(VehicleMarkersManagerEvent.UPDATE_COLORS,this.onUpdateColorsHandler);
+         this.vmManager = null;
          this.clearMarkerBitmap();
          this._markerBitmap = null;
          this.marker = null;
@@ -90,7 +90,7 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.updateTimerText();
       }
       
-      private function getFilters() : Array
+      protected function getFilters() : Array
       {
          if(this._markerColor == BATTLE_MARKERS_CONSTS.COLOR_GREEN)
          {
@@ -98,7 +98,7 @@ package net.wg.gui.battle.views.vehicleMarkers
          }
          if(this._markerColor == BATTLE_MARKERS_CONSTS.COLOR_RED)
          {
-            if(this._vmManager.isColorBlind)
+            if(this.vmManager.isColorBlind)
             {
                return PURPLE_DROPSHADOW_FILTERS;
             }
@@ -109,7 +109,7 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       private function getMarkerClassName() : String
       {
-         if(this._vmManager.isColorBlind && this._markerType == ARTILLERY_FORT_ENEMY)
+         if(this.vmManager.isColorBlind && this._markerType == ARTILLERY_FORT_ENEMY)
          {
             return ARTILLERY_FORT_ENEMY_COLOR_BLIND;
          }
@@ -137,7 +137,7 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.timerTF.text = this._timer;
       }
       
-      private function createMarker() : void
+      protected function createMarker() : void
       {
          this.clearMarkerBitmap();
          var _loc1_:Class = getDefinitionByName(this.getMarkerClassName()) as Class;
