@@ -155,7 +155,10 @@ package net.wg.gui.lobby.techtree.math
             {
                if(this.marked[_loc4_][_loc8_] == 1)
                {
-                  _loc7_.push(new MatrixPosition(_loc4_,_loc8_));
+                  _loc7_.push({
+                     "row":_loc4_,
+                     "column":_loc8_
+                  });
                }
                _loc8_++;
             }

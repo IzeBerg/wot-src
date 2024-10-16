@@ -17,7 +17,6 @@ package net.wg.gui.lobby.techtree.nodes
    import net.wg.gui.lobby.techtree.data.vo.NodeData;
    import net.wg.gui.lobby.techtree.interfaces.INodesContainer;
    import net.wg.gui.lobby.techtree.interfaces.IRenderer;
-   import net.wg.gui.lobby.techtree.math.MatrixPosition;
    import net.wg.infrastructure.exceptions.AbstractException;
    import net.wg.utils.ICommons;
    import scaleform.clik.constants.InvalidationType;
@@ -53,7 +52,7 @@ package net.wg.gui.lobby.techtree.nodes
       
       private var _valueObject:NodeData = null;
       
-      private var _matrixPosition:MatrixPosition = null;
+      private var _matrixPosition:Object = null;
       
       private var _enabledChildren:Vector.<DisplayObject> = null;
       
@@ -354,7 +353,7 @@ package net.wg.gui.lobby.techtree.nodes
          }
       }
       
-      public function setup(param1:uint, param2:NodeData, param3:uint = 0, param4:MatrixPosition = null) : void
+      public function setup(param1:uint, param2:NodeData, param3:uint = 0, param4:Object = null) : void
       {
          this._index = param1;
          this._matrixPosition = param4;
@@ -504,7 +503,7 @@ package net.wg.gui.lobby.techtree.nodes
          invalidate(InvalidationType.SETTINGS);
       }
       
-      public function get matrixPosition() : MatrixPosition
+      public function get matrixPosition() : Object
       {
          return this._matrixPosition;
       }

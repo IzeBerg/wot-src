@@ -794,7 +794,7 @@ package net.wg.gui.lobby.techtree.math
          var lines:Array = null;
          var row:int = 0;
          var column:int = 0;
-         var position:MatrixPosition = null;
+         var position:Object = null;
          var x:int = 0;
          var levelIdx:Number = param1;
          var next:Boolean = param2;
@@ -933,7 +933,7 @@ package net.wg.gui.lobby.techtree.math
          return this.levels;
       }
       
-      public function get levelDimension() : MatrixPosition
+      public function get levelDimension() : Object
       {
          var _loc3_:int = 0;
          var _loc4_:Array = null;
@@ -955,7 +955,10 @@ package net.wg.gui.lobby.techtree.math
             _loc2_ = Math.max(_loc3_ + 1,_loc2_);
             _loc5_++;
          }
-         return new MatrixPosition(this.levels.length,_loc2_);
+         return {
+            "row":this.levels.length,
+            "column":_loc2_
+         };
       }
    }
 }

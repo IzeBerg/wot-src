@@ -17,7 +17,6 @@ package net.wg.gui.lobby.techtree.sub
    import net.wg.gui.lobby.techtree.interfaces.IBorderHighlighted;
    import net.wg.gui.lobby.techtree.interfaces.IRenderer;
    import net.wg.gui.lobby.techtree.interfaces.IResearchPage;
-   import net.wg.gui.lobby.techtree.math.MatrixPosition;
    import net.wg.gui.lobby.techtree.nodes.FakeNode;
    import net.wg.gui.lobby.techtree.nodes.ResearchRoot;
    import net.wg.gui.lobby.techtree.postProgression.EntryPoint;
@@ -99,7 +98,7 @@ package net.wg.gui.lobby.techtree.sub
       
       override public function getNodeByID(param1:int) : IRenderer
       {
-         var _loc2_:MatrixPosition = positionById[param1];
+         var _loc2_:Object = positionById[param1];
          var _loc3_:IRenderer = null;
          if(!_loc2_)
          {
@@ -549,7 +548,7 @@ package net.wg.gui.lobby.techtree.sub
       private function updateTopRenderers() : void
       {
          var _loc2_:IRenderer = null;
-         var _loc3_:MatrixPosition = null;
+         var _loc3_:Object = null;
          var _loc4_:NodeData = null;
          var _loc1_:uint = _dataProvider.topLength;
          var _loc5_:Boolean = false;
@@ -576,7 +575,10 @@ package net.wg.gui.lobby.techtree.sub
             }
             if(_loc2_ != null)
             {
-               _loc3_ = new MatrixPosition(_loc6_,-1);
+               _loc3_ = {
+                  "row":_loc6_,
+                  "column":-1
+               };
                _loc4_ = _dataProvider.getTopLevelAt(_loc6_);
                positionById[_loc4_.id] = _loc3_;
                _loc2_.setup(_loc6_,_loc4_,NodeEntityType.TOP_VEHICLE,_loc3_);

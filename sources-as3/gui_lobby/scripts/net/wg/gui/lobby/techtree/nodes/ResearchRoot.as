@@ -35,7 +35,6 @@ package net.wg.gui.lobby.techtree.nodes
    import net.wg.gui.lobby.techtree.interfaces.INodesContainer;
    import net.wg.gui.lobby.techtree.interfaces.IRenderer;
    import net.wg.gui.lobby.techtree.interfaces.IResearchContainer;
-   import net.wg.gui.lobby.techtree.math.MatrixPosition;
    import net.wg.gui.lobby.tradeIn.TradeOffWidget;
    import net.wg.infrastructure.base.UIComponentEx;
    import net.wg.infrastructure.interfaces.ITutorialCustomComponent;
@@ -60,7 +59,10 @@ package net.wg.gui.lobby.techtree.nodes
       
       private static const LINES_AND_ARROWS_NAME:String = "linesAndArrows";
       
-      private static const MATRIX_POSITION:MatrixPosition = new MatrixPosition(0,0);
+      private static const MATRIX_POSITION:Object = {
+         "row":0,
+         "column":0
+      };
       
       private static const BANNER_Y_GAP:int = 40;
       
@@ -478,7 +480,7 @@ package net.wg.gui.lobby.techtree.nodes
          invalidateData();
       }
       
-      public function setup(param1:uint, param2:NodeData, param3:uint = 2, param4:MatrixPosition = null) : void
+      public function setup(param1:uint, param2:NodeData, param3:uint = 2, param4:Object = null) : void
       {
          if(!param2 || param2 == this._nodeData)
          {
@@ -809,7 +811,7 @@ package net.wg.gui.lobby.techtree.nodes
          return 0;
       }
       
-      public function get matrixPosition() : MatrixPosition
+      public function get matrixPosition() : Object
       {
          return MATRIX_POSITION;
       }

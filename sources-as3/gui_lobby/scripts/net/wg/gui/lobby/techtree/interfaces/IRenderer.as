@@ -2,7 +2,6 @@ package net.wg.gui.lobby.techtree.interfaces
 {
    import flash.geom.Point;
    import net.wg.gui.lobby.techtree.data.vo.NodeData;
-   import net.wg.gui.lobby.techtree.math.MatrixPosition;
    import net.wg.infrastructure.interfaces.IUIComponentEx;
    import net.wg.infrastructure.interfaces.entity.ISoundable;
    
@@ -10,7 +9,7 @@ package net.wg.gui.lobby.techtree.interfaces
    {
        
       
-      function setup(param1:uint, param2:NodeData, param3:uint = 0, param4:MatrixPosition = null) : void;
+      function setup(param1:uint, param2:NodeData, param3:uint = 0, param4:Object = null) : void;
       
       function getID() : uint;
       
@@ -84,7 +83,7 @@ package net.wg.gui.lobby.techtree.interfaces
       
       function get bottomArrowOffset() : Number;
       
-      function get matrixPosition() : MatrixPosition;
+      function get matrixPosition() : Object;
       
       function get container() : INodesContainer;
       

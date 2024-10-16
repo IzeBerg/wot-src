@@ -17,7 +17,6 @@ package net.wg.gui.lobby.techtree.sub
    import net.wg.gui.lobby.techtree.interfaces.IResearchContainer;
    import net.wg.gui.lobby.techtree.interfaces.IResearchDataProvider;
    import net.wg.gui.lobby.techtree.math.ADG_ItemLevelsBuilder;
-   import net.wg.gui.lobby.techtree.math.MatrixPosition;
    import net.wg.gui.lobby.techtree.nodes.FakeNode;
    import net.wg.infrastructure.base.UIComponentEx;
    import net.wg.infrastructure.interfaces.entity.IFocusContainer;
@@ -176,7 +175,7 @@ package net.wg.gui.lobby.techtree.sub
       
       public function getNodeByID(param1:int) : IRenderer
       {
-         var _loc2_:MatrixPosition = this._positionByID[param1];
+         var _loc2_:Object = this._positionByID[param1];
          return this.renderers[_loc2_.row][_loc2_.column];
       }
       
@@ -231,7 +230,7 @@ package net.wg.gui.lobby.techtree.sub
       protected function updateRootData() : Boolean
       {
          var _loc2_:NodeData = null;
-         var _loc3_:MatrixPosition = null;
+         var _loc3_:Object = null;
          var _loc1_:Boolean = false;
          if(this._levelsBuilder.nodesByLevel[0][1] != null)
          {
@@ -245,7 +244,10 @@ package net.wg.gui.lobby.techtree.sub
          {
             _loc1_ = true;
             _loc2_ = this._dataProvider.getRootItem();
-            _loc3_ = new MatrixPosition(0,0);
+            _loc3_ = {
+               "row":0,
+               "column":0
+            };
             this.renderers[0][0] = this.rootRenderer;
             this._positionByID[_loc2_.id] = _loc3_;
             this.rootRenderer.setup(0,_loc2_,0,_loc3_);
@@ -412,7 +414,7 @@ package net.wg.gui.lobby.techtree.sub
       
       private function createRenderersMatrix() : Vector.<Vector.<IRenderer>>
       {
-         var _loc1_:MatrixPosition = this._levelsBuilder.levelDimension;
+         var _loc1_:Object = this._levelsBuilder.levelDimension;
          var _loc2_:int = _loc1_.row;
          var _loc3_:Vector.<Vector.<IRenderer>> = new Vector.<Vector.<IRenderer>>(_loc2_);
          var _loc4_:int = 0;
@@ -485,7 +487,7 @@ package net.wg.gui.lobby.techtree.sub
       private function updateRenderers() : void
       {
          var _loc1_:IRenderer = null;
-         var _loc2_:MatrixPosition = null;
+         var _loc2_:Object = null;
          var _loc3_:Object = null;
          var _loc4_:NodeData = null;
          var _loc6_:Array = null;
@@ -525,7 +527,10 @@ package net.wg.gui.lobby.techtree.sub
                      _loc4_ = this._dataProvider.getItemAt(_loc3_.index);
                   }
                   _loc13_ = this._dataProvider.resolveEntityType(_loc4_);
-                  _loc2_ = new MatrixPosition(_loc10_,_loc11_);
+                  _loc2_ = {
+                     "row":_loc10_,
+                     "column":_loc11_
+                  };
                   _loc1_ = this._onScene.getRenderer(_loc13_);
                   if(_loc1_ == null)
                   {
@@ -681,6 +686,7 @@ package net.wg.gui.lobby.techtree.sub
          }
          this._drawEnabled = true;
          invalidateData();
+         validateNow();
       }
    }
 }

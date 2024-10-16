@@ -10,7 +10,6 @@ package net.wg.gui.lobby.vehicleCompare.nodes
    import net.wg.gui.lobby.techtree.interfaces.INodesContainer;
    import net.wg.gui.lobby.techtree.interfaces.IRenderer;
    import net.wg.gui.lobby.techtree.interfaces.IResearchContainer;
-   import net.wg.gui.lobby.techtree.math.MatrixPosition;
    import scaleform.clik.constants.InvalidationType;
    
    public class ModuleRenderer extends SoundListItemRenderer implements IRenderer
@@ -29,7 +28,7 @@ package net.wg.gui.lobby.vehicleCompare.nodes
       
       private var _valueObject:NodeData;
       
-      private var _matrixPosition:MatrixPosition;
+      private var _matrixPosition:Object;
       
       public function ModuleRenderer()
       {
@@ -228,7 +227,7 @@ package net.wg.gui.lobby.vehicleCompare.nodes
          }
       }
       
-      public function setup(param1:uint, param2:NodeData, param3:uint = 0, param4:MatrixPosition = null) : void
+      public function setup(param1:uint, param2:NodeData, param3:uint = 0, param4:Object = null) : void
       {
          var _loc6_:Point = null;
          if(param3 != 0)
@@ -275,7 +274,7 @@ package net.wg.gui.lobby.vehicleCompare.nodes
          this._container = IResearchContainer(param1);
       }
       
-      public function get matrixPosition() : MatrixPosition
+      public function get matrixPosition() : Object
       {
          return this._matrixPosition;
       }
