@@ -2,14 +2,14 @@ import functools, logging, time, BigWorld
 from account_helpers.AccountSettings import QUEST_DELTAS_TOKENS_PROGRESS
 from adisp import adisp_async, adisp_process
 from constants import LOOTBOX_TOKEN_PREFIX
-from gui.shared.utils.requesters.quest_deltas_settings import QuestDeltasSettings
+from gui.shared.utils.requesters.abstract import AbstractSyncDataRequester
 from gui.shared.utils.requesters.common import BaseDelta
+from gui.shared.utils.requesters.quest_deltas_settings import QuestDeltasSettings
 from gui.shared.utils.requesters.token import Token
 from helpers import dependency
-from gui.shared.utils.requesters.abstract import AbstractSyncDataRequester
-from skeletons.gui.shared.utils.requesters import ITokensRequester
-from skeletons.gui.shared.gui_items import IGuiItemsFactory
 from skeletons.gui.lobby_context import ILobbyContext
+from skeletons.gui.shared.gui_items import IGuiItemsFactory
+from skeletons.gui.shared.utils.requesters import ITokensRequester
 _logger = logging.getLogger(__name__)
 TOTAL_KEY = 'total'
 
@@ -96,23 +96,27 @@ class TokensRequester(AbstractSyncDataRequester, ITokensRequester):
         return self.__lootBoxCache.get(LOOTBOX_TOKEN_PREFIX + str(boxID))
 
     def getAttemptsAfterGuaranteedRewards(self, box):
-        boxesHistory = self.getCacheValue('lootBoxes', {}).get('history', {})
+        boxesHistory = self.getCacheValue('lootBoxes').get('history', {})
         historyName, guaranteedFrequencyName = box.getHistoryName(), box.getGuaranteedFrequencyName()
         if historyName not in boxesHistory:
             return 0
         _, limits, _ = boxesHistory[historyName]
         if guaranteedFrequencyName not in limits:
             return 0
-        _, attempts, _ = limits[guaranteedFrequencyName]
-        return attempts
+        return limits[guaranteedFrequencyName][1]
 
-    def getReRollCount(self, box):
-        lootBoxes = self.getCacheValue('lootBoxes', None)
-        reRollHistory = lootBoxes.get('reRollHistory', None) if isinstance(lootBoxes, dict) else None
-        if not reRollHistory:
+    def getLootBoxesStats(self):
+        return self.getCacheValue('lootBoxes', {}).get('stats')
+
+    def getAttemptsAfterRewardsWithBonusProbability(self, box):
+        boxesHistory = self.getCacheValue('lootBoxes').get('history', {})
+        historyName, probabilityBonusLimitName = box.getHistoryName(), box.getProbabilityBonusLimitName()
+        if historyName not in boxesHistory:
             return 0
-        else:
-            return len(reRollHistory.get(box.getID(), {}))
+        _, limits, _ = boxesHistory[historyName]
+        if probabilityBonusLimitName not in limits:
+            return 0
+        return limits[probabilityBonusLimitName][2]
 
     def getLastViewedProgress(self, tokenId):
         return self.__tokensProgressDelta.getPrevValue(tokenId)

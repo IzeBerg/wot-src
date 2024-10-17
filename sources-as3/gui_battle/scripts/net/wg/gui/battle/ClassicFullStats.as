@@ -160,24 +160,29 @@ package net.wg.gui.battle
       
       override protected function updateCurrentTab() : void
       {
-         statsTable.visible = tabs.selectedIndex == 0;
-         var _loc1_:Boolean = this.getTabDataAlias(tabs.selectedIndex) == PERSONAL_RESERVES_TAB_ALIAS;
+         var _loc1_:Boolean = tabs.selectedIndex == 0;
+         statsTable.visible = _loc1_;
+         if(visible)
+         {
+            onStatsTableVisibiltyToggledS(_loc1_);
+         }
+         var _loc2_:Boolean = this.getTabDataAlias(tabs.selectedIndex) == PERSONAL_RESERVES_TAB_ALIAS;
          if(this.tabReserves != null)
          {
-            this.tabReserves.visible = _loc1_;
+            this.tabReserves.visible = _loc2_;
          }
-         var _loc2_:Boolean = tabs.selectedIndex == 1 && this._hasQuestToPerform;
+         var _loc3_:Boolean = tabs.selectedIndex == 1 && this._hasQuestToPerform;
          if(this.tabQuest != null)
          {
-            this.tabQuest.visible = _loc2_;
+            this.tabQuest.visible = _loc3_;
          }
-         var _loc3_:Boolean = statsTable.visible || _loc2_ || _loc1_;
-         title.visible = _loc3_ && !_loc1_;
-         if(_loc3_)
+         var _loc4_:Boolean = statsTable.visible || _loc3_ || _loc2_;
+         title.visible = _loc4_ && !_loc2_;
+         if(_loc4_)
          {
             this.setTitle();
          }
-         this.noQuestTitleTF.visible = this.noQuestDescrTF.visible = !_loc3_;
+         this.noQuestTitleTF.visible = this.noQuestDescrTF.visible = !_loc4_;
       }
       
       public function getReservesView() : IDAAPIModule
@@ -202,6 +207,19 @@ package net.wg.gui.battle
             title.validateNow();
          }
          super.visible = param1;
+         if(!initialized)
+         {
+            return;
+         }
+         var _loc2_:Boolean = tabs.selectedIndex == 0;
+         if(visible)
+         {
+            onStatsTableVisibiltyToggledS(_loc2_);
+         }
+         else
+         {
+            onStatsTableVisibiltyToggledS(false);
+         }
       }
       
       private function onProgressTrackingQuestSelectHandler(param1:QuestProgressTabEvent) : void

@@ -606,7 +606,7 @@ msgid "bonusType/8"
 msgstr "Historical Battle"
 
 msgid "bonusType/9"
-msgstr "Waffenträger: Reckoning"
+msgstr "Special game mode"
 
 msgid "booster/bonus/booster_credits"
 msgstr "%(effectValue)s bonus for %(effectHours)s to credits earned in battle"
@@ -700,6 +700,21 @@ msgstr "to Free and Crew XP earned in battle"
 
 msgid "booster/influence/booster_xp"
 msgstr "to experience earned in battle"
+
+msgid "booster/label/booster_credits"
+msgstr "%(effectValue)s to Credits"
+
+msgid "booster/label/booster_crew_xp"
+msgstr "%(effectValue)s to Crew XP"
+
+msgid "booster/label/booster_free_xp"
+msgstr "%(effectValue)s to Free XP"
+
+msgid "booster/label/booster_free_xp_and_crew_xp"
+msgstr "%(effectValue)s to Free and Crew XP"
+
+msgid "booster/label/booster_xp"
+msgstr "%(effectValue)s to Combat XP"
 
 msgid "booster/limit/booster_fl_xp"
 msgstr "For Frontline mode"
@@ -1570,9 +1585,6 @@ msgstr "Vehicle rental available"
 msgid "currentVehicleStatus/rentableAgain"
 msgstr "Extend Rental"
 
-msgid "currentVehicleStatus/rentalBattleIsOver"
-msgstr "No battles left"
-
 msgid "currentVehicleStatus/rentalIsOver"
 msgstr "Rental period ended"
 
@@ -1587,9 +1599,6 @@ msgstr "Server limit"
 
 msgid "currentVehicleStatus/subscription_suspended"
 msgstr "WoT Plus subscription suspended"
-
-msgid "currentVehicleStatus/ticketsShortage"
-msgstr "No Key"
 
 msgid "currentVehicleStatus/tooHeavy"
 msgstr "Vehicle overloaded"
@@ -1942,6 +1951,11 @@ msgstr ""
 "Gun Loading: %(reloadTimeSecs)s s; Average Damage: %(avgDamageList)s\n"
 "Average Penetration: %(avgPiercingPower)s mm"
 
+msgid "descriptions/vehicleGun/twinGun"
+msgstr ""
+"Gun Loading: %(reloadTimeSingleGun)s/%(reloadTimeTwinGun)s s; Average Damage: %(avgDamageList)s\n"
+"Average Penetration: %(avgPiercingPower)s mm"
+
 msgid "descriptions/vehicleRadio"
 msgstr "Signal Range: up to %(radioDistance)s m"
 
@@ -2080,10 +2094,6 @@ msgid "extraParams/name/artNotificationDelayFactor"
 msgstr ""
 "This parameter shows the time between the SPG shot and receiving the "
 "warning."
-
-msgid "extraParams/name/commanderHitChance"
-msgstr ""
-"This parameter shows the chance of avoiding injuries to your Commander."
 
 msgid "extraParams/name/commanderLampDelay"
 msgstr ""
@@ -2909,9 +2919,6 @@ msgstr "Team Training"
 
 msgid "headerButtons/battle/types/epicTraining/descr"
 msgstr "Frontline"
-
-msgid "headerButtons/battle/types/event"
-msgstr "Waffenträger: Reckoning"
 
 msgid "headerButtons/battle/types/eventSquad"
 msgstr "Event Platoon"
@@ -3810,7 +3817,7 @@ msgid "loading/battleTypes/6"
 msgstr "Historical Battle"
 
 msgid "loading/battleTypes/7"
-msgstr "WAFFENTRÄGER: RECKONING"
+msgstr "WAFFENTRÄGER: PROJEKT HYPERION"
 
 msgid "loading/battleTypes/8"
 msgstr "Skirmishes"
@@ -4617,6 +4624,12 @@ msgstr "Rate of Fire"
 msgid "moduleInfo/params/reloadTimeSecs"
 msgstr "Gun Loading"
 
+msgid "moduleInfo/params/reloadTimeSingleGun"
+msgstr "Gun Loading in Single Fire Mode"
+
+msgid "moduleInfo/params/reloadTimeTwinGun"
+msgstr "Gun Loading in Salvo Fire Mode"
+
 msgid "moduleInfo/params/rocketAccelerationEnginePower"
 msgstr "Engine Power (With Boosters)"
 
@@ -4674,6 +4687,9 @@ msgid "moduleInfo/turboshaftEngine"
 msgstr ""
 "Gas-turbine engine:\n"
 "allows the vehicle to reach a higher speed."
+
+msgid "moduleInfo/twinGunLabel"
+msgstr "Selective Fire Modes System"
 
 msgid "nation_tree/blueprint_title/china"
 msgstr "Blueprints of Chinese Vehicles"
@@ -6143,9 +6159,6 @@ msgstr "Extend Rental"
 msgid "tankCarousel/vehicleStates/rentableAgain/ranked"
 msgstr "Extend Rental"
 
-msgid "tankCarousel/vehicleStates/rentalBattleIsOver"
-msgstr "No battles left"
-
 msgid "tankCarousel/vehicleStates/rentalIsOver"
 msgstr "Rental period ended"
 
@@ -6166,9 +6179,6 @@ msgstr "Server limit"
 
 msgid "tankCarousel/vehicleStates/subscription_suspended"
 msgstr "Suspended"
-
-msgid "tankCarousel/vehicleStates/ticketsShortage"
-msgstr "No Key"
 
 msgid "tankCarousel/vehicleStates/tooHeavy"
 msgstr "Vehicle overloaded"
@@ -6487,6 +6497,15 @@ msgstr "Gun Traverse Speed"
 
 msgid "tank_params/turretYawLimits"
 msgstr "Turret Traverse Angles"
+
+msgid "tank_params/twinGunReloadTime"
+msgstr "Gun Loading (Single Fire Mode/Salvo Fire Mode)"
+
+msgid "tank_params/twinGunSwitchFireModeTime"
+msgstr "Fire Mode Switch Time"
+
+msgid "tank_params/twinGunTopSpeed"
+msgstr "Top Speed/Reverse Speed (Salvo Fire Mode)"
 
 msgid "tank_params/val"
 msgstr "(HP)"
@@ -7098,6 +7117,15 @@ msgstr "Gun Traverse Speed (deg/s)"
 
 msgid "vehicleInfo/params/turretYawLimits"
 msgstr "Turret Traverse Angles (deg)"
+
+msgid "vehicleInfo/params/twinGunReloadTime"
+msgstr "Gun Loading (Single Fire Mode/Salvo Fire Mode) (s)"
+
+msgid "vehicleInfo/params/twinGunSwitchFireModeTime"
+msgstr "Fire Mode Switch Time (s)"
+
+msgid "vehicleInfo/params/twinGunTopSpeed"
+msgstr "Top Speed/Reverse Speed (Single Fire Mode/Salvo Fire Mode) (km/h)"
 
 msgid "vehicleInfo/params/vehicleWeight"
 msgstr "Weight/Load Limit (t)"

@@ -143,7 +143,7 @@ package net.wg.gui.lobby.header.headerButtonBar.container
                }
                else
                {
-                  this.leftBGShieldsIcon.visible = this.rightBGShieldsIcon.visible = this._isMain && !this._isWideScreen;
+                  this.leftBGShieldsIcon.visible = this.rightBGShieldsIcon.visible = this._isMain && !this._isWideScreen && this._isNormalSizePlatoon;
                   this.setLeftPlayerData(this._squadManArray[PLAYERS.left]);
                   this.setRightPlayerData(this._squadManArray[PLAYERS.right]);
                }

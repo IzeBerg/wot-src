@@ -1,4 +1,4 @@
-import logging, time
+import time
 from functools import partial
 from adisp import adisp_process
 from frameworks.wulf import ViewFlags, ViewSettings
@@ -16,16 +16,23 @@ from skeletons.gui.server_events import IEventsCache
 from helpers.time_utils import ONE_DAY, ONE_HOUR
 from gui.impl import backport
 from gui.shared.missions.packers.events import BattleQuestUIDataPacker
-_logger = logging.getLogger(__name__)
-_MARATHON_PREFIX = 'autumn_marathon'
+_MARATHON_PREFIX = 'winter_marathon'
 _POST_TIME_LEFT_LIMIT = ONE_HOUR * 12
 _eventsCache = dependency.descriptor(IEventsCache)
 
 @dependency.replace_none_kwargs(marathonsCtrl=IMarathonEventsController)
 def isMarathonEntryPointAvailable(marathonsCtrl=None):
     marathonEvent = marathonsCtrl.getMarathon(_MARATHON_PREFIX)
-    state = marathonEvent.getState() if marathonEvent is not None else None
-    return state in MarathonState.ENABLED_STATE and not marathonEvent.isRewardObtained()
+    if marathonEvent is not None:
+        state = marathonEvent.getState()
+    else:
+        state = None
+    if state in (MarathonState.NOT_STARTED, MarathonState.IN_PROGRESS):
+        return True
+    else:
+        if state == MarathonState.FINISHED and not (marathonEvent.isRewardObtained() and marathonEvent.isPostRewardObtained()):
+            return True
+        return False
 
 
 class MarathonEntryPoint(ViewImpl):
@@ -42,16 +49,19 @@ class MarathonEntryPoint(ViewImpl):
     def viewModel(self):
         return super(MarathonEntryPoint, self).getViewModel()
 
-    def _getEvents(self):
-        return (
-         (
-          self.viewModel.onClick, self.__onClick),
-         (
-          self._eventsCache.onProgressUpdated, self.__updateViewModel),
-         (
-          self._marathonsCtrl.onFlagUpdateNotify, self.__updateViewModel),
-         (
-          self._marathonsCtrl.onMarathonDataChanged, self.__updateViewModel))
+    def _initialize(self, *args, **kwargs):
+        super(MarathonEntryPoint, self)._initialize(*args, **kwargs)
+        self.viewModel.onClick += self.__onClick
+        self._marathonsCtrl.onFlagUpdateNotify += self.__updateViewModel
+        self._marathonsCtrl.onMarathonDataChanged += self.__updateViewModel
+        self._eventsCache.onProgressUpdated += self.__updateViewModel
+
+    def _finalize(self):
+        super(MarathonEntryPoint, self)._finalize()
+        self.viewModel.onClick -= self.__onClick
+        self._marathonsCtrl.onFlagUpdateNotify -= self.__updateViewModel
+        self._marathonsCtrl.onMarathonDataChanged -= self.__updateViewModel
+        self._eventsCache.onProgressUpdated -= self.__updateViewModel
 
     def _onLoading(self, *args, **kwargs):
         super(MarathonEntryPoint, self)._onLoading(*args, **kwargs)

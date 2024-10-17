@@ -53,6 +53,10 @@ package net.wg.data.constants.generated
       
       public static const VEHICLE_HEALTH_ADDED:String = "healthAdded";
       
+      public static const WEATHER_ZONE:String = "weatherZone";
+      
+      public static const FIRE_DAMAGE_ZONE:String = "fireDamageZone";
+      
       public static const VEHICLE_RECOVERY:String = "vehicleRecovery";
       
       public static const ENEMY_SECTOR_CAPTURED:String = "enemySectorCaptured";
@@ -112,10 +116,6 @@ package net.wg.data.constants.generated
       public static const DAMAGE_BY_BATTLESHIP:String = "damageByBattleship";
       
       public static const DAMAGE_BY_DESTROYER:String = "damageByDestroyer";
-      
-      public static const RECEIVED_BY_CIRCUIT_OVERLOAD:String = "wtReceivedCircuitOverload";
-      
-      public static const HYPERION:String = "hyperion";
        
       
       public function BATTLE_EFFICIENCY_TYPES()

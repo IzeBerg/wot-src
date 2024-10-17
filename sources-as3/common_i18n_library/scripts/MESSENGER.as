@@ -105,6 +105,12 @@ package
       
       public static const BATTLE_RECEIVERS_CHATISLOCKEDTOOLTIP:String = "#messenger:battle/receivers/chatIsLockedToolTip";
       
+      public static const BATTLE_RECEIVERS_CHATISLOCKEDPARENTALCONTROLTOOLTIP:String = "#messenger:battle/receivers/chatIsLockedParentalControlToolTip";
+      
+      public static const BATTLE_RECEIVERS_CHATISLOCKEDCOUNTRYCONTROLTOOLTIP:String = "#messenger:battle/receivers/chatIsLockedCountryControlToolTip";
+      
+      public static const BATTLE_RECEIVERS_CHATISLOCKEDOTHERCONTROLTOOLTIP:String = "#messenger:battle/receivers/chatIsLockedOtherControlToolTip";
+      
       public static const BATTLE_UNKNOWN_ALLY:String = "#messenger:battle/unknown/ally";
       
       public static const BATTLE_UNKNOWN_ENEMY:String = "#messenger:battle/unknown/enemy";
@@ -970,10 +976,6 @@ package
       public static const SERVICECHANNELMESSAGES_QUOTEDTEXTTEMPLATE:String = "#messenger:serviceChannelMessages/quotedTextTemplate";
       
       public static const SERVICECHANNELMESSAGES_OFFERTOKENBONUS_TITLE:String = "#messenger:serviceChannelMessages/offerTokenBonus/title";
-      
-      public static const SERVICECHANNELMESSAGES_EVENT_LOOTBOXES:String = "#messenger:serviceChannelMessages/event/lootboxes";
-      
-      public static const SERVICECHANNELMESSAGES_EVENT_TICKETS:String = "#messenger:serviceChannelMessages/event/tickets";
       
       public static const SERVICECHANNELMESSAGES_DURATIONOFPREMIUMACCOUNTEXPIRES:String = "#messenger:serviceChannelMessages/durationOfPremiumAccountExpires";
       
@@ -2113,8 +2115,6 @@ package
       
       public static const SERVICECHANNELMESSAGES_MAPBOX_PROGRESSIONFINALREWARDRECEIVED:String = "#messenger:serviceChannelMessages/mapbox/progressionFinalRewardReceived";
       
-      public static const SERVICECHANNELMESSAGES_MAPBOX_CREWBOOKREQUESTERROR:String = "#messenger:serviceChannelMessages/mapbox/crewbookRequestError";
-      
       public static const SERVICECHANNELMESSAGES_SELECTABLECREWBOOK_GUIDE:String = "#messenger:serviceChannelMessages/selectableCrewbook/guide";
       
       public static const SERVICECHANNELMESSAGES_SELECTABLECREWBOOK_BROCHURE:String = "#messenger:serviceChannelMessages/selectableCrewbook/brochure";
@@ -2506,6 +2506,20 @@ package
       public static const SERVICECHANNELMESSAGES_FAIRPLAYVIOLATION_TEXT_BAN:String = "#messenger:serviceChannelMessages/fairplayViolation/text/ban";
       
       public static const SERVICECHANNELMESSAGES_FAIRPLAYVIOLATION_BANDUEDATE:String = "#messenger:serviceChannelMessages/fairplayViolation/banDueDate";
+      
+      public static const SERVICECHANNELMESSAGES_EXTERNALVEHICLERENT_STARTED_TITLE:String = "#messenger:serviceChannelMessages/externalVehicleRent/started/title";
+      
+      public static const SERVICECHANNELMESSAGES_EXTERNALVEHICLERENT_STARTED_VEHICLE:String = "#messenger:serviceChannelMessages/externalVehicleRent/started/vehicle";
+      
+      public static const SERVICECHANNELMESSAGES_EXTERNALVEHICLERENT_EXPIRED_TITLE:String = "#messenger:serviceChannelMessages/externalVehicleRent/expired/title";
+      
+      public static const SERVICECHANNELMESSAGES_EXTERNALVEHICLERENT_EXPIRED_VEHICLE:String = "#messenger:serviceChannelMessages/externalVehicleRent/expired/vehicle";
+      
+      public static const SERVICECHANNELMESSAGES_EXTERNALVEHICLERENT_EXPIRED_REASON:String = "#messenger:serviceChannelMessages/externalVehicleRent/expired/reason";
+      
+      public static const SERVICECHANNELMESSAGES_EXTERNALVEHICLERENT_EXPIRED_REASON_DEFAULT:String = "#messenger:serviceChannelMessages/externalVehicleRent/expired/reason_default";
+      
+      public static const SERVICECHANNELMESSAGES_EXTERNALVEHICLERENT_EXPIRED_REASON_BOOSTEROID:String = "#messenger:serviceChannelMessages/externalVehicleRent/expired/reason_boosteroid";
       
       public static const DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_ENUM:Array = [DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_OFFLINE,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_NOTREADY,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_READY,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_INBATTLE,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_AFK];
        

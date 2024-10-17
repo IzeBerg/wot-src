@@ -473,6 +473,8 @@ class SettingsCore(ISettingsCore):
          (
           CONTROLS.MOUSE_SNIPER_SENS, options.MouseSensitivitySetting('dualgun')),
          (
+          CONTROLS.MOUSE_SNIPER_SENS, options.MouseSensitivitySetting('twinGun')),
+         (
           CONTROLS.MOUSE_STRATEGIC_SENS, options.MouseSensitivitySetting('strategic')),
          (
           CONTROLS.MOUSE_ASSIST_AIM_SENS,
@@ -634,9 +636,6 @@ class SettingsCore(ISettingsCore):
          (
           BATTLE_EVENTS.CREW_PERKS,
           options.SettingTrueByDefault(BATTLE_EVENTS.CREW_PERKS, storage=BATTLE_EVENTS_SETTINGS_STORAGE)),
-         (
-          BATTLE_EVENTS.HEALTH_ADDED,
-          options.SettingFalseByDefault(BATTLE_EVENTS.HEALTH_ADDED, storage=BATTLE_EVENTS_SETTINGS_STORAGE)),
          (
           BATTLE_BORDER_MAP.MODE_SHOW_BORDER,
           options.BattleBorderMapModeShow(BATTLE_BORDER_MAP.MODE_SHOW_BORDER, storage=BATTLE_BORDER_MAP_SETTINGS_STORAGE)),

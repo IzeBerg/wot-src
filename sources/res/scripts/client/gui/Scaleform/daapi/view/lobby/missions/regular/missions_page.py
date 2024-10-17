@@ -5,6 +5,8 @@ from CurrentVehicle import g_currentVehicle
 from account_helpers import AccountSettings
 from account_helpers.AccountSettings import MISSIONS_PAGE
 from adisp import adisp_async as adispasync, adisp_process
+from gui.limited_ui.lui_rules_storage import LUI_RULES
+from wg_async import wg_async, wg_await
 from gui.ClientUpdateManager import g_clientUpdateManager
 from gui.Scaleform.daapi import LobbySubView
 from gui.Scaleform.daapi.settings import BUTTON_LINKAGES
@@ -24,7 +26,6 @@ from gui.Scaleform.locale.RES_ICONS import RES_ICONS
 from gui.battle_pass.sounds import HOLIDAY_TASKS_SOUND_SPACE
 from gui.impl import backport
 from gui.impl.gen import R
-from gui.limited_ui.lui_rules_storage import LUI_RULES
 from gui.marathon.marathon_event_controller import getMarathons
 from gui.server_events import caches, settings
 from gui.server_events.events_dispatcher import hideMissionDetails, showMissionDetails
@@ -35,17 +36,16 @@ from gui.shared.event_dispatcher import showHangar
 from gui.shared.events import MissionsEvent
 from gui.shared.formatters import text_styles
 from gui.shared.gui_items import GUI_ITEM_TYPE
-from gui.sounds.ambients import BattleMattersSoundEnv, BattlePassSoundEnv, LobbySubViewEnv, MarathonPageSoundEnv, MissionsCategoriesSoundEnv, MissionsEventsSoundEnv, MissionsPremiumSoundEnv
+from gui.sounds.ambients import BattlePassSoundEnv, LobbySubViewEnv, MarathonPageSoundEnv, MissionsCategoriesSoundEnv, MissionsEventsSoundEnv, MissionsPremiumSoundEnv, BattleMattersSoundEnv
 from helpers import dependency
 from helpers.i18n import makeString as _ms
 from items import getTypeOfCompactDescr
-from skeletons.gui.app_loader import GuiGlobalSpaceID, IAppLoader
-from skeletons.gui.battle_matters import IBattleMattersController
 from skeletons.gui.event_boards_controllers import IEventBoardController
-from skeletons.gui.game_control import IBattlePassController, IGameSessionController, IHangarSpaceSwitchController, ILimitedUIController, ILiveOpsWebEventsController, IMapboxController, IMarathonEventsController, IRankedBattlesController, IWinbackController
+from skeletons.gui.game_control import IBattlePassController, IHangarSpaceSwitchController, IGameSessionController, IMapboxController, IMarathonEventsController, IRankedBattlesController, ILimitedUIController, IWinbackController, ILiveOpsWebEventsController
+from skeletons.gui.app_loader import IAppLoader, GuiGlobalSpaceID
+from skeletons.gui.battle_matters import IBattleMattersController
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.server_events import IEventsCache
-from wg_async import wg_async, wg_await
 if typing.TYPE_CHECKING:
     from typing import List, Union
     from gui.server_events.event_items import DailyEpicTokenQuest, DailyQuest, PremiumQuest
@@ -211,9 +211,7 @@ class MissionsPage(LobbySubView, MissionsPageMeta):
         self.marathonsCtrl.onVehicleReceived += self.__onMarathonVehicleReceived
         Windowing.addWindowAccessibilitynHandler(self.__onWindowAccessibilityChanged)
         if self.marathonsCtrl.isAnyActive():
-            for marathonNdx, marathonEvent in enumerate(getMarathons(), MARATHONS_START_TAB_INDEX):
-                TABS_DATA_ORDERED.insert(marathonNdx, TabData(QUESTS_ALIASES.MISSIONS_MARATHON_VIEW_PY_ALIAS, QUESTS_ALIASES.MISSIONS_MARATHON_VIEW_LINKAGE, marathonEvent.tabTooltip, marathonEvent.tabTooltip, backport.text(marathonEvent.label), marathonEvent.prefix))
-
+            TABS_DATA_ORDERED.insert(MARATHONS_START_TAB_INDEX, TabData(QUESTS_ALIASES.MISSIONS_GROUPED_VIEW_PY_ALIAS, QUESTS_ALIASES.MISSIONS_GROUPED_VIEW_LINKAGE, QUESTS.MISSIONS_TAB_MARATHONS, QUESTS.MISSIONS_TAB_MARATHONS, _ms(QUESTS.MISSIONS_TAB_LABEL_MARATHON), None))
         self.__updateHeader()
         self.__tryOpenMissionDetails()
         self.fireEvent(events.MissionsEvent(events.MissionsEvent.ON_ACTIVATE), EVENT_BUS_SCOPE.LOBBY)
@@ -265,8 +263,6 @@ class MissionsPage(LobbySubView, MissionsPageMeta):
         if alias == QUESTS_ALIASES.BATTLE_PASS_MISSIONS_VIEW_PY_ALIAS:
             viewPy.updateState(**self.__ctx)
         if alias == QUESTS_ALIASES.BATTLE_MATTERS_VIEW_PY_ALIAS:
-            viewPy.updateState(**self.__ctx)
-        if alias == QUESTS_ALIASES.MISSIONS_MARATHON_VIEW_PY_ALIAS:
             viewPy.updateState(**self.__ctx)
         self.__fireTabChangedEvent()
         return

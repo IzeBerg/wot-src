@@ -6,8 +6,8 @@ package net.wg.infrastructure.base.meta
    {
        
       
-      function as_showView() : void;
+      function viewSizeS(param1:Number, param2:Number) : void;
       
-      function as_setPlaceId(param1:uint) : void;
+      function as_loadBrowser() : void;
    }
 }

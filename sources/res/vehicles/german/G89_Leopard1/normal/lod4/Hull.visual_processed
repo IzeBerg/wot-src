@@ -148,6 +148,10 @@
 						colorIdMap
 						<Texture>vehicles/russian/common/common_ID.dds</Texture>
 					</property>
+					<property>
+						g_useNormalPackDXT1
+						<Bool>false</Bool>
+					</property>
 					<fx>shaders/std_effects/PBS_tank.fx</fx>
 					<property>
 						g_detailPowerGloss
@@ -166,7 +170,10 @@
 					</property>
 					<property>
 						g_detailUVTiling
-						<Vector4>8.416440 8.416440 0.000000 0.000000</Vector4>
+						<Vector4>
+							8.41644 8.41644 0.000000 0.000000
+							<!--BW_String-->
+						</Vector4>
 					</property>
 					<property>
 						g_detailPower

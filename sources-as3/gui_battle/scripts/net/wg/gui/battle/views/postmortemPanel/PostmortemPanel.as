@@ -411,7 +411,7 @@ package net.wg.gui.battle.views.postmortemPanel
          });
       }
       
-      private function showPanel() : void
+      protected function showPanel() : void
       {
          vehiclePanel.alpha = 0;
          _userName.alpha = 0;

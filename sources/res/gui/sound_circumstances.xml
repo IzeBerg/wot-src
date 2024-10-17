@@ -1,273 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
 	<circumstance>
-		<index>1_1</index>
-		<group>player_lives</group>
-		<name>Осталось несколько жизней</name>
+		<index>1_13</index>
+		<group>space</group>
+		<name>02_malinovka</name>
 		<weight>50</weight>
 	</circumstance>
 	<circumstance>
-		<index>1_2</index>
-		<group>player_lives</group>
-		<name>Осталась одна жизнь</name>
-		<weight>70</weight>
+		<index>1_39</index>
+		<group>space</group>
+		<name>04_himmelsdorf</name>
+		<weight>50</weight>
 	</circumstance>
 	<circumstance>
 		<index>2_1</index>
-		<group>battle_time_left</group>
-		<name>Больше 3х минут до конца боя</name>
-		<weight>65</weight>
-	</circumstance>
-	<circumstance>
-		<index>2_2</index>
-		<group>battle_time_left</group>
-		<name>3 минуты до конца боя</name>
+		<group>health_points_pc</group>
+		<name>&gt;97%</name>
 		<weight>40</weight>
 	</circumstance>
 	<circumstance>
-		<index>2_3</index>
-		<group>battle_time_left</group>
-		<name>2 минуты до конца боя</name>
+		<index>2_2</index>
+		<group>health_points_pc</group>
+		<name>&gt;66% &lt;=97%</name>
 		<weight>50</weight>
 	</circumstance>
 	<circumstance>
+		<index>2_3</index>
+		<group>health_points_pc</group>
+		<name>&gt;33% &lt;=66%</name>
+		<weight>60</weight>
+	</circumstance>
+	<circumstance>
 		<index>2_4</index>
-		<group>battle_time_left</group>
-		<name>1 минуты до конца боя</name>
+		<group>health_points_pc</group>
+		<name>&gt;6% &lt;=33%</name>
 		<weight>70</weight>
 	</circumstance>
 	<circumstance>
 		<index>2_5</index>
-		<group>battle_time_left</group>
-		<name>0 минут до конца боя</name>
-		<weight>70</weight>
+		<group>health_points_pc</group>
+		<name>&lt;=6%</name>
+		<weight>80</weight>
 	</circumstance>
 	<circumstance>
 		<index>3_1</index>
-		<group>player_killer</group>
-		<name>Уничтожен Кригером</name>
-		<weight>60</weight>
+		<group>health_points_npc</group>
+		<name>&gt;97%</name>
+		<weight>50</weight>
 	</circumstance>
 	<circumstance>
 		<index>3_2</index>
-		<group>player_killer</group>
-		<name>Уничтожен ботом</name>
-		<weight>40</weight>
+		<group>health_points_npc</group>
+		<name>&gt;66% &lt;=97%</name>
+		<weight>50</weight>
+	</circumstance>
+	<circumstance>
+		<index>3_3</index>
+		<group>health_points_npc</group>
+		<name>&gt;33% &lt;=66%</name>
+		<weight>50</weight>
+	</circumstance>
+	<circumstance>
+		<index>3_4</index>
+		<group>health_points_npc</group>
+		<name>&gt;6% &lt;=33%</name>
+		<weight>50</weight>
+	</circumstance>
+	<circumstance>
+		<index>3_5</index>
+		<group>health_points_npc</group>
+		<name>&lt;=6%</name>
+		<weight>70</weight>
 	</circumstance>
 	<circumstance>
 		<index>4_1</index>
-		<group>player_damage</group>
-		<name>Средне эффективен (дамаг средний по команде)</name>
+		<group>battle_phase</group>
+		<name>Начало боя</name>
 		<weight>40</weight>
 	</circumstance>
 	<circumstance>
 		<index>4_2</index>
-		<group>player_damage</group>
-		<name>Был эффективен в бою (дамаг выше среднего по команде)</name>
-		<weight>80</weight>
+		<group>battle_phase</group>
+		<name>Середина боя</name>
+		<weight>30</weight>
 	</circumstance>
 	<circumstance>
-		<index>5_1</index>
-		<group>hunters_count</group>
-		<name>Остался 1</name>
-		<weight>70</weight>
-	</circumstance>
-	<circumstance>
-		<index>5_2</index>
-		<group>hunters_count</group>
-		<name>Осталось 2</name>
-		<weight>70</weight>
-	</circumstance>
-	<circumstance>
-		<index>5_3</index>
-		<group>hunters_count</group>
-		<name>Осталось 3</name>
+		<index>4_3</index>
+		<group>battle_phase</group>
+		<name>Конец боя</name>
 		<weight>60</weight>
-	</circumstance>
-	<circumstance>
-		<index>5_4</index>
-		<group>hunters_count</group>
-		<name>Осталось 4</name>
-		<weight>60</weight>
-	</circumstance>
-	<circumstance>
-		<index>5_5</index>
-		<group>hunters_count</group>
-		<name>Осталось 5</name>
-		<weight>40</weight>
-	</circumstance>
-	<circumstance>
-		<index>5_6</index>
-		<group>hunters_count</group>
-		<name>Осталось 6</name>
-		<weight>20</weight>
-	</circumstance>
-	<circumstance>
-		<index>6_1</index>
-		<group>boss_damage</group>
-		<name>Мало</name>
-		<weight>50</weight>
-	</circumstance>
-	<circumstance>
-		<index>6_2</index>
-		<group>boss_damage</group>
-		<name>Средне</name>
-		<weight>30</weight>
-	</circumstance>
-	<circumstance>
-		<index>6_3</index>
-		<group>boss_damage</group>
-		<name>Много</name>
-		<weight>70</weight>
-	</circumstance>
-	<circumstance>
-		<index>7_1</index>
-		<group>health_percent_boss</group>
-		<name>Больше 75</name>
-		<weight>30</weight>
-	</circumstance>
-	<circumstance>
-		<index>7_2</index>
-		<group>health_percent_boss</group>
-		<name>25-75</name>
-		<weight>50</weight>
-	</circumstance>
-	<circumstance>
-		<index>7_3</index>
-		<group>health_percent_boss</group>
-		<name>Меньше 25</name>
-		<weight>70</weight>
-	</circumstance>
-	<circumstance>
-		<index>8_1</index>
-		<group>health_percent_player</group>
-		<name>Больше 75</name>
-		<weight>30</weight>
-	</circumstance>
-	<circumstance>
-		<index>8_2</index>
-		<group>health_percent_player</group>
-		<name>25-75</name>
-		<weight>50</weight>
-	</circumstance>
-	<circumstance>
-		<index>8_3</index>
-		<group>health_percent_player</group>
-		<name>Меньше 25</name>
-		<weight>60</weight>
-	</circumstance>
-	<circumstance>
-		<index>9_1</index>
-		<group>camp_count</group>
-		<name>Заспавнилась первая группа ботов</name>
-		<weight>20</weight>
-	</circumstance>
-	<circumstance>
-		<index>9_2</index>
-		<group>camp_count</group>
-		<name>Заспавнилась вторая группа ботов</name>
-		<weight>30</weight>
-	</circumstance>
-	<circumstance>
-		<index>9_3</index>
-		<group>camp_count</group>
-		<name>Заспавнилась третья группа ботов</name>
-		<weight>30</weight>
-	</circumstance>
-	<circumstance>
-		<index>9_4</index>
-		<group>camp_count</group>
-		<name>Заспавнилась четвертая группа ботов</name>
-		<weight>40</weight>
-	</circumstance>
-	<circumstance>
-		<index>9_5</index>
-		<group>camp_count</group>
-		<name>Заспавнилась пятая группа ботов</name>
-		<weight>50</weight>
-	</circumstance>
-	<circumstance>
-		<index>9_6</index>
-		<group>camp_count</group>
-		<name>Заспавнилась шестая группа ботов</name>
-		<weight>60</weight>
-	</circumstance>
-	<circumstance>
-		<index>10_1</index>
-		<group>bombs_count</group>
-		<name>Не было установлено ни одной бомбы</name>
-		<weight>40</weight>
-	</circumstance>
-	<circumstance>
-		<index>10_2</index>
-		<group>bombs_count</group>
-		<name>Была установлена одна бомба</name>
-		<weight>40</weight>
-	</circumstance>
-	<circumstance>
-		<index>10_3</index>
-		<group>bombs_count</group>
-		<name>Было установлено 2 бомбы</name>
-		<weight>30</weight>
-	</circumstance>
-	<circumstance>
-		<index>10_4</index>
-		<group>bombs_count</group>
-		<name>Было установлено 3 бомбы</name>
-		<weight>60</weight>
-	</circumstance>
-	<circumstance>
-		<index>11_1</index>
-		<group>has_enought_time</group>
-		<name>В среднем остается достаточно времени для успешного исхода боя</name>
-		<weight>50</weight>
-	</circumstance>
-	<circumstance>
-		<index>11_2</index>
-		<group>has_enought_time</group>
-		<name>В среднем остается не достаточно времени для успешного исхода боя</name>
-		<weight>60</weight>
-	</circumstance>
-	<circumstance>
-		<index>12_1</index>
-		<group>destroyed_generators_count</group>
-		<name>Небыло уничтожено ни одного генератора</name>
-		<weight>40</weight>
-	</circumstance>
-	<circumstance>
-		<index>12_2</index>
-		<group>destroyed_generators_count</group>
-		<name>Был уничтожен один генератор</name>
-		<weight>40</weight>
-	</circumstance>
-	<circumstance>
-		<index>12_3</index>
-		<group>destroyed_generators_count</group>
-		<name>Было уничтожено 2 генератора</name>
-		<weight>30</weight>
-	</circumstance>
-	<circumstance>
-		<index>12_4</index>
-		<group>destroyed_generators_count</group>
-		<name>Было уничтожено 3 генератора</name>
-		<weight>50</weight>
-	</circumstance>
-	<circumstance>
-		<index>12_5</index>
-		<group>destroyed_generators_count</group>
-		<name>Было уничтожено 4 генератора</name>
-		<weight>70</weight>
-	</circumstance>
-	<circumstance>
-		<index>13_1</index>
-		<group>health_percent_boss</group>
-		<name>More than 3 percent</name>
-		<weight>70</weight>
-	</circumstance>
-	<circumstance>
-		<index>13_2</index>
-		<group>health_percent_boss</group>
-		<name>Less than 3 percent</name>
-		<weight>70</weight>
 	</circumstance>
 </root>

@@ -64,9 +64,8 @@ package net.wg.gui.lobby.questsWindow.components
       
       private function updatePositions() : void
       {
-         var _loc1_:Number = NaN;
          var _loc2_:QuestBigIconAwardItem = null;
-         _loc1_ = 0;
+         var _loc1_:Number = 0;
          var _loc3_:int = this._items.length;
          var _loc4_:int = 0;
          while(_loc4_ < _loc3_)

@@ -87,6 +87,8 @@ package net.wg.gui.battle.components.stats.playersPanel
       
       private var _disposed:Boolean = false;
       
+      private var _isChatCommandAnimationVisible:Boolean = false;
+      
       public function ChatCommandItemComponent()
       {
          super();
@@ -115,6 +117,14 @@ package net.wg.gui.battle.components.stats.playersPanel
       
       public function playCommandAnimation(param1:String) : void
       {
+         if(!this._isChatCommandAnimationVisible)
+         {
+            if(this.chatCommandAnimation.visible)
+            {
+               this.chatCommandAnimation.visible = false;
+            }
+            return;
+         }
          if(!this.chatCommandAnimation.visible)
          {
             this.chatCommandAnimation.visible = true;
@@ -148,6 +158,11 @@ package net.wg.gui.battle.components.stats.playersPanel
          this.setChatCommandState(param1,param2);
       }
       
+      public function setAnimationVisibility(param1:Boolean) : void
+      {
+         this._isChatCommandAnimationVisible = param1;
+      }
+      
       public function setChatCommandVisibility(param1:Boolean) : void
       {
          if(param1 == this._shouldBeShown)
@@ -168,6 +183,11 @@ package net.wg.gui.battle.components.stats.playersPanel
          {
             this.setChatCommandState(this._activeChatCommand,this._chatCommandFlags);
          }
+      }
+      
+      protected function updateChatCommandIcon(param1:String) : void
+      {
+         this.activeChatCommand.gotoAndStop(COMMAND_NAME_TO_FRAME_STATE[param1]);
       }
       
       private function setChatCommandState(param1:String, param2:uint) : void
@@ -199,7 +219,7 @@ package net.wg.gui.battle.components.stats.playersPanel
                _loc3_ = ATTACK_PURPLE_STATE;
             }
          }
-         this.activeChatCommand.gotoAndStop(COMMAND_NAME_TO_FRAME_STATE[_loc3_]);
+         this.updateChatCommandIcon(_loc3_);
          this.activeChatCommand.visible = _loc3_ != EMPTY_FRAME_STATE;
          var _loc4_:ChatCommandItemEvent = new ChatCommandItemEvent(ChatCommandItemEvent.ACTIVE_COMMAND_CHANGED);
          _loc4_.isActiveCommandVisible = this.activeChatCommand.visible;

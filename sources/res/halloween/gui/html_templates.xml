@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<lobby>
+		<prebattle>
+			<inviteTitle>
+				<HALLOWEEN>_(#halloween.invites.extend:invites/text/HALLOWEEN) %(sender)s</HALLOWEEN>
+			</inviteTitle>
+		</prebattle>
+		<hangar>
+			<abilityUsageCost>%(onUse)s&lt;br/&gt;%(usageCostStr)s&lt;font color=&quot;#E9E2BF&quot;&gt; &lt;b&gt;%(cost)d&lt;/b&gt;&lt;/font&gt;.</abilityUsageCost>
+		</hangar>
+	</lobby>
+	<battle>
+		<textStyle>
+			<boldTitle>&lt;font face=&quot;$TitleFont&quot; size=&quot;14&quot; color=&quot;#FFDD99&quot;&gt;%(text)s&lt;/font&gt;</boldTitle>
+			<hwBuffDescriptor>&lt;font face=&quot;$FieldFont&quot; size=&quot;14&quot; color=&quot;#FFDD99&quot;&gt;%(text)s&lt;/font&gt;</hwBuffDescriptor>
+		</textStyle>
+		<subtitle>&lt;font color=&quot;#9B9B9B&quot;&gt;_(#halloween.halloween_voiceovers:narrator): &lt;/font&gt;%(subtitle)s</subtitle>
+	</battle>
+	<battleHints>
+		<hw_empty/>
+		<hw_world1>&lt;font color=&quot;#FFFFFF&quot; size=&quot;76&quot;&gt;_(#halloween.halloween_battle:battleHint/world1)&lt;/font&gt;</hw_world1>
+		<hw_world2>&lt;font color=&quot;#000000&quot; size=&quot;76&quot;&gt;_(#halloween.halloween_battle:battleHint/world2)&lt;/font&gt;</hw_world2>
+		<hw_world3>&lt;font color=&quot;#000000&quot; size=&quot;76&quot;&gt;_(#halloween.halloween_battle:battleHint/world3)&lt;/font&gt;</hw_world3>
+		<hw_bossfight_phase_1>&lt;font color=&quot;#FFFFFF&quot; size=&quot;32&quot;&gt;_(#halloween.halloween_battle:battleHint/bossfight_phase_1)&lt;/font&gt;</hw_bossfight_phase_1>
+		<hw_bossfight_phase_2>&lt;font color=&quot;#FFFFFF&quot; size=&quot;32&quot;&gt;_(#halloween.halloween_battle:battleHint/bossfight_phase_2)&lt;/font&gt;</hw_bossfight_phase_2>
+		<hw_bossfight_phase_3>&lt;font color=&quot;#FFFFFF&quot; size=&quot;32&quot;&gt;_(#halloween.halloween_battle:battleHint/bossfight_phase_3)&lt;/font&gt;</hw_bossfight_phase_3>
+		<hw_hunter>&lt;font color=&quot;#FEFEFE&quot; size=&quot;52&quot;&gt;_(#halloween.halloween_battle:battleHint/hunter)&lt;/font&gt;</hw_hunter>
+		<hw_bomber>&lt;font color=&quot;#FEFEFE&quot; size=&quot;52&quot;&gt;_(#halloween.halloween_battle:battleHint/bomber)&lt;/font&gt;</hw_bomber>
+		<hw_turret>&lt;font color=&quot;#FEFEFE&quot; size=&quot;52&quot;&gt;_(#halloween.halloween_battle:battleHint/turret)&lt;/font&gt;</hw_turret>
+		<hw_missing_squad>&lt;font color=&quot;#FEFEFE&quot; size=&quot;52&quot;&gt;_(#halloween.halloween_battle:battleHint/missing_squad)&lt;/font&gt;</hw_missing_squad>
+		<hw_bomber_alpha>&lt;font color=&quot;#FEFEFE&quot; size=&quot;52&quot;&gt;_(#halloween.halloween_battle:battleHint/bomber_alpha)&lt;/font&gt;</hw_bomber_alpha>
+		<hw_trapper>&lt;font color=&quot;#FEFEFE&quot; size=&quot;52&quot;&gt;_(#halloween.halloween_battle:battleHint/trapper)&lt;/font&gt;</hw_trapper>
+		<hw_collectSouls>&lt;font color=&quot;#FFFFFF&quot; size=&quot;32&quot;&gt;_(#halloween.halloween_battle:battleHint/collectSouls)&lt;/font&gt;&lt;br/&gt;&lt;img src=&apos;img://halloween/gui/maps/icons/battleHints/iconSouls.png&apos; vspace=&apos;-2&apos;/&gt;</hw_collectSouls>
+		<hw_getToCollector>&lt;font color=&quot;#FFFFFF&quot; size=&quot;32&quot;&gt;_(#halloween.halloween_battle:battleHint/getToCollector)&lt;/font&gt;&lt;br/&gt;&lt;img src=&apos;img://halloween/gui/maps/icons/battleHints/iconCollectorFull.png&apos; vspace=&apos;-2&apos;/&gt;</hw_getToCollector>
+		<hw_getToCollectorPinnable>&lt;font color=&quot;#FFFFFF&quot; size=&quot;20&quot;&gt;_(#halloween.halloween_battle:battleHint/getToCollector)&lt;/font&gt;</hw_getToCollectorPinnable>
+		<hw_destroyEnemies>&lt;font color=&quot;#FFFFFF&quot; size=&quot;32&quot;&gt;_(#halloween.halloween_battle:battleHint/destroyEnemies)&lt;/font&gt;</hw_destroyEnemies>
+		<hw_defenceWave>&lt;font color=&quot;#FFFFFF&quot; size=&quot;76&quot;&gt;_(#halloween.halloween_battle:battleHint/defenceWave)&lt;/font&gt;</hw_defenceWave>
+		<hw_defenceWaveReinforcements>&lt;font color=&quot;#FEFEFE&quot; size=&quot;52&quot;&gt;_(#halloween.halloween_battle:battleHint/defenceWaveReinforcements)&lt;/font&gt;</hw_defenceWaveReinforcements>
+		<hw_defenceWaveFinished>&lt;font color=&quot;#FEFEFE&quot; size=&quot;52&quot;&gt;_(#halloween.halloween_battle:battleHint/defenceWaveFinished)&lt;/font&gt;</hw_defenceWaveFinished>
+		<hw_defenceWaveFinishedRegroupPinnable>&lt;font color=&quot;#FFFFFF&quot; size=&quot;20&quot;&gt;_(#halloween.halloween_battle:battleHint/defenceWaveFinishedRegroup)&lt;/font&gt;</hw_defenceWaveFinishedRegroupPinnable>
+		<hw_defenceLastWaveFinished>&lt;font color=&quot;#FEFEFE&quot; size=&quot;52&quot;&gt;_(#halloween.halloween_battle:battleHint/defenceLastWaveFinished)&lt;/font&gt;</hw_defenceLastWaveFinished>
+	</battleHints>
+</root>

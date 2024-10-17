@@ -106,7 +106,6 @@ class BattleRoyaleController(Notifiable, SeasonProvider, IBattleRoyaleController
         self.__performanceGroup = None
         self.__serverSettings = None
         self.__battleRoyaleSettings = None
-        self.__wasInLobby = False
         self.__equipmentCount = {}
         self.__equipmentSlots = tuple()
         self.__isBRLogicEnabled = False
@@ -132,7 +131,7 @@ class BattleRoyaleController(Notifiable, SeasonProvider, IBattleRoyaleController
         self.addNotificator(SimpleNotifier(self.__getTournamentBannerTimerDelta, self.__updateTournamentBannerState))
         self.addNotificator(SimpleNotifier(self.getTimer, self.__timerUpdate))
         self.addNotificator(PeriodicNotifier(self.getTimer, self.__timerTick))
-        self.addNotificator(TimerNotifier(self.getTimer, self.__updateEntryPointState))
+        self.addNotificator(TimerNotifier(self.getTimer, self.__timerNotifier))
         self.__spaceSwitchController.onCheckSceneChange += self.__onCheckSceneChange
 
     def fini(self):
@@ -151,9 +150,6 @@ class BattleRoyaleController(Notifiable, SeasonProvider, IBattleRoyaleController
             self.__callbackID = None
         super(BattleRoyaleController, self).fini()
         return
-
-    def wasInLobby(self):
-        return self.__wasInLobby
 
     def onLobbyInited(self, event):
         super(BattleRoyaleController, self).onLobbyInited(event)
@@ -175,7 +171,6 @@ class BattleRoyaleController(Notifiable, SeasonProvider, IBattleRoyaleController
         g_eventBus.addListener(ProfileTechniqueEvent.SELECT_BATTLE_TYPE, self.__onProfileTechniqueSelectBattlesType, scope=EVENT_BUS_SCOPE.LOBBY)
         g_eventBus.addListener(ProfileTechniqueEvent.DISPOSE, self.__onProfileTechniqueDispose, scope=EVENT_BUS_SCOPE.LOBBY)
         g_eventBus.addListener(events.HangarVehicleEvent.SELECT_VEHICLE_IN_HANGAR, self.__onSelectVehicleInHangar, scope=EVENT_BUS_SCOPE.LOBBY)
-        self.__wasInLobby = True
         nextTick(self.__eventAvailabilityUpdate)()
 
     def onPrbEntitySwitched(self):
@@ -217,7 +212,6 @@ class BattleRoyaleController(Notifiable, SeasonProvider, IBattleRoyaleController
         return
 
     def onDisconnected(self):
-        self.__wasInLobby = False
         self.__clearClientValues()
         self.__clear()
         super(BattleRoyaleController, self).onDisconnected()
@@ -634,16 +628,17 @@ class BattleRoyaleController(Notifiable, SeasonProvider, IBattleRoyaleController
 
     def __timerTick(self):
         self.onStatusTick()
+
+    def __timerNotifier(self):
+        self.onEntryPointUpdated()
         if self.isBattleRoyaleMode():
             self.onWidgetUpdate()
-
-    def __updateEntryPointState(self):
-        self.onEntryPointUpdated()
 
     def __resetTimer(self):
         self.startNotification()
         self.__timerUpdate()
         self.__timerTick()
+        self.__timerNotifier()
 
     def __onServerSettingsChanged(self, serverSettings):
         if self.__serverSettings is not None:

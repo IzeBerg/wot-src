@@ -28,7 +28,7 @@ package net.wg.gui.lobby.battleResults.components
       
       private static const FULL_ALPHA:Number = 1;
       
-      private static const CREDITS_INDEX:Number = 11;
+      private static const CREDITS_INDEX:Number = 8;
        
       
       public var vehicleStats:VehicleDetails;

@@ -208,6 +208,7 @@ package net.wg.gui.lobby.training
                this.description.validateNow();
                this.description.enabled = this._paramsVO.canChangeComment;
             }
+            this.battleTime.minimum = this._paramsVO.minBattleTime;
             this.battleTime.maximum = this._paramsVO.maxBattleTime;
             this.maps.mouseEnabled = this.maps.mouseChildren = this._paramsVO.canChangeArena;
             this.maps.alpha = !!this._paramsVO.canChangeArena ? Number(ACTIVE_MAP_ALPHA_VALUE) : Number(INACTIVE_MAP_ALPHA_VALUE);

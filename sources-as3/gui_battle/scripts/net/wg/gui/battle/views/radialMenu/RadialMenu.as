@@ -15,6 +15,7 @@ package net.wg.gui.battle.views.radialMenu
    import net.wg.infrastructure.base.meta.impl.RadialMenuMeta;
    import net.wg.infrastructure.events.ColorSchemeEvent;
    import net.wg.infrastructure.managers.IColorSchemeManager;
+   import net.wg.utils.IScheduler;
    import scaleform.gfx.MouseEventEx;
    
    public class RadialMenu extends RadialMenuMeta implements IRadialMenuMeta
@@ -59,6 +60,10 @@ package net.wg.gui.battle.views.radialMenu
       
       public var shade:Sprite = null;
       
+      protected var color:String = "white";
+      
+      protected var backgroundColor:String = "";
+      
       private var _bottomShortcutsMap:Dictionary;
       
       private var _regularShortcutsMap:Dictionary;
@@ -85,13 +90,11 @@ package net.wg.gui.battle.views.radialMenu
       
       private var _buttonsCount:int = 6;
       
-      private var _color:String = "white";
-      
-      private var _backgroundColor:String = "";
-      
       private var _hideWithAnimationState:Boolean = false;
       
       private var _colorMgr:IColorSchemeManager;
+      
+      private var _scheduler:IScheduler;
       
       private var _isColorBlind:Boolean = false;
       
@@ -101,6 +104,7 @@ package net.wg.gui.battle.views.radialMenu
          this._regularShortcutsMap = new Dictionary();
          this._mouseOffset = new Point(0,0);
          this._colorMgr = App.colorSchemeMgr;
+         this._scheduler = App.utils.scheduler;
          super();
          this._buttons = new <RadialButton>[this.negativeBtn,this.toBaseBtn,this.helpBtn,this.reloadBtn,this.attackBtn,this.positiveBtn];
          this._buttonsCount = this._buttons.length;
@@ -128,28 +132,33 @@ package net.wg.gui.battle.views.radialMenu
       {
          this._isAction = false;
          this._state = param3;
-         if(RADIAL_MENU_CONSTS.GREEN_TARGET_STATES.indexOf(param3) >= 0)
-         {
-            this._color = RADIAL_MENU_CONSTS.GREEN_STATE;
-            this._backgroundColor = param3 == RADIAL_MENU_CONSTS.TARGET_STATE_ALLY ? RADIAL_MENU_CONSTS.GREEN_STATE : RADIAL_MENU_CONSTS.GREEN_STATE_2;
-         }
-         else if(RADIAL_MENU_CONSTS.RED_TARGET_STATES.indexOf(param3) >= 0)
-         {
-            this._color = this._backgroundColor = !!this._isColorBlind ? RADIAL_MENU_CONSTS.PURPLE_STATE : RADIAL_MENU_CONSTS.RED_STATE;
-         }
-         else
-         {
-            this._color = this._backgroundColor = RADIAL_MENU_CONSTS.ORANGE_STATE;
-         }
-         this.arrowElement.arrow.gotoAndStop(this._color);
+         this.updateColor(param3);
+         this.arrowElement.arrow.gotoAndStop(this.color);
          this.circleBackground.visible = true;
-         this.circleBackground.gotoAndStop(this._backgroundColor);
-         App.utils.scheduler.cancelTask(this.internalHide);
-         App.utils.scheduler.cancelTask(this.hideButton);
+         this.circleBackground.gotoAndStop(this.backgroundColor);
+         this._scheduler.cancelTask(this.internalHide);
+         this._scheduler.cancelTask(this.hideButton);
          this.updateData(param4);
          this.internalShow(param1,param2);
          x = param5[0];
          y = param5[1];
+      }
+      
+      protected function updateColor(param1:String) : void
+      {
+         if(RADIAL_MENU_CONSTS.GREEN_TARGET_STATES.indexOf(param1) >= 0)
+         {
+            this.color = RADIAL_MENU_CONSTS.GREEN_STATE;
+            this.backgroundColor = param1 == RADIAL_MENU_CONSTS.TARGET_STATE_ALLY ? RADIAL_MENU_CONSTS.GREEN_STATE : RADIAL_MENU_CONSTS.GREEN_STATE_2;
+         }
+         else if(RADIAL_MENU_CONSTS.RED_TARGET_STATES.indexOf(param1) >= 0)
+         {
+            this.color = this.backgroundColor = !!this._isColorBlind ? RADIAL_MENU_CONSTS.PURPLE_STATE : RADIAL_MENU_CONSTS.RED_STATE;
+         }
+         else
+         {
+            this.color = this.backgroundColor = RADIAL_MENU_CONSTS.ORANGE_STATE;
+         }
       }
       
       override protected function draw() : void
@@ -172,8 +181,8 @@ package net.wg.gui.battle.views.radialMenu
       override protected function onDispose() : void
       {
          this._colorMgr.removeEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemasUpdatedHandler);
-         App.utils.scheduler.cancelTask(this.internalHide);
-         App.utils.scheduler.cancelTask(this.hideButton);
+         this._scheduler.cancelTask(this.internalHide);
+         this._scheduler.cancelTask(this.hideButton);
          this.internalHide();
          this._buttons.length = 0;
          App.utils.data.cleanupDynamicObject(this._bottomShortcutsMap);
@@ -200,6 +209,7 @@ package net.wg.gui.battle.views.radialMenu
          this._regularShortcutsMap = null;
          this._mouseOffset = null;
          this._buttons = null;
+         this._scheduler = null;
          super.onDispose();
       }
       
@@ -251,7 +261,7 @@ package net.wg.gui.battle.views.radialMenu
                _loc7_ = RADIAL_MENU_CONSTS.WHITE_STATE;
                if(!param2)
                {
-                  _loc7_ = this._color;
+                  _loc7_ = this.color;
                }
                _loc3_.setTitle(_loc4_.title,_loc7_);
                _loc3_.iconState = _loc7_;
@@ -342,7 +352,7 @@ package net.wg.gui.battle.views.radialMenu
       
       private function hideWithAnimation() : void
       {
-         App.utils.scheduler.scheduleTask(this.internalHide,EFFECT_TIME);
+         this._scheduler.scheduleTask(this.internalHide,EFFECT_TIME);
          this._hideWithAnimationState = true;
          if(App.stage)
          {
@@ -415,7 +425,7 @@ package net.wg.gui.battle.views.radialMenu
             _loc2_ = this._buttons[_loc3_];
             if(_loc2_.selected && _loc2_.buttonVisualState == RADIAL_MENU_CONSTS.NORMAL_BUTTON_STATE)
             {
-               App.utils.scheduler.scheduleTask(this.hideButton,PAUSE_BEFORE_HIDE,[_loc2_]);
+               this._scheduler.scheduleTask(this.hideButton,PAUSE_BEFORE_HIDE,[_loc2_]);
                this._isAction = true;
                onActionS(_loc2_.action);
                _loc1_ = true;

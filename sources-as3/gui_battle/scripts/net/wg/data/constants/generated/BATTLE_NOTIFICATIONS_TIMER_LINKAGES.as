@@ -65,8 +65,6 @@ package net.wg.data.constants.generated
       
       public static const STUN_ICON:String = "secondaryStunIconUI";
       
-      public static const WT_STUN_ICON:String = "secondaryWTStunIconUI";
-      
       public static const BLOCKED_ICON:String = "secondaryBlockedIconUI";
       
       public static const SMOKE_ICON:String = "secondarySmokeIconUI";
@@ -148,8 +146,6 @@ package net.wg.data.constants.generated
       public static const COMP7_MARCH_ICON:String = "Comp7MarchIconUI";
       
       public static const COMP7_AGGRESSIVE_DETECTION_ICON:String = "Comp7AggressiveDetectionIconUI";
-      
-      public static const WT_HYPERION_WARNING_ICON:String = "destroyTimerWtHyperionUI";
        
       
       public function BATTLE_NOTIFICATIONS_TIMER_LINKAGES()

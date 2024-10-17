@@ -373,14 +373,22 @@ package net.wg.gui.battle.views.damagePanel.components.modules
             }
             else if(param3 == BATTLE_ITEM_STATES.NORMAL)
             {
-               this._destroyedChassisDevices[param2] = 0;
-               this._lastBrokenChassisDevice = Values.EMPTY_STR;
-               this._destroyedChassis.length = 0;
+               _loc5_ = BATTLE_ITEM_STATES.NORMAL;
+               if(this._destroyedChassis.length <= 1)
+               {
+                  this._destroyedChassisDevices[param2] = 0;
+                  this._destroyedChassis.length = 0;
+               }
+               else if(this._destroyedChassis.length > 1)
+               {
+                  this._destroyedChassisDevices[param2] -= 1;
+                  this._destroyedChassis.length -= 1;
+                  _loc5_ = BATTLE_ITEM_STATES.DESTROYED;
+               }
                if(this._lastDestroyedChassisDevice == param2)
                {
                   this._lastDestroyedChassisDevice = Values.EMPTY_STR;
                }
-               _loc5_ = BATTLE_ITEM_STATES.NORMAL;
             }
             if(_loc5_ != Values.EMPTY_STR)
             {

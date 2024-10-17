@@ -9,41 +9,10 @@
 		</aspect>
 		<blocks>
 			<block>
-				<class>Variable</class>
-				<id>Variable_1</id>
-				<params>
-					<param>
-						isPlayerVehicleDead
-						<name>Variable Name</name>
-						<type>StringT</type>
-					</param>
-					<param>
-						BoolT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-					<param>
-						false
-						<name>External Init</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						false
-						<name>Is Const</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						false
-						<name>Initial Value</name>
-						<type>BoolT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>default</name>
-						<const>\false\</const>
-					</slot>
-				</slots>
+				<class>If</class>
+				<id>If_1</id>
+				<params/>
+				<slots/>
 			</block>
 			<block>
 				<class>MacroInput</class>
@@ -69,37 +38,42 @@
 			</block>
 			<block>
 				<class>If</class>
-				<id>If_2</id>
+				<id>If_6</id>
 				<params/>
 				<slots/>
 			</block>
 			<block>
 				<class>If</class>
-				<id>If_1</id>
+				<id>If_2</id>
 				<params/>
 				<slots/>
 			</block>
 			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_1</id>
-				<buddy>Variable_1</buddy>
-				<params>
-					<param>
-						BoolT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
+				<class>IsVehicleValid</class>
+				<id>IsVehicleValid_5</id>
+				<params/>
 				<slots/>
 			</block>
 			<block>
-				<class>FlowGate</class>
-				<id>FlowGate_1</id>
+				<class>Get Player Vehicle</class>
+				<id>Get Player Vehicle_2</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>GetVehicleHealth</class>
+				<id>GetVehicleHealth_2</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>CompareFloats</class>
+				<id>CompareFloats_2</id>
 				<params/>
 				<slots>
 					<slot>
-						<name>openAtStart</name>
-						<const>\true\</const>
+						<name>b</name>
+						<const>\1.000000\</const>
 					</slot>
 				</slots>
 			</block>
@@ -126,6 +100,84 @@
 				<slots>
 					<slot>
 						<name>required</name>
+						<const>\true\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>IsControlModeActive</class>
+				<id>IsControlModeActive_2</id>
+				<params/>
+				<slots>
+					<slot>
+						<name>control mode</name>
+						<const>\killcam\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>IsControlModeActive</class>
+				<id>IsControlModeActive_4</id>
+				<params/>
+				<slots>
+					<slot>
+						<name>control mode</name>
+						<const>\respawn\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>Or</class>
+				<id>Or_1</id>
+				<params>
+					<param>
+						6
+						<name>Input Count</name>
+						<type>IntT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>IsControlModeActive</class>
+				<id>IsControlModeActive_6</id>
+				<params/>
+				<slots>
+					<slot>
+						<name>control mode</name>
+						<const>\deathfreecam\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>IsControlModeActive</class>
+				<id>IsControlModeActive_8</id>
+				<params/>
+				<slots>
+					<slot>
+						<name>control mode</name>
+						<const>\lookAtKiller\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>IsControlModeActive</class>
+				<id>IsControlModeActive_10</id>
+				<params/>
+				<slots>
+					<slot>
+						<name>control mode</name>
+						<const>\postmortem\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>FlowGate</class>
+				<id>FlowGate_1</id>
+				<params/>
+				<slots>
+					<slot>
+						<name>openAtStart</name>
 						<const>\true\</const>
 					</slot>
 				</slots>
@@ -161,28 +213,16 @@
 				<slots/>
 			</block>
 			<block>
-				<class>If</class>
-				<id>If_5</id>
+				<class>IsVehicleValid</class>
+				<id>IsVehicleValid_2</id>
 				<params/>
 				<slots/>
 			</block>
 			<block>
-				<class>SetVariable</class>
-				<id>SetVariable_1</id>
-				<buddy>Variable_1</buddy>
-				<params>
-					<param>
-						BoolT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>value</name>
-						<const>\true\</const>
-					</slot>
-				</slots>
+				<class>If</class>
+				<id>If_5</id>
+				<params/>
+				<slots/>
 			</block>
 			<block>
 				<class>MacroOutput</class>
@@ -202,6 +242,12 @@
 				<slots/>
 			</block>
 			<block>
+				<class>IsPlayerVehicle</class>
+				<id>IsPlayerVehicle_1</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
 				<class>ShowHint</class>
 				<id>ShowHint_4</id>
 				<params>
@@ -216,18 +262,6 @@
 						<const>\false\</const>
 					</slot>
 				</slots>
-			</block>
-			<block>
-				<class>IsVehicleValid</class>
-				<id>IsVehicleValid_2</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>IsPlayerVehicle</class>
-				<id>IsPlayerVehicle_1</id>
-				<params/>
-				<slots/>
 			</block>
 			<block>
 				<class>CanShowHint</class>
@@ -348,6 +382,30 @@
 		</blocks>
 		<connections>
 			<connection>
+				<from>If_6</from>
+				<input>input</input>
+				<to>If_1</to>
+				<output>true</output>
+			</connection>
+			<connection>
+				<from>Or_1</from>
+				<input>value</input>
+				<to>If_1</to>
+				<output>res</output>
+			</connection>
+			<connection>
+				<from>If_2</from>
+				<input>input</input>
+				<to>If_6</to>
+				<output>true</output>
+			</connection>
+			<connection>
+				<from>IsVehicleValid_5</from>
+				<input>value</input>
+				<to>If_6</to>
+				<output>res</output>
+			</connection>
+			<connection>
 				<from>MacroInput_2</from>
 				<input>input</input>
 				<to>If_2</to>
@@ -360,16 +418,58 @@
 				<output>Show_only_if_vehicle_is_alive</output>
 			</connection>
 			<connection>
-				<from>If_2</from>
-				<input>input</input>
-				<to>If_1</to>
-				<output>true</output>
+				<from>Get Player Vehicle_2</from>
+				<input>vehicle</input>
+				<to>IsVehicleValid_5</to>
+				<output>vehicle</output>
 			</connection>
 			<connection>
-				<from>GetVariable_1</from>
-				<input>value</input>
-				<to>If_1</to>
-				<output>value</output>
+				<from>Get Player Vehicle_2</from>
+				<input>vehicle</input>
+				<to>GetVehicleHealth_2</to>
+				<output>vehicle</output>
+			</connection>
+			<connection>
+				<from>GetVehicleHealth_2</from>
+				<input>a</input>
+				<to>CompareFloats_2</to>
+				<output>health</output>
+			</connection>
+			<connection>
+				<from>CompareFloats_2</from>
+				<input>i1</input>
+				<to>Or_1</to>
+				<output>less</output>
+			</connection>
+			<connection>
+				<from>IsControlModeActive_2</from>
+				<input>i2</input>
+				<to>Or_1</to>
+				<output>active</output>
+			</connection>
+			<connection>
+				<from>IsControlModeActive_4</from>
+				<input>i3</input>
+				<to>Or_1</to>
+				<output>active</output>
+			</connection>
+			<connection>
+				<from>IsControlModeActive_6</from>
+				<input>i4</input>
+				<to>Or_1</to>
+				<output>active</output>
+			</connection>
+			<connection>
+				<from>IsControlModeActive_8</from>
+				<input>i5</input>
+				<to>Or_1</to>
+				<output>active</output>
+			</connection>
+			<connection>
+				<from>IsControlModeActive_10</from>
+				<input>i6</input>
+				<to>Or_1</to>
+				<output>active</output>
 			</connection>
 			<connection>
 				<from>If_2</from>
@@ -414,6 +514,12 @@
 				<output>result</output>
 			</connection>
 			<connection>
+				<from>OnAnyVehicleDestroyed_3</from>
+				<input>vehicle</input>
+				<to>IsVehicleValid_2</to>
+				<output>target</output>
+			</connection>
+			<connection>
 				<from>If_4</from>
 				<input>input</input>
 				<to>If_5</to>
@@ -426,16 +532,16 @@
 				<output>res</output>
 			</connection>
 			<connection>
-				<from>If_5</from>
-				<input>input</input>
-				<to>SetVariable_1</to>
-				<output>true</output>
-			</connection>
-			<connection>
 				<from>ShowHint_4</from>
 				<input>ShowHintOutput</input>
 				<to>MacroOutput_1</to>
 				<output>out</output>
+			</connection>
+			<connection>
+				<from>OnAnyVehicleDestroyed_3</from>
+				<input>vehicle</input>
+				<to>IsPlayerVehicle_1</to>
+				<output>target</output>
 			</connection>
 			<connection>
 				<from>FlowGate_1</from>
@@ -450,28 +556,16 @@
 				<output>HintID</output>
 			</connection>
 			<connection>
-				<from>OnAnyVehicleDestroyed_3</from>
-				<input>vehicle</input>
-				<to>IsVehicleValid_2</to>
-				<output>target</output>
-			</connection>
-			<connection>
-				<from>OnAnyVehicleDestroyed_3</from>
-				<input>vehicle</input>
-				<to>IsPlayerVehicle_1</to>
-				<output>target</output>
-			</connection>
-			<connection>
 				<from>MacroInput_1</from>
 				<input>hintId</input>
 				<to>CanShowHint_1</to>
 				<output>HintID</output>
 			</connection>
 			<connection>
-				<from>SetVariable_1</from>
+				<from>If_5</from>
 				<input>input</input>
 				<to>If_3</to>
-				<output>out</output>
+				<output>true</output>
 			</connection>
 			<connection>
 				<from>MacroInput_5</from>

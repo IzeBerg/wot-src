@@ -20,7 +20,7 @@ msgid "entryPoint/chapterDateText"
 msgstr "Chapter %(chapter)s, %(date)s"
 
 msgid "entryPoint/chapterDoneText"
-msgstr "Completed"
+msgstr "Chapter %(chapter) completed"
 
 msgid "entryPoint/chapterStageText"
 msgstr "Chapter %(chapter)s, Stage %(stage)s"
@@ -42,13 +42,22 @@ msgid "entryPoint/finalNoDiscountText/short"
 msgstr "%(vehicleLabel) %(name)%(icon)"
 
 msgid "entryPoint/finalSaleText"
-msgstr "Purchase available for: %(time)"
+msgstr "Purchasing is available for %(time)"
+
+msgid "entryPoint/postProgression/finalDiscountText"
+msgstr "Purchase the %(name) style with a discount of %(discount)%(icon)"
+
+msgid "entryPoint/postProgression/finalNoDiscountText"
+msgstr "Purchase the %(name) style"
 
 msgid "entryPoint/separatorText"
 msgstr "OR"
 
 msgid "entryPoint/stageText"
 msgstr "Stage %(stage)"
+
+msgid "entryPoint/styleName"
+msgstr "Tiger Claw"
 
 msgid "entryPoint/taskDoneText"
 msgstr "Mission completed"
@@ -66,7 +75,7 @@ msgid "entryPoint/time/period/minute"
 msgstr "{min} min"
 
 msgid "entryPoint/title"
-msgstr "ROLLING THUNDER"
+msgstr "HIDDEN TIGER"
 
 msgid "entryPoint/untilEndText"
 msgstr "%(time)"
@@ -75,7 +84,7 @@ msgid "entryPoint/untilStartText"
 msgstr "Starts in: %(time)"
 
 msgid "entryPoint/vehicleName"
-msgstr "Grom"
+msgstr "WZ-114"
 
 msgid "reward/confirm"
 msgstr "View in Garage"
@@ -87,10 +96,10 @@ msgid "reward/goToVehicleBtn"
 msgstr "View in Garage"
 
 msgid "reward/nameStyle"
-msgstr "?empty?"
+msgstr "Tiger Claw"
 
 msgid "reward/nameVehicle"
-msgstr "%(level)s %(type)s %(name)s"
+msgstr "%(level)s %(type)s %(name)s."
 
 msgid "reward/rest"
 msgstr "And %(count)s more"
@@ -102,19 +111,19 @@ msgid "reward/stage"
 msgstr "CHAPTER %(stage)s: %(text)s"
 
 msgid "reward/stageAllComplete"
-msgstr "REWARDS RECEIVED FOR ALL STAGES"
+msgstr "REWARDS FOR ALL STAGES RECEIVED."
 
 msgid "reward/stageCompleteLast"
-msgstr "YOU HAVE COMPLETED ALL STAGES"
+msgstr "YOU HAVE COMPLETED THE LAST STAGE."
 
 msgid "reward/stageNotAllComplete"
-msgstr "REWARDS RECEIVED FOR UNCOMPLETED STAGES"
+msgstr "REWARDS FOR THE STAGES YOU HAVE NOT COMPLETED."
 
 msgid "reward/stageStyle"
-msgstr "?empty?"
+msgstr "TIGER LEAP"
 
 msgid "reward/styleTitle"
-msgstr "?empty?"
+msgstr "STYLE RECEIVED!"
 
 msgid "reward/title"
 msgstr "Renegade Challenge"
@@ -125,26 +134,21 @@ msgstr "VEHICLE RECEIVED!"
 msgid "reward/viewRewardsBtn"
 msgstr "View Rewards"
 
-msgid "rewardTooltip/tankmen/body"
-msgstr ""
-"The Grom comes with a crew. All its crew members have enough XP to train one"
-" perk."
-
 msgid "rewardTooltip/tankmen/header"
-msgstr "Full crew"
+msgstr "Full crew with the Brothers in Arms perk trained to 100%"
 
 msgid "rewardTooltip/title"
 msgstr "Rewards:"
 
 msgid "vehiclePreview/buyingPanel/buyBtn/label/buy"
-msgstr "To purchase"
+msgstr "To Vehicle Purchase"
 
 msgid "vehiclePreview/buyingPanel/buyBtn/tooltip/active/body"
 msgstr "Click to purchase the item."
 
 msgid "vehiclePreview/buyingPanel/buyBtn/tooltip/inactive/body"
 msgstr ""
-"Purchase available after the start of the %(event_name)s event.\n"
+"The vehicle will be available for purchase after the start of %(event_name)s.\n"
 "%(addInfo)s"
 
 msgid "vehiclePreview/buyingPanel/buyBtn/tooltip/inactive/header"
@@ -167,26 +171,25 @@ msgstr ""
 "%(addInfo)s"
 
 msgid "vehiclePreview/title/tooltip/body/marathon/announce"
-msgstr "The event will start on %(marathonStartDate)s."
+msgstr "The event starts on %(marathonStartDate)s."
 
 msgid "vehiclePreview/title/tooltip/body/marathon/inprogress"
 msgstr ""
-"By purchasing the Tier&nbsp;VIII Premium Polish Grom tank destroyer, you "
-"also receive the rewards for the event Stages that have not yet been "
-"completed."
+"By purchasing the Tier&nbsp;IX Premium Chinese WZ-114 heavy tank, you also "
+"receive the rewards for the event Stages that have not yet been completed."
 
 msgid "vehiclePreview/title/tooltip/header"
 msgstr "%(event_name)s"
 
 msgid "vehiclePreview/title/tooltip/info/body/announce"
 msgstr ""
-"The vehicle and accompanying rewards will be available as part of the "
-"%(event_name)s event."
+"The vehicle and related rewards will be available for purchase during "
+"%(event_name)s."
 
 msgid "vehiclePreview/title/tooltip/info/body/progress"
 msgstr ""
-"The vehicle and accompanying rewards will be available as part of the "
-"%(event_name)s event %(addInfo)s"
+"The vehicle and related rewards are available for purchase during "
+"%(event_name)s%(addInfo)s"
 
 msgid "vehiclePreview/title/tooltip/info/body/progress/withDiscount"
 msgstr ""

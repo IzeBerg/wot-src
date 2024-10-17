@@ -562,6 +562,43 @@
 			</block>
 			<block>
 				<class>Variable</class>
+				<id>Variable_49</id>
+				<params>
+					<param>
+						abilityObtained
+						<name>Variable Name</name>
+						<type>StringT</type>
+					</param>
+					<param>
+						BoolT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+					<param>
+						false
+						<name>External Init</name>
+						<type>BoolT</type>
+					</param>
+					<param>
+						false
+						<name>Is Const</name>
+						<type>BoolT</type>
+					</param>
+					<param>
+						false
+						<name>Initial Value</name>
+						<type>BoolT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>default</name>
+						<const>\false\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>Variable</class>
 				<id>Variable_8</id>
 				<params>
 					<param>
@@ -1055,12 +1092,7 @@
 						<type>StringT</type>
 					</param>
 				</params>
-				<slots>
-					<slot>
-						<name>weights</name>
-						<const>\MS41MDAwMDA= MS4yNTAwMDA= MS4wMDAwMDA=\</const>
-					</slot>
-				</slots>
+				<slots/>
 			</block>
 			<block>
 				<class>Timer</class>
@@ -1142,6 +1174,58 @@
 				</slots>
 			</block>
 			<block>
+				<class>CreateArray</class>
+				<id>CreateArray_36</id>
+				<params>
+					<param>
+						FloatArrayT
+						<name>Array Type</name>
+						<type>TypeT</type>
+					</param>
+					<param>
+						3
+						<name>Input Count</name>
+						<type>IntT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>i0</name>
+						<const>\1.500000\</const>
+					</slot>
+					<slot>
+						<name>i1</name>
+						<const>\1.250000\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>Select</class>
+				<id>Select_11</id>
+				<params>
+					<param>
+						FloatT
+						<name>Slot Type</name>
+						<type>TypeT</type>
+					</param>
+					<param>
+						2
+						<name>Input Count</name>
+						<type>IntT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>i0</name>
+						<const>\1.000000\</const>
+					</slot>
+					<slot>
+						<name>i1</name>
+						<const>\0.000000\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
 				<class>Macro</class>
 				<id>Macro_186</id>
 				<params>
@@ -1193,6 +1277,37 @@
 				</slots>
 			</block>
 			<block>
+				<class>If</class>
+				<id>If_43</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>If</class>
+				<id>If_81</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>If</class>
+				<id>If_82</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>GetVariable</class>
+				<id>GetVariable_209</id>
+				<buddy>Variable_49</buddy>
+				<params>
+					<param>
+						BoolT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
 				<class>Macro</class>
 				<id>Macro_189</id>
 				<params>
@@ -1208,12 +1323,6 @@
 						<const>\vo_sm_char08_m05_stg01_13\</const>
 					</slot>
 				</slots>
-			</block>
-			<block>
-				<class>If</class>
-				<id>If_43</id>
-				<params/>
-				<slots/>
 			</block>
 			<block>
 				<class>Macro</class>
@@ -1247,6 +1356,34 @@
 					</param>
 				</params>
 				<slots/>
+			</block>
+			<block>
+				<class>Macro</class>
+				<id>Macro_263</id>
+				<params>
+					<param>
+						VehiclesDestroyed
+						<name>Macro Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>Labels</name>
+						<const>\QnVua2VyMl90dXJyZXQ=\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>LogicGate</class>
+				<id>LogicGate_4</id>
+				<params/>
+				<slots>
+					<slot>
+						<name>valueAtStart</name>
+						<const>\false\</const>
+					</slot>
+				</slots>
 			</block>
 			<block>
 				<class>Macro</class>
@@ -2111,6 +2248,18 @@
 				<class>GetVehicleLabel</class>
 				<id>GetVehicleLabel_3</id>
 				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>ArenaPeriodStartEvent</class>
+				<id>ArenaPeriodStartEvent_1</id>
+				<params>
+					<param>
+						Battle
+						<name>Period</name>
+						<type>EArenaPeriodT</type>
+					</param>
+				</params>
 				<slots/>
 			</block>
 			<block>
@@ -3326,18 +3475,6 @@
 				<slots/>
 			</block>
 			<block>
-				<class>ArenaPeriodStartEvent</class>
-				<id>ArenaPeriodStartEvent_1</id>
-				<params>
-					<param>
-						Battle
-						<name>Period</name>
-						<type>EArenaPeriodT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
 				<class>GetVariable</class>
 				<id>GetVariable_201</id>
 				<buddy>Variable_1</buddy>
@@ -3450,6 +3587,18 @@
 				</slots>
 			</block>
 			<block>
+				<class>ListenLocalEvent</class>
+				<id>ListenLocalEvent_7</id>
+				<params>
+					<param>
+						startAbilityVOs
+						<name>Event Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
 				<class>Timer</class>
 				<id>Timer_56</id>
 				<params>
@@ -3477,23 +3626,6 @@
 					</param>
 				</params>
 				<slots/>
-			</block>
-			<block>
-				<class>Macro</class>
-				<id>Macro_240</id>
-				<params>
-					<param>
-						VehiclesDestroyed
-						<name>Macro Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>Labels</name>
-						<const>\QnVua2VyMl90dXJyZXQ=\</const>
-					</slot>
-				</slots>
 			</block>
 			<block>
 				<class>FlowGate</class>
@@ -4398,21 +4530,16 @@
 				</slots>
 			</block>
 			<block>
-				<class>Macro</class>
-				<id>Macro_253</id>
+				<class>ListenLocalEvent</class>
+				<id>ListenLocalEvent_6</id>
 				<params>
 					<param>
-						VehiclesDestroyed
-						<name>Macro Name</name>
+						startAbilityHint
+						<name>Event Name</name>
 						<type>StringT</type>
 					</param>
 				</params>
-				<slots>
-					<slot>
-						<name>Labels</name>
-						<const>\QnVua2VyMl90dXJyZXQ=\</const>
-					</slot>
-				</slots>
+				<slots/>
 			</block>
 			<block>
 				<class>Timer</class>
@@ -4427,7 +4554,7 @@
 				<slots>
 					<slot>
 						<name>time0</name>
-						<const>\15.000000\</const>
+						<const>\3.000000\</const>
 					</slot>
 				</slots>
 			</block>
@@ -5234,6 +5361,23 @@
 			</block>
 			<block>
 				<class>Macro</class>
+				<id>Macro_144</id>
+				<params>
+					<param>
+						PlayVO
+						<name>Macro Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>voicover</name>
+						<const>\vo_sm_char04_m05_stg43_03\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>Macro</class>
 				<id>Macro_260</id>
 				<params>
 					<param>
@@ -5323,6 +5467,23 @@
 					<slot>
 						<name>voicover</name>
 						<const>\vo_sm_char04_m05_stg44_02\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>Macro</class>
+				<id>Macro_147</id>
+				<params>
+					<param>
+						PlayVO
+						<name>Macro Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>voicover</name>
+						<const>\vo_sm_char05_m05_stg44_03\</const>
 					</slot>
 				</slots>
 			</block>
@@ -5778,6 +5939,23 @@
 				</slots>
 			</block>
 			<block>
+				<class>Macro</class>
+				<id>Macro_78</id>
+				<params>
+					<param>
+						PlayVO
+						<name>Macro Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>voicover</name>
+						<const>\vo_sm_char03_m05_stg12_01\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
 				<class>OnPlayerVehicleAreaTrigger</class>
 				<id>OnPlayerVehicleAreaTrigger_2</id>
 				<params/>
@@ -5795,6 +5973,19 @@
 				<params>
 					<param>
 						AreaTriggerT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>GetVariable</class>
+				<id>GetVariable_97</id>
+				<buddy>Variable_1</buddy>
+				<params>
+					<param>
+						VehicleT
 						<name>Variable Type</name>
 						<type>TypeT</type>
 					</param>
@@ -5939,6 +6130,23 @@
 				</slots>
 			</block>
 			<block>
+				<class>Macro</class>
+				<id>Macro_82</id>
+				<params>
+					<param>
+						PlayVO
+						<name>Macro Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>voicover</name>
+						<const>\vo_sm_char08_m05_stg15_01\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
 				<class>TriggerExternal</class>
 				<id>TriggerExternal_11</id>
 				<params/>
@@ -5962,7 +6170,102 @@
 				<slots>
 					<slot>
 						<name>time0</name>
-						<const>\1.000000\</const>
+						<const>\1.500000\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>Timer</class>
+				<id>Timer_29</id>
+				<params>
+					<param>
+						1
+						<name>Timer Count</name>
+						<type>IntT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>time0</name>
+						<const>\0.500000\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>SetVariable</class>
+				<id>SetVariable_43</id>
+				<buddy>Variable_49</buddy>
+				<params>
+					<param>
+						BoolT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>value</name>
+						<const>\true\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>SendLocalEvent</class>
+				<id>SendLocalEvent_9</id>
+				<buddy>ListenLocalEvent_7</buddy>
+				<params>
+					<param>
+						ListenLocalEvent_7
+						<name>Event Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>SendLocalEvent</class>
+				<id>SendLocalEvent_8</id>
+				<buddy>ListenLocalEvent_6</buddy>
+				<params>
+					<param>
+						ListenLocalEvent_6
+						<name>Event Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>Macro</class>
+				<id>Macro_84</id>
+				<params>
+					<param>
+						PlayVO
+						<name>Macro Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>voicover</name>
+						<const>\vo_sm_char03_m05_stg18_01\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>Timer</class>
+				<id>Timer_65</id>
+				<params>
+					<param>
+						1
+						<name>Timer Count</name>
+						<type>IntT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>time0</name>
+						<const>\0.500000\</const>
 					</slot>
 				</slots>
 			</block>
@@ -5980,76 +6283,8 @@
 				<slots/>
 			</block>
 			<block>
-				<class>Macro</class>
-				<id>Macro_76</id>
-				<params>
-					<param>
-						AnyVehicleDetected
-						<name>Macro Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>Labels</name>
-						<const>\QnVua2VyMl90dXJyZXQ=\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>Counter</class>
-				<id>Counter_17</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>count</name>
-						<const>\2\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>DoOnce</class>
-				<id>DoOnce_5</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>Timer</class>
-				<id>Timer_26</id>
-				<params>
-					<param>
-						1
-						<name>Timer Count</name>
-						<type>IntT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>time0</name>
-						<const>\0.500000\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>Macro</class>
-				<id>Macro_78</id>
-				<params>
-					<param>
-						PlayVO
-						<name>Macro Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>voicover</name>
-						<const>\vo_sm_char03_m05_stg12_01\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
 				<class>GetVariable</class>
-				<id>GetVariable_97</id>
+				<id>GetVariable_100</id>
 				<buddy>Variable_1</buddy>
 				<params>
 					<param>
@@ -6059,63 +6294,6 @@
 					</param>
 				</params>
 				<slots/>
-			</block>
-			<block>
-				<class>Macro</class>
-				<id>Macro_255</id>
-				<params>
-					<param>
-						AnyVehicleDamaged
-						<name>Macro Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>Labels</name>
-						<const>\QnVua2VyMl90dXJyZXQ=\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>DoOnce</class>
-				<id>DoOnce_23</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>Timer</class>
-				<id>Timer_63</id>
-				<params>
-					<param>
-						1
-						<name>Timer Count</name>
-						<type>IntT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>time0</name>
-						<const>\0.500000\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>Macro</class>
-				<id>Macro_82</id>
-				<params>
-					<param>
-						PlayVO
-						<name>Macro Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>voicover</name>
-						<const>\vo_sm_char08_m05_stg15_01\</const>
-					</slot>
-				</slots>
 			</block>
 			<block>
 				<class>Macro</class>
@@ -6241,40 +6419,6 @@
 				</slots>
 			</block>
 			<block>
-				<class>Timer</class>
-				<id>Timer_29</id>
-				<params>
-					<param>
-						1
-						<name>Timer Count</name>
-						<type>IntT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>time0</name>
-						<const>\0.500000\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>Macro</class>
-				<id>Macro_84</id>
-				<params>
-					<param>
-						PlayVO
-						<name>Macro Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>voicover</name>
-						<const>\vo_sm_char03_m05_stg18_01\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
 				<class>GetVariable</class>
 				<id>GetVariable_160</id>
 				<buddy>VariableUDO_1</buddy>
@@ -6291,19 +6435,6 @@
 				<class>GetVariable</class>
 				<id>GetVariable_101</id>
 				<buddy>Variable_25</buddy>
-				<params>
-					<param>
-						VehicleT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_100</id>
-				<buddy>Variable_1</buddy>
 				<params>
 					<param>
 						VehicleT
@@ -6575,6 +6706,19 @@
 				</slots>
 			</block>
 			<block>
+				<class>SendLocalEvent</class>
+				<id>SendLocalEvent_1</id>
+				<buddy>ListenLocalEvent_1</buddy>
+				<params>
+					<param>
+						ListenLocalEvent_1
+						<name>Event Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
 				<class>FlowGate</class>
 				<id>FlowGate_5</id>
 				<params/>
@@ -6773,6 +6917,17 @@
 					<slot>
 						<name>openAtStart</name>
 						<const>\true\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>TriggerExternal</class>
+				<id>TriggerExternal_8</id>
+				<params/>
+				<slots>
+					<slot>
+						<name>eventID</name>
+						<const>\DDAY_stopAA_flak_03\</const>
 					</slot>
 				</slots>
 			</block>
@@ -7735,19 +7890,6 @@
 				<slots/>
 			</block>
 			<block>
-				<class>SendLocalEvent</class>
-				<id>SendLocalEvent_1</id>
-				<buddy>ListenLocalEvent_1</buddy>
-				<params>
-					<param>
-						ListenLocalEvent_1
-						<name>Event Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
 				<class>Constant</class>
 				<id>Constant_3</id>
 				<params>
@@ -7761,51 +7903,6 @@
 					<slot>
 						<name>value</name>
 						<const>\false\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>Macro</class>
-				<id>Macro_144</id>
-				<params>
-					<param>
-						PlayVO
-						<name>Macro Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>voicover</name>
-						<const>\vo_sm_char04_m05_stg43_03\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>TriggerExternal</class>
-				<id>TriggerExternal_8</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>eventID</name>
-						<const>\DDAY_stopAA_flak_03\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>Macro</class>
-				<id>Macro_147</id>
-				<params>
-					<param>
-						PlayVO
-						<name>Macro Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>voicover</name>
-						<const>\vo_sm_char05_m05_stg44_03\</const>
 					</slot>
 				</slots>
 			</block>
@@ -9835,7 +9932,7 @@
 			</block>
 			<block>
 				<class>Macro</class>
-				<id>Macro_263</id>
+				<id>Macro_264</id>
 				<params>
 					<param>
 						OnPlayerVehicleShoot
@@ -10498,6 +10595,18 @@
 				<output>Finished</output>
 			</connection>
 			<connection>
+				<from>If_81</from>
+				<input>input</input>
+				<to>Sequence_49</to>
+				<output>true</output>
+			</connection>
+			<connection>
+				<from>If_82</from>
+				<input>input</input>
+				<to>Sequence_49</to>
+				<output>true</output>
+			</connection>
+			<connection>
 				<from>Choice_5</from>
 				<input>PlayVO</input>
 				<to>Macro_176</to>
@@ -10612,6 +10721,12 @@
 				<output>o0</output>
 			</connection>
 			<connection>
+				<from>CreateArray_36</from>
+				<input>weights</input>
+				<to>Macro_172</to>
+				<output>res</output>
+			</connection>
+			<connection>
 				<from>ArenaPeriodStartEvent_4</from>
 				<input>windup</input>
 				<to>Timer_21</to>
@@ -10654,6 +10769,18 @@
 				<output>o1</output>
 			</connection>
 			<connection>
+				<from>Select_11</from>
+				<input>i2</input>
+				<to>CreateArray_36</to>
+				<output>res</output>
+			</connection>
+			<connection>
+				<from>LogicGate_4</from>
+				<input>index</input>
+				<to>Select_11</to>
+				<output>value</output>
+			</connection>
+			<connection>
 				<from>Choice_10</from>
 				<input>PlayVO</input>
 				<to>Macro_186</to>
@@ -10672,12 +10799,6 @@
 				<output>o4</output>
 			</connection>
 			<connection>
-				<from>Choice_11</from>
-				<input>PlayVO</input>
-				<to>Macro_189</to>
-				<output>o0</output>
-			</connection>
-			<connection>
 				<from>Macro_167</from>
 				<input>input</input>
 				<to>If_43</to>
@@ -10690,22 +10811,58 @@
 				<output>equal</output>
 			</connection>
 			<connection>
+				<from>If_43</from>
+				<input>input</input>
+				<to>If_81</to>
+				<output>true</output>
+			</connection>
+			<connection>
+				<from>LogicGate_4</from>
+				<input>value</input>
+				<to>If_81</to>
+				<output>value</output>
+			</connection>
+			<connection>
+				<from>If_81</from>
+				<input>input</input>
+				<to>If_82</to>
+				<output>false</output>
+			</connection>
+			<connection>
+				<from>GetVariable_209</from>
+				<input>value</input>
+				<to>If_82</to>
+				<output>value</output>
+			</connection>
+			<connection>
+				<from>Choice_11</from>
+				<input>PlayVO</input>
+				<to>Macro_189</to>
+				<output>o0</output>
+			</connection>
+			<connection>
 				<from>Choice_13</from>
 				<input>repeat</input>
 				<to>Macro_167</to>
 				<output>o2</output>
 			</connection>
 			<connection>
-				<from>If_43</from>
+				<from>If_82</from>
 				<input>input</input>
 				<to>Choice_11</to>
-				<output>true</output>
+				<output>false</output>
 			</connection>
 			<connection>
 				<from>Macro_167</from>
 				<input>index</input>
 				<to>Choice_11</to>
 				<output>index</output>
+			</connection>
+			<connection>
+				<from>Macro_263</from>
+				<input>true</input>
+				<to>LogicGate_4</to>
+				<output>allDestroyed</output>
 			</connection>
 			<connection>
 				<from>Choice_11</from>
@@ -11782,10 +11939,10 @@
 				<output>o0</output>
 			</connection>
 			<connection>
-				<from>Macro_240</from>
+				<from>ListenLocalEvent_7</from>
 				<input>input</input>
 				<to>Sequence_91</to>
-				<output>allDestroyed</output>
+				<output>exec</output>
 			</connection>
 			<connection>
 				<from>Timer_56</from>
@@ -12316,10 +12473,10 @@
 				<output>damage</output>
 			</connection>
 			<connection>
-				<from>Macro_253</from>
+				<from>ListenLocalEvent_6</from>
 				<input>windup</input>
 				<to>Timer_58</to>
-				<output>allDestroyed</output>
+				<output>exec</output>
 			</connection>
 			<connection>
 				<from>Timer_58</from>
@@ -12730,6 +12887,18 @@
 				<output>value</output>
 			</connection>
 			<connection>
+				<from>Macro_143</from>
+				<input>PlayVO</input>
+				<to>Macro_144</to>
+				<output>Finished</output>
+			</connection>
+			<connection>
+				<from>GetVariable_145</from>
+				<input>vehicle</input>
+				<to>Macro_144</to>
+				<output>value</output>
+			</connection>
+			<connection>
 				<from>Choice_8</from>
 				<input>PlayVO</input>
 				<to>Macro_145</to>
@@ -12751,6 +12920,18 @@
 				<from>GetVariable_147</from>
 				<input>vehicle</input>
 				<to>Macro_146</to>
+				<output>value</output>
+			</connection>
+			<connection>
+				<from>Macro_146</from>
+				<input>PlayVO</input>
+				<to>Macro_147</to>
+				<output>Finished</output>
+			</connection>
+			<connection>
+				<from>GetVariable_149</from>
+				<input>vehicle</input>
+				<to>Macro_147</to>
 				<output>value</output>
 			</connection>
 			<connection>
@@ -12976,6 +13157,12 @@
 				<output>onEnter</output>
 			</connection>
 			<connection>
+				<from>GetVariable_97</from>
+				<input>vehicle</input>
+				<to>Macro_78</to>
+				<output>value</output>
+			</connection>
+			<connection>
 				<from>GetVariable_205</from>
 				<input>trigger</input>
 				<to>OnPlayerVehicleAreaTrigger_2</to>
@@ -13030,64 +13217,58 @@
 				<output>value</output>
 			</connection>
 			<connection>
+				<from>Timer_62</from>
+				<input>PlayVO</input>
+				<to>Macro_82</to>
+				<output>event0</output>
+			</connection>
+			<connection>
 				<from>Macro_81</from>
 				<input>windup</input>
 				<to>Timer_62</to>
 				<output>Finished</output>
 			</connection>
 			<connection>
-				<from>Timer_26</from>
-				<input>input</input>
-				<to>Counter_17</to>
-				<output>event0</output>
-			</connection>
-			<connection>
-				<from>Timer_62</from>
-				<input>input</input>
-				<to>Counter_17</to>
-				<output>event0</output>
-			</connection>
-			<connection>
-				<from>Macro_76</from>
-				<input>input</input>
-				<to>DoOnce_5</to>
-				<output>allDestroyed</output>
-			</connection>
-			<connection>
-				<from>DoOnce_5</from>
+				<from>SetVariable_43</from>
 				<input>windup</input>
-				<to>Timer_26</to>
-				<output>completed</output>
+				<to>Timer_29</to>
+				<output>out</output>
 			</connection>
 			<connection>
-				<from>Counter_17</from>
+				<from>Macro_82</from>
+				<input>input</input>
+				<to>SetVariable_43</to>
+				<output>Finished</output>
+			</connection>
+			<connection>
+				<from>SendLocalEvent_8</from>
+				<input>input</input>
+				<to>SendLocalEvent_9</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>Timer_65</from>
+				<input>input</input>
+				<to>SendLocalEvent_8</to>
+				<output>event0</output>
+			</connection>
+			<connection>
+				<from>Timer_29</from>
 				<input>PlayVO</input>
-				<to>Macro_78</to>
-				<output>completed</output>
+				<to>Macro_84</to>
+				<output>event0</output>
 			</connection>
 			<connection>
-				<from>GetVariable_97</from>
+				<from>GetVariable_100</from>
 				<input>vehicle</input>
-				<to>Macro_78</to>
+				<to>Macro_84</to>
 				<output>value</output>
 			</connection>
 			<connection>
-				<from>Macro_255</from>
-				<input>input</input>
-				<to>DoOnce_23</to>
-				<output>allDestroyed</output>
-			</connection>
-			<connection>
-				<from>DoOnce_23</from>
+				<from>Macro_84</from>
 				<input>windup</input>
-				<to>Timer_63</to>
-				<output>completed</output>
-			</connection>
-			<connection>
-				<from>Timer_63</from>
-				<input>PlayVO</input>
-				<to>Macro_82</to>
-				<output>event0</output>
+				<to>Timer_65</to>
+				<output>Finished</output>
 			</connection>
 			<connection>
 				<from>Macro_127</from>
@@ -13147,24 +13328,6 @@
 				<from>GetVariable_160</from>
 				<input>trigger</input>
 				<to>OnPlayerVehicleAreaTrigger_1</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>Macro_83</from>
-				<input>windup</input>
-				<to>Timer_29</to>
-				<output>Finished</output>
-			</connection>
-			<connection>
-				<from>Timer_29</from>
-				<input>PlayVO</input>
-				<to>Macro_84</to>
-				<output>event0</output>
-			</connection>
-			<connection>
-				<from>GetVariable_100</from>
-				<input>vehicle</input>
-				<to>Macro_84</to>
 				<output>value</output>
 			</connection>
 			<connection>
@@ -13292,6 +13455,12 @@
 				<input>windup</input>
 				<to>Timer_45</to>
 				<output>Finished</output>
+			</connection>
+			<connection>
+				<from>DoOnce_12</from>
+				<input>input</input>
+				<to>SendLocalEvent_1</to>
+				<output>completed</output>
 			</connection>
 			<connection>
 				<from>Timer_45</from>
@@ -14011,36 +14180,6 @@
 				<from>GetVariable_175</from>
 				<input>b</input>
 				<to>CompareVehicles_4</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>DoOnce_12</from>
-				<input>input</input>
-				<to>SendLocalEvent_1</to>
-				<output>completed</output>
-			</connection>
-			<connection>
-				<from>Macro_143</from>
-				<input>PlayVO</input>
-				<to>Macro_144</to>
-				<output>Finished</output>
-			</connection>
-			<connection>
-				<from>GetVariable_145</from>
-				<input>vehicle</input>
-				<to>Macro_144</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>Macro_146</from>
-				<input>PlayVO</input>
-				<to>Macro_147</to>
-				<output>Finished</output>
-			</connection>
-			<connection>
-				<from>GetVariable_149</from>
-				<input>vehicle</input>
-				<to>Macro_147</to>
 				<output>value</output>
 			</connection>
 			<connection>
@@ -14932,7 +15071,7 @@
 				<output>onEquipmentUsed</output>
 			</connection>
 			<connection>
-				<from>Macro_263</from>
+				<from>Macro_264</from>
 				<input>input</input>
 				<to>If_53</to>
 				<output>onShoot</output>

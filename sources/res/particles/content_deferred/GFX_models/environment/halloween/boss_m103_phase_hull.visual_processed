@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_heat</identifier>
+					<fx>shaders/custom/emissive_angle_falloff.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						destBlend
+						<Int>2</Int>
+					</property>
+					<property>
+						g_angleFalloffParams
+						<Vector4>1.000000 1.000000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_emissiveMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/boss_M103_hull_heat.dds</Texture>
+					</property>
+					<property>
+						g_lightMultipliers
+						<Vector4>3.000000 0.970000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_tintColor
+						<Vector4>1.000000 0.015686 0.000000 1.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>-0.004353 -0.295252 0.027491</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-3.909916 -1.599795 -7.069345</min>
+		<max>3.901209 1.009290 7.124327</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>23580</geometrySize>
+	<minUVDensity>0.000747</minUVDensity>
+</root>

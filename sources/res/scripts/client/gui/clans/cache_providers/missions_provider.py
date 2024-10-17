@@ -7,7 +7,7 @@ from gui.Scaleform.framework.managers.loaders import SFViewLoadParams
 from gui.Scaleform.genConsts.QUESTS_ALIASES import QUESTS_ALIASES
 from gui.clans.cache_providers.base_provider import IBaseProvider
 from gui.prb_control.entities.listener import IGlobalListener
-from gui.shared import EVENT_BUS_SCOPE, events, g_eventBus
+from gui.shared import g_eventBus, events, EVENT_BUS_SCOPE
 from gui.shared.personality import ServicesLocator
 from helpers import dependency
 from skeletons.gui.lobby_context import ILobbyContext

@@ -625,7 +625,7 @@ package net.wg.gui.battle.battleRoyale
       
       private function onConsumablesPanelUpdatePositionHandler(param1:ConsumablesPanelEvent) : void
       {
-         if(isPostMortem)
+         if(!isPostMortem)
          {
             this.updateBattleDamageLogPanelPosition();
          }

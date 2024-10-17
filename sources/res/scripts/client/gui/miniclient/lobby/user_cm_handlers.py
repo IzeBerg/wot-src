@@ -1,4 +1,4 @@
-from gui.Scaleform.daapi.view.lobby.user_cm_handlers import USER
+from gui.Scaleform.daapi.view.lobby.lobby_constants import USER
 from helpers import aop
 
 class UserCmClanUnavailableAspect(aop.Aspect):

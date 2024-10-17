@@ -178,13 +178,19 @@ package net.wg.gui.lobby.settings.feedback.ribbons
          this.ribbonsScrollPane = null;
          this.ribbonsScrollBar.dispose();
          this.ribbonsScrollBar = null;
-         this.ribbonsContainer.dispose();
+         if(!this.ribbonsContainer.isDisposed())
+         {
+            this.ribbonsContainer.dispose();
+         }
          this.ribbonsContainer = null;
          this.controlsScrollPane.dispose();
          this.controlsScrollPane = null;
          this.controlsScrollBar.dispose();
          this.controlsScrollBar = null;
-         this.controlsContainer.dispose();
+         if(!this.controlsContainer.isDisposed())
+         {
+            this.controlsContainer.dispose();
+         }
          this.controlsContainer = null;
          super.onDispose();
       }

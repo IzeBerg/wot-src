@@ -97,6 +97,16 @@ package net.wg.gui.battle.views.epicScorePanel.components
          invalidateState();
       }
       
+      public function set attacker(param1:Boolean) : void
+      {
+         if(this._isAttacker == param1)
+         {
+            return;
+         }
+         this._isAttacker = param1;
+         invalidateState();
+      }
+      
       public function set destroyed(param1:Boolean) : void
       {
          if(this._isDestroyed == param1)

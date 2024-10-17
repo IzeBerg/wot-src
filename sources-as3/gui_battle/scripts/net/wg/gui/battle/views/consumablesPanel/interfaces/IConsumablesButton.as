@@ -36,8 +36,6 @@ package net.wg.gui.battle.views.consumablesPanel.interfaces
       
       function setTimerSnapshot(param1:int, param2:Boolean) : void;
       
-      function setStage(param1:int) : void;
-      
       function set isReplay(param1:Boolean) : void;
    }
 }

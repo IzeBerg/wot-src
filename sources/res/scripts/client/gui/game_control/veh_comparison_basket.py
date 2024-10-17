@@ -26,8 +26,6 @@ if TYPE_CHECKING:
     import typing
 MAX_VEHICLES_TO_COMPARE_COUNT = 20
 _DEF_SHELL_INDEX = 0
-ComparisonSettings = namedtuple('ComparisonSettings', ('quiet',))
-ComparisonSettings.__new__.__defaults__ = (False,)
 _ChangedData = namedtuple('_ChangedData', (
  'addedIDXs',
  'addedCDs',
@@ -72,10 +70,6 @@ def getCrewSkills(vehicle):
              vehicle.descriptor.type.crewRoles[idx][0], [])
 
     return currentSkills
-
-
-def _isVehHasCamouflage(vehicle):
-    return bool(vehicle.getBonusCamo())
 
 
 def _removeVehicleCamouflages(vehicle):
@@ -470,7 +464,7 @@ class VehComparisonBasket(IVehicleComparisonBasket):
         isChanged = False
         copyVehicle = Vehicle(_makeStrCD(vehicle), proxy=self.itemsCache.items)
         copyVehicle.setOutfits(vehicle)
-        hasCamouflage = _isVehHasCamouflage(copyVehicle)
+        hasCamouflage = copyVehicle.hasBonusCamo()
         if hasCamouflage:
             _removeVehicleCamouflages(copyVehicle)
         vehCompareData.setHasCamouflage(hasCamouflage)
@@ -507,7 +501,7 @@ class VehComparisonBasket(IVehicleComparisonBasket):
             LOG_DEBUG('Modules has not been applied because they are not different.')
 
     @_ErrorNotification
-    def addVehicle(self, vehicleCompactDesr, initParameters=None, settings=None):
+    def addVehicle(self, vehicleCompactDesr, initParameters=None):
         if not isinstance(vehicleCompactDesr, (int, float)):
             raise SoftException(('Int-type compact descriptor is invalid: ').format(vehicleCompactDesr))
         if self.__canBeAdded():
@@ -515,8 +509,7 @@ class VehComparisonBasket(IVehicleComparisonBasket):
             vehCmpData = self._createVehCompareData(vehicleCompactDesr, initParameters)
             if vehCmpData:
                 self.__vehicles.append(vehCmpData)
-                self.__applyChanges(addedIDXs=[
-                 len(self.__vehicles) - 1], addedCDs=[vehicleCompactDesr], settings=settings)
+                self.__applyChanges(addedIDXs=[len(self.__vehicles) - 1], addedCDs=[vehicleCompactDesr])
                 return True
         return False
 
@@ -628,7 +621,7 @@ class VehComparisonBasket(IVehicleComparisonBasket):
         try:
             vehicle = self.itemsCache.items.getItemByCD(intCD)
             copyVehicle = Vehicle(_makeStrCD(vehicle), proxy=self.itemsCache.items)
-            hasCamouflage = _isVehHasCamouflage(copyVehicle)
+            hasCamouflage = copyVehicle.hasBonusCamo()
             if hasCamouflage:
                 _removeVehicleCamouflages(copyVehicle)
             stockVehicle = self.itemsCache.items.getStockVehicle(intCD)
@@ -708,10 +701,10 @@ class VehComparisonBasket(IVehicleComparisonBasket):
             self._applyVehiclesFromCache(data)
         return
 
-    def __applyChanges(self, addedIDXs=None, addedCDs=None, removedIDXs=None, removedCDs=None, settings=None):
+    def __applyChanges(self, addedIDXs=None, addedCDs=None, removedIDXs=None, removedCDs=None):
         oldVal = self.__isFull
         self.__isFull = len(self.__vehicles) == MAX_VEHICLES_TO_COMPARE_COUNT
-        self.onChange(_ChangedData(addedIDXs, addedCDs, removedIDXs, removedCDs, self.__isFull != oldVal), settings)
+        self.onChange(_ChangedData(addedIDXs, addedCDs, removedIDXs, removedCDs, self.__isFull != oldVal))
 
     def __initHandlers(self):
         self.itemsCache.onSyncCompleted += self.__onCacheResync
@@ -791,7 +784,7 @@ class VehComparisonBasket(IVehicleComparisonBasket):
         isInInventory = vehicle.isInInventory
         vehCompareData.setIsInInventory(isInInventory)
         copyVehicle = Vehicle(_makeStrCD(vehicle), proxy=cls.itemsCache.items)
-        hasCamouflage = _isVehHasCamouflage(copyVehicle)
+        hasCamouflage = copyVehicle.hasBonusCamo()
         vehCompareData.setInvHasCamouflage(hasCamouflage)
         if hasCamouflage:
             _removeVehicleCamouflages(copyVehicle)

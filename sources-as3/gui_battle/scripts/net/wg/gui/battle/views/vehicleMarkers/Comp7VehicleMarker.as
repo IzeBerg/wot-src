@@ -186,33 +186,40 @@ package net.wg.gui.battle.views.vehicleMarkers
          return super.getStartY() + (!!this.getRoleSkillVisible() ? ROLE_SKILL_TO_MARKER_OFFSET_Y : 0);
       }
       
-      override protected function showHitLabelAnim(param1:int, param2:String, param3:Boolean) : void
+      override protected function showHitLabelAnim(param1:int, param2:String, param3:uint) : void
       {
+         var _loc4_:Boolean = param3 != VehicleMarkerFlags.DAMAGE_FROM_PLAYER_FLAG && param3 != VehicleMarkerFlags.DAMAGE_FROM_SQUAD_FLAG;
          if(!this._isRoleSkillDamage)
          {
-            this._isRoleSkillDamage = !param3 && damageType == VehicleMarkerFlags.DAMAGE_NONE;
+            this._isRoleSkillDamage = _loc4_ && damageType == VehicleMarkerFlags.DAMAGE_NONE;
          }
-         var _loc4_:Boolean = this._isRoleSkillDamage && !param3 && damageType != VehicleMarkerFlags.DAMAGE_NONE;
-         if(_loc4_)
+         var _loc5_:Boolean = this._isRoleSkillDamage && _loc4_ && damageType != VehicleMarkerFlags.DAMAGE_NONE;
+         if(_loc5_)
          {
             this._prevDamageValue += param1;
             param1 = this._prevDamageValue;
          }
-         else if(!param3)
+         else if(_loc4_)
          {
             this._prevDamageValue = 0;
          }
-         if(param3)
+         switch(param3)
          {
-            playerHitLabel.damage(param1,param2);
-            playerHitLabel.playShowTween();
+            case VehicleMarkerFlags.DAMAGE_FROM_PLAYER_FLAG:
+               playerHitLabel.damage(param1,param2);
+               playerHitLabel.playShowTween();
+               break;
+            case VehicleMarkerFlags.DAMAGE_FROM_SQUAD_FLAG:
+               squadHitLabel.damage(param1,param2);
+               squadHitLabel.playShowTween();
+               break;
+            case VehicleMarkerFlags.DAMAGE_FROM_OTHER_FLAG:
+            default:
+               otherHitLabel.damage(param1,param2,_loc5_);
+               otherHitLabel.playShowTween();
          }
-         else
-         {
-            otherHitLabel.damage(param1,param2,_loc4_);
-            otherHitLabel.playShowTween();
-         }
-         otherHitLabel.y = !!playerHitLabel.isActive() ? Number(OTHER_HIT_LABEL_Y) : Number(playerHitLabel.y);
+         squadHitLabel.y = !!playerHitLabel.isActive() ? Number(playerHitLabel.y + EXTRA_HIT_LABEL_OFFSET_Y) : Number(playerHitLabel.y);
+         otherHitLabel.y = !!squadHitLabel.isActive() ? Number(squadHitLabel.y + EXTRA_HIT_LABEL_OFFSET_Y) : Number(squadHitLabel.y);
       }
       
       public function setIsPlayerLoaded(param1:Boolean) : void

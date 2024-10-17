@@ -82,12 +82,13 @@ package net.wg.gui.battle.pveBase.views.minimap.jacket.grid
       public function redraw(param1:int, param2:int) : void
       {
          var _loc3_:Number = NaN;
+         var _loc5_:int = 0;
          var _loc6_:DisplayObject = null;
          cacheAsBitmap = false;
          this.hideAllSprites();
          _loc3_ = param1 / param2;
          var _loc4_:Number = _loc3_ / 2;
-         var _loc5_:int = 0;
+         _loc5_ = 0;
          while(_loc5_ < param2)
          {
             _loc6_ = this._sprites[_loc5_];

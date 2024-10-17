@@ -247,16 +247,16 @@ class MarathonQuestsFlag(BaseQuestFlag):
             if not marathons:
                 return
             result = []
-            isGrouped = params.get('isGrouped', True)
+            isGroupped = params.get('isGrouped', True)
             for index, marathonEvent in enumerate(marathons):
                 flagVO = marathonEvent.getMarathonFlagState(vehicle)
                 if flagVO['visible']:
                     quest = headerQuestFormatterVo(flagVO['enable'], flagVO['flagHeaderIcon'], '', ('').join((cls._QUEST_TYPE, str(index))), flag=flagVO['flagMain'], stateIcon=flagVO['flagStateIcon'], questID=marathonEvent.prefix, tooltip=flagVO['tooltip'], isTooltipSpecial=flagVO['enable'])
-                    if not isGrouped:
+                    if not isGroupped:
                         wrappedGroup = wrapQuestGroup(('').join((HANGAR_HEADER_QUESTS.QUEST_GROUP_MARATHON, str(index))), '', [quest])
-                    result.append(quest if isGrouped else wrappedGroup)
+                    result.append(quest if isGroupped else wrappedGroup)
 
-            if result and isGrouped:
+            if result and isGroupped:
                 return wrapQuestGroup(HANGAR_HEADER_QUESTS.QUEST_GROUP_MARATHON, RES_ICONS.MAPS_ICONS_QUESTS_HEADERFLAGICONS_MARATHONS, result)
             return result
 

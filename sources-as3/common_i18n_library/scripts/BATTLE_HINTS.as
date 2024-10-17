@@ -78,6 +78,16 @@ package
       public static const HINT_PPH_OTHER_05:String = "#battle_hints:hint/PPH_OTHER_05";
       
       public static const HINT_PPH_OTHER_06:String = "#battle_hints:hint/PPH_OTHER_06";
+      
+      public static const HINT_LSH_FOG:String = "#battle_hints:hint/LSH_FOG";
+      
+      public static const HINT_LSH_SANDSTORM:String = "#battle_hints:hint/LSH_SANDSTORM";
+      
+      public static const HINT_LSH_FIRE:String = "#battle_hints:hint/LSH_FIRE";
+      
+      public static const HINT_LSH_SMOKE:String = "#battle_hints:hint/LSH_SMOKE";
+      
+      public static const HINT_LSH_RAIN:String = "#battle_hints:hint/LSH_RAIN";
        
       
       public function BATTLE_HINTS()

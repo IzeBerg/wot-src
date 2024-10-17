@@ -21,6 +21,7 @@ from skeletons.gui.shared.utils import IHangarSpace
 _logger = logging.getLogger(__name__)
 
 class BaseAmmunitionPanelView(ViewImpl):
+    _VIEW_MODEL = AmmunitionPanelViewModel
     _itemsCache = dependency.descriptor(IItemsCache)
     _hangarSpace = dependency.descriptor(IHangarSpace)
     __slots__ = ('_ammunitionPanel', '_wasVehicleOnLoading', 'onPanelSectionResized',
@@ -29,7 +30,7 @@ class BaseAmmunitionPanelView(ViewImpl):
     def __init__(self, flags=ViewFlags.VIEW):
         settings = ViewSettings(R.views.lobby.tanksetup.AmmunitionPanel())
         settings.flags = flags
-        settings.model = AmmunitionPanelViewModel()
+        settings.model = self._VIEW_MODEL()
         super(BaseAmmunitionPanelView, self).__init__(settings)
         self._ammunitionPanel = None
         self._wasVehicleOnLoading = False
@@ -42,11 +43,7 @@ class BaseAmmunitionPanelView(ViewImpl):
             if self._hangarSpace.spaceLoading():
                 _logger.warning('Failed to get slotData. HangarSpace is currently loading.')
                 return
-            tooltipId = event.getArgument('tooltip')
-            if tooltipId == TOOLTIPS_CONSTANTS.HANGAR_SLOT_SPEC:
-                tooltipData = getSlotSpecTooltipData(event, tooltipId)
-            else:
-                tooltipData = getSlotTooltipData(event, self.vehItem, self.viewModel.ammunitionPanel.getSelectedSlot())
+            tooltipData = self._getBackportTooltipData(event)
             if tooltipData is not None:
                 window = BackportTooltipWindow(tooltipData, self.getParentWindow())
                 window.load()
@@ -174,3 +171,9 @@ class BaseAmmunitionPanelView(ViewImpl):
 
     def _updateView(self):
         self.update(fullUpdate=False)
+
+    def _getBackportTooltipData(self, event):
+        tooltipId = event.getArgument('tooltip')
+        if tooltipId == TOOLTIPS_CONSTANTS.HANGAR_SLOT_SPEC:
+            return getSlotSpecTooltipData(event, tooltipId)
+        return getSlotTooltipData(event, self.vehItem, self.viewModel.ammunitionPanel.getSelectedSlot())

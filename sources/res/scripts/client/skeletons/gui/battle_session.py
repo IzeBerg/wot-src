@@ -230,14 +230,6 @@ class IDynamicControllersLocator(object):
         raise NotImplementedError
 
     @property
-    def playersPanel(self):
-        raise NotImplementedError
-
-    @property
-    def bossPanel(self):
-        raise NotImplementedError
-
-    @property
     def shotsResultSound(self):
         raise NotImplementedError
 
@@ -309,10 +301,7 @@ class IClientArenaVisitor(object):
     def isSoloTeam(self, team):
         raise NotImplementedError
 
-    def getArenaIconKey(self):
-        raise NotImplementedError
-
-    def getArenaIcon(self, iconKey):
+    def getArenaIcon(self, subdir=''):
         raise NotImplementedError
 
     def getTeamSpawnPoints(self, team):

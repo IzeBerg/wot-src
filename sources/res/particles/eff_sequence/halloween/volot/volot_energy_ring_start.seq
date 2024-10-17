@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>1.500000</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>energy_ring</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/halloween/volot/volot_energy_ring.model</resource>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>lambert4</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.000000 0.235294 0.058824 0.000000</value>
+				<inTangent>0.000000 4.294118 0.941173 7.500000</inTangent>
+				<outTangent>0.000000 4.294118 0.941173 7.500000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.133333</startTime>
+				<value>1.000000 0.807843 0.184314 1.000000</value>
+				<inTangent>0.000000 0.239818 0.184419 0.194858</inTangent>
+				<outTangent>0.000000 0.239818 0.184419 0.194858</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.500000</startTime>
+				<value>1.000000 0.235294 0.058824 1.000000</value>
+				<inTangent>-0.000000 0.087809 -0.101748 -0.000000</inTangent>
+				<outTangent>-0.000000 0.087809 -0.101748 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property vector4</name>
+			<type>vector4</type>
+			<identifier>lambert4</identifier>
+			<property>lightMultipliers</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>100.000000 0.000000 0.000000 0.000000</value>
+				<inTangent>13806.755859 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>13806.755859 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.133333</startTime>
+				<value>1200.000000 0.000000 0.000000 0.000000</value>
+				<inTangent>-343.133606 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>-343.133606 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.516667</startTime>
+				<value>568.271851 0.000000 0.000000 0.000000</value>
+				<inTangent>-1143.402222 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>-1143.402222 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.483333</startTime>
+				<value>100.000000 0.000000 0.000000 0.000000</value>
+				<inTangent>76.231255 -0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>76.231255 -0.000000 -0.000000 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

@@ -19,5 +19,5 @@ class VehicleHealthBroadcastListenerComponent(object):
     def onBecomeNonPlayer(self):
         pass
 
-    def onVehicleHealthChanged(self, vehicleID, newHealth, attackerID, attackReasonID):
+    def onVehicleHealthChanged(self, vehicleID, newHealth, attackerID, attackReasonID, attackReasonExtID):
         self.guiSessionProvider.setVehicleHealth(False, vehicleID, newHealth, attackerID, attackReasonID)
