@@ -28,6 +28,15 @@ msgstr "view old messages"
 msgid "battle/receivers/chatIsLocked"
 msgstr "%(open)sCHAT OFF%(close)s"
 
+msgid "battle/receivers/chatIsLockedCountryControlToolTip"
+msgstr "Battle chat is not available to players from your country."
+
+msgid "battle/receivers/chatIsLockedOtherControlToolTip"
+msgstr "Battle chat is not available for your account."
+
+msgid "battle/receivers/chatIsLockedParentalControlToolTip"
+msgstr "Battle chat is prohibited by parental controls."
+
 msgid "battle/receivers/chatIsLockedToolTip"
 msgstr "Battle chat can be enabled in game settings."
 
@@ -894,7 +903,9 @@ msgstr ""
 "for Tier VIII vehicles only."
 
 msgid "dialogs/squadChannel/headerMsg/eventFormationRestriction"
-msgstr "Waffenträger available for event vehicles"
+msgstr ""
+"+++ event +++\n"
+"+++ event +++"
 
 msgid "dialogs/squadChannel/headerMsg/squadFormation"
 msgstr ""
@@ -2467,12 +2478,6 @@ msgstr "• Experimental Equipment to Select From"
 msgid "serviceChannelMessages/epicReward/recertificationForm_gift"
 msgstr "• Retraining Orders"
 
-msgid "serviceChannelMessages/event/lootboxes"
-msgstr "Engineer's Crate received:"
-
-msgid "serviceChannelMessages/event/tickets"
-msgstr "Keys received:"
-
 msgid "serviceChannelMessages/eventCoinReceivedAsGift"
 msgstr "You have been granted Anniversary Coins: %(eventCoin)s."
 
@@ -2481,6 +2486,27 @@ msgstr "An additional slot for excluding maps has been unlocked"
 
 msgid "serviceChannelMessages/excludedMap/unavailable/title"
 msgstr "Unable to exclude maps with WoT Plus"
+
+msgid "serviceChannelMessages/externalVehicleRent/expired/reason"
+msgstr "Reason"
+
+msgid "serviceChannelMessages/externalVehicleRent/expired/reason_boosteroid"
+msgstr "Boosteroid subscription ended."
+
+msgid "serviceChannelMessages/externalVehicleRent/expired/reason_default"
+msgstr "Subscription ended."
+
+msgid "serviceChannelMessages/externalVehicleRent/expired/title"
+msgstr "Vehicle disabled"
+
+msgid "serviceChannelMessages/externalVehicleRent/expired/vehicle"
+msgstr "Vehicle"
+
+msgid "serviceChannelMessages/externalVehicleRent/started/title"
+msgstr "Vehicle available"
+
+msgid "serviceChannelMessages/externalVehicleRent/started/vehicle"
+msgstr "Vehicle"
 
 msgid "serviceChannelMessages/failedPersonalMission"
 msgstr "Progress reset"
@@ -3023,13 +3049,13 @@ msgid "serviceChannelMessages/lootBoxesAutoOpen/counter"
 msgstr "x%(count)s"
 
 msgid "serviceChannelMessages/lootBoxesAutoOpen/event/boxes"
-msgstr "Crates opened: %(boxes)s"
+msgstr "Gates activated: %(boxes)s"
 
 msgid "serviceChannelMessages/lootBoxesAutoOpen/event/counter"
 msgstr "%(boxName)s (x%(count)d)"
 
 msgid "serviceChannelMessages/lootBoxesAutoOpen/event/header"
-msgstr "Opening Crates"
+msgstr "Activating Gates"
 
 msgid "serviceChannelMessages/lootBoxesAutoOpen/event/rewards"
 msgstr ""
@@ -3037,7 +3063,7 @@ msgstr ""
 "%(rewards)s"
 
 msgid "serviceChannelMessages/lootBoxesAutoOpen/event/text"
-msgstr "We opened all your Crates and added their contents to your account:"
+msgstr "We activated all your Gates and added their contents to your account:"
 
 msgid "serviceChannelMessages/lootBoxesAutoOpen/header"
 msgstr "Rewards Received"
@@ -3063,9 +3089,6 @@ msgstr "To Survey"
 msgid "serviceChannelMessages/mapbox/congrats/title"
 msgstr "Congratulations!"
 
-msgid "serviceChannelMessages/mapbox/crewbookRequestError"
-msgstr "Error selecting the rewards. Please try again."
-
 msgid "serviceChannelMessages/mapbox/eventEnded/text"
 msgstr ""
 "Recon Mission has finished. Thank you for your contribution to the "
@@ -3081,7 +3104,7 @@ msgid "serviceChannelMessages/mapbox/eventStarted"
 msgstr ""
 "Recon Mission has started.\n"
 "\n"
-"Fight on maps under development in Tier VIII–X vehicles, share your opinion in the surveys, and receive rewards!"
+"Fight on maps under development in Tier VIII–X vehicles, share your opinion in surveys, and receive rewards!"
 
 msgid "serviceChannelMessages/mapbox/progressionFinalRewardReceived"
 msgstr "Final reward:"
@@ -3093,15 +3116,13 @@ msgid "serviceChannelMessages/mapbox/rewardReceived"
 msgstr "Reward received:"
 
 msgid "serviceChannelMessages/mapbox/surveyAvailable/allMaps"
-msgstr ""
-"You can take the survey regarding the mode mechanics in Recon Mission."
+msgstr "You can take a survey on the mode mechanics in Recon Mission."
 
 msgid "serviceChannelMessages/mapbox/surveyAvailable/header"
 msgstr "Survey Available"
 
 msgid "serviceChannelMessages/mapbox/surveyAvailable/singleMap"
-msgstr ""
-"You can take the survey regarding the %(mapName)s map in Recon Mission."
+msgstr "You can take a survey on the %(mapName)s map in Recon Mission."
 
 msgid "serviceChannelMessages/multiplier"
 msgstr " (x%(count)s)"

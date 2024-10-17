@@ -161,26 +161,6 @@ class BattlePassSelectableRewardManager(SelectableRewardManager):
             return
 
 
-class WTProgressionSelectableRewardManager(SelectableRewardManager):
-    _FEATURE = Features.EVENT
-
-    @classmethod
-    def getTabTooltipData(cls, selectableBonus):
-        tokenID = selectableBonus.getValue().keys()[0]
-        if cls.isFeatureReward(tokenID):
-            return TooltipData(tooltip=None, isSpecial=True, specialAlias=TOOLTIPS_CONSTANTS.EVENT_GIFT_TOKEN, specialArgs=[
-             _getGiftTokenFromOffer(tokenID), True])
-        else:
-            return
-
-    @classmethod
-    def getBonusOptions(cls, bonus):
-        if not isinstance(bonus, SelectableBonus):
-            return {}
-        offer = cls._getBonusOffer(bonus)
-        return {gift.id:{'option': gift.bonus, 'count': gift.giftCount, 'limit': gift.limit()} for gift in offer.getAllGifts()}
-
-
 class Comp7SelectableRewardManager(SelectableRewardManager):
     _FEATURE = Features.COMP7
 

@@ -1,0 +1,649 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>20.433334</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Bomber_04_crash_tail</name>
+		<type>model</type>
+		<resource>content/MilitaryEnvironment/hd_mle_EU_008_Plane_MesserschmittBf109/normal/lod0/hd_mle_EU_008_Plane_MesserschmittBf109_03.model</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>0 0 0</value>
+				<inTangent>-23.752605 -20.017210 -0.595304</inTangent>
+				<outTangent>-23.752605 -20.017210 -0.595304</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.466667</startTime>
+				<value>
+					-10.2928 -8.67413 -0.257965
+					<!--BW_String-->
+				</value>
+				<inTangent>-20.923576 -23.146954 -1.299096</inTangent>
+				<outTangent>-20.923576 -23.146954 -1.299096</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>
+					-19.9432 -22.6884 -1.32617
+					<!--BW_String-->
+				</value>
+				<inTangent>-15.881207 -28.643417 -2.358020</inTangent>
+				<outTangent>-15.881207 -28.643417 -2.358020</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.100000</startTime>
+				<value>
+					-34.9779 -56.7995 -4.31064
+					<!--BW_String-->
+				</value>
+				<inTangent>-13.667865 -31.010139 -2.713151</inTangent>
+				<outTangent>-13.667865 -31.010139 -2.713151</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>9.319811 -134.674576 -20.310202</value>
+				<inTangent>-66.080917 -140.965393 -99.496513</inTangent>
+				<outTangent>-66.080917 -140.965393 -99.496513</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.600000</startTime>
+				<value>-28.126045 -214.554962 -76.691559</value>
+				<inTangent>-43.314407 -104.467613 -72.425720</inTangent>
+				<outTangent>-43.314407 -104.467613 -72.425720</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.100000</startTime>
+				<value>-60.241951 -300.719574 -162.856186</value>
+				<inTangent>-2.652047 -48.437634 -55.370426</inTangent>
+				<outTangent>-2.652047 -48.437634 -55.370426</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>1.269667 1.269667 1.269667</value>
+				<inTangent>0.016612 0.016612 0.016612</inTangent>
+				<outTangent>0.016612 0.016612 0.016612</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>2.133333</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>2.300000</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Bomber_04_parts_fire_trails</name>
+		<type>particle</type>
+		<resource>particles/Environment/Storymode/08_ruinberg_airplane_parts_fire_trail.eff</resource>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<duration>2.200000</duration>
+				<value>Bomber_04_crash_tail|root</value>
+			</frame>
+		</track>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000</value>
+				<inTangent>0.076726</inTangent>
+				<outTangent>0.076726</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>1.000000</value>
+				<inTangent>0.076726</inTangent>
+				<outTangent>0.076726</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.233333</startTime>
+				<value>0.000000</value>
+				<inTangent>-0.454545</inTangent>
+				<outTangent>-0.454545</outTangent>
+				<tangentMode>2</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Bomber_04_crash_L_wing</name>
+		<type>model</type>
+		<resource>content/MilitaryEnvironment/hd_mle_EU_008_Plane_MesserschmittBf109/normal/lod0/hd_mle_EU_008_Plane_MesserschmittBf109_04_nocollision.model</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>
+					-5.40118 -2.02147 -0.219116
+					<!--BW_String-->
+				</value>
+				<inTangent>-18.377682 -13.451751 1.910303</inTangent>
+				<outTangent>-18.377682 -13.451751 1.910303</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.866667</startTime>
+				<value>
+					-20.7159 -13.2313 1.3728
+					<!--BW_String-->
+				</value>
+				<inTangent>-17.308876 -13.866894 1.687412</inTangent>
+				<outTangent>-17.308876 -13.866894 1.687412</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.433333</startTime>
+				<value>
+					-29.9186 -21.3244 2.2027
+					<!--BW_String-->
+				</value>
+				<inTangent>-15.438989 -16.155365 1.437125</inTangent>
+				<outTangent>-15.438989 -16.155365 1.437125</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.933333</startTime>
+				<value>
+					-37.2376 -30.3388 2.90756
+					<!--BW_String-->
+				</value>
+				<inTangent>-13.996321 -18.119493 1.170040</inTangent>
+				<outTangent>-13.996321 -18.119493 1.170040</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.633333</startTime>
+				<value>
+					-46.5859 -43.086 3.55881
+					<!--BW_String-->
+				</value>
+				<inTangent>-10.856275 -19.228029 0.991624</inTangent>
+				<outTangent>-10.856275 -19.228029 0.991624</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.366667</startTime>
+				<value>
+					-52.715 -57.9329 4.33093
+					<!--BW_String-->
+				</value>
+				<inTangent>-8.357818 -20.245766 1.052898</inTangent>
+				<outTangent>-8.357818 -20.245766 1.052898</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>9.319811 -134.674576 -20.310202</value>
+				<inTangent>-25.876129 110.672714 -28.142067</inTangent>
+				<outTangent>31.847509 -136.212418 34.636353</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.466667</startTime>
+				<value>23.120399 -193.699966 -5.301113</value>
+				<inTangent>2.775331 -134.308685 40.676849</inTangent>
+				<outTangent>2.775331 -134.308685 40.676849</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>9.095415 -264.315948 19.614803</value>
+				<inTangent>-26.296848 -132.404968 46.717346</inTangent>
+				<outTangent>-21.915386 -141.235321 37.256157</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.400000</startTime>
+				<value>0.329259 -320.810089 34.517269</value>
+				<inTangent>-1.565382 -135.105286 23.324234</inTangent>
+				<outTangent>-1.565382 -135.105286 23.324234</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.866667</startTime>
+				<value>9.095416 -380.998535 38.900349</value>
+				<inTangent>43.580318 -129.357178 -4.070001</inTangent>
+				<outTangent>43.580318 -129.357178 -4.070001</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.366667</startTime>
+				<value>43.283424 -445.868103 30.134192</value>
+				<inTangent>28.787195 -125.356049 -45.683998</inTangent>
+				<outTangent>28.787195 -125.356049 -45.683998</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.366667</startTime>
+				<value>32.481800 -566.841064 -43.701488</value>
+				<inTangent>-10.801624 -120.972961 -73.835678</inTangent>
+				<outTangent>-10.801624 -120.972961 -73.835678</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>1.269667 1.269667 1.269667</value>
+				<inTangent>0.016612 0.016612 0.016612</inTangent>
+				<outTangent>0.016612 0.016612 0.016612</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>true</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Bomber_04_part_trail_smoke</name>
+		<type>particle</type>
+		<resource>particles/Environment/Storymode/08_ruinberg_airplane_parts_fire_trail.eff</resource>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<duration>3.800000</duration>
+				<value>Bomber_04_crash_L_wing|root</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000</value>
+				<inTangent>0.076726</inTangent>
+				<outTangent>0.076726</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>1.000000</value>
+				<inTangent>0.076726</inTangent>
+				<outTangent>0.076726</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>20.433334</startTime>
+				<value>0.000000</value>
+				<inTangent>-0.049020</inTangent>
+				<outTangent>-0.049020</outTangent>
+				<tangentMode>2</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Bomber_04_crash_part01</name>
+		<type>model</type>
+		<resource>content/MilitaryEnvironment/hd_mle_EU_008_Plane_MesserschmittBf109/normal/lod0/hd_mle_EU_008_Plane_MesserschmittBf109_05_nocollision.model</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>
+					-2.42667 -0.537598 -0.336365
+					<!--BW_String-->
+				</value>
+				<inTangent>-10.306973 -22.881594 2.509853</inTangent>
+				<outTangent>-10.306973 -22.881594 2.509853</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.266667</startTime>
+				<value>
+					-4.83163 -5.87664 0.249268
+					<!--BW_String-->
+				</value>
+				<inTangent>-7.444140 -23.876434 2.208428</inTangent>
+				<outTangent>-7.444140 -23.876434 2.208428</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.033333</startTime>
+				<value>
+					-8.34397 -24.9446 1.7113
+					<!--BW_String-->
+				</value>
+				<inTangent>-2.795683 -26.568365 1.530351</inTangent>
+				<outTangent>-2.795683 -26.568365 1.530351</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.166667</startTime>
+				<value>
+					-9.4887 -56.9788 3.01883
+					<!--BW_String-->
+				</value>
+				<inTangent>-1.010059 -28.265453 1.153699</inTangent>
+				<outTangent>-1.010059 -28.265453 1.153699</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>-8.464205 -316.992188 29.231167</value>
+				<inTangent>24.228935 154.875671 -70.254784</inTangent>
+				<outTangent>24.228935 154.875671 -70.254784</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.233334</startTime>
+				<value>69.068398 178.610016 -195.584152</value>
+				<inTangent>24.228935 154.875671 -70.254784</inTangent>
+				<outTangent>24.228935 154.875671 -70.254784</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>2.000000 2.000000 2.000000</value>
+				<inTangent>0.016612 0.016612 0.016612</inTangent>
+				<outTangent>0.016612 0.016612 0.016612</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>true</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Bomber_04_crash_part02</name>
+		<type>model</type>
+		<resource>content/MilitaryEnvironment/hd_mle_EU_008_Plane_MesserschmittBf109/normal/lod0/hd_mle_EU_008_Plane_MesserschmittBf109_08_nocollision.model</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>-0.843773 -0.487148 -0.698944</value>
+				<inTangent>-15.123189 -17.682888 -1.626485</inTangent>
+				<outTangent>-15.123189 -17.682888 -1.626485</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.333333</startTime>
+				<value>
+					-5.38073 -5.79202 -1.18689
+					<!--BW_String-->
+				</value>
+				<inTangent>-12.109529 -17.934246 -1.541802</inTangent>
+				<outTangent>-12.109529 -17.934246 -1.541802</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.866667</startTime>
+				<value>
+					-10.2319 -15.491 -1.96402
+					<!--BW_String-->
+				</value>
+				<inTangent>-7.064630 -18.095104 -1.017355</inTangent>
+				<outTangent>-7.064630 -18.095104 -1.017355</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.166667</startTime>
+				<value>
+					-21.8087 -56.9016 -3.29248
+					<!--BW_String-->
+				</value>
+				<inTangent>-5.033389 -18.004608 -0.577592</inTangent>
+				<outTangent>-5.033389 -18.004608 -0.577592</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>-8.464205 -316.992188 29.231167</value>
+				<inTangent>42.176537 -205.948883 -55.559959</inTangent>
+				<outTangent>42.176537 -205.948883 -55.559959</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.533333</startTime>
+				<value>33.712334 -430.809143 -26.328794</value>
+				<inTangent>22.545881 -211.139435 -57.622875</inTangent>
+				<outTangent>22.545881 -211.139435 -57.622875</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.866667</startTime>
+				<value>20.625229 -495.690796 -27.704073</value>
+				<inTangent>-58.178581 -173.045441 12.503350</inTangent>
+				<outTangent>-58.178581 -173.045441 12.503350</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.566667</startTime>
+				<value>-33.341869 -601.702942 -7.311299</value>
+				<inTangent>-24.613964 -121.369781 47.325012</inTangent>
+				<outTangent>-24.613964 -121.369781 47.325012</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.566667</startTime>
+				<value>-5.473937 -692.996582 58.206196</value>
+				<inTangent>43.751091 -100.907478 81.194695</inTangent>
+				<outTangent>43.751091 -100.907478 81.194695</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.100000</startTime>
+				<value>26.330999 -751.941284 109.871208</value>
+				<inTangent>59.634258 -110.521324 96.871902</inTangent>
+				<outTangent>59.634258 -110.521324 96.871902</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>1.269667 1.269667 1.269667</value>
+				<inTangent>0.016612 0.016612 0.016612</inTangent>
+				<outTangent>0.016612 0.016612 0.016612</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>true</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Bomber_04_crash_part03</name>
+		<type>model</type>
+		<resource>content/MilitaryEnvironment/hd_mle_EU_008_Plane_MesserschmittBf109/normal/lod0/hd_mle_EU_008_Plane_MesserschmittBf109_09_nocollision.model</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>
+					-2.65567 -0.487148 -1.48224
+					<!--BW_String-->
+				</value>
+				<inTangent>-14.128088 -19.893250 7.137680</inTangent>
+				<outTangent>-14.128088 -19.893250 7.137680</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.300000</startTime>
+				<value>
+					-6.42316 -5.79202 0.421143
+					<!--BW_String-->
+				</value>
+				<inTangent>-10.995211 -19.039427 5.114192</inTangent>
+				<outTangent>-10.995211 -19.039427 5.114192</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.833333</startTime>
+				<value>
+					-10.6164 -15.491 2.06952
+					<!--BW_String-->
+				</value>
+				<inTangent>-4.856227 -18.095104 2.532749</inTangent>
+				<outTangent>-4.856227 -18.095104 2.532749</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.133333</startTime>
+				<value>
+					-14.8717 -56.9016 6.61154
+					<!--BW_String-->
+				</value>
+				<inTangent>-1.850120 -18.004606 1.974792</inTangent>
+				<outTangent>-1.850120 -18.004606 1.974792</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>-8.464205 -316.992188 29.231167</value>
+				<inTangent>42.176537 -205.948883 -55.559959</inTangent>
+				<outTangent>42.176537 -205.948883 -55.559959</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.566667</startTime>
+				<value>33.712334 -430.809143 -26.328794</value>
+				<inTangent>19.909842 -204.025879 -54.150379</inTangent>
+				<outTangent>19.909842 -204.025879 -54.150379</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.900000</startTime>
+				<value>20.625229 -495.690796 -27.704073</value>
+				<inTangent>-62.128593 -179.759506 -67.183128</inTangent>
+				<outTangent>-62.128593 -179.759506 -67.183128</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.233333</startTime>
+				<value>-7.706727 -550.648804 -71.117538</value>
+				<inTangent>-41.681061 -134.515472 -17.806652</inTangent>
+				<outTangent>-41.681061 -134.515472 -17.806652</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.600000</startTime>
+				<value>-5.473937 -692.996582 58.206196</value>
+				<inTangent>30.634003 -107.339111 95.749512</inTangent>
+				<outTangent>30.634003 -107.339111 95.749512</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.133333</startTime>
+				<value>26.330999 -751.941284 109.871208</value>
+				<inTangent>59.634258 -110.521324 96.871902</inTangent>
+				<outTangent>59.634258 -110.521324 96.871902</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>2.000000 2.000000 2.000000</value>
+				<inTangent>0.016612 0.016612 0.016612</inTangent>
+				<outTangent>0.016612 0.016612 0.016612</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>true</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

@@ -205,6 +205,13 @@ class DestructibleEntity(BigWorld.Entity):
         if self.model:
             BigWorld.wgDelEdgeDetectEntity(self)
 
+    def getStateBounds(self, stateName, partIndex):
+        state = self.__stateResources.get(stateName, None)
+        if not state:
+            return (Math.Vector3(0.0, 0.0, 0.0), Math.Vector3(0.0, 0.0, 0.0), 0)
+        else:
+            return state.collisionComponent.getBoundingBox(partIndex)
+
     def __setPickingEnabled(self, enable):
         self.targetCaps = [1] if enable else [0]
 

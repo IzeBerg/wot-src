@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>0.500000</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>bubble</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/halloween/our_tank_demolitiy/tank_dem_deff_bubble.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 1.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.500000</startTime>
+				<value>0.000000 1.000000 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.900000 0.900000 0.900000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.500000</startTime>
+				<value>1.000000 1.000000 1.000000</value>
+				<inTangent>0.200000 0.200000 0.200000</inTangent>
+				<outTangent>0.200000 0.200000 0.200000</outTangent>
+				<tangentMode>3</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>Flow_inside</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.000000 1.000000 1.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 -0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.350000</startTime>
+				<value>1.000000 1.000000 1.000000 0.700000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -1.342360</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 -1.342360</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>Blue_Buble</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.150000</startTime>
+				<value>1.000000 1.000000 1.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 -1.338757</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -1.338757</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.350000</startTime>
+				<value>1.000000 1.000000 1.000000 1.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 5.000000</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 5.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property vector4</name>
+			<type>vector4</type>
+			<identifier>Blue_Buble</identifier>
+			<property>lightMultipliers</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.627463 0.000000 0.000000 0.000000</value>
+				<inTangent>3.210424 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>3.210424 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.183333</startTime>
+				<value>2.000000 0.000000 0.000000 0.000000</value>
+				<inTangent>0.226539 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.226539 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>3</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.500000</startTime>
+				<value>1.500000 0.000000 0.000000 0.000000</value>
+				<inTangent>-3.660236 -0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>-3.660236 -0.000000 -0.000000 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property vector4</name>
+			<type>vector4</type>
+			<identifier>Flow_inside</identifier>
+			<property>lightMultipliers</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>2.003651 0.000000 0.000000 0.000000</value>
+				<inTangent>-0.136936 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>-0.136936 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.500000</startTime>
+				<value>1.500000 0.000000 0.000000 0.000000</value>
+				<inTangent>-1.880280 -0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>-1.880280 -0.000000 -0.000000 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Buble_red</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/halloween/our_tank_demolitiy/tank_dem_deff_bubble_red.model</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 1.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.500000</startTime>
+				<value>0.000000 1.000000 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.908318 0.908318 0.908318</value>
+				<inTangent>0.183364 0.183364 0.183364</inTangent>
+				<outTangent>0.183364 0.183364 0.183364</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.500000</startTime>
+				<value>1.000000 1.000000 1.000000</value>
+				<inTangent>0.183364 0.183364 0.183364</inTangent>
+				<outTangent>0.183364 0.183364 0.183364</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>Red_Buble</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.066667</startTime>
+				<value>1.000000 1.000000 1.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 -1.261215</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -1.261215</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.383333</startTime>
+				<value>1.000000 1.000000 1.000000 1.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 3.157894</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 3.157894</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property vector4</name>
+			<type>vector4</type>
+			<identifier>Red_Buble</identifier>
+			<property>lightMultipliers</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>2.000000 0.000000 0.000000 0.000000</value>
+				<inTangent>-0.313666 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>-0.313666 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.500000</startTime>
+				<value>2.000000 0.000000 0.000000 0.000000</value>
+				<inTangent>2.205425 -0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>2.205425 -0.000000 -0.000000 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

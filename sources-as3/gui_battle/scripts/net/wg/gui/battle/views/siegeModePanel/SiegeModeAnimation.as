@@ -24,11 +24,13 @@ package net.wg.gui.battle.views.siegeModePanel
       
       protected static const DELIMITER:String = "_";
       
+      protected static const SIEGE_STATE_DISABLED:int = 0;
+      
       protected static const SIEGE_SWITCHING_ON:int = 1;
       
       protected static const SIEGE_STATE_ENABLED:int = 2;
       
-      private static const SIEGE_SWITCHING_OFF:int = 3;
+      protected static const SIEGE_SWITCHING_OFF:int = 3;
       
       private static const STATE_VISIBLE_TIMER:String = "visibleTimer";
       
@@ -71,13 +73,11 @@ package net.wg.gui.battle.views.siegeModePanel
       
       protected var atlasManager:IAtlasManager;
       
-      protected var switchIndicator:MovieClip = null;
-      
       protected var siegeState:int = -1;
       
-      protected var engineState:String = "";
+      protected var moduleState:String = "";
       
-      private var _colorByEngineState:Object;
+      private var _colorByModuleState:Object;
       
       private var _changeTimeTF:TextField = null;
       
@@ -103,18 +103,17 @@ package net.wg.gui.battle.views.siegeModePanel
       {
          this.states = new <String>[CHASSIS_STATE_BASE,CHASSIS_STATE_BASE,CHASSIS_STATE_SIEGE,CHASSIS_STATE_SIEGE];
          this.atlasManager = App.atlasMgr;
-         this._colorByEngineState = {};
+         this._colorByModuleState = {};
          super();
       }
       
       override protected function initialize() : void
       {
          super.initialize();
-         this._colorByEngineState[BATTLE_ITEM_STATES.NORMAL] = 13434777;
-         this._colorByEngineState[BATTLE_ITEM_STATES.CRITICAL] = 16744192;
-         this._colorByEngineState[BATTLE_ITEM_STATES.DESTROYED] = 16711680;
+         this._colorByModuleState[BATTLE_ITEM_STATES.NORMAL] = 13434777;
+         this._colorByModuleState[BATTLE_ITEM_STATES.CRITICAL] = 16744192;
+         this._colorByModuleState[BATTLE_ITEM_STATES.DESTROYED] = 16711680;
          this._changeTimeTF = this.changeTimeContainer.changeTimeTF;
-         this.switchIndicator = this.switchIndicatorContainer.switchIndicator;
          this._deviceStatusIcon = this.deviceIconContainer.deviceStatusIcon;
       }
       
@@ -150,31 +149,20 @@ package net.wg.gui.battle.views.siegeModePanel
          this.damagedContainer = null;
          this._changeTimeTF.filters = null;
          this._changeTimeTF = null;
-         this.switchIndicator.stop();
-         this.switchIndicator = null;
          this._deviceStatusIcon = null;
          this.atlasManager = null;
          this.states.splice(0,this.states.length);
          this.states = null;
-         App.utils.data.cleanupDynamicObject(this._colorByEngineState);
-         this._colorByEngineState = null;
+         App.utils.data.cleanupDynamicObject(this._colorByModuleState);
+         this._colorByModuleState = null;
          super.onDispose();
       }
       
       public function setAutoSiegeModeState(param1:int, param2:String) : void
       {
          this.siegeState = param1;
-         this.engineState = param2;
-         if(this.siegeState == SIEGE_STATE_ENABLED)
-         {
-            this.drawSiegeStatusIcon();
-            gotoAndStop(STATE_INVISIBLE_TIMER);
-         }
-         else
-         {
-            gotoAndStop(STATE_VISIBLE_TIMER);
-         }
-         this.switchIndicatorContainer.gotoAndStop(STATE_INVISIBLE_TIMER);
+         this.moduleState = param2;
+         this.setAutoSiegeState();
          this._changeTimeTF.visible = false;
          this.stopSwitchAnimation();
       }
@@ -183,21 +171,12 @@ package net.wg.gui.battle.views.siegeModePanel
       {
          var _loc6_:Number = NaN;
          this.siegeState = param3;
-         this.engineState = param4;
+         this.moduleState = param4;
          this.stopSwitchAnimation();
-         this.setEngineAndTime(param2);
+         this.setModuleAndTime(param2);
+         this.updateSiegeState(param5);
          if(this.siegeState == SIEGE_SWITCHING_ON || this.siegeState == SIEGE_SWITCHING_OFF)
          {
-            if(param5)
-            {
-               this.switchIndicatorContainer.gotoAndPlay(STATE_SHOW_TIMER);
-               gotoAndPlay(STATE_SHOW_TIMER);
-            }
-            else
-            {
-               this.switchIndicatorContainer.gotoAndStop(STATE_VISIBLE_TIMER);
-               gotoAndStop(STATE_VISIBLE_TIMER);
-            }
             this._totalTime = param1 * Time.MILLISECOND_IN_SECOND;
             _loc6_ = param2 * Time.MILLISECOND_IN_SECOND;
             this._startTime = getTimer() - (this._totalTime - _loc6_);
@@ -216,29 +195,16 @@ package net.wg.gui.battle.views.siegeModePanel
                this.tryToStartSiegeTicking(false);
             }
          }
-         else
-         {
-            this.updateFinalSiegeStatus(param5);
-         }
       }
       
       public function switchSiegeStateSnapshot(param1:Number, param2:Number, param3:int, param4:String, param5:Boolean) : void
       {
          this.siegeState = param3;
-         this.engineState = param4;
-         this.setEngineAndTime(param2);
+         this.moduleState = param4;
+         this.setModuleAndTime(param2);
+         this.updateSiegeState(param5);
          if(this.siegeState == SIEGE_SWITCHING_ON || this.siegeState == SIEGE_SWITCHING_OFF)
          {
-            if(param5)
-            {
-               this.switchIndicatorContainer.gotoAndPlay(STATE_SHOW_TIMER);
-               gotoAndPlay(STATE_SHOW_TIMER);
-            }
-            else if(this.switchIndicatorContainer.currentLabel != STATE_SHOW_TIMER)
-            {
-               this.switchIndicatorContainer.gotoAndStop(STATE_VISIBLE_TIMER);
-               gotoAndStop(STATE_VISIBLE_TIMER);
-            }
             if(param1 < MIN_TIME_VALUE)
             {
                param1 = this.checkTotalTime(param1,param2);
@@ -255,7 +221,6 @@ package net.wg.gui.battle.views.siegeModePanel
          }
          else
          {
-            this.updateFinalSiegeStatus(param5);
             this._isSwitchPlay = false;
             this.onDamagedAnimationComplete();
          }
@@ -280,12 +245,47 @@ package net.wg.gui.battle.views.siegeModePanel
                this.deviceIconContainer.gotoAndPlay(this._deviceState);
                this._deviceIntervalId = setInterval(this.onAnimationComplete,this._deviceState == BATTLE_ITEM_STATES.CRITICAL ? Number(CRITICAL_TIME) : Number(DESTROYED_TIME));
                this._isDevicePlay = true;
-               this.damagedContainer.visible = this._isSwitchPlay && param1 == VehicleModules.ENGINE;
+               this.damagedContainer.visible = this._isSwitchPlay && param1 == this.primaryModuleName;
                if(this.damagedContainer.visible)
                {
                   this.damagedContainer.gotoAndPlay(DMG_CONTAINER_FIRST_FRAME);
                }
             }
+         }
+      }
+      
+      protected function setAutoSiegeState() : void
+      {
+         if(this.siegeState == SIEGE_STATE_ENABLED)
+         {
+            this.drawSiegeStatusIcon();
+            gotoAndStop(STATE_INVISIBLE_TIMER);
+         }
+         else
+         {
+            gotoAndStop(STATE_VISIBLE_TIMER);
+         }
+         this.switchIndicatorContainer.gotoAndStop(STATE_INVISIBLE_TIMER);
+      }
+      
+      protected function updateSiegeState(param1:Boolean) : void
+      {
+         if(this.siegeState == SIEGE_SWITCHING_ON || this.siegeState == SIEGE_SWITCHING_OFF)
+         {
+            if(param1)
+            {
+               this.switchIndicatorContainer.gotoAndPlay(STATE_SHOW_TIMER);
+               gotoAndPlay(STATE_SHOW_TIMER);
+            }
+            else
+            {
+               this.switchIndicatorContainer.gotoAndStop(STATE_VISIBLE_TIMER);
+               gotoAndStop(STATE_VISIBLE_TIMER);
+            }
+         }
+         else
+         {
+            this.updateFinalSiegeStatus(param1);
          }
       }
       
@@ -296,12 +296,12 @@ package net.wg.gui.battle.views.siegeModePanel
       
       protected function drawSiegeStatusIcon() : void
       {
-         this.atlasManager.drawGraphics(ATLAS_CONSTANTS.BATTLE_ATLAS,this.engineState + DELIMITER + this.states[this.siegeState],this.statusSiegeIcon.graphics);
+         this.atlasManager.drawGraphics(ATLAS_CONSTANTS.BATTLE_ATLAS,this.moduleState + DELIMITER + this.states[this.siegeState],this.statusSiegeIcon.graphics);
       }
       
       protected function drawSwitchIndicator() : void
       {
-         this.atlasManager.drawGraphics(ATLAS_CONSTANTS.BATTLE_ATLAS,this.engineState,this.switchIndicator.graphics,Values.EMPTY_STR,true,false,true);
+         this.atlasManager.drawGraphics(ATLAS_CONSTANTS.BATTLE_ATLAS,this.moduleState,this.switchIndicator.graphics,Values.EMPTY_STR,true,false,true);
       }
       
       protected function onSwitchIndicatorAnimation(param1:Number) : void
@@ -311,7 +311,7 @@ package net.wg.gui.battle.views.siegeModePanel
       
       protected function getChangeTimeTextColor() : uint
       {
-         return this._colorByEngineState[this.engineState];
+         return this._colorByModuleState[this.moduleState];
       }
       
       protected function getChangeTimeTextFilters() : Array
@@ -328,9 +328,24 @@ package net.wg.gui.battle.views.siegeModePanel
          }
       }
       
+      protected function get switchIndicator() : MovieClip
+      {
+         return this.switchIndicatorContainer.switchIndicator;
+      }
+      
+      protected function get primaryModuleName() : String
+      {
+         return VehicleModules.ENGINE;
+      }
+      
+      protected function get showTimeLeft() : Boolean
+      {
+         return this.moduleState != BATTLE_ITEM_STATES.DESTROYED;
+      }
+      
       private function tryToStartSiegeTicking(param1:Boolean = true) : void
       {
-         if(this.engineState != BATTLE_ITEM_STATES.DESTROYED)
+         if(this.moduleState != BATTLE_ITEM_STATES.DESTROYED)
          {
             this._switchIntervalId = setInterval(this.siegeTicking,CrosshairConsts.COUNTER_UPDATE_TICK,param1);
             this._isSwitchPlay = true;
@@ -352,13 +367,13 @@ package net.wg.gui.battle.views.siegeModePanel
          }
       }
       
-      private function setEngineAndTime(param1:Number) : void
+      private function setModuleAndTime(param1:Number) : void
       {
          if(!this._changeTimeTF.visible)
          {
             this._changeTimeTF.visible = true;
          }
-         if(this.engineState != BATTLE_ITEM_STATES.DESTROYED && param1 > 0)
+         if(this.showTimeLeft && param1 > 0)
          {
             this._changeTimeTF.text = param1.toFixed(PRECISION);
          }

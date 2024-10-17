@@ -214,10 +214,11 @@ package net.wg.gui.components.battleDamagePanel
          visible = param1;
       }
       
-      public function setDetailActionCount(param1:int) : void
+      public function setDetailActionCount(param1:int, param2:Boolean = false) : void
       {
          this._detailActionRowsCount = param1;
-         this._damageLogDetailsTopController.setDetailsCount(this._detailActionRowsCount);
+         var _loc3_:int = !!param2 ? int(this._detailActionRowsCount + 1) : int(this._detailActionRowsCount);
+         this._damageLogDetailsTopController.setDetailsCount(_loc3_);
          this.updateContainersPosition();
       }
       
@@ -289,6 +290,11 @@ package net.wg.gui.components.battleDamagePanel
          {
             this._damageLogDetailsTopController.updateRenderersBG(param1 == SCREEN_BORDER_X_POS);
          }
+      }
+      
+      public function get detailsTopContainer() : Sprite
+      {
+         return this._detailsTopContainer;
       }
       
       private function initializeSummaryElements(param1:String, param2:TextField, param3:DefaultSummaryImages, param4:MovieClip) : void

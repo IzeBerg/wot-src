@@ -2,7 +2,7 @@ import BigWorld, copy, items, itertools, nation_change, nations, os, string, str
 from Math import Vector2, Vector3
 from backports.functools_lru_cache import lru_cache
 from collections import namedtuple
-from constants import ACTION_LABEL_TO_TYPE, ROLE_LABEL_TO_TYPE, ROLE_TYPE, DamageAbsorptionLabelToType, ROLE_LEVELS, ROLE_TYPE_TO_LABEL, VEHICLE_HEALTH_DECIMALS, CHANCE_TO_HIT_SUFFIX_FACTOR, IGR_TYPE, IS_RENTALS_ENABLED, IS_CELLAPP, IS_BASEAPP, IS_CLIENT, IS_UE_EDITOR, IS_BOT, IS_WEB, IS_PROCESS_REPLAY, ITEM_DEFS_PATH, SHELL_TYPES, VEHICLE_SIEGE_STATE, VEHICLE_MODE, VEHICLE_CLASSES, ShootImpulseApplicationPoint, SHELL_MECHANICS_TYPE, TrackBreakMode, HighExplosiveImpact, RandomizationType
+from constants import ACTION_LABEL_TO_TYPE, ROLE_LABEL_TO_TYPE, ROLE_TYPE, DamageAbsorptionLabelToType, ROLE_LEVELS, ROLE_TYPE_TO_LABEL, VEHICLE_HEALTH_DECIMALS, CHANCE_TO_HIT_SUFFIX_FACTOR, IGR_TYPE, IS_RENTALS_ENABLED, IS_CELLAPP, IS_BASEAPP, IS_CLIENT, IS_UE_EDITOR, IS_BOT, IS_WEB, IS_PROCESS_REPLAY, ITEM_DEFS_PATH, SHELL_TYPES, VEHICLE_SIEGE_STATE, VEHICLE_MODE, VEHICLE_CLASSES, ShootImpulseApplicationPoint, SHELL_MECHANICS_TYPE, TrackBreakMode, HighExplosiveImpact, RandomizationType, INFINITE_SHELL_TAG, FORCE_FINITE_SHELL_TAG
 from debug_utils import LOG_WARNING, LOG_ERROR, LOG_CURRENT_EXCEPTION
 from functools import partial
 from items import ItemsPrices
@@ -177,9 +177,7 @@ VEHICLE_MISC_ATTRIBUTE_FACTOR_NAMES = (
  'isSetChassisMaxHealthAfterHysteresis',
  'centerRotationFwdSpeedFactor',
  'hullMaxHealth',
- 'turretMaxHealth',
- 'receivedDamageFactor',
- 'discreteDamageFactor')
+ 'turretMaxHealth')
 VEHICLE_MISC_ATTRIBUTE_FACTOR_INDICES = {value:index for index, value in enumerate(VEHICLE_MISC_ATTRIBUTE_FACTOR_NAMES)}
 
 class EnhancementItem(object):
@@ -251,7 +249,6 @@ def vehicleAttributeFactors():
        'repeatedStunDurationFactor': 1.0, 
        'healthFactor': 1.0, 
        'damageFactor': 1.0, 
-       'receivedDamageFactor': 1.0, 
        'enginePowerFactor': 1.0, 
        'deathZones/sensitivityFactor': 1.0, 
        'xRayFactor': 1.0, 
@@ -267,7 +264,11 @@ def vehicleAttributeFactors():
        'foliageInvisibilityFactor': 1.0, 
        'engineReduceFineFactor': 1.0, 
        'ammoBayReduceFineFactor': 1.0, 
-       'discreteDamageFactor': 1.0}
+       'chassis/forwardFrictionFactor': 1.0, 
+       'chassis/sideFrictionFactor': 1.0, 
+       'chassis/dirtReleaseRateFactor': 1.0, 
+       'chassis/maxDirtFactor': 1.0, 
+       'mutualHidingTimeFactor': 1.0}
     for ten in TANKMAN_EXTRA_NAMES:
         factors[ten + CHANCE_TO_HIT_SUFFIX_FACTOR] = 0.0
 
@@ -416,6 +417,7 @@ class VehicleDescriptor(object):
     hasAutoSiegeMode = property(lambda self: self.type.hasAutoSiegeMode)
     isWheeledVehicle = property(lambda self: self.type.isWheeledVehicle)
     hasSpeedometer = property(lambda self: self.type.hasSpeedometer)
+    isTwinGunVehicle = property(lambda self: 'twinGun' in self.gun.tags)
     isDualgunVehicle = property(lambda self: 'dualGun' in self.gun.tags)
     hasDualAccuracy = property(lambda self: 'dualAccuracy' in self.gun.tags)
     isAutoShootGunVehicle = property(lambda self: 'autoShoot' in self.gun.tags)
@@ -1463,6 +1465,8 @@ class VehicleDescriptor(object):
     def shootExtraName(self):
         if self.isDualgunVehicle:
             return 'dualShoot'
+        if self.isTwinGunVehicle:
+            return 'undefined'
         return 'shoot'
 
     def __updateAttributes(self, onAnyApp=False):
@@ -1490,7 +1494,6 @@ class VehicleDescriptor(object):
            'radioDistanceFactor': 0.0, 
            'healthFactor': 1.0, 
            'damageFactor': 1.0, 
-           'receivedDamageFactor': 1.0, 
            'enginePowerFactor': 1.0, 
            'armorSpallsDamageDevicesFactor': 1.0, 
            'increaseEnemySpottingTime': 0.0, 
@@ -1530,8 +1533,7 @@ class VehicleDescriptor(object):
            'ammoBayReduceFineFactor': 1.0, 
            'engineReduceFineFactor': 1.0, 
            'hullMaxHealth': 0, 
-           'turretMaxHealth': 0, 
-           'discreteDamageFactor': 1.0}
+           'turretMaxHealth': 0}
         if IS_CELLAPP or IS_CLIENT or IS_UE_EDITOR or IS_WEB or IS_BOT or onAnyApp:
             trackCenterOffset = chassis.topRightCarryingPoint[0]
             self.physics = {'weight': weight, 
@@ -1913,7 +1915,6 @@ class VehicleType(object):
                 self.extrasDict = copyMethod(commonConfig['extrasDict'])
                 self.devices = copyMethod(commonConfig['_devices'])
                 self.tankmen = _selectCrewExtras(self.crewRoles, self.extrasDict)
-                self.armorMaxHealth = _xml.readIntOrNone(xmlCtx, section, 'armorMaxHealth')
             if IS_CLIENT or IS_WEB or IS_BOT:
                 self.i18nInfo = basicInfo.i18n
             if IS_CLIENT or IS_UE_EDITOR:
@@ -2114,6 +2115,20 @@ class VehicleType(object):
     def innationID(self):
         return self.id[1]
 
+    @property
+    def siegeDeviceName(self):
+        if self.siegeModeParams is not None:
+            return self.siegeModeParams['device']
+        else:
+            return ''
+
+    @property
+    def shouldStopEngineOnSiegeSwitch(self):
+        if self.siegeModeParams is not None:
+            return self.siegeModeParams['stopEngineOnSwitch']
+        else:
+            return True
+
     def update(self, data):
         if json_vehicle_reader:
             json_vehicle_reader.readVehicle(self, data)
@@ -2131,6 +2146,9 @@ class VehicleType(object):
 
     def getVehicleClass(self):
         return getVehicleClassFromVehicleType(self)
+
+    def getAllDevices(self):
+        return {d.compactDescr for d in self.chassis + self.engines + self.radios + self.fuelTanks + self.turrets[0] + tuple(self.getGuns())}
 
     def __getRoleFromTags(self):
         roles = g_cache.roles()
@@ -2929,16 +2947,6 @@ def isVehicleTypeCompactDescr(vehDescr):
     return False
 
 
-def getEquipmentByName(name):
-    eqID = g_cache.equipmentIDs()[name]
-    return g_cache.equipments()[eqID]
-
-
-def getOptionalDeviceByName(name):
-    optDevID = g_cache.optionalDeviceIDs()[name]
-    return g_cache.optionalDevices()[optDevID]
-
-
 def getVehicleType(compactDescr):
     if isVehicleTypeCompactDescr(compactDescr):
         nationID = compactDescr >> 4 & 15
@@ -3112,12 +3120,9 @@ def _getAmmoForGun(gunDescr, defaultPortion=None):
 
 
 def getBuiltinEqsForVehicle(vehType):
-    result = []
-    for eqName in vehType.builtins:
-        eq = getEquipmentByName(eqName)
-        result.append(eq.compactDescr)
-
-    return sorted(result)
+    builtins = vehType.builtins
+    return [ e.compactDescr for e in g_cache.equipments().itervalues() if e.name in builtins
+           ][:vehType.supplySlots.getAmountForType(ITEM_TYPES.equipment, items.EQUIPMENT_TYPES.regular)]
 
 
 def getUnlocksSources():
@@ -3167,6 +3172,28 @@ def isRestorable(vehTypeCD, gameParams):
 def hasAnyOfTags(vehTypeCD, tags=()):
     vehicleType = getVehicleType(vehTypeCD)
     return bool(vehicleType.tags.intersection(tags))
+
+
+def makeOutfitCD(outfitData):
+    from items import customizations
+    outfit = ''
+    if outfitData:
+        camouflages = None
+        camouflageID = outfitData.get('camouflage')
+        if camouflageID:
+            camouflages = [customizations.CamouflageComponent(camouflageID, appliedTo=ApplyArea.HULL | ApplyArea.TURRET | ApplyArea.GUN)]
+        decals = []
+        decalID = outfitData.get('decal')
+        if decalID:
+            decals.append(customizations.DecalComponent(decalID, ApplyArea.ALL))
+        paints = []
+        paintID = outfitData.get('paint')
+        if paintID:
+            flag = ApplyArea.CHASSIS | ApplyArea.HULL | ApplyArea.TURRET
+            paints.append(customizations.PaintComponent(paintID, flag))
+        styleId = outfitData.get('style', 0)
+        outfit = customizations.CustomizationOutfit(camouflages=camouflages, decals=decals, paints=paints, styleId=styleId).makeCompDescr()
+    return outfit
 
 
 def _readComponents(xmlPath, reader, nationID, itemTypeID):
@@ -4514,6 +4541,10 @@ def _readGun(xmlCtx, section, item, unlocksDescrs=None, _=None):
         item.autoShoot = component_constants.DEFAULT_GUN_AUTOSHOOT
     else:
         item.autoShoot = _readGunClipAutoShoot(xmlCtx, section)
+    if not section.has_key('twinGun'):
+        item.twinGun = component_constants.DEFAULT_GUN_TWINGUN
+    else:
+        item.twinGun = _readGunTwinGunParams(xmlCtx, section)
     if item.burst[0] > item.clip[0] > 1:
         _xml.raiseWrongXml(xmlCtx, 'burst', 'burst/count is larger than clip/count')
     if item.autoreload != component_constants.DEFAULT_GUN_AUTORELOAD and item.clip[0] <= 1:
@@ -4542,6 +4573,10 @@ def _readGun(xmlCtx, section, item, unlocksDescrs=None, _=None):
         tags = tags.difference(('autoShoot', ))
     else:
         tags = tags.union(('autoShoot', ))
+    if item.twinGun == component_constants.DEFAULT_GUN_TWINGUN:
+        tags -= {'twinGun'}
+    else:
+        tags |= {'twinGun'}
     if dualGun is None:
         tags = tags.difference(('dualGun', ))
     else:
@@ -4675,6 +4710,11 @@ def _readGunLocals(xmlCtx, section, sharedItem, unlocksDescrs, turretCompactDesc
     else:
         hasOverride = True
         clip = _readGunClipBurst(xmlCtx, section, 'clip')
+    if not section.has_key('twinGun'):
+        twinGun = sharedItem.twinGun
+    else:
+        hasOverride = True
+        twinGun = _readGunTwinGunParams(xmlCtx, section)
     if burst[0] > clip[0] > 1:
         _xml.raiseWrongXml(xmlCtx, 'burst', 'burst/count is larger than clip/count')
     if autoreload != component_constants.DEFAULT_GUN_AUTORELOAD and clip[0] <= 1:
@@ -4851,6 +4891,14 @@ def _readGunLocals(xmlCtx, section, sharedItem, unlocksDescrs, turretCompactDesc
                 tags = tags.difference(('autoShoot', ))
             else:
                 tags = tags.union(('autoShoot', ))
+            item.tags = tags
+        if twinGun is not sharedItem.twinGun:
+            item.twinGun = twinGun
+            tags = item.tags
+            if twinGun == component_constants.DEFAULT_GUN_TWINGUN:
+                tags -= {'twinGun'}
+            else:
+                tags |= {'twinGun'}
             item.tags = tags
         if dualGun is not None:
             item.dualGun = dualGun
@@ -5105,9 +5153,8 @@ def _readShell(xmlCtx, section, name, nationID, shellTypeID, icons):
     shell.isTracer = section.readBool('isTracer', False)
     if shell.isTracer:
         shell.isForceTracer = section.readBool('isForceTracer', False)
-    shell.skipSelfDamage = section.readBool('skipSelfDamage', False)
     if IS_CLIENT or IS_WEB:
-        shell.i18n = shared_components.I18nComponent(userStringKey=section.readString('userString'), descriptionKey=section.readString('description'), shortDescriptionSpecialKey=section.readString('shortDescriptionSpecial'), longDescriptionSpecialKey=section.readString('longDescriptionSpecial'))
+        shell.i18n = shared_components.I18nComponent(section.readString('userString'), section.readString('description'))
         v = _xml.readNonEmptyString(xmlCtx, section, 'icon')
         if icons.get(v) is None:
             _xml.raiseWrongXml(xmlCtx, 'icon', "unknown icon '%s'" % v)
@@ -5126,6 +5173,10 @@ def _readShell(xmlCtx, section, name, nationID, shellTypeID, icons):
     shell.armorDamage = shared_readers.readFloatPair(xmlCtx, section, 'damage/armor')
     shell.isDamageMutable = shell.armorDamage[0] != shell.armorDamage[1]
     shell.deviceDamage = shared_readers.readFloatPair(xmlCtx, section, 'damage/devices')
+    if section.has_key('obstacles/damage'):
+        shell.obstaclesDamage = _xml.readNonNegativeFloat(xmlCtx, section, 'obstacles/damage')
+    if section.has_key('obstacles/powerReduction'):
+        shell.obstaclesPowerReduction = _xml.readNonNegativeFloat(xmlCtx, section, 'obstacles/powerReduction')
     if section.has_key('deviceDamagePossibility/protectFromDirectHits'):
         shellType.protectFromDirectHits = readProtectedModules(xmlCtx, section, 'deviceDamagePossibility/protectFromDirectHits')
     if kind == 'HIGH_EXPLOSIVE' and section.has_key('deviceDamagePossibility/protectFromIndirectHits'):
@@ -5156,8 +5207,7 @@ def _readShell(xmlCtx, section, name, nationID, shellTypeID, icons):
         if not isModernHighExplosive and shellType.explosionRadius <= 0.0:
             shellType.explosionRadius = cachedFloat(shell.caliber * shell.caliber / 5555.0)
         explosionSettings = ('explosionDamageFactor', 'explosionDamageAbsorptionFactor',
-                             'explosionEdgeDamageFactor', 'shellFragmentsDamageAbsorptionFactor',
-                             'explosionDisableDamageFalloff')
+                             'explosionEdgeDamageFactor', 'shellFragmentsDamageAbsorptionFactor')
         for f in explosionSettings:
             factor = section.readFloat(f)
             if factor <= 0:
@@ -5211,6 +5261,8 @@ def _readShell(xmlCtx, section, name, nationID, shellTypeID, icons):
         shell.dynamicEffectsIndexes = tuple(sorted(dynamicEffects, key=lambda item: item.minShotsCount))
     if section.has_key('tags'):
         shell.tags = _readTags(xmlCtx, section, 'tags', 'shell')
+        if INFINITE_SHELL_TAG in shell.tags and FORCE_FINITE_SHELL_TAG in shell.tags:
+            _xml.raiseWrongXml(xmlCtx, 'tags', ('incompatible tags: {}, {}').format(INFINITE_SHELL_TAG, FORCE_FINITE_SHELL_TAG))
     if section.has_key('secondaryAttackReason'):
         shell.secondaryAttackReason = _xml.readStringOrNone(xmlCtx, section, 'secondaryAttackReason')
     return shell
@@ -6099,7 +6151,6 @@ def _readCommonConfig(xmlCtx, section):
        'explosionDamageFactor': _xml.readNonNegativeFloat(xmlCtx, section, 'miscParams/explosionDamageFactor'), 
        'explosionDamageAbsorptionFactor': _xml.readNonNegativeFloat(xmlCtx, section, 'miscParams/explosionDamageAbsorptionFactor'), 
        'explosionEdgeDamageFactor': _xml.readNonNegativeFloat(xmlCtx, section, 'miscParams/explosionEdgeDamageFactor'), 
-       'explosionDisableDamageFalloff': _xml.readNonNegativeFloat(xmlCtx, section, 'miscParams/explosionDisableDamageFalloff'), 
        'shellFragmentsDamageAbsorptionFactor': _xml.readNonNegativeFloat(xmlCtx, section, 'miscParams/shellFragmentsDamageAbsorptionFactor'), 
        'allowMortarShooting': _xml.readBool(xmlCtx, section, 'miscParams/allowMortarShooting'), 
        'radarDefaults': {'radarRadius': _xml.readNonNegativeFloat(xmlCtx, section, 'miscParams/radarDefaults/radarRadius'), 
@@ -6746,10 +6797,12 @@ def _readSiegeModeParams(xmlCtx, section, vehType):
     if subSection is None:
         return
     else:
-        res = {'switchOnTime': _xml.readNonNegativeFloat(xmlCtx, subSection, 'switchOnTime', 2.0), 
+        res = {'device': _xml.readStringWithDefaultValue(xmlCtx, subSection, 'device', 'engine'), 
+           'switchOnTime': _xml.readNonNegativeFloat(xmlCtx, subSection, 'switchOnTime', 2.0), 
            'switchOffTime': _xml.readNonNegativeFloat(xmlCtx, subSection, 'switchOffTime', 2.0), 
            'switchCancelEnabled': subSection.readBool('switchCancelEnabled', False), 
-           'engineDamageCoeff': _xml.readNonNegativeFloat(xmlCtx, subSection, 'engineDamageCoeff', 2.0)}
+           'engineDamageCoeff': _xml.readNonNegativeFloat(xmlCtx, subSection, 'engineDamageCoeff', 2.0), 
+           'stopEngineOnSwitch': subSection.readBool('stopEngineOnSwitch', True)}
         if 'autoSiege' in vehType.tags:
             res.update({'autoSwitchOffRequiredVehicleSpeed': component_constants.KMH_TO_MS * _xml.readNonNegativeFloat(xmlCtx, subSection, 'autoSwitchOffRequiredVehicleSpeed', 1.0), 
                'autoSwitchOnRequiredVehicleSpeed': component_constants.KMH_TO_MS * _xml.readNonNegativeFloat(xmlCtx, subSection, 'autoSwitchOnRequiredVehicleSpeed', 0.1)})
@@ -6789,6 +6842,15 @@ def _readRocketAccelerationParams(xmlCtx, section):
     else:
         effectsPrefab = None
     return shared_components.RocketAccelerationParams(deployTime=_xml.readNonNegativeFloat(rocketCtx, rocketSection, 'deployTime'), reloadTime=_xml.readNonNegativeFloat(rocketCtx, rocketSection, 'reloadTime'), reuseCount=_xml.readInt(rocketCtx, rocketSection, 'reuseCount', minVal=-1), duration=_xml.readNonNegativeFloat(rocketCtx, rocketSection, 'duration'), impulse=impulse, modifiers=modifiers, kpi=kpi, effectsPrefab=effectsPrefab)
+
+
+def _readGunTwinGunParams(xmlCtx, section):
+    subSection = section['twinGun']
+    if subSection is None:
+        return
+    else:
+        res = component_constants.TwinGun(afterShotDelay=_xml.readNonNegativeFloat(xmlCtx, subSection, 'afterShotDelay'), gunMarkerOffset=_xml.readNonNegativeFloat(xmlCtx, subSection, 'gunMarkerOffset', 0.0), shootImpulse=_xml.readNonNegativeInt(xmlCtx, subSection, 'shootImpulse', 0), twinGunReloadTime=_xml.readNonNegativeFloat(xmlCtx, subSection, 'twinGunReloadTime', 0.0))
+        return res
 
 
 def _readGunDualGunParams(xmlCtx, section):
@@ -6915,11 +6977,6 @@ def _readImpactParams(xmlCtx, section, paramName):
             params.damageAbsorptionType = DamageAbsorptionLabelToType.get(label)
         params.isActive = any(params.armorDamage) or any(params.deviceDamage)
         params.hasSplash = params.radius and params.isActive
-        if subsection.has_key('applyExplosionBonus'):
-            value = _xml.readBool(subXmlCtx, subsection, 'applyExplosionBonus', False)
-            params.applyExplosionBonus = value
-            if value and subsection.has_key('splitDamageBonus'):
-                params.splitDamageBonus = _xml.readTupleOfNonNegativeFloats(subXmlCtx, subsection, 'splitDamageBonus')
         return params
 
 

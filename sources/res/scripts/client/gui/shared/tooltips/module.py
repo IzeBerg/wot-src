@@ -16,7 +16,7 @@ from gui.shared.items_parameters.params_helper import SimplifiedBarVO
 from gui.shared.money import MONEY_UNDEFINED, Currency
 from gui.shared.tooltips import getComplexStatusWULF, getUnlockPrice, TOOLTIP_TYPE, formatters
 from gui.shared.tooltips.common import BlocksTooltipData, makePriceBlock, CURRENCY_SETTINGS, makeRemovalPriceBlock
-from gui.shared.utils import GUN_CLIP, SHELLS_COUNT_PROP_NAME, SHELL_RELOADING_TIME_PROP_NAME, RELOAD_MAGAZINE_TIME_PROP_NAME, AIMING_TIME_PROP_NAME, RELOAD_TIME_PROP_NAME, GUN_AUTO_RELOAD, AUTO_RELOAD_PROP_NAME, DISPERSION_RADIUS, RELOAD_TIME_SECS_PROP_NAME, DUAL_GUN_RATE_TIME, DUAL_GUN_CHARGE_TIME, BURST_FIRE_RATE, BURST_TIME_INTERVAL, BURST_COUNT, BURST_SIZE, GUN_DUAL_GUN, GUN_CAN_BE_CLIP, GUN_CAN_BE_AUTO_RELOAD, GUN_CAN_BE_DUAL_GUN, GUN_CAN_BE_AUTO_SHOOT, GUN_AUTO_SHOOT, TURBOSHAFT_ENGINE_POWER, ROCKET_ACCELERATION_ENGINE_POWER, DUAL_ACCURACY_COOLING_DELAY, CONTINUOUS_SHOTS_PER_MINUTE, CONTINUOUS_DAMAGE_PER_SECOND
+from gui.shared.utils import GUN_CLIP, SHELLS_COUNT_PROP_NAME, SHELL_RELOADING_TIME_PROP_NAME, RELOAD_MAGAZINE_TIME_PROP_NAME, AIMING_TIME_PROP_NAME, RELOAD_TIME_PROP_NAME, GUN_AUTO_RELOAD, AUTO_RELOAD_PROP_NAME, DISPERSION_RADIUS, RELOAD_TIME_SECS_PROP_NAME, DUAL_GUN_RATE_TIME, DUAL_GUN_CHARGE_TIME, BURST_FIRE_RATE, BURST_TIME_INTERVAL, BURST_COUNT, BURST_SIZE, GUN_DUAL_GUN, GUN_CAN_BE_CLIP, GUN_CAN_BE_AUTO_RELOAD, GUN_CAN_BE_DUAL_GUN, GUN_CAN_BE_AUTO_SHOOT, GUN_AUTO_SHOOT, TURBOSHAFT_ENGINE_POWER, ROCKET_ACCELERATION_ENGINE_POWER, DUAL_ACCURACY_COOLING_DELAY, CONTINUOUS_SHOTS_PER_MINUTE, CONTINUOUS_DAMAGE_PER_SECOND, GUN_CAN_BE_TWIN_GUN, GUN_TWIN_GUN, TWIN_GUN_RELOAD_ONE_GUN_TIME, TWIN_GUN_RELOAD_TWO_GUN_TIME
 from gui.shared.utils.requesters import REQ_CRITERIA
 from helpers import dependency
 from helpers.i18n import makeString as _ms
@@ -47,6 +47,7 @@ class _ModuleExtraStatuses(CONST_CONTAINER):
     DUAL_GUN = 'dualGun'
     DUAL_ACCURACY_GUN = 'dualAccuracyGun'
     DAMAGE_MUTABLE_GUN = 'mutableDamageGun'
+    TWIN_GUN = 'twinGun'
     TURBOSHAFT_ENGINE = 'turboshaftEngine'
     ROCKET_ACCELERATION_ENGINE = 'rocketAccelerationEngine'
     HYDRO_CHASSIS = 'hydroChassis'
@@ -69,6 +70,8 @@ _MODULE_EXTRA_STATUS_RESOURCES = {_ModuleExtraStatuses.AUTOLOADER_GUN: (
                                            _STR_EXTRA_PATH.damageMutableGunLabel, _IMG_EXTRA_PATH.damageMutable), 
    _ModuleExtraStatuses.AUTO_SHOOT_GUN: (
                                        _STR_EXTRA_PATH.autoShootGunLabel, _IMG_EXTRA_PATH.autoShootGun), 
+   _ModuleExtraStatuses.TWIN_GUN: (
+                                 _STR_EXTRA_PATH.twinGunLabel, _IMG_EXTRA_PATH.twinGun), 
    _ModuleExtraStatuses.TURBOSHAFT_ENGINE: (
                                           _STR_EXTRA_PATH.turboshaftEngine, _IMG_EXTRA_PATH.turbineEngineIcon), 
    _ModuleExtraStatuses.ROCKET_ACCELERATION_ENGINE: (
@@ -117,14 +120,14 @@ class ModuleBlockTooltipData(BlocksTooltipData):
             headConfig = statusConfig if statusConfig.vehicle else paramsConfig
         else:
             headerBottom = -38
-            headBlock = HeaderBlockConstructor
+            headBlock = self._getHeaderBlockConstructor()
             headConfig = statusConfig
         items.append(formatters.packBuildUpBlockData(headBlock(module, headConfig, leftPadding, rightPadding).construct(), padding=formatters.packPadding(left=leftPadding, right=rightPadding, top=topPadding, bottom=headerBottom)))
         if itemTypeID in GUI_ITEM_TYPE.ARTEFACTS:
             if itemTypeID == GUI_ITEM_TYPE.OPTIONALDEVICE:
                 effectsBlock = OptDeviceEffectsBlockConstructor(module, statusConfig, leftPadding, 10).construct()
             else:
-                effectsBlock = EffectsBlockConstructor(module, statusConfig, leftPadding, rightPadding).construct()
+                effectsBlock = self._getEffectsBlockConstructor()(module, statusConfig, leftPadding, rightPadding).construct()
             if effectsBlock:
                 effectsPaddings = formatters.packPadding(left=leftPadding, right=rightPadding, top=-4, bottom=-8)
                 if statusConfig.useWhiteBg:
@@ -147,7 +150,7 @@ class ModuleBlockTooltipData(BlocksTooltipData):
         priceBlock = PriceBlockConstructor(module, statsConfig, priceValueWidth, leftPadding, rightPadding).construct()
         if priceBlock:
             items.append(formatters.packBuildUpBlockData(priceBlock, padding=formatters.packPadding(left=leftPadding, right=rightPadding, top=-5, bottom=-8), gap=textGap))
-        inventoryBlock = InventoryBlockConstructor(module, statsConfig, leftPadding, rightPadding).construct()
+        inventoryBlock = self._getInventoryBlockConstructor()(module, statsConfig, leftPadding, rightPadding).construct()
         if inventoryBlock:
             items.append(formatters.packBuildUpBlockData(inventoryBlock, padding=formatters.packPadding(left=leftPadding, right=rightPadding, top=-5, bottom=-8), gap=textGap))
         showModuleCompatibles = statsConfig.showCompatibles and itemTypeID in GUI_ITEM_TYPE.VEHICLE_MODULES
@@ -177,6 +180,15 @@ class ModuleBlockTooltipData(BlocksTooltipData):
             lastItem['padding']['bottom'] = lastItem['padding'].get('bottom', 0) + 15
         return items
 
+    def _getHeaderBlockConstructor(self):
+        return HeaderBlockConstructor
+
+    def _getEffectsBlockConstructor(self):
+        return EffectsBlockConstructor
+
+    def _getInventoryBlockConstructor(self):
+        return InventoryBlockConstructor
+
 
 class ModuleTooltipBlockConstructor(object):
     MAX_INSTALLED_LIST_LEN = 10
@@ -192,6 +204,7 @@ class ModuleTooltipBlockConstructor(object):
     CALIBER = 'caliber'
     DUAL_ACCURACY_MODULE_PARAM = 'dualAccuracy'
     MUTABLE_DAMAGE_MODULE_PARAM = 'mutableDamage'
+    TWIN_GUN_MODULE_PARAM = 'twinGun'
     DEFAULT_PARAM = 'default'
     MODULE_PARAMS = {GUI_ITEM_TYPE.CHASSIS: ('maxLoad', 'rotationSpeed', 'maxSteeringLockAngle', 'vehicleChassisRepairSpeed', 'chassisRepairTime'), 
        GUI_ITEM_TYPE.TURRET: ('armor', 'rotationSpeed', 'circularVisionRadius'), 
@@ -236,14 +249,21 @@ class ModuleTooltipBlockConstructor(object):
                                    'maxAvgMutableDamageList', 'minAvgMutableDamageList', 'avgPiercingPower',
                                    RELOAD_TIME_SECS_PROP_NAME, RELOAD_TIME_PROP_NAME,
                                    'avgDamagePerMinute', 'stunMinDurationList', 'stunMaxDurationList', DISPERSION_RADIUS,
-                                   DUAL_ACCURACY_COOLING_DELAY, 'maxShotDistance', AIMING_TIME_PROP_NAME, BURST_FIRE_RATE)}
+                                   DUAL_ACCURACY_COOLING_DELAY, 'maxShotDistance', AIMING_TIME_PROP_NAME, BURST_FIRE_RATE), 
+       TWIN_GUN_MODULE_PARAM: (
+                             'avgDamageList', 'avgPiercingPower',
+                             TWIN_GUN_RELOAD_ONE_GUN_TIME, TWIN_GUN_RELOAD_TWO_GUN_TIME, RELOAD_TIME_PROP_NAME,
+                             'avgDamagePerMinute', 'stunMinDurationList', 'stunMaxDurationList', DISPERSION_RADIUS,
+                             'maxShotDistance', AIMING_TIME_PROP_NAME)}
     HIGHLIGHT_MODULE_PARAMS = {DEFAULT_PARAM: (
                      AUTO_RELOAD_PROP_NAME, RELOAD_TIME_SECS_PROP_NAME, DUAL_GUN_CHARGE_TIME, DUAL_GUN_RATE_TIME,
                      TURBOSHAFT_ENGINE_POWER, ROCKET_ACCELERATION_ENGINE_POWER), 
        DUAL_ACCURACY_MODULE_PARAM: (
                                   DUAL_ACCURACY_COOLING_DELAY, DISPERSION_RADIUS), 
        AUTO_SHOOT_GUN_MODULE_PARAM: (
-                                   CONTINUOUS_SHOTS_PER_MINUTE, CONTINUOUS_DAMAGE_PER_SECOND)}
+                                   CONTINUOUS_SHOTS_PER_MINUTE, CONTINUOUS_DAMAGE_PER_SECOND), 
+       TWIN_GUN_MODULE_PARAM: (
+                             TWIN_GUN_RELOAD_ONE_GUN_TIME, TWIN_GUN_RELOAD_TWO_GUN_TIME)}
     itemsCache = dependency.descriptor(IItemsCache)
 
     def __init__(self, module, configuration, leftPadding=_DEFAULT_PADDING, rightPadding=_DEFAULT_PADDING):
@@ -277,12 +297,12 @@ class HeaderBlockConstructor(ModuleTooltipBlockConstructor):
                 descList.append(params_formatters.formatParamNameColonValueUnits(paramName=paramName, paramValue=paramValue))
             elif module.itemTypeID == GUI_ITEM_TYPE.EQUIPMENT:
                 descParts = []
-                cooldownSeconds = module.descriptor.cooldownSeconds
+                cooldownSeconds = self._getCooldownSeconds()
                 if cooldownSeconds:
                     paramName = ModuleTooltipBlockConstructor.COOLDOWN_SECONDS
                     paramValue = params_formatters.formatParameter(paramName, cooldownSeconds)
                     descParts.append(params_formatters.formatParamNameColonValueUnits(paramName=paramName, paramValue=paramValue))
-                if module.isBuiltIn and not module.isBuiltInInfoHidden:
+                if module.isBuiltIn:
                     descParts.append(text_styles.main(backport.text(R.strings.tooltips.equipment.builtIn())))
                 descList.append(text_styles.concatStylesToMultiLine(*descParts))
         block.append(formatters.packTitleDescBlock(title=text_styles.highTitle(title), desc=('\n').join(descList), gap=-3, padding=formatters.packPadding(top=-6)))
@@ -298,6 +318,9 @@ class HeaderBlockConstructor(ModuleTooltipBlockConstructor):
             block.append(formatters.packBuildUpBlockData(blocks=imageBlocks, padding=formatters.packPadding(top=-14, bottom=bottomOffset)))
         return block
 
+    def _getCooldownSeconds(self):
+        return self.module.descriptor.cooldownSeconds
+
     def _getIcon(self):
         moduleName = self.module.descriptor.iconName
         icon = R.images.gui.maps.shop.artefacts.c_180x135.dyn(moduleName)
@@ -311,7 +334,7 @@ class HeaderBlockConstructor(ModuleTooltipBlockConstructor):
         bottomOffset = -60
         if self.module.itemTypeID == GUI_ITEM_TYPE.OPTIONALDEVICE and self.module.isDeluxe:
             overlayPath = backport.image(R.images.gui.maps.shop.artefacts.c_180x135.equipmentPlus_overlay())
-        elif self.module.itemTypeID is GUI_ITEM_TYPE.EQUIPMENT and self.module.isBuiltIn and not self.module.isBuiltInInfoHidden:
+        elif self.module.itemTypeID is GUI_ITEM_TYPE.EQUIPMENT and self.module.isBuiltIn:
             padding = formatters.packPadding(top=SLOT_HIGHLIGHT_TYPES.TOOLTIP_BUILD_IN_180_X_135_OVERLAY_PADDING_TOP, left=SLOT_HIGHLIGHT_TYPES.TOOLTIP_BUILD_IN_180_X_135_OVERLAY_PADDING_LEFT)
             overlayPath = backport.image(R.images.gui.maps.icons.quests.bonuses.small.builtInEquipment_overlay())
             bottomOffset = 0
@@ -522,7 +545,7 @@ class InventoryBlockConstructor(ModuleTooltipBlockConstructor):
                     block.append(self._getInventoryBlock(count, self._inInventoryBlockData, self._inventoryPadding))
             if vehiclesCount:
                 inventoryVehicles = items.getVehicles(REQ_CRITERIA.INVENTORY)
-                installedVehicles = module.getInstalledVehicles(inventoryVehicles.itervalues())
+                installedVehicles = self._getInstalledVehicles(module, inventoryVehicles)
                 count = len(installedVehicles)
                 if count > 0:
                     totalInstalledVehicles = [ x.shortUserName for x in installedVehicles ]
@@ -566,6 +589,9 @@ class InventoryBlockConstructor(ModuleTooltipBlockConstructor):
             text += '\n' + discountText
         return text
 
+    def _getInstalledVehicles(self, module, inventoryVehicles):
+        return module.getInstalledVehicles(inventoryVehicles.itervalues())
+
 
 class CommonStatsBlockConstructor(ModuleTooltipBlockConstructor):
 
@@ -605,6 +631,9 @@ class CommonStatsBlockConstructor(ModuleTooltipBlockConstructor):
                     paramsKeyName = self.DUAL_ACCURACY_MODULE_PARAM
                 elif vehicle is not None and module.isDamageMutable():
                     paramsKeyName = self.MUTABLE_DAMAGE_MODULE_PARAM
+                elif reloadingType == GUN_CAN_BE_TWIN_GUN or reloadingType == GUN_TWIN_GUN:
+                    highlightPossible = serverSettings.checkTwinGunHighlights(increase=increaseHighlights)
+                    paramsKeyName = self.TWIN_GUN_MODULE_PARAM
             elif paramsKeyName == GUI_ITEM_TYPE.ENGINE:
                 if vehicle is not None and vehicle.descriptor.hasTurboshaftEngine:
                     highlightPossible = serverSettings.checkTurboshaftHighlights(increase=increaseHighlights)
@@ -680,6 +709,8 @@ class CommonStatsBlockConstructor(ModuleTooltipBlockConstructor):
             result.append(_ModuleExtraStatuses.AUTO_SHOOT_GUN)
         elif module.isDualGun(vDescr):
             result.append(_ModuleExtraStatuses.DUAL_GUN)
+        elif module.isTwinGun(vDescr):
+            result.append(_ModuleExtraStatuses.TWIN_GUN)
         if module.hasDualAccuracy(vDescr):
             result.append(_ModuleExtraStatuses.DUAL_ACCURACY_GUN)
         if module.isDamageMutable():
@@ -767,7 +798,7 @@ class EffectsBlockConstructor(ModuleTooltipBlockConstructor):
         if not attribs:
             return block
         kpiArgs = {kpi.name:text_styles.bonusAppliedText(getKpiValueString(kpi, kpi.value)) for kpi in module.getKpi(self.configuration.vehicle)}
-        onUseStr = backport.text((attribs.removingStun.onUse() if isRemovingStun else attribs.onUse()), **kpiArgs)
+        onUseStr = self._getOnUseStr(attribs, isRemovingStun, **kpiArgs)
         restrictionStr = backport.text(attribs.restriction())
         alwaysStr = backport.text(attribs.always(), **kpiArgs)
         if hasString(alwaysStr):
@@ -780,6 +811,9 @@ class EffectsBlockConstructor(ModuleTooltipBlockConstructor):
             block[0]['padding']['top'] = -1
             block[(-1)]['padding']['bottom'] = -5
         return block
+
+    def _getOnUseStr(self, attribs, isRemovingStun, **kpiArgs):
+        return backport.text((attribs.removingStun.onUse() if isRemovingStun else attribs.onUse()), **kpiArgs)
 
 
 class OptDeviceEffectsBlockConstructor(ModuleTooltipBlockConstructor):

@@ -8,7 +8,6 @@ from gui.Scaleform.locale.MENU import MENU
 from gui.battle_control.arena_info import settings
 from gui.prb_control.formatters import getPrebattleFullDescription
 from gui.shared.utils import toUpper, functions
-from gui.wt_event.wt_event_helpers import isBossTeam
 from helpers import i18n, dependency
 from gui.shared.system_factory import registerArenaDescrs, collectArenaDescrs
 from skeletons.gui.lobby_context import ILobbyContext
@@ -147,13 +146,17 @@ class DefaultArenaGuiDescription(IArenaGuiDescription):
         return teamName
 
     def getSmallIcon(self):
-        return self._visitor.getArenaIcon(settings.SMALL_MAP_IMAGE_SF_PATH)
+        return self._visitor.getArenaIcon('battleLoading')
+
+    def _getScreenImg(self, subdir):
+        img = self._visitor.getArenaIcon(subdir)
+        return img.replace('img://', '') or settings.DEFAULT_SCREEN_MAP_IMAGE_RES_PATH
 
     def getScreenIcon(self):
-        return self._visitor.getArenaIcon(settings.SCREEN_MAP_IMAGE_RES_PATH)
+        return self._getScreenImg('screen')
 
     def getRespawnIcon(self):
-        return self._visitor.getArenaIcon(settings.RESPAWN_MAP_IMAGE_RES_PATH)
+        return self._getScreenImg('respawn')
 
     def getGuiEventType(self):
         return 'normal'
@@ -325,26 +328,6 @@ class Comp7BattlesDescription(ArenaWithLabelDescription):
         return not replayCtrl.isPlaying
 
 
-class EventBattleDescription(ArenaWithLabelDescription):
-
-    def getDescriptionString(self, isInBattle=True):
-        return backport.text(R.strings.event.loading.battleTypes.wt())
-
-    def getWinString(self, isInBattle=True):
-        if isBossTeam(self._team):
-            return backport.text(R.strings.event.loading.winText.boss())
-        return backport.text(R.strings.event.loading.winText.hunters())
-
-    def getTeamName(self, team):
-        if isBossTeam(team):
-            return backport.text(R.strings.event.stats.team.boss())
-        return backport.text(R.strings.event.stats.team.hunters())
-
-    def isInvitationEnabled(self):
-        replayCtrl = BattleReplay.g_replayCtrl
-        return not replayCtrl.isPlaying
-
-
 registerArenaDescrs(ARENA_GUI_TYPE.RANDOM, ArenaWithBasesDescription)
 registerArenaDescrs(ARENA_GUI_TYPE.EPIC_RANDOM, ArenaWithBasesDescription)
 registerArenaDescrs(ARENA_GUI_TYPE.TRAINING, ArenaWithBasesDescription)
@@ -357,15 +340,12 @@ registerArenaDescrs(ARENA_GUI_TYPE.MAPBOX, MapboxArenaDescription)
 registerArenaDescrs(ARENA_GUI_TYPE.COMP7, Comp7BattlesDescription)
 registerArenaDescrs(ARENA_GUI_TYPE.TOURNAMENT_COMP7, Comp7BattlesDescription)
 registerArenaDescrs(ARENA_GUI_TYPE.TRAINING_COMP7, Comp7BattlesDescription)
-registerArenaDescrs(ARENA_GUI_TYPE.EVENT_BATTLES, EventBattleDescription)
 
 def createDescription(arenaVisitor):
     guiVisitor = arenaVisitor.gui
     arenaDescr = collectArenaDescrs(guiVisitor.guiType)
     if arenaDescr is not None:
         description = arenaDescr(arenaVisitor)
-    elif guiVisitor.isEventBattle():
-        description = EventBattleDescription(arenaVisitor)
     elif guiVisitor.hasLabel():
         description = ArenaWithLabelDescription(arenaVisitor)
     else:

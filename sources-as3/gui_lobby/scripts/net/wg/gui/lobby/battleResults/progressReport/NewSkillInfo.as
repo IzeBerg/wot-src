@@ -92,6 +92,7 @@ package net.wg.gui.lobby.battleResults.progressReport
       private function createBonusButtons() : void
       {
          var _loc1_:SoundButtonEx = null;
+         _loc1_ = null;
          var _loc2_:int = 0;
          while(_loc2_ < this._data.bonusSkillsAmount)
          {

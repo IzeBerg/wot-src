@@ -14,6 +14,16 @@
 			<type>include</type>
 		</rule>
 		<rule>
+			<pattern>.*/item_defs/vehicles/common/supply_slot_types\.xml$</pattern>
+			<type>includeByPath</type>
+			<params>slots</params>
+		</rule>
+		<rule>
+			<pattern>.*/item_defs/vehicles/common/exhaust_effects\.xml$</pattern>
+			<type>includeByPath</type>
+			<params>*</params>
+		</rule>
+		<rule>
 			<pattern>.*/item_defs/vehicles/.*/.*\.xml$</pattern>
 			<type>merge</type>
 		</rule>
@@ -70,6 +80,15 @@
 			<type>include</type>
 		</rule>
 		<rule>
+			<pattern>gui/sound_notifications\.xml$</pattern>
+			<type>include</type>
+		</rule>
+		<rule>
+			<pattern>gui/vehicle_errors_panel\.xml$</pattern>
+			<type>includeByPath</type>
+			<params>messages</params>
+		</rule>
+		<rule>
 			<pattern>gui/player_messages_panel\.xml$</pattern>
 			<type>includeByPath</type>
 			<params>messages</params>
@@ -92,6 +111,10 @@
 			<type>include</type>
 		</rule>
 		<rule>
+			<pattern>.*/server_xml/postmortem_settings_config\.xml$</pattern>
+			<type>include</type>
+		</rule>
+		<rule>
 			<pattern>engine_config\.xml$</pattern>
 			<type>includeByPath</type>
 			<params>soundMgr/*/*</params>
@@ -102,6 +125,10 @@
 			<params>extraSoundRemapping</params>
 		</rule>
 		<rule>
+			<pattern>scripts/dynamic_objects\.xml$</pattern>
+			<type>include</type>
+		</rule>
+		<rule>
 			<pattern>gui/sound_notifications\.xml$</pattern>
 			<type>include</type>
 		</rule>
@@ -109,6 +136,18 @@
 			<pattern>.*/server_xml/fairplay\.xml$</pattern>
 			<type>includeByPath</type>
 			<params>newbieBattles/arenaBonusTypes violations</params>
+		</rule>
+		<rule>
+			<pattern>.*/server_xml/economics\.xml$</pattern>
+			<type>include</type>
+		</rule>
+		<rule>
+			<pattern>.*/server_xml/ai/weakspots/.*\.xml$</pattern>
+			<type>include</type>
+		</rule>
+		<rule>
+			<pattern>.*/server_xml/event_notifications\.xml$</pattern>
+			<type>include</type>
 		</rule>
 	</xml_whitelist>
 </root>

@@ -46,7 +46,6 @@ package net.wg.gui.battle.battleRoyale.views.components
          DESC_TEXT_FILTERS[BATTLE_NOTIFICATIONS_TIMER_COLORS.ORANGE] = [new DropShadowFilter(0,0,0,0.5,12,12),new DropShadowFilter(0,0,0,1,4,4)];
          DESC_TEXT_FILTERS[BATTLE_NOTIFICATIONS_TIMER_COLORS.GREEN] = [];
          DESC_TEXT_FILTERS[BATTLE_NOTIFICATIONS_TIMER_COLORS.RED] = [new DropShadowFilter(0,0,0,0.5,12,12),new DropShadowFilter(0,0,0,1,4,4)];
-         DESC_TEXT_COLOR[BATTLE_NOTIFICATIONS_TIMER_COLORS.BLUE] = 10083322;
       }
       
       public var bg:MovieClip = null;
@@ -110,13 +109,10 @@ package net.wg.gui.battle.battleRoyale.views.components
       
       override public function setSettings(param1:NotificationTimerSettingVO) : void
       {
-         var _loc2_:uint = 0;
          this.setIcon(param1.iconName);
-         if(DESC_TEXT_COLOR.hasOwnProperty(param1.color))
+         if(DESC_TEXT_COLOR[param1.color])
          {
-            _loc2_ = DESC_TEXT_COLOR[param1.color];
-            this.desc.textColor = _loc2_;
-            this.timerContainer.setColor(_loc2_);
+            this.desc.textColor = DESC_TEXT_COLOR[param1.color];
          }
          if(DESC_TEXT_FILTERS[param1.color])
          {

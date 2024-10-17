@@ -48,13 +48,13 @@ package net.wg.gui.battle.views.destroyTimers
       
       public var container:SecondaryTimerContainer = null;
       
+      protected var secString:String = "";
+      
       private var _xScale:Number = 1;
       
       private var _yScale:Number = 1;
       
       private var _alpha:Number = 1;
-      
-      private var _secString:String = "";
       
       private var _isShowing:Boolean = false;
       
@@ -70,7 +70,7 @@ package net.wg.gui.battle.views.destroyTimers
          stop();
          mouseEnabled = mouseChildren = false;
          name = SECONDARY_TIMER_NAME;
-         this._secString = App.utils.locale.makeString(INGAME_GUI.STUN_SECONDS);
+         this.secString = App.utils.locale.makeString(INGAME_GUI.STUN_SECONDS);
          init(true,true);
       }
       
@@ -224,7 +224,7 @@ package net.wg.gui.battle.views.destroyTimers
       {
          if(StringUtils.isNotEmpty(lastStrTime))
          {
-            this.container.textField.text = lastStrTime + this._secString;
+            this.container.textField.text = lastStrTime + this.secString;
          }
          else
          {

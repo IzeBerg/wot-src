@@ -1,6 +1,6 @@
 from collections import namedtuple
 from functools import partial
-import BigWorld, math
+import BigWorld
 from constants import VEHICLE_SETTING, DAMAGE_INFO_CODES, DAMAGE_INFO_INDICES, RespawnState, IS_DEVELOPMENT
 from items import vehicles, ITEM_TYPES
 from wotdecorators import noexcept
@@ -53,7 +53,7 @@ class OwnVehicleBase(BigWorld.DynamicScriptComponent):
                 timeRemaining = vehicleAmmo.endTime
                 if timeRemaining > 0:
                     timeRemaining = max(timeRemaining - self._serverTime(), 0)
-                avatar.updateVehicleAmmo(self.entity.id, vehicleAmmo.compactDescr, vehicleAmmo.quantity, vehicleAmmo.quantityInClip, None if self.__isAttachingToVehicle else vehicleAmmo.previousStage, math.floor(timeRemaining), vehicleAmmo.totalTime, vehicleAmmo.index)
+                avatar.updateVehicleAmmo(self.entity.id, vehicleAmmo.compactDescr, vehicleAmmo.quantity, vehicleAmmo.quantityInClip, None if self.__isAttachingToVehicle else vehicleAmmo.previousStage, timeRemaining, vehicleAmmo.totalTime, vehicleAmmo.index)
 
             return
 
@@ -70,7 +70,7 @@ class OwnVehicleBase(BigWorld.DynamicScriptComponent):
         if not avatar:
             return
         timeLeft, timeBase = self.__getTimeLeftBaseTime(prop)
-        avatar.updateVehicleGunReloadTime(self.entity.id, timeLeft, timeBase)
+        avatar.updateVehicleGunReloadTime(self.entity.id, timeLeft, timeBase, prop.clipTime)
 
     @noexcept
     def update_vehicleClipReloadTime(self, prop):
@@ -78,7 +78,7 @@ class OwnVehicleBase(BigWorld.DynamicScriptComponent):
         if not avatar:
             return
         timeLeft, timeBase = self.__getTimeLeftBaseTime(prop)
-        avatar.updateVehicleClipReloadTime(self.entity.id, timeLeft, timeBase, prop.firstTime, prop.stunned, prop.isBoostApplicable)
+        avatar.updateVehicleClipReloadTime(self.entity.id, timeLeft, timeBase, prop.firstTime, prop.stunned, prop.isBoostApplicable, prop.clipTime)
 
     @noexcept
     def update_vehicleSettings(self, prop):
@@ -305,7 +305,7 @@ class OwnVehicleBase(BigWorld.DynamicScriptComponent):
     def beforeRespawn(self, vehicleID, health):
         vehicle = BigWorld.entities.get(vehicleID)
         if vehicle:
-            vehicle.onHealthChanged(health, health, 0, 0)
+            vehicle.onHealthChanged(health, health, 0, 0, -1)
 
     def getReloadTime(self):
         if self.vehicleGunReloadTime:
@@ -316,6 +316,12 @@ class OwnVehicleBase(BigWorld.DynamicScriptComponent):
         if self.siegeStateStatus:
             return self.__getTimeLeft(self.siegeStateStatus, useEndTime=True)
         return 0
+
+    def resetGunReloadTime(self):
+        vehicleGunReloadTime = self.vehicleGunReloadTime
+        if vehicleGunReloadTime is not None and vehicleGunReloadTime.timeLeft <= 0:
+            self.set_vehicleGunReloadTime()
+        return
 
     def setNested_vehicleAmmoList(self, path, prev):
         if self.__inRespawn:
@@ -328,7 +334,7 @@ class OwnVehicleBase(BigWorld.DynamicScriptComponent):
             timeRemaining = changedAmmo.endTime
             if timeRemaining > 0:
                 timeRemaining = max(timeRemaining - self._serverTime(), 0)
-            avatar.resetVehicleAmmo(oldCompactDescr=prev.compactDescr, newCompactDescr=changedAmmo.compactDescr, quantity=changedAmmo.quantity, stage=changedAmmo.previousStage, timeRemaining=math.floor(timeRemaining), totalTime=changedAmmo.totalTime, index=changedAmmo.index)
+            avatar.resetVehicleAmmo(oldCompactDescr=prev.compactDescr, newCompactDescr=changedAmmo.compactDescr, quantity=changedAmmo.quantity, stage=changedAmmo.previousStage, timeRemaining=timeRemaining, totalTime=changedAmmo.totalTime, index=changedAmmo.index)
         else:
             self.__setNested(self.update_vehicleAmmoList, 'vehicleAmmoList', path, prev)
 

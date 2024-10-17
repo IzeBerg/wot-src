@@ -7,6 +7,7 @@ package net.wg.gui.components.crosshairPanel
    import net.wg.gui.components.crosshairPanel.components.gunMarker.DualGunMarker;
    import net.wg.gui.components.crosshairPanel.components.gunMarker.GunMarker;
    import net.wg.gui.components.crosshairPanel.components.gunMarker.IGunMarker;
+   import net.wg.gui.components.crosshairPanel.components.gunMarker.TwinGunMarker;
    import net.wg.infrastructure.interfaces.entity.IDisposable;
    
    public class GunMarkersManager implements IDisposable
@@ -20,6 +21,8 @@ package net.wg.gui.components.crosshairPanel
       private var _dualGunMarkers:Vector.<DualGunMarker>;
       
       private var _dualAccGunMarkers:Vector.<GunMarker>;
+      
+      private var _twinGunMarkers:Vector.<TwinGunMarker>;
       
       private var _scale:Number = 1;
       
@@ -39,6 +42,7 @@ package net.wg.gui.components.crosshairPanel
          this._gunMarkers = {};
          this._dualGunMarkers = new Vector.<DualGunMarker>(0);
          this._dualAccGunMarkers = new Vector.<GunMarker>(0);
+         this._twinGunMarkers = new Vector.<TwinGunMarker>(0);
          this._container = param1;
       }
       
@@ -68,6 +72,10 @@ package net.wg.gui.components.crosshairPanel
          {
             this._dualGunMarkers.push(param1);
          }
+         if(param1 is TwinGunMarker)
+         {
+            this._twinGunMarkers.push(param1);
+         }
          var _loc3_:Boolean = DUAL_ACC_NAMES.indexOf(param2) > -1;
          if(_loc3_)
          {
@@ -94,6 +102,7 @@ package net.wg.gui.components.crosshairPanel
       public function destroyGunMarker(param1:String) : Boolean
       {
          var _loc3_:int = 0;
+         var _loc4_:int = 0;
          var _loc2_:IGunMarker = this._gunMarkers[param1];
          if(_loc2_)
          {
@@ -101,6 +110,11 @@ package net.wg.gui.components.crosshairPanel
             if(_loc3_ != -1)
             {
                this._dualGunMarkers.splice(_loc3_,1);
+            }
+            _loc4_ = this._twinGunMarkers.indexOf(_loc2_);
+            if(_loc4_ != -1)
+            {
+               this._twinGunMarkers.splice(_loc4_,1);
             }
             _loc2_.dispose();
             this._container.removeChild(DisplayObject(_loc2_));
@@ -123,6 +137,8 @@ package net.wg.gui.components.crosshairPanel
          this._dualGunMarkers = null;
          this._dualAccGunMarkers.length = 0;
          this._dualAccGunMarkers = null;
+         this._twinGunMarkers.length = 0;
+         this._twinGunMarkers = null;
          this._markerSettings = null;
          this._container = null;
       }
@@ -187,21 +203,30 @@ package net.wg.gui.components.crosshairPanel
          }
       }
       
-      public function setExplosiveShotMarker(param1:Boolean) : void
-      {
-         var _loc2_:IGunMarker = null;
-         for each(_loc2_ in this._gunMarkers)
-         {
-            _loc2_.setExplosiveMarker(param1);
-         }
-      }
-      
       public function updateDualGunMarkerState(param1:int) : void
       {
          var _loc2_:DualGunMarker = null;
          for each(_loc2_ in this._dualGunMarkers)
          {
             _loc2_.setMarkerState(param1);
+         }
+      }
+      
+      public function setTwinGunActive(param1:Boolean) : void
+      {
+         var _loc2_:TwinGunMarker = null;
+         for each(_loc2_ in this._twinGunMarkers)
+         {
+            _loc2_.setTwinGunActive(param1);
+         }
+      }
+      
+      public function setTwinGunMarkerState(param1:uint) : void
+      {
+         var _loc2_:TwinGunMarker = null;
+         for each(_loc2_ in this._twinGunMarkers)
+         {
+            _loc2_.setTwinGunMarkerState(param1);
          }
       }
       

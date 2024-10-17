@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<params>
+		<param>
+			<name>state</name>
+			<type>float</type>
+		</param>
+	</params>
+	<node>
+		<name>idle</name>
+		<type>sequence</type>
+		<resource>particles/eff_sequence/halloween/our_tank_demolitiy/demolitiy_small.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>-1</loop>
+		<transition>
+			<to>looted</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>float</type>
+					<name>state</name>
+					<rangeStart>1.000000</rangeStart>
+					<rangeEnd>1.000000</rangeEnd>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>0.000000 0.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>looted</name>
+		<type>sequence</type>
+		<resource>particles/eff_sequence/halloween/our_tank_demolitiy/demolitiy_catch_small.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>1</loop>
+		<uiPosition>0.000000 100.000000 0.000000</uiPosition>
+	</node>
+</root>

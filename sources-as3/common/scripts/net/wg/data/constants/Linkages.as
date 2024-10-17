@@ -111,8 +111,6 @@ package net.wg.data.constants
       
       public static const PROGRESSIVE_REWARD_WIDGET:String = "ProgressiveRewardWidgetUI";
       
-      public static const PERK_ITEM_UI:String = "PerkItemUI";
-      
       public static const GHOST_TOGGLE_RENDERER_UI:String = "GhostToggleRendererUI";
       
       public static const INVITES_FRIENDS:String = "FriendsListFromUI";
@@ -230,8 +228,6 @@ package net.wg.data.constants
       public static const GAS_DRAFT_ICON:String = "destroyTimerGazDraftUI";
       
       public static const STUN_ICON:String = "secondaryStunIconUI";
-      
-      public static const WT_STUN_ICON:String = "secondaryWTStunIconUI";
       
       public static const BLOCKED_ICON:String = "secondaryBlockedIconUI";
       
@@ -523,6 +519,8 @@ package net.wg.data.constants
       
       public static const YOH_CHASSIS_MODE_ANIMATION_UI:String = "YohChassisModeAnimationUI";
       
+      public static const TWIN_GUN_MODE_ANIMATION_UI:String = "TwinGunModeAnimationUI";
+      
       public static const POSTMORTEM_PANEL:String = "PostmortemPanelUI";
       
       public static const PVE_POSTMORTEM_PANEL:String = "PvePostmortemPanelUI";
@@ -548,8 +546,6 @@ package net.wg.data.constants
       public static const BATTLE_PROGRESS_TASK_SEPARATOR:String = "battleProgressTaskSeparatorUI";
       
       public static const CAPTURE_BAR_LINKAGE:String = "TeamCaptureBarUI";
-      
-      public static const EVENT_CAPTURE_BAR_LINKAGE:String = "EventTeamCaptureBarUI";
       
       public static const VEH_CMP_WINDOW_BG_UI:String = "WindowBgUI";
       
@@ -1022,16 +1018,6 @@ package net.wg.data.constants
       public static const COMP7_CONDITIONS_SETTINGS_LINKAGE:String = "Comp7ConditionsUI";
       
       public static const COMP7_CONDITIONS_ROOM_LINKAGE:String = "Comp7ConditionsRoomUI";
-      
-      public static const WT_HYPERION_WARNING_ICON:String = "destroyTimerWtHyperionUI";
-      
-      public static const WT_EVENT_ENTRY_POINT_ANIM_UI:String = "WTEventEntryPointAnimUI";
-      
-      public static const WT_EVENT_ENTRY_POINT_STATIC_BG_UI:String = "WTEventEntryPointStaticUI";
-      
-      public static const WT_EVENT_ENTRY_TEXT_INFO_UI:String = "WTEventEntryTextInfoUI";
-      
-      public static const WT_ENERGY_SPAWN_ENTRY_UI:String = "WTEnergySpawnFlashEntry";
        
       
       public function Linkages()

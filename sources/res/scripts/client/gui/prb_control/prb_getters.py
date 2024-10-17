@@ -293,7 +293,7 @@ def hasModalEntity():
 
 
 def getTrainingBattleRoundLimits(accountAttrs):
-    if accountAttrs & ACCOUNT_ATTR.DAILY_BONUS_1:
+    if IS_DEVELOPMENT or accountAttrs & ACCOUNT_ATTR.DAILY_BONUS_1:
         return (60, 14400)
     return (
      300, 1800)

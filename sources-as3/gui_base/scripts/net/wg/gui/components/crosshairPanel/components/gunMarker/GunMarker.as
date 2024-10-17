@@ -5,8 +5,6 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
    
    public class GunMarker extends SimpleContainer implements IGunMarker
    {
-      
-      private static const WT_MARKER_TYPE:Number = 6;
        
       
       public var gunTag:GunMarkerTag = null;
@@ -22,8 +20,6 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
       private var _scale:Number = 1;
       
       private var _isSecondary:Boolean = false;
-      
-      private var _mixinType:Number = 0;
       
       public function GunMarker()
       {
@@ -120,7 +116,6 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
       
       public function setSettings(param1:Number, param2:Number, param3:Number, param4:Number) : void
       {
-         this._mixinType = param2;
          this.gunTag.setType(param1);
          this.radiusMC.setType(param2);
          if(this._gunTagAlpha != param3)
@@ -132,19 +127,6 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
          {
             this._mixingAlpha = param4;
             invalidate(GunMarkerConsts.GUN_MIXING_ALPHA_VALIDATION);
-         }
-      }
-      
-      public function setExplosiveMarker(param1:Boolean) : void
-      {
-         if(param1)
-         {
-            this.radiusMC.setReloadingParams(-1,"");
-            this.radiusMC.setType(WT_MARKER_TYPE);
-         }
-         else
-         {
-            this.radiusMC.setType(this._mixinType);
          }
       }
    }

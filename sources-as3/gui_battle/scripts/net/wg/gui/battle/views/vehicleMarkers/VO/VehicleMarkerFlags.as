@@ -25,12 +25,27 @@ package net.wg.gui.battle.views.vehicleMarkers.VO
       
       public static const DAMAGE_RICOCHET:String = "ricochet";
       
+      public static const DAMAGE_FROM_OTHER_FLAG:uint = 0;
+      
+      public static const DAMAGE_FROM_SQUAD_FLAG:uint = 1;
+      
+      public static const DAMAGE_FROM_PLAYER_FLAG:uint = 2;
+      
       public static const PLAYER_DAMAGE_COLOR:Object = {
-         "green":"green",
+         "green":"gold",
          "red":"gold",
-         "gold":"green",
-         "blue":"green",
-         "yellow":"green",
+         "gold":"gold",
+         "blue":"gold",
+         "yellow":"gold",
+         "purple":"gold"
+      };
+      
+      public static const SQUAD_DAMAGE_COLOR:Object = {
+         "green":"orange",
+         "red":"orange",
+         "gold":"orange",
+         "blue":"orange",
+         "yellow":"yellow",
          "purple":"yellow"
       };
       
@@ -48,6 +63,8 @@ package net.wg.gui.battle.views.vehicleMarkers.VO
       public static const ALLOWED_DAMAGE_TYPES:Array = [DAMAGE_FIRE,DAMAGE_EXPLOSION];
       
       public static const LABELED_DAMAGE_TYPES:Array = [DAMAGE_BLOCKED,DAMAGE_BLOCKED_CRIT,DAMAGE_RICOCHET];
+      
+      public static const DAMAGE_FROM_COLORS:Array = [OTHER_DAMAGE_COLOR,SQUAD_DAMAGE_COLOR,PLAYER_DAMAGE_COLOR];
        
       
       public function VehicleMarkerFlags()

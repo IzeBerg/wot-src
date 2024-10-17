@@ -1,7 +1,13 @@
 import typing, Event
 from constants import DUAL_ACCURACY_STATE
-from vehicle_systems.entity_components.vehicle_mechanic_component import getPlayerVehicleMechanic, VehicleMechanicComponent
+from vehicle_systems.entity_components.vehicle_mechanic_component import getVehicleMechanic, getPlayerVehicleMechanic, initOnce, VehicleMechanicComponent
+if typing.TYPE_CHECKING:
+    from Vehicle import Vehicle
 _DEFAULT_ACCURACY_FACTOR = 1.0
+
+def getVehicleDualAccuracy(vehicle):
+    return getVehicleMechanic('dualAccuracy', vehicle)
+
 
 def getPlayerVehicleDualAccuracy():
     return getPlayerVehicleMechanic('dualAccuracy')
@@ -9,6 +15,7 @@ def getPlayerVehicleDualAccuracy():
 
 class DualAccuracy(VehicleMechanicComponent):
 
+    @initOnce
     def __init__(self):
         super(DualAccuracy, self).__init__()
         self.__dualAccuracyFactor = _DEFAULT_ACCURACY_FACTOR

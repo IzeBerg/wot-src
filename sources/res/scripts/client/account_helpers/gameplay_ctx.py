@@ -1,5 +1,5 @@
 import ArenaType, constants
-from constants import RANDOM_FLAGS
+from constants import RANDOM_FLAGS, WINBACK_FLAGS
 from debug_utils import LOG_DEBUG, LOG_ERROR, LOG_WARNING
 from helpers import dependency
 from skeletons.account_helpers.settings_core import ISettingsCore
@@ -77,4 +77,11 @@ def getRandomFlags():
         flags |= RANDOM_FLAGS.IS_ONLY_10_MODE_ENABLED
     if isMapsInDevelopmentEnabled():
         flags |= RANDOM_FLAGS.IS_MAPS_IN_DEVELOPMENT_ENABLED
+    return flags
+
+
+def getWinbackFlags():
+    flags = 0
+    if isMapsInDevelopmentEnabled():
+        flags |= WINBACK_FLAGS.IS_MAPS_IN_DEVELOPMENT_ENABLED
     return flags

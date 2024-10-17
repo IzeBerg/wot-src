@@ -14,12 +14,6 @@ package net.wg.gui.components.crosshairPanel
       
       private static const SNIPER_VIEW_ID:int = 2;
       
-      private static const ACTIVE_GUN_ID_RIGHT:int = 1;
-      
-      private static const DIRECTION_LEFT:int = -1;
-      
-      private static const DIRECTION_RIGHT:int = 1;
-      
       private static const RED_COLOR_OFFSET_MULTIPLIER:int = 60;
       
       private static const GREEN_COLOR_OFFSET_MULTIPLIER:int = 48;
@@ -84,16 +78,6 @@ package net.wg.gui.components.crosshairPanel
          this._crosshair = null;
       }
       
-      public function setActiveGunId(param1:int) : void
-      {
-         this._direction = param1 == ACTIVE_GUN_ID_RIGHT ? int(DIRECTION_LEFT) : int(DIRECTION_RIGHT);
-      }
-      
-      public function setCameraTransitionDuration(param1:Number) : void
-      {
-         this._duration = param1;
-      }
-      
       public function setView(param1:int, param2:ICrosshair) : void
       {
          if(param1 != SNIPER_VIEW_ID)
@@ -104,8 +88,10 @@ package net.wg.gui.components.crosshairPanel
          this._crosshair = param2 as DisplayObject;
       }
       
-      public function start() : void
+      public function start(param1:int, param2:Number) : void
       {
+         this._direction = -param1;
+         this._duration = param2;
          if(this._timer.running)
          {
             this.resetAnimation();

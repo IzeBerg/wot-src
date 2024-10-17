@@ -2,9 +2,11 @@ package net.wg.gui.battle.views.battleTimer
 {
    import flash.display.MovieClip;
    import flash.text.TextField;
+   import net.wg.infrastructure.base.meta.IBattleTimerMeta;
+   import net.wg.infrastructure.base.meta.impl.BattleTimerMeta;
    import scaleform.gfx.TextFieldEx;
    
-   public class BattleAnimationTimer extends BaseBattleTimer
+   public class BattleAnimationTimer extends BattleTimerMeta implements IBattleTimerMeta
    {
        
       
@@ -16,11 +18,11 @@ package net.wg.gui.battle.views.battleTimer
       
       public var shadow:MovieClip = null;
       
-      protected var minutes:String = null;
-      
-      protected var seconds:String = null;
-      
       private var _isCritical:Boolean = false;
+      
+      private var _minutes:String = null;
+      
+      private var _seconds:String = null;
       
       public function BattleAnimationTimer()
       {
@@ -29,7 +31,21 @@ package net.wg.gui.battle.views.battleTimer
          TextFieldEx.setNoTranslate(this.secondsTF,true);
       }
       
-      override public function as_setColor(param1:Boolean) : void
+      public function as_setTotalTime(param1:String, param2:String) : void
+      {
+         if(this._minutes != param1)
+         {
+            this._minutes = param1;
+            this.minutesTF.text = param1;
+         }
+         if(this._seconds != param2)
+         {
+            this._seconds = param2;
+            this.secondsTF.text = param2;
+         }
+      }
+      
+      public function as_setColor(param1:Boolean) : void
       {
          if(this._isCritical != param1)
          {
@@ -46,17 +62,11 @@ package net.wg.gui.battle.views.battleTimer
          }
       }
       
-      override public function as_setTotalTime(param1:String, param2:String) : void
+      public function as_showBattleTimer(param1:Boolean) : void
       {
-         if(this.minutes != param1)
+         if(visible != param1)
          {
-            this.minutes = param1;
-            this.minutesTF.text = param1;
-         }
-         if(this.seconds != param2)
-         {
-            this.seconds = param2;
-            this.secondsTF.text = param2;
+            visible = param1;
          }
       }
       

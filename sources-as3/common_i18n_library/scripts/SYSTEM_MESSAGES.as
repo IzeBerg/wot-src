@@ -539,6 +539,8 @@ package
       
       public static const TRAINING_ERROR_ADDPLAYER:String = "#system_messages:training/error/AddPlayer";
       
+      public static const TRAINING_ERROR_ONSLAUGHTROSTERLIMIT:String = "#system_messages:training/error/onslaughtRosterLimit";
+      
       public static const BATTLESESSION_ERROR_ADDPLAYER:String = "#system_messages:battlesession/error/AddPlayer";
       
       public static const BATTLESESSION_ERROR_ADDOBSERVER:String = "#system_messages:battlesession/error/AddObserver";
@@ -802,8 +804,6 @@ package
       public static const ADD_TANKMAN_SKILL_VEHICLE_LOCKED:String = "#system_messages:add_tankman_skill/vehicle_locked";
       
       public static const FILLING_UNTRAINED_PERKS_SUCCESS:String = "#system_messages:filling_untrained_perks/success";
-      
-      public static const ADD_TANKMAN_SKILL_CREW_SKILLS_LOCKED:String = "#system_messages:add_tankman_skill/crew_skills_locked";
       
       public static const FILLING_UNTRAINED_PERKS_SERVER_ERROR:String = "#system_messages:filling_untrained_perks/server_error";
       
@@ -2289,6 +2289,8 @@ package
       
       public static const ROYALE_NOTIFICATIONS_SINGLELEVEL_TEXT:String = "#system_messages:royale/notifications/singleLevel/text";
       
+      public static const MAPBOX_NOTIFICATION_PRIMETIME_TITLE:String = "#system_messages:mapbox/notification/primeTime/title";
+      
       public static const MAPBOX_NOTIFICATION_PRIMETIME:String = "#system_messages:mapbox/notification/primeTime";
       
       public static const TOKENS_NOTIFICATION_MARK_ACQUIRED:String = "#system_messages:tokens/notification/mark_acquired";
@@ -2706,6 +2708,16 @@ package
       public static const PARENTCONTROL_MAINTEXT:String = "#system_messages:parentControl/mainText";
       
       public static const PARENTCONTROL_LINKTEXT:String = "#system_messages:parentControl/linkText";
+      
+      public static const PARENTCONTROL_PRIVATEMESSAGESFORBIDDEN:String = "#system_messages:parentControl/privateMessagesForbidden";
+      
+      public static const PARENTCONTROL_NONFRIENDPRIVATEMESSAGESFORBIDDEN:String = "#system_messages:parentControl/nonFriendPrivateMessagesForbidden";
+      
+      public static const COUNTRYRESTRICTION_PRIVATEMESSAGESFORBIDDEN:String = "#system_messages:countryRestriction/privateMessagesForbidden";
+      
+      public static const OTHERRESTRICTION_PRIVATEMESSAGESFORBIDDEN:String = "#system_messages:otherRestriction/privateMessagesForbidden";
+      
+      public static const OTHERRESTRICTION_NONFRIENDPRIVATEMESSAGESFORBIDDEN:String = "#system_messages:otherRestriction/nonFriendPrivateMessagesForbidden";
       
       public static const RESOURCEWELL_RESOURCESLOADINGERROR:String = "#system_messages:resourceWell/resourcesLoadingError";
       

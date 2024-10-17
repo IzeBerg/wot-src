@@ -168,29 +168,56 @@ class PaintItem(BaseCustomizationItem):
         return result
 
 
+class EmissionParams():
+
+    def __init__(self):
+        self.emissionTexture = ''
+        self.emissionDeferredPower = 1.0
+        self.emissionForwardPower = 1.0
+
+
 class DecalItem(BaseCustomizationItem):
     __metaclass__ = ReflectionMetaclass
     itemType = CustomizationType.DECAL
-    __slots__ = ('type', 'canBeMirrored')
+    __slots__ = ('type', 'canBeMirrored', 'emissionParams')
     allSlots = BaseCustomizationItem.__slots__ + __slots__
 
     def __init__(self, parentGroup=None):
         self.type = 0
         self.canBeMirrored = False
+        self.emissionParams = EmissionParams()
         super(DecalItem, self).__init__(parentGroup)
+
+    def __deepcopy__(self, memodict={}):
+        newItem = type(self)()
+        newItem.type = self.type
+        newItem.canBeMirrored = self.canBeMirrored
+        newItem.emissionParams = deepcopy(self.emissionParams)
+        super(DecalItem, self)._copy(newItem)
+        return newItem
 
 
 class ProjectionDecalItem(BaseCustomizationItem):
     __metaclass__ = ReflectionMetaclass
     itemType = CustomizationType.PROJECTION_DECAL
-    __slots__ = ('canBeMirroredHorizontally', 'glossTexture', 'scaleFactorId')
+    __slots__ = ('canBeMirroredHorizontally', 'glossTexture', 'scaleFactorId', 'emissionParams')
     allSlots = BaseCustomizationItem.__slots__ + __slots__
 
     def __init__(self, parentGroup=None):
         self.canBeMirroredHorizontally = False
         self.glossTexture = ''
         self.scaleFactorId = DEFAULT_SCALE_FACTOR_ID
+        self.emissionParams = EmissionParams()
         super(ProjectionDecalItem, self).__init__(parentGroup)
+
+    def __deepcopy__(self, memodict={}):
+        newItem = type(self)()
+        newItem.canBeMirroredHorizontally = self.canBeMirroredHorizontally
+        newItem.glossTexture = self.glossTexture
+        newItem.scaleFactorId = self.scaleFactorId
+        newItem.emissionParams = deepcopy(self.emissionParams)
+        super(ProjectionDecalItem, self)._copy(newItem)
+        return newItem
 
     @property
     def canBeMirroredVertically(self):
@@ -206,7 +233,7 @@ class CamouflageItem(BaseCustomizationItem):
     itemType = CustomizationType.CAMOUFLAGE
     __slots__ = ('palettes', 'compatibleParts', 'componentsCovering', 'invisibilityFactor',
                  'tiling', 'tilingSettings', 'scales', 'rotation', 'glossMetallicSettings',
-                 'styleId')
+                 'styleId', 'emissionParams')
     allSlots = BaseCustomizationItem.__slots__ + __slots__
 
     def __init__(self, parentGroup=None):
@@ -220,6 +247,7 @@ class CamouflageItem(BaseCustomizationItem):
         self.scales = (1.2, 1.0, 0.7)
         self.glossMetallicSettings = {'glossMetallicMap': '', 'gloss': Math.Vector4(0.0), 'metallic': Math.Vector4(0.0)}
         self.styleId = None
+        self.emissionParams = EmissionParams()
         super(CamouflageItem, self).__init__(parentGroup)
         return
 
@@ -233,6 +261,9 @@ class CamouflageItem(BaseCustomizationItem):
         newItem.tiling = deepcopy(self.tiling)
         newItem.tilingSettings = deepcopy(self.tilingSettings)
         newItem.scales = self.scales
+        newItem.glossMetallicSettings = deepcopy(self.glossMetallicSettings)
+        newItem.styleId = self.styleId
+        newItem.emissionParams = deepcopy(self.emissionParams)
         super(CamouflageItem, self)._copy(newItem)
         return newItem
 

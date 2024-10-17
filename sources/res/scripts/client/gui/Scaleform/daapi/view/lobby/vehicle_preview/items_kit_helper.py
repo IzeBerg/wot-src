@@ -1,35 +1,35 @@
-import itertools
+import itertools, typing
 from collections import Container, namedtuple
 from sys import maxint
-import typing
 from CurrentVehicle import g_currentPreviewVehicle, g_currentVehicle
 from gui.Scaleform.genConsts.SLOT_HIGHLIGHT_TYPES import SLOT_HIGHLIGHT_TYPES
-from gui.Scaleform.genConsts.TOOLTIPS_CONSTANTS import TOOLTIPS_CONSTANTS
 from gui.Scaleform.locale.COMMON import COMMON
 from gui.Scaleform.locale.EPIC_BATTLE import EPIC_BATTLE
 from gui.Scaleform.locale.QUESTS import QUESTS
-from gui.Scaleform.locale.RES_ICONS import RES_ICONS
 from gui.Scaleform.locale.RES_SHOP import RES_SHOP
 from gui.Scaleform.locale.TOOLTIPS import TOOLTIPS
 from gui.Scaleform.locale.VEHICLE_PREVIEW import VEHICLE_PREVIEW
-from gui.impl import backport
-from gui.impl.gen import R
-from gui.shared.formatters import icons, text_styles
-from gui.shared.gui_items import GUI_ITEM_TYPE, vehicle_adjusters
 from gui.shared.gui_items.Tankman import CrewTypes
-from gui.shared.money import Currency, MONEY_ZERO_GOLD, Money
+from gui.shared.money import Currency, Money, MONEY_ZERO_GOLD
 from gui.shared.utils.functions import makeTooltip
 from gui.shared.utils.requesters import REQ_CRITERIA
-from helpers import dependency
-from helpers.i18n import makeString as _ms
+from gui.impl import backport
+from gui.impl.gen import R
 from items import makeIntCompactDescrByID as makeCD
 from items.components.c11n_constants import CustomizationType
 from items.vehicles import MAX_OPTIONAL_DEVICES_SLOTS, NUM_SHELLS_SLOTS
-from shared_utils import CONST_CONTAINER, findFirst, first
+from shared_utils import findFirst, first, CONST_CONTAINER
 from skeletons.gui.customization import ICustomizationService
 from skeletons.gui.goodies import IGoodiesCache
+from web.web_client_api.common import ItemPackType, ItemPackTypeGroup, ItemPackEntry
+from gui.shared.gui_items import vehicle_adjusters
+from gui.shared.gui_items import GUI_ITEM_TYPE
 from skeletons.gui.shared import IItemsCache
-from web.web_client_api.common import ItemPackEntry, ItemPackType, ItemPackTypeGroup
+from helpers import dependency
+from helpers.i18n import makeString as _ms
+from gui.Scaleform.locale.RES_ICONS import RES_ICONS
+from gui.Scaleform.genConsts.TOOLTIPS_CONSTANTS import TOOLTIPS_CONSTANTS
+from gui.shared.formatters import text_styles, icons
 
 class ItemSortRule(CONST_CONTAINER):
     REGULAR = 'regular'
@@ -164,13 +164,13 @@ _PREM_ICONS = {1: RES_SHOP.MAPS_SHOP_REWARDS_48X48_ICON_BATTLE_MISSIONS_PRIZE_1D
    180: RES_SHOP.MAPS_SHOP_REWARDS_48X48_ICON_BATTLE_MISSIONS_PRIZE_180DAYPREM, 
    360: RES_SHOP.MAPS_SHOP_REWARDS_48X48_ICON_BATTLE_MISSIONS_PRIZE_360DAYPREM}
 
-def _getPremiumPlusIcon(days):
+def __getPremiumPlusIcon(days):
     r = R.images.gui.maps.icons.quests.bonuses.small.dyn(('premium_plus_{}').format(days))
-    default = R.images.gui.maps.icons.quests.bonuses.small.premium_plus_1
+    default = R.images.gui.maps.icons.quests.bonuses.small.premium_plus_universal
     return backport.image(r() if r.exists() else default())
 
 
-def _getPremiumPlusIconExists(days):
+def __getPremiumPlusIconExists(days):
     r = R.images.gui.maps.icons.quests.bonuses.small.dyn(('premium_plus_{}').format(days))
     return r.exists()
 
@@ -215,9 +215,6 @@ class BoosterGUIItemProxy(object):
     @staticmethod
     def getHighlightType():
         return SLOT_HIGHLIGHT_TYPES.NO_HIGHLIGHT
-
-    def getBonusIcon(self):
-        return self.__booster.icon
 
 
 def getCompensateItemsCount(rawItem, itemsCache):
@@ -267,7 +264,7 @@ def getItemIcon(rawItem, item):
         elif rawItem.type == ItemPackType.CUSTOM_PREMIUM:
             icon = _PREM_ICONS.get(rawItem.count, '')
         elif rawItem.type == ItemPackType.CUSTOM_PREMIUM_PLUS:
-            icon = _getPremiumPlusIcon(rawItem.count)
+            icon = __getPremiumPlusIcon(rawItem.count)
         else:
             icon = _ICONS.get(rawItem.type, '')
         icon = icon or _NOT_FOUND_ICONS.get(rawItem.type, RES_ICONS.MAPS_ICONS_ARTEFACT_NOTFOUND)
@@ -277,10 +274,7 @@ def getItemIcon(rawItem, item):
 def getItemTitle(rawItem, item, forBox=False, additionalInfo=False):
     title = ''
     if item is not None:
-        if not forBox or rawItem.type in itertools.chain(ItemPackTypeGroup.CREW_BOOKS, ItemPackTypeGroup.GOODIE):
-            title = item.userName
-        else:
-            title = getTooltipText(item)
+        title = getTooltipText(item) if forBox else item.userName
     elif rawItem.type in (ItemPackType.CUSTOM_SLOT, ItemPackType.CUSTOM_SEVERAL_SLOTS):
         title = _ms(key=TOOLTIPS.AWARDITEM_SLOTS_HEADER)
     elif rawItem.type == ItemPackType.CUSTOM_GOLD:
@@ -446,7 +440,7 @@ def _createItemVO(rawItem, itemsCache, goodiesCache, slotIndex, rawTooltipData=N
         if rawItem.type in ItemPackTypeGroup.CREW:
             countFormat = ''
         elif rawItem.type in _UNCOUNTABLE_ITEM_TYPE:
-            if rawItem.type == ItemPackType.CUSTOM_PREMIUM_PLUS and not _getPremiumPlusIconExists(count):
+            if rawItem.type == ItemPackType.CUSTOM_PREMIUM_PLUS and not __getPremiumPlusIconExists(count):
                 countFormat = ('x{}').format(count) if count > 1 else ''
             else:
                 countFormat = ''
@@ -735,11 +729,11 @@ class _CustomCrewSkillsNodeContainer(_NodeContainer):
 
 
 def getDataOneVehicle(itemsPack, vehicle, vehicleGroupId):
-    rule = _getItemsSortRule(itemsPack)
+    rule = __getItemsSortRule(itemsPack)
     if rule == ItemSortRule.FRONTLINE:
-        root = _getFrontlinePackRule()
+        root = __getFrontlinePackRule()
     else:
-        root = _getDefaultPackRule()
+        root = __getDefaultPackRule()
     return _packDataOneVehicle(root, itemsPack, vehicle, vehicleGroupId)
 
 
@@ -767,7 +761,7 @@ def getCouponBonusesForItemPack(itemsPack):
 
 
 def getDataMultiVehicles(itemsPack, vehicle):
-    rule = _getItemsSortRule(itemsPack)
+    rule = __getItemsSortRule(itemsPack)
     if rule == ItemSortRule.FRONTLINE:
         return []
     return _packDataMultiVehicles(itemsPack, vehicle)
@@ -829,7 +823,7 @@ def canInstallStyle(styleId, service=None):
     else:
         vehicle = g_currentVehicle.item
         if not style.mayInstall(vehicle):
-            vehicle = _findVehicle(style)
+            vehicle = __findVehicle(style)
             if vehicle is None:
                 return StyleInstallInfo(canInstall=False, style=style, vehicle=None)
         return StyleInstallInfo(canInstall=True, style=style, vehicle=vehicle)
@@ -871,23 +865,23 @@ def _packDataMultiVehicles(itemsPack, vehicle):
         return []
 
 
-def _getItemsSortRule(itemsPack):
+def __getItemsSortRule(itemsPack):
     frontlineOffer = getCouponDiscountForItemPack(itemsPack) != MONEY_ZERO_GOLD
     if frontlineOffer:
         return ItemSortRule.FRONTLINE
     return ItemSortRule.REGULAR
 
 
-def _getDefaultPackRule():
+def __getDefaultPackRule():
     return _BuiltinEquipmentNodeContainer(nextNode=_CustomCrewSkillsNodeContainer(nextNode=_OptDeviceNodeContainer(nextNode=_ShellNodeContainer(nextNode=_EquipmentNodeContainer(nextNode=_PriorityNodeContainer(1, nextNode=_PriorityNodeContainer(_UNLIMITED_ITEMS_COUNT)))))))
 
 
-def _getFrontlinePackRule():
+def __getFrontlinePackRule():
     return _FrontlineNodeContainer(nextNode=_GiftNodeContainer())
 
 
 @dependency.replace_none_kwargs(itemsCache=IItemsCache)
-def _findVehicle(style, itemsCache=None):
+def __findVehicle(style, itemsCache=None):
     criteria = REQ_CRITERIA.IN_OWNERSHIP | ~REQ_CRITERIA.VEHICLE.IS_IN_BATTLE
     vehicles = [ vehicle for vehicle in itemsCache.items.getVehicles(criteria=criteria).itervalues() if style.mayInstall(vehicle)
                ]

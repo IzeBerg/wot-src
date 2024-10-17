@@ -1,51 +1,23 @@
-from gui.Scaleform.daapi.view.battle.classic.players_panel import PlayersPanel
+from gui.Scaleform.framework.entities.BaseDAAPIComponent import BaseDAAPIComponent
 
-class EventPlayersPanelMeta(PlayersPanel):
+class EventPlayersPanelMeta(BaseDAAPIComponent):
 
-    def as_setIsBossS(self, value):
+    def as_setPlayerPanelInfoS(self, data):
         if self._isDAAPIInited():
-            return self.flashObject.as_setIsBoss(value)
+            return self.flashObject.as_setPlayerPanelInfo(data)
 
-    def as_setBossBotInfoS(self, data):
+    def as_setPlayerPanelHpS(self, vehID, hpMax, hpCurrent):
         if self._isDAAPIInited():
-            return self.flashObject.as_setBossBotInfo(data)
+            return self.flashObject.as_setPlayerPanelHp(vehID, hpMax, hpCurrent)
 
-    def as_updateBossBotHpS(self, vehID, hpMax, hpCurrent):
+    def as_setPlayerDeadS(self, vehID):
         if self._isDAAPIInited():
-            return self.flashObject.as_updateBossBotHp(vehID, hpMax, hpCurrent)
+            return self.flashObject.as_setPlayerDead(vehID)
 
-    def as_setBossBotSpottedS(self, vehID, status):
+    def as_setPlayerResurrectS(self, vehID, isResurrect):
         if self._isDAAPIInited():
-            return self.flashObject.as_setBossBotSpotted(vehID, status)
+            return self.flashObject.as_setPlayerResurrect(vehID, isResurrect)
 
-    def as_clearBossBotCampS(self, campId):
+    def as_setPlayerPanelCountPointsS(self, vehID, count):
         if self._isDAAPIInited():
-            return self.flashObject.as_clearBossBotCamp(campId)
-
-    def as_setAllBossBotCampsOfflineS(self):
-        if self._isDAAPIInited():
-            return self.flashObject.as_setAllBossBotCampsOffline()
-
-    def as_updateCampInfoStatusS(self, campId):
-        if self._isDAAPIInited():
-            return self.flashObject.as_updateCampInfoStatus(campId)
-
-    def as_updateGeneratorCaptureTimerS(self, id, timeLeft, progress, numInvaders, speed):
-        if self._isDAAPIInited():
-            return self.flashObject.as_updateGeneratorCaptureTimer(id, timeLeft, progress, numInvaders, speed)
-
-    def as_setIsDestroyedS(self, id, value):
-        if self._isDAAPIInited():
-            return self.flashObject.as_setIsDestroyed(id, value)
-
-    def as_resetGeneratorCaptureTimerS(self, id):
-        if self._isDAAPIInited():
-            return self.flashObject.as_resetGeneratorCaptureTimer(id)
-
-    def as_lockGeneratorS(self, id, value):
-        if self._isDAAPIInited():
-            return self.flashObject.as_lockGenerator(id, value)
-
-    def as_updateGeneratorDownTimeS(self, id, totalTime, remainingTime, captureTimeText):
-        if self._isDAAPIInited():
-            return self.flashObject.as_updateGeneratorDownTime(id, totalTime, remainingTime, captureTimeText)
+            return self.flashObject.as_setPlayerPanelCountPoints(vehID, count)

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<version>4</version>
+	<GameObjects>
+		<GameObject>
+			<name>005_ambient_zone_01</name>
+			<UUID>76e9e9be-6a44-4087-a418-c90f8dc99c71</UUID>
+			<flags>0</flags>
+		</GameObject>
+	</GameObjects>
+	<components>
+		<ComponentPool>
+			<type>Transform</type>
+			<version>1</version>
+			<component>
+				<UUID>76e9e9be-6a44-4087-a418-c90f8dc99c71</UUID>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>0 0 0</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>-0 0 0</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>PrismArea</type>
+			<version>1</version>
+			<component>
+				<UUID>76e9e9be-6a44-4087-a418-c90f8dc99c71</UUID>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Curvature</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Tesselation Step</name>
+						<value>20</value>
+					</property>
+					<property>
+						<name>Height</name>
+						<value>65</value>
+					</property>
+					<property>
+						<name>Points</name>
+						<collection>
+							<item>
+								<value>
+									302.697 -347.467
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									225.527 -281.1
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									166.003 -278.047
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									77.1197 -202.146
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									59.7202 -165.927
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-41.4255 -78.3741
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									97.0389 89.8358
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									234.171 -20.575
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									344.46 104.602
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									414.071 30.112
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									308.898 -90.2589
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									324.832 -152.897
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									404.969 -229.667
+									<!--BW_String-->
+								</value>
+							</item>
+						</collection>
+					</property>
+					<property>
+						<name>Douglas-Peucker Epsilon</name>
+						<value>
+							0.2
+							<!--BW_String-->
+						</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>SoundZone</type>
+			<version>1</version>
+			<component>
+				<UUID>76e9e9be-6a44-4087-a418-c90f8dc99c71</UUID>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Zone Enter Event</name>
+						<value>ev_halloween_2019_ambient_zone_01_ZoneEnter</value>
+					</property>
+					<property>
+						<name>Zone Exit Event</name>
+						<value>ev_halloween_2019_ambient_zone_01_ZoneExit</value>
+					</property>
+					<property>
+						<name>Emitter Event</name>
+						<value/>
+					</property>
+					<property>
+						<name>Reverb</name>
+						<value/>
+					</property>
+					<property>
+						<name>Reverb Level</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Volume Deviation</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Color</name>
+						<value>
+							0 0 1 0.5
+							<!--BW_String-->
+						</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+	</components>
+</root>

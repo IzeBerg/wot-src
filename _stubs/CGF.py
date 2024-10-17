@@ -168,6 +168,7 @@ class GameObject(pybind11_object):
 	id = property(lambda self: None)
 	index = property(lambda self: None)
 	def isActive(self, *args, **kwargs): pass
+	def isStatic(self, *args, **kwargs): pass
 	def isValid(self, *args, **kwargs): pass
 	name = property(lambda self: None)
 	def removeComponent(self, *args, **kwargs): pass
@@ -250,6 +251,51 @@ class PyComponentWrapperBase(pybind11_object):
 	def destroy(self, *args, **kwargs): pass
 	def id(self, *args, **kwargs): pass
 	def valid(self, *args, **kwargs): pass
+
+
+class PrefabsComposerComponent(PyComponentWrapperBase):
+	def __cmp__(self, *args, **kwargs): pass
+	def __delattr__(*args, **kwargs): pass
+	__doc__ = None
+	def __format__(*args, **kwargs): pass
+	def __getattribute__(self, *args, **kwargs): pass
+	def __hash__(*args, **kwargs): pass
+	def __init__(self, *args, **kwargs): pass
+	__module__ = 'CGF'
+	def __new__(*args, **kwargs): pass
+	__qualname__ = 'PrefabsComposerComponent'
+	def __reduce__(*args, **kwargs): pass
+	def __reduce_ex__(*args, **kwargs): pass
+	def __repr__(*args, **kwargs): pass
+	def __setattr__(*args, **kwargs): pass
+	def __sizeof__(*args, **kwargs): pass
+	def __str__(*args, **kwargs): pass
+	def __subclasshook__(*args, **kwargs): pass
+	def clear(self, *args, **kwargs): pass
+	def destroy(self, *args, **kwargs): pass
+	def id(self, *args, **kwargs): pass
+	def valid(self, *args, **kwargs): pass
+
+
+class PrefabsMapItem(pybind11_object):
+	def __delattr__(*args, **kwargs): pass
+	__doc__ = None
+	def __format__(*args, **kwargs): pass
+	def __getattribute__(*args, **kwargs): pass
+	def __hash__(*args, **kwargs): pass
+	def __init__(self, *args, **kwargs): pass
+	__module__ = 'CGF'
+	def __new__(*args, **kwargs): pass
+	__qualname__ = 'PrefabsMapItem'
+	def __reduce__(*args, **kwargs): pass
+	def __reduce_ex__(*args, **kwargs): pass
+	def __repr__(*args, **kwargs): pass
+	def __setattr__(*args, **kwargs): pass
+	def __sizeof__(*args, **kwargs): pass
+	def __str__(*args, **kwargs): pass
+	def __subclasshook__(*args, **kwargs): pass
+	path = property(lambda self: None)
+	slot = property(lambda self: None)
 
 
 class PyManagerLink(pybind11_object):
@@ -382,6 +428,7 @@ def clearGameObjectsCache(*args, **kwargs): pass
 def createDebugWorld(*args, **kwargs): pass
 def createManager(*args, **kwargs): pass
 def disableCompletely(*args, **kwargs): pass
+def dumpCgfHierarchy(*args, **kwargs): pass
 def dumpCgfState(*args, **kwargs): pass
 def dumpCgfWorldHierarchy(*args, **kwargs): pass
 def dumpTickGraph(*args, **kwargs): pass

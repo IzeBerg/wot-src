@@ -2,8 +2,7 @@ import logging, weakref, typing
 from frameworks.state_machine import SingleStateObserver
 from frameworks.wulf import WindowLayer, WindowStatus
 from gui.impl.gen import R
-from gui.impl.pub import WindowImpl
-from gui.impl.lobby.platoon.platoon_helpers import PreloadableWindow
+from gui.shared.system_factory import collectLowPriorityWindows, registerLowPriorityWulfWindows
 from helpers import dependency
 from skeletons.gameplay import GameplayStateID, IGameplayLogic
 from skeletons.gui.impl import IGuiLoader, IFullscreenManager, INotificationWindowController
@@ -15,7 +14,7 @@ _logger = logging.getLogger(__name__)
 _LOW_PRIORITY_WINDOWS = (
  VIEW_ALIAS.AWARD_WINDOW, VIEW_ALIAS.AWARD_WINDOW_MODAL, VIEW_ALIAS.ADVENT_CALENDAR,
  VIEW_ALIAS.MISSION_AWARD_WINDOW)
-_LOW_PRIORITY_WULF_WINDOWS = (R.views.lobby.offers.OfferBannerWindow(),)
+registerLowPriorityWulfWindows([R.views.lobby.offers.OfferBannerWindow()])
 
 class FullscreenManager(IFullscreenManager):
     __slots__ = ('__gui', '__notificationMgr', '__isEnabled', '__weakref__', '__observer',
@@ -46,13 +45,11 @@ class FullscreenManager(IFullscreenManager):
             self.__gui.windowsManager.onWindowStatusChanged -= self.__onWindowStatusChanged
 
     def __onWindowStatusChanged(self, uniqueID, newState):
-        window = self.__gui.windowsManager.getWindow(uniqueID)
         if newState == WindowStatus.LOADING:
+            window = self.__gui.windowsManager.getWindow(uniqueID)
             self.__onWindowOpen(window)
 
     def __onWindowOpen(self, newWindow):
-        if isinstance(newWindow, PreloadableWindow) and newWindow.isPreloading():
-            return
         layer = newWindow.layer
         if not WindowLayer.VIEW <= layer <= WindowLayer.FULLSCREEN_WINDOW:
             return
@@ -91,8 +88,8 @@ class FullscreenManager(IFullscreenManager):
                 if alias.startswith(priority):
                     return False
 
-        elif isinstance(window, WindowImpl):
-            return window.content.layoutID not in _LOW_PRIORITY_WULF_WINDOWS
+        elif window.content is not None:
+            return window.content.layoutID not in collectLowPriorityWindows()
         return True
 
 

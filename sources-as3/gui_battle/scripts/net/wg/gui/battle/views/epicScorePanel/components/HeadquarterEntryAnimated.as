@@ -37,6 +37,11 @@ package net.wg.gui.battle.views.epicScorePanel.components
          this.base.initData(param1,param2);
       }
       
+      public function isAttacker(param1:Boolean) : void
+      {
+         this.base.attacker = param1;
+      }
+      
       public function isActive(param1:Boolean) : void
       {
          this.base.active = param1;

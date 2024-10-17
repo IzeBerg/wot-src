@@ -1,0 +1,2050 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<xmlns:xmlref>http://bwt/xmlref</xmlns:xmlref>
+	<crew>
+		<commander/>
+		<gunner/>
+		<driver/>
+		<radioman/>
+		<loader/>
+	</crew>
+	<supplySlots>2 1 1 6 6 6 7 8 8 8</supplySlots>
+	<speedLimits>
+		<forward>55</forward>
+		<backward>20</backward>
+	</speedLimits>
+	<invisibility>
+		<moving>
+			0.109
+			<!--BW_String-->
+		</moving>
+		<still>
+			0.146
+			<!--BW_String-->
+		</still>
+		<camouflageBonus>
+			0.03
+			<!--BW_String-->
+		</camouflageBonus>
+		<camouflageNetBonus>
+			0.1
+			<!--BW_String-->
+		</camouflageNetBonus>
+		<firePenalty>
+			0.219
+			<!--BW_String-->
+		</firePenalty>
+	</invisibility>
+	<optDevsOverrides>
+		<camouflageNet>
+			<invisibilityBonus>
+				0.1 0.125
+				<!--BW_String-->
+			</invisibilityBonus>
+		</camouflageNet>
+		<additionalInvisibilityDevice>
+			<invisibilityBonus>
+				0.06 0.08
+				<!--BW_String-->
+			</invisibilityBonus>
+		</additionalInvisibilityDevice>
+		<trophyBasicAdditionalInvisibilityDevice>
+			<invisibilityBonus>
+				0.06
+				<!--BW_String-->
+			</invisibilityBonus>
+		</trophyBasicAdditionalInvisibilityDevice>
+		<trophyUpgradedAdditionalInvisibilityDevice>
+			<invisibilityBonus>
+				0.09
+				<!--BW_String-->
+			</invisibilityBonus>
+		</trophyUpgradedAdditionalInvisibilityDevice>
+	</optDevsOverrides>
+	<repairCost>
+		8.93
+		<!--BW_String-->
+	</repairCost>
+	<xpFactor>1</xpFactor>
+	<freeXpFactor>
+		0.05
+		<!--BW_String-->
+	</freeXpFactor>
+	<crewXpFactor>
+		1.0
+		<!--BW_String-->
+	</crewXpFactor>
+	<creditsFactor>
+		0.791
+		<!--BW_String-->
+	</creditsFactor>
+	<healthBurnPerSec>135</healthBurnPerSec>
+	<camouflage>
+		<priceFactor>
+			1.6
+			<!--BW_String-->
+		</priceFactor>
+		<tiling>1 1 0 0</tiling>
+		<exclusionMask/>
+		<density>1 1</density>
+	</camouflage>
+	<hull>
+		<armor>
+			<armor_1>200</armor_1>
+			<armor_2>60</armor_2>
+			<armor_3>60</armor_3>
+			<armor_4>60</armor_4>
+			<armor_5>25</armor_5>
+			<armor_6>30</armor_6>
+			<armor_7>16</armor_7>
+			<armor_8>0</armor_8>
+			<armor_10>16</armor_10>
+			<armor_11>60</armor_11>
+			<armor_12>25</armor_12>
+			<armor_13>40</armor_13>
+			<armor_14>25</armor_14>
+		</armor>
+		<primaryArmor>armor_1 armor_3 armor_4</primaryArmor>
+		<armorHomogenization>1</armorHomogenization>
+		<weight>25490</weight>
+		<maxHealth>960</maxHealth>
+		<ammoBayHealth>
+			<maxHealth>200</maxHealth>
+			<maxRegenHealth>135</maxRegenHealth>
+			<repairCost>
+				1.0
+				<!--BW_String-->
+			</repairCost>
+			<healthRegenPerSec>
+				4.375
+				<!--BW_String-->
+			</healthRegenPerSec>
+			<healthBurnPerSec>18</healthBurnPerSec>
+		</ammoBayHealth>
+		<variants/>
+		<models>
+			<undamaged>halloween/vehicles/german/G64_Panther_II_Hall_minion/normal/lod0/Hull.model</undamaged>
+			<destroyed>halloween/vehicles/german/G64_Panther_II_Hall_minion/crash/lod0/Hull.model</destroyed>
+			<exploded>halloween/vehicles/german/G64_Panther_II_Hall_minion/crash/lod0/Hull.model</exploded>
+		</models>
+		<swinging>
+			<lodDist>FAR</lodDist>
+			<pitchParams>
+				0.26 34.00 0.42 1.00 0.05 0.30
+				<!--BW_String-->
+			</pitchParams>
+			<rollParams>
+				1.00 0.26 34.00 0.42 1.00 0.05 0.30
+				<!--BW_String-->
+			</rollParams>
+			<sensitivityToImpulse>
+				0.48
+				<!--BW_String-->
+			</sensitivityToImpulse>
+		</swinging>
+		<exhaust>
+			<pixie>gas_large</pixie>
+			<nodes>HP_Track_Exhaus_1 HP_Track_Exhaus_2</nodes>
+		</exhaust>
+		<turretPositions>
+			<turret>
+				-0.003853 0.904944 -0.62558
+				<!--BW_String-->
+			</turret>
+		</turretPositions>
+		<hitTester>
+			<collisionModelServer>halloween/vehicles/german/G64_Panther_II_Hall_minion/collision/Hull.model</collisionModelServer>
+			<collisionModelClient>halloween/vehicles/german/G64_Panther_II_Hall_minion/collision_client/Hull.model</collisionModelClient>
+		</hitTester>
+		<hangarShadowTexture>halloween/vehicles/german/G64_Panther_II_Hall_minion/Panther_II_Hall_minion_HangarShadowMap.dds</hangarShadowTexture>
+		<customization>
+			<customizableVehicleAreas>
+				<paint/>
+				<camouflage/>
+			</customizableVehicleAreas>
+		</customization>
+		<customizationSlots>
+			<slot>
+				<slotType>sequence</slotType>
+				<slotId>18000</slotId>
+				<position>0 0 0</position>
+				<rotation>0 0 0</rotation>
+				<attachNode>HP_light2</attachNode>
+			</slot>
+		</customizationSlots>
+		<camouflage>
+			<tiling>
+				1.3 1.3 0.000000 0.000000
+				<!--BW_String-->
+			</tiling>
+			<density>
+				100.667 101.168
+				<!--BW_String-->
+			</density>
+			<aoTextureSize>1024 1024</aoTextureSize>
+		</camouflage>
+	</hull>
+	<chassis>
+		<Chassis_G64_Panther_II_Hall_minion>
+			<userString>#halloween.germany_vehicles.extend:Chassis_G64_Panther_II_Hall_minion</userString>
+			<tags/>
+			<level>8</level>
+			<price>30350</price>
+			<notInShop>true</notInShop>
+			<armor>
+				<leftTrack>25</leftTrack>
+				<rightTrack>25</rightTrack>
+			</armor>
+			<weight>16500</weight>
+			<maxLoad>56000</maxLoad>
+			<terrainResistance>
+				0.8 1 2.1
+				<!--BW_String-->
+			</terrainResistance>
+			<brakeForce>53000</brakeForce>
+			<rotationIsAroundCenter>true</rotationIsAroundCenter>
+			<rotationSpeed>36</rotationSpeed>
+			<shotDispersionFactors>
+				<vehicleMovement>
+					0.16
+					<!--BW_String-->
+				</vehicleMovement>
+				<vehicleRotation>
+					0.16
+					<!--BW_String-->
+				</vehicleRotation>
+			</shotDispersionFactors>
+			<bulkHealthFactor>
+				3.0
+				<!--BW_String-->
+			</bulkHealthFactor>
+			<maxHealth>210</maxHealth>
+			<maxRegenHealth>160</maxRegenHealth>
+			<hysteresisHealth>48</hysteresisHealth>
+			<repairCost>
+				5.0
+				<!--BW_String-->
+			</repairCost>
+			<healthRegenPerSec>7</healthRegenPerSec>
+			<healthBurnPerSec>0</healthBurnPerSec>
+			<invulnerable>True</invulnerable>
+			<models>
+				<undamaged>halloween/vehicles/german/G64_Panther_II_Hall_minion/normal/lod0/Chassis.model</undamaged>
+				<destroyed>halloween/vehicles/german/G64_Panther_II_Hall_minion/crash/lod0/Chassis.model</destroyed>
+				<exploded>halloween/vehicles/german/G64_Panther_II_Hall_minion/crash/lod0/Chassis.model</exploded>
+			</models>
+			<traces>
+				<lodDist>FAR</lodDist>
+				<bufferPrefs>mediumTank</bufferPrefs>
+				<textureSet>germany_02</textureSet>
+				<size>
+					0.5 0.9
+					<!--BW_String-->
+				</size>
+			</traces>
+			<tracks>
+				<lodDist>MEDIUM_TRACK</lodDist>
+				<leftMaterial>track_mat_L_skinned</leftMaterial>
+				<rightMaterial>track_mat_R_skinned</rightMaterial>
+				<textureScale>
+					-0.95
+					<!--BW_String-->
+				</textureScale>
+			</tracks>
+			<wheels>
+				<lodDist>MEDIUM</lodDist>
+				<wheel>
+					<isLeft>true</isLeft>
+					<isLeading>true</isLeading>
+					<name>WD_L0</name>
+					<radius>0.654205</radius>
+					<syncAngle>40</syncAngle>
+				</wheel>
+				<wheel>
+					<isLeft>true</isLeft>
+					<isLeading>true</isLeading>
+					<name>WD_L1</name>
+					<radius>0.473137</radius>
+					<syncAngle>40</syncAngle>
+				</wheel>
+				<group>
+					<isLeft>true</isLeft>
+					<template>W_L</template>
+					<radius>0.550079</radius>
+					<startIndex>0</startIndex>
+					<count>7</count>
+				</group>
+				<wheel>
+					<isLeft>false</isLeft>
+					<isLeading>true</isLeading>
+					<name>WD_R0</name>
+					<radius>0.654205</radius>
+					<syncAngle>40</syncAngle>
+				</wheel>
+				<wheel>
+					<isLeft>false</isLeft>
+					<isLeading>true</isLeading>
+					<name>WD_R1</name>
+					<radius>0.473137</radius>
+					<syncAngle>40</syncAngle>
+				</wheel>
+				<group>
+					<isLeft>false</isLeft>
+					<template>W_R</template>
+					<radius>0.550079</radius>
+					<startIndex>0</startIndex>
+					<count>7</count>
+				</group>
+			</wheels>
+			<drivingWheels>WD_L0 WD_L1</drivingWheels>
+			<effects>
+				<lodDist>MEDIUM</lodDist>
+				<mud>largeTankMud</mud>
+			</effects>
+			<wwsoundPC>treads_type_pc</wwsoundPC>
+			<wwsoundNPC>trds_chf_npc</wwsoundNPC>
+			<hullPosition>
+				0.000000 1.62239 0.000000
+				<!--BW_String-->
+			</hullPosition>
+			<hitTester>
+				<collisionModelServer>halloween/vehicles/german/G64_Panther_II_Hall_minion/collision/Chassis.model</collisionModelServer>
+				<collisionModelClient>halloween/vehicles/german/G64_Panther_II_Hall_minion/collision_client/Chassis.model</collisionModelClient>
+			</hitTester>
+			<topRightCarryingPoint>
+				1.79375 2.624
+				<!--BW_String-->
+			</topRightCarryingPoint>
+			<maxClimbAngle>25</maxClimbAngle>
+			<navmeshGirth>
+				6.0
+				<!--BW_String-->
+			</navmeshGirth>
+			<AODecals>
+				<decal>
+					<transform>
+						<row0>4.678580 0.000000 0.000000</row0>
+						<row1>0.000000 1.478530 0.000000</row1>
+						<row2>-0.000000 0.000000 7.255260</row2>
+						<row3>-0.000000 0.000000 -0.000001</row3>
+					</transform>
+				</decal>
+			</AODecals>
+			<splineDesc>
+				<segmentModelLeft>halloween/vehicles/german/G64_Panther_II_Hall_minion/track/segment_1_L.model</segmentModelLeft>
+				<segmentModelRight>halloween/vehicles/german/G64_Panther_II_Hall_minion/track/segment_1_R.model</segmentModelRight>
+				<segment2ModelLeft>halloween/vehicles/german/G64_Panther_II_Hall_minion/track/segment_2_L.model</segment2ModelLeft>
+				<segment2ModelRight>halloween/vehicles/german/G64_Panther_II_Hall_minion/track/segment_2_R.model</segment2ModelRight>
+				<left>halloween/vehicles/german/G64_Panther_II_Hall_minion/track/left.track</left>
+				<right>halloween/vehicles/german/G64_Panther_II_Hall_minion/track/right.track</right>
+				<segmentLength>0.400438</segmentLength>
+				<segmentOffset>0.131474</segmentOffset>
+				<segment2Offset>0.207171</segment2Offset>
+				<lodDist>SPLINE_TRACK</lodDist>
+				<atlas>
+					<UTiles>1</UTiles>
+					<VTiles>1</VTiles>
+				</atlas>
+			</splineDesc>
+			<trackThickness>
+				-0.025
+				<!--BW_String-->
+			</trackThickness>
+			<trackNodes>
+				<enable>true</enable>
+				<linkBones>true</linkBones>
+				<maxAmplitude>
+					0.07
+					<!--BW_String-->
+				</maxAmplitude>
+				<maxOffset>
+					0.07
+					<!--BW_String-->
+				</maxOffset>
+				<gravity>
+					-9.8
+					<!--BW_String-->
+				</gravity>
+				<elasticity>1100</elasticity>
+				<damping>2</damping>
+				<node>
+					<isLeft>true</isLeft>
+					<name>Track_VT_L0</name>
+					<forwardElastK>2</forwardElastK>
+					<backwardElastK>
+						0.75
+						<!--BW_String-->
+					</backwardElastK>
+					<rightSibling>Track_VT_L1</rightSibling>
+				</node>
+				<node>
+					<isLeft>true</isLeft>
+					<name>Track_VT_L1</name>
+					<forwardElastK>
+						1.8
+						<!--BW_String-->
+					</forwardElastK>
+					<backwardElastK>
+						0.75
+						<!--BW_String-->
+					</backwardElastK>
+					<leftSibling>Track_VT_L0</leftSibling>
+					<rightSibling>Track_VT_L2</rightSibling>
+				</node>
+				<node>
+					<isLeft>true</isLeft>
+					<name>Track_VT_L2</name>
+					<forwardElastK>
+						1.6
+						<!--BW_String-->
+					</forwardElastK>
+					<backwardElastK>
+						0.75
+						<!--BW_String-->
+					</backwardElastK>
+					<leftSibling>Track_VT_L1</leftSibling>
+					<rightSibling>Track_VT_L3</rightSibling>
+				</node>
+				<node>
+					<isLeft>true</isLeft>
+					<name>Track_VT_L3</name>
+					<forwardElastK>
+						1.4
+						<!--BW_String-->
+					</forwardElastK>
+					<backwardElastK>
+						0.75
+						<!--BW_String-->
+					</backwardElastK>
+					<leftSibling>Track_VT_L2</leftSibling>
+					<rightSibling>Track_VT_L4</rightSibling>
+				</node>
+				<node>
+					<isLeft>true</isLeft>
+					<name>Track_VT_L4</name>
+					<forwardElastK>
+						1.2
+						<!--BW_String-->
+					</forwardElastK>
+					<backwardElastK>
+						0.75
+						<!--BW_String-->
+					</backwardElastK>
+					<leftSibling>Track_VT_L3</leftSibling>
+					<rightSibling>Track_VT_L5</rightSibling>
+				</node>
+				<node>
+					<isLeft>true</isLeft>
+					<name>Track_VT_L5</name>
+					<forwardElastK>1</forwardElastK>
+					<backwardElastK>
+						0.75
+						<!--BW_String-->
+					</backwardElastK>
+					<leftSibling>Track_VT_L4</leftSibling>
+					<rightSibling>Track_VT_L6</rightSibling>
+				</node>
+				<node>
+					<isLeft>true</isLeft>
+					<name>Track_VT_L6</name>
+					<forwardElastK>
+						0.8
+						<!--BW_String-->
+					</forwardElastK>
+					<backwardElastK>
+						0.75
+						<!--BW_String-->
+					</backwardElastK>
+					<leftSibling>Track_VT_L5</leftSibling>
+				</node>
+				<node>
+					<isLeft>false</isLeft>
+					<name>Track_VD_R0</name>
+				</node>
+				<node>
+					<isLeft>true</isLeft>
+					<name>Track_VD_L0</name>
+				</node>
+				<node>
+					<isLeft>true</isLeft>
+					<name>Track_VD_L1</name>
+				</node>
+				<node>
+					<isLeft>false</isLeft>
+					<name>Track_VD_R1</name>
+				</node>
+				<node>
+					<isLeft>false</isLeft>
+					<name>Track_VT_R0</name>
+					<forwardElastK>2</forwardElastK>
+					<backwardElastK>
+						0.75
+						<!--BW_String-->
+					</backwardElastK>
+					<rightSibling>Track_VT_R1</rightSibling>
+				</node>
+				<node>
+					<isLeft>false</isLeft>
+					<name>Track_VT_R1</name>
+					<forwardElastK>
+						1.8
+						<!--BW_String-->
+					</forwardElastK>
+					<backwardElastK>
+						0.75
+						<!--BW_String-->
+					</backwardElastK>
+					<leftSibling>Track_VT_R0</leftSibling>
+					<rightSibling>Track_VT_R2</rightSibling>
+				</node>
+				<node>
+					<isLeft>false</isLeft>
+					<name>Track_VT_R2</name>
+					<forwardElastK>
+						1.6
+						<!--BW_String-->
+					</forwardElastK>
+					<backwardElastK>
+						0.75
+						<!--BW_String-->
+					</backwardElastK>
+					<leftSibling>Track_VT_R1</leftSibling>
+					<rightSibling>Track_VT_R3</rightSibling>
+				</node>
+				<node>
+					<isLeft>false</isLeft>
+					<name>Track_VT_R3</name>
+					<forwardElastK>
+						1.4
+						<!--BW_String-->
+					</forwardElastK>
+					<backwardElastK>
+						0.75
+						<!--BW_String-->
+					</backwardElastK>
+					<leftSibling>Track_VT_R2</leftSibling>
+					<rightSibling>Track_VT_R4</rightSibling>
+				</node>
+				<node>
+					<isLeft>false</isLeft>
+					<name>Track_VT_R4</name>
+					<forwardElastK>
+						1.2
+						<!--BW_String-->
+					</forwardElastK>
+					<backwardElastK>
+						0.75
+						<!--BW_String-->
+					</backwardElastK>
+					<leftSibling>Track_VT_R3</leftSibling>
+					<rightSibling>Track_VT_R5</rightSibling>
+				</node>
+				<node>
+					<isLeft>false</isLeft>
+					<name>Track_VT_R5</name>
+					<forwardElastK>1</forwardElastK>
+					<backwardElastK>
+						0.75
+						<!--BW_String-->
+					</backwardElastK>
+					<leftSibling>Track_VT_R4</leftSibling>
+					<rightSibling>Track_VT_R6</rightSibling>
+				</node>
+				<node>
+					<isLeft>false</isLeft>
+					<name>Track_VT_R6</name>
+					<forwardElastK>
+						0.8
+						<!--BW_String-->
+					</forwardElastK>
+					<backwardElastK>
+						0.75
+						<!--BW_String-->
+					</backwardElastK>
+					<leftSibling>Track_VT_R5</leftSibling>
+				</node>
+			</trackNodes>
+			<groundNodes>
+				<group>
+					<template>Track_L</template>
+					<startIndex>0</startIndex>
+					<count>7</count>
+					<isLeft>true</isLeft>
+					<minOffset>
+						-0.1
+						<!--BW_String-->
+					</minOffset>
+					<maxOffset>
+						0.1
+						<!--BW_String-->
+					</maxOffset>
+				</group>
+				<group>
+					<template>Track_R</template>
+					<startIndex>0</startIndex>
+					<count>7</count>
+					<isLeft>false</isLeft>
+					<minOffset>
+						-0.1
+						<!--BW_String-->
+					</minOffset>
+					<maxOffset>
+						0.1
+						<!--BW_String-->
+					</maxOffset>
+				</group>
+			</groundNodes>
+			<physicalTracks>
+				<left>
+					<segmentsCount>92</segmentsCount>
+					<segmentsOuterThickness>0.112581</segmentsOuterThickness>
+					<segmentsInnerThickness>
+						-0.000299811
+						<!--BW_String-->
+					</segmentsInnerThickness>
+					<segmentsPlaneOffset>
+						-1.794
+						<!--BW_String-->
+					</segmentsPlaneOffset>
+					<springsLength>
+						<backwardMovement>
+							<back>0.193831</back>
+							<top>0.190566</top>
+							<front>0.190109</front>
+							<bottom>0.174189</bottom>
+						</backwardMovement>
+						<forwardMovement>
+							<back>0.189534</back>
+							<top>0.190566</top>
+							<front>0.194015</front>
+							<bottom>0.174189</bottom>
+						</forwardMovement>
+					</springsLength>
+					<mainSegment>
+						<model>halloween/vehicles/german/G64_Panther_II_Hall_minion/track/segment_1_L.model</model>
+						<length>0.212668</length>
+					</mainSegment>
+					<secSegment>
+						<model>halloween/vehicles/german/G64_Panther_II_Hall_minion/track/segment_2_L.model</model>
+						<length>0.208905</length>
+					</secSegment>
+					<collisionHull>
+						<bottom/>
+						<top>
+							<part>
+								<xStart>
+									-4.07453
+									<!--BW_String-->
+								</xStart>
+								<xStep>0.106334</xStep>
+								<ySamples>
+									1.55909 1.566 1.5729 1.57981 1.58671 1.59362 1.59832 1.60277 1.60722 1.61167 1.61613 1.62058 1.62503 1.62948 1.63393 1.63839 1.64284 1.64729 1.65174 1.65619 1.66065 1.6651 1.66955 1.674 1.67845 1.68291 1.68736 1.69181 1.69626 1.70071 1.705 1.70898 1.71296 1.71694 1.72092 1.7249 1.72887 1.73285 1.73683 1.74081 1.74479 1.74876 1.75274 1.75672 1.7607 1.76468 1.76866 1.77263 1.77661 1.78059 1.78457 1.78855 1.79252 1.77319 1.80048 1.80446 1.80844 1.81242 1.81639 1.82037 1.82435 1.82833 1.83231 1.83628 1.84026 1.84424 1.84822 1.8001 1.85618 1.86015 1.86398 1.86884 1.86384 1.85884 1.87277 1.82606 1.76564 1.59585
+									<!--BW_String-->
+								</ySamples>
+							</part>
+						</top>
+					</collisionHull>
+					<bottomWheels>
+						<wheel>WD_L1</wheel>
+						<wheel>W_L6</wheel>
+						<wheel>W_L5</wheel>
+						<wheel>W_L4</wheel>
+						<wheel>W_L3</wheel>
+						<wheel>W_L2</wheel>
+						<wheel>W_L1</wheel>
+						<wheel>W_L0</wheel>
+						<wheel>WD_L0</wheel>
+					</bottomWheels>
+					<snapWheels>
+						<topFront>
+							<wheelName>WD_L0</wheelName>
+							<basePos>
+								3.50183 1.22285
+								<!--BW_String-->
+							</basePos>
+							<shiftVec>0.525048 0.159185</shiftVec>
+							<jointIdx>11</jointIdx>
+						</topFront>
+						<topBack>
+							<wheelName>WD_L1</wheelName>
+							<basePos>
+								-3.61266 0.953575
+								<!--BW_String-->
+							</basePos>
+							<shiftVec>-0.367678 0.281105</shiftVec>
+							<jointIdx>54</jointIdx>
+						</topBack>
+						<bottomBack>
+							<wheelName>W_L6</wheelName>
+							<basePos>
+								-2.66817 0.638894
+								<!--BW_String-->
+							</basePos>
+							<shiftVec>
+								0.0748949 -0.549844
+								<!--BW_String-->
+							</shiftVec>
+							<jointIdx>65</jointIdx>
+						</bottomBack>
+						<bottomFront>
+							<wheelName>W_L0</wheelName>
+							<basePos>
+								2.46944 0.638179
+								<!--BW_String-->
+							</basePos>
+							<shiftVec>
+								0.0822957 -0.543585
+								<!--BW_String-->
+							</shiftVec>
+							<jointIdx>0</jointIdx>
+						</bottomFront>
+					</snapWheels>
+					<radiusOverrides>
+						<wheel>
+							<name>WD_L1</name>
+							<radius>0.455081</radius>
+						</wheel>
+						<wheel>
+							<name>WD_L0</name>
+							<radius>0.542131</radius>
+						</wheel>
+					</radiusOverrides>
+					<teethSyncs>
+						<syncWithMainModel>true</syncWithMainModel>
+						<segmentSyncPivotOffset>0.000000</segmentSyncPivotOffset>
+						<sync>
+							<name>WD_L1</name>
+							<startAngle>
+								-16.9241
+								<!--BW_String-->
+							</startAngle>
+							<teethCount>9</teethCount>
+						</sync>
+						<sync>
+							<name>WD_L0</name>
+							<startAngle>
+								-13.9726
+								<!--BW_String-->
+							</startAngle>
+							<teethCount>9</teethCount>
+						</sync>
+					</teethSyncs>
+					<sourceCollisionHullPoints>
+						<top>
+							<range>
+								<point>
+									-1.87429 1.7336 -4.07385
+									<!--BW_String-->
+								</point>
+								<point>
+									-1.87429 1.7405 -3.96751
+									<!--BW_String-->
+								</point>
+								<point>
+									-1.87429 1.74741 -3.86118
+									<!--BW_String-->
+								</point>
+								<point>
+									-1.87429 1.75431 -3.75485
+									<!--BW_String-->
+								</point>
+								<point>
+									-1.87429 1.76122 -3.64851
+									<!--BW_String-->
+								</point>
+								<point>
+									-1.87429 1.76812 -3.54218
+									<!--BW_String-->
+								</point>
+								<point>
+									-1.87429 1.77282 -3.43584
+									<!--BW_String-->
+								</point>
+								<point>
+									-1.87429 1.77727 -3.32951
+									<!--BW_String-->
+								</point>
+								<point>
+									-1.87428 1.78172 -3.22318
+									<!--BW_String-->
+								</point>
+								<point>
+									-1.87428 1.78617 -3.11684
+									<!--BW_String-->
+								</point>
+								<point>
+									-1.87428 1.79062 -3.01051
+									<!--BW_String-->
+								</point>
+								<point>
+									-1.87428 1.79507 -2.90417
+									<!--BW_String-->
+								</point>
+								<point>
+									-1.87428 1.79952 -2.79784
+									<!--BW_String-->
+								</point>
+								<point>
+									-1.87428 1.80397 -2.69151
+									<!--BW_String-->
+								</point>
+								<point>
+									-1.87428 1.80842 -2.58517
+									<!--BW_String-->
+								</point>
+								<point>
+									-1.87428 1.81287 -2.47884
+									<!--BW_String-->
+								</point>
+								<point>
+									-1.87428 1.81732 -2.3725
+									<!--BW_String-->
+								</point>
+								<point>
+									-1.87428 1.82177 -2.26617
+									<!--BW_String-->
+								</point>
+								<point>
+									-1.87428 1.82622 -2.15984
+									<!--BW_String-->
+								</point>
+								<point>
+									-1.87428 1.83067 -2.0535
+									<!--BW_String-->
+								</point>
+								<point>
+									-1.87427 1.83512 -1.94717
+									<!--BW_String-->
+								</point>
+								<point>
+									-1.87427 1.83957 -1.84084
+									<!--BW_String-->
+								</point>
+								<point>
+									-1.87427 1.84403 -1.7345
+									<!--BW_String-->
+								</point>
+								<point>
+									-1.87427 1.84848 -1.62817
+									<!--BW_String-->
+								</point>
+								<point>
+									-1.87427 1.85293 -1.52183
+									<!--BW_String-->
+								</point>
+								<point>
+									-1.87427 1.85738 -1.4155
+									<!--BW_String-->
+								</point>
+								<point>
+									-1.87427 1.86183 -1.30917
+									<!--BW_String-->
+								</point>
+								<point>
+									-1.87427 1.86628 -1.20283
+									<!--BW_String-->
+								</point>
+								<point>
+									-1.87427 1.87073 -1.0965
+									<!--BW_String-->
+								</point>
+								<point>
+									-1.87427 1.87518 -0.990164
+									<!--BW_String-->
+								</point>
+								<point>
+									-2.08426 1.87947 -0.883828
+									<!--BW_String-->
+								</point>
+								<point>
+									-2.02426 1.88344 -0.777495
+									<!--BW_String-->
+								</point>
+								<point>
+									-2.11426 1.88742 -0.67116
+									<!--BW_String-->
+								</point>
+								<point>
+									-2.07426 1.8914 -0.564827
+									<!--BW_String-->
+								</point>
+								<point>
+									-2.07426 1.89537 -0.458493
+									<!--BW_String-->
+								</point>
+								<point>
+									-2.07426 1.89935 -0.352159
+									<!--BW_String-->
+								</point>
+								<point>
+									-2.10426 1.90333 -0.245825
+									<!--BW_String-->
+								</point>
+								<point>
+									-2.06426 1.9073 -0.139491
+									<!--BW_String-->
+								</point>
+								<point>
+									-2.00426 1.91128 -0.0331578
+									<!--BW_String-->
+								</point>
+								<point>
+									-2.09426 1.91526 0.0731768
+									<!--BW_String-->
+								</point>
+								<point>
+									-2.03426 1.91923 0.17951
+									<!--BW_String-->
+								</point>
+								<point>
+									-2.05426 1.92321 0.285844
+									<!--BW_String-->
+								</point>
+								<point>
+									-2.08425 1.92719 0.392178
+									<!--BW_String-->
+								</point>
+								<point>
+									-2.08425 1.93116 0.498512
+									<!--BW_String-->
+								</point>
+								<point>
+									-2.08425 1.93514 0.604846
+									<!--BW_String-->
+								</point>
+								<point>
+									-2.08425 1.93912 0.71118
+									<!--BW_String-->
+								</point>
+								<point>
+									-2.07425 1.94309 0.817514
+									<!--BW_String-->
+								</point>
+								<point>
+									-2.07425 1.94707 0.923848
+									<!--BW_String-->
+								</point>
+								<point>
+									-2.07425 1.95105 1.03018
+									<!--BW_String-->
+								</point>
+								<point>
+									-2.04425 1.95502 1.13652
+									<!--BW_String-->
+								</point>
+								<point>
+									-2.06425 1.959 1.24285
+									<!--BW_String-->
+								</point>
+								<point>
+									-2.00425 1.96298 1.34918
+									<!--BW_String-->
+								</point>
+								<point>
+									-2.03425 1.96695 1.45552
+									<!--BW_String-->
+								</point>
+								<point>
+									-2.09424 1.94762 1.56185
+									<!--BW_String-->
+								</point>
+								<point>
+									-2.05424 1.97491 1.66818
+									<!--BW_String-->
+								</point>
+								<point>
+									-2.05424 1.97888 1.77452
+									<!--BW_String-->
+								</point>
+								<point>
+									-2.02424 1.98286 1.88085
+									<!--BW_String-->
+								</point>
+								<point>
+									-2.02424 1.98684 1.98719
+									<!--BW_String-->
+								</point>
+								<point>
+									-2.04424 1.99081 2.09352
+									<!--BW_String-->
+								</point>
+								<point>
+									-2.01424 1.99479 2.19985
+									<!--BW_String-->
+								</point>
+								<point>
+									-2.01424 1.99877 2.30619
+									<!--BW_String-->
+								</point>
+								<point>
+									-2.01424 2.00274 2.41252
+									<!--BW_String-->
+								</point>
+								<point>
+									-2.04424 2.00672 2.51886
+									<!--BW_String-->
+								</point>
+								<point>
+									-2.00424 2.0107 2.62519
+									<!--BW_String-->
+								</point>
+								<point>
+									-2.00424 2.01468 2.73152
+									<!--BW_String-->
+								</point>
+								<point>
+									-2.00423 2.01865 2.83786
+									<!--BW_String-->
+								</point>
+								<point>
+									-2.03423 2.02263 2.94419
+									<!--BW_String-->
+								</point>
+								<point>
+									-2.08423 1.97451 3.05052
+									<!--BW_String-->
+								</point>
+								<point>
+									-1.99423 2.03058 3.15686
+									<!--BW_String-->
+								</point>
+								<point>
+									-2.02423 2.03456 3.26319
+									<!--BW_String-->
+								</point>
+								<point>
+									-2.02423 2.03839 3.36953
+									<!--BW_String-->
+								</point>
+								<point>
+									-1.87423 2.04325 3.47586
+									<!--BW_String-->
+								</point>
+								<point>
+									-1.89423 2.03824 3.58219
+									<!--BW_String-->
+								</point>
+								<point>
+									-1.87423 2.03324 3.68853
+									<!--BW_String-->
+								</point>
+								<point>
+									-1.87423 2.04717 3.79486
+									<!--BW_String-->
+								</point>
+								<point>
+									-1.87423 2.00046 3.90119
+									<!--BW_String-->
+								</point>
+								<point>
+									-1.87422 1.94004 4.00753
+									<!--BW_String-->
+								</point>
+								<point>
+									-1.93422 1.77024 4.11386
+									<!--BW_String-->
+								</point>
+							</range>
+						</top>
+						<bottom/>
+					</sourceCollisionHullPoints>
+				</left>
+				<right>
+					<segmentsCount>92</segmentsCount>
+					<segmentsOuterThickness>0.110836</segmentsOuterThickness>
+					<segmentsInnerThickness>
+						0.0014441
+						<!--BW_String-->
+					</segmentsInnerThickness>
+					<segmentsPlaneOffset>
+						1.794
+						<!--BW_String-->
+					</segmentsPlaneOffset>
+					<springsLength>
+						<backwardMovement>
+							<back>
+								0.19402
+								<!--BW_String-->
+							</back>
+							<top>0.190652</top>
+							<front>0.190114</front>
+							<bottom>0.176502</bottom>
+						</backwardMovement>
+						<forwardMovement>
+							<back>0.188551</back>
+							<top>0.190652</top>
+							<front>
+								0.19402
+								<!--BW_String-->
+							</front>
+							<bottom>0.176502</bottom>
+						</forwardMovement>
+					</springsLength>
+					<mainSegment>
+						<model>halloween/vehicles/german/G64_Panther_II_Hall_minion/track/segment_1_R.model</model>
+						<length>0.211034</length>
+					</mainSegment>
+					<secSegment>
+						<model>halloween/vehicles/german/G64_Panther_II_Hall_minion/track/segment_2_R.model</model>
+						<length>0.213027</length>
+					</secSegment>
+					<collisionHull>
+						<bottom/>
+						<top>
+							<part>
+								<xStart>
+									-4.09822
+									<!--BW_String-->
+								</xStart>
+								<xStep>0.105517</xStep>
+								<ySamples>
+									1.55756 1.56441 1.57126 1.57811 1.58496 1.59182 1.59712 1.60154 1.60596 1.61037 1.61479 1.61921 1.62363 1.62805 1.63246 1.63688 1.6413 1.64572 1.65013 1.65455 1.65897 1.66339 1.66781 1.67222 1.67664 1.68106 1.68548 1.6899 1.69431 1.69873 1.70315 1.70715 1.7111 1.71504 1.71899 1.72294 1.72689 1.73083 1.73478 1.73873 1.74268 1.74663 1.75057 1.75452 1.75847 1.76242 1.76636 1.77031 1.77426 1.77821 1.78215 1.7861 1.79005 1.794 1.79794 1.80189 1.80584 1.80979 1.8001 1.81768 1.82163 1.82558 1.82952 1.83347 1.83742 1.84137 1.84532 1.84926 1.85321 1.85716 1.86111 1.86475 1.90586 1.90749 1.87413 1.82898 1.75461 1.63078 1.5402
+									<!--BW_String-->
+								</ySamples>
+							</part>
+						</top>
+					</collisionHull>
+					<bottomWheels>
+						<wheel>WD_R1</wheel>
+						<wheel>W_R6</wheel>
+						<wheel>W_R5</wheel>
+						<wheel>W_R4</wheel>
+						<wheel>W_R3</wheel>
+						<wheel>W_R2</wheel>
+						<wheel>W_R1</wheel>
+						<wheel>W_R0</wheel>
+						<wheel>WD_R0</wheel>
+					</bottomWheels>
+					<snapWheels>
+						<topFront>
+							<wheelName>WD_R0</wheelName>
+							<basePos>
+								3.5018 1.22285
+								<!--BW_String-->
+							</basePos>
+							<shiftVec>0.526394 0.155047</shiftVec>
+							<jointIdx>11</jointIdx>
+						</topFront>
+						<topBack>
+							<wheelName>WD_R1</wheelName>
+							<basePos>
+								-3.61266 0.953575
+								<!--BW_String-->
+							</basePos>
+							<shiftVec>-0.451142 0.103776</shiftVec>
+							<jointIdx>55</jointIdx>
+						</topBack>
+						<bottomBack>
+							<wheelName>W_R6</wheelName>
+							<basePos>
+								-2.752 0.63809
+								<!--BW_String-->
+							</basePos>
+							<shiftVec>
+								-0.0442936 -0.549742
+								<!--BW_String-->
+							</shiftVec>
+							<jointIdx>64</jointIdx>
+						</bottomBack>
+						<bottomFront>
+							<wheelName>W_R0</wheelName>
+							<basePos>
+								2.43242 0.638162
+								<!--BW_String-->
+							</basePos>
+							<shiftVec>0.108901 -0.540665</shiftVec>
+							<jointIdx>0</jointIdx>
+						</bottomFront>
+					</snapWheels>
+					<radiusOverrides>
+						<wheel>
+							<name>WD_R1</name>
+							<radius>0.455089</radius>
+						</wheel>
+						<wheel>
+							<name>WD_R0</name>
+							<radius>
+								0.54216
+								<!--BW_String-->
+							</radius>
+						</wheel>
+					</radiusOverrides>
+					<teethSyncs>
+						<syncWithMainModel>true</syncWithMainModel>
+						<segmentSyncPivotOffset>0.000000</segmentSyncPivotOffset>
+						<sync>
+							<name>WD_R1</name>
+							<startAngle>
+								-16.9204
+								<!--BW_String-->
+							</startAngle>
+							<teethCount>9</teethCount>
+						</sync>
+						<sync>
+							<name>WD_R0</name>
+							<startAngle>
+								-13.9726
+								<!--BW_String-->
+							</startAngle>
+							<teethCount>9</teethCount>
+						</sync>
+					</teethSyncs>
+					<sourceCollisionHullPoints>
+						<top>
+							<range>
+								<point>
+									1.87421 1.73208 -4.09757
+									<!--BW_String-->
+								</point>
+								<point>
+									1.87421 1.73893 -3.99205
+									<!--BW_String-->
+								</point>
+								<point>
+									1.87421 1.74578 -3.88653
+									<!--BW_String-->
+								</point>
+								<point>
+									1.87421 1.75263 -3.78101
+									<!--BW_String-->
+								</point>
+								<point>
+									1.87421 1.75948 -3.6755
+									<!--BW_String-->
+								</point>
+								<point>
+									1.87421 1.76633 -3.56998
+									<!--BW_String-->
+								</point>
+								<point>
+									1.87421 1.77164 -3.46446
+									<!--BW_String-->
+								</point>
+								<point>
+									1.87421 1.77605 -3.35895
+									<!--BW_String-->
+								</point>
+								<point>
+									1.87422 1.78047 -3.25343
+									<!--BW_String-->
+								</point>
+								<point>
+									1.87422 1.78489 -3.14791
+									<!--BW_String-->
+								</point>
+								<point>
+									1.87422 1.7893 -3.04239
+									<!--BW_String-->
+								</point>
+								<point>
+									1.87422 1.79372 -2.93688
+									<!--BW_String-->
+								</point>
+								<point>
+									1.87422 1.79813 -2.83136
+									<!--BW_String-->
+								</point>
+								<point>
+									1.87422 1.80255 -2.72584
+									<!--BW_String-->
+								</point>
+								<point>
+									1.87422 1.80697 -2.62033
+									<!--BW_String-->
+								</point>
+								<point>
+									1.87422 1.81138 -2.51481
+									<!--BW_String-->
+								</point>
+								<point>
+									1.87422 1.8158 -2.40929
+									<!--BW_String-->
+								</point>
+								<point>
+									1.87422 1.82022 -2.30377
+									<!--BW_String-->
+								</point>
+								<point>
+									1.87422 1.82463 -2.19826
+									<!--BW_String-->
+								</point>
+								<point>
+									1.87422 1.82905 -2.09274
+									<!--BW_String-->
+								</point>
+								<point>
+									1.87423 1.83347 -1.98722
+									<!--BW_String-->
+								</point>
+								<point>
+									1.87423 1.83788 -1.88171
+									<!--BW_String-->
+								</point>
+								<point>
+									1.87423 1.8423 -1.77619
+									<!--BW_String-->
+								</point>
+								<point>
+									1.87423 1.84671 -1.67067
+									<!--BW_String-->
+								</point>
+								<point>
+									1.87423 1.85113 -1.56515
+									<!--BW_String-->
+								</point>
+								<point>
+									1.87423 1.85555 -1.45964
+									<!--BW_String-->
+								</point>
+								<point>
+									1.87423 1.85996 -1.35412
+									<!--BW_String-->
+								</point>
+								<point>
+									1.87423 1.86438 -1.2486
+									<!--BW_String-->
+								</point>
+								<point>
+									1.87423 1.8688 -1.14309
+									<!--BW_String-->
+								</point>
+								<point>
+									1.87423 1.87321 -1.03757
+									<!--BW_String-->
+								</point>
+								<point>
+									1.87423 1.87763 -0.932052
+									<!--BW_String-->
+								</point>
+								<point>
+									1.98424 1.88163 -0.826536
+									<!--BW_String-->
+								</point>
+								<point>
+									2.08424 1.88558 -0.72102
+									<!--BW_String-->
+								</point>
+								<point>
+									2.04424 1.88952 -0.615502
+									<!--BW_String-->
+								</point>
+								<point>
+									2.10424 1.89347 -0.509985
+									<!--BW_String-->
+								</point>
+								<point>
+									2.11424 1.89741 -0.404469
+									<!--BW_String-->
+								</point>
+								<point>
+									2.11424 1.90136 -0.298952
+									<!--BW_String-->
+								</point>
+								<point>
+									2.01424 1.90531 -0.193433
+									<!--BW_String-->
+								</point>
+								<point>
+									2.08424 1.90925 -0.0879169
+									<!--BW_String-->
+								</point>
+								<point>
+									2.08424 1.9132 0.0176001
+									<!--BW_String-->
+								</point>
+								<point>
+									2.11424 1.91714 0.123117
+									<!--BW_String-->
+								</point>
+								<point>
+									1.98424 1.92109 0.228635
+									<!--BW_String-->
+								</point>
+								<point>
+									2.07424 1.92504 0.334152
+									<!--BW_String-->
+								</point>
+								<point>
+									1.97425 1.92898 0.439669
+									<!--BW_String-->
+								</point>
+								<point>
+									2.01425 1.93293 0.545186
+									<!--BW_String-->
+								</point>
+								<point>
+									2.05425 1.93688 0.650703
+									<!--BW_String-->
+								</point>
+								<point>
+									2.06425 1.94082 0.75622
+									<!--BW_String-->
+								</point>
+								<point>
+									2.06425 1.94477 0.861737
+									<!--BW_String-->
+								</point>
+								<point>
+									2.02425 1.94871 0.967255
+									<!--BW_String-->
+								</point>
+								<point>
+									2.08425 1.95266 1.07277
+									<!--BW_String-->
+								</point>
+								<point>
+									1.95425 1.95661 1.17829
+									<!--BW_String-->
+								</point>
+								<point>
+									2.02425 1.96055 1.28381
+									<!--BW_String-->
+								</point>
+								<point>
+									2.06425 1.9645 1.38932
+									<!--BW_String-->
+								</point>
+								<point>
+									2.02425 1.96844 1.49484
+									<!--BW_String-->
+								</point>
+								<point>
+									2.06426 1.97239 1.60036
+									<!--BW_String-->
+								</point>
+								<point>
+									2.03426 1.97634 1.70587
+									<!--BW_String-->
+								</point>
+								<point>
+									2.05426 1.98028 1.81139
+									<!--BW_String-->
+								</point>
+								<point>
+									1.98426 1.98423 1.91691
+									<!--BW_String-->
+								</point>
+								<point>
+									2.08426 1.97454 2.02242
+									<!--BW_String-->
+								</point>
+								<point>
+									1.98426 1.99212 2.12794
+									<!--BW_String-->
+								</point>
+								<point>
+									2.03426 1.99607 2.23346
+									<!--BW_String-->
+								</point>
+								<point>
+									2.04426 2.00001 2.33898
+									<!--BW_String-->
+								</point>
+								<point>
+									2.03426 2.00396 2.44449
+									<!--BW_String-->
+								</point>
+								<point>
+									2.02426 2.00791 2.55001
+									<!--BW_String-->
+								</point>
+								<point>
+									2.02426 2.01185 2.65553
+									<!--BW_String-->
+								</point>
+								<point>
+									2.01427 2.0158 2.76105
+									<!--BW_String-->
+								</point>
+								<point>
+									1.99427 2.01974 2.86656
+									<!--BW_String-->
+								</point>
+								<point>
+									2.02427 2.02369 2.97208
+									<!--BW_String-->
+								</point>
+								<point>
+									2.04427 2.02764 3.0776
+									<!--BW_String-->
+								</point>
+								<point>
+									2.02427 2.03158 3.18311
+									<!--BW_String-->
+								</point>
+								<point>
+									2.01427 2.03553 3.28863
+									<!--BW_String-->
+								</point>
+								<point>
+									2.00427 2.03917 3.39415
+									<!--BW_String-->
+								</point>
+								<point>
+									1.87427 2.08028 3.49967
+									<!--BW_String-->
+								</point>
+								<point>
+									1.87427 2.08191 3.60518
+									<!--BW_String-->
+								</point>
+								<point>
+									2.11427 2.04855 3.7107
+									<!--BW_String-->
+								</point>
+								<point>
+									2.11427 2.0034 3.81621
+									<!--BW_String-->
+								</point>
+								<point>
+									2.11428 1.92902 3.92173
+									<!--BW_String-->
+								</point>
+								<point>
+									2.11428 1.80519 4.02725
+									<!--BW_String-->
+								</point>
+								<point>
+									1.97428 1.71461 4.13276
+									<!--BW_String-->
+								</point>
+							</range>
+						</top>
+						<bottom/>
+					</sourceCollisionHullPoints>
+				</right>
+			</physicalTracks>
+			<customization>
+				<customizableVehicleAreas>
+					<paint/>
+					<camouflage/>
+				</customizableVehicleAreas>
+			</customization>
+		</Chassis_G64_Panther_II_Hall_minion>
+	</chassis>
+	<turrets0>
+		<Turret_1_G64_Panther_II_Hall_minion>
+			<userString>#halloween.germany_vehicles.extend:Turret_1_G64_Panther_II_Hall_minion</userString>
+			<tags/>
+			<level>7</level>
+			<price>22100</price>
+			<notInShop>true</notInShop>
+			<armor>
+				<armor_1>250</armor_1>
+				<armor_2>210</armor_2>
+				<armor_3>150</armor_3>
+				<armor_4>150</armor_4>
+				<armor_5>40</armor_5>
+				<armor_6>40</armor_6>
+				<armor_7>120</armor_7>
+				<armor_8>0</armor_8>
+				<armor_9>60</armor_9>
+				<armor_10>140</armor_10>
+				<armor_16>
+					40
+					<vehicleDamageFactor>
+						0.0
+						<!--BW_String-->
+					</vehicleDamageFactor>
+				</armor_16>
+			</armor>
+			<primaryArmor>armor_1 armor_3 armor_4</primaryArmor>
+			<armorHomogenization>1</armorHomogenization>
+			<weight>7500</weight>
+			<maxHealth>320</maxHealth>
+			<rotationSpeed>30</rotationSpeed>
+			<turretRotatorHealth>
+				<maxHealth>140</maxHealth>
+				<maxRegenHealth>70</maxRegenHealth>
+				<hysteresisHealth>30</hysteresisHealth>
+				<repairCost>
+					1.0
+					<!--BW_String-->
+				</repairCost>
+				<healthRegenPerSec>
+					2.625
+					<!--BW_String-->
+				</healthRegenPerSec>
+				<healthBurnPerSec>7</healthBurnPerSec>
+			</turretRotatorHealth>
+			<circularVisionRadius>200</circularVisionRadius>
+			<surveyingDeviceHealth>
+				<maxHealth>100</maxHealth>
+				<maxRegenHealth>50</maxRegenHealth>
+				<hysteresisHealth>20</hysteresisHealth>
+				<repairCost>
+					1.0
+					<!--BW_String-->
+				</repairCost>
+				<healthRegenPerSec>
+					1.75
+					<!--BW_String-->
+				</healthRegenPerSec>
+				<healthBurnPerSec>5</healthBurnPerSec>
+			</surveyingDeviceHealth>
+			<guns>
+				<_75mm_KwK45_L100_Hall_minion>
+					shared
+					<maxAmmo>80</maxAmmo>
+					<reloadTime>
+						7.6
+						<!--BW_String-->
+					</reloadTime>
+					<shotDispersionRadius>
+						0.32
+						<!--BW_String-->
+					</shotDispersionRadius>
+					<shotDispersionFactors>
+						<turretRotation>
+							0.14
+							<!--BW_String-->
+						</turretRotation>
+						<afterShot>
+							3.5
+							<!--BW_String-->
+						</afterShot>
+						<whileGunDamaged>
+							2.0
+							<!--BW_String-->
+						</whileGunDamaged>
+					</shotDispersionFactors>
+					<armor>
+						<armor_1>
+							120
+							<vehicleDamageFactor>
+								0.0
+								<!--BW_String-->
+							</vehicleDamageFactor>
+						</armor_1>
+						<armor_2>
+							80
+							<vehicleDamageFactor>
+								0.0
+								<!--BW_String-->
+							</vehicleDamageFactor>
+						</armor_2>
+						<armor_3>
+							100
+							<vehicleDamageFactor>
+								0.0
+								<!--BW_String-->
+							</vehicleDamageFactor>
+						</armor_3>
+						<armor_4>
+							0
+							<vehicleDamageFactor>
+								0.0
+								<!--BW_String-->
+							</vehicleDamageFactor>
+						</armor_4>
+						<gun>20</gun>
+					</armor>
+					<aimingTime>
+						2.3
+						<!--BW_String-->
+					</aimingTime>
+					<pitchLimits>
+						<minPitch>0 -20 1 -20</minPitch>
+						<maxPitch>
+							0 8 0.5 8 1 8
+							<!--BW_String-->
+						</maxPitch>
+					</pitchLimits>
+					<invisibilityFactorAtShot>
+						0.247
+						<!--BW_String-->
+					</invisibilityFactorAtShot>
+					<turretYawLimits>-180 180</turretYawLimits>
+					<models>
+						<undamaged>halloween/vehicles/german/G64_Panther_II_Hall_minion/normal/lod0/Gun_02.model</undamaged>
+						<destroyed>halloween/vehicles/german/G64_Panther_II_Hall_minion/crash/lod0/Gun_02.model</destroyed>
+						<exploded>halloween/vehicles/german/G64_Panther_II_Hall_minion/crash/lod0/Gun_02.model</exploded>
+					</models>
+					<hitTester>
+						<collisionModelServer>halloween/vehicles/german/G64_Panther_II_Hall_minion/collision/Gun_02.model</collisionModelServer>
+						<collisionModelClient>halloween/vehicles/german/G64_Panther_II_Hall_minion/collision_client/Gun_02.model</collisionModelClient>
+					</hitTester>
+					<customization>
+						<customizableVehicleAreas>
+							<paint/>
+							<camouflage/>
+						</customizableVehicleAreas>
+					</customization>
+					<camouflage>
+						<tiling>
+							0.8 0.8 0.000000 0.000000
+							<!--BW_String-->
+						</tiling>
+						<density>
+							85.1214 102.595
+							<!--BW_String-->
+						</density>
+						<aoTextureSize>512 512</aoTextureSize>
+					</camouflage>
+				</_75mm_KwK45_L100_Hall_minion>
+			</guns>
+			<models>
+				<undamaged>halloween/vehicles/german/G64_Panther_II_Hall_minion/normal/lod0/Turret_01.model</undamaged>
+				<destroyed>halloween/vehicles/german/G64_Panther_II_Hall_minion/crash/lod0/Turret_01.model</destroyed>
+				<exploded>halloween/vehicles/german/G64_Panther_II_Hall_minion/crash/lod0/Turret_01.model</exploded>
+			</models>
+			<hitTester>
+				<collisionModelServer>halloween/vehicles/german/G64_Panther_II_Hall_minion/collision/Turret_01.model</collisionModelServer>
+				<collisionModelClient>halloween/vehicles/german/G64_Panther_II_Hall_minion/collision_client/Turret_01.model</collisionModelClient>
+			</hitTester>
+			<gunPosition>
+				0.00253 0.578055 1.67305
+				<!--BW_String-->
+			</gunPosition>
+			<showEmblemsOnGun>false</showEmblemsOnGun>
+			<physicsShape>
+				0.987 -0.084 1.010 0.000 0.753 0.186 0.912 0.275 0.291 0.500 0.306 0.500 0.299 0.688 0.000
+				<!--BW_String-->
+			</physicsShape>
+			<wwturretRotatorSoundManual>tur_mech_trav</wwturretRotatorSoundManual>
+			<customizationSlots>
+				<slot>
+					<slotType>sequence</slotType>
+					<slotId>38000</slotId>
+					<position>0 0 0</position>
+					<rotation>0 0 0</rotation>
+					<attachNode>HP_light1</attachNode>
+				</slot>
+			</customizationSlots>
+			<customization>
+				<customizableVehicleAreas>
+					<paint/>
+					<camouflage/>
+				</customizableVehicleAreas>
+			</customization>
+			<camouflage>
+				<tiling>
+					0.8 0.8 0.000000 0.000000
+					<!--BW_String-->
+				</tiling>
+				<density>
+					106.26 105.786
+					<!--BW_String-->
+				</density>
+				<aoTextureSize>512 512</aoTextureSize>
+			</camouflage>
+		</Turret_1_G64_Panther_II_Hall_minion>
+	</turrets0>
+	<engines>
+		<Maybach_HL_230_TRM_P30_Hall_minion>shared</Maybach_HL_230_TRM_P30_Hall_minion>
+	</engines>
+	<fuelTanks>
+		<Heavy_HW_BOT>shared</Heavy_HW_BOT>
+	</fuelTanks>
+	<radios>
+		<FuG12_Hall_minion>shared</FuG12_Hall_minion>
+	</radios>
+	<clientAdjustmentFactors/>
+	<physics>
+		<mode>1</mode>
+		<useSimplifiedGearbox>true</useSimplifiedGearbox>
+		<detailed>
+			<gravityFactor>
+				1.25
+				<!--BW_String-->
+			</gravityFactor>
+			<engines>
+				<Maybach_HL_230_TRM_P30_Hall_minion>
+					<startRPM>1800</startRPM>
+					<powerFactor>1</powerFactor>
+					<rotationFactor>1</rotationFactor>
+					<engineTorque>
+						500 2.7 1000 3.15 1500 3.45 2500 2.55
+						<!--BW_String-->
+					</engineTorque>
+					<engineLoses>
+						0.1521 7.6065
+						<!--BW_String-->
+					</engineLoses>
+					<engineSupression>0 1 1 1</engineSupression>
+					<engineInertia>
+						0.0204
+						<!--BW_String-->
+					</engineInertia>
+					<idleRPM>1000</idleRPM>
+					<idleChoker>
+						0.1
+						<!--BW_String-->
+					</idleChoker>
+					<rotationChoker>1</rotationChoker>
+					<smplEnginePower>
+						2000.2000
+						<!--BW_String-->
+					</smplEnginePower>
+					<smplFwMaxSpeed>55</smplFwMaxSpeed>
+					<smplBkMaxSpeed>20</smplBkMaxSpeed>
+				</Maybach_HL_230_TRM_P30_Hall_minion>
+			</engines>
+			<chassis>
+				<Chassis_G64_Panther_II_Hall_minion>
+					<angVelocityFactor0>
+						0.8168
+						<!--BW_String-->
+					</angVelocityFactor0>
+					<axleCount>5</axleCount>
+					<hullCOM>
+						0 1.1965 -0.028585
+						<!--BW_String-->
+					</hullCOM>
+					<chassisMassFraction>
+						0.3
+						<!--BW_String-->
+					</chassisMassFraction>
+					<hullCOMShiftY>
+						-0.1
+						<!--BW_String-->
+					</hullCOMShiftY>
+					<wheelRadius>
+						0.4
+						<!--BW_String-->
+					</wheelRadius>
+					<bodyHeight>
+						1.293
+						<!--BW_String-->
+					</bodyHeight>
+					<clearance>
+						0.65
+						<!--BW_String-->
+					</clearance>
+					<wheelStroke>
+						0.3
+						<!--BW_String-->
+					</wheelStroke>
+					<roadWheelPositions>
+						-2.593949 -1.311267 -0.028585 1.254097 2.536778
+						<!--BW_String-->
+					</roadWheelPositions>
+					<stiffness0>
+						266.3075
+						<!--BW_String-->
+					</stiffness0>
+					<stiffness1>
+						303.3255
+						<!--BW_String-->
+					</stiffness1>
+					<stiffnessFactors>1 1 1 1 1</stiffnessFactors>
+					<damping>
+						30.3326
+						<!--BW_String-->
+					</damping>
+					<movementRevertSpeed>2</movementRevertSpeed>
+					<isRotationAroundCenter>True</isRotationAroundCenter>
+					<comSideFriction>
+						1.5
+						<!--BW_String-->
+					</comSideFriction>
+					<comFrictionYOffs>0</comFrictionYOffs>
+					<hullInertiaFactors>
+						1.8 2 1.6
+						<!--BW_String-->
+					</hullInertiaFactors>
+					<rotationBrake>
+						34.5898
+						<!--BW_String-->
+					</rotationBrake>
+					<brake>53215</brake>
+					<wheelInertiaFactor>1</wheelInertiaFactor>
+					<angVelocityFactor>
+						0.6943
+						<!--BW_String-->
+					</angVelocityFactor>
+					<wheelSinkageResistFactor>0</wheelSinkageResistFactor>
+					<rotFritionFactor>0</rotFritionFactor>
+					<gimletGoalWOnSpot>
+						0.6283
+						<!--BW_String-->
+					</gimletGoalWOnSpot>
+					<gimletPushOnSpotInit>
+						0.1
+						<!--BW_String-->
+					</gimletPushOnSpotInit>
+					<gimletPushOnSpotFinal>4</gimletPushOnSpotFinal>
+					<pushRotOnSpotFixedPeriod>
+						0.13
+						<!--BW_String-->
+					</pushRotOnSpotFixedPeriod>
+					<pushRotOnSpotGrowPeriod>
+						0.4667
+						<!--BW_String-->
+					</pushRotOnSpotGrowPeriod>
+					<gimletGoalWOnMove>
+						0.5341
+						<!--BW_String-->
+					</gimletGoalWOnMove>
+					<gimletPushOnMoveInit>
+						0.3452
+						<!--BW_String-->
+					</gimletPushOnMoveInit>
+					<gimletPushOnMoveFinal>4</gimletPushOnMoveFinal>
+					<pushRotOnMoveFixedPeriod>
+						0.0633
+						<!--BW_String-->
+					</pushRotOnMoveFixedPeriod>
+					<pushRotOnMoveGrowPeriod>
+						0.4333
+						<!--BW_String-->
+					</pushRotOnMoveGrowPeriod>
+					<gimletVelScaleMin>
+						0.1
+						<!--BW_String-->
+					</gimletVelScaleMin>
+					<gimletVelScaleMax>2</gimletVelScaleMax>
+					<pushStop>
+						0.0981
+						<!--BW_String-->
+					</pushStop>
+					<sideFrictionConstantRatio>0</sideFrictionConstantRatio>
+					<chsDmgMultiplier>1</chsDmgMultiplier>
+					<centerRotationFwdSpeed>
+						6.4822
+						<!--BW_String-->
+					</centerRotationFwdSpeed>
+					<rotationByLockChoker>
+						0.8
+						<!--BW_String-->
+					</rotationByLockChoker>
+					<fwLagRatio>
+						0.3
+						<!--BW_String-->
+					</fwLagRatio>
+					<bkLagRatio>
+						0.4
+						<!--BW_String-->
+					</bkLagRatio>
+					<grounds>
+						<soft>
+							<dirtCumulationRate>4</dirtCumulationRate>
+							<dirtReleaseRate>4</dirtReleaseRate>
+							<dirtSideVelocity>
+								32.4
+								<!--BW_String-->
+							</dirtSideVelocity>
+							<maxDirt>1</maxDirt>
+							<sideFriction>
+								1.1
+								<!--BW_String-->
+							</sideFriction>
+							<fwdFriction>
+								1.3
+								<!--BW_String-->
+							</fwdFriction>
+							<rollingFriction>
+								0.16905
+								<!--BW_String-->
+							</rollingFriction>
+							<hbComSideFriction>0</hbComSideFriction>
+							<hbSideFrictionAddition>0</hbSideFrictionAddition>
+							<rotationFactor>0.358274</rotationFactor>
+						</soft>
+						<medium>
+							<dirtCumulationRate>
+								3.6
+								<!--BW_String-->
+							</dirtCumulationRate>
+							<dirtReleaseRate>
+								0.7
+								<!--BW_String-->
+							</dirtReleaseRate>
+							<dirtSideVelocity>
+								32.4
+								<!--BW_String-->
+							</dirtSideVelocity>
+							<maxDirt>1</maxDirt>
+							<sideFriction>
+								1.1
+								<!--BW_String-->
+							</sideFriction>
+							<fwdFriction>
+								1.3
+								<!--BW_String-->
+							</fwdFriction>
+							<rollingFriction>
+								0.0805
+								<!--BW_String-->
+							</rollingFriction>
+							<hbComSideFriction>0</hbComSideFriction>
+							<hbSideFrictionAddition>0</hbSideFrictionAddition>
+							<rotationFactor>0.765869</rotationFactor>
+						</medium>
+						<firm>
+							<dirtCumulationRate>
+								3.6
+								<!--BW_String-->
+							</dirtCumulationRate>
+							<dirtReleaseRate>
+								0.55
+								<!--BW_String-->
+							</dirtReleaseRate>
+							<dirtSideVelocity>
+								32.4
+								<!--BW_String-->
+							</dirtSideVelocity>
+							<maxDirt>1</maxDirt>
+							<sideFriction>
+								1.1
+								<!--BW_String-->
+							</sideFriction>
+							<fwdFriction>
+								1.3
+								<!--BW_String-->
+							</fwdFriction>
+							<rollingFriction>
+								0.0644
+								<!--BW_String-->
+							</rollingFriction>
+							<hbComSideFriction>0</hbComSideFriction>
+							<hbSideFrictionAddition>0</hbSideFrictionAddition>
+							<rotationFactor>0.953902</rotationFactor>
+						</firm>
+					</grounds>
+				</Chassis_G64_Panther_II_Hall_minion>
+			</chassis>
+			<fakegearbox>
+				<fwdgears>
+					<switchSpeed>
+						4.583333 7.638889 12.22222
+						<!--BW_String-->
+					</switchSpeed>
+					<switchHysteresis>
+						0.5 0.763889 1.222222
+						<!--BW_String-->
+					</switchHysteresis>
+					<lowRpm>
+						0.4 0.3 0.3
+						<!--BW_String-->
+					</lowRpm>
+					<highRpm>
+						1.2 1 1
+						<!--BW_String-->
+					</highRpm>
+				</fwdgears>
+				<bkwdgears>
+					<switchSpeed>1.666667 3.333333</switchSpeed>
+					<switchHysteresis>1 1</switchHysteresis>
+					<lowRpm>
+						0.4 0.4
+						<!--BW_String-->
+					</lowRpm>
+					<highRpm>1 1</highRpm>
+				</bkwdgears>
+			</fakegearbox>
+		</detailed>
+	</physics>
+	<effects>
+		<collision/>
+		<damagedStateGroup>hw19large</damagedStateGroup>
+	</effects>
+	<emblems>
+		<default>15502</default>
+		<lodDist>MEDIUM</lodDist>
+		<alpha>
+			0.88
+			<!--BW_String-->
+		</alpha>
+	</emblems>
+</root>

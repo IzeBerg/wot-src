@@ -22,10 +22,10 @@ package net.wg.infrastructure.base.meta.impl
          this.acceptSquad(param1);
       }
       
-      public function addToSquadS(param1:String) : void
+      public function addToSquadS(param1:String, param2:String = "") : void
       {
          App.utils.asserter.assertNotNull(this.addToSquad,"addToSquad" + Errors.CANT_NULL);
-         this.addToSquad(param1);
+         this.addToSquad(param1,param2);
       }
    }
 }

@@ -1,7 +1,6 @@
 package net.wg.gui.battle.eventBattle.views.battleHints
 {
    import flash.text.TextField;
-   import flash.text.TextFieldAutoSize;
    import net.wg.gui.battle.components.BattleDisplayable;
    
    public class TextContainer extends BattleDisplayable
@@ -13,8 +12,6 @@ package net.wg.gui.battle.eventBattle.views.battleHints
       public function TextContainer()
       {
          super();
-         this.txt.wordWrap = true;
-         this.txt.autoSize = TextFieldAutoSize.CENTER;
       }
       
       override protected function onDispose() : void

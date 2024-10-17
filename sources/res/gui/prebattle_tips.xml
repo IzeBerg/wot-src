@@ -184,6 +184,13 @@
 				<showTimes>5</showTimes>
 			</preceding>
 		</filter>
+		<filter>
+			<id>only_twinGun_first_5_times</id>
+			<tags>twinGun</tags>
+			<preceding>
+				<showTimes>5</showTimes>
+			</preceding>
+		</filter>
 	</filters>
 	<tips>
 		<tip>
@@ -1028,6 +1035,11 @@
 			<filter>from_100_battles</filter>
 		</tip>
 		<tip>
+			<id>tip210</id>
+			<status>tip210Status</status>
+			<filter>only_twinGun_first_5_times</filter>
+		</tip>
+		<tip>
 			<id>epicTip1</id>
 			<status>epicModeIntroduction</status>
 			<filter>max_15_battles</filter>
@@ -1386,18 +1398,6 @@
 		<tip>
 			<id>mapbox0</id>
 			<status>mapbox0Status</status>
-		</tip>
-		<tip>
-			<id>mapbox1</id>
-			<status>mapbox1Status</status>
-		</tip>
-		<tip>
-			<id>mapbox2</id>
-			<status>mapbox2Status</status>
-		</tip>
-		<tip>
-			<id>mapbox3</id>
-			<status>mapbox3Status</status>
 		</tip>
 		<tip>
 			<id>devMaps0</id>

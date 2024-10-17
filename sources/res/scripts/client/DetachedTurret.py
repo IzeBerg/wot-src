@@ -1,11 +1,13 @@
+import GenericComponents
 from soft_exception import SoftException
-import math_utils, BigWorld, Math
+import math_utils, BigWorld, Math, logging
 from debug_utils import LOG_ERROR
 import material_kinds
 from VehicleEffects import DamageFromShotDecoder
 from VehicleStickers import VehicleStickers
 from cgf_obsolete_script.py_component import Component
 from cgf_obsolete_script.script_game_object import ScriptGameObject, ComponentDescriptor
+from vehicle_systems import vehicle_composition
 from vehicle_systems.camouflages import prepareBattleOutfit
 from vehicle_systems.tankStructure import TankPartNames, TankNodeNames, ColliderTypes, getPartModelsFromDesc, ModelsSetParams, ModelStates
 from helpers.EffectMaterialCalculation import calcSurfaceMaterialNearPoint
@@ -14,6 +16,7 @@ from helpers.bound_effects import ModelBoundEffects
 from items import vehicles
 from constants import SERVER_TICK_LENGTH
 from debug_utils import LOG_DEBUG
+_logger = logging.getLogger(__name__)
 _MIN_COLLISION_SPEED = 3.5
 
 class DetachedTurret(BigWorld.Entity, ScriptGameObject):
@@ -111,6 +114,10 @@ class DetachedTurret(BigWorld.Entity, ScriptGameObject):
         if avatar and avatar.isSimulationSceneActive:
             self.hide()
             self.stopDetachmentEffects(forceDelete=True)
+        self.createComponent(GenericComponents.TransformComponent, Math.Matrix())
+        self.createComponent(GenericComponents.DynamicModelComponent, self.model)
+        self.createComponent(GenericComponents.HierarchyComponent, self.entityGameObject)
+        vehicle_composition.createDetachedTurretComposition(self.gameObject)
         return
 
     def show(self):

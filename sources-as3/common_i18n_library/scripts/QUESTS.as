@@ -1489,18 +1489,6 @@ package
       
       public static const DETAILS_CONDITIONS_CUMULATIVE_XP_OTHER:String = "#quests:details/conditions/cumulative/xp/other";
       
-      public static const DETAILS_CONDITIONS_CUMULATIVE_WTBOSSVULNERABLEDAMAGE:String = "#quests:details/conditions/cumulative/wtBossVulnerableDamage";
-      
-      public static const DETAILS_CONDITIONS_CUMULATIVE_MAXWTPLASMABONUS:String = "#quests:details/conditions/cumulative/maxWtPlasmaBonus";
-      
-      public static const DETAILS_CONDITIONS_CUMULATIVE_WTGENERATORSCAPTURED:String = "#quests:details/conditions/cumulative/wtGeneratorsCaptured";
-      
-      public static const DETAILS_CONDITIONS_CUMULATIVE_WTDEATHCOUNT:String = "#quests:details/conditions/cumulative/wtDeathCount";
-      
-      public static const DETAILS_CONDITIONS_CUMULATIVE_WTMINIBOSSDESTROYED:String = "#quests:details/conditions/cumulative/wtMiniBossDestroyed";
-      
-      public static const DETAILS_CONDITIONS_CUMULATIVE_WTKILLEDBYHYPERIONCOUNT:String = "#quests:details/conditions/cumulative/wtKilledByHyperionCount";
-      
       public static const DETAILS_DOSSIER_SNIPERSERIES:String = "#quests:details/dossier/sniperSeries";
       
       public static const DETAILS_DOSSIER_MAXSNIPERSERIES:String = "#quests:details/dossier/maxSniperSeries";
@@ -3462,12 +3450,6 @@ package
       public static const DETAILS_CONDITIONS_CUMULATIVE_DAMAGEDHP:String = "#quests:details/conditions/cumulative/damagedHp";
       
       public static const DETAILS_CONDITIONS_CUMULATIVE_COMP7PRESTIGEPOINTS:String = "#quests:details/conditions/cumulative/comp7PrestigePoints";
-      
-      public static const MISSIONS_TAB_AUTUMN_MARATHON:String = "#quests:missions/tab/autumn_marathon";
-      
-      public static const MISSIONS_TAB_AUTUMN_MARATHON_HEADER:String = "#quests:missions/tab/autumn_marathon/header";
-      
-      public static const MISSIONS_TAB_AUTUMN_MARATHON_BODY:String = "#quests:missions/tab/autumn_marathon/body";
       
       public static const BATTLECONDITION_STATE_ENUM:Array = [BATTLECONDITION_STATE_COMPLETED,BATTLECONDITION_STATE_COMPLETED_PERFECTLY,BATTLECONDITION_STATE_IN_PROGRESS,BATTLECONDITION_STATE_FAILED];
       

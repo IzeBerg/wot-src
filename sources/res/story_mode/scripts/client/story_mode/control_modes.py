@@ -1,4 +1,5 @@
-import BigWorld, CommandMapping
+import math, BigWorld, CommandMapping
+from AvatarInputHandler.DynamicCameras.ArcadeCamera import ArcadeCamera
 from AvatarInputHandler.control_modes import ArcadeControlMode, SniperControlMode
 from Vehicle import Vehicle
 from constants import AIMING_MODE, VEHICLE_BUNKER_TURRET_TAG
@@ -13,7 +14,27 @@ def targetIsBunker():
     return VEHICLE_BUNKER_TURRET_TAG in target.typeDescriptor.type.tags
 
 
-class OnboardingArcadeControlMode(ArcadeControlMode):
+class StoryModeArcadeCamera(ArcadeCamera):
+    _START_DISTANCE = 10
+    _START_ANGLE = 80
+
+    def create(self, onChangeControlMode=None, postmortemMode=False, smartPointCalculator=True):
+        prevStartDist = self._cfg['startDist']
+        prevStartAngle = self._cfg['startAngle']
+        self._cfg['startDist'] = self._START_DISTANCE
+        self._cfg['startAngle'] = math.radians(self._START_ANGLE) - math.pi * 0.5
+        super(StoryModeArcadeCamera, self).create(onChangeControlMode, postmortemMode, smartPointCalculator)
+        self._cfg['startDist'] = prevStartDist
+        self._cfg['startAngle'] = prevStartAngle
+
+
+class StoryModeArcadeControlModeStartCamera(ArcadeControlMode):
+
+    def _setupCamera(self, dataSection):
+        self._cam = StoryModeArcadeCamera(dataSection['camera'], defaultOffset=self._defaultOffset)
+
+
+class OnboardingArcadeControlMode(StoryModeArcadeControlModeStartCamera):
     _storyModeCtrl = dependency.descriptor(IStoryModeController)
 
     @property
@@ -47,7 +68,7 @@ class OnboardingSniperControlMode(SniperControlMode):
         return super(OnboardingSniperControlMode, self).handleKeyEvent(isDown, key, mods, event)
 
 
-class StoryModeArcadeControlMode(ArcadeControlMode):
+class StoryModeArcadeControlMode(StoryModeArcadeControlModeStartCamera):
 
     def handleKeyEvent(self, isDown, key, mods, event=None):
         if CommandMapping.g_instance.isFired(CommandMapping.CMD_CM_LOCK_TARGET, key) and targetIsBunker():

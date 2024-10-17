@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<CellMethods/>
+	<ClientMethods>
+		<clientOnBossHealthChanged>
+			<Arg>UINT16</Arg>
+			<Arg>UINT16</Arg>
+			<Arg>OBJECT_ID</Arg>
+			<Arg>OBJECT_ID</Arg>
+			<Arg>UINT8</Arg>
+		</clientOnBossHealthChanged>
+	</ClientMethods>
+	<Properties>
+		<lastHealth>
+			<Type>UINT16</Type>
+			<Flags>ALL_CLIENTS</Flags>
+			<SendLatestOnly>true</SendLatestOnly>
+		</lastHealth>
+		<bossVehicleIDs>
+			<Type>
+				ARRAY
+				<of>OBJECT_ID</of>
+			</Type>
+			<Flags>ALL_CLIENTS</Flags>
+		</bossVehicleIDs>
+		<healthForLives>
+			<Type>
+				TUPLE
+				<of>UINT16</of>
+			</Type>
+			<Flags>ALL_CLIENTS</Flags>
+		</healthForLives>
+	</Properties>
+	<ofEntity>
+		<ArenaInfo/>
+	</ofEntity>
+	<DefaultKeyName>HWArenaInfoBossHealthBarComponent</DefaultKeyName>
+</root>

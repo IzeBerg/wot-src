@@ -402,9 +402,7 @@ package net.wg.gui.components.crosshairPanel
       {
          if(this._currentCrosshair != null)
          {
-            this._sniperCameraTransitionFx.setCameraTransitionDuration(param2);
-            this._sniperCameraTransitionFx.setActiveGunId(param1);
-            this._sniperCameraTransitionFx.start();
+            this._sniperCameraTransitionFx.start(param1,param2);
          }
       }
       
@@ -722,6 +720,22 @@ package net.wg.gui.components.crosshairPanel
          }
       }
       
+      public function as_setTwinGunMarkerActive(param1:Boolean) : void
+      {
+         if(this._gunMarkersContainer != null)
+         {
+            this._gunMarkersContainer.setTwinGunActive(param1);
+         }
+      }
+      
+      public function as_setTwinGunMarkerState(param1:uint) : void
+      {
+         if(this._gunMarkersContainer != null)
+         {
+            this._gunMarkersContainer.setTwinGunMarkerState(param1);
+         }
+      }
+      
       public function as_setView(param1:int, param2:int) : void
       {
          var _loc3_:BoostIndicatorStateParamsVO = null;
@@ -799,26 +813,6 @@ package net.wg.gui.components.crosshairPanel
          if(this._isAutoloader && this._currentCrosshair != null)
          {
             this._currentCrosshair.autoloaderShowShot();
-         }
-      }
-      
-      public function as_showPlasmaIndicator(param1:Number, param2:Boolean, param3:String) : void
-      {
-         if(this._currentCrosshair != null)
-         {
-            this._currentCrosshair.showPlasmaIndicator(param1,param2,param3);
-         }
-      }
-      
-      public function as_showExplosiveShotIndicator(param1:Boolean) : void
-      {
-         if(this._gunMarkersContainer != null)
-         {
-            this._gunMarkersContainer.setExplosiveShotMarker(param1);
-         }
-         if(this._currentCrosshair != null)
-         {
-            this._currentCrosshair.setExplosiveShotVisible(param1);
          }
       }
       

@@ -41,6 +41,90 @@ msgstr "THE BATTLE IS OVER"
 msgid "battleResult/resultLabel/win"
 msgstr "VICTORY!"
 
+msgid "berlin/hint01"
+msgstr "Take out the King Tiger's tracks for Storm Petrel"
+
+msgid "berlin/hint02"
+msgstr "Wait and listen to Sgt. Brooks"
+
+msgid "berlin/objective01/header"
+msgstr "Search for the enemy Wunderwaffe"
+
+msgid "berlin/objective01/subheader"
+msgstr "Advance with caution"
+
+msgid "berlin/objective02/header"
+msgstr "Hold off!"
+
+msgid "berlin/objective02/subheader"
+msgstr "Follow directives from HQ"
+
+msgid "berlin/objective03/header"
+msgstr "Search for the enemy Wunderwaffe"
+
+msgid "berlin/objective03/subheader"
+msgstr "Advance with caution"
+
+msgid "berlin/objective03/success"
+msgstr "Ruins cleared!"
+
+msgid "berlin/objective04/header"
+msgstr "Wait for Sgt. Brooks to call a bomber"
+
+msgid "berlin/objective04/subheader"
+msgstr "Defend your position!"
+
+msgid "berlin/objective05/header"
+msgstr "Finish off the enemies"
+
+msgid "berlin/objective05/subheader"
+msgid_plural "plural/dday/objective08/subheader"
+msgstr[0] "Destroy %d remaining enemy"
+msgstr[1] "Destroy %d remaining enemies"
+msgstr[2] "Destroy %d remaining enemies"
+
+msgid "berlin/objective05/success"
+msgstr "Bomber on its way! Get ready!"
+
+msgid "berlin/objective06/header"
+msgstr "Finish the job"
+
+msgid "berlin/objective06/subheader"
+msgstr "Take out the Jagdtiger's tracks"
+
+msgid "berlin/objective06/success"
+msgstr "Jagdtiger destroyed"
+
+msgid "berlin/objective07/header"
+msgstr "Capture the Wunderwaffe"
+
+msgid "berlin/objective07/subheader"
+msgstr "Take out the Little Mouse's tracks"
+
+msgid "berlin/objective07/success"
+msgstr "Little Mouse destroyed and captured!"
+
+msgid "berlin/prebattle/header"
+msgstr "Advance with caution"
+
+msgid "berlin/prebattle/start"
+msgstr "Proceed"
+
+msgid "berlin/prebattle/subheader"
+msgstr "?empty?"
+
+msgid "berlin/respawn/header"
+msgstr "Stand by, soldier"
+
+msgid "berlin/respawn/subheader"
+msgstr "Reinforcement is arriving"
+
+msgid "berlin/respawn_over/header"
+msgstr "It's over"
+
+msgid "berlin/respawn_over/subheader"
+msgstr "All available vehicles have been destroyed"
+
 msgid "botNames/Brooks"
 msgstr "Sgt. Brooks"
 
@@ -117,10 +201,10 @@ msgid "dday/objective03/header"
 msgstr "Make the climb"
 
 msgid "dday/objective03/subheader"
-msgstr "Reach and destroy enemy anti-air battery defenses"
+msgstr "Reach and destroy enemy defenses in sector B5"
 
 msgid "dday/objective03/success"
-msgstr "Defenses destroyed! Anti-air batteries are silent!"
+msgstr "Defenses destroyed! Capitalize on this breakthrough!"
 
 msgid "dday/objective04/header"
 msgstr "Help your allies break through"
@@ -272,6 +356,15 @@ msgstr "Rigorous"
 msgid "prebattle/mission/stage/2"
 msgstr "Operation 2"
 
+msgid "prebattle/mission/stage/3"
+msgstr "Operation 3"
+
+msgid "prebattle/mission/stage/4"
+msgstr "Operation 4"
+
+msgid "prebattle/mission/stage/5"
+msgstr "Operation 5"
+
 msgid "prebattle/mission/task/1"
 msgstr ""
 "{whiteSpanish_Start}Mission:{whiteSpanish_End} Attack the town and destroy "
@@ -291,6 +384,21 @@ msgid "prebattle/mission/task/2"
 msgstr ""
 "{whiteSpanish_Start}Mission:{whiteSpanish_End} Attack the town and destroy "
 "all enemy vehicles."
+
+msgid "prebattle/mission/task/3"
+msgstr ""
+"{whiteSpanish_Start}Attack the town and destroy all enemy "
+"vehicles.{whiteSpanish_End}"
+
+msgid "prebattle/mission/task/4"
+msgstr ""
+"{whiteSpanish_Start}Find and destroy the enemy "
+"Wunderwaffe.{whiteSpanish_End} "
+
+msgid "prebattle/mission/task/5"
+msgstr ""
+"{whiteSpanish_Start}Break through, destroy the coastal guns, and capture the"
+" bridgehead.{whiteSpanish_End}"
 
 msgid "prebattle/mission/text/1"
 msgstr ""
@@ -324,6 +432,34 @@ msgstr ""
 "\n"
 "Come on — Brooks doesn’t like waiting. Our hunt begins.\""
 
+msgid "prebattle/mission/text/3"
+msgstr ""
+"MacLeod: \"Alright, everyone, it's Operation Hammer and Anvil. Simple name "
+"for a not-so-simple job. We're heading into the city to clear out enemy "
+"forces. Won't be a walk in the park—we're up against some heavy armor. But "
+"we've got brains, brawn, and teamwork on our side, right Lucky? And let's "
+"make it snappy, folks. I've got plans with a wee cup of 'tea' at five, if "
+"you get my drift!\""
+
+msgid "prebattle/mission/text/4"
+msgstr ""
+"MacLeod: \"Don't ask, Lucky. I'm in the dark as much as you are.\n"
+"\n"
+"I'm not a fan of all this secrecy. I like things straightforward. You see the enemy, you fight. But this? It's a mess.\n"
+"\n"
+"There'll be allied tanks in the city too. Brooks asked us to tread carefully. What's that supposed to mean?\n"
+"We've got a special job. To find some sort of Wunderwaffe—something huge on tracks. No one else to do it but us, Lucky.\n"
+"\n"
+"Ready? Let's roll.\""
+
+msgid "prebattle/mission/text/5"
+msgstr ""
+"Captain John McCormick: \"Alright, fellas, the day has come. It's time to put an end to this war, and that's exactly what we're gonna do. All of us, together–Americans, Brits, French, Canadians, Australians, Belgians, Czechoslovaks, Greeks, Dutch, Kiwis, Norwegians, Poles. We're united to put an end to this evil once and for all.\n"
+"\n"
+"We're gonna break through the Atlantic Wall and establish our foothold.\n"
+"\n"
+"Get ready for the landing!\""
+
 msgid "prebattle/mission/title/1"
 msgstr "Steel Avalanche"
 
@@ -335,6 +471,78 @@ msgstr "Operation Overlord"
 
 msgid "prebattle/mission/title/2"
 msgstr "Trapper"
+
+msgid "prebattle/mission/title/3"
+msgstr "Hammer and Anvil"
+
+msgid "prebattle/mission/title/4"
+msgstr "Cat in the Mousetrap"
+
+msgid "prebattle/mission/title/5"
+msgstr "Operation Overlord"
+
+msgid "ruinberg/hint01"
+msgstr "Find a detour and flank the enemy"
+
+msgid "ruinberg/objective01/header"
+msgstr "Advance!"
+
+msgid "ruinberg/objective01/subheader"
+msgstr "Push forward and clear out enemy forces"
+
+msgid "ruinberg/objective02/header"
+msgstr "Sneak around"
+
+msgid "ruinberg/objective02/subheader"
+msgstr "Squeeze the enemy from both sides"
+
+msgid "ruinberg/objective02/success"
+msgstr "Destroyed!"
+
+msgid "ruinberg/objective03/header"
+msgstr "Sneak around"
+
+msgid "ruinberg/objective03/subheader"
+msgstr "Squeeze the enemy from both sides"
+
+msgid "ruinberg/objective03/success"
+msgstr "Destroyed!"
+
+msgid "ruinberg/objective05/header"
+msgstr "Advance!"
+
+msgid "ruinberg/objective05/subheader"
+msgstr "Push forward and clear out enemy forces"
+
+msgid "ruinberg/objective07/header"
+msgstr "Prepare for the counter-attack!"
+
+msgid "ruinberg/objective07/subheader"
+msgstr "Hold your ground"
+
+msgid "ruinberg/objective07/success"
+msgstr "Enemies destroyed!"
+
+msgid "ruinberg/prebattle/header"
+msgstr "Get ready!"
+
+msgid "ruinberg/prebattle/start"
+msgstr "Attack!"
+
+msgid "ruinberg/prebattle/subheader"
+msgstr "?empty?"
+
+msgid "ruinberg/respawn/header"
+msgstr "Stand by, soldier"
+
+msgid "ruinberg/respawn/subheader"
+msgstr "Reinforcement is arriving"
+
+msgid "ruinberg/respawn_over/header"
+msgstr "It's over"
+
+msgid "ruinberg/respawn_over/subheader"
+msgstr "All available vehicles have been destroyed"
 
 msgid "settings/disabledTabsOverlay"
 msgstr "Complete the Tiger Hunter story to unlock these settings."

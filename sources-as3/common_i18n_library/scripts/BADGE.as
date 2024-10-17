@@ -730,6 +730,42 @@ package
       public static const BADGE_160:String = "#badge:badge_160";
       
       public static const BADGE_160_DESCR:String = "#badge:badge_160_descr";
+      
+      public static const BADGE_161:String = "#badge:badge_161";
+      
+      public static const BADGE_161_DESCR:String = "#badge:badge_161_descr";
+      
+      public static const BADGE_162:String = "#badge:badge_162";
+      
+      public static const BADGE_162_DESCR:String = "#badge:badge_162_descr";
+      
+      public static const BADGE_163:String = "#badge:badge_163";
+      
+      public static const BADGE_163_DESCR:String = "#badge:badge_163_descr";
+      
+      public static const BADGE_164:String = "#badge:badge_164";
+      
+      public static const BADGE_164_DESCR:String = "#badge:badge_164_descr";
+      
+      public static const BADGE_165:String = "#badge:badge_165";
+      
+      public static const BADGE_165_DESCR:String = "#badge:badge_165_descr";
+      
+      public static const BADGE_166:String = "#badge:badge_166";
+      
+      public static const BADGE_166_DESCR:String = "#badge:badge_166_descr";
+      
+      public static const BADGE_167:String = "#badge:badge_167";
+      
+      public static const BADGE_167_DESCR:String = "#badge:badge_167_descr";
+      
+      public static const BADGE_168:String = "#badge:badge_168";
+      
+      public static const BADGE_168_DESCR:String = "#badge:badge_168_descr";
+      
+      public static const BADGE_169:String = "#badge:badge_169";
+      
+      public static const BADGE_169_DESCR:String = "#badge:badge_169_descr";
        
       
       public function BADGE()

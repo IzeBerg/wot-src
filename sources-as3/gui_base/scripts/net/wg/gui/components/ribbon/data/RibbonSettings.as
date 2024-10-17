@@ -152,12 +152,13 @@ package net.wg.gui.components.ribbon.data
       
       protected function atlasInit() : void
       {
-         var _loc7_:DamageSourceSetting = null;
+         var _loc8_:DamageSourceSetting = null;
          var _loc1_:String = RibbonColors.GREEN;
          var _loc2_:String = RibbonColors.RED;
          var _loc3_:String = RibbonColors.PURPLE;
          var _loc4_:String = RibbonColors.GREY;
          var _loc5_:String = RibbonColors.PERK;
+         var _loc6_:String = RibbonColors.WEATHER_ZONE;
          RIBBON_TYPES_MAP[BATTLE_EFFICIENCY_TYPES.ARMOR] = new RibbonSettingByType(_loc4_,BATTLEATLAS.RIBBONS_ARMOR,_loc4_,BATTLEATLAS.RIBBONS_ARMOR,3);
          RIBBON_TYPES_MAP[BATTLE_EFFICIENCY_TYPES.DAMAGE] = new RibbonSettingByType(_loc1_,BATTLEATLAS.RIBBONS_DAMAGE,_loc1_,BATTLEATLAS.RIBBONS_DAMAGE,3);
          RIBBON_TYPES_MAP[BATTLE_EFFICIENCY_TYPES.WORLD_COLLISION] = new RibbonSettingByType(_loc1_,BATTLEATLAS.RIBBONS_DAMAGE,_loc1_,BATTLEATLAS.RIBBONS_DAMAGE,3);
@@ -210,8 +211,7 @@ package net.wg.gui.components.ribbon.data
          RIBBON_TYPES_MAP[BATTLE_EFFICIENCY_TYPES.VEHICLE_HEALTH_ADDED] = new RibbonSettingByType(_loc1_,BATTLEATLAS.RIBBONS_HEALTH_ADDED,_loc1_,BATTLEATLAS.RIBBONS_HEALTH_ADDED,1);
          RIBBON_TYPES_MAP[BATTLE_EFFICIENCY_TYPES.DAMAGE_BY_DESTROYER] = new RibbonSettingByType(_loc1_,BATTLEATLAS.RIBBONS_DAMAGE_BY_BATTLESHIP,_loc1_,BATTLEATLAS.RIBBONS_DAMAGE_BY_BATTLESHIP,1);
          RIBBON_TYPES_MAP[BATTLE_EFFICIENCY_TYPES.DAMAGE_BY_BATTLESHIP] = new RibbonSettingByType(_loc1_,BATTLEATLAS.RIBBONS_DAMAGE_BY_BATTLESHIP,_loc1_,BATTLEATLAS.RIBBONS_DAMAGE_BY_BATTLESHIP,1);
-         RIBBON_TYPES_MAP[BATTLE_EFFICIENCY_TYPES.RECEIVED_BY_CIRCUIT_OVERLOAD] = new RibbonSettingByType(_loc2_,BATTLEATLAS.RIBBONS_DAMAGE_BY_CIRCUIT_OVERLOAD,_loc2_,BATTLEATLAS.RIBBONS_DAMAGE_BY_CIRCUIT_OVERLOAD,1);
-         RIBBON_TYPES_MAP[BATTLE_EFFICIENCY_TYPES.HYPERION] = new RibbonSettingByType(_loc2_,BATTLEATLAS.RIBBONS_DAMAGE_ENEMY,_loc3_,BATTLEATLAS.RIBBONS_DAMAGE_ENEMY_BLIND,1);
+         RIBBON_TYPES_MAP[BATTLE_EFFICIENCY_TYPES.FIRE_DAMAGE_ZONE] = new RibbonSettingByType(_loc2_,BATTLEATLAS.RIBBONS_BURN_ENEMY,_loc3_,BATTLEATLAS.RIBBONS_BURN_ENEMY_BLIND,1);
          BACKGROUNDS[_loc1_] = new BackgroundAtlasNames(_loc1_);
          BACKGROUNDS[_loc4_] = new BackgroundAtlasNames(_loc4_);
          BACKGROUNDS[_loc2_] = new BackgroundAtlasNames(_loc2_);
@@ -219,6 +219,7 @@ package net.wg.gui.components.ribbon.data
          BACKGROUNDS[RibbonColors.YELLOW] = new BackgroundAtlasNames(RibbonColors.YELLOW);
          BACKGROUNDS[_loc3_] = new BackgroundAtlasNames(_loc3_);
          BACKGROUNDS[_loc5_] = new BackgroundAtlasNames(_loc5_);
+         BACKGROUNDS[_loc6_] = new BackgroundAtlasNames(_loc6_);
          DAMAGE_SOURCE_MAP[DAMAGE_SOURCE_TYPES.LIGHT_TANK] = new DamageSourceSetting(BATTLEATLAS.WHITE_ICON_LIGHT_TANK16X16);
          DAMAGE_SOURCE_MAP[DAMAGE_SOURCE_TYPES.MEDIUM_TANK] = new DamageSourceSetting(BATTLEATLAS.WHITE_ICON_MEDIUM_TANK16X16);
          DAMAGE_SOURCE_MAP[DAMAGE_SOURCE_TYPES.HEAVY_TANK] = new DamageSourceSetting(BATTLEATLAS.WHITE_ICON_HEAVY_TANK16X16);
@@ -232,14 +233,14 @@ package net.wg.gui.components.ribbon.data
          DAMAGE_SOURCE_MAP[DAMAGE_SOURCE_TYPES.BOSS] = new DamageSourceSetting(BATTLEATLAS.WHITE_ICON_BOSS16X16);
          DAMAGE_SOURCE_MAP[DAMAGE_SOURCE_TYPES.BUNKER] = new DamageSourceSetting(BATTLEATLAS.WHITE_ICON_BUNKER16X16);
          this.setupComplexDamageSourceSettings();
-         var _loc6_:int = 0;
-         for each(_loc7_ in DAMAGE_SOURCE_MAP)
+         var _loc7_:int = 0;
+         for each(_loc8_ in DAMAGE_SOURCE_MAP)
          {
-            _loc6_++;
+            _loc7_++;
          }
-         if(_loc6_ != DAMAGE_SOURCE_TYPES.DAMAGE_SOURCES.length)
+         if(_loc7_ != DAMAGE_SOURCE_TYPES.DAMAGE_SOURCES.length)
          {
-            DebugUtils.LOG_ERROR(DAMAGE_SOURCE_MISSING,_loc6_,DAMAGE_SOURCE_TYPES.DAMAGE_SOURCES.length);
+            DebugUtils.LOG_ERROR(DAMAGE_SOURCE_MISSING,_loc7_,DAMAGE_SOURCE_TYPES.DAMAGE_SOURCES.length);
          }
       }
       
@@ -273,6 +274,7 @@ package net.wg.gui.components.ribbon.data
             TEXT_SETTINGS[RibbonColors.YELLOW] = new RibbonTextSettings(RibbonColors.YELLOW);
             TEXT_SETTINGS[RibbonColors.PURPLE] = new RibbonTextSettings(RibbonColors.PURPLE);
             TEXT_SETTINGS[RibbonColors.PERK] = new RibbonTextSettings(RibbonColors.PERK);
+            TEXT_SETTINGS[RibbonColors.WEATHER_ZONE] = new RibbonTextSettings(RibbonColors.WEATHER_ZONE);
             PADDINGS_X[WITH_NAME_WITH_TANKNAME_PADDINGS] = new PaddingSettings(-156,10,0,7,26);
             PADDINGS_X[WITHOUT_NAME_WITH_TANKNAME_PADDINGS] = new PaddingSettings(-112,13,0,0,24);
             PADDINGS_X[WITH_NAME_WITHOUT_TANKNAME_PADDINGS] = new PaddingSettings(-135,10,0,0,0);
@@ -312,8 +314,8 @@ package net.wg.gui.components.ribbon.data
       
       protected function initDynamicRibbons() : void
       {
-         var _loc1_:String = RibbonColors.PERK;
-         this.DYNAMIC_RIBBON_TYPES_MAP[BATTLE_EFFICIENCY_TYPES.PERK] = new RibbonSettingByType(_loc1_,BATTLEATLAS.LOADER_INTUITION,_loc1_,BATTLEATLAS.LOADER_INTUITION,1);
+         this.DYNAMIC_RIBBON_TYPES_MAP[BATTLE_EFFICIENCY_TYPES.PERK] = new RibbonSettingByType(RibbonColors.PERK,BATTLEATLAS.LOADER_INTUITION,RibbonColors.PERK,BATTLEATLAS.LOADER_INTUITION,1);
+         this.DYNAMIC_RIBBON_TYPES_MAP[BATTLE_EFFICIENCY_TYPES.WEATHER_ZONE] = new RibbonSettingByType(RibbonColors.WEATHER_ZONE,BATTLEATLAS.ZONE_BLIZZARD,RibbonColors.WEATHER_ZONE,BATTLEATLAS.ZONE_BLIZZARD,1);
       }
       
       public function isDisposed() : Boolean

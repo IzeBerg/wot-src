@@ -97,7 +97,5 @@ class MissionsPackageBusinessHandler(PackageBusinessHandler):
                 subView.currentTab.markVisited()
             elif tabAlias == QUESTS_ALIASES.BATTLE_MATTERS_VIEW_PY_ALIAS:
                 subView.currentTab.updateState(**event.ctx)
-            elif tabAlias == QUESTS_ALIASES.MISSIONS_MARATHON_VIEW_PY_ALIAS:
-                subView.currentTab.updateState(**event.ctx)
         else:
             self.loadViewByCtxEvent(event)

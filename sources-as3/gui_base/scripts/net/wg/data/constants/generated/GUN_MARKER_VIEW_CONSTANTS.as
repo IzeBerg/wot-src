@@ -21,6 +21,10 @@ package net.wg.data.constants.generated
       
       public static const ARTY_HIT_MARKER_LINKAGE:String = "ArtyHitMarkerUI";
       
+      public static const TWIN_GUN_MARKER_LINKAGE:String = "TwinGunMarkerUI";
+      
+      public static const TWIN_GUN_MARKER_DEBUG_LINKAGE:String = "TwinGunMarkerDebugUI";
+      
       public static const ARCADE_GUN_MARKER_NAME:String = "arcadeGunMarker";
       
       public static const SNIPER_GUN_MARKER_NAME:String = "sniperGunMarker";
@@ -30,6 +34,10 @@ package net.wg.data.constants.generated
       public static const DUAL_GUN_ARCADE_MARKER_NAME:String = "arcadeDualGunMarker";
       
       public static const DUAL_GUN_SNIPER_MARKER_NAME:String = "sniperDualGunMarker";
+      
+      public static const TWIN_GUN_ARCADE_MARKER_NAME:String = "arcadeTwinGunMarker";
+      
+      public static const TWIN_GUN_SNIPER_MARKER_NAME:String = "sniperTwinGunMarker";
       
       public static const ARCADE_DUAL_ACC_GUN_MARKER_NAME:String = "arcadeDualAccGunMarker";
       
@@ -48,6 +56,10 @@ package net.wg.data.constants.generated
       public static const DEBUG_DUAL_GUN_ARCADE_MARKER_NAME:String = "arcadeDebugDualGunMarker";
       
       public static const DEBUG_DUAL_GUN_SNIPER_MARKER_NAME:String = "sniperDebugDualGunMarker";
+      
+      public static const DEBUG_TWIN_GUN_ARCADE_MARKER_NAME:String = "arcadeDebugTwinGunMarker";
+      
+      public static const DEBUG_TWIN_GUN_SNIPER_MARKER_NAME:String = "sniperDebugTwinGunMarker";
       
       public static const GUN_TAG_RELOADING_TYPES:Array = [1,4,7,10,13];
       

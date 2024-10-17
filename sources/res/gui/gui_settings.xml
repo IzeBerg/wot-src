@@ -2551,11 +2551,6 @@
 				<type>url</type>
 			</item>
 			<item>
-				$PARAMS(/white-tiger-overlay/wt2021_category)
-				<name>buyLootboxes</name>
-				<type>url</type>
-			</item>
-			<item>
 				$PARAMS(/bpcoin_category/bpcoin_category)
 				<name>bpcoinProducts</name>
 				<type>url</type>
@@ -2591,8 +2586,13 @@
 				<type>url</type>
 			</item>
 			<item>
-				$PARAMS(/wt2021_category)
+				$PARAMS(/event_lootboxes)
 				<name>eventLootboxes</name>
+				<type>url</type>
+			</item>
+			<item>
+				$PARAMS(/lootboxes-overlay)
+				<name>lootBoxSystem</name>
 				<type>url</type>
 			</item>
 			<item>
@@ -2781,6 +2781,66 @@
 			</item>
 		</value>
 	</battlePassIntroSlides>
+	<lootboxSystem>
+		<type>dict</type>
+		<value>
+			<item>
+				<name>intro</name>
+				<type>dict</type>
+				<value>
+					<item>
+						/$LANGUAGE_CODE/promocontent/lootBoxIntro/
+						<name>lootBoxSystem</name>
+						<type>url</type>
+					</item>
+					<item>
+						/$LANGUAGE_CODE/promocontent/lootBoxIntro/
+						<name>anniversaryCN</name>
+						<type>url</type>
+					</item>
+				</value>
+			</item>
+			<item>
+				<name>infoPage</name>
+				<type>dict</type>
+				<value>
+					<item>
+						<name>isVideoVisible</name>
+						<type>dict</type>
+						<value>
+							<item>
+								<name>default</name>
+								<type>bool</type>
+								<value>True</value>
+							</item>
+						</value>
+					</item>
+					<item>
+						<name>isShopVisible</name>
+						<type>dict</type>
+						<value>
+							<item>
+								<name>default</name>
+								<type>bool</type>
+								<value>True</value>
+							</item>
+						</value>
+					</item>
+				</value>
+			</item>
+		</value>
+	</lootboxSystem>
+	<lootBoxesListURL>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
+			<item>
+				https://worldoftanks.asia/$LANGUAGE_CODE/news/announcements/update-1-25-ct2/
+				<name>default</name>
+				<type>url</type>
+			</item>
+		</value>
+	</lootBoxesListURL>
 	<crew>
 		<type>dict</type>
 		<value>
@@ -2788,38 +2848,6 @@
 				<name>welcomeScreens</name>
 				<type>dict</type>
 				<value>
-					<item>
-						<name>crew22Welcome</name>
-						<type>list</type>
-						<value>
-							<item>
-								<type>int</type>
-								<value>3</value>
-							</item>
-						</value>
-					</item>
-					<item>
-						<name>crew5075Welcome</name>
-						<type>list</type>
-						<value>
-							<item>
-								<type>int</type>
-								<value>3</value>
-							</item>
-							<item>
-								<type>int</type>
-								<value>3</value>
-							</item>
-							<item>
-								<type>int</type>
-								<value>3</value>
-							</item>
-							<item>
-								<type>int</type>
-								<value>3</value>
-							</item>
-						</value>
-					</item>
 					<item>
 						<name>crewNpsWelcome</name>
 						<type>list</type>
@@ -3067,62 +3095,6 @@
 			</item>
 		</value>
 	</infoPageRandom>
-	<infoPageEvent>
-		<type>macros</type>
-		<macros>AUTH_REALM</macros>
-		<value>
-			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/WhiteTiger2024/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/WhiteTiger2024/
-				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/WhiteTiger2024/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/WhiteTiger2024/
-				<name>CN</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/WhiteTiger2024/
-				<name>default</name>
-				<type>url</type>
-			</item>
-		</value>
-	</infoPageEvent>
-	<setting>
-		<name>spgHitDirectionDelta</name>
-		<type>float</type>
-		<value>
-			11.0
-			<!--BW_String-->
-		</value>
-	</setting>
-	<setting>
-		<name>infoPageMapbox</name>
-		<type>macros</type>
-		<macros>AUTH_REALM</macros>
-		<value>
-			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/mapbox/
-				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/mapbox/
-				<name>default</name>
-				<type>url</type>
-			</item>
-		</value>
-	</setting>
 	<infoPageStrongholdsBattlesList>
 		<type>macros</type>
 		<macros>AUTH_REALM</macros>
@@ -3294,42 +3266,6 @@
 			<!--BW_String-->
 		</value>
 	</spgHitDirectionDelta>
-	<infoPageMapbox>
-		<type>macros</type>
-		<macros>AUTH_REALM</macros>
-		<value>
-			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/mapbox/
-				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/mapbox/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/mapbox/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/mapbox/
-				<name>CN</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/mapbox/
-				<name>CT</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/mapbox/
-				<name>default</name>
-				<type>url</type>
-			</item>
-		</value>
-	</infoPageMapbox>
 	<renewableSubscriptionInfoPage>
 		<type>macros</type>
 		<macros>AUTH_REALM</macros>
@@ -3443,32 +3379,32 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/stories-onboarding/
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/stories-onboarding-october-2024/
 				<name>EU</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/stories-onboarding/
+				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/stories-onboarding-october-2024/
 				<name>ASIA</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/stories-onboarding/
+				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/stories-onboarding-october-2024/
 				<name>NA</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/stories-onboarding/
+				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/stories-onboarding-october-2024/
 				<name>CN</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/stories-onboarding/
+				https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/stories-onboarding-october-2024/
 				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/stories-onboarding/
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/stories-onboarding-october-2024/
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -3754,66 +3690,140 @@
 			</item>
 		</value>
 	</clanSupply>
-	<wtEventIntroVideo>
+	<comp7GrandTournamentBanner>
 		<type>macros</type>
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/VideoWhiteTiger2024/
 				<name>EU</name>
-				<type>url</type>
+				<type>dict</type>
+				<value>
+					<item>
+						https://webbrg.worldoftanks.eu/en/promocontent/onslaught_tournament_001_2024/
+						<name>countdown</name>
+						<type>url</type>
+					</item>
+					<item>
+						https://webbrg.worldoftanks.eu/en/promocontent/onslaught_tournament_001_2024/
+						<name>live</name>
+						<type>url</type>
+					</item>
+					<item>
+						https://webbrg.worldoftanks.eu/en/promocontent/onslaught_tournament_001_2024/
+						<name>dayIsOver</name>
+						<type>url</type>
+					</item>
+					<item>
+						https://webbrg.worldoftanks.eu/en/promocontent/onslaught_tournament_001_2024/
+						<name>finished</name>
+						<type>url</type>
+					</item>
+				</value>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/VideoWhiteTiger2024/
 				<name>ASIA</name>
-				<type>url</type>
+				<type>dict</type>
+				<value>
+					<item>
+						https://webbrg.worldoftanks.asia/en/promocontent/onslaught_tournament_001_2024/
+						<name>countdown</name>
+						<type>url</type>
+					</item>
+					<item>
+						https://webbrg.worldoftanks.asia/en/promocontent/onslaught_tournament_001_2024/
+						<name>live</name>
+						<type>url</type>
+					</item>
+					<item>
+						https://webbrg.worldoftanks.asia/en/promocontent/onslaught_tournament_001_2024/
+						<name>dayIsOver</name>
+						<type>url</type>
+					</item>
+					<item>
+						https://webbrg.worldoftanks.asia/en/promocontent/onslaught_tournament_001_2024/
+						<name>finished</name>
+						<type>url</type>
+					</item>
+				</value>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/VideoWhiteTiger2024/
 				<name>NA</name>
-				<type>url</type>
+				<type>dict</type>
+				<value>
+					<item>
+						https://webbrg.worldoftanks.com/en/promocontent/onslaught_tournament_001_2024/
+						<name>countdown</name>
+						<type>url</type>
+					</item>
+					<item>
+						https://webbrg.worldoftanks.com/en/promocontent/onslaught_tournament_001_2024/
+						<name>live</name>
+						<type>url</type>
+					</item>
+					<item>
+						https://webbrg.worldoftanks.com/en/promocontent/onslaught_tournament_001_2024/
+						<name>dayIsOver</name>
+						<type>url</type>
+					</item>
+					<item>
+						https://webbrg.worldoftanks.com/en/promocontent/onslaught_tournament_001_2024/
+						<name>finished</name>
+						<type>url</type>
+					</item>
+				</value>
 			</item>
 			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/VideoWhiteTiger2024/
 				<name>CN</name>
-				<type>url</type>
+				<type>dict</type>
+				<value>
+					<item>
+						https://webbrg-cn360.wotgame.cn/zh-cn/promocontent/wci2024_banner1_upcoming/
+						<name>countdown</name>
+						<type>url</type>
+					</item>
+					<item>
+						https://webbrg-cn360.wotgame.cn/zh-cn/promocontent/wci2024_banner2_live/
+						<name>live</name>
+						<type>url</type>
+					</item>
+					<item>
+						https://webbrg-cn360.wotgame.cn/zh-cn/promocontent/wci2024_banner1_upcoming/
+						<name>dayIsOver</name>
+						<type>url</type>
+					</item>
+					<item>
+						https://webbrg-cn360.wotgame.cn/zh-cn/promocontent/wci2024_banner3_end/
+						<name>finished</name>
+						<type>url</type>
+					</item>
+				</value>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/VideoWhiteTiger2024/
 				<name>default</name>
-				<type>url</type>
+				<type>dict</type>
+				<value>
+					<item>
+						https://webbrg.worldoftanks.eu/en/promocontent/onslaught_tournament_001_2024/
+						<name>countdown</name>
+						<type>url</type>
+					</item>
+					<item>
+						https://webbrg.worldoftanks.eu/en/promocontent/onslaught_tournament_001_2024/
+						<name>live</name>
+						<type>url</type>
+					</item>
+					<item>
+						https://webbrg.worldoftanks.eu/en/promocontent/onslaught_tournament_001_2024/
+						<name>dayIsOver</name>
+						<type>url</type>
+					</item>
+					<item>
+						https://webbrg.worldoftanks.eu/en/promocontent/onslaught_tournament_001_2024/
+						<name>finished</name>
+						<type>url</type>
+					</item>
+				</value>
 			</item>
 		</value>
-	</wtEventIntroVideo>
-	<wtEventInfoPage>
-		<type>macros</type>
-		<macros>AUTH_REALM</macros>
-		<value>
-			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/WhiteTiger2024/
-				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/WhiteTiger2024/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/WhiteTiger2024/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/WhiteTiger2024/
-				<name>CN</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/WhiteTiger2024/
-				<name>default</name>
-				<type>url</type>
-			</item>
-		</value>
-	</wtEventInfoPage>
+	</comp7GrandTournamentBanner>
 </root>

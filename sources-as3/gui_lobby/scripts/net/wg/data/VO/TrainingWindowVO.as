@@ -10,6 +10,8 @@ package net.wg.data.VO
       
       public var timeout:Number;
       
+      public var minBattleTime:Number;
+      
       public var maxBattleTime:Number;
       
       public var arena:Number;
