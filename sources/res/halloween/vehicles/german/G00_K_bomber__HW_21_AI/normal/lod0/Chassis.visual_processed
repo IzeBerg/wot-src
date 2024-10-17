@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>nodes_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_Track_LFront</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.993847 -0.110758</row1>
+					<row2>0.000000 0.110758 0.993847</row2>
+					<row3>0.191621 0.000000 0.065987</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_LRear</identifier>
+				<transform>
+					<row0>-1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.994751 0.102324</row1>
+					<row2>-0.000000 0.102324 -0.994751</row2>
+					<row3>0.191621 0.000000 -0.084361</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_RFront</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.993847 -0.110758</row1>
+					<row2>0.000000 0.110758 0.993847</row2>
+					<row3>-0.191632 0.000000 0.065960</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_RRear</identifier>
+				<transform>
+					<row0>-1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.994751 0.102324</row1>
+					<row2>-0.000000 0.102324 -0.994751</row2>
+					<row3>-0.191632 0.000000 -0.084358</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_gui</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.000000 -1.000000</row1>
+					<row2>0.000000 1.000000 0.000000</row2>
+					<row3>0.000000 7.500000 0.000000</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>Tank</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.314899 0.000000</row3>
+				</transform>
+				<node>
+					<identifier>Track_L0</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 0.685432 -0.728137</row1>
+						<row2>0.000000 0.728137 0.685432</row2>
+						<row3>-1.846541 -0.314899 2.500000</row3>
+					</transform>
+					<node>
+						<identifier>W_L0</identifier>
+						<transform>
+							<row0>1.000000 0.000000 0.000000</row0>
+							<row1>0.000000 0.975541 -0.219819</row1>
+							<row2>0.000000 0.219819 0.975541</row2>
+							<row3>0.346541 2.616829 0.574607</row3>
+						</transform>
+						<node>
+							<identifier>W_L0_BlendBone</identifier>
+							<transform>
+								<row0>1.000000 0.000000 0.000000</row0>
+								<row1>0.000000 0.508608 0.860998</row1>
+								<row2>0.000000 0.860998 -0.508608</row2>
+								<row3>1.500000 -0.274018 -2.407301</row3>
+							</transform>
+						</node>
+					</node>
+				</node>
+				<node>
+					<identifier>Track_L1</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 0.928646 0.370967</row1>
+						<row2>0.000000 -0.370967 0.928646</row2>
+						<row3>-1.846541 -0.314899 -2.500000</row3>
+					</transform>
+					<node>
+						<identifier>W_L1</identifier>
+						<transform>
+							<row0>1.000000 -0.000000 0.000000</row0>
+							<row1>-0.000000 0.975541 -0.219819</row1>
+							<row2>0.000000 0.219819 0.975541</row2>
+							<row3>0.346541 2.605159 0.621684</row3>
+						</transform>
+						<node>
+							<identifier>W_L1_BlendBone</identifier>
+							<transform>
+								<row0>1.000000 0.000000 0.000000</row0>
+								<row1>0.000000 0.987478 -0.157759</row1>
+								<row2>0.000000 -0.157759 -0.987478</row2>
+								<row3>1.500000 -2.010382 1.289552</row3>
+							</transform>
+						</node>
+					</node>
+				</node>
+				<node>
+					<identifier>Track_R0</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 0.685432 -0.728137</row1>
+						<row2>0.000000 0.728137 0.685432</row2>
+						<row3>1.838535 -0.314899 2.500000</row3>
+					</transform>
+					<node>
+						<identifier>W_R0</identifier>
+						<transform>
+							<row0>1.000000 0.000000 0.000000</row0>
+							<row1>0.000000 0.975541 -0.219819</row1>
+							<row2>0.000000 0.219819 0.975541</row2>
+							<row3>-0.338535 2.616829 0.574607</row3>
+						</transform>
+						<node>
+							<identifier>W_R0_BlendBone</identifier>
+							<transform>
+								<row0>1.000000 0.000000 0.000000</row0>
+								<row1>0.000000 0.508608 0.860998</row1>
+								<row2>0.000000 0.860998 -0.508608</row2>
+								<row3>-1.500000 -0.274018 -2.407301</row3>
+							</transform>
+						</node>
+					</node>
+				</node>
+				<node>
+					<identifier>Track_R1</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 0.928646 0.370967</row1>
+						<row2>0.000000 -0.370967 0.928646</row2>
+						<row3>1.838535 -0.314899 -2.500000</row3>
+					</transform>
+					<node>
+						<identifier>W_R1</identifier>
+						<transform>
+							<row0>1.000000 -0.000000 0.000000</row0>
+							<row1>0.000000 0.975541 -0.219819</row1>
+							<row2>-0.000000 0.219819 0.975541</row2>
+							<row3>-0.338535 2.605159 0.621684</row3>
+						</transform>
+						<node>
+							<identifier>W_R1_BlendBone</identifier>
+							<transform>
+								<row0>1.000000 0.000000 0.000000</row0>
+								<row1>0.000000 0.987478 -0.157759</row1>
+								<row2>0.000000 -0.157759 -0.987478</row2>
+								<row3>-1.500000 -2.010382 1.289552</row3>
+							</transform>
+						</node>
+					</node>
+				</node>
+				<node>
+					<identifier>V</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 2.585101 0.000000</row3>
+					</transform>
+					<node>
+						<identifier>WD_L0</identifier>
+						<transform>
+							<row0>1.000000 0.000000 0.000000</row0>
+							<row1>0.000000 0.975541 -0.219819</row1>
+							<row2>0.000000 0.219819 0.975541</row2>
+							<row3>-1.000000 1.006785 0.819627</row3>
+						</transform>
+						<node>
+							<identifier>WD_L0_BlendBone</identifier>
+							<transform>
+								<row0>1.000000 0.000000 0.000000</row0>
+								<row1>0.000000 0.975541 0.219819</row1>
+								<row2>0.000000 0.219819 -0.975541</row2>
+								<row3>1.000000 -3.631057 -1.658366</row3>
+							</transform>
+						</node>
+					</node>
+					<node>
+						<identifier>WD_L1</identifier>
+						<transform>
+							<row0>1.000000 0.000000 0.000000</row0>
+							<row1>0.000000 0.975541 -0.219819</row1>
+							<row2>0.000000 0.219819 0.975541</row2>
+							<row3>-1.000000 1.022125 -0.775135</row3>
+						</transform>
+						<node>
+							<identifier>WD_L1_BlendBone</identifier>
+							<transform>
+								<row0>1.000000 0.000000 0.000000</row0>
+								<row1>0.000000 0.975541 0.219819</row1>
+								<row2>0.000000 0.219819 -0.975541</row2>
+								<row3>1.000000 -3.996582 -0.105982</row3>
+							</transform>
+						</node>
+					</node>
+					<node>
+						<identifier>WD_R0</identifier>
+						<transform>
+							<row0>1.000000 0.000000 0.000000</row0>
+							<row1>0.000000 0.975541 -0.219819</row1>
+							<row2>0.000000 0.219819 0.975541</row2>
+							<row3>1.000000 1.006785 0.819627</row3>
+						</transform>
+						<node>
+							<identifier>WD_R0_BlendBone</identifier>
+							<transform>
+								<row0>1.000000 0.000000 0.000000</row0>
+								<row1>0.000000 0.975541 0.219819</row1>
+								<row2>0.000000 0.219819 -0.975541</row2>
+								<row3>-1.000000 -3.631057 -1.658366</row3>
+							</transform>
+						</node>
+					</node>
+					<node>
+						<identifier>WD_R1</identifier>
+						<transform>
+							<row0>1.000000 0.000000 0.000000</row0>
+							<row1>0.000000 0.975541 -0.219819</row1>
+							<row2>0.000000 0.219819 0.975541</row2>
+							<row3>1.000000 1.022125 -0.775135</row3>
+						</transform>
+						<node>
+							<identifier>WD_R1_BlendBone</identifier>
+							<transform>
+								<row0>1.000000 0.000000 0.000000</row0>
+								<row1>0.000000 0.975541 0.219819</row1>
+								<row2>0.000000 0.219819 -0.975541</row2>
+								<row3>-1.000000 -3.996582 -0.105982</row3>
+							</transform>
+						</node>
+					</node>
+					<node>
+						<identifier>V_BlendBone</identifier>
+						<transform>
+							<row0>1.000000 0.000000 0.000000</row0>
+							<row1>0.000000 1.000000 0.000000</row1>
+							<row2>0.000000 0.000000 -1.000000</row2>
+							<row3>0.000000 -2.900000 0.000000</row3>
+						</transform>
+					</node>
+				</node>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>V_BlendBone</node>
+		<geometry>
+			<vertices>track_L_Shape.vertices</vertices>
+			<stream>track_L_Shape.uv2</stream>
+			<primitive>track_L_Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>track_mat_L_skinned</identifier>
+					<fx>shaders/std_effects/PBS_tank_uvtransform_skinned_ao.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						alphaReference
+						<Int>64</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/german/tracks/k_bomber_track_AM.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/german/tracks/k_bomber_track_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/german/tracks/k_bomber_track_ANM.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>0.876712 0.876712 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>-0.475291 2.929302 -0.019693</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>V_BlendBone</node>
+		<geometry>
+			<vertices>track_R_Shape.vertices</vertices>
+			<stream>track_R_Shape.uv2</stream>
+			<primitive>track_R_Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>track_mat_R_skinned</identifier>
+					<fx>shaders/std_effects/PBS_tank_uvtransform_skinned_ao.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						alphaReference
+						<Int>64</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/german/tracks/k_bomber_track_AM.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/german/tracks/k_bomber_track_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/german/tracks/k_bomber_track_ANM.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>0.876712 0.876712 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>0.475906 2.929302 -0.019693</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>WD_R0_BlendBone</node>
+		<node>WD_R1_BlendBone</node>
+		<node>W_R0_BlendBone</node>
+		<node>W_R1_BlendBone</node>
+		<geometry>
+			<vertices>chassis_RShape.vertices</vertices>
+			<primitive>chassis_RShape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_chassis_01_skinned</identifier>
+					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>halloween/vehicles/german/G00_K_bomber__HW_21_AI/K_bomber__HW_21_AI_proxy_AM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>halloween/vehicles/german/G00_K_bomber__HW_21_AI/K_bomber__HW_21_AI_proxy_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>halloween/vehicles/german/G00_K_bomber__HW_21_AI/K_bomber__HW_21_AI_proxy_ANM.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>0.876712 0.876712 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>halloween/vehicles/german/G00_K_bomber__HW_21_AI/K_bomber__HW_21_AI_proxy_AO.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>1.006031 3.061824 -0.012519</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>WD_L1_BlendBone</node>
+		<node>WD_L0_BlendBone</node>
+		<node>W_L1_BlendBone</node>
+		<node>W_L0_BlendBone</node>
+		<geometry>
+			<vertices>chassis_LShape.vertices</vertices>
+			<primitive>chassis_LShape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_chassis_01_skinned</identifier>
+					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>halloween/vehicles/german/G00_K_bomber__HW_21_AI/K_bomber__HW_21_AI_proxy_AM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>halloween/vehicles/german/G00_K_bomber__HW_21_AI/K_bomber__HW_21_AI_proxy_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>halloween/vehicles/german/G00_K_bomber__HW_21_AI/K_bomber__HW_21_AI_proxy_ANM.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>0.876712 0.876712 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>halloween/vehicles/german/G00_K_bomber__HW_21_AI/K_bomber__HW_21_AI_proxy_AO.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.997375 3.065605 -0.025550</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<constraints/>
+	<boundingBox>
+		<min>-1.076836 -0.005851 -2.915002</min>
+		<max>1.071951 5.864454 2.954388</max>
+	</boundingBox>
+	<geometrySize>70704</geometrySize>
+	<minUVDensity>0.203116</minUVDensity>
+</root>

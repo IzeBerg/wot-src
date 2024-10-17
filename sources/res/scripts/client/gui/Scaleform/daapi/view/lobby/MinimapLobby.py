@@ -1,12 +1,28 @@
+from typing import Union
 import ArenaType
 from gui.Scaleform.daapi.view.meta.MinimapPresentationMeta import MinimapPresentationMeta
 from gui.Scaleform.genConsts.MINIMAPENTRIES_CONSTANTS import MINIMAPENTRIES_CONSTANTS
 from gui.Scaleform.locale.RES_ICONS import RES_ICONS
+from gui.impl import backport
+from gui.impl.gen import R
 from helpers import dependency
 from skeletons.account_helpers.settings_core import ISettingsCore
 from points_of_interest_shared import PoiType
 _POI_TYPE_TO_STR = {PoiType.ARTILLERY: MINIMAPENTRIES_CONSTANTS.POI_TYPE_ARTY, 
    PoiType.RECON: MINIMAPENTRIES_CONSTANTS.POI_TYPE_RECON}
+
+def _resilientMapIconPathGetter(gameplayName, geometryName):
+    prefixedGeometryName = 'c_%s' % geometryName
+    gamemodeFolderAccessor = R.images.gui.maps.icons.map.dyn(gameplayName)
+    if gamemodeFolderAccessor.isValid():
+        mapIconDynAccessor = gamemodeFolderAccessor.dyn(prefixedGeometryName)
+        if mapIconDynAccessor.isValid():
+            return backport.image(mapIconDynAccessor())
+    commonFolderMapIconAccessor = R.images.gui.maps.icons.map.dyn(prefixedGeometryName)
+    if commonFolderMapIconAccessor.isValid():
+        return backport.image(commonFolderMapIconAccessor())
+    return ''
+
 
 class MinimapLobby(MinimapPresentationMeta):
     settingsCore = dependency.descriptor(ISettingsCore)
@@ -56,18 +72,12 @@ class MinimapLobby(MinimapPresentationMeta):
     def setArena(self, arenaTypeID):
         self.__arenaTypeID = int(arenaTypeID)
         arenaType = ArenaType.g_cache[self.__arenaTypeID]
-        gameplayTypeIconPath = ('../maps/icons/map/{}/{}.png').format(arenaType.gameplayName, arenaType.geometryName)
-        if gameplayTypeIconPath in RES_ICONS.MAPS_ICONS_MAP_ENUM:
-            mapIconPath = gameplayTypeIconPath
-        else:
-            mapIconPath = RES_ICONS.getMapPath(arenaType.geometryName)
-        cfg = {'texture': mapIconPath, 
+        self.setConfig({'texture': _resilientMapIconPathGetter(arenaType.gameplayName, arenaType.geometryName), 
            'size': arenaType.boundingBox, 
            'teamBasePositions': arenaType.teamBasePositions, 
            'teamSpawnPoints': arenaType.teamSpawnPoints, 
            'controlPoints': arenaType.controlPoints, 
-           'pointsOfInterest': arenaType.pointsOfInterest}
-        self.setConfig(cfg)
+           'pointsOfInterest': arenaType.pointsOfInterest})
 
     def setEmpty(self):
         self.as_clearS()

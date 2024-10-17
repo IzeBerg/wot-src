@@ -40,7 +40,7 @@ class FunRandomBattleResultsPresenter(BaseStatsPresenter, FunSubModesWatcher):
         FunRandomPremiumPlus.updateModel(model.premiumPlus, battleResults, ctx, isFullUpdate)
 
     @staticmethod
-    def onShowResults(arenaUniqueID, isPostbattle20Enabled=False):
+    def onShowResults(arenaUniqueID):
         return
 
     def onResultsPosted(self, arenaUniqueID):

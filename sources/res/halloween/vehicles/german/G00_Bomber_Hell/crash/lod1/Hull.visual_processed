@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>lod0</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>hull</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 -1.256899 0.000000</row3>
+				</transform>
+			</node>
+		</node>
+		<node>
+			<identifier>nodes_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_Fire_1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.009063 -0.876599</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Fire_2</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.009063 0.900808</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_turretJoint</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_hull_01</identifier>
+					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>halloween/vehicles/german/G00_Bomber_Hell/Bomber_hell_hull_01_AM.dds</Texture>
+					</property>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						crashTileMap
+						<Texture>vehicles/russian/Tank_detail/crash_tile.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>halloween/vehicles/german/G00_Bomber_Hell/Bomber_hell_hull_01_AO.dds</Texture>
+					</property>
+					<property>
+						g_crashUVTiling
+						<Vector4>4.000000 2.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>halloween/vehicles/german/G00_Bomber_Hell/Bomber_hell_hull_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>halloween/vehicles/german/G00_Bomber_Hell/Bomber_hell_hull_01_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.000239 0.009651 0.015044</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.274253 -1.206366 -1.166044</min>
+		<max>1.274730 1.225667 1.196132</max>
+	</boundingBox>
+	<geometrySize>297212</geometrySize>
+	<minUVDensity>0.005925</minUVDensity>
+</root>

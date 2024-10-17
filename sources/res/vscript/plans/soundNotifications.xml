@@ -793,6 +793,18 @@
 						<slots/>
 					</block>
 					<block>
+						<class>Macro</class>
+						<id>Macro_1</id>
+						<params>
+							<param>
+								getSounds
+								<name>Macro Name</name>
+								<type>StringT</type>
+							</param>
+						</params>
+						<slots/>
+					</block>
+					<block>
 						<class>GetVariable</class>
 						<id>GetVariable_6</id>
 						<buddy>Variable_3</buddy>
@@ -801,18 +813,6 @@
 								StringT
 								<name>Variable Type</name>
 								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>Macro</class>
-						<id>Macro_1</id>
-						<params>
-							<param>
-								getSounds
-								<name>Macro Name</name>
-								<type>StringT</type>
 							</param>
 						</params>
 						<slots/>
@@ -959,12 +959,6 @@
 						<slots/>
 					</block>
 					<block>
-						<class>PlaySound</class>
-						<id>PlaySound_1</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
 						<class>SetVariable</class>
 						<id>SetVariable_12</id>
 						<buddy>Variable_5</buddy>
@@ -996,6 +990,29 @@
 						</slots>
 					</block>
 					<block>
+						<class>ContextEventCall</class>
+						<id>ContextEventCall_19</id>
+						<params>
+							<param>
+								SoundNotificationsContext
+								<name>Context Name</name>
+								<type>StringT</type>
+							</param>
+							<param>
+								onNotificationBegins
+								<name>Member Name</name>
+								<type>StringT</type>
+							</param>
+						</params>
+						<slots/>
+					</block>
+					<block>
+						<class>PlaySound</class>
+						<id>PlaySound_1</id>
+						<params/>
+						<slots/>
+					</block>
+					<block>
 						<class>ArrayVariableGet</class>
 						<id>ArrayVariableGet_1</id>
 						<buddy>Variable_2</buddy>
@@ -1012,6 +1029,12 @@
 								<const>\0\</const>
 							</slot>
 						</slots>
+					</block>
+					<block>
+						<class>GetSoundName</class>
+						<id>GetSoundName_2</id>
+						<params/>
+						<slots/>
 					</block>
 					<block>
 						<class>GetVariable</class>
@@ -1277,6 +1300,23 @@
 						<slots/>
 					</block>
 					<block>
+						<class>ContextEventCall</class>
+						<id>ContextEventCall_21</id>
+						<params>
+							<param>
+								SoundNotificationsContext
+								<name>Context Name</name>
+								<type>StringT</type>
+							</param>
+							<param>
+								log
+								<name>Member Name</name>
+								<type>StringT</type>
+							</param>
+						</params>
+						<slots/>
+					</block>
+					<block>
 						<class>SetVariable</class>
 						<id>SetVariable_8</id>
 						<buddy>Variable_3</buddy>
@@ -1313,11 +1353,11 @@
 					</block>
 					<block>
 						<class>GetVariable</class>
-						<id>GetVariable_10</id>
-						<buddy>Variable_5</buddy>
+						<id>GetVariable_5</id>
+						<buddy>Variable_1</buddy>
 						<params>
 							<param>
-								SoundT
+								IntT
 								<name>Variable Type</name>
 								<type>TypeT</type>
 							</param>
@@ -1325,12 +1365,39 @@
 						<slots/>
 					</block>
 					<block>
-						<class>GetVariable</class>
-						<id>GetVariable_5</id>
-						<buddy>Variable_1</buddy>
+						<class>Concatenate</class>
+						<id>Concatenate_4</id>
 						<params>
 							<param>
-								IntT
+								3
+								<name>Input Count</name>
+								<type>IntT</type>
+							</param>
+						</params>
+						<slots>
+							<slot>
+								<name>i0</name>
+								<const>\Stop &quot;\</const>
+							</slot>
+							<slot>
+								<name>i2</name>
+								<const>\&quot;. Reason: interrupt\</const>
+							</slot>
+						</slots>
+					</block>
+					<block>
+						<class>GetSoundName</class>
+						<id>GetSoundName_3</id>
+						<params/>
+						<slots/>
+					</block>
+					<block>
+						<class>GetVariable</class>
+						<id>GetVariable_10</id>
+						<buddy>Variable_5</buddy>
+						<params>
+							<param>
+								SoundT
 								<name>Variable Type</name>
 								<type>TypeT</type>
 							</param>
@@ -1977,18 +2044,6 @@
 						<output>value</output>
 					</connection>
 					<connection>
-						<from>ArrayVariableRemoveAt_1</from>
-						<input>in</input>
-						<to>PlaySound_1</to>
-						<output>out</output>
-					</connection>
-					<connection>
-						<from>GetVariable_12</from>
-						<input>soundToPlay</input>
-						<to>PlaySound_1</to>
-						<output>value</output>
-					</connection>
-					<connection>
 						<from>If_7</from>
 						<input>input</input>
 						<to>SetVariable_12</to>
@@ -2005,6 +2060,36 @@
 						<input>input</input>
 						<to>ArrayVariableRemoveAt_1</to>
 						<output>out</output>
+					</connection>
+					<connection>
+						<from>ArrayVariableRemoveAt_1</from>
+						<input>in</input>
+						<to>ContextEventCall_19</to>
+						<output>out</output>
+					</connection>
+					<connection>
+						<from>GetSoundName_2</from>
+						<input>eventName</input>
+						<to>ContextEventCall_19</to>
+						<output>name</output>
+					</connection>
+					<connection>
+						<from>ContextEventCall_19</from>
+						<input>in</input>
+						<to>PlaySound_1</to>
+						<output>out</output>
+					</connection>
+					<connection>
+						<from>GetVariable_12</from>
+						<input>soundToPlay</input>
+						<to>PlaySound_1</to>
+						<output>value</output>
+					</connection>
+					<connection>
+						<from>GetVariable_12</from>
+						<input>sound</input>
+						<to>GetSoundName_2</to>
+						<output>value</output>
 					</connection>
 					<connection>
 						<from>PlaySound_1</from>
@@ -2157,7 +2242,7 @@
 						<output>res</output>
 					</connection>
 					<connection>
-						<from>StopSound_1</from>
+						<from>ContextEventCall_21</from>
 						<input>input</input>
 						<to>ArrayVariableClear_1</to>
 						<output>out</output>
@@ -2175,6 +2260,18 @@
 						<output>value</output>
 					</connection>
 					<connection>
+						<from>StopSound_1</from>
+						<input>in</input>
+						<to>ContextEventCall_21</to>
+						<output>out</output>
+					</connection>
+					<connection>
+						<from>Concatenate_4</from>
+						<input>msg</input>
+						<to>ContextEventCall_21</to>
+						<output>res</output>
+					</connection>
+					<connection>
 						<from>ArrayVariableClear_1</from>
 						<input>input</input>
 						<to>SetVariable_8</to>
@@ -2190,6 +2287,18 @@
 						<from>GetVariable_5</from>
 						<input>queueNum</input>
 						<to>ContextEventCall_5</to>
+						<output>value</output>
+					</connection>
+					<connection>
+						<from>GetSoundName_3</from>
+						<input>i1</input>
+						<to>Concatenate_4</to>
+						<output>name</output>
+					</connection>
+					<connection>
+						<from>GetVariable_10</from>
+						<input>sound</input>
+						<to>GetSoundName_3</to>
 						<output>value</output>
 					</connection>
 					<connection>
@@ -2508,6 +2617,44 @@
 							<slot>
 								<name>b</name>
 								<const>\99\</const>
+							</slot>
+						</slots>
+					</block>
+					<block>
+						<class>ContextEventCall</class>
+						<id>ContextEventCall_20</id>
+						<params>
+							<param>
+								SoundNotificationsContext
+								<name>Context Name</name>
+								<type>StringT</type>
+							</param>
+							<param>
+								log
+								<name>Member Name</name>
+								<type>StringT</type>
+							</param>
+						</params>
+						<slots/>
+					</block>
+					<block>
+						<class>Concatenate</class>
+						<id>Concatenate_3</id>
+						<params>
+							<param>
+								3
+								<name>Input Count</name>
+								<type>IntT</type>
+							</param>
+						</params>
+						<slots>
+							<slot>
+								<name>i0</name>
+								<const>\InfEvent &quot;\</const>
+							</slot>
+							<slot>
+								<name>i2</name>
+								<const>\&quot; is rejected. Reason: infChance\</const>
 							</slot>
 						</slots>
 					</block>
@@ -2833,6 +2980,24 @@
 						<input>b</input>
 						<to>CompareIntegers_1</to>
 						<output>res</output>
+					</connection>
+					<connection>
+						<from>If_1</from>
+						<input>in</input>
+						<to>ContextEventCall_20</to>
+						<output>false</output>
+					</connection>
+					<connection>
+						<from>Concatenate_3</from>
+						<input>msg</input>
+						<to>ContextEventCall_20</to>
+						<output>res</output>
+					</connection>
+					<connection>
+						<from>MacroInput_1</from>
+						<input>i1</input>
+						<to>Concatenate_3</to>
+						<output>eventName</output>
 					</connection>
 					<connection>
 						<from>GetAnyVehicle_1</from>
@@ -3782,6 +3947,23 @@
 						<slots/>
 					</block>
 					<block>
+						<class>Macro</class>
+						<id>Macro_1</id>
+						<params>
+							<param>
+								getHealthCirc
+								<name>Macro Name</name>
+								<type>StringT</type>
+							</param>
+						</params>
+						<slots>
+							<slot>
+								<name>isPc</name>
+								<const>\true\</const>
+							</slot>
+						</slots>
+					</block>
+					<block>
 						<class>ArrayVariableAdd</class>
 						<id>ArrayVariableAdd_3</id>
 						<buddy>Variable_1</buddy>
@@ -3810,23 +3992,6 @@
 						<id>IsVehicleValid_1</id>
 						<params/>
 						<slots/>
-					</block>
-					<block>
-						<class>Macro</class>
-						<id>Macro_1</id>
-						<params>
-							<param>
-								getHealthCirc
-								<name>Macro Name</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>isPc</name>
-								<const>\true\</const>
-							</slot>
-						</slots>
 					</block>
 					<block>
 						<class>ArrayVariableClear</class>
@@ -3920,6 +4085,23 @@
 						</slots>
 					</block>
 					<block>
+						<class>Macro</class>
+						<id>Macro_6</id>
+						<params>
+							<param>
+								getHealthCirc
+								<name>Macro Name</name>
+								<type>StringT</type>
+							</param>
+						</params>
+						<slots>
+							<slot>
+								<name>isPc</name>
+								<const>\false\</const>
+							</slot>
+						</slots>
+					</block>
+					<block>
 						<class>ArrayVariableAdd</class>
 						<id>ArrayVariableAdd_4</id>
 						<buddy>Variable_1</buddy>
@@ -3942,23 +4124,6 @@
 						<id>IsVehicleValid_2</id>
 						<params/>
 						<slots/>
-					</block>
-					<block>
-						<class>Macro</class>
-						<id>Macro_6</id>
-						<params>
-							<param>
-								getHealthCirc
-								<name>Macro Name</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>isPc</name>
-								<const>\false\</const>
-							</slot>
-						</slots>
 					</block>
 					<block>
 						<class>MacroInput</class>
@@ -4101,6 +4266,18 @@
 						<output>res</output>
 					</connection>
 					<connection>
+						<from>If_1</from>
+						<input>input</input>
+						<to>Macro_1</to>
+						<output>true</output>
+					</connection>
+					<connection>
+						<from>Get Player Vehicle_1</from>
+						<input>vehicle</input>
+						<to>Macro_1</to>
+						<output>vehicle</output>
+					</connection>
+					<connection>
 						<from>Macro_1</from>
 						<input>input</input>
 						<to>ArrayVariableAdd_3</to>
@@ -4116,18 +4293,6 @@
 						<from>Get Player Vehicle_1</from>
 						<input>vehicle</input>
 						<to>IsVehicleValid_1</to>
-						<output>vehicle</output>
-					</connection>
-					<connection>
-						<from>If_1</from>
-						<input>input</input>
-						<to>Macro_1</to>
-						<output>true</output>
-					</connection>
-					<connection>
-						<from>Get Player Vehicle_1</from>
-						<input>vehicle</input>
-						<to>Macro_1</to>
 						<output>vehicle</output>
 					</connection>
 					<connection>
@@ -4179,6 +4344,18 @@
 						<output>eventName</output>
 					</connection>
 					<connection>
+						<from>If_2</from>
+						<input>input</input>
+						<to>Macro_6</to>
+						<output>true</output>
+					</connection>
+					<connection>
+						<from>ContextEventCall_3</from>
+						<input>vehicle</input>
+						<to>Macro_6</to>
+						<output>res</output>
+					</connection>
+					<connection>
 						<from>Macro_6</from>
 						<input>input</input>
 						<to>ArrayVariableAdd_4</to>
@@ -4194,18 +4371,6 @@
 						<from>ContextEventCall_3</from>
 						<input>vehicle</input>
 						<to>IsVehicleValid_2</to>
-						<output>res</output>
-					</connection>
-					<connection>
-						<from>If_2</from>
-						<input>input</input>
-						<to>Macro_6</to>
-						<output>true</output>
-					</connection>
-					<connection>
-						<from>ContextEventCall_3</from>
-						<input>vehicle</input>
-						<to>Macro_6</to>
 						<output>res</output>
 					</connection>
 					<connection>

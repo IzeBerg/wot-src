@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/custom/emissive_playground.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						angleFalloffParams
+						<Vector4>0.670000 0.380000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						destBlend
+						<Int>2</Int>
+					</property>
+					<property>
+						emissionMap
+						<Texture>vehicles/german/G142_M48RPz/_skins/G142_M48RPz_ASE_4_3Dst/M48RPz_ASE_4_3Dst_equipment_AM.dds</Texture>
+					</property>
+					<property>
+						g_chromaOffsetBlue
+						<Float>0.430000</Float>
+					</property>
+					<property>
+						g_chromaOffsetGreen
+						<Float>0.060000</Float>
+					</property>
+					<property>
+						g_deferredMult
+						<Float>10.000000</Float>
+					</property>
+					<property>
+						g_tint
+						<Vector4>0.411765 0.415686 0.560784 1.000000</Vector4>
+					</property>
+					<property>
+						phaseMap
+						<Texture>vehicles/german/G142_M48RPz/_skins/G142_M48RPz_ASE_4_3Dst/M48RPz_ASE_4_3Dst_equipment_AM.dds</Texture>
+					</property>
+					<property>
+						speed
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						srcBlend
+						<Int>3</Int>
+					</property>
+					<property>
+						usePhaseMap
+						<Bool>true</Bool>
+					</property>
+					<property>
+						useVersicolorMode
+						<Bool>true</Bool>
+					</property>
+					<property>
+						waveLen
+						<Float>0.380000</Float>
+					</property>
+				</material>
+				<groupOrigin>-1.931480 -0.106452 -0.195758</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.960973 -0.461780 -3.230618</min>
+		<max>-1.901988 0.248877 2.839102</max>
+	</boundingBox>
+	<geometrySize>45252</geometrySize>
+	<minUVDensity>0.019909</minUVDensity>
+</root>

@@ -156,9 +156,5 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
       public function setZoomFactor(param1:Number) : void
       {
       }
-      
-      public function setExplosiveMarker(param1:Boolean) : void
-      {
-      }
    }
 }

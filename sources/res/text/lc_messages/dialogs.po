@@ -321,6 +321,9 @@ msgstr "坦克租期内您将免费获得一个车位。"
 msgid "buyVehicleWindow/fullAmmo"
 msgstr "无法装填弹药：所选战车弹药已满。"
 
+msgid "buyVehicleWindow/notEmptyAmmo"
+msgstr "无法装填弹药: 所选坦克还有一些弹药。"
+
 msgid "buyVehicleWindow/priceLabel"
 msgstr "%(vehiclename)s售价:"
 
@@ -735,18 +738,6 @@ msgstr "总计"
 
 msgid "confirmModuleDialog/totalLabel"
 msgstr "总计:"
-
-msgid "confirmReward/cancel"
-msgstr "取消"
-
-msgid "confirmReward/message"
-msgstr "{whiteSpanish_open}领取您从补给品中获得的奖励？{whiteSpanish_close}"
-
-msgid "confirmReward/submit"
-msgstr "领取"
-
-msgid "confirmReward/title"
-msgstr "领取奖励"
 
 msgid "confirmUnlock/cancel"
 msgstr "取消"
@@ -2072,7 +2063,7 @@ msgstr ""
 msgid "punishmentWindow/message/ban/comp7"
 msgstr ""
 "您于{whiteSpanish_Open}%(time)s{whiteSpanish_Close}在{whiteSpanish_Open}%(arenaName)s{whiteSpanish_Close}地图上违反了游戏规则。\n"
-"{whiteSpanish_Open}%(penalty)s{whiteSpanish_Close}评级点数已被扣除，同时，您已被暂时封禁，无法参加{whiteSpanish_Open}天梯战{whiteSpanish_Close}模式中的战斗。"
+"您已被暂时封禁，无法参加{whiteSpanish_Open}%(mode)s{whiteSpanish_Close}中的战斗。"
 
 msgid "punishmentWindow/message/ban/comp7/qualification"
 msgstr ""
@@ -2338,24 +2329,6 @@ msgstr "搜索敌方"
 msgid "recruit/cancel"
 msgstr "取消"
 
-msgid "recruit/priceCard/credits/description"
-msgstr "训练至50%的特长"
-
-msgid "recruit/priceCard/credits/title"
-msgstr "军事学校"
-
-msgid "recruit/priceCard/free/description"
-msgstr "未经训练的特长"
-
-msgid "recruit/priceCard/free/title"
-msgstr "快速课程"
-
-msgid "recruit/priceCard/gold/description"
-msgstr "训练完毕的特长"
-
-msgid "recruit/priceCard/gold/title"
-msgstr "坦克学院"
-
 msgid "recruit/submit"
 msgstr "招募"
 
@@ -2526,18 +2499,6 @@ msgstr "继续"
 
 msgid "reportBug/title"
 msgstr "前往客服中心"
-
-msgid "rerollReward/cancel"
-msgstr "取消"
-
-msgid "rerollReward/confirm"
-msgstr "重置奖励"
-
-msgid "rerollReward/message"
-msgstr "您将花费:"
-
-msgid "rerollReward/title"
-msgstr "确定重置当前奖励？"
 
 msgid "resetAllPerks/cancel"
 msgstr "取消"

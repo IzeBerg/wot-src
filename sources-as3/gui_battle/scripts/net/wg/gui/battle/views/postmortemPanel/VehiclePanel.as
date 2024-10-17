@@ -14,9 +14,9 @@ package net.wg.gui.battle.views.postmortemPanel
    public class VehiclePanel extends Sprite implements IDisposable
    {
       
-      private static const HORIZONTAL_MARGIN:int = 12;
+      protected static const HORIZONTAL_MARGIN:int = 12;
       
-      private static const ELEMENTS_GAP:int = 7;
+      protected static const ELEMENTS_GAP:int = 7;
       
       protected static const VEHICLE_IMAGE_HEIGHT:int = 22;
        
@@ -36,11 +36,11 @@ package net.wg.gui.battle.views.postmortemPanel
       public function VehiclePanel()
       {
          super();
-         this.bgMC.imageName = BATTLEATLAS.POSTMORTEM_VEHICLE_PANEL_BG;
          this.levelTF.autoSize = TextFieldAutoSize.LEFT;
          this.nameTF.autoSize = TextFieldAutoSize.LEFT;
          this.vehicleMC = new Image();
          addChild(this.vehicleMC);
+         this.setBG();
       }
       
       public final function dispose() : void
@@ -89,10 +89,20 @@ package net.wg.gui.battle.views.postmortemPanel
          this.x = -this.width >> 1;
       }
       
-      private function onVehicleMCChangeHandler(param1:Event) : void
+      protected function resizeVehicleIcon() : void
       {
          this.vehicleMC.height = VEHICLE_IMAGE_HEIGHT;
          this.vehicleMC.scaleX = this.vehicleMC.scaleY;
+      }
+      
+      protected function setBG() : void
+      {
+         this.bgMC.imageName = BATTLEATLAS.POSTMORTEM_VEHICLE_PANEL_BG;
+      }
+      
+      private function onVehicleMCChangeHandler(param1:Event) : void
+      {
+         this.resizeVehicleIcon();
          this.adjustPositions();
       }
    }

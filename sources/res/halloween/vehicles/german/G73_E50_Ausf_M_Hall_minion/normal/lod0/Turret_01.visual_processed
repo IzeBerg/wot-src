@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>lod0</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>turret_01</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 -2.391107 -0.111402</row3>
+				</transform>
+			</node>
+		</node>
+		<node>
+			<identifier>nodes_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_gunJoint</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.016477 0.617335 1.506281</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_light1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>-0.657000 1.958000 0.009351</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_turret_01</identifier>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						metallicGlossMap
+						<Texture>halloween/vehicles/german/G73_E50_Ausf_M_Hall_minion/E50_Ausf_M_Hall_minion_turret_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>halloween/vehicles/german/G73_E50_Ausf_M_Hall_minion/E50_Ausf_M_Hall_minion_turret_01_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>halloween/vehicles/german/G73_E50_Ausf_M_Hall_minion/E50_Ausf_M_Hall_minion_turret_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>halloween/vehicles/german/G73_E50_Ausf_M_Hall_minion/E50_Ausf_M_Hall_minion_turret_01_AO.dds</Texture>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>3.506849 3.506849 0.000000 0.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>0.001091 1.115191 -0.295451</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>tank_hull_01_2</identifier>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>halloween/vehicles/german/G73_E50_Ausf_M_Hall_minion/E50_Ausf_M_Hall_minion_hull_01_2_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>halloween/vehicles/german/G73_E50_Ausf_M_Hall_minion/E50_Ausf_M_Hall_minion_hull_01_2_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>halloween/vehicles/german/G73_E50_Ausf_M_Hall_minion/E50_Ausf_M_Hall_minion_hull_01_2_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>halloween/vehicles/german/G73_E50_Ausf_M_Hall_minion/E50_Ausf_M_Hall_minion_hull_01_2_ANM.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>3.506850 3.506850 0.000000 0.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>0.050462 1.210006 -0.537576</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>tank_turret_01_3</identifier>
+					<property>
+						alphaReference
+						<Int>128</Int>
+					</property>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						metallicGlossMap
+						<Texture>halloween/vehicles/german/G73_E50_Ausf_M_Hall_minion/E50_Ausf_M_Hall_minion_turret_01_3_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>halloween/vehicles/german/G73_E50_Ausf_M_Hall_minion/E50_Ausf_M_Hall_minion_turret_01_3_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>halloween/vehicles/german/G73_E50_Ausf_M_Hall_minion/E50_Ausf_M_Hall_minion_turret_01_3_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>halloween/vehicles/german/G73_E50_Ausf_M_Hall_minion/E50_Ausf_M_Hall_minion_turret_01_3_AO.dds</Texture>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>3.506849 3.506849 0.000000 0.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>0.010745 0.690517 0.814504</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.747960 0.047248 -2.497063</min>
+		<max>1.750143 2.183134 2.056445</max>
+	</boundingBox>
+	<geometrySize>431116</geometrySize>
+	<minUVDensity>0.001816</minUVDensity>
+</root>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>10.000000</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>bubble</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/halloween/our_tank_demolitiy/tank_bubble_defense.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.500000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>10.000000</startTime>
+				<value>0.000000 0.500000 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.000000 1.000000 1.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>lambert10</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.086275 0.145098 0.474510 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 3.333333</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 3.333333</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.300000</startTime>
+				<value>0.086275 0.145098 0.474510 1.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 1.666667</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 1.666667</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>9.700000</startTime>
+				<value>0.086275 0.145098 0.474510 1.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 -1.666666</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -1.666666</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>10.000000</startTime>
+				<value>0.086275 0.145098 0.474510 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -3.333331</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 -3.333331</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>lambert11</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.321569 0.247059 0.792157 0.044286</value>
+				<inTangent>0.000000 0.000000 0.000000 0.332657</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.332657</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.300000</startTime>
+				<value>0.321569 0.247059 0.792157 0.540000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>9.700000</startTime>
+				<value>0.321569 0.247059 0.792157 0.540000</value>
+				<inTangent>0.000000 0.000000 0.000000 -0.036121</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -0.036121</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>10.000000</startTime>
+				<value>0.321569 0.247059 0.792157 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -1.542860</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 -1.542860</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

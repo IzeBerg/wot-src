@@ -2,9 +2,7 @@ from typing import Optional
 import re, calendar, datetime, time, BigWorld
 from debug_utils import LOG_CURRENT_EXCEPTION
 from helpers.i18n import makeString as _ms
-from helpers import dependency
 from soft_exception import SoftException
-from skeletons.gui.lobby_context import ILobbyContext
 ONE_SECOND = 1
 DAYS_IN_YEAR = 365
 HOURS_IN_DAY = 24
@@ -25,7 +23,6 @@ WEEK_END = 7
 WHOLE_DAY_INTERVAL = (1, ONE_DAY)
 
 class _TimeCorrector(object):
-    lobbyContext = dependency.descriptor(ILobbyContext)
 
     def __init__(self):
         self._evalTimeCorrection(time.time())
@@ -44,8 +41,8 @@ class _TimeCorrector(object):
     def serverRegionalTime(self):
         regionalNewDayUTC = 0
         try:
-            serverRegionalSettings = self.lobbyContext.getServerSettings().regionals
-            regionalNewDayUTC = serverRegionalSettings.getDayStartingTime()
+            serverRegionalSettings = BigWorld.player().serverSettings['regional_settings']
+            regionalNewDayUTC = serverRegionalSettings['starting_time_of_a_new_day']
         except Exception:
             LOG_CURRENT_EXCEPTION()
 

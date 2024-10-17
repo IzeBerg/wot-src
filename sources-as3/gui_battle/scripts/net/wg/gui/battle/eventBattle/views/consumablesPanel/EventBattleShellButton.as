@@ -1,39 +1,37 @@
 package net.wg.gui.battle.eventBattle.views.consumablesPanel
 {
-   import flash.display.MovieClip;
+   import net.wg.data.constants.KeyProps;
    import net.wg.gui.battle.views.consumablesPanel.BattleShellButton;
-   import net.wg.gui.battle.views.consumablesPanel.interfaces.IEventBattleShellButton;
+   import net.wg.gui.eventcomponents.NumberProgress;
    
-   public class EventBattleShellButton extends BattleShellButton implements IEventBattleShellButton
+   public class EventBattleShellButton extends BattleShellButton
    {
        
       
-      public var hit:MovieClip = null;
-      
-      public var inspired:MovieClip = null;
+      public var bindKeyFieldEvent:NumberProgress = null;
       
       public function EventBattleShellButton()
       {
          super();
       }
       
-      override protected function initialize() : void
+      override protected function setBindKeyText() : void
       {
-         super.initialize();
-         hitArea = this.hit;
-         this.inspired.visible = false;
+         if(bindSfKeyCode == KeyProps.KEY_NONE)
+         {
+            this.bindKeyFieldEvent.setText(App.utils.locale.makeString(READABLE_KEY_NAMES.KEY_NONE_ALT));
+         }
+         else
+         {
+            this.bindKeyFieldEvent.setText(App.utils.commons.keyToString(bindSfKeyCode).keyName);
+         }
       }
       
       override protected function onDispose() : void
       {
-         this.hit = null;
-         this.inspired = null;
+         this.bindKeyFieldEvent.dispose();
+         this.bindKeyFieldEvent = null;
          super.onDispose();
-      }
-      
-      public function setInspired(param1:Boolean = false) : void
-      {
-         this.inspired.visible = param1;
       }
    }
 }

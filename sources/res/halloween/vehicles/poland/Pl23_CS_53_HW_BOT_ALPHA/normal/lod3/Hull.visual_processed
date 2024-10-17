@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>nodes_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_Fire_1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 -0.060727 -2.790268</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Fire_2</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>-0.681325 -0.144011 2.441895</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_LFront</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.506590 0.862187</row1>
+					<row2>0.000000 -0.862187 0.506590</row2>
+					<row3>-1.866467 -0.018677 4.152235</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_LRear</identifier>
+				<transform>
+					<row0>-1.000000 0.000000 -0.000000</row0>
+					<row1>0.000000 0.528811 -0.848739</row1>
+					<row2>-0.000000 -0.848739 -0.528811</row2>
+					<row3>-1.866467 -0.073151 -4.323739</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_RFront</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.506590 0.862187</row1>
+					<row2>0.000000 -0.862187 0.506590</row2>
+					<row3>1.863117 -0.018680 4.152235</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_RRear</identifier>
+				<transform>
+					<row0>-1.000000 0.000000 -0.000000</row0>
+					<row1>0.000000 0.528811 -0.848739</row1>
+					<row2>-0.000000 -0.848739 -0.528811</row2>
+					<row3>1.863117 -0.073267 -4.323545</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_Exhaus_1</identifier>
+				<transform>
+					<row0>0.996261 -0.086399 0.000000</row0>
+					<row1>-0.000000 -0.000000 -1.000000</row1>
+					<row2>0.086399 0.996261 -0.000000</row2>
+					<row3>1.028651 0.474589 -2.588737</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_Exhaus_2</identifier>
+				<transform>
+					<row0>0.984023 0.178040 -0.000000</row0>
+					<row1>0.000000 -0.000000 -1.000000</row1>
+					<row2>-0.178040 0.984023 -0.000000</row2>
+					<row3>-1.029046 0.469244 -2.588737</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_turretJoint</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000214 0.441829 0.093592</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_hull_01</identifier>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/poland/Pl23_CS_53/CS_53_hull_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/poland/Pl23_CS_53/CS_53_hull_01_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/poland/Pl23_CS_53/CS_53_hull_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/poland/Pl23_CS_53/CS_53_hull_01_AO.dds</Texture>
+					</property>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+					<property>
+						alphaReference
+						<Int>64</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>0.002327 -0.124496 -0.052455</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-2.317426 -0.776028 -4.687773</min>
+		<max>2.322079 0.527036 4.582863</max>
+	</boundingBox>
+	<geometrySize>87818</geometrySize>
+	<minUVDensity>0.002296</minUVDensity>
+</root>

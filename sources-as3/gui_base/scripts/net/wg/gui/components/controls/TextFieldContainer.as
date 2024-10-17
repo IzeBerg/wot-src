@@ -36,7 +36,6 @@ package net.wg.gui.components.controls
       
       public final function dispose() : void
       {
-         this.onDispose();
          this._disposed = true;
          this._tf = null;
          this.textField = null;
@@ -47,11 +46,7 @@ package net.wg.gui.components.controls
          return this._disposed;
       }
       
-      protected function onDispose() : void
-      {
-      }
-      
-      protected function updateSize() : void
+      private function updateSize() : void
       {
          if(this._autoSize == TextFieldAutoSize.NONE)
          {

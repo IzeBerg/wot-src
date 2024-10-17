@@ -82,7 +82,7 @@ package net.wg.gui.battle.pveBase.views.minimap
          {
             this._container.addChild(_loc3_);
          }
-         this._layersWithSameScaleAsBackground = new <DisplayObject>[this.arrows,this.stretchableDeathZone];
+         this._layersWithSameScaleAsBackground = new <DisplayObject>[this.arrows,this.stretchableDeathZone,personal];
          this._backgroundLoader = new Loader();
          this._backgroundLoader.contentLoaderInfo.addEventListener(Event.COMPLETE,this.onLoadingCompleteHandler);
          this._backgroundLoader.contentLoaderInfo.addEventListener(IOErrorEvent.IO_ERROR,this.onLoadingIoErrorHandler);

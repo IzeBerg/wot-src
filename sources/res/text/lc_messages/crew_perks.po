@@ -129,7 +129,7 @@ msgstr "拥有触发式效果的特长在训练到至少1%时生效。其效果�
 
 msgid "commander_emergency/currentLvlDescription"
 msgstr ""
-"受到敌方造成的损伤时，{yellow_Start}乘员效率加成{yellow_End}将提高%(crewLevelIncrease)s，持续15秒。"
+"受到敌方坦克造成的损伤时，{yellow_Start}乘员效率加成{yellow_End}将提高%(crewLevelIncrease)s，持续15秒。"
 
 msgid "commander_emergency/hudDescription"
 msgstr "乘员效率加成已提高。"
@@ -155,7 +155,7 @@ msgstr "拥有触发式效果的特长在训练到至少1%时生效。其效果�
 
 msgid "commander_enemyShotPredictor/currentLvlDescription"
 msgstr ""
-"在{yellow_Start}敌方自行火炮开火{yellow_End}的%(artNotificationDelayFactor)s延迟后发出警告，且会提示来袭炮弹的方位。{greenBright_Start}弹震的减益效果{greenBright_End}已降低%(stunResistanceEffectFactor)s&zwnbsp;。"
+"在{yellow_Start}敌方自行火炮开火{yellow_End}的%(artNotificationDelayFactor)s延迟后发出警告，且会提示来袭炮弹的方位。{greenBright_Start}弹震造成的减益效果{greenBright_End}已降低%(stunResistanceEffectFactor)s&zwnbsp;。"
 
 msgid "commander_enemyShotPredictor/maxLvlDescription"
 msgstr ""
@@ -223,7 +223,7 @@ msgstr "受伤乘员已被车长代替。"
 
 msgid "commander_tutor/maxLvlDescription"
 msgstr ""
-"训练完毕后，全体乘员所获得的{greenBright_Start}经验{greenBright_End}提高%(xpBonusFactorPerLevel)s。车长能够以%(woundedCrewEfficiency)s的效率{greenBright_Start}代替受伤乘员{greenBright_End}。"
+"训练完毕后，全体乘员所获得的{greenBright_Start}经验{greenBright_End}提高%(xpBonusFactorPerLevel)s。车长能以%(woundedCrewEfficiency)s的效率{greenBright_Start}代替受伤乘员{greenBright_End}。"
 
 msgid "commander_tutor/name"
 msgstr "老兵"
@@ -305,7 +305,7 @@ msgstr "特长在训练到至少1%时生效。其效果会随着熟练度的提�
 
 msgid "driver_rammingMaster/currentLvlDescription"
 msgstr ""
-"{greenBright_Start}对敌方坦克造成的撞击损伤{greenBright_End}已提高%(damageEnemiesByRamming)s&zwnbsp;，{greenBright_Start}自身坦克{greenBright_End}和{greenBright_Start}悬挂装置受到的撞击损伤{greenBright_End}已分别降低%(vehicleRamDamageResistance)s&zwnbsp;和%(vehicleRamChassisDamageResistance)s&zwnbsp;。"
+"{greenBright_Start}对敌方坦克造成的撞击损伤{greenBright_End}已提高%(damageEnemiesByRamming)s&zwnbsp;，{greenBright_Start}自身坦克{greenBright_End}受到的撞击损伤已降低%(vehicleRamDamageResistance)s&zwnbsp;，{greenBright_Start}悬挂装置受到的撞击损伤{greenBright_End}已降低%(vehicleRamChassisDamageResistance)s&zwnbsp;。"
 
 msgid "driver_rammingMaster/maxLvlDescription"
 msgstr ""
@@ -437,7 +437,7 @@ msgstr ""
 
 msgid "gunner_armorer/maxLvlDescription"
 msgstr ""
-"训练完毕后，{greenBright_Start}潜在损伤{greenBright_End}和{greenBright_Start}潜在穿透力{greenBright_End}浮动范围降低{greenBright_Start}±{greenBright_End}%(damageAndPiercingDistributionLowerBound)s。{greenBright_Start}炮弹散布范围{greenBright_End}降低%(shotDispersionAngle)s&zwnbsp;。"
+"训练完毕后，{greenBright_Start}潜在损伤{greenBright_End}和{greenBright_Start}潜在穿透力{greenBright_End}浮动范围降低{greenBright_Start}±{greenBright_End}%(damageAndPiercingDistributionLowerBound)s。同时，{greenBright_Start}炮弹散布范围{greenBright_End}也降低%(shotDispersionAngle)s&zwnbsp;。"
 
 msgid "gunner_armorer/name"
 msgstr "炮术大师"
@@ -649,14 +649,14 @@ msgstr "拥有触发式效果的特长在训练到至少1%时生效。其效果�
 
 msgid "loader_melee/currentLvlDescription"
 msgstr ""
-"50米范围内存在敌方坦克时，{yellow_Start}装填时间{yellow_End}将缩短%(vehicleGunReloadTime)s。"
+"50米范围内存在敌人时，{yellow_Start}装填时间{yellow_End}将缩短%(vehicleGunReloadTime)s。"
 
 msgid "loader_melee/hudDescription"
 msgstr "装填时间已缩短(附近存在敌方坦克)。\t"
 
 msgid "loader_melee/maxLvlDescription"
 msgstr ""
-"训练完毕后，50米范围内存在敌方坦克时，{yellow_Start}装填时间{yellow_End}缩短%(vehicleGunReloadTime)s。"
+"训练完毕后，50米范围内存在敌人时，{yellow_Start}装填时间{yellow_End}缩短%(vehicleGunReloadTime)s。"
 
 msgid "loader_melee/name"
 msgstr "短兵相接"
@@ -760,7 +760,7 @@ msgstr "乘员效率加成已提高(已转化足够多的侦察数据)。"
 
 msgid "radioman_expert/maxLvlDescription"
 msgstr ""
-"训练完毕后，协助损伤超过自身坦克的初始生命值时，{yellow_Start}乘员效率加成{yellow_End}提高%(crewLevelIncrease)s&zwnbsp;。"
+"训练完毕后，协助损伤超过自身初始生命值时，{yellow_Start}乘员效率加成{yellow_End}提高%(crewLevelIncrease)s&zwnbsp;。"
 
 msgid "radioman_expert/name"
 msgstr "通信专家"
@@ -853,14 +853,14 @@ msgstr "拥有触发式效果的特长在训练到至少1%时生效。其效果�
 
 msgid "radioman_sideBySide/currentLvlDescription"
 msgstr ""
-"距自身50米范围内存在同类型盟友坦克时，{yellow_Start}乘员效率加成将{yellow_End}提高%(crewLevelIncrease)s&zwnbsp;。"
+"距离自身50米范围内存在同类型盟友坦克时(例如同为轻坦、中坦、重坦等)，{yellow_Start}乘员效率加成{yellow_End}将提高%(crewLevelIncrease)s&zwnbsp;。"
 
 msgid "radioman_sideBySide/hudDescription"
 msgstr "乘员效率加成已提高(附近存在同类型盟友坦克)。"
 
 msgid "radioman_sideBySide/maxLvlDescription"
 msgstr ""
-"训练完毕后，距自身50米范围内存在同类型盟友坦克时，{yellow_Start}乘员效率加成{yellow_End}提高%(crewLevelIncrease)s&zwnbsp;。"
+"训练完毕后，距离自身50米范围内存在同类型盟友坦克时(例如同为轻坦、中坦、重坦等)，{yellow_Start}乘员效率加成{yellow_End}提高%(crewLevelIncrease)s&zwnbsp;。"
 
 msgid "radioman_sideBySide/name"
 msgstr "并肩作战"
@@ -879,7 +879,7 @@ msgstr "特长在训练到至少1%时生效。其效果会随着熟练度的提�
 
 msgid "radioman_signalInterception/currentLvlDescription"
 msgstr ""
-"{greenBright_Start}确定自身坦克是否被敌方点亮{greenBright_End}{greenBright_Start}所需的时间{greenBright_End}已缩短%(commanderLampDelay)s。"
+"{greenBright_Start}确定自身坦克是否被敌方坦克点亮{greenBright_End}{greenBright_Start}所需的时间{greenBright_End}已缩短%(commanderLampDelay)s。"
 
 msgid "radioman_signalInterception/maxLvlDescription"
 msgstr ""

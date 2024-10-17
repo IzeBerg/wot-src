@@ -1,0 +1,4 @@
+from FairplayVehicleBattleStatsComponent import FairplayVehicleBattleStatsComponent
+
+class HWFairplayVehicleBattleStatsComponent(FairplayVehicleBattleStatsComponent):
+    pass

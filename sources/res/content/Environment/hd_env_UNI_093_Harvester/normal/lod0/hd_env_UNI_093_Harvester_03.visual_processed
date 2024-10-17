@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd1</identifier>
+					<fx>shaders/std_effects/PBS_tiled_atlas.fx</fx>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						selfIllumination
+						<Float>170.000000</Float>
+					</property>
+					<materialKind>111</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						destBlend
+						<Int>6</Int>
+					</property>
+					<property>
+						srcBlend
+						<Int>5</Int>
+					</property>
+					<property>
+						texAddressMode
+						<Int>1</Int>
+					</property>
+					<property>
+						atlasAlbedoHeight
+						<Texture>content/Environment/00_Atlases/hd_env_UNI_093_Harvester_atlas_AM.atlas</Texture>
+					</property>
+					<property>
+						atlasBlend
+						<Texture>content/Environment/00_Atlases/hd_env_UNI_093_Harvester_03_atlas_blend.png</Texture>
+					</property>
+					<property>
+						atlasMetallicAO
+						<Texture>content/Environment/00_Atlases/hd_env_UNI_093_Harvester_atlas_MAO.atlas</Texture>
+					</property>
+					<property>
+						atlasNormalGlossSpec
+						<Texture>content/Environment/00_Atlases/hd_env_UNI_093_Harvester_atlas_GBMT.atlas</Texture>
+					</property>
+					<property>
+						dynamicObject
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_atlasIndexes
+						<Vector4>5.000000 4.000000 6.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_atlasSizes
+						<Vector4>5.000000 2.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.470000 0.430000 0.380000 1.000000</Vector4>
+					</property>
+					<property>
+						g_dirtParams
+						<Vector4>0.100000 20.000000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_fakeShadowsParams
+						<Vector4>0.500000 0.500000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>1.000000 1.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>0.545098 0.529412 0.494118 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>0.215686 0.215686 0.215686 1.000000</Vector4>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Buildings/00_Tiles/Dirt_Soot_01_DM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.021513 -0.067231 -16.349743</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_tiled_atlas.fx</fx>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						selfIllumination
+						<Float>170.000000</Float>
+					</property>
+					<materialKind>111</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						destBlend
+						<Int>6</Int>
+					</property>
+					<property>
+						srcBlend
+						<Int>5</Int>
+					</property>
+					<property>
+						texAddressMode
+						<Int>1</Int>
+					</property>
+					<property>
+						atlasAlbedoHeight
+						<Texture>content/Environment/00_Atlases/hd_env_UNI_093_Harvester_atlas_AM.atlas</Texture>
+					</property>
+					<property>
+						atlasBlend
+						<Texture>content/Environment/00_Atlases/hd_env_UNI_093_Harvester_03_atlas_blend.png</Texture>
+					</property>
+					<property>
+						atlasMetallicAO
+						<Texture>content/Environment/00_Atlases/hd_env_UNI_093_Harvester_atlas_MAO.atlas</Texture>
+					</property>
+					<property>
+						atlasNormalGlossSpec
+						<Texture>content/Environment/00_Atlases/hd_env_UNI_093_Harvester_atlas_GBMT.atlas</Texture>
+					</property>
+					<property>
+						dynamicObject
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_atlasIndexes
+						<Vector4>8.000000 9.000000 6.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_atlasSizes
+						<Vector4>5.000000 2.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.470000 0.430000 0.380000 0.150000</Vector4>
+					</property>
+					<property>
+						g_dirtParams
+						<Vector4>1.000000 20.000000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_fakeShadowsParams
+						<Vector4>0.500000 0.500000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>0.392157 0.372549 0.333333 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>0.356863 0.368627 0.360784 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>0.215686 0.215686 0.215686 1.000000</Vector4>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Buildings/00_Tiles/Dirt_CastleRuins_01_DM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.000009 -0.068280 -18.076267</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-12.946733 -0.643185 -26.174135</min>
+		<max>12.903708 0.508724 -9.521559</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>102244</geometrySize>
+	<minUVDensity>0.118683</minUVDensity>
+</root>

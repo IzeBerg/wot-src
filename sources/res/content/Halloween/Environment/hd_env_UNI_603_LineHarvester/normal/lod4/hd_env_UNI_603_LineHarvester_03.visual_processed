@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd6</identifier>
+					<fx>shaders/std_effects/PBS_tiled_atlas.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						atlasAlbedoHeight
+						<Texture>content/Environment/00_Atlases/hd_env_UNI_093_Harvester_atlas_AM.atlas</Texture>
+					</property>
+					<property>
+						atlasBlend
+						<Texture>content/Environment/00_Atlases/hd_env_UNI_093_Harvester_03_atlas_blend.png</Texture>
+					</property>
+					<property>
+						atlasMetallicAO
+						<Texture>content/Environment/00_Atlases/hd_env_UNI_093_Harvester_atlas_MAO.atlas</Texture>
+					</property>
+					<property>
+						atlasNormalGlossSpec
+						<Texture>content/Environment/00_Atlases/hd_env_UNI_093_Harvester_atlas_GBMT.atlas</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Buildings/00_Tiles/Dirt_Soot_05_DM.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_atlasIndexes
+						<Vector4>3.000000 5.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_atlasSizes
+						<Vector4>5.000000 2.000000 3.000000 5.000000</Vector4>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.470588 0.431373 0.380392 0.000000</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>0.443137 0.443137 0.443137 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>0.972549 1.000000 0.913725 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>0.372549 0.286275 0.000000 0.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>-0.000078 0.296514 0.000041</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd5</identifier>
+					<fx>shaders/std_effects/PBS_tiled_atlas.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						atlasAlbedoHeight
+						<Texture>content/Environment/00_Atlases/hd_env_UNI_093_Harvester_atlas_AM.atlas</Texture>
+					</property>
+					<property>
+						atlasBlend
+						<Texture>content/Environment/00_Atlases/hd_env_UNI_093_Harvester_03_atlas_blend.png</Texture>
+					</property>
+					<property>
+						atlasMetallicAO
+						<Texture>content/Environment/00_Atlases/hd_env_UNI_093_Harvester_atlas_MAO.atlas</Texture>
+					</property>
+					<property>
+						atlasNormalGlossSpec
+						<Texture>content/Environment/00_Atlases/hd_env_UNI_093_Harvester_atlas_GBMT.atlas</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Buildings/00_Tiles/Dirt_Soot_05_DM.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_atlasIndexes
+						<Vector4>1.000000 5.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_atlasSizes
+						<Vector4>5.000000 2.000000 0.000000 5.000000</Vector4>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.470588 0.431373 0.380392 0.000000</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>0.552941 0.552941 0.552941 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>0.894118 0.843137 0.776471 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>0.764706 0.741176 0.658824 0.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>0.000924 -0.430988 0.000046</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-8.579621 -1.668176 -8.579526</min>
+		<max>8.579426 0.806203 8.579612</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>8602</geometrySize>
+	<minUVDensity>0.081180</minUVDensity>
+</root>

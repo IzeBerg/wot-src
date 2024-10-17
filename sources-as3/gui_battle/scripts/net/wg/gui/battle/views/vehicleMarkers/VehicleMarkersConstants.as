@@ -12,8 +12,6 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       public static const ENTITY_NAME_ENEMY:String = "enemy";
       
-      public static const ENTITY_NAME_SQUADMAN:String = "squadman";
-      
       public static const ENTITY_TYPE_ALLY:String = "ally";
       
       public static const ENTITY_TYPE_ENEMY:String = "enemy";
@@ -31,8 +29,6 @@ package net.wg.gui.battle.views.vehicleMarkers
       public static const COLOR_WHITE:String = "white";
       
       public static const COLOR_PURPLE:String = "purple";
-      
-      public static const COLOR_HUNTER:String = "hunter";
       
       public static const HB_ANIMATED_PART_SPLASH:String = "splash";
       

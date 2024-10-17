@@ -30,7 +30,7 @@ class SquadActionsHandler(AbstractActionsHandler):
             vInfos = unit.getMemberVehicles(pInfo.dbID)
             if vInfos is not None:
                 g_currentVehicle.selectVehicle(vInfos[0].vehInvID)
-            self._loadBattleQueue()
+            g_eventDispatcher.loadBattleQueue()
         elif loadHangar:
             g_eventDispatcher.loadHangar()
         return
@@ -44,7 +44,7 @@ class SquadActionsHandler(AbstractActionsHandler):
     def executeInit(self, ctx):
         initResult = FUNCTIONAL_FLAG.UNDEFINED
         if self._entity.getPlayerInfo().isReady and self._entity.getFlags().isInQueue():
-            self._loadBattleQueue()
+            g_eventDispatcher.loadBattleQueue()
             initResult = FUNCTIONAL_FLAG.LOAD_PAGE
         squadCtx = None
         if ctx is not None:
@@ -56,6 +56,7 @@ class SquadActionsHandler(AbstractActionsHandler):
                     showInvitesWindow = False
                     self.processInvites(accountsToInvite)
                 squadCtx = {'showInvitesWindow': showInvitesWindow}
+            self._updateSquadCtx(ctx, squadCtx)
         self._loadWindow(squadCtx)
         return initResult
 
@@ -101,14 +102,19 @@ class SquadActionsHandler(AbstractActionsHandler):
                 result = yield wg_await(showPlatoonWarningDialog(R.strings.dialogs.squadHaveNotReadyPlayer))
             if not result:
                 raise AsyncReturn(result)
-            result = yield await_callback(checkVehicleAmmoFull)(g_currentVehicle.item)
+            result = yield wg_await(self._checkVehicleAmmo(g_currentVehicle.item))
             if not result:
                 raise AsyncReturn(result)
         elif not fullData.playerInfo.isReady:
-            result = yield await_callback(checkVehicleAmmoFull)(g_currentVehicle.item)
+            result = yield wg_await(self._checkVehicleAmmo(g_currentVehicle.item))
             if not result:
                 raise AsyncReturn(result)
         raise AsyncReturn(True)
+
+    @wg_async
+    def _checkVehicleAmmo(self, vehicle):
+        result = yield await_callback(checkVehicleAmmoFull)(vehicle)
+        raise AsyncReturn(result)
 
     def exitFromQueue(self):
         self._sendBattleQueueRequest(action=0)
@@ -147,12 +153,11 @@ class SquadActionsHandler(AbstractActionsHandler):
 
         return
 
-    @classmethod
-    def _loadBattleQueue(cls):
-        g_eventDispatcher.loadBattleQueue()
-
     def _onKickedFromQueue(self, _):
         SystemMessages.pushI18nMessage('#system_messages:arena_start_errors/prb/kick/timeout', type=SystemMessages.SM_TYPE.Warning)
+
+    def _updateSquadCtx(self, initCtx, squadCtx):
+        pass
 
     @staticmethod
     def _isSquadHavePlayersInBattle(slotPlayer, playerInfo):

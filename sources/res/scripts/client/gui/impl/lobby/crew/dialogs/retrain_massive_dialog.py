@@ -1,5 +1,6 @@
 from typing import TYPE_CHECKING
 import BigWorld, SoundGroups
+from constants import VEHICLE_NO_CREW_TRANSFER_PENALTY_TAG, VEHICLE_WOT_PLUS_TAG, VEHICLE_PREMIUM_TAG
 from gui.Scaleform.genConsts.TOOLTIPS_CONSTANTS import TOOLTIPS_CONSTANTS
 from gui.customization.shared import getPurchaseGoldForCredits, getPurchaseMoneyState, MoneyForPurchase
 from gui.impl.auxiliary.tankman_operations import ITEM_PRICE_FREE, packRetrainTankman
@@ -108,7 +109,10 @@ class RetrainMassiveDialog(BaseCrewDialogTemplateView):
         super(RetrainMassiveDialog, self)._onLoading(*args, **kwargs)
 
     def _getWarning(self):
-        if self._tankmen[0].descriptor.canUseSkills(self._vehicle.descriptor.type):
+        tagList = [
+         VEHICLE_NO_CREW_TRANSFER_PENALTY_TAG, VEHICLE_WOT_PLUS_TAG, VEHICLE_PREMIUM_TAG,
+         VEHICLE_TAGS.PREMIUM_IGR]
+        if any(tag in self._vehicle.descriptor.type.tags for tag in tagList):
             return R.strings.dialogs.retrain.warning.premiumVehicle()
         return R.invalid()
 

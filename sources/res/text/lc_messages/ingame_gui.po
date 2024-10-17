@@ -714,6 +714,9 @@ msgstr "炮台已防御"
 msgid "efficiencyRibbons/enemySectorCaptured"
 msgstr "已占领区域"
 
+msgid "efficiencyRibbons/fireDamageZone"
+msgstr "野火造成的损伤"
+
 msgid "efficiencyRibbons/healthAdded"
 msgstr "坦克已修复"
 
@@ -780,8 +783,26 @@ msgstr "放弃坦克"
 msgid "efficiencyRibbons/worldCollision"
 msgstr "撞击损伤"
 
-msgid "efficiencyRibbons/wtReceivedCircuitOverload"
-msgstr "短路造成的损伤"
+msgid "efficiencyRibbons/zoneBlizzard"
+msgstr "暴风雪"
+
+msgid "efficiencyRibbons/zoneFire"
+msgstr "野火"
+
+msgid "efficiencyRibbons/zoneFog"
+msgstr "浓雾"
+
+msgid "efficiencyRibbons/zoneRain"
+msgstr "暴雨"
+
+msgid "efficiencyRibbons/zoneSandstorm"
+msgstr "沙尘暴"
+
+msgid "efficiencyRibbons/zoneSmoke"
+msgstr "烟雾"
+
+msgid "efficiencyRibbons/zoneTornado"
+msgstr "龙卷风"
 
 msgid "epic_players_panel/state/hidden/body"
 msgstr "隐藏队伍面板"
@@ -953,6 +974,12 @@ msgstr "无法开炮:坦克被击毁。"
 
 msgid "player_errors/cant_switch/engine_destroyed"
 msgstr "切换不可用：发动机已损毁。"
+
+msgid "player_errors/cant_switch/gun_destroyed"
+msgstr "无法切换: 火炮被击毁"
+
+msgid "player_errors/cant_switch/one_shell_left"
+msgstr "无法切换: 仅剩1发炮弹"
 
 msgid "player_errors/equipment/alreadyActivated"
 msgstr "[%(name)s]已激活。"
@@ -1471,9 +1498,6 @@ msgstr "装备 [%(device)s] 已经被修复。"
 msgid "player_messages/DEVICE_REPAIRED_TO_CRITICAL"
 msgstr "[%(device)s]正常。"
 
-msgid "player_messages/DEVICE_STARTED_FIRE_AT_CIRCUIT_OVERLOAD"
-msgstr "短路对坦克造成了损伤！"
-
 msgid "player_messages/DEVICE_STARTED_FIRE_AT_SHOT"
 msgstr "%(entity)s 击中我的坦克%(device)s起火。"
 
@@ -1527,9 +1551,6 @@ msgstr "敌方%s基地已占领！"
 
 msgid "player_messages/enemy_team_name"
 msgstr "敌方"
-
-msgid "player_messages/equipment/wtEvent/healthAtFullHP"
-msgstr "[%(name)s] 无法修复。坦克完好无损。"
 
 msgid "player_messages/poi_equipment_used_by_ally"
 msgstr "您的盟友%(name)s使用了%(equipment)s战术能力"
@@ -2722,6 +2743,9 @@ msgstr "可激活火箭助推器"
 
 msgid "siegeMode/hint/turboshaftEngine"
 msgstr "切换发动机模式"
+
+msgid "siegeMode/hint/twinGun"
+msgstr "切换射击模式"
 
 msgid "siegeMode/hint/wheeled"
 msgstr "切换机动模式"

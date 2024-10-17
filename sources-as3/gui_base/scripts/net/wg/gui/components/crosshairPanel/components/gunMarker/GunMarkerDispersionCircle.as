@@ -1,9 +1,9 @@
 package net.wg.gui.components.crosshairPanel.components.gunMarker
 {
+   import com.gskinner.motion.GTweener;
    import mx.effects.easing.Cubic;
    import net.wg.gui.components.crosshairPanel.components.gunMarker.constants.GunMarkerConsts;
    import net.wg.infrastructure.base.SimpleContainer;
-   import scaleform.clik.motion.Tween;
    
    public class GunMarkerDispersionCircle extends SimpleContainer
    {
@@ -14,7 +14,7 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
       
       private static const SECONDARY_ALPHA_MULTIPLAYER:Number = 0.2;
       
-      private static const TWEEN_DURATION:int = 1000;
+      private static const TWEEN_DURATION:Number = 1;
        
       
       public var currMixingMC:IGunMarkerMixing = null;
@@ -31,8 +31,6 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
       
       public var mixingType5:GunMarkerMixingWithoutProgress = null;
       
-      public var mixingTypeWt:GunMarkerMixingWithoutProgress = null;
-      
       public var invalidateCrosshair:Function = null;
       
       private var _type:Number = -1;
@@ -44,8 +42,6 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
       private var _reloadingState:String = "";
       
       private var _isSecondary:Boolean = false;
-      
-      private var _tween:Tween;
       
       private var _mixings:Object = null;
       
@@ -59,10 +55,10 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
             "type3":this.mixingType3,
             "type4":this.mixingType4,
             "type5":this.mixingType5,
-            "type6":this.mixingTypeWt,
+            "type6":this.mixingType5,
             "type7":this.mixingType5
          };
-         this.mixingType0.visible = this.mixingType1.visible = this.mixingType2.visible = this.mixingType3.visible = this.mixingType4.visible = this.mixingType5.visible = this.mixingTypeWt.visible = false;
+         this.mixingType0.visible = this.mixingType1.visible = this.mixingType2.visible = this.mixingType3.visible = this.mixingType4.visible = this.mixingType5.visible = false;
       }
       
       override protected function draw() : void
@@ -89,8 +85,8 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
          {
             if(this._isSecondary)
             {
-               this.clearTween();
-               this._tween = new Tween(TWEEN_DURATION,this.currMixingMC,{"alpha":this._alpha * SECONDARY_ALPHA_MULTIPLAYER},{
+               GTweener.removeTweens(this.currMixingMC);
+               GTweener.to(this.currMixingMC,TWEEN_DURATION,{"alpha":this.mixingAlpha * SECONDARY_ALPHA_MULTIPLAYER},{
                   "onComplete":this.onFadeComplete,
                   "ease":Cubic.easeOut
                });
@@ -115,7 +111,7 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
       
       override protected function onDispose() : void
       {
-         this.clearTween();
+         GTweener.removeTweens(this.currMixingMC);
          this.currMixingMC = null;
          this.invalidateCrosshair = null;
          this.mixingType0.dispose();
@@ -130,8 +126,6 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
          this.mixingType4 = null;
          this.mixingType5.dispose();
          this.mixingType5 = null;
-         this.mixingTypeWt.dispose();
-         this.mixingTypeWt = null;
          this._mixings = this.cleanupObject(this._mixings);
          super.onDispose();
       }
@@ -142,7 +136,7 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
          this._alpha = param1;
          if(this.currMixingMC)
          {
-            this.currMixingMC.setAlpha(this._alpha);
+            this.currMixingMC.alpha = this.mixingAlpha;
          }
          invalidate(GunMarkerConsts.GUN_ALPHA_VALIDATION);
       }
@@ -183,19 +177,15 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
          }
       }
       
-      private function clearTween() : void
+      protected function get mixingAlpha() : Number
       {
-         if(this._tween)
-         {
-            this._tween.dispose();
-            this._tween = null;
-         }
+         return this._alpha;
       }
       
       private function updateAlpha() : void
       {
          var _loc2_:SimpleContainer = null;
-         var _loc1_:Number = !!this._isSecondary ? Number(this._alpha * SECONDARY_ALPHA_MULTIPLAYER) : Number(this._alpha);
+         var _loc1_:Number = !!this._isSecondary ? Number(this.mixingAlpha * SECONDARY_ALPHA_MULTIPLAYER) : Number(this.mixingAlpha);
          for each(_loc2_ in this._mixings)
          {
             _loc2_.alpha = _loc1_;

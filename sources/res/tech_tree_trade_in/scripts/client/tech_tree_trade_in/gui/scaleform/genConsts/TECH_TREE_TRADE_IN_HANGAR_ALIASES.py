@@ -1,0 +1,4 @@
+
+
+class TECH_TREE_TRADE_IN_HANGAR_ALIASES(object):
+    TECH_TREE_TRADE_IN_BROWSER_OVERLAY = 'techTreeTradeInBrowserOverlay'

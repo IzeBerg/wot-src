@@ -30,7 +30,6 @@ from gui.Scaleform.framework.entities.View import ViewKey, ViewKeyDynamic
 from gui.Scaleform.framework.managers.containers import POP_UP_CRITERIA
 from gui.Scaleform.framework.managers.loaders import SFViewLoadParams
 from gui.Scaleform.framework.managers.view_lifecycle_watcher import IViewLifecycleHandler, ViewLifecycleWatcher
-from gui.Scaleform.genConsts.QUESTS_ALIASES import QUESTS_ALIASES
 from gui.Scaleform.genConsts.RANKEDBATTLES_ALIASES import RANKEDBATTLES_ALIASES
 from gui.Scaleform.genConsts.TOOLTIPS_CONSTANTS import TOOLTIPS_CONSTANTS
 from gui.Scaleform.locale.MENU import MENU
@@ -54,8 +53,7 @@ from gui.prb_control.ctrl_events import g_prbCtrlEvents
 from gui.prb_control.entities.base.ctx import PrbAction
 from gui.prb_control.entities.listener import IGlobalListener
 from gui.prb_control.settings import REQUEST_TYPE
-from gui.server_events import caches, recruit_helper, settings as quest_settings
-from gui.server_events.events_dispatcher import showMissionsMarathon
+from gui.server_events import recruit_helper, settings as quest_settings
 from gui.server_events.events_helpers import isDailyQuest
 from gui.shared import event_dispatcher as shared_events, events, g_eventBus
 from gui.clans.clan_cache import g_clanCache
@@ -90,7 +88,6 @@ from skeletons.gui.shared import IItemsCache
 from skeletons.gui.shared.utils import IHangarSpace
 from skeletons.gui.storage_novelty import IStorageNovelty
 from skeletons.gui.techtree_events import ITechTreeEventsListener
-from skeletons.prebattle_vehicle import IPrebattleVehicle
 from uilogging.wot_plus.loggers import WotPlusHeaderLogger
 from gui.impl.auxiliary.junk_tankman_helper import JunkTankmanHelper
 if typing.TYPE_CHECKING:
@@ -303,7 +300,6 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
     __advAchmntCtrl = dependency.descriptor(IAchievementsController)
     __hangarGuiCtrl = dependency.descriptor(IHangarGuiController)
     __exchangeRatesProvider = dependency.descriptor(IExchangeRatesWithDiscountsProvider)
-    prebattleVehicle = dependency.descriptor(IPrebattleVehicle)
     __SELECTOR_TOOLTIP_TYPE = TOOLTIPS.HEADER_BATTLETYPE
     __MODE_SELECTOR_ORANGE_LINKAGE = 'BGAnimOrangeUI'
 
@@ -583,7 +579,6 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
         self.lobbyContext.getServerSettings().onServerSettingsChange += self.__onServerSettingChanged
         g_currentVehicle.onChanged += self.__onVehicleChanged
         g_currentPreviewVehicle.onChanged += self.__onVehicleChanged
-        self.prebattleVehicle.onChanged += self.__onVehicleChanged
         self.eventsCache.onSyncCompleted += self.__onEventsCacheResync
         self.eventsCache.onProgressUpdated += self.__onEventsCacheResync
         self.eventsCache.onEventsVisited += self.__onEventsVisited
@@ -705,7 +700,6 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
         self.lobbyContext.getServerSettings().onServerSettingsChange -= self.__onServerSettingChanged
         g_currentVehicle.onChanged -= self.__onVehicleChanged
         g_currentPreviewVehicle.onChanged -= self.__onVehicleChanged
-        self.prebattleVehicle.onChanged -= self.__onVehicleChanged
         self.eventsCache.onSyncCompleted -= self.__onEventsCacheResync
         self.eventsCache.onProgressUpdated -= self.__onEventsCacheResync
         self.eventsCache.onEventsVisited -= self.__onEventsVisited
@@ -1036,7 +1030,6 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
         return self.itemsCache.items.shop.isActionOnPremium()
 
     def __triggerViewLoad(self, alias):
-        cachedTab = caches.getNavInfo().getMissionsTab()
         if alias == self.TABS.BROWSER:
             self.chinaCtrl.showBrowser()
         elif alias == self.TABS.STORAGE:
@@ -1049,8 +1042,6 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
             showBarracks()
         elif alias == self.TABS.HANGAR:
             showHangar()
-        elif alias == self.TABS.MISSIONS and cachedTab == QUESTS_ALIASES.MISSIONS_MARATHON_VIEW_PY_ALIAS:
-            showMissionsMarathon()
         else:
             event = g_entitiesFactories.makeLoadEvent(SFViewLoadParams(alias))
             if event is not None:
@@ -1428,7 +1419,6 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
          commandBattlesStateChanged,
          'ranked_config' in diff,
          'epic_config' in diff,
-         'event_battles_config' in diff,
          battleRoyaleStateChanged,
          mapsTrainingStateChanged,
          eventBattlesStateChanged))

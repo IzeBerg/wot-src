@@ -11,8 +11,6 @@ package net.wg.gui.battle.eventBattle.views.loading.containers
    
    public class LoadingPageContainer extends Sprite implements IDisposable
    {
-      
-      private static const TEXT_Y_OFFSET:int = 14;
        
       
       public var txtHeader1:TextField;
@@ -22,8 +20,6 @@ package net.wg.gui.battle.eventBattle.views.loading.containers
       public var txtHeader3:TextField;
       
       public var txtHeader4:TextField;
-      
-      public var txtHeader5:TextField;
       
       public var txtDescription1:TextField;
       
@@ -118,11 +114,6 @@ package net.wg.gui.battle.eventBattle.views.loading.containers
             this.txtHeader4.text = param1.header4Text;
             this.txtHeader4.autoSize = param1.header4AutoSize;
          }
-         if(this.txtHeader5)
-         {
-            this.txtHeader5.text = param1.header5Text;
-            this.txtHeader5.autoSize = param1.header5AutoSize;
-         }
          if(this.txtDescription1)
          {
             this.txtDescription1.text = param1.description1Text;
@@ -162,52 +153,6 @@ package net.wg.gui.battle.eventBattle.views.loading.containers
          {
             this.txtTitle3.text = param1.title3Text;
             this.txtTitle3.autoSize = param1.title3AutoSize;
-         }
-      }
-      
-      public function updateTextPosition(param1:int, param2:int, param3:int, param4:int, param5:int, param6:int) : void
-      {
-         var _loc7_:int = param3 + param5;
-         var _loc8_:int = param1 - (param5 << 1);
-         if(this.txtHeader5)
-         {
-            this.txtHeader1.width = this.txtHeader2.width = this.txtHeader3.width = this.txtHeader4.width = this.txtHeader5.width = _loc8_;
-            this.txtHeader1.x = this.txtHeader2.x = this.txtHeader3.x = this.txtHeader4.x = this.txtHeader5.x = _loc7_;
-            this.txtHeader5.y = param2 - this.txtHeader5.height - param4 - param6;
-            this.txtHeader4.y = this.txtHeader5.y - TEXT_Y_OFFSET - this.txtHeader4.height >> 0;
-            this.txtHeader3.y = this.txtHeader4.y - TEXT_Y_OFFSET - this.txtHeader3.height >> 0;
-            this.txtHeader2.y = this.txtHeader3.y - TEXT_Y_OFFSET - this.txtHeader2.height >> 0;
-            this.txtHeader1.y = this.txtHeader2.y - TEXT_Y_OFFSET - this.txtHeader1.height >> 0;
-         }
-         else if(this.txtHeader4)
-         {
-            this.txtHeader1.width = this.txtHeader2.width = this.txtHeader3.width = this.txtHeader4.width = _loc8_;
-            this.txtHeader1.x = this.txtHeader2.x = this.txtHeader3.x = this.txtHeader4.x = _loc7_;
-            this.txtHeader4.y = param2 - this.txtHeader4.height - param4 - param6;
-            this.txtHeader3.y = this.txtHeader4.y - TEXT_Y_OFFSET - this.txtHeader3.height >> 0;
-            this.txtHeader2.y = this.txtHeader3.y - TEXT_Y_OFFSET - this.txtHeader2.height >> 0;
-            this.txtHeader1.y = this.txtHeader2.y - TEXT_Y_OFFSET - this.txtHeader1.height >> 0;
-         }
-         else if(this.txtHeader3)
-         {
-            this.txtHeader1.width = this.txtHeader2.width = this.txtHeader3.width = _loc8_;
-            this.txtHeader1.x = this.txtHeader2.x = this.txtHeader3.x = _loc7_;
-            this.txtHeader3.y = param2 - this.txtHeader3.height - param4 - param6;
-            this.txtHeader2.y = this.txtHeader3.y - TEXT_Y_OFFSET - this.txtHeader2.height >> 0;
-            this.txtHeader1.y = this.txtHeader2.y - TEXT_Y_OFFSET - this.txtHeader1.height >> 0;
-         }
-         else if(this.txtHeader2)
-         {
-            this.txtHeader1.width = this.txtHeader2.width = _loc8_;
-            this.txtHeader1.x = this.txtHeader2.x = _loc7_;
-            this.txtHeader2.y = param2 - this.txtHeader2.height - param4 - param6;
-            this.txtHeader1.y = this.txtHeader2.y - TEXT_Y_OFFSET - this.txtHeader1.height >> 0;
-         }
-         else if(this.txtHeader1)
-         {
-            this.txtHeader1.width = _loc8_;
-            this.txtHeader1.x = _loc7_;
-            this.txtHeader1.y = param2 - this.txtHeader1.height - param4 - param6;
          }
       }
       

@@ -16,7 +16,8 @@ _CTRL_MODE_TO_VIEW_ID = {_CTRL_MODE.ARCADE: CROSSHAIR_VIEW_ID.ARCADE,
    _CTRL_MODE.POSTMORTEM: CROSSHAIR_VIEW_ID.POSTMORTEM, 
    _CTRL_MODE.RESPAWN_DEATH: CROSSHAIR_VIEW_ID.POSTMORTEM, 
    _CTRL_MODE.DEATH_FREE_CAM: CROSSHAIR_VIEW_ID.POSTMORTEM, 
-   _CTRL_MODE.DUAL_GUN: CROSSHAIR_VIEW_ID.SNIPER}
+   _CTRL_MODE.DUAL_GUN: CROSSHAIR_VIEW_ID.SNIPER, 
+   _CTRL_MODE.TWIN_GUN: CROSSHAIR_VIEW_ID.SNIPER}
 _GUN_MARKERS_SET_IDS = (
  _BINDING_ID.GUN_MARKERS_FLAGS,
  _BINDING_ID.CLIENT_GUN_MARKER_DATA_PROVIDER,
@@ -68,10 +69,11 @@ class CrosshairDataProxy(IBattleController):
                  '__eManager', '__isArenaStarted', '__strategicCameraID', 'onCrosshairViewChanged',
                  'onCrosshairOffsetChanged', 'onCrosshairSizeChanged', 'onCrosshairPositionChanged',
                  'onCrosshairScaleChanged', 'onCrosshairZoomFactorChanged', 'onGunMarkerStateChanged',
-                 'onGunMarkersSetChanged', 'onStrategicCameraChanged', 'onChargeMarkerStateUpdated',
+                 'onGunMarkersSetChanged', 'onStrategicCameraChanged', 'onMultiGunCollisionsUpdated',
                  'onSPGShotsIndicatorStateChanged')
     settingsCore = dependency.descriptor(ISettingsCore)
     __spgShotsIndicatorState = aih_global_binding.bindRO(_BINDING_ID.SPG_SHOTS_INDICATOR_STATE)
+    __multiGunCollisions = aih_global_binding.bindRO(_BINDING_ID.MULTI_GUN_COLLISIONS)
     __ctrlMode = aih_global_binding.bindRO(_BINDING_ID.CTRL_MODE_NAME)
     __offset = aih_global_binding.bindRO(_BINDING_ID.AIM_OFFSET)
     __zoomFactor = aih_global_binding.bindRO(_BINDING_ID.ZOOM_FACTOR)
@@ -93,7 +95,7 @@ class CrosshairDataProxy(IBattleController):
         self.onCrosshairScaleChanged = Event.Event(self.__eManager)
         self.onCrosshairZoomFactorChanged = Event.Event(self.__eManager)
         self.onGunMarkerStateChanged = Event.Event(self.__eManager)
-        self.onChargeMarkerStateUpdated = Event.Event(self.__eManager)
+        self.onMultiGunCollisionsUpdated = Event.Event(self.__eManager)
         self.onGunMarkersSetChanged = Event.Event(self.__eManager)
         self.onStrategicCameraChanged = Event.Event(self.__eManager)
         self.onSPGShotsIndicatorStateChanged = Event.Event(self.__eManager)
@@ -107,7 +109,7 @@ class CrosshairDataProxy(IBattleController):
         aih_global_binding.subscribe(_BINDING_ID.AIM_OFFSET, self.__onAimOffsetChanged)
         aih_global_binding.subscribe(_BINDING_ID.CLIENT_GUN_MARKER_STATE, self.__onClientGunMarkerStateChanged)
         aih_global_binding.subscribe(_BINDING_ID.SERVER_GUN_MARKER_STATE, self.__onServerGunMarkerStateChanged)
-        aih_global_binding.subscribe(_BINDING_ID.CHARGE_MARKER_STATE, self.__onChargeMarkerStateUpdated)
+        aih_global_binding.subscribe(_BINDING_ID.MULTI_GUN_COLLISIONS, self.__onMultiGunCollisionsUpdated)
         aih_global_binding.subscribe(_BINDING_ID.ZOOM_FACTOR, self.__onZoomFactorChanged)
         aih_global_binding.subscribe(_BINDING_ID.STRATEGIC_CAMERA, self.__onStrategicCameraChanged)
         aih_global_binding.subscribe(_BINDING_ID.SPG_SHOTS_INDICATOR_STATE, self.__onSPGShotsIndicatorStateChanged)
@@ -184,6 +186,9 @@ class CrosshairDataProxy(IBattleController):
     def getGunMarkersSetInfo():
         return GunMarkersSetInfo()
 
+    def getMultiGunCollisions(self):
+        return self.__multiGunCollisions
+
     def getSPGShotsIndicatorState(self):
         return self.__spgShotsIndicatorState
 
@@ -231,8 +236,8 @@ class CrosshairDataProxy(IBattleController):
     def __onServerGunMarkerStateChanged(self, value):
         self.__setGunMarkerState(_MARKER_TYPE.SERVER, value)
 
-    def __onChargeMarkerStateUpdated(self, value):
-        self.onChargeMarkerStateUpdated(value)
+    def __onMultiGunCollisionsUpdated(self, value):
+        self.onMultiGunCollisionsUpdated(value)
 
     def __onZoomFactorChanged(self, zoomFactor):
         self.onCrosshairZoomFactorChanged(zoomFactor)

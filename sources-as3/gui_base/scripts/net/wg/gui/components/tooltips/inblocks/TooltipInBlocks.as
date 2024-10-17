@@ -86,7 +86,6 @@ package net.wg.gui.components.tooltips.inblocks
       {
          var _loc4_:int = 0;
          var _loc8_:int = 0;
-         var _loc12_:Boolean = false;
          var _loc1_:ITooltipBlock = null;
          var _loc2_:DisplayObject = null;
          var _loc3_:Number = bgShadowMargin.left + contentMargin.left | 0;
@@ -108,7 +107,7 @@ package net.wg.gui.components.tooltips.inblocks
          var _loc9_:Number = this._inBlocksData != null ? Number(this._inBlocksData.marginAfterBlock) : Number(0);
          var _loc10_:Number = this._inBlocksData != null ? Number(this._inBlocksData.marginAfterSeparator) : Number(0);
          var _loc11_:Number = content.width + contentMargin.left + contentMargin.right;
-         _loc12_ = false;
+         var _loc12_:Boolean = false;
          var _loc13_:Boolean = false;
          var _loc14_:Number = 0;
          var _loc15_:Separator = null;

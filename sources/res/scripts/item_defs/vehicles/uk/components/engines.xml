@@ -102,6 +102,7 @@
 		<Rolls_Royse_Meteor_MkIV_N>124</Rolls_Royse_Meteor_MkIV_N>
 		<Vauxhall_Bedford_Twin_Six_BPXIV>125</Vauxhall_Bedford_Twin_Six_BPXIV>
 		<Rolls_Royse_Meteor_MkIX>126</Rolls_Royse_Meteor_MkIX>
+		<Rolls_Royce_Meteor_M120A>131</Rolls_Royce_Meteor_M120A>
 		<Rolls_Royce_Griffon_FL>501</Rolls_Royce_Griffon_FL>
 		<Rolls_Royce_Griffon_7x7>502</Rolls_Royce_Griffon_7x7>
 		<Rolls_Royse_Meteor_MkIVC_IGR>60001</Rolls_Royse_Meteor_MkIVC_IGR>
@@ -118,6 +119,7 @@
 		<Wright_Continental_R-975C4_MapsTraining_Dummy_MT_2>3</Wright_Continental_R-975C4_MapsTraining_Dummy_MT_2>
 		<Nuffield_liberty_MKIV_NewOnBoarding>64001</Nuffield_liberty_MKIV_NewOnBoarding>
 		<Wright_Continental_R-975C4_NewOnBoarding>64002</Wright_Continental_R-975C4_NewOnBoarding>
+		<Rolls_Royse_Meteor_MkIV_HW>5003</Rolls_Royse_Meteor_MkIV_HW>
 	</ids>
 	<shared>
 		<Vickers-Armstrong>
@@ -1612,6 +1614,26 @@
 			<rpm_min>400</rpm_min>
 			<rpm_max>3200</rpm_max>
 		</Rolls_Royce_K60_Mk2>
+		<Rolls_Royce_Meteor_M120A>
+			<userString>#gb_vehicles:Rolls_Royce_Meteor_M120A</userString>
+			<tags>gasoline</tags>
+			<level>9</level>
+			<price>83000</price>
+			<notInShop>true</notInShop>
+			<wwsoundPC>eng_ContinentalR_pc</wwsoundPC>
+			<wwsoundNPC>eng_ContinentalR_npc</wwsoundNPC>
+			<power>1050</power>
+			<weight>800</weight>
+			<maxHealth>320</maxHealth>
+			<maxRegenHealth>160</maxRegenHealth>
+			<repairCost>9</repairCost>
+			<fireStartingChance>
+				0.15
+				<!--BW_String-->
+			</fireStartingChance>
+			<rpm_min>446</rpm_min>
+			<rpm_max>2170</rpm_max>
+		</Rolls_Royce_Meteor_M120A>
 		<Wright_Continental_R-975EC2_A>
 			<userString>#gb_vehicles:Wright_Continental_R-975EC2_A</userString>
 			<shortUserString>#gb_vehicles:Wright_Continental_R-975EC2_A_short</shortUserString>
@@ -2401,5 +2423,25 @@
 			<invulnerable>True</invulnerable>
 			<notInShop>True</notInShop>
 		</Wright_Continental_R-975C4_NewOnBoarding>
+		<Rolls_Royse_Meteor_MkIV_HW>
+			<userString>#gb_vehicles:Rolls_Royse_Meteor_MkIV</userString>
+			<tags>gasoline</tags>
+			<level>5</level>
+			<price>16000</price>
+			<notInShop>true</notInShop>
+			<wwsoundPC>eng_Ford_GAA_pc</wwsoundPC>
+			<wwsoundNPC>eng_Ford_GAA_npc</wwsoundNPC>
+			<power>650</power>
+			<weight>744</weight>
+			<maxHealth>247</maxHealth>
+			<maxRegenHealth>123</maxRegenHealth>
+			<repairCost>5</repairCost>
+			<fireStartingChance>
+				0.2
+				<!--BW_String-->
+			</fireStartingChance>
+			<rpm_min>632</rpm_min>
+			<rpm_max>2354</rpm_max>
+		</Rolls_Royse_Meteor_MkIV_HW>
 	</shared>
 </root>

@@ -499,9 +499,5 @@ package net.wg.gui.battle.battleRoyale.views.components
       {
          return (this._statusMask & IN_USE_FLAG) > 0;
       }
-      
-      public function setStage(param1:int) : void
-      {
-      }
    }
 }

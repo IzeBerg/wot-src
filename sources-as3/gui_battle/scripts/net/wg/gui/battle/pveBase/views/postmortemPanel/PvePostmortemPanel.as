@@ -80,6 +80,8 @@ package net.wg.gui.battle.pveBase.views.postmortemPanel
       
       private var _textFields:Vector.<TextField>;
       
+      private var _isShowDeathReason:Boolean = false;
+      
       public function PvePostmortemPanel()
       {
          super();
@@ -186,23 +188,27 @@ package net.wg.gui.battle.pveBase.views.postmortemPanel
             deadReasonBG.visible = false;
             nicknameKillerBG.visible = false;
             this.bg.visible = false;
-            deadReasonBack.visible = this.isShowDeathReason;
+            deadReasonBack.visible = deadReasonTF.visible = isShowDeathReason;
             this.updateDeadReasonPosition();
          }
          if(isInvalid(INVALID_PLAYER_INFO))
          {
-            deadReasonBack.visible = false;
+            deadReasonBack.visible = deadReasonTF.visible = false;
          }
          if(isInvalid(INVALID_HIDE_COMPONENTS))
          {
-            deadReasonBack.visible = deadReasonTF.visible = this.isShowDeathReason;
+            if(this._isShowDeathReason != isShowDeathReason)
+            {
+               deadReasonBack.visible = deadReasonTF.visible = isShowDeathReason;
+               this._isShowDeathReason = isShowDeathReason;
+            }
          }
          dispatchEvent(new Event(CHANGED_EVENT,true));
       }
       
       override protected function updateDeathReasonVisibility() : void
       {
-         deadReasonBack.visible = deadReasonTF.visible = this.isShowDeathReason;
+         deadReasonBack.visible = deadReasonTF.visible = isShowDeathReason;
          deadReasonBG.visible = false;
       }
       
@@ -292,7 +298,7 @@ package net.wg.gui.battle.pveBase.views.postmortemPanel
       
       override public function setCompVisible(param1:Boolean) : void
       {
-         if(param1 && _isCompVisible != param1 && this.isShowDeathReason)
+         if(param1 && _isCompVisible != param1 && isShowDeathReason)
          {
             invalidateDeadReasonItems(true,INVALID_DEAD_REASON_ITEMS_VISIBILITY);
             deadReasonBG.visible = false;

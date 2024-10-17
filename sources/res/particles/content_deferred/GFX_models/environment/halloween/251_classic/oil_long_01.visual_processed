@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>lambert1</identifier>
+					<fx>shaders/custom/volumetric_effect_vtx.fx</fx>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/fuel_oil_long_01.dds</Texture>
+					</property>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						alphaAdditiveEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaFadeAmountFresnel
+						<Vector4>0.000000 1.800000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>0.030000 0.000000 2.000000 0.000000</Vector4>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>0.100000 0.100000 0.030000 0.010000</Vector4>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/vel_smoke.dds</Texture>
+					</property>
+					<property>
+						fadeMaxDistance
+						<Float>4.000000</Float>
+					</property>
+					<property>
+						fadeMinDistance
+						<Float>2.000000</Float>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>1.000000 1.000000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						TintlColor
+						<Vector4>0.000000 0.000000 0.000000 1.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>0.000000 0.000000 -0.022260</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.579040 -0.587901 -0.044519</min>
+		<max>1.579040 0.587901 0.000000</max>
+	</boundingBox>
+	<geometrySize>7104</geometrySize>
+	<minUVDensity>0.262788</minUVDensity>
+</root>

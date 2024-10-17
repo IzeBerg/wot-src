@@ -63,3 +63,6 @@ class OverrideData(object):
 
     def prepareAdditionalParams(self, params, *args, **kwargs):
         pass
+
+    def getFadeCtx(self):
+        return

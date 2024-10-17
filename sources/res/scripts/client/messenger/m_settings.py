@@ -96,9 +96,10 @@ _BattleMessageLifeCycle = namedtuple('_MessageInBattle', ('lifeTime', 'alphaSpee
 class _BattleSettings(object):
     __slots__ = ('messageLifeCycle', 'messageFormat', 'targetFormat', 'inactiveStateAlpha',
                  'hintText', 'toolTipText', 'numberOfMessagesInHistory', 'receivers',
-                 'alphaForLastMessages', 'chatIsLockedToolTipText', 'recoveredLatestMessages',
-                 'lifeTimeRecoveredMessages', 'lastReceiver', 'toolTipTextWithMuteInfo',
-                 'battleRoyaleTooltip')
+                 'alphaForLastMessages', 'chatIsLockedToolTipText', 'chatIsLockedParentalControlToolTipText',
+                 'chatIsLockedCountryControlToolTipText', 'chatIsLockedOtherControlToolTipText',
+                 'recoveredLatestMessages', 'lifeTimeRecoveredMessages', 'lastReceiver',
+                 'toolTipTextWithMuteInfo', 'battleRoyaleTooltip')
 
     def __init__(self):
         super(_BattleSettings, self).__init__()
@@ -108,6 +109,9 @@ class _BattleSettings(object):
         self.inactiveStateAlpha = 100
         self.toolTipText = ''
         self.chatIsLockedToolTipText = ''
+        self.chatIsLockedParentalControlToolTipText = ''
+        self.chatIsLockedCountryControlToolTipText = ''
+        self.chatIsLockedOtherControlToolTipText = ''
         self.toolTipTextWithMuteInfo = ''
         self.battleRoyaleTooltip = ''
         self.numberOfMessagesInHistory = 6

@@ -52,48 +52,48 @@ package net.wg.gui.battle.views.radialMenu.components
       
       public var defendingHQIcon:MovieClip = null;
       
-      private var _currentState:String = "";
+      protected var iconsDictionary:Dictionary;
       
-      private var _iconsDictionary:Dictionary;
+      private var _currentState:String = "";
       
       private var _disposed:Boolean = false;
       
       public function Icons()
       {
-         this._iconsDictionary = new Dictionary();
+         this.iconsDictionary = new Dictionary();
          super();
-         this._iconsDictionary[RADIAL_MENU_CONSTS.SOS] = this.sosIcon;
-         this._iconsDictionary[RADIAL_MENU_CONSTS.RELOAD] = this.reloadIcon;
-         this._iconsDictionary[RADIAL_MENU_CONSTS.NO] = this.noIcon;
-         this._iconsDictionary[RADIAL_MENU_CONSTS.YES] = this.yesIcon;
-         this._iconsDictionary[RADIAL_MENU_CONSTS.HELP_ME_EX] = this.helpmeexIcon;
-         this._iconsDictionary[RADIAL_MENU_CONSTS.SUPPORTING_ALLY] = this.supportingAllyIcon;
-         this._iconsDictionary[RADIAL_MENU_CONSTS.TURN_BACK] = this.turnbackIcon;
-         this._iconsDictionary[RADIAL_MENU_CONSTS.THANK_YOU] = this.thankYouIcon;
-         this._iconsDictionary[RADIAL_MENU_CONSTS.GOING_THERE] = this.waypointIcon;
-         this._iconsDictionary[RADIAL_MENU_CONSTS.ATTENTION_TO] = this.attentionIcon;
-         this._iconsDictionary[RADIAL_MENU_CONSTS.SPG_AREA] = this.spgAreaIcon;
-         this._iconsDictionary[RADIAL_MENU_CONSTS.ATTACK] = this.supportIcon;
-         this._iconsDictionary[RADIAL_MENU_CONSTS.ATTACKING_ENEMY] = this.attackIcon;
-         this._iconsDictionary[RADIAL_MENU_CONSTS.DEFEND_BASE] = this.defendBaseIcon;
-         this._iconsDictionary[RADIAL_MENU_CONSTS.DEFENDING_BASE] = this.defendingBaseIcon;
-         this._iconsDictionary[RADIAL_MENU_CONSTS.ATTACK_BASE] = this.attackBaseIcon;
-         this._iconsDictionary[RADIAL_MENU_CONSTS.ATTACKING_BASE] = this.attackingBaseIcon;
-         this._iconsDictionary[RADIAL_MENU_CONSTS.ATTACK_HQ] = this.attackHQIcon;
-         this._iconsDictionary[RADIAL_MENU_CONSTS.ATTACKING_HQ] = this.attackingHQIcon;
-         this._iconsDictionary[RADIAL_MENU_CONSTS.DEFEND_HQ] = this.defendHQIcon;
-         this._iconsDictionary[RADIAL_MENU_CONSTS.DEFENDING_HQ] = this.defendingHQIcon;
+         this.iconsDictionary[RADIAL_MENU_CONSTS.SOS] = this.sosIcon;
+         this.iconsDictionary[RADIAL_MENU_CONSTS.RELOAD] = this.reloadIcon;
+         this.iconsDictionary[RADIAL_MENU_CONSTS.NO] = this.noIcon;
+         this.iconsDictionary[RADIAL_MENU_CONSTS.YES] = this.yesIcon;
+         this.iconsDictionary[RADIAL_MENU_CONSTS.HELP_ME_EX] = this.helpmeexIcon;
+         this.iconsDictionary[RADIAL_MENU_CONSTS.SUPPORTING_ALLY] = this.supportingAllyIcon;
+         this.iconsDictionary[RADIAL_MENU_CONSTS.TURN_BACK] = this.turnbackIcon;
+         this.iconsDictionary[RADIAL_MENU_CONSTS.THANK_YOU] = this.thankYouIcon;
+         this.iconsDictionary[RADIAL_MENU_CONSTS.GOING_THERE] = this.waypointIcon;
+         this.iconsDictionary[RADIAL_MENU_CONSTS.ATTENTION_TO] = this.attentionIcon;
+         this.iconsDictionary[RADIAL_MENU_CONSTS.SPG_AREA] = this.spgAreaIcon;
+         this.iconsDictionary[RADIAL_MENU_CONSTS.ATTACK] = this.supportIcon;
+         this.iconsDictionary[RADIAL_MENU_CONSTS.ATTACKING_ENEMY] = this.attackIcon;
+         this.iconsDictionary[RADIAL_MENU_CONSTS.DEFEND_BASE] = this.defendBaseIcon;
+         this.iconsDictionary[RADIAL_MENU_CONSTS.DEFENDING_BASE] = this.defendingBaseIcon;
+         this.iconsDictionary[RADIAL_MENU_CONSTS.ATTACK_BASE] = this.attackBaseIcon;
+         this.iconsDictionary[RADIAL_MENU_CONSTS.ATTACKING_BASE] = this.attackingBaseIcon;
+         this.iconsDictionary[RADIAL_MENU_CONSTS.ATTACK_HQ] = this.attackHQIcon;
+         this.iconsDictionary[RADIAL_MENU_CONSTS.ATTACKING_HQ] = this.attackingHQIcon;
+         this.iconsDictionary[RADIAL_MENU_CONSTS.DEFEND_HQ] = this.defendHQIcon;
+         this.iconsDictionary[RADIAL_MENU_CONSTS.DEFENDING_HQ] = this.defendingHQIcon;
       }
       
       public function showIcon(param1:String) : void
       {
          this.hideAll();
-         if(this._iconsDictionary[param1] != null)
+         if(this.iconsDictionary[param1] != null)
          {
-            this._iconsDictionary[param1].visible = true;
+            this.iconsDictionary[param1].visible = true;
             if(this._currentState != Values.EMPTY_STR)
             {
-               this._iconsDictionary[param1].gotoAndStop(this._currentState);
+               this.iconsDictionary[param1].gotoAndStop(this._currentState);
             }
          }
       }
@@ -105,9 +105,10 @@ package net.wg.gui.battle.views.radialMenu.components
       
       public final function dispose() : void
       {
+         this.onDispose();
          this._disposed = true;
-         App.utils.data.cleanupDynamicObject(this._iconsDictionary);
-         this._iconsDictionary = null;
+         App.utils.data.cleanupDynamicObject(this.iconsDictionary);
+         this.iconsDictionary = null;
          this.supportingAllyIcon = null;
          this.turnbackIcon = null;
          this.supportIcon = null;
@@ -127,7 +128,11 @@ package net.wg.gui.battle.views.radialMenu.components
          this.attackingBaseIcon = null;
       }
       
-      private function hideAll() : void
+      protected function onDispose() : void
+      {
+      }
+      
+      protected function hideAll() : void
       {
          this.supportingAllyIcon.visible = false;
          this.turnbackIcon.visible = false;

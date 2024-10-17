@@ -54,7 +54,6 @@ class ToolTip(ToolTipMgrMeta):
 
     def hide(self):
         self.as_hideS()
-        self.__destroyTooltipWindow()
 
     def handleKeyEvent(self, event):
         if not self.isReadyToHandleKey(event):
@@ -138,10 +137,9 @@ class ToolTip(ToolTipMgrMeta):
             else:
                 _logger.warning('Tooltip can not be displayed: type "%s" is not found', tooltipType)
                 return
-            self.__destroyTooltipWindow()
             window = data.getDisplayableData(parent=parent, *args)
             window.load()
-            window.move(int(x), int(y))
+            window.move(x, y)
             window.onStatusChanged += self._onWulfWindowStatusChanged
             self.__tooltipWindowId = window.uniqueID
             self.__cacheTooltipData(_TOOLTIP_VARIANT_WULF, tooltipType, args, (x, y))

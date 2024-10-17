@@ -26,6 +26,10 @@ package net.wg.gui.components.ribbon.data
       
       private static const PERK_SHADOW_COLOR:String = "ribbonPerkShadow";
       
+      private static const WEATHER_ZONE_TEXT_COLOR:String = "ribbonWeatherZoneText";
+      
+      private static const WEATHER_ZONE_SHADOW_COLOR:String = "ribbonWeatherZoneShadow";
+      
       public static const SHADOW_BLUR:Number = 5;
       
       public static const SHADOW_STRENGTH:Number = 1.5;
@@ -87,6 +91,11 @@ package net.wg.gui.components.ribbon.data
                this._valueTextColor = _loc2_.getRGB(PERK_TEXT_COLOR);
                this._shadowColor = _loc2_.getRGB(PERK_SHADOW_COLOR);
                this._ribbonNameTextColor = _loc2_.getRGB(PERK_TEXT_COLOR);
+               break;
+            case RibbonColors.WEATHER_ZONE:
+               this._valueTextColor = _loc2_.getRGB(WEATHER_ZONE_TEXT_COLOR);
+               this._shadowColor = _loc2_.getRGB(WEATHER_ZONE_SHADOW_COLOR);
+               this._ribbonNameTextColor = _loc2_.getRGB(WEATHER_ZONE_TEXT_COLOR);
                break;
             default:
                App.utils.asserter.assert(false,"No such rendererType: " + param1);

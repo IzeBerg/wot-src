@@ -22,6 +22,7 @@ package net.wg.gui.lobby.battleResults
    import net.wg.infrastructure.base.meta.impl.BattleResultsMeta;
    import net.wg.infrastructure.events.FocusRequestEvent;
    import net.wg.infrastructure.interfaces.IRegisteredComponent;
+   import net.wg.infrastructure.uilogging.player_satisfaction_rating.PostBattleTeamLogger;
    import scaleform.clik.constants.InvalidationType;
    import scaleform.clik.events.ButtonEvent;
    import scaleform.clik.events.IndexEvent;
@@ -46,6 +47,8 @@ package net.wg.gui.lobby.battleResults
       
       private var _data:BattleResultsVO = null;
       
+      private var _logger:PostBattleTeamLogger = null;
+      
       public function BattleResults()
       {
          this._emblemLoadingDelegates = new Dictionary();
@@ -61,6 +64,7 @@ package net.wg.gui.lobby.battleResults
       override protected function configUI() : void
       {
          super.configUI();
+         this._logger = new PostBattleTeamLogger();
          this.noResult.text = BATTLE_RESULTS.NODATA;
          this.tabs_mc.addEventListener(FocusEvent.FOCUS_IN,this.onTabFocusInHandler);
          this.view_mc.addEventListener(ViewStackEvent.VIEW_CHANGED,this.onViewChangedHandler);
@@ -119,6 +123,11 @@ package net.wg.gui.lobby.battleResults
          this.noResult = null;
          this._data = null;
          this.line = null;
+         if(this._logger)
+         {
+            this._logger.dispose();
+            this._logger = null;
+         }
          super.onDispose();
       }
       
@@ -250,6 +259,10 @@ package net.wg.gui.lobby.battleResults
       
       private function onTabIndexChangeHandler(param1:IndexEvent) : void
       {
+         if(param1.lastIndex != 1 && param1.index == 1)
+         {
+            this._logger.logOpenTeamPanel();
+         }
          var _loc2_:Boolean = TabInfoVO(param1.data).showWndBg;
          this.wndBgForm.visible = _loc2_;
       }

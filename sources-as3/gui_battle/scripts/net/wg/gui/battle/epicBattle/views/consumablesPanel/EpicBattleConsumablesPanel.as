@@ -17,7 +17,7 @@ package net.wg.gui.battle.epicBattle.views.consumablesPanel
       
       public function as_addEpicBattleEquipmentSlot(param1:int, param2:Number, param3:Number, param4:int, param5:Number, param6:Number, param7:String, param8:Boolean, param9:String, param10:int) : void
       {
-         super.as_addEquipmentSlot(param1,param2,param3,"",param4,param5,param6,param7,param9,param10,0);
+         super.as_addEquipmentSlot(param1,param2,param3,param4,param5,param6,param7,param9,param10);
          var _loc11_:IEpicBattleConsumableButton = this.getEBRendererBySlotIdx(param1);
          _loc11_.isTooltipSpecial = param8;
       }

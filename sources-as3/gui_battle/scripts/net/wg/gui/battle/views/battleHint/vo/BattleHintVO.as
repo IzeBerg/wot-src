@@ -14,8 +14,6 @@ package net.wg.gui.battle.views.battleHint.vo
       
       public var context:Object = null;
       
-      public var timer:int = 0;
-      
       public function BattleHintVO(param1:Object)
       {
          super(param1);

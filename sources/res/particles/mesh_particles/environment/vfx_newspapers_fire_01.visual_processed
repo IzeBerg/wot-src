@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>root</identifier>
+			<transform>
+				<row0>-100.000000 0.000000 0.000000</row0>
+				<row1>0.000000 100.000000 -0.000000</row1>
+				<row2>0.000000 0.000000 100.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>vfx_newspapers_fire_01_lod0</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+				<node>
+					<identifier>bsp_vfx_m0</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>vfx_m0_0</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>vfx_m0</identifier>
+					<fx>shaders/particles/wg_particles.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/PFX_textures/ash.dds</Texture>
+					</property>
+					<property>
+						g_meshParticlesZWriteEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_mul_color
+						<Vector4>0.713726 0.541176 0.317647 1.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>0.009219 0.028947 -0.005595</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.271541 0.001359 -0.228037</min>
+		<max>0.289980 0.056535 0.216847</max>
+	</boundingBox>
+	<geometrySize>5012</geometrySize>
+	<minUVDensity>0.477717</minUVDensity>
+</root>

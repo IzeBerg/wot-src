@@ -25,5 +25,7 @@ package net.wg.infrastructure.base.meta
       function as_removeAllMessages() : void;
       
       function as_initInfo(param1:Number, param2:Number) : void;
+      
+      function as_setViewPadding(param1:Boolean, param2:Number, param3:Number) : void;
    }
 }

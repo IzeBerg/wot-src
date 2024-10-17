@@ -15,7 +15,7 @@ class FunCurtailingAwardsComposer(CurtailingAwardsComposer):
 def getFunFormatterMap():
     mapping = getMissionsDefaultFormatterMap()
     mapping['tokens'] = FunRandomLootBoxFormatter()
-    mapping['battleToken'] = FunRandomLootBoxFormatter()
+    mapping['lootBox'] = FunRandomLootBoxFormatter()
     mapping[PREMIUM_ENTITLEMENTS.BASIC] = UniversalPremiumDaysBonusFormatter()
     mapping[PREMIUM_ENTITLEMENTS.PLUS] = UniversalPremiumDaysBonusFormatter()
     return mapping
@@ -23,7 +23,7 @@ def getFunFormatterMap():
 
 def getFunSpecialFormatterMap():
     mapping = getFunFormatterMap()
-    mapping['battleToken'] = FunRandomRewardLootBoxFormatter()
+    mapping['lootBox'] = FunRandomRewardLootBoxFormatter()
     return mapping
 
 

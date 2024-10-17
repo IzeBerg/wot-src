@@ -1418,7 +1418,6 @@ class DualGunAimingSystem(IAimingSystem):
 	def overrideZoom(self, *args, **kwargs): pass
 	def resetIdealDirection(self, *args, **kwargs): pass
 	def setAimingLimits(self, *args, **kwargs): pass
-	def setTransitionDelay(*args, **kwargs): pass
 	def setTransitionTime(*args, **kwargs): pass
 	turretYaw = property(lambda self: None)
 	def update(self, *args, **kwargs): pass
@@ -1461,7 +1460,6 @@ class DualGunAimingSystemRemote(DualGunAimingSystem):
 	def overrideZoom(self, *args, **kwargs): pass
 	def resetIdealDirection(self, *args, **kwargs): pass
 	def setAimingLimits(self, *args, **kwargs): pass
-	def setTransitionDelay(*args, **kwargs): pass
 	def setTransitionTime(*args, **kwargs): pass
 	turretYaw = property(lambda self: None)
 	def update(self, *args, **kwargs): pass
@@ -3227,6 +3225,27 @@ class PyDirtHandler(PyMaterialHandler):
 	def __subclasshook__(*args, **kwargs): pass
 
 
+class PyDissolveHandler(PyMaterialHandler):
+	def __delattr__(*args, **kwargs): pass
+	__doc__ = None
+	def __format__(*args, **kwargs): pass
+	def __getattribute__(*args, **kwargs): pass
+	def __hash__(*args, **kwargs): pass
+	def __init__(self, *args, **kwargs): pass
+	__module__ = 'BigWorld'
+	def __new__(*args, **kwargs): pass
+	__qualname__ = 'PyDissolveHandler'
+	def __reduce__(*args, **kwargs): pass
+	def __reduce_ex__(*args, **kwargs): pass
+	def __repr__(*args, **kwargs): pass
+	def __setattr__(*args, **kwargs): pass
+	def __sizeof__(*args, **kwargs): pass
+	def __str__(*args, **kwargs): pass
+	def __subclasshook__(*args, **kwargs): pass
+	def setDissolveFactor(self, *args, **kwargs): pass
+	def setEnabled(self, *args, **kwargs): pass
+
+
 class PyEntities(pybind11_object):
 	def __delattr__(*args, **kwargs): pass
 	__doc__ = None
@@ -4701,6 +4720,90 @@ class TransitionCamera(BaseCamera):
 	def start(self, *args, **kwargs): pass
 	def update(self, *args, **kwargs): pass
 
+
+class TwinGunAimingSystem(DualGunAimingSystem):
+	def __delattr__(*args, **kwargs): pass
+	__doc__ = None
+	def __format__(*args, **kwargs): pass
+	def __getattribute__(*args, **kwargs): pass
+	def __hash__(*args, **kwargs): pass
+	def __init__(self, *args, **kwargs): pass
+	__module__ = 'BigWorld'
+	def __new__(*args, **kwargs): pass
+	__qualname__ = 'TwinGunAimingSystem'
+	def __reduce__(*args, **kwargs): pass
+	def __reduce_ex__(*args, **kwargs): pass
+	def __repr__(*args, **kwargs): pass
+	def __setattr__(*args, **kwargs): pass
+	def __sizeof__(*args, **kwargs): pass
+	def __str__(*args, **kwargs): pass
+	def __subclasshook__(*args, **kwargs): pass
+	aimMatrix = property(lambda self: None)
+	def destroy(self, *args, **kwargs): pass
+	def disable(self, *args, **kwargs): pass
+	def enable(self, *args, **kwargs): pass
+	def enableAutoRotation(self, *args, **kwargs): pass
+	def enableHorizontalStabilizerRuntime(self, *args, **kwargs): pass
+	def focusOnPos(self, *args, **kwargs): pass
+	def forceFullStabilization(self, *args, **kwargs): pass
+	def getDesiredShotPoint(self, *args, **kwargs): pass
+	def getShotPoint(self, *args, **kwargs): pass
+	def getZoom(self, *args, **kwargs): pass
+	gunPitch = property(lambda self: None)
+	def handleMovement(self, *args, **kwargs): pass
+	matrix = property(lambda self: None)
+	matrixProvider = property(lambda self: None)
+	def onActiveGunChanged(self, *args, **kwargs): pass
+	def onSiegeStateChanged(self, *args, **kwargs): pass
+	def overrideZoom(self, *args, **kwargs): pass
+	def resetIdealDirection(self, *args, **kwargs): pass
+	def setAimingLimits(self, *args, **kwargs): pass
+	def setTransitionTime(*args, **kwargs): pass
+	turretYaw = property(lambda self: None)
+	def update(self, *args, **kwargs): pass
+
+
+class TwinGunAimingSystemRemote(TwinGunAimingSystem):
+	def __delattr__(*args, **kwargs): pass
+	__doc__ = None
+	def __format__(*args, **kwargs): pass
+	def __getattribute__(*args, **kwargs): pass
+	def __hash__(*args, **kwargs): pass
+	def __init__(self, *args, **kwargs): pass
+	__module__ = 'BigWorld'
+	def __new__(*args, **kwargs): pass
+	__qualname__ = 'TwinGunAimingSystemRemote'
+	def __reduce__(*args, **kwargs): pass
+	def __reduce_ex__(*args, **kwargs): pass
+	def __repr__(*args, **kwargs): pass
+	def __setattr__(*args, **kwargs): pass
+	def __sizeof__(*args, **kwargs): pass
+	def __str__(*args, **kwargs): pass
+	def __subclasshook__(*args, **kwargs): pass
+	aimMatrix = property(lambda self: None)
+	def destroy(self, *args, **kwargs): pass
+	def disable(self, *args, **kwargs): pass
+	def enable(self, *args, **kwargs): pass
+	def enableAutoRotation(self, *args, **kwargs): pass
+	def enableHorizontalStabilizerRuntime(self, *args, **kwargs): pass
+	def focusOnPos(self, *args, **kwargs): pass
+	def forceFullStabilization(self, *args, **kwargs): pass
+	def getDesiredShotPoint(self, *args, **kwargs): pass
+	def getShotPoint(self, *args, **kwargs): pass
+	def getZoom(self, *args, **kwargs): pass
+	gunPitch = property(lambda self: None)
+	def handleMovement(self, *args, **kwargs): pass
+	matrix = property(lambda self: None)
+	matrixProvider = property(lambda self: None)
+	def onActiveGunChanged(self, *args, **kwargs): pass
+	def onSiegeStateChanged(self, *args, **kwargs): pass
+	def overrideZoom(self, *args, **kwargs): pass
+	def resetIdealDirection(self, *args, **kwargs): pass
+	def setAimingLimits(self, *args, **kwargs): pass
+	def setTransitionTime(*args, **kwargs): pass
+	turretYaw = property(lambda self: None)
+	def update(self, *args, **kwargs): pass
+
 UNKNOWN = ResourceFormat.UNKNOWN
 UNKNOWN_ERROR = LOGIN_STATUS.UNKNOWN_ERROR
 
@@ -4845,6 +4948,7 @@ class WGBaseFashion(ICompoundFashion):
 	def getMaterialHandlers(self, *args, **kwargs): pass
 	def getTrackMaterialHandlers(self, *args, **kwargs): pass
 	def removeCamouflage(self, *args, **kwargs): pass
+	def removeMaterialHandler(self, *args, **kwargs): pass
 	def setCamouflage(self, *args, **kwargs): pass
 
 
@@ -5467,6 +5571,7 @@ class WGVehiclePhysics(pybind11_object):
 	currentCenterOfMass = property(lambda self: None)
 	def destructibleImpactCb(self, *args, **kwargs): pass
 	def destructibleRequestCb(self, *args, **kwargs): pass
+	dirtReleaseRateFactor = property(lambda self: None)
 	distanceTraveled = property(lambda self: None)
 	drownWarning = property(lambda self: None)
 	def enableTurretCollision(self, *args, **kwargs): pass
@@ -5475,6 +5580,7 @@ class WGVehiclePhysics(pybind11_object):
 	externalForce = property(lambda self: None)
 	def fireEngine(self, *args, **kwargs): pass
 	forceApplied = property(lambda self: None)
+	forwardFrictionFactor = property(lambda self: None)
 	freezeAccelEpsilon = property(lambda self: None)
 	freezeAngAccelEpsilon = property(lambda self: None)
 	freezeAngVelEpsilon = property(lambda self: None)
@@ -5512,6 +5618,7 @@ class WGVehiclePhysics(pybind11_object):
 	majorDestructible = property(lambda self: None)
 	mass = property(lambda self: None)
 	matrix = property(lambda self: None)
+	maxDirtFactor = property(lambda self: None)
 	maxUnaidedRPM = property(lambda self: None)
 	movementSignals = property(lambda self: None)
 	normalisedRPM = property(lambda self: None)
@@ -5537,6 +5644,7 @@ class WGVehiclePhysics(pybind11_object):
 	def setDamperSpringsLength(self, *args, **kwargs): pass
 	def setHullAimingAnglesDelta(self, *args, **kwargs): pass
 	def setSignal(self, *args, **kwargs): pass
+	sideFrictionFactor = property(lambda self: None)
 	siegeModeState = property(lambda self: None)
 	simulationYBound = property(lambda self: None)
 	speed = property(lambda self: None)
@@ -5609,6 +5717,7 @@ class WGTankPhysics(WGVehiclePhysics):
 	currentCenterOfMass = property(lambda self: None)
 	def destructibleImpactCb(self, *args, **kwargs): pass
 	def destructibleRequestCb(self, *args, **kwargs): pass
+	dirtReleaseRateFactor = property(lambda self: None)
 	distanceTraveled = property(lambda self: None)
 	drownWarning = property(lambda self: None)
 	def enableTurretCollision(self, *args, **kwargs): pass
@@ -5617,6 +5726,7 @@ class WGTankPhysics(WGVehiclePhysics):
 	externalForce = property(lambda self: None)
 	def fireEngine(self, *args, **kwargs): pass
 	forceApplied = property(lambda self: None)
+	forwardFrictionFactor = property(lambda self: None)
 	freezeAccelEpsilon = property(lambda self: None)
 	freezeAngAccelEpsilon = property(lambda self: None)
 	freezeAngVelEpsilon = property(lambda self: None)
@@ -5658,6 +5768,7 @@ class WGTankPhysics(WGVehiclePhysics):
 	majorDestructible = property(lambda self: None)
 	mass = property(lambda self: None)
 	matrix = property(lambda self: None)
+	maxDirtFactor = property(lambda self: None)
 	maxUnaidedRPM = property(lambda self: None)
 	movementSignals = property(lambda self: None)
 	normalisedRPM = property(lambda self: None)
@@ -5685,6 +5796,7 @@ class WGTankPhysics(WGVehiclePhysics):
 	def setDamperSpringsLength(self, *args, **kwargs): pass
 	def setHullAimingAnglesDelta(self, *args, **kwargs): pass
 	def setSignal(self, *args, **kwargs): pass
+	sideFrictionFactor = property(lambda self: None)
 	siegeModeState = property(lambda self: None)
 	simulationYBound = property(lambda self: None)
 	speed = property(lambda self: None)
@@ -5795,6 +5907,7 @@ class WGVehicleFashion(WGBaseFashion):
 	def getMaterialHandlers(self, *args, **kwargs): pass
 	def getTrackMaterialHandlers(self, *args, **kwargs): pass
 	def removeCamouflage(self, *args, **kwargs): pass
+	def removeMaterialHandler(self, *args, **kwargs): pass
 	def removePhysicalTracks(self, *args, **kwargs): pass
 	def setCamouflage(self, *args, **kwargs): pass
 	def setPhysicalTracks(self, *args, **kwargs): pass
@@ -5972,6 +6085,7 @@ class WGWheeledPhysics(WGVehiclePhysics):
 	currentCenterOfMass = property(lambda self: None)
 	def destructibleImpactCb(self, *args, **kwargs): pass
 	def destructibleRequestCb(self, *args, **kwargs): pass
+	dirtReleaseRateFactor = property(lambda self: None)
 	distanceTraveled = property(lambda self: None)
 	drownWarning = property(lambda self: None)
 	def enableTurretCollision(self, *args, **kwargs): pass
@@ -5980,6 +6094,7 @@ class WGWheeledPhysics(WGVehiclePhysics):
 	externalForce = property(lambda self: None)
 	def fireEngine(self, *args, **kwargs): pass
 	forceApplied = property(lambda self: None)
+	forwardFrictionFactor = property(lambda self: None)
 	freezeAccelEpsilon = property(lambda self: None)
 	freezeAngAccelEpsilon = property(lambda self: None)
 	freezeAngVelEpsilon = property(lambda self: None)
@@ -6018,6 +6133,7 @@ class WGWheeledPhysics(WGVehiclePhysics):
 	majorDestructible = property(lambda self: None)
 	mass = property(lambda self: None)
 	matrix = property(lambda self: None)
+	maxDirtFactor = property(lambda self: None)
 	maxUnaidedRPM = property(lambda self: None)
 	movementSignals = property(lambda self: None)
 	normalisedRPM = property(lambda self: None)
@@ -6047,6 +6163,7 @@ class WGWheeledPhysics(WGVehiclePhysics):
 	def setHullAimingAnglesDelta(self, *args, **kwargs): pass
 	def setSignal(self, *args, **kwargs): pass
 	def setWheelBroken(self, *args, **kwargs): pass
+	sideFrictionFactor = property(lambda self: None)
 	siegeModeState = property(lambda self: None)
 	simulationYBound = property(lambda self: None)
 	speed = property(lambda self: None)

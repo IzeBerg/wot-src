@@ -16,6 +16,7 @@ from gui.Scaleform.daapi.view.lobby.vehicle_compare.formatters import resolveSta
 from gui.Scaleform.daapi.view.lobby.vehicle_preview.hero_tank_preview_constants import getHeroTankPreviewParams
 from gui.Scaleform.daapi.view.lobby.vehicle_preview.info.crew_tab_view import DOG
 from gui.Scaleform.daapi.view.lobby.vehicle_preview.items_kit_helper import OFFER_CHANGED_EVENT, addBuiltInEquipment, getActiveOffer
+from gui.Scaleform.daapi.view.lobby.header.LobbyHeader import HeaderMenuVisibilityState
 from gui.Scaleform.daapi.view.lobby.vehicle_preview.sound_constants import RESEARCH_PREVIEW_SOUND_SPACE, VEHICLE_PREVIEW_SOUND_SPACE, COMMON_VEHICLE_PREVIEW_SOUND_SPACE
 from gui.Scaleform.daapi.view.meta.VehiclePreviewMeta import VehiclePreviewMeta
 from gui.Scaleform.framework import g_entitiesFactories
@@ -30,6 +31,7 @@ from gui.hangar_cameras.hangar_camera_common import CameraMovementStates, Camera
 from gui.impl import backport
 from gui.impl.gen import R
 from gui.impl.lobby.hangar.buy_vehicle_view import BuyVehicleWindow
+from gui.impl.lobby.common.view_mixins import LobbyHeaderVisibilityAction, LobbyHeaderState
 from gui.prb_control.dispatcher import g_prbLoader
 from gui.resource_well.resource_well_helpers import isResourceWellRewardVehicle
 from gui.shared import EVENT_BUS_SCOPE, event_bus_handlers, event_dispatcher, events, g_eventBus
@@ -42,8 +44,7 @@ from helpers import dependency
 from helpers.i18n import makeString as _ms
 from preview_selectable_logic import PreviewSelectableLogic
 from skeletons.account_helpers.settings_core import ISettingsCore
-from skeletons.gui.game_control import IHeroTankController, IVehicleComparisonBasket, IEventBattlesController
-from skeletons.prebattle_vehicle import IPrebattleVehicle
+from skeletons.gui.game_control import IHeroTankController, IVehicleComparisonBasket
 from skeletons.gui.impl import IGuiLoader
 from skeletons.gui.shared import IItemsCache
 from skeletons.gui.shared.utils import IHangarSpace
@@ -52,11 +53,11 @@ from uilogging.shop.loggers import getPreviewUILoggers
 from uilogging.shop.logging_constants import ShopCloseItemStates
 from web.web_client_api.common import ItemPackEntry, ItemPackType, ItemPackTypeGroup
 from gui.shared.events import ViewEventType
-VEHICLE_PREVIEW_ALIASES = (
+VEHICLE_PREVIEW_ALIASES = {
  VIEW_ALIAS.VEHICLE_PREVIEW, VIEW_ALIAS.HERO_VEHICLE_PREVIEW, VIEW_ALIAS.OFFER_GIFT_VEHICLE_PREVIEW,
  VIEW_ALIAS.TRADE_IN_VEHICLE_PREVIEW, VIEW_ALIAS.MARATHON_VEHICLE_PREVIEW, VIEW_ALIAS.CONFIGURABLE_VEHICLE_PREVIEW,
  VIEW_ALIAS.RENTAL_VEHICLE_PREVIEW, VIEW_ALIAS.RESOURCE_WELL_VEHICLE_PREVIEW,
- VIEW_ALIAS.RESOURCE_WELL_HERO_VEHICLE_PREVIEW)
+ VIEW_ALIAS.RESOURCE_WELL_HERO_VEHICLE_PREVIEW}
 _BACK_BTN_LABELS = {VIEW_ALIAS.LOBBY_HANGAR: 'hangar', 
    VIEW_ALIAS.LOBBY_STORE: 'shop', 
    VIEW_ALIAS.LOBBY_STORAGE: 'storage', 
@@ -127,11 +128,9 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
     _itemsCache = dependency.descriptor(IItemsCache)
     __comparisonBasket = dependency.descriptor(IVehicleComparisonBasket)
     __heroTanksControl = dependency.descriptor(IHeroTankController)
-    __hangarSpace = dependency.descriptor(IHangarSpace)
     __settingsCore = dependency.descriptor(ISettingsCore)
     __guiLoader = dependency.descriptor(IGuiLoader)
-    __gameEventCtrl = dependency.descriptor(IEventBattlesController)
-    __prebattleVehicle = dependency.descriptor(IPrebattleVehicle)
+    _hangarSpace = dependency.descriptor(IHangarSpace)
 
     def __init__(self, ctx=None):
         self.__ctx = ctx
@@ -153,6 +152,7 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
         self._previewBackCb = ctx.get('previewBackCb')
         self._backBtnLabel = ctx.get('backBtnLabel')
         self.__isHeroTank = ctx.get('isHeroTank', False)
+        self.__isHiddenMenu = ctx.get('isHiddenMenu', False)
         self.__customizationCD = (ctx.get('vehParams') or {}).get('styleCD')
         self.__offers = ctx.get('offers')
         self._price = ctx.get('price', MONEY_UNDEFINED)
@@ -182,14 +182,9 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
             self.__vehAppearanceChanged = False
         self.__keepVehicleSelectionEnabled = False
         if not self.__isHeroTank:
-            self.__hangarSpace.removeVehicle()
+            self._hangarSpace.removeVehicle()
         g_currentPreviewVehicle.selectHeroTank(self.__isHeroTank)
         self.__uiMetricsLogger, self.__uiFlowLogger = getPreviewUILoggers(bool(self._itemsPack), str(self._vehicleCD), self.__buyParams)
-        self.__previewCloseCb = None
-        if self.__gameEventCtrl.isEventPrbActive():
-            if self.__prebattleVehicle.item is not None:
-                self.__prebattleVehicle.selectNone()
-            self.__previewCloseCb = self.__prebattleVehicle.selectPreviousVehicle
         return
 
     def setTopPanel(self):
@@ -200,9 +195,6 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
 
     def _populate(self):
         self.addListener(CameraRelatedEvents.VEHICLE_LOADING, self.__onVehicleLoading, EVENT_BUS_SCOPE.DEFAULT)
-        g_eventBus.addListener(events.HangarSimpleEvent.EVENT_PORTAL_SELECTED, self.__onCloseView, EVENT_BUS_SCOPE.LOBBY)
-        g_eventBus.addListener(events.HangarSimpleEvent.EVENT_VEHICLE_SELECTED, self.__onCloseView, EVENT_BUS_SCOPE.LOBBY)
-        g_eventBus.addListener(events.HangarSimpleEvent.PORTAL_MANAGER_ACTIVATED, self.__onCloseView, EVENT_BUS_SCOPE.LOBBY)
         self.setTopPanel()
         self.setBottomPanel()
         if g_currentPreviewVehicle.intCD == self._vehicleCD:
@@ -220,9 +212,9 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
             g_currentPreviewVehicle.onVehicleInventoryChanged += self._onInventoryChanged
             self.__comparisonBasket.onChange += self.__onCompareBasketChanged
             self.__comparisonBasket.onSwitchChange += self.__updateHeaderData
-            self.__hangarSpace.onSpaceCreate += self.__onHangarCreateOrRefresh
-            self.__hangarSpace.onSpaceRefresh += self.closeView
-            self.__hangarSpace.setVehicleSelectable(True)
+            self._hangarSpace.onSpaceCreate += self.__onHangarCreateOrRefresh
+            self._hangarSpace.onSpaceRefresh += self.closeView
+            self._hangarSpace.setVehicleSelectable(True)
             if not g_currentPreviewVehicle.isPresent():
                 event_dispatcher.showHangar()
             if not self._heroInteractive:
@@ -238,17 +230,14 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
             g_eventBus.addListener(ViewEventType.LOAD_VIEW, self.__onViewLoaded, scope=EVENT_BUS_SCOPE.LOBBY)
             _updateCollectorHintParameters()
             _updatePostProgressionParameters()
-            g_eventBus.handleEvent(events.HangarSimpleEvent(events.HangarSimpleEvent.VEHICLE_PREVIEW_LOADED), scope=EVENT_BUS_SCOPE.LOBBY)
             for event, callback in self.__subscriptions:
                 event += callback
 
+        if self.__isHiddenMenu:
+            self._updateTopMenu(HeaderMenuVisibilityState.NOTHING, LobbyHeaderVisibilityAction.ENTER)
         return
 
     def _dispose(self):
-        g_eventBus.handleEvent(events.HangarSimpleEvent(events.HangarSimpleEvent.VEHICLE_PREVIEW_UNLOADED), scope=EVENT_BUS_SCOPE.LOBBY)
-        g_eventBus.removeListener(events.HangarSimpleEvent.EVENT_PORTAL_SELECTED, self.__onCloseView, EVENT_BUS_SCOPE.LOBBY)
-        g_eventBus.removeListener(events.HangarSimpleEvent.EVENT_VEHICLE_SELECTED, self.__onCloseView, EVENT_BUS_SCOPE.LOBBY)
-        g_eventBus.removeListener(events.HangarSimpleEvent.PORTAL_MANAGER_ACTIVATED, self.__onCloseView, EVENT_BUS_SCOPE.LOBBY)
         specialData = getHeroTankPreviewParams() if self.__isHeroTank else None
         if specialData is not None and specialData.exitEvent:
             SoundGroups.g_instance.playSound2D(specialData.exitEvent)
@@ -258,9 +247,9 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
         g_currentPreviewVehicle.onVehicleInventoryChanged -= self._onInventoryChanged
         self.__comparisonBasket.onChange -= self.__onCompareBasketChanged
         self.__comparisonBasket.onSwitchChange -= self.__updateHeaderData
-        self.__hangarSpace.onSpaceCreate -= self.__onHangarCreateOrRefresh
-        self.__hangarSpace.onSpaceRefresh -= self.closeView
-        self.__hangarSpace.setVehicleSelectable(self.__keepVehicleSelectionEnabled)
+        self._hangarSpace.onSpaceCreate -= self.__onHangarCreateOrRefresh
+        self._hangarSpace.onSpaceRefresh -= self.closeView
+        self._hangarSpace.setVehicleSelectable(self.__keepVehicleSelectionEnabled)
         self.removeListener(CameraRelatedEvents.CAMERA_ENTITY_UPDATED, self.handleSelectedEntityUpdated)
         isMapsTrainingViewOpened = self.__guiLoader.windowsManager.getViewByLayoutID(R.views.lobby.maps_training.MapsTrainingPage()) is not None
         g_eventBus.handleEvent(events.LobbySimpleEvent(events.LobbySimpleEvent.VEHICLE_PREVIEW_HIDDEN), scope=EVENT_BUS_SCOPE.LOBBY)
@@ -270,15 +259,14 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
         self.__unmodifiedItemsPack = None
         self.__outfit = None
         super(VehiclePreview, self)._dispose()
-        if self.__previewCloseCb is not None:
-            self.__previewCloseCb()
-            self.__previewCloseCb = None
         if not self._heroInteractive:
             self.__heroTanksControl.setInteractive(True)
         if self.__vehAppearanceChanged and not isMapsTrainingViewOpened:
             g_currentPreviewVehicle.resetAppearance()
             if self.__isHeroTank:
                 g_currentPreviewVehicle.selectHeroTank(False)
+        if self.__isHiddenMenu:
+            self._updateTopMenu(HeaderMenuVisibilityState.ALL, LobbyHeaderVisibilityAction.EXIT)
         g_eventBus.removeListener(OFFER_CHANGED_EVENT, self.__onOfferChanged)
         g_eventBus.removeListener(ViewEventType.LOAD_VIEW, self.__onViewLoaded, scope=EVENT_BUS_SCOPE.LOBBY)
         for event, callback in self.__subscriptions:
@@ -321,8 +309,8 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
                     if isResourceWellRewardVehicle(vehicleCD=vehicleCD):
                         event_dispatcher.showResourceWellHeroPreview(vehicleCD=vehicleCD, previewAlias=VIEW_ALIAS.VEHICLE_PREVIEW, previousBackAlias=self._backAlias, backCallback=self._previewBackCb)
                     else:
-                        event_dispatcher.showHeroTankPreview(vehicleCD, previewAlias=VIEW_ALIAS.VEHICLE_PREVIEW, previousBackAlias=self._backAlias)
-            elif entity.id == self.__hangarSpace.space.vehicleEntityId:
+                        event_dispatcher.showHeroTankPreview(vehicleCD, previewAlias=VIEW_ALIAS.VEHICLE_PREVIEW, previousBackAlias=self._backAlias, backOutfit=self.__outfit)
+            elif entity.id == self._hangarSpace.space.vehicleEntityId:
                 self._processBackClick({'entity': entity})
         return
 
@@ -336,6 +324,9 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
 
     def _createSelectableLogic(self):
         return PreviewSelectableLogic()
+
+    def _updateTopMenu(self, state, action):
+        g_eventBus.handleEvent(events.LobbyHeaderMenuEvent(events.LobbyHeaderMenuEvent.TOGGLE_VISIBILITY, ctx={'state': LobbyHeaderState(self.alias, state, action)}), EVENT_BUS_SCOPE.LOBBY)
 
     def _onRegisterFlashComponent(self, viewPy, alias):
         if alias == VEHPREVIEW_CONSTANTS.TOP_PANEL_TABS_PY_ALIAS:
@@ -418,7 +409,7 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
 
     def _getExitEvent(self):
         hangarVehicleCD = None
-        hangarVehicle = self.__hangarSpace.getVehicleEntity()
+        hangarVehicle = self._hangarSpace.getVehicleEntity()
         currentVehicle = g_currentVehicle.item
         hangarVehicleDescr = hangarVehicle.typeDescriptor
         if self.__isHeroTank and currentVehicle is not None and hangarVehicleDescr is not None and hangarVehicleDescr.type.compactDescr != currentVehicle.compactDescr:
@@ -491,15 +482,12 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
                 crewCount = len(vehicle.crew) + (1 if DOG in vehicle.tags else 0)
                 tab['label'] = _ms(VEHICLE_PREVIEW.INFOPANEL_TAB_CREWINFO_NAME, crewCount=crewCount)
 
-    def __onCompareBasketChanged(self, changedData, _=None):
+    def __onCompareBasketChanged(self, changedData):
         if changedData.isFullChanged:
             self.__updateHeaderData()
 
     def __updateHeaderData(self):
         self.as_setDataS(self._getData())
-
-    def __onCloseView(self, _):
-        self.closeView()
 
     @staticmethod
     def __getInfoPanelListDescription(vehicle):
@@ -560,7 +548,7 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
                 if self._itemsCache.items.inventory.getItemData(compactDescr) is not None:
                     event_dispatcher.showHangar()
                 else:
-                    event_dispatcher.showVehiclePreview(compactDescr, previewAlias=self._previousBackAlias)
+                    event_dispatcher.showVehiclePreview(compactDescr, previewAlias=self._previousBackAlias, outfit=self.__ctx.get('backOutfit'))
             else:
                 event_dispatcher.showHangar()
         elif self._backAlias == VIEW_ALIAS.LOBBY_STORE:

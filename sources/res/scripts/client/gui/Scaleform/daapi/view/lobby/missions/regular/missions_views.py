@@ -1,9 +1,11 @@
-import logging
 from functools import partial
+import BigWorld
 from adisp import adisp_process
+from wg_async import wg_async, wg_await
 from constants import PremiumConfigs
-from frameworks.wulf import ViewFlags, ViewStatus
-from gui import DialogsInterface, makeHtmlString
+from debug_utils import LOG_ERROR
+from gui import DialogsInterface
+from gui.Scaleform.Waiting import Waiting
 from gui.Scaleform.daapi.settings import BUTTON_LINKAGES
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
 from gui.Scaleform.daapi.view.lobby.event_boards.event_boards_maintenance import EventBoardsMaintenance
@@ -12,34 +14,31 @@ from gui.Scaleform.daapi.view.meta.CurrentVehicleMissionsViewMeta import Current
 from gui.Scaleform.daapi.view.meta.MissionsEventBoardsViewMeta import MissionsEventBoardsViewMeta
 from gui.Scaleform.daapi.view.meta.MissionsGroupedViewMeta import MissionsGroupedViewMeta
 from gui.Scaleform.daapi.view.meta.MissionsMarathonViewMeta import MissionsMarathonViewMeta
-from gui.Scaleform.framework.entities.inject_component_adaptor import InjectComponentAdaptor
 from gui.Scaleform.framework.managers.loaders import SFViewLoadParams
 from gui.Scaleform.genConsts.EVENTBOARDS_ALIASES import EVENTBOARDS_ALIASES
 from gui.Scaleform.genConsts.STORE_CONSTANTS import STORE_CONSTANTS
 from gui.Scaleform.locale.EVENT_BOARDS import EVENT_BOARDS
 from gui.Scaleform.locale.QUESTS import QUESTS
+from gui.Scaleform.genConsts.QUESTS_ALIASES import QUESTS_ALIASES
 from gui.Scaleform.locale.RES_ICONS import RES_ICONS
 from gui.event_boards.settings import expandGroup, isGroupMinimized
-from gui.impl import backport
-from gui.impl.gen import R
-from gui.impl.gen.view_models.common.browser_model import PageState
-from gui.impl.lobby.common.browser_view import BrowserView, makeSettings
-from gui.server_events import caches, settings
-from gui.server_events.events_dispatcher import hideMissionDetails, showMissionsCategories, showMissionsMarathon
-from gui.server_events.events_helpers import isDailyQuest, isMarathon, isPremium
-from gui.shared import actions, events, g_eventBus
+from gui.server_events import settings, caches
+from gui.server_events.events_dispatcher import hideMissionDetails
+from gui.server_events.events_dispatcher import showMissionsCategories
+from gui.server_events.events_helpers import isMarathon, isDailyQuest, isPremium
+from gui.shared import actions
+from gui.shared import events, g_eventBus
 from gui.shared.event_bus import EVENT_BUS_SCOPE
 from gui.shared.event_dispatcher import showTankPremiumAboutPage
-from gui.shared.formatters import icons, text_styles
-from gui.shared.utils.scheduled_notifications import Notifiable, PeriodicNotifier
+from gui.shared.formatters import text_styles, icons
 from helpers import dependency
 from helpers.i18n import makeString as _ms
-from shared_utils import nextTick
-from skeletons.gui.game_control import IMarathonEventsController, IReloginController
+from skeletons.gui.game_control import IReloginController, IMarathonEventsController, IBrowserController
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.server_events import IEventsCache
-from wg_async import wg_async, wg_await
-_logger = logging.getLogger(__name__)
+from gui import makeHtmlString
+from gui.impl import backport
+from gui.impl.gen import R
 
 class _GroupedMissionsView(MissionsGroupedViewMeta):
 
@@ -83,107 +82,117 @@ class MissionsGroupedView(_GroupedMissionsView):
         return lambda q: isMarathon(q.getGroupID())
 
 
-class MissionsMarathonView(InjectComponentAdaptor, MissionsMarathonViewMeta):
-    __eventsCache = dependency.descriptor(IEventsCache)
-    __marathonController = dependency.descriptor(IMarathonEventsController)
+class MissionsMarathonView(MissionsMarathonViewMeta):
+    _browserCtrl = dependency.descriptor(IBrowserController)
+    _marathonsCtrl = dependency.descriptor(IMarathonEventsController)
+    eventsCache = dependency.descriptor(IEventsCache)
 
     def __init__(self):
         super(MissionsMarathonView, self).__init__()
-        self.__marathonEvent = self.__marathonController.getMarathon(caches.getNavInfo().getMarathonPrefix()) or self.__marathonController.getPrimaryMarathon()
-        self.__builder = None
-        self.__url = ''
-        self.__webHandlers = []
+        self.__browserID = None
+        self._marathonEvent = self._marathonsCtrl.getMarathon(caches.getNavInfo().getMarathonPrefix()) or self._marathonsCtrl.getPrimaryMarathon()
+        self._width = 0
+        self._height = 0
+        self._builder = None
+        self.__loadBrowserCallbackID = None
+        self.__browserView = None
         return
 
-    @nextTick
-    def updateState(self, *args, **kwargs):
-        self.__url = kwargs.get('url', '')
-        self.__webHandlers = self.__marathonEvent.createMarathonWebHandlers()
-        if self._injectView is not None:
-            self._destroyInjected()
-        self._createInjectView()
-        return
-
-    @staticmethod
-    def markVisited():
-        pass
-
-    def setMarathon(self, prefix):
-        self.__marathonEvent = self.__marathonController.getMarathon(prefix)
-        showMissionsMarathon()
-
-    def setActive(self, value):
-        pass
-
-    def setBuilder(self, builder, filterData, eventID):
-        self.__builder = builder
-        self.__onEventsUpdate()
+    def closeView(self):
+        self.fireEvent(events.LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.LOBBY_HANGAR)), scope=EVENT_BUS_SCOPE.LOBBY)
 
     def getSuitableEvents(self):
         return []
 
-    def _populate(self):
-        super(MissionsMarathonView, self)._populate()
-        self.__marathonEvent.showRewardVideo()
+    @adisp_process
+    def reload(self):
+        browser = self._browserCtrl.getBrowser(self.__browserID)
+        if browser is not None and self._marathonEvent and self.__browserView:
+            url = yield self._marathonEvent.getUrl()
+            if url:
+                self.__browserView.showLoading(True)
+                browser.navigate(url)
+        else:
+            yield lambda callback: callback(True)
+        return
 
-    def _makeInjectView(self):
-        return MissionsMarathonBrowserView(self.__url, self.__webHandlers)
+    def setActive(self, value):
+        self.reload()
 
-    def _addInjectContentListeners(self):
-        self._injectView.onStatusChanged += self.__onViewLoaded
+    def setBuilder(self, builder, filterData, eventID):
+        self._builder = builder
+        self._onEventsUpdate()
 
-    def _removeInjectContentListeners(self):
-        self._injectView.onStatusChanged -= self.__onViewLoaded
+    def setMarathon(self, prefix):
+        self._marathonEvent = self._marathonsCtrl.getMarathon(prefix)
 
-    def __onViewLoaded(self, state):
-        if state == ViewStatus.LOADED:
-            self.as_showViewS()
-            self.as_setWaitingVisibleS(False)
+    def viewSize(self, width, height):
+        self._width = width
+        self._height = height
+
+    def markVisited(self):
+        pass
+
+    @adisp_process
+    def _onRegisterFlashComponent(self, viewPy, alias):
+        if alias == VIEW_ALIAS.BROWSER and self._marathonEvent:
+            if self.__browserID is None:
+                url = yield self._marathonEvent.getUrl()
+                browserID = yield self._browserCtrl.load(url=url, useBrowserWindow=False, browserID=self.__browserID, browserSize=(
+                 self._width, self._height))
+                self.__browserID = browserID
+                viewPy.init(browserID, self._marathonEvent.createMarathonWebHandlers(), alias=alias)
+                self.__browserView = viewPy
+                self.__browserView.showContentUnderLoading = False
+                self.__updateBrowserProperties()
+            else:
+                LOG_ERROR('Attampt to initialize browser 2nd time!')
+        return
 
     @wg_async
-    def __onEventsUpdate(self, *args):
-        yield wg_await(self.__eventsCache.prefetcher.demand())
-        if self.__builder:
+    def _onEventsUpdate(self, *args):
+        yield wg_await(self.eventsCache.prefetcher.demand())
+        if self._builder:
             self.__updateEvents()
 
+    def _populate(self):
+        super(MissionsMarathonView, self)._populate()
+        self._marathonEvent.showRewardVideo()
+        Waiting.hide('loadPage')
+        self.__loadBrowserCallbackID = BigWorld.callback(0.01, self.__loadBrowser)
+        g_eventBus.addListener(events.MissionsEvent.ON_TAB_CHANGED, self.__updateBrowserProperties, EVENT_BUS_SCOPE.LOBBY)
+
+    def _dispose(self):
+        g_eventBus.removeListener(events.MissionsEvent.ON_TAB_CHANGED, self.__updateBrowserProperties, EVENT_BUS_SCOPE.LOBBY)
+        self.__cancelLoadBrowserCallback()
+        self.__browserView = None
+        super(MissionsMarathonView, self)._dispose()
+        return
+
+    def __cancelLoadBrowserCallback(self):
+        if self.__loadBrowserCallbackID is not None:
+            BigWorld.cancelCallback(self.__loadBrowserCallbackID)
+            self.__loadBrowserCallbackID = None
+        return
+
+    def __loadBrowser(self):
+        self.__loadBrowserCallbackID = None
+        self.as_loadBrowserS()
+        return
+
     def __updateEvents(self):
-        self.__builder.invalidateBlocks()
+        self._builder.invalidateBlocks()
 
-
-class MissionsMarathonBrowserView(BrowserView):
-
-    def __init__(self, url, webHandlers):
-        super(MissionsMarathonBrowserView, self).__init__(R.views.lobby.common.BrowserView(), settings=makeSettings(url, webHandlers, viewFlags=ViewFlags.VIEW, returnClb=self.__returnCallback))
-        self.__notifiers = Notifiable()
-
-    def _initialize(self, *args, **kwargs):
-        super(MissionsMarathonBrowserView, self)._initialize(*args, **kwargs)
-        self.__notifiers.addNotificator(PeriodicNotifier(self.__getBrowserCheckInterval, self.__subscribeWhenBrowserObtained))
-        self.__notifiers.startNotification()
-
-    def _finalize(self):
-        if self.browser:
-            self.browser.onLoadingStateChange -= self.__onLoadingStateChange
-        self.__notifiers.clearNotification()
-        super(MissionsMarathonBrowserView, self)._finalize()
-
-    @staticmethod
-    def __returnCallback(*args, **kwargs):
-        if kwargs.pop('forceClosed', False):
-            g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.LOBBY_HANGAR)), EVENT_BUS_SCOPE.LOBBY)
-
-    def __subscribeWhenBrowserObtained(self):
-        if self.browser:
-            self.browser.onLoadingStateChange += self.__onLoadingStateChange
-            self.__notifiers.clearNotification()
-
-    def __getBrowserCheckInterval(self):
-        return 0.1
-
-    def __onLoadingStateChange(self, isLoading, allowAutoLoadingScreenChange):
-        if not isLoading:
-            self.getViewModel().setPageState(PageState.LOADED)
-            _logger.debug('MissionsMarathonBrowserView set to PageState.LOADED')
+    def __updateBrowserProperties(self, *args):
+        self.__viewActive = caches.getNavInfo().getMissionsTab() == QUESTS_ALIASES.MISSIONS_MARATHON_VIEW_PY_ALIAS
+        browser = self._browserCtrl.getBrowser(self.__browserID)
+        if browser:
+            if self.__viewActive:
+                browser.skipEscape = not self._marathonEvent.isNeedHandlingEscape
+                browser.useSpecialKeys = False
+            else:
+                browser.skipEscape = False
+                browser.useSpecialKeys = True
 
 
 class MissionsEventBoardsView(MissionsEventBoardsViewMeta):

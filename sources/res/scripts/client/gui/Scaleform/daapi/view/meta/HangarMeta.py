@@ -21,10 +21,6 @@ class HangarMeta(View):
         if self._isDAAPIInited():
             return self.flashObject.as_setCarouselEnabled(value)
 
-    def as_setCarouselVisibleS(self, value):
-        if self._isDAAPIInited():
-            return self.flashObject.as_setCarouselVisible(value)
-
     def as_setupAmmunitionPanelS(self, data):
         if self._isDAAPIInited():
             return self.flashObject.as_setupAmmunitionPanel(data)
@@ -37,9 +33,9 @@ class HangarMeta(View):
         if self._isDAAPIInited():
             return self.flashObject.as_setComp7ModifiersVisible(value)
 
-    def as_setEventTournamentBannerVisibleS(self, alias, isVisible):
+    def as_setCarouselBannerVisibleS(self, alias, isVisible):
         if self._isDAAPIInited():
-            return self.flashObject.as_setEventTournamentBannerVisible(alias, isVisible)
+            return self.flashObject.as_setCarouselBannerVisible(alias, isVisible)
 
     def as_setPrestigeWidgetVisibleS(self, value):
         if self._isDAAPIInited():
@@ -104,7 +100,3 @@ class HangarMeta(View):
     def as_setBattleRoyaleSpaceLoadedS(self, showAnimation):
         if self._isDAAPIInited():
             return self.flashObject.as_setBattleRoyaleSpaceLoaded(showAnimation)
-
-    def as_toggleEventModeS(self, isEventMode):
-        if self._isDAAPIInited():
-            return self.flashObject.as_toggleEventMode(isEventMode)

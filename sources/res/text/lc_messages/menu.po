@@ -579,7 +579,7 @@ msgid "bonusType/8"
 msgstr "历史战"
 
 msgid "bonusType/9"
-msgstr "最终兵器:终焉"
+msgstr "特殊游戏模式"
 
 msgid "booster/bonus/booster_credits"
 msgstr "在战斗中获得的银币加成%(effectValue)s%(effectHours)s"
@@ -661,6 +661,21 @@ msgstr "战斗中获得的全局和乘员经验"
 
 msgid "booster/influence/booster_xp"
 msgstr "在战斗中获得的战斗经验"
+
+msgid "booster/label/booster_credits"
+msgstr "%(effectValue)s银币加成"
+
+msgid "booster/label/booster_crew_xp"
+msgstr "%(effectValue)s乘员经验加成"
+
+msgid "booster/label/booster_free_xp"
+msgstr "%(effectValue)s全局经验加成"
+
+msgid "booster/label/booster_free_xp_and_crew_xp"
+msgstr "%(effectValue)s全局和乘员经验加成"
+
+msgid "booster/label/booster_xp"
+msgstr "%(effectValue)s战斗经验加成"
 
 msgid "booster/limit/booster_fl_xp"
 msgstr "关于前线模式"
@@ -1524,9 +1539,6 @@ msgstr "可租用"
 msgid "currentVehicleStatus/rentableAgain"
 msgstr "延长租用"
 
-msgid "currentVehicleStatus/rentalBattleIsOver"
-msgstr "没有剩余的战斗场次"
-
 msgid "currentVehicleStatus/rentalIsOver"
 msgstr "租用时间到期"
 
@@ -1541,9 +1553,6 @@ msgstr "服务器限制"
 
 msgid "currentVehicleStatus/subscription_suspended"
 msgstr "坦克世界Plus订阅已暂停"
-
-msgid "currentVehicleStatus/ticketsShortage"
-msgstr "没有钥匙"
 
 msgid "currentVehicleStatus/tooHeavy"
 msgstr "坦克超载"
@@ -1896,6 +1905,11 @@ msgstr ""
 "火炮装填时间：%(reloadTimeSecs)s秒；平均损伤：%(avgDamageList)s\n"
 "平均穿透深度：%(avgPiercingPower)s毫米"
 
+msgid "descriptions/vehicleGun/twinGun"
+msgstr ""
+"装填时间: %(reloadTimeSingleGun)s/%(reloadTimeTwinGun)s秒；平均损伤: %(avgDamageList)s点\n"
+"平均穿透力: %(avgPiercingPower)s毫米"
+
 msgid "descriptions/vehicleRadio"
 msgstr "最大通信距离:%(radioDistance)s米"
 
@@ -2028,9 +2042,6 @@ msgstr "总计加成以乘法叠加计算得出，可能与所显示的数值有
 
 msgid "extraParams/name/artNotificationDelayFactor"
 msgstr "该参数表示从自行火炮开火到收到警告的时间。"
-
-msgid "extraParams/name/commanderHitChance"
-msgstr "该参数表示车长免于受伤的几率。"
 
 msgid "extraParams/name/commanderLampDelay"
 msgstr "该参数表示车长在识别坦克是否被敌方点亮前的延迟时间。数值减少得越多，延迟越短。"
@@ -2760,9 +2771,6 @@ msgstr "训练模式"
 
 msgid "headerButtons/battle/types/epicTraining/descr"
 msgstr "前线模式"
-
-msgid "headerButtons/battle/types/event"
-msgstr "最终兵器:终焉"
 
 msgid "headerButtons/battle/types/eventSquad"
 msgstr "活动小队"
@@ -3654,7 +3662,7 @@ msgid "loading/battleTypes/6"
 msgstr "历史战"
 
 msgid "loading/battleTypes/7"
-msgstr "最终兵器:终焉"
+msgstr "最终兵器:海柏利昂计划"
 
 msgid "loading/battleTypes/8"
 msgstr "冲突战"
@@ -4430,6 +4438,12 @@ msgstr "射速"
 msgid "moduleInfo/params/reloadTimeSecs"
 msgstr "装填时间"
 
+msgid "moduleInfo/params/reloadTimeSingleGun"
+msgstr "单发射击模式下的装填时间"
+
+msgid "moduleInfo/params/reloadTimeTwinGun"
+msgstr "齐射射击模式下的装填时间"
+
 msgid "moduleInfo/params/rocketAccelerationEnginePower"
 msgstr "发动机功率(激活火箭助推器后)"
 
@@ -4485,6 +4499,9 @@ msgid "moduleInfo/turboshaftEngine"
 msgstr ""
 "燃气涡轮发动机:\n"
 "允许坦克达到更高的速度。"
+
+msgid "moduleInfo/twinGunLabel"
+msgstr "可选射击模式系统"
 
 msgid "nation_tree/blueprint_title/china"
 msgstr "C系蓝图"
@@ -5912,9 +5929,6 @@ msgstr "延长租用"
 msgid "tankCarousel/vehicleStates/rentableAgain/ranked"
 msgstr "延长租用"
 
-msgid "tankCarousel/vehicleStates/rentalBattleIsOver"
-msgstr "没有剩余的战斗场次"
-
 msgid "tankCarousel/vehicleStates/rentalIsOver"
 msgstr "租用时间到期"
 
@@ -5935,9 +5949,6 @@ msgstr "服务器限制"
 
 msgid "tankCarousel/vehicleStates/subscription_suspended"
 msgstr "已暂停"
-
-msgid "tankCarousel/vehicleStates/ticketsShortage"
-msgstr "没有钥匙"
 
 msgid "tankCarousel/vehicleStates/tooHeavy"
 msgstr "坦克超载"
@@ -6171,7 +6182,7 @@ msgid "tank_params/reloadTime"
 msgstr "射速"
 
 msgid "tank_params/reloadTimeSecs"
-msgstr "装弹时间"
+msgstr "装填时间"
 
 msgid "tank_params/rocketAccelerationEnginePower"
 msgstr "发动机功率(激活火箭助推器后)"
@@ -6189,7 +6200,7 @@ msgid "tank_params/shortened/avgPiercingPower"
 msgstr "穿透力:"
 
 msgid "tank_params/shotDispersionAngle"
-msgstr "在100米距离上射击精度"
+msgstr "100米精度"
 
 msgid "tank_params/shotSpeed"
 msgstr "炮弹速度"
@@ -6256,6 +6267,15 @@ msgstr "火炮旋转速度"
 
 msgid "tank_params/turretYawLimits"
 msgstr "炮塔旋转范围"
+
+msgid "tank_params/twinGunReloadTime"
+msgstr "装填时间(单发射击模式/齐射射击模式)"
+
+msgid "tank_params/twinGunSwitchFireModeTime"
+msgstr "射击模式切换时间"
+
+msgid "tank_params/twinGunTopSpeed"
+msgstr "最大速度/倒车速度(齐射射击模式)"
 
 msgid "tank_params/val"
 msgstr "(HP)"
@@ -6862,6 +6882,15 @@ msgstr "火炮旋转速度(度/秒)"
 
 msgid "vehicleInfo/params/turretYawLimits"
 msgstr "炮塔旋转范围(度)"
+
+msgid "vehicleInfo/params/twinGunReloadTime"
+msgstr "装填时间(单发射击模式/齐射射击模式)(秒)"
+
+msgid "vehicleInfo/params/twinGunSwitchFireModeTime"
+msgstr "射击模式切换时间(秒)"
+
+msgid "vehicleInfo/params/twinGunTopSpeed"
+msgstr "最大速度/倒车速度(单发射击模式/齐射射击模式)(千米/小时)"
 
 msgid "vehicleInfo/params/vehicleWeight"
 msgstr "重量/最大载重量(吨)"

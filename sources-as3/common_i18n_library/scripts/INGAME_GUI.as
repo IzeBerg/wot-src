@@ -87,6 +87,10 @@ package
       
       public static const PLAYER_ERRORS_CANT_SWITCH_ENGINE_DESTROYED:String = "#ingame_gui:player_errors/cant_switch/engine_destroyed";
       
+      public static const PLAYER_ERRORS_CANT_SWITCH_GUN_DESTROYED:String = "#ingame_gui:player_errors/cant_switch/gun_destroyed";
+      
+      public static const PLAYER_ERRORS_CANT_SWITCH_ONE_SHELL_LEFT:String = "#ingame_gui:player_errors/cant_switch/one_shell_left";
+      
       public static const PLAYER_ERRORS_EQUIPMENT_ALREADYACTIVATED:String = "#ingame_gui:player_errors/equipment/alreadyActivated";
       
       public static const PLAYER_ERRORS_EQUIPMENT_ISINCOOLDOWN:String = "#ingame_gui:player_errors/equipment/isInCooldown";
@@ -107,15 +111,11 @@ package
       
       public static const PLAYER_ERRORS_EQUIPMENT_POI_UNAVAILABLE:String = "#ingame_gui:player_errors/equipment/poi/unavailable";
       
-      public static const PLAYER_MESSAGES_EQUIPMENT_WTEVENT_HEALTHATFULLHP:String = "#ingame_gui:player_messages/equipment/wtEvent/healthAtFullHP";
-      
       public static const PLAYER_MESSAGES_DEVICE_CRITICAL_AT_SHOT:String = "#ingame_gui:player_messages/DEVICE_CRITICAL_AT_SHOT";
       
       public static const PLAYER_MESSAGES_DEVICE_DESTROYED_AT_SHOT:String = "#ingame_gui:player_messages/DEVICE_DESTROYED_AT_SHOT";
       
       public static const PLAYER_MESSAGES_DEVICE_STARTED_FIRE_AT_SHOT:String = "#ingame_gui:player_messages/DEVICE_STARTED_FIRE_AT_SHOT";
-      
-      public static const PLAYER_MESSAGES_DEVICE_STARTED_FIRE_AT_CIRCUIT_OVERLOAD:String = "#ingame_gui:player_messages/DEVICE_STARTED_FIRE_AT_CIRCUIT_OVERLOAD";
       
       public static const PLAYER_MESSAGES_TANKMAN_HIT_AT_SHOT:String = "#ingame_gui:player_messages/TANKMAN_HIT_AT_SHOT";
       
@@ -1305,7 +1305,21 @@ package
       
       public static const EFFICIENCYRIBBONS_DAMAGEBYDESTROYER:String = "#ingame_gui:efficiencyRibbons/damageByDestroyer";
       
-      public static const EFFICIENCYRIBBONS_WTRECEIVEDCIRCUITOVERLOAD:String = "#ingame_gui:efficiencyRibbons/wtReceivedCircuitOverload";
+      public static const EFFICIENCYRIBBONS_ZONEBLIZZARD:String = "#ingame_gui:efficiencyRibbons/zoneBlizzard";
+      
+      public static const EFFICIENCYRIBBONS_ZONEFIRE:String = "#ingame_gui:efficiencyRibbons/zoneFire";
+      
+      public static const EFFICIENCYRIBBONS_ZONEFOG:String = "#ingame_gui:efficiencyRibbons/zoneFog";
+      
+      public static const EFFICIENCYRIBBONS_ZONERAIN:String = "#ingame_gui:efficiencyRibbons/zoneRain";
+      
+      public static const EFFICIENCYRIBBONS_ZONESANDSTORM:String = "#ingame_gui:efficiencyRibbons/zoneSandstorm";
+      
+      public static const EFFICIENCYRIBBONS_ZONESMOKE:String = "#ingame_gui:efficiencyRibbons/zoneSmoke";
+      
+      public static const EFFICIENCYRIBBONS_ZONETORNADO:String = "#ingame_gui:efficiencyRibbons/zoneTornado";
+      
+      public static const EFFICIENCYRIBBONS_FIREDAMAGEZONE:String = "#ingame_gui:efficiencyRibbons/fireDamageZone";
       
       public static const DAMAGELOG_SHELLTYPE_ARMOR_PIERCING:String = "#ingame_gui:damageLog/shellType/ARMOR_PIERCING";
       
@@ -1448,6 +1462,8 @@ package
       public static const SIEGEMODE_HINT_TURBOSHAFTENGINE:String = "#ingame_gui:siegeMode/hint/turboshaftEngine";
       
       public static const SIEGEMODE_HINT_ROCKETACCELERATION:String = "#ingame_gui:siegeMode/hint/rocketAcceleration";
+      
+      public static const SIEGEMODE_HINT_TWINGUN:String = "#ingame_gui:siegeMode/hint/twinGun";
       
       public static const EFFICIENCYRIBBONS_ENEMYSECTORCAPTURED:String = "#ingame_gui:efficiencyRibbons/enemySectorCaptured";
       

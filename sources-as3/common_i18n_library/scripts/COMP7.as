@@ -1172,6 +1172,24 @@ package
       public static const CREWMEMBERSTOOLTIP_ZEROPERKS:String = "#comp7:crewMembersTooltip/zeroPerks";
       
       public static const CREWMEMBERSTOOLTIP_PERKS:String = "#comp7:crewMembersTooltip/perks";
+      
+      public static const GRANDTOURNAMENTWIDGET_COUNTDOWN:String = "#comp7:grandTournamentWidget/countdown";
+      
+      public static const GRANDTOURNAMENTWIDGET_COUNTDOWNSHORT:String = "#comp7:grandTournamentWidget/countdownShort";
+      
+      public static const GRANDTOURNAMENTWIDGET_LIVE:String = "#comp7:grandTournamentWidget/live";
+      
+      public static const GRANDTOURNAMENTWIDGET_DAYISOVER:String = "#comp7:grandTournamentWidget/dayIsOver";
+      
+      public static const GRANDTOURNAMENTWIDGET_FINISHED:String = "#comp7:grandTournamentWidget/finished";
+      
+      public static const GRANDTOURNAMENTWIDGET_COUNTER_DAYS:String = "#comp7:grandTournamentWidget/counter/days";
+      
+      public static const GRANDTOURNAMENTWIDGET_COUNTER_HOURS:String = "#comp7:grandTournamentWidget/counter/hours";
+      
+      public static const GRANDTOURNAMENTWIDGET_COUNTER_MINUTES:String = "#comp7:grandTournamentWidget/counter/minutes";
+      
+      public static const GRANDTOURNAMENTWIDGET_COUNTER_LASTMINUTE:String = "#comp7:grandTournamentWidget/counter/lastMinute";
        
       
       public function COMP7()

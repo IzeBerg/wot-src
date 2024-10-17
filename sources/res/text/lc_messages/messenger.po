@@ -28,6 +28,15 @@ msgstr "查看旧信息"
 msgid "battle/receivers/chatIsLocked"
 msgstr "%(open)s聊天关闭%(close)s"
 
+msgid "battle/receivers/chatIsLockedCountryControlToolTip"
+msgstr "您所在地区的玩家无法进行战斗聊天。"
+
+msgid "battle/receivers/chatIsLockedOtherControlToolTip"
+msgstr "您的账号无法进行战斗聊天。"
+
+msgid "battle/receivers/chatIsLockedParentalControlToolTip"
+msgstr "网络游戏防沉迷系统禁止战斗聊天。"
+
 msgid "battle/receivers/chatIsLockedToolTip"
 msgstr "在设置中开启战斗聊天"
 
@@ -842,7 +851,9 @@ msgstr ""
 "仅适用于VIII级坦克。"
 
 msgid "dialogs/squadChannel/headerMsg/eventFormationRestriction"
-msgstr "最终兵器仅限使用活动坦克"
+msgstr ""
+"+++ 活动 +++\n"
+"+++ 活动 +++"
 
 msgid "dialogs/squadChannel/headerMsg/squadFormation"
 msgstr ""
@@ -2359,12 +2370,6 @@ msgstr "• 自选试验型配件"
 msgid "serviceChannelMessages/epicReward/recertificationForm_gift"
 msgstr "• 再训练命令"
 
-msgid "serviceChannelMessages/event/lootboxes"
-msgstr "已获得工程师补给品:"
-
-msgid "serviceChannelMessages/event/tickets"
-msgstr "已获得钥匙:"
-
 msgid "serviceChannelMessages/eventCoinReceivedAsGift"
 msgstr "您已获得周年纪念币：%(eventCoin)s。"
 
@@ -2373,6 +2378,27 @@ msgstr "已解锁额外的排除地图空位"
 
 msgid "serviceChannelMessages/excludedMap/unavailable/title"
 msgstr "无法通过坦克世界Plus订阅排除地图"
+
+msgid "serviceChannelMessages/externalVehicleRent/expired/reason"
+msgstr "原因"
+
+msgid "serviceChannelMessages/externalVehicleRent/expired/reason_boosteroid"
+msgstr "Boosteroid订阅已结束。"
+
+msgid "serviceChannelMessages/externalVehicleRent/expired/reason_default"
+msgstr "订阅已结束。"
+
+msgid "serviceChannelMessages/externalVehicleRent/expired/title"
+msgstr "坦克不可用"
+
+msgid "serviceChannelMessages/externalVehicleRent/expired/vehicle"
+msgstr "坦克"
+
+msgid "serviceChannelMessages/externalVehicleRent/started/title"
+msgstr "坦克开放使用"
+
+msgid "serviceChannelMessages/externalVehicleRent/started/vehicle"
+msgstr "坦克"
 
 msgid "serviceChannelMessages/failedPersonalMission"
 msgstr "进度重置"
@@ -2886,13 +2912,13 @@ msgid "serviceChannelMessages/lootBoxesAutoOpen/counter"
 msgstr "x%(count)s"
 
 msgid "serviceChannelMessages/lootBoxesAutoOpen/event/boxes"
-msgstr "已开启补给品: %(boxes)s"
+msgstr "已激活次元之门:%(boxes)s"
 
 msgid "serviceChannelMessages/lootBoxesAutoOpen/event/counter"
 msgstr "%(boxName)s (x%(count)d)"
 
 msgid "serviceChannelMessages/lootBoxesAutoOpen/event/header"
-msgstr "开启补给品"
+msgstr "激活次元之门"
 
 msgid "serviceChannelMessages/lootBoxesAutoOpen/event/rewards"
 msgstr ""
@@ -2900,7 +2926,7 @@ msgstr ""
 "%(rewards)s"
 
 msgid "serviceChannelMessages/lootBoxesAutoOpen/event/text"
-msgstr "我们开启了您全部的补给品，所获奖励已发送至您的账号:"
+msgstr "我们激活了您的所有次元之门，并将所有物品发送到了您的账号:"
 
 msgid "serviceChannelMessages/lootBoxesAutoOpen/header"
 msgstr "已获得奖励"
@@ -2925,9 +2951,6 @@ msgstr "前往调查"
 
 msgid "serviceChannelMessages/mapbox/congrats/title"
 msgstr "恭喜！"
-
-msgid "serviceChannelMessages/mapbox/crewbookRequestError"
-msgstr "选择奖励错误。请再试一次。"
 
 msgid "serviceChannelMessages/mapbox/eventEnded/text"
 msgstr "侦察任务已结束。感谢您为新地图开发做出的贡献！"

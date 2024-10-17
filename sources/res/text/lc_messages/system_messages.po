@@ -22,9 +22,6 @@ msgstr "最佳录像"
 msgid "actionAchievements/title"
 msgstr "勋章的活动"
 
-msgid "add_tankman_skill/crew_skills_locked"
-msgstr "无法训练新特长。租用乘员无法更改。"
-
 msgid "add_tankman_skill/invalid_vehicle"
 msgstr "训练特长错误，坦克错误。"
 
@@ -1002,6 +999,9 @@ msgid "conversionPerks/header"
 msgstr ""
 "日期: %(at)s\n"
 "转换超出上限乘员特长的经验。已获得:"
+
+msgid "countryRestriction/privateMessagesForbidden"
+msgstr "您所在地区的玩家无法进行私信。"
 
 msgid "crewBooks/failed"
 msgstr ""
@@ -2047,6 +2047,9 @@ msgstr "暂时无法操作。请稍后再试。"
 msgid "mapbox/notification/primeTime"
 msgstr "侦察任务在休战期结束前不开放。"
 
+msgid "mapbox/notification/primeTime/title"
+msgstr "休战期"
+
 msgid "maps_black_list/select/server_error"
 msgstr "服务器错误"
 
@@ -2306,11 +2309,23 @@ msgstr "配件配置错误。请稍后再试。"
 msgid "optionalDevices_remove/error_too_heavy"
 msgstr "需要更多的载重能力: 请降低坦克负载。"
 
+msgid "otherRestriction/nonFriendPrivateMessagesForbidden"
+msgstr "您的账号无法与不在联系人列表中的玩家进行私信。"
+
+msgid "otherRestriction/privateMessagesForbidden"
+msgstr "您的账号无法进行私信。"
+
 msgid "parentControl/linkText"
 msgstr "输入出生日期"
 
 msgid "parentControl/mainText"
 msgstr "请输入您的出生日期。"
+
+msgid "parentControl/nonFriendPrivateMessagesForbidden"
+msgstr "网络游戏防沉迷系统禁止您与不在联系人列表中的玩家进行私信。"
+
+msgid "parentControl/privateMessagesForbidden"
+msgstr "网络游戏防沉迷系统禁止私信。"
 
 msgid "parentControl/title"
 msgstr "年龄确认"
@@ -3496,6 +3511,9 @@ msgstr "训练房间错误。已超过一支队伍的最大玩家人数。"
 
 msgid "training/error/doAction"
 msgstr "训练房出错。请稍后再试。"
+
+msgid "training/error/onslaughtRosterLimit"
+msgstr "训练房间出错。天梯战模式下的团队最大人数: %(numPlayers)s。"
 
 msgid "training/error/selectObserver"
 msgstr "训练房间。队伍的最大玩家人数：%(numPlayers)s。"

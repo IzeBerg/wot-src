@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<version>4</version>
+	<GameObjects>
+		<GameObject>
+			<name>009_open_sands_zone_03</name>
+			<UUID>bd78ac34-397d-4ae0-a5fd-6e88ce16417b</UUID>
+			<flags>0</flags>
+		</GameObject>
+	</GameObjects>
+	<components>
+		<ComponentPool>
+			<type>Transform</type>
+			<version>1</version>
+			<component>
+				<UUID>bd78ac34-397d-4ae0-a5fd-6e88ce16417b</UUID>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>0 0 0</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>-0 0 0</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>PrismArea</type>
+			<version>1</version>
+			<component>
+				<UUID>bd78ac34-397d-4ae0-a5fd-6e88ce16417b</UUID>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Curvature</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Tesselation Step</name>
+						<value>20</value>
+					</property>
+					<property>
+						<name>Height</name>
+						<value>60</value>
+					</property>
+					<property>
+						<name>Points</name>
+						<collection>
+							<item>
+								<value>
+									0.75528 -159.682
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>0 100</value>
+							</item>
+							<item>
+								<value>
+									-0.303345 343.085
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									-3.21085 398.207
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									115.68 397.067
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									188.882 373.109
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									255.538 316.919
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									305.338 273.867
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									359.27 147.198
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									378.567 129.685
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									507.867 13.3784
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									437.867 -79.3321
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									402.817 -155.895
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									296.145 -241.39
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									145.998 -95.1344
+									<!--BW_String-->
+								</value>
+							</item>
+							<item>
+								<value>
+									74.7964 -164.511
+									<!--BW_String-->
+								</value>
+							</item>
+						</collection>
+					</property>
+					<property>
+						<name>Douglas-Peucker Epsilon</name>
+						<value>
+							0.2
+							<!--BW_String-->
+						</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>SoundZone</type>
+			<version>1</version>
+			<component>
+				<UUID>bd78ac34-397d-4ae0-a5fd-6e88ce16417b</UUID>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Zone Enter Event</name>
+						<value>ev_battle_royale_2020_open_sands_ZoneEnter</value>
+					</property>
+					<property>
+						<name>Zone Exit Event</name>
+						<value>ev_battle_royale_2020_open_sands_ZoneExit</value>
+					</property>
+					<property>
+						<name>Emitter Event</name>
+						<value/>
+					</property>
+					<property>
+						<name>Reverb</name>
+						<value/>
+					</property>
+					<property>
+						<name>Reverb Level</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Volume Deviation</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Color</name>
+						<value>
+							0 0 1 0.5
+							<!--BW_String-->
+						</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+	</components>
+</root>

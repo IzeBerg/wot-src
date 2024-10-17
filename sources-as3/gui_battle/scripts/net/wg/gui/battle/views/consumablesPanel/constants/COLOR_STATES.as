@@ -5,6 +5,8 @@ package net.wg.gui.battle.views.consumablesPanel.constants
    public class COLOR_STATES
    {
       
+      public static const BLACK_COLOR_TRANSFORM:ColorTransform = new ColorTransform(1,1,1,1,-255,-255,-255,1);
+      
       public static const DARK_COLOR_TRANSFORM:ColorTransform = new ColorTransform(0.35,0.35,0.35,1,0,0,0,0);
       
       public static const NORMAL_COLOR_TRANSFORM:ColorTransform = new ColorTransform(1,1,1,1,0,0,0,0);

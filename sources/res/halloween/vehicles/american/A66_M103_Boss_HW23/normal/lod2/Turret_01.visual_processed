@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>nodes_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_gunJoint</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.891160 2.373699</row3>
+				</transform>
+			</node>
+		</node>
+		<node>
+			<node>
+				<identifier>HP_wp_02</identifier>
+				<transform>
+					<row0>-0.769750 0.573576 0.280166</row0>
+					<row1>0.538985 0.819151 -0.196175</row1>
+					<row2>-0.342020 -0.000000 -0.939691</row2>
+					<row3>-2.224000 1.285082 0.424000</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_wp_03</identifier>
+				<transform>
+					<row0>-0.709405 0.573575 -0.409575</row0>
+					<row1>0.496731 0.819151 0.286788</row1>
+					<row2>0.499999 0.000000 -0.866024</row2>
+					<row3>-1.226134 3.082445 -4.089604</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_wp_07</identifier>
+				<transform>
+					<row0>0.769750 0.573576 0.280166</row0>
+					<row1>-0.538985 0.819151 -0.196174</row1>
+					<row2>-0.342020 -0.000000 0.939691</row2>
+					<row3>2.224432 1.285079 0.424177</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_wp_08</identifier>
+				<transform>
+					<row0>0.771633 0.453990 0.445502</row0>
+					<row1>-0.393167 0.891007 -0.226995</row1>
+					<row2>-0.500000 -0.000000 0.866025</row2>
+					<row3>0.871820 3.036643 -3.180962</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_wp_11</identifier>
+				<transform>
+					<row0>0.422618 -0.000000 -0.906307</row0>
+					<row1>-0.000000 0.999999 0.000000</row1>
+					<row2>0.906306 0.000000 0.422617</row2>
+					<row3>0.488264 3.051843 -5.085936</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_light5</identifier>
+				<transform>
+					<row0>-0.469471 0.000000 0.882947</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>-0.882946 0.000000 -0.469471</row2>
+					<row3>-0.186489 3.646470 -2.513817</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_light6</identifier>
+				<transform>
+					<row0>-0.469471 0.000000 0.882947</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>-0.882946 0.000000 -0.469471</row2>
+					<row3>-1.102232 3.564626 -2.966878</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_turret_01</identifier>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						metallicGlossMap
+						<Texture>halloween/vehicles/american/A66_M103_Boss_HW23/M103_Boss_HW23_turret_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>halloween/vehicles/american/A66_M103_Boss_HW23/M103_Boss_HW23_turret_01_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>halloween/vehicles/american/A66_M103_Boss_HW23/M103_Boss_HW23_turret_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>halloween/vehicles/american/A66_M103_Boss_HW23/M103_Boss_HW23_turret_01_AO.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.000383 2.385179 -1.614610</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>tank_equipment</identifier>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>halloween/vehicles/american/A66_M103_Boss_HW23/M103_Boss_HW23_equipment_AM.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>halloween/vehicles/american/A66_M103_Boss_HW23/M103_Boss_HW23_equipment_AO.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>3.506850 3.506850 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>halloween/vehicles/american/A66_M103_Boss_HW23/M103_Boss_HW23_equipment_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>halloween/vehicles/american/A66_M103_Boss_HW23/M103_Boss_HW23_equipment_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-1.415495 1.014891 -3.763802</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-3.339995 -0.034325 -7.150942</min>
+		<max>3.316046 4.804683 3.128551</max>
+	</boundingBox>
+	<geometrySize>162970</geometrySize>
+	<minUVDensity>0.000323</minUVDensity>
+</root>

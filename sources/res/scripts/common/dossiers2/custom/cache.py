@@ -1,5 +1,5 @@
 import nations
-from items import vehicles
+from items import vehicles, parseIntCompactDescr
 from collector_vehicle import CollectorVehicleConsts
 PRESTIGE_ALLOWED_TAGS = {
  'role_ATSPG_sniper', 'role_ATSPG_universal', 'role_ATSPG_support', 'role_LT_universal',
@@ -9,6 +9,8 @@ PRESTIGE_ALLOWED_TAGS = {
  'private', 'event_battles', 'fallout', 'epic_battles', 'mapbox', 'fun_random',
  'rent_promotion', 'premiumIGR', 'pillbox', 'fr_hidden', 'mode_hidden', 'disableIBA', 'comp7',
  'bot_hunter', 'clanWarsBattles'}
+EXCLUDE_VEHICLE_BY_TAGS = {
+ 'bob', 'battle_royale', 'maps_training', 'bunkerTurret', 'event_battles'}
 
 def getCache():
     global _g_cache
@@ -33,26 +35,18 @@ def buildCache():
         nationList = vehicles.g_list.getList(nationIdx)
         vehiclesInNationTree = set()
         for vehDescr in nationList.itervalues():
-            if 'bob' in vehDescr.tags:
+            if EXCLUDE_VEHICLE_BY_TAGS.intersection(vehDescr.tags):
                 continue
-            else:
-                if 'battle_royale' in vehDescr.tags:
-                    continue
-                else:
-                    if 'maps_training' in vehDescr.tags:
-                        continue
-                    elif 'bunkerTurret' in vehDescr.tags:
-                        continue
-                    vehiclesNameToDescr[vehDescr.name] = vehDescr.compactDescr
-                    vehicleEliteStatusXp[vehDescr.compactDescr] = __getVehicleEliteStatusXp(vehDescr.compactDescr)
-                    vehiclesByLevel.setdefault(vehDescr.level, set()).add(vehDescr.compactDescr)
-                    for tag in TAGS_TO_COLLECT:
-                        if tag in vehDescr.tags:
-                            vehiclesByTag[tag].add(vehDescr.compactDescr)
+            vehiclesNameToDescr[vehDescr.name] = vehDescr.compactDescr
+            vehicleEliteStatusXp[vehDescr.compactDescr] = __getVehicleEliteStatusXp(vehDescr.compactDescr)
+            vehiclesByLevel.setdefault(vehDescr.level, set()).add(vehDescr.compactDescr)
+            for tag in TAGS_TO_COLLECT:
+                if tag in vehDescr.tags:
+                    vehiclesByTag[tag].add(vehDescr.compactDescr)
 
-                for tag in vehicles.VEHICLE_CLASS_TAGS:
-                    if tag in vehDescr.tags:
-                        vehiclesByClass[tag].add(vehDescr.compactDescr)
+            for tag in vehicles.VEHICLE_CLASS_TAGS:
+                if tag in vehDescr.tags:
+                    vehiclesByClass[tag].add(vehDescr.compactDescr)
 
             if CollectorVehicleConsts.COLLECTOR_VEHICLES_TAG in vehDescr.tags:
                 collectorVehiclesByNations.setdefault(nationIdx, set()).add(vehDescr.compactDescr)

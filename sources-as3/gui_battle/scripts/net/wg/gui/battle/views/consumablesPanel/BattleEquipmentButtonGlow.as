@@ -22,7 +22,7 @@ package net.wg.gui.battle.views.consumablesPanel
       
       private static const SHOW_GLOW_GREEN_UPGRADE_STATE:String = "greenUpgrade";
       
-      protected static const SHOW_GLOW_ORANGE_STATE:String = "orange";
+      private static const SHOW_GLOW_ORANGE_STATE:String = "orange";
       
       private static const SHOW_GLOW_GREEN_NO_HOT_KEY_STATE:String = "greenNoHotKey";
       
@@ -117,12 +117,6 @@ package net.wg.gui.battle.views.consumablesPanel
          }
       }
       
-      public function glowOrange() : void
-      {
-         this._textField.textColor = RED_TEXT_COLOR;
-         gotoAndPlay(SHOW_GLOW_ORANGE_STATE);
-      }
-      
       public function showGlow(param1:int, param2:Boolean = true) : void
       {
          switch(param1)
@@ -148,7 +142,7 @@ package net.wg.gui.battle.views.consumablesPanel
                gotoAndPlay(SHOW_GLOW_GREEN_UPGRADE_STATE);
                break;
             default:
-               this._textField.textColor = this.normalTextColor;
+               this._textField.textColor = NORMAL_TEXT_COLOR;
                gotoAndPlay(SHOW_GLOW_HIDE_STATE);
          }
       }
@@ -156,7 +150,7 @@ package net.wg.gui.battle.views.consumablesPanel
       private function goIdle() : void
       {
          stop();
-         this._textField.textColor = this.normalTextColor;
+         this._textField.textColor = NORMAL_TEXT_COLOR;
          dispatchEvent(new Event(ConsumablesButtonEvent.GLOW_ON_IDLE_STATE));
       }
       
@@ -167,16 +161,6 @@ package net.wg.gui.battle.views.consumablesPanel
             this._isIdleEnabled = false;
             stop();
          }
-      }
-      
-      protected function get bindKeyField() : TextField
-      {
-         return this._textField;
-      }
-      
-      protected function get normalTextColor() : uint
-      {
-         return NORMAL_TEXT_COLOR;
       }
    }
 }
