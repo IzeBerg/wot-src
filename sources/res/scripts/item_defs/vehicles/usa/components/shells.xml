@@ -378,7 +378,10 @@
 			<devices>20</devices>
 		</damage>
 		<armorSpalls>
-			<impactRadius>1</impactRadius>
+			<impactRadius>
+				0.75
+				<!--BW_String-->
+			</impactRadius>
 			<coneAngle>90</coneAngle>
 			<damageAbsorption>SPALLS</damageAbsorption>
 			<damage>
@@ -392,11 +395,11 @@
 		</damageRandomization>
 		<deviceFaultTolerance>ammoBay</deviceFaultTolerance>
 		<hitDeviceChanceMultiplier>
-			0.05
+			0.75
 			<!--BW_String-->
 		</hitDeviceChanceMultiplier>
 		<hitCrewChanceMultiplier>
-			0.05
+			0.125
 			<!--BW_String-->
 		</hitCrewChanceMultiplier>
 		<secondaryAttackReason>autoshoot</secondaryAttackReason>
@@ -417,7 +420,10 @@
 			<devices>20</devices>
 		</damage>
 		<armorSpalls>
-			<impactRadius>1</impactRadius>
+			<impactRadius>
+				0.75
+				<!--BW_String-->
+			</impactRadius>
 			<coneAngle>90</coneAngle>
 			<damageAbsorption>SPALLS</damageAbsorption>
 			<damage>
@@ -431,11 +437,11 @@
 		</damageRandomization>
 		<deviceFaultTolerance>ammoBay</deviceFaultTolerance>
 		<hitDeviceChanceMultiplier>
-			0.05
+			0.75
 			<!--BW_String-->
 		</hitDeviceChanceMultiplier>
 		<hitCrewChanceMultiplier>
-			0.05
+			0.125
 			<!--BW_String-->
 		</hitCrewChanceMultiplier>
 		<secondaryAttackReason>autoshoot</secondaryAttackReason>
@@ -459,7 +465,10 @@
 			<devices>20</devices>
 		</damage>
 		<armorSpalls>
-			<impactRadius>1</impactRadius>
+			<impactRadius>
+				0.75
+				<!--BW_String-->
+			</impactRadius>
 			<coneAngle>90</coneAngle>
 			<damageAbsorption>SPALLS</damageAbsorption>
 			<damage>
@@ -473,7 +482,7 @@
 			<!--BW_String-->
 		</hitDeviceChanceMultiplier>
 		<hitCrewChanceMultiplier>
-			0.25
+			0.125
 			<!--BW_String-->
 		</hitCrewChanceMultiplier>
 		<secondaryAttackReason>autoshoot</secondaryAttackReason>
@@ -494,7 +503,10 @@
 			<devices>20</devices>
 		</damage>
 		<armorSpalls>
-			<impactRadius>1</impactRadius>
+			<impactRadius>
+				0.75
+				<!--BW_String-->
+			</impactRadius>
 			<coneAngle>90</coneAngle>
 			<damageAbsorption>SPALLS</damageAbsorption>
 			<damage>
@@ -508,7 +520,7 @@
 			<!--BW_String-->
 		</hitDeviceChanceMultiplier>
 		<hitCrewChanceMultiplier>
-			0.25
+			0.125
 			<!--BW_String-->
 		</hitCrewChanceMultiplier>
 		<secondaryAttackReason>autoshoot</secondaryAttackReason>
@@ -2633,7 +2645,7 @@
 		<id>31016</id>
 		<userString>#usa_vehicles:_120mm_M820_HEAT</userString>
 		<icon>ap_fsds_premium</icon>
-		<price>3360</price>
+		<price>4800</price>
 		<improved>true</improved>
 		<kind>ARMOR_PIERCING_FSDS</kind>
 		<caliber>120</caliber>
@@ -2651,8 +2663,8 @@
 		<distanceDamage>
 			<isEnabled>true</isEnabled>
 			<damage>
-				<min>252</min>
-				<max>588</max>
+				<min>147</min>
+				<max>693</max>
 			</damage>
 			<distance>
 				<min>
@@ -2666,6 +2678,14 @@
 			</distance>
 			<ignoreModules>true</ignoreModules>
 		</distanceDamage>
+		<hitDeviceChanceMultiplier>
+			0.5
+			<!--BW_String-->
+		</hitDeviceChanceMultiplier>
+		<hitCrewChanceMultiplier>
+			0.5
+			<!--BW_String-->
+		</hitCrewChanceMultiplier>
 	</_120mm_M820_HEAT_MBT>
 	<_120mm_SDRN1_MBT>
 		<id>31017</id>

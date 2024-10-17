@@ -215,8 +215,6 @@ package
       
       public static const WHITE_TIGER_GUI_MAPS_ICONS_LOGO_MAIN_WT_SMALL_HOVER:String = "img://white_tiger/gui/maps/icons/logo/main_wt_small_hover.png";
       
-      public static const WHITE_TIGER_GUI_MAPS_ICONS_PORTALS_A33_MTLS_1G14:String = "img://white_tiger/gui/maps/icons/portals/A33_MTLS_1G14.png";
-      
       public static const WHITE_TIGER_GUI_MAPS_ICONS_PORTALS_BOSS_PORTAL_BACKGROUND:String = "img://white_tiger/gui/maps/icons/portals/boss_portal_background.png";
       
       public static const WHITE_TIGER_GUI_MAPS_ICONS_PORTALS_BOSS_PORTAL_BACKGROUND_LARGE:String = "img://white_tiger/gui/maps/icons/portals/boss_portal_background_large.png";
@@ -235,6 +233,14 @@ package
       
       public static const WHITE_TIGER_GUI_MAPS_ICONS_PORTALS_COLLECTION_ELEMENT:String = "img://white_tiger/gui/maps/icons/portals/collection_element.png";
       
+      public static const WHITE_TIGER_GUI_MAPS_ICONS_PORTALS_CZOLG_PORTAL_280X175:String = "img://white_tiger/gui/maps/icons/portals/czolg_portal_280x175.png";
+      
+      public static const WHITE_TIGER_GUI_MAPS_ICONS_PORTALS_CZOLG_PORTAL_341X213:String = "img://white_tiger/gui/maps/icons/portals/czolg_portal_341x213.png";
+      
+      public static const WHITE_TIGER_GUI_MAPS_ICONS_PORTALS_CZOLG_PORTAL_400X250:String = "img://white_tiger/gui/maps/icons/portals/czolg_portal_400x250.png";
+      
+      public static const WHITE_TIGER_GUI_MAPS_ICONS_PORTALS_CZOLG_PORTAL_480X300:String = "img://white_tiger/gui/maps/icons/portals/czolg_portal_480x300.png";
+      
       public static const WHITE_TIGER_GUI_MAPS_ICONS_PORTALS_DROP_RATE_GLOW:String = "img://white_tiger/gui/maps/icons/portals/drop_rate_glow.png";
       
       public static const WHITE_TIGER_GUI_MAPS_ICONS_PORTALS_FIRST_LAUN_REWARD_BG:String = "img://white_tiger/gui/maps/icons/portals/first_laun_reward_bg.png";
@@ -242,8 +248,6 @@ package
       public static const WHITE_TIGER_GUI_MAPS_ICONS_PORTALS_G168_KJPZ_T_III:String = "img://white_tiger/gui/maps/icons/portals/G168_KJpz_T_III.png";
       
       public static const WHITE_TIGER_GUI_MAPS_ICONS_PORTALS_G36_PZII_J:String = "img://white_tiger/gui/maps/icons/portals/G36_PzII_J.png";
-      
-      public static const WHITE_TIGER_GUI_MAPS_ICONS_PORTALS_GB113_MATILDA_LVT:String = "img://white_tiger/gui/maps/icons/portals/GB113_Matilda_LVT.png";
       
       public static const WHITE_TIGER_GUI_MAPS_ICONS_PORTALS_GOLD:String = "img://white_tiger/gui/maps/icons/portals/gold.png";
       
@@ -262,6 +266,8 @@ package
       public static const WHITE_TIGER_GUI_MAPS_ICONS_PORTALS_IMITATOR:String = "img://white_tiger/gui/maps/icons/portals/imitator.png";
       
       public static const WHITE_TIGER_GUI_MAPS_ICONS_PORTALS_PERCENT_BG:String = "img://white_tiger/gui/maps/icons/portals/percent_bg.png";
+      
+      public static const WHITE_TIGER_GUI_MAPS_ICONS_PORTALS_PL26_CZOLG_P_WZ_46_VERBESSERTER:String = "img://white_tiger/gui/maps/icons/portals/Pl26_Czolg_P_Wz_46_Verbesserter.png";
       
       public static const WHITE_TIGER_GUI_MAPS_ICONS_PORTALS_POINTER:String = "img://white_tiger/gui/maps/icons/portals/pointer.png";
       
@@ -291,7 +297,7 @@ package
       
       public static const WHITE_TIGER_GUI_MAPS_ICONS_PORTALS_PREMIUM_TANK:String = "img://white_tiger/gui/maps/icons/portals/premium_tank.png";
       
-      public static const WHITE_TIGER_GUI_MAPS_ICONS_PORTALS_R191_OBJECT_283:String = "img://white_tiger/gui/maps/icons/portals/R191_Object_283.png";
+      public static const WHITE_TIGER_GUI_MAPS_ICONS_PORTALS_R212_OBJECT_265T:String = "img://white_tiger/gui/maps/icons/portals/R212_Object_265T.png";
       
       public static const WHITE_TIGER_GUI_MAPS_ICONS_PORTALS_SILVER:String = "img://white_tiger/gui/maps/icons/portals/silver.png";
       

@@ -2,10 +2,10 @@ from enum import Enum
 from white_tiger.gui.impl.gen.view_models.views.lobby.wt_event_portal_awards_base_model import WtEventPortalAwardsBaseModel
 
 class EventTankType(Enum):
-    PRIMARY = 'G168_KJpz_T_III'
-    SECONDARY = 'R191_Object_283'
+    PRIMARY = 'R212_Object_265T'
+    SECONDARY = 'G168_KJpz_T_III'
     MAIN = 'Pl26_Czolg_P_Wz_46'
-    BOSS = 'R33_Churchill_LL'
+    BOSS = 'Pl26_Czolg_P_Wz_46_Verbesserter'
 
 
 class WtEventVehiclePortalModel(WtEventPortalAwardsBaseModel):

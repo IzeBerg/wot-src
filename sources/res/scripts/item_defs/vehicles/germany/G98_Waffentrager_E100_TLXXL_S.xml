@@ -9,8 +9,8 @@
 	</crew>
 	<supplySlots>1 6 6 6 6 8 8 8</supplySlots>
 	<speedLimits>
-		<forward>45</forward>
-		<backward>20</backward>
+		<forward>41</forward>
+		<backward>17</backward>
 	</speedLimits>
 	<invisibility>
 		<moving>
@@ -172,14 +172,14 @@
 			</terrainResistance>
 			<brakeForce>100000</brakeForce>
 			<rotationIsAroundCenter>true</rotationIsAroundCenter>
-			<rotationSpeed>38</rotationSpeed>
+			<rotationSpeed>30</rotationSpeed>
 			<shotDispersionFactors>
 				<vehicleMovement>
-					0.16
+					0.25
 					<!--BW_String-->
 				</vehicleMovement>
 				<vehicleRotation>
-					0.08
+					0.25
 					<!--BW_String-->
 				</vehicleRotation>
 			</shotDispersionFactors>
@@ -1043,7 +1043,7 @@
 			<primaryArmor>armor_1 armor_3 armor_4</primaryArmor>
 			<weight>1000</weight>
 			<maxHealth>6400</maxHealth>
-			<rotationSpeed>40</rotationSpeed>
+			<rotationSpeed>33</rotationSpeed>
 			<turretRotatorHealth>
 				<maxHealth>100</maxHealth>
 				<maxRegenHealth>50</maxRegenHealth>
@@ -1052,7 +1052,7 @@
 					<!--BW_String-->
 				</repairCost>
 			</turretRotatorHealth>
-			<circularVisionRadius>500</circularVisionRadius>
+			<circularVisionRadius>445</circularVisionRadius>
 			<surveyingDeviceHealth>
 				<maxHealth>120</maxHealth>
 				<maxRegenHealth>60</maxRegenHealth>
@@ -1224,7 +1224,7 @@
 			<engines>
 				<Engine_VK4502P_2>
 					<smplEnginePower>2500</smplEnginePower>
-					<smplFwMaxSpeed>45</smplFwMaxSpeed>
+					<smplFwMaxSpeed>41</smplFwMaxSpeed>
 				</Engine_VK4502P_2>
 			</engines>
 			<chassis>
